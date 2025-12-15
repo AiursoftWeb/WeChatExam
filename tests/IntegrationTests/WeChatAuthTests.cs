@@ -4,18 +4,18 @@ using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Moq;
 using Senparc.Weixin.WxOpen.AdvancedAPIs.Sns;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MSTest = Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
-[TestClass]
+[MSTest.TestClass]
 public class WeChatAuthTests
 {
     private WebApplicationFactory<Startup> _factory = null!;
     private HttpClient _client = null!;
     private Mock<IWeChatService> _mockWeChatService = null!;
 
-    [TestInitialize]
+    [MSTest.TestInitialize]
     public void Initialize()
     {
         _mockWeChatService = new Mock<IWeChatService>();
@@ -64,14 +64,14 @@ public class WeChatAuthTests
         _client = _factory.CreateClient();
     }
 
-    [TestCleanup]
+    [MSTest.TestCleanup]
     public void Cleanup()
     {
         _client.Dispose();
         _factory.Dispose();
     }
 
-    [TestMethod]
+    [MSTest.TestMethod]
     public async Task Login_ValidCode_ReturnsToken()
     {
         // Arrange
@@ -94,14 +94,14 @@ public class WeChatAuthTests
         var response = await _client.PostAsJsonAsync("/api/Auth/login", model);
 
         // Assert
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        MSTest.Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         var token = await response.Content.ReadFromJsonAsync<TokenDto>();
-        Assert.IsNotNull(token);
-        Assert.AreEqual(openId, token.OpenId);
-        Assert.IsFalse(string.IsNullOrEmpty(token.Token));
+        MSTest.Assert.IsNotNull(token);
+        MSTest.Assert.AreEqual(openId, token.OpenId);
+        MSTest.Assert.IsFalse(string.IsNullOrEmpty(token.Token));
     }
 
-    [TestMethod]
+    [MSTest.TestMethod]
     public async Task Login_InvalidCode_ReturnsBadRequest()
     {
         // Arrange
@@ -121,10 +121,10 @@ public class WeChatAuthTests
         var response = await _client.PostAsJsonAsync("/api/Auth/login", model);
 
         // Assert
-        Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+        MSTest.Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
-    [TestMethod]
+    [MSTest.TestMethod]
     public async Task Login_UseToken_CanAccessApi()
     {
         // Arrange
@@ -152,18 +152,18 @@ public class WeChatAuthTests
         var response = await _client.GetAsync("/api/User/info");
 
         // Assert
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        MSTest.Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         var userInfo = await response.Content.ReadFromJsonAsync<dynamic>();
-        Assert.IsNotNull(userInfo);
+        MSTest.Assert.IsNotNull(userInfo);
     }
 
-    [TestMethod]
+    [MSTest.TestMethod]
     public async Task AccessApi_WithoutToken_ReturnsUnauthorized()
     {
         // Act
         var response = await _client.GetAsync("/api/User/info");
 
         // Assert
-        Assert.AreEqual(HttpStatusCode.Unauthorized, response.StatusCode);
+        MSTest.Assert.AreEqual(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 }
