@@ -14,3 +14,11 @@ public class TokenDto
     public DateTime Expiration { get; set; }
     public string OpenId { get; set; } = string.Empty;
 }
+
+public class UpdateProfileDto
+{
+    [Required]
+    public string NickName { get; set; } = string.Empty;
+    [Required]
+    public string AvatarUrl { get; set; } = string.Empty;
+}

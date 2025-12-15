@@ -38,6 +38,7 @@ public class Startup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+        services.AddScoped<Services.IWeChatService, Services.WeChatService>();
 
         // Controllers
         services.AddControllers()

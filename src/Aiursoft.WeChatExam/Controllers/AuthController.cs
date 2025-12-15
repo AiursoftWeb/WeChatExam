@@ -10,6 +10,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Senparc.Weixin.WxOpen.AdvancedAPIs.Sns;
 
+using Aiursoft.WeChatExam.Services;
+
 namespace Aiursoft.WeChatExam.Controllers;
 
 [Route("api/[controller]")]
@@ -17,7 +19,8 @@ namespace Aiursoft.WeChatExam.Controllers;
 public class AuthController(
     UserManager<User> userManager,
     IOptions<AppSettings> appSettings,
-    ILogger<AuthController> logger) : ControllerBase
+    ILogger<AuthController> logger,
+    IWeChatService weChatService) : ControllerBase
 {
     private readonly AppSettings _appSettings = appSettings.Value;
 
@@ -29,7 +32,7 @@ public class AuthController(
             return BadRequest("Code is empty");
         }
 
-        var jsonResult = await SnsApi.JsCode2JsonAsync(_appSettings.WechatAppId, _appSettings.WechatAppSecret, model.Code);
+        var jsonResult = await weChatService.CodeToSessionAsync(_appSettings.WechatAppId, _appSettings.WechatAppSecret, model.Code);
         if (jsonResult.errcode != Senparc.Weixin.ReturnCode.请求成功)
         {
             logger.LogError("WeChat login failed: {Message}", jsonResult.errmsg);
