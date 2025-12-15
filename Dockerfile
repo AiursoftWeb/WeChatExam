@@ -2,22 +2,12 @@ ARG CSPROJ_PATH="./src/Aiursoft.WeChatExam/"
 ARG PROJ_NAME="Aiursoft.WeChatExam"
 
 # ============================
-# Prepare NPM Environment
-FROM hub.aiursoft.com/node:21-alpine AS npm-env
-ARG CSPROJ_PATH
-WORKDIR /src
-COPY . .
-
-# NPM Build at PGK_JSON_PATH
-RUN npm install --prefix "${CSPROJ_PATH}wwwroot" --loglevel verbose
-
-# ============================
 # Prepare Building Environment
 FROM hub.aiursoft.com/aiursoft/internalimages/dotnet AS build-env
 ARG CSPROJ_PATH
 ARG PROJ_NAME
 WORKDIR /src
-COPY --from=npm-env /src .
+COPY  . .
 
 # Build
 RUN dotnet publish ${CSPROJ_PATH}${PROJ_NAME}.csproj  --configuration Release --no-self-contained --runtime linux-x64 --output /app
@@ -45,14 +35,14 @@ ENV DLL_NAME=${PROJ_NAME}.dll
 #ENTRYPOINT dotnet $DLL_NAME --urls http://*:5000
 ENTRYPOINT ["/bin/bash", "-c", "\
     if [ ! -f \"$VOL_SETTINGS\" ]; then \
-        cp $SRC_SETTINGS $VOL_SETTINGS; \
+    cp $SRC_SETTINGS $VOL_SETTINGS; \
     fi && \
     if [ -f \"$SRC_SETTINGS\" ]; then \
-        rm $SRC_SETTINGS; \
+    rm $SRC_SETTINGS; \
     fi && \
     ln -s $VOL_SETTINGS $SRC_SETTINGS && \
     dotnet $DLL_NAME --urls http://*:5000 \
-"]
+    "]
 
 HEALTHCHECK --interval=10s --timeout=3s --start-period=180s --retries=3 CMD \
-wget --quiet --tries=1 --spider http://localhost:5000/health || exit 1
+    wget --quiet --tries=1 --spider http://localhost:5000/health || exit 1
