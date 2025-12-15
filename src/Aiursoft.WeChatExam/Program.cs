@@ -11,7 +11,6 @@ public class Program
         var app = await AppAsync<Startup>(args);
         await app.UpdateDbAsync<TemplateDbContext>();
         await app.SeedAsync();
-        await app.CopyAvatarFileAsync();
         await app.RunAsync();
     }
 }

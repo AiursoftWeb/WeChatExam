@@ -1,6 +1,7 @@
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools.Switchable;
 using Aiursoft.Scanner;
+using Aiursoft.WebTools.Abstractions.Models;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.InMemory;
 using Aiursoft.WeChatExam.MySql;
@@ -11,7 +12,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Aiursoft.WeChatExam;
 
-public class Startup
+public class Startup : IWebStartup
 {
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
