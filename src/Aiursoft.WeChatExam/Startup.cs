@@ -1,3 +1,4 @@
+using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools.Switchable;
 using Aiursoft.Scanner;
 using Aiursoft.WeChatExam.Configuration;
@@ -20,7 +21,7 @@ public class Startup
         // Relational database
         var (connectionString, dbType, allowCache) = configuration.GetDbSettings();
         services.AddSwitchableRelationalDatabase(
-            dbType: dbType,
+            dbType: EntryExtends.IsInUnitTests() ? "InMemory" : dbType,
             connectionString: connectionString,
             supportedDbs:
             [
