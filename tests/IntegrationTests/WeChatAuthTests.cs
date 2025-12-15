@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Moq;
 using Senparc.Weixin.WxOpen.AdvancedAPIs.Sns;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
