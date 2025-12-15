@@ -1,7 +1,6 @@
 using Aiursoft.DbTools;
 using Aiursoft.DbTools.MySql;
 using Aiursoft.WeChatExam.Entities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiursoft.WeChatExam.MySql;

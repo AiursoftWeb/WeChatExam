@@ -1,6 +1,3 @@
-using Aiursoft.WeChatExam.Entities;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam;
 

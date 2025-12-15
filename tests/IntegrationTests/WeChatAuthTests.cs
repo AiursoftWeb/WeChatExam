@@ -1,10 +1,7 @@
 using System.Net;
-using System.Net.Http.Json;
 using Aiursoft.WeChatExam.Models;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Senparc.Weixin.WxOpen.AdvancedAPIs.Sns;
 

@@ -1,11 +1,8 @@
 
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace Aiursoft.WeChatExam.Services.Authentication;
 

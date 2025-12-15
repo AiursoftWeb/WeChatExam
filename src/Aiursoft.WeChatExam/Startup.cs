@@ -7,8 +7,6 @@ using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Aiursoft.WeChatExam;
 
