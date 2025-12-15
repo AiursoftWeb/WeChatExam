@@ -1,21 +1,18 @@
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools.Switchable;
 using Aiursoft.Scanner;
 using Aiursoft.WeChatExam.Configuration;
-using Aiursoft.WebTools.Abstractions.Models;
 using Aiursoft.WeChatExam.InMemory;
 using Aiursoft.WeChatExam.MySql;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
-using Aiursoft.UiStack.Layout;
-using Aiursoft.UiStack.Navigation;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Aiursoft.WeChatExam;
 
-public class Startup : IWebStartup
+public class Startup
 {
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -25,7 +22,7 @@ public class Startup : IWebStartup
         // Relational database
         var (connectionString, dbType, allowCache) = configuration.GetDbSettings();
         services.AddSwitchableRelationalDatabase(
-            dbType: EntryExtends.IsInUnitTests() ? "InMemory": dbType,
+            dbType: dbType,
             connectionString: connectionString,
             supportedDbs:
             [
@@ -41,19 +38,40 @@ public class Startup : IWebStartup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
-        services.AddSingleton<NavigationState<Startup>>();
 
-        // Controllers and localization
-        services.AddControllersWithViews()
+        // Controllers
+        services.AddControllers()
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            })
-            .AddApplicationPart(typeof(Startup).Assembly)
-            .AddApplicationPart(typeof(UiStackLayoutViewModel).Assembly)
-            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-            .AddDataAnnotationsLocalization();
+            });
+
+        services.AddSwaggerGen(c =>
+        {
+            // Add JWT Bearer support in Swagger
+            var securityScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Description = "Enter 'Bearer {token}'",
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            };
+
+            c.AddSecurityDefinition("Bearer", securityScheme);
+
+            c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+            {
+                { securityScheme, new[] { "Bearer" } }
+            });
+        });
     }
 
     public void Configure(WebApplication app)
@@ -63,6 +81,8 @@ public class Startup : IWebStartup
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
-        app.MapDefaultControllerRoute();
+        app.UseSwagger();
+        app.UseSwaggerUI();
+        app.MapControllers();
     }
 }

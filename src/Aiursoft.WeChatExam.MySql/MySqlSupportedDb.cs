@@ -1,6 +1,7 @@
 using Aiursoft.DbTools;
 using Aiursoft.DbTools.MySql;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiursoft.WeChatExam.MySql;
@@ -12,7 +13,7 @@ public class MySqlSupportedDb(bool allowCache, bool splitQuery) : SupportedDatab
     public override IServiceCollection RegisterFunction(IServiceCollection services, string connectionString)
     {
         return services.AddAiurMySqlWithCache<MySqlContext>(
-            connectionString,
+                connectionString, 
             splitQuery: splitQuery,
             allowCache: allowCache);
     }

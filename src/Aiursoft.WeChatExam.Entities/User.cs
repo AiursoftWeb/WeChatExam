@@ -13,5 +13,11 @@ public class User : IdentityUser
 
     [MaxLength(150)] [MinLength(2)] public string AvatarRelativePath { get; set; } = DefaultAvatarPath;
 
+    [MaxLength(100)]
+    public string? MiniProgramOpenId { get; set; }
+
+    [MaxLength(100)]
+    public string? SessionKey { get; set; }
+
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 }
