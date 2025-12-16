@@ -39,6 +39,7 @@ public class Startup : IWebStartup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+        services.AddScoped<Services.IWeChatService, Services.WeChatService>();
         services.AddSenparcWeixinServices(configuration);
 
         // Controllers
