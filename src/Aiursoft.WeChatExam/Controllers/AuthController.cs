@@ -31,15 +31,16 @@ public class AuthController(
             return BadRequest("Code is empty");
         }
 
-        var jsonResult = await weChatService.CodeToSessionAsync(_appSettings.WechatAppId, _appSettings.WechatAppSecret, model.Code);
-        if (jsonResult.errcode != Senparc.Weixin.ReturnCode.请求成功)
+        var sessionResult = await weChatService.CodeToSessionAsync(model.Code);
+        if (!sessionResult.IsSuccess)
         {
-            logger.LogError("WeChat login failed: {Message}", jsonResult.errmsg);
-            return BadRequest($"WeChat login failed: {jsonResult.errmsg}");
+            logger.LogError("WeChat login failed: ErrorCode={ErrorCode}, Message={Message}",
+                sessionResult.ErrorCode, sessionResult.ErrorMessage);
+            return BadRequest($"WeChat login failed: {sessionResult.ErrorMessage}");
         }
 
-        var openId = jsonResult.openid;
-        var sessionKey = jsonResult.session_key;
+        var openId = sessionResult.OpenId!;
+        var sessionKey = sessionResult.SessionKey!;
 
         var user = userManager.Users.FirstOrDefault(u => u.MiniProgramOpenId == openId);
         if (user == null)

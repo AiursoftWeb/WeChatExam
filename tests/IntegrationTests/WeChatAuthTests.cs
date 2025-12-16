@@ -3,7 +3,7 @@ using Aiursoft.WeChatExam.Models;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Moq;
-using Senparc.Weixin.WxOpen.AdvancedAPIs.Sns;
+
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
@@ -79,12 +79,14 @@ public class WeChatAuthTests
         var sessionKey = "mock-session-key";
 
         _mockWeChatService
-             .Setup(s => s.CodeToSessionAsync(It.IsAny<string>(), It.Is<string>(secret => secret == "12345678901234567890123456789012"), code))
-            .ReturnsAsync(new JsCode2JsonResult
+             .Setup(s => s.CodeToSessionAsync(code))
+            .ReturnsAsync(new WeChatSessionResult
             {
-                errcode = Senparc.Weixin.ReturnCode.请求成功,
-                openid = openId,
-                session_key = sessionKey
+                IsSuccess = true,
+                OpenId = openId,
+                SessionKey = sessionKey,
+                ErrorCode = 0,
+                ErrorMessage = null
             });
 
         var model = new Code2SessionDto { Code = code };
@@ -107,11 +109,12 @@ public class WeChatAuthTests
         var code = "invalid-code";
 
         _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(It.IsAny<string>(), It.IsAny<string>(), code))
-            .ReturnsAsync(new JsCode2JsonResult
+            .Setup(s => s.CodeToSessionAsync(code))
+            .ReturnsAsync(new WeChatSessionResult
             {
-                errcode = (Senparc.Weixin.ReturnCode)40029,
-                errmsg = "Invalid code"
+                IsSuccess = false,
+                ErrorCode = 40029,
+                ErrorMessage = "Invalid code"
             });
 
         var model = new Code2SessionDto { Code = code };
@@ -132,12 +135,14 @@ public class WeChatAuthTests
         var sessionKey = "mock-session-key-api";
 
         _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(It.IsAny<string>(), It.Is<string>(secret => secret == "12345678901234567890123456789012"), code))
-            .ReturnsAsync(new JsCode2JsonResult
+            .Setup(s => s.CodeToSessionAsync(code))
+            .ReturnsAsync(new WeChatSessionResult
             {
-                errcode = Senparc.Weixin.ReturnCode.请求成功,
-                openid = openId,
-                session_key = sessionKey
+                IsSuccess = true,
+                OpenId = openId,
+                SessionKey = sessionKey,
+                ErrorCode = 0,
+                ErrorMessage = null
             });
 
         var model = new Code2SessionDto { Code = code };

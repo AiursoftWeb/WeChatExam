@@ -1,16 +1,42 @@
-using Senparc.Weixin.WxOpen.AdvancedAPIs.Sns;
+using SKIT.FlurlHttpClient.Wechat.Api;
+using SKIT.FlurlHttpClient.Wechat.Api.Models;
 
 namespace Aiursoft.WeChatExam.Services;
 
 public interface IWeChatService
 {
-    Task<JsCode2JsonResult> CodeToSessionAsync(string appId, string appSecret, string code);
+    Task<WeChatSessionResult> CodeToSessionAsync(string code);
 }
 
-public class WeChatService : IWeChatService
+public class WeChatSessionResult
 {
-    public Task<JsCode2JsonResult> CodeToSessionAsync(string appId, string appSecret, string code)
+    public bool IsSuccess { get; set; }
+    public string? OpenId { get; set; }
+    public string? SessionKey { get; set; }
+    public string? UnionId { get; set; }
+    public int ErrorCode { get; set; }
+    public string? ErrorMessage { get; set; }
+}
+
+public class WeChatService(WechatApiClient wechatApiClient) : IWeChatService
+{
+    public async Task<WeChatSessionResult> CodeToSessionAsync(string code)
     {
-        return SnsApi.JsCode2JsonAsync(appId, appSecret, code);
+        var request = new SnsJsCode2SessionRequest
+        {
+            JsCode = code
+        };
+
+        var response = await wechatApiClient.ExecuteSnsJsCode2SessionAsync(request);
+
+        return new WeChatSessionResult
+        {
+            IsSuccess = response.IsSuccessful(),
+            OpenId = response.OpenId,
+            SessionKey = response.SessionKey,
+            UnionId = response.UnionId,
+            ErrorCode = response.ErrorCode,
+            ErrorMessage = response.ErrorMessage
+        };
     }
 }

@@ -9,7 +9,7 @@ using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Senparc.Weixin.RegisterServices;
+using SKIT.FlurlHttpClient.Wechat.Api;
 
 namespace Aiursoft.WeChatExam;
 
@@ -39,8 +39,22 @@ public class Startup : IWebStartup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+
+        // Configure SKIT WeChat API Client
+        var wechatAppId = configuration["AppSettings:WechatAppId"] ?? throw new InvalidOperationException("WechatAppId is not configured");
+        var wechatAppSecret = configuration["AppSettings:WechatAppSecret"] ?? throw new InvalidOperationException("WechatAppSecret is not configured");
+
+        services.AddSingleton(sp =>
+        {
+            var options = new WechatApiClientOptions
+            {
+                AppId = wechatAppId,
+                AppSecret = wechatAppSecret
+            };
+            return new WechatApiClient(options);
+        });
+
         services.AddScoped<Services.IWeChatService, Services.WeChatService>();
-        services.AddSenparcWeixinServices(configuration);
 
         // Controllers
         services.AddControllers()
@@ -79,6 +93,7 @@ public class Startup : IWebStartup
 
     public void Configure(WebApplication app)
     {
+        // SKIT doesn't need middleware registration - it's a pure HTTP client
         app.UseExceptionHandler("/Error/Error");
         app.UseStaticFiles();
         app.UseRouting();
