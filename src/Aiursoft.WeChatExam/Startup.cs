@@ -44,7 +44,7 @@ public class Startup : IWebStartup
         var wechatAppId = configuration["AppSettings:WechatAppId"] ?? throw new InvalidOperationException("WechatAppId is not configured");
         var wechatAppSecret = configuration["AppSettings:WechatAppSecret"] ?? throw new InvalidOperationException("WechatAppSecret is not configured");
 
-        services.AddSingleton(sp =>
+        services.AddSingleton(_ =>
         {
             var options = new WechatApiClientOptions
             {
