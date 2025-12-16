@@ -9,6 +9,7 @@ using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Senparc.Weixin.RegisterServices;
 
 namespace Aiursoft.WeChatExam;
 
@@ -38,7 +39,7 @@ public class Startup : IWebStartup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
-        services.AddScoped<Services.IWeChatService, Services.WeChatService>();
+        services.AddSenparcWeixinServices(configuration);
 
         // Controllers
         services.AddControllers()
