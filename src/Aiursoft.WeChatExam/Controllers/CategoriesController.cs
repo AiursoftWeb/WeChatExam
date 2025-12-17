@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -57,7 +56,7 @@ public class CategoriesController : ControllerBase
         {
             Id = category.Id,
             Title = category.Title,
-            Children = category.Children?.Select(child => new Child
+            Children = category.Children.Select(child => new Child
             {
                 Id = child.Id,
                 Title = child.Title
@@ -136,7 +135,7 @@ public class CategoriesController : ControllerBase
         }
 
         // 检查是否有子分类
-        if (category.Children != null && category.Children.Any())
+        if category.Children.Any()
         {
             return BadRequest(new { Message = "Cannot delete category with children. Please delete children first." });
         }
