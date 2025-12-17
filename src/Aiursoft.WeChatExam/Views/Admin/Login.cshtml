@@ -1,0 +1,214 @@
+@model Aiursoft.WeChatExam.Models.AdminLoginDto
+@{
+    ViewData["Title"] = "管理员登录";
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-icon {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .validation-summary {
+            background: #fed7d7;
+            border-left: 4px solid #f56565;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: #c53030;
+            font-size: 0.9rem;
+        }
+
+        .validation-summary ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .validation-summary li {
+            margin-bottom: 0.25rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #718096;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div class="logo-icon">🔐</div>
+            <h1>管理员登录</h1>
+            <p class="subtitle">WeChat Mini Program Backend</p>
+        </div>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="validation-summary">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <form method="post" asp-action="Login" asp-controller="Admin">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+            <div class="form-group">
+                <label for="Username">用户名</label>
+                <input type="text" id="Username" name="Username" required minlength="3" placeholder="请输入管理员用户名" autocomplete="username" />
+            </div>
+
+            <div class="form-group">
+                <label for="Password">密码</label>
+                <input type="password" id="Password" name="Password" required minlength="6" placeholder="请输入密码" autocomplete="current-password" />
+            </div>
+
+            <button type="submit" class="btn-submit">登录</button>
+        </form>
+
+        <p class="footer-text">
+            仅授权管理员可访问 · 安全登录
+        </p>
+    </div>
+</body>
+</html>

@@ -5,6 +5,7 @@ using Aiursoft.WebTools.Abstractions.Models;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.InMemory;
 using Aiursoft.WeChatExam.MySql;
+using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
 using Newtonsoft.Json;
@@ -56,6 +57,10 @@ public class Startup : IWebStartup
 
         services.AddScoped<Services.IWeChatService, Services.WeChatService>();
 
+        // Add Razor Pages and MVC for admin web interface
+        services.AddControllersWithViews();
+        services.AddRazorPages();
+        services.AddSingleton<DatabaseInitializer>();
         // Controllers
         services.AddControllers()
             .AddNewtonsoftJson(options =>
@@ -101,6 +106,13 @@ public class Startup : IWebStartup
         app.UseAuthorization();
         app.UseSwagger();
         app.UseSwaggerUI();
+
+        // Map default route to admin login page
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Admin}/{action=Login}/{id?}");
+
         app.MapControllers();
+        app.MapRazorPages();
     }
 }

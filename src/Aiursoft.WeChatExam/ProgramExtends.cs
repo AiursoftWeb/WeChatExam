@@ -1,10 +1,15 @@
 
+using Aiursoft.WeChatExam.Services;
+
 namespace Aiursoft.WeChatExam;
 
 public static class ProgramExtends
 {
-    public static Task<IHost> SeedAsync(this IHost host)
+    public static async Task<IHost> SeedAsync(this IHost host)
     {
-        return Task.FromResult(host);
+        using var scope = host.Services.CreateScope();
+        var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+        await initializer.InitializeAsync();
+        return host;
     }
 }

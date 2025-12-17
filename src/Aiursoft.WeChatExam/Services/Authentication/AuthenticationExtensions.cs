@@ -13,7 +13,7 @@ public static class AuthenticationExtensions
         IConfiguration configuration)
     {
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;
-        
+
         services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequireNonAlphanumeric = false;
@@ -30,10 +30,13 @@ public static class AuthenticationExtensions
 
         services.AddAuthentication(options =>
         {
-            options.DefaultAuthenticateScheme = "Bearer";
-            options.DefaultChallengeScheme = "Bearer";
+            // Default scheme for web admin (Cookie)
+            options.DefaultScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultSignInScheme = IdentityConstants.ApplicationScheme;
         })
-        .AddJwtBearer(options =>
+        .AddJwtBearer("Bearer", options =>
         {
             options.TokenValidationParameters = new TokenValidationParameters
             {

@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models;
+using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace Aiursoft.WeChatExam.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+[WeChatUserOnly] // 仅允许微信小程序访客
 public class UserController(UserManager<User> userManager) : ControllerBase
 {
     [HttpGet("info")]
