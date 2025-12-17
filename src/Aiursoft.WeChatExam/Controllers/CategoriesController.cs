@@ -41,7 +41,7 @@ public class CategoriesController : ControllerBase
 
     // GET: api/categories/{id}
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetCategory(string id)
+    public async Task<IActionResult> GetCategory(Guid id)
     {
         var category = await _context.Categories
             .Include(c => c.Children)
@@ -60,7 +60,7 @@ public class CategoriesController : ControllerBase
             {
                 Id = child.Id,
                 Title = child.Title
-            }).ToArray() 
+            }).ToArray()
         };
 
         return Ok(categoryDto);
@@ -76,12 +76,24 @@ public class CategoriesController : ControllerBase
             return BadRequest(ModelState);
         }
 
+        // 如果指定了父分类，验证父分类是否存在
+        if (model.ParentId.HasValue)
+        {
+            var parentExists = await _context.Categories
+                .AnyAsync(c => c.Id == model.ParentId.Value);
+            
+            if (!parentExists)
+            {
+                return BadRequest(new { Message = "Parent category not found" });
+            }
+        }
+
+        // 独裁模式：通过 DbContext.Add() 创建
         var category = new Category
         {
-            Id = Guid.NewGuid().ToString(),
+            Id = Guid.NewGuid(),
             Title = model.Title,
-            ParentId = model.ParentId,
-            CreationTime = DateTime.UtcNow
+            ParentId = model.ParentId  // required 字段，必须显式赋值（即使是 null）
         };
 
         _context.Categories.Add(category);
@@ -98,7 +110,7 @@ public class CategoriesController : ControllerBase
     // PUT: api/categories/{id}
     [Authorize]
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCategory(string id, [FromBody] UpdateCategoryDto model)
+    public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] UpdateCategoryDto model)
     {
         if (!ModelState.IsValid)
         {
@@ -109,6 +121,29 @@ public class CategoriesController : ControllerBase
         if (category == null)
         {
             return NotFound(new { Message = "Category not found" });
+        }
+
+        // 如果指定了父分类，验证父分类是否存在且不是自己
+        if (model.ParentId.HasValue)
+        {
+            if (model.ParentId.Value == id)
+            {
+                return BadRequest(new { Message = "Category cannot be its own parent" });
+            }
+
+            var parentExists = await _context.Categories
+                .AnyAsync(c => c.Id == model.ParentId.Value);
+            
+            if (!parentExists)
+            {
+                return BadRequest(new { Message = "Parent category not found" });
+            }
+
+            // 防止循环引用：检查父分类不是当前分类的子孙分类
+            if (await IsDescendantOf(model.ParentId.Value, id))
+            {
+                return BadRequest(new { Message = "Cannot create circular reference" });
+            }
         }
 
         category.Title = model.Title;
@@ -123,8 +158,9 @@ public class CategoriesController : ControllerBase
     // DELETE: api/categories/{id}
     [Authorize]
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCategory(string id)
+    public async Task<IActionResult> DeleteCategory(Guid id)
     {
+        // 显式加载子分类集合
         var category = await _context.Categories
             .Include(c => c.Children)
             .FirstOrDefaultAsync(c => c.Id == id);
@@ -134,15 +170,34 @@ public class CategoriesController : ControllerBase
             return NotFound(new { Message = "Category not found" });
         }
 
-        // 检查是否有子分类
+        // 独裁模式：检查集合但不能通过集合操作
+        // 由于集合是 IEnumerable，无法 .Add() 或 .Remove()
         if (category.Children.Any())
         {
             return BadRequest(new { Message = "Cannot delete category with children. Please delete children first." });
         }
 
+        // 独裁模式：通过 DbContext.Remove() 删除
         _context.Categories.Remove(category);
         await _context.SaveChangesAsync();
 
         return Ok(new { Message = "Category deleted successfully" });
+    }
+
+    // 辅助方法：检查 possibleAncestorId 是否是 categoryId 的祖先
+    private async Task<bool> IsDescendantOf(Guid possibleAncestorId, Guid categoryId)
+    {
+        var current = await _context.Categories.FindAsync(possibleAncestorId);
+        
+        while (current?.ParentId != null)
+        {
+            if (current.ParentId.Value == categoryId)
+            {
+                return true;
+            }
+            current = await _context.Categories.FindAsync(current.ParentId.Value);
+        }
+        
+        return false;
     }
 }

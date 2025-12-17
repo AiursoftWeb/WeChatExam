@@ -5,7 +5,7 @@ namespace Aiursoft.WeChatExam.Models;
 public class CategoryDto
 {
     [Required]
-    public string Id { get; set; } = string.Empty;
+    public Guid Id { get; set; }
 
     [Required]
     public string Title { get; set; } = string.Empty;
@@ -15,7 +15,7 @@ public class CategoryDto
 
 public class Child
 {
-    public string Id { get; set; } = string.Empty;
+    public Guid Id { get; set; }
     
     public string Title { get; set; } = string.Empty;
 }
@@ -26,8 +26,10 @@ public class CreateCategoryDto
     [MaxLength(200)]
     public string Title { get; set; } = string.Empty;
 
-    [MaxLength(128)]
-    public string? ParentId { get; set; }
+    /// <summary>
+    /// 父分类ID。若为 null，表示创建顶级分类。
+    /// </summary>
+    public Guid? ParentId { get; set; }
 }
 
 public class UpdateCategoryDto
@@ -36,6 +38,8 @@ public class UpdateCategoryDto
     [MaxLength(200)]
     public string Title { get; set; } = string.Empty;
 
-    [MaxLength(128)]
-    public string? ParentId { get; set; }
+    /// <summary>
+    /// 父分类ID。若为 null，表示将分类移动到顶级。
+    /// </summary>
+    public Guid? ParentId { get; set; }
 }

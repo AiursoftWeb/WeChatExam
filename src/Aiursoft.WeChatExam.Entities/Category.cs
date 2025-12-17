@@ -1,26 +1,32 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
 
 namespace Aiursoft.WeChatExam.Entities;
 
 public class Category
 {
     [Key]
-    [MaxLength(128)]
-    public string Id { get; set; } = string.Empty;
+    public Guid Id { get; init; }
 
-    [Required]
     [MaxLength(200)]
-    public string Title { get; set; } = string.Empty;
+    public required string Title { get; set; }
 
-    [MaxLength(128)]
-    public string? ParentId { get; set; }
+    public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 
-    public DateTime CreationTime { get; set; } = DateTime.UtcNow;
+    /// <summary>
+    /// 父分类ID。
+    /// 若为 null，表示这是顶级分类。
+    /// </summary>
+    public required Guid? ParentId { get; set; }
 
-    // 导航属性
+    // 导航引用：Category?, JsonIgnore, ForeignKey, NotNull
+    [JsonIgnore]
     [ForeignKey(nameof(ParentId))]
+    [NotNull]
     public Category? Parent { get; set; }
 
-    public ICollection<Category> Children { get; set; } = new List<Category>();
+    [InverseProperty(nameof(Parent))]
+    public IEnumerable<Category> Children { get; init; } = new List<Category>();
 }
