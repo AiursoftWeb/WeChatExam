@@ -60,7 +60,7 @@ public class CategoriesController : ControllerBase
             {
                 Id = child.Id,
                 Title = child.Title
-            }).ToArray() ?? Array.Empty<Child>()
+            }).ToArray() 
         };
 
         return Ok(categoryDto);
