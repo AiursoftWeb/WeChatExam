@@ -1,0 +1,32 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
+
+namespace Aiursoft.WeChatExam.Entities;
+
+public class Category
+{
+    [Key]
+    public Guid Id { get; init; }
+
+    [MaxLength(200)]
+    public required string Title { get; set; }
+
+    public DateTime CreationTime { get; init; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// 父分类ID。
+    /// 若为 null，表示这是顶级分类。
+    /// </summary>
+    public required Guid? ParentId { get; set; }
+
+    // 导航引用：Category?, JsonIgnore, ForeignKey, NotNull
+    [JsonIgnore]
+    [ForeignKey(nameof(ParentId))]
+    [NotNull]
+    public Category? Parent { get; set; }
+
+    [InverseProperty(nameof(Parent))]
+    public IEnumerable<Category> Children { get; init; } = new List<Category>();
+}
