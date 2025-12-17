@@ -135,7 +135,7 @@ public class CategoriesController : ControllerBase
         }
 
         // 检查是否有子分类
-        if category.Children.Any()
+        if (category.Children.Any())
         {
             return BadRequest(new { Message = "Cannot delete category with children. Please delete children first." });
         }
