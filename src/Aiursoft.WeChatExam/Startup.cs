@@ -55,12 +55,12 @@ public class Startup : IWebStartup
             return new WechatApiClient(options);
         });
 
-        services.AddScoped<Services.IWeChatService, Services.WeChatService>();
+        services.AddScoped<IWeChatService, WeChatService>();
 
         // Add Razor Pages and MVC for admin web interface
         services.AddControllersWithViews();
         services.AddRazorPages();
-        services.AddSingleton<DatabaseInitializer>();
+        services.AddAssemblyDependencies(typeof(Startup).Assembly);
         // Controllers
         services.AddControllers()
             .AddNewtonsoftJson(options =>
