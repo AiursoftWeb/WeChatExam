@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models;
+using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -67,7 +68,7 @@ public class CategoriesController : ControllerBase
     }
 
     // POST: api/categories
-    [Authorize]
+    [AdminOnly]
     [HttpPost]
     public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto model)
     {
@@ -108,7 +109,7 @@ public class CategoriesController : ControllerBase
     }
 
     // PUT: api/categories/{id}
-    [Authorize]
+    [AdminOnly]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] UpdateCategoryDto model)
     {
@@ -156,7 +157,7 @@ public class CategoriesController : ControllerBase
     }
 
     // DELETE: api/categories/{id}
-    [Authorize]
+    [AdminOnly]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCategory(Guid id)
     {
