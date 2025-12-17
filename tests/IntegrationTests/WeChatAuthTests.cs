@@ -4,6 +4,7 @@ using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Moq;
 
+[assembly: DoNotParallelize]
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 

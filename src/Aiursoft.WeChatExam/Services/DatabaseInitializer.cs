@@ -1,4 +1,5 @@
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.Scanner.Abstractions;
 using Microsoft.AspNetCore.Identity;
 
 namespace Aiursoft.WeChatExam.Services;
@@ -9,7 +10,7 @@ namespace Aiursoft.WeChatExam.Services;
 public class DatabaseInitializer(
     UserManager<User> userManager,
     RoleManager<IdentityRole> roleManager,
-    ILogger<DatabaseInitializer> logger)
+    ILogger<DatabaseInitializer> logger) : IScopedDependency
 {
     public async Task InitializeAsync()
     {
