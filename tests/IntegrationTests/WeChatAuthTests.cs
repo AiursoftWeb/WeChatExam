@@ -28,7 +28,8 @@ public class WeChatAuthTests
                     config.Sources.Clear();
                     config.AddInMemoryCollection(new Dictionary<string, string?>
                     {
-                        { "AppSettings:AuthProvider", "Local" },
+                        { "AppSettings:LocalEnabled", "false" },
+                        { "AppSettings:OIDCEnabled", "false" },
                         { "AppSettings:WeChatEnabled", "true" },
                         { "AppSettings:WeChat:AppId", "mock-app-id" },
                         { "AppSettings:WeChat:AppSecret", "12345678901234567890123456789012" },
