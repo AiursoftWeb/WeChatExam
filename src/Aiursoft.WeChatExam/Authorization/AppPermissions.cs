@@ -57,7 +57,15 @@ public class AppPermissions
                 localizer["Allows viewing system-level information and settings."]),
             new(AppPermissionNames.CanRebootThisApp,
                 localizer["Reboot This App"],
-                localizer["Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded."])
+                localizer["Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded."]),
+                
+                            new(AppPermissionNames.CanDeleteAnyCategory,
+                localizer["Delete Any Category"],
+                localizer["Allows deletion of any category, regardless of ownership."]),
+            new(AppPermissionNames.CanEditAnyCategory,
+                localizer["Edit Any Category"],
+                localizer["Allows editing of any category, regardless of ownership."])
+
         ];
         return allPermission;
     }

@@ -1,0 +1,26 @@
+@model Aiursoft.WeChatExam.Models.CategoriesViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Create Category"]</h1>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">@Localizer["Title"]</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ParentId" class="form-label">@Localizer["Parent Category"]</label>
+        <select asp-for="ParentId" class="form-select">
+            <option value="">@Localizer["Top Level"]</option>
+            @foreach (var parent in Model.AvailableParents)
+            {
+                <option value="@parent.Id">@parent.Title</option>
+            }
+        </select>
+        <span asp-validation-for="ParentId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create"]
+    </button>
+    <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+</form>
