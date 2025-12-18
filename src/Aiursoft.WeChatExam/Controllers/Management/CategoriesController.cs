@@ -218,8 +218,6 @@ public class CategoriesController(TemplateDbContext context) : Controller
 
     // POST: categories/{id}/delete
     [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
-    // POST: categories/{id}/delete
-    [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("Delete")]
