@@ -80,7 +80,7 @@ public static class AuthenticationExtensions
         // Add OIDC authentication if enabled (uses Cookie authentication)
         if (appSettings.OIDCEnabled)
         {
-            authBuilder.AddOpenIdConnect("OIDC", options =>
+            authBuilder.AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
             {
                 options.Authority = appSettings.OIDC.Authority;
                 options.ClientId = appSettings.OIDC.ClientId;
