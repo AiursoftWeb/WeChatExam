@@ -21,4 +21,9 @@ public static class AppPermissionNames
     // System Management
     public const string CanViewSystemContext = nameof(CanViewSystemContext);
     public const string CanRebootThisApp = nameof(CanRebootThisApp);
+    
+    // Category Management
+    public const string CanDeleteAnyCategory = nameof(CanDeleteAnyCategory);
+    public const string CanEditAnyCategory = nameof(CanEditAnyCategory);
+
 }
