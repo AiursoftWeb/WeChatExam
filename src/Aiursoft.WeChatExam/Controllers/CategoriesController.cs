@@ -1,7 +1,6 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models;
 using Aiursoft.WeChatExam.Services.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
