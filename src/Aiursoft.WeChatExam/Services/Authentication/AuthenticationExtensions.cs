@@ -1,12 +1,9 @@
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace Aiursoft.WeChatExam.Services.Authentication;
 
@@ -106,7 +103,7 @@ public static class AuthenticationExtensions
                     RoleClaimType = appSettings.OIDC.RolePropertyName
                 };
 
-                options.Events = new Microsoft.AspNetCore.Authentication.OpenIdConnect.OpenIdConnectEvents
+                options.Events = new OpenIdConnectEvents
                 {
                     OnTokenValidated = context => SyncOidcUser(context, appSettings)
                 };
@@ -126,7 +123,7 @@ public static class AuthenticationExtensions
     }
 
     private static async Task SyncOidcUser(
-        Microsoft.AspNetCore.Authentication.OpenIdConnect.TokenValidatedContext context,
+        TokenValidatedContext context,
         AppSettings appSettings)
     {
         var userManager = context.HttpContext.RequestServices.GetRequiredService<UserManager<User>>();

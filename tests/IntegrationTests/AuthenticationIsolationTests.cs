@@ -107,7 +107,7 @@ public class AuthenticationIsolationTests
         // 将 Admin 角色赋予微信用户
         await userManager.AddToRoleAsync(debugUser, "Admin");
         var roles = await userManager.GetRolesAsync(debugUser);
-        Assert.IsTrue(roles.Contains("Admin"), "Debug user should have Admin role");
+        Assert.Contains("Admin", roles, "Debug user should have Admin role");
 
         // Act: 尝试使用 JWT Bearer token 访问管理后台
         _client.DefaultRequestHeaders.Clear();
@@ -325,6 +325,6 @@ public class AuthenticationIsolationTests
         using var scope = _factory.Services.CreateScope();
         var userManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<Entities.User>>();
         var debugUsers = userManager.Users.Where(u => u.UserName == "debugger").ToList();
-        Assert.AreEqual(1, debugUsers.Count, "Should have exactly one debugger user");
+        Assert.HasCount(1, debugUsers, "Should have exactly one debugger user");
     }
 }
