@@ -97,16 +97,16 @@ public class AuthenticationIsolationTests
         var debugUser = userManager.Users.FirstOrDefault(u => u.UserName == "debugger");
         Assert.IsNotNull(debugUser, "Debug user should exist");
 
-        // 创建 Admin 角色（如果不存在）
-        if (!await roleManager.RoleExistsAsync("Admin"))
+        // 创建 Administrators 角色（如果不存在）
+        if (!await roleManager.RoleExistsAsync("Administrators"))
         {
-            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));
+            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Administrators"));
         }
 
-        // 将 Admin 角色赋予微信用户
-        await userManager.AddToRoleAsync(debugUser, "Admin");
+        // 将 Administrators 角色赋予微信用户
+        await userManager.AddToRoleAsync(debugUser, "Administrators");
         var roles = await userManager.GetRolesAsync(debugUser);
-        Assert.IsTrue(roles.Contains("Admin"), "Debug user should have Admin role");
+        Assert.IsTrue(roles.Contains("Administrators"), "Debug user should have Administrators role");
 
         // Act: 尝试使用 JWT Bearer token 访问管理后台
         _client.DefaultRequestHeaders.Clear();
@@ -117,7 +117,7 @@ public class AuthenticationIsolationTests
         // Assert: 应该被重定向到登录页（因为 AdminOnly 要求 Cookie 认证）
         Assert.AreEqual(HttpStatusCode.Redirect, adminDashboardResponse.StatusCode);
         Assert.IsTrue(adminDashboardResponse.Headers.Location?.ToString().Contains("/Admin/Login") ?? false,
-            "WeChat user with JWT token should be redirected to login page even with Admin role");
+            "WeChat user with JWT token should be redirected to login page even with Administrators role");
     }
 
     /// <summary>
@@ -141,12 +141,12 @@ public class AuthenticationIsolationTests
 
         await userManager.CreateAsync(adminUser, "Admin@123");
 
-        // 创建 Admin 角色并赋予用户
-        if (!await roleManager.RoleExistsAsync("Admin"))
+        // 创建 Administrators 角色并赋予用户
+        if (!await roleManager.RoleExistsAsync("Administrators"))
         {
-            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));
+            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Administrators"));
         }
-        await userManager.AddToRoleAsync(adminUser, "Admin");
+        await userManager.AddToRoleAsync(adminUser, "Administrators");
 
         // 通过 Web 登录获取 Cookie
         var loginModel = new AdminLoginDto
@@ -220,11 +220,11 @@ public class AuthenticationIsolationTests
 
         await userManager.CreateAsync(adminUser, "Admin@123");
 
-        if (!await roleManager.RoleExistsAsync("Admin"))
+        if (!await roleManager.RoleExistsAsync("Administrators"))
         {
-            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));
+            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Administrators"));
         }
-        await userManager.AddToRoleAsync(adminUser, "Admin");
+        await userManager.AddToRoleAsync(adminUser, "Administrators");
 
         // 登录获取 Cookie
         var loginModel = new AdminLoginDto
@@ -249,7 +249,7 @@ public class AuthenticationIsolationTests
 
         // Assert: 应该成功访问
         Assert.AreEqual(HttpStatusCode.OK, dashboardResponse.StatusCode,
-            "Admin with Cookie and Admin role should be able to access admin panel");
+            "Admin with Cookie and Administrators role should be able to access admin panel");
     }
 
     /// <summary>
