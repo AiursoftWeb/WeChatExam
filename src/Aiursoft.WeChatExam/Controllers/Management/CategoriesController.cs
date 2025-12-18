@@ -220,7 +220,7 @@ public class CategoriesController(TemplateDbContext context) : Controller
     [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
     // POST: categories/{id}/delete
     [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
-    [HttpPost("{id}")]
+    [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("Delete")]
     public async Task<IActionResult> DeleteConfirmed(Guid? id)
