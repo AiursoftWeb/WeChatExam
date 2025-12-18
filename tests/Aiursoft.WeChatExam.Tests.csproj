@@ -20,6 +20,11 @@
     <PackageReference Include="MSTest.TestAdapter" Version="4.0.2" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\src\Aiursoft.WeChatExam\Aiursoft.WeChatExam.csproj" />
   </ItemGroup>
 </Project>
