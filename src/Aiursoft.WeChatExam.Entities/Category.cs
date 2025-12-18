@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace Aiursoft.WeChatExam.Entities;
@@ -21,10 +20,9 @@ public class Category
     /// </summary>
     public required Guid? ParentId { get; set; }
 
-    // 导航引用：Category?, JsonIgnore, ForeignKey, NotNull
+    // 导航引用：Category?, JsonIgnore, ForeignKey
     [JsonIgnore]
     [ForeignKey(nameof(ParentId))]
-    [NotNull]
     public Category? Parent { get; set; }
 
     [InverseProperty(nameof(Parent))]
