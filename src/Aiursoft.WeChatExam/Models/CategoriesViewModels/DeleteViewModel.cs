@@ -1,4 +1,5 @@
 using Aiursoft.UiStack.Layout;
+using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.CategoriesViewModels;
 
