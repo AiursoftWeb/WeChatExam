@@ -1,8 +1,13 @@
 using System.Net;
+using System.Text.RegularExpressions;
+using Aiursoft.CSTools.Tools;
+using Aiursoft.DbTools;
+using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.Identity;
 using Moq;
+using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
@@ -12,70 +17,64 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class AuthenticationIsolationTests
 {
-    private WebApplicationFactory<Startup> _factory = null!;
-    private HttpClient _client = null!;
-    private Mock<IWeChatService> _mockWeChatService = null!;
+    private readonly int _port;
+    private readonly HttpClient _http;
+    private IHost? _server;
+    private readonly Mock<IWeChatService> _mockWeChatService = new();
+
+    public AuthenticationIsolationTests()
+    {
+        var cookieContainer = new CookieContainer();
+        var handler = new HttpClientHandler
+        {
+            CookieContainer = cookieContainer,
+            AllowAutoRedirect = false
+        };
+        _port = Network.GetAvailablePort();
+        _http = new HttpClient(handler)
+        {
+            BaseAddress = new Uri($"http://localhost:{_port}")
+        };
+    }
 
     [TestInitialize]
-    public void Initialize()
+    public async Task CreateServer()
     {
-        _mockWeChatService = new Mock<IWeChatService>();
+        TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
 
-        _factory = new WebApplicationFactory<Startup>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureAppConfiguration((_, config) =>
-                {
-                    config.Sources.Clear();
-                    config.AddInMemoryCollection(new Dictionary<string, string?>
-                    {
-                        { "AppSettings:LocalEnabled", "true" },
-                        { "AppSettings:OIDCEnabled", "false" },
-                        { "AppSettings:WeChatEnabled", "true" },
-                        { "AppSettings:DebugMagicKey", "test-magic-key-12345" },
-                        { "AppSettings:Local:AllowWeakPassword", "true" },
-                        { "AppSettings:WeChat:AppId", "mock-app-id" },
-                        { "AppSettings:WeChat:AppSecret", "12345678901234567890123456789012" },
-                        { "ConnectionStrings:DbType", "InMemory" },
-                        { "ConnectionStrings:AllowCache", "True" },
-                        { "ConnectionStrings:DefaultConnection", "DataSource=:memory:" },
-                        { "Logging:LogLevel:Default", "Information" },
-                        { "AllowedHosts", "*" }
-                    });
-                });
-
-                builder.ConfigureServices(services =>
-                {
-                    // Remove existing registration
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(IWeChatService));
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-
-                    // Add mock
-                    services.AddScoped(_ => _mockWeChatService.Object);
-                });
-            });
-
-        _client = _factory.CreateClient(new WebApplicationFactoryClientOptions
-        {
-            AllowAutoRedirect = false // 禁用自动重定向，这样我们可以检查重定向响应
-        });
+        _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
+        await _server.UpdateDbAsync<TemplateDbContext>();
+        await _server.SeedAsync();
+        await _server.StartAsync();
     }
 
     [TestCleanup]
-    public void Cleanup()
+    public async Task CleanServer()
     {
-        _client.Dispose();
-        _factory.Dispose();
+        if (_server == null) return;
+        await _server.StopAsync();
+        _server.Dispose();
+    }
+
+    private async Task<string> GetAntiCsrfToken(string url)
+    {
+        var response = await _http.GetAsync(url);
+        response.EnsureSuccessStatusCode();
+        var html = await response.Content.ReadAsStringAsync();
+        var match = Regex.Match(html,
+            @"<input name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)"" />");
+        if (!match.Success)
+        {
+            throw new InvalidOperationException($"Could not find anti-CSRF token on page: {url}");
+        }
+        return match.Groups[1].Value;
     }
 
     /// <summary>
     /// 测试1：微信用户无法访问管理后台（即使有 Admin 角色）
     /// </summary>
     [TestMethod]
-    public async Task WeChatUser_CannotAccess_AdminPanel_EvenWithAdminRole()
+    public async Task WeChatUser_CannotAccess_WebPanel_EvenWithAdminRole()
     {
         // Arrange: 获取微信用户的 debug token
         var debugTokenRequest = new DebugTokenRequestDto
@@ -83,7 +82,7 @@ public class AuthenticationIsolationTests
             MagicKey = "test-magic-key-12345"
         };
 
-        var debugTokenResponse = await _client.PostAsJsonAsync("/api/Auth/exchange_debug_token", debugTokenRequest);
+        var debugTokenResponse = await _http.PostAsJsonAsync("/api/Auth/exchange_debug_token", debugTokenRequest);
         Assert.AreEqual(HttpStatusCode.OK, debugTokenResponse.StatusCode);
 
         var tokenDto = await debugTokenResponse.Content.ReadFromJsonAsync<TokenDto>();
@@ -91,9 +90,9 @@ public class AuthenticationIsolationTests
         Assert.IsFalse(string.IsNullOrEmpty(tokenDto.Token));
 
         // 为这个用户添加 Admin 角色（模拟某种配置错误）
-        using var scope = _factory.Services.CreateScope();
-        var userManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<Entities.User>>();
-        var roleManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.RoleManager<Microsoft.AspNetCore.Identity.IdentityRole>>();
+        using var scope = _server!.Services.CreateScope();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
         var debugUser = userManager.Users.FirstOrDefault(u => u.UserName == "debugger");
         Assert.IsNotNull(debugUser, "Debug user should exist");
@@ -101,7 +100,7 @@ public class AuthenticationIsolationTests
         // 创建 Admin 角色（如果不存在）
         if (!await roleManager.RoleExistsAsync("Admin"))
         {
-            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
         }
 
         // 将 Admin 角色赋予微信用户
@@ -110,14 +109,14 @@ public class AuthenticationIsolationTests
         Assert.Contains("Admin", roles, "Debug user should have Admin role");
 
         // Act: 尝试使用 JWT Bearer token 访问管理后台
-        _client.DefaultRequestHeaders.Clear();
-        _client.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenDto.Token}");
+        _http.DefaultRequestHeaders.Clear();
+        _http.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenDto.Token}");
 
-        var adminDashboardResponse = await _client.GetAsync("/Admin/Dashboard");
+        var adminDashboardResponse = await _http.GetAsync("/Manage/Index");
 
-        // Assert: 应该被重定向到登录页（因为 AdminOnly 要求 Cookie 认证）
+        // Assert: 应该被重定向到登录页（因为 ManageController 要求 Cookie 认证）
         Assert.AreEqual(HttpStatusCode.Redirect, adminDashboardResponse.StatusCode);
-        Assert.IsTrue(adminDashboardResponse.Headers.Location?.ToString().Contains("/Admin/Login") ?? false,
+        Assert.IsTrue(adminDashboardResponse.Headers.Location?.ToString().Contains("/Account/Login") ?? false,
             "WeChat user with JWT token should be redirected to login page even with Admin role");
     }
 
@@ -128,47 +127,43 @@ public class AuthenticationIsolationTests
     public async Task Admin_CannotAccess_WeChatAPI_WithCookieOnly()
     {
         // Arrange: 创建一个管理员用户并登录
-        using var scope = _factory.Services.CreateScope();
-        var userManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<Entities.User>>();
-        var roleManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.RoleManager<Microsoft.AspNetCore.Identity.IdentityRole>>();
+        using var scope = _server!.Services.CreateScope();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
         // 创建管理员用户
-        var adminUser = new Entities.User
+        var adminUser = new User
         {
             UserName = "admin_test",
             DisplayName = "Admin Test User",
             Email = "admin@test.com"
         };
 
-        await userManager.CreateAsync(adminUser, "Admin@123");
+        var result = await userManager.CreateAsync(adminUser, "Admin@123");
+        Assert.IsTrue(result.Succeeded);
 
         // 创建 Admin 角色并赋予用户
         if (!await roleManager.RoleExistsAsync("Admin"))
         {
-            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
         }
         await userManager.AddToRoleAsync(adminUser, "Admin");
 
         // 通过 Web 登录获取 Cookie
-        var loginModel = new AdminLoginDto
+        var loginToken = await GetAntiCsrfToken("/Account/Login");
+        var loginContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            Username = "admin_test",
-            Password = "Admin@123"
-        };
+            { "EmailOrUserName", "admin_test" },
+            { "Password", "Admin@123" },
+            { "__RequestVerificationToken", loginToken }
+        });
 
-        var loginResponse = await _client.PostAsJsonAsync("/Admin/Login", loginModel);
-
-        // 提取 Cookie
-        if (loginResponse.Headers.TryGetValues("Set-Cookie", out var cookies))
-        {
-            foreach (var cookie in cookies)
-            {
-                _client.DefaultRequestHeaders.Add("Cookie", cookie.Split(';')[0]);
-            }
-        }
+        var loginResponse = await _http.PostAsync("/Account/Login", loginContent);
+        Assert.AreEqual(HttpStatusCode.Redirect, loginResponse.StatusCode, "Admin login failed");
+        // HttpClient会自动处理CookieContainer
 
         // Act: 尝试使用 Cookie 访问微信 API
-        var wechatApiResponse = await _client.GetAsync("/api/User/info");
+        var wechatApiResponse = await _http.GetAsync("/api/User/info");
 
         // Assert: 应该返回 401 Unauthorized（因为 WeChatUserOnly 要求 JWT Bearer）
         Assert.AreEqual(HttpStatusCode.Unauthorized, wechatApiResponse.StatusCode,
@@ -187,14 +182,14 @@ public class AuthenticationIsolationTests
             MagicKey = "test-magic-key-12345"
         };
 
-        var debugTokenResponse = await _client.PostAsJsonAsync("/api/Auth/exchange_debug_token", debugTokenRequest);
+        var debugTokenResponse = await _http.PostAsJsonAsync("/api/Auth/exchange_debug_token", debugTokenRequest);
         var tokenDto = await debugTokenResponse.Content.ReadFromJsonAsync<TokenDto>();
         Assert.IsNotNull(tokenDto);
 
         // Act: 使用 JWT token 访问微信 API
-        _client.DefaultRequestHeaders.Clear();
-        _client.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenDto.Token}");
-        var userInfoResponse = await _client.GetAsync("/api/User/info");
+        _http.DefaultRequestHeaders.Clear();
+        _http.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenDto.Token}");
+        var userInfoResponse = await _http.GetAsync("/api/User/info");
 
         // Assert: 应该成功访问
         Assert.AreEqual(HttpStatusCode.OK, userInfoResponse.StatusCode,
@@ -205,48 +200,43 @@ public class AuthenticationIsolationTests
     /// 测试4：两个认证体系完全独立 - 管理员可以访问管理后台
     /// </summary>
     [TestMethod]
-    public async Task Admin_CanAccess_AdminPanel_WithCookie()
+    public async Task Admin_CanAccess_WebPanel_WithCookie()
     {
         // Arrange: 创建管理员用户
-        using var scope = _factory.Services.CreateScope();
-        var userManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<Entities.User>>();
-        var roleManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.RoleManager<Microsoft.AspNetCore.Identity.IdentityRole>>();
+        using var scope = _server!.Services.CreateScope();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        var adminUser = new Entities.User
+        var adminUser = new User
         {
             UserName = "admin_dashboard_test",
             DisplayName = "Admin Dashboard Test",
             Email = "admin_dashboard@test.com"
         };
 
-        await userManager.CreateAsync(adminUser, "Admin@123");
+        var result = await userManager.CreateAsync(adminUser, "Admin@123");
+        Assert.IsTrue(result.Succeeded);
 
         if (!await roleManager.RoleExistsAsync("Admin"))
         {
-            await roleManager.CreateAsync(new Microsoft.AspNetCore.Identity.IdentityRole("Admin"));
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
         }
         await userManager.AddToRoleAsync(adminUser, "Admin");
 
         // 登录获取 Cookie
-        var loginModel = new AdminLoginDto
+        var loginToken = await GetAntiCsrfToken("/Account/Login");
+        var loginContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            Username = "admin_dashboard_test",
-            Password = "Admin@123"
-        };
+            { "EmailOrUserName", "admin_dashboard_test" },
+            { "Password", "Admin@123" },
+            { "__RequestVerificationToken", loginToken }
+        });
 
-        var loginResponse = await _client.PostAsJsonAsync("/Admin/Login", loginModel);
-
-        // 提取 Cookie
-        if (loginResponse.Headers.TryGetValues("Set-Cookie", out var cookies))
-        {
-            foreach (var cookie in cookies)
-            {
-                _client.DefaultRequestHeaders.Add("Cookie", cookie.Split(';')[0]);
-            }
-        }
+        var loginResponse = await _http.PostAsync("/Account/Login", loginContent);
+        Assert.AreEqual(HttpStatusCode.Redirect, loginResponse.StatusCode, "Admin login failed");
 
         // Act: 访问管理后台
-        var dashboardResponse = await _client.GetAsync("/Admin/Dashboard");
+        var dashboardResponse = await _http.GetAsync("/Manage/Index");
 
         // Assert: 应该成功访问
         Assert.AreEqual(HttpStatusCode.OK, dashboardResponse.StatusCode,
@@ -266,7 +256,7 @@ public class AuthenticationIsolationTests
         };
 
         // Act
-        var response = await _client.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
+        var response = await _http.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
 
         // Assert
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -290,7 +280,7 @@ public class AuthenticationIsolationTests
         };
 
         // Act
-        var response = await _client.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
+        var response = await _http.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
 
         // Assert
         Assert.AreEqual(HttpStatusCode.Unauthorized, response.StatusCode);
@@ -309,12 +299,12 @@ public class AuthenticationIsolationTests
         };
 
         // Act: 第一次调用，应该创建用户
-        var response1 = await _client.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
+        var response1 = await _http.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
         Assert.AreEqual(HttpStatusCode.OK, response1.StatusCode);
         var token1 = await response1.Content.ReadFromJsonAsync<TokenDto>();
 
         // Act: 第二次调用，应该复用已有用户
-        var response2 = await _client.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
+        var response2 = await _http.PostAsJsonAsync("/api/Auth/exchange_debug_token", request);
         Assert.AreEqual(HttpStatusCode.OK, response2.StatusCode);
         var token2 = await response2.Content.ReadFromJsonAsync<TokenDto>();
 
@@ -322,8 +312,8 @@ public class AuthenticationIsolationTests
         Assert.AreEqual(token1!.OpenId, token2!.OpenId);
 
         // 验证数据库中只有一个 debugger 用户
-        using var scope = _factory.Services.CreateScope();
-        var userManager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<Entities.User>>();
+        using var scope = _server!.Services.CreateScope();
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
         var debugUsers = userManager.Users.Where(u => u.UserName == "debugger").ToList();
         Assert.HasCount(1, debugUsers, "Should have exactly one debugger user");
     }

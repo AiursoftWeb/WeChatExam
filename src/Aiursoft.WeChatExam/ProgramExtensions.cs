@@ -22,8 +22,15 @@ public static class ProgramExtends
         var services = scope.ServiceProvider;
         var storageService = services.GetRequiredService<StorageService>();
         var logger = services.GetRequiredService<ILogger<Program>>();
-        var avatarFilePath = Path.Combine(host.Services.GetRequiredService<IHostEnvironment>().ContentRootPath,
-            "wwwroot", "images", "default-avatar.jpg");
+
+        var contentRootPath = host.Services.GetRequiredService<IHostEnvironment>().ContentRootPath;
+        if (string.IsNullOrEmpty(contentRootPath))
+        {
+            logger.LogWarning("ContentRootPath is null or empty. Skip copying avatar file.");
+            return Task.FromResult(host);
+        }
+
+        var avatarFilePath = Path.Combine(contentRootPath, "wwwroot", "images", "default-avatar.jpg");
         var physicalPath = storageService.GetFilePhysicalPath(User.DefaultAvatarPath);
         if (!File.Exists(avatarFilePath))
         {
