@@ -1,0 +1,20 @@
+@model Aiursoft.WeChatExam.Entities.Category
+@{
+    var children = Model.Children?.ToList() ?? new List<Aiursoft.WeChatExam.Entities.Category>();
+}
+<tr>
+    <td>@Model.Title</td>
+    <td>@(Model.Parent != null ? Model.Parent.Title : Localizer["Top Level"].Value)</td>
+    <td>
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-warning">@Localizer["Edit"]</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">@Localizer["Delete"]</a>
+    </td>
+</tr>
+@if (children.Any())
+{
+    foreach (var child in children)
+    {
+        @await Html.PartialAsync("_CategoryRow", child)
+    }
+}
