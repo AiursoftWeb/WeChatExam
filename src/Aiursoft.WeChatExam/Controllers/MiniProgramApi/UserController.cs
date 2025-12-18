@@ -8,9 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 
+/// <summary>
+/// 用户信息管理 API
+/// 仅允许微信小程序用户（Bearer token）访问
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
-[WeChatUserOnly] // 仅允许微信小程序访客
+[WeChatUserOnly]  // 明确要求 Bearer JWT 认证
 public class UserController(UserManager<User> userManager) : ControllerBase
 {
     [HttpGet("info")]

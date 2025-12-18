@@ -81,6 +81,14 @@ public class Startup : IWebStartup
 
         services.AddSwaggerGen(c =>
         {
+            // Only include API controllers (exclude Management controllers which return views)
+            c.DocInclusionPredicate((docName, apiDesc) =>
+            {
+                var controllerName = apiDesc.ActionDescriptor.RouteValues["controller"];
+                // Only include controllers from MiniProgramApi namespace
+                return apiDesc.RelativePath?.StartsWith("api/") == true;
+            });
+
             // Add JWT Bearer support in Swagger
             var securityScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
             {
@@ -99,10 +107,8 @@ public class Startup : IWebStartup
 
             c.AddSecurityDefinition("Bearer", securityScheme);
 
-            c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-            {
-                { securityScheme, new[] { "Bearer" } }
-            });
+            // Only add security requirement to endpoints that are NOT decorated with [AllowAnonymous]
+            c.OperationFilter<SecurityRequirementsOperationFilter>();
         });
     }
 

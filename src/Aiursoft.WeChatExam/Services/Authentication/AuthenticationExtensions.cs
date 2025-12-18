@@ -1,8 +1,12 @@
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace Aiursoft.WeChatExam.Services.Authentication;
 
@@ -42,7 +46,9 @@ public static class AuthenticationExtensions
 
         services.AddScoped<IUserClaimsPrincipalFactory<User>, UserClaimsPrincipalFactory>();
 
-        // Configure Authentication
+        // Simple dual authentication:
+        // - Cookie (IdentityConstants.ApplicationScheme) for web admin
+        // - Bearer (JwtBearerDefaults.AuthenticationScheme) for WeChat mini-program
         var authBuilder = services.AddAuthentication(options =>
         {
             options.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -56,6 +62,23 @@ public static class AuthenticationExtensions
             options.LogoutPath = "/Account/Logoff";
             options.AccessDeniedPath = "/Error/Unauthorized";
         });
+
+        // Add JWT Bearer for WeChat mini-program API access
+        if (appSettings.WeChatEnabled)
+        {
+            authBuilder.AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        System.Text.Encoding.UTF8.GetBytes(appSettings.WeChat.AppSecret))
+                };
+            });
+        }
 
         // Add OIDC authentication if enabled (uses Cookie authentication)
         if (appSettings.OIDCEnabled)
@@ -86,24 +109,6 @@ public static class AuthenticationExtensions
                 options.Events = new Microsoft.AspNetCore.Authentication.OpenIdConnect.OpenIdConnectEvents
                 {
                     OnTokenValidated = context => SyncOidcUser(context, appSettings)
-                };
-            });
-        }
-
-        // Add JWT Bearer for WeChat mini-program API access
-        // WeChat users authenticate via JWT tokens, while OIDC users use cookies
-        if (appSettings.WeChatEnabled)
-        {
-            authBuilder.AddJwtBearer("Bearer", options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                        System.Text.Encoding.UTF8.GetBytes(appSettings.WeChat.AppSecret))
                 };
             });
         }
