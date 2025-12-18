@@ -4,7 +4,7 @@
 }
 <tr>
     <td>@Model.Title</td>
-    <td>@(Model.ParentId == null ? Localizer["Top Level"].Value : Model.Parent.Title)</td>
+    <td>@(Model.Parent == null ? Localizer["Top Level"].Value : Model.Parent.Title)</td>
     <td>
         <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
         <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-warning">@Localizer["Edit"]</a>

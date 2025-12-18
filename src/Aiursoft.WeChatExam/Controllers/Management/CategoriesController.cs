@@ -96,7 +96,7 @@ public class CategoriesController(TemplateDbContext context) : Controller
         if (id == null) return NotFound();
         
         var category = await context.Categories
-            .Include(c => c.Children)
+            .Include(c => c.Parent)
             .FirstOrDefaultAsync(c => c.Id == id);
         
         if (category == null) return NotFound();
