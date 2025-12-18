@@ -25,7 +25,7 @@
                     <tbody>
                         @foreach (var category in Model.RootCategories)
                         {
-                            @await Html.PartialAsync("CategoryRow", category)
+                            @await Html.PartialAsync("_CategoryRow", category)
                         }
                         @if (!Model.RootCategories.Any())
                         {
