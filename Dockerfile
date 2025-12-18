@@ -2,15 +2,26 @@ ARG CSPROJ_PATH="./src/Aiursoft.WeChatExam/"
 ARG PROJ_NAME="Aiursoft.WeChatExam"
 
 # ============================
+# Prepare NPM Environment
+FROM hub.aiursoft.com/node:21-alpine AS npm-env
+ARG CSPROJ_PATH
+WORKDIR /src
+COPY . .
+
+# NPM Build at PGK_JSON_PATH
+RUN npm install --prefix "${CSPROJ_PATH}wwwroot" --loglevel verbose
+
+# ============================
 # Prepare Building Environment
 FROM hub.aiursoft.com/aiursoft/internalimages/dotnet AS build-env
 ARG CSPROJ_PATH
 ARG PROJ_NAME
 WORKDIR /src
-COPY  . .
+COPY --from=npm-env /src .
 
 # Build
 RUN dotnet publish ${CSPROJ_PATH}${PROJ_NAME}.csproj  --configuration Release --no-self-contained --runtime linux-x64 --output /app
+RUN cp -r ${CSPROJ_PATH}/wwwroot/* /app/wwwroot
 
 # ============================
 # Prepare Runtime Environment
