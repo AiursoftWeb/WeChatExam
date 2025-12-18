@@ -55,8 +55,6 @@ public class CategoriesController(TemplateDbContext context) : Controller
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    // POST: categories
-    [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
         if (!ModelState.IsValid)
