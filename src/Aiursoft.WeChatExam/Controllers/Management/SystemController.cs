@@ -1,0 +1,41 @@
+using Aiursoft.UiStack.Navigation;
+using Aiursoft.WebTools.Attributes;
+using Aiursoft.WeChatExam.Authorization;
+using Aiursoft.WeChatExam.Models.SystemViewModels;
+using Aiursoft.WeChatExam.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Aiursoft.WeChatExam.Controllers.Management;
+
+/// <summary>
+/// This controller is used to handle system related actions like shutdown.
+/// </summary>
+[Authorize]
+[LimitPerMin]
+public class SystemController(ILogger<SystemController> logger) : Controller
+{
+    [Authorize(Policy = AppPermissionNames.CanViewSystemContext)]
+    [RenderInNavBar(
+        NavGroupName = "Administration",
+        NavGroupOrder = 9999,
+        CascadedLinksGroupName = "System",
+        CascadedLinksIcon = "cog",
+        CascadedLinksOrder = 9999,
+        LinkText = "Info",
+        LinkOrder = 1)]
+    public IActionResult Index()
+    {
+        return this.StackView(new IndexViewModel());
+    }
+
+    [HttpPost]
+    [Authorize(Policy = AppPermissionNames.CanRebootThisApp)] // Use the specific permission
+    [ProducesResponseType(StatusCodes.Status202Accepted)]
+    public IActionResult Shutdown([FromServices] IHostApplicationLifetime appLifetime)
+    {
+        logger.LogWarning("Application shutdown was requested by user: '{UserName}'", User.Identity?.Name);
+        appLifetime.StopApplication();
+        return Accepted();
+    }
+}
