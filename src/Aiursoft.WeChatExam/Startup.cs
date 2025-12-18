@@ -8,6 +8,9 @@ using Aiursoft.WeChatExam.MySql;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
+using Aiursoft.UiStack.Layout;
+using Aiursoft.UiStack.Navigation;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SKIT.FlurlHttpClient.Wechat.Api;
@@ -42,32 +45,39 @@ public class Startup : IWebStartup
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
 
         // Configure SKIT WeChat API Client
-        var wechatAppId = configuration["AppSettings:WechatAppId"] ?? throw new InvalidOperationException("WechatAppId is not configured");
-        var wechatAppSecret = configuration["AppSettings:WechatAppSecret"] ?? throw new InvalidOperationException("WechatAppSecret is not configured");
-
-        services.AddSingleton(_ =>
+        var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;
+        if (appSettings.WeChatEnabled)
         {
-            var options = new WechatApiClientOptions
+            services.AddSingleton(_ =>
             {
-                AppId = wechatAppId,
-                AppSecret = wechatAppSecret
-            };
-            return new WechatApiClient(options);
-        });
+                var options = new WechatApiClientOptions
+                {
+                    AppId = appSettings.WeChat.AppId,
+                    AppSecret = appSettings.WeChat.AppSecret
+                };
+                return new WechatApiClient(options);
+            });
 
-        services.AddScoped<IWeChatService, WeChatService>();
+            services.AddScoped<IWeChatService, WeChatService>();
+        }
 
         // Add Razor Pages and MVC for admin web interface
         services.AddControllersWithViews();
         services.AddRazorPages();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+        services.AddSingleton<NavigationState<Startup>>();
+
         // Controllers
         services.AddControllers()
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            });
+            })
+            .AddApplicationPart(typeof(Startup).Assembly)
+            .AddApplicationPart(typeof(UiStackLayoutViewModel).Assembly)
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization();
 
         services.AddSwaggerGen(c =>
         {
@@ -98,7 +108,6 @@ public class Startup : IWebStartup
 
     public void Configure(WebApplication app)
     {
-        // SKIT doesn't need middleware registration - it's a pure HTTP client
         app.UseExceptionHandler("/Error/Error");
         app.UseStaticFiles();
         app.UseRouting();
@@ -106,13 +115,6 @@ public class Startup : IWebStartup
         app.UseAuthorization();
         app.UseSwagger();
         app.UseSwaggerUI();
-
-        // Map default route to admin login page
-        app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Admin}/{action=Login}/{id?}");
-
-        app.MapControllers();
-        app.MapRazorPages();
+        app.MapDefaultControllerRoute();
     }
 }

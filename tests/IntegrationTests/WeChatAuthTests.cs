@@ -1,5 +1,5 @@
 using System.Net;
-using Aiursoft.WeChatExam.Models;
+using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Moq;
@@ -28,8 +28,10 @@ public class WeChatAuthTests
                     config.Sources.Clear();
                     config.AddInMemoryCollection(new Dictionary<string, string?>
                     {
-                        { "AppSettings:WechatAppId", "mock-app-id" },
-                        { "AppSettings:WechatAppSecret", "12345678901234567890123456789012" },
+                        { "AppSettings:AuthProvider", "Local" },
+                        { "AppSettings:WeChatEnabled", "true" },
+                        { "AppSettings:WeChat:AppId", "mock-app-id" },
+                        { "AppSettings:WeChat:AppSecret", "12345678901234567890123456789012" },
                         { "ConnectionStrings:DbType", "InMemory" },
                         { "ConnectionStrings:AllowCache", "True" },
                         { "ConnectionStrings:DefaultConnection", "DataSource=:memory:" }, // Ignored by InMemory but good to have
@@ -49,15 +51,6 @@ public class WeChatAuthTests
 
                     // Add mock
                     services.AddScoped(_ => _mockWeChatService.Object);
-
-                    services.PostConfigure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, options =>
-                    {
-                        var config = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-                        var secret = config["AppSettings:WechatAppSecret"];
-                        var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secret!));
-                        options.TokenValidationParameters.IssuerSigningKey = key;
-                        options.TokenValidationParameters.ValidateIssuerSigningKey = true;
-                    });
                 });
             });
 
