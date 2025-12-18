@@ -3,6 +3,7 @@ using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Aiursoft.WeChatExam.Services.Authentication;
@@ -105,7 +106,7 @@ public static class AuthenticationExtensions
 
                 options.Events = new OpenIdConnectEvents
                 {
-                    OnTokenValidated = context => SyncOidcUser(context, appSettings)
+                    OnTokenValidated = SyncOidcContext
                 };
             });
         }
@@ -122,13 +123,12 @@ public static class AuthenticationExtensions
         return services;
     }
 
-    private static async Task SyncOidcUser(
-        TokenValidatedContext context,
-        AppSettings appSettings)
+    private static async Task SyncOidcContext(TokenValidatedContext context)
     {
         var userManager = context.HttpContext.RequestServices.GetRequiredService<UserManager<User>>();
         var roleManager = context.HttpContext.RequestServices.GetRequiredService<RoleManager<IdentityRole>>();
-        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+        var appSettings = context.HttpContext.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
         var principal = context.Principal!;
 
         // 1. Get the user's information from the OIDC token
@@ -136,13 +136,13 @@ public static class AuthenticationExtensions
         var displayName = principal.FindFirst(appSettings.OIDC.UserDisplayNamePropertyName)?.Value;
         var email = principal.FindFirst(appSettings.OIDC.EmailPropertyName)?.Value;
         var providerKey = principal.FindFirst(appSettings.OIDC.UserIdentityPropertyName)?.Value;
-
         logger.LogInformation(
             "User '{Username}' from OIDC with email '{Email}' is trying to log in. Provider key: '{ProviderKey}'",
             username, email, providerKey);
 
         // 2. Ensure the user's information is valid
-        if (string.IsNullOrEmpty(username) ||
+        if (
+            string.IsNullOrEmpty(username) ||
             string.IsNullOrEmpty(displayName) ||
             string.IsNullOrEmpty(email) ||
             string.IsNullOrEmpty(providerKey))
@@ -156,7 +156,6 @@ public static class AuthenticationExtensions
         logger.LogInformation(
             "Try to find the user in the local database. With username: '{Username}', email: '{Email}', provider key: '{ProviderKey}'",
             username, email, providerKey);
-
         var localUser = await userManager.FindByLoginAsync(loginInfo.LoginProvider, loginInfo.ProviderKey) ??
                         await userManager.FindByNameAsync(username) ??
                         await userManager.FindByEmailAsync(email);
@@ -170,11 +169,9 @@ public static class AuthenticationExtensions
                 DisplayName = displayName,
                 Email = email,
             };
-
             logger.LogInformation(
                 "The user with name '{Username}' and email '{Email}' doesn't exist in the local database. Create a new one.",
                 username, email);
-
             var createUserResult = await userManager.CreateAsync(localUser);
             if (!createUserResult.Succeeded)
             {
@@ -224,7 +221,7 @@ public static class AuthenticationExtensions
             oidcRoles.Add(appSettings.DefaultRole);
         }
 
-        // 8. Add or remove roles based on the user's roles in OIDC and local database
+        // 8. Add or remove roles based on the user's roles in OIDC and local database.'
         var localRoles = (await userManager.GetRolesAsync(localUser)).ToHashSet();
         var rolesToAdd = oidcRoles.Except(localRoles);
         foreach (var roleName in rolesToAdd)
