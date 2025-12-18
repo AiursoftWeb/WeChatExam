@@ -11,4 +11,9 @@ public class DeleteViewModel : UiStackLayoutViewModel
     }
 
     public required Category Category { get; set; }
+
+    /// <summary>
+    /// 指示分类是否有子分类
+    /// </summary>
+    public bool HasChildren { get; set; }
 }

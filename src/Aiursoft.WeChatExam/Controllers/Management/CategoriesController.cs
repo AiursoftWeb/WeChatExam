@@ -1,144 +1,260 @@
+using Aiursoft.UiStack.Navigation;
+using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.CategoriesViewModels;
 using Aiursoft.WeChatExam.Authorization;
+using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
-[Route("[controller]")]
-public class CategoriesController : Controller
+/// <summary>
+/// This controller is used to handle categories related actions like create, edit, delete, etc.
+/// </summary>
+[LimitPerMin]
+[Route("[controller]/[action]")]
+public class CategoriesController(TemplateDbContext context) : Controller
 {
-    private readonly TemplateDbContext _context;
 
-    public CategoriesController(TemplateDbContext context)
+    // GET: categories
+    [RenderInNavBar(
+        NavGroupName = "Administration",
+        NavGroupOrder = 9999,
+        CascadedLinksGroupName = "Content Management",
+        CascadedLinksIcon = "folder-tree",
+        CascadedLinksOrder = 9997,
+        LinkText = "Categories",
+        LinkOrder = 1)]
+    public async Task<IActionResult> Index()
     {
-        _context = context;
+        var categories = await context.Categories.ToListAsync();
+        // Build a hierarchical structure
+        var rootCategories = categories.Where(c => c.ParentId == null).ToList();
+        
+        return this.StackView(new IndexViewModel
+        {
+            Categories = categories,
+            RootCategories = rootCategories
+        });
+    }
+
+    // GET: categories/create
+    [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
+    public async Task<IActionResult> Create()
+    {
+        var categories = await context.Categories.ToListAsync();
+        var model = new CreateViewModel
+        {
+            AvailableParents = categories.Where(c => c.ParentId == null).ToList()
+        };
+        return this.StackView(model);
     }
 
     // POST: categories
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
     [HttpPost]
-    public async Task<IActionResult> CreateCategory([FromBody] CreateViewModel model)
+    [ValidateAntiForgeryToken]
+    // POST: categories
+    [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateViewModel model)
     {
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            model.AvailableParents = await context.Categories.Where(c => c.ParentId == null).ToListAsync();
+            return this.StackView(model);
         }
 
         // 如果指定了父分类，验证父分类是否存在
         if (model.ParentId.HasValue)
         {
-            var parentExists = await _context.Categories
+            var parentExists = await context.Categories
                 .AnyAsync(c => c.Id == model.ParentId.Value);
             
             if (!parentExists)
             {
-                return BadRequest(new { Message = "Parent category not found" });
+                ModelState.AddModelError(nameof(model.ParentId), "Parent category not found");
+                model.AvailableParents = await context.Categories.Where(c => c.ParentId == null).ToListAsync();
+                return this.StackView(model);
             }
         }
 
-        // 独裁模式：通过 DbContext.Add() 创建
         var category = new Category
         {
             Id = Guid.NewGuid(),
             Title = model.Title,
-            ParentId = model.ParentId  // required 字段，必须显式赋值（即使是 null）
+            ParentId = model.ParentId
         };
 
-        _context.Categories.Add(category);
-        await _context.SaveChangesAsync();
+        context.Categories.Add(category);
+        await context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, new
+        return RedirectToAction(nameof(Details), new { id = category.Id });
+    }
+
+    // GET: categories/{id}
+    public async Task<IActionResult> Details(Guid? id)
+    {
+        if (id == null) return NotFound();
+        
+        var category = await context.Categories
+            .Include(c => c.Children)
+            .FirstOrDefaultAsync(c => c.Id == id);
+        
+        if (category == null) return NotFound();
+
+        return this.StackView(new DetailsViewModel
         {
-            category.Id,
-            category.Title,
-            category.ParentId
+            Category = category
         });
     }
 
-    // PUT: categories/{id}
+    // GET: categories/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] EditViewModel model)
+    public async Task<IActionResult> Edit(Guid? id)
     {
+        if (id == null) return NotFound();
+        
+        var category = await context.Categories.FindAsync(id);
+        if (category == null) return NotFound();
+
+        var availableParents = await context.Categories
+            .Where(c => c.Id != id && c.ParentId == null)
+            .ToListAsync();
+
+        var model = new EditViewModel
+        {
+            Id = id.Value,
+            Title = category.Title,
+            ParentId = category.ParentId,
+            AvailableParents = availableParents
+        };
+
+        return this.StackView(model);
+    }
+
+    // POST: categories/{id}
+    [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    {
+        if (id != model.Id) return NotFound();
+
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            model.AvailableParents = await context.Categories
+                .Where(c => c.Id != id && c.ParentId == null)
+                .ToListAsync();
+            return this.StackView(model);
         }
 
-        var category = await _context.Categories.FindAsync(id);
-        if (category == null)
-        {
-            return NotFound(new { Message = "Category not found" });
-        }
+        var category = await context.Categories.FindAsync(id);
+        if (category == null) return NotFound();
 
-        // 如果指定了父分类，验证父分类是否存在且不是自己
+        // 验证不能将分类设置为自己的子孙分类的父分类
         if (model.ParentId.HasValue)
         {
             if (model.ParentId.Value == id)
             {
-                return BadRequest(new { Message = "Category cannot be its own parent" });
+                ModelState.AddModelError(nameof(model.ParentId), "Category cannot be its own parent");
+                model.AvailableParents = await context.Categories
+                    .Where(c => c.Id != id && c.ParentId == null)
+                    .ToListAsync();
+                return this.StackView(model);
             }
 
-            var parentExists = await _context.Categories
+            var parentExists = await context.Categories
                 .AnyAsync(c => c.Id == model.ParentId.Value);
             
             if (!parentExists)
             {
-                return BadRequest(new { Message = "Parent category not found" });
+                ModelState.AddModelError(nameof(model.ParentId), "Parent category not found");
+                model.AvailableParents = await context.Categories
+                    .Where(c => c.Id != id && c.ParentId == null)
+                    .ToListAsync();
+                return this.StackView(model);
             }
 
-            // 防止循环引用：检查父分类不是当前分类的子孙分类
+            // 防止循环引用
             if (await IsDescendantOf(model.ParentId.Value, id))
             {
-                return BadRequest(new { Message = "Cannot create circular reference" });
+                ModelState.AddModelError(nameof(model.ParentId), "Cannot create circular reference");
+                model.AvailableParents = await context.Categories
+                    .Where(c => c.Id != id && c.ParentId == null)
+                    .ToListAsync();
+                return this.StackView(model);
             }
         }
 
         category.Title = model.Title;
         category.ParentId = model.ParentId;
 
-        _context.Categories.Update(category);
-        await _context.SaveChangesAsync();
+        context.Categories.Update(category);
+        await context.SaveChangesAsync();
 
-        return Ok(new { Message = "Category updated successfully", category.Id });
+        return RedirectToAction(nameof(Details), new { id = category.Id });
     }
 
-    // DELETE: categories/{id}
+    // GET: categories/{id}/delete
     [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCategory(Guid id)
+    public async Task<IActionResult> Delete(Guid? id)
     {
-        // 显式加载子分类集合
-        var category = await _context.Categories
+        if (id == null) return NotFound();
+
+        var category = await context.Categories
             .Include(c => c.Children)
             .FirstOrDefaultAsync(c => c.Id == id);
 
-        if (category == null)
+        if (category == null) return NotFound();
+
+        return this.StackView(new DeleteViewModel
         {
-            return NotFound(new { Message = "Category not found" });
+            Category = category
+        });
+    }
+
+    // POST: categories/{id}/delete
+    [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
+    // POST: categories/{id}/delete
+    [Authorize(Policy = AppPermissionNames.CanDeleteAnyCategory)]
+    [HttpPost("{id}")]
+    [ValidateAntiForgeryToken]
+    [ActionName("Delete")]
+    public async Task<IActionResult> DeleteConfirmed(Guid? id)
+    {
+        if (id == null) return NotFound();
+
+        var category = await context.Categories.FindAsync(id);
+        if (category == null) return NotFound();
+
+        // Check if category has children
+        var hasChildren = await context.Categories.AnyAsync(c => c.ParentId == id);
+        if (hasChildren)
+        {
+            var categoryWithChildren = await context.Categories
+                .Include(c => c.Children)
+                .FirstOrDefaultAsync(c => c.Id == id);
+            
+            return this.StackView(new DeleteViewModel
+            {
+                Category = categoryWithChildren!,
+                HasChildren = true
+            });
         }
 
-        // 独裁模式：检查集合但不能通过集合操作
-        // 由于集合是 IEnumerable，无法 .Add() 或 .Remove()
-        if (category.Children.Any())
-        {
-            return BadRequest(new { Message = "Cannot delete category with children. Please delete children first." });
-        }
+        context.Categories.Remove(category);
+        await context.SaveChangesAsync();
 
-        // 独裁模式：通过 DbContext.Remove() 删除
-        _context.Categories.Remove(category);
-        await _context.SaveChangesAsync();
-
-        return Ok(new { Message = "Category deleted successfully" });
+        return RedirectToAction(nameof(Index));
     }
 
     // 辅助方法：检查 possibleAncestorId 是否是 categoryId 的祖先
     private async Task<bool> IsDescendantOf(Guid possibleAncestorId, Guid categoryId)
     {
-        var current = await _context.Categories.FindAsync(possibleAncestorId);
+        var current = await context.Categories.FindAsync(possibleAncestorId);
         
         while (current?.ParentId != null)
         {
@@ -146,7 +262,7 @@ public class CategoriesController : Controller
             {
                 return true;
             }
-            current = await _context.Categories.FindAsync(current.ParentId.Value);
+            current = await context.Categories.FindAsync(current.ParentId.Value);
         }
         
         return false;
