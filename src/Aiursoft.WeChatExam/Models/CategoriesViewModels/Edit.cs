@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Aiursoft.CSTools.Attributes;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Entities;
 

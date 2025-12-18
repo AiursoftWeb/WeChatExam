@@ -8,7 +8,7 @@
             <dd class="col-sm-9">@Model.Category.Title</dd>
             <dt class="col-sm-3">@Localizer["Parent"]</dt>
             <dd class="col-sm-9">
-                @(Model.Category.Parent != null ? Model.Category.Parent.Title : Localizer["Top Level"].Value)
+                @(Model.Category.ParentId == null ? Localizer["Top Level"].Value : Model.Category.Parent.Title)
             </dd>
             <dt class="col-sm-3">@Localizer["Created"]</dt>
             <dd class="col-sm-9">@Model.Category.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
