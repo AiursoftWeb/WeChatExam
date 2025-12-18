@@ -1,6 +1,5 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -66,20 +65,5 @@ public class CategoriesController : ControllerBase
         return Ok(categoryDto);
     }
 
-    // 辅助方法：检查 possibleAncestorId 是否是 categoryId 的祖先
-    private async Task<bool> IsDescendantOf(Guid possibleAncestorId, Guid categoryId)
-    {
-        var current = await _context.Categories.FindAsync(possibleAncestorId);
-        
-        while (current?.ParentId != null)
-        {
-            if (current.ParentId.Value == categoryId)
-            {
-                return true;
-            }
-            current = await _context.Categories.FindAsync(current.ParentId.Value);
-        }
-        
-        return false;
-    }
+
 }

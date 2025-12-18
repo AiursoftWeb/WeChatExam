@@ -14,7 +14,6 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// This controller is used to handle categories related actions like create, edit, delete, etc.
 /// </summary>
 [LimitPerMin]
-[Route("[controller]/[action]")]
 public class CategoriesController(TemplateDbContext context) : Controller
 {
 
