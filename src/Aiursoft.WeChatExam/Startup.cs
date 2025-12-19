@@ -72,7 +72,6 @@ public class Startup : IWebStartup
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             })
             .AddApplicationPart(typeof(Startup).Assembly)
