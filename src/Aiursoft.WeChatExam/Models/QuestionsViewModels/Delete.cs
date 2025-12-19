@@ -10,7 +10,7 @@ public class DeleteViewModel : UiStackLayoutViewModel
         PageTitle = "Delete Question";
     }
 
-    public Question? Question { get; set; }
+    public required Question Question { get; set; }
 
-    public Category? Category { get; set; }
+    public required Category Category { get; set; }
 }
