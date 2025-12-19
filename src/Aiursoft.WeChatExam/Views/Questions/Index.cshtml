@@ -1,0 +1,79 @@
+@model Aiursoft.WeChatExam.Models.QuestionsViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Questions"]</h1>
+
+<div class="row mb-3">
+    <div class="col-12 col-md-6">
+        <form asp-action="Index" method="get" class="d-flex align-items-center">
+            <select name="categoryId" class="form-select me-2" onchange="this.form.submit()">
+                <option value="">@Localizer["All Categories"]</option>
+                @foreach (var category in Model.Categories)
+                {
+                    if (Model.SelectedCategoryId == category.Id)
+                    {
+                        <option value="@category.Id" selected>@category.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@category.Id">@category.Title</option>
+                    }
+                }
+            </select>
+            <noscript><button type="submit" class="btn btn-primary btn-sm">@Localizer["Filter"]</button></noscript>
+        </form>
+    </div>
+    <div class="col-12 col-md-6 text-end">
+        <a asp-action="Create" asp-route-categoryId="@Model.SelectedCategoryId" class="btn btn-primary btn-sm">
+            <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Question"]
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">@Localizer["Question List"]</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Text"]</th>
+                    <th>@Localizer["Type"]</th>
+                    <th>@Localizer["Category"]</th>
+                    <th>@Localizer["Created"]</th>
+                    <th style="width: 120px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var question in Model.Questions)
+                {
+                    <tr>
+                        <td>@question.Text</td>
+                        <td>@question.Type</td>
+                        <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
+                        <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-outline-secondary me-1" title="@Localizer["Details"]">
+                                <i class="align-middle" data-lucide="eye"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@question.Id" class="btn btn-sm btn-outline-primary me-1" title="@Localizer["Edit"]">
+                                <i class="align-middle" data-lucide="edit"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@question.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                <i class="align-middle" data-lucide="trash-2"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                @if (!Model.Questions.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            @Localizer["No questions found"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

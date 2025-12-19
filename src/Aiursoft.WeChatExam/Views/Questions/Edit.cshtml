@@ -1,0 +1,67 @@
+@model Aiursoft.WeChatExam.Models.QuestionsViewModels.EditViewModel
+
+<h1 class="h3 mb-3">@Localizer["Edit Question"]</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="mb-3">
+                <label asp-for="Type" class="form-label">@Localizer["Type"]</label>
+                <select asp-for="Type" class="form-select" required>
+                    <option value="">@Localizer["Select type"]</option>
+                    <option value="singleChoice">@Localizer["Single Choice"]</option>
+                    <option value="fillIn">@Localizer["Fill In"]</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Text" class="form-label">@Localizer["Text"]</label>
+                <textarea asp-for="Text" class="form-control" rows="2" required></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label">@Localizer["Category"]</label>
+                <select asp-for="CategoryId" class="form-select" required>
+                    <option value="">@Localizer["Select category"]</option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        if (Model.CategoryId == category.Id)
+                        {
+                            <option value="@category.Id" selected>@category.Title</option>
+                        }
+                        else
+                        {
+                            <option value="@category.Id">@category.Title</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="List" class="form-label">@Localizer["Options (for single choice, JSON array)"]</label>
+                <input asp-for="List" class="form-control" placeholder='["A","B","C"]'>
+                <span asp-validation-for="List" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="SingleCorrect" class="form-label">@Localizer["Single Correct (for single choice)"]</label>
+                <input asp-for="SingleCorrect" class="form-control" placeholder='A'>
+                <span asp-validation-for="SingleCorrect" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="FillInCorrect" class="form-label">@Localizer["Fill In Correct (for fill in, JSON array)"]</label>
+                <input asp-for="FillInCorrect" class="form-control" placeholder='["answer1","answer2"]'>
+                <span asp-validation-for="FillInCorrect" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Explanation" class="form-label">@Localizer["Explanation"]</label>
+                <textarea asp-for="Explanation" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="Explanation" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+            <a asp-action="Index" asp-route-categoryId="@Model.CategoryId" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+        </div>
+    </div>
+</form>
