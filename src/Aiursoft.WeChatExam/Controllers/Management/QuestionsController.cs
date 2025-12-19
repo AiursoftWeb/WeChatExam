@@ -213,7 +213,8 @@ public class QuestionsController(TemplateDbContext context) : Controller
 
     // POST: questions/{id}/delete
     [Authorize(Policy = AppPermissionNames.CanDeleteQuestions)]
-    [HttpPost("delete/{id}")]
+    [HttpPost]
+    [ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(Guid id)
     {

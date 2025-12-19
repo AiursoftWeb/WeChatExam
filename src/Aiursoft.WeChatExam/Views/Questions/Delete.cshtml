@@ -2,7 +2,7 @@
 
 <h1 class="h3 mb-3 text-danger">@Localizer["Delete Question"]</h1>
 
-<form asp-action="DeleteConfirmed" method="post">
+<form asp-action="Delete" asp-route-id="@Model.Question?.Id" method="post">
     <input type="hidden" asp-for="Question.Id" />
     <div class="card mb-3 border-danger">
         <div class="card-body">

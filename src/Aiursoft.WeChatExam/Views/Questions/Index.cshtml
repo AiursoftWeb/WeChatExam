@@ -54,13 +54,13 @@
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
                             <a asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-outline-secondary me-1" title="@Localizer["Details"]">
-                                <i class="align-middle" data-lucide="eye"></i>
+                                <i class="align-middle" data-lucide="eye"></i> @Localizer["Details"]
                             </a>
                             <a asp-action="Edit" asp-route-id="@question.Id" class="btn btn-sm btn-outline-primary me-1" title="@Localizer["Edit"]">
-                                <i class="align-middle" data-lucide="edit"></i>
+                                <i class="align-middle" data-lucide="edit"></i> @Localizer["Edit"]
                             </a>
                             <a asp-action="Delete" asp-route-id="@question.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
-                                <i class="align-middle" data-lucide="trash-2"></i>
+                                <i class="align-middle" data-lucide="trash-2"></i> @Localizer["Delete"]
                             </a>
                         </td>
                     </tr>
