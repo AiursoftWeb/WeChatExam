@@ -27,4 +27,7 @@ public class Category
 
     [InverseProperty(nameof(Parent))]
     public IEnumerable<Category> Children { get; init; } = new List<Category>();
+
+    [InverseProperty(nameof(Question.Category))]
+    public IEnumerable<Question> Questions { get; init; } = new List<Question>();
 }

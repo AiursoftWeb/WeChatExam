@@ -59,12 +59,23 @@ public class AppPermissions
                 localizer["Reboot This App"],
                 localizer["Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded."]),
                 
-                            new(AppPermissionNames.CanDeleteAnyCategory,
+            new(AppPermissionNames.CanDeleteAnyCategory,
                 localizer["Delete Any Category"],
                 localizer["Allows deletion of any category, regardless of ownership."]),
             new(AppPermissionNames.CanEditAnyCategory,
                 localizer["Edit Any Category"],
-                localizer["Allows editing of any category, regardless of ownership."])
+                localizer["Allows editing of any category, regardless of ownership."]),
+
+            new(AppPermissionNames.CanDeleteQuestions,
+                localizer["Delete Questions"],
+                localizer["Allows deletion of questions, regardless of ownership."]),
+            new(AppPermissionNames.CanEditQuestions,
+                localizer["Edit Questions"],
+                localizer["Allows editing of questions, regardless of ownership."]),
+            new(AppPermissionNames.CanAddQuestions,
+                localizer["Add Questions"],
+                localizer["Allows adding of questions, regardless of ownership."])
+
 
         ];
         return allPermission;
