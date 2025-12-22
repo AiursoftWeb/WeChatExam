@@ -13,4 +13,5 @@ public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbCo
         Database.CanConnectAsync();
 
     public DbSet<Category> Categories => Set<Category>();
+    public DbSet<Question> Questions => Set<Question>();
 }

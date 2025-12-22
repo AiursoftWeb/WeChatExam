@@ -26,4 +26,9 @@ public static class AppPermissionNames
     public const string CanDeleteAnyCategory = nameof(CanDeleteAnyCategory);
     public const string CanEditAnyCategory = nameof(CanEditAnyCategory);
 
+    // Question Management
+    public const string CanDeleteQuestions = nameof(CanDeleteQuestions);
+    public const string CanAddQuestions = nameof(CanAddQuestions);
+    public const string CanEditQuestions = nameof(CanEditQuestions);
+
 }

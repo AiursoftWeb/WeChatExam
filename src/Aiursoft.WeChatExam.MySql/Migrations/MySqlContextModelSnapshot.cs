@@ -46,6 +46,55 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Explanation")
+                        .IsRequired()
+                        .HasMaxLength(3000)
+                        .HasColumnType("varchar(3000)");
+
+                    b.Property<string>("FillInCorrect")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("varchar(5000)");
+
+                    b.Property<string>("List")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("varchar(5000)");
+
+                    b.Property<string>("SingleCorrect")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -272,6 +321,17 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
+                        .WithMany("Questions")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -326,6 +386,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Category", b =>
                 {
                     b.Navigation("Children");
+
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }
