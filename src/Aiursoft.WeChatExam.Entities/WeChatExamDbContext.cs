@@ -14,4 +14,5 @@ public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbCo
 
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<Question> Questions => Set<Question>();
+    public DbSet<UserPracticeHistory> UserPracticeHistories => Set<UserPracticeHistory>();
 }
