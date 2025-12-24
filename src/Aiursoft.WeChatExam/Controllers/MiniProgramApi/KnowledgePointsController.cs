@@ -47,7 +47,7 @@ public class KnowledgePointsController : ControllerBase
     /// </summary>
     /// <param name="id">知识点ID</param>
     /// <returns>包含完整树状结构的知识点</returns>
-    [HttpGet("{id}")]
+    [HttpGet("all/{id}")]
     public async Task<IActionResult> GetKnowledgePoint(Guid id)
     {
         var knowledgePoint = await _context.KnowledgePoints
@@ -68,6 +68,28 @@ public class KnowledgePointsController : ControllerBase
         var result = BuildKnowledgePointTree(knowledgePoint, allKnowledgePoints);
 
         return Ok(result);
+    }
+    
+    // GET: api/knowledgePoints/{id}
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetKnowledgeContent(Guid id)
+    {
+        var knowledgePoint = await _context.KnowledgePoints
+            .FirstOrDefaultAsync(c => c.Id == id);
+
+        if (knowledgePoint == null)
+        {
+            return NotFound(new { Message = "KnowledgePoint not found" });
+        }
+
+        var knowledgeDto = new KnowledgeDto
+        {
+            Id = knowledgePoint.Id,
+            Title = knowledgePoint.Title,
+            Content = knowledgePoint.Content,
+        };
+
+        return Ok(knowledgeDto);
     }
 
     /// <summary>
