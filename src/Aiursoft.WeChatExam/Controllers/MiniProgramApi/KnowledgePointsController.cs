@@ -16,34 +16,42 @@ public class KnowledgePointsController : ControllerBase
         _context = context;
     }
 
-    // GET: api/knowledgePoints/all
+    /// <summary>
+    /// 获取所有顶级知识点及其完整树状结构
+    /// </summary>
+    /// <returns>知识点树列表，支持任意深度嵌套</returns>
     [HttpGet("all")]
     public async Task<IActionResult> GetKnowledgePointAll()
     {
-        var knowledgePoints = await _context.KnowledgePoints
+        // 获取所有知识点（用于后续构建树）
+        var allKnowledgePoints = await _context.KnowledgePoints
+            .AsNoTracking()
             .Include(c => c.Children)
-            .Where(c => c.ParentId == null)
-            .Select(c => new KnowledgePointDto
-            {
-                Id = c.Id,
-                Title = c.Title,
-                Children = c.Children.Select(child => new Child
-                {
-                    Id = child.Id,
-                    Title = child.Title
-                }).ToArray()
-            })
             .ToListAsync();
 
-        return Ok(knowledgePoints);
+        // 获取所有顶级知识点（ParentId为null）
+        var rootPoints = allKnowledgePoints
+            .Where(c => c.ParentId == null)
+            .ToList();
+
+        // 将平面列表转换为树状结构
+        var result = rootPoints
+            .Select(c => BuildKnowledgePointTree(c, allKnowledgePoints))
+            .ToList();
+
+        return Ok(result);
     }
 
-    // GET: api/knowledgePoints/{id}
+    /// <summary>
+    /// 获取指定知识点及其完整子树
+    /// </summary>
+    /// <param name="id">知识点ID</param>
+    /// <returns>包含完整树状结构的知识点</returns>
     [HttpGet("{id}")]
     public async Task<IActionResult> GetKnowledgePoint(Guid id)
     {
         var knowledgePoint = await _context.KnowledgePoints
-            .Include(c => c.Children)
+            .AsNoTracking()
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (knowledgePoint == null)
@@ -51,19 +59,38 @@ public class KnowledgePointsController : ControllerBase
             return NotFound(new { Message = "KnowledgePoint not found" });
         }
 
-        var knowledgePointDto = new KnowledgePointDto
+        // 获取所有知识点用于树构建
+        var allKnowledgePoints = await _context.KnowledgePoints
+            .AsNoTracking()
+            .Include(c => c.Children)
+            .ToListAsync();
+
+        var result = BuildKnowledgePointTree(knowledgePoint, allKnowledgePoints);
+
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// 将知识点及其关联的子点递归转换为树状 DTO
+    /// </summary>
+    /// <param name="knowledgePoint">当前知识点实体</param>
+    /// <param name="allPoints">所有知识点（用于查找子节点）</param>
+    /// <returns>树状结构的 DTO</returns>
+    private static KnowledgePointDto BuildKnowledgePointTree(
+        KnowledgePoint knowledgePoint,
+        List<KnowledgePoint> allPoints)
+    {
+        var childPoints = allPoints
+            .Where(c => c.ParentId == knowledgePoint.Id)
+            .ToList();
+
+        return new KnowledgePointDto
         {
             Id = knowledgePoint.Id,
             Title = knowledgePoint.Title,
-            Children = knowledgePoint.Children.Select(child => new Child
-            {
-                Id = child.Id,
-                Title = child.Title
-            }).ToArray()
+            Children = childPoints
+                .Select(child => BuildKnowledgePointTree(child, allPoints))
+                .ToList()
         };
-
-        return Ok(knowledgePointDto);
     }
-
-
 }

@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Aiursoft.WeChatExam.Models.MiniProgramApi.KnowledgePointDtos;
 
+/// <summary>
+/// 知识点树状结构 DTO，支持任意深度的层级嵌套
+/// </summary>
 public class KnowledgePointDto
 {
     [Required]
@@ -10,13 +13,8 @@ public class KnowledgePointDto
     [Required]
     public string Title { get; set; } = string.Empty;
 
-    public Child[] Children { get; set; } = Array.Empty<Child>();
+    /// <summary>
+    /// 子知识点列表，支持递归嵌套
+    /// </summary>
+    public List<KnowledgePointDto> Children { get; set; } = new List<KnowledgePointDto>();
 }
-
-public class Child
-{
-    public Guid Id { get; set; }
-    
-    public string Title { get; set; } = string.Empty;
-}
-

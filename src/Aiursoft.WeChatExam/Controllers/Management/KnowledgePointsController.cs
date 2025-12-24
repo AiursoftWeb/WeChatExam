@@ -46,7 +46,7 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
         var knowledgePoints = await context.KnowledgePoints.ToListAsync();
         var model = new CreateViewModel
         {
-            AvailableParents = knowledgePoints.Where(c => c.ParentId == null).ToList()
+            AvailableParents = knowledgePoints
         };
         return this.StackView(model);
     }
