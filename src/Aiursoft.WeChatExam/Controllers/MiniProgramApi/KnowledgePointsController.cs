@@ -1,5 +1,5 @@
 using Aiursoft.WeChatExam.Entities;
-using Aiursoft.WeChatExam.Models.MiniProgramApi.KnowledgePointDtos;
+using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -87,6 +87,7 @@ public class KnowledgePointsController : ControllerBase
             Id = knowledgePoint.Id,
             Title = knowledgePoint.Title,
             Content = knowledgePoint.Content,
+            AudioUrl = knowledgePoint.AudioUrl,
         };
 
         return Ok(knowledgeDto);

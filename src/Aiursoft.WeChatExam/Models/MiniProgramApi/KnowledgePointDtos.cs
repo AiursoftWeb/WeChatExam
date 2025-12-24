@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Aiursoft.WeChatExam.Models.MiniProgramApi.KnowledgePointDtos;
+namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 
 /// <summary>
 /// 知识点树状结构 DTO，支持任意深度的层级嵌套
@@ -30,6 +30,8 @@ public class KnowledgeDto
     
     [Required]
     public string Content { get; set; } = string.Empty;
+    
+    public string? AudioUrl { get; set; }
 
 }
 
