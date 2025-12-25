@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services.Authentication;
+using Aiursoft.WeChatExam.Services.FileStorage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [Route("api/[controller]")]
 [ApiController]
 [WeChatUserOnly]  // 明确要求 Bearer JWT 认证
-public class UserController(UserManager<User> userManager) : ControllerBase
+public class UserController(UserManager<User> userManager, StorageService storageService) : ControllerBase
 {
     [HttpGet("info")]
     public async Task<IActionResult> GetUserInfo()
@@ -31,11 +32,12 @@ public class UserController(UserManager<User> userManager) : ControllerBase
         {
             return NotFound();
         }
+        var avatarUrl = storageService.RelativePathToInternetUrl(user.AvatarRelativePath, HttpContext);
 
         return Ok(new
         {
             user.DisplayName,
-            user.AvatarRelativePath,
+            avatarUrl,
             user.MiniProgramOpenId,
             user.CreationTime
         });

@@ -4,6 +4,7 @@ using Aiursoft.WeChatExam.MySql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aiursoft.WeChatExam.MySql.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20251223103657_AddPracticeHistoryTable")]
+    partial class AddPracticeHistoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,37 +47,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("AudioUrl")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("ParentId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("KnowledgePoints");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
@@ -386,15 +358,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
-                {
-                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId");
-
-                    b.Navigation("Parent");
-                });
-
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
@@ -481,11 +444,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Children");
 
                     b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
-                {
-                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }
