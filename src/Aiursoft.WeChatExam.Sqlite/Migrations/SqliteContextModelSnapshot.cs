@@ -41,6 +41,37 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AudioUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("ParentId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("KnowledgePoints");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
                     b.Property<Guid>("Id")
@@ -346,6 +377,15 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("Parent");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
@@ -432,6 +472,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Children");
 
                     b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
+                {
+                    b.Navigation("Children");
                 });
 #pragma warning restore 612, 618
         }

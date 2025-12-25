@@ -1,0 +1,27 @@
+@model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.DeleteViewModel
+
+<h1 class="h3 mb-3">@Localizer["Delete KnowledgePoint"]</h1>
+<div class="card">
+    <div class="card-body text-center">
+        <i class="align-middle text-danger" data-lucide="trash-2" style="width: 48px; height: 48px;"></i>
+        <h2 class="h4 card-title fw-bold">@Localizer["Are you sure?"]</h2>
+        <p class="mb-3 text-muted">@Localizer["This action is irreversible. You are about to permanently delete the following knowledgePoint:"]</p>
+        <div class="d-inline-block bg-body-tertiary rounded p-2 px-3 mb-4">
+            <strong class="fs-5">@Model.KnowledgePoint.Title</strong>
+        </div>
+        @if (Model.HasChildren)
+        {
+            <div class="alert alert-warning">@Localizer["Cannot delete knowledgePoint with children. Please delete children first."]</div>
+            <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+        }
+        else
+        {
+            <form asp-action="Delete" asp-route-id="@Model.KnowledgePoint.Id" method="post" class="d-inline-block">
+                <button type="submit" class="btn btn-danger">
+                    <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Yes, delete this knowledgePoint"]
+                </button>
+            </form>
+            <a asp-action="Index" class="btn btn-light">@Localizer["Cancel"]</a>
+        }
+    </div>
+</div>

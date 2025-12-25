@@ -1,0 +1,25 @@
+@model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.DetailsViewModel
+
+<h1 class="h3 mb-3">@Localizer["KnowledgePoint Details"]</h1>
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">@Localizer["Title"]</dt>
+            <dd class="col-sm-9">@Model.KnowledgePoint.Title</dd>
+            
+            <dt class="col-sm-3">@Localizer["Content"]</dt>
+            <dd class="col-sm-9">@Model.KnowledgePoint.Content</dd>
+
+
+            <dt class="col-sm-3">@Localizer["Parent"]</dt>
+            <dd class="col-sm-9">
+                @(Model.KnowledgePoint.Parent  == null ? Localizer["Top Level"].Value : Model.KnowledgePoint.Parent.Title)
+            </dd>
+            <dt class="col-sm-3">@Localizer["Created"]</dt>
+            <dd class="col-sm-9">@Model.KnowledgePoint.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-warning">@Localizer["Edit"]</a>
+        <a asp-action="Delete" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-danger">@Localizer["Delete"]</a>
+        <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+    </div>
+</div>

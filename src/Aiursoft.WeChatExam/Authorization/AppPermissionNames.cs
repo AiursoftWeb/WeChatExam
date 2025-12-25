@@ -30,5 +30,11 @@ public static class AppPermissionNames
     public const string CanDeleteQuestions = nameof(CanDeleteQuestions);
     public const string CanAddQuestions = nameof(CanAddQuestions);
     public const string CanEditQuestions = nameof(CanEditQuestions);
+    
+    // KnowledgePoint Management
+    public const string CanDeleteAnyKnowledgePoint = nameof(CanDeleteAnyKnowledgePoint);
+    public const string CanEditAnyKnowledgePoint = nameof(CanEditAnyKnowledgePoint);
+    public const string CanAddAnyKnowledgePoint = nameof(CanAddAnyKnowledgePoint);
+
 
 }
