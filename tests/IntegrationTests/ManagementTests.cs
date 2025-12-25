@@ -96,7 +96,7 @@ public class ManagementTests
         Assert.AreEqual(HttpStatusCode.Found, createResponse.StatusCode);
         var detailsUrl = createResponse.Headers.Location?.OriginalString;
         Assert.IsNotNull(detailsUrl);
-        Assert.StartsWith(detailsUrl, "/Categories/Details");
+        Assert.StartsWith("/Categories/Details", detailsUrl);
         
         var categoryId = detailsUrl.Split('/').Last().Split('?')[0]; // Extract ID
 
@@ -104,7 +104,7 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.Contains(detailsHtml, categoryTitle);
+        Assert.Contains(categoryTitle, detailsHtml);
 
         // 3. Edit Category
         var newTitle = $"Updated-Category-{Guid.NewGuid()}";
@@ -121,7 +121,7 @@ public class ManagementTests
         // Verify Edit
         var verifyResponse = await _http.GetAsync(detailsUrl);
         var verifyHtml = await verifyResponse.Content.ReadAsStringAsync();
-        Assert.Contains(verifyHtml, newTitle);
+        Assert.Contains(newTitle, verifyHtml);
 
         // 4. Delete Category
         var deleteToken = await GetAntiCsrfToken($"/Categories/Delete/{categoryId}");
@@ -137,7 +137,7 @@ public class ManagementTests
         // Verify Deletion
         var indexResponse = await _http.GetAsync("/Categories/Index");
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
-        Assert.DoesNotContain(indexHtml, newTitle);
+        Assert.DoesNotContain(newTitle, indexHtml);
     }
 
     [TestMethod]
@@ -167,8 +167,8 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.Contains(detailsHtml, title);
-        Assert.Contains(detailsHtml, content);
+        Assert.Contains(title, detailsHtml);
+        Assert.Contains(content, detailsHtml);
 
         // 3. Edit KnowledgePoint
         var newTitle = $"Updated-KP-{Guid.NewGuid()}";
@@ -235,7 +235,7 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.Contains(detailsHtml, qText);
+        Assert.Contains(qText, detailsHtml);
 
         // 3. Edit Question
         var newText = $"Updated Question {Guid.NewGuid()}";
@@ -295,8 +295,8 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.Contains(detailsHtml, userName);
-        Assert.Contains(detailsHtml, email);
+        Assert.Contains(userName, detailsHtml);
+        Assert.Contains(email, detailsHtml);
 
         // 3. Edit User
         var newDisplayName = "Updated Display Name";
@@ -318,7 +318,7 @@ public class ManagementTests
         // Verify Edit
         var verifyResponse = await _http.GetAsync(detailsUrl);
         var verifyHtml = await verifyResponse.Content.ReadAsStringAsync();
-        Assert.Contains(verifyHtml, newDisplayName);
+        Assert.Contains(newDisplayName, verifyHtml);
 
         // 4. Delete User
         var deleteToken = await GetAntiCsrfToken($"/Users/Delete/{userId}");
@@ -335,6 +335,6 @@ public class ManagementTests
         // Verify Deletion
         var indexResponse = await _http.GetAsync("/Users/Index");
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
-        Assert.DoesNotContain(indexHtml, userName);
+        Assert.DoesNotContain(userName, indexHtml);
     }
 }
