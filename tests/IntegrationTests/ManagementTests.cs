@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -97,7 +96,7 @@ public class ManagementTests
         Assert.AreEqual(HttpStatusCode.Found, createResponse.StatusCode);
         var detailsUrl = createResponse.Headers.Location?.OriginalString;
         Assert.IsNotNull(detailsUrl);
-        Assert.IsTrue(detailsUrl.StartsWith("/Categories/Details"));
+        Assert.StartsWith(detailsUrl, "/Categories/Details");
         
         var categoryId = detailsUrl.Split('/').Last().Split('?')[0]; // Extract ID
 
@@ -105,7 +104,7 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.IsTrue(detailsHtml.Contains(categoryTitle));
+        Assert.Contains(detailsHtml, categoryTitle);
 
         // 3. Edit Category
         var newTitle = $"Updated-Category-{Guid.NewGuid()}";
@@ -122,7 +121,7 @@ public class ManagementTests
         // Verify Edit
         var verifyResponse = await _http.GetAsync(detailsUrl);
         var verifyHtml = await verifyResponse.Content.ReadAsStringAsync();
-        Assert.IsTrue(verifyHtml.Contains(newTitle));
+        Assert.Contains(verifyHtml, newTitle);
 
         // 4. Delete Category
         var deleteToken = await GetAntiCsrfToken($"/Categories/Delete/{categoryId}");
@@ -138,7 +137,7 @@ public class ManagementTests
         // Verify Deletion
         var indexResponse = await _http.GetAsync("/Categories/Index");
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
-        Assert.IsFalse(indexHtml.Contains(newTitle));
+        Assert.DoesNotContain(indexHtml, newTitle);
     }
 
     [TestMethod]
@@ -168,8 +167,8 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.IsTrue(detailsHtml.Contains(title));
-        Assert.IsTrue(detailsHtml.Contains(content));
+        Assert.Contains(detailsHtml, title);
+        Assert.Contains(detailsHtml, content);
 
         // 3. Edit KnowledgePoint
         var newTitle = $"Updated-KP-{Guid.NewGuid()}";
@@ -236,7 +235,7 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.IsTrue(detailsHtml.Contains(qText));
+        Assert.Contains(detailsHtml, qText);
 
         // 3. Edit Question
         var newText = $"Updated Question {Guid.NewGuid()}";
@@ -296,8 +295,8 @@ public class ManagementTests
         var detailsResponse = await _http.GetAsync(detailsUrl);
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.IsTrue(detailsHtml.Contains(userName));
-        Assert.IsTrue(detailsHtml.Contains(email));
+        Assert.Contains(detailsHtml, userName);
+        Assert.Contains(detailsHtml, email);
 
         // 3. Edit User
         var newDisplayName = "Updated Display Name";
@@ -319,7 +318,7 @@ public class ManagementTests
         // Verify Edit
         var verifyResponse = await _http.GetAsync(detailsUrl);
         var verifyHtml = await verifyResponse.Content.ReadAsStringAsync();
-        Assert.IsTrue(verifyHtml.Contains(newDisplayName));
+        Assert.Contains(verifyHtml, newDisplayName);
 
         // 4. Delete User
         var deleteToken = await GetAntiCsrfToken($"/Users/Delete/{userId}");
@@ -336,6 +335,6 @@ public class ManagementTests
         // Verify Deletion
         var indexResponse = await _http.GetAsync("/Users/Index");
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
-        Assert.IsFalse(indexHtml.Contains(userName));
+        Assert.DoesNotContain(indexHtml, userName);
     }
 }
