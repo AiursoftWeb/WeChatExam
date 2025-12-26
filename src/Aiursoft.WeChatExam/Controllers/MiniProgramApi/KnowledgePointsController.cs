@@ -142,7 +142,6 @@ public class KnowledgePointsController : ControllerBase
             AudioUrl = kp.AudioUrl,
             Questions = kp.KnowledgePointQuestions
                 .Select(kpq => kpq.Question)
-                .Where(q => q != null)
                 .Select(q => new QuestionContentDto
                 {
                     Id = q.Id,
