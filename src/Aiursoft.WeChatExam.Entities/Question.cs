@@ -67,4 +67,7 @@ public class Question
     [ForeignKey(nameof(CategoryId))]
     [NotNull]
     public Category? Category { get; set; }
+
+    [InverseProperty(nameof(KnowledgePointQuestion.Question))]
+    public IEnumerable<KnowledgePointQuestion> KnowledgePointQuestions { get; init; } = new List<KnowledgePointQuestion>();
 }
