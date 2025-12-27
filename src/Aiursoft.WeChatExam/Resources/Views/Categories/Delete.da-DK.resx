@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Delete Category" xml:space="preserve">
+    <value>Slet kategori</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Er du sikker?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Ja, slet denne kategori</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Tilbage til listen</value>
+  </data>
+  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
+    <value>Denne handling kan ikke fortrydes. Du er ved at slette følgende kategori permanent:</value>
+  </data>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>Kan ikke slette kategori med underkategorier. Slet venligst underkategorierne først.</value>
+  </data>
+
+</root>

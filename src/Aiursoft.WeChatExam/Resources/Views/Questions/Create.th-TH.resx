@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Category" xml:space="preserve">
+    <value>หมวดหมู่</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>เลือกประเภท</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>เพิ่มคำถาม</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>เลือกหมวดหมู่</value>
+  </data>
+  <data name="Fill In" xml:space="preserve">
+    <value>เติมคำในช่องว่าง</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>ตัวเลือกเดียว</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>คำอธิบาย</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>ตัวเลือก (สำหรับข้อเลือกเดียว, อาร์เรย์ JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>คำตอบที่ถูกต้อง (สำหรับข้อเลือกเดียว)</value>
+  </data>
+  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
+    <value>คำตอบที่ถูกต้อง (สำหรับเติมคำ, อาร์เรย์ JSON)</value>
+  </data>
+
+</root>

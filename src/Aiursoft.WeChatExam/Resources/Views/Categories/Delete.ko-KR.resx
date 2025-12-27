@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>목록으로 돌아가기</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>카테고리 삭제</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>예, 이 카테고리 삭제</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>정말 삭제하시겠습니까?</value>
+  </data>
+  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
+    <value>이 작업은 되돌릴 수 없습니다. 다음 카테고리를 영구적으로 삭제하려고 합니다:</value>
+  </data>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>하위 카테고리가 있는 카테고리는 삭제할 수 없습니다. 먼저 하위 카테고리를 삭제해 주세요.</value>
+  </data>
+
+</root>

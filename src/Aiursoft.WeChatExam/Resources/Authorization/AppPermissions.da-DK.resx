@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Giver tilladelse til at genstarte applikationsinstansen. Kan forårsage afbrydelser i tilgængeligheden, men alle indstillinger og cache vil blive genindlæst.</value>
   </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Slet spørgsmål</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Tillader redigering af spørgsmål, uanset ejerskab.</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Rediger enhver kategori</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Slet enhver kategori</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Tillader sletning af spørgsmål, uanset ejerskab.</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Rediger spørgsmål</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Tillader sletning af enhver kategori, uanset ejerskab.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Tillader redigering af enhver kategori, uanset ejerskab.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Tilføj spørgsmål</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Slet enhver videnhed</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Rediger enhver videnhed</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Tillader redigering af enhver knowledgePoint, uanset ejerskab.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Tillader sletning af enhver knowledgePoint, uanset ejerskab.</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Tilføj enhver videnhed</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Tillader tilføjelse af enhver knowledgePoint, uanset ejerskab.</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Tillader tilføjelse af spørgsmål, uanset ejerskab.</value>
+  </data>
 
 </root>

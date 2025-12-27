@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>授予重启应用程序实例的权限。可能导致服务中断，但所有设置和缓存都将重新加载。</value>
   </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>编辑题目</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>编辑任意分类</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>删除题目</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>删除任意分类</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>允许编辑问题，无论所有权归属。</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>允许删除问题，无论其归属如何。</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>允许删除任何类别，无论其所有权归属。</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>允许编辑任何类别，无论其归属如何。</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>添加题目</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>允许添加问题，无论所有权归属。</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>编辑任意知识点</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>添加任意知识点</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>删除任意知识点</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>允许编辑任何知识点，无论其归属如何。</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>允许添加任何知识点，无论其归属如何。</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>允许删除任何知识点，无论其归属如何。</value>
+  </data>
 
 </root>

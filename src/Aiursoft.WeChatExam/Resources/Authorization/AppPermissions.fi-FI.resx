@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Antaa luvan sovelluksen uudelleenkäynnistämiseen. Saattaa aiheuttaa käyttökatkoksia, mutta kaikki asetukset ja välimuisti ladataan uudelleen.</value>
   </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Poista kysymyksiä</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Muokkaa kysymyksiä</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Poista mikä tahansa kategoria</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Muokkaa mitä tahansa kategoriaa</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Sallii kysymysten muokkaamisen omistajuudesta riippumatta.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Sallii kysymysten poistamisen omistajuudesta riippumatta.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Sallii minkä tahansa kategorian poistamisen, omistajuudesta riippumatta.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Sallii minkä tahansa kategorian muokkaamisen omistajuudesta riippumatta.</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Poista mikä tahansa KnowledgePoint</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Sallii kysymysten lisäämisen omistajuudesta riippumatta.</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Lisää mikä tahansa tietopiste</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Lisää kysymyksiä</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Muokkaa mitä tahansa tietopistettä</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Sallii minkä tahansa knowledgePointin poistamisen, riippumatta omistajuudesta.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Sallii minkä tahansa knowledgePointin lisäämisen, riippumatta omistajuudesta.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Sallii minkä tahansa knowledgePointin muokkaamisen omistajuudesta riippumatta.</value>
+  </data>
 
 </root>

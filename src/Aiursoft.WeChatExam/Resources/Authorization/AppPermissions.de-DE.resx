@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Erteilt die Berechtigung, die Anwendungsinstanz neu zu starten. Kann zu Verfügbarkeitsunterbrechungen führen, aber alle Einstellungen und der Cache werden neu geladen.</value>
   </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Fragen bearbeiten</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Fragen löschen</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Beliebige Kategorie löschen</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Beliebige Kategorie bearbeiten</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Bearbeiten von Fragen, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Löschen von Fragen, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Löschen beliebiger Kategorien, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Bearbeiten beliebiger Kategorien, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Fragen hinzufügen</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Hinzufügen von Fragen, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Beliebigen Wissenspunkt löschen</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Jeden Wissenspunkt bearbeiten</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Beliebigen Wissenspunkt hinzufügen</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Löschen eines beliebigen knowledgePoint, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Hinzufügen beliebiger KnowledgePoints, unabhängig vom Eigentümer.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Ermöglicht das Bearbeiten eines beliebigen KnowledgePoints, unabhängig vom Eigentümer.</value>
+  </data>
 
 </root>

@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Verleent toestemming om de applicatie-instantie opnieuw op te starten. Kan beschikbaarheidsonderbrekingen veroorzaken, maar alle instellingen en cache worden opnieuw geladen.</value>
   </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Verwijder elke categorie</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Vragen bewerken</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Vragen verwijderen</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Elke categorie bewerken</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Staat het bewerken van vragen toe, ongeacht wie de eigenaar is.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Staat het verwijderen van elke categorie toe, ongeacht eigendom.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Staat het verwijderen van vragen toe, ongeacht wie de eigenaar is.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Staat het bewerken van elke categorie toe, ongeacht de eigenaar.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Vragen toevoegen</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Verwijder elk kennispunt</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Staat het verwijderen van elk knowledgePoint toe, ongeacht eigendom.</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Voeg elk kennispunt toe</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Elke kennisonderwerp bewerken</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Staat het toevoegen van vragen toe, ongeacht wie de eigenaar is.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Staat het toevoegen van elk knowledgePoint toe, ongeacht eigendom.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Staat het bewerken van elk knowledgePoint toe, ongeacht eigendom.</value>
+  </data>
 
 </root>

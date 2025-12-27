@@ -20,7 +20,9 @@ public class KnowledgePointsController : ControllerBase
     /// 获取所有顶级知识点及其完整树状结构
     /// </summary>
     /// <returns>知识点树列表，支持任意深度嵌套</returns>
+    /// <response code="200">成功返回知识点树列表</response>
     [HttpGet("all")]
+    [ProducesResponseType(typeof(List<KnowledgePointDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetKnowledgePointAll()
     {
         // 获取所有知识点（用于后续构建树）
@@ -47,7 +49,11 @@ public class KnowledgePointsController : ControllerBase
     /// </summary>
     /// <param name="id">知识点ID</param>
     /// <returns>包含完整树状结构的知识点</returns>
+    /// <response code="200">成功返回指定知识点及其子树</response>
+    /// <response code="404">未找到指定知识点</response>
     [HttpGet("all/{id}")]
+    [ProducesResponseType(typeof(KnowledgePointDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetKnowledgePoint(Guid id)
     {
         var knowledgePoint = await _context.KnowledgePoints
@@ -70,8 +76,16 @@ public class KnowledgePointsController : ControllerBase
         return Ok(result);
     }
     
-    // GET: api/knowledgePoints/{id}
+    /// <summary>
+    /// 获取单个知识点的详细内容
+    /// </summary>
+    /// <param name="id">知识点ID</param>
+    /// <returns>知识点详细信息</returns>
+    /// <response code="200">成功返回知识点内容</response>
+    /// <response code="404">未找到指定知识点</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(KnowledgeDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetKnowledgeContent(Guid id)
     {
         var knowledgePoint = await _context.KnowledgePoints
@@ -118,11 +132,13 @@ public class KnowledgePointsController : ControllerBase
     }
     
     /// <summary>
-    /// 通过 categoryId 获取知识点及其相关题目
+    /// 通过分类ID获取知识点及其相关题目
     /// </summary>
     /// <param name="categoryId">分类ID</param>
     /// <returns>知识点及题目列表</returns>
+    /// <response code="200">成功返回知识点及题目列表</response>
     [HttpGet]
+    [ProducesResponseType(typeof(List<KnowledgePointWithQuestionsDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByCategory([FromQuery] Guid categoryId)
     {
         // 查询所有属于该分类的知识点

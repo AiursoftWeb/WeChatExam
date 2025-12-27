@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Cấp quyền khởi động lại phiên bản ứng dụng. Có thể gây ra gián đoạn về tính khả dụng nhưng tất cả cài đặt và bộ nhớ đệm sẽ được tải lại.</value>
   </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Chỉnh sửa Câu hỏi</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Xóa Câu Hỏi</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Xóa Bất Kỳ Danh Mục Nào</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Chỉnh sửa Bất kỳ Danh mục nào</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Thêm Câu Hỏi</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Xóa Bất Kỳ Điểm Kiến Thức Nào</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Chỉnh sửa Bất kỳ Điểm Kiến thức nào</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Thêm Bất Kỳ Điểm Kiến Thức Nào</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
+  </data>
 
 </root>

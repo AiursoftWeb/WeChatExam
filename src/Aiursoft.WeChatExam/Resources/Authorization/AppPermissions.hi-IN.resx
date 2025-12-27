@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>एप्लिकेशन इंस्टेंस को पुनरारंभ करने की अनुमति प्रदान करता है। इससे उपलब्धता में व्यवधान हो सकता है, लेकिन सभी सेटिंग्स और कैश पुनः लोड हो जाएंगे।</value>
   </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>प्रश्न संपादित करें</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>प्रश्न हटाएं</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>किसी भी श्रेणी को हटाएं</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>किसी भी श्रेणी को संपादित करें</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>स्वामित्व की परवाह किए बिना प्रश्नों को हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>किसी भी श्रेणी को, स्वामित्व की परवाह किए बिना, हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>किसी भी श्रेणी को, स्वामित्व की परवाह किए बिना, संपादित करने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>सवालों को संपादित करने की अनुमति देता है, चाहे उनका स्वामित्व किसी के पास हो।</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>प्रश्न जोड़ें</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>किसी भी ज्ञान बिंदु को हटाएं</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>स्वामित्व की परवाह किए बिना, प्रश्न जोड़ने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>किसी भी ज्ञानबिंदु को संपादित करें</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>कोई भी नॉलेजपॉइंट जोड़ें</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, संपादित करने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, जोड़ने की अनुमति देता है।</value>
+  </data>
 
 </root>
