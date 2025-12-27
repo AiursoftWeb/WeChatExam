@@ -69,10 +69,12 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AudioUrl")
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
                         .IsRequired()
+                        .HasMaxLength(10000)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreationTime")
