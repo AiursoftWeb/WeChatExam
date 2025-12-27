@@ -30,4 +30,7 @@ public class Category
 
     [InverseProperty(nameof(Question.Category))]
     public IEnumerable<Question> Questions { get; init; } = new List<Question>();
+
+    [InverseProperty(nameof(CategoryKnowledgePoint.Category))]
+    public IEnumerable<CategoryKnowledgePoint> CategoryKnowledgePoints { get; init; } = new List<CategoryKnowledgePoint>();
 }

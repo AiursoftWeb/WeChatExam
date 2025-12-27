@@ -116,4 +116,45 @@ public class KnowledgePointsController : ControllerBase
                 .ToList()
         };
     }
+    
+    /// <summary>
+    /// 通过 categoryId 获取知识点及其相关题目
+    /// </summary>
+    /// <param name="categoryId">分类ID</param>
+    /// <returns>知识点及题目列表</returns>
+    [HttpGet]
+    public async Task<IActionResult> GetByCategory([FromQuery] Guid categoryId)
+    {
+        // 查询所有属于该分类的知识点
+        var knowledgePoints = await _context.CategoryKnowledgePoints
+            .Where(x => x.CategoryId == categoryId)
+            .Include(x => x.KnowledgePoint)
+                .ThenInclude(kp => kp.KnowledgePointQuestions)
+                    .ThenInclude(kpq => kpq.Question)
+            .Select(x => x.KnowledgePoint)
+            .ToListAsync();
+
+        var result = knowledgePoints.Select(kp => new KnowledgePointWithQuestionsDto
+        {
+            Id = kp.Id,
+            Title = kp.Title,
+            Content = kp.Content,
+            AudioUrl = kp.AudioUrl,
+            Questions = kp.KnowledgePointQuestions
+                .Select(kpq => kpq.Question)
+                .Select(q => new QuestionContentDto
+                {
+                    Id = q.Id,
+                    Type = q.Type,
+                    Text = q.Text,
+                    List = q.List,
+                    SingleCorrect = q.SingleCorrect,
+                    FillInCorrect = q.FillInCorrect,
+                    Explanation = q.Explanation
+                }).ToList()
+        }).ToList();
+
+        return Ok(result);
+    }
+
 }

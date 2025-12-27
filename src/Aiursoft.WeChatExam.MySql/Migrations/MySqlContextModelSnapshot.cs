@@ -46,6 +46,27 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryKnowledgePoint", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("KnowledgePointId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("KnowledgePointId");
+
+                    b.ToTable("CategoryKnowledgePoints");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
                 {
                     b.Property<Guid>("Id")
@@ -75,6 +96,27 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("KnowledgePoints");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePointQuestion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("KnowledgePointId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KnowledgePointId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("KnowledgePointQuestions");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
@@ -386,6 +428,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryKnowledgePoint", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
+                        .WithMany("CategoryKnowledgePoints")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "KnowledgePoint")
+                        .WithMany("CategoryKnowledgePoints")
+                        .HasForeignKey("KnowledgePointId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("KnowledgePoint");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "Parent")
@@ -393,6 +454,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .HasForeignKey("ParentId");
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePointQuestion", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "KnowledgePoint")
+                        .WithMany("KnowledgePointQuestions")
+                        .HasForeignKey("KnowledgePointId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Question", "Question")
+                        .WithMany("KnowledgePointQuestions")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("KnowledgePoint");
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
@@ -478,6 +558,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Category", b =>
                 {
+                    b.Navigation("CategoryKnowledgePoints");
+
                     b.Navigation("Children");
 
                     b.Navigation("Questions");
@@ -485,7 +567,16 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
                 {
+                    b.Navigation("CategoryKnowledgePoints");
+
                     b.Navigation("Children");
+
+                    b.Navigation("KnowledgePointQuestions");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
+                {
+                    b.Navigation("KnowledgePointQuestions");
                 });
 #pragma warning restore 612, 618
         }
