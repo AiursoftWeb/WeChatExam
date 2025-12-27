@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Przyznaje uprawnienie do ponownego uruchomienia instancji aplikacji. Może powodować przerwy w dostępności, ale wszystkie ustawienia i pamięć podręczna zostaną przeładowane.</value>
   </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Usuń pytania</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Edytuj pytania</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Usuń dowolną kategorię</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Edytuj dowolną kategorię</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na edycję pytań, niezależnie od ich przynależności.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na usuwanie pytań, niezależnie od ich przynależności.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na usunięcie dowolnej kategorii, niezależnie od jej właściciela.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na edycję dowolnej kategorii, niezależnie od jej właściciela.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Dodaj pytania</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Usuń dowolny punkt wiedzy</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Edytuj dowolny punkt wiedzy</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na dodawanie pytań, niezależnie od ich przynależności.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na usunięcie dowolnego knowledgePoint, niezależnie od jego przynależności.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Umożliwia edycję dowolnego knowledgePoint, niezależnie od jego przynależności.</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Dodaj dowolny punkt wiedzy</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Pozwala na dodawanie dowolnego knowledgePoint, niezależnie od jego właściciela.</value>
+  </data>
 
 </root>

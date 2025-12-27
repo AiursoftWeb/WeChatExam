@@ -17,12 +17,15 @@ public class QuestionsController : ControllerBase
     }
 
     /// <summary>
-    /// GET: api/questions?categoryId=categoryId0001
     /// 获取指定分类下的所有题目
     /// </summary>
     /// <param name="categoryId">分类ID</param>
     /// <returns>题目列表，按创建时间倒序</returns>
+    /// <response code="200">成功返回题目列表</response>
+    /// <response code="404">指定的分类不存在</response>
     [HttpGet]
+    [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetQuestions([FromQuery] Guid categoryId)
     {
         // 验证分类是否存在
@@ -56,12 +59,15 @@ public class QuestionsController : ControllerBase
     }
 
     /// <summary>
-    /// GET: api/questions/{id}
-    /// 获取单个题目
+    /// 获取单个题目详情
     /// </summary>
     /// <param name="id">题目ID</param>
-    /// <returns>单个题目</returns>
+    /// <returns>单个题目详情</returns>
+    /// <response code="200">成功返回题目详情</response>
+    /// <response code="404">未找到指定题目</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetQuestion(Guid id)
     {
         var question = await _context.Questions

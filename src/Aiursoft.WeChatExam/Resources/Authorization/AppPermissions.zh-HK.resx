@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>授予重啟應用程式實例嘅權限。可能會導致服務中斷，但所有設定同快取將會重新載入。</value>
   </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>編輯任何類別</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>刪除題目</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>允許編輯問題，不論擁有權。</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>刪除任何類別</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>允許刪除問題，不論擁有權。</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>編輯試題</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>允許刪除任何類別，不論其擁有者為何。</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>允許編輯任何類別，不論擁有權。</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>新增題目</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>允許新增題目，不論擁有權。</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>編輯任何知識點</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>刪除任何知識點</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>允許編輯任何知識點，不論其擁有者。</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>新增任何知識點</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>允許刪除任何知識點，不論其擁有者為何。</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>允許新增任何知識點，不論其擁有者為何。</value>
+  </data>
 
 </root>

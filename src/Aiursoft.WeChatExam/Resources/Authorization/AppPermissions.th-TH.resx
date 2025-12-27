@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>ให้สิทธิ์ในการรีสตาร์ทอินสแตนซ์แอปพลิเคชัน อาจทำให้เกิดการขัดจังหวะในการให้บริการ แต่การตั้งค่าและแคชทั้งหมดจะถูกโหลดใหม่</value>
   </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>ลบคำถาม</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>แก้ไขคำถาม</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>ลบหมวดหมู่ใดก็ได้</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>แก้ไขหมวดหมู่ใดก็ได้</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้ลบคำถามได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้แก้ไขคำถามได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้แก้ไขหมวดหมู่ใดก็ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้ลบหมวดหมู่ใด ๆ ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>เพิ่มคำถาม</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>ลบจุดความรู้ใดๆ</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>เพิ่มความรู้จุดใดก็ได้</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้เพิ่มคำถามได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>แก้ไขจุดความรู้ใดๆ</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้แก้ไข knowledgePoint ใดๆ ก็ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้เพิ่ม knowledgePoint ใดๆ ก็ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้ลบ knowledgePoint ใดๆ ก็ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
+  </data>
 
 </root>

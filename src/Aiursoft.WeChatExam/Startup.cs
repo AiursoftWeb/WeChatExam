@@ -104,6 +104,10 @@ public class Startup : IWebStartup
 
             // Only add security requirement to endpoints that are NOT decorated with [AllowAnonymous]
             c.OperationFilter<SecurityRequirementsOperationFilter>();
+
+            var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
         });
     }
 

@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>يمنح الإذن بإعادة تشغيل نسخة التطبيق. قد يتسبب ذلك في انقطاعات في التوفر ولكن سيتم إعادة تحميل جميع الإعدادات والذاكرة المؤقتة.</value>
   </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>حذف أي فئة</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>حذف الأسئلة</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>تعديل أي فئة</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>تعديل الأسئلة</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>يسمح بحذف الأسئلة، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>يسمح بتعديل أي فئة، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>يسمح بحذف أي فئة، بغض النظر عن ملكيتها.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>يسمح بتعديل الأسئلة، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>إضافة الأسئلة</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>تعديل أي نقطة معرفة</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>حذف أي نقطة معرفة</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>إضافة أي نقطة معرفة</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>يسمح بإضافة الأسئلة، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>يسمح بتعديل أي knowledgePoint، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>يسمح بإضافة أي نقطة معرفة، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>يسمح بحذف أي نقطة معرفة، بغض النظر عن الملكية.</value>
+  </data>
 
 </root>

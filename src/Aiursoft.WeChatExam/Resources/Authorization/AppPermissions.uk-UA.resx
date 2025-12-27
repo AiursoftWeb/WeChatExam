@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Надає дозвіл на перезапуск екземпляра програми. Може призвести до перерв у доступності, але всі налаштування та кеш буде перезавантажено.</value>
   </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Видалення питань</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Редагувати питання</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє редагування питань, незалежно від власності.</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Видалити будь-яку категорію</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Редагувати будь-яку категорію</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення питань, незалежно від власності.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє редагувати будь-яку категорію, незалежно від прав власності.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення будь-якої категорії, незалежно від прав власності.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Додати питання</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Редагувати будь-який KnowledgePoint</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Видалити будь-яку точку знань</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавання питань, незалежно від власності.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення будь-якого knowledgePoint, незалежно від прав власності.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє редагувати будь-який knowledgePoint, незалежно від прав власності.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавання будь-якого knowledgePoint, незалежно від власності.</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Додати будь-який знаннєвий пункт</value>
+  </data>
 
 </root>

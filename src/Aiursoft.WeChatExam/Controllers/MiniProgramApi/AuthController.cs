@@ -21,10 +21,18 @@ public class AuthController(
     private readonly AppSettings _appSettings = appSettings.Value;
 
     /// <summary>
-    /// WeChat mini-program login endpoint
-    /// Exchanges WeChat code for JWT token, following the template pattern
+    /// WeChat mini-program login endpoint.
+    /// Exchanges WeChat code for a JWT token.
     /// </summary>
+    /// <param name="model">The login model containing the WeChat code.</param>
+    /// <returns>A JWT token and user information.</returns>
+    /// <response code="200">Returns the JWT token and user info.</response>
+    /// <response code="400">If the code is empty or WeChat authentication fails.</response>
+    /// <response code="500">If the user cannot be created or synced.</response>
     [HttpPost("login")]
+    [ProducesResponseType(typeof(TokenDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Login([FromBody] Code2SessionDto model)
     {
         if (!_appSettings.WeChatEnabled)
@@ -72,10 +80,20 @@ public class AuthController(
     }
 
     /// <summary>
-    /// Debug endpoint to exchange a magic key for a WeChat token
-    /// For development/testing purposes only - allows getting a WeChat token without actual WeChat login
+    /// Debug endpoint to exchange a magic key for a WeChat token.
+    /// For development/testing purposes only - allows getting a WeChat token without actual WeChat login.
     /// </summary>
+    /// <param name="model">The debug token request containing the magic key.</param>
+    /// <returns>A JWT token for the debugger user.</returns>
+    /// <response code="200">Returns the JWT token.</response>
+    /// <response code="400">If the debug magic key is not configured or available.</response>
+    /// <response code="401">If the provided magic key is invalid.</response>
+    /// <response code="500">If the debug user cannot be created.</response>
     [HttpPost("exchange_debug_token")]
+    [ProducesResponseType(typeof(TokenDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> ExchangeDebugToken([FromBody] DebugTokenRequestDto model)
     {
         // Check if debug magic key is configured

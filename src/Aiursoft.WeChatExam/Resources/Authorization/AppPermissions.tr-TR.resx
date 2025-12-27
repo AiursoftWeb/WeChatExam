@@ -84,5 +84,53 @@
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Uygulama örneğini yeniden başlatma iznini verir. Kullanılabilirlik kesintilerine neden olabilir ancak tüm ayarlar ve önbellek yeniden yüklenecektir.</value>
   </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Soruları Sil</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Soruları Düzenle</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Herhangi Bir Kategoriyi Düzenle</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Herhangi Bir Kategoriyi Sil</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Sahipliğine bakılmaksızın soruların düzenlenmesine izin verir.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Sahip olma durumuna bakılmaksızın soruların silinmesine izin verir.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Sahiplik durumuna bakılmaksızın herhangi bir kategoriyi düzenlemeye izin verir.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir kategorinin, sahipliğine bakılmaksızın silinmesine izin verir.</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Soru Ekle</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Sahipliğine bakılmaksızın soru eklenmesine izin verir.</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Herhangi Bir Bilgi Noktasını Sil</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın silinmesine izin verir.</value>
+  </data>
+  <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Herhangi Bir Bilgi Noktası Ekle</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Herhangi Bir Bilgi Noktasını Düzenle</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir knowledgePoint&apos;i, sahipliğine bakılmaksızın düzenlemeye izin verir.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın eklenmesine izin verir.</value>
+  </data>
 
 </root>

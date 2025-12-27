@@ -16,8 +16,13 @@ public class CategoriesController : ControllerBase
         _context = context;
     }
 
-    // GET: api/categories/all
+    /// <summary>
+    /// Retrieves all root categories with their children.
+    /// </summary>
+    /// <returns>A list of categories.</returns>
+    /// <response code="200">Returns the list of categories.</response>
     [HttpGet("all")]
+    [ProducesResponseType(typeof(List<CategoryDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCategoryAll()
     {
         var categories = await _context.Categories
@@ -38,8 +43,16 @@ public class CategoriesController : ControllerBase
         return Ok(categories);
     }
 
-    // GET: api/categories/{id}
+    /// <summary>
+    /// Retrieves a specific category by its ID.
+    /// </summary>
+    /// <param name="id">The unique identifier of the category.</param>
+    /// <returns>The requested category details.</returns>
+    /// <response code="200">Returns the category.</response>
+    /// <response code="404">If the category is not found.</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(CategoryDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetCategory(Guid id)
     {
         var category = await _context.Categories
