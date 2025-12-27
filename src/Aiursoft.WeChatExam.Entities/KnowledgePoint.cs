@@ -12,8 +12,10 @@ public class KnowledgePoint
     [MaxLength(200)]
     public required string Title { get; set; }
     
+    [MaxLength(1000)]
     public string? AudioUrl { get; set; }
     
+    [MaxLength(10000)]
     public required string Content { get; set; }
 
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
