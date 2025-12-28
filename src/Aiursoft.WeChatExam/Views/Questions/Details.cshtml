@@ -4,24 +4,23 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <dl class="row mb-0">
-            <dt class="col-sm-2">@Localizer["Text"]</dt>
-            <dd class="col-sm-10">@Model.Question?.Text</dd>
+            <dt class="col-sm-2">@Localizer["Content"]</dt>
+            <dd class="col-sm-10">@Model.Question?.Content</dd>
 
             <dt class="col-sm-2">@Localizer["Type"]</dt>
-            <dd class="col-sm-10">@Model.Question?.Type</dd>
+            <dd class="col-sm-10">@Model.Question?.QuestionType</dd>
 
             <dt class="col-sm-2">@Localizer["Category"]</dt>
             <dd class="col-sm-10">@Model.Category?.Title</dd>
+            
+            <dt class="col-sm-2">@Localizer["Grading Strategy"]</dt>
+            <dd class="col-sm-10">@Model.Question?.GradingStrategy</dd>
 
-            <dt class="col-sm-2">@Localizer["Options"]</dt>
-            <dd class="col-sm-10">@Model.Question?.List</dd>
+            <dt class="col-sm-2">@Localizer["Metadata"]</dt>
+            <dd class="col-sm-10">@Model.Question?.Metadata</dd>
 
-            <dt class="col-sm-2">@Localizer["Single Correct"]</dt>
-            <dd class="col-sm-10">@Model.Question?.SingleCorrect</dd>
-
-            <dt class="col-sm-2">@Localizer["Fill In Correct"]</dt>
-            <dd class="col-sm-10">@Model.Question?.FillInCorrect</dd>
+            <dt class="col-sm-2">@Localizer["Standard Answer"]</dt>
+            <dd class="col-sm-10">@Model.Question?.StandardAnswer</dd>
 
             <dt class="col-sm-2">@Localizer["Explanation"]</dt>
             <dd class="col-sm-10">@Model.Question?.Explanation</dd>

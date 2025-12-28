@@ -11,39 +11,37 @@ public class Question
     public Guid Id { get; init; }
 
     /// <summary>
-    /// 题目类型：'singleChoice' 或 'fillIn'
-    /// </summary>
-    [Required]
-    [MaxLength(50)]
-    public required string Type { get; set; }
-
-    /// <summary>
-    /// 题目描述文本
+    /// 题干内容。可能包含文本、图片链接，或者填空题的下划线占位符（如 `____`）。
     /// </summary>
     [Required]
     [MaxLength(2000)]
-    public required string Text { get; set; }
+    public required string Content { get; set; }
 
     /// <summary>
-    /// 单选题选项列表，JSON 序列化为字符串数组
-    /// 对于填空题，此字段应为空字符串或包含 []
+    /// 题目展示类型。决定前端渲染什么控件。
+    /// Choice, Blank, Bool, ShortAnswer, Essay
+    /// </summary>
+    [Required]
+    public QuestionType QuestionType { get; set; }
+
+    /// <summary>
+    /// 判卷方法。决定后端如何计算得分。
+    /// ExactMatch, FuzzyMatch, AiEval
+    /// </summary>
+    [Required]
+    public GradingStrategy GradingStrategy { get; set; }
+
+    /// <summary>
+    /// 题的Metadata（可能是选择题的Choices，是个JSON，后端不管，无脑返回前端）
     /// </summary>
     [MaxLength(5000)]
-    public string List { get; set; } = string.Empty;
+    public string Metadata { get; set; } = string.Empty;
 
     /// <summary>
-    /// 单选题的正确答案
-    /// 对于填空题，此字段应为空字符串
-    /// </summary>
-    [MaxLength(1000)]
-    public string SingleCorrect { get; set; } = string.Empty;
-
-    /// <summary>
-    /// 填空题的正确答案数组，JSON 序列化为字符串
-    /// 对于单选题，此字段应为 null 或空字符串
+    /// 判卷标准/正确答案。
     /// </summary>
     [MaxLength(5000)]
-    public string FillInCorrect { get; set; } = string.Empty;
+    public string StandardAnswer { get; set; } = string.Empty;
 
     /// <summary>
     /// 题目解析

@@ -1,6 +1,7 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services.Authentication;
+using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -13,10 +14,14 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 public class UserPracticeHistoryController : ControllerBase
 {
     private readonly TemplateDbContext _context;
+    private readonly IGradingService _gradingService;
 
-    public UserPracticeHistoryController(TemplateDbContext context)
+    public UserPracticeHistoryController(
+        TemplateDbContext context,
+        IGradingService gradingService)
     {
         _context = context;
+        _gradingService = gradingService;
     }
 
     /// <summary>
@@ -82,18 +87,23 @@ public class UserPracticeHistoryController : ControllerBase
 
         // 检查用户和题目是否存在
         var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
-        var questionExists = await _context.Questions.AnyAsync(q => q.Id == dto.QuestionId);
-        if (!userExists || !questionExists)
+        var question = await _context.Questions.FirstOrDefaultAsync(q => q.Id == dto.QuestionId);
+        
+        if (!userExists || question == null)
         {
             return BadRequest(new { Message = "User or Question not found" });
         }
+
+        // Server-side Grading
+        var gradingResult = await _gradingService.GradeAsync(question, dto.UserAnswer);
+
         var entity = new UserPracticeHistory
         {
             Id = Guid.NewGuid(),
             UserId = userId,
             QuestionId = dto.QuestionId,
             UserAnswer = dto.UserAnswer,
-            IsCorrect = dto.IsCorrect,
+            IsCorrect = gradingResult.IsCorrect,
             CreationTime = DateTime.UtcNow
         };
         _context.UserPracticeHistories.Add(entity);

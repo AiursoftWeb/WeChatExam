@@ -90,11 +90,11 @@ public class QuestionsController(TemplateDbContext context) : Controller
         var question = new Question
         {
             Id = Guid.NewGuid(),
-            Type = model.Type,
-            Text = model.Text,
-            List = model.List,
-            SingleCorrect = model.SingleCorrect,
-            FillInCorrect = model.FillInCorrect,
+            Content = model.Content,
+            QuestionType = model.QuestionType,
+            GradingStrategy = model.GradingStrategy,
+            Metadata = model.Metadata,
+            StandardAnswer = model.StandardAnswer,
             Explanation = model.Explanation,
             CategoryId = model.CategoryId
         };
@@ -137,11 +137,11 @@ public class QuestionsController(TemplateDbContext context) : Controller
         var model = new EditViewModel
         {
             Id = id.Value,
-            Type = question.Type,
-            Text = question.Text,
-            List = question.List,
-            SingleCorrect = question.SingleCorrect,
-            FillInCorrect = question.FillInCorrect,
+            Content = question.Content,
+            QuestionType = question.QuestionType,
+            GradingStrategy = question.GradingStrategy,
+            Metadata = question.Metadata,
+            StandardAnswer = question.StandardAnswer,
             Explanation = question.Explanation,
             CategoryId = question.CategoryId,
             Categories = categories
@@ -178,11 +178,11 @@ public class QuestionsController(TemplateDbContext context) : Controller
             return this.StackView(model);
         }
 
-        question.Type = model.Type;
-        question.Text = model.Text;
-        question.List = model.List;
-        question.SingleCorrect = model.SingleCorrect;
-        question.FillInCorrect = model.FillInCorrect;
+        question.Content = model.Content;
+        question.QuestionType = model.QuestionType;
+        question.GradingStrategy = model.GradingStrategy;
+        question.Metadata = model.Metadata;
+        question.StandardAnswer = model.StandardAnswer;
         question.Explanation = model.Explanation;
         question.CategoryId = model.CategoryId;
 

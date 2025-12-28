@@ -15,18 +15,20 @@ public class EditViewModel : UiStackLayoutViewModel
     public Guid Id { get; set; }
 
     [Required]
-    [MaxLength(50)]
-    public string Type { get; set; } = string.Empty;
+    [MaxLength(2000)]
+    public string Content { get; set; } = string.Empty;
 
     [Required]
-    [MaxLength(2000)]
-    public string Text { get; set; } = string.Empty;
+    public QuestionType QuestionType { get; set; }
 
-    public string List { get; set; } = string.Empty;
+    [Required]
+    public GradingStrategy GradingStrategy { get; set; }
 
-    public string SingleCorrect { get; set; } = string.Empty;
+    [MaxLength(5000)]
+    public string Metadata { get; set; } = string.Empty;
 
-    public string FillInCorrect { get; set; } = string.Empty;
+    [MaxLength(5000)]
+    public string StandardAnswer { get; set; } = string.Empty;
 
     [MaxLength(3000)]
     public string Explanation { get; set; } = string.Empty;
