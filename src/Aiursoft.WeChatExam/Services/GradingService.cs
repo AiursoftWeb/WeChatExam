@@ -8,8 +8,8 @@ public class GradingService : IGradingService, IScopedDependency
     public async Task<GraingResult> GradeAsync(Question question, string userAnswer)
     {
         // Trim inputs
-        userAnswer = userAnswer?.Trim() ?? string.Empty;
-        var standardAnswer = question.StandardAnswer?.Trim() ?? string.Empty;
+        userAnswer = userAnswer.Trim();
+        var standardAnswer = question.StandardAnswer.Trim();
 
         switch (question.GradingStrategy)
         {
@@ -58,6 +58,8 @@ public class GradingService : IGradingService, IScopedDependency
         // In real impl, this would call an LLM service
         
         // Stub implementation:
+        _ = questionContent;
+        _ = standardAnswer;
         var isCorrect = !string.IsNullOrWhiteSpace(userAnswer);
         
         return Task.FromResult(new GraingResult
