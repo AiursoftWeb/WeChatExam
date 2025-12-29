@@ -214,15 +214,18 @@ public class ManagementTests
 
         // 1. Create Question
         var qText = $"Test Question {Guid.NewGuid()}";
-        var qType = "singleChoice";
+        var qType = "0";
+        var qStrategy= "0";
         var createToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
         var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            { "Type", qType },
-            { "Text", qText },
+            { "Content", qText},
+            { "QuestionType", qType },
+            { "GradingStrategy", qStrategy },
             { "CategoryId", categoryId },
-            { "List", "[\"A\", \"B\"]" },
-            { "SingleCorrect", "A" },
+            { "Metadata", "[\"A\", \"B\"]" },
+            { "StandardAnswer", "A" },
+            { "Explanation", "A is correct" },
             { "__RequestVerificationToken", createToken }
         });
         var createResponse = await _http.PostAsync("/Questions/Create", createContent);

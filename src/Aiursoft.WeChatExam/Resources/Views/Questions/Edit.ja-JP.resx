@@ -60,5 +60,20 @@
   <data name="Single Correct (for single choice)" xml:space="preserve">
     <value>単一正解（単一選択用）</value>
   </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>採点方法</value>
+  </data>
+  <data name="Select strategy" xml:space="preserve">
+    <value>戦略を選択</value>
+  </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>メタデータ（例: 選択肢 JSON）</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>標準回答</value>
+  </data>
 
 </root>
