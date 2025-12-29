@@ -108,6 +108,15 @@ public class UserPracticeHistoryController : ControllerBase
         };
         _context.UserPracticeHistories.Add(entity);
         await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { questionId = dto.QuestionId }, dto);
+        
+        var result = new UserPracticeHistoryDto
+        {
+            Id = entity.Id,
+            QuestionId = entity.QuestionId,
+            UserAnswer = entity.UserAnswer,
+            IsCorrect = entity.IsCorrect,
+            CreationTime = entity.CreationTime
+        };
+        return CreatedAtAction(nameof(Get), new { questionId = dto.QuestionId }, result);
     }
 }
