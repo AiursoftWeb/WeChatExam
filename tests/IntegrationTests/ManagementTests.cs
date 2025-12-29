@@ -246,11 +246,13 @@ public class ManagementTests
         var editContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Id", questionId },
-            { "Type", qType },
-            { "Text", newText },
+            { "questionType", qType },
+            { "GradingStrategy", qStrategy },
+            { "Content", newText },
             { "CategoryId", categoryId },
-            { "List", "[\"A\", \"B\"]" },
-            { "SingleCorrect", "B" }, // Changed answer
+            { "Metadata", "[\"A\", \"B\"]" },
+            { "StandardAnswer", "B" }, // Changed answer
+            { "Explanation", "A is correct" },
             { "__RequestVerificationToken", editToken }
         });
         var editResponse = await _http.PostAsync($"/Questions/Edit/{questionId}", editContent);
