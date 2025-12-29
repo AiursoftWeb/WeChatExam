@@ -130,6 +130,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
@@ -138,30 +143,21 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .HasMaxLength(3000)
                         .HasColumnType("varchar(3000)");
 
-                    b.Property<string>("FillInCorrect")
+                    b.Property<int>("GradingStrategy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Metadata")
                         .IsRequired()
                         .HasMaxLength(5000)
                         .HasColumnType("varchar(5000)");
 
-                    b.Property<string>("List")
+                    b.Property<int>("QuestionType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StandardAnswer")
                         .IsRequired()
                         .HasMaxLength(5000)
                         .HasColumnType("varchar(5000)");
-
-                    b.Property<string>("SingleCorrect")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("varchar(1000)");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("varchar(2000)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 

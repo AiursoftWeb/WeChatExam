@@ -214,15 +214,18 @@ public class ManagementTests
 
         // 1. Create Question
         var qText = $"Test Question {Guid.NewGuid()}";
-        var qType = "singleChoice";
+        var qType = "0";
+        var qStrategy= "0";
         var createToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
         var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            { "Type", qType },
-            { "Text", qText },
+            { "Content", qText},
+            { "QuestionType", qType },
+            { "GradingStrategy", qStrategy },
             { "CategoryId", categoryId },
-            { "List", "[\"A\", \"B\"]" },
-            { "SingleCorrect", "A" },
+            { "Metadata", "[\"A\", \"B\"]" },
+            { "StandardAnswer", "A" },
+            { "Explanation", "A is correct" },
             { "__RequestVerificationToken", createToken }
         });
         var createResponse = await _http.PostAsync("/Questions/Create", createContent);
@@ -243,11 +246,13 @@ public class ManagementTests
         var editContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Id", questionId },
-            { "Type", qType },
-            { "Text", newText },
+            { "questionType", qType },
+            { "GradingStrategy", qStrategy },
+            { "Content", newText },
             { "CategoryId", categoryId },
-            { "List", "[\"A\", \"B\"]" },
-            { "SingleCorrect", "B" }, // Changed answer
+            { "Metadata", "[\"A\", \"B\"]" },
+            { "StandardAnswer", "B" }, // Changed answer
+            { "Explanation", "A is correct" },
             { "__RequestVerificationToken", editToken }
         });
         var editResponse = await _http.PostAsync($"/Questions/Edit/{questionId}", editContent);

@@ -161,11 +161,9 @@ public class KnowledgePointsController : ControllerBase
                 .Select(q => new QuestionContentDto
                 {
                     Id = q.Id,
-                    Type = q.Type,
-                    Text = q.Text,
-                    List = q.List,
-                    SingleCorrect = q.SingleCorrect,
-                    FillInCorrect = q.FillInCorrect,
+                    QuestionType = q.QuestionType,
+                    Content = q.Content,
+                    Metadata = q.Metadata,
                     Explanation = q.Explanation
                 }).ToList()
         }).ToList();

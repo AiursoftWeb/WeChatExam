@@ -125,6 +125,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
@@ -133,29 +138,20 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasMaxLength(3000)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FillInCorrect")
+                    b.Property<int>("GradingStrategy")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Metadata")
                         .IsRequired()
                         .HasMaxLength(5000)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("List")
+                    b.Property<int>("QuestionType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("StandardAnswer")
                         .IsRequired()
                         .HasMaxLength(5000)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SingleCorrect")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

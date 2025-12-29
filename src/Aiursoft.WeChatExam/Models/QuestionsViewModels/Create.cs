@@ -12,27 +12,26 @@ public class CreateViewModel : UiStackLayoutViewModel
     }
 
     [Required]
-    [MaxLength(50)]
-    public string Type { get; set; } = string.Empty;
+    [MaxLength(2000)]
+    public string Content { get; set; } = string.Empty;
 
     [Required]
-    [MaxLength(2000)]
-    public string Text { get; set; } = string.Empty;
+    public QuestionType QuestionType { get; set; }
+
+    [Required]
+    public GradingStrategy GradingStrategy { get; set; }
 
     /// <summary>
-    /// 单选题选项列表，JSON 格式的字符串
+    /// Metadata (Choices, Logic, etc.) - JSON
     /// </summary>
-    public string List { get; set; } = string.Empty;
+    [MaxLength(5000)]
+    public string Metadata { get; set; } = string.Empty;
 
     /// <summary>
-    /// 单选题的正确答案，填空题为空字符串
+    /// Standard Answer / Grading Logic
     /// </summary>
-    public string SingleCorrect { get; set; } = string.Empty;
-
-    /// <summary>
-    /// 填空题的正确答案数组，JSON 格式的字符串
-    /// </summary>
-    public string FillInCorrect { get; set; } = string.Empty;
+    [MaxLength(5000)]
+    public string StandardAnswer { get; set; } = string.Empty;
 
     [MaxLength(3000)]
     public string Explanation { get; set; } = string.Empty;

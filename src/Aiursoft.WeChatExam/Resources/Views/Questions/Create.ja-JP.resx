@@ -60,5 +60,20 @@
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>正解（穴埋め問題用、JSON配列）</value>
   </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>採点方法</value>
+  </data>
+  <data name="Select strategy" xml:space="preserve">
+    <value>戦略を選択</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>標準回答</value>
+  </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>メタデータ (例: 選択肢のJSON)</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
 
 </root>

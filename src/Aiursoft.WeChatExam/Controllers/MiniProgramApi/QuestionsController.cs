@@ -42,14 +42,12 @@ public class QuestionsController : ControllerBase
             .OrderByDescending(q => q.CreationTime)
             .Select(q => new QuestionDto
             {
-                Type = q.Type,
+                QuestionType = q.QuestionType,
                 Value = new Value
                 {
                     Id = q.Id,
-                    Text = q.Text,
-                    List = ParseJsonArray(q.List),
-                    SingleCorrect = q.SingleCorrect,
-                    FillInCorrect = ParseJsonArray(q.FillInCorrect),
+                    Content = q.Content,
+                    Metadata = q.Metadata,
                     Explanation = q.Explanation
                 }
             })
@@ -80,14 +78,12 @@ public class QuestionsController : ControllerBase
 
         var dto = new QuestionDto
         {
-            Type = question.Type,
+            QuestionType = question.QuestionType,
             Value = new Value
             {
                 Id = question.Id,
-                Text = question.Text,
-                List = ParseJsonArray(question.List),
-                SingleCorrect = question.SingleCorrect,
-                FillInCorrect = ParseJsonArray(question.FillInCorrect),
+                Content = question.Content,
+                Metadata = question.Metadata,
                 Explanation = question.Explanation
             }
         };
@@ -95,45 +91,4 @@ public class QuestionsController : ControllerBase
         return Ok(dto);
     }
 
-    /// <summary>
-    /// 将 JSON 数组字符串解析为字符串数组
-    /// </summary>
-    /// <param name="json">JSON 字符串</param>
-    /// <returns>字符串数组，如果输入为空则返回空数组</returns>
-    private static string[] ParseJsonArray(string json)
-    {
-        if (string.IsNullOrWhiteSpace(json))
-        {
-            return Array.Empty<string>();
-        }
-
-        try
-        {
-            // 移除空格和换行
-            json = json.Trim();
-            if (json.StartsWith('[') && json.EndsWith(']'))
-            {
-                // 简单的 JSON 数组解析
-                json = json[1..^1]; // 移除 [ 和 ]
-                
-                if (string.IsNullOrWhiteSpace(json))
-                {
-                    return Array.Empty<string>();
-                }
-
-                var items = json.Split(',');
-                return items
-                    .Select(item => item.Trim().Trim('"'))
-                    .Where(item => !string.IsNullOrEmpty(item))
-                    .ToArray();
-            }
-        }
-        catch
-        {
-            // 解析失败，返回空数组
-            return Array.Empty<string>();
-        }
-
-        return Array.Empty<string>();
-    }
 }

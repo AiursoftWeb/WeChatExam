@@ -37,7 +37,7 @@
         <table class="table table-hover mb-0">
             <thead class="table-light">
                 <tr>
-                    <th>@Localizer["Text"]</th>
+                    <th>@Localizer["Content"]</th>
                     <th>@Localizer["Type"]</th>
                     <th>@Localizer["Category"]</th>
                     <th>@Localizer["Created"]</th>
@@ -48,8 +48,8 @@
                 @foreach (var question in Model.Questions)
                 {
                     <tr>
-                        <td>@question.Text</td>
-                        <td>@question.Type</td>
+                        <td>@question.Content</td>
+                        <td>@question.QuestionType</td>
                         <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                         <td>

@@ -23,7 +23,4 @@ public class CreateUserPracticeHistoryDto
     public Guid QuestionId { get; set; }
     
     public string UserAnswer { get; set; } = string.Empty;
-    
-    [Required]
-    public bool IsCorrect { get; set; }
 }
