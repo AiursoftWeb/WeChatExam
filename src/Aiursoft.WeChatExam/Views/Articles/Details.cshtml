@@ -1,0 +1,22 @@
+@model Aiursoft.WeChatExam.Models.ArticlesViewModels.DetailsViewModel
+
+<h1 class="h3 mb-3">@Localizer["Article Details"]</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">@Model.Article.Title</h5>
+        <div class="text-muted small mt-1">
+            @Localizer["Author"]: @Model.Article.Author?.DisplayName | 
+            @Localizer["Created"]: @Model.Article.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="article-content" style="white-space: pre-wrap;">
+            @Model.Article.Content
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <a asp-action="Edit" asp-route-id="@Model.Article.Id" class="btn btn-primary">@Localizer["Edit"]</a>
+        <a asp-action="Index" class="btn btn-secondary ms-2">@Localizer["Back to List"]</a>
+    </div>
+</div>

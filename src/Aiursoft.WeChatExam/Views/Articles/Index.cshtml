@@ -1,0 +1,58 @@
+@model Aiursoft.WeChatExam.Models.ArticlesViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Articles"]</h1>
+
+<div class="row mb-3">
+    <div class="col-12 text-end">
+        <a asp-action="Create" class="btn btn-primary btn-sm">
+            <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Article"]
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">@Localizer["Article List"]</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Title"]</th>
+                    <th>@Localizer["Author"]</th>
+                    <th>@Localizer["Created"]</th>
+                    <th style="width: 250px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var article in Model.Articles)
+                {
+                    <tr>
+                        <td>@article.Title</td>
+                        <td>@article.Author?.DisplayName</td>
+                        <td>@article.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@article.Id" class="btn btn-sm btn-outline-secondary me-1" title="@Localizer["Details"]">
+                                <i class="align-middle" data-lucide="eye"></i> @Localizer["Details"]
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@article.Id" class="btn btn-sm btn-outline-primary me-1" title="@Localizer["Edit"]">
+                                <i class="align-middle" data-lucide="edit"></i> @Localizer["Edit"]
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@article.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                <i class="align-middle" data-lucide="trash-2"></i> @Localizer["Delete"]
+                            </a>
+                        </td>
+                    </tr>
+                }
+                @if (!Model.Articles.Any())
+                {
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">
+                            @Localizer["No articles found"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

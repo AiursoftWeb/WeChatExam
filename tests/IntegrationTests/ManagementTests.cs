@@ -342,4 +342,59 @@ public class ManagementTests
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
         Assert.DoesNotContain(userName, indexHtml);
     }
+
+    [TestMethod]
+    public async Task ArticlesCrudTest()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Create Article
+        var title = $"Test-Article-{Guid.NewGuid()}";
+        var content = "This is a test article content.";
+        var createToken = await GetAntiCsrfToken("/Articles/Create");
+        var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", title },
+            { "Content", content },
+            { "__RequestVerificationToken", createToken }
+        });
+
+        var createResponse = await _http.PostAsync("/Articles/Create", createContent);
+        Assert.AreEqual(HttpStatusCode.Found, createResponse.StatusCode);
+        var detailsUrl = createResponse.Headers.Location?.OriginalString;
+        Assert.IsNotNull(detailsUrl);
+        
+        var articleId = detailsUrl.Split('/').Last().Split('?')[0];
+
+        // 2. Read Article
+        var detailsResponse = await _http.GetAsync(detailsUrl);
+        detailsResponse.EnsureSuccessStatusCode();
+        var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
+        Assert.Contains(title, detailsHtml);
+        Assert.Contains(content, detailsHtml);
+
+        // 3. Edit Article
+        var newTitle = $"Updated-Article-{Guid.NewGuid()}";
+        var editToken = await GetAntiCsrfToken($"/Articles/Edit/{articleId}");
+        var editContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Id", articleId },
+            { "Title", newTitle },
+            { "Content", content },
+            { "__RequestVerificationToken", editToken }
+        });
+        var editResponse = await _http.PostAsync($"/Articles/Edit/{articleId}", editContent);
+        Assert.AreEqual(HttpStatusCode.Found, editResponse.StatusCode);
+
+        // 4. Delete Article
+        var deleteToken = await GetAntiCsrfToken($"/Articles/Delete/{articleId}");
+        var deleteContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "__RequestVerificationToken", deleteToken }
+        });
+        var deleteResponse = await _http.PostAsync($"/Articles/Delete/{articleId}", deleteContent);
+        Assert.AreEqual(HttpStatusCode.Found, deleteResponse.StatusCode);
+        var location = deleteResponse.Headers.Location?.OriginalString;
+        Assert.IsTrue(location == "/Articles/Index" || location == "/Articles");
+    }
 }
