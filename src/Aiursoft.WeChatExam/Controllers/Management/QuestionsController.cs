@@ -163,7 +163,7 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
             Explanation = question.Explanation,
             CategoryId = question.CategoryId,
             Categories = categories,
-            Tags = string.Join(" ", tags.Select(t => t.Name))
+            Tags = string.Join(" ", tags.Select(t => t.DisplayName))
         };
 
         return this.StackView(model);
@@ -217,7 +217,7 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
             // Remove tags not in new list
             foreach (var t in currentTags)
             {
-                if (!tagNames.Contains(t.Name))
+                if (!tagNames.Contains(t.DisplayName))
                 {
                     await tagService.RemoveTagFromQuestionAsync(id, t.Id);
                 }
@@ -226,7 +226,7 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
             // Add new tags
             foreach (var tagName in tagNames)
             {
-                if (!currentTags.Any(t => t.Name == tagName))
+                if (!currentTags.Any(t => t.DisplayName == tagName))
                 {
                     var tag = await tagService.AddTagAsync(tagName);
                     await tagService.AddTagToQuestionAsync(id, tag.Id);

@@ -12,10 +12,11 @@ public class Tag
 
     [Required]
     [MaxLength(50)]
-    public required string Name { get; set; }
+    public required string DisplayName { get; set; }
 
+    [Required]
     [MaxLength(50)]
-    public string? Category { get; set; } // e.g. Year, School, Subject, AI_Generated
+    public required string NormalizedName { get; set; }
 
     [InverseProperty(nameof(QuestionTag.Tag))]
     public IEnumerable<QuestionTag> QuestionTags { get; init; } = new List<QuestionTag>();

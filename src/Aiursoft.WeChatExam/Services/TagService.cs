@@ -15,10 +15,11 @@ public class TagService : ITagService
         _dbContext = dbContext;
     }
 
-    public async Task<Tag> AddTagAsync(string name, string category = null)
+    public async Task<Tag> AddTagAsync(string displayName)
     {
+        var normalizedName = displayName.Trim().ToUpperInvariant();
         var existingTag = await _dbContext.Tags
-            .FirstOrDefaultAsync(t => t.Name == name && t.Category == category);
+            .FirstOrDefaultAsync(t => t.NormalizedName == normalizedName);
 
         if (existingTag != null)
         {
@@ -27,8 +28,8 @@ public class TagService : ITagService
 
         var newTag = new Tag
         {
-            Name = name,
-            Category = category
+            DisplayName = displayName,
+            NormalizedName = normalizedName
         };
 
         _dbContext.Tags.Add(newTag);
