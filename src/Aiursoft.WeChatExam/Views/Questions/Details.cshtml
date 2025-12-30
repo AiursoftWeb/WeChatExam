@@ -31,11 +31,11 @@
 
             <dt class="col-sm-2">@Localizer["Tags"]</dt>
             <dd class="col-sm-10">
-                @if (Model.Question?.QuestionTags?.Any() == true)
+                @if (Model.Question?.QuestionTags.Any() == true)
                 {
-                    foreach (var tag in Model.Question.QuestionTags.Select(qt => qt.Tag))
+                    foreach (var tag in Model.Question!.QuestionTags.Select(qt => qt.Tag))
                     {
-                        <span class="badge bg-secondary me-1">@tag?.DisplayName</span>
+                        <span class="badge bg-secondary me-1">@tag.DisplayName</span>
                     }
                 }
                 else

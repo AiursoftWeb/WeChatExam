@@ -194,9 +194,9 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
         await context.SaveChangesAsync();
 
         // Process tags
-        if (model.Tags != null)
+        if (!string.IsNullOrWhiteSpace(model.Tags))
         {
-            var tagNames = model.Tags.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct();
+            var tagNames = model.Tags.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToList();
             var currentTags = await tagService.GetTagsForQuestionAsync(id);
             
             // Remove tags not in new list

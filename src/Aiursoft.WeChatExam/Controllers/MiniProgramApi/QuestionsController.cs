@@ -52,7 +52,7 @@ public class QuestionsController : ControllerBase
         {
             var normalizedTagName = tagName.Trim().ToUpperInvariant();
             query = query.Include(q => q.QuestionTags).ThenInclude(qt => qt.Tag)
-                .Where(q => q.QuestionTags.Any(qt => qt.Tag != null && qt.Tag.NormalizedName == normalizedTagName));
+                .Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTagName));
         }
 
         var questions = await query
