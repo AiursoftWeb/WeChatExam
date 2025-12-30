@@ -68,4 +68,7 @@ public class Question
 
     [InverseProperty(nameof(KnowledgePointQuestion.Question))]
     public IEnumerable<KnowledgePointQuestion> KnowledgePointQuestions { get; init; } = new List<KnowledgePointQuestion>();
+
+    [InverseProperty(nameof(QuestionTag.Question))]
+    public IEnumerable<QuestionTag> QuestionTags { get; init; } = new List<QuestionTag>();
 }

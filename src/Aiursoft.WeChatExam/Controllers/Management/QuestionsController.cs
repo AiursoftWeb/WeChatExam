@@ -14,7 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// This controller is used to handle questions related actions like create, edit, delete, etc.
 /// </summary>
 [LimitPerMin]
-public class QuestionsController(TemplateDbContext context) : Controller
+public class QuestionsController(TemplateDbContext context, ITagService tagService) : Controller
 {
     // GET: questions
     [RenderInNavBar(
@@ -112,6 +112,8 @@ public class QuestionsController(TemplateDbContext context) : Controller
 
         var question = await context.Questions
             .Include(q => q.Category)
+            .Include(q => q.QuestionTags)
+            .ThenInclude(qt => qt.Tag)
             .FirstOrDefaultAsync(q => q.Id == id);
 
         if (question == null) return NotFound();
@@ -133,6 +135,7 @@ public class QuestionsController(TemplateDbContext context) : Controller
         if (question == null) return NotFound();
 
         var categories = await context.Categories.ToListAsync();
+        var tags = await tagService.GetTagsForQuestionAsync(id.Value);
 
         var model = new EditViewModel
         {
@@ -144,7 +147,8 @@ public class QuestionsController(TemplateDbContext context) : Controller
             StandardAnswer = question.StandardAnswer,
             Explanation = question.Explanation,
             CategoryId = question.CategoryId,
-            Categories = categories
+            Categories = categories,
+            Tags = string.Join(" ", tags.Select(t => t.DisplayName))
         };
 
         return this.StackView(model);
@@ -188,6 +192,32 @@ public class QuestionsController(TemplateDbContext context) : Controller
 
         context.Questions.Update(question);
         await context.SaveChangesAsync();
+
+        // Process tags
+        if (!string.IsNullOrWhiteSpace(model.Tags))
+        {
+            var tagNames = model.Tags.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToList();
+            var currentTags = await tagService.GetTagsForQuestionAsync(id);
+            
+            // Remove tags not in new list
+            foreach (var t in currentTags)
+            {
+                if (!tagNames.Contains(t.DisplayName))
+                {
+                    await tagService.RemoveTagFromQuestionAsync(id, t.Id);
+                }
+            }
+
+            // Add new tags
+            foreach (var tagName in tagNames)
+            {
+                if (!currentTags.Any(t => t.DisplayName == tagName))
+                {
+                    var tag = await tagService.AddTagAsync(tagName);
+                    await tagService.AddTagToQuestionAsync(id, tag.Id);
+                }
+            }
+        }
 
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
