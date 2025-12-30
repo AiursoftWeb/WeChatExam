@@ -25,7 +25,7 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
         CascadedLinksOrder = 9997,
         LinkText = "Questions",
         LinkOrder = 2)]
-    public async Task<IActionResult> Index(Guid? categoryId, int? tagId)
+    public async Task<IActionResult> Index(Guid? categoryId)
     {
         var categories = await context.Categories.ToListAsync();
         
@@ -33,23 +33,8 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
             ? await context.Questions
                 .Where(q => q.CategoryId == categoryId.Value)
                 .OrderByDescending(q => q.CreationTime)
-                .Include(q => q.QuestionTags)
-                .ThenInclude(qt => qt.Tag)
                 .ToListAsync()
             : new List<Question>();
-
-        if (tagId.HasValue)
-        {
-            var questionsByTag = await tagService.GetQuestionsByTagAsync(tagId.Value);
-            if (categoryId.HasValue)
-            {
-                 questions = questions.Intersect(questionsByTag).ToList();
-            }
-            else
-            {
-                questions = questionsByTag;
-            }
-        }
 
         var selectedCategory = categoryId.HasValue
             ? await context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId.Value)
@@ -60,9 +45,7 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
             Questions = questions,
             Categories = categories,
             SelectedCategoryId = categoryId,
-            SelectedCategory = selectedCategory,
-            SelectedTagId = tagId,
-            AllTags = await tagService.GetAllTagsAsync()
+            SelectedCategory = selectedCategory
         });
     }
 
@@ -129,6 +112,8 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
 
         var question = await context.Questions
             .Include(q => q.Category)
+            .Include(q => q.QuestionTags)
+            .ThenInclude(qt => qt.Tag)
             .FirstOrDefaultAsync(q => q.Id == id);
 
         if (question == null) return NotFound();

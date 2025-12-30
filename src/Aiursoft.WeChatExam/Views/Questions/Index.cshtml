@@ -3,9 +3,9 @@
 <h1 class="h3 mb-3">@Localizer["Questions"]</h1>
 
 <div class="row mb-3">
-    <div class="col-12 col-md-8">
-        <form asp-action="Index" method="get" class="d-flex align-items-center flex-wrap gap-2">
-            <select name="categoryId" class="form-select w-auto" onchange="this.form.submit()">
+    <div class="col-12 col-md-6">
+        <form asp-action="Index" method="get" class="d-flex align-items-center">
+            <select name="categoryId" class="form-select me-2" onchange="this.form.submit()">
                 <option value="">@Localizer["All Categories"]</option>
                 @foreach (var category in Model.Categories)
                 {
@@ -19,25 +19,10 @@
                     }
                 }
             </select>
-            
-            <select name="tagId" class="form-select w-auto" onchange="this.form.submit()">
-                <option value="">@Localizer["All Tags"]</option>
-                @foreach (var tag in Model.AllTags)
-                {
-                    if (Model.SelectedTagId == tag.Id)
-                    {
-                        <option value="@tag.Id" selected>@tag.Name</option>
-                    }
-                    else
-                    {
-                        <option value="@tag.Id">@tag.Name</option>
-                    }
-                }
-            </select>
             <noscript><button type="submit" class="btn btn-primary btn-sm">@Localizer["Filter"]</button></noscript>
         </form>
     </div>
-    <div class="col-12 col-md-4 text-end">
+    <div class="col-12 col-md-6 text-end">
         <a asp-action="Create" asp-route-categoryId="@Model.SelectedCategoryId" class="btn btn-primary btn-sm">
             <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Question"]
         </a>
@@ -66,12 +51,6 @@
                         <td>@question.Content</td>
                         <td>@question.QuestionType</td>
                         <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
-                        <td>
-                            @foreach (var tag in question.QuestionTags.Select(qt => qt.Tag))
-                            {
-                                <span class="badge bg-secondary me-1">@tag.Name</span>
-                            }
-                        </td>
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
                             <a asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-outline-secondary me-1" title="@Localizer["Details"]">

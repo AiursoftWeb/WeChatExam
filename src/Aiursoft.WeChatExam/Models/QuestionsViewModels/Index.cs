@@ -17,8 +17,4 @@ public class IndexViewModel : UiStackLayoutViewModel
     public Category? SelectedCategory { get; set; }
 
     public List<Category> Categories { get; set; } = new();
-
-    public int? SelectedTagId { get; set; }
-
-    public List<Tag> AllTags { get; set; } = new();
 }
