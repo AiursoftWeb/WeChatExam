@@ -44,6 +44,7 @@ public class Startup : IWebStartup
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IGradingService, GradingService>();
+        services.AddScoped<ITagService, TagService>();
 
         // Configure SKIT WeChat API Client
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;

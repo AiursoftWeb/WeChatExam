@@ -37,4 +37,6 @@ public class EditViewModel : UiStackLayoutViewModel
     public Guid CategoryId { get; set; }
 
     public List<Category> Categories { get; set; } = new();
+
+    public string Tags { get; set; } = string.Empty;
 }

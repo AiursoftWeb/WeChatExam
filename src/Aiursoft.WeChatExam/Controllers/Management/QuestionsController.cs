@@ -14,7 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// This controller is used to handle questions related actions like create, edit, delete, etc.
 /// </summary>
 [LimitPerMin]
-public class QuestionsController(TemplateDbContext context) : Controller
+public class QuestionsController(TemplateDbContext context, ITagService tagService) : Controller
 {
     // GET: questions
     [RenderInNavBar(
@@ -25,7 +25,7 @@ public class QuestionsController(TemplateDbContext context) : Controller
         CascadedLinksOrder = 9997,
         LinkText = "Questions",
         LinkOrder = 2)]
-    public async Task<IActionResult> Index(Guid? categoryId)
+    public async Task<IActionResult> Index(Guid? categoryId, int? tagId)
     {
         var categories = await context.Categories.ToListAsync();
         
@@ -33,8 +33,23 @@ public class QuestionsController(TemplateDbContext context) : Controller
             ? await context.Questions
                 .Where(q => q.CategoryId == categoryId.Value)
                 .OrderByDescending(q => q.CreationTime)
+                .Include(q => q.QuestionTags)
+                .ThenInclude(qt => qt.Tag)
                 .ToListAsync()
             : new List<Question>();
+
+        if (tagId.HasValue)
+        {
+            var questionsByTag = await tagService.GetQuestionsByTagAsync(tagId.Value);
+            if (categoryId.HasValue)
+            {
+                 questions = questions.Intersect(questionsByTag).ToList();
+            }
+            else
+            {
+                questions = questionsByTag;
+            }
+        }
 
         var selectedCategory = categoryId.HasValue
             ? await context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId.Value)
@@ -45,7 +60,9 @@ public class QuestionsController(TemplateDbContext context) : Controller
             Questions = questions,
             Categories = categories,
             SelectedCategoryId = categoryId,
-            SelectedCategory = selectedCategory
+            SelectedCategory = selectedCategory,
+            SelectedTagId = tagId,
+            AllTags = await tagService.GetAllTagsAsync()
         });
     }
 
@@ -133,6 +150,7 @@ public class QuestionsController(TemplateDbContext context) : Controller
         if (question == null) return NotFound();
 
         var categories = await context.Categories.ToListAsync();
+        var tags = await tagService.GetTagsForQuestionAsync(id.Value);
 
         var model = new EditViewModel
         {
@@ -144,7 +162,8 @@ public class QuestionsController(TemplateDbContext context) : Controller
             StandardAnswer = question.StandardAnswer,
             Explanation = question.Explanation,
             CategoryId = question.CategoryId,
-            Categories = categories
+            Categories = categories,
+            Tags = string.Join(" ", tags.Select(t => t.Name))
         };
 
         return this.StackView(model);
@@ -188,6 +207,32 @@ public class QuestionsController(TemplateDbContext context) : Controller
 
         context.Questions.Update(question);
         await context.SaveChangesAsync();
+
+        // Process tags
+        if (model.Tags != null)
+        {
+            var tagNames = model.Tags.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct();
+            var currentTags = await tagService.GetTagsForQuestionAsync(id);
+            
+            // Remove tags not in new list
+            foreach (var t in currentTags)
+            {
+                if (!tagNames.Contains(t.Name))
+                {
+                    await tagService.RemoveTagFromQuestionAsync(id, t.Id);
+                }
+            }
+
+            // Add new tags
+            foreach (var tagName in tagNames)
+            {
+                if (!currentTags.Any(t => t.Name == tagName))
+                {
+                    var tag = await tagService.AddTagAsync(tagName);
+                    await tagService.AddTagToQuestionAsync(id, tag.Id);
+                }
+            }
+        }
 
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
