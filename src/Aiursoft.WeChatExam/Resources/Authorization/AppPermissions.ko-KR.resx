@@ -132,5 +132,23 @@
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>소유권에 관계없이 모든 knowledgePoint를 추가할 수 있습니다.</value>
   </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>기사 삭제</value>
+  </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>소유자와 관계없이 게시물을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>게시물 편집</value>
+  </data>
+  <data name="Add Articles" xml:space="preserve">
+    <value>게시물 추가</value>
+  </data>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>소유권과 무관하게 기사 수정을 허용합니다.</value>
+  </data>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>소유권과 관계없이 게시물을 추가할 수 있습니다.</value>
+  </data>
 
 </root>

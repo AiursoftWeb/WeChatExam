@@ -132,5 +132,23 @@
   <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>所有権に関係なく、どのknowledgePointでも編集を許可します。</value>
   </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>所有者に関係なく、記事を削除できます。</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>記事の削除</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>記事の編集</value>
+  </data>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく任意の記事を編集できます。</value>
+  </data>
+  <data name="Add Articles" xml:space="preserve">
+    <value>記事の追加</value>
+  </data>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>所有者にかかわらず記事を追加できます。</value>
+  </data>
 
 </root>
