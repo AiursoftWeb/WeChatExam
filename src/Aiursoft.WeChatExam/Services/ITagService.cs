@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Services;
