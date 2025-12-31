@@ -45,6 +45,12 @@
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
+            
+            <div class="mb-3">
+                <label asp-for="Tags" class="form-label">@Localizer["Tags (space separated)"]</label>
+                <input asp-for="Tags" class="form-control" placeholder="Math 2023 Grade1" />
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
             <div class="mb-3">
                 <label asp-for="Metadata" class="form-label">@Localizer["Metadata (e.g. Choices JSON)"]</label>
                 <textarea asp-for="Metadata" class="form-control" rows="3" placeholder='["A","B","C"]'></textarea>

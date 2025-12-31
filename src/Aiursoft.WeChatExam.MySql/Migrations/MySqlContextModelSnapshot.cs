@@ -195,6 +195,52 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("Questions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("QuestionTags");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("NormalizedName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -524,6 +570,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionTag", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Question", "Question")
+                        .WithMany("QuestionTags")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Tag", "Tag")
+                        .WithMany("QuestionTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
+
+                    b.Navigation("Tag");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserPracticeHistory", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Question", "Question")
@@ -615,6 +680,13 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
                     b.Navigation("KnowledgePointQuestions");
+
+                    b.Navigation("QuestionTags");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Tag", b =>
+                {
+                    b.Navigation("QuestionTags");
                 });
 #pragma warning restore 612, 618
         }

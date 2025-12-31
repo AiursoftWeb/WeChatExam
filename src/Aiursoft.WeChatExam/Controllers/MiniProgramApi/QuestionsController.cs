@@ -17,28 +17,45 @@ public class QuestionsController : ControllerBase
     }
 
     /// <summary>
-    /// 获取指定分类下的所有题目
+    /// 获取题目列表
     /// </summary>
-    /// <param name="categoryId">分类ID</param>
+    /// <param name="categoryId">分类ID (可选)</param>
+    /// <param name="tagName">Tag 显示名称 (可选)</param>
     /// <returns>题目列表，按创建时间倒序</returns>
     /// <response code="200">成功返回题目列表</response>
     /// <response code="404">指定的分类不存在</response>
     [HttpGet]
     [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetQuestions([FromQuery] Guid categoryId)
+    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName)
     {
         // 验证分类是否存在
-        var categoryExists = await _context.Categories
-            .AnyAsync(c => c.Id == categoryId);
-
-        if (!categoryExists)
+        if (categoryId.HasValue)
         {
-            return NotFound(new { Message = "Category not found" });
+            var categoryExists = await _context.Categories
+                .AnyAsync(c => c.Id == categoryId);
+
+            if (!categoryExists)
+            {
+                return NotFound(new { Message = "Category not found" });
+            }
         }
 
-        var questions = await _context.Questions
-            .Where(q => q.CategoryId == categoryId)
+        var query = _context.Questions.AsQueryable();
+
+        if (categoryId.HasValue)
+        {
+            query = query.Where(q => q.CategoryId == categoryId.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(tagName))
+        {
+            var normalizedTagName = tagName.Trim().ToUpperInvariant();
+            query = query.Include(q => q.QuestionTags).ThenInclude(qt => qt.Tag)
+                .Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTagName));
+        }
+
+        var questions = await query
             .OrderByDescending(q => q.CreationTime)
             .Select(q => new QuestionDto
             {
@@ -90,5 +107,6 @@ public class QuestionsController : ControllerBase
 
         return Ok(dto);
     }
+
 
 }

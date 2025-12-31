@@ -19,4 +19,6 @@ public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbCo
     public DbSet<CategoryKnowledgePoint> CategoryKnowledgePoints => Set<CategoryKnowledgePoint>();
     public DbSet<KnowledgePointQuestion> KnowledgePointQuestions => Set<KnowledgePointQuestion>();
     public DbSet<Article> Articles => Set<Article>();
+    public DbSet<Tag> Tags => Set<Tag>();
+    public DbSet<QuestionTag> QuestionTags => Set<QuestionTag>();
 }
