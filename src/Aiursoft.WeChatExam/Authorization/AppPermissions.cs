@@ -86,8 +86,15 @@ public class AppPermissions
                 localizer["Add Any KnowledgePoint"],
                 localizer["Allows adding of any knowledgePoint, regardless of ownership."]),
 
-
-
+            new(AppPermissionNames.CanDeleteArticles,
+                localizer["Delete Articles"],
+                localizer["Allows deletion of articles, regardless of ownership."]),
+            new(AppPermissionNames.CanEditArticles,
+                localizer["Edit Articles"],
+                localizer["Allows editing of articles, regardless of ownership."]),
+            new(AppPermissionNames.CanAddArticles,
+                localizer["Add Articles"],
+                localizer["Allows adding of articles, regardless of ownership."]),
         ];
         return allPermission;
     }

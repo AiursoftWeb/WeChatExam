@@ -1,0 +1,25 @@
+@model Aiursoft.WeChatExam.Models.ArticlesViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Add Article"]</h1>
+
+<form asp-action="Create" method="post">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">@Localizer["Title"]</label>
+                <input asp-for="Title" class="form-control" required />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label">@Localizer["Content"]</label>
+                <textarea asp-for="Content" class="form-control" rows="10" required></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+        </div>
+    </div>
+</form>

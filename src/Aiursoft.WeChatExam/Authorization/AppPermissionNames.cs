@@ -36,5 +36,8 @@ public static class AppPermissionNames
     public const string CanEditAnyKnowledgePoint = nameof(CanEditAnyKnowledgePoint);
     public const string CanAddAnyKnowledgePoint = nameof(CanAddAnyKnowledgePoint);
 
-
+    // Article Management
+    public const string CanDeleteArticles = nameof(CanDeleteArticles);
+    public const string CanAddArticles = nameof(CanAddArticles);
+    public const string CanEditArticles = nameof(CanEditArticles);
 }
