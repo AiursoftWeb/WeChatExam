@@ -38,5 +38,5 @@ public class EditViewModel : UiStackLayoutViewModel
 
     public List<Category> Categories { get; set; } = new();
 
-    public string Tags { get; set; } = string.Empty;
+    public string? Tags { get; set; } = string.Empty;
 }

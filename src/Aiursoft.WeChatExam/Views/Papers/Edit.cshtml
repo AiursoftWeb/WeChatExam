@@ -1,0 +1,152 @@
+@model Aiursoft.WeChatExam.Models.PapersViewModels.EditViewModel
+
+<h1 class="h3 mb-3">@Localizer["Edit Paper"]</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Paper Info"]</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">@Localizer["Title"]</label>
+                        <input asp-for="Title" class="form-control" required />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TimeLimit" class="form-label">@Localizer["Time Limit (minutes)"]</label>
+                        <input asp-for="TimeLimit" type="number" class="form-control" min="1" />
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input asp-for="IsFree" class="form-check-input" type="checkbox" />
+                        <label asp-for="IsFree" class="form-check-label">@Localizer["Free Paper"]</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">@Localizer["Status"]</label>
+                        <div>
+                            @switch (Model.Status)
+                            {
+                                case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
+                                    <span class="badge bg-secondary">Draft</span>
+                                    break;
+                                case Aiursoft.WeChatExam.Entities.PaperStatus.Publishable:
+                                    <span class="badge bg-success">Publishable</span>
+                                    break;
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+                </div>
+            </div>
+        </form>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Status Actions"]</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Status == Aiursoft.WeChatExam.Entities.PaperStatus.Draft)
+                {
+                    <form asp-action="SetStatus" asp-route-id="@Model.Id" method="post" class="d-inline">
+                        <input type="hidden" name="status" value="@((int)Aiursoft.WeChatExam.Entities.PaperStatus.Publishable)" />
+                        <button type="submit" class="btn btn-success">@Localizer["Mark as Publishable"]</button>
+                    </form>
+                }
+                else if (Model.Status == Aiursoft.WeChatExam.Entities.PaperStatus.Publishable)
+                {
+                    <form asp-action="SetStatus" asp-route-id="@Model.Id" method="post" class="d-inline">
+                        <input type="hidden" name="status" value="@((int)Aiursoft.WeChatExam.Entities.PaperStatus.Draft)" />
+                        <button type="submit" class="btn btn-secondary me-2">@Localizer["Revert to Draft"]</button>
+                    </form>
+                    <form asp-action="Publish" asp-route-id="@Model.Id" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-primary me-2">@Localizer["Publish Snapshot"]</button>
+                    </form>
+                    <form asp-action="Freeze" asp-route-id="@Model.Id" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-info">@Localizer["Freeze"]</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Questions in Paper"] (@Model.PaperQuestions.Count)</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Question</th>
+                            <th>Score</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pq in Model.PaperQuestions.OrderBy(q => q.Order))
+                        {
+                            <tr>
+                                <td>@pq.Order</td>
+                                <td>@pq.Question.Content[..Math.Min(50, pq.Question.Content.Length)]...</td>
+                                <td>@pq.Score</td>
+                                <td>
+                                    <form asp-action="RemoveQuestion" asp-route-id="@Model.Id" method="post" class="d-inline">
+                                        <input type="hidden" name="questionId" value="@pq.QuestionId" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i data-lucide="x"></i>
+                                            <span class="visually-hidden">@Localizer["delete"]</span>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Add Question"]</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddQuestion" asp-route-id="@Model.Id" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">@Localizer["Select Question"]</label>
+                        <select name="questionId" class="form-select" required>
+                            <option value="">-- Select --</option>
+                            @foreach (var q in Model.AvailableQuestions.Where(q => !Model.PaperQuestions.Any(pq => pq.QuestionId == q.Id)))
+                            {
+                                <option value="@q.Id">@q.Content[..Math.Min(60, q.Content.Length)]...</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label">Order</label>
+                            <input type="number" name="order" class="form-control" value="@(Model.PaperQuestions.Count + 1)" min="1" />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Score</label>
+                            <input type="number" name="score" class="form-control" value="10" min="1" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success mt-3">@Localizer["Add"]</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
