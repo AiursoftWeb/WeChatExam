@@ -1,0 +1,28 @@
+@model Aiursoft.WeChatExam.Models.PapersViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Create Paper"]</h1>
+
+<form asp-action="Create" method="post">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">@Localizer["Title"]</label>
+                <input asp-for="Title" class="form-control" required />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TimeLimit" class="form-label">@Localizer["Time Limit (minutes)"]</label>
+                <input asp-for="TimeLimit" type="number" class="form-control" min="1" />
+                <span asp-validation-for="TimeLimit" class="text-danger"></span>
+            </div>
+            <div class="mb-3 form-check">
+                <input asp-for="IsFree" class="form-check-input" type="checkbox" />
+                <label asp-for="IsFree" class="form-check-label">@Localizer["Free Paper"]</label>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary">@Localizer["Create"]</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+        </div>
+    </div>
+</form>

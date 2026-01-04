@@ -1,0 +1,121 @@
+@model Aiursoft.WeChatExam.Models.PapersViewModels.DetailsViewModel
+
+<h1 class="h3 mb-3">@Localizer["Paper Details"]</h1>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">@Localizer["Title"]</dt>
+                    <dd class="col-sm-8">@Model.Paper?.Title</dd>
+
+                    <dt class="col-sm-4">@Localizer["Time Limit"]</dt>
+                    <dd class="col-sm-8">@Model.Paper?.TimeLimit min</dd>
+
+                    <dt class="col-sm-4">@Localizer["Free"]</dt>
+                    <dd class="col-sm-8">@(Model.Paper?.IsFree == true ? "Yes" : "No")</dd>
+
+                    <dt class="col-sm-4">@Localizer["Status"]</dt>
+                    <dd class="col-sm-8">
+                        @switch (Model.Paper?.Status)
+                        {
+                            case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
+                                <span class="badge bg-secondary">Draft</span>
+                                break;
+                            case Aiursoft.WeChatExam.Entities.PaperStatus.Publishable:
+                                <span class="badge bg-success">Publishable</span>
+                                break;
+                            case Aiursoft.WeChatExam.Entities.PaperStatus.Frozen:
+                                <span class="badge bg-info">Frozen</span>
+                                break;
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">@Localizer["Questions"]</dt>
+                    <dd class="col-sm-8">@Model.PaperQuestions.Count</dd>
+
+                    <dt class="col-sm-4">@Localizer["Created"]</dt>
+                    <dd class="col-sm-8">@Model.Paper?.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+                </dl>
+            </div>
+            <div class="card-footer text-end">
+                @if (Model.Paper?.Status != Aiursoft.WeChatExam.Entities.PaperStatus.Frozen)
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.Paper?.Id" class="btn btn-primary btn-sm">@Localizer["Edit"]</a>
+                }
+                <a asp-action="Index" class="btn btn-secondary btn-sm ms-2">@Localizer["Back"]</a>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Questions"]</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Question</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pq in Model.PaperQuestions.OrderBy(q => q.Order))
+                        {
+                            <tr>
+                                <td>@pq.Order</td>
+                                <td>@pq.Question!.Content</td>
+                                <td>@pq.Score</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Snapshots"] (@Model.Snapshots.Count)</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Created</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var snapshot in Model.Snapshots)
+                        {
+                            <tr>
+                                <td>@snapshot.Version</td>
+                                <td>@snapshot.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                            </tr>
+                        }
+                        @if (!Model.Snapshots.Any())
+                        {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted py-3">No snapshots yet</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

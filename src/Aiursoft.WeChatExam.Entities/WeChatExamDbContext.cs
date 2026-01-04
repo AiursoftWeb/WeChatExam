@@ -20,4 +20,8 @@ public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbCo
     public DbSet<KnowledgePointQuestion> KnowledgePointQuestions => Set<KnowledgePointQuestion>();
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<QuestionTag> QuestionTags => Set<QuestionTag>();
+    public DbSet<Paper> Papers => Set<Paper>();
+    public DbSet<PaperQuestion> PaperQuestions => Set<PaperQuestion>();
+    public DbSet<PaperSnapshot> PaperSnapshots => Set<PaperSnapshot>();
+    public DbSet<QuestionSnapshot> QuestionSnapshots => Set<QuestionSnapshot>();
 }

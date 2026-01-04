@@ -1,0 +1,79 @@
+@model Aiursoft.WeChatExam.Models.PapersViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Papers"]</h1>
+
+<div class="row mb-3">
+    <div class="col-12 text-end">
+        <a asp-action="Create" class="btn btn-primary btn-sm">
+            <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create Paper"]
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">@Localizer["Paper List"]</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Title"]</th>
+                    <th>@Localizer["Time Limit"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Created"]</th>
+                    <th style="width: 120px;">@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var paper in Model.Papers)
+                {
+                    <tr>
+                        <td>@paper.Title</td>
+                        <td>@paper.TimeLimit min</td>
+                        <td>
+                            @switch (paper.Status)
+                            {
+                                case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
+                                    <span class="badge bg-secondary">Draft</span>
+                                    break;
+                                case Aiursoft.WeChatExam.Entities.PaperStatus.Publishable:
+                                    <span class="badge bg-success">Publishable</span>
+                                    break;
+                                case Aiursoft.WeChatExam.Entities.PaperStatus.Frozen:
+                                    <span class="badge bg-info">Frozen</span>
+                                    break;
+                            }
+                        </td>
+                        <td>@paper.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@paper.Id" class="btn btn-sm btn-outline-secondary me-1">
+                                <i class="align-middle" data-lucide="eye"></i>
+                                <span class="visually-hidden">@Localizer["detail"]</span>
+                            </a>
+                            @if (paper.Status != Aiursoft.WeChatExam.Entities.PaperStatus.Frozen)
+                            {
+                                <a asp-action="Edit" asp-route-id="@paper.Id" class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="align-middle" data-lucide="edit"></i>
+                                    <span class="visually-hidden">@Localizer["edit"]</span>
+                                </a>
+                            }
+                            <a asp-action="Delete" asp-route-id="@paper.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="align-middle" data-lucide="trash-2"></i>
+                                <span class="visually-hidden">@Localizer["delete"]</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                @if (!Model.Papers.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            @Localizer["No papers found"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
