@@ -100,7 +100,7 @@
                         {
                             <tr>
                                 <td>@pq.Order</td>
-                                <td>@pq.Question!.Content[..Math.Min(50, pq.Question.Content.Length)]...</td>
+                                <td>@pq.Question.Content[..Math.Min(50, pq.Question.Content.Length)]...</td>
                                 <td>@pq.Score</td>
                                 <td>
                                     <form asp-action="RemoveQuestion" asp-route-id="@Model.Id" method="post" class="d-inline">

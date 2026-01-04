@@ -241,7 +241,6 @@ public class PaperService : IPaperService
         foreach (var pq in paper.PaperQuestions)
         {
             var question = pq.Question;
-            if (question == null) continue;
 
             var questionSnapshot = new QuestionSnapshot
             {
