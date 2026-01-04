@@ -132,5 +132,22 @@
   <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>允许删除任何知识点，无论其归属如何。</value>
   </data>
-
+  <data name="Delete Articles" xml:space="preserve">
+    <value>删除资讯</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>编辑资讯</value>
+  </data>
+  <data name="Add Articles" xml:space="preserve">
+    <value>添加资讯</value>
+  </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>允许删除资讯，无论其归属如何。</value>
+  </data>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>允许编辑资讯，无论其归属如何。</value>
+  </data>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>允许添加资讯，无论其归属如何。</value>
+  </data>
 </root>
