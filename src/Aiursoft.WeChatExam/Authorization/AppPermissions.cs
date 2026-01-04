@@ -95,6 +95,17 @@ public class AppPermissions
             new(AppPermissionNames.CanAddArticles,
                 localizer["Add Articles"],
                 localizer["Allows adding of articles, regardless of ownership."]),
+
+            new(AppPermissionNames.CanDeletePapers,
+                localizer["Delete Papers"],
+                localizer["Allows deletion of papers, regardless of ownership."]),
+            new(AppPermissionNames.CanEditPapers,
+                localizer["Edit Papers"],
+                localizer["Allows editing of papers, regardless of ownership."]),
+            new(AppPermissionNames.CanAddPapers,
+                localizer["Add Papers"],
+                localizer["Allows adding of papers, regardless of ownership."]),
+
         ];
         return allPermission;
     }

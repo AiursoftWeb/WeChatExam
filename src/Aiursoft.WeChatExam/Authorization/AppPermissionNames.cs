@@ -40,4 +40,10 @@ public static class AppPermissionNames
     public const string CanDeleteArticles = nameof(CanDeleteArticles);
     public const string CanAddArticles = nameof(CanAddArticles);
     public const string CanEditArticles = nameof(CanEditArticles);
+    
+    // Paper Management
+    public const string CanDeletePapers = nameof(CanDeletePapers);
+    public const string CanAddPapers = nameof(CanAddPapers);
+    public const string CanEditPapers = nameof(CanEditPapers);
+
 }

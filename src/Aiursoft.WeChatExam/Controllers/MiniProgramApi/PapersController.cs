@@ -1,5 +1,7 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Models.MiniProgramApi;
+using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 /// API for exam system to access paper snapshots
 /// </summary>
 [Route("api/[controller]")]
+[WeChatUserOnly]
 [ApiController]
 public class PapersController : ControllerBase
 {
@@ -118,30 +121,3 @@ public class PaperListDto
     public int LatestVersion { get; set; }
 }
 
-public class PaperSnapshotDto
-{
-    public Guid Id { get; set; }
-    public Guid PaperId { get; set; }
-    public int Version { get; set; }
-    public string Title { get; set; } = string.Empty;
-    public int TimeLimit { get; set; }
-    public bool IsFree { get; set; }
-    public List<QuestionSnapshotDto> Questions { get; set; } = new();
-}
-
-public class QuestionSnapshotDto
-{
-    public Guid Id { get; set; }
-    public int Order { get; set; }
-    public int Score { get; set; }
-    public string Content { get; set; } = string.Empty;
-    public string QuestionType { get; set; } = string.Empty;
-    public string Metadata { get; set; } = string.Empty;
-}
-
-public class SnapshotListDto
-{
-    public Guid Id { get; set; }
-    public int Version { get; set; }
-    public DateTime CreationTime { get; set; }
-}

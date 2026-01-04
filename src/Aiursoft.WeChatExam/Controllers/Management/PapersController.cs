@@ -32,14 +32,14 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // GET: papers/create
-    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
     public IActionResult Create()
     {
         return this.StackView(new CreateViewModel());
     }
 
     // POST: papers/create
-    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateViewModel model)
@@ -73,7 +73,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // GET: papers/{id}/edit
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     public async Task<IActionResult> Edit(Guid? id)
     {
         if (id == null) return NotFound();
@@ -101,7 +101,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/edit
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Guid id, EditViewModel model)
@@ -131,7 +131,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/add-question
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddQuestion(Guid id, Guid questionId, int order, int score)
@@ -148,7 +148,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/remove-question
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> RemoveQuestion(Guid id, Guid questionId)
@@ -165,7 +165,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/set-status
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> SetStatus(Guid id, PaperStatus status)
@@ -182,7 +182,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/publish
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Publish(Guid id)
@@ -200,7 +200,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/freeze
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Freeze(Guid id)
@@ -218,7 +218,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // GET: papers/{id}/delete
-    [Authorize(Policy = AppPermissionNames.CanDeleteQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanDeletePapers)]
     public async Task<IActionResult> Delete(Guid? id)
     {
         if (id == null) return NotFound();
@@ -230,7 +230,7 @@ public class PapersController(TemplateDbContext context, IPaperService paperServ
     }
 
     // POST: papers/{id}/delete
-    [Authorize(Policy = AppPermissionNames.CanDeleteQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanDeletePapers)]
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
