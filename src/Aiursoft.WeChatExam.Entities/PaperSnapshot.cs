@@ -14,13 +14,12 @@ public class PaperSnapshot
     public Guid Id { get; init; }
 
     /// <summary>
-    /// 源试卷ID
+    /// 源试卷ID（如果源试卷被删除，此字段为空）
     /// </summary>
-    public required Guid PaperId { get; set; }
+    public Guid? PaperId { get; set; }
 
     [ForeignKey(nameof(PaperId))]
     [JsonIgnore]
-    [NotNull]
     public Paper? Paper { get; set; }
 
     /// <summary>

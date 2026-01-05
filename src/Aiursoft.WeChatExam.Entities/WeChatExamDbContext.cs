@@ -25,4 +25,7 @@ public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbCo
     public DbSet<PaperQuestion> PaperQuestions => Set<PaperQuestion>();
     public DbSet<PaperSnapshot> PaperSnapshots => Set<PaperSnapshot>();
     public DbSet<QuestionSnapshot> QuestionSnapshots => Set<QuestionSnapshot>();
+    public DbSet<Exam> Exams => Set<Exam>();
+    public DbSet<ExamRecord> ExamRecords => Set<ExamRecord>();
+    public DbSet<AnswerRecord> AnswerRecords => Set<AnswerRecord>();
 }

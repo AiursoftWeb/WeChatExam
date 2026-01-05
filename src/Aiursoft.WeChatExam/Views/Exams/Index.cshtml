@@ -1,0 +1,72 @@
+@model Aiursoft.WeChatExam.Models.ExamsViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Exams"]</h1>
+
+<div class="row mb-3">
+    <div class="col-12 text-end">
+        <a asp-action="Create" class="btn btn-primary btn-sm">
+            <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create Exam"]
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">@Localizer["Exam Schedule"]</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Title"]</th>
+                    <th>@Localizer["Paper"]</th>
+                    <th>@Localizer["Start Time"]</th>
+                    <th>@Localizer["End Time"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var exam in Model.Exams)
+                {
+                    <tr>
+                        <td>@exam.Title</td>
+                        <td>@exam.Paper?.Title</td>
+                        <td>@exam.StartTime.ToLocalTime().ToString("g")</td>
+                        <td>@exam.EndTime.ToLocalTime().ToString("g")</td>
+                        <td>
+                            @if (DateTime.UtcNow < exam.StartTime)
+                            {
+                                <span class="badge bg-secondary">Upcoming</span>
+                            }
+                            else if (DateTime.UtcNow > exam.EndTime)
+                            {
+                                <span class="badge bg-dark">Ended</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-info me-1">
+                                <i class="align-middle" data-lucide="bar-chart-2"></i>
+                                <span class="visually-hidden">@Localizer["detail"]</span>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-primary me-1">
+                                <i class="align-middle" data-lucide="edit"></i>
+                                <span class="visually-hidden">@Localizer["edit"]</span>
+                            </a>
+                             <form asp-action="Delete" asp-route-id="@exam.Id" method="post" class="d-inline" onsubmit="return confirm('Delete this exam and all student records?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="align-middle" data-lucide="trash-2"></i>
+                                    <span class="visually-hidden">@Localizer["delete"]</span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
