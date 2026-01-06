@@ -10,10 +10,10 @@ public class GradingService : IGradingService, IScopedDependency
         // Use the question's score or a default? 
         // The original implementation returned fixed 10 or 0.
         // We will assume 10 for practice history context if not specified elsewhere.
-        return await GradeAsync(userAnswer, question.StandardAnswer, question.GradingStrategy, 10);
+        return await GradeAsync(userAnswer, question.StandardAnswer, question.GradingStrategy, 10, question.Content);
     }
 
-    public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore)
+    public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content)
     {
         userAnswer = userAnswer.Trim();
         standardAnswer = standardAnswer.Trim();
@@ -27,7 +27,7 @@ public class GradingService : IGradingService, IScopedDependency
                 return GradeFuzzyMatch(userAnswer, standardAnswer, maxScore);
                 
             case GradingStrategy.AiEval:
-                return await GradeAiEvalAsync(userAnswer, standardAnswer, maxScore);
+                return await GradeAiEvalAsync(userAnswer, standardAnswer, maxScore, content);
                 
             default:
                 return GradeExactMatch(userAnswer, standardAnswer, maxScore);
@@ -54,9 +54,11 @@ public class GradingService : IGradingService, IScopedDependency
         };
     }
 
-    private Task<GradingResult> GradeAiEvalAsync(string userAnswer, string standardAnswer, int maxScore)
+    private Task<GradingResult> GradeAiEvalAsync(string userAnswer, string standardAnswer, int maxScore, string content)
     {
         // Stub implementation
+        _ = content;
+        _ = standardAnswer;
         var isCorrect = !string.IsNullOrWhiteSpace(userAnswer);
         
         return Task.FromResult(new GradingResult

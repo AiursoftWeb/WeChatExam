@@ -50,7 +50,7 @@
                 <label asp-for="ShowAnswerAfter" class="form-label">@Localizer["Show Answers After"]</label>
                 <input asp-for="ShowAnswerAfter" class="form-control" type="datetime-local" />
                 <span asp-validation-for="ShowAnswerAfter" class="text-danger"></span>
-                <div class="form-text">Leave empty to never show answers.</div>
+                <div class="form-text">@Localizer["Leave empty to never show answers."]</div>
             </div>
 
             <div class="mb-3 form-check">

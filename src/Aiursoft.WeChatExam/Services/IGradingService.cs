@@ -5,7 +5,7 @@ namespace Aiursoft.WeChatExam.Services;
 public interface IGradingService
 {
     Task<GradingResult> GradeAsync(Question question, string userAnswer);
-    Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore);
+    Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content);
 }
 
 public class GradingResult

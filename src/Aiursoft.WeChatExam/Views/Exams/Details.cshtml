@@ -8,9 +8,9 @@
 <div class="card mb-3">
     <div class="card-body">
         <dl class="row mb-0">
-             <dt class="col-sm-3">Time Window</dt>
+             <dt class="col-sm-3">@Localizer["Time Window"]</dt>
              <dd class="col-sm-9">@Model.Exam?.StartTime.ToLocalTime() - @Model.Exam?.EndTime.ToLocalTime()</dd>
-             <dt class="col-sm-3">Total Attempts</dt>
+             <dt class="col-sm-3">@Localizer["Total Attempts"]</dt>
              <dd class="col-sm-9">@Model.Records.Count</dd>
         </dl>
     </div>
@@ -18,32 +18,32 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title mb-0">Student Records</h5>
+        <h5 class="card-title mb-0">@Localizer["Student Records"]</h5>
     </div>
     <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead>
                 <tr>
-                    <th>User</th>
-                    <th>Start Time</th>
-                    <th>Submitted</th>
-                    <th>Status</th>
-                    <th>Score</th>
-                    <th>Action</th>
+                    <th>@Localizer["User"]</th>
+                    <th>@Localizer["Start Time"]</th>
+                    <th>@Localizer["Submitted"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Score"]</th>
+                    <th>@Localizer["Action"]</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(var record in Model.Records)
                 {
                     <tr>
-                        <td>@record.User?.UserName</td>
+                        <td>@record.User.UserName</td>
                         <td>@record.StartTime.ToLocalTime().ToString("g")</td>
                         <td>@(record.SubmitTime?.ToLocalTime().ToString("g") ?? "-")</td>
                         <td>@record.Status</td>
                         <td>@record.TotalScore</td>
                         <td>
                             <a asp-action="Review" asp-route-recordId="@record.Id" class="btn btn-sm btn-primary">
-                                Review & Grade
+                                @Localizer["Review & Grade"]
                             </a>
                         </td>
                     </tr>

@@ -1,9 +1,7 @@
-using System.ComponentModel.DataAnnotations;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
@@ -72,12 +70,12 @@ public class ExamsController : ControllerBase
         var dtos = records.Select(r => new ExamRecordDto
         {
             Id = r.Id,
-            ExamTitle = r.Exam?.Title ?? "",
+            ExamTitle = r.Exam.Title,
             StartTime = r.StartTime,
             SubmitTime = r.SubmitTime,
             Status = r.Status.ToString(),
             TotalScore = r.TotalScore,
-            HasReview = r.Exam?.AllowReview == true
+            HasReview = r.Exam.AllowReview
         }).ToList();
 
         return Ok(dtos);
@@ -103,10 +101,7 @@ public class ExamsController : ControllerBase
             record = await _examService.GetExamRecordAsync(record.Id) ?? record;
 
             // Load Snapshot if not loaded
-            if (record.PaperSnapshot == null) // Should have loaded via GetExamRecordAsync includes
-            {
-                 // Fallback or bug in service include implementation
-            }
+
             // The client should obtains the complete test paper snapshot from PaperController based on the SnapshotId
 
             return Ok(new ExamSessionDto
@@ -114,13 +109,13 @@ public class ExamsController : ControllerBase
                 RecordId = record.Id,
                 PaperSnapshotId = record.PaperSnapshotId,
                 StartTime = record.StartTime,
-                EndTime = record.StartTime.AddMinutes(record.Exam!.DurationMinutes), // Theoretical end for this session
+                EndTime = record.StartTime.AddMinutes(record.Exam.DurationMinutes), // Theoretical end for this session
                 Answers = record.AnswerRecords.ToDictionary(a => a.QuestionSnapshotId, a => a.UserAnswer)
             });
         }
         catch (InvalidOperationException ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 
@@ -139,7 +134,7 @@ public class ExamsController : ControllerBase
         }
         catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 
@@ -156,7 +151,7 @@ public class ExamsController : ControllerBase
         }
         catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 
@@ -175,7 +170,7 @@ public class ExamsController : ControllerBase
         if (record.UserId != userId) return Forbid();
         
         // Check if review is allowed
-        if (!record.Exam!.AllowReview)
+        if (!record.Exam.AllowReview)
         {
             // Only return basic info
             return Ok(new ExamRecordDto
@@ -202,7 +197,7 @@ public class ExamsController : ControllerBase
                 UserAnswer = a.UserAnswer,
                 Score = a.Score,
                 // Only show standard answer if configured
-                StandardAnswer = showAnswers ? a.QuestionSnapshot?.StandardAnswer : null,
+                StandardAnswer = showAnswers ? a.QuestionSnapshot.StandardAnswer : null,
                 GradingResult = a.GradingResult // Detailed JSON
             }).ToList()
         };

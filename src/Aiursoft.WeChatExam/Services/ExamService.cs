@@ -248,7 +248,7 @@ public class ExamService : IExamService
             var ans = record.AnswerRecords.FirstOrDefault(a => a.QuestionSnapshotId == qSnap.Id);
             var userAnswer = ans?.UserAnswer ?? "";
 
-            var result = await _gradingService.GradeAsync(userAnswer, qSnap.StandardAnswer, qSnap.GradingStrategy, qSnap.Score);
+            var result = await _gradingService.GradeAsync(userAnswer, qSnap.StandardAnswer, qSnap.GradingStrategy, qSnap.Score, qSnap.Content);
             
             // If answer record didn't exist (unanswered), create one to store score 0
             if (ans == null)

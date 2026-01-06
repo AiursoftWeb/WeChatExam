@@ -36,14 +36,14 @@
             </div>
 
             <div class="mb-3">
-                <label asp-for="DurationMinutes" class="form-label">Duration (Minutes)</label>
-                <input asp-for="DurationMinutes" class="form-control" placeholder="Leave empty to use paper default" />
-                <div class="form-text">Time allowed for student attempt. Leave empty to use Paper's Time Limit.</div>
+                <label asp-for="DurationMinutes" class="form-label">@Localizer["Duration (Minutes)"]</label>
+                <input asp-for="DurationMinutes" class="form-control" placeholder="@Localizer["Leave empty to use paper default"]" />
+                <div class="form-text">@Localizer["Time allowed for student attempt. Leave empty to use Paper's Time Limit."]</div>
             </div>
         </div>
         <div class="card-footer text-end">
-            <button type="submit" class="btn btn-primary">Create</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">@Localizer["Create"]</button>
+            <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
         </div>
     </div>
 </form>
