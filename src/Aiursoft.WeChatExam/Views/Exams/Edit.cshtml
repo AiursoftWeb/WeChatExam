@@ -6,29 +6,28 @@
     <input type="hidden" asp-for="Id" />
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title mb-0">Exam Settings</h5>
+            <h5 class="card-title mb-0">@Localizer["Exam Settings"]</h5>
         </div>
         <div class="card-body">
             <div class="mb-3">
-                <label class="form-label">Paper</label>
+                <label class="form-label">@Localizer["Paper"]</label>
                 <input class="form-control" value="@Model.PaperTitle" disabled />
             </div>
 
             <div class="mb-3">
-                <label asp-for="Title" class="form-label"></label>
+                <label asp-for="Title" class="form-label">@Localizer["Title"]</label>
                 <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label asp-for="StartTime" class="form-label"></label>
+                    <label asp-for="StartTime" class="form-label">@Localizer["start time"]</label>
                     <input asp-for="StartTime" class="form-control" type="datetime-local" step="60" />
                     <span asp-validation-for="StartTime" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label asp-for="EndTime" class="form-label"></label>
+                    <label asp-for="EndTime" class="form-label">@Localizer["end time"]</label>
                     <input asp-for="EndTime" class="form-control" type="datetime-local" step="60" />
                     <span asp-validation-for="EndTime" class="text-danger"></span>
                 </div>
@@ -36,39 +35,39 @@
 
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label asp-for="DurationMinutes" class="form-label">Duration (min)</label>
+                    <label asp-for="DurationMinutes" class="form-label">@Localizer["Duration (min)"]</label>
                     <input asp-for="DurationMinutes" class="form-control" />
                     <span asp-validation-for="DurationMinutes" class="text-danger"></span>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label asp-for="AllowedAttempts" class="form-label">Attempts</label>
+                    <label asp-for="AllowedAttempts" class="form-label">@Localizer["Attempts"]</label>
                     <input asp-for="AllowedAttempts" class="form-control" />
                     <span asp-validation-for="AllowedAttempts" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label asp-for="ShowAnswerAfter" class="form-label">Show Answers After</label>
+                <label asp-for="ShowAnswerAfter" class="form-label">@Localizer["Show Answers After"]</label>
                 <input asp-for="ShowAnswerAfter" class="form-control" type="datetime-local" />
                 <span asp-validation-for="ShowAnswerAfter" class="text-danger"></span>
                 <div class="form-text">Leave empty to never show answers.</div>
             </div>
 
             <div class="mb-3 form-check">
-                <label asp-for="IsPublic" class="form-check-label">Publicly Visible</label>
+                <label asp-for="IsPublic" class="form-check-label">@Localizer["Publicly Visible"]</label>
                 <input asp-for="IsPublic" class="form-check-input" />
                 <span asp-validation-for="IsPublic" class="text-danger"></span>
             </div>
             
             <div class="mb-3 form-check">
-                <label asp-for="AllowReview" class="form-check-label">Allow students to review their score details</label>
+                <label asp-for="AllowReview" class="form-check-label">@Localizer["Allow students to review their score details"]</label>
                 <input asp-for="AllowReview" class="form-check-input" />
                 <span asp-validation-for="AllowReview" class="text-danger"></span>
             </div>
         </div>
         <div class="card-footer text-end">
-             <button type="submit" class="btn btn-primary">Save Changes</button>
-             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+             <button type="submit" class="btn btn-primary">@Localizer["Save Changes"]</button>
+             <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
         </div>
     </div>
 </form>

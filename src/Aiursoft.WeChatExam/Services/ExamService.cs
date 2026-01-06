@@ -191,6 +191,12 @@ public class ExamService : IExamService
         var record = await _dbContext.ExamRecords.FindAsync(examRecordId);
         if (record == null) throw new InvalidOperationException("Record not found");
         if (record.Status != ExamRecordStatus.InProgress) throw new InvalidOperationException("Exam is already submitted.");
+        
+        var exists = await _dbContext.QuestionSnapshots
+            .AnyAsync(q => q.Id == questionSnapshotId && q.PaperSnapshotId == record.PaperSnapshotId);
+
+        if (!exists) throw new InvalidOperationException("Question snapshot does not belong to this exam.");
+
 
         var ansRecord = await _dbContext.AnswerRecords
             .FirstOrDefaultAsync(a => a.ExamRecordId == examRecordId && a.QuestionSnapshotId == questionSnapshotId);
