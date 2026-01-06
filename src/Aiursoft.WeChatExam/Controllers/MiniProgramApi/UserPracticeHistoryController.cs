@@ -58,6 +58,7 @@ public class UserPracticeHistoryController : ControllerBase
                 Id = x.Id,
                 QuestionId = x.QuestionId,
                 UserAnswer = x.UserAnswer,
+                StandardAnswer = x.Question.StandardAnswer,
                 IsCorrect = x.IsCorrect,
                 CreationTime = x.CreationTime
             })
@@ -114,6 +115,7 @@ public class UserPracticeHistoryController : ControllerBase
             Id = entity.Id,
             QuestionId = entity.QuestionId,
             UserAnswer = entity.UserAnswer,
+            StandardAnswer = question.StandardAnswer,
             IsCorrect = entity.IsCorrect,
             CreationTime = entity.CreationTime
         };
