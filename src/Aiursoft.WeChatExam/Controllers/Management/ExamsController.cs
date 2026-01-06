@@ -56,11 +56,20 @@ public class ExamsController(
 
         try
         {
-            // Trim seconds/milliseconds
-            var start = model.StartTime.AddSeconds(-model.StartTime.Second).AddMilliseconds(-model.StartTime.Millisecond);
-            var end = model.EndTime.AddSeconds(-model.EndTime.Second).AddMilliseconds(-model.EndTime.Millisecond);
+            // The input is from datetime-local, which is "Unspecified" kind but represents User's Local Time (wall clock).
+            // We need to convert it to UTC for storage.
+            // Assuming server local time matches user local time for simplicity in this context, 
+            // or explicit conversion if we want to be strict.
+            // Using .ToUniversalTime() on Unspecified treats it as Local.
             
-            await examService.CreateExamAsync(model.Title, model.PaperId, start, end, model.DurationMinutes);
+            var startUtc = model.StartTime.ToUniversalTime();
+            var endUtc = model.EndTime.ToUniversalTime();
+
+            // Trim seconds/milliseconds (optional, but requested earlier) - do it on the UTC time
+            startUtc = startUtc.AddSeconds(-startUtc.Second).AddMilliseconds(-startUtc.Millisecond);
+            endUtc = endUtc.AddSeconds(-endUtc.Second).AddMilliseconds(-endUtc.Millisecond);
+            
+            await examService.CreateExamAsync(model.Title, model.PaperId, startUtc, endUtc, model.DurationMinutes);
             return RedirectToAction(nameof(Index));
         }
         catch (InvalidOperationException ex)
@@ -84,8 +93,8 @@ public class ExamsController(
             Id = exam.Id,
             Title = exam.Title,
             PaperTitle = exam.Paper?.Title ?? "Unknown",
-            StartTime = exam.StartTime,
-            EndTime = exam.EndTime,
+            StartTime = exam.StartTime.ToLocalTime(), // Convert UTC to Local for datetime-local input
+            EndTime = exam.EndTime.ToLocalTime(),
             DurationMinutes = exam.DurationMinutes,
             IsPublic = exam.IsPublic,
             AllowedAttempts = exam.AllowedAttempts,
@@ -104,11 +113,15 @@ public class ExamsController(
 
         try
         {
-             // Trim seconds/milliseconds
-            var start = model.StartTime.AddSeconds(-model.StartTime.Second).AddMilliseconds(-model.StartTime.Millisecond);
-            var end = model.EndTime.AddSeconds(-model.EndTime.Second).AddMilliseconds(-model.EndTime.Millisecond);
+             // Convert to UTC
+            var startUtc = model.StartTime.ToUniversalTime();
+            var endUtc = model.EndTime.ToUniversalTime();
 
-            await examService.UpdateExamAsync(id, model.Title, start, end, 
+            // Trim seconds/milliseconds
+            startUtc = startUtc.AddSeconds(-startUtc.Second).AddMilliseconds(-startUtc.Millisecond);
+            endUtc = endUtc.AddSeconds(-endUtc.Second).AddMilliseconds(-endUtc.Millisecond);
+
+            await examService.UpdateExamAsync(id, model.Title, startUtc, endUtc, 
                 model.DurationMinutes, model.IsPublic, model.AllowedAttempts, model.AllowReview, model.ShowAnswerAfter);
             return RedirectToAction(nameof(Index));
         }

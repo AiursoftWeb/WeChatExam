@@ -33,21 +33,14 @@
                     <tr>
                         <td>@exam.Title</td>
                         <td>@exam.Paper?.Title</td>
-                        <td>@exam.StartTime.ToHtmlDateTime()</td>
-                        <td>@exam.EndTime.ToHtmlDateTime()</td>
+                        <td><label class="text-monospace" data-utc-time="@exam.StartTime.ToHtmlDateTime()"></label></td>
+                        <td><label class="text-monospace" data-utc-time="@exam.EndTime.ToHtmlDateTime()"></label></td>
                         <td>
-                            @if (DateTime.UtcNow < exam.StartTime)
-                            {
-                                <span class="badge bg-secondary">Upcoming</span>
+                            @{
+                                var status = Aiursoft.WeChatExam.Services.ExamStatusCalculator.GetStatus(exam.StartTime, exam.EndTime);
+                                var badgeClass = Aiursoft.WeChatExam.Services.ExamStatusCalculator.GetStatusBadgeClass(status);
                             }
-                            else if (DateTime.UtcNow > exam.EndTime)
-                            {
-                                <span class="badge bg-dark">Ended</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-success">Active</span>
-                            }
+                            <span class="badge @badgeClass">@status</span>
                         </td>
                         <td>
                             <a asp-action="Details" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-info me-1">
