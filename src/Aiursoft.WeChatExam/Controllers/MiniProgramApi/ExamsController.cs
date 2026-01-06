@@ -106,20 +106,8 @@ public class ExamsController : ControllerBase
             {
                  // Fallback or bug in service include implementation
             }
+            // The client should obtains the complete test paper snapshot from PaperController based on the SnapshotId
 
-            // We need the questions from the snapshot
-            // In a real optimized app we might separate "Get Session" from "Start"
-            // For now, return the full paper content for the exam
-            
-            // Hack: manually fetch snapshot details via service access is tricky if not exposed
-            // We'll rely on our service GetExamRecordAsync having included AnswerRecords -> QuestionSnapshot
-            // But we need ALL questions even unanswered ones. 
-            // The StartExam logic links to a snapshot. Let's assume the client fetches paper via separate call?
-            // User Request said: "Start exam based on snapshot"
-            
-            // To simplify, we return the RecordId. The client then calls GET /api/papers/snapshots/{snapshotId} 
-            // OR we return the questions here. Returning here is easier for "Start & Go".
-            
             return Ok(new ExamSessionDto
             {
                 RecordId = record.Id,

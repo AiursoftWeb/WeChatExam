@@ -1,6 +1,9 @@
 @model Aiursoft.WeChatExam.Models.ExamsViewModels.DetailsViewModel
 
-<h1 class="h3 mb-3">@Localizer["Exam Results"]: @Model.Exam?.Title</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">@Localizer["Exam Results"]: @Model.Exam?.Title</h1>
+    <a asp-action="Index" class="btn btn-secondary">@Localizer["Back to List"]</a>
+</div>
 
 <div class="card mb-3">
     <div class="card-body">

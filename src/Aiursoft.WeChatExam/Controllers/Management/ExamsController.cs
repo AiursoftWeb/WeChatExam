@@ -56,7 +56,11 @@ public class ExamsController(
 
         try
         {
-            await examService.CreateExamAsync(model.Title, model.PaperId, model.StartTime, model.EndTime, model.DurationMinutes);
+            // Trim seconds/milliseconds
+            var start = model.StartTime.AddSeconds(-model.StartTime.Second).AddMilliseconds(-model.StartTime.Millisecond);
+            var end = model.EndTime.AddSeconds(-model.EndTime.Second).AddMilliseconds(-model.EndTime.Millisecond);
+            
+            await examService.CreateExamAsync(model.Title, model.PaperId, start, end, model.DurationMinutes);
             return RedirectToAction(nameof(Index));
         }
         catch (InvalidOperationException ex)
@@ -100,7 +104,11 @@ public class ExamsController(
 
         try
         {
-            await examService.UpdateExamAsync(id, model.Title, model.StartTime, model.EndTime, 
+             // Trim seconds/milliseconds
+            var start = model.StartTime.AddSeconds(-model.StartTime.Second).AddMilliseconds(-model.StartTime.Millisecond);
+            var end = model.EndTime.AddSeconds(-model.EndTime.Second).AddMilliseconds(-model.EndTime.Millisecond);
+
+            await examService.UpdateExamAsync(id, model.Title, start, end, 
                 model.DurationMinutes, model.IsPublic, model.AllowedAttempts, model.AllowReview, model.ShowAnswerAfter);
             return RedirectToAction(nameof(Index));
         }
@@ -170,12 +178,32 @@ public class ExamsController(
         }
     }
 
+    // GET: exams/delete/{id}
+    public async Task<IActionResult> Delete(Guid? id)
+    {
+        if (id == null) return NotFound();
+        var exam = await examService.GetExamAsync(id.Value);
+        if (exam == null) return NotFound();
+
+        // Calculate record count
+        var count = await context.ExamRecords.CountAsync(r => r.ExamId == id.Value);
+
+        return this.StackView(new DeleteViewModel
+        {
+            Id = exam.Id,
+            Title = exam.Title,
+            StartTime = exam.StartTime,
+            EndTime = exam.EndTime,
+            RecordCount = count
+        });
+    }
+
     // POST: exams/delete/{id}
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(Guid id)
+    public async Task<IActionResult> Delete(DeleteViewModel model)
     {
-        await examService.DeleteExamAsync(id);
+        await examService.DeleteExamAsync(model.Id);
         return RedirectToAction(nameof(Index));
     }
 }

@@ -25,12 +25,12 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label asp-for="StartTime" class="form-label"></label>
-                    <input asp-for="StartTime" class="form-control" type="datetime-local" />
+                    <input asp-for="StartTime" class="form-control" type="datetime-local" step="60" />
                     <span asp-validation-for="StartTime" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label asp-for="EndTime" class="form-label"></label>
-                    <input asp-for="EndTime" class="form-control" type="datetime-local" />
+                    <input asp-for="EndTime" class="form-control" type="datetime-local" step="60" />
                     <span asp-validation-for="EndTime" class="text-danger"></span>
                 </div>
             </div>

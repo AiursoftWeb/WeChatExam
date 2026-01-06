@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.ExamsViewModels.IndexViewModel
 
 <h1 class="h3 mb-3">@Localizer["Exams"]</h1>
@@ -32,8 +33,8 @@
                     <tr>
                         <td>@exam.Title</td>
                         <td>@exam.Paper?.Title</td>
-                        <td>@exam.StartTime.ToLocalTime().ToString("g")</td>
-                        <td>@exam.EndTime.ToLocalTime().ToString("g")</td>
+                        <td>@exam.StartTime.ToHtmlDateTime()</td>
+                        <td>@exam.EndTime.ToHtmlDateTime()</td>
                         <td>
                             @if (DateTime.UtcNow < exam.StartTime)
                             {
@@ -57,12 +58,10 @@
                                 <i class="align-middle" data-lucide="edit"></i>
                                 <span class="visually-hidden">@Localizer["edit"]</span>
                             </a>
-                             <form asp-action="Delete" asp-route-id="@exam.Id" method="post" class="d-inline" onsubmit="return confirm('Delete this exam and all student records?');">
-                                <button type="submit" class="btn btn-sm btn-outline-danger">
-                                    <i class="align-middle" data-lucide="trash-2"></i>
-                                    <span class="visually-hidden">@Localizer["delete"]</span>
-                                </button>
-                            </form>
+                            <a asp-action="Delete" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="align-middle" data-lucide="trash-2"></i>
+                                <span class="visually-hidden">@Localizer["delete"]</span>
+                            </a>
                         </td>
                     </tr>
                 }
