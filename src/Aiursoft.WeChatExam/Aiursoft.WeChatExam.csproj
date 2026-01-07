@@ -12,9 +12,9 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Aiursoft.DbTools.Switchable" Version="10.0.3" />
+    <PackageReference Include="Aiursoft.DbTools.Switchable" Version="10.0.4" />
     <PackageReference Include="Aiursoft.Scanner" Version="10.0.1" />
-    <PackageReference Include="Aiursoft.UiStack" Version="10.0.1" />
+    <PackageReference Include="Aiursoft.UiStack" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.1" />
@@ -22,9 +22,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Api" Version="3.13.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aiursoft.WeChatExam.InMemory\Aiursoft.WeChatExam.InMemory.csproj" />
