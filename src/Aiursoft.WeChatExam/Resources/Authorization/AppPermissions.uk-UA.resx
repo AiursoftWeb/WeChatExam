@@ -18,86 +18,50 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Read Users" xml:space="preserve">
-    <value>Перегляд користувачів</value>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Додати будь-який знаннєвий пункт</value>
   </data>
-  <data name="Add New Users" xml:space="preserve">
-    <value>Додати нових користувачів</value>
-  </data>
-  <data name="Delete Users" xml:space="preserve">
-    <value>Видалення користувачів</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>Редагування інформації користувача</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>Дозволяє переглядати список усіх користувачів.</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>Дозволяє остаточне видалення облікових записів користувачів.</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>Надає дозвіл на створення нових облікових записів користувачів.</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>Дозволяє змінювати дані користувача, такі як електронна пошта та ролі, а також скидати паролі користувачів.</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>Видалити ролі</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>Перегляд ролей</value>
-  </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>Дозволяє переглядати список ролей та призначені для них дозволи.</value>
-  </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>Дозволяє остаточне видалення ролей.</value>
+  <data name="Add Articles" xml:space="preserve">
+    <value>Додати статті</value>
   </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Додати нові ролі</value>
   </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>Редагувати інформацію про роль</value>
+  <data name="Add New Users" xml:space="preserve">
+    <value>Додати нових користувачів</value>
   </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>Надає дозвіл на створення нових ролей.</value>
+  <data name="Add Papers" xml:space="preserve">
+    <value>Додати роботи</value>
   </data>
-  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
-    <value>Дозволяє змінювати назви ролей та призначені для них дозволи.</value>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Додати питання</value>
   </data>
-  <data name="View System Context" xml:space="preserve">
-    <value>Перегляд системного контексту</value>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавання будь-якого knowledgePoint, незалежно від власності.</value>
   </data>
-  <data name="Assign Roles to Users" xml:space="preserve">
-    <value>Призначити ролі користувачам</value>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавати статті, незалежно від власника.</value>
   </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>Дозволяє перегляд системної інформації та налаштувань.</value>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавання робіт, незалежно від власності.</value>
   </data>
-  <data name="Reboot This App" xml:space="preserve">
-    <value>Перезавантажити цей додаток</value>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавання питань, незалежно від власності.</value>
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Дозволяє призначати або знімати ролі для будь-кого користувача.</value>
   </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>Надає дозвіл на перезапуск екземпляра програми. Може призвести до перерв у доступності, але всі налаштування та кеш буде перезавантажено.</value>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення будь-якої категорії, незалежно від прав власності.</value>
   </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>Видалення питань</value>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення будь-якого knowledgePoint, незалежно від прав власності.</value>
   </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>Редагувати питання</value>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення статей, незалежно від власника.</value>
   </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє редагування питань, незалежно від власності.</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>Видалити будь-яку категорію</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>Редагувати будь-яку категорію</value>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення документів, незалежно від власності.</value>
   </data>
   <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
     <value>Дозволяє видалення питань, незалежно від власності.</value>
@@ -105,50 +69,104 @@
   <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
     <value>Дозволяє редагувати будь-яку категорію, незалежно від прав власності.</value>
   </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє видалення будь-якої категорії, незалежно від прав власності.</value>
-  </data>
-  <data name="Add Questions" xml:space="preserve">
-    <value>Додати питання</value>
-  </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>Редагувати будь-який KnowledgePoint</value>
-  </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>Видалити будь-яку точку знань</value>
-  </data>
-  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє додавання питань, незалежно від власності.</value>
-  </data>
-  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє видалення будь-якого knowledgePoint, незалежно від прав власності.</value>
-  </data>
   <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Дозволяє редагувати будь-який knowledgePoint, незалежно від прав власності.</value>
-  </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє додавання будь-якого knowledgePoint, незалежно від власності.</value>
-  </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
-    <value>Додати будь-який знаннєвий пункт</value>
-  </data>
-  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє видалення статей, незалежно від власника.</value>
-  </data>
-  <data name="Delete Articles" xml:space="preserve">
-    <value>Видалити статті</value>
-  </data>
-  <data name="Edit Articles" xml:space="preserve">
-    <value>Редагувати статті</value>
   </data>
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Дозволяє редагувати статті, незалежно від власності.</value>
   </data>
-  <data name="Add Articles" xml:space="preserve">
-    <value>Додати статті</value>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє редагування документів, незалежно від власності.</value>
   </data>
-  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє додавати статті, незалежно від власника.</value>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє редагування питань, незалежно від власності.</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>Дозволяє змінювати назви ролей та призначені для них дозволи.</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>Дозволяє змінювати дані користувача, такі як електронна пошта та ролі, а також скидати паролі користувачів.</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>Дозволяє остаточне видалення ролей.</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>Дозволяє остаточне видалення облікових записів користувачів.</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>Дозволяє перегляд системної інформації та налаштувань.</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>Дозволяє переглядати список усіх користувачів.</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>Дозволяє переглядати список ролей та призначені для них дозволи.</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>Призначити ролі користувачам</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Видалити будь-яку категорію</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Видалити будь-яку точку знань</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>Видалити статті</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>Видалити документи</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Видалення питань</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>Видалити ролі</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>Видалення користувачів</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Редагувати будь-яку категорію</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Редагувати будь-який KnowledgePoint</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>Редагувати статті</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>Редагувати роботи</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Редагувати питання</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>Редагувати інформацію про роль</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>Редагування інформації користувача</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>Надає дозвіл на створення нових ролей.</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>Надає дозвіл на створення нових облікових записів користувачів.</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>Надає дозвіл на перезапуск екземпляра програми. Може призвести до перерв у доступності, але всі налаштування та кеш буде перезавантажено.</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>Перегляд ролей</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>Перегляд користувачів</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>Перезавантажити цей додаток</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>Перегляд системного контексту</value>
   </data>
 
 </root>

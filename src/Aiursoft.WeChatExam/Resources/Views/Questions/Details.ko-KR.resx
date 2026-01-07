@@ -18,29 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Explanation" xml:space="preserve">
-    <value>해설</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>유형</value>
+      <data name="Back" xml:space="preserve">
+    <value>뒤로</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>카테고리</value>
   </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>단일 정답</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>선택지</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>텍스트</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>문제 상세 정보</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>빈칸 채우기 정답</value>
+  <data name="Content" xml:space="preserve">
+    <value>내용</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>생성됨</value>
@@ -48,23 +33,38 @@
   <data name="Edit" xml:space="preserve">
     <value>수정</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>뒤로</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>해설</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>빈칸 채우기 정답</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>채점 방식</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>내용</value>
-  </data>
   <data name="Metadata" xml:space="preserve">
     <value>메타데이터</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>선택지</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>문제 상세 정보</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>단일 정답</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>표준 정답</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>태그</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>텍스트</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>유형</value>
   </data>
 
 </root>

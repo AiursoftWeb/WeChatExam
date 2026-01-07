@@ -21,23 +21,23 @@
       <data name="Are you sure?" xml:space="preserve">
     <value>你確定嗎？</value>
   </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>返回列表</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>返回列表</value>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>無法刪除包含子項目的分類。請先刪除子項目。</value>
   </data>
   <data name="Delete Category" xml:space="preserve">
     <value>刪除分類</value>
   </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>是的，刪除此分類</value>
-  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>此操作無法撤銷。您即將永久刪除以下類別：</value>
   </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>無法刪除包含子項目的分類。請先刪除子項目。</value>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>是的，刪除此分類</value>
   </data>
 
 </root>

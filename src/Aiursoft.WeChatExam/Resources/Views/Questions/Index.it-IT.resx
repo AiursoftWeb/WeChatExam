@@ -18,11 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>Aggiungi Domanda</value>
+  </data>
+  <data name="All Categories" xml:space="preserve">
+    <value>Tutte le categorie</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categoria</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuto</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Creato</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Dettagli</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtra</value>
+  </data>
+  <data name="No questions found" xml:space="preserve">
+    <value>Nessuna domanda trovata</value>
+  </data>
+  <data name="Question List" xml:space="preserve">
+    <value>Elenco Domande</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Domande</value>
@@ -30,38 +60,8 @@
   <data name="Text" xml:space="preserve">
     <value>Testo</value>
   </data>
-  <data name="Question List" xml:space="preserve">
-    <value>Elenco Domande</value>
-  </data>
-  <data name="All Categories" xml:space="preserve">
-    <value>Tutte le categorie</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>Filtra</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Aggiungi Domanda</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Creato</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Azioni</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Dettagli</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="No questions found" xml:space="preserve">
-    <value>Nessuna domanda trovata</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenuto</value>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>إلغاء</value>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>هل أنت متأكد؟</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>العودة إلى القائمة</value>
   </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>هل أنت متأكد؟</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>لا يمكن حذف فئة تحتوي على فئات فرعية. يرجى حذف الفئات الفرعية أولاً.</value>
   </data>
   <data name="Delete Category" xml:space="preserve">
     <value>حذف التصنيف</value>
   </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>نعم، احذف هذا التصنيف</value>
-  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>هذا الإجراء لا يمكن التراجع عنه. أنت على وشك حذف التصنيف التالي نهائيًا:</value>
   </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>لا يمكن حذف فئة تحتوي على فئات فرعية. يرجى حذف الفئات الفرعية أولاً.</value>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>نعم، احذف هذا التصنيف</value>
   </data>
 
 </root>

@@ -18,53 +18,53 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Question Details" xml:space="preserve">
-    <value>Kysymyksen tiedot</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Täytä oikein</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Teksti</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Yksi oikea</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tyyppi</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Vaihtoehdot</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Selitys</value>
+      <data name="Back" xml:space="preserve">
+    <value>Takaisin</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategoria</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Sisältö</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Luotu</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>Takaisin</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Muokkaa</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Sisältö</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>Selitys</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Täytä oikein</value>
+  </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Arviointistrategia</value>
   </data>
   <data name="Metadata" xml:space="preserve">
     <value>Metatiedot</value>
   </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Arviointistrategia</value>
+  <data name="Options" xml:space="preserve">
+    <value>Vaihtoehdot</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Kysymyksen tiedot</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Yksi oikea</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standardvastaus</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tunnisteet</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Teksti</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tyyppi</value>
   </data>
 
 </root>

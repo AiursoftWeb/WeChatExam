@@ -18,29 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Options" xml:space="preserve">
-    <value>選項</value>
+      <data name="Back" xml:space="preserve">
+    <value>返回</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>類別</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>解析</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>類型</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>題目內容</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>題目詳情</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>單一正確答案</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>填入正確答案</value>
+  <data name="Content" xml:space="preserve">
+    <value>內容</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>建立時間</value>
@@ -48,14 +33,11 @@
   <data name="Edit" xml:space="preserve">
     <value>編輯</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>返回</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>解析</value>
   </data>
-  <data name="Standard Answer" xml:space="preserve">
-    <value>標準答案</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>內容</value>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>填入正確答案</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>評分策略</value>
@@ -63,8 +45,26 @@
   <data name="Metadata" xml:space="preserve">
     <value>元數據</value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>選項</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>題目詳情</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>單一正確答案</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>標準答案</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>標籤</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>題目內容</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>類型</value>
   </data>
 
 </root>

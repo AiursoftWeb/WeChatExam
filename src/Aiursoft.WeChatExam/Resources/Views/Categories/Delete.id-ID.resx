@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Batal</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Apakah Anda yakin?</value>
-  </data>
-  <data name="Delete Category" xml:space="preserve">
-    <value>Hapus Kategori</value>
-  </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Ya, hapus kategori ini</value>
-  </data>
-  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
-    <value>Tindakan ini tidak dapat dibatalkan. Anda akan menghapus kategori berikut secara permanen:</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Kembali ke Daftar</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Tidak dapat menghapus kategori yang memiliki subkategori. Harap hapus subkategori terlebih dahulu.</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Hapus Kategori</value>
+  </data>
+  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
+    <value>Tindakan ini tidak dapat dibatalkan. Anda akan menghapus kategori berikut secara permanen:</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Ya, hapus kategori ini</value>
   </data>
 
 </root>

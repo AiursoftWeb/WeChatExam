@@ -18,17 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Annuller</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Er du sikker?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tilbage til listen</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Ja, slet dette videnpunkt</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
+    <value>Kan ikke slette videnpunkt med underordnede. Slet venligst underordnede først.</value>
   </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Slet videnhed</value>
@@ -36,8 +36,8 @@
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Denne handling kan ikke fortrydes. Du er ved at slette følgende videnhed permanent:</value>
   </data>
-  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
-    <value>Kan ikke slette videnpunkt med underordnede. Slet venligst underordnede først.</value>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Ja, slet dette videnpunkt</value>
   </data>
 
 </root>

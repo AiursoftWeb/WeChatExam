@@ -18,23 +18,38 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
-    <value>Kategoria</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Toiminnot</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>Teksti</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>Suodata</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tyyppi</value>
+  <data name="Add Question" xml:space="preserve">
+    <value>Lisää kysymys</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>Kaikki kategoriat</value>
   </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Lisää kysymys</value>
+  <data name="Category" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Sisältö</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Luotu</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Poista</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Yksityiskohdat</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Muokkaa</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Suodata</value>
+  </data>
+  <data name="No questions found" xml:space="preserve">
+    <value>Kysymyksiä ei löytynyt</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Kysymyslista</value>
@@ -42,26 +57,11 @@
   <data name="Questions" xml:space="preserve">
     <value>Kysymykset</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Toiminnot</value>
+  <data name="Text" xml:space="preserve">
+    <value>Teksti</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Muokkaa</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Yksityiskohdat</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Poista</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Luotu</value>
-  </data>
-  <data name="No questions found" xml:space="preserve">
-    <value>Kysymyksiä ei löytynyt</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Sisältö</value>
+  <data name="Type" xml:space="preserve">
+    <value>Tyyppi</value>
   </data>
 
 </root>

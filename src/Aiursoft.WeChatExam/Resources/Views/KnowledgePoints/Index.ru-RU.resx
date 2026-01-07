@@ -18,11 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Title" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="No knowledgePoints found" xml:space="preserve">
-    <value>Знания не найдены</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
   </data>
   <data name="Add KnowledgePoint" xml:space="preserve">
     <value>Добавить KnowledgePoint</value>
@@ -30,17 +27,20 @@
   <data name="Created" xml:space="preserve">
     <value>Создано</value>
   </data>
+  <data name="KnowledgePoint List" xml:space="preserve">
+    <value>Список знаний</value>
+  </data>
   <data name="KnowledgePoints" xml:space="preserve">
     <value>Темы знаний</value>
+  </data>
+  <data name="No knowledgePoints found" xml:space="preserve">
+    <value>Знания не найдены</value>
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Родитель</value>
   </data>
-  <data name="KnowledgePoint List" xml:space="preserve">
-    <value>Список знаний</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Действия</value>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
   </data>
 
 </root>

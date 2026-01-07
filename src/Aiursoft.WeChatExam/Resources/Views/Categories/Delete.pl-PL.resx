@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete Category" xml:space="preserve">
-    <value>Usuń kategorię</value>
-  </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Tak, usuń tę kategorię</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Czy jesteś pewien?</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Anuluj</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Powrót do listy</value>
   </data>
-  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
-    <value>Ta czynność jest nieodwracalna. Zaraz trwale usuniesz następującą kategorię:</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anuluj</value>
   </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Nie można usunąć kategorii z podkategoriami. Proszę najpierw usunąć podkategorie.</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Usuń kategorię</value>
+  </data>
+  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
+    <value>Ta czynność jest nieodwracalna. Zaraz trwale usuniesz następującą kategorię:</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Tak, usuń tę kategorię</value>
   </data>
 
 </root>

@@ -18,38 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>유형</value>
-  </data>
-  <data name="Questions" xml:space="preserve">
-    <value>질문</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>카테고리</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>필터</value>
+      <data name="Actions" xml:space="preserve">
+    <value>작업</value>
   </data>
   <data name="Add Question" xml:space="preserve">
     <value>질문 추가</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>텍스트</value>
-  </data>
-  <data name="Question List" xml:space="preserve">
-    <value>질문 목록</value>
-  </data>
   <data name="All Categories" xml:space="preserve">
     <value>전체 카테고리</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>수정</value>
+  <data name="Category" xml:space="preserve">
+    <value>카테고리</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>내용</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>생성일</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>작업</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>삭제</value>
@@ -57,11 +42,26 @@
   <data name="Details" xml:space="preserve">
     <value>세부 정보</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>수정</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>필터</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>질문을 찾을 수 없습니다.</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>내용</value>
+  <data name="Question List" xml:space="preserve">
+    <value>질문 목록</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>질문</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>텍스트</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>유형</value>
   </data>
 
 </root>

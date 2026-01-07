@@ -18,119 +18,155 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete Users" xml:space="preserve">
-    <value>उपयोगकर्ता हटाएं</value>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>कोई भी नॉलेजपॉइंट जोड़ें</value>
   </data>
-  <data name="Add New Users" xml:space="preserve">
-    <value>नए उपयोगकर्ता जोड़ें</value>
-  </data>
-  <data name="Read Users" xml:space="preserve">
-    <value>उपयोगकर्ताओं को पढ़ें</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>उपयोगकर्ता जानकारी संपादित करें</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>नए उपयोगकर्ता खाते बनाने की अनुमति प्रदान करता है।</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>सभी उपयोगकर्ताओं की सूची देखने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>उपयोगकर्ता खातों को स्थायी रूप से हटाने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>उपयोगकर्ता के विवरण जैसे ईमेल और भूमिकाओं में संशोधन की अनुमति देता है, और उपयोगकर्ता के पासवर्ड को रीसेट भी कर सकता है।</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>भूमिकाएँ हटाएँ</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>भूमिकाएँ पढ़ें</value>
+  <data name="Add Articles" xml:space="preserve">
+    <value>लेख जोड़ें</value>
   </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>नए भूमिकाएँ जोड़ें</value>
   </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>भूमिका की जानकारी संपादित करें</value>
+  <data name="Add New Users" xml:space="preserve">
+    <value>नए उपयोगकर्ता जोड़ें</value>
   </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>नए भूमिकाएँ बनाने की अनुमति प्रदान करता है।</value>
-  </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>भूमिकाओं को स्थायी रूप से हटाने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>भूमिकाओं की सूची और उनके सौंपे गए अनुमतियों को देखने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
-    <value>रोल नामों और उनके सौंपे गए अनुमतियों में संशोधन की अनुमति देता है।</value>
-  </data>
-  <data name="View System Context" xml:space="preserve">
-    <value>सिस्टम संदर्भ देखें</value>
-  </data>
-  <data name="Assign Roles to Users" xml:space="preserve">
-    <value>उपयोगकर्ताओं को भूमिकाएँ नियत करें</value>
-  </data>
-  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
-    <value>किसी भी उपयोगकर्ता को भूमिकाएँ सौंपने या हटाने की अनुमति देता है।</value>
-  </data>
-  <data name="Reboot This App" xml:space="preserve">
-    <value>इस ऐप को पुनरारंभ करें</value>
-  </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>सिस्टम-स्तरीय जानकारी और सेटिंग्स देखने की अनुमति देता है।</value>
-  </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>एप्लिकेशन इंस्टेंस को पुनरारंभ करने की अनुमति प्रदान करता है। इससे उपलब्धता में व्यवधान हो सकता है, लेकिन सभी सेटिंग्स और कैश पुनः लोड हो जाएंगे।</value>
-  </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>प्रश्न संपादित करें</value>
-  </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>प्रश्न हटाएं</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>किसी भी श्रेणी को हटाएं</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>किसी भी श्रेणी को संपादित करें</value>
-  </data>
-  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
-    <value>स्वामित्व की परवाह किए बिना प्रश्नों को हटाने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>किसी भी श्रेणी को, स्वामित्व की परवाह किए बिना, हटाने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
-    <value>किसी भी श्रेणी को, स्वामित्व की परवाह किए बिना, संपादित करने की अनुमति देता है।</value>
-  </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>सवालों को संपादित करने की अनुमति देता है, चाहे उनका स्वामित्व किसी के पास हो।</value>
+  <data name="Add Papers" xml:space="preserve">
+    <value>पेपर्स जोड़ें</value>
   </data>
   <data name="Add Questions" xml:space="preserve">
     <value>प्रश्न जोड़ें</value>
   </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>किसी भी ज्ञान बिंदु को हटाएं</value>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, जोड़ने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>लेखों को मालिकाना हक के बिना जोड़ने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>किसी भी मालिकत्व के बिना पेपर्स को जोड़ने की अनुमति देता है।</value>
   </data>
   <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
     <value>स्वामित्व की परवाह किए बिना, प्रश्न जोड़ने की अनुमति देता है।</value>
   </data>
+  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
+    <value>किसी भी उपयोगकर्ता को भूमिकाएँ सौंपने या हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>किसी भी श्रेणी को, स्वामित्व की परवाह किए बिना, हटाने की अनुमति देता है।</value>
+  </data>
   <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, हटाने की अनुमति देता है।</value>
   </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>किसी भी ज्ञानबिंदु को संपादित करें</value>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>लेखों को स्वामित्व के बिना हटाने की अनुमति देता है।</value>
   </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
-    <value>कोई भी नॉलेजपॉइंट जोड़ें</value>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>किसी भी मालिकत्व के बिना पेपर्स को हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>स्वामित्व की परवाह किए बिना प्रश्नों को हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>किसी भी श्रेणी को, स्वामित्व की परवाह किए बिना, संपादित करने की अनुमति देता है।</value>
   </data>
   <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, संपादित करने की अनुमति देता है।</value>
   </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, जोड़ने की अनुमति देता है।</value>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>लेखों के संपादन की अनुमति देता है, स्वामित्व के बिना किसी भी तरह।</value>
+  </data>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>किसी भी मालिकत्व के बिना पेपर्स के संपादन की अनुमति देता है।</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>सवालों को संपादित करने की अनुमति देता है, चाहे उनका स्वामित्व किसी के पास हो।</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>रोल नामों और उनके सौंपे गए अनुमतियों में संशोधन की अनुमति देता है।</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>उपयोगकर्ता के विवरण जैसे ईमेल और भूमिकाओं में संशोधन की अनुमति देता है, और उपयोगकर्ता के पासवर्ड को रीसेट भी कर सकता है।</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>भूमिकाओं को स्थायी रूप से हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>उपयोगकर्ता खातों को स्थायी रूप से हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>सिस्टम-स्तरीय जानकारी और सेटिंग्स देखने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>सभी उपयोगकर्ताओं की सूची देखने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>भूमिकाओं की सूची और उनके सौंपे गए अनुमतियों को देखने की अनुमति देता है।</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>उपयोगकर्ताओं को भूमिकाएँ नियत करें</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>किसी भी श्रेणी को हटाएं</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>किसी भी ज्ञान बिंदु को हटाएं</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>लेख हटाएं</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>कागजात हटाएं</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>प्रश्न हटाएं</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>भूमिकाएँ हटाएँ</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>उपयोगकर्ता हटाएं</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>किसी भी श्रेणी को संपादित करें</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>किसी भी ज्ञानबिंदु को संपादित करें</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>लेख संपादित करें</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>पेपर्स संपादित करें</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>प्रश्न संपादित करें</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>भूमिका की जानकारी संपादित करें</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>उपयोगकर्ता जानकारी संपादित करें</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>नए भूमिकाएँ बनाने की अनुमति प्रदान करता है।</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>नए उपयोगकर्ता खाते बनाने की अनुमति प्रदान करता है।</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>एप्लिकेशन इंस्टेंस को पुनरारंभ करने की अनुमति प्रदान करता है। इससे उपलब्धता में व्यवधान हो सकता है, लेकिन सभी सेटिंग्स और कैश पुनः लोड हो जाएंगे।</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>भूमिकाएँ पढ़ें</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>उपयोगकर्ताओं को पढ़ें</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>इस ऐप को पुनरारंभ करें</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>सिस्टम संदर्भ देखें</value>
   </data>
 
 </root>

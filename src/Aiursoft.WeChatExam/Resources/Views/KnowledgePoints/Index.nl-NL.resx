@@ -21,14 +21,8 @@
       <data name="Actions" xml:space="preserve">
     <value>Acties</value>
   </data>
-  <data name="Parent" xml:space="preserve">
-    <value>Ouder</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Titel</value>
-  </data>
-  <data name="KnowledgePoints" xml:space="preserve">
-    <value>Kennispunten</value>
+  <data name="Add KnowledgePoint" xml:space="preserve">
+    <value>Kennispunt toevoegen</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Aangemaakt</value>
@@ -36,11 +30,17 @@
   <data name="KnowledgePoint List" xml:space="preserve">
     <value>Kennispuntlijst</value>
   </data>
+  <data name="KnowledgePoints" xml:space="preserve">
+    <value>Kennispunten</value>
+  </data>
   <data name="No knowledgePoints found" xml:space="preserve">
     <value>Geen kennispunten gevonden</value>
   </data>
-  <data name="Add KnowledgePoint" xml:space="preserve">
-    <value>Kennispunt toevoegen</value>
+  <data name="Parent" xml:space="preserve">
+    <value>Ouder</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
   </data>
 
 </root>

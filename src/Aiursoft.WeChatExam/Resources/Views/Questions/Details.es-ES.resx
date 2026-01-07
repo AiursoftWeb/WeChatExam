@@ -18,29 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Texto</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
+      <data name="Back" xml:space="preserve">
+    <value>Atrás</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categoría</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Explicación</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Respuesta única correcta</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Respuesta correcta de rellenar</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Opciones</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>Detalles de la pregunta</value>
+  <data name="Content" xml:space="preserve">
+    <value>Contenido</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Creado</value>
@@ -48,23 +33,38 @@
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Atrás</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>Explicación</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenido</value>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Respuesta correcta de rellenar</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Estrategia de calificación</value>
   </data>
-  <data name="Standard Answer" xml:space="preserve">
-    <value>Respuesta estándar</value>
-  </data>
   <data name="Metadata" xml:space="preserve">
     <value>Metadatos</value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Detalles de la pregunta</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Respuesta única correcta</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Respuesta estándar</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>Etiquetas</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

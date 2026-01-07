@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add" xml:space="preserve">
+    <value>إضافة</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>إضافة سؤال</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>تعديل الورقة</value>
+  </data>
+  <data name="Free Paper" xml:space="preserve">
+    <value>ورقة مجانية</value>
+  </data>
+  <data name="Freeze" xml:space="preserve">
+    <value>تجميد</value>
+  </data>
+  <data name="Mark as Publishable" xml:space="preserve">
+    <value>تحديد كمُتاح للنشر</value>
+  </data>
+  <data name="Paper Info" xml:space="preserve">
+    <value>معلومات الورقة</value>
+  </data>
+  <data name="Publish Snapshot" xml:space="preserve">
+    <value>نشر النسخة الحالية</value>
+  </data>
+  <data name="Questions in Paper" xml:space="preserve">
+    <value>الأسئلة في الامتحان</value>
+  </data>
+  <data name="Revert to Draft" xml:space="preserve">
+    <value>العودة إلى المسودة</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Select Question" xml:space="preserve">
+    <value>اختيار السؤال</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Status Actions" xml:space="preserve">
+    <value>إجراءات الحالة</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>حد الزمن (دقائق)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+
+</root>

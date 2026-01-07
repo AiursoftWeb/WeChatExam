@@ -21,23 +21,23 @@
       <data name="Are you sure?" xml:space="preserve">
     <value>Tem a certeza?</value>
   </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Voltar à Lista</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
+  </data>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>Não é possível eliminar uma categoria com subcategorias. Elimine primeiro as subcategorias.</value>
   </data>
   <data name="Delete Category" xml:space="preserve">
     <value>Eliminar Categoria</value>
   </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Sim, eliminar esta categoria</value>
-  </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>Voltar à Lista</value>
-  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Esta ação é irreversível. Está prestes a eliminar permanentemente a seguinte categoria:</value>
   </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>Não é possível eliminar uma categoria com subcategorias. Elimine primeiro as subcategorias.</value>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Sim, eliminar esta categoria</value>
   </data>
 
 </root>

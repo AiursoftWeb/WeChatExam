@@ -18,17 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Κείμενο</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Τύπος</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Επιλογές</value>
+      <data name="Back" xml:space="preserve">
+    <value>Πίσω</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Κατηγορία</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Περιεχόμενο</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Δημιουργήθηκε</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Επεξεργασία</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>Επεξήγηση</value>
@@ -36,35 +39,32 @@
   <data name="Fill In Correct" xml:space="preserve">
     <value>Σωστή Συμπλήρωση</value>
   </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Βαθμολογική Στρατηγική</value>
+  </data>
+  <data name="Metadata" xml:space="preserve">
+    <value>μεταδεδομένα</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Επιλογές</value>
+  </data>
   <data name="Question Details" xml:space="preserve">
     <value>Λεπτομέρειες Ερώτησης</value>
   </data>
   <data name="Single Correct" xml:space="preserve">
     <value>Μονή Σωστή Απάντηση</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Πίσω</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Επεξεργασία</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Δημιουργήθηκε</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Περιεχόμενο</value>
-  </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Πρότυπη Απάντηση</value>
   </data>
-  <data name="Metadata" xml:space="preserve">
-    <value>μεταδεδομένα</value>
-  </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Βαθμολογική Στρατηγική</value>
-  </data>
   <data name="Tags" xml:space="preserve">
     <value>Ετικέτες</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Κείμενο</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Τύπος</value>
   </data>
 
 </root>

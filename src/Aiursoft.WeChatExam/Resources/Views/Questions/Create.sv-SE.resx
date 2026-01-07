@@ -18,32 +18,32 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>Typ</value>
+      <data name="Add Question" xml:space="preserve">
+    <value>Lägg till fråga</value>
   </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Välj kategori</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
   </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Välj typ</value>
+  <data name="Content" xml:space="preserve">
+    <value>Innehåll</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>Förklaring</value>
   </data>
   <data name="Fill In" xml:space="preserve">
     <value>Fyll i</value>
   </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Lägg till fråga</value>
+  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
+    <value>Rätt svar för fyll i (för fyll i, JSON-array)</value>
   </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Enkeltval</value>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Betygssättningstrategi</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Avbryt</value>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Metadata (t.ex. Alternativ JSON)</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Alternativ (för enkelt val, JSON-array)</value>
@@ -51,29 +51,29 @@
   <data name="Save" xml:space="preserve">
     <value>Spara</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Förklaring</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Korrekt svar (för enkelt val)</value>
-  </data>
-  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
-    <value>Rätt svar för fyll i (för fyll i, JSON-array)</value>
+  <data name="Select category" xml:space="preserve">
+    <value>Välj kategori</value>
   </data>
   <data name="Select strategy" xml:space="preserve">
     <value>Välj strategi</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Metadata (t.ex. Alternativ JSON)</value>
+  <data name="Select type" xml:space="preserve">
+    <value>Välj typ</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Innehåll</value>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Enkeltval</value>
   </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Betygssättningstrategi</value>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Korrekt svar (för enkelt val)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standard svar</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
   </data>
 
 </root>

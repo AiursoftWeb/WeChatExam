@@ -18,29 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>النص</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>الفئة</value>
-  </data>
-  <data name="Question List" xml:space="preserve">
-    <value>قائمة الأسئلة</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>النوع</value>
-  </data>
-  <data name="All Categories" xml:space="preserve">
-    <value>جميع الفئات</value>
+      <data name="Actions" xml:space="preserve">
+    <value>الإجراءات</value>
   </data>
   <data name="Add Question" xml:space="preserve">
     <value>إضافة سؤال</value>
   </data>
-  <data name="Filter" xml:space="preserve">
-    <value>تصفية</value>
+  <data name="All Categories" xml:space="preserve">
+    <value>جميع الفئات</value>
   </data>
-  <data name="Questions" xml:space="preserve">
-    <value>الأسئلة</value>
+  <data name="Category" xml:space="preserve">
+    <value>الفئة</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>المحتوى</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>تم الإنشاء</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
@@ -48,20 +42,26 @@
   <data name="Details" xml:space="preserve">
     <value>التفاصيل</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>الإجراءات</value>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
   </data>
-  <data name="Created" xml:space="preserve">
-    <value>تم الإنشاء</value>
+  <data name="Filter" xml:space="preserve">
+    <value>تصفية</value>
   </data>
   <data name="No questions found" xml:space="preserve">
     <value>لم يتم العثور على أسئلة</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>تعديل</value>
+  <data name="Question List" xml:space="preserve">
+    <value>قائمة الأسئلة</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>المحتوى</value>
+  <data name="Questions" xml:space="preserve">
+    <value>الأسئلة</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>النص</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>النوع</value>
   </data>
 
 </root>

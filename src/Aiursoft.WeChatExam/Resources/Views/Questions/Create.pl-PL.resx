@@ -18,50 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Wybierz typ</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Kategoria</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
+      <data name="Add Question" xml:space="preserve">
     <value>Dodaj pytanie</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Tekst</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Uzupełnij</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Wybierz kategorię</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Pojedynczy wybór</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Opcje (dla pytań jednokrotnego wyboru, tablica JSON)</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Pojedyncza poprawna (dla pytań jednokrotnego wyboru)</value>
-  </data>
-  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
-    <value>Poprawne odpowiedzi (dla typu &quot;wypełnij&quot;, tablica JSON)</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Wyjaśnienie</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anuluj</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Zapisz</value>
+  <data name="Category" xml:space="preserve">
+    <value>Kategoria</value>
   </data>
-  <data name="Select strategy" xml:space="preserve">
-    <value>Wybierz strategię</value>
+  <data name="Content" xml:space="preserve">
+    <value>Treść</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Wyjaśnienie</value>
+  </data>
+  <data name="Fill In" xml:space="preserve">
+    <value>Uzupełnij</value>
+  </data>
+  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
+    <value>Poprawne odpowiedzi (dla typu &quot;wypełnij&quot;, tablica JSON)</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Strategia oceniania</value>
@@ -69,11 +45,35 @@
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Metadane (np. Opcje JSON)</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Treść</value>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Opcje (dla pytań jednokrotnego wyboru, tablica JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Wybierz kategorię</value>
+  </data>
+  <data name="Select strategy" xml:space="preserve">
+    <value>Wybierz strategię</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>Wybierz typ</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Pojedynczy wybór</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Pojedyncza poprawna (dla pytań jednokrotnego wyboru)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standardowa odpowiedź</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
   </data>
 
 </root>

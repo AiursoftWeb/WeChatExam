@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>无法删除包含子类别的分类。请先删除子类别。</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>删除分类</value>
   </data>
@@ -35,9 +38,6 @@
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>是的，删除此分类</value>
-  </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>无法删除包含子类别的分类。请先删除子类别。</value>
   </data>
 
 </root>

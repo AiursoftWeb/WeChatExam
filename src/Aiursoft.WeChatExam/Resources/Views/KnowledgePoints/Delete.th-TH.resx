@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>ลบหัวข้อความรู้</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>คุณแน่ใจหรือไม่?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
@@ -30,14 +27,17 @@
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>ใช่ ลบ knowledgePoint นี้</value>
-  </data>
   <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
     <value>ไม่สามารถลบหัวข้อความรู้ที่มีหัวข้อย่อยได้ กรุณาลบหัวข้อย่อยก่อน</value>
   </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>ลบหัวข้อความรู้</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>การกระทำนี้ไม่สามารถย้อนกลับได้ คุณกำลังจะลบหัวข้อความรู้ต่อไปนี้อย่างถาวร:</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>ใช่ ลบ knowledgePoint นี้</value>
   </data>
 
 </root>

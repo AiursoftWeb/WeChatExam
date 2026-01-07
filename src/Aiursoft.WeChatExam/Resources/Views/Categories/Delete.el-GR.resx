@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Ακύρωση</value>
-  </data>
-  <data name="Delete Category" xml:space="preserve">
-    <value>Διαγραφή Κατηγορίας</value>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>Είστε σίγουρος/η;</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Επιστροφή στη λίστα</value>
   </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>Είστε σίγουρος/η;</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
   </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Ναι, διαγραφή αυτής της κατηγορίας</value>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>Δεν είναι δυνατή η διαγραφή κατηγορίας με υποκατηγορίες. Παρακαλώ διαγράψτε πρώτα τις υποκατηγορίες.</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Διαγραφή Κατηγορίας</value>
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Αυτή η ενέργεια είναι μη αναστρέψιμη. Πρόκειται να διαγράψετε οριστικά την ακόλουθη κατηγορία:</value>
   </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>Δεν είναι δυνατή η διαγραφή κατηγορίας με υποκατηγορίες. Παρακαλώ διαγράψτε πρώτα τις υποκατηγορίες.</value>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Ναι, διαγραφή αυτής της κατηγορίας</value>
   </data>
 
 </root>

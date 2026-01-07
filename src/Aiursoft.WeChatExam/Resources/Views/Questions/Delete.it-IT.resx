@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Testo</value>
+      <data name="Are you sure you want to delete this question?" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare questa domanda?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuto</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Elimina</value>
@@ -27,20 +36,11 @@
   <data name="Delete Question" xml:space="preserve">
     <value>Elimina Domanda</value>
   </data>
+  <data name="Text" xml:space="preserve">
+    <value>Testo</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Tipo</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Categoria</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="Are you sure you want to delete this question?" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare questa domanda?</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenuto</value>
   </data>
 
 </root>

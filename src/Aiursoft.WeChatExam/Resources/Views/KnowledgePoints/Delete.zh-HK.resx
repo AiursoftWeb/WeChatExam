@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
+    <value>你確定嗎？</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>你確定嗎？</value>
+  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
+    <value>無法刪除包含子項的知識點。請先刪除子項。</value>
   </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>刪除知識點</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>係，刪除呢個知識點</value>
-  </data>
-  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
-    <value>無法刪除包含子項的知識點。請先刪除子項。</value>
-  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>此操作無法還原。你即將永久刪除以下知識點：</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>係，刪除呢個知識點</value>
   </data>
 
 </root>

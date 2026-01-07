@@ -18,20 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>प्रकार</value>
-  </data>
-  <data name="Questions" xml:space="preserve">
-    <value>प्रश्न</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>श्रेणी</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>पाठ</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>फ़िल्टर करें</value>
+      <data name="Actions" xml:space="preserve">
+    <value>कार्रवाइयाँ</value>
   </data>
   <data name="Add Question" xml:space="preserve">
     <value>प्रश्न जोड़ें</value>
@@ -39,17 +27,14 @@
   <data name="All Categories" xml:space="preserve">
     <value>सभी श्रेणियाँ</value>
   </data>
-  <data name="Question List" xml:space="preserve">
-    <value>प्रश्न सूची</value>
+  <data name="Category" xml:space="preserve">
+    <value>श्रेणी</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>संपादित करें</value>
+  <data name="Content" xml:space="preserve">
+    <value>सामग्री</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>बनाया गया</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>कार्रवाइयाँ</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>हटाएं</value>
@@ -57,11 +42,26 @@
   <data name="Details" xml:space="preserve">
     <value>विवरण</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>फ़िल्टर करें</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>कोई प्रश्न नहीं मिला</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>सामग्री</value>
+  <data name="Question List" xml:space="preserve">
+    <value>प्रश्न सूची</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>प्रश्न</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>पाठ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
   </data>
 
 </root>

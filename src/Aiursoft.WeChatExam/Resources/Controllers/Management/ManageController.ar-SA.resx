@@ -18,20 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Your avatar has been saved." xml:space="preserve">
-    <value>تم حفظ صورتك الشخصية.</value>
-  </data>
-  <data name="An error has occurred." xml:space="preserve">
+      <data name="An error has occurred." xml:space="preserve">
     <value>حدث خطأ.</value>
   </data>
-  <data name="Your profile has been saved." xml:space="preserve">
-    <value>تم حفظ ملفك الشخصي.</value>
+  <data name="The file is not a valid image." xml:space="preserve">
+    <value>الملف ليس صورة صالحة.</value>
+  </data>
+  <data name="Your avatar has been saved." xml:space="preserve">
+    <value>تم حفظ صورتك الشخصية.</value>
   </data>
   <data name="Your password has been changed." xml:space="preserve">
     <value>تم تغيير كلمة المرور الخاصة بك.</value>
   </data>
-  <data name="The file is not a valid image." xml:space="preserve">
-    <value>الملف ليس صورة صالحة.</value>
+  <data name="Your profile has been saved." xml:space="preserve">
+    <value>تم حفظ ملفك الشخصي.</value>
   </data>
 
 </root>
