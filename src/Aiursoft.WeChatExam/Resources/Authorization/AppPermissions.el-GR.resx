@@ -18,119 +18,155 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete Users" xml:space="preserve">
-    <value>Διαγραφή Χρηστών</value>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Προσθήκη Οποιουδήποτε Σημείου Γνώσης</value>
   </data>
-  <data name="Read Users" xml:space="preserve">
-    <value>Ανάγνωση Χρηστών</value>
-  </data>
-  <data name="Add New Users" xml:space="preserve">
-    <value>Προσθήκη Νέων Χρηστών</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>Επιτρέπει την προβολή της λίστας όλων των χρηστών.</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>Επεξεργασία Πληροφοριών Χρήστη</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>Επιτρέπει τη μόνιμη διαγραφή των λογαριασμών χρηστών.</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>Παρέχει άδεια για τη δημιουργία νέων λογαριασμών χρηστών.</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>Επιτρέπει την τροποποίηση λεπτομερειών χρήστη, όπως ηλεκτρονικό ταχυδρομείο και ρόλους, και μπορεί επίσης να επαναφέρει κωδικούς πρόσβασης χρηστών.</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>Ανάγνωση Ρόλων</value>
-  </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>Επιτρέπει την προβολή της λίστας των ρόλων και των ανατεθέντων σε αυτούς δικαιωμάτων.</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>Διαγραφή Ρόλων</value>
+  <data name="Add Articles" xml:space="preserve">
+    <value>Προσθήκη Άρθρων</value>
   </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Προσθήκη Νέων Ρόλων</value>
   </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>Επεξεργασία Πληροφοριών Ρόλου</value>
+  <data name="Add New Users" xml:space="preserve">
+    <value>Προσθήκη Νέων Χρηστών</value>
   </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>Επιτρέπει την μόνιμη διαγραφή ρόλων.</value>
-  </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>Παρέχει άδεια για τη δημιουργία νέων ρόλων.</value>
-  </data>
-  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
-    <value>Επιτρέπει την τροποποίηση των ονομάτων ρόλων και των αντιστοιχισμένων δικαιωμάτων πρόσβασης.</value>
-  </data>
-  <data name="Assign Roles to Users" xml:space="preserve">
-    <value>Ανάθεση Ρόλων σε Χρήστες</value>
-  </data>
-  <data name="View System Context" xml:space="preserve">
-    <value>Προβολή Συστημικού Περιεχομένου</value>
-  </data>
-  <data name="Reboot This App" xml:space="preserve">
-    <value>Επανεκκίνηση αυτής της εφαρμογής</value>
-  </data>
-  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
-    <value>Επιτρέπει την ανάθεση ή την κατάργηση ρόλων για οποιονδήποτε χρήστη.</value>
-  </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>Επιτρέπει την προβολή πληροφοριών και ρυθμίσεων σε επίπεδο συστήματος.</value>
-  </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>Παρέχει άδεια για επανεκκίνηση της εφαρμογής. Μπορεί να προκαλέσει διακοπές στη διαθεσιμότητα, αλλά όλες οι ρυθμίσεις και η προσωρινή μνήμη θα φορτωθούν εκ νέου.</value>
-  </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>Διαγραφή Ερωτήσεων</value>
-  </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>Επεξεργασία Ερωτήσεων</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>Επεξεργασία Οποιασδήποτε Κατηγορίας</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>Διαγραφή Οποιασδήποτε Κατηγορίας</value>
-  </data>
-  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει τη διαγραφή ερωτήσεων, ανεξάρτητα από την ιδιοκτησία.</value>
-  </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει την επεξεργασία ερωτήσεων, ανεξάρτητα από την ιδιοκτησία.</value>
-  </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει τη διαγραφή οποιασδήποτε κατηγορίας, ανεξάρτητα από την ιδιοκτησία.</value>
-  </data>
-  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει την επεξεργασία οποιασδήποτε κατηγορίας, ανεξάρτητα από την ιδιοκτησία.</value>
+  <data name="Add Papers" xml:space="preserve">
+    <value>Προσθήκη Εγγράφων</value>
   </data>
   <data name="Add Questions" xml:space="preserve">
     <value>Προσθήκη Ερωτήσεων</value>
   </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>Διαγραφή Οποιουδήποτε Σημείου Γνώσης</value>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την προσθήκη οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
   </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>Επεξεργασία Οποιουδήποτε Σημείου Γνώσης</value>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την προσθήκη άρθρων, ανεξάρτητα από την κατοχή τους.</value>
   </data>
-  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει τη διαγραφή οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την προσθήκη εγγράφων, ανεξάρτητα από την κατοχή.</value>
   </data>
   <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την προσθήκη ερωτήσεων, ανεξάρτητα από την ιδιοκτησία.</value>
   </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
-    <value>Προσθήκη Οποιουδήποτε Σημείου Γνώσης</value>
+  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
+    <value>Επιτρέπει την ανάθεση ή την κατάργηση ρόλων για οποιονδήποτε χρήστη.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει τη διαγραφή οποιασδήποτε κατηγορίας, ανεξάρτητα από την ιδιοκτησία.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει τη διαγραφή οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
+  </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει τη διαγραφή άρθρων, ανεξάρτητα από την κατοχή τους.</value>
+  </data>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει τη διαγραφή εγγράφων, ανεξάρτητα από την κατοχή τους.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει τη διαγραφή ερωτήσεων, ανεξάρτητα από την ιδιοκτησία.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την επεξεργασία οποιασδήποτε κατηγορίας, ανεξάρτητα από την ιδιοκτησία.</value>
   </data>
   <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την επεξεργασία οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
   </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει την προσθήκη οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την επεξεργασία άρθρων, ανεξάρτητα από την κατοχή τους.</value>
+  </data>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την επεξεργασία εγγράφων, ανεξάρτητα από την κατοχή τους.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την επεξεργασία ερωτήσεων, ανεξάρτητα από την ιδιοκτησία.</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>Επιτρέπει την τροποποίηση των ονομάτων ρόλων και των αντιστοιχισμένων δικαιωμάτων πρόσβασης.</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>Επιτρέπει την τροποποίηση λεπτομερειών χρήστη, όπως ηλεκτρονικό ταχυδρομείο και ρόλους, και μπορεί επίσης να επαναφέρει κωδικούς πρόσβασης χρηστών.</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>Επιτρέπει την μόνιμη διαγραφή ρόλων.</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>Επιτρέπει τη μόνιμη διαγραφή των λογαριασμών χρηστών.</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>Επιτρέπει την προβολή πληροφοριών και ρυθμίσεων σε επίπεδο συστήματος.</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>Επιτρέπει την προβολή της λίστας όλων των χρηστών.</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>Επιτρέπει την προβολή της λίστας των ρόλων και των ανατεθέντων σε αυτούς δικαιωμάτων.</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>Ανάθεση Ρόλων σε Χρήστες</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Διαγραφή Οποιασδήποτε Κατηγορίας</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Διαγραφή Οποιουδήποτε Σημείου Γνώσης</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>Διαγραφή Άρθρων</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>Διαγραφή Εγγράφων</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Διαγραφή Ερωτήσεων</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>Διαγραφή Ρόλων</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>Διαγραφή Χρηστών</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Επεξεργασία Οποιασδήποτε Κατηγορίας</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Επεξεργασία Οποιουδήποτε Σημείου Γνώσης</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>Επεξεργασία Άρθρων</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>Επεξεργασία Εγγράφων</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Επεξεργασία Ερωτήσεων</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>Επεξεργασία Πληροφοριών Ρόλου</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>Επεξεργασία Πληροφοριών Χρήστη</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>Παρέχει άδεια για τη δημιουργία νέων ρόλων.</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>Παρέχει άδεια για τη δημιουργία νέων λογαριασμών χρηστών.</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>Παρέχει άδεια για επανεκκίνηση της εφαρμογής. Μπορεί να προκαλέσει διακοπές στη διαθεσιμότητα, αλλά όλες οι ρυθμίσεις και η προσωρινή μνήμη θα φορτωθούν εκ νέου.</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>Ανάγνωση Ρόλων</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>Ανάγνωση Χρηστών</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>Επανεκκίνηση αυτής της εφαρμογής</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>Προβολή Συστημικού Περιεχομένου</value>
   </data>
 
 </root>

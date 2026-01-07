@@ -27,17 +27,17 @@
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
+    <value>Ein Wissenspunkt mit Unterpunkten kann nicht gelöscht werden. Bitte löschen Sie zuerst die Unterpunkte.</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Wissenspunkt löschen</value>
-  </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Ja, diesen Wissenspunkt löschen</value>
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Diese Aktion ist unwiderruflich. Sie sind dabei, den folgenden Wissenspunkt dauerhaft zu löschen:</value>
   </data>
-  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
-    <value>Ein Wissenspunkt mit Unterpunkten kann nicht gelöscht werden. Bitte löschen Sie zuerst die Unterpunkte.</value>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Ja, diesen Wissenspunkt löschen</value>
   </data>
 
 </root>

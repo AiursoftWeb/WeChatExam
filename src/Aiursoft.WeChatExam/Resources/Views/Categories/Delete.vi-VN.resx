@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Hủy</value>
-  </data>
-  <data name="Delete Category" xml:space="preserve">
-    <value>Xóa Danh Mục</value>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>Bạn có chắc chắn không?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Quay lại Danh sách</value>
   </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Có, xóa danh mục này</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy</value>
   </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>Bạn có chắc chắn không?</value>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>Không thể xóa danh mục có danh mục con. Vui lòng xóa các danh mục con trước.</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Xóa Danh Mục</value>
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Hành động này không thể hoàn tác. Bạn sắp xóa vĩnh viễn danh mục sau:</value>
   </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>Không thể xóa danh mục có danh mục con. Vui lòng xóa các danh mục con trước.</value>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Có, xóa danh mục này</value>
   </data>
 
 </root>

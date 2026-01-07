@@ -18,38 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Question Details" xml:space="preserve">
-    <value>Soru Detayları</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tür</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Metin</value>
+      <data name="Back" xml:space="preserve">
+    <value>Geri</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Açıklama</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Tek Doğru</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Seçenekler</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Doğru Doldur</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Düzenle</value>
+  <data name="Content" xml:space="preserve">
+    <value>İçerik</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Oluşturuldu</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Geri</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Doğru Doldur</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Değerlendirme Stratejisi</value>
@@ -57,14 +45,26 @@
   <data name="Metadata" xml:space="preserve">
     <value>Meta Veri</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>İçerik</value>
+  <data name="Options" xml:space="preserve">
+    <value>Seçenekler</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Soru Detayları</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Tek Doğru</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standart Cevap</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etiketler</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Metin</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tür</value>
   </data>
 
 </root>

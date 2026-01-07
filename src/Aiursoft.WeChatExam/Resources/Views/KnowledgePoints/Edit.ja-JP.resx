@@ -18,41 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Top Level" xml:space="preserve">
-    <value>最上位</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>内容</value>
-  </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>リストに戻る</value>
-  </data>
-  <data name="Parent KnowledgePoint" xml:space="preserve">
-    <value>親ナレッジポイント</value>
-  </data>
-  <data name="Edit KnowledgePoint" xml:space="preserve">
-    <value>ナレッジポイントを編集</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>タイトル</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="Associated Questions" xml:space="preserve">
-    <value>関連質問</value>
+      <data name="Add" xml:space="preserve">
+    <value>追加</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>関連カテゴリ</value>
   </data>
-  <data name="Add" xml:space="preserve">
-    <value>追加</value>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>関連質問</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>リストに戻る</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Edit KnowledgePoint" xml:space="preserve">
+    <value>ナレッジポイントを編集</value>
   </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Ctrl (Windows) または Command (Mac) を押しながら複数のオプションを選択してください。</value>
   </data>
+  <data name="Parent KnowledgePoint" xml:space="preserve">
+    <value>親ナレッジポイント</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>追加する質問を選択...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>最上位</value>
   </data>
 
 </root>

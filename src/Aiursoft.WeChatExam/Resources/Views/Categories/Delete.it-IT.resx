@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Sei sicuro?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Torna all&apos;elenco</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
+    <value>Impossibile eliminare una categoria con elementi figli. Eliminare prima gli elementi figli.</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>Elimina Categoria</value>
-  </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Sì, elimina questa categoria</value>
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Questa azione è irreversibile. Stai per eliminare definitivamente la seguente categoria:</value>
   </data>
-  <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
-    <value>Impossibile eliminare una categoria con elementi figli. Eliminare prima gli elementi figli.</value>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Sì, elimina questa categoria</value>
   </data>
 
 </root>

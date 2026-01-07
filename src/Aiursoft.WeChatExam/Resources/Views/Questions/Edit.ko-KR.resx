@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>유형</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>카테고리 선택</value>
-  </data>
-  <data name="Edit Question" xml:space="preserve">
-    <value>질문 수정</value>
+      <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>카테고리</value>
   </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>단일 선택</value>
+  <data name="Content" xml:space="preserve">
+    <value>내용</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>텍스트</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>유형 선택</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>빈칸 채우기</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>옵션 (단일 선택용, JSON 배열)</value>
+  <data name="Edit Question" xml:space="preserve">
+    <value>질문 수정</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>해설</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>저장</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>취소</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>단일 정답 (단일 선택용)</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>빈칸 채우기</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>빈칸 채우기 정답 (빈칸 채우기용, JSON 배열)</value>
@@ -63,20 +42,41 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>채점 전략</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>내용</value>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>메타데이터 (예: 선택지 JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>옵션 (단일 선택용, JSON 배열)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>카테고리 선택</value>
   </data>
   <data name="Select strategy" xml:space="preserve">
     <value>전략 선택</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>메타데이터 (예: 선택지 JSON)</value>
+  <data name="Select type" xml:space="preserve">
+    <value>유형 선택</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>단일 선택</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>단일 정답 (단일 선택용)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>표준 정답</value>
   </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>태그 (공백으로 구분)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>텍스트</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>유형</value>
   </data>
 
 </root>

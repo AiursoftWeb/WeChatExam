@@ -18,35 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add Question" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Aksi</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
     <value>Tambah Pertanyaan</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Teks</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Jenis</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Kategori</value>
-  </data>
-  <data name="Questions" xml:space="preserve">
-    <value>Pertanyaan</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>Semua Kategori</value>
   </data>
-  <data name="Question List" xml:space="preserve">
-    <value>Daftar Pertanyaan</value>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Isi</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Dibuat</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Hapus</value>
@@ -54,14 +42,26 @@
   <data name="Details" xml:space="preserve">
     <value>Detail</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Aksi</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
   </data>
   <data name="No questions found" xml:space="preserve">
     <value>Tidak ada pertanyaan ditemukan</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Isi</value>
+  <data name="Question List" xml:space="preserve">
+    <value>Daftar Pertanyaan</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Pertanyaan</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Teks</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Jenis</value>
   </data>
 
 </root>

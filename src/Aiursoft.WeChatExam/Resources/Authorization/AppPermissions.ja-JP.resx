@@ -18,137 +18,155 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete Users" xml:space="preserve">
-    <value>ユーザーの削除</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>すべてのユーザーのリストを表示することを許可します。</value>
-  </data>
-  <data name="Read Users" xml:space="preserve">
-    <value>ユーザーの閲覧</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>ユーザー情報の編集</value>
-  </data>
-  <data name="Add New Users" xml:space="preserve">
-    <value>新規ユーザーの追加</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>ユーザーアカウントの完全削除を許可します。</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>新しいユーザーアカウントを作成する権限を付与します。</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>ユーザーのメールアドレスやロールなどの詳細情報の変更を許可し、ユーザーのパスワードをリセットすることもできます。</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>ロールの閲覧</value>
-  </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>ロールの一覧とそれに割り当てられた権限を表示できます。</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>ロールの削除</value>
-  </data>
-  <data name="Add New Roles" xml:space="preserve">
-    <value>新しいロールの追加</value>
-  </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>ロール情報の編集</value>
-  </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>ロールの完全な削除を許可します。</value>
-  </data>
-  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
-    <value>ロール名とその割り当てられた権限の変更を許可します。</value>
-  </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>新しいロールを作成する権限を付与します。</value>
-  </data>
-  <data name="Assign Roles to Users" xml:space="preserve">
-    <value>ユーザーへのロール割り当て</value>
-  </data>
-  <data name="View System Context" xml:space="preserve">
-    <value>システムコンテキストの表示</value>
-  </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>システムレベルの情報と設定の表示を許可します。</value>
-  </data>
-  <data name="Reboot This App" xml:space="preserve">
-    <value>このアプリを再起動</value>
-  </data>
-  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
-    <value>任意のユーザーに対してロールの割り当てまたは削除を許可します。</value>
-  </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>アプリケーションインスタンスの再起動を許可します。可用性の中断を引き起こす可能性がありますが、すべての設定とキャッシュは再読み込みされます。</value>
-  </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>質問を削除</value>
-  </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>問題を編集</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>任意のカテゴリを編集</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>任意のカテゴリを削除</value>
-  </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、質問の編集を許可します。</value>
-  </data>
-  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、質問を削除することを許可します。</value>
-  </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、任意のカテゴリを削除できます。</value>
-  </data>
-  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、任意のカテゴリを編集できます。</value>
-  </data>
-  <data name="Add Questions" xml:space="preserve">
-    <value>問題を追加</value>
-  </data>
-  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、質問を追加することを許可します。</value>
-  </data>
-  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、任意のknowledgePointを削除できます。</value>
-  </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>任意のナレッジポイントを削除</value>
-  </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>任意のナレッジポイントを編集</value>
-  </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、任意のknowledgePointを追加できます。</value>
-  </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
     <value>任意のナレッジポイントを追加</value>
-  </data>
-  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく、どのknowledgePointでも編集を許可します。</value>
-  </data>
-  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
-    <value>所有者に関係なく、記事を削除できます。</value>
-  </data>
-  <data name="Delete Articles" xml:space="preserve">
-    <value>記事の削除</value>
-  </data>
-  <data name="Edit Articles" xml:space="preserve">
-    <value>記事の編集</value>
-  </data>
-  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
-    <value>所有権に関係なく任意の記事を編集できます。</value>
   </data>
   <data name="Add Articles" xml:space="preserve">
     <value>記事の追加</value>
   </data>
+  <data name="Add New Roles" xml:space="preserve">
+    <value>新しいロールの追加</value>
+  </data>
+  <data name="Add New Users" xml:space="preserve">
+    <value>新規ユーザーの追加</value>
+  </data>
+  <data name="Add Papers" xml:space="preserve">
+    <value>論文を追加</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>問題を追加</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、任意のknowledgePointを追加できます。</value>
+  </data>
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>所有者にかかわらず記事を追加できます。</value>
+  </data>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>所有者に関係なく、資料の追加を許可します。</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、質問を追加することを許可します。</value>
+  </data>
+  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
+    <value>任意のユーザーに対してロールの割り当てまたは削除を許可します。</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、任意のカテゴリを削除できます。</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、任意のknowledgePointを削除できます。</value>
+  </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>所有者に関係なく、記事を削除できます。</value>
+  </data>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>所有者の所有権に関係なく、資料の削除を許可します。</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、質問を削除することを許可します。</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、任意のカテゴリを編集できます。</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、どのknowledgePointでも編集を許可します。</value>
+  </data>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく任意の記事を編集できます。</value>
+  </data>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>所有者に関係なく、資料の編集を許可します。</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>所有権に関係なく、質問の編集を許可します。</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>ロール名とその割り当てられた権限の変更を許可します。</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>ユーザーのメールアドレスやロールなどの詳細情報の変更を許可し、ユーザーのパスワードをリセットすることもできます。</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>ロールの完全な削除を許可します。</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>ユーザーアカウントの完全削除を許可します。</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>システムレベルの情報と設定の表示を許可します。</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>すべてのユーザーのリストを表示することを許可します。</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>ロールの一覧とそれに割り当てられた権限を表示できます。</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>ユーザーへのロール割り当て</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>任意のカテゴリを削除</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>任意のナレッジポイントを削除</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>記事の削除</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>論文を削除する</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>質問を削除</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>ロールの削除</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>ユーザーの削除</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>任意のカテゴリを編集</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>任意のナレッジポイントを編集</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>記事の編集</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>論文を編集する</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>問題を編集</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>ロール情報の編集</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>ユーザー情報の編集</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>新しいロールを作成する権限を付与します。</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>新しいユーザーアカウントを作成する権限を付与します。</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>アプリケーションインスタンスの再起動を許可します。可用性の中断を引き起こす可能性がありますが、すべての設定とキャッシュは再読み込みされます。</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>ロールの閲覧</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>ユーザーの閲覧</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>このアプリを再起動</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>システムコンテキストの表示</value>
   </data>
 
 </root>

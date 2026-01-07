@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
-    <value>Categorie</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tip</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Selectați tipul</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Răspuns unic</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Selectați categoria</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
+      <data name="Add Question" xml:space="preserve">
     <value>Adaugă Întrebare</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Completare</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anulează</value>
   </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Opțiuni (pentru alegere unică, matrice JSON)</value>
+  <data name="Category" xml:space="preserve">
+    <value>Categorie</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Conținut</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>Explicație</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Salvează</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Răspuns corect unic (pentru alegere simplă)</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>Completare</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>Răspuns corect (pentru completare, matrice JSON)</value>
@@ -63,17 +42,38 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Strategie de evaluare</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Conținut</value>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Metadate (de exemplu: Opțiuni JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Opțiuni (pentru alegere unică, matrice JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvează</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Selectați categoria</value>
+  </data>
+  <data name="Select strategy" xml:space="preserve">
+    <value>Selectați strategia</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>Selectați tipul</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Răspuns unic</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Răspuns corect unic (pentru alegere simplă)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Răspuns standard</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Metadate (de exemplu: Opțiuni JSON)</value>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
   </data>
-  <data name="Select strategy" xml:space="preserve">
-    <value>Selectați strategia</value>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
   </data>
 
 </root>

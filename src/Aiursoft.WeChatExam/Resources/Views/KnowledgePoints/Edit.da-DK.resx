@@ -18,26 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Parent KnowledgePoint" xml:space="preserve">
-    <value>Overordnet videnpunkt</value>
+      <data name="Add" xml:space="preserve">
+    <value>Tilføj</value>
   </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>Øverste niveau</value>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Tilknyttede kategorier</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Indhold</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Gem</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Titel</value>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Tilknyttede spørgsmål</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tilbage til listen</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Indhold</value>
+  </data>
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Rediger videnpunkt</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Hold Ctrl (Windows) eller Command (Mac) for at vælge flere valgmuligheder.</value>
+  </data>
+  <data name="Parent KnowledgePoint" xml:space="preserve">
+    <value>Overordnet videnpunkt</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="Select a question to add..." xml:space="preserve">
+    <value>Vælg en spørgsmål at tilføje...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>Øverste niveau</value>
   </data>
 
 </root>

@@ -18,7 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Save" xml:space="preserve">
+      <data name="Back to List" xml:space="preserve">
+    <value>Назад до списку</value>
+  </data>
+  <data name="Edit Category" xml:space="preserve">
+    <value>Редагувати категорію</value>
+  </data>
+  <data name="Parent Category" xml:space="preserve">
+    <value>Батьківська категорія</value>
+  </data>
+  <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
   </data>
   <data name="Title" xml:space="preserve">
@@ -26,15 +35,6 @@
   </data>
   <data name="Top Level" xml:space="preserve">
     <value>Найвищий рівень</value>
-  </data>
-  <data name="Edit Category" xml:space="preserve">
-    <value>Редагувати категорію</value>
-  </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>Назад до списку</value>
-  </data>
-  <data name="Parent Category" xml:space="preserve">
-    <value>Батьківська категорія</value>
   </data>
 
 </root>

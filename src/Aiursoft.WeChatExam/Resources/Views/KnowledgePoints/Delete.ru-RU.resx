@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Вы уверены?</value>
-  </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>Удалить точку знаний</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Да, удалить эту точку знаний</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
+    <value>Невозможно удалить знаниевую точку с дочерними элементами. Сначала удалите дочерние элементы.</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Удалить точку знаний</value>
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Это действие необратимо. Вы собираетесь окончательно удалить следующий элемент знаний:</value>
   </data>
-  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
-    <value>Невозможно удалить знаниевую точку с дочерними элементами. Сначала удалите дочерние элементы.</value>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Да, удалить эту точку знаний</value>
   </data>
 
 </root>

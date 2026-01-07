@@ -18,17 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Tem certeza?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Voltar para a Lista</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Sim, excluir este ponto de conhecimento</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
+    <value>Não é possível excluir um ponto de conhecimento que possui subitens. Exclua os subitens primeiro.</value>
   </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Excluir Ponto de Conhecimento</value>
@@ -36,8 +36,8 @@
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Esta ação é irreversível. Você está prestes a excluir permanentemente o seguinte ponto de conhecimento:</value>
   </data>
-  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
-    <value>Não é possível excluir um ponto de conhecimento que possui subitens. Exclua os subitens primeiro.</value>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Sim, excluir este ponto de conhecimento</value>
   </data>
 
 </root>

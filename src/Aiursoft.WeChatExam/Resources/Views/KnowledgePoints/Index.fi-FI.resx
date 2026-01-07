@@ -18,29 +18,29 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Created" xml:space="preserve">
-    <value>Luotu</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Otsikko</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
     <value>Toiminnot</value>
-  </data>
-  <data name="Parent" xml:space="preserve">
-    <value>Yläkäsite</value>
   </data>
   <data name="Add KnowledgePoint" xml:space="preserve">
     <value>Lisää tietopiste</value>
   </data>
-  <data name="KnowledgePoints" xml:space="preserve">
-    <value>Tietopisteet</value>
+  <data name="Created" xml:space="preserve">
+    <value>Luotu</value>
   </data>
   <data name="KnowledgePoint List" xml:space="preserve">
     <value>Tietopisteluettelo</value>
   </data>
+  <data name="KnowledgePoints" xml:space="preserve">
+    <value>Tietopisteet</value>
+  </data>
   <data name="No knowledgePoints found" xml:space="preserve">
     <value>Tietopisteitä ei löytynyt</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Yläkäsite</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Otsikko</value>
   </data>
 
 </root>

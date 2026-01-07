@@ -18,86 +18,50 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Read Users" xml:space="preserve">
-    <value>Просмотр пользователей</value>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Добавить любую точку знаний</value>
   </data>
-  <data name="Delete Users" xml:space="preserve">
-    <value>Удаление пользователей</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>Редактирование информации о пользователях</value>
-  </data>
-  <data name="Add New Users" xml:space="preserve">
-    <value>Добавление новых пользователей</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>Разрешает просмотр списка всех пользователей.</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>Предоставляет разрешение на создание новых учетных записей пользователей.</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>Разрешает окончательное удаление учетных записей пользователей.</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>Разрешает изменение данных пользователя, таких как email и роли, а также позволяет сбрасывать пароли пользователей.</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>Просмотр ролей</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>Удаление ролей</value>
+  <data name="Add Articles" xml:space="preserve">
+    <value>Добавить статьи</value>
   </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Добавление новых ролей</value>
   </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>Разрешает окончательное удаление ролей.</value>
+  <data name="Add New Users" xml:space="preserve">
+    <value>Добавление новых пользователей</value>
   </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>Позволяет просматривать список ролей и назначенные им разрешения.</value>
+  <data name="Add Papers" xml:space="preserve">
+    <value>Добавить документы</value>
   </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>Редактирование информации о роли</value>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Добавить вопросы</value>
   </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>Предоставляет разрешение на создание новых ролей.</value>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Разрешает добавление любого knowledgePoint, независимо от владельца.</value>
   </data>
-  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
-    <value>Разрешает изменение названий ролей и их назначенных разрешений.</value>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>Позволяет добавлять статьи, независимо от владения.</value>
   </data>
-  <data name="Assign Roles to Users" xml:space="preserve">
-    <value>Назначение ролей пользователям</value>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>Позволяет добавлять документы, независимо от прав собственности.</value>
   </data>
-  <data name="View System Context" xml:space="preserve">
-    <value>Просмотр контекста системы</value>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Разрешает добавление вопросов, независимо от владельца.</value>
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Разрешает назначение или снятие ролей для любого пользователя.</value>
   </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>Разрешает просмотр системной информации и настроек.</value>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Разрешает удаление любой категории, независимо от владельца.</value>
   </data>
-  <data name="Reboot This App" xml:space="preserve">
-    <value>Перезапустить это приложение</value>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Разрешает удаление любого knowledgePoint, независимо от владельца.</value>
   </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>Предоставляет разрешение на перезапуск экземпляра приложения. Может привести к перерывам в доступности, но все настройки и кэш будут перезагружены.</value>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>Позволяет удалять статьи, независимо от владельца.</value>
   </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>Редактировать вопросы</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>Редактировать любую категорию</value>
-  </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>Удалять вопросы</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>Удалить любую категорию</value>
-  </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>Разрешает редактирование вопросов, независимо от владельца.</value>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>Позволяет удалять документы независимо от владения ими.</value>
   </data>
   <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
     <value>Разрешает удаление вопросов, независимо от владельца.</value>
@@ -105,50 +69,104 @@
   <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
     <value>Разрешает редактирование любой категории, независимо от владельца.</value>
   </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>Разрешает удаление любой категории, независимо от владельца.</value>
-  </data>
-  <data name="Add Questions" xml:space="preserve">
-    <value>Добавить вопросы</value>
-  </data>
-  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
-    <value>Разрешает добавление вопросов, независимо от владельца.</value>
-  </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>Удалить любую точку знаний</value>
-  </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>Редактировать любую точку знаний</value>
-  </data>
-  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Разрешает удаление любого knowledgePoint, независимо от владельца.</value>
-  </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
-    <value>Добавить любую точку знаний</value>
-  </data>
   <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Разрешает редактирование любого knowledgePoint, независимо от владельца.</value>
-  </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Разрешает добавление любого knowledgePoint, независимо от владельца.</value>
-  </data>
-  <data name="Delete Articles" xml:space="preserve">
-    <value>Удалить статьи</value>
-  </data>
-  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
-    <value>Позволяет удалять статьи, независимо от владельца.</value>
-  </data>
-  <data name="Edit Articles" xml:space="preserve">
-    <value>Редактировать статьи</value>
-  </data>
-  <data name="Add Articles" xml:space="preserve">
-    <value>Добавить статьи</value>
   </data>
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Позволяет редактировать статьи, независимо от владельца.</value>
   </data>
-  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
-    <value>Позволяет добавлять статьи, независимо от владения.</value>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>Позволяет редактировать документы независимо от владения ими.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Разрешает редактирование вопросов, независимо от владельца.</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>Разрешает изменение названий ролей и их назначенных разрешений.</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>Разрешает изменение данных пользователя, таких как email и роли, а также позволяет сбрасывать пароли пользователей.</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>Разрешает окончательное удаление ролей.</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>Разрешает окончательное удаление учетных записей пользователей.</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>Разрешает просмотр системной информации и настроек.</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>Разрешает просмотр списка всех пользователей.</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>Позволяет просматривать список ролей и назначенные им разрешения.</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>Назначение ролей пользователям</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Удалить любую категорию</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Удалить любую точку знаний</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>Удалить статьи</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>Удалить документы</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Удалять вопросы</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>Удаление ролей</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>Удаление пользователей</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Редактировать любую категорию</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Редактировать любую точку знаний</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>Редактировать статьи</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>Редактировать документы</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Редактировать вопросы</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>Редактирование информации о роли</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>Редактирование информации о пользователях</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>Предоставляет разрешение на создание новых ролей.</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>Предоставляет разрешение на создание новых учетных записей пользователей.</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>Предоставляет разрешение на перезапуск экземпляра приложения. Может привести к перерывам в доступности, но все настройки и кэш будут перезагружены.</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>Просмотр ролей</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>Просмотр пользователей</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>Перезапустить это приложение</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>Просмотр контекста системы</value>
   </data>
 
 </root>

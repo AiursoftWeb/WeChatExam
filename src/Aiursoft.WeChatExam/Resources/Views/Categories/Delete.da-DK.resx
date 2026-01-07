@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete Category" xml:space="preserve">
-    <value>Slet kategori</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Er du sikker?</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Annuller</value>
-  </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Ja, slet denne kategori</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tilbage til listen</value>
   </data>
-  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
-    <value>Denne handling kan ikke fortrydes. Du er ved at slette følgende kategori permanent:</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuller</value>
   </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Kan ikke slette kategori med underkategorier. Slet venligst underkategorierne først.</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Slet kategori</value>
+  </data>
+  <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
+    <value>Denne handling kan ikke fortrydes. Du er ved at slette følgende kategori permanent:</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Ja, slet denne kategori</value>
   </data>
 
 </root>

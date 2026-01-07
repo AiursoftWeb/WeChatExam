@@ -18,11 +18,32 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
+      <data name="Back" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Category" xml:space="preserve">
     <value>Kategorie</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="Content" xml:space="preserve">
+    <value>Inhalt</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Erläuterung</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Richtig ausfüllen</value>
+  </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Bewertungsstrategie</value>
+  </data>
+  <data name="Metadata" xml:space="preserve">
+    <value>Metadaten</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Optionen</value>
@@ -30,41 +51,20 @@
   <data name="Question Details" xml:space="preserve">
     <value>Fragendetails</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Erläuterung</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Typ</value>
-  </data>
   <data name="Single Correct" xml:space="preserve">
     <value>Einzelne richtige Antwort</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Richtig ausfüllen</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Bearbeiten</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>Zurück</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Erstellt</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standardantwort</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Inhalt</value>
-  </data>
-  <data name="Metadata" xml:space="preserve">
-    <value>Metadaten</value>
-  </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Bewertungsstrategie</value>
-  </data>
   <data name="Tags" xml:space="preserve">
     <value>Schlagwörter</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
   </data>
 
 </root>

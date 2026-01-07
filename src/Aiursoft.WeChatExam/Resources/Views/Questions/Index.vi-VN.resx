@@ -18,50 +18,50 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Filter" xml:space="preserve">
-    <value>Lọc</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Loại</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Văn bản</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Hành động</value>
   </data>
   <data name="Add Question" xml:space="preserve">
     <value>Thêm Câu Hỏi</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>Danh mục</value>
-  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Tất cả danh mục</value>
   </data>
-  <data name="Questions" xml:space="preserve">
-    <value>Câu hỏi</value>
+  <data name="Category" xml:space="preserve">
+    <value>Danh mục</value>
   </data>
-  <data name="Question List" xml:space="preserve">
-    <value>Danh sách câu hỏi</value>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Đã tạo</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Hành động</value>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Chi tiết</value>
   </data>
-  <data name="No questions found" xml:space="preserve">
-    <value>Không tìm thấy câu hỏi nào</value>
-  </data>
   <data name="Edit" xml:space="preserve">
     <value>Chỉnh sửa</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Xóa</value>
+  <data name="Filter" xml:space="preserve">
+    <value>Lọc</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Nội dung</value>
+  <data name="No questions found" xml:space="preserve">
+    <value>Không tìm thấy câu hỏi nào</value>
+  </data>
+  <data name="Question List" xml:space="preserve">
+    <value>Danh sách câu hỏi</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Câu hỏi</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
   </data>
 
 </root>

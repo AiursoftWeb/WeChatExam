@@ -18,41 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Options" xml:space="preserve">
-    <value>Opzioni</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Testo</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
+      <data name="Back" xml:space="preserve">
+    <value>Indietro</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categoria</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Spiegazione</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>Dettagli della Domanda</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Risposta singola corretta</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Risposta corretta da completare</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Modifica</value>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuto</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Creato</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Indietro</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifica</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenuto</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>Spiegazione</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Risposta corretta da completare</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Strategia di valutazione</value>
@@ -60,11 +45,26 @@
   <data name="Metadata" xml:space="preserve">
     <value>Metadati</value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opzioni</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Dettagli della Domanda</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Risposta singola corretta</value>
+  </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Risposta standard</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tag</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

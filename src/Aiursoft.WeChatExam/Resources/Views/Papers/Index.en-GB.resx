@@ -18,20 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Papers" xml:space="preserve">
-    <value>Papers</value>
-  </data>
-  <data name="Paper List" xml:space="preserve">
-    <value>Paper List</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
     <value>Actions</value>
-  </data>
-  <data name="Time Limit" xml:space="preserve">
-    <value>Time Limit</value>
   </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Create Paper</value>
@@ -39,8 +27,8 @@
   <data name="Created" xml:space="preserve">
     <value>Created</value>
   </data>
-  <data name="Status" xml:space="preserve">
-    <value>Status</value>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
   <data name="detail" xml:space="preserve">
     <value>detail</value>
@@ -48,11 +36,23 @@
   <data name="edit" xml:space="preserve">
     <value>edit</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
   <data name="No papers found" xml:space="preserve">
     <value>No papers found</value>
+  </data>
+  <data name="Paper List" xml:space="preserve">
+    <value>Paper List</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papers</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Time Limit" xml:space="preserve">
+    <value>Time Limit</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
 
 </root>

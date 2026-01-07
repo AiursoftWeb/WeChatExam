@@ -18,17 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Details" xml:space="preserve">
+      <data name="Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="Details" xml:space="preserve">
     <value>Details</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bewerken</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Verwijderen</value>
-  </data>
-
-      <data name="Top Level" xml:space="preserve">
+  <data name="Top Level" xml:space="preserve">
     <value>Hoogste niveau</value>
   </data>
+
 </root>

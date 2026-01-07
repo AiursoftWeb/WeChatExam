@@ -18,53 +18,53 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Tekst</value>
+      <data name="Back" xml:space="preserve">
+    <value>Tilbage</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Forklaring</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Enkelt korrekt</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Udfyld korrekt</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Valgmuligheder</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>Spørgsmålsdetaljer</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Rediger</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>Tilbage</value>
+  <data name="Content" xml:space="preserve">
+    <value>Indhold</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Oprettet</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Forklaring</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Udfyld korrekt</value>
+  </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Bedømmelsesstrategi</value>
-  </data>
-  <data name="Standard Answer" xml:space="preserve">
-    <value>Standard svar</value>
   </data>
   <data name="Metadata" xml:space="preserve">
     <value>Metadata</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Indhold</value>
+  <data name="Options" xml:space="preserve">
+    <value>Valgmuligheder</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Spørgsmålsdetaljer</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Enkelt korrekt</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Standard svar</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Mærker</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 
 </root>
