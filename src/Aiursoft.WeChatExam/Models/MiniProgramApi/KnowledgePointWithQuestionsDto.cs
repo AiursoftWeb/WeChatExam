@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Aiursoft.WeChatExam.Entities;
 
 
 namespace Aiursoft.WeChatExam.Models.MiniProgramApi;

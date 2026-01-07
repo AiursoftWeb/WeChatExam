@@ -31,4 +31,24 @@ public class EditViewModel: UiStackLayoutViewModel
     /// 可选的父分类列表，用于下拉菜单
     /// </summary>
     public List<KnowledgePoint> AvailableParents { get; set; } = new();
+
+    /// <summary>
+    /// 选中的关联题目分类
+    /// </summary>
+    public List<Guid> SelectedCategoryIds { get; set; } = new();
+
+    /// <summary>
+    /// 可选的题目分类
+    /// </summary>
+    public List<Category> AvailableCategories { get; set; } = new();
+
+    /// <summary>
+    /// 选中的关联题目
+    /// </summary>
+    public List<Guid> SelectedQuestionIds { get; set; } = new();
+
+    /// <summary>
+    /// 可选的题目
+    /// </summary>
+    public List<Question> AvailableQuestions { get; set; } = new();
 }

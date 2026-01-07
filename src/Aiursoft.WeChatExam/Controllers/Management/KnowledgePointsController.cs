@@ -114,12 +114,19 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
     {
         if (id == null) return NotFound();
         
-        var knowledgePoint = await context.KnowledgePoints.FindAsync(id);
+        var knowledgePoint = await context.KnowledgePoints
+            .Include(k => k.CategoryKnowledgePoints)
+            .Include(k => k.KnowledgePointQuestions)
+            .FirstOrDefaultAsync(k => k.Id == id);
+            
         if (knowledgePoint == null) return NotFound();
 
         var availableParents = await context.KnowledgePoints
             .Where(c => c.Id != id && c.ParentId == null)
             .ToListAsync();
+
+        var availableCategories = await context.Categories.ToListAsync();
+        var availableQuestions = await context.Questions.ToListAsync();
 
         var model = new EditViewModel
         {
@@ -127,7 +134,11 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
             Title = knowledgePoint.Title,
             Content = knowledgePoint.Content,
             ParentId = knowledgePoint.ParentId,
-            AvailableParents = availableParents
+            AvailableParents = availableParents,
+            AvailableCategories = availableCategories,
+            AvailableQuestions = availableQuestions,
+            SelectedCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(ck => ck.CategoryId).ToList(),
+            SelectedQuestionIds = knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).ToList()
         };
 
         return this.StackView(model);
@@ -146,10 +157,16 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
             model.AvailableParents = await context.KnowledgePoints
                 .Where(c => c.Id != id && c.ParentId == null)
                 .ToListAsync();
+            model.AvailableCategories = await context.Categories.ToListAsync();
+            model.AvailableQuestions = await context.Questions.ToListAsync();
             return this.StackView(model);
         }
 
-        var knowledgePoint = await context.KnowledgePoints.FindAsync(id);
+        var knowledgePoint = await context.KnowledgePoints
+            .Include(k => k.CategoryKnowledgePoints)
+            .Include(k => k.KnowledgePointQuestions)
+            .FirstOrDefaultAsync(k => k.Id == id);
+            
         if (knowledgePoint == null) return NotFound();
 
         // 验证不能将分类设置为自己的子孙分类的父分类
@@ -161,6 +178,8 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
                 model.AvailableParents = await context.KnowledgePoints
                     .Where(c => c.Id != id && c.ParentId == null)
                     .ToListAsync();
+                model.AvailableCategories = await context.Categories.ToListAsync();
+                model.AvailableQuestions = await context.Questions.ToListAsync();
                 return this.StackView(model);
             }
 
@@ -173,6 +192,8 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
                 model.AvailableParents = await context.KnowledgePoints
                     .Where(c => c.Id != id && c.ParentId == null)
                     .ToListAsync();
+                model.AvailableCategories = await context.Categories.ToListAsync();
+                model.AvailableQuestions = await context.Questions.ToListAsync();
                 return this.StackView(model);
             }
 
@@ -183,6 +204,8 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
                 model.AvailableParents = await context.KnowledgePoints
                     .Where(c => c.Id != id && c.ParentId == null)
                     .ToListAsync();
+                model.AvailableCategories = await context.Categories.ToListAsync();
+                model.AvailableQuestions = await context.Questions.ToListAsync();
                 return this.StackView(model);
             }
         }
@@ -190,6 +213,62 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
         knowledgePoint.Title = model.Title;
         knowledgePoint.Content = model.Content;
         knowledgePoint.ParentId = model.ParentId;
+
+        // Update Category Associations
+        var currentCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(c => c.CategoryId).ToList();
+        var newCategoryIds = model.SelectedCategoryIds;
+
+        // Remove unselected
+        var toRemoveCategories = knowledgePoint.CategoryKnowledgePoints
+            .Where(ck => !newCategoryIds.Contains(ck.CategoryId))
+            .ToList();
+        
+        foreach (var item in toRemoveCategories)
+        {
+             context.Remove(item); 
+        }
+
+        // Add new
+        foreach (var categoryId in newCategoryIds)
+        {
+            if (!currentCategoryIds.Contains(categoryId))
+            {
+                var newAssociation = new CategoryKnowledgePoint
+                 {
+                     KnowledgePointId = knowledgePoint.Id,
+                     CategoryId = categoryId
+                 };
+                 context.Add(newAssociation);
+            }
+        }
+
+        // Update Question Associations
+        var currentQuestionIds = knowledgePoint.KnowledgePointQuestions.Select(q => q.QuestionId).ToList();
+        var newQuestionIds = model.SelectedQuestionIds;
+
+        // Remove unselected
+        var toRemoveQuestions = knowledgePoint.KnowledgePointQuestions
+            .Where(kq => !newQuestionIds.Contains(kq.QuestionId))
+            .ToList();
+            
+        foreach(var item in toRemoveQuestions)
+        {
+            context.Remove(item);
+        }
+
+        // Add new
+        foreach (var questionId in newQuestionIds)
+        {
+            if (!currentQuestionIds.Contains(questionId))
+            {
+                var newAssociation = new KnowledgePointQuestion
+                {
+                    KnowledgePointId = knowledgePoint.Id,
+                    QuestionId = questionId
+                };
+                context.Add(newAssociation);
+            }
+        }
 
         context.KnowledgePoints.Update(knowledgePoint);
         await context.SaveChangesAsync();
