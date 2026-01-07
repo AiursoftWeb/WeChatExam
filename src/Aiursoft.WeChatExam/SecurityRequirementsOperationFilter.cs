@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Aiursoft.WeChatExam;
 
