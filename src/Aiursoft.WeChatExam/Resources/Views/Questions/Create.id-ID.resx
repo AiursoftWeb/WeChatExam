@@ -18,23 +18,44 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>Tipe</value>
+      <data name="Add Question" xml:space="preserve">
+    <value>Tambah Pertanyaan</value>
   </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Isian</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Teks</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Isi</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Penjelasan</value>
+  </data>
+  <data name="Fill In" xml:space="preserve">
+    <value>Isian</value>
+  </data>
+  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
+    <value>Jawaban Isian yang Benar (untuk isian, array JSON)</value>
+  </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Strategi Penilaian</value>
+  </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Metadata (misalnya: Pilihan JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Opsi (untuk pilihan tunggal, array JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Simpan</value>
+  </data>
   <data name="Select category" xml:space="preserve">
     <value>Pilih kategori</value>
   </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Tambah Pertanyaan</value>
+  <data name="Select strategy" xml:space="preserve">
+    <value>Pilih strategi</value>
   </data>
   <data name="Select type" xml:space="preserve">
     <value>Pilih tipe</value>
@@ -42,38 +63,17 @@
   <data name="Single Choice" xml:space="preserve">
     <value>Pilihan Tunggal</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Simpan</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Batal</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Penjelasan</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Opsi (untuk pilihan tunggal, array JSON)</value>
-  </data>
-  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
-    <value>Jawaban Isian yang Benar (untuk isian, array JSON)</value>
-  </data>
   <data name="Single Correct (for single choice)" xml:space="preserve">
     <value>Jawaban Benar (untuk pilihan tunggal)</value>
-  </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Strategi Penilaian</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Jawaban Standar</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Isi</value>
+  <data name="Text" xml:space="preserve">
+    <value>Teks</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Metadata (misalnya: Pilihan JSON)</value>
-  </data>
-  <data name="Select strategy" xml:space="preserve">
-    <value>Pilih strategi</value>
+  <data name="Type" xml:space="preserve">
+    <value>Tipe</value>
   </data>
 
 </root>

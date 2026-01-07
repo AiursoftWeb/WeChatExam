@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
+      <data name="Back" xml:space="preserve">
+    <value>Înapoi</value>
+  </data>
+  <data name="Category" xml:space="preserve">
     <value>Categorie</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Conținut</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Creat</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editează</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>Explicație</value>
@@ -27,44 +39,32 @@
   <data name="Fill In Correct" xml:space="preserve">
     <value>Completare corectă</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tip</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Opțiuni</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Răspuns unic corect</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>Detalii întrebare</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Editează</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Creat</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>Înapoi</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Conținut</value>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Strategie de notare</value>
   </data>
   <data name="Metadata" xml:space="preserve">
     <value>Metadate</value>
   </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Strategie de notare</value>
+  <data name="Options" xml:space="preserve">
+    <value>Opțiuni</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Detalii întrebare</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Răspuns unic corect</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Răspuns standard</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etichete</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
   </data>
 
 </root>

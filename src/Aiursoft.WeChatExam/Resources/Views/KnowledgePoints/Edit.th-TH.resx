@@ -18,26 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Content" xml:space="preserve">
-    <value>เนื้อหา</value>
+      <data name="Add" xml:space="preserve">
+    <value>เพิ่ม</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>หัวข้อ</value>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>หมวดหมู่ที่เกี่ยวข้อง</value>
   </data>
-  <data name="Parent KnowledgePoint" xml:space="preserve">
-    <value>หัวข้อความรู้หลัก</value>
-  </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>ระดับสูงสุด</value>
-  </data>
-  <data name="Edit KnowledgePoint" xml:space="preserve">
-    <value>แก้ไขจุดความรู้</value>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>คำถามที่เกี่ยวข้อง</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>กลับไปยังรายการ</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="Edit KnowledgePoint" xml:space="preserve">
+    <value>แก้ไขจุดความรู้</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>กดปุ่ม Ctrl (Windows) หรือ Command (Mac) เพื่อเลือกตัวเลือกได้หลายตัว</value>
+  </data>
+  <data name="Parent KnowledgePoint" xml:space="preserve">
+    <value>หัวข้อความรู้หลัก</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>บันทึก</value>
+  </data>
+  <data name="Select a question to add..." xml:space="preserve">
+    <value>เลือกคำถามเพื่อเพิ่ม...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>หัวข้อ</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>ระดับสูงสุด</value>
   </data>
 
 </root>

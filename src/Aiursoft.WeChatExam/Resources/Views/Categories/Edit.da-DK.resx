@@ -18,23 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Save" xml:space="preserve">
-    <value>Gem</value>
+      <data name="Back to List" xml:space="preserve">
+    <value>Tilbage til listen</value>
   </data>
   <data name="Edit Category" xml:space="preserve">
     <value>Rediger kategori</value>
   </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>Øverste niveau</value>
-  </data>
   <data name="Parent Category" xml:space="preserve">
     <value>Overordnet kategori</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Gem</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>
   </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>Tilbage til listen</value>
+  <data name="Top Level" xml:space="preserve">
+    <value>Øverste niveau</value>
   </data>
 
 </root>

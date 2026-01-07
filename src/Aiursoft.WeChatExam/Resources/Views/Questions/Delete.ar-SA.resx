@@ -18,17 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>النوع</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>الفئة</value>
+      <data name="Are you sure you want to delete this question?" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد حذف هذا السؤال؟</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>إلغاء</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>النص</value>
+  <data name="Category" xml:space="preserve">
+    <value>الفئة</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>المحتوى</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
@@ -36,11 +36,11 @@
   <data name="Delete Question" xml:space="preserve">
     <value>حذف السؤال</value>
   </data>
-  <data name="Are you sure you want to delete this question?" xml:space="preserve">
-    <value>هل أنت متأكد أنك تريد حذف هذا السؤال؟</value>
+  <data name="Text" xml:space="preserve">
+    <value>النص</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>المحتوى</value>
+  <data name="Type" xml:space="preserve">
+    <value>النوع</value>
   </data>
 
 </root>

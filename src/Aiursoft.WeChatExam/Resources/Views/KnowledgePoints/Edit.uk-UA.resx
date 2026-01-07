@@ -18,26 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Content" xml:space="preserve">
-    <value>Вміст</value>
+      <data name="Add" xml:space="preserve">
+    <value>Додати</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Зберегти</value>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Пов’язані категорії</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Назва</value>
-  </data>
-  <data name="Edit KnowledgePoint" xml:space="preserve">
-    <value>Редагувати точку знань</value>
-  </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>Верхній рівень</value>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Пов’язані питання</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Повернутися до списку</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Вміст</value>
+  </data>
+  <data name="Edit KnowledgePoint" xml:space="preserve">
+    <value>Редагувати точку знань</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Утримуйте клавішу Ctrl (Windows) або Command (Mac), щоб вибрати кілька параметрів.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Батьківський знаннєвий пункт</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="Select a question to add..." xml:space="preserve">
+    <value>Виберіть питання для додавання...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>Верхній рівень</value>
   </data>
 
 </root>

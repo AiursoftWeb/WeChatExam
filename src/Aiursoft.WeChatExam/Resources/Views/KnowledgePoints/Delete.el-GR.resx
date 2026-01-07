@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Ακύρωση</value>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>Είστε σίγουρος/η;</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Επιστροφή στη Λίστα</value>
   </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>Είστε σίγουρος/η;</value>
-  </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>Διαγραφή Σημείου Γνώσης</value>
-  </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Ναι, διαγραφή αυτού του σημείου γνώσης</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
   </data>
   <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
     <value>Δεν είναι δυνατή η διαγραφή του σημείου γνώσης που έχει υποσημειώσεις. Παρακαλώ διαγράψτε πρώτα τις υποσημειώσεις.</value>
   </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Διαγραφή Σημείου Γνώσης</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Αυτή η ενέργεια είναι μη αναστρέψιμη. Πρόκειται να διαγράψετε μόνιμα το ακόλουθο σημείο γνώσης:</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Ναι, διαγραφή αυτού του σημείου γνώσης</value>
   </data>
 
 </root>

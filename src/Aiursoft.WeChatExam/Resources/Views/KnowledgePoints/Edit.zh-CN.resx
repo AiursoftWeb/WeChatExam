@@ -18,41 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Content" xml:space="preserve">
-    <value>内容</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>标题</value>
-  </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>返回列表</value>
-  </data>
-  <data name="Parent KnowledgePoint" xml:space="preserve">
-    <value>父级知识点</value>
-  </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>顶级</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="Edit KnowledgePoint" xml:space="preserve">
-    <value>编辑知识点</value>
-  </data>
-  <data name="Associated Questions" xml:space="preserve">
-    <value>关联问题</value>
+      <data name="Add" xml:space="preserve">
+    <value>添加</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>关联分类</value>
   </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>关联问题</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>返回列表</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Edit KnowledgePoint" xml:space="preserve">
+    <value>编辑知识点</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>按住 Ctrl (Windows) 或 Command (Mac) 选择多个选项。</value>
   </data>
-  <data name="Add" xml:space="preserve">
-    <value>添加</value>
+  <data name="Parent KnowledgePoint" xml:space="preserve">
+    <value>父级知识点</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
   </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>选择要添加的问题...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>顶级</value>
   </data>
 
 </root>

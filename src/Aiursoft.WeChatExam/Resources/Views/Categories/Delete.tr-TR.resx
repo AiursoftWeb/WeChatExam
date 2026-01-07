@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
-    <value>Listeye Dön</value>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>Emin misiniz?</value>
   </data>
-  <data name="Delete Category" xml:space="preserve">
-    <value>Kategoriyi Sil</value>
+  <data name="Back to List" xml:space="preserve">
+    <value>Listeye Dön</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
   </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>Emin misiniz?</value>
-  </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Evet, bu kategoriyi sil</value>
-  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Alt kategorileri olan bir kategori silinemez. Lütfen önce alt kategorileri silin.</value>
   </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Kategoriyi Sil</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Bu işlem geri alınamaz. Aşağıdaki kategoriyi kalıcı olarak silmek üzeresiniz:</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Evet, bu kategoriyi sil</value>
   </data>
 
 </root>

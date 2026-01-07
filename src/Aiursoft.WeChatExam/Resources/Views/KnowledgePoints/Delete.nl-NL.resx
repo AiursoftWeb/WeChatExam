@@ -21,23 +21,23 @@
       <data name="Are you sure?" xml:space="preserve">
     <value>Weet je het zeker?</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Annuleren</value>
-  </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>KnowledgePoint verwijderen</value>
-  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Terug naar lijst</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Ja, verwijder dit kennispunt</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleren</value>
   </data>
   <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
     <value>Kan een kennisPunt met onderliggende items niet verwijderen. Verwijder eerst de onderliggende items.</value>
   </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>KnowledgePoint verwijderen</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Deze actie kan niet ongedaan worden gemaakt. Je staat op het punt om het volgende kennispunt permanent te verwijderen:</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Ja, verwijder dit kennispunt</value>
   </data>
 
 </root>

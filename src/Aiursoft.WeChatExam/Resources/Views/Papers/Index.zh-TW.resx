@@ -18,29 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Time Limit" xml:space="preserve">
-    <value>時間限制</value>
-  </data>
-  <data name="Paper List" xml:space="preserve">
-    <value>試卷列表</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>標題</value>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
   </data>
   <data name="Create Paper" xml:space="preserve">
     <value>新增試卷</value>
   </data>
-  <data name="Papers" xml:space="preserve">
-    <value>試卷</value>
-  </data>
   <data name="Created" xml:space="preserve">
     <value>建立時間</value>
   </data>
-  <data name="Status" xml:space="preserve">
-    <value>狀態</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>操作</value>
+  <data name="delete" xml:space="preserve">
+    <value>刪除</value>
   </data>
   <data name="detail" xml:space="preserve">
     <value>詳情</value>
@@ -48,11 +36,23 @@
   <data name="edit" xml:space="preserve">
     <value>編輯</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>刪除</value>
-  </data>
   <data name="No papers found" xml:space="preserve">
     <value>未找到試卷</value>
+  </data>
+  <data name="Paper List" xml:space="preserve">
+    <value>試卷列表</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>試卷</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>狀態</value>
+  </data>
+  <data name="Time Limit" xml:space="preserve">
+    <value>時間限制</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>標題</value>
   </data>
 
 </root>

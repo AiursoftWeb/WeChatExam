@@ -18,20 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Title" xml:space="preserve">
-    <value>Titre</value>
+      <data name="Back to List" xml:space="preserve">
+    <value>Retour à la liste</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Créer</value>
   </data>
+  <data name="Create Category" xml:space="preserve">
+    <value>Créer une catégorie</value>
+  </data>
   <data name="Parent Category" xml:space="preserve">
     <value>Catégorie parente</value>
   </data>
-  <data name="Back to List" xml:space="preserve">
-    <value>Retour à la liste</value>
-  </data>
-  <data name="Create Category" xml:space="preserve">
-    <value>Créer une catégorie</value>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
   </data>
   <data name="Top Level" xml:space="preserve">
     <value>Niveau supérieur</value>

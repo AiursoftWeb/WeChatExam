@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Created" xml:space="preserve">
-    <value>Created</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Article Details" xml:space="preserve">
+      <data name="Article Details" xml:space="preserve">
     <value>Article Details</value>
   </data>
   <data name="Author" xml:space="preserve">
@@ -32,6 +26,12 @@
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Back to list</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
   </data>
 
 </root>

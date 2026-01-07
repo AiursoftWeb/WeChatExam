@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="Delete Category" xml:space="preserve">
-    <value>Kategorie löschen</value>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>Sind Sie sicher?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Zurück zur Liste</value>
   </data>
-  <data name="Yes, delete this category" xml:space="preserve">
-    <value>Ja, diese Kategorie löschen</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
-    <value>Sind Sie sicher?</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
   </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Kategorie mit Unterkategorien kann nicht gelöscht werden. Bitte löschen Sie zuerst die Unterkategorien.</value>
   </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Kategorie löschen</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Diese Aktion kann nicht rückgängig gemacht werden. Sie sind dabei, die folgende Kategorie endgültig zu löschen:</value>
+  </data>
+  <data name="Yes, delete this category" xml:space="preserve">
+    <value>Ja, diese Kategorie löschen</value>
   </data>
 
 </root>

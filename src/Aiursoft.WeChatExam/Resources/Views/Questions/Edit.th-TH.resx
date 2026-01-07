@@ -18,53 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>ประเภท</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>เลือกประเภท</value>
-  </data>
-  <data name="Edit Question" xml:space="preserve">
-    <value>แก้ไขคำถาม</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>ตัวเลือกเดียว</value>
+      <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
   </data>
-  <data name="Select category" xml:space="preserve">
-    <value>เลือกหมวดหมู่</value>
+  <data name="Content" xml:space="preserve">
+    <value>เนื้อหา</value>
   </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>เติมคำ</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>ข้อความ</value>
+  <data name="Edit Question" xml:space="preserve">
+    <value>แก้ไขคำถาม</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>คำอธิบาย</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>บันทึก</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>ยกเลิก</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>คำตอบที่ถูกต้อง (สำหรับข้อเลือกเดียว)</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>ตัวเลือก (สำหรับคำถามแบบตัวเลือกเดียว, JSON array)</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>เติมคำ</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>คำตอบที่ถูกต้อง (สำหรับคำถามเติมคำ, เป็นอาร์เรย์ JSON)</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>เนื้อหา</value>
-  </data>
-  <data name="Select strategy" xml:space="preserve">
-    <value>เลือกกลยุทธ์</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>วิธีการให้คะแนน</value>
@@ -72,11 +45,38 @@
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>ข้อมูลเมตา (เช่น ตัวเลือก JSON)</value>
   </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>ตัวเลือก (สำหรับคำถามแบบตัวเลือกเดียว, JSON array)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>บันทึก</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>เลือกหมวดหมู่</value>
+  </data>
+  <data name="Select strategy" xml:space="preserve">
+    <value>เลือกกลยุทธ์</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>เลือกประเภท</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>ตัวเลือกเดียว</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>คำตอบที่ถูกต้อง (สำหรับข้อเลือกเดียว)</value>
+  </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>คำตอบมาตรฐาน</value>
   </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>แท็ก (คั่นด้วยช่องว่าง)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>ประเภท</value>
   </data>
 
 </root>

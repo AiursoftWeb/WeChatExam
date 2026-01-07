@@ -18,50 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
+      <data name="Cancel" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
+  <data name="Category" xml:space="preserve">
     <value>Kategori</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Tekst</value>
+  <data name="Content" xml:space="preserve">
+    <value>Indhold</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Rediger spørgsmål</value>
   </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Vælg type</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>Forklaring</value>
   </data>
   <data name="Fill In" xml:space="preserve">
     <value>Udfyld</value>
   </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Enkeltvalg</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Vælg kategori</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Forklaring</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Korrekt svar (for enkeltvalg)</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Gem</value>
-  </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>Korrekt udfyldning (til udfyldning, JSON-array)</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Annuller</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Valgmuligheder (til enkeltvalg, JSON-array)</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Indhold</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Bedømmelsesstrategi</value>
@@ -69,14 +45,38 @@
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Metadata (f.eks. Valg JSON)</value>
   </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Valgmuligheder (til enkeltvalg, JSON-array)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Gem</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Vælg kategori</value>
+  </data>
   <data name="Select strategy" xml:space="preserve">
     <value>Vælg strategi</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>Vælg type</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Enkeltvalg</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Korrekt svar (for enkeltvalg)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standard svar</value>
   </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>Mærker (adskilt med mellemrum)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 
 </root>

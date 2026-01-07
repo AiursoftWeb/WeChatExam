@@ -18,14 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add Category" xml:space="preserve">
-    <value>Добавить категорию</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Название</value>
+  <data name="Add Category" xml:space="preserve">
+    <value>Добавить категорию</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="Category List" xml:space="preserve">
+    <value>Список категорий</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Создано</value>
@@ -36,11 +39,8 @@
   <data name="Parent" xml:space="preserve">
     <value>Родительская категория</value>
   </data>
-  <data name="Category List" xml:space="preserve">
-    <value>Список категорий</value>
-  </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Категории</value>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
   </data>
 
 </root>

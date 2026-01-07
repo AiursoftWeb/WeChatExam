@@ -24,20 +24,20 @@
   <data name="Back to List" xml:space="preserve">
     <value>Retour à la liste</value>
   </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>Supprimer le point de connaissance</value>
-  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
-  </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Oui, supprimer ce point de connaissance</value>
   </data>
   <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
     <value>Impossible de supprimer un point de connaissance ayant des enfants. Veuillez d&apos;abord supprimer les enfants.</value>
   </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Supprimer le point de connaissance</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Cette action est irréversible. Vous êtes sur le point de supprimer définitivement le point de connaissance suivant :</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Oui, supprimer ce point de connaissance</value>
   </data>
 
 </root>

@@ -18,137 +18,155 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add New Users" xml:space="preserve">
-    <value>Thêm Người Dùng Mới</value>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Thêm Bất Kỳ Điểm Kiến Thức Nào</value>
   </data>
-  <data name="Delete Users" xml:space="preserve">
-    <value>Xóa Người Dùng</value>
-  </data>
-  <data name="Read Users" xml:space="preserve">
-    <value>Đọc Người Dùng</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>Cấp quyền tạo tài khoản người dùng mới.</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>Cho phép xem danh sách tất cả người dùng.</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>Cho phép xóa vĩnh viễn tài khoản người dùng.</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>Chỉnh sửa Thông tin Người dùng</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>Cho phép sửa đổi thông tin chi tiết của người dùng như email và vai trò, đồng thời có thể đặt lại mật khẩu người dùng.</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>Xem Vai trò</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>Xóa Vai trò</value>
+  <data name="Add Articles" xml:space="preserve">
+    <value>Thêm Bài viết</value>
   </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Thêm Vai trò Mới</value>
   </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>Cho phép xem danh sách các vai trò và quyền đã được gán cho chúng.</value>
+  <data name="Add New Users" xml:space="preserve">
+    <value>Thêm Người Dùng Mới</value>
   </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>Chỉnh sửa Thông tin Vai trò</value>
+  <data name="Add Papers" xml:space="preserve">
+    <value>Thêm Bài Thi</value>
   </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>Cho phép xóa vĩnh viễn các vai trò.</value>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Thêm Câu Hỏi</value>
   </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>Cấp quyền tạo vai trò mới.</value>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm bài viết, dù không phải là chủ sở hữu.</value>
+  </data>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm bài viết, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
+    <value>Cho phép gán hoặc gỡ bỏ vai trò cho bất kỳ người dùng nào.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa bài viết, bất kể chủ sở hữu.</value>
+  </data>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa các bài kiểm tra, bất kể ai sở hữu.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa bài viết, không phân biệt chủ sở hữu.</value>
+  </data>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa các bài viết, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa câu hỏi, bất kể quyền sở hữu.</value>
   </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Cho phép sửa đổi tên vai trò và các quyền đã được gán.</value>
   </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>Cho phép sửa đổi thông tin chi tiết của người dùng như email và vai trò, đồng thời có thể đặt lại mật khẩu người dùng.</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>Cho phép xóa vĩnh viễn các vai trò.</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>Cho phép xóa vĩnh viễn tài khoản người dùng.</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>Cho phép xem thông tin và cài đặt ở cấp hệ thống.</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>Cho phép xem danh sách tất cả người dùng.</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>Cho phép xem danh sách các vai trò và quyền đã được gán cho chúng.</value>
+  </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Gán Vai trò cho Người dùng</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Xóa Bất Kỳ Danh Mục Nào</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Xóa Bất Kỳ Điểm Kiến Thức Nào</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>Xóa Bài viết</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>Xóa Bài kiểm tra</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Xóa Câu Hỏi</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>Xóa Vai trò</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>Xóa Người Dùng</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Chỉnh sửa Bất kỳ Danh mục nào</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Chỉnh sửa Bất kỳ Điểm Kiến thức nào</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>Chỉnh sửa Bài viết</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>Chỉnh sửa Bài thi</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Chỉnh sửa Câu hỏi</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>Chỉnh sửa Thông tin Vai trò</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>Chỉnh sửa Thông tin Người dùng</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>Cấp quyền tạo vai trò mới.</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>Cấp quyền tạo tài khoản người dùng mới.</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>Cấp quyền khởi động lại phiên bản ứng dụng. Có thể gây ra gián đoạn về tính khả dụng nhưng tất cả cài đặt và bộ nhớ đệm sẽ được tải lại.</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>Xem Vai trò</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>Đọc Người Dùng</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Khởi Động Lại Ứng Dụng Này</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Xem Ngữ cảnh Hệ thống</value>
-  </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>Cho phép xem thông tin và cài đặt ở cấp hệ thống.</value>
-  </data>
-  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
-    <value>Cho phép gán hoặc gỡ bỏ vai trò cho bất kỳ người dùng nào.</value>
-  </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>Cấp quyền khởi động lại phiên bản ứng dụng. Có thể gây ra gián đoạn về tính khả dụng nhưng tất cả cài đặt và bộ nhớ đệm sẽ được tải lại.</value>
-  </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>Chỉnh sửa Câu hỏi</value>
-  </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>Xóa Câu Hỏi</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>Xóa Bất Kỳ Danh Mục Nào</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>Chỉnh sửa Bất kỳ Danh mục nào</value>
-  </data>
-  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
-    <value>Cho phép xóa câu hỏi, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>Cho phép xóa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>Cho phép chỉnh sửa câu hỏi, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
-    <value>Cho phép chỉnh sửa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Add Questions" xml:space="preserve">
-    <value>Thêm Câu Hỏi</value>
-  </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>Xóa Bất Kỳ Điểm Kiến Thức Nào</value>
-  </data>
-  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Cho phép xóa bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
-    <value>Cho phép thêm câu hỏi, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>Chỉnh sửa Bất kỳ Điểm Kiến thức nào</value>
-  </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
-    <value>Thêm Bất Kỳ Điểm Kiến Thức Nào</value>
-  </data>
-  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Cho phép chỉnh sửa bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Cho phép thêm bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
-  </data>
-  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
-    <value>Cho phép xóa bài viết, bất kể chủ sở hữu.</value>
-  </data>
-  <data name="Delete Articles" xml:space="preserve">
-    <value>Xóa Bài viết</value>
-  </data>
-  <data name="Edit Articles" xml:space="preserve">
-    <value>Chỉnh sửa Bài viết</value>
-  </data>
-  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
-    <value>Cho phép chỉnh sửa bài viết, không phân biệt chủ sở hữu.</value>
-  </data>
-  <data name="Add Articles" xml:space="preserve">
-    <value>Thêm Bài viết</value>
-  </data>
-  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
-    <value>Cho phép thêm bài viết, dù không phải là chủ sở hữu.</value>
   </data>
 
 </root>

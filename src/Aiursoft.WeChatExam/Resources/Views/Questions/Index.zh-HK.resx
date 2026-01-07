@@ -18,8 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>類型</value>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>新增題目</value>
+  </data>
+  <data name="All Categories" xml:space="preserve">
+    <value>所有類別</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>內容</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>建立時間</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>詳情</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>篩選</value>
+  </data>
+  <data name="No questions found" xml:space="preserve">
+    <value>未找到任何問題</value>
+  </data>
+  <data name="Question List" xml:space="preserve">
+    <value>問題列表</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>問題</value>
@@ -27,41 +60,8 @@
   <data name="Text" xml:space="preserve">
     <value>題目</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>類別</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>新增題目</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>篩選</value>
-  </data>
-  <data name="All Categories" xml:space="preserve">
-    <value>所有類別</value>
-  </data>
-  <data name="Question List" xml:space="preserve">
-    <value>問題列表</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>建立時間</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>編輯</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>詳情</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>刪除</value>
-  </data>
-  <data name="No questions found" xml:space="preserve">
-    <value>未找到任何問題</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>內容</value>
+  <data name="Type" xml:space="preserve">
+    <value>類型</value>
   </data>
 
 </root>

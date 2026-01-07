@@ -18,11 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Top Level" xml:space="preserve">
-    <value>Oberste Ebene</value>
-  </data>
-  <data name="Back to List" xml:space="preserve">
+      <data name="Back to List" xml:space="preserve">
     <value>Zurück zur Liste</value>
+  </data>
+  <data name="Edit Category" xml:space="preserve">
+    <value>Kategorie bearbeiten</value>
+  </data>
+  <data name="Parent Category" xml:space="preserve">
+    <value>Übergeordnete Kategorie</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
@@ -30,11 +33,8 @@
   <data name="Title" xml:space="preserve">
     <value>Titel</value>
   </data>
-  <data name="Edit Category" xml:space="preserve">
-    <value>Kategorie bearbeiten</value>
-  </data>
-  <data name="Parent Category" xml:space="preserve">
-    <value>Übergeordnete Kategorie</value>
+  <data name="Top Level" xml:space="preserve">
+    <value>Oberste Ebene</value>
   </data>
 
 </root>

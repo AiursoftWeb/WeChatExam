@@ -18,17 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Delete" xml:space="preserve">
-    <value>刪除</value>
+      <data name="Are you sure you want to delete this question?" xml:space="preserve">
+    <value>您確定要刪除這個問題嗎？</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>類別</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>類型</value>
+  <data name="Content" xml:space="preserve">
+    <value>內容</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+  <data name="Delete" xml:space="preserve">
+    <value>刪除</value>
   </data>
   <data name="Delete Question" xml:space="preserve">
     <value>刪除題目</value>
@@ -36,11 +39,8 @@
   <data name="Text" xml:space="preserve">
     <value>題目內容</value>
   </data>
-  <data name="Are you sure you want to delete this question?" xml:space="preserve">
-    <value>您確定要刪除這個問題嗎？</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>內容</value>
+  <data name="Type" xml:space="preserve">
+    <value>類型</value>
   </data>
 
 </root>

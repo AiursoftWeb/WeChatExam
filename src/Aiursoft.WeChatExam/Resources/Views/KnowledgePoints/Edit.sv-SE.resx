@@ -18,26 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
-    <value>Tillbaka till listan</value>
+      <data name="Add" xml:space="preserve">
+    <value>Lägg till</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Spara</value>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Associerade kategorier</value>
+  </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Relaterade frågor</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Tillbaka till listan</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Innehåll</value>
   </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>Toppnivå</value>
-  </data>
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Redigera kunskapspunkt</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Håll ned Ctrl (Windows) eller Command (Mac) för att välja flera alternativ.</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Överordnad kunskapspunkt</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="Select a question to add..." xml:space="preserve">
+    <value>Välj en fråga att lägga till...</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>Toppnivå</value>
   </data>
 
 </root>

@@ -18,14 +18,32 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>テキスト</value>
+      <data name="Back" xml:space="preserve">
+    <value>戻る</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>タイプ</value>
+  <data name="Category" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編集</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>解説</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>正解を記入</value>
+  </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>採点方針</value>
+  </data>
+  <data name="Metadata" xml:space="preserve">
+    <value>メタデータ</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>選択肢</value>
@@ -36,35 +54,17 @@
   <data name="Single Correct" xml:space="preserve">
     <value>単一正解</value>
   </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>正解を記入</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>カテゴリ</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>作成日時</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>編集</value>
-  </data>
-  <data name="Back" xml:space="preserve">
-    <value>戻る</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>内容</value>
-  </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>採点方針</value>
-  </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>標準回答</value>
   </data>
-  <data name="Metadata" xml:space="preserve">
-    <value>メタデータ</value>
-  </data>
   <data name="Tags" xml:space="preserve">
     <value>タグ</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>タイプ</value>
   </data>
 
 </root>
