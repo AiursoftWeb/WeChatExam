@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Aiursoft.WeChatExam;
 
@@ -34,7 +33,7 @@ public class SecurityRequirementsOperationFilter : IOperationFilter
                 new Microsoft.OpenApi.OpenApiSecurityRequirement
                 {
                     {
-                        new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer", null),
+                        new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer"),
                         new List<string>()
                     }
                 }

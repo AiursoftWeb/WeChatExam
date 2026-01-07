@@ -79,7 +79,6 @@ public class TestStartupWithMockWeChat : IWebStartup
             c.DocInclusionPredicate((_, apiDesc) => apiDesc.RelativePath?.StartsWith("api/") == true);
 
             // Add JWT Bearer support in Swagger
-            // Add JWT Bearer support in Swagger
             var securityScheme = new Microsoft.OpenApi.OpenApiSecurityScheme
             {
                 Name = "Authorization",
