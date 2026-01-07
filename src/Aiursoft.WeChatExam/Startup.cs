@@ -47,6 +47,10 @@ public class Startup : IWebStartup
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IPaperService, PaperService>();
 
+        // Background job queue
+        services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();
+        services.AddHostedService<Services.BackgroundJobs.QueueWorkerService>();
+
         // Configure SKIT WeChat API Client
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;
         if (appSettings.WeChatEnabled)

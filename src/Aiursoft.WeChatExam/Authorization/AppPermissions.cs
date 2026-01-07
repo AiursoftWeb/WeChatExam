@@ -58,7 +58,7 @@ public class AppPermissions
             new(AppPermissionNames.CanRebootThisApp,
                 localizer["Reboot This App"],
                 localizer["Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded."]),
-                
+
             new(AppPermissionNames.CanDeleteAnyCategory,
                 localizer["Delete Any Category"],
                 localizer["Allows deletion of any category, regardless of ownership."]),
@@ -75,7 +75,7 @@ public class AppPermissions
             new(AppPermissionNames.CanAddQuestions,
                 localizer["Add Questions"],
                 localizer["Allows adding of questions, regardless of ownership."]),
-                
+
             new(AppPermissionNames.CanDeleteAnyKnowledgePoint,
                 localizer["Delete Any KnowledgePoint"],
                 localizer["Allows deletion of any knowledgePoint, regardless of ownership."]),
@@ -105,6 +105,10 @@ public class AppPermissions
             new(AppPermissionNames.CanAddPapers,
                 localizer["Add Papers"],
                 localizer["Allows adding of papers, regardless of ownership."]),
+
+            new(AppPermissionNames.CanViewBackgroundJobs,
+                localizer["View Background Jobs"],
+                localizer["Allows viewing and managing background job queues and their execution status."]),
 
         ];
         return allPermission;
