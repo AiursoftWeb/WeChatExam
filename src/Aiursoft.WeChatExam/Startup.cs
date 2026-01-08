@@ -1,5 +1,6 @@
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools.Switchable;
+using Aiursoft.GptClient.Services;
 using Aiursoft.Scanner;
 using Aiursoft.WebTools.Abstractions.Models;
 using Aiursoft.WeChatExam.Configuration;
@@ -23,6 +24,7 @@ public class Startup : IWebStartup
     {
         // AppSettings.
         services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
+        services.Configure<OpenAIConfiguration>(configuration.GetSection("OpenAI"));
 
         // Relational database
         var (connectionString, dbType, allowCache) = configuration.GetDbSettings();
@@ -46,6 +48,8 @@ public class Startup : IWebStartup
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IPaperService, PaperService>();
+        services.AddScoped<ChatClient>();
+        services.AddScoped<IOllamaService, OllamaService>();
         services.AddScoped<IExamService, ExamService>();
 
         // Background job queue

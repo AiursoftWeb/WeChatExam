@@ -70,6 +70,7 @@ public class ViewModelArgsInjector(
         _ = localizer["Questions"];
         _ = localizer["Articles"];
         _ = localizer["Papers"];
+        _ = localizer["Tags"];
         _ = localizer["Background Jobs"];
     }
 

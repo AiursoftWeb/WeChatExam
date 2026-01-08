@@ -1,5 +1,17 @@
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.EditViewModel
 
+@section scripts {
+    <script src="~/js/tag-input.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tagInput = document.getElementById('tagInputField');
+            const tagHidden = document.getElementById('Tags');
+            const initialTags = '@Model.Tags'.split(' ').filter(t => t.trim());
+            TagInput.init(tagInput, tagHidden, initialTags);
+        });
+    </script>
+}
+
 <h1 class="h3 mb-3">@Localizer["Edit Question"]</h1>
 
 <form asp-action="Edit" method="post">
@@ -47,9 +59,10 @@
             </div>
             
             <div class="mb-3">
-                <label asp-for="Tags" class="form-label">@Localizer["Tags (space separated)"]</label>
-                <input asp-for="Tags" class="form-control" placeholder="Math 2023 Grade1" />
-                <span asp-validation-for="Tags" class="text-danger"></span>
+                <label class="form-label">@Localizer["Tags"]</label>
+                <input type="text" id="tagInputField" class="form-control" placeholder="@Localizer["Type to search or add tags..."]" autocomplete="off" />
+                <input type="hidden" asp-for="Tags" id="Tags" />
+                <small class="form-text text-muted">@Localizer["Press Enter to add a tag, or select from suggestions. Click X to remove."]</small>
             </div>
             <div class="mb-3">
                 <label asp-for="Metadata" class="form-label">@Localizer["Metadata (e.g. Choices JSON)"]</label>

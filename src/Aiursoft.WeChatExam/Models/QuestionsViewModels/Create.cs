@@ -39,5 +39,7 @@ public class CreateViewModel : UiStackLayoutViewModel
     [Required]
     public Guid CategoryId { get; set; }
 
+    public string Tags { get; set; } = string.Empty;
+
     public List<Category> Categories { get; set; } = new();
 }

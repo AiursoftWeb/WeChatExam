@@ -123,6 +123,10 @@ public class AppPermissions
                 localizer["View Background Jobs"],
                 localizer["Allows viewing and managing background job queues and their execution status."]),
 
+            new(AppPermissionNames.CanManageTags,
+                localizer["Manage Tags"],
+                localizer["Allows deleting tags from the system. Note that deleting a tag will not delete associated questions."]),
+
         ];
         return allPermission;
     }

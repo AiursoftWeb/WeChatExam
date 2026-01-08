@@ -10,5 +10,8 @@ public interface ITagService
     Task RemoveTagFromQuestionAsync(Guid questionId, int tagId);
     Task<List<Tag>> GetTagsForQuestionAsync(Guid questionId);
     Task<List<Question>> GetQuestionsByTagAsync(int tagId);
+    Task<List<Tag>> SearchTagsAsync(string query);
+    Task<Tag?> GetTagByIdAsync(int tagId);
+    Task DeleteTagAsync(int tagId);
 }
 
