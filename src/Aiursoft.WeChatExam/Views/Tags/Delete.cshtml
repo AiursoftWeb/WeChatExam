@@ -1,0 +1,38 @@
+@model Aiursoft.WeChatExam.Models.TagsViewModels.DeleteViewModel
+
+<h1 class="h3 mb-3">@Localizer["Delete Tag"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">
+                <i data-lucide="alert-triangle"></i> @Localizer["Warning"]
+            </h4>
+            <p>@Localizer["Are you sure you want to delete the tag:"] <strong>@Model.Tag.DisplayName</strong>?</p>
+            @if (Model.UsageCount > 0)
+           {
+                <p class="mb-0">
+                    @Localizer["This tag is currently used by {0} question(s). Deleting this tag will only remove the tag, not the questions.", Model.UsageCount]
+                </p>
+            }
+            else
+            {
+                <p class="mb-0">
+                    @Localizer["This tag is not used by any questions."]
+                </p>
+            }
+        </div>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.Tag.Id" />
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger">
+                    <i data-lucide="trash-2"></i> @Localizer["Confirm Delete"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i data-lucide="arrow-left"></i> @Localizer["Cancel"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

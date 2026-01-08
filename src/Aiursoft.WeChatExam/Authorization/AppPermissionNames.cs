@@ -49,4 +49,7 @@ public static class AppPermissionNames
     // Background Jobs
     public const string CanViewBackgroundJobs = nameof(CanViewBackgroundJobs);
 
+    // Tag Management
+    public const string CanManageTags = nameof(CanManageTags);
+
 }

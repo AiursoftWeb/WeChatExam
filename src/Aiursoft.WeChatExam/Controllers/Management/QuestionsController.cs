@@ -28,13 +28,15 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
     public async Task<IActionResult> Index(Guid? categoryId)
     {
         var categories = await context.Categories.ToListAsync();
-        
+
         var questions = categoryId.HasValue
             ? await context.Questions
                 .Where(q => q.CategoryId == categoryId.Value)
                 .OrderByDescending(q => q.CreationTime)
                 .ToListAsync()
-            : new List<Question>();
+            : await context.Questions
+                .OrderByDescending(q => q.CreationTime)
+                .ToListAsync();
 
         var selectedCategory = categoryId.HasValue
             ? await context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId.Value)
@@ -54,13 +56,13 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
     public async Task<IActionResult> Create(Guid? categoryId)
     {
         var categories = await context.Categories.ToListAsync();
-        
+
         var model = new CreateViewModel
         {
             Categories = categories,
             CategoryId = categoryId ?? Guid.Empty
         };
-        
+
         return this.StackView(model);
     }
 
@@ -101,6 +103,17 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
 
         context.Questions.Add(question);
         await context.SaveChangesAsync();
+
+        // Process tags
+        if (!string.IsNullOrWhiteSpace(model.Tags))
+        {
+            var tagNames = model.Tags.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToList();
+            foreach (var tagName in tagNames)
+            {
+                var tag = await tagService.AddTagAsync(tagName);
+                await tagService.AddTagToQuestionAsync(question.Id, tag.Id);
+            }
+        }
 
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
@@ -198,7 +211,7 @@ public class QuestionsController(TemplateDbContext context, ITagService tagServi
         {
             var tagNames = model.Tags.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToList();
             var currentTags = await tagService.GetTagsForQuestionAsync(id);
-            
+
             // Remove tags not in new list
             foreach (var t in currentTags)
             {
