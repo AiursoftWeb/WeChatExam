@@ -64,6 +64,13 @@ public class ViewModelArgsInjector(
         _ = localizer["Personal"];
         _ = localizer["Unauthorized"];
         _ = localizer["Error"];
+        _ = localizer["Content Management"];
+        _ = localizer["Categories"];
+        _ = localizer["Knowledge Points"];
+        _ = localizer["Questions"];
+        _ = localizer["Articles"];
+        _ = localizer["Papers"];
+        _ = localizer["Background Jobs"];
     }
 
     public void InjectSimple(

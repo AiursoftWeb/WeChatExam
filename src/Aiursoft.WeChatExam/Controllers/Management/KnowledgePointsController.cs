@@ -24,14 +24,14 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
         CascadedLinksOrder = 9997,
-        LinkText = "KnowledgePoints",
+        LinkText = "Knowledge Points",
         LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
         var knowledgePoints = await context.KnowledgePoints.ToListAsync();
         // Build a hierarchical structure
         var rootKnowledgePoints = knowledgePoints.Where(c => c.ParentId == null).ToList();
-        
+
         return this.StackView(new IndexViewModel
         {
             KnowledgePoints = knowledgePoints,
@@ -68,7 +68,7 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
         {
             var parentExists = await context.KnowledgePoints
                 .AnyAsync(c => c.Id == model.ParentId.Value);
-            
+
             if (!parentExists)
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Parent knowledgePoint not found");
@@ -95,11 +95,11 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
     public async Task<IActionResult> Details(Guid? id)
     {
         if (id == null) return NotFound();
-        
+
         var knowledgePoint = await context.KnowledgePoints
             .Include(c => c.Parent)
             .FirstOrDefaultAsync(c => c.Id == id);
-        
+
         if (knowledgePoint == null) return NotFound();
 
         return this.StackView(new DetailsViewModel
@@ -185,7 +185,7 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
 
             var parentExists = await context.KnowledgePoints
                 .AnyAsync(c => c.Id == model.ParentId.Value);
-            
+
             if (!parentExists)
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Parent knowledgePoint not found");
@@ -313,7 +313,7 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
             var knowledgePointWithChildren = await context.KnowledgePoints
                 .Include(c => c.Children)
                 .FirstOrDefaultAsync(c => c.Id == id);
-            
+
             return this.StackView(new DeleteViewModel
             {
                 KnowledgePoint = knowledgePointWithChildren!,
@@ -331,7 +331,7 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
     private async Task<bool> IsDescendantOf(Guid possibleAncestorId, Guid knowledgePointId)
     {
         var current = await context.KnowledgePoints.FindAsync(possibleAncestorId);
-        
+
         while (current?.ParentId != null)
         {
             if (current.ParentId.Value == knowledgePointId)
@@ -340,7 +340,7 @@ public class KnowledgePointsController(TemplateDbContext context) : Controller
             }
             current = await context.KnowledgePoints.FindAsync(current.ParentId.Value);
         }
-        
+
         return false;
     }
 }
