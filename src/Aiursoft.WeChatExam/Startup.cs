@@ -50,6 +50,7 @@ public class Startup : IWebStartup
         services.AddScoped<IPaperService, PaperService>();
         services.AddScoped<ChatClient>();
         services.AddScoped<IOllamaService, OllamaService>();
+        services.AddScoped<IExamService, ExamService>();
 
         // Background job queue
         services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();

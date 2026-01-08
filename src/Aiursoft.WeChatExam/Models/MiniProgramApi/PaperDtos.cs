@@ -5,7 +5,7 @@ namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 public class PaperSnapshotDto
 {
     public Guid Id { get; set; }
-    public Guid PaperId { get; set; }
+    public Guid? PaperId { get; set; }
     public int Version { get; set; }
     [Required]
     [MaxLength(200)]

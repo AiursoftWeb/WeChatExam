@@ -4,12 +4,13 @@ namespace Aiursoft.WeChatExam.Services;
 
 public interface IGradingService
 {
-    Task<GraingResult> GradeAsync(Question question, string userAnswer);
+    Task<GradingResult> GradeAsync(Question question, string userAnswer);
+    Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content);
 }
 
-public class GraingResult
+public class GradingResult
 {
     public bool IsCorrect { get; set; }
-    public double Score { get; set; } // Can be expanded for partial credit
+    public int Score { get; set; }
     public string Comment { get; set; } = string.Empty;
 }

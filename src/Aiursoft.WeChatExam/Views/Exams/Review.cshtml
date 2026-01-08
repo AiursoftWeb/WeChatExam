@@ -1,0 +1,76 @@
+@model Aiursoft.WeChatExam.Models.ExamsViewModels.ReviewViewModel
+
+<h1 class="h3 mb-3">@Localizer["Review Exam Attempt"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-header">
+                 <h5 class="card-title mb-0">@Localizer["Summary"]</h5>
+            </div>
+            <div class="card-body">
+                 <dl class="mb-0">
+                     <dt>@Localizer["Student"]</dt>
+                     <dd>@Model.Record?.User.UserName</dd>
+                     <dt>@Localizer["Status"]</dt>
+                     <dd>@Model.Record?.Status</dd>
+                     <dt>@Localizer["Score"]</dt>
+                     <dd class="h2 text-primary">@Model.Record?.TotalScore</dd>
+                 </dl>
+            </div>
+        </div>
+
+        <form asp-action="UpdateScore" asp-route-recordId="@Model.Record!.Id" method="post">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Manual Grading"]</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="NewTotalScore" class="form-label">Total Score Override</label>
+                        <input asp-for="NewTotalScore" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TeacherComment" class="form-label">Comment</label>
+                        <textarea asp-for="TeacherComment" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                        <label asp-for="NewTotalScore" class="form-label">@Localizer["Total Score Override"]</label>
+                        <input asp-for="NewTotalScore" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TeacherComment" class="form-label">@Localizer["Comment"]</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-8">
+        @foreach(var q in Model.Questions)
+        {
+            var answer = Model.Record!.AnswerRecords.FirstOrDefault(a => a.QuestionSnapshotId == q.Id);
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Q@(q.Order): @q.Content (@q.Score pts)</h5>
+                    <div class="mb-3 p-3 bg-light rounded">
+                        <strong>@Localizer["Student Answer"]:</strong><br/>
+                        <pre class="mb-0">@(answer?.UserAnswer ?? "(No Answer)")</pre>
+                    </div>
+                    @if(answer != null && answer.IsMarked)
+                    {
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">@Localizer["Type"]: @q.QuestionType | @Localizer["Strategy"]: @q.GradingStrategy</span>
+                            <span class="badge @(answer.Score > 0 ? "bg-success" : "bg-danger") fs-6">
+                                +@answer.Score 
+                            </span>
+                        </div>
+                         <div class="mt-2 text-muted small">
+                             @Localizer["Correct Answer"]: @q.StandardAnswer
+                         </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
