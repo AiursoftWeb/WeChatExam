@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Tillåter permanent borttagning av användarkonton.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Tillåter visning och hantering av bakgrundsjobbsköer och deras utförandestatus.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Ger tillgång att visa systemnivåinformation och inställningar.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Starta om den här appen</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Visa bakgrundsjobb</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Visa systemkontext</value>

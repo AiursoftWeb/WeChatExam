@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn tài khoản người dùng.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Cho phép xem và quản lý các hàng đợi công việc nền cùng trạng thái thực thi của chúng.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Cho phép xem thông tin và cài đặt ở cấp hệ thống.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Khởi Động Lại Ứng Dụng Này</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Xem các Nhiệm vụ nền</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Xem Ngữ cảnh Hệ thống</value>

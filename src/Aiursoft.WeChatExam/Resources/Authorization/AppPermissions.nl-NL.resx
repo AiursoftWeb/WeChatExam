@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Staat het permanent verwijderen van gebruikersaccounts toe.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Staat het bekijken en beheren van achtergrondtaakwachtrijen en hun uitvoeringsstatus toe.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Staat het bekijken van systeeminformatie en -instellingen toe.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Herstart deze app</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Achtergrondtaken weergeven</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Systeemcontext weergeven</value>

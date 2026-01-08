@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Kullanıcı hesaplarının kalıcı olarak silinmesine izin verir.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Arka plan görev kuyruklarını görüntüleme ve yönetme ve bunların çalıştırma durumlarını görme izni verir.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Sistem düzeyindeki bilgileri ve ayarları görüntülemeye izin verir.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Bu Uygulamayı Yeniden Başlat</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Arka Plan Görevlerini Görüntüle</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Sistem Bağlamını Görüntüle</value>

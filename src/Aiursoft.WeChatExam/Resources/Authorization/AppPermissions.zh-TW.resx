@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>允許永久刪除使用者帳戶。</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>允許檢視和管理背景工作佇列及其執行狀態。</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>允許檢視系統層級的資訊與設定。</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>重新啟動此應用程式</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>檢視背景工作</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>檢視系統內容</value>

@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Pozwala na trwałe usunięcie kont użytkowników.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Zezwala na przeglądanie i zarządzanie kolejkami zadań w tle oraz ich stanem wykonywania.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Pozwala na przeglądanie informacji i ustawień na poziomie systemu.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Uruchom ponownie tę aplikację</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Wyświetl zadania w tle</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Wyświetl kontekst systemu</value>

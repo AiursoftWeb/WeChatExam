@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Επιτρέπει τη μόνιμη διαγραφή των λογαριασμών χρηστών.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Επιτρέπει την προβολή και διαχείριση των ουρών εργασιών στο παρασκήνιο και την κατάσταση εκτέλεσής τους.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Επιτρέπει την προβολή πληροφοριών και ρυθμίσεων σε επίπεδο συστήματος.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Επανεκκίνηση αυτής της εφαρμογής</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Προβολή Εργασιών Παρασκηνίου</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Προβολή Συστημικού Περιεχομένου</value>
