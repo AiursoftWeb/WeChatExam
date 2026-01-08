@@ -1,0 +1,64 @@
+@using Aiursoft.WebTools
+@model Aiursoft.WeChatExam.Models.ExamsViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Exams"]</h1>
+
+<div class="row mb-3">
+    <div class="col-12 text-end">
+        <a asp-action="Create" class="btn btn-primary btn-sm">
+            <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create Exam"]
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title mb-0">@Localizer["Exam Schedule"]</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Title"]</th>
+                    <th>@Localizer["Paper"]</th>
+                    <th>@Localizer["Start Time"]</th>
+                    <th>@Localizer["End Time"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var exam in Model.Exams)
+                {
+                    <tr>
+                        <td>@exam.Title</td>
+                        <td>@exam.Paper?.Title</td>
+                        <td><label class="text-monospace" data-utc-time="@exam.StartTime.ToHtmlDateTime()"></label></td>
+                        <td><label class="text-monospace" data-utc-time="@exam.EndTime.ToHtmlDateTime()"></label></td>
+                        <td>
+                            @{
+                                var status = Aiursoft.WeChatExam.Services.ExamStatusCalculator.GetStatus(exam.StartTime, exam.EndTime);
+                                var badgeClass = Aiursoft.WeChatExam.Services.ExamStatusCalculator.GetStatusBadgeClass(status);
+                            }
+                            <span class="badge @badgeClass">@status</span>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-info me-1">
+                                <i class="align-middle" data-lucide="bar-chart-2"></i>
+                                <span class="visually-hidden">@Localizer["detail"]</span>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-primary me-1">
+                                <i class="align-middle" data-lucide="edit"></i>
+                                <span class="visually-hidden">@Localizer["edit"]</span>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@exam.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="align-middle" data-lucide="trash-2"></i>
+                                <span class="visually-hidden">@Localizer["delete"]</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

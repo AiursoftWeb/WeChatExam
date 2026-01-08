@@ -1,0 +1,49 @@
+@model Aiursoft.WeChatExam.Models.ExamsViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Create Exam"]</h1>
+
+<form asp-action="Create" method="post">
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="PaperId" class="form-label"></label>
+                <select asp-for="PaperId" class="form-select">
+                    @foreach(var p in Model.AvailablePapers)
+                    {
+                        <option value="@p.Id">@p.Title (@p.TimeLimit min)</option>
+                    }
+                </select>
+                <span asp-validation-for="PaperId" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="StartTime" class="form-label"></label>
+                    <input asp-for="StartTime" class="form-control" type="datetime-local" step="60" />
+                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="EndTime" class="form-label"></label>
+                    <input asp-for="EndTime" class="form-control" type="datetime-local" step="60" />
+                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DurationMinutes" class="form-label">@Localizer["Duration (Minutes)"]</label>
+                <input asp-for="DurationMinutes" class="form-control" placeholder="@Localizer["Leave empty to use paper default"]" />
+                <div class="form-text">@Localizer["Time allowed for student attempt. Leave empty to use Paper's Time Limit."]</div>
+            </div>
+        </div>
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-primary">@Localizer["Create"]</button>
+            <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
+        </div>
+    </div>
+</form>
