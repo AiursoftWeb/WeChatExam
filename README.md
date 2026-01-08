@@ -5,7 +5,7 @@
 [![Test Coverage](https://gitlab.aiursoft.com/aiursoft/weChatExam/badges/master/coverage.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/pipelines)
 [![Man hours](https://manhours.aiursoft.com/r/gitlab.aiursoft.com/aiursoft/weChatExam.svg)](https://manhours.aiursoft.com/r/gitlab.aiursoft.com/aiursoft/weChatExam.html)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2FweChatExam.aiursoft.com)](https://weChatExam.aiursoft.com)
-[![Docker](https://img.shields.io/docker/pulls/aiursoft/weChatExam.svg)](https://hub.docker.com/r/aiursoft/weChatExam)
+[![Docker](https://img.shields.io/docker/pulls/aiursoft/wechatexam.svg)](https://hub.docker.com/r/aiursoft/wechatexam)
 
 WeChatExam is a sample project.
 

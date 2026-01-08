@@ -24,20 +24,20 @@
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
   </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>刪除知識點</value>
-  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>是的，刪除此知識點</value>
+  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
+    <value>無法刪除含有子節點的知識點。請先刪除子節點。</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>刪除知識點</value>
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>此操作無法復原。您即將永久刪除以下知識點：</value>
   </data>
-  <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
-    <value>無法刪除含有子節點的知識點。請先刪除子節點。</value>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>是的，刪除此知識點</value>
   </data>
 
 </root>

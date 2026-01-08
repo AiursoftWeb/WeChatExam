@@ -18,65 +18,65 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Type" xml:space="preserve">
-    <value>Тип</value>
+      <data name="Cancel" xml:space="preserve">
+    <value>Скасувати</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Категорія</value>
   </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Оберіть тип</value>
+  <data name="Content" xml:space="preserve">
+    <value>Зміст</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Редагувати питання</value>
   </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Заповнити</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Одиночний вибір</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Текст</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Оберіть категорію</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Зберегти</value>
-  </data>
   <data name="Explanation" xml:space="preserve">
     <value>Пояснення</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Скасувати</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Правильна відповідь (для одиночного вибору)</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Варіанти (для одиночного вибору, JSON масив)</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>Заповнити</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>Правильна відповідь (для завдання на заповнення, масив JSON)</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Метадані (наприклад: Варіанти JSON)</value>
-  </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Стратегія оцінювання</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Зміст</value>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Метадані (наприклад: Варіанти JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Варіанти (для одиночного вибору, JSON масив)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Оберіть категорію</value>
   </data>
   <data name="Select strategy" xml:space="preserve">
     <value>Виберіть стратегію</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>Оберіть тип</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Одиночний вибір</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Правильна відповідь (для одиночного вибору)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Стандартна відповідь</value>
   </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>Теги (розділені пробілами)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
   </data>
 
 </root>

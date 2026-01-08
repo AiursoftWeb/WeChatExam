@@ -48,6 +48,10 @@ public class Startup : IWebStartup
         services.AddScoped<IPaperService, PaperService>();
         services.AddScoped<IExamService, ExamService>();
 
+        // Background job queue
+        services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();
+        services.AddHostedService<Services.BackgroundJobs.QueueWorkerService>();
+
         // Configure SKIT WeChat API Client
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;
         if (appSettings.WeChatEnabled)
@@ -89,19 +93,14 @@ public class Startup : IWebStartup
             c.DocInclusionPredicate((_, apiDesc) => apiDesc.RelativePath?.StartsWith("api/") == true);
 
             // Add JWT Bearer support in Swagger
-            var securityScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            var securityScheme = new Microsoft.OpenApi.OpenApiSecurityScheme
             {
                 Name = "Authorization",
                 Description = "Enter 'Bearer {token}'",
-                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-                Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                In = Microsoft.OpenApi.ParameterLocation.Header,
+                Type = Microsoft.OpenApi.SecuritySchemeType.Http,
                 Scheme = "bearer",
-                BearerFormat = "JWT",
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
+                BearerFormat = "JWT"
             };
 
             c.AddSecurityDefinition("Bearer", securityScheme);

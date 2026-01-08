@@ -18,29 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Текст</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Пояснення</value>
+      <data name="Back" xml:space="preserve">
+    <value>Назад</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Категорія</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Варіанти</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>Одна правильна відповідь</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>Деталі питання</value>
-  </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>Правильна відповідь для заповнення</value>
+  <data name="Content" xml:space="preserve">
+    <value>Зміст</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Створено</value>
@@ -48,23 +33,38 @@
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>Назад</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>Пояснення</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Зміст</value>
-  </data>
-  <data name="Standard Answer" xml:space="preserve">
-    <value>Стандартна відповідь</value>
-  </data>
-  <data name="Metadata" xml:space="preserve">
-    <value>Метадані</value>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>Правильна відповідь для заповнення</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>Стратегія оцінювання</value>
   </data>
+  <data name="Metadata" xml:space="preserve">
+    <value>Метадані</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Варіанти</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>Деталі питання</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>Одна правильна відповідь</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Стандартна відповідь</value>
+  </data>
   <data name="Tags" xml:space="preserve">
     <value>Теги</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
   </data>
 
 </root>

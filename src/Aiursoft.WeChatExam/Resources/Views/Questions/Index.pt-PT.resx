@@ -18,50 +18,50 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Questions" xml:space="preserve">
-    <value>Questões</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Ações</value>
   </data>
   <data name="Add Question" xml:space="preserve">
     <value>Adicionar Pergunta</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
+  <data name="All Categories" xml:space="preserve">
+    <value>Todas as Categorias</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categoria</value>
   </data>
-  <data name="All Categories" xml:space="preserve">
-    <value>Todas as Categorias</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Texto</value>
-  </data>
-  <data name="Question List" xml:space="preserve">
-    <value>Lista de Perguntas</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>Filtrar</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Ações</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Eliminar</value>
+  <data name="Content" xml:space="preserve">
+    <value>Conteúdo</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Criado</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Detalhes</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtrar</value>
   </data>
   <data name="No questions found" xml:space="preserve">
     <value>Não foram encontradas questões</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Conteúdo</value>
+  <data name="Question List" xml:space="preserve">
+    <value>Lista de Perguntas</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Questões</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

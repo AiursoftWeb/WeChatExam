@@ -18,29 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
-    <value>Kategori</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Åtgärder</value>
   </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>Filtrera</value>
-  </data>
-  <data name="Questions" xml:space="preserve">
-    <value>Frågor</value>
-  </data>
-  <data name="Question List" xml:space="preserve">
-    <value>Frågelista</value>
+  <data name="Add Question" xml:space="preserve">
+    <value>Lägg till fråga</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>Alla kategorier</value>
   </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Lägg till fråga</value>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Innehåll</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Skapad</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Radera</value>
@@ -48,20 +42,26 @@
   <data name="Details" xml:space="preserve">
     <value>Detaljer</value>
   </data>
-  <data name="Created" xml:space="preserve">
-    <value>Skapad</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Redigera</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Åtgärder</value>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtrera</value>
   </data>
   <data name="No questions found" xml:space="preserve">
     <value>Inga frågor hittades</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Redigera</value>
+  <data name="Question List" xml:space="preserve">
+    <value>Frågelista</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Innehåll</value>
+  <data name="Questions" xml:space="preserve">
+    <value>Frågor</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
   </data>
 
 </root>

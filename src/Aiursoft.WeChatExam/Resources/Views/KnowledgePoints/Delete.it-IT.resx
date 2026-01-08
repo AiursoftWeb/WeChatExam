@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>Sei sicuro?</value>
-  </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>Elimina KnowledgePoint</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Torna all&apos;elenco</value>
   </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>Sì, elimina questo knowledgePoint</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
   </data>
   <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
     <value>Impossibile eliminare un knowledgePoint con elementi figli. Eliminare prima gli elementi figli.</value>
   </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Elimina KnowledgePoint</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>Questa azione è irreversibile. Stai per eliminare definitivamente il seguente knowledgePoint:</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>Sì, elimina questo knowledgePoint</value>
   </data>
 
 </root>

@@ -29,6 +29,103 @@
         </select>
         <span asp-validation-for="ParentId" class="text-danger"></span>
     </div>
+
+    <div class="mb-3">
+        <label asp-for="SelectedCategoryIds" class="form-label">@Localizer["Associated Categories"]</label>
+        <select asp-for="SelectedCategoryIds" class="form-select" multiple style="height: 200px">
+            @foreach (var category in Model.AvailableCategories)
+            {
+                <option value="@category.Id">@category.Title</option>
+            }
+        </select>
+        <div class="form-text">@Localizer["Hold Ctrl (Windows) or Command (Mac) to select multiple options."]</div>
+        <span asp-validation-for="SelectedCategoryIds" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">@Localizer["Associated Questions"]</label>
+        <div class="row g-2">
+            <div class="col">
+                <select id="todo-question-select" class="form-select">
+                    <option value="">@Localizer["Select a question to add..."]</option>
+                    @foreach (var question in Model.AvailableQuestions)
+                    {
+                        var content = question.Content.Length > 50 ? question.Content.Substring(0, 50) + "..." : question.Content;
+                        <option value="@question.Id">@content</option>
+                    }
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-secondary" onclick="addQuestion()">
+                    <i class="align-middle" data-lucide="plus"></i> @Localizer["Add"]
+                </button>
+            </div>
+        </div>
+        
+        <div class="mt-3">
+            <div id="selected-questions-container" class="list-group">
+                @foreach (var questionId in Model.SelectedQuestionIds)
+                {
+                    var question = Model.AvailableQuestions.FirstOrDefault(q => q.Id == questionId);
+                    if (question != null)
+                    {
+                        var content = question.Content.Length > 50 ? question.Content.Substring(0, 50) + "..." : question.Content;
+                        <div class="list-group-item d-flex justify-content-between align-items-center" data-question-id="@question.Id">
+                            <span>@content</span>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="removeQuestion('@question.Id')">
+                                <i class="align-middle" data-lucide="trash-2"></i>
+                            </button>
+                            <input type="hidden" name="SelectedQuestionIds" value="@question.Id" />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <span asp-validation-for="SelectedQuestionIds" class="text-danger"></span>
+    </div>
+
+    @* ReSharper disable once Razor.SectionNotResolved *@
+    @section scripts {
+        <script>
+            function addQuestion() {
+                var select = document.getElementById('todo-question-select');
+                var container = document.getElementById('selected-questions-container');
+                var selectedOption = select.options[select.selectedIndex];
+                var id = selectedOption.value;
+                var text = selectedOption.text;
+
+                if (!id) return;
+
+                // Check if already exists
+                if (container.querySelector(`div[data-question-id="${id}"]`)) {
+                    alert('Question already added!');
+                    return;
+                }
+
+                var item = document.createElement('div');
+                item.className = 'list-group-item d-flex justify-content-between align-items-center';
+                item.setAttribute('data-question-id', id);
+                item.innerHTML = `
+                    <span>${text}</span>
+                    <button type="button" class="btn btn-sm btn-danger" onclick="removeQuestion('${id}')">
+                         <i class="align-middle" data-lucide="trash-2"></i>
+                    </button>
+                    <input type="hidden" name="SelectedQuestionIds" value="${id}" />
+                `;
+
+                container.appendChild(item);
+                lucide.createIcons();
+            }
+
+            function removeQuestion(id) {
+                var container = document.getElementById('selected-questions-container');
+                var item = container.querySelector(`div[data-question-id="${id}"]`);
+                if (item) {
+                    item.remove();
+                }
+            }
+        </script>
+    }
     <button type="submit" class="btn btn-primary">
         <i class="align-middle me-2" data-lucide="save"></i> @Localizer["Save"]
     </button>

@@ -153,18 +153,15 @@ public class KnowledgePointsController : ControllerBase
         var result = knowledgePoints.Select(kp => new KnowledgePointWithQuestionsDto
         {
             Id = kp.Id,
-            Title = kp.Title,
-            Content = kp.Content,
+            Text = kp.Content,
             AudioUrl = kp.AudioUrl,
             Questions = kp.KnowledgePointQuestions
                 .Select(kpq => kpq.Question)
                 .Select(q => new QuestionContentDto
                 {
                     Id = q.Id,
-                    QuestionType = q.QuestionType,
-                    Content = q.Content,
-                    Metadata = q.Metadata,
-                    Explanation = q.Explanation
+                    Text = q.Content,
+                    Answer = q.StandardAnswer,
                 }).ToList()
         }).ToList();
 

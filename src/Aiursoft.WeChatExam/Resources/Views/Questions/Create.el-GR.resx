@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Κείμενο</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Κατηγορία</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Τύπος</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Επιλέξτε τύπο</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Μονή Επιλογή</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
+      <data name="Add Question" xml:space="preserve">
     <value>Προσθήκη Ερώτησης</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Επιλέξτε κατηγορία</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Συμπλήρωση κενού</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
   </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Επιλογές (για μονή επιλογή, πίνακας JSON)</value>
+  <data name="Category" xml:space="preserve">
+    <value>Κατηγορία</value>
   </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Μονή Σωστή (για μονή επιλογή)</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Αποθήκευση</value>
+  <data name="Content" xml:space="preserve">
+    <value>Περιεχόμενο</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>Επεξήγηση</value>
+  </data>
+  <data name="Fill In" xml:space="preserve">
+    <value>Συμπλήρωση κενού</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>Σωστές Απαντήσεις Συμπλήρωσης (για συμπλήρωση, πίνακας JSON)</value>
@@ -63,17 +42,38 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Στρατηγική βαθμολόγησης</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Περιεχόμενο</value>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Μεταδεδομένα (π.χ. Επιλογές JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Επιλογές (για μονή επιλογή, πίνακας JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Αποθήκευση</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Επιλέξτε κατηγορία</value>
   </data>
   <data name="Select strategy" xml:space="preserve">
     <value>Επιλέξτε στρατηγική</value>
   </data>
+  <data name="Select type" xml:space="preserve">
+    <value>Επιλέξτε τύπο</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Μονή Επιλογή</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Μονή Σωστή (για μονή επιλογή)</value>
+  </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Πρότυπη απάντηση</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Μεταδεδομένα (π.χ. Επιλογές JSON)</value>
+  <data name="Text" xml:space="preserve">
+    <value>Κείμενο</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Τύπος</value>
   </data>
 
 </root>

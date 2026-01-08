@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Category" xml:space="preserve">
-    <value>類別</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>單選題</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>選擇類型</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>填空</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
+      <data name="Add Question" xml:space="preserve">
     <value>新增題目</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>類型</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>題目文字</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>選擇分類</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>解析</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>儲存</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>選項（適用於單選題，JSON 陣列）</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>單選正確答案 (適用於單選題)</value>
+  <data name="Category" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>內容</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解析</value>
+  </data>
+  <data name="Fill In" xml:space="preserve">
+    <value>填空</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>填空正確答案（適用於填空題，JSON 陣列）</value>
@@ -66,14 +45,35 @@
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>元數據（例如 Choices JSON）</value>
   </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>選項（適用於單選題，JSON 陣列）</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>選擇分類</value>
+  </data>
   <data name="Select strategy" xml:space="preserve">
     <value>選擇策略</value>
+  </data>
+  <data name="Select type" xml:space="preserve">
+    <value>選擇類型</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>單選題</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>單選正確答案 (適用於單選題)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>標準答案</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>內容</value>
+  <data name="Text" xml:space="preserve">
+    <value>題目文字</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>類型</value>
   </data>
 
 </root>

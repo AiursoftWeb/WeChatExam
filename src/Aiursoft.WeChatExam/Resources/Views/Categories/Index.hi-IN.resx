@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Created" xml:space="preserve">
-    <value>बनाया गया</value>
-  </data>
-  <data name="Parent" xml:space="preserve">
-    <value>मूल</value>
-  </data>
-  <data name="Categories" xml:space="preserve">
-    <value>श्रेणियाँ</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
     <value>कार्रवाइयाँ</value>
-  </data>
-  <data name="Category List" xml:space="preserve">
-    <value>श्रेणी सूची</value>
   </data>
   <data name="Add Category" xml:space="preserve">
     <value>श्रेणी जोड़ें</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>श्रेणियाँ</value>
+  </data>
+  <data name="Category List" xml:space="preserve">
+    <value>श्रेणी सूची</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>बनाया गया</value>
+  </data>
   <data name="No categories found" xml:space="preserve">
     <value>कोई श्रेणियाँ नहीं मिलीं</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>मूल</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>शीर्षक</value>

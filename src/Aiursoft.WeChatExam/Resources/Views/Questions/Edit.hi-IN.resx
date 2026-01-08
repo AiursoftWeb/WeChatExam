@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>पाठ</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>प्रकार</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>एकल विकल्प</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>श्रेणी चुनें</value>
+      <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>श्रेणी</value>
   </data>
-  <data name="Select type" xml:space="preserve">
-    <value>प्रकार चुनें</value>
+  <data name="Content" xml:space="preserve">
+    <value>सामग्री</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>प्रश्न संपादित करें</value>
   </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>रिक्त स्थान भरें</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>सहेजें</value>
-  </data>
   <data name="Explanation" xml:space="preserve">
     <value>स्पष्टीकरण</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>रद्द करें</value>
-  </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>एकल सही (एकल विकल्प के लिए)</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>विकल्प (सिंगल चॉइस के लिए, JSON ऐरे)</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>रिक्त स्थान भरें</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>भरें सही (भरने के लिए, JSON सरणी)</value>
@@ -63,20 +42,41 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>मूल्यांकन रणनीति</value>
   </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>मेटाडेटा (उदाहरण के लिए विकल्प JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>विकल्प (सिंगल चॉइस के लिए, JSON ऐरे)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>सहेजें</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>श्रेणी चुनें</value>
+  </data>
   <data name="Select strategy" xml:space="preserve">
     <value>रणनीति चुनें</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>सामग्री</value>
+  <data name="Select type" xml:space="preserve">
+    <value>प्रकार चुनें</value>
+  </data>
+  <data name="Single Choice" xml:space="preserve">
+    <value>एकल विकल्प</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>एकल सही (एकल विकल्प के लिए)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>मानक उत्तर</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>मेटाडेटा (उदाहरण के लिए विकल्प JSON)</value>
-  </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>टैग (अंतराल से अलग)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>पाठ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
   </data>
 
 </root>

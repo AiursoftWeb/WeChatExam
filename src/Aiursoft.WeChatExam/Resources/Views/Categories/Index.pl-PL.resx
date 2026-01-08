@@ -18,29 +18,29 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Categories" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Akcje</value>
+  </data>
+  <data name="Add Category" xml:space="preserve">
+    <value>Dodaj kategorię</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
     <value>Kategorie</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Akcje</value>
+  <data name="Category List" xml:space="preserve">
+    <value>Lista kategorii</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Utworzono</value>
+  </data>
+  <data name="No categories found" xml:space="preserve">
+    <value>Nie znaleziono kategorii</value>
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Rodzic</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Tytuł</value>
-  </data>
-  <data name="Add Category" xml:space="preserve">
-    <value>Dodaj kategorię</value>
-  </data>
-  <data name="Category List" xml:space="preserve">
-    <value>Lista kategorii</value>
-  </data>
-  <data name="No categories found" xml:space="preserve">
-    <value>Nie znaleziono kategorii</value>
   </data>
 
 </root>

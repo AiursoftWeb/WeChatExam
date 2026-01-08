@@ -18,26 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
-    <value>रद्द करें</value>
-  </data>
-  <data name="Are you sure?" xml:space="preserve">
+      <data name="Are you sure?" xml:space="preserve">
     <value>क्या आप सुनिश्चित हैं?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>सूची पर वापस जाएं</value>
   </data>
-  <data name="Delete KnowledgePoint" xml:space="preserve">
-    <value>ज्ञान बिंदु हटाएं</value>
-  </data>
-  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
-    <value>हाँ, इस ज्ञान बिंदु को हटाएं</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
   </data>
   <data name="Cannot delete knowledgePoint with children. Please delete children first." xml:space="preserve">
     <value>बाल तत्वों वाले ज्ञान बिंदु को हटाया नहीं जा सकता। कृपया पहले बाल तत्वों को हटाएं।</value>
   </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>ज्ञान बिंदु हटाएं</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following knowledgePoint:" xml:space="preserve">
     <value>यह क्रिया अपरिवर्तनीय है। आप निम्नलिखित ज्ञान बिंदु को स्थायी रूप से हटाने वाले हैं:</value>
+  </data>
+  <data name="Yes, delete this knowledgePoint" xml:space="preserve">
+    <value>हाँ, इस ज्ञान बिंदु को हटाएं</value>
   </data>
 
 </root>

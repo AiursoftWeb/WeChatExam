@@ -64,6 +64,13 @@ public class ViewModelArgsInjector(
         _ = localizer["Personal"];
         _ = localizer["Unauthorized"];
         _ = localizer["Error"];
+        _ = localizer["Content Management"];
+        _ = localizer["Categories"];
+        _ = localizer["Knowledge Points"];
+        _ = localizer["Questions"];
+        _ = localizer["Articles"];
+        _ = localizer["Papers"];
+        _ = localizer["Background Jobs"];
     }
 
     public void InjectSimple(
@@ -141,7 +148,13 @@ public class ViewModelArgsInjector(
                         UniqueId = itemDef.UniqueId,
                         Text = localizer[itemDef.Text],
                         LucideIcon = itemDef.Icon,
-                        IsActive = linksForView.Any(l => l.Href.StartsWith($"/{currentViewingController}")),
+                        IsActive = linksForView.Any(l =>
+                        {
+                            // Extract controller name from href (e.g., "/Manage/Index" -> "Manage")
+                            var hrefController = l.Href.TrimStart('/').Split('/').FirstOrDefault();
+                            // Exact match to avoid false positives like "Manage" matching "ManagePayroll"
+                            return string.Equals(hrefController, currentViewingController, StringComparison.OrdinalIgnoreCase);
+                        }),
                         Links = linksForView
                     });
                 }

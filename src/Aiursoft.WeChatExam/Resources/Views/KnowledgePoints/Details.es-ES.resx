@@ -18,23 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Title" xml:space="preserve">
-    <value>Título</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Creado</value>
-  </data>
-  <data name="Parent" xml:space="preserve">
-    <value>Padre</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Eliminar</value>
-  </data>
-  <data name="Back to List" xml:space="preserve">
+      <data name="Back to List" xml:space="preserve">
     <value>Volver a la lista</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Contenido</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Creado</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
@@ -42,8 +36,14 @@
   <data name="KnowledgePoint Details" xml:space="preserve">
     <value>Detalles del Punto de Conocimiento</value>
   </data>
-
+  <data name="Parent" xml:space="preserve">
+    <value>Padre</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
   <data name="Top Level" xml:space="preserve">
     <value>Nivel Superior</value>
   </data>
+
 </root>

@@ -18,32 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>テキスト</value>
-  </data>
-  <data name="Question List" xml:space="preserve">
-    <value>問題一覧</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>タイプ</value>
-  </data>
-  <data name="Questions" xml:space="preserve">
-    <value>問題</value>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
   </data>
   <data name="Add Question" xml:space="preserve">
     <value>問題を追加</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>カテゴリ</value>
-  </data>
-  <data name="Filter" xml:space="preserve">
-    <value>絞り込み</value>
-  </data>
   <data name="All Categories" xml:space="preserve">
     <value>すべてのカテゴリ</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>操作</value>
+  <data name="Category" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>本文</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>作成日時</value>
@@ -51,17 +39,29 @@
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>詳細</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>詳細</value>
+  <data name="Filter" xml:space="preserve">
+    <value>絞り込み</value>
   </data>
   <data name="No questions found" xml:space="preserve">
     <value>質問が見つかりませんでした</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>本文</value>
+  <data name="Question List" xml:space="preserve">
+    <value>問題一覧</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>問題</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>タイプ</value>
   </data>
 
 </root>

@@ -18,17 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Parent" xml:space="preserve">
-    <value>Pai</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
     <value>Ações</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Título</value>
+  <data name="Add KnowledgePoint" xml:space="preserve">
+    <value>Adicionar Ponto de Conhecimento</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Criado</value>
+  </data>
+  <data name="KnowledgePoint List" xml:space="preserve">
+    <value>Lista de Pontos de Conhecimento</value>
   </data>
   <data name="KnowledgePoints" xml:space="preserve">
     <value>Pontos de Conhecimento</value>
@@ -36,11 +36,11 @@
   <data name="No knowledgePoints found" xml:space="preserve">
     <value>Nenhum ponto de conhecimento encontrado</value>
   </data>
-  <data name="KnowledgePoint List" xml:space="preserve">
-    <value>Lista de Pontos de Conhecimento</value>
+  <data name="Parent" xml:space="preserve">
+    <value>Pai</value>
   </data>
-  <data name="Add KnowledgePoint" xml:space="preserve">
-    <value>Adicionar Ponto de Conhecimento</value>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
   </data>
 
 </root>

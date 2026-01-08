@@ -18,86 +18,50 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Read Users" xml:space="preserve">
-    <value>Kullanıcıları Oku</value>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Herhangi Bir Bilgi Noktası Ekle</value>
   </data>
-  <data name="Delete Users" xml:space="preserve">
-    <value>Kullanıcıları Sil</value>
-  </data>
-  <data name="Add New Users" xml:space="preserve">
-    <value>Yeni Kullanıcı Ekle</value>
-  </data>
-  <data name="Edit User Information" xml:space="preserve">
-    <value>Kullanıcı Bilgilerini Düzenle</value>
-  </data>
-  <data name="Grants permission to create new user accounts." xml:space="preserve">
-    <value>Yeni kullanıcı hesapları oluşturma izni verir.</value>
-  </data>
-  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
-    <value>Kullanıcı hesaplarının kalıcı olarak silinmesine izin verir.</value>
-  </data>
-  <data name="Allows viewing the list of all users." xml:space="preserve">
-    <value>Tüm kullanıcıların listesini görüntülemeye izin verir.</value>
-  </data>
-  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
-    <value>Kullanıcı detaylarını (e-posta ve roller gibi) değiştirmeye izin verir ve ayrıca kullanıcı şifrelerini sıfırlayabilir.</value>
-  </data>
-  <data name="Delete Roles" xml:space="preserve">
-    <value>Rolleri Sil</value>
-  </data>
-  <data name="Read Roles" xml:space="preserve">
-    <value>Rolleri Oku</value>
+  <data name="Add Articles" xml:space="preserve">
+    <value>Makale Ekle</value>
   </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Yeni Rol Ekle</value>
   </data>
-  <data name="Allows the permanent deletion of roles." xml:space="preserve">
-    <value>Rollerin kalıcı olarak silinmesine izin verir.</value>
+  <data name="Add New Users" xml:space="preserve">
+    <value>Yeni Kullanıcı Ekle</value>
   </data>
-  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
-    <value>Rollerin listesini ve atanmış izinlerini görüntülemeye izin verir.</value>
+  <data name="Add Papers" xml:space="preserve">
+    <value>Makale Ekle</value>
   </data>
-  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
-    <value>Rol isimlerinin ve atanmış izinlerin değiştirilmesine izin verir.</value>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Soru Ekle</value>
   </data>
-  <data name="Assign Roles to Users" xml:space="preserve">
-    <value>Kullanıcılara Rol Atama</value>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın eklenmesine izin verir.</value>
   </data>
-  <data name="Edit Role Information" xml:space="preserve">
-    <value>Rol Bilgilerini Düzenle</value>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>Makale eklemeye izin verir, sahipliğe bakılmaksızın.</value>
+  </data>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>Kağıtların sahipliğine bakılmaksızın eklenmesine izin verir.</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Sahipliğine bakılmaksızın soru eklenmesine izin verir.</value>
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Herhangi bir kullanıcıya rol atanmasına veya kaldırılmasına izin verir.</value>
   </data>
-  <data name="Grants permission to create new roles." xml:space="preserve">
-    <value>Yeni roller oluşturma izni verir.</value>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir kategorinin, sahipliğine bakılmaksızın silinmesine izin verir.</value>
   </data>
-  <data name="Reboot This App" xml:space="preserve">
-    <value>Bu Uygulamayı Yeniden Başlat</value>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın silinmesine izin verir.</value>
   </data>
-  <data name="View System Context" xml:space="preserve">
-    <value>Sistem Bağlamını Görüntüle</value>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>Makalelerin silinmesine izin verir, sahipliğe bakılmaksızın.</value>
   </data>
-  <data name="Allows viewing system-level information and settings." xml:space="preserve">
-    <value>Sistem düzeyindeki bilgileri ve ayarları görüntülemeye izin verir.</value>
-  </data>
-  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
-    <value>Uygulama örneğini yeniden başlatma iznini verir. Kullanılabilirlik kesintilerine neden olabilir ancak tüm ayarlar ve önbellek yeniden yüklenecektir.</value>
-  </data>
-  <data name="Delete Questions" xml:space="preserve">
-    <value>Soruları Sil</value>
-  </data>
-  <data name="Edit Questions" xml:space="preserve">
-    <value>Soruları Düzenle</value>
-  </data>
-  <data name="Edit Any Category" xml:space="preserve">
-    <value>Herhangi Bir Kategoriyi Düzenle</value>
-  </data>
-  <data name="Delete Any Category" xml:space="preserve">
-    <value>Herhangi Bir Kategoriyi Sil</value>
-  </data>
-  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
-    <value>Sahipliğine bakılmaksızın soruların düzenlenmesine izin verir.</value>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>Kullanımına bakılmaksızın makalelerin silinmesine izin verir.</value>
   </data>
   <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
     <value>Sahip olma durumuna bakılmaksızın soruların silinmesine izin verir.</value>
@@ -105,50 +69,104 @@
   <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
     <value>Sahiplik durumuna bakılmaksızın herhangi bir kategoriyi düzenlemeye izin verir.</value>
   </data>
-  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
-    <value>Herhangi bir kategorinin, sahipliğine bakılmaksızın silinmesine izin verir.</value>
-  </data>
-  <data name="Add Questions" xml:space="preserve">
-    <value>Soru Ekle</value>
-  </data>
-  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
-    <value>Sahipliğine bakılmaksızın soru eklenmesine izin verir.</value>
-  </data>
-  <data name="Delete Any KnowledgePoint" xml:space="preserve">
-    <value>Herhangi Bir Bilgi Noktasını Sil</value>
-  </data>
-  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın silinmesine izin verir.</value>
-  </data>
-  <data name="Add Any KnowledgePoint" xml:space="preserve">
-    <value>Herhangi Bir Bilgi Noktası Ekle</value>
-  </data>
-  <data name="Edit Any KnowledgePoint" xml:space="preserve">
-    <value>Herhangi Bir Bilgi Noktasını Düzenle</value>
-  </data>
   <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Herhangi bir knowledgePoint&apos;i, sahipliğine bakılmaksızın düzenlemeye izin verir.</value>
-  </data>
-  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
-    <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın eklenmesine izin verir.</value>
-  </data>
-  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
-    <value>Makalelerin silinmesine izin verir, sahipliğe bakılmaksızın.</value>
-  </data>
-  <data name="Delete Articles" xml:space="preserve">
-    <value>Makaleleri Sil</value>
-  </data>
-  <data name="Edit Articles" xml:space="preserve">
-    <value>Makaleleri Düzenle</value>
-  </data>
-  <data name="Add Articles" xml:space="preserve">
-    <value>Makale Ekle</value>
   </data>
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Makalelerin düzenlenmesine, sahipliğe bakılmaksızın izin verir.</value>
   </data>
-  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
-    <value>Makale eklemeye izin verir, sahipliğe bakılmaksızın.</value>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>Kâğıtların sahipliğine bakılmaksızın düzenlenmesine izin verir.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Sahipliğine bakılmaksızın soruların düzenlenmesine izin verir.</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>Rol isimlerinin ve atanmış izinlerin değiştirilmesine izin verir.</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>Kullanıcı detaylarını (e-posta ve roller gibi) değiştirmeye izin verir ve ayrıca kullanıcı şifrelerini sıfırlayabilir.</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>Rollerin kalıcı olarak silinmesine izin verir.</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>Kullanıcı hesaplarının kalıcı olarak silinmesine izin verir.</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>Sistem düzeyindeki bilgileri ve ayarları görüntülemeye izin verir.</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>Tüm kullanıcıların listesini görüntülemeye izin verir.</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>Rollerin listesini ve atanmış izinlerini görüntülemeye izin verir.</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>Kullanıcılara Rol Atama</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Herhangi Bir Kategoriyi Sil</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Herhangi Bir Bilgi Noktasını Sil</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>Makaleleri Sil</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>Makaleleri Sil</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Soruları Sil</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>Rolleri Sil</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>Kullanıcıları Sil</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Herhangi Bir Kategoriyi Düzenle</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Herhangi Bir Bilgi Noktasını Düzenle</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>Makaleleri Düzenle</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>Makaleleri Düzenle</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Soruları Düzenle</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>Rol Bilgilerini Düzenle</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>Kullanıcı Bilgilerini Düzenle</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>Yeni roller oluşturma izni verir.</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>Yeni kullanıcı hesapları oluşturma izni verir.</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>Uygulama örneğini yeniden başlatma iznini verir. Kullanılabilirlik kesintilerine neden olabilir ancak tüm ayarlar ve önbellek yeniden yüklenecektir.</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>Rolleri Oku</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>Kullanıcıları Oku</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>Bu Uygulamayı Yeniden Başlat</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>Sistem Bağlamını Görüntüle</value>
   </data>
 
 </root>

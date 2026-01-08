@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Texto</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Opción Única</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Rellenar</value>
+      <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categoría</value>
   </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Seleccionar tipo</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Seleccionar categoría</value>
+  <data name="Content" xml:space="preserve">
+    <value>Contenido</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Editar Pregunta</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Guardar</value>
-  </data>
   <data name="Explanation" xml:space="preserve">
     <value>Explicación</value>
   </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Respuesta correcta (para opción única)</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Opciones (para selección única, matriz JSON)</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>Rellenar</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>Respuesta correcta de rellenar (para rellenar, array JSON)</value>
@@ -63,20 +42,41 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Estrategia de calificación</value>
   </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Metadatos (p. ej. Opciones JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Opciones (para selección única, matriz JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Seleccionar categoría</value>
+  </data>
   <data name="Select strategy" xml:space="preserve">
     <value>Seleccionar estrategia</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenido</value>
+  <data name="Select type" xml:space="preserve">
+    <value>Seleccionar tipo</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Metadatos (p. ej. Opciones JSON)</value>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Opción Única</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Respuesta correcta (para opción única)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Respuesta estándar</value>
   </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>Etiquetas (separadas por espacios)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

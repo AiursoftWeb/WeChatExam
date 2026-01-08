@@ -18,14 +18,11 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Parent" xml:space="preserve">
-    <value>Förälder</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Åtgärder</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Titel</value>
-  </data>
-  <data name="Created" xml:space="preserve">
-    <value>Skapad</value>
+  <data name="Add Category" xml:space="preserve">
+    <value>Lägg till kategori</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Kategorier</value>
@@ -33,14 +30,17 @@
   <data name="Category List" xml:space="preserve">
     <value>Kategorilista</value>
   </data>
-  <data name="Add Category" xml:space="preserve">
-    <value>Lägg till kategori</value>
+  <data name="Created" xml:space="preserve">
+    <value>Skapad</value>
   </data>
   <data name="No categories found" xml:space="preserve">
     <value>Inga kategorier hittades</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Åtgärder</value>
+  <data name="Parent" xml:space="preserve">
+    <value>Förälder</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
   </data>
 
 </root>

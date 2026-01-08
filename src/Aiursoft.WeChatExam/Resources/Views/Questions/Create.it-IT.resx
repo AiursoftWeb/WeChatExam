@@ -18,8 +18,44 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Testo</value>
+      <data name="Add Question" xml:space="preserve">
+    <value>Aggiungi Domanda</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuto</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Spiegazione</value>
+  </data>
+  <data name="Fill In" xml:space="preserve">
+    <value>Completamento</value>
+  </data>
+  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
+    <value>Risposta corretta per riempimento (per riempimento, array JSON)</value>
+  </data>
+  <data name="Grading Strategy" xml:space="preserve">
+    <value>Strategia di Valutazione</value>
+  </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Metadati (p. es. Scelte JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Opzioni (per scelta singola, array JSON)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Seleziona categoria</value>
+  </data>
+  <data name="Select strategy" xml:space="preserve">
+    <value>Seleziona strategia</value>
   </data>
   <data name="Select type" xml:space="preserve">
     <value>Seleziona tipo</value>
@@ -27,53 +63,17 @@
   <data name="Single Choice" xml:space="preserve">
     <value>Scelta Singola</value>
   </data>
-  <data name="Category" xml:space="preserve">
-    <value>Categoria</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Seleziona categoria</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Completamento</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Aggiungi Domanda</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Spiegazione</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Salva</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Opzioni (per scelta singola, array JSON)</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Annulla</value>
-  </data>
   <data name="Single Correct (for single choice)" xml:space="preserve">
     <value>Risposta corretta singola (per domanda a scelta singola)</value>
-  </data>
-  <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
-    <value>Risposta corretta per riempimento (per riempimento, array JSON)</value>
-  </data>
-  <data name="Select strategy" xml:space="preserve">
-    <value>Seleziona strategia</value>
-  </data>
-  <data name="Grading Strategy" xml:space="preserve">
-    <value>Strategia di Valutazione</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Risposta standard</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Metadati (p. es. Scelte JSON)</value>
+  <data name="Text" xml:space="preserve">
+    <value>Testo</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenuto</value>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

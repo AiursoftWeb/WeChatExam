@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Текст</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Видалити</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Тип</value>
+      <data name="Are you sure you want to delete this question?" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити це питання?</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Скасувати</value>
@@ -33,14 +27,20 @@
   <data name="Category" xml:space="preserve">
     <value>Категорія</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Зміст</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
   <data name="Delete Question" xml:space="preserve">
     <value>Видалити питання</value>
   </data>
-  <data name="Are you sure you want to delete this question?" xml:space="preserve">
-    <value>Ви впевнені, що хочете видалити це питання?</value>
+  <data name="Text" xml:space="preserve">
+    <value>Текст</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Зміст</value>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
   </data>
 
 </root>

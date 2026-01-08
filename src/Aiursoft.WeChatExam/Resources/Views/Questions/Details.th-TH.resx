@@ -18,53 +18,53 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Options" xml:space="preserve">
-    <value>ตัวเลือก</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>ข้อความ</value>
-  </data>
-  <data name="Single Correct" xml:space="preserve">
-    <value>คำตอบเดียวที่ถูกต้อง</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>ประเภท</value>
-  </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>คำอธิบาย</value>
+      <data name="Back" xml:space="preserve">
+    <value>กลับ</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
   </data>
-  <data name="Fill In Correct" xml:space="preserve">
-    <value>เติมคำตอบที่ถูกต้อง</value>
-  </data>
-  <data name="Question Details" xml:space="preserve">
-    <value>รายละเอียดคำถาม</value>
+  <data name="Content" xml:space="preserve">
+    <value>เนื้อหา</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>สร้างเมื่อ</value>
   </data>
-  <data name="Back" xml:space="preserve">
-    <value>กลับ</value>
-  </data>
   <data name="Edit" xml:space="preserve">
     <value>แก้ไข</value>
   </data>
-  <data name="Metadata" xml:space="preserve">
-    <value>Metadata</value>
+  <data name="Explanation" xml:space="preserve">
+    <value>คำอธิบาย</value>
+  </data>
+  <data name="Fill In Correct" xml:space="preserve">
+    <value>เติมคำตอบที่ถูกต้อง</value>
   </data>
   <data name="Grading Strategy" xml:space="preserve">
     <value>กลยุทธ์การให้คะแนน</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>เนื้อหา</value>
+  <data name="Metadata" xml:space="preserve">
+    <value>Metadata</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>ตัวเลือก</value>
+  </data>
+  <data name="Question Details" xml:space="preserve">
+    <value>รายละเอียดคำถาม</value>
+  </data>
+  <data name="Single Correct" xml:space="preserve">
+    <value>คำตอบเดียวที่ถูกต้อง</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>คำตอบมาตรฐาน</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>แท็ก</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>ประเภท</value>
   </data>
 
 </root>

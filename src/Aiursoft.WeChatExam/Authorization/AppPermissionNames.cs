@@ -21,7 +21,7 @@ public static class AppPermissionNames
     // System Management
     public const string CanViewSystemContext = nameof(CanViewSystemContext);
     public const string CanRebootThisApp = nameof(CanRebootThisApp);
-    
+
     // Category Management
     public const string CanDeleteAnyCategory = nameof(CanDeleteAnyCategory);
     public const string CanEditAnyCategory = nameof(CanEditAnyCategory);
@@ -30,7 +30,7 @@ public static class AppPermissionNames
     public const string CanDeleteQuestions = nameof(CanDeleteQuestions);
     public const string CanAddQuestions = nameof(CanAddQuestions);
     public const string CanEditQuestions = nameof(CanEditQuestions);
-    
+
     // KnowledgePoint Management
     public const string CanDeleteAnyKnowledgePoint = nameof(CanDeleteAnyKnowledgePoint);
     public const string CanEditAnyKnowledgePoint = nameof(CanEditAnyKnowledgePoint);
@@ -40,7 +40,7 @@ public static class AppPermissionNames
     public const string CanDeleteArticles = nameof(CanDeleteArticles);
     public const string CanAddArticles = nameof(CanAddArticles);
     public const string CanEditArticles = nameof(CanEditArticles);
-    
+
     // Paper Management
     public const string CanDeletePapers = nameof(CanDeletePapers);
     public const string CanAddPapers = nameof(CanAddPapers);
@@ -51,5 +51,8 @@ public static class AppPermissionNames
     public const string CanAddExams = nameof(CanAddExams);
     public const string CanEditExams = nameof(CanEditExams);
     public const string CanReadExams = nameof(CanReadExams);
+
+    // Background Jobs
+    public const string CanViewBackgroundJobs = nameof(CanViewBackgroundJobs);
 
 }

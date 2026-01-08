@@ -18,29 +18,29 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Created" xml:space="preserve">
-    <value>Đã tạo</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
     <value>Hành động</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Tiêu đề</value>
-  </data>
-  <data name="Parent" xml:space="preserve">
-    <value>Danh mục cha</value>
   </data>
   <data name="Add Category" xml:space="preserve">
     <value>Thêm Danh mục</value>
   </data>
-  <data name="No categories found" xml:space="preserve">
-    <value>Không tìm thấy danh mục nào</value>
+  <data name="Categories" xml:space="preserve">
+    <value>Danh mục</value>
   </data>
   <data name="Category List" xml:space="preserve">
     <value>Danh sách danh mục</value>
   </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Danh mục</value>
+  <data name="Created" xml:space="preserve">
+    <value>Đã tạo</value>
+  </data>
+  <data name="No categories found" xml:space="preserve">
+    <value>Không tìm thấy danh mục nào</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Danh mục cha</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
   </data>
 
 </root>

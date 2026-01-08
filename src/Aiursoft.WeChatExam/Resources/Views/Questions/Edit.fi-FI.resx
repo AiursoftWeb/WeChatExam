@@ -18,44 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Text" xml:space="preserve">
-    <value>Teksti</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tyyppi</value>
-  </data>
-  <data name="Select category" xml:space="preserve">
-    <value>Valitse kategoria</value>
+      <data name="Cancel" xml:space="preserve">
+    <value>Peruuta</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategoria</value>
   </data>
-  <data name="Single Choice" xml:space="preserve">
-    <value>Yksittäinen valinta</value>
-  </data>
-  <data name="Select type" xml:space="preserve">
-    <value>Valitse tyyppi</value>
-  </data>
-  <data name="Fill In" xml:space="preserve">
-    <value>Täytä</value>
+  <data name="Content" xml:space="preserve">
+    <value>Sisältö</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Muokkaa kysymystä</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Tallenna</value>
-  </data>
-  <data name="Options (for single choice, JSON array)" xml:space="preserve">
-    <value>Vaihtoehdot (yksittäiselle valinnalle, JSON-taulukko)</value>
-  </data>
   <data name="Explanation" xml:space="preserve">
     <value>Selitys</value>
   </data>
-  <data name="Single Correct (for single choice)" xml:space="preserve">
-    <value>Oikea vastaus (yksittäiselle valinnalle)</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Peruuta</value>
+  <data name="Fill In" xml:space="preserve">
+    <value>Täytä</value>
   </data>
   <data name="Fill In Correct (for fill in, JSON array)" xml:space="preserve">
     <value>Täytä oikein (täytä, JSON-taulukko)</value>
@@ -63,20 +42,41 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Arviointistrategia</value>
   </data>
+  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
+    <value>Metatiedot (esim. Choices JSON)</value>
+  </data>
+  <data name="Options (for single choice, JSON array)" xml:space="preserve">
+    <value>Vaihtoehdot (yksittäiselle valinnalle, JSON-taulukko)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Tallenna</value>
+  </data>
+  <data name="Select category" xml:space="preserve">
+    <value>Valitse kategoria</value>
+  </data>
   <data name="Select strategy" xml:space="preserve">
     <value>Valitse strategia</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Sisältö</value>
+  <data name="Select type" xml:space="preserve">
+    <value>Valitse tyyppi</value>
   </data>
-  <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
-    <value>Metatiedot (esim. Choices JSON)</value>
+  <data name="Single Choice" xml:space="preserve">
+    <value>Yksittäinen valinta</value>
+  </data>
+  <data name="Single Correct (for single choice)" xml:space="preserve">
+    <value>Oikea vastaus (yksittäiselle valinnalle)</value>
   </data>
   <data name="Standard Answer" xml:space="preserve">
     <value>Standardvastaus</value>
   </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>Tagit (välilyönnillä eroteltu)</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Teksti</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tyyppi</value>
   </data>
 
 </root>

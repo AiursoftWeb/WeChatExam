@@ -18,26 +18,41 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Save" xml:space="preserve">
-    <value>Salva</value>
+      <data name="Add" xml:space="preserve">
+    <value>Aggiungi</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Titolo</value>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Categorie associate</value>
   </data>
-  <data name="Content" xml:space="preserve">
-    <value>Contenuto</value>
-  </data>
-  <data name="Top Level" xml:space="preserve">
-    <value>Livello Superiore</value>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Domande correlate</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Torna all&apos;elenco</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuto</value>
+  </data>
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Modifica Punto di Conoscenza</value>
   </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Premi Ctrl (Windows) o Command (Mac) per selezionare più opzioni.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Punto di Conoscenza Genitore</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Select a question to add..." xml:space="preserve">
+    <value>Seleziona una domanda da aggiungere...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="Top Level" xml:space="preserve">
+    <value>Livello Superiore</value>
   </data>
 
 </root>

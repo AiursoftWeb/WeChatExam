@@ -18,29 +18,29 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Created" xml:space="preserve">
-    <value>Creat</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Titlu</value>
-  </data>
-  <data name="Categories" xml:space="preserve">
-    <value>Categorii</value>
-  </data>
-  <data name="Parent" xml:space="preserve">
-    <value>Părinte</value>
+      <data name="Actions" xml:space="preserve">
+    <value>Acțiuni</value>
   </data>
   <data name="Add Category" xml:space="preserve">
     <value>Adaugă Categorie</value>
   </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Acțiuni</value>
+  <data name="Categories" xml:space="preserve">
+    <value>Categorii</value>
   </data>
   <data name="Category List" xml:space="preserve">
     <value>Listă de Categorii</value>
   </data>
+  <data name="Created" xml:space="preserve">
+    <value>Creat</value>
+  </data>
   <data name="No categories found" xml:space="preserve">
     <value>Nu au fost găsite categorii</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Părinte</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titlu</value>
   </data>
 
 </root>
