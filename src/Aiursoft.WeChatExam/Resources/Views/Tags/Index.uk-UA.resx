@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Очистити</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
+    <value>Немає тегів. Теги з&apos;являться тут після їх створення під час редагування запитань.</value>
+  </data>
+  <data name="No tags match your search query." xml:space="preserve">
+    <value>Жоден тег не відповідає вашому запиту пошуку.</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>питань</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Шукати</value>
+  </data>
+  <data name="Search tags..." xml:space="preserve">
+    <value>Шукати теги...</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Назва тегу</value>
+  </data>
+  <data name="Tags Management" xml:space="preserve">
+    <value>Керування тегами</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Кількість використань</value>
+  </data>
+
+</root>

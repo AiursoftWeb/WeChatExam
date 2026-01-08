@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>เพิ่มบทความ</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>เพิ่มการสอบ</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>เพิ่มบทบาทใหม่</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้เพิ่มบทความได้ ไม่ว่าจะเป็นเจ้าของหรือไม่</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้เพิ่มการสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้เพิ่มเอกสาร ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>อนุญาตให้กำหนดหรือลบบทบาทสำหรับผู้ใช้ใดๆ</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>อนุญาตให้ลบแท็กออกจากระบบ หมายเหตุว่า การลบแท็กจะไม่ลบคำถามที่เกี่ยวข้อง</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้ลบหมวดหมู่ใด ๆ ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้ลบบทความได้ ไม่ว่าจะเป็นเจ้าของหรือไม่</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้ลบการสอบได้ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้ลบเอกสารได้ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้แก้ไขบทความ ไม่คำนึงถึงเจ้าของ</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้แก้ไขข้อสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้แก้ไขเอกสาร ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>อนุญาตให้แก้ไขรายละเอียดผู้ใช้ เช่น อีเมลและบทบาท และยังสามารถรีเซ็ตรหัสผ่านของผู้ใช้ได้</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้อ่านข้อสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>อนุญาตให้ลบบทบาทออกอย่างถาวร</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>ลบบทความ</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>ลบแบบทดสอบ</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>ลบเอกสาร</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>แก้ไขบทความ</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>แก้ไขการสอบ</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>แก้ไขเอกสาร</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>ให้สิทธิ์ในการรีสตาร์ทอินสแตนซ์แอปพลิเคชัน อาจทำให้เกิดการขัดจังหวะในการให้บริการ แต่การตั้งค่าและแคชทั้งหมดจะถูกโหลดใหม่</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>จัดการแท็ก</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>ดูข้อสอบ</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>อ่านบทบาท</value>

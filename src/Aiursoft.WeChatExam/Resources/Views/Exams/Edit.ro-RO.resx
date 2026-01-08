@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Allow students to review their score details" xml:space="preserve">
+    <value>Permite elevilor să revizuiască detalii despre notele obținute</value>
+  </data>
+  <data name="Attempts" xml:space="preserve">
+    <value>Încercări</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="Duration (min)" xml:space="preserve">
+    <value>Durată (min)</value>
+  </data>
+  <data name="Edit Exam" xml:space="preserve">
+    <value>Editare Examen</value>
+  </data>
+  <data name="end time" xml:space="preserve">
+    <value>timp de final</value>
+  </data>
+  <data name="Exam Settings" xml:space="preserve">
+    <value>Setări examen</value>
+  </data>
+  <data name="Leave empty to never show answers." xml:space="preserve">
+    <value>Lăsați gol pentru a nu afișa niciodată răspunsurile.</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Subiect</value>
+  </data>
+  <data name="Publicly Visible" xml:space="preserve">
+    <value>Vizibil public</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Salvează modificările</value>
+  </data>
+  <data name="Show Answers After" xml:space="preserve">
+    <value>Afișează răspunsurile după</value>
+  </data>
+  <data name="start time" xml:space="preserve">
+    <value>ora de începere</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titlu</value>
+  </data>
+
+</root>

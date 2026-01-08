@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Варіанти (для одиночного вибору, JSON масив)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Натисніть пробіл, кому, крапку з комою або Enter, щоб додати тег. Клацніть X, щоб видалити.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Стандартна відповідь</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Мітки</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Текст</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Тип</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Наберіть, щоб знайти або додати теги...</value>
   </data>
 
 </root>

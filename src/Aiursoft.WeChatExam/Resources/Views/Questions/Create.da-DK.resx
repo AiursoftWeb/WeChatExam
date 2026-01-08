@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Valgmuligheder (til enkeltvalg, JSON-array)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Tryk mellemrum, komma, punktum eller Enter for at tilføje en tag. Klik på X for at fjerne.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Gem</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Standard svar</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Emner</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Tekst</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Skriv for at søge eller tilføje tags...</value>
   </data>
 
 </root>

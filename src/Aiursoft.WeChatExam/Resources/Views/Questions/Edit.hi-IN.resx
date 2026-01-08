@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>विकल्प (सिंगल चॉइस के लिए, JSON ऐरे)</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>एंटर दबाएं एक टैग जोड़ने के लिए, या सुझावों में से चुनें। एक्स पर क्लिक करें हटाने के लिए।</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>सहेजें</value>
   </data>
@@ -69,6 +72,9 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>मानक उत्तर</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>टैग्स</value>
+  </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>टैग (अंतराल से अलग)</value>
   </data>
@@ -77,6 +83,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>प्रकार</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>टैग्स खोजने या जोड़ने के लिए टाइप करें...</value>
   </data>
 
 </root>

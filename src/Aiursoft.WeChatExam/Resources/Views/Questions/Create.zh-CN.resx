@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>选项（用于单选题，JSON 数组）</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>按空格键、逗号、分号或回车键添加标签。点击 X 删除。</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>标准答案</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>题目文本</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>类型</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>输入以搜索或添加标签...</value>
   </data>
 
 </root>

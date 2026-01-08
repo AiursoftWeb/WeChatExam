@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Tùy chọn (dành cho câu hỏi một lựa chọn, mảng JSON)</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>Nhấn Enter để thêm thẻ, hoặc chọn từ gợi ý. Nhấp vào X để xóa.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Lưu</value>
   </data>
@@ -69,6 +72,9 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Đáp án chuẩn</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Nhãn</value>
+  </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>Thẻ (cách nhau bằng dấu cách)</value>
   </data>
@@ -77,6 +83,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Loại</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Nhập để tìm kiếm hoặc thêm thẻ...</value>
   </data>
 
 </root>

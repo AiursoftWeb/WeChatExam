@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Are you sure you want to delete this exam?" xml:space="preserve">
+    <value>Ești sigur că vrei să ștergi acest examen?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="Confirm Delete" xml:space="preserve">
+    <value>Confirma ștergerea</value>
+  </data>
+  <data name="Delete Exam" xml:space="preserve">
+    <value>Șterge Examenul</value>
+  </data>
+  <data name="Student Records" xml:space="preserve">
+    <value>Înregistrări studenți</value>
+  </data>
+  <data name="This action cannot be undone. All student records associated with this exam will also be deleted." xml:space="preserve">
+    <value>Această acțiune nu poate fi anulată. Toate înregistrările studenților asociate cu acest examen vor fi, de asemenea, șterse.</value>
+  </data>
+  <data name="Time Window" xml:space="preserve">
+    <value>Fereastra de timp</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titlu</value>
+  </data>
+  <data name="Warning!" xml:space="preserve">
+    <value>Avertizare!</value>
+  </data>
+
+</root>

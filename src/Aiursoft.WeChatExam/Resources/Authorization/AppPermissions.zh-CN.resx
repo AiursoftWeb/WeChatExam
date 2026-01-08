@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>添加资讯</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>添加考试</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>添加新角色</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>允许添加资讯，无论其归属如何。</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>允许添加考试，不受所有权限制。</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>允许添加试卷，无论所属。</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>允许为任何用户分配或移除角色。</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>允许从系统中删除标签。注意，删除标签不会删除相关的问题。</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>允许删除任何类别，无论其所有权归属。</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>允许删除资讯，无论其归属如何。</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>允许删除任何考试，不受所有权限制。</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>允许删除任何试卷，无论所有权归属。</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>允许编辑资讯，无论其归属如何。</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>允许编辑任何考试，不受所有权限制。</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>允许编辑试卷，无论所有权归属。</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>允许修改用户详细信息（如邮箱和角色），并可重置用户密码。</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>允许阅读任何考试，不受拥有权限制。</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>允许永久删除角色。</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>删除资讯</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>删除考试</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>删除论文</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>编辑资讯</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>编辑考试</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>编辑试卷</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>授予重启应用程序实例的权限。可能导致服务中断，但所有设置和缓存都将重新加载。</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>管理标签</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>查看考试</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>查看角色</value>

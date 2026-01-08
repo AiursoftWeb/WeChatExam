@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Додати статті</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Додати екзамени</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Додати нові ролі</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Дозволяє додавати статті, незалежно від власника.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє додавання екзаменів, незалежно від власності.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Дозволяє додавання робіт, незалежно від власності.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Дозволяє призначати або знімати ролі для будь-кого користувача.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Дозволяє видаляти теги з системи. Зауважте, що видалення тега не призведе до видалення пов’язаних питань.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Дозволяє видалення будь-якої категорії, незалежно від прав власності.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Дозволяє видалення статей, незалежно від власника.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє видалення екзаменів, незалежно від власності.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Дозволяє видалення документів, незалежно від власності.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Дозволяє редагувати статті, незалежно від власності.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє редагування екзаменів, незалежно від власності.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Дозволяє редагування документів, незалежно від власності.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Дозволяє змінювати дані користувача, такі як електронна пошта та ролі, а також скидати паролі користувачів.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє читання іспитів, незалежно від власності.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Дозволяє остаточне видалення ролей.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Видалити статті</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Видалити екзамени</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Видалити документи</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Редагувати статті</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Редагувати іспити</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Редагувати роботи</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Надає дозвіл на перезапуск екземпляра програми. Може призвести до перерв у доступності, але всі налаштування та кеш буде перезавантажено.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Керувати тегами</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Читати іспити</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Перегляд ролей</value>

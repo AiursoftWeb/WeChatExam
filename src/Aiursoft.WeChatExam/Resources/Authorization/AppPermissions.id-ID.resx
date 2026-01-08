@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Tambah Artikel</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Tambah Ujian</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Tambah Peran Baru</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan penambahan artikel, terlepas dari kepemilikan.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Memungkinkan penambahan ujian, terlepas dari kepemilikan.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan penambahan dokumen, terlepas dari kepemilikan.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Memungkinkan menetapkan atau mencabut peran untuk pengguna mana pun.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Memungkinkan penghapusan tag dari sistem. Catatan bahwa menghapus tag tidak akan menghapus pertanyaan yang terkait.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan penghapusan kategori apa pun, terlepas dari kepemilikannya.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan penghapusan artikel, tanpa memandang kepemilikan.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Memungkinkan penghapusan ujian, terlepas dari kepemilikan.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan penghapusan dokumen, terlepas dari kepemilikan.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan pengeditan artikel, terlepas dari kepemilikan.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Memungkinkan pengeditan ujian, terlepas dari kepemilikan.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan pengeditan dokumen, terlepas dari kepemilikan.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Memungkinkan modifikasi detail pengguna seperti email dan peran, serta dapat mengatur ulang kata sandi pengguna.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Memungkinkan pembacaan ujian, terlepas dari kepemilikan.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Memungkinkan penghapusan permanen peran.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Hapus Artikel</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Hapus Ujian</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Hapus Kertas</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Sunting Artikel</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Edit Ujian</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Edit Kertas Kerja</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Memberikan izin untuk memulai ulang instance aplikasi. Dapat menyebabkan gangguan ketersediaan, tetapi semua pengaturan dan cache akan dimuat ulang.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Kelola Tag</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Baca Ujian</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Lihat Peran</value>

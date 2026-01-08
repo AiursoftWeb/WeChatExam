@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="Correct Answer" xml:space="preserve">
+    <value>Правильный ответ</value>
+  </data>
+  <data name="Manual Grading" xml:space="preserve">
+    <value>Ручная проверка</value>
+  </data>
+  <data name="Review Exam Attempt" xml:space="preserve">
+    <value>Просмотр попытки сдачи экзамена</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Strategy" xml:space="preserve">
+    <value>Стратегия</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Ученик</value>
+  </data>
+  <data name="Student Answer" xml:space="preserve">
+    <value>Ответ студента</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Итог</value>
+  </data>
+  <data name="Total Score Override" xml:space="preserve">
+    <value>Переопределение общего балла</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+
+</root>

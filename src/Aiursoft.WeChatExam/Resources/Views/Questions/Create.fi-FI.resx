@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Vaihtoehdot (yksittäistä valintaa varten, JSON-taulukko)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Paina välilyöntiä, pilkkua, puolipistettä tai Enter-näppäintä lisätäksesi tunniste. Klikkaa X poistaaksesi.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Tallenna</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Standardivastaus</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tagit</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Teksti</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tyyppi</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Kirjoita etsiäksesi tai lisätäksesi tunnisteita...</value>
   </data>
 
 </root>

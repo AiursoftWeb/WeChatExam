@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>選択肢（単一選択用、JSON配列）</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>Enterキーを押してタグを追加するか、候補から選択してください。Xをクリックして削除します。</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
@@ -69,6 +72,9 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>標準回答</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>タグ</value>
+  </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>タグ(スペース区切り)</value>
   </data>
@@ -77,6 +83,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>タイプ</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>検索するかタグを追加するには入力してください...</value>
   </data>
 
 </root>

@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Επιλογές (για μονή επιλογή, πίνακας JSON)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Πατήστε το Space, το Κόμμα, το Σημείο και Κόμμα ή το Enter για να προσθέσετε μία ετικέτα. Κάντε κλικ στο X για να την αφαιρέσετε.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Αποθήκευση</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Πρότυπη απάντηση</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Ετικέτες</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Κείμενο</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Τύπος</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Πληκτρολογήστε για αναζήτηση ή προσθήκη ετικετών...</value>
   </data>
 
 </root>

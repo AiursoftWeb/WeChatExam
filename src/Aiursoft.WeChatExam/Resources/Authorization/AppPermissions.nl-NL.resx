@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Artikelen toevoegen</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Exams toevoegen</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Nieuwe rollen toevoegen</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Staat het toe om artikelen toe te voegen, onafhankelijk van de eigenaar.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Staats het toe om examens toe te voegen, ongeacht eigendom.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Staat toe het toevoegen van documenten, ongeacht de eigenaar.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Stelt in staat om rollen toe te wijzen of te verwijderen voor elke gebruiker.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Staats het verwijderen van tags uit het systeem toe. Let op: het verwijderen van een tag verwijdert geen gerelateerde vragen.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Staat het verwijderen van elke categorie toe, ongeacht eigendom.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Staat het verwijderen van artikelen toe, ongeacht de eigendom.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Staats het verwijderen van examens, ongeacht eigendom.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Staat verwijdering van documenten toe, ongeacht de eigenaar.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Sta het bewerken van artikelen toe, onafhankelijk van de eigenaar.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Staats het bewerken van examens, ongeacht de eigenaar.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Staats het bewerken van papers, ongeacht eigendom.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Staat aanpassing van gebruikersgegevens zoals e-mailadres en rollen toe, en kan ook gebruikerswachtwoorden opnieuw instellen.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Staats lezen van examens, ongeacht eigendom.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Staat het permanent verwijderen van rollen toe.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Verwijder Artikelen</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Exams verwijderen</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Papieren verwijderen</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Bewerk artikelen</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Bewerk Examen</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Papieren bewerken</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Verleent toestemming om de applicatie-instantie opnieuw op te starten. Kan beschikbaarheidsonderbrekingen veroorzaken, maar alle instellingen en cache worden opnieuw geladen.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Tags beheren</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Examen lezen</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Rollen lezen</value>

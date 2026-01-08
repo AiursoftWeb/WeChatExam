@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Seçenekler (tek seçim için, JSON dizisi)</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>Enter tuşuna basarak bir etiket ekleyin veya önerilere göre seçin. Kaldırmak için X&apos;e tıklayın.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Kaydet</value>
   </data>
@@ -69,6 +72,9 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Standart Cevap</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>Etiketler (boşlukla ayrılmış)</value>
   </data>
@@ -77,6 +83,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tür</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Etiketleri aramak veya eklemek için yazın...</value>
   </data>
 
 </root>

@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Makale Ekle</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Sınav Ekle</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Yeni Rol Ekle</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Makale eklemeye izin verir, sahipliğe bakılmaksızın.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Sahiplik durumundan bağımsız olarak sınav eklemeye izin verir.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Kağıtların sahipliğine bakılmaksızın eklenmesine izin verir.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Herhangi bir kullanıcıya rol atanmasına veya kaldırılmasına izin verir.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Etiketleri sistemden silmeyi izin verir. Bir etiketin silinmesinin ilişkili soruları silmeyeceğini not edin.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Herhangi bir kategorinin, sahipliğine bakılmaksızın silinmesine izin verir.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Makalelerin silinmesine izin verir, sahipliğe bakılmaksızın.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Sahiplik durumundan bağımsız olarak sınavların silinmesine izin verir.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Kullanımına bakılmaksızın makalelerin silinmesine izin verir.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Makalelerin düzenlenmesine, sahipliğe bakılmaksızın izin verir.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Sahipliğe bakılmaksızın sınavların düzenlenmesine izin verir.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Kâğıtların sahipliğine bakılmaksızın düzenlenmesine izin verir.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Kullanıcı detaylarını (e-posta ve roller gibi) değiştirmeye izin verir ve ayrıca kullanıcı şifrelerini sıfırlayabilir.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Sahiplik durumundan bağımsız olarak sınavları okuma izni verir.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Rollerin kalıcı olarak silinmesine izin verir.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Makaleleri Sil</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Sınavları Sil</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Makaleleri Sil</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Makaleleri Düzenle</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Sınavları Düzenle</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Makaleleri Düzenle</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Uygulama örneğini yeniden başlatma iznini verir. Kullanılabilirlik kesintilerine neden olabilir ancak tüm ayarlar ve önbellek yeniden yüklenecektir.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Etiketleri Yönet</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Sınavları Oku</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Rolleri Oku</value>

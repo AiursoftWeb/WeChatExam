@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Adaugă articole</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Adaugă Examen</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Adăugare Roluri Noi</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Permite adăugarea articolelor, indiferent de proprietate.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite adăugarea de examene, indiferent de deținere.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Permite adăugarea de lucrări, indiferent de proprietate.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Permite atribuirea sau eliminarea rolurilor pentru orice utilizator.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Permite ștergerea etichetelor din sistem. Observați că ștergerea unei etichete nu va șterge întrebările asociate.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Permite ștergerea oricărei categorii, indiferent de proprietate.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Permite ștergerea articolelor, indiferent de proprietar.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite ștergerea examenelor, indiferent de deținător.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Permite ștergerea documentelor, indiferent de posesie.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Permite editarea articolelor, indiferent de proprietate.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite editarea examenelor, indiferent de posesie.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Permite editarea documentelor, indiferent de deținător.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Permite modificarea detaliilor utilizatorului, cum ar fi adresa de e-mail și rolurile, și poate, de asemenea, să reseteze parolele utilizatorilor.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite citirea examenelor, indiferent de deținător.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Permite ștergerea permanentă a rolurilor.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Șterge Articole</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Șterge Examenelor</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Șterge Lucrările</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Editează Articole</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Editare Examen</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Editare lucrări</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Acordă permisiunea de a reporni instanța aplicației. Poate cauza întreruperi de disponibilitate, dar toate setările și memoria cache vor fi reîncărcate.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Gestionare etichete</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Citire Exame</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Citește Roluri</value>

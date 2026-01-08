@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Alternativ (för enkelt val, JSON-array)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Tryck på mellanslag, komma, semikolon eller Retur för att lägga till en etikett. Klicka på X för att ta bort.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Spara</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Standard svar</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Taggar</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Typ</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Skriv för att söka eller lägga till taggar...</value>
   </data>
 
 </root>
