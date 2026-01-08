@@ -45,5 +45,11 @@ public static class AppPermissionNames
     public const string CanDeletePapers = nameof(CanDeletePapers);
     public const string CanAddPapers = nameof(CanAddPapers);
     public const string CanEditPapers = nameof(CanEditPapers);
+    
+    // Exam Management
+    public const string CanDeleteExams = nameof(CanDeleteExams);
+    public const string CanAddExams = nameof(CanAddExams);
+    public const string CanEditExams = nameof(CanEditExams);
+    public const string CanReadExams = nameof(CanReadExams);
 
 }

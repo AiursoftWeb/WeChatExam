@@ -106,6 +106,21 @@ public class AppPermissions
                 localizer["Add Papers"],
                 localizer["Allows adding of papers, regardless of ownership."]),
 
+            new(AppPermissionNames.CanDeleteExams,
+                localizer["Delete Exams"],
+                localizer["Allows deletion of exams, regardless of ownership."]),
+            new(AppPermissionNames.CanEditExams,
+                localizer["Edit Exams"],
+                localizer["Allows editing of exams, regardless of ownership."]),
+            new(AppPermissionNames.CanAddExams,
+                localizer["Add Exams"],
+                localizer["Allows adding of exams, regardless of ownership."]),
+            new(AppPermissionNames.CanReadExams,
+                localizer["Read Exams"],
+                localizer["Allows Reading of exams, regardless of ownership."]),
+
+
+
         ];
         return allPermission;
     }

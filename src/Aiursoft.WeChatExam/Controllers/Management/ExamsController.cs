@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
-[Authorize(Policy = AppPermissionNames.CanEditQuestions)]
 public class ExamsController(
     TemplateDbContext context, 
     IExamService examService,
@@ -26,6 +25,7 @@ public class ExamsController(
         CascadedLinksOrder = 9997,
         LinkText = "Exams",
         LinkOrder = 4)]
+        [Authorize(Policy = AppPermissionNames.CanReadExams)]
     public async Task<IActionResult> Index()
     {
         var exams = await examService.GetAllExamsAsync();
@@ -33,6 +33,7 @@ public class ExamsController(
     }
 
     // GET: exams/create
+    [Authorize(Policy = AppPermissionNames.CanAddExams)]
     public async Task<IActionResult> Create()
     {
         var papers = await paperService.GetAllPapersAsync();
@@ -44,6 +45,7 @@ public class ExamsController(
 
     // POST: exams/create
     [HttpPost]
+    [Authorize(Policy = AppPermissionNames.CanAddExams)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
@@ -82,6 +84,7 @@ public class ExamsController(
     }
 
     // GET: exams/{id}/edit
+    [Authorize(Policy = AppPermissionNames.CanEditExams)]
     public async Task<IActionResult> Edit(Guid? id)
     {
          if (id == null) return NotFound();
@@ -104,6 +107,7 @@ public class ExamsController(
     }
 
     // POST: exams/{id}/edit
+    [Authorize(Policy = AppPermissionNames.CanEditExams)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(Guid id, EditViewModel model)
@@ -133,6 +137,7 @@ public class ExamsController(
     }
 
     // GET: exams/{id}/details
+    [Authorize(Policy = AppPermissionNames.CanReadExams)]
     public async Task<IActionResult> Details(Guid? id)
     {
          if (id == null) return NotFound();
@@ -151,7 +156,7 @@ public class ExamsController(
             Records = records
         });
     }
-
+[Authorize(Policy = AppPermissionNames.CanReadExams)]
     // GET: exams/review/{recordId}
     public async Task<IActionResult> Review(Guid? recordId)
     {
@@ -175,6 +180,7 @@ public class ExamsController(
 
     // POST: exams/review/{recordId}
     [HttpPost]
+    [Authorize(Policy = AppPermissionNames.CanEditExams)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> UpdateScore(Guid recordId, ReviewViewModel model)
     {
@@ -192,6 +198,7 @@ public class ExamsController(
     }
 
     // GET: exams/delete/{id}
+    [Authorize(Policy = AppPermissionNames.CanDeleteExams)]
     public async Task<IActionResult> Delete(Guid? id)
     {
         if (id == null) return NotFound();
@@ -213,6 +220,7 @@ public class ExamsController(
 
     // POST: exams/delete/{id}
     [HttpPost]
+    [Authorize(Policy = AppPermissionNames.CanDeleteExams)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(DeleteViewModel model)
     {
