@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>記事の追加</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>試験の追加</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>新しいロールの追加</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>所有者にかかわらず記事を追加できます。</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>所有者にかかわらず試験の追加を許可します。</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>所有者に関係なく、資料の追加を許可します。</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>任意のユーザーに対してロールの割り当てまたは削除を許可します。</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>システムからのタグの削除を許可します。タグを削除しても関連する質問は削除されないことに注意してください。</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>所有権に関係なく、任意のカテゴリを削除できます。</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>所有者に関係なく、記事を削除できます。</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>所有者にかかわらず試験の削除を許可します。</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>所有者の所有権に関係なく、資料の削除を許可します。</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>所有権に関係なく任意の記事を編集できます。</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>所有者にかかわらず試験の編集を許可します。</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>所有者に関係なく、資料の編集を許可します。</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>ユーザーのメールアドレスやロールなどの詳細情報の変更を許可し、ユーザーのパスワードをリセットすることもできます。</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>所有者にかかわらず試験の閲覧を許可します。</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>ロールの完全な削除を許可します。</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>記事の削除</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>試験の削除</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>論文を削除する</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>記事の編集</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>試験の編集</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>論文を編集する</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>アプリケーションインスタンスの再起動を許可します。可用性の中断を引き起こす可能性がありますが、すべての設定とキャッシュは再読み込みされます。</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>タグの管理</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>試験を読む</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>ロールの閲覧</value>

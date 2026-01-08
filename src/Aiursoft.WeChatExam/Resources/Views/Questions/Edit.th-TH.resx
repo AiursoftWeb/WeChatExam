@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>ตัวเลือก (สำหรับคำถามแบบตัวเลือกเดียว, JSON array)</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>กด Enter เพื่อเพิ่มแท็ก หรือเลือกจากคำแนะนำ คลิก X เพื่อลบ</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>บันทึก</value>
   </data>
@@ -69,6 +72,9 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>คำตอบมาตรฐาน</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>แท็ก</value>
+  </data>
   <data name="Tags (space separated)" xml:space="preserve">
     <value>แท็ก (คั่นด้วยช่องว่าง)</value>
   </data>
@@ -77,6 +83,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>ประเภท</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>พิมพ์เพื่อค้นหาหรือเพิ่มแท็ก...</value>
   </data>
 
 </root>

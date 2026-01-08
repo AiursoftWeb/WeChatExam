@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Thêm Bài viết</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Thêm bài kiểm tra</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Thêm Vai trò Mới</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Cho phép thêm bài viết, dù không phải là chủ sở hữu.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Cho phép thêm bài kiểm tra, bất kể quyền sở hữu.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Cho phép thêm bài viết, bất kể quyền sở hữu.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Cho phép gán hoặc gỡ bỏ vai trò cho bất kỳ người dùng nào.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Cho phép xóa thẻ khỏi hệ thống. Lưu ý rằng việc xóa một thẻ sẽ không xóa các câu hỏi liên quan.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Cho phép xóa bất kỳ danh mục nào, bất kể quyền sở hữu.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Cho phép xóa bài viết, bất kể chủ sở hữu.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Cho phép xóa bài kiểm tra, bất kể quyền sở hữu.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Cho phép xóa các bài kiểm tra, bất kể ai sở hữu.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Cho phép chỉnh sửa bài viết, không phân biệt chủ sở hữu.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Cho phép chỉnh sửa bài kiểm tra, bất kể quyền sở hữu.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Cho phép chỉnh sửa các bài viết, bất kể quyền sở hữu.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Cho phép sửa đổi thông tin chi tiết của người dùng như email và vai trò, đồng thời có thể đặt lại mật khẩu người dùng.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Cho phép đọc các bài kiểm tra, bất kể quyền sở hữu.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn các vai trò.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Xóa Bài viết</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Xóa Bài Kiểm Tra</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Xóa Bài kiểm tra</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Chỉnh sửa Bài viết</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Sửa bài kiểm tra</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Chỉnh sửa Bài thi</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Cấp quyền khởi động lại phiên bản ứng dụng. Có thể gây ra gián đoạn về tính khả dụng nhưng tất cả cài đặt và bộ nhớ đệm sẽ được tải lại.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Quản lý thẻ</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Xem Các Bài Kiểm Tra</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Xem Vai trò</value>

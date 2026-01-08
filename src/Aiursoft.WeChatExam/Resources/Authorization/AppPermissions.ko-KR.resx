@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>게시물 추가</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>시험 추가</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>새 역할 추가</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>소유권과 관계없이 게시물을 추가할 수 있습니다.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>소유권에 관계없이 시험을 추가할 수 있도록 허용합니다.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>소유 여부에 관계없이 논문을 추가할 수 있도록 허용합니다.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>모든 사용자에게 역할을 할당하거나 제거할 수 있습니다.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>시스템에서 태그를 삭제할 수 있도록 허용합니다. 단, 태그를 삭제해도 관련된 질문은 삭제되지 않습니다.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>소유권과 관계없이 모든 카테고리를 삭제할 수 있습니다.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>소유자와 관계없이 게시물을 삭제할 수 있습니다.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>소유 여부에 관계없이 시험을 삭제할 수 있습니다.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>소유권에 관계없이 논문을 삭제할 수 있습니다.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>소유권과 무관하게 기사 수정을 허용합니다.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>소유 여부에 관계없이 시험을 편집할 수 있습니다.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>소유 여부와 관계없이 논문 편집을 허용합니다.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>사용자의 이메일 및 역할과 같은 세부 정보 수정을 허용하며, 사용자 비밀번호 재설정도 가능합니다.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>소유 여부에 관계없이 시험을 읽을 수 있도록 허용합니다.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>역할을 영구적으로 삭제할 수 있습니다.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>기사 삭제</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>시험 삭제</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>논문 삭제</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>게시물 편집</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>시험 편집</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>논문 편집</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>애플리케이션 인스턴스를 재시작할 수 있는 권한을 부여합니다. 가용성 중단을 초래할 수 있으나 모든 설정과 캐시가 다시 로드됩니다.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>태그 관리</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>시험 읽기</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>역할 읽기</value>

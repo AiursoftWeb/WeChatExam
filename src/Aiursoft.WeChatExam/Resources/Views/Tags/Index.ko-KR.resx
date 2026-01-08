@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>작업</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
+    <value>태그를 찾을 수 없습니다. 질문을 편집할 때 태그를 생성하면 여기에 표시됩니다.</value>
+  </data>
+  <data name="No tags match your search query." xml:space="preserve">
+    <value>검색어와 일치하는 태그가 없습니다.</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>질문</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="Search tags..." xml:space="preserve">
+    <value>태그 검색...</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>태그 이름</value>
+  </data>
+  <data name="Tags Management" xml:space="preserve">
+    <value>태그 관리</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>사용 횟수</value>
+  </data>
+
+</root>

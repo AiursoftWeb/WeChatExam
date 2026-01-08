@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Opciones (para selección única, array JSON)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Pulse Espacio, Coma, Punto y coma o Intro para añadir una etiqueta. Haz clic en X para eliminar.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Guardar</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Respuesta estándar</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Texto</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tipo</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Escribe para buscar o añadir etiquetas...</value>
   </data>
 
 </root>

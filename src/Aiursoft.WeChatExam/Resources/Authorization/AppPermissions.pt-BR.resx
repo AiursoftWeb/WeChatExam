@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Adicionar Artigos</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Adicionar Provas</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Adicionar Novos Papéis</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Permite adicionar artigos, independentemente da propriedade.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite adicionar provas, independentemente da propriedade.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Permite adicionar artigos, independentemente da propriedade.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Permite atribuir ou remover funções para qualquer usuário.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Permite a exclusão de tags do sistema. Observe que excluir uma tag não excluirá as perguntas associadas.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Permite a exclusão de qualquer categoria, independentemente da propriedade.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Permite a exclusão de artigos, independentemente de quem seja o proprietário.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite a exclusão de provas, independentemente da propriedade.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Permite a exclusão de documentos, independentemente da propriedade.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Permite editar artigos, independentemente da propriedade.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite a edição de provas, independentemente da propriedade.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Permite a edição de documentos, independentemente da propriedade.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Permite a modificação de detalhes do usuário, como e-mail e funções, e também pode redefinir senhas de usuário.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite a leitura de provas, independentemente da propriedade.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Permite a exclusão permanente de funções.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Excluir Artigos</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Excluir Provas</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Excluir Documentos</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Editar Artigos</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Editar Provas</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Editar Provas</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Concede permissão para reiniciar a instância do aplicativo. Pode causar interrupções na disponibilidade, mas todas as configurações e o cache serão recarregados.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Gerenciar Etiquetas</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Ler Provas</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Ler Funções</value>

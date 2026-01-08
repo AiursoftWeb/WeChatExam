@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Add Articles</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Add Exams</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Add New Roles</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Allows adding of articles, regardless of ownership.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Allows adding of exams, regardless of ownership.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Allows adding papers, regardless of ownership.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Allows assigning or removing roles for any user.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Allows deleting tags from the system. Note that deleting a tag will not delete associated questions.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Allows deletion of any category, irrespective of ownership.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Allows deletion of articles, regardless of ownership.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Allows deletion of exams, regardless of ownership.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Allows deletion of papers, regardless of ownership.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Allows editing of articles, regardless of ownership.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Allows editing of exams, regardless of ownership.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Allows editing of papers, regardless of ownership.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Allows modification of user details such as email and roles, and can also reset user passwords.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Allows reading of exams, regardless of ownership.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Allows the permanent deletion of roles.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Delete Articles</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Delete Exams</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Delete Papers</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Edit Articles</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Edit Exams</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Edit Papers</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Grants permission to restart the application instance. May cause service interruptions, but all settings and cache will be reloaded.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Manage Tags</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Read Exams</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>View Roles</value>

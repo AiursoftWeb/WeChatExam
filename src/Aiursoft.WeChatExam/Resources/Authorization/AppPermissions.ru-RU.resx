@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Добавить статьи</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Добавить экзамены</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Добавление новых ролей</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Позволяет добавлять статьи, независимо от владения.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Позволяет добавлять экзамены, независимо от владения.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Позволяет добавлять документы, независимо от прав собственности.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Разрешает назначение или снятие ролей для любого пользователя.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Позволяет удалять теги из системы. Примечание: удаление тега не приведет к удалению связанных вопросов.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Разрешает удаление любой категории, независимо от владельца.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Позволяет удалять статьи, независимо от владельца.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Позволяет удалять экзамены, независимо от владения.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Позволяет удалять документы независимо от владения ими.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Позволяет редактировать статьи, независимо от владельца.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Позволяет редактировать экзамены независимо от владения ими.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Позволяет редактировать документы независимо от владения ими.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Разрешает изменение данных пользователя, таких как email и роли, а также позволяет сбрасывать пароли пользователей.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Позволяет читать экзамены, независимо от владения.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Разрешает окончательное удаление ролей.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Удалить статьи</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Удалить экзамены</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Удалить документы</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Редактировать статьи</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Редактировать экзамены</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Редактировать документы</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Предоставляет разрешение на перезапуск экземпляра приложения. Может привести к перерывам в доступности, но все настройки и кэш будут перезагружены.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Управление тегами</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Читать экзамены</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Просмотр ролей</value>

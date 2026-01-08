@@ -48,6 +48,9 @@
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Opțiuni (pentru alegere unică, matrice JSON)</value>
   </data>
+  <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
+    <value>Apăsați Spațiu, Virgulă, Punct și virgulă sau Enter pentru a adăuga o etichetă. Faceți clic pe X pentru a elimina.</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Salvează</value>
   </data>
@@ -69,11 +72,17 @@
   <data name="Standard Answer" xml:space="preserve">
     <value>Răspuns standard</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etichete</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tip</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Tastați pentru a căuta sau adăuga etichete...</value>
   </data>
 
 </root>

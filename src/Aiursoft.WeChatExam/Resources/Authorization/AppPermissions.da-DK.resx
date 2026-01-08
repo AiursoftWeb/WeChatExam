@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Tilføj artikler</value>
   </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Tilføj Eksamener</value>
+  </data>
   <data name="Add New Roles" xml:space="preserve">
     <value>Tilføj nye roller</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
     <value>Tillader tilføjelse af artikler, uanset ejerskab.</value>
   </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Tillader tilføjelse af eksamener, uanset ejerskab.</value>
+  </data>
   <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
     <value>Tillader tilføjelse af papirer, uanset ejerskab.</value>
   </data>
@@ -51,6 +57,9 @@
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Giver mulighed for at tildele eller fjerne roller for enhver bruger.</value>
   </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Tillader sletning af tags fra systemet. Bemærk, at sletning af et tag ikke sletter tilknyttede spørgsmål.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Tillader sletning af enhver kategori, uanset ejerskab.</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
     <value>Tillader sletning af artikler, uanset ejerskab.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Tillader sletning af eksamener, uanset ejerskab.</value>
   </data>
   <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
     <value>Tillader sletning af papirer, uanset ejerskab.</value>
@@ -75,6 +87,9 @@
   <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
     <value>Tillader redigering af artikler, uanset ejerskab.</value>
   </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Tillader redigering af prøver, uanset ejerskab.</value>
+  </data>
   <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
     <value>Tillader redigering af papirer, uanset ejerskab.</value>
   </data>
@@ -86,6 +101,9 @@
   </data>
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Tillader ændring af brugeroplysninger som e-mail og roller, og kan også nulstille brugeradgangskoder.</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Tillader læsning af eksamener, uanset ejerskab.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Tillader den permanente sletning af roller.</value>
@@ -117,6 +135,9 @@
   <data name="Delete Articles" xml:space="preserve">
     <value>Slet Artikler</value>
   </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Slet Eksamener</value>
+  </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Slet Papirer</value>
   </data>
@@ -138,6 +159,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Rediger artikler</value>
   </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Rediger prøver</value>
+  </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Rediger papirer</value>
   </data>
@@ -158,6 +182,12 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Giver tilladelse til at genstarte applikationsinstansen. Kan forårsage afbrydelser i tilgængeligheden, men alle indstillinger og cache vil blive genindlæst.</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Håndtér Tags</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Læs eksamener</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Læs Roller</value>
