@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>사용자 계정의 영구 삭제를 허용합니다.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>백그라운드 작업 큐 및 그 실행 상태를 확인하고 관리할 수 있습니다.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>시스템 수준 정보 및 설정을 볼 수 있습니다.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>이 앱 재시작</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>백그라운드 작업 보기</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>시스템 컨텍스트 보기</value>

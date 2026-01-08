@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Sallii käyttäjätilien pysyvän poistamisen.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Sallii taustatehtävien jonon tarkastelun ja hallinnan sekä niiden suoritusvalmiuden tarkkailun.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Mahdollistaa järjestelmätason tietojen ja asetusten tarkastelemisen.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Käynnistä tämä sovellus uudelleen</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Näytä taustatehtävät</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Näytä järjestelmän konteksti</value>

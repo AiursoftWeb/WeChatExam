@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Дозволяє остаточне видалення облікових записів користувачів.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Дозволяє переглядати та керувати чергами фонових завдань та їхнім статусом виконання.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Дозволяє перегляд системної інформації та налаштувань.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Перезавантажити цей додаток</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Переглянути фонові завдання</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Перегляд системного контексту</value>

@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>يسمح بالحذف الدائم لحسابات المستخدمين.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>يُتيح عرض وإدارة صفوف المهام الخلفية وحالة تنفيذها.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>يسمح بعرض معلومات وإعدادات على مستوى النظام.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>إعادة تشغيل هذا التطبيق</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>عرض المهام الخلفية</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>عرض سياق النظام</value>

@@ -93,6 +93,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Memungkinkan penghapusan permanen akun pengguna.</value>
   </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Memungkinkan melihat dan mengelola antrian pekerjaan latar belakang serta status eksekusi mereka.</value>
+  </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Memungkinkan melihat informasi dan pengaturan tingkat sistem.</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Mulai Ulang Aplikasi Ini</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Lihat Pekerjaan Latar Belakang</value>
   </data>
   <data name="View System Context" xml:space="preserve">
     <value>Lihat Konteks Sistem</value>
