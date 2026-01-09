@@ -1,17 +1,5 @@
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.EditViewModel
 
-@section scripts {
-    <script src="~/js/tag-input.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tagInput = document.getElementById('tagInputField');
-            const tagHidden = document.getElementById('Tags');
-            const initialTags = '@Model.Tags'.split(' ').filter(t => t.trim());
-            TagInput.init(tagInput, tagHidden, initialTags);
-        });
-    </script>
-}
-
 <h1 class="h3 mb-3">@Localizer["Edit Question"]</h1>
 
 <form asp-action="Edit" method="post">
@@ -86,3 +74,17 @@
         </div>
     </div>
 </form>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+
+@section scripts {
+    <script src="~/js/tag-input.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tagInput = document.getElementById('tagInputField');
+            const tagHidden = document.getElementById('Tags');
+            const initialTags = '@Model.Tags'.split(' ').filter(t => t.trim());
+            TagInput.init(tagInput, tagHidden, initialTags);
+        });
+    </script>
+}

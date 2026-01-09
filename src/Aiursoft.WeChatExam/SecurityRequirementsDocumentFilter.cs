@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -8,15 +7,16 @@ public class SecurityRequirementsDocumentFilter : IDocumentFilter
 {
     public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
     {
-        if (!swaggerDoc.Components.SecuritySchemes.TryGetValue("BearerAuth", out var scheme))
+        if (swaggerDoc.Components?.SecuritySchemes == null || 
+            !swaggerDoc.Components.SecuritySchemes.TryGetValue("BearerAuth", out _))
         {
             return;
         }
 
-
-
         foreach (var pathItem in swaggerDoc.Paths.Values)
         {
+            if (pathItem.Operations == null) continue;
+            
             foreach (var operation in pathItem.Operations.Values)
             {
                 if (operation.Security == null) continue;
@@ -33,11 +33,17 @@ public class SecurityRequirementsDocumentFilter : IDocumentFilter
                         if (key.GetType().Name == "OpenApiSecuritySchemeReference")
                         {
                             // Create a new valid reference using reflection
-                            var ctor = typeof(Microsoft.OpenApi.OpenApiSecuritySchemeReference)
-                                .GetConstructor(new[] { typeof(string), typeof(Microsoft.OpenApi.OpenApiDocument), typeof(string) });
+                            var ctor = typeof(OpenApiSecuritySchemeReference)
+                                .GetConstructor(new[] { typeof(string), typeof(OpenApiDocument), typeof(string) });
+                            
+                            if (ctor == null) continue;
                             
                             // Pass strict types properly
-                            var validRef = (Microsoft.OpenApi.OpenApiSecuritySchemeReference)ctor.Invoke(new object[] { "BearerAuth", swaggerDoc, null });
+                            var result = ctor.Invoke(new object?[] { "BearerAuth", swaggerDoc, null });
+                            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+                            if (result == null) continue;
+                            
+                            var validRef = (OpenApiSecuritySchemeReference)result;
 
                             var scopes = requirement[key];
                             
