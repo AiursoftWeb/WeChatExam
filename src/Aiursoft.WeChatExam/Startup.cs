@@ -91,6 +91,8 @@ public class Startup : IWebStartup
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization();
 
+
+
         services.AddSwaggerGen(c =>
         {
             // Only include API controllers (exclude Management controllers which return views)
@@ -107,10 +109,11 @@ public class Startup : IWebStartup
                 BearerFormat = "JWT"
             };
 
-            c.AddSecurityDefinition("Bearer", securityScheme);
+            c.AddSecurityDefinition("BearerAuth", securityScheme);
 
             // Only add security requirement to endpoints that are NOT decorated with [AllowAnonymous]
             c.OperationFilter<SecurityRequirementsOperationFilter>();
+            c.DocumentFilter<SecurityRequirementsDocumentFilter>();
 
             var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
