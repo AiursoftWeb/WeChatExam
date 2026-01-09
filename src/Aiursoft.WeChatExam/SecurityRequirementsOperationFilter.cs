@@ -31,14 +31,18 @@ public class SecurityRequirementsOperationFilter : IOperationFilter
             // Use reflection to instantiate OpenApiSecuritySchemeReference with 3 arguments
             // .ctor(string referenceId, OpenApiDocument hostDocument, string referenceV2)
             var ctor = typeof(Microsoft.OpenApi.OpenApiSecuritySchemeReference)
-                .GetConstructor(new[] { typeof(string), typeof(Microsoft.OpenApi.OpenApiDocument), typeof(string) });
-            
-            var scheme = (Microsoft.OpenApi.OpenApiSecuritySchemeReference)ctor.Invoke(new object[] { "BearerAuth", null, "BearerAuth" });
+                .GetConstructor([typeof(string), typeof(Microsoft.OpenApi.OpenApiDocument), typeof(string)]);
 
-            operation.Security.Add(new Microsoft.OpenApi.OpenApiSecurityRequirement
+            if (ctor != null)
             {
-                [scheme] = new List<string>()
-            });
+                var scheme = (Microsoft.OpenApi.OpenApiSecuritySchemeReference)ctor.Invoke(["BearerAuth", null, "BearerAuth"
+                ]);
+
+                operation.Security.Add(new Microsoft.OpenApi.OpenApiSecurityRequirement
+                {
+                    [scheme] = []
+                });
+            }
         }
     }
 }
