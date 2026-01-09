@@ -26,16 +26,19 @@ public class SecurityRequirementsOperationFilter : IOperationFilter
         // Add security requirement only if the endpoint requires authorization
         if (hasAuthorize)
         {
-            operation.Security = new List<Microsoft.OpenApi.OpenApiSecurityRequirement>
+            operation.Security ??= new List<Microsoft.OpenApi.OpenApiSecurityRequirement>();
+
+            // Use reflection to instantiate OpenApiSecuritySchemeReference with 3 arguments
+            // .ctor(string referenceId, OpenApiDocument hostDocument, string referenceV2)
+            var ctor = typeof(Microsoft.OpenApi.OpenApiSecuritySchemeReference)
+                .GetConstructor(new[] { typeof(string), typeof(Microsoft.OpenApi.OpenApiDocument), typeof(string) });
+            
+            var scheme = (Microsoft.OpenApi.OpenApiSecuritySchemeReference)ctor.Invoke(new object[] { "BearerAuth", null, "BearerAuth" });
+
+            operation.Security.Add(new Microsoft.OpenApi.OpenApiSecurityRequirement
             {
-                new Microsoft.OpenApi.OpenApiSecurityRequirement
-                {
-                    {
-                        new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer"),
-                        new List<string>()
-                    }
-                }
-            };
+                [scheme] = new List<string>()
+            });
         }
     }
 }
