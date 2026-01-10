@@ -72,6 +72,9 @@ public class ViewModelArgsInjector(
         _ = localizer["Papers"];
         _ = localizer["Tags"];
         _ = localizer["Background Jobs"];
+    
+        _ = localizer["Ask Ollama"];
+        _ = localizer["Exams"];
     }
 
     public void InjectSimple(
