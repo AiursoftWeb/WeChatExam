@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>添加资讯</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>添加分发渠道</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>添加考试</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>允许编辑问题，无论所有权归属。</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>允许修改分发渠道的详细信息以及启用/禁用渠道。</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>允许修改角色名称及其分配的权限。</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>允许阅读任何考试，不受拥有权限制。</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>允许永久删除分发渠道。</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>允许永久删除角色。</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>允许查看所有用户的列表。</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>允许查看分发渠道列表及其统计信息。</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>允许查看角色列表及其分配的权限。</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>删除资讯</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>删除分发渠道</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>删除考试</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>编辑资讯</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>编辑分发渠道</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>编辑考试</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>编辑用户信息</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>授予创建新分发渠道的权限。</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>授予创建新角色的权限。</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>管理标签</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>查看分发渠道</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>查看考试</value>

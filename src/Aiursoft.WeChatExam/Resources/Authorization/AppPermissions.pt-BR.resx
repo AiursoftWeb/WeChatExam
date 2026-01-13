@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Adicionar Artigos</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Adicionar Canais de Distribuição</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Adicionar Provas</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Permite a edição de perguntas, independentemente da propriedade.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Permite a modificação dos detalhes do canal de distribuição e a ativação/desativação de canais.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Permite a modificação dos nomes das funções e de suas permissões atribuídas.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Permite a leitura de provas, independentemente da propriedade.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Permite a exclusão permanente dos canais de distribuição.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Permite a exclusão permanente de funções.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Permite visualizar a lista de todos os usuários.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Permite visualizar a lista de canais de distribuição e suas estatísticas.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Permite visualizar a lista de funções e suas permissões atribuídas.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Excluir Artigos</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Excluir Canais de Distribuição</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Excluir Provas</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Editar Artigos</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Editar Canais de Distribuição</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Editar Provas</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Editar Informações do Usuário</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Concede permissão para criar novos canais de distribuição.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Concede permissão para criar novos cargos.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Gerenciar Etiquetas</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Ler Canais de Distribuição</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Ler Provas</value>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
+    <value>Όνομα Επιχείρησης</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Κωδικός</value>
+  </data>
+  <data name="Create Channel" xml:space="preserve">
+    <value>Δημιουργία Καναλιού</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Δημιουργήθηκε στις</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>λεπτομέρειες</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>Απενεργοποίηση</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Απενεργοποιημένο</value>
+  </data>
+  <data name="Distribution Channels" xml:space="preserve">
+    <value>Κανάλια Διανομής</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Ενεργοποίηση</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Ενεργό</value>
+  </data>
+  <data name="No channels match your search query." xml:space="preserve">
+    <value>Δεν βρέθηκαν κανάλια που να ταιριάζουν με την αναζήτησή σας.</value>
+  </data>
+  <data name="No distribution channels found. Click &apos;Create Channel&apos; to add one." xml:space="preserve">
+    <value>Δεν βρέθηκαν κανάλια διανομής. Κάντε κλικ στο «Δημιουργία Καναλιού» για να προσθέσετε ένα.</value>
+  </data>
+  <data name="Registrations" xml:space="preserve">
+    <value>Εγγραφές</value>
+  </data>
+  <data name="Search by agency name or code..." xml:space="preserve">
+    <value>Αναζήτηση κατά όνομα ή κωδικό αντιπροσωπείας...</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Κατάσταση</value>
+  </data>
+
+</root>

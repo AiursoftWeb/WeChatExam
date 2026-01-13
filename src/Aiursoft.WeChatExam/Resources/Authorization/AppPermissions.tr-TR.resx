@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Makale Ekle</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Dağıtım Kanalları Ekle</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Sınav Ekle</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Sahipliğine bakılmaksızın soruların düzenlenmesine izin verir.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Dağıtım kanalı ayrıntılarının değiştirilmesine ve kanalların etkinleştirilmesine/devre dışı bırakılmasına izin verir.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Rol isimlerinin ve atanmış izinlerin değiştirilmesine izin verir.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Sahiplik durumundan bağımsız olarak sınavları okuma izni verir.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Dağıtım kanallarının kalıcı olarak silinmesine izin verir.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Rollerin kalıcı olarak silinmesine izin verir.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Tüm kullanıcıların listesini görüntülemeye izin verir.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Dağıtım kanallarının listesini ve istatistiklerini görüntülemeye izin verir.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Rollerin listesini ve atanmış izinlerini görüntülemeye izin verir.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Makaleleri Sil</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Dağıtım Kanallarını Sil</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Sınavları Sil</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Makaleleri Düzenle</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Dağıtım Kanallarını Düzenle</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Sınavları Düzenle</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Kullanıcı Bilgilerini Düzenle</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Yeni dağıtım kanalları oluşturmak için izin verir.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Yeni roller oluşturma izni verir.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Etiketleri Yönet</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Dağıtım Kanallarını Oku</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Sınavları Oku</value>

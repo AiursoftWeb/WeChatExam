@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>क्रियाएँ</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
+    <value>एजेंसी नाम</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>कोड</value>
+  </data>
+  <data name="Create Channel" xml:space="preserve">
+    <value>चैनल बनाएं</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>बनाया गया तारीख</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>विवरण</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>अक्षम करें</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>अक्षम</value>
+  </data>
+  <data name="Distribution Channels" xml:space="preserve">
+    <value>वितरण चैनल</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>सक्षम करें</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>सक्षम</value>
+  </data>
+  <data name="No channels match your search query." xml:space="preserve">
+    <value>आपके खोज आवेदन के अनुरूप कोई चैनल नहीं मिला।</value>
+  </data>
+  <data name="No distribution channels found. Click &apos;Create Channel&apos; to add one." xml:space="preserve">
+    <value>कोई वितरण चैनल नहीं मिला। एक जोड़ने के लिए &apos;चैनल बनाएँ&apos; पर क्लिक करें।</value>
+  </data>
+  <data name="Registrations" xml:space="preserve">
+    <value>पंजीकरण</value>
+  </data>
+  <data name="Search by agency name or code..." xml:space="preserve">
+    <value>एजेंसी के नाम या कोड द्वारा खोजें...</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>स्थिति</value>
+  </data>
+
+</root>

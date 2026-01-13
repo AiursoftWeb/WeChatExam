@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Aggiungi Articoli</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Aggiungi Canali di Distribuzione</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Aggiungi Esami</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Consente la modifica delle domande, indipendentemente dalla proprietà.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Consente la modifica dei dettagli del canale di distribuzione e l&apos;attivazione/disattivazione dei canali.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Consente la modifica dei nomi dei ruoli e dei permessi assegnati.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Consente la lettura degli esami, indipendentemente dalla proprietà.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Consente l&apos;eliminazione definitiva dei canali di distribuzione.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Consente l&apos;eliminazione permanente dei ruoli.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Consente di visualizzare l&apos;elenco di tutti gli utenti.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Consente di visualizzare l&apos;elenco dei canali di distribuzione e le relative statistiche.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Consente di visualizzare l&apos;elenco dei ruoli e le relative autorizzazioni assegnate.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Elimina Articoli</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Elimina canali di distribuzione</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Elimina Esami</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Modifica Articoli</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Modifica canali di distribuzione</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Modifica Esami</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Modifica Informazioni Utente</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Concede il permesso di creare nuovi canali di distribuzione.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Concede il permesso di creare nuovi ruoli.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Gestisci Tag</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Leggi Canali di Distribuzione</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Leggi Esami</value>

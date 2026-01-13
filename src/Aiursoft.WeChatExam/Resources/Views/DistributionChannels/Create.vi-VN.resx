@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A unique distribution code will be automatically generated for this channel." xml:space="preserve">
+    <value>Một mã phân phối duy nhất sẽ được tự động tạo ra cho kênh này.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Tạo</value>
+  </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>Tạo kênh phân phối</value>
+  </data>
+  <data name="Enter agency or partner name" xml:space="preserve">
+    <value>Nhập tên đại lý hoặc đối tác</value>
+  </data>
+  <data name="The name of the agency or partner this channel represents." xml:space="preserve">
+    <value>Tên của đại lý hoặc đối tác mà kênh này đại diện.</value>
+  </data>
+
+</root>

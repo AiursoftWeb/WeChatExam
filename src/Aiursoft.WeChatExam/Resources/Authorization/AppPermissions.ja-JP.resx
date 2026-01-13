@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>記事の追加</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>配信チャネルの追加</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>試験の追加</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>所有権に関係なく、質問の編集を許可します。</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>配信チャネルの詳細の編集およびチャネルの有効化/無効化を許可します。</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>ロール名とその割り当てられた権限の変更を許可します。</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>所有者にかかわらず試験の閲覧を許可します。</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>配信チャネルの永続的な削除を許可します。</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>ロールの完全な削除を許可します。</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>すべてのユーザーのリストを表示することを許可します。</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>配信チャネルの一覧およびその統計情報を表示できるようにします。</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>ロールの一覧とそれに割り当てられた権限を表示できます。</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>記事の削除</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>配信チャネルの削除</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>試験の削除</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>記事の編集</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>配信チャネルの編集</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>試験の編集</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>ユーザー情報の編集</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>新しい配信チャネルを作成する権限を付与します。</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>新しいロールを作成する権限を付与します。</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>タグの管理</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>配信チャネルを読み取る</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>試験を読む</value>
