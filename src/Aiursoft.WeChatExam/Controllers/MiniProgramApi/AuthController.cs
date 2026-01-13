@@ -16,7 +16,8 @@ public class AuthController(
     RoleManager<IdentityRole> roleManager,
     IOptions<AppSettings> appSettings,
     ILogger<AuthController> logger,
-    IWeChatService weChatService) : ControllerBase
+    IWeChatService weChatService,
+    IDistributionChannelService distributionChannelService) : ControllerBase
 {
     private readonly AppSettings _appSettings = appSettings.Value;
 
@@ -58,13 +59,24 @@ public class AuthController(
         var sessionKey = sessionResult.SessionKey!;
 
         // 2. Sync user to local database (similar to SyncOidcContext in template)
-        var user = await SyncWeChatUser(openId, sessionKey);
+        var (user, isNewUser) = await SyncWeChatUser(openId, sessionKey);
         if (user == null)
         {
             return StatusCode(500, "Failed to create or sync user");
         }
 
-        // 3. Generate JWT token for API access
+        // 3. Bind to distribution channel (only for new users)
+        if (isNewUser && !string.IsNullOrWhiteSpace(model.DistributionCode))
+        {
+            var bound = await distributionChannelService.BindUserAsync(user.Id, model.DistributionCode);
+            if (bound)
+            {
+                logger.LogInformation("User '{UserId}' bound to distribution channel '{Code}'",
+                    user.Id, model.DistributionCode);
+            }
+        }
+
+        // 4. Generate JWT token for API access
         var tokenString = WeChatTokenHelper.GenerateJwtToken(
             user,
             openId,
@@ -156,7 +168,8 @@ public class AuthController(
     /// <summary>
     /// Sync WeChat user to local database, following the same pattern as SyncOidcContext in template
     /// </summary>
-    private async Task<User?> SyncWeChatUser(string openId, string sessionKey)
+    /// <returns>A tuple of (User, isNewUser) indicating the user and whether they were newly created</returns>
+    private async Task<(User? user, bool isNewUser)> SyncWeChatUser(string openId, string sessionKey)
     {
         logger.LogInformation(
             "Try to find the user in the local database with WeChat OpenId: '{OpenId}'",
@@ -166,7 +179,8 @@ public class AuthController(
         var localUser = userManager.Users.FirstOrDefault(u => u.MiniProgramOpenId == openId);
 
         // 2. If the user doesn't exist, create a new one
-        if (localUser == null)
+        var isNewUser = localUser == null;
+        if (isNewUser)
         {
             localUser = new User
             {
@@ -187,7 +201,7 @@ public class AuthController(
             {
                 var errors = string.Join(", ", createUserResult.Errors.Select(e => e.Description));
                 logger.LogError("Failed to create a local user: {Errors}", errors);
-                return null;
+                return (null, false);
             }
         }
         else
@@ -225,6 +239,6 @@ public class AuthController(
             }
         }
 
-        return localUser;
+        return (localUser, isNewUser);
     }
 }

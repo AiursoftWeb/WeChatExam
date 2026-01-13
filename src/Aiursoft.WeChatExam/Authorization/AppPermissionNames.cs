@@ -58,4 +58,10 @@ public static class AppPermissionNames
     // Tag Management
     public const string CanManageTags = nameof(CanManageTags);
 
+    // Distribution Channel Management
+    public const string CanDeleteDistributionChannels = nameof(CanDeleteDistributionChannels);
+    public const string CanAddDistributionChannels = nameof(CanAddDistributionChannels);
+    public const string CanEditDistributionChannels = nameof(CanEditDistributionChannels);
+    public const string CanReadDistributionChannels = nameof(CanReadDistributionChannels);
+
 }

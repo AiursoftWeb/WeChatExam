@@ -28,4 +28,6 @@ public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbCo
     public DbSet<Exam> Exams => Set<Exam>();
     public DbSet<ExamRecord> ExamRecords => Set<ExamRecord>();
     public DbSet<AnswerRecord> AnswerRecords => Set<AnswerRecord>();
+    public DbSet<DistributionChannel> DistributionChannels => Set<DistributionChannel>();
+    public DbSet<UserDistributionChannel> UserDistributionChannels => Set<UserDistributionChannel>();
 }

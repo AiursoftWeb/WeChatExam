@@ -1,0 +1,97 @@
+@model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.DetailsViewModel
+
+<h1 class="h3 mb-3">@Localizer["Channel Details"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Channel Information"]</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">@Localizer["Distribution Code"]</dt>
+                    <dd class="col-sm-8">
+                        <code class="user-select-all fs-5">@Model.Channel.Code</code>
+                        <button type="button" class="btn btn-sm btn-outline-secondary ms-2" onclick="navigator.clipboard.writeText('@Model.Channel.Code')">
+                            <i data-lucide="copy"></i>
+                        </button>
+                    </dd>
+
+                    <dt class="col-sm-4">@Localizer["Agency Name"]</dt>
+                    <dd class="col-sm-8">@Model.Channel.AgencyName</dd>
+
+                    <dt class="col-sm-4">@Localizer["Status"]</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Channel.IsEnabled)
+                        {
+                            <span class="badge bg-success">@Localizer["Enabled"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@Localizer["Disabled"]</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">@Localizer["Created At"]</dt>
+                    <dd class="col-sm-8">@Model.Channel.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Statistics"]</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="display-6 text-primary">@Model.Stats.RegistrationCount</div>
+                        <div class="text-muted">@Localizer["Registrations"]</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="display-6 text-success">@Model.Stats.PaidOrderCount</div>
+                        <div class="text-muted">@Localizer["Paid Orders"]</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="display-6 text-info">@Model.Stats.TotalPaidAmount.ToString("C")</div>
+                        <div class="text-muted">@Localizer["Total Amount"]</div>
+                    </div>
+                </div>
+                @if (Model.Stats.PaidOrderCount == 0 && Model.Stats.TotalPaidAmount == 0)
+                {
+                    <div class="alert alert-warning mt-3 mb-0">
+                        <i data-lucide="alert-triangle" class="me-2"></i>
+                        @Localizer["Payment statistics are not yet implemented."]
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex gap-2">
+    <form method="post" asp-action="ToggleEnabled" asp-route-id="@Model.Channel.Id" style="display: inline;">
+        @Html.AntiForgeryToken()
+        @if (Model.Channel.IsEnabled)
+        {
+            <button type="submit" class="btn btn-warning">
+                <i data-lucide="pause"></i> @Localizer["Disable Channel"]
+            </button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-success">
+                <i data-lucide="play"></i> @Localizer["Enable Channel"]
+            </button>
+        }
+    </form>
+    <a asp-action="Delete" asp-route-id="@Model.Channel.Id" class="btn btn-danger">
+        <i data-lucide="trash-2"></i> @Localizer["Delete"]
+    </a>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i data-lucide="arrow-left"></i> @Localizer["Back to List"]
+    </a>
+</div>

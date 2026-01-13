@@ -1,0 +1,33 @@
+@model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Create Distribution Channel"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post" asp-action="Create">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label asp-for="AgencyName" class="form-label"></label>
+                <input asp-for="AgencyName" class="form-control" placeholder="@Localizer["Enter agency or partner name"]" />
+                <span asp-validation-for="AgencyName" class="text-danger"></span>
+                <div class="form-text">@Localizer["The name of the agency or partner this channel represents."]</div>
+            </div>
+
+            <div class="alert alert-info">
+                <i data-lucide="info" class="me-2"></i>
+                @Localizer["A unique distribution code will be automatically generated for this channel."]
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i data-lucide="plus"></i> @Localizer["Create"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i data-lucide="x"></i> @Localizer["Cancel"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

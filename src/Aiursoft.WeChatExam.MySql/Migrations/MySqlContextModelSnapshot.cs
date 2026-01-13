@@ -133,6 +133,33 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("CategoryKnowledgePoints");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.DistributionChannel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("AgencyName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DistributionChannels");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Exam", b =>
                 {
                     b.Property<Guid>("Id")
@@ -601,6 +628,31 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserDistributionChannel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("BoundAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("DistributionChannelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DistributionChannelId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDistributionChannels");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserPracticeHistory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -964,6 +1016,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserDistributionChannel", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.DistributionChannel", "DistributionChannel")
+                        .WithMany("UserDistributionChannels")
+                        .HasForeignKey("DistributionChannelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DistributionChannel");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserPracticeHistory", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Question", "Question")
@@ -1041,6 +1112,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Children");
 
                     b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.DistributionChannel", b =>
+                {
+                    b.Navigation("UserDistributionChannels");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Exam", b =>

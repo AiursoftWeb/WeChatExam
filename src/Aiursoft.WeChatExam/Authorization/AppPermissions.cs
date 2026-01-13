@@ -127,6 +127,19 @@ public class AppPermissions
                 localizer["Manage Tags"],
                 localizer["Allows deleting tags from the system. Note that deleting a tag will not delete associated questions."]),
 
+            new(AppPermissionNames.CanDeleteDistributionChannels,
+                localizer["Delete Distribution Channels"],
+                localizer["Allows the permanent deletion of distribution channels."]),
+            new(AppPermissionNames.CanAddDistributionChannels,
+                localizer["Add Distribution Channels"],
+                localizer["Grants permission to create new distribution channels."]),
+            new(AppPermissionNames.CanEditDistributionChannels,
+                localizer["Edit Distribution Channels"],
+                localizer["Allows modification of distribution channel details and enabling/disabling channels."]),
+            new(AppPermissionNames.CanReadDistributionChannels,
+                localizer["Read Distribution Channels"],
+                localizer["Allows viewing the list of distribution channels and their statistics."]),
+
         ];
         return allPermission;
     }

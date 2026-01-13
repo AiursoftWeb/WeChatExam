@@ -21,6 +21,7 @@ public class AuthenticationIsolationTests
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly Mock<IWeChatService> _mockWeChatService = new();
+    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService = new();
 
     public AuthenticationIsolationTests()
     {
@@ -41,6 +42,7 @@ public class AuthenticationIsolationTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
+        TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
 
         _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
         await _server.UpdateDbAsync<TemplateDbContext>();

@@ -1,0 +1,120 @@
+@model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Distribution Channels"]</h1>
+
+<div class="card">
+    <div class="card-header">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i data-lucide="plus"></i> @Localizer["Create Channel"]
+                </a>
+            </div>
+            <div class="col flex-grow-1">
+                <form method="get" asp-action="Index" class="d-flex">
+                    <input type="text" name="search" value="@Model.SearchQuery" class="form-control me-2"
+                        placeholder="@Localizer["Search by agency name or code..."]" />
+                    <button type="submit" class="btn btn-outline-primary">
+                        <i data-lucide="search"></i>
+                    </button>
+                    @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
+                    {
+                        <a asp-action="Index" class="btn btn-outline-secondary ms-2">
+                            <i data-lucide="x"></i>
+                        </a>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        @if (Model.Channels.Count == 0)
+        {
+            <div class="alert alert-info" role="alert">
+                @if (string.IsNullOrWhiteSpace(Model.SearchQuery))
+                {
+                    @Localizer["No distribution channels found. Click 'Create Channel' to add one."]
+                }
+                else
+                {
+                    @Localizer["No channels match your search query."]
+                }
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Localizer["Code"]</th>
+                            <th>@Localizer["Agency Name"]</th>
+                            <th>@Localizer["Status"]</th>
+                            <th>@Localizer["Registrations"]</th>
+                            <th>@Localizer["Created At"]</th>
+                            <th class="text-end">@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var channel in Model.Channels)
+                        {
+                            var stats = Model.ChannelStats[channel.Id];
+                            <tr>
+                                <td>
+                                    <code class="user-select-all">@channel.Code</code>
+                                </td>
+                                <td>@channel.AgencyName</td>
+                                <td>
+                                    @if (channel.IsEnabled)
+                                    {
+                                        <span class="badge bg-success">@Localizer["Enabled"]</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">@Localizer["Disabled"]</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">@stats.RegistrationCount</span>
+                                </td>
+                                <td>@channel.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                                <td class="text-end">
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Details" asp-route-id="@channel.Id" class="btn btn-sm btn-outline-primary">
+                                            <i data-lucide="eye"></i>
+                                            <span class="visually-hidden">@Localizer["detail"]</span>
+                                        </a>
+                                        <form method="post" asp-action="ToggleEnabled" asp-route-id="@channel.Id" style="display: inline;">
+                                            @Html.AntiForgeryToken()
+                                            @if (channel.IsEnabled)
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-outline-warning" title="@Localizer["Disable"]">
+                                                    <i data-lucide="pause"></i>
+                                                    <span class="visually-hidden">@Localizer["Disable"]</span>
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" class="btn btn-sm btn-outline-success" title="@Localizer["Enable"]">
+                                                    <i data-lucide="play"></i>
+                                                    <span class="visually-hidden">@Localizer["Enable"]</span>
+                                                </button>
+                                            }
+                                        </form>
+                                        <a asp-action="Delete" asp-route-id="@channel.Id" class="btn btn-sm btn-outline-danger">
+                                            <i data-lucide="trash-2"></i>
+                                            <span class="visually-hidden">@Localizer["Delete"]</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-muted mt-3">
+                @Localizer["Total: {0} channel(s)", Model.Channels.Count]
+            </div>
+        }
+    </div>
+</div>
