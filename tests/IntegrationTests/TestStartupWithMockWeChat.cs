@@ -51,7 +51,8 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
 
         // Configure Mock SKIT WeChat API Client instead of real one
-        if (MockWeChatService != null)
+        if (MockWeChatService != null
+        && MockDistributionChannelService != null)
         {
             services.AddScoped(_ => MockWeChatService.Object);
             services.AddScoped(_ => MockDistributionChannelService.Object);

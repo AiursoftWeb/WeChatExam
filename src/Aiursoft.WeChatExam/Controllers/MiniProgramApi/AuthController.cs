@@ -209,21 +209,21 @@ public class AuthController(
             // 3. Update session key and other information if user exists
             var updated = false;
 
-            if (localUser.SessionKey != sessionKey)
+            if (localUser != null && localUser.SessionKey != sessionKey)
             {
                 logger.LogInformation("Updating session key for user '{Username}'", localUser.UserName);
                 localUser.SessionKey = sessionKey;
                 updated = true;
             }
 
-            if (updated)
+            if (localUser != null && updated)
             {
                 await userManager.UpdateAsync(localUser);
             }
         }
 
         // 4. Add the default role if configured (similar to OIDC flow)
-        if (!string.IsNullOrWhiteSpace(_appSettings.DefaultRole))
+        if (localUser != null && !string.IsNullOrWhiteSpace(_appSettings.DefaultRole))
         {
             var userRoles = await userManager.GetRolesAsync(localUser);
             if (!userRoles.Contains(_appSettings.DefaultRole))
