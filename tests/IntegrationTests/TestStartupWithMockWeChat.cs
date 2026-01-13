@@ -23,6 +23,7 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class TestStartupWithMockWeChat : IWebStartup
 {
     public static Mock<IWeChatService>? MockWeChatService { get; set; }
+    public static Mock<IDistributionChannelService>? MockDistributionChannelService { get; set; }
 
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -50,9 +51,11 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
 
         // Configure Mock SKIT WeChat API Client instead of real one
-        if (MockWeChatService != null)
+        if (MockWeChatService != null
+        && MockDistributionChannelService != null)
         {
             services.AddScoped(_ => MockWeChatService.Object);
+            services.AddScoped(_ => MockDistributionChannelService.Object);
         }
 
         // Add Razor Pages and MVC for admin web interface

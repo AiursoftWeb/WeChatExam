@@ -6,6 +6,12 @@ public class Code2SessionDto
 {
     [Required]
     public string Code { get; set; } = string.Empty;
+
+    /// <summary>
+    /// 可选的分销渠道码，用于用户与渠道绑定（仅首次注册时生效）
+    /// </summary>
+    [MaxLength(16)]
+    public string? DistributionCode { get; set; }
 }
 
 public class TokenDto
