@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Agency Name" xml:space="preserve">
+    <value>Tên đại lý</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Quay lại danh sách</value>
+  </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>Chi tiết kênh</value>
+  </data>
+  <data name="Channel Information" xml:space="preserve">
+    <value>Thông tin kênh</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="Disable Channel" xml:space="preserve">
+    <value>Tạm ngừng Kênh</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Vô hiệu hóa</value>
+  </data>
+  <data name="Distribution Code" xml:space="preserve">
+    <value>Mã phân phối</value>
+  </data>
+  <data name="Enable Channel" xml:space="preserve">
+    <value>Kích hoạt Kênh</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Đã bật</value>
+  </data>
+  <data name="Paid Orders" xml:space="preserve">
+    <value>Đơn hàng đã thanh toán</value>
+  </data>
+  <data name="Payment statistics are not yet implemented." xml:space="preserve">
+    <value>Thống kê thanh toán chưa được triển khai.</value>
+  </data>
+  <data name="Registrations" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Thống kê</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="Total Amount" xml:space="preserve">
+    <value>Tổng số tiền</value>
+  </data>
+
+</root>

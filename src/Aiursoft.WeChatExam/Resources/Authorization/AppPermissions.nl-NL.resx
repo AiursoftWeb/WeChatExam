@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Artikelen toevoegen</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Nieuwe distributiekanaalen toevoegen</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Exams toevoegen</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Staat het bewerken van vragen toe, ongeacht wie de eigenaar is.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Staats wijziging van distributiekanaldetails en inschakelen/uitschakelen van kanalen toe.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Staat aanpassing van rolnamen en hun toegewezen machtigingen toe.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Staats lezen van examens, ongeacht eigendom.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Staats de permanente verwijdering van distributiekanaalen toe.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Staat het permanent verwijderen van rollen toe.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Staat het bekijken van de lijst met alle gebruikers toe.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Staats het bekijken van de lijst van distributiekanaalen en hun statistieken toe.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Maakt het mogelijk de lijst met rollen en hun toegewezen machtigingen te bekijken.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Verwijder Artikelen</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Verwijder Distributiekanaalen</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Exams verwijderen</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Bewerk artikelen</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Bewerk distributiekanalen</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Bewerk Examen</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Gebruikersinformatie bewerken</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Verleent machtiging om nieuwe distributiekanaalen te maken.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Verleent toestemming om nieuwe rollen aan te maken.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Tags beheren</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Lees distributiekanaalen</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Examen lezen</value>

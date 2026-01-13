@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Acțiuni</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
+    <value>Numele agenției</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Cod</value>
+  </data>
+  <data name="Create Channel" xml:space="preserve">
+    <value>Crează canal</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Creat la</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Șterge</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>detalii</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>Dezactivare</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Dezactivat</value>
+  </data>
+  <data name="Distribution Channels" xml:space="preserve">
+    <value>Canale de distribuție</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Activează</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activat</value>
+  </data>
+  <data name="No channels match your search query." xml:space="preserve">
+    <value>Nu există canale care să corespundă cererii tale de căutare.</value>
+  </data>
+  <data name="No distribution channels found. Click &apos;Create Channel&apos; to add one." xml:space="preserve">
+    <value>Nu s-au găsit canale de distribuție. Faceți clic pe „Creare canal” pentru a adăuga unul.</value>
+  </data>
+  <data name="Registrations" xml:space="preserve">
+    <value>Înregistrări</value>
+  </data>
+  <data name="Search by agency name or code..." xml:space="preserve">
+    <value>Caută după numele agenției sau cod...</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Stare</value>
+  </data>
+
+</root>

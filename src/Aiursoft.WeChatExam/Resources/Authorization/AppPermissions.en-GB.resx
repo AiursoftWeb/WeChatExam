@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Add Articles</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Add Distribution Channels</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Add Exams</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Allows editing of questions, regardless of ownership.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Allows modification of distribution channel details and enabling or disabling channels.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Allows modification of role names and their assigned permissions.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Allows reading of exams, regardless of ownership.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Allows the permanent deletion of distribution channels.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Allows the permanent deletion of roles.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Allows viewing the list of all users.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Allows viewing the list of distribution channels and their statistics.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Allows viewing the list of roles and their assigned permissions.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Delete Articles</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Delete Distribution Channels</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Delete Exams</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Edit Articles</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Edit Distribution Channels</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Edit Exams</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Edit User Information</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Grants permission to create new distribution channels.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Grants permission to create new roles.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Manage Tags</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Read Distribution Channels</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Read Exams</value>

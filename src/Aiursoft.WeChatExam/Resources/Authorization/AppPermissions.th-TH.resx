@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>เพิ่มบทความ</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>เพิ่มช่องทางการจัดส่ง</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>เพิ่มการสอบ</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้แก้ไขคำถามได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>อนุญาตให้แก้ไขรายละเอียดช่องทางการจัดจำหน่าย และเปิดใช้งาน/ปิดใช้งานช่องทาง</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>อนุญาตให้แก้ไขชื่อบทบาทและสิทธิ์ที่กำหนดให้</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้อ่านข้อสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>อนุญาตให้ลบช่องทางการจัดส่งอย่างถาวร</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>อนุญาตให้ลบบทบาทออกอย่างถาวร</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>อนุญาตให้ดูรายชื่อผู้ใช้ทั้งหมด</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>อนุญาตให้ดูรายการช่องทางการจัดจำหน่ายและสถิติของพวกเขา</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>อนุญาตให้ดูรายการบทบาทและสิทธิ์ที่กำหนดให้</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>ลบบทความ</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>ลบช่องทางการจัดจำหน่าย</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>ลบแบบทดสอบ</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>แก้ไขบทความ</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>แก้ไขช่องทางการจัดส่ง</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>แก้ไขการสอบ</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>แก้ไขข้อมูลผู้ใช้</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>ให้สิทธิ์ในการสร้างช่องทางการจัดจำหน่ายใหม่</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>ให้สิทธิ์ในการสร้างบทบาทใหม่</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>จัดการแท็ก</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>ดูช่องทางการจัดจำหน่าย</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>ดูข้อสอบ</value>

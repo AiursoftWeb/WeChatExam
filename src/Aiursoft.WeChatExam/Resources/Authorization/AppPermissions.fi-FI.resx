@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Lisää artikkelit</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Lisää jakelukanavia</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Lisää kokeet</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Sallii kysymysten muokkaamisen omistajuudesta riippumatta.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Sallii jakelukanavien tietojen muokkaamisen sekä kanavien ottamisen käyttöön ja poistamisen käytöstä.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Sallii roolien nimien ja niihin liitettyjen käyttöoikeuksien muokkaamisen.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Salli kokeiden lukemisen, riippumatta omistajuudesta.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Sallii jakaumakanavien pysyvän poistamisen.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Sallii roolien pysyvän poistamisen.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Mahdollistaa kaikkien käyttäjien luettelon katsomisen.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Sallii jakokanavien ja niiden tilastojen tarkastelun.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Mahdollistaa rooliluettelon ja niihin liitettyjen käyttöoikeuksien tarkastelemisen.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Poista artikkelit</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Poista jakelukanavat</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Poista kokeet</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Muokkaa artikkeleita</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Muokkaa jakelukanavia</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Muokkaa kokeita</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Muokkaa käyttäjätietoja</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Antaa oikeuden luoda uusia jakaumakanavia.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Antaa oikeuden luoda uusia rooleja.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Hallinnoi tunnuksia</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Lue jakokanavat</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Lue kokeet</value>

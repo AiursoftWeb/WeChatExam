@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Thêm Bài viết</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Thêm Kênh Phân Phối</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Thêm bài kiểm tra</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Cho phép chỉnh sửa câu hỏi, bất kể quyền sở hữu.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Cho phép chỉnh sửa chi tiết kênh phân phối và bật/tắt các kênh.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Cho phép sửa đổi tên vai trò và các quyền đã được gán.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Cho phép đọc các bài kiểm tra, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Cho phép xóa vĩnh viễn các kênh phân phối.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn các vai trò.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Cho phép xem danh sách tất cả người dùng.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Cho phép xem danh sách các kênh phân phối và thống kê của chúng.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Cho phép xem danh sách các vai trò và quyền đã được gán cho chúng.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Xóa Bài viết</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Xóa kênh phân phối</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Xóa Bài Kiểm Tra</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Chỉnh sửa Bài viết</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Sửa kênh phân phối</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Sửa bài kiểm tra</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Chỉnh sửa Thông tin Người dùng</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Cấp quyền tạo kênh phân phối mới.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Cấp quyền tạo vai trò mới.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Quản lý thẻ</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Đọc kênh phân phối</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Xem Các Bài Kiểm Tra</value>

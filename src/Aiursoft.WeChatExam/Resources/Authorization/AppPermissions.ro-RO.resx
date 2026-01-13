@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Adaugă articole</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Adaugă canale de distribuție</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Adaugă Examen</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Permite editarea întrebărilor, indiferent de proprietar.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Permite modificarea detaliilor canalului de distribuție și activarea/dezactivarea canalelor.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Permite modificarea numelor rolurilor și a permisiunilor atribuite acestora.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Permite citirea examenelor, indiferent de deținător.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Permite ștergerea permanentă a canalelor de distribuție.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Permite ștergerea permanentă a rolurilor.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Permite vizualizarea listei cu toți utilizatorii.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Permite vizualizarea listei canalelor de distribuție și a statisticilor lor.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Permite vizualizarea listei de roluri și a permisiunilor atribuite acestora.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Șterge Articole</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Șterge Canalele de Distribuție</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Șterge Examenelor</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Editează Articole</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Editare canale de distribuție</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Editare Examen</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Editare Informații Utilizator</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Acordă permisiunea de a crea canale noi de distribuție.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Acordă permisiunea de a crea roluri noi.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Gestionare etichete</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Citește canalele de distribuție</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Citire Exame</value>

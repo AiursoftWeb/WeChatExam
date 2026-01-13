@@ -24,6 +24,9 @@
   <data name="Add Articles" xml:space="preserve">
     <value>Добавить статьи</value>
   </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Добавить каналы распространения</value>
+  </data>
   <data name="Add Exams" xml:space="preserve">
     <value>Добавить экзамены</value>
   </data>
@@ -96,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Разрешает редактирование вопросов, независимо от владельца.</value>
   </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Позволяет изменять сведения о каналах распространения и включать/отключать каналы.</value>
+  </data>
   <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
     <value>Разрешает изменение названий ролей и их назначенных разрешений.</value>
   </data>
@@ -104,6 +110,9 @@
   </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Позволяет читать экзамены, независимо от владения.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Позволяет постоянное удаление каналов распространения.</value>
   </data>
   <data name="Allows the permanent deletion of roles." xml:space="preserve">
     <value>Разрешает окончательное удаление ролей.</value>
@@ -120,6 +129,9 @@
   <data name="Allows viewing the list of all users." xml:space="preserve">
     <value>Разрешает просмотр списка всех пользователей.</value>
   </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Позволяет просматривать список каналов распространения и их статистику.</value>
+  </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Позволяет просматривать список ролей и назначенные им разрешения.</value>
   </data>
@@ -134,6 +146,9 @@
   </data>
   <data name="Delete Articles" xml:space="preserve">
     <value>Удалить статьи</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Удалить каналы распространения</value>
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Удалить экзамены</value>
@@ -159,6 +174,9 @@
   <data name="Edit Articles" xml:space="preserve">
     <value>Редактировать статьи</value>
   </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Редактировать каналы распространения</value>
+  </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Редактировать экзамены</value>
   </data>
@@ -174,6 +192,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Редактирование информации о пользователях</value>
   </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Предоставляет разрешение на создание новых каналов распространения.</value>
+  </data>
   <data name="Grants permission to create new roles." xml:space="preserve">
     <value>Предоставляет разрешение на создание новых ролей.</value>
   </data>
@@ -185,6 +206,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Управление тегами</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Просмотр каналов распространения</value>
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Читать экзамены</value>

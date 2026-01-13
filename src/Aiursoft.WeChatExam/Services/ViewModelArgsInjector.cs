@@ -75,6 +75,9 @@ public class ViewModelArgsInjector(
     
         _ = localizer["Ask Ollama"];
         _ = localizer["Exams"];
+    
+        _ = localizer["Distribution Channels"];
+        _ = localizer["Marketing"];
     }
 
     public void InjectSimple(

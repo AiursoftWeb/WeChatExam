@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Agency Name" xml:space="preserve">
+    <value>ชื่อหน่วยงาน</value>
+  </data>
+  <data name="Are you sure you want to delete this distribution channel?" xml:space="preserve">
+    <value>คุณแน่ใจหรือไม่ว่าต้องการลบช่องทางการจัดจำหน่ายนี้?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>รหัส</value>
+  </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>ยืนยันการลบ</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>ลบช่องทางการจัดจำหน่าย</value>
+  </data>
+  <data name="Registrations" xml:space="preserve">
+    <value>การลงทะเบียน</value>
+  </data>
+  <data name="This action cannot be undone. All associated user bindings will also be deleted." xml:space="preserve">
+    <value>การกระทำนี้ไม่สามารถย้อนกลับได้ ข้อมูลการผูกผู้ใช้ที่เกี่ยวข้องทั้งหมดจะถูกลบด้วย</value>
+  </data>
+  <data name="User bindings will be deleted." xml:space="preserve">
+    <value>ผู้ใช้ที่ผูกไว้จะถูกลบออก</value>
+  </data>
+
+</root>
