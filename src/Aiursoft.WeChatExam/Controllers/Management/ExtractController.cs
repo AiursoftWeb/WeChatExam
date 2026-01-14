@@ -35,7 +35,7 @@ public class ExtractController : Controller
                            "(0=Choice, 1=Blank, 2=Bool, 3=ShortAnswer, 4=Essay), 'Metadata' (array of strings for choices, empty otherwise), " +
                            "'StandardAnswer', 'Explanation', and 'Tags' (array of strings). Do NOT wrap the JSON in Markdown. Output raw JSON only.";
         }
-        return View(model);
+        return this.StackView(model);
     }
 
     [HttpPost]
@@ -44,7 +44,7 @@ public class ExtractController : Controller
     {
         if (!ModelState.IsValid)
         {
-            return View(nameof(Index), model);
+            return this.StackView(model, nameof(Index));
         }
 
         try
@@ -55,12 +55,12 @@ public class ExtractController : Controller
                 OriginalMaterial = model.Material,
                 JsonContent = json
             };
-            return View("Edit", editModel);
+            return this.StackView(editModel, "Edit");
         }
         catch (Exception e)
         {
             ModelState.AddModelError(string.Empty, e.Message);
-            return View(nameof(Index), model);
+            return this.StackView(model, nameof(Index));
         }
     }
 
@@ -70,7 +70,7 @@ public class ExtractController : Controller
     {
         if (!ModelState.IsValid)
         {
-            return View("Edit", model);
+            return this.StackView(model, "Edit");
         }
 
         try
@@ -93,12 +93,12 @@ public class ExtractController : Controller
                 Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title))
             };
 
-            return View("Preview", previewModel);
+            return this.StackView(previewModel, "Preview");
         }
         catch (Exception e)
         {
             model.ErrorMessage = $"JSON Parse Error: {e.Message}";
-            return View("Edit", model);
+            return this.StackView(model, "Edit");
         }
     }
 
@@ -138,7 +138,7 @@ public class ExtractController : Controller
             }
 
             ModelState.AddModelError(string.Empty, $"Save Error: {e.Message}");
-            return View("Preview", model);
+            return this.StackView(model, "Preview");
         }
     }
 
@@ -151,6 +151,6 @@ public class ExtractController : Controller
              JsonContent = model.JsonContent,
              OriginalMaterial = model.OriginalMaterial
         };
-        return View("Edit", editModel);
+        return this.StackView(editModel, "Edit");
     }
 }
