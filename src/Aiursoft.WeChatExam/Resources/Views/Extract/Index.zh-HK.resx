@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Advanced: System Prompt" xml:space="preserve">
+    <value>進階：系統提示</value>
+  </data>
+  <data name="Extract Knowledge from Material" xml:space="preserve">
+    <value>從資料中提取知識</value>
+  </data>
+  <data name="Extract with AI" xml:space="preserve">
+    <value>以AI提取</value>
+  </data>
+  <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
+    <value>給予AI處理資料的指示</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>材料</value>
+  </data>
+  <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
+    <value>在此貼上你的學習材料、文章或筆記...</value>
+  </data>
+  <data name="System Prompt" xml:space="preserve">
+    <value>系統提示</value>
+  </data>
+
+</root>

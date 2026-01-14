@@ -99,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Tillåter redigering av frågor, oavsett ägarskap.</value>
   </data>
+  <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
+    <value>Tillåter extrahering av kunskapspunkter, frågor och taggar från artiklar med hjälp av AI.</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>Tillåter ändring av distributionskanaldetaljer och aktivering/avaktivering av kanaler.</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Starta om den här appen</value>
+  </data>
+  <data name="Use AI Extractor" xml:space="preserve">
+    <value>Använd AI-extraherare</value>
   </data>
   <data name="View Background Jobs" xml:space="preserve">
     <value>Visa bakgrundsjobb</value>

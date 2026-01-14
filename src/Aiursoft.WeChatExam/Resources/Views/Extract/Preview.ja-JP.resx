@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Answer" xml:space="preserve">
+    <value>回答</value>
+  </data>
+  <data name="Back to Edit" xml:space="preserve">
+    <value>編集に戻る</value>
+  </data>
+  <data name="Confirm &amp; Save" xml:space="preserve">
+    <value>確認して保存</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>コンテンツ</value>
+  </data>
+  <data name="No knowledge points found." xml:space="preserve">
+    <value>知識ポイントが見つかりませんでした。</value>
+  </data>
+  <data name="No questions for this knowledge point." xml:space="preserve">
+    <value>この知識ポイントには質問がありません。</value>
+  </data>
+  <data name="Preview &amp; Save" xml:space="preserve">
+    <value>プレビュー &amp; 保存</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>質問</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>タグ</value>
+  </data>
+  <data name="Target Category:" xml:space="preserve">
+    <value>対象カテゴリ:</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>種類</value>
+  </data>
+
+</root>

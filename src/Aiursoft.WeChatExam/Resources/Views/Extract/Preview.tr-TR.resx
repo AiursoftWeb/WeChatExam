@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Answer" xml:space="preserve">
+    <value>Cevap</value>
+  </data>
+  <data name="Back to Edit" xml:space="preserve">
+    <value>Düzenlemeye Geri Dön</value>
+  </data>
+  <data name="Confirm &amp; Save" xml:space="preserve">
+    <value>Onayla ve Kaydet</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>İçerik</value>
+  </data>
+  <data name="No knowledge points found." xml:space="preserve">
+    <value>Bilgi noktası bulunamadı.</value>
+  </data>
+  <data name="No questions for this knowledge point." xml:space="preserve">
+    <value>Bu bilgi noktasına ait soru yok.</value>
+  </data>
+  <data name="Preview &amp; Save" xml:space="preserve">
+    <value>Önizle &amp; Kaydet</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Sorular</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
+  <data name="Target Category:" xml:space="preserve">
+    <value>Hedef Kategori:</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+
+</root>
