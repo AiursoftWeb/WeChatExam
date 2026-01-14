@@ -28,84 +28,91 @@ public class ExtractService : IExtractService
 
     public async Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid categoryId, CancellationToken token = default)
     {
-        using var transaction = await _dbContext.Database.BeginTransactionAsync(token);
-
-        try
-        {
-            foreach (var kpDto in data)
+        var strategy = _dbContext.Database.CreateExecutionStrategy();
+        
+        await strategy.ExecuteAsync<(List<ExtractedKnowledgePoint>, Guid, CancellationToken), int>(
+            state: (data, categoryId, token),
+            operation: async (_, state, _) =>
             {
-                // Create KnowledgePoint
-                var kp = new KnowledgePoint
-                {
-                    Id = Guid.NewGuid(),
-                    Title = kpDto.KnowledgeTitle,
-                    Content = kpDto.KnowledgeContent,
-                    ParentId = null, // Top level for this extraction? Or not supported in UI yet.
-                    CreationTime = DateTime.UtcNow
-                };
-
-                _dbContext.KnowledgePoints.Add(kp);
+                var (dataList, catId, cancellationToken) = state;
                 
-                // Link KP to Category
-                _dbContext.CategoryKnowledgePoints.Add(new CategoryKnowledgePoint
+                using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+                try
                 {
-                    CategoryId = categoryId,
-                    KnowledgePointId = kp.Id
-                });
-
-                // Process Questions
-                foreach (var qDto in kpDto.Questions)
-                {
-                    var questionId = Guid.NewGuid();
-                    var strategy = DetermineGradingStrategy(qDto.QuestionType);
-
-                    var question = new Question
+                    foreach (var kpDto in dataList)
                     {
-                        Id = questionId,
-                        Content = qDto.QuestionContent,
-                        QuestionType = qDto.QuestionType,
-                        GradingStrategy = strategy,
-                        Metadata = JsonConvert.SerializeObject(qDto.Metadata),
-                        StandardAnswer = qDto.StandardAnswer,
-                        Explanation = qDto.Explanation,
-                        CategoryId = categoryId,
-                        CreationTime = DateTime.UtcNow
-                    };
-
-                    _dbContext.Questions.Add(question);
-
-                    // Link Question to KnowledgePoint
-                    _dbContext.KnowledgePointQuestions.Add(new KnowledgePointQuestion
-                    {
-                        KnowledgePointId = kp.Id,
-                        QuestionId = questionId
-                    });
-
-                    // Process Tags (using TagService for deduplication)
-                    // We need to save changes so far? No, AddTagAsync saves internally.
-                    foreach (var tagName in qDto.Tags)
-                    {
-                         // This will save the tag if new. 
-                         // It participates in the current transaction.
-                        var tag = await _tagService.AddTagAsync(tagName);
-                        
-                        _dbContext.QuestionTags.Add(new QuestionTag
+                        // Create KnowledgePoint
+                        var kp = new KnowledgePoint
                         {
-                            QuestionId = questionId,
-                            TagId = tag.Id
-                        });
-                    }
-                }
-            }
+                            Id = Guid.NewGuid(),
+                            Title = kpDto.KnowledgeTitle,
+                            Content = kpDto.KnowledgeContent,
+                            ParentId = null,
+                            CreationTime = DateTime.UtcNow
+                        };
+                        _dbContext.KnowledgePoints.Add(kp);
 
-            await _dbContext.SaveChangesAsync(token);
-            await transaction.CommitAsync(token);
-        }
-        catch
-        {
-            await transaction.RollbackAsync(token);
-            throw;
-        }
+                        // Link KP to Category
+                        _dbContext.CategoryKnowledgePoints.Add(new CategoryKnowledgePoint
+                        {
+                            CategoryId = catId,
+                            KnowledgePointId = kp.Id
+                        });
+
+                        // Process Questions
+                        foreach (var qDto in kpDto.Questions)
+                        {
+                            var questionId = Guid.NewGuid();
+                            var gradingStrategy = DetermineGradingStrategy(qDto.QuestionType);
+                            
+                            var question = new Question
+                            {
+                                Id = questionId,
+                                Content = qDto.QuestionContent,
+                                QuestionType = qDto.QuestionType,
+                                GradingStrategy = gradingStrategy,
+                                Metadata = JsonConvert.SerializeObject(qDto.Metadata),
+                                StandardAnswer = qDto.StandardAnswer,
+                                Explanation = qDto.Explanation,
+                                CategoryId = catId,
+                                CreationTime = DateTime.UtcNow
+                            };
+                            _dbContext.Questions.Add(question);
+
+                            // Link Question to KnowledgePoint
+                            _dbContext.KnowledgePointQuestions.Add(new KnowledgePointQuestion
+                            {
+                                KnowledgePointId = kp.Id,
+                                QuestionId = questionId
+                            });
+
+                            // Process Tags
+                            foreach (var tagName in qDto.Tags)
+                            {
+                                var tag = await _tagService.AddTagAsync(tagName);
+                                _dbContext.QuestionTags.Add(new QuestionTag
+                                {
+                                    QuestionId = questionId,
+                                    TagId = tag.Id
+                                });
+                            }
+                        }
+                    }
+
+                    await _dbContext.SaveChangesAsync(cancellationToken);
+                    await transaction.CommitAsync(cancellationToken);
+                    
+                    return 0;
+                }
+                catch
+                {
+                    await transaction.RollbackAsync(cancellationToken);
+                    throw;
+                }
+            },
+            verifySucceeded: null,
+            cancellationToken: token
+        );
     }
 
     private GradingStrategy DetermineGradingStrategy(QuestionType type)
