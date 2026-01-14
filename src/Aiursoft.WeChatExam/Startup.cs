@@ -52,6 +52,7 @@ public class Startup : IWebStartup
         services.AddScoped<IOllamaService, OllamaService>();
         services.AddScoped<IExamService, ExamService>();
         services.AddScoped<IDistributionChannelService, DistributionChannelService>();
+        services.AddScoped<IExtractService, ExtractService>();
 
         // Background job queue
         services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();

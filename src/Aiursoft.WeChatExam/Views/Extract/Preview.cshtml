@@ -1,0 +1,107 @@
+@model Aiursoft.WeChatExam.Models.ExtractViewModels.ExtractPreviewViewModel
+@using Aiursoft.WeChatExam.Entities
+@{
+    ViewData["Title"] = "Preview Data";
+}
+
+<div class="container-fluid">
+    <form asp-action="Submit" method="post">
+        <input type="hidden" asp-for="JsonContent" />
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Preview & Save</h6>
+                         <div class="d-flex align-items-center">
+                             <label asp-for="CategoryId" class="me-2 mb-0 fw-bold">Target Category:</label>
+                             <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select form-select-sm" style="width: 200px;"></select>
+                             <button type="submit" class="btn btn-primary btn-sm ms-3">
+                                <i class="fas fa-save"></i> Confirm & Save
+                            </button>
+                         </div>
+                    </div>
+                    <div class="card-body">
+                         <div asp-validation-summary="All" class="text-danger"></div>
+                         
+                         @if (Model.Data.Count == 0)
+                         {
+                             <div class="alert alert-warning">No knowledge points found.</div>
+                         }
+                         else
+                         {
+                             <div class="accordion" id="accordionPreview">
+                                 @for (int i = 0; i < Model.Data.Count; i++)
+                                 {
+                                     var kp = Model.Data[i];
+                                     <div class="accordion-item">
+                                         <h2 class="accordion-header" id="heading_@i">
+                                             <button class="accordion-button @(i==0?"":"collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@i" aria-expanded="@(i==0?"true":"false")" aria-controls="collapse_@i">
+                                                 <strong>@kp.KnowledgeTitle</strong> 
+                                                 <span class="badge bg-info ms-2">@kp.Questions.Count Questions</span>
+                                             </button>
+                                         </h2>
+                                         <div id="collapse_@i" class="accordion-collapse collapse @(i==0?"show":"")" aria-labelledby="heading_@i" data-bs-parent="#accordionPreview">
+                                             <div class="accordion-body">
+                                                 <p class="text-muted">@kp.KnowledgeContent</p>
+                                                 <hr />
+                                                 
+                                                 @if (kp.Questions.Any())
+                                                 {
+                                                     <table class="table table-sm table-bordered">
+                                                         <thead>
+                                                             <tr>
+                                                                 <th>Type</th>
+                                                                 <th>Content</th>
+                                                                 <th>Answer</th>
+                                                                 <th>Tags</th>
+                                                             </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                             @foreach (var q in kp.Questions)
+                                                             {
+                                                                 <tr>
+                                                                     <td><span class="badge bg-secondary">@q.QuestionType</span></td>
+                                                                     <td>
+                                                                         @q.QuestionContent
+                                                                         @if(q.Metadata != null && q.Metadata.Any())
+                                                                         {
+                                                                             <ul class="mb-0 mt-1 small">
+                                                                                 @foreach(var opt in q.Metadata) { <li>@opt</li> }
+                                                                             </ul>
+                                                                         }
+                                                                     </td>
+                                                                     <td>@q.StandardAnswer</td>
+                                                                     <td>
+                                                                         @foreach(var t in q.Tags)
+                                                                         {
+                                                                             <span class="badge bg-secondary rounded-pill">@t</span>
+                                                                         }
+                                                                     </td>
+                                                                 </tr>
+                                                             }
+                                                         </tbody>
+                                                     </table>
+                                                 }
+                                                 else
+                                                 {
+                                                     <p class="text-muted small">No questions for this knowledge point.</p>
+                                                 }
+                                             </div>
+                                         </div>
+                                     </div>
+                                 }
+                             </div>
+                         }
+                    </div>
+                </div>
+                
+                <div class="mt-3 mb-5">
+                    <a href="javascript:history.back()" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
