@@ -63,5 +63,7 @@ public static class AppPermissionNames
     public const string CanAddDistributionChannels = nameof(CanAddDistributionChannels);
     public const string CanEditDistributionChannels = nameof(CanEditDistributionChannels);
     public const string CanReadDistributionChannels = nameof(CanReadDistributionChannels);
+    
+    public const string CanUseAIExtractor = nameof(CanUseAIExtractor);
 
 }

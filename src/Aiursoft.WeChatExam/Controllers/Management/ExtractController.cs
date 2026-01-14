@@ -1,6 +1,8 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.ExtractViewModels;
 using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
+[Authorize(Policy = AppPermissionNames.CanUseAIExtractor)]
 public class ExtractController : Controller
 {
     private readonly IExtractService _extractService;

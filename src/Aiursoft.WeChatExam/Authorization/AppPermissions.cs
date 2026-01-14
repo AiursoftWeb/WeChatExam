@@ -140,6 +140,11 @@ public class AppPermissions
                 localizer["Read Distribution Channels"],
                 localizer["Allows viewing the list of distribution channels and their statistics."]),
 
+            new(AppPermissionNames.CanUseAIExtractor,
+                localizer["Use AI Extractor"],
+                localizer["Allows extracting knowledge points, questions, tags from articles using AI."]),
+
+
         ];
         return allPermission;
     }
