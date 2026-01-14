@@ -99,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>Permet la modification des questions, indépendamment de leur propriétaire.</value>
   </data>
+  <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
+    <value>Permet d&apos;extraire des points de connaissance, des questions et des balises à partir d&apos;articles à l&apos;aide de l&apos;IA.</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>Permet la modification des détails des canaux de distribution et l&apos;activation/désactivation des canaux.</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Redémarrer cette application</value>
+  </data>
+  <data name="Use AI Extractor" xml:space="preserve">
+    <value>Utiliser l&apos;extraction par IA</value>
   </data>
   <data name="View Background Jobs" xml:space="preserve">
     <value>Afficher les tâches en arrière-plan</value>

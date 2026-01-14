@@ -99,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>允許編輯問題，不論擁有權。</value>
   </data>
+  <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
+    <value>容許利用人工智能從文章中提取知識要點、問題及標籤。</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>允許修改分發管道詳情及啟用/停用管道。</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>重新啟動此應用程式</value>
+  </data>
+  <data name="Use AI Extractor" xml:space="preserve">
+    <value>使用 AI 提取器</value>
   </data>
   <data name="View Background Jobs" xml:space="preserve">
     <value>檢視背景作業</value>

@@ -99,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>सवालों को संपादित करने की अनुमति देता है, चाहे उनका स्वामित्व किसी के पास हो।</value>
   </data>
+  <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
+    <value>AI का उपयोग करके लेखों से ज्ञान बिंदुओं, प्रश्नों, टैग्स को निकालने की अनुमति देता है।</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>वितरण चैनल विवरण में संशोधन और चैनल सक्षम/अक्षम करने की अनुमति देता है।</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>इस ऐप को पुनरारंभ करें</value>
+  </data>
+  <data name="Use AI Extractor" xml:space="preserve">
+    <value>AI एक्सट्रैक्टर का उपयोग करें</value>
   </data>
   <data name="View Background Jobs" xml:space="preserve">
     <value>पृष्ठभूमि कार्य देखें</value>

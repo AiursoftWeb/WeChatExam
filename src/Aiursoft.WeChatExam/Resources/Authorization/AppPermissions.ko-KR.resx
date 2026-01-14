@@ -99,6 +99,9 @@
   <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
     <value>소유권에 관계없이 질문을 수정할 수 있습니다.</value>
   </data>
+  <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
+    <value>AI를 사용하여 문서에서 지식 포인트, 질문, 태그를 추출할 수 있습니다.</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>배포 채널 세부 정보 수정 및 채널 활성화/비활성화 가능</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>이 앱 재시작</value>
+  </data>
+  <data name="Use AI Extractor" xml:space="preserve">
+    <value>AI 추출기 사용</value>
   </data>
   <data name="View Background Jobs" xml:space="preserve">
     <value>백그라운드 작업 보기</value>
