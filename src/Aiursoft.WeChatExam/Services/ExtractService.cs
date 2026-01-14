@@ -32,7 +32,7 @@ public class ExtractService : IExtractService
         
         await strategy.ExecuteAsync<(List<ExtractedKnowledgePoint>, Guid, CancellationToken), int>(
             state: (data, categoryId, token),
-            operation: async (context, state, ct) =>
+            operation: async (_, state, _) =>
             {
                 var (dataList, catId, cancellationToken) = state;
                 
