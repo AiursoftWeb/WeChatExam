@@ -6,7 +6,7 @@ public class ExtractedKnowledgePoint
 {
     public string KnowledgeTitle { get; set; } = string.Empty;
     public string KnowledgeContent { get; set; } = string.Empty;
-    public List<ExtractedQuestion> Questions { get; set; } = new();
+    public List<ExtractedQuestion> Questions { get; set; } = null!;
 }
 
 public class ExtractedQuestion
@@ -21,5 +21,5 @@ public class ExtractedQuestion
     
     public string Explanation { get; set; } = string.Empty;
     
-    public List<string> Tags { get; set; } = new();
+    public List<string> Tags { get; set; } = null!;
 }

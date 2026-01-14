@@ -1,14 +1,12 @@
-using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.ExtractViewModels;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace Aiursoft.WeChatExam.Controllers;
+namespace Aiursoft.WeChatExam.Controllers.Management;
 
 public class ExtractController : Controller
 {
@@ -23,16 +21,17 @@ public class ExtractController : Controller
         _dbContext = dbContext;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(ExtractIndexViewModel? model)
     {
-        var model = new ExtractIndexViewModel
+        model ??= new ExtractIndexViewModel();
+        if (string.IsNullOrEmpty(model.SystemPrompt))
         {
-            SystemPrompt = "You are an assistant that extracts knowledge points and questions from the provided material. " +
+            model.SystemPrompt = "You are an assistant that extracts knowledge points and questions from the provided material. " +
                            "Output a JSON array where each element contains 'KnowledgeTitle', 'KnowledgeContent', " +
                            "and a list of 'Questions'. Each question should have 'QuestionContent', 'QuestionType' " +
                            "(0=Choice, 1=Blank, 2=Bool, 3=ShortAnswer, 4=Essay), 'Metadata' (array of strings for choices, empty otherwise), " +
-                           "'StandardAnswer', 'Explanation', and 'Tags' (array of strings). Do NOT wrap the JSON in Markdown. Output raw JSON only."
-        };
+                           "'StandardAnswer', 'Explanation', and 'Tags' (array of strings). Do NOT wrap the JSON in Markdown. Output raw JSON only.";
+        }
         return View(model);
     }
 
@@ -87,6 +86,7 @@ public class ExtractController : Controller
             {
                 JsonContent = model.JsonContent,
                 Data = data,
+                OriginalMaterial = model.OriginalMaterial,
                 Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title))
             };
 
@@ -118,20 +118,36 @@ public class ExtractController : Controller
         }
         catch (Exception e)
         {
-             // If error, reload preview with error.
-             // We need to reload Categories
-             var categories = await _dbContext.Categories
+            // If error, reload preview with error.
+            // We need to reload Categories
+            var categories = await _dbContext.Categories
                 .OrderBy(c => c.Title)
                 .ToListAsync();
-             
-             model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
-             // We also need to re-deserialize data for display if we return View
-             try {
+
+            model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
+            // We also need to re-deserialize data for display if we return View
+            try {
                 model.Data = JsonConvert.DeserializeObject<List<ExtractedKnowledgePoint>>(model.JsonContent) ?? new();
-             } catch {}
-             
-             ModelState.AddModelError(string.Empty, $"Save Error: {e.Message}");
-             return View("Preview", model);
+            } 
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            ModelState.AddModelError(string.Empty, $"Save Error: {e.Message}");
+            return View("Preview", model);
         }
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult ResumeEdit(ExtractPreviewViewModel model)
+    {
+        var editModel = new ExtractEditViewModel
+        {
+             JsonContent = model.JsonContent,
+             OriginalMaterial = model.OriginalMaterial
+        };
+        return View("Edit", editModel);
     }
 }

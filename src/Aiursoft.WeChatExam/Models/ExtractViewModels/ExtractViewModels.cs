@@ -6,6 +6,10 @@ namespace Aiursoft.WeChatExam.Models.ExtractViewModels;
 
 public class ExtractIndexViewModel: UiStackLayoutViewModel
 {
+    public ExtractIndexViewModel()
+    {
+        PageTitle = "Extract";
+    }
     [Required]
     [Display(Name = "Material")]
     public string Material { get; set; } =string.Empty;
@@ -17,6 +21,11 @@ public class ExtractIndexViewModel: UiStackLayoutViewModel
 
 public class ExtractEditViewModel: UiStackLayoutViewModel
 {
+    public ExtractEditViewModel()
+    {
+        PageTitle = "Edit";
+    }
+    
     [Required]
     public string JsonContent { get; set; } = string.Empty;
 
@@ -27,9 +36,15 @@ public class ExtractEditViewModel: UiStackLayoutViewModel
 
 public class ExtractPreviewViewModel: UiStackLayoutViewModel
 {
+    public ExtractPreviewViewModel()
+    {
+        PageTitle = "Preview";
+    }
     public string JsonContent { get; set; } = string.Empty;
 
     public List<ExtractedKnowledgePoint> Data { get; set; } = new();
+
+    public string OriginalMaterial { get; set; } = string.Empty;
 
     [Required]
     [Display(Name = "Target Category")]
