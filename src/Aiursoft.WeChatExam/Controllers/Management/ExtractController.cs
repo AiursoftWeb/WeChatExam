@@ -2,6 +2,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.ExtractViewModels;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Authorization;
+using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,16 +16,19 @@ public class ExtractController : Controller
 {
     private readonly IExtractService _extractService;
     private readonly TemplateDbContext _dbContext;
+    private readonly BackgroundJobQueue _backgroundJobQueue;
 
     public ExtractController(
         IExtractService extractService,
-        TemplateDbContext dbContext)
+        TemplateDbContext dbContext,
+        BackgroundJobQueue backgroundJobQueue)
     {
         _extractService = extractService;
         _dbContext = dbContext;
+        _backgroundJobQueue = backgroundJobQueue;
     }
 
-    public IActionResult Index(ExtractIndexViewModel? model)
+    public async Task<IActionResult> Index(ExtractIndexViewModel? model)
     {
         model ??= new ExtractIndexViewModel();
         if (string.IsNullOrEmpty(model.SystemPrompt))
@@ -35,6 +39,12 @@ public class ExtractController : Controller
                            "(0=Choice, 1=Blank, 2=Bool, 3=ShortAnswer, 4=Essay), 'Metadata' (array of strings for choices, empty otherwise), " +
                            "'StandardAnswer', 'Explanation', and 'Tags' (array of strings). Do NOT wrap the JSON in Markdown. Output raw JSON only.";
         }
+
+        var categories = await _dbContext.Categories
+            .OrderBy(c => c.Title)
+            .ToListAsync();
+        model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
+        
         return this.StackView(model);
     }
 
@@ -44,24 +54,28 @@ public class ExtractController : Controller
     {
         if (!ModelState.IsValid)
         {
+            var categories = await _dbContext.Categories
+                .OrderBy(c => c.Title)
+                .ToListAsync();
+            model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
             return this.StackView(model, nameof(Index));
         }
 
-        try
-        {
-            var json = await _extractService.GenerateJsonAsync(model.Material, model.SystemPrompt);
-            var editModel = new ExtractEditViewModel
+        _backgroundJobQueue.QueueWithDependency<IExtractService>(
+            queueName: "Extraction",
+            jobName: $"AI Extraction to Category {model.CategoryId}",
+            job: async (extractService) =>
             {
-                OriginalMaterial = model.Material,
-                JsonContent = json
-            };
-            return this.StackView(editModel, "Edit");
-        }
-        catch (Exception e)
-        {
-            ModelState.AddModelError(string.Empty, e.Message);
-            return this.StackView(model, nameof(Index));
-        }
+                var json = await extractService.GenerateJsonAsync(model.Material, model.SystemPrompt);
+                var data = JsonConvert.DeserializeObject<List<ExtractedKnowledgePoint>>(json);
+                if (data != null)
+                {
+                    await extractService.SaveAsync(data, model.CategoryId);
+                }
+                return json;
+            });
+
+        return RedirectToAction("Index", "Jobs");
     }
 
     [HttpPost]

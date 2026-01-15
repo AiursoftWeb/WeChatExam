@@ -68,10 +68,10 @@ public class QueueWorkerService(
             var service = scope.ServiceProvider.GetRequiredService(job.ServiceType);
 
             // Execute the job
-            await job.JobAction(service);
+            var result = await job.JobAction(service);
 
             // Mark as success
-            backgroundJobQueue.CompleteJob(job.JobId, true);
+            backgroundJobQueue.CompleteJob(job.JobId, true, result: result);
 
             logger.LogInformation("Job {JobId} ({JobName}) completed successfully",
                 job.JobId, job.JobName);

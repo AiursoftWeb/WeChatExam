@@ -81,6 +81,15 @@
                                                 {
                                                     <span class="badge bg-success">@Localizer["Success"]</span>
                                                 }
+                                                @if (!string.IsNullOrEmpty(job.Result))
+                                                {
+                                                    <details class="mt-2">
+                                                        <summary class="text-success" style="cursor: pointer; font-size: 0.85rem;">
+                                                            @Localizer["View Result"]
+                                                        </summary>
+                                                        <pre class="mt-2 p-2 bg-light" style="font-size: 0.75rem; max-height: 150px; overflow-y: auto;">@job.Result</pre>
+                                                    </details>
+                                                }
                                                 break;
                                             case JobStatus.Failed:
                                                 <div>

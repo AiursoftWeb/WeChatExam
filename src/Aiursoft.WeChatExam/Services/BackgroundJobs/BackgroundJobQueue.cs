@@ -29,6 +29,29 @@ public class BackgroundJobQueue
             QueueName = queueName,
             JobName = jobName,
             ServiceType = typeof(TService),
+            JobAction = async (service) =>
+            {
+                await job((TService)service);
+                return null;
+            }
+        };
+
+        _allJobs[jobInfo.JobId] = jobInfo;
+
+        var queue = _queuesByName.GetOrAdd(queueName, _ => new ConcurrentQueue<Guid>());
+        queue.Enqueue(jobInfo.JobId);
+
+        return jobInfo.JobId;
+    }
+
+    public Guid QueueWithDependency<TService>(string queueName, string jobName, Func<TService, Task<string?>> job)
+        where TService : notnull
+    {
+        var jobInfo = new JobInfo
+        {
+            QueueName = queueName,
+            JobName = jobName,
+            ServiceType = typeof(TService),
             JobAction = async (service) => await job((TService)service)
         };
 
@@ -44,6 +67,12 @@ public class BackgroundJobQueue
     /// Queue a job with dependency injection support using default queue name based on service type.
     /// </summary>
     public Guid QueueWithDependency<TService>(Func<TService, Task> job)
+        where TService : notnull
+    {
+        return QueueWithDependency(typeof(TService).Name, typeof(TService).Name, job);
+    }
+
+    public Guid QueueWithDependency<TService>(Func<TService, Task<string?>> job)
         where TService : notnull
     {
         return QueueWithDependency(typeof(TService).Name, typeof(TService).Name, job);
@@ -149,13 +178,14 @@ public class BackgroundJobQueue
     /// <summary>
     /// Mark a job as completed (success or failed).
     /// </summary>
-    internal void CompleteJob(Guid jobId, bool success, string? errorMessage = null)
+    internal void CompleteJob(Guid jobId, bool success, string? errorMessage = null, string? result = null)
     {
         if (_allJobs.TryGetValue(jobId, out var job))
         {
             job.Status = success ? JobStatus.Success : JobStatus.Failed;
             job.CompletedAt = DateTime.UtcNow;
             job.ErrorMessage = errorMessage;
+            job.Result = result;
 
             // Mark the queue as no longer processing
             _queueProcessingStatus[job.QueueName] = false;
