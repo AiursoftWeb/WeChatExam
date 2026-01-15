@@ -2,6 +2,7 @@ using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Models.HomeViewModels;
 using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
@@ -9,13 +10,6 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class HomeController : Controller
 {
-    private readonly IOllamaService _ollamaService;
-
-    public HomeController(IOllamaService ollamaService)
-    {
-        _ollamaService = ollamaService;
-    }
-
     public IActionResult Index()
     {
         return this.SimpleView(new IndexViewModel());
@@ -39,7 +33,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AskOllama(string question, CancellationToken cancellationToken)
+    public IActionResult AskOllama(string question, [FromServices] BackgroundJobQueue backgroundJobQueue)
     {
         if (string.IsNullOrWhiteSpace(question))
         {
@@ -50,13 +44,12 @@ public class HomeController : Controller
             });
         }
 
-        var answer = await _ollamaService.AskQuestion(question, cancellationToken);
+        backgroundJobQueue.QueueWithDependency<IOllamaService>(
+            queueName: "OllamaChat",
+            jobName: $"Ask Ollama: {question}",
+            job: async (ollamaService) => await ollamaService.AskQuestion(question)
+        );
 
-        return this.StackView(new AskOllamaViewModel
-        {
-            PageTitle = "Ask Ollama",
-            Question = question,
-            Answer = answer
-        });
+        return RedirectToAction("Index", "Jobs");
     }
 }

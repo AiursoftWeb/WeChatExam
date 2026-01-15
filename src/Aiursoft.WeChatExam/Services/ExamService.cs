@@ -1,4 +1,5 @@
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Services;
@@ -7,11 +8,16 @@ public class ExamService : IExamService
 {
     private readonly TemplateDbContext _dbContext;
     private readonly IGradingService _gradingService;
+    private readonly BackgroundJobQueue _backgroundJobQueue;
 
-    public ExamService(TemplateDbContext dbContext, IGradingService gradingService)
+    public ExamService(
+        TemplateDbContext dbContext, 
+        IGradingService gradingService,
+        BackgroundJobQueue backgroundJobQueue)
     {
         _dbContext = dbContext;
         _gradingService = gradingService;
+        _backgroundJobQueue = backgroundJobQueue;
     }
 
     #region Admin & Management
@@ -234,35 +240,47 @@ public class ExamService : IExamService
             .FirstOrDefaultAsync(r => r.Id == examRecordId);
 
         if (record == null) throw new InvalidOperationException("Record not found");
-        
-        // If already submitted, just return it (idempotent), but if time expired but not submitted, we allow finishing (since it calculates score)
-        // actually, FinishExam is called TO submit. If time expired, we should allow them to "finish" but only if they are just doing it right now?
-        // Wait, if time expired, they CANNOT submit new answers, but they SHOULD be able to "Hand in" the paper to see result?
-        // Actually the requirement is "prevent students from submitting answers ... after the allowed duration".
-        // If they click "Finish", it just calculates score. It deals with existing answers. So technically FinishExam check might be less strict?
-        // But the user asked: "FinishExamAsync (交卷) ... completely lacks validation".
-        // So we should strictly valid current time. If they are late, they might have to rely on a background job to auto-submit, or we allow them to submit but stamp it?
-        // User said: "Requests arriving after ... will be rejected".
-        // So let's reject.
         EnsureExamNotExpired(record);
 
         record.SubmitTime = DateTime.UtcNow;
+        record.Status = ExamRecordStatus.Submitted;
         
-        // Auto Grading Logic
-        var totalScore = 0;
-        
+        _dbContext.ExamRecords.Update(record);
+        await _dbContext.SaveChangesAsync();
+
+        // Queue grading in background
+        _backgroundJobQueue.QueueWithDependency<IExamService>(
+            queueName: "Grading",
+            jobName: $"Grading Exam Record {record.Id}",
+            job: async (examService) =>
+            {
+                await examService.GradeExamAsync(record.Id);
+            });
+
+        return record;
+    }
+
+    public async Task GradeExamAsync(Guid examRecordId)
+    {
+        var record = await _dbContext.ExamRecords
+            .Include(r => r.AnswerRecords)
+            .FirstOrDefaultAsync(r => r.Id == examRecordId);
+
+        if (record == null) return;
+
         // Fetch full question snapshots for grading
         var questionSnapshots = await _dbContext.QuestionSnapshots
             .Where(qs => qs.PaperSnapshotId == record.PaperSnapshotId)
             .ToListAsync();
 
+        var totalScore = 0;
         foreach (var qSnap in questionSnapshots)
         {
             var ans = record.AnswerRecords.FirstOrDefault(a => a.QuestionSnapshotId == qSnap.Id);
             var userAnswer = ans?.UserAnswer ?? "";
 
             var result = await _gradingService.GradeAsync(userAnswer, qSnap.StandardAnswer, qSnap.GradingStrategy, qSnap.Score, qSnap.Content);
-            
+
             // If answer record didn't exist (unanswered), create one to store score 0
             if (ans == null)
             {
@@ -290,12 +308,8 @@ public class ExamService : IExamService
         }
 
         record.TotalScore = totalScore;
-        record.Status = ExamRecordStatus.Submitted;
-        
         _dbContext.ExamRecords.Update(record);
         await _dbContext.SaveChangesAsync();
-
-        return record;
     }
 
     public async Task<ExamRecord?> GetExamRecordAsync(Guid recordId)

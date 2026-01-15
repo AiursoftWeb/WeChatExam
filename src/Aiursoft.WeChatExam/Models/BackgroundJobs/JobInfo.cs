@@ -33,7 +33,9 @@ public class JobInfo
 
     public string? ErrorMessage { get; set; }
 
+    public string? Result { get; set; }
+
     public required Type ServiceType { get; init; }
 
-    public required Func<object, Task> JobAction { get; init; }
+    public required Func<object, Task<string?>> JobAction { get; init; }
 }

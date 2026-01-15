@@ -17,6 +17,12 @@ public class ExtractIndexViewModel: UiStackLayoutViewModel
     [Required]
     [Display(Name = "System Prompt")]
     public string SystemPrompt { get; set; } = string.Empty;
+
+    [Required]
+    [Display(Name = "Target Category")]
+    public Guid CategoryId { get; set; }
+
+    public SelectList? Categories { get; set; }
 }
 
 public class ExtractEditViewModel: UiStackLayoutViewModel

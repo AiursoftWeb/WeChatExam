@@ -17,6 +17,7 @@ public interface IExamService
     Task<ExamRecord> StartExamAsync(Guid examId, string userId);
     Task SubmitAnswerAsync(Guid examRecordId, Guid questionSnapshotId, string answer);
     Task<ExamRecord> FinishExamAsync(Guid examRecordId);
+    Task GradeExamAsync(Guid examRecordId);
     Task<ExamRecord?> GetExamRecordAsync(Guid recordId);
     
     // Grading
