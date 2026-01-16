@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 
@@ -22,7 +23,7 @@ public class QuestionSnapshotDto
     public int Order { get; set; }
     public int Score { get; set; }
     public string Content { get; set; } = string.Empty;
-    public string QuestionType { get; set; } = string.Empty;
+    public QuestionType QuestionType { get; set; }
     public string Metadata { get; set; } = string.Empty;
 }
 
