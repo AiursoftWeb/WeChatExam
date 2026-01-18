@@ -27,4 +27,9 @@
   <ItemGroup>
     <ProjectReference Include="..\src\Aiursoft.WeChatExam\Aiursoft.WeChatExam.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Aiursoft.WeChatExam.MTQL.Tests\**" />
+    <EmbeddedResource Remove="Aiursoft.WeChatExam.MTQL.Tests\**" />
+    <None Remove="Aiursoft.WeChatExam.MTQL.Tests\**" />
+  </ItemGroup>
 </Project>
