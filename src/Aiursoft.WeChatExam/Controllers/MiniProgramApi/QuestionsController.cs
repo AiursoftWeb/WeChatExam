@@ -21,7 +21,7 @@ public class QuestionsController : ControllerBase
     /// </summary>
     /// <param name="categoryId">分类ID (可选)</param>
     /// <param name="tagName">Tag 显示名称 (可选)</param>
-    /// <param name="mtql">mtql (可选)</param>
+    /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock && not metal`</param>
     /// <returns>题目列表，按创建时间倒序</returns>
     /// <response code="200">成功返回题目列表</response>
     /// <response code="404">指定的分类不存在</response>
