@@ -34,10 +34,9 @@ public static class PredicateBuilder
 
     private static Expression<Func<Question, bool>> HasTag(string tagName)
     {
-        // q => q.QuestionTags.Any(qt => qt.Tag.DisplayName == tagName)
-        // Note: Needs to handle potential nulls if strictly following nullable, 
-        // but EF Core usually handles navigation properties gracefully in query translation.
-        return q => q.QuestionTags.Any(qt => qt.Tag != null && qt.Tag.DisplayName == tagName);
+        // Use NormalizedName for consistent case-insensitive lookup
+        var normalized = tagName.ToUpperInvariant();
+        return q => q.QuestionTags.Any(qt => qt.Tag != null && qt.Tag.NormalizedName == normalized);
     }
 
     private static Expression<Func<T, bool>> Not<T>(Expression<Func<T, bool>> expr)

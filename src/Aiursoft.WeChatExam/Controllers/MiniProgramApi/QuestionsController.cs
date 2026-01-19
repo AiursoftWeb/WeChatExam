@@ -64,9 +64,14 @@ public class QuestionsController : ControllerBase
                 // PredicateBuilder 生成的表达式是 Expression<Func<Question, bool>>，可以直接用于 Where
                 query = query.Where(predicate);
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 return BadRequest(new { Message = $"Invalid MTQL query: {ex.Message}" });
+            }
+            catch (Exception ex)
+            {
+                // Log generic error if needed
+                return BadRequest(new { Message = $"Error parsing MTQL query: {ex.Message}" });
             }
         }
         else if (!string.IsNullOrWhiteSpace(tagName))

@@ -10,15 +10,15 @@ public static class Tokenizer
         var i = 0;
         while (i < mtql.Length)
         {
-            var charC = mtql[i];
+            var c = mtql[i];
 
-            if (char.IsWhiteSpace(charC))
+            if (char.IsWhiteSpace(c))
             {
                 i++;
                 continue;
             }
 
-            switch (charC)
+            switch (c)
             {
                 case '(':
                     tokens.Add(new Token(TokenType.LParen, "("));
@@ -50,14 +50,35 @@ public static class Tokenizer
                         throw new ArgumentException($"Invalid character '|' at index {i}. Did you mean '||'?");
                     }
                     break;
+                case '\'': // Support quoted strings for tags with spaces
+                case '"': 
+                {
+                    var quote = c;
+                    i++; // Skip opening quote
+                    var start = i;
+                    while (i < mtql.Length && mtql[i] != quote)
+                    {
+                        i++;
+                    }
+
+                    if (i >= mtql.Length)
+                    {
+                        throw new ArgumentException($"Unterminated string starting at index {start - 1}.");
+                    }
+
+                    var value = mtql.Substring(start, i - start);
+                    tokens.Add(new Token(TokenType.Tag, value));
+                    i++; // Skip closing quote
+                    break;
+                }
                 default:
                 {
                     // Read word
                     var start = i;
                     while (i < mtql.Length)
                     {
-                        var c = mtql[i];
-                        if (char.IsWhiteSpace(c) || c == '(' || c == ')' || c == '&' || c == '|')
+                        var next = mtql[i];
+                        if (char.IsWhiteSpace(next) || next == '(' || next == ')' || next == '&' || next == '|')
                         {
                             break;
                         }

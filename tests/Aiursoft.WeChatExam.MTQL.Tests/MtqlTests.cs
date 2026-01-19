@@ -28,6 +28,17 @@ public class MtqlTests
     }
 
     [TestMethod]
+    public void TestTokenizerQuotedStrings()
+    {
+         var input = "'Computer Science' && \"Artificial Intelligence\"";
+         var tokens = Tokenizer.Tokenize(input);
+         Assert.AreEqual(3, tokens.Count);
+         Assert.AreEqual("Computer Science", tokens[0].Value);
+         Assert.AreEqual(TokenType.And, tokens[1].Type);
+         Assert.AreEqual("Artificial Intelligence", tokens[2].Value);
+    }
+
+    [TestMethod]
     public void TestTokenizerRecursive()
     {
          var input = "(a || b) && not c";
