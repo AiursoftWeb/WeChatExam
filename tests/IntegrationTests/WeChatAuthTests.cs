@@ -42,7 +42,7 @@ public class WeChatAuthTests
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
 
         _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
-        await _server.UpdateDbAsync<TemplateDbContext>();
+        await _server.UpdateDbAsync<WeChatExamDbContext>();
         await _server.SeedAsync();
         await _server.StartAsync();
     }

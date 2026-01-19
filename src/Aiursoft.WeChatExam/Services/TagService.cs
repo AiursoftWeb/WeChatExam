@@ -5,9 +5,9 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class TagService : ITagService
 {
-    private readonly TemplateDbContext _dbContext;
+    private readonly WeChatExamDbContext _dbContext;
 
-    public TagService(TemplateDbContext dbContext)
+    public TagService(WeChatExamDbContext dbContext)
     {
         _dbContext = dbContext;
     }

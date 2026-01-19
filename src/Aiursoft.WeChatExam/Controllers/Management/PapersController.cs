@@ -14,7 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// Controller for managing exam papers
 /// </summary>
 [LimitPerMin]
-public class PapersController(TemplateDbContext context, IPaperService paperService) : Controller
+public class PapersController(WeChatExamDbContext context, IPaperService paperService) : Controller
 {
     // GET: papers
     [RenderInNavBar(

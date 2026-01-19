@@ -9,7 +9,7 @@ public class Program
     public static async Task Main(string[] args)
     {
         var app = await AppAsync<Startup>(args);
-        await app.UpdateDbAsync<TemplateDbContext>();
+        await app.UpdateDbAsync<WeChatExamDbContext>();
         await app.SeedAsync();
         await app.CopyAvatarFileAsync();
         await app.RunAsync();

@@ -19,7 +19,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class RolesController(
     UserManager<User> userManager,
-    TemplateDbContext context,
+    WeChatExamDbContext context,
     RoleManager<IdentityRole> roleManager)
     : Controller
 {

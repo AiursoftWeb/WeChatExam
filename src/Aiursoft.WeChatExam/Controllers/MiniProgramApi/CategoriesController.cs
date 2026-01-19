@@ -9,9 +9,9 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [ApiController]
 public class CategoriesController : ControllerBase
 {
-    private readonly TemplateDbContext _context;
+    private readonly WeChatExamDbContext _context;
 
-    public CategoriesController(TemplateDbContext context)
+    public CategoriesController(WeChatExamDbContext context)
     {
         _context = context;
     }

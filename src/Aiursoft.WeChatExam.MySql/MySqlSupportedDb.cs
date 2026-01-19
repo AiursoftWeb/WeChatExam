@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiursoft.WeChatExam.MySql;
 
-public class MySqlSupportedDb(bool allowCache, bool splitQuery) : SupportedDatabaseType<TemplateDbContext>
+public class MySqlSupportedDb(bool allowCache, bool splitQuery) : SupportedDatabaseType<WeChatExamDbContext>
 {
     public override string DbType => "MySql";
 
@@ -17,7 +17,7 @@ public class MySqlSupportedDb(bool allowCache, bool splitQuery) : SupportedDatab
             allowCache: allowCache);
     }
 
-    public override TemplateDbContext ContextResolver(IServiceProvider serviceProvider)
+    public override WeChatExamDbContext ContextResolver(IServiceProvider serviceProvider)
     {
         return serviceProvider.GetRequiredService<MySqlContext>();
     }

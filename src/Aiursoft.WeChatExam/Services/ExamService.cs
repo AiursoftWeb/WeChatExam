@@ -6,12 +6,12 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class ExamService : IExamService
 {
-    private readonly TemplateDbContext _dbContext;
+    private readonly WeChatExamDbContext _dbContext;
     private readonly IGradingService _gradingService;
     private readonly BackgroundJobQueue _backgroundJobQueue;
 
     public ExamService(
-        TemplateDbContext dbContext, 
+        WeChatExamDbContext dbContext, 
         IGradingService gradingService,
         BackgroundJobQueue backgroundJobQueue)
     {

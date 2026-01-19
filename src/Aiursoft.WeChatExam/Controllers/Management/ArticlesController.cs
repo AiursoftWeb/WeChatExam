@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 [Authorize]
 public class ArticlesController(
-    TemplateDbContext context,
+    WeChatExamDbContext context,
     UserManager<User> userManager) : Controller
 {
     // GET: Articles

@@ -9,7 +9,7 @@ namespace Aiursoft.WeChatExam;
 
 public static class ProgramExtends
 {
-    private static async Task<bool> ShouldSeedAsync(TemplateDbContext dbContext)
+    private static async Task<bool> ShouldSeedAsync(WeChatExamDbContext dbContext)
     {
         var haveUsers = await dbContext.Users.AnyAsync();
         var haveRoles = await dbContext.Roles.AnyAsync();
@@ -58,7 +58,7 @@ public static class ProgramExtends
     {
         using var scope = host.Services.CreateScope();
         var services = scope.ServiceProvider;
-        var db = services.GetRequiredService<TemplateDbContext>();
+        var db = services.GetRequiredService<WeChatExamDbContext>();
         var logger = services.GetRequiredService<ILogger<Program>>();
         var shouldSeed = await ShouldSeedAsync(db);
         if (!shouldSeed)

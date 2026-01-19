@@ -10,7 +10,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class ArticlesController(TemplateDbContext context) : ControllerBase
+public class ArticlesController(WeChatExamDbContext context) : ControllerBase
 {
     /// <summary>
     /// 获取所有资讯信息

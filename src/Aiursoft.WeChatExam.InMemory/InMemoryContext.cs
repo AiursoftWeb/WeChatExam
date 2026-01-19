@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.InMemory;
 
-public class InMemoryContext(DbContextOptions<InMemoryContext> options) : TemplateDbContext(options)
+public class InMemoryContext(DbContextOptions<InMemoryContext> options) : WeChatExamDbContext(options)
 {
     public override Task MigrateAsync(CancellationToken cancellationToken)
     {

@@ -15,12 +15,12 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class ExtractController : Controller
 {
     private readonly IExtractService _extractService;
-    private readonly TemplateDbContext _dbContext;
+    private readonly WeChatExamDbContext _dbContext;
     private readonly BackgroundJobQueue _backgroundJobQueue;
 
     public ExtractController(
         IExtractService extractService,
-        TemplateDbContext dbContext,
+        WeChatExamDbContext dbContext,
         BackgroundJobQueue backgroundJobQueue)
     {
         _extractService = extractService;

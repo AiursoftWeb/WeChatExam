@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Entities;
 
-public abstract class TemplateDbContext(DbContextOptions options) : IdentityDbContext<User>(options), ICanMigrate
+public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDbContext<User>(options), ICanMigrate
 {
     public virtual  Task MigrateAsync(CancellationToken cancellationToken) =>
         Database.MigrateAsync(cancellationToken);

@@ -19,7 +19,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class UsersController(
     RoleManager<IdentityRole> roleManager,
     UserManager<User> userManager,
-    TemplateDbContext context)
+    WeChatExamDbContext context)
     : Controller
 {
     [Authorize(Policy = AppPermissionNames.CanReadUsers)]

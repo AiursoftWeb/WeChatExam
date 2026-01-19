@@ -14,7 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// This controller is used to handle knowledgePoints related actions like create, edit, delete, etc.
 /// </summary>
 [LimitPerMin]
-public class KnowledgePointsController(TemplateDbContext context) : Controller
+public class KnowledgePointsController(WeChatExamDbContext context) : Controller
 {
 
     // GET: knowledgePoints

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Services;
 
-public class DistributionChannelService(TemplateDbContext context) : IDistributionChannelService
+public class DistributionChannelService(WeChatExamDbContext context) : IDistributionChannelService
 {
     // Base32 characters for generating readable short codes (excludes confusing chars like 0, O, I, L)
     private const string Base32Chars = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";

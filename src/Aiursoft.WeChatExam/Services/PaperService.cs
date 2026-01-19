@@ -5,9 +5,9 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class PaperService : IPaperService
 {
-    private readonly TemplateDbContext _dbContext;
+    private readonly WeChatExamDbContext _dbContext;
 
-    public PaperService(TemplateDbContext dbContext)
+    public PaperService(WeChatExamDbContext dbContext)
     {
         _dbContext = dbContext;
     }

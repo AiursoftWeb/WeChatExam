@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
-public class TagsController(TemplateDbContext context, ITagService tagService) : Controller
+public class TagsController(WeChatExamDbContext context, ITagService tagService) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",

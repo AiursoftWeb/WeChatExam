@@ -38,7 +38,7 @@ public class BackgroundJobsTests
     public async Task CreateServer()
     {
         _server = await AppAsync<Startup>([], port: _port);
-        await _server.UpdateDbAsync<TemplateDbContext>();
+        await _server.UpdateDbAsync<WeChatExamDbContext>();
         await _server.SeedAsync();
         await _server.StartAsync();
     }

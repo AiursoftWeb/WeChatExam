@@ -16,9 +16,9 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 public class PapersController : ControllerBase
 {
     private readonly IPaperService _paperService;
-    private readonly TemplateDbContext _context;
+    private readonly WeChatExamDbContext _context;
 
-    public PapersController(IPaperService paperService, TemplateDbContext context)
+    public PapersController(IPaperService paperService, WeChatExamDbContext context)
     {
         _paperService = paperService;
         _context = context;

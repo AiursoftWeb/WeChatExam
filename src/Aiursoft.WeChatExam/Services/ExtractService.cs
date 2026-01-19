@@ -7,12 +7,12 @@ namespace Aiursoft.WeChatExam.Services;
 public class ExtractService : IExtractService
 {
     private readonly IOllamaService _ollamaService;
-    private readonly TemplateDbContext _dbContext;
+    private readonly WeChatExamDbContext _dbContext;
     private readonly ITagService _tagService;
 
     public ExtractService(
         IOllamaService ollamaService,
-        TemplateDbContext dbContext,
+        WeChatExamDbContext dbContext,
         ITagService tagService)
     {
         _ollamaService = ollamaService;

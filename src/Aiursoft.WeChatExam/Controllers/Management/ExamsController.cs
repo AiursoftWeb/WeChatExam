@@ -12,7 +12,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
 public class ExamsController(
-    TemplateDbContext context, 
+    WeChatExamDbContext context, 
     IExamService examService,
     IPaperService paperService) : Controller
 {

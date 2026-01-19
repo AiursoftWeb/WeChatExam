@@ -14,7 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// This controller is used to handle questions related actions like create, edit, delete, etc.
 /// </summary>
 [LimitPerMin]
-public class QuestionsController(TemplateDbContext context, ITagService tagService) : Controller
+public class QuestionsController(WeChatExamDbContext context, ITagService tagService) : Controller
 {
     // GET: questions
     [RenderInNavBar(

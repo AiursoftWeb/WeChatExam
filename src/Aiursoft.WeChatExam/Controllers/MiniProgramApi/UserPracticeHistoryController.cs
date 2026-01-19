@@ -13,11 +13,11 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [WeChatUserOnly]
 public class UserPracticeHistoryController : ControllerBase
 {
-    private readonly TemplateDbContext _context;
+    private readonly WeChatExamDbContext _context;
     private readonly IGradingService _gradingService;
 
     public UserPracticeHistoryController(
-        TemplateDbContext context,
+        WeChatExamDbContext context,
         IGradingService gradingService)
     {
         _context = context;
