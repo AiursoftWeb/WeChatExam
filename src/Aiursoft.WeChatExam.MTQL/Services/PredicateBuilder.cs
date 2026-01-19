@@ -35,7 +35,7 @@ public static class PredicateBuilder
     private static Expression<Func<Question, bool>> HasTag(string tagName)
     {
         // Use NormalizedName for consistent case-insensitive lookup
-        var normalized = tagName.ToUpperInvariant();
+        var normalized = tagName.Trim().ToUpperInvariant();
         return q => q.QuestionTags.Any(qt => qt.Tag != null && qt.Tag.NormalizedName == normalized);
     }
 

@@ -122,7 +122,7 @@ public class MtqlTests
         var results = questions.Where(compiled).ToList();
 
         Assert.AreEqual(1, results.Count);
-        Assert.AreEqual("q1_content_q3", results[0].Content); // Helper makes content somewhat unique
+        Assert.AreEqual("content_q3", results[0].Content); // Helper makes content somewhat unique
     }
 
     [TestMethod]
@@ -177,7 +177,7 @@ public class MtqlTests
         Assert.AreEqual(expectedSuffixes.Length, results.Count, $"Query '{mtql}' count mismatch.");
         foreach (var suffix in expectedSuffixes)
         {
-            var expectedContent = $"q1_content_{suffix}";
+            var expectedContent = $"content_{suffix}";
             Assert.IsTrue(results.Contains(expectedContent), $"Query '{mtql}' missing {expectedContent}. Got: {string.Join(", ", results)}");
         }
     }
@@ -187,7 +187,7 @@ public class MtqlTests
         return new Question
         {
             Id = Guid.NewGuid(),
-            Content = $"q1_content_{idSuffix}",
+            Content = $"content_{idSuffix}",
             QuestionType = QuestionType.Choice,
             GradingStrategy = GradingStrategy.ExactMatch,
             CategoryId = Guid.NewGuid(),
