@@ -114,6 +114,63 @@ public class MtqlTests
         Assert.AreEqual("q1_content_q3", results[0].Content); // Helper makes content somewhat unique
     }
 
+    [TestMethod]
+    public void TestPredicateBuilderComplex()
+    {
+        var questions = new List<Question>
+        {
+            MakeQuestion("q1", "rock", "metal"), // rock, metal
+            MakeQuestion("q2", "pop"),          // pop
+            MakeQuestion("q3", "rock"),         // rock
+            MakeQuestion("q4", "jazz", "metal"),// jazz, metal
+            MakeQuestion("q5", "pop", "jazz"),  // pop, jazz
+            MakeQuestion("q6", "classic")       // classic
+        }.AsQueryable();
+
+        // 1. OR logic: rock || pop
+        // Expect: q1, q2, q3, q5
+        RunQuery(questions, "rock || pop", "q1", "q2", "q3", "q5");
+
+        // 2. AND with Parentheses: (rock || jazz) && metal
+        // rock||jazz -> q1, q3, q4, q5.  intersect metal -> q1, q4
+        RunQuery(questions, "(rock || jazz) && metal", "q1", "q4");
+
+        // 3. Negation with Parentheses: not (rock || metal)
+        // rock||metal -> q1, q3, q4.  not -> q2, q5, q6
+        RunQuery(questions, "not (rock || metal)", "q2", "q5", "q6");
+
+        // 4. Precedence mixed: rock && not metal || jazz
+        // (rock && not metal) || jazz
+        // rock && not metal -> q3
+        // jazz -> q4, q5
+        // Union -> q3, q4, q5
+        RunQuery(questions, "rock && not metal || jazz", "q3", "q4", "q5");
+
+        // 5. Complex Nested: (pop && not jazz) || (rock && metal)
+        // pop && not jazz -> q2 (q5 excluded due to jazz)
+        // rock && metal -> q1
+        // Union -> q1, q2
+        RunQuery(questions, "(pop && not jazz) || (rock && metal)", "q1", "q2");
+    }
+
+    private void RunQuery(IQueryable<Question> source, string mtql, params string[] expectedSuffixes)
+    {
+        var tokens = Tokenizer.Tokenize(mtql);
+        var rpn = Parser.ToRpn(tokens);
+        var ast = AstBuilder.Build(rpn);
+        var predicate = PredicateBuilder.Build(ast);
+        var compiled = predicate.Compile();
+        
+        var results = source.Where(compiled).Select(q => q.Content).ToList();
+        
+        Assert.AreEqual(expectedSuffixes.Length, results.Count, $"Query '{mtql}' count mismatch.");
+        foreach (var suffix in expectedSuffixes)
+        {
+            var expectedContent = $"q1_content_{suffix}";
+            Assert.IsTrue(results.Contains(expectedContent), $"Query '{mtql}' missing {expectedContent}. Got: {string.Join(", ", results)}");
+        }
+    }
+
     private Question MakeQuestion(string idSuffix, params string[] tags)
     {
         return new Question
