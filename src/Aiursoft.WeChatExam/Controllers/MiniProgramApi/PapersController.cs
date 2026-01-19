@@ -81,7 +81,7 @@ public class PapersController : ControllerBase
                 Order = q.Order,
                 Score = q.Score,
                 Content = q.Content,
-                QuestionType = q.QuestionType.ToString(),
+                QuestionType = q.QuestionType,
                 Metadata = q.Metadata
             }).ToList()
         };
