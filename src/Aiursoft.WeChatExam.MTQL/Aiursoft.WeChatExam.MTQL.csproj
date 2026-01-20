@@ -1,13 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\Aiursoft.WeChatExam.Entities\Aiursoft.WeChatExam.Entities.csproj" />
   </ItemGroup>
-
   <PropertyGroup>
+    <OutputType>Library</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Aiursoft.WeChatExam.MTQL</AssemblyName>
+    <RootNamespace>Aiursoft.WeChatExam.MTQL</RootNamespace>
+    <IsTestProject>false</IsTestProject>
+    <IsPackable>false</IsPackable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
 </Project>
