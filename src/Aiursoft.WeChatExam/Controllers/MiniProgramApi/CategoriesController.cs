@@ -78,5 +78,29 @@ public class CategoriesController : ControllerBase
         return Ok(categoryDto);
     }
 
+    /// <summary>
+    /// Retrieves top-level categories (categories without a parent).
+    /// </summary>
+    /// <returns>A list of top-level categories.</returns>
+    /// <response code="200">Returns the list of top-level categories.</response>
+    [HttpGet("top")]
+    [ProducesResponseType(typeof(List<CategoryDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetTop()
+    {
+        var categories = await _context.Categories
+            .Where(c => c.ParentId == null)
+            .Select(c => new CategoryDto
+            {
+                Id = c.Id,
+                Title = c.Title,
+                Children = c.Children.Select(child => new Child
+                {
+                    Id = child.Id,
+                    Title = child.Title
+                }).ToArray()
+            })
+            .ToListAsync();
 
+        return Ok(categories);
+    }
 }
