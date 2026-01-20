@@ -21,13 +21,15 @@ public class QuestionsController : ControllerBase
     /// </summary>
     /// <param name="categoryId">分类ID (可选)</param>
     /// <param name="tagName">Tag 显示名称 (可选)</param>
+    /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock && not metal`</param>
     /// <returns>题目列表，按创建时间倒序</returns>
     /// <response code="200">成功返回题目列表</response>
     /// <response code="404">指定的分类不存在</response>
     [HttpGet]
     [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName)
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName, [FromQuery] string? mtql)
     {
         // 验证分类是否存在
         if (categoryId.HasValue)
@@ -48,7 +50,31 @@ public class QuestionsController : ControllerBase
             query = query.Where(q => q.CategoryId == categoryId.Value);
         }
 
-        if (!string.IsNullOrWhiteSpace(tagName))
+        // 优先使用 MTQL
+        if (!string.IsNullOrWhiteSpace(mtql))
+        {
+            try
+            {
+                var tokens = MTQL.Services.Tokenizer.Tokenize(mtql);
+                var rpn = MTQL.Services.Parser.ToRpn(tokens);
+                var ast = MTQL.Services.AstBuilder.Build(rpn);
+                var predicate = MTQL.Services.PredicateBuilder.Build(ast);
+                
+                // MTQL 谓词中包含对 Tags 的反向引用，因此可能需要 Include 确保数据加载（视 EF 配置而定，通常 Where 不需要 Include，但为了安全起见或后续 Select 需要）
+                // PredicateBuilder 生成的表达式是 Expression<Func<Question, bool>>，可以直接用于 Where
+                query = query.Where(predicate);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Message = $"Invalid MTQL query: {ex.Message}" });
+            }
+            catch (Exception ex)
+            {
+                // Log generic error if needed
+                return BadRequest(new { Message = $"Error parsing MTQL query: {ex.Message}" });
+            }
+        }
+        else if (!string.IsNullOrWhiteSpace(tagName))
         {
             var normalizedTagName = tagName.Trim().ToUpperInvariant();
             query = query.Include(q => q.QuestionTags).ThenInclude(qt => qt.Tag)

@@ -31,5 +31,6 @@
     <ProjectReference Include="..\Aiursoft.WeChatExam.InMemory\Aiursoft.WeChatExam.InMemory.csproj" />
     <ProjectReference Include="..\Aiursoft.WeChatExam.MySql\Aiursoft.WeChatExam.MySql.csproj" />
     <ProjectReference Include="..\Aiursoft.WeChatExam.Sqlite\Aiursoft.WeChatExam.Sqlite.csproj" />
+    <ProjectReference Include="..\Aiursoft.WeChatExam.MTQL\Aiursoft.WeChatExam.MTQL.csproj" />
   </ItemGroup>
 </Project>
