@@ -1,4 +1,4 @@
-# MTQL (Music Tag Query Language)
+# MTQL (Modern Tag Query Language)
 
 MTQL is a lightweight, expression-based query language designed to filter questions based on their tags efficiently. It supports boolean logic (`AND`, `OR`, `NOT`) and grouping with parentheses.
 
