@@ -93,11 +93,7 @@ public class CategoriesController : ControllerBase
             {
                 Id = c.Id,
                 Title = c.Title,
-                Children = c.Children.Select(child => new Child
-                {
-                    Id = child.Id,
-                    Title = child.Title
-                }).ToArray()
+                Children = Array.Empty<Child>()
             })
             .ToListAsync();
 
