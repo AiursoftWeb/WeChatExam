@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.1")
+                .HasAnnotation("ProductVersion", "10.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -337,6 +337,27 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Papers");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("PaperId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("PaperId");
+
+                    b.ToTable("PaperCategories");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperQuestion", b =>
@@ -947,6 +968,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Question");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCategory", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
+                        .WithMany("PaperCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Paper", "Paper")
+                        .WithMany("PaperCategories")
+                        .HasForeignKey("PaperId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Paper");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperQuestion", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Paper", "Paper")
@@ -1111,6 +1151,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Navigation("Children");
 
+                    b.Navigation("PaperCategories");
+
                     b.Navigation("Questions");
                 });
 
@@ -1140,6 +1182,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Paper", b =>
                 {
+                    b.Navigation("PaperCategories");
+
                     b.Navigation("PaperQuestions");
 
                     b.Navigation("PaperSnapshots");

@@ -27,15 +27,23 @@ public class PapersController : ControllerBase
     /// <summary>
     /// 获取所有可用试卷列表（仅返回有快照的试卷）
     /// </summary>
+    /// <param name="categoryId">可选：分类ID</param>
     /// <returns>试卷列表</returns>
     [HttpGet]
     [ProducesResponseType(typeof(List<PaperListDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPapers()
+    public async Task<IActionResult> GetPapers([FromQuery] Guid? categoryId)
     {
-        var papers = await _context.Papers
+        var query = _context.Papers
             .Where(p => p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen)
             .Include(p => p.PaperSnapshots)
-            .Where(p => p.PaperSnapshots.Any())
+            .Where(p => p.PaperSnapshots.Any());
+
+        if (categoryId.HasValue)
+        {
+            query = query.Where(p => p.PaperCategories.Any(pc => pc.CategoryId == categoryId.Value));
+        }
+
+        var papers = await query
             .Select(p => new PaperListDto
             {
                 Id = p.Id,

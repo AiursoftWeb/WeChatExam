@@ -145,6 +145,60 @@ public class PaperService : IPaperService
 
     #endregion
 
+    #region Category Management
+
+    public async Task AssociateCategoryAsync(Guid paperId, Guid categoryId)
+    {
+        var paper = await _dbContext.Papers.FindAsync(paperId);
+        if (paper == null) throw new InvalidOperationException("Paper not found");
+
+        var exists = await _dbContext.PaperCategories
+            .AnyAsync(pc => pc.PaperId == paperId && pc.CategoryId == categoryId);
+        
+        if (!exists)
+        {
+            _dbContext.PaperCategories.Add(new PaperCategory
+            {
+                PaperId = paperId,
+                CategoryId = categoryId
+            });
+            await _dbContext.SaveChangesAsync();
+        }
+    }
+
+    public async Task RemoveCategoryAssociationAsync(Guid paperId, Guid categoryId)
+    {
+        var association = await _dbContext.PaperCategories
+            .FirstOrDefaultAsync(pc => pc.PaperId == paperId && pc.CategoryId == categoryId);
+        
+        if (association != null)
+        {
+            _dbContext.PaperCategories.Remove(association);
+            await _dbContext.SaveChangesAsync();
+        }
+    }
+
+    public async Task<List<Category>> GetCategoriesForPaperAsync(Guid paperId)
+    {
+        return await _dbContext.PaperCategories
+            .Where(pc => pc.PaperId == paperId)
+            .Include(pc => pc.Category)
+            .Select(pc => pc.Category)
+            .ToListAsync();
+    }
+
+    public async Task ClearCategoriesForPaperAsync(Guid paperId)
+    {
+        var associations = await _dbContext.PaperCategories
+            .Where(pc => pc.PaperId == paperId)
+            .ToListAsync();
+        
+        _dbContext.PaperCategories.RemoveRange(associations);
+        await _dbContext.SaveChangesAsync();
+    }
+
+    #endregion
+
     #region State Management
 
     public async Task SetStatusAsync(Guid paperId, PaperStatus newStatus)

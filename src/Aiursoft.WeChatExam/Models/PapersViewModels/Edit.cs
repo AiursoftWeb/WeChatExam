@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Aiursoft.WeChatExam.Models.PapersViewModels;
 
@@ -22,6 +23,11 @@ public class EditViewModel : UiStackLayoutViewModel
     public bool IsFree { get; set; }
 
     public PaperStatus Status { get; set; }
+
+    [Display(Name = "Category")]
+    public Guid? SelectedCategoryId { get; set; }
+
+    public IEnumerable<SelectListItem> AvailableCategories { get; set; } = new List<SelectListItem>();
 
     public List<PaperQuestion> PaperQuestions { get; set; } = new();
 

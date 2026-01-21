@@ -45,6 +45,12 @@ public class Paper
     public IEnumerable<PaperQuestion> PaperQuestions { get; init; } = new List<PaperQuestion>();
 
     /// <summary>
+    /// 关联的分类
+    /// </summary>
+    [InverseProperty(nameof(PaperCategory.Paper))]
+    public IEnumerable<PaperCategory> PaperCategories { get; init; } = new List<PaperCategory>();
+
+    /// <summary>
     /// 试卷快照列表
     /// </summary>
     [InverseProperty(nameof(PaperSnapshot.Paper))]
