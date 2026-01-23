@@ -25,8 +25,8 @@ public class GradingService : IGradingService, IScopedDependency
 
     public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation)
     {
-        userAnswer = userAnswer?.Trim() ?? string.Empty;
-        standardAnswer = standardAnswer?.Trim() ?? string.Empty;
+        userAnswer = userAnswer.Trim();
+        standardAnswer = standardAnswer.Trim();
 
         switch (strategy)
         {
@@ -133,6 +133,6 @@ IMPORTANT: Return ONLY the raw JSON string. Do not use markdown code blocks or a
     {
         public bool IsCorrect { get; set; }
         public int Score { get; set; }
-        public string Comment { get; set; }
+        public required string Comment { get; set; }
     }
 }
