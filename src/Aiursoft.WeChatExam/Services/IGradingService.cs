@@ -6,6 +6,7 @@ public interface IGradingService
 {
     Task<GradingResult> GradeAsync(Question question, string userAnswer);
     Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content);
+    Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation);
 }
 
 public class GradingResult
