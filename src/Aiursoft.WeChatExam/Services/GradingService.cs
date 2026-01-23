@@ -1,5 +1,6 @@
 using Aiursoft.Scanner.Abstractions;
 using Aiursoft.WeChatExam.Entities;
+using Newtonsoft.Json;
 
 namespace Aiursoft.WeChatExam.Services;
 
@@ -14,13 +15,18 @@ public class GradingService : IGradingService, IScopedDependency
 
     public async Task<GradingResult> GradeAsync(Question question, string userAnswer)
     {
-        return await GradeAsync(userAnswer, question.StandardAnswer, question.GradingStrategy, 10, question.Content);
+        return await GradeAsync(userAnswer, question.StandardAnswer, question.GradingStrategy, 10, question.Content, question.Explanation);
     }
 
-    public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content)
+    public Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content)
     {
-        userAnswer = userAnswer.Trim();
-        standardAnswer = standardAnswer.Trim();
+        return GradeAsync(userAnswer, standardAnswer, strategy, maxScore, content, string.Empty);
+    }
+
+    public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation)
+    {
+        userAnswer = userAnswer?.Trim() ?? string.Empty;
+        standardAnswer = standardAnswer?.Trim() ?? string.Empty;
 
         switch (strategy)
         {
@@ -31,7 +37,7 @@ public class GradingService : IGradingService, IScopedDependency
                 return GradeFuzzyMatch(userAnswer, standardAnswer, maxScore);
                 
             case GradingStrategy.AiEval:
-                return await GradeAiEvalAsync(userAnswer, standardAnswer, maxScore, content);
+                return await GradeAiEvalAsync(userAnswer, standardAnswer, maxScore, content, explanation);
                 
             default:
                 return GradeExactMatch(userAnswer, standardAnswer, maxScore);
@@ -58,7 +64,7 @@ public class GradingService : IGradingService, IScopedDependency
         };
     }
 
-    private async Task<GradingResult> GradeAiEvalAsync(string userAnswer, string standardAnswer, int maxScore, string content)
+    private async Task<GradingResult> GradeAiEvalAsync(string userAnswer, string standardAnswer, int maxScore, string content, string explanation)
     {
         if (string.IsNullOrWhiteSpace(userAnswer))
         {
@@ -74,24 +80,41 @@ public class GradingService : IGradingService, IScopedDependency
 
 Question: {content}
 Standard Answer: {standardAnswer}
+Explanation: {explanation}
 Student Answer: {userAnswer}
 
-Provide the score (0-{maxScore}) and a short comment. Output JSON format: {{ ""Score"": 10, ""Comment"": ""..."", ""IsCorrect"": true }}";
+Provide the score (0-{maxScore}) and a short comment. 
+Output JSON format: {{ ""Score"": 10, ""Comment"": ""..."", ""IsCorrect"": true }}
+IMPORTANT: Return ONLY the raw JSON string. Do not use markdown code blocks or any other formatting.";
 
         try
         {
             var response = await _ollamaService.AskQuestion(prompt);
-            // Simple parsing of AI response. AI might wrap it in markdown or something.
-            var jsonStart = response.IndexOf('{');
-            var jsonEnd = response.LastIndexOf('}');
+            var json = response.Trim();
+            
+            // Try to find JSON if there is extra text
+            var jsonStart = json.IndexOf('{');
+            var jsonEnd = json.LastIndexOf('}');
             if (jsonStart >= 0 && jsonEnd > jsonStart)
             {
-                var json = response.Substring(jsonStart, jsonEnd - jsonStart + 1);
-                var result = Newtonsoft.Json.JsonConvert.DeserializeObject<GradingResult>(json);
-                if (result != null)
+                json = json.Substring(jsonStart, jsonEnd - jsonStart + 1);
+            }
+
+            var resultDto = JsonConvert.DeserializeObject<AiGradingDto>(json);
+            if (resultDto != null)
+            {
+                var comment = resultDto.Comment;
+                if (!string.IsNullOrWhiteSpace(explanation))
                 {
-                    return result;
+                    comment = $"{explanation}\n\nAI Comment: {comment}";
                 }
+                
+                return new GradingResult
+                {
+                    IsCorrect = resultDto.IsCorrect,
+                    Score = resultDto.Score,
+                    Comment = comment
+                };
             }
             throw new Exception("Failed to parse AI response as JSON: " + response);
         }
@@ -104,5 +127,12 @@ Provide the score (0-{maxScore}) and a short comment. Output JSON format: {{ ""S
                 Comment = "AI grading failed: " + ex.Message
             };
         }
+    }
+
+    private class AiGradingDto
+    {
+        public bool IsCorrect { get; set; }
+        public int Score { get; set; }
+        public string Comment { get; set; }
     }
 }
