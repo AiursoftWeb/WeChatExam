@@ -17,6 +17,12 @@ public interface IPaperService
     Task UpdateQuestionInPaperAsync(Guid paperId, Guid questionId, int order, int score);
     Task<List<PaperQuestion>> GetQuestionsForPaperAsync(Guid paperId);
 
+    // Category management
+    Task AssociateCategoryAsync(Guid paperId, Guid categoryId);
+    Task RemoveCategoryAssociationAsync(Guid paperId, Guid categoryId);
+    Task<List<Category>> GetCategoriesForPaperAsync(Guid paperId);
+    Task ClearCategoriesForPaperAsync(Guid paperId);
+
     // State management
     Task SetStatusAsync(Guid paperId, PaperStatus newStatus);
     

@@ -25,6 +25,13 @@
                         <label asp-for="TimeLimit" class="form-label">@Localizer["Time Limit (minutes)"]</label>
                         <input asp-for="TimeLimit" type="number" class="form-control" min="1" />
                     </div>
+                    <div class="mb-3">
+                        <label asp-for="SelectedCategoryId" class="form-label">@Localizer["Category"]</label>
+                        <select asp-for="SelectedCategoryId" asp-items="Model.AvailableCategories" class="form-select">
+                            <option value="">@Localizer["-- Select Category (Optional) --"]</option>
+                        </select>
+                        <div class="form-text">@Localizer["Selecting a category will filter available questions."]</div>
+                    </div>
                     <div class="mb-3 form-check">
                         <input asp-for="IsFree" class="form-check-input" type="checkbox" />
                         <label asp-for="IsFree" class="form-check-label">@Localizer["Free Paper"]</label>

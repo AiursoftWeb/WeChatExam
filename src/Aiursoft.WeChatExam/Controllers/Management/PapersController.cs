@@ -6,6 +6,7 @@ using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
@@ -33,9 +34,18 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
 
     // GET: papers/create
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return this.StackView(new CreateViewModel());
+        var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+        var model = new CreateViewModel
+        {
+            AvailableCategories = categories.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Title
+            })
+        };
+        return this.StackView(model);
     }
 
     // POST: papers/create
@@ -46,10 +56,20 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
     {
         if (!ModelState.IsValid)
         {
+            var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+            model.AvailableCategories = categories.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Title
+            });
             return this.StackView(model);
         }
 
         var paper = await paperService.CreatePaperAsync(model.Title, model.TimeLimit, model.IsFree);
+        if (model.SelectedCategoryId.HasValue)
+        {
+            await paperService.AssociateCategoryAsync(paper.Id, model.SelectedCategoryId.Value);
+        }
         return RedirectToAction(nameof(Edit), new { id = paper.Id });
     }
 
@@ -86,7 +106,18 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         }
 
         var questions = await paperService.GetQuestionsForPaperAsync(id.Value);
-        var availableQuestions = await context.Questions.OrderByDescending(q => q.CreationTime).ToListAsync();
+        
+        var associatedCategories = await paperService.GetCategoriesForPaperAsync(id.Value);
+        var selectedCategoryId = associatedCategories.FirstOrDefault()?.Id;
+
+        var availableQuestionsQuery = context.Questions.AsQueryable();
+        if (selectedCategoryId.HasValue)
+        {
+            availableQuestionsQuery = availableQuestionsQuery.Where(q => q.CategoryId == selectedCategoryId.Value);
+        }
+        var availableQuestions = await availableQuestionsQuery.OrderByDescending(q => q.CreationTime).ToListAsync();
+
+        var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
 
         return this.StackView(new EditViewModel
         {
@@ -96,7 +127,14 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
             IsFree = paper.IsFree,
             Status = paper.Status,
             PaperQuestions = questions,
-            AvailableQuestions = availableQuestions
+            AvailableQuestions = availableQuestions,
+            SelectedCategoryId = selectedCategoryId,
+            AvailableCategories = categories.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Title,
+                Selected = c.Id == selectedCategoryId
+            })
         });
     }
 
@@ -111,19 +149,54 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         if (!ModelState.IsValid)
         {
             model.PaperQuestions = await paperService.GetQuestionsForPaperAsync(id);
-            model.AvailableQuestions = await context.Questions.ToListAsync();
+            
+             var availableQuestionsQuery = context.Questions.AsQueryable();
+            if (model.SelectedCategoryId.HasValue)
+            {
+                availableQuestionsQuery = availableQuestionsQuery.Where(q => q.CategoryId == model.SelectedCategoryId.Value);
+            }
+            model.AvailableQuestions = await availableQuestionsQuery.OrderByDescending(q => q.CreationTime).ToListAsync();
+
+            var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+            model.AvailableCategories = categories.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Title,
+                Selected = c.Id == model.SelectedCategoryId
+            });
+            
             return this.StackView(model);
         }
 
         try
         {
             await paperService.UpdatePaperAsync(id, model.Title, model.TimeLimit, model.IsFree);
+            
+            await paperService.ClearCategoriesForPaperAsync(id);
+            if (model.SelectedCategoryId.HasValue)
+            {
+                await paperService.AssociateCategoryAsync(id, model.SelectedCategoryId.Value);
+            }
         }
         catch (InvalidOperationException ex)
         {
             ModelState.AddModelError("", ex.Message);
             model.PaperQuestions = await paperService.GetQuestionsForPaperAsync(id);
-            model.AvailableQuestions = await context.Questions.ToListAsync();
+            // Re-fetch logic similar to above
+            var availableQuestionsQuery = context.Questions.AsQueryable();
+            if (model.SelectedCategoryId.HasValue)
+            {
+                availableQuestionsQuery = availableQuestionsQuery.Where(q => q.CategoryId == model.SelectedCategoryId.Value);
+            }
+            model.AvailableQuestions = await availableQuestionsQuery.OrderByDescending(q => q.CreationTime).ToListAsync();
+
+            var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+            model.AvailableCategories = categories.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Title,
+                Selected = c.Id == model.SelectedCategoryId
+            });
             return this.StackView(model);
         }
 

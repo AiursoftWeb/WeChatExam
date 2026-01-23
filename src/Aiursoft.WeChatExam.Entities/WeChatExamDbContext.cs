@@ -23,6 +23,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<QuestionTag> QuestionTags => Set<QuestionTag>();
     public DbSet<Paper> Papers => Set<Paper>();
     public DbSet<PaperQuestion> PaperQuestions => Set<PaperQuestion>();
+    public DbSet<PaperCategory> PaperCategories => Set<PaperCategory>();
     public DbSet<PaperSnapshot> PaperSnapshots => Set<PaperSnapshot>();
     public DbSet<QuestionSnapshot> QuestionSnapshots => Set<QuestionSnapshot>();
     public DbSet<Exam> Exams => Set<Exam>();
