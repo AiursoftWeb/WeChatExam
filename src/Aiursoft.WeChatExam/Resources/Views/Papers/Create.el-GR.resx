@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Επιλογή Κατηγορίας (Προαιρετικό) --</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Κατηγορία</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Δημιουργία</value>

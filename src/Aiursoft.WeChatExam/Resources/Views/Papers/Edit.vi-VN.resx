@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add" xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Chọn Danh mục (Tùy chọn) --</value>
+  </data>
+  <data name="Add" xml:space="preserve">
     <value>Thêm</value>
   </data>
   <data name="Add Question" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Hủy bỏ</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Danh mục</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>xóa</value>
@@ -59,6 +65,9 @@
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>Chọn câu hỏi</value>
+  </data>
+  <data name="Selecting a category will filter available questions." xml:space="preserve">
+    <value>Chọn một danh mục sẽ lọc các câu hỏi có sẵn.</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add" xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Vælg kategori (valgfrit) --</value>
+  </data>
+  <data name="Add" xml:space="preserve">
     <value>Tilføj</value>
   </data>
   <data name="Add Question" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuller</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>slet</value>
@@ -59,6 +65,9 @@
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>Vælg spørgsmål</value>
+  </data>
+  <data name="Selecting a category will filter available questions." xml:space="preserve">
+    <value>Vælger du en kategori, vil den filtrere de tilgængelige spørgsmål.</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
