@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add" xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- श्रेणी चुनें (वैकल्पिक) --</value>
+  </data>
+  <data name="Add" xml:space="preserve">
     <value>जोड़ें</value>
   </data>
   <data name="Add Question" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>रद्द करें</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>श्रेणी</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>हटाएँ</value>
@@ -59,6 +65,9 @@
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>प्रश्न चुनें</value>
+  </data>
+  <data name="Selecting a category will filter available questions." xml:space="preserve">
+    <value>एक श्रेणी चुनने से उपलब्ध प्रश्नों को फ़िल्टर किया जाएगा।</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
