@@ -78,6 +78,15 @@ public class ViewModelArgsInjector(
     
         _ = localizer["Distribution Channels"];
         _ = localizer["Marketing"];
+    
+        _ = localizer["Channel Details"];
+        _ = localizer["Create Distribution Channel"];
+        _ = localizer["Dashboard"];
+        _ = localizer["Delete Category"];
+        _ = localizer["Delete Distribution Channel"];
+        _ = localizer["Delete KnowledgePoint"];
+        _ = localizer["Lockout"];
+        _ = localizer["Register"];
     }
 
     public void InjectSimple(

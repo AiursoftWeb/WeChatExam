@@ -54,17 +54,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Modifier le profil</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>Détails du canal</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Cliquez pour vous connecter</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>Gestion du contenu</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>Créer un canal de distribution</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>Créer un rôle</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>Créer un utilisateur</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Tableau de bord</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Supprimer la catégorie</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>Supprimer le canal de distribution</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Supprimer le point de connaissance</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>Supprimer le rôle</value>
@@ -104,6 +122,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Points de connaissance</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>Verrouillage</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Connexion</value>

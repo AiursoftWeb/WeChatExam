@@ -54,17 +54,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>프로필 변경</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>채널 세부 정보</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>로그인하려면 클릭</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>콘텐츠 관리</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>배포 채널 생성</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>역할 생성</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>사용자 생성</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>대시보드</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>카테고리 삭제</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>배포 채널 삭제</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>지식 포인트 삭제</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>역할 삭제</value>
@@ -104,6 +122,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>지식 포인트</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>잠금 해제</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>로그인</value>

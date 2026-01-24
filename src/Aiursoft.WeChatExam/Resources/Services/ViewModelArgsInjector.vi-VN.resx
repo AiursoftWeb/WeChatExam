@@ -54,17 +54,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Thay đổi Hồ sơ</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>Chi tiết kênh phân phối</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Nhấp để đăng nhập</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>Quản lý nội dung</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>Tạo kênh phân phối</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>Tạo Vai Trò</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>Tạo Người Dùng</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Bảng điều khiển</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Xóa danh mục</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>Xóa kênh phân phối</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Xóa Điểm Kiến Thức</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>Xóa Vai trò</value>
@@ -104,6 +122,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Điểm Kiến Thức</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>Khóa tài khoản</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
