@@ -51,17 +51,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>Изменить профиль</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>Сведения о канале</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>Нажмите для входа</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>Управление контентом</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>Создать канал распространения</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>Создать роль</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>Создать пользователя</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Панель управления</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Удалить категорию</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>Удалить канал распространения</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Удалить KnowledgePoint</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>Удалить роль</value>
@@ -101,6 +119,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Баллы знаний</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>Блокировка</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Вход</value>

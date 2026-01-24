@@ -51,17 +51,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>تغيير الملف الشخصي</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>تفاصيل القناة</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>انقر لتسجيل الدخول</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>إدارة المحتوى</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>إنشاء قناة توزيع</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>إنشاء دور</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>إنشاء مستخدم</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>حذف الفئة</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>حذف قناة التوزيع</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>حذف نقطة المعرفة</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>حذف الدور</value>
@@ -101,6 +119,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>نقاط المعرفة</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>حظر الوصول</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>تسجيل الدخول</value>

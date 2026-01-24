@@ -54,17 +54,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>プロフィール変更</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>チャネルの詳細</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>ログインするにはクリック</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>コンテンツ管理</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>配信チャネルの作成</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>ロールの作成</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>ユーザーを作成</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>ダッシュボード</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>カテゴリの削除</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>配信チャネルの削除</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>知識ポイントの削除</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>ロールを削除</value>
@@ -104,6 +122,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>知識ポイント</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>ロックアウト</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>ログイン</value>

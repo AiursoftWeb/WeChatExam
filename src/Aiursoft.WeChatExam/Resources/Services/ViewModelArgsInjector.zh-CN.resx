@@ -54,17 +54,35 @@
   <data name="Change Profile" xml:space="preserve">
     <value>修改个人资料</value>
   </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>渠道详情</value>
+  </data>
   <data name="Click to login" xml:space="preserve">
     <value>点击登录</value>
   </data>
   <data name="Content Management" xml:space="preserve">
     <value>内容管理</value>
   </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>创建分发渠道</value>
+  </data>
   <data name="Create Role" xml:space="preserve">
     <value>创建角色</value>
   </data>
   <data name="Create User" xml:space="preserve">
     <value>创建用户</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>仪表板</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>删除分类</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>删除分发渠道</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>删除知识点</value>
   </data>
   <data name="Delete Role" xml:space="preserve">
     <value>删除角色</value>
@@ -104,6 +122,9 @@
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>知识点</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>锁定</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>登录</value>
