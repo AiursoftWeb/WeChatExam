@@ -1,28 +1,33 @@
 @model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.IndexViewModel
 
-<h1 class="h3 mb-3">@Localizer["Taxonomies Management"]</h1>
-
-<div class="card">
-    <div class="card-header">
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="h3 mb-3">@Localizer["Taxonomies Management"]</h1>
+    </div>
+    <div class="col-md-3 text-end">
         <a asp-action="Create" class="btn btn-success">
             <i data-lucide="plus"></i> @Localizer["Create Taxonomy"]
         </a>
     </div>
+</div>
+
+<div class="card shadow-sm border-0">
     <div class="card-body">
         @if (Model.Taxonomies.Count == 0)
         {
-            <div class="alert alert-info" role="alert">
+            <div class="alert alert-info mb-0" role="alert">
+                <i data-lucide="info" class="me-2"></i>
                 @Localizer["No taxonomies found. Create one to get started."]
             </div>
         }
         else
         {
             <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
                         <tr>
                             <th>@Localizer["Taxonomy Name"]</th>
-                            <th>@Localizer["Tags Count"]</th>
+                            <th class="text-center">@Localizer["Tags Count"]</th>
                             <th>@Localizer["Created Time"]</th>
                             <th class="text-end">@Localizer["Actions"]</th>
                         </tr>
@@ -31,19 +36,35 @@
                         @foreach (var taxonomy in Model.Taxonomies)
                         {
                             <tr>
-                                <td>@taxonomy.Name</td>
-                                <td>@Model.TagCounts[taxonomy.Id]</td>
-                                <td>@taxonomy.CreationTime.ToString("yyyy-MM-dd")</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                            <i data-lucide="folder" class="text-primary"></i>
+                                        </div>
+                                        <span class="fw-bold">@taxonomy.Name</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-secondary rounded-pill">@Model.TagCounts[taxonomy.Id]</span>
+                                </td>
+                                <td>
+                                    <span class="text-muted small">
+                                        <i data-lucide="calendar" class="icon-sm me-1"></i>
+                                        @taxonomy.CreationTime.ToString("yyyy-MM-dd")
+                                    </span>
+                                </td>
                                 <td class="text-end">
-                                    <a asp-controller="Tags" asp-action="Index" asp-route-taxonomyId="@taxonomy.Id" class="btn btn-sm btn-info">
-                                        <i data-lucide="list"></i> @Localizer["View Tags"]
-                                    </a>
-                                    <a asp-action="Edit" asp-route-id="@taxonomy.Id" class="btn btn-sm btn-primary">
-                                        <i data-lucide="edit"></i> @Localizer["Edit"]
-                                    </a>
-                                    <a asp-action="Delete" asp-route-id="@taxonomy.Id" class="btn btn-sm btn-danger">
-                                        <i data-lucide="trash-2"></i> @Localizer["Delete"]
-                                    </a>
+                                    <div class="btn-group">
+                                        <a asp-controller="Tags" asp-action="Index" asp-route-taxonomyId="@taxonomy.Id" class="btn btn-sm btn-outline-info" title="@Localizer["View Tags"]">
+                                            <i data-lucide="list"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@taxonomy.Id" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
+                                            <i data-lucide="edit"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@taxonomy.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                            <i data-lucide="trash-2"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         }
@@ -52,4 +73,10 @@
             </div>
         }
     </div>
+</div>
+
+<div class="mt-4">
+    <a asp-controller="Tags" asp-action="Index" class="btn btn-link px-0 text-decoration-none">
+        <i data-lucide="arrow-left" class="icon-sm"></i> @Localizer["Back to Tags Management"]
+    </a>
 </div>

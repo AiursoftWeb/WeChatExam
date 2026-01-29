@@ -1,20 +1,43 @@
 @model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.CreateViewModel
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Taxonomies"]</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Localizer["Create Taxonomy"]</li>
+    </ol>
+</nav>
+
 <h1 class="h3 mb-3">@Localizer["Create Taxonomy"]</h1>
 
-<div class="card">
-    <div class="card-body">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label fw-bold"></label>
+                        <input asp-for="Name" class="form-control" placeholder="@Localizer["Enter taxonomy name..."]" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">
+                            <i data-lucide="plus" class="me-1"></i> @Localizer["Create"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-success">@Localizer["Create"]</button>
-                <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
-            </div>
-        </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-light border shadow-sm">
+            <h5 class="alert-heading"><i data-lucide="info" class="me-2 text-info"></i>@Localizer["About Taxonomies"]</h5>
+            <p>@Localizer["A taxonomy is a way to group related tags. Examples include 'School', 'Period', 'Genre', etc."]</p>
+            <p class="mb-0">@Localizer["Once created, you can assign tags to this taxonomy when editing tags."]</p>
+        </div>
     </div>
 </div>

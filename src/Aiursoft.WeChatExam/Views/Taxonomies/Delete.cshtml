@@ -1,26 +1,54 @@
 @model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.DeleteViewModel
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Taxonomies"]</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Localizer["Delete Taxonomy"]</li>
+    </ol>
+</nav>
+
 <h1 class="h3 mb-3">@Localizer["Delete Taxonomy"]</h1>
 
-<div class="card border-danger">
-    <div class="card-header bg-danger text-white">
-        @Localizer["Are you sure you want to delete this taxonomy?"]
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">@Model.Taxonomy.Name</h5>
-        <p class="card-text">
-            @Localizer["This taxonomy has {0} tags associated with it.", Model.TagCount]
-            @if (Model.TagCount > 0)
-            {
-                <br />
-                <span class="text-danger">@Localizer["Deleting this taxonomy will unclassify these tags."]</span>
-            }
-        </p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <div class="bg-danger bg-opacity-10 p-4 rounded-circle d-inline-block mb-3">
+                        <i data-lucide="trash-2" class="text-danger" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <h4>@Localizer["Confirm Deletion"]</h4>
+                    <p class="text-muted">@Localizer["You are about to delete the following taxonomy:"]</p>
+                    <span class="badge bg-secondary fs-5">@Model.Taxonomy.Name</span>
+                </div>
 
-        <form asp-action="Delete">
-            <input type="hidden" name="id" value="@Model.Taxonomy.Id" />
-            <button type="submit" class="btn btn-danger">@Localizer["Yes, Delete"]</button>
-            <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
-        </form>
+                <div class="alert alert-danger border-0 bg-danger bg-opacity-10" role="alert">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i data-lucide="alert-circle" class="text-danger"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-bold">@Localizer["This taxonomy has {0} tags associated with it.", Model.TagCount]</p>
+                            @if (Model.TagCount > 0)
+                            {
+                                <p class="mb-0">@Localizer["Deleting this taxonomy will unclassify these tags. They will still exist but won't be grouped anymore."]</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" name="id" value="@Model.Taxonomy.Id" />
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-danger">
+                            <i data-lucide="trash-2" class="me-1"></i> @Localizer["Confirm Delete"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

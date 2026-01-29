@@ -41,6 +41,7 @@ public class TagsController(
         return this.StackView(new IndexViewModel
         {
             Tags = tags,
+            AllTaxonomies = taxonomies,
             TagUsageCounts = tagUsageCounts,
             SearchQuery = search,
             TaxonomyId = taxonomyId,

@@ -1,38 +1,61 @@
 @model Aiursoft.WeChatExam.Models.TagsViewModels.DeleteViewModel
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Tags"]</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Localizer["Delete Tag"]</li>
+    </ol>
+</nav>
+
 <h1 class="h3 mb-3">@Localizer["Delete Tag"]</h1>
 
-<div class="card">
-    <div class="card-body">
-        <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">
-                <i data-lucide="alert-triangle"></i> @Localizer["Warning"]
-            </h4>
-            <p>@Localizer["Are you sure you want to delete the tag:"] <strong>@Model.Tag.DisplayName</strong>?</p>
-            @if (Model.UsageCount > 0)
-           {
-                <p class="mb-0">
-                    @Localizer["This tag is currently used by {0} question(s). Deleting this tag will only remove the tag, not the questions.", Model.UsageCount]
-                </p>
-            }
-            else
-            {
-                <p class="mb-0">
-                    @Localizer["This tag is not used by any questions."]
-                </p>
-            }
-        </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <div class="bg-danger bg-opacity-10 p-4 rounded-circle d-inline-block mb-3">
+                        <i data-lucide="trash-2" class="text-danger" style="width: 48px; height: 48px;"></i>
+                    </div>
+                    <h4>@Localizer["Confirm Deletion"]</h4>
+                    <p class="text-muted">@Localizer["You are about to delete the following tag:"]</p>
+                    <span class="badge bg-primary fs-5">@Model.Tag.DisplayName</span>
+                </div>
 
-        <form asp-action="Delete" method="post">
-            <input type="hidden" name="id" value="@Model.Tag.Id" />
-            <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-danger">
-                    <i data-lucide="trash-2"></i> @Localizer["Confirm Delete"]
-                </button>
-                <a asp-action="Index" class="btn btn-secondary">
-                    <i data-lucide="arrow-left"></i> @Localizer["Cancel"]
-                </a>
+                <div class="alert alert-warning border-0 bg-warning bg-opacity-10" role="alert">
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i data-lucide="alert-triangle" class="text-warning"></i>
+                        </div>
+                        <div>
+                            @if (Model.UsageCount > 0)
+                            {
+                                <p class="mb-0">
+                                    @Localizer["This tag is currently used by {0} question(s). Deleting this tag will only remove the tag from these questions, not delete the questions themselves.", Model.UsageCount]
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="mb-0">
+                                    @Localizer["This tag is not used by any questions."]
+                                </p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" name="id" value="@Model.Tag.Id" />
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-danger">
+                            <i data-lucide="trash-2" class="me-1"></i> @Localizer["Confirm Delete"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>
