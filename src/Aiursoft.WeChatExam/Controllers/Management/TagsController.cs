@@ -134,7 +134,7 @@ public class TagsController(
     [HttpGet]
     public async Task<IActionResult> Autocomplete(string query)
     {
-        var tags = await tagService.SearchTagsAsync(query, null);
+        var tags = await tagService.SearchTagsAsync(query);
         var result = tags.Select(t => new { t.Id, t.DisplayName }).Take(10).ToList();
         return Json(result);
     }

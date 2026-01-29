@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Services;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -175,7 +176,7 @@ public class TaxonomiesTests
         // 3. Seed a Tag with Taxonomy
         using (var scope = _server!.Services.CreateScope())
         {
-            var tagService = scope.ServiceProvider.GetRequiredService<Aiursoft.WeChatExam.Services.ITagService>();
+            var tagService = scope.ServiceProvider.GetRequiredService<ITagService>();
             var tag = await tagService.AddTagAsync($"Tag-{Guid.NewGuid()}");
             tag.TaxonomyId = taxonomyId;
             await tagService.UpdateTagAsync(tag);
@@ -215,7 +216,7 @@ public class TaxonomiesTests
         
         using (var scope = _server!.Services.CreateScope())
         {
-            var tagService = scope.ServiceProvider.GetRequiredService<Aiursoft.WeChatExam.Services.ITagService>();
+            var tagService = scope.ServiceProvider.GetRequiredService<ITagService>();
             
             // Tag in taxonomy
             var tag1 = await tagService.AddTagAsync(tag1Name);
@@ -269,7 +270,7 @@ public class TaxonomiesTests
 
         using (var scope = _server!.Services.CreateScope())
         {
-            var tagService = scope.ServiceProvider.GetRequiredService<Aiursoft.WeChatExam.Services.ITagService>();
+            var tagService = scope.ServiceProvider.GetRequiredService<ITagService>();
             
             // Categorized Tag
             var tag1 = await tagService.AddTagAsync(categorizedTagName);

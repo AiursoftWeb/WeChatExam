@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 
 public class TaxonomyDto
