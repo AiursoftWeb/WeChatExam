@@ -1,0 +1,20 @@
+@model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Create Taxonomy"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">@Localizer["Create"]</button>
+                <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>

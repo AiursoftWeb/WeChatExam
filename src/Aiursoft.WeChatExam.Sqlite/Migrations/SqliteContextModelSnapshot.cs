@@ -548,9 +548,33 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("TaxonomyId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("TaxonomyId");
+
                     b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Taxonomy", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Taxonomies");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.User", b =>
@@ -1041,6 +1065,15 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Tag", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Taxonomy", "Taxonomy")
+                        .WithMany("Tags")
+                        .HasForeignKey("TaxonomyId");
+
+                    b.Navigation("Taxonomy");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserDistributionChannel", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.DistributionChannel", "DistributionChannel")
@@ -1189,6 +1222,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Tag", b =>
                 {
                     b.Navigation("QuestionTags");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Taxonomy", b =>
+                {
+                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

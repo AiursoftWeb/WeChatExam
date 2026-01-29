@@ -10,11 +10,17 @@
                     placeholder="@Localizer["Search tags..."]" />
             </div>
             <div class="col-auto">
+                <select name="taxonomyId" asp-items="Model.AvailableTaxonomies" class="form-select">
+                    <option value="">@Localizer["-- All Taxonomies --"]</option>
+                    <!option value="0" @(Model.TaxonomyId == 0 ? "selected" : "")>@Localizer["-- Uncategorized --"]</!option>
+                </select>
+            </div>
+            <div class="col-auto">
                 <button type="submit" class="btn btn-primary">
                     <i data-lucide="search"></i> @Localizer["Search"]
                 </button>
             </div>
-            @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
+            @if (!string.IsNullOrWhiteSpace(Model.SearchQuery) || Model.TaxonomyId.HasValue)
             {
                 <div class="col-auto">
                     <a asp-action="Index" class="btn btn-secondary">
@@ -28,7 +34,7 @@
         @if (Model.Tags.Count == 0)
         {
             <div class="alert alert-info" role="alert">
-                @if (string.IsNullOrWhiteSpace(Model.SearchQuery))
+                @if (string.IsNullOrWhiteSpace(Model.SearchQuery) && !Model.TaxonomyId.HasValue)
                 {
                     @Localizer["No tags found. Tags will appear here once you create them when editing questions."]
                 }
@@ -45,6 +51,7 @@
                     <thead>
                         <tr>
                             <th>@Localizer["Tag Name"]</th>
+                            <th>@Localizer["Taxonomy"]</th>
                             <th>@Localizer["Usage Count"]</th>
                             <th class="text-end">@Localizer["Actions"]</th>
                         </tr>
@@ -57,9 +64,22 @@
                                     <span class="badge bg-primary">@tag.DisplayName</span>
                                 </td>
                                 <td>
+                                    @if (tag.Taxonomy != null)
+                                    {
+                                        <span class="badge bg-secondary">@tag.Taxonomy.Name</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">@Localizer["Uncategorized"]</span>
+                                    }
+                                </td>
+                                <td>
                                     @Model.TagUsageCounts[tag.Id] @Localizer["questions"]
                                 </td>
                                 <td class="text-end">
+                                    <a asp-action="Edit" asp-route-id="@tag.Id" class="btn btn-sm btn-primary">
+                                        <i data-lucide="edit"></i> @Localizer["Edit"]
+                                    </a>
                                     <a asp-action="Delete" asp-route-id="@tag.Id" class="btn btn-sm btn-danger">
                                         <i data-lucide="trash-2"></i> @Localizer["Delete"]
                                     </a>

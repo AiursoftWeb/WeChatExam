@@ -1,0 +1,26 @@
+@model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.DeleteViewModel
+
+<h1 class="h3 mb-3">@Localizer["Delete Taxonomy"]</h1>
+
+<div class="card border-danger">
+    <div class="card-header bg-danger text-white">
+        @Localizer["Are you sure you want to delete this taxonomy?"]
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Taxonomy.Name</h5>
+        <p class="card-text">
+            @Localizer["This taxonomy has {0} tags associated with it.", Model.TagCount]
+            @if (Model.TagCount > 0)
+            {
+                <br />
+                <span class="text-danger">@Localizer["Deleting this taxonomy will unclassify these tags."]</span>
+            }
+        </p>
+
+        <form asp-action="Delete">
+            <input type="hidden" name="id" value="@Model.Taxonomy.Id" />
+            <button type="submit" class="btn btn-danger">@Localizer["Yes, Delete"]</button>
+            <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
+        </form>
+    </div>
+</div>

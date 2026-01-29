@@ -1,0 +1,55 @@
+@model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Taxonomies Management"]</h1>
+
+<div class="card">
+    <div class="card-header">
+        <a asp-action="Create" class="btn btn-success">
+            <i data-lucide="plus"></i> @Localizer["Create Taxonomy"]
+        </a>
+    </div>
+    <div class="card-body">
+        @if (Model.Taxonomies.Count == 0)
+        {
+            <div class="alert alert-info" role="alert">
+                @Localizer["No taxonomies found. Create one to get started."]
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Localizer["Taxonomy Name"]</th>
+                            <th>@Localizer["Tags Count"]</th>
+                            <th>@Localizer["Created Time"]</th>
+                            <th class="text-end">@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var taxonomy in Model.Taxonomies)
+                        {
+                            <tr>
+                                <td>@taxonomy.Name</td>
+                                <td>@Model.TagCounts[taxonomy.Id]</td>
+                                <td>@taxonomy.CreationTime.ToString("yyyy-MM-dd")</td>
+                                <td class="text-end">
+                                    <a asp-controller="Tags" asp-action="Index" asp-route-taxonomyId="@taxonomy.Id" class="btn btn-sm btn-info">
+                                        <i data-lucide="list"></i> @Localizer["View Tags"]
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@taxonomy.Id" class="btn btn-sm btn-primary">
+                                        <i data-lucide="edit"></i> @Localizer["Edit"]
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@taxonomy.Id" class="btn btn-sm btn-danger">
+                                        <i data-lucide="trash-2"></i> @Localizer["Delete"]
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

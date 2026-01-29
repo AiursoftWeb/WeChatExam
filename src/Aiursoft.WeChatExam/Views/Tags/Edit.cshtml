@@ -1,0 +1,32 @@
+@model Aiursoft.WeChatExam.Models.TagsViewModels.EditViewModel
+
+<h1 class="h3 mb-3">@Localizer["Edit Tag"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="DisplayName" class="form-label"></label>
+                <input asp-for="DisplayName" class="form-control" />
+                <span asp-validation-for="DisplayName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TaxonomyId" class="form-label"></label>
+                <select asp-for="TaxonomyId" asp-items="Model.AvailableTaxonomies" class="form-select">
+                    <option value="">@Localizer["-- Uncategorized --"]</option>
+                </select>
+                <span asp-validation-for="TaxonomyId" class="text-danger"></span>
+                <div class="form-text">@Localizer["Grouping tags by taxonomy helps in filtering and organization."]</div>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+                <a asp-action="Index" class="btn btn-secondary">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>
