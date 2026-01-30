@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- Все таксономии --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Без категории --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>Редактировать / Категоризировать</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>Управление таксономиями</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>Совпадающие с вашими критериями теги не найдены.</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>Метки не найдены. Метки появятся здесь после их создания при редактировании вопросов.</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>Нет тегов в этой таксономии, соответствующих вашему поиску.</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>Нет тегов, соответствующих вашему запросу поиска.</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>Управление тегами</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>Эти теги не привязаны к какой-либо таксономии. Пожалуйста, классифицируйте их для лучшей организации.</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>Неопределённые теги</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>Количество использований</value>

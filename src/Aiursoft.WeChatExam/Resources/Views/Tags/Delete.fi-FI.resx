@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Vahvista poisto</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Vahvista poisto</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Poista tunniste</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tagit</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Tätä merkkiä ei käytetä missään kysymyksessä.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Varoitus</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Olet aikomassa poistaa seuraavan merkinnän:</value>
   </data>
 
 </root>

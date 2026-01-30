@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>भूमिका बनाएं</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>टैक्सोनॉमी बनाएं</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>उपयोगकर्ता बनाएं</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>रोल हटाएं</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>टैक्सोनॉमी हटाएं</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>उपयोगकर्ता हटाएं</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>भूमिका संपादित करें</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>टैग संपादित करें</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>टैक्सनॉमी संपादित करें</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>उपयोगकर्ता संपादित करें</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>टैग</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>वर्गीकरण</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>टैक्सोनॉमी प्रबंधन</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>टेम्पलेट</value>

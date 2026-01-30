@@ -69,6 +69,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Tạo Vai Trò</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Tạo phân loại</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Tạo Người Dùng</value>
   </data>
@@ -87,6 +90,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Xóa Vai trò</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Xóa phân loại</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Xóa Người Dùng</value>
   </data>
@@ -98,6 +104,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Chỉnh sửa Vai trò</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Chỉnh sửa thẻ</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Sửa đổi phân loại</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Chỉnh sửa Người dùng</value>
@@ -176,6 +188,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Thẻ</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Các phân loại</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Quản lý phân loại</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Mẫu</value>

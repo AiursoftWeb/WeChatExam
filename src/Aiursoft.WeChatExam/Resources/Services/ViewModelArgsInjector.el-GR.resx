@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Δημιουργία Ρόλου</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Δημιουργία Ταξινόμησης</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Δημιουργία Χρήστη</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Διαγραφή Ρόλου</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Διαγραφή Ταξινόμησης</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Διαγραφή Χρήστη</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Επεξεργασία Ρόλου</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Επεξεργασία Ετικέτας</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Επεξεργασία Ταξινόμησης</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Επεξεργασία Χρήστη</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Ετικέτες</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Ταξινομίες</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Διαχείριση Ταξινομιών</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Πρότυπο</value>

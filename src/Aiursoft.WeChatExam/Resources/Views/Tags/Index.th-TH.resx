@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- ทั้งหมดของ_taxonomy --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- ไม่มีหมวดหมู่ --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>การกระทำ</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>แก้ไข / จัดหมวดหมู่</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>จัดการหมวดหมู่</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>ไม่พบแท็กที่ตรงกับเกณฑ์ของคุณ</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>ไม่พบแท็กใด ๆ แท็กจะปรากฏที่นี่เมื่อคุณสร้างมันขึ้นมาขณะแก้ไขคำถาม</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>ไม่มีแท็กในหมวดหมู่นี้ที่ตรงกับคำค้นหาของคุณ</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>ไม่มีแท็กใดตรงกับคำค้นหาของคุณ</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>การจัดการแท็ก</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>แท็กเหล่านี้ยังไม่ได้ถูกจัดประเภทในหมวดหมู่ใด ๆ กรุณาจัดประเภทให้เพื่อการจัดระเบียบที่ดีขึ้น</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>แท็กที่ยังไม่ได้จัดหมวดหมู่</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>จำนวนการใช้งาน</value>

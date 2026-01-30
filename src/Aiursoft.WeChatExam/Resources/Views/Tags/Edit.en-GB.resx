@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Uncategorized --</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Edit Tag</value>
+  </data>
+  <data name="Enter tag name..." xml:space="preserve">
+    <value>Enter tag name...</value>
+  </data>
+  <data name="Grouping tags by taxonomy helps in filtering and organization." xml:space="preserve">
+    <value>Grouping tags by taxonomy helps in filtering and organisation.</value>
+  </data>
+  <data name="If you need a new taxonomy, you can manage them in the" xml:space="preserve">
+    <value>If you need a new taxonomy, you can manage them in the Taxonomies Management</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category." xml:space="preserve">
+    <value>Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category.</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Taxonomies Management</value>
+  </data>
+  <data name="Tips" xml:space="preserve">
+    <value>Tips</value>
+  </data>
+
+</root>

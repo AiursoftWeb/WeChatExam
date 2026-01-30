@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Xác nhận xóa</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Xác nhận xóa</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Xóa thẻ</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Thẻ</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Thẻ này không được sử dụng trong bất kỳ câu hỏi nào.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Cảnh báo</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Bạn đang chuẩn bị xóa thẻ sau đây:</value>
   </data>
 
 </root>

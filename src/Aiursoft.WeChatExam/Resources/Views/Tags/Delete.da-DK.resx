@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Bekræft sletning</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Bekræft sletning</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Slet tag</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Emner</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Dette mærke bruges ikke af nogen spørgsmål.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Advarsel</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Du er ved at slette følgende tag:</value>
   </data>
 
 </root>

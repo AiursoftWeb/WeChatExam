@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- Toate taxonomiile --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Neclasificate --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Acțiuni</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>Șterge</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editare</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>Editare / Categorizare</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>Gestionează taxonomii</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>Nu s-au găsit etichete care să corespundă criteriilor dumneavoastră.</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>Nu s-au găsit etichete. Etichetele vor apărea aici odată ce le veți crea în timpul editării întrebărilor.</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>Nu există etichete în această taxonomie care să corespundă căutării dvs.</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>Nu există etichete care să corespundă căutării dvs.</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>Gestionarea etichetelor</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>Aceste etichete nu sunt atribuite niciunui taxonomie. Vă rugăm să le categorisiți pentru o organizare mai bună.</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>Etichete necategorizate</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>Număr de utilizări</value>

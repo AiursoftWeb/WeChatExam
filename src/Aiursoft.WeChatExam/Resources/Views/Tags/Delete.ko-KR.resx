@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>확인 삭제</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>삭제 확인</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>태그 삭제</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>태그</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>이 태그는 아직 아무 질문에서도 사용되지 않았습니다.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>경고</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>다음 태그를 삭제하시려고 합니다:</value>
   </data>
 
 </root>

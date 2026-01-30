@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>تأكيد الحذف</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>تأكيد الحذف</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>حذف التصنيف</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>الوسوم</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>هذا التصنيف لا يُستخدم في أي أسئلة.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>تحذير</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>أنت على وشك حذف التصنيف التالي:</value>
   </data>
 
 </root>

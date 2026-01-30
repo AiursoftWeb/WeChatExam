@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- Todas as Taxonomias --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Sem Categoria --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Ações</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>Eliminar</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>Editar / Categorizar</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>Gerir Taxonomias</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>Nenhum rótulo encontrado a corresponder aos seus critérios.</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>Nenhum rótulo encontrado. Os rótulos aparecerão aqui assim que os criar ao editar perguntas.</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>Sem etiquetas nesta taxonomia que correspondam à sua pesquisa.</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>Nenhum rótulo corresponde à sua pesquisa.</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>Gestão de Etiquetas</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>Estas etiquetas não estão atribuídas a qualquer taxonomia. Por favor, categorize-as para uma melhor organização.</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>Etiquetas Não Categorizadas</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>Contagem de Utilização</value>

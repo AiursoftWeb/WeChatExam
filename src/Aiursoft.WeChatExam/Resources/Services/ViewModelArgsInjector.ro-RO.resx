@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Creează Rol</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Creare taxonomie</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Creează utilizator</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Șterge Rol</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Șterge Taxonomie</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Șterge utilizator</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Editează Rol</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Editare etichetă</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Editare Taxonomie</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Editează Utilizator</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etichete</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomii</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Gestionarea taxonomiilor</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Șablon</value>

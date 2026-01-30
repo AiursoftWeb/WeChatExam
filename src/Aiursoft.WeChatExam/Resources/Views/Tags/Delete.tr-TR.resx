@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Onayla Sil</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Silme Onayı</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Etiketi Sil</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiketler</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Bu etiket hiçbir soru tarafından kullanılmıyor.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Uyarı</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Aşağıdaki etiketi silmek üzeresiniz:</value>
   </data>
 
 </root>

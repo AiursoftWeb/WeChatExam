@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Confirmar eliminación</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Confirmar eliminación</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Eliminar etiqueta</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiquetas</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Esta etiqueta no se utiliza en ninguna pregunta.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Advertencia</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Estás a punto de eliminar la siguiente etiqueta:</value>
   </data>
 
 </root>

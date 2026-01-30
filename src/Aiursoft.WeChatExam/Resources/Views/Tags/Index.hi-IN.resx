@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- सभी वर्गीकरण --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- अनकैटेगराइज़्ड --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>क्रियाएँ</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>हटाएँ</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>संपादित करें / वर्गीकृत करें</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>वर्गीकरण प्रबंधित करें</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>आपकी शर्तों के अनुरूप कोई टैग नहीं मिला।</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>कोई टैग नहीं मिला। जब आप प्रश्नों को संपादित करते हैं, तो आप टैग बनाने के बाद वे यहाँ दिखाई देंगे।</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>आपकी खोज के अनुरूप इस टैक्सोनॉमी में कोई टैग नहीं है।</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>आपके खोज के प्रश्न के अनुरूप कोई टैग नहीं मिला।</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>टैग प्रबंधन</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>इन टैग्स को किसी भी टैक्सोनॉमी में नहीं निर्धारित किया गया है। कृपया उन्हें बेहतर संगठन के लिए वर्गीकृत करें।</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>अनिर्धारित टैग</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>उपयोग गिनती</value>

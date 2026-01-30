@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Rol Oluştur</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Taksonomi Oluştur</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Kullanıcı Oluştur</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Rolü Sil</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Taksonomi Sil</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Kullanıcıyı Sil</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Rolü Düzenle</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Etiket Düzenle</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Taxonomy Düzenle</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Kullanıcıyı Düzenle</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etiketler</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taksonomiler</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Taksonomi Yönetimi</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Şablon</value>

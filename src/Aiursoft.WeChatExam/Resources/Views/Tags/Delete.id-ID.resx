@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Konfirmasi Hapus</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Konfirmasi Penghapusan</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Hapus Tag</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tag</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Tag ini tidak digunakan oleh pertanyaan apa pun.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Peringatan</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Anda akan menghapus tag berikut:</value>
   </data>
 
 </root>
