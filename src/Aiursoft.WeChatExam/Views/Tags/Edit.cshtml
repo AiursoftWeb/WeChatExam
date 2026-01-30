@@ -1,0 +1,58 @@
+@model Aiursoft.WeChatExam.Models.TagsViewModels.EditViewModel
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Tags"]</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Localizer["Edit Tag"]</li>
+    </ol>
+</nav>
+
+<h1 class="h3 mb-3">@Localizer["Edit Tag"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="DisplayName" class="form-label fw-bold"></label>
+                        <input asp-for="DisplayName" class="form-control" placeholder="@Localizer["Enter tag name..."]" />
+                        <span asp-validation-for="DisplayName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TaxonomyId" class="form-label fw-bold"></label>
+                        <select asp-for="TaxonomyId" asp-items="Model.AvailableTaxonomies" class="form-select">
+                            <option value="">@Localizer["-- Uncategorized --"]</option>
+                        </select>
+                        <span asp-validation-for="TaxonomyId" class="text-danger"></span>
+                        <div class="form-text mt-2">
+                            <i data-lucide="info" class="icon-sm"></i>
+                            @Localizer["Grouping tags by taxonomy helps in filtering and organization."]
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="save" class="me-1"></i> @Localizer["Save Changes"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-light border shadow-sm">
+            <h5 class="alert-heading"><i data-lucide="lightbulb" class="me-2 text-warning"></i>@Localizer["Tips"]</h5>
+            <p>@Localizer["Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category."]</p>
+            <hr>
+            <p class="mb-0">@Localizer["If you need a new taxonomy, you can manage them in the"] <a asp-controller="Taxonomies" asp-action="Index">@Localizer["Taxonomies Management"]</a>.</p>
+        </div>
+    </div>
+</div>

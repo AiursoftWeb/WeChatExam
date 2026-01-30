@@ -16,6 +16,11 @@ public class Tag
     [MaxLength(50)]
     public required string NormalizedName { get; set; }
 
+    public int? TaxonomyId { get; set; }
+
+    [ForeignKey(nameof(TaxonomyId))]
+    public Taxonomy? Taxonomy { get; set; }
+
     [InverseProperty(nameof(QuestionTag.Tag))]
     public IEnumerable<QuestionTag> QuestionTags { get; init; } = new List<QuestionTag>();
 }

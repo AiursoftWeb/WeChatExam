@@ -1,0 +1,37 @@
+@model Aiursoft.WeChatExam.Models.TaxonomiesViewModels.EditViewModel
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Taxonomies"]</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Localizer["Edit Taxonomy"]</li>
+    </ol>
+</nav>
+
+<h1 class="h3 mb-3">@Localizer["Edit Taxonomy"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label fw-bold"></label>
+                        <input asp-for="Name" class="form-control" placeholder="@Localizer["Enter taxonomy name..."]" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="save" class="me-1"></i> @Localizer["Save Changes"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

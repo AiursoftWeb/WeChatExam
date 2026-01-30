@@ -47,6 +47,7 @@ public class Startup : IWebStartup
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();
+        services.AddScoped<ITaxonomyService, TaxonomyService>();
         services.AddScoped<IPaperService, PaperService>();
         services.AddScoped<ChatClient>();
         services.AddScoped<IOllamaService, OllamaService>();

@@ -16,6 +16,7 @@ public class TagService : ITagService
     {
         var normalizedName = displayName.Trim().ToUpperInvariant();
         var existingTag = await _dbContext.Tags
+            .Include(t => t.Taxonomy)
             .FirstOrDefaultAsync(t => t.NormalizedName == normalizedName);
 
         if (existingTag != null)
@@ -36,7 +37,9 @@ public class TagService : ITagService
 
     public async Task<List<Tag>> GetAllTagsAsync()
     {
-        return await _dbContext.Tags.ToListAsync();
+        return await _dbContext.Tags
+            .Include(t => t.Taxonomy)
+            .ToListAsync();
     }
 
     public async Task AddTagToQuestionAsync(Guid questionId, int tagId)
@@ -86,23 +89,38 @@ public class TagService : ITagService
             .ToListAsync();
     }
 
-    public async Task<List<Tag>> SearchTagsAsync(string query)
+    public async Task<List<Tag>> SearchTagsAsync(string? query, int? taxonomyId = null)
     {
-        if (string.IsNullOrWhiteSpace(query))
+        var dbQuery = _dbContext.Tags.Include(t => t.Taxonomy).AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(query))
         {
-            return await GetAllTagsAsync();
+            var normalizedQuery = query.Trim().ToUpperInvariant();
+            dbQuery = dbQuery.Where(t => t.NormalizedName.Contains(normalizedQuery));
         }
 
-        var normalizedQuery = query.Trim().ToUpperInvariant();
-        return await _dbContext.Tags
-            .Where(t => t.NormalizedName.Contains(normalizedQuery))
+        if (taxonomyId.HasValue)
+        {
+            if (taxonomyId.Value == 0)
+            {
+                dbQuery = dbQuery.Where(t => t.TaxonomyId == null);
+            }
+            else
+            {
+                dbQuery = dbQuery.Where(t => t.TaxonomyId == taxonomyId.Value);
+            }
+        }
+
+        return await dbQuery
             .OrderBy(t => t.DisplayName)
             .ToListAsync();
     }
 
     public async Task<Tag?> GetTagByIdAsync(int tagId)
     {
-        return await _dbContext.Tags.FindAsync(tagId);
+        return await _dbContext.Tags
+            .Include(t => t.Taxonomy)
+            .FirstOrDefaultAsync(t => t.Id == tagId);
     }
 
     public async Task DeleteTagAsync(int tagId)
@@ -121,5 +139,20 @@ public class TagService : ITagService
             _dbContext.Tags.Remove(tag);
             await _dbContext.SaveChangesAsync();
         }
+    }
+
+    public async Task UpdateTagAsync(Tag tag)
+    {
+        _dbContext.Tags.Update(tag);
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<List<Tag>> GetTagsByTaxonomyIdAsync(int taxonomyId)
+    {
+        return await _dbContext.Tags
+            .Where(t => t.TaxonomyId == taxonomyId)
+            .Include(t => t.Taxonomy)
+            .OrderBy(t => t.DisplayName)
+            .ToListAsync();
     }
 }

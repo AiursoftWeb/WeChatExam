@@ -1,20 +1,40 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.TagsViewModels.IndexViewModel
 
-<h1 class="h3 mb-3">@Localizer["Tags Management"]</h1>
+<div class="row">
+    <div class="col-md-9">
+        <h1 class="h3 mb-3">@Localizer["Tags Management"]</h1>
+    </div>
+    <div class="col-md-3 text-end">
+        <a asp-controller="Taxonomies" asp-action="Index" class="btn btn-outline-primary">
+            <i data-lucide="settings"></i> @Localizer["Manage Taxonomies"]
+        </a>
+    </div>
+</div>
 
-<div class="card">
-    <div class="card-header">
+<div class="card mb-4">
+    <div class="card-body">
         <form method="get" asp-action="Index" class="row g-3 align-items-center">
             <div class="col-auto flex-grow-1">
-                <input type="text" name="search" value="@Model.SearchQuery" class="form-control"
-                    placeholder="@Localizer["Search tags..."]" />
+                <div class="input-group">
+                    <span class="input-group-text"><i data-lucide="search"></i></span>
+                    <input type="text" name="search" value="@Model.SearchQuery" class="form-control"
+                           placeholder="@Localizer["Search tags..."]" />
+                </div>
+            </div>
+            <div class="col-auto">
+                <select name="taxonomyId" asp-items="Model.AvailableTaxonomies" class="form-select">
+                    <option value="">@Localizer["-- All Taxonomies --"]</option>
+                    <!option value="0" @(Model.TaxonomyId == 0 ? "selected" : "")>@Localizer["-- Uncategorized --"]</!option>
+                </select>
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">
-                    <i data-lucide="search"></i> @Localizer["Search"]
+                    @Localizer["Search"]
                 </button>
             </div>
-            @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
+            @if (!string.IsNullOrWhiteSpace(Model.SearchQuery) || Model.TaxonomyId.HasValue)
             {
                 <div class="col-auto">
                     <a asp-action="Index" class="btn btn-secondary">
@@ -24,54 +44,117 @@
             }
         </form>
     </div>
-    <div class="card-body">
-        @if (Model.Tags.Count == 0)
-        {
-            <div class="alert alert-info" role="alert">
-                @if (string.IsNullOrWhiteSpace(Model.SearchQuery))
-                {
-                    @Localizer["No tags found. Tags will appear here once you create them when editing questions."]
-                }
-                else
-                {
-                    @Localizer["No tags match your search query."]
-                }
-            </div>
-        }
-        else
-        {
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>@Localizer["Tag Name"]</th>
-                            <th>@Localizer["Usage Count"]</th>
-                            <th class="text-end">@Localizer["Actions"]</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var tag in Model.Tags)
-                        {
-                            <tr>
-                                <td>
-                                    <span class="badge bg-primary">@tag.DisplayName</span>
-                                </td>
-                                <td>
-                                    @Model.TagUsageCounts[tag.Id] @Localizer["questions"]
-                                </td>
-                                <td class="text-end">
-                                    <a asp-action="Delete" asp-route-id="@tag.Id" class="btn btn-sm btn-danger">
-                                        <i data-lucide="trash-2"></i> @Localizer["Delete"]
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="text-muted mt-3">
-                @Localizer["Total: {0} tag(s)", Model.Tags.Count]
-            </div>
-        }
-    </div>
 </div>
+
+@{
+    var uncategorizedTags = Model.Tags.Where(t => t.TaxonomyId == null).ToList();
+    var groupedTags = Model.Tags
+        .Where(t => t.TaxonomyId != null)
+        .GroupBy(t => t.TaxonomyId)
+        .ToDictionary(g => g.Key!.Value, g => g.ToList());
+}
+
+@if (uncategorizedTags.Any())
+{
+    <div class="card border-danger mb-4 shadow-sm">
+        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+            <span>
+                <i data-lucide="alert-triangle" class="me-2"></i>
+                <strong>@Localizer["Uncategorized Tags"]</strong>
+                <span class="badge bg-white text-danger ms-2">@uncategorizedTags.Count</span>
+            </span>
+            <small class="d-none d-sm-block">@Localizer["These tags are not assigned to any taxonomy. Please categorize them for better organization."]</small>
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-wrap gap-2">
+                @foreach (var tag in uncategorizedTags)
+                {
+                    <div class="btn-group shadow-sm">
+                        <button type="button" class="btn btn-outline-danger btn-sm">
+                            @tag.DisplayName
+                            <span class="badge bg-danger ms-1">@Model.TagUsageCounts[tag.Id]</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" asp-action="Edit" asp-route-id="@tag.Id"><i data-lucide="edit" class="icon-sm"></i> @Localizer["Edit / Categorize"]</a></li>
+                            @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanManageTags))
+                            {
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@tag.Id"><i data-lucide="trash-2" class="icon-sm"></i> @Localizer["Delete"]</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    @foreach (var taxonomy in Model.AllTaxonomies)
+    {
+        var tagsInThisTaxonomy = groupedTags.ContainsKey(taxonomy.Id) ? groupedTags[taxonomy.Id] : new List<Tag>();
+        
+        @if (Model.TaxonomyId.HasValue && Model.TaxonomyId != taxonomy.Id)
+        {
+            continue;
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.SearchQuery) && !tagsInThisTaxonomy.Any())
+        {
+            continue;
+        }
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        <i data-lucide="folder" class="me-2 text-primary"></i>@taxonomy.Name
+                    </h5>
+                    <span class="badge bg-primary rounded-pill">@tagsInThisTaxonomy.Count</span>
+                </div>
+                <div class="card-body">
+                    @if (tagsInThisTaxonomy.Any())
+                    {
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach (var tag in tagsInThisTaxonomy)
+                            {
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-light border btn-sm">
+                                        @tag.DisplayName
+                                        <span class="badge bg-secondary ms-1">@Model.TagUsageCounts[tag.Id]</span>
+                                    </button>
+                                    <button type="button" class="btn btn-light border btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" asp-action="Edit" asp-route-id="@tag.Id"><i data-lucide="edit" class="icon-sm"></i> @Localizer["Edit"]</a></li>
+                                        @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanManageTags))
+                                        {
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@tag.Id"><i data-lucide="trash-2" class="icon-sm"></i> @Localizer["Delete"]</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted small mb-0">@Localizer["No tags in this taxonomy matching your search."]</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.Tags.Any())
+{
+    <div class="alert alert-info mt-4 shadow-sm" role="alert">
+        <i data-lucide="info" class="me-2"></i>
+        @Localizer["No tags found matching your criteria."]
+    </div>
+}
