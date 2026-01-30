@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Criar Função</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Criar Taxonomia</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Criar Utilizador</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Eliminar Função</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Eliminar Taxonomia</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Eliminar Utilizador</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Editar Função</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Editar Etiqueta</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Editar Taxonomia</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Editar Utilizador</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etiquetas</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomias</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Gestão de Taxonomias</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Modelo</value>

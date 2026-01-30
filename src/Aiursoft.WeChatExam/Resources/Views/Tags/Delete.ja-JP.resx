@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>削除を確認</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>削除の確認</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>タグを削除</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>タグ</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>このタグは、どの質問でも使用されていません。</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>以下のタグを削除しようとしています：</value>
   </data>
 
 </root>

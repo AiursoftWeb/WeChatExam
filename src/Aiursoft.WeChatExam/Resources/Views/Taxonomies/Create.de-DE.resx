@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
+    <value>Eine Taxonomie ist eine Möglichkeit, verwandte Tags zu gruppieren. Beispiele hierfür sind &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, usw.</value>
+  </data>
+  <data name="About Taxonomies" xml:space="preserve">
+    <value>Über Taxonomien</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Erstellen</value>
+  </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Taxonomie erstellen</value>
+  </data>
+  <data name="Enter taxonomy name..." xml:space="preserve">
+    <value>Taxonomie-Name eingeben...</value>
+  </data>
+  <data name="Once created, you can assign tags to this taxonomy when editing tags." xml:space="preserve">
+    <value>Nach der Erstellung können Sie diesem Taxonomie Tags zuweisen, wenn Sie Tags bearbeiten.</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomien</value>
+  </data>
+
+</root>

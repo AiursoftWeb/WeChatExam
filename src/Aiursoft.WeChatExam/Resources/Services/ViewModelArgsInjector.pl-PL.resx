@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Utwórz rolę</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Utwórz taxonomię</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Utwórz użytkownika</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Usuń rolę</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Usuń taxonomię</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Usuń użytkownika</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Edytuj rolę</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Edytuj etykietę</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Edytuj taxonomię</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Edytuj użytkownika</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tagi</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taksonomie</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Zarządzanie taxonomiami</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Szablon</value>

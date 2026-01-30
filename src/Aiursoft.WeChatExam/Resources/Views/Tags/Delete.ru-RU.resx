@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Подтвердить удаление</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Подтвердить удаление</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Удалить метку</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Этот тег не используется ни одним вопросом.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Предупреждение</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Вы собираетесь удалить следующую метку:</value>
   </data>
 
 </root>

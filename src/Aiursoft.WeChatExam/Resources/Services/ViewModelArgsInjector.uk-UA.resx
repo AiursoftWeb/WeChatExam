@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Створити роль</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Створити таксономію</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Створити користувача</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Видалити роль</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Видалити таксономію</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Видалити користувача</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Редагувати роль</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Редагувати тег</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Редагувати таксономію</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Редагувати користувача</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Теги</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Таксономії</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Керування таксономіями</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Шаблон</value>

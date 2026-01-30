@@ -69,6 +69,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>역할 생성</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>분류 생성</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>사용자 생성</value>
   </data>
@@ -87,6 +90,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>역할 삭제</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>분류 삭제</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>사용자 삭제</value>
   </data>
@@ -98,6 +104,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>역할 편집</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>태그 편집</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>분류 편집</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>사용자 편집</value>
@@ -176,6 +188,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>태그</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>분류체계</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>분류 관리</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>템플릿</value>

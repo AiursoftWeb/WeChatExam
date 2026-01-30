@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Rol aanmaken</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Taxonomie aanmaken</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Gebruiker aanmaken</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Rol verwijderen</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Verwijder Taxonomie</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Gebruiker verwijderen</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Rol bewerken</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Tag bewerken</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Taxonomie bewerken</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Gebruiker bewerken</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomieën</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Taxonomiebeheer</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Sjabloon</value>

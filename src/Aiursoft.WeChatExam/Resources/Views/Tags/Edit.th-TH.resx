@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- ไม่มีหมวดหมู่ --</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>แก้ไขแท็ก</value>
+  </data>
+  <data name="Enter tag name..." xml:space="preserve">
+    <value>ใส่ชื่อแท็ก...</value>
+  </data>
+  <data name="Grouping tags by taxonomy helps in filtering and organization." xml:space="preserve">
+    <value>การจัดกลุ่มแท็กตามธีมช่วยให้สามารถกรองและจัดระเบียบได้ง่ายขึ้น</value>
+  </data>
+  <data name="If you need a new taxonomy, you can manage them in the" xml:space="preserve">
+    <value>หากคุณต้องการธีมใหม่ คุณสามารถจัดการพวกมันได้ที่</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>บันทึกการเปลี่ยนแปลง</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>แท็ก</value>
+  </data>
+  <data name="Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category." xml:space="preserve">
+    <value>แท็กถูกใช้เพื่อจัดกลุ่มคำถาม การกำหนดประเภทช่วยให้ผู้ใช้ค้นหาคำถามตามหมวดหมู่ได้ง่ายขึ้น</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>การจัดการหมวดหมู่</value>
+  </data>
+  <data name="Tips" xml:space="preserve">
+    <value>เคล็ดลับ</value>
+  </data>
+
+</root>

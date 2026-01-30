@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- 全ての分類 --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- カテゴリ未設定 --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>編集 / カテゴリ分け</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>分類の管理</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>条件に一致するタグは見つかりませんでした。</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>タグが見つかりません。質問を編集する際にタグを作成すると、ここに表示されます。</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>検索条件に一致するタグがこのタクソノミーにはありません。</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>検索条件に一致するタグは見つかりませんでした。</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>タグ管理</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>これらのタグはどのタクソノミーにも割り当てられていません。より良い整理のために、カテゴリに分類してください。</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>未分類のタグ</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>使用回数</value>

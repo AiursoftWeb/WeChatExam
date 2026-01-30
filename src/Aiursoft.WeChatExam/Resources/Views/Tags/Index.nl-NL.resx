@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- Alle taxonomieën --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Ongecategoriseerd --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Acties</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>Bewerken / Categoriseren</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>Taxonomieën beheren</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>Geen tags gevonden die overeenkomen met uw criteria.</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>Geen tags gevonden. Tags verschijnen hier zodra je ze aanmaakt bij het bewerken van vragen.</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>Geen tags in deze taxonomie die overeenkomen met uw zoekopdracht.</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>Geen tags komen overeen met uw zoekopdracht.</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>Tagsbeheer</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>Deze tags zijn niet toegewezen aan een taxonomie. Categoriseer ze voor een betere organisatie.</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>Ongecategoriseerde tags</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>Gebruikscount</value>

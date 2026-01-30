@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>确认删除</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>确认删除</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>删除标签</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>此标签未被任何问题使用。</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>您即将删除以下标签：</value>
   </data>
 
 </root>

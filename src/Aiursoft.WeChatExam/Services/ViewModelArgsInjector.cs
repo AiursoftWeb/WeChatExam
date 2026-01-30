@@ -87,6 +87,13 @@ public class ViewModelArgsInjector(
         _ = localizer["Delete KnowledgePoint"];
         _ = localizer["Lockout"];
         _ = localizer["Register"];
+    
+        _ = localizer["Create Taxonomy"];
+        _ = localizer["Delete Taxonomy"];
+        _ = localizer["Edit Tag"];
+        _ = localizer["Edit Taxonomy"];
+        _ = localizer["Taxonomies"];
+        _ = localizer["Taxonomies Management"];
     }
 
     public void InjectSimple(

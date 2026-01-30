@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Buat Peran</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Buat Taxonomy</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Buat Pengguna</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Hapus Peran</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Hapus Taxonomy</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Hapus Pengguna</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Edit Peran</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Edit Tag</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Edit Taxonomy</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Edit Pengguna</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tag</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomies</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Manajemen Taksonomi</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Template</value>

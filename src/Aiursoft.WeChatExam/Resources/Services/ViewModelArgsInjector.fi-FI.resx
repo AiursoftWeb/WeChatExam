@@ -66,6 +66,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>Luo rooli</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Luo aineistoluokitus</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>Luo käyttäjä</value>
   </data>
@@ -84,6 +87,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>Poista rooli</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Poista kategoriat</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>Poista käyttäjä</value>
   </data>
@@ -95,6 +101,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Muokkaa roolia</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Muokkaa tunniste</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Muokkaa kategorisointia</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Muokkaa käyttäjää</value>
@@ -173,6 +185,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tagit</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Luokat</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Verkostojen hallinta</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>Malli</value>

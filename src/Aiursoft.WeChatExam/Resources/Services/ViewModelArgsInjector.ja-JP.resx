@@ -69,6 +69,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>ロールの作成</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>分類を作成する</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>ユーザーを作成</value>
   </data>
@@ -87,6 +90,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>ロールを削除</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>分類の削除</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>ユーザーを削除</value>
   </data>
@@ -98,6 +104,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>ロールを編集</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>タグの編集</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>分類の編集</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>ユーザー編集</value>
@@ -176,6 +188,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>タグ</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>分類体系</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>分類管理</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>テンプレート</value>

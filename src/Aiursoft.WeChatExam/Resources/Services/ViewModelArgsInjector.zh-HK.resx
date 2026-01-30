@@ -69,6 +69,9 @@
   <data name="Create Role" xml:space="preserve">
     <value>建立角色</value>
   </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>建立分類法</value>
+  </data>
   <data name="Create User" xml:space="preserve">
     <value>建立用戶</value>
   </data>
@@ -87,6 +90,9 @@
   <data name="Delete Role" xml:space="preserve">
     <value>刪除角色</value>
   </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>刪除分類法</value>
+  </data>
   <data name="Delete User" xml:space="preserve">
     <value>刪除用戶</value>
   </data>
@@ -98,6 +104,12 @@
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>編輯角色</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>編輯標籤</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>編輯分類法</value>
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>編輯用戶</value>
@@ -176,6 +188,12 @@
   </data>
   <data name="Tags" xml:space="preserve">
     <value>標籤</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>分類法</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>分類管理</value>
   </data>
   <data name="Template" xml:space="preserve">
     <value>範本</value>

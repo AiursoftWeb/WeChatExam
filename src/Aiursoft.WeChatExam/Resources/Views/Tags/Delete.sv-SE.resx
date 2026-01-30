@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>Bekräfta radering</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>Bekräfta borttagning</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>Ta bort etikett</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Taggar</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>Denna tagg används inte av några frågor.</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Varning</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>Du är på väg att ta bort följande tagg:</value>
   </data>
 
 </root>

@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- 所有分類 --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- 未分類 --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>刪除</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>編輯 / 分類</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>管理分類</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>找不到符合您條件的標籤。</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>沒有找到標籤。當您編輯問題時建立標籤，它們將會出現在這裡。</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>此分類中沒有符合搜尋條件的標籤。</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>沒有標籤符合您的搜尋條件。</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>標籤管理</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>這些標籤尚未指派至任何分類。請為它們進行分類，以利於更好的組織。</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>未分類標籤</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>使用次數</value>

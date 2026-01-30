@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- Усі таксономії --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Без категорії --</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Дії</value>
   </data>
   <data name="Clear" xml:space="preserve">
@@ -27,8 +33,23 @@
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="Edit / Categorize" xml:space="preserve">
+    <value>Редагувати / Категоризувати</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>Керування онтологіями</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>Не знайдено тегів, що відповідають вашим критеріям.</value>
+  </data>
   <data name="No tags found. Tags will appear here once you create them when editing questions." xml:space="preserve">
     <value>Немає тегів. Теги з&apos;являться тут після їх створення під час редагування запитань.</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>У цьому таксономії немає тегів, які відповідають вашому пошуку.</value>
   </data>
   <data name="No tags match your search query." xml:space="preserve">
     <value>Жоден тег не відповідає вашому запиту пошуку.</value>
@@ -47,6 +68,12 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>Керування тегами</value>
+  </data>
+  <data name="These tags are not assigned to any taxonomy. Please categorize them for better organization." xml:space="preserve">
+    <value>Ці теги не призначені жодній таксономії. Будь ласка, розподіліть їх для кращої організації.</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>Неозначенні теги</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>Кількість використань</value>

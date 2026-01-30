@@ -27,14 +27,23 @@
   <data name="Confirm Delete" xml:space="preserve">
     <value>पुष्टि करें हटाएं</value>
   </data>
+  <data name="Confirm Deletion" xml:space="preserve">
+    <value>हटाने की पुष्टि करें</value>
+  </data>
   <data name="Delete Tag" xml:space="preserve">
     <value>टैग हटाएँ</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>टैग्स</value>
   </data>
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>इस टैग का किसी भी प्रश्न द्वारा उपयोग नहीं किया जाता है।</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>चेतावनी</value>
+  </data>
+  <data name="You are about to delete the following tag:" xml:space="preserve">
+    <value>आप निम्नलिखित टैग को हटाने जा रहे हैं:</value>
   </data>
 
 </root>
