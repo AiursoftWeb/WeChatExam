@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
+    <value>Tất cả các câu hỏi được nhập vào sẽ sử dụng loại này, bỏ qua trường Type trong JSON.</value>
+  </data>
+  <data name="Import Questions from JSON" xml:space="preserve">
+    <value>Nhập câu hỏi từ JSON</value>
+  </data>
+  <data name="JSON Content" xml:space="preserve">
+    <value>Nội dung JSON</value>
+  </data>
+  <data name="Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields." xml:space="preserve">
+    <value>Dán mảng JSON chứa các câu hỏi bên dưới. Mỗi câu hỏi phải có các trường: Câu hỏi, Các lựa chọn (mảng), Câu trả lời, Phân tích và Tên tệp gốc.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Xem trước</value>
+  </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Loại câu hỏi</value>
+  </data>
+
+</root>

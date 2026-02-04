@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
+    <value>所有导入的问题都将使用此类型，忽略 JSON 中的 Type 字段。</value>
+  </data>
+  <data name="Import Questions from JSON" xml:space="preserve">
+    <value>从 JSON 导入题目</value>
+  </data>
+  <data name="JSON Content" xml:space="preserve">
+    <value>JSON 内容</value>
+  </data>
+  <data name="Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields." xml:space="preserve">
+    <value>请在此下方粘贴您的问题 JSON 数组。每个问题应包含：Question、Options（数组）、Answer、Analysis 和 OriginalFilename 字段。</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>题目类型</value>
+  </data>
+
+</root>
