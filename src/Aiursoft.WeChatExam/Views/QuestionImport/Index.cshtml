@@ -1,0 +1,63 @@
+@model Aiursoft.WeChatExam.Models.QuestionImportViewModels.QuestionImportIndexViewModel
+@using Aiursoft.WeChatExam.Entities
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">@Localizer["Import Questions from JSON"]</h6>
+                </div>
+                <div class="card-body">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fas fa-exclamation-triangle"></i> @Model.ErrorMessage
+                        </div>
+                    }
+
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle"></i>
+                        @Localizer["Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields."]
+                    </div>
+
+                    <form asp-action="Preview" method="post">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="SelectedQuestionType" class="form-label fw-bold">@Localizer["Question Type"]</label>
+                            <select asp-for="SelectedQuestionType" class="form-select" 
+                                    asp-items="Html.GetEnumSelectList<QuestionType>()">
+                            </select>
+                            <div class="form-text">@Localizer["All imported questions will use this type, ignoring the Type field in JSON."]</div>
+                            <span asp-validation-for="SelectedQuestionType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="JsonContent" class="form-label fw-bold">@Localizer["JSON Content"]</label>
+                            <textarea asp-for="JsonContent" class="form-control font-monospace" rows="20" 
+                                      placeholder='[{"Question": "...", "Options": ["A", "B"], "Answer": "A", "Analysis": "...", "OriginalFilename": "file.docx"}]'></textarea>
+                            <span asp-validation-for="JsonContent" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-eye"></i> @Localizer["Preview"]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

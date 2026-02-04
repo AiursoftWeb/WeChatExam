@@ -428,7 +428,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid?>("CategoryId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
@@ -1045,9 +1045,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
                         .WithMany("Questions")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });

@@ -50,20 +50,18 @@ public class Question
     public string Explanation { get; set; } = string.Empty;
 
     /// <summary>
-    /// 所属分类的 ID
+    /// 所属分类的 ID（可为空，表示未分类）
     /// </summary>
-    [Required]
-    public required Guid CategoryId { get; set; }
+    public Guid? CategoryId { get; set; }
 
     /// <summary>
     /// 创建时间
     /// </summary>
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 
-    // 导航引用：Category?, JsonIgnore, ForeignKey, NotNull
+    // 导航引用：Category?, JsonIgnore, ForeignKey
     [JsonIgnore]
     [ForeignKey(nameof(CategoryId))]
-    [NotNull]
     public Category? Category { get; set; }
 
     [InverseProperty(nameof(KnowledgePointQuestion.Question))]
