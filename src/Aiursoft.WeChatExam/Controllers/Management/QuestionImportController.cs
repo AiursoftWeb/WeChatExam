@@ -1,4 +1,3 @@
-using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.QuestionImportViewModels;
@@ -55,6 +54,22 @@ public class QuestionImportController : Controller
                 foreach (var item in data)
                 {
                     item.Options = new List<string> { "正确", "错误" };
+                }
+            }
+
+            // For Choice type, validate that all questions have options
+            if (model.SelectedQuestionType == QuestionType.Choice)
+            {
+                var questionsWithoutOptions = data
+                    .Select((item, index) => new { Item = item, Index = index + 1 })
+                    .Where(x => x.Item.Options.Count == 0)
+                    .ToList();
+
+                if (questionsWithoutOptions.Any())
+                {
+                    var missingIndices = string.Join(", ", questionsWithoutOptions.Select(x => $"#{x.Index}"));
+                    model.ErrorMessage = $"选择题必须提供选项 (Options)。以下题目缺少选项: {missingIndices}";
+                    return this.StackView(model, nameof(Index));
                 }
             }
 
