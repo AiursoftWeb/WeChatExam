@@ -1,0 +1,119 @@
+@model Aiursoft.WeChatExam.Models.QuestionImportViewModels.QuestionImportPreviewViewModel
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Submit Form -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">@Localizer["Preview & Save"]</h6>
+
+                    <form asp-action="Submit" method="post" class="d-flex align-items-center mb-0">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="JsonContent" />
+                        <input type="hidden" asp-for="SelectedQuestionType" />
+
+                        <span class="badge bg-info me-3">
+                            @Localizer["Type"]: @Model.SelectedQuestionType
+                        </span>
+                        <span class="badge bg-secondary me-3">
+                            @Model.ParsedQuestions.Count @Localizer["Questions"]
+                        </span>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fas fa-save"></i> @Localizer["Confirm & Save"]
+                        </button>
+                    </form>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fas fa-exclamation-triangle"></i> @Model.ErrorMessage
+                        </div>
+                    }
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    @if (Model.ParsedQuestions.Count == 0)
+                    {
+                        <div class="alert alert-warning">@Localizer["No questions found."]</div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 50px;">#</th>
+                                        <th>@Localizer["Content"]</th>
+                                        <th style="width: 200px;">@Localizer["Options"]</th>
+                                        <th style="width: 150px;">@Localizer["Answer"]</th>
+                                        <th style="width: 150px;">@Localizer["Source File"]</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.ParsedQuestions.Count; i++)
+                                    {
+                                        var q = Model.ParsedQuestions[i];
+                                        <tr>
+                                            <td class="text-center">@(i + 1)</td>
+                                            <td>
+                                                @q.Question
+                                                @if (!string.IsNullOrEmpty(q.Analysis))
+                                                {
+                                                    <details class="mt-2">
+                                                        <summary class="text-muted small">@Localizer["Analysis"]</summary>
+                                                        <p class="small text-muted mb-0">@q.Analysis</p>
+                                                    </details>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (q.Options.Any())
+                                                {
+                                                    <ul class="mb-0 ps-3 small">
+                                                        @foreach (var opt in q.Options)
+                                                        {
+                                                            <li>@opt</li>
+                                                        }
+                                                    </ul>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted small">-</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-success">@q.Answer</span>
+                                            </td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(q.OriginalFilename))
+                                                {
+                                                    <span class="badge bg-secondary rounded-pill" title="@q.OriginalFilename">
+                                                        <i class="fas fa-tag"></i> @(q.OriginalFilename.Length > 20 ? q.OriginalFilename.Substring(0, 17) + "..." : q.OriginalFilename)
+                                                    </span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="mt-3 mb-5">
+                <!-- Back to Edit Form -->
+                <form asp-action="ResumeEdit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="JsonContent" />
+                    <input type="hidden" asp-for="SelectedQuestionType" />
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> @Localizer["Back to Edit"]
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -159,7 +159,7 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             Metadata = question.Metadata,
             StandardAnswer = question.StandardAnswer,
             Explanation = question.Explanation,
-            CategoryId = question.CategoryId,
+            CategoryId = question.CategoryId ?? Guid.Empty,
             Categories = categories,
             Tags = string.Join(" ", tags.Select(t => t.DisplayName))
         };
