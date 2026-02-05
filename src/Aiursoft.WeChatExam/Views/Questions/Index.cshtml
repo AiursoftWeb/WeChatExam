@@ -1,79 +1,393 @@
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.IndexViewModel
-
-<h1 class="h3 mb-3">@Localizer["Questions"]</h1>
+@{
+    ViewData["Title"] = Localizer["Questions"];
+}
 
 <div class="row mb-3">
-    <div class="col-12 col-md-6">
-        <form asp-action="Index" method="get" class="d-flex align-items-center">
-            <select name="categoryId" class="form-select me-2" onchange="this.form.submit()">
-                <option value="">@Localizer["All Categories"]</option>
-                @foreach (var category in Model.Categories)
-                {
-                    if (Model.SelectedCategoryId == category.Id)
-                    {
-                        <option value="@category.Id" selected>@category.Title</option>
-                    }
-                    else
-                    {
-                        <option value="@category.Id">@category.Title</option>
-                    }
-                }
-            </select>
-            <noscript><button type="submit" class="btn btn-primary btn-sm">@Localizer["Filter"]</button></noscript>
-        </form>
-    </div>
-    <div class="col-12 col-md-6 text-end">
-        <a asp-action="Create" asp-route-categoryId="@Model.SelectedCategoryId" class="btn btn-primary btn-sm">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h1 class="h3 mb-0">@Localizer["Questions"]</h1>
+        <a asp-action="Create" asp-route-categoryId="@Model.SelectedCategoryId" class="btn btn-primary">
             <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Question"]
         </a>
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="card-title mb-0">@Localizer["Question List"]</h5>
+<div class="card mb-3">
+    <div class="card-header cursor-pointer" data-bs-toggle="collapse" data-bs-target="#filterPanel">
+        <h5 class="card-title mb-0 d-flex justify-content-between">
+            <span><i class="align-middle me-2" data-lucide="filter"></i> @Localizer["Filters & Search"]</span>
+            <i class="align-middle" data-lucide="chevron-down"></i>
+        </h5>
     </div>
+    <div id="filterPanel" class="collapse show">
+        <div class="card-body">
+            <form asp-action="Index" method="get" id="filterForm">
+                <input type="hidden" name="sortBy" value="@Model.SortBy" />
+                <input type="hidden" name="sortOrder" value="@Model.SortOrder" />
+                <input type="hidden" name="page" value="1" /> 
+
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">@Localizer["Category"]</label>
+                        <select name="categoryId" class="form-select">
+                            <option value="">@Localizer["All Categories"]</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <option value="@category.Id" selected="@(Model.SelectedCategoryId == category.Id)">@category.Title</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">@Localizer["Type"]</label>
+                        <select asp-for="FilterQuestionType" asp-items="Model.QuestionTypeOptions" class="form-select">
+                            <option value="">@Localizer["All Types"]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">@Localizer["Start Date"]</label>
+                        <input type="date" name="startDate" value="@(Model.FilterStartDate?.ToString("yyyy-MM-dd"))" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">@Localizer["End Date"]</label>
+                        <input type="date" name="endDate" value="@(Model.FilterEndDate?.ToString("yyyy-MM-dd"))" class="form-control" />
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label">@Localizer["Tag"]</label>
+                        <input type="text" name="tag" value="@Model.FilterTag" class="form-control" placeholder="Search by single tag..." />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">@Localizer["MTQL Query"]</label>
+                        <div class="input-group">
+                            <input type="text" name="mtql" value="@Model.FilterMtql" class="form-control" placeholder="e.g. rock && not metal" />
+                            <a href="https://github.com/AiursoftWeb/WeChatExam/tree/master/src/Aiursoft.WeChatExam.MTQL" target="_blank" class="btn btn-outline-secondary" title="MTQL Syntax Help">
+                                <i data-lucide="help-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                         <label class="form-label">@Localizer["Items per page"]</label>
+                         <select asp-for="PageSize" asp-items="Model.PageSizeOptions" class="form-select" onchange="this.form.submit()"></select>
+                    </div>
+
+                    <div class="col-12 text-end">
+                        <a href="@Url.Action("Index")" class="btn btn-outline-secondary me-2">@Localizer["Reset"]</a>
+                        <button type="submit" class="btn btn-primary">@Localizer["Apply Filters"]</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card position-relative">
+    <!-- Batch Action Toolbar -->
+    <div id="batchToolbar" class="position-absolute top-0 start-0 w-100 h-100 bg-light d-none flex-row align-items-center px-3" style="z-index: 10; opacity: 0.95;">
+        <span class="fw-bold me-3 text-primary"><span id="selectedCount">0</span> @Localizer["selected"]</span>
+        <button class="btn btn-danger btn-sm" onclick="confirmBatchDelete()">
+            <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Delete Selected"]
+        </button>
+        <button class="btn btn-link btn-sm text-secondary ms-auto" onclick="clearSelection()">
+            @Localizer["Cancel"]
+        </button>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead class="table-light">
                 <tr>
-                    <th>@Localizer["Content"]</th>
-                    <th>@Localizer["Type"]</th>
-                    <th>@Localizer["Category"]</th>
-                    <th>@Localizer["Created"]</th>
-                    <th style="width: 120px;">@Localizer["Actions"]</th>
+                    <th style="width: 40px;">
+                        <input type="checkbox" class="form-check-input" id="selectAll" onclick="toggleSelectAll(this)" />
+                    </th>
+                    <th>
+                        <a href="javascript:void(0)" onclick="sort('Content')" class="text-decoration-none text-dark d-flex align-items-center">
+                            @Localizer["Content"]
+                            @if(Model.SortBy == "Content") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
+                        </a>
+                    </th>
+                    <th style="width: 150px;">
+                        <a href="javascript:void(0)" onclick="sort('QuestionType')" class="text-decoration-none text-dark d-flex align-items-center">
+                            @Localizer["Type"]
+                            @if(Model.SortBy == "QuestionType") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
+                        </a>
+                    </th>
+                    <th style="width: 200px;">@Localizer["Category"]</th>
+                    <th style="width: 180px;">
+                        <a href="javascript:void(0)" onclick="sort('CreatedAt')" class="text-decoration-none text-dark d-flex align-items-center">
+                            @Localizer["Created"]
+                            @if(Model.SortBy == "CreatedAt") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
+                        </a>
+                    </th>
+                    <th style="width: 140px;">@Localizer["Actions"]</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var question in Model.Questions)
                 {
                     <tr>
-                        <td>@question.Content</td>
-                        <td>@question.QuestionType</td>
+                        <td>
+                            <input type="checkbox" class="form-check-input row-selector" value="@question.Id" onchange="updateSelection(this)" />
+                        </td>
+                        <td class="text-truncate" style="max-width: 400px;" title="@question.Content">
+                            @question.Content
+                        </td>
+                        <td><span class="badge bg-secondary">@question.QuestionType</span></td>
                         <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
-                            <a asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-outline-secondary me-1" title="@Localizer["Details"]">
-                                <i class="align-middle" data-lucide="eye"></i> @Localizer["Details"]
-                            </a>
-                            <a asp-action="Edit" asp-route-id="@question.Id" class="btn btn-sm btn-outline-primary me-1" title="@Localizer["Edit"]">
-                                <i class="align-middle" data-lucide="edit"></i> @Localizer["Edit"]
-                            </a>
-                            <a asp-action="Delete" asp-route-id="@question.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
-                                <i class="align-middle" data-lucide="trash-2"></i> @Localizer["Delete"]
-                            </a>
+                            <div class="btn-group">
+                                <a asp-action="Edit" asp-route-id="@question.Id" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
+                                    <i class="align-middle" data-lucide="edit"></i>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]">
+                                    <i class="align-middle" data-lucide="eye"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@question.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                    <i class="align-middle" data-lucide="trash-2"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 }
                 @if (!Model.Questions.Any())
                 {
                     <tr>
-                        <td colspan="5" class="text-center text-muted py-4">
-                            @Localizer["No questions found"]
+                        <td colspan="6" class="text-center text-muted py-5">
+                            <div class="mb-2"><i class="align-middle" data-lucide="inbox" style="width: 48px; height: 48px;"></i></div>
+                            @Localizer["No questions found matching your criteria"]
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
+    
+    @if (Model.TotalPages > 1)
+    {
+        <div class="card-footer py-3">
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm justify-content-center mb-0">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage - 1))">Previous</a>
+                    </li>
+                    
+                    @{
+                        var startPage = Math.Max(1, Model.CurrentPage - 2);
+                        var endPage = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+                        
+                        if (startPage > 1)
+                        {
+                             <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="changePage(1)">1</a></li>
+                             if(startPage > 2) { <li class="page-item disabled"><span class="page-link">...</span></li> }
+                        }
+
+                        for (var i = startPage; i <= endPage; i++)
+                        {
+                            <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                                <a class="page-link" href="javascript:void(0)" onclick="changePage(@i)">@i</a>
+                            </li>
+                        }
+
+                        if (endPage < Model.TotalPages)
+                        {
+                            if(endPage < Model.TotalPages - 1) { <li class="page-item disabled"><span class="page-link">...</span></li> }
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="changePage(@Model.TotalPages)">@Model.TotalPages</a></li>
+                        }
+                    }
+
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage + 1))">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="text-center mt-2 text-muted small">
+                Showing @((Model.CurrentPage - 1) * Model.PageSize + 1) to @Math.Min(Model.CurrentPage * Model.PageSize, Model.TotalCount) of @Model.TotalCount items
+            </div>
+        </div>
+    }
 </div>
+
+<!-- Batch Delete Confirmation Modal -->
+<div class="modal fade" id="batchDeleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Localizer["Confirm Batch Delete"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>@Localizer["Are you sure you want to delete"] <strong id="deleteCount">0</strong> @Localizer["questions?"]</p>
+                <div class="alert alert-warning">
+                    <i class="align-middle me-2" data-lucide="alert-triangle"></i>
+                    @Localizer["This action cannot be undone."]
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                <button type="button" class="btn btn-danger" onclick="executeBatchDelete()">@Localizer["Delete"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.AntiForgeryToken()
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section Scripts {
+    <script>
+        // State Management
+        const STORAGE_KEY = 'selectedQuestionIds';
+        const form = document.getElementById('filterForm');
+
+        function getSelectedIds() {
+            const stored = sessionStorage.getItem(STORAGE_KEY);
+            return stored ? new Set(JSON.parse(stored)) : new Set();
+        }
+
+        function saveSelectedIds(ids) {
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(ids)));
+            updateToolbar();
+        }
+
+        function updateToolbar() {
+            const ids = getSelectedIds();
+            const toolbar = document.getElementById('batchToolbar');
+            const countSpan = document.getElementById('selectedCount');
+            
+            if (ids.size > 0) {
+                toolbar.classList.remove('d-none');
+                toolbar.classList.add('d-flex');
+            } else {
+                toolbar.classList.add('d-none');
+                toolbar.classList.remove('d-flex');
+            }
+            countSpan.textContent = ids.size;
+        }
+
+        function clearSelection() {
+            sessionStorage.removeItem(STORAGE_KEY);
+            document.querySelectorAll('.row-selector').forEach(cb => cb.checked = false);
+            document.getElementById('selectAll').checked = false;
+            updateToolbar();
+        }
+
+        // Event Handlers
+        function updateSelection(checkbox) {
+            const ids = getSelectedIds();
+            if (checkbox.checked) {
+                ids.add(checkbox.value);
+            } else {
+                ids.delete(checkbox.value);
+            }
+            saveSelectedIds(ids);
+        }
+
+        function toggleSelectAll(selectAllCheckbox) {
+            const checkboxes = document.querySelectorAll('.row-selector');
+            const ids = getSelectedIds();
+            
+            checkboxes.forEach(cb => {
+                cb.checked = selectAllCheckbox.checked;
+                if (cb.checked) {
+                    ids.add(cb.value);
+                } else {
+                    ids.delete(cb.value);
+                }
+            });
+            saveSelectedIds(ids);
+        }
+
+        function confirmBatchDelete() {
+            const count = getSelectedIds().size;
+            document.getElementById('deleteCount').textContent = count;
+            new bootstrap.Modal(document.getElementById('batchDeleteModal')).show();
+        }
+
+        async function executeBatchDelete() {
+            const ids = Array.from(getSelectedIds());
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            try {
+                const response = await fetch('@Url.Action("BatchDelete")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({ questionIds: ids })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    clearSelection();
+                    location.reload(); 
+                } else {
+                    alert('Failed to delete questions. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during deletion.');
+            }
+        }
+
+        function sort(column) {
+            const currentSortBy = form.querySelector('input[name="sortBy"]').value;
+            const currentSortOrder = form.querySelector('input[name="sortOrder"]').value;
+            
+            if (currentSortBy === column) {
+                form.querySelector('input[name="sortOrder"]').value = currentSortOrder === 'Desc' ? 'Asc' : 'Desc';
+            } else {
+                form.querySelector('input[name="sortBy"]').value = column;
+                form.querySelector('input[name="sortOrder"]').value = 'Desc'; // Default new sort to Desc
+            }
+            form.submit();
+        }
+
+        function changePage(page) {
+            form.querySelector('input[name="page"]').value = page;
+            form.submit();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            const ids = getSelectedIds();
+            document.querySelectorAll('.row-selector').forEach(cb => {
+                if (ids.has(cb.value)) {
+                    cb.checked = true;
+                }
+            });
+            updateToolbar();
+
+            // Clear selection on form submit (filter change)
+            form.addEventListener('submit', function() {
+                // If we are just changing pages or sorting, maybe we want to KEEP selection?
+                // Request said: "When filtering conditions change, clear selected items"
+                // But changing page/sort is strictly keeping the same filter context.
+                // However, to keep it simple and safe as per "Filter / Search changes -> Clear", 
+                // we can clear it if inputs changed. 
+                // Let's rely on the user manually clearing or the specific requirement.
+                // Actually, "Pagination cross-page selection" implies we MUST NOT clear on page change.
+                
+                // Detection of "Filter Change" vs "Sort/Page Change" is complex on submit.
+                // Simpler approach: Add onchange to filter inputs to clear storage?
+                // Or just let user manage it manually via "Cancel" button?
+                
+                // Requirement: "筛选 / 搜索条件变化 → 清空 selectedIds"
+                // We can add logic to clear storage if any FILTER input changes value.
+            });
+            
+            // Attach clear listener to filter inputs
+            const filterInputs = form.querySelectorAll('select:not([name="sortOrder"]), input:not([type="hidden"])');
+            filterInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                   // This runs before submit. 
+                   // If tag input changes, user hits enter -> form submit.
+                   // We want to clear storage.
+                   if(input.name !== 'page' && input.name !== 'sortBy' && input.name !== 'sortOrder' && input.name !== 'PageSize') {
+                       sessionStorage.removeItem(STORAGE_KEY);
+                   }
+                });
+            });
+        });
+    </script>
+}

@@ -1,3 +1,4 @@
+using Aiursoft.UiStack.Navigation;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.QuestionImportViewModels;
@@ -22,6 +23,14 @@ public class QuestionImportController : Controller
     /// <summary>
     /// GET: QuestionImport - Show JSON input form with QuestionType dropdown
     /// </summary>
+    [RenderInNavBar(
+        NavGroupName = "Administration",
+        NavGroupOrder = 9999,
+        CascadedLinksGroupName = "Content Management",
+        CascadedLinksIcon = "folder-tree",
+        CascadedLinksOrder = 9997,
+        LinkText = "Import Questions",
+        LinkOrder = 4)]
     public IActionResult Index(QuestionImportIndexViewModel? model)
     {
         model ??= new QuestionImportIndexViewModel();
