@@ -76,6 +76,10 @@ public class AppPermissions
                 localizer["Add Questions"],
                 localizer["Allows adding of questions, regardless of ownership."]),
 
+            new(AppPermissionNames.CanReadQuestions,
+                localizer["Read Questions"],
+                localizer["Allows reading of questions, regardless of ownership."]),
+
             new(AppPermissionNames.CanDeleteAnyKnowledgePoint,
                 localizer["Delete Any KnowledgePoint"],
                 localizer["Allows deletion of any knowledgePoint, regardless of ownership."]),
