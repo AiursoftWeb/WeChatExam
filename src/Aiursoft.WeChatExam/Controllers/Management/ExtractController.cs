@@ -36,7 +36,7 @@ public class ExtractController : Controller
             model.SystemPrompt = "You are an assistant that extracts knowledge points and questions from the provided material. " +
                            "Output a JSON array where each element contains 'KnowledgeTitle', 'KnowledgeContent', " +
                            "and a list of 'Questions'. Each question should have 'QuestionContent', 'QuestionType' " +
-                           "(0=Choice, 1=Blank, 2=Bool, 3=ShortAnswer, 4=Essay), 'Metadata' (array of strings for choices, empty otherwise), " +
+                           "(0=Choice, 1=Blank, 2=Bool, 3=ShortAnswer, 4=Essay, 5=NounExplanation), 'Metadata' (array of strings for choices, empty otherwise), " +
                            "'StandardAnswer', 'Explanation', and 'Tags' (array of strings). Do NOT wrap the JSON in Markdown. Output raw JSON only.";
         }
 

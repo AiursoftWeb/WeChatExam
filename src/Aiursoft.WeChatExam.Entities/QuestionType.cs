@@ -6,5 +6,6 @@ public enum QuestionType
     Blank,
     Bool,
     ShortAnswer,
-    Essay
+    Essay,
+    NounExplanation
 }
