@@ -118,6 +118,7 @@ public class QuestionImportController : Controller
             {
                 QuestionType.Choice => GradingStrategy.ExactMatch,
                 QuestionType.Bool => GradingStrategy.ExactMatch,
+                QuestionType.Blank => GradingStrategy.FuzzyMatch,
                 _ => GradingStrategy.AiEval
             };
 

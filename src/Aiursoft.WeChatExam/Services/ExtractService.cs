@@ -124,6 +124,7 @@ public class ExtractService : IExtractService
             QuestionType.Blank => GradingStrategy.FuzzyMatch,
             QuestionType.ShortAnswer => GradingStrategy.AiEval,
             QuestionType.Essay => GradingStrategy.AiEval,
+            QuestionType.NounExplanation => GradingStrategy.AiEval,
             _ => GradingStrategy.ExactMatch
         };
     }
