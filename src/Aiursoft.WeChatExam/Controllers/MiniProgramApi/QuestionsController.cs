@@ -90,28 +90,46 @@ public class QuestionsController : ControllerBase
                 .Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTagName));
         }
 
+        List<QuestionDto> questions;
         if (size.HasValue)
         {
-            query = query.OrderBy(q => Guid.NewGuid()).Take(size.Value);
+            var ids = await query.Select(q => q.Id).ToListAsync();
+            var selectedIds = ids.OrderBy(_ => Guid.NewGuid()).Take(size.Value).ToList();
+
+            var randomQuestions = await _context.Questions
+                .Where(q => selectedIds.Contains(q.Id))
+                .Select(q => new QuestionDto
+                {
+                    QuestionType = q.QuestionType,
+                    Value = new Value
+                    {
+                        Id = q.Id,
+                        Content = q.Content,
+                        Metadata = q.Metadata,
+                        Explanation = q.Explanation
+                    }
+                })
+                .ToListAsync();
+            
+            questions = randomQuestions.OrderBy(q => selectedIds.IndexOf(q.Value.Id)).ToList();
         }
         else
         {
-            query = query.OrderByDescending(q => q.CreationTime);
-        }
-
-        var questions = await query
-            .Select(q => new QuestionDto
-            {
-                QuestionType = q.QuestionType,
-                Value = new Value
+            questions = await query
+                .OrderByDescending(q => q.CreationTime)
+                .Select(q => new QuestionDto
                 {
-                    Id = q.Id,
-                    Content = q.Content,
-                    Metadata = q.Metadata,
-                    Explanation = q.Explanation
-                }
-            })
-            .ToListAsync();
+                    QuestionType = q.QuestionType,
+                    Value = new Value
+                    {
+                        Id = q.Id,
+                        Content = q.Content,
+                        Metadata = q.Metadata,
+                        Explanation = q.Explanation
+                    }
+                })
+                .ToListAsync();
+        }
 
         return Ok(questions);
     }
