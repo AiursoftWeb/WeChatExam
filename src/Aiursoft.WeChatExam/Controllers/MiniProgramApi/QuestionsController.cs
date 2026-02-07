@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
+using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 
 [Route("api/[controller]")]
 [ApiController]
+[WeChatUserOnly]
 public class QuestionsController : ControllerBase
 {
     private readonly WeChatExamDbContext _context;
@@ -22,6 +24,7 @@ public class QuestionsController : ControllerBase
     /// <param name="categoryId">分类ID (可选)</param>
     /// <param name="tagName">Tag 显示名称 (可选)</param>
     /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock && not metal`</param>
+    /// <param name="type">题目类型 (可选)</param>
     /// <returns>题目列表，按创建时间倒序</returns>
     /// <response code="200">成功返回题目列表</response>
     /// <response code="404">指定的分类不存在</response>
@@ -29,7 +32,7 @@ public class QuestionsController : ControllerBase
     [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName, [FromQuery] string? mtql)
+    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName, [FromQuery] string? mtql, [FromQuery] QuestionType? type)
     {
         // 验证分类是否存在
         if (categoryId.HasValue)
@@ -48,6 +51,11 @@ public class QuestionsController : ControllerBase
         if (categoryId.HasValue)
         {
             query = query.Where(q => q.CategoryId == categoryId.Value);
+        }
+
+        if (type.HasValue)
+        {
+            query = query.Where(q => q.QuestionType == type.Value);
         }
 
         // 优先使用 MTQL
