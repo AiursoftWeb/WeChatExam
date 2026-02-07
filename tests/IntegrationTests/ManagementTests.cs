@@ -223,7 +223,8 @@ public class ManagementTests
             { "QuestionType", qType },
             { "GradingStrategy", qStrategy },
             { "CategoryId", categoryId },
-            { "Metadata", "[\"A\", \"B\"]" },
+            { "Options[0]", "A" },
+            { "Options[1]", "B" },
             { "StandardAnswer", "A" },
             { "Explanation", "A is correct" },
             { "__RequestVerificationToken", createToken }
@@ -250,7 +251,8 @@ public class ManagementTests
             { "GradingStrategy", qStrategy },
             { "Content", newText },
             { "CategoryId", categoryId },
-            { "Metadata", "[\"A\", \"B\"]" },
+            { "Options[0]", "A" },
+            { "Options[1]", "B" },
             { "StandardAnswer", "B" }, // Changed answer
             { "Explanation", "A is correct" },
             { "__RequestVerificationToken", editToken }

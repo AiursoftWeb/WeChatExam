@@ -3,6 +3,7 @@
 <h1 class="h3 mb-3">@Localizer["Add Question"]</h1>
 
 <form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
     <div class="card mb-3">
         <div class="card-body">
             <div class="mb-3">
@@ -51,16 +52,39 @@
                 <input type="hidden" asp-for="Tags" id="Tags" />
                 <small class="form-text text-muted">@Localizer["Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove."]</small>
             </div>
-            <div class="mb-3">
-                <label asp-for="Metadata" class="form-label">@Localizer["Metadata (e.g. Choices JSON)"]</label>
-                <textarea asp-for="Metadata" class="form-control" rows="3" placeholder='["A","B","C"]'></textarea>
-                <span asp-validation-for="Metadata" class="text-danger"></span>
+
+            <!-- Options Section -->
+            <div id="options-section" class="mb-3" style="display:none;">
+                <label class="form-label">@Localizer["Options"]</label>
+                <div id="options-list">
+                    @for (var i = 0; i < Model.Options.Count; i++)
+                    {
+                        <div class="input-group mb-2 option-item">
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0 answer-radio" type="radio" name="StandardAnswer" value="@Model.Options[i]" @(Model.Options[i] == Model.StandardAnswer ? "checked" : "")>
+                            </div>
+                            <input type="text" class="form-control option-input" name="Options" value="@Model.Options[i]" placeholder="@Localizer["Option content"]" required>
+                            <button type="button" class="btn btn-outline-danger remove-option-btn">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+                <button type="button" id="add-option-btn" class="btn btn-sm btn-secondary">
+                    <i class="bi bi-plus"></i> @Localizer["Add Option"]
+                </button>
+                <span asp-validation-for="Options" class="text-danger"></span>
             </div>
-            <div class="mb-3">
+
+
+
+            <!-- Standard Answer (Textarea for others) -->
+            <div class="mb-3" id="standard-answer-text-section">
                 <label asp-for="StandardAnswer" class="form-label">@Localizer["Standard Answer"]</label>
-                <textarea asp-for="StandardAnswer" class="form-control" rows="2" placeholder='Correct Answer'></textarea>
+                <textarea asp-for="StandardAnswer" id="standard-answer-input" class="form-control" rows="2" placeholder='Correct Answer'></textarea>
                 <span asp-validation-for="StandardAnswer" class="text-danger"></span>
             </div>
+
             <div class="mb-3">
                 <label asp-for="Explanation" class="form-label">@Localizer["Explanation"]</label>
                 <textarea asp-for="Explanation" class="form-control" rows="2"></textarea>
@@ -76,13 +100,115 @@
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 
-@section scripts {
+@section Scripts {
     <script src="~/js/tag-input.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Tags Init
             const tagInput = document.getElementById('tagInputField');
             const tagHidden = document.getElementById('Tags');
-            TagInput.init(tagInput, tagHidden, []);
+            const initialTags = '@Model.Tags'.split(' ').filter(t => t.trim());
+            TagInput.init(tagInput, tagHidden, []); // Init with empty for Create, or Model.Tags if validation failed
+
+            // Options Logic
+            const questionTypeSelect = document.getElementById('QuestionType');
+            const optionsSection = document.getElementById('options-section');
+            const optionsList = document.getElementById('options-list');
+            const addOptionBtn = document.getElementById('add-option-btn');
+
+            const standardAnswerTextSection = document.getElementById('standard-answer-text-section');
+            const standardAnswerTextInput = document.getElementById('standard-answer-input');
+
+            // Enum Values
+            const typeChoice = '@((int)Aiursoft.WeChatExam.Entities.QuestionType.Choice)';
+            const typeBool = '@((int)Aiursoft.WeChatExam.Entities.QuestionType.Bool)';
+
+            // Localized Strings
+            const correctStr = '@Localizer["Correct"]';
+            const incorrectStr = '@Localizer["Incorrect"]'; // Simplified to correct/incorrect
+
+            const updateUI = () => {
+                const type = questionTypeSelect.value;
+                if (type === typeChoice || type === typeBool) {
+                    optionsSection.style.display = 'block';
+                    standardAnswerTextSection.style.display = 'none';
+                    standardAnswerTextInput.disabled = true;
+
+                    // Enable radios
+                    document.querySelectorAll('.answer-radio').forEach(r => r.disabled = false);
+                } else {
+                    optionsSection.style.display = 'none';
+                    standardAnswerTextSection.style.display = 'block';
+                    standardAnswerTextInput.disabled = false;
+
+                    // Disable radios
+                    document.querySelectorAll('.answer-radio').forEach(r => r.disabled = true);
+                }
+
+                if (type === typeBool) {
+                     addOptionBtn.style.display = 'none';
+                     document.querySelectorAll('.remove-option-btn').forEach(b => b.style.display = 'none');
+                } else {
+                     addOptionBtn.style.display = 'inline-block';
+                     document.querySelectorAll('.remove-option-btn').forEach(b => b.style.display = 'inline-block');
+                }
+            };
+
+            const addOption = (value = '', isChecked = false) => {
+                const div = document.createElement('div');
+                div.className = 'input-group mb-2 option-item';
+                div.innerHTML = `
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0 answer-radio" type="radio" name="StandardAnswer" value="${value}" ${isChecked ? 'checked' : ''}>
+                    </div>
+                    <input type="text" class="form-control option-input" name="Options" value="${value}" placeholder="@Localizer["Option content"]" required>
+                    <button type="button" class="btn btn-outline-danger remove-option-btn">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                `;
+                optionsList.appendChild(div);
+                bindOptionEvents(div);
+            };
+
+            const bindOptionEvents = (element) => {
+                const input = element.querySelector('.option-input');
+                const radio = element.querySelector('.answer-radio');
+                const removeBtn = element.querySelector('.remove-option-btn');
+
+                input.addEventListener('input', () => {
+                    radio.value = input.value;
+                });
+
+                removeBtn.addEventListener('click', () => {
+                    element.remove();
+                });
+            };
+
+            // Bind existing
+            document.querySelectorAll('.option-item').forEach(bindOptionEvents);
+
+            addOptionBtn.addEventListener('click', () => addOption());
+
+            questionTypeSelect.addEventListener('change', function() {
+                const type = this.value;
+                updateUI();
+                
+                if (type === typeBool) {
+                    optionsList.innerHTML = '';
+                    addOption(correctStr);
+                    addOption(incorrectStr);
+                    updateUI(); 
+                } 
+                else if (type === typeChoice && optionsList.children.length === 0) {
+                     addOption('A');
+                     addOption('B');
+                     addOption('C');
+                     addOption('D');
+                }
+            });
+
+            // Init
+            updateUI();
         });
     </script>
 }

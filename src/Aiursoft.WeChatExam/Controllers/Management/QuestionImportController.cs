@@ -133,7 +133,7 @@ public class QuestionImportController : Controller
                 // Build metadata JSON for Choice/Bool types
                 var metadata = (model.SelectedQuestionType == QuestionType.Choice ||
                                model.SelectedQuestionType == QuestionType.Bool) && options.Count > 0
-                    ? JsonConvert.SerializeObject(new { Options = options })
+                    ? JsonConvert.SerializeObject(new { options })
                     : string.Empty;
 
                 // Create question entity
