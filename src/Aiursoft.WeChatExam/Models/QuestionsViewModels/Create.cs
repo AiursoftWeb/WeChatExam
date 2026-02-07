@@ -25,21 +25,23 @@ public class CreateViewModel : UiStackLayoutViewModel
     /// Metadata (Choices, Logic, etc.) - JSON
     /// </summary>
     [MaxLength(5000)]
-    public string Metadata { get; set; } = string.Empty;
+    public string? Metadata { get; set; }
 
     /// <summary>
     /// Standard Answer / Grading Logic
     /// </summary>
     [MaxLength(5000)]
-    public string StandardAnswer { get; set; } = string.Empty;
+    public string? StandardAnswer { get; set; }
 
     [MaxLength(3000)]
-    public string Explanation { get; set; } = string.Empty;
+    public string? Explanation { get; set; }
 
     [Required]
     public Guid CategoryId { get; set; }
 
-    public string Tags { get; set; } = string.Empty;
+    public string? Tags { get; set; }
 
     public List<Category> Categories { get; set; } = new();
+
+    public List<string> Options { get; set; } = new();
 }

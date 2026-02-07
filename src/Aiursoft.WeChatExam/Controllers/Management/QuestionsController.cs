@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -178,6 +179,31 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             return this.StackView(model);
         }
 
+        // Handle Options and Metadata
+        if (model.QuestionType == QuestionType.Choice || model.QuestionType == QuestionType.Bool)
+        {
+            model.Options = model.Options.Where(o => !string.IsNullOrWhiteSpace(o)).ToList();
+            if (!model.Options.Any())
+            {
+                ModelState.AddModelError(nameof(model.Options), "Options are required for Choice and Bool questions.");
+                model.Categories = await context.Categories.ToListAsync();
+                return this.StackView(model);
+            }
+
+            if (!model.Options.Contains(model.StandardAnswer ?? string.Empty))
+            {
+                 ModelState.AddModelError(nameof(model.StandardAnswer), "Standard Answer must be one of the options.");
+                 model.Categories = await context.Categories.ToListAsync();
+                 return this.StackView(model);
+            }
+            
+            model.Metadata = JsonConvert.SerializeObject(new { options = model.Options });
+        }
+        else
+        {
+            model.Metadata = string.Empty;
+        }
+
         // 验证分类是否存在
         var categoryExists = await context.Categories
             .AnyAsync(c => c.Id == model.CategoryId);
@@ -195,14 +221,15 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             Content = model.Content,
             QuestionType = model.QuestionType,
             GradingStrategy = model.GradingStrategy,
-            Metadata = model.Metadata,
-            StandardAnswer = model.StandardAnswer,
-            Explanation = model.Explanation,
+            Metadata = model.Metadata ?? string.Empty,
+            StandardAnswer = model.StandardAnswer ?? string.Empty,
+            Explanation = model.Explanation ?? string.Empty,
             CategoryId = model.CategoryId
         };
 
         context.Questions.Add(question);
         await context.SaveChangesAsync();
+
 
         // Process tags
         if (!string.IsNullOrWhiteSpace(model.Tags))
@@ -265,6 +292,22 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             Tags = string.Join(" ", tags.Select(t => t.DisplayName))
         };
 
+        // Deserialize Metadata to Options
+        if (!string.IsNullOrWhiteSpace(question.Metadata) && 
+            (question.QuestionType == QuestionType.Choice || question.QuestionType == QuestionType.Bool))
+        {
+            try 
+            {
+                var definition = new { options = new List<string>() };
+                var metadataObj = JsonConvert.DeserializeAnonymousType(question.Metadata, definition);
+                model.Options = metadataObj?.options ?? new List<string>();
+            }
+            catch
+            {
+                // Ignore parsing errors, options will be empty
+            }
+        }
+
         return this.StackView(model);
     }
 
@@ -280,6 +323,31 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
         {
             model.Categories = await context.Categories.ToListAsync();
             return this.StackView(model);
+        }
+
+        // Handle Options and Metadata
+        if (model.QuestionType == QuestionType.Choice || model.QuestionType == QuestionType.Bool)
+        {
+            model.Options = model.Options.Where(o => !string.IsNullOrWhiteSpace(o)).ToList();
+            if (!model.Options.Any())
+            {
+                ModelState.AddModelError(nameof(model.Options), "Options are required for Choice and Bool questions.");
+                model.Categories = await context.Categories.ToListAsync();
+                return this.StackView(model);
+            }
+
+            if (!model.Options.Contains(model.StandardAnswer ?? string.Empty))
+            {
+                 ModelState.AddModelError(nameof(model.StandardAnswer), "Standard Answer must be one of the options.");
+                 model.Categories = await context.Categories.ToListAsync();
+                 return this.StackView(model);
+            }
+
+            model.Metadata = JsonConvert.SerializeObject(new { options = model.Options });
+        }
+        else
+        {
+            model.Metadata = string.Empty;
         }
 
         var question = await context.Questions.FindAsync(id);
@@ -299,9 +367,9 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
         question.Content = model.Content;
         question.QuestionType = model.QuestionType;
         question.GradingStrategy = model.GradingStrategy;
-        question.Metadata = model.Metadata;
-        question.StandardAnswer = model.StandardAnswer;
-        question.Explanation = model.Explanation;
+        question.Metadata = model.Metadata ?? string.Empty;
+        question.StandardAnswer = model.StandardAnswer ?? string.Empty;
+        question.Explanation = model.Explanation ?? string.Empty;
         question.CategoryId = model.CategoryId;
 
         context.Questions.Update(question);
