@@ -25,6 +25,7 @@ public class QuestionsController : ControllerBase
     /// <param name="tagName">Tag 显示名称 (可选)</param>
     /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock && not metal`</param>
     /// <param name="type">题目类型 (可选)</param>
+    /// <param name="size">随机获得题目的数量(可选)</param>
     /// <returns>题目列表，按创建时间倒序</returns>
     /// <response code="200">成功返回题目列表</response>
     /// <response code="404">指定的分类不存在</response>
@@ -32,7 +33,7 @@ public class QuestionsController : ControllerBase
     [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName, [FromQuery] string? mtql, [FromQuery] QuestionType? type)
+    public async Task<IActionResult> GetQuestions([FromQuery] Guid? categoryId, [FromQuery] string? tagName, [FromQuery] string? mtql, [FromQuery] QuestionType? type, [FromQuery] int? size)
     {
         // 验证分类是否存在
         if (categoryId.HasValue)
@@ -89,20 +90,46 @@ public class QuestionsController : ControllerBase
                 .Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTagName));
         }
 
-        var questions = await query
-            .OrderByDescending(q => q.CreationTime)
-            .Select(q => new QuestionDto
-            {
-                QuestionType = q.QuestionType,
-                Value = new Value
+        List<QuestionDto> questions;
+        if (size.HasValue)
+        {
+            var ids = await query.Select(q => q.Id).ToListAsync();
+            var selectedIds = ids.OrderBy(_ => Guid.NewGuid()).Take(size.Value).ToList();
+
+            var randomQuestions = await _context.Questions
+                .Where(q => selectedIds.Contains(q.Id))
+                .Select(q => new QuestionDto
                 {
-                    Id = q.Id,
-                    Content = q.Content,
-                    Metadata = q.Metadata,
-                    Explanation = q.Explanation
-                }
-            })
-            .ToListAsync();
+                    QuestionType = q.QuestionType,
+                    Value = new Value
+                    {
+                        Id = q.Id,
+                        Content = q.Content,
+                        Metadata = q.Metadata,
+                        Explanation = q.Explanation
+                    }
+                })
+                .ToListAsync();
+            
+            questions = randomQuestions.OrderBy(q => selectedIds.IndexOf(q.Value.Id)).ToList();
+        }
+        else
+        {
+            questions = await query
+                .OrderByDescending(q => q.CreationTime)
+                .Select(q => new QuestionDto
+                {
+                    QuestionType = q.QuestionType,
+                    Value = new Value
+                    {
+                        Id = q.Id,
+                        Content = q.Content,
+                        Metadata = q.Metadata,
+                        Explanation = q.Explanation
+                    }
+                })
+                .ToListAsync();
+        }
 
         return Ok(questions);
     }
