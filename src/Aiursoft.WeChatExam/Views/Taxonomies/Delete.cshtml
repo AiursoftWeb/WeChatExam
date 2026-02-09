@@ -23,17 +23,15 @@
                 </div>
 
                 <div class="alert alert-danger border-0 bg-danger bg-opacity-10" role="alert">
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <i data-lucide="alert-circle" class="text-danger"></i>
-                        </div>
-                        <div>
-                            <p class="mb-0 fw-bold">@Localizer["This taxonomy has {0} tags associated with it.", Model.TagCount]</p>
-                            @if (Model.TagCount > 0)
-                            {
-                                <p class="mb-0">@Localizer["Deleting this taxonomy will unclassify these tags. They will still exist but won't be grouped anymore."]</p>
-                            }
-                        </div>
+                    <div class="alert-icon">
+                        <i data-lucide="alert-circle" class="text-danger"></i>
+                    </div>
+                    <div class="alert-message">
+                        <p class="mb-0 fw-bold">@Localizer["This taxonomy has {0} tags associated with it.", Model.TagCount]</p>
+                        @if (Model.TagCount > 0)
+                        {
+                            <p class="mb-0">@Localizer["Deleting this taxonomy will unclassify these tags. They will still exist but won't be grouped anymore."]</p>
+                        }
                     </div>
                 </div>
 

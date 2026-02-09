@@ -4,11 +4,25 @@
 
 @if (TempData["Success"] != null)
 {
-    <div class="alert alert-success">@TempData["Success"]</div>
+    <div class="alert alert-success" role="alert">
+        <div class="alert-icon">
+            <i data-lucide="check-circle"></i>
+        </div>
+        <div class="alert-message">
+            @TempData["Success"]
+        </div>
+    </div>
 }
 @if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger">@TempData["Error"]</div>
+    <div class="alert alert-danger" role="alert">
+        <div class="alert-icon">
+            <i data-lucide="alert-circle"></i>
+        </div>
+        <div class="alert-message">
+            @TempData["Error"]
+        </div>
+    </div>
 }
 
 <div class="row">

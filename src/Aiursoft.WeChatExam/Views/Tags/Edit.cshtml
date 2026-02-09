@@ -48,11 +48,16 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="alert alert-light border shadow-sm">
-            <h5 class="alert-heading"><i data-lucide="lightbulb" class="me-2 text-warning"></i>@Localizer["Tips"]</h5>
-            <p>@Localizer["Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category."]</p>
-            <hr>
-            <p class="mb-0">@Localizer["If you need a new taxonomy, you can manage them in the"] <a asp-controller="Taxonomies" asp-action="Index">@Localizer["Taxonomies Management"]</a>.</p>
+        <div class="alert alert-light border shadow-sm" role="alert">
+            <div class="alert-icon">
+                <i data-lucide="lightbulb" class="text-warning"></i>
+            </div>
+            <div class="alert-message">
+                <h5 class="alert-heading">@Localizer["Tips"]</h5>
+                <p>@Localizer["Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category."]</p>
+                <hr>
+                <p class="mb-0">@Localizer["If you need a new taxonomy, you can manage them in the"] <a asp-controller="Taxonomies" asp-action="Index">@Localizer["Taxonomies Management"]</a>.</p>
+            </div>
         </div>
     </div>
 </div>

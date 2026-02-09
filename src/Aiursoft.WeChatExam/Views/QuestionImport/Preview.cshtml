@@ -29,7 +29,12 @@
                     @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                     {
                         <div class="alert alert-danger" role="alert">
-                            <i class="fas fa-exclamation-triangle"></i> @Model.ErrorMessage
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-message">
+                                @Model.ErrorMessage
+                            </div>
                         </div>
                     }
 
@@ -37,7 +42,14 @@
 
                     @if (Model.ParsedQuestions.Count == 0)
                     {
-                        <div class="alert alert-warning">@Localizer["No questions found."]</div>
+                        <div class="alert alert-warning" role="alert">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-message">
+                                @Localizer["No questions found."]
+                            </div>
+                        </div>
                     }
                     else
                     {

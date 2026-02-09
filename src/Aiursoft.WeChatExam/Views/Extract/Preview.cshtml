@@ -28,7 +28,14 @@
                      
                      @if (Model.Data.Count == 0)
                      {
-                         <div class="alert alert-warning">@Localizer["No knowledge points found."]</div>
+                         <div class="alert alert-warning" role="alert">
+                             <div class="alert-icon">
+                                 <i class="fas fa-exclamation-triangle"></i>
+                             </div>
+                             <div class="alert-message">
+                                 @Localizer["No knowledge points found."]
+                             </div>
+                         </div>
                      }
                      else
                      {
