@@ -96,8 +96,8 @@ public class ExamsController(
             Id = exam.Id,
             Title = exam.Title,
             PaperTitle = exam.Paper?.Title ?? "Unknown",
-            StartTime = exam.StartTime.ToLocalTime(), // Convert UTC to Local for datetime-local input
-            EndTime = exam.EndTime.ToLocalTime(),
+            StartTime = exam.StartTime.ToLocalTime().AddSeconds(-exam.StartTime.ToLocalTime().Second).AddMilliseconds(-exam.StartTime.ToLocalTime().Millisecond), // Convert UTC to Local for datetime-local input
+            EndTime = exam.EndTime.ToLocalTime().AddSeconds(-exam.EndTime.ToLocalTime().Second).AddMilliseconds(-exam.EndTime.ToLocalTime().Millisecond),
             DurationMinutes = exam.DurationMinutes,
             IsPublic = exam.IsPublic,
             AllowedAttempts = exam.AllowedAttempts,
