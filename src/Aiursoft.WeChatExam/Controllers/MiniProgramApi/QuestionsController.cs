@@ -105,7 +105,7 @@ public class QuestionsController : ControllerBase
                     Content = q.Content,
                     Metadata = q.Metadata,
                     Order = 0,
-                    Score = 0
+                    Score = 10
                 })
                 .ToListAsync();
             
@@ -122,7 +122,7 @@ public class QuestionsController : ControllerBase
                     Content = q.Content,
                     Metadata = q.Metadata,
                     Order = 0,
-                    Score = 0
+                    Score = 10
                 })
                 .ToListAsync();
         }
@@ -157,7 +157,7 @@ public class QuestionsController : ControllerBase
             Content = question.Content,
             Metadata = question.Metadata,
             Order = 0,
-            Score = 0
+            Score = 10
         };
 
         return Ok(dto);
