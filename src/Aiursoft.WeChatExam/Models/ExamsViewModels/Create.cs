@@ -21,11 +21,11 @@ public class CreateViewModel : UiStackLayoutViewModel
 
     [Required]
     [Display(Name = "Start Time")]
-    public DateTime StartTime { get; set; } = DateTime.Now;
+    public DateTime StartTime { get; set; } = DateTime.Now.AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
 
     [Required]
     [Display(Name = "End Time")]
-    public DateTime EndTime { get; set; } = DateTime.Now.AddDays(7);
+    public DateTime EndTime { get; set; } = DateTime.Now.AddDays(7).AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
 
     [Display(Name = "Duration (minutes)")]
     public int? DurationMinutes { get; set; }

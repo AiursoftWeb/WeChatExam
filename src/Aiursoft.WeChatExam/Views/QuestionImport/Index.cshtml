@@ -13,21 +13,35 @@
                     @if (TempData["SuccessMessage"] != null)
                     {
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <div class="alert-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="alert-message">
+                                @TempData["SuccessMessage"]
+                            </div>
                         </div>
                     }
 
                     @if (!string.IsNullOrEmpty(Model.ErrorMessage))
                     {
                         <div class="alert alert-danger" role="alert">
-                            <i class="fas fa-exclamation-triangle"></i> @Model.ErrorMessage
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-message">
+                                @Model.ErrorMessage
+                            </div>
                         </div>
                     }
 
                     <div class="alert alert-info" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        @Localizer["Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields."]
+                        <div class="alert-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="alert-message">
+                            @Localizer["Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields."]
+                        </div>
                     </div>
 
                     <form asp-action="Preview" method="post">

@@ -4,7 +4,14 @@
 
 @if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger">@TempData["Error"]</div>
+    <div class="alert alert-danger" role="alert">
+        <div class="alert-icon">
+            <i data-lucide="alert-circle"></i>
+        </div>
+        <div class="alert-message">
+            @TempData["Error"]
+        </div>
+    </div>
 }
 
 <div class="row">

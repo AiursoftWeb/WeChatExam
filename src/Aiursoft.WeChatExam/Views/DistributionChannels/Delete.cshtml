@@ -31,9 +31,13 @@
             </dd>
         </dl>
 
-        <div class="alert alert-danger">
-            <i data-lucide="alert-triangle" class="me-2"></i>
-            @Localizer["This action cannot be undone. All associated user bindings will also be deleted."]
+        <div class="alert alert-danger" role="alert">
+            <div class="alert-icon">
+                <i data-lucide="alert-triangle"></i>
+            </div>
+            <div class="alert-message">
+                @Localizer["This action cannot be undone. All associated user bindings will also be deleted."]
+            </div>
         </div>
 
         <form method="post" asp-action="Delete" asp-route-id="@Model.Channel.Id">

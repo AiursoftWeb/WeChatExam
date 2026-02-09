@@ -23,24 +23,22 @@
                 </div>
 
                 <div class="alert alert-warning border-0 bg-warning bg-opacity-10" role="alert">
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <i data-lucide="alert-triangle" class="text-warning"></i>
-                        </div>
-                        <div>
-                            @if (Model.UsageCount > 0)
-                            {
-                                <p class="mb-0">
-                                    @Localizer["This tag is currently used by {0} question(s). Deleting this tag will only remove the tag from these questions, not delete the questions themselves.", Model.UsageCount]
-                                </p>
-                            }
-                            else
-                            {
-                                <p class="mb-0">
-                                    @Localizer["This tag is not used by any questions."]
-                                </p>
-                            }
-                        </div>
+                    <div class="alert-icon">
+                        <i data-lucide="alert-triangle" class="text-warning"></i>
+                    </div>
+                    <div class="alert-message">
+                        @if (Model.UsageCount > 0)
+                        {
+                            <p class="mb-0">
+                                @Localizer["This tag is currently used by {0} question(s). Deleting this tag will only remove the tag from these questions, not delete the questions themselves.", Model.UsageCount]
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="mb-0">
+                                @Localizer["This tag is not used by any questions."]
+                            </p>
+                        }
                     </div>
                 </div>
 

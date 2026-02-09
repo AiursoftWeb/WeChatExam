@@ -62,9 +62,13 @@
                 </div>
                 @if (Model.Stats.PaidOrderCount == 0 && Model.Stats.TotalPaidAmount == 0)
                 {
-                    <div class="alert alert-warning mt-3 mb-0">
-                        <i data-lucide="alert-triangle" class="me-2"></i>
-                        @Localizer["Payment statistics are not yet implemented."]
+                    <div class="alert alert-warning mt-3 mb-0" role="alert">
+                        <div class="alert-icon">
+                            <i data-lucide="alert-triangle"></i>
+                        </div>
+                        <div class="alert-message">
+                            @Localizer["Payment statistics are not yet implemented."]
+                        </div>
                     </div>
                 }
             </div>
