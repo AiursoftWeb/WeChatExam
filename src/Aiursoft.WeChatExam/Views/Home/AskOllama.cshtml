@@ -21,9 +21,14 @@
                     @if (!string.IsNullOrEmpty(Model.Answer))
                     {
                             <hr class="my-4" />
-                            <div class="alert alert-info">
-                                <h5 class="alert-heading">@Localizer["AI Response:"]</h5>
-                                <p class="mb-0" style="white-space: pre-wrap;">@Model.Answer</p>
+                            <div class="alert alert-info" role="alert">
+                                <div class="alert-icon">
+                                    <i data-lucide="message-circle"></i>
+                                </div>
+                                <div class="alert-message">
+                                    <strong>@Localizer["AI Response:"]</strong>
+                                    <p class="mb-0" style="white-space: pre-wrap;">@Model.Answer</p>
+                                </div>
                             </div>
                     }
                 </div>

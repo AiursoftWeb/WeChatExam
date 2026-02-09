@@ -16,8 +16,12 @@
         @if (Model.Taxonomies.Count == 0)
         {
             <div class="alert alert-info mb-0" role="alert">
-                <i data-lucide="info" class="me-2"></i>
-                @Localizer["No taxonomies found. Create one to get started."]
+                <div class="alert-icon">
+                    <i data-lucide="info"></i>
+                </div>
+                <div class="alert-message">
+                    @Localizer["No taxonomies found. Create one to get started."]
+                </div>
             </div>
         }
         else

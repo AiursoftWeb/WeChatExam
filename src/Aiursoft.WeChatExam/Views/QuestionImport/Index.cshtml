@@ -26,8 +26,12 @@
                     }
 
                     <div class="alert alert-info" role="alert">
-                        <i class="fas fa-info-circle"></i>
-                        @Localizer["Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields."]
+                        <div class="alert-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="alert-message">
+                            @Localizer["Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields."]
+                        </div>
                     </div>
 
                     <form asp-action="Preview" method="post">

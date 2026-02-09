@@ -31,14 +31,19 @@
         @if (Model.Channels.Count == 0)
         {
             <div class="alert alert-info" role="alert">
-                @if (string.IsNullOrWhiteSpace(Model.SearchQuery))
-                {
-                    @Localizer["No distribution channels found. Click 'Create Channel' to add one."]
-                }
-                else
-                {
-                    @Localizer["No channels match your search query."]
-                }
+                <div class="alert-icon">
+                    <i data-lucide="info"></i>
+                </div>
+                <div class="alert-message">
+                    @if (string.IsNullOrWhiteSpace(Model.SearchQuery))
+                    {
+                        @Localizer["No distribution channels found. Click 'Create Channel' to add one."]
+                    }
+                    else
+                    {
+                        @Localizer["No channels match your search query."]
+                    }
+                </div>
             </div>
         }
         else

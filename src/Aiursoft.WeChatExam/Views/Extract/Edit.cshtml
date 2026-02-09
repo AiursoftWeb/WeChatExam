@@ -19,8 +19,12 @@
                     }
 
                     <div class="alert alert-info" role="alert">
-                        <i class="fas fa-info-circle"></i> 
-                        @Localizer["Please review the JSON below. You can manually correct any errors or adjust the content before previewing."]
+                        <div class="alert-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="alert-message">
+                            @Localizer["Please review the JSON below. You can manually correct any errors or adjust the content before previewing."]
+                        </div>
                     </div>
 
                     <form asp-action="Preview" method="post" id="previewForm">
