@@ -101,17 +101,15 @@ public class QuestionsController : ControllerBase
                 .Select(q => new QuestionDto
                 {
                     QuestionType = q.QuestionType,
-                    Value = new Value
-                    {
-                        Id = q.Id,
-                        Content = q.Content,
-                        Metadata = q.Metadata,
-                        Explanation = q.Explanation
-                    }
+                    Id = q.Id,
+                    Content = q.Content,
+                    Metadata = q.Metadata,
+                    Order = 0,
+                    Score = 0
                 })
                 .ToListAsync();
             
-            questions = randomQuestions.OrderBy(q => selectedIds.IndexOf(q.Value.Id)).ToList();
+            questions = randomQuestions.OrderBy(q => selectedIds.IndexOf(q.Id)).ToList();
         }
         else
         {
@@ -120,13 +118,11 @@ public class QuestionsController : ControllerBase
                 .Select(q => new QuestionDto
                 {
                     QuestionType = q.QuestionType,
-                    Value = new Value
-                    {
-                        Id = q.Id,
-                        Content = q.Content,
-                        Metadata = q.Metadata,
-                        Explanation = q.Explanation
-                    }
+                    Id = q.Id,
+                    Content = q.Content,
+                    Metadata = q.Metadata,
+                    Order = 0,
+                    Score = 0
                 })
                 .ToListAsync();
         }
@@ -157,13 +153,11 @@ public class QuestionsController : ControllerBase
         var dto = new QuestionDto
         {
             QuestionType = question.QuestionType,
-            Value = new Value
-            {
-                Id = question.Id,
-                Content = question.Content,
-                Metadata = question.Metadata,
-                Explanation = question.Explanation
-            }
+            Id = question.Id,
+            Content = question.Content,
+            Metadata = question.Metadata,
+            Order = 0,
+            Score = 0
         };
 
         return Ok(dto);
