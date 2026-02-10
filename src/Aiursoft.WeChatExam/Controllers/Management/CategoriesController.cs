@@ -28,14 +28,15 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
-        var categories = await context.Categories.ToListAsync();
-        // Build a hierarchical structure
-        var rootCategories = categories.Where(c => c.ParentId == null).ToList();
+        var categories = await context.Categories
+            .Include(c => c.Parent)
+            .OrderBy(c => c.ParentId)
+            .ThenBy(c => c.Id)
+            .ToListAsync();
         
         return this.StackView(new IndexViewModel
         {
-            Categories = categories,
-            RootCategories = rootCategories
+            Categories = categories
         });
     }
 

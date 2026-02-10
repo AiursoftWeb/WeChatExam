@@ -23,11 +23,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var category in Model.RootCategories)
+                        @foreach (var category in Model.Categories)
                         {
                             @await Html.PartialAsync("_CategoryRow", category)
                         }
-                        @if (!Model.RootCategories.Any())
+                        @if (!Model.Categories.Any())
                         {
                             <tr>
                                 <td colspan="4" class="text-center text-muted py-4">
