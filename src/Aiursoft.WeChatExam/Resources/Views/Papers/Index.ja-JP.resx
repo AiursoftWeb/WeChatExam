@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>詳細</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>下書き</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>編集</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>凍結中</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>論文が見つかりません</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>試験用紙</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>公開可能</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>状態</value>

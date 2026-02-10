@@ -21,5 +21,11 @@
       <data name="Taxonomy Name" xml:space="preserve">
     <value>分類名稱</value>
   </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0} 不可超過 {1} 個字元。</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>{0} 為必填項目。</value>
+  </data>
 
 </root>

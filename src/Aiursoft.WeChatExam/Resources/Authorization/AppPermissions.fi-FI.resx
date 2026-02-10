@@ -114,6 +114,9 @@
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Salli kokeiden lukemisen, riippumatta omistajuudesta.</value>
   </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>Sallii kysymysten lukemisen, riippumatta omistajuudesta.</value>
+  </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Sallii jakaumakanavien pysyvän poistamisen.</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Lue kokeet</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>Lue kysymykset</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Lue roolit</value>

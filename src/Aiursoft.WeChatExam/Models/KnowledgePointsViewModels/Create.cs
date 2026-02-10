@@ -11,18 +11,21 @@ public class CreateViewModel: UiStackLayoutViewModel
         PageTitle = "Create KnowledgePoint";
     }
 
-    [Required]
-    [MaxLength(200)]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [MaxLength(200, ErrorMessage = "The {0} cannot exceed {1} characters.")]
+    [Display(Name = "Title")]
     public string Title { get; set; } = string.Empty;
     
-    [Required]
-    [MaxLength(4000)]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [MaxLength(4000, ErrorMessage = "The {0} cannot exceed {1} characters.")]
+    [Display(Name = "Content")]
     public string Content { get; set; } = string.Empty;
 
 
     /// <summary>
     /// 父分类ID。若为 null，表示创建顶级分类。
     /// </summary>
+    [Display(Name = "Parent Knowledge Point")]
     public Guid? ParentId { get; set; }
 
     /// <summary>

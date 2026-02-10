@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>detail</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draf</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>edit</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Ditahan</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Tidak ada kertas yang ditemukan</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Kertas</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Dapat Diterbitkan</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

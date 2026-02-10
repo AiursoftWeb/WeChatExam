@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>หมวดหมู่ทั้งหมด</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>ทุกประเภท</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>ใช้ตัวกรอง</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>คุณแน่ใจหรือไม่ว่าต้องการลบ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>ยืนยันการลบแบบหมู่</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>เนื้อหา</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>ลบรายการที่เลือก</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>รายละเอียด</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>แก้ไข</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>วันที่สิ้นสุด</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>กรอง</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>ตัวกรอง &amp; การค้นหา</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>รายการต่อหน้า</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>คำขอ MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>ไม่พบคำถาม</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>ไม่พบคำถามใด ๆ ที่ตรงกับเกณฑ์การค้นหา</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>ก่อนหน้า</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>รายการคำถาม</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>คำถาม</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>คำถาม?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>รีเซ็ต</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>ที่เลือก</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>วันที่เริ่มต้น</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>แท็ก</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>ข้อความ</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>การกระทำนี้ไม่สามารถย้อนกลับได้</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>ประเภท</value>

@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>विवरण</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>प्रारंभिक रूप</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>संपादित करें</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>जमे हुए</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>कोई पेपर नहीं मिला</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>पेपर्स</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>प्रकाशित करने योग्य</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>

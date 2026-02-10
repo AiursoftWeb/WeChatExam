@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>tarkemmin</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Luonnos</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>muokkaa</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Jäädytetty</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Ei paperia löytynyt</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Kokeet</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Julkaisuvalmis</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>

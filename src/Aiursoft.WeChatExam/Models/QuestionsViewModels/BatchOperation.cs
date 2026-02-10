@@ -10,7 +10,8 @@ public class BatchDeleteRequest
     /// <summary>
     /// List of question IDs to delete
     /// </summary>
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [Display(Name = "Question IDs")]
     public required Guid[] QuestionIds { get; init; } = Array.Empty<Guid>();
 }
 

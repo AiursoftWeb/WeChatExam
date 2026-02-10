@@ -27,20 +27,17 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label asp-for="NewTotalScore" class="form-label">Total Score Override</label>
-                        <input asp-for="NewTotalScore" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label asp-for="TeacherComment" class="form-label">Comment</label>
-                        <textarea asp-for="TeacherComment" class="form-control" rows="4"></textarea>
-                    </div>
-                </div>
-                <div class="card-footer">
                         <label asp-for="NewTotalScore" class="form-label">@Localizer["Total Score Override"]</label>
                         <input asp-for="NewTotalScore" class="form-control" />
                     </div>
                     <div class="mb-3">
                         <label asp-for="TeacherComment" class="form-label">@Localizer["Comment"]</label>
+                        <textarea asp-for="TeacherComment" class="form-control" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">@Localizer["Update Score"]</button>
+                    <a asp-action="Details" asp-route-id="@Model.Record!.ExamId" class="btn btn-secondary ms-2">@Localizer["Back"]</a>
                 </div>
             </div>
         </form>

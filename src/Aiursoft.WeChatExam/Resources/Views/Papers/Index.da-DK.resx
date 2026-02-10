@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>detalje</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Kladd</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>rediger</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Låst</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Ingen papirer fundet</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Papirer</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Udgivelsesklar</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

@@ -21,5 +21,26 @@
       <data name="Category" xml:space="preserve">
     <value>Danh mục</value>
   </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Miễn phí</value>
+  </data>
+  <data name="Paper ID" xml:space="preserve">
+    <value>Mã đề thi</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0} không được vượt quá {1} ký tự.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>{0} là bắt buộc.</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>Giới hạn thời gian (phút)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
 
 </root>

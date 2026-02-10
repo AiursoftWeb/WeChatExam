@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Все категории</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Все типы</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Применить фильтры</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Подтвердить массовое удаление</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Текст</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Удалить выбранные</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Подробности</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Редактировать</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Фильтр</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Фильтры и поиск</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Элементов на странице</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Запрос MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Следующий</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Вопросы не найдены</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Не найдено вопросов, соответствующих критериям поиска</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Предыдущая</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Список вопросов</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Вопросы</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>вопросы?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>выбранных</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Тег</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Текст</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Это действие нельзя отменить.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Тип</value>

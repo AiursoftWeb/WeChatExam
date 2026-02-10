@@ -114,6 +114,9 @@
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Cho phép đọc các bài kiểm tra, bất kể quyền sở hữu.</value>
   </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>Cho phép đọc các câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn các kênh phân phối.</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Xem Các Bài Kiểm Tra</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>Đọc Câu hỏi</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Xem Vai trò</value>

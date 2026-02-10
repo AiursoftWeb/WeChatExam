@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>Details</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Entwurf</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>bearbeiten</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Eingefroren</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Keine Prüfungen gefunden</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Papiere</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Veröffentlicht</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

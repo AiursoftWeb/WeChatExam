@@ -35,13 +35,13 @@
                             @switch (paper.Status)
                             {
                                 case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
-                                    <span class="badge bg-secondary">Draft</span>
+                                    <span class="badge bg-secondary">@Localizer["Draft"]</span>
                                     break;
                                 case Aiursoft.WeChatExam.Entities.PaperStatus.Publishable:
-                                    <span class="badge bg-success">Publishable</span>
+                                    <span class="badge bg-success">@Localizer["Publishable"]</span>
                                     break;
                                 case Aiursoft.WeChatExam.Entities.PaperStatus.Frozen:
-                                    <span class="badge bg-info">Frozen</span>
+                                    <span class="badge bg-info">@Localizer["Frozen"]</span>
                                     break;
                             }
                         </td>

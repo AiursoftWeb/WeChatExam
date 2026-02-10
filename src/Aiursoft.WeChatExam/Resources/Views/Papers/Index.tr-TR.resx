@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>Ayrıntılar</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Taslak</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>Düzenle</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Donmuş</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Hiç kağıt bulunamadı</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Sınavlar</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Yayınlanabilir</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>

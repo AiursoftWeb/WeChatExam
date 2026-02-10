@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
+      <data name="Add Option" xml:space="preserve">
+    <value>Adicionar Opção</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="Category" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Conteúdo</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Correto</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Editar Questão</value>
@@ -42,8 +48,17 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Estratégia de Classificação</value>
   </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Incorreto</value>
+  </data>
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Metadados (ex. Opções JSON)</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Conteúdo da opção</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opções</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Opções (para escolha única, array JSON)</value>

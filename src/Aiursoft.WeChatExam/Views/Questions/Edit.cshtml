@@ -14,7 +14,7 @@
                 </select>
                 <span asp-validation-for="QuestionType" class="text-danger"></span>
             </div>
-            
+
             <div class="mb-3">
                 <label asp-for="GradingStrategy" class="form-label">@Localizer["Grading Strategy"]</label>
                 <select asp-for="GradingStrategy" asp-items="Html.GetEnumSelectList<Aiursoft.WeChatExam.Entities.GradingStrategy>()" class="form-select" required>
@@ -46,7 +46,7 @@
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-            
+
             <div class="mb-3">
                 <label class="form-label">@Localizer["Tags"]</label>
                 <input type="text" id="tagInputField" class="form-control" placeholder="@Localizer["Type to search or add tags..."]" autocomplete="off" />
@@ -192,14 +192,14 @@
             questionTypeSelect.addEventListener('change', function() {
                 const type = this.value;
                 updateUI();
-                
+
                 // If switching to Bool, reset options
                 if (type === typeBool) {
                     optionsList.innerHTML = '';
                     addOption(correctStr);
                     addOption(incorrectStr);
                     updateUI(); // Re-apply Bool specific styles (hide buttons)
-                } 
+                }
                 // If switching to Choice from non-option type, maybe add default?
                 else if (type === typeChoice && optionsList.children.length === 0) {
                      addOption('A');

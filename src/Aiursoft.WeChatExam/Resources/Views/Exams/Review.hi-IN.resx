@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Comment" xml:space="preserve">
+      <data name="Back" xml:space="preserve">
+    <value>वापस</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
     <value>टिप्पणी</value>
   </data>
   <data name="Correct Answer" xml:space="preserve">
@@ -53,6 +56,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>प्रकार</value>
+  </data>
+  <data name="Update Score" xml:space="preserve">
+    <value>स्कोर अपडेट करें</value>
   </data>
 
 </root>

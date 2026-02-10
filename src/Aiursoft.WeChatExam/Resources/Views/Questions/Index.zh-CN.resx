@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>所有分类</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>所有类型</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>应用筛选条件</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>确定要删除吗</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>分类</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>确认批量删除</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>内容</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>删除所选内容</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>详情</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>筛选</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>筛选与搜索</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>每页项目数</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL 查询</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>未找到任何问题</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>未找到符合筛选条件的问题</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一页</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>问题列表</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>问题</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>问题？</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>已选择</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>题目内容</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>此操作无法撤销。</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>类型</value>

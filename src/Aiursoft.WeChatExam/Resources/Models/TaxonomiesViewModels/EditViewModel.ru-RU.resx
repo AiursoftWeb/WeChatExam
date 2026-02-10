@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Taxonomy Name" xml:space="preserve">
+      <data name="Taxonomy ID" xml:space="preserve">
+    <value>ID таксономии</value>
+  </data>
+  <data name="Taxonomy Name" xml:space="preserve">
     <value>Название таксономии</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>Значение {0} не может превышать {1} символов.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>Поле {0} обязательно для заполнения.</value>
   </data>
 
 </root>

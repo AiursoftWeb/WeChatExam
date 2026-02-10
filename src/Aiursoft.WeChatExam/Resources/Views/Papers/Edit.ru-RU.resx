@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- Выбрать --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Выберите категорию (необязательно) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>удалить</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Черновик</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Редактировать тест</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Отметить как доступный для публикации</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Порядок</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>Сведения о тесте</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Опубликовать снимок</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Готов к публикации</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Вопрос</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>Вопросы в тесте</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Оценка</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>Выберите вопрос</value>

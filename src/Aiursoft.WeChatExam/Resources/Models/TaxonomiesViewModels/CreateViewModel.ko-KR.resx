@@ -21,5 +21,11 @@
       <data name="Taxonomy Name" xml:space="preserve">
     <value>분류 이름</value>
   </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0}은 {1}자를 초과할 수 없습니다.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>{0}이(가) 필요합니다.</value>
+  </data>
 
 </root>

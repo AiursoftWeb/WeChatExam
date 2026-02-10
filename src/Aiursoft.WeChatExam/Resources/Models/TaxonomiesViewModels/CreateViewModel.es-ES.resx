@@ -21,5 +21,11 @@
       <data name="Taxonomy Name" xml:space="preserve">
     <value>Nombre de la taxonomía</value>
   </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>El {0} no puede superar los {1} caracteres.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>El {0} es obligatorio.</value>
+  </data>
 
 </root>

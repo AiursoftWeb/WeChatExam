@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- Selectați --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Selectați categorie (opțional) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>șterge</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Proiect</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Editare lucrare</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Marchează ca publicabil</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Ordine</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>Informații despre Fișă</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Publică Instantaneu</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Publicabil</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Întrebare</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>Întrebări în Lucrare</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Salvează</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Punctaj</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>Selectează întrebarea</value>

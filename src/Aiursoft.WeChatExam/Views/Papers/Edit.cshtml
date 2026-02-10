@@ -49,10 +49,10 @@
                             @switch (Model.Status)
                             {
                                 case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
-                                    <span class="badge bg-secondary">Draft</span>
+                                    <span class="badge bg-secondary">@Localizer["Draft"]</span>
                                     break;
                                 case Aiursoft.WeChatExam.Entities.PaperStatus.Publishable:
-                                    <span class="badge bg-success">Publishable</span>
+                                    <span class="badge bg-success">@Localizer["Publishable"]</span>
                                     break;
                             }
                         </div>
@@ -103,9 +103,9 @@
                 <table class="table table-sm mb-0">
                     <thead>
                         <tr>
-                            <th>Order</th>
-                            <th>Question</th>
-                            <th>Score</th>
+                            <th>@Localizer["Order"]</th>
+                            <th>@Localizer["Question"]</th>
+                            <th>@Localizer["Score"]</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -141,7 +141,7 @@
                     <div class="mb-3">
                         <label class="form-label">@Localizer["Select Question"]</label>
                         <select name="questionId" class="form-select" required>
-                            <option value="">-- Select --</option>
+                            <option value="">@Localizer["-- Select --"]</option>
                             @foreach (var q in Model.AvailableQuestions.Where(q => !Model.PaperQuestions.Any(pq => pq.QuestionId == q.Id)))
                             {
                                 <option value="@q.Id">@q.Content[..Math.Min(60, q.Content.Length)]...</option>
@@ -150,11 +150,11 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <label class="form-label">Order</label>
+                            <label class="form-label">@Localizer["Order"]</label>
                             <input type="number" name="order" class="form-control" value="@(Model.PaperQuestions.Count + 1)" min="1" />
                         </div>
                         <div class="col-6">
-                            <label class="form-label">Score</label>
+                            <label class="form-label">@Localizer["Score"]</label>
                             <input type="number" name="score" class="form-control" value="10" min="1" />
                         </div>
                     </div>

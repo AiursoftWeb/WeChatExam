@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- Pilih --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Pilih Kategori (Opsional) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>hapus</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draf</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Edit Kertas</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Tandai sebagai Dapat Diterbitkan</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Urutan</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>Informasi Kertas</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Terbitkan Snapshot</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Dapat Diterbitkan</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Pertanyaan</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>Pertanyaan dalam Kertas</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Simpan</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Skor</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>Pilih Pertanyaan</value>

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- चुनें --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- श्रेणी चुनें (वैकल्पिक) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>हटाएँ</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>ारेखा</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>कागज को संपादित करें</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>प्रकाशित करने योग्य चिह्नित करें</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>क्रम</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>पेपर जानकारी</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>स्नैपशॉट प्रकाशित करें</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>प्रकाशित करने योग्य</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>प्रश्न</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>पेपर में प्रश्न</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>सहेजें</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>अंक</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>प्रश्न चुनें</value>

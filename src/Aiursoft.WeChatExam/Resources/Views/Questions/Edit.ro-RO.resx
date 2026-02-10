@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
+      <data name="Add Option" xml:space="preserve">
+    <value>Adaugă opțiune</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
     <value>Anulează</value>
   </data>
   <data name="Category" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Conținut</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Corect</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Editează Întrebarea</value>
@@ -42,8 +48,17 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Strategie de notare</value>
   </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Incorect</value>
+  </data>
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Metadata (de exemplu, Opțiuni JSON)</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Conținut opțiune</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opțiuni</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Opțiuni (pentru alegere unică, matrice JSON)</value>

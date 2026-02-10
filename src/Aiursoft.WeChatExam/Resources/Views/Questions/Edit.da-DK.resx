@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
+      <data name="Add Option" xml:space="preserve">
+    <value>Tilføj valgmulighed</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
     <value>Annuller</value>
   </data>
   <data name="Category" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Indhold</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Rigtigt</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Rediger spørgsmål</value>
@@ -42,8 +48,17 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Bedømmelsesstrategi</value>
   </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Forkert</value>
+  </data>
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Metadata (f.eks. Valg JSON)</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Valgmulighedstekst</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Mulige svar</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Valgmuligheder (til enkeltvalg, JSON-array)</value>

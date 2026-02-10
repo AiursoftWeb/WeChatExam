@@ -11,19 +11,20 @@ public class CreateViewModel : UiStackLayoutViewModel
         PageTitle = "Create Exam";
     }
 
-    [Required]
-    [MaxLength(200)]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [MaxLength(200, ErrorMessage = "The {0} cannot exceed {1} characters.")]
+    [Display(Name = "Title")]
     public string Title { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Paper")]
     public Guid PaperId { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Start Time")]
     public DateTime StartTime { get; set; } = DateTime.Now.AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "End Time")]
     public DateTime EndTime { get; set; } = DateTime.Now.AddDays(7).AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
 

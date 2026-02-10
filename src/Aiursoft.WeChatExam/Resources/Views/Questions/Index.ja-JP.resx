@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>すべてのカテゴリ</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>すべてのタイプ</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>フィルターを適用</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>削除してもよろしいですか？</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>カテゴリ</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>バッチ削除の確認</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>本文</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>選択したものを削除</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>詳細</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>終了日</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>絞り込み</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>フィルター &amp; 検索</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>1ページあたりの項目数</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL クエリ</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>質問が見つかりませんでした</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>条件に一致する質問は見つかりませんでした</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前へ</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>問題一覧</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>問題</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>質問?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>選択済み</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>タグ</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>テキスト</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>この操作は元に戻せません。</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>タイプ</value>

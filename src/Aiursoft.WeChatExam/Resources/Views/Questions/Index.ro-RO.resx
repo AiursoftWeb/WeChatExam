@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Toate categoriile</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Toate tipurile</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Aplică Filtrele</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Ești sigur că vrei să ștergi</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulare</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Categorie</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Confirmați ștergerea în lot</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Conținut</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Șterge</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Șterge selectatele</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Detalii</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editează</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Dată finală</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrează</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Filtre și Căutare</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Articole pe pagină</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Căutare MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Următorul</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Nu au fost găsite întrebări</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Nu au fost găsite întrebări care să corespundă criteriilor</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Listă de Întrebări</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Întrebări</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>întrebări?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Resetează</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>selectate</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Dată de început</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etichetă</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Această acțiune nu poate fi anulată.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tip</value>

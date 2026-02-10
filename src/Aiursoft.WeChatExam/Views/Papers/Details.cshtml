@@ -44,13 +44,13 @@
                         @switch (Model.Paper?.Status)
                         {
                             case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
-                                <span class="badge bg-secondary">Draft</span>
+                                <span class="badge bg-secondary">@Localizer["Draft"]</span>
                                 break;
                             case Aiursoft.WeChatExam.Entities.PaperStatus.Publishable:
-                                <span class="badge bg-success">Publishable</span>
+                                <span class="badge bg-success">@Localizer["Publishable"]</span>
                                 break;
                             case Aiursoft.WeChatExam.Entities.PaperStatus.Frozen:
-                                <span class="badge bg-info">Frozen</span>
+                                <span class="badge bg-info">@Localizer["Frozen"]</span>
                                 break;
                         }
                     </dd>
@@ -80,8 +80,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Question</th>
-                            <th>Score</th>
+                            <th>@Localizer["Question"]</th>
+                            <th>@Localizer["Score"]</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,8 +108,8 @@
                 <table class="table table-sm mb-0">
                     <thead>
                         <tr>
-                            <th>Version</th>
-                            <th>Created</th>
+                            <th>@Localizer["Version"]</th>
+                            <th>@Localizer["Created"]</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -124,7 +124,7 @@
                         @if (!Model.Snapshots.Any())
                         {
                             <tr>
-                                <td colspan="3" class="text-center text-muted py-3">No snapshots yet</td>
+                                <td colspan="3" class="text-center text-muted py-3">@Localizer["No snapshots yet"]</td>
                             </tr>
                         }
                     </tbody>

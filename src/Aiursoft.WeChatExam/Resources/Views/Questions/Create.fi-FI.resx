@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add Question" xml:space="preserve">
+      <data name="Add Option" xml:space="preserve">
+    <value>Lisää vaihtoehto</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
     <value>Lisää kysymys</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -29,6 +32,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Sisältö</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Oikea</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>Selitys</value>
@@ -42,8 +48,17 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Arviointistrategia</value>
   </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Väärin</value>
+  </data>
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Metadata (esim. Choices JSON)</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Vaihtoehto sisältö</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Vaihtoehdot</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Vaihtoehdot (yksittäistä valintaa varten, JSON-taulukko)</value>

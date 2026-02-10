@@ -14,11 +14,11 @@ public class QuestionImportIndexViewModel : UiStackLayoutViewModel
         PageTitle = "Question Import";
     }
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "JSON Content")]
     public string JsonContent { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Question Type")]
     public QuestionType SelectedQuestionType { get; set; }
 
@@ -56,7 +56,7 @@ public class QuestionImportPreviewViewModel : UiStackLayoutViewModel
     /// <summary>
     /// User-selected question type (overrides JSON Type field)
     /// </summary>
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Question Type")]
     public QuestionType SelectedQuestionType { get; set; }
 

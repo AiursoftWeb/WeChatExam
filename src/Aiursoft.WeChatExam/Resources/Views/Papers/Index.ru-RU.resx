@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>Просмотр</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Черновик</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>редактировать</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Заморожено</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Бумаги не найдены</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Тесты</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Готов к публикации</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>

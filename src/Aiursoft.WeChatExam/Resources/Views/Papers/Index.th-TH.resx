@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>ดูรายละเอียด</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>ร่าง</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>แก้ไข</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>ถูกระงับ</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>ไม่พบแบบทดสอบ</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>แบบทดสอบ</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>พร้อมเผยแพร่</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>

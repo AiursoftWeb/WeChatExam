@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Alla kategorier</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Alla typer</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Tillämpa filter</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Bekräfta massborttagning</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Innehåll</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Radera</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Ta bort markerade</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Detaljer</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Redigera</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Slutdatum</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrera</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Filter &amp; Sök</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Antal poster per sida</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL-fråga</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Inga frågor hittades</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Inga frågor hittades som matchar dina kriterier</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Föregående</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Frågelista</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Frågor</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>frågor?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>valda</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Text</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Denna åtgärd kan inte ångras.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Typ</value>
