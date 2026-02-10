@@ -4,8 +4,6 @@ using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using static Aiursoft.WebTools.Extends;
-using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
