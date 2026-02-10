@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Tüm Kategoriler</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Tüm Türler</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Filtreleri Uygula</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Silmek istediğinize emin misiniz?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Toplu Silmeyi Onayla</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>İçerik</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Sil</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Seçilenleri Sil</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Detaylar</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Düzenle</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Bitiş Tarihi</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtre</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Filtreler ve Ara</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Sayfa Başına Öğe</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL Sorgu</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Hiç soru bulunamadı</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Kriterlerinize uyan soru bulunamadı</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Önceki</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Soru Listesi</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>sorular?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Sıfırla</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>seçili</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Başlangıç Tarihi</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etiket</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Metin</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Bu işlem geri alınamaz.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tür</value>

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- 選取 --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- 選取類別（可選）--</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>刪除</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>草稿</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>編輯試卷</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>標記為可發佈</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>順序</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>試卷資訊</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>發佈快照</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>可發佈</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>問題</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>試卷中的題目</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>儲存</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>分數</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>選擇題目</value>

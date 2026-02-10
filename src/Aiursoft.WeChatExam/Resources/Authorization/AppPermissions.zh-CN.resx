@@ -114,6 +114,9 @@
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>允许阅读任何考试，不受拥有权限制。</value>
   </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>允许阅读问题，无论所有权归属。</value>
+  </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>允许永久删除分发渠道。</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>查看考试</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>查看题目</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>查看角色</value>

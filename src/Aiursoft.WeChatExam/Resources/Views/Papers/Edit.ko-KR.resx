@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- 선택 --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- 카테고리 선택 (선택 사항) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>삭제</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>초안</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>종이 편집</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>게시 가능으로 표시하기</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>순서</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>시험 정보</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>스냅샷 게시</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>게시 가능</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>질문</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>문제 목록</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>저장</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>점수</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>질문 선택</value>

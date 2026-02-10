@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>التفاصيل</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>مسودة</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>تعديل</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>مجمّد</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>لم يتم العثور على أي ورقات</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>الاختبارات</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>قابل للنشر</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>

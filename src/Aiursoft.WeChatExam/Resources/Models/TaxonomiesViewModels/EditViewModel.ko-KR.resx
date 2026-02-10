@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Taxonomy Name" xml:space="preserve">
+      <data name="Taxonomy ID" xml:space="preserve">
+    <value>분류 ID</value>
+  </data>
+  <data name="Taxonomy Name" xml:space="preserve">
     <value>분류 이름</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0}은 {1}자를 초과할 수 없습니다.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>{0}은 필수 항목입니다.</value>
   </data>
 
 </root>

@@ -21,5 +21,11 @@
       <data name="Taxonomy Name" xml:space="preserve">
     <value>Назва таксономії</value>
   </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0} не може перевищувати {1} символів.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>{0} є обов&apos;язковим.</value>
+  </data>
 
 </root>

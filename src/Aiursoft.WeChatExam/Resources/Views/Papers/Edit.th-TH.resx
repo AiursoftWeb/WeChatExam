@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- เลือก --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- เลือกหมวดหมู่ (ไม่จำเป็น) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>ลบ</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>ร่าง</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>แก้ไขแบบทดสอบ</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>ตั้งเป็นเผยแพร่ได้</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>ลำดับ</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>ข้อมูลแบบทดสอบ</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>เผยแพร่สแนปช็อต</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>พร้อมเผยแพร่</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>คำถาม</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>คำถามในแบบทดสอบ</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>บันทึก</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>คะแนน</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>เลือกคำถาม</value>

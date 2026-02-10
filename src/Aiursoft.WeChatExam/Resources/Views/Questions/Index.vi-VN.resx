@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Tất cả danh mục</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Tất cả các loại</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Áp dụng bộ lọc</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa không?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy bỏ</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Danh mục</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Xác nhận xóa hàng loạt</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Nội dung</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Xóa</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Xóa đã chọn</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Chi tiết</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Chỉnh sửa</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Ngày kết thúc</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Lọc</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Bộ lọc &amp; Tìm kiếm</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Số mục trên mỗi trang</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Truy vấn MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tiếp theo</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Không tìm thấy câu hỏi nào</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Không tìm thấy câu hỏi nào phù hợp với tiêu chí tìm kiếm</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Trước</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Danh sách câu hỏi</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Câu hỏi</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>câu hỏi?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>đã chọn</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Ngày bắt đầu</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Nhãn</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Văn bản</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Hành động này không thể hoàn tác.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Loại</value>

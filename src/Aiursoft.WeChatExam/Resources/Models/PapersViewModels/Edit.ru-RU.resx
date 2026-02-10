@@ -21,5 +21,26 @@
       <data name="Category" xml:space="preserve">
     <value>Категория</value>
   </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Бесплатно</value>
+  </data>
+  <data name="Paper ID" xml:space="preserve">
+    <value>Идентификатор работы</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>Поле {0} не может превышать {1} символов.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>Поле {0} обязательно для заполнения.</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>Ограничение по времени (минуты)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
 
 </root>

@@ -114,6 +114,9 @@
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>يسمح بقراءة الامتحانات، بغض النظر عن الملكية.</value>
   </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>يسمح بقراءة الأسئلة، بغض النظر عن الملكية.</value>
+  </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>يسمح بالحذف الدائم للقنوات المتعددة للتوزيع.</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>قراءة الامتحانات</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>قراءة الأسئلة</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>قراءة الأدوار</value>

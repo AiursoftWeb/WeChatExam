@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Kaikki kategoriat</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Kaikki tyypit</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Sovita Suodattimet</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Oletko varma, että haluat poistaa</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Kategoria</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Vahvista sarjapoisto</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Sisältö</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Poista</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Poista valitut</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Yksityiskohdat</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Muokkaa</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Loppupäivä</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Suodata</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Suodattimet &amp; Haku</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Näytettävät kohteet sivulla</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL-kysely</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Kysymyksiä ei löytynyt</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Ei kysymyksiä löytynyt vastaamaan ehtoja</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Edellinen</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Kysymyslista</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Kysymykset</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>kysymyksiä?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Nollaa</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>valittu</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Aloituspäivämäärä</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Teksti</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Tätä toimintoa ei voi perua.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tyyppi</value>

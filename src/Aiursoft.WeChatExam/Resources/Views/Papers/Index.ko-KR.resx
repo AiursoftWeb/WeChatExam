@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>세부 정보</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>초안</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>수정</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>동결됨</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>논문을 찾을 수 없습니다</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>시험지</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>게시 가능</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>상태</value>

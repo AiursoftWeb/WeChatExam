@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>detaliu</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Proiect</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>edit</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Înghețat</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Nu s-au găsit lucrări</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Lucrări</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Publicabil</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Stare</value>

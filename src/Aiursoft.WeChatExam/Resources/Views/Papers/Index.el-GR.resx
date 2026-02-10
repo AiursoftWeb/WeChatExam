@@ -33,8 +33,14 @@
   <data name="detail" xml:space="preserve">
     <value>λεπτομέρειες</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Προσχέδιο</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>επεξεργασία</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Καταψυγμένο</value>
   </data>
   <data name="No papers found" xml:space="preserve">
     <value>Δεν βρέθηκαν εργασίες</value>
@@ -44,6 +50,9 @@
   </data>
   <data name="Papers" xml:space="preserve">
     <value>Εργασίες</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Διαθέσιμο για δημοσίευση</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Κατάσταση</value>

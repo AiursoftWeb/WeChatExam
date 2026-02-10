@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Όλες οι Κατηγορίες</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Όλα τα είδη</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Εφαρμογή Φίλτρων</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Κατηγορία</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Επιβεβαίωση Μαζικής Διαγραφής</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Περιεχόμενο</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Διαγραφή</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Διαγραφή επιλεγμένων</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Λεπτομέρειες</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Επεξεργασία</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Ημερομηνία Λήξης</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Φίλτρο</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Φίλτρα &amp; Αναζήτηση</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Αντικείμενα ανά σελίδα</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Ερώτημα MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Δεν βρέθηκαν ερωτήσεις</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Δεν βρέθηκαν ερωτήσεις που να ταιριάζουν με τα κριτήρια</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Προηγούμενο</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Λίστα Ερωτήσεων</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Ερωτήσεις</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>ερωτήσεις;</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Επαναφορά</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>επιλεγμένα</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Ημερομηνία Έναρξης</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Ετικέτα</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Κείμενο</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Τύπος</value>

@@ -24,5 +24,8 @@
   <data name="Agency name is required" xml:space="preserve">
     <value>El nombre de la agencia es obligatorio</value>
   </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>El {0} no puede exceder los {1} caracteres.</value>
+  </data>
 
 </root>

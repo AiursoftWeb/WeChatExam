@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>جميع الفئات</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>جميع الأنواع</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>تطبيق الفلاتر</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>هل أنت متأكد أنك تريد حذف</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>الفئة</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>تأكيد الحذف الجماعي</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>المحتوى</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>حذف المحدد</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>التفاصيل</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>تعديل</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>تصفية</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>التصفية والبحث</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>عناصر في الصفحة</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>استعلام MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>لم يتم العثور على أسئلة</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>لم يتم العثور على أسئلة تطابق المعايير</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>قائمة الأسئلة</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>الأسئلة</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>الأسئلة؟</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>إعادة تعيين</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>محددة</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>علامة</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>النص</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>لا يمكن التراجع عن هذه الإجراء.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>النوع</value>

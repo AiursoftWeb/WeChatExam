@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Material" xml:space="preserve">
+      <data name="JSON Content" xml:space="preserve">
+    <value>Conteúdo JSON</value>
+  </data>
+  <data name="Material" xml:space="preserve">
     <value>Material</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Target Category" xml:space="preserve">
     <value>Categoria Alvo</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>O {0} é obrigatório.</value>
   </data>
 
 </root>

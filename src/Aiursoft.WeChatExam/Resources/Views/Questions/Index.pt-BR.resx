@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Todas as Categorias</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Todos os Tipos</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Aplicar Filtros</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Tem certeza de que deseja excluir</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Categoria</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Confirmar Exclusão em Lote</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Conteúdo</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Excluir</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Excluir Selecionados</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Detalhes</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Data Final</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtrar</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Filtros e Pesquisa</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Itens por página</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Consulta MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Próxima</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Nenhuma pergunta encontrada</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Nenhum questionário encontrado correspondente aos critérios</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Lista de Perguntas</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Questões</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>perguntas?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Redefinir</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>selecionados</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Data de Início</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Texto</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Esta ação não pode ser desfeita.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tipo</value>

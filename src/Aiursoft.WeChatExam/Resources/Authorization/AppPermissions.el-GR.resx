@@ -114,6 +114,9 @@
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την ανάγνωση εξετάσεων, ανεξάρτητα από την κατοχή.</value>
   </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την ανάγνωση ερωτήσεων, ανεξάρτητα από την κατοχή τους.</value>
+  </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Επιτρέπει την τελείως διαγραφή καναλιών διανομής.</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Ανάγνωση Εξετάσεων</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>Ανάγνωση Ερωτήσεων</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>Ανάγνωση Ρόλων</value>

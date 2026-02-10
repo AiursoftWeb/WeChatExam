@@ -24,17 +24,35 @@
   <data name="Created" xml:space="preserve">
     <value>建立於</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>草稿</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>編輯</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>免費</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>凍結</value>
+  </data>
+  <data name="No snapshots yet" xml:space="preserve">
+    <value>暫無快照</value>
+  </data>
   <data name="Paper Details" xml:space="preserve">
     <value>試卷詳情</value>
   </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>可發佈</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>問題</value>
+  </data>
   <data name="Questions" xml:space="preserve">
     <value>題目</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>分數</value>
   </data>
   <data name="Snapshots" xml:space="preserve">
     <value>快照</value>
@@ -47,6 +65,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>標題</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>版本</value>
   </data>
 
 </root>

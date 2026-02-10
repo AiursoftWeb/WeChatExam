@@ -24,17 +24,35 @@
   <data name="Created" xml:space="preserve">
     <value>Luotu</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Luonnos</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Muokkaa</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Vapaa</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Jäädytetty</value>
+  </data>
+  <data name="No snapshots yet" xml:space="preserve">
+    <value>Ei vielä tallennettuja versioita</value>
+  </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Paper Details</value>
   </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Julkaistava</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Kysymys</value>
+  </data>
   <data name="Questions" xml:space="preserve">
     <value>Kysymykset</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Pisteet</value>
   </data>
   <data name="Snapshots" xml:space="preserve">
     <value>Kuvakaappaukset</value>
@@ -47,6 +65,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Otsikko</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versio</value>
   </data>
 
 </root>

@@ -24,17 +24,35 @@
   <data name="Created" xml:space="preserve">
     <value>Oluşturuldu</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Taslak</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Düzenle</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Ücretsiz</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Donmuş</value>
+  </data>
+  <data name="No snapshots yet" xml:space="preserve">
+    <value>Henüz anlık görüntü yok</value>
+  </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Kağıt Detayları</value>
   </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Yayınlanabilir</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Soru</value>
+  </data>
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Puan</value>
   </data>
   <data name="Snapshots" xml:space="preserve">
     <value>Anlık Görüntüler</value>
@@ -47,6 +65,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Başlık</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Sürüm</value>
   </data>
 
 </root>

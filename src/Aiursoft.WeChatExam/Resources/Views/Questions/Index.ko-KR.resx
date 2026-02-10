@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>전체 카테고리</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>모든 유형</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>필터 적용</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>삭제하시겠습니까?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>카테고리</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>배치 삭제 확인</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>내용</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>삭제</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>선택 항목 삭제</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>세부 정보</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>수정</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>종료일</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>필터</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>필터 및 검색</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>페이지당 항목 수</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL 쿼리</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>질문을 찾을 수 없습니다.</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>기준과 일치하는 질문이 없습니다</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>질문 목록</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>질문</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>질문들?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>선택됨</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>태그</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>텍스트</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>이 작업은 되돌릴 수 없습니다.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>유형</value>

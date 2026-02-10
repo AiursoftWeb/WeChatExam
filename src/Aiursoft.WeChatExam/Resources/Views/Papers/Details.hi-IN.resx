@@ -24,17 +24,35 @@
   <data name="Created" xml:space="preserve">
     <value>बनाया गया</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>ड्राफ्ट</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>संपादित करें</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>मुफ्त</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>जमे हुए</value>
+  </data>
+  <data name="No snapshots yet" xml:space="preserve">
+    <value>अभी तक कोई स्नैपशॉट नहीं</value>
+  </data>
   <data name="Paper Details" xml:space="preserve">
     <value>पेपर विवरण</value>
   </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>प्रकाशित करने योग्य</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>प्रश्न</value>
+  </data>
   <data name="Questions" xml:space="preserve">
     <value>प्रश्न</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>अंक</value>
   </data>
   <data name="Snapshots" xml:space="preserve">
     <value>स्नैपशॉट्स</value>
@@ -47,6 +65,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>शीर्षक</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>संस्करण</value>
   </data>
 
 </root>

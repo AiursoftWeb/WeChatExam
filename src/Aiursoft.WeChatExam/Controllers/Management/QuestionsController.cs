@@ -105,7 +105,7 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             .ToListAsync();
 
         var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
-        
+
         // Prepare Dropdown Options
         var questionTypeOptions = Enum.GetValues<QuestionType>()
             .Select(t => new SelectListItem
@@ -129,23 +129,23 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             Categories = categories,
             SelectedCategoryId = categoryId,
             SelectedCategory = categories.FirstOrDefault(c => c.Id == categoryId),
-            
+
             // Pagination
             CurrentPage = page,
             PageSize = pageSize,
             TotalCount = totalCount,
-            
+
             // Filters
             FilterQuestionType = questionType,
             FilterStartDate = startDate,
             FilterEndDate = endDate,
             FilterTag = tag,
             FilterMtql = mtql,
-            
+
             // Sorting
             SortBy = sortBy,
             SortOrder = sortOrder,
-            
+
             // Options
             QuestionTypeOptions = questionTypeOptions,
             PageSizeOptions = pageSizeOptions
@@ -196,7 +196,7 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
                  model.Categories = await context.Categories.ToListAsync();
                  return this.StackView(model);
             }
-            
+
             model.Metadata = JsonConvert.SerializeObject(new { options = model.Options });
         }
         else
@@ -293,10 +293,10 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
         };
 
         // Deserialize Metadata to Options
-        if (!string.IsNullOrWhiteSpace(question.Metadata) && 
+        if (!string.IsNullOrWhiteSpace(question.Metadata) &&
             (question.QuestionType == QuestionType.Choice || question.QuestionType == QuestionType.Bool))
         {
-            try 
+            try
             {
                 var definition = new { options = new List<string>() };
                 var metadataObj = JsonConvert.DeserializeAnonymousType(question.Metadata, definition);
@@ -462,8 +462,8 @@ public class QuestionsController(WeChatExamDbContext context, ITagService tagSer
             await context.SaveChangesAsync();
         }
 
-        return Json(new BatchDeleteResult 
-        { 
+        return Json(new BatchDeleteResult
+        {
             DeletedCount = questionsToDelete.Count,
             DeletedIds = questionsToDelete.Select(q => q.Id).ToArray()
         });

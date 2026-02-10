@@ -11,16 +11,19 @@ public class EditViewModel: UiStackLayoutViewModel
         PageTitle = "Edit Category";
     }
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [Display(Name = "Category ID")]
     public Guid Id { get; set; }
     
-    [Required]
-    [MaxLength(200)]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [MaxLength(200, ErrorMessage = "The {0} cannot exceed {1} characters.")]
+    [Display(Name = "Title")]
     public string Title { get; set; } = string.Empty;
 
     /// <summary>
     /// 父分类ID。若为 null，表示将分类移动到顶级。
     /// </summary>
+    [Display(Name = "Parent Category")]
     public Guid? ParentId { get; set; }
 
     /// <summary>

@@ -21,5 +21,26 @@
       <data name="Category" xml:space="preserve">
     <value>Catégorie</value>
   </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Est gratuit</value>
+  </data>
+  <data name="Paper ID" xml:space="preserve">
+    <value>Identifiant du document</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>Le {0} ne peut pas dépasser {1} caractères.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>Le {0} est requis.</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>Durée maximale (minutes)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
 
 </root>

@@ -24,5 +24,8 @@
   <data name="Agency name is required" xml:space="preserve">
     <value>Ajans adı gerekli</value>
   </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0} alanı {1} karakteri geçemez.</value>
+  </data>
 
 </root>

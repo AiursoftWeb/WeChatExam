@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Add Question" xml:space="preserve">
+      <data name="Add Option" xml:space="preserve">
+    <value>विकल्प जोड़ें</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
     <value>प्रश्न जोड़ें</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -29,6 +32,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>सामग्री</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>सही</value>
   </data>
   <data name="Explanation" xml:space="preserve">
     <value>स्पष्टीकरण</value>
@@ -42,8 +48,17 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>अंकन रणनीति</value>
   </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>गलत</value>
+  </data>
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>मेटाडेटा (उदाहरण के लिए: विकल्प JSON)</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>विकल्प की सामग्री</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>विकल्प</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>विकल्प (एकल चयन के लिए, JSON सरणी)</value>

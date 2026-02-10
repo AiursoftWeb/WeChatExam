@@ -114,6 +114,9 @@
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>소유 여부에 관계없이 시험을 읽을 수 있도록 허용합니다.</value>
   </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>질문을 소유 여부에 관계없이 읽을 수 있도록 허용합니다.</value>
+  </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>배포 채널의 영구 삭제를 허용합니다.</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>시험 읽기</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>질문 보기</value>
   </data>
   <data name="Read Roles" xml:space="preserve">
     <value>역할 읽기</value>

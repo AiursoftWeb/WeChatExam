@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>Semua Kategori</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Semua Jenis</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Terapkan Filter</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Apakah Anda yakin ingin menghapus</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Konfirmasi Penghapusan Massal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Isi</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>Hapus</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Hapus yang Dipilih</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Detail</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Tanggal Akhir</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Filter &amp; Pencarian</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Item per halaman</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Kueri MTQL</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Tidak ada pertanyaan ditemukan</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Tidak ada pertanyaan yang ditemukan sesuai kriteria pencarian</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Sebelumnya</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>Daftar Pertanyaan</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>Pertanyaan</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>pertanyaan?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Atur Ulang</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>terpilih</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Tanggal Mulai</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Teks</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Tindakan ini tidak dapat dibatalkan.</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Jenis</value>

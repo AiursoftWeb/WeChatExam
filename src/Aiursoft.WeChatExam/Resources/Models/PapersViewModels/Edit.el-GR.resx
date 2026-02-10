@@ -21,5 +21,26 @@
       <data name="Category" xml:space="preserve">
     <value>Κατηγορία</value>
   </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Είναι Δωρεάν</value>
+  </data>
+  <data name="Paper ID" xml:space="preserve">
+    <value>Αριθμός Εγγράφου</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Κατάσταση</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>Το {0} δεν μπορεί να υπερβαίνει τα {1} χαρακτήρες.</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>Το {0} είναι απαραίτητο.</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>Χρονικό όριο (λεπτά)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Τίτλος</value>
+  </data>
 
 </root>

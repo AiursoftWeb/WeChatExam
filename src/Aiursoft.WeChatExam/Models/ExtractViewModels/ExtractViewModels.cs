@@ -10,15 +10,15 @@ public class ExtractIndexViewModel: UiStackLayoutViewModel
     {
         PageTitle = "Extract";
     }
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Material")]
     public string Material { get; set; } =string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "System Prompt")]
     public string SystemPrompt { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Target Category")]
     public Guid CategoryId { get; set; }
 
@@ -32,7 +32,8 @@ public class ExtractEditViewModel: UiStackLayoutViewModel
         PageTitle = "Edit";
     }
     
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
+    [Display(Name = "JSON Content")]
     public string JsonContent { get; set; } = string.Empty;
 
     public string? ErrorMessage { get; set; }
@@ -52,7 +53,7 @@ public class ExtractPreviewViewModel: UiStackLayoutViewModel
 
     public string OriginalMaterial { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Target Category")]
     public Guid CategoryId { get; set; }
 

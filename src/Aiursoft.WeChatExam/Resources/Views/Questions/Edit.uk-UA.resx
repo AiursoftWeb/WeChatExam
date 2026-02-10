@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Cancel" xml:space="preserve">
+      <data name="Add Option" xml:space="preserve">
+    <value>Додати варіант</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
     <value>Скасувати</value>
   </data>
   <data name="Category" xml:space="preserve">
@@ -26,6 +29,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Зміст</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Правильна</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Редагувати питання</value>
@@ -42,8 +48,17 @@
   <data name="Grading Strategy" xml:space="preserve">
     <value>Стратегія оцінювання</value>
   </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Неправильно</value>
+  </data>
   <data name="Metadata (e.g. Choices JSON)" xml:space="preserve">
     <value>Метадані (наприклад: Варіанти JSON)</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Зміст варіанту</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Варіанти</value>
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Варіанти (для одиночного вибору, JSON масив)</value>

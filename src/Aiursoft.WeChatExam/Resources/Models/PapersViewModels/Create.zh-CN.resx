@@ -21,5 +21,20 @@
       <data name="Category" xml:space="preserve">
     <value>类别</value>
   </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>是否免费</value>
+  </data>
+  <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
+    <value>{0} 不能超过 {1} 个字符。</value>
+  </data>
+  <data name="The {0} is required." xml:space="preserve">
+    <value>{0} 是必填项。</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>时间限制（分钟）</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
 
 </root>

@@ -27,8 +27,23 @@
   <data name="All Categories" xml:space="preserve">
     <value>सभी श्रेणियाँ</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>सभी प्रकार</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>फिल्टर लागू करें</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>क्या आप वाकई हटाना चाहते हैं?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>श्रेणी</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>बैच हटाएं की पुष्टि करें</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>सामग्री</value>
@@ -39,17 +54,41 @@
   <data name="Delete" xml:space="preserve">
     <value>हटाएं</value>
   </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>चयनित हटाएं</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>विवरण</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>संपादित करें</value>
   </data>
+  <data name="End Date" xml:space="preserve">
+    <value>अंतिम तिथि</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>फ़िल्टर करें</value>
   </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>फ़िल्टर्स &amp; सर्च</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>प्रति पृष्ठ आइटम</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL क्वेरी</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>अगला</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>कोई प्रश्न नहीं मिला</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>आपके मानदंड के अनुरूप कोई प्रश्न नहीं मिला</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>पिछला</value>
   </data>
   <data name="Question List" xml:space="preserve">
     <value>प्रश्न सूची</value>
@@ -57,8 +96,26 @@
   <data name="Questions" xml:space="preserve">
     <value>प्रश्न</value>
   </data>
+  <data name="questions?" xml:space="preserve">
+    <value>प्रश्न?</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>रीसेट</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>चयनित</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>प्रारंभ तारीख</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>टैग</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>पाठ</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>इस कार्रवाई को वापस नहीं लाया जा सकता है।</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>प्रकार</value>

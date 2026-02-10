@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="-- Select Category (Optional) --" xml:space="preserve">
+      <data name="-- Select --" xml:space="preserve">
+    <value>-- Auswählen --</value>
+  </data>
+  <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Kategorie auswählen (Optional) --</value>
   </data>
   <data name="Add" xml:space="preserve">
@@ -36,6 +39,9 @@
   <data name="delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Entwurf</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Bearbeiten Sie das Papier</value>
   </data>
@@ -48,11 +54,20 @@
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Als Veröffentlichungsfähig markieren</value>
   </data>
+  <data name="Order" xml:space="preserve">
+    <value>Reihenfolge</value>
+  </data>
   <data name="Paper Info" xml:space="preserve">
     <value>Papier-Info</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Veröffentlichen Sie Snapshot</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Veröffentlicht</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Frage</value>
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>Fragen im Papier</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Punkte</value>
   </data>
   <data name="Select Question" xml:space="preserve">
     <value>Frage auswählen</value>
