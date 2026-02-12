@@ -1,99 +1,146 @@
 using Aiursoft.Scanner.Abstractions;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace Aiursoft.WeChatExam.Services.FileStorage;
 
-/// <summary>
-/// Represents a service for storing and managing files.
-/// </summary>
-public class StorageService(IConfiguration configuration) : ISingletonDependency
+public enum FilePermission
 {
-    public readonly string StorageRootFolder = configuration["Storage:Path"]!;
+    Upload,
+    Download
+}
 
-    // Async lock.
-    private readonly SemaphoreSlim _lock = new(1, 1);
-
+/// <summary>
+/// Represents a service for storing and managing files. (Level 3: Business Gateway)
+/// </summary>
+public class StorageService(
+    FeatureFoldersProvider folders,
+    FileLockProvider fileLockProvider,
+    IDataProtectionProvider dataProtectionProvider) : ITransientDependency
+{
     /// <summary>
     /// Saves a file to the storage.
     /// </summary>
-    /// <param name="savePath">The path where the file will be saved. The 'savePath' is the path that the user wants to save. Not related to actual disk path.</param>
+    /// <param name="logicalPath">The logical path (relative to Workspace) where the file will be saved.</param>
     /// <param name="file">The file to be saved.</param>
-    /// <returns>The actual path where the file is saved relative to the workspace folder.</returns>
-    public async Task<string> Save(string savePath, IFormFile file)
+    /// <param name="isVault">Whether to save to the private Vault.</param>
+    /// <returns>The actual logical path where the file is saved (may differ if renamed).</returns>
+    public async Task<string> Save(string logicalPath, IFormFile file, bool isVault = false)
     {
-        var workspaceFolder = Path.Combine(StorageRootFolder, "Workspace");
-        var finalFilePath = Path.GetFullPath(Path.Combine(workspaceFolder, savePath));
-        var workspaceFullPath = Path.GetFullPath(workspaceFolder);
-        if (!workspaceFullPath.EndsWith(Path.DirectorySeparatorChar))
+        // 1. Get Workspace root
+        var root = isVault ? folders.GetVaultFolder() : folders.GetWorkspaceFolder();
+
+        // 2. Resolve physical path
+        var physicalPath = Path.GetFullPath(Path.Combine(root, logicalPath));
+
+        // 3. Security check: Ensure path is within Workspace
+        if (!physicalPath.StartsWith(root, StringComparison.OrdinalIgnoreCase))
         {
-            workspaceFullPath += Path.DirectorySeparatorChar;
+            throw new ArgumentException("Path traversal attempt detected!");
         }
 
-        if (!finalFilePath.StartsWith(workspaceFullPath, StringComparison.Ordinal))
+        // 4. Create directory if needed
+        var directory = Path.GetDirectoryName(physicalPath);
+        if (!Directory.Exists(directory))
         {
-            throw new ArgumentException("Attempted to access a restricted path.");
-        }
-        var finalFolder = Path.GetDirectoryName(finalFilePath);
-
-        // Create the folder if it does not exist.
-        if (!Directory.Exists(finalFolder))
-        {
-            Directory.CreateDirectory(finalFolder!);
+             Directory.CreateDirectory(directory!);
         }
 
-        // The problem is: What if the file already exists?
-        await _lock.WaitAsync();
+        // 5. Handle collisions (Renaming)
+        // Lock on the directory to prevent race conditions during renaming
+        var lockObj = fileLockProvider.GetLock(directory!);
+        await lockObj.WaitAsync();
         try
         {
-            var expectedFileName = Path.GetFileName(finalFilePath);
-            while (File.Exists(finalFilePath))
+            var expectedFileName = Path.GetFileName(physicalPath);
+            while (File.Exists(physicalPath))
             {
                 expectedFileName = "_" + expectedFileName;
-                finalFilePath = Path.Combine(finalFolder!, expectedFileName);
+                physicalPath = Path.Combine(directory!, expectedFileName);
             }
 
-            // This is to avoid the case that the file already exists.
-            // However, we can't copy the stream to the new file. Because this is running in a lock and we need to release the lock ASAP.
-            // So we create a new file and close it to ensure the file is valid and can be copied to.
-            File.Create(finalFilePath).Close();
+            // Create placeholder to reserve name
+            File.Create(physicalPath).Close();
         }
         finally
         {
-            _lock.Release();
+            lockObj.Release();
         }
 
-        await using var fileStream = new FileStream(finalFilePath, FileMode.Create);
+        // 6. Write file content
+        await using var fileStream = new FileStream(physicalPath, FileMode.Create);
         await file.CopyToAsync(fileStream);
-        fileStream.Close();
 
-        return Path.GetRelativePath(StorageRootFolder, finalFilePath);
+        // 7. Return logical path (relative to Workspace)
+        return Path.GetRelativePath(root, physicalPath).Replace("\\", "/");
     }
 
     /// <summary>
-    /// Retrieves the physical file path for a given file name within the storage workspace folder.
+    /// Retrieves the physical file path for a given logical path.
+    /// Defaults to Workspace.
     /// </summary>
-    /// <param name="relativePath">The name of the file for which the physical path is required.</param>
-    /// <returns>The full physical path of the file within the workspace folder.</returns>
-    public string GetFilePhysicalPath(string relativePath)
+    public string GetFilePhysicalPath(string logicalPath, bool isVault = false)
     {
-        var physicalPath = Path.GetFullPath(Path.Combine(StorageRootFolder, relativePath));
-        var workspaceFullPath = Path.GetFullPath(StorageRootFolder);
-        if (!workspaceFullPath.EndsWith(Path.DirectorySeparatorChar))
-        {
-            workspaceFullPath += Path.DirectorySeparatorChar;
-        }
+        var root = isVault ? folders.GetVaultFolder() : folders.GetWorkspaceFolder();
+        var physicalPath = Path.GetFullPath(Path.Combine(root, logicalPath));
 
-        if (!physicalPath.StartsWith(workspaceFullPath, StringComparison.Ordinal))
+        if (!physicalPath.StartsWith(root, StringComparison.OrdinalIgnoreCase))
         {
-            throw new ArgumentException("Attempted to access a restricted path.");
+            throw new ArgumentException("Restricted path access!");
         }
         return physicalPath;
     }
 
+    public string GetToken(string path, FilePermission permission)
+    {
+        // Create a time-limited data protector with 60-minute expiration
+        var protector = dataProtectionProvider
+            .CreateProtector("FileOperation")
+            .ToTimeLimitedDataProtector();
+
+        var tokenData = $"{path}|{permission}";
+
+        // Protect the path with time-limited encryption
+        var protectedData = protector.Protect(tokenData, TimeSpan.FromMinutes(60));
+        return protectedData;
+    }
+
+    public bool ValidateToken(string requestPath, string tokenString, FilePermission requiredPermission)
+    {
+        if (string.IsNullOrEmpty(requestPath) || requestPath.Contains("..")) return false; // Patch for path traversal
+        try
+        {
+            // Create the same protector used for token generation
+            var protector = dataProtectionProvider
+                .CreateProtector("FileOperation")
+                .ToTimeLimitedDataProtector();
+
+            // Unprotect and validate expiration automatically
+            var tokenData = protector.Unprotect(tokenString);
+            var parts = tokenData.Split('|');
+            if (parts.Length != 2) return false;
+
+            var authorizedPath = parts[0];
+            var authorizedPermission = Enum.Parse<FilePermission>(parts[1]);
+
+            if (authorizedPermission != requiredPermission) return false;
+
+            // Verify the token authorizes access to the requested path
+            // Fix: Enforce trailing slash to prevent partial directory matching (e.g. "A" matching "AA")
+            var normalizedRequestPath = requestPath.TrimEnd('/') + "/";
+            var normalizedAuthorizedPath = authorizedPath.TrimEnd('/') + "/";
+
+            return normalizedRequestPath.StartsWith(normalizedAuthorizedPath, StringComparison.OrdinalIgnoreCase);
+        }
+        catch
+        {
+            // Token is invalid, expired, or tampered with
+            return false;
+        }
+    }
+
     /// <summary>
-    /// Converts a relative path to a URI-compatible path.
+    /// Converts a logical path to a URI-compatible path.
     /// </summary>
-    /// <param name="relativePath">The relative file path to be converted.</param>
-    /// <returns>A URI-compatible path derived from the relative path.</returns>
     private string RelativePathToUriPath(string relativePath)
     {
         var urlPath = Uri.EscapeDataString(relativePath)
@@ -105,13 +152,33 @@ public class StorageService(IConfiguration configuration) : ISingletonDependency
         return urlPath;
     }
 
-    public string RelativePathToInternetUrl(string relativePath, HttpContext context)
+    public string RelativePathToInternetUrl(string relativePath, HttpContext context, bool isVault = false)
     {
+        if (isVault)
+        {
+            var token = GetToken(relativePath, FilePermission.Download);
+            return $"{context.Request.Scheme}://{context.Request.Host}/download-private/{RelativePathToUriPath(relativePath)}?token={token}";
+        }
         return $"{context.Request.Scheme}://{context.Request.Host}/download/{RelativePathToUriPath(relativePath)}";
     }
 
-    public string RelativePathToInternetUrl(string relativePath)
+    public string RelativePathToInternetUrl(string relativePath, bool isVault = false)
     {
+        if (isVault)
+        {
+            var token = GetToken(relativePath, FilePermission.Download);
+            return $"/download-private/{RelativePathToUriPath(relativePath)}?token={token}";
+        }
         return $"/download/{RelativePathToUriPath(relativePath)}";
+    }
+
+    public string GetUploadUrl(string subfolder, bool isVault = false)
+    {
+        var token = GetToken(subfolder, FilePermission.Upload);
+        if (isVault)
+        {
+            return $"/upload-private/{subfolder}?token={token}";
+        }
+        return $"/upload/{subfolder}?token={token}";
     }
 }

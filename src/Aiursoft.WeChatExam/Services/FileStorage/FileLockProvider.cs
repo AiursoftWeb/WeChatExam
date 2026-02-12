@@ -1,5 +1,5 @@
-using Aiursoft.Scanner.Abstractions;
 using Microsoft.Extensions.Caching.Memory;
+using Aiursoft.Scanner.Abstractions;
 
 namespace Aiursoft.WeChatExam.Services.FileStorage;
 

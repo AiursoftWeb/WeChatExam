@@ -67,4 +67,7 @@ public static class AppPermissionNames
     
     public const string CanUseAIExtractor = nameof(CanUseAIExtractor);
 
+    // Global Settings
+    public const string CanManageGlobalSettings = nameof(CanManageGlobalSettings);
+
 }

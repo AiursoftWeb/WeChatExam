@@ -4,6 +4,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services.FileStorage;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Aiursoft.WeChatExam.Services;
 
 namespace Aiursoft.WeChatExam;
 
@@ -60,6 +61,10 @@ public static class ProgramExtends
         var services = scope.ServiceProvider;
         var db = services.GetRequiredService<WeChatExamDbContext>();
         var logger = services.GetRequiredService<ILogger<Program>>();
+        
+        var settingsService = services.GetRequiredService<GlobalSettingsService>();
+        await settingsService.SeedSettingsAsync();
+
         var shouldSeed = await ShouldSeedAsync(db);
         if (!shouldSeed)
         {
