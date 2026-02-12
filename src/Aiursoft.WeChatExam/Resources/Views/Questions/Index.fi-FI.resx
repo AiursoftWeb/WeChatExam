@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Lisää kysymys</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Luokitus</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Valitse kategoriat</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Kaikki kategoriat</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Kaikki tyypit</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Tapahtui virhe luomassa luokittelua.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Sovita Suodattimet</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Loppupäivä</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Luonnoksen aloittaminen epäonnistui.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Suodata</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Seuraava</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Ei kategorioita saatavilla. Luo kategorioita ensin.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Kysymyksiä ei löytynyt</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Ei kysymyksiä löytynyt vastaamaan ehtoja</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Valitse vähintään yksi kategoria.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Edellinen</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Nollaa</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Valitse kaikki / Poista valinta kaikista</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Valitse ehdokasluokat AI-luokitteluun. AI valitsee tarkalleen yhden luokan jokaiseen kysymykseen.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>valittu</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Aloita luokittelu</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Aloituspäivämäärä</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Lähetetään...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>

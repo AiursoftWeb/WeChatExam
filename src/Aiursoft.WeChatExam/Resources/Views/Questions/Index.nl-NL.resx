@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Vraag toevoegen</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Categorieën selecteren</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Alle categorieën</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typen</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Er is een fout opgetreden bij het starten van de classificatie.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Filtertoepassen</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Einddatum</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Mislukt om classificatie te starten.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filteren</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Volgende</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Geen categorieën beschikbaar. Maak eerst categorieën aan.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Geen vragen gevonden</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Geen vragen gevonden die overeenkomen met uw criteria</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Selecteer ten minste één categorie.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Vorige</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Alles selecteren / Alles deselecteren</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Selecteer de categorieën die als kandidaat worden beschouwd voor AI-classificatie. De AI kiest precies één categorie voor elk vraagstuk.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>geselecteerd</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Start Classificatie</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Startdatum</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Bezig met verzenden...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>

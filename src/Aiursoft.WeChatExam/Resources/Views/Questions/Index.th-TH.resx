@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>เพิ่มคำถาม</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Select Categories</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>หมวดหมู่ทั้งหมด</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>เกิดข้อผิดพลาดขณะเริ่มการจำแนกประเภท</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>ใช้ตัวกรอง</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>วันที่สิ้นสุด</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>ไม่สามารถเริ่มการจำแนกประเภทได้</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>กรอง</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>ถัดไป</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>ไม่มีหมวดหมู่ใดให้ใช้งาน โปรดสร้างหมวดหมู่ก่อน</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>ไม่พบคำถาม</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>ไม่พบคำถามใด ๆ ที่ตรงกับเกณฑ์การค้นหา</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>กรุณาเลือกหมวดหมู่อย่างน้อยหนึ่งหมวดหมู่</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>ก่อนหน้า</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>รีเซ็ต</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>เลือกทั้งหมด / ยกเลิกการเลือกทั้งหมด</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>เลือกหมวดหมู่ตัวเลือกสำหรับการจำแนกประเภทโดยใช้ AI ระบบ AI จะเลือกหมวดหมู่เดียวสำหรับแต่ละคำถาม</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>ที่เลือก</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>เริ่มการจำแนกประเภท</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>วันที่เริ่มต้น</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>กำลังส่ง...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>แท็ก</value>

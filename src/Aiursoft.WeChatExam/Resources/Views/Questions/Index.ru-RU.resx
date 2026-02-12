@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Добавить вопрос</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Select Categories</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Все категории</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Все типы</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Во время запуска классификации произошла ошибка.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Применить фильтры</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Дата окончания</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Не удалось начать классификацию.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Фильтр</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Следующий</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Категории недоступны. Создайте категории сначала.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Вопросы не найдены</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Не найдено вопросов, соответствующих критериям поиска</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Пожалуйста, выберите хотя бы одну категорию.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Предыдущая</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Сброс</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Выбрать все / Снять выделение со всех</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Выберите кандидатные категории для классификации ИИ. ИИ выберет ровно одну категорию для каждого вопроса.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>выбранных</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Начать классификацию</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Дата начала</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Отправка...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Тег</value>

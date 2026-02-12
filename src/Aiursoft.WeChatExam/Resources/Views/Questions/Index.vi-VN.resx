@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Thêm Câu Hỏi</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>Phân loại AI</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Chọn Danh mục</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Tất cả danh mục</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Tất cả các loại</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Đã xảy ra lỗi khi bắt đầu phân loại.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Áp dụng bộ lọc</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Ngày kết thúc</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Thất bại khi bắt đầu phân loại.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Lọc</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Tiếp theo</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Không có danh mục nào khả dụng. Vui lòng tạo danh mục trước.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Không tìm thấy câu hỏi nào</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Không tìm thấy câu hỏi nào phù hợp với tiêu chí tìm kiếm</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Vui lòng chọn ít nhất một danh mục.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Trước</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Đặt lại</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Chọn tất cả / Bỏ chọn tất cả</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Chọn các danh mục ứng cử cho phân loại AI. AI sẽ chọn đúng một danh mục cho mỗi câu hỏi.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>đã chọn</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Bắt đầu phân loại</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Ngày bắt đầu</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Đang gửi...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Nhãn</value>

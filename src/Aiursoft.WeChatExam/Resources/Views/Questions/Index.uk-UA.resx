@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Додати питання</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Select Categories</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Усі категорії</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Всі типи</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Виникла помилка під час запуску класифікації.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Застосувати фільтри</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Дата завершення</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Не вдалося почати класифікацію.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Фільтр</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Наступна</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Немає доступних категорій. Будь ласка, спочатку створіть категорії.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Питання не знайдено</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Не знайдено питань, що відповідають критеріям пошуку</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Будь ласка, виберіть принаймні одну категорію.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Попередній</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Скинути</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Вибрати все / Скасувати вибір всього</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Виберіть кандидатські категорії для класифікації AI. AI вибере саме одну категорію для кожного запитання.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>вибрані</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Почати класифікацію</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Дата початку</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Надсилання...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Тег</value>

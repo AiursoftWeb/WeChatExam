@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>إضافة سؤال</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>تصنيف بالذكاء الاصطناعي</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>تصنيف الذكاء الاصطناعي - اختيار الفئات</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>جميع الفئات</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>حدث خطأ أثناء بدء التصنيف.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>تطبيق الفلاتر</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>تاريخ الانتهاء</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>فشل في بدء التصنيف.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>تصفية</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>التالي</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>لا توجد فئات متاحة. يُرجى إنشاء الفئات أولاً.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>لم يتم العثور على أسئلة</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>لم يتم العثور على أسئلة تطابق المعايير</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>الرجاء تحديد فئة على الأقل.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>السابق</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>إعادة تعيين</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>تحديد الكل / إلغاء تحديد الكل</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>حدد الفئات المرشحة للتصنيف بواسطة الذكاء الاصطناعي. سيختار الذكاء الاصطناعي فئة واحدة بالضبط لكل سؤال.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>محددة</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>بدء التصنيف</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>تاريخ البدء</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>جاري الإرسال...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>علامة</value>
