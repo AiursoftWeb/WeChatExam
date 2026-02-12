@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Προσθήκη Ερώτησης</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>ΑΙ Κατηγοριοποίηση</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Select Categories</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Όλες οι Κατηγορίες</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Όλα τα είδη</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Εφαρμογή Φίλτρων</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Ημερομηνία Λήξης</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Αποτυχία εκκίνησης ταξινόμησης.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Φίλτρο</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Επόμενο</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Δεν υπάρχουν διαθέσιμες κατηγορίες. Δημιουργήστε κατηγορίες πρώτα.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Δεν βρέθηκαν ερωτήσεις</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Δεν βρέθηκαν ερωτήσεις που να ταιριάζουν με τα κριτήρια</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε τουλάχιστον μία κατηγορία.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Προηγούμενο</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Επαναφορά</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Επιλογή Όλων / Αποεπιλογή Όλων</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Επιλέξτε τις κατηγορίες-κριτήρια για την ταξινόμηση της ΤΝ. Η ΤΝ θα επιλέξει ακριβώς μία κατηγορία για κάθε ερώτηση.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>επιλεγμένα</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Έναρξη Κατηγοριοποίησης</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Ημερομηνία Έναρξης</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Υποβολή...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Ετικέτα</value>

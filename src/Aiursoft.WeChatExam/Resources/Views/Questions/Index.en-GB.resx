@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Add Question</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Select Categories</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>All Categories</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>All Types</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>An error occurred while starting classification.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Apply Filters</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Failed to start classification.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>No categories available. Please create categories first.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>No questions found</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>No questions found matching your criteria</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Please select at least one category.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Select All / Deselect All</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Select the candidate categories for AI classification. The AI will choose exactly one category for each question.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>selected</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Start Classification</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Submitting...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>

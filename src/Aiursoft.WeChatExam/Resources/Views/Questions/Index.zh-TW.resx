@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>新增題目</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI 分類</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI 類別 - 選取類別</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>所有分類</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>開始分類時發生錯誤。</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>套用篩選條件</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>結束日期</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>無法啟動分類作業。</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>篩選</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>下一頁</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>沒有可用的分類。請先建立分類。</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>找不到任何問題</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>找不到符合條件的問題</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>請至少選擇一個類別。</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一頁</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>重設</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>全選 / 取消全選</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>選擇 AI 標記的候選類別。AI 將為每個問題選擇一個類別。</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>選取</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>開始分類</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>開始日期</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>提交中...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>標籤</value>

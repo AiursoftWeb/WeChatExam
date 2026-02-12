@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>問題を追加</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - カテゴリの選択</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>すべてのカテゴリ</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>すべてのタイプ</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>分類の開始中にエラーが発生しました。</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>フィルターを適用</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>終了日</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>分類の開始に失敗しました。</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>絞り込み</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>次へ</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>カテゴリが利用できません。まずカテゴリを作成してください。</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>質問が見つかりませんでした</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>条件に一致する質問は見つかりませんでした</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>少なくとも1つのカテゴリを選択してください。</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>前へ</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>リセット</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>すべて選択 / 選択解除</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>AI分類の候補となるカテゴリを選択してください。AIは各質問に対して正確に1つのカテゴリを選択します。</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>選択済み</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>分類を開始</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>開始日</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>送信中...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>タグ</value>

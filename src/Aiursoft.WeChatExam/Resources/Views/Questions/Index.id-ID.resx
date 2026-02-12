@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Tambah Pertanyaan</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>Klasifikasi AI</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>Klasifikasi AI - Pilih Kategori</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Semua Kategori</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Semua Jenis</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Terjadi kesalahan saat memulai klasifikasi.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Terapkan Filter</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Tanggal Akhir</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Gagal memulai klasifikasi.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Berikutnya</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Tidak ada kategori yang tersedia. Silakan buat kategori terlebih dahulu.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Tidak ada pertanyaan ditemukan</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Tidak ada pertanyaan yang ditemukan sesuai kriteria pencarian</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Silakan pilih setidaknya satu kategori.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Atur Ulang</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Pilih Semua / Hapus Pilihan Semua</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Pilih kategori kandidat untuk klasifikasi AI. AI akan memilih tepat satu kategori untuk setiap pertanyaan.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>terpilih</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Mulai Klasifikasi</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Tanggal Mulai</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Mengirimkan...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>

@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>Frage hinzufügen</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>KI-Klassifizierung</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Klassifizierung - Kategorien auswählen</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>Alle Kategorien</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle Typen</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>Beim Start der Klassifizierung ist ein Fehler aufgetreten.</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>Filter anwenden</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>Fehler beim Start der Klassifizierung.</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtern</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>Weiter</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>Keine Kategorien verfügbar. Bitte erstellen Sie zunächst Kategorien.</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>Keine Fragen gefunden</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Keine Fragen gefunden, die Ihren Kriterien entsprechen</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>Bitte wählen Sie mindestens eine Kategorie aus.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Zurück</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>Zurücksetzen</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>Alle auswählen / Alle abwählen</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>Wählen Sie die Kandidat-Kategorien für die KI-Klassifikation aus. Die KI wählt für jede Frage genau eine Kategorie aus.</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>ausgewählt</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>Klassifizierung starten</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>Senden...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>

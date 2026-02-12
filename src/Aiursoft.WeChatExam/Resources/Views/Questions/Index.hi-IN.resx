@@ -24,11 +24,20 @@
   <data name="Add Question" xml:space="preserve">
     <value>प्रश्न जोड़ें</value>
   </data>
+  <data name="AI Classify" xml:space="preserve">
+    <value>AI Classify</value>
+  </data>
+  <data name="AI Classify - Select Categories" xml:space="preserve">
+    <value>AI Classify - Select Categories</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>सभी श्रेणियाँ</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>सभी प्रकार</value>
+  </data>
+  <data name="An error occurred while starting classification." xml:space="preserve">
+    <value>वर्गीकरण शुरू करते समय एक त्रुटि हुई।</value>
   </data>
   <data name="Apply Filters" xml:space="preserve">
     <value>फिल्टर लागू करें</value>
@@ -66,6 +75,9 @@
   <data name="End Date" xml:space="preserve">
     <value>अंतिम तिथि</value>
   </data>
+  <data name="Failed to start classification." xml:space="preserve">
+    <value>वर्गीकरण शुरू करने में विफल रहे।</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>फ़िल्टर करें</value>
   </data>
@@ -81,11 +93,17 @@
   <data name="Next" xml:space="preserve">
     <value>अगला</value>
   </data>
+  <data name="No categories available. Please create categories first." xml:space="preserve">
+    <value>कोई श्रेणियाँ उपलब्ध नहीं हैं। कृपया पहले श्रेणियाँ बनाएं।</value>
+  </data>
   <data name="No questions found" xml:space="preserve">
     <value>कोई प्रश्न नहीं मिला</value>
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>आपके मानदंड के अनुरूप कोई प्रश्न नहीं मिला</value>
+  </data>
+  <data name="Please select at least one category." xml:space="preserve">
+    <value>कृपया कम से कम एक श्रेणी का चयन करें।</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>पिछला</value>
@@ -102,11 +120,23 @@
   <data name="Reset" xml:space="preserve">
     <value>रीसेट</value>
   </data>
+  <data name="Select All / Deselect All" xml:space="preserve">
+    <value>सभी को चुनें / सभी को अचुनें</value>
+  </data>
+  <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
+    <value>AI वर्गीकरण के लिए उम्मीदवार श्रेणियों का चयन करें। AI प्रत्येक प्रश्न के लिए ठीक एक श्रेणी का चयन करेगा।</value>
+  </data>
   <data name="selected" xml:space="preserve">
     <value>चयनित</value>
   </data>
+  <data name="Start Classification" xml:space="preserve">
+    <value>वर्गीकरण शुरू करें</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>प्रारंभ तारीख</value>
+  </data>
+  <data name="Submitting..." xml:space="preserve">
+    <value>जमा कर रहा है...</value>
   </data>
   <data name="Tag" xml:space="preserve">
     <value>टैग</value>
