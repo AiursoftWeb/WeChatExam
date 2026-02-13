@@ -106,8 +106,8 @@
             // Tags Init
             const tagInput = document.getElementById('tagInputField');
             const tagHidden = document.getElementById('Tags');
-            const initialTags = '@Model.Tags'.split(' ').filter(t => t.trim());
-            TagInput.init(tagInput, tagHidden, []); // Init with empty for Create, or Model.Tags if validation failed
+            const initialTags = @Json.Serialize(Model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>());
+            TagInput.init(tagInput, tagHidden, initialTags); // Init with empty for Create, or Model.Tags if validation failed
 
             // Options Logic
             const questionTypeSelect = document.getElementById('QuestionType');
