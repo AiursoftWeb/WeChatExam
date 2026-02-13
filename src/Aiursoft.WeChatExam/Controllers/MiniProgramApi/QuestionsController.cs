@@ -23,7 +23,7 @@ public class QuestionsController : ControllerBase
     /// </summary>
     /// <param name="categoryId">分类ID (可选)</param>
     /// <param name="tagName">Tag 显示名称 (可选)</param>
-    /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock && not metal`</param>
+    /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock &amp;&amp; not metal`</param>
     /// <param name="type">题目类型 (可选)</param>
     /// <param name="size">随机获得题目的数量(可选)</param>
     /// <returns>题目列表，按创建时间倒序</returns>

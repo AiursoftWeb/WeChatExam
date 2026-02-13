@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.2")
+                .HasAnnotation("ProductVersion", "10.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -255,6 +255,19 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ExamRecords");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.GlobalSetting", b =>
+                {
+                    b.Property<string>("Key")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Key");
+
+                    b.ToTable("GlobalSettings");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
