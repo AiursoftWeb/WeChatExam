@@ -111,6 +111,9 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Kullanıcı detaylarını (e-posta ve roller gibi) değiştirmeye izin verir ve ayrıca kullanıcı şifrelerini sıfırlayabilir.</value>
   </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Genel sistem ayarlarını değiştirme izni verir.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Sahiplik durumundan bağımsız olarak sınavları okuma izni verir.</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Uygulama örneğini yeniden başlatma iznini verir. Kullanılabilirlik kesintilerine neden olabilir ancak tüm ayarlar ve önbellek yeniden yüklenecektir.</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>Genel Ayarları Yönet</value>
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Etiketleri Yönet</value>

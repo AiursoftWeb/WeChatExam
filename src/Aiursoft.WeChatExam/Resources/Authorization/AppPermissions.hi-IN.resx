@@ -111,6 +111,9 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>उपयोगकर्ता के विवरण जैसे ईमेल और भूमिकाओं में संशोधन की अनुमति देता है, और उपयोगकर्ता के पासवर्ड को रीसेट भी कर सकता है।</value>
   </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>ग्लोबल सिस्टम सेटिंग्स को संशोधित करने की अनुमति देता है।</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>परीक्षाओं को पढ़ने की अनुमति देता है, स्वामित्व के बिना भी।</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>एप्लिकेशन इंस्टेंस को पुनरारंभ करने की अनुमति प्रदान करता है। इससे उपलब्धता में व्यवधान हो सकता है, लेकिन सभी सेटिंग्स और कैश पुनः लोड हो जाएंगे।</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>सभी सेटिंग्स का प्रबंधन करें</value>
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>टैग प्रबंधित करें</value>

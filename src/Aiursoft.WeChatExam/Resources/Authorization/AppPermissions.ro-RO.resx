@@ -111,6 +111,9 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Permite modificarea detaliilor utilizatorului, cum ar fi adresa de e-mail și rolurile, și poate, de asemenea, să reseteze parolele utilizatorilor.</value>
   </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Permite modificarea setărilor globale ale sistemului.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Permite citirea examenelor, indiferent de deținător.</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Acordă permisiunea de a reporni instanța aplicației. Poate cauza întreruperi de disponibilitate, dar toate setările și memoria cache vor fi reîncărcate.</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>Gestionare setări globale</value>
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Gestionare etichete</value>

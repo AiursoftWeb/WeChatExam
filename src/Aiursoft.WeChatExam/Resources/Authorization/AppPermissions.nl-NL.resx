@@ -111,6 +111,9 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Staat aanpassing van gebruikersgegevens zoals e-mailadres en rollen toe, en kan ook gebruikerswachtwoorden opnieuw instellen.</value>
   </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Staats het aanpassen van globale systeeminstellingen toe.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Staats lezen van examens, ongeacht eigendom.</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Verleent toestemming om de applicatie-instantie opnieuw op te starten. Kan beschikbaarheidsonderbrekingen veroorzaken, maar alle instellingen en cache worden opnieuw geladen.</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>Algemene instellingen beheren</value>
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Tags beheren</value>
