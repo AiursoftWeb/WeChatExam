@@ -57,7 +57,7 @@
                     @if(answer != null && answer.IsMarked)
                     {
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted">@Localizer["Type"]: @q.QuestionType | @Localizer["Strategy"]: @q.GradingStrategy</span>
+                            <span class="text-muted">@Localizer["Type"]: @Localizer[q.QuestionType.GetDisplayName()] | @Localizer["Strategy"]: @Localizer[q.GradingStrategy.GetDisplayName()]</span>
                             <span class="badge @(answer.Score > 0 ? "bg-success" : "bg-danger") fs-6">
                                 +@answer.Score 
                             </span>

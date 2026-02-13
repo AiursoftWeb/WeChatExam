@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
+using Microsoft.Extensions.Localization;
+
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 /// <summary>
@@ -19,7 +21,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class QuestionsController(
     WeChatExamDbContext context,
     ITagService tagService,
-    AiClassificationService aiClassificationService) : Controller
+    AiClassificationService aiClassificationService,
+    IStringLocalizer<QuestionsController> localizer) : Controller
 {
     // GET: questions
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
@@ -116,7 +119,7 @@ public class QuestionsController(
             .Select(t => new SelectListItem
             {
                 Value = t.ToString(),
-                Text = t.ToString(),
+                Text = localizer[t.GetDisplayName()],
                 Selected = questionType == t
             });
 

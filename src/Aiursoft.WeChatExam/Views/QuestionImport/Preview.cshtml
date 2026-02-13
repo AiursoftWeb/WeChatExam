@@ -15,7 +15,7 @@
                         <input type="hidden" asp-for="SelectedQuestionType" />
 
                         <span class="badge bg-info me-3">
-                            @Localizer["Type"]: @Model.SelectedQuestionType
+                            @Localizer["Type"]: @Localizer[Model.SelectedQuestionType.GetDisplayName()]
                         </span>
                         <span class="badge bg-secondary me-3">
                             @Model.ParsedQuestions.Count @Localizer["Questions"]

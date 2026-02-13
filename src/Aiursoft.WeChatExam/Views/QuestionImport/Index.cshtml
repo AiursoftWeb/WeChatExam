@@ -51,7 +51,7 @@
                         <div class="mb-3">
                             <label asp-for="SelectedQuestionType" class="form-label fw-bold">@Localizer["Question Type"]</label>
                             <select asp-for="SelectedQuestionType" class="form-select" 
-                                    asp-items="Html.GetEnumSelectList<QuestionType>()">
+                                    asp-items="@(Enum.GetValues<QuestionType>().Select(t => new SelectListItem { Value = t.ToString(), Text = Localizer[t.GetDisplayName()].Value }))">
                             </select>
                             <div class="form-text">@Localizer["All imported questions will use this type, ignoring the Type field in JSON."]</div>
                             <span asp-validation-for="SelectedQuestionType" class="text-danger"></span>
