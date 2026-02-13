@@ -138,8 +138,8 @@
                         <td>
                             @foreach (var qt in question.QuestionTags.Take(5))
                             {
-                                <a asp-action="Index" asp-route-tag="@qt.Tag?.DisplayName" class="badge bg-info text-decoration-none me-1" style="font-size: 0.7rem;">
-                                    @qt.Tag?.DisplayName
+                                <a asp-action="Index" asp-route-tag="@qt.Tag.DisplayName" class="badge bg-info text-decoration-none me-1" style="font-size: 0.7rem;">
+                                    @qt.Tag.DisplayName
                                 </a>
                             }
                         </td>
