@@ -151,6 +151,10 @@ public class AppPermissions
             new(AppPermissionNames.CanManageGlobalSettings,
                 localizer["Manage Global Settings"],
                 localizer["Allows modifying global system settings."]),
+
+            new(AppPermissionNames.CanTriggerOptimizationJobs,
+                localizer["Trigger Optimization Jobs"],
+                localizer["Allows triggering background jobs to optimize question answers and explanations using AI."]),
         ];
         return allPermission;
     }

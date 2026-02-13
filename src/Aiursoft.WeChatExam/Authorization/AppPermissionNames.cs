@@ -70,4 +70,7 @@ public static class AppPermissionNames
     // Global Settings
     public const string CanManageGlobalSettings = nameof(CanManageGlobalSettings);
 
+    // Optimization Jobs
+    public const string CanTriggerOptimizationJobs = nameof(CanTriggerOptimizationJobs);
+
 }
