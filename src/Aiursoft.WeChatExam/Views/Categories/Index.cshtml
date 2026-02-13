@@ -1,4 +1,17 @@
+@using System.Net
 @model Aiursoft.WeChatExam.Models.CategoriesViewModels.IndexViewModel
+
+@functions {
+    string GetSafeId(Guid id) => "C_" + id.ToString("N");
+
+    string GetCatNodeLabel(Aiursoft.WeChatExam.Entities.Category cat, bool isRoot)
+    {
+        var badge = isRoot ? "Root" : "Child";
+        var title = WebUtility.HtmlEncode(cat.Title);
+        var label = $"<div style='width:180px;padding:8px;text-align:left'><div style='font-weight:700;font-size:14px;margin-bottom:4px'>{title}</div><span style='font-size:11px;background:rgb(230,230,230);padding:1px 6px;border-radius:4px;color:rgb(68,68,68);font-weight:500'>{badge}</span></div>";
+        return $"\"{label}\"";
+    }
+}
 
 @* Standard page title for consistency. *@
 <h1 class="h3 mb-3">@Localizer["Categories"]</h1>
@@ -13,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="#tree" data-bs-toggle="tab" role="tab" aria-selected="false">
+                    <a class="nav-link" href="#tree" data-bs-toggle="tab" role="tab" aria-selected="false" id="tree-tab">
                         <i class="align-middle me-1" data-lucide="share-2"></i> @Localizer["Visual Tree"]
                     </a>
                 </li>
@@ -56,34 +69,35 @@
                 </div>
                 <div class="tab-pane fade" id="tree" role="tabpanel">
                     <div class="card border-top-0">
-                        <div class="card-body">
-                            <div id="mermaid-container" class="mermaid text-center">
+                        <div class="card-body overflow-auto">
+                            <script id="mermaid-source" type="text/template">
                                 graph TD
-                                @foreach (var category in Model.Categories)
-                                {
-                                    @if (category.ParentId != null)
+                                classDef rootNode fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,rx:10,ry:10
+                                classDef childNode fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,rx:10,ry:10
+
+                                @{
+                                    foreach (var category in Model.Categories)
                                     {
-                                        @:C_@(category.ParentId.Value.ToString("N"))["@(category.Parent!.Title)"] --> C_@(category.Id.ToString("N"))["@(category.Title)"]
-                                    }
-                                    else
-                                    {
-                                        @:C_@(category.Id.ToString("N"))["@(category.Title)"]
-                                    }
-                                    @:click C_@(category.Id.ToString("N")) "/Categories/Details/@category.Id" "@category.Title"
-                                    
-                                    @foreach (var ck in category.CategoryKnowledgePoints)
-                                    {
-                                        @:C_@(category.Id.ToString("N"))["@(category.Title)"] -.-> KP_@(ck.KnowledgePointId.ToString("N"))("(KP) @(ck.KnowledgePoint.Title)")
-                                        @:click KP_@(ck.KnowledgePointId.ToString("N")) "/KnowledgePoints/Details/@ck.KnowledgePointId" "@ck.KnowledgePoint.Title"
-                                        @:style KP_@(ck.KnowledgePointId.ToString("N")) fill:#f9f,stroke:#333,stroke-width:2px
+                                        var isRoot = category.ParentId == null;
+                                        var cssClass = isRoot ? "rootNode" : "childNode";
+                                        <text>@(GetSafeId(category.Id))(@Html.Raw(GetCatNodeLabel(category, isRoot))):::@cssClass
+</text>
+                                        <text>click @GetSafeId(category.Id) href "/Categories/Details/@category.Id"
+</text>
+                                        if (category.ParentId != null)
+                                        {
+                                            <text>@GetSafeId(category.ParentId.Value) --> @GetSafeId(category.Id)
+</text>
+                                        }
                                     }
                                 }
-                                
+
                                 @if (!Model.Categories.Any())
                                 {
                                     @:NoData["@(Localizer["No categories found"])"]
                                 }
-                            </div>
+                            </script>
+                            <div id="mermaid-output"></div>
                         </div>
                     </div>
                 </div>
@@ -92,10 +106,57 @@
     </div>
 </div>
 
-@* ReSharper disable once Razor.SectionNotResolved *@
-@section scripts {
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({ startOnLoad: true, theme: 'default' });
-    </script>
-}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'loose',
+        theme: 'base',
+        themeVariables: {
+            fontFamily: 'Inter, system-ui, sans-serif',
+            fontSize: '14px',
+            lineColor: '#607D8B'
+        },
+        flowchart: {
+            htmlLabels: true,
+            curve: 'basis',
+            useMaxWidth: false
+        }
+    });
+
+    let rendered = false;
+
+    async function renderMermaid() {
+        if (rendered) return;
+        rendered = true;
+        const source = document.getElementById('mermaid-source').innerHTML.trim();
+        const output = document.getElementById('mermaid-output');
+        try {
+            const { svg } = await mermaid.render('mermaid-graph', source);
+            output.innerHTML = svg;
+        } catch (e) {
+            output.innerHTML = '<p class="text-danger">Failed to render tree: ' + e.message + '</p>';
+        }
+    }
+
+    // Render when tree tab is shown (tab must be visible for foreignObject dimension measurement)
+    const treeTab = document.getElementById('tree-tab');
+    if (treeTab) {
+        treeTab.addEventListener('shown.bs.tab', renderMermaid);
+    }
+</script>
+
+<style>
+    #mermaid-output {
+        display: flex;
+        justify-content: center;
+        min-height: 400px;
+        background-color: #fff;
+    }
+
+    #mermaid-output svg {
+        max-width: 100%;
+        height: auto;
+        width: auto !important;
+    }
+</style>

@@ -1,4 +1,18 @@
+@using System.Net
 @model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.IndexViewModel
+
+@functions {
+    string GetSafeId(Guid id) => "KP_" + id.ToString("N");
+
+    string GetKpNodeLabel(Aiursoft.WeChatExam.Entities.KnowledgePoint kp, bool isRoot, string categories)
+    {
+        var badge = isRoot ? "Root" : "Child";
+        var title = WebUtility.HtmlEncode(kp.Title);
+        var catLine = string.IsNullOrEmpty(categories) ? "" : $"<div style='font-size:11px;color:rgb(100,100,100);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis'>{WebUtility.HtmlEncode(categories)}</div>";
+        var label = $"<div style='width:180px;padding:8px;text-align:left'><div style='font-weight:700;font-size:14px;margin-bottom:4px'>{title}</div><span style='font-size:11px;background:rgb(230,230,230);padding:1px 6px;border-radius:4px;color:rgb(68,68,68);font-weight:500'>{badge}</span>{catLine}</div>";
+        return $"\"{label}\"";
+    }
+}
 
 @* Standard page title for consistency. *@
 <h1 class="h3 mb-3">@Localizer["KnowledgePoints"]</h1>
@@ -13,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="#tree" data-bs-toggle="tab" role="tab" aria-selected="false">
+                    <a class="nav-link" href="#tree" data-bs-toggle="tab" role="tab" aria-selected="false" id="tree-tab">
                         <i class="align-middle me-1" data-lucide="share-2"></i> @Localizer["Visual Tree"]
                     </a>
                 </li>
@@ -56,34 +70,36 @@
                 </div>
                 <div class="tab-pane fade" id="tree" role="tabpanel">
                     <div class="card border-top-0">
-                        <div class="card-body">
-                            <div id="mermaid-container" class="mermaid text-center">
+                        <div class="card-body overflow-auto">
+                            <script id="mermaid-source" type="text/template">
                                 graph TD
-                                @foreach (var kp in Model.KnowledgePoints)
-                                {
-                                    @if (kp.ParentId != null)
+                                classDef rootNode fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,rx:10,ry:10
+                                classDef childNode fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,rx:10,ry:10
+
+                                @{
+                                    foreach (var kp in Model.KnowledgePoints)
                                     {
-                                        @:KP_@(kp.ParentId.Value.ToString("N"))["@(kp.Parent!.Title)"] --> KP_@(kp.Id.ToString("N"))["@(kp.Title)"]
-                                    }
-                                    else
-                                    {
-                                        @:KP_@(kp.Id.ToString("N"))["@(kp.Title)"]
-                                    }
-                                    @:click KP_@(kp.Id.ToString("N")) "/KnowledgePoints/Details/@kp.Id" "@kp.Title"
-                                    
-                                    @foreach (var ck in kp.CategoryKnowledgePoints)
-                                    {
-                                        @:KP_@(kp.Id.ToString("N"))["@(kp.Title)"] -.-> C_@(ck.CategoryId.ToString("N"))("(Cat) @(ck.Category.Title)")
-                                        @:click C_@(ck.CategoryId.ToString("N")) "/Categories/Details/@ck.CategoryId" "@ck.Category.Title"
-                                        @:style C_@(ck.CategoryId.ToString("N")) fill:#ccf,stroke:#333,stroke-width:2px
+                                        var isRoot = kp.ParentId == null;
+                                        var cssClass = isRoot ? "rootNode" : "childNode";
+                                        var categories = string.Join(", ", kp.CategoryKnowledgePoints.Select(ck => ck.Category.Title));
+                                        <text>@(GetSafeId(kp.Id))(@Html.Raw(GetKpNodeLabel(kp, isRoot, categories))):::@cssClass
+</text>
+                                        <text>click @GetSafeId(kp.Id) href "/KnowledgePoints/Details/@kp.Id"
+</text>
+                                        if (kp.ParentId != null)
+                                        {
+                                            <text>@GetSafeId(kp.ParentId.Value) --> @GetSafeId(kp.Id)
+</text>
+                                        }
                                     }
                                 }
-                                
+
                                 @if (!Model.KnowledgePoints.Any())
                                 {
                                     @:NoData["@(Localizer["No knowledgePoints found"])"]
                                 }
-                            </div>
+                            </script>
+                            <div id="mermaid-output"></div>
                         </div>
                     </div>
                 </div>
@@ -92,10 +108,57 @@
     </div>
 </div>
 
-@* ReSharper disable once Razor.SectionNotResolved *@
-@section scripts {
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>
-        mermaid.initialize({ startOnLoad: true, theme: 'default' });
-    </script>
-}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: 'loose',
+        theme: 'base',
+        themeVariables: {
+            fontFamily: 'Inter, system-ui, sans-serif',
+            fontSize: '14px',
+            lineColor: '#607D8B'
+        },
+        flowchart: {
+            htmlLabels: true,
+            curve: 'basis',
+            useMaxWidth: false
+        }
+    });
+
+    let rendered = false;
+
+    async function renderMermaid() {
+        if (rendered) return;
+        rendered = true;
+        const source = document.getElementById('mermaid-source').innerHTML.trim();
+        const output = document.getElementById('mermaid-output');
+        try {
+            const { svg } = await mermaid.render('mermaid-graph', source);
+            output.innerHTML = svg;
+        } catch (e) {
+            output.innerHTML = '<p class="text-danger">Failed to render tree: ' + e.message + '</p>';
+        }
+    }
+
+    // Render when tree tab is shown (tab must be visible for foreignObject dimension measurement)
+    const treeTab = document.getElementById('tree-tab');
+    if (treeTab) {
+        treeTab.addEventListener('shown.bs.tab', renderMermaid);
+    }
+</script>
+
+<style>
+    #mermaid-output {
+        display: flex;
+        justify-content: center;
+        min-height: 400px;
+        background-color: #fff;
+    }
+
+    #mermaid-output svg {
+        max-width: 100%;
+        height: auto;
+        width: auto !important;
+    }
+</style>
