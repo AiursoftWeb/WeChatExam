@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="mb-3">
                 <label asp-for="QuestionType" class="form-label">@Localizer["Type"]</label>
-                <select asp-for="QuestionType" asp-items="@(Enum.GetValues<Aiursoft.WeChatExam.Entities.QuestionType>().Select(t => new SelectListItem { Value = t.ToString(), Text = Localizer[t.GetDisplayName()].Value }))" class="form-select" required>
+                <select asp-for="QuestionType" asp-items="@(Enum.GetValues<Aiursoft.WeChatExam.Entities.QuestionType>().Select(t => new SelectListItem { Value = ((int)t).ToString(), Text = Localizer[t.GetDisplayName()].Value }))" class="form-select" required>
                     <option value="">@Localizer["Select type"]</option>
                 </select>
                 <span asp-validation-for="QuestionType" class="text-danger"></span>
@@ -16,7 +16,7 @@
             
             <div class="mb-3">
                 <label asp-for="GradingStrategy" class="form-label">@Localizer["Grading Strategy"]</label>
-                <select asp-for="GradingStrategy" asp-items="@(Enum.GetValues<Aiursoft.WeChatExam.Entities.GradingStrategy>().Select(t => new SelectListItem { Value = t.ToString(), Text = Localizer[t.GetDisplayName()].Value }))" class="form-select" required>
+                <select asp-for="GradingStrategy" asp-items="@(Enum.GetValues<Aiursoft.WeChatExam.Entities.GradingStrategy>().Select(t => new SelectListItem { Value = ((int)t).ToString(), Text = Localizer[t.GetDisplayName()].Value }))" class="form-select" required>
                     <option value="">@Localizer["Select strategy"]</option>
                 </select>
                 <span asp-validation-for="GradingStrategy" class="text-danger"></span>
