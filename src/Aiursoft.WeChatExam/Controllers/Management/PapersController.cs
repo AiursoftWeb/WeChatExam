@@ -264,7 +264,7 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
     [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> BatchAddQuestions(Guid id, [FromForm] Guid[] questionIds, int startingOrder, int defaultScore)
+    public async Task<IActionResult> BatchAddQuestions(Guid id, [FromForm] Guid[]? questionIds, int startingOrder, int defaultScore)
     {
         if (questionIds == null || !questionIds.Any())
         {
