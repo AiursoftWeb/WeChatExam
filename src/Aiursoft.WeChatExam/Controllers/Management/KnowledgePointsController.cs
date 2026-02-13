@@ -111,7 +111,7 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
         {
             KnowledgePoint = knowledgePoint,
             AssociatedCategories = knowledgePoint.CategoryKnowledgePoints
-                .Select(ck => ck.Category!)
+                .Select(ck => ck.Category)
                 .ToList()
         });
     }
