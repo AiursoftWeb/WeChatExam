@@ -70,10 +70,10 @@
                 @foreach (var tag in uncategorizedTags)
                 {
                     <div class="btn-group shadow-sm">
-                        <button type="button" class="btn btn-outline-danger btn-sm">
+                        <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-outline-danger btn-sm">
                             @tag.DisplayName
                             <span class="badge bg-danger ms-1">@Model.TagUsageCounts[tag.Id]</span>
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-outline-danger btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">@Localizer["Toggle Dropdown"]</span>
                         </button>
@@ -122,10 +122,10 @@
                             @foreach (var tag in tagsInThisTaxonomy)
                             {
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-light border btn-sm">
+                                    <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-light border btn-sm">
                                         @tag.DisplayName
                                         <span class="badge bg-secondary ms-1">@Model.TagUsageCounts[tag.Id]</span>
-                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-light border btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                                         <span class="visually-hidden">@Localizer["Toggle Dropdown"]</span>
                                     </button>
