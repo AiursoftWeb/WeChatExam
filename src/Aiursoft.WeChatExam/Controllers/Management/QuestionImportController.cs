@@ -14,10 +14,14 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class QuestionImportController : Controller
 {
     private readonly WeChatExamDbContext _dbContext;
+    private readonly ITagService _tagService;
 
-    public QuestionImportController(WeChatExamDbContext dbContext)
+    public QuestionImportController(
+        WeChatExamDbContext dbContext,
+        ITagService tagService)
     {
         _dbContext = dbContext;
+        _tagService = tagService;
     }
 
     /// <summary>
@@ -154,27 +158,19 @@ public class QuestionImportController : Controller
                 // Handle OriginalFilename as tag
                 if (!string.IsNullOrWhiteSpace(item.OriginalFilename))
                 {
-                    var normalizedName = item.OriginalFilename.Trim().ToLowerInvariant();
-                    var tag = await _dbContext.Tags
-                        .FirstOrDefaultAsync(t => t.NormalizedName == normalizedName);
+                    var tag = await _tagService.AddTagAsync(item.OriginalFilename.Trim());
+                    var exists = await _dbContext.QuestionTags
+                        .AnyAsync(qt => qt.QuestionId == question.Id && qt.TagId == tag.Id);
 
-                    if (tag == null)
+                    if (!exists)
                     {
-                        tag = new Tag
+                        var questionTag = new QuestionTag
                         {
-                            DisplayName = item.OriginalFilename.Trim(),
-                            NormalizedName = normalizedName
+                            QuestionId = question.Id,
+                            TagId = tag.Id
                         };
-                        _dbContext.Tags.Add(tag);
-                        await _dbContext.SaveChangesAsync(); // Save to get tag ID
+                        _dbContext.QuestionTags.Add(questionTag);
                     }
-
-                    var questionTag = new QuestionTag
-                    {
-                        QuestionId = question.Id,
-                        TagId = tag.Id
-                    };
-                    _dbContext.QuestionTags.Add(questionTag);
                 }
 
                 importedCount++;
