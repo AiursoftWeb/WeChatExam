@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>刪除期間發生錯誤。</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>確定要刪除嗎？</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>清除</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>確認批量刪除</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>刪除</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>刪除選取項目</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編輯</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>編輯 / 分類</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>無法刪除標籤：</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>管理分類</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>搜尋標籤...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>已選取</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>已選取的標籤？此動作無法復原。</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>標籤名稱</value>

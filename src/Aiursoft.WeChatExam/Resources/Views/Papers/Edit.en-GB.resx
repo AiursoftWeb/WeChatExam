@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Add Question</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Add Selected</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Batch Add via MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Default Score</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>delete</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Select question</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Selecting a category will filter the available questions.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Starting Order</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 
 </root>

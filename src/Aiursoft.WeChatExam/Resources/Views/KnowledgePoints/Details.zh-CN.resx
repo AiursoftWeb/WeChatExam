@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>关联分类</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
+  </data>
+  <data name="Basic Information" xml:space="preserve">
+    <value>基本信息</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>内容</value>
@@ -30,11 +39,17 @@
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>详情</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
   <data name="KnowledgePoint Details" xml:space="preserve">
     <value>知识点详情</value>
+  </data>
+  <data name="No categories associated" xml:space="preserve">
+    <value>没有关联的分类</value>
   </data>
   <data name="Parent" xml:space="preserve">
     <value>父级</value>
@@ -45,19 +60,5 @@
   <data name="Top Level" xml:space="preserve">
     <value>顶级</value>
   </data>
-  <data name="Basic Information" xml:space="preserve">
-    <value>基本信息</value>
-  </data>
-  <data name="Associated Categories" xml:space="preserve">
-    <value>关联分类</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>详情</value>
-  </data>
-  <data name="No categories associated" xml:space="preserve">
-    <value>没有关联的分类</value>
-  </data>
+
 </root>

@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>追加</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>選択したものを追加</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>関連カテゴリ</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>ナレッジポイントを編集</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>MTQLクエリを入力してください（例: content:&quot;math&quot;）</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>エラー:</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Ctrl (Windows) または Command (Mac) を押しながら複数のオプションを選択してください。</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL クエスチョン ファインダー</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>質問が見つかりませんでした。</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>親ナレッジポイント</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>検索結果はここに表示されます...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>検索中...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>追加する質問を選択...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>選択された質問</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>タイトル</value>

@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>사용자 계정의 영구 삭제를 허용합니다.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>AI를 사용하여 질문 답변 및 설명을 최적화하는 백그라운드 작업을 트리거할 수 있도록 허용합니다.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>백그라운드 작업 큐 및 그 실행 상태를 확인하고 관리할 수 있습니다.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>이 앱 재시작</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>최적화 작업 트리거</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>AI 추출기 사용</value>

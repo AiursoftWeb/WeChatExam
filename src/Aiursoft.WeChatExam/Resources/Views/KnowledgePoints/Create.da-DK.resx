@@ -18,7 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Add Selected" xml:space="preserve">
+    <value>Tilføj valgte</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Tilknyttede kategorier</value>
+  </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Tilknyttede spørgsmål</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>Tilbage til listen</value>
   </data>
   <data name="Content" xml:space="preserve">
@@ -30,8 +39,35 @@
   <data name="Create KnowledgePoint" xml:space="preserve">
     <value>Opret Videnpunkt</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Indtast MTQL-forespørgsel (f.eks. content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Fejl:</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Hold Ctrl (Windows) eller Command (Mac) for at vælge flere valgmuligheder.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL-spørgsmålsfinder</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Ingen spørgsmål fundet.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Overordnet videnpunkt</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Søg</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Søgeresultater vil vise sig her...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Søger...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Valgte spørgsmål</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>

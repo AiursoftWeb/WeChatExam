@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>प्रश्न जोड़ें</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>चयनित जोड़ें</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>बैच एड विया MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>रद्द करें</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>श्रेणी</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>सामग्री</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>डिफ़ॉल्ट स्कोर</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>हटाएँ</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>अंक</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>खोजें</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>प्रश्न चुनें</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>एक श्रेणी चुनने से उपलब्ध प्रश्नों को फ़िल्टर किया जाएगा।</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>प्रारंभिक क्रम</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>शीर्षक</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
   </data>
 
 </root>

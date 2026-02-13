@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>允許永久刪除用戶帳戶。</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>容許觸發背景作業，利用人工智能優化問題答案及解釋。</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>允許檢視及管理背景作業佇列及其執行狀態。</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>重新啟動此應用程式</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>觸發優化作業</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>使用 AI 提取器</value>

@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Acciones</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Se ha producido un error durante la eliminación.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>¿Está seguro de que desea eliminar</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Limpiar</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Confirmar eliminación por lotes</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Eliminar</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Eliminar seleccionados</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Editar / Categorizar</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Error al eliminar las etiquetas:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Gestionar taxonomías</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Buscar etiquetas...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>seleccionados</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>etiquetas seleccionadas? Esta acción no se puede deshacer.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Nombre de etiqueta</value>

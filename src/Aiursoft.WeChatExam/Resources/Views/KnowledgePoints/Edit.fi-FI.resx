@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>Lisää</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Lisää valitut</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>Liittyvät kategoriat</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Muokkaa tietopistettä</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Syötä MTQL-kysely (esim. content:&quot;matematiikka&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Virhe:</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Paina Ctrl (Windows) tai Command (Mac), jotta voit valita useita vaihtoehtoja.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL-kysymysetsijä</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Kysymyksiä ei löytynyt.</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Ylätason tietopiste</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>Tallenna</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Haku</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Hakutulokset näytetään tässä...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Haku...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>Valitse kysymys lisättäväksi...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Valitut kysymykset</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Otsikko</value>

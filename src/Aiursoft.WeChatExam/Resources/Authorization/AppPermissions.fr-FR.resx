@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Permet la suppression définitive des comptes utilisateurs.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Permet de déclencher des tâches en arrière-plan pour optimiser les réponses et explications aux questions à l&apos;aide de l&apos;IA.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Permet de visualiser et de gérer les files d&apos;attente de tâches en arrière-plan ainsi que leur état d&apos;exécution.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Redémarrer cette application</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Déclencher les tâches d&apos;optimisation</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>Utiliser l&apos;extraction par IA</value>

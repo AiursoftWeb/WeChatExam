@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>削除中にエラーが発生しました。</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>選択したタグを削除してもよろしいですか？</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>クリア</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>一括削除の確認</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>選択したものを削除</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>編集 / カテゴリ分け</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>タグの削除に失敗しました:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>分類の管理</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>タグを検索...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>選択済み</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>選択されたタグを削除しますか？この操作は元に戻せません。</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>タグ名</value>

@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>कार्रवाई</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>AI अनुकूलन कार्य</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>बैकग्राउंड जॉब्स</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>कोई काम नहीं</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>नामवाचक व्याख्याओं को अनुकूलित करें</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>प्रतीक्षा कर रहा है</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>रन करने के लिए रखा गया</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>सभी व्याख्याओं को पुनः उत्पन्न करें</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>सफलता</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>ये कार्य एआई का उपयोग प्रश्न के सामग्री में सुधार करने के लिए करते हैं। वे डेटाबेस में सभी संबंधित प्रश्नों को क्रमिक रूप से प्रसंस्कृत करेंगे।</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>परिणाम देखें</value>

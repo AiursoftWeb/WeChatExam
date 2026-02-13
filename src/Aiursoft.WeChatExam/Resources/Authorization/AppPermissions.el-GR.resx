@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Επιτρέπει τη μόνιμη διαγραφή των λογαριασμών χρηστών.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Επιτρέπει την εκκίνηση εργασιών στο παρασκήνιο για τη βελτιστοποίηση των απαντήσεων και εξηγήσεων σε ερωτήσεις με χρήση ΤΝ.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Επιτρέπει την προβολή και διαχείριση των ουρών εργασιών στο παρασκήνιο και την κατάσταση εκτέλεσής τους.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Επανεκκίνηση αυτής της εφαρμογής</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Εκκίνηση Εργασιών Βελτιστοποίησης</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>Χρήση Εξαγωγέα Τεχνητής Νοημοσύνης</value>

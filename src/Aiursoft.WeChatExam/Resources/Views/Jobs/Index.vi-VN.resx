@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>Hành động</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>Các tác vụ tối ưu hóa AI</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Công việc nền</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>Không có công việc nào</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>Tối ưu giải thích danh từ</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Đang chờ</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>Đã xếp hàng lúc</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>Tạo lại Tất cả Giải thích</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Thành công</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>Các tác vụ này sử dụng AI để cải thiện nội dung câu hỏi. Chúng sẽ xử lý lần lượt tất cả các câu hỏi liên quan trong cơ sở dữ liệu.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Xem kết quả</value>

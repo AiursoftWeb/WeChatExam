@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Acțiuni</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>A apărut o eroare în timpul ștergerii.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Ești sigur că vrei să ștergi?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Curăță</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Confirma ștergerea în lot</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Șterge</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Șterge selecționatele</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editare</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Editare / Categorizare</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Nu s-a reușit ștergerea etichetelor:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Gestionează taxonomii</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Caută etichete...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>selectate</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>etichetele selectate? Această acțiune nu poate fi anulată.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Nume etichetă</value>

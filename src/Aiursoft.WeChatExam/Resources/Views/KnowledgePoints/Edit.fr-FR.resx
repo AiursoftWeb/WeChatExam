@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>Ajouter</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Ajouter les sélectionnés</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>Catégories associées</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Modifier le point de connaissance</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Entrez une requête MTQL (par exemple : content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Erreur :</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Maintenez Ctrl (Windows) ou Command (Mac) pour sélectionner plusieurs options.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>Filtre de questions MTQL</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Aucune question trouvée.</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Point de connaissance parent</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Les résultats de recherche s&apos;afficheront ici...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Recherche en cours...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>Sélectionnez une question à ajouter...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Questions sélectionnées</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titre</value>

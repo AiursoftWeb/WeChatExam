@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>إجراءات</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>مهام تحسين الذكاء الاصطناعي</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>مهام الخلفية</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>لا وظائف</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>تحسين شروحات الأسماء</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>معلّق</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>تمت الإضافة إلى الطابور في</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>إعادة إنشاء جميع التفسيرات</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>نجاح</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>تستخدم هذه المهام الذكاء الاصطناعي لتحسين محتوى الأسئلة. وستقوم بمعالجة جميع الأسئلة ذات الصلة في قاعدة البيانات تسلسليًا.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>عرض النتيجة</value>

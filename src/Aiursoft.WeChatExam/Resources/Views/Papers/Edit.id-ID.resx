@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Tambahkan Pertanyaan</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Tambah yang Dipilih</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Tambah Masal melalui MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Batal</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Konten</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Skor Default</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>hapus</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Skor</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cari</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Pilih Pertanyaan</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Memilih kategori akan menyaring pertanyaan yang tersedia.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Urutan Mulai</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Judul</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Jenis</value>
   </data>
 
 </root>

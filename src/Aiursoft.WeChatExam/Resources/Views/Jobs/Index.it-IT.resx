@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>Azioni</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>Compiti di Ottimizzazione con IA</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Lavori in background</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>Nessun lavoro</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>Ottimizza le spiegazioni dei sostantivi</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>In attesa</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>In coda alle</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>Rigenera tutte le spiegazioni</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Stato</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>Questi compiti utilizzano l&apos;IA per migliorare il contenuto delle domande. Elaboreranno tutte le domande rilevanti nel database in sequenza.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Visualizza Risultato</value>

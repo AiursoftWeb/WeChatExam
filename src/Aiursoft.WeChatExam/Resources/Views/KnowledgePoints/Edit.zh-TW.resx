@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>新增</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>新增選取項目</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>關聯類別</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>編輯知識點</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>輸入 MTQL 查詢 (例如：content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>錯誤：</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>按住 Ctrl (Windows) 或 Command (Mac) 以選取多個選項。</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL 題目搜尋器</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>找不到任何問題。</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>上層知識點</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>儲存</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>搜尋結果將出現在這裡...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>搜尋中...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>選擇要新增的問題...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>已選取的問題</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>標題</value>

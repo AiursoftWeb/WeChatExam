@@ -18,7 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Add Selected" xml:space="preserve">
+    <value>添加选中项</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>关联类别</value>
+  </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>关联问题</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
   </data>
   <data name="Content" xml:space="preserve">
@@ -30,8 +39,35 @@
   <data name="Create KnowledgePoint" xml:space="preserve">
     <value>创建知识点</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>输入 MTQL 查询（例如 content:&quot;math&quot;）</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>错误：</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>按住 Ctrl（Windows）或 Command（Mac）可选择多个选项。</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL 题目查找器</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>未找到问题。</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>父级知识点</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>搜索结果将显示在此处...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>搜索中...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>已选择的问题</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>标题</value>

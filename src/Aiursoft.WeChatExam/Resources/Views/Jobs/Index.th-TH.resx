@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>การกระทำ</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>งานปรับแต่งด้วยปัญญาประดิษฐ์</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>งานหลังบ้าน</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>ไม่มีงาน</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>ปรับปรุงคำอธิบายคำนาม</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>รอดำเนินการ</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>เวลาที่เพิ่มเข้าคิว</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>สร้างคำอธิบายใหม่ทั้งหมด</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>สำเร็จ</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>งานเหล่านี้ใช้ปัญญาประดิษฐ์เพื่อปรับปรุงเนื้อหาคำถาม งานจะประมวลผลคำถามที่เกี่ยวข้องทั้งหมดในฐานข้อมูลตามลำดับ</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>ดูผลลัพธ์</value>

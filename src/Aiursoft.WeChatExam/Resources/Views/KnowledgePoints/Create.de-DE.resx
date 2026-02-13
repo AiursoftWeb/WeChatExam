@@ -18,7 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Add Selected" xml:space="preserve">
+    <value>Ausgewählte hinzufügen</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Zugeordnete Kategorien</value>
+  </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Zugehörige Fragen</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>Zurück zur Liste</value>
   </data>
   <data name="Content" xml:space="preserve">
@@ -30,8 +39,35 @@
   <data name="Create KnowledgePoint" xml:space="preserve">
     <value>Wissenspunkt erstellen</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>MTQL-Abfrage eingeben (z. B. content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Fehler:</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Halten Sie die Taste Strg (Windows) oder Cmd (Mac) gedrückt, um mehrere Optionen auszuwählen.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL-Frage-Suchmaschine</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Keine Fragen gefunden.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Übergeordneter Wissenspunkt</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Suchergebnisse erscheinen hier...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Suche...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Ausgewählte Fragen</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>

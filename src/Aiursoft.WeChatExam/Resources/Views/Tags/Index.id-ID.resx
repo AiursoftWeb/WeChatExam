@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Aksi</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Terjadi kesalahan saat menghapus.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Apakah Anda yakin ingin menghapus</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Bersihkan</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Konfirmasi Penghapusan Massal</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Hapus</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Hapus yang Dipilih</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Edit / Kategorikan</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Gagal menghapus tag:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Kelola Taksonomi</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Cari tag...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>yang dipilih</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>tag yang dipilih? Tindakan ini tidak dapat dibatalkan.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Nama Tag</value>

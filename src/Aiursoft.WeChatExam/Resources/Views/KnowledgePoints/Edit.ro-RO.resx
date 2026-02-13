@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>Adaugă</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Adaugă selecționatele</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>Categorii asociate</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Editează Punctul de Cunoștințe</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Introduceți o interogare MTQL (de exemplu: content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Eroare:</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Țineți apăsat Ctrl (Windows) sau Command (Mac) pentru a selecta mai multe opțiuni.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>Găsitor întrebări MTQL</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Nu s-au găsit întrebări.</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Punct de cunoștință părinte</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>Salvează</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Caută</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Rezultatele căutării vor apărea aici...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Se caută...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>Selectați o întrebare de adăugat...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Intrebări selectate</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titlu</value>

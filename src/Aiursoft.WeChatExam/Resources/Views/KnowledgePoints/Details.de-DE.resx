@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Zugeordnete Kategorien</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>Zurück zur Liste</value>
+  </data>
+  <data name="Basic Information" xml:space="preserve">
+    <value>Grundinformationen</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Inhalt</value>
@@ -30,11 +39,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
   </data>
   <data name="KnowledgePoint Details" xml:space="preserve">
     <value>Wissenspunkt-Details</value>
+  </data>
+  <data name="No categories associated" xml:space="preserve">
+    <value>Keine Kategorien zugeordnet</value>
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Übergeordneter Punkt</value>

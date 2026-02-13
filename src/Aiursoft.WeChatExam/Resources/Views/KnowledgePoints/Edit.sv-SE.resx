@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>Lägg till</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Lägg till valda</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>Associerade kategorier</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Redigera kunskapspunkt</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Ange MTQL-fråga (t.ex. content:&quot;matte&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Fel:</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Håll ned Ctrl (Windows) eller Command (Mac) för att välja flera alternativ.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL-frågehittare</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Inga frågor hittades.</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Överordnad kunskapspunkt</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>Spara</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Sökresultat kommer att visas här...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Söker...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>Välj en fråga att lägga till...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Valda frågor</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>

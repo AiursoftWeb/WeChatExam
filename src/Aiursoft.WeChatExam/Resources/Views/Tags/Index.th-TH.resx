@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>การกระทำ</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>เกิดข้อผิดพลาดระหว่างการลบ</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>คุณแน่ใจหรือไม่ว่าต้องการลบ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>ล้าง</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>ยืนยันการลบหลายรายการ</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>ลบแท็กที่เลือก</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>แก้ไข</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>แก้ไข / จัดหมวดหมู่</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>ไม่สามารถลบแท็กได้:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>จัดการหมวดหมู่</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>ค้นหาแท็ก...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>ที่เลือก</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>แท็กที่เลือกไว้หรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>ชื่อแท็ก</value>

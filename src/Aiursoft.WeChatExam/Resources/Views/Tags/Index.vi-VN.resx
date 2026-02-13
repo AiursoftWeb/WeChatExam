@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Hành động</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Đã xảy ra lỗi trong quá trình xóa.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn xóa không?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy bỏ</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Xóa</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Xác nhận Xóa Đa Lượng</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Xóa</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Xóa các mục đã chọn</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Chỉnh sửa</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Chỉnh sửa / Phân loại</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Thất bại khi xóa các thẻ:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Quản lý phân loại</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Tìm kiếm thẻ...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>đã chọn</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>những thẻ đã chọn? Hành động này không thể hoàn tác.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Tên thẻ</value>
