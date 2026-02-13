@@ -17,15 +17,15 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class KnowledgePointsController(WeChatExamDbContext context) : Controller
 {
 
-    // GET: knowledgePoints
+    // GET: knowledge-points
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksOrder = 1,
         LinkText = "Knowledge Points",
-        LinkOrder = 1)]
+        LinkOrder = 2)]
     public async Task<IActionResult> Index()
     {
         var knowledgePoints = await context.KnowledgePoints

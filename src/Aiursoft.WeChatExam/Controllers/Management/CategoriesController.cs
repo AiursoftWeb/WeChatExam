@@ -17,13 +17,13 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class CategoriesController(WeChatExamDbContext context) : Controller
 {
 
-    // GET: categories
+    // GET: Categories
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksOrder = 1,
         LinkText = "Categories",
         LinkOrder = 1)]
     public async Task<IActionResult> Index()

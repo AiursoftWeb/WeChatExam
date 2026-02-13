@@ -21,9 +21,9 @@ public class TagsController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksOrder = 1,
         LinkText = "Tags",
-        LinkOrder = 3)]
+        LinkOrder = 6)]
     public async Task<IActionResult> Index(string? search, int? taxonomyId)
     {
         var tags = await tagService.SearchTagsAsync(search, taxonomyId);

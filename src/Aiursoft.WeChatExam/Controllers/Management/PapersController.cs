@@ -23,9 +23,9 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksOrder = 1,
         LinkText = "Papers",
-        LinkOrder = 3)]
+        LinkOrder = 4)]
     public async Task<IActionResult> Index()
     {
         var papers = await paperService.GetAllPapersAsync();

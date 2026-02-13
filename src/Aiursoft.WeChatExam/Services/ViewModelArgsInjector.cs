@@ -96,6 +96,13 @@ public class ViewModelArgsInjector(
         _ = localizer["Taxonomies Management"];
     
         _ = localizer["Import Questions"];
+        _ = localizer["Export Questions"];
+        _ = localizer["Exam Management"];
+        _ = localizer["Database Management"];
+        _ = localizer["Marketing Management"];
+        _ = localizer["Practice Test"];
+        _ = localizer["Join Official Exam"];
+        _ = localizer["News"];
     
         _ = localizer["Global Settings"];
     }
