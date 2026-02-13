@@ -65,13 +65,13 @@
                             </div>
                             <input type="text" class="form-control option-input" name="Options" value="@Model.Options[i]" placeholder="@Localizer["Option content"]" required>
                             <button type="button" class="btn btn-outline-danger remove-option-btn">
-                                <i class="bi bi-trash"></i>
+                                <i class="align-middle" data-lucide="trash-2"></i>
                             </button>
                         </div>
                     }
                 </div>
                 <button type="button" id="add-option-btn" class="btn btn-sm btn-secondary">
-                    <i class="bi bi-plus"></i> @Localizer["Add Option"]
+                    <i class="align-middle me-1" data-lucide="plus"></i> @Localizer["Add Option"]
                 </button>
                 <span asp-validation-for="Options" class="text-danger"></span>
             </div>
@@ -162,11 +162,14 @@
                     </div>
                     <input type="text" class="form-control option-input" name="Options" value="${value}" placeholder="@Localizer["Option content"]" required>
                     <button type="button" class="btn btn-outline-danger remove-option-btn">
-                        <i class="bi bi-trash"></i>
+                        <i class="align-middle" data-lucide="trash-2"></i>
                     </button>
                 `;
                 optionsList.appendChild(div);
                 bindOptionEvents(div);
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
             };
 
             const bindOptionEvents = (element) => {
