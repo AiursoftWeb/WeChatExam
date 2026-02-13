@@ -1,9 +1,7 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Aiursoft.WeChatExam.MTQL.Services;
 using Aiursoft.WeChatExam.MTQL.Tokens;
 using Aiursoft.WeChatExam.MTQL.Ast;
 using Aiursoft.WeChatExam.Entities;
-using System.Linq.Expressions;
 
 namespace Aiursoft.WeChatExam.MTQL.Tests;
 

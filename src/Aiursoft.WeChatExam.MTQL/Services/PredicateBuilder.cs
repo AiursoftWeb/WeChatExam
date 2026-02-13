@@ -36,7 +36,7 @@ public static class PredicateBuilder
     {
         // Use NormalizedName for consistent case-insensitive lookup
         var normalized = tagName.Trim().ToUpperInvariant();
-        return q => q.QuestionTags.Any(qt => qt.Tag != null && qt.Tag.NormalizedName == normalized);
+        return q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalized);
     }
 
     private static Expression<Func<T, bool>> Not<T>(Expression<Func<T, bool>> expr)
@@ -63,8 +63,8 @@ public static class PredicateBuilder
     {
         var parameter = Expression.Parameter(typeof(T), "q");
 
-        var leftBody = ParameterRebinder.ReplaceParameters(left.Parameters.Select((p, i) => (p, parameter)).ToDictionary(x => x.p, x => x.parameter), left.Body);
-        var rightBody = ParameterRebinder.ReplaceParameters(right.Parameters.Select((p, i) => (p, parameter)).ToDictionary(x => x.p, x => x.parameter), right.Body);
+        var leftBody = ParameterRebinder.ReplaceParameters(left.Parameters.Select(p => (p, parameter)).ToDictionary(x => x.p, x => x.parameter), left.Body);
+        var rightBody = ParameterRebinder.ReplaceParameters(right.Parameters.Select(p => (p, parameter)).ToDictionary(x => x.p, x => x.parameter), right.Body);
 
         var body = merge(leftBody, rightBody);
         return Expression.Lambda<Func<T, bool>>(body, parameter);
@@ -77,7 +77,7 @@ internal class ParameterRebinder : ExpressionVisitor
 
     private ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
     {
-        _map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
+        _map = map;
     }
 
     public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
