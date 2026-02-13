@@ -83,6 +83,7 @@
     </div>
 </div>
 
+@* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script>
         const questions = @Html.Raw(JsonConvert.SerializeObject(Model.Questions.Select(q => new {

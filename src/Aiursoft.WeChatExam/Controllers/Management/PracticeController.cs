@@ -83,7 +83,7 @@ public class PracticeController(
     }
 
     [HttpPost]
-    public async Task<IActionResult> Grade(Guid questionId, string userAnswer)
+    public async Task<IActionResult> Grade(Guid questionId, string? userAnswer)
     {
         var question = await context.Questions.FindAsync(questionId);
         if (question == null) return NotFound();

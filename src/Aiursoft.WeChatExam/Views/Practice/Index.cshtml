@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <form asp-action="Index" method="get">
                         <div class="input-group mb-3">
-                            <input type="text" name="mtql" class="form-control" placeholder="MTQL (e.g. tag: ""Easy"" AND type: ""Choice"")" value="@Model.Mtql">
+                            <input type="text" name="mtql" class="form-control" placeholder="MTQL (e.g. tag: 'Easy' AND type: 'Choice')" value="@Model.Mtql">
                             <button class="btn btn-primary" type="submit">@Localizer["Search"]</button>
                         </div>
                         <div class="text-muted small">
@@ -79,6 +79,7 @@
     </div>
 </div>
 
+@* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script>
         document.getElementById('selectAll').addEventListener('change', function() {
