@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Tilføj spørgsmål</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Tilføj valgte</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Batch-tilføj via MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuller</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Indhold</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Standardpoint</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>slet</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Point</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Søg</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Vælg spørgsmål</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Vælger du en kategori, vil den filtrere de tilgængelige spørgsmål.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Startordre</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 
 </root>

@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>작업</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>삭제 중 오류가 발생했습니다.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>선택한 태그를 삭제하시겠습니까?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>초기화</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>일괄 삭제 확인</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>삭제</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>선택 항목 삭제</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>수정</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>수정 / 분류</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>태그 삭제에 실패했습니다:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>분류 관리</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>태그 검색...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>선택됨</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>선택한 태그를 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>태그 이름</value>

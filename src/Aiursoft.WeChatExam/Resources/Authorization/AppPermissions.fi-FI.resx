@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Sallii käyttäjätilien pysyvän poistamisen.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Sallii taustatehtävien käynnistämisen kysymysten vastausten ja selitysten optimointiin tekoälyä käyttäen.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Sallii taustatehtävien jonon tarkastelun ja hallinnan sekä niiden suoritusvalmiuden tarkkailun.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Käynnistä tämä sovellus uudelleen</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Käynnistä optimointitehtävät</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>Käytä AI-erottajaa</value>

@@ -18,7 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Add Selected" xml:space="preserve">
+    <value>Thêm đã chọn</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Danh mục liên kết</value>
+  </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Câu hỏi liên quan</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>Quay lại Danh sách</value>
   </data>
   <data name="Content" xml:space="preserve">
@@ -30,8 +39,35 @@
   <data name="Create KnowledgePoint" xml:space="preserve">
     <value>Tạo Kiến Thức Điểm</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Nhập truy vấn MTQL (ví dụ: content:&quot;toán học&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Lỗi:</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Nhấn giữ Ctrl (Windows) hoặc Command (Mac) để chọn nhiều tùy chọn.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL Question Finder</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Không tìm thấy câu hỏi nào.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Điểm Kiến Thức Cha</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Kết quả tìm kiếm sẽ xuất hiện ở đây...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Đang tìm kiếm...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Câu hỏi đã chọn</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Tiêu đề</value>

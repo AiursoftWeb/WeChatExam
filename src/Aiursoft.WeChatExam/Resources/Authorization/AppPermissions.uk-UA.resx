@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Дозволяє остаточне видалення облікових записів користувачів.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Дозволяє запускати фонові завдання для оптимізації відповідей на запитання та пояснень за допомогою ШІ.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Дозволяє переглядати та керувати чергами фонових завдань та їхнім статусом виконання.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Перезавантажити цей додаток</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Запустити завдання оптимізації</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>Використовувати AI-екстрактор</value>

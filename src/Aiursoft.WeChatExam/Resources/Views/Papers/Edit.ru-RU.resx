@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Добавить вопрос</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Добавить выбранные</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Пакетное добавление через MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Отмена</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Содержание</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>По умолчанию</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>удалить</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Оценка</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Выберите вопрос</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Выбор категории приведет к фильтрации доступных вопросов.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Начальный порядок</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
   </data>
 
 </root>

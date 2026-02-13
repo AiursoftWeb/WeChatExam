@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Προσθήκη Ερώτησης</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Προσθήκη Επιλεγμένων</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Μαζική Προσθήκη μέσω MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Κατηγορία</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Περιεχόμενο</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Προεπιλεγμένος Βαθμός</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>διαγραφή</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Βαθμός</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Αναζήτηση</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Επιλογή ερώτησης</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Η επιλογή κατηγορίας θα φιλτράρει τα διαθέσιμα ερωτήματα.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Αρχική Σειρά</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Κατάσταση</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Τίτλος</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Τύπος</value>
   </data>
 
 </root>

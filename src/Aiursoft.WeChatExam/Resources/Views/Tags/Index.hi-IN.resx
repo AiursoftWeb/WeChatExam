@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>क्रियाएँ</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>हटाने के दौरान एक त्रुटि उत्पन्न हुई।</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>क्या आप वाकई इन चयनित टैग्स को हटाना चाहते हैं? इस कार्रवाई को वापस नहीं लाया जा सकता है।</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>साफ़ करें</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>बैच हटाने की पुष्टि करें</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>हटाएँ</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>चयनित हटाएं</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>संपादित करें</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>संपादित करें / वर्गीकृत करें</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>टैग्स को हटाने में विफल रहे:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>वर्गीकरण प्रबंधित करें</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>टैग्स खोजें...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>चयनित</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>चयनित टैग? इस क्रिया को वापस नहीं लाया जा सकता है।</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>टैग नाम</value>

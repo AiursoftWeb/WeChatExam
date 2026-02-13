@@ -18,7 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Add Selected" xml:space="preserve">
+    <value>Adaugă selecționate</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Categorii asociate</value>
+  </data>
+  <data name="Associated Questions" xml:space="preserve">
+    <value>Intrebări asociate</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>Înapoi la listă</value>
   </data>
   <data name="Content" xml:space="preserve">
@@ -30,8 +39,35 @@
   <data name="Create KnowledgePoint" xml:space="preserve">
     <value>Creează Punct de Cunoștințe</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>Introduceți o interogare MTQL (de exemplu: content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Eroare:</value>
+  </data>
+  <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
+    <value>Țineți apăsat Ctrl (Windows) sau Command (Mac) pentru a selecta mai multe opțiuni.</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>Găsitor întrebări MTQL</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Nu s-au găsit întrebări.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Punct de cunoștință părinte</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Caută</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>Rezultatele căutării vor apărea aici...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Se caută...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Intrebări selectate</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titlu</value>

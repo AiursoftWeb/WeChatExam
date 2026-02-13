@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>AI最適化タスク</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>バックグラウンドジョブ</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>ジョブがありません</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>名詞の説明を最適化</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>保留中</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>キュー登録日時</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>すべての説明を再生成</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>状態</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>成功</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>これらのタスクはAIを使用して問題の内容を改善します。データベース内の関連するすべての問題を順番に処理します。</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>結果を表示</value>

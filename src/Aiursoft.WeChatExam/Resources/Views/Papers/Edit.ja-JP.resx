@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>質問を追加</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>選択したものを追加</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>バッチ追加（MTQL経由）</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>カテゴリ</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>デフォルトスコア</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>削除</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>点数</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>質問を選択</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>カテゴリを選択すると、利用可能な問題が絞り込まれます。</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>開始順序</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>状態</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>タイトル</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>タイプ</value>
   </data>
 
 </root>

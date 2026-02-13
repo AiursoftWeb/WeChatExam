@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>Tindakan</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>Tugas Optimasi AI</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Pekerjaan Latar Belakang</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>Tidak ada pekerjaan</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>Optimalkan Penjelasan Kata Benda</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Menunggu</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>Ditambahkan Pada</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>Regenerasi Semua Penjelasan</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Berhasil</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>Tugas-tugas ini menggunakan AI untuk meningkatkan konten pertanyaan. Mereka akan memproses semua pertanyaan yang relevan di basis data secara berurutan.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Lihat Hasil</value>

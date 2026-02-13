@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Kullanıcı hesaplarının kalıcı olarak silinmesine izin verir.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Yapay zekâ kullanarak soru yanıtlarını ve açıklamalarını optimize etmek için arka plan işlerinin tetiklenmesine izin verir.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Arka plan görev kuyruklarını görüntüleme ve yönetme ve bunların çalıştırma durumlarını görme izni verir.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Bu Uygulamayı Yeniden Başlat</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Optimizasyon İşlerini Tetikle</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>AI Extractor Kullan</value>

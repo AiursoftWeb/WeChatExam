@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>Eylemler</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>Yapay Zeka Optimizasyon Görevleri</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Arka Plan Görevleri</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>İş yok</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>Sıfat Açıklamalarını Optimize Et</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Beklemede</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>Sıraya Alındı</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>Tüm Açıklamaları Yeniden Üret</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Başarılı</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>Bu görevler, soru içeriğini geliştirmek için Yapay Zeka kullanır. Tüm ilgili soruları veritabanında sırayla işleyecektir.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Sonucu Görüntüle</value>

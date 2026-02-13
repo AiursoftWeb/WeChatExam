@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>新增問題</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>新增所選項目</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>批次新增（透過 MTQL）</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>類別</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>內容</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>預設分數</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>刪除</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>分數</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>選擇題目</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>選擇分類會過濾可用題目。</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>起始序號</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>狀態</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>標題</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>類型</value>
   </data>
 
 </root>

@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+  <data name="Associated Categories" xml:space="preserve">
+    <value>Пов’язані категорії</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>Назад до списку</value>
+  </data>
+  <data name="Basic Information" xml:space="preserve">
+    <value>Основна інформація</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Зміст</value>
@@ -30,11 +39,17 @@
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
   </data>
   <data name="KnowledgePoint Details" xml:space="preserve">
     <value>Деталі точки знань</value>
+  </data>
+  <data name="No categories associated" xml:space="preserve">
+    <value>Немає призначених категорій</value>
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Батьківський</value>

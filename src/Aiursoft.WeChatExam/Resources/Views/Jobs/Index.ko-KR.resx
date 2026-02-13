@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>작업</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>AI 최적화 작업</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>백그라운드 작업</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>작업 없음</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>명사 설명 최적화</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>대기 중</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>대기열에 추가된 시간</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>모든 설명 재생성</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>상태</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>성공</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>이 작업들은 질문 내용을 향상시키기 위해 AI를 사용합니다. 데이터베이스의 모든 관련 질문을 순차적으로 처리할 것입니다.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>결과 보기</value>

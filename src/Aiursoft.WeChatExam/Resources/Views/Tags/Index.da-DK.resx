@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Handling</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Der opstod en fejl under sletning.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Er du sikker på, at du vil slette</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuller</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Nulstil</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Bekræft massefjerning</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Slet</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Slet valgte</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Rediger</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Rediger / Kategoriser</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Kunne ikke slette tags:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Håndtér taxonomier</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Søg efter tags...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>valgte</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>valgte tags? Denne handling kan ikke fortrydes.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Tag-navn</value>

@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back to List" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>การกระทำ</value>
+  </data>
+  <data name="Associated Knowledge Points" xml:space="preserve">
+    <value>จุดความรู้ที่เกี่ยวข้อง</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
     <value>กลับไปยังรายการ</value>
+  </data>
+  <data name="Basic Information" xml:space="preserve">
+    <value>ข้อมูลพื้นฐาน</value>
   </data>
   <data name="Category Details" xml:space="preserve">
     <value>รายละเอียดหมวดหมู่</value>
@@ -30,8 +39,14 @@
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>รายละเอียด</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>แก้ไข</value>
+  </data>
+  <data name="No knowledge points associated" xml:space="preserve">
+    <value>ไม่มีจุดความรู้ที่เกี่ยวข้อง</value>
   </data>
   <data name="Parent" xml:space="preserve">
     <value>หมวดหมู่หลัก</value>

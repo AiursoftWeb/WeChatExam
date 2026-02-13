@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Toiminnot</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Tapahtui virhe poistettaessa.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Oletko varma, että haluat poistaa</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Tyhjennä</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Vahvista massapoisto</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Poista</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Poista valitut</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Muokkaa</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Muokkaa / Luokittele</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Ei voitu poistaa tunnuksia:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Hallitse kategorioita</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Hae tunnisteita...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>valittu</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>valitut tunnisteet? Tätä toimintoa ei voi perua.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Tag Name</value>

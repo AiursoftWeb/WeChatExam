@@ -21,6 +21,9 @@
       <data name="Add" xml:space="preserve">
     <value>เพิ่ม</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>เพิ่มคำถามที่เลือก</value>
+  </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>หมวดหมู่ที่เกี่ยวข้อง</value>
   </data>
@@ -36,8 +39,20 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>แก้ไขจุดความรู้</value>
   </data>
+  <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
+    <value>ป้อนคำค้นหา MTQL (ตัวอย่างเช่น content:&quot;math&quot;)</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>ข้อผิดพลาด:</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>กดปุ่ม Ctrl (Windows) หรือ Command (Mac) เพื่อเลือกตัวเลือกได้หลายตัว</value>
+  </data>
+  <data name="MTQL Question Finder" xml:space="preserve">
+    <value>MTQL Question Finder</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>ไม่พบคำถาม</value>
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>หัวข้อความรู้หลัก</value>
@@ -45,8 +60,20 @@
   <data name="Save" xml:space="preserve">
     <value>บันทึก</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="Search results will appear here..." xml:space="preserve">
+    <value>ผลการค้นหาจะปรากฏที่นี่...</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>กำลังค้นหา...</value>
+  </data>
   <data name="Select a question to add..." xml:space="preserve">
     <value>เลือกคำถามเพื่อเพิ่ม...</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>คำถามที่เลือก</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>หัวข้อ</value>

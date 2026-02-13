@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>เพิ่มคำถาม</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>เพิ่มที่เลือก</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>เพิ่มคำถามแบบหมู่ผ่าน MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>คะแนนเริ่มต้น</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>ลบ</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>คะแนน</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>เลือกคำถาม</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>การเลือกหมวดหมู่จะกรองคำถามที่มีอยู่</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>ลำดับเริ่มต้น</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>หัวข้อ</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>ประเภท</value>
   </data>
 
 </root>

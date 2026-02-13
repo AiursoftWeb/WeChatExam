@@ -129,6 +129,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn tài khoản người dùng.</value>
   </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Cho phép kích hoạt các công việc nền để tối ưu hóa câu trả lời và giải thích câu hỏi bằng AI.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Cho phép xem và quản lý các hàng đợi công việc nền cùng trạng thái thực thi của chúng.</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Khởi Động Lại Ứng Dụng Này</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Khởi động các Nhiệm vụ Tối ưu hóa</value>
   </data>
   <data name="Use AI Extractor" xml:space="preserve">
     <value>Sử dụng Bộ trích xuất AI</value>

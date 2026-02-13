@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>删除过程中发生错误。</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>确定要删除吗？</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>清空</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>确认批量删除</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>删除所选</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>编辑 / 分类</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>删除标签失败：</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>管理分类</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>搜索标签...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>已选</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>已选择的标签？此操作无法撤销。</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>标签名称</value>

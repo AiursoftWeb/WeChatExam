@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Åtgärder</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Ett fel uppstod vid borttagning.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Rensa</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Bekräfta batch-radering</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Ta bort</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Ta bort valda</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Redigera</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Redigera / Kategorisera</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Misslyckades med att ta bort taggar:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Hantera taxonomier</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Sök taggar...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>valda</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>valda taggar? Denna åtgärd kan inte ångras.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Taggnamn</value>

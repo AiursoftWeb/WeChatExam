@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Soru Ekle</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Seçilenleri Ekle</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Toplu Ekle MTQL ile</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>İçerik</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Varsayılan Puan</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>sil</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Puan</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Ara</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Soru Seç</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Kategori seçmek mevcut soruları filtreleyecektir.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Başlangıç Sırası</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Başlık</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tür</value>
   </data>
 
 </root>

@@ -30,11 +30,23 @@
   <data name="Add Question" xml:space="preserve">
     <value>Thêm câu hỏi</value>
   </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Thêm các mục đã chọn</value>
+  </data>
+  <data name="Batch Add via MTQL" xml:space="preserve">
+    <value>Thêm hàng loạt qua MTQL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Hủy bỏ</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Danh mục</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Điểm mặc định</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>xóa</value>
@@ -81,11 +93,17 @@
   <data name="Score" xml:space="preserve">
     <value>Điểm</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Chọn câu hỏi</value>
   </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Chọn một danh mục sẽ lọc các câu hỏi có sẵn.</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Thứ tự bắt đầu</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
@@ -98,6 +116,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Tiêu đề</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
   </data>
 
 </root>

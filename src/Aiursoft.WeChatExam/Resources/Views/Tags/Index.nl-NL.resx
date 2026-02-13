@@ -27,17 +27,35 @@
   <data name="Actions" xml:space="preserve">
     <value>Acties</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Er is een fout opgetreden bij het verwijderen.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Weet u zeker dat u wilt verwijderen?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Wis</value>
   </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Bevestig massaal verwijderen</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Verwijderen</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Verwijder geselecteerd</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bewerken</value>
   </data>
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Bewerken / Categoriseren</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Mislukt om labels te verwijderen:</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Taxonomieën beheren</value>
@@ -62,6 +80,12 @@
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Zoek tags...</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>geselecteerd</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>geselecteerde tags? Deze actie kan niet worden ongedaan gemaakt.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Tagnaam</value>

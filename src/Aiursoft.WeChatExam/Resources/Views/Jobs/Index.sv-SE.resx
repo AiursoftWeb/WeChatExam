@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>Åtgärder</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>AI-optimeringstup</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Bakgrundsjobb</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>Inga jobb</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>Optimera substantivförklaringar</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Väntande</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>köad vid</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>Återgenerera alla förklaringar</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Lyckat</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>Dessa uppgifter använder AI för att förbättra frågeinnehållet. De kommer att bearbeta alla relevanta frågor i databasen sekventiellt.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Visa resultat</value>

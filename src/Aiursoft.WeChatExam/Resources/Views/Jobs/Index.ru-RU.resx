@@ -21,6 +21,9 @@
       <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
+  <data name="AI Optimization Tasks" xml:space="preserve">
+    <value>Задачи оптимизации ИИ</value>
+  </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Фоновые задания</value>
   </data>
@@ -54,6 +57,9 @@
   <data name="No jobs" xml:space="preserve">
     <value>Нет заданий</value>
   </data>
+  <data name="Optimize Noun Explanations" xml:space="preserve">
+    <value>Оптимизировать объяснения существительных</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Ожидание</value>
   </data>
@@ -66,11 +72,17 @@
   <data name="Queued At" xml:space="preserve">
     <value>Очередь в</value>
   </data>
+  <data name="Regenerate All Explanations" xml:space="preserve">
+    <value>Пересоздать все пояснения</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Состояние</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Успех</value>
+  </data>
+  <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
+    <value>Эти задачи используют ИИ для улучшения содержания вопросов. Они будут обрабатывать все соответствующие вопросы в базе данных последовательно.</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Просмотреть результат</value>
