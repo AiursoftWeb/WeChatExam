@@ -399,4 +399,193 @@ public class ManagementTests
         var location = deleteResponse.Headers.Location?.OriginalString;
         Assert.IsTrue(location == "/Articles/Index" || location == "/Articles");
     }
+
+    [TestMethod]
+    public async Task ExamsCrudTest()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Setup prerequisite: Category, Question, Paper, and Publish
+        var categoryTitle = $"Exam-Prereq-Cat-{Guid.NewGuid()}";
+        var catToken = await GetAntiCsrfToken("/Categories/Create");
+        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", categoryTitle },
+            { "__RequestVerificationToken", catToken }
+        }));
+        var catIndexResponse = await _http.GetAsync("/Categories/Index");
+        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
+        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+
+        var qText = $"Exam-Prereq-Q-{Guid.NewGuid()}";
+        var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Content", qText},
+            { "QuestionType", "0" },
+            { "GradingStrategy", "0" },
+            { "CategoryId", categoryId },
+            { "Options[0]", "A" },
+            { "Options[1]", "B" },
+            { "StandardAnswer", "A" },
+            { "Explanation", "A is correct" },
+            { "__RequestVerificationToken", qToken }
+        }));
+        var qIndexResponse = await _http.GetAsync($"/Questions/Index?categoryId={categoryId}");
+        var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
+        var questionId = Regex.Match(qIndexHtml, $@"href=""/Questions/Details/([^""]+)""").Groups[1].Value;
+
+        var paperTitle = $"Exam-Prereq-Paper-{Guid.NewGuid()}";
+        var pToken = await GetAntiCsrfToken("/Papers/Create");
+        var pCreateResponse = await _http.PostAsync("/Papers/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", paperTitle },
+            { "TimeLimit", "60" },
+            { "IsFree", "true" },
+            { "SelectedCategoryId", categoryId },
+            { "__RequestVerificationToken", pToken }
+        }));
+        var paperEditUrl = pCreateResponse.Headers.Location?.OriginalString;
+        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
+
+        var addQToken = await GetAntiCsrfToken(paperEditUrl);
+        await _http.PostAsync($"/Papers/AddQuestion/{paperId}", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "questionId", questionId },
+            { "order", "1" },
+            { "score", "10" },
+            { "__RequestVerificationToken", addQToken }
+        }));
+
+        var publishableToken = await GetAntiCsrfToken(paperEditUrl);
+        await _http.PostAsync($"/Papers/SetStatus/{paperId}", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "status", "1" }, // Publishable
+            { "__RequestVerificationToken", publishableToken }
+        }));
+
+        var publishToken = await GetAntiCsrfToken(paperEditUrl);
+        await _http.PostAsync($"/Papers/Publish/{paperId}", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "__RequestVerificationToken", publishToken }
+        }));
+
+        // 2. Create Exam
+        var examTitle = $"Test-Exam-{Guid.NewGuid()}";
+        var startTime = DateTime.Now.AddDays(1);
+        var endTime = DateTime.Now.AddDays(2);
+        var createExamToken = await GetAntiCsrfToken("/Exams/Create");
+        var createExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", examTitle },
+            { "PaperId", paperId },
+            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "DurationMinutes", "60" },
+            { "__RequestVerificationToken", createExamToken }
+        });
+        var createExamResponse = await _http.PostAsync("/Exams/Create", createExamContent);
+        Assert.AreEqual(HttpStatusCode.Found, createExamResponse.StatusCode);
+        
+        // 3. Read Exam (Index)
+        var examIndexResponse = await _http.GetAsync("/Exams/Index");
+        examIndexResponse.EnsureSuccessStatusCode();
+        var examIndexHtml = await examIndexResponse.Content.ReadAsStringAsync();
+        Assert.Contains(examTitle, examIndexHtml);
+
+        var examIdMatch = Regex.Match(examIndexHtml, @"href=""/Exams/Edit/([^""]+)""");
+        Assert.IsTrue(examIdMatch.Success);
+        var examId = examIdMatch.Groups[1].Value;
+
+        // 4. Edit Exam
+        var newExamTitle = $"Updated-Exam-{Guid.NewGuid()}";
+        var editExamToken = await GetAntiCsrfToken($"/Exams/Edit/{examId}");
+        var editExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Id", examId },
+            { "Title", newExamTitle },
+            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "DurationMinutes", "90" },
+            { "IsPublic", "true" },
+            { "AllowedAttempts", "2" },
+            { "AllowReview", "true" },
+            { "__RequestVerificationToken", editExamToken }
+        });
+        var editExamResponse = await _http.PostAsync($"/Exams/Edit/{examId}", editExamContent);
+        Assert.AreEqual(HttpStatusCode.Found, editExamResponse.StatusCode);
+
+        // Verify Edit
+        var verifyExamResponse = await _http.GetAsync("/Exams/Index");
+        var verifyExamHtml = await verifyExamResponse.Content.ReadAsStringAsync();
+        Assert.Contains(newExamTitle, verifyExamHtml);
+
+        // 5. Delete Exam
+        var deleteExamToken = await GetAntiCsrfToken($"/Exams/Delete/{examId}");
+        var deleteExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Id", examId },
+            { "__RequestVerificationToken", deleteExamToken }
+        });
+        var deleteExamResponse = await _http.PostAsync($"/Exams/Delete/{examId}", deleteExamContent);
+        Assert.AreEqual(HttpStatusCode.Found, deleteExamResponse.StatusCode);
+        
+        // Verify Deletion
+        var finalExamResponse = await _http.GetAsync("/Exams/Index");
+        var finalExamHtml = await finalExamResponse.Content.ReadAsStringAsync();
+        Assert.DoesNotContain(newExamTitle, finalExamHtml);
+    }
+
+    [TestMethod]
+    public async Task CreateExamWithoutSnapshotShouldFailTest()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Setup prerequisite: Category and Paper (but NO publish)
+        var categoryTitle = $"Fail-Exam-Cat-{Guid.NewGuid()}";
+        var catToken = await GetAntiCsrfToken("/Categories/Create");
+        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", categoryTitle },
+            { "__RequestVerificationToken", catToken }
+        }));
+        var catIndexResponse = await _http.GetAsync("/Categories/Index");
+        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
+        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+
+        var paperTitle = $"Unpublished-Paper-{Guid.NewGuid()}";
+        var pToken = await GetAntiCsrfToken("/Papers/Create");
+        var pCreateResponse = await _http.PostAsync("/Papers/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", paperTitle },
+            { "TimeLimit", "60" },
+            { "IsFree", "true" },
+            { "SelectedCategoryId", categoryId },
+            { "__RequestVerificationToken", pToken }
+        }));
+        var paperEditUrl = pCreateResponse.Headers.Location?.OriginalString;
+        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
+
+        // 2. Try to create Exam
+        var examTitle = $"Fail-Exam-{Guid.NewGuid()}";
+        var startTime = DateTime.Now.AddDays(1);
+        var endTime = DateTime.Now.AddDays(2);
+        var createExamToken = await GetAntiCsrfToken("/Exams/Create");
+        var createExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", examTitle },
+            { "PaperId", paperId },
+            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "DurationMinutes", "60" },
+            { "__RequestVerificationToken", createExamToken }
+        });
+        
+        var createExamResponse = await _http.PostAsync("/Exams/Create", createExamContent);
+        
+        // It should NOT redirect (Found), but stay on the page (OK) with an error message.
+        Assert.AreEqual(HttpStatusCode.OK, createExamResponse.StatusCode);
+        var resultHtml = await createExamResponse.Content.ReadAsStringAsync();
+        Assert.Contains("The selected paper has no published snapshots", resultHtml);
+    }
 }
