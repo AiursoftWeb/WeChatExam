@@ -13,9 +13,20 @@
     </div>
 </div>
 
-<div class="card mb-4">
+<div class="card position-relative mb-4">
+    <!-- Batch Action Toolbar -->
+    <div id="batchToolbar" class="position-absolute top-0 start-0 w-100 h-100 bg-light d-none flex-row align-items-center px-3 rounded" style="z-index: 10; opacity: 0.95;">
+        <span class="fw-bold me-3 text-primary"><span id="selectedCount">0</span> @Localizer["selected"]</span>
+        <button class="btn btn-danger btn-sm" onclick="confirmBatchDelete()">
+            <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Delete Selected"]
+        </button>
+        <button class="btn btn-link btn-sm text-secondary ms-auto" onclick="clearSelection()">
+            @Localizer["Cancel"]
+        </button>
+    </div>
+
     <div class="card-body">
-        <form method="get" asp-action="Index" class="row g-3 align-items-center">
+        <form id="filterForm" method="get" asp-action="Index" class="row g-3 align-items-center">
             <div class="col-auto flex-grow-1">
                 <div class="input-group">
                     <span class="input-group-text"><i data-lucide="search"></i></span>
@@ -70,7 +81,10 @@
                 @foreach (var tag in uncategorizedTags)
                 {
                     <div class="btn-group shadow-sm">
-                        <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-outline-danger btn-sm">
+                        <div class="input-group-text bg-transparent border-danger border-end-0 py-0 px-2">
+                            <input type="checkbox" class="form-check-input row-selector" value="@tag.Id" onchange="updateSelection(this)" />
+                        </div>
+                        <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-outline-danger btn-sm border-start-0">
                             @tag.DisplayName
                             <span class="badge bg-danger ms-1">@Model.TagUsageCounts[tag.Id]</span>
                         </a>
@@ -122,7 +136,10 @@
                             @foreach (var tag in tagsInThisTaxonomy)
                             {
                                 <div class="btn-group">
-                                    <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-light border btn-sm">
+                                    <div class="input-group-text bg-transparent border border-end-0 py-0 px-2">
+                                        <input type="checkbox" class="form-check-input row-selector" value="@tag.Id" onchange="updateSelection(this)" />
+                                    </div>
+                                    <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-light border btn-sm border-start-0">
                                         @tag.DisplayName
                                         <span class="badge bg-secondary ms-1">@Model.TagUsageCounts[tag.Id]</span>
                                     </a>
@@ -161,4 +178,125 @@
             @Localizer["No tags found matching your criteria."]
         </div>
     </div>
+}
+
+<!-- Batch Delete Confirmation Modal -->
+<div class="modal fade" id="batchDeleteModal" tabindex="-1" aria-labelledby="batchDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="batchDeleteModalLabel">@Localizer["Confirm Batch Delete"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Localizer["Are you sure you want to delete"] <span id="deleteCount" class="fw-bold">0</span> @Localizer["selected tags? This action cannot be undone."]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                <button type="button" class="btn btn-danger" onclick="executeBatchDelete()">@Localizer["Delete"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.AntiForgeryToken()
+
+@section scripts {
+    <script>
+        const STORAGE_KEY = 'selectedTagsIds';
+
+        function getSelectedIds() {
+            const stored = sessionStorage.getItem(STORAGE_KEY);
+            return stored ? new Set(JSON.parse(stored)) : new Set();
+        }
+
+        function saveSelectedIds(ids) {
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(ids)));
+            updateToolbar();
+        }
+
+        function updateToolbar() {
+            const ids = getSelectedIds();
+            const toolbar = document.getElementById('batchToolbar');
+            const countSpan = document.getElementById('selectedCount');
+
+            if (ids.size > 0) {
+                toolbar.classList.remove('d-none');
+                toolbar.classList.add('d-flex');
+            } else {
+                toolbar.classList.add('d-none');
+                toolbar.classList.remove('d-flex');
+            }
+            countSpan.textContent = ids.size;
+        }
+
+        function clearSelection() {
+            sessionStorage.removeItem(STORAGE_KEY);
+            document.querySelectorAll('.row-selector').forEach(cb => cb.checked = false);
+            updateToolbar();
+        }
+
+        function updateSelection(checkbox) {
+            const ids = getSelectedIds();
+            if (checkbox.checked) {
+                ids.add(checkbox.value);
+            } else {
+                ids.delete(checkbox.value);
+            }
+            saveSelectedIds(ids);
+        }
+
+        function confirmBatchDelete() {
+            const count = getSelectedIds().size;
+            document.getElementById('deleteCount').textContent = count;
+            new bootstrap.Modal(document.getElementById('batchDeleteModal')).show();
+        }
+
+        async function executeBatchDelete() {
+            const ids = Array.from(getSelectedIds()).map(Number);
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            try {
+                const response = await fetch('@Url.Action("BatchDelete")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({ tagIds: ids })
+                });
+
+                if (response.ok) {
+                    clearSelection();
+                    location.reload();
+                } else {
+                    const error = await response.text();
+                    alert('@Localizer["Failed to delete tags:"] ' + error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('@Localizer["An error occurred during deletion."]');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const ids = getSelectedIds();
+            document.querySelectorAll('.row-selector').forEach(cb => {
+                if (ids.has(cb.value)) {
+                    cb.checked = true;
+                }
+            });
+            updateToolbar();
+            
+            // Clear selection on filter change
+            const filterForm = document.getElementById('filterForm');
+            if (filterForm) {
+                filterForm.querySelectorAll('select, input').forEach(input => {
+                    input.addEventListener('change', () => {
+                        sessionStorage.removeItem(STORAGE_KEY);
+                    });
+                });
+            }
+        });
+    </script>
 }
