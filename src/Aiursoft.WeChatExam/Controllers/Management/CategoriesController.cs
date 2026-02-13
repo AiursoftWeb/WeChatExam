@@ -46,7 +46,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         var categories = await context.Categories.ToListAsync();
         var model = new CreateViewModel
         {
-            AvailableParents = categories.Where(c => c.ParentId == null).ToList()
+            AvailableParents = categories
         };
         return this.StackView(model);
     }
@@ -59,7 +59,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
     {
         if (!ModelState.IsValid)
         {
-            model.AvailableParents = await context.Categories.Where(c => c.ParentId == null).ToListAsync();
+            model.AvailableParents = await context.Categories.ToListAsync();
             return this.StackView(model);
         }
 
@@ -72,7 +72,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
             if (!parentExists)
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Parent category not found");
-                model.AvailableParents = await context.Categories.Where(c => c.ParentId == null).ToListAsync();
+                model.AvailableParents = await context.Categories.ToListAsync();
                 return this.StackView(model);
             }
         }
@@ -117,7 +117,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         if (category == null) return NotFound();
 
         var availableParents = await context.Categories
-            .Where(c => c.Id != id && c.ParentId == null)
+            .Where(c => c.Id != id)
             .ToListAsync();
 
         var model = new EditViewModel
@@ -142,7 +142,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         if (!ModelState.IsValid)
         {
             model.AvailableParents = await context.Categories
-                .Where(c => c.Id != id && c.ParentId == null)
+                .Where(c => c.Id != id)
                 .ToListAsync();
             return this.StackView(model);
         }
@@ -157,7 +157,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Category cannot be its own parent");
                 model.AvailableParents = await context.Categories
-                    .Where(c => c.Id != id && c.ParentId == null)
+                    .Where(c => c.Id != id)
                     .ToListAsync();
                 return this.StackView(model);
             }
@@ -169,7 +169,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Parent category not found");
                 model.AvailableParents = await context.Categories
-                    .Where(c => c.Id != id && c.ParentId == null)
+                    .Where(c => c.Id != id)
                     .ToListAsync();
                 return this.StackView(model);
             }
@@ -179,7 +179,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Cannot create circular reference");
                 model.AvailableParents = await context.Categories
-                    .Where(c => c.Id != id && c.ParentId == null)
+                    .Where(c => c.Id != id)
                     .ToListAsync();
                 return this.StackView(model);
             }
