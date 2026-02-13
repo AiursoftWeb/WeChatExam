@@ -36,10 +36,7 @@ public class ExamsController(
     [Authorize(Policy = AppPermissionNames.CanAddExams)]
     public async Task<IActionResult> Create()
     {
-        var papers = await paperService.GetAllPapersAsync();
-        // Only allow publishable or frozen papers
-        papers = papers.Where(p => p.Status != PaperStatus.Draft).ToList();
-
+        var papers = await paperService.GetPapersAvailableForExamAsync();
         return this.StackView(new CreateViewModel { AvailablePapers = papers });
     }
 
@@ -51,8 +48,7 @@ public class ExamsController(
     {
         if (!ModelState.IsValid)
         {
-            model.AvailablePapers = (await paperService.GetAllPapersAsync())
-                .Where(p => p.Status != PaperStatus.Draft).ToList();
+            model.AvailablePapers = await paperService.GetPapersAvailableForExamAsync();
             return this.StackView(model);
         }
 
@@ -71,14 +67,13 @@ public class ExamsController(
             startUtc = startUtc.AddSeconds(-startUtc.Second).AddMilliseconds(-startUtc.Millisecond);
             endUtc = endUtc.AddSeconds(-endUtc.Second).AddMilliseconds(-endUtc.Millisecond);
             
-            await examService.CreateExamAsync(model.Title, model.PaperId, startUtc, endUtc, model.DurationMinutes);
+            await examService.CreateExamAsync(model.Title, model.PaperId!.Value, startUtc, endUtc, model.DurationMinutes);
             return RedirectToAction(nameof(Index));
         }
         catch (InvalidOperationException ex)
         {
             ModelState.AddModelError("", ex.Message);
-             model.AvailablePapers = (await paperService.GetAllPapersAsync())
-                .Where(p => p.Status != PaperStatus.Draft).ToList();
+            model.AvailablePapers = await paperService.GetPapersAvailableForExamAsync();
             return this.StackView(model);
         }
     }

@@ -18,7 +18,7 @@ public class CreateViewModel : UiStackLayoutViewModel
 
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Paper")]
-    public Guid PaperId { get; set; }
+    public Guid? PaperId { get; set; }
 
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Start Time")]
