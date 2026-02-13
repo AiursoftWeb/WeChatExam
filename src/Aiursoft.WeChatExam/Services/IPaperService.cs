@@ -13,6 +13,7 @@ public interface IPaperService
 
     // Question management
     Task AddQuestionToPaperAsync(Guid paperId, Guid questionId, int order, int score);
+    Task AddQuestionsToPaperAsync(Guid paperId, IEnumerable<Guid> questionIds, int startingOrder, int score);
     Task RemoveQuestionFromPaperAsync(Guid paperId, Guid questionId);
     Task UpdateQuestionInPaperAsync(Guid paperId, Guid questionId, int order, int score);
     Task<List<PaperQuestion>> GetQuestionsForPaperAsync(Guid paperId);

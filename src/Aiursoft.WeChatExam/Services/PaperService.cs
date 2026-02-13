@@ -100,6 +100,36 @@ public class PaperService : IPaperService
         await _dbContext.SaveChangesAsync();
     }
 
+    public async Task AddQuestionsToPaperAsync(Guid paperId, IEnumerable<Guid> questionIds, int startingOrder, int score)
+    {
+        var paper = await _dbContext.Papers.FindAsync(paperId);
+        if (paper == null) throw new InvalidOperationException("Paper not found");
+        if (paper.Status == PaperStatus.Frozen) throw new InvalidOperationException("Cannot modify frozen paper");
+
+        var currentQuestions = await _dbContext.PaperQuestions
+            .Where(pq => pq.PaperId == paperId)
+            .Select(pq => pq.QuestionId)
+            .ToListAsync();
+
+        int order = startingOrder;
+        foreach (var questionId in questionIds)
+        {
+            if (currentQuestions.Contains(questionId)) continue;
+
+            var paperQuestion = new PaperQuestion
+            {
+                PaperId = paperId,
+                QuestionId = questionId,
+                Order = order++,
+                Score = score
+            };
+
+            _dbContext.PaperQuestions.Add(paperQuestion);
+        }
+
+        await _dbContext.SaveChangesAsync();
+    }
+
     public async Task RemoveQuestionFromPaperAsync(Guid paperId, Guid questionId)
     {
         var paper = await _dbContext.Papers.FindAsync(paperId);

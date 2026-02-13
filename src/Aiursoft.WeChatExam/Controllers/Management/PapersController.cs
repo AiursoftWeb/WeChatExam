@@ -220,6 +220,70 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         return RedirectToAction(nameof(Edit), new { id });
     }
 
+    // GET: papers/{id}/search-questions
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
+    public async Task<IActionResult> SearchQuestions(Guid id, string mtql)
+    {
+        var query = context.Questions.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(mtql))
+        {
+            try
+            {
+                var tokens = MTQL.Services.Tokenizer.Tokenize(mtql);
+                var rpn = MTQL.Services.Parser.ToRpn(tokens);
+                var ast = MTQL.Services.AstBuilder.Build(rpn);
+                var predicate = MTQL.Services.PredicateBuilder.Build(ast);
+                query = query.Where(predicate);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = $"Invalid MTQL: {ex.Message}" });
+            }
+        }
+
+        var paperQuestions = await paperService.GetQuestionsForPaperAsync(id);
+        var existingQuestionIds = paperQuestions.Select(pq => pq.QuestionId).ToList();
+
+        var questions = await query
+            .Where(q => !existingQuestionIds.Contains(q.Id))
+            .OrderByDescending(q => q.CreationTime)
+            .Take(100)
+            .Select(q => new
+            {
+                q.Id,
+                Content = q.Content.Length > 100 ? q.Content.Substring(0, 100) + "..." : q.Content,
+                q.QuestionType
+            })
+            .ToListAsync();
+
+        return Json(questions);
+    }
+
+    // POST: papers/{id}/batch-add-questions
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> BatchAddQuestions(Guid id, [FromForm] Guid[] questionIds, int startingOrder, int defaultScore)
+    {
+        if (questionIds == null || !questionIds.Any())
+        {
+            TempData["Error"] = "No questions selected.";
+            return RedirectToAction(nameof(Edit), new { id });
+        }
+
+        try
+        {
+            await paperService.AddQuestionsToPaperAsync(id, questionIds, startingOrder, defaultScore);
+            return RedirectToAction(nameof(Edit), new { id });
+        }
+        catch (InvalidOperationException ex)
+        {
+            TempData["Error"] = ex.Message;
+            return RedirectToAction(nameof(Edit), new { id });
+        }
+    }
+
     // POST: papers/{id}/remove-question
     [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
