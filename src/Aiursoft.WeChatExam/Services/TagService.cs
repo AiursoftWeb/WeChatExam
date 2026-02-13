@@ -14,7 +14,17 @@ public class TagService : ITagService
 
     public async Task<Tag> AddTagAsync(string displayName)
     {
+        if (displayName.Length > 255)
+        {
+            displayName = displayName.Substring(0, 255);
+        }
+
         var normalizedName = displayName.Trim().ToUpperInvariant();
+        if (normalizedName.Length > 255)
+        {
+            normalizedName = normalizedName.Substring(0, 255);
+        }
+
         var existingTag = await _dbContext.Tags
             .Include(t => t.Taxonomy)
             .FirstOrDefaultAsync(t => t.NormalizedName == normalizedName);
@@ -143,6 +153,14 @@ public class TagService : ITagService
 
     public async Task UpdateTagAsync(Tag tag)
     {
+        if (tag.DisplayName.Length > 255)
+        {
+            tag.DisplayName = tag.DisplayName.Substring(0, 255);
+        }
+        if (tag.NormalizedName.Length > 255)
+        {
+            tag.NormalizedName = tag.NormalizedName.Substring(0, 255);
+        }
         _dbContext.Tags.Update(tag);
         await _dbContext.SaveChangesAsync();
     }

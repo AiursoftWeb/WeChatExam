@@ -9,11 +9,11 @@ public class Tag
     public int Id { get; init; }
 
     [Required]
-    [MaxLength(50)]
+    [MaxLength(255)]
     public required string DisplayName { get; set; }
 
     [Required]
-    [MaxLength(50)]
+    [MaxLength(255)]
     public required string NormalizedName { get; set; }
 
     public int? TaxonomyId { get; set; }
