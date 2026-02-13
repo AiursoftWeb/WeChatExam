@@ -28,7 +28,10 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
         LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
-        var knowledgePoints = await context.KnowledgePoints.ToListAsync();
+        var knowledgePoints = await context.KnowledgePoints
+            .Include(k => k.CategoryKnowledgePoints)
+            .ThenInclude(ck => ck.Category)
+            .ToListAsync();
         // Build a hierarchical structure
         var rootKnowledgePoints = knowledgePoints.Where(c => c.ParentId == null).ToList();
 
@@ -98,13 +101,18 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
 
         var knowledgePoint = await context.KnowledgePoints
             .Include(c => c.Parent)
+            .Include(c => c.CategoryKnowledgePoints)
+            .ThenInclude(ck => ck.Category)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (knowledgePoint == null) return NotFound();
 
         return this.StackView(new DetailsViewModel
         {
-            KnowledgePoint = knowledgePoint
+            KnowledgePoint = knowledgePoint,
+            AssociatedCategories = knowledgePoint.CategoryKnowledgePoints
+                .Select(ck => ck.Category!)
+                .ToList()
         });
     }
 
