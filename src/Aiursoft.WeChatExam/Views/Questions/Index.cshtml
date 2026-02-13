@@ -108,6 +108,7 @@
                             @if(Model.SortBy == "Content") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
                         </a>
                     </th>
+                    <th style="width: 180px;">@Localizer["Tags"]</th>
                     <th style="width: 150px;">
                         <a href="javascript:void(0)" onclick="sort('QuestionType')" class="text-decoration-none text-dark d-flex align-items-center">
                             @Localizer["Type"]
@@ -134,6 +135,14 @@
                         <td class="text-truncate" style="max-width: 400px;" title="@question.Content">
                             @question.Content
                         </td>
+                        <td>
+                            @foreach (var qt in question.QuestionTags.Take(5))
+                            {
+                                <a asp-action="Index" asp-route-tag="@qt.Tag.DisplayName" class="badge bg-info text-decoration-none me-1" style="font-size: 0.7rem;">
+                                    @qt.Tag.DisplayName
+                                </a>
+                            }
+                        </td>
                         <td><span class="badge bg-secondary">@question.QuestionType</span></td>
                         <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
@@ -155,7 +164,7 @@
                 @if (!Model.Questions.Any())
                 {
                     <tr>
-                        <td colspan="6" class="text-center text-muted py-5">
+                        <td colspan="7" class="text-center text-muted py-5">
                             <div class="mb-2"><i class="align-middle" data-lucide="inbox" style="width: 48px; height: 48px;"></i></div>
                             @Localizer["No questions found matching your criteria"]
                         </td>
