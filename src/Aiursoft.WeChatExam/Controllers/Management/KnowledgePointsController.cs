@@ -49,7 +49,9 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
         var knowledgePoints = await context.KnowledgePoints.ToListAsync();
         var model = new CreateViewModel
         {
-            AvailableParents = knowledgePoints
+            AvailableParents = knowledgePoints,
+            AvailableCategories = await context.Categories.ToListAsync(),
+            AvailableQuestions = new List<Question>()
         };
         return this.StackView(model);
     }
@@ -63,6 +65,10 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
         if (!ModelState.IsValid)
         {
             model.AvailableParents = await context.KnowledgePoints.Where(c => c.ParentId == null).ToListAsync();
+            model.AvailableCategories = await context.Categories.ToListAsync();
+            model.AvailableQuestions = await context.Questions
+                .Where(q => model.SelectedQuestionIds.Contains(q.Id))
+                .ToListAsync();
             return this.StackView(model);
         }
 
@@ -76,6 +82,10 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
             {
                 ModelState.AddModelError(nameof(model.ParentId), "Parent knowledgePoint not found");
                 model.AvailableParents = await context.KnowledgePoints.Where(c => c.ParentId == null).ToListAsync();
+                model.AvailableCategories = await context.Categories.ToListAsync();
+                model.AvailableQuestions = await context.Questions
+                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
+                    .ToListAsync();
                 return this.StackView(model);
             }
         }
@@ -89,6 +99,29 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
         };
 
         context.KnowledgePoints.Add(knowledgePoint);
+
+        // Add Category Associations
+        foreach (var categoryId in model.SelectedCategoryIds)
+        {
+            var newAssociation = new CategoryKnowledgePoint
+            {
+                KnowledgePointId = knowledgePoint.Id,
+                CategoryId = categoryId
+            };
+            context.Add(newAssociation);
+        }
+
+        // Add Question Associations
+        foreach (var questionId in model.SelectedQuestionIds)
+        {
+            var newAssociation = new KnowledgePointQuestion
+            {
+                KnowledgePointId = knowledgePoint.Id,
+                QuestionId = questionId
+            };
+            context.Add(newAssociation);
+        }
+
         await context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Details), new { id = knowledgePoint.Id });
