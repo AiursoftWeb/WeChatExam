@@ -157,6 +157,39 @@ public class QuestionsController(
         });
     }
 
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Search(string mtql)
+    {
+        var query = context.Questions.AsQueryable();
+        if (!string.IsNullOrWhiteSpace(mtql))
+        {
+            try
+            {
+                var tokens = MTQL.Services.Tokenizer.Tokenize(mtql);
+                var rpn = MTQL.Services.Parser.ToRpn(tokens);
+                var ast = MTQL.Services.AstBuilder.Build(rpn);
+                var predicate = MTQL.Services.PredicateBuilder.Build(ast);
+                query = query.Where(predicate);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Invalid MTQL: {ex.Message}");
+            }
+        }
+
+        var questions = await query
+            .OrderByDescending(q => q.CreationTime)
+            .Take(50)
+            .Select(q => new
+            {
+                q.Id,
+                Content = q.Content.Length > 100 ? q.Content.Substring(0, 100) + "..." : q.Content
+            })
+            .ToListAsync();
+
+        return Json(questions);
+    }
+
     // GET: questions/create
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
     public async Task<IActionResult> Create(Guid? categoryId)
