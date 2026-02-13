@@ -111,6 +111,9 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Tillåter ändring av användardetaljer som e-post och roller, och kan också återställa användarlösenord.</value>
   </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Tillåter ändring av globala systeminställningar.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Tillåter läsning av prov, oavsett ägande.</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Ger tillstånd att starta om applikationsinstansen. Kan orsaka tillgänglighetsavbrott men alla inställningar och cacheminnen kommer att laddas om.</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>Hantera globala inställningar</value>
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Hantera taggar</value>

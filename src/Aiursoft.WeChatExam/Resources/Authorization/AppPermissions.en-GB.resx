@@ -111,6 +111,9 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Allows modification of user details such as email and roles, and can also reset user passwords.</value>
   </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Allows modifying global system settings.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Allows reading of exams, regardless of ownership.</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Grants permission to restart the application instance. May cause service interruptions, but all settings and cache will be reloaded.</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>Manage Global Settings</value>
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Manage Tags</value>

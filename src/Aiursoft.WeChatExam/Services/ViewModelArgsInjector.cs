@@ -96,6 +96,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Taxonomies Management"];
     
         _ = localizer["Import Questions"];
+    
+        _ = localizer["Global Settings"];
     }
 
     public void InjectSimple(
