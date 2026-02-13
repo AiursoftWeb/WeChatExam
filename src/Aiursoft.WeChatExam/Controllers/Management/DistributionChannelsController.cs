@@ -14,11 +14,11 @@ public class DistributionChannelsController(IDistributionChannelService distribu
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Marketing",
-        CascadedLinksIcon = "share-2",
-        CascadedLinksOrder = 9998,
+        CascadedLinksGroupName = "Marketing Management",
+        CascadedLinksIcon = "megaphone",
+        CascadedLinksOrder = 4,
         LinkText = "Distribution Channels",
-        LinkOrder = 1)]
+        LinkOrder = 2)]
     [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
     public async Task<IActionResult> Index(string? search)
     {

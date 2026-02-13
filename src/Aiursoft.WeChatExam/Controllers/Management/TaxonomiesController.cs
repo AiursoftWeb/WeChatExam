@@ -14,16 +14,16 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [Authorize(Policy = AppPermissionNames.CanManageTags)] // Assuming managing taxonomies requires same permission as tags
 public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService taxonomyService) : Controller
 {
-    [RenderInNavBar(
-        NavGroupName = "Administration",
-        NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
-        LinkText = "Taxonomies",
-        LinkOrder = 4)]
-    public async Task<IActionResult> Index()
-    {
+        // GET: Taxonomies
+        [RenderInNavBar(
+            NavGroupName = "Administration",
+            NavGroupOrder = 9999,
+            CascadedLinksGroupName = "Content Management",
+            CascadedLinksIcon = "folder-tree",
+            CascadedLinksOrder = 1,
+            LinkText = "Taxonomies",
+            LinkOrder = 7)]
+        public async Task<IActionResult> Index()    {
         var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
         var tagCounts = new Dictionary<int, int>();
 

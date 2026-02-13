@@ -22,10 +22,9 @@ public class ExamsController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksOrder = 1,
         LinkText = "Exams",
-        LinkOrder = 4)]
-        [Authorize(Policy = AppPermissionNames.CanReadExams)]
+        LinkOrder = 5)]
     public async Task<IActionResult> Index()
     {
         var exams = await examService.GetAllExamsAsync();

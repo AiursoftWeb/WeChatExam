@@ -1,4 +1,5 @@
 using Aiursoft.UiStack.Navigation;
+using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.QuestionImportViewModels;
@@ -30,15 +31,28 @@ public class QuestionImportController : Controller
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksGroupName = "Database Management",
+        CascadedLinksIcon = "database",
+        CascadedLinksOrder = 3,
         LinkText = "Import Questions",
-        LinkOrder = 4)]
+        LinkOrder = 1)]
     public IActionResult Index(QuestionImportIndexViewModel? model)
     {
         model ??= new QuestionImportIndexViewModel();
         return this.StackView(model);
+    }
+
+    [RenderInNavBar(
+        NavGroupName = "Administration",
+        NavGroupOrder = 9999,
+        CascadedLinksGroupName = "Database Management",
+        CascadedLinksIcon = "database",
+        CascadedLinksOrder = 3,
+        LinkText = "Export Questions",
+        LinkOrder = 2)]
+    public IActionResult Export()
+    {
+        return this.StackView(new UiStackLayoutViewModel { PageTitle = "Export Questions" });
     }
 
     /// <summary>

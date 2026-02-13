@@ -1,0 +1,314 @@
+@using Newtonsoft.Json
+@model Aiursoft.WeChatExam.Models.PracticeViewModels.PracticeViewModel
+@{
+    ViewData["Title"] = "Practice Session";
+}
+
+<div class="container-fluid p-0">
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h1 class="h3">@ViewData["Title"]</h1>
+        </div>
+        <div class="col-md-4 text-end">
+            <span id="scoreDisplay" class="badge bg-primary fs-5">Score: 0</span>
+        </div>
+    </div>
+
+    <div class="progress mb-4" style="height: 25px;">
+        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-xl-8 mx-auto">
+            <div id="questionContainer" class="card shadow-sm">
+                <div class="card-header d-flex justify-content-between">
+                    <h5 id="questionTitle" class="card-title mb-0">Question 1</h5>
+                    <span id="questionType" class="badge bg-info">Type</span>
+                </div>
+                <div class="card-body">
+                    <div id="questionContent" class="fs-4 mb-4" style="white-space: pre-wrap;"></div>
+
+                    <div id="optionsContainer" class="list-group mb-4">
+                        <!-- Options will be injected here -->
+                    </div>
+
+                    <div id="textAnswerContainer" class="mb-4 d-none">
+                        <textarea id="userAnswerText" class="form-control" rows="4" placeholder="Type your answer here..."></textarea>
+                    </div>
+
+                    <div id="feedbackContainer" class="alert d-none mb-4">
+                        <div id="feedbackIcon" class="mb-2"></div>
+                        <div id="feedbackMessage" class="fw-bold"></div>
+                        <div id="standardAnswer" class="mt-2 small"></div>
+                        <div id="explanationContainer" class="mt-3 pt-3 border-top d-none">
+                            <h6>Analysis:</h6>
+                            <div id="explanationText" class="small"></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button id="showExplanationBtn" class="btn btn-outline-info d-none">
+                            <i data-lucide="help-circle"></i> View Analysis
+                        </button>
+                        <div>
+                            <button id="submitBtn" class="btn btn-primary">
+                                Submit Answer
+                            </button>
+                            <button id="nextBtn" class="btn btn-success d-none">
+                                Next Question <i data-lucide="arrow-right"></i>
+                            </button>
+                            <button id="finishBtn" class="btn btn-primary d-none">
+                                Finish and See Results
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultContainer" class="card shadow-sm d-none">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Practice Results"]</h5>
+                </div>
+                <div class="card-body text-center p-5">
+                    <div class="display-1 text-primary mb-4" id="finalScore">0</div>
+                    <p class="fs-4">@Localizer["You have completed the practice session!"]</p>
+                    <p class="text-muted">@Localizer["Total Questions:"] <span id="totalQuestions">0</span></p>
+                    <p class="text-muted">@Localizer["Correct Answers:"] <span id="correctCount">0</span></p>
+                    <div class="mt-5">
+                        <a asp-action="Index" class="btn btn-primary btn-lg">@Localizer["Back to Practice Home"]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script>
+        const questions = @Html.Raw(JsonConvert.SerializeObject(Model.Questions.Select(q => new {
+            q.Id,
+            q.Content,
+            QuestionType = Localizer[q.QuestionType.ToString()].Value,
+            q.Metadata,
+            // Don't send standard answer or explanation to client initially to prevent cheating
+        })));
+
+        let currentIndex = 0;
+        let totalScore = 0;
+        let correctCount = 0;
+        let answered = false;
+
+        const labels = {
+            correct: "@Localizer["Correct!"]",
+            incorrect: "@Localizer["Incorrect"]",
+            analysis: "@Localizer["Analysis:"]",
+            standardAnswer: "@Localizer["Standard Answer:"]",
+            noAnalysis: "@Localizer["No analysis available."]",
+            pleaseSelect: "@Localizer["Please select an option."]",
+            pleaseType: "@Localizer["Please type an answer."]",
+            score: "@Localizer["Score:"]"
+        };
+
+        function updateUI() {
+            if (currentIndex >= questions.length) {
+                showResults();
+                return;
+            }
+
+            const question = questions[currentIndex];
+            answered = false;
+
+            // Update Progress Bar
+            const progress = (currentIndex / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').innerText = Math.round(progress) + '%';
+            document.getElementById('progressBar').setAttribute('aria-valuenow', progress);
+
+            // Update Title and Type
+            document.getElementById('questionTitle').innerText = `@Localizer["Question"] ${currentIndex + 1} @Localizer["of"] ${questions.length}`;
+            document.getElementById('questionType').innerText = question.QuestionType;
+
+            // Update Content
+            document.getElementById('questionContent').innerText = question.Content;
+
+            // Clear containers
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            document.getElementById('textAnswerContainer').classList.add('d-none');
+            document.getElementById('feedbackContainer').classList.add('d-none');
+            document.getElementById('nextBtn').classList.add('d-none');
+            document.getElementById('finishBtn').classList.add('d-none');
+            document.getElementById('submitBtn').classList.remove('d-none');
+            document.getElementById('showExplanationBtn').classList.add('d-none');
+            document.getElementById('explanationContainer').classList.add('d-none');
+            document.getElementById('userAnswerText').value = '';
+
+            // Handle Question Type
+            if (question.QuestionType === "@Localizer["Choice"]" || question.QuestionType === "@Localizer["Bool"]" || questions[currentIndex].QuestionType === "Choice" || questions[currentIndex].QuestionType === "Bool") {
+                // Try both localized and non-localized for safety in JS comparison
+                let options = [];
+                try {
+                    const metadata = JSON.parse(question.Metadata);
+                    options = metadata.options || [];
+                } catch (e) {
+                    if (question.QuestionType === "@Localizer["Bool"]" || questions[currentIndex].QuestionType === "Bool") {
+                        options = ['@Localizer["Correct"]', '@Localizer["Wrong"]'];
+                    }
+                }
+
+                options.forEach((opt, idx) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'list-group-item list-group-item-action option-item';
+                    btn.innerText = opt;
+                    btn.onclick = () => selectOption(btn, opt);
+                    optionsContainer.appendChild(btn);
+                });
+            } 
+            
+            // Fallback for text answer if no options were added
+            if (optionsContainer.innerHTML === '') {
+                document.getElementById('textAnswerContainer').classList.remove('d-none');
+            }
+            
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        let selectedOptionText = '';
+
+        function selectOption(element, text) {
+            if (answered) return;
+            document.querySelectorAll('.option-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            selectedOptionText = text;
+        }
+
+        async function submitAnswer() {
+            if (answered) return;
+
+            let answer = '';
+            const question = questions[currentIndex];
+            const isChoiceOrBool = document.getElementById('textAnswerContainer').classList.contains('d-none');
+
+            if (isChoiceOrBool) {
+                answer = selectedOptionText;
+                if (!answer) {
+                    alert(labels.pleaseSelect);
+                    return;
+                }
+            } else {
+                answer = document.getElementById('userAnswerText').value;
+                if (!answer) {
+                    alert(labels.pleaseType);
+                    return;
+                }
+            }
+
+            document.getElementById('submitBtn').disabled = true;
+
+            try {
+                const response = await fetch('/Practice/Grade', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: `questionId=${question.Id}&userAnswer=${encodeURIComponent(answer)}`
+                });
+
+                if (!response.ok) throw new Error('Failed to grade');
+
+                const result = await response.json();
+                showFeedback(result);
+                answered = true;
+            } catch (e) {
+                alert('Error: ' + e.message);
+            } finally {
+                document.getElementById('submitBtn').disabled = false;
+            }
+        }
+
+        function showFeedback(result) {
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const standardAnswer = document.getElementById('standardAnswer');
+            const explanationText = document.getElementById('explanationText');
+
+            feedbackContainer.classList.remove('d-none', 'alert-success', 'alert-danger', 'alert-info');
+            
+            if (result.isCorrect) {
+                feedbackContainer.classList.add('alert-success');
+                feedbackMessage.innerText = labels.correct;
+                feedbackIcon.innerHTML = '<i data-lucide="check-circle" class="text-success" style="width: 48px; height: 48px;"></i>';
+                correctCount++;
+                totalScore += result.score;
+            } else {
+                feedbackContainer.classList.add('alert-danger');
+                feedbackMessage.innerText = labels.incorrect;
+                feedbackIcon.innerHTML = '<i data-lucide="x-circle" class="text-danger" style="width: 48px; height: 48px;"></i>';
+                totalScore += result.score; // AI might give partial score
+            }
+
+            if (result.comment) {
+                feedbackMessage.innerText += ' - ' + result.comment;
+            }
+
+            standardAnswer.innerHTML = '<strong>' + labels.standardAnswer + '</strong> ' + result.standardAnswer;
+            explanationText.innerText = result.explanation || labels.noAnalysis;
+
+            document.getElementById('submitBtn').classList.add('d-none');
+            document.getElementById('showExplanationBtn').classList.remove('d-none');
+
+            if (currentIndex < questions.length - 1) {
+                document.getElementById('nextBtn').classList.remove('d-none');
+            } else {
+                document.getElementById('finishBtn').classList.remove('d-none');
+            }
+
+            document.getElementById('scoreDisplay').innerText = `${labels.score} ${totalScore}`;
+            
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        function showExplanation() {
+            document.getElementById('explanationContainer').classList.remove('d-none');
+            document.getElementById('showExplanationBtn').classList.add('d-none');
+        }
+
+        function showResults() {
+            document.getElementById('questionContainer').classList.add('d-none');
+            document.getElementById('progressBar').parentElement.classList.add('d-none');
+            
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.classList.remove('d-none');
+            
+            document.getElementById('finalScore').innerText = totalScore;
+            document.getElementById('totalQuestions').innerText = questions.length;
+            document.getElementById('correctCount').innerText = correctCount;
+        }
+
+        document.getElementById('submitBtn').onclick = submitAnswer;
+        document.getElementById('nextBtn').onclick = () => {
+            currentIndex++;
+            updateUI();
+        };
+        document.getElementById('finishBtn').onclick = () => {
+            showResults();
+            // Final progress bar update
+            const progressBar = document.getElementById('progressBar');
+            progressBar.parentElement.classList.remove('d-none');
+            progressBar.style.width = '100%';
+            progressBar.innerText = '100%';
+        };
+        document.getElementById('showExplanationBtn').onclick = showExplanation;
+
+        // Initialize
+        updateUI();
+    </script>
+}

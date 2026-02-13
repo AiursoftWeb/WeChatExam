@@ -24,11 +24,11 @@ public class ArticlesController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
-        LinkText = "Articles",
-        LinkOrder = 3)]
+        CascadedLinksGroupName = "Marketing Management",
+        CascadedLinksIcon = "megaphone",
+        CascadedLinksOrder = 4,
+        LinkText = "News",
+        LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
         var articles = await context.Articles

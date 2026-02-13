@@ -25,24 +25,23 @@ public class QuestionsController(
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
     // GET: questions
-    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 9997,
+        CascadedLinksOrder = 1,
         LinkText = "Questions",
-        LinkOrder = 2)]
+        LinkOrder = 3)]
     public async Task<IActionResult> Index(
+        string? mtql,
+        string? tag,
         Guid? categoryId,
         QuestionType? questionType,
         DateTime? startDate,
         DateTime? endDate,
-        string? tag,
-        string? mtql,
         string sortBy = "CreatedAt",
-        string sortOrder = "Desc",
+        string sortOrder = "desc",
         int page = 1,
         int pageSize = 20)
     {
