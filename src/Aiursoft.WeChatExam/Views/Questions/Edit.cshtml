@@ -107,7 +107,7 @@
             // Tags Init
             const tagInput = document.getElementById('tagInputField');
             const tagHidden = document.getElementById('Tags');
-            const initialTags = '@Model.Tags'.split(' ').filter(t => t.trim());
+            const initialTags = @Json.Serialize(Model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>());
             TagInput.init(tagInput, tagHidden, initialTags);
 
             // Options Logic
