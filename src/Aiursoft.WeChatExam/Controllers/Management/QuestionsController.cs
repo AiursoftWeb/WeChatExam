@@ -103,6 +103,8 @@ public class QuestionsController(
         // Pagination
         var totalCount = await query.CountAsync();
         var questions = await query
+            .Include(q => q.QuestionTags)
+            .ThenInclude(qt => qt.Tag)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
