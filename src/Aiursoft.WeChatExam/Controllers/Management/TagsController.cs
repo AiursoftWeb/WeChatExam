@@ -132,6 +132,37 @@ public class TagsController(
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Policy = AppPermissionNames.CanManageTags)]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> BatchDelete([FromBody] BatchDeleteRequest request)
+    {
+        if (!request.TagIds.Any())
+        {
+            return BadRequest("No tags selected for deletion.");
+        }
+
+        var deletedIds = new List<int>();
+        foreach (var tagId in request.TagIds)
+        {
+            try
+            {
+                await tagService.DeleteTagAsync(tagId);
+                deletedIds.Add(tagId);
+            }
+            catch (Exception)
+            {
+                // Skip tags that cannot be deleted (e.g. maybe due to constraints if any, though DeleteTagAsync should handle it)
+            }
+        }
+
+        return Json(new BatchDeleteResult
+        {
+            DeletedCount = deletedIds.Count,
+            DeletedIds = deletedIds.ToArray()
+        });
+    }
+
     [HttpGet]
     public async Task<IActionResult> Autocomplete(string query)
     {
