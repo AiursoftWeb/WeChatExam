@@ -148,7 +148,9 @@ public class AppPermissions
                 localizer["Use AI Extractor"],
                 localizer["Allows extracting knowledge points, questions, tags from articles using AI."]),
 
-
+            new(AppPermissionNames.CanManageGlobalSettings,
+                localizer["Manage Global Settings"],
+                localizer["Allows modifying global system settings."]),
         ];
         return allPermission;
     }
