@@ -126,7 +126,9 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
             .ToListAsync();
 
         var availableCategories = await context.Categories.ToListAsync();
-        var availableQuestions = await context.Questions.ToListAsync();
+        var selectedQuestions = await context.Questions
+            .Where(q => knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).Contains(q.Id))
+            .ToListAsync();
 
         var model = new EditViewModel
         {
@@ -136,7 +138,7 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
             ParentId = knowledgePoint.ParentId,
             AvailableParents = availableParents,
             AvailableCategories = availableCategories,
-            AvailableQuestions = availableQuestions,
+            AvailableQuestions = selectedQuestions,
             SelectedCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(ck => ck.CategoryId).ToList(),
             SelectedQuestionIds = knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).ToList()
         };
@@ -158,7 +160,9 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                 .Where(c => c.Id != id && c.ParentId == null)
                 .ToListAsync();
             model.AvailableCategories = await context.Categories.ToListAsync();
-            model.AvailableQuestions = await context.Questions.ToListAsync();
+            model.AvailableQuestions = await context.Questions
+                .Where(q => model.SelectedQuestionIds.Contains(q.Id))
+                .ToListAsync();
             return this.StackView(model);
         }
 
@@ -179,7 +183,9 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                     .Where(c => c.Id != id && c.ParentId == null)
                     .ToListAsync();
                 model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions.ToListAsync();
+                model.AvailableQuestions = await context.Questions
+                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
+                    .ToListAsync();
                 return this.StackView(model);
             }
 
@@ -193,7 +199,9 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                     .Where(c => c.Id != id && c.ParentId == null)
                     .ToListAsync();
                 model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions.ToListAsync();
+                model.AvailableQuestions = await context.Questions
+                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
+                    .ToListAsync();
                 return this.StackView(model);
             }
 
@@ -205,7 +213,9 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                     .Where(c => c.Id != id && c.ParentId == null)
                     .ToListAsync();
                 model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions.ToListAsync();
+                model.AvailableQuestions = await context.Questions
+                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
+                    .ToListAsync();
                 return this.StackView(model);
             }
         }
