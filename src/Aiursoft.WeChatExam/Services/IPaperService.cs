@@ -8,6 +8,7 @@ public interface IPaperService
     Task<Paper> CreatePaperAsync(string title, int timeLimit, bool isFree);
     Task<Paper?> GetPaperAsync(Guid paperId);
     Task<List<Paper>> GetAllPapersAsync();
+    Task<List<Paper>> GetPapersAvailableForExamAsync();
     Task UpdatePaperAsync(Guid paperId, string title, int timeLimit, bool isFree);
     Task DeletePaperAsync(Guid paperId);
 

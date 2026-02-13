@@ -45,6 +45,15 @@ public class PaperService : IPaperService
             .ToListAsync();
     }
 
+    public async Task<List<Paper>> GetPapersAvailableForExamAsync()
+    {
+        return await _dbContext.Papers
+            .Include(p => p.PaperSnapshots)
+            .Where(p => p.Status != PaperStatus.Draft && p.PaperSnapshots.Any())
+            .OrderByDescending(p => p.CreationTime)
+            .ToListAsync();
+    }
+
     public async Task UpdatePaperAsync(Guid paperId, string title, int timeLimit, bool isFree)
     {
         var paper = await _dbContext.Papers.FindAsync(paperId);
