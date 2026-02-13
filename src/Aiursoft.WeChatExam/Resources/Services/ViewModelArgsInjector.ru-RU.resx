@@ -75,6 +75,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Панель управления</value>
   </data>
+  <data name="Database Management" xml:space="preserve">
+    <value>Управление базами данных</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>Удалить категорию</value>
   </data>
@@ -114,8 +117,14 @@
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="Exam Management" xml:space="preserve">
+    <value>Управление экзаменами</value>
+  </data>
   <data name="Exams" xml:space="preserve">
     <value>Экзамены</value>
+  </data>
+  <data name="Export Questions" xml:space="preserve">
+    <value>Экспорт вопросов</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Возможности</value>
@@ -135,6 +144,9 @@
   <data name="Info" xml:space="preserve">
     <value>Информация</value>
   </data>
+  <data name="Join Official Exam" xml:space="preserve">
+    <value>Присоединиться к официальному экзамену</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Баллы знаний</value>
   </data>
@@ -153,11 +165,23 @@
   <data name="Marketing" xml:space="preserve">
     <value>Маркетинг</value>
   </data>
+  <data name="Marketing Management" xml:space="preserve">
+    <value>Управление маркетингом</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Новости</value>
+  </data>
   <data name="Papers" xml:space="preserve">
     <value>Тесты</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Личное</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>Сессия практики</value>
+  </data>
+  <data name="Practice Test" xml:space="preserve">
+    <value>Тренировочный тест</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>

@@ -78,6 +78,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Bảng điều khiển</value>
   </data>
+  <data name="Database Management" xml:space="preserve">
+    <value>Quản lý Cơ sở dữ liệu</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>Xóa danh mục</value>
   </data>
@@ -117,8 +120,14 @@
   <data name="Error" xml:space="preserve">
     <value>Lỗi</value>
   </data>
+  <data name="Exam Management" xml:space="preserve">
+    <value>Quản lý bài thi</value>
+  </data>
   <data name="Exams" xml:space="preserve">
     <value>Bài kiểm tra</value>
+  </data>
+  <data name="Export Questions" xml:space="preserve">
+    <value>Xuất câu hỏi</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Tính năng</value>
@@ -138,6 +147,9 @@
   <data name="Info" xml:space="preserve">
     <value>Thông tin</value>
   </data>
+  <data name="Join Official Exam" xml:space="preserve">
+    <value>Tham gia Kỳ thi Chính thức</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Điểm Kiến Thức</value>
   </data>
@@ -156,11 +168,23 @@
   <data name="Marketing" xml:space="preserve">
     <value>Tiếp thị</value>
   </data>
+  <data name="Marketing Management" xml:space="preserve">
+    <value>Quản lý Tiếp thị</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Tin tức</value>
+  </data>
   <data name="Papers" xml:space="preserve">
     <value>Bài kiểm tra</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Cá nhân</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>Buổi luyện tập</value>
+  </data>
+  <data name="Practice Test" xml:space="preserve">
+    <value>Bài kiểm tra thực hành</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Hồ sơ</value>

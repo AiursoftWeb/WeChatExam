@@ -75,6 +75,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Панель керування</value>
   </data>
+  <data name="Database Management" xml:space="preserve">
+    <value>Керування базами даних</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>Видалити категорію</value>
   </data>
@@ -114,8 +117,14 @@
   <data name="Error" xml:space="preserve">
     <value>Помилка</value>
   </data>
+  <data name="Exam Management" xml:space="preserve">
+    <value>Керування екзаменами</value>
+  </data>
   <data name="Exams" xml:space="preserve">
     <value>Екзамени</value>
+  </data>
+  <data name="Export Questions" xml:space="preserve">
+    <value>Експорт питань</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Функції</value>
@@ -135,6 +144,9 @@
   <data name="Info" xml:space="preserve">
     <value>Інформація</value>
   </data>
+  <data name="Join Official Exam" xml:space="preserve">
+    <value>Приєднатися до офіційного іспиту</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Бали знань</value>
   </data>
@@ -153,11 +165,23 @@
   <data name="Marketing" xml:space="preserve">
     <value>Маркетинг</value>
   </data>
+  <data name="Marketing Management" xml:space="preserve">
+    <value>Маркетингове управління</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Новини</value>
+  </data>
   <data name="Papers" xml:space="preserve">
     <value>Тести</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Особисті</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>Практична сесія</value>
+  </data>
+  <data name="Practice Test" xml:space="preserve">
+    <value>Тест на практику</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профіль</value>

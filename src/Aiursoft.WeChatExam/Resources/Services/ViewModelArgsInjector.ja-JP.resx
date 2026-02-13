@@ -78,6 +78,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>ダッシュボード</value>
   </data>
+  <data name="Database Management" xml:space="preserve">
+    <value>データベース管理</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>カテゴリの削除</value>
   </data>
@@ -117,8 +120,14 @@
   <data name="Error" xml:space="preserve">
     <value>エラー</value>
   </data>
+  <data name="Exam Management" xml:space="preserve">
+    <value>試験管理</value>
+  </data>
   <data name="Exams" xml:space="preserve">
     <value>試験</value>
+  </data>
+  <data name="Export Questions" xml:space="preserve">
+    <value>質問をエクスポート</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>機能</value>
@@ -138,6 +147,9 @@
   <data name="Info" xml:space="preserve">
     <value>情報</value>
   </data>
+  <data name="Join Official Exam" xml:space="preserve">
+    <value>公式試験に参加する</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>知識ポイント</value>
   </data>
@@ -156,11 +168,23 @@
   <data name="Marketing" xml:space="preserve">
     <value>マーケティング</value>
   </data>
+  <data name="Marketing Management" xml:space="preserve">
+    <value>マーケティング管理</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>ニュース</value>
+  </data>
   <data name="Papers" xml:space="preserve">
     <value>試験問題</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>個人</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>実践セッション</value>
+  </data>
+  <data name="Practice Test" xml:space="preserve">
+    <value>練習テスト</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>プロフィール</value>
