@@ -143,7 +143,7 @@
                                 </a>
                             }
                         </td>
-                        <td><span class="badge bg-secondary">@question.QuestionType</span></td>
+                        <td><span class="badge bg-secondary">@Localizer[question.QuestionType.GetDisplayName()]</span></td>
                         <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
