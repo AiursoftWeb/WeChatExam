@@ -133,4 +133,49 @@ public class KnowledgePointAssociationTests
         var catDetailsHtml = await catDetailsResponse.Content.ReadAsStringAsync();
         Assert.Contains(kpTitle, catDetailsHtml, "Category details should show associated knowledge point");
     }
+
+    [TestMethod]
+    public async Task TestKnowledgePointCategoryAssociationAtCreation()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Create a Category
+        var categoryTitle = "Created Category";
+        var createCatToken = await GetAntiCsrfToken("/Categories/Create");
+        var createCatContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", categoryTitle },
+            { "__RequestVerificationToken", createCatToken }
+        });
+        var createCatResponse = await _http.PostAsync("/Categories/Create", createCatContent);
+        Assert.AreEqual(HttpStatusCode.Found, createCatResponse.StatusCode);
+        var categoryId = createCatResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        // 2. Create a Knowledge Point with the category
+        var kpTitle = "KP with Category";
+        var kpContent = "KP Content";
+        var createKpToken = await GetAntiCsrfToken("/KnowledgePoints/Create");
+        var createKpContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", kpTitle },
+            { "Content", kpContent },
+            { "SelectedCategoryIds[0]", categoryId },
+            { "__RequestVerificationToken", createKpToken }
+        });
+        var createKpResponse = await _http.PostAsync("/KnowledgePoints/Create", createKpContent);
+        Assert.AreEqual(HttpStatusCode.Found, createKpResponse.StatusCode);
+        var kpId = createKpResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        // 3. Verify Association in Knowledge Point Details
+        var kpDetailsResponse = await _http.GetAsync($"/KnowledgePoints/Details/{kpId}");
+        kpDetailsResponse.EnsureSuccessStatusCode();
+        var kpDetailsHtml = await kpDetailsResponse.Content.ReadAsStringAsync();
+        Assert.Contains(categoryTitle, kpDetailsHtml, "Knowledge Point details should show associated category after creation");
+
+        // 4. Verify Association in Category Details
+        var catDetailsResponse = await _http.GetAsync($"/Categories/Details/{categoryId}");
+        catDetailsResponse.EnsureSuccessStatusCode();
+        var catDetailsHtml = await catDetailsResponse.Content.ReadAsStringAsync();
+        Assert.Contains(kpTitle, catDetailsHtml, "Category details should show associated knowledge point after creation");
+    }
 }

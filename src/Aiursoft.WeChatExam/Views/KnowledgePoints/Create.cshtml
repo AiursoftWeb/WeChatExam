@@ -25,6 +25,143 @@
         </select>
         <span asp-validation-for="ParentId" class="text-danger"></span>
     </div>
+
+    <div class="mb-3">
+        <label asp-for="SelectedCategoryIds" class="form-label">@Localizer["Associated Categories"]</label>
+        <select asp-for="SelectedCategoryIds" class="form-select" multiple style="height: 200px">
+            @foreach (var category in Model.AvailableCategories)
+            {
+                <option value="@category.Id">@category.Title</option>
+            }
+        </select>
+        <div class="form-text">@Localizer["Hold Ctrl (Windows) or Command (Mac) to select multiple options."]</div>
+        <span asp-validation-for="SelectedCategoryIds" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">@Localizer["Associated Questions"]</label>
+        
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["MTQL Question Finder"]</h5>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" id="mtql-input" class="form-control" placeholder='@Localizer["Enter MTQL query (e.g. content:\"math\")"]' />
+                    <button class="btn btn-outline-secondary" type="button" onclick="searchQuestions()">
+                        <i class="align-middle" data-lucide="search"></i> @Localizer["Search"]
+                    </button>
+                </div>
+                <div id="search-results-container" class="list-group overflow-auto" style="max-height: 300px;">
+                    <div class="list-group-item text-muted">@Localizer["Search results will appear here..."]</div>
+                </div>
+                <div class="mt-2 text-end">
+                    <button type="button" class="btn btn-sm btn-success" onclick="addSelectedQuestions()">
+                        <i class="align-middle" data-lucide="plus"></i> @Localizer["Add Selected"]
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">@Localizer["Selected Questions"]</label>
+            <div id="selected-questions-container" class="list-group">
+                @foreach (var question in Model.AvailableQuestions)
+                {
+                    var content = question.Content.Length > 100 ? question.Content.Substring(0, 100) + "..." : question.Content;
+                    <div class="list-group-item d-flex justify-content-between align-items-center" data-question-id="@question.Id">
+                        <span>@content</span>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="removeQuestion('@question.Id')">
+                            <i class="align-middle" data-lucide="trash-2"></i>
+                        </button>
+                        <input type="hidden" name="SelectedQuestionIds" value="@question.Id" />
+                    </div>
+                }
+            </div>
+        </div>
+        <span asp-validation-for="SelectedQuestionIds" class="text-danger"></span>
+    </div>
+
+    @* ReSharper disable once Razor.SectionNotResolved *@
+    @section scripts {
+        <script>
+            function searchQuestions() {
+                var mtql = document.getElementById('mtql-input').value;
+                var container = document.getElementById('search-results-container');
+                container.innerHTML = '<div class="list-group-item">@Localizer["Searching..."]</div>';
+
+                fetch(`/Questions/Search?mtql=${encodeURIComponent(mtql)}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => { throw new Error(text); });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        container.innerHTML = '';
+                        if (data.length === 0) {
+                            container.innerHTML = '<div class="list-group-item">@Localizer["No questions found."]</div>';
+                            return;
+                        }
+                        data.forEach(q => {
+                            var item = document.createElement('label');
+                            item.className = 'list-group-item d-flex gap-2';
+                            item.innerHTML = `
+                                <input class="form-check-input flex-shrink-0" type="checkbox" value="${q.id}" data-content="${q.content}">
+                                <span>${q.content}</span>
+                            `;
+                            container.appendChild(item);
+                        });
+                    })
+                    .catch(error => {
+                        container.innerHTML = `<div class="list-group-item text-danger">@Localizer["Error:"] ${error.message}</div>`;
+                    });
+            }
+
+            function addSelectedQuestions() {
+                var searchContainer = document.getElementById('search-results-container');
+                var selectedContainer = document.getElementById('selected-questions-container');
+                var checkboxes = searchContainer.querySelectorAll('input[type="checkbox"]:checked');
+
+                checkboxes.forEach(cb => {
+                    var id = cb.value;
+                    var content = cb.getAttribute('data-content');
+
+                    if (!selectedContainer.querySelector(`div[data-question-id="${id}"]`)) {
+                        var item = document.createElement('div');
+                        item.className = 'list-group-item d-flex justify-content-between align-items-center';
+                        item.setAttribute('data-question-id', id);
+                        item.innerHTML = `
+                            <span>${content}</span>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="removeQuestion('${id}')">
+                                 <i class="align-middle" data-lucide="trash-2"></i>
+                            </button>
+                            <input type="hidden" name="SelectedQuestionIds" value="${id}" />
+                        `;
+                        selectedContainer.appendChild(item);
+                    }
+                    cb.checked = false;
+                });
+                lucide.createIcons();
+            }
+
+            function removeQuestion(id) {
+                var container = document.getElementById('selected-questions-container');
+                var item = container.querySelector(`div[data-question-id="${id}"]`);
+                if (item) {
+                    item.remove();
+                }
+            }
+            
+            // Allow pressing Enter in search input
+            document.getElementById('mtql-input').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    searchQuestions();
+                }
+            });
+        </script>
+    }
     <button type="submit" class="btn btn-primary">
         <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create"]
     </button>
