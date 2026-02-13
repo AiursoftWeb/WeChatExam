@@ -91,3 +91,60 @@ There are many ways to contribute to the project: logging bugs, submitting pull 
 Even if you with push rights on the repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository clean and your workflow cruft out of sight.
 
 We're also interested in your feedback on the future of this project. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help define them more clearly.
+
+## Data Structure and MTQL
+
+The project follows a complex data structure to support various exam scenarios. Below are the key components and their relationships.
+
+### 1. Content Organization (Categories, Knowledge Points, and Questions)
+
+The system organizes content using a hierarchical structure for both Categories and Knowledge Points.
+
+```mermaid
+graph TD
+    Category -- "Self-referencing (Parent/Child)" --> Category
+    KnowledgePoint -- "Self-referencing (Parent/Child)" --> KnowledgePoint
+    Category -- "Many-to-Many" --> KnowledgePoint
+    KnowledgePoint -- "Many-to-Many" --> Question
+    Category -- "One-to-Many" --> Question
+```
+
+- **Category**: A hierarchical tree to organize questions and knowledge points. A question belongs to one category but can be related to multiple knowledge points.
+- **Knowledge Point**: A hierarchical tree representing specific educational units. Questions are linked to knowledge points to track what a question is testing.
+
+### 2. Tagging System and MTQL (MarkToQueryLanguage)
+
+The system uses a flexible tagging system grouped by Taxonomies.
+
+```mermaid
+graph LR
+    Taxonomy -- "One-to-Many" --> Tag
+    Tag -- "Many-to-Many" --> Question
+    MTQL -- "Filters" --> Question
+```
+
+- **Taxonomy**: Groups tags into different systems (e.g., "Difficulty", "Source", "Year").
+- **Tag**: Individual labels applied to questions.
+- **MTQL (MarkToQueryLanguage)**: A Domain Specific Language (DSL) used to query questions by tags. It supports boolean logic like `(tag1 || tag2) && not tag3`. This allows for highly flexible question selection when building papers or exams.
+
+### 3. Paper and Exam System
+
+The system distinguishes between Paper templates and actual Exam instances, using snapshots for content freezing.
+
+```mermaid
+graph TD
+    Paper -- "One-to-Many" --> PaperSnapshot
+    PaperSnapshot -- "One-to-Many" --> QuestionSnapshot
+    Exam -- "Uses" --> Paper
+    Exam -- "Locked to" --> PaperSnapshot
+    Exam -- "One-to-Many" --> ExamRecord
+    ExamRecord -- "One-to-Many" --> AnswerRecord
+    AnswerRecord -- "Linked to" --> Question
+```
+
+- **Paper**: A template for an exam, containing a set of questions.
+- **PaperSnapshot**: A frozen version of a Paper. When an exam starts, it uses a snapshot to ensure all students see the same questions even if the Paper template is updated later.
+- **QuestionSnapshot**: A frozen version of a Question within a PaperSnapshot.
+- **Exam**: An actual instance of an assessment with start/end times.
+- **ExamRecord**: A student's attempt at an exam.
+- **AnswerRecord**: A student's individual answer to a question in an exam attempt.
