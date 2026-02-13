@@ -1,25 +1,69 @@
 @model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.DetailsViewModel
 
 <h1 class="h3 mb-3">@Localizer["KnowledgePoint Details"]</h1>
-<div class="card">
-    <div class="card-body">
-        <dl class="row">
-            <dt class="col-sm-3">@Localizer["Title"]</dt>
-            <dd class="col-sm-9">@Model.KnowledgePoint.Title</dd>
-            
-            <dt class="col-sm-3">@Localizer["Content"]</dt>
-            <dd class="col-sm-9">@Model.KnowledgePoint.Content</dd>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Basic Information"]</h5>
+            </div>
+            <div class="card-body">
+                <dl>
+                    <dt>@Localizer["Title"]</dt>
+                    <dd>@Model.KnowledgePoint.Title</dd>
 
+                    <dt>@Localizer["Content"]</dt>
+                    <dd class="text-break" style="max-height: 200px; overflow-y: auto;">@Model.KnowledgePoint.Content</dd>
 
-            <dt class="col-sm-3">@Localizer["Parent"]</dt>
-            <dd class="col-sm-9">
-                @(Model.KnowledgePoint.Parent  == null ? Localizer["Top Level"].Value : Model.KnowledgePoint.Parent.Title)
-            </dd>
-            <dt class="col-sm-3">@Localizer["Created"]</dt>
-            <dd class="col-sm-9">@Model.KnowledgePoint.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
-        </dl>
-        <a asp-action="Edit" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-warning">@Localizer["Edit"]</a>
-        <a asp-action="Delete" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-danger">@Localizer["Delete"]</a>
-        <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+                    <dt>@Localizer["Parent"]</dt>
+                    <dd>
+                        @(Model.KnowledgePoint.Parent == null ? Localizer["Top Level"].Value : Model.KnowledgePoint.Parent.Title)
+                    </dd>
+                    <dt>@Localizer["Created"]</dt>
+                    <dd>@Model.KnowledgePoint.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+                </dl>
+                <div class="mt-3">
+                    <a asp-action="Edit" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-warning">@Localizer["Edit"]</a>
+                    <a asp-action="Delete" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-danger">@Localizer["Delete"]</a>
+                    <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Associated Categories"]</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Localizer["Title"]</th>
+                            <th>@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model.AssociatedCategories)
+                        {
+                            <tr>
+                                <td>@category.Title</td>
+                                <td>
+                                    <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
+                                </td>
+                            </tr>
+                        }
+                        @if (!Model.AssociatedCategories.Any())
+                        {
+                            <tr>
+                                <td colspan="2" class="text-center text-muted py-4">
+                                    @Localizer["No categories associated"]
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
