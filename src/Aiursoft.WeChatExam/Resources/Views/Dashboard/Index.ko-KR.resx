@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>현대적이고, 기능이 풍부하며, 확장성이 뛰어난 기반을 통해 다음 웹 애플리케이션을 구축하세요.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>모든 완료된 시험에 걸쳐</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>활성</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>시험용 WeChat 미니 프로그램 관리 센터</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>모든 종속성은 자동으로 등록되며 생성자 주입을 통해 항상 사용할 수 있습니다.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>기사</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>자동 다크 모드</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>전 세계적 접근성을 위한 28개 언어의 자동 AI 기반 번역.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>평균 점수</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>공백</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>논리값</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>내장된 사용자 관리</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>카테고리</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>채널</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>객관식</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>완전한 Docker 지원을 통해 단순화되고 일관성 있으며 신뢰할 수 있는 배포를 제공합니다.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>포괄적인 문서</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>콘텐츠 개요</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>정답</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>개수</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>대시보드</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>배포를 위한 Docker화</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>초안</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>동적 내비게이션 바</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>SQLite, MySQL, SQL Server 및 테스트용 인메모리 데이터베이스와 같은 공급자 간에 쉽게 전환할 수 있습니다.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>종료됨</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>서술형</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>시험 응시 횟수</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>시험 기록</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>시험 상태 개요</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>시험</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>내장된 파일 관리 시스템과 자동 아바타 압축 기능을 제공합니다.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>고정됨</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>안녕하세요 세계!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>데이터베이스에</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>진행 중</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>방대한 문서와 실용적인 예제를 포함하여 빠르게 시작할 수 있도록 도와줍니다.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>통합 파일 관리</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>지식 포인트</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>다중 데이터베이스 지원</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>시험 없음</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>태그가 아직 사용되지 않았습니다</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>분류가 아직 없습니다</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>사용자가 아직 없습니다</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>명사 설명</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect 연동</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>시험지 상태</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>시험지</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>연습 정확도</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>게시 가능</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>질문 유형 분포</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>질문</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC 인증</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>문서 읽기</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>최근 시험</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>최근 사용자</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>기록</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>반응형 디자인</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>어떤 OpenID Connect 공급자와도 원활하게 통합되며, 자동 역할 동기화를 지원합니다.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>단답형</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>사용자의 시스템 설정에 자동으로 적응하는 스마트 다크 모드.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>시작</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>새 프로젝트 시작하기</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>제출됨</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>태그 수</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>태그 이름</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>태그</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>분류</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>분류 체계 분포</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>네비게이션 바는 사용자 역할과 권한에 따라 자동으로 조정됩니다.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>이것은 시험 및 연습용 WeChat 미니 프로그램의 관리 센터입니다.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>시간 초과</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>제목</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>상위 태그</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>API 사용해 보기</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>유형</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>예정된</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>사용 횟수</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>사용자</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>모두 보기</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>환영합니다</value>

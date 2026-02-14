@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>En modern, funktionsrik och mycket utbyggbar grund för ditt nästa webbprogram.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>över alla slutförda prov</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Administrationscenter för examens WeChat-miniprogram</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Alla beroenden registreras automatiskt och är alltid tillgängliga via konstruktorinjektion.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Artiklar</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Automatiskt mörkt läge</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Automatisk, AI-driven översättning till 28 språk för global räckvidd.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Genomsnittsscore</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Tom</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Bool</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Inbyggd användarhantering</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategorier</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Kanaler</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Val</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>Levereras med fullt Docker-stöd för förenklad, konsekvent och pålitlig distribution.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Omfattande dokumentation</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>Innehållsöversikt</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>rätt svar</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Antal</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Instrumentbräda</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Dockeriserad för distribution</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Utkast</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>Dynamiskt navigeringsfält</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Enkelt växla mellan leverantörer som SQLite, MySQL, SQL Server och ett minnesbaserat databas för testning.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Slut</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Avslutad</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Essay</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>provförsök</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Examsposter</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Översikt över provstatus</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Examinations</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Har ett inbyggt filhanteringssystem med automatisk komprimering av avatarer.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Förstens</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Hej Världen!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>i databasen</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>Pågående</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Innehåller omfattande dokumentation och praktiska exempel för att du snabbt ska komma igång.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Integrerad filhantering</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Kunskapspoäng</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Stöd för flera databaser</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Inga prov ännu</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Inga taggar har använts ännu</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Inga taxonomier än</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Inga användare ännu</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Ords förklaring</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect-integration</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Pappersstatus</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papper</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Praktikeringssnabbhet</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Publicerbar</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Fördelning av frågetyp</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Frågor</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC-auktorisering</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>Läs dokumentet</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Senaste prov</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Senaste användare</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Poster</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Responsiv design</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Integrera sömlöst med valfri OpenID Connect-leverantör, med automatisk rollsynkronisering.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Kort svar</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Smart mörkt läge som automatiskt anpassar sig efter användarens systeminställningar.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Starta ett nytt projekt</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Inskickat</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Taggar antal</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Taggnamn</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Taggar</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taxonomi</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Taxonomifördelning</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>Navigeringsfältet anpassar sig automatiskt baserat på användarroller och behörigheter.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>Det här är administrationscentret för WeChat-miniprogrammet för prov och övning.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Tidslimit överstigit</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>Topptaggar</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>Testa API:et</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Kommande</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Användningsantal</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Användare</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Visa alla</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Välkommen</value>

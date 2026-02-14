@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>一个现代化、功能丰富且高度可扩展的基础框架，为您的下一个Web应用程序奠定坚实基础。</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>所有已完成考试的</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>进行中</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>考试微信小程序管理后台</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>所有依赖项都会自动注册，并始终可通过构造函数注入方式使用。</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>文章</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>自动深色模式</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>支持28种语言的自动AI翻译，助力实现全球覆盖。</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>平均分</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>填空</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>判断题</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>内置用户管理</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>渠道</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>选择题</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>提供完整的Docker支持，实现简化、一致且可靠的部署。</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>完整文档</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>内容概览</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>正确答案</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>仪表板</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>容器化部署</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>草稿</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>动态导航栏</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>可轻松在 SQLite、MySQL、SQL Server 等数据库提供程序以及用于测试的内存数据库之间切换。</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>结束</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>已结束</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>简答题</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>考试次数</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>考试记录</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>考试状态概览</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>考试</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>内置文件管理系统，支持头像自动压缩。</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>冻结</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>你好，世界！</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>数据库中</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>进行中</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>包含详尽的文档和实用示例，助您快速入门。</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>集成文件管理</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>知识点</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>多数据库支持</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>暂无考试</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>暂未使用标签</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>暂无分类体系</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>暂无用户</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>名词解释</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect 集成</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>试卷状态</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>试卷</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>练习准确率</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>可发布</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>题目类型分布</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>题目</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>基于角色的访问控制 (RBAC) 授权</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>阅读文档</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>最近的考试</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>最近用户</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>记录</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>响应式设计</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>无缝集成任何 OpenID Connect 提供商，并自动同步角色信息。</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>简答题</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>智能深色模式，可自动适应用户系统设置。</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>开始</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>开始新项目</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>已提交</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>标签数量</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>标签名称</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>分类分布</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>导航栏会根据用户角色和权限自动调整。</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>这是考试与练习微信小程序的管理中心。</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>已超时</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>热门标签</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>试用API</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>即将开始</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>使用次数</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>查看全部</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>欢迎</value>

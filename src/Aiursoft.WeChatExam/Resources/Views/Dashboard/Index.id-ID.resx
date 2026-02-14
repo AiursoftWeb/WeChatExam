@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Sebuah fondasi yang modern, kaya fitur, dan sangat dapat diperluas untuk aplikasi web Anda berikutnya.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>di semua ujian yang telah selesai</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Pusat admin untuk aplikasi mini WeChat ujian</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Semua dependensi terdaftar secara otomatis dan selalu tersedia melalui constructor injection.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Artikel</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Mode Gelap Otomatis</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Terjemahan otomatis berbasis AI ke dalam 28 bahasa untuk menjangkau audiens global.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Rata-rata Nilai</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Kosong</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Benar</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Manajemen Pengguna Bawaan</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Saluran</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Pilihan</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>Dilengkapi dengan dukungan Docker penuh untuk penyebaran yang disederhanakan, konsisten, dan andal.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Dokumentasi Komprehensif</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>Ikhtisar Konten</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>jawaban yang benar</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dasbor</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Terdockerisasi untuk Deployment</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draf</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>Bilah Navigasi Dinamis</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Dengan mudah beralih di antara penyedia seperti SQLite, MySQL, SQL Server, dan basis data dalam memori untuk pengujian.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Berakhir</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Selesai</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Esai</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>cobaan ujian</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Catatan Ujian</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Ringkasan Status Ujian</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Ujian</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Fitur sistem manajemen file bawaan dengan kompresi avatar otomatis.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Dikunci</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Halo Dunia!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>di basis data</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>Dalam Proses</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Mencakup dokumentasi yang luas dan contoh-contoh praktis untuk memudahkan Anda memulai dengan cepat.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Manajemen File Terintegrasi</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Poin Pengetahuan</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Dukungan Banyak Basis Data</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Belum ada ujian</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Belum ada tag yang digunakan</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Belum ada taksonomi</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Belum ada pengguna</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Penjelasan Kata Benda</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Integrasi OpenID Connect</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Status Kertas</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Kertas</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Akurasi Latihan</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Dapat Diterbitkan</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Distribusi Jenis Pertanyaan</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Pertanyaan</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>Otorisasi RBAC</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>Baca dokumen</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Ujian Terbaru</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Pengguna Terbaru</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Catatan</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Desain Responsif</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Terintegrasi dengan mulus bersama penyedia OpenID Connect apa pun, dengan sinkronisasi peran otomatis.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Jawaban Singkat</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Mode gelap yang cerdas yang secara otomatis menyesuaikan dengan pengaturan sistem pengguna.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Mulai</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Mulai proyek baru</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Dikirim</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Jumlah Tag</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Nama Tag</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taxonomy</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Distribusi Taksonomi</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>Bilah navigasi secara otomatis menyesuaikan berdasarkan peran dan izin pengguna.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>Ini adalah pusat admin untuk program mini WeChat ujian dan latihan.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Habis Waktu</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Judul</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>Tag Teratas</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>Coba API</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Jenis</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Akan Datang</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Jumlah Penggunaan</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Pengguna</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Lihat Semua</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Selamat datang</value>

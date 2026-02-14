@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>أساس حديث، غني بالميزات، وقابل للتوسعة بشكل كبير لتطبيق الويب القادم الخاص بك.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>عبر جميع الامتحانات المكتملة</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>نشط</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>مركز الإدارة لبرنامج وي تشات المصغر الخاص بالامتحان</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>يتم تسجيل جميع التبعيات تلقائيًا وهي متاحة دائمًا عبر حقن المُنشئ.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>مقالات</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>الوضع الداكن التلقائي</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>ترجمة آلية مدعومة بالذكاء الاصطناعي إلى 28 لغة للوصول العالمي.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>المتوسط</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>مُفرغ</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>منطقي</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>إدارة المستخدمين المدمجة</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>فئات</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>القنوات</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>اختيار</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>يأتي مع دعم كامل لـ Docker لنشر مبسط، متسق، وموثوق.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>توثيق شامل</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>نظرة عامة على المحتوى</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>الإجابات الصحيحة</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>العدد</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>مُحَضَّرٌ باستخدام Docker للنشر</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>مسودة</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>شريط التنقل الديناميكي</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>يمكنك التبديل بسهولة بين مزودي قواعد البيانات مثل SQLite وMySQL وSQL Server وقاعدة البيانات المؤقتة في الذاكرة لأغراض الاختبار.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>نهاية</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>انتهت</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>مقال</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>محاولات الامتحان</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>سجلات الاختبارات</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>نظرة عامة على حالة الامتحان</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>الامتحانات</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>يتميز بنظام مدمج لإدارة الملفات مع ضغط تلقائي للصور الشخصية.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>مجمدة</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>مرحباً أيها العالم!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>في قاعدة البيانات</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>قيد التنفيذ</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>يحتوي على وثائق شاملة وأمثلة عملية لمساعدتك على البدء بسرعة.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>إدارة الملفات المتكاملة</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>نقاط المعرفة</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>دعم قواعد بيانات متعددة</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>لا توجد امتحانات بعد</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>لا توجد علامات مستخدمة بعد</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>لا توجد تصنيفات بعد</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>لا يوجد مستخدمون بعد</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>شرح الاسم</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>دمج OpenID Connect</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>حالة الورقة</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>الورق</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>دقة التدريب</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>قابل للنشر</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>توزيع أنواع الأسئلة</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>الأسئلة</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>الترخيص القائم على الأدوار (RBAC)</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>اقرأ المستند</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>الامتحانات الحديثة</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>المستخدمون الجدد</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>سجلات</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>تصميم متجاوب</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>التكامل السلس مع أي موفر OpenID Connect، مع مزامنة تلقائية للأدوار.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>إجابة قصيرة</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>وضع الظلام الذكي الذي يتكيف تلقائيًا مع إعدادات نظام المستخدم.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>ابدأ</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>بدء مشروع جديد</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>تم الإرسال</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>عدد العلامات</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>اسم التاج</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>الوسوم</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>التصنيف</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>توزيع التصنيف</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>يتم تعديل شريط التنقل تلقائيًا بناءً على أدوار المستخدمين والأذونات.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>هذا هو مركز الإدارة لبرنامج وي تشات المصغر الخاص بالامتحان والتدريب</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>انتهت المدة</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>أعلى العلامات</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>جرب الـ API</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>قريبة</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>عدد الاستخدامات</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>المستخدمون</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>عرض الكل</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>مرحباً</value>

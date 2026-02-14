@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Сучасна, багатофункціональна та високо розширювана основа для вашої наступної веб-програми.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>у всіх завершених екзаменах</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активні</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Адмін-центр для екзаменаційного міні-програми WeChat</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Усі залежності автоматично реєструються та завжди доступні через ін&apos;єкцію в конструктор.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Статті</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Автоматичний темний режим</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Автоматичний переклад за допомогою штучного інтелекту на 28 мов для глобального охоплення.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Середній бал</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Пропуск</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Булево</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Вбудоване управління користувачами</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категорії</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Канали</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Варіант</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>Повністю підтримує Docker для спрощених, стабільних та надійних розгортань.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Документація</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>Огляд контенту</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>правильні відповіді</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Кількість</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Панель керування</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Підготовлено для розгортання в Docker</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Чернетка</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>Динамічна навігаційна панель</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Легко перемикайтеся між провайдерами, такими як SQLite, MySQL, SQL Server, та оперативною базою даних у пам&apos;яті для тестування.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Завершити</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Есе</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>спроби здачі іспиту</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Результати екзаменів</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Огляд статусу екзаменів</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Екзамени</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Містить вбудовану систему керування файлами з автоматичним стисненням аватарів.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Заморожені</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Привіт, Світе!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>у базі даних</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>У процесі</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Містить обширну документацію та практичні приклади, щоб ви могли швидко розпочати роботу.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Інтегроване управління файлами</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Бали знань</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Підтримка кількох баз даних</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Немає екзаменів ще</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Немає використаних тегів ще</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Немає таксономій ще</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Немає користувачів ще</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Пояснення іменника</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Інтеграція OpenID Connect</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Статус тесту</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Бланки</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Точність практики</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Доступний для публікації</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Розподіл типів запитань</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Питання</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>Авторизація на основі ролей (RBAC)</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>Прочитати документацію</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Останні іспити</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Останні користувачі</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Результати</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Адаптивний дизайн</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Безперешкодна інтеграція з будь-яким постачальником OpenID Connect із автоматичною синхронізацією ролей.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Коротка відповідь</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Розумний темний режим, який автоматично адаптується до системних налаштувань користувача.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Почати</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Розпочати новий проєкт</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Надіслано</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Кількість тегів</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Назва тегу</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Таксономія</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Розподіл онтології</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>Панель навігації автоматично адаптується відповідно до ролей та дозволів користувача.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>Це адміністративний центр для екзаменаційного та тренувального міні-програми WeChat.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Час вийшов</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>Найбільш використовувані теги</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>Спробувати API</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Майбутні</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Кількість використань</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Користувачі</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Переглянути всі</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Ласкаво просимо</value>

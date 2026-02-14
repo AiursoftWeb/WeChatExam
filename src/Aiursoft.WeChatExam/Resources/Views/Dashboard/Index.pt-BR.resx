@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Uma base moderna, rica em recursos e altamente extensível para sua próxima aplicação web.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>em todos os exames concluídos</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Centro administrativo para o mini programa de exames do WeChat</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Todas as dependências são registradas automaticamente e sempre disponíveis via injeção de construtor.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Artigos</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Modo Escuro Automático</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Tradução automática e orientada por IA para 28 idiomas para alcance global.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Média de Pontuação</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Em branco</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Verdadeiro</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Gerenciamento de Usuários Integrado</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categorias</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Canais</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Escolha</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>Oferece suporte completo ao Docker para implantações simplificadas, consistentes e confiáveis.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Documentação Abrangente</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>Visão Geral do Conteúdo</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>respostas corretas</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Quantidade</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Painel</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Dockerizado para Implantação</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Rascunho</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>Barra de Navegação Dinâmica</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Altere facilmente entre provedores como SQLite, MySQL, SQL Server e um banco de dados em memória para testes.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Término</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Encerrado</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Redação</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>tentativas de prova</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Registros de Provas</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Visão Geral do Status dos Exames</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Provas</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Possui um sistema de gerenciamento de arquivos integrado com compactação automática de avatares.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Congelado</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Olá, Mundo!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>no banco de dados</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>Em Andamento</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Inclui documentação extensa e exemplos práticos para você começar rapidamente.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Gerenciamento Integrado de Arquivos</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Pontos de Conhecimento</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Suporte a Múltiplos Bancos de Dados</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Nenhum exame ainda</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Nenhum rótulo usado ainda</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Nenhuma taxonomia ainda</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Nenhum usuário ainda</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Explicação de Substantivo</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Integração OpenID Connect</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Status dos Papéis</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Provas</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Precisão de Prática</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Publicável</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Distribuição por Tipo de Pergunta</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Perguntas</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>Autorização RBAC</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>Ler a documentação</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Provas Recentes</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Usuários Recentes</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Registros</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Design Responsivo</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Integre-se perfeitamente com qualquer provedor OpenID Connect, com sincronização automática de funções.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Resposta Curta</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Modo escuro inteligente que se adapta automaticamente às configurações do sistema do usuário.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Início</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Iniciar um novo projeto</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Enviado</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Contagem de Etiquetas</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Nome da Tag</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taxonomia</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Distribuição da Taxonomia</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>A barra de navegação ajusta-se automaticamente com base nas funções e permissões do usuário.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>Este é o centro administrativo para o mini programa WeChat de exames e práticas.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Tempo esgotado</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>Tags Mais Usados</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>Experimente a API</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Próximos</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Contagem de Uso</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuários</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Ver Todos</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Bem-vindo</value>
