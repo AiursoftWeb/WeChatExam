@@ -75,6 +75,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Hallintapaneeli</value>
   </data>
+  <data name="Database Management" xml:space="preserve">
+    <value>Tietokannan hallinta</value>
+  </data>
   <data name="Delete Category" xml:space="preserve">
     <value>Poista kategoria</value>
   </data>
@@ -114,8 +117,14 @@
   <data name="Error" xml:space="preserve">
     <value>Virhe</value>
   </data>
+  <data name="Exam Management" xml:space="preserve">
+    <value>Kokeiden hallinta</value>
+  </data>
   <data name="Exams" xml:space="preserve">
     <value>Kokeet</value>
+  </data>
+  <data name="Export Questions" xml:space="preserve">
+    <value>Vie kysymykset</value>
   </data>
   <data name="Features" xml:space="preserve">
     <value>Ominaisuudet</value>
@@ -135,6 +144,9 @@
   <data name="Info" xml:space="preserve">
     <value>Tiedot</value>
   </data>
+  <data name="Join Official Exam" xml:space="preserve">
+    <value>Liity viralliseen kokeeseen</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Tietopisteet</value>
   </data>
@@ -153,11 +165,23 @@
   <data name="Marketing" xml:space="preserve">
     <value>Markkinointi</value>
   </data>
+  <data name="Marketing Management" xml:space="preserve">
+    <value>Markkinointin hallinta</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Uutiset</value>
+  </data>
   <data name="Papers" xml:space="preserve">
     <value>Kokeet</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Henkilökohtainen</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>Harjoituskäyttö</value>
+  </data>
+  <data name="Practice Test" xml:space="preserve">
+    <value>Harjoitustesti</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profiili</value>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Analysis:" xml:space="preserve">
+    <value>التحليل:</value>
+  </data>
+  <data name="Back to Practice Home" xml:space="preserve">
+    <value>العودة إلى الصفحة الرئيسية للتمرين</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>نعم/لا</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>اختيار</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>صحيح</value>
+  </data>
+  <data name="Correct Answers:" xml:space="preserve">
+    <value>الإجابات الصحيحة:</value>
+  </data>
+  <data name="Correct!" xml:space="preserve">
+    <value>صحيح!</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>غير صحيح</value>
+  </data>
+  <data name="No analysis available." xml:space="preserve">
+    <value>لا توجد تحليلات متاحة.</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="Please select an option." xml:space="preserve">
+    <value>الرجاء اختيار خيار.</value>
+  </data>
+  <data name="Please type an answer." xml:space="preserve">
+    <value>الرجاء إدخال الإجابة.</value>
+  </data>
+  <data name="Practice Results" xml:space="preserve">
+    <value>نتائج التدريب</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>السؤال</value>
+  </data>
+  <data name="Score:" xml:space="preserve">
+    <value>الدرجة:</value>
+  </data>
+  <data name="Standard Answer:" xml:space="preserve">
+    <value>الإجابة القياسية:</value>
+  </data>
+  <data name="Total Questions:" xml:space="preserve">
+    <value>إجمالي الأسئلة:</value>
+  </data>
+  <data name="Wrong" xml:space="preserve">
+    <value>خاطئ</value>
+  </data>
+  <data name="You have completed the practice session!" xml:space="preserve">
+    <value>لقد أكملت جلسة التدريب!</value>
+  </data>
+
+</root>

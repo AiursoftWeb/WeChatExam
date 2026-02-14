@@ -105,6 +105,8 @@ public class ViewModelArgsInjector(
         _ = localizer["News"];
     
         _ = localizer["Global Settings"];
+    
+        _ = localizer["Practice Session"];
     }
 
     public void InjectSimple(
