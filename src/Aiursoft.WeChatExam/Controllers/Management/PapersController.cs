@@ -21,11 +21,11 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1,
+        CascadedLinksGroupName = "Exam Management",
+        CascadedLinksIcon = "clipboard-list",
+        CascadedLinksOrder = 2,
         LinkText = "Papers",
-        LinkOrder = 4)]
+        LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
         var papers = await paperService.GetAllPapersAsync();

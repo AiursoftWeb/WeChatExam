@@ -20,11 +20,11 @@ public class ExamsController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1,
+        CascadedLinksGroupName = "Exam Management",
+        CascadedLinksIcon = "clipboard-list",
+        CascadedLinksOrder = 2,
         LinkText = "Exams",
-        LinkOrder = 5)]
+        LinkOrder = 2)]
     public async Task<IActionResult> Index()
     {
         var exams = await examService.GetAllExamsAsync();

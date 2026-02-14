@@ -1,20 +1,766 @@
 @model Aiursoft.WeChatExam.Models.DashboardViewModels.IndexViewModel
-<div class="text-center mt-5">
-    <h1 class="display-4">@Localizer["Admin center for exam WeChat mini program"]</h1>
-    <p>@Localizer["This is the admin center for the exam and practice WeChat mini program"]</p>
-</div>
 
-<div class="container-fluid p-5">
+<div class="container-fluid p-0">
+    @* === Row 0: Header === *@
     <div class="row mb-2 mb-xl-3">
         <div class="col-auto d-none d-sm-block">
-            <h3>@Localizer["Welcome"]</h3>
+            <h3>@Localizer["Dashboard"]</h3>
         </div>
-
         <div class="col-auto ms-auto text-end mt-n1">
             <a href="/swagger/index.html" class="btn btn-outline-primary shadow-sm" target="_blank">
                 <i class="align-middle" data-lucide="book"></i> @Localizer["Try the API"]
             </a>
+            <a href="javascript:location.reload()" class="btn btn-primary shadow-sm ms-1">
+                <i class="align-middle" data-lucide="refresh-cw"></i>
+            </a>
         </div>
     </div>
 
+    @* === Row 1: Summary Cards === *@
+    <div class="row">
+        <div class="col-12 col-sm-6 col-xxl-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">@Model.TotalQuestions</h3>
+                            <p class="mb-2">@Localizer["Questions"]</p>
+                            <div class="mb-0">
+                                <span class="badge badge-subtle-info me-2">
+                                    @Model.QuestionsChoice @Localizer["Choice"]
+                                </span>
+                                <span class="text-muted">@Localizer["in database"]</span>
+                            </div>
+                        </div>
+                        <div class="d-inline-block ms-3">
+                            <div class="stat">
+                                <i class="align-middle text-primary" data-lucide="help-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-xxl-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">@Model.TotalPapers</h3>
+                            <p class="mb-2">@Localizer["Papers"]</p>
+                            <div class="mb-0">
+                                <span class="badge badge-subtle-success me-2">
+                                    @Model.PapersFrozen @Localizer["Frozen"]
+                                </span>
+                                <span class="text-muted">@Model.PapersDraft @Localizer["Draft"]</span>
+                            </div>
+                        </div>
+                        <div class="d-inline-block ms-3">
+                            <div class="stat">
+                                <i class="align-middle text-success" data-lucide="file-text"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-xxl-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">@Model.TotalExams</h3>
+                            <p class="mb-2">@Localizer["Exams"]</p>
+                            <div class="mb-0">
+                                <span class="badge badge-subtle-success me-2">
+                                    @Model.ExamsActive @Localizer["Active"]
+                                </span>
+                                <span class="text-muted">@Model.ExamsUpcoming @Localizer["Upcoming"]</span>
+                            </div>
+                        </div>
+                        <div class="d-inline-block ms-3">
+                            <div class="stat">
+                                <i class="align-middle text-warning" data-lucide="clipboard-list"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-xxl-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body py-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-2">@Model.TotalUsers</h3>
+                            <p class="mb-2">@Localizer["Users"]</p>
+                            <div class="mb-0">
+                                <span class="badge badge-subtle-primary me-2">
+                                    @Model.TotalExamRecords @Localizer["Records"]
+                                </span>
+                                <span class="text-muted">@Localizer["exam attempts"]</span>
+                            </div>
+                        </div>
+                        <div class="d-inline-block ms-3">
+                            <div class="stat">
+                                <i class="align-middle text-danger" data-lucide="users"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* === Row 2: Charts & Stats === *@
+    <div class="row">
+        <div class="col-12 col-md-6 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Question Type Distribution"]</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-sm">
+                                <canvas id="chartQuestionTypes"></canvas>
+                            </div>
+                        </div>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>@Localizer["Type"]</th>
+                                    <th class="text-end">@Localizer["Count"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var questionTypes = new[]
+                                    {
+                                        (Localizer["Choice"].Value, Model.QuestionsChoice, "primary"),
+                                        (Localizer["Blank"].Value, Model.QuestionsBlank, "success"),
+                                        (Localizer["Bool"].Value, Model.QuestionsBool, "warning"),
+                                        (Localizer["Short Answer"].Value, Model.QuestionsShortAnswer, "info"),
+                                        (Localizer["Essay"].Value, Model.QuestionsEssay, "danger"),
+                                        (Localizer["Noun Explanation"].Value, Model.QuestionsNounExplanation, "secondary")
+                                    };
+                                    foreach (var (name, count, color) in questionTypes)
+                                    {
+                                        var pct = Model.TotalQuestions > 0 ? (int)Math.Round((double)count / Model.TotalQuestions * 100) : 0;
+                                        <tr>
+                                            <td><i class="fas fa-square-full text-@color"></i> @name</td>
+                                            <td class="text-end">@count</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Paper Status"]</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-sm">
+                                <canvas id="chartPaperStatus"></canvas>
+                            </div>
+                        </div>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>@Localizer["Status"]</th>
+                                    <th class="text-end">@Localizer["Count"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var paperStatuses = new[]
+                                    {
+                                        (Localizer["Draft"].Value, Model.PapersDraft, "warning"),
+                                        (Localizer["Publishable"].Value, Model.PapersPublishable, "primary"),
+                                        (Localizer["Frozen"].Value, Model.PapersFrozen, "info")
+                                    };
+                                    foreach (var (name, count, color) in paperStatuses)
+                                    {
+                                        var pct = Model.TotalPapers > 0 ? (int)Math.Round((double)count / Model.TotalPapers * 100) : 0;
+                                        <tr>
+                                            <td><i class="fas fa-square-full text-@color"></i> @name</td>
+                                            <td class="text-end">@count</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Top Tags"]</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-sm">
+                                <canvas id="chartTopTags"></canvas>
+                            </div>
+                        </div>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>@Localizer["Tag Name"]</th>
+                                    <th class="text-end">@Localizer["Usage Count"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.TopTags.Any())
+                                {
+                                    foreach (var tag in Model.TopTags)
+                                    {
+                                        <tr>
+                                            <td><i class="fas fa-tag text-primary"></i> @tag.Name</td>
+                                            <td class="text-end">@tag.UsageCount</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="2" class="text-center text-muted">@Localizer["No tags used yet"]</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Taxonomy Distribution"]</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-sm">
+                                <canvas id="chartTaxonomyStats"></canvas>
+                            </div>
+                        </div>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>@Localizer["Taxonomy"]</th>
+                                    <th class="text-end">@Localizer["Tag Count"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.TaxonomyStats.Any())
+                                {
+                                    foreach (var tax in Model.TaxonomyStats)
+                                    {
+                                        <tr>
+                                            <td><i class="fas fa-folder text-info"></i> @tax.Name</td>
+                                            <td class="text-end">@tax.TagCount</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="2" class="text-center text-muted">@Localizer["No taxonomies yet"]</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* === Row 4: Exam Performance & Practice === *@
+    <div class="row">
+        <div class="col-12 col-lg-8 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <div class="card-actions float-end">
+                        <a href="/Exams/Index" class="btn btn-sm btn-outline-primary">@Localizer["View All"]</a>
+                    </div>
+                    <h5 class="card-title mb-0">@Localizer["Recent Exams"]</h5>
+                </div>
+                <table class="table table-striped my-0">
+                    <thead>
+                        <tr>
+                            <th>@Localizer["Title"]</th>
+                            <th class="d-none d-md-table-cell text-end">@Localizer["Start"]</th>
+                            <th class="d-none d-md-table-cell text-end">@Localizer["End"]</th>
+                            <th class="text-end">@Localizer["Records"]</th>
+                            <th class="text-end">@Localizer["Status"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.RecentExams.Any())
+                        {
+                            @foreach (var exam in Model.RecentExams)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="/Exams/Details/@exam.Id">@exam.Title</a>
+                                    </td>
+                                    <td class="d-none d-md-table-cell text-end">
+                                        @exam.StartTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")
+                                    </td>
+                                    <td class="d-none d-md-table-cell text-end">
+                                        @exam.EndTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")
+                                    </td>
+                                    <td class="text-end">@exam.RecordCount</td>
+                                    <td class="text-end">
+                                        <span class="badge @exam.StatusBadgeClass">@Localizer[exam.Status]</span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    <i data-lucide="inbox" class="d-block mx-auto mb-2" style="width:32px;height:32px;"></i>
+                                    @Localizer["No exams yet"]
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4 d-flex">
+            <div class="w-100">
+                @* Exam Record Breakdown *@
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-2">@Model.TotalExamRecords</h3>
+                                <p class="mb-2">@Localizer["Exam Records"]</p>
+                                <div class="mb-0">
+                                    <span class="badge badge-subtle-success me-1">@Model.ExamRecordsSubmitted @Localizer["Submitted"]</span>
+                                    <span class="badge badge-subtle-warning me-1">@Model.ExamRecordsInProgress @Localizer["In Progress"]</span>
+                                    <span class="badge badge-subtle-danger">@Model.ExamRecordsTimedOut @Localizer["Timed Out"]</span>
+                                </div>
+                            </div>
+                            <div class="d-inline-block ms-3">
+                                <div class="stat">
+                                    <i class="align-middle text-info" data-lucide="bar-chart-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* Average Score *@
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-2">@Model.AverageExamScore.ToString("F1")</h3>
+                                <p class="mb-2">@Localizer["Average Score"]</p>
+                                <div class="mb-0">
+                                    <span class="text-muted">@Localizer["across all completed exams"]</span>
+                                </div>
+                            </div>
+                            <div class="d-inline-block ms-3">
+                                <div class="stat">
+                                    <i class="align-middle text-success" data-lucide="award"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* Practice Accuracy *@
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-2">@(Model.PracticeAccuracyPercent)%</h3>
+                                <p class="mb-2">@Localizer["Practice Accuracy"]</p>
+                                <div class="mb-0">
+                                    <span class="badge badge-subtle-success me-2">@Model.PracticeCorrect / @Model.TotalPracticeAttempts</span>
+                                    <span class="text-muted">@Localizer["correct answers"]</span>
+                                </div>
+                            </div>
+                            <div class="d-inline-block ms-3">
+                                <div class="stat">
+                                    <i class="align-middle text-primary" data-lucide="target"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* === Row 4: Content Overview & Recent Users === *@
+    <div class="row">
+        <div class="col-12 col-lg-4 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Content Overview"]</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <div class="p-3 border-bottom border-end">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="text-primary" data-lucide="folder" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h4 class="mb-0">@Model.TotalCategories</h4>
+                                        <small class="text-muted">@Localizer["Categories"]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border-bottom">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="text-success" data-lucide="git-branch" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h4 class="mb-0">@Model.TotalKnowledgePoints</h4>
+                                        <small class="text-muted">@Localizer["Knowledge Points"]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border-bottom border-end">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="text-warning" data-lucide="tag" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h4 class="mb-0">@Model.TotalTags</h4>
+                                        <small class="text-muted">@Localizer["Tags"]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border-bottom">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="text-info" data-lucide="newspaper" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h4 class="mb-0">@Model.TotalArticles</h4>
+                                        <small class="text-muted">@Localizer["Articles"]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border-end">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="text-danger" data-lucide="share-2" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h4 class="mb-0">@Model.TotalDistributionChannels</h4>
+                                        <small class="text-muted">@Localizer["Channels"]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="text-success" data-lucide="check-circle" style="width:20px;height:20px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h4 class="mb-0">@Model.ActiveDistributionChannels</h4>
+                                        <small class="text-muted">@Localizer["Active"]</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">@Localizer["Exam Status Overview"]</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="chart chart-sm">
+                            <canvas id="chartExamStatus"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <div class="card-actions float-end">
+                        <a href="/Users/Index" class="btn btn-sm btn-outline-primary">@Localizer["View All"]</a>
+                    </div>
+                    <h5 class="card-title mb-0">@Localizer["Recent Users"]</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.RecentUsers.Any())
+                    {
+                        @foreach (var user in Model.RecentUsers)
+                        {
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-body-tertiary rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;">
+                                        <i data-lucide="user" style="width:18px;height:18px;" class="text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <strong>@user.DisplayName</strong>
+                                    <div class="text-muted small">@user.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center text-muted py-4">
+                            <i data-lucide="users" class="d-block mx-auto mb-2" style="width:32px;height:32px;"></i>
+                            @Localizer["No users yet"]
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@* === Chart.js Scripts === *@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // --- Question Type Doughnut ---
+        var ctxQ = document.getElementById("chartQuestionTypes");
+        if (ctxQ) {
+            new Chart(ctxQ, {
+                type: "doughnut",
+                data: {
+                    labels: [
+                        "@Localizer["Choice"]",
+                        "@Localizer["Blank"]",
+                        "@Localizer["Bool"]",
+                        "@Localizer["Short Answer"]",
+                        "@Localizer["Essay"]",
+                        "@Localizer["Noun Explanation"]"
+                    ],
+                    datasets: [{
+                        data: [
+                            @Model.QuestionsChoice,
+                            @Model.QuestionsBlank,
+                            @Model.QuestionsBool,
+                            @Model.QuestionsShortAnswer,
+                            @Model.QuestionsEssay,
+                            @Model.QuestionsNounExplanation
+                        ],
+                        backgroundColor: [
+                            "rgba(59, 125, 221, 0.85)",
+                            "rgba(40, 167, 69, 0.85)",
+                            "rgba(255, 193, 7, 0.85)",
+                            "rgba(23, 162, 184, 0.85)",
+                            "rgba(220, 53, 69, 0.85)",
+                            "rgba(108, 117, 125, 0.85)"
+                        ],
+                        borderWidth: 3,
+                        borderColor: "#fff"
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: "65%",
+                    plugins: {
+                        legend: {
+                            position: "bottom",
+                            labels: { padding: 16, usePointStyle: true, pointStyle: "circle" }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Paper Status Pie ---
+        var ctxP = document.getElementById("chartPaperStatus");
+        if (ctxP) {
+            new Chart(ctxP, {
+                type: "pie",
+                data: {
+                    labels: [
+                        "@Localizer["Draft"]",
+                        "@Localizer["Publishable"]",
+                        "@Localizer["Frozen"]"
+                    ],
+                    datasets: [{
+                        data: [
+                            @Model.PapersDraft,
+                            @Model.PapersPublishable,
+                            @Model.PapersFrozen
+                        ],
+                        backgroundColor: [
+                            "rgba(255, 193, 7, 0.85)",
+                            "rgba(59, 125, 221, 0.85)",
+                            "rgba(23, 162, 184, 0.85)"
+                        ],
+                        borderWidth: 3,
+                        borderColor: "#fff"
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: "bottom",
+                            labels: { padding: 16, usePointStyle: true, pointStyle: "circle" }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Top Tags Bar ---
+        var ctxTags = document.getElementById("chartTopTags");
+        if (ctxTags) {
+            new Chart(ctxTags, {
+                type: "bar",
+                data: {
+                    labels: [@Html.Raw(string.Join(",", Model.TopTags.Select(t => $"'{t.Name}'")))],
+                    datasets: [{
+                        label: "@Localizer["Usage Count"]",
+                        data: [@string.Join(",", Model.TopTags.Select(t => t.UsageCount))],
+                        backgroundColor: "rgba(59, 125, 221, 0.85)",
+                        borderColor: "rgba(59, 125, 221, 0.85)",
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        barPercentage: 0.5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y', // Horizontal bar chart
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Taxonomy Stats Pie ---
+        var ctxTax = document.getElementById("chartTaxonomyStats");
+        if (ctxTax) {
+            new Chart(ctxTax, {
+                type: "pie",
+                data: {
+                    labels: [@Html.Raw(string.Join(",", Model.TaxonomyStats.Select(t => $"'{t.Name}'")))],
+                    datasets: [{
+                        data: [@string.Join(",", Model.TaxonomyStats.Select(t => t.TagCount))],
+                        backgroundColor: [
+                            "rgba(59, 125, 221, 0.85)",
+                            "rgba(255, 193, 7, 0.85)",
+                            "rgba(40, 167, 69, 0.85)",
+                            "rgba(220, 53, 69, 0.85)",
+                            "rgba(23, 162, 184, 0.85)"
+                        ],
+                        borderWidth: 2,
+                        borderColor: "#fff"
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: "bottom",
+                            labels: { padding: 16, usePointStyle: true, pointStyle: "circle" }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- Exam Status Bar ---
+        var ctxE = document.getElementById("chartExamStatus");
+        if (ctxE) {
+            new Chart(ctxE, {
+                type: "bar",
+                data: {
+                    labels: [
+                        "@Localizer["Active"]",
+                        "@Localizer["Upcoming"]",
+                        "@Localizer["Ended"]"
+                    ],
+                    datasets: [{
+                        label: "@Localizer["Exams"]",
+                        data: [
+                            @Model.ExamsActive,
+                            @Model.ExamsUpcoming,
+                            @Model.ExamsEnded
+                        ],
+                        backgroundColor: [
+                            "rgba(40, 167, 69, 0.85)",
+                            "rgba(23, 162, 184, 0.85)",
+                            "rgba(108, 117, 125, 0.85)"
+                        ],
+                        borderRadius: 6,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1 }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
