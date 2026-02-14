@@ -46,11 +46,20 @@
                 <h5 class="card-title mb-0">@Localizer["MTQL Question Finder"]</h5>
             </div>
             <div class="card-body">
-                <div class="input-group mb-3">
-                    <input type="text" id="mtql-input" class="form-control" placeholder='@Localizer["Enter MTQL query (e.g. content:\"math\")"]' />
-                    <button class="btn btn-outline-secondary" type="button" onclick="searchQuestions()">
-                        <i class="align-middle" data-lucide="search"></i> @Localizer["Search"]
-                    </button>
+                <div class="row g-2 mb-3">
+                    <div class="col-md-4">
+                        <select id="type-filter" asp-items="Model.QuestionTypeOptions" class="form-select">
+                            <option value="">@Localizer["All Types"]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" id="mtql-input" class="form-control" placeholder='@Localizer["Enter MTQL query (e.g. content:\"math\")"]' />
+                            <button class="btn btn-outline-secondary" type="button" onclick="searchQuestions()">
+                                <i class="align-middle" data-lucide="search"></i> @Localizer["Search"]
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div id="search-results-container" class="list-group overflow-auto" style="max-height: 300px;">
                     <div class="list-group-item text-muted">@Localizer["Search results will appear here..."]</div>
@@ -87,10 +96,11 @@
         <script>
             function searchQuestions() {
                 var mtql = document.getElementById('mtql-input').value;
+                var type = document.getElementById('type-filter').value;
                 var container = document.getElementById('search-results-container');
                 container.innerHTML = '<div class="list-group-item">@Localizer["Searching..."]</div>';
 
-                fetch(`/Questions/Search?mtql=${encodeURIComponent(mtql)}`)
+                fetch(`/Questions/Search?mtql=${encodeURIComponent(mtql)}&questionType=${type}`)
                     .then(response => {
                         if (!response.ok) {
                             return response.text().then(text => { throw new Error(text); });
@@ -105,9 +115,10 @@
                         }
                         data.forEach(q => {
                             var item = document.createElement('label');
-                            item.className = 'list-group-item d-flex gap-2';
+                            item.className = 'list-group-item d-flex gap-2 align-items-center';
                             item.innerHTML = `
                                 <input class="form-check-input flex-shrink-0" type="checkbox" value="${q.id}" data-content="${q.content}">
+                                <span class="badge bg-info">${q.questionType}</span>
                                 <span>${q.content}</span>
                             `;
                             container.appendChild(item);

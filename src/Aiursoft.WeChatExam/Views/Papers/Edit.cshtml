@@ -132,45 +132,23 @@
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">@Localizer["Add Question"]</h5>
-            </div>
-            <div class="card-body">
-                <form asp-action="AddQuestion" asp-route-id="@Model.Id" method="post">
-                    <div class="mb-3">
-                        <label class="form-label">@Localizer["Select Question"]</label>
-                        <select name="questionId" class="form-select" required>
-                            <option value="">@Localizer["-- Select --"]</option>
-                            @foreach (var q in Model.AvailableQuestions.Where(q => !Model.PaperQuestions.Any(pq => pq.QuestionId == q.Id)))
-                            {
-                                <option value="@q.Id">@q.Content[..Math.Min(60, q.Content.Length)]...</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label class="form-label">@Localizer["Order"]</label>
-                            <input type="number" name="order" class="form-control" value="@(Model.PaperQuestions.Count + 1)" min="1" />
-                        </div>
-                        <div class="col-6">
-                            <label class="form-label">@Localizer["Score"]</label>
-                            <input type="number" name="score" class="form-control" value="10" min="1" />
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success mt-3">@Localizer["Add"]</button>
-                </form>
-            </div>
-        </div>
-
         <div class="card mt-3">
             <div class="card-header">
-                <h5 class="card-title mb-0">@Localizer["Batch Add via MTQL"]</h5>
+                <h5 class="card-title mb-0">@Localizer["Search & Add Questions"]</h5>
             </div>
             <div class="card-body">
-                <div class="input-group mb-3">
-                    <input type="text" id="mtqlInput" class="form-control" placeholder="e.g. content contains 'sql'" />
-                    <button class="btn btn-outline-primary" type="button" id="mtqlSearchBtn">@Localizer["Search"]</button>
+                <div class="row g-2 mb-3">
+                    <div class="col-md-4">
+                        <select id="typeFilter" asp-items="Model.QuestionTypeOptions" class="form-select">
+                            <option value="">@Localizer["All Types"]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input type="text" id="mtqlInput" class="form-control" placeholder="MTQL e.g. content contains 'sql'" />
+                            <button class="btn btn-outline-primary" type="button" id="mtqlSearchBtn">@Localizer["Search"]</button>
+                        </div>
+                    </div>
                 </div>
                 <div id="mtqlResults" class="mb-3" style="max-height: 400px; overflow-y: auto; display: none;">
                     <table class="table table-sm table-hover">
@@ -222,12 +200,13 @@
 
             mtqlSearchBtn.addEventListener('click', function () {
                 const mtql = mtqlInput.value;
+                const type = document.getElementById('typeFilter').value;
                 const paperId = '@Model.Id';
                 
                 mtqlSearchBtn.disabled = true;
                 mtqlSearchBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
-                fetch(`/Papers/SearchQuestions/${paperId}?mtql=${encodeURIComponent(mtql)}`)
+                fetch(`/Papers/SearchQuestions/${paperId}?mtql=${encodeURIComponent(mtql)}&questionType=${type}`)
                     .then(response => {
                         if (!response.ok) {
                             return response.json().then(err => { throw new Error(err.message || 'Search failed'); });

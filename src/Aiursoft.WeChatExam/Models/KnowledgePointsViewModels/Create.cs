@@ -52,6 +52,8 @@ public class CreateViewModel: UiStackLayoutViewModel
     /// 可选的题目
     /// </summary>
     public List<Question> AvailableQuestions { get; set; } = new();
+
+    public IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> QuestionTypeOptions { get; set; } = new List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
 }
 
 
