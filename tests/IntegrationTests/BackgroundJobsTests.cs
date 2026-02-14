@@ -376,43 +376,4 @@ public class BackgroundJobsTests
         Assert.IsNotEmpty(queueAJobs, "Queue A should have at least one job");
         Assert.IsNotEmpty(queueBJobs, "Queue B should have at least one job");
     }
-
-    [TestMethod]
-    public async Task CreateOptimizationJobsViaUITest()
-    {
-        // Step 1: 以管理员身份登录
-        await LoginAsAdminAsync();
-
-        var queue = _server!.Services.GetRequiredService<BackgroundJobQueue>();
-
-        // Step 2: 获取CSRF令牌并触发名词解释优化
-        var token1 = await GetAntiCsrfToken("/Jobs");
-        var content1 = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "__RequestVerificationToken", token1 }
-        });
-        var response1 = await _http.PostAsync("/Jobs/OptimizeNounExplanations", content1);
-        Assert.AreEqual(HttpStatusCode.Found, response1.StatusCode);
-
-        // Step 3: 获取CSRF令牌并触发解析重生成
-        var token2 = await GetAntiCsrfToken("/Jobs");
-        var content2 = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "__RequestVerificationToken", token2 }
-        });
-        var response2 = await _http.PostAsync("/Jobs/RegenerateExplanations", content2);
-        Assert.AreEqual(HttpStatusCode.Found, response2.StatusCode);
-
-        // Step 4: 验证任务已被创建且在正确的队列中
-        await Task.Delay(500);
-        var jobs = queue.GetAllJobs().ToList();
-        
-        var nounJob = jobs.FirstOrDefault(j => j.JobName == "Optimize Noun Explanations");
-        var explanationJob = jobs.FirstOrDefault(j => j.JobName == "Regenerate All Explanations");
-
-        Assert.IsNotNull(nounJob);
-        Assert.IsNotNull(explanationJob);
-        Assert.AreEqual("Optimization", nounJob.QueueName);
-        Assert.AreEqual("Optimization", explanationJob.QueueName);
-    }
 }

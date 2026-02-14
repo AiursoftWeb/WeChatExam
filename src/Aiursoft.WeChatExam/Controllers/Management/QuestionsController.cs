@@ -21,7 +21,6 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class QuestionsController(
     WeChatExamDbContext context,
     ITagService tagService,
-    AiClassificationService aiClassificationService,
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
     // GET: questions
@@ -507,41 +506,5 @@ public class QuestionsController(
             DeletedCount = questionsToDelete.Count,
             DeletedIds = questionsToDelete.Select(q => q.Id).ToArray()
         });
-    }
-
-    // POST: questions/batch-ai-classify
-    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> BatchAiClassify([FromBody] BatchAiClassifyRequest request)
-    {
-        if (!request.QuestionIds.Any())
-        {
-            return BadRequest("No questions selected for classification.");
-        }
-
-        if (!request.CategoryIds.Any())
-        {
-            return BadRequest("No categories selected for classification.");
-        }
-
-        try
-        {
-            var enqueuedCount = await aiClassificationService.EnqueueClassificationJobs(
-                request.QuestionIds,
-                request.CategoryIds);
-
-            return Json(new BatchAiClassifyResult
-            {
-                EnqueuedCount = enqueuedCount,
-                Message = enqueuedCount > 0
-                    ? $"Successfully enqueued {enqueuedCount} classification job(s)."
-                    : "No new jobs enqueued (questions may already have pending classification jobs)."
-            });
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
     }
 }
