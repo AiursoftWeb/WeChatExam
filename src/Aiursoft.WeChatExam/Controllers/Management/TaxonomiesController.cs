@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
-[Authorize]
+[Authorize(Policy = AppPermissionNames.CanManageTags)]
 public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService taxonomyService) : Controller
 {
         // GET: Taxonomies
@@ -40,14 +40,12 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         });
     }
 
-    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     public IActionResult Create()
     {
         return this.StackView(new CreateViewModel());
     }
 
     [HttpPost]
-    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
@@ -60,7 +58,6 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null) return NotFound();
@@ -76,7 +73,6 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
     }
 
     [HttpPost]
-    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(EditViewModel model)
     {
@@ -94,7 +90,6 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null) return NotFound();
@@ -112,7 +107,6 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
     }
 
     [HttpPost]
-    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)

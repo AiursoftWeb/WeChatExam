@@ -15,7 +15,6 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// <summary>
 /// This controller is used to handle roles related actions like create, edit, delete, etc.
 /// </summary>
-[Authorize]
 [LimitPerMin]
 public class RolesController(
     UserManager<User> userManager,
@@ -24,6 +23,7 @@ public class RolesController(
     : Controller
 {
     // GET: Roles
+    [Authorize(Policy = AppPermissionNames.CanReadRoles)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -57,6 +57,7 @@ public class RolesController(
     }
 
     // GET: Roles/Details/5
+    [Authorize(Policy = AppPermissionNames.CanReadRoles)]
     public async Task<IActionResult> Details(string? id)
     {
         if (id == null) return NotFound();

@@ -12,6 +12,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class DistributionChannelsController(IDistributionChannelService distributionChannelService) : Controller
 {
+    [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -66,6 +67,7 @@ public class DistributionChannelsController(IDistributionChannelService distribu
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
     public async Task<IActionResult> Details(Guid? id)
     {
         if (id == null) return NotFound();

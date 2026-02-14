@@ -26,6 +26,7 @@ public class QuestionsController(
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
     // GET: questions
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -160,6 +161,7 @@ public class QuestionsController(
         });
     }
 
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Search(string mtql)
     {
         var query = context.Questions.AsQueryable();
@@ -286,6 +288,7 @@ public class QuestionsController(
     }
 
     // GET: questions/{id}
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Details(Guid? id)
     {
         if (id == null) return NotFound();

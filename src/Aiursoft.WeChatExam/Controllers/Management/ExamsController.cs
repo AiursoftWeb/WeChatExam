@@ -18,6 +18,7 @@ public class ExamsController(
     IPaperService paperService) : Controller
 {
     // GET: exams
+    [Authorize(Policy = AppPermissionNames.CanReadExams)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -132,6 +133,7 @@ public class ExamsController(
     }
 
     // GET: exams/{id}/details
+    [Authorize(Policy = AppPermissionNames.CanReadExams)]
     public async Task<IActionResult> Details(Guid? id)
     {
          if (id == null) return NotFound();
@@ -152,6 +154,7 @@ public class ExamsController(
     }
 
     // GET: exams/review/{recordId}
+    [Authorize(Policy = AppPermissionNames.CanReadExams)]
     public async Task<IActionResult> Review(Guid? recordId)
 
     {
