@@ -63,38 +63,6 @@ public class JobsController(BackgroundJobQueue backgroundJobQueue) : Controller
         return CreateTestJob("Queue B", "Job B");
     }
 
-    [HttpPost]
-    [Authorize(Policy = AppPermissionNames.CanTriggerOptimizationJobs)]
-    [ValidateAntiForgeryToken]
-    public IActionResult OptimizeNounExplanations()
-    {
-        backgroundJobQueue.QueueWithDependency<IOptimizationService>(
-            queueName: "Optimization",
-            jobName: "Optimize Noun Explanations",
-            job: async (service) =>
-            {
-                await service.OptimizeNounExplanations();
-            });
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    [HttpPost]
-    [Authorize(Policy = AppPermissionNames.CanTriggerOptimizationJobs)]
-    [ValidateAntiForgeryToken]
-    public IActionResult RegenerateExplanations()
-    {
-        backgroundJobQueue.QueueWithDependency<IOptimizationService>(
-            queueName: "Optimization",
-            jobName: "Regenerate All Explanations",
-            job: async (service) =>
-            {
-                await service.RegenerateExplanations();
-            });
-
-        return RedirectToAction(nameof(Index));
-    }
-
     private IActionResult CreateTestJob(string queueName, string jobPrefix)
     {
         // Queue a test job that sleeps for 15-30 seconds and has 10% chance of failure

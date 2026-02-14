@@ -13,38 +13,6 @@
 <h1 class="h3 mb-3">@Localizer["Background Jobs"]</h1>
 <p class="lead">@Localizer["Monitor and manage background job queues and their execution status."]</p>
 
-@if ((await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanTriggerOptimizationJobs)).Succeeded)
-{
-    <div class="row mb-3">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">@Localizer["AI Optimization Tasks"]</h5>
-                </div>
-                <div class="card-body">
-                    <form asp-action="OptimizeNounExplanations" method="post" class="d-inline me-2">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-warning">
-                            <i class="align-middle me-2" data-lucide="zap"></i>
-                            @Localizer["Optimize Noun Explanations"]
-                        </button>
-                    </form>
-                    <form asp-action="RegenerateExplanations" method="post" class="d-inline">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-info">
-                            <i class="align-middle me-2" data-lucide="refresh-cw"></i>
-                            @Localizer["Regenerate All Explanations"]
-                        </button>
-                    </form>
-                    <small class="text-muted ms-2 d-block mt-2">
-                        @Localizer["These tasks use AI to improve question content. They will process all relevant questions in the database sequentially."]
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
 <div class="row mb-3">
     <div class="col-12">
         <form asp-action="CreateTestJobA" method="post" class="d-inline me-2">

@@ -1,0 +1,204 @@
+@using Aiursoft.WeChatExam.Models
+@model Aiursoft.WeChatExam.Models.AiTask
+@{
+    ViewData["Title"] = Localizer["AI Task Preview"];
+}
+
+<div class="row mb-3">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h1 class="h3 mb-0">@Localizer["AI Task Preview"]</h1>
+        <div id="taskStatus" class="badge bg-primary">@Localizer["Processing..."]</div>
+    </div>
+</div>
+
+<div id="questionsContainer" class="row">
+    @foreach (var item in Model.Items.Values)
+    {
+        <div class="col-12 mb-4 question-card" data-question-id="@item.QuestionId">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">@item.QuestionContent</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 border-end">
+                            <h6 class="fw-bold text-muted">@Localizer["Old Explanation"]</h6>
+                            <div class="p-2 bg-light rounded" style="min-height: 100px; white-space: pre-wrap;">@item.OldExplanation</div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-primary">@Localizer["AI New Explanation"]</h6>
+                            <div class="new-explanation-container p-2 border rounded" style="min-height: 100px; white-space: pre-wrap;">
+                                @if (item.Status == AiTaskStatus.Completed)
+                                {
+                                    @item.NewExplanation
+                                }
+                                else if (item.Status == AiTaskStatus.Failed)
+                                {
+                                    <span class="text-danger">@item.Error</span>
+                                }
+                                else
+                                {
+                                    <div class="d-flex justify-content-center align-items-center h-100 py-4">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-end gap-2 action-buttons @(item.Status == AiTaskStatus.Completed ? "" : "d-none")">
+                    <button class="btn btn-outline-danger btn-abandon" onclick="abandon('@item.QuestionId')">
+                        <i class="align-middle me-1" data-lucide="trash-2"></i> @Localizer["Abandon"]
+                    </button>
+                    <button class="btn btn-outline-primary btn-edit" onclick="showEdit('@item.QuestionId')">
+                        <i class="align-middle me-1" data-lucide="edit"></i> @Localizer["Edit"]
+                    </button>
+                    <button class="btn btn-success btn-adopt" onclick="adopt('@item.QuestionId')">
+                        <i class="align-middle me-1" data-lucide="check"></i> @Localizer["Adopt"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Localizer["Edit AI Explanation"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editQuestionId" />
+                <textarea id="editTextarea" class="form-control" rows="15"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                <button type="button" class="btn btn-primary" onclick="saveEdit()">@Localizer["Save & Adopt"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.AntiForgeryToken()
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script>
+        const taskId = '@Model.Id';
+        const questionsContainer = document.getElementById('questionsContainer');
+        const taskStatusBadge = document.getElementById('taskStatus');
+        let pollingInterval;
+
+        async function pollStatus() {
+            try {
+                const response = await fetch(`@Url.Action("GetStatus")?taskId=${taskId}`);
+                if (!response.ok) {
+                    clearInterval(pollingInterval);
+                    return;
+                }
+                const data = await response.json();
+                
+                data.items.forEach(item => {
+                    const card = document.querySelector(`.question-card[data-question-id="${item.questionId}"]`);
+                    if (!card) return;
+
+                    const container = card.querySelector('.new-explanation-container');
+                    const footer = card.querySelector('.action-buttons');
+
+                    if (item.status === 2) { // Completed
+                        container.innerHTML = item.newExplanation;
+                        footer.classList.remove('d-none');
+                    } else if (item.status === 3) { // Failed
+                        container.innerHTML = `<span class="text-danger">${item.error || 'Unknown error'}</span>`;
+                        footer.classList.add('d-none'); 
+                    }
+                });
+
+                if (data.isCompleted) {
+                    clearInterval(pollingInterval);
+                    taskStatusBadge.textContent = '@Localizer["Completed"]';
+                    taskStatusBadge.className = 'badge bg-success';
+                }
+            } catch (error) {
+                console.error('Polling error:', error);
+            }
+        }
+
+        async function adopt(questionId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            const response = await fetch(`@Url.Action("Adopt")?taskId=${taskId}&questionId=${questionId}`, {
+                method: 'POST',
+                headers: { 'RequestVerificationToken': token }
+            });
+            if (response.ok) {
+                dismissCard(questionId);
+            }
+        }
+
+        async function abandon(questionId) {
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            const response = await fetch(`@Url.Action("Abandon")?taskId=${taskId}&questionId=${questionId}`, {
+                method: 'POST',
+                headers: { 'RequestVerificationToken': token }
+            });
+            if (response.ok) {
+                dismissCard(questionId);
+            }
+        }
+
+        function showEdit(questionId) {
+            const card = document.querySelector(`.question-card[data-question-id="${questionId}"]`);
+            const currentContent = card.querySelector('.new-explanation-container').textContent.trim();
+            document.getElementById('editQuestionId').value = questionId;
+            document.getElementById('editTextarea').value = currentContent;
+            new bootstrap.Modal(document.getElementById('editModal')).show();
+        }
+
+        async function saveEdit() {
+            const questionId = document.getElementById('editQuestionId').value;
+            const newContent = document.getElementById('editTextarea').value;
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            const response = await fetch(`@Url.Action("Edit")?taskId=${taskId}&questionId=${questionId}`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token 
+                },
+                body: JSON.stringify(newContent)
+            });
+
+            if (response.ok) {
+                bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+                dismissCard(questionId);
+            }
+        }
+
+        function dismissCard(questionId) {
+            const card = document.querySelector(`.question-card[data-question-id="${questionId}"]`);
+            if (card) {
+                card.style.transition = 'all 0.5s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(100px)';
+                setTimeout(() => {
+                    card.remove();
+                    checkAllDismissed();
+                }, 500);
+            }
+        }
+
+        function checkAllDismissed() {
+            if (questionsContainer.children.length === 0) {
+                window.location.href = '@Url.Action("Index", "Questions")';
+            }
+        }
+
+        pollingInterval = setInterval(pollStatus, 2000);
+        pollStatus();
+    </script>
+}
