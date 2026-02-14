@@ -1,4 +1,3 @@
-using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
@@ -8,10 +7,6 @@ using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -26,7 +21,7 @@ public class AiTasksController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> GenerateExplanations([FromBody] Guid[] questionIds)
     {
-        if (questionIds == null || !questionIds.Any())
+        if (!questionIds.Any())
         {
             return BadRequest("No questions selected.");
         }
@@ -135,13 +130,13 @@ public class AiTasksController(
     public async Task<IActionResult> Adopt(Guid taskId, Guid questionId)
     {
         var task = aiTaskService.GetTask(taskId);
-        if (task == null || !task.Items.TryGetValue(questionId, out var item))
+        if (task == null || !task.Items.TryGetValue(questionId, out _))
         {
             return NotFound();
         }
 
         var question = await dbContext.Questions.FindAsync(questionId);
-        if (question != null && !string.IsNullOrWhiteSpace(item.NewExplanation))
+        if (question != null && task.Items.TryGetValue(questionId, out var item) && !string.IsNullOrWhiteSpace(item.NewExplanation))
         {
             question.Explanation = item.NewExplanation;
             await dbContext.SaveChangesAsync();
@@ -153,7 +148,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Abandon(Guid taskId, Guid questionId)
+    public IActionResult Abandon(Guid taskId, Guid questionId)
     {
         var task = aiTaskService.GetTask(taskId);
         if (task == null)
@@ -170,7 +165,7 @@ public class AiTasksController(
     public async Task<IActionResult> Edit(Guid taskId, Guid questionId, [FromBody] string newExplanation)
     {
         var task = aiTaskService.GetTask(taskId);
-        if (task == null || !task.Items.TryGetValue(questionId, out var item))
+        if (task == null || !task.Items.TryGetValue(questionId, out _))
         {
             return NotFound();
         }
