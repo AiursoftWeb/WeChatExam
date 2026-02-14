@@ -8,22 +8,31 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">@Localizer["Search Questions"]</h5>
+<div class="card mb-3">
+    <div class="card-body">
+        <form asp-action="Index" method="get">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label class="form-label">@Localizer["Type"]</label>
+                    <select name="questionType" asp-items="Model.QuestionTypeOptions" class="form-select">
+                        <option value="">@Localizer["All Types"]</option>
+                    </select>
                 </div>
-                <div class="card-body">
-                    <form asp-action="Index" method="get">
-                        <div class="input-group mb-3">
-                            <input type="text" name="mtql" class="form-control" placeholder="MTQL (e.g. tag: 'Easy' AND type: 'Choice')" value="@Model.Mtql">
-                            <button class="btn btn-primary" type="submit">@Localizer["Search"]</button>
-                        </div>
-                        <div class="text-muted small">
-                            <a href="https://gitlab.aiursoft.com/aiursoft/wechatexam/-/blob/master/docs/structured_question_format.md" target="_blank">MTQL Syntax Help</a>
-                        </div>
-                    </form>
+                <div class="col-md-6">
+                    <label class="form-label">@Localizer["MTQL Query"]</label>
+                    <div class="input-group">
+                        <input type="text" name="mtql" value="@Model.Mtql" class="form-control" placeholder="e.g. content contains 'sql'" />
+                        <button type="submit" class="btn btn-primary">@Localizer["Search"]</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary w-100">@Localizer["Reset"]</a>
                 </div>
             </div>
+        </form>
+    </div>
+</div>
+
 
             <form asp-action="Start" method="post">
                 <div class="card">

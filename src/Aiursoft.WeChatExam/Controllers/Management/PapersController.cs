@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -15,7 +16,10 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// Controller for managing exam papers
 /// </summary>
 [LimitPerMin]
-public class PapersController(WeChatExamDbContext context, IPaperService paperService) : Controller
+public class PapersController(
+    WeChatExamDbContext context, 
+    IPaperService paperService,
+    IStringLocalizer<PapersController> localizer) : Controller
 {
     // GET: papers
     [RenderInNavBar(
@@ -110,13 +114,6 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         var associatedCategories = await paperService.GetCategoriesForPaperAsync(id.Value);
         var selectedCategoryId = associatedCategories.FirstOrDefault()?.Id;
 
-        var availableQuestionsQuery = context.Questions.AsQueryable();
-        if (selectedCategoryId.HasValue)
-        {
-            availableQuestionsQuery = availableQuestionsQuery.Where(q => q.CategoryId == selectedCategoryId.Value);
-        }
-        var availableQuestions = await availableQuestionsQuery.OrderByDescending(q => q.CreationTime).ToListAsync();
-
         var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
 
         return this.StackView(new EditViewModel
@@ -127,13 +124,17 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
             IsFree = paper.IsFree,
             Status = paper.Status,
             PaperQuestions = questions,
-            AvailableQuestions = availableQuestions,
             SelectedCategoryId = selectedCategoryId,
             AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
                 Text = c.Title,
                 Selected = c.Id == selectedCategoryId
+            }),
+            QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
             })
         });
     }
@@ -150,19 +151,17 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         {
             model.PaperQuestions = await paperService.GetQuestionsForPaperAsync(id);
             
-             var availableQuestionsQuery = context.Questions.AsQueryable();
-            if (model.SelectedCategoryId.HasValue)
-            {
-                availableQuestionsQuery = availableQuestionsQuery.Where(q => q.CategoryId == model.SelectedCategoryId.Value);
-            }
-            model.AvailableQuestions = await availableQuestionsQuery.OrderByDescending(q => q.CreationTime).ToListAsync();
-
             var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
             model.AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
                 Text = c.Title,
                 Selected = c.Id == model.SelectedCategoryId
+            });
+            model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
             });
             
             return this.StackView(model);
@@ -182,20 +181,18 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
         {
             ModelState.AddModelError("", ex.Message);
             model.PaperQuestions = await paperService.GetQuestionsForPaperAsync(id);
-            // Re-fetch logic similar to above
-            var availableQuestionsQuery = context.Questions.AsQueryable();
-            if (model.SelectedCategoryId.HasValue)
-            {
-                availableQuestionsQuery = availableQuestionsQuery.Where(q => q.CategoryId == model.SelectedCategoryId.Value);
-            }
-            model.AvailableQuestions = await availableQuestionsQuery.OrderByDescending(q => q.CreationTime).ToListAsync();
-
+            
             var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
             model.AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
                 Text = c.Title,
                 Selected = c.Id == model.SelectedCategoryId
+            });
+            model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
             });
             return this.StackView(model);
         }
@@ -222,9 +219,14 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
 
     // GET: papers/{id}/search-questions
     [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-    public async Task<IActionResult> SearchQuestions(Guid id, string mtql)
+    public async Task<IActionResult> SearchQuestions(Guid id, string? mtql, QuestionType? questionType)
     {
         var query = context.Questions.AsQueryable();
+
+        if (questionType.HasValue)
+        {
+            query = query.Where(q => q.QuestionType == questionType.Value);
+        }
 
         if (!string.IsNullOrWhiteSpace(mtql))
         {
@@ -253,7 +255,7 @@ public class PapersController(WeChatExamDbContext context, IPaperService paperSe
             {
                 q.Id,
                 Content = q.Content.Length > 100 ? q.Content.Substring(0, 100) + "..." : q.Content,
-                q.QuestionType
+                QuestionType = q.QuestionType.ToString()
             })
             .ToListAsync();
 

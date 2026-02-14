@@ -34,7 +34,7 @@ public class EditViewModel : UiStackLayoutViewModel
 
     public IEnumerable<SelectListItem> AvailableCategories { get; set; } = new List<SelectListItem>();
 
-    public List<PaperQuestion> PaperQuestions { get; set; } = new();
+    public IEnumerable<SelectListItem> QuestionTypeOptions { get; set; } = new List<SelectListItem>();
 
-    public List<Question> AvailableQuestions { get; set; } = new();
+    public List<PaperQuestion> PaperQuestions { get; set; } = new();
 }

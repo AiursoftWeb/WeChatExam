@@ -5,7 +5,9 @@ using Aiursoft.WeChatExam.Models.PracticeViewModels;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -13,7 +15,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class PracticeController(
     WeChatExamDbContext context,
-    IGradingService gradingService) : Controller
+    IGradingService gradingService,
+    IStringLocalizer<PracticeController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -23,9 +26,14 @@ public class PracticeController(
         CascadedLinksOrder = 2,
         LinkText = "Practice Test",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index(string? mtql)
+    public async Task<IActionResult> Index(string? mtql, QuestionType? questionType)
     {
         var query = context.Questions.AsQueryable();
+
+        if (questionType.HasValue)
+        {
+            query = query.Where(q => q.QuestionType == questionType.Value);
+        }
 
         if (!string.IsNullOrWhiteSpace(mtql))
         {
@@ -48,9 +56,19 @@ public class PracticeController(
             .Take(100)
             .ToListAsync();
 
+        var questionTypeOptions = Enum.GetValues<QuestionType>()
+            .Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()],
+                Selected = questionType == t
+            });
+
         return this.StackView(new IndexViewModel
         {
             Mtql = mtql,
+            QuestionType = questionType,
+            QuestionTypeOptions = questionTypeOptions,
             Questions = questions
         });
     }

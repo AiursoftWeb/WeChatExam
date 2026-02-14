@@ -6,7 +6,9 @@ using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -14,7 +16,9 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// This controller is used to handle knowledgePoints related actions like create, edit, delete, etc.
 /// </summary>
 [LimitPerMin]
-public class KnowledgePointsController(WeChatExamDbContext context) : Controller
+public class KnowledgePointsController(
+    WeChatExamDbContext context,
+    IStringLocalizer<KnowledgePointsController> localizer) : Controller
 {
 
     // GET: knowledge-points
@@ -51,7 +55,12 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
         {
             AvailableParents = knowledgePoints,
             AvailableCategories = await context.Categories.ToListAsync(),
-            AvailableQuestions = new List<Question>()
+            AvailableQuestions = new List<Question>(),
+            QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
+            })
         };
         return this.StackView(model);
     }
@@ -69,6 +78,11 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
             model.AvailableQuestions = await context.Questions
                 .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                 .ToListAsync();
+            model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
+            });
             return this.StackView(model);
         }
 
@@ -86,6 +100,11 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                 model.AvailableQuestions = await context.Questions
                     .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                     .ToListAsync();
+                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+                {
+                    Value = t.ToString(),
+                    Text = localizer[t.GetDisplayName()]
+                });
                 return this.StackView(model);
             }
         }
@@ -181,7 +200,12 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
             AvailableCategories = availableCategories,
             AvailableQuestions = selectedQuestions,
             SelectedCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(ck => ck.CategoryId).ToList(),
-            SelectedQuestionIds = knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).ToList()
+            SelectedQuestionIds = knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).ToList(),
+            QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
+            })
         };
 
         return this.StackView(model);
@@ -204,6 +228,11 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
             model.AvailableQuestions = await context.Questions
                 .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                 .ToListAsync();
+            model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+            {
+                Value = t.ToString(),
+                Text = localizer[t.GetDisplayName()]
+            });
             return this.StackView(model);
         }
 
@@ -227,6 +256,11 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                 model.AvailableQuestions = await context.Questions
                     .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                     .ToListAsync();
+                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+                {
+                    Value = t.ToString(),
+                    Text = localizer[t.GetDisplayName()]
+                });
                 return this.StackView(model);
             }
 
@@ -243,6 +277,11 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                 model.AvailableQuestions = await context.Questions
                     .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                     .ToListAsync();
+                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+                {
+                    Value = t.ToString(),
+                    Text = localizer[t.GetDisplayName()]
+                });
                 return this.StackView(model);
             }
 
@@ -257,6 +296,11 @@ public class KnowledgePointsController(WeChatExamDbContext context) : Controller
                 model.AvailableQuestions = await context.Questions
                     .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                     .ToListAsync();
+                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
+                {
+                    Value = t.ToString(),
+                    Text = localizer[t.GetDisplayName()]
+                });
                 return this.StackView(model);
             }
         }

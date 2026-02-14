@@ -159,9 +159,15 @@ public class QuestionsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
-    public async Task<IActionResult> Search(string mtql)
+    public async Task<IActionResult> Search(string? mtql, QuestionType? questionType)
     {
         var query = context.Questions.AsQueryable();
+
+        if (questionType.HasValue)
+        {
+            query = query.Where(q => q.QuestionType == questionType.Value);
+        }
+
         if (!string.IsNullOrWhiteSpace(mtql))
         {
             try
@@ -184,7 +190,8 @@ public class QuestionsController(
             .Select(q => new
             {
                 q.Id,
-                Content = q.Content.Length > 100 ? q.Content.Substring(0, 100) + "..." : q.Content
+                Content = q.Content.Length > 100 ? q.Content.Substring(0, 100) + "..." : q.Content,
+                QuestionType = q.QuestionType.ToString()
             })
             .ToListAsync();
 
