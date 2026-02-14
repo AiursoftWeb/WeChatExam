@@ -146,7 +146,6 @@
                                     };
                                     foreach (var (name, count, color) in questionTypes)
                                     {
-                                        var pct = Model.TotalQuestions > 0 ? (int)Math.Round((double)count / Model.TotalQuestions * 100) : 0;
                                         <tr>
                                             <td><i class="fas fa-square-full text-@color"></i> @name</td>
                                             <td class="text-end">@count</td>
@@ -189,7 +188,6 @@
                                     };
                                     foreach (var (name, count, color) in paperStatuses)
                                     {
-                                        var pct = Model.TotalPapers > 0 ? (int)Math.Round((double)count / Model.TotalPapers * 100) : 0;
                                         <tr>
                                             <td><i class="fas fa-square-full text-@color"></i> @name</td>
                                             <td class="text-end">@count</td>
