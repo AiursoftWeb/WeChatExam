@@ -15,7 +15,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class SystemController(ILogger<SystemController> logger) : Controller
 {
-    [Authorize(Policy = AppPermissionNames.CanViewSystemContext)]
+[Authorize(Policy = AppPermissionNames.CanViewSystemContext)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,

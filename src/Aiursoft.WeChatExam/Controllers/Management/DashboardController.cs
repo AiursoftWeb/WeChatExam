@@ -3,11 +3,13 @@ using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.DashboardViewModels;
 using Aiursoft.WeChatExam.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
+[Authorize]
 [LimitPerMin]
 public class DashboardController(WeChatExamDbContext context) : Controller
 {

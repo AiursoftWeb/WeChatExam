@@ -16,7 +16,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class JobsController(BackgroundJobQueue backgroundJobQueue) : Controller
 {
-    [Authorize(Policy = AppPermissionNames.CanViewBackgroundJobs)]
+[Authorize(Policy = AppPermissionNames.CanViewBackgroundJobs)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
-[Authorize(Policy = AppPermissionNames.CanManageTags)] // Assuming managing taxonomies requires same permission as tags
+[Authorize(Policy = AppPermissionNames.CanManageTags)]
 public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService taxonomyService) : Controller
 {
         // GET: Taxonomies

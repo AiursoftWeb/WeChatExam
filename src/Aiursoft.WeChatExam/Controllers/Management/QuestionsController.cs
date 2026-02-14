@@ -17,6 +17,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// <summary>
 /// This controller is used to handle questions related actions like create, edit, delete, etc.
 /// </summary>
+[Authorize]
 [LimitPerMin]
 public class QuestionsController(
     WeChatExamDbContext context,
@@ -24,6 +25,7 @@ public class QuestionsController(
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
     // GET: questions
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,

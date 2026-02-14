@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
+[Authorize]
 [LimitPerMin]
 public class DistributionChannelsController(IDistributionChannelService distributionChannelService) : Controller
 {
+    [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -19,7 +21,6 @@ public class DistributionChannelsController(IDistributionChannelService distribu
         CascadedLinksOrder = 4,
         LinkText = "Distribution Channels",
         LinkOrder = 2)]
-    [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
     public async Task<IActionResult> Index(string? search)
     {
         var channels = await distributionChannelService.GetAllAsync();

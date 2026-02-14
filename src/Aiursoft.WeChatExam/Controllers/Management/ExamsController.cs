@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
+[Authorize]
 [LimitPerMin]
 public class ExamsController(
     WeChatExamDbContext context, 
@@ -17,6 +18,7 @@ public class ExamsController(
     IPaperService paperService) : Controller
 {
     // GET: exams
+    [Authorize(Policy = AppPermissionNames.CanReadExams)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -150,9 +152,11 @@ public class ExamsController(
             Records = records
         });
     }
-[Authorize(Policy = AppPermissionNames.CanReadExams)]
+
     // GET: exams/review/{recordId}
+    [Authorize(Policy = AppPermissionNames.CanReadExams)]
     public async Task<IActionResult> Review(Guid? recordId)
+
     {
         if (recordId == null) return NotFound();
         var record = await examService.GetExamRecordAsync(recordId.Value);

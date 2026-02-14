@@ -14,7 +14,6 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// <summary>
 /// This controller is used to handle users related actions like create, edit, delete, etc.
 /// </summary>
-[Authorize]
 [LimitPerMin]
 public class UsersController(
     RoleManager<IdentityRole> roleManager,

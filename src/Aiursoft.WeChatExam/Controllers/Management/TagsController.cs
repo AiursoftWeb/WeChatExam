@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
+[Authorize]
 [LimitPerMin]
 public class TagsController(
     WeChatExamDbContext context, 
