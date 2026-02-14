@@ -1,4 +1,5 @@
 using Aiursoft.Scanner.Abstractions;
+using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.UiStack.Views.Shared.Components.FooterMenu;
@@ -10,7 +11,6 @@ using Aiursoft.UiStack.Views.Shared.Components.Sidebar;
 using Aiursoft.UiStack.Views.Shared.Components.SideLogo;
 using Aiursoft.UiStack.Views.Shared.Components.SideMenu;
 using Aiursoft.UiStack.Views.Shared.Components.UserDropdown;
-using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Controllers.Management;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services.Authentication;
@@ -29,6 +29,7 @@ public class ViewModelArgsInjector(
     NavigationState<Startup> navigationState,
     IAuthorizationService authorizationService,
     IOptions<AppSettings> appSettings,
+    GlobalSettingsService globalSettingsService,
     SignInManager<User> signInManager) : IScopedDependency
 {
 
@@ -114,7 +115,7 @@ public class ViewModelArgsInjector(
         UiStackLayoutViewModel toInject)
     {
         toInject.PageTitle = localizer[toInject.PageTitle ?? "View"];
-        toInject.AppName = localizer["Template"];
+        toInject.AppName = globalSettingsService.GetSettingValueAsync(SettingsMap.ProjectName).GetAwaiter().GetResult();
         toInject.Theme = UiTheme.Light;
         toInject.SidebarTheme = UiSidebarTheme.Default;
         toInject.Layout = UiLayout.Fluid;
@@ -126,14 +127,17 @@ public class ViewModelArgsInjector(
         UiStackLayoutViewModel toInject)
     {
         var preferDarkTheme = context.Request.Cookies[ThemeController.ThemeCookieKey] == true.ToString();
+        var projectName = globalSettingsService.GetSettingValueAsync(SettingsMap.ProjectName).GetAwaiter().GetResult();
+        var brandName = globalSettingsService.GetSettingValueAsync(SettingsMap.BrandName).GetAwaiter().GetResult();
+        var brandHomeUrl = globalSettingsService.GetSettingValueAsync(SettingsMap.BrandHomeUrl).GetAwaiter().GetResult();
         toInject.PageTitle = localizer[toInject.PageTitle ?? "View"];
-        toInject.AppName = localizer["Template"];
+        toInject.AppName = projectName;
         toInject.Theme = preferDarkTheme ? UiTheme.Dark : UiTheme.Light;
         toInject.SidebarTheme = preferDarkTheme ? UiSidebarTheme.Dark : UiSidebarTheme.Default;
         toInject.Layout = UiLayout.Fluid;
         toInject.FooterMenu = new FooterMenuViewModel
         {
-            AppBrand = new Link { Text = localizer["Template"], Href = "https://gitlab.aiursoft.com/aiursoft/template" },
+            AppBrand = new Link { Text = brandName, Href = brandHomeUrl },
             Links =
             [
                 new Link { Text = localizer["Home"], Href = "/" },
@@ -210,8 +214,8 @@ public class ViewModelArgsInjector(
         {
             SideLogo = new SideLogoViewModel
             {
-                AppName = localizer["Aiursoft Template"],
-                LogoUrl = "/logo.svg",
+                AppName = projectName,
+                LogoUrl = GetLogoUrl(context).GetAwaiter().GetResult(),
                 Href = "/"
             },
             SideMenu = new SideMenuViewModel
@@ -313,5 +317,15 @@ public class ViewModelArgsInjector(
                 ]
             };
         }
+    }
+
+    private async Task<string> GetLogoUrl(HttpContext context)
+    {
+        var logoPath = await globalSettingsService.GetSettingValueAsync(SettingsMap.ProjectLogo);
+        if (string.IsNullOrWhiteSpace(logoPath))
+        {
+            return "/logo.svg";
+        }
+        return storageService.RelativePathToInternetUrl(logoPath, context);
     }
 }
