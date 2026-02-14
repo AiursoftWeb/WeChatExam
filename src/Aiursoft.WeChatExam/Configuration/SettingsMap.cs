@@ -26,7 +26,7 @@ public class SettingsMap
             Name = Localizer["Project Name"],
             Description = Localizer["The name of the project displayed in the frontend."],
             Type = SettingType.Text,
-            DefaultValue = "Aiursoft.WeChatExam"
+            DefaultValue = "Aiursoft WeChatExam"
         },
         new GlobalSettingDefinition
         {
