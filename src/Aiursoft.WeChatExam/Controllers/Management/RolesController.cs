@@ -24,7 +24,6 @@ public class RolesController(
     : Controller
 {
     // GET: Roles
-    [Authorize(Policy = AppPermissionNames.CanReadRoles)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -58,7 +57,6 @@ public class RolesController(
     }
 
     // GET: Roles/Details/5
-    [Authorize(Policy = AppPermissionNames.CanReadRoles)]
     public async Task<IActionResult> Details(string? id)
     {
         if (id == null) return NotFound();

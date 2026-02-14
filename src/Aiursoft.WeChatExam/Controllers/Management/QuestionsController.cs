@@ -17,6 +17,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 /// <summary>
 /// This controller is used to handle questions related actions like create, edit, delete, etc.
 /// </summary>
+[Authorize]
 [LimitPerMin]
 public class QuestionsController(
     WeChatExamDbContext context,
@@ -159,7 +160,6 @@ public class QuestionsController(
         });
     }
 
-    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Search(string mtql)
     {
         var query = context.Questions.AsQueryable();
@@ -286,7 +286,6 @@ public class QuestionsController(
     }
 
     // GET: questions/{id}
-    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Details(Guid? id)
     {
         if (id == null) return NotFound();

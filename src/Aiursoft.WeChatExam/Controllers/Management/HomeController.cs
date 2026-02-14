@@ -3,19 +3,23 @@ using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Models.HomeViewModels;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
+[Authorize]
 [LimitPerMin]
 public class HomeController : Controller
 {
+    [AllowAnonymous]
     public IActionResult Index()
     {
         return this.SimpleView(new IndexViewModel());
     }
 
     [HttpGet]
+    [Authorize]
     [RenderInNavBar(
         NavGroupName = "Features",
         NavGroupOrder = 1,
@@ -33,6 +37,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+    [Authorize]
     public IActionResult AskOllama(string question, [FromServices] BackgroundJobQueue backgroundJobQueue)
     {
         if (string.IsNullOrWhiteSpace(question))

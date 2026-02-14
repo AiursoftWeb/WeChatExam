@@ -22,7 +22,6 @@ public class UsersController(
     WeChatExamDbContext context)
     : Controller
 {
-    [Authorize(Policy = AppPermissionNames.CanReadUsers)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -50,7 +49,6 @@ public class UsersController(
         });
     }
 
-    [Authorize(Policy = AppPermissionNames.CanReadUsers)]
     public async Task<IActionResult> Details(string? id)
     {
         if (id == null) return NotFound();
