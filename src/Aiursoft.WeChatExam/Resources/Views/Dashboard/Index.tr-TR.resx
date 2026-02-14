@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Modern, zengin özelliklere sahip ve bir sonraki web uygulamanız için oldukça genişletilebilir bir temel.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>tamamlanmış tüm sınavlar üzerinden</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Sınav WeChat mini programı için yönetici merkezi</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Tüm bağımlılıklar otomatik olarak kaydedilir ve constructor injection yoluyla her zaman kullanılabilir.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Makaleler</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Otomatik Karanlık Mod</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Küresel erişim için 28 dile otomatik, yapay zeka destekli çeviri.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Ortalama Puan</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Boşluk</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Doğru/Yanlış</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Dahili Kullanıcı Yönetimi</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategoriler</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Kanallar</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Seçenek</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>Basitleştirilmiş, tutarlı ve güvenilir dağıtımlar için tam Docker desteği ile birlikte gelir.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Kapsamlı Dokümantasyon</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>İçerik Özet</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>doğru cevaplar</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Sayı</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Kontrol Paneli</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Dağıtım İçin Dockerize Edildi</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Taslak</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>Dinamik Gezinti Çubuğu</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>SQLite, MySQL, SQL Server gibi sağlayıcılar ile testler için kullanılan bellek içi veritabanı arasında kolayca geçiş yapın.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Bitiş</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Bitti</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Makale</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>sınav denemeleri</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Sınav Kayıtları</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Sınav Durumu Özet</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Sınavlar</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Otomatik avatar sıkıştırmalı yerleşik bir dosya yönetim sistemi içerir.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Donmuş</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Merhaba Dünya!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>veritabanında</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>Devam Ediyor</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Kapsamlı belgeler ve hızlı bir şekilde başlamanızı sağlayacak pratik örnekler içerir.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Entegre Dosya Yönetimi</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Bilgi Noktaları</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Çoklu Veritabanı Desteği</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Henüz sınav yok</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Henüz etiket kullanılmadı</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Henüz taksonomi yok</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Henüz kullanıcı yok</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Kelime Açıklaması</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect Entegrasyonu</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Kâğıt Durumu</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Sınavlar</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Pratik Doğruluk</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Yayınlanabilir</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Soru Türü Dağılımı</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Sorular</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC Yetkilendirmesi</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>Belgeyi okuyun</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Son Sınavlar</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Son Kullanıcılar</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Kayıtlar</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Duyarlı Tasarım</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Herhangi bir OpenID Connect sağlayıcısıyla sorunsuz entegre olun, otomatik rol senkronizasyonu ile.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Kısa Cevap</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Kullanıcının sistem ayarlarına otomatik olarak uyum sağlayan akıllı karanlık mod.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Başlat</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Yeni bir proje başlat</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Gönderildi</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Etiket Sayısı</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Etiket Adı</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiketler</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taksonomi</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Taksonomi Dağılımı</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>Gezinme çubuğu, kullanıcı rollerine ve izinlerine göre otomatik olarak ayarlanır.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>Bu, sınav ve pratik WeChat mini programının yönetim merkezidir.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Zaman Aşımı</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Başlık</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>En Çok Kullanılan Etiketler</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>API&apos;yi Deneyin</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tür</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Yaklaşan</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Kullanım Sayısı</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Kullanıcılar</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Tümünü Görüntüle</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Hoş Geldiniz</value>

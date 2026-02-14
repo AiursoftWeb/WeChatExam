@@ -30,6 +30,12 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Nykyaikainen, ominaisuuksiltaan monipuolinen ja erittäin laajennettavissa oleva perusta seuraavalle verkkosovelluksellesi.</value>
   </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>kaikkien suoritettujen kokeiden yli</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiivinen</value>
+  </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Tenttien WeChat-minisovelluksen hallintakeskus</value>
   </data>
@@ -38,6 +44,9 @@
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Kaikki riippuvuudet rekisteröidään automaattisesti ja ne ovat aina saatavilla konstruktorin kautta tapahtuvan injektoinnin avulla.</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Artikkelit</value>
   </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Automaattinen tumma tila</value>
@@ -48,8 +57,26 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Automaattinen, tekoälyavusteinen käännös 28 kielelle maailmanlaajuista saavutettavuutta varten.</value>
   </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Keskiarvoscore</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Tyhjä</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Totuus</value>
+  </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Sisäänrakennettu käyttäjienhallinta</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Kategoriat</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Kanavat</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Vaihtoehto</value>
   </data>
   <data name="Comes with full Docker support for simplified, consistent, and reliable deployments." xml:space="preserve">
     <value>Sisältää täyden Docker-tuen yksinkertaistettuja, yhdenmukaisia ja luotettavia käyttöönottoja varten.</value>
@@ -57,8 +84,23 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Laaja dokumentaatio</value>
   </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>Sisällön yleiskatsaus</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>oikeat vastaukset</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Määrä</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Hallinta-alue</value>
+  </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Dockeröity käyttöönottoa varten</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Luonnos</value>
   </data>
   <data name="Dynamic Navigation Bar" xml:space="preserve">
     <value>Dynaaminen navigointipalkki</value>
@@ -66,11 +108,41 @@
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Vaihda helposti tietokantapalveluntarjoajien, kuten SQLite, MySQL, SQL Server ja testausta varten tarkoitettu muistissa oleva tietokanta, välillä.</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Loppu</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Lopetettu</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Essa</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>kokeen yritykset</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Kokeen tiedot</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Kokeen tilan yleiskatsaus</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Kokeet</value>
+  </data>
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Sisältää sisäänrakennetun tiedostonhallintajärjestelmän automaattisella avatar-pakkauksella.</value>
   </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Jäädytetty</value>
+  </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Hei maailma!</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>tietokannassa</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>Käynnissä</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Sisältää laajan dokumentaation ja käytännön esimerkkejä, joiden avulla pääset nopeasti alkuun.</value>
@@ -78,11 +150,47 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Integroitu tiedostonhallinta</value>
   </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Tietopisteet</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Usean tietokannan tuki</value>
   </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Ei koetehtäviä vielä</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Ei muita tunnisteita käytettyä vielä</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Ei taksonojamia vielä</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Ei käyttäjiä vielä</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Noun Explanation</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect -integraatio</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Paper Status</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Kokeet</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Harjoittelun tarkkuus</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Julkaisuvalmis</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Kysymystyypin jakautuminen</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Kysymykset</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC-valtuutus</value>
@@ -90,17 +198,53 @@
   <data name="Read the document" xml:space="preserve">
     <value>Lue dokumentti</value>
   </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Viimeaikaiset kokeet</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Viimeaikaiset käyttäjät</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Tulokset</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Responsiivinen suunnittelu</value>
   </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Saatonta integrointi minkä tahansa OpenID Connect -palveluntarjoajan kanssa, automaattisella roolisynkronoinnilla.</value>
   </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Lyhyt vastaus</value>
+  </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Älykäs tumma tila, joka mukautuu automaattisesti käyttäjän järjestelmäasetuksiin.</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Aloita</value>
+  </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Aloita uusi projekti</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Tila</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Lähetetty</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Tag Count</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Tag Name</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tagit</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Luokitus</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Luokitusjakauma</value>
   </data>
   <data name="The navigation bar automatically adjusts based on user roles and permissions." xml:space="preserve">
     <value>Navigointipalkki sopeutuu automaattisesti käyttäjän roolien ja käyttöoikeuksien perusteella.</value>
@@ -111,8 +255,32 @@
   <data name="This is the admin center for the exam and practice WeChat mini program" xml:space="preserve">
     <value>Tämä on kokeen ja harjoittelun WeChat-minisovelluksen hallintakeskus.</value>
   </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Aika loppui</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Otsikko</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>Yleisimmät tunnisteet</value>
+  </data>
   <data name="Try the API" xml:space="preserve">
     <value>Kokeile API:a</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tyyppi</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Tulevat</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Käyttötilasto</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Käyttäjät</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Näytä kaikki</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Tervetuloa</value>
