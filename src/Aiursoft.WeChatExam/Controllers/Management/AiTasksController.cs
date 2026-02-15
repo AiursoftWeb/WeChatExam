@@ -35,11 +35,11 @@ public class AiTasksController(
             QuestionId = q.Id,
             QuestionContent = q.Content,
             QuestionStandardAnswer = q.StandardAnswer,
-            OldExplanation = q.Explanation,
+            OldValue = q.Explanation,
             Status = AiTaskStatus.Pending
         }).ToList();
 
-        var aiTask = aiTaskService.CreateTask(taskItems);
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.GenerateExplanation);
 
         // Start background processing
         foreach (var item in aiTask.Items.Values)
@@ -71,7 +71,7 @@ public class AiTasksController(
                         var response = await ollamaService.AskQuestion(prompt);
                         if (!string.IsNullOrWhiteSpace(response))
                         {
-                            item.NewExplanation = response.Trim();
+                            item.NewValue = response.Trim();
                             item.Status = AiTaskStatus.Completed;
                         }
                         else
@@ -91,12 +91,139 @@ public class AiTasksController(
         return Json(new { taskId = aiTask.Id });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AutoCategorize([FromBody] Guid[] questionIds)
+    {
+        if (!questionIds.Any())
+        {
+            return BadRequest("No questions selected.");
+        }
+
+        var questions = await dbContext.Questions
+            .Include(q => q.Category)
+            .Where(q => questionIds.Contains(q.Id))
+            .ToListAsync();
+            
+        var taskItems = questions.Select(q => new AiTaskItem
+        {
+            QuestionId = q.Id,
+            QuestionContent = q.Content,
+            QuestionStandardAnswer = q.StandardAnswer,
+            OldValue = q.Category?.Title ?? "Uncategorized",
+            Status = AiTaskStatus.Pending
+        }).ToList();
+
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoCategorize);
+
+        // Start background processing
+        foreach (var item in aiTask.Items.Values)
+        {
+            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+                queueName: "AI-Categorization",
+                jobName: $"Categorize Question {item.QuestionId}",
+                job: async (serviceProvider) =>
+                {
+                    item.Status = AiTaskStatus.Processing;
+                    try
+                    {
+                        using var scope = serviceProvider.CreateScope();
+                        var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+                        var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        
+                        var question = await scopedDbContext.Questions
+                            .Include(q => q.QuestionTags)
+                            .ThenInclude(qt => qt.Tag)
+                            .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
+                            
+                        var allCategories = await scopedDbContext.Categories
+                            .Select(c => new { c.Id, c.Title })
+                            .ToListAsync();
+                        
+                        if (question == null) 
+                        {
+                            item.Status = AiTaskStatus.Failed;
+                            item.Error = "Question not found.";
+                            return;
+                        }
+
+                        var categoriesText = string.Join("\n", allCategories.Select(c => $"- {c.Title} (ID: {c.Id})"));
+                        var tags = string.Join(", ", question.QuestionTags.Select(t => t.Tag.DisplayName));
+
+                        var prompt = $@"
+Question Content: {question.Content}
+Metadata: {question.Metadata}
+Standard Answer: {question.StandardAnswer}
+Tags: {tags}
+Explanation: {question.Explanation}
+
+Available Categories:
+{categoriesText}
+
+Based on the question content and available categories, please categorize this question into ONE of the categories above.
+Return ONLY the ID of the category. Do not include any other text.
+If none of the categories fit perfectly, choose the best available one.
+";
+
+                        var response = await ollamaService.AskQuestion(prompt);
+                        response = response?.Trim();
+                        
+                        if (Guid.TryParse(response, out var categoryId))
+                        {
+                            var category = allCategories.FirstOrDefault(c => c.Id == categoryId);
+                            if (category != null)
+                            {
+                                item.NewValue = category.Title;
+                                item.NewEntityId = category.Id;
+                                item.Status = AiTaskStatus.Completed;
+                            }
+                            else
+                            {
+                                item.Status = AiTaskStatus.Failed;
+                                item.Error = $"AI returned an invalid category ID: {response}";
+                            }
+                        }
+                        else
+                        {
+                             // Attempt to match by name if ID fails (AI might return name)
+                            var category = allCategories.FirstOrDefault(c => c.Title.Equals(response, StringComparison.OrdinalIgnoreCase));
+                            if (category != null)
+                            {
+                                item.NewValue = category.Title;
+                                item.NewEntityId = category.Id;
+                                item.Status = AiTaskStatus.Completed;
+                            }
+                            else
+                            {
+                                item.Status = AiTaskStatus.Failed;
+                                item.Error = $"AI returned an invalid response: {response}";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = ex.Message;
+                    }
+                });
+        }
+
+        return Json(new { taskId = aiTask.Id });
+    }
+
     public IActionResult Preview(Guid taskId)
     {
         var task = aiTaskService.GetTask(taskId);
         if (task == null)
         {
             return NotFound("AI task not found or expired.");
+        }
+        
+        if (task.Type == AiTaskType.AutoCategorize)
+        {
+             ViewBag.Categories = dbContext.Categories
+                 .AsNoTracking()
+                 .ToList();
         }
 
         return this.StackView(task);
@@ -120,8 +247,9 @@ public class AiTasksController(
                 i.QuestionId,
                 i.QuestionContent,
                 i.QuestionStandardAnswer,
-                i.OldExplanation,
-                i.NewExplanation,
+                i.OldValue,
+                i.NewValue,
+                i.NewEntityId,
                 i.Status,
                 StatusText = i.Status.ToString(),
                 i.Error
@@ -134,16 +262,29 @@ public class AiTasksController(
     public async Task<IActionResult> Adopt(Guid taskId, Guid questionId)
     {
         var task = aiTaskService.GetTask(taskId);
-        if (task == null || !task.Items.TryGetValue(questionId, out _))
+        if (task == null || !task.Items.TryGetValue(questionId, out var item))
         {
             return NotFound();
         }
 
         var question = await dbContext.Questions.FindAsync(questionId);
-        if (question != null && task.Items.TryGetValue(questionId, out var item) && !string.IsNullOrWhiteSpace(item.NewExplanation))
+        if (question == null) return NotFound();
+
+        if (task.Type == AiTaskType.GenerateExplanation)
         {
-            question.Explanation = item.NewExplanation;
-            await dbContext.SaveChangesAsync();
+            if (!string.IsNullOrWhiteSpace(item.NewValue))
+            {
+                question.Explanation = item.NewValue;
+                await dbContext.SaveChangesAsync();
+            }
+        }
+        else if (task.Type == AiTaskType.AutoCategorize)
+        {
+            if (item.NewEntityId.HasValue)
+            {
+                question.CategoryId = item.NewEntityId.Value;
+                await dbContext.SaveChangesAsync();
+            }
         }
 
         task.Items.TryRemove(questionId, out _);
@@ -166,19 +307,29 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid taskId, Guid questionId, [FromBody] string newExplanation)
+    public async Task<IActionResult> Edit(Guid taskId, Guid questionId, [FromBody] string newValue)
     {
         var task = aiTaskService.GetTask(taskId);
-        if (task == null || !task.Items.TryGetValue(questionId, out _))
+        if (task == null || !task.Items.TryGetValue(questionId, out var item))
         {
             return NotFound();
         }
 
         var question = await dbContext.Questions.FindAsync(questionId);
-        if (question != null)
+        if (question == null) return NotFound();
+
+        if (task.Type == AiTaskType.GenerateExplanation)
         {
-            question.Explanation = newExplanation;
-            await dbContext.SaveChangesAsync();
+             question.Explanation = newValue;
+             await dbContext.SaveChangesAsync();
+        }
+        else if (task.Type == AiTaskType.AutoCategorize)
+        {
+             if (Guid.TryParse(newValue, out var newCategoryId))
+             {
+                 question.CategoryId = newCategoryId;
+                 await dbContext.SaveChangesAsync();
+             }
         }
 
         task.Items.TryRemove(questionId, out _);

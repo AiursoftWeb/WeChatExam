@@ -246,6 +246,9 @@
             <button class="btn btn-info" onclick="generateAiExplanations()">
                 <i class="align-middle me-2" data-lucide="brain"></i> @Localizer["AI Generate Explanations"]
             </button>
+            <button class="btn btn-warning" onclick="autoCategorize()">
+                <i class="align-middle me-2" data-lucide="folder-tree"></i> @Localizer["AI Auto Categorize"]
+            </button>
         </div>
         <button class="btn btn-link text-secondary ms-auto" onclick="clearSelection()">
             @Localizer["Cancel"]
@@ -350,6 +353,37 @@
             } catch (error) {
                 console.error('Error:', error);
                 alert('An error occurred while starting AI generation.');
+            }
+        }
+
+        async function autoCategorize() {
+            const ids = Array.from(getSelectedIds());
+            if (ids.length === 0) {
+                 alert('@Localizer["Please select at least one question."]');
+                 return;
+            }
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            try {
+                const response = await fetch('@Url.Action("AutoCategorize", "AiTasks")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify(ids)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    clearSelection();
+                    window.location.href = '@Url.Action("Preview", "AiTasks")' + '?taskId=' + result.taskId;
+                } else {
+                    alert('@Localizer["Failed to start AI categorization."]');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('@Localizer["An error occurred while starting AI categorization."]');
             }
         }
 

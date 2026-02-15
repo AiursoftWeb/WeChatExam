@@ -10,6 +10,8 @@ using Aiursoft.WeChatExam.MySql;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
+using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Aiursoft.GptClient.Services;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Moq;
 using Newtonsoft.Json;
@@ -24,6 +26,7 @@ public class TestStartupWithMockWeChat : IWebStartup
 {
     public static Mock<IWeChatService>? MockWeChatService { get; set; }
     public static Mock<IDistributionChannelService>? MockDistributionChannelService { get; set; }
+    public static Mock<IOllamaService>? MockOllamaService { get; set; }
 
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -49,6 +52,19 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+        services.AddScoped<IGradingService, GradingService>();
+        services.AddScoped<ITagService, TagService>();
+        services.AddScoped<ITaxonomyService, TaxonomyService>();
+        services.AddScoped<IPaperService, PaperService>();
+        services.AddScoped<ChatClient>();
+        services.AddSingleton<AiTaskService>();
+        services.AddScoped<IExamService, ExamService>();
+        services.AddScoped<IExtractService, ExtractService>();
+        services.AddScoped<IOptimizationService, OptimizationService>();
+
+        // Background job queue
+        services.AddSingleton<BackgroundJobQueue>();
+        services.AddHostedService<QueueWorkerService>();
 
         // Configure Mock SKIT WeChat API Client instead of real one
         if (MockWeChatService != null
@@ -56,6 +72,15 @@ public class TestStartupWithMockWeChat : IWebStartup
         {
             services.AddScoped(_ => MockWeChatService.Object);
             services.AddScoped(_ => MockDistributionChannelService.Object);
+        }
+
+        if (MockOllamaService != null)
+        {
+            services.AddScoped(_ => MockOllamaService.Object);
+        }
+        else
+        {
+            services.AddScoped<IOllamaService, OllamaService>();
         }
 
         // Add Razor Pages and MVC for admin web interface
@@ -69,7 +94,7 @@ public class TestStartupWithMockWeChat : IWebStartup
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             })
             .AddApplicationPart(typeof(Startup).Assembly)
             .AddApplicationPart(typeof(UiStackLayoutViewModel).Assembly)

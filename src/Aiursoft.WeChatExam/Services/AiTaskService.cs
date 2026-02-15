@@ -7,9 +7,12 @@ public class AiTaskService
 {
     private readonly ConcurrentDictionary<Guid, AiTask> _tasks = new();
 
-    public AiTask CreateTask(IEnumerable<AiTaskItem> items)
+    public AiTask CreateTask(IEnumerable<AiTaskItem> items, AiTaskType type)
     {
-        var task = new AiTask();
+        var task = new AiTask
+        {
+            Type = type
+        };
         foreach (var item in items)
         {
             task.Items.TryAdd(item.QuestionId, item);
