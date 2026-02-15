@@ -70,7 +70,7 @@ public class AiTasksController(
                             return;
                         }
 
-                        var tags = string.Join(", ", question.QuestionTags.Select(qt => qt.Tag?.DisplayName));
+                        var tags = string.Join(", ", question.QuestionTags.Select(qt => qt.Tag.DisplayName));
                         var category = question.Category?.Title ?? "未分类";
                         var type = question.QuestionType.GetDisplayName();
                         
