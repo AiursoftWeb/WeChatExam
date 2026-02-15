@@ -7,6 +7,8 @@ using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -56,7 +58,11 @@ public class AiTasksController(
                         var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
                         var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
                         
-                        var question = await scopedDbContext.Questions.FindAsync(item.QuestionId);
+                        var question = await scopedDbContext.Questions
+                            .Include(q => q.Category)
+                            .Include(q => q.QuestionTags)
+                            .ThenInclude(qt => qt.Tag)
+                            .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
                         if (question == null) 
                         {
                             item.Status = AiTaskStatus.Failed;
@@ -64,9 +70,59 @@ public class AiTasksController(
                             return;
                         }
 
-                        var prompt = $@"{question.Content} + {question.Metadata} + {question.StandardAnswer}
+                        var tags = string.Join(", ", question.QuestionTags.Select(qt => qt.Tag?.DisplayName));
+                        var category = question.Category?.Title ?? "未分类";
+                        var type = question.QuestionType.GetDisplayName();
+                        
+                        var promptBuilder = new StringBuilder();
+                        promptBuilder.AppendLine($"题目类型: {type}");
+                        promptBuilder.AppendLine($"题目分类: {category}");
+                        if (!string.IsNullOrEmpty(tags))
+                        {
+                            promptBuilder.AppendLine($"题目标签: {tags}");
+                        }
+                        promptBuilder.AppendLine($"题目内容: {question.Content}");
+                        
+                        if (!string.IsNullOrWhiteSpace(question.Metadata))
+                        {
+                            try 
+                            {
+                                var metadataObj = JsonConvert.DeserializeObject<dynamic>(question.Metadata);
+                                if (metadataObj?.options != null)
+                                {
+                                    promptBuilder.AppendLine("选项:");
+                                    foreach (var option in metadataObj.options)
+                                    {
+                                        promptBuilder.AppendLine($"- {option}");
+                                    }
+                                }
+                                else 
+                                {
+                                    promptBuilder.AppendLine($"元数据: {question.Metadata}");
+                                }
+                            }
+                            catch
+                            {
+                                promptBuilder.AppendLine($"元数据: {question.Metadata}");
+                            }
+                        }
+                        
+                        promptBuilder.AppendLine($"标准答案: {question.StandardAnswer}");
+                        promptBuilder.AppendLine();
 
-上面这句话太笼统了，对于简单的选择判断填空，你给我扩展一下200字以内的材料，详细解释一下这个题目的背景和逻辑。对于简答题，小作文，给我扩展一下1000字的材料，详细解释这个简答题牵扯的背景、材料、答题思路。直接输出完整的解析即可。";
+                        if (question.QuestionType == QuestionType.Choice || 
+                            question.QuestionType == QuestionType.Blank || 
+                            question.QuestionType == QuestionType.Bool ||
+                            question.QuestionType == QuestionType.NounExplanation)
+                        {
+                            promptBuilder.AppendLine("指令: 这是一个基础题目。请提供 200 字以内的解析，详细解释该题目的背景知识、逻辑推理以及答案的正确性。直接输出解析内容，不要包含题目本身，不要输出多余的段落、前言或总结语。");
+                        }
+                        else
+                        {
+                            promptBuilder.AppendLine("指令: 这是一个深度题目。请提供 1000 字左右的详细解析，深入探讨该题目涉及的背景材料、核心考点、答题思路以及逻辑框架。直接输出解析内容，不要包含题目本身，不要输出多余的段落、前言或总结语。");
+                        }
+
+                        var prompt = promptBuilder.ToString();
 
                         var response = await ollamaService.AskQuestion(prompt);
                         if (!string.IsNullOrWhiteSpace(response))
