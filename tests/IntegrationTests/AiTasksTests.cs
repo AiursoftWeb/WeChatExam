@@ -148,7 +148,7 @@ public class AiTasksTests
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         
         var resultJson = await response.Content.ReadAsStringAsync();
-        var jsonObj = JObject.Parse(resultJson)!;
+        var jsonObj = JObject.Parse(resultJson);
         Assert.IsNotNull(jsonObj);
         var taskId = jsonObj["taskId"]?.ToString();
         Assert.IsNotNull(taskId);
@@ -160,7 +160,7 @@ public class AiTasksTests
             var statusResponse = await _http.GetAsync($"/AiTasks/GetStatus?taskId={taskId}");
             statusResponse.EnsureSuccessStatusCode();
             var statusJson = await statusResponse.Content.ReadAsStringAsync();
-            var statusObj = JObject.Parse(statusJson)!;
+            var statusObj = JObject.Parse(statusJson);
             
             if (statusObj["isCompleted"]?.ToObject<bool>() == true)
             {
