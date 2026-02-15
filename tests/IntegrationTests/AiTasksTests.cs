@@ -4,8 +4,6 @@ using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json.Linq;
 using static Aiursoft.WebTools.Extends;
@@ -110,7 +108,7 @@ public class AiTasksTests
             { "__RequestVerificationToken", catToken }
         }));
         
-        using var scope = _server.Services.CreateScope();
+        using var scope = _server!.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = dbContext.Categories.FirstOrDefault(c => c.Title == categoryTitle);
         var newCategory = dbContext.Categories.FirstOrDefault(c => c.Title == newCategoryTitle);
@@ -150,7 +148,8 @@ public class AiTasksTests
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         
         var resultJson = await response.Content.ReadAsStringAsync();
-        var jsonObj = JObject.Parse(resultJson);
+        var jsonObj = JObject.Parse(resultJson)!;
+        Assert.IsNotNull(jsonObj);
         var taskId = jsonObj["taskId"]?.ToString();
         Assert.IsNotNull(taskId);
 
@@ -161,7 +160,7 @@ public class AiTasksTests
             var statusResponse = await _http.GetAsync($"/AiTasks/GetStatus?taskId={taskId}");
             statusResponse.EnsureSuccessStatusCode();
             var statusJson = await statusResponse.Content.ReadAsStringAsync();
-            var statusObj = JObject.Parse(statusJson);
+            var statusObj = JObject.Parse(statusJson)!;
             
             if (statusObj["isCompleted"]?.ToObject<bool>() == true)
             {

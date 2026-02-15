@@ -166,7 +166,7 @@ If none of the categories fit perfectly, choose the best available one.
 ";
 
                         var response = await ollamaService.AskQuestion(prompt);
-                        response = response?.Trim();
+                        response = response.Trim();
                         
                         if (Guid.TryParse(response, out var categoryId))
                         {
@@ -310,7 +310,7 @@ If none of the categories fit perfectly, choose the best available one.
     public async Task<IActionResult> Edit(Guid taskId, Guid questionId, [FromBody] string newValue)
     {
         var task = aiTaskService.GetTask(taskId);
-        if (task == null || !task.Items.TryGetValue(questionId, out var item))
+        if (task == null || !task.Items.TryGetValue(questionId, out _))
         {
             return NotFound();
         }
