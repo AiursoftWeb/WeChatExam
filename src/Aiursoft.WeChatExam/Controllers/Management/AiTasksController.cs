@@ -44,15 +44,19 @@ public class AiTasksController(
         // Start background processing
         foreach (var item in aiTask.Items.Values)
         {
-            backgroundJobQueue.QueueWithDependency<IOllamaService>(
+            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
                 queueName: "AI-Explanation-Generation",
                 jobName: $"Generate Explanation for Question {item.QuestionId}",
-                job: async (ollamaService) =>
+                job: async (serviceProvider) =>
                 {
                     item.Status = AiTaskStatus.Processing;
                     try
                     {
-                        var question = await dbContext.Questions.FindAsync(item.QuestionId);
+                        using var scope = serviceProvider.CreateScope();
+                        var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+                        var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        
+                        var question = await scopedDbContext.Questions.FindAsync(item.QuestionId);
                         if (question == null) 
                         {
                             item.Status = AiTaskStatus.Failed;
