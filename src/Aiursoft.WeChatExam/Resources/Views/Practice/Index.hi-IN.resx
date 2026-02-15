@@ -18,14 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Content" xml:space="preserve">
+      <data name="All Types" xml:space="preserve">
+    <value>सभी प्रकार</value>
+  </data>
+  <data name="Content" xml:space="preserve">
     <value>सामग्री</value>
   </data>
   <data name="Created Time" xml:space="preserve">
     <value>बनाए गए समय</value>
   </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL क्वेरी</value>
+  </data>
   <data name="No questions found." xml:space="preserve">
     <value>कोई प्रश्न नहीं मिला।</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>रीसेट</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>खोजें</value>

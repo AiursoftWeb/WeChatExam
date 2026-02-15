@@ -18,14 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Content" xml:space="preserve">
+      <data name="All Types" xml:space="preserve">
+    <value>Wszystkie typy</value>
+  </data>
+  <data name="Content" xml:space="preserve">
     <value>Treść</value>
   </data>
   <data name="Created Time" xml:space="preserve">
     <value>Czas utworzenia</value>
   </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>Zapytanie MTQL</value>
+  </data>
   <data name="No questions found." xml:space="preserve">
     <value>Nie znaleziono pytań.</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Szukaj</value>
