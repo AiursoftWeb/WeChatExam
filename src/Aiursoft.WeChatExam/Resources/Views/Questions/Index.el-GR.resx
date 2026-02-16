@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>Προσθήκη Ερώτησης</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>Αυτόματη Κατηγοριοποίηση Αναγνώρισης Αλγορίθμου</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>ΑΙ Κατηγοριοποίηση</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Όλα τα είδη</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>Προέκυψε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης με βάση την ΤΝ.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Ημερομηνία Λήξης</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Απέτυχε η εκκίνηση της κατηγοριοποίησης από το ΤΝ.</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Αποτυχία εκκίνησης ταξινόμησης.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>Παρακαλώ επιλέξτε τουλάχιστον μία κατηγορία.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε τουλάχιστον μία ερώτηση.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Προηγούμενο</value>

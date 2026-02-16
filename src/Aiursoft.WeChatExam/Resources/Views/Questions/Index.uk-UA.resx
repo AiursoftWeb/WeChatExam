@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>Додати питання</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>AI Автоматична категоризація</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>AI Classify</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Всі типи</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>Помилка виникла під час спроби запуску AI-категоризації.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Виникла помилка під час запуску класифікації.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Дата завершення</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Не вдалося запустити автоперекладання</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Не вдалося почати класифікацію.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>Будь ласка, виберіть принаймні одну категорію.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Будь ласка, виберіть хоча б одне питання.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Попередній</value>

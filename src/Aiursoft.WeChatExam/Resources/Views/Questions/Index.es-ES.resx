@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>Añadir Pregunta</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>IA Asignar categorías automáticamente</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Clasificación con IA</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Todos los tipos</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>Se ha producido un error al iniciar la categorización con IA.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Se ha producido un error al iniciar la clasificación.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Fecha final</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Error al iniciar la categorización por IA</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>No se pudo iniciar la clasificación.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>Por favor, seleccione al menos una categoría.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Por favor, seleccione al menos una pregunta.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>

@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>Thêm Câu Hỏi</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>AI Tự động phân loại</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Phân loại AI</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Tất cả các loại</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>Đã xảy ra lỗi khi khởi động phân loại AI.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Đã xảy ra lỗi khi bắt đầu phân loại.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Ngày kết thúc</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Thất bại khi khởi động phân loại AI</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Thất bại khi bắt đầu phân loại.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>Vui lòng chọn ít nhất một danh mục.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Vui lòng chọn ít nhất một câu hỏi.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Trước</value>

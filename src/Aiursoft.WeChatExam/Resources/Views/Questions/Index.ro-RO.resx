@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>Adaugă Întrebare</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>IA Categorizare Automată</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Clasificare AI</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Toate tipurile</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>A apărut o eroare în timpul pornirii categorizării AI.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>A apărut o eroare în timpul pornirii clasificării.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Dată finală</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Nu s-a reușit pornirea categorizării AI.</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Eșec la pornirea clasificării.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>Selectați cel puțin o categorie.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Vă rugăm să selectați cel puțin o întrebare.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
