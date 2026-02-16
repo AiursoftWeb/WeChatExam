@@ -1,12 +1,15 @@
 @using Aiursoft.WeChatExam.Models
+@using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.AiTask
 @{
     ViewData["Title"] = Localizer["AI Task Preview"];
+    var isCategorization = Model.Type == AiTaskType.AutoCategorize;
+    var categories = ViewBag.Categories as IEnumerable<Category>;
 }
 
 <div class="row mb-3">
     <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="h3 mb-0">@Localizer["AI Task Preview"]</h1>
+        <h1 class="h3 mb-0">@Localizer["AI Task Preview"] - @(isCategorization ? Localizer["Auto Categorize"] : Localizer["Generate Explanation"])</h1>
         <div id="taskStatus" class="badge bg-primary">@Localizer["Processing..."]</div>
     </div>
 </div>
@@ -22,15 +25,15 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 border-end">
-                            <h6 class="fw-bold text-muted">@Localizer["Old Explanation"]</h6>
-                            <div class="p-2 bg-light rounded" style="min-height: 100px; white-space: pre-wrap;">@item.OldExplanation</div>
+                            <h6 class="fw-bold text-muted">@(isCategorization ? Localizer["Current Category"] : Localizer["Old Explanation"])</h6>
+                            <div class="p-2 bg-light rounded" style="min-height: 100px; white-space: pre-wrap;">@item.OldValue</div>
                         </div>
                         <div class="col-md-6">
-                            <h6 class="fw-bold text-primary">@Localizer["AI New Explanation"]</h6>
-                            <div class="new-explanation-container p-2 border rounded" style="min-height: 100px; white-space: pre-wrap;">
+                            <h6 class="fw-bold text-primary">@(isCategorization ? Localizer["Suggested Category"] : Localizer["AI New Explanation"])</h6>
+                            <div class="new-value-container p-2 border rounded" style="min-height: 100px; white-space: pre-wrap;">
                                 @if (item.Status == AiTaskStatus.Completed)
                                 {
-                                    @item.NewExplanation
+                                    @item.NewValue
                                 }
                                 else if (item.Status == AiTaskStatus.Failed)
                                 {
@@ -45,6 +48,10 @@
                                     </div>
                                 }
                             </div>
+                            @if (isCategorization)
+                            {
+                                <input type="hidden" class="suggested-category-id" value="@item.NewEntityId" />
+                            }
                         </div>
                     </div>
                 </div>
@@ -69,12 +76,28 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">@Localizer["Edit AI Explanation"]</h5>
+                <h5 class="modal-title">@Localizer["Edit AI Suggestion"]</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <input type="hidden" id="editQuestionId" />
-                <textarea id="editTextarea" class="form-control" rows="15"></textarea>
+                @if (isCategorization)
+                {
+                    <label class="form-label">@Localizer["Select Category"]</label>
+                    <select id="editSelect" class="form-select">
+                        @if (categories != null)
+                        {
+                            foreach (var cat in categories)
+                            {
+                                <option value="@cat.Id">@cat.Title</option>
+                            }
+                        }
+                    </select>
+                }
+                else
+                {
+                    <textarea id="editTextarea" class="form-control" rows="15"></textarea>
+                }
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
@@ -90,6 +113,7 @@
 @section scripts {
     <script>
         const taskId = '@Model.Id';
+        const isCategorization = @(isCategorization.ToString().ToLower());
         const questionsContainer = document.getElementById('questionsContainer');
         const taskStatusBadge = document.getElementById('taskStatus');
         let pollingInterval;
@@ -107,11 +131,16 @@
                     const card = document.querySelector(`.question-card[data-question-id="${item.questionId}"]`);
                     if (!card) return;
 
-                    const container = card.querySelector('.new-explanation-container');
+                    const container = card.querySelector('.new-value-container');
                     const footer = card.querySelector('.action-buttons');
+                    
+                    if (isCategorization && item.newEntityId) {
+                         const hiddenInput = card.querySelector('.suggested-category-id');
+                         if(hiddenInput) hiddenInput.value = item.newEntityId;
+                    }
 
                     if (item.status === 2) { // Completed
-                        container.innerHTML = item.newExplanation;
+                        container.innerHTML = item.newValue;
                         footer.classList.remove('d-none');
                     } else if (item.status === 3) { // Failed
                         container.innerHTML = `<span class="text-danger">${item.error || 'Unknown error'}</span>`;
@@ -153,15 +182,33 @@
 
         function showEdit(questionId) {
             const card = document.querySelector(`.question-card[data-question-id="${questionId}"]`);
-            const currentContent = card.querySelector('.new-explanation-container').textContent.trim();
             document.getElementById('editQuestionId').value = questionId;
-            document.getElementById('editTextarea').value = currentContent;
+
+            if (isCategorization) {
+                 const hiddenInput = card.querySelector('.suggested-category-id');
+                 const suggestedId = hiddenInput ? hiddenInput.value : null;
+                 const select = document.getElementById('editSelect');
+                 if (suggestedId) {
+                     select.value = suggestedId;
+                 }
+            } else {
+                const currentContent = card.querySelector('.new-value-container').textContent.trim();
+                document.getElementById('editTextarea').value = currentContent;
+            }
             new bootstrap.Modal(document.getElementById('editModal')).show();
         }
 
         async function saveEdit() {
             const questionId = document.getElementById('editQuestionId').value;
-            const newContent = document.getElementById('editTextarea').value;
+            let newContent;
+            
+            if (isCategorization) {
+                const select = document.getElementById('editSelect');
+                newContent = select.value;
+            } else {
+                newContent = document.getElementById('editTextarea').value;
+            }
+
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             const response = await fetch(`@Url.Action("Edit")?taskId=${taskId}&questionId=${questionId}`, {
