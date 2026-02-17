@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>Tambah Pertanyaan</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>AI Otomatis Kategorikan</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Klasifikasi AI</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Semua Jenis</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>Terjadi kesalahan saat memulai kategorisasi AI.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Terjadi kesalahan saat memulai klasifikasi.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>Tanggal Akhir</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Gagal memulai kategorisasi AI.</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Gagal memulai klasifikasi.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>Silakan pilih setidaknya satu kategori.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Harap pilih setidaknya satu pertanyaan.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>

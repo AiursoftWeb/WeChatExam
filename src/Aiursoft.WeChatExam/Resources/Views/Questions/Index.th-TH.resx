@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>เพิ่มคำถาม</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>AI จัดหมวดหมู่อัตโนมัติ</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>AI Classify</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>เกิดข้อผิดพลาดขณะเริ่มการจัดหมวดหมู่ด้วยปัญญาประดิษฐ์</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>เกิดข้อผิดพลาดขณะเริ่มการจำแนกประเภท</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>วันที่สิ้นสุด</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>ไม่สามารถเริ่มการจัดหมวดหมู่ด้วยปัญญาประดิษฐ์ได้</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>ไม่สามารถเริ่มการจำแนกประเภทได้</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>กรุณาเลือกหมวดหมู่อย่างน้อยหนึ่งหมวดหมู่</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>กรุณาเลือกคำถามอย่างน้อยหนึ่งข้อ</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>ก่อนหน้า</value>

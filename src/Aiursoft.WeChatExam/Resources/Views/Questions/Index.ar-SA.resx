@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>إضافة سؤال</value>
   </data>
+  <data name="AI Auto Categorize" xml:space="preserve">
+    <value>التصنيف التلقائي بالذكاء الاصطناعي</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>تصنيف بالذكاء الاصطناعي</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>حدث خطأ أثناء بدء تصنيف الذكاء الاصطناعي.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>حدث خطأ أثناء بدء التصنيف.</value>
@@ -78,6 +84,9 @@
   <data name="End Date" xml:space="preserve">
     <value>تاريخ الانتهاء</value>
   </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>فشل في بدء التصنيف الذكي الاصطناعي</value>
+  </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>فشل في بدء التصنيف.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Please select at least one category." xml:space="preserve">
     <value>الرجاء تحديد فئة على الأقل.</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>يرجى اختيار سؤال واحد على الأقل.</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>السابق</value>
