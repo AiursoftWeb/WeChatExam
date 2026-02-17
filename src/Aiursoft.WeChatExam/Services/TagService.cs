@@ -14,6 +14,11 @@ public class TagService : ITagService
 
     public async Task<Tag> AddTagAsync(string displayName)
     {
+        return await GetOrCreateTagAsync(displayName);
+    }
+
+    public async Task<Tag> GetOrCreateTagAsync(string displayName, int? taxonomyId = null)
+    {
         if (displayName.Length > 255)
         {
             displayName = displayName.Substring(0, 255);
@@ -31,13 +36,19 @@ public class TagService : ITagService
 
         if (existingTag != null)
         {
+            if (taxonomyId.HasValue && existingTag.TaxonomyId == null)
+            {
+                existingTag.TaxonomyId = taxonomyId.Value;
+                await _dbContext.SaveChangesAsync();
+            }
             return existingTag;
         }
 
         var newTag = new Tag
         {
             DisplayName = displayName,
-            NormalizedName = normalizedName
+            NormalizedName = normalizedName,
+            TaxonomyId = taxonomyId
         };
 
         _dbContext.Tags.Add(newTag);
