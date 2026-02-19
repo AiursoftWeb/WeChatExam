@@ -17,7 +17,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class AiTasksController(
     AiTaskService aiTaskService,
     BackgroundJobQueue backgroundJobQueue,
-    WeChatExamDbContext dbContext) : Controller
+    WeChatExamDbContext dbContext,
+    ITagService tagService) : Controller
 {
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -267,6 +268,115 @@ If none of the categories fit perfectly, choose the best available one.
         return Json(new { taskId = aiTask.Id });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AutoTagging([FromBody] Guid[] questionIds)
+    {
+        if (!questionIds.Any())
+        {
+            return BadRequest("No questions selected.");
+        }
+
+        var questions = await dbContext.Questions
+            .Include(q => q.QuestionTags)
+            .ThenInclude(qt => qt.Tag)
+            .Where(q => questionIds.Contains(q.Id))
+            .ToListAsync();
+
+        var taskItems = questions.Select(q => new AiTaskItem
+        {
+            QuestionId = q.Id,
+            QuestionContent = q.Content,
+            QuestionStandardAnswer = q.StandardAnswer,
+            OldValue = string.Join(", ", q.QuestionTags.Select(qt => qt.Tag.DisplayName)),
+            Status = AiTaskStatus.Pending
+        }).ToList();
+
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoTagging);
+
+        var allTaxonomies = await dbContext.Taxonomies
+            .Include(t => t.Tags)
+            .ToListAsync();
+
+        // Start background processing
+        foreach (var item in aiTask.Items.Values)
+        {
+            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+                queueName: "AI-Tagging",
+                jobName: $"Tag Question {item.QuestionId}",
+                job: async (serviceProvider) =>
+                {
+                    item.Status = AiTaskStatus.Processing;
+                    try
+                    {
+                        using var scope = serviceProvider.CreateScope();
+                        var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+                        var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        
+                        var question = await scopedDbContext.Questions
+                            .Include(q => q.QuestionTags)
+                            .ThenInclude(qt => qt.Tag)
+                            .Include(q => q.Category)
+                            .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
+                        
+                        if (question == null) 
+                        {
+                            item.Status = AiTaskStatus.Failed;
+                            item.Error = "Question not found.";
+                            return;
+                        }
+
+                        var resultString = new StringBuilder();
+                        var questionContext = $@"
+题目类型: {question.QuestionType.GetDisplayName()}
+题目分类: {question.Category?.Title ?? "未分类"}
+题目内容: {question.Content}
+元数据: {question.Metadata}
+标准答案: {question.StandardAnswer}
+现有解析: {question.Explanation}
+现有标签: {string.Join(", ", question.QuestionTags.Select(qt => qt.Tag.DisplayName))}
+";
+
+                        foreach (var taxonomy in allTaxonomies)
+                        {
+                            var existingTags = string.Join("、", taxonomy.Tags.Select(t => t.DisplayName));
+                            var prompt = $@"{questionContext}
+
+现在我要对上面的题目打标签，我打算从 {taxonomy.Name} {{当前正在讨论的分类体系}} 角度入手，例如 {existingTags} {{这里你补充具体的标签}}，你也可以自己创建新标签。如果无法从这个角度打标签，请直接返回none。打的标签应该尊重语法 <tag>tag1</tag> <tag>tag2</tag> 的语法";
+
+                            var response = await ollamaService.AskQuestion(prompt);
+                            var matches = System.Text.RegularExpressions.Regex.Matches(response, @"<tag>(.*?)</tag>");
+                            var taxonomyTags = new List<string>();
+                            foreach (System.Text.RegularExpressions.Match match in matches)
+                            {
+                                var tagName = match.Groups[1].Value.Trim();
+                                if (!string.IsNullOrWhiteSpace(tagName) && !tagName.Equals("none", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    taxonomyTags.Add(tagName);
+                                }
+                            }
+
+                            if (taxonomyTags.Any())
+                            {
+                                if (resultString.Length > 0) resultString.AppendLine();
+                                resultString.Append($"{taxonomy.Name}: {string.Join(", ", taxonomyTags.Distinct())}");
+                            }
+                        }
+
+                        item.NewValue = resultString.Length > 0 ? resultString.ToString() : "none";
+                        item.Status = AiTaskStatus.Completed;
+                    }
+                    catch (Exception ex)
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = ex.Message;
+                    }
+                });
+        }
+
+        return Json(new { taskId = aiTask.Id });
+    }
+
     public IActionResult Preview(Guid taskId)
     {
         var task = aiTaskService.GetTask(taskId);
@@ -342,9 +452,39 @@ If none of the categories fit perfectly, choose the best available one.
                 await dbContext.SaveChangesAsync();
             }
         }
+        else if (task.Type == AiTaskType.AutoTagging)
+        {
+            if (!string.IsNullOrWhiteSpace(item.NewValue) && item.NewValue != "none")
+            {
+                await ApplyTagsToQuestion(question.Id, item.NewValue);
+            }
+        }
 
         task.Items.TryRemove(questionId, out _);
         return Ok();
+    }
+
+    private async Task ApplyTagsToQuestion(Guid questionId, string newValue)
+    {
+        var lines = newValue.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        foreach (var line in lines)
+        {
+            var parts = line.Split(':', 2);
+            if (parts.Length == 2)
+            {
+                var taxonomyName = parts[0].Trim();
+                var tagNames = parts[1].Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+                var taxonomy = await dbContext.Taxonomies.FirstOrDefaultAsync(t => t.Name == taxonomyName);
+                int? taxonomyId = taxonomy?.Id;
+
+                foreach (var tagName in tagNames)
+                {
+                    var tag = await tagService.GetOrCreateTagAsync(tagName.Trim(), taxonomyId);
+                    await tagService.AddTagToQuestionAsync(questionId, tag.Id);
+                }
+            }
+        }
     }
 
     [HttpPost]
@@ -385,6 +525,13 @@ If none of the categories fit perfectly, choose the best available one.
              {
                  question.CategoryId = newCategoryId;
                  await dbContext.SaveChangesAsync();
+             }
+        }
+        else if (task.Type == AiTaskType.AutoTagging)
+        {
+             if (!string.IsNullOrWhiteSpace(newValue) && newValue != "none")
+             {
+                 await ApplyTagsToQuestion(question.Id, newValue);
              }
         }
 

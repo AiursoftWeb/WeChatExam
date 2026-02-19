@@ -4,12 +4,26 @@
 @{
     ViewData["Title"] = Localizer["AI Task Preview"];
     var isCategorization = Model.Type == AiTaskType.AutoCategorize;
+    var isTagging = Model.Type == AiTaskType.AutoTagging;
     var categories = ViewBag.Categories as IEnumerable<Category>;
 }
 
 <div class="row mb-3">
     <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="h3 mb-0">@Localizer["AI Task Preview"] - @(isCategorization ? Localizer["Auto Categorize"] : Localizer["Generate Explanation"])</h1>
+        <h1 class="h3 mb-0">@Localizer["AI Task Preview"] - 
+            @if (isCategorization)
+            {
+                @Localizer["Auto Categorize"]
+            }
+            else if (isTagging)
+            {
+                @Localizer["Auto Tagging"]
+            }
+            else
+            {
+                @Localizer["Generate Explanation"]
+            }
+        </h1>
         <div id="taskStatus" class="badge bg-primary">@Localizer["Processing..."]</div>
     </div>
 </div>
@@ -25,11 +39,37 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 border-end">
-                            <h6 class="fw-bold text-muted">@(isCategorization ? Localizer["Current Category"] : Localizer["Old Explanation"])</h6>
+                            <h6 class="fw-bold text-muted">
+                                @if (isCategorization)
+                                {
+                                    @Localizer["Current Category"]
+                                }
+                                else if (isTagging)
+                                {
+                                    @Localizer["Current Tags"]
+                                }
+                                else
+                                {
+                                    @Localizer["Old Explanation"]
+                                }
+                            </h6>
                             <div class="p-2 bg-light rounded" style="min-height: 100px; white-space: pre-wrap;">@item.OldValue</div>
                         </div>
                         <div class="col-md-6">
-                            <h6 class="fw-bold text-primary">@(isCategorization ? Localizer["Suggested Category"] : Localizer["AI New Explanation"])</h6>
+                            <h6 class="fw-bold text-primary">
+                                @if (isCategorization)
+                                {
+                                    @Localizer["Suggested Category"]
+                                }
+                                else if (isTagging)
+                                {
+                                    @Localizer["Suggested Tags"]
+                                }
+                                else
+                                {
+                                    @Localizer["AI New Explanation"]
+                                }
+                            </h6>
                             <div class="new-value-container p-2 border rounded" style="min-height: 100px; white-space: pre-wrap;">
                                 @if (item.Status == AiTaskStatus.Completed)
                                 {
