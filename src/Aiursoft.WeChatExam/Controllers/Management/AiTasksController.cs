@@ -295,7 +295,7 @@ If none of the categories fit perfectly, choose the best available one.
         var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoTagging);
 
         var allTaxonomies = await dbContext.Taxonomies
-            .Include(t => t.Tags)
+            .Include(t => t.Tags.Take(50))
             .ToListAsync();
 
         // Start background processing
@@ -312,54 +312,73 @@ If none of the categories fit perfectly, choose the best available one.
                         using var scope = serviceProvider.CreateScope();
                         var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
                         var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
-                        
+
                         var question = await scopedDbContext.Questions
                             .Include(q => q.QuestionTags)
                             .ThenInclude(qt => qt.Tag)
                             .Include(q => q.Category)
                             .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
-                        
-                        if (question == null) 
+
+                        if (question == null)
                         {
                             item.Status = AiTaskStatus.Failed;
                             item.Error = "Question not found.";
                             return;
                         }
 
-                        var resultString = new StringBuilder();
-                        var questionContext = $@"
-题目类型: {question.QuestionType.GetDisplayName()}
-题目分类: {question.Category?.Title ?? "未分类"}
-题目内容: {question.Content}
-元数据: {question.Metadata}
+                        var taxonomyInstructions = string.Join("\n\n", allTaxonomies.Select(t => $@"维度：{t.Name}
+现有标签库：[{string.Join("、", t.Tags.Select(tag => tag.DisplayName))}]"));
+
+                        var prompt = $@"你是一个专业的教育内容打标助手。你的任务是根据给定的题目信息，从多个指定的维度提取并打上合适的标签。
+
+【题目信息】
+类型: {question.QuestionType.GetDisplayName()}
+分类: {question.Category?.Title ?? "未分类"}
+内容: {question.Content}
 标准答案: {question.StandardAnswer}
 现有解析: {question.Explanation}
 现有标签: {string.Join(", ", question.QuestionTags.Select(qt => qt.Tag.DisplayName))}
-";
 
-                        foreach (var taxonomy in allTaxonomies)
+【任务指令】
+1. 请分别为以下维度评估并打标：
+{taxonomyInstructions}
+
+2. 优先级：请**极度优先**从对应维度的现有标签库中选择完全符合的标签。
+3. 创建限制：只有在现有标签库完全无法概括题目时，才允许自创 1-2 个极其精炼、通用的新标签。限制新标签必须和数据库里主要标签语言相同。
+4. 如果该题目完全不属于某个维度，请在该维度下输出 none。
+5. 输出格式：请不要输出任何解释说明文字。只输出标签内容，每一行代表一个维度的结果，格式为“维度名称: <tag>标签A</tag><tag>标签B</tag>”。
+   例如：
+   维度名称1: <tag>标签A</tag><tag>标签B</tag>
+   维度名称2: <tag>标签C</tag>
+   维度名称3: none";
+
+                        var response = await ollamaService.AskQuestion(prompt);
+                        var resultString = new StringBuilder();
+                        var lines = response.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                        foreach (var line in lines)
                         {
-                            var existingTags = string.Join("、", taxonomy.Tags.Select(t => t.DisplayName));
-                            var prompt = $@"{questionContext}
-
-现在我要对上面的题目打标签，我打算从 {taxonomy.Name} {{当前正在讨论的分类体系}} 角度入手，例如 {existingTags} {{这里你补充具体的标签}}，你也可以自己创建新标签。如果无法从这个角度打标签，请直接返回none。打的标签应该尊重语法 <tag>tag1</tag> <tag>tag2</tag> 的语法";
-
-                            var response = await ollamaService.AskQuestion(prompt);
-                            var matches = System.Text.RegularExpressions.Regex.Matches(response, @"<tag>(.*?)</tag>");
-                            var taxonomyTags = new List<string>();
-                            foreach (System.Text.RegularExpressions.Match match in matches)
+                            var parts = line.Split(':', 2);
+                            if (parts.Length == 2)
                             {
-                                var tagName = match.Groups[1].Value.Trim();
-                                if (!string.IsNullOrWhiteSpace(tagName) && !tagName.Equals("none", StringComparison.OrdinalIgnoreCase))
+                                var taxonomyName = parts[0].Trim();
+                                var tagString = parts[1].Trim();
+
+                                var matches = System.Text.RegularExpressions.Regex.Matches(tagString, @"<tag>(.*?)</tag>");
+                                var taxonomyTags = new List<string>();
+                                foreach (System.Text.RegularExpressions.Match match in matches)
                                 {
-                                    taxonomyTags.Add(tagName);
+                                    var tagName = match.Groups[1].Value.Trim();
+                                    if (!string.IsNullOrWhiteSpace(tagName) && !tagName.Equals("none", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        taxonomyTags.Add(tagName);
+                                    }
                                 }
-                            }
 
-                            if (taxonomyTags.Any())
-                            {
-                                if (resultString.Length > 0) resultString.AppendLine();
-                                resultString.Append($"{taxonomy.Name}: {string.Join(", ", taxonomyTags.Distinct())}");
+                                if (taxonomyTags.Any())
+                                {
+                                    if (resultString.Length > 0) resultString.AppendLine();
+                                    resultString.Append($"{taxonomyName}: {string.Join(", ", taxonomyTags.Distinct())}");
+                                }
                             }
                         }
 
