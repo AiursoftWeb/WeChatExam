@@ -214,9 +214,9 @@ public class AiTasksTests
         dbContext.Questions.Add(question);
         await dbContext.SaveChangesAsync();
 
-        // 2. Mock Ollama response with <tag> tags
+        // 2. Mock Ollama response with <tag> tags in new format
         _mockOllamaService.Setup(s => s.AskQuestion(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync("<tag>Jazz</tag> <tag>Classical</tag>");
+            .ReturnsAsync("Style: <tag>Jazz</tag> <tag>Classical</tag>");
 
         // 3. Trigger AutoTagging
         var token = await GetAntiCsrfToken("/Questions/Index");
