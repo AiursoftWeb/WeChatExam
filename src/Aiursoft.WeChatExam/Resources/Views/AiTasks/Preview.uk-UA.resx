@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Попередній перегляд завдання AI</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Автоматична категоризація</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Автоматичне тегування</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Скасувати</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Завершено</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>Поточна категорія</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Поточні теги</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Редагувати пропозицію AI</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Створити пояснення</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>Старе пояснення</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>Вибрати категорію</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>Спробована категорія</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Підібрані теги</value>
   </data>
 
 </root>

@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 작업 미리보기</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>자동 분류</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>자동 태그 지정</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>완료됨</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>현재 카테고리</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>현재 태그</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>수정</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>AI 제안 편집</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>설명 생성</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>기존 설명</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>카테고리 선택</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>제안된 카테고리</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>제안된 태그</value>
   </data>
 
 </root>

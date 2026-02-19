@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>AI Automatyczne kategoryzowanie</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>AI automatyczne etykietowanie</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>AI Classify</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Wystąpił błąd podczas uruchamiania kategoryzacji AI.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>Wystąpił błąd podczas uruchamiania automatycznego tagowania AI.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Wystąpił błąd podczas uruchamiania klasyfikacji.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Nie udało się uruchomić kategoryzacji AI.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Nie udało się uruchomić automatycznego tagowania AI.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Nie udało się rozpocząć klasyfikacji.</value>

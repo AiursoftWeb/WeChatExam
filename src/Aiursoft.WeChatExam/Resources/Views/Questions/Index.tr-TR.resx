@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>Yapay Zeka Otomatik Kategorileştir</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>Yapay Zeka Otomatik Etiketleme</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Yapay Zeka Sınıflandırma</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Yapay zeka kategorizasyonu başlatılırken bir hata oluştu.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>AI etiketleme başlatılırken bir hata oluştu.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Sınıflandırma başlatılırken bir hata oluştu.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Yapay Zeka kategorizasyonu başlatılamadı.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Yapay Zeka etiketleme başlatılamadı.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Sınıflandırma başlatılamadı.</value>

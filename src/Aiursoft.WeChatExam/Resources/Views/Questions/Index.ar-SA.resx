@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>التصنيف التلقائي بالذكاء الاصطناعي</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>التصنيف التلقائي بالذكاء الاصطناعي</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>تصنيف بالذكاء الاصطناعي</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>حدث خطأ أثناء بدء تصنيف الذكاء الاصطناعي.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>حدث خطأ أثناء بدء وضع العلامات الذكية الاصطناعية.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>حدث خطأ أثناء بدء التصنيف.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>فشل في بدء التصنيف الذكي الاصطناعي</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>فشل في بدء التصنيف التلقائي بالذكاء الاصطناعي.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>فشل في بدء التصنيف.</value>

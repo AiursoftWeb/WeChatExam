@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>AI-autokategorointi</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>AI-automatisoitu tunnisteet</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>AI Luokitus</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Tapahtui virhe AI-luokittelun käynnistyksessä.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>Tapahtui virhe AI-merkintöjen käynnistyksessä.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Tapahtui virhe luomassa luokittelua.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>AI-luokittelun käynnistäminen epäonnistui.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Ei voitu käynnistää AI-tagiointia.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Luonnoksen aloittaminen epäonnistui.</value>

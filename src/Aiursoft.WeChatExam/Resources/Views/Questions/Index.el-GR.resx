@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>Αυτόματη Κατηγοριοποίηση Αναγνώρισης Αλγορίθμου</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>AI Αυτόματη Ετικέτα</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>ΑΙ Κατηγοριοποίηση</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Προέκυψε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης με βάση την ΤΝ.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της αυτόματης ετικετοδότησης AI.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Απέτυχε η εκκίνηση της κατηγοριοποίησης από το ΤΝ.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Απέτυχε η εκκίνηση της αυτόματης ετικετοδότησης από το AI.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Αποτυχία εκκίνησης ταξινόμησης.</value>

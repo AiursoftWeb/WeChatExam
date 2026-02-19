@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Vista previa de tarea de IA</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Categorización automática</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Etiquetado automático</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Completado</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>Categoría actual</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Etiquetas actuales</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Editar</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Editar sugerencia de IA</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Generar explicación</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>Explicación antigua</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>Seleccionar categoría</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>Categoría sugerida</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Etiquetas sugeridas</value>
   </data>
 
 </root>

@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 任务预览</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>自动分类</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>自动打标签</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>已完成</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>当前分类</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>当前标签</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>编辑 AI 建议</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>生成解析</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>老解析</value>
@@ -57,26 +72,11 @@
   <data name="Select Category" xml:space="preserve">
     <value>选择分类</value>
   </data>
-  <data name="Auto Tagging" xml:space="preserve">
-    <value>自动打标签</value>
-  </data>
-  <data name="Current Tags" xml:space="preserve">
-    <value>当前标签</value>
-  </data>
-  <data name="Suggested Tags" xml:space="preserve">
-    <value>建议标签</value>
-  </data>
-  <data name="Auto Categorize" xml:space="preserve">
-    <value>自动分类</value>
-  </data>
-  <data name="Current Category" xml:space="preserve">
-    <value>当前分类</value>
-  </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>建议分类</value>
   </data>
-  <data name="Generate Explanation" xml:space="preserve">
-    <value>生成解析</value>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>建议标签</value>
   </data>
 
 </root>

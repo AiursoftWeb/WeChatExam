@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-tehtävän esikatselu</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Automaattinen luokittelu</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Automaattiset tunnisteet</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Peruuta</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Valmis</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>Nykyinen kategoria</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Nykyiset tunnisteet</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Muokkaa</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Muokkaa AI-ehdotusta</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Luo selitys</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>Vanha selitys</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>Valitse kategoria</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>Ehdotettu kategoria</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Ehdotetut tunnisteet</value>
   </data>
 
 </root>
