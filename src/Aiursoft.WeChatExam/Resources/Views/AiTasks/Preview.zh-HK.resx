@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 任務預覽</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>自動分類</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>自動標籤</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>已完成</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>現有分類</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>現有標籤</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編輯</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>編輯 AI 建議</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>生成解釋</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>舊解釋</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>選擇分類</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>建議分類</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>建議標籤</value>
   </data>
 
 </root>

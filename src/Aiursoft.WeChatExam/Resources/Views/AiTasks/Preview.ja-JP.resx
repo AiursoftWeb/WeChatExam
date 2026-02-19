@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AIタスクプレビュー</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>自動カテゴリ分け</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>自動タグ付け</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>完了</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>現在のカテゴリ</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>現在のタグ</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>AIの提案を編集</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>説明を生成する</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>元の説明</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>カテゴリを選択</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>推奨カテゴリ</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>推奨タグ</value>
   </data>
 
 </root>

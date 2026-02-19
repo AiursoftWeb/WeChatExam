@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>AI Otomatis Kategorikan</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>AI Otomatisasi Tag</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Klasifikasi AI</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Terjadi kesalahan saat memulai kategorisasi AI.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>Terjadi kesalahan saat memulai penandaan AI.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>Terjadi kesalahan saat memulai klasifikasi.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Gagal memulai kategorisasi AI.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Gagal memulai penandaan AI.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Gagal memulai klasifikasi.</value>

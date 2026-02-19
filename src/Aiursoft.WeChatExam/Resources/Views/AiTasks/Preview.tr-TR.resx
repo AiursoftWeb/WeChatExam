@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Yapay Zeka Görev Önizleme</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Otomatik Kategorilendirme</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Otomatik Etiketleme</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Tamamlandı</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>Mevcut Kategori</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Mevcut Etiketler</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Düzenle</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>AI Önerisini Düzenle</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Açıklama Oluştur</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>Eski Açıklama</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>Kategori Seç</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>Önerilen Kategori</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Önerilen Etiketler</value>
   </data>
 
 </root>

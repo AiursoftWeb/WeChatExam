@@ -30,12 +30,6 @@
   <data name="AI Auto Tagging" xml:space="preserve">
     <value>AI 自动打标签</value>
   </data>
-  <data name="Failed to start AI tagging." xml:space="preserve">
-    <value>启动 AI 自动打标签失败。</value>
-  </data>
-  <data name="An error occurred while starting AI tagging." xml:space="preserve">
-    <value>启动 AI 自动打标签时发生错误。</value>
-  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>AI 一键分类</value>
   </data>
@@ -53,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>启动 AI 分类时发生错误。</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>启动 AI 自动打标签时发生错误。</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>开始分类时发生错误。</value>
@@ -95,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>AI分类启动失败。</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>启动 AI 自动打标签失败。</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>分类启动失败。</value>

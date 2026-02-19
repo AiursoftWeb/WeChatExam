@@ -27,6 +27,9 @@
   <data name="AI Auto Categorize" xml:space="preserve">
     <value>IA Categorizare Automată</value>
   </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>IA Etichetare Automată</value>
+  </data>
   <data name="AI Classify" xml:space="preserve">
     <value>Clasificare AI</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>A apărut o eroare în timpul pornirii categorizării AI.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>A apărut o eroare în timpul pornirii etichetării cu IA.</value>
   </data>
   <data name="An error occurred while starting classification." xml:space="preserve">
     <value>A apărut o eroare în timpul pornirii clasificării.</value>
@@ -86,6 +92,9 @@
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Nu s-a reușit pornirea categorizării AI.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Nu s-a putut porni etichetarea cu IA.</value>
   </data>
   <data name="Failed to start classification." xml:space="preserve">
     <value>Eșec la pornirea clasificării.</value>

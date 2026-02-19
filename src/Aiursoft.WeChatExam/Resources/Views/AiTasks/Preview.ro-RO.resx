@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Previzualizare sarcină AI</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Categorizare automată</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Etichetare automată</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anulează</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Finalizat</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>Categorie actuală</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Etichete curente</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Editare sugestie AI</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Generează Explicație</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>Explicație veche</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>Selectează categorie</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>Categorie sugerată</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Etichete sugerate</value>
   </data>
 
 </root>

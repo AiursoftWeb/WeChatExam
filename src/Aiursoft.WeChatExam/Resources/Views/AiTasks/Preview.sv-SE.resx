@@ -30,11 +30,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-uppgiftsförhandsgranskning</value>
   </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Automatisk kategorisering</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Automatisk taggning</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Avbryt</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Slutförd</value>
+  </data>
+  <data name="Current Category" xml:space="preserve">
+    <value>Aktuell kategori</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Aktuella taggar</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Redigera</value>
@@ -44,6 +56,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Redigera AI-förslag</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Generera förklaring</value>
   </data>
   <data name="Old Explanation" xml:space="preserve">
     <value>Gammal förklaring</value>
@@ -56,6 +71,12 @@
   </data>
   <data name="Select Category" xml:space="preserve">
     <value>Välj kategori</value>
+  </data>
+  <data name="Suggested Category" xml:space="preserve">
+    <value>Föreslagen kategori</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Förslagna taggar</value>
   </data>
 
 </root>
