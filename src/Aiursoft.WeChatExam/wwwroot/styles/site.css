@@ -23,3 +23,53 @@ nav.navbar{
 .landing-intro{
     padding-top:160px!important
 }
+
+/* Alert outline styles */
+.alert-outline-coloured {
+    background-color: transparent;
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    align-items: flex-start;
+}
+
+.alert-outline-coloured .alert-icon {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.alert-outline-coloured .alert-message {
+    flex-grow: 1;
+}
+
+.alert-outline-coloured.alert-primary {
+    border-color: #3b7ddd;
+    color: #3b7ddd;
+}
+
+.alert-outline-coloured.alert-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.alert-outline-coloured.alert-success {
+    border-color: #1cbb8c;
+    color: #1cbb8c;
+}
+
+.alert-outline-coloured.alert-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.alert-outline-coloured.alert-warning {
+    border-color: #fcb92c;
+    color: #fcb92c;
+}
+
+.alert-outline-coloured.alert-info {
+    border-color: #17a2b8;
+    color: #17a2b8;
+}
