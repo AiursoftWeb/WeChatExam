@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>Klasifikasi AI - Pilih Kategori</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI Hasilkan Jawaban</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI Hasilkan Penjelasan</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Semua Jenis</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Terjadi kesalahan saat memulai generasi jawaban AI.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Terjadi kesalahan saat memulai kategorisasi AI.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Tanggal Akhir</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Gagal memulai generasi jawaban AI.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Gagal memulai kategorisasi AI.</value>

@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>รับรอง</value>
   </data>
+  <data name="AI New Answer" xml:space="preserve">
+    <value>คำตอบใหม่จาก AI</value>
+  </data>
   <data name="AI New Explanation" xml:space="preserve">
     <value>คำอธิบายใหม่โดย AI</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Completed" xml:space="preserve">
     <value>เสร็จสิ้น</value>
   </data>
+  <data name="Current Answer" xml:space="preserve">
+    <value>คำตอบปัจจุบัน</value>
+  </data>
   <data name="Current Category" xml:space="preserve">
     <value>หมวดหมู่ปัจจุบัน</value>
   </data>
@@ -56,6 +62,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>แก้ไขคำแนะนำจาก AI</value>
+  </data>
+  <data name="Generate Answer" xml:space="preserve">
+    <value>สร้างคำตอบ</value>
   </data>
   <data name="Generate Explanation" xml:space="preserve">
     <value>สร้างคำอธิบาย</value>

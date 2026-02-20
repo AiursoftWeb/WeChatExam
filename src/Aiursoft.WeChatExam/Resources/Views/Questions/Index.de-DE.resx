@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Klassifizierung - Kategorien auswählen</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>KI Antworten generieren</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>KI-Generierung von Erklärungen</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle Typen</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Beim Start der Generierung von KI-Antworten ist ein Fehler aufgetreten.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Beim Start der Kategorisierung durch KI ist ein Fehler aufgetreten.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>End Date</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Fehler beim Start der Generierung der KI-Antwort</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Fehler beim Starten der Kategorisierung durch KI</value>

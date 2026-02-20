@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>채택</value>
   </data>
+  <data name="AI New Answer" xml:space="preserve">
+    <value>AI 새 답변</value>
+  </data>
   <data name="AI New Explanation" xml:space="preserve">
     <value>AI 새로운 설명</value>
   </data>
@@ -42,6 +45,9 @@
   <data name="Completed" xml:space="preserve">
     <value>완료됨</value>
   </data>
+  <data name="Current Answer" xml:space="preserve">
+    <value>현재 답변</value>
+  </data>
   <data name="Current Category" xml:space="preserve">
     <value>현재 카테고리</value>
   </data>
@@ -56,6 +62,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>AI 제안 편집</value>
+  </data>
+  <data name="Generate Answer" xml:space="preserve">
+    <value>답변 생성</value>
   </data>
   <data name="Generate Explanation" xml:space="preserve">
     <value>설명 생성</value>

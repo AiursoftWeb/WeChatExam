@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI 分類 - 選擇分類</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI 生成答案</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI 生成解釋</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>啟動 AI 答案生成時發生錯誤。</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>啟動 AI 分類時發生錯誤。</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>結束日期</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>未能啟動 AI 答案生成</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>未能啟動 AI 分類</value>
