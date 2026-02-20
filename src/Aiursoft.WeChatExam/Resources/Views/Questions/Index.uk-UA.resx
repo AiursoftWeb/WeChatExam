@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Classify - Select Categories</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI генерувати відповіді</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI створити пояснення</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Всі типи</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Сталася помилка під час запуску генерації відповідей AI.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Помилка виникла під час спроби запуску AI-категоризації.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Дата завершення</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Не вдалося розпочати генерацію відповідей AI</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Не вдалося запустити автоперекладання</value>

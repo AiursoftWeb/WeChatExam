@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Classify - Vælg kategorier</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI Generer Svar</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI Generer forklaringer</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typer</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Der opstod en fejl under opstart af generering af AI-svar.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Der opstod en fejl under start af AI-kategorisering.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Slutdato</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Mislykkedes med at starte generering af AI-svar.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Mislykkedes med at starte AI-kategorisering.</value>

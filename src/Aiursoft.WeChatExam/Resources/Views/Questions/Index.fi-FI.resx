@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Classify - Valitse kategoriat</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI Luo Vastaukset</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI-luotu selitykset</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Kaikki tyypit</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Tapahtui virhe AI-vastauksen generoinnin käynnistyksessä.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Tapahtui virhe AI-luokittelun käynnistyksessä.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Loppupäivä</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Epäonnistui AI-vastauksen generoinnin käynnistäminen.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>AI-luokittelun käynnistäminen epäonnistui.</value>

@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>Yapay Zeka Sınıflandırması - Kategorileri Seçin</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>Yapay Zeka Cevap Üret</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>Yapay Zekâ Açıklamaları Üret</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Tüm Türler</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>AI yanıtı üretimi başlatılırken bir hata oluştu.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Yapay zeka kategorizasyonu başlatılırken bir hata oluştu.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Bitiş Tarihi</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>AI yanıtı üretimi başlatılamadı.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Yapay Zeka kategorizasyonu başlatılamadı.</value>

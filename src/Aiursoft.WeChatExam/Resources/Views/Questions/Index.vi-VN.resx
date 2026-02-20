@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Classify - Chọn Danh mục</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>Tạo câu trả lời bằng AI</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>Tạo Giải thích bằng AI</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Tất cả các loại</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Đã xảy ra lỗi khi khởi chạy việc tạo câu trả lời bằng AI.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Đã xảy ra lỗi khi khởi động phân loại AI.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Ngày kết thúc</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Thất bại khi bắt đầu tạo câu trả lời bằng AI</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Thất bại khi khởi động phân loại AI</value>

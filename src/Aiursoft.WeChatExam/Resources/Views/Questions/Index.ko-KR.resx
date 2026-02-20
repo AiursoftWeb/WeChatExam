@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Classify - Select Categories</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI 답변 생성</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI 설명 생성</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>모든 유형</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>AI 답변 생성을 시작하는 도중 오류가 발생했습니다.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>AI 분류 작업을 시작하는 중 오류가 발생했습니다.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>종료일</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>AI 답변 생성을 시작하지 못했습니다.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>AI 분류를 시작하는 데 실패했습니다.</value>

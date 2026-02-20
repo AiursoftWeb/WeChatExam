@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>AI Classify - Select Categories</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI Δημιουργία Απαντήσεων</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI Δημιουργία Εξηγήσεων</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Όλα τα είδη</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της δημιουργίας απαντήσεων από την ΤΝ.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Προέκυψε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης με βάση την ΤΝ.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Ημερομηνία Λήξης</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Απέτυχε η εκκίνηση της δημιουργίας απάντησης από το AI.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Απέτυχε η εκκίνηση της κατηγοριοποίησης από το ΤΝ.</value>

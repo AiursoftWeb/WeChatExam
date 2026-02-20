@@ -36,6 +36,9 @@
   <data name="AI Classify - Select Categories" xml:space="preserve">
     <value>IA Classer - Sélectionner les catégories</value>
   </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>Générer des réponses par IA</value>
+  </data>
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>Générer des explications par IA</value>
   </data>
@@ -44,6 +47,9 @@
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Tous les types</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Une erreur s&apos;est produite lors du démarrage de la génération de réponses par IA.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Une erreur s&apos;est produite lors du démarrage de la catégorisation par IA.</value>
@@ -89,6 +95,9 @@
   </data>
   <data name="End Date" xml:space="preserve">
     <value>Date de fin</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Échec du démarrage de la génération de réponses par IA</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Échec du démarrage de la catégorisation par IA.</value>
