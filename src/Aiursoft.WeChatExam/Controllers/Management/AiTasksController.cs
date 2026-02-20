@@ -396,6 +396,129 @@ If none of the categories fit perfectly, choose the best available one.
         return Json(new { taskId = aiTask.Id });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> GenerateAnswers([FromBody] Guid[] questionIds)
+    {
+        if (!questionIds.Any())
+        {
+            return BadRequest("No questions selected.");
+        }
+
+        var questions = await dbContext.Questions
+            .Where(q => questionIds.Contains(q.Id))
+            .ToListAsync();
+
+        var taskItems = questions.Select(q => new AiTaskItem
+        {
+            QuestionId = q.Id,
+            QuestionContent = q.Content,
+            QuestionStandardAnswer = q.StandardAnswer,
+            OldValue = q.StandardAnswer,
+            Status = AiTaskStatus.Pending
+        }).ToList();
+
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.GenerateAnswer);
+
+        // Start background processing
+        foreach (var item in aiTask.Items.Values)
+        {
+            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+                queueName: "AI-Answer-Generation",
+                jobName: $"Generate Answer for Question {item.QuestionId}",
+                job: async (serviceProvider) =>
+                {
+                    item.Status = AiTaskStatus.Processing;
+                    try
+                    {
+                        using var scope = serviceProvider.CreateScope();
+                        var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+                        var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        
+                        var question = await scopedDbContext.Questions
+                            .Include(q => q.Category)
+                            .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
+                        if (question == null) 
+                        {
+                            item.Status = AiTaskStatus.Failed;
+                            item.Error = "Question not found in database.";
+                            return;
+                        }
+
+                        var category = question.Category?.Title ?? "未分类";
+                        var type = question.QuestionType.GetDisplayName();
+                        
+                        var promptBuilder = new StringBuilder();
+                        promptBuilder.AppendLine($"题目类型: {type}");
+                        promptBuilder.AppendLine($"题目分类: {category}");
+                        promptBuilder.AppendLine($"题目内容: {question.Content}");
+                        
+                        if (!string.IsNullOrWhiteSpace(question.Metadata))
+                        {
+                            try 
+                            {
+                                var metadataObj = JsonConvert.DeserializeObject<dynamic>(question.Metadata);
+                                if (metadataObj?.options != null)
+                                {
+                                    promptBuilder.AppendLine("选项:");
+                                    foreach (var option in metadataObj.options)
+                                    {
+                                        promptBuilder.AppendLine($"- {option}");
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                                // Ignore metadata if not JSON or doesn't have options
+                            }
+                        }
+                        
+                        promptBuilder.AppendLine();
+
+                        if (question.QuestionType == QuestionType.Choice)
+                        {
+                            promptBuilder.AppendLine("指令: 请从提供的选项中选出唯一正确的选项内容。直接输出选项文本，不要包含任何前缀（如“答：”、“选项A：”等）或解释。");
+                        }
+                        else if (question.QuestionType == QuestionType.Blank)
+                        {
+                            promptBuilder.AppendLine("指令: 请根据题目内容给出填空题的正确答案。如果题目中有多个空，请按顺序给出答案，并用英文逗号“,”分隔。直接输出答案内容，不要有任何多余文字。");
+                        }
+                        else if (question.QuestionType == QuestionType.Bool)
+                        {
+                            promptBuilder.AppendLine("指令: 请判断该题目。如果正确请输出“true”，如果错误请输出“false”。直接输出这两个单词之一，不要有任何多余文字。");
+                        }
+                        else if (question.QuestionType == QuestionType.ShortAnswer || 
+                                 question.QuestionType == QuestionType.Essay || 
+                                 question.QuestionType == QuestionType.NounExplanation)
+                        {
+                            promptBuilder.AppendLine("指令: 请给出该题目的参考答案和评分点。格式要求：\n得分点：\n①...\n②...\n示例答案：...");
+                        }
+
+                        var prompt = promptBuilder.ToString();
+
+                        var response = await ollamaService.AskQuestion(prompt);
+                        if (!string.IsNullOrWhiteSpace(response))
+                        {
+                            item.NewValue = response.Trim();
+                            item.Status = AiTaskStatus.Completed;
+                        }
+                        else
+                        {
+                            item.Status = AiTaskStatus.Failed;
+                            item.Error = "AI returned an empty response.";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = ex.Message;
+                    }
+                });
+        }
+
+        return Json(new { taskId = aiTask.Id });
+    }
+
     public IActionResult Preview(Guid taskId)
     {
         var task = aiTaskService.GetTask(taskId);
@@ -478,6 +601,14 @@ If none of the categories fit perfectly, choose the best available one.
                 await ApplyTagsToQuestion(question.Id, item.NewValue);
             }
         }
+        else if (task.Type == AiTaskType.GenerateAnswer)
+        {
+            if (!string.IsNullOrWhiteSpace(item.NewValue))
+            {
+                question.StandardAnswer = item.NewValue;
+                await dbContext.SaveChangesAsync();
+            }
+        }
 
         task.Items.TryRemove(questionId, out _);
         return Ok();
@@ -551,6 +682,14 @@ If none of the categories fit perfectly, choose the best available one.
              if (!string.IsNullOrWhiteSpace(newValue) && newValue != "none")
              {
                  await ApplyTagsToQuestion(question.Id, newValue);
+             }
+        }
+        else if (task.Type == AiTaskType.GenerateAnswer)
+        {
+             if (!string.IsNullOrWhiteSpace(newValue))
+             {
+                 question.StandardAnswer = newValue;
+                 await dbContext.SaveChangesAsync();
              }
         }
 

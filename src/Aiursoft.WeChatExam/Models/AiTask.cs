@@ -15,7 +15,8 @@ public enum AiTaskType
 {
     GenerateExplanation,
     AutoCategorize,
-    AutoTagging
+    AutoTagging,
+    GenerateAnswer
 }
 
 public class AiTaskItem

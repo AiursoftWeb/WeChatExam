@@ -252,6 +252,9 @@
             <button class="btn btn-success" onclick="autoTagging()">
                 <i class="align-middle me-2" data-lucide="tag"></i> @Localizer["AI Auto Tagging"]
             </button>
+            <button class="btn btn-primary" onclick="generateAiAnswers()">
+                <i class="align-middle me-2" data-lucide="lightbulb"></i> @Localizer["AI Generate Answers"]
+            </button>
         </div>
         <button class="btn btn-link text-secondary ms-auto" onclick="clearSelection()">
             @Localizer["Cancel"]
@@ -418,6 +421,37 @@
             } catch (error) {
                 console.error('Error:', error);
                 alert('@Localizer["An error occurred while starting AI tagging."]');
+            }
+        }
+
+        async function generateAiAnswers() {
+            const ids = Array.from(getSelectedIds());
+            if (ids.length === 0) {
+                 alert('@Localizer["Please select at least one question."]');
+                 return;
+            }
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            try {
+                const response = await fetch('@Url.Action("GenerateAnswers", "AiTasks")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify(ids)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    clearSelection();
+                    window.location.href = '@Url.Action("Preview", "AiTasks")' + '?taskId=' + result.taskId;
+                } else {
+                    alert('@Localizer["Failed to start AI answer generation."]');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('@Localizer["An error occurred while starting AI answer generation."]');
             }
         }
 

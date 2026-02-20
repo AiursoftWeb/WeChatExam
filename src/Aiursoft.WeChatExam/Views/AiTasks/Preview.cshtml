@@ -5,6 +5,7 @@
     ViewData["Title"] = Localizer["AI Task Preview"];
     var isCategorization = Model.Type == AiTaskType.AutoCategorize;
     var isTagging = Model.Type == AiTaskType.AutoTagging;
+    var isAnswerGeneration = Model.Type == AiTaskType.GenerateAnswer;
     var categories = ViewBag.Categories as IEnumerable<Category>;
 }
 
@@ -18,6 +19,10 @@
             else if (isTagging)
             {
                 @Localizer["Auto Tagging"]
+            }
+            else if (isAnswerGeneration)
+            {
+                @Localizer["Generate Answer"]
             }
             else
             {
@@ -48,6 +53,10 @@
                                 {
                                     @Localizer["Current Tags"]
                                 }
+                                else if (isAnswerGeneration)
+                                {
+                                    @Localizer["Current Answer"]
+                                }
                                 else
                                 {
                                     @Localizer["Old Explanation"]
@@ -64,6 +73,10 @@
                                 else if (isTagging)
                                 {
                                     @Localizer["Suggested Tags"]
+                                }
+                                else if (isAnswerGeneration)
+                                {
+                                    @Localizer["AI New Answer"]
                                 }
                                 else
                                 {
