@@ -1,13 +1,10 @@
 @using Newtonsoft.Json
 @model Aiursoft.WeChatExam.Models.PracticeViewModels.PracticeViewModel
-@{
-    ViewData["Title"] = Localizer["Practice Session"];
-}
 
 <div class="container-fluid p-0">
     <div class="row mb-3">
         <div class="col-md-8">
-            <h1 class="h3">@ViewData["Title"]</h1>
+            <h1 class="h3">@Localizer["Practice Session"]</h1>
         </div>
         <div class="col-md-4 text-end">
             <span id="scoreDisplay" class="badge bg-primary fs-5">Score: 0</span>

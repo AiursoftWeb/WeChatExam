@@ -48,6 +48,11 @@ public class AiTaskItem
 
 public class AiTask : UiStackLayoutViewModel
 {
+    public AiTask()
+    {
+        PageTitle = "AI Task Preview";
+    }
+
     public Guid Id { get; set; } = Guid.NewGuid();
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public AiTaskType Type { get; set; }

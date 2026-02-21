@@ -1,0 +1,14 @@
+You are working on an EXISTING Merge Request #130: 'Fix for issue #35: 刷题测试页面有点儿丑'.
+Source Branch: fix-issue-35
+Target Branch: master
+
+Recent discussions and feedback (marked [NEW] if since last bot commit):
+[NEW] anduin: 这个框架禁止出现：ViewData["Title"] = Localizer["Practice Session"];
+
+这个东西根本就没有被引用过！我们公司禁止使用 ViewData。所有的Tilte控制均在ViewModel里。你要修正所有的地方。 (2/21/2026 9:31:17 AM)
+
+
+Status: NEW HUMAN REVIEW/COMMENTS.
+A human has provided feedback on this MR. Please address the comments mentioned in the discussions above, especially those marked as [NEW].
+
+Please analyze the feedback and make the necessary changes.
