@@ -2,7 +2,6 @@
 @using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.AiTask
 @{
-    ViewData["Title"] = Localizer["AI Task Preview"];
     var isCategorization = Model.Type == AiTaskType.AutoCategorize;
     var isTagging = Model.Type == AiTaskType.AutoTagging;
     var isAnswerGeneration = Model.Type == AiTaskType.GenerateAnswer;

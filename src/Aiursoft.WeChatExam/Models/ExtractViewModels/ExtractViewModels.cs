@@ -8,7 +8,7 @@ public class ExtractIndexViewModel: UiStackLayoutViewModel
 {
     public ExtractIndexViewModel()
     {
-        PageTitle = "Extract";
+        PageTitle = "Extract Knowledge";
     }
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Material")]
@@ -29,7 +29,7 @@ public class ExtractEditViewModel: UiStackLayoutViewModel
 {
     public ExtractEditViewModel()
     {
-        PageTitle = "Edit";
+        PageTitle = "Edit Extracted JSON";
     }
     
     [Required(ErrorMessage = "The {0} is required.")]
@@ -45,7 +45,7 @@ public class ExtractPreviewViewModel: UiStackLayoutViewModel
 {
     public ExtractPreviewViewModel()
     {
-        PageTitle = "Preview";
+        PageTitle = "Preview Data";
     }
     public string JsonContent { get; set; } = string.Empty;
 
