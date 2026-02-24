@@ -45,7 +45,7 @@ public static class AstBuilder
 
         if (stack.Count > 1)
         {
-            throw new ArgumentException("Invalid expression. Too many operands.");
+            throw new ArgumentException("Missing operator between tags. If you meant to join them, use '&&' or '||'. If you meant a single tag with spaces, wrap it in double quotes.");
         }
 
         return stack.Pop();

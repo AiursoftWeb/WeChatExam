@@ -35,7 +35,7 @@ public class QuestionsController(
         LinkText = "Questions",
         LinkOrder = 3)]
     public async Task<IActionResult> Index(
-        string? mtql,
+        [FromQuery(Name = "mtql")] string? filterMtql,
         string? tag,
         Guid? categoryId,
         QuestionType? questionType,
@@ -72,11 +72,11 @@ public class QuestionsController(
         }
 
         // Filter by MTQL (Priority) or Tag
-        if (!string.IsNullOrWhiteSpace(mtql))
+        if (!string.IsNullOrWhiteSpace(filterMtql))
         {
             try
             {
-                var tokens = MTQL.Services.Tokenizer.Tokenize(mtql);
+                var tokens = MTQL.Services.Tokenizer.Tokenize(filterMtql);
                 var rpn = MTQL.Services.Parser.ToRpn(tokens);
                 var ast = MTQL.Services.AstBuilder.Build(rpn);
                 var predicate = MTQL.Services.PredicateBuilder.Build(ast);
@@ -148,7 +148,7 @@ public class QuestionsController(
             FilterStartDate = startDate,
             FilterEndDate = endDate,
             FilterTag = tag,
-            FilterMtql = mtql,
+            FilterMtql = filterMtql,
 
             // Sorting
             SortBy = sortBy,
@@ -182,7 +182,7 @@ public class QuestionsController(
             }
             catch (Exception ex)
             {
-                return BadRequest($"Invalid MTQL: {ex.Message}");
+                return BadRequest(new { message = $"Invalid MTQL: {ex.Message}" });
             }
         }
 

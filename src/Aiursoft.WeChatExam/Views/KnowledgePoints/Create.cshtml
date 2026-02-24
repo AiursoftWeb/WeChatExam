@@ -101,9 +101,10 @@
                 container.innerHTML = '<div class="list-group-item">@Localizer["Searching..."]</div>';
 
                 fetch(`/Questions/Search?mtql=${encodeURIComponent(mtql)}&questionType=${type}`)
-                    .then(response => {
+                    .then(async response => {
                         if (!response.ok) {
-                            return response.text().then(text => { throw new Error(text); });
+                            const error = await response.json();
+                            throw new Error(error.message || 'Search failed');
                         }
                         return response.json();
                     })
