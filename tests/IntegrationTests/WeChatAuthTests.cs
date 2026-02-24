@@ -40,6 +40,7 @@ public class WeChatAuthTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
+        TestStartupWithMockWeChat.MockDistributionChannelService = new Mock<IDistributionChannelService>();
 
         _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
         await _server.UpdateDbAsync<WeChatExamDbContext>();
@@ -322,5 +323,44 @@ public class WeChatAuthTests
         Assert.IsNotNull(user);
         Assert.AreEqual("测试昵称", user.DisplayName);
         Assert.AreEqual("https://example.com/avatar.jpg", user.AvatarRelativePath);
+    }
+
+    [TestMethod]
+    public async Task GetUploadToken_WithValidToken_ReturnsUploadToken()
+    {
+        // Arrange: 登录并获取token
+        var code = "code-for-upload-token";
+        var openId = $"openid-for-upload-{Guid.NewGuid()}";
+        var sessionKey = "session-key";
+
+        _mockWeChatService
+            .Setup(s => s.CodeToSessionAsync(code))
+            .ReturnsAsync(new WeChatSessionResult
+            {
+                IsSuccess = true,
+                OpenId = openId,
+                SessionKey = sessionKey,
+                ErrorCode = 0,
+                ErrorMessage = null
+            });
+
+        var loginModel = new Code2SessionDto { Code = code };
+        var loginResponse = await _http.PostAsJsonAsync("/api/Auth/login", loginModel);
+        var tokenDto = await loginResponse.Content.ReadFromJsonAsync<TokenDto>();
+        var token = tokenDto!.Token;
+
+        _http.DefaultRequestHeaders.Clear();
+        _http.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+        // Act: 获取上传token
+        var response = await _http.GetAsync("/api/User/upload-token");
+
+        // Assert: 验证成功获取
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var uploadTokenDto = await response.Content.ReadFromJsonAsync<UploadTokenDto>();
+        Assert.IsNotNull(uploadTokenDto);
+        Assert.IsFalse(string.IsNullOrEmpty(uploadTokenDto.UploadToken));
+        Assert.IsTrue(uploadTokenDto.UploadUrl.Contains("avatar"));
+        Assert.IsTrue(uploadTokenDto.UploadUrl.Contains(uploadTokenDto.UploadToken));
     }
 }
