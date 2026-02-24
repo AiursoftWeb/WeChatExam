@@ -21,6 +21,7 @@
                         <input type="text" name="mtql" value="@Model.Mtql" class="form-control" placeholder="e.g. content contains 'sql'" />
                         <button type="submit" class="btn btn-primary">@Localizer["Search"]</button>
                     </div>
+                    <span asp-validation-for="Mtql" class="text-danger small"></span>
                 </div>
                 <div class="col-md-3">
                     <a href="@Url.Action("Index")" class="btn btn-outline-secondary w-100">@Localizer["Reset"]</a>

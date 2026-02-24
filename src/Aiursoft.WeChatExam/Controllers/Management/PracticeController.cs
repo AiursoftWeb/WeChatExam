@@ -47,7 +47,7 @@ public class PracticeController(
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(nameof(mtql), $"Invalid MTQL: {ex.Message}");
+                ModelState.AddModelError(nameof(IndexViewModel.Mtql), $"Invalid MTQL: {ex.Message}");
             }
         }
 

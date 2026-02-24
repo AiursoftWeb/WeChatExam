@@ -84,7 +84,7 @@ public class QuestionsController(
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(nameof(mtql), $"Invalid MTQL: {ex.Message}");
+                ModelState.AddModelError(nameof(IndexViewModel.FilterMtql), $"Invalid MTQL: {ex.Message}");
             }
         }
         else if (!string.IsNullOrWhiteSpace(tag))
