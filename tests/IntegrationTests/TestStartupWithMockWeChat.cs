@@ -67,10 +67,13 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddHostedService<QueueWorkerService>();
 
         // Configure Mock SKIT WeChat API Client instead of real one
-        if (MockWeChatService != null
-        && MockDistributionChannelService != null)
+        if (MockWeChatService != null)
         {
             services.AddScoped(_ => MockWeChatService.Object);
+        }
+        
+        if (MockDistributionChannelService != null)
+        {
             services.AddScoped(_ => MockDistributionChannelService.Object);
         }
 

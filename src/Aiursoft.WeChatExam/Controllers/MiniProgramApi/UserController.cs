@@ -67,6 +67,31 @@ public class UserController(UserManager<User> userManager, StorageService storag
     }
 
     /// <summary>
+    /// 获取头像上传所需的临时 Token
+    /// </summary>
+    /// <returns>上传 Token 和上传接口地址</returns>
+    /// <response code="200">成功获取 Token</response>
+    /// <response code="401">未授权</response>
+    [HttpGet("upload-token")]
+    [ProducesResponseType(typeof(UploadTokenDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public IActionResult GetUploadToken()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Unauthorized();
+        }
+
+        var token = storageService.GetToken("avatar", FilePermission.Upload);
+        return Ok(new UploadTokenDto
+        {
+            UploadToken = token,
+            UploadUrl = $"/upload/avatar?token={token}"
+        });
+    }
+
+    /// <summary>
     /// 更新用户个人资料（昵称和头像）
     /// </summary>
     /// <param name="model">包含新昵称和头像路径的模型</param>

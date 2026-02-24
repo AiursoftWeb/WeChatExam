@@ -29,6 +29,12 @@ public class UpdateProfileDto
     public string AvatarUrl { get; set; } = string.Empty;
 }
 
+public class UploadTokenDto
+{
+    public string UploadToken { get; set; } = string.Empty;
+    public string UploadUrl { get; set; } = string.Empty;
+}
+
 public class AdminLoginDto
 {
     [Required]
