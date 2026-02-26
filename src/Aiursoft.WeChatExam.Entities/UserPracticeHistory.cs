@@ -55,6 +55,11 @@ public class UserPracticeHistory
     public required bool IsCorrect { get; set; }
 
     /// <summary>
+    /// 刷题类型
+    /// </summary>
+    public PracticeType? PracticeType { get; set; }
+
+    /// <summary>
     /// 创建时间
     /// </summary>
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
