@@ -1,12 +1,9 @@
 using System.Net;
-using System.Net.Http.Json;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Aiursoft.WeChatExam.Services.Authentication;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using static Aiursoft.WebTools.Extends;
 
