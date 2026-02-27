@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 
@@ -15,6 +16,8 @@ public class UserPracticeHistoryDto
     
     [Required]
     public bool IsCorrect { get; set; }
+
+    public PracticeType? PracticeType { get; set; }
     
     public DateTime CreationTime { get; set; }
 }
@@ -25,4 +28,6 @@ public class CreateUserPracticeHistoryDto
     public Guid QuestionId { get; set; }
     
     public string UserAnswer { get; set; } = string.Empty;
+
+    public PracticeType? PracticeType { get; set; }
 }
