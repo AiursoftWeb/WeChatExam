@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>品牌主页的链接</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI 提示：自动分类</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI 提示：自动打标</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI 提示：基础解析</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI 提示：深度解析</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI 提示：默认提取</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI 提示：默认评分</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI 提示词：生成答案（填空）</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI 提示：生成答案（布尔值）</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI 提示：生成答案（选择题）</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI 提示：生成答案（主观题）</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>允许用户修改昵称</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>项目名称</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>用于自动分类问题的 AI 提示词。使用 {0} 代表内容，{1} 代表元数据，{2} 代表答案，{3} 代表标签，{4} 代表解析，{5} 代表分类列表。</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>用于自动标记问题的 AI 提示。使用 {0} 表示类型，{1} 表示分类，{2} 表示内容，{3} 表示答案，{4} 表示解析，{5} 表示现有标签，{6} 表示分类体系指令。</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>用于生成填空题答案的 AI 提示词。</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>用于生成选择题答案的 AI 提示词。</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>用于生成主观题（简答题、论述题、名词解释）答案的 AI 提示词。</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>用于生成判断题答案的 AI 提示词。</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>用于生成基础解析的 AI 提示词。</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>用于生成深度解析的 AI 提示词。</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>用于评分题目的 AI 提示词。使用 {0} 代表题目内容，{1} 代表标准答案，{2} 代表解析，{3} 代表学生答案，{4} 代表满分。</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>页脚中显示的品牌名称。</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>从材料中提取知识的默认系统提示。</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>中国大陆用户使用的 ICP 备案号。留空以隐藏。</value>

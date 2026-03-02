@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>ลิงก์ไปยังหน้าหลักของแบรนด์</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>คำสั่ง AI: จัดหมวดหมู่อัตโนมัติ</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>คำสั่ง AI: การติดแท็กอัตโนมัติ</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>คำสั่ง AI: คำอธิบายพื้นฐาน</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>คำสั่ง AI: คำอธิบายเชิงลึก</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>คำสั่ง AI: การสกัดข้อมูลเริ่มต้น</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI Prompt: การให้คะแนนเริ่มต้น</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>คำสั่ง AI: สร้างคำตอบ (เติมคำในช่องว่าง)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>คำสั่ง AI: สร้างคำตอบ (แบบถูก/ผิด)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>คำสั่ง AI: สร้างคำตอบ (แบบเลือกตอบ)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>คำสั่ง AI: สร้างคำตอบ (อัตนัย)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>อนุญาตให้ผู้ใช้แก้ไขชื่อเล่น</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>ชื่อโปรเจกต์</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับจัดหมวดหมู่คำถามอัตโนมัติ ใช้ {0} สำหรับเนื้อหา {1} สำหรับข้อมูลเมตา {2} สำหรับคำตอบ {3} สำหรับแท็ก {4} สำหรับคำอธิบาย และ {5} สำหรับรายการหมวดหมู่</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับการติดแท็กคำถามอัตโนมัติ ใช้ {0} สำหรับประเภท {1} สำหรับหมวดหมู่ {2} สำหรับเนื้อหา {3} สำหรับคำตอบ {4} สำหรับคำอธิบาย {5} สำหรับแท็กที่มีอยู่ และ {6} สำหรับคำแนะนำการจัดหมวดหมู่</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับสร้างคำตอบสำหรับคำถามเติมคำในช่องว่าง</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับสร้างคำตอบสำหรับคำถามแบบเลือกตอบ</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับสร้างคำตอบสำหรับคำถามเชิงอัตนัย (คำตอบสั้น, บทความ, คำอธิบายคำศัพท์)</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับสร้างคำตอบสำหรับคำถามถูก/ผิด</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับสร้างคำอธิบายพื้นฐาน</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับสร้างคำอธิบายเชิงลึก</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>คำสั่ง AI สำหรับให้คะแนนคำถาม ใช้ {0} สำหรับเนื้อหา {1} สำหรับคำตอบมาตรฐาน {2} สำหรับคำอธิบาย {3} สำหรับคำตอบของนักเรียน และ {4} สำหรับคะแนนเต็ม</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>ชื่อแบรนด์ที่แสดงในส่วนท้ายหน้าเว็บ</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>คำสั่งระบบเริ่มต้นสำหรับการสกัดความรู้จากวัสดุ</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>หมายเลขใบอนุญาต ICP สำหรับผู้ใช้ในจีนแผ่นดินใหญ่ ปล่อยว่างเพื่อซ่อน</value>

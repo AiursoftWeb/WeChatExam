@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Link do strony głównej marki.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI Prompt: Automatyczna kategoryzacja</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>Prompt AI: Automatyczne tagowanie</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>Prompt AI: Podstawowe wyjaśnienie</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>Prompt AI: Szczegółowe wyjaśnienie</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>Prompt AI: Domyślne wyciąganie</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI Prompt: Domyślne ocenianie</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>Polecenie AI: Generuj odpowiedź (luka)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>Prompt AI: Generowanie odpowiedzi (Prawda/FAłsz)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>Prompt AI: Generuj odpowiedź (Wybór)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>Polecenie AI: Generuj odpowiedź (subiektywna)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Zezwalaj użytkownikom na zmianę pseudonimu</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Nazwa projektu</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>Prompt AI do automatycznego kategoryzowania pytań. Użyj {0} dla treści, {1} dla metadanych, {2} dla odpowiedzi, {3} dla tagów, {4} dla wyjaśnienia i {5} dla listy kategorii.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>Prompt AI do automatycznego tagowania pytań. Użyj {0} dla typu, {1} dla kategorii, {2} dla treści, {3} dla odpowiedzi, {4} dla wyjaśnienia, {5} dla istniejących tagów oraz {6} dla instrukcji taksonomicznych.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>Prompt AI do generowania odpowiedzi do pytań z luką do uzupełnienia.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>Polecenie AI do generowania odpowiedzi do pytań z wyborem odpowiedzi.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>Prompt AI do generowania odpowiedzi na pytania subiektywne (krótka odpowiedź, esej, wyjaśnienie pojęcia).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>Prompt AI do generowania odpowiedzi do pytań typu prawda/fałsz.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>Prompt AI do generowania podstawowych wyjaśnień.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>Prompt AI do generowania szczegółowych wyjaśnień.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>Prompt AI do oceniania pytań. Użyj {0} dla treści, {1} dla prawidłowej odpowiedzi, {2} dla wyjaśnienia, {3} dla odpowiedzi ucznia oraz {4} dla maksymalnej liczby punktów.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Nazwa marki wyświetlana w stopce.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Domyślny systemowy prompt do ekstrakcji wiedzy z materiałów.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Numer licencji ICP dla użytkowników z Chin kontynentalnych. Pozostaw puste, aby ukryć.</value>

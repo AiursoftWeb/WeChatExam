@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Länken till märkets hemsida.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI-prompt: Automatisk kategorisering</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI-prompt: Automatisk taggning</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI-prompt: Grundläggande förklaring</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI-prompt: Djup förklaring</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI-prompt: Standardextraktion</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI-prompt: Standardbetygning</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI-prompt: Generera svar (Tom rutan)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI-prompt: Generera svar (Boolsk)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI-prompt: Generera svar (val)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI-prompt: Generera svar (subjektivt)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Tillåt Användare Ändra Smeknamn</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Projektnamn</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>AI-prompten för automatisk kategorisering av frågor. Använd {0} för innehåll, {1} för metadata, {2} för svar, {3} för taggar, {4} för förklaring och {5} för kategorilista.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>AI-prompten för automatisk taggning av frågor. Använd {0} för typ, {1} för kategori, {2} för innehåll, {3} för svar, {4} för förklaring, {5} för befintliga taggar och {6} för taxonomianvisningar.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>AI-anvisningen för att generera svar på inmatningsfrågor.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>AI-prompten för att generera svar för flervalsfrågor.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>AI-prompten för att generera svar på subjektiva frågor (Kort svar, Essay, Förklaring av termer).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>AI-anvisningen för att generera svar på sanning/falsk-frågor.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>AI-anvisningen för att generera grundläggande förklaringar.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>AI-prompten för att generera djupgående förklaringar.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>AI-prompt för bedömning av frågor. Använd {0} för innehåll, {1} för standard svar, {2} för förklaring, {3} för elevens svar och {4} för maximal poäng.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Det varumärke som visas i sidfoten.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Standardsystemprompten för att extrahera kunskap från material.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>ICP-licensnummer för användare i Kina. Lämna tomt för att dölja.</value>

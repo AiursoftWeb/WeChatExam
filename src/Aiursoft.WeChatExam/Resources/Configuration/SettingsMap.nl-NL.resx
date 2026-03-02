@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>De link naar de homepage van het merk.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI-prompt: Automatische categorisering</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI Prompt: Automatische tagging</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI Prompt: Basisuitleg</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI Prompt: Diepe Uitleg</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI Prompt: Standaardextractie</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI Prompt: Standaard Beoordeling</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI Prompt: Antwoord genereren (Invulvraag)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI Prompt: Antwoord genereren (Booleaans)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI Prompt: Genereren Antwoord (Keuze)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI Prompt: Antwoord Genereren (Subjectief)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Gebruiker mag nickname aanpassen</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Projectnaam</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>De AI-prompt voor het automatisch categoriseren van vragen. Gebruik {0} voor inhoud, {1} voor metadata, {2} voor het antwoord, {3} voor tags, {4} voor de uitleg en {5} voor de lijst met categorieën.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>De AI-prompt voor automatische tagging van vragen. Gebruik {0} voor type, {1} voor categorie, {2} voor inhoud, {3} voor antwoord, {4} voor uitleg, {5} voor bestaande tags en {6} voor taxonomie-instructies.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>De AI-prompt voor het genereren van antwoorden voor invulvragen.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>De AI-prompt voor het genereren van antwoorden voor meerkeuzevragen.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>De AI-prompt voor het genereren van antwoorden voor subjectieve vragen (Korte Antwoord, Essay, Begripsverklaring).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>De AI-prompt voor het genereren van antwoorden op waar/onwaar-vragen.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>De AI-prompt voor het genereren van basisuitleggen.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>De AI-prompt voor het genereren van diepgaande uitleg.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>De AI-prompt voor het beoordelen van vragen. Gebruik {0} voor de inhoud, {1} voor het standaardantwoord, {2} voor de uitleg, {3} voor het antwoord van de student en {4} voor de maximale score.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>De merknaam die wordt weergegeven in de voettekst.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>De standaard systeemprompt voor het extraheren van kennis uit materiaal.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Het ICP-licentienummer voor gebruikers in het Chinese vasteland. Leeg laten om te verbergen.</value>
