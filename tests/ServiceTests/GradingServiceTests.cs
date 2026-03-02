@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Configuration;
 using Moq;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
@@ -8,13 +9,21 @@ namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 public class GradingServiceTests
 {
     private Mock<IOllamaService>? _mockOllamaService;
+    private Mock<IGlobalSettingsService>? _mockGlobalSettingsService;
     private GradingService? _gradingService;
 
     [TestInitialize]
     public void Setup()
     {
         _mockOllamaService = new Mock<IOllamaService>();
-        _gradingService = new GradingService(_mockOllamaService.Object);
+        _mockGlobalSettingsService = new Mock<IGlobalSettingsService>();
+        
+        // Mock the default grading prompt
+        var defaultGradingPrompt = "Question: {0}\nStandard Answer: {1}\nExplanation: {2}\nStudent Answer: {3}\nMax Score: {4}";
+        _mockGlobalSettingsService.Setup(s => s.GetSettingValueAsync(SettingsMap.AiPromptGradingDefault))
+            .ReturnsAsync(defaultGradingPrompt);
+
+        _gradingService = new GradingService(_mockOllamaService.Object, _mockGlobalSettingsService.Object);
     }
 
     [TestMethod]

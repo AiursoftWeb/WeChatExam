@@ -62,7 +62,7 @@ public static class ProgramExtends
         var db = services.GetRequiredService<WeChatExamDbContext>();
         var logger = services.GetRequiredService<ILogger<Program>>();
         
-        var settingsService = services.GetRequiredService<GlobalSettingsService>();
+        var settingsService = services.GetRequiredService<IGlobalSettingsService>();
         await settingsService.SeedSettingsAsync();
 
         var shouldSeed = await ShouldSeedAsync(db);

@@ -52,6 +52,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddMemoryCache();
         services.AddHttpClient();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+        services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<ITaxonomyService, TaxonomyService>();
