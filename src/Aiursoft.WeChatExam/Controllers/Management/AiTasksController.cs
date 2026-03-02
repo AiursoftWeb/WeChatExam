@@ -4,6 +4,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Aiursoft.WeChatExam.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -58,6 +59,7 @@ public class AiTasksController(
                         using var scope = serviceProvider.CreateScope();
                         var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
                         var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        var settingsService = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
                         
                         var question = await scopedDbContext.Questions
                             .Include(q => q.Category)
@@ -116,14 +118,15 @@ public class AiTasksController(
                             question.QuestionType == QuestionType.Bool ||
                             question.QuestionType == QuestionType.NounExplanation)
                         {
-                            promptBuilder.AppendLine("指令: 这是一个基础题目。请提供 200 字以内的解析，详细解释该题目的背景知识、逻辑推理以及答案的正确性。直接输出解析内容，不要包含题目本身，不要输出多余的段落、前言或总结语。");
+                            promptBuilder.AppendLine(await settingsService.GetSettingValueAsync(SettingsMap.AiPromptExplanationBase));
                         }
                         else
                         {
-                            promptBuilder.AppendLine("指令: 这是一个深度题目。请提供 1000 字左右的详细解析，深入探讨该题目涉及的背景材料、核心考点、答题思路以及逻辑框架。直接输出解析内容，不要包含题目本身，不要输出多余的段落、前言或总结语。");
+                            promptBuilder.AppendLine(await settingsService.GetSettingValueAsync(SettingsMap.AiPromptExplanationDeep));
                         }
 
                         var prompt = promptBuilder.ToString();
+
 
                         var response = await ollamaService.AskQuestion(prompt);
                         if (!string.IsNullOrWhiteSpace(response))
@@ -187,6 +190,7 @@ public class AiTasksController(
                         using var scope = serviceProvider.CreateScope();
                         var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
                         var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        var settingsService = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
                         
                         var question = await scopedDbContext.Questions
                             .Include(q => q.QuestionTags)
@@ -207,22 +211,17 @@ public class AiTasksController(
                         var categoriesText = string.Join("\n", allCategories.Select(c => $"- {c.Title} (ID: {c.Id})"));
                         var tags = string.Join(", ", question.QuestionTags.Select(t => t.Tag.DisplayName));
 
-                        var prompt = $@"
-Question Content: {question.Content}
-Metadata: {question.Metadata}
-Standard Answer: {question.StandardAnswer}
-Tags: {tags}
-Explanation: {question.Explanation}
-
-Available Categories:
-{categoriesText}
-
-Based on the question content and available categories, please categorize this question into ONE of the categories above.
-Return ONLY the ID of the category. Do not include any other text.
-If none of the categories fit perfectly, choose the best available one.
-";
+                        var promptTemplate = await settingsService.GetSettingValueAsync(SettingsMap.AiPromptAutoCategorize);
+                        var prompt = string.Format(promptTemplate, 
+                            question.Content, 
+                            question.Metadata, 
+                            question.StandardAnswer, 
+                            tags, 
+                            question.Explanation, 
+                            categoriesText);
 
                         var response = await ollamaService.AskQuestion(prompt);
+
                         response = response.Trim();
                         
                         if (Guid.TryParse(response, out var categoryId))
@@ -312,6 +311,7 @@ If none of the categories fit perfectly, choose the best available one.
                         using var scope = serviceProvider.CreateScope();
                         var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
                         var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        var settingsService = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
 
                         var question = await scopedDbContext.Questions
                             .Include(q => q.QuestionTags)
@@ -329,30 +329,18 @@ If none of the categories fit perfectly, choose the best available one.
                         var taxonomyInstructions = string.Join("\n\n", allTaxonomies.Select(t => $@"维度：{t.Name}
 现有标签库：[{string.Join("、", t.Tags.Select(tag => tag.DisplayName))}]"));
 
-                        var prompt = $@"你是一个专业的教育内容打标助手。你的任务是根据给定的题目信息，从多个指定的维度提取并打上合适的标签。
-
-【题目信息】
-类型: {question.QuestionType.GetDisplayName()}
-分类: {question.Category?.Title ?? "未分类"}
-内容: {question.Content}
-标准答案: {question.StandardAnswer}
-现有解析: {question.Explanation}
-现有标签: {string.Join(", ", question.QuestionTags.Select(qt => qt.Tag.DisplayName))}
-
-【任务指令】
-1. 请分别为以下维度评估并打标：
-{taxonomyInstructions}
-
-2. 优先级：请**极度优先**从对应维度的现有标签库中选择完全符合的标签。
-3. 创建限制：只有在现有标签库完全无法概括题目时，才允许自创 1-2 个极其精炼、通用的新标签。限制新标签必须和数据库里主要标签语言相同。
-4. 如果该题目完全不属于某个维度，请在该维度下输出 none。
-5. 输出格式：请不要输出任何解释说明文字。只输出标签内容，每一行代表一个维度的结果，格式为“维度名称: <tag>标签A</tag><tag>标签B</tag>”。
-   例如：
-   维度名称1: <tag>标签A</tag><tag>标签B</tag>
-   维度名称2: <tag>标签C</tag>
-   维度名称3: none";
+                        var promptTemplate = await settingsService.GetSettingValueAsync(SettingsMap.AiPromptAutoTagging);
+                        var prompt = string.Format(promptTemplate,
+                            question.QuestionType.GetDisplayName(),
+                            question.Category?.Title ?? "未分类",
+                            question.Content,
+                            question.StandardAnswer,
+                            question.Explanation,
+                            string.Join(", ", question.QuestionTags.Select(qt => qt.Tag.DisplayName)),
+                            taxonomyInstructions);
 
                         var response = await ollamaService.AskQuestion(prompt);
+
                         var resultString = new StringBuilder();
                         var lines = response.Split('\n', StringSplitOptions.RemoveEmptyEntries);
                         foreach (var line in lines)
@@ -434,6 +422,7 @@ If none of the categories fit perfectly, choose the best available one.
                         using var scope = serviceProvider.CreateScope();
                         var scopedDbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
                         var ollamaService = scope.ServiceProvider.GetRequiredService<IOllamaService>();
+                        var settingsService = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
                         
                         var question = await scopedDbContext.Questions
                             .Include(q => q.Category)
@@ -477,24 +466,25 @@ If none of the categories fit perfectly, choose the best available one.
 
                         if (question.QuestionType == QuestionType.Choice)
                         {
-                            promptBuilder.AppendLine("指令: 请从提供的选项中选出唯一正确的选项内容。直接输出选项文本，不要包含任何前缀（如“答：”、“选项A：”等）或解释。");
+                            promptBuilder.AppendLine(await settingsService.GetSettingValueAsync(SettingsMap.AiPromptGenerateAnswerChoice));
                         }
                         else if (question.QuestionType == QuestionType.Blank)
                         {
-                            promptBuilder.AppendLine("指令: 请根据题目内容给出填空题的正确答案。如果题目中有多个空，请按顺序给出答案，并用英文逗号“,”分隔。直接输出答案内容，不要有任何多余文字。");
+                            promptBuilder.AppendLine(await settingsService.GetSettingValueAsync(SettingsMap.AiPromptGenerateAnswerBlank));
                         }
                         else if (question.QuestionType == QuestionType.Bool)
                         {
-                            promptBuilder.AppendLine("指令: 请判断该题目。如果正确请输出“true”，如果错误请输出“false”。直接输出这两个单词之一，不要有任何多余文字。");
+                            promptBuilder.AppendLine(await settingsService.GetSettingValueAsync(SettingsMap.AiPromptGenerateAnswerBool));
                         }
                         else if (question.QuestionType == QuestionType.ShortAnswer || 
                                  question.QuestionType == QuestionType.Essay || 
                                  question.QuestionType == QuestionType.NounExplanation)
                         {
-                            promptBuilder.AppendLine("指令: 请给出该题目的参考答案和评分点。格式要求：\n得分点：\n①...\n②...\n示例答案：...");
+                            promptBuilder.AppendLine(await settingsService.GetSettingValueAsync(SettingsMap.AiPromptGenerateAnswerSubjective));
                         }
 
                         var prompt = promptBuilder.ToString();
+
 
                         var response = await ollamaService.AskQuestion(prompt);
                         if (!string.IsNullOrWhiteSpace(response))

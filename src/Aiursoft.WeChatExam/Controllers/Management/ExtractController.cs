@@ -2,6 +2,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.ExtractViewModels;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Authorization;
+using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,15 +18,18 @@ public class ExtractController : Controller
     private readonly IExtractService _extractService;
     private readonly WeChatExamDbContext _dbContext;
     private readonly BackgroundJobQueue _backgroundJobQueue;
+    private readonly GlobalSettingsService _globalSettingsService;
 
     public ExtractController(
         IExtractService extractService,
         WeChatExamDbContext dbContext,
-        BackgroundJobQueue backgroundJobQueue)
+        BackgroundJobQueue backgroundJobQueue,
+        GlobalSettingsService globalSettingsService)
     {
         _extractService = extractService;
         _dbContext = dbContext;
         _backgroundJobQueue = backgroundJobQueue;
+        _globalSettingsService = globalSettingsService;
     }
 
     public async Task<IActionResult> Index(ExtractIndexViewModel? model)
@@ -33,11 +37,7 @@ public class ExtractController : Controller
         model ??= new ExtractIndexViewModel();
         if (string.IsNullOrEmpty(model.SystemPrompt))
         {
-            model.SystemPrompt = "You are an assistant that extracts knowledge points and questions from the provided material. " +
-                           "Output a JSON array where each element contains 'KnowledgeTitle', 'KnowledgeContent', " +
-                           "and a list of 'Questions'. Each question should have 'QuestionContent', 'QuestionType' " +
-                           "(0=Choice, 1=Blank, 2=Bool, 3=ShortAnswer, 4=Essay, 5=NounExplanation), 'Metadata' (array of strings for choices, empty otherwise), " +
-                           "'StandardAnswer', 'Explanation', and 'Tags' (array of strings). Do NOT wrap the JSON in Markdown. Output raw JSON only.";
+            model.SystemPrompt = await _globalSettingsService.GetSettingValueAsync(SettingsMap.AiPromptExtractDefault);
         }
 
         var categories = await _dbContext.Categories

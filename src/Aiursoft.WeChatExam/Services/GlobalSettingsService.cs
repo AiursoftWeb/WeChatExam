@@ -12,7 +12,7 @@ public class GlobalSettingsService(
     WeChatExamDbContext dbContext, 
     IConfiguration configuration,
     StorageService storageService,
-    IMemoryCache cache) : IScopedDependency
+    IMemoryCache cache) : IGlobalSettingsService, IScopedDependency
 {
     private string GetCacheKey(string key) => $"global-setting-{key}";
 

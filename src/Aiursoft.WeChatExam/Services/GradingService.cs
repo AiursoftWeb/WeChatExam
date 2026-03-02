@@ -1,4 +1,5 @@
 using Aiursoft.Scanner.Abstractions;
+using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
 using Newtonsoft.Json;
 
@@ -7,10 +8,12 @@ namespace Aiursoft.WeChatExam.Services;
 public class GradingService : IGradingService, IScopedDependency
 {
     private readonly IOllamaService _ollamaService;
+    private readonly IGlobalSettingsService _globalSettingsService;
 
-    public GradingService(IOllamaService ollamaService)
+    public GradingService(IOllamaService ollamaService, IGlobalSettingsService globalSettingsService)
     {
         _ollamaService = ollamaService;
+        _globalSettingsService = globalSettingsService;
     }
 
     public async Task<GradingResult> GradeAsync(Question question, string userAnswer)
@@ -76,21 +79,14 @@ public class GradingService : IGradingService, IScopedDependency
             };
         }
 
-        var prompt = $@"You are an exam grader. Grade the following student's answer based on the standard answer and the question content.
-
-Question: {content}
-Standard Answer: {standardAnswer}
-Explanation: {explanation}
-Student Answer: {userAnswer}
-
-Provide the score (0-{maxScore}) and a short comment. 
-Output JSON format: {{ ""Score"": 10, ""Comment"": ""..."", ""IsCorrect"": true }}
-IMPORTANT: Return ONLY the raw JSON string. Do not use markdown code blocks or any other formatting.";
+        var promptTemplate = await _globalSettingsService.GetSettingValueAsync(SettingsMap.AiPromptGradingDefault);
+        var prompt = string.Format(promptTemplate, content, standardAnswer, explanation, userAnswer, maxScore);
 
         try
         {
             var response = await _ollamaService.AskQuestion(prompt);
             var json = response.Trim();
+
             
             // Try to find JSON if there is extra text
             var jsonStart = json.IndexOf('{');
