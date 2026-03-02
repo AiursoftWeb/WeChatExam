@@ -56,11 +56,12 @@
                     <div class="col-md-6">
                         <label class="form-label">@Localizer["MTQL Query"]</label>
                         <div class="input-group">
-                            <input type="text" name="mtql" value="@Model.FilterMtql" class="form-control" placeholder="e.g. rock && not metal" />
+                            <input type="text" name="mtql" value="@Model.FilterMtql" class="form-control @(ViewData.ModelState.ContainsKey("FilterMtql") && (ViewData.ModelState["FilterMtql"]?.Errors.Any() ?? false) ? "is-invalid" : "")" placeholder="e.g. rock && not metal" />
                             <a href="https://gitlab.aiursoft.com/aiursoft/wechatexam/-/tree/master/src/Aiursoft.WeChatExam.MTQL" target="_blank" class="btn btn-outline-secondary" title="MTQL Syntax Help">
                                 <i data-lucide="help-circle"></i>
                             </a>
                         </div>
+                        <span asp-validation-for="FilterMtql" class="text-danger small"></span>
                     </div>
                     <div class="col-md-2">
                          <label class="form-label">@Localizer["Items per page"]</label>

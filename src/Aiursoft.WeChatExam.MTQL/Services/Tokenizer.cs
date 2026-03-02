@@ -89,6 +89,14 @@ public static class Tokenizer
                     {
                         tokens.Add(new Token(TokenType.Not, "not"));
                     }
+                    else if (string.Equals(value, "and", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Unexpected keyword 'and' at index {start}. Did you mean '&&'? If you intended this as a tag, wrap it in double quotes.");
+                    }
+                    else if (string.Equals(value, "or", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Unexpected keyword 'or' at index {start}. Did you mean '||'? If you intended this as a tag, wrap it in double quotes.");
+                    }
                     else
                     {
                         tokens.Add(new Token(TokenType.Tag, value));

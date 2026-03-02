@@ -712,6 +712,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("PracticeType")
+                        .HasColumnType("INTEGER");
+
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("TEXT");
 

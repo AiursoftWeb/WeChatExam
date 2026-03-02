@@ -60,6 +60,7 @@ public class UserPracticeHistoryController : ControllerBase
                 UserAnswer = x.UserAnswer,
                 StandardAnswer = x.Question.StandardAnswer,
                 IsCorrect = x.IsCorrect,
+                PracticeType = x.PracticeType,
                 CreationTime = x.CreationTime
             })
             .ToListAsync();
@@ -105,6 +106,7 @@ public class UserPracticeHistoryController : ControllerBase
             QuestionId = dto.QuestionId,
             UserAnswer = dto.UserAnswer,
             IsCorrect = gradingResult.IsCorrect,
+            PracticeType = dto.PracticeType,
             CreationTime = DateTime.UtcNow
         };
         _context.UserPracticeHistories.Add(entity);
@@ -117,6 +119,7 @@ public class UserPracticeHistoryController : ControllerBase
             UserAnswer = entity.UserAnswer,
             StandardAnswer = question.StandardAnswer,
             IsCorrect = entity.IsCorrect,
+            PracticeType = entity.PracticeType,
             CreationTime = entity.CreationTime
         };
         return CreatedAtAction(nameof(Get), new { questionId = dto.QuestionId }, result);
@@ -184,6 +187,7 @@ public class UserPracticeHistoryController : ControllerBase
                     QuestionId = snapshot.OriginalQuestionId.Value,
                     UserAnswer = dto.UserAnswer,
                     IsCorrect = gradingResult.IsCorrect,
+                    PracticeType = dto.PracticeType,
                     CreationTime = resultDto.CreationTime
                 };
                 

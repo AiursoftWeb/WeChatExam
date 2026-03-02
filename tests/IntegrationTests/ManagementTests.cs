@@ -588,4 +588,51 @@ public class ManagementTests
         var resultHtml = await createExamResponse.Content.ReadAsStringAsync();
         Assert.Contains("The selected paper has no published snapshots", resultHtml);
     }
+
+    [TestMethod]
+    public async Task MtqlInvalidErrorShouldBeVisibleTest()
+    {
+        await LoginAsAdminAsync();
+
+        // Access Questions Index with invalid MTQL
+        var invalidMtql = "贝多芬 and 肖邦";
+        var response = await _http.GetAsync($"/Questions/Index?mtql={Uri.EscapeDataString(invalidMtql)}");
+        response.EnsureSuccessStatusCode();
+
+        var html = await response.Content.ReadAsStringAsync();
+
+        // Check if the error message is in the HTML
+        // Expected message from Tokenizer: Unexpected keyword 'and' at index 4. Did you mean '&&'? ...
+        Assert.IsTrue(html.Contains("Invalid MTQL: Unexpected keyword &#x27;and&#x27; at index 4. Did you mean &#x27;&amp;&amp;&#x27;?"), "Error message should be visible in HTML (with HTML encoding)");
+    }
+
+    [TestMethod]
+    public async Task MtqlMissingOperatorErrorShouldBeVisibleTest()
+    {
+        await LoginAsAdminAsync();
+
+        // Access Questions Index with invalid MTQL (missing operator)
+        var invalidMtql = "贝多芬 肖邦";
+        var response = await _http.GetAsync($"/Questions/Index?mtql={Uri.EscapeDataString(invalidMtql)}");
+        response.EnsureSuccessStatusCode();
+
+        var html = await response.Content.ReadAsStringAsync();
+
+        // Expected message from AstBuilder: Missing operator between tags. If you meant to join them, use '&&' or '||'. ...
+        Assert.IsTrue(html.Contains("Invalid MTQL: Missing operator between tags. If you meant to join them, use &#x27;&amp;&amp;&#x27; or &#x27;||&#x27;."), "Error message should be visible in HTML (with HTML encoding)");
+    }
+
+    [TestMethod]
+    public async Task MtqlSearchActionErrorShouldBeJsonTest()
+    {
+        await LoginAsAdminAsync();
+
+        var invalidMtql = "贝多芬 and 肖邦";
+        var response = await _http.GetAsync($"/Questions/Search?mtql={Uri.EscapeDataString(invalidMtql)}");
+        Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+
+        var json = await response.Content.ReadAsStringAsync();
+        // Check if it's JSON and contains the message property
+        Assert.IsTrue(json.Contains("\"message\":\"Invalid MTQL: Unexpected keyword 'and' at index 4. Did you mean '&&'?"), "JSON error should contain the message property.");
+    }
 }
