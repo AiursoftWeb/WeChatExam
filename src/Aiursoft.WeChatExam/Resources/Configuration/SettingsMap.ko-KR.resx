@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>브랜드 홈페이지의 링크입니다.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI 프롬프트: 자동 분류</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI 프롬프트: 자동 태그 지정</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI 프롬프트: 기본 해설</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI 프롬프트: 심층 설명</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI 프롬프트: 기본 추출</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI 프롬프트: 기본 채점</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI 프롬프트: 정답 생성 (빈칸)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI 프롬프트: 정답 생성 (참/거짓)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI 프롬프트: 정답 생성 (선택지)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI 프롬프트: 답변 생성 (주관식)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>사용자 닉네임 수정 허용</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>프로젝트 이름</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>질문을 자동 분류하기 위한 AI 프롬프트입니다. {0}은(는) 콘텐츠, {1}은(는) 메타데이터, {2}은(는) 정답, {3}은(는) 태그, {4}은(는) 해설, {5}은(는) 카테고리 목록에 사용합니다.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>질문에 자동으로 태그를 지정하는 AI 프롬프트입니다. {0}은 유형, {1}은 카테고리, {2}은 내용, {3}은 정답, {4}은 해설, {5}은 기존 태그, {6}은 분류 체계 지침에 사용합니다.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>빈칸 채우기 문제의 정답을 생성하기 위한 AI 프롬프트입니다.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>객관식 문제의 정답을 생성하기 위한 AI 프롬프트입니다.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>주관식 질문 (단답형, 논술형, 용어 설명형) 에 대한 답변 생성을 위한 AI 프롬프트입니다.</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>진/거짓 문제에 대한 답변을 생성하기 위한 AI 프롬프트입니다.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>기본 설명을 생성하기 위한 AI 프롬프트입니다.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>심층 설명을 생성하기 위한 AI 프롬프트입니다.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>문제 채점을 위한 AI 프롬프트입니다. {0}은(는) 내용, {1}은(는) 정답, {2}은(는) 해설, {3}은(는) 학생의 답변, {4}은(는) 최대 점수를 나타냅니다.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>푸터에 표시되는 브랜드 이름입니다.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>자료에서 지식을 추출하기 위한 기본 시스템 프롬프트입니다.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>중국 대륙 사용자를 위한 ICP 라이선스 번호입니다. 숨기려면 비워 두세요.</value>

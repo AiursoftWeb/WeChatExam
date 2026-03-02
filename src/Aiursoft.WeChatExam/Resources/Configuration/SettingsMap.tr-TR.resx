@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Markanın ana sayfasına bağlantı</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>Yapay Zeka İsteği: Otomatik Kategorize Et</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>Yapay Zeka İpucu: Otomatik Etiketleme</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>Yapay Zeka İstemi: Temel Açıklama</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>Yapay Zeka İstemi: Derinlemesine Açıklama</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>Yapay Zeka İstemi: Varsayılan Çıkarma</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>Yapay Zeka İsteği: Varsayılan Puanlama</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>Yapay Zeka İsteği: Boşluk Doldurma Cevabı Oluştur</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>Yapay Zeka İsteği: Cevap Oluştur (Doğru/Yanlış)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>Yapay Zeka İsteği: Cevap Oluştur (Seçenekli)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>Yapay Zeka İsteği: Yanıt Oluştur (Öznelli)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Kullanıcı Adını Ayarlamaya İzin Ver</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Proje Adı</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>Soru otomatik sınıflandırma için yapay zeka istemi. İçerik için {0}, meta veri için {1}, cevap için {2}, etiketler için {3}, açıklama için {4} ve kategoriler listesi için {5} kullanın.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>Otomatik etiketleme için AI istemi. Tip için {0}, kategori için {1}, içerik için {2}, cevap için {3}, açıklama için {4}, mevcut etiketler için {5} ve sınıflandırma talimatları için {6} kullanın.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>Boşluk doldurma soruları için cevaplar oluşturan AI istemi.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>Çoktan seçmeli sorular için yanıtlar oluşturan AI komutu.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>Yanıtların oluşturulması için yapay zeka istemi (Kısa Cevap, Deneme, İsim Açıklaması).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>Doğru/Yanlış soruları için cevaplar oluşturan AI istemi.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>Temel açıklamaları oluşturmak için AI istemi.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>Derin açıklamalar oluşturmak için AI istemi.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>Soru değerlendirme için AI istemi. İçerik için {0}, standart cevap için {1}, açıklama için {2}, öğrenci cevabı için {3} ve maksimum puan için {4} kullanın.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Footer&apos;da gösterilen marka adı.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Materyalden bilgi çıkarma için varsayılan sistem istemi.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Çin ana karasında kullanıcılar için ICP lisans numarası. Gizlemek için boş bırakın.</value>

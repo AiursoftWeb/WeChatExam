@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Ссылка на домашнюю страницу бренда.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>Промпт ИИ: Автоматическая категоризация</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>Промпт ИИ: Автоматическая разметка</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>Промпт ИИ: Базовое объяснение</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>Промпт ИИ: Глубокое объяснение</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI Prompt: Извлечение по умолчанию</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>Промпт ИИ: Оценка по умолчанию</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>Промпт ИИ: Генерация ответа (заполнение пропуска)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>Промпт ИИ: Генерация ответа (Булево)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>Промпт ИИ: Генерация ответа (выбор)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>Промпт ИИ: Генерация ответа (субъективный)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Разрешить пользователю изменять никнейм</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Название проекта</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>Промпт ИИ для автоматической категоризации вопросов. Используйте {0} для содержания, {1} для метаданных, {2} для ответа, {3} для тегов, {4} для пояснения и {5} для списка категорий.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>Промпт ИИ для автоматической разметки вопросов. Используйте {0} для типа, {1} для категории, {2} для содержания, {3} для ответа, {4} для объяснения, {5} для существующих тегов и {6} для инструкций по таксономии.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>Промпт ИИ для генерации ответов на вопросы с пропусками.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>Промпт ИИ для генерации ответов на вопросы с выбором вариантов.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>Промпт ИИ для генерации ответов на субъективные вопросы (Краткий ответ, Эссе, Пояснение термина).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>Промпт ИИ для генерации ответов на вопросы типа «верно/неверно».</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>Промпт ИИ для генерации базовых объяснений.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>Промпт ИИ для генерации глубоких объяснений.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>Промпт ИИ для оценки вопросов. Используйте {0} для содержания, {1} для эталонного ответа, {2} для пояснения, {3} для ответа ученика и {4} для максимального балла.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Название бренда, отображаемое в подвале.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Системный промпт по умолчанию для извлечения знаний из материала.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Номер лицензии ICP для пользователей из материкового Китая. Оставьте пустым, чтобы скрыть.</value>
