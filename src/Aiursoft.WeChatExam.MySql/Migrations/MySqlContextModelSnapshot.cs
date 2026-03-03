@@ -257,6 +257,40 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("ExamRecords");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Feedback", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Contact")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Feedbacks");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.GlobalSetting", b =>
                 {
                     b.Property<string>("Key")
@@ -978,6 +1012,17 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Exam");
 
                     b.Navigation("PaperSnapshot");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Feedback", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

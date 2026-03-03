@@ -70,6 +70,10 @@ public static class AppPermissionNames
     // Global Settings
     public const string CanManageGlobalSettings = nameof(CanManageGlobalSettings);
 
+    // Feedback Management
+    public const string CanReadFeedbacks = nameof(CanReadFeedbacks);
+    public const string CanEditFeedbacks = nameof(CanEditFeedbacks);
+
     // Optimization Jobs
     public const string CanTriggerOptimizationJobs = nameof(CanTriggerOptimizationJobs);
 
