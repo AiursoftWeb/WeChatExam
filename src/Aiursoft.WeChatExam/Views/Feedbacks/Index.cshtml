@@ -106,7 +106,7 @@
                 <ul class="pagination pagination-sm justify-content-center mb-0">
                     @{
                         var totalPages = (int)Math.Ceiling((double)Model.TotalCount / Model.PageSize);
-                        for (int i = 1; i <= totalPages; i++)
+                        foreach (var i in Enumerable.Range(1, totalPages))
                         {
                             <li class="page-item @(Model.Page == i ? "active" : "")">
                                 <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-status="@Model.StatusFilter">@i</a>

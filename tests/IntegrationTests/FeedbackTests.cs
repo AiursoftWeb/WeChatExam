@@ -1,5 +1,4 @@
 using System.Net;
-using System.Net.Http.Json;
 using System.Text.RegularExpressions;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
@@ -65,7 +64,7 @@ public class FeedbackTests
         return match.Groups[1].Value;
     }
 
-    private async Task<string> LoginAsAdminAsync()
+    private async Task LoginAsAdminAsync()
     {
         var email = $"admin-{Guid.NewGuid()}@aiursoft.com";
         var password = "Test-Password-123";
@@ -97,8 +96,6 @@ public class FeedbackTests
             { "Password", password },
             { "__RequestVerificationToken", loginToken }
         }));
-
-        return email;
     }
 
     private async Task<string> GetWeChatTokenAsync(string openId)

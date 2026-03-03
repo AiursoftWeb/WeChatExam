@@ -68,7 +68,7 @@ public class FeedbackServiceTests
         await _feedbackService.UpdateFeedbackStatusAsync(f2.Id, FeedbackStatus.Processed);
 
         // Search all
-        var (items, total) = await _feedbackService.SearchFeedbacksAsync(1, 10);
+        var (_, total) = await _feedbackService.SearchFeedbacksAsync(1, 10);
         Assert.AreEqual(2, total);
 
         // Search pending
