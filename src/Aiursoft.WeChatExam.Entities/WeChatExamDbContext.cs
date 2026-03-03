@@ -33,4 +33,5 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<DistributionChannel> DistributionChannels => Set<DistributionChannel>();
     public DbSet<UserDistributionChannel> UserDistributionChannels => Set<UserDistributionChannel>();
     public DbSet<GlobalSetting> GlobalSettings => Set<GlobalSetting>();
+    public DbSet<Feedback> Feedbacks => Set<Feedback>();
 }

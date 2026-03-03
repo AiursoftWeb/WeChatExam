@@ -152,6 +152,18 @@ public class AppPermissions
                 localizer["Manage Global Settings"],
                 localizer["Allows modifying global system settings."]),
 
+            new(AppPermissionNames.CanReadFeedbacks,
+                localizer["Read Feedbacks"],
+                localizer["Allows viewing the list of user feedbacks."]),
+
+            new(AppPermissionNames.CanEditFeedbacks,
+                localizer["Edit Feedbacks"],
+                localizer["Allows updating the status of user feedbacks."]),
+
+            new(AppPermissionNames.CanDeleteFeedbacks,
+                localizer["Delete Feedbacks"],
+                localizer["Allows deleting user feedbacks."]),
+
             new(AppPermissionNames.CanTriggerOptimizationJobs,
                 localizer["Trigger Optimization Jobs"],
                 localizer["Allows triggering background jobs to optimize question answers and explanations using AI."]),
