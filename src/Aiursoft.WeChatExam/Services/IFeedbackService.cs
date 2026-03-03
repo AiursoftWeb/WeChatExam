@@ -9,4 +9,5 @@ public interface IFeedbackService
     Task<(List<Feedback> items, int totalCount)> SearchFeedbacksAsync(int page, int pageSize, FeedbackStatus? status = null);
     Task<Feedback?> GetFeedbackByIdAsync(int id);
     Task UpdateFeedbackStatusAsync(int id, FeedbackStatus status);
+    Task DeleteFeedbackAsync(int id);
 }

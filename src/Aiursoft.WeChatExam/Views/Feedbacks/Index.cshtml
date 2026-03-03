@@ -1,4 +1,5 @@
 @using Aiursoft.WeChatExam.Entities
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.FeedbacksViewModels.IndexViewModel
 
 <div class="row mb-3">
@@ -67,17 +68,22 @@
                                 <span class="badge bg-success">@Localizer["Processed"]</span>
                             }
                         </td>
-                        <td>@feedback.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@feedback.CreatedAt.ToHtmlDateTime()</td>
                         <td class="text-end">
-                            @if (feedback.Status == FeedbackStatus.Pending)
-                            {
-                                <form asp-action="Process" asp-route-id="@feedback.Id" method="post" style="display: inline;">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-sm btn-outline-success">
-                                        <i class="align-middle" data-lucide="check-circle"></i> @Localizer["Mark as Processed"]
-                                    </button>
-                                </form>
-                            }
+                            <div class="btn-group">
+                                @if (feedback.Status == FeedbackStatus.Pending)
+                                {
+                                    <form asp-action="Process" asp-route-id="@feedback.Id" method="post" style="display: inline;">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-sm btn-outline-success">
+                                            <i class="align-middle" data-lucide="check-circle"></i> @Localizer["Mark as Processed"]
+                                        </button>
+                                    </form>
+                                }
+                                <a asp-action="Delete" asp-route-id="@feedback.Id" class="btn btn-sm btn-outline-danger">
+                                    <i class="align-middle" data-lucide="trash-2"></i> @Localizer["Delete"]
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 }

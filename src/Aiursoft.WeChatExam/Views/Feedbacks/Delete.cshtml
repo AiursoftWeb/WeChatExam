@@ -1,0 +1,60 @@
+@using Aiursoft.WebTools
+@model Aiursoft.WeChatExam.Models.FeedbacksViewModels.DeleteViewModel
+
+<h1 class="h3 mb-3">@Localizer["Delete Feedback"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <i class="align-middle text-danger" data-lucide="shield-alert" style="width: 48px; height: 48px;"></i>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <h2 class="h4 card-title fw-bold">@Localizer["Are you sure?"]</h2>
+                    <p class="mb-3 text-muted">@Localizer["This action is irreversible. You are about to permanently delete the following feedback:"]</p>
+                </div>
+
+                <div class="list-group list-group-flush my-4">
+                    <div class="list-group-item">
+                        <div class="row">
+                            <strong class="col-sm-3">@Localizer["User"]</strong>
+                            <div class="col-sm-9">@(Model.Feedback.User?.DisplayName ?? Model.Feedback.UserId)</div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row">
+                            <strong class="col-sm-3">@Localizer["Content"]</strong>
+                            <div class="col-sm-9" style="white-space: pre-wrap;">@Model.Feedback.Content</div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row">
+                            <strong class="col-sm-3">@Localizer["Contact"]</strong>
+                            <div class="col-sm-9">@Model.Feedback.Contact</div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row">
+                            <strong class="col-sm-3">@Localizer["Created At"]</strong>
+                            <div class="col-sm-9">
+                                @Model.Feedback.CreatedAt.ToHtmlDateTime()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <form asp-action="Delete" class="d-inline-block" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Id" value="@Model.Feedback.Id" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Yes, delete this feedback"]
+                        </button>
+                    </form>
+                    <a asp-action="Index" class="btn btn-light">@Localizer["Cancel"]</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

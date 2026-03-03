@@ -72,4 +72,14 @@ public class FeedbackService : IFeedbackService, IScopedDependency
             await _dbContext.SaveChangesAsync();
         }
     }
+
+    public async Task DeleteFeedbackAsync(int id)
+    {
+        var feedback = await _dbContext.Feedbacks.FindAsync(id);
+        if (feedback != null)
+        {
+            _dbContext.Feedbacks.Remove(feedback);
+            await _dbContext.SaveChangesAsync();
+        }
+    }
 }

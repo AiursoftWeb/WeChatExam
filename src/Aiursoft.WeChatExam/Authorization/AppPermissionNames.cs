@@ -73,6 +73,7 @@ public static class AppPermissionNames
     // Feedback Management
     public const string CanReadFeedbacks = nameof(CanReadFeedbacks);
     public const string CanEditFeedbacks = nameof(CanEditFeedbacks);
+    public const string CanDeleteFeedbacks = nameof(CanDeleteFeedbacks);
 
     // Optimization Jobs
     public const string CanTriggerOptimizationJobs = nameof(CanTriggerOptimizationJobs);

@@ -160,6 +160,10 @@ public class AppPermissions
                 localizer["Edit Feedbacks"],
                 localizer["Allows updating the status of user feedbacks."]),
 
+            new(AppPermissionNames.CanDeleteFeedbacks,
+                localizer["Delete Feedbacks"],
+                localizer["Allows deleting user feedbacks."]),
+
             new(AppPermissionNames.CanTriggerOptimizationJobs,
                 localizer["Trigger Optimization Jobs"],
                 localizer["Allows triggering background jobs to optimize question answers and explanations using AI."]),

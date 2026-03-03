@@ -44,4 +44,28 @@ public class FeedbacksController(IFeedbackService feedbackService) : Controller
         await feedbackService.UpdateFeedbackStatusAsync(id, FeedbackStatus.Processed);
         return RedirectToAction(nameof(Index));
     }
+
+    [Authorize(Policy = AppPermissionNames.CanDeleteFeedbacks)]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var feedback = await feedbackService.GetFeedbackByIdAsync(id);
+        if (feedback == null)
+        {
+            return NotFound();
+        }
+        return this.StackView(new DeleteViewModel
+        {
+            Feedback = feedback
+        });
+    }
+
+    [HttpPost]
+    [ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanDeleteFeedbacks)]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        await feedbackService.DeleteFeedbackAsync(id);
+        return RedirectToAction(nameof(Index));
+    }
 }
