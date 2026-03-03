@@ -108,6 +108,10 @@ public class ViewModelArgsInjector(
         _ = localizer["Global Settings"];
     
         _ = localizer["Practice Session"];
+    
+        _ = localizer["Delete Feedback"];
+        _ = localizer["Feedback"];
+        _ = localizer["User Feedbacks"];
     }
 
     public void InjectSimple(
