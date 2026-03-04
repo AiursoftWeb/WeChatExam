@@ -49,6 +49,19 @@ public class QuestionsController : ControllerBase
         [FromQuery] PracticeType? resumeType)
     {
         // 1. Parameter Validation
+        // Gate: prevent fetching all questions when no filtering or limiting parameters are provided
+        if (!categoryId.HasValue &&
+            string.IsNullOrWhiteSpace(tagName) &&
+            string.IsNullOrWhiteSpace(mtql) &&
+            !type.HasValue &&
+            !randomSize.HasValue &&
+            !size.HasValue &&
+            !page.HasValue &&
+            !resumeType.HasValue)
+        {
+            return BadRequest(new { Message = "At least one query parameter must be provided." });
+        }
+        
         if (randomSize.HasValue && size.HasValue)
         {
              return BadRequest(new { Message = "RandomSize and size cannot be used together." });
@@ -62,6 +75,16 @@ public class QuestionsController : ControllerBase
         if (randomSize.HasValue && (page.HasValue || resumeType.HasValue))
         {
             return BadRequest(new { Message = "RandomSize cannot be used with page or resumeType." });
+        }
+
+        if (randomSize > 50)
+        {
+            return BadRequest(new { Message = "RandomSize cannot be greater than 50." });
+        }
+
+        if (size > 50)
+        {
+            return BadRequest(new { Message = "Size cannot be greater than 50." });
         }
 
         // 2. Base Query Construction (Filters)
@@ -212,13 +235,10 @@ public class QuestionsController : ControllerBase
         // Default / Fallback (No size, no randomSize)
         else
         {
-             // Original behavior: Return all matches, Newest first?
-             // Or maybe just limit to some default?
-             // Original code returned ALL matches sorted descending.
-             // I will preserve this for backward compatibility if arguments are missing.
-             
+             // Default to page 1, size 10 to avoid scraping all questions.
              questions = await query
                  .OrderByDescending(q => q.CreationTime)
+                 .Take(10)
                  .Select(q => new QuestionDto
                  {
                      QuestionType = q.QuestionType,
