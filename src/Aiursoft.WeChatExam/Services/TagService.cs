@@ -110,6 +110,53 @@ public class TagService : ITagService
             .ToListAsync();
     }
 
+    public async Task AddTagToPaperAsync(Guid paperId, int tagId)
+    {
+        var exists = await _dbContext.PaperTags
+            .AnyAsync(pt => pt.PaperId == paperId && pt.TagId == tagId);
+
+        if (exists) return;
+
+        var paperTag = new PaperTag
+        {
+            PaperId = paperId,
+            TagId = tagId
+        };
+
+        _dbContext.PaperTags.Add(paperTag);
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task RemoveTagFromPaperAsync(Guid paperId, int tagId)
+    {
+        var paperTag = await _dbContext.PaperTags
+            .FirstOrDefaultAsync(pt => pt.PaperId == paperId && pt.TagId == tagId);
+
+        if (paperTag != null)
+        {
+            _dbContext.PaperTags.Remove(paperTag);
+            await _dbContext.SaveChangesAsync();
+        }
+    }
+
+    public async Task<List<Tag>> GetTagsForPaperAsync(Guid paperId)
+    {
+        return await _dbContext.PaperTags
+            .Where(pt => pt.PaperId == paperId)
+            .Include(pt => pt.Tag)
+            .Select(pt => pt.Tag)
+            .ToListAsync();
+    }
+
+    public async Task<List<Paper>> GetPapersByTagAsync(int tagId)
+    {
+        return await _dbContext.PaperTags
+            .Where(pt => pt.TagId == tagId)
+            .Include(pt => pt.Paper)
+            .Select(pt => pt.Paper)
+            .ToListAsync();
+    }
+
     public async Task<List<Tag>> SearchTagsAsync(string? query, int? taxonomyId = null)
     {
         var dbQuery = _dbContext.Tags.Include(t => t.Taxonomy).AsQueryable();
@@ -152,6 +199,13 @@ public class TagService : ITagService
             .ToListAsync();
 
         _dbContext.QuestionTags.RemoveRange(questionTags);
+
+        // Remove all paper-tag relationships
+        var paperTags = await _dbContext.PaperTags
+            .Where(pt => pt.TagId == tagId)
+            .ToListAsync();
+
+        _dbContext.PaperTags.RemoveRange(paperTags);
 
         // Then remove the tag itself
         var tag = await _dbContext.Tags.FindAsync(tagId);

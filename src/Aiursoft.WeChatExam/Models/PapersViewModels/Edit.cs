@@ -26,11 +26,17 @@ public class EditViewModel : UiStackLayoutViewModel
     [Display(Name = "Is Free")]
     public bool IsFree { get; set; }
 
+    [Display(Name = "Is Real Exam")]
+    public bool IsRealExam { get; set; }
+
     [Display(Name = "Status")]
     public PaperStatus Status { get; set; }
 
     [Display(Name = "Category")]
     public Guid? SelectedCategoryId { get; set; }
+
+    [Display(Name = "Tags")]
+    public string? Tags { get; set; }
 
     public IEnumerable<SelectListItem> AvailableCategories { get; set; } = new List<SelectListItem>();
 

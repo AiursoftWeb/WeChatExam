@@ -14,7 +14,7 @@ public class PaperService : IPaperService
 
     #region Paper CRUD
 
-    public async Task<Paper> CreatePaperAsync(string title, int timeLimit, bool isFree)
+    public async Task<Paper> CreatePaperAsync(string title, int timeLimit, bool isFree, bool isRealExam = false)
     {
         var paper = new Paper
         {
@@ -22,6 +22,7 @@ public class PaperService : IPaperService
             Title = title,
             TimeLimit = timeLimit,
             IsFree = isFree,
+            IsRealExam = isRealExam,
             Status = PaperStatus.Draft
         };
 
@@ -54,7 +55,7 @@ public class PaperService : IPaperService
             .ToListAsync();
     }
 
-    public async Task UpdatePaperAsync(Guid paperId, string title, int timeLimit, bool isFree)
+    public async Task UpdatePaperAsync(Guid paperId, string title, int timeLimit, bool isFree, bool isRealExam)
     {
         var paper = await _dbContext.Papers.FindAsync(paperId);
         if (paper == null) throw new InvalidOperationException("Paper not found");
@@ -63,6 +64,7 @@ public class PaperService : IPaperService
         paper.Title = title;
         paper.TimeLimit = timeLimit;
         paper.IsFree = isFree;
+        paper.IsRealExam = isRealExam;
 
         _dbContext.Papers.Update(paper);
         await _dbContext.SaveChangesAsync();

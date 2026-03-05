@@ -23,4 +23,7 @@ public class Tag
 
     [InverseProperty(nameof(QuestionTag.Tag))]
     public IEnumerable<QuestionTag> QuestionTags { get; init; } = new List<QuestionTag>();
+
+    [InverseProperty(nameof(PaperTag.Tag))]
+    public IEnumerable<PaperTag> PaperTags { get; init; } = new List<PaperTag>();
 }

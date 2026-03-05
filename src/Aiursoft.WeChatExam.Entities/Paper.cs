@@ -29,6 +29,11 @@ public class Paper
     public bool IsFree { get; set; }
 
     /// <summary>
+    /// 是否为真题
+    /// </summary>
+    public bool IsRealExam { get; set; }
+
+    /// <summary>
     /// 试卷状态
     /// </summary>
     public PaperStatus Status { get; set; } = PaperStatus.Draft;
@@ -49,6 +54,12 @@ public class Paper
     /// </summary>
     [InverseProperty(nameof(PaperCategory.Paper))]
     public IEnumerable<PaperCategory> PaperCategories { get; init; } = new List<PaperCategory>();
+
+    /// <summary>
+    /// 试卷标签
+    /// </summary>
+    [InverseProperty(nameof(PaperTag.Paper))]
+    public IEnumerable<PaperTag> PaperTags { get; init; } = new List<PaperTag>();
 
     /// <summary>
     /// 试卷快照列表

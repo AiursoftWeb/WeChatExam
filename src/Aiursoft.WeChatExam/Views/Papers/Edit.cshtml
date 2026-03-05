@@ -43,6 +43,16 @@
                         <input asp-for="IsFree" class="form-check-input" type="checkbox" />
                         <label asp-for="IsFree" class="form-check-label">@Localizer["Free Paper"]</label>
                     </div>
+                    <div class="mb-3 form-check">
+                        <input asp-for="IsRealExam" class="form-check-input" type="checkbox" />
+                        <label asp-for="IsRealExam" class="form-check-label">@Localizer["Real Exam"]</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">@Localizer["Tags"]</label>
+                        <input type="text" id="tagInputField" class="form-control" placeholder="@Localizer["Type to search or add tags..."]" autocomplete="off" />
+                        <input type="hidden" asp-for="Tags" id="Tags" />
+                        <small class="form-text text-muted">@Localizer["Press Enter to add a tag, or select from suggestions. Click X to remove."]</small>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">@Localizer["Status"]</label>
                         <div>
@@ -187,8 +197,15 @@
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
+    <script src="~/js/tag-input.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Tags Init
+            const tagInput = document.getElementById('tagInputField');
+            const tagHidden = document.getElementById('Tags');
+            const initialTags = @Json.Serialize(Model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>());
+            TagInput.init(tagInput, tagHidden, initialTags);
+
             const mtqlInput = document.getElementById('mtqlInput');
             const mtqlSearchBtn = document.getElementById('mtqlSearchBtn');
             const mtqlResults = document.getElementById('mtqlResults');

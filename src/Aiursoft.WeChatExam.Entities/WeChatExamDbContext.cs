@@ -22,6 +22,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<Taxonomy> Taxonomies => Set<Taxonomy>();
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<QuestionTag> QuestionTags => Set<QuestionTag>();
+    public DbSet<PaperTag> PaperTags => Set<PaperTag>();
     public DbSet<Paper> Papers => Set<Paper>();
     public DbSet<PaperQuestion> PaperQuestions => Set<PaperQuestion>();
     public DbSet<PaperCategory> PaperCategories => Set<PaperCategory>();
