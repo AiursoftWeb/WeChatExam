@@ -137,16 +137,3 @@ public class PapersController : ControllerBase
     }
 }
 
-public class PaperListDto
-{
-    public Guid Id { get; set; }
-    public string Title { get; set; } = string.Empty;
-    public int TimeLimit { get; set; }
-    public bool IsFree { get; set; }
-    public bool IsRealExam { get; set; }
-    public string Status { get; set; } = string.Empty;
-    public List<string> Tags { get; set; } = new();
-    public Guid LatestSnapshotId { get; set; }
-    public int LatestVersion { get; set; }
-}
-

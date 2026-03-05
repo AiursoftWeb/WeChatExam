@@ -39,6 +39,39 @@
                     <dt class="col-sm-4">@Localizer["Free"]</dt>
                     <dd class="col-sm-8">@(Model.Paper?.IsFree == true ? "Yes" : "No")</dd>
 
+                    <dt class="col-sm-4">@Localizer["Real Exam"]</dt>
+                    <dd class="col-sm-8">@(Model.Paper?.IsRealExam == true ? "Yes" : "No")</dd>
+
+                    <dt class="col-sm-4">@Localizer["Category"]</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Paper?.PaperCategories.Any() == true)
+                        {
+                            @foreach (var pc in Model.Paper.PaperCategories)
+                            {
+                                <span class="badge bg-primary">@pc.Category?.Title</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">@Localizer["No Category"]</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">@Localizer["Tags"]</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Paper?.PaperTags.Any() == true)
+                        {
+                            @foreach (var pt in Model.Paper.PaperTags)
+                            {
+                                <span class="badge bg-info">@pt.Tag?.DisplayName</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">@Localizer["No Tags"]</span>
+                        }
+                    </dd>
+
                     <dt class="col-sm-4">@Localizer["Status"]</dt>
                     <dd class="col-sm-8">
                         @switch (Model.Paper?.Status)

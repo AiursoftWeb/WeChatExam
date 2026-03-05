@@ -36,6 +36,10 @@ public class PaperService : IPaperService
         return await _dbContext.Papers
             .Include(p => p.PaperQuestions)
             .ThenInclude(pq => pq.Question)
+            .Include(p => p.PaperCategories)
+            .ThenInclude(pc => pc.Category)
+            .Include(p => p.PaperTags)
+            .ThenInclude(pt => pt.Tag)
             .FirstOrDefaultAsync(p => p.Id == paperId);
     }
 

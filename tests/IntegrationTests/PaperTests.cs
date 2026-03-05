@@ -161,4 +161,59 @@ public class PaperTests
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
         Assert.IsTrue(detailsHtml.Contains("<dd class=\"col-sm-8\">2</dd>"), "Paper details should show 2 questions");
     }
+
+    [TestMethod]
+    public async Task PaperRealExamAndTagsTest()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Create a Paper with IsRealExam and Tags
+        var paperTitle = $"Real Exam Paper {Guid.NewGuid()}";
+        var paperToken = await GetAntiCsrfToken("/Papers/Create");
+        var paperContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", paperTitle },
+            { "TimeLimit", "120" },
+            { "IsFree", "true" },
+            { "IsRealExam", "true" },
+            { "Tags", "RealTag1 RealTag2" },
+            { "__RequestVerificationToken", paperToken }
+        });
+        var paperResponse = await _http.PostAsync("/Papers/Create", paperContent);
+        Assert.AreEqual(HttpStatusCode.Found, paperResponse.StatusCode);
+        var paperEditUrl = paperResponse.Headers.Location?.OriginalString;
+        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
+
+        // 2. Verify Details
+        var detailsResponse = await _http.GetAsync($"/Papers/Details/{paperId}");
+        detailsResponse.EnsureSuccessStatusCode();
+        var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
+        Assert.IsTrue(detailsHtml.Contains("Real Exam"), "Should show Real Exam label");
+        Assert.IsTrue(detailsHtml.Contains("Yes"), "Should show Yes for Real Exam");
+        Assert.IsTrue(detailsHtml.Contains("RealTag1"), "Should show RealTag1");
+        Assert.IsTrue(detailsHtml.Contains("RealTag2"), "Should show RealTag2");
+
+        // 3. Edit Paper (Change IsRealExam and Tags)
+        var editToken = await GetAntiCsrfToken(paperEditUrl);
+        var editContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Id", paperId },
+            { "Title", paperTitle + " Updated" },
+            { "TimeLimit", "90" },
+            { "IsFree", "false" },
+            { "IsRealExam", "false" },
+            { "Tags", "UpdatedTag" },
+            { "__RequestVerificationToken", editToken }
+        });
+        var editResponse = await _http.PostAsync(paperEditUrl, editContent);
+        Assert.AreEqual(HttpStatusCode.Found, editResponse.StatusCode);
+
+        // 4. Verify Updated Details
+        var updatedDetailsResponse = await _http.GetAsync($"/Papers/Details/{paperId}");
+        updatedDetailsResponse.EnsureSuccessStatusCode();
+        var updatedHtml = await updatedDetailsResponse.Content.ReadAsStringAsync();
+        Assert.IsTrue(updatedHtml.Contains("No"), "Should show No for Real Exam");
+        Assert.IsTrue(updatedHtml.Contains("UpdatedTag"), "Should show UpdatedTag");
+        Assert.IsFalse(updatedHtml.Contains("RealTag1"), "Should not show old RealTag1");
+    }
 }
