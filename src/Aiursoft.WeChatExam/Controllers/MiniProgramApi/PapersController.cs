@@ -28,19 +28,36 @@ public class PapersController : ControllerBase
     /// 获取所有可用试卷列表（仅返回有快照的试卷）
     /// </summary>
     /// <param name="categoryId">可选：分类ID</param>
+    /// <param name="tag">可选：标签</param>
+    /// <param name="isRealExam">可选：是否为真题</param>
     /// <returns>试卷列表</returns>
     [HttpGet]
     [ProducesResponseType(typeof(List<PaperListDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPapers([FromQuery] Guid? categoryId)
+    public async Task<IActionResult> GetPapers(
+        [FromQuery] Guid? categoryId, 
+        [FromQuery] string? tag, 
+        [FromQuery] bool? isRealExam)
     {
         var query = _context.Papers
             .Where(p => p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen)
             .Include(p => p.PaperSnapshots)
+            .Include(p => p.PaperTags)
+            .ThenInclude(pt => pt.Tag)
             .Where(p => p.PaperSnapshots.Any());
 
         if (categoryId.HasValue)
         {
             query = query.Where(p => p.PaperCategories.Any(pc => pc.CategoryId == categoryId.Value));
+        }
+
+        if (isRealExam.HasValue)
+        {
+            query = query.Where(p => p.IsRealExam == isRealExam.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(tag))
+        {
+            query = query.Where(p => p.PaperTags.Any(pt => pt.Tag.DisplayName == tag));
         }
 
         var papers = await query
@@ -50,7 +67,9 @@ public class PapersController : ControllerBase
                 Title = p.Title,
                 TimeLimit = p.TimeLimit,
                 IsFree = p.IsFree,
+                IsRealExam = p.IsRealExam,
                 Status = p.Status.ToString(),
+                Tags = p.PaperTags.Select(pt => pt.Tag.DisplayName).ToList(),
                 LatestSnapshotId = p.PaperSnapshots.OrderByDescending(s => s.Version).First().Id,
                 LatestVersion = p.PaperSnapshots.Max(s => s.Version)
             })
@@ -116,16 +135,5 @@ public class PapersController : ControllerBase
 
         return Ok(dtos);
     }
-}
-
-public class PaperListDto
-{
-    public Guid Id { get; set; }
-    public string Title { get; set; } = string.Empty;
-    public int TimeLimit { get; set; }
-    public bool IsFree { get; set; }
-    public string Status { get; set; } = string.Empty;
-    public Guid LatestSnapshotId { get; set; }
-    public int LatestVersion { get; set; }
 }
 

@@ -5,11 +5,11 @@ namespace Aiursoft.WeChatExam.Services;
 public interface IPaperService
 {
     // Paper CRUD
-    Task<Paper> CreatePaperAsync(string title, int timeLimit, bool isFree);
+    Task<Paper> CreatePaperAsync(string title, int timeLimit, bool isFree, bool isRealExam = false);
     Task<Paper?> GetPaperAsync(Guid paperId);
     Task<List<Paper>> GetAllPapersAsync();
     Task<List<Paper>> GetPapersAvailableForExamAsync();
-    Task UpdatePaperAsync(Guid paperId, string title, int timeLimit, bool isFree);
+    Task UpdatePaperAsync(Guid paperId, string title, int timeLimit, bool isFree, bool isRealExam);
     Task DeletePaperAsync(Guid paperId);
 
     // Question management

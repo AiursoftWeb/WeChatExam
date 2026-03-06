@@ -1,4 +1,7 @@
 @model Aiursoft.WeChatExam.Models.PapersViewModels.DetailsViewModel
+@{
+    var paper = Model.Paper!;
+}
 
 <h1 class="h3 mb-3">@Localizer["Paper Details"]</h1>
 
@@ -31,17 +34,50 @@
             <div class="card-body">
                 <dl class="row">
                     <dt class="col-sm-4">@Localizer["Title"]</dt>
-                    <dd class="col-sm-8">@Model.Paper?.Title</dd>
+                    <dd class="col-sm-8">@paper.Title</dd>
 
                     <dt class="col-sm-4">@Localizer["Time Limit"]</dt>
-                    <dd class="col-sm-8">@Model.Paper?.TimeLimit min</dd>
+                    <dd class="col-sm-8">@paper.TimeLimit min</dd>
 
                     <dt class="col-sm-4">@Localizer["Free"]</dt>
-                    <dd class="col-sm-8">@(Model.Paper?.IsFree == true ? "Yes" : "No")</dd>
+                    <dd class="col-sm-8">@(paper.IsFree ? "Yes" : "No")</dd>
+
+                    <dt class="col-sm-4">@Localizer["Real Exam"]</dt>
+                    <dd class="col-sm-8">@(paper.IsRealExam ? "Yes" : "No")</dd>
+
+                    <dt class="col-sm-4">@Localizer["Category"]</dt>
+                    <dd class="col-sm-8">
+                        @if (paper.PaperCategories.Any())
+                        {
+                            @foreach (var pc in paper.PaperCategories)
+                            {
+                                <span class="badge bg-primary">@pc.Category.Title</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">@Localizer["No Category"]</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">@Localizer["Tags"]</dt>
+                    <dd class="col-sm-8">
+                        @if (paper.PaperTags.Any())
+                        {
+                            @foreach (var pt in paper.PaperTags)
+                            {
+                                <span class="badge bg-info">@pt.Tag.DisplayName</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="text-muted">@Localizer["No Tags"]</span>
+                        }
+                    </dd>
 
                     <dt class="col-sm-4">@Localizer["Status"]</dt>
                     <dd class="col-sm-8">
-                        @switch (Model.Paper?.Status)
+                        @switch (paper.Status)
                         {
                             case Aiursoft.WeChatExam.Entities.PaperStatus.Draft:
                                 <span class="badge bg-secondary">@Localizer["Draft"]</span>
@@ -59,13 +95,13 @@
                     <dd class="col-sm-8">@Model.PaperQuestions.Count</dd>
 
                     <dt class="col-sm-4">@Localizer["Created"]</dt>
-                    <dd class="col-sm-8">@Model.Paper?.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+                    <dd class="col-sm-8">@paper.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
                 </dl>
             </div>
             <div class="card-footer text-end">
-                @if (Model.Paper?.Status != Aiursoft.WeChatExam.Entities.PaperStatus.Frozen)
+                @if (paper.Status != Aiursoft.WeChatExam.Entities.PaperStatus.Frozen)
                 {
-                    <a asp-action="Edit" asp-route-id="@Model.Paper?.Id" class="btn btn-primary btn-sm">@Localizer["Edit"]</a>
+                    <a asp-action="Edit" asp-route-id="@paper.Id" class="btn btn-primary btn-sm">@Localizer["Edit"]</a>
                 }
                 <a asp-action="Index" class="btn btn-secondary btn-sm ms-2">@Localizer["Back"]</a>
             </div>

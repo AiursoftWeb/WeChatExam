@@ -20,6 +20,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class PapersController(
     WeChatExamDbContext context, 
     IPaperService paperService,
+    ITagService tagService,
     IStringLocalizer<PapersController> localizer) : Controller
 {
     // GET: papers
@@ -70,11 +71,22 @@ public class PapersController(
             return this.StackView(model);
         }
 
-        var paper = await paperService.CreatePaperAsync(model.Title, model.TimeLimit, model.IsFree);
+        var paper = await paperService.CreatePaperAsync(model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
         if (model.SelectedCategoryId.HasValue)
         {
             await paperService.AssociateCategoryAsync(paper.Id, model.SelectedCategoryId.Value);
         }
+
+        if (!string.IsNullOrWhiteSpace(model.Tags))
+        {
+            var tags = model.Tags.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            foreach (var tagDisplayName in tags)
+            {
+                var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
+                await tagService.AddTagToPaperAsync(paper.Id, tag.Id);
+            }
+        }
+
         return RedirectToAction(nameof(Edit), new { id = paper.Id });
     }
 
@@ -116,6 +128,7 @@ public class PapersController(
         var selectedCategoryId = associatedCategories.FirstOrDefault()?.Id;
 
         var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+        var tags = await tagService.GetTagsForPaperAsync(id.Value);
 
         return this.StackView(new EditViewModel
         {
@@ -123,9 +136,11 @@ public class PapersController(
             Title = paper.Title,
             TimeLimit = paper.TimeLimit,
             IsFree = paper.IsFree,
+            IsRealExam = paper.IsRealExam,
             Status = paper.Status,
             PaperQuestions = questions,
             SelectedCategoryId = selectedCategoryId,
+            Tags = string.Join(' ', tags.Select(t => t.DisplayName)),
             AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
@@ -170,12 +185,29 @@ public class PapersController(
 
         try
         {
-            await paperService.UpdatePaperAsync(id, model.Title, model.TimeLimit, model.IsFree);
+            await paperService.UpdatePaperAsync(id, model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
             
             await paperService.ClearCategoriesForPaperAsync(id);
             if (model.SelectedCategoryId.HasValue)
             {
                 await paperService.AssociateCategoryAsync(id, model.SelectedCategoryId.Value);
+            }
+
+            // Sync tags
+            var currentTags = await tagService.GetTagsForPaperAsync(id);
+            var submittedTags = (model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>()).ToList();
+
+            // Add new tags
+            foreach (var tagDisplayName in submittedTags.Where(st => currentTags.All(ct => ct.DisplayName != st)))
+            {
+                var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
+                await tagService.AddTagToPaperAsync(id, tag.Id);
+            }
+
+            // Remove old tags
+            foreach (var tagToRemove in currentTags.Where(ct => submittedTags.All(st => st != ct.DisplayName)))
+            {
+                await tagService.RemoveTagFromPaperAsync(id, tagToRemove.Id);
             }
         }
         catch (InvalidOperationException ex)
