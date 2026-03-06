@@ -93,7 +93,7 @@ public class PracticeTests
         
         var catIndexResponse = await _http.GetAsync("/Categories/Index");
         var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, "href=\"/Categories/Details/([^\"]+)\"").Groups[1].Value;
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var qText = $"Practice-Question-{Guid.NewGuid()}";
         var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
@@ -112,7 +112,7 @@ public class PracticeTests
 
         var qIndexResponse = await _http.GetAsync($"/Questions/Index?categoryId={categoryId}");
         var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
-        var questionId = Regex.Match(qIndexHtml, "href=\"/Questions/Details/([^\"]+)\"").Groups[1].Value;
+        var questionId = Regex.Match(qIndexHtml, @"href=""/Questions/Details/([a-z0-9-]+)").Groups[1].Value;
 
         // 2. Access Practice Index
         var practiceIndexResponse = await _http.GetAsync("/Practice/Index");

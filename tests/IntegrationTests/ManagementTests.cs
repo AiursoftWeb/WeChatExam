@@ -286,7 +286,7 @@ public class ManagementTests
 
         var catIndexResponse = await _http.GetAsync("/Categories/Index");
         var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
         await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
@@ -477,7 +477,7 @@ public class ManagementTests
         }));
         var catIndexResponse = await _http.GetAsync("/Categories/Index");
         var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var qText = $"Exam-Prereq-Q-{Guid.NewGuid()}";
         var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
@@ -495,7 +495,7 @@ public class ManagementTests
         }));
         var qIndexResponse = await _http.GetAsync($"/Questions/Index?categoryId={categoryId}");
         var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
-        var questionId = Regex.Match(qIndexHtml, $@"href=""/Questions/Details/([^""]+)""").Groups[1].Value;
+        var questionId = Regex.Match(qIndexHtml, @"href=""/Questions/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var paperTitle = $"Exam-Prereq-Paper-{Guid.NewGuid()}";
         var pToken = await GetAntiCsrfToken("/Papers/Create");
@@ -555,7 +555,7 @@ public class ManagementTests
         var examIndexHtml = await examIndexResponse.Content.ReadAsStringAsync();
         Assert.Contains(examTitle, examIndexHtml);
 
-        var examIdMatch = Regex.Match(examIndexHtml, @"href=""/Exams/Edit/([^""]+)""");
+        var examIdMatch = Regex.Match(examIndexHtml, @"href=""/Exams/Edit/([a-z0-9-]+)");
         Assert.IsTrue(examIdMatch.Success);
         var examId = examIdMatch.Groups[1].Value;
 
@@ -613,7 +613,7 @@ public class ManagementTests
         }));
         var catIndexResponse = await _http.GetAsync("/Categories/Index");
         var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var paperTitle = $"Unpublished-Paper-{Guid.NewGuid()}";
         var pToken = await GetAntiCsrfToken("/Papers/Create");
