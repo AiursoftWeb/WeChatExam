@@ -16,4 +16,9 @@ public class DeleteViewModel : UiStackLayoutViewModel
     /// 指示分类是否有子分类
     /// </summary>
     public bool HasChildren { get; set; }
+
+    /// <summary>
+    /// 指示分类是否有相关联的问题
+    /// </summary>
+    public bool HasQuestions { get; set; }
 }

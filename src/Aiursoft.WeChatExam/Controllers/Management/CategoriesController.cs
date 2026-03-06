@@ -210,14 +210,18 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         if (id == null) return NotFound();
 
         var category = await context.Categories
-            .Include(c => c.Children)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (category == null) return NotFound();
 
+        var hasChildren = await context.Categories.AnyAsync(c => c.ParentId == id);
+        var hasQuestions = await context.Questions.AnyAsync(q => q.CategoryId == id);
+
         return this.StackView(new DeleteViewModel
         {
-            Category = category
+            Category = category,
+            HasChildren = hasChildren,
+            HasQuestions = hasQuestions
         });
     }
 
@@ -233,18 +237,16 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         var category = await context.Categories.FindAsync(id);
         if (category == null) return NotFound();
 
-        // Check if category has children
+        // Check if category has children or questions
         var hasChildren = await context.Categories.AnyAsync(c => c.ParentId == id);
-        if (hasChildren)
+        var hasQuestions = await context.Questions.AnyAsync(q => q.CategoryId == id);
+        if (hasChildren || hasQuestions)
         {
-            var categoryWithChildren = await context.Categories
-                .Include(c => c.Children)
-                .FirstOrDefaultAsync(c => c.Id == id);
-            
             return this.StackView(new DeleteViewModel
             {
-                Category = categoryWithChildren!,
-                HasChildren = true
+                Category = category,
+                HasChildren = hasChildren,
+                HasQuestions = hasQuestions
             });
         }
 

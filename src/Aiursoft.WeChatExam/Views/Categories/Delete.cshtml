@@ -9,14 +9,24 @@
         <div class="d-inline-block bg-body-tertiary rounded p-2 px-3 mb-4">
             <strong class="fs-5">@Model.Category.Title</strong>
         </div>
-        @if (Model.HasChildren)
+        @if (Model.HasChildren || Model.HasQuestions)
         {
             <div class="alert alert-warning" role="alert">
                 <div class="alert-icon">
                     <i data-lucide="alert-triangle"></i>
                 </div>
                 <div class="alert-message">
-                    @Localizer["Cannot delete category with children. Please delete children first."]
+                    @if (Model.HasChildren)
+                    {
+                        <p class="mb-1">@Localizer["Cannot delete category with children. Please delete children first."]</p>
+                    }
+                    @if (Model.HasQuestions)
+                    {
+                        <p class="mb-1">@Localizer["Cannot delete category with associated questions. Please remove or reassign these questions first."]</p>
+                        <a asp-controller="Questions" asp-action="Index" asp-route-categoryId="@Model.Category.Id" class="btn btn-sm btn-warning mt-2">
+                            <i class="align-middle me-1" data-lucide="external-link"></i> @Localizer["View related questions"]
+                        </a>
+                    }
                 </div>
             </div>
             <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
