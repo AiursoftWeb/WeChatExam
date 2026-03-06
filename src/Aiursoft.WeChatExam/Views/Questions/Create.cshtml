@@ -211,6 +211,21 @@
 
             // Init
             updateUI();
+
+            // Initial population for Bool/Choice if empty
+            const initialType = questionTypeSelect.value;
+            const initialStandardAnswer = (standardAnswerTextInput.value || '').trim();
+            if (initialType === typeBool && optionsList.children.length === 0) {
+                addOption(correctStr, initialStandardAnswer === correctStr || initialStandardAnswer === 'true' || initialStandardAnswer === 'True');
+                addOption(incorrectStr, initialStandardAnswer === incorrectStr || initialStandardAnswer === 'false' || initialStandardAnswer === 'False');
+                updateUI();
+            } else if (initialType === typeChoice && optionsList.children.length === 0) {
+                addOption('A', initialStandardAnswer === 'A');
+                addOption('B', initialStandardAnswer === 'B');
+                addOption('C', initialStandardAnswer === 'C');
+                addOption('D', initialStandardAnswer === 'D');
+                updateUI();
+            }
         });
     </script>
 }
