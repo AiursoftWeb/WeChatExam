@@ -4,6 +4,7 @@
 
 <form asp-action="Create" method="post">
     <div asp-validation-summary="All" class="text-danger mb-3"></div>
+    <input type="hidden" asp-for="ReturnUrl" />
     <div class="card mb-3">
         <div class="card-body">
             <div class="mb-3">
@@ -93,7 +94,7 @@
         </div>
         <div class="card-footer text-end">
             <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
-            <a asp-action="Index" asp-route-categoryId="@Model.CategoryId" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+            <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { categoryId = Model.CategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
         </div>
     </div>
 </form>

@@ -202,14 +202,15 @@ public class QuestionsController(
 
     // GET: questions/create
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public async Task<IActionResult> Create(Guid? categoryId)
+    public async Task<IActionResult> Create(Guid? categoryId, string? returnUrl)
     {
         var categories = await context.Categories.ToListAsync();
 
         var model = new CreateViewModel
         {
             Categories = categories,
-            CategoryId = categoryId ?? Guid.Empty
+            CategoryId = categoryId ?? Guid.Empty,
+            ReturnUrl = returnUrl
         };
 
         return this.StackView(model);
@@ -290,6 +291,10 @@ public class QuestionsController(
             }
         }
 
+        if (!string.IsNullOrWhiteSpace(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+        {
+            return Redirect(model.ReturnUrl);
+        }
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
 

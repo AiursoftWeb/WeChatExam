@@ -52,4 +52,6 @@ public class CreateViewModel : UiStackLayoutViewModel
     public List<Category> Categories { get; set; } = new();
 
     public List<string> Options { get; set; } = new();
+
+    public string? ReturnUrl { get; set; }
 }
