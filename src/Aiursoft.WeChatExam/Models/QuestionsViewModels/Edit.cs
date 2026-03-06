@@ -50,4 +50,6 @@ public class EditViewModel : UiStackLayoutViewModel
     public string? Tags { get; set; }
 
     public List<string> Options { get; set; } = new();
+
+    public string? ReturnUrl { get; set; }
 }

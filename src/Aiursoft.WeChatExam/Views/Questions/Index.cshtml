@@ -132,13 +132,13 @@
                         <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
                             <div class="btn-group">
-                                <a asp-action="Edit" asp-route-id="@question.Id" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
+                                <a asp-action="Edit" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
                                     <i class="align-middle" data-lucide="edit"></i>
                                 </a>
-                                <a asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]">
+                                <a asp-action="Details" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]">
                                     <i class="align-middle" data-lucide="eye"></i>
                                 </a>
-                                <a asp-action="Delete" asp-route-id="@question.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                <a asp-action="Delete" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
                                     <i class="align-middle" data-lucide="trash-2"></i>
                                 </a>
                             </div>

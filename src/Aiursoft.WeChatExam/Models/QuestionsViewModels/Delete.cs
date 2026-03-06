@@ -13,4 +13,6 @@ public class DeleteViewModel : UiStackLayoutViewModel
     public required Question Question { get; set; }
 
     public Category? Category { get; set; }
+
+    public string? ReturnUrl { get; set; }
 }

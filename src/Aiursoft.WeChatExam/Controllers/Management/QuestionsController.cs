@@ -295,7 +295,7 @@ public class QuestionsController(
 
     // GET: questions/{id}
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(Guid? id, string? returnUrl)
     {
         if (id == null) return NotFound();
 
@@ -310,13 +310,14 @@ public class QuestionsController(
         return this.StackView(new DetailsViewModel
         {
             Question = question,
-            Category = question.Category
+            Category = question.Category,
+            ReturnUrl = returnUrl
         });
     }
 
     // GET: questions/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(Guid? id, string? returnUrl)
     {
         if (id == null) return NotFound();
 
@@ -337,7 +338,8 @@ public class QuestionsController(
             Explanation = question.Explanation,
             CategoryId = question.CategoryId ?? Guid.Empty,
             Categories = categories,
-            Tags = string.Join(" ", tags.Select(t => t.DisplayName))
+            Tags = string.Join(" ", tags.Select(t => t.DisplayName)),
+            ReturnUrl = returnUrl
         };
 
         // Deserialize Metadata to Options
@@ -449,12 +451,16 @@ public class QuestionsController(
             }
         }
 
+        if (!string.IsNullOrWhiteSpace(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+        {
+            return Redirect(model.ReturnUrl);
+        }
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
 
     // GET: questions/{id}/delete
     [Authorize(Policy = AppPermissionNames.CanDeleteQuestions)]
-    public async Task<IActionResult> Delete(Guid? id)
+    public async Task<IActionResult> Delete(Guid? id, string? returnUrl)
     {
         if (id == null) return NotFound();
 
@@ -467,7 +473,8 @@ public class QuestionsController(
         return this.StackView(new DeleteViewModel
         {
             Question = question,
-            Category = question.Category
+            Category = question.Category,
+            ReturnUrl = returnUrl
         });
     }
 
@@ -476,7 +483,7 @@ public class QuestionsController(
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    public async Task<IActionResult> DeleteConfirmed(Guid id, string? returnUrl)
     {
         var question = await context.Questions.FindAsync(id);
         if (question == null) return NotFound();
@@ -486,6 +493,10 @@ public class QuestionsController(
         context.Questions.Remove(question);
         await context.SaveChangesAsync();
 
+        if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+        {
+            return Redirect(returnUrl);
+        }
         return RedirectToAction(nameof(Index), new { categoryId });
     }
 
