@@ -1,14 +1,9 @@
 using System.Net;
-using System.Net.Http.Json;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Aiursoft.WeChatExam.Services.Authentication;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using static Aiursoft.WebTools.Extends;
 
@@ -108,8 +103,8 @@ public class PapersApiTests
             var paperService = scope.ServiceProvider.GetRequiredService<IPaperService>();
             var tagService = scope.ServiceProvider.GetRequiredService<ITagService>();
 
-            var cat1 = new Category { Title = "Cat 1" };
-            var cat2 = new Category { Title = "Cat 2" };
+            var cat1 = new Category { Title = "Cat 1", ParentId = null };
+            var cat2 = new Category { Title = "Cat 2", ParentId = null };
             context.Categories.AddRange(cat1, cat2);
             await context.SaveChangesAsync();
             cat1Id = cat1.Id;
@@ -126,13 +121,13 @@ public class PapersApiTests
             await paperService.PublishAsync(p1.Id);
 
             // Paper 2: Cat2, Not Real, No Tag
-            var p2 = await paperService.CreatePaperAsync("Paper 2", 60, true, false);
+            var p2 = await paperService.CreatePaperAsync("Paper 2", 60, true);
             await paperService.AssociateCategoryAsync(p2.Id, cat2Id);
             await paperService.SetStatusAsync(p2.Id, PaperStatus.Publishable);
             await paperService.PublishAsync(p2.Id);
 
             // Paper 3: Cat1, Not Real, Tag1
-            var p3 = await paperService.CreatePaperAsync("Paper 3", 60, true, false);
+            var p3 = await paperService.CreatePaperAsync("Paper 3", 60, true);
             await paperService.AssociateCategoryAsync(p3.Id, cat1Id);
             await tagService.AddTagToPaperAsync(p3.Id, tag1Id);
             await paperService.SetStatusAsync(p3.Id, PaperStatus.Publishable);
