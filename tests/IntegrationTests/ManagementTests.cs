@@ -271,6 +271,68 @@ public class ManagementTests
     }
 
     [TestMethod]
+    public async Task QuestionNavigationReturnUrlTest()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Setup: Create a Category and a Question
+        var categoryTitle = $"Nav-Cat-{Guid.NewGuid()}";
+        var catToken = await GetAntiCsrfToken("/Categories/Create");
+        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", categoryTitle },
+            { "__RequestVerificationToken", catToken }
+        }));
+
+        var catIndexResponse = await _http.GetAsync("/Categories/Index");
+        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
+
+        var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Content", "Navigation Test Question" },
+            { "QuestionType", "0" },
+            { "GradingStrategy", "0" },
+            { "CategoryId", categoryId },
+            { "Options[0]", "A" },
+            { "Options[1]", "B" },
+            { "StandardAnswer", "A" },
+            { "__RequestVerificationToken", qToken }
+        }));
+
+        var qIndexUrl = $"/Questions/Index?categoryId={categoryId}&page=1";
+        var qIndexResponse = await _http.GetAsync(qIndexUrl);
+        var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
+        var match = Regex.Match(qIndexHtml, @"/Questions/Details/([a-z0-9-]+)");
+        Assert.IsTrue(match.Success);
+        var questionId = match.Groups[1].Value;
+
+        // 2. Test Edit redirect to ReturnUrl
+        var returnUrl = qIndexUrl;
+        var editPageUrl = $"/Questions/Edit/{questionId}?returnUrl={Uri.EscapeDataString(returnUrl)}";
+        var editToken = await GetAntiCsrfToken(editPageUrl);
+
+        var editContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("Id", questionId),
+            new KeyValuePair<string, string>("QuestionType", "0"),
+            new KeyValuePair<string, string>("GradingStrategy", "0"),
+            new KeyValuePair<string, string>("Content", "Updated Content"),
+            new KeyValuePair<string, string>("CategoryId", categoryId),
+            new KeyValuePair<string, string>("Options", "A"),
+            new KeyValuePair<string, string>("Options", "B"),
+            new KeyValuePair<string, string>("StandardAnswer", "A"),
+            new KeyValuePair<string, string>("ReturnUrl", returnUrl),
+            new KeyValuePair<string, string>("__RequestVerificationToken", editToken)
+        });
+
+        var editResponse = await _http.PostAsync($"/Questions/Edit/{questionId}", editContent);
+        Assert.AreEqual(HttpStatusCode.Found, editResponse.StatusCode);
+        Assert.AreEqual(returnUrl, editResponse.Headers.Location?.OriginalString);
+    }
+
+    [TestMethod]
     public async Task UsersCrudTest()
     {
         await LoginAsAdminAsync();
@@ -415,7 +477,7 @@ public class ManagementTests
         }));
         var catIndexResponse = await _http.GetAsync("/Categories/Index");
         var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var qText = $"Exam-Prereq-Q-{Guid.NewGuid()}";
         var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
@@ -433,7 +495,7 @@ public class ManagementTests
         }));
         var qIndexResponse = await _http.GetAsync($"/Questions/Index?categoryId={categoryId}");
         var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
-        var questionId = Regex.Match(qIndexHtml, $@"href=""/Questions/Details/([^""]+)""").Groups[1].Value;
+        var questionId = Regex.Match(qIndexHtml, @"href=""/Questions/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var paperTitle = $"Exam-Prereq-Paper-{Guid.NewGuid()}";
         var pToken = await GetAntiCsrfToken("/Papers/Create");
@@ -493,7 +555,7 @@ public class ManagementTests
         var examIndexHtml = await examIndexResponse.Content.ReadAsStringAsync();
         Assert.Contains(examTitle, examIndexHtml);
 
-        var examIdMatch = Regex.Match(examIndexHtml, @"href=""/Exams/Edit/([^""]+)""");
+        var examIdMatch = Regex.Match(examIndexHtml, @"href=""/Exams/Edit/([a-z0-9-]+)");
         Assert.IsTrue(examIdMatch.Success);
         var examId = examIdMatch.Groups[1].Value;
 
@@ -551,7 +613,7 @@ public class ManagementTests
         }));
         var catIndexResponse = await _http.GetAsync("/Categories/Index");
         var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, $@"href=""/Categories/Details/([^""]+)""").Groups[1].Value;
+        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var paperTitle = $"Unpublished-Paper-{Guid.NewGuid()}";
         var pToken = await GetAntiCsrfToken("/Papers/Create");

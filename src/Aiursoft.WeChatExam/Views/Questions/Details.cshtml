@@ -46,7 +46,7 @@
         </dl>
     </div>
     <div class="card-footer text-end">
-        <a asp-action="Edit" asp-route-id="@Model.Question?.Id" class="btn btn-primary btn-sm">@Localizer["Edit"]</a>
-        <a asp-action="Index" asp-route-categoryId="@Model.Question?.CategoryId" class="btn btn-secondary btn-sm ms-2">@Localizer["Back"]</a>
+        <a asp-action="Edit" asp-route-id="@Model.Question?.Id" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-primary btn-sm">@Localizer["Edit"]</a>
+        <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { categoryId = Model.Question?.CategoryId }) : Model.ReturnUrl)" class="btn btn-secondary btn-sm ms-2">@Localizer["Back"]</a>
     </div>
 </div>
