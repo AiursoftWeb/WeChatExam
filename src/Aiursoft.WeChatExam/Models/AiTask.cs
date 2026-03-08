@@ -56,7 +56,7 @@ public class AiTask : UiStackLayoutViewModel
     public Guid Id { get; set; } = Guid.NewGuid();
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime LastAlive { get; set; } = DateTime.UtcNow;
-    public bool IsCanceled { get; set; } = false;
+    public bool IsCanceled { get; set; }
     public AiTaskType Type { get; set; }
     public ConcurrentDictionary<Guid, AiTaskItem> Items { get; set; } = new();
     public bool IsCompleted => Items.Values.All(i => i.Status == AiTaskStatus.Completed || i.Status == AiTaskStatus.Failed);
