@@ -161,41 +161,48 @@
     @if (Model.TotalPages > 1)
     {
         <div class="card-footer py-3">
-            <nav aria-label="Page navigation">
-                <ul class="pagination pagination-sm justify-content-center mb-0">
-                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
-                        <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage - 1))">@Localizer["Previous"]</a>
-                    </li>
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-sm mb-0">
+                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage - 1))">@Localizer["Previous"]</a>
+                        </li>
 
-                    @{
-                        var startPage = Math.Max(1, Model.CurrentPage - 2);
-                        var endPage = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+                        @{
+                            var startPage = Math.Max(1, Model.CurrentPage - 2);
+                            var endPage = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
 
-                        if (startPage > 1)
-                        {
-                             <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="changePage(1)">1</a></li>
-                             if(startPage > 2) { <li class="page-item disabled"><span class="page-link">...</span></li> }
+                            if (startPage > 1)
+                            {
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="changePage(1)">1</a></li>
+                                if(startPage > 2) { <li class="page-item disabled"><span class="page-link">...</span></li> }
+                            }
+
+                            for (var i = startPage; i <= endPage; i++)
+                            {
+                                <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                                    <a class="page-link" href="javascript:void(0)" onclick="changePage(@i)">@i</a>
+                                </li>
+                            }
+
+                            if (endPage < Model.TotalPages)
+                            {
+                                if(endPage < Model.TotalPages - 1) { <li class="page-item disabled"><span class="page-link">...</span></li> }
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="changePage(@Model.TotalPages)">@Model.TotalPages</a></li>
+                            }
                         }
 
-                        for (var i = startPage; i <= endPage; i++)
-                        {
-                            <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
-                                <a class="page-link" href="javascript:void(0)" onclick="changePage(@i)">@i</a>
-                            </li>
-                        }
+                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                            <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage + 1))">@Localizer["Next"]</a>
+                        </li>
+                    </ul>
+                </nav>
 
-                        if (endPage < Model.TotalPages)
-                        {
-                            if(endPage < Model.TotalPages - 1) { <li class="page-item disabled"><span class="page-link">...</span></li> }
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="changePage(@Model.TotalPages)">@Model.TotalPages</a></li>
-                        }
-                    }
-
-                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
-                        <a class="page-link" href="javascript:void(0)" onclick="changePage(@(Model.CurrentPage + 1))">@Localizer["Next"]</a>
-                    </li>
-                </ul>
-            </nav>
+                <div class="input-group input-group-sm" style="width: 110px;">
+                    <input type="number" id="jumpToPageInput" class="form-control" min="1" max="@Model.TotalPages" value="@Model.CurrentPage" onkeypress="if(event.keyCode==13) jumpToPage()">
+                    <button class="btn btn-outline-primary" type="button" onclick="jumpToPage()">@Localizer["Go"]</button>
+                </div>
+            </div>
             <div class="text-center mt-2 text-muted small">
                 Showing @((Model.CurrentPage - 1) * Model.PageSize + 1) to @Math.Min(Model.CurrentPage * Model.PageSize, Model.TotalCount) of @Model.TotalCount items
             </div>
@@ -496,6 +503,16 @@
         function changePage(page) {
             form.querySelector('input[name="page"]').value = page;
             form.submit();
+        }
+
+        function jumpToPage() {
+            const pageInput = document.getElementById('jumpToPageInput');
+            const page = parseInt(pageInput.value);
+            if (page >= 1 && page <= @Model.TotalPages) {
+                changePage(page);
+            } else {
+                alert('@Localizer["Please enter a valid page number between 1 and"] @Model.TotalPages');
+            }
         }
 
         // Initialize
