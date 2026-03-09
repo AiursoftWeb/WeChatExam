@@ -179,12 +179,28 @@
         const questionsContainer = document.getElementById('questionsContainer');
         const taskStatusBadge = document.getElementById('taskStatus');
         let pollingInterval;
+        let isWaiting = false;
 
         async function pollStatus() {
+            if (isWaiting) return;
+            
             try {
                 const response = await fetch(`@Url.Action("GetStatus")?taskId=${taskId}`);
                 if (!response.ok) {
+                    if (response.status === 429) {
+                        isWaiting = true;
+                        taskStatusBadge.textContent = '@Localizer["Too many requests, waiting 30s..."]';
+                        taskStatusBadge.className = 'badge bg-warning text-dark';
+                        setTimeout(() => {
+                            isWaiting = false;
+                            taskStatusBadge.textContent = '@Localizer["Processing..."]';
+                            taskStatusBadge.className = 'badge bg-primary';
+                        }, 30000);
+                        return;
+                    }
                     clearInterval(pollingInterval);
+                    taskStatusBadge.textContent = '@Localizer["Error"]';
+                    taskStatusBadge.className = 'badge bg-danger';
                     return;
                 }
                 const data = await response.json();

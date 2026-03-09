@@ -14,7 +14,6 @@ using System.Text;
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
-[LimitPerMin]
 public class AiTasksController(
     AiTaskService aiTaskService,
     BackgroundJobQueue backgroundJobQueue,
@@ -23,6 +22,7 @@ public class AiTasksController(
 {
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public async Task<IActionResult> GenerateExplanations([FromBody] AiTaskRequest request)
     {
         if (request.QuestionIds.Length == 0)
@@ -160,6 +160,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public async Task<IActionResult> AutoCategorize([FromBody] AiTaskRequest request)
     {
         if (request.QuestionIds.Length == 0)
@@ -283,6 +284,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public async Task<IActionResult> AutoTagging([FromBody] AiTaskRequest request)
     {
         if (request.QuestionIds.Length == 0)
@@ -407,6 +409,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public async Task<IActionResult> GenerateAnswers([FromBody] AiTaskRequest request)
     {
         if (request.QuestionIds.Length == 0)
@@ -585,6 +588,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public async Task<IActionResult> Adopt(Guid taskId, Guid questionId)
     {
         var task = aiTaskService.GetTask(taskId);
@@ -657,6 +661,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public IActionResult Abandon(Guid taskId, Guid questionId)
     {
         var task = aiTaskService.GetTask(taskId);
@@ -671,6 +676,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public async Task<IActionResult> Edit(Guid taskId, Guid questionId, [FromBody] string newValue)
     {
         var task = aiTaskService.GetTask(taskId);
@@ -730,6 +736,7 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [LimitPerMin]
     public IActionResult CancelAll(Guid taskId)
     {
         var task = aiTaskService.GetTask(taskId);
