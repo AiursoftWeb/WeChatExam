@@ -141,7 +141,7 @@ public class AiTasksTests
 
         // 4. Trigger AutoCategorize
         var token = await GetAntiCsrfToken("/Questions/Index");
-        var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new[] { question.Id }), System.Text.Encoding.UTF8, "application/json");
+        var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { questionIds = new[] { question.Id } }), System.Text.Encoding.UTF8, "application/json");
         _http.DefaultRequestHeaders.Remove("RequestVerificationToken");
         _http.DefaultRequestHeaders.Add("RequestVerificationToken", token);
         
@@ -220,7 +220,7 @@ public class AiTasksTests
 
         // 3. Trigger AutoTagging
         var token = await GetAntiCsrfToken("/Questions/Index");
-        var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new[] { question.Id }), System.Text.Encoding.UTF8, "application/json");
+        var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { questionIds = new[] { question.Id } }), System.Text.Encoding.UTF8, "application/json");
         _http.DefaultRequestHeaders.Remove("RequestVerificationToken");
         _http.DefaultRequestHeaders.Add("RequestVerificationToken", token);
         
@@ -302,7 +302,7 @@ public class AiTasksTests
 
         // 3. Trigger GenerateAnswer
         var token = await GetAntiCsrfToken("/Questions/Index");
-        var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new[] { question.Id }), System.Text.Encoding.UTF8, "application/json");
+        var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(new { questionIds = new[] { question.Id } }), System.Text.Encoding.UTF8, "application/json");
         _http.DefaultRequestHeaders.Remove("RequestVerificationToken");
         _http.DefaultRequestHeaders.Add("RequestVerificationToken", token);
         

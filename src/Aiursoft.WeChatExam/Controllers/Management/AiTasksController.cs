@@ -23,15 +23,15 @@ public class AiTasksController(
 {
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> GenerateExplanations([FromBody] Guid[] questionIds)
+    public async Task<IActionResult> GenerateExplanations([FromBody] AiTaskRequest request)
     {
-        if (!questionIds.Any())
+        if (request.QuestionIds.Length == 0)
         {
             return BadRequest("No questions selected.");
         }
 
         var questions = await dbContext.Questions
-            .Where(q => questionIds.Contains(q.Id))
+            .Where(q => request.QuestionIds.Contains(q.Id))
             .ToListAsync();
 
         var taskItems = questions.Select(q => new AiTaskItem
@@ -43,7 +43,7 @@ public class AiTasksController(
             Status = AiTaskStatus.Pending
         }).ToList();
 
-        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.GenerateExplanation);
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.GenerateExplanation, request.ReturnUrl);
 
         // Start background processing
         foreach (var item in aiTask.Items.Values)
@@ -160,16 +160,16 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AutoCategorize([FromBody] Guid[] questionIds)
+    public async Task<IActionResult> AutoCategorize([FromBody] AiTaskRequest request)
     {
-        if (!questionIds.Any())
+        if (request.QuestionIds.Length == 0)
         {
             return BadRequest("No questions selected.");
         }
 
         var questions = await dbContext.Questions
             .Include(q => q.Category)
-            .Where(q => questionIds.Contains(q.Id))
+            .Where(q => request.QuestionIds.Contains(q.Id))
             .ToListAsync();
             
         var taskItems = questions.Select(q => new AiTaskItem
@@ -181,7 +181,7 @@ public class AiTasksController(
             Status = AiTaskStatus.Pending
         }).ToList();
 
-        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoCategorize);
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoCategorize, request.ReturnUrl);
 
         // Start background processing
         foreach (var item in aiTask.Items.Values)
@@ -283,9 +283,9 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AutoTagging([FromBody] Guid[] questionIds)
+    public async Task<IActionResult> AutoTagging([FromBody] AiTaskRequest request)
     {
-        if (!questionIds.Any())
+        if (request.QuestionIds.Length == 0)
         {
             return BadRequest("No questions selected.");
         }
@@ -293,7 +293,7 @@ public class AiTasksController(
         var questions = await dbContext.Questions
             .Include(q => q.QuestionTags)
             .ThenInclude(qt => qt.Tag)
-            .Where(q => questionIds.Contains(q.Id))
+            .Where(q => request.QuestionIds.Contains(q.Id))
             .ToListAsync();
 
         var taskItems = questions.Select(q => new AiTaskItem
@@ -305,7 +305,7 @@ public class AiTasksController(
             Status = AiTaskStatus.Pending
         }).ToList();
 
-        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoTagging);
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.AutoTagging, request.ReturnUrl);
 
         var allTaxonomies = await dbContext.Taxonomies
             .Include(t => t.Tags.Take(50))
@@ -407,15 +407,15 @@ public class AiTasksController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> GenerateAnswers([FromBody] Guid[] questionIds)
+    public async Task<IActionResult> GenerateAnswers([FromBody] AiTaskRequest request)
     {
-        if (!questionIds.Any())
+        if (request.QuestionIds.Length == 0)
         {
             return BadRequest("No questions selected.");
         }
 
         var questions = await dbContext.Questions
-            .Where(q => questionIds.Contains(q.Id))
+            .Where(q => request.QuestionIds.Contains(q.Id))
             .ToListAsync();
 
         var taskItems = questions.Select(q => new AiTaskItem
@@ -427,7 +427,7 @@ public class AiTasksController(
             Status = AiTaskStatus.Pending
         }).ToList();
 
-        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.GenerateAnswer);
+        var aiTask = aiTaskService.CreateTask(taskItems, AiTaskType.GenerateAnswer, request.ReturnUrl);
 
         // Start background processing
         foreach (var item in aiTask.Items.Values)
