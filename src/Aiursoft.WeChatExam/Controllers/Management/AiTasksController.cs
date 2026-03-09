@@ -53,6 +53,13 @@ public class AiTasksController(
                 jobName: $"Generate Explanation for Question {item.QuestionId}",
                 job: async (serviceProvider) =>
                 {
+                    if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = "Task canceled or abandoned.";
+                        return;
+                    }
+
                     item.Status = AiTaskStatus.Processing;
                     try
                     {
@@ -184,6 +191,13 @@ public class AiTasksController(
                 jobName: $"Categorize Question {item.QuestionId}",
                 job: async (serviceProvider) =>
                 {
+                    if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = "Task canceled or abandoned.";
+                        return;
+                    }
+
                     item.Status = AiTaskStatus.Processing;
                     try
                     {
@@ -305,6 +319,13 @@ public class AiTasksController(
                 jobName: $"Tag Question {item.QuestionId}",
                 job: async (serviceProvider) =>
                 {
+                    if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = "Task canceled or abandoned.";
+                        return;
+                    }
+
                     item.Status = AiTaskStatus.Processing;
                     try
                     {
@@ -416,6 +437,13 @@ public class AiTasksController(
                 jobName: $"Generate Answer for Question {item.QuestionId}",
                 job: async (serviceProvider) =>
                 {
+                    if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
+                    {
+                        item.Status = AiTaskStatus.Failed;
+                        item.Error = "Task canceled or abandoned.";
+                        return;
+                    }
+
                     item.Status = AiTaskStatus.Processing;
                     try
                     {
@@ -685,5 +713,39 @@ public class AiTasksController(
 
         task.Items.TryRemove(questionId, out _);
         return Ok();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult KeepAlive(Guid taskId)
+    {
+        var task = aiTaskService.GetTask(taskId);
+        if (task != null)
+        {
+            task.LastAlive = DateTime.UtcNow;
+            return Ok();
+        }
+        return NotFound();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult CancelAll(Guid taskId)
+    {
+        var task = aiTaskService.GetTask(taskId);
+        if (task != null)
+        {
+            task.IsCanceled = true;
+            foreach (var item in task.Items.Values)
+            {
+                if (item.Status == AiTaskStatus.Pending)
+                {
+                    item.Status = AiTaskStatus.Failed;
+                    item.Error = "Task canceled by user.";
+                }
+            }
+            return Ok();
+        }
+        return NotFound();
     }
 }
