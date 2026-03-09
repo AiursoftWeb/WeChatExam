@@ -351,7 +351,7 @@
                         'Content-Type': 'application/json',
                         'RequestVerificationToken': token
                     },
-                    body: JSON.stringify(ids)
+                    body: JSON.stringify({ questionIds: ids, returnUrl: window.location.href })
                 });
 
                 if (response.ok) {
@@ -382,7 +382,7 @@
                         'Content-Type': 'application/json',
                         'RequestVerificationToken': token
                     },
-                    body: JSON.stringify(ids)
+                    body: JSON.stringify({ questionIds: ids, returnUrl: window.location.href })
                 });
 
                 if (response.ok) {
@@ -413,7 +413,7 @@
                         'Content-Type': 'application/json',
                         'RequestVerificationToken': token
                     },
-                    body: JSON.stringify(ids)
+                    body: JSON.stringify({ questionIds: ids, returnUrl: window.location.href })
                 });
 
                 if (response.ok) {
@@ -444,7 +444,7 @@
                         'Content-Type': 'application/json',
                         'RequestVerificationToken': token
                     },
-                    body: JSON.stringify(ids)
+                    body: JSON.stringify({ questionIds: ids, returnUrl: window.location.href })
                 });
 
                 if (response.ok) {
