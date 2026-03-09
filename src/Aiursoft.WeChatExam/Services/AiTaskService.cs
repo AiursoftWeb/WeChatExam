@@ -7,11 +7,12 @@ public class AiTaskService
 {
     private readonly ConcurrentDictionary<Guid, AiTask> _tasks = new();
 
-    public AiTask CreateTask(IEnumerable<AiTaskItem> items, AiTaskType type)
+    public AiTask CreateTask(IEnumerable<AiTaskItem> items, AiTaskType type, string? returnUrl = null)
     {
         var task = new AiTask
         {
-            Type = type
+            Type = type,
+            ReturnUrl = returnUrl
         };
         foreach (var item in items)
         {

@@ -10,24 +10,29 @@
 
 <div class="row mb-3">
     <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="h3 mb-0">@Localizer["AI Task Preview"] - 
-            @if (isCategorization)
-            {
-                @Localizer["Auto Categorize"]
-            }
-            else if (isTagging)
-            {
-                @Localizer["Auto Tagging"]
-            }
-            else if (isAnswerGeneration)
-            {
-                @Localizer["Generate Answer"]
-            }
-            else
-            {
-                @Localizer["Generate Explanation"]
-            }
-        </h1>
+        <div>
+            <a href="@(string.IsNullOrEmpty(Model.ReturnUrl) ? Url.Action("Index", "Questions") : Model.ReturnUrl)" class="btn btn-outline-secondary me-3">
+                <i class="align-middle" data-lucide="arrow-left"></i> @Localizer["Back"]
+            </a>
+            <h1 class="h3 d-inline-block mb-0">@Localizer["AI Task Preview"] - 
+                @if (isCategorization)
+                {
+                    @Localizer["Auto Categorize"]
+                }
+                else if (isTagging)
+                {
+                    @Localizer["Auto Tagging"]
+                }
+                else if (isAnswerGeneration)
+                {
+                    @Localizer["Generate Answer"]
+                }
+                else
+                {
+                    @Localizer["Generate Explanation"]
+                }
+            </h1>
+        </div>
         <div id="taskStatus" class="badge bg-primary">@Localizer["Processing..."]</div>
     </div>
 </div>
@@ -293,7 +298,7 @@
 
         function checkAllDismissed() {
             if (questionsContainer.children.length === 0) {
-                window.location.href = '@Url.Action("Index", "Questions")';
+                window.location.href = '@Html.Raw(string.IsNullOrEmpty(Model.ReturnUrl) ? Url.Action("Index", "Questions") : Model.ReturnUrl)';
             }
         }
 
