@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Yapay Zeka Görev Önizleme</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Bekleyen tüm görevleri iptal etmek istediğinizden emin misiniz?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Otomatik Kategorilendirme</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Otomatik Etiketleme</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Tümünü İptal Et</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Tamamlandı</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>AI Önerisini Düzenle</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hata</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Cevap Oluştur</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Önerilen Etiketler</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Çok fazla istek, 30 saniye bekleniyor...</value>
   </data>
 
 </root>

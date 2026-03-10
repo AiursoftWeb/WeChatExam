@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Previzualizare sarcină AI</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Sigur doriți să anulați toate sarcinile în așteptare?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Categorizare automată</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Etichetare automată</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Înapoi</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anulează</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Anulează toate</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Finalizat</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Editare sugestie AI</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Eroare</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Generează Răspuns</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Etichete sugerate</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Prea multe cereri, așteptare 30s...</value>
   </data>
 
 </root>

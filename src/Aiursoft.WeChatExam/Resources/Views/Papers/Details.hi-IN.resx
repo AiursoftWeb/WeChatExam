@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>वापस</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>श्रेणी</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>बनाया गया</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>जमे हुए</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>कोई श्रेणी नहीं</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>अभी तक कोई स्नैपशॉट नहीं</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>कोई टैग नहीं</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>पेपर विवरण</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>प्रश्न</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>वास्तविक परीक्षा</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>अंक</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>टैग्स</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>समय सीमा</value>

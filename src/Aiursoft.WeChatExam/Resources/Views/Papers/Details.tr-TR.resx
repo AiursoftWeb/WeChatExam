@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>Geri</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Oluşturuldu</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>Donmuş</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>Kategori Yok</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>Henüz anlık görüntü yok</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>Etiket Yok</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Kağıt Detayları</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Gerçek Sınav</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Puan</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiketler</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Zaman Sınırı</value>

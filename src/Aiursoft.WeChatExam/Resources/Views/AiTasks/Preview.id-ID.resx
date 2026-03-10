@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Pratinjau Tugas AI</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Apakah Anda yakin ingin membatalkan semua tugas yang tertunda?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Kategorisasi Otomatis</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Pengelompokan Otomatis</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Kembali</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Batal</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Batalkan Semua</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Selesai</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Edit Saran AI</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Kesalahan</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Hasilkan Jawaban</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Tag yang Disarankan</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Terlalu banyak permintaan, menunggu 30s...</value>
   </data>
 
 </root>

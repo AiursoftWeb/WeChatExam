@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Are you sure?" xml:space="preserve">
+    <value>Ви впевнені?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Зміст</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Створено</value>
+  </data>
+  <data name="Delete Feedback" xml:space="preserve">
+    <value>Видалити відгук</value>
+  </data>
+  <data name="This action is irreversible. You are about to permanently delete the following feedback:" xml:space="preserve">
+    <value>Ця дія незворотна. Ви збираєтесь остаточно видалити наступний відгук:</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Користувач</value>
+  </data>
+  <data name="Yes, delete this feedback" xml:space="preserve">
+    <value>Так, видалити цей відгук</value>
+  </data>
+
+</root>

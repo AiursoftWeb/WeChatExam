@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>العودة</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>الفئة</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>تم الإنشاء</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>مجمد</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>لا توجد فئة</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>لا يوجد لقطات بعد</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>لا توجد وسوم</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>تفاصيل الورقة</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>الأسئلة</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>امتحان حقيقي</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>الدرجة</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>الوسوم</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>حد الزمن</value>

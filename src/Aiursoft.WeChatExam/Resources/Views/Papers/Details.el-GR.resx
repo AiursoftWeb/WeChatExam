@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>Πίσω</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Κατηγορία</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Δημιουργήθηκε</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>Frozen</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>Καμία Κατηγορία</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>Κανένας αντίγραφος ακόμα</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>Καμία ετικέτα</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Λεπτομέρειες Εγγράφου</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Ερωτήσεις</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Πραγματική Εξέταση</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Βαθμός</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Κατάσταση</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Ετικέτες</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Χρονικό όριο</value>

@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>Indietro</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Creato</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>Congelato</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>Nessuna categoria</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>Nessun salvataggio disponibile ancora</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>Nessun tag</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Dettagli del foglio</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Domande</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Esame Reale</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Punteggio</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Stato</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tag</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Limite di tempo</value>

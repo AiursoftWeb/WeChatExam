@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Anulează</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Nu se poate șterge categoria cu întrebări asociate. Vă rugăm să eliminați sau să reatribuiți aceste întrebări înainte.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Nu puteți șterge o categorie care are subcategorii. Vă rugăm să ștergeți mai întâi subcategoriile.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Această acțiune este ireversibilă. Sunteți pe cale să ștergeți definitiv următoarea categorie:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Vezi întrebările conexe</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Da, șterge această categorie</value>

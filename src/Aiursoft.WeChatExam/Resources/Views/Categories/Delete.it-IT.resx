@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Annulla</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Impossibile eliminare la categoria con domande associate. Rimuovi o riassegna prima queste domande.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Impossibile eliminare una categoria con elementi figli. Eliminare prima gli elementi figli.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Questa azione è irreversibile. Stai per eliminare definitivamente la seguente categoria:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Visualizza le domande correlate</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Sì, elimina questa categoria</value>

@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Δεν είναι δυνατή η διαγραφή κατηγορίας με συνδεδεμένες ερωτήσεις. Παρακαλώ αφαιρέστε ή αναθέστε ξανά αυτές τις ερωτήσεις πρώτα.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Δεν είναι δυνατή η διαγραφή κατηγορίας με υποκατηγορίες. Παρακαλώ διαγράψτε πρώτα τις υποκατηγορίες.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Αυτή η ενέργεια είναι μη αναστρέψιμη. Πρόκειται να διαγράψετε οριστικά την ακόλουθη κατηγορία:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Προβολή σχετικών ερωτήσεων</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Ναι, διαγραφή αυτής της κατηγορίας</value>
