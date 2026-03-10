@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 任務預覽</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>您確定要取消所有待處理的任務嗎？</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>自動分類</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>自動標籤</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>全部取消</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>完成</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>編輯 AI 建議</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>錯誤</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>產生答案</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>建議標籤</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>請求過頻，請等待 30 秒...</value>
   </data>
 
 </root>

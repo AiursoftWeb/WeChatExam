@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>ย้อนกลับ</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>หมวดหมู่</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>สร้าง</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>ถูกล็อก</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>ไม่มีหมวดหมู่</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>ยังไม่มีภาพถ่ายสำเนา</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>ไม่มีแท็ก</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>รายละเอียดแบบทดสอบ</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>คำถาม</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>ข้อสอบจริง</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>คะแนน</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>แท็ก</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>เวลาที่กำหนด</value>

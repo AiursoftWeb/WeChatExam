@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Позволяет удалять теги из системы. Примечание: удаление тега не приведет к удалению связанных вопросов.</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>Разрешает удаление отзывов пользователей.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Разрешает удаление любой категории, независимо от владельца.</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Позволяет запускать фоновые задачи для оптимизации ответов на вопросы и объяснений с использованием ИИ.</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>Позволяет обновлять статус отзывов пользователей.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Позволяет просматривать и управлять очередями фоновых задач и их статусом выполнения.</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Позволяет просматривать список ролей и назначенные им разрешения.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>Позволяет просматривать список отзывов пользователей.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Назначение ролей пользователям</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Удалить экзамены</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>Удалить отзывы</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Удалить документы</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Редактировать экзамены</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>Редактировать отзывы</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Редактировать документы</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Читать экзамены</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>Чтение отзывов</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Читать вопросы</value>

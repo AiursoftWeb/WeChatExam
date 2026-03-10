@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>関連する質問が含まれているカテゴリは削除できません。まず、これらの質問を削除または再割り当てしてください。</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>子カテゴリを含むカテゴリは削除できません。先に子カテゴリを削除してください。</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>この操作は取り消せません。以下のカテゴリを完全に削除しようとしています：</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>関連する質問を表示</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>はい、このカテゴリを削除します</value>

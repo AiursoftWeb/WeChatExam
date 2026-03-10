@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Permite ștergerea etichetelor din sistem. Observați că ștergerea unei etichete nu va șterge întrebările asociate.</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>Permite ștergerea feedback-urilor utilizatorilor.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Permite ștergerea oricărei categorii, indiferent de proprietate.</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Permite declanșarea joburilor în fundal pentru optimizarea răspunsurilor și explicațiilor la întrebări utilizând IA.</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>Permite actualizarea statusului feedback-urilor utilizatorilor.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Permite vizualizarea și gestionarea cozilor de sarcini în fundal și a stării de execuție a acestora.</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Permite vizualizarea listei de roluri și a permisiunilor atribuite acestora.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>Permite vizualizarea listei de feedback-uri de la utilizatori.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Atribuie Roluri Utilizatorilor</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Șterge Examenelor</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>Ștergeți feedback-urile</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Șterge Lucrările</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Editare Examen</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>Editează Feedback-urile</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Editare lucrări</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Citire Exame</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>Citește Feedback-urile</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Citire întrebări</value>

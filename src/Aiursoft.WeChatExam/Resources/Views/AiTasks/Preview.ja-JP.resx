@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AIタスクプレビュー</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>保留中のタスクをすべてキャンセルしてもよろしいですか？</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>自動カテゴリ分け</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>自動タグ付け</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>すべてキャンセル</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>完了</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>AIの提案を編集</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>エラー</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>回答を生成する</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>推奨タグ</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>リクエストが多すぎます。30秒待機中...</value>
   </data>
 
 </root>

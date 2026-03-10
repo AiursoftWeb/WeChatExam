@@ -24,11 +24,17 @@
   <data name="Is Free" xml:space="preserve">
     <value>是否免费</value>
   </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>是否为真实考试</value>
+  </data>
   <data name="Paper ID" xml:space="preserve">
     <value>试卷编号</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
   </data>
   <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
     <value>{0} 不能超过 {1} 个字符。</value>

@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>뒤로</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>카테고리</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>작성됨</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>동결됨</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>카테고리 없음</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>스냅샷이 아직 없습니다</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>태그 없음</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>시험지 세부 정보</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>질문</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>실제 시험</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>점수</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>상태</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>태그</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>시간 제한</value>

@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Impossible de supprimer la catégorie contenant des questions associées. Veuillez d&apos;abord supprimer ou réaffecter ces questions.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Impossible de supprimer une catégorie qui contient des sous-catégories. Veuillez d&apos;abord supprimer les sous-catégories.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Cette action est irréversible. Vous êtes sur le point de supprimer définitivement la catégorie suivante :</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Voir les questions associées</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Oui, supprimer cette catégorie</value>

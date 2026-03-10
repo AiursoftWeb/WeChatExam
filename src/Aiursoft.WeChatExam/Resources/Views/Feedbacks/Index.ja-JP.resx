@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="All Status" xml:space="preserve">
+    <value>すべてのステータス</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>連絡先</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>フィルター</value>
+  </data>
+  <data name="Mark as Processed" xml:space="preserve">
+    <value>処理済みとしてマーク</value>
+  </data>
+  <data name="No feedbacks found." xml:space="preserve">
+    <value>フィードバックが見つかりません。</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>保留中</value>
+  </data>
+  <data name="Processed" xml:space="preserve">
+    <value>処理済み</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="Unknown User" xml:space="preserve">
+    <value>不明なユーザー</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="User Feedbacks" xml:space="preserve">
+    <value>ユーザーフィードバック</value>
+  </data>
+
+</root>

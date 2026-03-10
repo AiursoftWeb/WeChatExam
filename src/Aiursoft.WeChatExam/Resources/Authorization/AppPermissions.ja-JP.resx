@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>システムからのタグの削除を許可します。タグを削除しても関連する質問は削除されないことに注意してください。</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>ユーザーのフィードバックを削除できます。</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>所有権に関係なく、任意のカテゴリを削除できます。</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>AIを活用して、質問の回答および解説を最適化するバックグラウンドジョブを開始できる。</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>ユーザーフィードバックのステータス更新を許可します。</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>バックグラウンドジョブキューの表示および管理、および実行状態の確認を許可します。</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>ロールの一覧とそれに割り当てられた権限を表示できます。</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>ユーザーフィードバックの一覧を表示できます。</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>ユーザーへのロール割り当て</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>試験の削除</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>フィードバックを削除する</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>論文を削除する</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>試験の編集</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>フィードバックの編集</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>論文を編集する</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>試験を読む</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>フィードバックの閲覧</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>質問を読む</value>

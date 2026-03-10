@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Staats het verwijderen van tags uit het systeem toe. Let op: het verwijderen van een tag verwijdert geen gerelateerde vragen.</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>Staat het verwijderen van gebruikersfeedback toe.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Staat het verwijderen van elke categorie toe, ongeacht eigendom.</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Staat het uitvoeren van achtergrondtaken toe om antwoorden en uitleg van vragen te optimaliseren met behulp van AI.</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>Staat het bijwerken van de status van gebruikersfeedback toe.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Staat het bekijken en beheren van achtergrondtaakwachtrijen en hun uitvoeringsstatus toe.</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Maakt het mogelijk de lijst met rollen en hun toegewezen machtigingen te bekijken.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>Staat het weergeven van de lijst met gebruikersfeedback toe.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Rollen toewijzen aan gebruikers</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Exams verwijderen</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>Feedback verwijderen</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Papieren verwijderen</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Bewerk Examen</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>Feedback bewerken</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Papieren bewerken</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Examen lezen</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>Feedback lezen</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Vragen lezen</value>

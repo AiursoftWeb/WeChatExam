@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Посилання на домашню сторінку бренду.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>Завдання для ШІ: Автоматична категоризація</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>Промпт ШІ: Автоматичне маркування</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>Промпт ШІ: Базове пояснення</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>Промпт ШІ: Глибоке пояснення</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>Завдання ШІ: Витягування за замовчуванням</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>Запит ШІ: Загальне оцінювання</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>Промпт ШІ: Згенерувати відповідь (заповнення пропусків)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>Промпт ШІ: Генерація відповіді (Булеве)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>Промпт ШІ: Генерувати відповідь (Вибір)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>Завдання ШІ: Генерувати відповідь (суб&apos;єктивна)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Дозволити користувачеві змінювати прізвисько</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Назва проекту</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>Промпт ШІ для автоматичної категоризації запитань. Використовуйте {0} для вмісту, {1} для метаданих, {2} для відповіді, {3} для тегів, {4} для пояснення та {5} для списку категорій.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>Промпт ШІ для автоматичного тегування запитань. Використовуйте {0} для типу, {1} для категорії, {2} для змісту, {3} для відповіді, {4} для пояснення, {5} для наявних тегів та {6} для інструкцій з таксономії.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>Промпт ШІ для генерації відповідей на запитання з пропущеними словами.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>Запит до ШІ для генерації відповідей на тестові запитання з варіантами відповідей.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>Промпт ШІ для генерації відповідей на суб&apos;єктивні запитання (коротка відповідь, есе, пояснення термінів).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>Промпт ШІ для генерації відповідей на запитання типу «правда/хиба».</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>Промпт ШІ для генерації базових пояснень.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>Промпт для ШІ для генерації глибоких пояснень.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>Промпт ШІ для оцінювання запитань. Використовуйте {0} для змісту, {1} для еталонної відповіді, {2} для пояснення, {3} для відповіді учня та {4} для максимальної кількості балів.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Назва бренду, яка відображається в підвалі.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Системний промпт за замовчуванням для витягування знань з матеріалу.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Номер ліцензії ICP для користувачів Китаю (материкова частина). Залиште порожнім, щоб приховати.</value>

@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Ο σύνδεσμος προς την αρχική σελίδα της εταιρείας.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>Εντολή Τεχνητής Νοημοσύνης: Αυτόματη Κατηγοριοποίηση</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>Προτροπή Τεχνητής Νοημοσύνης: Αυτόματη Σήμανση</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>Εντολή Τεχνητής Νοημοσύνης: Βασική Επεξήγηση</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI Prompt: Βαθιά Επεξήγηση</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>Προτροπή AI: Προεπιλεγμένη Εξαγωγή</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>Εντολή Τεχνητής Νοημοσύνης: Προεπιλεγμένη Βαθμολόγηση</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>Εντολή Τεχνητής Νοημοσύνης: Δημιουργία Απάντησης (Κενό)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI Prompt: Δημιουργία Απάντησης (Bool)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>Εντολή Τεχνητής Νοημοσύνης: Δημιουργία Απάντησης (Επιλογή)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>Εντολή Τεχνητής Νοημοσύνης: Δημιουργία Απάντησης (Ευρηματική)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Επιτρέψτε στον Χρήστη Να Τροποποιήσει το Όνομα Χρήστη</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Όνομα Έργου</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>Η εντολή AI για την αυτόματη ταξινόμηση ερωτήσεων. Χρησιμοποιήστε το {0} για το περιεχόμενο, το {1} για τα μεταδεδομένα, το {2} για την απάντηση, το {3} για τις ετικέτες, το {4} για την εξήγηση και το {5} για τη λίστα κατηγοριών.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>Η εντολή AI για αυτόματη ετικέτα ερωτήσεων. Χρησιμοποιήστε το {0} για τον τύπο, το {1} για την κατηγορία, το {2} για το περιεχόμενο, το {3} για την απάντηση, το {4} για την εξήγηση, το {5} για τις υπάρχουσες ετικέτες και το {6} για τις οδηγίες ταξινομίας.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>Η εντολή AI για τη δημιουργία απαντήσεων σε ερωτήσεις συμπλήρωσης κενών.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>Η εντολή AI για τη δημιουργία απαντήσεων σε ερωτήσεις πολλαπλής επιλογής.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>Η εντολή AI για τη δημιουργία απαντήσεων σε υποκειμενικά ερωτήματα (Σύντομη Απάντηση, Διέγερση, Εξήγηση Ουσιαστικού).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>Η εντολή AI για τη δημιουργία απαντήσεων σε ερωτήσεις σωστό/λάθος.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>Η εντολή (prompt) AI για τη δημιουργία βασικών εξηγήσεων.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>Η εντολή AI για τη δημιουργία σε βάθος εξηγήσεων.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>Η εντολή AI για βαθμολόγηση ερωτήσεων. Χρησιμοποιήστε το {0} για το περιεχόμενο, το {1} για τη σωστή απάντηση, το {2} για την εξήγηση, το {3} για την απάντηση του μαθητή και το {4} για τη μέγιστη βαθμολογία.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Το όνομα της εταιρείας που εμφανίζεται στον ποδόσκαλο.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Η προεπιλεγμένη εντολή συστήματος για την εξαγωγή γνώσης από το υλικό.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Ο αριθμός άδειας ICP για χρήστες της Κίνας. Αφήστε κενό για να κρυφτεί.</value>

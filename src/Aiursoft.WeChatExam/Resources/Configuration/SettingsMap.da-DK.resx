@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Link til mærkens hjemmeside.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI-prompt: Automatisk kategorisering</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI Prompt: Automatisk Tagning</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI-prompt: Grundlæggende forklaring</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI Prompt: Dyb forklaring</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI Prompt: Standardudtrækning</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI Prompt: Standardvurdering</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI-prompt: Generér svar (tomt felt)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI Prompt: Generer svar (Bool)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI Prompt: Generer Svar (Valg)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI-prompt: Generer svar (subjektivt)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Tillad bruger at justere apel</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Projektnavn</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>AI-prompten til automatisk kategorisering af spørgsmål. Brug {0} til indhold, {1} til metadata, {2} til svar, {3} til tags, {4} til forklaring og {5} til kategoriliste.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>AI-prompten til automatisk tagging af spørgsmål. Brug {0} for type, {1} for kategori, {2} for indhold, {3} for svar, {4} for forklaring, {5} for eksisterende tags og {6} for taksonomiske instruktioner.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>AI-prompten til at generere svar til udfyldningsopgaver.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>AI-prompten til at generere svar til flervalgsspørgsmål.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>AI-prompten til at generere svar på subjektive spørgsmål (Kort svar, Essay, Forklaring af begreber).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>AI-prompten til at generere svar til sand/falsk-spørgsmål.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>AI-prompten til generering af grundlæggende forklaringer.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>AI-prompten til generering af dybe forklaringer.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>AI-prompten til bedømmelse af spørgsmål. Brug {0} til indhold, {1} til standard svar, {2} til forklaring, {3} til elevens svar og {4} til maksimal score.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Det brandnavn, der vises i foden.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Standard systemprompt til udtrækning af viden fra materiale.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>ICP-licensenr. for brugere i Kina (fastland). Lad stå tomt for at skjule.</value>
