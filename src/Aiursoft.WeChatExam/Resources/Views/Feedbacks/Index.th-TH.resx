@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>การดำเนินการ</value>
+  </data>
+  <data name="All Status" xml:space="preserve">
+    <value>สถานะทั้งหมด</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>การติดต่อ</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>เนื้อหา</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>สร้างเมื่อ</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>กรอง</value>
+  </data>
+  <data name="Mark as Processed" xml:space="preserve">
+    <value>ทำเครื่องหมายว่าประมวลผลแล้ว</value>
+  </data>
+  <data name="No feedbacks found." xml:space="preserve">
+    <value>ไม่พบความคิดเห็นใดๆ</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>รอการดำเนินการ</value>
+  </data>
+  <data name="Processed" xml:space="preserve">
+    <value>ดำเนินการแล้ว</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>รีเซ็ต</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
+  <data name="Unknown User" xml:space="preserve">
+    <value>ผู้ใช้ที่ไม่รู้จัก</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>ผู้ใช้</value>
+  </data>
+  <data name="User Feedbacks" xml:space="preserve">
+    <value>คำติชมของผู้ใช้</value>
+  </data>
+
+</root>

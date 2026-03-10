@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>Retour</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Créé</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>Congelé</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>Aucune catégorie</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>Aucune capture pour l&apos;instant</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>Aucune balise</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Détails du questionnaire</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Questions</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Examen réel</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Statut</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Mots-clés</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Limite de temps</value>

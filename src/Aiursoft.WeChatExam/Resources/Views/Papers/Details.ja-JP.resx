@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>戻る</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>作成日</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>凍結中</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>カテゴリなし</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>スナップショットはまだありません</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>タグなし</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>試験の詳細</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>質問</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>実試験</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>点数</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>状態</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>タグ</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>制限時間</value>

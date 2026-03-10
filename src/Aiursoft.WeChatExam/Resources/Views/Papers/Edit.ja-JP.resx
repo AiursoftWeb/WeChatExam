@@ -75,6 +75,9 @@
   <data name="Paper Info" xml:space="preserve">
     <value>用紙情報</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>Enter キーを押してタグを追加するか、提案から選択してください。X をクリックして削除します。</value>
+  </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>スナップショットを公開</value>
   </data>
@@ -86,6 +89,9 @@
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>用紙内の質問</value>
+  </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>本試験</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>下書きに戻す</value>
@@ -117,6 +123,9 @@
   <data name="Status Actions" xml:space="preserve">
     <value>ステータス操作</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>タグ</value>
+  </data>
   <data name="Time Limit (minutes)" xml:space="preserve">
     <value>制限時間（分）</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>タイプ</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>検索またはタグを追加するには入力してください...</value>
   </data>
 
 </root>

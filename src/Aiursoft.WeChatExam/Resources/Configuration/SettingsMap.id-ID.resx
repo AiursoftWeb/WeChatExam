@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>Tautan ke halaman utama merek.</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>Perintah AI: Kategorisasi Otomatis</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>Prompt AI: Penandaan Otomatis</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>Prompt AI: Penjelasan Dasar</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI Prompt: Penjelasan Mendalam</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI Prompt: Ekstraksi Default</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI Prompt: Penilaian Default</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>Prompt AI: Buat Jawaban (Isian Kosong)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI Prompt: Generate Answer (Bool)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>Prompt AI: Buat Jawaban (Pilihan)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI Prompt: Buat Jawaban (Subjektif)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>Izinkan Pengguna Mengubah Nickname</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>Nama Proyek</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>Perintah AI untuk pengkategorian otomatis pertanyaan. Gunakan {0} untuk konten, {1} untuk metadata, {2} untuk jawaban, {3} untuk tag, {4} untuk penjelasan, dan {5} untuk daftar kategori.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>Perintah AI untuk penandaan otomatis pertanyaan. Gunakan {0} untuk tipe, {1} untuk kategori, {2} untuk konten, {3} untuk jawaban, {4} untuk penjelasan, {5} untuk tag yang ada, dan {6} untuk instruksi taksonomi.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>Prompt AI untuk menghasilkan jawaban untuk pertanyaan isian kosong.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>Prompt AI untuk menghasilkan jawaban untuk soal pilihan ganda.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>Prompt AI untuk menghasilkan jawaban untuk pertanyaan subjektif (Jawaban Singkat, Esai, Penjelasan Istilah).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>Prompt AI untuk menghasilkan jawaban untuk pertanyaan benar/salah.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>Prompt AI untuk menghasilkan penjelasan dasar.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>Prompt AI untuk menghasilkan penjelasan mendalam.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>Prompt AI untuk menilai soal. Gunakan {0} untuk konten, {1} untuk jawaban standar, {2} untuk penjelasan, {3} untuk jawaban siswa, dan {4} untuk nilai maksimal.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Nama merek yang ditampilkan di bagian footer.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Prompt sistem default untuk mengekstrak pengetahuan dari materi.</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Nomor lisensi ICP untuk pengguna daratan Tiongkok. Biarkan kosong untuk menyembunyikan.</value>

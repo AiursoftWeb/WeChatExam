@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>允许从系统中删除标签。注意，删除标签不会删除相关的问题。</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>允许删除用户反馈。</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>允许删除任何类别，无论其所有权归属。</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>允许触发后台任务，使用人工智能优化问题答案和解释。</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>允许更新用户反馈的状态。</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>允许查看和管理后台任务队列及其执行状态。</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>允许查看角色列表及其分配的权限。</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>允许查看用户反馈列表。</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>为用户分配角色</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>删除考试</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>删除反馈</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>删除论文</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>编辑考试</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>编辑反馈</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>编辑试卷</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>查看考试</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>查看反馈</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>查看题目</value>

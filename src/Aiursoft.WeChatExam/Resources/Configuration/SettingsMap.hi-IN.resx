@@ -21,6 +21,36 @@
       <data name=" The link to the brand&apos;s home page." xml:space="preserve">
     <value>ब्रांड के होम पेज का लिंक</value>
   </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: स्वचालित वर्गीकरण</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: स्वचालित टैगिंग</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: मूल व्याख्या</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: गहन व्याख्या</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>एआई प्रॉम्प्ट: डिफ़ॉल्ट निष्कर्षण</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: डिफ़ॉल्ट ग्रेडिंग</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: उत्तर उत्पन्न करें (खाली)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: उत्तर उत्पन्न करें (Bool)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: उत्तर उत्पन्न करें (विकल्प)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI प्रॉम्प्ट: उत्तर उत्पन्न करें (वैयक्तिक)</value>
+  </data>
   <data name="Allow User Adjust Nickname" xml:space="preserve">
     <value>उपयोगकर्ता नाम एडजस्ट करने की अनुमति दें</value>
   </data>
@@ -42,8 +72,38 @@
   <data name="Project Name" xml:space="preserve">
     <value>प्रोजेक्ट नाम</value>
   </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>प्रश्नों को स्वचालित रूप से वर्गीकृत करने के लिए AI प्रॉम्प्ट। सामग्री के लिए {0}, मेटाडेटा के लिए {1}, उत्तर के लिए {2}, टैग के लिए {3}, व्याख्या के लिए {4}, और श्रेणियों की सूची के लिए {5} का उपयोग करें।</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>प्रश्नों के लिए स्वचालित टैगिंग के लिए एआई प्रॉम्प्ट। प्रकार के लिए {0}, श्रेणी के लिए {1}, सामग्री के लिए {2}, उत्तर के लिए {3}, व्याख्या के लिए {4}, मौजूदा टैग के लिए {5}, और वर्गीकरण निर्देशों के लिए {6} का उपयोग करें।</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>खाली स्थान भरने वाले प्रश्नों के उत्तर उत्पन्न करने के लिए एआई प्रॉम्प्ट।</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>विकल्प प्रश्नों के लिए उत्तर उत्पन्न करने के लिए एआई प्रॉम्प्ट।</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>विषयक प्रश्नों (संक्षिप्त उत्तर, निबंध, संज्ञा व्याख्या) के उत्तर उत्पन्न करने के लिए एआई प्रॉम्प्ट।</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>सत्य/असत्य प्रश्नों के उत्तर उत्पन्न करने के लिए एआई प्रॉम्प्ट।</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>मूल व्याख्याओं को जनरेट करने के लिए एआई प्रॉम्प्ट।</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>गहन व्याख्याओं को जनरेट करने के लिए एआई प्रॉम्प्ट।</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>प्रश्नों को अंक देने के लिए एआई प्रॉम्प्ट। सामग्री के लिए {0} का उपयोग करें, मानक उत्तर के लिए {1}, व्याख्या के लिए {2}, छात्र के उत्तर के लिए {3}, और अधिकतम अंक के लिए {4}।</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>फुटर में प्रदर्शित ब्रांड का नाम</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>सामग्री से ज्ञान निकालने के लिए डिफ़ॉल्ट सिस्टम प्रॉम्प्ट।</value>
   </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>चीन मुख्यभूमि के उपयोगकर्ताओं के लिए ICP लाइसेंस संख्या। छिपाने के लिए खाली छोड़ें।</value>

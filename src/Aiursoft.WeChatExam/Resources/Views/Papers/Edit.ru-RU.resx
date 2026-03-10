@@ -75,6 +75,9 @@
   <data name="Paper Info" xml:space="preserve">
     <value>Сведения о тесте</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>Нажмите Enter, чтобы добавить тег, или выберите из предложений. Нажмите X, чтобы удалить.</value>
+  </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Опубликовать снимок</value>
   </data>
@@ -86,6 +89,9 @@
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>Вопросы в тесте</value>
+  </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Реальный экзамен</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Отменить публикацию и вернуть в черновик</value>
@@ -117,6 +123,9 @@
   <data name="Status Actions" xml:space="preserve">
     <value>Действия по статусу</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
   <data name="Time Limit (minutes)" xml:space="preserve">
     <value>Ограничение по времени (минуты)</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Тип</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Введите для поиска или добавления тегов...</value>
   </data>
 
 </root>

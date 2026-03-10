@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Không thể xóa danh mục có câu hỏi liên quan. Vui lòng xóa hoặc gán lại các câu hỏi này trước.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Không thể xóa danh mục có danh mục con. Vui lòng xóa các danh mục con trước.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Hành động này không thể hoàn tác. Bạn sắp xóa vĩnh viễn danh mục sau:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Xem các câu hỏi liên quan</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Có, xóa danh mục này</value>

@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Permite a exclusão de tags do sistema. Observe que excluir uma tag não excluirá as perguntas associadas.</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>Permite excluir os feedbacks dos usuários.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Permite a exclusão de qualquer categoria, independentemente da propriedade.</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Permite disparar trabalhos em segundo plano para otimizar respostas e explicações de perguntas usando IA.</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>Permite atualizar o status dos feedbacks dos usuários.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Permite visualizar e gerenciar filas de tarefas em segundo plano e seu status de execução.</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Permite visualizar a lista de funções e suas permissões atribuídas.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>Permite visualizar a lista de feedbacks dos usuários.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Atribuir Funções a Usuários</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Excluir Provas</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>Excluir Feedbacks</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Excluir Documentos</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Editar Provas</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>Editar Feedbacks</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Editar Provas</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Ler Provas</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>Ler Feedbacks</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Ler Perguntas</value>

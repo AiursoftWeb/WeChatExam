@@ -24,11 +24,17 @@
   <data name="Is Free" xml:space="preserve">
     <value>مجانًا</value>
   </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>اختبار حقيقي</value>
+  </data>
   <data name="Paper ID" xml:space="preserve">
     <value>معرّف الورقة</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>الوسوم</value>
   </data>
   <data name="The {0} cannot exceed {1} characters." xml:space="preserve">
     <value>لا يمكن أن يتجاوز {0} عدد {1} حرفًا.</value>

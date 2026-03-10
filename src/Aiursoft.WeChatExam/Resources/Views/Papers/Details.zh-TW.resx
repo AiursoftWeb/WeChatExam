@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>返回</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>類別</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>建立</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>凍結</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>無分類</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>尚無快照</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>無標籤</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>試卷詳情</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>題目</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>真實試題</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>分數</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>狀態</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>標籤</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>時限</value>

@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Erlaubt das Löschen von Tags aus dem System. Beachten Sie, dass das Löschen eines Tags die zugehörigen Fragen nicht löscht.</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>Ermöglicht das Löschen von Benutzerfeedbacks.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>Ermöglicht das Löschen beliebiger Kategorien, unabhängig vom Eigentümer.</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Erlaubt das Auslösen von Hintergrundaufgaben zur Optimierung von Fragenantworten und Erklärungen mithilfe von KI.</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>Ermöglicht die Aktualisierung des Status von Benutzerfeedbacks.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Erlaubt das Anzeigen und Verwalten von Hintergrundauftrags-Queues und deren Ausführungsstatus.</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>Ermöglicht das Anzeigen der Liste der Rollen und ihrer zugewiesenen Berechtigungen.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>Ermöglicht die Anzeige der Liste der Benutzerfeedbacks.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Rollen Benutzern zuweisen</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>Prüfungen löschen</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>Feedbacks löschen</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>Papiere löschen</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>Prüfungen bearbeiten</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>Feedbacks bearbeiten</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>Papiere bearbeiten</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>Prüfungen Lesen</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>Feedbacks lesen</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Fragen lesen</value>

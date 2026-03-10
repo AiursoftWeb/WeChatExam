@@ -75,6 +75,9 @@
   <data name="Paper Info" xml:space="preserve">
     <value>시험 정보</value>
   </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>엔터를 눌러 태그를 추가하거나 제안 목록에서 선택하세요. X 를 클릭하여 제거합니다.</value>
+  </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>스냅샷 게시</value>
   </data>
@@ -86,6 +89,9 @@
   </data>
   <data name="Questions in Paper" xml:space="preserve">
     <value>문제 목록</value>
+  </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>실제 시험</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>초기화 상태로 되돌리기</value>
@@ -117,6 +123,9 @@
   <data name="Status Actions" xml:space="preserve">
     <value>상태 작업</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>태그</value>
+  </data>
   <data name="Time Limit (minutes)" xml:space="preserve">
     <value>제한 시간 (분)</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>유형</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>검색하거나 태그를 입력하세요...</value>
   </data>
 
 </root>

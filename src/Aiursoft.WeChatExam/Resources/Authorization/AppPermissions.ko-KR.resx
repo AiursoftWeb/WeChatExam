@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>시스템에서 태그를 삭제할 수 있도록 허용합니다. 단, 태그를 삭제해도 관련된 질문은 삭제되지 않습니다.</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>사용자 피드백 삭제 권한을 부여합니다.</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>소유권과 관계없이 모든 카테고리를 삭제할 수 있습니다.</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>AI를 사용하여 질문 답변 및 설명을 최적화하는 백그라운드 작업을 트리거할 수 있도록 허용합니다.</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>사용자 피드백의 상태를 업데이트할 수 있습니다.</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>백그라운드 작업 큐 및 그 실행 상태를 확인하고 관리할 수 있습니다.</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>역할 목록과 할당된 권한을 볼 수 있습니다.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>사용자 피드백 목록을 볼 수 있습니다.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>사용자에게 역할 할당</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>시험 삭제</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>피드백 삭제</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>논문 삭제</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>시험 편집</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>피드백 수정</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>논문 편집</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>시험 읽기</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>피드백 읽기</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>질문 보기</value>

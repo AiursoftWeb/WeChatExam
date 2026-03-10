@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>无法删除包含关联问题的分类。请先移除或重新分配这些问题。</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>无法删除包含子类别的分类。请先删除子类别。</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>此操作不可逆。您即将永久删除以下类别：</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>查看相关问题</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>是的，删除此分类</value>

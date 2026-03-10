@@ -63,6 +63,9 @@
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>อนุญาตให้ลบแท็กออกจากระบบ หมายเหตุว่า การลบแท็กจะไม่ลบคำถามที่เกี่ยวข้อง</value>
   </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>อนุญาตให้ลบข้อเสนอแนะของผู้ใช้</value>
+  </data>
   <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้ลบหมวดหมู่ใด ๆ ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>อนุญาตให้เริ่มงานเบื้องหลังเพื่อปรับปรุงคำตอบและคำอธิบายของคำถามโดยใช้ AI</value>
   </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>อนุญาตให้ปรับปรุงสถานะของคำติชมจากผู้ใช้ได้</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>อนุญาตให้ดูและจัดการคิวงานหลังบ้านและสถานะการดำเนินการของงาน</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
     <value>อนุญาตให้ดูรายการบทบาทและสิทธิ์ที่กำหนดให้</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>อนุญาตให้ดูรายการข้อเสนอแนะของผู้ใช้</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>กำหนดบทบาทให้ผู้ใช้</value>
@@ -164,6 +173,9 @@
   </data>
   <data name="Delete Exams" xml:space="preserve">
     <value>ลบแบบทดสอบ</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>ลบคำติชม</value>
   </data>
   <data name="Delete Papers" xml:space="preserve">
     <value>ลบเอกสาร</value>
@@ -191,6 +203,9 @@
   </data>
   <data name="Edit Exams" xml:space="preserve">
     <value>แก้ไขการสอบ</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>แก้ไขคำติชม</value>
   </data>
   <data name="Edit Papers" xml:space="preserve">
     <value>แก้ไขเอกสาร</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="Read Exams" xml:space="preserve">
     <value>ดูข้อสอบ</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>อ่านคำติชม</value>
   </data>
   <data name="Read Questions" xml:space="preserve">
     <value>อ่านคำถาม</value>

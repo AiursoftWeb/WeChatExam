@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>ดูตัวอย่างงาน AI</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>คุณแน่ใจหรือไม่ที่จะยกเลิกงานที่รออยู่ทั้งหมด?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>จัดหมวดหมู่อัตโนมัติ</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>การติดป้ายอัตโนมัติ</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>กลับ</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>ยกเลิกทั้งหมด</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>เสร็จสิ้น</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>แก้ไขคำแนะนำจาก AI</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>ข้อผิดพลาด</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>สร้างคำตอบ</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>แท็กที่แนะนำ</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>มีการร้องขอมากเกินไป กำลังรอ 30 วินาที...</value>
   </data>
 
 </root>

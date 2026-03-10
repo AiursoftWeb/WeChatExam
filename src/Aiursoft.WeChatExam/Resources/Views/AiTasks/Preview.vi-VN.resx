@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Xem trước nhiệm vụ AI</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn hủy tất cả các tác vụ đang chờ xử lý không?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Tự động phân loại</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Gán nhãn tự động</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Hủy tất cả</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Đã hoàn thành</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Chỉnh sửa đề xuất AI</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Lỗi</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Tạo câu trả lời</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Nhãn đề xuất</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Quá nhiều yêu cầu, đang đợi 30s...</value>
   </data>
 
 </root>
