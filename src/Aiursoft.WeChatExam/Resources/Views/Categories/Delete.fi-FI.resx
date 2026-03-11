@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Peruuta</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Kategoriaa, johon liittyy kysymyksiä, ei voida poistaa. Poista tai siirrä nämä kysymykset ensin.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Kategoriaa, jolla on alikategorioita, ei voi poistaa. Poista alikategoriat ensin.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Tämä toiminto on peruuttamaton. Olet poistamassa pysyvästi seuraavan kategorian:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Näytä liittyvät kysymykset</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Kyllä, poista tämä kategoria</value>

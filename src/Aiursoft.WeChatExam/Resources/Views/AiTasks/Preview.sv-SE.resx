@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-uppgiftsförhandsgranskning</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Är du säker på att du vill avbryta alla pågående uppgifter?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Automatisk kategorisering</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Automatisk taggning</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Avbryt</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Avbryt alla</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Slutförd</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Redigera AI-förslag</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fel</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Generera svar</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Förslagna taggar</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>För många förfrågningar, väntar 30s...</value>
   </data>
 
 </root>

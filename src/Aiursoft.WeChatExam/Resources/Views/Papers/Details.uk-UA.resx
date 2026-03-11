@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>Назад</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категорія</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Створено</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>Заморожено</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>Без категорії</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>Ще немає знятків</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>Без тегів</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Деталі тесту</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Питання</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Справжній іспит</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Бали</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Часовий ліміт</value>

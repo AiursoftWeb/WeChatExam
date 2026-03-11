@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Podgląd zadania AI</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Czy na pewno chcesz anulować wszystkie oczekujące zadania?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Automatyczne kategoryzowanie</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Automatyczne tagowanie</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Wstecz</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anuluj</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Anuluj wszystko</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Zakończone</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Edytuj sugestię AI</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Generuj odpowiedź</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Zalecane tagi</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Zbyt wiele żądań, czekanie 30s...</value>
   </data>
 
 </root>

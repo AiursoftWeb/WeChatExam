@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>रद्द करें</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>संबद्ध प्रश्नों वाली श्रेणी को हटाया नहीं जा सकता। कृपया पहले इन प्रश्नों को हटाएं या पुनः नियुक्त करें।</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>बच्चों वाली श्रेणी को हटाया नहीं जा सकता। कृपया पहले बच्चों को हटाएं।</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>यह क्रिया अपरिवर्तनीय है। आप निम्नलिखित श्रेणी को स्थायी रूप से हटाने वाले हैं:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>संबंधित प्रश्नों को देखें</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>हाँ, इस श्रेणी को हटाएं</value>

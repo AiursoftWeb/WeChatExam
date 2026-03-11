@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Скасувати</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Неможливо видалити категорію з пов&apos;язаними запитаннями. Спочатку видаліть або перепризначте ці запитання.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Не можна видалити категорію, що має підкатегорії. Спочатку видаліть підкатегорії.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Ця дія є незворотною. Ви збираєтеся назавжди видалити наступну категорію:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Переглянути пов&apos;язані запитання</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Так, видалити цю категорію</value>

@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-taakvoorbeeld</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Weet u zeker dat u alle uitstaande taken wilt annuleren?</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Automatisch categoriseren</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Automatisch taggen</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuleren</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Alles annuleren</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Voltooid</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Bewerk AI-suggestie</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Fout</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Antwoord genereren</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Voorgestelde tags</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Teveel verzoeken, wachten 30s...</value>
   </data>
 
 </root>

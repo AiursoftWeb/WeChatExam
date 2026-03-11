@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Avbryt</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>Kan inte radera kategori med associerade frågor. Ta bort eller omtilldela dessa frågor först.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Kan inte ta bort kategori med underkategorier. Ta bort underkategorierna först.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Denna åtgärd går inte att ångra. Du håller på att permanent radera följande kategori:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>Visa relaterade frågor</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Ja, radera denna kategori</value>

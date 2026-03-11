@@ -33,14 +33,23 @@
   <data name="AI Task Preview" xml:space="preserve">
     <value>Προεπισκόπηση εργασίας ΤΝ</value>
   </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Είστε σίγουροι ότι θέλετε να ακυρώσετε όλα τα εκκρεμή καθήκοντα;</value>
+  </data>
   <data name="Auto Categorize" xml:space="preserve">
     <value>Αυτόματη Κατηγοριοποίηση</value>
   </data>
   <data name="Auto Tagging" xml:space="preserve">
     <value>Αυτόματη Ετικετοδότηση</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Πίσω</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Ακύρωση όλων</value>
   </data>
   <data name="Completed" xml:space="preserve">
     <value>Ολοκληρώθηκε</value>
@@ -62,6 +71,9 @@
   </data>
   <data name="Edit AI Suggestion" xml:space="preserve">
     <value>Επεξεργασία πρότασης της ΤΝ</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Σφάλμα</value>
   </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Δημιουργία Απάντησης</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Προτεινόμενα Ετικέτες</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Πάρα πολλές αιτήσεις, αναμονή 30 δευτ...</value>
   </data>
 
 </root>

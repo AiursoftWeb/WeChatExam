@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
   </data>
+  <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
+    <value>İlişkili sorular içeren kategori silinemez. Lütfen önce bu soruları kaldırın veya yeniden atayın.</value>
+  </data>
   <data name="Cannot delete category with children. Please delete children first." xml:space="preserve">
     <value>Alt kategorileri olan bir kategori silinemez. Lütfen önce alt kategorileri silin.</value>
   </data>
@@ -35,6 +38,9 @@
   </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Bu işlem geri alınamaz. Aşağıdaki kategoriyi kalıcı olarak silmek üzeresiniz:</value>
+  </data>
+  <data name="View related questions" xml:space="preserve">
+    <value>İlgili soruları görüntüle</value>
   </data>
   <data name="Yes, delete this category" xml:space="preserve">
     <value>Evet, bu kategoriyi sil</value>

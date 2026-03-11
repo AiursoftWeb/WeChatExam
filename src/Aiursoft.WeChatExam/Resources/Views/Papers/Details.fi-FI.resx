@@ -21,6 +21,9 @@
       <data name="Back" xml:space="preserve">
     <value>Takaisin</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Luotu</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Frozen" xml:space="preserve">
     <value>Jäädytetty</value>
   </data>
+  <data name="No Category" xml:space="preserve">
+    <value>Ei luokkaa</value>
+  </data>
   <data name="No snapshots yet" xml:space="preserve">
     <value>Ei vielä tallennettuja versioita</value>
+  </data>
+  <data name="No Tags" xml:space="preserve">
+    <value>Ei tunnisteita</value>
   </data>
   <data name="Paper Details" xml:space="preserve">
     <value>Paper Details</value>
@@ -51,6 +60,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Kysymykset</value>
   </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Todellinen koe</value>
+  </data>
   <data name="Score" xml:space="preserve">
     <value>Pisteet</value>
   </data>
@@ -59,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tunnisteet</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Aikaraja</value>
