@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Hyväksy</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Hyväksy kaikki</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>AI-uusi vastaus</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-tehtävän esikatselu</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Haluatko varmasti hyväksyä kaikki tekoälyn ehdotukset?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Haluatko varmasti peruuttaa kaikki odottavat tehtävät?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Virhe</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Ei voitu hyväksyä ehdotuksia.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Luo vastaus</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Ehdotetut tunnisteet</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Tehtäviä käsitellään edelleen. Haluatko hyväksyä valmiit ja hylätä loput?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Liian monta pyyntöä, odotetaan 30 s...</value>

@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>採用</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>すべて採用</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>AI 新しい回答</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AIタスクプレビュー</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>すべてのAIの提案を採用してもよろしいですか？</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>保留中のタスクをすべてキャンセルしてもよろしいですか？</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>エラー</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>提案の採用に失敗しました。</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>回答を生成する</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>推奨タグ</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>タスクはまだ処理中です。完了したものを採用し、残りを破棄しますか？</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>リクエストが多すぎます。30秒待機中...</value>

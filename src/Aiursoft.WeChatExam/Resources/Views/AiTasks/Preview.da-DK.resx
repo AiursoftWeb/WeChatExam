@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Accepter</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Godkend alle</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>AI ny besvarelse</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-opgaveforhåndsvisning</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Er du sikker på, at du vil vedtage alle AI-forslag?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Er du sikker på, at du vil annullere alle ventende opgaver?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Fejl</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Kunne ikke vedtage forslag.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Generer svar</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Foreslåede tags</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Opgaver behandles stadig. Vil du vedtage de færdiggjorte og forlade resten?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>For mange anmodninger, venter 30s...</value>

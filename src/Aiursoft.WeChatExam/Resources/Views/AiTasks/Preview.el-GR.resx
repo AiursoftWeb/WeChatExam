@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Αποδοχή</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Εφαρμογή όλων</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>Νέα Απάντηση Τεχνητής Νοημοσύνης</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Προεπισκόπηση εργασίας ΤΝ</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Είστε σίγουροι ότι θέλετε να υιοθετήσετε όλες τις προτάσεις της Τεχνητής Νοημοσύνης;</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Είστε σίγουροι ότι θέλετε να ακυρώσετε όλα τα εκκρεμή καθήκοντα;</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Σφάλμα</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Αποτυχία υιοθέτησης προτάσεων.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Δημιουργία Απάντησης</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Προτεινόμενα Ετικέτες</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Οι εργασίες επεξεργάζονται ακόμα. Θέλετε να υιοθετήσετε τις ολοκληρωμένες και να εγκαταλείψετε τις υπόλοιπες;</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Πάρα πολλές αιτήσεις, αναμονή 30 δευτ...</value>

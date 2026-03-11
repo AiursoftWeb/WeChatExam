@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Принять</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Принять все</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>AI Новый ответ</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Предварительный просмотр задания ИИ</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Вы уверены, что хотите принять все предложения ИИ?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Вы уверены, что хотите отменить все ожидающие задачи?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Не удалось принять предложения.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Сгенерировать ответ</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Предложенные метки</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Задачи все еще обрабатываются. Хотите ли вы принять выполненные и отклонить остальные?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Слишком много запросов, ожидание 30 с...</value>

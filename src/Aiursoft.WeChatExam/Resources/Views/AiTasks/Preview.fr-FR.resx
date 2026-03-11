@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Adopter</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Tout adopter</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>Nouvelle réponse IA</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Aperçu de la tâche d&apos;IA</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir adopter toutes les suggestions de l&apos;IA ?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir annuler toutes les tâches en attente ?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Échec de l&apos;adoption des suggestions.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Générer une réponse</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Balises suggérées</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Les tâches sont toujours en cours de traitement. Souhaitez-vous adopter celles qui sont terminées et abandonner le reste ?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Trop de requêtes, attente de 30s...</value>

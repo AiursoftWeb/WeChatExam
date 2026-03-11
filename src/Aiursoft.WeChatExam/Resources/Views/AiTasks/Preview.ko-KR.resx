@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>채택</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>모두 적용</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>AI 새 답변</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 작업 미리보기</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>모든 AI 제안사항을 적용하시겠습니까?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>모든 대기 중인 작업을 취소하시겠습니까?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>오류</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>제안 사항을 채택하지 못했습니다.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>답변 생성</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>제안된 태그</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>작업이 아직 처리 중입니다. 완료된 항목만 적용하고 나머지는 포기하시겠습니까?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>요청이 너무 많습니다. 30초 후 다시 시도합니다...</value>

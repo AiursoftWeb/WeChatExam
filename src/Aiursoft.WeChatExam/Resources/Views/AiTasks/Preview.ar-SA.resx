@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>اعتمد</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>اعتماد الكل</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>الإجابة الجديدة بواسطة الذكاء الاصطناعي</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>معاينة مهمة الذكاء الاصطناعي</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>هل أنت متأكد من رغبتك في اعتماد جميع اقتراحات الذكاء الاصطناعي؟</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>هل أنت متأكد أنك تريد إلغاء جميع المهام المعلقة؟</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>خطأ</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>فشل في تبني الاقتراحات.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>إنشاء الإجابة</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>الوسوم المقترحة</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>المهام ما زالت قيد المعالجة. هل تريد اعتماد المكتملة منها والتخلي عن الباقي؟</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>طلبات كثيرة، الانتظار 30 ثانية...</value>

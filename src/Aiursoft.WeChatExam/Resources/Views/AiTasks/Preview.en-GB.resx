@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Adopt</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Adopt All</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>AI New Answer</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI Task Preview</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Are you sure you want to adopt all AI suggestions?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Are you sure you want to cancel all pending tasks?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Failed to adopt suggestions.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Generate Answer</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Suggested Tags</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Tasks are still processing. Do you want to adopt the completed ones and abandon the rest?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Too many requests, waiting 30s...</value>

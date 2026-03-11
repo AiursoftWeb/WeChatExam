@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Terima</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Terima Semua</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>Jawaban Baru AI</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Pratinjau Tugas AI</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Apakah Anda yakin ingin mengadopsi semua saran AI?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Apakah Anda yakin ingin membatalkan semua tugas yang tertunda?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Kesalahan</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Gagal mengadopsi saran.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Hasilkan Jawaban</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Tag yang Disarankan</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Tugas masih diproses. Apakah Anda ingin mengadopsi yang telah selesai dan mengabaikan sisanya?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Terlalu banyak permintaan, menunggu 30s...</value>
