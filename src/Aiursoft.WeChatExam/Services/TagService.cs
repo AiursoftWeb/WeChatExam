@@ -56,6 +56,20 @@ public class TagService : ITagService
         return newTag;
     }
 
+    public async Task CreateTagAsync(Tag tag)
+    {
+        if (tag.DisplayName.Length > 255)
+        {
+            tag.DisplayName = tag.DisplayName.Substring(0, 255);
+        }
+        if (tag.NormalizedName.Length > 255)
+        {
+            tag.NormalizedName = tag.NormalizedName.Substring(0, 255);
+        }
+        _dbContext.Tags.Add(tag);
+        await _dbContext.SaveChangesAsync();
+    }
+
     public async Task<List<Tag>> GetAllTagsAsync()
     {
         return await _dbContext.Tags
