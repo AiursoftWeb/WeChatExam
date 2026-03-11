@@ -34,6 +34,9 @@
             </h1>
         </div>
         <div class="d-flex gap-2 align-items-center">
+            <button id="adoptAllBtn" class="btn btn-sm btn-success d-none" onclick="adoptAll()">
+                <i class="align-middle me-1" data-lucide="check-check"></i> @Localizer["Adopt All"]
+            </button>
             <button id="cancelAllBtn" class="btn btn-sm btn-outline-danger" onclick="cancelAll()">
                 <i class="align-middle me-1" data-lucide="x-circle"></i> @Localizer["Cancel All"]
             </button>
@@ -178,8 +181,11 @@
         const isCategorization = @(isCategorization.ToString().ToLower());
         const questionsContainer = document.getElementById('questionsContainer');
         const taskStatusBadge = document.getElementById('taskStatus');
+        const adoptAllBtn = document.getElementById('adoptAllBtn');
+        const cancelAllBtn = document.getElementById('cancelAllBtn');
         let pollingInterval;
         let isWaiting = false;
+        let isTaskFinished = false;
 
         async function pollStatus() {
             if (isWaiting) return;
@@ -226,10 +232,18 @@
                     }
                 });
 
+                // Show adopt all button if there are completed items
+                const completedItemsCount = data.items.filter(i => i.status === 2).length;
+                if (completedItemsCount > 0) {
+                    adoptAllBtn.classList.remove('d-none');
+                }
+
                 if (data.isCompleted) {
                     clearInterval(pollingInterval);
+                    isTaskFinished = true;
                     taskStatusBadge.textContent = '@Localizer["Completed"]';
                     taskStatusBadge.className = 'badge bg-success';
+                    cancelAllBtn.classList.add('d-none');
                 }
             } catch (error) {
                 console.error('Polling error:', error);
@@ -244,6 +258,32 @@
             });
             if (response.ok) {
                 dismissCard(questionId);
+            }
+        }
+
+        async function adoptAll() {
+            let message = '@Localizer["Are you sure you want to adopt all AI suggestions?"]';
+            if (!isTaskFinished) {
+                message = '@Localizer["Tasks are still processing. Do you want to adopt completed ones and abandon the rest?"]';
+            }
+
+            if (!confirm(message)) return;
+            
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            adoptAllBtn.disabled = true;
+            adoptAllBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> @Localizer["Processing..."]';
+            
+            const response = await fetch(`@Url.Action("AdoptAll")?taskId=${taskId}`, {
+                method: 'POST',
+                headers: { 'RequestVerificationToken': token }
+            });
+            
+            if (response.ok) {
+                window.location.href = '@Html.Raw(string.IsNullOrEmpty(Model.ReturnUrl) ? Url.Action("Index", "Questions") : Model.ReturnUrl)';
+            } else {
+                alert('@Localizer["Failed to adopt suggestions."]');
+                adoptAllBtn.disabled = false;
+                adoptAllBtn.innerHTML = '<i class="align-middle me-1" data-lucide="check-check"></i> @Localizer["Adopt All"]';
             }
         }
 

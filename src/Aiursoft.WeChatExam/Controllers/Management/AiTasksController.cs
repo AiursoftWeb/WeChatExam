@@ -636,6 +636,62 @@ public class AiTasksController(
         return Ok();
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [LimitPerMin]
+    public async Task<IActionResult> AdoptAll(Guid taskId)
+    {
+        var task = aiTaskService.GetTask(taskId);
+        if (task == null)
+        {
+            return NotFound();
+        }
+
+        var completedItems = task.Items.Values.Where(i => i.Status == AiTaskStatus.Completed).ToList();
+        foreach (var item in completedItems)
+        {
+            var question = await dbContext.Questions.FindAsync(item.QuestionId);
+            if (question == null) continue;
+
+            if (task.Type == AiTaskType.GenerateExplanation)
+            {
+                if (!string.IsNullOrWhiteSpace(item.NewValue))
+                {
+                    question.Explanation = item.NewValue;
+                    await dbContext.SaveChangesAsync();
+                }
+            }
+            else if (task.Type == AiTaskType.AutoCategorize)
+            {
+                if (item.NewEntityId.HasValue)
+                {
+                    question.CategoryId = item.NewEntityId.Value;
+                    await dbContext.SaveChangesAsync();
+                }
+            }
+            else if (task.Type == AiTaskType.AutoTagging)
+            {
+                if (!string.IsNullOrWhiteSpace(item.NewValue) && item.NewValue != "none")
+                {
+                    await ApplyTagsToQuestion(question.Id, item.NewValue);
+                }
+            }
+            else if (task.Type == AiTaskType.GenerateAnswer)
+            {
+                if (!string.IsNullOrWhiteSpace(item.NewValue))
+                {
+                    question.StandardAnswer = item.NewValue;
+                    await dbContext.SaveChangesAsync();
+                }
+            }
+        }
+
+        task.Items.Clear();
+        task.IsCanceled = true;
+
+        return Ok();
+    }
+
     private async Task ApplyTagsToQuestion(Guid questionId, string newValue)
     {
         var lines = newValue.Split('\n', StringSplitOptions.RemoveEmptyEntries);
