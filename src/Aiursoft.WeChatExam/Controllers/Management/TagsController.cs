@@ -56,6 +56,49 @@ public class TagsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
+    public async Task<IActionResult> Create()
+    {
+        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+
+        return this.StackView(new CreateViewModel
+        {
+            AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+            {
+                Value = t.Id.ToString(),
+                Text = t.Name
+            })
+        });
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanManageTags)]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(CreateViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+            model.AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+            {
+                Value = t.Id.ToString(),
+                Text = t.Name
+            });
+            return this.StackView(model);
+        }
+
+        var tag = new Tag
+        {
+            DisplayName = model.DisplayName,
+            NormalizedName = model.DisplayName.Trim().ToUpperInvariant(),
+            TaxonomyId = model.TaxonomyId
+        };
+
+        await tagService.CreateTagAsync(tag);
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanManageTags)]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null) return NotFound();

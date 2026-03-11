@@ -7,6 +7,9 @@
         <h1 class="h3 mb-3">@Localizer["Tags Management"]</h1>
     </div>
     <div class="col-md-3 text-end">
+        <a asp-action="Create" class="btn btn-primary">
+            <i data-lucide="plus"></i> @Localizer["Create Tag"]
+        </a>
         <a asp-controller="Taxonomies" asp-action="Index" class="btn btn-outline-primary">
             <i data-lucide="settings"></i> @Localizer["Manage Taxonomies"]
         </a>
