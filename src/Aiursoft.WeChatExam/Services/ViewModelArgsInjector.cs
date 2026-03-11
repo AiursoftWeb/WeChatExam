@@ -112,6 +112,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Delete Feedback"];
         _ = localizer["Feedback"];
         _ = localizer["User Feedbacks"];
+    
+        _ = localizer["Create Tag"];
     }
 
     public void InjectSimple(

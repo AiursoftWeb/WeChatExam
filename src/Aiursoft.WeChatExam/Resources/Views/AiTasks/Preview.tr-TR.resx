@@ -24,6 +24,9 @@
   <data name="Adopt" xml:space="preserve">
     <value>Kabul Et</value>
   </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Tümünü Kabul Et</value>
+  </data>
   <data name="AI New Answer" xml:space="preserve">
     <value>Yeni Yanıt</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Yapay Zeka Görev Önizleme</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Tüm yapay zeka önerilerini kabul etmek istediğinizden emin misiniz?</value>
   </data>
   <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
     <value>Bekleyen tüm görevleri iptal etmek istediğinizden emin misiniz?</value>
@@ -75,6 +81,9 @@
   <data name="Error" xml:space="preserve">
     <value>Hata</value>
   </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Öneriler kabul edilemedi.</value>
+  </data>
   <data name="Generate Answer" xml:space="preserve">
     <value>Cevap Oluştur</value>
   </data>
@@ -98,6 +107,9 @@
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Önerilen Etiketler</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Görevler hala işleniyor. Tamamlananları kabul etmek ve geri kalanları iptal etmek ister misiniz?</value>
   </data>
   <data name="Too many requests, waiting 30s..." xml:space="preserve">
     <value>Çok fazla istek, 30 saniye bekleniyor...</value>
