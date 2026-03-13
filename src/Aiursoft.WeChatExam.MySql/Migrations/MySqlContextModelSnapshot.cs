@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.3")
+                .HasAnnotation("ProductVersion", "10.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -495,6 +495,94 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("PaperTags");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EventType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<Guid>("PaymentOrderId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("RawData")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentOrderId");
+
+                    b.ToTable("PaymentLogs");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("AmountInFen")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<DateTime>("ExpiredAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("OutTradeNo")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.Property<DateTime?>("PaidAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("PrepayId")
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("varchar(450)");
+
+                    b.Property<Guid?>("VipProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("WechatTransactionId")
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OutTradeNo")
+                        .IsUnique();
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VipProductId");
+
+                    b.ToTable("PaymentOrders");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
                     b.Property<Guid>("Id")
@@ -808,6 +896,76 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserPracticeHistories");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VipMembership", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("LastPaymentOrderId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("varchar(450)");
+
+                    b.Property<Guid>("VipProductId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LastPaymentOrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VipProductId");
+
+                    b.HasIndex("UserId", "VipProductId")
+                        .IsUnique();
+
+                    b.ToTable("VipMemberships");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VipProduct", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("DurationDays")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<int>("PriceInFen")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("VipProducts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -1147,6 +1305,34 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentLog", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "PaymentOrder")
+                        .WithMany("PaymentLogs")
+                        .HasForeignKey("PaymentOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PaymentOrder");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentOrder", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
+                        .WithMany()
+                        .HasForeignKey("VipProductId");
+
+                    b.Navigation("User");
+
+                    b.Navigation("VipProduct");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
@@ -1233,6 +1419,42 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VipMembership", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "LastPaymentOrder")
+                        .WithMany()
+                        .HasForeignKey("LastPaymentOrderId");
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
+                        .WithMany()
+                        .HasForeignKey("VipProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LastPaymentOrder");
+
+                    b.Navigation("User");
+
+                    b.Navigation("VipProduct");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VipProduct", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
+                        .WithMany("VipProducts")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1293,6 +1515,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("PaperCategories");
 
                     b.Navigation("Questions");
+
+                    b.Navigation("VipProducts");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.DistributionChannel", b =>
@@ -1333,6 +1557,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperSnapshot", b =>
                 {
                     b.Navigation("QuestionSnapshots");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentOrder", b =>
+                {
+                    b.Navigation("PaymentLogs");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
