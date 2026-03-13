@@ -43,6 +43,7 @@ public class PapersController : ControllerBase
     {
         var query = _context.Papers
             .Where(p => p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen)
+            .Include(p => p.PaperCategories)
             .Include(p => p.PaperSnapshots)
             .Include(p => p.PaperTags)
             .ThenInclude(pt => pt.Tag)
