@@ -169,9 +169,9 @@ UserManager<User> userManager,
     /// </summary>
     /// <returns>启用的 VIP 商品列表</returns>
     [HttpGet("vip-products")]
-    public async Task<IActionResult> GetVipProducts()
+    public async Task<IActionResult> GetVipProducts([FromQuery] Guid? categoryId = null)
     {
-        var products = await vipProductService.GetEnabledAsync();
+        var products = await vipProductService.GetEnabledAsync(categoryId);
         
         var dtos = products.Select(p => new
         {

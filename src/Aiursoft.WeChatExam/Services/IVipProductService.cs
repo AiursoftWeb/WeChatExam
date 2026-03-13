@@ -35,5 +35,5 @@ public interface IVipProductService
     /// <summary>
     /// 获取所有启用的 VIP 商品（面向小程序端）
     /// </summary>
-    Task<List<VipProduct>> GetEnabledAsync();
+    Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null);
 }

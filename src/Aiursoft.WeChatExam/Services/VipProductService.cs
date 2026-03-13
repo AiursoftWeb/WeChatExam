@@ -62,11 +62,18 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task<List<VipProduct>> GetEnabledAsync()
+    public async Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null)
     {
-        return await dbContext.VipProducts
+        var query = dbContext.VipProducts
             .Include(v => v.Category)
-            .Where(v => v.IsEnabled)
+            .Where(v => v.IsEnabled);
+
+        if (categoryId.HasValue)
+        {
+            query = query.Where(v => v.CategoryId == categoryId.Value);
+        }
+
+        return await query
             .OrderBy(v => v.Name)
             .ToListAsync();
     }
