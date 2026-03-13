@@ -36,4 +36,7 @@ public class Category
 
     [InverseProperty(nameof(PaperCategory.Category))]
     public IEnumerable<PaperCategory> PaperCategories { get; init; } = new List<PaperCategory>();
+
+    [InverseProperty(nameof(VipProduct.Category))]
+    public IEnumerable<VipProduct> VipProducts { get; init; } = new List<VipProduct>();
 }

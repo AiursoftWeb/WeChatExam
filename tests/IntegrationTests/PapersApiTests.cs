@@ -16,6 +16,7 @@ public class PapersApiTests
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly Mock<IWeChatService> _mockWeChatService;
+    private readonly Mock<IWeChatPayService> _mockWeChatPayService;
     private readonly Mock<IDistributionChannelService> _mockDistributionChannelService;
 
     public PapersApiTests()
@@ -32,6 +33,7 @@ public class PapersApiTests
             BaseAddress = new Uri($"http://localhost:{_port}")
         };
         _mockWeChatService = new Mock<IWeChatService>();
+        _mockWeChatPayService = new Mock<IWeChatPayService>();
         _mockDistributionChannelService = new Mock<IDistributionChannelService>();
     }
 
@@ -39,6 +41,7 @@ public class PapersApiTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
+        TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
         
         _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);

@@ -117,4 +117,42 @@ public class WeChatSettings
 {
     public string AppId { get; init; } = string.Empty;
     public string AppSecret { get; init; } = string.Empty;
+
+    /// <summary>
+    /// WeChat Pay configuration
+    /// </summary>
+    public WeChatPaySettings Payment { get; init; } = new();
+}
+
+public class WeChatPaySettings
+{
+    /// <summary>
+    /// 是否启用微信支付
+    /// </summary>
+    public bool Enabled { get; init; } = false;
+
+    /// <summary>
+    /// 商户号
+    /// </summary>
+    public string MchId { get; init; } = string.Empty;
+
+    /// <summary>
+    /// 商户 API 证书序列号
+    /// </summary>
+    public string CertificateSerialNumber { get; init; } = string.Empty;
+
+    /// <summary>
+    /// APIv3 密钥（用于解密回调通知）
+    /// </summary>
+    public string V3SecretKey { get; init; } = string.Empty;
+
+    /// <summary>
+    /// 商户私钥 PEM 文件路径
+    /// </summary>
+    public string PrivateKeyFilePath { get; init; } = string.Empty;
+
+    /// <summary>
+    /// 支付结果通知回调 URL
+    /// </summary>
+    public string PaymentNotifyUrl { get; init; } = string.Empty;
 }

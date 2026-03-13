@@ -1,0 +1,90 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Entities
+
+@model Aiursoft.WeChatExam.Models.PaymentOrdersViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Payment Orders"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-auto">
+                <label class="form-label">@Localizer["Status"]</label>
+                <select name="status" class="form-select form-select-sm">
+                    <option value="">@Localizer["All"]</option>
+                    @foreach (var s in Enum.GetValues<PaymentOrderStatus>())
+                    {
+                        <option value="@s" selected="@(Model.StatusFilter == s)">@s</option>
+                    }
+                </select>
+            </div>
+            <div class="col-auto">
+                <label class="form-label">@Localizer["User ID"]</label>
+                <input type="text" name="userId" value="@Model.UserIdFilter" class="form-control form-control-sm" placeholder="@Localizer["Filter by User ID"]" />
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="align-middle me-1" data-lucide="search"></i> @Localizer["Filter"]
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">@Localizer["Orders"] (@Model.TotalCount)</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Order No"]</th>
+                    <th>@Localizer["User"]</th>
+                    <th>@Localizer["Product"]</th>
+                    <th>@Localizer["Amount"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Created"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td><code class="small">@order.OutTradeNo</code></td>
+                        <td>
+                            <a asp-action="UserPayments" asp-route-userId="@order.UserId" class="text-decoration-none">
+                                @(order.User?.DisplayName ?? order.UserId)
+                            </a>
+                        </td>
+                        <td>
+                            <span class="badge bg-info">@(order.VipProduct?.Name ?? "-")</span>
+                        </td>
+                        <td>¥@((order.AmountInFen / 100.0).ToString("F2"))</td>
+                        <td>
+                            @{
+                                var badgeClass = order.Status switch
+                                {
+                                    PaymentOrderStatus.Paid => "bg-success",
+                                    PaymentOrderStatus.Pending => "bg-warning text-dark",
+                                    PaymentOrderStatus.Failed => "bg-danger",
+                                    PaymentOrderStatus.Closed => "bg-secondary",
+                                    PaymentOrderStatus.Refunded => "bg-info",
+                                    _ => "bg-secondary"
+                                };
+                            }
+                            <span class="badge @badgeClass">@order.Status</span>
+                        </td>
+                        <td><label class="text-monospace" data-utc-time="@order.CreatedAt.ToHtmlDateTime()"></label></td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-info">
+                                <i class="align-middle" data-lucide="eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

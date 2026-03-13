@@ -1,0 +1,130 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Entities
+
+@model Aiursoft.WeChatExam.Models.PaymentOrdersViewModels.DetailsViewModel
+
+<h1 class="h3 mb-3">@Localizer["Payment Order Details"]</h1>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Order Information"]</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th style="width:200px">@Localizer["Order No"]</th>
+                            <td><code>@Model.Order.OutTradeNo</code></td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["User"]</th>
+                            <td>
+                                <a asp-action="UserPayments" asp-route-userId="@Model.Order.UserId">
+                                    @(Model.Order.User?.DisplayName ?? Model.Order.UserId)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Product"]</th>
+                            <td><span class="badge bg-info">@(Model.Order.VipProduct?.Name ?? "-")</span></td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Description"]</th>
+                            <td>@Model.Order.Description</td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Amount"]</th>
+                            <td class="fw-bold">¥@((Model.Order.AmountInFen / 100.0).ToString("F2"))</td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Status"]</th>
+                            <td>
+                                @{
+                                    var badgeClass = Model.Order.Status switch
+                                    {
+                                        PaymentOrderStatus.Paid => "bg-success",
+                                        PaymentOrderStatus.Pending => "bg-warning text-dark",
+                                        PaymentOrderStatus.Failed => "bg-danger",
+                                        PaymentOrderStatus.Closed => "bg-secondary",
+                                        PaymentOrderStatus.Refunded => "bg-info",
+                                        _ => "bg-secondary"
+                                    };
+                                }
+                                <span class="badge @badgeClass">@Model.Order.Status</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["WeChat Transaction ID"]</th>
+                            <td><code>@(Model.Order.WechatTransactionId ?? "-")</code></td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Created At"]</th>
+                            <td><label data-utc-time="@Model.Order.CreatedAt.ToHtmlDateTime()"></label></td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Paid At"]</th>
+                            <td>
+                                @if (Model.Order.PaidAt.HasValue)
+                                {
+                                    <label data-utc-time="@Model.Order.PaidAt.Value.ToHtmlDateTime()"></label>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Expired At"]</th>
+                            <td><label data-utc-time="@Model.Order.ExpiredAt.ToHtmlDateTime()"></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Payment Logs"]</h5>
+            </div>
+            <div class="card-body p-0">
+                @if (Model.Order.PaymentLogs.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var log in Model.Order.PaymentLogs)
+                        {
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-primary">@log.EventType</span>
+                                    <small class="text-muted">
+                                        <label data-utc-time="@log.CreatedAt.ToHtmlDateTime()"></label>
+                                    </small>
+                                </div>
+                                @if (!string.IsNullOrEmpty(log.RawData))
+                                {
+                                    <pre class="mt-2 mb-0 small bg-light p-2 rounded" style="max-height:120px;overflow:auto">@log.RawData</pre>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="p-3 text-center text-muted">
+                        @Localizer["No logs yet"]
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="align-middle me-1" data-lucide="arrow-left"></i> @Localizer["Back to List"]
+    </a>
+</div>

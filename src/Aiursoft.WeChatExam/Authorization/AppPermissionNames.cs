@@ -78,4 +78,13 @@ public static class AppPermissionNames
     // Optimization Jobs
     public const string CanTriggerOptimizationJobs = nameof(CanTriggerOptimizationJobs);
 
+    // Payment Management
+    public const string CanReadPaymentOrders = nameof(CanReadPaymentOrders);
+
+    // VIP Product Management
+    public const string CanReadVipProducts = nameof(CanReadVipProducts);
+    public const string CanAddVipProducts = nameof(CanAddVipProducts);
+    public const string CanEditVipProducts = nameof(CanEditVipProducts);
+    public const string CanDeleteVipProducts = nameof(CanDeleteVipProducts);
+
 }

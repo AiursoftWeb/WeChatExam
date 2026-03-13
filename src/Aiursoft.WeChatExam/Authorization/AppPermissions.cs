@@ -167,6 +167,23 @@ public class AppPermissions
             new(AppPermissionNames.CanTriggerOptimizationJobs,
                 localizer["Trigger Optimization Jobs"],
                 localizer["Allows triggering background jobs to optimize question answers and explanations using AI."]),
+
+            new(AppPermissionNames.CanReadPaymentOrders,
+                localizer["Read Payment Orders"],
+                localizer["Allows viewing payment orders, payment details, and user payment history."]),
+
+            new(AppPermissionNames.CanReadVipProducts,
+                localizer["Read VIP Products"],
+                localizer["Allows viewing VIP products and their configuration."]),
+            new(AppPermissionNames.CanAddVipProducts,
+                localizer["Add VIP Products"],
+                localizer["Allows creating new VIP products with category, price, and duration settings."]),
+            new(AppPermissionNames.CanEditVipProducts,
+                localizer["Edit VIP Products"],
+                localizer["Allows modifying VIP product settings including price, duration, and enabled status."]),
+            new(AppPermissionNames.CanDeleteVipProducts,
+                localizer["Delete VIP Products"],
+                localizer["Allows the permanent deletion of VIP products."]),
         ];
         return allPermission;
     }

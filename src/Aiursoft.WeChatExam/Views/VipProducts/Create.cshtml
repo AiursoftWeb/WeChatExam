@@ -1,0 +1,47 @@
+@model Aiursoft.WeChatExam.Models.VipProductsViewModels.CreateViewModel
+
+<h1 class="h3 mb-3">@Localizer["Create VIP Product"]</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">@Localizer["Product Name"]</label>
+                <input asp-for="Name" class="form-control" placeholder="@Localizer["e.g. Popular Music VIP"]" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label">@Localizer["Category"]</label>
+                <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select">
+                    <option value="">@Localizer["-- Select Category --"]</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="PriceInFen" class="form-label">@Localizer["Price (Fen)"]</label>
+                    <div class="input-group">
+                        <input asp-for="PriceInFen" class="form-control" type="number" min="1" />
+                        <span class="input-group-text">@Localizer["Fen (1/100 Yuan)"]</span>
+                    </div>
+                    <span asp-validation-for="PriceInFen" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="DurationDays" class="form-label">@Localizer["Duration (Days)"]</label>
+                    <div class="input-group">
+                        <input asp-for="DurationDays" class="form-control" type="number" min="1" />
+                        <span class="input-group-text">@Localizer["Days"]</span>
+                    </div>
+                    <span asp-validation-for="DurationDays" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="align-middle me-1" data-lucide="plus"></i> @Localizer["Create"]
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>

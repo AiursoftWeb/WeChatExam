@@ -1,0 +1,75 @@
+@model Aiursoft.WeChatExam.Models.VipProductsViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["VIP Products"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-auto">
+                <label class="form-label">@Localizer["Search"]</label>
+                <input type="text" name="search" value="@Model.SearchQuery" class="form-control form-control-sm" placeholder="@Localizer["Search by name or category"]" />
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="align-middle me-1" data-lucide="search"></i> @Localizer["Search"]
+                </button>
+            </div>
+            <div class="col-auto ms-auto">
+                <a asp-action="Create" class="btn btn-success btn-sm">
+                    <i class="align-middle me-1" data-lucide="plus"></i> @Localizer["Create VIP Product"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">@Localizer["Products"] (@Model.Products.Count)</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@Localizer["Name"]</th>
+                    <th>@Localizer["Category"]</th>
+                    <th>@Localizer["Price"]</th>
+                    <th>@Localizer["Duration"]</th>
+                    <th>@Localizer["Status"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td><strong>@product.Name</strong></td>
+                        <td>
+                            <span class="badge bg-info">@(product.Category?.Title ?? "-")</span>
+                        </td>
+                        <td>¥@((product.PriceInFen / 100.0).ToString("F2"))</td>
+                        <td>@product.DurationDays @Localizer["days"]</td>
+                        <td>
+                            @if (product.IsEnabled)
+                            {
+                                <span class="badge bg-success">@Localizer["Enabled"]</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">@Localizer["Disabled"]</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary">
+                                <i class="align-middle" data-lucide="edit"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-sm btn-outline-danger">
+                                <i class="align-middle" data-lucide="trash-2"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
