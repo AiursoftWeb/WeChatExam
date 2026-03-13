@@ -1,9 +1,10 @@
 using System.Security.Claims;
-// Redundant using removed
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
+using Aiursoft.WeChatExam.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
@@ -14,6 +15,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [ApiController]
 [Route("api/payment")]
 public class PaymentController(
+UserManager<User> userManager,
     IWeChatPayService payService,
     IVipProductService vipProductService,
     ILogger<PaymentController> logger) : ControllerBase
@@ -30,10 +32,20 @@ public class PaymentController(
     [WeChatUserOnly]
     public async Task<IActionResult> CreateOrder([FromBody] CreatePaymentOrderRequest request)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var openId = User.FindFirstValue("MiniProgramOpenId");
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Unauthorized();
+        }
 
-        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(openId))
+        var user = await userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var openId = user.MiniProgramOpenId;
+        if  (string.IsNullOrEmpty(openId))
         {
             return Unauthorized(new { error = "用户身份信息不完整" });
         }
