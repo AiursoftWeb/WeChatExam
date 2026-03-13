@@ -54,13 +54,15 @@ public class WeChatPayService(
         var description = $"{vipProduct.Name} - {vipProduct.Category?.Title ?? "VIP"}";
 
         // Check if user already has active VIP for this category
+        var now = DateTime.UtcNow;
         var existingVip = await dbContext.VipMemberships
             .Include(v => v.VipProduct)
             .FirstOrDefaultAsync(v => 
                 v.UserId == userId && 
                 v.VipProduct != null && 
                 v.VipProduct.CategoryId == vipProduct.CategoryId &&
-                v.IsActive);
+                v.StartTime <= now && 
+                v.EndTime > now);
 
         if (existingVip != null)
         {
@@ -321,7 +323,7 @@ public class WeChatPayService(
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Failed to handle payment notify");
+            logger.LogError(ex, "Failed to handle payment notify. Serial: {SerialNumber}", serialNumber);
             return false;
         }
     }
@@ -369,6 +371,7 @@ public class WeChatPayService(
             return;
 
         var durationDays = vipProduct.DurationDays;
+        var now = DateTime.UtcNow;
 
         var existingVip = await dbContext.VipMemberships
             .FirstOrDefaultAsync(v => v.UserId == order.UserId && v.VipProductId == order.VipProductId);
@@ -380,8 +383,8 @@ public class WeChatPayService(
             {
                 UserId = order.UserId,
                 VipProductId = order.VipProductId.Value,
-                StartTime = DateTime.UtcNow,
-                EndTime = DateTime.UtcNow.AddDays(durationDays),
+                StartTime = now,
+                EndTime = now.AddDays(durationDays),
                 LastPaymentOrderId = order.Id
             };
             dbContext.VipMemberships.Add(vip);
@@ -392,11 +395,11 @@ public class WeChatPayService(
         else
         {
             // Re-purchase: re-activate and extend from existing end time if still valid
-            existingVip.EndTime = Math.Max(DateTime.UtcNow.Ticks, existingVip.EndTime.Ticks) == existingVip.EndTime.Ticks
+            existingVip.EndTime = Math.Max(now.Ticks, existingVip.EndTime.Ticks) == existingVip.EndTime.Ticks
                 ? existingVip.EndTime.AddDays(durationDays)
-                : DateTime.UtcNow.AddDays(durationDays);
+                : now.AddDays(durationDays);
                 
-            existingVip.StartTime = DateTime.UtcNow;
+            existingVip.StartTime = now;
             existingVip.LastPaymentOrderId = order.Id;
 
             logger.LogInformation("Re-activated VIP {ProductName} for user {UserId}, new expiry {EndTime}",

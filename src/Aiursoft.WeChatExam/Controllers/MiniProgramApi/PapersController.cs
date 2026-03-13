@@ -127,7 +127,7 @@ public class PapersController : ControllerBase
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         bool hasAccess = snapshot.IsFree;
 
-        if (!hasAccess)
+        if (!hasAccess && userId != null)
         {
             var paper = await _context.Papers.Include(p => p.PaperCategories)
                 .FirstOrDefaultAsync(p => p.Id == snapshot.PaperId);
@@ -135,13 +135,15 @@ public class PapersController : ControllerBase
             if (paper != null)
             {
                 var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                foreach (var catId in categoryIds)
+                
+                var vips = await _payService.GetVipStatusListAsync(userId);
+                var activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
+                                               .Select(v => v.VipProduct!.CategoryId)
+                                               .ToHashSet();
+
+                if (categoryIds.Any(catId => activeVipCategoryIds.Contains(catId)))
                 {
-                    if (userId != null && await _payService.HasVipForCategoryAsync(userId, catId))
-                    {
-                        hasAccess = true;
-                        break;
-                    }
+                    hasAccess = true;
                 }
             }
         }

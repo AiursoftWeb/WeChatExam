@@ -14,4 +14,6 @@ public class IndexViewModel: UiStackLayoutViewModel
     public PaymentOrderStatus? StatusFilter { get; set; }
     public string? UserIdFilter { get; set; }
     public int TotalCount { get; set; }
+    public int CurrentPage { get; set; } = 1;
+    public int PageSize { get; set; } = 50;
 }

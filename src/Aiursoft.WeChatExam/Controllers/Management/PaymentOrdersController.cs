@@ -38,7 +38,9 @@ public class PaymentOrdersController(
             Orders = orders,
             StatusFilter = status,
             UserIdFilter = userId,
-            TotalCount = totalCount
+            TotalCount = totalCount,
+            CurrentPage = page,
+            PageSize = pageSize
         });
     }
 

@@ -113,6 +113,7 @@ UserManager<User> userManager,
     /// <response code="500">处理失败</response>
     [HttpPost("notify")]
     [AllowAnonymous]
+    [RequestSizeLimit(32768)] // 32KB Limit
     public async Task<IActionResult> PaymentNotify()
     {
         using var reader = new StreamReader(Request.Body);
@@ -123,18 +124,29 @@ UserManager<User> userManager,
         var nonce = Request.Headers["Wechatpay-Nonce"].FirstOrDefault() ?? string.Empty;
         var serialNumber = Request.Headers["Wechatpay-Serial"].FirstOrDefault() ?? string.Empty;
 
-        logger.LogInformation("Received payment notify, serial: {Serial}", serialNumber);
+        logger.LogInformation("Received payment notify. Serial: {Serial}, Timestamp: {Timestamp}, Nonce: {Nonce}, Signature length: {SigLen}, Body length: {BodyLen}", 
+            serialNumber, timestamp, nonce, signature.Length, requestBody.Length);
 
-        var success = await payService.HandlePaymentNotifyAsync(
-            requestBody, signature, timestamp, nonce, serialNumber);
-
-        if (success)
+        try 
         {
-            // WeChat expects this exact JSON response for success
-            return Ok(new { code = "SUCCESS", message = "OK" });
-        }
+            var success = await payService.HandlePaymentNotifyAsync(
+                requestBody, signature, timestamp, nonce, serialNumber);
 
-        return StatusCode(500, new { code = "FAIL", message = "处理失败" });
+            if (success)
+            {
+                logger.LogInformation("Payment notify processed successfully for serial: {Serial}", serialNumber);
+                // WeChat expects this exact JSON response for success
+                return Ok(new { code = "SUCCESS", message = "OK" });
+            }
+
+            logger.LogWarning("Payment notify processing returned false for serial: {Serial}", serialNumber);
+            return StatusCode(500, new { code = "FAIL", message = "处理失败" });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Exception occurred while processing payment notify for serial: {Serial}", serialNumber);
+            return StatusCode(500, new { code = "FAIL", message = "处理异常" });
+        }
     }
 
     /// <summary>
