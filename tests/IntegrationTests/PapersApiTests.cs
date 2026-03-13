@@ -34,6 +34,7 @@ public class PapersApiTests
         };
         _mockWeChatService = new Mock<IWeChatService>();
         _mockWeChatPayService = new Mock<IWeChatPayService>();
+        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>())).ReturnsAsync(new List<VipMembership>());
         _mockDistributionChannelService = new Mock<IDistributionChannelService>();
     }
 
