@@ -31,7 +31,7 @@ public class PaymentOrdersController(
         var orders = await paymentOrderService.GetAllOrdersAsync(page, pageSize, status, userId);
         
         // Ensure VipProducts are loaded for orders implicitly or directly loaded in the service.
-        var totalCount = await paymentOrderService.GetOrderCountAsync(status);
+        var totalCount = await paymentOrderService.GetOrderCountAsync(status, userId);
 
         return this.StackView(new IndexViewModel
         {

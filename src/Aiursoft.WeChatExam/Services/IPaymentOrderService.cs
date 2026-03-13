@@ -25,5 +25,5 @@ public interface IPaymentOrderService
     /// <summary>
     /// 获取订单总数
     /// </summary>
-    Task<int> GetOrderCountAsync(PaymentOrderStatus? statusFilter = null);
+    Task<int> GetOrderCountAsync(PaymentOrderStatus? statusFilter = null, string? userIdFilter = null);
 }

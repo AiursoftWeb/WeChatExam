@@ -53,13 +53,20 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
             .ToListAsync();
     }
 
-    public async Task<int> GetOrderCountAsync(PaymentOrderStatus? statusFilter = null)
+    public async Task<int> GetOrderCountAsync(PaymentOrderStatus? statusFilter = null, string? userIdFilter = null)
     {
         var query = dbContext.PaymentOrders.AsQueryable();
+        
         if (statusFilter.HasValue)
         {
             query = query.Where(o => o.Status == statusFilter.Value);
         }
+        
+        if (!string.IsNullOrEmpty(userIdFilter))
+        {
+            query = query.Where(o => o.UserId == userIdFilter);
+        }
+        
         return await query.CountAsync();
     }
 }
