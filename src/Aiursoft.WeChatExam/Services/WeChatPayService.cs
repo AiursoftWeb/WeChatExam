@@ -53,11 +53,16 @@ public class WeChatPayService(
         var amountInFen = vipProduct.PriceInFen;
         var description = $"{vipProduct.Name} - {vipProduct.Category?.Title ?? "VIP"}";
 
-        // Check if user already has active VIP for this product
+        // Check if user already has active VIP for this category
         var existingVip = await dbContext.VipMemberships
-            .FirstOrDefaultAsync(v => v.UserId == userId && v.VipProductId == vipProductId);
+            .Include(v => v.VipProduct)
+            .FirstOrDefaultAsync(v => 
+                v.UserId == userId && 
+                v.VipProduct != null && 
+                v.VipProduct.CategoryId == vipProduct.CategoryId &&
+                v.IsActive);
 
-        if (existingVip != null && existingVip.IsActive)
+        if (existingVip != null)
         {
             return new CreateOrderResult
             {
@@ -188,7 +193,7 @@ public class WeChatPayService(
         }
     }
 
-    public Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId)
+    public async Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId)
     {
         var paySettings = _settings.WeChat.Payment;
         var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
@@ -199,7 +204,7 @@ public class WeChatPayService(
         var signData = $"{_settings.WeChat.AppId}\n{timestamp}\n{nonceStr}\n{package}\n";
 
         // Read private key and sign
-        var privateKeyPem = File.ReadAllText(paySettings.PrivateKeyFilePath);
+        var privateKeyPem = await File.ReadAllTextAsync(paySettings.PrivateKeyFilePath);
         var paySign = RSAUtility.SignWithSHA256(privateKeyPem, signData);
 
         var result = new JsApiPayParams
@@ -212,7 +217,7 @@ public class WeChatPayService(
             PaySign = paySign!
         };
 
-        return Task.FromResult(result);
+        return result;
     }
 
     public async Task<bool> HandlePaymentNotifyAsync(
@@ -386,9 +391,12 @@ public class WeChatPayService(
         }
         else
         {
-            // Re-purchase: re-activate from now (only allowed when expired)
+            // Re-purchase: re-activate and extend from existing end time if still valid
+            existingVip.EndTime = Math.Max(DateTime.UtcNow.Ticks, existingVip.EndTime.Ticks) == existingVip.EndTime.Ticks
+                ? existingVip.EndTime.AddDays(durationDays)
+                : DateTime.UtcNow.AddDays(durationDays);
+                
             existingVip.StartTime = DateTime.UtcNow;
-            existingVip.EndTime = DateTime.UtcNow.AddDays(durationDays);
             existingVip.LastPaymentOrderId = order.Id;
 
             logger.LogInformation("Re-activated VIP {ProductName} for user {UserId}, new expiry {EndTime}",

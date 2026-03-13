@@ -8,7 +8,7 @@ namespace Aiursoft.WeChatExam.Services;
 /// </summary>
 public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderService
 {
-    public async Task<List<PaymentOrder>> GetAllOrdersAsync(PaymentOrderStatus? statusFilter = null, string? userIdFilter = null)
+    public async Task<List<PaymentOrder>> GetAllOrdersAsync(int page = 1, int pageSize = 50, PaymentOrderStatus? statusFilter = null, string? userIdFilter = null)
     {
         var query = dbContext.PaymentOrders.AsQueryable();
 
@@ -27,6 +27,8 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
             .Include(o => o.VipProduct)
             .ThenInclude(p => p!.Category)
             .OrderByDescending(o => o.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
     }
 

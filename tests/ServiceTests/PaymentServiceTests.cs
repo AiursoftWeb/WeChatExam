@@ -36,13 +36,13 @@ public class PaymentServiceTests
         );
         await _dbContext.SaveChangesAsync();
 
-        var paidOrders = await _service.GetAllOrdersAsync(PaymentOrderStatus.Paid);
+        var paidOrders = await _service.GetAllOrdersAsync(1, 50, PaymentOrderStatus.Paid);
         Assert.AreEqual(2, paidOrders.Count);
 
-        var user1Orders = await _service.GetAllOrdersAsync(null, userId);
+        var user1Orders = await _service.GetAllOrdersAsync(1, 50, null, userId);
         Assert.AreEqual(2, user1Orders.Count);
         
-        var user1PaidOrders = await _service.GetAllOrdersAsync(PaymentOrderStatus.Paid, userId);
+        var user1PaidOrders = await _service.GetAllOrdersAsync(1, 50, PaymentOrderStatus.Paid, userId);
         Assert.AreEqual(1, user1PaidOrders.Count);
     }
 

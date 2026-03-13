@@ -26,9 +26,9 @@ public class PaymentOrdersController(
         CascadedLinksOrder = 3,
         LinkText = "Payment Orders",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index(PaymentOrderStatus? status, string? userId)
+    public async Task<IActionResult> Index(PaymentOrderStatus? status, string? userId, int page = 1, int pageSize = 50)
     {
-        var orders = await paymentOrderService.GetAllOrdersAsync(status, userId);
+        var orders = await paymentOrderService.GetAllOrdersAsync(page, pageSize, status, userId);
         
         // Ensure VipProducts are loaded for orders implicitly or directly loaded in the service.
         var totalCount = await paymentOrderService.GetOrderCountAsync(status);

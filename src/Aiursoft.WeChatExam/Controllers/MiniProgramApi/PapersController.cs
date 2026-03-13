@@ -64,6 +64,17 @@ public class PapersController : ControllerBase
         }
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        
+        // Pre-fetch the user's active VIP categories to prevent N+1 queries
+        var activeVipCategoryIds = new HashSet<Guid>();
+        if (userId != null)
+        {
+            var vips = await _payService.GetVipStatusListAsync(userId);
+            activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
+                                       .Select(v => v.VipProduct!.CategoryId)
+                                       .ToHashSet();
+        }
+
         var dtos = new List<PaperListDto>();
         var papers = await query.ToListAsync();
         foreach (var p in papers)
@@ -89,15 +100,7 @@ public class PapersController : ControllerBase
             {
                 // Has access if user has active VIP for ANY of the paper's categories
                 var categoryIds = p.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                dto.HasAccess = false;
-                foreach (var catId in categoryIds)
-                {
-                    if (userId != null && await _payService.HasVipForCategoryAsync(userId, catId))
-                    {
-                        dto.HasAccess = true;
-                        break;
-                    }
-                }
+                dto.HasAccess = categoryIds.Any(catId => activeVipCategoryIds.Contains(catId));
             }
             dtos.Add(dto);
         }

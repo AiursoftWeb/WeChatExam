@@ -10,7 +10,7 @@ public interface IPaymentOrderService
     /// <summary>
     /// 获取所有订单（支持筛选）
     /// </summary>
-    Task<List<PaymentOrder>> GetAllOrdersAsync(PaymentOrderStatus? statusFilter = null, string? userIdFilter = null);
+    Task<List<PaymentOrder>> GetAllOrdersAsync(int page = 1, int pageSize = 50, PaymentOrderStatus? statusFilter = null, string? userIdFilter = null);
 
     /// <summary>
     /// 获取订单详情（含日志）
