@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>Soru Ekle</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>VIP Ürünleri Ekle</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın eklenmesine izin verir.</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Herhangi bir kullanıcıya rol atanmasına veya kaldırılmasına izin verir.</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>Kategori, fiyat ve süre ayarlarıyla yeni VIP ürünler oluşturmaya izin verir.</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Etiketleri sistemden silmeyi izin verir. Bir etiketin silinmesinin ilişkili soruları silmeyeceğini not edin.</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>Genel sistem ayarlarını değiştirme izni verir.</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>Fiyat, süre ve aktif durum dahil olmak üzere VIP ürün ayarlarının değiştirilmesine izin verir.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Sahiplik durumundan bağımsız olarak sınavları okuma izni verir.</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Kullanıcı hesaplarının kalıcı olarak silinmesine izin verir.</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>VIP ürünlerinin kalıcı olarak silinmesine izin verir.</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Yapay zekâ kullanarak soru yanıtlarını ve açıklamalarını optimize etmek için arka plan işlerinin tetiklenmesine izin verir.</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Arka plan görev kuyruklarını görüntüleme ve yönetme ve bunların çalıştırma durumlarını görme izni verir.</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>Ödeme emirlerini, ödeme detaylarını ve kullanıcı ödeme geçmişini görüntülemeyi sağlar.</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Sistem düzeyindeki bilgileri ve ayarları görüntülemeye izin verir.</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Kullanıcı geri bildirimlerinin listesini görüntülemeye izin verir.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>VIP ürünlerini ve yapılandırmalarını görüntülemeye izin verir.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Kullanıcılara Rol Atama</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>Kullanıcıları Sil</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>Özel Ürünleri Sil</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>Herhangi Bir Kategoriyi Düzenle</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Kullanıcı Bilgilerini Düzenle</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>VİP Ürünleri Düzenle</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>Yeni dağıtım kanalları oluşturmak için izin verir.</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>Geri Bildirimleri Oku</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>Ödeme Emirlerini Oku</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Soruları Oku</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>Kullanıcıları Oku</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>VIP Ürünlerini Oku</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Bu Uygulamayı Yeniden Başlat</value>

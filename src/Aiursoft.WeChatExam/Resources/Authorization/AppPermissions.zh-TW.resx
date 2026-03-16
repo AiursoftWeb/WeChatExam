@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>新增題目</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>新增 VIP 產品</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>允許新增任何知識點，不論其擁有者為何。</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>允許對任何使用者指派或移除角色。</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>允許建立新的 VIP 產品，並設定類別、價格與時效。</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>允許從系統中刪除標籤。注意：刪除標籤不會刪除相關的問題。</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>允許修改系統全域設定。</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>允許修改 VIP 產品設定，包括價格、時效及啟用狀態。</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>允許讀取試卷，不受擁有權限制。</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>允許永久刪除使用者帳戶。</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>允許永久刪除 VIP 產品。</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>允許觸發背景工作，使用人工智慧優化問題答案與解釋。</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>允許檢視和管理背景工作佇列及其執行狀態。</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>允許查看付款訂單、付款詳情及用戶付款記錄。</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>允許檢視系統層級的資訊與設定。</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>允許查看使用者回饋清單。</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>允許檢視 VIP 產品及其設定。</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>指派角色給使用者</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>刪除使用者</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>刪除 VIP 產品</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>編輯任何類別</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>編輯使用者資訊</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>編輯 VIP 產品</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>授予建立新分發管道的權限。</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>閱讀回饋</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>讀取付款訂單</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>讀取問題</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>讀取使用者</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>讀取 VIP 產品</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>重新啟動此應用程式</value>

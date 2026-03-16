@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>प्रश्न जोड़ें</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>वीआईपी उत्पाद जोड़ें</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>किसी भी knowledgePoint को, स्वामित्व की परवाह किए बिना, जोड़ने की अनुमति देता है।</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>किसी भी उपयोगकर्ता को भूमिकाएँ सौंपने या हटाने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>श्रेणी, मूल्य और अवधि सेटिंग्स के साथ नए VIP उत्पाद बनाने की अनुमति देता है।</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>प्रणाली से टैग को हटाने की अनुमति देता है। ध्यान दें कि एक टैग को हटाने से जुड़े प्रश्नों को हटाया नहीं जाएगा।</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>ग्लोबल सिस्टम सेटिंग्स को संशोधित करने की अनुमति देता है।</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>कीमत, अवधि और सक्षम स्थिति सहित VIP उत्पाद सेटिंग्स को संशोधित करने की अनुमति देता है।</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>परीक्षाओं को पढ़ने की अनुमति देता है, स्वामित्व के बिना भी।</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>उपयोगकर्ता खातों को स्थायी रूप से हटाने की अनुमति देता है।</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>वीआईपी उत्पादों की स्थायी हटाने की अनुमति देता है।</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>AI का उपयोग करके प्रश्न के उत्तर और व्याख्याओं को अनुकूलित करने के लिए पृष्ठभूमि कार्यों को ट्रिगर करने की अनुमति देता है।</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>पृष्ठभूमि कार्य भंडारण और उनके निष्पादन स्थिति के दृश्य देखने और प्रबंधन की अनुमति देता है।</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>भुगतान आदेशों, भुगतान विवरण और उपयोगकर्ता भुगतान इतिहास को देखने की अनुमति देता है।</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>सिस्टम-स्तरीय जानकारी और सेटिंग्स देखने की अनुमति देता है।</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>उपयोगकर्ता फीडबैक की सूची देखने की अनुमति देता है।</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>वीआईपी उत्पादों और उनकी कॉन्फ़िगरेशन को देखने की अनुमति देता है।</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>उपयोगकर्ताओं को भूमिकाएँ नियत करें</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>उपयोगकर्ता हटाएं</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>वीआईपी उत्पादों को हटाएं</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>किसी भी श्रेणी को संपादित करें</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>उपयोगकर्ता जानकारी संपादित करें</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>वीआईपी उत्पादों को संपादित करें</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>नए वितरण चैनलों को बनाने की अनुमति देता है।</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>प्रतिक्रियाएँ पढ़ें</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>भुगतान आदेश पढ़ें</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>प्रश्न पढ़ें</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>उपयोगकर्ताओं को पढ़ें</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>VIP उत्पाद पढ़ें</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>इस ऐप को पुनरारंभ करें</value>

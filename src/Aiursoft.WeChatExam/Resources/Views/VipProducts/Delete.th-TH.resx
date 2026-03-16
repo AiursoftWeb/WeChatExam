@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Are you sure you want to delete this VIP product? This action cannot be undone." xml:space="preserve">
+    <value>คุณแน่ใจหรือไม่ที่จะลบผลิตภัณฑ์ VIP นี้? การกระทำนี้ไม่สามารถยกเลิกได้</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>หมวดหมู่</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="Delete VIP Product" xml:space="preserve">
+    <value>ลบผลิตภัณฑ์ VIP</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>ปิดใช้งาน</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>ระยะเวลา</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>เปิดใช้งาน</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>ชื่อ</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
+
+</root>

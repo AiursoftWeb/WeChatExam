@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>เพิ่มคำถาม</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>เพิ่มผลิตภัณฑ์ VIP</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้เพิ่ม knowledgePoint ใดๆ ก็ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>อนุญาตให้กำหนดหรือลบบทบาทสำหรับผู้ใช้ใดๆ</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>อนุญาตให้สร้างผลิตภัณฑ์ VIP ใหม่พร้อมการตั้งค่าหมวดหมู่ ราคา และระยะเวลา</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>อนุญาตให้ลบแท็กออกจากระบบ หมายเหตุว่า การลบแท็กจะไม่ลบคำถามที่เกี่ยวข้อง</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>อนุญาตให้แก้ไขการตั้งค่าระบบระดับโลก</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>อนุญาตให้แก้ไขการตั้งค่าผลิตภัณฑ์ VIP รวมถึงราคา ระยะเวลา และสถานะการใช้งาน</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้อ่านข้อสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>อนุญาตให้ลบบัญชีผู้ใช้อย่างถาวร</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>อนุญาตให้ลบผลิตภัณฑ์ VIP ถาวรได้</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>อนุญาตให้เริ่มงานเบื้องหลังเพื่อปรับปรุงคำตอบและคำอธิบายของคำถามโดยใช้ AI</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>อนุญาตให้ดูและจัดการคิวงานหลังบ้านและสถานะการดำเนินการของงาน</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>อนุญาตให้ดูคำสั่งชำระเงิน รายละเอียดการชำระเงิน และประวัติการชำระเงินของผู้ใช้</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>อนุญาตให้ดูข้อมูลและการตั้งค่าระดับระบบ</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>อนุญาตให้ดูรายการข้อเสนอแนะของผู้ใช้</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>อนุญาตให้ดูผลิตภัณฑ์ VIP และการตั้งค่าของผลิตภัณฑ์เหล่านั้น</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>กำหนดบทบาทให้ผู้ใช้</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>ลบผู้ใช้</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>ลบผลิตภัณฑ์ VIP</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>แก้ไขหมวดหมู่ใดก็ได้</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>แก้ไขข้อมูลผู้ใช้</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>แก้ไขผลิตภัณฑ์ VIP</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>ให้สิทธิ์ในการสร้างช่องทางการจัดจำหน่ายใหม่</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>อ่านคำติชม</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>อ่านคำสั่งชำระเงิน</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>อ่านคำถาม</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>อ่านข้อมูลผู้ใช้</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>อ่านผลิตภัณฑ์ VIP</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>รีบูตแอปนี้</value>
