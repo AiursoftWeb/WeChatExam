@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amount" xml:space="preserve">
+    <value>Montante</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Voltar à Lista</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Criado em</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="Expired At" xml:space="preserve">
+    <value>Expirou em</value>
+  </data>
+  <data name="No logs yet" xml:space="preserve">
+    <value>Ainda não há registos</value>
+  </data>
+  <data name="Order Information" xml:space="preserve">
+    <value>Informações do Pedido</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>N.º do Pedido</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Pago em</value>
+  </data>
+  <data name="Payment Logs" xml:space="preserve">
+    <value>Registos de Pagamento</value>
+  </data>
+  <data name="Payment Order Details" xml:space="preserve">
+    <value>Detalhes da Ordem de Pagamento</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Produto</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Utilizador</value>
+  </data>
+  <data name="WeChat Transaction ID" xml:space="preserve">
+    <value>ID da Transação WeChat</value>
+  </data>
+
+</root>
