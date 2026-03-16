@@ -12,6 +12,9 @@ public class Category
     [MaxLength(200)]
     public required string Title { get; set; }
 
+    [Display(Name = "Is Free")]
+    public bool IsFree { get; set; }
+
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 
     /// <summary>

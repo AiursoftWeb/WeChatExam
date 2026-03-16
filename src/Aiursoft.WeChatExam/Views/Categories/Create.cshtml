@@ -8,6 +8,11 @@
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
+    <div class="mb-3 form-check">
+        <input asp-for="IsFree" class="form-check-input" />
+        <label asp-for="IsFree" class="form-check-label">@Localizer["Is Free"]</label>
+        <span asp-validation-for="IsFree" class="text-danger"></span>
+    </div>
     <div class="mb-3">
         <label asp-for="ParentId" class="form-label">@Localizer["Parent Category"]</label>
         <select asp-for="ParentId" class="form-select">

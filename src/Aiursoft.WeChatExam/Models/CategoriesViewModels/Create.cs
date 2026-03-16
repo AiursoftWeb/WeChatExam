@@ -16,6 +16,9 @@ public class CreateViewModel: UiStackLayoutViewModel
     [Display(Name = "Title")]
     public string Title { get; set; } = string.Empty;
 
+    [Display(Name = "Is Free")]
+    public bool IsFree { get; set; }
+
     /// <summary>
     /// 父分类ID。若为 null，表示创建顶级分类。
     /// </summary>

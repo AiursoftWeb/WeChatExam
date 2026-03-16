@@ -11,6 +11,17 @@
                 <dl>
                     <dt>@Localizer["Title"]</dt>
                     <dd>@Model.Category.Title</dd>
+                    <dt>@Localizer["Is Free"]</dt>
+                    <dd>
+                        @if (Model.Category.IsFree)
+                        {
+                            <span class="badge bg-success">@Localizer["Free"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@Localizer["Paid"]</span>
+                        }
+                    </dd>
                     <dt>@Localizer["Parent"]</dt>
                     <dd>
                         @(Model.Category.Parent == null ? Localizer["Top Level"].Value : Model.Category.Parent.Title)

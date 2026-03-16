@@ -15,6 +15,16 @@
         }
         @Model.Title
     </td>
+    <td>
+        @if (Model.IsFree)
+        {
+            <span class="badge bg-success">@Localizer["Free"]</span>
+        }
+        else
+        {
+            <span class="badge bg-secondary">@Localizer["Paid"]</span>
+        }
+    </td>
     <td>@(Model.Parent == null ? Localizer["Top Level"].Value : Model.Parent.Title)</td>
     <td>
         <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
