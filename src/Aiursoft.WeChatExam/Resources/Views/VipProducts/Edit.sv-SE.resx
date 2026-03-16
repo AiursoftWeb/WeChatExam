@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Select Category --" xml:space="preserve">
+    <value>-- Välj kategori --</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Dagar</value>
+  </data>
+  <data name="Duration (Days)" xml:space="preserve">
+    <value>Varaktighet (dagar)</value>
+  </data>
+  <data name="Edit VIP Product" xml:space="preserve">
+    <value>Redigera VIP-produkt</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Aktiverad</value>
+  </data>
+  <data name="Fen (1/100 Yuan)" xml:space="preserve">
+    <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Price (Fen)" xml:space="preserve">
+    <value>Pris (Fen)</value>
+  </data>
+  <data name="Product Name" xml:space="preserve">
+    <value>Produktnamn</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+
+</root>
