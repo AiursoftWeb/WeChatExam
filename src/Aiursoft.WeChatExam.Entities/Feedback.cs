@@ -21,6 +21,8 @@ public class Feedback
     [MaxLength(100)]
     public string? Contact { get; set; }
 
+    public FeedbackType Type { get; set; } = FeedbackType.Other;
+
     public FeedbackStatus Status { get; set; } = FeedbackStatus.Pending;
 
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;

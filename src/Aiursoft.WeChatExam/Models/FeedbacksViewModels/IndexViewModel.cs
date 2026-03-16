@@ -14,4 +14,5 @@ public class IndexViewModel: UiStackLayoutViewModel
     public int PageSize { get; set; }
     public int TotalCount { get; set; }
     public FeedbackStatus? StatusFilter { get; set; }
+    public FeedbackType? TypeFilter { get; set; }
 }

@@ -13,13 +13,14 @@ public class FeedbackService : IFeedbackService, IScopedDependency
         _dbContext = dbContext;
     }
 
-    public async Task<Feedback> SubmitFeedbackAsync(string userId, string content, string? contact)
+    public async Task<Feedback> SubmitFeedbackAsync(string userId, string content, string? contact, FeedbackType type)
     {
         var feedback = new Feedback
         {
             UserId = userId,
             Content = content,
             Contact = contact,
+            Type = type,
             CreatedAt = DateTime.UtcNow,
             Status = FeedbackStatus.Pending
         };
@@ -37,7 +38,7 @@ public class FeedbackService : IFeedbackService, IScopedDependency
             .ToListAsync();
     }
 
-    public async Task<(List<Feedback> items, int totalCount)> SearchFeedbacksAsync(int page, int pageSize, FeedbackStatus? status = null)
+    public async Task<(List<Feedback> items, int totalCount)> SearchFeedbacksAsync(int page, int pageSize, FeedbackStatus? status = null, FeedbackType? type = null)
     {
         var query = _dbContext.Feedbacks
             .AsQueryable();
@@ -45,6 +46,11 @@ public class FeedbackService : IFeedbackService, IScopedDependency
         if (status.HasValue)
         {
             query = query.Where(f => f.Status == status.Value);
+        }
+
+        if (type.HasValue)
+        {
+            query = query.Where(f => f.Type == type.Value);
         }
 
         var totalCount = await query.CountAsync();

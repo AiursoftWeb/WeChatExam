@@ -21,10 +21,10 @@ public class FeedbacksController(IFeedbackService feedbackService) : Controller
         CascadedLinksOrder = 9997,
         LinkText = "User Feedbacks",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index(int page = 1, FeedbackStatus? status = null)
+    public async Task<IActionResult> Index(int page = 1, FeedbackStatus? status = null, FeedbackType? type = null)
     {
         const int pageSize = 20;
-        var (items, totalCount) = await feedbackService.SearchFeedbacksAsync(page, pageSize, status);
+        var (items, totalCount) = await feedbackService.SearchFeedbacksAsync(page, pageSize, status, type);
         
         return this.StackView(new IndexViewModel
         {
@@ -32,7 +32,8 @@ public class FeedbacksController(IFeedbackService feedbackService) : Controller
             Page = page,
             PageSize = pageSize,
             TotalCount = totalCount,
-            StatusFilter = status
+            StatusFilter = status,
+            TypeFilter = type
         });
     }
 

@@ -33,12 +33,14 @@ public class FeedbackServiceTests
         var userId = "test-user-id";
         var content = "Test content";
         var contact = "test@example.com";
+        var type = FeedbackType.Bug;
 
-        var feedback = await _feedbackService!.SubmitFeedbackAsync(userId, content, contact);
+        var feedback = await _feedbackService!.SubmitFeedbackAsync(userId, content, contact, type);
 
         Assert.AreEqual(userId, feedback.UserId);
         Assert.AreEqual(content, feedback.Content);
         Assert.AreEqual(contact, feedback.Contact);
+        Assert.AreEqual(type, feedback.Type);
         Assert.AreEqual(FeedbackStatus.Pending, feedback.Status);
         
         var count = await _context!.Feedbacks.CountAsync();
@@ -49,9 +51,9 @@ public class FeedbackServiceTests
     public async Task TestGetUserFeedbacksAsync()
     {
         var userId = "user1";
-        await _feedbackService!.SubmitFeedbackAsync(userId, "Content 1", null);
-        await _feedbackService!.SubmitFeedbackAsync(userId, "Content 2", null);
-        await _feedbackService!.SubmitFeedbackAsync("user2", "Content 3", null);
+        await _feedbackService!.SubmitFeedbackAsync(userId, "Content 1", null, FeedbackType.Other);
+        await _feedbackService!.SubmitFeedbackAsync(userId, "Content 2", null, FeedbackType.Suggestion);
+        await _feedbackService!.SubmitFeedbackAsync("user2", "Content 3", null, FeedbackType.Bug);
 
         var feedbacks = await _feedbackService.GetUserFeedbacksAsync(userId);
         Assert.AreEqual(2, feedbacks.Count);
@@ -61,9 +63,9 @@ public class FeedbackServiceTests
     [TestMethod]
     public async Task TestSearchFeedbacksAsync()
     {
-        await _feedbackService!.SubmitFeedbackAsync("u1", "C1", null);
+        await _feedbackService!.SubmitFeedbackAsync("u1", "C1", null, FeedbackType.Bug);
         await Task.Delay(20);
-        var f2 = await _feedbackService!.SubmitFeedbackAsync("u2", "C2", null);
+        var f2 = await _feedbackService!.SubmitFeedbackAsync("u2", "C2", null, FeedbackType.Suggestion);
         await Task.Delay(20);
         await _feedbackService.UpdateFeedbackStatusAsync(f2.Id, FeedbackStatus.Processed);
 
@@ -80,12 +82,17 @@ public class FeedbackServiceTests
         var (processedItems, processedTotal) = await _feedbackService.SearchFeedbacksAsync(1, 10, FeedbackStatus.Processed);
         Assert.AreEqual(1, processedTotal);
         Assert.AreEqual("C2", processedItems[0].Content);
+
+        // Search by type
+        var (bugItems, bugTotal) = await _feedbackService.SearchFeedbacksAsync(1, 10, type: FeedbackType.Bug);
+        Assert.AreEqual(1, bugTotal);
+        Assert.AreEqual("C1", bugItems[0].Content);
     }
 
     [TestMethod]
     public async Task TestUpdateFeedbackStatusAsync()
     {
-        var feedback = await _feedbackService!.SubmitFeedbackAsync("u1", "C1", null);
+        var feedback = await _feedbackService!.SubmitFeedbackAsync("u1", "C1", null, FeedbackType.Suggestion);
         Assert.IsNotNull(feedback);
         Assert.AreNotEqual(0, feedback.Id);
         Assert.AreEqual(FeedbackStatus.Pending, feedback.Status);

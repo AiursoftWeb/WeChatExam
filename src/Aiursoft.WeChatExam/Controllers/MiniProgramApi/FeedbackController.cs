@@ -33,7 +33,7 @@ public class FeedbackController(IFeedbackService feedbackService) : ControllerBa
             return Unauthorized();
         }
 
-        await feedbackService.SubmitFeedbackAsync(userId, model.Content, model.Contact);
+        await feedbackService.SubmitFeedbackAsync(userId, model.Content, model.Contact, model.Type);
         return Ok(new { Message = "Feedback submitted successfully" });
     }
 
@@ -58,6 +58,7 @@ public class FeedbackController(IFeedbackService feedbackService) : ControllerBa
         var response = feedbacks.Select(f => new FeedbackResponseDto
         {
             Id = f.Id,
+            Type = f.Type,
             Content = f.Content,
             Contact = f.Contact,
             Status = f.Status,
