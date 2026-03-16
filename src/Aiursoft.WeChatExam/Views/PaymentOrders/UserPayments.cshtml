@@ -1,0 +1,104 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Entities
+
+@model Aiursoft.WeChatExam.Models.PaymentOrdersViewModels.UserPaymentsViewModel
+
+<h1 class="h3 mb-3">@Localizer["User Payment History"]</h1>
+
+<div class="row mb-3">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["User Info"]</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>@Localizer["User"]:</strong> @(Model.UserDisplayName ?? Model.UserId)</p>
+                <p><strong>@Localizer["User ID"]:</strong> <code class="small">@Model.UserId</code></p>
+                @if (Model.VipMemberships.Any())
+                {
+                    <hr />
+                    <h6><strong>@Localizer["VIP Memberships"]:</strong></h6>
+                    <ul class="list-unstyled">
+                        @foreach(var vip in Model.VipMemberships)
+                        {
+                            <li class="mb-2 border-bottom pb-2">
+                                <div><strong>@Localizer["Product"]:</strong> <span class="badge bg-info">@(vip.VipProduct?.Name ?? "-")</span></div>
+                                <div>
+                                    <strong>@Localizer["Status"]:</strong>
+                                    @if (vip.IsActive)
+                                    {
+                                        <span class="badge bg-success">@Localizer["Active"]</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">@Localizer["Expired"]</span>
+                                    }
+                                </div>
+                                <div><small><strong>@Localizer["Start"]:</strong> <label data-utc-time="@vip.StartTime.ToHtmlDateTime()"></label></small></div>
+                                <div><small><strong>@Localizer["End"]:</strong> <label data-utc-time="@vip.EndTime.ToHtmlDateTime()"></label></small></div>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <hr />
+                    <p class="text-muted">@Localizer["No VIP memberships"]</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Payment History"] (@Model.Orders.Count)</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Localizer["Order No"]</th>
+                            <th>@Localizer["Product"]</th>
+                            <th>@Localizer["Amount"]</th>
+                            <th>@Localizer["Status"]</th>
+                            <th>@Localizer["Created"]</th>
+                            <th>@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.Orders)
+                        {
+                            <tr>
+                                <td><code class="small">@order.OutTradeNo</code></td>
+                                <td><span class="badge bg-info">@(order.VipProduct?.Name ?? "-")</span></td>
+                                <td>¥@((order.AmountInFen / 100.0).ToString("F2"))</td>
+                                <td>
+                                    @{
+                                        var badgeClass = order.Status switch
+                                        {
+                                            PaymentOrderStatus.Paid => "bg-success",
+                                            PaymentOrderStatus.Pending => "bg-warning text-dark",
+                                            PaymentOrderStatus.Failed => "bg-danger",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @badgeClass">@order.Status</span>
+                                </td>
+                                <td><label class="text-monospace" data-utc-time="@order.CreatedAt.ToHtmlDateTime()"></label></td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-info">
+                                        <i class="align-middle" data-lucide="eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+    <i class="align-middle me-1" data-lucide="arrow-left"></i> @Localizer["Back to List"]
+</a>

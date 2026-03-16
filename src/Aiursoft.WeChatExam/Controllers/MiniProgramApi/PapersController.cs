@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
+using System.Security.Claims;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +18,13 @@ public class PapersController : ControllerBase
 {
     private readonly IPaperService _paperService;
     private readonly WeChatExamDbContext _context;
+    private readonly IWeChatPayService _payService;
 
-    public PapersController(IPaperService paperService, WeChatExamDbContext context)
+    public PapersController(IPaperService paperService, WeChatExamDbContext context, IWeChatPayService payService)
     {
         _paperService = paperService;
         _context = context;
+        _payService = payService;
     }
 
     /// <summary>
@@ -40,6 +43,7 @@ public class PapersController : ControllerBase
     {
         var query = _context.Papers
             .Where(p => p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen)
+            .Include(p => p.PaperCategories)
             .Include(p => p.PaperSnapshots)
             .Include(p => p.PaperTags)
             .ThenInclude(pt => pt.Tag)
@@ -60,8 +64,23 @@ public class PapersController : ControllerBase
             query = query.Where(p => p.PaperTags.Any(pt => pt.Tag.DisplayName == tag));
         }
 
-        var papers = await query
-            .Select(p => new PaperListDto
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        
+        // Pre-fetch the user's active VIP categories to prevent N+1 queries
+        var activeVipCategoryIds = new HashSet<Guid>();
+        if (userId != null)
+        {
+            var vips = await _payService.GetVipStatusListAsync(userId);
+            activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
+                                       .Select(v => v.VipProduct!.CategoryId)
+                                       .ToHashSet();
+        }
+
+        var dtos = new List<PaperListDto>();
+        var papers = await query.ToListAsync();
+        foreach (var p in papers)
+        {
+            var dto = new PaperListDto
             {
                 Id = p.Id,
                 Title = p.Title,
@@ -72,10 +91,22 @@ public class PapersController : ControllerBase
                 Tags = p.PaperTags.Select(pt => pt.Tag.DisplayName).ToList(),
                 LatestSnapshotId = p.PaperSnapshots.OrderByDescending(s => s.Version).First().Id,
                 LatestVersion = p.PaperSnapshots.Max(s => s.Version)
-            })
-            .ToListAsync();
+            };
 
-        return Ok(papers);
+            if (p.IsFree)
+            {
+                dto.HasAccess = true;
+            }
+            else
+            {
+                // Has access if user has active VIP for ANY of the paper's categories
+                var categoryIds = p.PaperCategories.Select(pc => pc.CategoryId).ToList();
+                dto.HasAccess = categoryIds.Any(catId => activeVipCategoryIds.Contains(catId));
+            }
+            dtos.Add(dto);
+        }
+
+        return Ok(dtos);
     }
 
     /// <summary>
@@ -94,6 +125,30 @@ public class PapersController : ControllerBase
             return NotFound(new { Message = "Snapshot not found" });
         }
 
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        bool hasAccess = snapshot.IsFree;
+
+        if (!hasAccess && userId != null)
+        {
+            var paper = await _context.Papers.Include(p => p.PaperCategories)
+                .FirstOrDefaultAsync(p => p.Id == snapshot.PaperId);
+                
+            if (paper != null)
+            {
+                var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();
+                
+                var vips = await _payService.GetVipStatusListAsync(userId);
+                var activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
+                                               .Select(v => v.VipProduct!.CategoryId)
+                                               .ToHashSet();
+
+                if (categoryIds.Any(catId => activeVipCategoryIds.Contains(catId)))
+                {
+                    hasAccess = true;
+                }
+            }
+        }
+
         var dto = new PaperSnapshotDto
         {
             Id = snapshot.Id,
@@ -102,7 +157,8 @@ public class PapersController : ControllerBase
             Title = snapshot.Title,
             TimeLimit = snapshot.TimeLimit,
             IsFree = snapshot.IsFree,
-            Questions = snapshot.QuestionSnapshots.OrderBy(q => q.Order).Select(q => new QuestionSnapshotDto
+            HasAccess = hasAccess,
+            Questions = hasAccess ? snapshot.QuestionSnapshots.OrderBy(q => q.Order).Select(q => new QuestionSnapshotDto
             {
                 Id = q.Id,
                 Order = q.Order,
@@ -110,7 +166,7 @@ public class PapersController : ControllerBase
                 Content = q.Content,
                 QuestionType = q.QuestionType,
                 Metadata = q.Metadata
-            }).ToList()
+            }).ToList() : new List<QuestionSnapshotDto>()
         };
 
         return Ok(dto);
@@ -136,4 +192,3 @@ public class PapersController : ControllerBase
         return Ok(dtos);
     }
 }
-

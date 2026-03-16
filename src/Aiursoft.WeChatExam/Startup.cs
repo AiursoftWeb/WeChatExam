@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SKIT.FlurlHttpClient.Wechat.Api;
+using SKIT.FlurlHttpClient.Wechat.TenpayV3;
 
 namespace Aiursoft.WeChatExam;
 
@@ -58,6 +59,7 @@ public class Startup : IWebStartup
         services.AddScoped<IExtractService, ExtractService>();
         services.AddScoped<IOptimizationService, OptimizationService>();
         services.AddScoped<IFeedbackService, FeedbackService>();
+        services.AddScoped<IVipProductService, VipProductService>();
 
         // Background job queue
         services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();
@@ -78,6 +80,28 @@ public class Startup : IWebStartup
             });
 
             services.AddScoped<IWeChatService, WeChatService>();
+        }
+
+        // Configure SKIT WeChat TenpayV3 Client for payment
+        if (appSettings.WeChatEnabled && appSettings.WeChat.Payment.Enabled)
+        {
+            var paySettings = appSettings.WeChat.Payment;
+            services.AddSingleton(_ =>
+            {
+                var privateKeyPem = File.ReadAllText(paySettings.PrivateKeyFilePath);
+                var options = new WechatTenpayClientOptions
+                {
+                    MerchantId = paySettings.MchId,
+                    MerchantCertificateSerialNumber = paySettings.CertificateSerialNumber,
+                    MerchantCertificatePrivateKey = privateKeyPem,
+                    MerchantV3Secret = paySettings.V3SecretKey,
+                    AutoDecryptResponseSensitiveProperty = true
+                };
+                return new WechatTenpayClient(options);
+            });
+
+            services.AddScoped<IWeChatPayService, WeChatPayService>();
+            services.AddScoped<IPaymentOrderService, PaymentOrderService>();
         }
 
         // Add Razor Pages and MVC for admin web interface

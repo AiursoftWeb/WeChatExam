@@ -14,7 +14,8 @@ public class PaperSnapshotDto
     [Required]
     public int TimeLimit { get; set; }
     public bool IsFree { get; set; }
-    public List<QuestionSnapshotDto> Questions { get; set; } = new();
+    public bool HasAccess { get; set; }
+    public List<QuestionSnapshotDto> Questions { get; set; } = [];
 }
 
 public class QuestionSnapshotDto
@@ -45,5 +46,6 @@ public class PaperListDto
     public List<string> Tags { get; set; } = new();
     public Guid LatestSnapshotId { get; set; }
     public int LatestVersion { get; set; }
+    public bool HasAccess { get; set; }
 }
 

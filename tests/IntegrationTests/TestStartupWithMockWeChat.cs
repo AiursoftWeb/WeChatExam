@@ -25,8 +25,10 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class TestStartupWithMockWeChat : IWebStartup
 {
     public static Mock<IWeChatService>? MockWeChatService { get; set; }
+    public static Mock<IWeChatPayService>? MockWeChatPayService { get; set; }
     public static Mock<IDistributionChannelService>? MockDistributionChannelService { get; set; }
     public static Mock<IOllamaService>? MockOllamaService { get; set; }
+    public static Mock<IVipProductService>? MockVipProductService { get; set; }
 
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -73,6 +75,11 @@ public class TestStartupWithMockWeChat : IWebStartup
         {
             services.AddScoped(_ => MockWeChatService.Object);
         }
+
+        if (MockWeChatPayService != null)
+        {
+            services.AddScoped(_ => MockWeChatPayService.Object);
+        }
         
         if (MockDistributionChannelService != null)
         {
@@ -86,6 +93,15 @@ public class TestStartupWithMockWeChat : IWebStartup
         else
         {
             services.AddScoped<IOllamaService, OllamaService>();
+        }
+
+        if (MockVipProductService != null)
+        {
+            services.AddScoped(_ => MockVipProductService.Object);
+        }
+        else
+        {
+            services.AddScoped<IVipProductService, VipProductService>();
         }
 
         // Add Razor Pages and MVC for admin web interface
