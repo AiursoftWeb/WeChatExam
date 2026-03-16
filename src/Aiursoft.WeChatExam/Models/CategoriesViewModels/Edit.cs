@@ -20,6 +20,9 @@ public class EditViewModel: UiStackLayoutViewModel
     [Display(Name = "Title")]
     public string Title { get; set; } = string.Empty;
 
+    [Display(Name = "Is Free")]
+    public bool IsFree { get; set; }
+
     /// <summary>
     /// 父分类ID。若为 null，表示将分类移动到顶级。
     /// </summary>

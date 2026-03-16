@@ -85,6 +85,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         {
             Id = Guid.NewGuid(),
             Title = model.Title,
+            IsFree = model.IsFree,
             ParentId = model.ParentId
         };
 
@@ -133,6 +134,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         {
             Id = id.Value,
             Title = category.Title,
+            IsFree = category.IsFree,
             ParentId = category.ParentId,
             AvailableParents = availableParents
         };
@@ -195,6 +197,7 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         }
 
         category.Title = model.Title;
+        category.IsFree = model.IsFree;
         category.ParentId = model.ParentId;
 
         context.Categories.Update(category);

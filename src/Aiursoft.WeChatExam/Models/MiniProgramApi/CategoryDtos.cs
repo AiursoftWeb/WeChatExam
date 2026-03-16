@@ -10,6 +10,8 @@ public class CategoryDto
     [Required]
     public string Title { get; set; } = string.Empty;
 
+    public bool IsFree { get; set; }
+
     public Child[] Children { get; set; } = Array.Empty<Child>();
 }
 
@@ -18,6 +20,8 @@ public class Child
     public Guid Id { get; set; }
     
     public string Title { get; set; } = string.Empty;
+
+    public bool IsFree { get; set; }
 }
 
 public class CreateCategoryDto
@@ -25,6 +29,8 @@ public class CreateCategoryDto
     [Required]
     [MaxLength(200)]
     public string Title { get; set; } = string.Empty;
+
+    public bool IsFree { get; set; }
 
     /// <summary>
     /// 父分类ID。若为 null，表示创建顶级分类。
@@ -37,6 +43,8 @@ public class UpdateCategoryDto
     [Required]
     [MaxLength(200)]
     public string Title { get; set; } = string.Empty;
+
+    public bool IsFree { get; set; }
 
     /// <summary>
     /// 父分类ID。若为 null，表示将分类移动到顶级。

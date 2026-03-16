@@ -97,6 +97,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool>("IsFree")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("char(36)");
 

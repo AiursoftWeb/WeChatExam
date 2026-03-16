@@ -3,6 +3,7 @@ using System;
 using Aiursoft.WeChatExam.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aiursoft.WeChatExam.Sqlite.Migrations
 {
     [DbContext(typeof(SqliteContext))]
-    partial class SqliteContextModelSnapshot : ModelSnapshot
+    [Migration("20260316112519_AddIsFreeToCategory")]
+    partial class AddIsFreeToCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
@@ -274,9 +277,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Status")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")

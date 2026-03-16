@@ -32,10 +32,12 @@ public class CategoriesController : ControllerBase
             {
                 Id = c.Id,
                 Title = c.Title,
+                IsFree = c.IsFree,
                 Children = c.Children.Select(child => new Child
                 {
                     Id = child.Id,
-                    Title = child.Title
+                    Title = child.Title,
+                    IsFree = child.IsFree
                 }).ToArray()
             })
             .ToListAsync();
@@ -68,10 +70,12 @@ public class CategoriesController : ControllerBase
             {
                 Id = c.Id,
                 Title = c.Title,
+                IsFree = c.IsFree,
                 Children = c.Children.Select(child => new Child
                 {
                     Id = child.Id,
-                    Title = child.Title
+                    Title = child.Title,
+                    IsFree = child.IsFree
                 }).ToArray()
             })
             .ToListAsync();
@@ -94,6 +98,7 @@ public class CategoriesController : ControllerBase
             {
                 Id = c.Id,
                 Title = c.Title,
+                IsFree = c.IsFree,
                 Children = Array.Empty<Child>()
             })
             .ToListAsync();
