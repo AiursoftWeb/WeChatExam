@@ -11,11 +11,15 @@ public class SubmitFeedbackDto
 
     [MaxLength(100)]
     public string? Contact { get; set; }
+
+    [Required]
+    public FeedbackType Type { get; set; }
 }
 
 public class FeedbackResponseDto
 {
     public int Id { get; set; }
+    public FeedbackType Type { get; set; }
     public string Content { get; set; } = string.Empty;
     public string? Contact { get; set; }
     public FeedbackStatus Status { get; set; }

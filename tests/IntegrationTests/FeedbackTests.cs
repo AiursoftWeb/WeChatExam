@@ -125,7 +125,8 @@ public class FeedbackTests
         var feedbackModel = new SubmitFeedbackDto
         {
             Content = "This is a test feedback from integration test.",
-            Contact = "test@integration.com"
+            Contact = "test@integration.com",
+            Type = FeedbackType.Bug
         };
 
         var request = new HttpRequestMessage(HttpMethod.Post, "/api/Feedback");
@@ -143,6 +144,7 @@ public class FeedbackTests
         var myFeedbacks = await myResponse.Content.ReadFromJsonAsync<List<FeedbackResponseDto>>();
         Assert.AreEqual(1, myFeedbacks!.Count);
         Assert.AreEqual(feedbackModel.Content, myFeedbacks[0].Content);
+        Assert.AreEqual(feedbackModel.Type, myFeedbacks[0].Type);
         Assert.AreEqual(FeedbackStatus.Pending, myFeedbacks[0].Status);
 
         var feedbackId = myFeedbacks[0].Id;

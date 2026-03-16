@@ -11,7 +11,7 @@
 <div class="card mb-3">
     <div class="card-body">
         <form asp-action="Index" method="get" class="row g-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label class="form-label">@Localizer["Status"]</label>
                 <select name="status" class="form-select" onchange="this.form.submit()">
                     <option value="">@Localizer["All Status"]</option>
@@ -19,7 +19,17 @@
                     <option value="1" selected="@(Model.StatusFilter == FeedbackStatus.Processed)">@Localizer["Processed"]</option>
                 </select>
             </div>
-            <div class="col-md-8 text-end d-flex align-items-end justify-content-end">
+            <div class="col-md-3">
+                <label class="form-label">@Localizer["Type"]</label>
+                <select name="type" class="form-select" onchange="this.form.submit()">
+                    <option value="">@Localizer["All Types"]</option>
+                    @foreach (var type in Enum.GetValues<FeedbackType>())
+                    {
+                        <option value="@((int)type)" selected="@(Model.TypeFilter == type)">@Localizer[type.GetDisplayName()]</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6 text-end d-flex align-items-end justify-content-end">
                 <a href="@Url.Action("Index")" class="btn btn-outline-secondary me-2">@Localizer["Reset"]</a>
                 <button type="submit" class="btn btn-primary">@Localizer["Filter"]</button>
             </div>
@@ -33,6 +43,7 @@
             <thead class="table-light">
                 <tr>
                     <th>@Localizer["User"]</th>
+                    <th>@Localizer["Type"]</th>
                     <th>@Localizer["Content"]</th>
                     <th>@Localizer["Contact"]</th>
                     <th>@Localizer["Status"]</th>
@@ -56,6 +67,7 @@
                                 <span class="text-muted">@Localizer["Unknown User"] (@feedback.UserId)</span>
                             }
                         </td>
+                        <td>@Localizer[feedback.Type.GetDisplayName()]</td>
                         <td style="max-width: 400px; white-space: pre-wrap;">@feedback.Content</td>
                         <td>@feedback.Contact</td>
                         <td>
@@ -109,7 +121,7 @@
                         foreach (var i in Enumerable.Range(1, totalPages))
                         {
                             <li class="page-item @(Model.Page == i ? "active" : "")">
-                                <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-status="@Model.StatusFilter">@i</a>
+                                <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-status="@Model.StatusFilter" asp-route-type="@Model.TypeFilter">@i</a>
                             </li>
                         }
                     }
