@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>Add Questions</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>Add VIP Products</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Allows the addition of any knowledgePoint, regardless of ownership.</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Allows assigning or removing roles for any user.</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>Allows creating new VIP products with category, price, and duration settings.</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Allows deleting tags from the system. Note that deleting a tag will not delete associated questions.</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>Allows modifying global system settings.</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>Allows modifying VIP product settings including price, duration, and enabled status.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Allows reading of exams, regardless of ownership.</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Allows the permanent deletion of user accounts.</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Allows the permanent deletion of VIP products.</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Allows triggering background jobs to optimize question answers and explanations using AI.</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Allows viewing and managing background job queues and their execution status.</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>Allows viewing payment orders, payment details, and user payment history.</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Allows viewing system-level information and settings.</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Allows viewing the list of user feedback.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Allows viewing VIP products and their configuration.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Assign Roles to Users</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>Delete Users</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>Delete VIP Products</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>Edit Any Category</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Edit User Information</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>Edit VIP Products</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>Grants permission to create new distribution channels.</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>Read Feedback</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>Read Payment Orders</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Read Questions</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>View Users</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>Read VIP Products</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Restart This Application</value>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>一覧に戻る</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>作成日</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>終了日</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>期限切れ</value>
+  </data>
+  <data name="No VIP memberships" xml:space="preserve">
+    <value>VIP 会員資格なし</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>注文番号</value>
+  </data>
+  <data name="Payment History" xml:space="preserve">
+    <value>支払い履歴</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>商品</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="User ID" xml:space="preserve">
+    <value>ユーザーID</value>
+  </data>
+  <data name="User Info" xml:space="preserve">
+    <value>ユーザー情報</value>
+  </data>
+  <data name="User Payment History" xml:space="preserve">
+    <value>ユーザーの支払い履歴</value>
+  </data>
+  <data name="VIP Memberships" xml:space="preserve">
+    <value>VIP 会員資格</value>
+  </data>
+
+</root>

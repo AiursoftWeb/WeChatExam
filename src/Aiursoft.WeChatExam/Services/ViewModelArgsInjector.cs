@@ -114,6 +114,10 @@ public class ViewModelArgsInjector(
         _ = localizer["User Feedbacks"];
     
         _ = localizer["Create Tag"];
+    
+        _ = localizer["Payment Management"];
+        _ = localizer["Payment Orders"];
+        _ = localizer["VIP Products"];
     }
 
     public void InjectSimple(

@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>Tilføj spørgsmål</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>Tilføj VIP-produkter</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Tillader tilføjelse af enhver knowledgePoint, uanset ejerskab.</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Giver mulighed for at tildele eller fjerne roller for enhver bruger.</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>Tillader oprettelse af nye VIP-produkter med indstillinger for kategori, pris og varighed.</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Tillader sletning af tags fra systemet. Bemærk, at sletning af et tag ikke sletter tilknyttede spørgsmål.</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>Tillader ændring af globale systemindstillinger.</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>Tillader ændring af VIP-produktindstillinger, herunder pris, varighed og aktiveringsstatus.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Tillader læsning af eksamener, uanset ejerskab.</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Giver mulighed for den permanente sletning af brugerkonti.</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Tillader permanent sletning af VIP-produkter.</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Tillader aktivering af baggrundsjob til at optimerer spørgsmålsbesvarelser og forklaringer ved hjælp af AI.</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Tillader visning og håndtering af baggrundsjob-køer og deres udførelsesstatus.</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>Tillader visning af betalingsordrer, betalingsdetaljer og brugerens betalingshistorik.</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Giver mulighed for at se systemniveauoplysninger og -indstillinger.</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Tillader visning af listen over brugerfeedback.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Tillader visning af VIP-produkter og deres konfiguration.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Tildel roller til brugere</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>Slet brugere</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>Slet VIP-produkter</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>Rediger enhver kategori</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Rediger brugeroplysninger</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>Rediger VIP-produkter</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>Giver tilladelse til at oprette nye distributionskanaler.</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>Læs feedback</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>Læs betalingsordrer</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Læs spørgsmål</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>Læs brugere</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>Læs VIP-produkter</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Genstart denne app</value>

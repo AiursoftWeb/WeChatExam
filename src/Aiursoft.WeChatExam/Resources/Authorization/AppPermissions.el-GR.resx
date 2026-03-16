@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>Προσθήκη Ερωτήσεων</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>Προσθήκη Προϊόντων VIP</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την προσθήκη οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Επιτρέπει την ανάθεση ή την κατάργηση ρόλων για οποιονδήποτε χρήστη.</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>Επιτρέπει τη δημιουργία νέων προϊόντων VIP με ρυθμίσεις κατηγορίας, τιμής και διάρκειας.</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Επιτρέπει τη διαγραφή ετικετών από το σύστημα. Σημείωση: Η διαγραφή μιας ετικέτας δεν θα διαγράψει τις συνδεδεμένες ερωτήσεις.</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>Επιτρέπει την τροποποίηση των γενικών ρυθμίσεων του συστήματος.</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>Επιτρέπει την τροποποίηση των ρυθμίσεων προϊόντων VIP, συμπεριλαμβανομένης της τιμής, της διάρκειας και της κατάστασης ενεργοποίησης.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την ανάγνωση εξετάσεων, ανεξάρτητα από την κατοχή.</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Επιτρέπει τη μόνιμη διαγραφή των λογαριασμών χρηστών.</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Επιτρέπει τη μόνιμη διαγραφή των προϊόντων VIP.</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Επιτρέπει την εκκίνηση εργασιών στο παρασκήνιο για τη βελτιστοποίηση των απαντήσεων και εξηγήσεων σε ερωτήσεις με χρήση ΤΝ.</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Επιτρέπει την προβολή και διαχείριση των ουρών εργασιών στο παρασκήνιο και την κατάσταση εκτέλεσής τους.</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>Επιτρέπει την προβολή παραγγελιών πληρωμής, λεπτομερειών πληρωμής και ιστορικού πληρωμών χρηστών.</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Επιτρέπει την προβολή πληροφοριών και ρυθμίσεων σε επίπεδο συστήματος.</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Επιτρέπει την προβολή της λίστας των σχολίων των χρηστών.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Επιτρέπει την προβολή προϊόντων VIP και της διαμόρφωσής τους.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Ανάθεση Ρόλων σε Χρήστες</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>Διαγραφή Χρηστών</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>Διαγραφή Προϊόντων VIP</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>Επεξεργασία Οποιασδήποτε Κατηγορίας</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Επεξεργασία Πληροφοριών Χρήστη</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>Επεξεργασία Προϊόντων VIP</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>Χορηγεί άδεια για τη δημιουργία νέων καναλιών διανομής.</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>Ανάγνωση Σχολίων</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>Ανάγνωση Εντολών Πληρωμής</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Ανάγνωση Ερωτήσεων</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>Ανάγνωση Χρηστών</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>Ανάγνωση Προϊόντων VIP</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Επανεκκίνηση αυτής της εφαρμογής</value>

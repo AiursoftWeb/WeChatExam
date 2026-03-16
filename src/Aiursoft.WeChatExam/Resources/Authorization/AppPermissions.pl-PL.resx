@@ -42,6 +42,9 @@
   <data name="Add Questions" xml:space="preserve">
     <value>Dodaj pytania</value>
   </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>Dodaj produkty VIP</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Pozwala na dodawanie dowolnego knowledgePoint, niezależnie od jego właściciela.</value>
   </data>
@@ -59,6 +62,9 @@
   </data>
   <data name="Allows assigning or removing roles for any user." xml:space="preserve">
     <value>Pozwala na przypisywanie lub usuwanie ról dla dowolnego użytkownika.</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>Umożliwia tworzenie nowych produktów VIP z ustawieniami kategorii, ceny i okresu ważności.</value>
   </data>
   <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
     <value>Zezwala na usuwanie tagów z systemu. Uwaga: usunięcie tagu nie spowoduje usunięcia powiązanych pytań.</value>
@@ -117,6 +123,9 @@
   <data name="Allows modifying global system settings." xml:space="preserve">
     <value>Zezwala na modyfikację globalnych ustawień systemu.</value>
   </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>Umożliwia modyfikowanie ustawień produktów VIP, w tym ceny, okresu ważności i stanu aktywności.</value>
+  </data>
   <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
     <value>Zezwala na odczyt egzaminów, niezależnie od własności.</value>
   </data>
@@ -132,6 +141,9 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Pozwala na trwałe usunięcie kont użytkowników.</value>
   </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Umożliwia trwałe usuwanie produktów VIP.</value>
+  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Zezwala na uruchamianie zadań w tle w celu optymalizacji odpowiedzi i wyjaśnień na pytania za pomocą AI.</value>
   </data>
@@ -140,6 +152,9 @@
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Zezwala na przeglądanie i zarządzanie kolejkami zadań w tle oraz ich stanem wykonywania.</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>Umożliwia wyświetlanie zleceń płatności, szczegółów płatności oraz historii płatności użytkownika.</value>
   </data>
   <data name="Allows viewing system-level information and settings." xml:space="preserve">
     <value>Pozwala na przeglądanie informacji i ustawień na poziomie systemu.</value>
@@ -155,6 +170,9 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Umożliwia wyświetlanie listy opinii użytkowników.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Umożliwia wyświetlanie produktów VIP i ich konfiguracji.</value>
   </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Przypisywanie ról użytkownikom</value>
@@ -189,6 +207,9 @@
   <data name="Delete Users" xml:space="preserve">
     <value>Usuń użytkowników</value>
   </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>Usuń produkty VIP</value>
+  </data>
   <data name="Edit Any Category" xml:space="preserve">
     <value>Edytuj dowolną kategorię</value>
   </data>
@@ -219,6 +240,9 @@
   <data name="Edit User Information" xml:space="preserve">
     <value>Edytuj informacje o użytkowniku</value>
   </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>Edytuj produkty VIP</value>
+  </data>
   <data name="Grants permission to create new distribution channels." xml:space="preserve">
     <value>Przysługuje uprawnienie do tworzenia nowych kanałów dystrybucji.</value>
   </data>
@@ -246,6 +270,9 @@
   <data name="Read Feedbacks" xml:space="preserve">
     <value>Czytaj opinie</value>
   </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>Czytaj zlecenia płatności</value>
+  </data>
   <data name="Read Questions" xml:space="preserve">
     <value>Przeczytaj pytania</value>
   </data>
@@ -254,6 +281,9 @@
   </data>
   <data name="Read Users" xml:space="preserve">
     <value>Czytaj użytkowników</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>Odczyt produktów VIP</value>
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Uruchom ponownie tę aplikację</value>
