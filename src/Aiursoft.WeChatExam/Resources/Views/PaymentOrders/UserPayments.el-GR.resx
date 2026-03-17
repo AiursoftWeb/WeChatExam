@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Ενεργό</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Ποσό</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Επιστροφή στη λίστα</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Δημιουργήθηκε</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Λήξη</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>Λήξη</value>
+  </data>
+  <data name="No VIP memberships" xml:space="preserve">
+    <value>Δεν υπάρχουν συνδρομές VIP</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Αριθμός Παραγγελίας</value>
+  </data>
+  <data name="Payment History" xml:space="preserve">
+    <value>Ιστορικό Πληρωμών</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Προϊόν</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Έναρξη</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Κατάσταση</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Χρήστης</value>
+  </data>
+  <data name="User ID" xml:space="preserve">
+    <value>Αναγνωριστικό Χρήστη</value>
+  </data>
+  <data name="User Info" xml:space="preserve">
+    <value>Πληροφορίες Χρήστη</value>
+  </data>
+  <data name="User Payment History" xml:space="preserve">
+    <value>Ιστορικό Πληρωμών Χρήστη</value>
+  </data>
+  <data name="VIP Memberships" xml:space="preserve">
+    <value>Μελιχίες VIP</value>
+  </data>
+
+</root>
