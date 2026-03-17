@@ -59,6 +59,7 @@ public class UserPracticeHistoryController : ControllerBase
                 QuestionId = x.QuestionId,
                 UserAnswer = x.UserAnswer,
                 StandardAnswer = x.Question.StandardAnswer,
+                Explanation = x.Question.Explanation,
                 IsCorrect = x.IsCorrect,
                 PracticeType = x.PracticeType,
                 CreationTime = x.CreationTime
@@ -118,6 +119,7 @@ public class UserPracticeHistoryController : ControllerBase
             QuestionId = entity.QuestionId,
             UserAnswer = entity.UserAnswer,
             StandardAnswer = question.StandardAnswer,
+            Explanation = question.Explanation,
             IsCorrect = entity.IsCorrect,
             PracticeType = entity.PracticeType,
             CreationTime = entity.CreationTime
@@ -168,6 +170,7 @@ public class UserPracticeHistoryController : ControllerBase
             QuestionId = dto.QuestionId, // Return the Snapshot ID
             UserAnswer = dto.UserAnswer,
             StandardAnswer = snapshot.StandardAnswer,
+            Explanation = snapshot.Explanation,
             IsCorrect = gradingResult.IsCorrect,
             CreationTime = DateTime.UtcNow
         };

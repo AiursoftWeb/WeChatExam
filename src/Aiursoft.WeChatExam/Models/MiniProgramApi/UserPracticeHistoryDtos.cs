@@ -14,6 +14,8 @@ public class UserPracticeHistoryDto
     
     public string StandardAnswer { get; set; } = string.Empty;
     
+    public string Explanation { get; set; } = string.Empty;
+    
     [Required]
     public bool IsCorrect { get; set; }
 
