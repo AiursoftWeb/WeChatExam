@@ -91,6 +91,15 @@ public class Startup : IWebStartup
             {
                 var privateKeyPem = File.ReadAllText(paySettings.PrivateKeyFilePath);
                 var manager = new InMemoryCertificateManager();
+                
+                // If using Public Key mode (new version of WeChat Pay API)
+                if (!string.IsNullOrEmpty(paySettings.PlatformPublicKeyFilePath) && 
+                    !string.IsNullOrEmpty(paySettings.PlatformPublicKeyId))
+                {
+                    var publicKeyPem = File.ReadAllText(paySettings.PlatformPublicKeyFilePath);
+                    manager.AddEntry(new CertificateEntry(paySettings.PlatformPublicKeyId, publicKeyPem));
+                }
+
                 var options = new WechatTenpayClientOptions
                 {
                     MerchantId = paySettings.MchId,

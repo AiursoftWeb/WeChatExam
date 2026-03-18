@@ -152,6 +152,16 @@ public class WeChatPaySettings
     public string PrivateKeyFilePath { get; init; } = string.Empty;
 
     /// <summary>
+    /// 微信支付公钥 ID（如果使用公钥模式，则需要配置，通常以 PUB_KEY_ID_ 开头）
+    /// </summary>
+    public string PlatformPublicKeyId { get; init; } = string.Empty;
+
+    /// <summary>
+    /// 微信支付公钥 PEM 文件路径（如果使用公钥模式，则需要配置）
+    /// </summary>
+    public string PlatformPublicKeyFilePath { get; init; } = string.Empty;
+
+    /// <summary>
     /// 支付结果通知回调 URL
     /// </summary>
     public string PaymentNotifyUrl { get; init; } = string.Empty;
