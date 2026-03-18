@@ -8,7 +8,6 @@ using SKIT.FlurlHttpClient.Wechat.TenpayV3;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Models;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Events;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Utilities;
-using SKIT.FlurlHttpClient.Wechat.TenpayV3.Settings;
 
 namespace Aiursoft.WeChatExam.Services;
 
@@ -232,8 +231,6 @@ public class WeChatPayService(
     {
         try
         {
-            // Ensure platform certificates are available in the manager
-            await EnsureCertificatesAsync(serialNumber);
 
             // Verify callback signature using SDK (using positional arguments to avoid parameter name mismatches)
             var isValid = tenpayClient.VerifyEventSignature(timestamp, nonce, requestBody, signature, serialNumber);
@@ -330,12 +327,6 @@ public class WeChatPayService(
             logger.LogError(ex, "Failed to handle payment notify. Serial: {SerialNumber}", serialNumber);
             return false;
         }
-    }
-
-    private Task EnsureCertificatesAsync(string? targetSerialNumber = null)
-    {
-        // Public Key mode does not support dynamic certificate querying.
-        return Task.CompletedTask;
     }
 
     public async Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo)
