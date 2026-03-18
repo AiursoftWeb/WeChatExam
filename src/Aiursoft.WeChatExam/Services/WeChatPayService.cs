@@ -332,46 +332,10 @@ public class WeChatPayService(
         }
     }
 
-    private async Task EnsureCertificatesAsync(string? targetSerialNumber = null)
+    private Task EnsureCertificatesAsync(string? targetSerialNumber = null)
     {
-        // If in Public Key mode, skip certificate sync (public keys are static and not queryable)
-        if (tenpayClient.PlatformCertificateManager == null)
-        {
-            return;
-        }
-
-        // If target serial number is provided, check if it already exists
-        if (!string.IsNullOrEmpty(targetSerialNumber) && 
-            tenpayClient.PlatformCertificateManager.GetEntry(targetSerialNumber) != null)
-        {
-            return;
-        }
-
-        // If no target or target missing, query from WeChat
-        try
-        {
-            logger.LogInformation("Querying WeChat Pay platform certificates...");
-            var request = new QueryCertificatesRequest();
-            var response = await tenpayClient.ExecuteQueryCertificatesAsync(request);
-            if (response.IsSuccessful())
-            {
-                // Sync all certificates from the response to the manager
-                foreach (var certificate in response.CertificateList)
-                {
-                    tenpayClient.PlatformCertificateManager.AddEntry(new CertificateEntry(certificate.SerialNumber, certificate.EncryptCertificate.CipherText));
-                }
-                logger.LogInformation("Successfully updated platform certificates");
-            }
-            else
-            {
-                logger.LogError("Failed to query WeChat Pay certificates: {Code} {Message}", 
-                    response.ErrorCode, response.ErrorMessage);
-            }
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Exception while querying WeChat Pay platform certificates");
-        }
+        // Public Key mode does not support dynamic certificate querying.
+        return Task.CompletedTask;
     }
 
     public async Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo)
