@@ -8,6 +8,7 @@ using SKIT.FlurlHttpClient.Wechat.TenpayV3;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Models;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Events;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Utilities;
+using SKIT.FlurlHttpClient.Wechat.TenpayV3.Settings;
 
 namespace Aiursoft.WeChatExam.Services;
 
@@ -231,6 +232,9 @@ public class WeChatPayService(
     {
         try
         {
+            // Ensure platform certificates are available in the manager
+            await EnsureCertificatesAsync(serialNumber);
+
             // Verify callback signature using SDK (using positional arguments to avoid parameter name mismatches)
             var isValid = tenpayClient.VerifyEventSignature(timestamp, nonce, requestBody, signature, serialNumber);
 
@@ -325,6 +329,42 @@ public class WeChatPayService(
         {
             logger.LogError(ex, "Failed to handle payment notify. Serial: {SerialNumber}", serialNumber);
             return false;
+        }
+    }
+
+    private async Task EnsureCertificatesAsync(string? targetSerialNumber = null)
+    {
+        // If target serial number is provided, check if it already exists
+        if (!string.IsNullOrEmpty(targetSerialNumber) && 
+            tenpayClient.PlatformCertificateManager.GetEntry(targetSerialNumber) != null)
+        {
+            return;
+        }
+
+        // If no target or target missing, query from WeChat
+        try
+        {
+            logger.LogInformation("Querying WeChat Pay platform certificates...");
+            var request = new QueryCertificatesRequest();
+            var response = await tenpayClient.ExecuteQueryCertificatesAsync(request);
+            if (response.IsSuccessful())
+            {
+                // Sync all certificates from the response to the manager
+                foreach (var certificate in response.CertificateList)
+                {
+                    tenpayClient.PlatformCertificateManager.AddEntry(new CertificateEntry(certificate.SerialNumber, certificate.EncryptCertificate.CipherText));
+                }
+                logger.LogInformation("Successfully updated platform certificates");
+            }
+            else
+            {
+                logger.LogError("Failed to query WeChat Pay certificates: {Code} {Message}", 
+                    response.ErrorCode, response.ErrorMessage);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Exception while querying WeChat Pay platform certificates");
         }
     }
 
