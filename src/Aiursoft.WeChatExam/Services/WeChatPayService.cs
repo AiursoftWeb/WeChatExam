@@ -334,6 +334,12 @@ public class WeChatPayService(
 
     private async Task EnsureCertificatesAsync(string? targetSerialNumber = null)
     {
+        // If in Public Key mode, skip certificate sync (public keys are static and not queryable)
+        if (tenpayClient.PlatformCertificateManager == null)
+        {
+            return;
+        }
+
         // If target serial number is provided, check if it already exists
         if (!string.IsNullOrEmpty(targetSerialNumber) && 
             tenpayClient.PlatformCertificateManager.GetEntry(targetSerialNumber) != null)

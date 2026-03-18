@@ -90,25 +90,39 @@ public class Startup : IWebStartup
             services.AddSingleton(_ =>
             {
                 var privateKeyPem = File.ReadAllText(paySettings.PrivateKeyFilePath);
-                var manager = new InMemoryCertificateManager();
-                
-                // If using Public Key mode (new version of WeChat Pay API)
-                if (!string.IsNullOrEmpty(paySettings.PlatformPublicKeyFilePath) && 
-                    !string.IsNullOrEmpty(paySettings.PlatformPublicKeyId))
-                {
-                    var publicKeyPem = File.ReadAllText(paySettings.PlatformPublicKeyFilePath);
-                    manager.AddEntry(new CertificateEntry(paySettings.PlatformPublicKeyId, publicKeyPem));
-                }
-
                 var options = new WechatTenpayClientOptions
                 {
                     MerchantId = paySettings.MchId,
                     MerchantCertificateSerialNumber = paySettings.CertificateSerialNumber,
                     MerchantCertificatePrivateKey = privateKeyPem,
                     MerchantV3Secret = paySettings.V3SecretKey,
-                    AutoDecryptResponseSensitiveProperty = true,
-                    PlatformCertificateManager = manager
+                    AutoDecryptResponseSensitiveProperty = true
                 };
+
+                // If using Public Key mode (new version of WeChat Pay API)
+                if (!string.IsNullOrEmpty(paySettings.PlatformPublicKeyId) && 
+                    paySettings.PlatformPublicKeyId.StartsWith("PUB_KEY_ID_"))
+                {
+                    options.PlatformAuthScheme = PlatformAuthScheme.PublicKey;
+                    options.PlatformPublicKeyManager = new InMemoryPublicKeyManager();
+                    if (!string.IsNullOrEmpty(paySettings.PlatformPublicKeyFilePath))
+                    {
+                        var publicKeyPem = File.ReadAllText(paySettings.PlatformPublicKeyFilePath);
+                        options.PlatformPublicKeyManager.AddEntry(new PublicKeyEntry("RSA", paySettings.PlatformPublicKeyId, publicKeyPem));
+                    }
+                }
+                else
+                {
+                    options.PlatformAuthScheme = PlatformAuthScheme.Certificate;
+                    options.PlatformCertificateManager = new InMemoryCertificateManager();
+                    if (!string.IsNullOrEmpty(paySettings.PlatformPublicKeyFilePath) && 
+                        !string.IsNullOrEmpty(paySettings.PlatformPublicKeyId))
+                    {
+                        var publicKeyPem = File.ReadAllText(paySettings.PlatformPublicKeyFilePath);
+                        options.PlatformCertificateManager.AddEntry(new CertificateEntry(paySettings.PlatformPublicKeyId, publicKeyPem));
+                    }
+                }
+
                 return new WechatTenpayClient(options);
             });
 
