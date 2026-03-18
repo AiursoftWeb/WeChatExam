@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SKIT.FlurlHttpClient.Wechat.Api;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3;
+using SKIT.FlurlHttpClient.Wechat.TenpayV3.Settings;
 
 namespace Aiursoft.WeChatExam;
 
@@ -89,13 +90,15 @@ public class Startup : IWebStartup
             services.AddSingleton(_ =>
             {
                 var privateKeyPem = File.ReadAllText(paySettings.PrivateKeyFilePath);
+                var manager = new InMemoryCertificateManager();
                 var options = new WechatTenpayClientOptions
                 {
                     MerchantId = paySettings.MchId,
                     MerchantCertificateSerialNumber = paySettings.CertificateSerialNumber,
                     MerchantCertificatePrivateKey = privateKeyPem,
                     MerchantV3Secret = paySettings.V3SecretKey,
-                    AutoDecryptResponseSensitiveProperty = true
+                    AutoDecryptResponseSensitiveProperty = true,
+                    PlatformCertificateManager = manager
                 };
                 return new WechatTenpayClient(options);
             });
