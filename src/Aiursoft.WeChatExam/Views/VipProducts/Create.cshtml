@@ -1,4 +1,5 @@
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.CreateViewModel
+@using Aiursoft.WeChatExam.Entities
 
 <h1 class="h3 mb-3">@Localizer["Create VIP Product"]</h1>
 
@@ -12,6 +13,13 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="Type" class="form-label">@Localizer["VIP Type"]</label>
+                <select asp-for="Type" class="form-select" id="vipTypeSelect">
+                    <option value="@((int)VipProductType.Category)">@Localizer["Category VIP"]</option>
+                    <option value="@((int)VipProductType.RealExam)">@Localizer["Real Exam VIP"]</option>
+                </select>
+            </div>
+            <div class="mb-3" id="categorySection">
                 <label asp-for="CategoryId" class="form-label">@Localizer["Category"]</label>
                 <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select">
                     <option value="">@Localizer["-- Select Category --"]</option>
@@ -45,3 +53,22 @@
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var typeSelect = document.getElementById('vipTypeSelect');
+        var categorySection = document.getElementById('categorySection');
+
+        function toggleCategory() {
+            var isCategory = typeSelect.value === '@((int)VipProductType.Category)';
+            categorySection.style.display = isCategory ? '' : 'none';
+            if (!isCategory) {
+                var categorySelect = document.getElementById('CategoryId');
+                if (categorySelect) categorySelect.value = '';
+            }
+        }
+
+        typeSelect.addEventListener('change', toggleCategory);
+        toggleCategory();
+    });
+</script>

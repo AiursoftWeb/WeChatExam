@@ -66,14 +66,20 @@ public class PapersController : ControllerBase
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         
-        // Pre-fetch the user's active VIP categories to prevent N+1 queries
+        // Pre-fetch the user's active VIP info
         var activeVipCategoryIds = new HashSet<Guid>();
+        var hasRealExamVip = false;
         if (userId != null)
         {
             var vips = await _payService.GetVipStatusListAsync(userId);
-            activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
-                                       .Select(v => v.VipProduct!.CategoryId)
-                                       .ToHashSet();
+            var activeVips = vips.Where(v => v.IsActive && v.VipProduct != null).ToList();
+            
+            activeVipCategoryIds = activeVips
+                .Where(v => v.VipProduct!.Type == VipProductType.Category && v.VipProduct.CategoryId.HasValue)
+                .Select(v => v.VipProduct!.CategoryId!.Value)
+                .ToHashSet();
+                
+            hasRealExamVip = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);
         }
 
         var dtos = new List<PaperListDto>();
@@ -95,11 +101,17 @@ public class PapersController : ControllerBase
 
             if (p.IsFree)
             {
+                // 免费试卷，所有人可访问
                 dto.HasAccess = true;
+            }
+            else if (p.IsRealExam)
+            {
+                // 真题试卷，需要真题VIP
+                dto.HasAccess = hasRealExamVip;
             }
             else
             {
-                // Has access if user has active VIP for ANY of the paper's categories
+                // 分类付费试卷，需要对应分类VIP
                 var categoryIds = p.PaperCategories.Select(pc => pc.CategoryId).ToList();
                 dto.HasAccess = categoryIds.Any(catId => activeVipCategoryIds.Contains(catId));
             }
@@ -135,16 +147,27 @@ public class PapersController : ControllerBase
                 
             if (paper != null)
             {
-                var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                
                 var vips = await _payService.GetVipStatusListAsync(userId);
-                var activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
-                                               .Select(v => v.VipProduct!.CategoryId)
-                                               .ToHashSet();
-
-                if (categoryIds.Any(catId => activeVipCategoryIds.Contains(catId)))
+                var activeVips = vips.Where(v => v.IsActive && v.VipProduct != null).ToList();
+                
+                if (paper.IsRealExam)
                 {
-                    hasAccess = true;
+                    // 真题试卷，需要真题VIP
+                    hasAccess = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);
+                }
+                else
+                {
+                    // 分类付费试卷，需要对应分类VIP
+                    var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();
+                    var activeVipCategoryIds = activeVips
+                        .Where(v => v.VipProduct!.Type == VipProductType.Category && v.VipProduct.CategoryId.HasValue)
+                        .Select(v => v.VipProduct!.CategoryId!.Value)
+                        .ToHashSet();
+
+                    if (categoryIds.Any(catId => activeVipCategoryIds.Contains(catId)))
+                    {
+                        hasAccess = true;
+                    }
                 }
             }
         }

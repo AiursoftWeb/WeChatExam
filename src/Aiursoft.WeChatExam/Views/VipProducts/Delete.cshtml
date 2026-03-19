@@ -1,4 +1,5 @@
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.DeleteViewModel
+@using Aiursoft.WeChatExam.Entities
 
 <h1 class="h3 mb-3">@Localizer["Delete VIP Product"]</h1>
 
@@ -16,9 +17,25 @@
                     <td><strong>@Model.Product.Name</strong></td>
                 </tr>
                 <tr>
-                    <th>@Localizer["Category"]</th>
-                    <td><span class="badge bg-info">@(Model.Product.Category?.Title ?? "-")</span></td>
+                    <th>@Localizer["Type"]</th>
+                    <td>
+                        @if (Model.Product.Type == VipProductType.Category)
+                        {
+                            <span class="badge bg-primary">@Localizer["Category VIP"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">@Localizer["Real Exam VIP"]</span>
+                        }
+                    </td>
                 </tr>
+                @if (Model.Product.Type == VipProductType.Category)
+                {
+                    <tr>
+                        <th>@Localizer["Category"]</th>
+                        <td><span class="badge bg-info">@(Model.Product.Category?.Title ?? "-")</span></td>
+                    </tr>
+                }
                 <tr>
                     <th>@Localizer["Price"]</th>
                     <td>¥@((Model.Product.PriceInFen / 100.0).ToString("F2"))</td>

@@ -152,7 +152,7 @@ UserManager<User> userManager,
     /// <summary>
     /// 获取用户的 VIP 状态列表
     /// </summary>
-    /// <returns>包含各个分类 VIP 状态的响应</returns>
+    /// <returns>包含各个 VIP 状态的响应</returns>
     [HttpGet("vip-status")]
     [ProducesResponseType(typeof(VipStatusResponse), StatusCodes.Status200OK)]
     [WeChatUserOnly]
@@ -163,8 +163,9 @@ UserManager<User> userManager,
 
         var dtos = vips.Select(v => new VipMembershipDto
         {
-            CategoryId = v.VipProduct?.CategoryId ?? Guid.Empty,
-            CategoryName = v.VipProduct?.Category?.Title ?? "Unknown",
+            Type = v.VipProduct?.Type ?? VipProductType.Category,
+            CategoryId = v.VipProduct?.CategoryId,
+            CategoryName = v.VipProduct?.Category?.Title ?? string.Empty,
             ProductName = v.VipProduct?.Name ?? "VIP",
             IsActive = v.IsActive,
             EndTime = v.EndTime
@@ -181,14 +182,17 @@ UserManager<User> userManager,
     /// </summary>
     /// <returns>启用的 VIP 商品列表</returns>
     [HttpGet("vip-products")]
-    public async Task<IActionResult> GetVipProducts([FromQuery] Guid? categoryId = null)
+    public async Task<IActionResult> GetVipProducts(
+        [FromQuery] Guid? categoryId = null,
+        [FromQuery] VipProductType? type = null)
     {
-        var products = await vipProductService.GetEnabledAsync(categoryId);
+        var products = await vipProductService.GetEnabledAsync(categoryId, type);
         
         var dtos = products.Select(p => new
         {
             p.Id,
             p.Name,
+            Type = p.Type.ToString(),
             p.CategoryId,
             CategoryName = p.Category?.Title,
             p.PriceInFen,

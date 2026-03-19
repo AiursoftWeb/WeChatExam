@@ -5,25 +5,31 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Entities;
 
 /// <summary>
-/// VIP 商品（每个商品关联一个分类，不同分类的 VIP 是不同的商品）
+/// VIP 商品（分类 VIP 可关联一个分类，真题 VIP 独立于分类）
 /// </summary>
 [Index(nameof(CategoryId))]
+[Index(nameof(Type))]
 public class VipProduct
 {
     [Key]
     public Guid Id { get; init; } = Guid.NewGuid();
 
     /// <summary>
-    /// 商品名称，如"流行音乐VIP"
+    /// 商品名称，如"流行音乐VIP"或"真题VIP"
     /// </summary>
     [Required]
     [MaxLength(200)]
     public required string Name { get; set; }
 
     /// <summary>
-    /// 关联分类 ID
+    /// VIP 商品类型（分类VIP 或 真题VIP）
     /// </summary>
-    public required Guid CategoryId { get; set; }
+    public VipProductType Type { get; set; } = VipProductType.Category;
+
+    /// <summary>
+    /// 关联分类 ID（仅分类VIP需要，真题VIP为null）
+    /// </summary>
+    public Guid? CategoryId { get; set; }
 
     [ForeignKey(nameof(CategoryId))]
     public Category? Category { get; set; }
