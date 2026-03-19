@@ -5,6 +5,8 @@ namespace Aiursoft.WeChatExam.Services;
 public class PaperAccessService : IPaperAccessService
 {
     private readonly IWeChatPayService _payService;
+    private PaperAccessStatus? _cachedStatus;
+    private string? _cachedUserId;
 
     public PaperAccessService(IWeChatPayService payService)
     {
@@ -13,6 +15,11 @@ public class PaperAccessService : IPaperAccessService
 
     public async Task<PaperAccessStatus> GetUserAccessStatusAsync(string? userId)
     {
+        if (_cachedStatus != null && _cachedUserId == userId)
+        {
+            return _cachedStatus;
+        }
+
         var status = new PaperAccessStatus();
         
         if (userId != null)
@@ -27,6 +34,9 @@ public class PaperAccessService : IPaperAccessService
                 
             status.HasRealExamVip = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);
         }
+
+        _cachedStatus = status;
+        _cachedUserId = userId;
 
         return status;
     }
