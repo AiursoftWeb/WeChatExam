@@ -25,6 +25,11 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
 
     public async Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays)
     {
+        if (type == VipProductType.Category && !categoryId.HasValue)
+        {
+            throw new ArgumentException("CategoryId is required when VIP product type is Category.");
+        }
+
         var product = new VipProduct
         {
             Name = name,
@@ -42,6 +47,11 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
 
     public async Task UpdateAsync(Guid id, string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, bool isEnabled)
     {
+        if (type == VipProductType.Category && !categoryId.HasValue)
+        {
+            throw new ArgumentException("CategoryId is required when VIP product type is Category.");
+        }
+
         var product = await dbContext.VipProducts.FindAsync(id);
         if (product == null) return;
 

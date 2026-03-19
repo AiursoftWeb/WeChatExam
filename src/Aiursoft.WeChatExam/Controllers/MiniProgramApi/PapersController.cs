@@ -18,13 +18,13 @@ public class PapersController : ControllerBase
 {
     private readonly IPaperService _paperService;
     private readonly WeChatExamDbContext _context;
-    private readonly IWeChatPayService _payService;
+    private readonly IPaperAccessService _paperAccessService;
 
-    public PapersController(IPaperService paperService, WeChatExamDbContext context, IWeChatPayService payService)
+    public PapersController(IPaperService paperService, WeChatExamDbContext context, IPaperAccessService paperAccessService)
     {
         _paperService = paperService;
         _context = context;
-        _payService = payService;
+        _paperAccessService = paperAccessService;
     }
 
     /// <summary>
@@ -66,21 +66,7 @@ public class PapersController : ControllerBase
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         
-        // Pre-fetch the user's active VIP info
-        var activeVipCategoryIds = new HashSet<Guid>();
-        var hasRealExamVip = false;
-        if (userId != null)
-        {
-            var vips = await _payService.GetVipStatusListAsync(userId);
-            var activeVips = vips.Where(v => v.IsActive && v.VipProduct != null).ToList();
-            
-            activeVipCategoryIds = activeVips
-                .Where(v => v.VipProduct!.Type == VipProductType.Category && v.VipProduct.CategoryId.HasValue)
-                .Select(v => v.VipProduct!.CategoryId!.Value)
-                .ToHashSet();
-                
-            hasRealExamVip = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);
-        }
+        var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
 
         var dtos = new List<PaperListDto>();
         var papers = await query.ToListAsync();
@@ -99,22 +85,8 @@ public class PapersController : ControllerBase
                 LatestVersion = p.PaperSnapshots.Max(s => s.Version)
             };
 
-            if (p.IsFree)
-            {
-                // 免费试卷，所有人可访问
-                dto.HasAccess = true;
-            }
-            else if (p.IsRealExam)
-            {
-                // 真题试卷，需要真题VIP
-                dto.HasAccess = hasRealExamVip;
-            }
-            else
-            {
-                // 分类付费试卷，需要对应分类VIP
-                var categoryIds = p.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                dto.HasAccess = categoryIds.Any(catId => activeVipCategoryIds.Contains(catId));
-            }
+            dto.HasAccess = _paperAccessService.HasAccess(p, accessStatus);
+
             dtos.Add(dto);
         }
 
@@ -147,28 +119,8 @@ public class PapersController : ControllerBase
                 
             if (paper != null)
             {
-                var vips = await _payService.GetVipStatusListAsync(userId);
-                var activeVips = vips.Where(v => v.IsActive && v.VipProduct != null).ToList();
-                
-                if (paper.IsRealExam)
-                {
-                    // 真题试卷，需要真题VIP
-                    hasAccess = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);
-                }
-                else
-                {
-                    // 分类付费试卷，需要对应分类VIP
-                    var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                    var activeVipCategoryIds = activeVips
-                        .Where(v => v.VipProduct!.Type == VipProductType.Category && v.VipProduct.CategoryId.HasValue)
-                        .Select(v => v.VipProduct!.CategoryId!.Value)
-                        .ToHashSet();
-
-                    if (categoryIds.Any(catId => activeVipCategoryIds.Contains(catId)))
-                    {
-                        hasAccess = true;
-                    }
-                }
+                var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
+                hasAccess = _paperAccessService.HasAccess(paper, accessStatus);
             }
         }
 
