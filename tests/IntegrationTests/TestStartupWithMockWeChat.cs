@@ -65,6 +65,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddScoped<IExtractService, ExtractService>();
         services.AddScoped<IOptimizationService, OptimizationService>();
         services.AddScoped<IFeedbackService, FeedbackService>();
+        services.AddScoped<IPaperAccessService, PaperAccessService>();
 
         // Background job queue
         services.AddSingleton<BackgroundJobQueue>();

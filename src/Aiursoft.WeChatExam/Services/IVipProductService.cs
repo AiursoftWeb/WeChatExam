@@ -20,12 +20,12 @@ public interface IVipProductService
     /// <summary>
     /// 创建 VIP 商品
     /// </summary>
-    Task<VipProduct> CreateAsync(string name, Guid categoryId, int priceInFen, int durationDays);
+    Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays);
 
     /// <summary>
     /// 更新 VIP 商品
     /// </summary>
-    Task UpdateAsync(Guid id, string name, Guid categoryId, int priceInFen, int durationDays, bool isEnabled);
+    Task UpdateAsync(Guid id, string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, bool isEnabled);
 
     /// <summary>
     /// 删除 VIP 商品
@@ -35,5 +35,5 @@ public interface IVipProductService
     /// <summary>
     /// 获取所有启用的 VIP 商品（面向小程序端）
     /// </summary>
-    Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null);
+    Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null, VipProductType? type = null);
 }

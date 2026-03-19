@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-// Redundant using removed
+using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 
@@ -63,7 +63,8 @@ public class VipStatusResponse
 
 public class VipMembershipDto
 {
-    public Guid CategoryId { get; set; }
+    public VipProductType Type { get; set; }
+    public Guid? CategoryId { get; set; }
     public string CategoryName { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
     public bool IsActive { get; set; }

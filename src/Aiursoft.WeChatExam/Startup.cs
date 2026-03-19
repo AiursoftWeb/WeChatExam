@@ -61,6 +61,7 @@ public class Startup : IWebStartup
         services.AddScoped<IOptimizationService, OptimizationService>();
         services.AddScoped<IFeedbackService, FeedbackService>();
         services.AddScoped<IVipProductService, VipProductService>();
+        services.AddScoped<IPaperAccessService, PaperAccessService>();
 
         // Background job queue
         services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();

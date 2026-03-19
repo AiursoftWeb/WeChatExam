@@ -23,12 +23,18 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
             .FirstOrDefaultAsync(v => v.Id == id);
     }
 
-    public async Task<VipProduct> CreateAsync(string name, Guid categoryId, int priceInFen, int durationDays)
+    public async Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays)
     {
+        if (type == VipProductType.Category && !categoryId.HasValue)
+        {
+            throw new ArgumentException("CategoryId is required when VIP product type is Category.");
+        }
+
         var product = new VipProduct
         {
             Name = name,
-            CategoryId = categoryId,
+            Type = type,
+            CategoryId = type == VipProductType.Category ? categoryId : null,
             PriceInFen = priceInFen,
             DurationDays = durationDays,
             IsEnabled = true
@@ -39,13 +45,19 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         return product;
     }
 
-    public async Task UpdateAsync(Guid id, string name, Guid categoryId, int priceInFen, int durationDays, bool isEnabled)
+    public async Task UpdateAsync(Guid id, string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, bool isEnabled)
     {
+        if (type == VipProductType.Category && !categoryId.HasValue)
+        {
+            throw new ArgumentException("CategoryId is required when VIP product type is Category.");
+        }
+
         var product = await dbContext.VipProducts.FindAsync(id);
         if (product == null) return;
 
         product.Name = name;
-        product.CategoryId = categoryId;
+        product.Type = type;
+        product.CategoryId = type == VipProductType.Category ? categoryId : null;
         product.PriceInFen = priceInFen;
         product.DurationDays = durationDays;
         product.IsEnabled = isEnabled;
@@ -62,11 +74,16 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null)
+    public async Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null, VipProductType? type = null)
     {
         var query = dbContext.VipProducts
             .Include(v => v.Category)
             .Where(v => v.IsEnabled);
+
+        if (type.HasValue)
+        {
+            query = query.Where(v => v.Type == type.Value);
+        }
 
         if (categoryId.HasValue)
         {

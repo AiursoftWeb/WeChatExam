@@ -18,13 +18,13 @@ public class PapersController : ControllerBase
 {
     private readonly IPaperService _paperService;
     private readonly WeChatExamDbContext _context;
-    private readonly IWeChatPayService _payService;
+    private readonly IPaperAccessService _paperAccessService;
 
-    public PapersController(IPaperService paperService, WeChatExamDbContext context, IWeChatPayService payService)
+    public PapersController(IPaperService paperService, WeChatExamDbContext context, IPaperAccessService paperAccessService)
     {
         _paperService = paperService;
         _context = context;
-        _payService = payService;
+        _paperAccessService = paperAccessService;
     }
 
     /// <summary>
@@ -66,15 +66,7 @@ public class PapersController : ControllerBase
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         
-        // Pre-fetch the user's active VIP categories to prevent N+1 queries
-        var activeVipCategoryIds = new HashSet<Guid>();
-        if (userId != null)
-        {
-            var vips = await _payService.GetVipStatusListAsync(userId);
-            activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
-                                       .Select(v => v.VipProduct!.CategoryId)
-                                       .ToHashSet();
-        }
+        var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
 
         var dtos = new List<PaperListDto>();
         var papers = await query.ToListAsync();
@@ -93,16 +85,8 @@ public class PapersController : ControllerBase
                 LatestVersion = p.PaperSnapshots.Max(s => s.Version)
             };
 
-            if (p.IsFree)
-            {
-                dto.HasAccess = true;
-            }
-            else
-            {
-                // Has access if user has active VIP for ANY of the paper's categories
-                var categoryIds = p.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                dto.HasAccess = categoryIds.Any(catId => activeVipCategoryIds.Contains(catId));
-            }
+            dto.HasAccess = _paperAccessService.HasAccess(p, accessStatus);
+
             dtos.Add(dto);
         }
 
@@ -135,17 +119,8 @@ public class PapersController : ControllerBase
                 
             if (paper != null)
             {
-                var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();
-                
-                var vips = await _payService.GetVipStatusListAsync(userId);
-                var activeVipCategoryIds = vips.Where(v => v.IsActive && v.VipProduct != null)
-                                               .Select(v => v.VipProduct!.CategoryId)
-                                               .ToHashSet();
-
-                if (categoryIds.Any(catId => activeVipCategoryIds.Contains(catId)))
-                {
-                    hasAccess = true;
-                }
+                var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
+                hasAccess = _paperAccessService.HasAccess(paper, accessStatus);
             }
         }
 

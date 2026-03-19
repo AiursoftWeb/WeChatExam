@@ -1,4 +1,5 @@
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.IndexViewModel
+@using Aiursoft.WeChatExam.Entities
 
 <h1 class="h3 mb-3">@Localizer["VIP Products"]</h1>
 
@@ -32,6 +33,7 @@
             <thead class="table-light">
                 <tr>
                     <th>@Localizer["Name"]</th>
+                    <th>@Localizer["Type"]</th>
                     <th>@Localizer["Category"]</th>
                     <th>@Localizer["Price"]</th>
                     <th>@Localizer["Duration"]</th>
@@ -45,7 +47,24 @@
                     <tr>
                         <td><strong>@product.Name</strong></td>
                         <td>
-                            <span class="badge bg-info">@(product.Category?.Title ?? "-")</span>
+                            @if (product.Type == VipProductType.Category)
+                            {
+                                <span class="badge bg-primary">@Localizer["Category VIP"]</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">@Localizer["Real Exam VIP"]</span>
+                            }
+                        </td>
+                        <td>
+                            @if (product.Type == VipProductType.Category)
+                            {
+                                <span class="badge bg-info">@(product.Category?.Title ?? "-")</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">-</span>
+                            }
                         </td>
                         <td>¥@((product.PriceInFen / 100.0).ToString("F2"))</td>
                         <td>@product.DurationDays @Localizer["days"]</td>

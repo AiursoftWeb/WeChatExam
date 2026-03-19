@@ -930,7 +930,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid?>("CategoryId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreationTime")
@@ -950,9 +950,14 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<int>("PriceInFen")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("Type");
 
                     b.ToTable("VipProducts");
                 });
@@ -1433,9 +1438,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
                         .WithMany("VipProducts")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });

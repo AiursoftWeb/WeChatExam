@@ -67,7 +67,7 @@ public class VipProductsController(
             return this.StackView(model);
         }
 
-        await vipProductService.CreateAsync(model.Name, model.CategoryId, model.PriceInFen, model.DurationDays);
+        await vipProductService.CreateAsync(model.Name, model.Type, model.CategoryId, model.PriceInFen, model.DurationDays);
         return RedirectToAction(nameof(Index));
     }
 
@@ -84,6 +84,7 @@ public class VipProductsController(
         {
             Id = product.Id,
             Name = product.Name,
+            Type = product.Type,
             CategoryId = product.CategoryId,
             PriceInFen = product.PriceInFen,
             DurationDays = product.DurationDays,
@@ -104,7 +105,7 @@ public class VipProductsController(
             return this.StackView(model);
         }
 
-        await vipProductService.UpdateAsync(id, model.Name, model.CategoryId, model.PriceInFen, model.DurationDays, model.IsEnabled);
+        await vipProductService.UpdateAsync(id, model.Name, model.Type, model.CategoryId, model.PriceInFen, model.DurationDays, model.IsEnabled);
         return RedirectToAction(nameof(Index));
     }
 
