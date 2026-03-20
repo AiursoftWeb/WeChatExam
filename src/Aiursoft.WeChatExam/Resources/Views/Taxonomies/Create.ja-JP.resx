@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- カテゴリを選択してください (オプション) --</value>
+  </data>
+  <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
     <value>タクソノミーとは、関連するタグをグループ化する方法です。例として「School」、「Period」、「Genre」などがあります。</value>
   </data>
   <data name="About Taxonomies" xml:space="preserve">
@@ -38,6 +41,9 @@
   </data>
   <data name="Once created, you can assign tags to this taxonomy when editing tags." xml:space="preserve">
     <value>作成後、タグを編集する際にこのタクソノミーにタグを割り当てることができます。</value>
+  </data>
+  <data name="Optionally associate this taxonomy with a specific category." xml:space="preserve">
+    <value>このタクソノミを特定のカテゴリにオプションで関連付けます。</value>
   </data>
   <data name="Taxonomies" xml:space="preserve">
     <value>分類</value>

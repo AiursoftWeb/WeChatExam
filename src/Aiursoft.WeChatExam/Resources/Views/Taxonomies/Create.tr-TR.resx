@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Kategori Seçin (İsteğe Bağlı) --</value>
+  </data>
+  <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
     <value>Bir taksonomi, ilgili etiketleri gruplamak için bir yoldur. Örnekler arasında &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos; vb. yer alır.</value>
   </data>
   <data name="About Taxonomies" xml:space="preserve">
@@ -38,6 +41,9 @@
   </data>
   <data name="Once created, you can assign tags to this taxonomy when editing tags." xml:space="preserve">
     <value>Oluşturulduktan sonra etiketleri düzenlerken bu taksonominin etiketlerini atayabilirsiniz.</value>
+  </data>
+  <data name="Optionally associate this taxonomy with a specific category." xml:space="preserve">
+    <value>Bu taksonomiyi isteğe bağlı olarak belirli bir kategoriyle ilişkilendirebilirsiniz.</value>
   </data>
   <data name="Taxonomies" xml:space="preserve">
     <value>Taksonomiler</value>

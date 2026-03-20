@@ -27,6 +27,9 @@
   <data name="Category" xml:space="preserve">
     <value>Categoria</value>
   </data>
+  <data name="Category VIP" xml:space="preserve">
+    <value>VIP de Categoria</value>
+  </data>
   <data name="days" xml:space="preserve">
     <value>dias</value>
   </data>
@@ -51,8 +54,14 @@
   <data name="Price" xml:space="preserve">
     <value>Preço</value>
   </data>
+  <data name="Real Exam VIP" xml:space="preserve">
+    <value>VIP de Exame Real</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
   </data>
 
 </root>

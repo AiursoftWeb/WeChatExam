@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Kategorie auswählen (Optional) --</value>
+  </data>
+  <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
     <value>Eine Taxonomie ist eine Möglichkeit, verwandte Tags zu gruppieren. Beispiele hierfür sind &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, usw.</value>
   </data>
   <data name="About Taxonomies" xml:space="preserve">
@@ -38,6 +41,9 @@
   </data>
   <data name="Once created, you can assign tags to this taxonomy when editing tags." xml:space="preserve">
     <value>Nach der Erstellung können Sie diesem Taxonomie Tags zuweisen, wenn Sie Tags bearbeiten.</value>
+  </data>
+  <data name="Optionally associate this taxonomy with a specific category." xml:space="preserve">
+    <value>Dieses Taxonomie kann optional einer bestimmten Kategorie zugeordnet werden.</value>
   </data>
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomien</value>

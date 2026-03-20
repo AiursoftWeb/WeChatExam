@@ -27,6 +27,9 @@
   <data name="Category" xml:space="preserve">
     <value>類別</value>
   </data>
+  <data name="Category VIP" xml:space="preserve">
+    <value>VIP 類別</value>
+  </data>
   <data name="days" xml:space="preserve">
     <value>天</value>
   </data>
@@ -51,8 +54,14 @@
   <data name="Price" xml:space="preserve">
     <value>價格</value>
   </data>
+  <data name="Real Exam VIP" xml:space="preserve">
+    <value>真實考試 VIP</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>狀態</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>類型</value>
   </data>
 
 </root>

@@ -27,6 +27,9 @@
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
   </data>
+  <data name="Category VIP" xml:space="preserve">
+    <value>Категория VIP</value>
+  </data>
   <data name="Days" xml:space="preserve">
     <value>Дни</value>
   </data>
@@ -48,8 +51,14 @@
   <data name="Product Name" xml:space="preserve">
     <value>Название продукта</value>
   </data>
+  <data name="Real Exam VIP" xml:space="preserve">
+    <value>VIP для реальных экзаменов</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
+  </data>
+  <data name="VIP Type" xml:space="preserve">
+    <value>Тип VIP</value>
   </data>
 
 </root>

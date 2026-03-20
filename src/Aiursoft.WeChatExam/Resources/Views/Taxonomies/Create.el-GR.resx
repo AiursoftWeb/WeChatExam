@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Επιλέξτε Κατηγορία (Προαιρετικά) --</value>
+  </data>
+  <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
     <value>Μια ταξινόμηση είναι ένας τρόπος ομαδοποίησης σχετικών ετικετών. Παραδείγματα περιλαμβάνουν το &apos;School&apos;, το &apos;Period&apos;, το &apos;Genre&apos;, κ.λπ.</value>
   </data>
   <data name="About Taxonomies" xml:space="preserve">
@@ -38,6 +41,9 @@
   </data>
   <data name="Once created, you can assign tags to this taxonomy when editing tags." xml:space="preserve">
     <value>Μία φορά δημιουργηθεί, μπορείτε να αναθέσετε ετικέτες σε αυτή την ταξινόμηση κατά την επεξεργασία ετικετών.</value>
+  </data>
+  <data name="Optionally associate this taxonomy with a specific category." xml:space="preserve">
+    <value>Προαιρετικά συσχετίστε αυτό το ταξινομικό με μια συγκεκριμένη κατηγορία.</value>
   </data>
   <data name="Taxonomies" xml:space="preserve">
     <value>Ταξινομίες</value>
