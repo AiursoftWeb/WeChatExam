@@ -24,7 +24,7 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
             LinkText = "Taxonomies",
             LinkOrder = 7)]
         public async Task<IActionResult> Index()    {
-        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
         var tagCounts = new Dictionary<int, int>();
 
         foreach (var taxonomy in taxonomies)
@@ -40,9 +40,12 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         });
     }
 
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return this.StackView(new CreateViewModel());
+        return this.StackView(new CreateViewModel
+        {
+            AvailableCategories = await context.Categories.OrderBy(c => c.Title).ToListAsync()
+        });
     }
 
     [HttpPost]
@@ -51,10 +54,11 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
     {
         if (!ModelState.IsValid)
         {
+            model.AvailableCategories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
             return this.StackView(model);
         }
 
-        await taxonomyService.AddTaxonomyAsync(model.Name);
+        await taxonomyService.AddTaxonomyAsync(model.Name, model.CategoryId != null ? [model.CategoryId.Value] : null);
         return RedirectToAction(nameof(Index));
     }
 
@@ -68,7 +72,9 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         return this.StackView(new EditViewModel
         {
             Id = taxonomy.Id,
-            Name = taxonomy.Name
+            Name = taxonomy.Name,
+            CategoryId = taxonomy.CategoryTaxonomies.FirstOrDefault()?.CategoryId,
+            AvailableCategories = await context.Categories.OrderBy(c => c.Title).ToListAsync()
         });
     }
 
@@ -78,6 +84,7 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
     {
         if (!ModelState.IsValid)
         {
+            model.AvailableCategories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
             return this.StackView(model);
         }
 
@@ -85,7 +92,7 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         if (taxonomy == null) return NotFound();
 
         taxonomy.Name = model.Name;
-        await taxonomyService.UpdateTaxonomyAsync(taxonomy);
+        await taxonomyService.UpdateTaxonomyAsync(taxonomy, model.CategoryId != null ? [model.CategoryId.Value] : Array.Empty<Guid>());
 
         return RedirectToAction(nameof(Index));
     }

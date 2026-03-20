@@ -31,6 +31,7 @@
                     <thead class="table-light">
                         <tr>
                             <th>@Localizer["Taxonomy Name"]</th>
+                            <th>@Localizer["Category"]</th>
                             <th class="text-center">@Localizer["Tags Count"]</th>
                             <th>@Localizer["Created Time"]</th>
                             <th class="text-end">@Localizer["Actions"]</th>
@@ -47,6 +48,22 @@
                                         </div>
                                         <span class="fw-bold">@taxonomy.Name</span>
                                     </div>
+                                </td>
+                                <td>
+                                    @{
+                                        var firstCategory = taxonomy.CategoryTaxonomies.FirstOrDefault()?.Category;
+                                    }
+                                    @if (firstCategory != null)
+                                    {
+                                        <span class="badge bg-outline-info text-info border border-info">
+                                            <i data-lucide="tag" class="icon-sm me-1"></i>
+                                            @firstCategory.Title
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small italic">@Localizer["None"]</span>
+                                    }
                                 </td>
                                 <td class="text-center">
                                     <span class="badge bg-secondary rounded-pill">@Model.TagCounts[taxonomy.Id]</span>

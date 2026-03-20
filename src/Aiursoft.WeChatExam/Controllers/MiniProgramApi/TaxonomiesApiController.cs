@@ -14,9 +14,9 @@ public class TaxonomiesApiController(
 {
     [HttpGet]
     [Produces(typeof(List<TaxonomyDto>))]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index([FromQuery] Guid? categoryId)
     {
-        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(categoryId, includeCategory: true);
         var dtos = taxonomies.Select(t => new TaxonomyDto
         {
             Id = t.Id,

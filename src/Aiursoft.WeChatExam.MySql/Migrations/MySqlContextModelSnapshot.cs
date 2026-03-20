@@ -136,6 +136,27 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("CategoryKnowledgePoints");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryTaxonomy", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("TaxonomyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("TaxonomyId");
+
+                    b.ToTable("CategoryTaxonomies");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.DistributionChannel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1169,6 +1190,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("KnowledgePoint");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryTaxonomy", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
+                        .WithMany("CategoryTaxonomies")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Taxonomy", "Taxonomy")
+                        .WithMany("CategoryTaxonomies")
+                        .HasForeignKey("TaxonomyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Taxonomy");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Exam", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Paper", "Paper")
@@ -1519,6 +1559,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                 {
                     b.Navigation("CategoryKnowledgePoints");
 
+                    b.Navigation("CategoryTaxonomies");
+
                     b.Navigation("Children");
 
                     b.Navigation("PaperCategories");
@@ -1589,6 +1631,8 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Taxonomy", b =>
                 {
+                    b.Navigation("CategoryTaxonomies");
+
                     b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
