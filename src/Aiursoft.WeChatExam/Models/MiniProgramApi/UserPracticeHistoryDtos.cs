@@ -18,6 +18,8 @@ public class UserPracticeHistoryDto
     
     [Required]
     public bool IsCorrect { get; set; }
+    
+    public int? Score { get; set; }
 
     public PracticeType? PracticeType { get; set; }
     
