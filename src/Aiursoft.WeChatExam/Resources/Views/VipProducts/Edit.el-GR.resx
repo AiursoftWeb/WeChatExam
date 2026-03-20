@@ -27,6 +27,9 @@
   <data name="Category" xml:space="preserve">
     <value>Κατηγορία</value>
   </data>
+  <data name="Category VIP" xml:space="preserve">
+    <value>Κατηγορία VIP</value>
+  </data>
   <data name="Days" xml:space="preserve">
     <value>Ημέρες</value>
   </data>
@@ -48,8 +51,14 @@
   <data name="Product Name" xml:space="preserve">
     <value>Όνομα Προϊόντος</value>
   </data>
+  <data name="Real Exam VIP" xml:space="preserve">
+    <value>Διαπιστευτήριο Πραγματικής Εξέτασης</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Αποθήκευση</value>
+  </data>
+  <data name="VIP Type" xml:space="preserve">
+    <value>Τύπος VIP</value>
   </data>
 
 </root>

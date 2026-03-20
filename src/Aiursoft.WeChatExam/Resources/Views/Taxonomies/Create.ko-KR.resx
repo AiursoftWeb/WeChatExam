@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- 카테고리 선택 (선택 사항) --</value>
+  </data>
+  <data name="A taxonomy is a way to group related tags. Examples include &apos;School&apos;, &apos;Period&apos;, &apos;Genre&apos;, etc." xml:space="preserve">
     <value>타그를 관련성에 따라 묶는 방법입니다. 예를 들어 &apos;학교&apos;, &apos;기간&apos;, &apos;장르&apos; 등이 있습니다.</value>
   </data>
   <data name="About Taxonomies" xml:space="preserve">
@@ -38,6 +41,9 @@
   </data>
   <data name="Once created, you can assign tags to this taxonomy when editing tags." xml:space="preserve">
     <value>생성된 후에는 태그를 편집할 때 이 분류에 태그를 할당할 수 있습니다.</value>
+  </data>
+  <data name="Optionally associate this taxonomy with a specific category." xml:space="preserve">
+    <value>이 분류를 특정 카테고리에 선택적으로 연결할 수 있습니다.</value>
   </data>
   <data name="Taxonomies" xml:space="preserve">
     <value>분류</value>
