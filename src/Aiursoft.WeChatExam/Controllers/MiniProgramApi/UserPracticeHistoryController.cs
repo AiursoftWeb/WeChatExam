@@ -172,6 +172,7 @@ public class UserPracticeHistoryController : ControllerBase
             StandardAnswer = snapshot.StandardAnswer,
             Explanation = snapshot.Explanation,
             IsCorrect = gradingResult.IsCorrect,
+            Score = gradingResult.Score,
             CreationTime = DateTime.UtcNow
         };
 
