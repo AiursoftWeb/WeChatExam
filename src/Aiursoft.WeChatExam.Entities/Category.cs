@@ -42,4 +42,7 @@ public class Category
 
     [InverseProperty(nameof(VipProduct.Category))]
     public IEnumerable<VipProduct> VipProducts { get; init; } = new List<VipProduct>();
+
+    [InverseProperty(nameof(CategoryTaxonomy.Category))]
+    public IEnumerable<CategoryTaxonomy> CategoryTaxonomies { get; init; } = new List<CategoryTaxonomy>();
 }

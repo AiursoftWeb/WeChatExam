@@ -20,6 +20,15 @@
                         <input asp-for="Name" class="form-control" placeholder="@Localizer["Enter taxonomy name..."]" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label fw-bold"></label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="@(new SelectList(Model.AvailableCategories, "Id", "Title"))">
+                            <option value="">@Localizer["-- Select Category (Optional) --"]</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        <div class="form-text">@Localizer["Optionally associate this taxonomy with a specific category."]</div>
+                    </div>
                     
                     <hr class="my-4">
                     

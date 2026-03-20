@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Aiursoft.UiStack.Layout;
+using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.TaxonomiesViewModels;
 
@@ -18,4 +19,9 @@ public class EditViewModel : UiStackLayoutViewModel
     [Display(Name = "Taxonomy Name")]
     [MaxLength(50, ErrorMessage = "The {0} cannot exceed {1} characters.")]
     public string Name { get; set; } = string.Empty;
+
+    [Display(Name = "Category")]
+    public Guid? CategoryId { get; set; }
+
+    public List<Category> AvailableCategories { get; set; } = new();
 }

@@ -16,4 +16,7 @@ public class Taxonomy
 
     [InverseProperty(nameof(Tag.Taxonomy))]
     public IEnumerable<Tag> Tags { get; init; } = new List<Tag>();
+
+    [InverseProperty(nameof(CategoryTaxonomy.Taxonomy))]
+    public IEnumerable<CategoryTaxonomy> CategoryTaxonomies { get; init; } = new List<CategoryTaxonomy>();
 }

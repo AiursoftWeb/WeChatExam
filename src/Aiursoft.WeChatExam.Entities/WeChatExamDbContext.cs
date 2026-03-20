@@ -13,6 +13,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
         Database.CanConnectAsync();
 
     public DbSet<Category> Categories => Set<Category>();
+    public DbSet<CategoryTaxonomy> CategoryTaxonomies => Set<CategoryTaxonomy>();
     public DbSet<Question> Questions => Set<Question>();
     public DbSet<KnowledgePoint> KnowledgePoints => Set<KnowledgePoint>();
     public DbSet<UserPracticeHistory> UserPracticeHistories => Set<UserPracticeHistory>();

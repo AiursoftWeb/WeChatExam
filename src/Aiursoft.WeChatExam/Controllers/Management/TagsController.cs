@@ -37,7 +37,7 @@ public class TagsController(
             tagUsageCounts[tag.Id] = count;
         }
 
-        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
 
         return this.StackView(new IndexViewModel
         {
@@ -49,7 +49,9 @@ public class TagsController(
             AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
             {
                 Value = t.Id.ToString(),
-                Text = t.Name,
+                Text = t.CategoryTaxonomies.FirstOrDefault()?.Category != null 
+                    ? $"{t.Name} ({t.CategoryTaxonomies.First().Category!.Title})" 
+                    : t.Name,
                 Selected = t.Id == taxonomyId
             })
         });
@@ -58,14 +60,16 @@ public class TagsController(
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
     public async Task<IActionResult> Create()
     {
-        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
 
         return this.StackView(new CreateViewModel
         {
             AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
             {
                 Value = t.Id.ToString(),
-                Text = t.Name
+                Text = t.CategoryTaxonomies.FirstOrDefault()?.Category != null 
+                    ? $"{t.Name} ({t.CategoryTaxonomies.First().Category!.Title})" 
+                    : t.Name
             })
         });
     }
@@ -77,11 +81,13 @@ public class TagsController(
     {
         if (!ModelState.IsValid)
         {
-            var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+            var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
             model.AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
             {
                 Value = t.Id.ToString(),
-                Text = t.Name
+                Text = t.CategoryTaxonomies.FirstOrDefault()?.Category != null 
+                    ? $"{t.Name} ({t.CategoryTaxonomies.First().Category!.Title})" 
+                    : t.Name
             });
             return this.StackView(model);
         }
@@ -106,7 +112,7 @@ public class TagsController(
         var tag = await tagService.GetTagByIdAsync(id.Value);
         if (tag == null) return NotFound();
 
-        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+        var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
 
         return this.StackView(new EditViewModel
         {
@@ -116,7 +122,9 @@ public class TagsController(
             AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
             {
                 Value = t.Id.ToString(),
-                Text = t.Name
+                Text = t.CategoryTaxonomies.FirstOrDefault()?.Category != null 
+                    ? $"{t.Name} ({t.CategoryTaxonomies.First().Category!.Title})" 
+                    : t.Name
             })
         });
     }
@@ -128,11 +136,13 @@ public class TagsController(
     {
         if (!ModelState.IsValid)
         {
-            var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
+            var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
             model.AvailableTaxonomies = taxonomies.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
             {
                 Value = t.Id.ToString(),
-                Text = t.Name
+                Text = t.CategoryTaxonomies.FirstOrDefault()?.Category != null 
+                    ? $"{t.Name} ({t.CategoryTaxonomies.First().Category!.Title})" 
+                    : t.Name
             });
             return this.StackView(model);
         }
