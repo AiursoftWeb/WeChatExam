@@ -26,7 +26,7 @@
 
             <div class="mb-3">
                 <label asp-for="Content" class="form-label">@Localizer["Content"]</label>
-                <textarea asp-for="Content" class="form-control" rows="2" required></textarea>
+                <textarea asp-for="Content" class="form-control" rows="5" required></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="mb-3">
@@ -83,13 +83,13 @@
             <!-- Standard Answer (Textarea for others) -->
             <div class="mb-3" id="standard-answer-text-section">
                 <label asp-for="StandardAnswer" class="form-label">@Localizer["Standard Answer"]</label>
-                <textarea asp-for="StandardAnswer" id="standard-answer-input" class="form-control" rows="2" placeholder='Correct Answer'></textarea>
+                <textarea asp-for="StandardAnswer" id="standard-answer-input" class="form-control" rows="8" placeholder='Correct Answer'></textarea>
                 <span asp-validation-for="StandardAnswer" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="Explanation" class="form-label">@Localizer["Explanation"]</label>
-                <textarea asp-for="Explanation" class="form-control" rows="2"></textarea>
+                <textarea asp-for="Explanation" class="form-control" rows="8"></textarea>
                 <span asp-validation-for="Explanation" class="text-danger"></span>
             </div>
         </div>
