@@ -156,6 +156,8 @@ public class KnowledgePointsController(
             .Include(c => c.Parent)
             .Include(c => c.CategoryKnowledgePoints)
             .ThenInclude(ck => ck.Category)
+            .Include(c => c.KnowledgePointQuestions)
+            .ThenInclude(kq => kq.Question)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (knowledgePoint == null) return NotFound();
@@ -165,6 +167,9 @@ public class KnowledgePointsController(
             KnowledgePoint = knowledgePoint,
             AssociatedCategories = knowledgePoint.CategoryKnowledgePoints
                 .Select(ck => ck.Category)
+                .ToList(),
+            AssociatedQuestions = knowledgePoint.KnowledgePointQuestions
+                .Select(kq => kq.Question)
                 .ToList()
         });
     }
