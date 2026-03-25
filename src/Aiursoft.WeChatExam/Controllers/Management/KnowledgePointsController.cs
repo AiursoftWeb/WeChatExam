@@ -169,7 +169,7 @@ public class KnowledgePointsController(
                 .Select(ck => ck.Category)
                 .ToList(),
             AssociatedQuestions = knowledgePoint.KnowledgePointQuestions
-                .Select(kq => kq.Question!)
+                .Select(kq => kq.Question)
                 .ToList()
         });
     }
