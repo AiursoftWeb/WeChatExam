@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header">
                 <h5 class="card-title mb-0">@Localizer["Associated Categories"]</h5>
             </div>
@@ -58,6 +58,41 @@
                             <tr>
                                 <td colspan="2" class="text-center text-muted py-4">
                                     @Localizer["No categories associated"]
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title mb-0">@Localizer["Associated Questions"]</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Localizer["Content"]</th>
+                            <th>@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var question in Model.AssociatedQuestions)
+                        {
+                            <tr>
+                                <td class="text-truncate" style="max-width: 300px;">@question.Content</td>
+                                <td>
+                                    <a asp-controller="Questions" asp-action="Details" asp-route-id="@question.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
+                                </td>
+                            </tr>
+                        }
+                        @if (!Model.AssociatedQuestions.Any())
+                        {
+                            <tr>
+                                <td colspan="2" class="text-center text-muted py-4">
+                                    @Localizer["No questions associated"]
                                 </td>
                             </tr>
                         }
