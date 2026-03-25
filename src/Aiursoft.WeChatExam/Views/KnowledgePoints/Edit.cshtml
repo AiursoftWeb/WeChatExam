@@ -12,7 +12,7 @@
     
     <div class="mb-3">
         <label asp-for="Content" class="form-label">@Localizer["Content"]</label>
-        <input asp-for="Content" class="form-control" />
+        <textarea asp-for="Content" class="form-control" rows="10"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
     
