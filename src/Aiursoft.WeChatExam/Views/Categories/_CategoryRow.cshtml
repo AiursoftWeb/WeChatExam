@@ -1,9 +1,9 @@
 @model Aiursoft.WeChatExam.Entities.Category
 @{
-    var children = Model.Children.ToList();
+    var children = Model.Children.OrderBy(c => c.OrderIndex).ToList();
     var level = (int)(ViewData["Level"] ?? 0);
 }
-<tr>
+<tr data-id="@Model.Id" class="category-row">
     <td>
         @for (var i = 0; i < level; i++)
         {
@@ -13,6 +13,7 @@
         {
             <i class="align-middle me-1 text-muted" data-lucide="chevron-right"></i>
         }
+        <i class="align-middle me-1 text-muted drag-handle" data-lucide="grip-vertical" style="cursor: move;"></i>
         @Model.Title
     </td>
     <td>

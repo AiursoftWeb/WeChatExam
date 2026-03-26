@@ -28,17 +28,20 @@ public class CategoriesController : ControllerBase
         var categories = await _context.Categories
             .Include(c => c.Children)
             .Where(c => c.ParentId == null)
+            .OrderBy(c => c.OrderIndex)
             .Select(c => new CategoryDto
             {
                 Id = c.Id,
                 Title = c.Title,
                 IsFree = c.IsFree,
-                Children = c.Children.Select(child => new Child
-                {
-                    Id = child.Id,
-                    Title = child.Title,
-                    IsFree = child.IsFree
-                }).ToArray()
+                Children = c.Children
+                    .OrderBy(child => child.OrderIndex)
+                    .Select(child => new Child
+                    {
+                        Id = child.Id,
+                        Title = child.Title,
+                        IsFree = child.IsFree
+                    }).ToArray()
             })
             .ToListAsync();
 
@@ -66,17 +69,20 @@ public class CategoriesController : ControllerBase
         var childrenCategories = await _context.Categories
             .Include(c => c.Children)
             .Where(c => c.ParentId == id)
+            .OrderBy(c => c.OrderIndex)
             .Select(c => new CategoryDto
             {
                 Id = c.Id,
                 Title = c.Title,
                 IsFree = c.IsFree,
-                Children = c.Children.Select(child => new Child
-                {
-                    Id = child.Id,
-                    Title = child.Title,
-                    IsFree = child.IsFree
-                }).ToArray()
+                Children = c.Children
+                    .OrderBy(child => child.OrderIndex)
+                    .Select(child => new Child
+                    {
+                        Id = child.Id,
+                        Title = child.Title,
+                        IsFree = child.IsFree
+                    }).ToArray()
             })
             .ToListAsync();
 
@@ -94,6 +100,7 @@ public class CategoriesController : ControllerBase
     {
         var categories = await _context.Categories
             .Where(c => c.ParentId == null)
+            .OrderBy(c => c.OrderIndex)
             .Select(c => new CategoryDto
             {
                 Id = c.Id,

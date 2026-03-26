@@ -36,9 +36,14 @@
                     <div class="card border-top-0">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">@Localizer["Category List"]</h5>
-                            <a asp-action="Create" class="btn btn-primary btn-sm">
-                                <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Category"]
-                            </a>
+                            <div>
+                                <button id="save-order-btn" class="btn btn-success btn-sm me-2" style="display: none;">
+                                    <i class="align-middle me-2" data-lucide="save"></i> @Localizer["Save Order"]
+                                </button>
+                                <a asp-action="Create" class="btn btn-primary btn-sm">
+                                    <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Category"]
+                                </a>
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
@@ -50,7 +55,7 @@
                                         <th style="width: 150px;">@Localizer["Actions"]</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="categories-sortable">
                                     @foreach (var category in Model.RootCategories)
                                     {
                                         @await Html.PartialAsync("_CategoryRow", category)
@@ -161,3 +166,56 @@
         width: auto !important;
     }
 </style>
+
+@Html.AntiForgeryToken()
+
+<script type="module">
+    import Sortable from 'https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/modular/sortable.esm.js';
+
+    const el = document.getElementById('categories-sortable');
+    const saveBtn = document.getElementById('save-order-btn');
+
+    if (el) {
+        Sortable.create(el, {
+            animation: 150,
+            handle: '.drag-handle',
+            onEnd: function () {
+                saveBtn.style.display = 'inline-block';
+            }
+        });
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', async function () {
+            saveBtn.disabled = true;
+            const originalHtml = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Saving...';
+
+            const ids = Array.from(el.querySelectorAll('tr.category-row')).map(tr => tr.dataset.id);
+
+            try {
+                const response = await fetch('@Url.Action("UpdateOrder", "Categories")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                    },
+                    body: JSON.stringify(ids)
+                });
+
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to save order.');
+                    saveBtn.disabled = false;
+                    saveBtn.innerHTML = originalHtml;
+                }
+            } catch (error) {
+                console.error('Error saving order:', error);
+                alert('An error occurred while saving order.');
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = originalHtml;
+            }
+        });
+    }
+</script>

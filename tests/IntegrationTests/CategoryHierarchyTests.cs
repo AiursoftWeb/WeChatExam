@@ -134,7 +134,62 @@ public class CategoryHierarchyTests
         var detailsResponse = await _http.GetAsync($"/Categories/Details/{level2Id}");
         detailsResponse.EnsureSuccessStatusCode();
         var detailsHtml = await detailsResponse.Content.ReadAsStringAsync();
-        Assert.Contains(level2Title, detailsHtml);
-        Assert.Contains(level1Title, detailsHtml); // Should show its parent title
+        Assert.IsTrue(detailsHtml.Contains(level2Title));
+        Assert.IsTrue(detailsHtml.Contains(level1Title)); // Should show its parent title
+    }
+
+    [TestMethod]
+    public async Task TestCategoryOrdering()
+    {
+        await LoginAsAdminAsync();
+
+        // 1. Create two root categories
+        var cat1Title = "Cat 1";
+        var createToken1 = await GetAntiCsrfToken("/Categories/Create");
+        var createContent1 = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", cat1Title },
+            { "__RequestVerificationToken", createToken1 }
+        });
+        var createResponse1 = await _http.PostAsync("/Categories/Create", createContent1);
+        var cat1Id = createResponse1.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        var cat2Title = "Cat 2";
+        var createToken2 = await GetAntiCsrfToken("/Categories/Create");
+        var createContent2 = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", cat2Title },
+            { "__RequestVerificationToken", createToken2 }
+        });
+        var createResponse2 = await _http.PostAsync("/Categories/Create", createContent2);
+        var cat2Id = createResponse2.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        // 2. Change order via API
+        var orderToken = await GetAntiCsrfToken("/Categories");
+        var orderContent = new StringContent(
+            Newtonsoft.Json.JsonConvert.SerializeObject(new[] { Guid.Parse(cat2Id), Guid.Parse(cat1Id) }),
+            System.Text.Encoding.UTF8,
+            "application/json");
+        
+        // Add header for anti-CSRF
+        var request = new HttpRequestMessage(HttpMethod.Post, "/Categories/UpdateOrder")
+        {
+            Content = orderContent
+        };
+        request.Headers.Add("RequestVerificationToken", orderToken);
+        
+        var orderResponse = await _http.SendAsync(request);
+        Assert.AreEqual(HttpStatusCode.OK, orderResponse.StatusCode);
+
+        // 3. Verify order in MiniProgram API
+        var apiResponse = await _http.GetAsync("/api/Categories/top");
+        apiResponse.EnsureSuccessStatusCode();
+        var apiJson = await apiResponse.Content.ReadAsStringAsync();
+        
+        // cat2 should come before cat1
+        var cat1Index = apiJson.IndexOf(cat1Title);
+        var cat2Index = apiJson.IndexOf(cat2Title);
+        
+        Assert.IsTrue(cat2Index < cat1Index, "Cat 2 should appear before Cat 1 in the API response after reordering");
     }
 }

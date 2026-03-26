@@ -23,6 +23,9 @@ public class Category
     /// </summary>
     public required Guid? ParentId { get; set; }
 
+    [Display(Name = "Order Index")]
+    public int OrderIndex { get; set; }
+
     // 导航引用：Category?, JsonIgnore, ForeignKey
     [JsonIgnore]
     [ForeignKey(nameof(ParentId))]

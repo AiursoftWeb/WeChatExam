@@ -32,15 +32,35 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         var categories = await context.Categories
             .Include(c => c.CategoryKnowledgePoints)
             .ThenInclude(ck => ck.KnowledgePoint)
+            .OrderBy(c => c.OrderIndex)
             .ToListAsync();
         // Build a hierarchical structure
-        var rootCategories = categories.Where(c => c.ParentId == null).ToList();
+        var rootCategories = categories
+            .Where(c => c.ParentId == null)
+            .OrderBy(c => c.OrderIndex)
+            .ToList();
         
         return this.StackView(new IndexViewModel
         {
             Categories = categories,
             RootCategories = rootCategories
         });
+    }
+
+    [HttpPost]
+    [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
+    public async Task<IActionResult> UpdateOrder([FromBody] Guid[] ids)
+    {
+        for (var i = 0; i < ids.Length; i++)
+        {
+            var category = await context.Categories.FindAsync(ids[i]);
+            if (category != null)
+            {
+                category.OrderIndex = i;
+            }
+        }
+        await context.SaveChangesAsync();
+        return Ok();
     }
 
     // GET: categories/create
@@ -81,12 +101,19 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
             }
         }
 
+        var nextOrder = await context.Categories
+            .Where(c => c.ParentId == model.ParentId)
+            .Select(c => (int?)c.OrderIndex)
+            .MaxAsync() ?? -1;
+        nextOrder++;
+
         var category = new Category
         {
             Id = Guid.NewGuid(),
             Title = model.Title,
             IsFree = model.IsFree,
-            ParentId = model.ParentId
+            ParentId = model.ParentId,
+            OrderIndex = nextOrder
         };
 
         context.Categories.Add(category);
@@ -194,6 +221,15 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
                     .ToListAsync();
                 return this.StackView(model);
             }
+        }
+
+        if (category.ParentId != model.ParentId)
+        {
+            var nextOrder = await context.Categories
+                .Where(c => c.ParentId == model.ParentId)
+                .Select(c => (int?)c.OrderIndex)
+                .MaxAsync() ?? -1;
+            category.OrderIndex = nextOrder + 1;
         }
 
         category.Title = model.Title;
