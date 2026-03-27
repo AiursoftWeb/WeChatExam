@@ -1,16 +1,19 @@
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+using Aiursoft.WeChatExam.Services.Authentication;
 
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 
 [Route("api/miniprogramapi/taxonomies")]
 [ApiController]
-[AllowAnonymous] 
+[WeChatUserOnly]
 public class TaxonomiesApiController(
     ITaxonomyService taxonomyService,
-    ITagService tagService) : ControllerBase
+    ITagService tagService,
+    IPaperAccessService paperAccessService) : ControllerBase
 {
     [HttpGet]
     [Produces(typeof(List<TaxonomyDto>))]
@@ -30,13 +33,29 @@ public class TaxonomiesApiController(
     public async Task<IActionResult> GetTags(int id)
     {
         var tags = await tagService.GetTagsByTaxonomyIdAsync(id);
+        
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var accessStatus = await paperAccessService.GetUserAccessStatusAsync(userId);
 
-        var dtos = tags.Select(t => new TagDto
+        var dtos = tags.Select(t =>
         {
-            Id = t.Id,
-            DisplayName = t.DisplayName,
-            NormalizedName = t.NormalizedName
-        });
+            bool hasAccess = t.IsFree;
+            if (!hasAccess && t.Taxonomy?.CategoryTaxonomies != null)
+            {
+                var categoryIds = t.Taxonomy.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList();
+                hasAccess = categoryIds.Any(catId => accessStatus.ActiveCategoryVips.Contains(catId));
+            }
+
+            return new TagDto
+            {
+                Id = t.Id,
+                DisplayName = t.DisplayName,
+                NormalizedName = t.NormalizedName,
+                IsFree = t.IsFree,
+                HasAccess = hasAccess
+            };
+        }).ToList();
+        
         return Ok(dtos);
     }
 }

@@ -3,7 +3,9 @@ using System.Text.RegularExpressions;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
+using Moq;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -14,6 +16,9 @@ public class TaxonomiesTests
     private readonly int _port;
     private readonly HttpClient _http;
     private IHost? _server;
+    private readonly Mock<IWeChatService> _mockWeChatService = new();
+    private readonly Mock<IWeChatPayService> _mockWeChatPayService = new();
+    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService = new();
 
     public TaxonomiesTests()
     {
@@ -33,7 +38,11 @@ public class TaxonomiesTests
     [TestInitialize]
     public async Task CreateServer()
     {
-        _server = await AppAsync<Startup>([], port: _port);
+        TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
+        TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
+        TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
+
+        _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
         await _server.UpdateDbAsync<WeChatExamDbContext>();
         await _server.SeedAsync();
         await _server.StartAsync();
@@ -78,7 +87,28 @@ public class TaxonomiesTests
         Assert.AreEqual(HttpStatusCode.Found, loginResponse.StatusCode);
         Assert.AreEqual("/Dashboard/Index", loginResponse.Headers.Location?.OriginalString);
     }
+    private async Task<string> LoginAsWeChatUserAsync()
+    {
+        _mockWeChatService.Setup(x => x.CodeToSessionAsync(It.IsAny<string>()))
+            .ReturnsAsync(new WeChatSessionResult
+            {
+                IsSuccess = true,
+                OpenId = $"test-openid-{Guid.NewGuid()}",
+                SessionKey = "test-session-key"
+            });
 
+        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
+            .ReturnsAsync(new List<VipMembership>());
+
+        var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto
+        {
+            Code = "test-code"
+        });
+
+        response.EnsureSuccessStatusCode();
+        var result = await response.Content.ReadFromJsonAsync<TokenDto>();
+        return result!.Token;
+    }
     [TestMethod]
     public async Task TaxonomiesCrudTest()
     {
@@ -164,6 +194,9 @@ public class TaxonomiesTests
         await _http.PostAsync("/Taxonomies/Create", createContent);
 
         // 2. Get Taxonomy List via API
+        var token = await LoginAsWeChatUserAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
         var listResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
         listResponse.EnsureSuccessStatusCode();
         var listJson = await listResponse.Content.ReadAsStringAsync();
@@ -205,6 +238,8 @@ public class TaxonomiesTests
         await _http.PostAsync("/Taxonomies/Create", createContent);
         
         // Get Taxonomy ID (fetch from list)
+        var token = await LoginAsWeChatUserAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         var listResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
         var listJson = await listResponse.Content.ReadAsStringAsync();
         var taxonomies = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TaxonomyDto>>(listJson);
@@ -263,6 +298,8 @@ public class TaxonomiesTests
         await _http.PostAsync("/Taxonomies/Create", createContent);
         
         // Get Taxonomy ID
+        var token = await LoginAsWeChatUserAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         var listResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
         var listJson = await listResponse.Content.ReadAsStringAsync();
         var taxonomies = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TaxonomyDto>>(listJson);

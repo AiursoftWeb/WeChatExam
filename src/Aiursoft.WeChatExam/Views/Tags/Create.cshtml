@@ -34,6 +34,17 @@
                         </div>
                     </div>
 
+                    <div class="mb-3">
+                        <div class="form-check form-switch mt-2">
+                            <input class="form-check-input" type="checkbox" asp-for="IsFree">
+                            <label class="form-check-label fw-bold" asp-for="IsFree"></label>
+                        </div>
+                        <div class="form-text mt-1 text-muted">
+                            <i data-lucide="info" class="icon-sm"></i>
+                            @Localizer["If unchecked, users will need a valid VIP membership to access questions under this tag in the mini-program."]
+                        </div>
+                    </div>
+
                     <hr class="my-4">
 
                     <div class="d-flex justify-content-between">
