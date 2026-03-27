@@ -15,16 +15,13 @@ public class QuestionsController : ControllerBase
 {
     private readonly WeChatExamDbContext _context;
     private readonly IPaperAccessService _paperAccessService;
-    private readonly ITagService _tagService;
 
     public QuestionsController(
         WeChatExamDbContext context,
-        IPaperAccessService paperAccessService,
-        ITagService tagService)
+        IPaperAccessService paperAccessService)
     {
         _context = context;
         _paperAccessService = paperAccessService;
-        _tagService = tagService;
     }
 
     /// <summary>
@@ -179,7 +176,7 @@ public class QuestionsController : ControllerBase
                     
                     if (!hasAccess)
                     {
-                        var categoryIds = tagEntity.Taxonomy?.CategoryTaxonomies?.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
+                        var categoryIds = tagEntity.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
                         return StatusCode(StatusCodes.Status403Forbidden, new 
                         { 
                             Message = $"Access denied to tag: {tagEntity.DisplayName}",
