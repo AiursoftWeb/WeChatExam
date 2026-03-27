@@ -1,12 +1,10 @@
 using System.Net;
-using System.Net.Http.Json;
 using System.Text.RegularExpressions;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using static Aiursoft.WebTools.Extends;
 
@@ -98,6 +96,9 @@ public class TaxonomiesTests
                 OpenId = $"test-openid-{Guid.NewGuid()}",
                 SessionKey = "test-session-key"
             });
+
+        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
+            .ReturnsAsync(new List<VipMembership>());
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto
         {
