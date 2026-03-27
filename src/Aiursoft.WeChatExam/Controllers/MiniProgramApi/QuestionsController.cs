@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
+using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,17 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 public class QuestionsController : ControllerBase
 {
     private readonly WeChatExamDbContext _context;
+    private readonly IPaperAccessService _paperAccessService;
+    private readonly ITagService _tagService;
 
-    public QuestionsController(WeChatExamDbContext context)
+    public QuestionsController(
+        WeChatExamDbContext context,
+        IPaperAccessService paperAccessService,
+        ITagService tagService)
     {
         _context = context;
+        _paperAccessService = paperAccessService;
+        _tagService = tagService;
     }
 
     /// <summary>
@@ -114,6 +122,8 @@ public class QuestionsController : ControllerBase
         }
 
         // Apply Tag / MTQL Filters
+        List<string> queriedTags = new List<string>();
+
         if (!string.IsNullOrWhiteSpace(mtql))
         {
             try
@@ -121,6 +131,9 @@ public class QuestionsController : ControllerBase
                 var tokens = MTQL.Services.Tokenizer.Tokenize(mtql);
                 var rpn = MTQL.Services.Parser.ToRpn(tokens);
                 var ast = MTQL.Services.AstBuilder.Build(rpn);
+                
+                queriedTags = MTQL.Services.TagExtractor.ExtractTags(ast);
+
                 var predicate = MTQL.Services.PredicateBuilder.Build(ast);
                 query = query.Where(predicate);
             }
@@ -136,8 +149,45 @@ public class QuestionsController : ControllerBase
         else if (!string.IsNullOrWhiteSpace(tagName))
         {
             var normalizedTagName = tagName.Trim().ToUpperInvariant();
+            queriedTags.Add(normalizedTagName);
+            
             query = query.Include(q => q.QuestionTags).ThenInclude(qt => qt.Tag)
                 .Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTagName));
+        }
+
+        if (queriedTags.Any())
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
+
+            foreach (var tagString in queriedTags.Distinct())
+            {
+                var normalizedTagString = tagString.Trim().ToUpperInvariant();
+                var tagEntity = await _context.Tags
+                    .Include(t => t.Taxonomy)
+                    .ThenInclude(tax => tax!.CategoryTaxonomies)
+                    .FirstOrDefaultAsync(t => t.NormalizedName == normalizedTagString);
+
+                if (tagEntity != null && !tagEntity.IsFree)
+                {
+                    bool hasAccess = false;
+                    if (tagEntity.Taxonomy?.CategoryTaxonomies != null)
+                    {
+                        var categoryIds = tagEntity.Taxonomy.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList();
+                        hasAccess = categoryIds.Any(catId => accessStatus.ActiveCategoryVips.Contains(catId));
+                    }
+                    
+                    if (!hasAccess)
+                    {
+                        var categoryIds = tagEntity.Taxonomy?.CategoryTaxonomies?.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
+                        return StatusCode(StatusCodes.Status403Forbidden, new 
+                        { 
+                            Message = $"Access denied to tag: {tagEntity.DisplayName}",
+                            RequiredCategoryIds = categoryIds
+                        });
+                    }
+                }
+            }
         }
 
         List<QuestionDto> questions = new List<QuestionDto>();

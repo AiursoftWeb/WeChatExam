@@ -88,6 +88,10 @@
                             <input type="checkbox" class="form-check-input row-selector" value="@tag.Id" onchange="updateSelection(this)" />
                         </div>
                         <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-outline-danger btn-sm border-start-0">
+                            @if (!tag.IsFree)
+                            {
+                                <i data-lucide="crown" class="icon-sm text-warning me-1" title="@Localizer["VIP Required"]"></i>
+                            }
                             @tag.DisplayName
                             <span class="badge bg-danger ms-1">@Model.TagUsageCounts[tag.Id]</span>
                         </a>
@@ -143,6 +147,10 @@
                                         <input type="checkbox" class="form-check-input row-selector" value="@tag.Id" onchange="updateSelection(this)" />
                                     </div>
                                     <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-light border btn-sm border-start-0">
+                                        @if (!tag.IsFree)
+                                        {
+                                            <i data-lucide="crown" class="icon-sm text-warning me-1" title="@Localizer["VIP Required"]"></i>
+                                        }
                                         @tag.DisplayName
                                         <span class="badge bg-secondary ms-1">@Model.TagUsageCounts[tag.Id]</span>
                                     </a>

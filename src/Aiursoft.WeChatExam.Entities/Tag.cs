@@ -16,6 +16,9 @@ public class Tag
     [MaxLength(255)]
     public required string NormalizedName { get; set; }
 
+    [Display(Name = "Is Free")]
+    public bool IsFree { get; set; } = true;
+
     public int? TaxonomyId { get; set; }
 
     [ForeignKey(nameof(TaxonomyId))]

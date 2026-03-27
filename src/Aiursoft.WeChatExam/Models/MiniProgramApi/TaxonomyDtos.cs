@@ -11,4 +11,6 @@ public class TagDto
     public int Id { get; set; }
     public string DisplayName { get; set; } = string.Empty;
     public string NormalizedName { get; set; } = string.Empty;
+    public bool IsFree { get; set; }
+    public bool HasAccess { get; set; }
 }
