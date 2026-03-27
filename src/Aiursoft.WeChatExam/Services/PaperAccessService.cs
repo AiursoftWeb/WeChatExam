@@ -24,7 +24,7 @@ public class PaperAccessService : IPaperAccessService
         
         if (userId != null)
         {
-            var vips = await _payService.GetVipStatusListAsync(userId);
+            var vips = await _payService.GetVipStatusListAsync(userId) ?? new List<VipMembership>();
             var activeVips = vips.Where(v => v.IsActive && v.VipProduct != null).ToList();
             
             status.ActiveCategoryVips = activeVips
