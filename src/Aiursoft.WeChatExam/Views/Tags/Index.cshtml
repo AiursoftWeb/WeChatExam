@@ -202,12 +202,29 @@
     </div>
 </div>
 
+@* Configuration and Localization Data for JavaScript *@
+<div id="tags-config" hidden
+     data-batch-delete-url="@Url.Action("BatchDelete")">
+</div>
+
+@* Localization Data for JavaScript *@
+<div id="loc-data" hidden>
+    <span data-key="failed-delete">@Localizer["Failed to delete tags:"]</span>
+    <span data-key="error-occurred">@Localizer["An error occurred during deletion."]</span>
+</div>
+
 @Html.AntiForgeryToken()
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script>
+        const config = document.getElementById('tags-config').dataset;
         const STORAGE_KEY = 'selectedTagsIds';
+
+        function getLocalizedText(key, defaultText) {
+            const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+            return el ? el.innerText : defaultText;
+        }
 
         function getSelectedIds() {
             const stored = sessionStorage.getItem(STORAGE_KEY);
@@ -261,7 +278,7 @@
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             try {
-                const response = await fetch('@Url.Action("BatchDelete")', {
+                const response = await fetch(config.batchDeleteUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -275,11 +292,11 @@
                     location.reload();
                 } else {
                     const error = await response.text();
-                    alert('@Localizer["Failed to delete tags:"] ' + error);
+                    alert(getLocalizedText('failed-delete', 'Failed to delete tags:') + ' ' + error);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('@Localizer["An error occurred during deletion."]');
+                alert(getLocalizedText('error-occurred', 'An error occurred during deletion.'));
             }
         }
 

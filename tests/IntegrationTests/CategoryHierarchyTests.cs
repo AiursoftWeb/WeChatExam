@@ -187,8 +187,8 @@ public class CategoryHierarchyTests
         var apiJson = await apiResponse.Content.ReadAsStringAsync();
         
         // cat2 should come before cat1
-        var cat1Index = apiJson.IndexOf(cat1Title);
-        var cat2Index = apiJson.IndexOf(cat2Title);
+        var cat1Index = apiJson.IndexOf(cat1Title, StringComparison.Ordinal);
+        var cat2Index = apiJson.IndexOf(cat2Title, StringComparison.Ordinal);
         
         Assert.IsTrue(cat2Index < cat1Index, "Cat 2 should appear before Cat 1 in the API response after reordering");
     }

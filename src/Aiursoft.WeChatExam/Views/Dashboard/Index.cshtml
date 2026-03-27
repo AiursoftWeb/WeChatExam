@@ -558,10 +558,33 @@
     </div>
 </div>
 
+@* Localization Data for JavaScript *@
+<div id="loc-data" hidden>
+    <span data-key="choice">@Localizer["Choice"]</span>
+    <span data-key="blank">@Localizer["Blank"]</span>
+    <span data-key="bool">@Localizer["Bool"]</span>
+    <span data-key="short-answer">@Localizer["Short Answer"]</span>
+    <span data-key="essay">@Localizer["Essay"]</span>
+    <span data-key="noun-explanation">@Localizer["Noun Explanation"]</span>
+    <span data-key="draft">@Localizer["Draft"]</span>
+    <span data-key="publishable">@Localizer["Publishable"]</span>
+    <span data-key="frozen">@Localizer["Frozen"]</span>
+    <span data-key="usage-count">@Localizer["Usage Count"]</span>
+    <span data-key="active">@Localizer["Active"]</span>
+    <span data-key="upcoming">@Localizer["Upcoming"]</span>
+    <span data-key="ended">@Localizer["Ended"]</span>
+    <span data-key="exams">@Localizer["Exams"]</span>
+</div>
+
 @* === Chart.js Scripts === *@
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="/node_modules/chart.js/dist/chart.umd.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        function getLocalizedText(key, defaultText) {
+            const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+            return el ? el.innerText : defaultText;
+        }
+
         // --- Question Type Doughnut ---
         var ctxQ = document.getElementById("chartQuestionTypes");
         if (ctxQ) {
@@ -569,12 +592,12 @@
                 type: "doughnut",
                 data: {
                     labels: [
-                        "@Localizer["Choice"]",
-                        "@Localizer["Blank"]",
-                        "@Localizer["Bool"]",
-                        "@Localizer["Short Answer"]",
-                        "@Localizer["Essay"]",
-                        "@Localizer["Noun Explanation"]"
+                        getLocalizedText("choice", "Choice"),
+                        getLocalizedText("blank", "Blank"),
+                        getLocalizedText("bool", "Bool"),
+                        getLocalizedText("short-answer", "Short Answer"),
+                        getLocalizedText("essay", "Essay"),
+                        getLocalizedText("noun-explanation", "Noun Explanation")
                     ],
                     datasets: [{
                         data: [
@@ -618,9 +641,9 @@
                 type: "pie",
                 data: {
                     labels: [
-                        "@Localizer["Draft"]",
-                        "@Localizer["Publishable"]",
-                        "@Localizer["Frozen"]"
+                        getLocalizedText("draft", "Draft"),
+                        getLocalizedText("publishable", "Publishable"),
+                        getLocalizedText("frozen", "Frozen")
                     ],
                     datasets: [{
                         data: [
@@ -656,9 +679,9 @@
             new Chart(ctxTags, {
                 type: "bar",
                 data: {
-                    labels: [@Html.Raw(string.Join(",", Model.TopTags.Select(t => $"'{t.Name}'")))],
+                    labels: [@Html.Raw(string.Join(",", Model.TopTags.Select(t => $"'{t.Name.Replace("'", "\\'")}'")))],
                     datasets: [{
-                        label: "@Localizer["Usage Count"]",
+                        label: getLocalizedText("usage-count", "Usage Count"),
                         data: [@string.Join(",", Model.TopTags.Select(t => t.UsageCount))],
                         backgroundColor: "rgba(59, 125, 221, 0.85)",
                         borderColor: "rgba(59, 125, 221, 0.85)",
@@ -690,7 +713,7 @@
             new Chart(ctxTax, {
                 type: "pie",
                 data: {
-                    labels: [@Html.Raw(string.Join(",", Model.TaxonomyStats.Select(t => $"'{t.Name}'")))],
+                    labels: [@Html.Raw(string.Join(",", Model.TaxonomyStats.Select(t => $"'{t.Name.Replace("'", "\\'")}'")))],
                     datasets: [{
                         data: [@string.Join(",", Model.TaxonomyStats.Select(t => t.TagCount))],
                         backgroundColor: [
@@ -724,12 +747,12 @@
                 type: "bar",
                 data: {
                     labels: [
-                        "@Localizer["Active"]",
-                        "@Localizer["Upcoming"]",
-                        "@Localizer["Ended"]"
+                        getLocalizedText("active", "Active"),
+                        getLocalizedText("upcoming", "Upcoming"),
+                        getLocalizedText("ended", "Ended")
                     ],
                     datasets: [{
-                        label: "@Localizer["Exams"]",
+                        label: getLocalizedText("exams", "Exams"),
                         data: [
                             @Model.ExamsActive,
                             @Model.ExamsUpcoming,

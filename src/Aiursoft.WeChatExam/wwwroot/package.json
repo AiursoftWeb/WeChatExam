@@ -6,6 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "@aiursoft/uistack": "^1.0.8",
-    "dropify": "^0.2.2"
+    "dropify": "^0.2.2",
+    "mermaid": "^10.9.0",
+    "sortablejs": "^1.15.2",
+    "chart.js": "^4.4.7"
   }
 }
