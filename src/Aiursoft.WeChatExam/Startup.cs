@@ -1,5 +1,6 @@
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools.Switchable;
+using Aiursoft.ClickhouseLoggerProvider;
 using Aiursoft.GptClient.Services;
 using Aiursoft.Scanner;
 using Aiursoft.WebTools.Abstractions.Models;
@@ -39,6 +40,11 @@ public class Startup : IWebStartup
                 new SqliteSupportedDb(allowCache: allowCache, splitQuery: true),
                 new InMemorySupportedDb()
             ]);
+
+        services.AddLogging(builder =>
+        {
+            builder.AddClickhouse(options => configuration.GetSection("Logging:Clickhouse").Bind(options));
+        });
 
         // Authentication and Authorization
         services.AddTemplateAuth(configuration);
