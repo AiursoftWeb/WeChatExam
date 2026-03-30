@@ -16,6 +16,7 @@ public class KnowledgePointWithQuestionsDto
 public class QuestionContentDto
 {
     public Guid Id { get; set; }
+    public string Title { get; set; } = string.Empty;
     [Required]
     public string Text { get; set; } = string.Empty;
     public string Answer { get; set; } = string.Empty;
