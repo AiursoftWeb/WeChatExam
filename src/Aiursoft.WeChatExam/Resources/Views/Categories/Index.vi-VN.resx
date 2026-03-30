@@ -24,6 +24,9 @@
   <data name="Add Category" xml:space="preserve">
     <value>Thêm Danh mục</value>
   </data>
+  <data name="An error occurred while saving order." xml:space="preserve">
+    <value>Đã xảy ra lỗi khi lưu đơn hàng.</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>Danh mục</value>
   </data>
@@ -32,6 +35,12 @@
   </data>
   <data name="Created" xml:space="preserve">
     <value>Đã tạo</value>
+  </data>
+  <data name="Failed to render tree:" xml:space="preserve">
+    <value>Không thể hiển thị cây:</value>
+  </data>
+  <data name="Failed to save order." xml:space="preserve">
+    <value>Không thể lưu đơn hàng.</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Miễn phí</value>
@@ -44,6 +53,12 @@
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Danh mục cha</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>Lưu thứ tự</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Đang lưu...</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Tiêu đề</value>

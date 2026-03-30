@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>Wszystkie typy</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Wystąpił błąd podczas usuwania.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>Wystąpił błąd podczas uruchamiania generowania odpowiedzi AI.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Wystąpił błąd podczas uruchamiania kategoryzacji AI.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>Wystąpił błąd podczas uruchamiania generowania AI.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>Wystąpił błąd podczas uruchamiania automatycznego tagowania AI.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>Data zakończenia</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Nie udało się usunąć pytań. Spróbuj ponownie.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Nie udało się rozpocząć generowania odpowiedzi AI.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Nie udało się uruchomić kategoryzacji AI.</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Nie udało się uruchomić generowania AI.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Nie udało się uruchomić automatycznego tagowania AI.</value>

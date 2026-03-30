@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>All Types</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>An error occurred during deletion.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>An error occurred while starting AI answer generation.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>An error occurred while starting AI categorisation.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>An error occurred while starting AI generation.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>An error occurred while starting AI tagging.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Failed to delete questions. Please try again.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Failed to start AI answer generation.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Failed to start AI categorization.</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Failed to start AI generation.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Failed to start AI tagging.</value>

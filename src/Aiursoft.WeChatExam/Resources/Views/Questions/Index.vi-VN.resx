@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>Tất cả các loại</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Đã xảy ra lỗi trong quá trình xóa.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>Đã xảy ra lỗi khi khởi chạy việc tạo câu trả lời bằng AI.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Đã xảy ra lỗi khi khởi động phân loại AI.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>Đã xảy ra lỗi khi bắt đầu tạo AI.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>Đã xảy ra lỗi khi khởi chạy đánh dấu AI.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>Ngày kết thúc</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Không thể xóa câu hỏi. Vui lòng thử lại.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Thất bại khi bắt đầu tạo câu trả lời bằng AI</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Thất bại khi khởi động phân loại AI</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Không thể bắt đầu tạo AI.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Thất bại khi khởi tạo gắn thẻ AI.</value>

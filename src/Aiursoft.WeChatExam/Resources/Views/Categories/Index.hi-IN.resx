@@ -24,6 +24,9 @@
   <data name="Add Category" xml:space="preserve">
     <value>श्रेणी जोड़ें</value>
   </data>
+  <data name="An error occurred while saving order." xml:space="preserve">
+    <value>आदेश को बचाने के दौरान एक त्रुटि हुई।</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>श्रेणियाँ</value>
   </data>
@@ -32,6 +35,12 @@
   </data>
   <data name="Created" xml:space="preserve">
     <value>बनाया गया</value>
+  </data>
+  <data name="Failed to render tree:" xml:space="preserve">
+    <value>ड्रू का प्रदर्शन करने में विफल:</value>
+  </data>
+  <data name="Failed to save order." xml:space="preserve">
+    <value>ऑर्डर सेव करने में विफल।</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>निःशुल्क</value>
@@ -44,6 +53,12 @@
   </data>
   <data name="Parent" xml:space="preserve">
     <value>मूल</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>आदेश का क्रम सहेजें</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>सहेज रहा है...</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>शीर्षक</value>

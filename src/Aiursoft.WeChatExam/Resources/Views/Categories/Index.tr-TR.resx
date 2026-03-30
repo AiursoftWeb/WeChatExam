@@ -24,6 +24,9 @@
   <data name="Add Category" xml:space="preserve">
     <value>Kategori Ekle</value>
   </data>
+  <data name="An error occurred while saving order." xml:space="preserve">
+    <value>Sipariş kaydedilirken bir hata oluştu.</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>Kategoriler</value>
   </data>
@@ -32,6 +35,12 @@
   </data>
   <data name="Created" xml:space="preserve">
     <value>Oluşturulma Tarihi</value>
+  </data>
+  <data name="Failed to render tree:" xml:space="preserve">
+    <value>Ağaç çizimi başarısız:</value>
+  </data>
+  <data name="Failed to save order." xml:space="preserve">
+    <value>Sipariş kaydedilemedi.</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Ücretsiz</value>
@@ -44,6 +53,12 @@
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Üst Kategori</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>Sıralamayı Kaydet</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Kaydediliyor...</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Başlık</value>

@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>刪除時發生錯誤。</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>啟動 AI 答案產生時發生錯誤。</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>啟動 AI 分類時發生錯誤。</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>啟動 AI 生成時發生錯誤。</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>啟動 AI 標籤時發生錯誤。</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>結束日期</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>刪除問題失敗，請再試一次。</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>無法啟動 AI 答案生成。</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>無法啟動 AI 分類</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>AI 生成啟動失敗</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>無法啟動 AI 標籤</value>

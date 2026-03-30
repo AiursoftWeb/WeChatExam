@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>Kaikki tyypit</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Virhe syntyi poistettaessa.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>Tapahtui virhe AI-vastauksen generoinnin käynnistyksessä.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Tapahtui virhe AI-luokittelun käynnistyksessä.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>AI-generointia aloittaessa tapahtui virhe.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>Tapahtui virhe AI-merkintöjen käynnistyksessä.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>Loppupäivä</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Kysymysten poisto epäonnistui. Yritä uudelleen.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Epäonnistui AI-vastauksen generoinnin käynnistäminen.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>AI-luokittelun käynnistäminen epäonnistui.</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>AI-generaationin käynnistäminen epäonnistui.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Ei voitu käynnistää AI-tagiointia.</value>
