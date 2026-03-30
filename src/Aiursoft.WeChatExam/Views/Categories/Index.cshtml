@@ -36,9 +36,14 @@
                     <div class="card border-top-0">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">@Localizer["Category List"]</h5>
-                            <a asp-action="Create" class="btn btn-primary btn-sm">
-                                <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Category"]
-                            </a>
+                            <div>
+                                <button id="save-order-btn" class="btn btn-success btn-sm me-2" style="display: none;">
+                                    <i class="align-middle me-2" data-lucide="save"></i> @Localizer["Save Order"]
+                                </button>
+                                <a asp-action="Create" class="btn btn-primary btn-sm">
+                                    <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add Category"]
+                                </a>
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
@@ -50,7 +55,7 @@
                                         <th style="width: 150px;">@Localizer["Actions"]</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="categories-sortable" data-update-url="@Url.Action("UpdateOrder", "Categories")">
                                     @foreach (var category in Model.RootCategories)
                                     {
                                         @await Html.PartialAsync("_CategoryRow", category)
@@ -58,7 +63,7 @@
                                     @if (!Model.RootCategories.Any())
                                     {
                                         <tr>
-                                            <td colspan="3" class="text-center text-muted py-4">
+                                            <td colspan="4" class="text-center text-muted py-4">
                                                 @Localizer["No categories found"]
                                             </td>
                                         </tr>
@@ -107,8 +112,22 @@
     </div>
 </div>
 
+@* Localization Data for JavaScript *@
+<div id="loc-data" hidden>
+    <span data-key="saving">@Localizer["Saving..."]</span>
+    <span data-key="failed-to-save">@Localizer["Failed to save order."]</span>
+    <span data-key="error-occurred">@Localizer["An error occurred while saving order."]</span>
+    <span data-key="failed-to-render">@Localizer["Failed to render tree:"]</span>
+</div>
+
 <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    import mermaid from '/node_modules/mermaid/dist/mermaid.esm.min.mjs';
+
+    function getLocalizedText(key, defaultText) {
+        const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+        return el ? el.innerText : defaultText;
+    }
+
     mermaid.initialize({
         startOnLoad: false,
         securityLevel: 'loose',
@@ -136,7 +155,7 @@
             const { svg } = await mermaid.render('mermaid-graph', source);
             output.innerHTML = svg;
         } catch (e) {
-            output.innerHTML = '<p class="text-danger">Failed to render tree: ' + e.message + '</p>';
+            output.innerHTML = `<p class="text-danger">${getLocalizedText('failed-to-render', 'Failed to render tree:')} ${e.message}</p>`;
         }
     }
 
@@ -161,3 +180,62 @@
         width: auto !important;
     }
 </style>
+
+@Html.AntiForgeryToken()
+
+<script type="module">
+    import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
+
+    function getLocalizedText(key, defaultText) {
+        const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+        return el ? el.innerText : defaultText;
+    }
+
+    const el = document.getElementById('categories-sortable');
+    const saveBtn = document.getElementById('save-order-btn');
+
+    if (el) {
+        Sortable.create(el, {
+            animation: 150,
+            handle: '.drag-handle',
+            onEnd: function () {
+                saveBtn.style.display = 'inline-block';
+            }
+        });
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', async function () {
+            saveBtn.disabled = true;
+            const originalHtml = saveBtn.innerHTML;
+            saveBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> ${getLocalizedText('saving', 'Saving...')}`;
+
+            const ids = Array.from(el.querySelectorAll('tr.category-row')).map(tr => tr.dataset.id);
+            const updateUrl = el.dataset.updateUrl;
+
+            try {
+                const response = await fetch(updateUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                    },
+                    body: JSON.stringify(ids)
+                });
+
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert(getLocalizedText('failed-to-save', 'Failed to save order.'));
+                    saveBtn.disabled = false;
+                    saveBtn.innerHTML = originalHtml;
+                }
+            } catch (error) {
+                console.error('Error saving order:', error);
+                alert(getLocalizedText('error-occurred', 'An error occurred while saving order.'));
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = originalHtml;
+            }
+        });
+    }
+</script>

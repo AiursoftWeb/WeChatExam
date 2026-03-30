@@ -238,7 +238,13 @@
 </div>
 
 <!-- Batch Action Toolbar -->
-<div id="batchToolbar" class="fixed-bottom bg-white border-top shadow-lg d-none flex-row align-items-center px-4 py-3" style="z-index: 1020;">
+<div id="batchToolbar" class="fixed-bottom bg-white border-top shadow-lg d-none flex-row align-items-center px-4 py-3" style="z-index: 1020;"
+     data-generate-explanations-url="@Url.Action("GenerateExplanations", "AiTasks")"
+     data-auto-categorize-url="@Url.Action("AutoCategorize", "AiTasks")"
+     data-auto-tagging-url="@Url.Action("AutoTagging", "AiTasks")"
+     data-generate-answers-url="@Url.Action("GenerateAnswers", "AiTasks")"
+     data-batch-delete-url="@Url.Action("BatchDelete")"
+     data-preview-url="@Url.Action("Preview", "AiTasks")">
     <div class="container-fluid d-flex align-items-center">
         <span class="fw-bold me-4 text-primary">
             <i class="align-middle me-2" data-lucide="check-square"></i>
@@ -267,6 +273,23 @@
     </div>
 </div>
 
+@* Localization Data for JavaScript *@
+<div id="loc-data" hidden>
+    <span data-key="please-select">@Localizer["Please select at least one question."]</span>
+    <span data-key="failed-ai-gen">@Localizer["Failed to start AI generation."]</span>
+    <span data-key="error-ai-gen">@Localizer["An error occurred while starting AI generation."]</span>
+    <span data-key="failed-ai-cat">@Localizer["Failed to start AI categorization."]</span>
+    <span data-key="error-ai-cat">@Localizer["An error occurred while starting AI categorization."]</span>
+    <span data-key="failed-ai-tag">@Localizer["Failed to start AI tagging."]</span>
+    <span data-key="error-ai-tag">@Localizer["An error occurred while starting AI tagging."]</span>
+    <span data-key="failed-ai-ans">@Localizer["Failed to start AI answer generation."]</span>
+    <span data-key="error-ai-ans">@Localizer["An error occurred while starting AI answer generation."]</span>
+    <span data-key="failed-delete">@Localizer["Failed to delete questions. Please try again."]</span>
+    <span data-key="error-delete">@Localizer["An error occurred during deletion."]</span>
+    <span data-key="invalid-page">@Localizer["Please enter a valid page number between 1 and"]</span>
+    <span data-key="total-pages">@Model.TotalPages</span>
+</div>
+
 @Html.AntiForgeryToken()
 
 @* ReSharper disable once Razor.SectionNotResolved *@
@@ -275,6 +298,11 @@
         // State Management
         const STORAGE_KEY = 'selectedQuestionIds';
         const form = document.getElementById('filterForm');
+
+        function getLocalizedText(key, defaultText) {
+            const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+            return el ? el.innerText : defaultText;
+        }
 
         function getSelectedIds() {
             const stored = sessionStorage.getItem(STORAGE_KEY);
@@ -342,10 +370,15 @@
 
         async function generateAiExplanations() {
             const ids = Array.from(getSelectedIds());
+            if (ids.length === 0) {
+                 alert(getLocalizedText('please-select', 'Please select at least one question.'));
+                 return;
+            }
+            const toolbar = document.getElementById('batchToolbar');
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             try {
-                const response = await fetch('@Url.Action("GenerateExplanations", "AiTasks")', {
+                const response = await fetch(toolbar.dataset.generateExplanationsUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -357,26 +390,27 @@
                 if (response.ok) {
                     const result = await response.json();
                     clearSelection();
-                    window.location.href = '@Url.Action("Preview", "AiTasks")' + '?taskId=' + result.taskId;
+                    window.location.href = toolbar.dataset.previewUrl + '?taskId=' + result.taskId;
                 } else {
-                    alert('Failed to start AI generation.');
+                    alert(getLocalizedText('failed-ai-gen', 'Failed to start AI generation.'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred while starting AI generation.');
+                alert(getLocalizedText('error-ai-gen', 'An error occurred while starting AI generation.'));
             }
         }
 
         async function autoCategorize() {
             const ids = Array.from(getSelectedIds());
             if (ids.length === 0) {
-                 alert('@Localizer["Please select at least one question."]');
+                 alert(getLocalizedText('please-select', 'Please select at least one question.'));
                  return;
             }
+            const toolbar = document.getElementById('batchToolbar');
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             try {
-                const response = await fetch('@Url.Action("AutoCategorize", "AiTasks")', {
+                const response = await fetch(toolbar.dataset.autoCategorizeUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -388,26 +422,27 @@
                 if (response.ok) {
                     const result = await response.json();
                     clearSelection();
-                    window.location.href = '@Url.Action("Preview", "AiTasks")' + '?taskId=' + result.taskId;
+                    window.location.href = toolbar.dataset.previewUrl + '?taskId=' + result.taskId;
                 } else {
-                    alert('@Localizer["Failed to start AI categorization."]');
+                    alert(getLocalizedText('failed-ai-cat', 'Failed to start AI categorization.'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('@Localizer["An error occurred while starting AI categorization."]');
+                alert(getLocalizedText('error-ai-cat', 'An error occurred while starting AI categorization.'));
             }
         }
 
         async function autoTagging() {
             const ids = Array.from(getSelectedIds());
             if (ids.length === 0) {
-                 alert('@Localizer["Please select at least one question."]');
+                 alert(getLocalizedText('please-select', 'Please select at least one question.'));
                  return;
             }
+            const toolbar = document.getElementById('batchToolbar');
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             try {
-                const response = await fetch('@Url.Action("AutoTagging", "AiTasks")', {
+                const response = await fetch(toolbar.dataset.autoTaggingUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -419,26 +454,27 @@
                 if (response.ok) {
                     const result = await response.json();
                     clearSelection();
-                    window.location.href = '@Url.Action("Preview", "AiTasks")' + '?taskId=' + result.taskId;
+                    window.location.href = toolbar.dataset.previewUrl + '?taskId=' + result.taskId;
                 } else {
-                    alert('@Localizer["Failed to start AI tagging."]');
+                    alert(getLocalizedText('failed-ai-tag', 'Failed to start AI tagging.'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('@Localizer["An error occurred while starting AI tagging."]');
+                alert(getLocalizedText('error-ai-tag', 'An error occurred while starting AI tagging.'));
             }
         }
 
         async function generateAiAnswers() {
             const ids = Array.from(getSelectedIds());
             if (ids.length === 0) {
-                 alert('@Localizer["Please select at least one question."]');
+                 alert(getLocalizedText('please-select', 'Please select at least one question.'));
                  return;
             }
+            const toolbar = document.getElementById('batchToolbar');
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             try {
-                const response = await fetch('@Url.Action("GenerateAnswers", "AiTasks")', {
+                const response = await fetch(toolbar.dataset.generateAnswersUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -450,22 +486,23 @@
                 if (response.ok) {
                     const result = await response.json();
                     clearSelection();
-                    window.location.href = '@Url.Action("Preview", "AiTasks")' + '?taskId=' + result.taskId;
+                    window.location.href = toolbar.dataset.previewUrl + '?taskId=' + result.taskId;
                 } else {
-                    alert('@Localizer["Failed to start AI answer generation."]');
+                    alert(getLocalizedText('failed-ai-ans', 'Failed to start AI answer generation.'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('@Localizer["An error occurred while starting AI answer generation."]');
+                alert(getLocalizedText('error-ai-ans', 'An error occurred while starting AI answer generation.'));
             }
         }
 
         async function executeBatchDelete() {
             const ids = Array.from(getSelectedIds());
+            const toolbar = document.getElementById('batchToolbar');
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
             try {
-                const response = await fetch('@Url.Action("BatchDelete")', {
+                const response = await fetch(toolbar.dataset.batchDeleteUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -475,15 +512,14 @@
                 });
 
                 if (response.ok) {
-                    const result = await response.json();
                     clearSelection();
                     location.reload();
                 } else {
-                    alert('Failed to delete questions. Please try again.');
+                    alert(getLocalizedText('failed-delete', 'Failed to delete questions. Please try again.'));
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred during deletion.');
+                alert(getLocalizedText('error-delete', 'An error occurred during deletion.'));
             }
         }
 
@@ -508,10 +544,11 @@
         function jumpToPage() {
             const pageInput = document.getElementById('jumpToPageInput');
             const page = parseInt(pageInput.value);
-            if (page >= 1 && page <= @Model.TotalPages) {
+            const totalPages = parseInt(getLocalizedText('total-pages', '0'));
+            if (page >= 1 && page <= totalPages) {
                 changePage(page);
             } else {
-                alert('@Localizer["Please enter a valid page number between 1 and"] @Model.TotalPages');
+                alert(getLocalizedText('invalid-page', 'Please enter a valid page number between 1 and') + ' ' + totalPages);
             }
         }
 
@@ -525,31 +562,10 @@
             });
             updateToolbar();
 
-            // Clear selection on form submit (filter change)
-            form.addEventListener('submit', function() {
-                // If we are just changing pages or sorting, maybe we want to KEEP selection?
-                // Request said: "When filtering conditions change, clear selected items"
-                // But changing page/sort is strictly keeping the same filter context.
-                // However, to keep it simple and safe as per "Filter / Search changes -> Clear",
-                // we can clear it if inputs changed.
-                // Let's rely on the user manually clearing or the specific requirement.
-                // Actually, "Pagination cross-page selection" implies we MUST NOT clear on page change.
-
-                // Detection of "Filter Change" vs "Sort/Page Change" is complex on submit.
-                // Simpler approach: Add onchange to filter inputs to clear storage?
-                // Or just let user manage it manually via "Cancel" button?
-
-                // Requirement: "筛选 / 搜索条件变化 → 清空 selectedIds"
-                // We can add logic to clear storage if any FILTER input changes value.
-            });
-
             // Attach clear listener to filter inputs
             const filterInputs = form.querySelectorAll('select:not([name="sortOrder"]), input:not([type="hidden"])');
             filterInputs.forEach(input => {
                 input.addEventListener('change', () => {
-                   // This runs before submit.
-                   // If tag input changes, user hits enter -> form submit.
-                   // We want to clear storage.
                    if(input.name !== 'page' && input.name !== 'sortBy' && input.name !== 'sortOrder' && input.name !== 'PageSize') {
                        sessionStorage.removeItem(STORAGE_KEY);
                    }

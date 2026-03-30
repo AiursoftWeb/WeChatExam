@@ -95,6 +95,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<bool>("IsFree")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("TEXT");
 

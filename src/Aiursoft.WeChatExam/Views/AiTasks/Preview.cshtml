@@ -174,11 +174,39 @@
 
 @Html.AntiForgeryToken()
 
+@* Configuration and URLs for JavaScript *@
+<div id="ai-task-config" hidden
+     data-task-id="@Model.Id"
+     data-is-categorization="@(isCategorization.ToString().ToLower())"
+     data-get-status-url="@Url.Action("GetStatus")"
+     data-adopt-url="@Url.Action("Adopt")"
+     data-adopt-all-url="@Url.Action("AdoptAll")"
+     data-abandon-url="@Url.Action("Abandon")"
+     data-edit-url="@Url.Action("Edit")"
+     data-cancel-all-url="@Url.Action("CancelAll")"
+     data-keep-alive-url="@Url.Action("KeepAlive")"
+     data-return-url="@(string.IsNullOrEmpty(Model.ReturnUrl) ? Url.Action("Index", "Questions") : Model.ReturnUrl)">
+</div>
+
+@* Localization Data for JavaScript *@
+<div id="loc-data" hidden>
+    <span data-key="too-many-requests">@Localizer["Too many requests, waiting 30s..."]</span>
+    <span data-key="processing">@Localizer["Processing..."]</span>
+    <span data-key="error">@Localizer["Error"]</span>
+    <span data-key="completed">@Localizer["Completed"]</span>
+    <span data-key="confirm-adopt-all">@Localizer["Are you sure you want to adopt all AI suggestions?"]</span>
+    <span data-key="confirm-adopt-partial">@Localizer["Tasks are still processing. Do you want to adopt completed ones and abandon the rest?"]</span>
+    <span data-key="failed-adopt">@Localizer["Failed to adopt suggestions."]</span>
+    <span data-key="confirm-cancel-all">@Localizer["Are you sure you want to cancel all pending tasks?"]</span>
+    <span data-key="adopt-all-text">@Localizer["Adopt All"]</span>
+</div>
+
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script>
-        const taskId = '@Model.Id';
-        const isCategorization = @(isCategorization.ToString().ToLower());
+        const config = document.getElementById('ai-task-config').dataset;
+        const taskId = config.taskId;
+        const isCategorization = config.isCategorization === 'true';
         const questionsContainer = document.getElementById('questionsContainer');
         const taskStatusBadge = document.getElementById('taskStatus');
         const adoptAllBtn = document.getElementById('adoptAllBtn');
@@ -187,25 +215,30 @@
         let isWaiting = false;
         let isTaskFinished = false;
 
+        function getLocalizedText(key, defaultText) {
+            const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+            return el ? el.innerText : defaultText;
+        }
+
         async function pollStatus() {
             if (isWaiting) return;
             
             try {
-                const response = await fetch(`@Url.Action("GetStatus")?taskId=${taskId}`);
+                const response = await fetch(`${config.getStatusUrl}?taskId=${taskId}`);
                 if (!response.ok) {
                     if (response.status === 429) {
                         isWaiting = true;
-                        taskStatusBadge.textContent = '@Localizer["Too many requests, waiting 30s..."]';
+                        taskStatusBadge.textContent = getLocalizedText('too-many-requests', 'Too many requests, waiting 30s...');
                         taskStatusBadge.className = 'badge bg-warning text-dark';
                         setTimeout(() => {
                             isWaiting = false;
-                            taskStatusBadge.textContent = '@Localizer["Processing..."]';
+                            taskStatusBadge.textContent = getLocalizedText('processing', 'Processing...');
                             taskStatusBadge.className = 'badge bg-primary';
                         }, 30000);
                         return;
                     }
                     clearInterval(pollingInterval);
-                    taskStatusBadge.textContent = '@Localizer["Error"]';
+                    taskStatusBadge.textContent = getLocalizedText('error', 'Error');
                     taskStatusBadge.className = 'badge bg-danger';
                     return;
                 }
@@ -241,7 +274,7 @@
                 if (data.isCompleted) {
                     clearInterval(pollingInterval);
                     isTaskFinished = true;
-                    taskStatusBadge.textContent = '@Localizer["Completed"]';
+                    taskStatusBadge.textContent = getLocalizedText('completed', 'Completed');
                     taskStatusBadge.className = 'badge bg-success';
                     cancelAllBtn.classList.add('d-none');
                 }
@@ -252,7 +285,7 @@
 
         async function adopt(questionId) {
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-            const response = await fetch(`@Url.Action("Adopt")?taskId=${taskId}&questionId=${questionId}`, {
+            const response = await fetch(`${config.adoptUrl}?taskId=${taskId}&questionId=${questionId}`, {
                 method: 'POST',
                 headers: { 'RequestVerificationToken': token }
             });
@@ -262,34 +295,34 @@
         }
 
         async function adoptAll() {
-            let message = '@Localizer["Are you sure you want to adopt all AI suggestions?"]';
+            let message = getLocalizedText('confirm-adopt-all', 'Are you sure you want to adopt all AI suggestions?');
             if (!isTaskFinished) {
-                message = '@Localizer["Tasks are still processing. Do you want to adopt completed ones and abandon the rest?"]';
+                message = getLocalizedText('confirm-adopt-partial', 'Tasks are still processing. Do you want to adopt completed ones and abandon the rest?');
             }
 
             if (!confirm(message)) return;
             
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
             adoptAllBtn.disabled = true;
-            adoptAllBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> @Localizer["Processing..."]';
+            adoptAllBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span> ${getLocalizedText('processing', 'Processing...')}`;
             
-            const response = await fetch(`@Url.Action("AdoptAll")?taskId=${taskId}`, {
+            const response = await fetch(`${config.adoptAllUrl}?taskId=${taskId}`, {
                 method: 'POST',
                 headers: { 'RequestVerificationToken': token }
             });
             
             if (response.ok) {
-                window.location.href = '@Html.Raw(string.IsNullOrEmpty(Model.ReturnUrl) ? Url.Action("Index", "Questions") : Model.ReturnUrl)';
+                window.location.href = config.returnUrl;
             } else {
-                alert('@Localizer["Failed to adopt suggestions."]');
+                alert(getLocalizedText('failed-adopt', 'Failed to adopt suggestions.'));
                 adoptAllBtn.disabled = false;
-                adoptAllBtn.innerHTML = '<i class="align-middle me-1" data-lucide="check-check"></i> @Localizer["Adopt All"]';
+                adoptAllBtn.innerHTML = `<i class="align-middle me-1" data-lucide="check-check"></i> ${getLocalizedText('adopt-all-text', 'Adopt All')}`;
             }
         }
 
         async function abandon(questionId) {
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-            const response = await fetch(`@Url.Action("Abandon")?taskId=${taskId}&questionId=${questionId}`, {
+            const response = await fetch(`${config.abandonUrl}?taskId=${taskId}&questionId=${questionId}`, {
                 method: 'POST',
                 headers: { 'RequestVerificationToken': token }
             });
@@ -329,7 +362,7 @@
 
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
-            const response = await fetch(`@Url.Action("Edit")?taskId=${taskId}&questionId=${questionId}`, {
+            const response = await fetch(`${config.editUrl}?taskId=${taskId}&questionId=${questionId}`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -359,15 +392,15 @@
 
         function checkAllDismissed() {
             if (questionsContainer.children.length === 0) {
-                window.location.href = '@Html.Raw(string.IsNullOrEmpty(Model.ReturnUrl) ? Url.Action("Index", "Questions") : Model.ReturnUrl)';
+                window.location.href = config.returnUrl;
             }
         }
 
         async function cancelAll() {
-            if (!confirm('@Localizer["Are you sure you want to cancel all pending tasks?"]')) return;
+            if (!confirm(getLocalizedText('confirm-cancel-all', 'Are you sure you want to cancel all pending tasks?'))) return;
             
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-            const response = await fetch(`@Url.Action("CancelAll")?taskId=${taskId}`, {
+            const response = await fetch(`${config.cancelAllUrl}?taskId=${taskId}`, {
                 method: 'POST',
                 headers: { 'RequestVerificationToken': token }
             });
@@ -381,7 +414,7 @@
         async function keepAlive() {
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
             try {
-                await fetch(`@Url.Action("KeepAlive")?taskId=${taskId}`, {
+                await fetch(`${config.keepAliveUrl}?taskId=${taskId}`, {
                     method: 'POST',
                     headers: { 'RequestVerificationToken': token }
                 });

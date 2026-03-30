@@ -99,11 +99,25 @@
     </div>
 </form>
 
+@* Localization Data for JavaScript *@
+<div id="loc-data" hidden>
+    <span data-key="correct">@Localizer["Correct"]</span>
+    <span data-key="incorrect">@Localizer["Incorrect"]</span>
+    <span data-key="option-content">@Localizer["Option content"]</span>
+    <span data-key="type-choice">@((int)Aiursoft.WeChatExam.Entities.QuestionType.Choice)</span>
+    <span data-key="type-bool">@((int)Aiursoft.WeChatExam.Entities.QuestionType.Bool)</span>
+</div>
+
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script src="~/js/tag-input.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            function getLocalizedText(key, defaultText) {
+                const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
+                return el ? el.innerText : defaultText;
+            }
+
             // Tags Init
             const tagInput = document.getElementById('tagInputField');
             const tagHidden = document.getElementById('Tags');
@@ -120,12 +134,12 @@
             const standardAnswerTextInput = document.getElementById('standard-answer-input');
 
             // Enum Values
-            const typeChoice = '@((int)Aiursoft.WeChatExam.Entities.QuestionType.Choice)';
-            const typeBool = '@((int)Aiursoft.WeChatExam.Entities.QuestionType.Bool)';
+            const typeChoice = getLocalizedText('type-choice', '');
+            const typeBool = getLocalizedText('type-bool', '');
 
             // Localized Strings
-            const correctStr = '@Localizer["Correct"]';
-            const incorrectStr = '@Localizer["Incorrect"]'; // Simplified to correct/incorrect
+            const correctStr = getLocalizedText('correct', 'Correct');
+            const incorrectStr = getLocalizedText('incorrect', 'Incorrect');
 
             const updateUI = () => {
                 const type = questionTypeSelect.value;
@@ -161,7 +175,7 @@
                     <div class="input-group-text">
                         <input class="form-check-input mt-0 answer-radio" type="radio" name="StandardAnswer" value="${value}" ${isChecked ? 'checked' : ''}>
                     </div>
-                    <input type="text" class="form-control option-input" name="Options" value="${value}" placeholder="@Localizer["Option content"]" required>
+                    <input type="text" class="form-control option-input" name="Options" value="${value}" placeholder="${getLocalizedText('option-content', 'Option content')}" required>
                     <button type="button" class="btn btn-outline-danger remove-option-btn">
                         <i class="align-middle" data-lucide="trash-2"></i>
                     </button>
