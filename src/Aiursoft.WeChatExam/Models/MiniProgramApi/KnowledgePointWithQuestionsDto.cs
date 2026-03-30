@@ -6,6 +6,7 @@ namespace Aiursoft.WeChatExam.Models.MiniProgramApi;
 public class KnowledgePointWithQuestionsDto
 {
     public Guid Id { get; set; }
+    public string Title { get; set; } = string.Empty;
     [Required]
     public string Text { get; set; } = string.Empty;
     public string? AudioUrl { get; set; }

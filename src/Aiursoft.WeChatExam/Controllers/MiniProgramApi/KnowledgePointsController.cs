@@ -153,6 +153,7 @@ public class KnowledgePointsController : ControllerBase
         var result = knowledgePoints.Select(kp => new KnowledgePointWithQuestionsDto
         {
             Id = kp.Id,
+            Title = kp.Title,
             Text = kp.Content,
             AudioUrl = kp.AudioUrl,
             Questions = kp.KnowledgePointQuestions
