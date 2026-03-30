@@ -39,6 +39,12 @@
   <data name="Correct!" xml:space="preserve">
     <value>정답입니다!</value>
   </data>
+  <data name="Error:" xml:space="preserve">
+    <value>오류:</value>
+  </data>
+  <data name="Failed to grade" xml:space="preserve">
+    <value>채점 실패</value>
+  </data>
   <data name="Incorrect" xml:space="preserve">
     <value>틀렸습니다</value>
   </data>

@@ -24,6 +24,9 @@
   <data name="Add Category" xml:space="preserve">
     <value>Προσθήκη Κατηγορίας</value>
   </data>
+  <data name="An error occurred while saving order." xml:space="preserve">
+    <value>Παραβιάστηκε ένα σφάλμα κατά την αποθήκευση της παραγγελίας.</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>Κατηγορίες</value>
   </data>
@@ -32,6 +35,12 @@
   </data>
   <data name="Created" xml:space="preserve">
     <value>Δημιουργήθηκε</value>
+  </data>
+  <data name="Failed to render tree:" xml:space="preserve">
+    <value>Αποτυχία απόδοσης του δέντρου:</value>
+  </data>
+  <data name="Failed to save order." xml:space="preserve">
+    <value>Αποτυχία αποθήκευσης παραγγελίας.</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Δωρεάν</value>
@@ -44,6 +53,12 @@
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Γονέας</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>Αποθήκευση Σειράς</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Αποθήκευση...</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Τίτλος</value>

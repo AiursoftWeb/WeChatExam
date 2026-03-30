@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>सभी प्रकार</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>हटाते समय एक त्रुटि हुई।</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>AI उत्तर उत्पन्न करने के शुरू करते समय एक त्रुटि उत्पन्न हुई।</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>AI वर्गीकरण शुरू करते समय कोई त्रुटि उत्पन्न हुई।</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>AI जनरेशन शुरू करते समय एक त्रुटि हुई।</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>AI टैगिंग शुरू करते समय एक त्रुटि उत्पन्न हुई।</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>अंतिम तिथि</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>प्रश्नों को हटाने में विफल। कृपया पुनः प्रयास करें।</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>AI उत्तर उत्पन्न करना शुरू करने में विफल रहा।</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>AI वर्गीकरण शुरू करने में विफल रहा।</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>AI जनरेटिंग शुरू करने में विफल रहा।</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>AI टैगिंग शुरू करने में विफल रहा।</value>

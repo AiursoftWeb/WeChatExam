@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>Всі типи</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Під час видалення сталася помилка.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>Сталася помилка під час запуску генерації відповідей AI.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Помилка виникла під час спроби запуску AI-категоризації.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>Під час запуску генерації ШІ сталася помилка.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>Сталася помилка під час запуску автотегування AI.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>Дата завершення</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Не вдалося видалити запитання. Спробуйте ще раз.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Не вдалося розпочати генерацію відповідей AI</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Не вдалося запустити автоперекладання</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Не вдалося запустити генерацію ШІ.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Не вдалося запустити автопозначання AI.</value>

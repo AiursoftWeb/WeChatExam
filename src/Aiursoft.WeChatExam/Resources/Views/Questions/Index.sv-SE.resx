@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>Alla typer</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Ett fel uppstod vid radering.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>Ett fel uppstod vid start av AI-svarsgenerering.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Ett fel uppstod vid start av AI-kategorisering.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>Ett fel uppstod vid start av AI-generering.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>Ett fel uppstod vid start av AI-tagging.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>Slutdatum</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Kunde inte radera frågor. Försök igen.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Misslyckades med att starta AI-svarsgenerering.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Misslyckades med att starta AI-kategorisering.</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Misslyckades med att starta AI-generering.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Misslyckades med att starta AI-taggar.</value>

@@ -39,6 +39,12 @@
   <data name="Correct!" xml:space="preserve">
     <value>ถูกต้อง!</value>
   </data>
+  <data name="Error:" xml:space="preserve">
+    <value>ข้อผิดพลาด:</value>
+  </data>
+  <data name="Failed to grade" xml:space="preserve">
+    <value>ไม่สามารถให้คะแนนได้</value>
+  </data>
   <data name="Incorrect" xml:space="preserve">
     <value>ไม่ถูกต้อง</value>
   </data>

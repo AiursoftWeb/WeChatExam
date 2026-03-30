@@ -24,6 +24,9 @@
   <data name="Add Category" xml:space="preserve">
     <value>Tambah Kategori</value>
   </data>
+  <data name="An error occurred while saving order." xml:space="preserve">
+    <value>Terjadi kesalahan saat menyimpan pesanan.</value>
+  </data>
   <data name="Categories" xml:space="preserve">
     <value>Kategori</value>
   </data>
@@ -32,6 +35,12 @@
   </data>
   <data name="Created" xml:space="preserve">
     <value>Dibuat</value>
+  </data>
+  <data name="Failed to render tree:" xml:space="preserve">
+    <value>Gagal merender pohon:</value>
+  </data>
+  <data name="Failed to save order." xml:space="preserve">
+    <value>Gagal menyimpan pesanan.</value>
   </data>
   <data name="Free" xml:space="preserve">
     <value>Gratis</value>
@@ -44,6 +53,12 @@
   </data>
   <data name="Parent" xml:space="preserve">
     <value>Induk</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>Simpan Urutan</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Menyimpan...</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Judul</value>

@@ -48,11 +48,17 @@
   <data name="All Types" xml:space="preserve">
     <value>Όλα τα είδη</value>
   </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα κατά τη διαγραφή.</value>
+  </data>
   <data name="An error occurred while starting AI answer generation." xml:space="preserve">
     <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της δημιουργίας απαντήσεων από την ΤΝ.</value>
   </data>
   <data name="An error occurred while starting AI categorization." xml:space="preserve">
     <value>Προέκυψε σφάλμα κατά την εκκίνηση της κατηγοριοποίησης με βάση την ΤΝ.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>Προέκυψε σφάλμα κατά την εκκίνηση της δημιουργίας από το AI.</value>
   </data>
   <data name="An error occurred while starting AI tagging." xml:space="preserve">
     <value>Παρουσιάστηκε σφάλμα κατά την εκκίνηση της αυτόματης ετικετοδότησης AI.</value>
@@ -96,11 +102,17 @@
   <data name="End Date" xml:space="preserve">
     <value>Ημερομηνία Λήξης</value>
   </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Αποτυχία διαγραφής ερωτήσεων. Παρακαλώ δοκιμάστε ξανά.</value>
+  </data>
   <data name="Failed to start AI answer generation." xml:space="preserve">
     <value>Απέτυχε η εκκίνηση της δημιουργίας απάντησης από το AI.</value>
   </data>
   <data name="Failed to start AI categorization." xml:space="preserve">
     <value>Απέτυχε η εκκίνηση της κατηγοριοποίησης από το ΤΝ.</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Αποτυχία εκκίνησης της δημιουργίας με ΑΙ.</value>
   </data>
   <data name="Failed to start AI tagging." xml:space="preserve">
     <value>Απέτυχε η εκκίνηση της αυτόματης ετικετοδότησης από το AI.</value>
