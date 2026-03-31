@@ -10,37 +10,44 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
 
     public async Task<DistributionChannel> CreateAsync(string agencyName)
     {
-        var code = await GenerateUniqueCodeAsync();
         var channel = new DistributionChannel
         {
             Id = Guid.NewGuid(),
-            Code = code,
             AgencyName = agencyName,
             IsEnabled = true
         };
 
         context.DistributionChannels.Add(channel);
-        await context.SaveChangesAsync();
+        
+        // Create a default public coupon for this channel
+        var code = await GenerateUniqueCodeAsync();
+        var coupon = new Coupon
+        {
+            DistributionChannelId = channel.Id,
+            Code = code,
+            AmountInFen = 0, // Default no discount
+            IsSingleUse = false,
+            IsEnabled = true
+        };
+        context.Coupons.Add(coupon);
 
+        await context.SaveChangesAsync();
         return channel;
     }
 
     public async Task<List<DistributionChannel>> GetAllAsync()
     {
         return await context.DistributionChannels
+            .Include(c => c.Coupons)
             .OrderByDescending(c => c.CreatedAt)
             .ToListAsync();
     }
 
     public async Task<DistributionChannel?> GetByIdAsync(Guid id)
     {
-        return await context.DistributionChannels.FindAsync(id);
-    }
-
-    public async Task<DistributionChannel?> GetByCodeAsync(string code)
-    {
         return await context.DistributionChannels
-            .FirstOrDefaultAsync(c => c.Code == code);
+            .Include(c => c.Coupons)
+            .FirstOrDefaultAsync(c => c.Id == id);
     }
 
     public async Task SetEnabledAsync(Guid id, bool isEnabled)
@@ -53,7 +60,7 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
         }
     }
 
-    public async Task<bool> BindUserAsync(string userId, string code)
+    public async Task<bool> BindUserByCouponCodeAsync(string userId, string code)
     {
         // Check if user already has a binding
         var existingBinding = await context.UserDistributionChannels
@@ -61,23 +68,21 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
         
         if (existingBinding != null)
         {
-            // User already bound to a channel, don't rebind
             return false;
         }
 
-        // Find the channel by code
-        var channel = await context.DistributionChannels
-            .FirstOrDefaultAsync(c => c.Code == code);
+        // Find the coupon by code
+        var coupon = await context.Coupons
+            .Include(c => c.DistributionChannel)
+            .FirstOrDefaultAsync(c => c.Code == code.ToUpper());
 
-        if (channel == null)
+        if (coupon == null || coupon.DistributionChannel == null)
         {
-            // Channel not found
             return false;
         }
 
-        if (!channel.IsEnabled)
+        if (!coupon.IsEnabled || !coupon.DistributionChannel.IsEnabled)
         {
-            // Channel is disabled, don't accept new bindings
             return false;
         }
 
@@ -86,7 +91,7 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
         {
             Id = Guid.NewGuid(),
             UserId = userId,
-            DistributionChannelId = channel.Id
+            DistributionChannelId = coupon.DistributionChannelId
         };
 
         context.UserDistributionChannels.Add(binding);
@@ -100,13 +105,19 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
         var registrationCount = await context.UserDistributionChannels
             .CountAsync(b => b.DistributionChannelId == channelId);
 
-        // Payment statistics are not implemented yet (Order/Payment tables don't exist)
-        // When implemented, query the orders table for users bound to this channel
+        // Calculate payment stats via coupons belonging to this channel
+        var paidOrders = await context.PaymentOrders
+            .Include(o => o.Coupon)
+            .Where(o => o.Status == PaymentOrderStatus.Paid && 
+                        o.Coupon != null && 
+                        o.Coupon.DistributionChannelId == channelId)
+            .ToListAsync();
+
         return new ChannelStats
         {
             RegistrationCount = registrationCount,
-            PaidOrderCount = 0,
-            TotalPaidAmount = 0
+            PaidOrderCount = paidOrders.Count,
+            TotalPaidAmount = paidOrders.Sum(o => o.AmountInFen) / 100m
         };
     }
 
@@ -120,9 +131,6 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
         }
     }
 
-    /// <summary>
-    /// Generate a unique 8-character Base32 code
-    /// </summary>
     private async Task<string> GenerateUniqueCodeAsync()
     {
         const int codeLength = 8;
@@ -138,7 +146,7 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
             }
             code = new string(chars);
         }
-        while (await context.DistributionChannels.AnyAsync(c => c.Code == code));
+        while (await context.Coupons.AnyAsync(c => c.Code == code));
 
         return code;
     }

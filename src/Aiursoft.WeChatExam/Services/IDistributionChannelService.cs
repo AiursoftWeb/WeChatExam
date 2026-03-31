@@ -41,21 +41,16 @@ public interface IDistributionChannelService
     Task<DistributionChannel?> GetByIdAsync(Guid id);
 
     /// <summary>
-    /// 根据分销码获取渠道
-    /// </summary>
-    Task<DistributionChannel?> GetByCodeAsync(string code);
-
-    /// <summary>
     /// 设置渠道的启用/禁用状态
     /// </summary>
     Task SetEnabledAsync(Guid id, bool isEnabled);
 
     /// <summary>
-    /// 将用户绑定到分销渠道
+    /// 将用户绑定到分销渠道（通过优惠码绑定）
     /// 仅在用户未绑定任何渠道且渠道已启用时成功
     /// </summary>
     /// <returns>绑定是否成功</returns>
-    Task<bool> BindUserAsync(string userId, string code);
+    Task<bool> BindUserByCouponCodeAsync(string userId, string code);
 
     /// <summary>
     /// 获取渠道的统计数据

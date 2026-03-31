@@ -152,6 +152,102 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("CategoryTaxonomies");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Coupon", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AmountInFen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("DistributionChannelId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsSingleUse")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("UsedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UsedByUserId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("DistributionChannelId");
+
+                    b.ToTable("Coupons");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CouponUsage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CouponId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DiscountInFen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("PaymentOrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UsedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CouponId");
+
+                    b.HasIndex("PaymentOrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CouponUsages");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CouponVipProduct", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CouponId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("VipProductId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CouponId");
+
+                    b.HasIndex("VipProductId");
+
+                    b.ToTable("CouponVipProducts");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.DistributionChannel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -161,11 +257,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<string>("AgencyName")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(16)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -547,6 +638,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<int>("AmountInFen")
                         .HasColumnType("INTEGER");
 
+                    b.Property<Guid?>("CouponId")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
@@ -554,6 +648,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("DiscountInFen")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("ExpiredAt")
                         .HasColumnType("TEXT");
@@ -586,6 +683,8 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CouponId");
 
                     b.HasIndex("OutTradeNo")
                         .IsUnique();
@@ -844,6 +943,34 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserClaimedCoupon", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("ClaimedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CouponId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CouponId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClaimedCoupons");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserDistributionChannel", b =>
@@ -1188,6 +1315,63 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Taxonomy");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Coupon", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.DistributionChannel", "DistributionChannel")
+                        .WithMany("Coupons")
+                        .HasForeignKey("DistributionChannelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DistributionChannel");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CouponUsage", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
+                        .WithMany("Usages")
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "PaymentOrder")
+                        .WithMany()
+                        .HasForeignKey("PaymentOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coupon");
+
+                    b.Navigation("PaymentOrder");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CouponVipProduct", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
+                        .WithMany("TargetVipProducts")
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
+                        .WithMany()
+                        .HasForeignKey("VipProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coupon");
+
+                    b.Navigation("VipProduct");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Exam", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Paper", "Paper")
@@ -1348,6 +1532,10 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentOrder", b =>
                 {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
+                        .WithMany()
+                        .HasForeignKey("CouponId");
+
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -1357,6 +1545,8 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
                         .WithMany()
                         .HasForeignKey("VipProductId");
+
+                    b.Navigation("Coupon");
 
                     b.Navigation("User");
 
@@ -1409,6 +1599,25 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasForeignKey("TaxonomyId");
 
                     b.Navigation("Taxonomy");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserClaimedCoupon", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
+                        .WithMany()
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coupon");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.UserDistributionChannel", b =>
@@ -1549,8 +1758,17 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("VipProducts");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Coupon", b =>
+                {
+                    b.Navigation("TargetVipProducts");
+
+                    b.Navigation("Usages");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.DistributionChannel", b =>
                 {
+                    b.Navigation("Coupons");
+
                     b.Navigation("UserDistributionChannels");
                 });
 

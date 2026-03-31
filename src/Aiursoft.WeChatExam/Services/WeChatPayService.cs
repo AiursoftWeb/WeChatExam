@@ -17,6 +17,7 @@ namespace Aiursoft.WeChatExam.Services;
 public class WeChatPayService(
     WechatTenpayClient tenpayClient,
     WeChatExamDbContext dbContext,
+    ICouponService couponService,
     IOptions<AppSettings> appSettings,
     ILogger<WeChatPayService> logger) : IWeChatPayService
 {
@@ -25,7 +26,8 @@ public class WeChatPayService(
     public async Task<CreateOrderResult> CreateOrderAsync(
         string userId,
         string openId,
-        Guid vipProductId)
+        Guid vipProductId,
+        string? couponCode = null)
     {
         // Look up VipProduct from DB
         var vipProduct = await dbContext.VipProducts
@@ -52,6 +54,34 @@ public class WeChatPayService(
 
         var amountInFen = vipProduct.PriceInFen;
         var description = $"{vipProduct.Name} - {vipProduct.Category?.Title ?? "VIP"}";
+        Coupon? appliedCoupon;
+
+        if (!string.IsNullOrWhiteSpace(couponCode))
+        {
+            var (isValid, errorMessage, coupon) = await couponService.ValidateCouponAsync(couponCode, vipProductId, userId);
+            if (!isValid)
+            {
+                return new CreateOrderResult
+                {
+                    Success = false,
+                    ErrorMessage = errorMessage ?? "优惠码无效"
+                };
+            }
+            appliedCoupon = coupon;
+        }
+        else
+        {
+            // 如果用户没手动传，尝试从该用户已领取的“权益”中寻找最合适的
+            appliedCoupon = await couponService.GetBestApplicableCouponAsync(userId, vipProductId);
+        }
+
+        var discountInFen = 0;
+        if (appliedCoupon != null)
+        {
+            discountInFen = Math.Min(amountInFen, appliedCoupon.AmountInFen);
+            amountInFen -= discountInFen;
+            description += $" (已优惠: {discountInFen / 100m}元)";
+        }
 
         // Check if user already has active VIP for this category
         var now = DateTime.UtcNow;
@@ -144,6 +174,8 @@ public class WeChatPayService(
                 OutTradeNo = outTradeNo,
                 UserId = userId,
                 VipProductId = vipProductId,
+                CouponId = appliedCoupon?.Id,
+                DiscountInFen = discountInFen,
                 Description = description,
                 AmountInFen = amountInFen,
                 Status = PaymentOrderStatus.Pending,
@@ -405,6 +437,12 @@ public class WeChatPayService(
 
             logger.LogInformation("Re-activated VIP {ProductName} for user {UserId}, new expiry {EndTime}",
                 vipProduct.Name, order.UserId, existingVip.EndTime);
+        }
+
+        // Record coupon usage if applicable
+        if (order.CouponId.HasValue)
+        {
+            await couponService.RecordUsageAsync(order.CouponId.Value, order.UserId, order.Id, order.DiscountInFen);
         }
     }
 }

@@ -10,14 +10,6 @@
             </div>
             <div class="card-body">
                 <dl class="row mb-0">
-                    <dt class="col-sm-4">@Localizer["Distribution Code"]</dt>
-                    <dd class="col-sm-8">
-                        <code class="user-select-all fs-5">@Model.Channel.Code</code>
-                        <button type="button" class="btn btn-sm btn-outline-secondary ms-2" onclick="navigator.clipboard.writeText('@Model.Channel.Code')">
-                            <i data-lucide="copy"></i>
-                        </button>
-                    </dd>
-
                     <dt class="col-sm-4">@Localizer["Agency Name"]</dt>
                     <dd class="col-sm-8">@Model.Channel.AgencyName</dd>
 
@@ -72,6 +64,85 @@
                     </div>
                 }
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">@Localizer["Coupons"]</h5>
+        <a asp-action="CreateCoupon" asp-route-channelId="@Model.Channel.Id" class="btn btn-sm btn-primary">
+            <i data-lucide="plus"></i> @Localizer["Add Coupon"]
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>@Localizer["Code"]</th>
+                        <th>@Localizer["Type"]</th>
+                        <th>@Localizer["Discount"]</th>
+                        <th>@Localizer["Usage"]</th>
+                        <th>@Localizer["Status"]</th>
+                        <th class="text-end">@Localizer["Actions"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var coupon in Model.Channel.Coupons)
+                    {
+                        <tr>
+                            <td><code class="user-select-all">@coupon.Code</code></td>
+                            <td>
+                                @if (coupon.IsSingleUse)
+                                {
+                                    <span class="badge bg-info">@Localizer["Single Use"]</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary">@Localizer["Multi Use"]</span>
+                                }
+                            </td>
+                            <td>¥@(coupon.AmountInFen / 100m)</td>
+                            <td>
+                                @if (coupon.IsSingleUse)
+                                {
+                                    if (coupon.UsedByUserId != null)
+                                    {
+                                        <span class="text-success" title="@coupon.UsedAt">@Localizer["Used by {0}", coupon.UsedByUserId]</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">@Localizer["Not Used"]</span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span>@Localizer["Global"]</span>
+                                }
+                            </td>
+                            <td>
+                                @if (coupon.IsEnabled)
+                                {
+                                    <span class="text-success">@Localizer["Active"]</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">@Localizer["Disabled"]</span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <form method="post" asp-action="DeleteCoupon" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" onsubmit="return confirm('@Localizer["Are you sure?"]')" style="display: inline;">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i data-lucide="trash-2"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

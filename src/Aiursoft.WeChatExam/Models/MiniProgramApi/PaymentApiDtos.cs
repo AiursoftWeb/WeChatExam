@@ -10,6 +10,11 @@ public class CreatePaymentOrderRequest
 {
     [Required]
     public Guid VipProductId { get; set; }
+
+    /// <summary>
+    /// 优惠码（可选）
+    /// </summary>
+    public string? CouponCode { get; set; }
 }
 
 /// <summary>

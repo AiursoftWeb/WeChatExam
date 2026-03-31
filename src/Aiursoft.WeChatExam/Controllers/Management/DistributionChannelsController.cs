@@ -10,7 +10,10 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [Authorize]
 [LimitPerMin]
-public class DistributionChannelsController(IDistributionChannelService distributionChannelService) : Controller
+public class DistributionChannelsController(
+    IDistributionChannelService distributionChannelService,
+    ICouponService couponService,
+    IVipProductService vipProductService) : Controller
 {
     [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
     [RenderInNavBar(
@@ -29,7 +32,7 @@ public class DistributionChannelsController(IDistributionChannelService distribu
         {
             channels = channels
                 .Where(c => c.AgencyName.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                            c.Code.Contains(search, StringComparison.OrdinalIgnoreCase))
+                            c.Coupons.Any(co => co.Code.Contains(search, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
 
@@ -121,5 +124,60 @@ public class DistributionChannelsController(IDistributionChannelService distribu
     {
         await distributionChannelService.DeleteAsync(id);
         return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> CreateCoupon(Guid channelId)
+    {
+        var channel = await distributionChannelService.GetByIdAsync(channelId);
+        if (channel == null) return NotFound();
+
+        var products = await vipProductService.GetAllAsync();
+
+        return this.StackView(new CreateCouponViewModel
+        {
+            ChannelId = channelId,
+            ChannelName = channel.AgencyName,
+            AvailableVipProducts = products
+        });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> CreateCoupon(CreateCouponViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            model.AvailableVipProducts = await vipProductService.GetAllAsync();
+            return this.StackView(model);
+        }
+
+        try
+        {
+            await couponService.CreateAsync(
+                model.ChannelId,
+                model.Code,
+                model.AmountInFen,
+                model.IsSingleUse,
+                model.TargetVipProductIds);
+
+            return RedirectToAction(nameof(Details), new { id = model.ChannelId });
+        }
+        catch (InvalidOperationException ex)
+        {
+            ModelState.AddModelError(nameof(model.Code), ex.Message);
+            model.AvailableVipProducts = await vipProductService.GetAllAsync();
+            return this.StackView(model);
+        }
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> DeleteCoupon(Guid id, Guid channelId)
+    {
+        await couponService.DeleteAsync(id);
+        return RedirectToAction(nameof(Details), new { id = channelId });
     }
 }
