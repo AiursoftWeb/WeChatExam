@@ -3,12 +3,9 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.InMemory;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3;
-using System.Text.Json;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 
