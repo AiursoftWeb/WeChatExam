@@ -158,7 +158,7 @@ public class WeChatPayCouponIntegrationTests
     public async Task TestCreateOrder_ZeroAmount_BypassesWeChatPay()
     {
         // 1. Setup a product and a 100% discount coupon
-        var coupon = await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "FREE", 10000, false);
+        await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "FREE", 10000, false);
         await _couponService.ClaimCouponAsync(_userId, "FREE");
 
         // 2. Create order
