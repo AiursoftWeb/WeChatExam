@@ -36,6 +36,39 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
             throw new InvalidOperationException($"Coupon code {code} already exists.");
         }
 
+        if (amountInFen < 0)
+        {
+            throw new InvalidOperationException("Discount amount cannot be negative.");
+        }
+
+        // Validation: Ensure discount amount does not exceed the price of any applicable products
+        if (targetVipProductIds != null && targetVipProductIds.Any())
+        {
+            var products = await context.VipProducts
+                .Where(p => targetVipProductIds.Contains(p.Id))
+                .ToListAsync();
+
+            foreach (var product in products)
+            {
+                if (amountInFen > product.PriceInFen)
+                {
+                    throw new InvalidOperationException($"Discount amount ({amountInFen / 100.0} CNY) cannot exceed the price of product '{product.Name}' ({product.PriceInFen / 100.0} CNY).");
+                }
+            }
+        }
+        else
+        {
+            // If it's a global coupon, it shouldn't exceed the price of any available enabled products
+            var minProductPrice = await context.VipProducts
+                .Where(p => p.IsEnabled)
+                .MinAsync(p => (int?)p.PriceInFen);
+
+            if (minProductPrice.HasValue && amountInFen > minProductPrice.Value)
+            {
+                throw new InvalidOperationException($"Global discount amount ({amountInFen / 100.0} CNY) cannot exceed the minimum product price ({minProductPrice.Value / 100.0} CNY).");
+            }
+        }
+
         var coupon = new Coupon
         {
             DistributionChannelId = channelId,

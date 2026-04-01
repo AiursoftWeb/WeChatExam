@@ -2,6 +2,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.InMemory;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 
@@ -129,5 +130,53 @@ public class CouponServiceTests
         // Verify usage record
         var usage = await _dbContext.CouponUsages.AnyAsync(u => u.PaymentOrderId == orderId);
         Assert.IsTrue(usage);
+    }
+
+    [TestMethod]
+    public async Task TestCreateCoupon_NegativeDiscount()
+    {
+        try
+        {
+            await _service.CreateAsync(_channelId, "NEGATIVE", -100, false);
+            Assert.Fail("Should have thrown InvalidOperationException");
+        }
+        catch (InvalidOperationException)
+        {
+            // Success
+        }
+    }
+
+    [TestMethod]
+    public async Task TestCreateCoupon_DiscountTooHigh()
+    {
+        // Product is 10000 fen (100 CNY), try to create a 20000 fen coupon
+        try
+        {
+            await _service.CreateAsync(_channelId, "TOO_MUCH", 20000, false);
+            Assert.Fail("Should have thrown InvalidOperationException");
+        }
+        catch (InvalidOperationException)
+        {
+            // Success
+        }
+    }
+
+    [TestMethod]
+    public async Task TestCreateCoupon_TargetedDiscountTooHigh()
+    {
+        var product = new VipProduct { Name = "Cheap VIP", PriceInFen = 500, IsEnabled = true };
+        _dbContext.VipProducts.Add(product);
+        await _dbContext.SaveChangesAsync();
+
+        // Try to create 1000 fen coupon for 500 fen product
+        try
+        {
+            await _service.CreateAsync(_channelId, "TARGET_TOO_MUCH", 1000, false, new List<Guid> { product.Id });
+            Assert.Fail("Should have thrown InvalidOperationException");
+        }
+        catch (InvalidOperationException)
+        {
+            // Success
+        }
     }
 }
