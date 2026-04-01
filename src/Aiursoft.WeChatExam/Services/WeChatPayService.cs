@@ -133,6 +133,56 @@ public class WeChatPayService(
 
         var outTradeNo = $"WCE{DateTime.UtcNow:yyyyMMddHHmmss}{Guid.NewGuid():N}"[..32];
 
+        // --- NEW: Handle 100% discount orders (Free VIP) ---
+        if (amountInFen == 0)
+        {
+            logger.LogInformation("Zero-amount order detected for user {UserId}, bypass WeChat Pay API", userId);
+            
+            var freeOrder = new PaymentOrder
+            {
+                OutTradeNo = outTradeNo,
+                UserId = userId,
+                VipProductId = vipProductId,
+                CouponId = appliedCoupon?.Id,
+                DiscountInFen = discountInFen,
+                Description = description + " (100% 折扣免费激活)",
+                AmountInFen = 0,
+                Status = PaymentOrderStatus.Paid, // Mark as Paid immediately
+                PrepayId = "FREE_ORDER",
+                PaidAt = DateTime.UtcNow,
+                ExpiredAt = DateTime.UtcNow.AddMinutes(30)
+            };
+
+            dbContext.PaymentOrders.Add(freeOrder);
+            
+            dbContext.PaymentLogs.Add(new PaymentLog
+            {
+                PaymentOrderId = freeOrder.Id,
+                EventType = "FreeOrderCreated",
+                RawData = JsonSerializer.Serialize(new { outTradeNo, userId, vipProductId, discountInFen })
+            });
+
+            // Process VIP activation immediately
+            await ProcessVipActivationAsync(freeOrder);
+            await dbContext.SaveChangesAsync();
+
+            return new CreateOrderResult
+            {
+                Success = true,
+                OutTradeNo = outTradeNo,
+                PrepayId = "FREE_ORDER",
+                PayParams = new JsApiPayParams 
+                { 
+                    AppId = _settings.WeChat.AppId,
+                    Package = "FREE",
+                    SignType = "NONE",
+                    PaySign = "NONE",
+                    NonceStr = "NONE",
+                    TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()
+                }
+            };
+        }
+
         var paySettings = _settings.WeChat.Payment;
 
         try

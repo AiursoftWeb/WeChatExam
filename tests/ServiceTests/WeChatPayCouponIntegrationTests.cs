@@ -153,4 +153,26 @@ public class WeChatPayCouponIntegrationTests
         var claim = await _dbContext.UserClaimedCoupons.FirstAsync(c => c.UserId == _userId && c.CouponId == coupon.Id);
         Assert.IsTrue(claim.IsUsed);
     }
+
+    [TestMethod]
+    public async Task TestCreateOrder_ZeroAmount_BypassesWeChatPay()
+    {
+        // 1. Setup a product and a 100% discount coupon
+        var coupon = await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "FREE", 10000, false);
+        await _couponService.ClaimCouponAsync(_userId, "FREE");
+
+        // 2. Create order
+        var result = await _payService.CreateOrderAsync(_userId, "openid", _productId, "FREE");
+
+        // 3. Verify success and immediate activation
+        Assert.IsTrue(result.Success);
+        Assert.AreEqual("FREE_ORDER", result.PrepayId);
+        
+        var order = await _dbContext.PaymentOrders.FirstAsync(o => o.OutTradeNo == result.OutTradeNo);
+        Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+        Assert.AreEqual(0, order.AmountInFen);
+        
+        var vip = await _dbContext.VipMemberships.AnyAsync(v => v.UserId == _userId && v.VipProductId == _productId);
+        Assert.IsTrue(vip);
+    }
 }

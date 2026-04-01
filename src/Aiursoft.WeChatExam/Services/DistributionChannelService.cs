@@ -102,36 +102,28 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
 
     public async Task<ChannelStats> GetStatsAsync(Guid channelId)
     {
-        // 1. Get all users bound to this channel
-        var boundUserIds = await context.UserDistributionChannels
+        // 1. Create a query for bound user IDs
+        var boundUserIdsQuery = context.UserDistributionChannels
             .Where(b => b.DistributionChannelId == channelId)
-            .Select(b => b.UserId)
-            .ToListAsync();
+            .Select(b => b.UserId);
 
-        // 2. Calculate stats for orders from these bound users (Organic Attribution)
-        var boundUserPaidOrders = await context.PaymentOrders
-            .Where(o => o.Status == PaymentOrderStatus.Paid && boundUserIds.Contains(o.UserId))
-            .ToListAsync();
-
-        // 3. Calculate stats for orders that explicitly used a coupon from this channel (Direct Attribution)
-        // Note: Some users might not be bound but used a coupon, or bound users might use a coupon from the same channel.
-        var couponPaidOrders = await context.PaymentOrders
-            .Include(o => o.Coupon)
+        // 2. Create the combined stats query for paid orders
+        // This includes orders from bound users OR orders that used a coupon from this channel
+        var statsQuery = context.PaymentOrders
             .Where(o => o.Status == PaymentOrderStatus.Paid && 
-                        o.Coupon != null && 
-                        o.Coupon.DistributionChannelId == channelId)
-            .ToListAsync();
+                        (boundUserIdsQuery.Contains(o.UserId) || 
+                         (o.Coupon != null && o.Coupon.DistributionChannelId == channelId)));
 
-        // Combine unique orders to avoid double counting if a bound user used a coupon
-        var allAttributedOrders = boundUserPaidOrders
-            .UnionBy(couponPaidOrders, o => o.Id)
-            .ToList();
+        // 3. Execute count and sum in DB (using long? to handle potential overflow and empty results safely)
+        var registrationCount = await context.UserDistributionChannels.CountAsync(b => b.DistributionChannelId == channelId);
+        var paidOrderCount = await statsQuery.CountAsync();
+        var totalPaidAmountFen = await statsQuery.SumAsync(o => (long?)o.AmountInFen) ?? 0L;
 
         return new ChannelStats
         {
-            RegistrationCount = boundUserIds.Count,
-            PaidOrderCount = allAttributedOrders.Count,
-            TotalPaidAmount = allAttributedOrders.Sum(o => o.AmountInFen) / 100m
+            RegistrationCount = registrationCount,
+            PaidOrderCount = paidOrderCount,
+            TotalPaidAmount = totalPaidAmountFen / 100m
         };
     }
 

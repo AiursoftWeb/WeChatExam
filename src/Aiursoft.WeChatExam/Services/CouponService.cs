@@ -156,10 +156,10 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
         // --- 补强逻辑开始 ---
         if (coupon.IsSingleUse)
         {
-            // 检查该券是否已被他人使用
-            if (coupon.UsedByUserId != null && coupon.UsedByUserId != userId)
+            // 检查该券是否已被使用（无论是谁使用的）
+            if (coupon.UsedByUserId != null)
             {
-                return (false, "该一次性优惠券已被他人使用");
+                return (false, "该一次性优惠券已被使用");
             }
 
             // 检查该券是否已被他人领取（即使还没支付）
