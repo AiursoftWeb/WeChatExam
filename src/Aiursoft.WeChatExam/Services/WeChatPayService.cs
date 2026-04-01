@@ -109,6 +109,8 @@ public class WeChatPayService(
                 o.UserId == userId &&
                 o.VipProductId == vipProductId &&
                 o.Status == PaymentOrderStatus.Pending &&
+                o.AmountInFen == amountInFen && // Ensure amount matches
+                o.CouponId == (appliedCoupon != null ? appliedCoupon.Id : null) && // Ensure coupon matches
                 o.ExpiredAt > DateTime.UtcNow);
 
         if (existingPending != null)

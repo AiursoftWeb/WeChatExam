@@ -52,7 +52,7 @@ public class BenefitController(
     /// <returns>可用优惠券列表</returns>
     [HttpGet("my")]
     [WeChatUserOnly]
-    public IActionResult MyBenefits()
+    public async Task<IActionResult> MyBenefits()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrEmpty(userId))
@@ -60,8 +60,16 @@ public class BenefitController(
             return Unauthorized();
         }
 
-        // 实际上用户通常关心的就是“我能省多少钱”，我们可以返回目前所有的权益
-        // 为了快速实现，我这里先简单返回一个状态
-        return Ok(new { message = "接口已准备就绪，待返回详细列表" });
+        var claimedCoupons = await couponService.GetMyAvailableCouponsAsync(userId);
+        
+        var dtos = claimedCoupons.Select(c => new
+        {
+            c.Code,
+            c.AmountInFen,
+            c.IsSingleUse,
+            TargetProducts = c.TargetVipProducts.Select(tp => tp.VipProductId).ToList()
+        });
+
+        return Ok(dtos);
     }
 }

@@ -102,22 +102,36 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
 
     public async Task<ChannelStats> GetStatsAsync(Guid channelId)
     {
-        var registrationCount = await context.UserDistributionChannels
-            .CountAsync(b => b.DistributionChannelId == channelId);
+        // 1. Get all users bound to this channel
+        var boundUserIds = await context.UserDistributionChannels
+            .Where(b => b.DistributionChannelId == channelId)
+            .Select(b => b.UserId)
+            .ToListAsync();
 
-        // Calculate payment stats via coupons belonging to this channel
-        var paidOrders = await context.PaymentOrders
+        // 2. Calculate stats for orders from these bound users (Organic Attribution)
+        var boundUserPaidOrders = await context.PaymentOrders
+            .Where(o => o.Status == PaymentOrderStatus.Paid && boundUserIds.Contains(o.UserId))
+            .ToListAsync();
+
+        // 3. Calculate stats for orders that explicitly used a coupon from this channel (Direct Attribution)
+        // Note: Some users might not be bound but used a coupon, or bound users might use a coupon from the same channel.
+        var couponPaidOrders = await context.PaymentOrders
             .Include(o => o.Coupon)
             .Where(o => o.Status == PaymentOrderStatus.Paid && 
                         o.Coupon != null && 
                         o.Coupon.DistributionChannelId == channelId)
             .ToListAsync();
 
+        // Combine unique orders to avoid double counting if a bound user used a coupon
+        var allAttributedOrders = boundUserPaidOrders
+            .UnionBy(couponPaidOrders, o => o.Id)
+            .ToList();
+
         return new ChannelStats
         {
-            RegistrationCount = registrationCount,
-            PaidOrderCount = paidOrders.Count,
-            TotalPaidAmount = paidOrders.Sum(o => o.AmountInFen) / 100m
+            RegistrationCount = boundUserIds.Count,
+            PaidOrderCount = allAttributedOrders.Count,
+            TotalPaidAmount = allAttributedOrders.Sum(o => o.AmountInFen) / 100m
         };
     }
 

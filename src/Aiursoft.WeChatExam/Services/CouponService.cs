@@ -190,6 +190,17 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
         return bestCoupon;
     }
 
+    public async Task<List<Coupon>> GetMyAvailableCouponsAsync(string userId)
+    {
+        var claimed = await context.UserClaimedCoupons
+            .Include(c => c.Coupon)
+            .ThenInclude(co => co!.TargetVipProducts)
+            .Where(c => c.UserId == userId && !c.IsUsed && c.Coupon != null && c.Coupon.IsEnabled)
+            .ToListAsync();
+
+        return claimed.Select(c => c.Coupon!).ToList();
+    }
+
     public async Task RecordUsageAsync(Guid couponId, string userId, Guid paymentOrderId, int discountInFen)
     {
         var coupon = await context.Coupons.FindAsync(couponId);

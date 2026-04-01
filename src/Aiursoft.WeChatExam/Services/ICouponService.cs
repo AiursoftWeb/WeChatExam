@@ -13,4 +13,5 @@ public interface ICouponService
     Task DeleteAsync(Guid id);
     Task<(bool Success, string? ErrorMessage)> ClaimCouponAsync(string userId, string code);
     Task<Coupon?> GetBestApplicableCouponAsync(string userId, Guid vipProductId);
+    Task<List<Coupon>> GetMyAvailableCouponsAsync(string userId);
 }
