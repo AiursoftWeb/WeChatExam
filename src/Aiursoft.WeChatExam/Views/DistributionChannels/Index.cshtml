@@ -52,10 +52,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>@Localizer["Code"]</th>
+                            <th>@Localizer["Primary Coupon"]</th>
                             <th>@Localizer["Agency Name"]</th>
                             <th>@Localizer["Status"]</th>
                             <th>@Localizer["Registrations"]</th>
+                            <th>@Localizer["Paid Orders"]</th>
                             <th>@Localizer["Created At"]</th>
                             <th class="text-end">@Localizer["Actions"]</th>
                         </tr>
@@ -64,9 +65,14 @@
                         @foreach (var channel in Model.Channels)
                         {
                             var stats = Model.ChannelStats[channel.Id];
+                            var primaryCoupon = channel.Coupons.FirstOrDefault()?.Code ?? "N/A";
                             <tr>
                                 <td>
-                                    <code class="user-select-all">@channel.Code</code>
+                                    <code class="user-select-all">@primaryCoupon</code>
+                                    @if (channel.Coupons.Count() > 1)
+                                    {
+                                        <span class="badge bg-secondary ms-1">+@(channel.Coupons.Count() - 1)</span>
+                                    }
                                 </td>
                                 <td>@channel.AgencyName</td>
                                 <td>
@@ -82,7 +88,11 @@
                                 <td>
                                     <span class="badge bg-info">@stats.RegistrationCount</span>
                                 </td>
-                                <td>@channel.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                                <td>
+                                    <span class="badge bg-success">@stats.PaidOrderCount</span>
+                                    <small class="text-muted d-block">¥@stats.TotalPaidAmount</small>
+                                </td>
+                                <td>@channel.CreatedAt.ToString("yyyy-MM-dd")</td>
                                 <td class="text-end">
                                     <div class="btn-group" role="group">
                                         <a asp-action="Details" asp-route-id="@channel.Id" class="btn btn-sm btn-outline-primary">

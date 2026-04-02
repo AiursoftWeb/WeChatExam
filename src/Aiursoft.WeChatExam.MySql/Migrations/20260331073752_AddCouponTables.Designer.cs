@@ -4,6 +4,7 @@ using Aiursoft.WeChatExam.MySql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aiursoft.WeChatExam.MySql.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20260331073752_AddCouponTables")]
+    partial class AddCouponTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,9 +102,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Property<bool>("IsFree")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("OrderIndex")
-                        .HasColumnType("int");
 
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("char(36)");
@@ -843,9 +843,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
-
-                    b.Property<bool>("IsFree")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("NormalizedName")
                         .IsRequired()

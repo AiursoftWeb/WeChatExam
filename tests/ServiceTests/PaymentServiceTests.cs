@@ -68,7 +68,7 @@ public class PaymentServiceTests
 
         var detail = await _service.GetOrderDetailAsync(orderId);
         Assert.IsNotNull(detail);
-        Assert.AreEqual(1, detail.PaymentLogs.Count);
+        Assert.AreEqual(1, detail.PaymentLogs.Count());
     }
 
     [TestMethod]

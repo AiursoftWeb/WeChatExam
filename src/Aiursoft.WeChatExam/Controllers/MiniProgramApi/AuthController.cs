@@ -68,7 +68,7 @@ public class AuthController(
         // 3. Bind to distribution channel (only for new users)
         if (isNewUser && !string.IsNullOrWhiteSpace(model.DistributionCode))
         {
-            var bound = await distributionChannelService.BindUserAsync(user.Id, model.DistributionCode);
+            var bound = await distributionChannelService.BindUserByCouponCodeAsync(user.Id, model.DistributionCode);
             if (bound)
             {
                 logger.LogInformation("User '{UserId}' bound to distribution channel '{Code}'",

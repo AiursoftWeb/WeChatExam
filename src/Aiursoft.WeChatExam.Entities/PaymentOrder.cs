@@ -41,6 +41,19 @@ public class PaymentOrder
     public VipProduct? VipProduct { get; set; }
 
     /// <summary>
+    /// 关联的优惠券 ID
+    /// </summary>
+    public Guid? CouponId { get; set; }
+
+    [ForeignKey(nameof(CouponId))]
+    public Coupon? Coupon { get; set; }
+
+    /// <summary>
+    /// 优惠金额（单位：分）
+    /// </summary>
+    public int DiscountInFen { get; set; }
+
+    /// <summary>
     /// 订单描述
     /// </summary>
     [Required]
@@ -88,5 +101,5 @@ public class PaymentOrder
     /// 支付日志
     /// </summary>
     [InverseProperty(nameof(PaymentLog.PaymentOrder))]
-    public ICollection<PaymentLog> PaymentLogs { get; init; } = new List<PaymentLog>();
+    public IEnumerable<PaymentLog> PaymentLogs { get; init; } = new List<PaymentLog>();
 }

@@ -10,7 +10,12 @@ public interface IWeChatPayService
     /// <summary>
     /// 创建统一下单（根据 VipProductId 获取价格和描述）
     /// </summary>
-    Task<CreateOrderResult> CreateOrderAsync(string userId, string openId, Guid vipProductId);
+    Task<CreateOrderResult> CreateOrderAsync(
+        string userId,
+        string openId,
+        Guid vipProductId,
+        string? couponCode = null);
+
 
     /// <summary>
     /// 生成小程序调起支付的参数

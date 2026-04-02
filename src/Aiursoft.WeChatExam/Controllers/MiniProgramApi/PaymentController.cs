@@ -53,7 +53,8 @@ UserManager<User> userManager,
         var result = await payService.CreateOrderAsync(
             userId,
             openId,
-            request.VipProductId);
+            request.VipProductId,
+            request.CouponCode);
 
         if (!result.Success)
         {

@@ -12,14 +12,6 @@ public class DistributionChannel
     public Guid Id { get; init; }
 
     /// <summary>
-    /// 系统生成的唯一分销码，用于用户注册时识别渠道
-    /// 创建后不可修改
-    /// </summary>
-    [Required]
-    [MaxLength(16)]
-    public required string Code { get; init; }
-
-    /// <summary>
     /// 机构/代理名称
     /// </summary>
     [Required]
@@ -35,6 +27,13 @@ public class DistributionChannel
     /// 渠道创建时间
     /// </summary>
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// 渠道拥有的优惠码
+    /// </summary>
+    [InverseProperty(nameof(Coupon.DistributionChannel))]
+    public IEnumerable<Coupon> Coupons { get; init; } = new List<Coupon>();
+
 
     /// <summary>
     /// 通过该渠道绑定的用户关联记录
