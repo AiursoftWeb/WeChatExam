@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>क्रियाएँ</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>सक्रिय</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>कूपन जोड़ें</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>एजेंसी नाम</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>क्या आप निश्चित हैं?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>सूची पर वापस जाएं</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>चैनल जानकारी</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>कोड</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>कूपन</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>बनाया गया समय</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>अक्षम</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>छूट</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>वितरण कोड</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>सक्षम</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>सर्वव्यापी</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>बहु-उपयोग</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>उपयोग नहीं हुआ</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>भुगतान किए गए आदेश</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>पंजीकरण</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>एक बार उपयोग</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>सांख्यिकी</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>कुल राशि</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>उपयोग</value>
   </data>
 
 </root>

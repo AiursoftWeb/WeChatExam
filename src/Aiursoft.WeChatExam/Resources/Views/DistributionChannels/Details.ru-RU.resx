@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Добавить купон</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Название агентства</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Вы уверены?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Назад к списку</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Сведения о канале</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Купоны</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Создано</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Отключено</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Скидка</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Код распространения</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Включено</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобальный</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Многократное использование</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Не использован</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Оплаченные заказы</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Регистрации</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Одноразовый</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Статистика</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Общая сумма</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Использование</value>
   </data>
 
 </root>

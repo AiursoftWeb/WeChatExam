@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Åtgärder</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Lägg till kupong</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Agenturnamn</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Är du säker?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tillbaka till listan</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanalinformation</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Kod</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Kuponger</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Skapad den</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Inaktiverad</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Rabatt</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Distributionskod</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Aktiverat</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Flerbruks</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Inte använd</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Betalda beställningar</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Registreringar</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>En gångsbruk</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistik</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Totalt belopp</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Användning</value>
   </data>
 
 </root>

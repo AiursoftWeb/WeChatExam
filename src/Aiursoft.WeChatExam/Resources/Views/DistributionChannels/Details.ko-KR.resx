@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>작업</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>활성화</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>쿠폰 추가</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>기관 이름</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>확실합니까?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>목록으로 돌아가기</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>채널 정보</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>코드</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>쿠폰</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>생성 일시</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>비활성화됨</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>할인</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>배포 코드</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>사용 중</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>글로벌</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>다중 사용</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>사용 안 함</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>결제 완료 주문</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>등록</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>단일 사용</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>통계</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>총 금액</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>유형</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>사용 횟수</value>
   </data>
 
 </root>

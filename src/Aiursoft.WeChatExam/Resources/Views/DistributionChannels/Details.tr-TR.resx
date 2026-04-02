@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Kupon Ekle</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Ajans Adı</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Emin misiniz?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Listeye Dön</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanal Bilgisi</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Kod</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Kuponlar</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Oluşturulma Tarihi</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Devre Dışı</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>İndirim</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Dağıtım Kodu</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Etkin</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Çoklu Kullanım</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Kullanılmadı</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Ödeme Yapılan Siparişler</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Kayıtlar</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Tek Kullanımlık</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>İstatistikler</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Toplam Tutar</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Kullanım</value>
   </data>
 
 </root>

@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Toiminnot</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiivinen</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Lisää kuponi</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Organisaation nimi</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Oletko varma?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Takaisin luetteloon</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanavan tiedot</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Koodi</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Kuponkit</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Luotu</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Poistettu käytöstä</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Alennus</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Jakelukoodi</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Käytössä</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Yleinen</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Monikäyttöinen</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Ei käytetty</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Maksetut tilaukset</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Rekisteröinnit</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Yksinkäyttöinen</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Tilastot</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Yhteensä</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tyyppi</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Käyttö</value>
   </data>
 
 </root>

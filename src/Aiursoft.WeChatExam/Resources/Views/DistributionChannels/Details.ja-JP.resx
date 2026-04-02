@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>アクティブ</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>クーポンを追加</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>機関名</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>よろしいですか？</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>リストへ戻る</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>チャネル情報</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>コード</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>クーポン</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>作成日時</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>無効</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>割引</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>配布コード</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>有効化済み</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>グローバル</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>マルチ使用</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>未使用</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>支払い済み注文</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>登録数</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>1回使用</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>統計</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>合計金額</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>利用状況</value>
   </data>
 
 </root>

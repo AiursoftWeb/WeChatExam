@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Hoạt động</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Thêm phiếu giảm giá</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Tên đại lý</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Bạn có chắc chắn không?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Quay lại danh sách</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Thông tin kênh</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Mã</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Phiếu giảm giá</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Ngày tạo</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Vô hiệu hóa</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Giảm giá</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Mã phân phối</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Đã bật</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Toàn cầu</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Sử dụng nhiều lần</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Chưa sử dụng</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Đơn hàng đã thanh toán</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Đăng ký</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Sử dụng một lần</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Thống kê</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Tổng số tiền</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Sử dụng</value>
   </data>
 
 </root>

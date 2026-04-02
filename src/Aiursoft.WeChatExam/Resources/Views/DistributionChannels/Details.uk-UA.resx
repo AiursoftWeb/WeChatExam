@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активний</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Додати купон</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Назва агентства</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Ви впевнені?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Назад до списку</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Інформація про канал</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Купони</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Створено о</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Вимкнено</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Знижка</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Код розподілу</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Увімкнено</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Глобальний</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Багаторазове використання</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Не використовувався</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Оплатжені замовлення</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Реєстрації</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Одноразове використання</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Статистика</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Загальна сума</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Використання</value>
   </data>
 
 </root>

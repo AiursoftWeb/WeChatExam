@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Acciones</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Añadir cupón</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Nombre de la agencia</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>¿Está seguro?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Volver a la lista</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Información del canal</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Cupones</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Creado el</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Deshabilitado</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Descuento</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Código de distribución</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Activado</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Multi uso</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>No utilizado</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Pedidos pagados</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Inscripciones</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>De un solo uso</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Estadísticas</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Importe total</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Uso</value>
   </data>
 
 </root>

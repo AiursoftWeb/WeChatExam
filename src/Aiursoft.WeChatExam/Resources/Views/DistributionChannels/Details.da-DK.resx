@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>Handlinger</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Tilføj kupon</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>Agenturnavn</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>Er du sikker?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tilbage til liste</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanalinformation</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Kode</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Rabatkuponer</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Oprettet den</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Deaktiveret</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Rabat</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>Distributionskode</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Aktiveret</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Flere gange</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>Ikke brugt</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>Betalte ordre</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Registreringer</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Brugsengangs</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistik</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Samlet beløb</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Brug</value>
   </data>
 
 </root>
