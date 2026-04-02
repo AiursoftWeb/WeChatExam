@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>การกระทำ</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>ใช้งาน</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>เพิ่มคูปอง</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>ชื่อหน่วยงาน</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>คุณแน่ใจหรือไม่?</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>กลับไปยังรายการ</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>ข้อมูลช่องทาง</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>รหัส</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>คูปอง</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>วันที่สร้าง</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>ปิดใช้งาน</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>ส่วนลด</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>รหัสการจัดจำหน่าย</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>เปิดใช้งานแล้ว</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>ทั่วโลก</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>ใช้หลายครั้ง</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>ยังไม่ถูกใช้งาน</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>คำสั่งซื้อที่ชำระเงินแล้ว</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>การลงทะเบียน</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>ใช้ครั้งเดียว</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>สถิติ</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>ยอดรวม</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>การใช้งาน</value>
   </data>
 
 </root>

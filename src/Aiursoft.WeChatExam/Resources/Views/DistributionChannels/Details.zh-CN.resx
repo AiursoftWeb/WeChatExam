@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Agency Name" xml:space="preserve">
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>添加优惠券</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
     <value>机构名称</value>
+  </data>
+  <data name="Are you sure?" xml:space="preserve">
+    <value>您确定吗？</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
@@ -29,6 +41,12 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>渠道信息</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>代码</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>优惠券</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>创建时间</value>
@@ -42,6 +60,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>已禁用</value>
   </data>
+  <data name="Discount" xml:space="preserve">
+    <value>折扣</value>
+  </data>
   <data name="Distribution Code" xml:space="preserve">
     <value>分发代码</value>
   </data>
@@ -50,6 +71,15 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>已启用</value>
+  </data>
+  <data name="Global" xml:space="preserve">
+    <value>通用</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>多用途</value>
+  </data>
+  <data name="Not Used" xml:space="preserve">
+    <value>未使用</value>
   </data>
   <data name="Paid Orders" xml:space="preserve">
     <value>已支付订单</value>
@@ -60,6 +90,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>注册数</value>
   </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>单次使用</value>
+  </data>
   <data name="Statistics" xml:space="preserve">
     <value>统计</value>
   </data>
@@ -68,6 +101,12 @@
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>总金额</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>使用次数</value>
   </data>
 
 </root>
