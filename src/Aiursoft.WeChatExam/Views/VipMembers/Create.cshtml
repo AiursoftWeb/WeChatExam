@@ -1,0 +1,58 @@
+@model Aiursoft.WeChatExam.Models.VipMembersViewModels.CreateViewModel
+
+<div class="row mb-2 mb-xl-3">
+    <div class="col-auto d-none d-sm-block">
+        <h3>@Localizer["Create a new VIP membership"]</h3>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">@Localizer["VIP Membership Information"]</h5>
+        <h6 class="card-subtitle text-muted">@Localizer["Please fill out the form below to create a new VIP membership."]</h6>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="UserId" class="form-label"></label>
+                @if (string.IsNullOrEmpty(Model.UserName))
+                {
+                    <input asp-for="UserId" class="form-control" placeholder="Enter User ID" />
+                }
+                else
+                {
+                    <input asp-for="UserId" type="hidden" />
+                    <input type="text" class="form-control" value="@Model.UserName (@Model.UserId)" disabled />
+                }
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="VipProductId" class="form-label"></label>
+                <select asp-for="VipProductId" asp-items="Model.VipProducts" class="form-select">
+                    <option value="">@Localizer["-- Select a VIP Product --"]</option>
+                </select>
+                <span asp-validation-for="VipProductId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="StartTime" class="form-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EndTime" class="form-label"></label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">@Localizer["Create"]</button>
+                <a asp-action="Index" asp-route-userId="@Model.UserId" class="btn btn-light">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>

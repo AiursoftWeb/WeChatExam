@@ -1,0 +1,28 @@
+@model Aiursoft.WeChatExam.Models.VipMembersViewModels.DeleteViewModel
+
+<div class="row mb-2 mb-xl-3">
+    <div class="col-auto d-none d-sm-block">
+        <h3>@Localizer["Delete VIP Membership"]</h3>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title text-danger">@Localizer["Warning!"]</h5>
+        <h6 class="card-subtitle text-muted">@Localizer["You are about to delete a VIP membership."]</h6>
+    </div>
+    <div class="card-body">
+        <p>@Localizer["Are you sure you want to delete the VIP membership for user"] <strong>@(Model.VipMembership.User?.DisplayName)</strong>?</p>
+        <ul>
+            <li><strong>@Localizer["Product:"]</strong> @(Model.VipMembership.VipProduct?.Name)</li>
+            <li><strong>@Localizer["Start Time:"]</strong> @Model.VipMembership.StartTime.ToLocalTime()</li>
+            <li><strong>@Localizer["End Time:"]</strong> @Model.VipMembership.EndTime.ToLocalTime()</li>
+        </ul>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.VipMembership.Id" />
+            <button type="submit" class="btn btn-danger">@Localizer["Delete"]</button>
+            <a asp-action="Index" asp-route-userId="@Model.VipMembership.UserId" class="btn btn-light">@Localizer["Cancel"]</a>
+        </form>
+    </div>
+</div>

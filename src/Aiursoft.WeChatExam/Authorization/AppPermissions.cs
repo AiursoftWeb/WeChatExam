@@ -184,6 +184,10 @@ public class AppPermissions
             new(AppPermissionNames.CanDeleteVipProducts,
                 localizer["Delete VIP Products"],
                 localizer["Allows the permanent deletion of VIP products."]),
+
+            new(AppPermissionNames.CanManageVipMembers,
+                localizer["Manage VIP Members"],
+                localizer["Allows viewing, adding, and deleting VIP memberships for users."]),
         ];
         return allPermission;
     }

@@ -1,0 +1,107 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Services.FileStorage
+@inject StorageService StorageService
+@model Aiursoft.WeChatExam.Models.VipMembersViewModels.IndexViewModel
+<style>
+    .clickable-row {
+        cursor: pointer;
+    }
+</style>
+
+<div class="row mb-2 mb-xl-3">
+    <div class="col-auto d-none d-sm-block">
+        <h3>
+            @if (Model.TargetUser != null)
+            {
+                @Localizer["Manage VIP Members for: "] <span class="text-muted">@Model.TargetUser.DisplayName</span>
+            }
+            else
+            {
+                @Localizer["Manage VIP Members"]
+            }
+        </h3>
+    </div>
+
+    <div class="col-auto ms-auto mt-n1">
+        <a asp-action="Create" asp-route-userId="@Model.UserId" class="btn btn-primary">
+            <i class="align-middle" data-lucide="plus"></i> @Localizer["Create a new VIP membership"]
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">@Localizer["VIP Memberships"]</h5>
+        <h6 class="card-subtitle text-muted">@Localizer["A list of all VIP memberships in the system."]</h6>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+            <tr>
+                <th>@Localizer["User"]</th>
+                <th>@Localizer["Product"]</th>
+                <th>@Localizer["Start Time"]</th>
+                <th>@Localizer["End Time"]</th>
+                <th>@Localizer["Is Active"]</th>
+                <th class="text-end">@Localizer["Actions"]</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.VipMembers)
+            {
+                <tr class="clickable-row" data-href="@Url.Action("Edit", new { id = item.Id })">
+                    <td>
+                        @if (item.User != null)
+                        {
+                            <img src="@StorageService.RelativePathToInternetUrl(item.User.AvatarRelativePath)?w=36&square=true" alt="@item.User.DisplayName" class="rounded-circle me-2" width="24" height="24" />
+                            @item.User.DisplayName
+                        }
+                    </td>
+                    <td>@(item.VipProduct?.Name)</td>
+                    <td>
+                        <label data-utc-time="@item.StartTime.ToHtmlDateTime()" class="text-monospace"></label>
+                    </td>
+                    <td>
+                        <label data-utc-time="@item.EndTime.ToHtmlDateTime()" class="text-monospace"></label>
+                    </td>
+                    <td>
+                        @if (item.IsActive)
+                        {
+                            <span class="badge bg-success">@Localizer["Active"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">@Localizer["Expired"]</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">
+                            <i class="align-middle" data-lucide="edit-2"></i> @Localizer["Edit"]
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
+                            <i class="align-middle" data-lucide="trash-2"></i> @Localizer["Delete"]
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const rows = document.querySelectorAll(".clickable-row");
+            rows.forEach(row => {
+                row.addEventListener("click", function (event) {
+                    const target = event.target;
+                    if (!target.matches('a, a *, button, button *')) {
+                        window.location.href = row.dataset.href;
+                    }
+                });
+            });
+        });
+    </script>
+}
