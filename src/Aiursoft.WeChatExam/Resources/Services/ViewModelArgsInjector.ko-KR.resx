@@ -81,6 +81,9 @@
   <data name="Create User" xml:space="preserve">
     <value>사용자 생성</value>
   </data>
+  <data name="Create VIP Membership" xml:space="preserve">
+    <value>VIP 멤버십 만들기</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>대시보드</value>
   </data>
@@ -108,6 +111,9 @@
   <data name="Delete User" xml:space="preserve">
     <value>사용자 삭제</value>
   </data>
+  <data name="Delete VIP Membership" xml:space="preserve">
+    <value>VIP 멤버십 삭제</value>
+  </data>
   <data name="Directory" xml:space="preserve">
     <value>디렉터리</value>
   </data>
@@ -125,6 +131,9 @@
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>사용자 편집</value>
+  </data>
+  <data name="Edit VIP Membership" xml:space="preserve">
+    <value>VIP 멤버십 편집</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>오류</value>
@@ -257,6 +266,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>사용자</value>
+  </data>
+  <data name="VIP Members" xml:space="preserve">
+    <value>VIP 멤버</value>
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP 제품</value>

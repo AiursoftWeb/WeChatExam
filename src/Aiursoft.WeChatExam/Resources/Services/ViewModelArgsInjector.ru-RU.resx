@@ -78,6 +78,9 @@
   <data name="Create User" xml:space="preserve">
     <value>Создать пользователя</value>
   </data>
+  <data name="Create VIP Membership" xml:space="preserve">
+    <value>Создать VIP-подписку</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Панель управления</value>
   </data>
@@ -105,6 +108,9 @@
   <data name="Delete User" xml:space="preserve">
     <value>Удалить пользователя</value>
   </data>
+  <data name="Delete VIP Membership" xml:space="preserve">
+    <value>Удалить VIP-подписку</value>
+  </data>
   <data name="Directory" xml:space="preserve">
     <value>Каталог</value>
   </data>
@@ -122,6 +128,9 @@
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>Редактировать пользователя</value>
+  </data>
+  <data name="Edit VIP Membership" xml:space="preserve">
+    <value>Редактировать VIP-подписку</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
@@ -254,6 +263,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>
+  </data>
+  <data name="VIP Members" xml:space="preserve">
+    <value>VIP-клиенты</value>
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Продукты VIP</value>

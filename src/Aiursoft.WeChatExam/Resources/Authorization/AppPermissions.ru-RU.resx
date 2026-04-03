@@ -174,6 +174,9 @@
   <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
     <value>Позволяет просматривать VIP-продукты и их конфигурацию.</value>
   </data>
+  <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
+    <value>Разрешает просматривать, добавлять и удалять VIP-подписки для пользователей.</value>
+  </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Назначение ролей пользователям</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Управление тегами</value>
+  </data>
+  <data name="Manage VIP Members" xml:space="preserve">
+    <value>Управление VIP-членами</value>
   </data>
   <data name="Read Distribution Channels" xml:space="preserve">
     <value>Просмотр каналов распространения</value>

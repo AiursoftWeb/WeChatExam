@@ -174,6 +174,9 @@
   <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
     <value>वीआईपी उत्पादों और उनकी कॉन्फ़िगरेशन को देखने की अनुमति देता है।</value>
   </data>
+  <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
+    <value>उपयोगकर्ताओं के लिए VIP सदस्यताएं देखना, जोड़ना और हटाना की अनुमति देता है।</value>
+  </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>उपयोगकर्ताओं को भूमिकाएँ नियत करें</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>टैग प्रबंधित करें</value>
+  </data>
+  <data name="Manage VIP Members" xml:space="preserve">
+    <value>VIP सदस्यों का प्रबंधन</value>
   </data>
   <data name="Read Distribution Channels" xml:space="preserve">
     <value>वितरण चैनल्स पढ़ें</value>

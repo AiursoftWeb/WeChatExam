@@ -81,6 +81,9 @@
   <data name="Create User" xml:space="preserve">
     <value>ユーザーを作成</value>
   </data>
+  <data name="Create VIP Membership" xml:space="preserve">
+    <value>VIP 会員を作成</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>ダッシュボード</value>
   </data>
@@ -108,6 +111,9 @@
   <data name="Delete User" xml:space="preserve">
     <value>ユーザーを削除</value>
   </data>
+  <data name="Delete VIP Membership" xml:space="preserve">
+    <value>VIPメンバーシップの削除</value>
+  </data>
   <data name="Directory" xml:space="preserve">
     <value>ディレクトリ</value>
   </data>
@@ -125,6 +131,9 @@
   </data>
   <data name="Edit User" xml:space="preserve">
     <value>ユーザー編集</value>
+  </data>
+  <data name="Edit VIP Membership" xml:space="preserve">
+    <value>VIP 会員の編集</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>エラー</value>
@@ -257,6 +266,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>ユーザー</value>
+  </data>
+  <data name="VIP Members" xml:space="preserve">
+    <value>VIPメンバー</value>
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP 製品</value>

@@ -174,6 +174,9 @@
   <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
     <value>يسمح بعرض منتجات VIP وإعداداتها.</value>
   </data>
+  <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
+    <value>يسمح بعرض وإضافة وحذف عضويات VIP للمستخدمين.</value>
+  </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>تعيين الأدوار للمستخدمين</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>إدارة العلامات</value>
+  </data>
+  <data name="Manage VIP Members" xml:space="preserve">
+    <value>إدارة أعضاء VIP</value>
   </data>
   <data name="Read Distribution Channels" xml:space="preserve">
     <value>قراءة قنوات التوزيع</value>
