@@ -14,4 +14,9 @@ public class IndexViewModel : UiStackLayoutViewModel
     public string? SearchQuery { get; set; }
     public string? UserId { get; set; }
     public User? TargetUser { get; set; }
+
+    public int TotalCount { get; set; }
+    public int CurrentPage { get; set; }
+    public int PageSize { get; set; }
+    public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
 }

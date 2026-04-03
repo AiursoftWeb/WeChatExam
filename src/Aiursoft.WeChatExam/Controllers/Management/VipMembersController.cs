@@ -27,7 +27,7 @@ public class VipMembersController(
         CascadedLinksOrder = 3,
         LinkText = "VIP Members",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index(string? userId, string? search)
+    public async Task<IActionResult> Index(string? userId, string? search, int page = 1, int pageSize = 15)
     {
         var query = dbContext.VipMemberships
             .Include(v => v.User)
@@ -52,14 +52,21 @@ public class VipMembersController(
             );
         }
 
-        var memberships = await query.OrderByDescending(v => v.EndTime).ToListAsync();
+        var totalCount = await query.CountAsync();
+        var memberships = await query.OrderByDescending(v => v.EndTime)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
 
         return this.StackView(new IndexViewModel
         {
             VipMembers = memberships,
             SearchQuery = search,
             UserId = userId,
-            TargetUser = targetUser
+            TargetUser = targetUser,
+            TotalCount = totalCount,
+            CurrentPage = page,
+            PageSize = pageSize
         });
     }
 
