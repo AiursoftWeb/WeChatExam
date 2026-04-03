@@ -120,6 +120,11 @@ public class ViewModelArgsInjector(
         _ = localizer["VIP Products"];
     
         _ = localizer["Create Coupon"];
+    
+        _ = localizer["Create VIP Membership"];
+        _ = localizer["Delete VIP Membership"];
+        _ = localizer["Edit VIP Membership"];
+        _ = localizer["VIP Members"];
     }
 
     public void InjectSimple(

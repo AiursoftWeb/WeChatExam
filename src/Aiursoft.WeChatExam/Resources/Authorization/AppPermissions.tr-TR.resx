@@ -174,6 +174,9 @@
   <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
     <value>VIP ürünlerini ve yapılandırmalarını görüntülemeye izin verir.</value>
   </data>
+  <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
+    <value>Kullanıcılar için VIP üyeliklerini görüntüleme, ekleme ve silmeye izin verir.</value>
+  </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Kullanıcılara Rol Atama</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Etiketleri Yönet</value>
+  </data>
+  <data name="Manage VIP Members" xml:space="preserve">
+    <value>VIP Üyelerini Yönet</value>
   </data>
   <data name="Read Distribution Channels" xml:space="preserve">
     <value>Dağıtım Kanallarını Oku</value>

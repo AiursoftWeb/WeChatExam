@@ -174,6 +174,9 @@
   <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
     <value>Sallii VIP-tuotteiden ja niiden konfiguraation näkemisen.</value>
   </data>
+  <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
+    <value>Sallii VIP-jäsenyyksien katselun, lisäämisen ja poistamisen käyttäjille.</value>
+  </data>
   <data name="Assign Roles to Users" xml:space="preserve">
     <value>Anna roolit käyttäjille</value>
   </data>
@@ -260,6 +263,9 @@
   </data>
   <data name="Manage Tags" xml:space="preserve">
     <value>Hallinnoi tunnuksia</value>
+  </data>
+  <data name="Manage VIP Members" xml:space="preserve">
+    <value>Hallitse VIP-jäseniä</value>
   </data>
   <data name="Read Distribution Channels" xml:space="preserve">
     <value>Lue jakokanavat</value>
