@@ -118,6 +118,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Payment Management"];
         _ = localizer["Payment Orders"];
         _ = localizer["VIP Products"];
+    
+        _ = localizer["Create Coupon"];
     }
 
     public void InjectSimple(
