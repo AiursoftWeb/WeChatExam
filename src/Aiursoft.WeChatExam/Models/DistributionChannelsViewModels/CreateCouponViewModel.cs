@@ -6,6 +6,10 @@ namespace Aiursoft.WeChatExam.Models.DistributionChannelsViewModels;
 
 public class CreateCouponViewModel: UiStackLayoutViewModel
 {
+    public CreateCouponViewModel()
+    {
+        PageTitle = "Create Coupon";
+    }
     [Required]
     public Guid ChannelId { get; set; }
 
