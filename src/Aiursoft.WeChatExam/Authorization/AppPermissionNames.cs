@@ -87,4 +87,6 @@ public static class AppPermissionNames
     public const string CanEditVipProducts = nameof(CanEditVipProducts);
     public const string CanDeleteVipProducts = nameof(CanDeleteVipProducts);
 
+    // VIP Member Management
+    public const string CanManageVipMembers = nameof(CanManageVipMembers);
 }

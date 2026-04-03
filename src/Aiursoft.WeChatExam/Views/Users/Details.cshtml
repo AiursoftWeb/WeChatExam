@@ -12,6 +12,7 @@
     </div>
     <div class="col-auto ms-auto text-end mt-n1">
         <a asp-action="Edit" asp-route-id="@Model.User.Id" class="btn btn-primary">@Localizer["Edit this User"]</a>
+        <a asp-controller="VipMembers" asp-action="Index" asp-route-userId="@Model.User.Id" class="btn btn-secondary">@Localizer["Manage VIP"]</a>
         <a asp-action="Delete" asp-route-id="@Model.User.Id" class="btn btn-danger">@Localizer["Delete this User"]</a>
         <a asp-action="Index" class="btn btn-light">@Localizer["Back to list"]</a>
     </div>

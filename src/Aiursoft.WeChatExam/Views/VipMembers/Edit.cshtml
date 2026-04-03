@@ -1,0 +1,46 @@
+@model Aiursoft.WeChatExam.Models.VipMembersViewModels.EditViewModel
+
+<div class="row mb-2 mb-xl-3">
+    <div class="col-auto d-none d-sm-block">
+        <h3>@Localizer["Edit VIP membership"]</h3>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">@Localizer["Edit VIP Membership Information"]</h5>
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input asp-for="Id" type="hidden" />
+
+            <div class="mb-3">
+                <label class="form-label">@Localizer["User"]</label>
+                <input type="text" class="form-control" value="@Model.UserName" disabled />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">@Localizer["Product"]</label>
+                <input type="text" class="form-control" value="@Model.ProductName" disabled />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="StartTime" class="form-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EndTime" class="form-label"></label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">@Localizer["Save Changes"]</button>
+                <a asp-action="Index" class="btn btn-light">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>
