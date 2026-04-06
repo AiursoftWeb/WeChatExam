@@ -18,6 +18,9 @@ using Newtonsoft.Json.Serialization;
 using SKIT.FlurlHttpClient.Wechat.Api;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3.Settings;
+using Aiursoft.Canon.TaskQueue;
+using Aiursoft.Canon.BackgroundJobs;
+using Aiursoft.Canon.ScheduledTasks;
 
 namespace Aiursoft.WeChatExam;
 
@@ -71,8 +74,11 @@ public class Startup : IWebStartup
         services.AddScoped<IPaperAccessService, PaperAccessService>();
 
         // Background job queue
-        services.AddSingleton<Services.BackgroundJobs.BackgroundJobQueue>();
-        services.AddHostedService<Services.BackgroundJobs.QueueWorkerService>();
+        services.AddTaskQueueEngine();
+        services.AddScheduledTaskEngine();
+        services.RegisterBackgroundJob<Services.BackgroundJobs.DummyJob>();
+        var orphanAvatarCleanupJob = services.RegisterBackgroundJob<Services.BackgroundJobs.OrphanAvatarCleanupJob>();
+        services.RegisterScheduledTask(registration: orphanAvatarCleanupJob, period: TimeSpan.FromHours(6), startDelay: TimeSpan.FromMinutes(5));
 
         // Configure SKIT WeChat API Client
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;

@@ -1,5 +1,5 @@
 using Aiursoft.WeChatExam.Entities;
-using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Aiursoft.Canon.TaskQueue;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Services;
@@ -8,16 +8,16 @@ public class ExamService : IExamService
 {
     private readonly WeChatExamDbContext _dbContext;
     private readonly IGradingService _gradingService;
-    private readonly BackgroundJobQueue _backgroundJobQueue;
+    private readonly ServiceTaskQueue _taskQueue;
 
     public ExamService(
         WeChatExamDbContext dbContext, 
         IGradingService gradingService,
-        BackgroundJobQueue backgroundJobQueue)
+        ServiceTaskQueue taskQueue)
     {
         _dbContext = dbContext;
         _gradingService = gradingService;
-        _backgroundJobQueue = backgroundJobQueue;
+        _taskQueue = taskQueue;
     }
 
     #region Admin & Management
@@ -249,10 +249,10 @@ public class ExamService : IExamService
         await _dbContext.SaveChangesAsync();
 
         // Queue grading in background
-        _backgroundJobQueue.QueueWithDependency<IExamService>(
+        _taskQueue.QueueWithDependency<IExamService>(
             queueName: "Grading",
-            jobName: $"Grading Exam Record {record.Id}",
-            job: async (examService) =>
+            taskName: $"Grading Exam Record {record.Id}",
+            task: async (examService) =>
             {
                 await examService.GradeExamAsync(record.Id);
             });

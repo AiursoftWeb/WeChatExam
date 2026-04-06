@@ -2,7 +2,7 @@ using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Models.HomeViewModels;
 using Aiursoft.WeChatExam.Services;
-using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Aiursoft.Canon.TaskQueue;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,7 +38,7 @@ public class HomeController : Controller
 
     [HttpPost]
     [Authorize]
-    public IActionResult AskOllama(string question, [FromServices] BackgroundJobQueue backgroundJobQueue)
+    public IActionResult AskOllama(string question, [FromServices] ServiceTaskQueue taskQueue)
     {
         if (string.IsNullOrWhiteSpace(question))
         {
@@ -49,10 +49,10 @@ public class HomeController : Controller
             });
         }
 
-        backgroundJobQueue.QueueWithDependency<IOllamaService>(
+        taskQueue.QueueWithDependency<IOllamaService>(
             queueName: "OllamaChat",
-            jobName: $"Ask Ollama: {question}",
-            job: async (ollamaService) => await ollamaService.AskQuestion(question)
+            taskName: $"Ask Ollama: {question}",
+            task: async (ollamaService) => await ollamaService.AskQuestion(question)
         );
 
         return RedirectToAction("Index", "Jobs");

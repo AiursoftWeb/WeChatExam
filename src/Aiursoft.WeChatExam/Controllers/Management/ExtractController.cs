@@ -3,7 +3,7 @@ using Aiursoft.WeChatExam.Models.ExtractViewModels;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Configuration;
-using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Aiursoft.Canon.TaskQueue;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,18 +17,18 @@ public class ExtractController : Controller
 {
     private readonly IExtractService _extractService;
     private readonly WeChatExamDbContext _dbContext;
-    private readonly BackgroundJobQueue _backgroundJobQueue;
+    private readonly ServiceTaskQueue _taskQueue;
     private readonly GlobalSettingsService _globalSettingsService;
 
     public ExtractController(
         IExtractService extractService,
         WeChatExamDbContext dbContext,
-        BackgroundJobQueue backgroundJobQueue,
+        ServiceTaskQueue taskQueue,
         GlobalSettingsService globalSettingsService)
     {
         _extractService = extractService;
         _dbContext = dbContext;
-        _backgroundJobQueue = backgroundJobQueue;
+        _taskQueue = taskQueue;
         _globalSettingsService = globalSettingsService;
     }
 
@@ -61,10 +61,10 @@ public class ExtractController : Controller
             return this.StackView(model, nameof(Index));
         }
 
-        _backgroundJobQueue.QueueWithDependency<IExtractService>(
+        _taskQueue.QueueWithDependency<IExtractService>(
             queueName: "Extraction",
-            jobName: $"AI Extraction to Category {model.CategoryId}",
-            job: async (extractService) =>
+            taskName: $"AI Extraction to Category {model.CategoryId}",
+            task: async (extractService) =>
             {
                 var json = await extractService.GenerateJsonAsync(model.Material, model.SystemPrompt);
                 var data = JsonConvert.DeserializeObject<List<ExtractedKnowledgePoint>>(json);
@@ -72,7 +72,6 @@ public class ExtractController : Controller
                 {
                     await extractService.SaveAsync(data, model.CategoryId);
                 }
-                return json;
             });
 
         return RedirectToAction("Index", "Jobs");

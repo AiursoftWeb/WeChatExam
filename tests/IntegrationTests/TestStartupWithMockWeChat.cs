@@ -10,8 +10,10 @@ using Aiursoft.WeChatExam.MySql;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Sqlite;
-using Aiursoft.WeChatExam.Services.BackgroundJobs;
 using Aiursoft.GptClient.Services;
+using Aiursoft.Canon.TaskQueue;
+using Aiursoft.Canon.BackgroundJobs;
+using Aiursoft.Canon.ScheduledTasks;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Moq;
 using Newtonsoft.Json;
@@ -68,8 +70,9 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddScoped<IPaperAccessService, PaperAccessService>();
 
         // Background job queue
-        services.AddSingleton<BackgroundJobQueue>();
-        services.AddHostedService<QueueWorkerService>();
+        services.AddTaskQueueEngine();
+        services.AddScheduledTaskEngine();
+        services.RegisterBackgroundJob<Services.BackgroundJobs.DummyJob>();
 
         // Configure Mock SKIT WeChat API Client instead of real one
         if (MockWeChatService != null)

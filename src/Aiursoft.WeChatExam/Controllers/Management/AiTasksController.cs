@@ -3,7 +3,7 @@ using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models;
 using Aiursoft.WeChatExam.Services;
-using Aiursoft.WeChatExam.Services.BackgroundJobs;
+using Aiursoft.Canon.TaskQueue;
 using Aiursoft.WeChatExam.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
 public class AiTasksController(
     AiTaskService aiTaskService,
-    BackgroundJobQueue backgroundJobQueue,
+    ServiceTaskQueue taskQueue,
     WeChatExamDbContext dbContext,
     ITagService tagService) : Controller
 {
@@ -48,10 +48,10 @@ public class AiTasksController(
         // Start background processing
         foreach (var item in aiTask.Items.Values)
         {
-            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+            taskQueue.QueueWithDependency<IServiceProvider>(
                 queueName: "AI-Explanation-Generation",
-                jobName: $"Generate Explanation for Question {item.QuestionId}",
-                job: async (serviceProvider) =>
+                taskName: $"Generate Explanation for Question {item.QuestionId}",
+                task: async (serviceProvider) =>
                 {
                     if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
                     {
@@ -187,10 +187,10 @@ public class AiTasksController(
         // Start background processing
         foreach (var item in aiTask.Items.Values)
         {
-            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+            taskQueue.QueueWithDependency<IServiceProvider>(
                 queueName: "AI-Categorization",
-                jobName: $"Categorize Question {item.QuestionId}",
-                job: async (serviceProvider) =>
+                taskName: $"Categorize Question {item.QuestionId}",
+                task: async (serviceProvider) =>
                 {
                     if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
                     {
@@ -316,10 +316,10 @@ public class AiTasksController(
         // Start background processing
         foreach (var item in aiTask.Items.Values)
         {
-            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+            taskQueue.QueueWithDependency<IServiceProvider>(
                 queueName: "AI-Tagging",
-                jobName: $"Tag Question {item.QuestionId}",
-                job: async (serviceProvider) =>
+                taskName: $"Tag Question {item.QuestionId}",
+                task: async (serviceProvider) =>
                 {
                     if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
                     {
@@ -435,10 +435,10 @@ public class AiTasksController(
         // Start background processing
         foreach (var item in aiTask.Items.Values)
         {
-            backgroundJobQueue.QueueWithDependency<IServiceProvider>(
+            taskQueue.QueueWithDependency<IServiceProvider>(
                 queueName: "AI-Answer-Generation",
-                jobName: $"Generate Answer for Question {item.QuestionId}",
-                job: async (serviceProvider) =>
+                taskName: $"Generate Answer for Question {item.QuestionId}",
+                task: async (serviceProvider) =>
                 {
                     if (aiTask.IsCanceled || DateTime.UtcNow - aiTask.LastAlive > TimeSpan.FromSeconds(50))
                     {
