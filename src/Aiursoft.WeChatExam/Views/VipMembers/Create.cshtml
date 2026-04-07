@@ -19,7 +19,11 @@
                 <label asp-for="UserId" class="form-label"></label>
                 @if (string.IsNullOrEmpty(Model.UserName))
                 {
-                    <input asp-for="UserId" class="form-control" placeholder="Enter User ID" />
+                    <div class="position-relative" id="user-search-wrapper">
+                        <input type="text" id="user-search-input" class="form-control" placeholder="@Localizer["Search user by name, email or ID..."]" autocomplete="off" />
+                        <input asp-for="UserId" type="hidden" id="user-search-hidden-id" />
+                        <div id="user-search-results" class="list-group position-absolute w-100 mt-1 d-none" style="z-index: 1000; max-height: 200px; overflow-y: auto;"></div>
+                    </div>
                 }
                 else
                 {
@@ -56,3 +60,88 @@
         </form>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        (function() {
+            const searchInput = document.getElementById('user-search-input');
+            const hiddenIdInput = document.getElementById('user-search-hidden-id');
+            const resultsDiv = document.getElementById('user-search-results');
+            const searchWrapper = document.getElementById('user-search-wrapper');
+            let debounceTimer;
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    clearTimeout(debounceTimer);
+                    
+                    if (query.length < 1) {
+                        resultsDiv.classList.add('d-none');
+                        return;
+                    }
+
+                    debounceTimer = setTimeout(() => {
+                        const searchUrl = '@Url.Action("SearchUsers", "VipMembers")';
+                        fetch(`${searchUrl}?query=${encodeURIComponent(query)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                resultsDiv.innerHTML = '';
+                                if (data && data.length > 0) {
+                                    data.forEach(user => {
+                                        const btn = document.createElement('button');
+                                        btn.type = 'button';
+                                        btn.className = 'list-group-item list-group-item-action py-2';
+                                        btn.innerHTML = `
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <strong>${escapeHtml(user.displayName)}</strong>
+                                                    <div class="small text-muted">${escapeHtml(user.userName)}</div>
+                                                </div>
+                                                <div class="small text-muted">${escapeHtml(user.email || '')}</div>
+                                            </div>`;
+                                        
+                                        btn.addEventListener('click', function() {
+                                            searchInput.value = `${user.displayName} (${user.userName})`;
+                                            hiddenIdInput.value = user.id;
+                                            resultsDiv.classList.add('d-none');
+                                        });
+                                        resultsDiv.appendChild(btn);
+                                    });
+                                    resultsDiv.classList.remove('d-none');
+                                } else {
+                                    resultsDiv.innerHTML = '<div class="list-group-item text-muted">No users found</div>';
+                                    resultsDiv.classList.remove('d-none');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Search error:', error);
+                                resultsDiv.classList.add('d-none');
+                            });
+                    }, 300);
+                });
+
+                // Helper to escape HTML to prevent XSS
+                function escapeHtml(text) {
+                    if (!text) return '';
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+
+                // Click outside to close results
+                document.addEventListener('click', function(e) {
+                    if (searchWrapper && !searchWrapper.contains(e.target)) {
+                        resultsDiv.classList.add('d-none');
+                    }
+                });
+
+                // Clear hidden ID if user clears the search input manually
+                searchInput.addEventListener('change', function() {
+                    if (this.value === '') {
+                        hiddenIdInput.value = '';
+                    }
+                });
+            }
+        })();
+    </script>
+}

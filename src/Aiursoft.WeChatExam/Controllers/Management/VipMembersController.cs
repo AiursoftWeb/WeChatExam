@@ -71,6 +71,24 @@ public class VipMembersController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
+    [HttpGet]
+    public async Task<IActionResult> SearchUsers(string query)
+    {
+        if (string.IsNullOrWhiteSpace(query))
+        {
+            return Json(new List<object>());
+        }
+
+        var users = await userManager.Users
+            .Where(u => (u.UserName != null && u.UserName.Contains(query)) || u.DisplayName.Contains(query) || (u.Email != null && u.Email.Contains(query)))
+            .Take(10)
+            .Select(u => new { u.Id, u.UserName, u.DisplayName, u.Email })
+            .ToListAsync();
+
+        return Json(users);
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
     public async Task<IActionResult> Create(string? userId)
     {
         var products = await dbContext.VipProducts.OrderBy(p => p.Name).ToListAsync();
