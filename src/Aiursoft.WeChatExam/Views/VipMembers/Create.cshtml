@@ -35,7 +35,7 @@
 
             <div class="mb-3">
                 <label asp-for="VipProductId" class="form-label"></label>
-                <select asp-for="VipProductId" asp-items="Model.VipProducts" class="form-select">
+                <select asp-for="VipProductId" asp-items="Model.VipProducts" class="form-select" id="product-select">
                     <option value="">@Localizer["-- Select a VIP Product --"]</option>
                 </select>
                 <span asp-validation-for="VipProductId" class="text-danger"></span>
@@ -43,13 +43,17 @@
 
             <div class="mb-3">
                 <label asp-for="StartTime" class="form-label"></label>
-                <input asp-for="StartTime" class="form-control" />
+                <input asp-for="StartTime" class="form-control" id="start-time" />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="EndTime" class="form-label"></label>
-                <input asp-for="EndTime" class="form-control" />
+                <input asp-for="EndTime" class="form-control" id="end-time" />
+                <div class="form-text text-info">
+                    <i class="align-middle me-1" data-lucide="info"></i>
+                    @Localizer["The selected dates will be the final effective period, overriding the VIP product's default duration."]
+                </div>
                 <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
 
@@ -141,6 +145,41 @@
                         hiddenIdInput.value = '';
                     }
                 });
+            }
+
+            // Auto-calculate end time based on product duration
+            const productSelect = document.getElementById('product-select');
+            const startTimeInput = document.getElementById('start-time');
+            const endTimeInput = document.getElementById('end-time');
+
+            function updateEndTime() {
+                const selectedOption = productSelect.options[productSelect.selectedIndex];
+                if (!selectedOption || !selectedOption.value || !startTimeInput.value) return;
+
+                // Extract days from text like "Name (30 days)"
+                const text = selectedOption.text;
+                const match = text.match(/\((\d+)\s+days\)/);
+                if (match && match[1]) {
+                    const days = parseInt(match[1]);
+                    const startTime = new Date(startTimeInput.value);
+                    if (!isNaN(startTime.getTime())) {
+                        const endTime = new Date(startTime.getTime() + days * 24 * 60 * 60 * 1000);
+                        
+                        // Format to yyyy-MM-ddTHH:mm (ISO format without seconds/timezone offset that datetime-local expects)
+                        const year = endTime.getFullYear();
+                        const month = String(endTime.getMonth() + 1).padStart(2, '0');
+                        const day = String(endTime.getDate()).padStart(2, '0');
+                        const hours = String(endTime.getHours()).padStart(2, '0');
+                        const minutes = String(endTime.getMinutes()).padStart(2, '0');
+                        
+                        endTimeInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+                    }
+                }
+            }
+
+            if (productSelect && startTimeInput && endTimeInput) {
+                productSelect.addEventListener('change', updateEndTime);
+                startTimeInput.addEventListener('change', updateEndTime);
             }
         })();
     </script>
