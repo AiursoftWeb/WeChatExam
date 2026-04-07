@@ -19,7 +19,11 @@
                 <label asp-for="UserId" class="form-label"></label>
                 @if (string.IsNullOrEmpty(Model.UserName))
                 {
-                    <input asp-for="UserId" class="form-control" placeholder="Enter User ID" />
+                    <div class="position-relative" id="user-search-wrapper">
+                        <input type="text" id="user-search-input" class="form-control" placeholder="@Localizer["Search user by name, email or ID..."]" autocomplete="off" />
+                        <input asp-for="UserId" type="hidden" id="user-search-hidden-id" />
+                        <div id="user-search-results" class="list-group position-absolute w-100 mt-1 d-none" style="z-index: 1000; max-height: 200px; overflow-y: auto;"></div>
+                    </div>
                 }
                 else
                 {
@@ -31,7 +35,7 @@
 
             <div class="mb-3">
                 <label asp-for="VipProductId" class="form-label"></label>
-                <select asp-for="VipProductId" asp-items="Model.VipProducts" class="form-select">
+                <select asp-for="VipProductId" asp-items="Model.VipProducts" class="form-select" id="product-select">
                     <option value="">@Localizer["-- Select a VIP Product --"]</option>
                 </select>
                 <span asp-validation-for="VipProductId" class="text-danger"></span>
@@ -39,13 +43,17 @@
 
             <div class="mb-3">
                 <label asp-for="StartTime" class="form-label"></label>
-                <input asp-for="StartTime" class="form-control" />
+                <input asp-for="StartTime" class="form-control" id="start-time" />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="EndTime" class="form-label"></label>
-                <input asp-for="EndTime" class="form-control" />
+                <input asp-for="EndTime" class="form-control" id="end-time" />
+                <div class="form-text text-info">
+                    <i class="align-middle me-1" data-lucide="info"></i>
+                    @Localizer["The selected dates will be the final effective period, overriding the VIP product's default duration."]
+                </div>
                 <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
 
@@ -56,3 +64,123 @@
         </form>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        (function() {
+            const searchInput = document.getElementById('user-search-input');
+            const hiddenIdInput = document.getElementById('user-search-hidden-id');
+            const resultsDiv = document.getElementById('user-search-results');
+            const searchWrapper = document.getElementById('user-search-wrapper');
+            let debounceTimer;
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    clearTimeout(debounceTimer);
+                    
+                    if (query.length < 1) {
+                        resultsDiv.classList.add('d-none');
+                        return;
+                    }
+
+                    debounceTimer = setTimeout(() => {
+                        const searchUrl = '@Url.Action("SearchUsers", "VipMembers")';
+                        fetch(`${searchUrl}?query=${encodeURIComponent(query)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                resultsDiv.innerHTML = '';
+                                if (data && data.length > 0) {
+                                    data.forEach(user => {
+                                        const btn = document.createElement('button');
+                                        btn.type = 'button';
+                                        btn.className = 'list-group-item list-group-item-action py-2';
+                                        btn.innerHTML = `
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <strong>${escapeHtml(user.displayName)}</strong>
+                                                    <div class="small text-muted">${escapeHtml(user.userName)}</div>
+                                                </div>
+                                                <div class="small text-muted">${escapeHtml(user.email || '')}</div>
+                                            </div>`;
+                                        
+                                        btn.addEventListener('click', function() {
+                                            searchInput.value = `${user.displayName} (${user.userName})`;
+                                            hiddenIdInput.value = user.id;
+                                            resultsDiv.classList.add('d-none');
+                                        });
+                                        resultsDiv.appendChild(btn);
+                                    });
+                                    resultsDiv.classList.remove('d-none');
+                                } else {
+                                    resultsDiv.innerHTML = '<div class="list-group-item text-muted">No users found</div>';
+                                    resultsDiv.classList.remove('d-none');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Search error:', error);
+                                resultsDiv.classList.add('d-none');
+                            });
+                    }, 300);
+                });
+
+                // Helper to escape HTML to prevent XSS
+                function escapeHtml(text) {
+                    if (!text) return '';
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
+
+                // Click outside to close results
+                document.addEventListener('click', function(e) {
+                    if (searchWrapper && !searchWrapper.contains(e.target)) {
+                        resultsDiv.classList.add('d-none');
+                    }
+                });
+
+                // Clear hidden ID if user clears the search input manually
+                searchInput.addEventListener('change', function() {
+                    if (this.value === '') {
+                        hiddenIdInput.value = '';
+                    }
+                });
+            }
+
+            // Auto-calculate end time based on product duration
+            const productSelect = document.getElementById('product-select');
+            const startTimeInput = document.getElementById('start-time');
+            const endTimeInput = document.getElementById('end-time');
+
+            function updateEndTime() {
+                const selectedOption = productSelect.options[productSelect.selectedIndex];
+                if (!selectedOption || !selectedOption.value || !startTimeInput.value) return;
+
+                // Extract days from text like "Name (30 days)"
+                const text = selectedOption.text;
+                const match = text.match(/\((\d+)\s+days\)/);
+                if (match && match[1]) {
+                    const days = parseInt(match[1]);
+                    const startTime = new Date(startTimeInput.value);
+                    if (!isNaN(startTime.getTime())) {
+                        const endTime = new Date(startTime.getTime() + days * 24 * 60 * 60 * 1000);
+                        
+                        // Format to yyyy-MM-ddTHH:mm (ISO format without seconds/timezone offset that datetime-local expects)
+                        const year = endTime.getFullYear();
+                        const month = String(endTime.getMonth() + 1).padStart(2, '0');
+                        const day = String(endTime.getDate()).padStart(2, '0');
+                        const hours = String(endTime.getHours()).padStart(2, '0');
+                        const minutes = String(endTime.getMinutes()).padStart(2, '0');
+                        
+                        endTimeInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+                    }
+                }
+            }
+
+            if (productSelect && startTimeInput && endTimeInput) {
+                productSelect.addEventListener('change', updateEndTime);
+                startTimeInput.addEventListener('change', updateEndTime);
+            }
+        })();
+    </script>
+}
