@@ -239,12 +239,13 @@ public class QuestionsController : ControllerBase
 
              // If found (not DateTime.MinValue), filter questions created AFTER that time
              // Note: FirstOrDefaultAsync returns default(DateTime) which is MinValue if not found.
+             var resumeQuery = query;
              if (lastPracticeQuestionTime != DateTime.MinValue)
              {
-                 query = query.Where(q => q.CreationTime > lastPracticeQuestionTime);
+                 resumeQuery = query.Where(q => q.CreationTime > lastPracticeQuestionTime);
              }
 
-             questions = await query
+             questions = await resumeQuery
                  .OrderBy(q => q.CreationTime) // Sequential: Oldest to Newest
                  .Take(limit)
                  .Select(q => new QuestionDto
@@ -257,6 +258,24 @@ public class QuestionsController : ControllerBase
                      Score = 10
                  })
                  .ToListAsync();
+
+             // If no questions found and user has practiced before, loop back to start
+             if (questions.Count == 0 && lastPracticeQuestionTime != DateTime.MinValue)
+             {
+                 questions = await query
+                     .OrderBy(q => q.CreationTime) // Sequential: Oldest to Newest
+                     .Take(limit)
+                     .Select(q => new QuestionDto
+                     {
+                         QuestionType = q.QuestionType,
+                         Id = q.Id,
+                         Content = q.Content,
+                         Metadata = q.Metadata,
+                         Order = 0,
+                         Score = 10
+                     })
+                     .ToListAsync();
+             }
         }
         // Mode 2: Pagination (Page + Size)
         else if (size.HasValue)
