@@ -209,7 +209,7 @@ public class QuestionsController(
         var categories = await context.Categories.ToListAsync();
         var maxOrderIndex = await context.Questions
             .Where(q => q.OrderIndex.HasValue)
-            .MaxAsync(q => (decimal?)q.OrderIndex);
+            .MaxAsync(q => q.OrderIndex);
 
         var model = new CreateViewModel
         {
@@ -341,7 +341,7 @@ public class QuestionsController(
         var tags = await tagService.GetTagsForQuestionAsync(id.Value);
         var maxOrderIndex = await context.Questions
             .Where(q => q.OrderIndex.HasValue)
-            .MaxAsync(q => (decimal?)q.OrderIndex);
+            .MaxAsync(q => q.OrderIndex);
 
         var model = new EditViewModel
         {

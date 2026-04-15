@@ -1,5 +1,4 @@
 using System.Net;
-using System.Net.Http.Json;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
@@ -7,9 +6,6 @@ using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WebTools;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
