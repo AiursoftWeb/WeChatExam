@@ -228,25 +228,43 @@ public class QuestionsController : ControllerBase
              var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
              if (string.IsNullOrEmpty(userId)) return Unauthorized();
 
-             // Find last practiced question's creation time
-             // Join UserPracticeHistory -> Question to get Question.CreationTime
+             // Find last practiced question's creation time and order index
+             // Join UserPracticeHistory -> Question to get Question data
              // We want the LATEST practice record (CreationTime of history)
-             var lastPracticeQuestionTime = await _context.UserPracticeHistories
+             var lastPracticedQuestion = await _context.UserPracticeHistories
                  .Where(h => h.UserId == userId && h.PracticeType == resumeType.Value)
                  .OrderByDescending(h => h.CreationTime) // Latest practice first
-                 .Select(h => h.Question.CreationTime)
+                 .Select(h => new { h.Question.OrderIndex, h.Question.CreationTime })
                  .FirstOrDefaultAsync();
 
-             // If found (not DateTime.MinValue), filter questions created AFTER that time
-             // Note: FirstOrDefaultAsync returns default(DateTime) which is MinValue if not found.
+             // If found, filter questions created AFTER that question (by order then time)
              var resumeQuery = query;
-             if (lastPracticeQuestionTime != DateTime.MinValue)
+             if (lastPracticedQuestion != null)
              {
-                 resumeQuery = query.Where(q => q.CreationTime > lastPracticeQuestionTime);
+                 // Logic: 
+                 // 1. Both have order: q.OrderIndex > last.OrderIndex or (q.OrderIndex == last.OrderIndex && q.CreationTime > last.CreationTime)
+                 // 2. last has order, q doesn't: Always (q comes after last)
+                 // 3. last has NO order, q has order: Never (q comes before last)
+                 // 4. both have NO order: q.CreationTime > last.CreationTime
+
+                 if (lastPracticedQuestion.OrderIndex.HasValue)
+                 {
+                     resumeQuery = query.Where(q => 
+                         (q.OrderIndex.HasValue && q.OrderIndex > lastPracticedQuestion.OrderIndex) ||
+                         (!q.OrderIndex.HasValue) ||
+                         (q.OrderIndex.HasValue && q.OrderIndex == lastPracticedQuestion.OrderIndex && q.CreationTime > lastPracticedQuestion.CreationTime)
+                     );
+                 }
+                 else
+                 {
+                     resumeQuery = query.Where(q => !q.OrderIndex.HasValue && q.CreationTime > lastPracticedQuestion.CreationTime);
+                 }
              }
 
              questions = await resumeQuery
-                 .OrderBy(q => q.CreationTime) // Sequential: Oldest to Newest
+                 .OrderBy(q => q.OrderIndex == null)
+                 .ThenBy(q => q.OrderIndex)
+                 .ThenBy(q => q.CreationTime) // Sequential
                  .Take(limit)
                  .Select(q => new QuestionDto
                  {
@@ -260,10 +278,12 @@ public class QuestionsController : ControllerBase
                  .ToListAsync();
 
              // If no questions found and user has practiced before, loop back to start
-             if (questions.Count == 0 && lastPracticeQuestionTime != DateTime.MinValue)
+             if (questions.Count == 0 && lastPracticedQuestion != null)
              {
                  questions = await query
-                     .OrderBy(q => q.CreationTime) // Sequential: Oldest to Newest
+                     .OrderBy(q => q.OrderIndex == null)
+                     .ThenBy(q => q.OrderIndex)
+                     .ThenBy(q => q.CreationTime) // Sequential
                      .Take(limit)
                      .Select(q => new QuestionDto
                      {
@@ -284,7 +304,9 @@ public class QuestionsController : ControllerBase
              if (pageIndex < 1) pageIndex = 1;
 
              questions = await query
-                 .OrderBy(q => q.CreationTime) // Sequential: Oldest to Newest
+                 .OrderBy(q => q.OrderIndex == null)
+                 .ThenBy(q => q.OrderIndex)
+                 .ThenBy(q => q.CreationTime) // Sequential
                  .Skip((pageIndex - 1) * size.Value)
                  .Take(size.Value)
                  .Select(q => new QuestionDto
@@ -303,7 +325,9 @@ public class QuestionsController : ControllerBase
         {
              // Default to page 1, size 10 to avoid scraping all questions.
              questions = await query
-                 .OrderByDescending(q => q.CreationTime)
+                 .OrderBy(q => q.OrderIndex == null)
+                 .ThenBy(q => q.OrderIndex)
+                 .ThenBy(q => q.CreationTime)
                  .Take(10)
                  .Select(q => new QuestionDto
                  {
