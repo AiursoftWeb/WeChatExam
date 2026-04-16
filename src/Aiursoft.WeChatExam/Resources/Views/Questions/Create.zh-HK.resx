@@ -36,6 +36,9 @@
   <data name="Correct" xml:space="preserve">
     <value>正確</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>自訂排序索引。數字較小者優先。目前最大索引為：</value>
+  </data>
   <data name="Explanation" xml:space="preserve">
     <value>解釋</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>選項（適用於單選題，JSON 陣列）</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>排序索引</value>
   </data>
   <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
     <value>按空格、逗號、分號或 Enter 加入標籤。按 X 移除。</value>
