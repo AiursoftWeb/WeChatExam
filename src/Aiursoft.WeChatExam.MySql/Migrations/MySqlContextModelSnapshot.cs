@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.5")
+                .HasAnnotation("ProductVersion", "10.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -741,6 +741,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .IsRequired()
                         .HasMaxLength(5000)
                         .HasColumnType("varchar(5000)");
+
+                    b.Property<decimal?>("OrderIndex")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("QuestionType")
                         .HasColumnType("int");

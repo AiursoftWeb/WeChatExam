@@ -58,6 +58,11 @@ public class Question
     /// </summary>
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 
+    /// <summary>
+    /// 自定义排序顺序。数字越小越靠前。为 null 表示未定义顺序，通常排在已定义顺序的题目之后。
+    /// </summary>
+    public decimal? OrderIndex { get; set; }
+
     // 导航引用：Category?, JsonIgnore, ForeignKey
     [JsonIgnore]
     [ForeignKey(nameof(CategoryId))]

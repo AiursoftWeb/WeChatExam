@@ -96,11 +96,13 @@ public class QuestionsController(
         // Sorting
         query = (sortBy, sortOrder.ToLower()) switch
         {
+            ("OrderIndex", "asc") => query.OrderBy(q => q.OrderIndex == null).ThenBy(q => q.OrderIndex).ThenBy(q => q.CreationTime),
+            ("OrderIndex", "desc") => query.OrderBy(q => q.OrderIndex == null).ThenByDescending(q => q.OrderIndex).ThenByDescending(q => q.CreationTime),
             ("CreatedAt", "asc") => query.OrderBy(q => q.CreationTime),
             ("CreatedAt", "desc") => query.OrderByDescending(q => q.CreationTime),
             ("QuestionType", "asc") => query.OrderBy(q => q.QuestionType),
             ("QuestionType", "desc") => query.OrderByDescending(q => q.QuestionType),
-            _ => query.OrderByDescending(q => q.CreationTime)
+            _ => query.OrderBy(q => q.OrderIndex == null).ThenBy(q => q.OrderIndex).ThenBy(q => q.CreationTime)
         };
 
         // Pagination
@@ -205,12 +207,17 @@ public class QuestionsController(
     public async Task<IActionResult> Create(Guid? categoryId, string? returnUrl)
     {
         var categories = await context.Categories.ToListAsync();
+        var maxOrderIndex = await context.Questions
+            .Where(q => q.OrderIndex.HasValue)
+            .MaxAsync(q => q.OrderIndex);
 
         var model = new CreateViewModel
         {
             Categories = categories,
             CategoryId = categoryId ?? Guid.Empty,
-            ReturnUrl = returnUrl
+            ReturnUrl = returnUrl,
+            OrderIndex = (maxOrderIndex ?? 0) + 1,
+            CurrentMaxOrderIndex = maxOrderIndex
         };
 
         return this.StackView(model);
@@ -273,7 +280,8 @@ public class QuestionsController(
             Metadata = model.Metadata ?? string.Empty,
             StandardAnswer = model.StandardAnswer ?? string.Empty,
             Explanation = model.Explanation ?? string.Empty,
-            CategoryId = model.CategoryId
+            CategoryId = model.CategoryId,
+            OrderIndex = model.OrderIndex
         };
 
         context.Questions.Add(question);
@@ -331,6 +339,9 @@ public class QuestionsController(
 
         var categories = await context.Categories.ToListAsync();
         var tags = await tagService.GetTagsForQuestionAsync(id.Value);
+        var maxOrderIndex = await context.Questions
+            .Where(q => q.OrderIndex.HasValue)
+            .MaxAsync(q => q.OrderIndex);
 
         var model = new EditViewModel
         {
@@ -344,7 +355,9 @@ public class QuestionsController(
             CategoryId = question.CategoryId ?? Guid.Empty,
             Categories = categories,
             Tags = string.Join(" ", tags.Select(t => t.DisplayName)),
-            ReturnUrl = returnUrl
+            ReturnUrl = returnUrl,
+            OrderIndex = question.OrderIndex,
+            CurrentMaxOrderIndex = maxOrderIndex
         };
 
         // Deserialize Metadata to Options
@@ -426,6 +439,7 @@ public class QuestionsController(
         question.StandardAnswer = model.StandardAnswer ?? string.Empty;
         question.Explanation = model.Explanation ?? string.Empty;
         question.CategoryId = model.CategoryId;
+        question.OrderIndex = model.OrderIndex;
 
         context.Questions.Update(question);
         await context.SaveChangesAsync();

@@ -49,6 +49,11 @@ public class CreateViewModel : UiStackLayoutViewModel
     [Display(Name = "Tags")]
     public string? Tags { get; set; }
 
+    [Display(Name = "Order Index")]
+    public decimal? OrderIndex { get; set; }
+
+    public decimal? CurrentMaxOrderIndex { get; set; }
+
     public List<Category> Categories { get; set; } = new();
 
     public List<string> Options { get; set; } = new();

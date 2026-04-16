@@ -55,6 +55,13 @@
                 <small class="form-text text-muted">@Localizer["Press Enter to add a tag, or select from suggestions. Click X to remove."]</small>
             </div>
 
+            <div class="mb-3">
+                <label asp-for="OrderIndex" class="form-label">@Localizer["Order Index"]</label>
+                <input asp-for="OrderIndex" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="OrderIndex" class="text-danger"></span>
+                <small class="form-text text-muted">@Localizer["Custom order index. Lower numbers come first. Current max index is:"] @Model.CurrentMaxOrderIndex</small>
+            </div>
+
             <!-- Options Section -->
             <div id="options-section" class="mb-3" style="display:none;">
                 <label class="form-label">@Localizer["Options"]</label>
