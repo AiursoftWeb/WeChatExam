@@ -57,7 +57,7 @@
                         <label class="form-label">@Localizer["MTQL Query"]</label>
                         <div class="input-group">
                             <input type="text" name="mtql" value="@Model.FilterMtql" class="form-control @(ViewData.ModelState.ContainsKey("FilterMtql") && (ViewData.ModelState["FilterMtql"]?.Errors.Any() ?? false) ? "is-invalid" : "")" placeholder="e.g. rock && not metal" />
-                            <a href="https://gitlab.aiursoft.com/aiursoft/wechatexam/-/tree/master/src/Aiursoft.WeChatExam.MTQL" target="_blank" class="btn btn-outline-secondary" title="MTQL Syntax Help">
+                            <a href="https://github.com/aiursoftweb/wechatexam/tree/master/src/Aiursoft.WeChatExam.MTQL" target="_blank" class="btn btn-outline-secondary" title="MTQL Syntax Help">
                                 <i data-lucide="help-circle"></i>
                             </a>
                         </div>
