@@ -1,9 +1,9 @@
 # WeChatExam - A sample project
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/blob/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aiursoftweb/weChatExam/blob/master/LICENSE)
 [![Pipeline stat](https://gitlab.aiursoft.com/aiursoft/weChatExam/badges/master/pipeline.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/pipelines)
 [![Test Coverage](https://gitlab.aiursoft.com/aiursoft/weChatExam/badges/master/coverage.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/pipelines)
-[![Man hours](https://manhours.aiursoft.com/r/gitlab.aiursoft.com/aiursoft/weChatExam.svg)](https://manhours.aiursoft.com/r/gitlab.aiursoft.com/aiursoft/weChatExam.html)
+[![Man hours](https://manhours.aiursoft.com/r/github.com/aiursoftweb/weChatExam.svg)](https://manhours.aiursoft.com/r/github.com/aiursoftweb/weChatExam.html)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2FweChatExam.aiursoft.cn)](https://weChatExam.aiursoft.cn)
 [![Docker](https://img.shields.io/docker/pulls/aiursoft/wechatexam.svg)](https://hub.docker.com/r/aiursoft/wechatexam)
 
@@ -12,16 +12,6 @@ WeChatExam is a sample project.
 ![screenshot](./screenshot.png)
 
 Default user name is `admin@default.com` and default password is `admin123`.
-
-## Projects using Aiursoft WeChatExam
-
-* [Stathub](https://gitlab.aiursoft.com/aiursoft/stathub)
-* [MarkToHtml](https://gitlab.aiursoft.com/aiursoft/marktohtml)
-* [MusicTools](https://gitlab.aiursoft.com/aiursoft/musictools)
-* [AnduinOS Home](https://gitlab.aiursoft.com/anduin/AnduinOS-Home)
-* [Manhours](https://gitlab.aiursoft.com/aiursoft/manhours)
-* [Tracer](https://gitlab.aiursoft.com/aiursoft/tracer)
-* [Warp](https://gitlab.aiursoft.com/aiursoft/warp)
 
 ## Try
 
@@ -34,13 +24,13 @@ The following script will install\update this app on your Ubuntu server. Support
 On your Ubuntu server, run the following command:
 
 ```bash
-curl -sL https://gitlab.aiursoft.com/aiursoft/weChatExam/-/raw/master/install.sh | sudo bash
+curl -sL https://github.com/aiursoftweb/weChatExam/raw/master/install.sh | sudo bash
 ```
 
 Of course it is suggested that append a custom port number to the command:
 
 ```bash
-curl -sL https://gitlab.aiursoft.com/aiursoft/weChatExam/-/raw/master/install.sh | sudo bash -s 8080
+curl -sL https://github.com/aiursoftweb/weChatExam/raw/master/install.sh | sudo bash -s 8080
 ```
 
 It will install the app as a systemd service, and start it automatically. Binary files will be located at `/opt/apps`. Service files will be located at `/etc/systemd/system`.
