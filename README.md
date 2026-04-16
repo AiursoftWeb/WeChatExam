@@ -13,16 +13,6 @@ WeChatExam is a sample project.
 
 Default user name is `admin@default.com` and default password is `admin123`.
 
-## Projects using Aiursoft WeChatExam
-
-* [Stathub](https://github.com/aiursoftweb/stathub)
-* [MarkToHtml](https://github.com/aiursoftweb/marktohtml)
-* [MusicTools](https://github.com/aiursoftweb/musictools)
-* [AnduinOS Home](https://github.com/aiursoftweb/AnduinOS-Home)
-* [Manhours](https://github.com/aiursoftweb/manhours)
-* [Tracer](https://github.com/aiursoftweb/tracer)
-* [Warp](https://github.com/aiursoftweb/warp)
-
 ## Try
 
 Try a running WeChatExam [here](https://weChatExam.aiursoft.com).
