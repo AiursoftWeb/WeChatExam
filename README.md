@@ -1,4 +1,4 @@
-# WeChatExam - A sample project
+# WeChatExam
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aiursoftweb/weChatExam/blob/master/LICENSE)
 [![Pipeline stat](https://gitlab.aiursoft.com/aiursoft/weChatExam/badges/master/pipeline.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/pipelines)
