@@ -18,6 +18,7 @@ public class WeChatPayService(
     WechatTenpayClient tenpayClient,
     WeChatExamDbContext dbContext,
     ICouponService couponService,
+    ChangeService changeService,
     IOptions<AppSettings> appSettings,
     ILogger<WeChatPayService> logger) : IWeChatPayService
 {
@@ -496,5 +497,19 @@ public class WeChatPayService(
         {
             await couponService.RecordUsageAsync(order.CouponId.Value, order.UserId, order.Id, order.DiscountInFen);
         }
+
+        // --- NEW: Record Change Event for Accounting ---
+        var changeType = (order.AmountInFen == 0 && order.CouponId.HasValue) 
+            ? ChangeType.VipActivatedViaCoupon 
+            : ChangeType.VipActivatedViaPayment;
+
+        await changeService.RecordChange(
+            type: changeType,
+            targetUserId: order.UserId,
+            triggerUserId: order.UserId, // User triggered their own activation
+            vipProductId: order.VipProductId,
+            couponId: order.CouponId,
+            details: $"Order: {order.OutTradeNo}. Amount: {order.AmountInFen / 100m}元. Discount: {order.DiscountInFen / 100m}元."
+        );
     }
 }

@@ -43,5 +43,6 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<PaymentOrder> PaymentOrders => Set<PaymentOrder>();
     public DbSet<PaymentLog> PaymentLogs => Set<PaymentLog>();
     public DbSet<VipMembership> VipMemberships => Set<VipMembership>();
+    public DbSet<Change> Changes => Set<Change>();
     public DbSet<VipProduct> VipProducts => Set<VipProduct>();
 }

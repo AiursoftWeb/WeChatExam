@@ -1,0 +1,41 @@
+@model Aiursoft.WeChatExam.Models.AccountingViewModels.IndexViewModel
+
+<div class="row mb-2 mb-xl-3">
+    <div class="col-auto d-none d-sm-block">
+        <h3>@Localizer["Finance Reports"]</h3>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">@Localizer["Monthly Statistics"]</h5>
+        <h6 class="card-subtitle text-muted">@Localizer["Monthly count of users who activated any VIP membership."]</h6>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+            <tr>
+                <th>@Localizer["Month"]</th>
+                <th>@Localizer["Active Paid Users"]</th>
+                <th class="text-end">@Localizer["Actions"]</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var report in Model.Reports)
+            {
+                <tr>
+                    <td>@report.Month.ToString("MMMM yyyy")</td>
+                    <td>
+                        <span class="badge bg-success">@report.ActiveUsers.Select(u => u.User.Id).Distinct().Count()</span>
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-month="@report.Month.ToString("yyyy-MM-dd")" class="btn btn-sm btn-outline-primary">
+                            <i class="align-middle" data-lucide="eye"></i> @Localizer["Details"]
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
