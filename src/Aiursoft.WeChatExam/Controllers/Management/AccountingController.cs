@@ -45,9 +45,9 @@ public class AccountingController(
         
         var newVipActivationsLast30Days = await dbContext.Changes
             .Where(c => c.CreateTime >= day30DaysAgo && 
-                       (c.Type == Entities.ChangeType.VipActivatedViaPayment || 
-                        c.Type == Entities.ChangeType.VipActivatedViaCoupon || 
-                        c.Type == Entities.ChangeType.VipActivatedViaAdmin))
+                       (c.Type == ChangeType.VipActivatedViaPayment || 
+                        c.Type == ChangeType.VipActivatedViaCoupon || 
+                        c.Type == ChangeType.VipActivatedViaAdmin))
             .CountAsync();
 
         var model = new IndexViewModel
@@ -68,9 +68,9 @@ public class AccountingController(
 
         var vipHistory = await dbContext.Changes
             .Where(t => t.CreateTime > day30DaysAgo && 
-                       (t.Type == Entities.ChangeType.VipActivatedViaPayment || 
-                        t.Type == Entities.ChangeType.VipActivatedViaCoupon || 
-                        t.Type == Entities.ChangeType.VipActivatedViaAdmin))
+                       (t.Type == ChangeType.VipActivatedViaPayment || 
+                        t.Type == ChangeType.VipActivatedViaCoupon || 
+                        t.Type == ChangeType.VipActivatedViaAdmin))
             .GroupBy(t => t.CreateTime.Date)
             .Select(t => new { Time = t.Key, Count = t.Count() })
             .ToListAsync();
