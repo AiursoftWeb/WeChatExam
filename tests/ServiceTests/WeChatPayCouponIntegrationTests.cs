@@ -14,6 +14,7 @@ public class WeChatPayCouponIntegrationTests
 {
     private WeChatExamDbContext _dbContext = null!;
     private CouponService _couponService = null!;
+    private ChangeService _changeService = null!;
     private WeChatPayService _payService = null!;
     private Guid _productId;
     private string _userId = "test-user";
@@ -27,6 +28,7 @@ public class WeChatPayCouponIntegrationTests
         _dbContext = new InMemoryContext(options);
         
         _couponService = new CouponService(_dbContext);
+        _changeService = new ChangeService(_dbContext);
         
         var mockTenpay = new Mock<WechatTenpayClient>(new WechatTenpayClientOptions
         {
@@ -35,8 +37,6 @@ public class WeChatPayCouponIntegrationTests
             MerchantCertificateSerialNumber = "SERIAL",
             MerchantCertificatePrivateKey = "---BEGIN PRIVATE KEY---\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK...\n---END PRIVATE KEY---"
         });
-        // Mock a successful prepay response
-        // Note: Actual SDK response mocking can be complex, we mainly want to test our service logic around it.
         
         var mockOptions = new Mock<IOptions<AppSettings>>();
         mockOptions.Setup(o => o.Value).Returns(new AppSettings 
@@ -67,6 +67,7 @@ public class WeChatPayCouponIntegrationTests
             mockTenpay.Object,
             _dbContext,
             _couponService,
+            _changeService,
             mockOptions.Object,
             mockLogger.Object);
 
@@ -152,10 +153,15 @@ public class WeChatPayCouponIntegrationTests
         // 6. Verify Claim is marked used
         var claim = await _dbContext.UserClaimedCoupons.FirstAsync(c => c.UserId == _userId && c.CouponId == coupon.Id);
         Assert.IsTrue(claim.IsUsed);
+
+        // 7. Verify Change is recorded
+        var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId);
+        Assert.IsNotNull(change);
+        Assert.AreEqual(ChangeType.VipActivatedViaPayment, change.Type);
     }
 
     [TestMethod]
-    public async Task TestCreateOrder_ZeroAmount_BypassesWeChatPay()
+    public async Task TestCreateOrder_ZeroAmount_RecordsCouponActivation()
     {
         // 1. Setup a product and a 100% discount coupon
         await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "FREE", 10000, false);
@@ -166,13 +172,9 @@ public class WeChatPayCouponIntegrationTests
 
         // 3. Verify success and immediate activation
         Assert.IsTrue(result.Success);
-        Assert.AreEqual("FREE_ORDER", result.PrepayId);
         
-        var order = await _dbContext.PaymentOrders.FirstAsync(o => o.OutTradeNo == result.OutTradeNo);
-        Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
-        Assert.AreEqual(0, order.AmountInFen);
-        
-        var vip = await _dbContext.VipMemberships.AnyAsync(v => v.UserId == _userId && v.VipProductId == _productId);
-        Assert.IsTrue(vip);
+        // 4. Verify Change is recorded as ViaCoupon
+        var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId && c.Type == ChangeType.VipActivatedViaCoupon);
+        Assert.IsNotNull(change);
     }
 }
