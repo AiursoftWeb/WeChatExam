@@ -47,6 +47,17 @@ public class ChangeService(WeChatExamDbContext dbContext) : IScopedDependency
         await dbContext.SaveChangesAsync();
     }
 
+    public async Task<List<Change>> GetAllHistory()
+    {
+        return await dbContext.Changes
+            .Include(c => c.TargetUser)
+            .Include(c => c.TriggerUser)
+            .Include(c => c.VipProduct)
+            .Include(c => c.Coupon)
+            .OrderByDescending(c => c.CreateTime)
+            .ToListAsync();
+    }
+
     public async Task<List<MonthlyActiveUserReport>> GetMonthlyReports(int months = 24)
     {
         var now = DateTime.UtcNow;
