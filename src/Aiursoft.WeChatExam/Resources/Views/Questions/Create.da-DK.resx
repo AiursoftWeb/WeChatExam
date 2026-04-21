@@ -36,6 +36,9 @@
   <data name="Correct" xml:space="preserve">
     <value>Rigtigt</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>Brugerdefineret sorteringsindeks. Lavere tal kommer først. Nuværende maks indeks er:</value>
+  </data>
   <data name="Explanation" xml:space="preserve">
     <value>Forklaring</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Valgmuligheder (til enkeltvalg, JSON-array)</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>Rækkefølgeindeks</value>
   </data>
   <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
     <value>Tryk mellemrum, komma, punktum eller Enter for at tilføje en tag. Klik på X for at fjerne.</value>

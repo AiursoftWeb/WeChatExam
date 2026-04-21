@@ -33,6 +33,9 @@
   <data name="Correct" xml:space="preserve">
     <value>Đúng</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>Chỉ mục sắp xếp tùy chỉnh. Số nhỏ hơn sẽ hiển thị trước. Chỉ mục tối đa hiện tại là:</value>
+  </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Chỉnh sửa Câu hỏi</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Tùy chọn (dành cho câu hỏi một lựa chọn, mảng JSON)</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>Chỉ số thứ tự</value>
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Nhấn Enter để thêm thẻ, hoặc chọn từ gợi ý. Nhấp vào X để xóa.</value>

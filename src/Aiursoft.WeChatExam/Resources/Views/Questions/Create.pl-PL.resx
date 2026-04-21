@@ -36,6 +36,9 @@
   <data name="Correct" xml:space="preserve">
     <value>Poprawne</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>Własny indeks kolejności. Niższe liczby są pierwsze. Bieżący maksymalny indeks to:</value>
+  </data>
   <data name="Explanation" xml:space="preserve">
     <value>Wyjaśnienie</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Opcje (dla pytań jednokrotnego wyboru, tablica JSON)</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>Kolejność</value>
   </data>
   <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
     <value>Naciśnij klawisz Spacji, przecinek, średnik lub Enter, aby dodać tag. Kliknij X, aby usunąć.</value>

@@ -45,8 +45,20 @@
   <data name="Job Name" xml:space="preserve">
     <value>Nome do Trabalho</value>
   </data>
+  <data name="last hour" xml:space="preserve">
+    <value>última hora</value>
+  </data>
+  <data name="Last run" xml:space="preserve">
+    <value>Última execução</value>
+  </data>
   <data name="Monitor and manage background job queues and their execution status." xml:space="preserve">
     <value>Monitore e gerencie filas de tarefas em segundo plano e seu status de execução.</value>
+  </data>
+  <data name="Monitor and manage background job queues. Trigger any registered job manually or let the scheduler run it automatically." xml:space="preserve">
+    <value>Monitore e gerencie filas de jobs em segundo plano. Dispare qualquer job registrado manualmente ou deixe o agendador executá-lo automaticamente.</value>
+  </data>
+  <data name="Never executed" xml:space="preserve">
+    <value>Nunca executado</value>
   </data>
   <data name="New Job A" xml:space="preserve">
     <value>Novo Trabalho A</value>
@@ -54,8 +66,14 @@
   <data name="New Job B" xml:space="preserve">
     <value>Novo Trabalho B</value>
   </data>
+  <data name="No background jobs are registered. Add jobs using services.AddBackgroundJob&lt;TJob&gt;() in Startup.cs." xml:space="preserve">
+    <value>Nenhum trabalho em segundo plano está registrado. Adicione trabalhos usando services.AddBackgroundJob&lt;TJob&gt;() no Startup.cs.</value>
+  </data>
   <data name="No jobs" xml:space="preserve">
     <value>Nenhum trabalho</value>
+  </data>
+  <data name="No jobs have run in the last hour." xml:space="preserve">
+    <value>Nenhum trabalho foi executado na última hora.</value>
   </data>
   <data name="Optimize Noun Explanations" xml:space="preserve">
     <value>Otimizar Explicações de Substantivos</value>
@@ -66,14 +84,23 @@
   <data name="Processing" xml:space="preserve">
     <value>Processando</value>
   </data>
+  <data name="Queue" xml:space="preserve">
+    <value>Fila</value>
+  </data>
   <data name="Queue Name" xml:space="preserve">
     <value>Nome da Fila</value>
   </data>
   <data name="Queued At" xml:space="preserve">
     <value>Enfileirado às</value>
   </data>
+  <data name="Recent Execution History" xml:space="preserve">
+    <value>Histórico de Execuções Recentes</value>
+  </data>
   <data name="Regenerate All Explanations" xml:space="preserve">
     <value>Regenerar todas as explicações</value>
+  </data>
+  <data name="Registered Jobs" xml:space="preserve">
+    <value>Trabalhos Registrados</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
@@ -83,6 +110,9 @@
   </data>
   <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
     <value>Essas tarefas usam IA para melhorar o conteúdo das perguntas. Elas processarão todas as perguntas relevantes no banco de dados sequencialmente.</value>
+  </data>
+  <data name="Trigger Now" xml:space="preserve">
+    <value>Executar agora</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Ver Resultado</value>

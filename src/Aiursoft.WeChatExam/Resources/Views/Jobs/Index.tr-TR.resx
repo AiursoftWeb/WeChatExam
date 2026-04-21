@@ -45,8 +45,20 @@
   <data name="Job Name" xml:space="preserve">
     <value>İş Adı</value>
   </data>
+  <data name="last hour" xml:space="preserve">
+    <value>son saat</value>
+  </data>
+  <data name="Last run" xml:space="preserve">
+    <value>Son çalıştırma</value>
+  </data>
   <data name="Monitor and manage background job queues and their execution status." xml:space="preserve">
     <value>Arka plan iş kuyruklarını ve yürütme durumlarını izleyin ve yönetin.</value>
+  </data>
+  <data name="Monitor and manage background job queues. Trigger any registered job manually or let the scheduler run it automatically." xml:space="preserve">
+    <value>Arka plan iş kuyruklarını izleyin ve yönetin. Kayıtlı herhangi bir işi manuel olarak tetikleyin veya zamanlayıcının otomatik olarak çalıştırmasına izin verin.</value>
+  </data>
+  <data name="Never executed" xml:space="preserve">
+    <value>Hiç çalıştırılmadı</value>
   </data>
   <data name="New Job A" xml:space="preserve">
     <value>Yeni İş A</value>
@@ -54,8 +66,14 @@
   <data name="New Job B" xml:space="preserve">
     <value>Yeni İş B</value>
   </data>
+  <data name="No background jobs are registered. Add jobs using services.AddBackgroundJob&lt;TJob&gt;() in Startup.cs." xml:space="preserve">
+    <value>Kayıtlı arka plan işi yok. İşleri Startup.cs dosyasında services.AddBackgroundJob&lt;TJob&gt;() kullanarak ekleyin.</value>
+  </data>
   <data name="No jobs" xml:space="preserve">
     <value>İş yok</value>
+  </data>
+  <data name="No jobs have run in the last hour." xml:space="preserve">
+    <value>Son saatte hiç iş çalıştırılmadı.</value>
   </data>
   <data name="Optimize Noun Explanations" xml:space="preserve">
     <value>Sıfat Açıklamalarını Optimize Et</value>
@@ -66,14 +84,23 @@
   <data name="Processing" xml:space="preserve">
     <value>İşleniyor</value>
   </data>
+  <data name="Queue" xml:space="preserve">
+    <value>Kuyruk</value>
+  </data>
   <data name="Queue Name" xml:space="preserve">
     <value>Kuyruk Adı</value>
   </data>
   <data name="Queued At" xml:space="preserve">
     <value>Sıraya Alındı</value>
   </data>
+  <data name="Recent Execution History" xml:space="preserve">
+    <value>Son Çalıştırma Geçmişi</value>
+  </data>
   <data name="Regenerate All Explanations" xml:space="preserve">
     <value>Tüm Açıklamaları Yeniden Üret</value>
+  </data>
+  <data name="Registered Jobs" xml:space="preserve">
+    <value>Kayıtlı Görevler</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
@@ -83,6 +110,9 @@
   </data>
   <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
     <value>Bu görevler, soru içeriğini geliştirmek için Yapay Zeka kullanır. Tüm ilgili soruları veritabanında sırayla işleyecektir.</value>
+  </data>
+  <data name="Trigger Now" xml:space="preserve">
+    <value>Şimdi Tetikle</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Sonucu Görüntüle</value>

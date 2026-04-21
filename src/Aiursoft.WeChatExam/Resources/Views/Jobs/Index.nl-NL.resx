@@ -45,8 +45,20 @@
   <data name="Job Name" xml:space="preserve">
     <value>Taaknaam</value>
   </data>
+  <data name="last hour" xml:space="preserve">
+    <value>van het laatste uur</value>
+  </data>
+  <data name="Last run" xml:space="preserve">
+    <value>Laatste uitvoering</value>
+  </data>
   <data name="Monitor and manage background job queues and their execution status." xml:space="preserve">
     <value>Bewaak en beheer achtergrondtaakwachtrijen en hun uitvoeringsstatus.</value>
+  </data>
+  <data name="Monitor and manage background job queues. Trigger any registered job manually or let the scheduler run it automatically." xml:space="preserve">
+    <value>Monitor en beheer achtergrondtaakwachten. Activeer een geregistreerde taak handmatig of laat de planner deze automatisch uitvoeren.</value>
+  </data>
+  <data name="Never executed" xml:space="preserve">
+    <value>Niet uitgevoerd</value>
   </data>
   <data name="New Job A" xml:space="preserve">
     <value>Nieuwe taak A</value>
@@ -54,8 +66,14 @@
   <data name="New Job B" xml:space="preserve">
     <value>Nieuwe taak B</value>
   </data>
+  <data name="No background jobs are registered. Add jobs using services.AddBackgroundJob&lt;TJob&gt;() in Startup.cs." xml:space="preserve">
+    <value>Er zijn geen achtergrondtaken geregistreerd. Voeg taken toe met services.AddBackgroundJob&lt;TJob&gt;() in Startup.cs.</value>
+  </data>
   <data name="No jobs" xml:space="preserve">
     <value>Geen taken</value>
+  </data>
+  <data name="No jobs have run in the last hour." xml:space="preserve">
+    <value>Er zijn geen taken uitgevoerd in het afgelopen uur.</value>
   </data>
   <data name="Optimize Noun Explanations" xml:space="preserve">
     <value>Verbeter naamverklaringen</value>
@@ -66,14 +84,23 @@
   <data name="Processing" xml:space="preserve">
     <value>Bezig met verwerken</value>
   </data>
+  <data name="Queue" xml:space="preserve">
+    <value>Wachtrij</value>
+  </data>
   <data name="Queue Name" xml:space="preserve">
     <value>Wachtrijnaam</value>
   </data>
   <data name="Queued At" xml:space="preserve">
     <value>In wachtrij gezet op</value>
   </data>
+  <data name="Recent Execution History" xml:space="preserve">
+    <value>Recent executionsgeschiedenis</value>
+  </data>
   <data name="Regenerate All Explanations" xml:space="preserve">
     <value>Alle uitleg opnieuw genereren</value>
+  </data>
+  <data name="Registered Jobs" xml:space="preserve">
+    <value>Geregistreerde taken</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
@@ -83,6 +110,9 @@
   </data>
   <data name="These tasks use AI to improve question content. They will process all relevant questions in the database sequentially." xml:space="preserve">
     <value>Deze taken gebruiken AI om de vraaginhoud te verbeteren. Ze verwerken alle relevante vragen in de database achtereenvolgend.</value>
+  </data>
+  <data name="Trigger Now" xml:space="preserve">
+    <value>Nu starten</value>
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Result weergeven</value>
