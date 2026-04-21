@@ -36,6 +36,9 @@
   <data name="Correct" xml:space="preserve">
     <value>सही</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>कस्टम ऑर्डर इंडेक्स। कम संख्या पहले आएगी। वर्तमान अधिकतम इंडेक्स है:</value>
+  </data>
   <data name="Explanation" xml:space="preserve">
     <value>स्पष्टीकरण</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>विकल्प (एकल चयन के लिए, JSON सरणी)</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>क्रम सूचकांक</value>
   </data>
   <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
     <value>टैग जोड़ने के लिए स्पेस, कोमा, सेमीकॉलन या एंटर दबाएं। रिमूव करने के लिए एक्स पर क्लिक करें।</value>

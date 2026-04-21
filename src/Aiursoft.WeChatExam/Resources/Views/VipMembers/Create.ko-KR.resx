@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Select a VIP Product --" xml:space="preserve">
+    <value>-- VIP 상품 선택 --</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>생성</value>
+  </data>
+  <data name="Create a new VIP membership" xml:space="preserve">
+    <value>새 VIP 멤버십 생성</value>
+  </data>
+  <data name="Please fill out the form below to create a new VIP membership." xml:space="preserve">
+    <value>새로운 VIP 멤버십을 생성하려면 아래 양식을 작성해 주세요.</value>
+  </data>
+  <data name="Search user by name, email or ID..." xml:space="preserve">
+    <value>이름, 이메일 또는 ID로 사용자 검색...</value>
+  </data>
+  <data name="The selected dates will be the final effective period, overriding the VIP product&apos;s default duration." xml:space="preserve">
+    <value>선택한 날짜가 최종 유효 기간이 되며, VIP 상품의 기본 기간을 덮어씁니다.</value>
+  </data>
+  <data name="VIP Membership Information" xml:space="preserve">
+    <value>VIP 멤버십 정보</value>
+  </data>
+
+</root>

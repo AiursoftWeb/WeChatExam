@@ -36,6 +36,9 @@
   <data name="Correct" xml:space="preserve">
     <value>Правильный</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>Индивидуальный порядок сортировки. Чем меньше число, тем раньше позиция. Текущий максимальный индекс:</value>
+  </data>
   <data name="Explanation" xml:space="preserve">
     <value>Объяснение</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>Варианты ответов (для одиночного выбора, массив JSON)</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>Индекс порядка</value>
   </data>
   <data name="Press Space, Comma, Semicolon or Enter to add a tag. Click X to remove." xml:space="preserve">
     <value>Нажмите пробел, запятую, точку с запятой или Enter, чтобы добавить тег. Нажмите X, чтобы удалить.</value>

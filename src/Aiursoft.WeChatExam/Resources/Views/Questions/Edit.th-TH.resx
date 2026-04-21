@@ -33,6 +33,9 @@
   <data name="Correct" xml:space="preserve">
     <value>ถูกต้อง</value>
   </data>
+  <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
+    <value>ดัชนีการจัดลำดับแบบกำหนดเอง ตัวเลขที่น้อยกว่าจะอยู่ก่อน ดัชนีสูงสุดปัจจุบันคือ:</value>
+  </data>
   <data name="Edit Question" xml:space="preserve">
     <value>แก้ไขคำถาม</value>
   </data>
@@ -62,6 +65,9 @@
   </data>
   <data name="Options (for single choice, JSON array)" xml:space="preserve">
     <value>ตัวเลือก (สำหรับคำถามแบบตัวเลือกเดียว, JSON array)</value>
+  </data>
+  <data name="Order Index" xml:space="preserve">
+    <value>ลำดับการแสดงผล</value>
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>กด Enter เพื่อเพิ่มแท็ก หรือเลือกจากคำแนะนำ คลิก X เพื่อลบ</value>
