@@ -187,6 +187,13 @@ public class QuestionsController : ControllerBase
             }
         }
 
+        var lastQuestionId = await query
+            .OrderByDescending(q => q.OrderIndex == null)
+            .ThenByDescending(q => q.OrderIndex)
+            .ThenByDescending(q => q.CreationTime)
+            .Select(q => q.Id)
+            .FirstOrDefaultAsync();
+
         List<QuestionDto> questions = new List<QuestionDto>();
 
         // 3. Execution Modes
@@ -339,6 +346,11 @@ public class QuestionsController : ControllerBase
                      Score = 10
                  })
                  .ToListAsync();
+        }
+
+        foreach (var q in questions)
+        {
+            q.IsLastQuestion = q.Id == lastQuestionId;
         }
 
         return Ok(questions);
