@@ -1,0 +1,70 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Entities
+@model Aiursoft.WeChatExam.Models.AccountingViewModels.HistoryViewModel
+
+<div class="row mb-2 mb-xl-3">
+    <div class="col-auto d-none d-sm-block">
+        <h3>@Localizer["VIP Change History"]</h3>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">@Localizer["System Wide Events"]</h5>
+        <h6 class="card-subtitle text-muted">@Localizer["Comprehensive log of all VIP-related changes and activations."]</h6>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+            <tr>
+                <th>@Localizer["Time"]</th>
+                <th>@Localizer["Target User"]</th>
+                <th>@Localizer["Type"]</th>
+                <th>@Localizer["Product"]</th>
+                <th>@Localizer["Triggered By"]</th>
+                <th>@Localizer["Details"]</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var change in Model.Changes)
+            {
+                <tr>
+                    <td>
+                        <label data-utc-time="@change.CreateTime.ToHtmlDateTime()"></label>
+                    </td>
+                    <td>
+                        <div class="fw-bold">@change.TargetUser?.DisplayName</div>
+                        <div class="small text-muted">@change.TargetUser?.UserName</div>
+                    </td>
+                    <td>
+                        @switch (change.Type)
+                        {
+                            case ChangeType.VipActivatedViaPayment:
+                                <span class="badge bg-success">@Localizer["Payment"]</span>
+                                break;
+                            case ChangeType.VipActivatedViaCoupon:
+                                <span class="badge bg-info">@Localizer["Coupon"]</span>
+                                break;
+                            case ChangeType.VipActivatedViaAdmin:
+                                <span class="badge bg-warning">@Localizer["Admin"]</span>
+                                break;
+                            default:
+                                <span class="badge bg-secondary">@change.Type</span>
+                                break;
+                        }
+                    </td>
+                    <td>
+                        @(change.VipProduct?.Name ?? "N/A")
+                    </td>
+                    <td>
+                        @(change.TriggerUser?.DisplayName ?? "System")
+                    </td>
+                    <td class="small">
+                        @change.Details
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

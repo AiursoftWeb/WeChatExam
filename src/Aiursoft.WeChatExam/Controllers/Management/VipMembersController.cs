@@ -16,7 +16,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class VipMembersController(
     WeChatExamDbContext dbContext,
-    UserManager<User> userManager) : Controller
+    UserManager<User> userManager,
+    ChangeService changeService) : Controller
 {
     [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
     [RenderInNavBar(
@@ -142,6 +143,14 @@ public class VipMembersController(
         dbContext.VipMemberships.Add(membership);
         await dbContext.SaveChangesAsync();
 
+        await changeService.RecordChange(
+            type: ChangeType.VipActivatedViaAdmin,
+            targetUserId: membership.UserId,
+            triggerUserId: userManager.GetUserId(User),
+            vipProductId: membership.VipProductId,
+            details: $"Manually created by admin. Start: {membership.StartTime}, End: {membership.EndTime}"
+        );
+
         return RedirectToAction(nameof(Index), new { userId = model.UserId });
     }
 
@@ -184,6 +193,14 @@ public class VipMembersController(
         membership.EndTime = model.EndTime.ToUniversalTime();
 
         await dbContext.SaveChangesAsync();
+
+        await changeService.RecordChange(
+            type: ChangeType.VipActivatedViaAdmin,
+            targetUserId: membership.UserId,
+            triggerUserId: userManager.GetUserId(User),
+            vipProductId: membership.VipProductId,
+            details: $"Manually edited by admin. New Start: {membership.StartTime}, New End: {membership.EndTime}"
+        );
 
         return RedirectToAction(nameof(Index), new { userId = membership.UserId });
     }
