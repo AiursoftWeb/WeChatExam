@@ -92,4 +92,5 @@ public class QuestionDto
     public string Content { get; set; } = string.Empty;
     public QuestionType QuestionType { get; set; }
     public string Metadata { get; set; } = string.Empty;
+    public bool IsLastQuestion { get; set; }
 }
