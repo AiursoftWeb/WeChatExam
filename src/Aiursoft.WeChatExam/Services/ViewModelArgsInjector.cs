@@ -125,6 +125,11 @@ public class ViewModelArgsInjector(
         _ = localizer["Delete VIP Membership"];
         _ = localizer["Edit VIP Membership"];
         _ = localizer["VIP Members"];
+    
+        _ = localizer["Accounting Reports"];
+        _ = localizer["Finance Reports"];
+        _ = localizer["Monthly Finance Report Details"];
+        _ = localizer["VIP Change History"];
     }
 
     public void InjectSimple(
