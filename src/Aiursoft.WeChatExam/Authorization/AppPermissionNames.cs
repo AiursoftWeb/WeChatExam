@@ -89,4 +89,7 @@ public static class AppPermissionNames
 
     // VIP Member Management
     public const string CanManageVipMembers = nameof(CanManageVipMembers);
+    
+    // Accounting Management
+    public const string CanManageAccounting= nameof(CanManageAccounting);
 }

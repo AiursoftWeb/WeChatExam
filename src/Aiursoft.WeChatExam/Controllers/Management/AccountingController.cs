@@ -16,7 +16,7 @@ public class AccountingController(
     ChangeService changeService,
     WeChatExamDbContext dbContext) : Controller
 {
-    [Authorize(Policy = AppPermissionNames.CanManageVipMembers)] // 借用现有权限
+    [Authorize(Policy = AppPermissionNames.CanManageAccounting)] 
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -86,7 +86,7 @@ public class AccountingController(
         return this.StackView(model);
     }
 
-    [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
+    [Authorize(Policy = AppPermissionNames.CanManageAccounting)]
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
@@ -104,7 +104,7 @@ public class AccountingController(
         });
     }
 
-    [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
+    [Authorize(Policy = AppPermissionNames.CanManageAccounting)]
     public async Task<IActionResult> Details(DateTime month)
     {
         var start = new DateTime(month.Year, month.Month, 1, 0, 0, 0, DateTimeKind.Utc);

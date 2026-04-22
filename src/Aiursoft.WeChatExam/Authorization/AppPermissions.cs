@@ -188,6 +188,10 @@ public class AppPermissions
             new(AppPermissionNames.CanManageVipMembers,
                 localizer["Manage VIP Members"],
                 localizer["Allows viewing, adding, and deleting VIP memberships for users."]),
+
+            new(AppPermissionNames.CanManageAccounting,
+                localizer["Manage Accounting"],
+                localizer["Allows managing accounting."]),
         ];
         return allPermission;
     }
