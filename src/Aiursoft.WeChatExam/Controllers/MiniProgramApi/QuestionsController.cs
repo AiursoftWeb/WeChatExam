@@ -82,14 +82,14 @@ public class QuestionsController : ControllerBase
             return BadRequest(new { Message = "RandomSize cannot be used with page or resumeType." });
         }
 
-        if (randomSize > 50)
+        if (randomSize > 500)
         {
-            return BadRequest(new { Message = "RandomSize cannot be greater than 50." });
+            return BadRequest(new { Message = "RandomSize cannot be greater than 500." });
         }
 
-        if (size > 50)
+        if (size > 500)
         {
-            return BadRequest(new { Message = "Size cannot be greater than 50." });
+            return BadRequest(new { Message = "Size cannot be greater than 500." });
         }
 
         // 2. Base Query Construction (Filters)
