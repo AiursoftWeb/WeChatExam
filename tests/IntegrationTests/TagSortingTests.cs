@@ -1,8 +1,5 @@
-using System.Net.Http.Json;
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
@@ -44,7 +41,10 @@ public class TagSortingTests : TestBase
         using (var scope2 = Server!.Services.CreateScope())
         {
             var context2 = scope2.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-            var tags = await context2.Tags.OrderBy(t => t.OrderIndex).ToListAsync();
+            var tags = await context2.Tags
+                .Where(t => ids.Contains(t.Id))
+                .OrderBy(t => t.OrderIndex)
+                .ToListAsync();
             
             Assert.AreEqual(3, tags.Count);
             Assert.AreEqual(tag3.Id, tags[0].Id);
