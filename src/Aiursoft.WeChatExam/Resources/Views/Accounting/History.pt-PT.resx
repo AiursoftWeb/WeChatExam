@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Admin" xml:space="preserve">
+    <value>Administrador</value>
+  </data>
+  <data name="Comprehensive log of all VIP-related changes and activations." xml:space="preserve">
+    <value>Registo abrangente de todas as alterações e ativações relacionadas com VIP.</value>
+  </data>
+  <data name="Coupon" xml:space="preserve">
+    <value>Cupão</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalhes</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Pagamento</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Produto</value>
+  </data>
+  <data name="System Wide Events" xml:space="preserve">
+    <value>Eventos do Sistema</value>
+  </data>
+  <data name="Target User" xml:space="preserve">
+    <value>Utilizador Alvo</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="Triggered By" xml:space="preserve">
+    <value>Acionado Por</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="VIP Change History" xml:space="preserve">
+    <value>Histórico de Alterações VIP</value>
+  </data>
+
+</root>

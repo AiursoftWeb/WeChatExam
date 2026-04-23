@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Admin" xml:space="preserve">
+      <data name="Accounting Reports" xml:space="preserve">
+    <value>Regnskabsrapporter</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
     <value>Administrator</value>
   </data>
   <data name="Administration" xml:space="preserve">
@@ -150,6 +153,9 @@
   <data name="Feedback" xml:space="preserve">
     <value>Tilbagemelding</value>
   </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>Finansrapporter</value>
+  </data>
   <data name="Global Settings" xml:space="preserve">
     <value>Globale indstillinger</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="Marketing Management" xml:space="preserve">
     <value>Markedsføringsovervågning</value>
+  </data>
+  <data name="Monthly Finance Report Details" xml:space="preserve">
+    <value>Detaljer for månedlig finansrapport</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Nyheder</value>
@@ -263,6 +272,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>Brugere</value>
+  </data>
+  <data name="VIP Change History" xml:space="preserve">
+    <value>VIP-ændringshistorik</value>
   </data>
   <data name="VIP Members" xml:space="preserve">
     <value>VIP-medlemmer</value>

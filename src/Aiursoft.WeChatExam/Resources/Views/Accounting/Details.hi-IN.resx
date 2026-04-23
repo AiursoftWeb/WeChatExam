@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Activation Time" xml:space="preserve">
+    <value>सक्रियण समय</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>प्रशासक</value>
+  </data>
+  <data name="Back to Reports" xml:space="preserve">
+    <value>रिपोर्ट्स पर वापस जाएं</value>
+  </data>
+  <data name="Coupon" xml:space="preserve">
+    <value>कूपन</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>विवरण</value>
+  </data>
+  <data name="Finance Report Details" xml:space="preserve">
+    <value>वित्त रिपोर्ट विवरण</value>
+  </data>
+  <data name="List of all VIP activations that occurred in this month." xml:space="preserve">
+    <value>इस महीने में हुए सभी VIP सक्रियताओं की सूची।</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>विधि</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>भुगतान</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>उत्पाद</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>उपयोगकर्ता</value>
+  </data>
+  <data name="VIP Activation Events" xml:space="preserve">
+    <value>वीआईपी सक्रियता कार्यक्रम</value>
+  </data>
+
+</root>

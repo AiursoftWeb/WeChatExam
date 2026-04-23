@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Hành động</value>
+  </data>
+  <data name="Active Paid Users" xml:space="preserve">
+    <value>Người dùng trả phí đang hoạt động</value>
+  </data>
+  <data name="Active VIPs" xml:space="preserve">
+    <value>VIP Đang Hoạt Động</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>Báo cáo Tài chính</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Tháng</value>
+  </data>
+  <data name="Monthly count of users who activated any VIP membership." xml:space="preserve">
+    <value>Số lượng người dùng kích hoạt bất kỳ gói thành viên VIP theo tháng.</value>
+  </data>
+  <data name="Monthly Statistics" xml:space="preserve">
+    <value>Thống kê Hàng tháng</value>
+  </data>
+  <data name="New in 30 days" xml:space="preserve">
+    <value>Mới trong 30 ngày</value>
+  </data>
+  <data name="New Users" xml:space="preserve">
+    <value>Người dùng mới</value>
+  </data>
+  <data name="New VIPs" xml:space="preserve">
+    <value>VIP Mới</value>
+  </data>
+  <data name="Recent Movement" xml:space="preserve">
+    <value>Hoạt động gần đây</value>
+  </data>
+  <data name="Total Users" xml:space="preserve">
+    <value>Tổng số người dùng</value>
+  </data>
+
+</root>

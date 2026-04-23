@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Active Paid Users" xml:space="preserve">
+    <value>Utilisateurs payants actifs</value>
+  </data>
+  <data name="Active VIPs" xml:space="preserve">
+    <value>VIP actifs</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>Rapports Financiers</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Mois</value>
+  </data>
+  <data name="Monthly count of users who activated any VIP membership." xml:space="preserve">
+    <value>Nombre mensuel d&apos;utilisateurs ayant activé un abonnement VIP.</value>
+  </data>
+  <data name="Monthly Statistics" xml:space="preserve">
+    <value>Statistiques mensuelles</value>
+  </data>
+  <data name="New in 30 days" xml:space="preserve">
+    <value>Nouveaux sur 30 jours</value>
+  </data>
+  <data name="New Users" xml:space="preserve">
+    <value>Nouveaux utilisateurs</value>
+  </data>
+  <data name="New VIPs" xml:space="preserve">
+    <value>Nouveaux VIP</value>
+  </data>
+  <data name="Recent Movement" xml:space="preserve">
+    <value>Mouvements récents</value>
+  </data>
+  <data name="Total Users" xml:space="preserve">
+    <value>Utilisateurs totaux</value>
+  </data>
+
+</root>

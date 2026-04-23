@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>작업</value>
+  </data>
+  <data name="Active Paid Users" xml:space="preserve">
+    <value>활성 유료 사용자</value>
+  </data>
+  <data name="Active VIPs" xml:space="preserve">
+    <value>활성 VIP</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>상세 정보</value>
+  </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>재무 보고서</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>월</value>
+  </data>
+  <data name="Monthly count of users who activated any VIP membership." xml:space="preserve">
+    <value>VIP 멤버십을 활성화한 사용자의 월별 수</value>
+  </data>
+  <data name="Monthly Statistics" xml:space="preserve">
+    <value>월간 통계</value>
+  </data>
+  <data name="New in 30 days" xml:space="preserve">
+    <value>지난 30일간 신규</value>
+  </data>
+  <data name="New Users" xml:space="preserve">
+    <value>신규 사용자</value>
+  </data>
+  <data name="New VIPs" xml:space="preserve">
+    <value>신규 VIP</value>
+  </data>
+  <data name="Recent Movement" xml:space="preserve">
+    <value>최근 동향</value>
+  </data>
+  <data name="Total Users" xml:space="preserve">
+    <value>총 사용자</value>
+  </data>
+
+</root>

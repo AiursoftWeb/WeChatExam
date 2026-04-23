@@ -111,6 +111,9 @@
   <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
     <value>允许使用人工智能从文章中提取知识点、问题和标签。</value>
   </data>
+  <data name="Allows managing accounting." xml:space="preserve">
+    <value>允许管理会计。</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>允许修改分发渠道的详细信息以及启用/禁用渠道。</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>授予重启应用程序实例的权限。可能导致服务中断，但所有设置和缓存都将重新加载。</value>
+  </data>
+  <data name="Manage Accounting" xml:space="preserve">
+    <value>管理会计</value>
   </data>
   <data name="Manage Global Settings" xml:space="preserve">
     <value>管理全局设置</value>
