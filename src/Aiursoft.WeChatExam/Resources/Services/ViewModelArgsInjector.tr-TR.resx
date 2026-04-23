@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Admin" xml:space="preserve">
+      <data name="Accounting Reports" xml:space="preserve">
+    <value>Muhasebe Raporları</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
     <value>Yönetici</value>
   </data>
   <data name="Administration" xml:space="preserve">
@@ -150,6 +153,9 @@
   <data name="Feedback" xml:space="preserve">
     <value>Geri Bildirim</value>
   </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>Finans Raporları</value>
+  </data>
   <data name="Global Settings" xml:space="preserve">
     <value>Genel Ayarlar</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="Marketing Management" xml:space="preserve">
     <value>Pazarlama Yönetimi</value>
+  </data>
+  <data name="Monthly Finance Report Details" xml:space="preserve">
+    <value>Aylık Finans Raporu Detayları</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Haberler</value>
@@ -263,6 +272,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>Kullanıcılar</value>
+  </data>
+  <data name="VIP Change History" xml:space="preserve">
+    <value>VIP Değişim Geçmişi</value>
   </data>
   <data name="VIP Members" xml:space="preserve">
     <value>VIP Üyeler</value>

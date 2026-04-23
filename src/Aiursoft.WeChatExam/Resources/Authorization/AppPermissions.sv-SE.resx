@@ -111,6 +111,9 @@
   <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
     <value>Tillåter extrahering av kunskapspunkter, frågor och taggar från artiklar med hjälp av AI.</value>
   </data>
+  <data name="Allows managing accounting." xml:space="preserve">
+    <value>Tillåter hantering av bokföring.</value>
+  </data>
   <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
     <value>Tillåter ändring av distributionskanaldetaljer och aktivering/avaktivering av kanaler.</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
     <value>Ger tillstånd att starta om applikationsinstansen. Kan orsaka tillgänglighetsavbrott men alla inställningar och cacheminnen kommer att laddas om.</value>
+  </data>
+  <data name="Manage Accounting" xml:space="preserve">
+    <value>Hantera redovisning</value>
   </data>
   <data name="Manage Global Settings" xml:space="preserve">
     <value>Hantera globala inställningar</value>

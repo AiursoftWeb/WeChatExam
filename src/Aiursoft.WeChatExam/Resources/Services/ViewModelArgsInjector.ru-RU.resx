@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Admin" xml:space="preserve">
+      <data name="Accounting Reports" xml:space="preserve">
+    <value>Отчеты по бухгалтерии</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
     <value>Администратор</value>
   </data>
   <data name="Administration" xml:space="preserve">
@@ -150,6 +153,9 @@
   <data name="Feedback" xml:space="preserve">
     <value>Обратная связь</value>
   </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>Финансовые отчёты</value>
+  </data>
   <data name="Global Settings" xml:space="preserve">
     <value>Глобальные настройки</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="Marketing Management" xml:space="preserve">
     <value>Управление маркетингом</value>
+  </data>
+  <data name="Monthly Finance Report Details" xml:space="preserve">
+    <value>Детали ежемесячного финансового отчёта</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>
@@ -263,6 +272,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>
+  </data>
+  <data name="VIP Change History" xml:space="preserve">
+    <value>История изменений VIP</value>
   </data>
   <data name="VIP Members" xml:space="preserve">
     <value>VIP-клиенты</value>
