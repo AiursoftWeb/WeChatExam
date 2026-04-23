@@ -21,6 +21,9 @@ public class Tag
 
     public int? TaxonomyId { get; set; }
 
+    [Display(Name = "Order Index")]
+    public int OrderIndex { get; set; }
+
     [ForeignKey(nameof(TaxonomyId))]
     public Taxonomy? Taxonomy { get; set; }
 

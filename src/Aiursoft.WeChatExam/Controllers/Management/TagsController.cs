@@ -103,12 +103,29 @@ public class TagsController(
             DisplayName = model.DisplayName,
             NormalizedName = model.DisplayName.Trim().ToUpperInvariant(),
             TaxonomyId = model.TaxonomyId,
-            IsFree = model.IsFree
+            IsFree = model.IsFree,
+            OrderIndex = (await context.Tags.Where(t => t.TaxonomyId == model.TaxonomyId).MaxAsync(t => (int?)t.OrderIndex) ?? -1) + 1
         };
 
         await tagService.CreateTagAsync(tag);
 
         return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanManageTags)]
+    [HttpPost]
+    public async Task<IActionResult> UpdateOrder([FromBody] int[] ids)
+    {
+        for (var i = 0; i < ids.Length; i++)
+        {
+            var tag = await context.Tags.FindAsync(ids[i]);
+            if (tag != null)
+            {
+                tag.OrderIndex = i;
+            }
+        }
+        await context.SaveChangesAsync();
+        return Ok();
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
@@ -161,6 +178,11 @@ public class TagsController(
 
         var tag = await tagService.GetTagByIdAsync(model.Id);
         if (tag == null) return NotFound();
+
+        if (tag.TaxonomyId != model.TaxonomyId)
+        {
+            tag.OrderIndex = (await context.Tags.Where(t => t.TaxonomyId == model.TaxonomyId).MaxAsync(t => (int?)t.OrderIndex) ?? -1) + 1;
+        }
 
         tag.DisplayName = model.DisplayName;
         tag.NormalizedName = model.DisplayName.Trim().ToUpperInvariant();

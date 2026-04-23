@@ -194,7 +194,8 @@ public class TagService : ITagService
         }
 
         return await dbQuery
-            .OrderBy(t => t.DisplayName)
+            .OrderBy(t => t.OrderIndex)
+            .ThenBy(t => t.DisplayName)
             .ToListAsync();
     }
 
@@ -249,7 +250,8 @@ public class TagService : ITagService
         return await _dbContext.Tags
             .Where(t => t.TaxonomyId == taxonomyId)
             .Include(t => t.Taxonomy)
-            .OrderBy(t => t.DisplayName)
+            .OrderBy(t => t.OrderIndex)
+            .ThenBy(t => t.DisplayName)
             .ToListAsync();
     }
 }
