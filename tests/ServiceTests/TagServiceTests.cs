@@ -76,6 +76,43 @@ public class TagServiceTests
     }
 
     [TestMethod]
+    public async Task TestTagSortingAsync()
+    {
+        // Add tags in random order
+        var tag1 = new Tag { DisplayName = "Zebra", NormalizedName = "ZEBRA", OrderIndex = 2 };
+        var tag2 = new Tag { DisplayName = "Apple", NormalizedName = "APPLE", OrderIndex = 1 };
+        var tag3 = new Tag { DisplayName = "Monkey", NormalizedName = "MONKEY", OrderIndex = 0 };
+
+        await _tagService!.CreateTagAsync(tag1);
+        await _tagService!.CreateTagAsync(tag2);
+        await _tagService!.CreateTagAsync(tag3);
+
+        var results = await _tagService.SearchTagsAsync(null);
+
+        Assert.AreEqual(3, results.Count);
+        Assert.AreEqual("Monkey", results[0].DisplayName); // OrderIndex 0
+        Assert.AreEqual("Apple", results[1].DisplayName);  // OrderIndex 1
+        Assert.AreEqual("Zebra", results[2].DisplayName);  // OrderIndex 2
+    }
+
+    [TestMethod]
+    public async Task TestTagSortingByTaxonomyAsync()
+    {
+        int taxonomyId = 1;
+        var tag1 = new Tag { DisplayName = "Zebra", NormalizedName = "ZEBRA", OrderIndex = 2, TaxonomyId = taxonomyId };
+        var tag2 = new Tag { DisplayName = "Apple", NormalizedName = "APPLE", OrderIndex = 1, TaxonomyId = taxonomyId };
+        
+        await _tagService!.CreateTagAsync(tag1);
+        await _tagService!.CreateTagAsync(tag2);
+
+        var results = await _tagService.GetTagsByTaxonomyIdAsync(taxonomyId);
+
+        Assert.AreEqual(2, results.Count);
+        Assert.AreEqual("Apple", results[0].DisplayName); // OrderIndex 1
+        Assert.AreEqual("Zebra", results[1].DisplayName); // OrderIndex 2
+    }
+
+    [TestMethod]
     public async Task TestDeleteTagAsync()
     {
         var tag = await _tagService!.AddTagAsync("To Delete");
