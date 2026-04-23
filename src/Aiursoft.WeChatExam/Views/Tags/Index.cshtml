@@ -139,11 +139,14 @@
                 <div class="card-body">
                     @if (tagsInThisTaxonomy.Any())
                     {
-                        <div class="d-flex flex-wrap gap-2">
+                        <div class="d-flex flex-wrap gap-2 tags-sortable" data-update-url="@Url.Action("UpdateOrder", "Tags")">
                             @foreach (var tag in tagsInThisTaxonomy)
                             {
-                                <div class="btn-group">
-                                    <div class="input-group-text bg-transparent border border-end-0 py-0 px-2">
+                                <div class="btn-group" data-id="@tag.Id">
+                                    <div class="input-group-text bg-transparent border border-end-0 py-0 px-2 drag-handle" style="cursor: move;">
+                                        <i data-lucide="grip-vertical" class="icon-sm text-muted"></i>
+                                    </div>
+                                    <div class="input-group-text bg-transparent border border-end-0 border-start-0 py-0 px-2">
                                         <input type="checkbox" class="form-check-input row-selector" value="@tag.Id" onchange="updateSelection(this)" />
                                     </div>
                                     <a asp-controller="Questions" asp-action="Index" asp-route-tag="@tag.DisplayName" class="btn btn-light border btn-sm border-start-0">
@@ -225,6 +228,44 @@
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
+    <script type="module">
+        import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortables = document.querySelectorAll('.tags-sortable');
+            sortables.forEach(el => {
+                Sortable.create(el, {
+                    animation: 150,
+                    handle: '.drag-handle',
+                    onEnd: async function () {
+                        const ids = Array.from(el.querySelectorAll('.btn-group')).map(item => parseInt(item.dataset.id));
+                        const url = el.dataset.updateUrl;
+                        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                        try {
+                            const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'RequestVerificationToken': token
+                                },
+                                body: JSON.stringify(ids)
+                            });
+
+                            if (!response.ok) {
+                                alert('Failed to update order');
+                                location.reload();
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('An error occurred while updating order');
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         const config = document.getElementById('tags-config').dataset;
         const STORAGE_KEY = 'selectedTagsIds';
