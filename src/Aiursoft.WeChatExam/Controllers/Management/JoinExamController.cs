@@ -1,3 +1,4 @@
+using Aiursoft.WeChatExam.Models.JoinExamViewModels;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WebTools.Attributes;
@@ -21,6 +22,6 @@ public class JoinExamController : Controller
         LinkOrder = 2)]
     public IActionResult Index()
     {
-        return this.StackView(new UiStackLayoutViewModel { PageTitle = "Join Official Exam" });
+        return this.StackView(new JoinExamIndexViewModel());
     }
 }

@@ -111,11 +111,10 @@ public class AccountingController(
         var end = start.AddMonths(1).AddTicks(-1);
 
         var report = await changeService.GetReportForMonth(start, end);
-        var model = new DetailsViewModel
+        var model = new DetailsViewModel(month)
         {
             Report = report
         };
-        model.PageTitle = $"Finance Report - {month:yyyy-MM}";
         
         return this.StackView(model);
     }

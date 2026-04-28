@@ -52,7 +52,7 @@ public class QuestionImportController : Controller
         LinkOrder = 2)]
     public IActionResult Export()
     {
-        return this.StackView(new UiStackLayoutViewModel { PageTitle = "Export Questions" });
+        return this.StackView(new QuestionExportViewModel());
     }
 
     /// <summary>

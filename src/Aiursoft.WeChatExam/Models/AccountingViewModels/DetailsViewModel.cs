@@ -5,9 +5,9 @@ namespace Aiursoft.WeChatExam.Models.AccountingViewModels;
 
 public class DetailsViewModel : UiStackLayoutViewModel
 {
-    public DetailsViewModel()
+    public DetailsViewModel(DateTime month)
     {
-        PageTitle = "Monthly Finance Report Details";
+        PageTitle = $"Finance Report - {month:yyyy-MM}";
     }
 
     public required MonthlyActiveUserReport Report { get; set; }
