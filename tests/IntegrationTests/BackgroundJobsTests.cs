@@ -71,7 +71,7 @@ public class BackgroundJobsTests
         var loginContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "EmailOrUserName", "admin@default.com" }, // Default admin email from SeedAsync
-            { "Password", "admin123" },
+            { "Password", "Admin@123456!" },
             { "__RequestVerificationToken", loginToken }
         });
         var loginResponse = await _http.PostAsync("/Account/Login", loginContent);

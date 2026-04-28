@@ -65,7 +65,7 @@ public class TagsLinkTests
     private async Task LoginAsAdminAsync()
     {
         var email = "admin@default.com"; // Default admin email from SeedAsync
-        var password = "admin123";
+        var password = "Admin@123456!";
 
         var loginToken = await GetAntiCsrfToken("/Account/Login");
         var loginContent = new FormUrlEncodedContent(new Dictionary<string, string>

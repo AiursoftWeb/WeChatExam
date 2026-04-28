@@ -67,7 +67,7 @@ public class TagsBatchTests
     private async Task LoginAsAdminAsync()
     {
         var email = "admin@default.com"; 
-        var password = "admin123";
+        var password = "Admin@123456!";
 
         var loginToken = await GetAntiCsrfToken("/Account/Login");
         var loginContent = new FormUrlEncodedContent(new Dictionary<string, string>
