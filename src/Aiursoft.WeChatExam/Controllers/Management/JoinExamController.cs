@@ -1,6 +1,5 @@
 using Aiursoft.WeChatExam.Models.JoinExamViewModels;
 using Aiursoft.UiStack.Navigation;
-using Aiursoft.UiStack.Layout;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
