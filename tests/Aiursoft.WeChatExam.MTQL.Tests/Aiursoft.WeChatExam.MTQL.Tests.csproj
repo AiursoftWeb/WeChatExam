@@ -10,7 +10,7 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MSTest" Version="4.2.1" />
+    <PackageReference Include="MSTest" Version="4.2.2" />
     <PackageReference Include="JunitXml.TestLogger" Version="8.0.0" />
     <PackageReference Include="coverlet.collector" Version="10.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
