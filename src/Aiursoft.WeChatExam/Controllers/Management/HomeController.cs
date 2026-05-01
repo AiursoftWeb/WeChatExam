@@ -44,7 +44,6 @@ public class HomeController : Controller
         {
             return this.StackView(new AskOllamaViewModel
             {
-                PageTitle = "Ask Ollama",
                 Question = question
             });
         }

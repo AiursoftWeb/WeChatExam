@@ -1,5 +1,4 @@
 using Aiursoft.UiStack.Navigation;
-using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.QuestionImportViewModels;
@@ -52,7 +51,7 @@ public class QuestionImportController : Controller
         LinkOrder = 2)]
     public IActionResult Export()
     {
-        return this.StackView(new UiStackLayoutViewModel { PageTitle = "Export Questions" });
+        return this.StackView(new QuestionExportViewModel());
     }
 
     /// <summary>
