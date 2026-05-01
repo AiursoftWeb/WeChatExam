@@ -130,6 +130,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Finance Reports"];
         _ = localizer["Monthly Finance Report Details"];
         _ = localizer["VIP Change History"];
+    
+        _ = localizer["Delete Tag"];
     }
 
     public void InjectSimple(
