@@ -34,6 +34,7 @@ public class AppSettings
     /// <summary>
     /// Debug settings (for development/testing only)
     /// </summary>
+    public bool DebugMode { get; init; } = false;
     public string? DebugMagicKey { get; init; }
 }
 
