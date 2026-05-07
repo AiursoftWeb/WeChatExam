@@ -1,13 +1,9 @@
 using System.Net;
-using System.Net.Http.Json;
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using static Aiursoft.WebTools.Extends;
 
@@ -17,7 +13,7 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class DebugModeTests
 {
     private int _port;
-    private HttpClient _http;
+    private HttpClient _http = null!;
     private IHost? _server;
 
     [TestCleanup]
