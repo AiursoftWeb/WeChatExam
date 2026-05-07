@@ -108,6 +108,12 @@ public class AuthController(
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> ExchangeDebugToken([FromBody] DebugTokenRequestDto model)
     {
+        if (!_appSettings.DebugMode)
+        {
+            logger.LogWarning("Debug token exchange attempted but DebugMode is not enabled");
+            return NotFound();
+        }
+
         // Check if debug magic key is configured
         if (string.IsNullOrWhiteSpace(_appSettings.DebugMagicKey))
         {
