@@ -43,8 +43,15 @@ public class AuthenticationIsolationTests
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
+        TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
+        TestStartupWithMockWeChat.MockOllamaService = new Mock<IOllamaService>();
+        TestStartupWithMockWeChat.MockVipProductService = new Mock<IVipProductService>();
 
-        _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
+        _server = await AppAsync<TestStartupWithMockWeChat>(
+            [
+                "--AppSettings:DebugMode=true"
+            ],
+            port: _port);
         await _server.UpdateDbAsync<WeChatExamDbContext>();
         await _server.SeedAsync();
         await _server.StartAsync();
