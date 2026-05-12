@@ -18,11 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
+      <data name="1. Build Question Bank" xml:space="preserve">
+    <value>1. 建立題庫</value>
+  </data>
+  <data name="2. Design Paper Templates" xml:space="preserve">
+    <value>2. 設計試卷模板</value>
+  </data>
+  <data name="3. Deliver to Students" xml:space="preserve">
+    <value>3. 提供給學生</value>
+  </data>
+  <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
     <value>內建的角色型存取控制（RBAC）系統，用於細粒度的權限管理。</value>
   </data>
   <data name="A complete solution for user authentication and profile management right out of the box." xml:space="preserve">
     <value>一套完整的用戶認證與個人檔案管理解決方案，開箱即用。</value>
+  </data>
+  <data name="A comprehensive online examination system with WeChat integration. Create papers, organize knowledge points, tag questions, and deliver exams seamlessly through WeChat." xml:space="preserve">
+    <value>一套結合微信的綜合線上考試系統。建立試卷、整理知識點、標記題目，並透過微信無縫交付考試。</value>
   </data>
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>完全響應式佈局，在桌面和行動裝置上都能呈現絕佳外觀。</value>
@@ -30,8 +42,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>一個現代化、功能豐富且高度可擴展的基礎架構，為您的下一個網頁應用程式提供堅實根基。</value>
   </data>
+  <data name="A modern, flexible, and comprehensive platform for creating and managing online examinations." xml:space="preserve">
+    <value>一個現代化、靈活且全面的線上考試創建與管理平台</value>
+  </data>
   <data name="Achieve more with Aiursoft Template" xml:space="preserve">
     <value>使用 Aiursoft Template 成就更多</value>
+  </data>
+  <data name="AI-Powered Assistance" xml:space="preserve">
+    <value>AI 驅動輔助</value>
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>AI 驅動翻譯</value>
@@ -45,6 +63,9 @@
   <data name="Anduin" xml:space="preserve">
     <value>Anduin</value>
   </data>
+  <data name="Assess employee knowledge with internal training exams. Track progress over time and identify areas needing additional training investment." xml:space="preserve">
+    <value>透過內部培訓測驗評估員工知識。追蹤長期進度並識別需要額外培訓投資的領域。</value>
+  </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>自動深色模式</value>
   </data>
@@ -54,8 +75,20 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>自動化、AI 驅動的翻譯，支援 28 種語言，助您觸及全球市場。</value>
   </data>
+  <data name="Beyond exams, use the platform for surveys, polls, and feedback collection with WeChat distribution for high response rates." xml:space="preserve">
+    <value>除了考試之外，還可利用平台進行問卷調查、民意調查和意見回饋收集，並透過微信發送以提高回覆率。</value>
+  </data>
   <data name="Build your next big thing," xml:space="preserve">
     <value>打造你的下一個大事業，</value>
+  </data>
+  <data name="Build your question bank, organize by knowledge points, create paper templates, and deliver exams to students — all within one integrated platform." xml:space="preserve">
+    <value>建立您的題庫，按知識點進行組織，創建試卷模板，並將考試發送給學生——所有功能均在一個整合式平台內完成。</value>
+  </data>
+  <data name="Built for Education" xml:space="preserve">
+    <value>專為教育而生</value>
+  </data>
+  <data name="Built-in OpenID Connect support for seamless authentication. Integrate with any OIDC provider alongside WeChat login, with automatic role synchronization." xml:space="preserve">
+    <value>內建 OpenID Connect 支援，實現無縫認證。與任何 OIDC 提供者整合，並與微信登入同步使用，自動同步角色。</value>
   </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>內建使用者管理</value>
@@ -66,11 +99,32 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>完整說明文件</value>
   </data>
+  <data name="Corporate Training" xml:space="preserve">
+    <value>企業培訓</value>
+  </data>
+  <data name="Create certification exams with time-limited access, randomized question selection, and WeChat Pay integration for exam fees." xml:space="preserve">
+    <value>建立證照考試，提供限時存取、隨機題目選取，並整合微信支付以收取考試費用。</value>
+  </data>
+  <data name="Create questions organized by hierarchical categories and knowledge points. Tag them with taxonomies for advanced filtering." xml:space="preserve">
+    <value>建立依階層分類與知識點組織的題目，並使用分類標籤以進行進階篩選。</value>
+  </data>
+  <data name="Create reusable paper templates. When an exam starts, a snapshot freezes the content so every student sees the same questions even if the template is updated later." xml:space="preserve">
+    <value>建立可重複使用的試題模板。當考試開始時，快照會凍結內容，確保每位學生看到相同的題目，即使後續更新了模板。</value>
+  </data>
   <data name="Dashboard Website" xml:space="preserve">
     <value>儀表板網站</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>討論頁面</value>
+  </data>
+  <data name="Do I need a WeChat Official Account to use it?" xml:space="preserve">
+    <value>使用它需要微信公眾號嗎？</value>
+  </data>
+  <data name="Docker Hub" xml:space="preserve">
+    <value>Docker Hub</value>
+  </data>
+  <data name="Docker-Ready Deployment" xml:space="preserve">
+    <value>Docker 部署</value>
   </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>容器化部署</value>
@@ -80,6 +134,15 @@
   </data>
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>可輕鬆切換不同的資料庫供應商，例如 SQLite、MySQL、SQL Server 以及用於測試的記憶體資料庫。</value>
+  </data>
+  <data name="Easily switch between SQLite, MySQL, SQL Server, and in-memory database providers to match your deployment needs from development to production." xml:space="preserve">
+    <value>輕鬆切換 SQLite、MySQL、SQL Server 和記憶體資料庫提供者，以符合從開發到生產階段的部署需求。</value>
+  </data>
+  <data name="Embed exams directly into WeChat Mini Programs. Students take assessments without leaving WeChat, with instant results and sharing capabilities." xml:space="preserve">
+    <value>直接將考試嵌入微信小程式。學生無需離開微信即可參加評估，並享有即時成績與分享功能。</value>
+  </data>
+  <data name="Exam Records &amp; Analytics" xml:space="preserve">
+    <value>考試記錄與分析</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>常見問題</value>
@@ -93,6 +156,12 @@
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>具備內建檔案管理系統，並支援自動頭像壓縮功能。</value>
   </data>
+  <data name="Fine-grained Role-Based Access Control for managing teachers, students, and administrators with distinct permissions and capabilities." xml:space="preserve">
+    <value>用於管理教師、學生和管理員的細粒度基於角色的訪問控制，擁有不同的權限和能力。</value>
+  </data>
+  <data name="Flexible Tagging System" xml:space="preserve">
+    <value>彈性標籤系統</value>
+  </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>如有任何疑問或回報問題。</value>
   </data>
@@ -102,8 +171,20 @@
   <data name="Frequently asked questions" xml:space="preserve">
     <value>常見問題</value>
   </data>
+  <data name="From Questions to Exams in Minutes" xml:space="preserve">
+    <value>從命題到組卷，只需幾分鐘</value>
+  </data>
+  <data name="Full Docker support with pre-built images on Docker Hub. Deploy with a single command, or use the install script for Ubuntu servers with systemd integration." xml:space="preserve">
+    <value>完整支援 Docker，並提供 Docker Hub 上的預建映像檔。透過單一指令進行部署，或使用安裝腳本搭配 systemd 整合功能，部署至 Ubuntu 伺服器。</value>
+  </data>
+  <data name="Get started with WeChatExam today. Deploy in minutes with Docker." xml:space="preserve">
+    <value>立即開始使用 WeChatExam。透過 Docker 在幾分鐘內完成部署。</value>
+  </data>
   <data name="Go to dashboard" xml:space="preserve">
     <value>前往儀表板</value>
+  </data>
+  <data name="Group tags by taxonomies like Difficulty, Source, or Year. Apply multiple tags to each question for flexible categorization and advanced filtering." xml:space="preserve">
+    <value>依難度、來源或年份等分類法群組標籤。為每道題目套用多個標籤，以實現彈性分類與進階篩選。</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>哈囉世界！</value>
@@ -114,11 +195,23 @@
   <data name="Here&apos;s what developers from our community have to say." xml:space="preserve">
     <value>以下是我們社群開發者的心得分享。</value>
   </data>
+  <data name="Hierarchical Knowledge Points" xml:space="preserve">
+    <value>層級知識點</value>
+  </data>
   <data name="How can I get support?" xml:space="preserve">
     <value>如何取得支援？</value>
   </data>
   <data name="How do I deploy my application?" xml:space="preserve">
     <value>我要如何部署我的應用程式？</value>
+  </data>
+  <data name="How do I deploy WeChatExam?" xml:space="preserve">
+    <value>我該如何部署 WeChatExam？</value>
+  </data>
+  <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
+    <value>考卷快照如何確保公平性？</value>
+  </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>運作方式</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>包含豐富的文件與實用範例，助您快速上手。</value>
@@ -126,8 +219,17 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>整合式檔案管理</value>
   </data>
+  <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
+    <value>整合微信支付（TenpayV3）以實現考試變現。透過微信支付直接為高級考試權限、認證或課程材料收費。</value>
+  </data>
+  <data name="Integrated with Ollama for AI-powered question assistance. Get help generating questions, explaining answers, or reviewing exam content." xml:space="preserve">
+    <value>與 Ollama 整合，提供 AI 驅動的題目輔助。協助生成題目、解釋答案或複習考試內容。</value>
+  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>使用 Aiursoft Template 是否免費？</value>
+  </data>
+  <data name="Is WeChatExam free to use?" xml:space="preserve">
+    <value>WeChatExam 免費嗎？</value>
   </data>
   <data name="Join Discussions" xml:space="preserve">
     <value>參與討論</value>
@@ -141,17 +243,50 @@
   <data name="MIT Licence" xml:space="preserve">
     <value>MIT 授權</value>
   </data>
+  <data name="MTQL (Mark-to-Query Language) is a domain-specific language for filtering questions by their tags. You write expressions like &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; to precisely select which questions appear in a paper. It supports AND, OR, NOT, and parenthesized grouping." xml:space="preserve">
+    <value>MTQL（標記到查詢語言）是一種領域特定語言，用於根據標籤篩選題目。您可以撰寫類似 &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; 的表達式，以精確選擇試卷中出現的題目。它支援 AND、OR、NOT 以及括號分組。</value>
+  </data>
+  <data name="MTQL Query Language" xml:space="preserve">
+    <value>MTQL 查詢語言</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>多種資料庫支援</value>
   </data>
   <data name="Music Tools" xml:space="preserve">
     <value>音樂工具</value>
   </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>線上課程</value>
+  </data>
+  <data name="Online Exam Platform," xml:space="preserve">
+    <value>線上考試平台，</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>開放原始碼</value>
   </data>
+  <data name="OpenID Connect Authentication" xml:space="preserve">
+    <value>OpenID Connect 身份驗證</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect 整合</value>
+  </data>
+  <data name="Organize educational content in a hierarchical tree of categories and knowledge points. Map questions to specific learning objectives and track what each question assesses." xml:space="preserve">
+    <value>將教育內容以類別和知識點的階層式樹狀結構進行組織。將題目對應至具體的學習目標，並追蹤每道題目所評估的知識點。</value>
+  </data>
+  <data name="Pair with online course platforms to deliver lesson quizzes, chapter tests, and final assessments with automatic grading and feedback." xml:space="preserve">
+    <value>結合線上課程平台，提供課程小測、章節測驗與期末評量，並具備自動評分與回饋功能。</value>
+  </data>
+  <data name="Paper Templates &amp; Snapshots" xml:space="preserve">
+    <value>試題範本與快照</value>
+  </data>
+  <data name="Powered by WeChat" xml:space="preserve">
+    <value>由微信提供技術支援</value>
+  </data>
+  <data name="Professional Certifications" xml:space="preserve">
+    <value>專業認證</value>
+  </data>
+  <data name="Publish exams with start/end times. Students access via WeChat or web, answer with frozen snapshots ensuring fairness." xml:space="preserve">
+    <value>發布考試並設定開始/結束時間。學生透過 WeChat 或網頁進入，以凍結截圖作答，確保公平性。</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC 授權</value>
@@ -159,20 +294,35 @@
   <data name="Read the document" xml:space="preserve">
     <value>閱讀文件</value>
   </data>
+  <data name="Ready to build your exam platform?" xml:space="preserve">
+    <value>準備好建立您的考試平台了嗎？</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>響應式設計</value>
   </data>
   <data name="Reviews" xml:space="preserve">
     <value>評論</value>
   </data>
+  <data name="Run midterms, finals, and quizzes with structured knowledge point tracking and detailed performance analytics for each student." xml:space="preserve">
+    <value>執行期中考、期末考和隨堂測驗，並對每位學生進行結構化的知識點追蹤與詳細的成績分析。</value>
+  </data>
+  <data name="Schools &amp; Universities" xml:space="preserve">
+    <value>學校與大學</value>
+  </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>無縫整合任何 OpenID Connect 提供者，並自動同步角色權限。</value>
+  </data>
+  <data name="Seamlessly integrate with the WeChat ecosystem. Users can log in, take exams, and receive results directly through WeChat Official Accounts and Mini Programs." xml:space="preserve">
+    <value>無縫整合微信生態系統。用戶可直接通過微信公眾號和小程序進行登錄、參加考試並接收成績。</value>
   </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>智慧深色模式，可自動適應使用者的系統設定。</value>
   </data>
   <data name="Start a new project" xml:space="preserve">
     <value>開始新專案</value>
+  </data>
+  <data name="Surveys &amp; Polls" xml:space="preserve">
+    <value>調查與問卷</value>
   </data>
   <data name="Technical Lead" xml:space="preserve">
     <value>技術負責人</value>
@@ -189,11 +339,41 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>這是一個模板專案，我們從這裡開啟航程...</value>
   </data>
+  <data name="Track every student attempt with detailed answer records. Review individual answers, analyze performance, and identify knowledge gaps across your student base." xml:space="preserve">
+    <value>追蹤每位學生的每一次嘗試，並提供詳細的作答記錄。檢視個別答案、分析表現，並找出學生群體中的知識盲區。</value>
+  </data>
   <data name="Usage" xml:space="preserve">
     <value>使用方式</value>
   </data>
+  <data name="Use Cases" xml:space="preserve">
+    <value>應用情境</value>
+  </data>
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>無論是作為您 SaaS 的基礎架構、行動應用程式的後端、企業網站或個人部落格，都能完美適用。可能性永無止境。</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>使用 Mark-to-Query Language (MTQL)，一種強大的領域特定語言，以布林邏輯（例如 &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;）篩選題目，實現精確的題目選取。</value>
+  </data>
+  <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
+    <value>使用 MTQL 依標籤和知識點篩選試題。設定考試結構、時長與評分規則。</value>
+  </data>
+  <data name="View on GitHub" xml:space="preserve">
+    <value>在 GitHub 上查看</value>
+  </data>
+  <data name="WeChat Integration" xml:space="preserve">
+    <value>WeChat 整合</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat 整合為選配。本平台可完全作為獨立網頁應用程式運作。僅在您希望啟用 WeChat 登入、小程序存取或 WeChat Pay 時，才需要 WeChat 憑證。</value>
+  </data>
+  <data name="WeChat Mini Programs" xml:space="preserve">
+    <value>微信小程式</value>
+  </data>
+  <data name="WeChat Payment" xml:space="preserve">
+    <value>微信支付</value>
+  </data>
+  <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
+    <value>WeChatExam 適用於各種教育與評量情境。</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>歡迎</value>
@@ -201,14 +381,29 @@
   <data name="What do I need to get started?" xml:space="preserve">
     <value>我需要準備什麼才能開始？</value>
   </data>
+  <data name="What is MTQL and how does it work?" xml:space="preserve">
+    <value>什麼是 MTQL，它的運作方式為何？</value>
+  </data>
   <data name="What our developers say" xml:space="preserve">
     <value>我們的開發者怎麼說</value>
+  </data>
+  <data name="When an exam starts, the system creates an immutable snapshot of the paper and its questions. All students see the exact same content, even if the original paper template or questions are modified later. This guarantees a fair and consistent assessment experience." xml:space="preserve">
+    <value>考試開始時，系統會建立試卷及其問題的不可變快照。所有學生看到的內容完全相同，即使之後修改了原始試卷模板或題目也是如此。這確保了公平且一致的評估體驗。</value>
   </data>
   <data name="Why use the Aiursoft Template?" xml:space="preserve">
     <value>為什麼使用 Aiursoft 模板？</value>
   </data>
+  <data name="Why use WeChatExam?" xml:space="preserve">
+    <value>為什麼要使用 WeChatExam？</value>
+  </data>
   <data name="Yes, Aiursoft Template is completely free and open-source under the MIT License. You can use it for personal and commercial projects without any cost." xml:space="preserve">
     <value>是的，Aiursoft Template 在 MIT 許可證下完全免費且開放原始碼。您可以在個人和商業專案中免費使用它，無需任何費用。</value>
+  </data>
+  <data name="Yes, WeChatExam is completely free and open-source under the MIT License. You can use it for personal, educational, and commercial purposes without any cost." xml:space="preserve">
+    <value>是的，WeChatExam 完全免費且開源，採用 MIT 授權條款。您可以將其用於個人、教育及商業用途，無需任何費用。</value>
+  </data>
+  <data name="You can deploy via Docker with a single command, use the Ubuntu install script for automated systemd setup, or run it manually with the .NET SDK. See the README on GitHub for detailed deployment instructions." xml:space="preserve">
+    <value>您可以透過 Docker 以單一指令進行部署，使用 Ubuntu 安裝腳本進行自動化的 systemd 設定，或使用 .NET SDK 手動執行。請參閱 GitHub 上的 README 以獲取詳細的部署說明。</value>
   </data>
   <data name="You can get community support via GitHub Discussions. Please visit our" xml:space="preserve">
     <value>您可以透過 GitHub Discussions 獲得社群支援。請造訪我們的</value>
