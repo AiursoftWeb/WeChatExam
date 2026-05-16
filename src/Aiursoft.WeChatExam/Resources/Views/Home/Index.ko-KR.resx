@@ -18,11 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
+      <data name="1. Build Question Bank" xml:space="preserve">
+    <value>1. 문제 은행 구축</value>
+  </data>
+  <data name="2. Design Paper Templates" xml:space="preserve">
+    <value>2. 시험지 템플릿 설계</value>
+  </data>
+  <data name="3. Deliver to Students" xml:space="preserve">
+    <value>3. 학생에게 제공하기</value>
+  </data>
+  <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
     <value>세분화된 권한 관리를 위한 내장형 역할 기반 접근 제어(RBAC) 시스템.</value>
   </data>
   <data name="A complete solution for user authentication and profile management right out of the box." xml:space="preserve">
     <value>사용자 인증 및 프로필 관리를 위한 완벽한 솔루션을 바로 사용할 수 있습니다.</value>
+  </data>
+  <data name="A comprehensive online examination system with WeChat integration. Create papers, organize knowledge points, tag questions, and deliver exams seamlessly through WeChat." xml:space="preserve">
+    <value>위챗 연동형 종합 온라인 시험 시스템. 시험지를 생성하고, 지식 포인트를 정리하며, 문제를 태그하고, 위챗을 통해 원활하게 시험을 진행하세요.</value>
   </data>
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>데스크톱과 모바일 기기 모두에서 훌륭하게 보이는 완전 반응형 레이아웃.</value>
@@ -30,8 +42,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>현대적이고, 기능이 풍부하며, 매우 확장 가능한 기반을 제공하여 차세대 웹 애플리케이션을 구축할 수 있습니다.</value>
   </data>
+  <data name="A modern, flexible, and comprehensive platform for creating and managing online examinations." xml:space="preserve">
+    <value>온라인 시험을 생성하고 관리하기 위한 현대적이고 유연하며 포괄적인 플랫폼</value>
+  </data>
   <data name="Achieve more with Aiursoft Template" xml:space="preserve">
     <value>Aiursoft 템플릿으로 더 많은 성과를 이루세요</value>
+  </data>
+  <data name="AI-Powered Assistance" xml:space="preserve">
+    <value>AI 기반 지원</value>
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>AI 기반 번역</value>
@@ -45,6 +63,9 @@
   <data name="Anduin" xml:space="preserve">
     <value>안두인</value>
   </data>
+  <data name="Assess employee knowledge with internal training exams. Track progress over time and identify areas needing additional training investment." xml:space="preserve">
+    <value>내부 교육 시험으로 사원 지식을 평가하세요. 시간이 지남에 따라 진도를 추적하고 추가 교육 투자가 필요한 영역을 식별하세요.</value>
+  </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>자동 다크 모드</value>
   </data>
@@ -54,8 +75,20 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>전 세계를 대상으로 28개 언어로 자동, AI 기반 번역을 제공합니다.</value>
   </data>
+  <data name="Beyond exams, use the platform for surveys, polls, and feedback collection with WeChat distribution for high response rates." xml:space="preserve">
+    <value>시험 외에도 WeChat 배포를 통해 높은 응답률로 설문조사, 투표 및 피드백 수집을 위해 플랫폼을 활용하세요.</value>
+  </data>
   <data name="Build your next big thing," xml:space="preserve">
     <value>당신의 다음 대형 프로젝트를 구축하세요,</value>
+  </data>
+  <data name="Build your question bank, organize by knowledge points, create paper templates, and deliver exams to students — all within one integrated platform." xml:space="preserve">
+    <value>문제 은행을 구축하고, 지식 포인트별로 정리하며, 시험지 템플릿을 생성하고 학생들에게 시험을 제공하기 — 모두 하나의 통합 플랫폼 내에서 가능합니다.</value>
+  </data>
+  <data name="Built for Education" xml:space="preserve">
+    <value>교육을 위해 설계됨</value>
+  </data>
+  <data name="Built-in OpenID Connect support for seamless authentication. Integrate with any OIDC provider alongside WeChat login, with automatic role synchronization." xml:space="preserve">
+    <value>원내장형 OpenID Connect 지원으로 원활한 인증을 제공합니다. WeChat 로그인과 함께 모든 OIDC 공급자와 통합하며, 역할 자동 동기화를 지원합니다.</value>
   </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>내장된 사용자 관리</value>
@@ -66,11 +99,32 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>포괄적인 문서</value>
   </data>
+  <data name="Corporate Training" xml:space="preserve">
+    <value>기업 교육</value>
+  </data>
+  <data name="Create certification exams with time-limited access, randomized question selection, and WeChat Pay integration for exam fees." xml:space="preserve">
+    <value>시간 제한 접근, 무작위 질문 선택, 그리고 시험료 결제를 위한 위챗 페이 통합 기능을 갖춘 자격증 시험을 생성하세요.</value>
+  </data>
+  <data name="Create questions organized by hierarchical categories and knowledge points. Tag them with taxonomies for advanced filtering." xml:space="preserve">
+    <value>계층적 카테고리 및 지식 포인트별로 조직화된 문제를 생성하세요. 고급 필터링을 위해 분류 체계를 태그로 지정하세요.</value>
+  </data>
+  <data name="Create reusable paper templates. When an exam starts, a snapshot freezes the content so every student sees the same questions even if the template is updated later." xml:space="preserve">
+    <value>재사용 가능한 종이 템플릿을 만드세요. 시험이 시작되면 스냅샷이 내용을 고정하여 템플릿이 나중에 업데이트되더라도 모든 학생이 동일한 문제를 보게 됩니다.</value>
+  </data>
   <data name="Dashboard Website" xml:space="preserve">
     <value>대시보드 웹사이트</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>토론 페이지</value>
+  </data>
+  <data name="Do I need a WeChat Official Account to use it?" xml:space="preserve">
+    <value>사용하려면 위챗 공식 계정이 필요합니까?</value>
+  </data>
+  <data name="Docker Hub" xml:space="preserve">
+    <value>Docker Hub</value>
+  </data>
+  <data name="Docker-Ready Deployment" xml:space="preserve">
+    <value>Docker 지원 배포</value>
   </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>배포를 위한 Docker화</value>
@@ -80,6 +134,15 @@
   </data>
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>SQLite, MySQL, SQL Server 및 테스트용 인메모리 데이터베이스와 같은 프로바이더 간에 쉽게 전환할 수 있습니다.</value>
+  </data>
+  <data name="Easily switch between SQLite, MySQL, SQL Server, and in-memory database providers to match your deployment needs from development to production." xml:space="preserve">
+    <value>SQLite, MySQL, SQL Server, 인메모리 데이터베이스 공급자 간 쉽게 전환하여 개발부터 프로덕션까지 배포 요구 사항에 맞게 조정하세요.</value>
+  </data>
+  <data name="Embed exams directly into WeChat Mini Programs. Students take assessments without leaving WeChat, with instant results and sharing capabilities." xml:space="preserve">
+    <value>시험을 위챗 미니 프로그램에 직접 삽입하세요. 학생들은 위챗을 벗어나지 않고 평가를 응시하며, 즉시 결과를 확인하고 공유할 수 있습니다.</value>
+  </data>
+  <data name="Exam Records &amp; Analytics" xml:space="preserve">
+    <value>시험 기록 및 분석</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>자주 묻는 질문</value>
@@ -93,6 +156,12 @@
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>자동 아바타 압축 기능이 포함된 내장 파일 관리 시스템을 갖추고 있습니다.</value>
   </data>
+  <data name="Fine-grained Role-Based Access Control for managing teachers, students, and administrators with distinct permissions and capabilities." xml:space="preserve">
+    <value>교사, 학생 및 관리자를 위한 세분화된 역할 기반 액세스 제어(각각 고유한 권한과 기능 보유)</value>
+  </data>
+  <data name="Flexible Tagging System" xml:space="preserve">
+    <value>유연한 태그 시스템</value>
+  </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>문의 사항이 있거나 문제를 보고하려면</value>
   </data>
@@ -102,8 +171,20 @@
   <data name="Frequently asked questions" xml:space="preserve">
     <value>자주 묻는 질문</value>
   </data>
+  <data name="From Questions to Exams in Minutes" xml:space="preserve">
+    <value>몇 분 만에 질문지에서 시험지로</value>
+  </data>
+  <data name="Full Docker support with pre-built images on Docker Hub. Deploy with a single command, or use the install script for Ubuntu servers with systemd integration." xml:space="preserve">
+    <value>Docker Hub에서 사전 빌드된 이미지를 제공하는 완전한 Docker 지원. 단일 명령어로 배포하거나 systemd 통합이 포함된 Ubuntu 서버용 설치 스크립트를 사용하세요.</value>
+  </data>
+  <data name="Get started with WeChatExam today. Deploy in minutes with Docker." xml:space="preserve">
+    <value>지금 WeChatExam을 시작하세요. Docker로 몇 분 안에 배포하세요.</value>
+  </data>
   <data name="Go to dashboard" xml:space="preserve">
     <value>대시보드로 이동</value>
+  </data>
+  <data name="Group tags by taxonomies like Difficulty, Source, or Year. Apply multiple tags to each question for flexible categorization and advanced filtering." xml:space="preserve">
+    <value>Difficulty, Source, Year과 같은 분류 체계에 따라 태그를 그룹화합니다. 유연한 분류와 고급 필터링을 위해 각 질문에 여러 태그를 적용하세요.</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>안녕하세요 세계!</value>
@@ -114,11 +195,23 @@
   <data name="Here&apos;s what developers from our community have to say." xml:space="preserve">
     <value>커뮤니티 개발자들이 전하는 이야기입니다.</value>
   </data>
+  <data name="Hierarchical Knowledge Points" xml:space="preserve">
+    <value>계층형 지식 포인트</value>
+  </data>
   <data name="How can I get support?" xml:space="preserve">
     <value>어떻게 지원을 받을 수 있나요?</value>
   </data>
   <data name="How do I deploy my application?" xml:space="preserve">
     <value>애플리케이션을 어떻게 배포하나요?</value>
+  </data>
+  <data name="How do I deploy WeChatExam?" xml:space="preserve">
+    <value>WeChatExam를 어떻게 배포하나요?</value>
+  </data>
+  <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
+    <value>페이퍼 스냅샷이 공정성을 어떻게 보장합니까?</value>
+  </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>작동 방식</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>풍부한 문서와 실용적인 예제를 포함하여 빠르게 시작할 수 있도록 합니다.</value>
@@ -126,8 +219,17 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>통합 파일 관리</value>
   </data>
+  <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
+    <value>중국어 결제(텐페이V3)를 통합하여 시험 수익화를 지원합니다. 위챗을 통해 프리미엄 시험 접근, 인증서 또는 강의 자료에 대한 결제를 직접 처리하세요.</value>
+  </data>
+  <data name="Integrated with Ollama for AI-powered question assistance. Get help generating questions, explaining answers, or reviewing exam content." xml:space="preserve">
+    <value>Ollama와 통합되어 AI 기반 질문 도움을 제공합니다. 질문 생성, 답변 설명, 시험 내용 검토에 도움을 받으세요.</value>
+  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>Aiursoft Template를 무료로 사용할 수 있나요?</value>
+  </data>
+  <data name="Is WeChatExam free to use?" xml:space="preserve">
+    <value>WeChatExam을 무료로 사용할 수 있나요?</value>
   </data>
   <data name="Join Discussions" xml:space="preserve">
     <value>토론 참여하기</value>
@@ -141,17 +243,50 @@
   <data name="MIT Licence" xml:space="preserve">
     <value>MIT 라이선스</value>
   </data>
+  <data name="MTQL (Mark-to-Query Language) is a domain-specific language for filtering questions by their tags. You write expressions like &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; to precisely select which questions appear in a paper. It supports AND, OR, NOT, and parenthesized grouping." xml:space="preserve">
+    <value>MTQL(Mark-to-Query Language)은 태그를 기반으로 문제를 필터링하기 위한 도메인 특화 언어입니다. &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot;와 같은 표현식을 작성하여 시험지에 포함될 문제를 정확하게 선택할 수 있습니다. AND, OR, NOT 연산자와 괄호 그룹화를 지원합니다.</value>
+  </data>
+  <data name="MTQL Query Language" xml:space="preserve">
+    <value>MTQL 쿼리 언어</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>다중 데이터베이스 지원</value>
   </data>
   <data name="Music Tools" xml:space="preserve">
     <value>음악 도구</value>
   </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>온라인 과정</value>
+  </data>
+  <data name="Online Exam Platform," xml:space="preserve">
+    <value>온라인 시험 플랫폼,</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>오픈 소스</value>
   </data>
+  <data name="OpenID Connect Authentication" xml:space="preserve">
+    <value>OpenID Connect 인증</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect 연동</value>
+  </data>
+  <data name="Organize educational content in a hierarchical tree of categories and knowledge points. Map questions to specific learning objectives and track what each question assesses." xml:space="preserve">
+    <value>카테고리와 지식 포인트의 계층적 트리 형식으로 교육 콘텐츠를 구성합니다. 질문을 특정 학습 목표에 매핑하고 각 질문이 평가하는 내용을 추적합니다.</value>
+  </data>
+  <data name="Pair with online course platforms to deliver lesson quizzes, chapter tests, and final assessments with automatic grading and feedback." xml:space="preserve">
+    <value>온라인 과정 플랫폼과 연동하여 자동 채점 및 피드백 기능으로 수업 퀴즈, 단원 시험, 최종 평가를 제공합니다.</value>
+  </data>
+  <data name="Paper Templates &amp; Snapshots" xml:space="preserve">
+    <value>시험지 템플릿 및 스냅샷</value>
+  </data>
+  <data name="Powered by WeChat" xml:space="preserve">
+    <value>WeChat 기반</value>
+  </data>
+  <data name="Professional Certifications" xml:space="preserve">
+    <value>전문 자격증</value>
+  </data>
+  <data name="Publish exams with start/end times. Students access via WeChat or web, answer with frozen snapshots ensuring fairness." xml:space="preserve">
+    <value>시작/종료 시간을 설정하여 시험을 발행합니다. 학생은 WeChat 또는 웹을 통해 접속하고, 공정성을 보장하기 위해 고정된 스냅샷으로 답변합니다.</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC 인증</value>
@@ -159,20 +294,35 @@
   <data name="Read the document" xml:space="preserve">
     <value>문서 읽기</value>
   </data>
+  <data name="Ready to build your exam platform?" xml:space="preserve">
+    <value>시험 플랫폼을 구축할 준비가 되셨나요?</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>반응형 디자인</value>
   </data>
   <data name="Reviews" xml:space="preserve">
     <value>리뷰</value>
   </data>
+  <data name="Run midterms, finals, and quizzes with structured knowledge point tracking and detailed performance analytics for each student." xml:space="preserve">
+    <value>중간고사, 기말고사, 퀴즈를 실행하고 각 학생에 대해 구조화된 지식 포인트 추적 및 상세한 성과 분석을 제공합니다.</value>
+  </data>
+  <data name="Schools &amp; Universities" xml:space="preserve">
+    <value>학교 및 대학</value>
+  </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>어떤 OpenID Connect 공급자와도 원활하게 통합되며, 자동 역할 동기화를 지원합니다.</value>
+  </data>
+  <data name="Seamlessly integrate with the WeChat ecosystem. Users can log in, take exams, and receive results directly through WeChat Official Accounts and Mini Programs." xml:space="preserve">
+    <value>WeChat 생태계와 원활하게 통합됩니다. 사용자는 WeChat 공식 계정과 미니 프로그램을 통해 직접 로그인하고, 시험을 치며, 결과를 받을 수 있습니다.</value>
   </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>사용자의 시스템 설정에 자동으로 적응하는 스마트 다크 모드.</value>
   </data>
   <data name="Start a new project" xml:space="preserve">
     <value>새 프로젝트 시작하기</value>
+  </data>
+  <data name="Surveys &amp; Polls" xml:space="preserve">
+    <value>설문조사 및 투표</value>
   </data>
   <data name="Technical Lead" xml:space="preserve">
     <value>기술 리드</value>
@@ -189,11 +339,41 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>이것은 템플릿 프로젝트로, 여기서 우리의 항해를 시작합니다...</value>
   </data>
+  <data name="Track every student attempt with detailed answer records. Review individual answers, analyze performance, and identify knowledge gaps across your student base." xml:space="preserve">
+    <value>모든 학생의 응시 이력을 상세한 답변 기록과 함께 추적합니다. 개별 답변을 검토하고, 성적을 분석하며, 학생 전체의 지식 격차를 파악합니다.</value>
+  </data>
   <data name="Usage" xml:space="preserve">
     <value>사용법</value>
   </data>
+  <data name="Use Cases" xml:space="preserve">
+    <value>사용 사례</value>
+  </data>
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>SaaS의 기반, 모바일 앱의 백엔드, 기업 웹사이트 또는 개인 블로그로 활용하세요. 가능성은 무궁무진합니다.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>강력한 DSL인 Mark-to-Query Language(MTQL)을 사용하여 &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;와 같은 부울 논리로 질문을 필터링하고 정확한 질문을 선택하세요.</value>
+  </data>
+  <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
+    <value>MTQL을 사용하여 태그 및 지식 포인트별로 문제를 선택하세요. 시험 구조, 시간 및 채점 규칙을 정의합니다.</value>
+  </data>
+  <data name="View on GitHub" xml:space="preserve">
+    <value>GitHub에서 보기</value>
+  </data>
+  <data name="WeChat Integration" xml:space="preserve">
+    <value>위챗 연동</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat 통합은 선택 사항입니다. 플랫폼은 독립형 웹 애플리케이션으로 완전히 작동합니다. WeChat 로그인, 미니 프로그램 접근 또는 WeChat 결제를 활성화하려는 경우에만 WeChat 자격 증명이 필요합니다.</value>
+  </data>
+  <data name="WeChat Mini Programs" xml:space="preserve">
+    <value>위챗 미니프로그램</value>
+  </data>
+  <data name="WeChat Payment" xml:space="preserve">
+    <value>위챗 페이</value>
+  </data>
+  <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
+    <value>WeChatExam은 다양한 교육 및 평가 시나리오에 적합합니다.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>환영합니다</value>
@@ -201,14 +381,29 @@
   <data name="What do I need to get started?" xml:space="preserve">
     <value>시작하려면 무엇이 필요하나요?</value>
   </data>
+  <data name="What is MTQL and how does it work?" xml:space="preserve">
+    <value>MTQL이 무엇이며 어떻게 작동하나요?</value>
+  </data>
   <data name="What our developers say" xml:space="preserve">
     <value>개발자들의 평가</value>
+  </data>
+  <data name="When an exam starts, the system creates an immutable snapshot of the paper and its questions. All students see the exact same content, even if the original paper template or questions are modified later. This guarantees a fair and consistent assessment experience." xml:space="preserve">
+    <value>시험이 시작되면 시스템은 시험지와 그 문제들의 변경 불가능한 스냅샷을 생성합니다. 원본 시험지 템플릿이나 문제가 나중에 수정되더라도 모든 학생은 동일한 콘텐츠를 정확하게 확인하게 됩니다. 이는 공정하고 일관된 평가 경험을 보장합니다.</value>
   </data>
   <data name="Why use the Aiursoft Template?" xml:space="preserve">
     <value>Aiursoft 템플릿을 사용하는 이유</value>
   </data>
+  <data name="Why use WeChatExam?" xml:space="preserve">
+    <value>왜 위챗익스엄을 사용해야 하나요?</value>
+  </data>
   <data name="Yes, Aiursoft Template is completely free and open-source under the MIT License. You can use it for personal and commercial projects without any cost." xml:space="preserve">
     <value>네, Aiursoft Template은 MIT 라이선스 하에 완전히 무료이며 오픈 소스입니다. 개인 및 상업 프로젝트에 무료로 사용하실 수 있습니다.</value>
+  </data>
+  <data name="Yes, WeChatExam is completely free and open-source under the MIT License. You can use it for personal, educational, and commercial purposes without any cost." xml:space="preserve">
+    <value>네, WeChatExam은 MIT 라이선스 하에 완전히 무료이며 오픈소스입니다. 개인, 교육, 상업적 목적으로 비용을 지불하지 않고 사용할 수 있습니다.</value>
+  </data>
+  <data name="You can deploy via Docker with a single command, use the Ubuntu install script for automated systemd setup, or run it manually with the .NET SDK. See the README on GitHub for detailed deployment instructions." xml:space="preserve">
+    <value>Docker를 통해 단일 명령어로 배포하거나, Ubuntu 설치 스크립트를 사용하여 systemd를 자동으로 설정하거나, .NET SDK로 수동으로 실행할 수 있습니다. 자세한 배포 지침은 GitHub의 README를 참조하세요.</value>
   </data>
   <data name="You can get community support via GitHub Discussions. Please visit our" xml:space="preserve">
     <value>GitHub Discussions를 통해 커뮤니티 지원을 받을 수 있습니다. 저희</value>
