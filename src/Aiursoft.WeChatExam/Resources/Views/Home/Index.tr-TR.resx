@@ -18,11 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
+      <data name="1. Build Question Bank" xml:space="preserve">
+    <value>1. Soru Havuzu Oluşturun</value>
+  </data>
+  <data name="2. Design Paper Templates" xml:space="preserve">
+    <value>2. Kağıt Şablonları Tasarla</value>
+  </data>
+  <data name="3. Deliver to Students" xml:space="preserve">
+    <value>3. Öğrencilere Teslim Et</value>
+  </data>
+  <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
     <value>İnce taneli izin yönetimi için yerleşik bir Rol Tabanlı Erişim Kontrolü (RBAC) sistemi.</value>
   </data>
   <data name="A complete solution for user authentication and profile management right out of the box." xml:space="preserve">
     <value>Kutudan çıkar çıkmaz kullanıma hazır, kullanıcı kimlik doğrulama ve profil yönetimi için eksiksiz bir çözüm.</value>
+  </data>
+  <data name="A comprehensive online examination system with WeChat integration. Create papers, organize knowledge points, tag questions, and deliver exams seamlessly through WeChat." xml:space="preserve">
+    <value>WeChat entegrasyonlu kapsamlı bir çevrimiçi sınav sistemi. Kağıtlar oluşturun, bilgi noktalarını düzenleyin, soruları etiketleyin ve sınavları WeChat üzerinden sorunsuz bir şekilde gerçekleştirin.</value>
   </data>
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>Hem masaüstü hem de mobil cihazlarda harika görünen tamamen duyarlı bir düzen.</value>
@@ -30,8 +42,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Modern, zengin özelliklere sahip ve bir sonraki web uygulamanız için oldukça genişletilebilir bir temel.</value>
   </data>
+  <data name="A modern, flexible, and comprehensive platform for creating and managing online examinations." xml:space="preserve">
+    <value>Çevrimiçi sınavlar oluşturmak ve yönetmek için modern, esnek ve kapsamlı bir platform.</value>
+  </data>
   <data name="Achieve more with Aiursoft Template" xml:space="preserve">
     <value>Aiursoft Template ile daha fazlasını başarın</value>
+  </data>
+  <data name="AI-Powered Assistance" xml:space="preserve">
+    <value>AI Destekli Yardım</value>
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>Yapay Zeka Destekli Çeviriler</value>
@@ -45,6 +63,9 @@
   <data name="Anduin" xml:space="preserve">
     <value>Anduin</value>
   </data>
+  <data name="Assess employee knowledge with internal training exams. Track progress over time and identify areas needing additional training investment." xml:space="preserve">
+    <value>Çalışanların bilgilerini iç eğitim sınavlarıyla değerlendirin. Zaman içinde ilerlemeyi takip edin ve ek eğitim yatırımı gereken alanları belirleyin.</value>
+  </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Otomatik Karanlık Mod</value>
   </data>
@@ -54,8 +75,20 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Küresel erişim için 28 dile otomatik, yapay zeka destekli çeviri.</value>
   </data>
+  <data name="Beyond exams, use the platform for surveys, polls, and feedback collection with WeChat distribution for high response rates." xml:space="preserve">
+    <value>Sınavların ötesinde, yüksek yanıt oranları için WeChat dağıtımı ile anketler, anketler ve geri bildirim toplama amacıyla platformu kullanın.</value>
+  </data>
   <data name="Build your next big thing," xml:space="preserve">
     <value>Bir sonraki büyük projenizi oluşturun,</value>
+  </data>
+  <data name="Build your question bank, organize by knowledge points, create paper templates, and deliver exams to students — all within one integrated platform." xml:space="preserve">
+    <value>Soru havuzunuzu oluşturun, bilgi noktalarına göre düzenleyin, kağıt şablonları hazırlayın ve sınavları öğrencilere iletin — tümü tek bir entegre platformda.</value>
+  </data>
+  <data name="Built for Education" xml:space="preserve">
+    <value>Eğitim İçin Geliştirildi</value>
+  </data>
+  <data name="Built-in OpenID Connect support for seamless authentication. Integrate with any OIDC provider alongside WeChat login, with automatic role synchronization." xml:space="preserve">
+    <value>Doğrudan OpenID Connect desteği ile sorunsuz kimlik doğrulama. WeChat girişi ile birlikte herhangi bir OIDC sağlayıcısıyla entegre edin, otomatik rol senkronizasyonu ile.</value>
   </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Dahili Kullanıcı Yönetimi</value>
@@ -66,11 +99,32 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Kapsamlı Dokümantasyon</value>
   </data>
+  <data name="Corporate Training" xml:space="preserve">
+    <value>Kurumsal Eğitim</value>
+  </data>
+  <data name="Create certification exams with time-limited access, randomized question selection, and WeChat Pay integration for exam fees." xml:space="preserve">
+    <value>Sınav ücretleri için WeChat Pay entegrasyonu, sınırlı süreli erişim ve rastgele soru seçimi ile sertifika sınavları oluşturun.</value>
+  </data>
+  <data name="Create questions organized by hierarchical categories and knowledge points. Tag them with taxonomies for advanced filtering." xml:space="preserve">
+    <value>Hiyerarşik kategoriler ve bilgi noktalarına göre düzenlenmiş sorular oluşturun. Gelişmiş filtreleme için onları taksonomilerle etiketleyin.</value>
+  </data>
+  <data name="Create reusable paper templates. When an exam starts, a snapshot freezes the content so every student sees the same questions even if the template is updated later." xml:space="preserve">
+    <value>Tekrar kullanılabilir kağıt şablonları oluşturun. Bir sınav başladığında, bir anlık görüntü içeriği dondurur, böylece şablon daha sonra güncellense bile her öğrenci aynı soruları görür.</value>
+  </data>
   <data name="Dashboard Website" xml:space="preserve">
     <value>Kontrol Paneli Web Sitesi</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>Tartışmalar sayfası</value>
+  </data>
+  <data name="Do I need a WeChat Official Account to use it?" xml:space="preserve">
+    <value>Kullanmak için bir WeChat Resmi Hesabına ihtiyacım var mı?</value>
+  </data>
+  <data name="Docker Hub" xml:space="preserve">
+    <value>Docker Hub</value>
+  </data>
+  <data name="Docker-Ready Deployment" xml:space="preserve">
+    <value>Docker Hazır Dağıtım</value>
   </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Docker ile Dağıtıma Hazır</value>
@@ -80,6 +134,15 @@
   </data>
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>SQLite, MySQL, SQL Server gibi sağlayıcılar ile testler için kullanılan bellek içi veritabanı arasında kolayca geçiş yapın.</value>
+  </data>
+  <data name="Easily switch between SQLite, MySQL, SQL Server, and in-memory database providers to match your deployment needs from development to production." xml:space="preserve">
+    <value>SQLite, MySQL, SQL Server ve bellek içi veritabanı sağlayıcıları arasında, geliştirme aşamasından üretim aşamasına kadar dağıtım ihtiyaçlarınıza uygun olarak kolayca geçiş yapın.</value>
+  </data>
+  <data name="Embed exams directly into WeChat Mini Programs. Students take assessments without leaving WeChat, with instant results and sharing capabilities." xml:space="preserve">
+    <value>Sınavları doğrudan WeChat Mini Uygulamalarına yerleştirin. Öğrenciler WeChat&apos;ten çıkmadan değerlendirmelere katılabilir, anında sonuçlar alır ve paylaşım yapabilir.</value>
+  </data>
+  <data name="Exam Records &amp; Analytics" xml:space="preserve">
+    <value>Sınav Kayıtları ve Analitikleri</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>SSS</value>
@@ -93,6 +156,12 @@
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Otomatik avatar sıkıştırmalı, dahili bir dosya yönetim sistemi özelliği sunar.</value>
   </data>
+  <data name="Fine-grained Role-Based Access Control for managing teachers, students, and administrators with distinct permissions and capabilities." xml:space="preserve">
+    <value>Öğretmenleri, öğrencileri ve yöneticileri farklı izinler ve yeteneklerle yönetmek için ince taneli Rol Tabanlı Erişim Kontrolü.</value>
+  </data>
+  <data name="Flexible Tagging System" xml:space="preserve">
+    <value>Esnek Etiketleme Sistemi</value>
+  </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>her türlü soru veya sorun bildirimi için.</value>
   </data>
@@ -102,8 +171,20 @@
   <data name="Frequently asked questions" xml:space="preserve">
     <value>Sıkça Sorulan Sorular</value>
   </data>
+  <data name="From Questions to Exams in Minutes" xml:space="preserve">
+    <value>Dakikalar İçinde Sorulardan Sınavlara</value>
+  </data>
+  <data name="Full Docker support with pre-built images on Docker Hub. Deploy with a single command, or use the install script for Ubuntu servers with systemd integration." xml:space="preserve">
+    <value>Docker Hub üzerinde önceden hazırlanmış imajlarla tam Docker desteği. Tek bir komutla dağıtım yapın veya systemd entegrasyonlu Ubuntu sunucuları için dağıtım betiğini kullanın.</value>
+  </data>
+  <data name="Get started with WeChatExam today. Deploy in minutes with Docker." xml:space="preserve">
+    <value>WeChatExam&apos;ı bugün başlatın. Docker ile dakikalar içinde dağıtın.</value>
+  </data>
   <data name="Go to dashboard" xml:space="preserve">
     <value>Panele git</value>
+  </data>
+  <data name="Group tags by taxonomies like Difficulty, Source, or Year. Apply multiple tags to each question for flexible categorization and advanced filtering." xml:space="preserve">
+    <value>Etiketleri Zorluk, Kaynak veya Yıl gibi taksonomilere göre gruplandırın. Esnek kategorilendirme ve gelişmiş filtreleme için her soruya birden fazla etiket uygulayın.</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Merhaba Dünya!</value>
@@ -114,11 +195,23 @@
   <data name="Here&apos;s what developers from our community have to say." xml:space="preserve">
     <value>Topluluğumuzdaki geliştiricilerin söyledikleri.</value>
   </data>
+  <data name="Hierarchical Knowledge Points" xml:space="preserve">
+    <value>Hiyerarşik Bilgi Noktaları</value>
+  </data>
   <data name="How can I get support?" xml:space="preserve">
     <value>Nasıl destek alabilirim?</value>
   </data>
   <data name="How do I deploy my application?" xml:space="preserve">
     <value>Uygulamamı nasıl dağıtırım?</value>
+  </data>
+  <data name="How do I deploy WeChatExam?" xml:space="preserve">
+    <value>WeChatExam&apos;ı nasıl dağıtırım?</value>
+  </data>
+  <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
+    <value>Kağıt sınav görüntüleri adilliği nasıl sağlar?</value>
+  </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Nasıl Çalışır</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Kapsamlı belgeler ve hızlı bir şekilde başlamanızı sağlayacak pratik örnekler içerir.</value>
@@ -126,8 +219,17 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Entegre Dosya Yönetimi</value>
   </data>
+  <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
+    <value>Sınavlardan gelir elde etmek için WeChat Pay (TenpayV3) entegrasyonu. Premium sınav erişimi, sertifikalar veya ders materyalleri için doğrudan WeChat üzerinden ücretlendirme yapın.</value>
+  </data>
+  <data name="Integrated with Ollama for AI-powered question assistance. Get help generating questions, explaining answers, or reviewing exam content." xml:space="preserve">
+    <value>Ollama ile entegre edilmiştir, AI destekli soru yardımı için. Soru oluşturma, cevap açıklama veya sınav içeriği gözden geçirme konusunda yardım alın.</value>
+  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>Aiursoft Template&apos;ı kullanmak ücretsiz mi?</value>
+  </data>
+  <data name="Is WeChatExam free to use?" xml:space="preserve">
+    <value>WeChatExam&apos;ı kullanmak ücretsiz mi?</value>
   </data>
   <data name="Join Discussions" xml:space="preserve">
     <value>Tartışmalara Katıl</value>
@@ -141,17 +243,50 @@
   <data name="MIT Licence" xml:space="preserve">
     <value>MIT Lisansı</value>
   </data>
+  <data name="MTQL (Mark-to-Query Language) is a domain-specific language for filtering questions by their tags. You write expressions like &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; to precisely select which questions appear in a paper. It supports AND, OR, NOT, and parenthesized grouping." xml:space="preserve">
+    <value>MTQL (Mark-to-Query Language), soruları etiketlerine göre filtrelemek için özel amaçlı bir dildir. Bir sınav kağıdında hangi soruların yer alacağını hassas bir şekilde seçmek için &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; gibi ifadeler yazarsınız. AND, OR, NOT ve parantezli gruplama desteği sağlar.</value>
+  </data>
+  <data name="MTQL Query Language" xml:space="preserve">
+    <value>MTQL Sorgu Dili</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Çoklu Veritabanı Desteği</value>
   </data>
   <data name="Music Tools" xml:space="preserve">
     <value>Müzik Araçları</value>
   </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>Çevrimiçi Kurslar</value>
+  </data>
+  <data name="Online Exam Platform," xml:space="preserve">
+    <value>Çevrimiçi Sınav Platformu,</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Açık Kaynak</value>
   </data>
+  <data name="OpenID Connect Authentication" xml:space="preserve">
+    <value>OpenID Connect Kimlik Doğrulama</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect Entegrasyonu</value>
+  </data>
+  <data name="Organize educational content in a hierarchical tree of categories and knowledge points. Map questions to specific learning objectives and track what each question assesses." xml:space="preserve">
+    <value>Eğitim içeriğini kategoriler ve bilgi noktalarından oluşan hiyerarşik bir ağaçta düzenleyin. Soruları belirli öğrenme hedefleriyle eşleştirin ve her sorunun neyi ölçtüğunu takip edin.</value>
+  </data>
+  <data name="Pair with online course platforms to deliver lesson quizzes, chapter tests, and final assessments with automatic grading and feedback." xml:space="preserve">
+    <value>Ders sınavlarını, bölüm testlerini ve final değerlendirmelerini otomatik derecelendirme ve geri bildirimle sunmak için çevrimiçi kurs platformlarıyla entegre edin.</value>
+  </data>
+  <data name="Paper Templates &amp; Snapshots" xml:space="preserve">
+    <value>Kağıt Şablonları ve Anlık Görüntüler</value>
+  </data>
+  <data name="Powered by WeChat" xml:space="preserve">
+    <value>WeChat Destekli</value>
+  </data>
+  <data name="Professional Certifications" xml:space="preserve">
+    <value>Profesyonel Sertifikalar</value>
+  </data>
+  <data name="Publish exams with start/end times. Students access via WeChat or web, answer with frozen snapshots ensuring fairness." xml:space="preserve">
+    <value>Sınavları başlangıç/bitiş zamanlarıyla yayınlayın. Öğrenciler WeChat veya web üzerinden erişir, adilliği sağlamak için dondurulmuş ekran görüntüleriyle cevap verir.</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC Yetkilendirmesi</value>
@@ -159,20 +294,35 @@
   <data name="Read the document" xml:space="preserve">
     <value>Belgeyi okuyun</value>
   </data>
+  <data name="Ready to build your exam platform?" xml:space="preserve">
+    <value>Sınav platformunuzu oluşturmak için hazır mısınız?</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Duyarlı Tasarım</value>
   </data>
   <data name="Reviews" xml:space="preserve">
     <value>İncelemeler</value>
   </data>
+  <data name="Run midterms, finals, and quizzes with structured knowledge point tracking and detailed performance analytics for each student." xml:space="preserve">
+    <value>Midterm sınavları, final sınavları ve kısa sınavları, her öğrenci için yapılandırılmış bilgi noktası takibi ve detaylı performans analizleriyle gerçekleştirin.</value>
+  </data>
+  <data name="Schools &amp; Universities" xml:space="preserve">
+    <value>Okullar ve Üniversiteler</value>
+  </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Herhangi bir OpenID Connect sağlayıcısıyla sorunsuz bir şekilde entegre olun, otomatik rol senkronizasyonu ile.</value>
+  </data>
+  <data name="Seamlessly integrate with the WeChat ecosystem. Users can log in, take exams, and receive results directly through WeChat Official Accounts and Mini Programs." xml:space="preserve">
+    <value>WeChat ekosistemiyle sorunsuz entegrasyon. Kullanıcılar, WeChat Resmi Hesapları ve Mini Uygulamaları üzerinden doğrudan giriş yapabilir, sınavlara girebilir ve sonuçları alabilir.</value>
   </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Kullanıcının sistem ayarlarına otomatik olarak uyum sağlayan akıllı karanlık mod.</value>
   </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Yeni bir proje başlat</value>
+  </data>
+  <data name="Surveys &amp; Polls" xml:space="preserve">
+    <value>Anketler &amp; Araştırmalar</value>
   </data>
   <data name="Technical Lead" xml:space="preserve">
     <value>Teknik Lider</value>
@@ -189,11 +339,41 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>Bu, yolculuğa başladığımız bir şablon projedir...</value>
   </data>
+  <data name="Track every student attempt with detailed answer records. Review individual answers, analyze performance, and identify knowledge gaps across your student base." xml:space="preserve">
+    <value>Her öğrenci denemesini detaylı cevap kayıtlarıyla takip edin. Bireysel cevapları inceleyin, performansı analiz edin ve öğrenci tabanınızda bilgi boşluklarını belirleyin.</value>
+  </data>
   <data name="Usage" xml:space="preserve">
     <value>Kullanım</value>
   </data>
+  <data name="Use Cases" xml:space="preserve">
+    <value>Kullanım Senaryoları</value>
+  </data>
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Onu SaaS&apos;ınız için bir temel, mobil uygulamanız için bir arka uç, bir kurumsal web sitesi veya kişisel bir blog olarak kullanın. Olanaklar sonsuzdur.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Mark-to-Query Language&apos;ı (MTQL), güçlü bir DSL&apos;yi kullanarak soruları &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; gibi mantıksal ifadelerle filtreleyin ve hassas soru seçimi yapın.</value>
+  </data>
+  <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
+    <value>MTQL kullanarak soruları etiketler ve bilgi noktalarına göre seçin. Sınav yapısını, süresini ve puanlama kurallarını belirleyin.</value>
+  </data>
+  <data name="View on GitHub" xml:space="preserve">
+    <value>GitHub&apos;da Görüntüle</value>
+  </data>
+  <data name="WeChat Integration" xml:space="preserve">
+    <value>WeChat Entegrasyonu</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat entegrasyonu isteğe bağlıdır. Platform, tamamen bağımsız bir web uygulaması olarak çalışır. WeChat girişi, Mini Program erişimi veya WeChat Pay&apos;i etkinleştirmek istiyorsanız yalnızca WeChat kimlik bilgilerine ihtiyacınız vardır.</value>
+  </data>
+  <data name="WeChat Mini Programs" xml:space="preserve">
+    <value>WeChat Mini Uygulamaları</value>
+  </data>
+  <data name="WeChat Payment" xml:space="preserve">
+    <value>WeChat Ödemesi</value>
+  </data>
+  <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
+    <value>WeChatExam, geniş bir eğitim ve değerlendirme senaryosuna uyum sağlar.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Hoş Geldiniz</value>
@@ -201,14 +381,29 @@
   <data name="What do I need to get started?" xml:space="preserve">
     <value>Başlamak için neye ihtiyacım var?</value>
   </data>
+  <data name="What is MTQL and how does it work?" xml:space="preserve">
+    <value>MTQL nedir ve nasıl çalışır?</value>
+  </data>
   <data name="What our developers say" xml:space="preserve">
     <value>Geliştiricilerimizin Görüşleri</value>
+  </data>
+  <data name="When an exam starts, the system creates an immutable snapshot of the paper and its questions. All students see the exact same content, even if the original paper template or questions are modified later. This guarantees a fair and consistent assessment experience." xml:space="preserve">
+    <value>Sınav başladığında sistem, kağıdın ve sorularının değiştirilemez bir anlık görüntüsünü oluşturur. Orijinal kağıt şablonu veya sorular daha sonra değiştirilse bile tüm öğrenciler aynı içeriği görür. Bu, adil ve tutarlı bir değerlendirme deneyimi garanti eder.</value>
   </data>
   <data name="Why use the Aiursoft Template?" xml:space="preserve">
     <value>Neden Aiursoft Template Kullanmalısınız?</value>
   </data>
+  <data name="Why use WeChatExam?" xml:space="preserve">
+    <value>WeChatExam&apos;ı neden kullanmalıyım?</value>
+  </data>
   <data name="Yes, Aiursoft Template is completely free and open-source under the MIT License. You can use it for personal and commercial projects without any cost." xml:space="preserve">
     <value>Evet, Aiursoft Template MIT Lisansı altında tamamen ücretsiz ve açık kaynaklıdır. Kişisel ve ticari projelerinizde hiçbir ücret ödemeden kullanabilirsiniz.</value>
+  </data>
+  <data name="Yes, WeChatExam is completely free and open-source under the MIT License. You can use it for personal, educational, and commercial purposes without any cost." xml:space="preserve">
+    <value>Evet, WeChatExam tamamen ücretsiz ve MIT Lisansı altında açık kaynaklıdır. Kişisel, eğitim ve ticari amaçlarla herhangi bir maliyet olmadan kullanabilirsiniz.</value>
+  </data>
+  <data name="You can deploy via Docker with a single command, use the Ubuntu install script for automated systemd setup, or run it manually with the .NET SDK. See the README on GitHub for detailed deployment instructions." xml:space="preserve">
+    <value>Docker ile tek bir komutla dağıtabilir, otomatik systemd kurulumu için Ubuntu yükleme betiğini kullanabilir veya .NET SDK ile manuel olarak çalıştırabilirsiniz. Detaylı dağıtım talimatları için GitHub&apos;daki README dosyasına bakın.</value>
   </data>
   <data name="You can get community support via GitHub Discussions. Please visit our" xml:space="preserve">
     <value>GitHub Tartışmaları aracılığıyla topluluk desteği alabilirsiniz. Lütfen bizim</value>
