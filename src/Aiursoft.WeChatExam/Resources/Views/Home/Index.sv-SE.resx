@@ -18,11 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
+      <data name="1. Build Question Bank" xml:space="preserve">
+    <value>1. Bygg frågebank</value>
+  </data>
+  <data name="2. Design Paper Templates" xml:space="preserve">
+    <value>2. Skapa provmallar</value>
+  </data>
+  <data name="3. Deliver to Students" xml:space="preserve">
+    <value>3. Leverera till studenter</value>
+  </data>
+  <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
     <value>Ett inbyggt rollbaserat åtkomstkontrollsystem (RBAC) för detaljerad behörighetshantering.</value>
   </data>
   <data name="A complete solution for user authentication and profile management right out of the box." xml:space="preserve">
     <value>En komplett lösning för användarautentisering och profilanpassning direkt ur lådan.</value>
+  </data>
+  <data name="A comprehensive online examination system with WeChat integration. Create papers, organize knowledge points, tag questions, and deliver exams seamlessly through WeChat." xml:space="preserve">
+    <value>E omfattande online-examinationssystem med WeChat-integration. Skapa prov, organisera kunskapspunkter, märk frågor och leverera prov sömlöst via WeChat.</value>
   </data>
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>En helt responsiv layout som ser bra ut på både skrivbord och mobila enheter.</value>
@@ -30,8 +42,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>En modern, funktionsrik och mycket utbyggbar grund för din nästa webbapplikation.</value>
   </data>
+  <data name="A modern, flexible, and comprehensive platform for creating and managing online examinations." xml:space="preserve">
+    <value>En modern, flexibel och omfattande plattform för att skapa och hantera online-examen.</value>
+  </data>
   <data name="Achieve more with Aiursoft Template" xml:space="preserve">
     <value>Uppnå mer med Aiursoft Template</value>
+  </data>
+  <data name="AI-Powered Assistance" xml:space="preserve">
+    <value>AI-drivet stöd</value>
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>AI-drivna översättningar</value>
@@ -45,6 +63,9 @@
   <data name="Anduin" xml:space="preserve">
     <value>Anduin</value>
   </data>
+  <data name="Assess employee knowledge with internal training exams. Track progress over time and identify areas needing additional training investment." xml:space="preserve">
+    <value>Utvärdera medarbetarnas kunskap med interna utbildningstester. Följ framstegen över tid och identifiera områden som kräver ytterligare utbildningsinvesteringar.</value>
+  </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Automatiskt mörkt läge</value>
   </data>
@@ -54,8 +75,20 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Automatisk, AI-driven översättning till 28 språk för global räckvidd.</value>
   </data>
+  <data name="Beyond exams, use the platform for surveys, polls, and feedback collection with WeChat distribution for high response rates." xml:space="preserve">
+    <value>Utöver prov kan du använda plattformen för enkäter, omröstningar och insamling av feedback med WeChat-distribution för höga svarsfrekvenser.</value>
+  </data>
   <data name="Build your next big thing," xml:space="preserve">
     <value>Bygg din nästa stora grej,</value>
+  </data>
+  <data name="Build your question bank, organize by knowledge points, create paper templates, and deliver exams to students — all within one integrated platform." xml:space="preserve">
+    <value>Bygg ditt frågebank, organisera efter kunskapsområden, skapa pappersmallar och leverera prov till studenter – allt inom en integrerad plattform.</value>
+  </data>
+  <data name="Built for Education" xml:space="preserve">
+    <value>Skapad för utbildning</value>
+  </data>
+  <data name="Built-in OpenID Connect support for seamless authentication. Integrate with any OIDC provider alongside WeChat login, with automatic role synchronization." xml:space="preserve">
+    <value>Inbyggt OpenID Connect-stöd för smidig autentisering. Integrera med valfri OIDC-leverantör tillsammans med WeChat-inloggning, med automatisk rollsynkronisering.</value>
   </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Inbyggd användarhantering</value>
@@ -66,11 +99,32 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Omfattande dokumentation</value>
   </data>
+  <data name="Corporate Training" xml:space="preserve">
+    <value>Företagsutbildning</value>
+  </data>
+  <data name="Create certification exams with time-limited access, randomized question selection, and WeChat Pay integration for exam fees." xml:space="preserve">
+    <value>Skapa certifikatprov med tidsbegränsad åtkomst, slumpmässig frågeutwahl och WeChat Pay-integration för provavgifter.</value>
+  </data>
+  <data name="Create questions organized by hierarchical categories and knowledge points. Tag them with taxonomies for advanced filtering." xml:space="preserve">
+    <value>Skapa frågor organiserade efter hierarkiska kategorier och kunskapsområden. Märk dem med taxonomier för avancerad filtrering.</value>
+  </data>
+  <data name="Create reusable paper templates. When an exam starts, a snapshot freezes the content so every student sees the same questions even if the template is updated later." xml:space="preserve">
+    <value>Skapa återanvändbara mallar för pappersprov. När ett prov startar fryses innehållet i en ögonblicksbild så att varje student ser samma frågor även om mallen uppdateras senare.</value>
+  </data>
   <data name="Dashboard Website" xml:space="preserve">
     <value>Instrumentpanelswebbplats</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>Diskussionssida</value>
+  </data>
+  <data name="Do I need a WeChat Official Account to use it?" xml:space="preserve">
+    <value>Behöver jag ett officiellt WeChat-konto för att använda det?</value>
+  </data>
+  <data name="Docker Hub" xml:space="preserve">
+    <value>Docker Hub</value>
+  </data>
+  <data name="Docker-Ready Deployment" xml:space="preserve">
+    <value>Docker-klar deployment</value>
   </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Dockeriserad för distribution</value>
@@ -80,6 +134,15 @@
   </data>
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Enkelt växla mellan leverantörer som SQLite, MySQL, SQL Server och ett minnesbaserat databassystem för testning.</value>
+  </data>
+  <data name="Easily switch between SQLite, MySQL, SQL Server, and in-memory database providers to match your deployment needs from development to production." xml:space="preserve">
+    <value>Växla enkelt mellan SQLite, MySQL, SQL Server och in-memory-databasleverantörer för att passa dina distributionsbehov från utveckling till produktion.</value>
+  </data>
+  <data name="Embed exams directly into WeChat Mini Programs. Students take assessments without leaving WeChat, with instant results and sharing capabilities." xml:space="preserve">
+    <value>Bädda in prov direkt i WeChat Mini Programs. Studenter genomför bedömningar utan att lämna WeChat, med omedelbara resultat och möjlighet till delning.</value>
+  </data>
+  <data name="Exam Records &amp; Analytics" xml:space="preserve">
+    <value>Provregister &amp; analys</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>Vanliga frågor</value>
@@ -93,6 +156,12 @@
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Har ett inbyggt filhanteringssystem med automatisk komprimering av avatarer.</value>
   </data>
+  <data name="Fine-grained Role-Based Access Control for managing teachers, students, and administrators with distinct permissions and capabilities." xml:space="preserve">
+    <value>Rullning av åtkomstkontroll baserad på roller för att hantera lärare, elever och administratörer med distinkta behörigheter och funktioner.</value>
+  </data>
+  <data name="Flexible Tagging System" xml:space="preserve">
+    <value>Flexibel märkningssystem</value>
+  </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>för frågor eller för att rapportera problem.</value>
   </data>
@@ -102,8 +171,20 @@
   <data name="Frequently asked questions" xml:space="preserve">
     <value>Vanliga frågor</value>
   </data>
+  <data name="From Questions to Exams in Minutes" xml:space="preserve">
+    <value>Från frågor till prov på minuter</value>
+  </data>
+  <data name="Full Docker support with pre-built images on Docker Hub. Deploy with a single command, or use the install script for Ubuntu servers with systemd integration." xml:space="preserve">
+    <value>Full Docker-stöd med förbyggda avbildningar på Docker Hub. Distribuera med ett enda kommando, eller använd installationskriptet för Ubuntu-servrar med systemd-integration.</value>
+  </data>
+  <data name="Get started with WeChatExam today. Deploy in minutes with Docker." xml:space="preserve">
+    <value>Kom igång med WeChatExam idag. Distribuera på några minuter med Docker.</value>
+  </data>
   <data name="Go to dashboard" xml:space="preserve">
     <value>Gå till instrumentpanelen</value>
+  </data>
+  <data name="Group tags by taxonomies like Difficulty, Source, or Year. Apply multiple tags to each question for flexible categorization and advanced filtering." xml:space="preserve">
+    <value>Gruppera taggar efter taxonomier som svårighetsgrad, källa eller år. Lägg till flera taggar på varje fråga för flexibel kategorisering och avancerad filtrering.</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Hej Världen!</value>
@@ -114,11 +195,23 @@
   <data name="Here&apos;s what developers from our community have to say." xml:space="preserve">
     <value>Här är vad utvecklare från vår community har att säga.</value>
   </data>
+  <data name="Hierarchical Knowledge Points" xml:space="preserve">
+    <value>Hierarkiska kunskapspunkter</value>
+  </data>
   <data name="How can I get support?" xml:space="preserve">
     <value>Hur får jag support?</value>
   </data>
   <data name="How do I deploy my application?" xml:space="preserve">
     <value>Hur distribuerar jag min applikation?</value>
+  </data>
+  <data name="How do I deploy WeChatExam?" xml:space="preserve">
+    <value>Hur distribuerar jag WeChatExam?</value>
+  </data>
+  <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
+    <value>Hur säkerställer pappersögonblicksbilder rättvisa?</value>
+  </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Så här fungerar det</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Inkluderar omfattande dokumentation och praktiska exempel för att du snabbt ska komma igång.</value>
@@ -126,8 +219,17 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Integrerad filhantering</value>
   </data>
+  <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
+    <value>Integrerat WeChat Pay (TenpayV3) för att ta betalt för prov. Ta ut betalning för premiumåtkomst till prov, certifieringar eller kursmaterial direkt via WeChat.</value>
+  </data>
+  <data name="Integrated with Ollama for AI-powered question assistance. Get help generating questions, explaining answers, or reviewing exam content." xml:space="preserve">
+    <value>Integrerad med Ollama för AI-drivet frågeassistans. Få hjälp med att generera frågor, förklara svar eller granska examensinnehåll.</value>
+  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>Är det gratis att använda Aiursoft Template?</value>
+  </data>
+  <data name="Is WeChatExam free to use?" xml:space="preserve">
+    <value>Är WeChatExam gratis att använda?</value>
   </data>
   <data name="Join Discussions" xml:space="preserve">
     <value>Delta i diskussioner</value>
@@ -141,17 +243,50 @@
   <data name="MIT Licence" xml:space="preserve">
     <value>MIT-licens</value>
   </data>
+  <data name="MTQL (Mark-to-Query Language) is a domain-specific language for filtering questions by their tags. You write expressions like &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; to precisely select which questions appear in a paper. It supports AND, OR, NOT, and parenthesized grouping." xml:space="preserve">
+    <value>MTQL (Mark-to-Query Language) är ett domänspecifikt språk för att filtrera frågor baserat på deras taggar. Du skriver uttryck som &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; för att exakt välja ut vilka frågor som ska visas i ett prov. Det stöder AND, OR, NOT och parenteser.</value>
+  </data>
+  <data name="MTQL Query Language" xml:space="preserve">
+    <value>MTQL-frågespråk</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Stöd för flera databaser</value>
   </data>
   <data name="Music Tools" xml:space="preserve">
     <value>Musikverktyg</value>
   </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>Onlinekurser</value>
+  </data>
+  <data name="Online Exam Platform," xml:space="preserve">
+    <value>Online provplattform,</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Öppen källkod</value>
   </data>
+  <data name="OpenID Connect Authentication" xml:space="preserve">
+    <value>OpenID Connect-autentisering</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>OpenID Connect-integrering</value>
+  </data>
+  <data name="Organize educational content in a hierarchical tree of categories and knowledge points. Map questions to specific learning objectives and track what each question assesses." xml:space="preserve">
+    <value>Organisera utbildningsinnehåll i ett hierarkiskt träd med kategorier och kunskapspunkter. Koppla frågor till specifika lärandemål och spår vad varje fråga bedömer.</value>
+  </data>
+  <data name="Pair with online course platforms to deliver lesson quizzes, chapter tests, and final assessments with automatic grading and feedback." xml:space="preserve">
+    <value>Koppla ihop med plattformar för onlinekurser för att leverera lektionsquiz, kapitelprov och slutprov med automatisk betygssättning och feedback.</value>
+  </data>
+  <data name="Paper Templates &amp; Snapshots" xml:space="preserve">
+    <value>Pappersmall &amp; ögonblicksbilder</value>
+  </data>
+  <data name="Powered by WeChat" xml:space="preserve">
+    <value>Drivs av WeChat</value>
+  </data>
+  <data name="Professional Certifications" xml:space="preserve">
+    <value>Yrkescertifieringar</value>
+  </data>
+  <data name="Publish exams with start/end times. Students access via WeChat or web, answer with frozen snapshots ensuring fairness." xml:space="preserve">
+    <value>Publicera prov med start- och sluttider. Studenter får åtkomst via WeChat eller webben, och svarar med frysta skärmdumpar för att säkerställa rättvisa.</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>RBAC-auktorisering</value>
@@ -159,20 +294,35 @@
   <data name="Read the document" xml:space="preserve">
     <value>Läs dokumentet</value>
   </data>
+  <data name="Ready to build your exam platform?" xml:space="preserve">
+    <value>Redo att bygga din examinationplattform?</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Responsiv Design</value>
   </data>
   <data name="Reviews" xml:space="preserve">
     <value>Recensioner</value>
   </data>
+  <data name="Run midterms, finals, and quizzes with structured knowledge point tracking and detailed performance analytics for each student." xml:space="preserve">
+    <value>Genomför mellaneprov, slutprov och kunskapstester med strukturerad spårning av kunskapsmål och detaljerad prestandaanalys för varje elev.</value>
+  </data>
+  <data name="Schools &amp; Universities" xml:space="preserve">
+    <value>Skolor och universitet</value>
+  </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Integrera sömlöst med vilken OpenID Connect-leverantör som helst, med automatisk rollsynkronisering.</value>
+  </data>
+  <data name="Seamlessly integrate with the WeChat ecosystem. Users can log in, take exams, and receive results directly through WeChat Official Accounts and Mini Programs." xml:space="preserve">
+    <value>Integrera sömlöst med WeChatekosystemet. Användare kan logga in, ta prov och ta emot resultat direkt via WeChat Officiella Konton och Miniappar.</value>
   </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Smart mörkt läge som automatiskt anpassar sig efter användarens systeminställningar.</value>
   </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Starta ett nytt projekt</value>
+  </data>
+  <data name="Surveys &amp; Polls" xml:space="preserve">
+    <value>Undersökningar &amp; Omröstningar</value>
   </data>
   <data name="Technical Lead" xml:space="preserve">
     <value>Teknisk ledare</value>
@@ -189,11 +339,41 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>Det här är ett mallprojekt, där vi startar resan...</value>
   </data>
+  <data name="Track every student attempt with detailed answer records. Review individual answers, analyze performance, and identify knowledge gaps across your student base." xml:space="preserve">
+    <value>Spårka varje studentförsök med detaljerade svarsregister. Granska individuella svar, analysera prestationen och identifiera kunskapsluckor bland dina studenter.</value>
+  </data>
   <data name="Usage" xml:space="preserve">
     <value>Användning</value>
   </data>
+  <data name="Use Cases" xml:space="preserve">
+    <value>Användningsfall</value>
+  </data>
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Använd den som grund för din SaaS, som backend för din mobilapp, som företagswebbplats eller som en personlig blogg. Möjligheterna är oändliga.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Använd Mark-to-Query Language (MTQL), ett kraftfullt DSL, för att filtrera frågor med boolesk logik som &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; för exakt frågeval.</value>
+  </data>
+  <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
+    <value>Använd MTQL för att välja frågor baserat på taggar och kunskapsområden. Definiera provets struktur, varaktighet och betygskriterier.</value>
+  </data>
+  <data name="View on GitHub" xml:space="preserve">
+    <value>Visa på GitHub</value>
+  </data>
+  <data name="WeChat Integration" xml:space="preserve">
+    <value>WeChat-integration</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat-integrationen är valfri. Plattformen fungerar fullt ut som en fristående webbapplikation. Du behöver endast WeChat-identitetshandlingar om du vill aktivera inloggning via WeChat, åtkomst till Mini Program eller WeChat Pay.</value>
+  </data>
+  <data name="WeChat Mini Programs" xml:space="preserve">
+    <value>WeChat-miniprogram</value>
+  </data>
+  <data name="WeChat Payment" xml:space="preserve">
+    <value>WeChat-betalning</value>
+  </data>
+  <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
+    <value>WeChatExam anpassar sig till ett brett spektrum av utbildnings- och bedömningsscenarier.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Välkommen</value>
@@ -201,14 +381,29 @@
   <data name="What do I need to get started?" xml:space="preserve">
     <value>Vad behöver jag för att komma igång?</value>
   </data>
+  <data name="What is MTQL and how does it work?" xml:space="preserve">
+    <value>Vad är MTQL och hur fungerar det?</value>
+  </data>
   <data name="What our developers say" xml:space="preserve">
     <value>Vad våra utvecklare säger</value>
+  </data>
+  <data name="When an exam starts, the system creates an immutable snapshot of the paper and its questions. All students see the exact same content, even if the original paper template or questions are modified later. This guarantees a fair and consistent assessment experience." xml:space="preserve">
+    <value>När ett prov startar skapar systemet en oföränderlig ögonblicksbild av pappret och dess frågor. Alla studenter ser exakt samma innehåll, även om den ursprungliga mallen för pappret eller frågorna ändras senare. Detta garanterar en rättvis och enhetlig bedömningsupplevelse.</value>
   </data>
   <data name="Why use the Aiursoft Template?" xml:space="preserve">
     <value>Varför använda Aiursoft Template?</value>
   </data>
+  <data name="Why use WeChatExam?" xml:space="preserve">
+    <value>Varför använda WeChatExam?</value>
+  </data>
   <data name="Yes, Aiursoft Template is completely free and open-source under the MIT License. You can use it for personal and commercial projects without any cost." xml:space="preserve">
     <value>Ja, Aiursoft Template är helt gratis och öppen källkod under MIT-licensen. Du kan använda den för både privata och kommersiella projekt utan någon kostnad.</value>
+  </data>
+  <data name="Yes, WeChatExam is completely free and open-source under the MIT License. You can use it for personal, educational, and commercial purposes without any cost." xml:space="preserve">
+    <value>Ja, WeChatExam är helt gratis och öppen källkod enligt MIT-licensen. Du kan använda det för personligt, utbildnings- och kommersiellt bruk utan några kostnader.</value>
+  </data>
+  <data name="You can deploy via Docker with a single command, use the Ubuntu install script for automated systemd setup, or run it manually with the .NET SDK. See the README on GitHub for detailed deployment instructions." xml:space="preserve">
+    <value>Du kan distribuera via Docker med ett enda kommando, använda Ubuntu-installationsskriptet för automatisk systemd-inställning, eller köra det manuellt med .NET SDK. Se README på GitHub för detaljerade distributionsinstruktioner.</value>
   </data>
   <data name="You can get community support via GitHub Discussions. Please visit our" xml:space="preserve">
     <value>Du kan få communitysupport via GitHub Discussions. Besök vår</value>
