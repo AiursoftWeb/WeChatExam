@@ -18,11 +18,23 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
+      <data name="1. Build Question Bank" xml:space="preserve">
+    <value>1. Monte o banco de questões</value>
+  </data>
+  <data name="2. Design Paper Templates" xml:space="preserve">
+    <value>2. Criar Modelos de Prova</value>
+  </data>
+  <data name="3. Deliver to Students" xml:space="preserve">
+    <value>3. Entregar aos Alunos</value>
+  </data>
+  <data name="A built-in Role-Based Access Control (RBAC) system for fine-grained permission management." xml:space="preserve">
     <value>Um sistema integrado de Controle de Acesso Baseado em Funções (RBAC) para gerenciamento de permissões refinado.</value>
   </data>
   <data name="A complete solution for user authentication and profile management right out of the box." xml:space="preserve">
     <value>Uma solução completa para autenticação de usuários e gerenciamento de perfis pronta para uso imediato.</value>
+  </data>
+  <data name="A comprehensive online examination system with WeChat integration. Create papers, organize knowledge points, tag questions, and deliver exams seamlessly through WeChat." xml:space="preserve">
+    <value>Um sistema abrangente de exames online com integração ao WeChat. Crie provas, organize pontos de conhecimento, etiquete questões e realize exames perfeitamente através do WeChat.</value>
   </data>
   <data name="A fully responsive layout that looks great on both desktop and mobile devices." xml:space="preserve">
     <value>Um layout totalmente responsivo que fica ótimo tanto em desktops quanto em dispositivos móveis.</value>
@@ -30,8 +42,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Uma base moderna, rica em recursos e altamente extensível para sua próxima aplicação web.</value>
   </data>
+  <data name="A modern, flexible, and comprehensive platform for creating and managing online examinations." xml:space="preserve">
+    <value>Uma plataforma moderna, flexível e abrangente para criar e gerenciar exames online.</value>
+  </data>
   <data name="Achieve more with Aiursoft Template" xml:space="preserve">
     <value>Alcance mais com o Aiursoft Template</value>
+  </data>
+  <data name="AI-Powered Assistance" xml:space="preserve">
+    <value>Assistência com IA</value>
   </data>
   <data name="AI-Powered Translations" xml:space="preserve">
     <value>Traduções com IA</value>
@@ -45,6 +63,9 @@
   <data name="Anduin" xml:space="preserve">
     <value>Anduin</value>
   </data>
+  <data name="Assess employee knowledge with internal training exams. Track progress over time and identify areas needing additional training investment." xml:space="preserve">
+    <value>Avalie o conhecimento dos colaboradores por meio de exames de treinamento internos. Acompanhe o progresso ao longo do tempo e identifique áreas que necessitam de investimento adicional em treinamento.</value>
+  </data>
   <data name="Automatic Dark Mode" xml:space="preserve">
     <value>Modo Escuro Automático</value>
   </data>
@@ -54,8 +75,20 @@
   <data name="Automatic, AI-driven translation into 28 languages for global reach." xml:space="preserve">
     <value>Tradução automática e orientada por IA para 28 idiomas, garantindo alcance global.</value>
   </data>
+  <data name="Beyond exams, use the platform for surveys, polls, and feedback collection with WeChat distribution for high response rates." xml:space="preserve">
+    <value>Além de provas, use a plataforma para pesquisas, enquetes e coleta de feedback com distribuição via WeChat para altas taxas de resposta.</value>
+  </data>
   <data name="Build your next big thing," xml:space="preserve">
     <value>Construa seu próximo grande projeto,</value>
+  </data>
+  <data name="Build your question bank, organize by knowledge points, create paper templates, and deliver exams to students — all within one integrated platform." xml:space="preserve">
+    <value>Monte seu banco de questões, organize por pontos de conhecimento, crie modelos de provas e entregue exames aos alunos — tudo em uma plataforma integrada.</value>
+  </data>
+  <data name="Built for Education" xml:space="preserve">
+    <value>Construído para a Educação</value>
+  </data>
+  <data name="Built-in OpenID Connect support for seamless authentication. Integrate with any OIDC provider alongside WeChat login, with automatic role synchronization." xml:space="preserve">
+    <value>Suporte integrado ao OpenID Connect para autenticação sem interrupções. Integre-se com qualquer provedor OIDC junto ao login do WeChat, com sincronização automática de funções.</value>
   </data>
   <data name="Built-in User Management" xml:space="preserve">
     <value>Gerenciamento de Usuários Integrado</value>
@@ -66,11 +99,32 @@
   <data name="Comprehensive Documentation" xml:space="preserve">
     <value>Documentação Abrangente</value>
   </data>
+  <data name="Corporate Training" xml:space="preserve">
+    <value>Treinamento Corporativo</value>
+  </data>
+  <data name="Create certification exams with time-limited access, randomized question selection, and WeChat Pay integration for exam fees." xml:space="preserve">
+    <value>Crie exames de certificação com acesso por tempo limitado, seleção aleatória de perguntas e integração com WeChat Pay para as taxas do exame.</value>
+  </data>
+  <data name="Create questions organized by hierarchical categories and knowledge points. Tag them with taxonomies for advanced filtering." xml:space="preserve">
+    <value>Crie perguntas organizadas por categorias hierárquicas e pontos de conhecimento. Etiquete-as com taxonomias para filtragem avançada.</value>
+  </data>
+  <data name="Create reusable paper templates. When an exam starts, a snapshot freezes the content so every student sees the same questions even if the template is updated later." xml:space="preserve">
+    <value>Crie modelos de provas reutilizáveis. Quando uma prova começa, uma captura de tela congela o conteúdo para que todos os alunos vejam as mesmas perguntas, mesmo que o modelo seja atualizado posteriormente.</value>
+  </data>
   <data name="Dashboard Website" xml:space="preserve">
     <value>Site do Painel de Controle</value>
   </data>
   <data name="Discussions page" xml:space="preserve">
     <value>Página de Discussões</value>
+  </data>
+  <data name="Do I need a WeChat Official Account to use it?" xml:space="preserve">
+    <value>Preciso de uma Conta Oficial do WeChat para usá-lo?</value>
+  </data>
+  <data name="Docker Hub" xml:space="preserve">
+    <value>Docker Hub</value>
+  </data>
+  <data name="Docker-Ready Deployment" xml:space="preserve">
+    <value>Implantação Pronto para Docker</value>
   </data>
   <data name="Dockerized for Deployment" xml:space="preserve">
     <value>Dockerizado para Implantação</value>
@@ -80,6 +134,15 @@
   </data>
   <data name="Easily switch between providers like SQLite, MySQL, SQL Server, and an in-memory database for testing." xml:space="preserve">
     <value>Altere facilmente entre provedores como SQLite, MySQL, SQL Server e um banco de dados em memória para testes.</value>
+  </data>
+  <data name="Easily switch between SQLite, MySQL, SQL Server, and in-memory database providers to match your deployment needs from development to production." xml:space="preserve">
+    <value>Alterne facilmente entre provedores de banco de dados SQLite, MySQL, SQL Server e em memória para atender às suas necessidades de implantação, desde o desenvolvimento até a produção.</value>
+  </data>
+  <data name="Embed exams directly into WeChat Mini Programs. Students take assessments without leaving WeChat, with instant results and sharing capabilities." xml:space="preserve">
+    <value>Integre exames diretamente nos Mini Programas do WeChat. Os alunos realizam avaliações sem sair do WeChat, com resultados instantâneos e capacidade de compartilhamento.</value>
+  </data>
+  <data name="Exam Records &amp; Analytics" xml:space="preserve">
+    <value>Registros de Provas e Análise</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>Perguntas Frequentes</value>
@@ -93,6 +156,12 @@
   <data name="Features a built-in file management system with automatic avatar compression." xml:space="preserve">
     <value>Inclui um sistema de gerenciamento de arquivos integrado com compressão automática de avatares.</value>
   </data>
+  <data name="Fine-grained Role-Based Access Control for managing teachers, students, and administrators with distinct permissions and capabilities." xml:space="preserve">
+    <value>Controle de Acesso Baseado em Funções (RBAC) de granulação fina para gerenciar professores, alunos e administradores com permissões e capacidades distintas.</value>
+  </data>
+  <data name="Flexible Tagging System" xml:space="preserve">
+    <value>Sistema de Etiquetas Flexível</value>
+  </data>
   <data name="for any inquiries or to report issues." xml:space="preserve">
     <value>para quaisquer perguntas ou para relatar problemas.</value>
   </data>
@@ -102,8 +171,20 @@
   <data name="Frequently asked questions" xml:space="preserve">
     <value>Perguntas frequentes</value>
   </data>
+  <data name="From Questions to Exams in Minutes" xml:space="preserve">
+    <value>De Perguntas a Provas em Minutos</value>
+  </data>
+  <data name="Full Docker support with pre-built images on Docker Hub. Deploy with a single command, or use the install script for Ubuntu servers with systemd integration." xml:space="preserve">
+    <value>Suporte completo ao Docker com imagens pré-compiladas no Docker Hub. Implante com um único comando ou use o script de instalação para servidores Ubuntu com integração ao systemd.</value>
+  </data>
+  <data name="Get started with WeChatExam today. Deploy in minutes with Docker." xml:space="preserve">
+    <value>Comece a usar o WeChatExam hoje. Implante em minutos com o Docker.</value>
+  </data>
   <data name="Go to dashboard" xml:space="preserve">
     <value>Ir para o painel</value>
+  </data>
+  <data name="Group tags by taxonomies like Difficulty, Source, or Year. Apply multiple tags to each question for flexible categorization and advanced filtering." xml:space="preserve">
+    <value>Agrupe as tags por taxonomias como Dificuldade, Fonte ou Ano. Aplique várias tags a cada questão para categorização flexível e filtragem avançada.</value>
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Olá, Mundo!</value>
@@ -114,11 +195,23 @@
   <data name="Here&apos;s what developers from our community have to say." xml:space="preserve">
     <value>Veja o que os desenvolvedores da nossa comunidade têm a dizer.</value>
   </data>
+  <data name="Hierarchical Knowledge Points" xml:space="preserve">
+    <value>Pontos de Conhecimento Hierárquicos</value>
+  </data>
   <data name="How can I get support?" xml:space="preserve">
     <value>Como posso obter suporte?</value>
   </data>
   <data name="How do I deploy my application?" xml:space="preserve">
     <value>Como faço para implantar minha aplicação?</value>
+  </data>
+  <data name="How do I deploy WeChatExam?" xml:space="preserve">
+    <value>Como faço para implantar o WeChatExam?</value>
+  </data>
+  <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
+    <value>Como as capturas de tela do exame garantem a imparcialidade?</value>
+  </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Como Funciona</value>
   </data>
   <data name="Includes extensive documentation and practical examples to get you started quickly." xml:space="preserve">
     <value>Inclui documentação extensa e exemplos práticos para você começar rapidamente.</value>
@@ -126,8 +219,17 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>Gerenciamento Integrado de Arquivos</value>
   </data>
+  <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
+    <value>WeChat Pay (TenpayV3) integrado para monetização de exames. Cobrança por acesso a exames premium, certificações ou materiais de curso diretamente pelo WeChat.</value>
+  </data>
+  <data name="Integrated with Ollama for AI-powered question assistance. Get help generating questions, explaining answers, or reviewing exam content." xml:space="preserve">
+    <value>Integrado com o Ollama para assistência de perguntas com IA. Obtenha ajuda para gerar perguntas, explicar respostas ou revisar o conteúdo do exame.</value>
+  </data>
   <data name="Is it free to use Aiursoft Template?" xml:space="preserve">
     <value>É gratuito usar o Aiursoft Template?</value>
+  </data>
+  <data name="Is WeChatExam free to use?" xml:space="preserve">
+    <value>O WeChatExam é gratuito para uso?</value>
   </data>
   <data name="Join Discussions" xml:space="preserve">
     <value>Participar das Discussões</value>
@@ -141,17 +243,50 @@
   <data name="MIT Licence" xml:space="preserve">
     <value>Licença MIT</value>
   </data>
+  <data name="MTQL (Mark-to-Query Language) is a domain-specific language for filtering questions by their tags. You write expressions like &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; to precisely select which questions appear in a paper. It supports AND, OR, NOT, and parenthesized grouping." xml:space="preserve">
+    <value>MTQL (Mark-to-Query Language) é uma linguagem específica de domínio para filtrar perguntas por suas tags. Você escreve expressões como &quot;(difficulty:hard &amp;&amp; source:textbook) || knowledge_point:calculus&quot; para selecionar com precisão quais perguntas aparecerão em uma prova. Ela suporta AND, OR, NOT e agrupamento entre parênteses.</value>
+  </data>
+  <data name="MTQL Query Language" xml:space="preserve">
+    <value>Linguagem de Consulta MTQL</value>
+  </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>Suporte a Múltiplos Bancos de Dados</value>
   </data>
   <data name="Music Tools" xml:space="preserve">
     <value>Ferramentas Musicais</value>
   </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>Cursos Online</value>
+  </data>
+  <data name="Online Exam Platform," xml:space="preserve">
+    <value>Plataforma de Exames Online,</value>
+  </data>
   <data name="Open Source" xml:space="preserve">
     <value>Código Aberto</value>
   </data>
+  <data name="OpenID Connect Authentication" xml:space="preserve">
+    <value>Autenticação OpenID Connect</value>
+  </data>
   <data name="OpenID Connect Integration" xml:space="preserve">
     <value>Integração OpenID Connect</value>
+  </data>
+  <data name="Organize educational content in a hierarchical tree of categories and knowledge points. Map questions to specific learning objectives and track what each question assesses." xml:space="preserve">
+    <value>Organize o conteúdo educacional em uma árvore hierárquica de categorias e pontos de conhecimento. Mapeie perguntas a objetivos de aprendizado específicos e acompanhe o que cada pergunta avalia.</value>
+  </data>
+  <data name="Pair with online course platforms to deliver lesson quizzes, chapter tests, and final assessments with automatic grading and feedback." xml:space="preserve">
+    <value>Integre-se a plataformas de cursos online para aplicar questionários de aula, testes de capítulo e avaliações finais com correção automática e feedback.</value>
+  </data>
+  <data name="Paper Templates &amp; Snapshots" xml:space="preserve">
+    <value>Modelos de Provas e Instantâneos</value>
+  </data>
+  <data name="Powered by WeChat" xml:space="preserve">
+    <value>Impulsionado pelo WeChat</value>
+  </data>
+  <data name="Professional Certifications" xml:space="preserve">
+    <value>Certificações Profissionais</value>
+  </data>
+  <data name="Publish exams with start/end times. Students access via WeChat or web, answer with frozen snapshots ensuring fairness." xml:space="preserve">
+    <value>Publique provas com horários de início e fim. Os alunos acessam via WeChat ou web, respondem com capturas de tela congeladas para garantir a imparcialidade.</value>
   </data>
   <data name="RBAC Authorization" xml:space="preserve">
     <value>Autorização RBAC</value>
@@ -159,20 +294,35 @@
   <data name="Read the document" xml:space="preserve">
     <value>Ler o documento</value>
   </data>
+  <data name="Ready to build your exam platform?" xml:space="preserve">
+    <value>Pronto para criar sua plataforma de exames?</value>
+  </data>
   <data name="Responsive Design" xml:space="preserve">
     <value>Design Responsivo</value>
   </data>
   <data name="Reviews" xml:space="preserve">
     <value>Avaliações</value>
   </data>
+  <data name="Run midterms, finals, and quizzes with structured knowledge point tracking and detailed performance analytics for each student." xml:space="preserve">
+    <value>Realize provas intermediárias, finais e questionários com rastreamento estruturado de pontos de conhecimento e análise detalhada do desempenho de cada aluno.</value>
+  </data>
+  <data name="Schools &amp; Universities" xml:space="preserve">
+    <value>Escolas e Universidades</value>
+  </data>
   <data name="Seamlessly integrate with any OpenID Connect provider, with automatic role synchronization." xml:space="preserve">
     <value>Integre-se perfeitamente com qualquer provedor OpenID Connect, com sincronização automática de funções.</value>
+  </data>
+  <data name="Seamlessly integrate with the WeChat ecosystem. Users can log in, take exams, and receive results directly through WeChat Official Accounts and Mini Programs." xml:space="preserve">
+    <value>Integre-se perfeitamente ao ecossistema WeChat. Os usuários podem fazer login, realizar provas e receber os resultados diretamente por meio dos Contas Oficiais e Mini Programas do WeChat.</value>
   </data>
   <data name="Smart dark mode that automatically adapts to the user&apos;s system settings." xml:space="preserve">
     <value>Modo escuro inteligente que se adapta automaticamente às configurações do sistema do usuário.</value>
   </data>
   <data name="Start a new project" xml:space="preserve">
     <value>Iniciar um novo projeto</value>
+  </data>
+  <data name="Surveys &amp; Polls" xml:space="preserve">
+    <value>Pesquisas e Enquetes</value>
   </data>
   <data name="Technical Lead" xml:space="preserve">
     <value>Líder Técnico</value>
@@ -189,11 +339,41 @@
   <data name="This is a template project, where we start the voyager..." xml:space="preserve">
     <value>Este é um projeto modelo, onde iniciamos a jornada...</value>
   </data>
+  <data name="Track every student attempt with detailed answer records. Review individual answers, analyze performance, and identify knowledge gaps across your student base." xml:space="preserve">
+    <value>Acompanhe cada tentativa do aluno com registros detalhados de respostas. Revise respostas individuais, analise o desempenho e identifique lacunas de conhecimento em toda a sua base de alunos.</value>
+  </data>
   <data name="Usage" xml:space="preserve">
     <value>Uso</value>
   </data>
+  <data name="Use Cases" xml:space="preserve">
+    <value>Casos de Uso</value>
+  </data>
   <data name="Use it as a foundation for your SaaS, a backend for your mobile app, a corporate website, or a personal blog. The possibilities are endless." xml:space="preserve">
     <value>Use-o como base para seu SaaS, um backend para seu aplicativo móvel, um site corporativo ou um blog pessoal. As possibilidades são infinitas.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Use a Linguagem Mark-to-Query (MTQL), uma DSL poderosa, para filtrar perguntas com lógica booleana como &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; para uma seleção precisa de questões.</value>
+  </data>
+  <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
+    <value>Use o MTQL para selecionar questões por tags e pontos de conhecimento. Defina a estrutura da prova, a duração e as regras de pontuação.</value>
+  </data>
+  <data name="View on GitHub" xml:space="preserve">
+    <value>Ver no GitHub</value>
+  </data>
+  <data name="WeChat Integration" xml:space="preserve">
+    <value>Integração com o WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>A integração com o WeChat é opcional. A plataforma funciona totalmente como uma aplicação web independente. Você só precisa das credenciais do WeChat se desejar habilitar o login com o WeChat, o acesso ao Mini Program ou o WeChat Pay.</value>
+  </data>
+  <data name="WeChat Mini Programs" xml:space="preserve">
+    <value>Miniapps do WeChat</value>
+  </data>
+  <data name="WeChat Payment" xml:space="preserve">
+    <value>Pagamento via WeChat</value>
+  </data>
+  <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
+    <value>O WeChatExam se adapta a uma ampla gama de cenários educacionais e de avaliação.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Bem-vindo</value>
@@ -201,14 +381,29 @@
   <data name="What do I need to get started?" xml:space="preserve">
     <value>O que eu preciso para começar?</value>
   </data>
+  <data name="What is MTQL and how does it work?" xml:space="preserve">
+    <value>O que é MTQL e como funciona?</value>
+  </data>
   <data name="What our developers say" xml:space="preserve">
     <value>O que nossos desenvolvedores dizem</value>
+  </data>
+  <data name="When an exam starts, the system creates an immutable snapshot of the paper and its questions. All students see the exact same content, even if the original paper template or questions are modified later. This guarantees a fair and consistent assessment experience." xml:space="preserve">
+    <value>Quando uma prova começa, o sistema cria uma imagem imutável do questionário e de suas questões. Todos os alunos veem exatamente o mesmo conteúdo, mesmo que o modelo original do questionário ou as questões sejam modificados posteriormente. Isso garante uma experiência de avaliação justa e consistente.</value>
   </data>
   <data name="Why use the Aiursoft Template?" xml:space="preserve">
     <value>Por que usar o Template Aiursoft?</value>
   </data>
+  <data name="Why use WeChatExam?" xml:space="preserve">
+    <value>Por que usar o WeChatExam?</value>
+  </data>
   <data name="Yes, Aiursoft Template is completely free and open-source under the MIT License. You can use it for personal and commercial projects without any cost." xml:space="preserve">
     <value>Sim, o Aiursoft Template é completamente gratuito e de código aberto sob a Licença MIT. Você pode usá-lo em projetos pessoais e comerciais sem nenhum custo.</value>
+  </data>
+  <data name="Yes, WeChatExam is completely free and open-source under the MIT License. You can use it for personal, educational, and commercial purposes without any cost." xml:space="preserve">
+    <value>Sim, o WeChatExam é totalmente gratuito e de código aberto sob a Licença MIT. Você pode usá-lo para fins pessoais, educacionais e comerciais sem nenhum custo.</value>
+  </data>
+  <data name="You can deploy via Docker with a single command, use the Ubuntu install script for automated systemd setup, or run it manually with the .NET SDK. See the README on GitHub for detailed deployment instructions." xml:space="preserve">
+    <value>Você pode implantar via Docker com um único comando, usar o script de instalação do Ubuntu para configuração automatizada do systemd ou executá-lo manualmente com o .NET SDK. Consulte o README no GitHub para instruções detalhadas de implantação.</value>
   </data>
   <data name="You can get community support via GitHub Discussions. Please visit our" xml:space="preserve">
     <value>Você pode obter suporte da comunidade via GitHub Discussions. Por favor, visite nossa</value>
