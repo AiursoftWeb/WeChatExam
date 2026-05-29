@@ -58,7 +58,7 @@ public class AuthController(
         var openId = sessionResult.OpenId!;
         var sessionKey = sessionResult.SessionKey!;
 
-        // 2. Sync user to local database (similar to SyncOidcContext in template)
+        // 2. Sync user to local database (similar to SyncOidcContext in AuthenticationExtensions)
         var (user, isNewUser) = await SyncWeChatUser(openId, sessionKey);
         if (user == null)
         {
@@ -172,7 +172,7 @@ public class AuthController(
     }
 
     /// <summary>
-    /// Sync WeChat user to local database, following the same pattern as SyncOidcContext in template
+    /// Sync WeChat user to local database, following the same pattern as SyncOidcContext in AuthenticationExtensions
     /// </summary>
     /// <returns>A tuple of (User, isNewUser) indicating the user and whether they were newly created</returns>
     private async Task<(User? user, bool isNewUser)> SyncWeChatUser(string openId, string sessionKey)

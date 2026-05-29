@@ -50,7 +50,7 @@ public class TestStartupWithMockWeChat : IWebStartup
             ]);
 
         // Authentication and Authorization
-        services.AddTemplateAuth(configuration);
+        services.AddWeChatExamAuthentication(configuration);
 
         // Services
         services.AddMemoryCache();

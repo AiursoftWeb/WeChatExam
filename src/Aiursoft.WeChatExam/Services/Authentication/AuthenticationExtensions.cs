@@ -11,7 +11,7 @@ namespace Aiursoft.WeChatExam.Services.Authentication;
 public static class AuthenticationExtensions
 {
 
-    public static IServiceCollection AddTemplateAuth(
+    public static IServiceCollection AddWeChatExamAuthentication(
         this IServiceCollection services,
         IConfiguration configuration)
     {

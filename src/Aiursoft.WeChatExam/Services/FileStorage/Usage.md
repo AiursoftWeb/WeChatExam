@@ -172,7 +172,7 @@ In Razor views, use `StorageService` to convert logical paths into accessible UR
 **For Public Files:**
 
 ```html
-@inject Aiursoft.Template.Services.FileStorage.StorageService Storage
+@inject Aiursoft.WeChatExam.Services.FileStorage.StorageService Storage
 
 <img src="@Storage.RelativePathToInternetUrl(Model.IconPath)" alt="User Avatar" />
 
@@ -181,7 +181,7 @@ In Razor views, use `StorageService` to convert logical paths into accessible UR
 **For Private Files:**
 
 ```html
-@inject Aiursoft.Template.Services.FileStorage.StorageService Storage
+@inject Aiursoft.WeChatExam.Services.FileStorage.StorageService Storage
 
 <a href="@Storage.RelativePathToInternetUrl(Model.ContractPath, isVault: true)" 
    download="contract.pdf"
