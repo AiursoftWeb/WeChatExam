@@ -7,7 +7,7 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2FweChatExam.aiursoft.cn)](https://weChatExam.aiursoft.cn)
 [![Docker](https://img.shields.io/docker/pulls/aiursoft/wechatexam.svg)](https://hub.docker.com/r/aiursoft/wechatexam)
 
-WeChatExam is a sample project.
+WeChatExam is an online exam platform with WeChat integration, built on the Aiursoft ecosystem.
 
 ![screenshot](./screenshot.png)
 
