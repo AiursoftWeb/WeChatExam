@@ -29,7 +29,7 @@
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.TenpayV3" Version="3.16.0" />
     <PackageReference Include="SkiaSharp" Version="3.119.4" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="3.119.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aiursoft.WeChatExam.InMemory\Aiursoft.WeChatExam.InMemory.csproj" />
