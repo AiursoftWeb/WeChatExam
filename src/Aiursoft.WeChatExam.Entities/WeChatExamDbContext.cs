@@ -12,6 +12,24 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public virtual  Task<bool> CanConnectAsync() =>
         Database.CanConnectAsync();
 
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        // Protect financial records from being cascade-deleted when a user deletes their account.
+        builder.Entity<PaymentOrder>()
+            .HasOne(p => p.User)
+            .WithMany()
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<VipMembership>()
+            .HasOne(v => v.User)
+            .WithMany()
+            .HasForeignKey(v => v.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
+
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<CategoryTaxonomy> CategoryTaxonomies => Set<CategoryTaxonomy>();
     public DbSet<Question> Questions => Set<Question>();

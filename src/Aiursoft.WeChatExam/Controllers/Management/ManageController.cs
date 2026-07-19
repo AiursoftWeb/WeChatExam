@@ -174,6 +174,40 @@ public class ManageController(
         return this.StackView(model);
     }
 
+    //
+    // GET: /Manage/DeleteAccount
+    [HttpGet]
+    public IActionResult DeleteAccount()
+    {
+        return this.StackView(new Aiursoft.UiStack.Layout.UiStackLayoutViewModel());
+    }
+
+    //
+    // POST: /Manage/DeleteAccount
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteAccountPost()
+    {
+        var user = await GetCurrentUserAsync();
+        if (user != null)
+        {
+            try
+            {
+                await userManager.DeleteAsync(user);
+                await signInManager.SignOutAsync();
+                logger.LogInformation(3, "User deleted their account successfully");
+                return Redirect("/");
+            }
+            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+            {
+                logger.LogWarning(4, "User attempted to delete account but failed due to financial records restrictions");
+                ModelState.AddModelError(string.Empty, localizer["Cannot delete your account because you have existing financial records (e.g. VIP memberships or payment orders). Please contact customer service."]);
+                return this.StackView(new Aiursoft.UiStack.Layout.UiStackLayoutViewModel(), "DeleteAccount");
+            }
+        }
+        return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+    }
+
     #region Helpers
 
     private void AddErrors(IdentityResult result)

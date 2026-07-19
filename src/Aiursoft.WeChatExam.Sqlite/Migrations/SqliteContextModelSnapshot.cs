@@ -15,7 +15,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.AnswerRecord", b =>
                 {
@@ -1625,7 +1625,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
@@ -1753,7 +1753,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
