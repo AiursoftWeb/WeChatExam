@@ -179,7 +179,7 @@ public class ManageController(
     [HttpGet]
     public IActionResult DeleteAccount()
     {
-        return this.StackView(new Aiursoft.UiStack.Layout.UiStackLayoutViewModel());
+        return this.StackView(new Aiursoft.UiStack.Layout.UiStackLayoutViewModel { PageTitle = "Delete Account" });
     }
 
     //
@@ -202,7 +202,7 @@ public class ManageController(
             {
                 logger.LogWarning(4, "User attempted to delete account but failed due to financial records restrictions");
                 ModelState.AddModelError(string.Empty, localizer["Cannot delete your account because you have existing financial records (e.g. VIP memberships or payment orders). Please contact customer service."]);
-                return this.StackView(new Aiursoft.UiStack.Layout.UiStackLayoutViewModel(), "DeleteAccount");
+                return this.StackView(new Aiursoft.UiStack.Layout.UiStackLayoutViewModel { PageTitle = "Delete Account" }, "DeleteAccount");
             }
         }
         return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
