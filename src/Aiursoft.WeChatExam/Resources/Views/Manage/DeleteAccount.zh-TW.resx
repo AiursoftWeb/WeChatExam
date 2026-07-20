@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Are you sure you want to delete your account?" xml:space="preserve">
+    <value>您確定要刪除您的帳號嗎？</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Danger Zone" xml:space="preserve">
+    <value>危險區域</value>
+  </data>
+  <data name="Delete Account" xml:space="preserve">
+    <value>刪除帳號</value>
+  </data>
+  <data name="Delete Account Data" xml:space="preserve">
+    <value>刪除帳戶資料</value>
+  </data>
+  <data name="If you have any payment orders, recharge records, or VIP memberships, your account deletion request will be rejected to preserve financial audit logs. Please contact customer service for manual processing." xml:space="preserve">
+    <value>若您有未完成的付款訂單、充值記錄或 VIP 會員資格，為保留財務審計紀錄，您的帳號刪除申請將被拒絕。請聯繫客服人員進行手動處理。</value>
+  </data>
+  <data name="Notice:" xml:space="preserve">
+    <value>注意：</value>
+  </data>
+  <data name="This action will permanently erase your profile and practice history from our servers. This action cannot be undone." xml:space="preserve">
+    <value>此操作將永久從我們的伺服器中刪除您的個人資料和練習記錄。此操作無法撤銷。</value>
+  </data>
+  <data name="Yes, delete my account" xml:space="preserve">
+    <value>是的，刪除我的帳戶</value>
+  </data>
+
+</root>

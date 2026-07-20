@@ -21,6 +21,9 @@
       <data name="An error has occurred." xml:space="preserve">
     <value>Tapahtui virhe.</value>
   </data>
+  <data name="Cannot delete your account because you have existing financial records (e.g. VIP memberships or payment orders). Please contact customer service." xml:space="preserve">
+    <value>Tiliäsi ei voi poistaa, koska sinulla on olemassa olevia taloudellisia tietoja (kuten VIP-jäsenyydet tai maksuohjeet). Ota yhteyttä asiakaspalveluun.</value>
+  </data>
   <data name="The file is not a valid image." xml:space="preserve">
     <value>Tiedosto ei ole kelvollinen kuva.</value>
   </data>

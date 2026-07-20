@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Are you sure you want to delete your account?" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить свою учетную запись?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Danger Zone" xml:space="preserve">
+    <value>Опасная зона</value>
+  </data>
+  <data name="Delete Account" xml:space="preserve">
+    <value>Удалить аккаунт</value>
+  </data>
+  <data name="Delete Account Data" xml:space="preserve">
+    <value>Удалить данные учетной записи</value>
+  </data>
+  <data name="If you have any payment orders, recharge records, or VIP memberships, your account deletion request will be rejected to preserve financial audit logs. Please contact customer service for manual processing." xml:space="preserve">
+    <value>Если у вас есть незавершенные платежные заказы, записи о пополнении или активная подписка VIP, запрос на удаление учетной записи будет отклонен для сохранения финансовых аудиторских логов. Пожалуйста, свяжитесь со службой поддержки клиентов для ручной обработки.</value>
+  </data>
+  <data name="Notice:" xml:space="preserve">
+    <value>Внимание:</value>
+  </data>
+  <data name="This action will permanently erase your profile and practice history from our servers. This action cannot be undone." xml:space="preserve">
+    <value>Это действие навсегда удалит ваш профиль и историю тренировок с наших серверов. Это действие нельзя отменить.</value>
+  </data>
+  <data name="Yes, delete my account" xml:space="preserve">
+    <value>Да, удалить мой аккаунт</value>
+  </data>
+
+</root>

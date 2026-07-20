@@ -132,6 +132,8 @@ public class ViewModelArgsInjector(
         _ = localizer["VIP Change History"];
     
         _ = localizer["Delete Tag"];
+    
+        _ = localizer["Delete Account"];
     }
 
     public void InjectSimple(
