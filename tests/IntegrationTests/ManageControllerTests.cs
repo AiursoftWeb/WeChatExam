@@ -2,7 +2,6 @@ using System.Net;
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
