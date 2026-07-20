@@ -21,6 +21,9 @@
       <data name="An error has occurred." xml:space="preserve">
     <value>エラーが発生しました。</value>
   </data>
+  <data name="Cannot delete your account because you have existing financial records (e.g. VIP memberships or payment orders). Please contact customer service." xml:space="preserve">
+    <value>既存の財務記録（VIPメンバーシップや支払い注文など）があるため、アカウントを削除できません。カスタマーサービスにお問い合わせください。</value>
+  </data>
   <data name="The file is not a valid image." xml:space="preserve">
     <value>ファイルは有効な画像ではありません。</value>
   </data>

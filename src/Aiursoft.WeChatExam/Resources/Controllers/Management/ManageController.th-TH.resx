@@ -21,6 +21,9 @@
       <data name="An error has occurred." xml:space="preserve">
     <value>เกิดข้อผิดพลาดขึ้น</value>
   </data>
+  <data name="Cannot delete your account because you have existing financial records (e.g. VIP memberships or payment orders). Please contact customer service." xml:space="preserve">
+    <value>ไม่สามารถลบบัญชีของคุณได้เนื่องจากมีข้อมูลทางการเงินที่ยังคงอยู่ (เช่น การเป็นสมาชิก VIP หรือคำสั่งชำระเงิน) โปรดติดต่อฝ่ายบริการลูกค้า</value>
+  </data>
   <data name="The file is not a valid image." xml:space="preserve">
     <value>ไฟล์นี้ไม่ใช่รูปภาพที่ถูกต้อง</value>
   </data>
