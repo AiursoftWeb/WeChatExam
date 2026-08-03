@@ -1,6 +1,7 @@
 using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools.Switchable;
 using Aiursoft.Scanner;
+using Aiursoft.UiStack;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Abstractions.Models;
@@ -152,6 +153,7 @@ public class TestStartupWithMockWeChat : IWebStartup
     public void Configure(WebApplication app)
     {
         app.UseExceptionHandler("/Error/Error");
+        app.UseUIStack();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthentication();
