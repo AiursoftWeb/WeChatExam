@@ -175,7 +175,6 @@ public class Startup : IWebStartup
     public void Configure(WebApplication app)
     {
         app.UseExceptionHandler("/Error/Error");
-        app.UseUIStack();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthentication();
