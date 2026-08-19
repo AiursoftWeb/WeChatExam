@@ -25,7 +25,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Api" Version="3.14.0" />
+    <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Api" Version="3.15.0" />
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.TenpayV3" Version="3.17.0" />
     <PackageReference Include="SkiaSharp" Version="4.151.1" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.151.1" />
