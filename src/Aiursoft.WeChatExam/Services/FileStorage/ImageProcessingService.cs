@@ -9,12 +9,35 @@ public class ImageProcessingService(
     ILogger<ImageProcessingService> logger,
     FileLockProvider fileLockProvider) : ITransientDependency
 {
+    private const long MaxDecodedImagePixels = 100_000_000;
+
+    public Task<bool> IsValidImageAsync(IFormFile file)
+    {
+        try
+        {
+            using var stream = file.OpenReadStream();
+            using var codec = SKCodec.Create(stream);
+            return Task.FromResult(codec is not null &&
+                                   codec.Info.Width > 0 &&
+                                   codec.Info.Height > 0 &&
+                                   (long)codec.Info.Width * codec.Info.Height <= MaxDecodedImagePixels);
+        }
+        catch (Exception e)
+        {
+            logger.LogWarning(e, "Uploaded file {FileName} is not a valid raster image", file.FileName);
+            return Task.FromResult(false);
+        }
+    }
+
     public Task<bool> IsValidImageAsync(string imagePath)
     {
         try
         {
             using var codec = SKCodec.Create(imagePath);
-            if (codec != null)
+            if (codec is not null &&
+                codec.Info.Width > 0 &&
+                codec.Info.Height > 0 &&
+                (long)codec.Info.Width * codec.Info.Height <= MaxDecodedImagePixels)
             {
                 logger.LogTrace("File with path {ImagePath} is a valid image", imagePath);
                 return Task.FromResult(true);
@@ -30,32 +53,43 @@ public class ImageProcessingService(
         return Task.FromResult(false);
     }
 
+    /// <summary>
+    /// Clears the EXIF data while retaining the same resolution,
+    /// then writes the result to the "ClearExif" subdirectory.
+    /// </summary>
     public async Task<string> ClearExifAsync(string logicalPath, bool isVault = false)
     {
+        // 1. Resolve source path (Workspace)
         var sourceAbsolute = storageService.GetFilePhysicalPath(logicalPath, isVault);
 
+        // 2. Resolve target path (ClearExif/logicalPath)
         var folderName = isVault ? "Vault" : "Workspace";
         var targetAbsolute = Path.GetFullPath(Path.Combine(folders.GetClearExifFolder(), folderName, logicalPath));
 
+        // 3. Check cache
         if (File.Exists(targetAbsolute) && FileCanBeRead(targetAbsolute))
         {
             logger.LogInformation("EXIF-cleared file already exists: {Target}", targetAbsolute);
             return targetAbsolute;
         }
 
+        // 4. Ensure target directory exists
         var targetDir = Path.GetDirectoryName(targetAbsolute);
         if (!Directory.Exists(targetDir)) Directory.CreateDirectory(targetDir!);
 
+        // 5. Process
         var lockOnCreatedFile = fileLockProvider.GetLock(targetAbsolute);
         await lockOnCreatedFile.WaitAsync();
         try
         {
+            // Double check inside lock
             if (File.Exists(targetAbsolute) && FileCanBeRead(targetAbsolute))
             {
                 return targetAbsolute;
             }
 
             await WaitTillFileCanBeReadAsync(sourceAbsolute);
+
             using var codec = SKCodec.Create(sourceAbsolute);
             if (codec == null)
             {
@@ -88,14 +122,20 @@ public class ImageProcessingService(
         return targetAbsolute;
     }
 
+    /// <summary>
+    /// Compresses the image to the specified width/height.
+    /// Also clears EXIF data.
+    /// </summary>
     public async Task<string> CompressAsync(string logicalPath, int width, int height, bool isVault = false)
     {
         var sourceAbsolute = storageService.GetFilePhysicalPath(logicalPath, isVault);
 
+        // Calculate target path in Compressed folder
         var compressedRoot = folders.GetCompressedFolder();
         var folderName = isVault ? "Vault" : "Workspace";
         var dimensionSuffix = BuildDimensionSuffix(width, height);
 
+        // "avatar/2026/01/14/logo.png" -> "avatar/2026/01/14/" + "logo_w100.png"
         var extension = Path.GetExtension(logicalPath);
         var fileNameWithoutExt = Path.GetFileNameWithoutExtension(logicalPath);
         var directoryInStore = Path.GetDirectoryName(logicalPath) ?? string.Empty;
@@ -119,6 +159,7 @@ public class ImageProcessingService(
             if (File.Exists(targetAbsolute) && FileCanBeRead(targetAbsolute)) return targetAbsolute;
 
             await WaitTillFileCanBeReadAsync(sourceAbsolute);
+
             using var codec = SKCodec.Create(sourceAbsolute);
             if (codec == null)
             {
@@ -153,6 +194,14 @@ public class ImageProcessingService(
         return targetAbsolute;
     }
 
+    private static string BuildDimensionSuffix(int width, int height)
+    {
+        if (width > 0 && height > 0) return $"_w{width}_h{height}";
+        if (width > 0) return $"_w{width}";
+        if (height > 0) return $"_h{height}";
+        return string.Empty;
+    }
+
     private static SKBitmap AutoOrient(SKBitmap source, SKEncodedOrigin origin)
     {
         if (origin == SKEncodedOrigin.TopLeft)
@@ -163,37 +212,37 @@ public class ImageProcessingService(
 
         switch (origin)
         {
-            case SKEncodedOrigin.TopRight:
+            case SKEncodedOrigin.TopRight: // Flip horizontally
                 outW = source.Width;
                 outH = source.Height;
                 matrixValues = [-1, 0, source.Width - 1, 0, 1, 0, 0, 0, 1];
                 break;
-            case SKEncodedOrigin.BottomRight:
+            case SKEncodedOrigin.BottomRight: // Rotate 180
                 outW = source.Width;
                 outH = source.Height;
                 matrixValues = [-1, 0, source.Width - 1, 0, -1, source.Height - 1, 0, 0, 1];
                 break;
-            case SKEncodedOrigin.BottomLeft:
+            case SKEncodedOrigin.BottomLeft: // Flip vertically
                 outW = source.Width;
                 outH = source.Height;
                 matrixValues = [1, 0, 0, 0, -1, source.Height - 1, 0, 0, 1];
                 break;
-            case SKEncodedOrigin.LeftTop:
+            case SKEncodedOrigin.LeftTop: // Transpose
                 outW = source.Height;
                 outH = source.Width;
                 matrixValues = [0, 1, 0, 1, 0, 0, 0, 0, 1];
                 break;
-            case SKEncodedOrigin.RightTop:
+            case SKEncodedOrigin.RightTop: // Rotate 90 CW
                 outW = source.Height;
                 outH = source.Width;
                 matrixValues = [0, -1, source.Height - 1, 1, 0, 0, 0, 0, 1];
                 break;
-            case SKEncodedOrigin.RightBottom:
+            case SKEncodedOrigin.RightBottom: // Transverse
                 outW = source.Height;
                 outH = source.Width;
                 matrixValues = [0, -1, source.Height - 1, -1, 0, source.Width - 1, 0, 0, 1];
                 break;
-            case SKEncodedOrigin.LeftBottom:
+            case SKEncodedOrigin.LeftBottom: // Rotate 270 CW
                 outW = source.Height;
                 outH = source.Width;
                 matrixValues = [0, 1, 0, -1, 0, source.Width - 1, 0, 0, 1];
@@ -238,13 +287,16 @@ public class ImageProcessingService(
 
         var result = new SKBitmap(finalWidth, finalHeight);
         using var canvas = new SKCanvas(result);
-        using var paint = new SKPaint();
+        var paint = new SKPaint();
         paint.IsAntialias = true;
+        using (paint)
+        {
 canvas.DrawImage(SKImage.FromBitmap(source),
-                    new SKRect(0, 0, source.Width, source.Height),
-                    new SKRect(0, 0, finalWidth, finalHeight),
-                    SKSamplingOptions.Default,
-                    paint);
+                        new SKRect(0, 0, source.Width, source.Height),
+                        new SKRect(0, 0, finalWidth, finalHeight),
+                        SKSamplingOptions.Default,
+                        paint);
+        }
         canvas.Flush();
         return result;
     }
@@ -263,22 +315,17 @@ canvas.DrawImage(SKImage.FromBitmap(source),
         };
 
         using var image = SKImage.FromBitmap(bitmap);
+        // Some formats (GIF, BMP) may not be supported for encoding in all SkiaSharp builds.
+        // Fall back to PNG if the requested format encoding fails.
         using var data = image.Encode(format, format == SKEncodedImageFormat.Jpeg ? 90 : 100)
             ?? image.Encode(SKEncodedImageFormat.Png, 100);
         using var stream = File.OpenWrite(path);
         data.SaveTo(stream);
     }
 
-    private static string BuildDimensionSuffix(int width, int height)
-    {
-        if (width > 0 && height > 0) return $"_w{width}_h{height}";
-        if (width > 0) return $"_w{width}";
-        if (height > 0) return $"_h{height}";
-        return string.Empty;
-    }
-
     private async Task WaitTillFileCanBeReadAsync(string path)
     {
+        // Don't wait forever
         int retries = 0;
         while (!FileCanBeRead(path) && retries < 20)
         {
