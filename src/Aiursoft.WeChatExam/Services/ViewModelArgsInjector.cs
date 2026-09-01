@@ -102,6 +102,7 @@ public class ViewModelArgsInjector(
         _ = localizer["Database Management"];
         _ = localizer["Marketing Management"];
         _ = localizer["Practice Test"];
+        _ = localizer["Test Papers"];
         _ = localizer["Join Official Exam"];
         _ = localizer["News"];
     

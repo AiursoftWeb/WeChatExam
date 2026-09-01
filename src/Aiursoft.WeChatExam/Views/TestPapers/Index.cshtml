@@ -1,0 +1,145 @@
+@using Aiursoft.WeChatExam.Entities
+@model Aiursoft.WeChatExam.Models.TestPapersViewModels.IndexViewModel
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section styles {
+    <link rel="stylesheet" href="~/styles/test-exam.css" />
+}
+
+<div class="test-exam-ui">
+    <div class="test-paper-hero mb-4">
+        <div class="test-paper-hero-copy">
+            <div class="test-exam-kicker"><i data-lucide="sparkles"></i>@Localizer["Administrator workspace"]</div>
+            <h1>@Localizer["Test Papers"]</h1>
+            <p>@Localizer["Experience the current paper exactly as a candidate would. Test submissions use the production grading engine, including real AI grading."]</p>
+        </div>
+        <div class="test-paper-hero-stat">
+            <span>@Localizer["Available papers"]</span>
+            <strong>@Model.Papers.Count</strong>
+        </div>
+    </div>
+
+    @if (TempData["Error"] is string error)
+    {
+        <div class="alert alert-warning alert-outline-coloured mb-4" role="alert">
+            <div class="alert-icon"><i data-lucide="triangle-alert"></i></div>
+            <div class="alert-message">@Localizer[error]</div>
+        </div>
+    }
+
+    <div class="test-exam-toolbar mb-4">
+        <div class="input-group test-exam-search">
+            <span class="input-group-text"><i data-lucide="search"></i></span>
+            <input id="paperSearch" type="search" class="form-control" placeholder="@Localizer["Search papers..."]" autocomplete="off" />
+        </div>
+        <div class="test-exam-filter" role="group" aria-label="@Localizer["Paper status filter"]">
+            <button class="btn active" type="button" data-paper-filter="all">@Localizer["All"]</button>
+            <button class="btn" type="button" data-paper-filter="Draft">@Localizer["Draft"]</button>
+            <button class="btn" type="button" data-paper-filter="Publishable">@Localizer["Publishable"]</button>
+            <button class="btn" type="button" data-paper-filter="Frozen">@Localizer["Frozen"]</button>
+        </div>
+    </div>
+
+    @if (Model.Papers.Count > 0)
+    {
+        <div class="row g-3" id="paperGrid">
+            @foreach (var paper in Model.Papers)
+            {
+                var statusClass = paper.Status switch
+                {
+                    PaperStatus.Draft => "secondary",
+                    PaperStatus.Publishable => "success",
+                    PaperStatus.Frozen => "info",
+                    _ => "secondary"
+                };
+                <div class="col-md-6 col-xl-4 paper-grid-item"
+                     data-paper-title="@paper.Title.ToLowerInvariant()"
+                     data-paper-status="@paper.Status">
+                    <article class="test-paper-card h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between gap-3 mb-3">
+                                <div class="test-paper-icon"><i data-lucide="file-check-2"></i></div>
+                                <span class="badge badge-subtle-@statusClass">@Localizer[paper.Status.ToString()]</span>
+                            </div>
+                            <h2 class="h5 mb-2">@paper.Title</h2>
+                            <div class="test-paper-meta">
+                                <span><i data-lucide="list-checks"></i>@paper.QuestionCount @Localizer["questions"]</span>
+                                <span><i data-lucide="trophy"></i>@paper.TotalScore @Localizer["points"]</span>
+                                <span><i data-lucide="clock-3"></i>@paper.TimeLimit @Localizer["minutes"]</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between border-top mt-4 pt-3">
+                                <div class="small text-muted">
+                                    @if (paper.IsRealExam)
+                                    {
+                                        <span><i class="align-middle me-1" data-lucide="badge-check"></i>@Localizer["Real exam"]</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@paper.CreationTime.ToLocalTime().ToString("yyyy-MM-dd")</span>
+                                    }
+                                </div>
+                                @if (paper.QuestionCount > 0)
+                                {
+                                    <a asp-action="Take" asp-route-id="@paper.Id" class="btn btn-primary">
+                                        @Localizer["Start test"] <i class="align-middle ms-1" data-lucide="arrow-right"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-light" disabled>@Localizer["No questions"]</button>
+                                }
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+        <div class="test-exam-empty d-none" id="noSearchResults">
+            <div class="test-exam-empty-icon"><i data-lucide="search-x"></i></div>
+            <h2 class="h5">@Localizer["No matching papers"]</h2>
+            <p>@Localizer["Try another title or status filter."]</p>
+        </div>
+    }
+    else
+    {
+        <div class="test-exam-empty">
+            <div class="test-exam-empty-icon"><i data-lucide="files"></i></div>
+            <h2 class="h5">@Localizer["No papers yet"]</h2>
+            <p>@Localizer["Create a paper and add questions before starting a browser test."]</p>
+            <a asp-controller="Papers" asp-action="Create" class="btn btn-primary">@Localizer["Create paper"]</a>
+        </div>
+    }
+</div>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script>
+        (() => {
+            const search = document.getElementById('paperSearch');
+            if (!search) return;
+            const cards = [...document.querySelectorAll('.paper-grid-item')];
+            const empty = document.getElementById('noSearchResults');
+            const buttons = [...document.querySelectorAll('[data-paper-filter]')];
+            let status = 'all';
+
+            const filter = () => {
+                const term = search.value.trim().toLocaleLowerCase();
+                let visible = 0;
+                cards.forEach(card => {
+                    const match = card.dataset.paperTitle.includes(term) &&
+                        (status === 'all' || card.dataset.paperStatus === status);
+                    card.classList.toggle('d-none', !match);
+                    if (match) visible++;
+                });
+                empty?.classList.toggle('d-none', visible !== 0);
+            };
+
+            search.addEventListener('input', filter);
+            buttons.forEach(button => button.addEventListener('click', () => {
+                status = button.dataset.paperFilter;
+                buttons.forEach(item => item.classList.toggle('active', item === button));
+                filter();
+            }));
+        })();
+    </script>
+}

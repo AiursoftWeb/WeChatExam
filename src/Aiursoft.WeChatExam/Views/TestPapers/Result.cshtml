@@ -1,0 +1,106 @@
+@using Aiursoft.WeChatExam.Entities
+@model Aiursoft.WeChatExam.Models.TestPapersViewModels.ResultViewModel
+@{
+    Layout = null;
+    var percentage = Model.TotalScore > 0 ? (int)Math.Round(Model.Score * 100d / Model.TotalScore) : 0;
+    var scoreClass = percentage >= 60 ? "success" : "warning";
+}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@Model.Title - @Localizer["Paper Test Result"]</title>
+    <link rel="stylesheet" href="/UIStack/dist/css/app.css" />
+    <link rel="stylesheet" href="/styles/test-exam.css" />
+</head>
+<body class="test-exam-result-page test-exam-ui">
+    <main class="test-exam-result-shell">
+        <div class="test-result-hero">
+            <div class="test-result-hero-copy">
+                <div class="test-exam-kicker"><i data-lucide="badge-check"></i>@Localizer["Grading complete"]</div>
+                <h1>@Model.Title</h1>
+                <p>@Localizer["This was an administrator test. No official exam record or student practice history was created."]</p>
+                <div class="d-flex flex-wrap gap-2 mt-4">
+                    <a asp-action="Take" asp-route-id="@Model.PaperId" class="btn btn-primary"><i class="align-middle me-1" data-lucide="rotate-ccw"></i>@Localizer["Test again"]</a>
+                    <a asp-action="Index" class="btn btn-light"><i class="align-middle me-1" data-lucide="files"></i>@Localizer["Choose another paper"]</a>
+                </div>
+            </div>
+            <div class="test-result-score @scoreClass">
+                <span>@Localizer["Score"]</span>
+                <strong>@Model.Score<small>/@Model.TotalScore</small></strong>
+                <div>@percentage%</div>
+            </div>
+        </div>
+
+        <div class="row g-3 my-4">
+            <div class="col-sm-4"><div class="test-result-stat"><i data-lucide="list-checks"></i><span>@Localizer["Questions"]<strong>@Model.Questions.Count</strong></span></div></div>
+            <div class="col-sm-4"><div class="test-result-stat"><i data-lucide="pencil-line"></i><span>@Localizer["Answered"]<strong>@Model.AnsweredCount</strong></span></div></div>
+            <div class="col-sm-4"><div class="test-result-stat"><i data-lucide="sparkles"></i><span>@Localizer["AI graded"]<strong>@Model.Questions.Count(q => q.GradingStrategy == GradingStrategy.AiEval)</strong></span></div></div>
+        </div>
+
+        <div class="d-flex align-items-end justify-content-between gap-3 mb-3">
+            <div><div class="test-exam-kicker">@Localizer["Detailed review"]</div><h2 class="h4 mb-0">@Localizer["Question-by-question results"]</h2></div>
+            <button type="button" class="btn btn-sm btn-light" id="toggleAll">@Localizer["Expand all"]</button>
+        </div>
+
+        <div class="vstack gap-3" id="resultQuestions">
+            @foreach (var question in Model.Questions)
+            {
+                var earnedFullScore = question.Score >= question.MaxScore;
+                <article class="test-result-question @(earnedFullScore ? "is-correct" : "is-partial")">
+                    <button class="test-result-question-header" type="button" data-bs-toggle="collapse" data-bs-target="#result-@question.Number" aria-expanded="@(question.Number == 1 ? "true" : "false")">
+                        <span class="test-question-number">@question.Number</span>
+                        <span class="flex-grow-1 text-start">
+                            <strong>@question.Content</strong>
+                            <small>@Localizer[question.QuestionType.GetDisplayName()] · @(question.GradingStrategy == GradingStrategy.AiEval ? Localizer["AI grading"] : Localizer["Automatic grading"])</small>
+                        </span>
+                        <span class="test-result-points">@question.Score / @question.MaxScore</span>
+                        <i class="test-result-chevron" data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="collapse @(question.Number == 1 ? "show" : string.Empty)" id="result-@question.Number">
+                        <div class="test-result-question-body">
+                            <div class="test-answer-block">
+                                <span>@Localizer["Your answer"]</span>
+                                <div class="@(string.IsNullOrWhiteSpace(question.UserAnswer) ? "text-muted fst-italic" : string.Empty)">@(string.IsNullOrWhiteSpace(question.UserAnswer) ? Localizer["Not answered"] : question.UserAnswer)</div>
+                            </div>
+                            <div class="test-answer-block standard">
+                                <span>@Localizer["Standard answer"]</span>
+                                <div>@question.StandardAnswer</div>
+                            </div>
+                            @if (!string.IsNullOrWhiteSpace(question.Comment))
+                            {
+                                <div class="test-answer-block ai-comment"><span><i data-lucide="bot"></i>@Localizer["Grading comment"]</span><div>@question.Comment</div></div>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(question.Explanation))
+                            {
+                                <div class="test-answer-block explanation"><span><i data-lucide="book-open-check"></i>@Localizer["Explanation"]</span><div>@question.Explanation</div></div>
+                            }
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+    </main>
+
+    <script src="/UIStack/dist/js/app.js"></script>
+    <script>
+        (() => {
+            const storageKey = 'wechat-exam:paper-test:@Model.PaperId';
+            localStorage.removeItem(storageKey);
+            localStorage.removeItem(`${storageKey}:started-at`);
+            localStorage.removeItem(`${storageKey}:flags`);
+
+            const button = document.getElementById('toggleAll');
+            let expanded = false;
+            button.addEventListener('click', () => {
+                expanded = !expanded;
+                document.querySelectorAll('#resultQuestions .collapse').forEach(element => {
+                    bootstrap.Collapse.getOrCreateInstance(element, { toggle: false })[expanded ? 'show' : 'hide']();
+                });
+                button.textContent = expanded ? '@Localizer["Collapse all"]' : '@Localizer["Expand all"]';
+            });
+        })();
+    </script>
+</body>
+</html>

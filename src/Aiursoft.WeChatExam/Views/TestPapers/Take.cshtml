@@ -1,0 +1,300 @@
+@using Aiursoft.WeChatExam.Entities
+@model Aiursoft.WeChatExam.Models.TestPapersViewModels.TakeViewModel
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@Model.Title - @Localizer["Paper Test"]</title>
+    <link rel="stylesheet" href="/UIStack/dist/css/app.css" />
+    <link rel="stylesheet" href="/styles/test-exam.css" />
+</head>
+<body class="test-exam-focus test-exam-ui">
+    <header class="test-exam-focus-header sticky-top">
+        <div class="test-exam-focus-header-inner">
+            <div class="d-flex align-items-center gap-3 overflow-hidden">
+                <a asp-action="Index" class="test-exam-exit" aria-label="@Localizer["Exit test"]"><i data-lucide="x"></i></a>
+                <div class="test-paper-icon d-none d-sm-inline-flex"><i data-lucide="shield-check"></i></div>
+                <div class="overflow-hidden">
+                    <div class="test-exam-kicker mb-0">@Localizer["Administrator paper test"]</div>
+                    <div class="fw-bold text-truncate">@Model.Title</div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-4 flex-shrink-0">
+                <div class="d-none d-md-block text-end">
+                    <div class="small text-muted">@Localizer["Progress"]</div>
+                    <strong><span id="answeredCount">0</span> / @Model.Questions.Count</strong>
+                </div>
+                <div class="text-end">
+                    <div class="small text-muted d-flex align-items-center justify-content-end gap-1"><i data-lucide="clock-3"></i>@Localizer["Time remaining"]</div>
+                    <div class="test-exam-timer" id="countdown">--:--:--</div>
+                </div>
+            </div>
+        </div>
+        <div class="progress rounded-0" style="height: 4px"><div class="progress-bar" id="timeProgress" style="width: 100%"></div></div>
+    </header>
+
+    <main class="test-exam-focus-shell">
+        <div class="test-exam-mobile-summary d-lg-none mb-3">
+            <button class="btn btn-light w-100 d-flex justify-content-between" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavigator">
+                <span><i class="align-middle me-2" data-lucide="layout-grid"></i>@Localizer["Answer sheet"]</span>
+                <span><strong id="mobileAnsweredCount">0</strong>/@Model.Questions.Count</span>
+            </button>
+        </div>
+
+        <form asp-action="Submit" method="post" id="testPaperForm" data-paper-id="@Model.PaperId" data-time-limit="@Model.TimeLimit">
+            <input type="hidden" name="PaperId" value="@Model.PaperId" />
+            <div class="row g-4">
+                <aside class="col-lg-3 d-none d-lg-block">
+                    <div class="test-exam-navigator">
+                        <div class="test-exam-nav-card">
+                            <div class="card-header">
+                                <div>
+                                    <h2>@Localizer["Answer sheet"]</h2>
+                                    <p>@Localizer["Answers are saved in this browser."]</p>
+                                </div>
+                                <i data-lucide="layout-grid"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="test-exam-number-grid">
+                                    @for (var i = 0; i < Model.Questions.Count; i++)
+                                    {
+                                        <a href="#question-@Model.Questions[i].Id" class="test-exam-number" data-nav-question="@Model.Questions[i].Id">@(i + 1)</a>
+                                    }
+                                </div>
+                                <div class="test-exam-legend">
+                                    <span><i class="is-answered"></i>@Localizer["Answered"]</span>
+                                    <span><i class="is-flagged"></i>@Localizer["Flagged"]</span>
+                                </div>
+                                <div class="test-exam-save-state" id="saveState"><i data-lucide="cloud-check"></i>@Localizer["Saved in this browser"]</div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="col-lg-9">
+                    <div class="test-exam-paper-summary mb-4">
+                        <div>
+                            <span class="badge badge-subtle-primary mb-2">@Localizer["Live grading preview"]</span>
+                            <h1>@Model.Title</h1>
+                            <p>@Model.Questions.Count @Localizer["questions"] · @Model.TotalScore @Localizer["points"] · @Model.TimeLimit @Localizer["minutes"]</p>
+                        </div>
+                        <div class="test-exam-ai-note"><i data-lucide="bot"></i><span><strong>@Localizer["Real AI grading"]</strong><small>@Localizer["AI questions are sent to the configured model after submission."]</small></span></div>
+                    </div>
+
+                    @for (var i = 0; i < Model.Questions.Count; i++)
+                    {
+                        var question = Model.Questions[i];
+                        var isChoice = question.QuestionType is QuestionType.Choice or QuestionType.Bool && question.Options.Count > 0;
+                        <section id="question-@question.Id" class="test-question-card mb-4" data-question-id="@question.Id">
+                            <div class="card-body">
+                                <div class="test-question-heading">
+                                    <div class="test-question-number">@(i + 1)</div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                            <span class="test-question-type">@Localizer[question.QuestionType.GetDisplayName()]</span>
+                                            <span class="test-question-score">@question.Score @Localizer["points"]</span>
+                                            @if (question.GradingStrategy == GradingStrategy.AiEval)
+                                            {
+                                                <span class="test-question-ai"><i data-lucide="sparkles"></i>@Localizer["AI grading"]</span>
+                                            }
+                                        </div>
+                                        <h2>@question.Content</h2>
+                                    </div>
+                                    <button type="button" class="test-question-flag" data-flag-question="@question.Id" title="@Localizer["Flag for review"]"><i data-lucide="bookmark"></i></button>
+                                </div>
+
+                                <div class="test-question-answer">
+                                    @if (isChoice)
+                                    {
+                                        <div class="vstack gap-2">
+                                            @for (var optionIndex = 0; optionIndex < question.Options.Count; optionIndex++)
+                                            {
+                                                var option = question.Options[optionIndex];
+                                                var optionLabel = optionIndex < 26 ? ((char)('A' + optionIndex)).ToString() : (optionIndex + 1).ToString();
+                                                <label class="test-exam-option">
+                                                    <input type="radio" class="form-check-input" name="Answers[@question.Id]" value="@option" data-answer="@question.Id" />
+                                                    <span class="test-exam-option-index">@optionLabel</span>
+                                                    <span class="test-exam-option-text">@option</span>
+                                                </label>
+                                            }
+                                        </div>
+                                    }
+                                    else if (question.QuestionType == QuestionType.Blank)
+                                    {
+                                        <input type="text" class="form-control form-control-lg test-text-answer" name="Answers[@question.Id]" data-answer="@question.Id" placeholder="@Localizer["Enter your answer"]" autocomplete="off" />
+                                    }
+                                    else
+                                    {
+                                        <textarea class="form-control test-text-answer" rows="@(question.QuestionType == QuestionType.Essay ? 10 : 6)" name="Answers[@question.Id]" data-answer="@question.Id" placeholder="@Localizer["Write your answer here..."]"></textarea>
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                    }
+
+                    <div class="test-exam-submit-card">
+                        <div>
+                            <strong>@Localizer["Ready to submit?"]</strong>
+                            <p>@Localizer["Review flagged questions before asking the grading engine for a result."]</p>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg px-4" data-bs-toggle="modal" data-bs-target="#submitConfirmation">
+                            @Localizer["Submit paper"] <i class="align-middle ms-1" data-lucide="send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNavigator">
+        <div class="offcanvas-header"><h2 class="h5 mb-0">@Localizer["Answer sheet"]</h2><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+        <div class="offcanvas-body">
+            <div class="test-exam-number-grid">
+                @for (var i = 0; i < Model.Questions.Count; i++)
+                {
+                    <a href="#question-@Model.Questions[i].Id" class="test-exam-number" data-nav-question="@Model.Questions[i].Id" data-bs-dismiss="offcanvas">@(i + 1)</a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="submitConfirmation" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content test-submit-modal">
+                <div class="modal-body p-4 p-sm-5 text-center">
+                    <div class="test-submit-modal-icon"><i data-lucide="send"></i></div>
+                    <h2 class="h4">@Localizer["Submit this paper?"]</h2>
+                    <p class="text-muted">@Localizer["The grading engine will score every question. AI-graded answers may take a little longer."]</p>
+                    <div class="test-submit-summary"><span>@Localizer["Answered"]</span><strong><span id="modalAnsweredCount">0</span> / @Model.Questions.Count</strong></div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="button" class="btn btn-primary btn-lg" id="confirmSubmitButton">@Localizer["Submit and grade"]</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">@Localizer["Continue reviewing"]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/UIStack/dist/js/app.js"></script>
+    <script>
+        (() => {
+            const form = document.getElementById('testPaperForm');
+            const paperId = form.dataset.paperId;
+            const timeLimit = Number(form.dataset.timeLimit);
+            const storageKey = `wechat-exam:paper-test:${paperId}`;
+            const timerKey = `${storageKey}:started-at`;
+            const flagsKey = `${storageKey}:flags`;
+            const answerInputs = [...form.querySelectorAll('[data-answer]')];
+            const cards = [...document.querySelectorAll('[data-question-id]')];
+            const saveState = document.getElementById('saveState');
+            let submitting = false;
+
+            const readJson = (key, fallback) => {
+                try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
+                catch { return fallback; }
+            };
+            const answers = readJson(storageKey, {});
+            const flags = new Set(readJson(flagsKey, []));
+
+            answerInputs.forEach(input => {
+                const saved = answers[input.dataset.answer];
+                if (input.type === 'radio') input.checked = saved === input.value;
+                else if (typeof saved === 'string') input.value = saved;
+            });
+
+            const getAnswer = id => {
+                const inputs = answerInputs.filter(input => input.dataset.answer === id);
+                const radio = inputs.find(input => input.type === 'radio');
+                return radio ? (inputs.find(input => input.checked)?.value ?? '') : (inputs[0]?.value ?? '').trim();
+            };
+
+            const updateState = () => {
+                const current = {};
+                let answered = 0;
+                cards.forEach(card => {
+                    const id = card.dataset.questionId;
+                    const answer = getAnswer(id);
+                    if (answer) {
+                        current[id] = answer;
+                        answered++;
+                    }
+                    document.querySelectorAll(`[data-nav-question="${id}"]`).forEach(link => {
+                        link.classList.toggle('answered', Boolean(answer));
+                        link.classList.toggle('flagged', flags.has(id));
+                    });
+                    card.classList.toggle('is-flagged', flags.has(id));
+                });
+                localStorage.setItem(storageKey, JSON.stringify(current));
+                document.getElementById('answeredCount').textContent = answered;
+                document.getElementById('mobileAnsweredCount').textContent = answered;
+                document.getElementById('modalAnsweredCount').textContent = answered;
+                if (saveState) saveState.innerHTML = '<i data-lucide="cloud-check"></i>@Localizer["Saved in this browser"]';
+                window.lucide?.createIcons();
+            };
+
+            answerInputs.forEach(input => input.addEventListener(input.type === 'radio' ? 'change' : 'input', () => {
+                if (saveState) saveState.innerHTML = '<span class="spinner-border spinner-border-sm"></span>@Localizer["Saving..."]';
+                updateState();
+            }));
+
+            document.querySelectorAll('[data-flag-question]').forEach(button => button.addEventListener('click', () => {
+                const id = button.dataset.flagQuestion;
+                flags.has(id) ? flags.delete(id) : flags.add(id);
+                localStorage.setItem(flagsKey, JSON.stringify([...flags]));
+                updateState();
+            }));
+
+            const totalMs = Math.max(0, timeLimit) * 60 * 1000;
+            let startedAt = Number(localStorage.getItem(timerKey));
+            if (!startedAt || Number.isNaN(startedAt)) {
+                startedAt = Date.now();
+                localStorage.setItem(timerKey, String(startedAt));
+            }
+
+            const submit = () => {
+                if (submitting) return;
+                submitting = true;
+                const button = document.getElementById('confirmSubmitButton');
+                button.disabled = true;
+                button.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>@Localizer["Grading..."]';
+                form.requestSubmit();
+            };
+
+            const updateTimer = () => {
+                if (totalMs <= 0) {
+                    document.getElementById('countdown').textContent = '@Localizer["No time limit"]';
+                    return;
+                }
+                const remaining = Math.max(0, totalMs - (Date.now() - startedAt));
+                const totalSeconds = Math.floor(remaining / 1000);
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                document.getElementById('countdown').textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                const ratio = Math.max(0, remaining / totalMs * 100);
+                document.getElementById('timeProgress').style.width = `${ratio}%`;
+                document.getElementById('timeProgress').classList.toggle('bg-danger', ratio < 15);
+                if (remaining <= 0) submit();
+            };
+
+            const observer = new IntersectionObserver(entries => {
+                entries.filter(entry => entry.isIntersecting).forEach(entry => {
+                    document.querySelectorAll('.test-exam-number.active').forEach(link => link.classList.remove('active'));
+                    document.querySelectorAll(`[data-nav-question="${entry.target.dataset.questionId}"]`).forEach(link => link.classList.add('active'));
+                });
+            }, { rootMargin: '-25% 0px -60% 0px' });
+            cards.forEach(card => observer.observe(card));
+
+            document.getElementById('confirmSubmitButton').addEventListener('click', submit);
+            form.addEventListener('submit', () => { submitting = true; });
+            updateState();
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        })();
+    </script>
+</body>
+</html>
