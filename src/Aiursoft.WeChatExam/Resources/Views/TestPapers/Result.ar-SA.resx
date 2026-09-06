@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI graded" xml:space="preserve">
+    <value>تم التصحيح بالذكاء الاصطناعي</value>
+  </data>
+  <data name="Answered" xml:space="preserve">
+    <value>تمت الإجابة</value>
+  </data>
+  <data name="Choose another paper" xml:space="preserve">
+    <value>اختر اختبارًا آخر</value>
+  </data>
+  <data name="Collapse all" xml:space="preserve">
+    <value>طي الكل</value>
+  </data>
+  <data name="Detailed review" xml:space="preserve">
+    <value>مراجعة تفصيلية</value>
+  </data>
+  <data name="Expand all" xml:space="preserve">
+    <value>توسيع الكل</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>الشرح</value>
+  </data>
+  <data name="Grading comment" xml:space="preserve">
+    <value>تعليق التقييم</value>
+  </data>
+  <data name="Grading complete" xml:space="preserve">
+    <value>اكتمل التصحيح</value>
+  </data>
+  <data name="Paper Test Result" xml:space="preserve">
+    <value>نتيجة اختبار الورقة</value>
+  </data>
+  <data name="Question-by-question results" xml:space="preserve">
+    <value>النتائج سؤالاً بسؤال</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>الأسئلة</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>الدرجة</value>
+  </data>
+  <data name="Standard answer" xml:space="preserve">
+    <value>الإجابة النموذجية</value>
+  </data>
+  <data name="Test again" xml:space="preserve">
+    <value>إعادة الاختبار</value>
+  </data>
+  <data name="This was an administrator test. No official exam record or student practice history was created." xml:space="preserve">
+    <value>كان هذا اختبارًا للمدير. لم يتم إنشاء سجل امتحان رسمي أو سجل تدريب للطالب.</value>
+  </data>
+  <data name="Your answer" xml:space="preserve">
+    <value>إجابتك</value>
+  </data>
+
+</root>
