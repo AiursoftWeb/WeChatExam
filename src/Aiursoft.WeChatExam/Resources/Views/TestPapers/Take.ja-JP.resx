@@ -19,94 +19,94 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
       <data name="Administrator paper test" xml:space="preserve">
-    <value>管理员试卷测试</value>
+    <value>管理者用試験</value>
   </data>
   <data name="AI grading" xml:space="preserve">
-    <value>AI 判题</value>
+    <value>AI採点</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
-    <value>提交后，AI 判题会真实请求系统配置的模型。</value>
+    <value>AI問題は、提出後、設定されたモデルに送信されます。</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
-    <value>答题卡</value>
+    <value>回答用シート</value>
   </data>
   <data name="Answered" xml:space="preserve">
-    <value>已答</value>
+    <value>回答済み</value>
   </data>
   <data name="Answers are saved in this browser." xml:space="preserve">
-    <value>答案自动保存在当前浏览器。</value>
+    <value>回答はこのブラウザに保存されます。</value>
   </data>
   <data name="Continue reviewing" xml:space="preserve">
-    <value>继续检查</value>
+    <value>確認を続ける</value>
   </data>
   <data name="Enter your answer" xml:space="preserve">
-    <value>请输入答案</value>
+    <value>回答を入力してください</value>
   </data>
   <data name="Exit test" xml:space="preserve">
-    <value>退出测试</value>
+    <value>テストを終了</value>
   </data>
   <data name="Flag for review" xml:space="preserve">
-    <value>标记以便复查</value>
+    <value>確認フラグ</value>
   </data>
   <data name="Flagged" xml:space="preserve">
-    <value>已标记</value>
+    <value>フラグ済み</value>
   </data>
   <data name="Grading..." xml:space="preserve">
-    <value>正在判题……</value>
+    <value>採点中...</value>
   </data>
   <data name="Live grading preview" xml:space="preserve">
-    <value>真实判题预览</value>
+    <value>リアルタイム採点プレビュー</value>
   </data>
   <data name="minutes" xml:space="preserve">
-    <value>分钟</value>
-  </data>
-  <data name="No time limit" xml:space="preserve">
-    <value>不限时</value>
-  </data>
-  <data name="Paper Test" xml:space="preserve">
-    <value>试卷测试</value>
-  </data>
-  <data name="points" xml:space="preserve">
     <value>分</value>
   </data>
+  <data name="No time limit" xml:space="preserve">
+    <value>時間制限なし</value>
+  </data>
+  <data name="Paper Test" xml:space="preserve">
+    <value>試験</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>点</value>
+  </data>
   <data name="Progress" xml:space="preserve">
-    <value>答题进度</value>
+    <value>進捗</value>
   </data>
   <data name="questions" xml:space="preserve">
-    <value>题</value>
+    <value>問</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
-    <value>准备交卷了吗？</value>
+    <value>提出してもよろしいですか？</value>
   </data>
   <data name="Real AI grading" xml:space="preserve">
-    <value>真实 AI 判题</value>
+    <value>リアルAI採点</value>
   </data>
   <data name="Review flagged questions before asking the grading engine for a result." xml:space="preserve">
-    <value>交卷前可以复查已标记的题目，提交后判题引擎将开始评分。</value>
+    <value>採点エンジンに結果を依頼する前に、フラグ付きの質問を確認してください。</value>
   </data>
   <data name="Saved in this browser" xml:space="preserve">
-    <value>已保存至当前浏览器</value>
+    <value>このブラウザに保存済み</value>
   </data>
   <data name="Saving..." xml:space="preserve">
-    <value>正在保存……</value>
+    <value>保存中...</value>
   </data>
   <data name="Submit and grade" xml:space="preserve">
-    <value>提交并判题</value>
+    <value>提出して採点する</value>
   </data>
   <data name="Submit paper" xml:space="preserve">
-    <value>提交试卷</value>
+    <value>試験を提出</value>
   </data>
   <data name="Submit this paper?" xml:space="preserve">
-    <value>确认提交这份试卷？</value>
+    <value>この論文を提出しますか？</value>
   </data>
   <data name="The grading engine will score every question. AI-graded answers may take a little longer." xml:space="preserve">
-    <value>判题引擎将为每道题评分，AI 判题可能需要稍多一点时间。</value>
+    <value>採点エンジンがすべての質問に採点を行います。AI採点の回答には少し時間がかかる場合があります。</value>
   </data>
   <data name="Time remaining" xml:space="preserve">
-    <value>剩余时间</value>
+    <value>残り時間</value>
   </data>
   <data name="Write your answer here..." xml:space="preserve">
-    <value>在这里书写答案……</value>
+    <value>ここに回答を入力してください...</value>
   </data>
 
 </root>
