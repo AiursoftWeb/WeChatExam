@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Administrator paper test" xml:space="preserve">
+    <value>Ylläpitäjän koe</value>
+  </data>
+  <data name="AI grading" xml:space="preserve">
+    <value>Tekoälyn arviointi</value>
+  </data>
+  <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
+    <value>Tekoälyn kysymykset lähetetään määritetylle mallille lähetettyäsi.</value>
+  </data>
+  <data name="Answer sheet" xml:space="preserve">
+    <value>Vastauspohja</value>
+  </data>
+  <data name="Answered" xml:space="preserve">
+    <value>Vastattu</value>
+  </data>
+  <data name="Answers are saved in this browser." xml:space="preserve">
+    <value>Vastaukset tallennetaan tähän selaimeseen.</value>
+  </data>
+  <data name="Continue reviewing" xml:space="preserve">
+    <value>Jatka katselua</value>
+  </data>
+  <data name="Enter your answer" xml:space="preserve">
+    <value>Syötä vastauksesi</value>
+  </data>
+  <data name="Exit test" xml:space="preserve">
+    <value>Poistu testistä</value>
+  </data>
+  <data name="Flag for review" xml:space="preserve">
+    <value>Merkitse tarkistettavaksi</value>
+  </data>
+  <data name="Flagged" xml:space="preserve">
+    <value>Merkitty</value>
+  </data>
+  <data name="Grading..." xml:space="preserve">
+    <value>Arvostellaan...</value>
+  </data>
+  <data name="Live grading preview" xml:space="preserve">
+    <value>Suoranaisten arviointien esikatselu</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minuuttia</value>
+  </data>
+  <data name="No time limit" xml:space="preserve">
+    <value>Ei aikarajaa</value>
+  </data>
+  <data name="Paper Test" xml:space="preserve">
+    <value>Kokeen suoritukset</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>pistettä</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Edistyminen</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>kysymystä</value>
+  </data>
+  <data name="Ready to submit?" xml:space="preserve">
+    <value>Valmis lähettämään?</value>
+  </data>
+  <data name="Real AI grading" xml:space="preserve">
+    <value>Toden AI-arvosana</value>
+  </data>
+  <data name="Review flagged questions before asking the grading engine for a result." xml:space="preserve">
+    <value>Tarkista merkityt kysymykset ennen kuin pyydät arviointimoottoria antamaan tuloksen.</value>
+  </data>
+  <data name="Saved in this browser" xml:space="preserve">
+    <value>Tallennettu tähän selaimessa</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Tallennetaan...</value>
+  </data>
+  <data name="Submit and grade" xml:space="preserve">
+    <value>Lähetä ja arvioi</value>
+  </data>
+  <data name="Submit paper" xml:space="preserve">
+    <value>Lähetä koe</value>
+  </data>
+  <data name="Submit this paper?" xml:space="preserve">
+    <value>Lähetetäänkö tämä koe?</value>
+  </data>
+  <data name="The grading engine will score every question. AI-graded answers may take a little longer." xml:space="preserve">
+    <value>Arviointimoottori arvioi jokaisen kysymyksen. Tekoälyn arvioimat vastaukset saattavat viedä hieman pidempään.</value>
+  </data>
+  <data name="Time remaining" xml:space="preserve">
+    <value>Jäljellä oleva aika</value>
+  </data>
+  <data name="Write your answer here..." xml:space="preserve">
+    <value>Kirjaa vastauksesi tähän...</value>
+  </data>
+
+</root>

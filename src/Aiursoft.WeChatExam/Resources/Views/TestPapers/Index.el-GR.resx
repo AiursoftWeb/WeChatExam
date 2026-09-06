@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Administrator workspace" xml:space="preserve">
+    <value>Χώρος εργασίας διαχειριστή</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Όλα</value>
+  </data>
+  <data name="Available papers" xml:space="preserve">
+    <value>Διαθέσιμα δοκίμια</value>
+  </data>
+  <data name="Create a paper and add questions before starting a browser test." xml:space="preserve">
+    <value>Δημιουργήστε ένα τεστ και προσθέστε ερωτήσεις πριν ξεκινήσετε ένα τεστ στον περιηγητή.</value>
+  </data>
+  <data name="Create paper" xml:space="preserve">
+    <value>Δημιουργία εξεταστικού</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Σχέδιο</value>
+  </data>
+  <data name="Experience the current paper exactly as a candidate would. Test submissions use the production grading engine, including real AI grading." xml:space="preserve">
+    <value>Δοκιμάστε το τρέχον τεστ ακριβώς όπως θα το έκανε ένας υποψήφιος. Οι υποβολές δοκιμής χρησιμοποιούν τον παραγωγικό μηχανισμό βαθμολόγησης, συμπεριλαμβανομένης της πραγματικής βαθμολόγησης από Τεχνητή Νοημοσύνη.</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>Περιορισμένο</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>λεπτά</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Καμία σύμπτωση δοκιμασιών</value>
+  </data>
+  <data name="No papers yet" xml:space="preserve">
+    <value>Δεν υπάρχουν ακόμα δοκιμασίες</value>
+  </data>
+  <data name="No questions" xml:space="preserve">
+    <value>Χωρίς ερωτήσεις</value>
+  </data>
+  <data name="Paper status filter" xml:space="preserve">
+    <value>Φίλτρο κατάστασης δοκιμασίας</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>βαθμοί</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Διαθέσιμο για δημοσίευση</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>ερωτήματα</value>
+  </data>
+  <data name="Real exam" xml:space="preserve">
+    <value>Πραγματικό εξεταστικό</value>
+  </data>
+  <data name="Search papers..." xml:space="preserve">
+    <value>Αναζήτηση εξετάσεων...</value>
+  </data>
+  <data name="Start test" xml:space="preserve">
+    <value>Εκκίνηση δοκιμαστικού</value>
+  </data>
+  <data name="Test Papers" xml:space="preserve">
+    <value>Δελτία Εξετάσεων</value>
+  </data>
+  <data name="Try another title or status filter." xml:space="preserve">
+    <value>Δοκιμάστε έναν άλλο τίτλο ή φίλτρο κατάστασης.</value>
+  </data>
+
+</root>
