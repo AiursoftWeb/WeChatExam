@@ -19,64 +19,55 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
       <data name="AI graded" xml:space="preserve">
-    <value>AI 判题</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
-    <value>AI 判题</value>
+    <value>AI 評分</value>
   </data>
   <data name="Answered" xml:space="preserve">
     <value>已作答</value>
   </data>
-  <data name="Automatic grading" xml:space="preserve">
-    <value>自动判题</value>
-  </data>
   <data name="Choose another paper" xml:space="preserve">
-    <value>选择其他试卷</value>
+    <value>選擇另一份試卷</value>
   </data>
   <data name="Collapse all" xml:space="preserve">
-    <value>全部收起</value>
+    <value>全部收合</value>
   </data>
   <data name="Detailed review" xml:space="preserve">
-    <value>详细复盘</value>
+    <value>詳細檢視</value>
   </data>
   <data name="Expand all" xml:space="preserve">
-    <value>全部展开</value>
+    <value>全部展開</value>
   </data>
   <data name="Explanation" xml:space="preserve">
-    <value>解析</value>
+    <value>說明</value>
   </data>
   <data name="Grading comment" xml:space="preserve">
-    <value>判题评语</value>
+    <value>評分說明</value>
   </data>
   <data name="Grading complete" xml:space="preserve">
-    <value>判题完成</value>
-  </data>
-  <data name="Not answered" xml:space="preserve">
-    <value>未作答</value>
+    <value>評分完成</value>
   </data>
   <data name="Paper Test Result" xml:space="preserve">
-    <value>试卷测试结果</value>
+    <value>試卷測試結果</value>
   </data>
   <data name="Question-by-question results" xml:space="preserve">
-    <value>逐题判题结果</value>
+    <value>逐題結果</value>
   </data>
   <data name="Questions" xml:space="preserve">
-    <value>题目总数</value>
+    <value>題數</value>
   </data>
   <data name="Score" xml:space="preserve">
-    <value>得分</value>
+    <value>分數</value>
   </data>
   <data name="Standard answer" xml:space="preserve">
-    <value>标准答案</value>
+    <value>標準答案</value>
   </data>
   <data name="Test again" xml:space="preserve">
-    <value>重新测试</value>
+    <value>再試一次</value>
   </data>
   <data name="This was an administrator test. No official exam record or student practice history was created." xml:space="preserve">
-    <value>这是管理员测试，不会创建正式考试记录，也不会写入学生刷题历史。</value>
+    <value>這是管理員測試。未建立正式考試紀錄或學生練習歷史。</value>
   </data>
   <data name="Your answer" xml:space="preserve">
-    <value>你的答案</value>
+    <value>您的答案</value>
   </data>
 
 </root>

@@ -19,70 +19,67 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
       <data name="Administrator workspace" xml:space="preserve">
-    <value>管理员工作台</value>
+    <value>관리자 워크스페이스</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>全部</value>
+    <value>전체</value>
   </data>
   <data name="Available papers" xml:space="preserve">
-    <value>可测试试卷</value>
+    <value>사용 가능한 시험지</value>
   </data>
   <data name="Create a paper and add questions before starting a browser test." xml:space="preserve">
-    <value>请先创建试卷并添加题目，再开始浏览器测试。</value>
+    <value>브라우저 테스트를 시작하기 전에 시험지를 생성하고 문제를 추가하세요.</value>
   </data>
   <data name="Create paper" xml:space="preserve">
-    <value>创建试卷</value>
+    <value>문제지 생성</value>
   </data>
   <data name="Draft" xml:space="preserve">
-    <value>草稿</value>
+    <value>초안</value>
   </data>
   <data name="Experience the current paper exactly as a candidate would. Test submissions use the production grading engine, including real AI grading." xml:space="preserve">
-    <value>像考生一样体验试卷当前版本。测试提交使用生产判题引擎，包括真实的 AI 判题。</value>
+    <value>지원자가 실제로 보는 것과 동일한 방식으로 현재 시험지를 체험해 보세요. 시험 제출은 실제 AI 채점을 포함한 프로덕션 채점 엔진을 사용합니다.</value>
   </data>
   <data name="Frozen" xml:space="preserve">
-    <value>已冻结</value>
+    <value>동결됨</value>
   </data>
   <data name="minutes" xml:space="preserve">
-    <value>分钟</value>
+    <value>분</value>
   </data>
   <data name="No matching papers" xml:space="preserve">
-    <value>没有匹配的试卷</value>
+    <value>일치하는 시험지가 없습니다</value>
   </data>
   <data name="No papers yet" xml:space="preserve">
-    <value>还没有试卷</value>
+    <value>아직 시험지가 없습니다</value>
   </data>
   <data name="No questions" xml:space="preserve">
-    <value>暂无题目</value>
+    <value>질문 없음</value>
   </data>
   <data name="Paper status filter" xml:space="preserve">
-    <value>试卷状态筛选</value>
+    <value>시험지 상태 필터</value>
   </data>
   <data name="points" xml:space="preserve">
-    <value>分</value>
+    <value>점</value>
   </data>
   <data name="Publishable" xml:space="preserve">
-    <value>可发布</value>
+    <value>게시 가능</value>
   </data>
   <data name="questions" xml:space="preserve">
-    <value>题</value>
+    <value>문제</value>
   </data>
   <data name="Real exam" xml:space="preserve">
-    <value>真题</value>
+    <value>실제 시험</value>
   </data>
   <data name="Search papers..." xml:space="preserve">
-    <value>搜索试卷……</value>
+    <value>시험지 검색...</value>
   </data>
   <data name="Start test" xml:space="preserve">
-    <value>开始测试</value>
+    <value>테스트 시작</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
-    <value>测试试卷</value>
-  </data>
-  <data name="This paper has no questions to test." xml:space="preserve">
-    <value>这份试卷没有可测试的题目。</value>
+    <value>시험지</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
-    <value>请尝试其他标题或状态筛选。</value>
+    <value>다른 제목이나 상태 필터를 시도해 보세요.</value>
   </data>
 
 </root>
