@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Administrator paper test" xml:space="preserve">
+    <value>प्रशातिक परीक्षा</value>
+  </data>
+  <data name="AI grading" xml:space="preserve">
+    <value>AI ग्रेडिंग</value>
+  </data>
+  <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
+    <value>जमा करने के बाद AI प्रश्न कॉन्फ़िगर किए गए मॉडल को भेजे जाते हैं।</value>
+  </data>
+  <data name="Answer sheet" xml:space="preserve">
+    <value>उत्तर पत्रिका</value>
+  </data>
+  <data name="Answered" xml:space="preserve">
+    <value>उत्तर दिया गया</value>
+  </data>
+  <data name="Answers are saved in this browser." xml:space="preserve">
+    <value>उत्तर इस ब्राउज़र में सहेजे जाते हैं।</value>
+  </data>
+  <data name="Continue reviewing" xml:space="preserve">
+    <value>समीक्षा जारी रखें</value>
+  </data>
+  <data name="Enter your answer" xml:space="preserve">
+    <value>अपना उत्तर दर्ज करें</value>
+  </data>
+  <data name="Exit test" xml:space="preserve">
+    <value>परीक्षा से बाहर निकलें</value>
+  </data>
+  <data name="Flag for review" xml:space="preserve">
+    <value>समीक्षा हेतु चिह्नित करें</value>
+  </data>
+  <data name="Flagged" xml:space="preserve">
+    <value>चिह्नित</value>
+  </data>
+  <data name="Grading..." xml:space="preserve">
+    <value>ग्रेडिंग...</value>
+  </data>
+  <data name="Live grading preview" xml:space="preserve">
+    <value>लाइव ग्रेडिंग पूर्वावलोकन</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>मिनट</value>
+  </data>
+  <data name="No time limit" xml:space="preserve">
+    <value>कोई समय सीमा नहीं</value>
+  </data>
+  <data name="Paper Test" xml:space="preserve">
+    <value>परीक्षा का पेपर</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>अंक</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>प्रगति</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>प्रश्न</value>
+  </data>
+  <data name="Ready to submit?" xml:space="preserve">
+    <value>जमा करने के लिए तैयार हैं?</value>
+  </data>
+  <data name="Real AI grading" xml:space="preserve">
+    <value>वास्तविक AI ग्रेडिंग</value>
+  </data>
+  <data name="Review flagged questions before asking the grading engine for a result." xml:space="preserve">
+    <value>परिणाम के लिए ग्रेडिंग इंजन से पूछने से पहले चिह्नित प्रश्नों की समीक्षा करें।</value>
+  </data>
+  <data name="Saved in this browser" xml:space="preserve">
+    <value>इस ब्राउज़र में सहेजा गया</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>सहेजा जा रहा है...</value>
+  </data>
+  <data name="Submit and grade" xml:space="preserve">
+    <value>जमा करें और ग्रेड करें</value>
+  </data>
+  <data name="Submit paper" xml:space="preserve">
+    <value>पेपर जमा करें</value>
+  </data>
+  <data name="Submit this paper?" xml:space="preserve">
+    <value>क्या यह परीक्षा पत्र जमा करें?</value>
+  </data>
+  <data name="The grading engine will score every question. AI-graded answers may take a little longer." xml:space="preserve">
+    <value>ग्रेडिंग इंजन प्रत्येक प्रश्न को स्कोर करेगा। AI-ग्रेडेड उत्तरों के लिए थोड़ा अधिक समय लग सकता है।</value>
+  </data>
+  <data name="Time remaining" xml:space="preserve">
+    <value>शेष समय</value>
+  </data>
+  <data name="Write your answer here..." xml:space="preserve">
+    <value>यहाँ अपना उत्तर लिखें...</value>
+  </data>
+
+</root>

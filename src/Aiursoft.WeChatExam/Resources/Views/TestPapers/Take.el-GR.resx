@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Administrator paper test" xml:space="preserve">
+    <value>Δοκιμή εξεταστικού από διαχειριστή</value>
+  </data>
+  <data name="AI grading" xml:space="preserve">
+    <value>Βαθμολόγηση με Τέχνητη Νοημοσύνη</value>
+  </data>
+  <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
+    <value>Οι ερωτήσεις ΤΕ αποστέλλονται στο ρυθμισμένο μοντέλο μετά την υποβολή.</value>
+  </data>
+  <data name="Answer sheet" xml:space="preserve">
+    <value>Φύλλο απαντήσεων</value>
+  </data>
+  <data name="Answered" xml:space="preserve">
+    <value>Απαντήθηκε</value>
+  </data>
+  <data name="Answers are saved in this browser." xml:space="preserve">
+    <value>Οι απαντήσεις αποθηκεύονται σε αυτόν τον προγραμματιστή περιήγησης.</value>
+  </data>
+  <data name="Continue reviewing" xml:space="preserve">
+    <value>Συνέχεια ελέγχου</value>
+  </data>
+  <data name="Enter your answer" xml:space="preserve">
+    <value>Εισάγετε την απάντησή σας</value>
+  </data>
+  <data name="Exit test" xml:space="preserve">
+    <value>Έξοδος από τον τεστ</value>
+  </data>
+  <data name="Flag for review" xml:space="preserve">
+    <value>Σημείωση για επανεξέταση</value>
+  </data>
+  <data name="Flagged" xml:space="preserve">
+    <value>Σημαδοθετημένο</value>
+  </data>
+  <data name="Grading..." xml:space="preserve">
+    <value>Διαβάθμιση...</value>
+  </data>
+  <data name="Live grading preview" xml:space="preserve">
+    <value>Προεπισκόπηση βαθμολόγησης σε πραγματικό χρόνο</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>λεπτά</value>
+  </data>
+  <data name="No time limit" xml:space="preserve">
+    <value>Χωρίς χρονικό όριο</value>
+  </data>
+  <data name="Paper Test" xml:space="preserve">
+    <value>Εξετάσεις γραπτών</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>πόντοι</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Πρόοδος</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>ερωτήσεις</value>
+  </data>
+  <data name="Ready to submit?" xml:space="preserve">
+    <value>Έτοιμος/η να υποβάλεις;</value>
+  </data>
+  <data name="Real AI grading" xml:space="preserve">
+    <value>Πραγματική βαθμολόγηση AI</value>
+  </data>
+  <data name="Review flagged questions before asking the grading engine for a result." xml:space="preserve">
+    <value>Ελέγξτε τις ερωτήσεις που έχουν σημειωθεί πριν ζητήσετε αποτέλεσμα από τον μηχανισμό βαθμολόγησης.</value>
+  </data>
+  <data name="Saved in this browser" xml:space="preserve">
+    <value>Αποθηκεύτηκε σε αυτόν τον προγραμματιστή περιήγησης</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Αποθήκευση...</value>
+  </data>
+  <data name="Submit and grade" xml:space="preserve">
+    <value>Υποβολή και βαθμολόγηση</value>
+  </data>
+  <data name="Submit paper" xml:space="preserve">
+    <value>Υποβολή εργασίας</value>
+  </data>
+  <data name="Submit this paper?" xml:space="preserve">
+    <value>Θέλετε να υποβάλετε αυτό το δοκίμιο;</value>
+  </data>
+  <data name="The grading engine will score every question. AI-graded answers may take a little longer." xml:space="preserve">
+    <value>Ο κινητήρας βαθμολόγησης θα βαθμολογήσει κάθε ερώτηση. Οι απαντήσεις που βαθμολογούνται από Τεχνητή Νοημοσύνη ενδέχεται να απαιτούν λίγο περισσότερο χρόνο.</value>
+  </data>
+  <data name="Time remaining" xml:space="preserve">
+    <value>Χρόνος που απομένει</value>
+  </data>
+  <data name="Write your answer here..." xml:space="preserve">
+    <value>Γράψτε την απάντησή σας εδώ...</value>
+  </data>
+
+</root>
