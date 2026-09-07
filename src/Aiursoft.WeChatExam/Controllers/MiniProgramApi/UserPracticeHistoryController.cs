@@ -25,16 +25,18 @@ public class UserPracticeHistoryController : ControllerBase
     }
 
     /// <summary>
-    /// 查询当前用户的刷题历史（可选按题目过滤）
+    /// 查询当前用户的刷题历史
     /// </summary>
-    /// <param name="questionId">题目ID（可选，若提供则只返回该题目的历史）</param>
-    /// <returns>刷题历史列表，按时间倒序排列</returns>
+    /// <param name="filters">题目、练习类型、题型、UTC 时间、正确性及分页过滤条件</param>
+    /// <returns>过滤后的刷题历史列表，按时间和 ID 倒序排列</returns>
     /// <response code="200">成功返回历史记录列表</response>
+    /// <response code="400">过滤参数无效</response>
     /// <response code="401">用户未登录</response>
     [HttpGet]
     [ProducesResponseType(typeof(List<UserPracticeHistoryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> Get([FromQuery] Guid? questionId)
+    public async Task<IActionResult> Get([FromQuery] GetUserPracticeHistoryQueryDto filters)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (string.IsNullOrEmpty(userId))
@@ -44,15 +46,51 @@ public class UserPracticeHistoryController : ControllerBase
 
         var query = _context.UserPracticeHistories
             .AsNoTracking()
-            .Include(x => x.User)
-            .Include(x => x.Question)
             .Where(x => x.UserId == userId);
-        if (questionId.HasValue)
+
+        if (filters.QuestionId.HasValue)
         {
-            query = query.Where(x => x.QuestionId == questionId.Value);
+            query = query.Where(x => x.QuestionId == filters.QuestionId.Value);
         }
-        var result = await query
+
+        if (filters.PracticeType.HasValue)
+        {
+            query = query.Where(x => x.PracticeType == filters.PracticeType.Value);
+        }
+
+        if (filters.QuestionType.HasValue)
+        {
+            query = query.Where(x => x.Question.QuestionType == filters.QuestionType.Value);
+        }
+
+        if (filters.IsCorrect.HasValue)
+        {
+            query = query.Where(x => x.IsCorrect == filters.IsCorrect.Value);
+        }
+
+        if (filters.StartTime.HasValue)
+        {
+            var startTime = filters.StartTime.Value.UtcDateTime;
+            query = query.Where(x => x.CreationTime >= startTime);
+        }
+
+        if (filters.EndTime.HasValue)
+        {
+            var endTime = filters.EndTime.Value.UtcDateTime;
+            query = query.Where(x => x.CreationTime <= endTime);
+        }
+
+        var orderedQuery = query
             .OrderByDescending(x => x.CreationTime)
+            .ThenByDescending(x => x.Id)
+            .Skip(filters.Offset);
+
+        if (filters.Count.HasValue)
+        {
+            orderedQuery = orderedQuery.Take(filters.Count.Value);
+        }
+
+        var result = await orderedQuery
             .Select(x => new UserPracticeHistoryDto
             {
                 Id = x.Id,
@@ -91,7 +129,7 @@ public class UserPracticeHistoryController : ControllerBase
         // 检查用户和题目是否存在
         var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
         var question = await _context.Questions.FirstOrDefaultAsync(q => q.Id == dto.QuestionId);
-        
+
         if (!userExists || question == null)
         {
             return BadRequest(new { Message = "User or Question not found" });
@@ -112,7 +150,7 @@ public class UserPracticeHistoryController : ControllerBase
         };
         _context.UserPracticeHistories.Add(entity);
         await _context.SaveChangesAsync();
-        
+
         var result = new UserPracticeHistoryDto
         {
             Id = entity.Id,
@@ -158,10 +196,10 @@ public class UserPracticeHistoryController : ControllerBase
 
         // Server-side Grading
         var gradingResult = await _gradingService.GradeAsync(
-            dto.UserAnswer, 
-            snapshot.StandardAnswer, 
-            snapshot.GradingStrategy, 
-            snapshot.Score, 
+            dto.UserAnswer,
+            snapshot.StandardAnswer,
+            snapshot.GradingStrategy,
+            snapshot.Score,
             snapshot.Content);
 
         var resultDto = new UserPracticeHistoryDto
@@ -194,14 +232,14 @@ public class UserPracticeHistoryController : ControllerBase
                     PracticeType = dto.PracticeType,
                     CreationTime = resultDto.CreationTime
                 };
-                
+
                 _context.UserPracticeHistories.Add(history);
                 await _context.SaveChangesAsync();
 
                 resultDto.Id = history.Id;
             }
         }
-        
+
         return Ok(resultDto);
     }
 }
