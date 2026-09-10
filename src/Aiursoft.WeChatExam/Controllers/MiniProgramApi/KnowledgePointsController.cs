@@ -147,6 +147,9 @@ public class KnowledgePointsController : ControllerBase
             .Include(x => x.KnowledgePoint)
                 .ThenInclude(kp => kp.KnowledgePointQuestions)
                     .ThenInclude(kpq => kpq.Question)
+            .OrderBy(x => x.OrderIndex)
+            .ThenBy(x => x.KnowledgePoint.CreationTime)
+            .ThenBy(x => x.KnowledgePointId)
             .Select(x => x.KnowledgePoint)
             .ToListAsync();
 

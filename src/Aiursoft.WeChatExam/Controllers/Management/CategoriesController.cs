@@ -63,6 +63,35 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         return Ok();
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
+    public async Task<IActionResult> UpdateKnowledgePointOrder(Guid id, [FromBody] Guid[] knowledgePointIds)
+    {
+        var associations = await context.CategoryKnowledgePoints
+            .Where(association => association.CategoryId == id)
+            .ToListAsync();
+
+        if (knowledgePointIds.Length != associations.Count ||
+            knowledgePointIds.Distinct().Count() != knowledgePointIds.Length ||
+            !knowledgePointIds.ToHashSet().SetEquals(associations.Select(association => association.KnowledgePointId)))
+        {
+            return BadRequest("The submitted knowledge points do not match this category.");
+        }
+
+        var positions = knowledgePointIds
+            .Select((knowledgePointId, index) => (knowledgePointId, index))
+            .ToDictionary(item => item.knowledgePointId, item => item.index);
+
+        foreach (var association in associations)
+        {
+            association.OrderIndex = positions[association.KnowledgePointId];
+        }
+
+        await context.SaveChangesAsync();
+        return Ok();
+    }
+
     // GET: categories/create
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
     public async Task<IActionResult> Create()
@@ -139,6 +168,9 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
         {
             Category = category,
             AssociatedKnowledgePoints = category.CategoryKnowledgePoints
+                .OrderBy(ck => ck.OrderIndex)
+                .ThenBy(ck => ck.KnowledgePoint.CreationTime)
+                .ThenBy(ck => ck.KnowledgePointId)
                 .Select(ck => ck.KnowledgePoint)
                 .ToList()
         });

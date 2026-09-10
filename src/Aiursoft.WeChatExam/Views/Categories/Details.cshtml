@@ -39,21 +39,33 @@
     </div>
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="card-title mb-0">@Localizer["Associated Knowledge Points"]</h5>
+                @if (Model.AssociatedKnowledgePoints.Count > 1)
+                {
+                    <button id="save-knowledge-point-order" class="btn btn-success btn-sm" type="button" hidden>
+                        <i class="align-middle me-1" data-lucide="save"></i>
+                        @Localizer["Save Order"]
+                    </button>
+                }
             </div>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead class="table-light">
                         <tr>
+                            <th class="knowledge-point-drag-column"></th>
                             <th>@Localizer["Title"]</th>
                             <th>@Localizer["Actions"]</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="knowledge-points-sortable"
+                           data-update-url="@Url.Action("UpdateKnowledgePointOrder", "Categories", new { id = Model.Category.Id })">
                         @foreach (var kp in Model.AssociatedKnowledgePoints)
                         {
-                            <tr>
+                            <tr data-knowledge-point-id="@kp.Id">
+                                <td class="knowledge-point-drag-column text-muted">
+                                    <i class="align-middle knowledge-point-drag-handle" data-lucide="grip-vertical"></i>
+                                </td>
                                 <td>@kp.Title</td>
                                 <td>
                                     <a asp-controller="KnowledgePoints" asp-action="Details" asp-route-id="@kp.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
@@ -63,7 +75,7 @@
                         @if (!Model.AssociatedKnowledgePoints.Any())
                         {
                             <tr>
-                                <td colspan="2" class="text-center text-muted py-4">
+                                <td colspan="3" class="text-center text-muted py-4">
                                     @Localizer["No knowledge points associated"]
                                 </td>
                             </tr>
@@ -74,3 +86,69 @@
         </div>
     </div>
 </div>
+
+@Html.AntiForgeryToken()
+
+<style>
+    .knowledge-point-drag-column {
+        width: 2.75rem;
+        text-align: center;
+    }
+
+    .knowledge-point-drag-handle {
+        cursor: grab;
+    }
+
+    .knowledge-point-drag-handle:active {
+        cursor: grabbing;
+    }
+
+    .knowledge-point-sortable-ghost {
+        opacity: .45;
+    }
+</style>
+
+@section scripts {
+    <script type="module">
+        import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
+
+        const list = document.getElementById('knowledge-points-sortable');
+        const saveButton = document.getElementById('save-knowledge-point-order');
+
+        if (list && saveButton) {
+            Sortable.create(list, {
+                animation: 150,
+                handle: '.knowledge-point-drag-handle',
+                ghostClass: 'knowledge-point-sortable-ghost',
+                onEnd: () => saveButton.hidden = false
+            });
+
+            saveButton.addEventListener('click', async () => {
+                saveButton.disabled = true;
+                const knowledgePointIds = Array.from(list.querySelectorAll('tr[data-knowledge-point-id]'))
+                    .map(row => row.dataset.knowledgePointId);
+
+                try {
+                    const response = await fetch(list.dataset.updateUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value ?? ''
+                        },
+                        body: JSON.stringify(knowledgePointIds)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Failed to save order: ${response.status}`);
+                    }
+
+                    window.location.reload();
+                } catch (error) {
+                    console.error(error);
+                    alert('@Localizer["Failed to save order."]');
+                    saveButton.disabled = false;
+                }
+            });
+        }
+    </script>
+}

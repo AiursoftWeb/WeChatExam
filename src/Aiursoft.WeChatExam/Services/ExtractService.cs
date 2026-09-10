@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.ExtractViewModels;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Aiursoft.WeChatExam.Services;
@@ -39,6 +40,10 @@ public class ExtractService : IExtractService
                 using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
                 try
                 {
+                    var nextOrder = (await _dbContext.CategoryKnowledgePoints
+                        .Where(association => association.CategoryId == catId)
+                        .MaxAsync(association => (int?)association.OrderIndex, cancellationToken) ?? -1) + 1;
+
                     foreach (var kpDto in dataList)
                     {
                         // Create KnowledgePoint
@@ -56,7 +61,8 @@ public class ExtractService : IExtractService
                         _dbContext.CategoryKnowledgePoints.Add(new CategoryKnowledgePoint
                         {
                             CategoryId = catId,
-                            KnowledgePointId = kp.Id
+                            KnowledgePointId = kp.Id,
+                            OrderIndex = nextOrder++
                         });
 
                         // Process Questions

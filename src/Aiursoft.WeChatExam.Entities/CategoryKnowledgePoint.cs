@@ -21,4 +21,9 @@ public class CategoryKnowledgePoint
     [ForeignKey(nameof(KnowledgePointId))]
     [NotNull]
     public KnowledgePoint? KnowledgePoint { get; set; }
+
+    /// <summary>
+    /// Display order of this knowledge point within the associated category.
+    /// </summary>
+    public int OrderIndex { get; set; }
 }

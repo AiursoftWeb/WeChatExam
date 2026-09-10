@@ -178,4 +178,74 @@ public class KnowledgePointAssociationTests
         var catDetailsHtml = await catDetailsResponse.Content.ReadAsStringAsync();
         Assert.Contains(kpTitle, catDetailsHtml, "Category details should show associated knowledge point after creation");
     }
+
+    [TestMethod]
+    public async Task CategoryKnowledgePointOrderAffectsMiniProgramApi()
+    {
+        await LoginAsAdminAsync();
+
+        var categoryToken = await GetAntiCsrfToken("/Categories/Create");
+        var categoryResponse = await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", $"Ordered category {Guid.NewGuid()}" },
+            { "__RequestVerificationToken", categoryToken }
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, categoryResponse.StatusCode);
+        var categoryId = categoryResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        async Task<(string Id, string Title)> CreateKnowledgePointAsync(string title)
+        {
+            var token = await GetAntiCsrfToken("/KnowledgePoints/Create");
+            var response = await _http.PostAsync("/KnowledgePoints/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+            {
+                { "Title", title },
+                { "Content", $"Content for {title}" },
+                { "SelectedCategoryIds[0]", categoryId },
+                { "__RequestVerificationToken", token }
+            }));
+            Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+            return (response.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0], title);
+        }
+
+        var first = await CreateKnowledgePointAsync($"First knowledge point {Guid.NewGuid()}");
+        var second = await CreateKnowledgePointAsync($"Second knowledge point {Guid.NewGuid()}");
+
+        var detailsUrl = $"/Categories/Details/{categoryId}";
+        var orderToken = await GetAntiCsrfToken(detailsUrl);
+        var detailsHtml = await (await _http.GetAsync(detailsUrl)).Content.ReadAsStringAsync();
+        Assert.Contains("knowledge-points-sortable", detailsHtml);
+
+        var orderRequest = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"/Categories/UpdateKnowledgePointOrder/{categoryId}")
+        {
+            Content = new StringContent(
+                Newtonsoft.Json.JsonConvert.SerializeObject(new[] { second.Id, first.Id }),
+                System.Text.Encoding.UTF8,
+                "application/json")
+        };
+        orderRequest.Headers.Add("RequestVerificationToken", orderToken);
+        var orderResponse = await _http.SendAsync(orderRequest);
+        Assert.AreEqual(HttpStatusCode.OK, orderResponse.StatusCode);
+
+        var apiResponse = await _http.GetAsync($"/api/KnowledgePoints?categoryId={categoryId}");
+        apiResponse.EnsureSuccessStatusCode();
+        var apiJson = await apiResponse.Content.ReadAsStringAsync();
+        Assert.IsTrue(
+            apiJson.IndexOf(second.Title, StringComparison.Ordinal) < apiJson.IndexOf(first.Title, StringComparison.Ordinal),
+            "The mini-program API should return knowledge points in the saved category order.");
+
+        var invalidRequest = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"/Categories/UpdateKnowledgePointOrder/{categoryId}")
+        {
+            Content = new StringContent(
+                Newtonsoft.Json.JsonConvert.SerializeObject(new[] { first.Id }),
+                System.Text.Encoding.UTF8,
+                "application/json")
+        };
+        invalidRequest.Headers.Add("RequestVerificationToken", orderToken);
+        var invalidResponse = await _http.SendAsync(invalidRequest);
+        Assert.AreEqual(HttpStatusCode.BadRequest, invalidResponse.StatusCode);
+    }
 }

@@ -123,10 +123,14 @@ public class KnowledgePointsController(
         // Add Category Associations
         foreach (var categoryId in model.SelectedCategoryIds)
         {
+            var nextOrder = (await context.CategoryKnowledgePoints
+                .Where(association => association.CategoryId == categoryId)
+                .MaxAsync(association => (int?)association.OrderIndex) ?? -1) + 1;
             var newAssociation = new CategoryKnowledgePoint
             {
                 KnowledgePointId = knowledgePoint.Id,
-                CategoryId = categoryId
+                CategoryId = categoryId,
+                OrderIndex = nextOrder
             };
             context.Add(newAssociation);
         }
@@ -334,10 +338,14 @@ public class KnowledgePointsController(
         {
             if (!currentCategoryIds.Contains(categoryId))
             {
+                var nextOrder = (await context.CategoryKnowledgePoints
+                    .Where(association => association.CategoryId == categoryId)
+                    .MaxAsync(association => (int?)association.OrderIndex) ?? -1) + 1;
                 var newAssociation = new CategoryKnowledgePoint
                  {
                      KnowledgePointId = knowledgePoint.Id,
-                     CategoryId = categoryId
+                     CategoryId = categoryId,
+                     OrderIndex = nextOrder
                  };
                  context.Add(newAssociation);
             }
