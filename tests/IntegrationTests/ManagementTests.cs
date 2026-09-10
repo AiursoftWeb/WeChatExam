@@ -141,6 +141,46 @@ public class ManagementTests
     }
 
     [TestMethod]
+    public async Task CategoriesVisualTreeIsRenderedPerRootTest()
+    {
+        await LoginAsAdminAsync();
+
+        var rootTitle = $"Tree-Root-{Guid.NewGuid()}";
+        var rootToken = await GetAntiCsrfToken("/Categories/Create");
+        var rootResponse = await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", rootTitle },
+            { "__RequestVerificationToken", rootToken }
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, rootResponse.StatusCode);
+        var rootId = rootResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        var childTitle = $"Tree-Child-{Guid.NewGuid()}";
+        var childToken = await GetAntiCsrfToken("/Categories/Create");
+        var childResponse = await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            { "Title", childTitle },
+            { "ParentId", rootId },
+            { "__RequestVerificationToken", childToken }
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, childResponse.StatusCode);
+
+        var indexResponse = await _http.GetAsync("/Categories/Index");
+        indexResponse.EnsureSuccessStatusCode();
+        var indexHtml = await indexResponse.Content.ReadAsStringAsync();
+        var safeRootId = $"C_{rootId.Replace("-", string.Empty)}";
+
+        Assert.Contains("id=\"category-tree-roots\"", indexHtml);
+        Assert.Contains($"data-source-id=\"mermaid-source-{safeRootId}\"", indexHtml);
+        Assert.Contains($"id=\"mermaid-source-{safeRootId}\"", indexHtml);
+        Assert.Contains(rootTitle, indexHtml);
+        Assert.Contains(childTitle, indexHtml);
+        Assert.Contains("maxTextSize: 100000", indexHtml);
+        Assert.Contains("category-diagram-node", indexHtml);
+        Assert.DoesNotContain("style='width:180px;padding:8px;text-align:left'", indexHtml);
+    }
+
+    [TestMethod]
     public async Task KnowledgePointsCrudTest()
     {
         await LoginAsAdminAsync();

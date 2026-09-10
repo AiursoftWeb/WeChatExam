@@ -8,13 +8,35 @@
     {
         var badge = isRoot ? "Root" : "Child";
         var title = WebUtility.HtmlEncode(cat.Title);
-        var label = $"<div style='width:180px;padding:8px;text-align:left'><div style='font-weight:700;font-size:14px;margin-bottom:4px'>{title}</div><span style='font-size:11px;background:rgb(230,230,230);padding:1px 6px;border-radius:4px;color:rgb(68,68,68);font-weight:500'>{badge}</span></div>";
+        var label = $"<div class='category-diagram-node'><div class='category-diagram-title'>{title}</div><span class='category-diagram-badge'>{badge}</span></div>";
         return $"\"{label}\"";
+    }
+
+    IEnumerable<Aiursoft.WeChatExam.Entities.Category> GetSubtree(Aiursoft.WeChatExam.Entities.Category root)
+    {
+        yield return root;
+        foreach (var child in root.Children.OrderBy(c => c.OrderIndex))
+        {
+            foreach (var descendant in GetSubtree(child))
+            {
+                yield return descendant;
+            }
+        }
     }
 }
 
 @* Standard page title for consistency. *@
 <h1 class="h3 mb-3">@Localizer["Categories"]</h1>
+
+@{
+    var categoryTrees = Model.RootCategories
+        .Select(root => new
+        {
+            Root = root,
+            Nodes = GetSubtree(root).ToList()
+        })
+        .ToList();
+}
 
 <div class="row">
     <div class="col-12">
@@ -75,14 +97,37 @@
                 </div>
                 <div class="tab-pane fade" id="tree" role="tabpanel">
                     <div class="card border-top-0">
+                        @if (categoryTrees.Any())
+                        {
+                            <div class="card-header border-bottom">
+                                <div id="category-tree-roots" class="d-flex flex-wrap gap-2" role="group" aria-label="@Localizer["Categories"]">
+                                    @for (var index = 0; index < categoryTrees.Count; index++)
+                                    {
+                                        var tree = categoryTrees[index];
+                                        var safeRootId = GetSafeId(tree.Root.Id);
+                                        <button type="button"
+                                                class="btn btn-sm @(index == 0 ? "btn-primary active" : "btn-outline-primary") category-tree-root-selector"
+                                                data-source-id="mermaid-source-@safeRootId"
+                                                data-graph-id="mermaid-graph-@safeRootId"
+                                                aria-pressed="@(index == 0 ? "true" : "false")">
+                                            @tree.Root.Title
+                                            <span class="badge bg-light text-dark ms-1">@tree.Nodes.Count</span>
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
                         <div class="card-body overflow-auto">
-                            <script id="mermaid-source" type="text/template">
+                            @foreach (var tree in categoryTrees)
+                            {
+                                var safeRootId = GetSafeId(tree.Root.Id);
+                                <script id="mermaid-source-@safeRootId" class="category-mermaid-source" type="text/template">
                                 graph TD
                                 classDef rootNode fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,rx:10,ry:10
                                 classDef childNode fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,rx:10,ry:10
 
                                 @{
-                                    foreach (var category in Model.Categories)
+                                    foreach (var category in tree.Nodes)
                                     {
                                         var isRoot = category.ParentId == null;
                                         var cssClass = isRoot ? "rootNode" : "childNode";
@@ -97,13 +142,13 @@
                                         }
                                     }
                                 }
-
-                                @if (!Model.Categories.Any())
-                                {
-                                    @:NoData["@(Localizer["No categories found"])"]
-                                }
-                            </script>
+                                </script>
+                            }
                             <div id="mermaid-output"></div>
+                            @if (!categoryTrees.Any())
+                            {
+                                <p class="text-center text-muted py-4 mb-0">@Localizer["No categories found"]</p>
+                            }
                         </div>
                     </div>
                 </div>
@@ -130,6 +175,7 @@
 
     mermaid.initialize({
         startOnLoad: false,
+        maxTextSize: 100000,
         securityLevel: 'loose',
         theme: 'base',
         themeVariables: {
@@ -144,26 +190,57 @@
         }
     });
 
-    let rendered = false;
+    const renderedGraphs = new Map();
+    let renderRequest = 0;
 
-    async function renderMermaid() {
-        if (rendered) return;
-        rendered = true;
-        const source = document.getElementById('mermaid-source').innerHTML.trim();
+    async function renderMermaid(button) {
+        if (!button) return;
+        const sourceId = button.dataset.sourceId;
+        const graphId = button.dataset.graphId;
+        const sourceElement = document.getElementById(sourceId);
         const output = document.getElementById('mermaid-output');
+        if (!sourceElement || !output) return;
+        const request = ++renderRequest;
+
+        document.querySelectorAll('.category-tree-root-selector').forEach(candidate => {
+            const selected = candidate === button;
+            candidate.classList.toggle('active', selected);
+            candidate.classList.toggle('btn-primary', selected);
+            candidate.classList.toggle('btn-outline-primary', !selected);
+            candidate.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+
+        if (renderedGraphs.has(sourceId)) {
+            output.innerHTML = renderedGraphs.get(sourceId);
+            return;
+        }
+
+        const source = sourceElement.textContent.trim();
         try {
-            const { svg } = await mermaid.render('mermaid-graph', source);
-            output.innerHTML = svg;
+            const { svg } = await mermaid.render(graphId, source);
+            renderedGraphs.set(sourceId, svg);
+            if (request === renderRequest) {
+                output.innerHTML = svg;
+            }
         } catch (e) {
-            output.innerHTML = `<p class="text-danger">${getLocalizedText('failed-to-render', 'Failed to render tree:')} ${e.message}</p>`;
+            if (request === renderRequest) {
+                const message = document.createElement('p');
+                message.className = 'text-danger';
+                message.textContent = `${getLocalizedText('failed-to-render', 'Failed to render tree:')} ${e.message}`;
+                output.replaceChildren(message);
+            }
         }
     }
 
     // Render when tree tab is shown (tab must be visible for foreignObject dimension measurement)
     const treeTab = document.getElementById('tree-tab');
+    const rootButtons = Array.from(document.querySelectorAll('.category-tree-root-selector'));
     if (treeTab) {
-        treeTab.addEventListener('shown.bs.tab', renderMermaid);
+        treeTab.addEventListener('shown.bs.tab', () => {
+            renderMermaid(rootButtons.find(button => button.classList.contains('active')) ?? rootButtons[0]);
+        });
     }
+    rootButtons.forEach(button => button.addEventListener('click', () => renderMermaid(button)));
 </script>
 
 <style>
@@ -178,6 +255,27 @@
         max-width: 100%;
         height: auto;
         width: auto !important;
+    }
+
+    #mermaid-output .category-diagram-node {
+        width: 180px;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #mermaid-output .category-diagram-title {
+        margin-bottom: 4px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    #mermaid-output .category-diagram-badge {
+        padding: 1px 6px;
+        border-radius: 4px;
+        background: rgb(230, 230, 230);
+        color: rgb(68, 68, 68);
+        font-size: 11px;
+        font-weight: 500;
     }
 </style>
 
