@@ -171,6 +171,14 @@ public class AuthenticationIsolationTests
         Assert.AreEqual(HttpStatusCode.Redirect, loginResponse.StatusCode, "Admin login failed");
         // HttpClient会自动处理CookieContainer
 
+        // Public content must not use the web user's identity for VIP access.
+        var papersResponse = await _http.GetAsync("/api/Papers");
+        Assert.AreEqual(HttpStatusCode.OK, papersResponse.StatusCode);
+        var taxonomiesResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
+        Assert.AreEqual(HttpStatusCode.OK, taxonomiesResponse.StatusCode);
+        TestStartupWithMockWeChat.MockWeChatPayService!.Verify(
+            x => x.GetVipStatusListAsync(It.IsAny<string>()), Times.Never);
+
         // Act: 尝试使用 Cookie 访问微信 API
         var wechatApiResponse = await _http.GetAsync("/api/User/info");
 

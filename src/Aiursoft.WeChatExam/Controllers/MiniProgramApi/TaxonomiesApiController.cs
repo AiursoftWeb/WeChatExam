@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -15,6 +16,7 @@ public class TaxonomiesApiController(
     ITagService tagService,
     IPaperAccessService paperAccessService) : ControllerBase
 {
+    [AllowAnonymous]
     [HttpGet]
     [Produces(typeof(List<TaxonomyDto>))]
     public async Task<IActionResult> Index([FromQuery] Guid? categoryId)
@@ -28,6 +30,7 @@ public class TaxonomiesApiController(
         return Ok(dtos);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}/tags")]
     [Produces(typeof(List<TagDto>))]
     public async Task<IActionResult> GetTags(int id)

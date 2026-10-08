@@ -77,6 +77,90 @@ public class VipAccessTests
     }
 
     [TestMethod]
+    public async Task ContentApis_Anonymous_CanReadFreeContentButNotPaidQuestions()
+    {
+        Guid freePaperId;
+        Guid paidPaperId;
+        int taxonomyId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var paperService = scope.ServiceProvider.GetRequiredService<IPaperService>();
+            var freePaper = await paperService.CreatePaperAsync("Free", 60, true);
+            var paidPaper = await paperService.CreatePaperAsync("Paid", 60, false, true);
+            freePaperId = freePaper.Id;
+            paidPaperId = paidPaper.Id;
+            foreach (var paper in new[] { freePaper, paidPaper })
+            {
+                await paperService.SetStatusAsync(paper.Id, PaperStatus.Publishable);
+                var snapshot = await paperService.PublishAsync(paper.Id);
+                context.QuestionSnapshots.Add(new QuestionSnapshot
+                {
+                    PaperSnapshotId = snapshot.Id,
+                    Content = "Snapshot question",
+                    QuestionType = QuestionType.Choice,
+                    GradingStrategy = GradingStrategy.ExactMatch
+                });
+            }
+
+            var taxonomy = new Taxonomy { Name = "Anonymous taxonomy" };
+            context.Taxonomies.Add(taxonomy);
+            await context.SaveChangesAsync();
+            taxonomyId = taxonomy.Id;
+            context.Tags.AddRange(
+                new Tag { DisplayName = "Free", NormalizedName = "FREE", IsFree = true, TaxonomyId = taxonomyId },
+                new Tag { DisplayName = "Paid", NormalizedName = "PAID", IsFree = false, TaxonomyId = taxonomyId });
+            await context.SaveChangesAsync();
+        }
+
+        var papers = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
+        Assert.IsNotNull(papers);
+        var free = papers.Single(p => p.Id == freePaperId);
+        var paid = papers.Single(p => p.Id == paidPaperId);
+        Assert.IsTrue(free.HasAccess);
+        Assert.IsFalse(paid.HasAccess);
+
+        var versions = await _http.GetFromJsonAsync<List<SnapshotListDto>>($"/api/Papers/{freePaperId}/snapshots");
+        Assert.IsNotNull(versions);
+        Assert.AreEqual(1, versions.Count);
+        var freeSnapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{free.LatestSnapshotId}");
+        Assert.IsNotNull(freeSnapshot);
+        Assert.IsTrue(freeSnapshot.HasAccess);
+        Assert.AreEqual(1, freeSnapshot.Questions.Count);
+        var paidSnapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{paid.LatestSnapshotId}");
+        Assert.IsNotNull(paidSnapshot);
+        Assert.IsFalse(paidSnapshot.HasAccess);
+        Assert.AreEqual(0, paidSnapshot.Questions.Count);
+
+        var taxonomies = await _http.GetFromJsonAsync<List<TaxonomyDto>>("/api/miniprogramapi/taxonomies");
+        Assert.IsNotNull(taxonomies);
+        Assert.IsTrue(taxonomies.Any(t => t.Id == taxonomyId));
+        var tags = await _http.GetFromJsonAsync<List<TagDto>>($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags");
+        Assert.IsNotNull(tags);
+        Assert.IsTrue(tags.Single(t => t.IsFree).HasAccess);
+        Assert.IsFalse(tags.Single(t => !t.IsFree).HasAccess);
+        _mockWeChatPayService.Verify(x => x.GetVipStatusListAsync(It.IsAny<string>()), Times.Never);
+
+        var token = await LoginAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
+            .ReturnsAsync(new List<VipMembership>
+            {
+                new VipMembership
+                {
+                    UserId = "u",
+                    StartTime = DateTime.UtcNow.AddDays(-1),
+                    EndTime = DateTime.UtcNow.AddDays(1),
+                    VipProduct = new VipProduct { Name = "Real", Type = VipProductType.RealExam }
+                }
+            });
+        var vipSnapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{paid.LatestSnapshotId}");
+        Assert.IsNotNull(vipSnapshot);
+        Assert.IsTrue(vipSnapshot.HasAccess);
+        Assert.AreEqual(1, vipSnapshot.Questions.Count);
+    }
+
+    [TestMethod]
     public async Task GetPapers_AccessLogic_RespectsVipTypes()
     {
         var token = await LoginAsync();
