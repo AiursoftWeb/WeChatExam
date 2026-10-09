@@ -3,6 +3,7 @@ using Aiursoft.WeChatExam.Services;
 using System.Security.Claims;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,6 +35,7 @@ public class PapersController : ControllerBase
     /// <param name="tag">可选：标签</param>
     /// <param name="isRealExam">可选：是否为真题</param>
     /// <returns>试卷列表</returns>
+    [AllowAnonymous]
     [HttpGet]
     [ProducesResponseType(typeof(List<PaperListDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPapers(
@@ -98,6 +100,7 @@ public class PapersController : ControllerBase
     /// </summary>
     /// <param name="snapshotId">快照ID</param>
     /// <returns>快照详情</returns>
+    [AllowAnonymous]
     [HttpGet("snapshots/{snapshotId}")]
     [ProducesResponseType(typeof(PaperSnapshotDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -152,6 +155,7 @@ public class PapersController : ControllerBase
     /// </summary>
     /// <param name="paperId">试卷ID</param>
     /// <returns>快照列表</returns>
+    [AllowAnonymous]
     [HttpGet("{paperId}/snapshots")]
     [ProducesResponseType(typeof(List<SnapshotListDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSnapshotsForPaper(Guid paperId)
