@@ -3,6 +3,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,6 +40,7 @@ public class QuestionsController : ControllerBase
     /// <response code="200">成功返回题目列表</response>
     /// <response code="404">指定的分类不存在</response>
     /// <response code="400">参数错误</response>
+    [AllowAnonymous]
     [HttpGet]
     [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -185,6 +187,11 @@ public class QuestionsController : ControllerBase
                     }
                 }
             }
+        }
+
+        if (User.Identity?.IsAuthenticated != true)
+        {
+            query = query.Where(q => !q.QuestionTags.Any(qt => !qt.Tag.IsFree));
         }
 
         var lastQuestionId = await query
@@ -363,6 +370,7 @@ public class QuestionsController : ControllerBase
     /// <returns>单个题目详情</returns>
     /// <response code="200">成功返回题目详情</response>
     /// <response code="404">未找到指定题目</response>
+    [AllowAnonymous]
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -374,6 +382,12 @@ public class QuestionsController : ControllerBase
         if (question == null)
         {
             return NotFound(new { Message = "Question not found" });
+        }
+
+        if (User.Identity?.IsAuthenticated != true &&
+            await _context.QuestionTags.AnyAsync(qt => qt.QuestionId == id && !qt.Tag.IsFree))
+        {
+            return StatusCode(StatusCodes.Status403Forbidden, new { Message = "Access denied to paid question" });
         }
 
         var dto = new QuestionDto

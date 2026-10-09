@@ -121,6 +121,125 @@ public class TagPermissionTests
     }
 
     [TestMethod]
+    public async Task GetQuestions_Anonymous_FiltersPaidQuestionsBeforePaginationAndRandomSelection()
+    {
+        var (catId, freeTagId, paidTagId) = await SetupTestDataAsync();
+        Guid freeId, untaggedId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var existing = context.Questions.ToList();
+            var free = existing.Single(q => q.Content == "Q1");
+            var paid = existing.Single(q => q.Content == "Q2");
+            freeId = free.Id;
+            free.OrderIndex = 1;
+            paid.OrderIndex = 4;
+            foreach (var question in existing) question.CategoryId = catId;
+            var untagged = new Question
+            {
+                Content = "Untagged", CategoryId = catId, OrderIndex = 2,
+                QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch
+            };
+            var mixed = new Question
+            {
+                Content = "Mixed", CategoryId = catId, OrderIndex = 3,
+                QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch
+            };
+            context.Questions.AddRange(untagged, mixed);
+            await context.SaveChangesAsync();
+            untaggedId = untagged.Id;
+            context.QuestionTags.AddRange(
+                new QuestionTag { QuestionId = mixed.Id, TagId = freeTagId },
+                new QuestionTag { QuestionId = mixed.Id, TagId = paidTagId });
+            await context.SaveChangesAsync();
+        }
+
+        foreach (var query in new[] { "size=10", "randomSize=10", $"categoryId={catId}", "type=0" })
+        {
+            var questions = await _http.GetFromJsonAsync<List<QuestionDto>>($"/api/Questions?{query}");
+            Assert.IsNotNull(questions);
+            CollectionAssert.AreEquivalent(new[] { freeId, untaggedId }, questions.Select(q => q.Id).ToArray());
+            Assert.IsTrue(questions.Single(q => q.Id == untaggedId).IsLastQuestion);
+            Assert.IsFalse(questions.Single(q => q.Id == freeId).IsLastQuestion);
+        }
+        foreach (var query in new[] { "tagName=FreeTag", "mtql=FreeTag" })
+        {
+            var questions = await _http.GetFromJsonAsync<List<QuestionDto>>($"/api/Questions?{query}");
+            Assert.IsNotNull(questions);
+            Assert.AreEqual(freeId, questions.Single().Id);
+            Assert.IsTrue(questions.Single().IsLastQuestion);
+        }
+        var page = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=1&page=2");
+        Assert.IsNotNull(page);
+        Assert.AreEqual(untaggedId, page.Single().Id);
+        var emptyPage = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=1&page=3");
+        Assert.IsNotNull(emptyPage);
+        Assert.AreEqual(0, emptyPage.Count);
+    }
+
+    [TestMethod]
+    public async Task GetQuestion_Anonymous_RestrictsPaidAndMixedTagsButPreservesLoggedInBehavior()
+    {
+        var (_, freeTagId, paidTagId) = await SetupTestDataAsync();
+        Guid freeId, paidId, mixedId, untaggedId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            freeId = context.Questions.Single(q => q.Content == "Q1").Id;
+            paidId = context.Questions.Single(q => q.Content == "Q2").Id;
+            var mixed = new Question { Content = "Mixed", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
+            var untagged = new Question { Content = "Untagged", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
+            context.Questions.AddRange(mixed, untagged);
+            await context.SaveChangesAsync();
+            mixedId = mixed.Id;
+            untaggedId = untagged.Id;
+            context.QuestionTags.AddRange(
+                new QuestionTag { QuestionId = mixedId, TagId = freeTagId },
+                new QuestionTag { QuestionId = mixedId, TagId = paidTagId });
+            await context.SaveChangesAsync();
+        }
+        foreach (var id in new[] { freeId, untaggedId })
+        {
+            var response = await _http.GetAsync($"/api/Questions/{id}");
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
+        foreach (var id in new[] { paidId, mixedId })
+        {
+            var response = await _http.GetAsync($"/api/Questions/{id}");
+            Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
+        }
+        var missing = await _http.GetAsync($"/api/Questions/{Guid.NewGuid()}");
+        Assert.AreEqual(HttpStatusCode.NotFound, missing.StatusCode);
+
+        var token = await LoginAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        var loggedIn = await _http.GetAsync($"/api/Questions/{paidId}");
+        Assert.AreEqual(HttpStatusCode.OK, loggedIn.StatusCode);
+        var questions = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=10");
+        Assert.IsNotNull(questions);
+        Assert.AreEqual(4, questions.Count);
+    }
+
+    [TestMethod]
+    public async Task GetQuestions_Anonymous_PaidTagDeniedAndResumeRequiresLogin()
+    {
+        await SetupTestDataAsync();
+        foreach (var query in new[] { "tagName=PaidTag", "mtql=FreeTag%20%26%26%20PaidTag", "mtql=not%20PaidTag" })
+        {
+            var response = await _http.GetAsync($"/api/Questions?{query}");
+            Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
+        }
+        var resume = await _http.GetAsync("/api/Questions?size=10&resumeType=0");
+        Assert.AreEqual(HttpStatusCode.Unauthorized, resume.StatusCode);
+        _mockWeChatPayService.Verify(x => x.GetVipStatusListAsync(It.IsAny<string>()), Times.Never);
+
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "invalid-token");
+        var invalidTokenQuestions = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=10");
+        Assert.IsNotNull(invalidTokenQuestions);
+        Assert.AreEqual("Q1", invalidTokenQuestions.Single().Content);
+    }
+
+    [TestMethod]
     public async Task GetQuestionsByTag_FreeTag_AlwaysAllowed()
     {
         var token = await LoginAsync();
