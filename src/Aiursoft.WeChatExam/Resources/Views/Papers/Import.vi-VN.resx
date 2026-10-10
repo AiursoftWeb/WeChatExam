@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Thao tác</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Thêm lựa chọn</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Thẻ bổ sung (mỗi thẻ một dòng)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Danh mục (không bắt buộc)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>Quyền truy cập danh mục/phân loại có thể không nhất quán. Các danh mục liên kết được đề xuất:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Kiểm tra thẻ và các đề xuất về quyền truy cập</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Đã hoàn thành</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Đúng</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Tên tùy chỉnh; không còn theo tiêu đề</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Kéo núm điều khiển hoặc sử dụng các nút di chuyển. Có thể để trống các câu trả lời còn thiếu trong bản xem trước, nhưng phải hoàn thành tất cả câu trả lời chuẩn trước khi lưu.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Bản xem trước có thể chỉnh sửa</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>Giữ nguyên trạng thái phí hiện có.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Giải thích</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Chủ động sử dụng lại thẻ hiện có này</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Trích xuất / tạo lại bản xem trước</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Quá thời gian trích xuất. Vui lòng thực hiện trích xuất lại.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Chỉ trích xuất thông tin từ nguồn. Các câu trả lời còn thiếu sẽ để trống. Không có gì được lưu cho đến khi bạn tự lưu bản nháp.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Thất bại</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Theo dõi tiêu đề lại</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Theo tiêu đề</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Miễn phí</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Nhập đề thi</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Không chính xác</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Miễn phí</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>Là đề thi thật</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Di chuyển xuống</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Di chuyển lên</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Không có đề xuất danh mục nào; hãy thiết lập các mối liên kết hoặc chọn một hệ phân loại khác.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Không có</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Không có trong nguồn</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Nội dung lựa chọn</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Văn bản đề thi gốc</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Đã trả phí</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Tên thẻ nguồn trả phí</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Đang chờ</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Thay thế bản xem trước đã chỉnh sửa bằng một lần trích xuất mới?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Lưu bản nháp thủ công</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Điểm</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Tái sử dụng thẻ nguồn sẽ khiến thẻ này trở thành thẻ trả phí trên toàn hệ thống.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Phân loại thẻ nguồn (không bắt buộc)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>Thẻ nguồn luôn là thẻ trả phí. Việc sử dụng lại một thẻ có thể thay đổi quyền truy cập của tất cả nội dung được liên kết. Bạn nên đổi tên; phân loại hiện có sẽ được giữ nguyên. Đề thi trả phí không phải đề thi thật và không có danh mục sẽ không thể được mở khóa bằng VIP danh mục.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Đáp án chuẩn (bắt buộc trước khi lưu)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Phân loại</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Thời gian giới hạn (phút)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+
+</root>

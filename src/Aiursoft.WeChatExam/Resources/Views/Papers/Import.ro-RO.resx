@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Acțiuni</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Adaugă opțiune</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Etichete suplimentare (una pe linie)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Categorie (opțional)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>Accesul la categorii/taxonomii poate fi inconsistent. Categorii asociate sugerate:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Verificați etichetele și recomandările privind accesul</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Finalizat</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Conținut</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Corect</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Nume personalizat; nu mai urmează titlul</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Șterge</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Trageți de mâner sau folosiți butoanele de mutare. Răspunsurile lipsă pot rămâne necompletate în previzualizare, însă toate răspunsurile standard trebuie completate înainte de salvare.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editează</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Previzualizare editabilă</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>Starea existentă a taxei se păstrează.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Explicație</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Reutilizați explicit această etichetă existentă</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Extrage / regenerează previzualizarea</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Timpul alocat extragerii a expirat. Vă rugăm să relansați explicit extragerea.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Extrage doar informațiile din sursă. Răspunsurile lipsă rămân necompletate. Nimic nu este salvat până când nu salvați manual ciorna.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Eșuat</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Urmărește din nou titlul</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Urmează titlul</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Gratuit</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Importă lucrarea</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Incorect</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Este gratuit</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>Este examenul real</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Mută în jos</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Mută în sus</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Nu este disponibilă nicio recomandare de categorie; configurați asocierile sau alegeți o altă taxonomie.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Niciunul</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Nu este furnizat în sursă</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Conținutul opțiunii</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opțiuni</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Textul original al subiectului</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Plătit</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Denumirea etichetei sursă cu plată</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>În așteptare</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>În curs de procesare</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Înlocuiți previzualizarea editată cu o nouă extragere?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Salvează manual schița</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Punctaj</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Reutilizarea sursei face ca această etichetă să fie cu plată la nivel global.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Taxonomia etichetei sursă (opțional)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>Etichetele sursă sunt întotdeauna cu plată. Reutilizarea unei etichete poate modifica accesul pentru tot conținutul asociat. Se recomandă redenumirea; taxonomia existentă se păstrează. Lucrările cu plată care nu sunt examene reale și nu au o categorie nu pot fi deblocate prin VIP-ul categoriei.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Răspunsul standard (obligatoriu înainte de salvare)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taxonomie</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Limită de timp (minute)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titlu</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+
+</root>

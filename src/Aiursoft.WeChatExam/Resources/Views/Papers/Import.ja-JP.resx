@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>選択肢を追加</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>追加タグ（1行につき1つ）</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>カテゴリー（任意）</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>カテゴリ／タクソノミーへのアクセスに不整合がある可能性があります。関連付けが推奨されるカテゴリ：</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>タグとアクセスに関する推奨事項を確認</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>コンテンツ</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>正解</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>カスタム名（タイトルに追従しない）</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>ハンドルをドラッグするか、移動ボタンを使用してください。未入力の回答はプレビューでは空欄のままでもかまいませんが、保存する前にすべての標準解答を入力してください。</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>編集可能なプレビュー</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>既存の料金設定は維持されます。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解説</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>この既存のタグを明示的に再利用する</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>プレビューを抽出／再生成</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>抽出がタイムアウトしました。もう一度、明示的に抽出してください。</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>元の情報のみを抽出します。回答がない箇所は空欄のままです。下書きを手動で保存するまで、何も保存されません。</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>タイトルに再度連動</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>タイトルに連動</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>無料</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>論文をインポート</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>不正解</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>無料です</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>実際の試験です</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>下へ移動</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>上へ移動</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>カテゴリーの推奨はありません。関連付けを設定するか、別の分類体系を選択してください。</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>ソースに記載なし</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>選択肢の内容</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>選択肢</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>原文テキスト</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>有料</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>有料ソースタグ名</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>保留中</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>処理中</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>編集済みのプレビューを新しい抽出結果で置き換えますか？</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>下書きを手動で保存</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>得点</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>ソースのタグを再利用すると、そのタグは全体で有料になります。</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>ソースタグの分類体系（任意）</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>ソースタグは常に有料です。タグを再利用すると、関連付けられたすべてのコンテンツのアクセス権が変更される場合があります。タグ名の変更をおすすめします。既存の分類体系は維持されます。カテゴリのない有料の模擬試験は、カテゴリVIPではロックを解除できません。</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>標準解答（保存前に必須）</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>分類体系</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>制限時間（分）</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>種類</value>
+  </data>
+
+</root>

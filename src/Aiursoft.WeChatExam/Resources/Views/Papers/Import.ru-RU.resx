@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Добавить вариант</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Дополнительные теги (по одному в строке)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Категория (необязательно)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>Доступ к категории и таксономии может быть настроен некорректно. Рекомендуемые связанные категории:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Проверить метки и рекомендации по доступу</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Содержимое</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Правильный</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Пользовательское имя; больше не связано с заголовком</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Перетащите маркер или используйте кнопки перемещения. Ответы, отсутствующие в исходных данных, можно оставить пустыми в предварительном просмотре, но перед сохранением необходимо заполнить все стандартные ответы.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Редактируемый предварительный просмотр</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>Существующий статус платности сохранён.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Пояснение</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Явно использовать этот существующий тег повторно</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Извлечь / обновить предварительный просмотр</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Время ожидания извлечения истекло. Пожалуйста, запустите извлечение ещё раз.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Извлекаются только сведения из исходного текста. Если ответы отсутствуют, поля остаются пустыми. Ничего не сохраняется, пока вы вручную не сохраните черновик.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Не удалось</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Снова следовать названию</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Следует названию</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Бесплатный</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Импорт работы</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Неверно</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Бесплатный</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>Является настоящим экзаменом</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Переместить вниз</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Переместить вверх</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Рекомендации по категории нет; настройте связи или выберите другую таксономию.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Не указано в исходном тексте</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Содержимое варианта</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Варианты</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Исходный текст экзаменационной работы</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Платный</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Название платной метки источника</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>В ожидании</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Обработка</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Заменить отредактированный предпросмотр результатом нового извлечения?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Сохранить черновик вручную</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Оценка</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Повторное использование исходной метки делает её платной для всех.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Таксономия исходного тега (необязательно)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>Исходные теги всегда платные. Повторное использование тега может изменить доступ ко всему связанному с ним контенту. Рекомендуется переименовать тег; существующая таксономия сохраняется. Платные пробные работы без категории нельзя разблокировать с помощью VIP-доступа к категории.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Эталонный ответ (обязателен перед сохранением)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Таксономия</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Ограничение времени (минуты)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+
+</root>

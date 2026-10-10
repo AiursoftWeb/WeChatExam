@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>添加选项</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>附加标签（每行一个）</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>分类（可选）</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>分类/分类体系的访问权限可能不一致。建议关联的分类：</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>检查标签并获取访问权限建议</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>正确</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>自定义名称；不再跟随标题</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>拖动手柄或使用移动按钮。缺失的答案可以在预览中留空，但保存前必须填写所有标准答案。</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>可编辑预览</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>保留现有费用状态。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>明确复用此现有标签</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>提取/重新生成预览</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>提取超时。请重新手动提取。</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>仅提取来源信息。缺失的答案将留空。手动保存草稿之前，不会保存任何内容。</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>失败</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>重新跟随标题</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>跟随标题</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>免费</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>导入试卷</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>是否免费</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>是否为正式考试</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>暂无可推荐的分类；请配置关联关系或选择其他分类体系。</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>源文件中未提供</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>选项内容</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>选项</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>原始试卷文本</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>已付费</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>付费来源标签名称</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>待处理</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>处理中</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>要用新的提取结果替换已编辑的预览吗？</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>手动保存草稿</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>分值</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>复用来源会使此标签在全局范围内变为付费标签。</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>来源标签分类体系（可选）</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>来源标签始终为付费标签。重复使用标签可能会更改所有关联内容的访问权限。建议重命名；现有分类体系会保留。没有分类的付费非真实试卷无法通过分类 VIP 解锁。</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>标准答案（保存前必须填写）</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>分类体系</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>时间限制（分钟）</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+
+</root>

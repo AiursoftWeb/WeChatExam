@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Handlinger</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Tilføj valgmulighed</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Yderligere tags (ét pr. linje)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Kategori (valgfri)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>Adgangen til kategorier/taksonomier kan være inkonsekvent. Foreslåede tilknyttede kategorier:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Kontrollér tags og anbefalinger om adgang</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Fuldført</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Indhold</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Korrekt</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Brugerdefineret navn; følger ikke længere titlen</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Slet</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Træk i håndtaget, eller brug flytteknapperne. Manglende svar kan stå tomme i forhåndsvisningen, men alle standardsvar skal udfyldes, før du gemmer.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Rediger</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Redigerbar forhåndsvisning</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>Den eksisterende betalingsstatus er bevaret.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Forklaring</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Genbrug dette eksisterende tag eksplicit</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Udtræk / generér forhåndsvisning</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Udtrækningen fik timeout. Foretag venligst et nyt udtræk.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Udtrækker kun oplysninger fra kilden. Manglende svar forbliver tomme. Intet gemmes, før du manuelt gemmer kladden.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Mislykkedes</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Følg titlen igen</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Følger titlen</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Gratis</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Importér opgave</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Forkert</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Er gratis</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>Er det en rigtig eksamen</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Flyt ned</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Flyt op</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Ingen kategorianbefaling er tilgængelig. Konfigurer tilknytninger, eller vælg en anden taksonomi.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Ingen</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Ikke angivet i kilden</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Indhold af svarmulighed</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Valgmuligheder</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Original opgavetekst</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Betalt</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Navn på betalt kildemærkat</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Afventer</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Behandler</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Erstat det redigerede eksempel med en ny udtrækning?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Gem kladde manuelt</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Pointtal</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Genbrug af kilden gør dette mærke betalingspligtigt globalt.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Kildetagsystematik (valgfrit)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>Kildetags er altid betalingsbelagte. Genbrug af et tag kan ændre adgangen til alt tilknyttet indhold. Det anbefales at omdøbe tagget; den eksisterende taksonomi bevares. Betalingsbelagte opgaver, der ikke er fra en rigtig eksamen, kan ikke låses op via kategorivip uden en kategori.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Standardsvar (skal udfyldes, før der kan gemmes)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taksonomi</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Tidsgrænse (minutter)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+
+</root>

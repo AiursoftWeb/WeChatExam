@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>작업</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>옵션 추가</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>추가 태그(한 줄에 하나씩)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>분류(선택 사항)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>카테고리/분류 체계 접근 권한이 일치하지 않을 수 있습니다. 연결된 카테고리 추천:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>태그 및 접근 권한 권장 사항 확인</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>완료됨</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>내용</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>정답</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>사용자 지정 이름; 제목을 더 이상 따르지 않음</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>핸들을 드래그하거나 이동 버튼을 사용하세요. 답이 누락된 경우 미리보기에서는 빈칸으로 둘 수 있지만, 저장하기 전에 모든 표준 답안을 작성해야 합니다.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>편집 가능한 미리보기</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>기존 요금 상태가 유지되었습니다.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>이 기존 태그를 명시적으로 재사용</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>미리 보기 추출 / 다시 생성</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>추출 시간이 초과되었습니다. 다시 추출하려면 직접 실행해 주세요.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>원본에 있는 정보만 추출합니다. 답이 없는 항목은 빈칸으로 둡니다. 초안을 직접 저장하기 전까지는 아무것도 저장되지 않습니다.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>실패</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>제목을 다시 따르기</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>제목을 따름</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>무료</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>문제지 가져오기</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>오답</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>무료인가요</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>실제 시험인가요</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>아래로 이동</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>위로 이동</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>추천 가능한 카테고리가 없습니다. 연결 관계를 설정하거나 다른 분류 체계를 선택하세요.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>없음</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>원문에 제공되지 않음</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>선택지 내용</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>옵션</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>원본 시험지 텍스트</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>유료</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>유료 출처 태그 이름</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>대기 중</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>처리 중</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>편집한 미리보기를 새로 추출한 내용으로 바꾸시겠습니까?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>초안 수동 저장</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>점수</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>출처 태그를 재사용하면 해당 태그가 전체적으로 유료로 설정됩니다.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>출처 태그 분류 체계(선택 사항)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>출처 태그는 항상 유료입니다. 태그를 재사용하면 연결된 모든 콘텐츠의 이용 권한이 변경될 수 있습니다. 이름을 변경하는 것을 권장하며, 기존 분류 체계는 유지됩니다. 카테고리가 없는 유료 비실제 시험지는 카테고리 VIP로 잠금 해제할 수 없습니다.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>모범 답안 (저장 전에 필수)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>분류 체계</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>시간 제한(분)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>제목</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>유형</value>
+  </data>
+
+</root>
