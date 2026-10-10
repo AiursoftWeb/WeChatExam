@@ -53,6 +53,10 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama)
                 if (q.Options.Count < 2) throw new InvalidOperationException("Choice and Bool questions require at least two original options.");
                 if (!string.IsNullOrWhiteSpace(q.StandardAnswer) && !q.Options.Contains(q.StandardAnswer)) throw new InvalidOperationException("Answer must match a complete option value, or remain empty.");
             }
+            else if (q.Options.Count != 0)
+            {
+                throw new InvalidOperationException("Non-option question types must not contain options.");
+            }
         }
     }
 
@@ -130,7 +134,7 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama)
             {
                 var q = request.Questions[i];
                 var question = new Question { Id = Guid.NewGuid(), Content = q.Content, QuestionType = q.QuestionType,
-                    GradingStrategy = q.QuestionType switch { QuestionType.Choice or QuestionType.Bool => GradingStrategy.ExactMatch, QuestionType.Blank => GradingStrategy.FuzzyMatch, _ => GradingStrategy.AiEval },
+                    GradingStrategy = q.Options.Count > 0 ? GradingStrategy.ExactMatch : GradingStrategy.AiEval,
                     Metadata = JsonConvert.SerializeObject(new { options = q.Options }), StandardAnswer = string.IsNullOrWhiteSpace(q.StandardAnswer) ? "" : q.StandardAnswer,
                     Explanation = q.Explanation, CategoryId = request.CategoryId, OrderIndex = i + 1 };
                 db.Questions.Add(question);

@@ -46,14 +46,73 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
             updatePreview(); body.append(info, optionList, explanation);
             const edit = document.createElement('div'); edit.hidden = true;
             const actions = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = root.dataset.actions; actions.append(summary, handle, button(root.dataset.edit, () => { edit.hidden = !edit.hidden; }), button(root.dataset.delete, () => { questions = questions.filter(item => item !== q); render(); }), button(root.dataset.up, () => move(index, -1)), button(root.dataset.down, () => move(index, 1))); body.append(actions);
+            const hasOptions = () => q.questionType === 0 || q.questionType === 2;
+            const refresh = () => {
+                heading.textContent = `${index + 1}. (${q.originalNumber || ''}) ${q.content}`;
+                note.textContent = q.standardAnswer || root.dataset.missing;
+                updatePreview();
+            };
+            const typeLabel = document.createElement('label'); typeLabel.className = 'form-label d-block'; typeLabel.textContent = tr.type;
             const type = document.createElement('select'); type.className = 'form-select mb-2';
-            types.forEach((t, i) => { const opt = new Option(typeLabels[i], i); type.add(opt); }); type.value = q.questionType; type.onchange = () => { q.questionType = Number(type.value); updatePreview(); }; edit.append(type);
-            [['content', tr.content, 2000], ['options', tr.options, 5000], ['standardAnswer', tr.answer, 5000], ['explanation', tr.explanation, 3000]].forEach(([key, label, max]) => {
+            types.forEach((t, i) => type.add(new Option(typeLabels[i], i)));
+            type.value = q.questionType; typeLabel.append(type); edit.append(typeLabel);
+            function textarea(key, label, max) {
                 const l = document.createElement('label'); l.className = 'form-label d-block'; l.textContent = label;
-                const input = document.createElement('textarea'); input.className = 'form-control mb-2'; input.maxLength = max; input.value = key === 'options' ? q.options.join('\n') : q[key];
-                input.oninput = () => { q[key] = key === 'options' ? input.value.split('\n').filter(s => s.trim()) : input.value; heading.textContent = `${index + 1}. (${q.originalNumber || ''}) ${q.content}`; note.textContent = q.standardAnswer || root.dataset.missing; updatePreview(); };
+                const input = document.createElement('textarea'); input.className = 'form-control mb-2'; input.maxLength = max; input.value = q[key];
+                input.oninput = () => { q[key] = input.value; refresh(); };
                 l.append(input); edit.append(l);
-            });
+                return l;
+            }
+            textarea('content', tr.content, 2000);
+            const optionsEditor = document.createElement('fieldset');
+            const legend = document.createElement('legend'); legend.className = 'form-label'; legend.textContent = tr.options; optionsEditor.append(legend);
+            const optionRows = document.createElement('div'); optionsEditor.append(optionRows);
+            function renderOptions() {
+                optionRows.replaceChildren();
+                q.options.forEach((value, optionIndex) => {
+                    const row = document.createElement('div'); row.className = 'input-group mb-2';
+                    const radioLabel = document.createElement('label'); radioLabel.className = 'input-group-text';
+                    const radio = document.createElement('input'); radio.type = 'radio'; radio.name = `answer-${q.clientId}`; radio.className = 'form-check-input';
+                    radio.checked = !!value && q.standardAnswer === value;
+                    radio.setAttribute('aria-label', `${tr.answer}: ${value}`);
+                    radio.onchange = () => { q.standardAnswer = q.options[optionIndex]; refresh(); };
+                    radioLabel.append(radio);
+                    const input = document.createElement('input'); input.type = 'text'; input.className = 'form-control'; input.value = value;
+                    input.placeholder = tr.optionContent; input.setAttribute('aria-label', `${tr.optionContent} ${optionIndex + 1}`);
+                    input.oninput = () => {
+                        const selected = radio.checked;
+                        q.options[optionIndex] = input.value;
+                        if (selected) q.standardAnswer = input.value;
+                        radio.setAttribute('aria-label', `${tr.answer}: ${input.value}`);
+                        refresh();
+                    };
+                    const remove = button(root.dataset.delete, () => {
+                        if (q.standardAnswer === q.options[optionIndex]) q.standardAnswer = '';
+                        q.options.splice(optionIndex, 1); renderOptions(); refresh();
+                    });
+                    row.append(radioLabel, input, remove); optionRows.append(row);
+                });
+            }
+            optionsEditor.append(button(tr.addOption, () => { q.options.push(''); renderOptions(); refresh(); }));
+            edit.append(optionsEditor);
+            const answerEditor = textarea('standardAnswer', tr.answer, 5000);
+            textarea('explanation', tr.explanation, 3000);
+            function updateEditor() {
+                optionsEditor.hidden = !hasOptions();
+                answerEditor.classList.toggle('d-block', !hasOptions());
+                answerEditor.classList.toggle('d-none', hasOptions());
+                answerEditor.querySelector('textarea').disabled = hasOptions();
+                renderOptions(); refresh();
+            }
+            type.onchange = () => {
+                const previouslyHadOptions = hasOptions();
+                q.questionType = Number(type.value);
+                if (previouslyHadOptions !== hasOptions()) { q.options = []; q.standardAnswer = ''; }
+                if (hasOptions() && !q.options.length) q.options = ['', ''];
+                answerEditor.querySelector('textarea').value = q.standardAnswer;
+                updateEditor();
+            };
+            updateEditor();
             const score = document.createElement('input'); score.type = 'number'; score.min = '1'; score.value = q.score; score.className = 'form-control'; score.oninput = () => { q.score = Number(score.value); updatePreview(); }; const scoreLabel = document.createElement('label'); scoreLabel.textContent = tr.score; scoreLabel.className = 'form-label d-block'; scoreLabel.append(score); edit.append(scoreLabel); body.append(edit); el('questions').append(card);
         });
         el('save-import').disabled = !taskId || !questions.length;

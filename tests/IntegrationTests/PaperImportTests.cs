@@ -100,6 +100,35 @@ public class PaperImportTests
     }
 
     [TestMethod]
+    public async Task OptionQuestionsUseExactMatchAndOtherTypesUseAiEvaluation()
+    {
+        var id = await Extract();
+        var save = SaveRequest(id);
+        save.SourceTagName = "Grading strategy " + Guid.NewGuid();
+        save.ExtraTags = [];
+        save.Questions = Enum.GetValues<QuestionType>().Select(type => new PaperImportQuestion
+        {
+            QuestionType = type,
+            Content = "Question " + type,
+            Options = type is QuestionType.Choice or QuestionType.Bool ? ["Yes", "No"] : [],
+            StandardAnswer = type is QuestionType.Choice or QuestionType.Bool ? "Yes" : "Reference answer"
+        }).ToList();
+        var response = await Post("ImportSave", save);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, await response.Content.ReadAsStringAsync());
+        var paperId = JObject.Parse(await response.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>();
+        using var scope = _host.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).ToListAsync();
+        Assert.AreEqual(6, questions.Count);
+        foreach (var item in questions)
+        {
+            var expected = item.Question.QuestionType is QuestionType.Choice or QuestionType.Bool
+                ? GradingStrategy.ExactMatch : GradingStrategy.AiEval;
+            Assert.AreEqual(expected, item.Question.GradingStrategy);
+        }
+    }
+
+    [TestMethod]
     public async Task TagConflictsRequireCurrentConfirmationAndPreserveTaxonomy()
     {
         var id = await Extract();
@@ -161,6 +190,8 @@ public class PaperImportTests
         var id = await Extract(); var save = SaveRequest(id); save.Questions[0].QuestionType = (QuestionType)99;
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
         save = SaveRequest(id); save.Questions[1].StandardAnswer = "Not an option";
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
+        save = SaveRequest(id); save.Questions[0].Options = ["Unexpected option"];
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
         save = SaveRequest(id); save.ExtraTags = null!;
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
