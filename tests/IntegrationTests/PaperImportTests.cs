@@ -186,6 +186,8 @@ public class PaperImportTests
     {
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportExtract", new { source = new string('x', 100001) })).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportExtract", null!)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportCheckTags", null!)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", null!)).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportExtract", new { source = "valid" }, false)).StatusCode);
         var id = await Extract(); var save = SaveRequest(id); save.Questions[0].QuestionType = (QuestionType)99;
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
@@ -194,6 +196,17 @@ public class PaperImportTests
         save = SaveRequest(id); save.Questions[0].Options = ["Unexpected option"];
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
         save = SaveRequest(id); save.ExtraTags = null!;
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
+        foreach (var field in new[] { "options", "standardAnswer", "explanation", "originalNumber" })
+        {
+            var malformed = JObject.FromObject(SaveRequest(id));
+            // JObject.FromObject retains C# property casing.
+            var property = malformed["Questions"]![0]!.Children<JProperty>()
+                .Single(p => string.Equals(p.Name, field, StringComparison.OrdinalIgnoreCase));
+            property.Value = JValue.CreateNull();
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", malformed)).StatusCode);
+        }
+        save = SaveRequest(id); save.Confirmations = [null!];
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
         var tasks = _host.Services.GetRequiredService<PaperImportTasks>(); Assert.IsNull(tasks.Get(id, "different user"));
     }

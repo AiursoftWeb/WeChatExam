@@ -1,3 +1,4 @@
+using Aiursoft.Canon.TaskQueue;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Entities;
@@ -23,7 +24,7 @@ public class PapersController(
     ITagService tagService,
     PaperImportService importService,
     PaperImportTasks importTasks,
-    Aiursoft.Canon.TaskQueue.ServiceTaskQueue taskQueue,
+    ServiceTaskQueue taskQueue,
     IStringLocalizer<PapersController> localizer) : Controller
 {
     private string ImportOwner => User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("Missing user identity.");
@@ -43,7 +44,7 @@ public class PapersController(
     [HttpPost, ValidateAntiForgeryToken, RequestSizeLimit(1100000)]
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public IActionResult ImportExtract([FromBody] PaperImportExtractionRequest request)
+    public IActionResult ImportExtract([FromBody] PaperImportExtractionRequest? request)
     {
         if (request == null || !ModelState.IsValid || string.IsNullOrWhiteSpace(request.Source)) return BadRequest("Invalid source text (maximum 100000 characters).");
         PaperImportTask task;
@@ -81,7 +82,7 @@ public class PapersController(
     [HttpPost, ValidateAntiForgeryToken, RequestSizeLimit(1100000)]
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public async Task<IActionResult> ImportCheckTags([FromBody] PaperImportTagCheckRequest request)
+    public async Task<IActionResult> ImportCheckTags([FromBody] PaperImportTagCheckRequest? request)
     {
         if (request == null || !ModelState.IsValid) return BadRequest("Invalid tags.");
         try { return Json(await importService.CheckTagsAsync(request)); }
@@ -91,7 +92,7 @@ public class PapersController(
     [HttpPost, ValidateAntiForgeryToken, RequestSizeLimit(3000000)]
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public async Task<IActionResult> ImportSave([FromBody] PaperImportSaveRequest request)
+    public async Task<IActionResult> ImportSave([FromBody] PaperImportSaveRequest? request)
     {
         if (request == null || !ModelState.IsValid) return BadRequest("Invalid paper data. Check all field lengths and scores.");
         var task = importTasks.Get(request.TaskId, ImportOwner);

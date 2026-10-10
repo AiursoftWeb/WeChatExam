@@ -42,10 +42,16 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama)
     public static void Validate(PaperImportPreview preview)
     {
         if (string.IsNullOrWhiteSpace(preview.Title) || preview.Title.Length > 200) throw new InvalidOperationException("Title must contain 1–200 characters.");
-        if (preview.Questions == null || preview.Questions.Count is < 1 or > 200) throw new InvalidOperationException("A paper must contain 1–200 questions.");
-        foreach (var q in preview.Questions)
+        RequireJsonValue(preview.Questions);
+        if (preview.Questions.Count is < 1 or > 200) throw new InvalidOperationException("A paper must contain 1–200 questions.");
+        foreach (var question in preview.Questions)
         {
-            if (q == null || !Enum.IsDefined(q.QuestionType) || string.IsNullOrWhiteSpace(q.Content) || q.Content.Length > 2000 || q.Options == null || q.Options.Any(o => string.IsNullOrWhiteSpace(o)) || q.Options.Count > 100 || q.Options.Distinct().Count() != q.Options.Count || q.StandardAnswer == null || q.StandardAnswer.Length > 5000 || q.Explanation == null || q.Explanation.Length > 3000 || q.OriginalNumber == null || q.OriginalNumber.Length > 100 || q.Score < 1)
+            var q = RequireJsonValue(question);
+            RequireJsonValue(q.Options);
+            RequireJsonValue(q.StandardAnswer);
+            RequireJsonValue(q.Explanation);
+            RequireJsonValue(q.OriginalNumber);
+            if (!Enum.IsDefined(q.QuestionType) || string.IsNullOrWhiteSpace(q.Content) || q.Content.Length > 2000 || q.Options.Any(o => string.IsNullOrWhiteSpace(o)) || q.Options.Count > 100 || q.Options.Distinct().Count() != q.Options.Count || q.StandardAnswer.Length > 5000 || q.Explanation.Length > 3000 || q.OriginalNumber.Length > 100 || q.Score < 1)
                 throw new InvalidOperationException("Invalid question, options, answer, explanation or score. Please edit the preview.");
             if (JsonConvert.SerializeObject(new { options = q.Options }).Length > 5000) throw new InvalidOperationException("Question options exceed 5000 characters.");
             if (q.QuestionType is QuestionType.Choice or QuestionType.Bool)
@@ -60,8 +66,12 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama)
         }
     }
 
+    // JSON input can contain null even for non-nullable DTO properties.
+    private static T RequireJsonValue<T>(T? value) where T : class =>
+        value ?? throw new InvalidOperationException("Import data contains an unexpected null value.");
+
     private static string Normalize(string name) => name.Trim().ToUpperInvariant();
-    private static List<string> Names(string source, List<string> extras)
+    private static List<string> Names(string source, List<string>? extras)
     {
         if (string.IsNullOrWhiteSpace(source) || source.Length > 255 || extras == null || extras.Count > 30 || extras.Any(n => string.IsNullOrWhiteSpace(n) || n.Length > 255))
             throw new InvalidOperationException("Tag names must contain 1–255 characters; at most 30 extra tags are allowed.");
@@ -91,7 +101,9 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama)
             throw new InvalidOperationException($"Question {unanswered + 1} has no standard answer. Complete all standard answers before saving.");
         if (request.TimeLimit < 1) throw new InvalidOperationException("Time limit must be positive.");
         var names = Names(request.SourceTagName, request.ExtraTags);
-        if (request.Confirmations == null || request.Confirmations.Count > 31 || request.Confirmations.Any(c => c == null)) throw new InvalidOperationException("Invalid tag confirmations.");
+        RequireJsonValue(request.Confirmations);
+        if (request.Confirmations.Count > 31) throw new InvalidOperationException("Invalid tag confirmations.");
+        foreach (var confirmation in request.Confirmations) RequireJsonValue(confirmation);
         if (request.CategoryId.HasValue && !await db.Categories.AnyAsync(c => c.Id == request.CategoryId)) throw new InvalidOperationException("Category no longer exists.");
         if (request.TaxonomyId.HasValue && !await db.Taxonomies.AnyAsync(t => t.Id == request.TaxonomyId)) throw new InvalidOperationException("Taxonomy no longer exists.");
         var paperId = Guid.NewGuid();
