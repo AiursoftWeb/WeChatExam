@@ -30,6 +30,13 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
     function render() {
         el('questions').replaceChildren();
         questions.forEach((q, index) => {
+            if (q.questionType === 2) {
+                const answer = q.standardAnswer.trim().toLowerCase();
+                const positive = [tr.correct.toLowerCase(), 'true', 'correct', '正确', '对', '是', '√'];
+                const negative = [tr.incorrect.toLowerCase(), 'false', 'incorrect', '错误', '错', '否', '×'];
+                q.standardAnswer = positive.includes(answer) ? tr.correct : negative.includes(answer) ? tr.incorrect : '';
+                q.options = [tr.correct, tr.incorrect];
+            }
             const card = document.createElement('div'); card.className = 'card'; card.dataset.id = q.clientId;
             const body = document.createElement('div'); body.className = 'card-body'; card.append(body);
             const handle = document.createElement('span'); handle.className = 'drag-handle me-2'; handle.textContent = '↕'; handle.style.cursor = 'grab'; body.append(handle);
@@ -77,6 +84,11 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
                     radio.setAttribute('aria-label', `${tr.answer}: ${value}`);
                     radio.onchange = () => { q.standardAnswer = q.options[optionIndex]; refresh(); };
                     radioLabel.append(radio);
+                    if (q.questionType === 2) {
+                        radioLabel.append(document.createTextNode(` ${value}`));
+                        row.append(radioLabel); optionRows.append(row);
+                        return;
+                    }
                     const input = document.createElement('input'); input.type = 'text'; input.className = 'form-control'; input.value = value;
                     input.placeholder = tr.optionContent; input.setAttribute('aria-label', `${tr.optionContent} ${optionIndex + 1}`);
                     input.oninput = () => {
@@ -93,21 +105,27 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
                     row.append(radioLabel, input, remove); optionRows.append(row);
                 });
             }
-            optionsEditor.append(button(tr.addOption, () => { q.options.push(''); renderOptions(); refresh(); }));
+            const addOption = button(tr.addOption, () => { q.options.push(''); renderOptions(); refresh(); });
+            optionsEditor.append(addOption);
             edit.append(optionsEditor);
             const answerEditor = textarea('standardAnswer', tr.answer, 5000);
             textarea('explanation', tr.explanation, 3000);
             function updateEditor() {
                 optionsEditor.hidden = !hasOptions();
+                addOption.hidden = q.questionType === 2;
                 answerEditor.classList.toggle('d-block', !hasOptions());
                 answerEditor.classList.toggle('d-none', hasOptions());
                 answerEditor.querySelector('textarea').disabled = hasOptions();
                 renderOptions(); refresh();
             }
             type.onchange = () => {
+                const previousType = q.questionType;
                 const previouslyHadOptions = hasOptions();
                 q.questionType = Number(type.value);
                 if (previouslyHadOptions !== hasOptions()) { q.options = []; q.standardAnswer = ''; }
+                if (q.questionType === 2 && previousType !== 2) {
+                    q.options = [tr.correct, tr.incorrect]; q.standardAnswer = '';
+                }
                 if (hasOptions() && !q.options.length) q.options = ['', ''];
                 answerEditor.querySelector('textarea').value = q.standardAnswer;
                 updateEditor();
