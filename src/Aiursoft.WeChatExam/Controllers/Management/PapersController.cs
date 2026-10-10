@@ -1,3 +1,4 @@
+using Aiursoft.Canon.TaskQueue;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Entities;
@@ -21,8 +22,93 @@ public class PapersController(
     WeChatExamDbContext context, 
     IPaperService paperService,
     ITagService tagService,
+    PaperImportService importService,
+    PaperImportTasks importTasks,
+    ServiceTaskQueue taskQueue,
     IStringLocalizer<PapersController> localizer) : Controller
 {
+    private string ImportOwner => User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("Missing user identity.");
+
+    [HttpGet]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
+    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    public async Task<IActionResult> Import()
+    {
+        return this.StackView(new ImportViewModel
+        {
+            Categories = await context.Categories.OrderBy(c => c.Title).Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync(),
+            Taxonomies = await context.Taxonomies.OrderBy(t => t.Name).Select(t => new SelectListItem(t.Name, t.Id.ToString())).ToListAsync()
+        });
+    }
+
+    [HttpPost, ValidateAntiForgeryToken, RequestSizeLimit(1100000)]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
+    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    public IActionResult ImportExtract([FromBody] PaperImportExtractionRequest? request)
+    {
+        if (request == null || !ModelState.IsValid || string.IsNullOrWhiteSpace(request.Source)) return BadRequest("Invalid source text (maximum 100000 characters).");
+        PaperImportTask task;
+        try { task = importTasks.Create(ImportOwner); }
+        catch (InvalidOperationException e) { return BadRequest(e.Message); }
+        taskQueue.QueueWithDependency<IServiceProvider>("Paper-Import", $"Extract paper {task.Id}", async provider =>
+        {
+            task.Status = "Processing";
+            try
+            {
+                using var scope = provider.CreateScope();
+                using var timeout = new CancellationTokenSource(TimeSpan.FromMinutes(5));
+                task.Preview = await scope.ServiceProvider.GetRequiredService<PaperImportService>().ExtractAsync(request.Source, timeout.Token);
+                task.Status = "Completed";
+            }
+            catch (Exception exception)
+            {
+                provider.GetRequiredService<ILogger<PapersController>>().LogWarning(exception, "Paper import extraction {TaskId} failed", task.Id);
+                task.Error = "Extraction failed, timed out, or returned invalid content. Check the source and explicitly extract again.";
+                task.Status = "Failed";
+            }
+        });
+        return Json(new { taskId = task.Id });
+    }
+
+    [HttpGet]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
+    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    public IActionResult ImportStatus(Guid id)
+    {
+        var task = importTasks.Get(id, ImportOwner);
+        return task == null ? NotFound("Preview expired or server restarted. Please extract again.") : Json(new { task.Status, task.Error, task.Preview });
+    }
+
+    [HttpPost, ValidateAntiForgeryToken, RequestSizeLimit(1100000)]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
+    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    public async Task<IActionResult> ImportCheckTags([FromBody] PaperImportTagCheckRequest? request)
+    {
+        if (request == null || !ModelState.IsValid) return BadRequest("Invalid tags.");
+        try { return Json(await importService.CheckTagsAsync(request)); }
+        catch (InvalidOperationException e) { return BadRequest(e.Message); }
+    }
+
+    [HttpPost, ValidateAntiForgeryToken, RequestSizeLimit(3000000)]
+    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
+    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    public async Task<IActionResult> ImportSave([FromBody] PaperImportSaveRequest? request)
+    {
+        if (request == null || !ModelState.IsValid) return BadRequest("Invalid paper data. Check all field lengths and scores.");
+        var task = importTasks.Get(request.TaskId, ImportOwner);
+        if (task == null) return NotFound("Preview expired or server restarted. Please extract again.");
+        await task.SaveLock.WaitAsync();
+        try
+        {
+            if (task.PaperId.HasValue) return Json(new { paperId = task.PaperId, url = Url.Action(nameof(Details), new { id = task.PaperId }) });
+            if (task.Status != "Completed") return BadRequest("Extract and review a valid preview before saving.");
+            task.PaperId = await importService.SaveAsync(request);
+            return Json(new { paperId = task.PaperId, url = Url.Action(nameof(Details), new { id = task.PaperId }) });
+        }
+        catch (InvalidOperationException e) { return BadRequest(e.Message); }
+        finally { task.SaveLock.Release(); }
+    }
+
     // GET: papers
     [RenderInNavBar(
         NavGroupName = "Administration",
