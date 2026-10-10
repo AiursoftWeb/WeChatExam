@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Προσθήκη επιλογής</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Επιπλέον ετικέτες (μία ανά γραμμή)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Κατηγορία (προαιρετικό)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>Η πρόσβαση στην κατηγορία/ταξινομία ενδέχεται να μην είναι συνεπής. Προτεινόμενες συνδεδεμένες κατηγορίες:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Έλεγχος ετικετών και προτάσεων πρόσβασης</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Ολοκληρώθηκε</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Περιεχόμενο</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Σωστό</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Προσαρμοσμένο όνομα· δεν ακολουθεί πλέον τον τίτλο</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Σύρετε τη λαβή ή χρησιμοποιήστε τα κουμπιά μετακίνησης. Οι απαντήσεις που λείπουν μπορούν να παραμείνουν κενές στην προεπισκόπηση, αλλά όλες οι τυπικές απαντήσεις πρέπει να συμπληρωθούν πριν από την αποθήκευση.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Επεξεργασία</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Επεξεργάσιμη προεπισκόπηση</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>Διατηρείται η υπάρχουσα κατάσταση χρέωσης.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Επεξήγηση</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Επαναχρησιμοποίηση αυτής της υπάρχουσας ετικέτας κατόπιν επιλογής</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Εξαγωγή / αναδημιουργία προεπισκόπησης</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Η εξαγωγή έληξε λόγω χρονικού ορίου. Παρακαλούμε εκτελέστε ξανά την εξαγωγή.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Εξάγει μόνο τις πληροφορίες της πηγής. Οι απαντήσεις που λείπουν παραμένουν κενές. Δεν αποθηκεύεται τίποτα μέχρι να αποθηκεύσετε χειροκίνητα το προσχέδιο.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Απέτυχε</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Ακολουθήστε ξανά τον τίτλο</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Ακολουθεί τον τίτλο</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Δωρεάν</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Εισαγωγή γραπτού διαγωνίσματος</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Λανθασμένο</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Είναι δωρεάν</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>Είναι πραγματική εξέταση</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Μετακίνηση προς τα κάτω</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Μετακίνηση προς τα πάνω</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Δεν υπάρχει διαθέσιμη πρόταση κατηγορίας· ρυθμίστε τις συσχετίσεις ή επιλέξτε άλλη ταξινομία.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Κανένα</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Δεν παρέχεται στην πηγή</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Περιεχόμενο επιλογής</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Επιλογές</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Κείμενο πρωτότυπου διαγωνίσματος</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Επί πληρωμή</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Όνομα ετικέτας επί πληρωμή πηγής</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Σε εκκρεμότητα</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Σε επεξεργασία</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Να αντικατασταθεί η επεξεργασμένη προεπισκόπηση με νέα εξαγωγή;</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Αποθήκευση πρόχειρου χειροκίνητα</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Βαθμολογία</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Η επαναχρησιμοποίηση της πηγής καθιστά αυτήν την ετικέτα επί πληρωμή για όλους.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Ταξινομία ετικετών πηγής (προαιρετικό)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>Οι ετικέτες πηγής είναι πάντα επί πληρωμή. Η επαναχρησιμοποίηση μιας ετικέτας μπορεί να αλλάξει την πρόσβαση σε όλο το περιεχόμενο που συνδέεται με αυτήν. Συνιστάται η μετονομασία· η υπάρχουσα ταξινομία διατηρείται. Οι επί πληρωμή μη πραγματικές εξετάσεις χωρίς κατηγορία δεν μπορούν να ξεκλειδωθούν μέσω VIP κατηγορίας.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Τυπική απάντηση (απαιτείται πριν από την αποθήκευση)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Ταξινομία</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Χρονικό όριο (λεπτά)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Τίτλος</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Τύπος</value>
+  </data>
+
+</root>

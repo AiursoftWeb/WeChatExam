@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>कार्रवाइयाँ</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>विकल्प जोड़ें</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>अतिरिक्त टैग (हर पंक्ति में एक)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>श्रेणी (वैकल्पिक)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>श्रेणी/वर्गीकरण तक पहुँच में विसंगति हो सकती है। सुझाई गई संबद्ध श्रेणियाँ:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>टैग और पहुँच संबंधी सुझाव जाँचें</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>पूरा हुआ</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>सामग्री</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>सही</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>मनपसंद नाम; अब शीर्षक का अनुसरण नहीं करता</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>हैंडल को खींचें या स्थान बदलने वाले बटनों का उपयोग करें। पूर्वावलोकन में छूटे हुए उत्तर खाली रह सकते हैं, लेकिन सहेजने से पहले सभी मानक उत्तर पूरे करना आवश्यक है।</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>संपादन योग्य पूर्वावलोकन</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>मौजूदा शुल्क की स्थिति बरकरार रखी गई।</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>व्याख्या</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>इस मौजूदा टैग का स्पष्ट रूप से पुनः उपयोग करें</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>पूर्वावलोकन निकालें / पुनः तैयार करें</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>डेटा निकालने का समय समाप्त हो गया। कृपया इसे फिर से निकालें।</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>केवल स्रोत से जानकारी निकाली जाती है। जिन उत्तरों की जानकारी उपलब्ध नहीं है, वे खाली रहेंगे। जब तक आप प्रारूप को स्वयं सहेज नहीं लेते, तब तक कुछ भी सहेजा नहीं जाएगा।</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>विफल</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>शीर्षक का फिर से अनुसरण करें</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>शीर्षक का अनुसरण करता है</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>निःशुल्क</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>प्रश्नपत्र आयात करें</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>गलत</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>निःशुल्क है</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>क्या यह वास्तविक परीक्षा है</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>नीचे ले जाएँ</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>ऊपर ले जाएँ</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>श्रेणी के लिए कोई सुझाव उपलब्ध नहीं है; संबद्धताएँ कॉन्फ़िगर करें या कोई अन्य वर्गीकरण चुनें।</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>कोई नहीं</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>स्रोत में उपलब्ध नहीं है</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>विकल्प की सामग्री</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>विकल्प</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>मूल प्रश्नपत्र का पाठ</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>सशुल्क</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>भुगतान किए गए स्रोत टैग का नाम</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>लंबित</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>प्रक्रिया जारी है</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>संपादित प्रीव्यू को नए निष्कर्षण से बदलें?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>ड्राफ़्ट को मैन्युअल रूप से सहेजें</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>अंक</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>स्रोत टैग का पुनः उपयोग करने से यह टैग सभी जगह सशुल्क हो जाता है।</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>स्रोत टैग वर्गीकरण (वैकल्पिक)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>स्रोत टैग हमेशा सशुल्क होते हैं। किसी टैग का दोबारा उपयोग करने से उससे जुड़ी सभी सामग्री की पहुँच बदल सकती है। टैग का नाम बदलने की सलाह दी जाती है; मौजूदा वर्गीकरण सुरक्षित रहता है। बिना किसी श्रेणी वाले सशुल्क गैर-वास्तविक प्रश्नपत्रों को श्रेणी VIP से अनलॉक नहीं किया जा सकता।</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>मानक उत्तर (सहेजने से पहले आवश्यक)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>वर्गीकरण</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>समय सीमा (मिनट)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>शीर्षक</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+
+</root>

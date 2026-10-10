@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Aggiungi opzione</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Tag aggiuntivi (uno per riga)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Categoria (facoltativa)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>L&apos;accesso alla categoria/tassonomia potrebbe non essere coerente. Categorie associate suggerite:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Controlla i tag e i suggerimenti di accesso</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completato</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenuto</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Corretto</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Nome personalizzato; non segue più il titolo</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Trascina la maniglia o usa i pulsanti di spostamento. Le risposte mancanti possono rimanere vuote nell’anteprima, ma tutte le risposte standard devono essere completate prima del salvataggio.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Anteprima modificabile</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>Lo stato tariffario esistente è stato mantenuto.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Spiegazione</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Riutilizza esplicitamente questo tag esistente</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Estrai / rigenera anteprima</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Estrazione scaduta. Esegui nuovamente l&apos;estrazione.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Estrae solo le informazioni presenti nella fonte. Le risposte mancanti restano vuote. Non viene salvato nulla finché non salvi manualmente la bozza.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Non riuscito</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Segui di nuovo il titolo</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Segue il titolo</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Gratis</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Importa prova d&apos;esame</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Errato</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>È gratuito</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>È un esame ufficiale</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Sposta in basso</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Sposta in alto</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Nessuna categoria consigliata disponibile; configura le associazioni oppure scegli un’altra tassonomia.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Nessuno</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Non fornito nella fonte</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Contenuto dell&apos;opzione</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opzioni</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Testo originale del documento</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>A pagamento</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Nome del tag sorgente a pagamento</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>In attesa</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>In elaborazione</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Sostituire l’anteprima modificata con una nuova estrazione?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Salva la bozza manualmente</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Punteggio</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Il riutilizzo della fonte rende questo tag a pagamento per tutti.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Tassonomia dei tag di origine (facoltativa)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>I tag di origine sono sempre a pagamento. Riutilizzare un tag può modificare l’accesso a tutti i contenuti collegati. Si consiglia di rinominarlo; la tassonomia esistente viene mantenuta. I compiti a pagamento non ufficiali senza categoria non possono essere sbloccati tramite il VIP di categoria.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Risposta standard (obbligatoria prima del salvataggio)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Tassonomia</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Limite di tempo (minuti)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+
+</root>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Acties</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Optie toevoegen</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Extra tags (één per regel)</value>
+  </data>
+  <data name="Category (optional)" xml:space="preserve">
+    <value>Categorie (optioneel)</value>
+  </data>
+  <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
+    <value>De toegang tot categorieën/taxonomieën is mogelijk niet consistent. Voorgestelde gekoppelde categorieën:</value>
+  </data>
+  <data name="Check tags and access recommendations" xml:space="preserve">
+    <value>Tags en toegang aanbevelen controleren</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Voltooid</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Inhoud</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Juist</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Aangepaste naam; volgt de titel niet meer</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Sleep het handvat of gebruik de verplaatsknoppen. Ontbrekende antwoorden mogen leeg blijven in het voorbeeld, maar alle standaardantwoorden moeten zijn ingevuld voordat je opslaat.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Bewerkbaar voorbeeld</value>
+  </data>
+  <data name="Existing fee status retained." xml:space="preserve">
+    <value>De bestaande tariefstatus blijft behouden.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Toelichting</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Dit bestaande label expliciet opnieuw gebruiken</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Voorbeeld extraheren / opnieuw genereren</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>De extractie is verlopen. Voer de extractie opnieuw uit.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Haalt alleen informatie uit de bron. Ontbrekende antwoorden blijven leeg. Er wordt niets opgeslagen totdat je het concept handmatig opslaat.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Mislukt</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Titel weer volgen</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Volgt de titel</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Gratis</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Werkstuk importeren</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Onjuist</value>
+  </data>
+  <data name="Is Free" xml:space="preserve">
+    <value>Is gratis</value>
+  </data>
+  <data name="Is Real Exam" xml:space="preserve">
+    <value>Is dit een echt examen</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Omlaag verplaatsen</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Omhoog verplaatsen</value>
+  </data>
+  <data name="No category recommendation available; configure associations or choose another taxonomy." xml:space="preserve">
+    <value>Geen categorisatieadvies beschikbaar; configureer koppelingen of kies een andere taxonomie.</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Geen</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Niet vermeld in de bron</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Inhoud van de optie</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opties</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Oorspronkelijke tekst van het examen</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Betaald</value>
+  </data>
+  <data name="Paid source tag name" xml:space="preserve">
+    <value>Naam van betaalde brontag</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>In behandeling</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Bezig met verwerken</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>De bewerkte preview vervangen door een nieuwe extractie?</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Concept handmatig opslaan</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="Source reuse makes this tag paid globally." xml:space="preserve">
+    <value>Hergebruik uit de bron maakt deze tag wereldwijd betaald.</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Taxonomie van het brontag (optioneel)</value>
+  </data>
+  <data name="Source tags are always paid. Reusing a tag can change access for all linked content. Rename is recommended; existing taxonomy is preserved. Paid non-real papers without a category cannot be unlocked by category VIP." xml:space="preserve">
+    <value>Bronlabels zijn altijd betaald. Hergebruik van een label kan de toegang wijzigen voor alle gekoppelde inhoud. Een andere naam wordt aanbevolen; de bestaande taxonomie blijft behouden. Betaalde niet-echte examens zonder categorie kunnen niet worden ontgrendeld met VIP-toegang voor categorieën.</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Standaardantwoord (verplicht voordat u opslaat)</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taxonomie</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Tijdslimiet (minuten)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+
+</root>
