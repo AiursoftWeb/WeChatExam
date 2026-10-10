@@ -65,6 +65,8 @@ public class Startup : IWebStartup
         services.AddScoped<ChatClient>();
         services.AddScoped<IOllamaService, OllamaService>();
         services.AddSingleton<AiTaskService>();
+        services.AddSingleton<PaperImportTasks>();
+        services.AddScoped<PaperImportService>();
         services.AddScoped<IExamService, ExamService>();
         services.AddScoped<IDistributionChannelService, DistributionChannelService>();
         services.AddScoped<IExtractService, ExtractService>();
