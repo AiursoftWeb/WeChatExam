@@ -473,4 +473,16 @@ public class BasicTests
         Assert.AreEqual(HttpStatusCode.Found, loginResponse.StatusCode);
         Assert.AreEqual("/Dashboard/Index", loginResponse.Headers.Location?.OriginalString);
     }
+
+    [TestMethod]
+    [DataRow("zh-CN&returnUrl=/Tips/Detail/8")]
+    [DataRow("not/a/culture")]
+    public async Task SetCultureInvalid(string culture)
+    {
+        var response = await _http.GetAsync($"/Culture/Set?culture={Uri.EscapeDataString(culture)}&returnUrl=/");
+
+        Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.IsFalse(response.Headers.Contains("Set-Cookie"));
+    }
+
 }
