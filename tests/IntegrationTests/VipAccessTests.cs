@@ -3,7 +3,7 @@ using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -13,9 +13,9 @@ public class VipAccessTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService;
-    private readonly Mock<IWeChatPayService> _mockWeChatPayService;
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService;
+    private readonly StubWeChatService _mockWeChatService;
+    private readonly StubWeChatPayService _mockWeChatPayService;
+    private readonly StubDistributionChannelService _mockDistributionChannelService;
 
     public VipAccessTests()
     {
@@ -26,9 +26,9 @@ public class VipAccessTests
             AllowAutoRedirect = false
         };
         _http = new HttpClient(handler);
-        _mockWeChatService = new Mock<IWeChatService>();
-        _mockWeChatPayService = new Mock<IWeChatPayService>();
-        _mockDistributionChannelService = new Mock<IDistributionChannelService>();
+        _mockWeChatService = new StubWeChatService();
+        _mockWeChatPayService = new StubWeChatPayService();
+        _mockDistributionChannelService = new StubDistributionChannelService();
     }
 
     [TestInitialize]
@@ -73,8 +73,7 @@ public class VipAccessTests
     private async Task<string> LoginAsync()
     {
         var openId = "test-user";
-        _mockWeChatService.Setup(x => x.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult { IsSuccess = true, OpenId = openId });
+        _mockWeChatService.DefaultSession = new WeChatSessionResult { IsSuccess = true, OpenId = openId };
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto { Code = "code" });
         var result = await response.Content.ReadFromJsonAsync<TokenDto>();
@@ -144,12 +143,11 @@ public class VipAccessTests
         Assert.IsNotNull(tags);
         Assert.IsTrue(tags.Single(t => t.IsFree).HasAccess);
         Assert.IsFalse(tags.Single(t => !t.IsFree).HasAccess);
-        _mockWeChatPayService.Verify(x => x.GetVipStatusListAsync(It.IsAny<string>()), Times.Never);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
 
         var token = await LoginAsync();
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>
+        _mockWeChatPayService.Memberships = new List<VipMembership>
             {
                 new VipMembership
                 {
@@ -158,7 +156,7 @@ public class VipAccessTests
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "Real", Type = VipProductType.RealExam }
                 }
-            });
+            };
         var vipSnapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{paid.LatestSnapshotId}");
         Assert.IsNotNull(vipSnapshot);
         Assert.IsTrue(vipSnapshot.HasAccess);
@@ -200,8 +198,7 @@ public class VipAccessTests
         }
 
         // Scenario A: No VIP
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>());
+        _mockWeChatPayService.Memberships = new List<VipMembership>();
 
         var resA = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
         Assert.IsTrue(resA!.First(p => p.Title == "Free").HasAccess);
@@ -209,30 +206,28 @@ public class VipAccessTests
         Assert.IsFalse(resA!.First(p => p.Title == "Cat Paper").HasAccess);
 
         // Scenario B: Has Real Exam VIP
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> {
+        _mockWeChatPayService.Memberships = new List<VipMembership> {
                 new VipMembership {
                     UserId = "u",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "R", Type = VipProductType.RealExam }
                 }
-            });
+            };
 
         var resB = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
         Assert.IsTrue(resB!.First(p => p.Title == "Real").HasAccess);
         Assert.IsFalse(resB!.First(p => p.Title == "Cat Paper").HasAccess);
 
         // Scenario C: Has Category VIP
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> {
+        _mockWeChatPayService.Memberships = new List<VipMembership> {
                 new VipMembership {
                     UserId = "u",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "C", Type = VipProductType.Category, CategoryId = catId }
                 }
-            });
+            };
 
         var resC = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
         Assert.IsFalse(resC!.First(p => p.Title == "Real").HasAccess);

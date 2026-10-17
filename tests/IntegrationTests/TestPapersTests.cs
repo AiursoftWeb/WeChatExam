@@ -6,7 +6,7 @@ using Aiursoft.WeChatExam.Models.TestPapersViewModels;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
@@ -108,7 +108,7 @@ public class TestPapersTests : TestBase
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
         await using var context = new InMemoryContext(options);
-        var gradingService = new Mock<IGradingService>();
+        var gradingService = new StubGradingService();
 
         var paperId = Guid.NewGuid();
         var questionId = Guid.NewGuid();
@@ -133,16 +133,17 @@ public class TestPapersTests : TestBase
         });
         await context.SaveChangesAsync();
 
-        gradingService
-            .Setup(service => service.GradeAsync(
-                "A thoughtful student answer",
-                question.StandardAnswer,
-                GradingStrategy.AiEval,
-                20,
-                question.Content))
-            .ReturnsAsync(new GradingResult { IsCorrect = true, Score = 17, Comment = "Strong answer" });
+        gradingService.Grade = (answer, standardAnswer, strategy, maxScore, content) =>
+        {
+            Assert.AreEqual("A thoughtful student answer", answer);
+            Assert.AreEqual(question.StandardAnswer, standardAnswer);
+            Assert.AreEqual(GradingStrategy.AiEval, strategy);
+            Assert.AreEqual(20, maxScore);
+            Assert.AreEqual(question.Content, content);
+            return Task.FromResult(new GradingResult { IsCorrect = true, Score = 17, Comment = "Strong answer" });
+        };
 
-        var controller = new TestPapersController(context, gradingService.Object);
+        var controller = new TestPapersController(context, gradingService);
         var actionResult = await controller.Submit(new SubmitViewModel
         {
             PaperId = paperId,
@@ -156,6 +157,6 @@ public class TestPapersTests : TestBase
         Assert.IsNotNull(result);
         Assert.AreEqual(17, result.Score);
         Assert.AreEqual("Strong answer", result.Questions.Single().Comment);
-        gradingService.VerifyAll();
+        Assert.IsTrue(gradingService.Calls > 0);
     }
 }

@@ -1,29 +1,27 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
-using Aiursoft.WeChatExam.Configuration;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 
 [TestClass]
 public class GradingServiceTests
 {
-    private Mock<IOllamaService>? _mockOllamaService;
-    private Mock<IGlobalSettingsService>? _mockGlobalSettingsService;
+    private StubOllamaService? _mockOllamaService;
+    private StubGlobalSettingsService? _mockGlobalSettingsService;
     private GradingService? _gradingService;
 
     [TestInitialize]
     public void Setup()
     {
-        _mockOllamaService = new Mock<IOllamaService>();
-        _mockGlobalSettingsService = new Mock<IGlobalSettingsService>();
+        _mockOllamaService = new StubOllamaService();
+        _mockGlobalSettingsService = new StubGlobalSettingsService();
         
         // Mock the default grading prompt
         var defaultGradingPrompt = "Question: {0}\nStandard Answer: {1}\nExplanation: {2}\nStudent Answer: {3}\nMax Score: {4}";
-        _mockGlobalSettingsService.Setup(s => s.GetSettingValueAsync(SettingsMap.AiPromptGradingDefault))
-            .ReturnsAsync(defaultGradingPrompt);
+        _mockGlobalSettingsService.GradingPrompt = defaultGradingPrompt;
 
-        _gradingService = new GradingService(_mockOllamaService.Object, _mockGlobalSettingsService.Object);
+        _gradingService = new GradingService(_mockOllamaService, _mockGlobalSettingsService);
     }
 
     [TestMethod]
@@ -70,8 +68,7 @@ public class GradingServiceTests
     public async Task TestGradeAiEval_Success()
     {
         var aiResponse = "{ \"Score\": 8, \"Comment\": \"Good job\", \"IsCorrect\": true }";
-        _mockOllamaService!.Setup(s => s.AskQuestion(It.IsAny<string>()))
-            .ReturnsAsync(aiResponse);
+        _mockOllamaService!.Response = aiResponse;
 
         var result = await _gradingService!.GradeAsync("Student Answer", "Standard Answer", GradingStrategy.AiEval, 10, "Question", "Explanation");
         
@@ -84,8 +81,7 @@ public class GradingServiceTests
     public async Task TestGradeAiEval_WithMarkdown()
     {
         var aiResponse = "```json\n{ \"Score\": 5, \"Comment\": \"Partial\", \"IsCorrect\": false }\n```";
-        _mockOllamaService!.Setup(s => s.AskQuestion(It.IsAny<string>()))
-            .ReturnsAsync(aiResponse);
+        _mockOllamaService!.Response = aiResponse;
 
         var result = await _gradingService!.GradeAsync("Student Answer", "Standard Answer", GradingStrategy.AiEval, 10, "Question", "Explanation");
         

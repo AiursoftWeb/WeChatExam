@@ -2,8 +2,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
-using Aiursoft.WeChatExam.Services;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using Newtonsoft.Json.Linq;
 using Microsoft.EntityFrameworkCore;
 using static Aiursoft.WebTools.Extends;
@@ -15,7 +14,7 @@ public class AiTasksTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private Mock<IOllamaService> _mockOllamaService = new();
+    private StubOllamaService _mockOllamaService = new();
 
     public AiTasksTests()
     {
@@ -32,8 +31,8 @@ public class AiTasksTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockOllamaService = _mockOllamaService;
-        TestStartupWithMockWeChat.MockWeChatService = new Mock<IWeChatService>(); 
-        TestStartupWithMockWeChat.MockDistributionChannelService = new Mock<IDistributionChannelService>();
+        TestStartupWithMockWeChat.MockWeChatService = new StubWeChatService();
+        TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
         
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
@@ -141,8 +140,7 @@ public class AiTasksTests
         Assert.IsNotNull(question);
 
         // 3. Mock Ollama response to return the ID of the new category
-        _mockOllamaService.Setup(s => s.AskQuestion(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(newCategory.Id.ToString());
+        _mockOllamaService.Response = newCategory.Id.ToString();
 
         // 4. Trigger AutoCategorize
         var token = await GetAntiCsrfToken("/Questions/Index");
@@ -220,8 +218,7 @@ public class AiTasksTests
         await dbContext.SaveChangesAsync();
 
         // 2. Mock Ollama response with <tag> tags in new format
-        _mockOllamaService.Setup(s => s.AskQuestion(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync("Style: <tag>Jazz</tag> <tag>Classical</tag>");
+        _mockOllamaService.Response = "Style: <tag>Jazz</tag> <tag>Classical</tag>";
 
         // 3. Trigger AutoTagging
         var token = await GetAntiCsrfToken("/Questions/Index");
@@ -302,8 +299,7 @@ public class AiTasksTests
 
         // 2. Mock Ollama response 
         var suggestedAnswer = "Suggested Answer";
-        _mockOllamaService.Setup(s => s.AskQuestion(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(suggestedAnswer);
+        _mockOllamaService.Response = suggestedAnswer;
 
         // 3. Trigger GenerateAnswer
         var token = await GetAntiCsrfToken("/Questions/Index");

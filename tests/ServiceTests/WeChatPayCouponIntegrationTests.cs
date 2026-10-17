@@ -4,7 +4,7 @@ using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.InMemory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Moq;
+using Microsoft.Extensions.Logging.Abstractions;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
@@ -30,7 +30,7 @@ public class WeChatPayCouponIntegrationTests
         _couponService = new CouponService(_dbContext);
         _changeService = new ChangeService(_dbContext);
         
-        var mockTenpay = new Mock<WechatTenpayClient>(new WechatTenpayClientOptions
+        var mockTenpay = new WechatTenpayClient(new WechatTenpayClientOptions
         {
             MerchantId = "1234567890",
             MerchantV3Secret = "12345678901234567890123456789012",
@@ -38,8 +38,7 @@ public class WeChatPayCouponIntegrationTests
             MerchantCertificatePrivateKey = "---BEGIN PRIVATE KEY---\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK...\n---END PRIVATE KEY---"
         });
         
-        var mockOptions = new Mock<IOptions<AppSettings>>();
-        mockOptions.Setup(o => o.Value).Returns(new AppSettings 
+        var settings = Options.Create(new AppSettings
         { 
             AuthProvider = "Local",
             OIDC = new OidcSettings 
@@ -61,15 +60,15 @@ public class WeChatPayCouponIntegrationTests
             } 
         });
         
-        var mockLogger = new Mock<ILogger<WeChatPayService>>();
+
 
         _payService = new WeChatPayService(
-            mockTenpay.Object,
+            mockTenpay,
             _dbContext,
             _couponService,
             _changeService,
-            mockOptions.Object,
-            mockLogger.Object);
+            settings,
+            NullLogger<WeChatPayService>.Instance);
 
         // Setup base data
         var channel = new DistributionChannel { AgencyName = "Test Agency" };

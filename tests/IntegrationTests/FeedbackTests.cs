@@ -6,7 +6,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Identity;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -16,7 +16,7 @@ public class FeedbackTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService = new();
+    private readonly StubWeChatService _mockWeChatService = new();
     private readonly CookieContainer _cookieContainer = new();
 
     public FeedbackTests()
@@ -33,7 +33,7 @@ public class FeedbackTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
-        TestStartupWithMockWeChat.MockDistributionChannelService = new Mock<IDistributionChannelService>();
+        TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
 
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
@@ -106,14 +106,12 @@ public class FeedbackTests
     private async Task<string> GetWeChatTokenAsync(string openId)
     {
         var code = "mock-code";
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = "mock-session-key"
-            });
+            };
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto { Code = code });
         var tokenDto = await response.Content.ReadFromJsonAsync<TokenDto>();

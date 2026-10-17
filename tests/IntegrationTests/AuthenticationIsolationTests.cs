@@ -3,9 +3,8 @@ using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
-using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Identity;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -18,8 +17,8 @@ public class AuthenticationIsolationTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService = new();
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService = new();
+    private readonly StubWeChatService _mockWeChatService = new();
+    private readonly StubDistributionChannelService _mockDistributionChannelService = new();
 
     public AuthenticationIsolationTests()
     {
@@ -37,9 +36,9 @@ public class AuthenticationIsolationTests
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
-        TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
-        TestStartupWithMockWeChat.MockOllamaService = new Mock<IOllamaService>();
-        TestStartupWithMockWeChat.MockVipProductService = new Mock<IVipProductService>();
+        TestStartupWithMockWeChat.MockWeChatPayService = new StubWeChatPayService();
+        TestStartupWithMockWeChat.MockOllamaService = new StubOllamaService();
+        TestStartupWithMockWeChat.MockVipProductService = new StubVipProductService();
 
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
@@ -181,8 +180,7 @@ public class AuthenticationIsolationTests
         Assert.AreEqual(HttpStatusCode.OK, papersResponse.StatusCode);
         var taxonomiesResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
         Assert.AreEqual(HttpStatusCode.OK, taxonomiesResponse.StatusCode);
-        TestStartupWithMockWeChat.MockWeChatPayService!.Verify(
-            x => x.GetVipStatusListAsync(It.IsAny<string>()), Times.Never);
+        Assert.AreEqual(0, TestStartupWithMockWeChat.MockWeChatPayService!.VipStatusCalls);
 
         // Act: 尝试使用 Cookie 访问微信 API
         var wechatApiResponse = await _http.GetAsync("/api/User/info");
