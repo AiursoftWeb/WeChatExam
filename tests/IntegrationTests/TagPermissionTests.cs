@@ -1,5 +1,4 @@
 using System.Net;
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
@@ -12,7 +11,6 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class TagPermissionTests
 {
-    private readonly int _port;
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly Mock<IWeChatService> _mockWeChatService;
@@ -27,11 +25,7 @@ public class TagPermissionTests
             CookieContainer = cookieContainer,
             AllowAutoRedirect = false
         };
-        _port = Network.GetAvailablePort();
-        _http = new HttpClient(handler)
-        {
-            BaseAddress = new Uri($"http://localhost:{_port}")
-        };
+        _http = new HttpClient(handler);
         _mockWeChatService = new Mock<IWeChatService>();
         _mockWeChatPayService = new Mock<IWeChatPayService>();
         _mockDistributionChannelService = new Mock<IDistributionChannelService>();
@@ -44,9 +38,20 @@ public class TagPermissionTests
         TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
 
-        _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
-        await _server.UpdateDbAsync<WeChatExamDbContext>();
-        await _server.StartAsync();
+        using var reservation = new TestPortReservation();
+        _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        _server = await AppAsync<TestStartupWithMockWeChat>([], port: reservation.Port);
+        try
+        {
+            reservation.ConfigureServer(_server);
+            await _server.UpdateDbAsync<WeChatExamDbContext>();
+            await _server.StartAsync();
+        }
+        catch
+        {
+            _server.Dispose();
+            throw;
+        }
 
         using (var scope = _server.Services.CreateScope())
         {
@@ -265,7 +270,7 @@ public class TagPermissionTests
 
         var response = await _http.GetAsync("/api/Questions?tagName=PaidTag");
         Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
-        
+
         var body = await response.Content.ReadAsStringAsync();
         Assert.IsTrue(body.Contains(catId.ToString()), "Response should contain required category ID");
     }
@@ -278,13 +283,13 @@ public class TagPermissionTests
         var (catId, _, _) = await SetupTestDataAsync();
 
         _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> { 
-                new VipMembership { 
-                    UserId = "test-user", 
-                    StartTime = DateTime.UtcNow.AddDays(-1), 
+            .ReturnsAsync(new List<VipMembership> {
+                new VipMembership {
+                    UserId = "test-user",
+                    StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "V", Type = VipProductType.Category, CategoryId = catId, IsEnabled = true }
-                } 
+                }
             });
 
         var response = await _http.GetAsync("/api/Questions?tagName=PaidTag");
@@ -296,7 +301,7 @@ public class TagPermissionTests
     {
         var token = await LoginAsync();
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        
+
         Guid catId1, catId2;
         using (var scope = _server!.Services.CreateScope())
         {
@@ -314,7 +319,7 @@ public class TagPermissionTests
 
             context.CategoryTaxonomies.Add(new CategoryTaxonomy { CategoryId = catId1, TaxonomyId = taxonomy.Id });
             context.CategoryTaxonomies.Add(new CategoryTaxonomy { CategoryId = catId2, TaxonomyId = taxonomy.Id });
-            
+
             var tag = new Tag { DisplayName = "MultiTag", NormalizedName = "MULTITAG", IsFree = false, TaxonomyId = taxonomy.Id };
             context.Tags.Add(tag);
             await context.SaveChangesAsync();
@@ -322,13 +327,13 @@ public class TagPermissionTests
 
         // Only have VIP for Cat 2
         _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> { 
-                new VipMembership { 
-                    UserId = "test-user", 
-                    StartTime = DateTime.UtcNow.AddDays(-1), 
+            .ReturnsAsync(new List<VipMembership> {
+                new VipMembership {
+                    UserId = "test-user",
+                    StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "V2", Type = VipProductType.Category, CategoryId = catId2, IsEnabled = true }
-                } 
+                }
             });
 
         var response = await _http.GetAsync("/api/Questions?tagName=MultiTag");
@@ -359,7 +364,7 @@ public class TagPermissionTests
     {
         var token = await LoginAsync();
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        
+
         using (var scope = _server!.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();

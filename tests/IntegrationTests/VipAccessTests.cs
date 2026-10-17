@@ -1,5 +1,4 @@
 using System.Net;
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
@@ -12,7 +11,6 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class VipAccessTests
 {
-    private readonly int _port;
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly Mock<IWeChatService> _mockWeChatService;
@@ -27,11 +25,7 @@ public class VipAccessTests
             CookieContainer = cookieContainer,
             AllowAutoRedirect = false
         };
-        _port = Network.GetAvailablePort();
-        _http = new HttpClient(handler)
-        {
-            BaseAddress = new Uri($"http://localhost:{_port}")
-        };
+        _http = new HttpClient(handler);
         _mockWeChatService = new Mock<IWeChatService>();
         _mockWeChatPayService = new Mock<IWeChatPayService>();
         _mockDistributionChannelService = new Mock<IDistributionChannelService>();
@@ -43,10 +37,21 @@ public class VipAccessTests
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
         TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
-        
-        _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
-        await _server.UpdateDbAsync<WeChatExamDbContext>();
-        await _server.StartAsync();
+
+        using var reservation = new TestPortReservation();
+        _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        _server = await AppAsync<TestStartupWithMockWeChat>([], port: reservation.Port);
+        try
+        {
+            reservation.ConfigureServer(_server);
+            await _server.UpdateDbAsync<WeChatExamDbContext>();
+            await _server.StartAsync();
+        }
+        catch
+        {
+            _server.Dispose();
+            throw;
+        }
 
         using (var scope = _server.Services.CreateScope())
         {
@@ -197,7 +202,7 @@ public class VipAccessTests
         // Scenario A: No VIP
         _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
             .ReturnsAsync(new List<VipMembership>());
-        
+
         var resA = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
         Assert.IsTrue(resA!.First(p => p.Title == "Free").HasAccess);
         Assert.IsFalse(resA!.First(p => p.Title == "Real").HasAccess);
@@ -205,30 +210,30 @@ public class VipAccessTests
 
         // Scenario B: Has Real Exam VIP
         _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> { 
-                new VipMembership { 
-                    UserId = "u", 
-                    StartTime = DateTime.UtcNow.AddDays(-1), 
+            .ReturnsAsync(new List<VipMembership> {
+                new VipMembership {
+                    UserId = "u",
+                    StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "R", Type = VipProductType.RealExam }
-                } 
+                }
             });
-            
+
         var resB = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
         Assert.IsTrue(resB!.First(p => p.Title == "Real").HasAccess);
         Assert.IsFalse(resB!.First(p => p.Title == "Cat Paper").HasAccess);
 
         // Scenario C: Has Category VIP
         _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> { 
-                new VipMembership { 
-                    UserId = "u", 
-                    StartTime = DateTime.UtcNow.AddDays(-1), 
+            .ReturnsAsync(new List<VipMembership> {
+                new VipMembership {
+                    UserId = "u",
+                    StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "C", Type = VipProductType.Category, CategoryId = catId }
-                } 
+                }
             });
-            
+
         var resC = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
         Assert.IsFalse(resC!.First(p => p.Title == "Real").HasAccess);
         Assert.IsTrue(resC!.First(p => p.Title == "Cat Paper").HasAccess);
