@@ -1,7 +1,6 @@
 using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.Canon.TaskQueue;
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using static Aiursoft.WebTools.Extends;
@@ -14,7 +13,6 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class BackgroundJobsTests
 {
-    private readonly int _port;
     private readonly HttpClient _http;
     private IHost? _server;
 
@@ -26,20 +24,27 @@ public class BackgroundJobsTests
             CookieContainer = cookieContainer,
             AllowAutoRedirect = false
         };
-        _port = Network.GetAvailablePort();
-        _http = new HttpClient(handler)
-        {
-            BaseAddress = new Uri($"http://localhost:{_port}")
-        };
+        _http = new HttpClient(handler);
     }
 
     [TestInitialize]
     public async Task CreateServer()
     {
-        _server = await AppAsync<Startup>([], port: _port);
-        await _server.UpdateDbAsync<WeChatExamDbContext>();
-        await _server.SeedAsync();
-        await _server.StartAsync();
+        using var reservation = new TestPortReservation();
+        _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        _server = await AppAsync<Startup>([], port: reservation.Port);
+        try
+        {
+            reservation.ConfigureServer(_server);
+            await _server.UpdateDbAsync<WeChatExamDbContext>();
+            await _server.SeedAsync();
+            await _server.StartAsync();
+        }
+        catch
+        {
+            _server.Dispose();
+            throw;
+        }
     }
 
     [TestCleanup]

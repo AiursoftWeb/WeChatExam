@@ -1,5 +1,4 @@
 using System.Net;
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
@@ -27,7 +26,8 @@ public class DebugModeTests
 
     private async Task StartServer(bool debugMode)
     {
-        _port = Network.GetAvailablePort();
+        using var reservation = new TestPortReservation();
+        _port = reservation.Port;
         var handler = new HttpClientHandler
         {
             AllowAutoRedirect = false
@@ -49,10 +49,19 @@ public class DebugModeTests
                 "--AppSettings:DebugMode=" + debugMode.ToString()
             ],
             port: _port);
+        try
+        {
+            reservation.ConfigureServer(_server);
 
-        await _server.UpdateDbAsync<WeChatExamDbContext>();
-        await _server.SeedAsync();
-        await _server.StartAsync();
+            await _server.UpdateDbAsync<WeChatExamDbContext>();
+            await _server.SeedAsync();
+            await _server.StartAsync();
+        }
+        catch
+        {
+            _server.Dispose();
+            throw;
+        }
     }
 
     [TestMethod]

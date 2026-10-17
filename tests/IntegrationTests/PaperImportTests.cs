@@ -1,7 +1,6 @@
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.PapersViewModels;
@@ -35,9 +34,21 @@ public class PaperImportTests
         TestStartupWithMockWeChat.MockOllamaService = _ai;
         TestStartupWithMockWeChat.MockWeChatService = new Mock<IWeChatService>();
         TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
-        var port = Network.GetAvailablePort();
+        using var reservation = new TestPortReservation();
+        var port = reservation.Port;
         _host = await AppAsync<TestStartupWithMockWeChat>([], port: port);
-        await _host.UpdateDbAsync<WeChatExamDbContext>(); await _host.SeedAsync(); await _host.StartAsync();
+        try
+        {
+            reservation.ConfigureServer(_host);
+            await _host.UpdateDbAsync<WeChatExamDbContext>();
+            await _host.SeedAsync();
+            await _host.StartAsync();
+        }
+        catch
+        {
+            _host.Dispose();
+            throw;
+        }
         _http = new HttpClient(new HttpClientHandler { CookieContainer = new CookieContainer(), AllowAutoRedirect = false }) { BaseAddress = new Uri($"http://localhost:{port}") };
         var login = await Token("/Account/Login");
         var response = await _http.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string> { ["EmailOrUserName"] = "admin@default.com", ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = login }));

@@ -1,5 +1,4 @@
 using System.Net;
-using Aiursoft.CSTools.Tools;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
@@ -13,7 +12,7 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class QuestionsOrderTests
 {
-    private readonly int _port;
+    private int _port => _http.BaseAddress!.Port;
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly Mock<IWeChatService> _mockWeChatService;
@@ -28,11 +27,7 @@ public class QuestionsOrderTests
             CookieContainer = cookieContainer,
             AllowAutoRedirect = false
         };
-        _port = Network.GetAvailablePort();
-        _http = new HttpClient(handler)
-        {
-            BaseAddress = new Uri($"http://localhost:{_port}")
-        };
+        _http = new HttpClient(handler);
         _mockWeChatService = new Mock<IWeChatService>();
         _mockWeChatPayService = new Mock<IWeChatPayService>();
         _mockDistributionChannelService = new Mock<IDistributionChannelService>();

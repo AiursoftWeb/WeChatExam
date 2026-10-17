@@ -1,6 +1,5 @@
 using System.Net;
 // Redundant using removed
-using Aiursoft.CSTools.Tools;
 // Redundant using removed
 // Redundant using removed
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
@@ -16,25 +15,31 @@ namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 [TestClass]
 public class PaymentIntegrationTests
 {
-    private readonly int _port;
     private readonly HttpClient _http;
     private IHost? _server;
 
     public PaymentIntegrationTests()
     {
-        _port = Network.GetAvailablePort();
-        _http = new HttpClient
-        {
-            BaseAddress = new Uri($"http://localhost:{_port}")
-        };
+        _http = new HttpClient();
     }
 
     [TestInitialize]
     public async Task TestInitialize()
     {
         TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
-        _server = await AppAsync<TestStartupWithMockWeChat>([], port: _port);
-        await _server.StartAsync();
+        using var reservation = new TestPortReservation();
+        _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        _server = await AppAsync<TestStartupWithMockWeChat>([], port: reservation.Port);
+        try
+        {
+            reservation.ConfigureServer(_server);
+            await _server.StartAsync();
+        }
+        catch
+        {
+            _server.Dispose();
+            throw;
+        }
     }
 
     [TestCleanup]
@@ -104,7 +109,7 @@ public class PaymentIntegrationTests
         {
             Content = JsonContent.Create(new { some = "data" })
         };
-        
+
         var response = await _http.SendAsync(request);
         Assert.AreEqual(HttpStatusCode.InternalServerError, response.StatusCode);
     }
