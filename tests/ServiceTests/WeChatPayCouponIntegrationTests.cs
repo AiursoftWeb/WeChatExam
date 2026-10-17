@@ -16,6 +16,8 @@ public class WeChatPayCouponIntegrationTests
     private CouponService _couponService = null!;
     private ChangeService _changeService = null!;
     private WeChatPayService _payService = null!;
+    private HttpClient _tenpayHttpClient = null!;
+    private WechatTenpayClient _tenpayClient = null!;
     private Guid _productId;
     private string _userId = "test-user";
 
@@ -30,13 +32,14 @@ public class WeChatPayCouponIntegrationTests
         _couponService = new CouponService(_dbContext);
         _changeService = new ChangeService(_dbContext);
         
-        var mockTenpay = new WechatTenpayClient(new WechatTenpayClientOptions
+        _tenpayHttpClient = new HttpClient(new RejectPaymentRequestsHandler());
+        _tenpayClient = new IsolatedTenpayClient(new WechatTenpayClientOptions
         {
             MerchantId = "1234567890",
             MerchantV3Secret = "12345678901234567890123456789012",
             MerchantCertificateSerialNumber = "SERIAL",
             MerchantCertificatePrivateKey = "---BEGIN PRIVATE KEY---\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK...\n---END PRIVATE KEY---"
-        });
+        }, _tenpayHttpClient);
         
         var settings = Options.Create(new AppSettings
         { 
@@ -63,7 +66,7 @@ public class WeChatPayCouponIntegrationTests
 
 
         _payService = new WeChatPayService(
-            mockTenpay,
+            _tenpayClient,
             _dbContext,
             _couponService,
             _changeService,
@@ -175,5 +178,21 @@ public class WeChatPayCouponIntegrationTests
         // 4. Verify Change is recorded as ViaCoupon
         var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId && c.Type == ChangeType.VipActivatedViaCoupon);
         Assert.IsNotNull(change);
+    }
+    [TestCleanup]
+    public void Cleanup()
+    {
+        _tenpayClient.Dispose();
+        _tenpayHttpClient.Dispose();
+        _dbContext.Dispose();
+    }
+
+    private sealed class IsolatedTenpayClient(WechatTenpayClientOptions options, HttpClient httpClient)
+        : WechatTenpayClient(options, httpClient, false);
+
+    private sealed class RejectPaymentRequestsHandler : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            => throw new InvalidOperationException("Outbound WeChat Pay requests are disabled in tests.");
     }
 }
