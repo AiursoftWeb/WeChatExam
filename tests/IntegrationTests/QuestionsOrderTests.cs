@@ -12,7 +12,6 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class QuestionsOrderTests
 {
-    private int _port => _http.BaseAddress!.Port;
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly Mock<IWeChatService> _mockWeChatService;
@@ -40,9 +39,20 @@ public class QuestionsOrderTests
         TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
         
-        _server = await Extends.AppAsync<TestStartupWithMockWeChat>([], port: _port);
-        await _server.UpdateDbAsync<WeChatExamDbContext>();
-        await _server.StartAsync();
+        using var reservation = new TestPortReservation();
+        _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        _server = await Extends.AppAsync<TestStartupWithMockWeChat>([], port: reservation.Port);
+        try
+        {
+            reservation.ConfigureServer(_server);
+            await _server.UpdateDbAsync<WeChatExamDbContext>();
+            await _server.StartAsync();
+        }
+        catch
+        {
+            _server.Dispose();
+            throw;
+        }
 
         // Clear existing questions to ensure test isolation
         using (var scope = _server.Services.CreateScope())
