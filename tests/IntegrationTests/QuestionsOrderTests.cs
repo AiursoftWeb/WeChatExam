@@ -5,7 +5,7 @@ using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WebTools;
 using Microsoft.EntityFrameworkCore;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
@@ -14,9 +14,9 @@ public class QuestionsOrderTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService;
-    private readonly Mock<IWeChatPayService> _mockWeChatPayService;
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService;
+    private readonly StubWeChatService _mockWeChatService;
+    private readonly StubWeChatPayService _mockWeChatPayService;
+    private readonly StubDistributionChannelService _mockDistributionChannelService;
 
     public QuestionsOrderTests()
     {
@@ -27,9 +27,9 @@ public class QuestionsOrderTests
             AllowAutoRedirect = false
         };
         _http = new HttpClient(handler);
-        _mockWeChatService = new Mock<IWeChatService>();
-        _mockWeChatPayService = new Mock<IWeChatPayService>();
-        _mockDistributionChannelService = new Mock<IDistributionChannelService>();
+        _mockWeChatService = new StubWeChatService();
+        _mockWeChatPayService = new StubWeChatPayService();
+        _mockDistributionChannelService = new StubDistributionChannelService();
     }
 
     [TestInitialize]
@@ -128,8 +128,7 @@ public class QuestionsOrderTests
         }
 
         // 2. Auth
-        _mockWeChatService.Setup(s => s.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult { IsSuccess = true, OpenId = "test-user", SessionKey = "test-key" });
+        _mockWeChatService.DefaultSession = new WeChatSessionResult { IsSuccess = true, OpenId = "test-user", SessionKey = "test-key" };
         
         var authResponse = await _http.PostAsJsonAsync("/api/auth/login", new Code2SessionDto { Code = "test-code" });
         Assert.AreEqual(HttpStatusCode.OK, authResponse.StatusCode);
@@ -175,8 +174,7 @@ public class QuestionsOrderTests
         }
 
         // 2. Auth
-        _mockWeChatService.Setup(s => s.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult { IsSuccess = true, OpenId = "test-user-resume", SessionKey = "test-key" });
+        _mockWeChatService.DefaultSession = new WeChatSessionResult { IsSuccess = true, OpenId = "test-user-resume", SessionKey = "test-key" };
         
         var authResponse = await _http.PostAsJsonAsync("/api/auth/login", new Code2SessionDto { Code = "test-code" });
         Assert.AreEqual(HttpStatusCode.OK, authResponse.StatusCode);

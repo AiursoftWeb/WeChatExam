@@ -6,7 +6,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.PapersViewModels;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.EntityFrameworkCore;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using static Aiursoft.WebTools.Extends;
@@ -19,7 +19,7 @@ public class PaperImportTests
 {
     private IHost _host = null!;
     private HttpClient _http = null!;
-    private Mock<IOllamaService> _ai = null!;
+    private StubOllamaService _ai = null!;
     private string _token = null!;
     private static PaperImportPreview Preview() => new()
     {
@@ -29,11 +29,11 @@ public class PaperImportTests
     [TestInitialize]
     public async Task Setup()
     {
-        _ai = new Mock<IOllamaService>();
-        _ai.Setup(a => a.AskQuestion(It.IsAny<string>(), It.IsAny<CancellationToken>())).ReturnsAsync(JsonConvert.SerializeObject(Preview()));
+        _ai = new StubOllamaService();
+        _ai.Response = JsonConvert.SerializeObject(Preview());
         TestStartupWithMockWeChat.MockOllamaService = _ai;
-        TestStartupWithMockWeChat.MockWeChatService = new Mock<IWeChatService>();
-        TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
+        TestStartupWithMockWeChat.MockWeChatService = new StubWeChatService();
+        TestStartupWithMockWeChat.MockWeChatPayService = new StubWeChatPayService();
         using var reservation = new TestPortReservation();
         var port = reservation.Port;
         _host = await AppAsync<TestStartupWithMockWeChat>([], port: port);
@@ -96,7 +96,7 @@ public class PaperImportTests
         var initialPapers = await baselineDb.Papers.CountAsync(); var initialQuestions = await baselineDb.Questions.CountAsync();
         var id = await Extract();
         for (var i = 0; i < 3; i++) await _http.GetAsync("/Papers/ImportStatus?id=" + id);
-        _ai.Verify(a => a.AskQuestion(It.Is<string>(p => p.Contains("Do not solve") && p.Contains("Missing answers") && p.Contains("exact original mixed")), It.IsAny<CancellationToken>()), Times.Once);
+        Assert.AreEqual(1, _ai.Questions.Count(call => call.Contains("Do not solve") && call.Contains("Missing answers") && call.Contains("exact original mixed")));
         using var scope = _host.Services.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         Assert.AreEqual(initialPapers, await db.Papers.CountAsync()); Assert.AreEqual(initialQuestions, await db.Questions.CountAsync());
         var save = SaveRequest(id); save.SourceTagName += Guid.NewGuid(); save.ExtraTags = ["extra " + Guid.NewGuid()]; save.Questions = [save.Questions[2], save.Questions[0]]; save.Questions[0].Content = "User edit";
@@ -189,7 +189,7 @@ public class PaperImportTests
         Assert.AreEqual(questionCount, await db.Questions.CountAsync());
         Assert.AreEqual(tagCount + 1, await db.Tags.CountAsync());
         Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
-        _ai.Verify(a => a.AskQuestion(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        Assert.AreEqual(1, _ai.Questions.Count);
     }
 
     [TestMethod]

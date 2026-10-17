@@ -4,7 +4,7 @@ using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.InMemory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Moq;
+using Microsoft.Extensions.Logging.Abstractions;
 using SKIT.FlurlHttpClient.Wechat.TenpayV3;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
@@ -16,6 +16,8 @@ public class WeChatPayCouponIntegrationTests
     private CouponService _couponService = null!;
     private ChangeService _changeService = null!;
     private WeChatPayService _payService = null!;
+    private HttpClient _tenpayHttpClient = null!;
+    private WechatTenpayClient _tenpayClient = null!;
     private Guid _productId;
     private string _userId = "test-user";
 
@@ -30,16 +32,16 @@ public class WeChatPayCouponIntegrationTests
         _couponService = new CouponService(_dbContext);
         _changeService = new ChangeService(_dbContext);
         
-        var mockTenpay = new Mock<WechatTenpayClient>(new WechatTenpayClientOptions
+        _tenpayHttpClient = new HttpClient(new RejectPaymentRequestsHandler());
+        _tenpayClient = new IsolatedTenpayClient(new WechatTenpayClientOptions
         {
             MerchantId = "1234567890",
             MerchantV3Secret = "12345678901234567890123456789012",
             MerchantCertificateSerialNumber = "SERIAL",
             MerchantCertificatePrivateKey = "---BEGIN PRIVATE KEY---\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK...\n---END PRIVATE KEY---"
-        });
+        }, _tenpayHttpClient);
         
-        var mockOptions = new Mock<IOptions<AppSettings>>();
-        mockOptions.Setup(o => o.Value).Returns(new AppSettings 
+        var settings = Options.Create(new AppSettings
         { 
             AuthProvider = "Local",
             OIDC = new OidcSettings 
@@ -61,15 +63,15 @@ public class WeChatPayCouponIntegrationTests
             } 
         });
         
-        var mockLogger = new Mock<ILogger<WeChatPayService>>();
+
 
         _payService = new WeChatPayService(
-            mockTenpay.Object,
+            _tenpayClient,
             _dbContext,
             _couponService,
             _changeService,
-            mockOptions.Object,
-            mockLogger.Object);
+            settings,
+            NullLogger<WeChatPayService>.Instance);
 
         // Setup base data
         var channel = new DistributionChannel { AgencyName = "Test Agency" };
@@ -176,5 +178,21 @@ public class WeChatPayCouponIntegrationTests
         // 4. Verify Change is recorded as ViaCoupon
         var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId && c.Type == ChangeType.VipActivatedViaCoupon);
         Assert.IsNotNull(change);
+    }
+    [TestCleanup]
+    public void Cleanup()
+    {
+        _tenpayClient.Dispose();
+        _tenpayHttpClient.Dispose();
+        _dbContext.Dispose();
+    }
+
+    private sealed class IsolatedTenpayClient(WechatTenpayClientOptions options, HttpClient httpClient)
+        : WechatTenpayClient(options, httpClient, false);
+
+    private sealed class RejectPaymentRequestsHandler : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            => throw new InvalidOperationException("Outbound WeChat Pay requests are disabled in tests.");
     }
 }

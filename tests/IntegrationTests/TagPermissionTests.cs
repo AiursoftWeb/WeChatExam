@@ -3,7 +3,7 @@ using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -13,9 +13,9 @@ public class TagPermissionTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService;
-    private readonly Mock<IWeChatPayService> _mockWeChatPayService;
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService;
+    private readonly StubWeChatService _mockWeChatService;
+    private readonly StubWeChatPayService _mockWeChatPayService;
+    private readonly StubDistributionChannelService _mockDistributionChannelService;
 
     public TagPermissionTests()
     {
@@ -26,9 +26,9 @@ public class TagPermissionTests
             AllowAutoRedirect = false
         };
         _http = new HttpClient(handler);
-        _mockWeChatService = new Mock<IWeChatService>();
-        _mockWeChatPayService = new Mock<IWeChatPayService>();
-        _mockDistributionChannelService = new Mock<IDistributionChannelService>();
+        _mockWeChatService = new StubWeChatService();
+        _mockWeChatPayService = new StubWeChatPayService();
+        _mockDistributionChannelService = new StubDistributionChannelService();
     }
 
     [TestInitialize]
@@ -77,8 +77,7 @@ public class TagPermissionTests
     private async Task<string> LoginAsync()
     {
         var openId = "test-user";
-        _mockWeChatService.Setup(x => x.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult { IsSuccess = true, OpenId = openId });
+        _mockWeChatService.DefaultSession = new WeChatSessionResult { IsSuccess = true, OpenId = openId };
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto { Code = "code" });
         var result = await response.Content.ReadFromJsonAsync<TokenDto>();
@@ -236,7 +235,7 @@ public class TagPermissionTests
         }
         var resume = await _http.GetAsync("/api/Questions?size=10&resumeType=0");
         Assert.AreEqual(HttpStatusCode.Unauthorized, resume.StatusCode);
-        _mockWeChatPayService.Verify(x => x.GetVipStatusListAsync(It.IsAny<string>()), Times.Never);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
 
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "invalid-token");
         var invalidTokenQuestions = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=10");
@@ -251,8 +250,7 @@ public class TagPermissionTests
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         await SetupTestDataAsync();
 
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>());
+        _mockWeChatPayService.Memberships = new List<VipMembership>();
 
         var response = await _http.GetAsync("/api/Questions?tagName=FreeTag");
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -265,8 +263,7 @@ public class TagPermissionTests
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         var (catId, _, _) = await SetupTestDataAsync();
 
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>());
+        _mockWeChatPayService.Memberships = new List<VipMembership>();
 
         var response = await _http.GetAsync("/api/Questions?tagName=PaidTag");
         Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
@@ -282,15 +279,14 @@ public class TagPermissionTests
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         var (catId, _, _) = await SetupTestDataAsync();
 
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> {
+        _mockWeChatPayService.Memberships = new List<VipMembership> {
                 new VipMembership {
                     UserId = "test-user",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "V", Type = VipProductType.Category, CategoryId = catId, IsEnabled = true }
                 }
-            });
+            };
 
         var response = await _http.GetAsync("/api/Questions?tagName=PaidTag");
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -326,15 +322,14 @@ public class TagPermissionTests
         }
 
         // Only have VIP for Cat 2
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership> {
+        _mockWeChatPayService.Memberships = new List<VipMembership> {
                 new VipMembership {
                     UserId = "test-user",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
                     VipProduct = new VipProduct { Name = "V2", Type = VipProductType.Category, CategoryId = catId2, IsEnabled = true }
                 }
-            });
+            };
 
         var response = await _http.GetAsync("/api/Questions?tagName=MultiTag");
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -347,8 +342,7 @@ public class TagPermissionTests
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         await SetupTestDataAsync();
 
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>());
+        _mockWeChatPayService.Memberships = new List<VipMembership>();
 
         // MTQL: FreeTag && PaidTag -> 403 because of PaidTag
         var response = await _http.GetAsync("/api/Questions?mtql=FreeTag%20%26%26%20PaidTag");
@@ -373,8 +367,7 @@ public class TagPermissionTests
             await context.SaveChangesAsync();
         }
 
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>()); // Even with VIP, this tag is unreachable because it has no category
+        _mockWeChatPayService.Memberships = new List<VipMembership>(); // Even with VIP, this tag is unreachable because it has no category
 
         var response = await _http.GetAsync("/api/Questions?tagName=OrphanPaidTag");
         Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);

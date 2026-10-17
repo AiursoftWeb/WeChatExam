@@ -3,7 +3,7 @@ using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -13,9 +13,9 @@ public class QuestionsApiTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService;
-    private readonly Mock<IWeChatPayService> _mockWeChatPayService;
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService;
+    private readonly StubWeChatService _mockWeChatService;
+    private readonly StubWeChatPayService _mockWeChatPayService;
+    private readonly StubDistributionChannelService _mockDistributionChannelService;
 
     public QuestionsApiTests()
     {
@@ -26,9 +26,9 @@ public class QuestionsApiTests
             AllowAutoRedirect = false
         };
         _http = new HttpClient(handler);
-        _mockWeChatService = new Mock<IWeChatService>();
-        _mockWeChatPayService = new Mock<IWeChatPayService>();
-        _mockDistributionChannelService = new Mock<IDistributionChannelService>();
+        _mockWeChatService = new StubWeChatService();
+        _mockWeChatPayService = new StubWeChatPayService();
+        _mockDistributionChannelService = new StubDistributionChannelService();
     }
 
     [TestInitialize]
@@ -78,13 +78,12 @@ public class QuestionsApiTests
         var sessionKey = "test-session-key";
         var code = "test-code";
 
-        _mockWeChatService.Setup(x => x.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.DefaultSession = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = sessionKey
-            });
+            };
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto
         {

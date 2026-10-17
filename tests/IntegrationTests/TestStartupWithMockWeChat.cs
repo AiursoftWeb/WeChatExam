@@ -16,7 +16,7 @@ using Aiursoft.Canon.TaskQueue;
 using Aiursoft.Canon.BackgroundJobs;
 using Aiursoft.Canon.ScheduledTasks;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -27,11 +27,11 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 /// </summary>
 public class TestStartupWithMockWeChat : IWebStartup
 {
-    public static Mock<IWeChatService>? MockWeChatService { get; set; }
-    public static Mock<IWeChatPayService>? MockWeChatPayService { get; set; }
-    public static Mock<IDistributionChannelService>? MockDistributionChannelService { get; set; }
-    public static Mock<IOllamaService>? MockOllamaService { get; set; }
-    public static Mock<IVipProductService>? MockVipProductService { get; set; }
+    public static StubWeChatService? MockWeChatService { get; set; }
+    public static StubWeChatPayService? MockWeChatPayService { get; set; }
+    public static StubDistributionChannelService? MockDistributionChannelService { get; set; }
+    public static StubOllamaService? MockOllamaService { get; set; }
+    public static StubVipProductService? MockVipProductService { get; set; }
 
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -80,22 +80,22 @@ public class TestStartupWithMockWeChat : IWebStartup
         // Configure Mock SKIT WeChat API Client instead of real one
         if (MockWeChatService != null)
         {
-            services.AddScoped(_ => MockWeChatService.Object);
+            services.AddScoped<IWeChatService>(_ => MockWeChatService);
         }
 
         if (MockWeChatPayService != null)
         {
-            services.AddScoped(_ => MockWeChatPayService.Object);
+            services.AddScoped<IWeChatPayService>(_ => MockWeChatPayService);
         }
         
         if (MockDistributionChannelService != null)
         {
-            services.AddScoped(_ => MockDistributionChannelService.Object);
+            services.AddScoped<IDistributionChannelService>(_ => MockDistributionChannelService);
         }
 
         if (MockOllamaService != null)
         {
-            services.AddScoped(_ => MockOllamaService.Object);
+            services.AddScoped<IOllamaService>(_ => MockOllamaService);
         }
         else
         {
@@ -104,7 +104,7 @@ public class TestStartupWithMockWeChat : IWebStartup
 
         if (MockVipProductService != null)
         {
-            services.AddScoped(_ => MockVipProductService.Object);
+            services.AddScoped<IVipProductService>(_ => MockVipProductService);
         }
         else
         {

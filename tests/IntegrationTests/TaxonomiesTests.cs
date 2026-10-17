@@ -4,7 +4,7 @@ using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -14,9 +14,9 @@ public class TaxonomiesTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService = new();
-    private readonly Mock<IWeChatPayService> _mockWeChatPayService = new();
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService = new();
+    private readonly StubWeChatService _mockWeChatService = new();
+    private readonly StubWeChatPayService _mockWeChatPayService = new();
+    private readonly StubDistributionChannelService _mockDistributionChannelService = new();
 
     public TaxonomiesTests()
     {
@@ -94,16 +94,14 @@ public class TaxonomiesTests
     }
     private async Task<string> LoginAsWeChatUserAsync()
     {
-        _mockWeChatService.Setup(x => x.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.DefaultSession = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = $"test-openid-{Guid.NewGuid()}",
                 SessionKey = "test-session-key"
-            });
+            };
 
-        _mockWeChatPayService.Setup(x => x.GetVipStatusListAsync(It.IsAny<string>()))
-            .ReturnsAsync(new List<VipMembership>());
+        _mockWeChatPayService.Memberships = new List<VipMembership>();
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto
         {

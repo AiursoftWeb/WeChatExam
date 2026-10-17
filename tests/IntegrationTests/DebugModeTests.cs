@@ -2,8 +2,7 @@ using System.Net;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
-using Aiursoft.WeChatExam.Services;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -37,11 +36,11 @@ public class DebugModeTests
             BaseAddress = new Uri($"http://localhost:{_port}")
         };
 
-        TestStartupWithMockWeChat.MockWeChatService = new Mock<IWeChatService>();
-        TestStartupWithMockWeChat.MockDistributionChannelService = new Mock<IDistributionChannelService>();
-        TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
-        TestStartupWithMockWeChat.MockOllamaService = new Mock<IOllamaService>();
-        TestStartupWithMockWeChat.MockVipProductService = new Mock<IVipProductService>();
+        TestStartupWithMockWeChat.MockWeChatService = new StubWeChatService();
+        TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
+        TestStartupWithMockWeChat.MockWeChatPayService = new StubWeChatPayService();
+        TestStartupWithMockWeChat.MockOllamaService = new StubOllamaService();
+        TestStartupWithMockWeChat.MockVipProductService = new StubVipProductService();
 
         // Pass configuration override via command line arguments
         _server = await AppAsync<TestStartupWithMockWeChat>(

@@ -5,7 +5,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.EntityFrameworkCore;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -14,9 +14,9 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class UserPracticeHistoryApiTests
 {
     private readonly HttpClient _http;
-    private readonly Mock<IWeChatService> _mockWeChatService = new();
-    private readonly Mock<IWeChatPayService> _mockWeChatPayService = new();
-    private readonly Mock<IDistributionChannelService> _mockDistributionChannelService = new();
+    private readonly StubWeChatService _mockWeChatService = new();
+    private readonly StubWeChatPayService _mockWeChatPayService = new();
+    private readonly StubDistributionChannelService _mockDistributionChannelService = new();
     private IHost? _server;
 
     public UserPracticeHistoryApiTests()
@@ -223,13 +223,12 @@ public class UserPracticeHistoryApiTests
 
     private async Task<(string Token, string UserId)> LoginAsync(string openId)
     {
-        _mockWeChatService.Setup(x => x.CodeToSessionAsync(It.IsAny<string>()))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.DefaultSession = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = "test-session-key"
-            });
+            };
 
         var response = await _http.PostAsJsonAsync("/api/Auth/login", new Code2SessionDto { Code = "test-code" });
         response.EnsureSuccessStatusCode();

@@ -3,11 +3,10 @@ using System.Net;
 // Redundant using removed
 // Redundant using removed
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
-using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Tests.IntegrationTests;
 // Redundant using removed
 // Redundant using removed
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
@@ -26,7 +25,7 @@ public class PaymentIntegrationTests
     [TestInitialize]
     public async Task TestInitialize()
     {
-        TestStartupWithMockWeChat.MockWeChatPayService = new Mock<IWeChatPayService>();
+        TestStartupWithMockWeChat.MockWeChatPayService = new StubWeChatPayService();
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
         _server = await AppAsync<TestStartupWithMockWeChat>([], port: reservation.Port);
@@ -70,9 +69,7 @@ public class PaymentIntegrationTests
     public async Task TestPaymentNotifySuccess()
     {
         // Mock the service to return true
-        TestStartupWithMockWeChat.MockWeChatPayService!
-            .Setup(s => s.HandlePaymentNotifyAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-            .ReturnsAsync(true);
+        TestStartupWithMockWeChat.MockWeChatPayService!.NotifyResult = true;
 
         var request = new HttpRequestMessage(HttpMethod.Post, "/api/payment/notify")
         {
@@ -101,9 +98,7 @@ public class PaymentIntegrationTests
     public async Task TestPaymentNotifyFailure()
     {
         // Mock the service to return false
-        TestStartupWithMockWeChat.MockWeChatPayService!
-            .Setup(s => s.HandlePaymentNotifyAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-            .ReturnsAsync(false);
+        TestStartupWithMockWeChat.MockWeChatPayService!.NotifyResult = false;
 
         var request = new HttpRequestMessage(HttpMethod.Post, "/api/payment/notify")
         {

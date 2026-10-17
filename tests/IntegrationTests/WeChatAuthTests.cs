@@ -4,7 +4,7 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Identity;
-using Moq;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using static Aiursoft.WebTools.Extends;
 
 [assembly: DoNotParallelize]
@@ -19,7 +19,7 @@ public class WeChatAuthTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
-    private readonly Mock<IWeChatService> _mockWeChatService = new();
+    private readonly StubWeChatService _mockWeChatService = new();
 
     public WeChatAuthTests()
     {
@@ -34,7 +34,7 @@ public class WeChatAuthTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
-        TestStartupWithMockWeChat.MockDistributionChannelService = new Mock<IDistributionChannelService>();
+        TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
 
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
@@ -69,16 +69,14 @@ public class WeChatAuthTests
         var openId = "mock-openid";
         var sessionKey = "mock-session-key";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = sessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
         var model = new Code2SessionDto { Code = code };
 
@@ -100,14 +98,12 @@ public class WeChatAuthTests
         // Arrange: 设置mock服务，模拟微信code无效
         var code = "invalid-code";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = false,
                 ErrorCode = 40029,
                 ErrorMessage = "Invalid code"
-            });
+            };
 
         var model = new Code2SessionDto { Code = code };
 
@@ -144,16 +140,14 @@ public class WeChatAuthTests
         var openId = $"new-openid-{Guid.NewGuid()}";
         var sessionKey = "new-session-key";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = sessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
 
         var model = new Code2SessionDto { Code = code };
@@ -179,16 +173,14 @@ public class WeChatAuthTests
         var openId = $"existing-openid-{Guid.NewGuid()}";
         var firstSessionKey = "first-session-key";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = firstSessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
         var model = new Code2SessionDto { Code = code };
         await _http.PostAsJsonAsync("/api/Auth/login", model);
@@ -197,16 +189,14 @@ public class WeChatAuthTests
         var secondCode = "second-code";
         var secondSessionKey = "second-session-key";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(secondCode))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[secondCode] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = secondSessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
         var secondModel = new Code2SessionDto { Code = secondCode };
         var secondResponse = await _http.PostAsJsonAsync("/api/Auth/login", secondModel);
@@ -232,16 +222,14 @@ public class WeChatAuthTests
         var openId = "mock-openid-api";
         var sessionKey = "mock-session-key-api";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = sessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
         var model = new Code2SessionDto { Code = code };
         var loginResponse = await _http.PostAsJsonAsync("/api/Auth/login", model);
@@ -291,16 +279,14 @@ public class WeChatAuthTests
         var openId = $"openid-for-profile-{Guid.NewGuid()}";
         var sessionKey = "session-key";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = sessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
         var loginModel = new Code2SessionDto { Code = code };
         var loginResponse = await _http.PostAsJsonAsync("/api/Auth/login", loginModel);
@@ -338,16 +324,14 @@ public class WeChatAuthTests
         var openId = $"openid-for-upload-{Guid.NewGuid()}";
         var sessionKey = "session-key";
 
-        _mockWeChatService
-            .Setup(s => s.CodeToSessionAsync(code))
-            .ReturnsAsync(new WeChatSessionResult
+        _mockWeChatService.Sessions[code] = new WeChatSessionResult
             {
                 IsSuccess = true,
                 OpenId = openId,
                 SessionKey = sessionKey,
                 ErrorCode = 0,
                 ErrorMessage = null
-            });
+            };
 
         var loginModel = new Code2SessionDto { Code = code };
         var loginResponse = await _http.PostAsJsonAsync("/api/Auth/login", loginModel);
