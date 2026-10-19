@@ -41,15 +41,17 @@
                 <span asp-validation-for="VipProductId" class="text-danger"></span>
             </div>
 
+
             <div class="mb-3">
                 <label asp-for="StartTime" class="form-label"></label>
-                <input asp-for="StartTime" class="form-control" id="start-time" />
+                <input data-utc-input step="1" type="datetime-local" asp-for="StartTime" class="form-control" id="start-time" />
+<partial name="_UtcInput" />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="EndTime" class="form-label"></label>
-                <input asp-for="EndTime" class="form-control" id="end-time" />
+                <input data-utc-input step="1" type="datetime-local" asp-for="EndTime" class="form-control" id="end-time" />
                 <div class="form-text text-info">
                     <i class="align-middle me-1" data-lucide="info"></i>
                     @Localizer["The selected dates will be the final effective period, overriding the VIP product's default duration."]

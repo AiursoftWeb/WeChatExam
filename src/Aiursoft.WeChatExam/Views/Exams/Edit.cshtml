@@ -24,12 +24,13 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label asp-for="StartTime" class="form-label">@Localizer["start time"]</label>
-                    <input asp-for="StartTime" class="form-control" type="datetime-local" step="60" />
+                    <input data-utc-input asp-for="StartTime" class="form-control" type="datetime-local" step="60" />
+<partial name="_UtcInput" />
                     <span asp-validation-for="StartTime" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label asp-for="EndTime" class="form-label">@Localizer["end time"]</label>
-                    <input asp-for="EndTime" class="form-control" type="datetime-local" step="60" />
+                    <input data-utc-input asp-for="EndTime" class="form-control" type="datetime-local" step="60" />
                     <span asp-validation-for="EndTime" class="text-danger"></span>
                 </div>
             </div>
@@ -49,7 +50,7 @@
 
             <div class="mb-3">
                 <label asp-for="ShowAnswerAfter" class="form-label">@Localizer["Show Answers After"]</label>
-                <input asp-for="ShowAnswerAfter" class="form-control" type="datetime-local" />
+                <input data-utc-input step="1" asp-for="ShowAnswerAfter" class="form-control" type="datetime-local" />
                 <span asp-validation-for="ShowAnswerAfter" class="text-danger"></span>
                 <div class="form-text">@Localizer["Leave empty to never show answers."]</div>
             </div>

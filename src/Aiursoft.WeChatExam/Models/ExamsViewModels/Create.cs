@@ -22,11 +22,11 @@ public class CreateViewModel : UiStackLayoutViewModel
 
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Start Time")]
-    public DateTime StartTime { get; set; } = DateTime.Now.AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
+    public DateTime StartTime { get; set; } = DateTime.UtcNow.AddSeconds(-DateTime.UtcNow.Second).AddMilliseconds(-DateTime.UtcNow.Millisecond);
 
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "End Time")]
-    public DateTime EndTime { get; set; } = DateTime.Now.AddDays(7).AddSeconds(-DateTime.Now.Second).AddMilliseconds(-DateTime.Now.Millisecond);
+    public DateTime EndTime { get; set; } = DateTime.UtcNow.AddDays(7).AddSeconds(-DateTime.UtcNow.Second).AddMilliseconds(-DateTime.UtcNow.Millisecond);
 
     [Display(Name = "Duration (minutes)")]
     public int? DurationMinutes { get; set; }

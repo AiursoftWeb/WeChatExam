@@ -136,8 +136,8 @@ public class VipMembersController(
         {
             UserId = model.UserId,
             VipProductId = model.VipProductId,
-            StartTime = model.StartTime.ToUniversalTime(),
-            EndTime = model.EndTime.ToUniversalTime()
+            StartTime = DateTime.SpecifyKind(model.StartTime, DateTimeKind.Utc),
+            EndTime = DateTime.SpecifyKind(model.EndTime, DateTimeKind.Utc)
         };
 
         dbContext.VipMemberships.Add(membership);
@@ -169,8 +169,8 @@ public class VipMembersController(
         return this.StackView(new EditViewModel
         {
             Id = membership.Id,
-            StartTime = membership.StartTime.ToLocalTime(),
-            EndTime = membership.EndTime.ToLocalTime(),
+            StartTime = membership.StartTime,
+            EndTime = membership.EndTime,
             UserName = membership.User?.DisplayName,
             ProductName = membership.VipProduct?.Name
         });
@@ -189,8 +189,8 @@ public class VipMembersController(
         var membership = await dbContext.VipMemberships.FirstOrDefaultAsync(v => v.Id == id);
         if (membership == null) return NotFound();
 
-        membership.StartTime = model.StartTime.ToUniversalTime();
-        membership.EndTime = model.EndTime.ToUniversalTime();
+        membership.StartTime = DateTime.SpecifyKind(model.StartTime, DateTimeKind.Utc);
+        membership.EndTime = DateTime.SpecifyKind(model.EndTime, DateTimeKind.Utc);
 
         await dbContext.SaveChangesAsync();
 
