@@ -15,7 +15,7 @@
     <PackageReference Include="Aiursoft.Canon.ScheduledTasks" Version="10.0.17" />
     <PackageReference Include="Aiursoft.ClickhouseLoggerProvider" Version="10.0.27" />
     <PackageReference Include="Aiursoft.DbTools.Switchable" Version="10.0.27" />
-    <PackageReference Include="Aiursoft.GptClient" Version="10.0.26" />
+    <PackageReference Include="Aiursoft.GptClient" Version="10.0.27" />
     <PackageReference Include="Aiursoft.Scanner" Version="10.0.14" />
     <PackageReference Include="Aiursoft.UiStack" Version="10.0.30" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.13" />
@@ -29,7 +29,7 @@
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.TenpayV3" Version="3.18.0" />
     <PackageReference Include="SkiaSharp" Version="4.153.1" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.153.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aiursoft.WeChatExam.InMemory\Aiursoft.WeChatExam.InMemory.csproj" />
