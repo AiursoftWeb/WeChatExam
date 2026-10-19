@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.PapersViewModels.DetailsViewModel
 @{
     var paper = Model.Paper!;
@@ -95,7 +96,7 @@
                     <dd class="col-sm-8">@Model.PaperQuestions.Count</dd>
 
                     <dt class="col-sm-4">@Localizer["Created"]</dt>
-                    <dd class="col-sm-8">@paper.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+                    <dd class="col-sm-8"><span data-utc-time="@paper.CreationTime.ToHtmlDateTime()"></span></dd>
                 </dl>
             </div>
             <div class="card-footer text-end">
@@ -154,7 +155,7 @@
                         {
                             <tr>
                                 <td>@snapshot.Version</td>
-                                <td>@snapshot.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                                <td><span data-utc-time="@snapshot.CreationTime.ToHtmlDateTime()"></span></td>
                             </tr>
                         }
                         @if (!Model.Snapshots.Any())

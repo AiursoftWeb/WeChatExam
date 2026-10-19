@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.PapersViewModels.DeleteViewModel
 
 <h1 class="h3 mb-3">@Localizer["Delete Paper"]</h1>
@@ -13,7 +14,7 @@
             <dd class="col-sm-9">@Model.Paper?.Status</dd>
 
             <dt class="col-sm-3">@Localizer["Created"]</dt>
-            <dd class="col-sm-9">@Model.Paper?.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+            <dd class="col-sm-9"><span data-utc-time="@Model.Paper?.CreationTime.ToHtmlDateTime()"></span></dd>
         </dl>
     </div>
     <div class="card-footer text-end">

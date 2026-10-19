@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.PapersViewModels.IndexViewModel
 
 <h1 class="h3 mb-3">@Localizer["Papers"]</h1>
@@ -46,7 +47,7 @@
                                     break;
                             }
                         </td>
-                        <td>@paper.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td><span data-utc-time="@paper.CreationTime.ToHtmlDateTime()"></span></td>
                         <td>
                             <a asp-action="Details" asp-route-id="@paper.Id" class="btn btn-sm btn-outline-secondary me-1">
                                 <i class="align-middle" data-lucide="eye"></i>

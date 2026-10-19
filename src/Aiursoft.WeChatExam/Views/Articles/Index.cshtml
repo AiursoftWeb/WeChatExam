@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.ArticlesViewModels.IndexViewModel
 
 <h1 class="h3 mb-3">@Localizer["Articles"]</h1>
@@ -30,7 +31,7 @@
                     <tr>
                         <td>@article.Title</td>
                         <td>@article.Author?.DisplayName</td>
-                        <td>@article.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td><span data-utc-time="@article.CreationTime.ToHtmlDateTime()"></span></td>
                         <td>
                             <a asp-action="Details" asp-route-id="@article.Id" class="btn btn-sm btn-outline-secondary me-1" title="@Localizer["Details"]">
                                 <i class="align-middle" data-lucide="eye"></i> @Localizer["Details"]

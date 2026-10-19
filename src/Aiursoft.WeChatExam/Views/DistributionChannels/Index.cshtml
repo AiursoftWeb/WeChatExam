@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.IndexViewModel
 
 <h1 class="h3 mb-3">@Localizer["Distribution Channels"]</h1>
@@ -92,7 +93,7 @@
                                     <span class="badge bg-success">@stats.PaidOrderCount</span>
                                     <small class="text-muted d-block">¥@stats.TotalPaidAmount</small>
                                 </td>
-                                <td>@channel.CreatedAt.ToString("yyyy-MM-dd")</td>
+                                <td><span data-utc-time="@channel.CreatedAt.ToHtmlDateTime()"></span></td>
                                 <td class="text-end">
                                     <div class="btn-group" role="group">
                                         <a asp-action="Details" asp-route-id="@channel.Id" class="btn btn-sm btn-outline-primary">

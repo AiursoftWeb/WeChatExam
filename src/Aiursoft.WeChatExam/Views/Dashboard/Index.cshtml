@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.DashboardViewModels.IndexViewModel
 
 <div class="container-fluid p-0">
@@ -318,10 +319,10 @@
                                         <a href="/Exams/Details/@exam.Id">@exam.Title</a>
                                     </td>
                                     <td class="d-none d-md-table-cell text-end">
-                                        @exam.StartTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")
+                                        <span data-utc-time="@exam.StartTime.ToHtmlDateTime()"></span>
                                     </td>
                                     <td class="d-none d-md-table-cell text-end">
-                                        @exam.EndTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")
+                                        <span data-utc-time="@exam.EndTime.ToHtmlDateTime()"></span>
                                     </td>
                                     <td class="text-end">@exam.RecordCount</td>
                                     <td class="text-end">
@@ -540,7 +541,7 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <strong>@user.DisplayName</strong>
-                                    <div class="text-muted small">@user.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</div>
+                                    <div class="text-muted small"><span data-utc-time="@user.CreationTime.ToHtmlDateTime()"></span></div>
                                 </div>
                             </div>
                         }
