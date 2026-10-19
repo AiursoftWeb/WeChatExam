@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.CategoriesViewModels.DetailsViewModel
 
 <h1 class="h3 mb-3">@Localizer["Category Details"]</h1>
@@ -27,7 +28,7 @@
                         @(Model.Category.Parent == null ? Localizer["Top Level"].Value : Model.Category.Parent.Title)
                     </dd>
                     <dt>@Localizer["Created"]</dt>
-                    <dd>@Model.Category.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</dd>
+                    <dd><span data-utc-time="@Model.Category.CreationTime.ToHtmlDateTime()"></span></dd>
                 </dl>
                 <div class="mt-3">
                     <a asp-action="Edit" asp-route-id="@Model.Category.Id" class="btn btn-warning">@Localizer["Edit"]</a>

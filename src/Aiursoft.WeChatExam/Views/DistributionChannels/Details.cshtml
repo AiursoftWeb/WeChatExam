@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.DetailsViewModel
 
 <h1 class="h3 mb-3">@Localizer["Channel Details"]</h1>
@@ -26,7 +27,7 @@
                     </dd>
 
                     <dt class="col-sm-4">@Localizer["Created At"]</dt>
-                    <dd class="col-sm-8">@Model.Channel.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+                    <dd class="col-sm-8"><span data-utc-time="@Model.Channel.CreatedAt.ToHtmlDateTime()"></span></dd>
                 </dl>
             </div>
         </div>

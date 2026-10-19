@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.ExamsViewModels.DeleteViewModel
 
 <div class="card">
@@ -21,7 +22,7 @@
             <dd class="col-sm-9">@Model.Title</dd>
 
             <dt class="col-sm-3">@Localizer["Time Window"]</dt>
-            <dd class="col-sm-9">@Model.StartTime.ToLocalTime() - @Model.EndTime.ToLocalTime()</dd>
+            <dd class="col-sm-9"><span data-utc-time="@Model.StartTime.ToHtmlDateTime()"></span> - <span data-utc-time="@Model.EndTime.ToHtmlDateTime()"></span></dd>
 
             <dt class="col-sm-3">@Localizer["Student Records"]</dt>
             <dd class="col-sm-9">@Model.RecordCount</dd>

@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.TestPapersViewModels.IndexViewModel
 
@@ -75,7 +76,7 @@
                                     }
                                     else
                                     {
-                                        <span>@paper.CreationTime.ToLocalTime().ToString("yyyy-MM-dd")</span>
+                                        <span><span data-utc-time="@paper.CreationTime.ToHtmlDateTime()"></span></span>
                                     }
                                 </div>
                                 @if (paper.QuestionCount > 0)

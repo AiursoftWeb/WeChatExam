@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.ExamsViewModels.DetailsViewModel
 
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -9,7 +10,7 @@
     <div class="card-body">
         <dl class="row mb-0">
              <dt class="col-sm-3">@Localizer["Time Window"]</dt>
-             <dd class="col-sm-9">@Model.Exam?.StartTime.ToLocalTime() - @Model.Exam?.EndTime.ToLocalTime()</dd>
+             <dd class="col-sm-9"><span data-utc-time="@Model.Exam?.StartTime.ToHtmlDateTime()"></span> - <span data-utc-time="@Model.Exam?.EndTime.ToHtmlDateTime()"></span></dd>
              <dt class="col-sm-3">@Localizer["Total Attempts"]</dt>
              <dd class="col-sm-9">@Model.Records.Count</dd>
         </dl>
@@ -37,8 +38,8 @@
                 {
                     <tr>
                         <td>@record.User.UserName</td>
-                        <td>@record.StartTime.ToLocalTime().ToString("g")</td>
-                        <td>@(record.SubmitTime?.ToLocalTime().ToString("g") ?? "-")</td>
+                        <td><span data-utc-time="@record.StartTime.ToHtmlDateTime()"></span></td>
+                        <td><span data-utc-time="@record.SubmitTime?.ToHtmlDateTime()">@(record.SubmitTime == null ? "-" : "")</span></td>
                         <td>@record.Status</td>
                         <td>@record.TotalScore</td>
                         <td>

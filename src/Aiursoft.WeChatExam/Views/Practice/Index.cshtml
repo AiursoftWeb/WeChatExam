@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.PracticeViewModels.IndexViewModel
 
 <div class="container-fluid p-0">
@@ -68,7 +69,7 @@
                                                 @question.Content
                                             }
                                         </td>
-                                        <td>@question.CreationTime.ToLocalTime().ToString("g")</td>
+                                        <td><span data-utc-time="@question.CreationTime.ToHtmlDateTime()"></span></td>
                                     </tr>
                                 }
                                 @if (!Model.Questions.Any())

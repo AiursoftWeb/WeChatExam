@@ -1,3 +1,4 @@
+@using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.IndexViewModel
 
 <div class="row mb-3">
@@ -129,7 +130,7 @@
                         </td>
                         <td><span class="badge bg-secondary">@Localizer[question.QuestionType.GetDisplayName()]</span></td>
                         <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
-                        <td>@question.CreationTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                        <td><span data-utc-time="@question.CreationTime.ToHtmlDateTime()"></span></td>
                         <td>
                             <div class="btn-group">
                                 <a asp-action="Edit" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
