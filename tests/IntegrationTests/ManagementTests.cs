@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
@@ -579,15 +580,15 @@ public class ManagementTests
 
         // 2. Create Exam
         var examTitle = $"Test-Exam-{Guid.NewGuid()}";
-        var startTime = DateTime.Now.AddDays(1);
-        var endTime = DateTime.Now.AddDays(2);
+        var startTime = new DateTimeOffset(2030, 7, 1, 9, 30, 0, TimeSpan.FromHours(8));
+        var endTime = startTime.AddDays(1);
         var createExamToken = await GetAntiCsrfToken("/Exams/Create");
         var createExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", examTitle },
             { "PaperId", paperId },
-            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
-            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "StartTime", startTime.ToString("O") },
+            { "EndTime", endTime.ToString("O") },
             { "DurationMinutes", "60" },
             { "__RequestVerificationToken", createExamToken }
         });
@@ -604,6 +605,15 @@ public class ManagementTests
         Assert.IsTrue(examIdMatch.Success);
         var examId = examIdMatch.Groups[1].Value;
 
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var savedExam = await db.Exams.AsNoTracking().SingleAsync(e => e.Id == Guid.Parse(examId));
+        Assert.AreEqual(startTime.UtcDateTime, savedExam.StartTime);
+        Assert.AreEqual(endTime.UtcDateTime, savedExam.EndTime);
+        var editHtml = await _http.GetStringAsync($"/Exams/Edit/{examId}");
+        Assert.Contains("data-utc-input", editHtml);
+        Assert.Contains("utc-input.js", editHtml);
+
         // 4. Edit Exam
         var newExamTitle = $"Updated-Exam-{Guid.NewGuid()}";
         var editExamToken = await GetAntiCsrfToken($"/Exams/Edit/{examId}");
@@ -611,16 +621,22 @@ public class ManagementTests
         {
             { "Id", examId },
             { "Title", newExamTitle },
-            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
-            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "StartTime", startTime.ToString("O") },
+            { "EndTime", endTime.ToString("O") },
             { "DurationMinutes", "90" },
             { "IsPublic", "true" },
             { "AllowedAttempts", "2" },
             { "AllowReview", "true" },
+            { "ShowAnswerAfter", endTime.AddHours(1).ToString("O") },
             { "__RequestVerificationToken", editExamToken }
         });
         var editExamResponse = await _http.PostAsync($"/Exams/Edit/{examId}", editExamContent);
         Assert.AreEqual(HttpStatusCode.Found, editExamResponse.StatusCode);
+
+        savedExam = await db.Exams.AsNoTracking().SingleAsync(e => e.Id == Guid.Parse(examId));
+        Assert.AreEqual(startTime.UtcDateTime, savedExam.StartTime);
+        Assert.AreEqual(endTime.UtcDateTime, savedExam.EndTime);
+        Assert.AreEqual(endTime.AddHours(1).UtcDateTime, savedExam.ShowAnswerAfter);
 
         // Verify Edit
         var verifyExamResponse = await _http.GetAsync("/Exams/Index");

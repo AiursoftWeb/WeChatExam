@@ -25,15 +25,17 @@
                 <input type="text" class="form-control" value="@Model.ProductName" disabled />
             </div>
 
+
             <div class="mb-3">
                 <label asp-for="StartTime" class="form-label"></label>
-                <input asp-for="StartTime" class="form-control" />
+                <input data-utc-input step="1" type="datetime-local" asp-for="StartTime" class="form-control" />
+<partial name="_UtcInput" />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="EndTime" class="form-label"></label>
-                <input asp-for="EndTime" class="form-control" />
+                <input data-utc-input step="1" type="datetime-local" asp-for="EndTime" class="form-control" />
                 <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
 

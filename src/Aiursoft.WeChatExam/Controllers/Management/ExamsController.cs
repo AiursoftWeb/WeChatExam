@@ -55,14 +55,9 @@ public class ExamsController(
 
         try
         {
-            // The input is from datetime-local, which is "Unspecified" kind but represents User's Local Time (wall clock).
-            // We need to convert it to UTC for storage.
-            // Assuming server local time matches user local time for simplicity in this context, 
-            // or explicit conversion if we want to be strict.
-            // Using .ToUniversalTime() on Unspecified treats it as Local.
-            
-            var startUtc = model.StartTime.ToUniversalTime();
-            var endUtc = model.EndTime.ToUniversalTime();
+            // Browser forms submit UTC; unzoned fallback inputs are explicitly labeled UTC.
+            var startUtc = DateTime.SpecifyKind(model.StartTime, DateTimeKind.Utc);
+            var endUtc = DateTime.SpecifyKind(model.EndTime, DateTimeKind.Utc);
 
             // Trim seconds/milliseconds (optional, but requested earlier) - do it on the UTC time
             startUtc = startUtc.AddSeconds(-startUtc.Second).AddMilliseconds(-startUtc.Millisecond);
@@ -92,8 +87,8 @@ public class ExamsController(
             Id = exam.Id,
             Title = exam.Title,
             PaperTitle = exam.Paper?.Title ?? "Unknown",
-            StartTime = exam.StartTime.ToLocalTime().AddSeconds(-exam.StartTime.ToLocalTime().Second).AddMilliseconds(-exam.StartTime.ToLocalTime().Millisecond), // Convert UTC to Local for datetime-local input
-            EndTime = exam.EndTime.ToLocalTime().AddSeconds(-exam.EndTime.ToLocalTime().Second).AddMilliseconds(-exam.EndTime.ToLocalTime().Millisecond),
+            StartTime = exam.StartTime.AddSeconds(-exam.StartTime.Second).AddMilliseconds(-exam.StartTime.Millisecond), // The browser converts UTC to local time for editing.
+            EndTime = exam.EndTime.AddSeconds(-exam.EndTime.Second).AddMilliseconds(-exam.EndTime.Millisecond),
             DurationMinutes = exam.DurationMinutes,
             IsPublic = exam.IsPublic,
             AllowedAttempts = exam.AllowedAttempts,
@@ -114,8 +109,8 @@ public class ExamsController(
         try
         {
              // Convert to UTC
-            var startUtc = model.StartTime.ToUniversalTime();
-            var endUtc = model.EndTime.ToUniversalTime();
+            var startUtc = DateTime.SpecifyKind(model.StartTime, DateTimeKind.Utc);
+            var endUtc = DateTime.SpecifyKind(model.EndTime, DateTimeKind.Utc);
 
             // Trim seconds/milliseconds
             startUtc = startUtc.AddSeconds(-startUtc.Second).AddMilliseconds(-startUtc.Millisecond);
