@@ -3,6 +3,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/aiursoftweb/weChatExam/blob/master/LICENSE)
 [![Pipeline stat](https://gitlab.aiursoft.com/aiursoft/weChatExam/badges/master/pipeline.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/pipelines)
 [![Test Coverage](https://gitlab.aiursoft.com/aiursoft/weChatExam/badges/master/coverage.svg)](https://gitlab.aiursoft.com/aiursoft/weChatExam/-/pipelines)
+[![S360 compliance](https://s360.aiursoft.com/badge.svg?project=aiursoft%2Fwechatexam)](https://s360.aiursoft.com/SupplyChain?tab=projects&project=aiursoft%2Fwechatexam&scope=baseline&ecosystem=all)
 [![Man hours](https://manhours.aiursoft.com/r/github.com/aiursoftweb/weChatExam.svg)](https://manhours.aiursoft.com/r/github.com/aiursoftweb/weChatExam.html)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2FweChatExam.aiursoft.cn)](https://weChatExam.aiursoft.cn)
 [![Docker](https://img.shields.io/docker/pulls/aiursoft/wechatexam.svg)](https://hub.docker.com/r/aiursoft/wechatexam)
