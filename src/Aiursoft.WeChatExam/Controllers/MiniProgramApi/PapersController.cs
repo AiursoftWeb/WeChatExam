@@ -29,7 +29,7 @@ public class PapersController : ControllerBase
     }
 
     /// <summary>
-    /// 获取所有可用试卷列表（仅返回有快照的试卷）
+    /// 获取所有可用试卷列表（仅返回有快照的试卷，按免费优先、标题升序、ID升序排序）
     /// </summary>
     /// <param name="categoryId">可选：分类ID</param>
     /// <param name="tag">可选：标签</param>
@@ -71,7 +71,11 @@ public class PapersController : ControllerBase
         var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
 
         var dtos = new List<PaperListDto>();
-        var papers = await query.ToListAsync();
+        var papers = await query
+            .OrderByDescending(p => p.IsFree)
+            .ThenBy(p => p.Title)
+            .ThenBy(p => p.Id)
+            .ToListAsync();
         foreach (var p in papers)
         {
             var dto = new PaperListDto

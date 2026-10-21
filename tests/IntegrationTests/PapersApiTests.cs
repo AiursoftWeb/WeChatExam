@@ -97,6 +97,49 @@ public class PapersApiTests
     }
 
     [TestMethod]
+    public async Task GetPapers_DefaultOrdering_IsFreeThenTitleThenId()
+    {
+        var freeAFirst = Guid.Parse("00000000-0000-0000-0000-000000000001");
+        var freeASecond = Guid.Parse("00000000-0000-0000-0000-000000000002");
+        var freeZ = Guid.Parse("00000000-0000-0000-0000-000000000003");
+        var paidAFirst = Guid.Parse("00000000-0000-0000-0000-000000000004");
+        var paidASecond = Guid.Parse("00000000-0000-0000-0000-000000000005");
+        var paidZ = Guid.Parse("00000000-0000-0000-0000-000000000006");
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var service = scope.ServiceProvider.GetRequiredService<IPaperService>();
+            var category = new Category { Title = "Ordering category", ParentId = null };
+            context.Categories.Add(category);
+            var papers = new[]
+            {
+                new Paper { Id = paidZ, Title = "Z paper", IsFree = false },
+                new Paper { Id = freeASecond, Title = "A paper", IsFree = true },
+                new Paper { Id = paidASecond, Title = "A paper", IsFree = false },
+                new Paper { Id = freeZ, Title = "Z paper", IsFree = true },
+                new Paper { Id = paidAFirst, Title = "A paper", IsFree = false },
+                new Paper { Id = freeAFirst, Title = "A paper", IsFree = true }
+            };
+            context.Papers.AddRange(papers);
+            await context.SaveChangesAsync();
+            foreach (var paper in papers)
+            {
+                await service.AssociateCategoryAsync(paper.Id, category.Id);
+                await service.SetStatusAsync(paper.Id, PaperStatus.Publishable);
+                await service.PublishAsync(paper.Id);
+            }
+
+            var expected = new[] { freeAFirst, freeASecond, freeZ, paidAFirst, paidASecond, paidZ };
+            foreach (var url in new[] { "/api/Papers", $"/api/Papers?categoryId={category.Id}&isRealExam=false" })
+            {
+                var result = await _http.GetFromJsonAsync<List<PaperListDto>>(url);
+                Assert.IsNotNull(result);
+                CollectionAssert.AreEqual(expected, result.Select(p => p.Id).ToArray());
+            }
+        }
+    }
+
+    [TestMethod]
     public async Task GetPapers_Filtering_ReturnsFilteredPapers()
     {
         var token = await LoginAsWeChatUserAsync();
