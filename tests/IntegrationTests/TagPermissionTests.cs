@@ -373,4 +373,42 @@ public class TagPermissionTests
         Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
     }
 
+    [TestMethod]
+    public async Task GetTags_CategoryVip_GrantsOnlyAssociatedPaidTags()
+    {
+        var (categoryId, freeTagId, paidTagId) = await SetupTestDataAsync();
+        int taxonomyId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            taxonomyId = context.Tags.Single(t => t.Id == paidTagId).TaxonomyId!.Value;
+        }
+
+        var token = await LoginAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        foreach (var hasMatchingVip in new[] { false, true })
+        {
+            _mockWeChatPayService.Memberships = new List<VipMembership>
+            {
+                new()
+                {
+                    UserId = "test-user",
+                    StartTime = DateTime.UtcNow.AddDays(-1),
+                    EndTime = DateTime.UtcNow.AddDays(1),
+                    VipProduct = new VipProduct
+                    {
+                        Name = "Category access",
+                        Type = VipProductType.Category,
+                        CategoryId = hasMatchingVip ? categoryId : Guid.NewGuid(),
+                        IsEnabled = true
+                    }
+                }
+            };
+            var tags = await _http.GetFromJsonAsync<List<TagDto>>($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags");
+            Assert.IsNotNull(tags);
+            Assert.IsTrue(tags.Single(t => t.Id == freeTagId).HasAccess);
+            Assert.AreEqual(hasMatchingVip, tags.Single(t => t.Id == paidTagId).HasAccess);
+        }
+    }
+
 }

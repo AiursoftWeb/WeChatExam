@@ -250,6 +250,7 @@ public class TagService : ITagService
         return await _dbContext.Tags
             .Where(t => t.TaxonomyId == taxonomyId)
             .Include(t => t.Taxonomy)
+            .ThenInclude(taxonomy => taxonomy!.CategoryTaxonomies)
             .OrderBy(t => t.OrderIndex)
             .ThenBy(t => t.DisplayName)
             .ToListAsync();
