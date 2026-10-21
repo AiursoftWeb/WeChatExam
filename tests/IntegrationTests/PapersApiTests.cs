@@ -162,4 +162,43 @@ public class PapersApiTests
         Assert.AreEqual(1, res4!.Count);
         Assert.AreEqual("Paper 3", res4[0].Title);
     }
+    [TestMethod]
+    public async Task GetPapers_OrdersFreeFirstThenTitleAndId_ForAllFilters()
+    {
+        Guid categoryId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var paperService = scope.ServiceProvider.GetRequiredService<IPaperService>();
+            var tagService = scope.ServiceProvider.GetRequiredService<ITagService>();
+            var category = new Category { Title = "Ordered papers", ParentId = null };
+            context.Categories.Add(category);
+            await context.SaveChangesAsync();
+            categoryId = category.Id;
+            var tag = await tagService.GetOrCreateTagAsync("Ordered papers");
+            foreach (var (title, isFree) in new[]
+            {
+                ("Paper 003", false), ("Paper 002", true),
+                ("Paper 001", false), ("Paper 001", true), ("Paper 001", false)
+            })
+            {
+                var paper = await paperService.CreatePaperAsync(title, 60, isFree, true);
+                await paperService.AssociateCategoryAsync(paper.Id, categoryId);
+                await tagService.AddTagToPaperAsync(paper.Id, tag.Id);
+                await paperService.SetStatusAsync(paper.Id, PaperStatus.Publishable);
+                await paperService.PublishAsync(paper.Id);
+            }
+        }
+
+        foreach (var query in new[] { "", $"?categoryId={categoryId}", "?tag=Ordered%20papers", "?isRealExam=true" })
+        {
+            var papers = await _http.GetFromJsonAsync<List<PaperListDto>>($"/api/Papers{query}");
+            Assert.IsNotNull(papers);
+            Assert.AreEqual(5, papers.Count);
+            CollectionAssert.AreEqual(
+                papers.OrderByDescending(p => p.IsFree).ThenBy(p => p.Title).ThenBy(p => p.Id).Select(p => p.Id).ToArray(),
+                papers.Select(p => p.Id).ToArray());
+        }
+    }
+
 }

@@ -71,7 +71,11 @@ public class PapersController : ControllerBase
         var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
 
         var dtos = new List<PaperListDto>();
-        var papers = await query.ToListAsync();
+        var papers = await query
+            .OrderByDescending(p => p.IsFree)
+            .ThenBy(p => p.Title)
+            .ThenBy(p => p.Id)
+            .ToListAsync();
         foreach (var p in papers)
         {
             var dto = new PaperListDto
