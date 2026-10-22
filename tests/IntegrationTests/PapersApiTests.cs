@@ -97,6 +97,96 @@ public class PapersApiTests
     }
 
     [TestMethod]
+    public async Task GetSnapshot_UsesCurrentPaperAuthorizationAfterChanges()
+    {
+        Guid paperId, snapshotId, categoryId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var service = scope.ServiceProvider.GetRequiredService<IPaperService>();
+            var category = new Category { Title = "Snapshot access", ParentId = null };
+            context.Categories.Add(category);
+            await context.SaveChangesAsync();
+            categoryId = category.Id;
+            var paper = await service.CreatePaperAsync("Changing access", 60, true, true);
+            paperId = paper.Id;
+            await service.AssociateCategoryAsync(paperId, categoryId);
+            await service.SetStatusAsync(paperId, PaperStatus.Publishable);
+            var snapshot = await service.PublishAsync(paperId);
+            snapshotId = snapshot.Id;
+            context.QuestionSnapshots.Add(new QuestionSnapshot
+            {
+                PaperSnapshotId = snapshotId, Content = "Original snapshot content",
+                QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch
+            });
+            paper.IsFree = false;
+            await context.SaveChangesAsync();
+        }
+
+        async Task AssertAccess(Guid targetSnapshotId, bool isFree, bool hasAccess)
+        {
+            var list = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
+            var current = list!.Single(p => p.Id == paperId);
+            var snapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{targetSnapshotId}");
+            Assert.IsNotNull(snapshot);
+            Assert.AreEqual(isFree, current.IsFree);
+            Assert.AreEqual(isFree, snapshot.IsFree);
+            Assert.AreEqual(hasAccess, current.HasAccess);
+            Assert.AreEqual(hasAccess, snapshot.HasAccess);
+            Assert.AreEqual(hasAccess ? 1 : 0, snapshot.Questions.Count);
+        }
+
+        // An old free snapshot must not bypass the current paid paper's authorization.
+        await AssertAccess(snapshotId,false, false);
+        var token = await LoginAsWeChatUserAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        await AssertAccess(snapshotId,false, false);
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+            VipProduct = new VipProduct { Name = "Real", Type = VipProductType.RealExam }
+        }];
+        await AssertAccess(snapshotId,false, true);
+
+        using (var scope = _server.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var paper = await context.Papers.FindAsync(paperId);
+            paper!.IsRealExam = false;
+            await context.SaveChangesAsync();
+            var service = scope.ServiceProvider.GetRequiredService<IPaperService>();
+            var paidSnapshot = await service.PublishAsync(paperId);
+            snapshotId = paidSnapshot.Id;
+            context.QuestionSnapshots.Add(new QuestionSnapshot
+            {
+                PaperSnapshotId = snapshotId, Content = "Original snapshot content",
+                QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch
+            });
+            await context.SaveChangesAsync();
+        }
+        await AssertAccess(snapshotId,false, false);
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+            VipProduct = new VipProduct { Name = "Category", Type = VipProductType.Category, CategoryId = categoryId }
+        }];
+        await AssertAccess(snapshotId,false, true);
+
+        using (var scope = _server.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var paper = await context.Papers.FindAsync(paperId);
+            paper!.IsFree = true;
+            await context.SaveChangesAsync();
+        }
+        _mockWeChatPayService.Memberships = [];
+        _http.DefaultRequestHeaders.Authorization = null;
+        await AssertAccess(snapshotId,true, true);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        await AssertAccess(snapshotId,true, true);
+    }
+
+    [TestMethod]
     public async Task GetPapers_DefaultOrdering_IsFreeThenTitleThenId()
     {
         var freeAFirst = Guid.Parse("00000000-0000-0000-0000-000000000001");

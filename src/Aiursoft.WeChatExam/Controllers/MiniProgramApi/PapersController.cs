@@ -116,20 +116,16 @@ public class PapersController : ControllerBase
             return NotFound(new { Message = "Snapshot not found" });
         }
 
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        bool hasAccess = snapshot.IsFree;
-
-        if (!hasAccess && userId != null)
+        var paper = await _context.Papers.Include(p => p.PaperCategories)
+            .FirstOrDefaultAsync(p => p.Id == snapshot.PaperId);
+        if (paper == null)
         {
-            var paper = await _context.Papers.Include(p => p.PaperCategories)
-                .FirstOrDefaultAsync(p => p.Id == snapshot.PaperId);
-                
-            if (paper != null)
-            {
-                var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
-                hasAccess = _paperAccessService.HasAccess(paper, accessStatus);
-            }
+            return NotFound(new { Message = "Paper not found" });
         }
+
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
+        var hasAccess = _paperAccessService.HasAccess(paper, accessStatus);
 
         var dto = new PaperSnapshotDto
         {
@@ -138,7 +134,7 @@ public class PapersController : ControllerBase
             Version = snapshot.Version,
             Title = snapshot.Title,
             TimeLimit = snapshot.TimeLimit,
-            IsFree = snapshot.IsFree,
+            IsFree = paper.IsFree,
             HasAccess = hasAccess,
             Questions = hasAccess ? snapshot.QuestionSnapshots.OrderBy(q => q.Order).Select(q => new QuestionSnapshotDto
             {
