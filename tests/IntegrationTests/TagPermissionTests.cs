@@ -182,7 +182,7 @@ public class TagPermissionTests
     }
 
     [TestMethod]
-    public async Task GetQuestion_Anonymous_RestrictsPaidAndMixedTagsButPreservesLoggedInBehavior()
+    public async Task GetQuestion_RestrictsPaidAndMixedTagsWithoutVip()
     {
         var (_, freeTagId, paidTagId) = await SetupTestDataAsync();
         Guid freeId, paidId, mixedId, untaggedId;
@@ -218,10 +218,87 @@ public class TagPermissionTests
         var token = await LoginAsync();
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         var loggedIn = await _http.GetAsync($"/api/Questions/{paidId}");
-        Assert.AreEqual(HttpStatusCode.OK, loggedIn.StatusCode);
+        Assert.AreEqual(HttpStatusCode.Forbidden, loggedIn.StatusCode);
+        foreach (var id in new[] { freeId, untaggedId })
+        {
+            Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/Questions/{id}")).StatusCode);
+        }
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{mixedId}")).StatusCode);
         var questions = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=10");
         Assert.IsNotNull(questions);
         Assert.AreEqual(4, questions.Count);
+    }
+
+    [TestMethod]
+    public async Task GetQuestion_PaidTagsRequireActiveCategoryVipForEveryTag()
+    {
+        var (catId, _, paidTagId) = await SetupTestDataAsync();
+        Guid paidId, secondCategoryId, alternativeCategoryId, mixedId, orphanId, unmappedId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            paidId = db.Questions.Single(q => q.Content == "Q2").Id;
+            var secondCategory = new Category { Title = "Second category", ParentId = null };
+            var alternativeCategory = new Category { Title = "Alternative category", ParentId = null };
+            var secondTaxonomy = new Taxonomy { Name = "Second taxonomy" };
+            var unmappedTaxonomy = new Taxonomy { Name = "No category mapping" };
+            db.AddRange(secondCategory, alternativeCategory, secondTaxonomy, unmappedTaxonomy);
+            await db.SaveChangesAsync();
+            secondCategoryId = secondCategory.Id;
+            alternativeCategoryId = alternativeCategory.Id;
+            var originalTaxonomyId = db.Tags.Single(t => t.Id == paidTagId).TaxonomyId!.Value;
+            db.CategoryTaxonomies.AddRange(
+                new CategoryTaxonomy { CategoryId = alternativeCategory.Id, TaxonomyId = originalTaxonomyId },
+                new CategoryTaxonomy { CategoryId = secondCategoryId, TaxonomyId = secondTaxonomy.Id });
+            var secondTag = new Tag { DisplayName = "Second paid", NormalizedName = "SECOND PAID", IsFree = false, TaxonomyId = secondTaxonomy.Id };
+            var orphanTag = new Tag { DisplayName = "Orphan", NormalizedName = "ORPHAN", IsFree = false, TaxonomyId = null };
+            var unmappedTag = new Tag { DisplayName = "Unmapped", NormalizedName = "UNMAPPED", IsFree = false, TaxonomyId = unmappedTaxonomy.Id };
+            var mixed = new Question { Content = "Two paid tags" };
+            var orphan = new Question { Content = "Orphan tag question" };
+            var unmapped = new Question { Content = "Unmapped tag question" };
+            db.AddRange(secondTag, orphanTag, unmappedTag, mixed, orphan, unmapped);
+            await db.SaveChangesAsync();
+            mixedId = mixed.Id; orphanId = orphan.Id; unmappedId = unmapped.Id;
+            db.QuestionTags.AddRange(
+                new QuestionTag { QuestionId = mixedId, TagId = paidTagId },
+                new QuestionTag { QuestionId = mixedId, TagId = secondTag.Id },
+                new QuestionTag { QuestionId = orphanId, TagId = orphanTag.Id },
+                new QuestionTag { QuestionId = unmappedId, TagId = unmappedTag.Id });
+            await db.SaveChangesAsync();
+        }
+        var token = await LoginAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        VipMembership Membership(Guid? category, int startDays = -1, int endDays = 1) => new()
+        {
+            UserId = "u", StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = DateTime.UtcNow.AddDays(endDays),
+            VipProduct = new VipProduct { Name = "Access test", Type = category.HasValue ? VipProductType.Category : VipProductType.RealExam, CategoryId = category }
+        };
+        foreach (var membership in new[]
+                 {
+                     Membership(Guid.NewGuid()), Membership(catId, -2, -1),
+                     Membership(catId, 1, 2), Membership(null)
+                 })
+        {
+            _mockWeChatPayService.Memberships = [membership];
+            var denied = await _http.GetAsync($"/api/Questions/{paidId}");
+            Assert.AreEqual(HttpStatusCode.Forbidden, denied.StatusCode);
+            var body = System.Text.Json.Nodes.JsonNode.Parse(await denied.Content.ReadAsStringAsync())!;
+            Assert.IsTrue(body["requiredCategoryIds"]!.AsArray().Any(id => id!.GetValue<Guid>() == catId));
+        }
+        _mockWeChatPayService.Memberships = [Membership(alternativeCategoryId)];
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/Questions/{paidId}")).StatusCode);
+        _mockWeChatPayService.Memberships = [Membership(catId)];
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/Questions/{paidId}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{mixedId}")).StatusCode);
+        _mockWeChatPayService.Memberships.Add(Membership(secondCategoryId));
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/Questions/{mixedId}")).StatusCode);
+        foreach (var id in new[] { orphanId, unmappedId })
+        {
+            var denied = await _http.GetAsync($"/api/Questions/{id}");
+            Assert.AreEqual(HttpStatusCode.Forbidden, denied.StatusCode);
+            var body = System.Text.Json.Nodes.JsonNode.Parse(await denied.Content.ReadAsStringAsync())!;
+            Assert.AreEqual(0, body["requiredCategoryIds"]!.AsArray().Count);
+        }
     }
 
     [TestMethod]

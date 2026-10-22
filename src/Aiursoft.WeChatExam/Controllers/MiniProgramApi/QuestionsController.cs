@@ -369,14 +369,20 @@ public class QuestionsController : ControllerBase
     /// <param name="id">题目ID</param>
     /// <returns>单个题目详情</returns>
     /// <response code="200">成功返回题目详情</response>
+    /// <response code="403">没有付费标签对应的分类VIP权限</response>
     /// <response code="404">未找到指定题目</response>
     [AllowAnonymous]
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetQuestion(Guid id)
     {
         var question = await _context.Questions
+            .Include(q => q.QuestionTags)
+            .ThenInclude(qt => qt.Tag)
+            .ThenInclude(t => t.Taxonomy)
+            .ThenInclude(taxonomy => taxonomy!.CategoryTaxonomies)
             .FirstOrDefaultAsync(q => q.Id == id);
 
         if (question == null)
@@ -384,10 +390,27 @@ public class QuestionsController : ControllerBase
             return NotFound(new { Message = "Question not found" });
         }
 
-        if (User.Identity?.IsAuthenticated != true &&
-            await _context.QuestionTags.AnyAsync(qt => qt.QuestionId == id && !qt.Tag.IsFree))
+        var paidTags = question.QuestionTags.Select(qt => qt.Tag).Where(t => !t.IsFree).ToList();
+        if (paidTags.Count > 0)
         {
-            return StatusCode(StatusCodes.Status403Forbidden, new { Message = "Access denied to paid question" });
+            if (User.Identity?.IsAuthenticated != true)
+            {
+                return StatusCode(StatusCodes.Status403Forbidden, new { Message = "Access denied to paid question" });
+            }
+
+            var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            foreach (var tag in paidTags)
+            {
+                var categoryIds = tag.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
+                if (!categoryIds.Any(accessStatus.ActiveCategoryVips.Contains))
+                {
+                    return StatusCode(StatusCodes.Status403Forbidden, new
+                    {
+                        Message = $"Access denied to tag: {tag.DisplayName}",
+                        RequiredCategoryIds = categoryIds
+                    });
+                }
+            }
         }
 
         var dto = new QuestionDto
