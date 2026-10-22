@@ -123,11 +123,11 @@ public class PapersApiTests
             await context.SaveChangesAsync();
         }
 
-        async Task AssertAccess(bool isFree, bool hasAccess)
+        async Task AssertAccess(Guid targetSnapshotId, bool isFree, bool hasAccess)
         {
             var list = await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers");
             var current = list!.Single(p => p.Id == paperId);
-            var snapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{snapshotId}");
+            var snapshot = await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{targetSnapshotId}");
             Assert.IsNotNull(snapshot);
             Assert.AreEqual(isFree, current.IsFree);
             Assert.AreEqual(isFree, snapshot.IsFree);
@@ -137,16 +137,16 @@ public class PapersApiTests
         }
 
         // An old free snapshot must not bypass the current paid paper's authorization.
-        await AssertAccess(false, false);
+        await AssertAccess(snapshotId,false, false);
         var token = await LoginAsWeChatUserAsync();
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        await AssertAccess(false, false);
+        await AssertAccess(snapshotId,false, false);
         _mockWeChatPayService.Memberships = [new VipMembership
         {
             UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
             VipProduct = new VipProduct { Name = "Real", Type = VipProductType.RealExam }
         }];
-        await AssertAccess(false, true);
+        await AssertAccess(snapshotId,false, true);
 
         using (var scope = _server.Services.CreateScope())
         {
@@ -164,13 +164,13 @@ public class PapersApiTests
             });
             await context.SaveChangesAsync();
         }
-        await AssertAccess(false, false);
+        await AssertAccess(snapshotId,false, false);
         _mockWeChatPayService.Memberships = [new VipMembership
         {
             UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
             VipProduct = new VipProduct { Name = "Category", Type = VipProductType.Category, CategoryId = categoryId }
         }];
-        await AssertAccess(false, true);
+        await AssertAccess(snapshotId,false, true);
 
         using (var scope = _server.Services.CreateScope())
         {
@@ -181,9 +181,9 @@ public class PapersApiTests
         }
         _mockWeChatPayService.Memberships = [];
         _http.DefaultRequestHeaders.Authorization = null;
-        await AssertAccess(true, true);
+        await AssertAccess(snapshotId,true, true);
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        await AssertAccess(true, true);
+        await AssertAccess(snapshotId,true, true);
     }
 
     [TestMethod]
