@@ -207,6 +207,9 @@ public class ContentCheckTests
         }
         Assert.AreEqual(2, ContentFindingGroup.Build([Finding(firstSubject), Finding(secondSubject)]).Count);
         Assert.AreEqual(1, ContentFindingGroup.Build([Finding(firstSubject), Finding(firstSubject)]).Count);
+        var anotherChapter = Finding(firstSubject);
+        anotherChapter.CategoryIds.Add(Guid.NewGuid());
+        Assert.AreEqual(1, ContentFindingGroup.Build([Finding(firstSubject), anotherChapter]).Count);
     }
 
 }
