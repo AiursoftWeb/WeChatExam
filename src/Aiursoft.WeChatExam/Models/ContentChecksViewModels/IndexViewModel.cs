@@ -80,8 +80,13 @@ public class ContentFindingGroup
         // Questions sharing paid tags and subject requirements describe one configuration
         // decision. Never combine different rules, subjects or engineering responsibilities.
         if (finding.Rule is "KP001" or "KP002" or "Q001" or "Q002" or "VIP002")
+        {
+            // Public knowledge point chapters do not add question VIP requirements.
+            // Their category context matters only for the cross-course association warning.
+            var relatedSubjects = finding.Rule == "KP002" ? string.Join(',', finding.CategoryIds.Order()) : string.Empty;
             return finding.Rule + ":question-subject=" + (finding.QuestionSubjectId?.ToString() ?? "legacy") + ":tags=" + string.Join(',', finding.Objects.Where(o => o.Controller == "Tags").Select(o => o.Id).Order())
-                + ":subjects=" + string.Join(',', finding.CategoryIds.Order());
+                + ":subjects=" + relatedSubjects;
+        }
         var first = finding.Objects.FirstOrDefault();
         // Different empty historical paper versions must remain independently inspectable.
         var version = finding.Rule == "PAPER002" ? ":" + finding.Observations.FirstOrDefault()?.Entry : string.Empty;
