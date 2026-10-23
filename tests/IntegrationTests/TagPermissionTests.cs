@@ -565,4 +565,53 @@ public class TagPermissionTests
         }
     }
 
+    [TestMethod]
+    public async Task DiagnosticScenariosMatchActualDetailResponsesAndExposeListDifference()
+    {
+        var (subject, _, _) = await SetupTestDataAsync();
+        Guid questionId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var question = db.Questions.Single(q => q.Content == "Q2");
+            question.CategoryId = subject;
+            questionId = question.Id;
+            await db.SaveChangesAsync();
+        }
+        using var reportScope = _server!.Services.CreateScope();
+        var report = await reportScope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([subject], false);
+        var finding = report.Findings.Single(f => f.Rule == "VIP002");
+        var token = await LoginAsync();
+        foreach (var scenario in report.Scenarios)
+        {
+            _mockWeChatPayService.Memberships.Clear();
+            foreach (var id in scenario.Status.ActiveCategoryVips)
+                _mockWeChatPayService.Memberships.Add(new VipMembership
+                {
+                    UserId = "test-user", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+                    VipProduct = new VipProduct { Name = "Subject", CategoryId = id }
+                });
+            if (scenario.Status.HasRealExamVip)
+                _mockWeChatPayService.Memberships.Add(new VipMembership
+                {
+                    UserId = "test-user", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+                    VipProduct = new VipProduct { Name = "Real", Type = VipProductType.RealExam }
+                });
+            using var request = new HttpRequestMessage(HttpMethod.Get, $"/api/Questions/{questionId}");
+            if (scenario.Authenticated) request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var actual = await _http.SendAsync(request);
+            var expected = finding.Observations.Single(o => o.Scenario == scenario.Name).Allowed;
+            Assert.AreEqual(expected ? HttpStatusCode.OK : HttpStatusCode.Forbidden, actual.StatusCode, scenario.Name);
+        }
+        _mockWeChatPayService.Memberships.Clear();
+        using var listRequest = new HttpRequestMessage(HttpMethod.Get, "/api/Questions?size=50");
+        listRequest.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        var listResponse = await _http.SendAsync(listRequest);
+        var listed = await listResponse.Content.ReadFromJsonAsync<List<QuestionDto>>();
+        Assert.IsTrue(listed!.Any(q => q.Id == questionId));
+        Assert.IsTrue(report.Findings.Any(f => f.Rule == "API001" && f.NeedsEngineering));
+        var anonymousList = await _http.GetFromJsonAsync<List<QuestionDto>>("/api/Questions?size=50");
+        Assert.IsFalse(anonymousList!.Any(q => q.Id == questionId));
+    }
+
 }

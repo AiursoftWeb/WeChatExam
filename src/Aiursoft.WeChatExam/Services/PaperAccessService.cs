@@ -41,7 +41,11 @@ public class PaperAccessService : IPaperAccessService
         return status;
     }
 
-    public bool HasAccess(Paper paper, PaperAccessStatus accessStatus)
+    public bool HasAccess(Paper paper, PaperAccessStatus accessStatus) => CanAccess(paper, accessStatus);
+
+    // The content checker uses the same decision without resolving payment credentials
+    // or loading any customer's memberships.
+    public static bool CanAccess(Paper paper, PaperAccessStatus accessStatus)
     {
         if (paper.IsFree)
         {

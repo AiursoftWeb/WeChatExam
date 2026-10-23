@@ -169,13 +169,8 @@ public class QuestionsController : ControllerBase
 
                 if (tagEntity != null && !tagEntity.IsFree)
                 {
-                    bool hasAccess = false;
-                    if (tagEntity.Taxonomy?.CategoryTaxonomies != null)
-                    {
-                        var categoryIds = tagEntity.Taxonomy.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList();
-                        hasAccess = categoryIds.Any(catId => accessStatus.ActiveCategoryVips.Contains(catId));
-                    }
-                    
+                    var hasAccess = QuestionAccess.CanUseTag(tagEntity, accessStatus);
+
                     if (!hasAccess)
                     {
                         var categoryIds = tagEntity.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
@@ -399,35 +394,22 @@ public class QuestionsController : ControllerBase
             }
 
             var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            // A subject subscription includes every paid question assigned to that subject.
-            // Descriptive tags (genres, works, etc.) may be shared across subjects or unmapped;
-            // they determine whether a question is paid, not which additional VIPs it requires.
-            if (question.CategoryId is { } subjectId)
+            var decision = QuestionAccess.Evaluate(question, true, accessStatus);
+            if (decision.Denial == QuestionAccessDenial.Subject)
             {
-                if (!accessStatus.ActiveCategoryVips.Contains(subjectId))
+                return StatusCode(StatusCodes.Status403Forbidden, new
                 {
-                    return StatusCode(StatusCodes.Status403Forbidden, new
-                    {
-                        Message = "Access denied to question category",
-                        RequiredCategoryIds = new[] { subjectId }
-                    });
-                }
+                    Message = "Access denied to question category",
+                    RequiredCategoryIds = new[] { question.CategoryId!.Value }
+                });
             }
-            else
+            if (decision.BlockingTag is { } tag)
             {
-                // Legacy questions without a subject still use their paid tags' category mappings.
-                foreach (var tag in paidTags)
+                return StatusCode(StatusCodes.Status403Forbidden, new
                 {
-                    var categoryIds = tag.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
-                    if (!categoryIds.Any(accessStatus.ActiveCategoryVips.Contains))
-                    {
-                        return StatusCode(StatusCodes.Status403Forbidden, new
-                        {
-                            Message = $"Access denied to tag: {tag.DisplayName}",
-                            RequiredCategoryIds = categoryIds
-                        });
-                    }
-                }
+                    Message = $"Access denied to tag: {tag.DisplayName}",
+                    RequiredCategoryIds = tag.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>()
+                });
             }
         }
 

@@ -1,0 +1,226 @@
+@using Aiursoft.WeChatExam.Models.ContentChecksViewModels
+@model IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Content Configuration Checks"]</h1>
+<p>@Localizer["Check who can access knowledge points, exercises and papers, and find configuration that needs attention."]</p>
+<p class="text-muted">@Localizer["This page only diagnoses configuration. It does not change content, memberships or access rules."]</p>
+
+<form method="get" asp-action="Index" class="card mb-3">
+    <div class="card-body">
+        <input type="hidden" name="run" value="true" />
+        @if (Model.Report != null)
+        {
+            <div class="row g-3 mb-3">
+                <div class="col-md-3">
+                    <label for="severity" class="form-label">@Localizer["Show"]</label>
+                    <select id="severity" name="severity" class="form-select">
+                        <option value="">@Localizer["Errors and items to confirm"]</option>
+                        <option value="Error" selected="@(Model.Severity == "Error")">@Localizer["Errors"]</option>
+                        <option value="Warning" selected="@(Model.Severity == "Warning")">@Localizer["Needs confirmation"]</option>
+                        <option value="Information" selected="@(Model.Severity == "Information")">@Localizer["Access information"]</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="rule" class="form-label">@Localizer["Check"]</label>
+                    <select id="rule" name="rule" class="form-select">
+                        <option value="">@Localizer["All checks"]</option>
+                        @foreach (var rule in Model.Report.Findings.DistinctBy(f => f.Rule).OrderBy(f => f.Rule))
+                        {
+                            <option value="@rule.Rule" selected="@(Model.Rule == rule.Rule)">@rule.Rule — @rule.Title</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="category" class="form-label">@Localizer["Subject"]</label>
+                    <select id="category" name="categoryId" class="form-select">
+                        <option value="">@Localizer["All subjects"]</option>
+                        @foreach (var category in Model.Report.Categories)
+                        {
+                            <option value="@category.Id" selected="@(Model.CategoryId == category.Id)">@category.Title</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="search" class="form-label">@Localizer["Name or ID"]</label>
+                    <input id="search" name="search" value="@Model.Search" class="form-control" />
+                </div>
+            </div>
+            <details class="mb-3">
+                <summary>@Localizer["Custom VIP scenario"]</summary>
+                <p class="text-muted mt-2">@Localizer["Simulate active memberships without using a customer's account. Expired or future memberships are equivalent to having no active VIP. Disabled products can still have active members."]</p>
+                <label for="subjects" class="form-label">@Localizer["Active subject VIPs"]</label>
+                <select multiple id="subjects" name="subjects" class="form-select mb-2" size="5">
+                    @foreach (var category in Model.Report.Categories)
+                    {
+                        <option value="@category.Id" selected="@(Model.Subjects.Contains(category.Id))">@category.Title</option>
+                    }
+                </select>
+                <div class="form-check">
+                    <input type="checkbox" id="realExam" name="realExam" value="true" checked="@Model.RealExam" class="form-check-input" />
+                    <label for="realExam" class="form-check-label">@Localizer["Active real-exam VIP"]</label>
+                </div>
+            </details>
+        }
+        <button type="submit" class="btn btn-primary">@Localizer["Check All"]</button>
+        @if (Model.Report != null)
+        {
+            <a asp-action="Index" asp-route-run="true" class="btn btn-outline-secondary">@Localizer["Reset filters"]</a>
+        }
+    </div>
+</form>
+
+@if (Model.Report is { } report)
+{
+    <p class="text-muted small">@Localizer["Scan window (UTC)"]: @report.StartedAt.ToString("u") – @report.CompletedAt.ToString("u")<br />
+        @Localizer["Every scan, filter or page request reads current configuration again. Concurrent edits can affect the results."]</p>
+    <div class="d-flex flex-wrap gap-3 mb-3">
+        <span>@Localizer["Errors"]: <strong>@report.Findings.Count(f => f.Severity == CheckSeverity.Error)</strong></span>
+        <span>@Localizer["Needs confirmation"]: <strong>@report.Findings.Count(f => f.Severity == CheckSeverity.Warning)</strong></span>
+        <span>@Localizer["Access information"]: @report.Findings.Count(f => f.Severity == CheckSeverity.Information)</span>
+    </div>
+    <details class="mb-3">
+        <summary>@Localizer["Coverage and interpretation"]</summary>
+        <p class="mt-2">@Localizer["Public knowledge with paid exercises is an allowed configuration, shown under Access information. Cross-subject content needs confirmation, not automatic correction. Items marked Needs engineering describe rule differences and should be reviewed by developers."]</p>
+        <p>@Localizer["This scan evaluates server content access, not every Mini Program screen or the ability to submit answers. All linked exercises are checked, including those not currently shown by the client."]</p>
+        <ul>
+            @foreach (var count in report.Counts)
+            {
+                <li>@count.Key: @count.Value</li>
+            }
+        </ul>
+        <p>@Localizer["Scenarios"]: @string.Join("; ", report.Scenarios.Select(s => s.Name))</p>
+    </details>
+    <p>@string.Format(@Localizer["{0} matching findings; page {1} of {2}."].Value, Model.Total, Model.Page, Math.Max(1, (Model.Total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize))</p>
+    @if (Model.Total == 0)
+    {
+        <p>@Localizer["No findings match these filters. Access information and client behavior may still need review."]</p>
+    }
+    @foreach (var finding in Model.Results)
+    {
+        <article class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex flex-wrap gap-2 mb-2">
+                    <span class="badge bg-secondary">@finding.Rule</span>
+                    @if (finding.Severity == CheckSeverity.Error)
+                    {
+                        <span class="badge bg-danger">@Localizer["Error"]</span>
+                    }
+                    else if (finding.Severity == CheckSeverity.Warning)
+                    {
+                        <span class="badge bg-warning text-dark">@Localizer["Needs confirmation"]</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-info text-dark">@Localizer["Access information"]</span>
+                    }
+                    @if (finding.NeedsEngineering)
+                    {
+                        <span class="badge bg-secondary">@Localizer["Needs engineering"]</span>
+                    }
+                </div>
+                <h2 class="h5">@finding.Title</h2>
+                <p class="text-break">@finding.Objects.FirstOrDefault()?.Name</p>
+                <p>@finding.Reason</p>
+                <p><strong>@Localizer["Suggested review"]:</strong> @finding.Suggestion</p>
+                <details class="mb-2">
+                    <summary>@string.Format(@Localizer["Affected objects and edit links ({0})"].Value, finding.Objects.Count)</summary>
+                    <p class="text-muted mt-2">@Localizer["Review shared tag impact below before changing a tag's pricing."]</p>
+                    <p>@Localizer["Questions"]: @finding.Objects.Count(o => o.Controller == "Questions") ·
+                        @Localizer["Knowledge points"]: @finding.Objects.Count(o => o.Controller == "KnowledgePoints") ·
+                        @Localizer["Subjects"]: @finding.CategoryIds.Count</p>
+                    <ul class="mt-2">
+                        @foreach (var item in finding.Objects)
+                        {
+                            <li class="text-break">
+                                @if (Model.EditPermissions.Contains(item.Permission))
+                                {
+                                    <a asp-controller="@item.Controller" asp-action="Edit" asp-route-id="@item.Id">@item.Name</a>
+                                }
+                                else
+                                {
+                                    @item.Name
+                                }
+                                <small class="text-muted">(@item.Id)</small>
+                                @if (item.Controller == "Tags")
+                                {
+                                    <a href="#tag-impact-@item.Id">@Localizer["Shared impact"]</a>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </details>
+                @if (finding.Observations.Count > 0)
+                {
+                    <details>
+                        <summary>@Localizer["Access by user scenario"]</summary>
+                        <div class="table-responsive mt-2">
+                            <table class="table table-sm">
+                                <thead><tr><th>@Localizer["User scenario"]</th><th>@Localizer["Entry point"]</th><th>@Localizer["Access"]</th><th>@Localizer["Actual behavior"]</th></tr></thead>
+                                <tbody>
+                                    @foreach (var observation in finding.Observations)
+                                    {
+                                        <tr>
+                                            <td>@observation.Scenario</td><td class="text-break"><code>@observation.Entry</code></td>
+                                            <td>
+                                                @if (observation.Allowed)
+                                                {
+                                                    @Localizer["Allowed"]
+                                                }
+                                                else
+                                                {
+                                                    @Localizer["Denied"]
+                                                }
+                                            </td>
+                                            <td>@observation.Reason</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                }
+            </div>
+        </article>
+    }
+    <details class="mb-4">
+        <summary>@Localizer["Shared tag impact for these findings"]</summary>
+        <p class="mt-2">@Localizer["Changing a tag affects all these questions, subjects and knowledge associations, including content outside the current filters."]</p>
+        @foreach (var tag in Model.Results.SelectMany(f => f.Objects).Where(o => o.Controller == "Tags").DistinctBy(o => o.Id))
+        {
+            var impact = report.TagImpacts.GetValueOrDefault(int.Parse(tag.Id), []);
+            <details id="tag-impact-@tag.Id" class="mb-2">
+                <summary>@tag.Name — @Localizer["Questions"]: @impact.Count(o => o.Controller == "Questions") · @Localizer["Knowledge points"]: @impact.Count(o => o.Controller == "KnowledgePoints") · @Localizer["Subjects"]: @impact.Count(o => o.Controller == "Categories")</summary>
+                <ul class="mt-2">
+                    @foreach (var item in impact)
+                    {
+                        <li class="text-break">
+                            @if (Model.EditPermissions.Contains(item.Permission))
+                            {
+                                <a asp-controller="@item.Controller" asp-action="Edit" asp-route-id="@item.Id">@item.Name</a>
+                            }
+                            else
+                            {
+                                @item.Name
+                            }
+                            <small class="text-muted">(@item.Id)</small>
+                        </li>
+                    }
+                </ul>
+            </details>
+        }
+    </details>
+    <form method="get" asp-action="Index" class="d-flex gap-2 mb-4">
+        <input type="hidden" name="run" value="true" />
+        <input type="hidden" name="severity" value="@Model.Severity" />
+        <input type="hidden" name="rule" value="@Model.Rule" />
+        <input type="hidden" name="search" value="@Model.Search" />
+        <input type="hidden" name="categoryId" value="@Model.CategoryId" />
+        <input type="hidden" name="realExam" value="@Model.RealExam.ToString().ToLowerInvariant()" />
+        @foreach (var subject in Model.Subjects)
+        {
+            <input type="hidden" name="subjects" value="@subject" />
+        }
+        <button name="page" value="@(Model.Page - 1)" disabled="@(Model.Page <= 1)" class="btn btn-outline-primary">@Localizer["Previous"]</button>
+        <button name="page" value="@(Model.Page + 1)" disabled="@(Model.Page * IndexViewModel.PageSize >= Model.Total)" class="btn btn-outline-primary">@Localizer["Next"]</button>
+    </form>
+}

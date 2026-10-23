@@ -42,20 +42,13 @@ public class TaxonomiesApiController(
 
         var dtos = tags.Select(t =>
         {
-            bool hasAccess = t.IsFree;
-            if (!hasAccess && t.Taxonomy?.CategoryTaxonomies != null)
-            {
-                var categoryIds = t.Taxonomy.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList();
-                hasAccess = categoryIds.Any(catId => accessStatus.ActiveCategoryVips.Contains(catId));
-            }
-
             return new TagDto
             {
                 Id = t.Id,
                 DisplayName = t.DisplayName,
                 NormalizedName = t.NormalizedName,
                 IsFree = t.IsFree,
-                HasAccess = hasAccess
+                HasAccess = QuestionAccess.CanUseTag(t, accessStatus)
             };
         }).ToList();
         

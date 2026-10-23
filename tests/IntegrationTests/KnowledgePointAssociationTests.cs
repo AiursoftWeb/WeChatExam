@@ -28,7 +28,7 @@ public class KnowledgePointAssociationTests
     {
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
-        _server = await AppAsync<Startup>([], port: reservation.Port);
+        _server = await AppAsync<Startup>(["--applicationName", "Aiursoft.WeChatExam"], port: reservation.Port);
         try
         {
             reservation.ConfigureServer(_server);
@@ -253,4 +253,87 @@ public class KnowledgePointAssociationTests
         var invalidResponse = await _http.SendAsync(invalidRequest);
         Assert.AreEqual(HttpStatusCode.BadRequest, invalidResponse.StatusCode);
     }
+    [TestMethod]
+    public async Task ContentChecksRequirePermissionAndRenderReadOnlyResults()
+    {
+        var anonymous = await _http.GetAsync("/ContentChecks?run=true");
+        Assert.AreEqual(HttpStatusCode.Found, anonymous.StatusCode);
+        await LoginAsAdminAsync();
+        var initial = await _http.GetStringAsync("/ContentChecks");
+        StringAssert.Contains(initial, "Content Configuration Checks");
+        Assert.IsFalse(initial.Contains("Scan window (UTC)"));
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            for (var i = 0; i < 55; i++)
+                db.Tags.Add(new Tag { DisplayName = $"Diagnostic tag {i}", NormalizedName = $"DIAGNOSTIC TAG {i}", IsFree = false });
+            await db.SaveChangesAsync();
+        }
+        var first = await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic");
+        Assert.AreEqual(50, Regex.Matches(first, "<article ").Count);
+        StringAssert.Contains(first, "page 1 of 2");
+        var second = await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic&page=2");
+        Assert.AreEqual(5, Regex.Matches(second, "<article ").Count);
+        var filter = await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic%20tag%2054");
+        Assert.AreEqual(1, Regex.Matches(filter, "<article ").Count);
+        StringAssert.Contains(filter, "/Tags/Edit/");
+        using var checkScope = _server!.Services.CreateScope();
+        var checkDb = checkScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(55, checkDb.Tags.Count(t => t.NormalizedName.StartsWith("DIAGNOSTIC") && !t.IsFree));
+        var cultureResponse = await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/ContentChecks");
+        Assert.AreEqual(HttpStatusCode.Found, cultureResponse.StatusCode);
+        var chinese = WebUtility.HtmlDecode(await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic%20tag%2054"));
+        var culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN");
+        var viewResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.ContentChecks.Index", typeof(Startup).Assembly);
+        var serviceResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Services.ContentCheckService", typeof(Startup).Assembly);
+        StringAssert.Contains(chinese, viewResources.GetString("Content Configuration Checks", culture)!);
+        StringAssert.Contains(chinese, serviceResources.GetString("Paid tag has no unlockable subject", culture)!);
+
+    }
+
+    [TestMethod]
+    public async Task ContentCheckPermissionDoesNotExposeUnauthorizedEditLinks()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var question = new Question { Id = Guid.NewGuid(), Content = "Restricted editor" };
+        var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG", IsFree = false };
+        db.AddRange(question, tag);
+        await db.SaveChangesAsync();
+        db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
+        await db.SaveChangesAsync();
+        foreach (var permitted in new[] { false, true })
+        {
+            var email = $"content-check-{permitted}@example.com";
+            var user = new User { UserName = email, Email = email, DisplayName = "Reviewer", EmailConfirmed = true };
+            Assert.IsTrue((await manager.CreateAsync(user, "Admin@123456!")).Succeeded);
+            if (permitted)
+                Assert.IsTrue((await manager.AddClaimAsync(user, new System.Security.Claims.Claim(
+                    Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanManageTags))).Succeeded);
+            using var client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false, CookieContainer = new CookieContainer() }) { BaseAddress = _http.BaseAddress };
+            var login = await client.GetStringAsync("/Account/Login");
+            var token = Regex.Match(login, @"name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)""").Groups[1].Value;
+            var signedIn = await client.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string>
+            {
+                ["EmailOrUserName"] = email, ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = token
+            }));
+            Assert.AreEqual(HttpStatusCode.Found, signedIn.StatusCode);
+            var response = await client.GetAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic%20shared%20tag");
+            if (permitted)
+            {
+                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+                var html = await response.Content.ReadAsStringAsync();
+                Assert.IsTrue(html.Contains($"/Tags/Edit/{tag.Id}"));
+                StringAssert.Contains(html, "Restricted editor");
+                Assert.IsFalse(html.Contains($"/Questions/Edit/{question.Id}"));
+            }
+            else
+            {
+                Assert.IsTrue(response.StatusCode is HttpStatusCode.Forbidden or HttpStatusCode.Found);
+                Assert.IsFalse((await response.Content.ReadAsStringAsync()).Contains("Diagnostic shared tag"));
+            }
+        }
+    }
+
 }

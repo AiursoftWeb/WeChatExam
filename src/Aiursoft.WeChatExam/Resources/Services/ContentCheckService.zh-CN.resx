@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+    <value>不带标签筛选条件的列表查询可能会向未登录 VIP 的用户返回这道付费题目；其详情接口则会返回 403。</value>
+  </data>
+  <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
+    <value>关联知识点所属主题的会员资格不一定能解锁练习所属的主题。</value>
+  </data>
+  <data name="All relevant VIPs" xml:space="preserve">
+    <value>所有相关 VIP</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>匿名用户</value>
+  </data>
+  <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
+    <value>指定正确的问题所属主题，或在评估付费标签的共同影响后更正这些标签。</value>
+  </data>
+  <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>在销售此产品前，请指定其所属科目。现有会员资格请另行审核。</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
+    <value>仅涉及授权：被拒绝的快照请求返回 200，HasAccess=false，且不包含任何题目。还必须存在可用的快照。</value>
+  </data>
+  <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
+    <value>分类的免费设置不会限制公共知识 API。某些小程序入口检查使用产品名称，而非服务器的科目 ID。</value>
+  </data>
+  <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
+    <value>检查标签分类映射和问题所属科目。如果两者都是有意如此，请让工程团队检查入口行为。</value>
+  </data>
+  <data name="Client entry checks require engineering verification" xml:space="preserve">
+    <value>客户端入口检查需要工程团队验证</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
+    <value>请确认是否有意暂停销售；否则，请为所需科目之一启用一个产品。</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
+    <value>确认销售是否是有意暂停；否则请启用所需的科目或真题产品。</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
+    <value>请确认这是否属于有意的跨学科教学；否则，请更正题目所属学科或知识点关联。</value>
+  </data>
+  <data name="Custom VIP selection" xml:space="preserve">
+    <value>自定义 VIP 选择</value>
+  </data>
+  <data name="Eligible for the list; pagination and other query filters still apply." xml:space="preserve">
+    <value>符合列表显示条件；分页及其他查询筛选条件仍然适用。</value>
+  </data>
+  <data name="Engineering must review the endpoint rules. Do not change shared content pricing merely to suppress this diagnostic." xml:space="preserve">
+    <value>工程团队必须审查接口规则。不要仅仅为了消除这条诊断信息而更改共享内容的定价。</value>
+  </data>
+  <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
+    <value>即使所有相关 VIP 都无法解锁此试卷。</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>现有有效会员资格可能仍可使用，但新客户没有购买渠道。</value>
+  </data>
+  <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
+    <value>现有的有效 VIP 仍可正常使用，但购买当前已启用的产品无法解锁此问题。</value>
+  </data>
+  <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
+    <value>免费试卷包含当前需付费才能使用的题目快照</value>
+  </data>
+  <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
+    <value>如果这是一个用于描述的共享标签，可以考虑将其设为免费。如果它用于出售访问权限，请将其分类体系映射到预期的主题。更改共享标签前，请先检查受影响的内容。</value>
+  </data>
+  <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
+    <value>如果该练习确实有意设置为付费，请保留此配置。如果希望其公开，请先检查所有付费标签及其共同影响。</value>
+  </data>
+  <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
+    <value>如果免费试卷是有意这样设置的，请保留此设置。如果希望限制该试卷的快照访问，请检查试卷自身的定价。</value>
+  </data>
+  <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
+    <value>知识点和练习题引用了不同的科目</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>知识点</value>
+  </data>
+  <data name="Latest paper snapshot is empty" xml:space="preserve">
+    <value>最新试卷快照为空</value>
+  </data>
+  <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
+    <value>新客户目前没有可供购买的途径。现有的有效会员资格仍可能授予访问权限。</value>
+  </data>
+  <data name="No enabled product combination unlocks this question" xml:space="preserve">
+    <value>没有任何已启用的商品组合可以解锁此问题</value>
+  </data>
+  <data name="No enabled product unlocks this paper" xml:space="preserve">
+    <value>没有已启用的产品可以解锁这篇试卷</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>没有已启用的 VIP 产品可解锁此标签</value>
+  </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>没有任何 VIP 可以解锁此标签条目。具有自身主题的题目仍可能通过题目详情访问。</value>
+  </data>
+  <data name="Paid paper has no unlockable subject" xml:space="preserve">
+    <value>付费试卷没有可解锁的科目</value>
+  </data>
+  <data name="Paid question cannot be unlocked even with all VIPs" xml:space="preserve">
+    <value>即使拥有所有 VIP 权限，也无法解锁付费问题</value>
+  </data>
+  <data name="Paid question requires sign-in (403)." xml:space="preserve">
+    <value>付费问题需要登录（403）。</value>
+  </data>
+  <data name="Paid tag denies access (403): {0}" xml:space="preserve">
+    <value>付费标签拒绝访问（403）：{0}</value>
+  </data>
+  <data name="Paid tag has no unlockable subject" xml:space="preserve">
+    <value>付费标签没有可解锁的科目</value>
+  </data>
+  <data name="Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted." xml:space="preserve">
+    <value>试卷的访问权限独立于原始题目的访问权限。即使原题发生更改或被删除，保留的快照仍可使用。</value>
+  </data>
+  <data name="Paper snapshot is empty" xml:space="preserve">
+    <value>试卷快照为空</value>
+  </data>
+  <data name="Paper snapshots" xml:space="preserve">
+    <value>试卷快照</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>试卷</value>
+  </data>
+  <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
+    <value>公开知识点关联了一个付费练习</value>
+  </data>
+  <data name="Publishable paper has no snapshot" xml:space="preserve">
+    <value>可发布试卷没有快照</value>
+  </data>
+  <data name="Question content is returned (200)." xml:space="preserve">
+    <value>问题内容已返回（200）。</value>
+  </data>
+  <data name="Question details return 403." xml:space="preserve">
+    <value>问题详情返回 403。</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Questions</value>
+  </data>
+  <data name="Real-exam VIP only" xml:space="preserve">
+    <value>仅限真题 VIP</value>
+  </data>
+  <data name="Review its questions and create a snapshot through the existing paper management workflow." xml:space="preserve">
+    <value>请检查该试卷的题目，并通过现有的试卷管理流程创建快照。</value>
+  </data>
+  <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
+    <value>请检查其科目关联、实考设置和免费设置。</value>
+  </data>
+  <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
+    <value>请检查试卷题目并发布修正后的快照。修改原始题目不会更新已有快照。</value>
+  </data>
+  <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>请检查科目和可用的 VIP 产品。停用产品不会使现有的有效会员资格失效。</value>
+  </data>
+  <data name="Signed in without active VIP" xml:space="preserve">
+    <value>已登录，但没有有效 VIP</value>
+  </data>
+  <data name="Signed-in list and question details use different access rules" xml:space="preserve">
+    <value>已登录用户的列表和题目详情使用不同的访问规则</value>
+  </data>
+  <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
+    <value>快照版本 {0} 不包含任何习题。仍可请求旧快照链接。</value>
+  </data>
+  <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
+    <value>科目 VIP 与付费标签入口不一致</value>
+  </data>
+  <data name="Subject VIP product has no valid subject" xml:space="preserve">
+    <value>科目 VIP 产品没有有效的科目</value>
+  </data>
+  <data name="Subject VIP: {0}" xml:space="preserve">
+    <value>学科 VIP：{0}</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>科目</value>
+  </data>
+  <data name="Tag gate only; anonymous lists also exclude every question with a paid tag." xml:space="preserve">
+    <value>仅应用标签限制；匿名列表还会排除所有带付费标签的问题。</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>分类体系</value>
+  </data>
+  <data name="The paper can be listed, but its latest snapshot contains no exercises." xml:space="preserve">
+    <value>试卷可以显示在列表中，但其最新快照不包含任何练习题。</value>
+  </data>
+  <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
+    <value>由于不存在快照，此试卷不会显示在公开试卷列表中。</value>
+  </data>
+  <data name="The question&apos;s subject VIP is required (403)." xml:space="preserve">
+    <value>需要问题所属主题的 VIP 才能访问（403）。</value>
+  </data>
+  <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
+    <value>题目的所属科目 VIP 可解锁题目详情，但至少有一个付费标签条目不接受该 VIP。</value>
+  </data>
+  <data name="This product cannot grant the intended subject membership." xml:space="preserve">
+    <value>此产品无法授予预期的科目会员资格。</value>
+  </data>
+  <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
+    <value>这道未分类的问题需要所有付费标签；至少有一个标签未映射到任何学科。</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>请单独核验已部署的小程序。此服务器扫描不会模拟客户端导航，也无法证明用户能够进入每个页面。</value>
+  </data>
+  <data name="VIP products" xml:space="preserve">
+    <value>VIP产品</value>
+  </data>
+  <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
+    <value>访客可以阅读知识内容，但匿名访问此练习会返回 403。根据当前业务规则，付费练习是允许的。</value>
+  </data>
+
+</root>
