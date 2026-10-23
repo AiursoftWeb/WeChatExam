@@ -230,6 +230,83 @@ public class TagPermissionTests
     }
 
     [TestMethod]
+    public async Task GetQuestion_SubjectVipUnlocksPaidQuestionsRegardlessOfDescriptiveTags()
+    {
+        var (subjectId, freeTagId, _) = await SetupTestDataAsync();
+        Guid questionId;
+        const string metadata = "{\"options\":[\"A\",\"B\"]}";
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var genre = new Taxonomy { Name = "Musical genres" };
+            var works = new Taxonomy { Name = "Works and books" };
+            db.AddRange(genre, works);
+            await db.SaveChangesAsync();
+            // Shared descriptive taxonomies need no subject mapping to grant subject VIP access.
+            var genreTag = new Tag { DisplayName = "Dance music", NormalizedName = "DANCE MUSIC", IsFree = false, TaxonomyId = genre.Id };
+            var workTag = new Tag { DisplayName = "Ancient work", NormalizedName = "ANCIENT WORK", IsFree = false, TaxonomyId = works.Id };
+            var question = new Question { Content = "Subject exercise", CategoryId = subjectId, Metadata = metadata };
+            db.AddRange(genreTag, workTag, question);
+            await db.SaveChangesAsync();
+            questionId = question.Id;
+            db.QuestionTags.AddRange(
+                new QuestionTag { QuestionId = questionId, TagId = genreTag.Id },
+                new QuestionTag { QuestionId = questionId, TagId = workTag.Id },
+                new QuestionTag { QuestionId = questionId, TagId = freeTagId });
+            // A tag mapped to a different subject must neither replace nor add to the question's subject.
+            var otherSubject = new Category { Title = "Other subject", ParentId = null };
+            db.Categories.Add(otherSubject);
+            await db.SaveChangesAsync();
+            db.Questions.Single(q => q.Content == "Q2").CategoryId = otherSubject.Id;
+            await db.SaveChangesAsync();
+        }
+
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{questionId}")).StatusCode);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "invalid-token");
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{questionId}")).StatusCode);
+        var token = await LoginAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        VipMembership Membership(Guid? category, int startDays = -1, int endDays = 1) => new()
+        {
+            UserId = "test-user", StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = DateTime.UtcNow.AddDays(endDays),
+            VipProduct = new VipProduct { Name = "Subject subscription", Type = category.HasValue ? VipProductType.Category : VipProductType.RealExam, CategoryId = category }
+        };
+
+        _mockWeChatPayService.Memberships = [Membership(subjectId)];
+        var allowed = await _http.GetAsync($"/api/Questions/{questionId}");
+        Assert.AreEqual(HttpStatusCode.OK, allowed.StatusCode, "A subject VIP includes exercises with unmapped paid descriptive tags.");
+        var dto = await allowed.Content.ReadFromJsonAsync<QuestionDto>();
+        Assert.AreEqual(metadata, dto!.Metadata);
+        Assert.AreEqual(questionId, dto.Id);
+
+        Guid otherQuestionId, otherSubjectId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var otherQuestion = db.Questions.Single(q => q.Content == "Q2");
+            otherQuestionId = otherQuestion.Id;
+            otherSubjectId = otherQuestion.CategoryId!.Value;
+        }
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{otherQuestionId}")).StatusCode);
+        _mockWeChatPayService.Memberships = [Membership(otherSubjectId)];
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/Questions/{otherQuestionId}")).StatusCode,
+            "The question's own subject VIP suffices even when its paid tag maps to another subject.");
+
+        foreach (var memberships in new List<VipMembership>[]
+                 {
+                     [], [Membership(Guid.NewGuid())], [Membership(subjectId, -2, -1)],
+                     [Membership(subjectId, 1, 2)], [Membership(null)]
+                 })
+        {
+            _mockWeChatPayService.Memberships = memberships;
+            var denied = await _http.GetAsync($"/api/Questions/{questionId}");
+            Assert.AreEqual(HttpStatusCode.Forbidden, denied.StatusCode);
+            var body = System.Text.Json.Nodes.JsonNode.Parse(await denied.Content.ReadAsStringAsync())!;
+            CollectionAssert.AreEqual(new[] { subjectId }, body["requiredCategoryIds"]!.AsArray().Select(id => id!.GetValue<Guid>()).ToArray());
+        }
+    }
+
+    [TestMethod]
     public async Task GetQuestion_PaidTagsRequireActiveCategoryVipForEveryTag()
     {
         var (catId, _, paidTagId) = await SetupTestDataAsync();

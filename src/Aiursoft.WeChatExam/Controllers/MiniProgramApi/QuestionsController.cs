@@ -369,7 +369,7 @@ public class QuestionsController : ControllerBase
     /// <param name="id">题目ID</param>
     /// <returns>单个题目详情</returns>
     /// <response code="200">成功返回题目详情</response>
-    /// <response code="403">没有付费标签对应的分类VIP权限</response>
+    /// <response code="403">An active VIP for the paid question's subject is required.</response>
     /// <response code="404">未找到指定题目</response>
     [AllowAnonymous]
     [HttpGet("{id}")]
@@ -399,16 +399,34 @@ public class QuestionsController : ControllerBase
             }
 
             var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            foreach (var tag in paidTags)
+            // A subject subscription includes every paid question assigned to that subject.
+            // Descriptive tags (genres, works, etc.) may be shared across subjects or unmapped;
+            // they determine whether a question is paid, not which additional VIPs it requires.
+            if (question.CategoryId is { } subjectId)
             {
-                var categoryIds = tag.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
-                if (!categoryIds.Any(accessStatus.ActiveCategoryVips.Contains))
+                if (!accessStatus.ActiveCategoryVips.Contains(subjectId))
                 {
                     return StatusCode(StatusCodes.Status403Forbidden, new
                     {
-                        Message = $"Access denied to tag: {tag.DisplayName}",
-                        RequiredCategoryIds = categoryIds
+                        Message = "Access denied to question category",
+                        RequiredCategoryIds = new[] { subjectId }
                     });
+                }
+            }
+            else
+            {
+                // Legacy questions without a subject still use their paid tags' category mappings.
+                foreach (var tag in paidTags)
+                {
+                    var categoryIds = tag.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
+                    if (!categoryIds.Any(accessStatus.ActiveCategoryVips.Contains))
+                    {
+                        return StatusCode(StatusCodes.Status403Forbidden, new
+                        {
+                            Message = $"Access denied to tag: {tag.DisplayName}",
+                            RequiredCategoryIds = categoryIds
+                        });
+                    }
                 }
             }
         }
