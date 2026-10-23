@@ -64,6 +64,9 @@ public class ContentCheckService(
             HasRealExamVip = products.Any(p => p.IsEnabled && p.Type == VipProductType.RealExam)
         };
         report.Categories = categories.OrderBy(c => c.Title).ToList();
+        report.KnowledgePointCount = knowledge.Count;
+        report.QuestionCount = questions.Count;
+        report.PaperCount = papers.Count;
         report.Counts[localizer["Knowledge points"]] = knowledge.Count;
         report.Counts[localizer["Questions"]] = questions.Count;
         report.Counts[localizer["Tags"]] = tags.Count;
@@ -191,6 +194,7 @@ public class ContentCheckService(
             if (paidTags.Count == 0) continue;
             void Detail(ContentFinding finding)
             {
+                finding.QuestionSubjectId = q.CategoryId;
                 AttachQuestion(finding, q);
                 finding.Objects.AddRange(paidTags.Select(TagRef));
                 foreach (var tag in paidTags)

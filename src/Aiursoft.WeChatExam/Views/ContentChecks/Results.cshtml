@@ -1,0 +1,151 @@
+@using Aiursoft.WeChatExam.Models.ContentChecksViewModels
+@model IndexViewModel
+@{
+    var attention = Model.Groups.Count(g => !g.NeedsEngineering && g.Severity != CheckSeverity.Information);
+    var information = Model.Groups.Count(g => !g.NeedsEngineering && g.Severity == CheckSeverity.Information);
+    var engineering = Model.Groups.Count(g => g.NeedsEngineering);
+}
+<link rel="stylesheet" href="~/css/content-checks.css" asp-append-version="true" />
+<div class="content-checks py-2">
+    <a asp-action="Index" class="check-back mb-3"><i data-lucide="arrow-left" aria-hidden="true"></i>@Localizer["Course checkup"]</a>
+    <div class="check-overview justify-content-between mb-4">
+        <div>
+            <p class="check-eyebrow text-muted mb-2">@Localizer["Check complete"]</p>
+            <h1 class="mb-2">@Localizer["Your results"]</h1>
+            <p class="check-lead text-muted mb-0">@Localizer["Choose a card to see what students experience and what to review."]</p>
+        </div>
+        <a asp-action="Results" class="btn btn-outline-primary check-action"><i data-lucide="refresh-cw" aria-hidden="true"></i>@Localizer["Check again"]</a>
+    </div>
+    @if (Model.Changed)
+    {
+        <p role="status" class="check-panel mb-4">@Localizer["That item has changed. Please choose from the latest results below."]</p>
+    }
+    @if (attention == 0)
+    {
+        <section class="check-panel check-success mb-4">
+            <i data-lucide="circle-check" aria-hidden="true"></i>
+            <div>
+                <h2 class="mb-1">@Localizer["No configuration issues found in this check"]</h2>
+                <p class="mb-0 text-muted">@Localizer["Intentional paid content is listed separately below. Mini Program behavior may still need team review."]</p>
+            </div>
+        </section>
+    }
+    <p class="text-muted mb-3">@string.Format(@Localizer["Checked {0} knowledge points, {1} exercises and {2} papers."].Value, Model.Report!.KnowledgePointCount, Model.Report.QuestionCount, Model.Report.PaperCount)</p>
+    <nav class="check-tabs mb-3" aria-label="@Localizer["Result groups"]">
+        <a class="check-tab @(Model.View == "all" ? "active" : "")" href="@Model.ViewUrls["all"]">@Localizer["All results"]</a>
+        <a class="check-tab @(Model.View == "attention" ? "active" : "")" href="@Model.ViewUrls["attention"]">@Localizer["Needs review"] <span class="ms-1">@attention</span></a>
+        <a class="check-tab @(Model.View == "information" ? "active" : "")" href="@Model.ViewUrls["information"]">@Localizer["Pricing arrangements"] <span class="ms-1">@information</span></a>
+    </nav>
+    <details class="mb-4">
+        <summary class="text-muted">@Localizer["Find specific content"]</summary>
+        <form method="get" asp-action="Results" class="row g-3 check-panel mt-2">
+            <input type="hidden" name="view" value="@Model.View" />
+            @foreach (var subject in Model.Subjects)
+            {
+                <input type="hidden" name="subjects" value="@subject" />
+            }
+            <input type="hidden" name="realExam" value="@Model.RealExam" />
+            <div class="col-md-4">
+                <label for="search" class="form-label">@Localizer["Content name"]</label>
+                <input id="search" name="search" value="@Model.Search" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="category" class="form-label">@Localizer["Course"]</label>
+                <select id="category" name="categoryId" class="form-select">
+                    <option value="">@Localizer["All courses"]</option>
+                    @foreach (var category in Model.Report!.Categories)
+                    {
+                        <option value="@category.Id" selected="@(Model.CategoryId == category.Id)">@category.Title</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="severity" class="form-label">@Localizer["Status"]</label>
+                <select id="severity" name="severity" class="form-select">
+                    <option value="">@Localizer["All statuses"]</option>
+                    <option value="Error" selected="@(Model.Severity == "Error")">@Localizer["Needs attention"]</option>
+                    <option value="Warning" selected="@(Model.Severity == "Warning")">@Localizer["Please confirm"]</option>
+                    <option value="Information" selected="@(Model.Severity == "Information")">@Localizer["Pricing arrangement"]</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button class="btn btn-primary check-action" type="submit">@Localizer["Find"]</button>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Rule))
+            {
+                <input type="hidden" name="rule" value="@Model.Rule" />
+            }
+        </form>
+    </details>
+    @if (Model.View == "engineering")
+    {
+        <p class="check-panel mb-4">@Localizer["These items need developer review. They are not instructions to change your course pricing."]</p>
+    }
+    @if (Model.Total == 0)
+    {
+        <p class="check-panel text-muted">@Localizer["No items in this view. You can choose another group or clear your search."]</p>
+    }
+    <div class="row g-4 mb-4">
+        @foreach (var group in Model.Results)
+        {
+            <div class="col-md-6 col-xl-4">
+                <article class="card check-result-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center gap-3">
+                            <span class="check-object-icon"><i data-lucide="@group.Icon" aria-hidden="true"></i></span>
+                            <span class="check-state text-@group.Tone">
+                                @if (group.NeedsEngineering)
+                                {
+                                    <i data-lucide="wrench" aria-hidden="true"></i>@Localizer["For our team"]
+                                }
+                                else if (group.Severity == CheckSeverity.Error)
+                                {
+                                    <i data-lucide="circle-alert" aria-hidden="true"></i>@Localizer["Needs attention"]
+                                }
+                                else if (group.Severity == CheckSeverity.Warning)
+                                {
+                                    <i data-lucide="triangle-alert" aria-hidden="true"></i>@Localizer["Please confirm"]
+                                }
+                                else
+                                {
+                                    <i data-lucide="info" aria-hidden="true"></i>@Localizer["Pricing arrangement"]
+                                }
+                            </span>
+                        </div>
+                        <h2 class="check-card-name"><a href="@group.DetailsUrl" class="check-card-link stretched-link text-reset text-decoration-none"><span>@group.Primary?.Name</span></a></h2>
+                        <p class="check-card-caption text-muted">@group.Caption</p>
+                        <div class="check-card-footer">
+                            @if (group.Objects.Any(o => o.Controller == "Questions"))
+                            {
+                                <span>@string.Format(@Localizer["{0} exercises"].Value, group.Objects.Count(o => o.Controller == "Questions"))</span>
+                            }
+                            else
+                            {
+                                <span>@string.Format(@Localizer["{0} affected items"].Value, group.Objects.Count)</span>
+                            }
+                            <span class="text-primary">@Localizer["View"] <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+    @if (Model.Total > IndexViewModel.PageSize)
+    {
+        <nav class="check-pagination mb-4" aria-label="@Localizer["Result pages"]">
+            @if (Model.PreviousUrl != null)
+            {
+                <a href="@Model.PreviousUrl" class="btn btn-outline-primary check-action"><i data-lucide="arrow-left" aria-hidden="true"></i>@Localizer["Previous"]</a>
+            }
+            <span>@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize)</span>
+            @if (Model.NextUrl != null)
+            {
+                <a href="@Model.NextUrl" class="btn btn-outline-primary check-action">@Localizer["Next"]<i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            }
+        </nav>
+    }
+    <div class="d-flex flex-wrap justify-content-between gap-3 text-muted pb-3">
+        <span>@Localizer["For our team"]: <a href="@Model.ViewUrls["engineering"]">@string.Format(@Localizer["{0} items to review"].Value, engineering)</a></span>
+        <span>@Localizer["Checked at"] <span data-utc-time="@Model.Report!.CompletedAt.ToString("O")"></span></span>
+    </div>
+</div>

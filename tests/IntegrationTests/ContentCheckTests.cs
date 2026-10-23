@@ -181,6 +181,32 @@ public class ContentCheckTests
         Assert.AreEqual(1, report.Findings.Count(f => f.Rule == "API001"));
         Assert.IsTrue(report.Findings.Where(f => f.Rule == "Q002").All(f => f.Objects.Count(o => o.Controller == "Questions") == 1));
         Assert.AreEqual(0, db.ChangeTracker.Entries().Count());
+        var groups = ContentFindingGroup.Build(report.Findings);
+        var shared = groups.Single(g => g.Rule == "Q002");
+        Assert.AreEqual(500, shared.Findings.Count);
+        Assert.AreEqual(500, shared.Objects.Count(o => o.Controller == "Questions"));
+        Assert.AreEqual(500 * report.Scenarios.Count, shared.Observations.Count());
+        Assert.AreEqual(shared.Key, ContentFindingGroup.Build(report.Findings.AsEnumerable().Reverse()).Single(g => g.Rule == "Q002").Key);
+    }
+
+    [TestMethod]
+    public void SharedTagGroupsKeepDifferentQuestionSubjectsSeparate()
+    {
+        var firstSubject = Guid.NewGuid();
+        var secondSubject = Guid.NewGuid();
+        ContentFinding Finding(Guid subject)
+        {
+            var finding = new ContentFinding
+            {
+                Rule = "KP001", Severity = CheckSeverity.Information, Title = "Paid exercise",
+                Reason = "Subject VIP required", Suggestion = "Review pricing", QuestionSubjectId = subject
+            };
+            finding.CategoryIds.UnionWith([firstSubject, secondSubject]);
+            finding.Objects.Add(new("Tags", "1", "Shared tag", "CanManageTags"));
+            return finding;
+        }
+        Assert.AreEqual(2, ContentFindingGroup.Build([Finding(firstSubject), Finding(secondSubject)]).Count);
+        Assert.AreEqual(1, ContentFindingGroup.Build([Finding(firstSubject), Finding(firstSubject)]).Count);
     }
 
 }

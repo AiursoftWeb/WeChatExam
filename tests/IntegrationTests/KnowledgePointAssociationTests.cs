@@ -256,12 +256,12 @@ public class KnowledgePointAssociationTests
     [TestMethod]
     public async Task ContentChecksRequirePermissionAndRenderReadOnlyResults()
     {
-        var anonymous = await _http.GetAsync("/ContentChecks?run=true");
+        var anonymous = await _http.GetAsync("/ContentChecks/Results");
         Assert.AreEqual(HttpStatusCode.Found, anonymous.StatusCode);
         await LoginAsAdminAsync();
         var initial = await _http.GetStringAsync("/ContentChecks");
-        StringAssert.Contains(initial, "Content Configuration Checks");
-        Assert.IsFalse(initial.Contains("Scan window (UTC)"));
+        StringAssert.Contains(initial, "Start check");
+        Assert.IsFalse(initial.Contains("name=\"search\""));
         using (var scope = _server!.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
@@ -269,26 +269,41 @@ public class KnowledgePointAssociationTests
                 db.Tags.Add(new Tag { DisplayName = $"Diagnostic tag {i}", NormalizedName = $"DIAGNOSTIC TAG {i}", IsFree = false });
             await db.SaveChangesAsync();
         }
-        var first = await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic");
-        Assert.AreEqual(50, Regex.Matches(first, "<article ").Count);
-        StringAssert.Contains(first, "page 1 of 2");
-        var second = await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic&page=2");
-        Assert.AreEqual(5, Regex.Matches(second, "<article ").Count);
-        var filter = await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic%20tag%2054");
+        var first = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic");
+        Assert.AreEqual(12, Regex.Matches(first, "<article ").Count);
+        StringAssert.Contains(first, "Page 1 of 5");
+        var second = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic&page=2");
+        Assert.AreEqual(12, Regex.Matches(second, "<article ").Count);
+        var last = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic&page=5");
+        Assert.AreEqual(7, Regex.Matches(last, "<article ").Count);
+        var filter = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic%20tag%2054");
         Assert.AreEqual(1, Regex.Matches(filter, "<article ").Count);
-        StringAssert.Contains(filter, "/Tags/Edit/");
+        Assert.IsFalse(filter.Contains("<table"));
+        var detailsUrl = WebUtility.HtmlDecode(Regex.Match(filter, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+        Assert.IsFalse(string.IsNullOrEmpty(detailsUrl));
+        var detail = await _http.GetStringAsync(detailsUrl);
+        StringAssert.Contains(detail, "/Tags/Edit/");
+        StringAssert.Contains(detail, "What students experience");
         using var checkScope = _server!.Services.CreateScope();
         var checkDb = checkScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         Assert.AreEqual(55, checkDb.Tags.Count(t => t.NormalizedName.StartsWith("DIAGNOSTIC") && !t.IsFree));
         var cultureResponse = await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/ContentChecks");
         Assert.AreEqual(HttpStatusCode.Found, cultureResponse.StatusCode);
-        var chinese = WebUtility.HtmlDecode(await _http.GetStringAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic%20tag%2054"));
+        var chinese = WebUtility.HtmlDecode(await _http.GetStringAsync(detailsUrl));
         var culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN");
-        var viewResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.ContentChecks.Index", typeof(Startup).Assembly);
-        var serviceResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Services.ContentCheckService", typeof(Startup).Assembly);
-        StringAssert.Contains(chinese, viewResources.GetResourceSet(culture, true, false)!.GetString("Content Configuration Checks")!);
-        StringAssert.Contains(chinese, serviceResources.GetResourceSet(culture, true, false)!.GetString("Paid tag has no unlockable subject")!);
-
+        var viewResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.ContentChecks.Details", typeof(Startup).Assembly);
+        var controllerResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Controllers.Management.ContentChecksController", typeof(Startup).Assembly);
+        StringAssert.Contains(chinese, viewResources.GetResourceSet(culture, true, false)!.GetString("What students experience")!);
+        StringAssert.Contains(chinese, controllerResources.GetResourceSet(culture, true, false)!.GetString("No VIP can unlock this tag")!);
+        // Correcting a shared tag between listing and opening it returns a fresh list.
+        var tag = checkDb.Tags.Single(t => t.DisplayName == "Diagnostic tag 54");
+        tag.IsFree = true;
+        await checkDb.SaveChangesAsync();
+        var stale = await _http.GetAsync(detailsUrl);
+        Assert.AreEqual(HttpStatusCode.Found, stale.StatusCode);
+        StringAssert.Contains(stale.Headers.Location!.OriginalString, "changed=true");
+        var stalePage = await _http.GetAsync(stale.Headers.Location);
+        Assert.AreEqual(HttpStatusCode.OK, stalePage.StatusCode);
     }
 
     [TestMethod]
@@ -319,11 +334,14 @@ public class KnowledgePointAssociationTests
                 ["EmailOrUserName"] = email, ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = token
             }));
             Assert.AreEqual(HttpStatusCode.Found, signedIn.StatusCode);
-            var response = await client.GetAsync("/ContentChecks?run=true&rule=TAG001&search=Diagnostic%20shared%20tag");
+            var response = await client.GetAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic%20shared%20tag");
             if (permitted)
             {
                 Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-                var html = await response.Content.ReadAsStringAsync();
+                var cards = await response.Content.ReadAsStringAsync();
+                var detailUrl = WebUtility.HtmlDecode(Regex.Match(cards, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+                Assert.IsFalse(string.IsNullOrEmpty(detailUrl));
+                var html = await client.GetStringAsync(detailUrl);
                 Assert.IsTrue(html.Contains($"/Tags/Edit/{tag.Id}"));
                 StringAssert.Contains(html, "Restricted editor");
                 Assert.IsFalse(html.Contains($"/Questions/Edit/{question.Id}"));
@@ -334,6 +352,40 @@ public class KnowledgePointAssociationTests
                 Assert.IsFalse((await response.Content.ReadAsStringAsync()).Contains("Diagnostic shared tag"));
             }
         }
+    }
+
+    [TestMethod]
+    public async Task GuidedCardsGroupSharedExercisesAndKeepProgramReviewSeparate()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var subject = new Category { Id = Guid.NewGuid(), Title = "Grouped course", ParentId = null, IsFree = true };
+        var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG", IsFree = false };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", ParentId = null, Content = "Public lesson" };
+        db.AddRange(subject, tag, lesson, new VipProduct { Name = "Course VIP", CategoryId = subject.Id, DurationDays = 365 });
+        await db.SaveChangesAsync();
+        for (var i = 0; i < 50; i++)
+        {
+            var question = new Question { Id = Guid.NewGuid(), CategoryId = subject.Id, Content = $"Grouped exercise {i}" };
+            db.AddRange(question, new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
+                new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id });
+        }
+        await db.SaveChangesAsync();
+        var results = await _http.GetStringAsync("/ContentChecks/Results?rule=KP001&search=Grouped%20lesson");
+        Assert.AreEqual(1, Regex.Matches(results, "<article ").Count);
+        var card = Regex.Match(results, "<article[\\s\\S]*?</article>").Value;
+        StringAssert.Contains(card, "Pricing arrangement");
+        Assert.IsFalse(card.Contains("text-danger"));
+        Assert.IsFalse(card.Contains("<table"));
+        var link = WebUtility.HtmlDecode(Regex.Match(card, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+        var detail = await _http.GetStringAsync(link);
+        for (var i = 0; i < 50; i++) Assert.IsTrue(detail.Contains($"Grouped exercise {i}"));
+        StringAssert.Contains(detail, "Shared tags affect 50 exercises in 1 courses.");
+        StringAssert.Contains(detail, "rule=KP001");
+        var team = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&search=Grouped%20lesson");
+        StringAssert.Contains(team, "These items need developer review");
+        Assert.AreEqual(1, Regex.Matches(team, "<article ").Count);
     }
 
 }
