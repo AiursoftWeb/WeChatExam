@@ -28,7 +28,7 @@ public class KnowledgePointAssociationTests
     {
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
-        _server = await AppAsync<Startup>([], port: reservation.Port);
+        _server = await AppAsync<Startup>(["--applicationName", "Aiursoft.WeChatExam"], port: reservation.Port);
         try
         {
             reservation.ConfigureServer(_server);
@@ -253,4 +253,139 @@ public class KnowledgePointAssociationTests
         var invalidResponse = await _http.SendAsync(invalidRequest);
         Assert.AreEqual(HttpStatusCode.BadRequest, invalidResponse.StatusCode);
     }
+    [TestMethod]
+    public async Task ContentChecksRequirePermissionAndRenderReadOnlyResults()
+    {
+        var anonymous = await _http.GetAsync("/ContentChecks/Results");
+        Assert.AreEqual(HttpStatusCode.Found, anonymous.StatusCode);
+        await LoginAsAdminAsync();
+        var initial = await _http.GetStringAsync("/ContentChecks");
+        StringAssert.Contains(initial, "Start check");
+        Assert.IsFalse(initial.Contains("name=\"search\""));
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            for (var i = 0; i < 55; i++)
+                db.Tags.Add(new Tag { DisplayName = $"Diagnostic tag {i}", NormalizedName = $"DIAGNOSTIC TAG {i}", IsFree = false });
+            await db.SaveChangesAsync();
+        }
+        var first = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic");
+        Assert.AreEqual(12, Regex.Matches(first, "<article ").Count);
+        StringAssert.Contains(first, "Page 1 of 5");
+        var second = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic&page=2");
+        Assert.AreEqual(12, Regex.Matches(second, "<article ").Count);
+        var last = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic&page=5");
+        Assert.AreEqual(7, Regex.Matches(last, "<article ").Count);
+        var filter = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic%20tag%2054");
+        Assert.AreEqual(1, Regex.Matches(filter, "<article ").Count);
+        Assert.IsFalse(filter.Contains("<table"));
+        var detailsUrl = WebUtility.HtmlDecode(Regex.Match(filter, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+        Assert.IsFalse(string.IsNullOrEmpty(detailsUrl));
+        var detail = await _http.GetStringAsync(detailsUrl);
+        StringAssert.Contains(detail, "/Tags/Edit/");
+        StringAssert.Contains(detail, "What students experience");
+        using var checkScope = _server!.Services.CreateScope();
+        var checkDb = checkScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(55, checkDb.Tags.Count(t => t.NormalizedName.StartsWith("DIAGNOSTIC") && !t.IsFree));
+        var cultureResponse = await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/ContentChecks");
+        Assert.AreEqual(HttpStatusCode.Found, cultureResponse.StatusCode);
+        var chinese = WebUtility.HtmlDecode(await _http.GetStringAsync(detailsUrl));
+        var culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN");
+        var viewResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.ContentChecks.Details", typeof(Startup).Assembly);
+        var controllerResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Controllers.Management.ContentChecksController", typeof(Startup).Assembly);
+        StringAssert.Contains(chinese, viewResources.GetResourceSet(culture, true, false)!.GetString("What students experience")!);
+        StringAssert.Contains(chinese, controllerResources.GetResourceSet(culture, true, false)!.GetString("No VIP can unlock this tag")!);
+        // Correcting a shared tag between listing and opening it returns a fresh list.
+        var tag = checkDb.Tags.Single(t => t.DisplayName == "Diagnostic tag 54");
+        tag.IsFree = true;
+        await checkDb.SaveChangesAsync();
+        var stale = await _http.GetAsync(detailsUrl);
+        Assert.AreEqual(HttpStatusCode.Found, stale.StatusCode);
+        StringAssert.Contains(stale.Headers.Location!.OriginalString, "changed=true");
+        var stalePage = await _http.GetAsync(stale.Headers.Location);
+        Assert.AreEqual(HttpStatusCode.OK, stalePage.StatusCode);
+    }
+
+    [TestMethod]
+    public async Task ContentCheckPermissionDoesNotExposeUnauthorizedEditLinks()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var question = new Question { Id = Guid.NewGuid(), Content = "Restricted editor" };
+        var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG", IsFree = false };
+        db.AddRange(question, tag);
+        await db.SaveChangesAsync();
+        db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
+        await db.SaveChangesAsync();
+        foreach (var permitted in new[] { false, true })
+        {
+            var email = $"content-check-{permitted}@example.com";
+            var user = new User { UserName = email, Email = email, DisplayName = "Reviewer", EmailConfirmed = true };
+            Assert.IsTrue((await manager.CreateAsync(user, "Admin@123456!")).Succeeded);
+            if (permitted)
+                Assert.IsTrue((await manager.AddClaimAsync(user, new System.Security.Claims.Claim(
+                    Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanManageTags))).Succeeded);
+            var client = _http;
+            var login = await client.GetStringAsync("/Account/Login");
+            var token = Regex.Match(login, @"name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)""").Groups[1].Value;
+            var signedIn = await client.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string>
+            {
+                ["EmailOrUserName"] = email, ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = token
+            }));
+            Assert.AreEqual(HttpStatusCode.Found, signedIn.StatusCode);
+            var response = await client.GetAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic%20shared%20tag");
+            if (permitted)
+            {
+                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+                var cards = await response.Content.ReadAsStringAsync();
+                var detailUrl = WebUtility.HtmlDecode(Regex.Match(cards, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+                Assert.IsFalse(string.IsNullOrEmpty(detailUrl));
+                var html = await client.GetStringAsync(detailUrl);
+                Assert.IsTrue(html.Contains($"/Tags/Edit/{tag.Id}"));
+                StringAssert.Contains(html, "Restricted editor");
+                Assert.IsFalse(html.Contains($"/Questions/Edit/{question.Id}"));
+            }
+            else
+            {
+                Assert.IsTrue(response.StatusCode is HttpStatusCode.Forbidden or HttpStatusCode.Found);
+                Assert.IsFalse((await response.Content.ReadAsStringAsync()).Contains("Diagnostic shared tag"));
+            }
+        }
+    }
+
+    [TestMethod]
+    public async Task GuidedCardsGroupSharedExercisesAndKeepProgramReviewSeparate()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var subject = new Category { Id = Guid.NewGuid(), Title = "Grouped course", ParentId = null, IsFree = true };
+        var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG", IsFree = false };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", ParentId = null, Content = "Public lesson" };
+        db.AddRange(subject, tag, lesson, new VipProduct { Name = "Course VIP", CategoryId = subject.Id, DurationDays = 365 });
+        await db.SaveChangesAsync();
+        for (var i = 0; i < 50; i++)
+        {
+            var question = new Question { Id = Guid.NewGuid(), CategoryId = subject.Id, Content = $"Grouped exercise {i}" };
+            db.AddRange(question, new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
+                new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id });
+        }
+        await db.SaveChangesAsync();
+        var results = await _http.GetStringAsync("/ContentChecks/Results?rule=KP001&search=Grouped%20lesson");
+        Assert.AreEqual(1, Regex.Matches(results, "<article ").Count);
+        var card = Regex.Match(results, "<article[\\s\\S]*?</article>").Value;
+        StringAssert.Contains(card, "Pricing arrangement");
+        Assert.IsFalse(card.Contains("text-danger"));
+        Assert.IsFalse(card.Contains("<table"));
+        var link = WebUtility.HtmlDecode(Regex.Match(card, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+        var detail = await _http.GetStringAsync(link);
+        for (var i = 0; i < 50; i++) Assert.IsTrue(detail.Contains($"Grouped exercise {i}"));
+        StringAssert.Contains(detail, "Shared tags affect 50 exercises in 1 courses.");
+        StringAssert.Contains(detail, "rule=KP001");
+        var team = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&search=Grouped%20lesson");
+        StringAssert.Contains(team, "These items need developer review");
+        Assert.AreEqual(1, Regex.Matches(team, "<article ").Count);
+    }
+
 }

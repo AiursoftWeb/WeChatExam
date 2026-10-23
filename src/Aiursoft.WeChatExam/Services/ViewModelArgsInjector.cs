@@ -37,6 +37,7 @@ public class ViewModelArgsInjector(
     private void _useless_for_localizer()
     {
         // Titles, navbar strings.
+        _ = localizer["Content Configuration Checks"];
         _ = localizer["Features"];
         _ = localizer["Index"];
         _ = localizer["Directory"];

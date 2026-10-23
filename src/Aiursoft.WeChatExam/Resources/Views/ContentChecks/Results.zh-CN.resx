@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>受影响的项目数：{0}</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} 道练习</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>待审核的 {0} 项</value>
+  </data>
+
+  <data name="All courses" xml:space="preserve">
+    <value>所有课程</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>全部结果</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>所有状态</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>重新检查</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>检查完成</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>已检查 {0} 个知识点、{1} 道练习题和 {2} 份试卷。</value>
+  </data>
+
+  <data name="Checked at" xml:space="preserve">
+    <value>检查时间：</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>选择一张卡片，查看学生会遇到什么，以及需要复查哪些内容。</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>内容名称</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>课程</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>课程检查</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>查找特定内容</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>供我们团队处理</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>有意设置为付费的内容将在下方单独列出。小程序的运行情况可能仍需团队审核。</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>需要处理</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>需要审核</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>本次检查未发现配置问题</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>此视图中没有项目。您可以选择其他分组或清除搜索内容。</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>第 {0} 页，共 {1} 页</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>请确认</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>定价安排</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>定价项目</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>结果分组</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>结果页</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>该项目已更改。请从下方最新结果中选择。</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>这些项目需要由开发人员审核。它们并非要求您更改课程定价的指示。</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>您的检查结果</value>
+  </data>
+
+</root>

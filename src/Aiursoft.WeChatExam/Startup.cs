@@ -75,6 +75,7 @@ public class Startup : IWebStartup
         services.AddScoped<IVipProductService, VipProductService>();
         services.AddScoped<ICouponService, CouponService>();
         services.AddScoped<IPaperAccessService, PaperAccessService>();
+        services.AddScoped<ContentCheckService>();
 
         // Background job queue
         services.AddTaskQueueEngine();
