@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A student with the exercise&apos;s course VIP can open it directly, but may be blocked when browsing by its paid tag." xml:space="preserve">
+    <value>持有該練習所屬課程 VIP 的學生可以直接開啟練習，但按付費標籤瀏覽時可能會被拒絕存取。</value>
+  </data>
+  <data name="Different entry points require different VIPs" xml:space="preserve">
+    <value>不同進入途徑需要不同的 VIP</value>
+  </data>
+  <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>不同畫面會進行不同的存取權限檢查。我們團隊需要檢視小程式的行為。</value>
+  </data>
+  <data name="Exercise access differs between screens" xml:space="preserve">
+    <value>不同畫面對練習的存取權限各有不同</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>現有持有有效 VIP 的學生可能仍可使用此內容。新學生目前無法購買合適的 VIP 以解鎖此內容。</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>免費試卷包含付費練習</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>需檢視小程式入口檢查</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>目前沒有合適的 VIP 可供購買</value>
+  </data>
+  <data name="No VIP can unlock these exercises" xml:space="preserve">
+    <value>沒有任何 VIP 可以解鎖這些練習</value>
+  </data>
+  <data name="No VIP can unlock this paper" xml:space="preserve">
+    <value>沒有任何 VIP 可以解鎖這份試卷</value>
+  </data>
+  <data name="No VIP can unlock this tag" xml:space="preserve">
+    <value>沒有任何 VIP 可以解鎖此標籤</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>即使原本的練習題需要付費，學生仍可開啟這份免費試卷。試卷定價與個別練習題定價互不相關。</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>學生無法找到這份試卷，因為尚未建立已發布的試卷版本。</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>該知識點關聯至一個課程，而這些練習則屬於另一個課程。購買前者課程的 VIP，未必能解鎖這些練習。</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>該課堂和練習屬於不同課程</value>
+  </data>
+  <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
+    <value>這些練習未指定所屬課程，而且帶有未配對課程的付費標籤。即使購買所有 VIP，仍然無法解鎖。</value>
+  </data>
+  <data name="This exercise needs VIP" xml:space="preserve">
+    <value>此練習需要 VIP</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>這份試卷尚未建立已發布版本</value>
+  </data>
+  <data name="This paper requires payment, but no course VIP can unlock it." xml:space="preserve">
+    <value>此試卷需要付費，但沒有任何課程 VIP 可以解鎖。</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>這個試卷版本沒有練習</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>此已儲存的試卷版本沒有任何練習，因此無法作為可用的練習試卷。</value>
+  </data>
+  <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
+    <value>此標籤被標示為付費，但未連結任何課程 VIP。即使購買所有 VIP，仍無法解鎖此標籤。擁有獨立課程的練習或可在另一個畫面使用。</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>此 VIP 產品缺少所屬課程，因此無法提供預期的課程使用權。</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>此 VIP 產品需要關聯課程</value>
+  </data>
+  <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
+    <value>訪客可以閱讀這個知識點，但不能免費開啟這些練習。</value>
+  </data>
+
+</root>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A student with the exercise&apos;s course VIP can open it directly, but may be blocked when browsing by its paid tag." xml:space="preserve">
+    <value>Un alumno con el VIP del curso al que pertenece el ejercicio puede abrirlo directamente, pero es posible que no pueda acceder a él al buscarlo por su etiqueta de pago.</value>
+  </data>
+  <data name="Different entry points require different VIPs" xml:space="preserve">
+    <value>Cada punto de entrada requiere un VIP distinto.</value>
+  </data>
+  <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>Las distintas pantallas aplican diferentes controles de acceso. Nuestro equipo debe revisar el comportamiento del miniprograma.</value>
+  </data>
+  <data name="Exercise access differs between screens" xml:space="preserve">
+    <value>El acceso a los ejercicios varía según la pantalla</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>Los alumnos actuales con un VIP válido pueden seguir teniendo acceso. Actualmente, los nuevos alumnos no pueden comprar un VIP adecuado para desbloquear este contenido.</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>El examen gratuito incluye ejercicios de pago</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>Es necesario revisar las comprobaciones de acceso al miniprograma</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>No hay ningún VIP adecuado disponible para comprar</value>
+  </data>
+  <data name="No VIP can unlock these exercises" xml:space="preserve">
+    <value>Ningún VIP puede desbloquear estos ejercicios</value>
+  </data>
+  <data name="No VIP can unlock this paper" xml:space="preserve">
+    <value>Ningún VIP puede desbloquear este examen.</value>
+  </data>
+  <data name="No VIP can unlock this tag" xml:space="preserve">
+    <value>Ningún VIP puede desbloquear esta etiqueta</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>Los alumnos pueden abrir este examen gratuito aunque sus ejercicios originales sean de pago. El precio del examen y el de cada ejercicio son independientes.</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>Los estudiantes no pueden encontrar este examen porque no se ha creado una versión publicada.</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>El punto de conocimiento está vinculado a un curso, mientras que estos ejercicios pertenecen a otro. Es posible que comprar el VIP del primer curso no desbloquee los ejercicios.</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>La lección y el ejercicio pertenecen a cursos diferentes</value>
+  </data>
+  <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
+    <value>Estos ejercicios no tienen ningún curso asignado y tienen etiquetas de pago que no están asociadas a ningún curso. Aunque se compren todos los VIP, seguirán sin poder desbloquearse.</value>
+  </data>
+  <data name="This exercise needs VIP" xml:space="preserve">
+    <value>Este ejercicio requiere una suscripción VIP</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>A este examen le falta su versión publicada</value>
+  </data>
+  <data name="This paper requires payment, but no course VIP can unlock it." xml:space="preserve">
+    <value>Este examen requiere pago, pero ningún VIP de curso puede desbloquearlo.</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>Esta versión del examen no contiene ejercicios</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>Esta versión guardada del examen no contiene ejercicios, por lo que no se puede utilizar para practicar.</value>
+  </data>
+  <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
+    <value>Esta etiqueta está marcada como de pago, pero no tiene asociado ningún VIP de curso. Ni siquiera comprando todos los VIP se puede desbloquear esta etiqueta. Es posible que los ejercicios con curso propio funcionen desde otra pantalla.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>A este producto VIP le falta el curso. No puede conceder el acceso al curso previsto.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Este producto VIP necesita un curso</value>
+  </data>
+  <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
+    <value>Los visitantes pueden consultar el punto de conocimiento, pero no abrir estos ejercicios gratis.</value>
+  </data>
+
+</root>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A student with the exercise&apos;s course VIP can open it directly, but may be blocked when browsing by its paid tag." xml:space="preserve">
+    <value>해당 연습 문제의 강좌 VIP를 보유한 학생은 문제를 직접 열 수 있지만, 유료 태그를 통해 찾아보면 접근이 차단될 수 있습니다.</value>
+  </data>
+  <data name="Different entry points require different VIPs" xml:space="preserve">
+    <value>진입 경로마다 필요한 VIP가 다릅니다</value>
+  </data>
+  <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>화면마다 접근 권한을 확인하는 방식이 다릅니다. 미니 프로그램의 동작을 검토해야 합니다.</value>
+  </data>
+  <data name="Exercise access differs between screens" xml:space="preserve">
+    <value>화면마다 연습 문제 이용 권한이 다릅니다</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>유효한 VIP를 보유한 기존 학생은 계속 이용할 수 있습니다. 신규 학생은 현재 이 콘텐츠를 이용할 수 있는 적절한 VIP를 구매할 수 없습니다.</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>무료 시험지에 유료 문제가 포함되어 있습니다</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>미니 프로그램 진입 경로 점검이 필요합니다</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>현재 구매할 수 있는 적합한 VIP가 없습니다</value>
+  </data>
+  <data name="No VIP can unlock these exercises" xml:space="preserve">
+    <value>이 연습 문제들을 이용할 수 있는 VIP가 없습니다</value>
+  </data>
+  <data name="No VIP can unlock this paper" xml:space="preserve">
+    <value>어떤 VIP로도 이 시험지를 열 수 없습니다</value>
+  </data>
+  <data name="No VIP can unlock this tag" xml:space="preserve">
+    <value>어떤 VIP로도 이 태그를 잠금 해제할 수 없습니다</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>학생은 원래 문제가 유료여도 이 무료 시험지를 열 수 있습니다. 시험지 가격과 개별 문제 가격은 서로 별개입니다.</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>학생들은 출제된 시험지 버전이 생성되지 않아 이 시험지를 찾을 수 없습니다.</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>이 지식 항목은 한 강의에 연결되어 있지만, 이 연습 문제들은 다른 강의에 속합니다. 첫 번째 강의의 VIP를 구매해도 연습 문제를 이용하지 못할 수 있습니다.</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>강의와 연습 문제가 서로 다른 강의에 속해 있습니다</value>
+  </data>
+  <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
+    <value>이 연습 문제들은 배정된 강좌가 없고, 연결된 강좌가 없는 유료 태그가 붙어 있습니다. 모든 VIP 상품을 구매해도 잠금을 해제할 수 없습니다.</value>
+  </data>
+  <data name="This exercise needs VIP" xml:space="preserve">
+    <value>이 연습 문제에는 VIP가 필요합니다</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>이 시험지의 게시된 버전이 없습니다</value>
+  </data>
+  <data name="This paper requires payment, but no course VIP can unlock it." xml:space="preserve">
+    <value>이 시험지는 유료이지만, 이를 해제할 수 있는 과정 VIP가 없습니다.</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>이 시험지 버전에는 문제가 없습니다</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>저장된 이 시험지 버전에는 문제가 없어 실제로 풀 수 있는 연습 시험지로 사용할 수 없습니다.</value>
+  </data>
+  <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
+    <value>이 태그는 유료로 표시되어 있지만 연결된 코스 VIP가 없습니다. 모든 VIP를 구매해도 이 태그를 해제할 수 없습니다. 자체 코스가 있는 연습 문제는 다른 화면에서 이용할 수 있을 수도 있습니다.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>이 VIP 상품에는 관련 강의가 없습니다. 의도한 강의 접근 권한을 부여할 수 없습니다.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>이 VIP 상품에는 과정이 필요합니다</value>
+  </data>
+  <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
+    <value>방문자는 지식 포인트를 읽을 수 있지만, 이 연습 문제는 무료로 열람할 수 없습니다.</value>
+  </data>
+
+</root>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+    <value>Uma consulta à lista sem filtro por etiqueta pode devolver esta pergunta paga a um utilizador com sessão iniciada e sem VIP; o respetivo endpoint de detalhes devolve 403.</value>
+  </data>
+  <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
+    <value>Uma adesão ao tema associado a um ponto de conhecimento não desbloqueia necessariamente o tema do próprio exercício.</value>
+  </data>
+  <data name="All relevant VIPs" xml:space="preserve">
+    <value>Todos os VIP relevantes</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Anónimo</value>
+  </data>
+  <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
+    <value>Atribua o tema pretendido à pergunta ou corrija as respetivas etiquetas pagas após analisar o seu impacto conjunto.</value>
+  </data>
+  <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Associe o tema pretendido antes de colocar este produto à venda. Analise separadamente as adesões existentes.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
+    <value>Apenas autorização: um instantâneo cujo acesso é negado devolve 200 com HasAccess=false e sem perguntas. Também é necessário um instantâneo utilizável.</value>
+  </data>
+  <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
+    <value>As definições de gratuitidade das categorias não restringem a API pública de conhecimento. Algumas verificações de acesso da Mini Program utilizam nomes de produtos em vez dos IDs de disciplinas do servidor.</value>
+  </data>
+  <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
+    <value>Verifique os mapeamentos da taxonomia das etiquetas e o assunto da pergunta. Se ambos forem intencionais, peça à equipa de engenharia que analise o comportamento dos pontos de entrada.</value>
+  </data>
+  <data name="Client entry checks require engineering verification" xml:space="preserve">
+    <value>As verificações de acesso do cliente requerem validação por parte da equipa de engenharia</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
+    <value>Confirme se as vendas estão intencionalmente suspensas; caso contrário, ative um produto para uma das disciplinas necessárias.</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
+    <value>Confirme se as vendas estão intencionalmente suspensas; caso contrário, ative o produto necessário para a disciplina ou para o exame oficial.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
+    <value>Confirme se este ensino intencional entre disciplinas; caso contrário, corrija a disciplina da pergunta ou a associação ao conhecimento.</value>
+  </data>
+  <data name="Custom VIP selection" xml:space="preserve">
+    <value>Seleção de VIP personalizada</value>
+  </data>
+  <data name="Eligible for the list; pagination and other query filters still apply." xml:space="preserve">
+    <value>Elegível para a lista; continuam a aplicar-se a paginação e os restantes filtros da consulta.</value>
+  </data>
+  <data name="Engineering must review the endpoint rules. Do not change shared content pricing merely to suppress this diagnostic." xml:space="preserve">
+    <value>A equipa de engenharia tem de rever as regras dos endpoints. Não altere os preços dos conteúdos partilhados apenas para suprimir este diagnóstico.</value>
+  </data>
+  <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
+    <value>Mesmo todos os VIPs relevantes não conseguem desbloquear este documento.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>As adesões ativas existentes poderão funcionar, mas os novos clientes não têm forma de comprar.</value>
+  </data>
+  <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
+    <value>Os VIP ativos existentes podem continuar a funcionar, mas a compra de produtos atualmente ativos não permite desbloquear esta pergunta.</value>
+  </data>
+  <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
+    <value>O caderno gratuito contém instantâneos de perguntas atualmente pagas</value>
+  </data>
+  <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
+    <value>Se esta for uma etiqueta partilhada descritiva, considere torná-la gratuita. Se vende acesso, mapeie a sua taxonomia para a disciplina pretendida. Revise o conteúdo afetado antes de alterar uma etiqueta partilhada.</value>
+  </data>
+  <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
+    <value>Mantenha esta configuração se o exercício for pago intencionalmente. Se dever ser público, reveja primeiro todas as etiquetas pagas e o seu impacto partilhado.</value>
+  </data>
+  <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
+    <value>Mantenha esta situação se o artigo gratuito for intencional. Reveja o preço do próprio artigo se o respetivo instantâneo dever ser restringido.</value>
+  </data>
+  <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
+    <value>O ponto de conhecimento e o exercício referem-se a disciplinas diferentes</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Pontos de conhecimento</value>
+  </data>
+  <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
+    <value>Os novos clientes não dispõem de uma opção de compra atualmente. As adesões ativas existentes ainda poderão conceder acesso.</value>
+  </data>
+  <data name="No enabled product combination unlocks this question" xml:space="preserve">
+    <value>Nenhuma combinação de produtos ativados desbloqueia esta pergunta</value>
+  </data>
+  <data name="No enabled product unlocks this paper" xml:space="preserve">
+    <value>Nenhum produto ativo desbloqueia este exame</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Nenhum produto VIP ativo desbloqueia esta etiqueta</value>
+  </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Nenhum membro VIP pode desbloquear esta entrada da etiqueta. Uma pergunta com um tema próprio poderá, ainda assim, estar acessível através dos detalhes da pergunta.</value>
+  </data>
+  <data name="Paid paper has no unlockable subject" xml:space="preserve">
+    <value>O artigo pago não tem uma disciplina desbloqueável</value>
+  </data>
+  <data name="Paid question cannot be unlocked even with all VIPs" xml:space="preserve">
+    <value>A pergunta paga não pode ser desbloqueada, mesmo com todos os VIPs</value>
+  </data>
+  <data name="Paid question requires sign-in (403)." xml:space="preserve">
+    <value>A pergunta paga requer início de sessão (403).</value>
+  </data>
+  <data name="Paid tag denies access (403): {0}" xml:space="preserve">
+    <value>Etiqueta paga nega o acesso (403): {0}</value>
+  </data>
+  <data name="Paid tag has no unlockable subject" xml:space="preserve">
+    <value>A etiqueta paga não tem nenhum assunto que permita desbloqueá-la</value>
+  </data>
+  <data name="Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted." xml:space="preserve">
+    <value>O acesso ao artigo é independente do acesso à pergunta original. O instantâneo guardado continua a poder ser utilizado mesmo que a pergunta original seja alterada ou eliminada.</value>
+  </data>
+  <data name="Paper snapshot is empty" xml:space="preserve">
+    <value>A versão instantânea do exame está vazia</value>
+  </data>
+  <data name="Paper snapshots" xml:space="preserve">
+    <value>Capturas de ecrã dos testes</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papers</value>
+  </data>
+  <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
+    <value>O ponto de conhecimento público está associado a um exercício pago</value>
+  </data>
+  <data name="Publishable paper has no snapshot" xml:space="preserve">
+    <value>O artigo pronto para publicação não tem instantâneo</value>
+  </data>
+  <data name="Question content is returned (200)." xml:space="preserve">
+    <value>O conteúdo da pergunta é devolvido (200).</value>
+  </data>
+  <data name="Question details return 403." xml:space="preserve">
+    <value>Os detalhes da pergunta devolvem 403.</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Questões</value>
+  </data>
+  <data name="Real-exam VIP only" xml:space="preserve">
+    <value>Apenas VIP de exame real</value>
+  </data>
+  <data name="Review its questions and create a snapshot through the existing paper management workflow." xml:space="preserve">
+    <value>Reveja as perguntas e crie um instantâneo através do fluxo de trabalho existente de gestão de provas.</value>
+  </data>
+  <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
+    <value>Reveja as associações à disciplina, a definição de exame real e a definição de acesso gratuito.</value>
+  </data>
+  <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
+    <value>Reveja as perguntas do teste e publique uma versão corrigida. Alterar as perguntas originais não atualiza as versões existentes.</value>
+  </data>
+  <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Reveja o tema e os produtos VIP disponíveis. Os produtos desativados não invalidam as adesões ativas existentes.</value>
+  </data>
+  <data name="Signed in without active VIP" xml:space="preserve">
+    <value>Sessão iniciada sem VIP ativo</value>
+  </data>
+  <data name="Signed-in list and question details use different access rules" xml:space="preserve">
+    <value>A lista para utilizadores com sessão iniciada e os detalhes da pergunta seguem regras de acesso diferentes</value>
+  </data>
+  <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
+    <value>A versão do instantâneo {0} não contém exercícios. Ainda é possível aceder a ligações para instantâneos antigos.</value>
+  </data>
+  <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
+    <value>O VIP da categoria e a regra da etiqueta paga são incompatíveis</value>
+  </data>
+  <data name="Subject VIP product has no valid subject" xml:space="preserve">
+    <value>O produto VIP da disciplina não tem uma disciplina válida</value>
+  </data>
+  <data name="Subject VIP: {0}" xml:space="preserve">
+    <value>VIP da disciplina: {0}</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Disciplinas</value>
+  </data>
+  <data name="Tag gate only; anonymous lists also exclude every question with a paid tag." xml:space="preserve">
+    <value>A verificação limita-se à etiqueta; as listas anónimas também excluem todas as perguntas com uma etiqueta paga.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomias</value>
+  </data>
+  <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
+    <value>A lista pública de provas exclui esta prova porque não existe qualquer instantâneo.</value>
+  </data>
+  <data name="The question&apos;s subject VIP is required (403)." xml:space="preserve">
+    <value>É necessário o VIP do tema da pergunta (403).</value>
+  </data>
+  <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
+    <value>O VIP do tema da pergunta dá acesso aos respetivos detalhes, mas pelo menos uma etiqueta paga não aceita esse mesmo VIP.</value>
+  </data>
+  <data name="This product cannot grant the intended subject membership." xml:space="preserve">
+    <value>Este produto não pode conceder a adesão ao tema pretendido.</value>
+  </data>
+  <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
+    <value>Esta pergunta sem categoria requer todas as etiquetas pagas; pelo menos uma etiqueta não tem associação a uma disciplina.</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Verifique o Mini Program implantado separadamente. Esta verificação do servidor não simula a navegação do cliente nem prova que um cliente pode aceder a todos os ecrãs.</value>
+  </data>
+  <data name="VIP products" xml:space="preserve">
+    <value>Produtos VIP</value>
+  </data>
+  <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
+    <value>Os visitantes podem consultar os conteúdos de conhecimento, mas este exercício devolve o erro 403 a utilizadores não autenticados. As regras de negócio atuais permitem exercícios pagos.</value>
+  </data>
+
+</root>
