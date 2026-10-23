@@ -3,7 +3,7 @@
 
 <h1 class="h3 mb-3">@Localizer["Content Configuration Checks"]</h1>
 <p>@Localizer["Check who can access knowledge points, exercises and papers, and find configuration that needs attention."]</p>
-<p class="text-muted">@Localizer["This page only diagnoses configuration. It does not change content, memberships or access rules."]</p>
+<p class="text-muted">@Localizer["This page only diagnoses configuration. It does not change content, VIP memberships or access rules."]</p>
 
 <form method="get" asp-action="Index" class="card mb-3">
     <div class="card-body">
@@ -143,7 +143,7 @@
                                 <small class="text-muted">(@item.Id)</small>
                                 @if (item.Controller == "Tags")
                                 {
-                                    <a href="#tag-impact-@item.Id">@Localizer["Shared impact"]</a>
+                                    <a href="#tag-impact-@item.Id">@Localizer["View affected content"]</a>
                                 }
                             </li>
                         }
@@ -183,7 +183,7 @@
         </article>
     }
     <details class="mb-4">
-        <summary>@Localizer["Shared tag impact for these findings"]</summary>
+        <summary>@Localizer["Content affected by shared tags"]</summary>
         <p class="mt-2">@Localizer["Changing a tag affects all these questions, subjects and knowledge associations, including content outside the current filters."]</p>
         @foreach (var tag in Model.Results.SelectMany(f => f.Objects).Where(o => o.Controller == "Tags").DistinctBy(o => o.Id))
         {

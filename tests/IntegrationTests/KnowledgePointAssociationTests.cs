@@ -286,8 +286,8 @@ public class KnowledgePointAssociationTests
         var culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN");
         var viewResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.ContentChecks.Index", typeof(Startup).Assembly);
         var serviceResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Services.ContentCheckService", typeof(Startup).Assembly);
-        StringAssert.Contains(chinese, viewResources.GetString("Content Configuration Checks", culture)!);
-        StringAssert.Contains(chinese, serviceResources.GetString("Paid tag has no unlockable subject", culture)!);
+        StringAssert.Contains(chinese, viewResources.GetResourceSet(culture, true, false)!.GetString("Content Configuration Checks")!);
+        StringAssert.Contains(chinese, serviceResources.GetResourceSet(culture, true, false)!.GetString("Paid tag has no unlockable subject")!);
 
     }
 
@@ -311,7 +311,7 @@ public class KnowledgePointAssociationTests
             if (permitted)
                 Assert.IsTrue((await manager.AddClaimAsync(user, new System.Security.Claims.Claim(
                     Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanManageTags))).Succeeded);
-            using var client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false, CookieContainer = new CookieContainer() }) { BaseAddress = _http.BaseAddress };
+            var client = _http;
             var login = await client.GetStringAsync("/Account/Login");
             var token = Regex.Match(login, @"name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)""").Groups[1].Value;
             var signedIn = await client.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string>

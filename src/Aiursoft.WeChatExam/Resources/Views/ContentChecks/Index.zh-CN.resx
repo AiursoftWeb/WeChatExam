@@ -63,6 +63,9 @@
   <data name="Check who can access knowledge points, exercises and papers, and find configuration that needs attention." xml:space="preserve">
     <value>检查谁可以访问知识点、练习和试卷，并找出需要关注的配置。</value>
   </data>
+  <data name="Content affected by shared tags" xml:space="preserve">
+    <value>受共享标签影响的内容</value>
+  </data>
   <data name="Content Configuration Checks" xml:space="preserve">
     <value>内容配置检查</value>
   </data>
@@ -156,11 +159,17 @@
   <data name="This page only diagnoses configuration. It does not change content, memberships or access rules." xml:space="preserve">
     <value>此页面仅用于诊断配置，不会更改内容、成员关系或访问规则。</value>
   </data>
+  <data name="This page only diagnoses configuration. It does not change content, VIP memberships or access rules." xml:space="preserve">
+    <value>此页面仅用于检查配置，不会更改内容、VIP 会员资格或访问规则。</value>
+  </data>
   <data name="This scan evaluates server content access, not every Mini Program screen or the ability to submit answers. All linked exercises are checked, including those not currently shown by the client." xml:space="preserve">
     <value>本次扫描评估的是服务器端的内容访问权限，并非小程序的每个页面或提交答案的能力。所有关联的练习都会被检查，包括客户端当前未显示的练习。</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>用户场景</value>
+  </data>
+  <data name="View affected content" xml:space="preserve">
+    <value>查看受影响的内容</value>
   </data>
 
 </root>
