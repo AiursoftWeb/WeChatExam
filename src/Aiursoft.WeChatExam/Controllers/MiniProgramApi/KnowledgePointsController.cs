@@ -166,6 +166,9 @@ public class KnowledgePointsController : ControllerBase
                     Id = q.Id,
                     Text = q.Content,
                     Answer = q.StandardAnswer,
+                    // Linking a question to a public lesson includes its exercise, regardless of paid tags.
+                    // Return options here so anonymous learners need not call the restricted question API.
+                    Metadata = q.Metadata,
                 }).ToList()
         }).ToList();
 

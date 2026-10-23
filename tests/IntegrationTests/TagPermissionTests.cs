@@ -125,6 +125,53 @@ public class TagPermissionTests
     }
 
     [TestMethod]
+    public async Task KnowledgePointExercises_AnonymousReceiveOptionsWithoutUnlockingPaidQuestionDetails()
+    {
+        var (categoryId, _, paidTagId) = await SetupTestDataAsync();
+        Guid questionId, unlinkedId, knowledgePointId;
+        const string metadata = "{\"options\":[\"True\",\"False\"]}";
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var question = db.Questions.Single(q => q.Content == "Q2");
+            question.CategoryId = categoryId;
+            question.Metadata = metadata;
+            question.StandardAnswer = "True";
+            var point = new KnowledgePoint { Title = "Public lesson", Content = "Lesson content", ParentId = null };
+            var unlinked = new Question { Content = "Paid question outside the lesson", CategoryId = categoryId };
+            db.AddRange(point, unlinked);
+            await db.SaveChangesAsync();
+            questionId = question.Id;
+            unlinkedId = unlinked.Id;
+            knowledgePointId = point.Id;
+            db.CategoryKnowledgePoints.Add(new CategoryKnowledgePoint { CategoryId = categoryId, KnowledgePointId = point.Id });
+            db.KnowledgePointQuestions.Add(new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = question.Id });
+            db.QuestionTags.Add(new QuestionTag { QuestionId = unlinked.Id, TagId = paidTagId });
+            await db.SaveChangesAsync();
+        }
+
+        // A public lesson includes its exercises even when those questions carry paid tags.
+        var response = await _http.GetAsync($"/api/KnowledgePoints?categoryId={categoryId}");
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var points = System.Text.Json.Nodes.JsonNode.Parse(await response.Content.ReadAsStringAsync())!.AsArray();
+        Assert.AreEqual(1, points.Count);
+        Assert.AreEqual(knowledgePointId, points[0]!["id"]!.GetValue<Guid>());
+        var questions = points[0]!["questions"]!.AsArray();
+        Assert.AreEqual(1, questions.Count, "Only questions explicitly linked to this lesson are exposed.");
+        Assert.AreEqual(questionId, questions[0]!["id"]!.GetValue<Guid>());
+        Assert.AreEqual("Q2", questions[0]!["text"]!.GetValue<string>());
+        Assert.AreEqual("True", questions[0]!["answer"]!.GetValue<string>());
+        Assert.AreEqual(metadata, questions[0]!["metadata"]?.GetValue<string>());
+
+        // Lesson access does not grant anonymous access to the paid question-detail endpoint.
+        foreach (var id in new[] { questionId, unlinkedId })
+        {
+            Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{id}")).StatusCode);
+        }
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+    }
+
+    [TestMethod]
     public async Task GetQuestions_Anonymous_FiltersPaidQuestionsBeforePaginationAndRandomSelection()
     {
         var (catId, freeTagId, paidTagId) = await SetupTestDataAsync();

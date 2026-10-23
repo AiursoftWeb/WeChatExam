@@ -20,4 +20,6 @@ public class QuestionContentDto
     [Required]
     public string Text { get; set; } = string.Empty;
     public string Answer { get; set; } = string.Empty;
+    /// <summary>Question options included with the public lesson for anonymous practice.</summary>
+    public string Metadata { get; set; } = string.Empty;
 }
