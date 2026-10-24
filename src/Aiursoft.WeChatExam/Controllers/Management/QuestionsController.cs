@@ -443,7 +443,6 @@ public class QuestionsController(
         question.CategoryId = model.CategoryId;
         question.OrderIndex = model.OrderIndex;
 
-        context.Questions.Update(question);
         await context.SaveChangesAsync();
 
         // Process tags

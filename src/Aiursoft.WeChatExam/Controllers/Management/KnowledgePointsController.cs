@@ -152,7 +152,7 @@ public class KnowledgePointsController(
     }
 
     // GET: knowledgePoints/{id}
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(Guid? id, string? returnUrl)
     {
         if (id == null) return NotFound();
 
@@ -169,6 +169,7 @@ public class KnowledgePointsController(
         return this.StackView(new DetailsViewModel
         {
             KnowledgePoint = knowledgePoint,
+            ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null,
             AssociatedCategories = knowledgePoint.CategoryKnowledgePoints
                 .Select(ck => ck.Category)
                 .ToList(),
@@ -180,7 +181,7 @@ public class KnowledgePointsController(
 
     // GET: knowledgePoints/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
-    public async Task<IActionResult> Edit(Guid? id, string? checkReturnUrl = null)
+    public async Task<IActionResult> Edit(Guid? id, string? returnUrl, string? checkReturnUrl = null)
     {
         ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
@@ -204,6 +205,7 @@ public class KnowledgePointsController(
         var model = new EditViewModel
         {
             Id = id.Value,
+            ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null,
             Title = knowledgePoint.Title,
             Content = knowledgePoint.Content,
             ParentId = knowledgePoint.ParentId,
@@ -381,10 +383,10 @@ public class KnowledgePointsController(
             }
         }
 
-        context.KnowledgePoints.Update(knowledgePoint);
         await context.SaveChangesAsync();
 
         if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
+        if (Url.IsLocalUrl(model.ReturnUrl)) return Redirect(model.ReturnUrl!);
 
         return RedirectToAction(nameof(Details), new { id = knowledgePoint.Id });
     }

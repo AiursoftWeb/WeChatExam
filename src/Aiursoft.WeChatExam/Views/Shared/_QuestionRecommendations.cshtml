@@ -1,0 +1,33 @@
+@using Aiursoft.WeChatExam.Authorization
+@model Aiursoft.WeChatExam.Models.ContentSearchViewModels.QuestionRecommendationsViewModel
+
+<section class="card" data-question-recommendations data-content-id="@Model.Id"
+         data-knowledge-point="@Model.IsKnowledgePoint.ToString().ToLowerInvariant()"
+         data-can-edit="@User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditQuestions).ToString().ToLowerInvariant()"
+         data-endpoint="@Url.Action(Model.IsKnowledgePoint ? "RecommendedQuestions" : "SimilarQuestions", "ContentSearch")"
+         data-details-url="@Url.Action("Details", "Questions")" data-edit-url="@Url.Action("Edit", "Questions")">
+    <div class="card-header d-flex justify-content-between align-items-center gap-2">
+        <h2 class="card-title mb-0">@(Model.IsKnowledgePoint ? @Localizer["Recommended Exam Questions"] : @Localizer["Similar Exam Questions"])</h2>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-refresh-recommendations>@Localizer["Refresh"]</button>
+    </div>
+    <div class="card-body">
+        <p class="text-muted small">@Localizer["Up to five related exam questions. Refresh after changing the content."]</p>
+        <div data-recommendation-results aria-live="polite"></div>
+    </div>
+    <div data-recommendation-localization hidden>
+        <span data-key="loading">@Localizer["Finding related exam questions..."]</span>
+        <span data-key="empty">@Localizer["No related exam questions found yet."]</span>
+        <span data-key="unavailable">@Localizer["Recommendations are unavailable. Please try again later."]</span>
+        <span data-key="preview">@Localizer["Preview"]</span>
+        <span data-key="answer">@Localizer["Answer"]</span>
+        <span data-key="open">@Localizer["Open Details"]</span>
+        <span data-key="edit">@Localizer["Edit in New Tab"]</span>
+        <span data-key="associate">@Localizer["Associate"]</span>
+        <span data-key="type-0">@Localizer["Choice"]</span>
+        <span data-key="type-1">@Localizer["Fill in the Blank"]</span>
+        <span data-key="type-2">@Localizer["True or False"]</span>
+        <span data-key="type-3">@Localizer["Short Answer"]</span>
+        <span data-key="type-4">@Localizer["Essay"]</span>
+        <span data-key="type-5">@Localizer["Definition"]</span>
+    </div>
+</section>

@@ -24,14 +24,23 @@
   <data name="Add Selected" xml:space="preserve">
     <value>添加选中项</value>
   </data>
+  <data name="Advanced: MTQL" xml:space="preserve">
+    <value>高级：MTQL</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>所有类型</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>关联</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>关联分类</value>
   </data>
   <data name="Associated Questions" xml:space="preserve">
     <value>关联问题</value>
+  </data>
+  <data name="Associations are applied when you save this knowledge point." xml:space="preserve">
+    <value>关联将在保存此知识点时生效。</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
@@ -42,14 +51,35 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>编辑知识点</value>
   </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>输入几个词来查找问题。</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>请输入一个主题或几个关键词...</value>
+  </data>
   <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
     <value>输入 MTQL 查询（例如 content:&quot;数学&quot;）</value>
   </data>
   <data name="Error:" xml:space="preserve">
     <value>错误：</value>
   </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>考试题目类型</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>查找要关联的试题</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>查找题目</value>
+  </data>
+  <data name="Find Questions to Associate" xml:space="preserve">
+    <value>查找要关联的问题</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>按住 Ctrl (Windows) 或 Command (Mac) 选择多个选项。</value>
+  </data>
+  <data name="Keywords and Related Topics" xml:space="preserve">
+    <value>关键词和相关主题</value>
   </data>
   <data name="MTQL Question Finder" xml:space="preserve">
     <value>MTQL 题目查找器</value>
@@ -59,6 +89,12 @@
   </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>父级知识点</value>
+  </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>问题类型</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>移除</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
@@ -71,6 +107,12 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>搜索</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>搜索不可用。请重试。</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>搜索模式</value>
   </data>
   <data name="Search results will appear here..." xml:space="preserve">
     <value>搜索结果将显示在这里...</value>
