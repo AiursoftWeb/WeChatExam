@@ -41,7 +41,15 @@
         @Localizer["Showing up to 50 relevant results. Refine your search to narrow the list."]
         @if (Model.UsedAi)
         {
-            <span class="badge bg-light text-dark">@Localizer["Related content included"]</span>
+            <span class="badge bg-primary">
+                <i class="align-middle me-1" data-lucide="bot"></i> @Localizer["AI Semantic Search"]
+            </span>
+        }
+        else
+        {
+            <span class="badge bg-secondary">
+                <i class="align-middle me-1" data-lucide="search"></i> @Localizer["Keyword Search"]
+            </span>
         }
     </p>
     @if (Model.Results.Count == 0)
