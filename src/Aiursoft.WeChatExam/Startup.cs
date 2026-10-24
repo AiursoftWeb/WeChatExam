@@ -84,6 +84,13 @@ public class Startup : IWebStartup
         var orphanAvatarCleanupJob = services.RegisterBackgroundJob<Services.BackgroundJobs.OrphanAvatarCleanupJob>();
         services.RegisterScheduledTask(registration: orphanAvatarCleanupJob, period: TimeSpan.FromHours(6), startDelay: TimeSpan.FromMinutes(5));
 
+        var questionEmbeddingsJob = services.RegisterBackgroundJob<Services.BackgroundJobs.GenerateQuestionEmbeddingsJob>();
+        services.RegisterScheduledTask(registration: questionEmbeddingsJob,
+            period: TimeSpan.FromMinutes(30), startDelay: TimeSpan.FromMinutes(50));
+        var knowledgePointEmbeddingsJob = services.RegisterBackgroundJob<Services.BackgroundJobs.GenerateKnowledgePointEmbeddingsJob>();
+        services.RegisterScheduledTask(registration: knowledgePointEmbeddingsJob,
+            period: TimeSpan.FromMinutes(30), startDelay: TimeSpan.FromMinutes(55));
+
         // Configure SKIT WeChat API Client
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;
         if (appSettings.WeChatEnabled)

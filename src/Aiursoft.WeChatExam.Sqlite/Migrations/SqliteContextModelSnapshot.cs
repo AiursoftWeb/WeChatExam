@@ -15,7 +15,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.12");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.13");
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.AnswerRecord", b =>
                 {
@@ -484,6 +484,15 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("Embedding")
+                        .HasColumnType("BLOB");
+
+                    b.Property<DateTime>("LastEmbeddedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastUpdatedAt")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("TEXT");
 
@@ -766,6 +775,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("Embedding")
+                        .HasColumnType("BLOB");
+
                     b.Property<string>("Explanation")
                         .IsRequired()
                         .HasMaxLength(3000)
@@ -773,6 +785,12 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.Property<int>("GradingStrategy")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("LastEmbeddedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastUpdatedAt")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Metadata")
                         .IsRequired()

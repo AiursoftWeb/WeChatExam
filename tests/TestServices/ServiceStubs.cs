@@ -64,7 +64,17 @@ public sealed class StubVipProductService : IVipProductService
 public sealed class StubGlobalSettingsService : IGlobalSettingsService
 {
     public string GradingPrompt { get; set; } = string.Empty;
-    public Task<string> GetSettingValueAsync(string key) => Task.FromResult(key == SettingsMap.AiPromptGradingDefault ? GradingPrompt : null!);
+    public bool EmbeddingEnabled { get; set; }
+    public string EmbeddingEndpoint { get; set; } = "https://embedding.example.com";
+    public Task<bool> IsAiSearchEnabledAsync() => Task.FromResult(EmbeddingEnabled);
+    public Task<string> GetEmbeddingEndpointAsync() => Task.FromResult(EmbeddingEndpoint);
+    public Task<string> GetEmbeddingTokenAsync() => Task.FromResult(string.Empty);
+    public Task<string> GetSettingValueAsync(string key) => Task.FromResult(key switch
+    {
+        SettingsMap.AiPromptGradingDefault => GradingPrompt,
+        SettingsMap.EmbeddingModel => "bge-m3:latest",
+        _ => string.Empty
+    });
     public Task<bool> GetBoolSettingAsync(string key) => Task.FromResult(false);
     public Task<int> GetIntSettingAsync(string key) => Task.FromResult(0);
     public bool IsOverriddenByConfig(string key) => false;

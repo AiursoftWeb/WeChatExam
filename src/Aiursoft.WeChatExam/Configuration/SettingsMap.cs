@@ -10,6 +10,10 @@ public class SettingsMap
     public const string ProjectLogo = "ProjectLogo";
     public const string AllowUserAdjustNickname = "Allow_User_Adjust_Nickname";
     public const string Icp = "Icp";
+    public const string EnableEmbeddingBasedSearch = "EnableEmbeddingBasedSearch";
+    public const string EmbeddingOllamaInstance = "EmbeddingOllamaInstance";
+    public const string EmbeddingModel = "EmbeddingModel";
+    public const string EmbeddingApiToken = "EmbeddingApiToken";
 
     public const string AiPromptExplanationBase = "Ai_Prompt_Explanation_Base";
     public const string AiPromptExplanationDeep = "Ai_Prompt_Explanation_Deep";
@@ -31,6 +35,38 @@ public class SettingsMap
 
     public static readonly List<GlobalSettingDefinition> Definitions = new()
     {
+        new GlobalSettingDefinition
+        {
+            Key = EnableEmbeddingBasedSearch,
+            Name = Localizer["Enable Embedding-Based Search"],
+            Description = Localizer["Enable background embedding generation for questions and knowledge points."],
+            Type = SettingType.Bool,
+            DefaultValue = "False"
+        },
+        new GlobalSettingDefinition
+        {
+            Key = EmbeddingOllamaInstance,
+            Name = Localizer["Embedding Endpoint"],
+            Description = Localizer["The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty."],
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
+        new GlobalSettingDefinition
+        {
+            Key = EmbeddingModel,
+            Name = Localizer["Embedding Model"],
+            Description = Localizer["The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract."],
+            Type = SettingType.Text,
+            DefaultValue = "bge-m3:latest"
+        },
+        new GlobalSettingDefinition
+        {
+            Key = EmbeddingApiToken,
+            Name = Localizer["Embedding API Token"],
+            Description = Localizer["Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty."],
+            Type = SettingType.Secret,
+            DefaultValue = ""
+        },
         new GlobalSettingDefinition
         {
             Key = ProjectName,

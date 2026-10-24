@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -491,6 +491,15 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<byte[]>("Embedding")
+                        .HasColumnType("longblob");
+
+                    b.Property<DateTime>("LastEmbeddedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("LastUpdatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<Guid?>("ParentId")
                         .HasColumnType("char(36)");
 
@@ -777,6 +786,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<byte[]>("Embedding")
+                        .HasColumnType("longblob");
+
                     b.Property<string>("Explanation")
                         .IsRequired()
                         .HasMaxLength(3000)
@@ -784,6 +796,12 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Property<int>("GradingStrategy")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("LastEmbeddedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("LastUpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Metadata")
                         .IsRequired()

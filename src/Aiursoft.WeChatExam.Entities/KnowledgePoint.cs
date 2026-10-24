@@ -20,6 +20,19 @@ public class KnowledgePoint
 
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 
+    /// <summary>The last change to content used for embedding generation.</summary>
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DateTime LastUpdatedAt { get; set; } = DateTime.UtcNow;
+
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public byte[]? Embedding { get; set; }
+
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DateTime LastEmbeddedAt { get; set; } = DateTime.MinValue;
+
     /// <summary>
     /// 父知识点ID。
     /// 若为 null，表示这是顶级知识点。
