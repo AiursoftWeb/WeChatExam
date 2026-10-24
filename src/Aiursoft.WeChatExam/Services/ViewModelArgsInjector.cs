@@ -1,11 +1,13 @@
 using Aiursoft.Scanner.Abstractions;
 using Aiursoft.WeChatExam.Configuration;
+using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.UiStack.Views.Shared.Components.FooterMenu;
 using Aiursoft.UiStack.Views.Shared.Components.LanguagesDropdown;
 using Aiursoft.UiStack.Views.Shared.Components.MegaMenu;
 using Aiursoft.UiStack.Views.Shared.Components.Navbar;
+using Aiursoft.UiStack.Views.Shared.Components.SearchForm;
 using Aiursoft.UiStack.Views.Shared.Components.SideAdvertisement;
 using Aiursoft.UiStack.Views.Shared.Components.Sidebar;
 using Aiursoft.UiStack.Views.Shared.Components.SideLogo;
@@ -175,7 +177,16 @@ public class ViewModelArgsInjector(
         };
         toInject.Navbar = new NavbarViewModel
         {
-            ThemeSwitchApiCallEndpoint = "/api/switch-theme"
+            ThemeSwitchApiCallEndpoint = "/api/switch-theme",
+            SearchForm = authorizationService.AuthorizeAsync(context.User, AppPermissionNames.CanReadQuestions)
+                .GetAwaiter().GetResult().Succeeded
+                ? new SearchFormViewModel
+                {
+                    SearchUrl = "/ContentSearch/Index",
+                    SearchParam = "query",
+                    Placeholder = localizer["Search Content"]
+                }
+                : null
         };
 
         var currentViewingController = context.GetRouteValue("controller")?.ToString();
