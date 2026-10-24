@@ -529,6 +529,54 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("KnowledgePointQuestions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionAlias", b =>
+                {
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("CollectionId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("NormalizedName");
+
+                    b.HasIndex("CollectionId");
+
+                    b.ToTable("LegacyPaperCollectionAliases");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionBinding", b =>
+                {
+                    b.Property<Guid>("CollectionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CollectionId");
+
+                    b.HasIndex("TagId")
+                        .IsUnique();
+
+                    b.ToTable("LegacyPaperCollectionBindings");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionCatalog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TaxonomyId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TaxonomyId");
+
+                    b.ToTable("LegacyPaperCollectionCatalogs");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Paper", b =>
                 {
                     b.Property<Guid>("Id")
@@ -579,6 +627,56 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasIndex("PaperId");
 
                     b.ToTable("PaperCategories");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCollection", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsArchived")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("Revision")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaperCollections");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCollectionPaper", b =>
+                {
+                    b.Property<Guid>("CollectionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PaperId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CollectionId", "PaperId");
+
+                    b.HasIndex("PaperId");
+
+                    b.ToTable("PaperCollectionPapers");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperQuestion", b =>
@@ -1560,6 +1658,47 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Question");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionAlias", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaperCollection", "Collection")
+                        .WithMany()
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Collection");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionBinding", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaperCollection", "Collection")
+                        .WithOne()
+                        .HasForeignKey("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionBinding", "CollectionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Collection");
+
+                    b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.LegacyPaperCollectionCatalog", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Taxonomy", "Taxonomy")
+                        .WithMany()
+                        .HasForeignKey("TaxonomyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Taxonomy");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCategory", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
@@ -1575,6 +1714,25 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+
+                    b.Navigation("Paper");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCollectionPaper", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaperCollection", "Collection")
+                        .WithMany("Papers")
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Paper", "Paper")
+                        .WithMany()
+                        .HasForeignKey("PaperId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Collection");
 
                     b.Navigation("Paper");
                 });
@@ -1907,6 +2065,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("PaperSnapshots");
 
                     b.Navigation("PaperTags");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCollection", b =>
+                {
+                    b.Navigation("Papers");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperSnapshot", b =>

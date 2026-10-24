@@ -1,0 +1,14 @@
+@model Aiursoft.WeChatExam.Models.PaperCollectionsViewModels.EditViewModel
+<p>@Localizer["This previews the current real exam menu. Only real exam papers with a published version appear here."]</p>
+<h1 class="h3">@Model.Name</h1>
+<p>@Localizer["Student directory preview · real exam papers"]</p>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary mb-4">@Localizer["Edit collection"]</a>
+@if (!Model.IsVisible || Model.IsArchived) { <p>@Localizer["This collection is currently hidden from students."]</p> }
+else if (!Model.Papers.Any()) { <p>@Localizer["No published exam papers are available in this collection yet."]</p> }
+else
+{
+    <div class="row g-3">
+    @foreach (var p in Model.Papers)
+    { <div class="col-md-6"><div class="card"><div class="card-body"><h2 class="h5">@p.Title</h2><p>@(p.IsFree ? @Localizer["Free"].Value : @Localizer["Real exam VIP required"].Value)</p><a asp-controller="Papers" asp-action="Edit" asp-route-id="@p.Id">@Localizer["Edit exam paper"]</a></div></div></div> }
+    </div>
+}

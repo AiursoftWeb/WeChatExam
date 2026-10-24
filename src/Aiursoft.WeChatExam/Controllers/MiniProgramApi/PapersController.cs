@@ -20,12 +20,14 @@ public class PapersController : ControllerBase
     private readonly IPaperService _paperService;
     private readonly WeChatExamDbContext _context;
     private readonly IPaperAccessService _paperAccessService;
+    private readonly PaperCollectionService _collections;
 
-    public PapersController(IPaperService paperService, WeChatExamDbContext context, IPaperAccessService paperAccessService)
+    public PapersController(IPaperService paperService, WeChatExamDbContext context, IPaperAccessService paperAccessService, PaperCollectionService collections)
     {
         _paperService = paperService;
         _context = context;
         _paperAccessService = paperAccessService;
+        _collections = collections;
     }
 
     /// <summary>
@@ -43,8 +45,7 @@ public class PapersController : ControllerBase
         [FromQuery] string? tag, 
         [FromQuery] bool? isRealExam)
     {
-        var query = _context.Papers
-            .Where(p => p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen)
+        var query = PaperCollectionService.Available(_context.Papers)
             .Include(p => p.PaperCategories)
             .Include(p => p.PaperSnapshots)
             .Include(p => p.PaperTags)
@@ -63,7 +64,18 @@ public class PapersController : ControllerBase
 
         if (!string.IsNullOrWhiteSpace(tag))
         {
-            query = query.Where(p => p.PaperTags.Any(pt => pt.Tag.DisplayName == tag));
+            // Old clients send a name captured when their menu was loaded. Aliases survive renames.
+            var collection = await _collections.ResolveLegacyNameAsync(tag);
+            if (collection != null)
+            {
+                if (!collection.IsVisible || collection.IsArchived) return Ok(new List<PaperListDto>());
+                var paperIds = _context.PaperCollectionPapers.Where(p => p.CollectionId == collection.Id).Select(p => p.PaperId);
+                query = query.Where(p => paperIds.Contains(p.Id));
+            }
+            else
+            {
+                query = query.Where(p => p.PaperTags.Any(pt => pt.Tag.DisplayName == tag));
+            }
         }
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

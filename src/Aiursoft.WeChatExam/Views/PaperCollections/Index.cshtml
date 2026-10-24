@@ -1,0 +1,30 @@
+@model Aiursoft.WeChatExam.Models.PaperCollectionsViewModels.IndexViewModel
+<link rel="stylesheet" href="~/css/paper-collections.css" asp-append-version="true" />
+<div class="collection-heading">
+    <div><h1>@Localizer["Paper Collections"]</h1><p class="text-muted">@Localizer["Arrange the exam paper groups students see in the Mini Program."]</p></div>
+    @if (Model.Connected) { <a asp-action="Create" class="btn btn-primary"><i data-lucide="plus"></i> @Localizer["Create collection"]</a> }
+</div>
+@if (!Model.Connected)
+{
+    <div class="card collection-welcome"><div class="card-body">
+        <i data-lucide="library-big" class="collection-icon"></i><h2>@Localizer["Bring your existing directory here"]</h2>
+        <p>@Localizer["Preview the current tags and exam papers before connecting them. Existing exam papers, tags and fees are preserved."]</p>
+        <a asp-action="Setup" class="btn btn-primary btn-lg">@Localizer["Preview existing directory"]</a>
+    </div></div>
+}
+else
+{
+    <div class="row g-4">
+    @foreach (var item in Model.Collections)
+    {
+        <div class="col-md-6 col-xl-4"><div class="card h-100 collection-card"><div class="card-body">
+            <i data-lucide="library-big" class="collection-icon"></i>
+            <h2 class="h4"><a asp-action="Edit" asp-route-id="@item.Collection.Id" class="stretched-link">@item.Collection.Name</a></h2>
+            <span class="badge @(item.Collection.IsArchived ? "bg-secondary" : item.Collection.IsVisible ? "bg-success" : "bg-secondary")">
+                @if (item.Collection.IsArchived) { @Localizer["Archived"] } else if (item.Collection.IsVisible) { @Localizer["Shown in the Mini Program"] } else { @Localizer["Hidden"] }
+            </span>
+            <p class="mt-3 mb-0">@string.Format(@Localizer["{0} available · {1} drafts · {2} total"].Value, item.Available, item.Drafts, item.Total)</p>
+        </div></div></div>
+    }
+    </div>
+}

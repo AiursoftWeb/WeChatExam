@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} available · {1} drafts · {2} total" xml:space="preserve">
+    <value>{0} 个可用 · {1} 个草稿 · 共 {2} 个</value>
+  </data>
+  <data name="Archived" xml:space="preserve">
+    <value>已归档</value>
+  </data>
+  <data name="Arrange the exam paper groups students see in the Mini Program." xml:space="preserve">
+    <value>安排学生在小程序中看到的试卷分组。</value>
+  </data>
+  <data name="Arrange the paper groups students see in the Mini Program." xml:space="preserve">
+    <value>安排学生在小程序中看到的试卷分组。</value>
+  </data>
+  <data name="Bring your existing directory here" xml:space="preserve">
+    <value>将现有目录导入到这里</value>
+  </data>
+  <data name="Create collection" xml:space="preserve">
+    <value>创建合集</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>已隐藏</value>
+  </data>
+  <data name="Paper Collections" xml:space="preserve">
+    <value>试卷合集</value>
+  </data>
+  <data name="Preview existing directory" xml:space="preserve">
+    <value>预览现有目录</value>
+  </data>
+  <data name="Preview the current tags and exam papers before connecting them. Existing exam papers, tags and fees are preserved." xml:space="preserve">
+    <value>连接前可预览现有标签和试卷。现有试卷、标签及费用均会保留。</value>
+  </data>
+  <data name="Preview the current tags and papers before connecting them. Existing papers, tags and fees are preserved." xml:space="preserve">
+    <value>连接之前，请先预览现有的标签和试卷。现有试卷、标签和费用都会保留。</value>
+  </data>
+  <data name="Shown in the Mini Program" xml:space="preserve">
+    <value>在小程序中显示</value>
+  </data>
+
+</root>

@@ -24,6 +24,18 @@
   <data name="-- Uncategorized --" xml:space="preserve">
     <value>-- 未分类 --</value>
   </data>
+  <data name="{0} exam papers" xml:space="preserve">
+    <value>{0} 份试卷</value>
+  </data>
+  <data name="{0} exam questions" xml:space="preserve">
+    <value>{0}道考试题</value>
+  </data>
+  <data name="{0} papers" xml:space="preserve">
+    <value>{0} 篇论文</value>
+  </data>
+  <data name="{0} questions" xml:space="preserve">
+    <value>{0} 个问题</value>
+  </data>
   <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
@@ -104,6 +116,9 @@
   </data>
   <data name="Uncategorized Tags" xml:space="preserve">
     <value>未分类标签</value>
+  </data>
+  <data name="Uncategorized tags can still be useful. Check their question and paper uses before changing them." xml:space="preserve">
+    <value>未分类标签仍可能有用。更改前，请检查它们在问题和论文中的使用情况。</value>
   </data>
   <data name="Usage Count" xml:space="preserve">
     <value>使用次数</value>

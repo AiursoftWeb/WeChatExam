@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add exam papers" xml:space="preserve">
+    <value>添加试卷</value>
+  </data>
+  <data name="Add papers" xml:space="preserve">
+    <value>添加试卷</value>
+  </data>
+  <data name="Archive and compatibility details" xml:space="preserve">
+    <value>归档与兼容性详情</value>
+  </data>
+  <data name="Archive this collection" xml:space="preserve">
+    <value>归档此合集</value>
+  </data>
+  <data name="Archiving hides this entry in both client versions. Papers, tags and history are retained." xml:space="preserve">
+    <value>归档后，此条目将在两个客户端版本中隐藏。试卷、标签和历史记录均会保留。</value>
+  </data>
+  <data name="Arrange the directory here. Paper access continues to follow each exam paper&apos;s settings." xml:space="preserve">
+    <value>在此处整理目录。试卷的访问权限仍遵循各自的设置。</value>
+  </data>
+  <data name="Arrange the directory here. Paper access continues to follow each paper&apos;s settings." xml:space="preserve">
+    <value>在此处整理目录。试卷的访问权限仍由各试卷自身的设置决定。</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="Back to collections" xml:space="preserve">
+    <value>返回合集</value>
+  </data>
+  <data name="Collection name" xml:space="preserve">
+    <value>合集名称</value>
+  </data>
+  <data name="Create collection" xml:space="preserve">
+    <value>创建合集</value>
+  </data>
+  <data name="Display order" xml:space="preserve">
+    <value>显示顺序</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>草稿</value>
+  </data>
+  <data name="Edit exam paper" xml:space="preserve">
+    <value>编辑试卷</value>
+  </data>
+  <data name="Edit paper" xml:space="preserve">
+    <value>编辑试卷</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>免费</value>
+  </data>
+  <data name="Mock exam" xml:space="preserve">
+    <value>模拟考试</value>
+  </data>
+  <data name="No published version" xml:space="preserve">
+    <value>暂无已发布版本</value>
+  </data>
+  <data name="Papers in this collection" xml:space="preserve">
+    <value>此合集中的试卷</value>
+  </data>
+  <data name="Past exam paper" xml:space="preserve">
+    <value>往年真题</value>
+  </data>
+  <data name="Preview student directory" xml:space="preserve">
+    <value>预览学生目录</value>
+  </data>
+  <data name="Real exam" xml:space="preserve">
+    <value>真实考试</value>
+  </data>
+  <data name="Save collection" xml:space="preserve">
+    <value>保存合集</value>
+  </data>
+  <data name="Save the collection, then add your exam papers." xml:space="preserve">
+    <value>保存此合集，然后添加试卷。</value>
+  </data>
+  <data name="Save the collection, then add your papers." xml:space="preserve">
+    <value>请先保存题集，然后添加试卷。</value>
+  </data>
+  <data name="Show in the Mini Program" xml:space="preserve">
+    <value>在小程序中显示</value>
+  </data>
+  <data name="The corresponding tag also labels {0} questions. Renaming this collection updates that tag name; its question links and fee remain unchanged." xml:space="preserve">
+    <value>对应的标签也标记了 {0} 道题。重命名此集合会同步更新该标签名称，但其题目链接和费用保持不变。</value>
+  </data>
+  <data name="Uncheck a exam paper to remove it from this collection when saving. The exam paper itself is kept." xml:space="preserve">
+    <value>取消勾选试卷，保存时即可将其从此合集移除。试卷本身不会被删除。</value>
+  </data>
+  <data name="Uncheck a paper to remove it from this collection when saving. The paper itself is kept." xml:space="preserve">
+    <value>取消勾选某份试卷，保存时即可将其从此合集移除。试卷本身会保留。</value>
+  </data>
+  <data name="View corresponding tag settings" xml:space="preserve">
+    <value>查看对应标签设置</value>
+  </data>
+  <data name="VIP required" xml:space="preserve">
+    <value>需要 VIP</value>
+  </data>
+
+</root>

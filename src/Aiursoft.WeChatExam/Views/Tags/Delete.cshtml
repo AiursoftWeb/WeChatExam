@@ -42,6 +42,8 @@
                     </div>
                 </div>
 
+                <p>@string.Format(@Localizer["This tag is used by {0} exam papers. Deleting it removes their grouping, not the papers themselves."].Value, Model.PaperUsageCount)</p>
+                <a asp-controller="Papers" asp-action="Index" asp-route-tagId="@Model.Tag.Id">@Localizer["View related papers"]</a>
                 <hr class="my-4">
 
                 <form asp-action="Delete" method="post">

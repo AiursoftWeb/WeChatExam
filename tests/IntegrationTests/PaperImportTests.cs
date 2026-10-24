@@ -56,7 +56,20 @@ public class PaperImportTests
         _token = await Token("/Papers/Import");
     }
     [TestCleanup]
-    public async Task Cleanup() { _http.Dispose(); await _host.StopAsync(); _host.Dispose(); TestStartupWithMockWeChat.MockOllamaService = null; }
+    public async Task Cleanup()
+    {
+        using (var scope = _host.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.LegacyPaperCollectionAliases.RemoveRange(db.LegacyPaperCollectionAliases);
+            db.LegacyPaperCollectionBindings.RemoveRange(db.LegacyPaperCollectionBindings);
+            db.LegacyPaperCollectionCatalogs.RemoveRange(db.LegacyPaperCollectionCatalogs);
+            db.PaperCollectionPapers.RemoveRange(db.PaperCollectionPapers);
+            db.PaperCollections.RemoveRange(db.PaperCollections);
+            await db.SaveChangesAsync();
+        }
+        _http.Dispose(); await _host.StopAsync(); _host.Dispose(); TestStartupWithMockWeChat.MockOllamaService = null;
+    }
     private async Task<string> Token(string url)
     {
         var response = await _http.GetAsync(url); response.EnsureSuccessStatusCode();
@@ -87,6 +100,39 @@ public class PaperImportTests
         questions[0].StandardAnswer = "Manually supplied answer";
         questions[2].StandardAnswer = "True";
         return new() { TaskId = task, Title = "Edited title", SourceTagName = "Unique source tag", Questions = questions, ExtraTags = ["extra"] };
+    }
+
+    [TestMethod]
+    public async Task ConnectedDirectorySeparatesQuestionSourceFromPaperCollection()
+    {
+        Guid collectionId; int taxonomyId, directoryTagId;
+        using (var scope = _host.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var taxonomy = new Taxonomy { Name = "Colleges" };
+            var tag = new Tag { DisplayName = "Suzhou collection", NormalizedName = "SUZHOU COLLECTION", Taxonomy = taxonomy, IsFree = true };
+            db.Tags.Add(tag); await db.SaveChangesAsync(); taxonomyId = taxonomy.Id; directoryTagId = tag.Id;
+            var service = scope.ServiceProvider.GetRequiredService<PaperCollectionService>();
+            await service.ImportAsync(taxonomyId, (await service.PreviewAsync(taxonomyId)).Fingerprint);
+            collectionId = await db.PaperCollections.Select(c => c.Id).SingleAsync();
+        }
+        var task = await Extract();
+        var save = SaveRequest(task); save.SourceTagName = "2025 Suzhou source";
+        save.TaxonomyId = taxonomyId; save.CollectionIds = [collectionId];
+        var response = await Post("ImportSave", save);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, await response.Content.ReadAsStringAsync());
+        var paperId = JObject.Parse(await response.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>();
+        using var verify = _host.Services.CreateScope();
+        var context = verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(collectionId, await context.PaperCollectionPapers.Where(p => p.PaperId == paperId).Select(p => p.CollectionId).SingleAsync());
+        Assert.AreEqual(directoryTagId, await context.PaperTags.Where(p => p.PaperId == paperId).Select(p => p.TagId).SingleAsync());
+        var source = await context.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName);
+        Assert.AreEqual(taxonomyId, source.TaxonomyId);
+        Assert.IsFalse(source.IsFree, "Directory migration must not change the existing importer fee rule.");
+        Assert.AreEqual(3, await context.QuestionTags.CountAsync(t => t.TagId == source.Id));
+        Assert.AreEqual(0, await context.QuestionTags.CountAsync(t => t.TagId == directoryTagId));
+        var legacy = await verify.ServiceProvider.GetRequiredService<PaperCollectionService>().LegacyTagsAsync(taxonomyId);
+        CollectionAssert.AreEqual(new[] { directoryTagId }, legacy!.Select(t => t.Id).ToArray());
     }
 
     [TestMethod]

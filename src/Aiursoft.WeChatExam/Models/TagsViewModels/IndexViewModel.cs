@@ -6,6 +6,8 @@ namespace Aiursoft.WeChatExam.Models.TagsViewModels;
 
 public class IndexViewModel : UiStackLayoutViewModel
 {
+    public Dictionary<int, int> PaperUsageCounts { get; set; } = new();
+    public Dictionary<int, Guid> CollectionsByTag { get; set; } = new();
     public IndexViewModel()
     {
         PageTitle = "Tags";

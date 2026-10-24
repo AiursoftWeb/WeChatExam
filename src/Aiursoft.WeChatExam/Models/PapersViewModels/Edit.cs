@@ -37,6 +37,10 @@ public class EditViewModel : UiStackLayoutViewModel
 
     [Display(Name = "Tags")]
     public string? Tags { get; set; }
+    public string CollectionRevision { get; set; } = string.Empty;
+    public bool CollectionsSubmitted { get; set; }
+    public List<Guid> SelectedCollectionIds { get; set; } = [];
+    public IEnumerable<SelectListItem> AvailableCollections { get; set; } = [];
 
     public IEnumerable<SelectListItem> AvailableCategories { get; set; } = new List<SelectListItem>();
 

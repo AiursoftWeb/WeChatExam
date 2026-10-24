@@ -1,9 +1,10 @@
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Services;
 
-public class TaxonomyService(WeChatExamDbContext dbContext) : ITaxonomyService
+public class TaxonomyService(WeChatExamDbContext dbContext, IStringLocalizer<TaxonomyService> localizer) : ITaxonomyService
 {
     public async Task<Taxonomy> AddTaxonomyAsync(string name, Guid[]? categoryIds = null)
     {
@@ -78,6 +79,9 @@ public class TaxonomyService(WeChatExamDbContext dbContext) : ITaxonomyService
 
     public async Task DeleteTaxonomyAsync(int id)
     {
+        if (await dbContext.LegacyPaperCollectionCatalogs.AnyAsync(c => c.TaxonomyId == id))
+            throw new InvalidOperationException(localizer["This taxonomy supports the legacy paper directory and must be retained."]);
+
         var taxonomy = await dbContext.Taxonomies.FindAsync(id);
         if (taxonomy != null)
         {

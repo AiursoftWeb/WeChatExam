@@ -32,6 +32,14 @@
                 <label asp-for="IsRealExam" class="form-check-label">@Localizer["Real Exam"]</label>
             </div>
             <div class="mb-3">
+                <label class="form-label">@Localizer["Paper collections"]</label>
+                <input type="hidden" name="CollectionsSubmitted" value="true" />
+                <div class="d-flex flex-wrap gap-2 mb-2">
+                @foreach (var collection in Model.AvailableCollections)
+                { <label class="border rounded p-2"><input type="checkbox" name="SelectedCollectionIds" value="@collection.Value" checked="@collection.Selected" class="form-check-input me-2" />@collection.Text <a asp-controller="PaperCollections" asp-action="Edit" asp-route-id="@collection.Value">@Localizer["Edit collection"]</a></label> }
+                </div>
+                <a asp-controller="PaperCollections" asp-action="Index">@Localizer["Manage paper collections"]</a>
+                <p class="form-text">@Localizer["Collections control the student directory. Tags below retain their separate uses."]</p>
                 <label class="form-label">@Localizer["Tags"]</label>
                 <input type="text" id="tagInputField" class="form-control" placeholder="@Localizer["Type to search or add tags..."]" autocomplete="off" />
                 <input type="hidden" asp-for="Tags" id="Tags" />

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Edit directory names and order through the paper collection editor." xml:space="preserve">
+    <value>请通过试卷集编辑器修改目录名称和顺序。</value>
+  </data>
+  <data name="This name is reserved for an existing or renamed paper collection." xml:space="preserve">
+    <value>此名称已被现有或重命名的论文集占用。</value>
+  </data>
+  <data name="This tag belongs to a paper collection. Use the collection editor to manage its directory." xml:space="preserve">
+    <value>此标签属于论文集。请使用论文集编辑器管理其目录。</value>
+  </data>
+
+</root>

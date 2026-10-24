@@ -7,6 +7,7 @@ using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -15,7 +16,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class TagsController(
     WeChatExamDbContext context, 
     ITagService tagService,
-    ITaxonomyService taxonomyService) : Controller
+    ITaxonomyService taxonomyService,
+    IStringLocalizer<TagsController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -29,13 +31,10 @@ public class TagsController(
     {
         var tags = await tagService.SearchTagsAsync(search, taxonomyId);
 
-        // Get usage counts for each tag
-        var tagUsageCounts = new Dictionary<int, int>();
-        foreach (var tag in tags)
-        {
-            var count = await context.QuestionTags.CountAsync(qt => qt.TagId == tag.Id);
-            tagUsageCounts[tag.Id] = count;
-        }
+        var tagUsageCounts = await context.QuestionTags.GroupBy(q => q.TagId).Select(g => new { Id = g.Key, Count = g.Count() }).ToDictionaryAsync(g => g.Id, g => g.Count);
+        var paperUsageCounts = await context.PaperTags.GroupBy(q => q.TagId).Select(g => new { Id = g.Key, Count = g.Count() }).ToDictionaryAsync(g => g.Id, g => g.Count);
+        var collectionsByTag = await context.LegacyPaperCollectionBindings.ToDictionaryAsync(b => b.TagId, b => b.CollectionId);
+        foreach (var tag in tags) tagUsageCounts.TryAdd(tag.Id, 0);
 
         var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
 
@@ -44,6 +43,8 @@ public class TagsController(
             Tags = tags,
             AllTaxonomies = taxonomies,
             TagUsageCounts = tagUsageCounts,
+            PaperUsageCounts = paperUsageCounts,
+            CollectionsByTag = collectionsByTag,
             SearchQuery = search,
             TaxonomyId = taxonomyId,
             AvailableTaxonomies = taxonomies.Select(t =>
@@ -107,7 +108,14 @@ public class TagsController(
             OrderIndex = (await context.Tags.Where(t => t.TaxonomyId == model.TaxonomyId).MaxAsync(t => (int?)t.OrderIndex) ?? -1) + 1
         };
 
-        await tagService.CreateTagAsync(tag);
+        try { await tagService.CreateTagAsync(tag); }
+        catch (InvalidOperationException e)
+        {
+            context.ChangeTracker.Clear();
+            ModelState.AddModelError(string.Empty, e.Message);
+            model.AvailableTaxonomies = (await taxonomyService.GetAllTaxonomiesAsync()).Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(t.Name, t.Id.ToString()));
+            return this.StackView(model);
+        }
 
         return RedirectToAction(nameof(Index));
     }
@@ -116,6 +124,9 @@ public class TagsController(
     [HttpPost]
     public async Task<IActionResult> UpdateOrder([FromBody] int[] ids)
     {
+        if (await context.LegacyPaperCollectionBindings.AnyAsync(b => ids.Contains(b.TagId)))
+            return Conflict(localizer["Reorder these entries in Paper Collections."].Value);
+
         for (var i = 0; i < ids.Length; i++)
         {
             var tag = await context.Tags.FindAsync(ids[i]);
@@ -129,17 +140,21 @@ public class TagsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
-    public async Task<IActionResult> Edit(int? id)
+    public async Task<IActionResult> Edit(int? id, bool fees = false)
     {
         if (id == null) return NotFound();
 
         var tag = await tagService.GetTagByIdAsync(id.Value);
         if (tag == null) return NotFound();
 
+        var collectionId = await context.LegacyPaperCollectionBindings.Where(b => b.TagId == id).Select(b => (Guid?)b.CollectionId).SingleOrDefaultAsync();
+        if (collectionId.HasValue && !fees) return RedirectToAction("Edit", "PaperCollections", new { id = collectionId });
+
         var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
 
         return this.StackView(new EditViewModel
         {
+            CollectionId = collectionId,
             Id = tag.Id,
             DisplayName = tag.DisplayName,
             TaxonomyId = tag.TaxonomyId,
@@ -161,6 +176,14 @@ public class TagsController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(EditViewModel model)
     {
+        var mapped = await context.LegacyPaperCollectionBindings.Include(b => b.Tag).SingleOrDefaultAsync(b => b.TagId == model.Id);
+        if (mapped != null)
+        {
+            model.CollectionId = mapped.CollectionId;
+            if (model.DisplayName != mapped.Tag.DisplayName || model.TaxonomyId != mapped.Tag.TaxonomyId)
+                return Conflict(localizer["Edit directory names and taxonomy through the paper collection editor."].Value);
+        }
+
         if (!ModelState.IsValid)
         {
             var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
@@ -189,7 +212,14 @@ public class TagsController(
         tag.TaxonomyId = model.TaxonomyId;
         tag.IsFree = model.IsFree;
 
-        await tagService.UpdateTagAsync(tag);
+        try { await tagService.UpdateTagAsync(tag); }
+        catch (InvalidOperationException e)
+        {
+            context.ChangeTracker.Clear();
+            ModelState.AddModelError(string.Empty, e.Message);
+            model.AvailableTaxonomies = (await taxonomyService.GetAllTaxonomiesAsync()).Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(t.Name, t.Id.ToString()));
+            return this.StackView(model);
+        }
 
         return RedirectToAction(nameof(Index));
     }
@@ -202,12 +232,15 @@ public class TagsController(
         var tag = await tagService.GetTagByIdAsync(id.Value);
         if (tag == null) return NotFound();
 
+        var collectionId = await context.LegacyPaperCollectionBindings.Where(b => b.TagId == id).Select(b => (Guid?)b.CollectionId).SingleOrDefaultAsync();
+        if (collectionId.HasValue) return RedirectToAction("Edit", "PaperCollections", new { id = collectionId });
         var usageCount = await context.QuestionTags.CountAsync(qt => qt.TagId == id.Value);
 
         return this.StackView(new DeleteViewModel
         {
             Tag = tag,
-            UsageCount = usageCount
+            UsageCount = usageCount,
+            PaperUsageCount = await context.PaperTags.CountAsync(t => t.TagId == id)
         });
     }
 
@@ -217,7 +250,8 @@ public class TagsController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        await tagService.DeleteTagAsync(id);
+        try { await tagService.DeleteTagAsync(id); }
+        catch (InvalidOperationException e) { TempData["Error"] = e.Message; }
         return RedirectToAction(nameof(Index));
     }
 

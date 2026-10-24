@@ -24,6 +24,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="Edit paper collection" xml:space="preserve">
+    <value>编辑试卷集</value>
+  </data>
   <data name="Edit Tag" xml:space="preserve">
     <value>编辑标签</value>
   </data>
@@ -50,6 +53,9 @@
   </data>
   <data name="Taxonomies Management" xml:space="preserve">
     <value>分类管理</value>
+  </data>
+  <data name="This tag supports a paper collection. Its name and directory are managed there; existing question fee settings remain here." xml:space="preserve">
+    <value>此标签关联一个试卷集。其名称和目录在试卷集中管理；现有题目的费用设置仍在此处管理。</value>
   </data>
   <data name="Tips" xml:space="preserve">
     <value>提示</value>

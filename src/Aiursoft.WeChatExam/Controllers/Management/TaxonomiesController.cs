@@ -118,6 +118,8 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        if (await context.LegacyPaperCollectionCatalogs.AnyAsync(c => c.TaxonomyId == id))
+            return RedirectToAction("Index", "PaperCollections");
         await taxonomyService.DeleteTaxonomyAsync(id);
         return RedirectToAction(nameof(Index));
     }

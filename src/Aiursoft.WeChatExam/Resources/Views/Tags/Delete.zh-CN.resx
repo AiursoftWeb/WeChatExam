@@ -39,6 +39,15 @@
   <data name="This tag is not used by any questions." xml:space="preserve">
     <value>此标签未被任何问题使用。</value>
   </data>
+  <data name="This tag is used by {0} exam papers. Deleting it removes their grouping, not the papers themselves." xml:space="preserve">
+    <value>此标签用于 {0} 份试卷。删除此标签只会移除它们的分组，不会删除试卷本身。</value>
+  </data>
+  <data name="This tag is used by {0} papers. Deleting it removes their grouping, not the papers themselves." xml:space="preserve">
+    <value>该标签正被 {0} 篇论文使用。删除该标签只会取消这些论文的分组，不会删除论文本身。</value>
+  </data>
+  <data name="View related papers" xml:space="preserve">
+    <value>查看相关文章</value>
+  </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>
   </data>

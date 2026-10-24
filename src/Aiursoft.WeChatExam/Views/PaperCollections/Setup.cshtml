@@ -1,0 +1,30 @@
+@model Aiursoft.WeChatExam.Models.PaperCollectionsViewModels.SetupViewModel
+<h1 class="h3">@Localizer["Connect existing exam paper directory"]</h1>
+<p>@Localizer["Select the taxonomy currently used as the Mini Program exam paper menu. Review every entry before connecting it."]</p>
+<div asp-validation-summary="All" class="text-danger"></div>
+@if (TempData["Error"] != null) { <p class="text-danger" role="alert">@TempData["Error"]</p> }
+<form method="get" asp-action="Setup" class="card mb-4"><div class="card-body d-flex gap-3 flex-wrap">
+    <label for="TaxonomyId" class="form-label">@Localizer["Existing directory taxonomy"]</label>
+    <select id="TaxonomyId" asp-for="TaxonomyId" class="form-select w-auto"><option value="">@Localizer["Select a taxonomy"]</option>
+    @foreach (var t in Model.Taxonomies) { <option value="@t.Id">@t.Name</option> }
+    </select><button class="btn btn-primary">@Localizer["Preview"]</button>
+</div></form>
+@if (Model.Preview != null)
+{
+    <h2 class="h4">@Model.Preview.Name</h2>
+    <a asp-controller="Taxonomies" asp-action="Edit" asp-route-id="@Model.Preview.TaxonomyId">@Localizer["Edit taxonomy"]</a>
+    <p>@Localizer["Every entry below becomes a collection, including entries with no exam papers. Question links and fee settings stay attached to their original tags."]</p>
+    <div class="list-group mb-4">
+    @foreach (var t in Model.Preview.Tags)
+    {
+        <div class="list-group-item d-flex justify-content-between gap-3 flex-wrap"><div><strong>@t.Name</strong>
+            <div>@string.Format(@Localizer["{0} exam papers · {1} questions"].Value, t.PaperIds.Distinct().Count(), t.QuestionCount)</div></div>
+            <a asp-controller="Tags" asp-action="Edit" asp-route-id="@t.Id">@Localizer["Edit tag"]</a></div>
+    }
+    </div>
+    <form asp-action="Connect" method="post">
+        <input type="hidden" asp-for="TaxonomyId" /><input type="hidden" asp-for="Fingerprint" />
+        <button class="btn btn-primary btn-lg">@Localizer["Connect this directory"]</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+    </form>
+}

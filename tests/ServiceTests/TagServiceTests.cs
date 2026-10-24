@@ -2,6 +2,9 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.InMemory;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 
@@ -18,7 +21,7 @@ public class TagServiceTests
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         _context = new InMemoryContext(options);
-        _tagService = new TagService(_context);
+        _tagService = new TagService(_context, new StringLocalizer<TagService>(new ResourceManagerStringLocalizerFactory(Options.Create(new LocalizationOptions()), NullLoggerFactory.Instance)));
     }
 
     [TestCleanup]

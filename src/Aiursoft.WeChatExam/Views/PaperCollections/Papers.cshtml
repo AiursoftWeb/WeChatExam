@@ -1,0 +1,21 @@
+@model Aiursoft.WeChatExam.Models.PaperCollectionsViewModels.PapersViewModel
+<h1 class="h3">@Localizer["Add exam papers"]</h1><p>@Model.Name</p>
+<a asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Back to collection"]</a>
+<form method="get" asp-action="Papers" class="d-flex gap-2 my-4"><input type="hidden" asp-for="Id" /><label for="Search" class="visually-hidden">@Localizer["Search exam papers"]</label><input id="Search" asp-for="Search" class="form-control" placeholder="@Localizer["Search exam papers by title"]" /><button class="btn btn-primary">@Localizer["Search"]</button></form>
+<form asp-action="AddPapers" method="post">
+    <input type="hidden" asp-for="Id" /><input type="hidden" asp-for="Revision" />
+    <div class="row g-3 mb-4">
+    @foreach (var p in Model.Papers)
+    {
+        <div class="col-md-6"><div class="card h-100"><div class="card-body">
+            <label class="d-flex gap-3"><input type="checkbox" name="paperIds" value="@p.Id" class="form-check-input" /><strong>@p.Title</strong></label>
+            <p class="mt-3">@if (p.IsRealExam) { @Localizer["Past exam paper"] } else { @Localizer["Mock exam"] } · @if (p.Status == Aiursoft.WeChatExam.Entities.PaperStatus.Draft) { @Localizer["Draft"] } else if (!p.HasSnapshot) { @Localizer["No published version"] } else { @Localizer["Available"] }</p>
+            <a asp-controller="Papers" asp-action="Edit" asp-route-id="@p.Id">@Localizer["Edit exam paper"]</a>
+        </div></div></div>
+    }
+    </div><button class="btn btn-primary btn-lg">@Localizer["Add selected exam papers"]</button>
+</form>
+<nav class="d-flex gap-3 mt-4" aria-label="@Localizer["Pagination"]">
+@if (Model.Page > 1) { <a asp-action="Papers" asp-route-id="@Model.Id" asp-route-search="@Model.Search" asp-route-page="@(Model.Page - 1)">@Localizer["Previous page"]</a> }
+@if (Model.HasMore) { <a asp-action="Papers" asp-route-id="@Model.Id" asp-route-search="@Model.Search" asp-route-page="@(Model.Page + 1)">@Localizer["Next page"]</a> }
+</nav>

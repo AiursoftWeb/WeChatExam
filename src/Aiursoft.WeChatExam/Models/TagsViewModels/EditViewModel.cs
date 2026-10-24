@@ -14,10 +14,11 @@ public class EditViewModel : UiStackLayoutViewModel
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Tag ID")]
     public int Id { get; set; }
+    public Guid? CollectionId { get; set; }
 
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Tag Name")]
-    [MaxLength(50, ErrorMessage = "The {0} cannot exceed {1} characters.")]
+    [MaxLength(255, ErrorMessage = "The {0} cannot exceed {1} characters.")]
     public string DisplayName { get; set; } = string.Empty;
 
     [Display(Name = "Taxonomy")]

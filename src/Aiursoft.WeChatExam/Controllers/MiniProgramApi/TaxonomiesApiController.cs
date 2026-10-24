@@ -14,7 +14,8 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 public class TaxonomiesApiController(
     ITaxonomyService taxonomyService,
     ITagService tagService,
-    IPaperAccessService paperAccessService) : ControllerBase
+    IPaperAccessService paperAccessService,
+    PaperCollectionService collections) : ControllerBase
 {
     [AllowAnonymous]
     [HttpGet]
@@ -35,7 +36,7 @@ public class TaxonomiesApiController(
     [Produces(typeof(List<TagDto>))]
     public async Task<IActionResult> GetTags(int id)
     {
-        var tags = await tagService.GetTagsByTaxonomyIdAsync(id);
+        var tags = await collections.LegacyTagsAsync(id) ?? await tagService.GetTagsByTaxonomyIdAsync(id);
         
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var accessStatus = await paperAccessService.GetUserAccessStatusAsync(userId);

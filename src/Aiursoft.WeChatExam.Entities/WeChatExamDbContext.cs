@@ -53,6 +53,22 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<PaperCollectionPaper>().HasKey(p => new { p.CollectionId, p.PaperId });
+        builder.Entity<PaperCollectionPaper>().HasOne(p => p.Collection).WithMany(c => c.Papers)
+            .HasForeignKey(p => p.CollectionId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<PaperCollectionPaper>().HasOne(p => p.Paper).WithMany()
+            .HasForeignKey(p => p.PaperId).OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<LegacyPaperCollectionBinding>().HasIndex(b => b.TagId).IsUnique();
+        builder.Entity<LegacyPaperCollectionBinding>().HasOne(b => b.Collection).WithOne()
+            .HasForeignKey<LegacyPaperCollectionBinding>(b => b.CollectionId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<LegacyPaperCollectionBinding>().HasOne(b => b.Tag).WithMany()
+            .HasForeignKey(b => b.TagId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<LegacyPaperCollectionAlias>().HasOne(a => a.Collection).WithMany()
+            .HasForeignKey(a => a.CollectionId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<LegacyPaperCollectionCatalog>().HasOne(c => c.Taxonomy).WithMany()
+            .HasForeignKey(c => c.TaxonomyId).OnDelete(DeleteBehavior.Restrict);
+
+
         // Protect financial records from being cascade-deleted when a user deletes their account.
         builder.Entity<PaymentOrder>()
             .HasOne(p => p.User)
@@ -78,6 +94,11 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<Taxonomy> Taxonomies => Set<Taxonomy>();
     public DbSet<Tag> Tags => Set<Tag>();
     public DbSet<QuestionTag> QuestionTags => Set<QuestionTag>();
+    public DbSet<PaperCollection> PaperCollections => Set<PaperCollection>();
+    public DbSet<PaperCollectionPaper> PaperCollectionPapers => Set<PaperCollectionPaper>();
+    public DbSet<LegacyPaperCollectionCatalog> LegacyPaperCollectionCatalogs => Set<LegacyPaperCollectionCatalog>();
+    public DbSet<LegacyPaperCollectionBinding> LegacyPaperCollectionBindings => Set<LegacyPaperCollectionBinding>();
+    public DbSet<LegacyPaperCollectionAlias> LegacyPaperCollectionAliases => Set<LegacyPaperCollectionAlias>();
     public DbSet<PaperTag> PaperTags => Set<PaperTag>();
     public DbSet<Paper> Papers => Set<Paper>();
     public DbSet<PaperQuestion> PaperQuestions => Set<PaperQuestion>();

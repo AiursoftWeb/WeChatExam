@@ -30,6 +30,7 @@ public class ImportViewModel : UiStackLayoutViewModel
     public bool IsRealExam { get; set; } = true;
     public bool IsFree { get; set; }
     public string? ExtraTags { get; set; }
+    public IEnumerable<SelectListItem> Collections { get; set; } = [];
 
     public IEnumerable<SelectListItem> Categories { get; set; } = [];
     public IEnumerable<SelectListItem> Taxonomies { get; set; } = [];
@@ -67,6 +68,7 @@ public class PaperImportSaveRequest : PaperImportPreview
     public int? TaxonomyId { get; set; }
     [MaxLength(255)] public string SourceTagName { get; set; } = string.Empty;
     public List<string> ExtraTags { get; set; } = [];
+    public List<Guid> CollectionIds { get; set; } = [];
     public List<PaperImportTagConfirmation> Confirmations { get; set; } = [];
 }
 

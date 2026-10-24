@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A collection name must contain 1 to 255 characters." xml:space="preserve">
+    <value>集合名称长度必须为 1 到 255 个字符。</value>
+  </data>
+  <data name="A directory name is also used by another tag. Resolve the duplicate before connecting it." xml:space="preserve">
+    <value>另一个标签也使用了该目录名称。请先解决重复问题，再进行连接。</value>
+  </data>
+  <data name="A exam paper directory has already been connected. Reload the collection list." xml:space="preserve">
+    <value>已连接一个试卷目录。请重新加载合集列表。</value>
+  </data>
+  <data name="A paper directory has already been connected. Reload the collection list." xml:space="preserve">
+    <value>已连接试卷目录。请重新加载合集列表。</value>
+  </data>
+  <data name="An exam paper directory has already been connected. Reload the collection list." xml:space="preserve">
+    <value>试卷目录已关联。请重新加载合集列表。</value>
+  </data>
+  <data name="Connect the existing exam paper directory first." xml:space="preserve">
+    <value>请先连接现有试卷目录。</value>
+  </data>
+  <data name="Connect the existing paper directory first." xml:space="preserve">
+    <value>请先连接现有试卷目录。</value>
+  </data>
+  <data name="Duplicate directory names must be resolved before connecting this taxonomy." xml:space="preserve">
+    <value>连接此分类前，必须先解决重复的目录名称。</value>
+  </data>
+  <data name="Restore an archived collection before adding exam papers." xml:space="preserve">
+    <value>请先恢复已归档的合集，再添加试卷。</value>
+  </data>
+  <data name="Restore an archived collection before adding papers." xml:space="preserve">
+    <value>添加论文前请先恢复已归档的合集。</value>
+  </data>
+  <data name="Some selected collections no longer exist. Reload the editor." xml:space="preserve">
+    <value>部分所选集合已不存在。请重新加载编辑器。</value>
+  </data>
+  <data name="Some selected exam papers no longer exist. Reload the editor." xml:space="preserve">
+    <value>部分已选试卷已不存在。请重新加载编辑器。</value>
+  </data>
+  <data name="Some selected papers no longer exist. Reload the editor." xml:space="preserve">
+    <value>部分所选论文已不存在。请重新加载编辑器。</value>
+  </data>
+  <data name="The collection no longer exists." xml:space="preserve">
+    <value>该集合已不存在。</value>
+  </data>
+  <data name="The exam paper no longer exists." xml:space="preserve">
+    <value>试卷已不存在。</value>
+  </data>
+  <data name="The paper no longer exists." xml:space="preserve">
+    <value>该论文已不存在。</value>
+  </data>
+  <data name="The selected taxonomy no longer exists." xml:space="preserve">
+    <value>所选分类体系已不存在。</value>
+  </data>
+  <data name="The source data changed. Preview the directory again before connecting it." xml:space="preserve">
+    <value>源数据已发生变化。请重新预览目录后再连接。</value>
+  </data>
+  <data name="This collection was changed in another window. Reload before saving." xml:space="preserve">
+    <value>此集合已在另一个窗口中更改。请重新加载后再保存。</value>
+  </data>
+  <data name="This exam paper&apos;s collections changed in another window. Reload before saving." xml:space="preserve">
+    <value>这份试卷的试卷集已在另一个窗口中发生更改。请重新加载后再保存。</value>
+  </data>
+  <data name="This name is already used by a tag or an earlier collection name. Choose another name." xml:space="preserve">
+    <value>此名称已被某个标签或之前的集合名称使用。请选择其他名称。</value>
+  </data>
+
+</root>

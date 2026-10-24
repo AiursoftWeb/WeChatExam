@@ -66,6 +66,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddSingleton<AiTaskService>();
         services.AddSingleton<PaperImportTasks>();
         services.AddScoped<PaperImportService>();
+        services.AddScoped<PaperCollectionService>();
         services.AddScoped<IExamService, ExamService>();
         services.AddScoped<IExtractService, ExtractService>();
         services.AddScoped<IOptimizationService, OptimizationService>();

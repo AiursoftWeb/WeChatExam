@@ -57,6 +57,9 @@
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
+  <data name="Edit collection" xml:space="preserve">
+    <value>编辑合集</value>
+  </data>
   <data name="Editable preview" xml:space="preserve">
     <value>可编辑预览</value>
   </data>
@@ -102,6 +105,9 @@
   <data name="Is Real Exam" xml:space="preserve">
     <value>是否为正式考试</value>
   </data>
+  <data name="Manage paper collections" xml:space="preserve">
+    <value>管理试卷合集</value>
+  </data>
   <data name="Move down" xml:space="preserve">
     <value>下移</value>
   </data>
@@ -132,6 +138,9 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>付费来源标签名称</value>
   </data>
+  <data name="Paper collections" xml:space="preserve">
+    <value>试卷集</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>待处理</value>
   </data>
@@ -146,6 +155,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>分值</value>
+  </data>
+  <data name="Select where this paper belongs. Source tags organize its questions separately after the directory is connected." xml:space="preserve">
+    <value>选择这份试卷所属的合集。连接目录后，来源标签会单独整理其中的题目。</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>复用来源会使此标签在全局范围内变为付费标签。</value>

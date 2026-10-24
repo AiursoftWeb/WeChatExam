@@ -22,6 +22,7 @@ public class PapersController(
     WeChatExamDbContext context, 
     IPaperService paperService,
     ITagService tagService,
+    PaperCollectionService collections,
     PaperImportService importService,
     PaperImportTasks importTasks,
     ServiceTaskQueue taskQueue,
@@ -36,6 +37,7 @@ public class PapersController(
     {
         return this.StackView(new ImportViewModel
         {
+            Collections = await CollectionOptionsAsync([]),
             Categories = await context.Categories.OrderBy(c => c.Title).Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync(),
             Taxonomies = await context.Taxonomies.OrderBy(t => t.Name).Select(t => new SelectListItem(t.Name, t.Id.ToString())).ToListAsync()
         });
@@ -118,9 +120,14 @@ public class PapersController(
         CascadedLinksOrder = 2,
         LinkText = "Papers",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? tagId)
     {
         var papers = await paperService.GetAllPapersAsync();
+        if (tagId.HasValue)
+        {
+            var ids = await context.PaperTags.Where(t => t.TagId == tagId).Select(t => t.PaperId).ToListAsync();
+            papers = papers.Where(p => ids.Contains(p.Id)).ToList();
+        }
         return this.StackView(new IndexViewModel { Papers = papers });
     }
 
@@ -131,6 +138,7 @@ public class PapersController(
         var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
         var model = new CreateViewModel
         {
+            AvailableCollections = await CollectionOptionsAsync([]),
             AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
@@ -149,6 +157,7 @@ public class PapersController(
         if (!ModelState.IsValid)
         {
             var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+            model.AvailableCollections = await CollectionOptionsAsync(model.SelectedCollectionIds);
             model.AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
@@ -157,23 +166,41 @@ public class PapersController(
             return this.StackView(model);
         }
 
-        var paper = await paperService.CreatePaperAsync(model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
-        if (model.SelectedCategoryId.HasValue)
+        var paperId = Guid.NewGuid();
+        try
         {
-            await paperService.AssociateCategoryAsync(paper.Id, model.SelectedCategoryId.Value);
-        }
-
-        if (!string.IsNullOrWhiteSpace(model.Tags))
-        {
-            var tags = model.Tags.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            foreach (var tagDisplayName in tags)
+            await collections.ExecuteAtomicAsync(async () =>
             {
-                var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
-                await tagService.AddTagToPaperAsync(paper.Id, tag.Id);
-            }
-        }
+                var paper = await paperService.CreatePaperAsync(model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
+                if (model.SelectedCategoryId.HasValue)
+                {
+                    await paperService.AssociateCategoryAsync(paper.Id, model.SelectedCategoryId.Value);
+                }
 
-        return RedirectToAction(nameof(Edit), new { id = paper.Id });
+                if (!string.IsNullOrWhiteSpace(model.Tags))
+                {
+                    var tags = model.Tags.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var tagDisplayName in tags)
+                    {
+                        var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
+                        await tagService.AddTagToPaperAsync(paper.Id, tag.Id);
+                    }
+                }
+
+                if (model.CollectionsSubmitted) await collections.StagePaperCollectionsAsync(paper.Id, model.SelectedCollectionIds);
+                await context.SaveChangesAsync();
+                paperId = paper.Id;
+            });
+        }
+        catch (Exception e) when (e is InvalidOperationException or DbUpdateException)
+        {
+            context.ChangeTracker.Clear();
+            ModelState.AddModelError(string.Empty, e is DbUpdateException ? localizer["The directory changed while saving. Reload and try again."].Value : e.Message);
+            model.AvailableCollections = await CollectionOptionsAsync(model.SelectedCollectionIds);
+            model.AvailableCategories = await context.Categories.OrderBy(c => c.Title).Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync();
+            return this.StackView(model);
+        }
+        return RedirectToAction(nameof(Edit), new { id = paperId });
     }
 
     // GET: papers/{id}
@@ -216,8 +243,14 @@ public class PapersController(
         var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
         var tags = await tagService.GetTagsForPaperAsync(id.Value);
 
+        var mappedTagIds = await context.LegacyPaperCollectionBindings.Select(b => b.TagId).ToListAsync();
+        tags = tags.Where(t => !mappedTagIds.Contains(t.Id)).ToList();
+        var selectedCollections = await context.PaperCollectionPapers.Where(p => p.PaperId == id).Select(p => p.CollectionId).ToListAsync();
         return this.StackView(new EditViewModel
         {
+            SelectedCollectionIds = selectedCollections,
+            CollectionRevision = await collections.MembershipRevisionAsync(id.Value),
+            AvailableCollections = await CollectionOptionsAsync(selectedCollections),
             Id = id.Value,
             Title = paper.Title,
             TimeLimit = paper.TimeLimit,
@@ -254,6 +287,7 @@ public class PapersController(
             model.PaperQuestions = await paperService.GetQuestionsForPaperAsync(id);
             
             var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+            model.AvailableCollections = await CollectionOptionsAsync(model.SelectedCollectionIds);
             model.AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
@@ -271,37 +305,49 @@ public class PapersController(
 
         try
         {
-            await paperService.UpdatePaperAsync(id, model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
-            
-            await paperService.ClearCategoriesForPaperAsync(id);
-            if (model.SelectedCategoryId.HasValue)
+            await collections.ExecuteAtomicAsync(async () =>
             {
-                await paperService.AssociateCategoryAsync(id, model.SelectedCategoryId.Value);
-            }
+                if (model.CollectionsSubmitted) await collections.VerifyMembershipRevisionAsync(id, model.CollectionRevision);
+                await paperService.UpdatePaperAsync(id, model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
 
-            // Sync tags
-            var currentTags = await tagService.GetTagsForPaperAsync(id);
-            var submittedTags = (model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>()).ToList();
+                await paperService.ClearCategoriesForPaperAsync(id);
+                if (model.SelectedCategoryId.HasValue)
+                {
+                    await paperService.AssociateCategoryAsync(id, model.SelectedCategoryId.Value);
+                }
 
-            // Add new tags
-            foreach (var tagDisplayName in submittedTags.Where(st => currentTags.All(ct => ct.DisplayName != st)))
-            {
-                var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
-                await tagService.AddTagToPaperAsync(id, tag.Id);
-            }
+                // Sync tags
+                var mappedTagIds = await context.LegacyPaperCollectionBindings.Select(b => b.TagId).ToListAsync();
+                var currentTags = (await tagService.GetTagsForPaperAsync(id)).Where(t => !mappedTagIds.Contains(t.Id)).ToList();
+                var submittedTags = (model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>()).ToList();
 
-            // Remove old tags
-            foreach (var tagToRemove in currentTags.Where(ct => submittedTags.All(st => st != ct.DisplayName)))
-            {
-                await tagService.RemoveTagFromPaperAsync(id, tagToRemove.Id);
-            }
+                var mappedNames = await context.Tags.Where(t => mappedTagIds.Contains(t.Id)).Select(t => t.DisplayName).ToListAsync();
+                submittedTags.RemoveAll(t => mappedNames.Contains(t));
+
+                // Add new tags
+                foreach (var tagDisplayName in submittedTags.Where(st => currentTags.All(ct => ct.DisplayName != st)))
+                {
+                    var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
+                    await tagService.AddTagToPaperAsync(id, tag.Id);
+                }
+
+                // Remove old tags
+                foreach (var tagToRemove in currentTags.Where(ct => submittedTags.All(st => st != ct.DisplayName)))
+                {
+                    await tagService.RemoveTagFromPaperAsync(id, tagToRemove.Id);
+                }
+                if (model.CollectionsSubmitted) await collections.StagePaperCollectionsAsync(id, model.SelectedCollectionIds);
+                await context.SaveChangesAsync();
+            });
         }
-        catch (InvalidOperationException ex)
+        catch (Exception ex) when (ex is InvalidOperationException or DbUpdateException)
         {
-            ModelState.AddModelError("", ex.Message);
+            context.ChangeTracker.Clear();
+            ModelState.AddModelError("", ex is DbUpdateException ? localizer["The directory changed while saving. Reload and try again."].Value : ex.Message);
             model.PaperQuestions = await paperService.GetQuestionsForPaperAsync(id);
             
             var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
+            model.AvailableCollections = await CollectionOptionsAsync(model.SelectedCollectionIds);
             model.AvailableCategories = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
@@ -496,5 +542,13 @@ public class PapersController(
     {
         await paperService.DeletePaperAsync(id);
         return RedirectToAction(nameof(Index));
+    }
+
+    private async Task<List<SelectListItem>> CollectionOptionsAsync(IEnumerable<Guid> selected)
+    {
+        var ids = selected.ToArray();
+        return await context.PaperCollections.AsNoTracking().Where(c => !c.IsArchived || ids.Contains(c.Id))
+            .OrderBy(c => c.OrderIndex).ThenBy(c => c.Name)
+            .Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name, Selected = ids.Contains(c.Id) }).ToListAsync();
     }
 }

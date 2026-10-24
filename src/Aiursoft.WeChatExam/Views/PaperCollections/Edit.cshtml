@@ -1,0 +1,40 @@
+@model Aiursoft.WeChatExam.Models.PaperCollectionsViewModels.EditViewModel
+<link rel="stylesheet" href="~/css/paper-collections.css" asp-append-version="true" />
+<a asp-action="Index">@Localizer["Back to collections"]</a>
+<div class="collection-heading mt-3"><div><h1 class="h3">@(Model.Id.HasValue ? Model.Name : @Localizer["Create collection"].Value)</h1>
+<p class="text-muted">@Localizer["Arrange the directory here. Paper access continues to follow each exam paper's settings."]</p></div>
+@if (Model.Id.HasValue) { <a asp-action="Preview" asp-route-id="@Model.Id" class="btn btn-outline-primary">@Localizer["Preview student directory"]</a> }
+</div>
+@if (TempData["Error"] != null) { <p class="text-danger" role="alert">@TempData["Error"]</p> }
+<form asp-action="Save" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" /><input type="hidden" asp-for="Revision" />
+    <div class="card"><div class="card-body row g-3">
+        <div class="col-md-9"><label asp-for="Name" class="form-label">@Localizer["Collection name"]</label><input asp-for="Name" class="form-control" /><span asp-validation-for="Name" class="text-danger"></span></div>
+        <div class="col-md-3"><label asp-for="OrderIndex" class="form-label">@Localizer["Display order"]</label><input asp-for="OrderIndex" class="form-control" /></div>
+        <div class="col-12"><label class="form-check"><input asp-for="IsVisible" class="form-check-input" /><span class="form-check-label">@Localizer["Show in the Mini Program"]</span></label></div>
+        @if (Model.SharedQuestionCount > 0)
+        { <p class="col-12 mb-0">@string.Format(@Localizer["The corresponding tag also labels {0} questions. Renaming this collection updates that tag name; its question links and fee remain unchanged."].Value, Model.SharedQuestionCount)</p> }
+    </div></div>
+    <div class="collection-heading"><div><h2 class="h4">@Localizer["Papers in this collection"]</h2><p>@Localizer["Uncheck a exam paper to remove it from this collection when saving. The exam paper itself is kept."]</p></div>
+    @if (Model.Id.HasValue && !Model.IsArchived) { <a asp-action="Papers" asp-route-id="@Model.Id" class="btn btn-outline-primary">@Localizer["Add exam papers"]</a> }
+    </div>
+    @if (!Model.Papers.Any()) { <p>@Localizer["Save the collection, then add your exam papers."]</p> }
+    <div class="row g-3 mb-4">
+    @foreach (var p in Model.Papers)
+    {
+        <div class="col-md-6"><div class="card h-100"><div class="card-body">
+            <label class="d-flex gap-3"><input type="checkbox" name="PaperIds" value="@p.Id" checked class="form-check-input" /><strong>@p.Title</strong></label>
+            <p class="mt-3">@if (p.IsRealExam) { @Localizer["Past exam paper"] } else { @Localizer["Mock exam"] } · @if (p.Status == Aiursoft.WeChatExam.Entities.PaperStatus.Draft) { @Localizer["Draft"] } else if (!p.HasSnapshot) { @Localizer["No published version"] } else { @Localizer["Available"] }
+            · @if (p.IsFree) { @Localizer["Free"] } else { @Localizer["VIP required"] }</p>
+            <a asp-controller="Papers" asp-action="Edit" asp-route-id="@p.Id">@Localizer["Edit exam paper"]</a>
+        </div></div></div>
+    }
+    </div>
+    <details class="mb-4"><summary>@Localizer["Archive and compatibility details"]</summary>
+        <label class="form-check mt-3"><input asp-for="IsArchived" class="form-check-input" /><span class="form-check-label">@Localizer["Archive this collection"]</span></label>
+        <p>@Localizer["Archiving hides this entry in both client versions. Papers, tags and history are retained."]</p>
+        @if (Model.LegacyTagId.HasValue) { <a asp-controller="Tags" asp-action="Edit" asp-route-id="@Model.LegacyTagId" asp-route-fees="true">@Localizer["View corresponding tag settings"]</a> }
+    </details>
+    <button class="btn btn-primary btn-lg">@Localizer["Save collection"]</button>
+</form>

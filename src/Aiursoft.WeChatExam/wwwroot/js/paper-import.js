@@ -186,7 +186,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
         if (unanswered >= 0) { status(tr.missingAnswer.replace('{0}', unanswered + 1)); return; }
         el('save-import').disabled = true;
         try {
-            const result = await request('/Papers/ImportSave', { ...tagRequest(), taskId, title: el('title').value, questions: questions.map(({ clientId, ...q }) => q), confirmations, timeLimit: Number(el('time-limit').value), isRealExam: el('real-exam').checked, isFree: el('is-free').checked });
+            const result = await request('/Papers/ImportSave', { ...tagRequest(), collectionIds: Array.from(el('paper-collections').querySelectorAll('input:checked'), option => option.value), taskId, title: el('title').value, questions: questions.map(({ clientId, ...q }) => q), confirmations, timeLimit: Number(el('time-limit').value), isRealExam: el('real-exam').checked, isFree: el('is-free').checked });
             window.location.assign(result.url);
         } catch (e) { status(e.message); el('save-import').disabled = false; }
     };

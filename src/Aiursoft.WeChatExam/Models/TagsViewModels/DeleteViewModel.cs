@@ -11,5 +11,6 @@ public class DeleteViewModel : UiStackLayoutViewModel
     }
 
     public required Tag Tag { get; set; }
+    public int PaperUsageCount { get; set; }
     public int UsageCount { get; set; }
 }

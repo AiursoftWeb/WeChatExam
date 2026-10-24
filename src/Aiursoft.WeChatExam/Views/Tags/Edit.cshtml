@@ -1,5 +1,11 @@
 @model Aiursoft.WeChatExam.Models.TagsViewModels.EditViewModel
 
+@if (Model.CollectionId.HasValue)
+{
+    <p>@Localizer["This tag supports a paper collection. Its name and directory are managed there; existing question fee settings remain here."]</p>
+    <a asp-controller="PaperCollections" asp-action="Edit" asp-route-id="@Model.CollectionId" class="btn btn-outline-primary mb-3">@Localizer["Edit paper collection"]</a>
+}
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Tags"]</a></li>
@@ -13,19 +19,20 @@
     <div class="col-md-6">
         <div class="card shadow-sm border-0">
             <div class="card-body">
-                <form asp-action="Edit">
+                @if (Model.CollectionId.HasValue) { <input type="hidden" form="tag-edit-form" asp-for="TaxonomyId" /> }
+<form id="tag-edit-form" asp-action="Edit">
                     <input type="hidden" asp-for="Id" />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     
                     <div class="mb-3">
                         <label asp-for="DisplayName" class="form-label fw-bold"></label>
-                        <input asp-for="DisplayName" class="form-control" placeholder="@Localizer["Enter tag name..."]" />
+                        <input asp-for="DisplayName" class="form-control" readonly="@Model.CollectionId.HasValue" placeholder="@Localizer["Enter tag name..."]" />
                         <span asp-validation-for="DisplayName" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label asp-for="TaxonomyId" class="form-label fw-bold"></label>
-                        <select asp-for="TaxonomyId" asp-items="Model.AvailableTaxonomies" class="form-select">
+                        <select asp-for="TaxonomyId" disabled="@Model.CollectionId.HasValue" asp-items="Model.AvailableTaxonomies" class="form-select">
                             <option value="">@Localizer["-- Uncategorized --"]</option>
                         </select>
                         <span asp-validation-for="TaxonomyId" class="text-danger"></span>

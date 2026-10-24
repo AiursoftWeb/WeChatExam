@@ -1,15 +1,18 @@
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Services;
 
 public class TagService : ITagService
 {
     private readonly WeChatExamDbContext _dbContext;
+    private readonly IStringLocalizer<TagService> _localizer;
 
-    public TagService(WeChatExamDbContext dbContext)
+    public TagService(WeChatExamDbContext dbContext, IStringLocalizer<TagService> localizer)
     {
         _dbContext = dbContext;
+        _localizer = localizer;
     }
 
     public async Task<Tag> AddTagAsync(string displayName)
@@ -44,6 +47,14 @@ public class TagService : ITagService
             return existingTag;
         }
 
+        // A cached old name still identifies the same retained tag, never a new source tag.
+        var oldCollectionId = await _dbContext.LegacyPaperCollectionAliases.Where(a => a.NormalizedName == normalizedName)
+            .Select(a => (Guid?)a.CollectionId).SingleOrDefaultAsync();
+        if (oldCollectionId.HasValue)
+        {
+            var oldTagId = await _dbContext.LegacyPaperCollectionBindings.Where(b => b.CollectionId == oldCollectionId).Select(b => b.TagId).SingleAsync();
+            return await _dbContext.Tags.Include(t => t.Taxonomy).SingleAsync(t => t.Id == oldTagId);
+        }
         var newTag = new Tag
         {
             DisplayName = displayName,
@@ -66,6 +77,7 @@ public class TagService : ITagService
         {
             tag.NormalizedName = tag.NormalizedName.Substring(0, 255);
         }
+        await EnsureNameNotReservedAsync(PaperCollectionService.Normalize(tag.DisplayName));
         _dbContext.Tags.Add(tag);
         await _dbContext.SaveChangesAsync();
     }
@@ -126,6 +138,8 @@ public class TagService : ITagService
 
     public async Task AddTagToPaperAsync(Guid paperId, int tagId)
     {
+        await EnsureNotCollectionTagAsync(tagId);
+
         var exists = await _dbContext.PaperTags
             .AnyAsync(pt => pt.PaperId == paperId && pt.TagId == tagId);
 
@@ -143,6 +157,8 @@ public class TagService : ITagService
 
     public async Task RemoveTagFromPaperAsync(Guid paperId, int tagId)
     {
+        await EnsureNotCollectionTagAsync(tagId);
+
         var paperTag = await _dbContext.PaperTags
             .FirstOrDefaultAsync(pt => pt.PaperId == paperId && pt.TagId == tagId);
 
@@ -208,6 +224,8 @@ public class TagService : ITagService
 
     public async Task DeleteTagAsync(int tagId)
     {
+        await EnsureNotCollectionTagAsync(tagId);
+
         // First remove all question-tag relationships
         var questionTags = await _dbContext.QuestionTags
             .Where(qt => qt.TagId == tagId)
@@ -233,6 +251,10 @@ public class TagService : ITagService
 
     public async Task UpdateTagAsync(Tag tag)
     {
+        var binding = await _dbContext.LegacyPaperCollectionBindings.AsNoTracking().Include(b => b.Tag).SingleOrDefaultAsync(b => b.TagId == tag.Id);
+        if (binding != null && (tag.DisplayName != binding.Tag.DisplayName || tag.NormalizedName != binding.Tag.NormalizedName
+            || tag.TaxonomyId != binding.Tag.TaxonomyId || tag.OrderIndex != binding.Tag.OrderIndex))
+            throw new InvalidOperationException(_localizer["Edit directory names and order through the paper collection editor."]);
         if (tag.DisplayName.Length > 255)
         {
             tag.DisplayName = tag.DisplayName.Substring(0, 255);
@@ -241,6 +263,7 @@ public class TagService : ITagService
         {
             tag.NormalizedName = tag.NormalizedName.Substring(0, 255);
         }
+        if (binding == null) await EnsureNameNotReservedAsync(PaperCollectionService.Normalize(tag.DisplayName));
         _dbContext.Tags.Update(tag);
         await _dbContext.SaveChangesAsync();
     }
@@ -254,5 +277,17 @@ public class TagService : ITagService
             .OrderBy(t => t.OrderIndex)
             .ThenBy(t => t.DisplayName)
             .ToListAsync();
+    }
+
+    private async Task EnsureNotCollectionTagAsync(int tagId)
+    {
+        if (await _dbContext.LegacyPaperCollectionBindings.AnyAsync(b => b.TagId == tagId))
+            throw new InvalidOperationException(_localizer["This tag belongs to a paper collection. Use the collection editor to manage its directory."]);
+    }
+
+    private async Task EnsureNameNotReservedAsync(string name)
+    {
+        if (await _dbContext.LegacyPaperCollectionAliases.AnyAsync(a => a.NormalizedName == name))
+            throw new InvalidOperationException(_localizer["This name is reserved for an existing or renamed paper collection."]);
     }
 }

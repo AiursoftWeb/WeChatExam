@@ -62,6 +62,7 @@ public class Startup : IWebStartup
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<ITaxonomyService, TaxonomyService>();
         services.AddScoped<IPaperService, PaperService>();
+        services.AddScoped<PaperCollectionService>();
         services.AddScoped<ChatClient>();
         services.AddScoped<IOllamaService, OllamaService>();
         services.AddSingleton<AiTaskService>();

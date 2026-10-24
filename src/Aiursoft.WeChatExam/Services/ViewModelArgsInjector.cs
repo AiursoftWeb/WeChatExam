@@ -39,6 +39,10 @@ public class ViewModelArgsInjector(
     private void _useless_for_localizer()
     {
         // Titles, navbar strings.
+        _ = localizer["Paper Collections"];
+        _ = localizer["Edit Paper Collection"];
+        _ = localizer["Connect Existing Paper Directory"];
+        _ = localizer["Add Papers to Collection"];
         _ = localizer["Search Content"];
         _ = localizer["Content Configuration Checks"];
         _ = localizer["Features"];

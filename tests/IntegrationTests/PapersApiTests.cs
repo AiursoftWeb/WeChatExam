@@ -69,6 +69,16 @@ public class PapersApiTests
     public async Task CleanServer()
     {
         if (_server == null) return;
+        using (var scope = _server.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.LegacyPaperCollectionAliases.RemoveRange(db.LegacyPaperCollectionAliases);
+            db.LegacyPaperCollectionBindings.RemoveRange(db.LegacyPaperCollectionBindings);
+            db.LegacyPaperCollectionCatalogs.RemoveRange(db.LegacyPaperCollectionCatalogs);
+            db.PaperCollectionPapers.RemoveRange(db.PaperCollectionPapers);
+            db.PaperCollections.RemoveRange(db.PaperCollections);
+            await db.SaveChangesAsync();
+        }
         await _server.StopAsync();
         _server.Dispose();
     }
@@ -94,6 +104,76 @@ public class PapersApiTests
         response.EnsureSuccessStatusCode();
         var result = await response.Content.ReadFromJsonAsync<TokenDto>();
         return result!.Token;
+    }
+
+    [TestMethod]
+    public async Task CollectionApisPreserveOldNamesPublicationFiltersAndVipProtection()
+    {
+        Guid collectionId, freeId, paidId, snapshotId;
+        int taxonomyId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var service = scope.ServiceProvider.GetRequiredService<PaperCollectionService>();
+            var taxonomy = new Taxonomy { Name = "Directory" };
+            var tag = new Tag { DisplayName = "Original college", NormalizedName = "ORIGINAL COLLEGE", Taxonomy = taxonomy, IsFree = false };
+            var free = new Paper { Id = Guid.NewGuid(), Title = "Free real paper", IsRealExam = true, IsFree = true, Status = PaperStatus.Publishable };
+            var paid = new Paper { Id = Guid.NewGuid(), Title = "Paid real paper", IsRealExam = true, IsFree = false, Status = PaperStatus.Frozen };
+            var draft = new Paper { Id = Guid.NewGuid(), Title = "Unpublished paper", IsRealExam = true };
+            db.Tags.Add(tag); db.Papers.AddRange(free, paid, draft);
+            foreach (var paper in new[] { free, paid, draft })
+            {
+                db.PaperTags.Add(new PaperTag { PaperId = paper.Id, TagId = 0, Paper = paper, Tag = tag });
+                db.PaperSnapshots.Add(new PaperSnapshot { Id = Guid.NewGuid(), Paper = paper, Title = paper.Title, Version = 1 });
+            }
+            await db.SaveChangesAsync();
+            var snapshot = db.PaperSnapshots.Single(x => x.PaperId == paid.Id);
+            db.QuestionSnapshots.Add(new QuestionSnapshot { Id = Guid.NewGuid(), PaperSnapshotId = snapshot.Id, Content = "Paid contents", StandardAnswer = "Secret answer" });
+            await db.SaveChangesAsync();
+            taxonomyId = taxonomy.Id; freeId = free.Id; paidId = paid.Id; snapshotId = snapshot.Id;
+            await service.ImportAsync(taxonomyId, (await service.PreviewAsync(taxonomyId)).Fingerprint);
+            var collection = db.PaperCollections.Single(); collectionId = collection.Id;
+            await service.SaveAsync(collectionId, collection.Revision, "Renamed college", 0, true, false, [free.Id, paid.Id, draft.Id]);
+            await scope.ServiceProvider.GetRequiredService<ITagService>().GetOrCreateTagAsync("Year source tag", taxonomyId);
+        }
+        async Task AssertLists(bool paidAccess)
+        {
+            var oldRows = (await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers?tag=Original%20college&isRealExam=true"))!;
+            var newRows = (await _http.GetFromJsonAsync<List<PaperListDto>>($"/api/PaperCollections/{collectionId}/papers?isRealExam=true"))!;
+            CollectionAssert.AreEqual(new[] { freeId, paidId }, oldRows.Select(p => p.Id).ToArray());
+            CollectionAssert.AreEqual(oldRows.Select(p => p.Id).ToArray(), newRows.Select(p => p.Id).ToArray());
+            Assert.IsTrue(newRows[0].HasAccess);
+            Assert.AreEqual(paidAccess, newRows[1].HasAccess);
+            Assert.AreEqual(paidAccess, oldRows[1].HasAccess);
+            var snapshot = (await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{snapshotId}"))!;
+            Assert.AreEqual(paidAccess, snapshot.HasAccess);
+            Assert.AreEqual(paidAccess ? 1 : 0, snapshot.Questions.Count);
+        }
+        await AssertLists(false);
+        var menu = await _http.GetStringAsync($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags");
+        StringAssert.Contains(menu, "Renamed college");
+        Assert.IsFalse(menu.Contains("Year source tag"));
+        var directory = Newtonsoft.Json.Linq.JArray.Parse(await _http.GetStringAsync("/api/PaperCollections?isRealExam=true"));
+        Assert.AreEqual(2, directory.Single()["availablePaperCount"]!.ToObject<int>());
+        var token = await LoginAsWeChatUserAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        await AssertLists(false);
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+            VipProduct = new VipProduct { Name = "Real", Type = VipProductType.RealExam }
+        }];
+        await AssertLists(true);
+        using (var scope = _server.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var c = db.PaperCollections.Single();
+            await scope.ServiceProvider.GetRequiredService<PaperCollectionService>().SaveAsync(c.Id, c.Revision, c.Name, 0, false, false, db.PaperCollectionPapers.Select(p => p.PaperId).ToArray());
+        }
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/PaperCollections/{collectionId}/papers")).StatusCode);
+        Assert.AreEqual(0, (await _http.GetFromJsonAsync<List<PaperListDto>>("/api/Papers?tag=Original%20college"))!.Count);
+        // Hiding a directory does not revoke the existing paid snapshot endpoint for a valid member.
+        Assert.IsTrue((await _http.GetFromJsonAsync<PaperSnapshotDto>($"/api/Papers/snapshots/{snapshotId}"))!.HasAccess);
     }
 
     [TestMethod]
