@@ -181,8 +181,9 @@ public class KnowledgePointsController(
 
     // GET: knowledgePoints/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
-    public async Task<IActionResult> Edit(Guid? id, string? returnUrl)
+    public async Task<IActionResult> Edit(Guid? id, string? returnUrl, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
         
         var knowledgePoint = await context.KnowledgePoints
@@ -227,8 +228,9 @@ public class KnowledgePointsController(
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
 
         if (!ModelState.IsValid)
@@ -383,7 +385,9 @@ public class KnowledgePointsController(
 
         await context.SaveChangesAsync();
 
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
         if (Url.IsLocalUrl(model.ReturnUrl)) return Redirect(model.ReturnUrl!);
+
         return RedirectToAction(nameof(Details), new { id = knowledgePoint.Id });
     }
 

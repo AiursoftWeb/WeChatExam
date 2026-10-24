@@ -6,9 +6,20 @@ namespace Aiursoft.WeChatExam.Models.ContentChecksViewModels;
 
 public enum CheckSeverity { Error, Warning, Information }
 
-public record ContentReference(string Controller, string Id, string Name, string Permission);
+public enum ContentPricing { Unspecified, Public, Paid }
+
+public record ContentReference(string Controller, string Id, string Name, string Permission,
+    ContentPricing Pricing = ContentPricing.Unspecified, string Action = "Edit", bool? Enabled = null);
 public record AccessObservation(string Scenario, string Entry, bool Allowed, string Reason);
 public record AccessScenario(string Name, bool Authenticated, PaperAccessStatus Status);
+public record ExerciseAccess(string Scenario, QuestionAccessDecision Decision);
+public record ContentTagMapping(ContentReference? Taxonomy, List<ContentReference> Subjects);
+
+// Preserve actual database edges before findings are grouped. A group's flat object list
+// cannot tell us which of its knowledge points belongs to which exercise.
+public record ContentExercise(ContentReference Question, List<ContentReference> KnowledgePoints,
+    ContentReference? Subject, List<ContentReference> PaidTags, List<ContentReference> Settings,
+    List<ExerciseAccess> Access);
 
 public class ContentFinding
 {
@@ -36,6 +47,8 @@ public class ContentCheckReport
     public List<ContentFinding> Findings { get; } = [];
     public List<AccessScenario> Scenarios { get; } = [];
     public Dictionary<int, List<ContentReference>> TagImpacts { get; } = new();
+    public Dictionary<Guid, ContentExercise> Exercises { get; } = new();
+    public Dictionary<int, ContentTagMapping> TagMappings { get; } = new();
 }
 
 /// <summary>
@@ -112,6 +125,13 @@ public class IndexViewModel : UiStackLayoutViewModel
     public Guid[] Subjects { get; set; } = [];
     public bool RealExam { get; set; }
     public bool Changed { get; set; }
+    public List<ContentExercise> Exercises { get; set; } = [];
+    public ContentExercise? Exercise { get; set; }
+    public int ExerciseIndex { get; set; }
+    public string? PreviousExerciseUrl { get; set; }
+    public string? NextExerciseUrl { get; set; }
+    public Dictionary<string, string> ExerciseUrls { get; } = new();
+    public string DetailsUrl { get; set; } = string.Empty;
     public HashSet<string> EditPermissions { get; set; } = [];
     public string ResultsUrl { get; set; } = string.Empty;
     public string? PreviousUrl { get; set; }

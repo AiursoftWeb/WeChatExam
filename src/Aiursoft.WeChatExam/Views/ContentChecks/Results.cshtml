@@ -20,7 +20,7 @@
     {
         <p role="status" class="check-panel mb-4">@Localizer["That item has changed. Please choose from the latest results below."]</p>
     }
-    @if (attention == 0)
+    @if (attention == 0 && information == 0 && engineering == 0)
     {
         <section class="check-panel check-success mb-4">
             <i data-lucide="circle-check" aria-hidden="true"></i>
@@ -28,6 +28,14 @@
                 <h2 class="mb-1">@Localizer["No configuration issues found in this check"]</h2>
                 <p class="mb-0 text-muted">@Localizer["Intentional paid content is listed separately below. Mini Program behavior may still need team review."]</p>
             </div>
+        </section>
+    }
+    @if (information > 0)
+    {
+        <section class="check-panel mb-4">
+            <h2>@Localizer["Review how public content and paid content are connected"]</h2>
+            <p class="mb-2">@Localizer["These arrangements may be intentional. Open a card to see the exact content, who can access it, and where to edit it."]</p>
+            <a href="@Model.ViewUrls["information"]">@string.Format(@Localizer["View {0} pricing arrangements"].Value, information)</a>
         </section>
     }
     <p class="text-muted mb-3">@string.Format(@Localizer["Checked {0} knowledge points, {1} exercises and {2} papers."].Value, Model.Report!.KnowledgePointCount, Model.Report.QuestionCount, Model.Report.PaperCount)</p>

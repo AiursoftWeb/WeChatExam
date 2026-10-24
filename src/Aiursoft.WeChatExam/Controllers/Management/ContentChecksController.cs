@@ -56,7 +56,8 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
 
     [HttpGet]
     public async Task<IActionResult> Details(string key, string view = "all", string? severity = null, string? rule = null,
-        string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null, bool realExam = false)
+        string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null, bool realExam = false,
+        Guid? exerciseId = null)
     {
         var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam);
         model.Selected = model.Groups.FirstOrDefault(g => g.Key == key);
@@ -64,7 +65,17 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         // Each request reads live data. A corrected or deleted finding must not lead to
         // a broken detail page, nor be replaced by a different item at the same list index.
         if (model.Selected == null) return Redirect(model.ResultsUrl + "&changed=true");
-        foreach (var permission in model.Selected.Objects.Concat(model.Report!.TagImpacts.Values.SelectMany(o => o)).Select(o => o.Permission).Distinct())
+        model.Exercises = model.Selected.Objects.Where(o => o.Controller == "Questions")
+            .Select(o => model.Report!.Exercises.GetValueOrDefault(Guid.Parse(o.Id))).OfType<ContentExercise>()
+            .OrderBy(e => e.Question.Id, StringComparer.Ordinal).ToList();
+        model.ExerciseIndex = Math.Max(0, model.Exercises.FindIndex(e => e.Question.Id == exerciseId?.ToString()));
+        model.Exercise = model.Exercises.ElementAtOrDefault(model.ExerciseIndex);
+        model.DetailsUrl = DetailUrl(model, key, model.Exercise?.Question.Id);
+        foreach (var exercise in model.Exercises) model.ExerciseUrls[exercise.Question.Id] = DetailUrl(model, key, exercise.Question.Id);
+        if (model.ExerciseIndex > 0) model.PreviousExerciseUrl = DetailUrl(model, key, model.Exercises[model.ExerciseIndex - 1].Question.Id);
+        if (model.ExerciseIndex + 1 < model.Exercises.Count) model.NextExerciseUrl = DetailUrl(model, key, model.Exercises[model.ExerciseIndex + 1].Question.Id);
+        foreach (var permission in model.Selected.Objects.Concat(model.Report!.TagImpacts.Values.SelectMany(o => o))
+                     .Concat(model.Exercises.SelectMany(e => e.Settings)).Select(o => o.Permission).Distinct())
             if ((await authorization.AuthorizeAsync(User, permission)).Succeeded) model.EditPermissions.Add(permission);
         return this.StackView(model);
     }
@@ -122,8 +133,9 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     private string ReportUrl(IndexViewModel model, int? page = null, string? view = null) =>
         Url.Action(nameof(Results)) + FilterQuery(model, page, view);
 
-    private string DetailUrl(IndexViewModel model, string key) =>
-        Url.Action(nameof(Details)) + FilterQuery(model) + "&key=" + Uri.EscapeDataString(key);
+    private string DetailUrl(IndexViewModel model, string key, string? exerciseId = null) =>
+        Url.Action(nameof(Details)) + FilterQuery(model) + "&key=" + Uri.EscapeDataString(key)
+        + (exerciseId == null ? string.Empty : "&exerciseId=" + Uri.EscapeDataString(exerciseId));
 
     private static QueryString FilterQuery(IndexViewModel model, int? page = null, string? view = null)
     {

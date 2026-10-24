@@ -1,0 +1,11 @@
+@* Only the existing edit form carries this origin; there is no global redirect state. *@
+@if (ViewData["CheckReturnUrl"] is string returnUrl && Url.IsLocalUrl(returnUrl))
+{
+    <input type="hidden" name="checkReturnUrl" value="@returnUrl" />
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="mb-2">@Localizer["You opened this editor from a content checkup. Saving returns you to a fresh check."]</p>
+            <a href="@returnUrl" class="btn btn-outline-secondary">@Localizer["Return to checkup without saving"]</a>
+        </div>
+    </div>
+}

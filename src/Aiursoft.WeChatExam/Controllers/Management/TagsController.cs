@@ -129,8 +129,9 @@ public class TagsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
-    public async Task<IActionResult> Edit(int? id)
+    public async Task<IActionResult> Edit(int? id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
 
         var tag = await tagService.GetTagByIdAsync(id.Value);
@@ -159,8 +160,9 @@ public class TagsController(
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(EditViewModel model)
+    public async Task<IActionResult> Edit(EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (!ModelState.IsValid)
         {
             var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
@@ -190,6 +192,8 @@ public class TagsController(
         tag.IsFree = model.IsFree;
 
         await tagService.UpdateTagAsync(tag);
+
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Index));
     }

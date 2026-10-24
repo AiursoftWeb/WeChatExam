@@ -1,0 +1,129 @@
+@using Aiursoft.WeChatExam.Models.ContentChecksViewModels
+@model ContentReference
+@{
+    var permissions = (HashSet<string>)ViewData["EditPermissions"]!;
+    var canEdit = permissions.Contains(Model.Permission);
+    var abbreviate = Model.Controller == "Questions" && Model.Name.Length > 180;
+    var caption = abbreviate ? Model.Name[..180] + "…" : Model.Name;
+    var editUrl = canEdit ? Url.Action(Model.Action, Model.Controller, new { id = Model.Id, checkReturnUrl = ViewData["CheckReturnUrl"] }) : null;
+    var label = Model.Controller switch
+    {
+        "KnowledgePoints" => @Localizer["Knowledge point"],
+        "Questions" => @Localizer["Exercise"],
+        "Tags" => @Localizer["Tag"],
+        "Taxonomies" => @Localizer["Taxonomy"],
+        "Categories" => @Localizer["Course"],
+        "VipProducts" => @Localizer["VIP product"],
+        _ => @Localizer["Paper"]
+    };
+    var editLabel = Model.Controller switch
+    {
+        "KnowledgePoints" => @Localizer["Edit knowledge point"],
+        "Questions" => @Localizer["Edit exercise"],
+        "Tags" => @Localizer["Edit tag"],
+        "Taxonomies" => @Localizer["Edit taxonomy"],
+        "Categories" => @Localizer["Edit course"],
+        "VipProducts" => @Localizer["Edit VIP product"],
+        _ => Model.Action == "Edit" ? @Localizer["Edit paper"] : @Localizer["View frozen paper"]
+    };
+    var icon = Model.Controller switch
+    {
+        "KnowledgePoints" => "book-open", "Questions" => "list-checks", "Tags" => "tag",
+        "Taxonomies" => "folder-tree", "Categories" => "library-big", "VipProducts" => "badge-check", _ => "files"
+    };
+}
+<article class="check-entity" data-entity-type="@Model.Controller" data-entity-id="@Model.Id">
+    <div class="check-entity-heading">
+        <span class="check-entity-kind"><i data-lucide="@icon" aria-hidden="true"></i>@label</span>
+        @if (Model.Pricing == ContentPricing.Public)
+        {
+            <span class="check-pricing"><i data-lucide="globe" aria-hidden="true"></i>@Localizer["Public / free"]</span>
+        }
+        else if (Model.Pricing == ContentPricing.Paid)
+        {
+            <span class="check-pricing"><i data-lucide="lock-keyhole" aria-hidden="true"></i>@Localizer["Paid"]</span>
+        }
+        @if (Model.Enabled.HasValue)
+        {
+            <span class="check-pricing">@(Model.Enabled.Value ? @Localizer["Available to buy"] : @Localizer["Sales disabled"])</span>
+        }
+    </div>
+    <div class="check-entity-name">
+        @if (editUrl != null)
+        {
+            <a href="@editUrl">@caption</a>
+        }
+        else
+        {
+            @caption
+        }
+    </div>
+    @if (abbreviate)
+    {
+        <details>
+            <summary>@Localizer["Read full exercise"]</summary>
+            <p class="check-entity-full-text mb-0">@Model.Name</p>
+        </details>
+    }
+    @if (Model.Controller == "Tags" && ViewData["TagMappings"] is Dictionary<int, ContentTagMapping> mappings && mappings.TryGetValue(int.Parse(Model.Id), out var mapping))
+    {
+        <div class="check-tag-mapping text-muted">
+            <p class="mb-2">@Localizer["Taxonomy"]:
+                @if (mapping.Taxonomy is { } taxonomy)
+                {
+                    @if (permissions.Contains(taxonomy.Permission))
+                    {
+                        <a asp-controller="Taxonomies" asp-action="Edit" asp-route-id="@taxonomy.Id" asp-route-checkReturnUrl="@ViewData["CheckReturnUrl"]">@taxonomy.Name</a>
+                    }
+                    else
+                    {
+                        @taxonomy.Name
+                    }
+                }
+                else
+                {
+                    @Localizer["Not assigned"]
+                }
+            </p>
+            @if (Model.Pricing == ContentPricing.Paid)
+            {
+                <p class="mb-0">@Localizer["Course VIPs linked to this tag entry"]:
+                    @foreach (var subject in mapping.Subjects)
+                    {
+                        @if (permissions.Contains(subject.Permission))
+                        {
+                            <a asp-controller="Categories" asp-action="Edit" asp-route-id="@subject.Id" asp-route-checkReturnUrl="@ViewData["CheckReturnUrl"]">@subject.Name</a>
+                        }
+                        else
+                        {
+                            <span>@subject.Name</span>
+                        }
+                    }
+                    @if (mapping.Subjects.Count == 0)
+                    {
+                        <strong>@Localizer["None configured"]</strong>
+                    }
+                </p>
+            }
+        </div>
+    }
+    @if (Model.Controller == "Tags" && ViewData["TagImpacts"] is Dictionary<int, List<ContentReference>> impacts && impacts.TryGetValue(int.Parse(Model.Id), out var impact))
+    {
+        <p class="check-entity-impact text-muted">@string.Format(@Localizer["Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises."].Value,
+            impact.Count(o => o.Controller == "Questions"), impact.Count(o => o.Controller == "KnowledgePoints"))</p>
+    }
+    <div class="check-entity-action">
+        @if (editUrl != null)
+        {
+            <a href="@editUrl" class="btn btn-outline-primary"><i data-lucide="pencil" aria-hidden="true"></i>@editLabel</a>
+        }
+        else
+        {
+            <span class="text-muted"><i data-lucide="lock-keyhole" aria-hidden="true"></i>@Localizer["View only: editing permission is required"]</span>
+        }
+        @if (Model.Controller == "Questions" && ViewData["ExerciseUrls"] is Dictionary<string, string> exerciseUrls && exerciseUrls.TryGetValue(Model.Id, out var relationUrl) && Model.Id != ViewData["FocusedExerciseId"] as string)
+        {
+            <a href="@relationUrl#content-relationship" class="btn btn-outline-secondary">@Localizer["View relationship"]</a>
+        }
+    </div>
+</article>
