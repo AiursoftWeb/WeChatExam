@@ -24,9 +24,9 @@
                     <dd><span data-utc-time="@Model.KnowledgePoint.CreationTime.ToHtmlDateTime()"></span></dd>
                 </dl>
                 <div class="mt-3">
-                    <a asp-action="Edit" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-warning">@Localizer["Edit"]</a>
+                    <a asp-action="Edit" asp-route-id="@Model.KnowledgePoint.Id" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-warning">@Localizer["Edit"]</a>
                     <a asp-action="Delete" asp-route-id="@Model.KnowledgePoint.Id" class="btn btn-danger">@Localizer["Delete"]</a>
-                    <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+                    <a href="@(Url.IsLocalUrl(Model.ReturnUrl) ? Model.ReturnUrl : Url.Action("Index"))" class="btn btn-light">@Localizer["Back to List"]</a>
                 </div>
             </div>
         </div>

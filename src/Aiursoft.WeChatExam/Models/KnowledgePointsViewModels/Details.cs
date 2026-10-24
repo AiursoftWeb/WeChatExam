@@ -10,6 +10,8 @@ public class DetailsViewModel : UiStackLayoutViewModel
         PageTitle = "KnowledgePoint Details";
     }
 
+    public string? ReturnUrl { get; set; }
+
     public required KnowledgePoint KnowledgePoint { get; set; }
 
     public List<Category> AssociatedCategories { get; set; } = new();

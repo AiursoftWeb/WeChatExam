@@ -1,0 +1,149 @@
+using System.Net;
+using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.InMemory;
+using Aiursoft.WeChatExam.Models.ContentSearchViewModels;
+using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Sqlite;
+using Aiursoft.WeChatExam.Tests.TestServices;
+using Aiursoft.WeChatExam.Util;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging.Abstractions;
+
+namespace Aiursoft.WeChatExam.Tests.ServiceTests;
+
+[TestClass]
+public class ContentSearchTests
+{
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task ExactMatchesLeadSemanticResultsAndCategoryFiltersApply(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
+        var other = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
+        var exact = NewQuestion("Boya", category.Id);
+        var related = NewQuestion("Who played Flowing Water?", category.Id);
+        var excluded = NewQuestion("Boya outside the selected category", other.Id);
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "A guqin musician", ParentId = null };
+        db.AddRange(category, other, exact, related, excluded, point);
+        db.Add(new CategoryKnowledgePoint { CategoryId = category.Id, KnowledgePointId = point.Id });
+        await db.SaveChangesAsync();
+        foreach (var q in new[] { exact, related, excluded }) SetEmbedding(q);
+        point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt;
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler();
+        var service = CreateSearch(db, handler);
+
+        var (results, usedAi) = await service.SearchAsync("Boya", "all", category.Id);
+        Assert.IsTrue(usedAi);
+        Assert.HasCount(3, results);
+        Assert.IsFalse(results.Any(r => r.Id == excluded.Id));
+        Assert.AreEqual(related.Id, results[^1].Id, "Exact content/title matches must precede semantic-only matches.");
+        Assert.IsTrue(results.Any(r => r.Id == point.Id && r.IsKnowledgePoint));
+        Assert.IsTrue(results.Any(r => r.Id == exact.Id && !r.IsKnowledgePoint));
+        await service.SearchAsync("Boya", "questions", category.Id);
+        Assert.AreEqual(1, handler.Calls, "Repeated searches should reuse the query vector.");
+
+        handler.Fail = true;
+        var (fallback, fallbackUsedAi) = await service.SearchAsync("guqin", "knowledge", category.Id);
+        Assert.IsFalse(fallbackUsedAi);
+        Assert.HasCount(1, fallback);
+        Assert.AreEqual(point.Id, fallback[0].Id);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RecommendationsReturnFiveAndExcludeSelfAssociatedAndOtherCategoryQuestions(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
+        var other = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
+        var source = NewQuestion("Source question", category.Id);
+        var choices = Enumerable.Range(0, 8).Select(i => NewQuestion("Related question " + i, category.Id)).ToArray();
+        var wrongCategory = NewQuestion("Related outside the category", other.Id);
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Guqin", Content = "Boya", ParentId = null };
+        db.AddRange(category, other, point, source, wrongCategory);
+        db.Questions.AddRange(choices);
+        db.Add(new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = choices[0].Id });
+        await db.SaveChangesAsync();
+        foreach (var question in choices.Concat([source, wrongCategory])) SetEmbedding(question);
+        point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt;
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler();
+        var service = CreateSearch(db, handler);
+
+        var (available, results) = await service.RecommendAsync(new RecommendationRequest
+        {
+            Id = point.Id, CategoryIds = [category.Id], ExcludeIds = [choices[1].Id]
+        }, true);
+        Assert.IsTrue(available);
+        Assert.HasCount(5, results);
+        Assert.IsFalse(results.Any(r => r.Id == choices[0].Id || r.Id == choices[1].Id || r.Id == wrongCategory.Id));
+        var (_, similar) = await service.RecommendAsync(new RecommendationRequest { Id = source.Id, CategoryIds = [category.Id] }, false);
+        Assert.HasCount(5, similar);
+        Assert.IsFalse(similar.Any(r => r.Id == source.Id || r.Id == wrongCategory.Id));
+        Assert.AreEqual(0, handler.Calls, "Saved source vectors avoid model requests when opening an editor.");
+
+        // Cache refresh is deliberately not run: edits/deletion must still exclude stale entries.
+        choices[2].Content = "Edited while the cache still contains the old vector";
+        db.Remove(choices[3]);
+        await db.SaveChangesAsync();
+        var (_, fresh) = await service.RecommendAsync(new RecommendationRequest { Id = point.Id, CategoryIds = [category.Id] }, true);
+        Assert.IsFalse(fresh.Any(r => r.Id == choices[2].Id || r.Id == choices[3].Id));
+        await service.RecommendAsync(new RecommendationRequest { Id = source.Id, Text = "Unsaved new question content" }, false);
+        Assert.AreEqual(1, handler.Calls, "Explicit editor refresh can use unsaved content without saving it.");
+        db.ChangeTracker.Clear();
+        Assert.AreEqual("Source question", (await db.Questions.SingleAsync(q => q.Id == source.Id)).Content);
+    }
+
+    private static ContentVectorSearchService CreateSearch(WeChatExamDbContext db, QueryHandler handler)
+    {
+        var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };
+        return new ContentVectorSearchService(db, new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance),
+            settings, new EmbeddingService(settings, handler, NullLogger<EmbeddingService>.Instance),
+            new MemoryCache(new MemoryCacheOptions()), NullLogger<ContentVectorSearchService>.Instance);
+    }
+
+    private static Question NewQuestion(string content, Guid categoryId) => new()
+    {
+        Id = Guid.NewGuid(), Content = content, StandardAnswer = "Boya", CategoryId = categoryId
+    };
+
+    private static byte[] Vector()
+    {
+        var vector = new float[1024]; vector[0] = 1;
+        return EmbeddingHelper.Serialize(vector);
+    }
+
+    private static void SetEmbedding(Question question)
+    {
+        question.Embedding = Vector(); question.LastEmbeddedAt = question.LastUpdatedAt;
+    }
+
+    private static async Task<WeChatExamDbContext> CreateDatabase(bool relational)
+    {
+        if (!relational) return new InMemoryContext(new DbContextOptionsBuilder<InMemoryContext>()
+            .UseInMemoryDatabase(Guid.NewGuid().ToString()).Options);
+        var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite("DataSource=:memory:").Options);
+        await db.Database.OpenConnectionAsync(); await db.Database.MigrateAsync(); return db;
+    }
+
+    private sealed class QueryHandler : HttpMessageHandler, IHttpClientFactory
+    {
+        public int Calls { get; private set; }
+        public bool Fail { get; set; }
+        public HttpClient CreateClient(string name) => new(this, disposeHandler: false);
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            Calls++;
+            if (Fail) return Task.FromResult(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable));
+            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = JsonContent.Create(new { embeddings = new[] { EmbeddingHelper.Deserialize(Vector())! } })
+            });
+        }
+    }
+}

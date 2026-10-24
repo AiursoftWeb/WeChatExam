@@ -1,0 +1,79 @@
+@using Aiursoft.WeChatExam.Authorization
+@model Aiursoft.WeChatExam.Models.ContentSearchViewModels.IndexViewModel
+
+<h1 class="h3 mb-3">@Localizer["Search Content"]</h1>
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" asp-action="Index" class="row g-3">
+            <div class="col-lg-6">
+                <label for="content-query" class="form-label">@Localizer["Questions and knowledge points"]</label>
+                <input id="content-query" name="query" value="@Model.Query" maxlength="500" class="form-control"
+                       placeholder="@Localizer["Search by name, topic, or a few words..."]" autofocus />
+            </div>
+            <div class="col-sm-6 col-lg-2">
+                <label for="content-kind" class="form-label">@Localizer["Content Type"]</label>
+                <select id="content-kind" name="kind" class="form-select">
+                    <option value="all" selected="@(Model.Kind == "all")">@Localizer["All Content"]</option>
+                    <option value="questions" selected="@(Model.Kind == "questions")">@Localizer["Exam Questions"]</option>
+                    <option value="knowledge" selected="@(Model.Kind == "knowledge")">@Localizer["Knowledge Points"]</option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <label for="content-category" class="form-label">@Localizer["Category"]</label>
+                <select id="content-category" name="categoryId" class="form-select">
+                    <option value="">@Localizer["All Categories"]</option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id" selected="@(Model.CategoryId == category.Id)">@category.Title</option>
+                    }
+                </select>
+            </div>
+            <div class="col-lg-1 d-flex align-items-end">
+                <button class="btn btn-primary w-100" type="submit">@Localizer["Search"]</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(Model.Query))
+{
+    <p class="text-muted">
+        @Localizer["Showing up to 50 relevant results. Refine your search to narrow the list."]
+        @if (Model.UsedAi)
+        {
+            <span class="badge bg-light text-dark">@Localizer["Related content included"]</span>
+        }
+    </p>
+    @if (Model.Results.Count == 0)
+    {
+        <div class="card"><div class="card-body text-muted">@Localizer["No matching content found. Try fewer words or another category."]</div></div>
+    }
+    @foreach (var item in Model.Results)
+    {
+        var controller = item.IsKnowledgePoint ? "KnowledgePoints" : "Questions";
+        var permission = item.IsKnowledgePoint ? AppPermissionNames.CanEditAnyKnowledgePoint : AppPermissionNames.CanEditQuestions;
+        var returnUrl = Context.Request.Path + Context.Request.QueryString;
+        <article class="card mb-3" data-content-id="@item.Id">
+            <div class="card-body">
+                <div class="d-flex gap-2 mb-2">
+                    <span class="badge bg-secondary">@(item.IsKnowledgePoint ? @Localizer["Knowledge Point"] : @Localizer["Exam Question"])</span>
+                    @if (!string.IsNullOrWhiteSpace(item.Category)) { <span class="text-muted">@item.Category</span> }
+                </div>
+                <h2 class="h5 text-break"><a asp-controller="@controller" asp-action="Details" asp-route-id="@item.Id" asp-route-returnUrl="@returnUrl">@(item.Title.Length > 180 ? item.Title[..180] + "…" : item.Title)</a></h2>
+                <p class="text-muted text-break mb-2">@(item.Preview.Length > 240 ? item.Preview[..240] + "…" : item.Preview)</p>
+                @if (!item.IsKnowledgePoint && !string.IsNullOrWhiteSpace(item.Answer))
+                {
+                    <details class="mb-2"><summary>@Localizer["Show Answer"]</summary><p class="text-break mb-0">@item.Answer</p></details>
+                }
+                @if (User.HasClaim(AppPermissions.Type, permission))
+                {
+                    <a asp-controller="@controller" asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="@returnUrl" class="btn btn-sm btn-outline-primary">@Localizer["Edit"]</a>
+                }
+            </div>
+        </article>
+    }
+}
+else
+{
+    <p class="text-muted">@Localizer["Find existing content before editing or creating something new."]</p>
+}
