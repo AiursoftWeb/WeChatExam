@@ -24,14 +24,23 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Añadir seleccionados</value>
   </data>
+  <data name="Advanced: MTQL" xml:space="preserve">
+    <value>Avanzado: MTQL</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Todos los tipos</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>Asociar</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>Categorías asociadas</value>
   </data>
   <data name="Associated Questions" xml:space="preserve">
     <value>Preguntas relacionadas</value>
+  </data>
+  <data name="Associations are applied when you save this knowledge point." xml:space="preserve">
+    <value>Las asociaciones se aplican al guardar este punto de conocimiento.</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Volver a la lista</value>
@@ -42,14 +51,32 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Editar Punto de Conocimiento</value>
   </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Introduce unas palabras para buscar preguntas.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Introduce un tema o unas palabras...</value>
+  </data>
   <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
     <value>Introduzca una consulta MTQL (por ejemplo, contenido:&quot;matemáticas&quot;)</value>
   </data>
   <data name="Error:" xml:space="preserve">
     <value>Error:</value>
   </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Tipo de pregunta del examen</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>Buscar preguntas de examen para asociar</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Buscar preguntas</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Mantenga pulsado Ctrl (Windows) o Command (Mac) para seleccionar varias opciones.</value>
+  </data>
+  <data name="Keywords and Related Topics" xml:space="preserve">
+    <value>Palabras clave y temas relacionados</value>
   </data>
   <data name="MTQL Question Finder" xml:space="preserve">
     <value>Buscador de preguntas MTQL</value>
@@ -60,11 +87,23 @@
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Punto de Conocimiento Padre</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Guardar y volver a las revisiones de contenido</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>La búsqueda no está disponible. Inténtalo de nuevo.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Modo de búsqueda</value>
   </data>
   <data name="Search results will appear here..." xml:space="preserve">
     <value>Los resultados de búsqueda aparecerán aquí...</value>

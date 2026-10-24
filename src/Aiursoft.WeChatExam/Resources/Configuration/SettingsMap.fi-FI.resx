@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>Brändin nimi</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>Upotus-API-tunniste</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>Upotuksen päätepiste</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>Upotusmalli</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Ota käyttöön kysymysten ja tietopisteiden upotusten luominen taustalla.</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>Ota käyttöön upotuksiin perustuva haku</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP-numero</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>Upotuksen päätepisteen valinnainen bearer-tunniste. Jos kenttä jätetään tyhjäksi, käytetään OpenAI-tunnistetta.</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>Projektin logo</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>Oletusjärjestelmäohje tiedon erottamiseen materiaalista.</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>Upotusmalli kysymyksille ja tietopisteille. Olemassa olevat vektorit käyttävät bge-m3:n 1024-ulotteista indeksointisopimusta.</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>ICP-lisenssinumero Kiinan mantereelle tarkoitetuille käyttäjille. Jätä tyhjäksi piilottaaksesi.</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Projektin nimi, joka näytetään etusivulla.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Ollama-rajapinnan perusosoite upotuksia varten. Käytössä on vain palvelimen osoite; /api/embed lisätään automaattisesti. Jos osoite on tyhjä, käytetään OpenAI:n completion-rajapinnan päätepistettä.</value>
   </data>
 
 </root>

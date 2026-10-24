@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Affected content</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>All affected content</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Allowed</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Anyone can load this exercise without signing in.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Back to results</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Before changing a shared tag, check all the content it affects below.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Browse the full list</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Check this scenario</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Entry point</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Exercise {0} of {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Exercise: can open</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Exercise: cannot open</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Exercises</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Exercises in this result</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>For our team</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Its paid tags indicate that the exercise is paid; they do not require additional course memberships.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Knowledge point text is public. Access to the exercise below follows the current server rules; submitting and saving answers are not checked here.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Knowledge points</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Knowledge points and their exercise</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Knowledge text: public</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Linked exercise</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Needs attention</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Next exercise</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>No knowledge point is linked to this exercise.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Open settings</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Please confirm</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Previous exercise</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Pricing arrangement</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Related settings and edit links</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Review shared impact</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Shared tags affect {0} exercises in {1} courses.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Sign in with an active VIP for the course this exercise belongs to:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>You need to sign in and have the required course VIP.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>The paid tag is not covered: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>These results assess current server access. They do not simulate every Mini Program screen or submission flow. Each page reads the current configuration again.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>This account requires the course VIP associated with the exercise.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>This exercise has no course assigned. Every paid tag must be covered by an active course VIP.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>This exercise has several paid tags. Making only one tag free may leave the exercise restricted.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>User scenario</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>What to review</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Who can open this content?</value>
   </data>
 
 </root>

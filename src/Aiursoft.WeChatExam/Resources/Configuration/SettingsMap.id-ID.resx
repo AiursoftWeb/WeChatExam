@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>Nama Merek</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>Token API Embedding</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>Titik Akhir Embedding</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>Model Embedding</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Aktifkan pembuatan embedding di latar belakang untuk pertanyaan dan poin pengetahuan.</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>Aktifkan Pencarian Berbasis Embedding</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Nomor ICP</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>Token bearer opsional untuk endpoint embedding. Jika kosong, gunakan token OpenAI.</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>Logo Proyek</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>Prompt sistem default untuk mengekstrak pengetahuan dari materi.</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>Model embedding untuk pertanyaan dan poin pengetahuan. Vektor yang ada menggunakan kontrak indeks bge-m3 berdimensi 1024.</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Nomor lisensi ICP untuk pengguna daratan Tiongkok. Biarkan kosong untuk menyembunyikan.</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Nama proyek yang ditampilkan di antarmuka pengguna.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>URL dasar API Ollama untuk embedding. Hanya host yang digunakan; /api/embed akan ditambahkan secara otomatis. Jika kosong, akan menggunakan endpoint penyelesaian OpenAI.</value>
   </data>
 
 </root>

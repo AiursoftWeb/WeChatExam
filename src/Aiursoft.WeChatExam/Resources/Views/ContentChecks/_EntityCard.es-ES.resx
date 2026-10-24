@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Available to buy" xml:space="preserve">
+    <value>Disponible para comprar</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Curso</value>
+  </data>
+  <data name="Course VIPs linked to this tag entry" xml:space="preserve">
+    <value>VIP de cursos vinculados a esta etiqueta</value>
+  </data>
+  <data name="Edit course" xml:space="preserve">
+    <value>Editar curso</value>
+  </data>
+  <data name="Edit exercise" xml:space="preserve">
+    <value>Editar ejercicio</value>
+  </data>
+  <data name="Edit knowledge point" xml:space="preserve">
+    <value>Editar punto de conocimiento</value>
+  </data>
+  <data name="Edit paper" xml:space="preserve">
+    <value>Editar examen</value>
+  </data>
+  <data name="Edit tag" xml:space="preserve">
+    <value>Editar etiqueta</value>
+  </data>
+  <data name="Edit taxonomy" xml:space="preserve">
+    <value>Editar taxonomía</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Editar producto VIP</value>
+  </data>
+  <data name="Exercise" xml:space="preserve">
+    <value>Ejercicio</value>
+  </data>
+  <data name="Knowledge point" xml:space="preserve">
+    <value>Punto de conocimiento</value>
+  </data>
+  <data name="None configured" xml:space="preserve">
+    <value>Ninguno configurado</value>
+  </data>
+  <data name="Not assigned" xml:space="preserve">
+    <value>Sin asignar</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>De pago</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Examen</value>
+  </data>
+  <data name="Public / free" xml:space="preserve">
+    <value>Público / gratuito</value>
+  </data>
+  <data name="Read full exercise" xml:space="preserve">
+    <value>Leer el ejercicio completo</value>
+  </data>
+  <data name="Sales disabled" xml:space="preserve">
+    <value>Ventas desactivadas</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taxonomía</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
+    <value>Utilizado por {0} ejercicios vinculados a {1} puntos de conocimiento. Si cambias el precio de la etiqueta, afectarás a todos estos ejercicios.</value>
+  </data>
+  <data name="View frozen paper" xml:space="preserve">
+    <value>Ver el examen bloqueado</value>
+  </data>
+  <data name="View only: editing permission is required" xml:space="preserve">
+    <value>Solo lectura: se requieren permisos de edición</value>
+  </data>
+  <data name="View relationship" xml:space="preserve">
+    <value>Ver relación</value>
+  </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>Producto VIP</value>
+  </data>
+
+</root>

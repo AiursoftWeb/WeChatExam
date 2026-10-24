@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>Numele mărcii</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>Token API pentru încorporări</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>Punct final pentru generarea vectorilor embedding</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>Model de embedding</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Activați generarea în fundal a reprezentărilor vectoriale pentru întrebări și puncte de cunoaștere.</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>Activați căutarea bazată pe embedderi</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Număr ICP</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>Token opțional de tip bearer pentru endpointul de embedding. Dacă este gol, se utilizează tokenul OpenAI.</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>Logo Proiect</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>Promptul implicit al sistemului pentru extragerea cunoștințelor din material.</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>Modelul de vectorizare pentru întrebări și puncte de cunoaștere. Vectorii existenți respectă contractul de indexare bge-m3 cu 1024 de dimensiuni.</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Numărul de înregistrare ICP pentru utilizatorii din China continentală. Lăsați gol pentru a ascunde.</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Numele proiectului afișat în interfața utilizatorului.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Adresa URL de bază a API-ului Ollama pentru vectorizări. Se folosește doar gazda; /api/embed este adăugat automat. Dacă este goală, se folosește endpointul de completare OpenAI.</value>
   </data>
 
 </root>

@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>Marka Adı</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>Gömme API Jetonu</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>Gömme Uç Noktası</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>Gömme Modeli</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Sorular ve bilgi noktaları için arka planda gömme oluşturmayı etkinleştirin.</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>Gömme Tabanlı Aramayı Etkinleştir</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP Numarası</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>Embedding uç noktası için isteğe bağlı taşıyıcı token. Boş bırakıldığında OpenAI token&apos;ı kullanılır.</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>Proje Logosu</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>Materyalden bilgi çıkarma için varsayılan sistem istemi.</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>Sorular ve bilgi noktaları için gömme modeli. Mevcut vektörler, bge-m3 1024 boyutlu dizin sözleşmesini kullanır.</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Çin ana karasında kullanıcılar için ICP lisans numarası. Gizlemek için boş bırakın.</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Ön yüzte görüntülenen proje adı.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Gömme işlemleri için Ollama API temel URL’si. Yalnızca ana makine kullanılır; /api/embed otomatik olarak eklenir. Boş bırakıldığında OpenAI tamamlama uç noktasına geri dönülür.</value>
   </data>
 
 </root>

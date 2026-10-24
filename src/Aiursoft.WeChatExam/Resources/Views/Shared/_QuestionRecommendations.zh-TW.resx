@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Answer" xml:space="preserve">
+    <value>答案</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>關聯</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>選擇題</value>
+  </data>
+  <data name="Definition" xml:space="preserve">
+    <value>定義</value>
+  </data>
+  <data name="Edit in New Tab" xml:space="preserve">
+    <value>在新分頁中編輯</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>申論題</value>
+  </data>
+  <data name="Fill in the Blank" xml:space="preserve">
+    <value>填空</value>
+  </data>
+  <data name="Finding related exam questions..." xml:space="preserve">
+    <value>正在尋找相關考題...</value>
+  </data>
+  <data name="No related exam questions found yet." xml:space="preserve">
+    <value>目前尚未找到相關考題。</value>
+  </data>
+  <data name="Open Details" xml:space="preserve">
+    <value>開啟詳細資訊</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>預覽</value>
+  </data>
+  <data name="Recommendations are unavailable. Please try again later." xml:space="preserve">
+    <value>目前無法提供推薦內容，請稍後再試。</value>
+  </data>
+  <data name="Recommended Exam Questions" xml:space="preserve">
+    <value>推薦考題</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>簡答</value>
+  </data>
+  <data name="Similar Exam Questions" xml:space="preserve">
+    <value>相似的考試題目</value>
+  </data>
+  <data name="True or False" xml:space="preserve">
+    <value>是非題</value>
+  </data>
+  <data name="Up to five related exam questions. Refresh after changing the content." xml:space="preserve">
+    <value>最多五題相關考試題目。變更內容後請重新整理。</value>
+  </data>
+
+</root>

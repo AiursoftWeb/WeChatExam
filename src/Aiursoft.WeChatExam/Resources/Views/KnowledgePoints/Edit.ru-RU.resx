@@ -24,14 +24,23 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Добавить выделенное</value>
   </data>
+  <data name="Advanced: MTQL" xml:space="preserve">
+    <value>Расширенный: MTQL</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Все типы</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>Связать</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>Связанные категории</value>
   </data>
   <data name="Associated Questions" xml:space="preserve">
     <value>Связанные вопросы</value>
+  </data>
+  <data name="Associations are applied when you save this knowledge point." xml:space="preserve">
+    <value>Связи применяются при сохранении этого элемента знаний.</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>Назад к списку</value>
@@ -42,14 +51,32 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>Редактировать пункт знаний</value>
   </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Введите несколько слов, чтобы найти вопросы.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Введите тему или несколько слов...</value>
+  </data>
   <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
     <value>Введите запрос MTQL (например, content:&quot;math&quot;)</value>
   </data>
   <data name="Error:" xml:space="preserve">
     <value>Ошибка:</value>
   </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Тип экзаменационного вопроса</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>Найти экзаменационные вопросы для связывания</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Найти вопросы</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Удерживайте клавишу Ctrl (Windows) или Command (Mac), чтобы выбрать несколько вариантов.</value>
+  </data>
+  <data name="Keywords and Related Topics" xml:space="preserve">
+    <value>Ключевые слова и связанные темы</value>
   </data>
   <data name="MTQL Question Finder" xml:space="preserve">
     <value>Поиск вопросов MTQL</value>
@@ -60,11 +87,23 @@
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Родительский пункт знаний</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Сохранить и вернуться к проверкам контента</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Поиск недоступен. Пожалуйста, попробуйте ещё раз.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Режим поиска</value>
   </data>
   <data name="Search results will appear here..." xml:space="preserve">
     <value>Результаты поиска появятся здесь...</value>

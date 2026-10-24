@@ -24,14 +24,23 @@
   <data name="Add Selected" xml:space="preserve">
     <value>選択したものを追加</value>
   </data>
+  <data name="Advanced: MTQL" xml:space="preserve">
+    <value>詳細：MTQL</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>すべての種類</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>関連付ける</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>関連カテゴリ</value>
   </data>
   <data name="Associated Questions" xml:space="preserve">
     <value>関連質問</value>
+  </data>
+  <data name="Associations are applied when you save this knowledge point." xml:space="preserve">
+    <value>関連付けは、この知識ポイントを保存すると適用されます。</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>リストに戻る</value>
@@ -42,14 +51,32 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>ナレッジポイントを編集</value>
   </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>質問を検索するキーワードを入力してください。</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>トピックまたはキーワードを入力してください...</value>
+  </data>
   <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
     <value>MTQLクエリを入力してください（例: content:&quot;math&quot;）</value>
   </data>
   <data name="Error:" xml:space="preserve">
     <value>エラー:</value>
   </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>試験問題の種類</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>関連付ける試験問題を検索</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>質問を検索</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>Ctrl (Windows) または Command (Mac) を押しながら複数のオプションを選択してください。</value>
+  </data>
+  <data name="Keywords and Related Topics" xml:space="preserve">
+    <value>キーワードと関連トピック</value>
   </data>
   <data name="MTQL Question Finder" xml:space="preserve">
     <value>MTQL クエスチョン ファインダー</value>
@@ -60,11 +87,23 @@
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>親ナレッジポイント</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>削除</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>保存してコンテンツ確認に戻る</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>検索</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>検索を利用できません。もう一度お試しください。</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>検索モード</value>
   </data>
   <data name="Search results will appear here..." xml:space="preserve">
     <value>検索結果はここに表示されます...</value>

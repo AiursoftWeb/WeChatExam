@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>影響を受けるコンテンツ</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>影響を受けるすべてのコンテンツ</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>許可</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>誰でもサインインせずにこの演習を読み込めます。</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>結果に戻る</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>共有タグを変更する前に、以下でその影響を受けるコンテンツをすべて確認してください。</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>一覧をすべて表示</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>このシナリオを確認</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>エントリーポイント</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>演習 {0} / {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>演習：アクセスできます</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>演習：開けません</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>演習</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>この結果の演習</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>チーム向け</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>有料タグはこの演習を有料として示すものであり、追加のコースへの加入を必要とするものではありません。</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>知識ポイントのテキストは公開されています。以下の演習へのアクセス可否は現在のサーバー規則に従います。回答の送信と保存はここでは確認されません。</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>知識ポイント</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>ナレッジポイントと関連する演習</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>知識テキスト：公開</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>関連する演習</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>要対応</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>次の演習</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>この演習に関連付けられた知識ポイントはありません。</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>設定を開く</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>ご確認ください</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>前の演習</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>料金体系</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>関連設定と編集リンク</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>共有箇所への影響を確認</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>共有タグは{1}件のコース内の{0}件の演習に影響します。</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>その演習に紐付けられたコースの有効なVIPでサインインしてください：</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>サインインし、必要なコースVIPを取得する必要があります。</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>有料タグは対象外です: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>この結果は、現在のサーバーアクセス状況を評価したものです。ミニプログラムのすべての画面や送信フローをシミュレートするものではありません。各ページでは、現在の設定が再度読み込まれます。</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>このアカウントには、この演習専用のコースVIPが必要です。</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>この演習には、割り当てられたコースがありません。有料タグはすべて、有効なコースVIPでカバーされている必要があります。</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>この演習には有料タグが複数設定されています。タグを1つだけ無料にしても、演習の利用制限が解除されない場合があります。</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>ユーザーのシナリオ</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>確認する内容</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>このコンテンツを開けるのは誰ですか？</value>
   </data>
 
 </root>
