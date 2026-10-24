@@ -165,7 +165,9 @@ public class KnowledgePointsController : ControllerBase
                 {
                     Id = q.Id,
                     Text = q.Content,
-                    Answer = q.StandardAnswer,
+                    // Deployed Mini Program clients trim selected option text before
+                    // comparing locally. Match the grading service's whitespace handling.
+                    Answer = q.StandardAnswer.Trim(),
                 }).ToList()
         }).ToList();
 
