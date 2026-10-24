@@ -12,7 +12,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [Route("api/PaperCollections")]
 [ApiController]
 [WeChatUserOnly]
-public class PaperCollectionsApiController(WeChatExamDbContext db, IPaperAccessService access) : ControllerBase
+public class PaperCollectionsApiController(WeChatExamDbContext db) : ControllerBase
 {
     [HttpGet, AllowAnonymous]
     public async Task<IActionResult> Index([FromQuery] bool? isRealExam)
@@ -27,7 +27,7 @@ public class PaperCollectionsApiController(WeChatExamDbContext db, IPaperAccessS
     }
 
     [HttpGet("{id:guid}/papers"), AllowAnonymous]
-    public async Task<IActionResult> Papers(Guid id, [FromQuery] bool? isRealExam)
+    public async Task<IActionResult> Papers(Guid id, [FromQuery] bool? isRealExam, [FromServices] IPaperAccessService access)
     {
         if (!await db.PaperCollections.AnyAsync(c => c.Id == id && c.IsVisible && !c.IsArchived)) return NotFound();
         var members = db.PaperCollectionPapers.Where(p => p.CollectionId == id).Select(p => p.PaperId);
