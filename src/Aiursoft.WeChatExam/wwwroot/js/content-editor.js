@@ -119,6 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const status = document.getElementById('question-search-status');
         const help = document.getElementById('question-search-help');
         let pendingSearch;
+        form.addEventListener('question-selection-changed', () => {
+            for (const button of results.querySelectorAll('[data-associate-question]'))
+                button.disabled = selectedIds().includes(button.dataset.associateQuestion);
+        });
         mode.addEventListener('change', () => {
             pendingSearch?.abort();
             pendingSearch = null;
@@ -168,7 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const row = element('div', 'list-group-item d-flex align-items-center gap-2');
                     row.append(element('span', 'text-break flex-grow-1', question.title));
                     const add = element('button', 'btn btn-sm btn-outline-primary flex-shrink-0 text-nowrap', translate('associate', 'Associate'));
-                    add.type = 'button'; add.disabled = selectedIds().includes(question.id);
+                    add.type = 'button'; add.dataset.associateQuestion = question.id;
+                    add.disabled = selectedIds().includes(question.id);
                     add.addEventListener('click', () => { selectQuestion(question); add.disabled = true; });
                     row.append(add); results.append(row);
                 }
