@@ -77,8 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
             activeRequest = controller;
             refresh.disabled = true;
             target.replaceChildren(element('p', 'text-muted mb-0', localize('loading', 'Finding related questions...')));
+            // Knowledge-point categories can be more specific than question categories.
             const categories = isKnowledgePoint
-                ? [...form.querySelectorAll('#SelectedCategoryIds option:checked')].map(option => option.value)
+                ? []
                 : [form.querySelector('#CategoryId')?.value].filter(Boolean);
             try {
                 const response = await fetch(panel.dataset.endpoint, {
