@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Adaugă selectatele</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Adăugați selecțiile ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Avansat: expresie de etichete (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Căutare semantică cu IA</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Căutarea semantică AI nu a fost utilizată. Se afișează rezultatele căutării după cuvinte-cheie.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Toate tipurile</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categorie</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Combină etichete, de exemplu: rock &amp;&amp; nu metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Conținut</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Proiect</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>ex. rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Editare lucrare</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Introdu câteva cuvinte pentru a găsi întrebări.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Introduceți un subiect sau câteva cuvinte...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Tipul întrebării de examen</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Găsiți cuvinte exacte și sensuri asociate.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Găsiți întrebări</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Hârtie gratuită</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Înghețare</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Căutare după cuvinte-cheie</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Marchează ca publicabil</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Potriviți cuvintele din textul întrebării, răspunsuri și explicații.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Nu au fost găsite întrebări.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Ordine</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Apăsați Enter pentru a adăuga o etichetă sau selectați din sugestii. Faceți clic pe X pentru a elimina.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Previzualizare</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Publică Instantaneu</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Examen Real</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Elimină</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Revenire la borră</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Salvează</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Salvează și revino la verificările conținutului</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Punctaj</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Caută și adaugă întrebări</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Căutarea nu este disponibilă. Vă rugăm să încercați din nou.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Mod de căutare</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Se caută...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Selectează toate rezultatele</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Selectează întrebarea</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Întrebări selectate</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Selectarea unei categorii va filtra întrebările disponibile.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Selecțiile se păstrează când căutați din nou. Adăugați-le când sunteți gata.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Căutare inteligentă (implicită)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Ordine de început</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Acțiuni statut</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Căutare după expresii de etichete (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etichete</value>

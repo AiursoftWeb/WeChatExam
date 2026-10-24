@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="All Categories" xml:space="preserve">
+      <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI 語義搜尋</value>
+  </data>
+  <data name="All Categories" xml:space="preserve">
     <value>所有類別</value>
   </data>
   <data name="All Content" xml:space="preserve">
@@ -41,6 +44,9 @@
   </data>
   <data name="Find existing content before editing or creating something new." xml:space="preserve">
     <value>編輯或建立新內容之前，請先搜尋現有內容。</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>關鍵字搜尋</value>
   </data>
   <data name="Knowledge Point" xml:space="preserve">
     <value>知識點</value>

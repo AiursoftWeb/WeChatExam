@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>고급: 태그 표현식(MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI 의미 검색</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI 시맨틱 검색을 사용하지 않았습니다. 키워드 검색 결과를 표시합니다.</value>
+  </data>
+  <data name="All Types" xml:space="preserve">
+    <value>모든 유형</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>연결</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>태그를 조합하세요. 예: rock &amp;&amp; not metal</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>예: rock &amp;&amp; not metal</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>질문을 찾을 수 있도록 몇 단어를 입력하세요.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>주제나 몇 개의 단어를 입력하세요...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>시험 문제 유형</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>정확한 단어와 관련된 의미를 찾아보세요.</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>연결할 시험 문제 찾기</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>질문 찾기</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>키워드 검색</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>문제 본문, 답변 및 해설에서 단어를 검색합니다.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>질문을 찾을 수 없습니다.</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>검색을 사용할 수 없습니다. 다시 시도해 주세요.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>검색 모드</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>검색 중...</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>스마트 검색(기본값)</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>태그 표현식 검색(MTQL)</value>
+  </data>
+
+</root>

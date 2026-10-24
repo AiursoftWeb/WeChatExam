@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Conținut afectat</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Tot conținutul afectat</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Permis</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Oricine poate accesa acest exercițiu fără să se autentifice.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Înapoi la rezultate</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Înainte de a modifica o etichetă partajată, verificați mai jos tot conținutul pe care aceasta îl afectează.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Răsfoiți lista completă</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Verifică acest scenariu</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Punct de intrare</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Exercițiul {0} din {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Exercițiu: poate fi deschis</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Exercițiu: nu se poate deschide</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Exerciții</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Exerciții din acest rezultat</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Pentru echipa noastră</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Etichetele sale plătite marchează exercițiul ca fiind plătit; acestea nu necesită afilieri suplimentare la cursuri.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Textul punctului de cunoștințe este public. Accesul la exercițiu de mai jos respectă regulile curente ale serverului; trimiterea și salvarea răspunsurilor nu sunt verificate aici.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Noțiuni de cunoaștere</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Puncte de cunoștințe și exercițiul asociat</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Textul cunoștințelor: public</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Exercițiu asociat</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Necesită atenție</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Exercițiul următor</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Niciun punct de cunoaștere nu este asociat acestui exercițiu.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Deschide setările</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Vă rugăm să confirmați</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Exercițiul anterior</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Structura prețurilor</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Setări asociate și linkuri de editare</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Examinați impactul comun</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Etichetele partajate afectează {0} exerciții în {1} cursuri.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Conectați-vă cu un abonament VIP activ pentru cursul propriu al exercițiului:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>Sunt necesare autentificarea și VIP-ul cursului respectiv.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>Eticheta plătită nu este acoperită: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Aceste rezultate evaluează accesul curent la server. Ele nu simulează fiecare ecran al Mini Programului sau fiecare flux de trimitere. Fiecare pagină citește din nou configurația curentă.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Acest cont are nevoie de accesul VIP la cursul exercițiului.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Acest exercițiu nu are un curs atribuit. Fiecare etichetă cu plată trebuie să fie acoperită de un abonament VIP activ la un curs.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Acest exercițiu are mai multe etichete cu plată. Dacă faceți gratuită doar una dintre ele, este posibil ca exercițiul să rămână cu acces restricționat.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Scenariu de utilizare</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>Ce trebuie verificat</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Cine poate deschide acest conținut?</value>
   </data>
 
 </root>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI Semantic Search" xml:space="preserve">
+    <value>Yapay Zekâ Destekli Anlamsal Arama</value>
+  </data>
+  <data name="All Categories" xml:space="preserve">
+    <value>Tüm Kategoriler</value>
+  </data>
+  <data name="All Content" xml:space="preserve">
+    <value>Tüm İçerikler</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="Content Type" xml:space="preserve">
+    <value>İçerik Türü</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="Exam Question" xml:space="preserve">
+    <value>Sınav Sorusu</value>
+  </data>
+  <data name="Exam Questions" xml:space="preserve">
+    <value>Sınav Soruları</value>
+  </data>
+  <data name="Find existing content before editing or creating something new." xml:space="preserve">
+    <value>Düzenlemeden veya yeni bir şey oluşturmadan önce mevcut içeriği bulun.</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Anahtar Kelime Araması</value>
+  </data>
+  <data name="Knowledge Point" xml:space="preserve">
+    <value>Bilgi Noktası</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Bilgi Noktaları</value>
+  </data>
+  <data name="No matching content found. Try fewer words or another category." xml:space="preserve">
+    <value>Eşleşen içerik bulunamadı. Daha az kelime deneyin veya başka bir kategori seçin.</value>
+  </data>
+  <data name="Questions and knowledge points" xml:space="preserve">
+    <value>Sorular ve bilgi noktaları</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="Search by name, topic, or a few words..." xml:space="preserve">
+    <value>Ad, konu veya birkaç kelimeyle arayın...</value>
+  </data>
+  <data name="Search Content" xml:space="preserve">
+    <value>İçerik Ara</value>
+  </data>
+  <data name="Show Answer" xml:space="preserve">
+    <value>Cevabı Göster</value>
+  </data>
+  <data name="Showing up to 50 relevant results. Refine your search to narrow the list." xml:space="preserve">
+    <value>En fazla 50 alakalı sonuç gösteriliyor. Listeyi daraltmak için aramanızı ayrıntılandırın.</value>
+  </data>
+
+</root>

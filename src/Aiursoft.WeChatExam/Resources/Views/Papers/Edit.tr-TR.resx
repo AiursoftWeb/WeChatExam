@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Seçilenleri Ekle</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Seçilenleri Ekle ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Gelişmiş: Etiket İfadesi (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Yapay Zekâ Anlamsal Arama</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Yapay zekâ anlamsal araması kullanılmadı. Anahtar kelime sonuçları gösteriliyor.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Tüm Türler</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Etiketleri birleştirin, örneğin: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>İçerik</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Taslak</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>örn. rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Kâğıdı Düzenle</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Soruları bulmak için birkaç kelime girin.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Bir konu veya birkaç kelime girin...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Sınav Soru Türü</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Tam eşleşen sözcükleri ve ilgili anlamları bulun.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Soruları Bul</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Ücretsiz Makale</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Dondur</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Anahtar Kelime Araması</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Yayınlanabilir Olarak İşaretle</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Soru metnindeki, yanıtlardaki ve açıklamalardaki kelimeleri eşleştirin.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Hiç soru bulunamadı.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Sıra</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Etiket eklemek için Enter&apos;a basın veya önerilerden seçin. Kaldırmak için X&apos;e tıklayın.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Ön izleme</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Anlık Görüntüyü Yayınla</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Gerçek Sınav</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Kaldır</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Taslak Durumuna Geri Al</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Kaydet</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Kaydet ve içerik denetimlerine dön</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Puan</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Ara ve Soruları Ekle</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Arama şu anda kullanılamıyor. Lütfen tekrar deneyin.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Arama Modu</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Aranıyor...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Tüm Sonuçları Seç</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Soru Seç</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Seçilen Sorular</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Kategori seçmek mevcut soruları filtreleyecektir.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Yeniden arama yaptığınızda seçimleriniz korunur. Hazır olduğunuzda onları ekleyin.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Akıllı Arama (Varsayılan)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Başlangıç Sırası</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Durum Eylemleri</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Etiket İfadesi Araması (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etiketler</value>

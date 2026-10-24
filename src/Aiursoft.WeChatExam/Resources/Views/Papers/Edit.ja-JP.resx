@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>選択したものを追加</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>選択した項目を追加 ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>詳細設定：タグ式（MTQL）</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AIセマンティック検索</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AIセマンティック検索は使用されませんでした。キーワード検索の結果を表示しています。</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>すべての種類</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>カテゴリ</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>タグを組み合わせます。例：rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>内容</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>下書き</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例: rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>用紙を編集</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>質問を検索するには、いくつかの単語を入力してください。</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>トピックまたはキーワードを入力してください...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>試験問題の種類</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>完全一致する語句と関連する意味を検索します。</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>問題を検索</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>無料の試験</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>凍結</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>キーワード検索</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>公開可能としてマークする</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>問題文、解答、解説に含まれる単語を検索します。</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>質問が見つかりません。</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>順序</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Enter キーを押してタグを追加するか、提案から選択してください。X をクリックして削除します。</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>プレビュー</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>スナップショットを公開</value>
@@ -92,6 +137,9 @@
   </data>
   <data name="Real Exam" xml:space="preserve">
     <value>本試験</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>削除</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>下書きに戻す</value>
@@ -111,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>検索して質問を追加</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>検索を利用できません。もう一度お試しください。</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>検索モード</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>検索中...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>すべての検索結果を選択</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>質問を選択</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>選択した問題</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>カテゴリを選択すると、利用可能な問題が絞り込まれます。</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>再検索しても選択内容は保持されます。準備ができたら追加してください。</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>スマート検索（デフォルト）</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>開始順序</value>
@@ -125,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>ステータス操作</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>タグ式検索（MTQL）</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>タグ</value>

@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Conteúdo afetado</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Todo o conteúdo afetado</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Permitido</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Qualquer pessoa pode acessar este exercício sem fazer login.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Voltar aos resultados</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Antes de alterar uma tag compartilhada, confira abaixo todo o conteúdo que ela afeta.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Ver a lista completa</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Verificar este cenário</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Ponto de entrada</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Exercício {0} de {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Exercício: pode abrir</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Exercício: não pode ser aberto</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Exercícios</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Exercícios neste resultado</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Para nossa equipe</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>As tags pagas indicam que o exercício é pago; elas não exigem matrículas adicionais em cursos.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>O texto do ponto de conhecimento é público. O acesso ao exercício abaixo segue as regras atuais do servidor; o envio e o salvamento das respostas não são verificados aqui.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Pontos de conhecimento</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Pontos de conhecimento e o exercício correspondente</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Texto do conhecimento: público</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Exercício vinculado</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Requer atenção</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Próximo exercício</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Nenhum ponto de conhecimento está vinculado a este exercício.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Abrir configurações</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Confirme</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Exercício anterior</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Forma de precificação</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Configurações relacionadas e links para edição</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Analisar o impacto compartilhado</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Tags compartilhadas afetam {0} exercícios em {1} cursos.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Entre com uma assinatura VIP ativa para o curso ao qual o exercício pertence:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>É necessário entrar na conta e ter o VIP do curso exigido.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>A etiqueta paga não está coberta: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Esses resultados avaliam o acesso atual ao servidor. Eles não simulam todas as telas do Mini Program nem todos os fluxos de envio. Cada página lê novamente a configuração atual.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Esta conta precisa do acesso VIP do curso ao qual o exercício pertence.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Este exercício não tem um curso atribuído. Cada etiqueta paga deve estar vinculada a um VIP ativo de curso.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Este exercício tem várias tags pagas. Tornar apenas uma tag gratuita pode não remover a restrição do exercício.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Cenário do usuário</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>O que revisar</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Quem pode acessar este conteúdo?</value>
   </data>
 
 </root>

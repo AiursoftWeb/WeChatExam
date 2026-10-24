@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>新增選取項目</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>新增所選項目（{0}）</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>進階：標籤運算式 (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI 語意搜尋</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>未使用 AI 語意搜尋，顯示關鍵字搜尋結果。</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>類別</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>組合標籤，例如：rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>內容</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>草稿</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例如：rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>編輯試卷</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>輸入幾個字詞來尋找題目。</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>輸入主題或幾個關鍵字...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>考題類型</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>找出完全相符的字詞及相關含義。</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>搜尋題目</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>免費試卷</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>凍結</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>關鍵字搜尋</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>標記為可發佈</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>比對題目文字、答案和解析中的字詞。</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>找不到題目。</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>順序</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>按 Enter 鍵新增標籤，或從建議中選擇。點擊 X 可移除。</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>預覽</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>發佈快照</value>
@@ -92,6 +137,9 @@
   </data>
   <data name="Real Exam" xml:space="preserve">
     <value>真實試題</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>移除</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>回復為草稿</value>
@@ -111,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>搜尋並新增問題</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>搜尋目前無法使用，請再試一次。</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>搜尋模式</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>搜尋中...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>選取所有結果</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>選擇題目</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>已選取的題目</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>選擇類別將會篩選可用題目。</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>再次搜尋時，已選取的項目會保留下來。準備好後即可將它們加入。</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>智慧搜尋（預設）</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>起始順序</value>
@@ -125,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>狀態操作</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>標籤運算式搜尋（MTQL）</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>標籤</value>

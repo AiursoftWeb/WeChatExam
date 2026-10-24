@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>詳細設定：タグ式（MTQL）</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AIセマンティック検索</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AIセマンティック検索は使用されませんでした。キーワード検索の結果を表示しています。</value>
+  </data>
+  <data name="All Types" xml:space="preserve">
+    <value>すべての種類</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>関連付ける</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>タグを組み合わせます。例: rock &amp;&amp; not metal</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例: rock &amp;&amp; not metal</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>質問を検索するためのキーワードをいくつか入力してください。</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>トピックまたはキーワードを入力してください...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>試験問題の種類</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>完全一致する語句や関連する意味を検索します。</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>関連付ける試験問題を検索</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>質問を検索</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>キーワード検索</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>問題文、回答、解説に含まれる語句を検索します。</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>該当する問題は見つかりませんでした。</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>検索を利用できません。もう一度お試しください。</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>検索モード</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>検索中...</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>スマート検索（既定）</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>タグ式検索（MTQL）</value>
+  </data>
+
+</root>

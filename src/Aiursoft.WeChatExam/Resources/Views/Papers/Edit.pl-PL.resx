@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Dodaj wybrane</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Dodaj wybrane ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Zaawansowane: wyrażenie tagów (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Wyszukiwanie semantyczne AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Nie użyto wyszukiwania semantycznego AI. Wyświetlane są wyniki wyszukiwania według słów kluczowych.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Wszystkie typy</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategoria</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Łącz tagi, na przykład: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Zawartość</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Wersja robocza</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>np. rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Edytuj test</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Wpisz kilka słów, aby znaleźć pytania.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Wpisz temat lub kilka słów...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Typ pytania egzaminacyjnego</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Znajdź dokładne słowa i powiązane znaczenia.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Znajdź pytania</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Darmowy arkusz</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Zamrożenie</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Wyszukiwanie według słów kluczowych</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Oznacz jako gotowe do opublikowania</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Dopasuj słowa w treści pytania, odpowiedziach i wyjaśnieniach.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Nie znaleziono pytań.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Kolejność</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Naciśnij Enter, aby dodać znacznik, lub wybierz z sugestii. Kliknij X, aby usunąć.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Podgląd</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Opublikuj Zrzut</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Rzeczywisty Egzamin</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Przywróć do szkicu</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Zapisz</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Zapisz i wróć do sprawdzania treści</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Punkty</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Szukaj i Dodaj Pytania</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Wyszukiwanie jest niedostępne. Spróbuj ponownie.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Tryb wyszukiwania</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Wyszukiwanie...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Zaznacz wszystkie wyniki</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Wybierz pytanie</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Wybrane pytania</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Wybór kategorii spowoduje filtrowanie dostępnych pytań.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Wybrane pozycje pozostają zaznaczone po ponownym wyszukiwaniu. Dodaj je, gdy będziesz gotowy.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Wyszukiwanie inteligentne (domyślne)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Początkowy numer</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Akcje statusu</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Wyszukiwanie według wyrażeń tagów (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tagi</value>
