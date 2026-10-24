@@ -75,8 +75,11 @@
                     }
                 </div>
                 <div class="check-connector">
-                    <span>@Localizer["Linked exercise"]</span>
-                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                    @if (exercise.KnowledgePoints.Count > 0)
+                    {
+                        <span>@Localizer["Linked exercise"]</span>
+                        <i data-lucide="arrow-right" aria-hidden="true"></i>
+                    }
                 </div>
                 <div class="check-question-node">
                     <partial name="_EntityCard" model="exercise.Question" />

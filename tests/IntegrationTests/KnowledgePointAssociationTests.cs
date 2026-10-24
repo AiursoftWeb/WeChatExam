@@ -386,6 +386,8 @@ public class KnowledgePointAssociationTests
                 var html = await client.GetStringAsync(detailUrl);
                 Assert.IsTrue(html.Contains($"/Tags/Edit/{tag.Id}"));
                 StringAssert.Contains(html, "Restricted editor");
+                Assert.Contains("No knowledge point is linked to this exercise.", html);
+                Assert.DoesNotContain("Linked exercise", html);
                 Assert.IsFalse(html.Contains($"/Questions/Edit/{question.Id}"));
             }
             else
