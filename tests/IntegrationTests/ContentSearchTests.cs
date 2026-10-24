@@ -31,6 +31,18 @@ public class ContentSearchTests : TestBase
         Assert.Contains("&lt;script&gt;", html);
         Assert.DoesNotContain("<script>alert('question')</script>", html);
         Assert.Contains("returnUrl=", html);
+        var editorSearch = await Http.GetAsync("/ContentSearch/Questions?query=Boya&useAi=false&includeSearchStatus=true");
+        editorSearch.EnsureSuccessStatusCode();
+        using var json = JsonDocument.Parse(await editorSearch.Content.ReadAsStringAsync());
+        Assert.IsFalse(json.RootElement.GetProperty("usedAi").GetBoolean());
+        var legacySearch = await Http.GetAsync("/ContentSearch/Questions?query=Boya&useAi=false");
+        legacySearch.EnsureSuccessStatusCode();
+        using var legacyJson = JsonDocument.Parse(await legacySearch.Content.ReadAsStringAsync());
+        Assert.AreEqual(JsonValueKind.Array, legacyJson.RootElement.ValueKind,
+            "Existing editor tabs must still receive the original array response.");
+        Assert.HasCount(1, json.RootElement.GetProperty("results").EnumerateArray().ToArray());
+        Assert.AreEqual("Boya <script>alert('question')</script>",
+            json.RootElement.GetProperty("results")[0].GetProperty("title").GetString());
     }
 
     [TestMethod]

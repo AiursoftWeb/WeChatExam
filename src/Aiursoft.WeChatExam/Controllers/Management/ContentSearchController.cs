@@ -30,12 +30,13 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
         return this.StackView(model);
     }
 
-    public async Task<IActionResult> Questions(string? query, QuestionType? questionType, Guid? categoryId)
+    public async Task<IActionResult> Questions(string? query, QuestionType? questionType, Guid? categoryId,
+        bool useAi = true, bool includeSearchStatus = false)
     {
         if (query?.Length > 500) return BadRequest();
-        var (results, _) = await search.SearchAsync(query?.Trim() ?? string.Empty, "questions", categoryId,
-            questionType, HttpContext.RequestAborted);
-        return Json(results);
+        var (results, usedAi) = await search.SearchAsync(query?.Trim() ?? string.Empty, "questions", categoryId,
+            questionType, useAi, HttpContext.RequestAborted);
+        return includeSearchStatus ? Json(new { results, usedAi }) : Json(results);
     }
 
     [HttpPost]
