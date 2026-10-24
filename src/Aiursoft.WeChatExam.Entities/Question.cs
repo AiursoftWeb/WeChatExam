@@ -58,6 +58,19 @@ public class Question
     /// </summary>
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 
+    /// <summary>The last change to content used for embedding generation.</summary>
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DateTime LastUpdatedAt { get; set; } = DateTime.UtcNow;
+
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public byte[]? Embedding { get; set; }
+
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DateTime LastEmbeddedAt { get; set; } = DateTime.MinValue;
+
     /// <summary>
     /// 自定义排序顺序。数字越小越靠前。为 null 表示未定义顺序，通常排在已定义顺序的题目之后。
     /// </summary>

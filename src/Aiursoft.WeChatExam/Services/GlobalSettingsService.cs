@@ -77,6 +77,33 @@ public class GlobalSettingsService(
                !string.IsNullOrWhiteSpace(configuration[key]);
     }
 
+    public async Task<bool> IsAiSearchEnabledAsync()
+    {
+        return await GetBoolSettingAsync(SettingsMap.EnableEmbeddingBasedSearch) &&
+               !string.IsNullOrWhiteSpace(await GetEmbeddingEndpointAsync()) &&
+               !string.IsNullOrWhiteSpace(await GetSettingValueAsync(SettingsMap.EmbeddingModel));
+    }
+
+    public async Task<string> GetEmbeddingEndpointAsync()
+    {
+        var dedicated = await GetSettingValueAsync(SettingsMap.EmbeddingOllamaInstance);
+        var endpoint = string.IsNullOrWhiteSpace(dedicated)
+            ? configuration["OpenAI:CompletionApiUrl"]
+            : dedicated;
+        return Uri.TryCreate(endpoint, UriKind.Absolute, out var uri) &&
+               (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
+            ? uri.GetLeftPart(UriPartial.Authority)
+            : string.Empty;
+    }
+
+    public async Task<string> GetEmbeddingTokenAsync()
+    {
+        var dedicated = await GetSettingValueAsync(SettingsMap.EmbeddingApiToken);
+        return !string.IsNullOrWhiteSpace(dedicated)
+            ? dedicated
+            : configuration["OpenAI:Token"] ?? string.Empty;
+    }
+
     public async Task UpdateSettingAsync(string key, string value)
     {
         if (IsOverriddenByConfig(key))

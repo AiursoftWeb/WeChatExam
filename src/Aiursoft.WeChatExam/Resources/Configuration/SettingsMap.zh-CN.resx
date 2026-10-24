@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>品牌名称</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>嵌入 API 令牌</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>嵌入端点</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>嵌入模型</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>启用对问题和知识点的后台嵌入向量生成。</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>启用基于嵌入的搜索</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP备案号</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>嵌入端点的可选 Bearer 令牌。留空时将使用 OpenAI 令牌。</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>项目Logo</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>从材料中提取知识的默认系统提示。</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>用于问题和知识点的嵌入模型。现有向量采用 bge-m3 的 1024 维索引约定。</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>中国大陆用户使用的 ICP 备案号。留空以隐藏。</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>项目在前端显示的名称。</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>用于生成嵌入的 Ollama API 基础 URL。仅使用主机地址；系统会自动追加 /api/embed。若留空，则回退到 OpenAI 补全端点。</value>
   </data>
 
 </root>

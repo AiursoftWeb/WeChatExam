@@ -12,6 +12,43 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public virtual  Task<bool> CanConnectAsync() =>
         Database.CanConnectAsync();
 
+    public override int SaveChanges(bool acceptAllChangesOnSuccess)
+    {
+        InvalidateChangedEmbeddings();
+        return base.SaveChanges(acceptAllChangesOnSuccess);
+    }
+
+    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
+        CancellationToken cancellationToken = default)
+    {
+        InvalidateChangedEmbeddings();
+        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+    }
+
+    private void InvalidateChangedEmbeddings()
+    {
+        // Keep imports, manual edits and AI edits on the same content-update path.
+        foreach (var entry in ChangeTracker.Entries<Question>().Where(e =>
+                     e.State == EntityState.Added || e.State == EntityState.Modified &&
+                     (e.Property(q => q.Content).IsModified ||
+                      e.Property(q => q.QuestionType).IsModified ||
+                      e.Property(q => q.Metadata).IsModified ||
+                      e.Property(q => q.StandardAnswer).IsModified ||
+                      e.Property(q => q.Explanation).IsModified)))
+        {
+            entry.Entity.LastUpdatedAt = DateTime.UtcNow;
+            entry.Entity.Embedding = null;
+        }
+
+        foreach (var entry in ChangeTracker.Entries<KnowledgePoint>().Where(e =>
+                     e.State == EntityState.Added || e.State == EntityState.Modified &&
+                     (e.Property(k => k.Title).IsModified || e.Property(k => k.Content).IsModified)))
+        {
+            entry.Entity.LastUpdatedAt = DateTime.UtcNow;
+            entry.Entity.Embedding = null;
+        }
+    }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
