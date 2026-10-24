@@ -453,7 +453,7 @@ public class KnowledgePointAssociationTests
         var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG", IsFree = false, Taxonomy = taxonomy };
         var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public", ParentId = null };
         var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public", ParentId = null };
-        var a = new Question { Id = Guid.NewGuid(), Content = "Relation first exercise", CategoryId = course.Id };
+        var a = new Question { Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
         var b = new Question { Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
         var free = new Question { Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
         var product = new VipProduct { Name = "Relation VIP", CategoryId = course.Id, DurationDays = 365, IsEnabled = false };
@@ -484,6 +484,7 @@ public class KnowledgePointAssociationTests
             Assert.Contains("data-allowed=\"true\"", detail);
             if (question == a) Assert.Contains("This account needs the exercise's own course VIP.", WebUtility.HtmlDecode(detail));
             Assert.Contains("checkReturnUrl=", relation);
+            if (question == a) Assert.Contains("Read full exercise", relation);
         }
         // Sale availability is separate from an already purchased, active membership.
         var report = await scope.ServiceProvider.GetRequiredService<Services.ContentCheckService>().ScanAsync([], false);

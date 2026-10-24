@@ -3,6 +3,8 @@
 @{
     var permissions = (HashSet<string>)ViewData["EditPermissions"]!;
     var canEdit = permissions.Contains(Model.Permission);
+    var abbreviate = Model.Controller == "Questions" && Model.Name.Length > 180;
+    var caption = abbreviate ? Model.Name[..180] + "…" : Model.Name;
     var editUrl = canEdit ? Url.Action(Model.Action, Model.Controller, new { id = Model.Id, checkReturnUrl = ViewData["CheckReturnUrl"] }) : null;
     var label = Model.Controller switch
     {
@@ -49,13 +51,20 @@
     <div class="check-entity-name">
         @if (editUrl != null)
         {
-            <a href="@editUrl">@Model.Name</a>
+            <a href="@editUrl">@caption</a>
         }
         else
         {
-            @Model.Name
+            @caption
         }
     </div>
+    @if (abbreviate)
+    {
+        <details>
+            <summary>@Localizer["Read full exercise"]</summary>
+            <p class="check-entity-full-text mb-0">@Model.Name</p>
+        </details>
+    }
     @if (Model.Controller == "Tags" && ViewData["TagMappings"] is Dictionary<int, ContentTagMapping> mappings && mappings.TryGetValue(int.Parse(Model.Id), out var mapping))
     {
         <div class="check-tag-mapping text-muted">
