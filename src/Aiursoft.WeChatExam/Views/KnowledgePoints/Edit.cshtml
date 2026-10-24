@@ -7,6 +7,7 @@
 <div class="@(User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions) ? "col-xl-8" : "col-12")">
 <form asp-action="Edit" method="post" data-content-editor
       data-search-url="@Url.Action("Questions", "ContentSearch")" data-mtql-url="@Url.Action("Search", "Questions")">
+    <partial name="_ContentCheckReturn" />
     <input type="hidden" asp-for="ReturnUrl" />
     <input type="hidden" asp-for="Id" />
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
@@ -86,7 +87,16 @@
         </div>
         <span asp-validation-for="SelectedQuestionIds" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+    <button type="submit" class="btn btn-primary">
+        @if (ViewData["CheckReturnUrl"] is string)
+        {
+            @Localizer["Save and return to content checks"]
+        }
+        else
+        {
+            @Localizer["Save"]
+        }
+    </button>
     <a href="@(Url.IsLocalUrl(Model.ReturnUrl) ? Model.ReturnUrl : Url.Action("Index"))" class="btn btn-light">@Localizer["Back to List"]</a>
 </form>
 </div>

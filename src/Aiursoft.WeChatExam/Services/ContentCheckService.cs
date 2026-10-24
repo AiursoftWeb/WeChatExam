@@ -82,21 +82,29 @@ public class ContentCheckService(
             .Concat(questions.Where(q => q.CategoryId.HasValue).Select(q => q.CategoryId!.Value))
             .Concat(tags.SelectMany(t => t.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId) ?? []))
             .Concat(papers.SelectMany(p => p.PaperCategories.Select(c => c.CategoryId))).ToHashSet();
-        report.Scenarios.Add(new(localizer["Anonymous"], false, new()));
-        report.Scenarios.Add(new(localizer["Signed in without active VIP"], true, new()));
-        foreach (var subject in allSubjects.OrderBy(id => id))
-            report.Scenarios.Add(new(string.Format(localizer["Subject VIP: {0}"], categories.FirstOrDefault(c => c.Id == subject)?.Title ?? subject.ToString()), true,
-                new PaperAccessStatus { ActiveCategoryVips = [subject] }));
-        report.Scenarios.Add(new(localizer["Real-exam VIP only"], true, new() { HasRealExamVip = true }));
+        var visitor = new AccessScenario(localizer["Anonymous"], false, new());
+        var signedIn = new AccessScenario(localizer["Signed in without active VIP"], true, new());
+        var courseScenarios = allSubjects.OrderBy(id => id).Select(subject => new AccessScenario(
+            string.Format(localizer["Subject VIP: {0}"], categories.FirstOrDefault(c => c.Id == subject)?.Title ?? subject.ToString()),
+            true, new PaperAccessStatus { ActiveCategoryVips = [subject] })).ToList();
         var all = new PaperAccessStatus { ActiveCategoryVips = allSubjects, HasRealExamVip = true };
-        report.Scenarios.Add(new(localizer["All relevant VIPs"], true, all));
-        report.Scenarios.Add(new(localizer["Custom VIP selection"], true,
-            new() { ActiveCategoryVips = subjects.Where(allSubjects.Contains).ToHashSet(), HasRealExamVip = realExam }));
+        var allVips = new AccessScenario(localizer["All relevant VIPs"], true, all);
+        var custom = new AccessScenario(localizer["Custom VIP selection"], true,
+            new() { ActiveCategoryVips = subjects.Where(allSubjects.Contains).ToHashSet(), HasRealExamVip = realExam });
+        report.Scenarios.AddRange([visitor, signedIn]);
+        report.Scenarios.AddRange(courseScenarios);
+        report.Scenarios.Add(new(localizer["Real-exam VIP only"], true, new() { HasRealExamVip = true }));
+        report.Scenarios.AddRange([allVips, custom]);
 
-        ContentReference QuestionRef(Question q) => new("Questions", q.Id.ToString(), q.Content, AppPermissionNames.CanEditQuestions);
-        ContentReference TagRef(Tag t) => new("Tags", t.Id.ToString(), t.DisplayName, AppPermissionNames.CanManageTags);
-        ContentReference PaperRef(Paper p) => new("Papers", p.Id.ToString(), p.Title, AppPermissionNames.CanEditPapers);
+        ContentReference QuestionRef(Question q) => new("Questions", q.Id.ToString(), q.Content, AppPermissionNames.CanEditQuestions,
+            q.QuestionTags.Any(t => !t.Tag.IsFree) ? ContentPricing.Paid : ContentPricing.Public);
+        ContentReference TagRef(Tag t) => new("Tags", t.Id.ToString(), t.DisplayName, AppPermissionNames.CanManageTags,
+            t.IsFree ? ContentPricing.Public : ContentPricing.Paid);
+        ContentReference PaperRef(Paper p) => new("Papers", p.Id.ToString(), p.Title, AppPermissionNames.CanEditPapers,
+            p.IsFree ? ContentPricing.Public : ContentPricing.Paid, p.Status == PaperStatus.Frozen ? "Details" : "Edit");
         ContentReference CategoryRef(Category c) => new("Categories", c.Id.ToString(), c.Title, AppPermissionNames.CanEditAnyCategory);
+        ContentReference ProductRef(VipProduct p) => new("VipProducts", p.Id.ToString(), p.Name,
+            AppPermissionNames.CanEditVipProducts, Enabled: p.IsEnabled);
         string KnowledgePath(KnowledgePoint point)
         {
             var path = new List<string>();
@@ -109,6 +117,44 @@ public class ContentCheckService(
             path.Reverse();
             return string.Join(" → ", path);
         }
+        ContentReference KnowledgeRef(KnowledgePoint point) => new("KnowledgePoints", point.Id.ToString(),
+            KnowledgePath(point), AppPermissionNames.CanEditAnyKnowledgePoint, ContentPricing.Public);
+
+        foreach (var tag in tags)
+        {
+            var mapped = tag.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId).ToHashSet() ?? [];
+            report.TagMappings[tag.Id] = new(tag.Taxonomy is { } taxonomy
+                ? new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags) : null,
+                categories.Where(c => mapped.Contains(c.Id)).Select(CategoryRef).ToList());
+        }
+
+        foreach (var q in questionIndex.Values)
+        {
+            var points = linkedKnowledge[q.Id].Where(k => knowledgeIndex.ContainsKey(k.KnowledgePointId))
+                .Select(k => KnowledgeRef(knowledgeIndex[k.KnowledgePointId])).DistinctBy(k => k.Id).ToList();
+            var paid = q.QuestionTags.Select(t => t.Tag).Where(t => !t.IsFree).ToList();
+            var relevantSubjects = linkedKnowledge[q.Id].SelectMany(k => categoriesByKnowledge[k.KnowledgePointId])
+                .Concat(paid.SelectMany(t => t.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId) ?? []))
+                .ToHashSet();
+            if (q.CategoryId is { } own) relevantSubjects.Add(own);
+            var settings = q.QuestionTags.Select(t => TagRef(t.Tag)).ToList();
+            settings.AddRange(q.QuestionTags.Where(t => t.Tag.Taxonomy != null).Select(t =>
+                new ContentReference("Taxonomies", t.Tag.Taxonomy!.Id.ToString(), t.Tag.Taxonomy.Name, AppPermissionNames.CanManageTags)));
+            settings.AddRange(categories.Where(c => relevantSubjects.Contains(c.Id)).Select(CategoryRef));
+            settings.AddRange(products.Where(p => p.Type == VipProductType.Category && p.CategoryId.HasValue &&
+                relevantSubjects.Contains(p.CategoryId.Value)).Select(ProductRef));
+            // Show only meaningful course scenarios here; the full endpoint evidence remains
+            // in the technical report. These decisions are identical to the serving policy.
+            var scenarios = new[] { visitor, signedIn }.Concat(courseScenarios
+                .Where(s => s.Status.ActiveCategoryVips.Overlaps(relevantSubjects)));
+            if (q.CategoryId == null && paid.Count > 0)
+                scenarios = scenarios.Append(allVips);
+            if (subjects.Length > 0 || realExam) scenarios = scenarios.Append(custom);
+            report.Exercises[q.Id] = new(QuestionRef(q), points,
+                categories.FirstOrDefault(c => c.Id == q.CategoryId) is { } subject ? CategoryRef(subject) : null,
+                paid.Select(TagRef).ToList(), settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),
+                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.Evaluate(q, s.Authenticated, s.Status))).ToList());
+        }
         void AttachQuestion(ContentFinding finding, Question q)
         {
             finding.Objects.Add(QuestionRef(q));
@@ -116,7 +162,7 @@ public class ContentCheckService(
             foreach (var link in linkedKnowledge[q.Id])
             {
                 if (!knowledgeIndex.TryGetValue(link.KnowledgePointId, out var point)) continue;
-                finding.Objects.Add(new("KnowledgePoints", point.Id.ToString(), KnowledgePath(point), AppPermissionNames.CanEditAnyKnowledgePoint));
+                finding.Objects.Add(KnowledgeRef(point));
                 finding.CategoryIds.UnionWith(categoriesByKnowledge[point.Id]);
             }
         }
@@ -168,7 +214,7 @@ public class ContentCheckService(
 
         // Shared impact is indexed once per tag, not copied into every question finding.
         // This keeps scans linear in associations when hundreds of questions share a tag.
-        foreach (var tag in tags.Where(t => !t.IsFree))
+        foreach (var tag in tags)
         {
             var impact = new List<ContentReference>();
             foreach (var id in questionsByTag[tag.Id].Distinct())
@@ -179,7 +225,7 @@ public class ContentCheckService(
                 foreach (var link in linkedKnowledge[id])
                 {
                     if (knowledgeIndex.TryGetValue(link.KnowledgePointId, out var point))
-                        impact.Add(new("KnowledgePoints", point.Id.ToString(), KnowledgePath(point), AppPermissionNames.CanEditAnyKnowledgePoint));
+                        impact.Add(KnowledgeRef(point));
                     foreach (var categoryId in categoriesByKnowledge[link.KnowledgePointId])
                         if (categories.FirstOrDefault(c => c.Id == categoryId) is { } linkedCategory) impact.Add(CategoryRef(linkedCategory));
                 }
@@ -247,7 +293,7 @@ public class ContentCheckService(
             var finding = Add("VIP003", CheckSeverity.Error, localizer["Subject VIP product has no valid subject"],
                 localizer["This product cannot grant the intended subject membership."],
                 localizer["Assign the intended subject before offering this product for sale. Review existing memberships separately."]);
-            finding.Objects.Add(new("VipProducts", product.Id.ToString(), product.Name, AppPermissionNames.CanEditVipProducts));
+            finding.Objects.Add(ProductRef(product));
         }
         foreach (var paper in papers.Where(p => p.Status is PaperStatus.Publishable or PaperStatus.Frozen))
         {

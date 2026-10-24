@@ -386,6 +386,8 @@ public class KnowledgePointAssociationTests
                 var html = await client.GetStringAsync(detailUrl);
                 Assert.IsTrue(html.Contains($"/Tags/Edit/{tag.Id}"));
                 StringAssert.Contains(html, "Restricted editor");
+                Assert.Contains("No knowledge point is linked to this exercise.", html);
+                Assert.DoesNotContain("Linked exercise", html);
                 Assert.IsFalse(html.Contains($"/Questions/Edit/{question.Id}"));
             }
             else
@@ -425,9 +427,146 @@ public class KnowledgePointAssociationTests
         for (var i = 0; i < 50; i++) Assert.IsTrue(detail.Contains($"Grouped exercise {i}"));
         StringAssert.Contains(detail, "Shared tags affect 50 exercises in 1 courses.");
         StringAssert.Contains(detail, "rule=KP001");
+        var seen = new HashSet<string>();
+        var current = detail;
+        while (true)
+        {
+            Assert.IsTrue(seen.Add(Regex.Match(current, "data-exercise-id=\"([^\"]+)\"").Groups[1].Value));
+            var next = Regex.Match(current, "href=\"([^\"]+)\" class=\"btn btn-outline-primary\">Next exercise</a>");
+            if (!next.Success) break;
+            current = await _http.GetStringAsync(WebUtility.HtmlDecode(next.Groups[1].Value));
+        }
+        Assert.AreEqual(50, seen.Count, "Every exercise must be reachable without duplicate or invented relationships.");
+
         var team = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&search=Grouped%20lesson");
         StringAssert.Contains(team, "These items need developer review");
         Assert.AreEqual(1, Regex.Matches(team, "<article ").Count);
+    }
+
+    [TestMethod]
+    public async Task RelationshipCardsKeepExactEdgesAndShowCourseSpecificAccess()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new Category { Id = Guid.NewGuid(), Title = "Relation course", ParentId = null };
+        var other = new Category { Id = Guid.NewGuid(), Title = "Other relation course", ParentId = null };
+        var taxonomy = new Taxonomy { Name = "Relation taxonomy" };
+        var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG", IsFree = false, Taxonomy = taxonomy };
+        var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public", ParentId = null };
+        var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public", ParentId = null };
+        var a = new Question { Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
+        var b = new Question { Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
+        var free = new Question { Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
+        var product = new VipProduct { Name = "Relation VIP", CategoryId = course.Id, DurationDays = 365, IsEnabled = false };
+        db.AddRange(course, other, tag, first, second, a, b, free, product,
+            new QuestionTag { QuestionId = a.Id, TagId = tag.Id, Tag = tag }, new QuestionTag { QuestionId = b.Id, TagId = tag.Id, Tag = tag },
+            new KnowledgePointQuestion { KnowledgePointId = first.Id, QuestionId = a.Id },
+            new KnowledgePointQuestion { KnowledgePointId = second.Id, QuestionId = b.Id },
+            new CategoryKnowledgePoint { KnowledgePointId = first.Id, CategoryId = other.Id });
+        await db.SaveChangesAsync();
+        var results = await _http.GetStringAsync("/ContentChecks/Results?rule=KP001&search=Relation");
+        Assert.AreEqual(1, Regex.Matches(results, "<article ").Count);
+        Assert.Contains("Review how public content and paid content are connected", results);
+        var detailUrl = WebUtility.HtmlDecode(Regex.Match(results, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+        foreach (var (question, linked, unrelated) in new[] { (a, first, second), (b, second, first) })
+        {
+            var detail = await _http.GetStringAsync(detailUrl + "&exerciseId=" + question.Id);
+            var relation = Regex.Match(detail, "class=\"check-relationship\"[\\s\\S]*?</section>").Value;
+            Assert.Contains($"data-exercise-id=\"{question.Id}\"", relation);
+            Assert.Contains($"/KnowledgePoints/Edit/{linked.Id}", relation);
+            Assert.DoesNotContain($"/KnowledgePoints/Edit/{unrelated.Id}", relation);
+            Assert.Contains($"/Questions/Edit/{question.Id}", relation);
+            Assert.Contains($"/Categories/Edit/{course.Id}", relation);
+            Assert.Contains($"/Tags/Edit/{tag.Id}", detail);
+            Assert.Contains($"/Taxonomies/Edit/{taxonomy.Id}", detail);
+            Assert.Contains($"/VipProducts/Edit/{product.Id}", detail);
+            Assert.Contains("Sales disabled", detail);
+            Assert.Contains("data-allowed=\"false\"", detail);
+            Assert.Contains("data-allowed=\"true\"", detail);
+            if (question == a) Assert.Contains("This account needs the exercise's own course VIP.", WebUtility.HtmlDecode(detail));
+            Assert.Contains("checkReturnUrl=", relation);
+            if (question == a) Assert.Contains("Read full exercise", relation);
+        }
+        // Sale availability is separate from an already purchased, active membership.
+        var report = await scope.ServiceProvider.GetRequiredService<Services.ContentCheckService>().ScanAsync([], false);
+        Assert.IsTrue(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Relation course").Decision.Allowed);
+        Assert.IsFalse(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Other relation course").Decision.Allowed);
+        Assert.AreEqual(Models.ContentChecksViewModels.ContentPricing.Public, report.Exercises[free.Id].Question.Pricing);
+        Assert.IsTrue(report.Exercises[free.Id].Access.First().Decision.Allowed);
+    }
+
+    [TestMethod]
+    [DataRow("KnowledgePoints")]
+    [DataRow("Questions")]
+    [DataRow("Tags")]
+    [DataRow("Taxonomies")]
+    [DataRow("Categories")]
+    [DataRow("VipProducts")]
+    [DataRow("Papers")]
+    public async Task EditorsReturnToCheckupAfterValidationAndSaveWithoutExternalRedirects(string controller)
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var category = new Category { Id = Guid.NewGuid(), Title = "Origin course", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Origin lesson", Content = "Public", ParentId = null };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Origin exercise", CategoryId = category.Id };
+        var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG", IsFree = false };
+        var taxonomy = new Taxonomy { Name = "Origin taxonomy" };
+        var product = new VipProduct { Name = "Origin VIP", CategoryId = category.Id, DurationDays = 365 };
+        var paper = new Paper { Id = Guid.NewGuid(), Title = "Origin paper", TimeLimit = 180 };
+        db.AddRange(category, point, question, tag, taxonomy, product, paper);
+        await db.SaveChangesAsync();
+        var id = controller switch
+        {
+            "KnowledgePoints" => point.Id.ToString(), "Questions" => question.Id.ToString(), "Tags" => tag.Id.ToString(),
+            "Taxonomies" => taxonomy.Id.ToString(), "Categories" => category.Id.ToString(),
+            "VipProducts" => product.Id.ToString(), _ => paper.Id.ToString()
+        };
+        const string origin = "/ContentChecks/Results?view=information&search=Origin&page=2";
+        var path = $"/{controller}/Edit/{id}";
+        var edit = await _http.GetStringAsync(path + "?checkReturnUrl=" + Uri.EscapeDataString(origin));
+        Assert.Contains("Save and return to content checks", edit);
+        Assert.Contains(WebUtility.HtmlEncode(origin), edit);
+        var token = Regex.Match(edit, @"name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)""").Groups[1].Value;
+        var values = new Dictionary<string, string>
+        {
+            ["Id"] = id, ["checkReturnUrl"] = origin, ["__RequestVerificationToken"] = token,
+            ["Title"] = "", ["Content"] = "", ["DisplayName"] = "", ["Name"] = ""
+        };
+        var invalid = await _http.PostAsync(path, new FormUrlEncodedContent(values));
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        var invalidHtml = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains("Save and return to content checks", invalidHtml);
+        Assert.Contains(WebUtility.HtmlEncode(origin), invalidHtml);
+        values["Title"] = "Origin updated";
+        values["Content"] = "Origin updated";
+        values["DisplayName"] = "Origin updated";
+        values["Name"] = "Origin updated";
+        values["CategoryId"] = category.Id.ToString();
+        values["QuestionType"] = "0";
+        values["GradingStrategy"] = "0";
+        values["Options[0]"] = "Correct";
+        values["Options[1]"] = "Wrong";
+        values["StandardAnswer"] = "Correct";
+        values["PriceInFen"] = "100";
+        values["DurationDays"] = "365";
+        values["TimeLimit"] = "180";
+        var saved = await _http.PostAsync(path, new FormUrlEncodedContent(values));
+        Assert.AreEqual(HttpStatusCode.Found, saved.StatusCode);
+        Assert.AreEqual(origin, saved.Headers.Location!.OriginalString);
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync(saved.Headers.Location)).StatusCode);
+        // Neither a GET nor a forged successful POST can turn the origin into an open redirect.
+        foreach (var external in new[] { "https://example.com/", "//example.com/", "/\\example.com/" })
+        {
+            var unsafeEdit = await _http.GetStringAsync(path + "?checkReturnUrl=" + Uri.EscapeDataString(external));
+            Assert.DoesNotContain("name=\"checkReturnUrl\"", unsafeEdit);
+            values["checkReturnUrl"] = external;
+            var response = await _http.PostAsync(path, new FormUrlEncodedContent(values));
+            Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+            Assert.IsTrue(response.Headers.Location!.OriginalString.StartsWith('/') && !response.Headers.Location.OriginalString.StartsWith("//"));
+        }
     }
 
 }

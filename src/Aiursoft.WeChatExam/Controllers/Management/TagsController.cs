@@ -140,15 +140,16 @@ public class TagsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
-    public async Task<IActionResult> Edit(int? id, bool fees = false)
+    public async Task<IActionResult> Edit(int? id, bool fees = false, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
 
         var tag = await tagService.GetTagByIdAsync(id.Value);
         if (tag == null) return NotFound();
 
         var collectionId = await context.LegacyPaperCollectionBindings.Where(b => b.TagId == id).Select(b => (Guid?)b.CollectionId).SingleOrDefaultAsync();
-        if (collectionId.HasValue && !fees) return RedirectToAction("Edit", "PaperCollections", new { id = collectionId });
+        if (collectionId.HasValue && !fees && !Url.IsLocalUrl(checkReturnUrl)) return RedirectToAction("Edit", "PaperCollections", new { id = collectionId });
 
         var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
 
@@ -174,7 +175,7 @@ public class TagsController(
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(EditViewModel model)
+    public async Task<IActionResult> Edit(EditViewModel model, string? checkReturnUrl = null)
     {
         var mapped = await context.LegacyPaperCollectionBindings.Include(b => b.Tag).SingleOrDefaultAsync(b => b.TagId == model.Id);
         if (mapped != null)
@@ -184,6 +185,7 @@ public class TagsController(
                 return Conflict(localizer["Edit directory names and taxonomy through the paper collection editor."].Value);
         }
 
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (!ModelState.IsValid)
         {
             var taxonomies = await taxonomyService.GetAllTaxonomiesAsync(includeCategory: true);
@@ -220,6 +222,8 @@ public class TagsController(
             model.AvailableTaxonomies = (await taxonomyService.GetAllTaxonomiesAsync()).Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(t.Name, t.Id.ToString()));
             return this.StackView(model);
         }
+
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Index));
     }

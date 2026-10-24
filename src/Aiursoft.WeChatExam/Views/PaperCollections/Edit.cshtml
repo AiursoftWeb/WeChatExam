@@ -7,6 +7,7 @@
 </div>
 @if (TempData["Error"] != null) { <p class="text-danger" role="alert">@TempData["Error"]</p> }
 <form asp-action="Save" method="post">
+    <partial name="_ContentCheckReturn" />
     <div asp-validation-summary="All" class="text-danger"></div>
     <input type="hidden" asp-for="Id" /><input type="hidden" asp-for="Revision" />
     <div class="card"><div class="card-body row g-3">
@@ -14,7 +15,8 @@
         <div class="col-md-3"><label asp-for="OrderIndex" class="form-label">@Localizer["Display order"]</label><input asp-for="OrderIndex" class="form-control" /></div>
         <div class="col-12"><label class="form-check"><input asp-for="IsVisible" class="form-check-input" /><span class="form-check-label">@Localizer["Show in the Mini Program"]</span></label></div>
         @if (Model.SharedQuestionCount > 0)
-        { <p class="col-12 mb-0">@string.Format(@Localizer["The corresponding tag also labels {0} questions. Renaming this collection updates that tag name; its question links and fee remain unchanged."].Value, Model.SharedQuestionCount)</p> }
+        { <p class="col-12 mb-0">@string.Format(@Localizer["The corresponding tag also labels {0} questions. Renaming this collection updates that tag name; its question links and fee remain unchanged."].Value, Model.SharedQuestionCount)</p>
+          <a asp-controller="Tags" asp-action="Edit" asp-route-id="@Model.LegacyTagId" asp-route-fees="true" asp-route-checkReturnUrl="@(ViewData["CheckReturnUrl"])">@Localizer["View corresponding tag settings"]</a> }
     </div></div>
     <div class="collection-heading"><div><h2 class="h4">@Localizer["Papers in this collection"]</h2><p>@Localizer["Uncheck a exam paper to remove it from this collection when saving. The exam paper itself is kept."]</p></div>
     @if (Model.Id.HasValue && !Model.IsArchived) { <a asp-action="Papers" asp-route-id="@Model.Id" class="btn btn-outline-primary">@Localizer["Add exam papers"]</a> }

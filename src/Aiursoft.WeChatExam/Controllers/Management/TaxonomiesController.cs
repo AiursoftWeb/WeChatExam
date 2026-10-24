@@ -62,8 +62,9 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         return RedirectToAction(nameof(Index));
     }
 
-    public async Task<IActionResult> Edit(int? id)
+    public async Task<IActionResult> Edit(int? id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
 
         var taxonomy = await taxonomyService.GetTaxonomyByIdAsync(id.Value);
@@ -80,8 +81,9 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(EditViewModel model)
+    public async Task<IActionResult> Edit(EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (!ModelState.IsValid)
         {
             model.AvailableCategories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
@@ -93,6 +95,8 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
 
         taxonomy.Name = model.Name;
         await taxonomyService.UpdateTaxonomyAsync(taxonomy, model.CategoryId != null ? [model.CategoryId.Value] : Array.Empty<Guid>());
+
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Index));
     }

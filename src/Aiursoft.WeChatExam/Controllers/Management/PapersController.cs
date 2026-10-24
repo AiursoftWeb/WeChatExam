@@ -224,8 +224,9 @@ public class PapersController(
 
     // GET: papers/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(Guid? id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
 
         var paper = await paperService.GetPaperAsync(id.Value);
@@ -278,8 +279,9 @@ public class PapersController(
     [Authorize(Policy = AppPermissionNames.CanEditPapers)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
 
         if (!ModelState.IsValid)
@@ -361,6 +363,8 @@ public class PapersController(
             });
             return this.StackView(model);
         }
+
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Details), new { id });
     }

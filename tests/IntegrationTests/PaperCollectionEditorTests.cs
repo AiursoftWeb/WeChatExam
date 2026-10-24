@@ -64,6 +64,11 @@ public class PaperCollectionEditorTests : TestBase
         Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/PaperCollections/Preview/{collectionId}")).StatusCode);
         Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/PaperCollections/Papers/{collectionId}")).StatusCode);
         Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/Tags/Edit/{tagId}?fees=true")).StatusCode);
+        var checkUrl = "/ContentChecks/Results?view=information";
+        var fromCheck = await Http.GetStringAsync($"/Tags/Edit/{tagId}?checkReturnUrl={Uri.EscapeDataString(checkUrl)}");
+        StringAssert.Contains(fromCheck, "name=\"checkReturnUrl\"");
+        var fromOutside = await Http.GetStringAsync($"/PaperCollections/Edit/{collectionId}?checkReturnUrl=https://example.invalid");
+        Assert.IsFalse(fromOutside.Contains("name=\"checkReturnUrl\""));
     }
 
 }

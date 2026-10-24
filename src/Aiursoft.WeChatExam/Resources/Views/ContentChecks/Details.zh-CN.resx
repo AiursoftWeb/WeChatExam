@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>受影响的内容</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>所有受影响的内容</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>允许</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>任何人无需登录即可加载此练习。</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>返回结果</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>更改共享标签前，请先查看下方所有受其影响的内容。</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>浏览完整列表</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>检查此场景</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>入口点</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>第 {0} 道练习，共 {1} 道</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>练习：可以打开</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>练习：无法打开</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>练习</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>此结果中的练习</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>供我们的团队处理</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>其付费标签仅用于标记该练习为付费内容；无需因此额外加入课程。</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>知识点文本是公开的。下方的习题访问权限遵循当前服务器规则；此处不检查答案的提交和保存。</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>知识点</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>知识点及其练习</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>知识点文本：公开</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>关联的练习</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>需要处理</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>下一个练习</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>此练习未关联任何知识点。</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>打开设置</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>请确认</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>上一题</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>定价方案</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>相关设置和编辑链接</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>查看共享影响</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>共享标签会影响 {1} 门课程中的 {0} 道练习。</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>使用该练习所属课程的有效 VIP 账号登录：</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>需要登录，并开通所需课程的 VIP。</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>付费标签未涵盖：{0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>这些结果用于评估当前服务器的访问权限。它们不会模拟小程序的所有页面或提交流程。每个页面都会重新读取当前配置。</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>此账号需要拥有本练习对应课程的 VIP 权限。</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>此练习未指定课程。每个付费标签都必须由有效的课程 VIP 覆盖。</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>此练习包含多个付费标签。仅将其中一个标签设为免费，可能仍会导致该练习受到访问限制。</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>用户场景</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>需要检查的内容</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>谁可以打开此内容？</value>
   </data>
 
 </root>

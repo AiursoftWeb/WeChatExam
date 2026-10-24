@@ -72,8 +72,9 @@ public class VipProductsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanEditVipProducts)]
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(Guid? id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
 
         var product = await vipProductService.GetByIdAsync(id.Value);
@@ -96,8 +97,9 @@ public class VipProductsController(
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanEditVipProducts)]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (!ModelState.IsValid)
         {
             var categories = await dbContext.Categories.OrderBy(c => c.Title).ToListAsync();
@@ -106,6 +108,8 @@ public class VipProductsController(
         }
 
         await vipProductService.UpdateAsync(id, model.Name, model.Type, model.CategoryId, model.PriceInFen, model.DurationDays, model.IsEnabled);
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
+
         return RedirectToAction(nameof(Index));
     }
 

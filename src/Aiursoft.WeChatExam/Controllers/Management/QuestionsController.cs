@@ -330,8 +330,9 @@ public class QuestionsController(
 
     // GET: questions/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
-    public async Task<IActionResult> Edit(Guid? id, string? returnUrl)
+    public async Task<IActionResult> Edit(Guid? id, string? returnUrl, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
 
         var question = await context.Questions.FindAsync(id);
@@ -383,8 +384,9 @@ public class QuestionsController(
     [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
 
         if (!ModelState.IsValid)
@@ -468,6 +470,8 @@ public class QuestionsController(
                 }
             }
         }
+
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         if (!string.IsNullOrWhiteSpace(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
         {

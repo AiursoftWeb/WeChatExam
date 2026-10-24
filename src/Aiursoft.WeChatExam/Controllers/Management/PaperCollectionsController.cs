@@ -60,8 +60,9 @@ public class PaperCollectionsController(WeChatExamDbContext db, PaperCollectionS
     }
 
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
-    public async Task<IActionResult> Edit(Guid id)
+    public async Task<IActionResult> Edit(Guid id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         var c = await db.PaperCollections.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
         if (c == null) return NotFound();
         var model = new EditViewModel { Id = id, Revision = c.Revision, Name = c.Name, OrderIndex = c.OrderIndex,
@@ -73,13 +74,15 @@ public class PaperCollectionsController(WeChatExamDbContext db, PaperCollectionS
 
     [HttpPost, ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanManageTags)]
-    public async Task<IActionResult> Save(EditViewModel model)
+    public async Task<IActionResult> Save(EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (ModelState.IsValid)
         {
             try
             {
                 var id = await collections.SaveAsync(model.Id, model.Revision, model.Name, model.OrderIndex, model.IsVisible, model.IsArchived, model.PaperIds);
+                if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
                 return RedirectToAction(nameof(Edit), new { id });
             }
             catch (InvalidOperationException e) { ModelState.AddModelError(string.Empty, e.Message); }

@@ -3,7 +3,7 @@
 @if (Model.CollectionId.HasValue)
 {
     <p>@Localizer["This tag supports a paper collection. Its name and directory are managed there; existing question fee settings remain here."]</p>
-    <a asp-controller="PaperCollections" asp-action="Edit" asp-route-id="@Model.CollectionId" class="btn btn-outline-primary mb-3">@Localizer["Edit paper collection"]</a>
+    <a asp-controller="PaperCollections" asp-action="Edit" asp-route-id="@Model.CollectionId" asp-route-checkReturnUrl="@(ViewData["CheckReturnUrl"])" class="btn btn-outline-primary mb-3">@Localizer["Edit paper collection"]</a>
 }
 
 <nav aria-label="breadcrumb">
@@ -19,8 +19,9 @@
     <div class="col-md-6">
         <div class="card shadow-sm border-0">
             <div class="card-body">
-                @if (Model.CollectionId.HasValue) { <input type="hidden" form="tag-edit-form" asp-for="TaxonomyId" /> }
-<form id="tag-edit-form" asp-action="Edit">
+                <form asp-action="Edit">
+                    <partial name="_ContentCheckReturn" />
+                    @if (Model.CollectionId.HasValue) { <input type="hidden" name="TaxonomyId" value="@Model.TaxonomyId" /> }
                     <input type="hidden" asp-for="Id" />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     
@@ -57,7 +58,15 @@
 
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">
-                            <i data-lucide="save" class="me-1"></i> @Localizer["Save Changes"]
+                            <i data-lucide="save" class="me-1"></i>
+                            @if (ViewData["CheckReturnUrl"] is string)
+                            {
+                                @Localizer["Save and return to content checks"]
+                            }
+                            else
+                            {
+                                @Localizer["Save Changes"]
+                            }
                         </button>
                         <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
                     </div>
