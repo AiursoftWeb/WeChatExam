@@ -254,6 +254,48 @@ public class KnowledgePointAssociationTests
         Assert.AreEqual(HttpStatusCode.BadRequest, invalidResponse.StatusCode);
     }
     [TestMethod]
+    [DataRow(" 伯牙", " 伯牙", "伯牙")]
+    [DataRow("\t伯牙 \r\n", "\t伯牙 \r\n", "伯牙")]
+    [DataRow("\u3000伯牙\u00a0", "\u3000伯牙\u00a0", "伯牙")]
+    [DataRow("Ludwig van Beethoven", "Ludwig van Beethoven", "Ludwig van Beethoven")]
+    public async Task KnowledgePointAnswersSupportClientsThatTrimSelectedOptions(
+        string storedAnswer, string selectedOption, string expectedAnswer)
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var category = new Category { Id = Guid.NewGuid(), Title = "Answer comparison course", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Related lesson", Content = "Lesson content", ParentId = null };
+        var metadata = Newtonsoft.Json.JsonConvert.SerializeObject(new { options = new[] { selectedOption, "Another musician" } });
+        var question = new Question
+        {
+            Id = Guid.NewGuid(), Content = "Who played the instrument?", QuestionType = QuestionType.Choice,
+            StandardAnswer = storedAnswer, Metadata = metadata
+        };
+        db.AddRange(category, point, question,
+            new CategoryKnowledgePoint { CategoryId = category.Id, KnowledgePointId = point.Id },
+            new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = question.Id });
+        await db.SaveChangesAsync();
+
+        var response = await _http.GetAsync($"/api/KnowledgePoints?categoryId={category.Id}");
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        using var json = System.Text.Json.JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        var linkedQuestion = json.RootElement.EnumerateArray().Single()
+            .GetProperty("questions").EnumerateArray().Single();
+        Assert.AreEqual(question.Id, linkedQuestion.GetProperty("id").GetGuid());
+        var answer = linkedQuestion.GetProperty("answer").GetString();
+        Assert.AreEqual(expectedAnswer, answer);
+        // Deployed clients trim the selected option before checking the API answer.
+        Assert.AreEqual(selectedOption.Trim(), answer);
+
+        using var verificationScope = _server.Services.CreateScope();
+        var verificationDb = verificationScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var stored = await verificationDb.Questions.FindAsync(question.Id);
+        Assert.IsNotNull(stored);
+        Assert.AreEqual(storedAnswer, stored.StandardAnswer);
+        Assert.AreEqual(metadata, stored.Metadata);
+    }
+
+    [TestMethod]
     public async Task ContentChecksRequirePermissionAndRenderReadOnlyResults()
     {
         var anonymous = await _http.GetAsync("/ContentChecks/Results");
