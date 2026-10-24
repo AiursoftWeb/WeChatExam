@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>{0} berörda objekt</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} övningar</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} objekt att granska</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>Alla kurser</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>Alla resultat</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>Alla statusar</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Kontrollera igen</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>Kontrollen är klar</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Kontrollerade {0} kunskapsområden, {1} övningar och {2} prov.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Kontrollerad</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>Välj ett kort för att se vad eleverna får uppleva och vad som behöver gås igenom.</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>Innehålls namn</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>Kurskontroll</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Hitta</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>Hitta specifikt innehåll</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>För vårt team</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>Avsiktligt betalt innehåll listas separat nedan. Beteendet i Mini Program kan fortfarande behöva granskas av teamet.</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Kräver åtgärd</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Behöver granskas</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>Inga konfigurationsproblem hittades i den här kontrollen</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>Inga objekt i den här vyn. Du kan välja en annan grupp eller rensa sökningen.</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Sida {0} av {1}</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Bekräfta</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Föregående</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Prisupplägg</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>Prisuppgifter</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>Resultatgrupper</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>Resultatsidor</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>Det här objektet har ändrats. Välj från de senaste resultaten nedan.</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>Dessa punkter behöver granskas av utvecklare. De är inte instruktioner om att ändra prissättningen på dina kurser.</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Visa</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>Dina resultat</value>
+  </data>
+
+</root>
