@@ -88,6 +88,54 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task PaperQuestionSearchPreservesPermissionsLegacyMtqlAndFrozenPaperRules()
+    {
+        var id = Guid.NewGuid();
+        var url = $"/Papers/SearchQuestions/{id}?mode=keywords&query=paper-finder";
+        Assert.AreEqual(HttpStatusCode.Found, (await Http.GetAsync(url)).StatusCode);
+        await RegisterAndLoginAsync();
+        var denied = await Http.GetAsync(url);
+        Assert.IsTrue(denied.StatusCode == HttpStatusCode.Forbidden ||
+            denied.StatusCode == HttpStatusCode.Found && denied.Headers.Location!.ToString().Contains("/Error/Unauthorized"));
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var paper = new Paper { Id = id, Title = "Search fixture" };
+        var existing = new Question { Id = Guid.NewGuid(), Content = "paper-finder existing" };
+        var available = new Question { Id = Guid.NewGuid(), Content = "paper-finder " + new string('x', 120) };
+        var tag = new Tag { DisplayName = "finder", NormalizedName = "FINDER" };
+        db.AddRange(paper, existing, available, tag); await db.SaveChangesAsync();
+        db.AddRange(new PaperQuestion { PaperId = id, QuestionId = existing.Id, Order = 1, Score = 10 },
+            new QuestionTag { QuestionId = existing.Id, TagId = tag.Id },
+            new QuestionTag { QuestionId = available.Id, TagId = tag.Id });
+        await db.SaveChangesAsync();
+        var response = await Http.GetAsync(url); response.EnsureSuccessStatusCode();
+        using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        Assert.IsFalse(json.RootElement.GetProperty("usedAi").GetBoolean());
+        Assert.HasCount(1, json.RootElement.GetProperty("results").EnumerateArray().ToArray());
+        Assert.AreEqual(available.Id, json.RootElement.GetProperty("results")[0].GetProperty("id").GetGuid());
+        var legacy = await Http.GetAsync($"/Papers/SearchQuestions/{id}?mtql=finder"); legacy.EnsureSuccessStatusCode();
+        using var legacyJson = JsonDocument.Parse(await legacy.Content.ReadAsStringAsync());
+        Assert.AreEqual(JsonValueKind.Array, legacyJson.RootElement.ValueKind);
+        Assert.HasCount(1, legacyJson.RootElement.EnumerateArray().ToArray());
+        Assert.AreEqual(103, legacyJson.RootElement[0].GetProperty("content").GetString()!.Length);
+        Assert.AreEqual(available.Content, legacyJson.RootElement[0].GetProperty("preview").GetString());
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/Papers/SearchQuestions/{id}?mode=invalid")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/Papers/SearchQuestions/{Guid.NewGuid()}?mode=keywords&query=paper-finder")).StatusCode);
+
+        var token = await GetAntiCsrfToken($"/Papers/Edit/{id}");
+        paper.Status = PaperStatus.Frozen; await db.SaveChangesAsync();
+        var edit = await Http.GetAsync($"/Papers/Edit/{id}");
+        AssertRedirect(edit, $"/Papers/Details/{id}");
+        await PostForm($"/Papers/BatchAddQuestions/{id}", new Dictionary<string, string>
+        {
+            ["questionIds"] = available.Id.ToString(), ["startingOrder"] = "2", ["defaultScore"] = "20",
+            ["__RequestVerificationToken"] = token
+        });
+        Assert.AreEqual(1, await db.PaperQuestions.CountAsync(q => q.PaperId == id));
+    }
+
+    [TestMethod]
     public async Task QuestionReorderingPreservesEmbeddingAndReturnsToSearch()
     {
         await LoginAsAdmin();

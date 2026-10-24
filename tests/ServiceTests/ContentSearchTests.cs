@@ -90,6 +90,49 @@ public class ContentSearchTests
     [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
+    public async Task PaperSearchExcludesExistingQuestionsBeforeRankingAndLimits(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
+        var paper = new Paper { Id = Guid.NewGuid(), Title = "Current paper" };
+        var otherPaper = new Paper { Id = Guid.NewGuid(), Title = "Other paper" };
+        var existing = Enumerable.Range(0, ContentVectorSearchService.MaxResults + 5)
+            .Select(_ => NewQuestion("paper-fixture", category.Id)).ToArray();
+        var keyword = NewQuestion("paper-fixture available", category.Id);
+        var related = NewQuestion("A related question", category.Id);
+        related.QuestionType = QuestionType.Blank;
+        db.AddRange(category, paper, otherPaper, keyword, related);
+        db.Questions.AddRange(existing);
+        await db.SaveChangesAsync();
+        foreach (var q in existing)
+            db.PaperQuestions.Add(new PaperQuestion { PaperId = paper.Id, QuestionId = q.Id, Order = 1, Score = 10 });
+        db.PaperQuestions.Add(new PaperQuestion { PaperId = otherPaper.Id, QuestionId = keyword.Id, Order = 1, Score = 10 });
+        foreach (var q in existing.Concat([keyword, related])) SetEmbedding(q);
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler();
+        var service = CreateSearch(db, handler);
+
+        var (keywords, keywordUsedAi) = await service.SearchAsync("paper-fixture", "questions", null,
+            useAi: false, excludePaperId: paper.Id);
+        Assert.IsFalse(keywordUsedAi);
+        Assert.HasCount(1, keywords);
+        Assert.AreEqual(keyword.Id, keywords[0].Id, "Exclude paper members before taking the top keyword matches.");
+        Assert.AreEqual(0, handler.Calls);
+        var (smart, usedAi) = await service.SearchAsync("paper-fixture", "questions", null, excludePaperId: paper.Id);
+        Assert.IsTrue(usedAi);
+        Assert.HasCount(2, smart);
+        Assert.IsTrue(smart.Any(q => q.Id == related.Id));
+        Assert.IsFalse(smart.Any(q => existing.Any(e => e.Id == q.Id)), "Semantic results must also exclude paper members.");
+        var (filtered, _) = await service.SearchAsync("paper-fixture", "questions", null,
+            QuestionType.Choice, excludePaperId: paper.Id);
+        Assert.HasCount(1, filtered);
+        Assert.AreEqual(keyword.Id, filtered[0].Id);
+        Assert.AreEqual(1, handler.Calls, "Changing the paper/type filter can reuse the query vector.");
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
     public async Task RecommendationsReturnFiveAndExcludeSelfAssociatedAndOtherCategoryQuestions(bool relational)
     {
         await using var db = await CreateDatabase(relational);

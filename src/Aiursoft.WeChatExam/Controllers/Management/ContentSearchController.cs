@@ -35,7 +35,7 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
     {
         if (query?.Length > 500) return BadRequest();
         var (results, usedAi) = await search.SearchAsync(query?.Trim() ?? string.Empty, "questions", categoryId,
-            questionType, useAi, HttpContext.RequestAborted);
+            questionType, useAi, cancellationToken: HttpContext.RequestAborted);
         return includeSearchStatus ? Json(new { results, usedAi }) : Json(results);
     }
 

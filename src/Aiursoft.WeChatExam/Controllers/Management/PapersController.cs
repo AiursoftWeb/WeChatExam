@@ -22,6 +22,7 @@ public class PapersController(
     WeChatExamDbContext context, 
     IPaperService paperService,
     ITagService tagService,
+    ContentVectorSearchService search,
     PaperImportService importService,
     PaperImportTasks importTasks,
     ServiceTaskQueue taskQueue,
@@ -342,13 +343,26 @@ public class PapersController(
 
     // GET: papers/{id}/search-questions
     [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-    public async Task<IActionResult> SearchQuestions(Guid id, string? mtql, QuestionType? questionType)
+    public async Task<IActionResult> SearchQuestions(Guid id, string? mtql, QuestionType? questionType,
+        string? query = null, string mode = "mtql")
     {
-        var query = context.Questions.AsQueryable();
+        if (mode is not ("smart" or "keywords" or "mtql") || query?.Length > 500) return BadRequest();
+        if (mode != "mtql")
+        {
+            if (!await context.Papers.AnyAsync(p => p.Id == id, HttpContext.RequestAborted)) return NotFound();
+            var (results, usedAi) = await search.SearchAsync(query?.Trim() ?? string.Empty, "questions", null,
+                questionType, useAi: mode == "smart", excludePaperId: id, cancellationToken: HttpContext.RequestAborted);
+            return Json(new
+            {
+                results = results.Select(q => new { q.Id, Content = q.Title, QuestionType = q.QuestionType.ToString() }),
+                usedAi
+            });
+        }
+        var questionsQuery = context.Questions.AsQueryable();
 
         if (questionType.HasValue)
         {
-            query = query.Where(q => q.QuestionType == questionType.Value);
+            questionsQuery = questionsQuery.Where(q => q.QuestionType == questionType.Value);
         }
 
         if (!string.IsNullOrWhiteSpace(mtql))
@@ -359,7 +373,7 @@ public class PapersController(
                 var rpn = MTQL.Services.Parser.ToRpn(tokens);
                 var ast = MTQL.Services.AstBuilder.Build(rpn);
                 var predicate = MTQL.Services.PredicateBuilder.Build(ast);
-                query = query.Where(predicate);
+                questionsQuery = questionsQuery.Where(predicate);
             }
             catch (Exception ex)
             {
@@ -370,7 +384,7 @@ public class PapersController(
         var paperQuestions = await paperService.GetQuestionsForPaperAsync(id);
         var existingQuestionIds = paperQuestions.Select(pq => pq.QuestionId).ToList();
 
-        var questions = await query
+        var questions = await questionsQuery
             .Where(q => !existingQuestionIds.Contains(q.Id))
             .OrderByDescending(q => q.CreationTime)
             .Take(100)
@@ -378,6 +392,7 @@ public class PapersController(
             {
                 q.Id,
                 Content = q.Content.Length > 100 ? q.Content.Substring(0, 100) + "..." : q.Content,
+                Preview = q.Content,
                 QuestionType = q.QuestionType.ToString()
             })
             .ToListAsync();
