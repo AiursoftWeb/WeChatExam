@@ -178,8 +178,9 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
 
     // GET: categories/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(Guid? id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id == null) return NotFound();
         
         var category = await context.Categories.FindAsync(id);
@@ -205,8 +206,9 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
 
         if (!ModelState.IsValid)
@@ -270,6 +272,8 @@ public class CategoriesController(WeChatExamDbContext context) : Controller
 
         context.Categories.Update(category);
         await context.SaveChangesAsync();
+
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Details), new { id = category.Id });
     }

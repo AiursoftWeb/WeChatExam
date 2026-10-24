@@ -3,6 +3,7 @@
 <h1 class="h3 mb-3">@Localizer["Edit Question"]</h1>
 
 <form asp-action="Edit" method="post">
+    <partial name="_ContentCheckReturn" />
     <div asp-validation-summary="All" class="text-danger mb-3"></div>
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="ReturnUrl" />
@@ -101,7 +102,16 @@
             </div>
         </div>
         <div class="card-footer text-end">
-            <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+            <button type="submit" class="btn btn-primary">
+                @if (ViewData["CheckReturnUrl"] is string)
+                {
+                    @Localizer["Save and return to content checks"]
+                }
+                else
+                {
+                    @Localizer["Save"]
+                }
+            </button>
             <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { categoryId = Model.CategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
         </div>
     </div>
