@@ -27,6 +27,15 @@
   <data name="Advanced: MTQL" xml:space="preserve">
     <value>高级：MTQL</value>
   </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>高级：标签表达式 (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI 语义搜索</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>未使用 AI 语义搜索。显示关键词搜索结果。</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>所有类型</value>
   </data>
@@ -45,8 +54,14 @@
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
   </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>组合标签，例如：rock &amp;&amp; not metal</value>
+  </data>
   <data name="Content" xml:space="preserve">
     <value>内容</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例如 rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>编辑知识点</value>
@@ -66,6 +81,9 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>考试题目类型</value>
   </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>查找确切词语及相关含义。</value>
+  </data>
   <data name="Find Exam Questions to Associate" xml:space="preserve">
     <value>查找要关联的试题</value>
   </data>
@@ -78,8 +96,14 @@
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>按住 Ctrl (Windows) 或 Command (Mac) 选择多个选项。</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>关键词搜索</value>
+  </data>
   <data name="Keywords and Related Topics" xml:space="preserve">
     <value>关键词和相关主题</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>匹配题目文本、答案和解析中的词语。</value>
   </data>
   <data name="MTQL Question Finder" xml:space="preserve">
     <value>MTQL 题目查找器</value>
@@ -125,6 +149,12 @@
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>已选题目</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>智能搜索（默认）</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>标签表达式搜索（MTQL）</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>标题</value>

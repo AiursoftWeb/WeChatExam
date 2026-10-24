@@ -116,23 +116,51 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchButton && finder) {
         const results = document.getElementById('search-results-container');
         const mode = document.getElementById('question-search-mode');
+        const status = document.getElementById('question-search-status');
+        const help = document.getElementById('question-search-help');
         let pendingSearch;
+        mode.addEventListener('change', () => {
+            pendingSearch?.abort();
+            pendingSearch = null;
+            status.replaceChildren();
+            results.replaceChildren();
+            const helpText = mode.value === 'mtql' ? translate('mtql-help', 'Combine tags, for example: rock && not metal')
+                : mode.value === 'keywords' ? translate('keywords-help', 'Match words in the question text, answers and explanations.')
+                    : translate('smart-help', 'Find exact words and related meanings.');
+            help.textContent = helpText;
+            finder.placeholder = mode.value === 'mtql' ? translate('mtql-placeholder', 'e.g. rock && not metal')
+                : translate('text-placeholder', 'Enter a topic or a few words...');
+        });
         async function findQuestions() {
             pendingSearch?.abort();
             const controller = new AbortController(); pendingSearch = controller;
             const query = finder.value.trim();
             const type = document.getElementById('type-filter').value;
-            if (!query && mode.value !== 'mtql') {
+            const searchMode = mode.value;
+            status.replaceChildren();
+            if (!query && searchMode !== 'mtql') {
                 results.replaceChildren(element('p', 'list-group-item text-muted', translate('enter-search', 'Enter a few words to find questions.')));
                 return;
             }
             results.replaceChildren(element('p', 'list-group-item text-muted', translate('searching', 'Searching...')));
             try {
-                const url = mode.value === 'mtql' ? form.dataset.mtqlUrl : form.dataset.searchUrl;
-                const parameters = new URLSearchParams({ questionType: type, [mode.value === 'mtql' ? 'mtql' : 'query']: query });
+                const url = searchMode === 'mtql' ? form.dataset.mtqlUrl : form.dataset.searchUrl;
+                const parameters = new URLSearchParams({ questionType: type, [searchMode === 'mtql' ? 'mtql' : 'query']: query });
+                if (searchMode !== 'mtql') {
+                    parameters.set('useAi', String(searchMode === 'smart'));
+                    parameters.set('includeSearchStatus', 'true');
+                }
                 const response = await fetch(`${url}?${parameters}`, { signal: controller.signal });
                 if (!response.ok || response.redirected) throw new Error('Search request failed');
-                const items = await response.json();
+                const data = await response.json();
+                if (pendingSearch !== controller) return;
+                const items = searchMode === 'mtql' ? data : data.results;
+                const usedAi = searchMode !== 'mtql' && data.usedAi;
+                const label = searchMode === 'mtql' ? translate('mtql-search', 'Tag Expression Search (MTQL)')
+                    : usedAi ? translate('ai-search', 'AI Semantic Search') : translate('keyword-search', 'Keyword Search');
+                status.append(element('span', `badge ${usedAi ? 'bg-primary' : 'bg-secondary'}`, label));
+                if (searchMode === 'smart' && !usedAi)
+                    status.append(element('span', 'text-muted ms-2', translate('ai-fallback', 'AI semantic search was not used. Showing keyword results.')));
                 results.replaceChildren();
                 if (!items.length) results.append(element('p', 'list-group-item text-muted', translate('no-questions', 'No questions found.')));
                 for (const item of items) {

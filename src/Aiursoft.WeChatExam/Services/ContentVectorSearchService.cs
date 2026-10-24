@@ -20,7 +20,7 @@ public class ContentVectorSearchService(
 
     public async Task<(List<ContentSearchItem> Results, bool UsedAi)> SearchAsync(
         string query, string kind, Guid? categoryId, QuestionType? questionType = null,
-        CancellationToken cancellationToken = default)
+        bool useAi = true, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(query)) return ([], false);
         var questions = QuestionScope(categoryId.HasValue ? [categoryId.Value] : [], questionType);
@@ -56,7 +56,7 @@ public class ContentVectorSearchService(
                 item.Title.Contains(query, StringComparison.OrdinalIgnoreCase) ? 100 : 10;
 
         var usedAi = false;
-        if (await settings.IsAiSearchEnabledAsync())
+        if (useAi && await settings.IsAiSearchEnabledAsync())
         {
             if (!cache.Snapshot().Loaded) await cache.LoadAsync(db, cancellationToken);
             var snapshot = cache.Snapshot();

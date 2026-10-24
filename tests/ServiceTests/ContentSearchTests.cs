@@ -56,6 +56,40 @@ public class ContentSearchTests
     [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
+    public async Task KeywordModeSkipsModelAndCachedSemanticResults(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
+        var exact = NewQuestion("keyword-fixture", category.Id);
+        var related = NewQuestion("Who played Flowing Water?", category.Id);
+        db.Add(category);
+        db.Questions.AddRange(exact, related);
+        await db.SaveChangesAsync();
+        SetEmbedding(exact); SetEmbedding(related);
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler();
+        var service = CreateSearch(db, handler);
+
+        var (keywords, usedAi) = await service.SearchAsync("keyword-fixture", "questions", null, useAi: false);
+        Assert.IsFalse(usedAi);
+        Assert.HasCount(1, keywords);
+        Assert.AreEqual(exact.Id, keywords[0].Id);
+        Assert.AreEqual(0, handler.Calls, "Keyword mode must not request a query embedding.");
+
+        var (smart, smartUsedAi) = await service.SearchAsync("keyword-fixture", "questions", null);
+        Assert.IsTrue(smartUsedAi);
+        Assert.HasCount(2, smart);
+        Assert.AreEqual(1, handler.Calls);
+        var (cachedKeywords, cachedUsedAi) = await service.SearchAsync("keyword-fixture", "questions", null, useAi: false);
+        Assert.IsFalse(cachedUsedAi);
+        Assert.HasCount(1, cachedKeywords);
+        Assert.AreEqual(exact.Id, cachedKeywords[0].Id);
+        Assert.AreEqual(1, handler.Calls, "Keyword mode must ignore cached query vectors as well.");
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
     public async Task RecommendationsReturnFiveAndExcludeSelfAssociatedAndOtherCategoryQuestions(bool relational)
     {
         await using var db = await CreateDatabase(relational);
