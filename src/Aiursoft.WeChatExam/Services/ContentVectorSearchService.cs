@@ -20,10 +20,13 @@ public class ContentVectorSearchService(
 
     public async Task<(List<ContentSearchItem> Results, bool UsedAi)> SearchAsync(
         string query, string kind, Guid? categoryId, QuestionType? questionType = null,
-        bool useAi = true, CancellationToken cancellationToken = default)
+        bool useAi = true, Guid? excludePaperId = null, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(query)) return ([], false);
         var questions = QuestionScope(categoryId.HasValue ? [categoryId.Value] : [], questionType);
+        if (excludePaperId.HasValue)
+            questions = questions.Where(q => !db.PaperQuestions.Any(pq =>
+                pq.PaperId == excludePaperId.Value && pq.QuestionId == q.Id));
         var points = db.KnowledgePoints.AsNoTracking().AsQueryable();
         if (categoryId.HasValue)
             points = points.Where(k => k.CategoryKnowledgePoints.Any(c => c.CategoryId == categoryId.Value));

@@ -152,38 +152,43 @@
             </div>
         </div>
 
-        <div class="card mt-3">
+        <div class="card mt-3" data-paper-question-search data-endpoint="@Url.Action("SearchQuestions", new { id = Model.Id })">
             <div class="card-header">
                 <h5 class="card-title mb-0">@Localizer["Search & Add Questions"]</h5>
             </div>
             <div class="card-body">
-                <div class="row g-2 mb-3">
-                    <div class="col-md-4">
+                <div class="row g-2 mb-2">
+                    <div class="col-sm-6">
+                        <label for="question-search-mode" class="form-label">@Localizer["Search Mode"]</label>
+                        <select id="question-search-mode" class="form-select">
+                            <option value="smart">@Localizer["Smart Search (Default)"]</option>
+                            <option value="keywords">@Localizer["Keyword Search"]</option>
+                            <option value="mtql">@Localizer["Advanced: Tag Expression (MTQL)"]</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="typeFilter" class="form-label">@Localizer["Exam Question Type"]</label>
                         <select id="typeFilter" asp-items="Model.QuestionTypeOptions" class="form-select">
                             <option value="">@Localizer["All Types"]</option>
                         </select>
                     </div>
-                    <div class="col-md-8">
-                        <div class="input-group">
-                            <input type="text" id="mtqlInput" class="form-control" placeholder="MTQL e.g. content contains 'sql'" />
-                            <button class="btn btn-outline-primary" type="button" id="mtqlSearchBtn">@Localizer["Search"]</button>
-                        </div>
-                    </div>
                 </div>
-                <div id="mtqlResults" class="mb-3" style="max-height: 400px; overflow-y: auto; display: none;">
-                    <table class="table table-sm table-hover">
-                        <thead class="sticky-top bg-white">
-                            <tr>
-                                <th style="width: 40px;"><input type="checkbox" id="selectAllQuestions" class="form-check-input" /></th>
-                                <th>@Localizer["Content"]</th>
-                                <th style="width: 100px;">@Localizer["Type"]</th>
-                            </tr>
-                        </thead>
-                        <tbody id="mtqlResultsBody">
-                        </tbody>
-                    </table>
+                <p id="question-search-help" class="form-text">@Localizer["Find exact words and related meanings."]</p>
+                <div class="input-group mb-3">
+                    <input type="search" id="question-search-input" class="form-control" maxlength="500" aria-describedby="question-search-help"
+                           aria-label="@Localizer["Find Questions"]" placeholder="@Localizer["Enter a topic or a few words..."]" />
+                    <button class="btn btn-outline-primary" type="button" id="find-questions">@Localizer["Search"]</button>
                 </div>
-                <div id="batchAddOptions" style="display: none;">
+                <div id="question-search-status" class="small mb-2" role="status"></div>
+                <div class="form-check mb-2">
+                    <input type="checkbox" id="selectAllQuestions" class="form-check-input" disabled />
+                    <label for="selectAllQuestions" class="form-check-label">@Localizer["Select All Results"]</label>
+                </div>
+                <div id="search-results-container" class="list-group mb-3 overflow-auto" style="max-height: 400px" aria-live="polite"></div>
+                <div id="batchAddOptions" hidden>
+                    <h6>@Localizer["Selected Questions"]</h6>
+                    <p class="form-text">@Localizer["Selections are kept when you search again. Add them when you are ready."]</p>
+                    <div id="selected-questions-list" class="list-group mb-3"></div>
                     <form asp-action="BatchAddQuestions" asp-route-id="@Model.Id" method="post" id="batchAddForm">
                         @Html.AntiForgeryToken()
                         <div class="row mb-3">
@@ -205,114 +210,27 @@
     </div>
 </div>
 
+<div data-paper-search-localization hidden>
+    <span data-key="smart-help">@Localizer["Find exact words and related meanings."]</span>
+    <span data-key="keywords-help">@Localizer["Match words in the question text, answers and explanations."]</span>
+    <span data-key="mtql-help">@Localizer["Combine tags, for example: rock && not metal"]</span>
+    <span data-key="text-placeholder">@Localizer["Enter a topic or a few words..."]</span>
+    <span data-key="mtql-placeholder">@Localizer["e.g. rock && not metal"]</span>
+    <span data-key="enter-search">@Localizer["Enter a few words to find questions."]</span>
+    <span data-key="searching">@Localizer["Searching..."]</span>
+    <span data-key="no-questions">@Localizer["No questions found."]</span>
+    <span data-key="search-failed">@Localizer["Search is unavailable. Please try again."]</span>
+    <span data-key="ai-search">@Localizer["AI Semantic Search"]</span>
+    <span data-key="keyword-search">@Localizer["Keyword Search"]</span>
+    <span data-key="mtql-search">@Localizer["Tag Expression Search (MTQL)"]</span>
+    <span data-key="ai-fallback">@Localizer["AI semantic search was not used. Showing keyword results."]</span>
+    <span data-key="preview">@Localizer["Preview"]</span>
+    <span data-key="select-question">@Localizer["Select Question"]</span>
+    <span data-key="remove">@Localizer["Remove"]</span>
+    <span data-key="add-selected">@Localizer["Add Selected ({0})"].Value</span>
+</div>
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
-    <script src="~/js/tag-input.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Tags Init
-            const tagInput = document.getElementById('tagInputField');
-            const tagHidden = document.getElementById('Tags');
-            const initialTags = @Json.Serialize(Model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>());
-            TagInput.init(tagInput, tagHidden, initialTags);
-
-            const mtqlInput = document.getElementById('mtqlInput');
-            const mtqlSearchBtn = document.getElementById('mtqlSearchBtn');
-            const mtqlResults = document.getElementById('mtqlResults');
-            const mtqlResultsBody = document.getElementById('mtqlResultsBody');
-            const selectAllQuestions = document.getElementById('selectAllQuestions');
-            const batchAddOptions = document.getElementById('batchAddOptions');
-            const batchAddForm = document.getElementById('batchAddForm');
-            const selectedQuestionsContainer = document.getElementById('selectedQuestionsContainer');
-
-            mtqlSearchBtn.addEventListener('click', function () {
-                const mtql = mtqlInput.value;
-                const type = document.getElementById('typeFilter').value;
-                const paperId = '@Model.Id';
-                
-                mtqlSearchBtn.disabled = true;
-                mtqlSearchBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
-
-                fetch(`/Papers/SearchQuestions/${paperId}?mtql=${encodeURIComponent(mtql)}&questionType=${type}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            return response.json().then(err => { throw new Error(err.message || 'Search failed'); });
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        mtqlResultsBody.innerHTML = '';
-                        if (data.length === 0) {
-                            mtqlResultsBody.innerHTML = '<tr><td colspan="3" class="text-center">No questions found</td></tr>';
-                            batchAddOptions.style.display = 'none';
-                        } else {
-                            data.forEach(q => {
-                                const tr = document.createElement('tr');
-                                tr.innerHTML = `
-                                    <td><input type="checkbox" class="form-check-input question-checkbox" value="${q.id}" /></td>
-                                    <td>${q.content}</td>
-                                    <td><span class="badge bg-info">${q.questionType}</span></td>
-                                `;
-                                tr.addEventListener('click', function(e) {
-                                    if (e.target.type !== 'checkbox') {
-                                        const checkbox = tr.querySelector('.question-checkbox');
-                                        checkbox.checked = !checkbox.checked;
-                                        updateBatchAddVisibility();
-                                    }
-                                });
-                                mtqlResultsBody.appendChild(tr);
-                            });
-                            batchAddOptions.style.display = 'block';
-                            updateBatchAddVisibility();
-                        }
-                        mtqlResults.style.display = 'block';
-                    })
-                    .catch(error => {
-                        alert(error.message);
-                    })
-                    .finally(() => {
-                        mtqlSearchBtn.disabled = false;
-                        mtqlSearchBtn.innerHTML = '@Localizer["Search"]';
-                    });
-            });
-
-            mtqlInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    mtqlSearchBtn.click();
-                }
-            });
-
-            selectAllQuestions.addEventListener('change', function () {
-                const checkboxes = document.querySelectorAll('.question-checkbox');
-                checkboxes.forEach(cb => cb.checked = selectAllQuestions.checked);
-                updateBatchAddVisibility();
-            });
-
-            function updateBatchAddVisibility() {
-                const checkedCount = document.querySelectorAll('.question-checkbox:checked').length;
-                const batchAddBtn = document.getElementById('batchAddBtn');
-                batchAddBtn.textContent = `@Localizer["Add Selected"] (${checkedCount})`;
-                batchAddBtn.disabled = checkedCount === 0;
-            }
-
-            mtqlResultsBody.addEventListener('change', function(e) {
-                if (e.target.classList.contains('question-checkbox')) {
-                    updateBatchAddVisibility();
-                }
-            });
-
-            batchAddForm.addEventListener('submit', function (e) {
-                selectedQuestionsContainer.innerHTML = '';
-                const checkboxes = document.querySelectorAll('.question-checkbox:checked');
-                checkboxes.forEach(cb => {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'questionIds';
-                    input.value = cb.value;
-                    selectedQuestionsContainer.appendChild(input);
-                });
-            });
-        });
-    </script>
+    <script src="~/js/tag-input.js" asp-append-version="true"></script>
+    <script src="~/js/paper-editor.js" asp-append-version="true"></script>
 }
