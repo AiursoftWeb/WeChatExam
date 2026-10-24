@@ -48,7 +48,7 @@
             {
                 <div class="list-group-item d-flex gap-2 justify-content-between align-items-center" data-question-id="@question.Id">
                     <span class="text-break">@question.Content</span>
-                    <button type="button" class="btn btn-sm btn-outline-danger" data-remove-question>@Localizer["Remove"]</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger flex-shrink-0 text-nowrap" data-remove-question>@Localizer["Remove"]</button>
                     <input type="hidden" name="SelectedQuestionIds" value="@question.Id" />
                 </div>
             }

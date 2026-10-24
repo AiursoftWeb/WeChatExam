@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = element('div', 'list-group-item d-flex gap-2 justify-content-between align-items-center');
         row.dataset.questionId = question.id;
         row.append(element('span', 'text-break', question.title));
-        const remove = element('button', 'btn btn-sm btn-outline-danger', translate('remove', 'Remove'));
+        const remove = element('button', 'btn btn-sm btn-outline-danger flex-shrink-0 text-nowrap', translate('remove', 'Remove'));
         remove.type = 'button';
         remove.dataset.removeQuestion = '';
         const hidden = element('input', '');
