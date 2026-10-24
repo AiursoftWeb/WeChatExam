@@ -136,6 +136,44 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task KnowledgePointCreationKeepsSelectedQuestionsAfterValidationAndSavesAssociations()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var question = new Question { Id = Guid.NewGuid(), Content = "Create finder <script>example</script>" };
+        db.Questions.Add(question); await db.SaveChangesAsync();
+        var response = await Http.GetAsync("/KnowledgePoints/Create"); response.EnsureSuccessStatusCode();
+        var html = await response.Content.ReadAsStringAsync();
+        Assert.Contains("value=\"smart\"", html);
+        Assert.Contains("value=\"keywords\"", html);
+        Assert.Contains("value=\"mtql\"", html);
+        Assert.Contains("/js/content-editor.js", html);
+        var form = new Dictionary<string, string>
+        {
+            ["Title"] = "", ["Content"] = "Unsaved knowledge content",
+            ["SelectedQuestionIds"] = question.Id.ToString()
+        };
+        var invalid = await PostForm("/KnowledgePoints/Create", form);
+        invalid.EnsureSuccessStatusCode();
+        var invalidHtml = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains($"value=\"{question.Id}\"", invalidHtml);
+        Assert.Contains("Unsaved knowledge content", invalidHtml);
+        Assert.Contains("&lt;script&gt;example&lt;/script&gt;", invalidHtml);
+        Assert.Contains("data-remove-question", invalidHtml);
+        Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync(q => q.QuestionId == question.Id));
+        form["Title"] = "New knowledge point";
+        var saved = await PostForm("/KnowledgePoints/Create", form);
+        Assert.AreEqual(HttpStatusCode.Found, saved.StatusCode);
+        var link = await db.KnowledgePointQuestions.SingleAsync(q => q.QuestionId == question.Id);
+        Assert.AreEqual(question.Id, link.QuestionId);
+        var edit = await Http.GetAsync($"/KnowledgePoints/Edit/{link.KnowledgePointId}"); edit.EnsureSuccessStatusCode();
+        var editHtml = await edit.Content.ReadAsStringAsync();
+        Assert.Contains("value=\"smart\"", editHtml);
+        Assert.Contains("data-question-recommendations", editHtml);
+    }
+
+    [TestMethod]
     public async Task QuestionReorderingPreservesEmbeddingAndReturnsToSearch()
     {
         await LoginAsAdmin();

@@ -1,0 +1,45 @@
+@model IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>
+
+    <div class="card mb-3">
+        <div class="card-header"><h2 class="card-title mb-0">@Localizer["Find Exam Questions to Associate"]</h2></div>
+        <div class="card-body">
+            <div class="row g-2 mb-2">
+                <div class="col-sm-6">
+                    <label for="question-search-mode" class="form-label">@Localizer["Search Mode"]</label>
+                    <select id="question-search-mode" class="form-select">
+                        <option value="smart">@Localizer["Smart Search (Default)"]</option>
+                        <option value="keywords">@Localizer["Keyword Search"]</option>
+                        <option value="mtql">@Localizer["Advanced: Tag Expression (MTQL)"]</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="type-filter" class="form-label">@Localizer["Exam Question Type"]</label>
+                    <select id="type-filter" asp-items="Model" class="form-select"><option value="">@Localizer["All Types"]</option></select>
+                </div>
+            </div>
+            <p id="question-search-help" class="form-text">@Localizer["Find exact words and related meanings."]</p>
+            <div class="input-group mb-3">
+                <input id="question-search-input" class="form-control" aria-describedby="question-search-help" maxlength="500" aria-label="@Localizer["Find Questions"]" placeholder="@Localizer["Enter a topic or a few words..."]" />
+                <button id="find-questions" type="button" class="btn btn-outline-primary">@Localizer["Search"]</button>
+            </div>
+            <div id="question-search-status" class="small mb-2" role="status"></div>
+            <div id="search-results-container" class="list-group overflow-auto" style="max-height: 300px" aria-live="polite"></div>
+        </div>
+    </div>
+<div data-editor-localization hidden>
+    <span data-key="remove">@Localizer["Remove"]</span>
+    <span data-key="associate">@Localizer["Associate"]</span>
+    <span data-key="enter-search">@Localizer["Enter a few words to find questions."]</span>
+    <span data-key="searching">@Localizer["Searching..."]</span>
+    <span data-key="no-questions">@Localizer["No questions found."]</span>
+    <span data-key="ai-search">@Localizer["AI Semantic Search"]</span>
+    <span data-key="keyword-search">@Localizer["Keyword Search"]</span>
+    <span data-key="mtql-search">@Localizer["Tag Expression Search (MTQL)"]</span>
+    <span data-key="ai-fallback">@Localizer["AI semantic search was not used. Showing keyword results."]</span>
+    <span data-key="smart-help">@Localizer["Find exact words and related meanings."]</span>
+    <span data-key="keywords-help">@Localizer["Match words in the question text, answers and explanations."]</span>
+    <span data-key="mtql-help">@Localizer["Combine tags, for example: rock && not metal"]</span>
+    <span data-key="text-placeholder">@Localizer["Enter a topic or a few words..."]</span>
+    <span data-key="mtql-placeholder">@Localizer["e.g. rock && not metal"]</span>
+    <span data-key="search-failed">@Localizer["Search is unavailable. Please try again."]</span>
+</div>
