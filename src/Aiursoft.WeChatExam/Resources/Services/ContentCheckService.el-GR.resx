@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+    <value>Ένα ερώτημα λίστας χωρίς φίλτρο ετικέτας μπορεί να επιστρέψει αυτήν την επί πληρωμή ερώτηση σε συνδεδεμένο χρήστη χωρίς VIP· το τελικό σημείο λεπτομερειών της επιστρέφει 403.</value>
+  </data>
+  <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
+    <value>Η συνδρομή για ένα συνδεδεμένο γνωστικό αντικείμενο δεν ξεκλειδώνει απαραίτητα το γνωστικό αντικείμενο της ίδιας της άσκησης.</value>
+  </data>
+  <data name="All relevant VIPs" xml:space="preserve">
+    <value>Όλα τα σχετικά VIP</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Ανώνυμος</value>
+  </data>
+  <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
+    <value>Ορίστε το κατάλληλο θέμα της ερώτησης ή διορθώστε τις επί πληρωμή ετικέτες της, αφού εξετάσετε τη συνολική τους επίδραση.</value>
+  </data>
+  <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Ορίστε το κατάλληλο αντικείμενο πριν διαθέσετε αυτό το προϊόν προς πώληση. Ελέγξτε ξεχωριστά τις υπάρχουσες συνδρομές.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
+    <value>Μόνο εξουσιοδότηση: αν δεν επιτρέπεται η πρόσβαση σε ένα στιγμιότυπο, επιστρέφεται 200 με HasAccess=false και χωρίς ερωτήσεις. Απαιτείται επίσης ένα αξιοποιήσιμο στιγμιότυπο.</value>
+  </data>
+  <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
+    <value>Οι ρυθμίσεις δωρεάν κατηγορίας δεν περιορίζουν το δημόσιο API γνώσεων. Ορισμένοι έλεγχοι εισόδου στο Mini Program χρησιμοποιούν ονομασίες προϊόντων αντί για τα αναγνωριστικά θεμάτων του διακομιστή.</value>
+  </data>
+  <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
+    <value>Ελέγξτε τις αντιστοιχίσεις ταξινομίας των ετικετών και το θέμα της ερώτησης. Αν και τα δύο είναι σκόπιμα, ζητήστε από την ομάδα μηχανικών να εξετάσει τη συμπεριφορά στα σημεία εισόδου.</value>
+  </data>
+  <data name="Client entry checks require engineering verification" xml:space="preserve">
+    <value>Οι έλεγχοι εισόδου του πελάτη απαιτούν επαλήθευση από την ομάδα μηχανικών</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
+    <value>Επιβεβαιώστε αν οι πωλήσεις έχουν διακοπεί σκόπιμα· διαφορετικά, ενεργοποιήστε ένα προϊόν για ένα από τα απαιτούμενα μαθήματα.</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
+    <value>Επιβεβαιώστε αν οι πωλήσεις έχουν διακοπεί σκόπιμα· διαφορετικά, ενεργοποιήστε το απαιτούμενο προϊόν θεματικής ενότητας ή πραγματικών εξετάσεων.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
+    <value>Επιβεβαιώστε αν πρόκειται για σκόπιμη διδασκαλία μεταξύ διαφορετικών γνωστικών αντικειμένων· διαφορετικά, διορθώστε το γνωστικό αντικείμενο της ερώτησης ή τη συσχέτισή της με τη γνώση.</value>
+  </data>
+  <data name="Custom VIP selection" xml:space="preserve">
+    <value>Προσαρμοσμένη επιλογή VIP</value>
+  </data>
+  <data name="Eligible for the list; pagination and other query filters still apply." xml:space="preserve">
+    <value>Επιλέξιμο για τη λίστα· εξακολουθούν να ισχύουν η σελιδοποίηση και τα υπόλοιπα φίλτρα ερωτήματος.</value>
+  </data>
+  <data name="Engineering must review the endpoint rules. Do not change shared content pricing merely to suppress this diagnostic." xml:space="preserve">
+    <value>Η ομάδα μηχανικών πρέπει να επανεξετάσει τους κανόνες των τελικών σημείων. Μην αλλάξετε την τιμολόγηση του κοινόχρηστου περιεχομένου μόνο και μόνο για να αποκρύψετε αυτό το διαγνωστικό μήνυμα.</value>
+  </data>
+  <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
+    <value>Ακόμη και όλα τα σχετικά μέλη VIP δεν μπορούν να ξεκλειδώσουν αυτό το γραπτό.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Οι υπάρχουσες ενεργές συνδρομές ενδέχεται να λειτουργούν, αλλά οι νέοι πελάτες δεν έχουν τρόπο να αγοράσουν.</value>
+  </data>
+  <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
+    <value>Τα VIP που είναι ήδη ενεργά εξακολουθούν να λειτουργούν, αλλά η αγορά προϊόντων που είναι αυτήν τη στιγμή ενεργοποιημένα δεν μπορεί να ξεκλειδώσει αυτήν την ερώτηση.</value>
+  </data>
+  <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
+    <value>Το δωρεάν διαγώνισμα περιέχει στιγμιότυπα ερωτήσεων που αυτή τη στιγμή είναι επί πληρωμή</value>
+  </data>
+  <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
+    <value>Αν πρόκειται για κοινόχρηστη ετικέτα περιγραφικού χαρακτήρα, εξετάστε το ενδεχόμενο να την ορίσετε ως δωρεάν. Αν παρέχει πρόσβαση επί πληρωμή, αντιστοιχίστε την ταξινομία της στο επιθυμητό θέμα. Ελέγξτε το περιεχόμενο που επηρεάζεται πριν αλλάξετε μια κοινόχρηστη ετικέτα.</value>
+  </data>
+  <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
+    <value>Διατηρήστε αυτήν τη ρύθμιση αν η άσκηση είναι σκόπιμα επί πληρωμή. Αν πρόκειται να είναι δημόσια, ελέγξτε πρώτα όλες τις επί πληρωμή ετικέτες και τον συνολικό αντίκτυπό τους.</value>
+  </data>
+  <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
+    <value>Διατηρήστε το εάν η δωρεάν δοκιμασία είναι εντεταγμένη. Ελέγξτε τη δική της τιμολόγηση εάν το στιγμιότυπο πρέπει να περιοριστεί.</value>
+  </data>
+  <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
+    <value>Το γνωστικό σημείο και η άσκηση αφορούν διαφορετικά αντικείμενα</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Σημεία γνώσης</value>
+  </data>
+  <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
+    <value>Οι νέοι πελάτες δεν έχουν αυτήν τη στιγμή διαθέσιμο τρόπο αγοράς. Οι υπάρχουσες ενεργές συνδρομές ενδέχεται να εξακολουθούν να παρέχουν πρόσβαση.</value>
+  </data>
+  <data name="No enabled product combination unlocks this question" xml:space="preserve">
+    <value>Κανένας ενεργοποιημένος συνδυασμός προϊόντων δεν αποκλείει αυτό το ερώτημα</value>
+  </data>
+  <data name="No enabled product unlocks this paper" xml:space="preserve">
+    <value>Κανένα ενεργό προϊόν δεν ξεκλειδώνει αυτό το δοκίμιο</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Κανένα ενεργό προϊόν VIP δεν ξεκλειδώνει αυτήν την ετικέτα</value>
+  </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Κανένα VIP δεν μπορεί να ξεκλειδώσει αυτήν την καταχώριση ετικέτας. Μια ερώτηση με δικό της θέμα ενδέχεται να είναι προσβάσιμη από τις λεπτομέρειες της ερώτησης.</value>
+  </data>
+  <data name="Paid paper has no unlockable subject" xml:space="preserve">
+    <value>Το επί πληρωμή τεύχος δεν έχει ξεκλειδώσιμο γνωστικό αντικείμενο</value>
+  </data>
+  <data name="Paid question cannot be unlocked even with all VIPs" xml:space="preserve">
+    <value>Δεν είναι δυνατή η πρόσβαση στην επί πληρωμή ερώτηση ακόμη και με όλα τα VIP</value>
+  </data>
+  <data name="Paid question requires sign-in (403)." xml:space="preserve">
+    <value>Η πρόσβαση σε ερώτηση επί πληρωμή απαιτεί σύνδεση (403).</value>
+  </data>
+  <data name="Paid tag denies access (403): {0}" xml:space="preserve">
+    <value>Η επί πληρωμή ετικέτα απαγορεύει την πρόσβαση (403): {0}</value>
+  </data>
+  <data name="Paid tag has no unlockable subject" xml:space="preserve">
+    <value>Η επί πληρωμή ετικέτα δεν έχει θέμα που να μπορεί να ξεκλειδωθεί</value>
+  </data>
+  <data name="Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted." xml:space="preserve">
+    <value>Η πρόσβαση στο διαγώνισμα είναι ανεξάρτητη από την πρόσβαση στην αρχική ερώτηση. Το διατηρημένο στιγμιότυπο παραμένει διαθέσιμο ακόμη κι αν μια αρχική ερώτηση τροποποιηθεί ή διαγραφεί.</value>
+  </data>
+  <data name="Paper snapshot is empty" xml:space="preserve">
+    <value>Το στιγμιότυπο του γραπτού είναι κενό</value>
+  </data>
+  <data name="Paper snapshots" xml:space="preserve">
+    <value>Στιγμιότυπα διαγωνισμάτων</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Διαγωνίσματα</value>
+  </data>
+  <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
+    <value>Δημόσιο σημείο γνώσης συνδέεται με άσκηση επί πληρωμή</value>
+  </data>
+  <data name="Publishable paper has no snapshot" xml:space="preserve">
+    <value>Το δημοσιεύσιμο γραπτό δεν έχει στιγμιότυπο</value>
+  </data>
+  <data name="Question content is returned (200)." xml:space="preserve">
+    <value>Το περιεχόμενο της ερώτησης επιστρέφεται (200).</value>
+  </data>
+  <data name="Question details return 403." xml:space="preserve">
+    <value>Η εμφάνιση των λεπτομερειών της ερώτησης επιστρέφει 403.</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Ερωτήσεις</value>
+  </data>
+  <data name="Real-exam VIP only" xml:space="preserve">
+    <value>Μόνο VIP πραγματικών εξετάσεων</value>
+  </data>
+  <data name="Review its questions and create a snapshot through the existing paper management workflow." xml:space="preserve">
+    <value>Εξετάστε τις ερωτήσεις του και δημιουργήστε ένα στιγμιότυπο μέσω της υπάρχουσας διαδικασίας διαχείρισης θεμάτων.</value>
+  </data>
+  <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
+    <value>Ελέγξτε τις συσχετίσεις του με τα γνωστικά αντικείμενα, τη ρύθμιση για πραγματικές εξετάσεις και τη ρύθμιση δωρεάν πρόσβασης.</value>
+  </data>
+  <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
+    <value>Ελέγξτε τις ερωτήσεις του διαγωνίσματος και δημοσιεύστε ένα διορθωμένο στιγμιότυπο. Η αλλαγή των αρχικών ερωτήσεων δεν ενημερώνει τα υπάρχοντα στιγμιότυπα.</value>
+  </data>
+  <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Ελέγξτε το αντικείμενο και τα διαθέσιμα προϊόντα VIP. Τα απενεργοποιημένα προϊόντα δεν ακυρώνουν τις υπάρχουσες ενεργές συνδρομές.</value>
+  </data>
+  <data name="Signed in without active VIP" xml:space="preserve">
+    <value>Συνδεδεμένος χωρίς ενεργή VIP συνδρομή</value>
+  </data>
+  <data name="Signed-in list and question details use different access rules" xml:space="preserve">
+    <value>Η λίστα για συνδεδεμένους χρήστες και οι λεπτομέρειες της ερώτησης χρησιμοποιούν διαφορετικούς κανόνες πρόσβασης</value>
+  </data>
+  <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
+    <value>Η έκδοση στιγμιότυπου {0} δεν περιέχει ασκήσεις. Μπορείτε να συνεχίσετε να ζητάτε παλιούς συνδέσμους στιγμιότυπων.</value>
+  </data>
+  <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
+    <value>Το VIP του αντικειμένου και η καταχώριση της επί πληρωμή ετικέτας διαφωνούν</value>
+  </data>
+  <data name="Subject VIP product has no valid subject" xml:space="preserve">
+    <value>Το προϊόν VIP θέματος δεν έχει έγκυρο θέμα</value>
+  </data>
+  <data name="Subject VIP: {0}" xml:space="preserve">
+    <value>VIP μαθήματος: {0}</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Μαθήματα</value>
+  </data>
+  <data name="Tag gate only; anonymous lists also exclude every question with a paid tag." xml:space="preserve">
+    <value>Περιορισμός μόνο μέσω ετικέτας· οι ανώνυμες λίστες εξαιρούν επίσης κάθε ερώτηση με ετικέτα επί πληρωμή.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomies</value>
+  </data>
+  <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
+    <value>Η δημόσια λίστα θεμάτων δεν περιλαμβάνει αυτό το θέμα, επειδή δεν υπάρχει στιγμιότυπο.</value>
+  </data>
+  <data name="The question&apos;s subject VIP is required (403)." xml:space="preserve">
+    <value>Απαιτείται VIP για το θέμα της ερώτησης (403).</value>
+  </data>
+  <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
+    <value>Το VIP του αντικειμένου της ερώτησης αποκλειδώνει τα λεπτομερή της, αλλά τουλάχιστον μία εγγραφή πληρωμένου ετικέτας απορρίπτει το ίδιο VIP.</value>
+  </data>
+  <data name="This product cannot grant the intended subject membership." xml:space="preserve">
+    <value>Αυτό το προϊόν δεν μπορεί να παρέχει συνδρομή στο προβλεπόμενο αντικείμενο.</value>
+  </data>
+  <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
+    <value>Αυτή η ερώτηση χωρίς κατηγοριοποίηση απαιτεί όλες τις επί πληρωμή ετικέτες· τουλάχιστον μία ετικέτα δεν έχει αντιστοίχιση σε θεματική ενότητα.</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Επαληθεύστε ξεχωριστά το Mini Program που έχει αναπτυχθεί. Αυτός ο έλεγχος στον διακομιστή δεν προσομοιώνει την πλοήγηση του χρήστη ούτε αποδεικνύει ότι ένας πελάτης μπορεί να μεταβεί σε κάθε οθόνη.</value>
+  </data>
+  <data name="VIP products" xml:space="preserve">
+    <value>Προϊόντα VIP</value>
+  </data>
+  <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
+    <value>Οι επισκέπτες μπορούν να διαβάσουν το περιεχόμενο γνώσεων, αλλά αυτό το τεστ επιστρέφει 403 σε ανώνυμους χρήστες. Οι επί πληρωμή ασκήσεις επιτρέπονται από τους ισχύοντες επιχειρηματικούς κανόνες.</value>
+  </data>
+
+</root>

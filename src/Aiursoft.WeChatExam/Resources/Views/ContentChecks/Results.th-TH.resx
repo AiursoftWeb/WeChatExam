@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>รายการที่ได้รับผลกระทบ {0} รายการ</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>แบบฝึกหัด {0} รายการ</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>รายการ {0} รายการที่ต้องตรวจสอบ</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>ทุกหลักสูตร</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>ผลลัพธ์ทั้งหมด</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>ทุกสถานะ</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>ตรวจสอบอีกครั้ง</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>ตรวจสอบเสร็จสมบูรณ์</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>ตรวจสอบแล้ว {0} จุดความรู้ {1} แบบฝึกหัด และ {2} ข้อสอบ</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>ตรวจสอบเมื่อ</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>เลือกการ์ดเพื่อดูว่านักเรียนจะพบอะไรบ้างและควรตรวจสอบเรื่องใด</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>ชื่อเนื้อหา</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>หลักสูตร</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>ตรวจสอบหลักสูตร</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>ค้นหาเนื้อหาเฉพาะ</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>สำหรับทีมของเรา</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>เนื้อหาที่มีการเรียกเก็บเงินโดยตั้งใจจะแสดงแยกไว้ด้านล่าง พฤติกรรมของ Mini Program อาจยังต้องให้ทีมตรวจสอบ</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>ต้องให้ความสนใจ</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>ต้องตรวจสอบ</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>ไม่พบปัญหาการตั้งค่าในการตรวจสอบครั้งนี้</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>ไม่มีรายการในมุมมองนี้ คุณสามารถเลือกกลุ่มอื่นหรือล้างการค้นหาได้</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>หน้า {0} จาก {1}</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>โปรดยืนยัน</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>ก่อนหน้า</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>รูปแบบการกำหนดราคา</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>ข้อมูลการกำหนดราคา</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>กลุ่มผลลัพธ์</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>หน้าผลลัพธ์</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>รายการดังกล่าวมีการเปลี่ยนแปลงแล้ว โปรดเลือกจากผลลัพธ์ล่าสุดด้านล่าง</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>รายการเหล่านี้ต้องได้รับการตรวจสอบจากทีมพัฒนา ไม่ใช่คำแนะนำให้เปลี่ยนราคาหลักสูตรของคุณ</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>ดู</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>ผลลัพธ์ของคุณ</value>
+  </data>
+
+</root>

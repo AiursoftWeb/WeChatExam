@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>影響を受ける項目：{0}件</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>演習{0}件</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>確認が必要な項目：{0} 件</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>すべてのコース</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>すべての結果</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>すべてのステータス</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>もう一度確認</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>チェック完了</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>知識ポイント {0} 件、演習問題 {1} 件、テスト {2} 件を確認しました。</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>確認日時</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>カードを選択すると、学生がどのような体験をするか、何を確認すべきかを確認できます。</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>コンテンツ名</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>コース</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>コースの確認</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>特定のコンテンツを検索</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>当チーム向け</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>意図的に有料としているコンテンツは、以下に別途記載しています。ミニプログラムの動作については、チームでの確認が必要な場合があります。</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>要確認</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>要確認</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>このチェックでは設定上の問題は見つかりませんでした</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>この表示項目はありません。別のグループを選択するか、検索条件をクリアしてください。</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>全{1}ページ中{0}ページ</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>要確認</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>料金設定</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>料金に関する情報</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>結果グループ</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>検索結果ページ</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>その項目は変更されました。以下の最新の結果から選択してください。</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>これらの項目は開発者による確認が必要です。コースの料金を変更するよう指示するものではありません。</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>結果</value>
+  </data>
+
+</root>

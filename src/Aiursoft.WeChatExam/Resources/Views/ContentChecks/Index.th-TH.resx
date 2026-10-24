@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Can students open your content?" xml:space="preserve">
+    <value>นักเรียนสามารถเปิดเนื้อหาของคุณได้หรือไม่?</value>
+  </data>
+  <data name="Check your knowledge points, exercises and papers. Find anything that could stop a student from learning." xml:space="preserve">
+    <value>ตรวจสอบหัวข้อความรู้ แบบฝึกหัด และข้อสอบของคุณ เพื่อค้นหาสิ่งที่อาจเป็นอุปสรรคต่อการเรียนรู้ของนักเรียน</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>ตรวจสอบหลักสูตร</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>แบบฝึกหัด</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>เนื้อหาความรู้</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>ข้อสอบ</value>
+  </data>
+  <data name="Start check" xml:space="preserve">
+    <value>เริ่มตรวจสอบ</value>
+  </data>
+  <data name="Tags and VIPs" xml:space="preserve">
+    <value>แท็กและสมาชิก VIP</value>
+  </data>
+  <data name="Your content and VIP settings stay as they are." xml:space="preserve">
+    <value>เนื้อหาและการตั้งค่า VIP ของคุณยังคงเหมือนเดิม</value>
+  </data>
+
+</root>

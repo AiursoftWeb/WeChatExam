@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} exercises" xml:space="preserve">
+    <value>{0} bài tập</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} điểm kiến thức</value>
+  </data>
+  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+    <value>Một thẻ cũng có thể được sử dụng trong các khóa học khác. Việc thay đổi giá của thẻ sẽ ảnh hưởng đến toàn bộ nội dung được liệt kê ở đây, bao gồm cả những mục nằm ngoài phạm vi tìm kiếm của bạn.</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Quyền truy cập</value>
+  </data>
+  <data name="Active course VIPs" xml:space="preserve">
+    <value>Các VIP khóa học đang hoạt động</value>
+  </data>
+  <data name="Active real-exam VIP" xml:space="preserve">
+    <value>Kích hoạt VIP thi thật</value>
+  </data>
+  <data name="Actual behavior" xml:space="preserve">
+    <value>Hành vi thực tế</value>
+  </data>
+  <data name="Affected content" xml:space="preserve">
+    <value>Nội dung bị ảnh hưởng</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Được phép</value>
+  </data>
+  <data name="Back to results" xml:space="preserve">
+    <value>Quay lại kết quả</value>
+  </data>
+  <data name="Before changing a shared tag" xml:space="preserve">
+    <value>Trước khi thay đổi thẻ dùng chung</value>
+  </data>
+  <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
+    <value>Trước khi thay đổi thẻ dùng chung, hãy kiểm tra toàn bộ nội dung bị ảnh hưởng bên dưới.</value>
+  </data>
+  <data name="Check this scenario" xml:space="preserve">
+    <value>Kiểm tra tình huống này</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Khóa học</value>
+  </data>
+  <data name="Custom VIP scenario" xml:space="preserve">
+    <value>Tình huống VIP tùy chỉnh</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Bị từ chối</value>
+  </data>
+  <data name="Detailed diagnosis for developers" xml:space="preserve">
+    <value>Chẩn đoán chi tiết dành cho nhà phát triển</value>
+  </data>
+  <data name="Entry point" xml:space="preserve">
+    <value>Điểm truy cập</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>Bài tập</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>Dành cho nhóm của chúng tôi</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Các điểm kiến thức</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Cần chú ý</value>
+  </data>
+  <data name="Open settings" xml:space="preserve">
+    <value>Mở cài đặt</value>
+  </data>
+  <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
+    <value>Đội ngũ của chúng tôi cần xem xét hành vi này. Bạn không cần thay đổi mức giá dùng chung để khắc phục sự cố của chương trình.</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Vui lòng xác nhận</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Thông tin về giá</value>
+  </data>
+  <data name="Review shared impact" xml:space="preserve">
+    <value>Xem xét phạm vi ảnh hưởng chung</value>
+  </data>
+  <data name="Scan coverage and object IDs" xml:space="preserve">
+    <value>Phạm vi quét và ID đối tượng</value>
+  </data>
+  <data name="Scan window (UTC)" xml:space="preserve">
+    <value>Khoảng thời gian quét (UTC)</value>
+  </data>
+  <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
+    <value>Thẻ dùng chung ảnh hưởng đến {0} bài tập trong {1} khóa học.</value>
+  </data>
+  <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
+    <value>Các kết quả này đánh giá quyền truy cập hiện tại trên máy chủ. Chúng không mô phỏng mọi màn hình của Mini Program hoặc quy trình gửi bài. Mỗi trang đều đọc lại cấu hình hiện tại.</value>
+  </data>
+  <data name="User scenario" xml:space="preserve">
+    <value>Kịch bản người dùng</value>
+  </data>
+  <data name="View affected content" xml:space="preserve">
+    <value>Xem nội dung bị ảnh hưởng</value>
+  </data>
+  <data name="View content and settings" xml:space="preserve">
+    <value>Xem nội dung và cài đặt</value>
+  </data>
+  <data name="What students experience" xml:space="preserve">
+    <value>Trải nghiệm của học viên</value>
+  </data>
+  <data name="What to review" xml:space="preserve">
+    <value>Nội dung cần xem xét</value>
+  </data>
+
+</root>

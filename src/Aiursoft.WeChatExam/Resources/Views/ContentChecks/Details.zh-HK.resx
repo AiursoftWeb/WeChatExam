@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} exercises" xml:space="preserve">
+    <value>{0} 道練習</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} 個知識點</value>
+  </data>
+  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+    <value>標籤亦可用於其他課程。更改標籤的定價會影響此處列出的所有內容，包括搜尋結果以外的項目。</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>存取</value>
+  </data>
+  <data name="Active course VIPs" xml:space="preserve">
+    <value>啟用中的課程 VIP</value>
+  </data>
+  <data name="Active real-exam VIP" xml:space="preserve">
+    <value>啟用真實考試 VIP</value>
+  </data>
+  <data name="Actual behavior" xml:space="preserve">
+    <value>實際行為</value>
+  </data>
+  <data name="Affected content" xml:space="preserve">
+    <value>受影響的內容</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>允許</value>
+  </data>
+  <data name="Back to results" xml:space="preserve">
+    <value>返回結果</value>
+  </data>
+  <data name="Before changing a shared tag" xml:space="preserve">
+    <value>更改共用標籤前</value>
+  </data>
+  <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
+    <value>更改共用標籤前，請先查看下方所有受影響的內容。</value>
+  </data>
+  <data name="Check this scenario" xml:space="preserve">
+    <value>檢查此情境</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>課程</value>
+  </data>
+  <data name="Custom VIP scenario" xml:space="preserve">
+    <value>自訂 VIP 情境</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>已拒絕</value>
+  </data>
+  <data name="Detailed diagnosis for developers" xml:space="preserve">
+    <value>供開發人員參考的詳細診斷</value>
+  </data>
+  <data name="Entry point" xml:space="preserve">
+    <value>進入點</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>練習</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>交由我們團隊處理</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>知識點</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>需要注意</value>
+  </data>
+  <data name="Open settings" xml:space="preserve">
+    <value>開啟設定</value>
+  </data>
+  <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
+    <value>我們的團隊需要檢視此行為。你無需更改共用定價來解決程式問題。</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>請確認</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>定價安排</value>
+  </data>
+  <data name="Review shared impact" xml:space="preserve">
+    <value>檢視共用項目的影響</value>
+  </data>
+  <data name="Scan coverage and object IDs" xml:space="preserve">
+    <value>掃描涵蓋範圍及物件 ID</value>
+  </data>
+  <data name="Scan window (UTC)" xml:space="preserve">
+    <value>掃描時段（UTC）</value>
+  </data>
+  <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
+    <value>共用標籤會影響 {1} 個課程中的 {0} 道練習。</value>
+  </data>
+  <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
+    <value>這些結果評估目前伺服器存取權限。它們不會模擬每個小程序畫面或提交流程。每個頁面都會重新讀取目前的設定。</value>
+  </data>
+  <data name="User scenario" xml:space="preserve">
+    <value>用戶情境</value>
+  </data>
+  <data name="View affected content" xml:space="preserve">
+    <value>查看受影響的內容</value>
+  </data>
+  <data name="View content and settings" xml:space="preserve">
+    <value>查看內容和設定</value>
+  </data>
+  <data name="What students experience" xml:space="preserve">
+    <value>學生的體驗</value>
+  </data>
+  <data name="What to review" xml:space="preserve">
+    <value>檢視事項</value>
+  </data>
+
+</root>

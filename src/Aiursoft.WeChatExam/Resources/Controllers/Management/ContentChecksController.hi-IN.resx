@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A student with the exercise&apos;s course VIP can open it directly, but may be blocked when browsing by its paid tag." xml:space="preserve">
+    <value>उस अभ्यास के पाठ्यक्रम VIP वाले छात्र इसे सीधे खोल सकते हैं, लेकिन इसकी भुगतान-योग्य टैग के माध्यम से ब्राउज़ करते समय उन्हें रोका जा सकता है।</value>
+  </data>
+  <data name="Different entry points require different VIPs" xml:space="preserve">
+    <value>अलग-अलग प्रवेश बिंदुओं के लिए अलग-अलग वीआईपी की आवश्यकता होती है।</value>
+  </data>
+  <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>अलग-अलग स्क्रीन पर पहुँच की जाँच अलग-अलग होती है। हमारी टीम को मिनी प्रोग्राम के व्यवहार की समीक्षा करनी होगी।</value>
+  </data>
+  <data name="Exercise access differs between screens" xml:space="preserve">
+    <value>अलग-अलग स्क्रीन पर अभ्यासों की पहुँच अलग-अलग है</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>जिन विद्यार्थियों के पास पहले से वैध VIP है, उन्हें अब भी पहुँच मिल सकती है। नए विद्यार्थी इस सामग्री को अनलॉक करने के लिए फिलहाल उपयुक्त VIP नहीं खरीद सकते।</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>निःशुल्क प्रश्नपत्र में सशुल्क अभ्यास शामिल हैं</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>मिनी प्रोग्राम के प्रवेश संबंधी जाँच की समीक्षा आवश्यक है</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>खरीदने के लिए अभी कोई उपयुक्त VIP उपलब्ध नहीं है</value>
+  </data>
+  <data name="No VIP can unlock these exercises" xml:space="preserve">
+    <value>कोई भी VIP इन अभ्यासों को अनलॉक नहीं कर सकता</value>
+  </data>
+  <data name="No VIP can unlock this paper" xml:space="preserve">
+    <value>कोई भी VIP इस प्रश्नपत्र को अनलॉक नहीं कर सकता।</value>
+  </data>
+  <data name="No VIP can unlock this tag" xml:space="preserve">
+    <value>कोई भी वीआईपी इस टैग को अनलॉक नहीं कर सकता</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>विद्यार्थी इस निःशुल्क प्रश्नपत्र को खोल सकते हैं, भले ही इसके मूल अभ्यास सशुल्क हों। प्रश्नपत्र और प्रत्येक अभ्यास का मूल्य निर्धारण स्वतंत्र रूप से होता है।</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>छात्र इस प्रश्नपत्र को नहीं ढूँढ़ सकते, क्योंकि इसका प्रकाशित संस्करण अभी तक तैयार नहीं किया गया है।</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>ज्ञान बिंदु एक पाठ्यक्रम से जुड़ा है, जबकि ये अभ्यास किसी दूसरे पाठ्यक्रम के हैं। पहले पाठ्यक्रम का VIP खरीदने से शायद ये अभ्यास अनलॉक न हों।</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>पाठ और अभ्यास अलग-अलग पाठ्यक्रमों से संबंधित हैं</value>
+  </data>
+  <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
+    <value>इन अभ्यासों के लिए कोई पाठ्यक्रम निर्धारित नहीं है और उन पर ऐसे सशुल्क टैग हैं जिनसे कोई पाठ्यक्रम जुड़ा नहीं है। सभी VIP खरीदने पर भी इन्हें अनलॉक नहीं किया जा सकता।</value>
+  </data>
+  <data name="This exercise needs VIP" xml:space="preserve">
+    <value>इस अभ्यास के लिए VIP आवश्यक है</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>इस प्रश्नपत्र का प्रकाशित संस्करण उपलब्ध नहीं है।</value>
+  </data>
+  <data name="This paper requires payment, but no course VIP can unlock it." xml:space="preserve">
+    <value>इस पेपर के लिए भुगतान करना होगा, लेकिन कोई भी कोर्स VIP इसे अनलॉक नहीं कर सकता।</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>इस प्रश्नपत्र संस्करण में कोई अभ्यास नहीं है</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>इस सहेजे गए प्रश्नपत्र संस्करण में कोई अभ्यास प्रश्न नहीं हैं, इसलिए इससे अभ्यास के लिए उपयोगी प्रश्नपत्र नहीं बनाया जा सकता।</value>
+  </data>
+  <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
+    <value>इस टैग को सशुल्क के रूप में चिह्नित किया गया है, लेकिन इससे कोई कोर्स VIP जुड़ा नहीं है। सभी VIP खरीदने पर भी यह टैग अनलॉक नहीं हो सकता। जिन अभ्यासों का अपना कोर्स है, वे किसी दूसरी स्क्रीन से काम कर सकते हैं।</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>इस VIP उत्पाद के साथ कोई कोर्स जुड़ा नहीं है। यह इच्छित कोर्स का ऐक्सेस नहीं दे सकता।</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>इस VIP उत्पाद के लिए एक कोर्स आवश्यक है</value>
+  </data>
+  <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
+    <value>आगंतुक ज्ञान बिंदु पढ़ सकते हैं, लेकिन इन अभ्यासों को मुफ़्त में नहीं खोल सकते।</value>
+  </data>
+
+</root>

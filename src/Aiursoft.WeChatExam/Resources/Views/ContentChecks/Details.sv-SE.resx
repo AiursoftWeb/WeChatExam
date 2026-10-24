@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} exercises" xml:space="preserve">
+    <value>{0} övningar</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} kunskapspoäng</value>
+  </data>
+  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+    <value>En tagg kan även användas i andra kurser. Om du ändrar priset påverkas allt innehåll som listas här, även sådant som inte ingår i din sökning.</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Åtkomst</value>
+  </data>
+  <data name="Active course VIPs" xml:space="preserve">
+    <value>Aktiva kurs-VIP:ar</value>
+  </data>
+  <data name="Active real-exam VIP" xml:space="preserve">
+    <value>Aktivt VIP-prov</value>
+  </data>
+  <data name="Actual behavior" xml:space="preserve">
+    <value>Faktiskt beteende</value>
+  </data>
+  <data name="Affected content" xml:space="preserve">
+    <value>Berört innehåll</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Tillåten</value>
+  </data>
+  <data name="Back to results" xml:space="preserve">
+    <value>Tillbaka till resultaten</value>
+  </data>
+  <data name="Before changing a shared tag" xml:space="preserve">
+    <value>Innan du ändrar en delad tagg</value>
+  </data>
+  <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
+    <value>Kontrollera allt innehåll som den påverkar nedan innan du ändrar en delad tagg.</value>
+  </data>
+  <data name="Check this scenario" xml:space="preserve">
+    <value>Kontrollera detta scenario</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Kurser</value>
+  </data>
+  <data name="Custom VIP scenario" xml:space="preserve">
+    <value>Anpassat VIP-scenario</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Nekad</value>
+  </data>
+  <data name="Detailed diagnosis for developers" xml:space="preserve">
+    <value>Detaljerad diagnos för utvecklare</value>
+  </data>
+  <data name="Entry point" xml:space="preserve">
+    <value>Ingångspunkt</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>Övningar</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>För vårt team</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Kunskapspunkter</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Kräver åtgärd</value>
+  </data>
+  <data name="Open settings" xml:space="preserve">
+    <value>Öppna inställningar</value>
+  </data>
+  <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
+    <value>Vårt team behöver granska det här beteendet. Du behöver inte ändra den gemensamma prissättningen för att lösa ett programproblem.</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Bekräfta</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Prissättning</value>
+  </data>
+  <data name="Review shared impact" xml:space="preserve">
+    <value>Granska gemensam påverkan</value>
+  </data>
+  <data name="Scan coverage and object IDs" xml:space="preserve">
+    <value>Skanningens omfattning och objekt-ID:n</value>
+  </data>
+  <data name="Scan window (UTC)" xml:space="preserve">
+    <value>Skanningsperiod (UTC)</value>
+  </data>
+  <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
+    <value>Delade taggar påverkar {0} övningar i {1} kurser.</value>
+  </data>
+  <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
+    <value>Dessa resultat bedömer den aktuella åtkomsten till servern. De simulerar inte alla skärmbilder i Mini Program eller hela flödet för att skicka in. Varje sida läser in den aktuella konfigurationen på nytt.</value>
+  </data>
+  <data name="User scenario" xml:space="preserve">
+    <value>Användarscenario</value>
+  </data>
+  <data name="View affected content" xml:space="preserve">
+    <value>Visa berört innehåll</value>
+  </data>
+  <data name="View content and settings" xml:space="preserve">
+    <value>Visa innehåll och inställningar</value>
+  </data>
+  <data name="What students experience" xml:space="preserve">
+    <value>Vad eleverna upplever</value>
+  </data>
+  <data name="What to review" xml:space="preserve">
+    <value>Vad som ska granskas</value>
+  </data>
+
+</root>

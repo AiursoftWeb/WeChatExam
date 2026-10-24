@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>{0} elementi interessati</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} esercizi</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} elementi da esaminare</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>Tutti i corsi</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>Tutti i risultati</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>Tutti gli stati</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Controlla di nuovo</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>Verifica completata</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Verificati {0} punti di conoscenza, {1} esercizi e {2} prove.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Verificato il</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>Seleziona una scheda per scoprire l’esperienza degli studenti e cosa rivedere.</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>Nome del contenuto</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Corso</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>Verifica del corso</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Trova</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>Trova contenuti specifici</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>Per il nostro team</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>I contenuti a pagamento intenzionali sono elencati separatamente qui sotto. Il comportamento del Mini Program potrebbe comunque richiedere una revisione da parte del team.</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Richiede attenzione</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Da revisionare</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Successivo</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>Nessun problema di configurazione rilevato durante questo controllo</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>Nessun elemento in questa vista. Puoi scegliere un altro gruppo o cancellare la ricerca.</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} di {1}</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Da confermare</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Modalità di tariffazione</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>Modalità di tariffazione</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>Gruppi di risultati</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>Pagine dei risultati</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Stato</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>L&apos;elemento è cambiato. Scegli tra i risultati più recenti qui sotto.</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>Questi elementi devono essere esaminati dagli sviluppatori. Non sono istruzioni per modificare i prezzi dei corsi.</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Visualizza</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>I tuoi risultati</value>
+  </data>
+
+</root>
