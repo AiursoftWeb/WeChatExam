@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>Markenname</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>Embedding-API-Token</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>Embedding-Endpunkt</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>Einbettungsmodell</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Aktiviere die Hintergrundgenerierung von Embeddings für Fragen und Wissenspunkte.</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>Suche auf Embedding-Basis aktivieren</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP-Nummer</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>Optionales Bearer-Token für den Embedding-Endpunkt. Wird bei leerem Wert durch das OpenAI-Token ersetzt.</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>Projekt-Logo</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>Der Standardsystemprompt zum Extrahieren von Wissen aus Materialien.</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>Das Embedding-Modell für Fragen und Wissenspunkte. Vorhandene Vektoren verwenden den Indexvertrag bge-m3 mit 1024 Dimensionen.</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>Die ICP-Lizenznummer für Nutzer in der VR China. Leer lassen, um sie auszublenden.</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Der Name des Projekts, der im Frontend angezeigt wird.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Die Basis-URL der Ollama-API für Embeddings. Es wird nur der Host verwendet; /api/embed wird automatisch angehängt. Wenn das Feld leer ist, wird stattdessen der OpenAI-Completions-Endpunkt verwendet.</value>
   </data>
 
 </root>

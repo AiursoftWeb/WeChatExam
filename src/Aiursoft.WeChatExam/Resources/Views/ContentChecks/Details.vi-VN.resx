@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Nội dung bị ảnh hưởng</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Toàn bộ nội dung bị ảnh hưởng</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Được phép</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Bất kỳ ai cũng có thể mở bài tập này mà không cần đăng nhập.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Quay lại kết quả</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Trước khi thay đổi thẻ dùng chung, hãy kiểm tra toàn bộ nội dung bị ảnh hưởng bên dưới.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Xem toàn bộ danh sách</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Kiểm tra tình huống này</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Điểm truy cập</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Bài tập {0} trên tổng số {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Bài tập: có thể mở</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Bài tập: không thể mở</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Bài tập</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Các bài tập trong kết quả này</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Dành cho nhóm của chúng tôi</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Các thẻ trả phí của nó đánh dấu bài tập là có phí; chúng không yêu cầu thêm các thành viên khóa học.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Nội dung điểm kiến thức được công khai. Quyền truy cập bài tập bên dưới tuân theo các quy tắc hiện tại của máy chủ; việc nộp và lưu câu trả lời không được kiểm tra tại đây.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Các điểm kiến thức</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Các điểm kiến thức và bài tập tương ứng</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Văn bản kiến thức: công khai</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Bài tập liên kết</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Cần chú ý</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Bài tập tiếp theo</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Không có điểm kiến thức nào được liên kết với bài tập này.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Mở cài đặt</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Vui lòng xác nhận</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Bài tập trước</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Thông tin về giá</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Cài đặt liên quan và liên kết chỉnh sửa</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Xem xét phạm vi ảnh hưởng chung</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Thẻ dùng chung ảnh hưởng đến {0} bài tập trong {1} khóa học.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Đăng nhập bằng quyền VIP còn hiệu lực cho khóa học riêng của bài tập:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>Cần đăng nhập và có VIP của khóa học theo yêu cầu.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>Thẻ trả phí chưa được bao gồm: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Các kết quả này đánh giá quyền truy cập hiện tại trên máy chủ. Chúng không mô phỏng mọi màn hình của Mini Program hoặc quy trình gửi bài. Mỗi trang đều đọc lại cấu hình hiện tại.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Tài khoản này cần có VIP của khóa học riêng dành cho bài tập.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Bài tập này chưa được gán khóa học. Mỗi thẻ trả phí phải được bao phủ bởi một khóa học có VIP còn hiệu lực.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Bài tập này có một số thẻ yêu cầu trả phí. Nếu chỉ miễn phí một thẻ, bài tập vẫn có thể bị hạn chế.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Kịch bản người dùng</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>Nội dung cần xem xét</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Ai có thể mở nội dung này?</value>
   </data>
 
 </root>

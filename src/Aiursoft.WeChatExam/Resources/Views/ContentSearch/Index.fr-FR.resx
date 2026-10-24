@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="All Categories" xml:space="preserve">
+    <value>Toutes les catégories</value>
+  </data>
+  <data name="All Content" xml:space="preserve">
+    <value>Tout le contenu</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="Content Type" xml:space="preserve">
+    <value>Type de contenu</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="Exam Question" xml:space="preserve">
+    <value>Question d’examen</value>
+  </data>
+  <data name="Exam Questions" xml:space="preserve">
+    <value>Questions d’examen</value>
+  </data>
+  <data name="Find existing content before editing or creating something new." xml:space="preserve">
+    <value>Recherchez du contenu existant avant de le modifier ou d’en créer un nouveau.</value>
+  </data>
+  <data name="Knowledge Point" xml:space="preserve">
+    <value>Notion</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Points clés de connaissance</value>
+  </data>
+  <data name="No matching content found. Try fewer words or another category." xml:space="preserve">
+    <value>Aucun contenu correspondant trouvé. Essayez avec moins de mots ou une autre catégorie.</value>
+  </data>
+  <data name="Questions and knowledge points" xml:space="preserve">
+    <value>Questions et notions clés</value>
+  </data>
+  <data name="Related content included" xml:space="preserve">
+    <value>Contenu associé inclus</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Search by name, topic, or a few words..." xml:space="preserve">
+    <value>Rechercher par nom, sujet ou quelques mots…</value>
+  </data>
+  <data name="Search Content" xml:space="preserve">
+    <value>Rechercher du contenu</value>
+  </data>
+  <data name="Show Answer" xml:space="preserve">
+    <value>Afficher la réponse</value>
+  </data>
+  <data name="Showing up to 50 relevant results. Refine your search to narrow the list." xml:space="preserve">
+    <value>Jusqu’à 50 résultats pertinents sont affichés. Affinez votre recherche pour réduire la liste.</value>
+  </data>
+
+</root>

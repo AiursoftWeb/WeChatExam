@@ -24,14 +24,23 @@
   <data name="Add Selected" xml:space="preserve">
     <value>เพิ่มคำถามที่เลือก</value>
   </data>
+  <data name="Advanced: MTQL" xml:space="preserve">
+    <value>ขั้นสูง: MTQL</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>เชื่อมโยง</value>
   </data>
   <data name="Associated Categories" xml:space="preserve">
     <value>หมวดหมู่ที่เกี่ยวข้อง</value>
   </data>
   <data name="Associated Questions" xml:space="preserve">
     <value>คำถามที่เกี่ยวข้อง</value>
+  </data>
+  <data name="Associations are applied when you save this knowledge point." xml:space="preserve">
+    <value>การเชื่อมโยงจะมีผลเมื่อคุณบันทึกจุดความรู้นี้</value>
   </data>
   <data name="Back to List" xml:space="preserve">
     <value>กลับไปยังรายการ</value>
@@ -42,14 +51,32 @@
   <data name="Edit KnowledgePoint" xml:space="preserve">
     <value>แก้ไขจุดความรู้</value>
   </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>ป้อนคำสองสามคำเพื่อค้นหาคำถาม</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>กรอกหัวข้อหรือคำสักสองสามคำ...</value>
+  </data>
   <data name="Enter MTQL query (e.g. content:&quot;math&quot;)" xml:space="preserve">
     <value>ป้อนคำค้นหา MTQL (ตัวอย่างเช่น content:&quot;math&quot;)</value>
   </data>
   <data name="Error:" xml:space="preserve">
     <value>ข้อผิดพลาด:</value>
   </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>ประเภทข้อสอบ</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>ค้นหาข้อสอบเพื่อเชื่อมโยง</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>ค้นหาคำถาม</value>
+  </data>
   <data name="Hold Ctrl (Windows) or Command (Mac) to select multiple options." xml:space="preserve">
     <value>กดปุ่ม Ctrl (Windows) หรือ Command (Mac) เพื่อเลือกตัวเลือกได้หลายตัว</value>
+  </data>
+  <data name="Keywords and Related Topics" xml:space="preserve">
+    <value>คำสำคัญและหัวข้อที่เกี่ยวข้อง</value>
   </data>
   <data name="MTQL Question Finder" xml:space="preserve">
     <value>MTQL Question Finder</value>
@@ -60,11 +87,23 @@
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>หัวข้อความรู้หลัก</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>บันทึก</value>
   </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>บันทึกและกลับไปที่การตรวจสอบเนื้อหา</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>ค้นหา</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>ไม่สามารถใช้การค้นหาได้ โปรดลองอีกครั้ง</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>โหมดการค้นหา</value>
   </data>
   <data name="Search results will appear here..." xml:space="preserve">
     <value>ผลการค้นหาจะปรากฏที่นี่...</value>

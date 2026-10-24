@@ -108,17 +108,26 @@
   <data name="Result pages" xml:space="preserve">
     <value>หน้าผลลัพธ์</value>
   </data>
+  <data name="Review how public content and paid content are connected" xml:space="preserve">
+    <value>ตรวจสอบความเชื่อมโยงระหว่างเนื้อหาสาธารณะกับเนื้อหาที่ต้องชำระเงิน</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
   </data>
   <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
     <value>รายการดังกล่าวมีการเปลี่ยนแปลงแล้ว โปรดเลือกจากผลลัพธ์ล่าสุดด้านล่าง</value>
   </data>
+  <data name="These arrangements may be intentional. Open a card to see the exact content, who can access it, and where to edit it." xml:space="preserve">
+    <value>การจัดรูปแบบเหล่านี้อาจเป็นไปตามที่ตั้งใจไว้ เปิดการ์ดเพื่อดูเนื้อหาที่แน่นอน ผู้ที่สามารถเข้าถึงได้ และตำแหน่งที่แก้ไขได้</value>
+  </data>
   <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
     <value>รายการเหล่านี้ต้องได้รับการตรวจสอบจากทีมพัฒนา ไม่ใช่คำแนะนำให้เปลี่ยนราคาหลักสูตรของคุณ</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>ดู</value>
+  </data>
+  <data name="View {0} pricing arrangements" xml:space="preserve">
+    <value>ดูรูปแบบการกำหนดราคา {0} รายการ</value>
   </data>
   <data name="Your results" xml:space="preserve">
     <value>ผลลัพธ์ของคุณ</value>

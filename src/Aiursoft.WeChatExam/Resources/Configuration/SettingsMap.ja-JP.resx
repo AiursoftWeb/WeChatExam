@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>ブランド名</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>埋め込みAPIトークン</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>埋め込みエンドポイント</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>埋め込みモデル</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>質問とナレッジポイントの埋め込み生成をバックグラウンドで有効にします。</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>埋め込みベースの検索を有効にする</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP番号</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>埋め込みエンドポイント用の任意のベアラートークンです。空の場合は、OpenAIのトークンが使用されます。</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>プロジェクトロゴ</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>教材から知識を抽出するためのデフォルトシステムプロンプト。</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>質問およびナレッジポイント用の埋め込みモデルです。既存のベクトルは、bge-m3の1024次元インデックス仕様を使用します。</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>中国本土ユーザー向けのICPライセンス番号。空欄の場合は非表示になります。</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>フロントエンドに表示されるプロジェクト名です。</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>埋め込み用のOllama APIベースURLです。ホスト部分のみが使用され、/api/embedが自動的に追加されます。空の場合はOpenAIの補完エンドポイントにフォールバックします。</value>
   </data>
 
 </root>

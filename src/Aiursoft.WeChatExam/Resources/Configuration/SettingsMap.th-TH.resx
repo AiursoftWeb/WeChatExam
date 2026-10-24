@@ -63,8 +63,26 @@
   <data name="Brand Name" xml:space="preserve">
     <value>ชื่อแบรนด์</value>
   </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>โทเค็น API สำหรับการสร้างเวกเตอร์ฝัง</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>ปลายทางสำหรับเวกเตอร์ฝังตัว</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>โมเดลการฝังเวกเตอร์</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>เปิดใช้งานการสร้างเวกเตอร์ฝังตัวในเบื้องหลังสำหรับคำถามและหัวข้อความรู้</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>เปิดใช้การค้นหาด้วยเวกเตอร์ฝังตัว</value>
+  </data>
   <data name="ICP Number" xml:space="preserve">
     <value>เลขที่ ICP</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>โทเค็น Bearer สำหรับปลายทางการสร้างเวกเตอร์ (ไม่บังคับ) หากเว้นว่างไว้ ระบบจะใช้โทเค็น OpenAI แทน</value>
   </data>
   <data name="Project Logo" xml:space="preserve">
     <value>โลโก้โครงการ</value>
@@ -105,6 +123,9 @@
   <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
     <value>คำสั่งระบบเริ่มต้นสำหรับการสกัดความรู้จากวัสดุ</value>
   </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>โมเดล embedding สำหรับคำถามและจุดความรู้ เวกเตอร์ที่มีอยู่ใช้ข้อกำหนดดัชนี bge-m3 ขนาด 1024 มิติ</value>
+  </data>
   <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
     <value>หมายเลขใบอนุญาต ICP สำหรับผู้ใช้ในจีนแผ่นดินใหญ่ ปล่อยว่างเพื่อซ่อน</value>
   </data>
@@ -113,6 +134,9 @@
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>ชื่อโปรเจกต์ที่แสดงในหน้าแสดงผลด้านหน้า</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>URL ฐานของ API ของ Ollama สำหรับการสร้างเวกเตอร์ฝังตัว จะใช้เฉพาะโฮสต์เท่านั้น โดยระบบจะเพิ่ม /api/embed ให้อัตโนมัติ หากเว้นว่างไว้ จะใช้เอนด์พอยต์สำหรับ completion ของ OpenAI แทน</value>
   </data>
 
 </root>

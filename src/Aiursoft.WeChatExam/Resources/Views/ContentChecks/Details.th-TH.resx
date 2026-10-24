@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>เนื้อหาที่ได้รับผลกระทบ</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>เนื้อหาทั้งหมดที่ได้รับผลกระทบ</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>อนุญาต</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>ทุกคนสามารถเข้าถึงแบบฝึกหัดนี้ได้โดยไม่ต้องลงชื่อเข้าใช้</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>กลับไปยังผลลัพธ์</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>ก่อนเปลี่ยนแท็กที่ใช้ร่วมกัน โปรดตรวจสอบเนื้อหาทั้งหมดที่ได้รับผลกระทบด้านล่าง</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>ดูรายการทั้งหมด</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>ตรวจสอบสถานการณ์นี้</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>จุดเริ่มต้น</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>แบบฝึกหัดที่ {0} จาก {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>แบบฝึกหัด: เปิดได้</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>แบบฝึกหัด: เปิดไม่ได้</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>แบบฝึกหัด</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>แบบฝึกหัดในผลลัพธ์นี้</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>สำหรับทีมงานของเรา</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>แท็กแบบชำระเงินของรายการนี้ระบุว่าแบบฝึกหัดนี้เป็นแบบชำระเงิน แต่ไม่ได้กำหนดให้ต้องเป็นสมาชิกหลักสูตรเพิ่มเติม</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>เนื้อหาของความรู้เปิดให้ทุกคนเข้าถึงได้ ส่วนการเข้าถึงแบบฝึกหัดด้านล่างเป็นไปตามกฎปัจจุบันของเซิร์ฟเวอร์ โดยไม่ได้ตรวจสอบการส่งและบันทึกคำตอบ</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>องค์ความรู้</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>หัวข้อความรู้และแบบฝึกหัดที่เกี่ยวข้อง</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>ข้อความความรู้: สาธารณะ</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>แบบฝึกหัดที่เชื่อมโยง</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>ต้องได้รับการแก้ไข</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>แบบฝึกหัดถัดไป</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>ไม่มีหัวข้อความรู้ที่เชื่อมโยงกับแบบฝึกหัดนี้</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>เปิดการตั้งค่า</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>โปรดยืนยัน</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>แบบฝึกหัดก่อนหน้า</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>การจัดการราคา</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>การตั้งค่าที่เกี่ยวข้องและลิงก์สำหรับแก้ไข</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>ตรวจสอบผลกระทบโดยรวม</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>แท็กที่ใช้ร่วมกันส่งผลต่อแบบฝึกหัด {0} ข้อ ใน {1} หลักสูตร</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>เข้าสู่ระบบด้วย VIP ที่ยังใช้งานได้ของหลักสูตรประจำแบบฝึกหัด:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>จำเป็นต้องลงชื่อเข้าใช้และมี VIP ของหลักสูตรที่กำหนด</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>ไม่ครอบคลุมแท็กแบบชำระเงิน: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>ผลลัพธ์เหล่านี้ใช้ประเมินการเข้าถึงเซิร์ฟเวอร์ในปัจจุบัน ไม่ได้จำลองทุกหน้าจอของมินิโปรแกรมหรือทุกขั้นตอนการส่งข้อมูล แต่ละหน้าจะอ่านการตั้งค่าปัจจุบันอีกครั้ง</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>บัญชีนี้ต้องมี VIP ของคอร์สที่เป็นของแบบฝึกหัดนี้เอง</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>แบบฝึกหัดนี้ไม่มีรายวิชาที่กำหนดไว้ แท็กแบบชำระเงินทุกแท็กต้องครอบคลุมโดย VIP ของรายวิชาที่ยังใช้งานอยู่</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>แบบฝึกหัดนี้มีแท็กแบบชำระเงินหลายแท็ก การเปลี่ยนให้แท็กฟรีเพียงแท็กเดียวอาจทำให้แบบฝึกหัดยังคงถูกจำกัดการเข้าถึงอยู่</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>สถานการณ์ผู้ใช้</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>สิ่งที่ควรตรวจสอบ</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>ใครสามารถเปิดเนื้อหานี้ได้บ้าง?</value>
   </data>
 
 </root>
