@@ -10,6 +10,11 @@
     </div>
 </div>
 
+<form asp-controller="ContentSearch" asp-action="Index" method="get" class="input-group mb-3">
+    <input type="search" name="query" class="form-control" maxlength="500" aria-label="@Localizer["Search Questions and Knowledge Points"]" placeholder="@Localizer["Search questions and knowledge points..."]" />
+    <button type="submit" class="btn btn-outline-primary">@Localizer["Search"]</button>
+</form>
+
 <div class="card mb-3">
     <div class="card-header cursor-pointer" data-bs-toggle="collapse" data-bs-target="#filterPanel">
         <h5 class="card-title mb-0 d-flex justify-content-between">

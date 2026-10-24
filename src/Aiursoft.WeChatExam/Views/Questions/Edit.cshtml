@@ -1,8 +1,12 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Aiursoft.WeChatExam.Models.ContentSearchViewModels
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.EditViewModel
 
 <h1 class="h3 mb-3">@Localizer["Edit Question"]</h1>
 
-<form asp-action="Edit" method="post">
+<div class="row g-3">
+<div class="@(User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions) ? "col-xl-8" : "col-12")">
+<form asp-action="Edit" method="post" data-content-editor>
     <div asp-validation-summary="All" class="text-danger mb-3"></div>
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="ReturnUrl" />
@@ -106,11 +110,20 @@
         </div>
     </div>
 </form>
+</div>
+@if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions))
+{
+    <aside class="col-xl-4">
+        @await Html.PartialAsync("_QuestionRecommendations", new QuestionRecommendationsViewModel { Id = Model.Id })
+    </aside>
+}
+</div>
 
 @* Localization Data for JavaScript *@
 <div id="loc-data" hidden>
     <span data-key="correct">@Localizer["Correct"]</span>
     <span data-key="incorrect">@Localizer["Incorrect"]</span>
+    <span data-key="remove-option">@Localizer["Remove Option"]</span>
     <span data-key="option-content">@Localizer["Option content"]</span>
     <span data-key="type-choice">@((int)Aiursoft.WeChatExam.Entities.QuestionType.Choice)</span>
     <span data-key="type-bool">@((int)Aiursoft.WeChatExam.Entities.QuestionType.Bool)</span>
@@ -118,139 +131,6 @@
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
-    <script src="~/js/tag-input.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            function getLocalizedText(key, defaultText) {
-                const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
-                return el ? el.innerText : defaultText;
-            }
-
-            // Tags Init
-            const tagInput = document.getElementById('tagInputField');
-            const tagHidden = document.getElementById('Tags');
-            const initialTags = @Json.Serialize(Model.Tags?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>());
-            TagInput.init(tagInput, tagHidden, initialTags);
-
-            // Options Logic
-            const questionTypeSelect = document.getElementById('QuestionType');
-            const optionsSection = document.getElementById('options-section');
-            const optionsList = document.getElementById('options-list');
-            const addOptionBtn = document.getElementById('add-option-btn');
-
-            const standardAnswerTextSection = document.getElementById('standard-answer-text-section');
-            const standardAnswerTextInput = document.getElementById('standard-answer-input');
-
-            // Enum Values
-            const typeChoice = getLocalizedText('type-choice', '');
-            const typeBool = getLocalizedText('type-bool', '');
-
-            // Localized Strings
-            const correctStr = getLocalizedText('correct', 'Correct');
-            const incorrectStr = getLocalizedText('incorrect', 'Incorrect');
-
-            const updateUI = () => {
-                const type = questionTypeSelect.value;
-                if (type === typeChoice || type === typeBool) {
-                    optionsSection.style.display = 'block';
-                    standardAnswerTextSection.style.display = 'none';
-                    standardAnswerTextInput.disabled = true;
-
-                    // Enable radios
-                    document.querySelectorAll('.answer-radio').forEach(r => r.disabled = false);
-                } else {
-                    optionsSection.style.display = 'none';
-                    standardAnswerTextSection.style.display = 'block';
-                    standardAnswerTextInput.disabled = false;
-
-                    // Disable radios
-                    document.querySelectorAll('.answer-radio').forEach(r => r.disabled = true);
-                }
-
-                if (type === typeBool) {
-                     addOptionBtn.style.display = 'none';
-                     document.querySelectorAll('.remove-option-btn').forEach(b => b.style.display = 'none');
-                } else {
-                     addOptionBtn.style.display = 'inline-block';
-                     document.querySelectorAll('.remove-option-btn').forEach(b => b.style.display = 'inline-block');
-                }
-            };
-
-            const addOption = (value = '', isChecked = false) => {
-                const div = document.createElement('div');
-                div.className = 'input-group mb-2 option-item';
-                div.innerHTML = `
-                    <div class="input-group-text">
-                        <input class="form-check-input mt-0 answer-radio" type="radio" name="StandardAnswer" value="${value}" ${isChecked ? 'checked' : ''}>
-                    </div>
-                    <input type="text" class="form-control option-input" name="Options" value="${value}" placeholder="${getLocalizedText('option-content', 'Option content')}" required>
-                    <button type="button" class="btn btn-outline-danger remove-option-btn">
-                        <i class="align-middle" data-lucide="trash-2"></i>
-                    </button>
-                `;
-                optionsList.appendChild(div);
-                bindOptionEvents(div);
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
-            };
-
-            const bindOptionEvents = (element) => {
-                const input = element.querySelector('.option-input');
-                const radio = element.querySelector('.answer-radio');
-                const removeBtn = element.querySelector('.remove-option-btn');
-
-                input.addEventListener('input', () => {
-                    radio.value = input.value;
-                });
-
-                removeBtn.addEventListener('click', () => {
-                    element.remove();
-                });
-            };
-
-            // Bind existing
-            document.querySelectorAll('.option-item').forEach(bindOptionEvents);
-
-            addOptionBtn.addEventListener('click', () => addOption());
-
-            questionTypeSelect.addEventListener('change', function() {
-                const type = this.value;
-                updateUI();
-
-                // If switching to Bool, reset options
-                if (type === typeBool) {
-                    optionsList.innerHTML = '';
-                    addOption(correctStr);
-                    addOption(incorrectStr);
-                    updateUI(); // Re-apply Bool specific styles (hide buttons)
-                }
-                // If switching to Choice from non-option type, maybe add default?
-                else if (type === typeChoice && optionsList.children.length === 0) {
-                     addOption('A');
-                     addOption('B');
-                     addOption('C');
-                     addOption('D');
-                }
-            });
-
-            // Init
-            updateUI();
-
-            // Initial population for Bool/Choice if empty
-            const initialType = questionTypeSelect.value;
-            const initialStandardAnswer = (standardAnswerTextInput.value || '').trim();
-            if (initialType === typeBool && optionsList.children.length === 0) {
-                addOption(correctStr, initialStandardAnswer === correctStr || initialStandardAnswer === 'true' || initialStandardAnswer === 'True');
-                addOption(incorrectStr, initialStandardAnswer === incorrectStr || initialStandardAnswer === 'false' || initialStandardAnswer === 'False');
-                updateUI();
-            } else if (initialType === typeChoice && optionsList.children.length === 0) {
-                addOption('A', initialStandardAnswer === 'A');
-                addOption('B', initialStandardAnswer === 'B');
-                addOption('C', initialStandardAnswer === 'C');
-                addOption('D', initialStandardAnswer === 'D');
-                updateUI();
-            }
-        });
-    </script>
+    <script src="~/js/tag-input.js" asp-append-version="true"></script>
+    <script src="~/js/content-editor.js" asp-append-version="true"></script>
 }

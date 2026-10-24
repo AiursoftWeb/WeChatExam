@@ -133,8 +133,10 @@ public class QuestionsTagTests
         var editHtml = await editResponse.Content.ReadAsStringAsync();
 
         Assert.IsFalse(editHtml.Contains("'.split(' ').filter(t => t.trim());"), "The old split/filter logic should be gone.");
-        Assert.IsTrue(editHtml.Contains("TagInput.init(tagInput, tagHidden, initialTags);"));
-        Assert.IsTrue(editHtml.Contains("const initialTags = ["), "Should contain JSON array assignment");
+        Assert.Contains("content-editor.js", editHtml);
+        Assert.Contains("name=\"Tags\"", editHtml);
+        foreach (var tag in tags.Split(' '))
+            Assert.Contains(System.Text.Encodings.Web.HtmlEncoder.Default.Encode(tag), editHtml);
     }
 
     [TestMethod]

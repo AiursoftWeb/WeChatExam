@@ -76,6 +76,7 @@ public class Startup : IWebStartup
         services.AddScoped<ICouponService, CouponService>();
         services.AddScoped<IPaperAccessService, PaperAccessService>();
         services.AddScoped<ContentCheckService>();
+        services.AddSingleton<ContentEmbeddingCache>();
 
         // Background job queue
         services.AddTaskQueueEngine();
@@ -90,6 +91,9 @@ public class Startup : IWebStartup
         var knowledgePointEmbeddingsJob = services.RegisterBackgroundJob<Services.BackgroundJobs.GenerateKnowledgePointEmbeddingsJob>();
         services.RegisterScheduledTask(registration: knowledgePointEmbeddingsJob,
             period: TimeSpan.FromMinutes(30), startDelay: TimeSpan.FromMinutes(55));
+        var refreshEmbeddingCacheJob = services.RegisterBackgroundJob<Services.BackgroundJobs.RefreshEmbeddingCacheJob>();
+        services.RegisterScheduledTask(registration: refreshEmbeddingCacheJob,
+            period: TimeSpan.FromMinutes(5), startDelay: TimeSpan.FromMinutes(1));
 
         // Configure SKIT WeChat API Client
         var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>()!;
