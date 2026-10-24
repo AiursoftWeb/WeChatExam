@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A student with the exercise&apos;s course VIP can open it directly, but may be blocked when browsing by its paid tag." xml:space="preserve">
+    <value>Un elev care deține abonamentul VIP al cursului căruia îi aparține exercițiul îl poate deschide direct, dar este posibil să nu îl poată accesa când navighează după eticheta sa cu plată.</value>
+  </data>
+  <data name="Different entry points require different VIPs" xml:space="preserve">
+    <value>Puncte de acces diferite necesită VIP-uri diferite</value>
+  </data>
+  <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>Ecranele diferite aplică verificări diferite ale accesului. Echipa noastră trebuie să analizeze comportamentul Mini Programului.</value>
+  </data>
+  <data name="Exercise access differs between screens" xml:space="preserve">
+    <value>Accesul la exerciții diferă de la un ecran la altul</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>Elevii existenți cu un VIP valid pot avea încă acces. Elevii noi nu pot cumpăra în prezent un VIP adecvat pentru a debloca acest conținut.</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>Lucrarea de testare gratuită include exerciții contra cost.</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>Verificările privind accesul din Mini Program trebuie revizuite</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Momentan nu este disponibil niciun VIP potrivit pentru achiziționare</value>
+  </data>
+  <data name="No VIP can unlock these exercises" xml:space="preserve">
+    <value>Niciun abonament VIP nu poate debloca aceste exerciții</value>
+  </data>
+  <data name="No VIP can unlock this paper" xml:space="preserve">
+    <value>Niciun abonament VIP nu poate debloca această lucrare</value>
+  </data>
+  <data name="No VIP can unlock this tag" xml:space="preserve">
+    <value>Niciun VIP nu poate debloca această etichetă</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>Elevii pot deschide această lucrare gratuită chiar dacă exercițiile sale originale sunt contra cost. Prețul lucrării și prețul fiecărui exercițiu sunt independente.</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>Elevii nu pot găsi această lucrare deoarece nu a fost creată o versiune publicată a ei.</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>Punctul de cunoaștere este asociat unui curs, în timp ce aceste exerciții aparțin altui curs. Este posibil ca achiziționarea abonamentului VIP pentru primul curs să nu deblocheze exercițiile.</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>Lecția și exercițiul aparțin unor cursuri diferite</value>
+  </data>
+  <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
+    <value>Aceste exerciții nu au un curs atribuit și au etichete cu plată fără un curs corespunzător. Nici măcar achiziționarea tuturor abonamentelor VIP nu le poate debloca.</value>
+  </data>
+  <data name="This exercise needs VIP" xml:space="preserve">
+    <value>Acest exercițiu necesită VIP</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>Acest material nu are o versiune publicată.</value>
+  </data>
+  <data name="This paper requires payment, but no course VIP can unlock it." xml:space="preserve">
+    <value>Această lucrare necesită plată, dar niciun VIP pentru cursuri nu o poate debloca.</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>Această versiune a lucrării nu conține exerciții</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>Această versiune salvată a lucrării nu conține exerciții, așadar nu poate fi folosită ca lucrare de exersare.</value>
+  </data>
+  <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
+    <value>Această etichetă este marcată ca fiind cu plată, dar nu este asociată cu niciun VIP pentru un curs. Nici cumpărarea tuturor abonamentelor VIP nu poate debloca această etichetă. Exercițiile care au propriul curs ar putea fi accesibile dintr-un alt ecran.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Acest produs VIP nu este asociat cu niciun curs. Nu poate acorda accesul dorit la curs.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Acest produs VIP necesită un curs</value>
+  </data>
+  <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
+    <value>Vizitatorii pot citi punctul de cunoaștere, dar nu pot accesa gratuit aceste exerciții.</value>
+  </data>
+
+</root>

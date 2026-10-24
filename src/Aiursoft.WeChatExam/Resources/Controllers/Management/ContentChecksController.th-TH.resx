@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A student with the exercise&apos;s course VIP can open it directly, but may be blocked when browsing by its paid tag." xml:space="preserve">
+    <value>นักเรียนที่มี VIP ของหลักสูตรที่แบบฝึกหัดสังกัดอยู่สามารถเปิดแบบฝึกหัดได้โดยตรง แต่อาจถูกบล็อกเมื่อเรียกดูผ่านแท็กที่ต้องชำระเงิน</value>
+  </data>
+  <data name="Different entry points require different VIPs" xml:space="preserve">
+    <value>จุดเข้าใช้งานที่แตกต่างกันต้องใช้ VIP ที่แตกต่างกัน</value>
+  </data>
+  <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>แต่ละหน้าจอใช้การตรวจสอบสิทธิ์การเข้าถึงที่แตกต่างกัน ทีมของเราจำเป็นต้องตรวจสอบการทำงานของมินิโปรแกรม</value>
+  </data>
+  <data name="Exercise access differs between screens" xml:space="preserve">
+    <value>การเข้าถึงแบบฝึกหัดแตกต่างกันไปในแต่ละหน้าจอ</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>นักเรียนปัจจุบันที่มี VIP ที่ใช้งานได้อาจยังคงเข้าถึงเนื้อหานี้ได้ แต่นักเรียนใหม่ยังไม่สามารถซื้อ VIP ที่เหมาะสมเพื่อปลดล็อกเนื้อหานี้ได้ในขณะนี้</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>แบบทดสอบฟรีมีแบบฝึกหัดแบบเสียเงินรวมอยู่ด้วย</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>ควรตรวจสอบการตรวจสอบช่องทางเข้า Mini Program อีกครั้ง</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>ขณะนี้ยังไม่มี VIP ที่เหมาะสมให้ซื้อ</value>
+  </data>
+  <data name="No VIP can unlock these exercises" xml:space="preserve">
+    <value>ไม่มี VIP ใดที่ปลดล็อกแบบฝึกหัดเหล่านี้ได้</value>
+  </data>
+  <data name="No VIP can unlock this paper" xml:space="preserve">
+    <value>ไม่มี VIP ใดปลดล็อกข้อสอบฉบับนี้ได้</value>
+  </data>
+  <data name="No VIP can unlock this tag" xml:space="preserve">
+    <value>ไม่มี VIP ใดที่ปลดล็อกแท็กนี้ได้</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>นักเรียนสามารถเปิดแบบฝึกหัดชุดนี้ได้ฟรี แม้ว่าแบบฝึกหัดต้นฉบับจะต้องชำระเงินก็ตาม ราคาของชุดแบบฝึกหัดและราคาของแบบฝึกหัดแต่ละข้อแยกจากกัน</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>นักเรียนไม่สามารถค้นหาข้อสอบนี้ได้ เนื่องจากยังไม่ได้สร้างข้อสอบฉบับเผยแพร่</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>จุดความรู้นี้เชื่อมโยงกับคอร์สหนึ่ง แต่แบบฝึกหัดเหล่านี้เป็นของอีกคอร์สหนึ่ง การซื้อ VIP ของคอร์สแรกอาจไม่ทำให้ปลดล็อกแบบฝึกหัดเหล่านี้</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>บทเรียนและแบบฝึกหัดอยู่คนละหลักสูตร</value>
+  </data>
+  <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
+    <value>แบบฝึกหัดเหล่านี้ไม่ได้กำหนดหลักสูตรไว้ และมีแท็กแบบชำระเงินที่ไม่มีหลักสูตรตรงกัน แม้ซื้อ VIP ทุกแพ็กเกจแล้วก็ยังปลดล็อกไม่ได้</value>
+  </data>
+  <data name="This exercise needs VIP" xml:space="preserve">
+    <value>แบบฝึกหัดนี้ต้องใช้ VIP</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>เอกสารข้อสอบฉบับนี้ยังไม่มีฉบับที่เผยแพร่แล้ว</value>
+  </data>
+  <data name="This paper requires payment, but no course VIP can unlock it." xml:space="preserve">
+    <value>ข้อสอบฉบับนี้ต้องชำระเงิน แต่ไม่มี VIP ของหลักสูตรใดที่ปลดล็อกได้</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>ข้อสอบฉบับนี้ไม่มีแบบฝึกหัด</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>เวอร์ชันข้อสอบที่บันทึกไว้นี้ไม่มีแบบฝึกหัด ดังนั้นจึงไม่สามารถใช้เพื่อฝึกฝนได้</value>
+  </data>
+  <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
+    <value>แท็กนี้ถูกกำหนดให้เป็นแบบชำระเงิน แต่ไม่ได้เชื่อมโยงกับ VIP ของหลักสูตรใดเลย แม้จะซื้อ VIP ทุกหลักสูตรแล้วก็ยังปลดล็อกแท็กนี้ไม่ได้ แบบฝึกหัดที่มีหลักสูตรของตัวเองอาจเข้าใช้งานได้จากอีกหน้าจอหนึ่ง</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP นี้ไม่มีหลักสูตร จึงไม่สามารถให้สิทธิ์เข้าถึงหลักสูตรที่ต้องการได้</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP นี้จำเป็นต้องมีคอร์ส</value>
+  </data>
+  <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
+    <value>ผู้เข้าชมสามารถอ่านหัวข้อความรู้ได้ แต่ไม่สามารถเปิดแบบฝึกหัดเหล่านี้ได้ฟรี</value>
+  </data>
+
+</root>

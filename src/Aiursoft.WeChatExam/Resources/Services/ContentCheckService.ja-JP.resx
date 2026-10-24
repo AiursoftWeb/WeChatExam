@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+    <value>タグによる絞り込みのない一覧クエリでは、VIP会員でないログインユーザーにもこの有料問題が返されることがありますが、詳細エンドポイントは403を返します。</value>
+  </data>
+  <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
+    <value>関連付けられた知識の科目の会員資格を持っていても、必ずしも演習自体の科目が利用可能になるとは限りません。</value>
+  </data>
+  <data name="All relevant VIPs" xml:space="preserve">
+    <value>関連するVIPすべて</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>匿名</value>
+  </data>
+  <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
+    <value>意図する設問の科目を割り当てるか、有料タグが及ぼす影響を確認したうえで、有料タグを修正してください。</value>
+  </data>
+  <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>販売する前に、適切な対象を割り当ててください。既存の会員資格は別途確認してください。</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
+    <value>権限のみ：拒否されたスナップショットは HasAccess=false かつ質問なしで 200 を返します。利用可能なスナップショットも必要です。</value>
+  </data>
+  <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
+    <value>カテゴリの無料設定は、公開ナレッジAPIを制限しません。一部のミニプログラムの利用開始チェックでは、サーバーの科目IDではなく商品名が使用されています。</value>
+  </data>
+  <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
+    <value>タグのタクソノミーの対応関係と問題の科目を確認してください。両方とも意図した設定である場合は、エンジニアリングチームにエントリーポイントの動作を確認してもらってください。</value>
+  </data>
+  <data name="Client entry checks require engineering verification" xml:space="preserve">
+    <value>クライアント側の入口チェックにはエンジニアによる検証が必要です</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
+    <value>販売を意図的に停止しているか確認してください。そうでない場合は、必要な対象科目のいずれかに対応する商品を有効にしてください。</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
+    <value>販売を意図的に停止しているか確認してください。そうでない場合は、必要な科目または実試験用の商品を有効にしてください。</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
+    <value>意図的に教科をまたいで指導しているか確認してください。そうでない場合は、設問の教科または知識項目との関連付けを修正してください。</value>
+  </data>
+  <data name="Custom VIP selection" xml:space="preserve">
+    <value>カスタムVIPの選択</value>
+  </data>
+  <data name="Eligible for the list; pagination and other query filters still apply." xml:space="preserve">
+    <value>一覧への掲載対象です。ページネーションやその他のクエリフィルターは引き続き適用されます。</value>
+  </data>
+  <data name="Engineering must review the endpoint rules. Do not change shared content pricing merely to suppress this diagnostic." xml:space="preserve">
+    <value>エンジニアリングチームはエンドポイントのルールを確認する必要があります。この診断を抑制するためだけに、複数のコンテンツで共有されている価格を変更しないでください。</value>
+  </data>
+  <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
+    <value>関連するVIPがすべていても、この問題集のロックを解除できません。</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>既存の有効な会員資格は利用できる可能性がありますが、新規顧客には購入手段がありません。</value>
+  </data>
+  <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
+    <value>既存の有効なVIPは引き続き利用できますが、現在有効な商品を購入しても、この問題を解放することはできません。</value>
+  </data>
+  <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
+    <value>無料の問題集に、現在有料の問題のスナップショットが含まれています</value>
+  </data>
+  <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
+    <value>説明目的で複数のコンテンツに共通して使われているタグであれば、無料にすることを検討してください。アクセス権を販売するタグであれば、その分類体系を対象の科目に対応付けてください。共通タグを変更する前に、影響を受けるコンテンツを確認してください。</value>
+  </data>
+  <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
+    <value>演習を意図的に有料にしている場合は、この設定のままにしてください。公開する場合は、まず有料タグすべてと、それらが共有する影響を確認してください。</value>
+  </data>
+  <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
+    <value>無料のペーパーとして意図したものであれば、このままにしてください。スナップショットへのアクセスを制限する必要がある場合は、ペーパー自体の価格設定を確認してください。</value>
+  </data>
+  <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
+    <value>ナレッジポイントと演習で参照されている科目が異なります</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>知識ポイント</value>
+  </data>
+  <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
+    <value>新規顧客には現在、購入手段がありません。既存の有効な会員資格では、引き続きアクセスできる場合があります。</value>
+  </data>
+  <data name="No enabled product combination unlocks this question" xml:space="preserve">
+    <value>有効な商品をどのように組み合わせても、この問題を解放できません</value>
+  </data>
+  <data name="No enabled product unlocks this paper" xml:space="preserve">
+    <value>この論文を利用可能にする有効な商品がありません</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>このタグを解除できる有効なVIP商品がありません</value>
+  </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>このタグ項目を解除できるVIPはいません。質問固有の科目が設定されている場合は、質問の詳細からアクセスできることがあります。</value>
+  </data>
+  <data name="Paid paper has no unlockable subject" xml:space="preserve">
+    <value>有料の問題に解放可能な科目がありません</value>
+  </data>
+  <data name="Paid question cannot be unlocked even with all VIPs" xml:space="preserve">
+    <value>すべてのVIPを利用しても、有料の質問をロック解除できません</value>
+  </data>
+  <data name="Paid question requires sign-in (403)." xml:space="preserve">
+    <value>有料の質問はサインインが必要です（403）。</value>
+  </data>
+  <data name="Paid tag denies access (403): {0}" xml:space="preserve">
+    <value>有料タグによりアクセスが拒否されました (403): {0}</value>
+  </data>
+  <data name="Paid tag has no unlockable subject" xml:space="preserve">
+    <value>有料タグに解除可能な対象がありません</value>
+  </data>
+  <data name="Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted." xml:space="preserve">
+    <value>用紙へのアクセスは、元の問題へのアクセスとは独立しています。元の問題が変更または削除されても、保存されたスナップショットは引き続き利用できます。</value>
+  </data>
+  <data name="Paper snapshot is empty" xml:space="preserve">
+    <value>論文のスナップショットが空です</value>
+  </data>
+  <data name="Paper snapshots" xml:space="preserve">
+    <value>問題文のスナップショット</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papers</value>
+  </data>
+  <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
+    <value>公開ナレッジポイントが有料問題に紐付いています</value>
+  </data>
+  <data name="Publishable paper has no snapshot" xml:space="preserve">
+    <value>公開可能な論文にスナップショットがありません</value>
+  </data>
+  <data name="Question content is returned (200)." xml:space="preserve">
+    <value>質問の内容が返されます（200）。</value>
+  </data>
+  <data name="Question details return 403." xml:space="preserve">
+    <value>問題の詳細取得は403を返します。</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>問題</value>
+  </data>
+  <data name="Real-exam VIP only" xml:space="preserve">
+    <value>本試験VIPのみ</value>
+  </data>
+  <data name="Review its questions and create a snapshot through the existing paper management workflow." xml:space="preserve">
+    <value>問題を確認し、既存の問題冊子管理ワークフローを通じてスナップショットを作成してください。</value>
+  </data>
+  <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
+    <value>科目との関連付け、実試験の設定、および無料設定を確認してください。</value>
+  </data>
+  <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
+    <value>問題用紙の設問を確認し、修正したスナップショットを公開してください。元の設問を変更しても、既存のスナップショットには反映されません。</value>
+  </data>
+  <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>対象の科目と利用可能なVIP商品を確認してください。無効化された商品によって、既存の有効なメンバーシップが無効になることはありません。</value>
+  </data>
+  <data name="Signed in without active VIP" xml:space="preserve">
+    <value>VIPが有効でない状態でログイン</value>
+  </data>
+  <data name="Signed-in list and question details use different access rules" xml:space="preserve">
+    <value>ログイン済みユーザー向けの一覧と問題詳細では、アクセスルールが異なります</value>
+  </data>
+  <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
+    <value>スナップショットバージョン {0} には問題が含まれていません。古いスナップショットのリンクからも引き続きリクエストできます。</value>
+  </data>
+  <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
+    <value>対象のVIPと有料タグの設定が一致しません</value>
+  </data>
+  <data name="Subject VIP product has no valid subject" xml:space="preserve">
+    <value>科目 VIP 商品に有効な科目が設定されていません</value>
+  </data>
+  <data name="Subject VIP: {0}" xml:space="preserve">
+    <value>科目VIP：{0}</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>科目</value>
+  </data>
+  <data name="Tag gate only; anonymous lists also exclude every question with a paid tag." xml:space="preserve">
+    <value>タグによる制限のみです。匿名の一覧では、有料タグが付いたすべての質問も除外されます。</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>タグ</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomies</value>
+  </data>
+  <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
+    <value>スナップショットが存在しないため、この用紙は公開用の用紙一覧に表示されません。</value>
+  </data>
+  <data name="The question&apos;s subject VIP is required (403)." xml:space="preserve">
+    <value>質問へのアクセスには、その問題の件名に対応するVIPが必要です（403）。</value>
+  </data>
+  <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
+    <value>問題の主題に対応するVIPでは問題の詳細を閲覧できますが、有料タグの項目のうち少なくとも1つが同じVIPを拒否します。</value>
+  </data>
+  <data name="This product cannot grant the intended subject membership." xml:space="preserve">
+    <value>この製品では、対象の科目の会員資格を付与できません。</value>
+  </data>
+  <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
+    <value>この未分類の問題はすべての有料タグを必要とします。少なくとも1つのタグに科目の紐付けがありません。</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>デプロイ済みのミニプログラムは別途確認してください。このサーバーのスキャンでは、クライアント側の画面遷移をシミュレートできず、顧客がすべての画面にアクセスできることも証明できません。</value>
+  </data>
+  <data name="VIP products" xml:space="preserve">
+    <value>VIP商品</value>
+  </data>
+  <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
+    <value>訪問者はナレッジの内容を閲覧できますが、この演習は匿名では403を返します。現在のビジネスルールでは、有料の演習が認められています。</value>
+  </data>
+
+</root>
