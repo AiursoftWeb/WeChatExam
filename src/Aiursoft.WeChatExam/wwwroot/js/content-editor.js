@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const question = { ...item, title: item.title ?? item.content };
                     const row = element('div', 'list-group-item d-flex align-items-center gap-2');
                     row.append(element('span', 'text-break flex-grow-1', question.title));
-                    const add = element('button', 'btn btn-sm btn-outline-primary flex-shrink-0', translate('associate', 'Associate'));
+                    const add = element('button', 'btn btn-sm btn-outline-primary flex-shrink-0 text-nowrap', translate('associate', 'Associate'));
                     add.type = 'button'; add.disabled = selectedIds().includes(question.id);
                     add.addEventListener('click', () => { selectQuestion(question); add.disabled = true; });
                     row.append(add); results.append(row);
