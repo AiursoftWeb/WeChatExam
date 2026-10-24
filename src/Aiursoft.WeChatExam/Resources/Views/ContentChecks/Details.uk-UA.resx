@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} exercises" xml:space="preserve">
+    <value>{0} вправ</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} балів знань</value>
+  </data>
+  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+    <value>Тег також можна використовувати в інших курсах. Зміна його ціни впливає на весь наведений тут вміст, зокрема на елементи поза межами вашого пошуку.</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Доступ</value>
+  </data>
+  <data name="Active course VIPs" xml:space="preserve">
+    <value>Активні VIP-курси</value>
+  </data>
+  <data name="Active real-exam VIP" xml:space="preserve">
+    <value>Активний VIP для реального іспиту</value>
+  </data>
+  <data name="Actual behavior" xml:space="preserve">
+    <value>Фактична поведінка</value>
+  </data>
+  <data name="Affected content" xml:space="preserve">
+    <value>Вміст, якого це стосується</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Дозволено</value>
+  </data>
+  <data name="Back to results" xml:space="preserve">
+    <value>Назад до результатів</value>
+  </data>
+  <data name="Before changing a shared tag" xml:space="preserve">
+    <value>Перш ніж змінювати спільний тег</value>
+  </data>
+  <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
+    <value>Перш ніж змінювати спільний тег, перевірте весь вміст, на який він впливає, нижче.</value>
+  </data>
+  <data name="Check this scenario" xml:space="preserve">
+    <value>Перевірити цей сценарій</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Курси</value>
+  </data>
+  <data name="Custom VIP scenario" xml:space="preserve">
+    <value>Власний сценарій VIP</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Заборонено</value>
+  </data>
+  <data name="Detailed diagnosis for developers" xml:space="preserve">
+    <value>Докладна діагностика для розробників</value>
+  </data>
+  <data name="Entry point" xml:space="preserve">
+    <value>Точка входу</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>Вправи</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>Для нашої команди</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Бали знань</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Потребує уваги</value>
+  </data>
+  <data name="Open settings" xml:space="preserve">
+    <value>Відкрити налаштування</value>
+  </data>
+  <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
+    <value>Нашій команді потрібно перевірити цю поведінку. Щоб усунути проблему в програмі, не потрібно змінювати спільні ціни.</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Будь ласка, підтвердьте</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Тарифний план</value>
+  </data>
+  <data name="Review shared impact" xml:space="preserve">
+    <value>Переглянути спільний вплив</value>
+  </data>
+  <data name="Scan coverage and object IDs" xml:space="preserve">
+    <value>Охоплення сканування та ідентифікатори об’єктів</value>
+  </data>
+  <data name="Scan window (UTC)" xml:space="preserve">
+    <value>Період сканування (UTC)</value>
+  </data>
+  <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
+    <value>Спільні позначки впливають на {0} вправ у {1} курсах.</value>
+  </data>
+  <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
+    <value>Ці результати оцінюють поточний доступ до сервера. Вони не імітують усі екрани мініпрограми та сценарії надсилання даних. Кожна сторінка повторно зчитує поточну конфігурацію.</value>
+  </data>
+  <data name="User scenario" xml:space="preserve">
+    <value>Сценарій користувача</value>
+  </data>
+  <data name="View affected content" xml:space="preserve">
+    <value>Переглянути пов’язаний вміст</value>
+  </data>
+  <data name="View content and settings" xml:space="preserve">
+    <value>Переглянути вміст і налаштування</value>
+  </data>
+  <data name="What students experience" xml:space="preserve">
+    <value>Що відчувають студенти</value>
+  </data>
+  <data name="What to review" xml:space="preserve">
+    <value>Що потрібно переглянути</value>
+  </data>
+
+</root>
