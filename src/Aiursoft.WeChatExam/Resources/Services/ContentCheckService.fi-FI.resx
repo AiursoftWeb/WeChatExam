@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+    <value>Listakysely ilman tunnistesuodatinta voi palauttaa tämän maksullisen kysymyksen kirjautuneelle käyttäjälle, jolla ei ole VIP-jäsenyyttä; kysymyksen tietoja palauttava päätepiste vastaa virhekoodilla 403.</value>
+  </data>
+  <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
+    <value>Jäsenyys linkitettyyn tietämysaiheeseen ei välttämättä avaa harjoituksen omaa aihetta.</value>
+  </data>
+  <data name="All relevant VIPs" xml:space="preserve">
+    <value>Kaikki asiaankuuluvat VIP-oikeudet</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Anonyymi</value>
+  </data>
+  <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
+    <value>Määritä kysymykselle tarkoitettu aihe tai korjaa maksulliset tunnisteet, kun olet ensin arvioinut niiden yhteisvaikutuksen.</value>
+  </data>
+  <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Määritä oikea aihe ennen tuotteen myyntiin tarjoamista. Tarkista olemassa olevat jäsenyydet erikseen.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
+    <value>Vain käyttöoikeustarkistus: käyttöoikeuden epäävästä tilannevedoksesta palautetaan 200, HasAccess=false eikä kysymyksiä. Myös käyttökelpoinen tilannevedos vaaditaan.</value>
+  </data>
+  <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
+    <value>Kategorian maksuttomuusasetukset eivät rajoita julkista knowledge APIa. Joissakin Mini Programin sisääntulotarkistuksissa käytetään tuotteen nimiä palvelimen aihealueiden tunnisteiden sijaan.</value>
+  </data>
+  <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
+    <value>Tarkista tunnisteiden taksonomiamääritykset ja kysymyksen aihe. Jos molemmat ovat tarkoituksellisia, pyydä teknistä tiimiä tarkistamaan, miten eri käyttöpolut toimivat.</value>
+  </data>
+  <data name="Client entry checks require engineering verification" xml:space="preserve">
+    <value>Asiakasohjelman sisäänpääsytarkistukset edellyttävät teknistä varmennusta.</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
+    <value>Varmista, onko myynti keskeytetty tarkoituksella. Muussa tapauksessa ota käyttöön tuote jollekin vaadituista aiheista.</value>
+  </data>
+  <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
+    <value>Varmista, onko myynti keskeytetty tarkoituksella. Muussa tapauksessa ota käyttöön tarvittava oppiaine- tai yo-koetuote.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
+    <value>Varmista, onko eri oppiaineiden välinen opetus tarkoituksellista; muussa tapauksessa korjaa kysymyksen oppiaine tai tietopisteen liitos.</value>
+  </data>
+  <data name="Custom VIP selection" xml:space="preserve">
+    <value>Mukautettu VIP-valinta</value>
+  </data>
+  <data name="Eligible for the list; pagination and other query filters still apply." xml:space="preserve">
+    <value>Soveltuu listalle; sivutus ja muut kyselysuodattimet ovat edelleen voimassa.</value>
+  </data>
+  <data name="Engineering must review the endpoint rules. Do not change shared content pricing merely to suppress this diagnostic." xml:space="preserve">
+    <value>Tekniikan on tarkistettava päätepisteiden säännöt. Älä muuta jaetun sisällön hinnoittelua vain tämän diagnostiikkailmoituksen vaientamiseksi.</value>
+  </data>
+  <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
+    <value>Kaikki asiaankuuluvat VIP-jäsenyydetkään eivät voi avata tätä koetta.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Olemassa olevat voimassa olevat jäsenyydet voivat toimia, mutta uusilla asiakkailta puuttuu ostopolku.</value>
+  </data>
+  <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
+    <value>Aiemmat aktiiviset VIP-jäsenyydet voivat edelleen toimia, mutta tällä hetkellä saatavilla olevien tuotteiden ostaminen ei avaa tätä kysymystä.</value>
+  </data>
+  <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
+    <value>Ilmaisessa kokeessa on tilannekuvia kysymyksistä, jotka ovat tällä hetkellä maksullisia.</value>
+  </data>
+  <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
+    <value>Jos kyseessä on kuvaileva jaettu tunniste, harkitse sen muuttamista maksuttomaksi. Jos tunnisteella myydään käyttöoikeutta, kohdista sen taksonomia tarkoitettuun aiheeseen. Tarkista tunnisteeseen liittyvä sisältö ennen jaetun tunnisteen muuttamista.</value>
+  </data>
+  <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
+    <value>Säilytä tämä määritys, jos harjoitus on tarkoituksella maksullinen. Jos sen pitäisi olla julkinen, tarkista ensin kaikki maksulliset tunnisteet ja niiden yhteisvaikutus.</value>
+  </data>
+  <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
+    <value>Säilytä tämä, jos maksuton koepaperi on tarkoituksella maksuton. Tarkista koepaperin oma hinnoittelu, jos sen tilannekuvan käyttöä pitäisi rajoittaa.</value>
+  </data>
+  <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
+    <value>Tietopiste ja tehtävä viittaavat eri aiheisiin</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Tietopisteet</value>
+  </data>
+  <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
+    <value>Uusilla asiakkailla ei ole tällä hetkellä ostomahdollisuutta. Voimassa olevat jäsenyydet voivat silti oikeuttaa käyttöön.</value>
+  </data>
+  <data name="No enabled product combination unlocks this question" xml:space="preserve">
+    <value>Mikään käytössä oleva tuoteyhdistelmä ei avaa tätä kysymystä</value>
+  </data>
+  <data name="No enabled product unlocks this paper" xml:space="preserve">
+    <value>Yksikään käytössä oleva tuote ei avaa tätä koepaperia</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Mikään käytössä oleva VIP-tuote ei avaa tätä tunnistetta</value>
+  </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Yksikään VIP-jäsenyys ei voi avata tätä tunnistemerkintää. Kysymys, jolla on oma aihealueensa, voi silti olla käytettävissä kysymyksen tietojen kautta.</value>
+  </data>
+  <data name="Paid paper has no unlockable subject" xml:space="preserve">
+    <value>Maksulliselle paperille ei ole avattavaa oppiainetta</value>
+  </data>
+  <data name="Paid question cannot be unlocked even with all VIPs" xml:space="preserve">
+    <value>Maksullista kysymystä ei voi avata edes kaikilla VIP-jäsenyyksillä</value>
+  </data>
+  <data name="Paid question requires sign-in (403)." xml:space="preserve">
+    <value>Maksullinen kysymys edellyttää sisäänkirjautumista (403).</value>
+  </data>
+  <data name="Paid tag denies access (403): {0}" xml:space="preserve">
+    <value>Maksullinen tunniste estää pääsyn (403): {0}</value>
+  </data>
+  <data name="Paid tag has no unlockable subject" xml:space="preserve">
+    <value>Maksullisella tunnisteella ei ole avattavaa aihetta</value>
+  </data>
+  <data name="Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted." xml:space="preserve">
+    <value>Paperin käyttöoikeus ei riipu alkuperäisen kysymyksen käyttöoikeudesta. Tallennettu tilannekuva on edelleen käytettävissä, vaikka alkuperäistä muutettaisiin tai se poistettaisiin.</value>
+  </data>
+  <data name="Paper snapshot is empty" xml:space="preserve">
+    <value>Paper-tilannekuva on tyhjä</value>
+  </data>
+  <data name="Paper snapshots" xml:space="preserve">
+    <value>Paperin tilannekuvat</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papers</value>
+  </data>
+  <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
+    <value>Julkinen tietopiste linkittyy maksulliseen harjoitukseen</value>
+  </data>
+  <data name="Publishable paper has no snapshot" xml:space="preserve">
+    <value>Julkaistavalla paperilla ei ole tilannekuvaa</value>
+  </data>
+  <data name="Question content is returned (200)." xml:space="preserve">
+    <value>Kysymyksen sisältö palautetaan (200).</value>
+  </data>
+  <data name="Question details return 403." xml:space="preserve">
+    <value>Kysymyksen tiedot palauttavat 403-virheen.</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Kysymykset</value>
+  </data>
+  <data name="Real-exam VIP only" xml:space="preserve">
+    <value>Vain oikean kokeen VIP</value>
+  </data>
+  <data name="Review its questions and create a snapshot through the existing paper management workflow." xml:space="preserve">
+    <value>Tarkista sen kysymykset ja luo tilannevedos olemassa olevan kokeiden hallintatyönkulun kautta.</value>
+  </data>
+  <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
+    <value>Tarkista sen oppiaineyhteydet, oikean kokeen asetus ja maksuttomuusasetus.</value>
+  </data>
+  <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
+    <value>Tarkista paperin kysymykset ja julkaise korjattu tilannekuva. Alkuperäisten kysymysten muuttaminen ei päivitä olemassa olevia tilannekuvia.</value>
+  </data>
+  <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Tarkista aihe ja saatavilla olevat VIP-tuotteet. Käytöstä poistetut tuotteet eivät mitätöi olemassa olevia aktiivisia jäsenyyksiä.</value>
+  </data>
+  <data name="Signed in without active VIP" xml:space="preserve">
+    <value>Kirjautunut sisään ilman aktiivista VIP-jäsenyyttä</value>
+  </data>
+  <data name="Signed-in list and question details use different access rules" xml:space="preserve">
+    <value>Kirjautuneiden käyttäjien luetteloon ja kysymyksen tietoihin sovelletaan eri käyttöoikeussääntöjä</value>
+  </data>
+  <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
+    <value>Tilannevedosversio {0} ei sisällä tehtäviä. Vanhoja tilannevedoslinkkejä voi edelleen käyttää.</value>
+  </data>
+  <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
+    <value>Aiheen VIP-jäsenyys ja maksullisen tunnisteen käyttöoikeus ovat ristiriidassa</value>
+  </data>
+  <data name="Subject VIP product has no valid subject" xml:space="preserve">
+    <value>Aihekohtaisella VIP-tuotteella ei ole kelvollista aihetta</value>
+  </data>
+  <data name="Subject VIP: {0}" xml:space="preserve">
+    <value>Aiheen VIP: {0}</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Aineistot</value>
+  </data>
+  <data name="Tag gate only; anonymous lists also exclude every question with a paid tag." xml:space="preserve">
+    <value>Vain tunniste-ehto; myös anonyymeissä listoissa suljetaan pois kaikki kysymykset, joilla on maksullinen tunniste.</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taxonomies</value>
+  </data>
+  <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
+    <value>Julkisella paperilistalla ei näy tätä paperia, koska siitä ei ole tilannevedosta.</value>
+  </data>
+  <data name="The question&apos;s subject VIP is required (403)." xml:space="preserve">
+    <value>Kysymyksen aiheeseen vaaditaan VIP-jäsenyys (403).</value>
+  </data>
+  <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
+    <value>Kysymyksen aiheeseen liittyvä VIP-jäsenyys avaa kysymyksen tiedot, mutta vähintään yksi maksullinen tunniste ei hyväksy kyseistä VIP-jäsenyyttä.</value>
+  </data>
+  <data name="This product cannot grant the intended subject membership." xml:space="preserve">
+    <value>Tämä tuote ei voi myöntää jäsenyyttä kyseiseen aiheeseen.</value>
+  </data>
+  <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
+    <value>Tämä luokittelematon kysymys edellyttää kaikkia maksullisia tunnisteita; vähintään yhdeltä tunnisteelta puuttuu aihealuekytkentä.</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Varmista erikseen julkaistun Mini Programin toiminta. Tämä palvelinskannaus ei simuloi asiakkaan siirtymistä näkymästä toiseen eikä todista, että asiakas pääsee kaikkiin näkymiin.</value>
+  </data>
+  <data name="VIP products" xml:space="preserve">
+    <value>VIP-tuotteet</value>
+  </data>
+  <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
+    <value>Vierailijat voivat lukea tietosisältöä, mutta tämä harjoitus palauttaa anonyymeille käyttäjille 403-virheen. Maksulliset harjoitukset ovat nykyisten liiketoimintasääntöjen mukaan sallittuja.</value>
+  </data>
+
+</root>

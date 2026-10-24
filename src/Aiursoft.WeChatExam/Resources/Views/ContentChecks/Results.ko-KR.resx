@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>영향을 받은 항목 {0}개</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>연습문제 {0}개</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>검토할 항목 {0}개</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>전체 과정</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>전체 결과</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>모든 상태</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>다시 확인하기</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>검사 완료</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>지식 포인트 {0}개, 연습 문제 {1}개, 시험지 {2}개를 확인했습니다.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>확인 시각</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>카드를 선택하면 학생들이 어떤 경험을 하게 되는지, 무엇을 검토해야 하는지 확인할 수 있습니다.</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>콘텐츠 이름</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>강좌</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>강좌 점검</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>특정 콘텐츠 찾기</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>담당 팀 확인</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>의도적으로 유료로 제공하는 콘텐츠는 아래에 별도로 표시됩니다. 미니 프로그램의 동작은 팀의 검토가 필요할 수 있습니다.</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>주의 필요</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>검토 필요</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>이 검사에서 설정 문제가 발견되지 않았습니다</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>이 보기에는 항목이 없습니다. 다른 그룹을 선택하거나 검색어를 지워 보세요.</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>{0}/{1} 페이지</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>확인 필요</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>요금 정책</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>가격 관련 안내</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>결과 그룹</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>결과 페이지</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>해당 항목이 변경되었습니다. 아래의 최신 결과에서 선택해 주세요.</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>이 항목은 개발자의 검토가 필요합니다. 강의 가격을 변경하라는 지시가 아닙니다.</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>검사 결과</value>
+  </data>
+
+</root>

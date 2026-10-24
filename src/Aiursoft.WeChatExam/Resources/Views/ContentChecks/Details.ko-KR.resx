@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} exercises" xml:space="preserve">
+    <value>{0}개의 연습 문제</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>지식 항목 {0}개</value>
+  </data>
+  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+    <value>태그는 다른 강좌에서도 사용될 수 있습니다. 태그의 가격을 변경하면 검색 결과에 포함되지 않은 항목을 비롯해 여기에 나열된 모든 콘텐츠에 영향을 미칩니다.</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>접근 권한</value>
+  </data>
+  <data name="Active course VIPs" xml:space="preserve">
+    <value>활성 강의 VIP</value>
+  </data>
+  <data name="Active real-exam VIP" xml:space="preserve">
+    <value>실제 시험 VIP 활성화</value>
+  </data>
+  <data name="Actual behavior" xml:space="preserve">
+    <value>실제 동작</value>
+  </data>
+  <data name="Affected content" xml:space="preserve">
+    <value>영향받는 콘텐츠</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>허용됨</value>
+  </data>
+  <data name="Back to results" xml:space="preserve">
+    <value>검색 결과로 돌아가기</value>
+  </data>
+  <data name="Before changing a shared tag" xml:space="preserve">
+    <value>공유 태그를 변경하기 전에</value>
+  </data>
+  <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
+    <value>공유 태그를 변경하기 전에 아래에서 해당 태그의 영향을 받는 모든 콘텐츠를 확인하세요.</value>
+  </data>
+  <data name="Check this scenario" xml:space="preserve">
+    <value>이 시나리오 확인</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>강좌</value>
+  </data>
+  <data name="Custom VIP scenario" xml:space="preserve">
+    <value>사용자 지정 VIP 시나리오</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>거부됨</value>
+  </data>
+  <data name="Detailed diagnosis for developers" xml:space="preserve">
+    <value>개발자를 위한 상세 진단</value>
+  </data>
+  <data name="Entry point" xml:space="preserve">
+    <value>진입 지점</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>문항</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>저희 팀에 전달</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>지식 포인트</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>주의가 필요함</value>
+  </data>
+  <data name="Open settings" xml:space="preserve">
+    <value>설정 열기</value>
+  </data>
+  <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
+    <value>이 동작은 담당 팀에서 검토해야 합니다. 프로그램 문제를 해결하기 위해 공용 가격을 변경하실 필요는 없습니다.</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>확인해 주세요</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>가격 구성</value>
+  </data>
+  <data name="Review shared impact" xml:space="preserve">
+    <value>공유 영향 검토</value>
+  </data>
+  <data name="Scan coverage and object IDs" xml:space="preserve">
+    <value>스캔 범위 및 대상 ID</value>
+  </data>
+  <data name="Scan window (UTC)" xml:space="preserve">
+    <value>스캔 기간(UTC)</value>
+  </data>
+  <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
+    <value>공유 태그는 {1}개 강좌의 연습문제 {0}개에 영향을 줍니다.</value>
+  </data>
+  <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
+    <value>이 결과는 현재 서버 접근 권한을 평가합니다. 모든 미니 프로그램 화면이나 제출 과정을 시뮬레이션하지는 않습니다. 각 페이지는 현재 설정을 다시 읽어옵니다.</value>
+  </data>
+  <data name="User scenario" xml:space="preserve">
+    <value>사용자 시나리오</value>
+  </data>
+  <data name="View affected content" xml:space="preserve">
+    <value>영향받는 콘텐츠 보기</value>
+  </data>
+  <data name="View content and settings" xml:space="preserve">
+    <value>콘텐츠 및 설정 보기</value>
+  </data>
+  <data name="What students experience" xml:space="preserve">
+    <value>학생들이 경험하는 내용</value>
+  </data>
+  <data name="What to review" xml:space="preserve">
+    <value>검토할 내용</value>
+  </data>
+
+</root>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} affected items" xml:space="preserve">
+    <value>{0} betrokken items</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} oefeningen</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} items om te beoordelen</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>Alle cursussen</value>
+  </data>
+  <data name="All results" xml:space="preserve">
+    <value>Alle resultaten</value>
+  </data>
+  <data name="All statuses" xml:space="preserve">
+    <value>Alle statussen</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Opnieuw controleren</value>
+  </data>
+  <data name="Check complete" xml:space="preserve">
+    <value>Controle voltooid</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>{0} kennisitems, {1} oefeningen en {2} toetsen gecontroleerd.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Gecontroleerd op</value>
+  </data>
+  <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
+    <value>Kies een kaart om te zien wat studenten ervaren en wat u moet controleren.</value>
+  </data>
+  <data name="Content name" xml:space="preserve">
+    <value>Naam van de inhoud</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Cursus</value>
+  </data>
+  <data name="Course checkup" xml:space="preserve">
+    <value>Cursuscontrole</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="Find specific content" xml:space="preserve">
+    <value>Specifieke inhoud zoeken</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>Voor ons team</value>
+  </data>
+  <data name="Intentional paid content is listed separately below. Mini Program behavior may still need team review." xml:space="preserve">
+    <value>Bewust betaalde content wordt hieronder apart vermeld. Het gedrag van het Mini Program moet mogelijk nog door het team worden beoordeeld.</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Vereist aandacht</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Moet worden beoordeeld</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="No configuration issues found in this check" xml:space="preserve">
+    <value>Geen configuratieproblemen gevonden bij deze controle</value>
+  </data>
+  <data name="No items in this view. You can choose another group or clear your search." xml:space="preserve">
+    <value>Geen items in deze weergave. Je kunt een andere groep kiezen of je zoekopdracht wissen.</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} van {1}</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Bevestiging vereist</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Vorige</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Prijsafspraken</value>
+  </data>
+  <data name="Pricing arrangements" xml:space="preserve">
+    <value>Prijsafspraken</value>
+  </data>
+  <data name="Result groups" xml:space="preserve">
+    <value>Resultaatgroepen</value>
+  </data>
+  <data name="Result pages" xml:space="preserve">
+    <value>Resultaatpagina&apos;s</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="That item has changed. Please choose from the latest results below." xml:space="preserve">
+    <value>Dat item is gewijzigd. Kies hieronder uit de nieuwste resultaten.</value>
+  </data>
+  <data name="These items need developer review. They are not instructions to change your course pricing." xml:space="preserve">
+    <value>Deze items moeten door een ontwikkelaar worden beoordeeld. Dit zijn geen instructies om de prijzen van je cursussen te wijzigen.</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Bekijken</value>
+  </data>
+  <data name="Your results" xml:space="preserve">
+    <value>Jouw resultaten</value>
+  </data>
+
+</root>
