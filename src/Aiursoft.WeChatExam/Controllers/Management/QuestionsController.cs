@@ -328,6 +328,12 @@ public class QuestionsController(
         });
     }
 
+    private async Task PopulateSelectedKnowledgePointsAsync(EditViewModel model)
+    {
+        model.SelectedKnowledgePoints = await context.KnowledgePoints.AsNoTracking()
+            .Where(k => model.SelectedKnowledgePointIds.Contains(k.Id)).OrderBy(k => k.Title).ToListAsync();
+    }
+
     // GET: questions/{id}/edit
     [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
     public async Task<IActionResult> Edit(Guid? id, string? returnUrl, string? checkReturnUrl = null)
@@ -358,8 +364,12 @@ public class QuestionsController(
             Tags = string.Join(" ", tags.Select(t => t.DisplayName)),
             ReturnUrl = returnUrl,
             OrderIndex = question.OrderIndex,
-            CurrentMaxOrderIndex = maxOrderIndex
+            CurrentMaxOrderIndex = maxOrderIndex,
+            SelectedKnowledgePointIds = await context.KnowledgePointQuestions
+                .Where(k => k.QuestionId == id.Value).Select(k => k.KnowledgePointId).ToArrayAsync()
         };
+
+        await PopulateSelectedKnowledgePointsAsync(model);
 
         // Deserialize Metadata to Options
         if (!string.IsNullOrWhiteSpace(question.Metadata) &&
@@ -388,6 +398,12 @@ public class QuestionsController(
     {
         ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
+        if ((model.UpdateKnowledgePointAssociations || model.SelectedKnowledgePointIds.Length > 0) &&
+            !User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditAnyKnowledgePoint)) return Forbid();
+        await PopulateSelectedKnowledgePointsAsync(model);
+        if (model.UpdateKnowledgePointAssociations &&
+            model.SelectedKnowledgePoints.Count != model.SelectedKnowledgePointIds.Distinct().Count())
+            ModelState.AddModelError(nameof(model.SelectedKnowledgePointIds), "Knowledge point not found.");
 
         if (!ModelState.IsValid)
         {
@@ -442,6 +458,15 @@ public class QuestionsController(
         question.Explanation = model.Explanation ?? string.Empty;
         question.CategoryId = model.CategoryId;
         question.OrderIndex = model.OrderIndex;
+
+        if (model.UpdateKnowledgePointAssociations)
+        {
+            var links = await context.KnowledgePointQuestions.Where(k => k.QuestionId == id).ToListAsync();
+            context.KnowledgePointQuestions.RemoveRange(links.Where(k => !model.SelectedKnowledgePointIds.Contains(k.KnowledgePointId)));
+            var existingIds = links.Select(k => k.KnowledgePointId).ToHashSet();
+            foreach (var pointId in model.SelectedKnowledgePointIds.Distinct().Where(k => !existingIds.Contains(k)))
+                context.KnowledgePointQuestions.Add(new KnowledgePointQuestion { QuestionId = id, KnowledgePointId = pointId });
+        }
 
         await context.SaveChangesAsync();
 

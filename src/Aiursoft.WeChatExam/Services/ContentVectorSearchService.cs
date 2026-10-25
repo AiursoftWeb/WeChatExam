@@ -73,7 +73,7 @@ public class ContentVectorSearchService(
                     if (kind != "knowledge")
                         results.AddRange(await SimilarQuestionsAsync(questions, vector, MaxResults, cancellationToken));
                     if (kind != "questions")
-                        results.AddRange(await SimilarKnowledgePointsAsync(points, vector, cancellationToken));
+                        results.AddRange(await SimilarKnowledgePointsAsync(points, vector, MaxResults, cancellationToken));
                 }
             }
         }
@@ -86,6 +86,31 @@ public class ContentVectorSearchService(
     {
         if (!await settings.IsAiSearchEnabledAsync()) return (false, []);
         if (request.Text != null && string.IsNullOrWhiteSpace(request.Text)) return (true, []);
+        var vector = await RecommendationVectorAsync(request, isKnowledgePoint, cancellationToken);
+        if (vector == null) return (false, []);
+        var questions = QuestionScope(request.CategoryIds, null).Where(q => !request.ExcludeIds.Contains(q.Id));
+        if (isKnowledgePoint)
+            questions = questions.Where(q => !q.KnowledgePointQuestions.Any(k => k.KnowledgePointId == request.Id));
+        else
+            questions = questions.Where(q => q.Id != request.Id);
+        return (true, await SimilarQuestionsAsync(questions, vector, 5, cancellationToken));
+    }
+
+    public async Task<(bool Available, List<ContentSearchItem> Results)> RecommendKnowledgePointsAsync(
+        RecommendationRequest request, CancellationToken cancellationToken = default)
+    {
+        if (!await settings.IsAiSearchEnabledAsync()) return (false, []);
+        if (request.Text != null && string.IsNullOrWhiteSpace(request.Text)) return (true, []);
+        var vector = await RecommendationVectorAsync(request, false, cancellationToken);
+        if (vector == null) return (false, []);
+        var points = db.KnowledgePoints.AsNoTracking().Where(k => !request.ExcludeIds.Contains(k.Id) &&
+            !k.KnowledgePointQuestions.Any(q => q.QuestionId == request.Id));
+        return (true, await SimilarKnowledgePointsAsync(points, vector, 5, cancellationToken));
+    }
+
+    private async Task<float[]?> RecommendationVectorAsync(RecommendationRequest request, bool isKnowledgePoint,
+        CancellationToken cancellationToken)
+    {
         if (request.Refresh || !cache.Snapshot().Loaded) await cache.LoadAsync(db, cancellationToken);
         byte[]? stored;
         string savedText;
@@ -103,13 +128,7 @@ public class ContentVectorSearchService(
         }
         var vector = request.Text == null ? EmbeddingHelper.Deserialize(stored) : null;
         vector ??= await TryEmbedQueryAsync(request.Text ?? savedText, cancellationToken);
-        if (vector == null) return (false, []);
-        var questions = QuestionScope(request.CategoryIds, null).Where(q => !request.ExcludeIds.Contains(q.Id));
-        if (isKnowledgePoint)
-            questions = questions.Where(q => !q.KnowledgePointQuestions.Any(k => k.KnowledgePointId == request.Id));
-        else
-            questions = questions.Where(q => q.Id != request.Id);
-        return (true, await SimilarQuestionsAsync(questions, vector, 5, cancellationToken));
+        return vector;
     }
 
     private IQueryable<Question> QuestionScope(Guid[] categoryIds, QuestionType? questionType)
@@ -158,17 +177,17 @@ public class ContentVectorSearchService(
     }
 
     private async Task<List<ContentSearchItem>> SimilarKnowledgePointsAsync(IQueryable<KnowledgePoint> points,
-        float[] vector, CancellationToken cancellationToken)
+        float[] vector, int take, CancellationToken cancellationToken)
     {
         var snapshot = cache.Snapshot().KnowledgePoints;
         var ids = snapshot.Keys.ToList();
         var current = await points.Where(k => ids.Contains(k.Id) && k.Embedding != null && k.LastEmbeddedAt >= k.LastUpdatedAt)
             .Select(k => new { k.Id, k.LastUpdatedAt }).ToDictionaryAsync(k => k.Id, k => k.LastUpdatedAt, cancellationToken);
-        var scores = Rank(snapshot, current, vector, MaxResults);
+        var scores = Rank(snapshot, current, vector, take);
         var topIds = scores.Keys.ToList();
         var results = await ProjectKnowledgePoints(points.Where(k => topIds.Contains(k.Id))).ToListAsync(cancellationToken);
         foreach (var result in results) result.Score = scores[result.Id];
-        return results;
+        return results.OrderByDescending(r => r.Score).ThenBy(r => r.Id).ToList();
     }
 
     private static Dictionary<Guid, float> Rank(IReadOnlyDictionary<Guid, ContentEmbeddingCache.Entry> snapshot,

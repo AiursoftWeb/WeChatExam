@@ -176,6 +176,46 @@ public class ContentSearchTests
         Assert.AreEqual("Source question", (await db.Questions.SingleAsync(q => q.Id == source.Id)).Content);
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task QuestionRecommendsFiveKnowledgePointsAfterExclusionsAndIgnoresLeafCategory(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var category = new Category { Id = Guid.NewGuid(), Title = "Question subject", ParentId = null };
+        var source = NewQuestion("Source question", category.Id);
+        var points = Enumerable.Range(0, 62).Select(i => new KnowledgePoint
+        {
+            Id = Guid.NewGuid(), Title = $"Point {i}", Content = "Related topic", ParentId = null
+        }).ToArray();
+        db.AddRange(category, source); db.AddRange(points); await db.SaveChangesAsync();
+        SetEmbedding(source);
+        foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
+        db.Add(new KnowledgePointQuestion { QuestionId = source.Id, KnowledgePointId = points[55].Id });
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler(); var service = CreateSearch(db, handler);
+        var request = new RecommendationRequest
+        {
+            Id = source.Id, ExcludeIds = points.Take(55).Select(k => k.Id).ToArray(), CategoryIds = [category.Id]
+        };
+        var (available, results) = await service.RecommendKnowledgePointsAsync(request);
+        Assert.IsTrue(available); Assert.HasCount(5, results);
+        Assert.IsTrue(results.All(k => k.IsKnowledgePoint && points.Skip(56).Any(p => p.Id == k.Id)));
+        Assert.AreEqual(0, handler.Calls);
+        var removed = results[0].Id;
+        db.Remove(points.Single(p => p.Id == removed)); await db.SaveChangesAsync();
+        var (_, current) = await service.RecommendKnowledgePointsAsync(request);
+        Assert.IsFalse(current.Any(k => k.Id == removed));
+        request.Text = "Unsaved revised question";
+        await service.RecommendKnowledgePointsAsync(request);
+        Assert.AreEqual(1, handler.Calls);
+        request.Text = "Unavailable revised question"; handler.Fail = true;
+        var (failed, empty) = await service.RecommendKnowledgePointsAsync(request);
+        Assert.IsFalse(failed); Assert.HasCount(0, empty);
+        Assert.AreEqual("Source question", (await db.Questions.SingleAsync(q => q.Id == source.Id)).Content);
+        Assert.AreEqual(1, await db.KnowledgePointQuestions.CountAsync());
+    }
+
     private static ContentVectorSearchService CreateSearch(WeChatExamDbContext db, QueryHandler handler)
     {
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };

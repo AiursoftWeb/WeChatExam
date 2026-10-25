@@ -56,5 +56,12 @@ public class EditViewModel : UiStackLayoutViewModel
 
     public List<string> Options { get; set; } = new();
 
+    public bool UpdateKnowledgePointAssociations { get; set; }
+
+    [MaxLength(5000)]
+    public Guid[] SelectedKnowledgePointIds { get; set; } = [];
+
+    public List<KnowledgePoint> SelectedKnowledgePoints { get; set; } = [];
+
     public string? ReturnUrl { get; set; }
 }

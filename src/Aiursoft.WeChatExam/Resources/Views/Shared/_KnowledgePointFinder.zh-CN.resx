@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI 语义搜索</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>未使用 AI 语义搜索。正在显示关键词搜索结果。</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>关联</value>
+  </data>
+  <data name="Associated Knowledge Points" xml:space="preserve">
+    <value>关联的知识点</value>
+  </data>
+  <data name="Associations take effect when you save this question." xml:space="preserve">
+    <value>关联将在保存此问题后生效。</value>
+  </data>
+  <data name="Enter a few words to find knowledge points." xml:space="preserve">
+    <value>输入几个词来查找知识点。</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>输入一个主题或几个关键词...</value>
+  </data>
+  <data name="Find Knowledge Points" xml:space="preserve">
+    <value>查找知识点</value>
+  </data>
+  <data name="Find Knowledge Points to Associate" xml:space="preserve">
+    <value>查找要关联的知识点</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>关键词搜索</value>
+  </data>
+  <data name="No knowledge points found." xml:space="preserve">
+    <value>未找到知识点。</value>
+  </data>
+  <data name="No related knowledge points found yet." xml:space="preserve">
+    <value>尚未找到相关知识点。</value>
+  </data>
+  <data name="Open Details" xml:space="preserve">
+    <value>打开详情</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="Recommendations are unavailable. Please try again later." xml:space="preserve">
+    <value>暂时无法提供推荐内容，请稍后重试。</value>
+  </data>
+  <data name="Recommended Knowledge Points" xml:space="preserve">
+    <value>推荐知识点</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>搜索功能不可用。请重试。</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>正在搜索…</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>已选择</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>智能搜索（默认）</value>
+  </data>
+  <data name="Up to five related knowledge points. Refresh after changing the content." xml:space="preserve">
+    <value>最多可关联五个相关知识点。更改内容后请刷新。</value>
+  </data>
+
+</root>

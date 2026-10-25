@@ -39,6 +39,27 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
         return includeSearchStatus ? Json(new { results, usedAi }) : Json(results);
     }
 
+    [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
+    public async Task<IActionResult> KnowledgePoints(string? query, bool useAi = true)
+    {
+        if (query?.Length > 500) return BadRequest();
+        var (results, usedAi) = await search.SearchAsync(query?.Trim() ?? string.Empty, "knowledge", null,
+            useAi: useAi, cancellationToken: HttpContext.RequestAborted);
+        return Json(new { results, usedAi });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
+    public async Task<IActionResult> RecommendedKnowledgePoints([FromBody] RecommendationRequest request)
+    {
+        if (!ModelState.IsValid) return BadRequest();
+        if (!await db.Questions.AnyAsync(q => q.Id == request.Id, HttpContext.RequestAborted)) return NotFound();
+        var (available, results) = await search.RecommendKnowledgePointsAsync(request, HttpContext.RequestAborted);
+        return Json(new { available, results });
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]

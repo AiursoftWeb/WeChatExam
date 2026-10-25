@@ -105,6 +105,11 @@
                 <span asp-validation-for="Explanation" class="text-danger"></span>
             </div>
         </div>
+        @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions) &&
+             User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditAnyKnowledgePoint))
+        {
+            <partial name="_KnowledgePointFinder" model="Model" />
+        }
         <div class="card-footer text-end">
             <button type="submit" class="btn btn-primary">
                 @if (ViewData["CheckReturnUrl"] is string)
@@ -143,4 +148,5 @@
 @section scripts {
     <script src="~/js/tag-input.js" asp-append-version="true"></script>
     <script src="~/js/content-editor.js" asp-append-version="true"></script>
+    <script src="~/js/knowledge-point-finder.js" asp-append-version="true"></script>
 }

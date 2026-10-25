@@ -1,0 +1,54 @@
+@model Aiursoft.WeChatExam.Models.QuestionsViewModels.EditViewModel
+
+<section class="card-body border-top" data-knowledge-point-finder data-content-id="@Model.Id"
+         data-search-url="@Url.Action("KnowledgePoints", "ContentSearch")"
+         data-recommend-url="@Url.Action("RecommendedKnowledgePoints", "ContentSearch")"
+         data-details-url="@Url.Action("Details", "KnowledgePoints")">
+    <input type="hidden" name="UpdateKnowledgePointAssociations" value="true" />
+    <h2 class="h4">@Localizer["Associated Knowledge Points"]</h2>
+    <p class="text-muted small">@Localizer["Associations take effect when you save this question."]</p>
+    <div data-selected-knowledge-points class="mb-3">
+        @foreach (var point in Model.SelectedKnowledgePoints)
+        {
+            <div class="d-flex align-items-center gap-2 border rounded p-2 mb-2" data-selected-point="@point.Id">
+                <input type="hidden" name="SelectedKnowledgePointIds" value="@point.Id" />
+                <span class="flex-grow-1 text-break">@point.Title</span>
+                <button type="button" class="btn btn-sm btn-outline-danger flex-shrink-0 text-nowrap" data-remove-point>@Localizer["Remove"]</button>
+            </div>
+        }
+    </div>
+    <span asp-validation-for="SelectedKnowledgePointIds" class="text-danger"></span>
+    <label for="knowledge-point-search-mode" class="form-label">@Localizer["Find Knowledge Points to Associate"]</label>
+    <select id="knowledge-point-search-mode" class="form-select mb-2" data-point-search-mode>
+        <option value="smart">@Localizer["Smart Search (Default)"]</option>
+        <option value="keywords">@Localizer["Keyword Search"]</option>
+    </select>
+    <div class="input-group mb-2">
+        <input class="form-control" data-point-query maxlength="500" aria-label="@Localizer["Find Knowledge Points"]" placeholder="@Localizer["Enter a topic or a few words..."]" />
+        <button type="button" class="btn btn-outline-primary" data-search-points>@Localizer["Search"]</button>
+    </div>
+    <div data-point-search-status class="small mb-2" role="status"></div>
+    <div data-point-search-results class="overflow-auto mb-3" style="max-height: 300px" aria-live="polite"></div>
+    <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+        <h3 class="h5 mb-0">@Localizer["Recommended Knowledge Points"]</h3>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-refresh-points>@Localizer["Refresh"]</button>
+    </div>
+    <p class="text-muted small">@Localizer["Up to five related knowledge points. Refresh after changing the content."]</p>
+    <div data-point-recommendations aria-live="polite"></div>
+    <div data-point-localization hidden>
+        <span data-key="remove">@Localizer["Remove"]</span>
+        <span data-key="associate">@Localizer["Associate"]</span>
+        <span data-key="selected">@Localizer["Selected"]</span>
+        <span data-key="preview">@Localizer["Preview"]</span>
+        <span data-key="open">@Localizer["Open Details"]</span>
+        <span data-key="enter">@Localizer["Enter a few words to find knowledge points."]</span>
+        <span data-key="loading">@Localizer["Searching..."]</span>
+        <span data-key="empty">@Localizer["No knowledge points found."]</span>
+        <span data-key="ai">@Localizer["AI Semantic Search"]</span>
+        <span data-key="keywords">@Localizer["Keyword Search"]</span>
+        <span data-key="fallback">@Localizer["AI semantic search was not used. Showing keyword results."]</span>
+        <span data-key="failed">@Localizer["Search is unavailable. Please try again."]</span>
+        <span data-key="unavailable">@Localizer["Recommendations are unavailable. Please try again later."]</span>
+        <span data-key="no-recommendations">@Localizer["No related knowledge points found yet."]</span>
+    </div>
+</section>
