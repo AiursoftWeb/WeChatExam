@@ -241,6 +241,35 @@ public class ContentSearchTests
         Assert.IsFalse(await db.Questions.AnyAsync(q => q.Id == Guid.Empty));
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task KnowledgeDraftSimilarityUsesUnsavedTextWithoutCreatingContentOrRelationships(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var points = Enumerable.Range(0, 8).Select(i => new KnowledgePoint
+        {
+            Id = Guid.NewGuid(), Title = $"Knowledge candidate {i}", Content = "Related topic", ParentId = null
+        }).ToArray();
+        db.KnowledgePoints.AddRange(points); await db.SaveChangesAsync();
+        foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler(); var service = CreateSearch(db, handler);
+        var request = new RecommendationRequest { Text = "Unsaved knowledge title and content", ExcludeIds = [points[0].Id], CategoryIds = [Guid.NewGuid()] };
+        var (available, results) = await service.SimilarKnowledgePointsAsync(request);
+        Assert.IsTrue(available); Assert.HasCount(5, results);
+        Assert.IsTrue(results.All(k => k.IsKnowledgePoint && k.Id != points[0].Id));
+        Assert.AreEqual(1, handler.Calls);
+        await service.SimilarKnowledgePointsAsync(request);
+        Assert.AreEqual(1, handler.Calls, "Repeated checks should reuse the draft vector.");
+        request.Text = "Unavailable knowledge draft"; handler.Fail = true;
+        var (failed, empty) = await service.SimilarKnowledgePointsAsync(request);
+        Assert.IsFalse(failed); Assert.HasCount(0, empty);
+        Assert.AreEqual(8, await db.KnowledgePoints.CountAsync());
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Id == Guid.Empty || k.ParentId != null));
+        Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync());
+    }
+
     private static ContentVectorSearchService CreateSearch(WeChatExamDbContext db, QueryHandler handler)
     {
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };

@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Edit in New Tab" xml:space="preserve">
+      <data name="Compare up to five similar knowledge points before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>保存前最多比较五个相似的知识点。相似并不意味着它们是重复项。</value>
+  </data>
+  <data name="Edit in New Tab" xml:space="preserve">
     <value>在新标签页中编辑</value>
+  </data>
+  <data name="Enter a title or content, then find similar knowledge points." xml:space="preserve">
+    <value>请输入标题或内容，然后查找相似知识点。</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>查找相似内容</value>
   </data>
   <data name="Finding similar knowledge points..." xml:space="preserve">
     <value>正在查找相似知识点……</value>

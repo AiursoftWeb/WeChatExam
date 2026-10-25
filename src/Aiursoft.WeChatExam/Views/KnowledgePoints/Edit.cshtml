@@ -82,7 +82,7 @@
 {
     <aside class="col-xl-4">
         @await Html.PartialAsync("_QuestionRecommendations", new QuestionRecommendationsViewModel { Id = Model.Id, IsKnowledgePoint = true })
-        @await Html.PartialAsync("_KnowledgePointRecommendations", Model.Id)
+        @await Html.PartialAsync("_KnowledgePointRecommendations", new KnowledgePointRecommendationsViewModel { Id = Model.Id })
     </aside>
 }
 </div>

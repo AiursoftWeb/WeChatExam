@@ -1,6 +1,10 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Aiursoft.WeChatExam.Models.ContentSearchViewModels
 @model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.CreateViewModel
 
 <h1 class="h3 mb-3">@Localizer["Create KnowledgePoint"]</h1>
+<div class="row g-3">
+<div class="@(User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions) ? "col-xl-8" : "col-12")">
 <form asp-action="Create" method="post" data-content-editor
       data-search-url="@Url.Action("Questions", "ContentSearch")" data-mtql-url="@Url.Action("Search", "Questions")">
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
@@ -60,8 +64,17 @@
     </button>
     <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
 </form>
+</div>
+@if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions))
+{
+    <aside class="col-xl-4">
+        @await Html.PartialAsync("_KnowledgePointRecommendations", new KnowledgePointRecommendationsViewModel { IsDraft = true })
+    </aside>
+}
+</div>
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script src="~/js/content-editor.js" asp-append-version="true"></script>
+    <script src="~/js/knowledge-point-recommendations.js" asp-append-version="true"></script>
 }
