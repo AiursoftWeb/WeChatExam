@@ -1,0 +1,22 @@
+@model Guid
+
+<section class="card mt-3" data-knowledge-point-recommendations data-content-id="@Model"
+         data-endpoint="@Url.Action("SimilarKnowledgePoints", "ContentSearch")"
+         data-details-url="@Url.Action("Details", "KnowledgePoints")" data-edit-url="@Url.Action("Edit", "KnowledgePoints")">
+    <div class="card-header d-flex justify-content-between align-items-center gap-2">
+        <h2 class="card-title mb-0">@Localizer["Similar Knowledge Points"]</h2>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-refresh-knowledge-points>@Localizer["Refresh"]</button>
+    </div>
+    <div class="card-body">
+        <p class="text-muted small">@Localizer["Up to five similar knowledge points for comparison. Refresh after changing the title or content."]</p>
+        <div data-knowledge-point-results aria-live="polite"></div>
+    </div>
+    <div hidden>
+        <span data-key="loading">@Localizer["Finding similar knowledge points..."]</span>
+        <span data-key="empty">@Localizer["No similar knowledge points found yet."]</span>
+        <span data-key="unavailable">@Localizer["Recommendations are unavailable. Please try again later."]</span>
+        <span data-key="preview">@Localizer["Preview"]</span>
+        <span data-key="open">@Localizer["Open Details"]</span>
+        <span data-key="edit">@Localizer["Edit in New Tab"]</span>
+    </div>
+</section>

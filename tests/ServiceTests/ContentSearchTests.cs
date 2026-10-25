@@ -176,6 +176,42 @@ public class ContentSearchTests
         Assert.AreEqual("Source question", (await db.Questions.SingleAsync(q => q.Id == source.Id)).Content);
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task SimilarKnowledgePointsExcludeSelfStaleDeletedAndExplicitExclusions(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var points = Enumerable.Range(0, 10).Select(i => new KnowledgePoint
+        {
+            Id = Guid.NewGuid(), Title = $"Point {i}", Content = "Related knowledge", ParentId = null
+        }).ToArray();
+        db.KnowledgePoints.AddRange(points); await db.SaveChangesAsync();
+        foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler(); var service = CreateSearch(db, handler);
+        var request = new RecommendationRequest { Id = points[0].Id, ExcludeIds = [points[1].Id], CategoryIds = [Guid.NewGuid()] };
+        var (available, initial) = await service.SimilarKnowledgePointsAsync(request);
+        Assert.IsTrue(available); Assert.HasCount(5, initial);
+        Assert.IsTrue(initial.All(k => k.IsKnowledgePoint && k.Id != points[0].Id && k.Id != points[1].Id));
+        Assert.AreEqual(0, handler.Calls, "Opening an editor should reuse the current saved vector.");
+        var stale = points.Single(p => p.Id == initial[0].Id);
+        var deleted = points.Single(p => p.Id == initial[1].Id);
+        stale.Content = "Revised while the cache still holds the old vector";
+        db.Remove(deleted); await db.SaveChangesAsync();
+        var (_, current) = await service.SimilarKnowledgePointsAsync(request);
+        Assert.HasCount(5, current);
+        Assert.IsFalse(current.Any(k => k.Id == stale.Id || k.Id == deleted.Id));
+        request.Text = "Unsaved draft knowledge"; request.Refresh = true;
+        var (draftAvailable, draft) = await service.SimilarKnowledgePointsAsync(request);
+        Assert.IsTrue(draftAvailable); Assert.HasCount(5, draft); Assert.AreEqual(1, handler.Calls);
+        Assert.AreEqual("Related knowledge", (await db.KnowledgePoints.SingleAsync(k => k.Id == points[0].Id)).Content);
+        Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync());
+        request.Text = "Unavailable draft"; handler.Fail = true;
+        var (failed, empty) = await service.SimilarKnowledgePointsAsync(request);
+        Assert.IsFalse(failed); Assert.HasCount(0, empty);
+    }
+
     private static ContentVectorSearchService CreateSearch(WeChatExamDbContext db, QueryHandler handler)
     {
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };

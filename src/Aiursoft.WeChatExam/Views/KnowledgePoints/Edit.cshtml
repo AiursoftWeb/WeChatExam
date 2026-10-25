@@ -82,10 +82,12 @@
 {
     <aside class="col-xl-4">
         @await Html.PartialAsync("_QuestionRecommendations", new QuestionRecommendationsViewModel { Id = Model.Id, IsKnowledgePoint = true })
+        @await Html.PartialAsync("_KnowledgePointRecommendations", Model.Id)
     </aside>
 }
 </div>
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
     <script src="~/js/content-editor.js" asp-append-version="true"></script>
+    <script src="~/js/knowledge-point-recommendations.js" asp-append-version="true"></script>
 }
