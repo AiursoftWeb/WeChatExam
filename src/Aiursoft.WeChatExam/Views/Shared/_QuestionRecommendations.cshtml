@@ -2,19 +2,38 @@
 @model Aiursoft.WeChatExam.Models.ContentSearchViewModels.QuestionRecommendationsViewModel
 
 <section class="card" data-question-recommendations data-content-id="@Model.Id"
+         data-draft="@Model.IsDraft.ToString().ToLowerInvariant()"
          data-knowledge-point="@Model.IsKnowledgePoint.ToString().ToLowerInvariant()"
          data-can-edit="@User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditQuestions).ToString().ToLowerInvariant()"
-         data-endpoint="@Url.Action(Model.IsKnowledgePoint ? "RecommendedQuestions" : "SimilarQuestions", "ContentSearch")"
+         data-endpoint="@Url.Action(Model.IsDraft ? "SimilarQuestionDrafts" : Model.IsKnowledgePoint ? "RecommendedQuestions" : "SimilarQuestions", "ContentSearch")"
          data-details-url="@Url.Action("Details", "Questions")" data-edit-url="@Url.Action("Edit", "Questions")">
     <div class="card-header d-flex justify-content-between align-items-center gap-2">
         <h2 class="card-title mb-0">@(Model.IsKnowledgePoint ? @Localizer["Recommended Exam Questions"] : @Localizer["Similar Exam Questions"])</h2>
-        <button type="button" class="btn btn-sm btn-outline-secondary" data-refresh-recommendations>@Localizer["Refresh"]</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary text-nowrap" data-refresh-recommendations>
+            @if (Model.IsDraft)
+            {
+                @Localizer["Find Similar"]
+            }
+            else
+            {
+                @Localizer["Refresh"]
+            }
+        </button>
     </div>
     <div class="card-body">
-        <p class="text-muted small">@Localizer["Up to five related exam questions. Refresh after changing the content."]</p>
+        @if (Model.IsDraft)
+        {
+            <p class="text-muted small">@Localizer["Compare up to five similar questions before saving. Similarity does not mean they are duplicates."]</p>
+            <p class="text-muted small">@Localizer["Searches within the selected category, or all categories if none is selected."]</p>
+        }
+        else
+        {
+            <p class="text-muted small">@Localizer["Up to five related exam questions. Refresh after changing the content."]</p>
+        }
         <div data-recommendation-results aria-live="polite"></div>
     </div>
     <div data-recommendation-localization hidden>
+        <span data-key="draft-prompt">@Localizer["Enter question content, then find similar questions."]</span>
         <span data-key="loading">@Localizer["Finding related exam questions..."]</span>
         <span data-key="empty">@Localizer["No related exam questions found yet."]</span>
         <span data-key="unavailable">@Localizer["Recommendations are unavailable. Please try again later."]</span>

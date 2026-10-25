@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const refresh = panel.querySelector('[data-refresh-recommendations]');
         const localize = (key, fallback) => panel.querySelector(`[data-key="${key}"]`)?.textContent || fallback;
         const isKnowledgePoint = panel.dataset.knowledgePoint === 'true';
+        const isDraft = panel.dataset.draft === 'true';
         let activeRequest;
         let currentText = null;
 
@@ -101,14 +102,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         refresh.addEventListener('click', () => {
             const content = form.querySelector('#Content')?.value || '';
+            if (isDraft && !content.trim()) {
+                target.replaceChildren(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter question content, then find similar questions.')));
+                return;
+            }
             currentText = isKnowledgePoint ? `${form.querySelector('#Title')?.value || ''}\n${content}`
-                : [content, ...[...form.querySelectorAll('.option-input')].map(input => input.value),
-                    form.querySelector('input[name="StandardAnswer"]:checked')?.value || form.querySelector('#standard-answer-input')?.value || '',
+                : [content, ...[...form.querySelectorAll('.option-input:not(:disabled)')].map(input => input.value),
+                    form.querySelector('input[name="StandardAnswer"]:checked:not(:disabled)')?.value || form.querySelector('#standard-answer-input:not(:disabled)')?.value || '',
                     form.querySelector('#Explanation')?.value || ''].join('\n');
             loadRecommendations(true);
         });
         form.addEventListener('question-selection-changed', () => loadRecommendations());
-        loadRecommendations();
+        if (isDraft) target.append(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter question content, then find similar questions.')));
+        else loadRecommendations();
     }
 
     const searchButton = document.getElementById('find-questions');
