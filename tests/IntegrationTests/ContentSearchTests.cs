@@ -174,6 +174,57 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task SimilarKnowledgePointsRequireEditorPermissionCsrfAndExistingSourceWithoutWriting()
+    {
+        var (email, password) = await RegisterAndLoginAsync();
+        using var scope = Server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var user = await manager.FindByEmailAsync(email);
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanReadQuestions))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var source = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Source", Content = "Original content", ParentId = null };
+        var similar = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Similar <script>example</script>", Content = "Related content", ParentId = null };
+        db.AddRange(source, similar); await db.SaveChangesAsync();
+        var vector = new float[1024]; vector[0] = 1;
+        foreach (var point in new[] { source, similar }) { point.Embedding = EmbeddingHelper.Serialize(vector); point.LastEmbeddedAt = point.LastUpdatedAt; }
+        await db.SaveChangesAsync();
+        GetService<IConfiguration>()["GlobalSettings:" + SettingsMap.EnableEmbeddingBasedSearch] = "True";
+        GetService<IConfiguration>()["GlobalSettings:" + SettingsMap.EmbeddingOllamaInstance] = "http://127.0.0.1:1";
+        var endpoint = "/ContentSearch/SimilarKnowledgePoints";
+        var token = await GetAntiCsrfToken("/");
+        using var forbidden = new HttpRequestMessage(HttpMethod.Post, endpoint);
+        forbidden.Content = JsonContent.Create(new { id = source.Id }); forbidden.Headers.Add("RequestVerificationToken", token);
+        var denied = await Http.SendAsync(forbidden);
+        Assert.IsTrue(denied.StatusCode == HttpStatusCode.Forbidden || denied.Headers.Location!.ToString().Contains("/Error/Unauthorized"));
+        await LoginAsAdmin();
+        var editUrl = $"/KnowledgePoints/Edit/{source.Id}";
+        var html = await Http.GetStringAsync(editUrl);
+        Assert.Contains("data-knowledge-point-recommendations", html);
+        Assert.Contains("data-question-recommendations", html);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(endpoint, new { id = source.Id })).StatusCode);
+        token = await GetAntiCsrfToken(editUrl);
+        foreach (var id in new[] { source.Id, Guid.NewGuid() })
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
+            request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { id });
+            var response = await Http.SendAsync(request);
+            if (id != source.Id) { Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode); continue; }
+            response.EnsureSuccessStatusCode();
+            using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+            Assert.IsTrue(json.RootElement.GetProperty("available").GetBoolean());
+            var results = json.RootElement.GetProperty("results").EnumerateArray().ToArray();
+            Assert.IsTrue(results.Length is > 0 and <= 5);
+            Assert.IsTrue(results.Any(k => k.GetProperty("id").GetGuid() == similar.Id));
+            Assert.IsTrue(results.All(k => k.GetProperty("isKnowledgePoint").GetBoolean() && k.GetProperty("id").GetGuid() != source.Id));
+        }
+        db.ChangeTracker.Clear();
+        Assert.AreEqual("Original content", (await db.KnowledgePoints.SingleAsync(k => k.Id == source.Id)).Content);
+        Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync(k => k.KnowledgePointId == source.Id));
+    }
+
+    [TestMethod]
     public async Task QuestionReorderingPreservesEmbeddingAndReturnsToSearch()
     {
         await LoginAsAdmin();
