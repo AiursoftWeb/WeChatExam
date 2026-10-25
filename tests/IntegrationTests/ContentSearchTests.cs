@@ -274,6 +274,55 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task KnowledgeDraftSimilarityRequiresEditorPermissionCsrfAndValidTextWithoutWriting()
+    {
+        var endpoint = "/ContentSearch/SimilarKnowledgePointDrafts";
+        Assert.AreEqual(HttpStatusCode.Found, (await Http.PostAsJsonAsync(endpoint, new { text = "Draft" })).StatusCode);
+        var (email, password) = await RegisterAndLoginAsync();
+        using var scope = Server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var user = await manager.FindByEmailAsync(email);
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanReadQuestions))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var token = await GetAntiCsrfToken("/");
+        using (var forbidden = new HttpRequestMessage(HttpMethod.Post, endpoint))
+        {
+            forbidden.Headers.Add("RequestVerificationToken", token); forbidden.Content = JsonContent.Create(new { text = "Draft" });
+            var denied = await Http.SendAsync(forbidden);
+            Assert.IsTrue(denied.StatusCode == HttpStatusCode.Forbidden || denied.Headers.Location!.ToString().Contains("/Error/Unauthorized"));
+        }
+        await LoginAsAdmin();
+        var html = await Http.GetStringAsync("/KnowledgePoints/Create");
+        Assert.Contains("data-draft=\"true\"", html);
+        Assert.Contains("knowledge-point-recommendations.js", html);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(endpoint, new { text = "Draft" })).StatusCode);
+        token = await GetAntiCsrfToken("/KnowledgePoints/Create");
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var pointCount = await db.KnowledgePoints.CountAsync();
+        var relationshipCount = await db.KnowledgePointQuestions.CountAsync();
+        foreach (var text in new[] { "Draft title and content", " ", new string('x', 20001) })
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
+            request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { text });
+            var response = await Http.SendAsync(request);
+            Assert.AreEqual(!string.IsNullOrWhiteSpace(text) && text.Length <= 20000 ? HttpStatusCode.OK : HttpStatusCode.BadRequest, response.StatusCode);
+        }
+        using (var request = new HttpRequestMessage(HttpMethod.Post, endpoint))
+        {
+            request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { id = Guid.NewGuid(), text = "Draft" });
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.SendAsync(request)).StatusCode);
+        }
+        using (var request = new HttpRequestMessage(HttpMethod.Post, "/ContentSearch/SimilarKnowledgePoints"))
+        {
+            request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { id = Guid.NewGuid(), text = "Draft" });
+            Assert.AreEqual(HttpStatusCode.NotFound, (await Http.SendAsync(request)).StatusCode);
+        }
+        Assert.AreEqual(pointCount, await db.KnowledgePoints.CountAsync());
+        Assert.AreEqual(relationshipCount, await db.KnowledgePointQuestions.CountAsync());
+    }
+
+    [TestMethod]
     public async Task QuestionReorderingPreservesEmbeddingAndReturnsToSearch()
     {
         await LoginAsAdmin();

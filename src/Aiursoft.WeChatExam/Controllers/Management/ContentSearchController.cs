@@ -42,6 +42,16 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
+    public async Task<IActionResult> SimilarKnowledgePointDrafts([FromBody] RecommendationRequest request)
+    {
+        if (!ModelState.IsValid || request.Id != Guid.Empty || string.IsNullOrWhiteSpace(request.Text)) return BadRequest();
+        var (available, results) = await search.SimilarKnowledgePointsAsync(request, HttpContext.RequestAborted);
+        return Json(new { available, results });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
     public async Task<IActionResult> SimilarKnowledgePoints([FromBody] RecommendationRequest request)
     {
         if (!ModelState.IsValid) return BadRequest();

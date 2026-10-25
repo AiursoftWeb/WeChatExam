@@ -29,14 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
         node.append(actions);
         return node;
     };
+    const isDraft = panel.dataset.draft === 'true';
     let activeRequest;
     async function load(draft = false) {
+        const text = draft ? `${form.querySelector('#Title')?.value || ''}\n${form.querySelector('#Content')?.value || ''}` : null;
+        if (isDraft && !text?.trim()) {
+            target.replaceChildren(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter a title or content, then find similar knowledge points.')));
+            return;
+        }
         activeRequest?.abort();
         const controller = new AbortController();
         activeRequest = controller;
         refresh.disabled = true;
         target.replaceChildren(element('p', 'text-muted mb-0', localize('loading', 'Finding similar knowledge points...')));
-        const text = draft ? `${form.querySelector('#Title')?.value || ''}\n${form.querySelector('#Content')?.value || ''}` : null;
         try {
             const response = await fetch(panel.dataset.endpoint, {
                 method: 'POST', signal: controller.signal,
@@ -58,5 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     refresh.addEventListener('click', () => load(true));
-    load();
+    if (isDraft) target.append(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter a title or content, then find similar knowledge points.')));
+    else load();
 });

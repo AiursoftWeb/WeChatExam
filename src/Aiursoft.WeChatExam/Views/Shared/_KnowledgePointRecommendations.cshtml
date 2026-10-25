@@ -1,17 +1,35 @@
-@model Guid
+@model Aiursoft.WeChatExam.Models.ContentSearchViewModels.KnowledgePointRecommendationsViewModel
 
-<section class="card mt-3" data-knowledge-point-recommendations data-content-id="@Model"
-         data-endpoint="@Url.Action("SimilarKnowledgePoints", "ContentSearch")"
+<section class="card mt-3" data-knowledge-point-recommendations data-content-id="@Model.Id"
+         data-draft="@Model.IsDraft.ToString().ToLowerInvariant()"
+         data-endpoint="@Url.Action(Model.IsDraft ? "SimilarKnowledgePointDrafts" : "SimilarKnowledgePoints", "ContentSearch")"
          data-details-url="@Url.Action("Details", "KnowledgePoints")" data-edit-url="@Url.Action("Edit", "KnowledgePoints")">
     <div class="card-header d-flex justify-content-between align-items-center gap-2">
         <h2 class="card-title mb-0">@Localizer["Similar Knowledge Points"]</h2>
-        <button type="button" class="btn btn-sm btn-outline-secondary" data-refresh-knowledge-points>@Localizer["Refresh"]</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary text-nowrap" data-refresh-knowledge-points>
+            @if (Model.IsDraft)
+            {
+                @Localizer["Find Similar"]
+            }
+            else
+            {
+                @Localizer["Refresh"]
+            }
+        </button>
     </div>
     <div class="card-body">
-        <p class="text-muted small">@Localizer["Up to five similar knowledge points for comparison. Refresh after changing the title or content."]</p>
+        @if (Model.IsDraft)
+        {
+            <p class="text-muted small">@Localizer["Compare up to five similar knowledge points before saving. Similarity does not mean they are duplicates."]</p>
+        }
+        else
+        {
+            <p class="text-muted small">@Localizer["Up to five similar knowledge points for comparison. Refresh after changing the title or content."]</p>
+        }
         <div data-knowledge-point-results aria-live="polite"></div>
     </div>
     <div hidden>
+        <span data-key="draft-prompt">@Localizer["Enter a title or content, then find similar knowledge points."]</span>
         <span data-key="loading">@Localizer["Finding similar knowledge points..."]</span>
         <span data-key="empty">@Localizer["No similar knowledge points found yet."]</span>
         <span data-key="unavailable">@Localizer["Recommendations are unavailable. Please try again later."]</span>
