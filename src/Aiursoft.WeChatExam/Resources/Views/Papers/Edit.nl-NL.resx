@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Alle types</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Antwoord</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Massaal toevoegen via MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Vragen zoeken</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Vergelijkbare vragen zoeken</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Gratis papier</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Geselecteerde items blijven behouden wanneer u opnieuw zoekt. Voeg ze toe wanneer u er klaar voor bent.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Vergelijkbare vragen zijn niet beschikbaar. Probeer het later opnieuw.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Vergelijkbaar met: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Slim zoeken (standaard)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Typen om te zoeken of tags toe te voegen...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Tot vijf vergelijkbare vragen in de geselecteerde categorie, of in alle categorieën als er geen is geselecteerd. Bestaande vragen uit het examen worden uitgesloten. Selecteer kandidaten om toe te voegen; de oorspronkelijke vraag blijft ongewijzigd.</value>
   </data>
 
 </root>

@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>檢查標籤及存取建議</value>
   </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>正在比較預覽題目 {0}</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>已完成</value>
   </data>
@@ -80,6 +83,9 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>失敗</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>尋找相似問題</value>
   </data>
   <data name="Follow title again" xml:space="preserve">
     <value>再次跟隨標題</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>要以新的擷取結果取代已編輯的預覽嗎？</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>儲存前請先查看相似的現有問題。如要略過某道預覽問題，請使用該問題的「刪除」功能。系統不會自動重用現有問題。</value>
   </data>
   <data name="Save draft manually" xml:space="preserve">
     <value>手動儲存草稿</value>

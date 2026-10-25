@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Όλα τα είδη</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Απάντηση</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Μαζική Προσθήκη μέσω MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Βρείτε ερωτήσεις</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Βρείτε παρόμοιες ερωτήσεις</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Ελεύθερος Εξεταστικός Χαρτίς</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Οι επιλογές διατηρούνται όταν αναζητάτε ξανά. Προσθέστε τις όταν είστε έτοιμοι.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Οι παρόμοιες ερωτήσεις δεν είναι διαθέσιμες. Παρακαλώ δοκιμάστε ξανά αργότερα.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Παρόμοιο με: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Έξυπνη αναζήτηση (προεπιλογή)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Πληκτρολογήστε για αναζήτηση ή προσθήκη ετικετών...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Έως πέντε παρόμοιες ερωτήσεις στην επιλεγμένη κατηγορία ή σε όλες τις κατηγορίες, αν δεν έχει επιλεγεί καμία. Εξαιρούνται οι ερωτήσεις που υπάρχουν ήδη στο διαγώνισμα. Επιλέξτε τις ερωτήσεις που θέλετε να προσθέσετε· η αρχική ερώτηση παραμένει αμετάβλητη.</value>
   </data>
 
 </root>

@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Tutti i tipi</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Risposta</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Aggiunta in blocco tramite MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Trova domande</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Trova domande simili</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Compito Gratuito</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Le selezioni vengono mantenute quando effettui una nuova ricerca. Aggiungile quando vuoi.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Le domande simili non sono disponibili. Riprova più tardi.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Simile a: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Ricerca intelligente (predefinita)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Digita per cercare o aggiungere tag...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Fino a cinque domande simili nella categoria selezionata, oppure in tutte le categorie se non ne è stata selezionata una. Le domande già presenti nella prova sono escluse. Seleziona le domande da aggiungere; la domanda originale rimane invariata.</value>
   </data>
 
 </root>

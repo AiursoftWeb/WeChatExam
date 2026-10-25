@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>ตรวจสอบแท็กและคำแนะนำเกี่ยวกับสิทธิ์การเข้าถึง</value>
   </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>กำลังเปรียบเทียบคำถามตัวอย่าง {0}</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>เสร็จสมบูรณ์</value>
   </data>
@@ -80,6 +83,9 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>ล้มเหลว</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>ค้นหาคำถามที่คล้ายกัน</value>
   </data>
   <data name="Follow title again" xml:space="preserve">
     <value>ทำตามชื่อเรื่องอีกครั้ง</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>แทนที่ตัวอย่างที่แก้ไขแล้วด้วยการดึงข้อมูลใหม่หรือไม่?</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>โปรดตรวจสอบคำถามที่มีอยู่และคล้ายกันก่อนบันทึก หากไม่ต้องการรวมคำถามในตัวอย่าง ให้ใช้คำสั่งลบของคำถามนั้น ระบบจะไม่นำคำถามที่มีอยู่มาใช้ซ้ำโดยอัตโนมัติ</value>
   </data>
   <data name="Save draft manually" xml:space="preserve">
     <value>บันทึกร่างด้วยตนเอง</value>

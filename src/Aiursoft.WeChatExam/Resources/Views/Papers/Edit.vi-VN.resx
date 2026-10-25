@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Tất cả loại</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Câu trả lời</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Thêm hàng loạt qua MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Tìm câu hỏi</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Tìm câu hỏi tương tự</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Bài kiểm tra miễn phí</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Các lựa chọn sẽ được giữ lại khi bạn tìm kiếm lần nữa. Hãy thêm chúng khi bạn sẵn sàng.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Không thể tìm thấy câu hỏi tương tự. Vui lòng thử lại sau.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Tương tự như: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Tìm kiếm thông minh (Mặc định)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Gõ để tìm kiếm hoặc thêm thẻ...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Tối đa năm câu hỏi tương tự trong danh mục đã chọn, hoặc trong tất cả danh mục nếu chưa chọn danh mục nào. Các câu hỏi đã có trong đề thi sẽ bị loại trừ. Chọn các câu hỏi muốn thêm; câu hỏi ban đầu sẽ không bị thay đổi.</value>
   </data>
 
 </root>

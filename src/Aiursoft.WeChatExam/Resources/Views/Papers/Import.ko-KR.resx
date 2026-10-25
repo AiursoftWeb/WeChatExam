@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>태그 및 접근 권한 권장 사항 확인</value>
   </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>미리보기 질문 {0} 비교 중</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>완료됨</value>
   </data>
@@ -80,6 +83,9 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>실패</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>유사한 질문 찾기</value>
   </data>
   <data name="Follow title again" xml:space="preserve">
     <value>제목을 다시 따르기</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>편집한 미리보기를 새로 추출한 내용으로 바꾸시겠습니까?</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>저장하기 전에 유사한 기존 문제를 검토하세요. 미리보기 문제를 제외하려면 해당 문제의 삭제 작업을 사용하세요. 기존 문제는 자동으로 재사용되지 않습니다.</value>
   </data>
   <data name="Save draft manually" xml:space="preserve">
     <value>초안 수동 저장</value>

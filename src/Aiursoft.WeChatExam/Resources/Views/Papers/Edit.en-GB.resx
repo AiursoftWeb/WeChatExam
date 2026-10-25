@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>All Types</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Batch Add via MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Find questions</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Find Similar Questions</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Free paper</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Your selections are retained when you search again. Add them when you are ready.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Similar questions are unavailable. Please try again later.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Similar to: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Smart Search (Default)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Type to search or add tags...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Up to five similar questions in the selected category, or all categories if none is selected. Questions already on the paper are excluded. Select questions to add; the original question remains unchanged.</value>
   </data>
 
 </root>

@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>बहुविकल्पीय</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>सहेजने से पहले अधिकतम पाँच मिलते-जुलते प्रश्नों की तुलना करें। समानता का अर्थ यह नहीं है कि वे डुप्लिकेट हैं।</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>परिभाषा</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>नए टैब में संपादित करें</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>प्रश्न की सामग्री दर्ज करें, फिर मिलते-जुलते प्रश्न खोजें।</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>निबंध</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>रिक्त स्थान भरें</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>समान प्रश्न खोजें</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>संबंधित परीक्षा प्रश्न खोजे जा रहे हैं...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>रीफ़्रेश करें</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>चयनित श्रेणी में खोजता है, या यदि कोई श्रेणी चयनित नहीं है तो सभी श्रेणियों में।</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>लघु उत्तरीय</value>

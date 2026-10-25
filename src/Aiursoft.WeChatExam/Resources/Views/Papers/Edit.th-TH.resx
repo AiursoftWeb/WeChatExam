@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>คำตอบ</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>เพิ่มคำถามแบบหมู่ผ่าน MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>ค้นหาคำถาม</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>ค้นหาคำถามที่คล้ายกัน</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>กระดาษฟรี</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>รายการที่เลือกไว้จะยังคงอยู่เมื่อคุณค้นหาอีกครั้ง เพิ่มรายการเหล่านั้นเมื่อพร้อม</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>ขณะนี้ไม่สามารถใช้งานคำถามที่คล้ายกันได้ โปรดลองอีกครั้งในภายหลัง</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>คล้ายกับ: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>ค้นหาอัจฉริยะ (ค่าเริ่มต้น)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>พิมพ์เพื่อค้นหาหรือเพิ่มแท็ก...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>แสดงคำถามที่คล้ายกันได้สูงสุด 5 ข้อในหมวดหมู่ที่เลือก หรือทุกหมวดหมู่หากไม่ได้เลือกหมวดหมู่ไว้ โดยจะไม่รวมคำถามที่มีอยู่ในข้อสอบ เลือกคำถามที่ต้องการเพิ่ม โดยคำถามเดิมจะยังคงเดิม</value>
   </data>
 
 </root>

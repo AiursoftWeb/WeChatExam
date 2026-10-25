@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>Monivalinta</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>Vertaa enintään viittä samankaltaista kysymystä ennen tallentamista. Samankaltaisuus ei tarkoita, että kysymykset olisivat kaksoiskappaleita.</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>Määritelmä</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>Muokkaa uudessa välilehdessä</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>Kirjoita kysymyksen sisältö ja etsi sitten samankaltaisia kysymyksiä.</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>Essee</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>Täydennä tyhjä kohta</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>Etsi samankaltaisia</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>Etsitään kokeeseen liittyviä kysymyksiä...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Päivitä</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>Hakee valitusta luokasta tai kaikista luokista, jos mitään luokkaa ei ole valittu.</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>Lyhyt vastaus</value>

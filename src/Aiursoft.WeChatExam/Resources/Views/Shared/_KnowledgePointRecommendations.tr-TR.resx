@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Compare up to five similar knowledge points before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>Kaydetmeden önce benzer en fazla beş bilgi noktasını karşılaştırın. Benzer olmaları, kopya oldukları anlamına gelmez.</value>
+  </data>
+  <data name="Edit in New Tab" xml:space="preserve">
+    <value>Yeni Sekmede Düzenle</value>
+  </data>
+  <data name="Enter a title or content, then find similar knowledge points." xml:space="preserve">
+    <value>Bir başlık veya içerik girin, ardından benzer bilgi noktalarını bulun.</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>Benzerlerini Bul</value>
+  </data>
+  <data name="Finding similar knowledge points..." xml:space="preserve">
+    <value>Benzer bilgi noktaları aranıyor...</value>
+  </data>
+  <data name="No similar knowledge points found yet." xml:space="preserve">
+    <value>Henüz benzer bilgi noktası bulunamadı.</value>
+  </data>
+  <data name="Open Details" xml:space="preserve">
+    <value>Detayları Aç</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Önizleme</value>
+  </data>
+  <data name="Recommendations are unavailable. Please try again later." xml:space="preserve">
+    <value>Öneriler şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Yenile</value>
+  </data>
+  <data name="Similar Knowledge Points" xml:space="preserve">
+    <value>Benzer Bilgi Noktaları</value>
+  </data>
+  <data name="Up to five similar knowledge points for comparison. Refresh after changing the title or content." xml:space="preserve">
+    <value>Karşılaştırma için en fazla beş benzer bilgi noktası gösterilir. Başlığı veya içeriği değiştirdikten sonra yenileyin.</value>
+  </data>
+
+</root>

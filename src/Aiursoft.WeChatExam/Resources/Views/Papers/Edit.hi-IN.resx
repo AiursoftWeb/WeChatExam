@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>सभी प्रकार</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>उत्तर</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>बैच एड विया MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>प्रश्न खोजें</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>मिलते-जुलते प्रश्न खोजें</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>मुफ्त पेपर</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>आपके दोबारा खोजने पर चयन बरकरार रहते हैं। तैयार होने पर उन्हें जोड़ें।</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>समान प्रश्न उपलब्ध नहीं हैं। कृपया बाद में फिर से प्रयास करें।</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>इसके समान: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>स्मार्ट खोज (डिफ़ॉल्ट)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>खोजने या टैग जोड़ने के लिए टाइप करें...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>चयनित श्रेणी में अधिकतम पाँच मिलते-जुलते प्रश्न दिखाए जाएँगे; यदि कोई श्रेणी चयनित नहीं है, तो सभी श्रेणियों के प्रश्न दिखाए जाएँगे। प्रश्नपत्र में पहले से मौजूद प्रश्न शामिल नहीं होंगे। जोड़ने के लिए प्रश्न चुनें; मूल प्रश्न में कोई बदलाव नहीं होगा।</value>
   </data>
 
 </root>
