@@ -154,7 +154,7 @@ public class ContentSearchTests : TestBase
             Id = Guid.NewGuid(), Content = "Similar candidate " + i, CategoryId = category.Id,
             StandardAnswer = "Answer " + i, Explanation = "Explanation " + i
         }).ToArray();
-        db.AddRange(paper, category, source, other); db.AddRange(candidates); await db.SaveChangesAsync();
+        db.AddRange(paper, category, source, other); db.Questions.AddRange(candidates); await db.SaveChangesAsync();
         db.AddRange(new PaperQuestion { PaperId = paper.Id, QuestionId = source.Id, Order = 3, Score = 7 },
             new PaperQuestion { PaperId = paper.Id, QuestionId = other.Id, Order = 5, Score = 11 });
         var vector = new float[1024]; vector[0] = 1;
@@ -168,7 +168,8 @@ public class ContentSearchTests : TestBase
         var url = $"/Papers/SimilarQuestions/{paper.Id}";
         async Task<HttpResponseMessage> Query(object body, bool csrf = true, string? endpoint = null)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint ?? url) { Content = JsonContent.Create(body) };
+            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint ?? url);
+            request.Content = JsonContent.Create(body);
             if (csrf) request.Headers.Add("RequestVerificationToken", await GetAntiCsrfToken($"/Papers/Edit/{paper.Id}"));
             return await Http.SendAsync(request);
         }
