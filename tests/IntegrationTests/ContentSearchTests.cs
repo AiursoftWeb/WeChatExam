@@ -274,6 +274,39 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task ImportComparisonRequiresQuestionReadPermissionWithoutChangingImportAccess()
+    {
+        var (email, password) = await RegisterAndLoginAsync();
+        using var scope = Server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var user = await manager.FindByEmailAsync(email);
+        foreach (var permission in new[] { Authorization.AppPermissionNames.CanAddPapers, Authorization.AppPermissionNames.CanAddQuestions })
+            Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(Authorization.AppPermissions.Type, permission))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var page = await Http.GetStringAsync("/Papers/Import");
+        Assert.Contains("id=\"extract\"", page);
+        Assert.DoesNotContain("id=\"import-question-comparison\"", page);
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanReadQuestions))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        page = await Http.GetStringAsync("/Papers/Import");
+        Assert.Contains("id=\"import-question-comparison\" hidden", page);
+        Assert.Contains("data-endpoint=\"/ContentSearch/SimilarQuestionDrafts\"", page);
+        Assert.Contains("data-can-edit=\"false\"", page);
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var originalQuestions = await db.Questions.CountAsync();
+        var originalPapers = await db.Papers.CountAsync();
+        var originalLinks = await db.PaperQuestions.CountAsync();
+        using var request = new HttpRequestMessage(HttpMethod.Post, "/ContentSearch/SimilarQuestionDrafts");
+        request.Headers.Add("RequestVerificationToken", await GetAntiCsrfToken("/Papers/Import"));
+        request.Content = JsonContent.Create(new { text = "Edited import preview question", categoryIds = Array.Empty<Guid>() });
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.SendAsync(request)).StatusCode);
+        Assert.AreEqual(originalQuestions, await db.Questions.CountAsync());
+        Assert.AreEqual(originalPapers, await db.Papers.CountAsync());
+        Assert.AreEqual(originalLinks, await db.PaperQuestions.CountAsync());
+    }
+
+    [TestMethod]
     public async Task KnowledgeDraftSimilarityRequiresEditorPermissionCsrfAndValidTextWithoutWriting()
     {
         var endpoint = "/ContentSearch/SimilarKnowledgePointDrafts";

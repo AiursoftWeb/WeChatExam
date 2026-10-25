@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isDraft = panel.dataset.draft === 'true';
         let activeRequest;
         let currentText = null;
+        let selectedDraft = null;
 
         function questionCard(question) {
             const card = element('div', 'border-bottom pb-3 mb-3');
@@ -79,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
             refresh.disabled = true;
             target.replaceChildren(element('p', 'text-muted mb-0', localize('loading', 'Finding related questions...')));
             // Knowledge-point categories can be more specific than question categories.
-            const categories = isKnowledgePoint
+            const categories = selectedDraft?.categoryIds ?? (isKnowledgePoint
                 ? []
-                : [form.querySelector('#CategoryId')?.value].filter(Boolean);
+                : [form.querySelector('#CategoryId')?.value].filter(Boolean));
             try {
                 const response = await fetch(panel.dataset.endpoint, {
                     method: 'POST', signal: controller.signal,
@@ -91,16 +92,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 if (!response.ok || response.redirected) throw new Error('Recommendation request failed');
                 const data = await response.json();
+                if (activeRequest !== controller) return;
                 if (!data.available) target.replaceChildren(element('p', 'text-muted mb-0', localize('unavailable', 'Recommendations are unavailable. Please try again later.')));
                 else if (!data.results.length) target.replaceChildren(element('p', 'text-muted mb-0', localize('empty', 'No related questions found yet.')));
                 else target.replaceChildren(...data.results.map(questionCard));
             } catch (error) {
-                if (error.name !== 'AbortError') target.replaceChildren(element('p', 'text-muted mb-0', localize('unavailable', 'Recommendations are unavailable. Please try again later.')));
+                if (error.name !== 'AbortError' && activeRequest === controller) target.replaceChildren(element('p', 'text-muted mb-0', localize('unavailable', 'Recommendations are unavailable. Please try again later.')));
             } finally {
                 if (activeRequest === controller) refresh.disabled = false;
             }
         }
+        if (isDraft) form.addEventListener('question-draft-selected', event => {
+            activeRequest?.abort();
+            activeRequest = null;
+            refresh.disabled = false;
+            selectedDraft = event.detail;
+            currentText = selectedDraft?.text ?? null;
+            if (currentText?.trim()) loadRecommendations(true);
+            else target.replaceChildren(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter question content, then find similar questions.')));
+        });
         refresh.addEventListener('click', () => {
+            if (selectedDraft) { loadRecommendations(true); return; }
             const content = form.querySelector('#Content')?.value || '';
             if (isDraft && !content.trim()) {
                 target.replaceChildren(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter question content, then find similar questions.')));
