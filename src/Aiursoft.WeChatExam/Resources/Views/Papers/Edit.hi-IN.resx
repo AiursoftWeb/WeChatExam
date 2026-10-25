@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>चयनित जोड़ें</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>चयनित जोड़ें ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>उन्नत: टैग अभिव्यक्ति (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI अर्थगत खोज</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI अर्थपरक खोज का उपयोग नहीं किया गया। कीवर्ड के परिणाम दिखाए जा रहे हैं।</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>सभी प्रकार</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>श्रेणी</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>टैग जोड़ें, उदाहरण के लिए: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>सामग्री</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>ारेखा</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>जैसे: rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>कागज को संपादित करें</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>प्रश्न खोजने के लिए कुछ शब्द दर्ज करें।</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>कोई विषय या कुछ शब्द दर्ज करें...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>परीक्षा प्रश्न का प्रकार</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>सटीक शब्द और उनसे जुड़े अर्थ खोजें।</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>प्रश्न खोजें</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>मुफ्त पेपर</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>जमा करें</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>कीवर्ड खोज</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>प्रकाशित करने योग्य चिह्नित करें</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>प्रश्न के पाठ, उत्तरों और व्याख्याओं में शब्द खोजें।</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>कोई प्रश्न नहीं मिले।</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>क्रम</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>टैग जोड़ने के लिए Enter दबाएं, या सुझावों से चुनें। हटाने के लिए X पर क्लिक करें।</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>पूर्वावलोकन</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>स्नैपशॉट प्रकाशित करें</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>वास्तविक परीक्षा</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>ड्राफ्ट में वापस ले आएं</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>सहेजें</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>सहेजें और सामग्री जाँच पर लौटें</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>अंक</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>खोजें और प्रश्न जोड़ें</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>खोज उपलब्ध नहीं है। कृपया पुनः प्रयास करें।</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>खोज मोड</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>खोज रहे हैं...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>सभी परिणाम चुनें</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>प्रश्न चुनें</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>चयनित प्रश्न</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>एक श्रेणी चुनने से उपलब्ध प्रश्नों को फ़िल्टर किया जाएगा।</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>आपके दोबारा खोजने पर चयन बरकरार रहते हैं। तैयार होने पर उन्हें जोड़ें।</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>स्मार्ट खोज (डिफ़ॉल्ट)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>प्रारंभिक क्रम</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>स्थिति कार्रवाई</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>टैग अभिव्यक्ति खोज (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>टैग्स</value>

@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Konten yang terdampak</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Semua konten yang terdampak</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Diizinkan</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Siapa pun dapat membuka latihan ini tanpa masuk.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Kembali ke hasil</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Sebelum mengubah tag bersama, periksa semua konten yang terdampak di bawah ini.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Telusuri daftar lengkap</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Periksa skenario ini</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Titik masuk</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Latihan {0} dari {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Latihan: dapat dibuka</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Latihan: tidak dapat dibuka</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Latihan</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Latihan dalam hasil ini</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Untuk tim kami</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Tag berbayarnya menandai bahwa latihan ini berbayar; tag tersebut tidak mengharuskan keanggotaan kursus tambahan.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Teks poin pengetahuan bersifat publik. Akses ke latihan di bawah ini mengikuti aturan server saat ini; pengiriman dan penyimpanan jawaban tidak diperiksa di sini.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Poin pengetahuan</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Poin pengetahuan dan latihan terkait</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Teks pengetahuan: publik</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Latihan yang terkait</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Perlu diperhatikan</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Latihan berikutnya</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Tidak ada poin pengetahuan yang ditautkan ke latihan ini.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Buka pengaturan</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Mohon konfirmasi</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Latihan sebelumnya</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Pengaturan harga</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Pengaturan terkait dan tautan edit</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Tinjau dampak bersama</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Tag bersama memengaruhi {0} latihan dalam {1} kursus.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Masuk dengan VIP aktif untuk kursus yang terkait dengan latihan ini:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>Anda harus masuk dan memiliki VIP mata kuliah yang diwajibkan.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>Tag berbayar tidak tercakup: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Hasil ini mengevaluasi akses server saat ini. Hasil ini tidak mensimulasikan setiap layar Mini Program atau alur pengiriman. Setiap halaman membaca ulang konfigurasi saat ini.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Akun ini memerlukan VIP kursus khusus untuk latihan ini.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Latihan ini tidak memiliki kursus yang ditetapkan. Setiap tag berbayar harus tercakup dalam VIP kursus yang aktif.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Latihan ini memiliki beberapa tag berbayar. Jika hanya satu tag yang digratiskan, latihan ini mungkin tetap dibatasi.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Skenario pengguna</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>Yang perlu ditinjau</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Siapa yang dapat membuka konten ini?</value>
   </data>
 
 </root>

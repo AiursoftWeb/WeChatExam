@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Tambah yang Dipilih</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Tambahkan yang Dipilih ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Lanjutan: Ekspresi Tag (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Pencarian Semantik AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Pencarian semantik AI tidak digunakan. Menampilkan hasil kata kunci.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Semua Jenis</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Gabungkan tag, misalnya: rock &amp;&amp; bukan metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Konten</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Draf</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>mis. rock &amp;&amp; bukan metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Edit Kertas</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Masukkan beberapa kata untuk menemukan pertanyaan.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Masukkan topik atau beberapa kata...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Jenis Soal Ujian</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Temukan kata-kata yang persis dan makna terkait.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Cari Pertanyaan</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Kertas Gratis</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Bekukan</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Pencarian Kata Kunci</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Tandai sebagai Dapat Diterbitkan</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Cocokkan kata-kata dalam teks pertanyaan, jawaban, dan penjelasan.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Tidak ada pertanyaan yang ditemukan.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Urutan</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Tekan Enter untuk menambahkan tag, atau pilih dari saran. Klik X untuk menghapus.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Pratinjau</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Terbitkan Snapshot</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Ujian Asli</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Kembalikan ke Draf</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Simpan</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Simpan dan kembali ke pemeriksaan konten</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Skor</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Cari &amp; Tambah Pertanyaan</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Pencarian tidak tersedia. Silakan coba lagi.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Mode Pencarian</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Sedang mencari...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Pilih Semua Hasil</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Pilih Pertanyaan</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Soal yang Dipilih</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Memilih kategori akan menyaring pertanyaan yang tersedia.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Pilihan tetap tersimpan saat Anda mencari lagi. Tambahkan saat Anda siap.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Pencarian Cerdas (Default)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Urutan Mulai</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Tindakan Status</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Pencarian Ekspresi Tag (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tag</value>
