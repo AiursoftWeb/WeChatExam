@@ -3,6 +3,7 @@ using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.PapersViewModels;
+using RecommendationRequest = Aiursoft.WeChatExam.Models.ContentSearchViewModels.RecommendationRequest;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -339,6 +340,26 @@ public class PapersController(
             // Question already exists or paper frozen
         }
         return RedirectToAction(nameof(Edit), new { id });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditPapers)]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> SimilarQuestions(Guid id, [FromBody] RecommendationRequest request)
+    {
+        if (!ModelState.IsValid || request.Id == Guid.Empty || request.Text != null) return BadRequest();
+        if (!await context.Papers.AnyAsync(p => p.Id == id, HttpContext.RequestAborted)) return NotFound();
+        var existingIds = await context.PaperQuestions.Where(p => p.PaperId == id)
+            .Select(p => p.QuestionId).ToArrayAsync(HttpContext.RequestAborted);
+        if (!existingIds.Contains(request.Id)) return NotFound();
+        request.ExcludeIds = request.ExcludeIds.Concat(existingIds).Distinct().ToArray();
+        var (available, results) = await search.RecommendAsync(request, false, HttpContext.RequestAborted);
+        return Json(new
+        {
+            available,
+            results = results.Select(q => new { q.Id, Content = q.Title, q.Answer, Preview = q.Title, Explanation = q.Preview, QuestionType = q.QuestionType.ToString() })
+        });
     }
 
     // GET: papers/{id}/search-questions
