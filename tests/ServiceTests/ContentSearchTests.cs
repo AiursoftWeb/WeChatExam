@@ -212,6 +212,35 @@ public class ContentSearchTests
         Assert.IsFalse(failed); Assert.HasCount(0, empty);
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task DraftSimilarityUsesUnsavedTextAndSelectedCategoryWithoutCreatingAQuestion(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
+        var otherCategory = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
+        var choices = Enumerable.Range(0, 7).Select(i => NewQuestion($"Candidate {i}", category.Id)).ToArray();
+        var other = NewQuestion("Outside selected category", otherCategory.Id);
+        db.AddRange(category, otherCategory, other); db.Questions.AddRange(choices); await db.SaveChangesAsync();
+        foreach (var question in choices.Append(other)) SetEmbedding(question);
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler(); var service = CreateSearch(db, handler);
+        var request = new RecommendationRequest { Text = "Unsaved question and options", CategoryIds = [category.Id], ExcludeIds = [choices[0].Id] };
+        var (available, results) = await service.RecommendAsync(request, false);
+        Assert.IsTrue(available); Assert.HasCount(5, results);
+        Assert.IsTrue(results.All(q => !q.IsKnowledgePoint && q.Id != other.Id && q.Id != choices[0].Id));
+        Assert.AreEqual(1, handler.Calls);
+        await service.RecommendAsync(request, false);
+        Assert.AreEqual(1, handler.Calls, "Repeated manual checks should reuse the query vector.");
+        request.Text = "Unavailable draft query"; handler.Fail = true;
+        var (failed, empty) = await service.RecommendAsync(request, false);
+        Assert.IsFalse(failed); Assert.HasCount(0, empty);
+        Assert.AreEqual(8, await db.Questions.CountAsync());
+        Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync());
+        Assert.IsFalse(await db.Questions.AnyAsync(q => q.Id == Guid.Empty));
+    }
+
     private static ContentVectorSearchService CreateSearch(WeChatExamDbContext db, QueryHandler handler)
     {
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };

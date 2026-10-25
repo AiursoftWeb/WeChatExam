@@ -111,6 +111,7 @@ public class ContentVectorSearchService(
         CancellationToken cancellationToken)
     {
         if (request.Refresh || !cache.Snapshot().Loaded) await cache.LoadAsync(db, cancellationToken);
+        if (request.Text != null) return await TryEmbedQueryAsync(request.Text, cancellationToken);
         byte[]? stored;
         string savedText;
         if (isKnowledgePoint)
@@ -125,9 +126,7 @@ public class ContentVectorSearchService(
             stored = question.LastEmbeddedAt >= question.LastUpdatedAt ? question.Embedding : null;
             savedText = $"{question.QuestionType}\n{question.Content}\n{question.Metadata}\n{question.StandardAnswer}\n{question.Explanation}";
         }
-        var vector = request.Text == null ? EmbeddingHelper.Deserialize(stored) : null;
-        vector ??= await TryEmbedQueryAsync(request.Text ?? savedText, cancellationToken);
-        return vector;
+        return EmbeddingHelper.Deserialize(stored) ?? await TryEmbedQueryAsync(savedText, cancellationToken);
     }
 
     private IQueryable<Question> QuestionScope(Guid[] categoryIds, QuestionType? questionType)

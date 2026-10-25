@@ -225,6 +225,55 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task DraftSimilarityAllowsCreatorsWithoutEditPermissionAndRequiresCsrfAndValidText()
+    {
+        var endpoint = "/ContentSearch/SimilarQuestionDrafts";
+        Assert.AreEqual(HttpStatusCode.Found, (await Http.PostAsJsonAsync(endpoint, new { text = "Draft" })).StatusCode);
+        var (email, password) = await RegisterAndLoginAsync();
+        using var scope = Server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var user = await manager.FindByEmailAsync(email);
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanReadQuestions))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var token = await GetAntiCsrfToken("/");
+        using (var forbidden = new HttpRequestMessage(HttpMethod.Post, endpoint))
+        {
+            forbidden.Content = JsonContent.Create(new { text = "Draft" }); forbidden.Headers.Add("RequestVerificationToken", token);
+            var denied = await Http.SendAsync(forbidden);
+            Assert.IsTrue(denied.StatusCode == HttpStatusCode.Forbidden || denied.Headers.Location!.ToString().Contains("/Error/Unauthorized"));
+        }
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanAddQuestions))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var page = await Http.GetStringAsync("/Questions/Create");
+        Assert.Contains("data-draft=\"true\"", page); Assert.Contains("/js/content-editor.js", page);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(endpoint, new { text = "Draft" })).StatusCode);
+        token = await GetAntiCsrfToken("/Questions/Create");
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var originalCount = await db.Questions.CountAsync();
+        foreach (var text in new[] { "Draft with options and an answer", "", new string('x', 20001) })
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
+            request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { text });
+            var response = await Http.SendAsync(request);
+            Assert.AreEqual(text.Length is > 0 and <= 20000 ? HttpStatusCode.OK : HttpStatusCode.BadRequest, response.StatusCode);
+        }
+        using (var request = new HttpRequestMessage(HttpMethod.Post, endpoint))
+        {
+            request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { id = Guid.NewGuid(), text = "Draft" });
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.SendAsync(request)).StatusCode);
+        }
+        Assert.AreEqual(originalCount, await db.Questions.CountAsync());
+        await LoginAsAdmin();
+        token = await GetAntiCsrfToken("/Questions/Create");
+        using var savedRequest = new HttpRequestMessage(HttpMethod.Post, "/ContentSearch/SimilarQuestions");
+        savedRequest.Headers.Add("RequestVerificationToken", token); savedRequest.Content = JsonContent.Create(new { id = Guid.NewGuid(), text = "Draft" });
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.SendAsync(savedRequest)).StatusCode,
+            "The existing saved-question endpoint must still reject missing source records.");
+    }
+
+    [TestMethod]
     public async Task QuestionReorderingPreservesEmbeddingAndReturnsToSearch()
     {
         await LoginAsAdmin();

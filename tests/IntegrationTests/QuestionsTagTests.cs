@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.EntityFrameworkCore;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -140,17 +141,37 @@ public class QuestionsTagTests
     }
 
     [TestMethod]
-    public async Task CreatePageRenderingTest()
+    public async Task CreatePageKeepsTagsAfterValidation()
     {
         await LoginAsAdminAsync();
-
-        // 1. Get Create Page
-        var createResponse = await _http.GetAsync("/Questions/Create");
-        createResponse.EnsureSuccessStatusCode();
-        var createHtml = await createResponse.Content.ReadAsStringAsync();
-
-        Assert.IsTrue(createHtml.Contains("const initialTags = ["), "Should contain JSON array assignment (likely empty)");
-        Assert.IsTrue(createHtml.Contains("TagInput.init(tagInput, tagHidden, initialTags);"), "Should pass initialTags to init");
-        Assert.IsFalse(createHtml.Contains("TagInput.init(tagInput, tagHidden, []);"), "Should not pass empty array literal directly");
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var category = new Category { Id = Guid.NewGuid(), Title = "Draft tag category", ParentId = null };
+        db.Categories.Add(category); await db.SaveChangesAsync();
+        var text = $"Draft tagged question {Guid.NewGuid()}";
+        var tags = "伯牙 琴曲";
+        var form = new Dictionary<string, string>
+        {
+            ["Content"] = text, ["QuestionType"] = "0", ["GradingStrategy"] = "0",
+            ["Options[0]"] = "A", ["Options[1]"] = "B", ["StandardAnswer"] = "A",
+            ["CategoryId"] = "", ["Tags"] = tags,
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken("/Questions/Create")
+        };
+        var invalid = await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(form));
+        invalid.EnsureSuccessStatusCode();
+        var html = await invalid.Content.ReadAsStringAsync();
+        var hiddenTags = Regex.Match(html, @"<input\b(?=[^>]*\bname=""Tags"")[^>]*\bvalue=""([^""]*)""");
+        Assert.IsTrue(hiddenTags.Success);
+        Assert.AreEqual(tags, WebUtility.HtmlDecode(hiddenTags.Groups[1].Value));
+        Assert.Contains("content-editor.js", html);
+        Assert.IsFalse(await db.Questions.AnyAsync(q => q.Content == text));
+        form["CategoryId"] = category.Id.ToString();
+        form["__RequestVerificationToken"] = await GetAntiCsrfToken("/Questions/Create");
+        var saved = await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(form));
+        Assert.AreEqual(HttpStatusCode.Found, saved.StatusCode);
+        var question = await db.Questions.SingleAsync(q => q.Content == text);
+        var actualTags = await db.QuestionTags.Where(q => q.QuestionId == question.Id)
+            .Select(q => q.Tag.DisplayName).ToArrayAsync();
+        CollectionAssert.AreEquivalent(tags.Split(' '), actualTags);
     }
 }

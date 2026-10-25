@@ -63,6 +63,16 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
+    public async Task<IActionResult> SimilarQuestionDrafts([FromBody] RecommendationRequest request)
+    {
+        if (!ModelState.IsValid || request.Id != Guid.Empty || string.IsNullOrWhiteSpace(request.Text)) return BadRequest();
+        var (available, results) = await search.RecommendAsync(request, false, HttpContext.RequestAborted);
+        return Json(new { available, results });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
     public async Task<IActionResult> SimilarQuestions([FromBody] RecommendationRequest request)
     {
