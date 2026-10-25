@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>Trắc nghiệm</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>So sánh tối đa năm câu hỏi tương tự trước khi lưu. Tương tự không có nghĩa là chúng là câu hỏi trùng lặp.</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>Định nghĩa</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>Chỉnh sửa trong tab mới</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>Nhập nội dung câu hỏi, sau đó tìm các câu hỏi tương tự.</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>Bài luận</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>Điền vào chỗ trống</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>Tìm câu hỏi tương tự</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>Đang tìm các câu hỏi thi liên quan...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Làm mới</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>Tìm kiếm trong danh mục đã chọn hoặc trong tất cả danh mục nếu chưa chọn danh mục nào.</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>Câu trả lời ngắn</value>

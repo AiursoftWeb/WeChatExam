@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Alle Typen</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Antwort</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Massen-Hinzufügen über MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Fragen finden</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Ähnliche Fragen finden</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Kostenloses Papier</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Die Auswahl bleibt erhalten, wenn Sie erneut suchen. Fügen Sie sie hinzu, wenn Sie bereit sind.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Ähnliche Fragen sind nicht verfügbar. Bitte versuchen Sie es später erneut.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Ähnlich wie: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Intelligente Suche (Standard)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Eingeben, um nach Tags zu suchen oder neue hinzuzufügen...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Bis zu fünf ähnliche Fragen aus der ausgewählten Kategorie oder aus allen Kategorien, falls keine ausgewählt ist. Bereits im Fragenkatalog enthaltene Fragen werden ausgeschlossen. Wählen Sie Fragen zum Hinzufügen aus; die ursprüngliche Frage bleibt unverändert.</value>
   </data>
 
 </root>

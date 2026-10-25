@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Tarkista tunnisteet ja käyttöoikeussuositukset</value>
   </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>Verrataan esikatselun kysymystä {0}</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Valmis</value>
   </data>
@@ -80,6 +83,9 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>Epäonnistui</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Etsi samankaltaisia kysymyksiä</value>
   </data>
   <data name="Follow title again" xml:space="preserve">
     <value>Noudata otsikkoa uudelleen</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Korvataanko muokattu esikatselu uudella poiminnalla?</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>Tarkista vastaavat olemassa olevat kysymykset ennen tallennusta. Jos haluat jättää esikatselukysymyksen pois, käytä sen Poista-toimintoa. Olemassa olevia kysymyksiä ei käytetä uudelleen automaattisesti.</value>
   </data>
   <data name="Save draft manually" xml:space="preserve">
     <value>Tallenna luonnos manuaalisesti</value>

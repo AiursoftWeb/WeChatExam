@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>Múltipla escolha</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>Compare até cinco questões semelhantes antes de salvar. A semelhança não significa que sejam duplicadas.</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>Definição</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>Editar em uma nova aba</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>Digite o conteúdo da questão e encontre questões semelhantes.</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>Dissertativa</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>Complete a lacuna</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>Encontrar similares</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>Localizando questões de prova relacionadas...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Atualizar</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>Pesquisa na categoria selecionada ou em todas as categorias, caso nenhuma esteja selecionada.</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>Resposta curta</value>

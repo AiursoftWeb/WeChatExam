@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>ปรนัย</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>เปรียบเทียบคำถามที่คล้ายกันได้สูงสุดห้าข้อก่อนบันทึก ความคล้ายกันไม่ได้หมายความว่าเป็นคำถามซ้ำกัน</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>คำจำกัดความ</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>แก้ไขในแท็บใหม่</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>ป้อนเนื้อหาคำถาม แล้วค้นหาคำถามที่คล้ายกัน</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>อัตนัย</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>เติมคำในช่องว่าง</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>ค้นหาข้อสอบที่คล้ายกัน</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>กำลังค้นหาข้อสอบที่เกี่ยวข้อง...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>รีเฟรช</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>ค้นหาในหมวดหมู่ที่เลือก หรือค้นหาทุกหมวดหมู่หากไม่ได้เลือกหมวดหมู่</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>คำตอบสั้น</value>

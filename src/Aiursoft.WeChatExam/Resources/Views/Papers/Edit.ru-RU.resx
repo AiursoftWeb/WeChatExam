@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Все типы</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Ответ</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Пакетное добавление через MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Найти вопросы</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Найти похожие вопросы</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Бесплатный тест</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Выбранные вопросы сохраняются при повторном поиске. Добавьте их, когда будете готовы.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Похожие вопросы недоступны. Пожалуйста, попробуйте позже.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Похоже на: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Интеллектуальный поиск (по умолчанию)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Введите для поиска или добавления тегов...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>До пяти похожих вопросов из выбранной категории или из всех категорий, если категория не выбрана. Вопросы, уже добавленные в тест, не учитываются. Выберите вопросы для добавления; исходный вопрос останется без изменений.</value>
   </data>
 
 </root>

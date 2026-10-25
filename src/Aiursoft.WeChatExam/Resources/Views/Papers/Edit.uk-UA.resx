@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Усі типи</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Відповідь</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Пакетне додавання через MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Знайти запитання</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Знайти схожі запитання</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Безкоштовний тест</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Вибрані елементи зберігаються під час повторного пошуку. Додайте їх, коли будете готові.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Схожі запитання недоступні. Будь ласка, спробуйте пізніше.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Схоже на: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Розумний пошук (за замовчуванням)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Введіть, щоб знайти або додати теги...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>До п’яти схожих запитань у вибраній категорії або в усіх категоріях, якщо жодну не вибрано. Запитання, які вже є в тесті, не враховуються. Виберіть запитання, які потрібно додати; початкове запитання залишиться без змін.</value>
   </data>
 
 </root>

@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>タグとアクセスに関する推奨事項を確認</value>
   </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>プレビューの質問 {0} を比較中</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>完了</value>
   </data>
@@ -80,6 +83,9 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>失敗</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>類似する問題を検索</value>
   </data>
   <data name="Follow title again" xml:space="preserve">
     <value>タイトルに再度連動</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>編集済みのプレビューを新しい抽出結果で置き換えますか？</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>保存する前に、類似する既存の質問を確認してください。プレビュー中の質問を除外するには、その質問の「削除」操作を使用してください。既存の質問は自動的に再利用されません。</value>
   </data>
   <data name="Save draft manually" xml:space="preserve">
     <value>下書きを手動で保存</value>

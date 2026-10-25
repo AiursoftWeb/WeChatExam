@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>Flervalsfråga</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>Jämför upp till fem liknande frågor innan du sparar. Att frågor liknar varandra betyder inte att de är dubbletter.</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>Definition</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>Redigera i ny flik</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>Ange frågans innehåll och sök sedan efter liknande frågor.</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>Uppsats</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>Fyll i luckan</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>Hitta liknande</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>Hittar relaterade provfrågor...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Uppdatera</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>Söker i den valda kategorin, eller i alla kategorier om ingen har valts.</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>Kort svar</value>

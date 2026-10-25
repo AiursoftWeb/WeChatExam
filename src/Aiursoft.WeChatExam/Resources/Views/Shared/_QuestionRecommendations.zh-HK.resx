@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>選擇題</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>儲存前可比較最多五條相似題目。相似並不代表它們是重複題目。</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>定義</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>在新分頁中編輯</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>輸入題目內容，然後尋找相似題目。</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>論述題</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>填充空格</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>尋找相似題目</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>正在尋找相關考試題目……</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>重新整理</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>在所選分類中搜尋；如未選擇分類，則搜尋所有分類。</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>簡答</value>

@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Alla typer</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Svar</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Massupp till MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Hitta frågor</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Hitta liknande frågor</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Gratis prov</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Dina val behålls när du söker igen. Lägg till dem när du är redo.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Liknande frågor är inte tillgängliga. Försök igen senare.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Liknar: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Smart sökning (standard)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Skriv för att söka eller lägga till taggar...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Upp till fem liknande frågor i den valda kategorin, eller i alla kategorier om ingen är vald. Frågor som redan finns i provet utesluts. Välj frågor att lägga till; originalfrågan förblir oförändrad.</value>
   </data>
 
 </root>

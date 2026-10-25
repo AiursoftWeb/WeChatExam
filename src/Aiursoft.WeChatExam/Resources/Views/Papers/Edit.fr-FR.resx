@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>Tous les types</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Réponse</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>Ajout par lot via MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Trouver des questions</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Trouver des questions similaires</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Épreuve gratuite</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>Les sélections sont conservées lorsque vous effectuez une nouvelle recherche. Ajoutez-les quand vous le souhaitez.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Les questions similaires ne sont pas disponibles. Veuillez réessayer plus tard.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Similaire à : {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>Recherche intelligente (par défaut)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>Tapez pour rechercher ou ajouter des tags...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Jusqu&apos;à cinq questions similaires dans la catégorie sélectionnée, ou dans toutes les catégories si aucune n&apos;est sélectionnée. Les questions existantes du papier sont exclues. Sélectionnez les candidats à ajouter ; la question d&apos;origine reste inchangée.</value>
   </data>
 
 </root>

@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>الإجابة</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>إضافة دفعة عبر MTQL</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>العثور على الأسئلة</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>العثور على أسئلة مشابهة</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>ورقة مجانية</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>يتم الاحتفاظ بالتحديدات عند البحث مرة أخرى. أضِفها عندما تكون مستعدًا.</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>الأسئلة المشابهة غير متاحة. يُرجى المحاولة مرة أخرى لاحقًا.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>مشابه لـ: {0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>البحث الذكي (افتراضي)</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>اكتب للبحث أو إضافة الوسوم...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>حتى خمسة أسئلة مشابهة في التصنيف المحدد، أو جميع التصنيفات إذا لم يتم تحديد أيٍّ منها. تُستبعد أسئلة الامتحان الموجودة مسبقًا. اختر المرشحين للإضافة؛ يبقى السؤال الأصلي دون تغيير.</value>
   </data>
 
 </root>

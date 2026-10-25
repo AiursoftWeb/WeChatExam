@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Tags prüfen und Zugriffsempfehlungen anzeigen</value>
   </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>Vorschaufrage {0} wird verglichen</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Abgeschlossen</value>
   </data>
@@ -80,6 +83,9 @@
   </data>
   <data name="Failed" xml:space="preserve">
     <value>Fehlgeschlagen</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Ähnliche Fragen finden</value>
   </data>
   <data name="Follow title again" xml:space="preserve">
     <value>Titel erneut übernehmen</value>
@@ -140,6 +146,9 @@
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Die bearbeitete Vorschau durch eine neue Extraktion ersetzen?</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>Prüfen Sie vor dem Speichern, ob ähnliche Fragen bereits vorhanden sind. Um eine Frage aus der Vorschau auszuschließen, verwenden Sie die Aktion „Löschen“. Vorhandene Fragen werden nicht automatisch wiederverwendet.</value>
   </data>
   <data name="Save draft manually" xml:space="preserve">
     <value>Entwurf manuell speichern</value>

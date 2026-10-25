@@ -48,6 +48,9 @@
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
   </data>
+  <data name="Answer" xml:space="preserve">
+    <value>答案</value>
+  </data>
   <data name="Batch Add via MTQL" xml:space="preserve">
     <value>批次新增（透過 MTQL）</value>
   </data>
@@ -92,6 +95,9 @@
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>尋找問題</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>尋找類似問題</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>免費試卷</value>
@@ -183,6 +189,12 @@
   <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
     <value>重新搜尋時，已選項目會保留。準備好後即可新增。</value>
   </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>類似問題暫時無法使用。請稍後再試。</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>類似於：{0}</value>
+  </data>
   <data name="Smart Search (Default)" xml:space="preserve">
     <value>智能搜尋（預設）</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>輸入以搜尋或新增標籤...</value>
+  </data>
+  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>最多顯示五條所選分類中的相似問題；如未有選擇分類，則顯示所有分類的相似問題。已在試卷中的問題不會顯示。選取要加入的候選問題；原有問題不會更改。</value>
   </data>
 
 </root>

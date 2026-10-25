@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>選択問題</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>保存する前に、類似する問題を最大5問まで比較できます。類似していても、重複しているとは限りません。</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>定義</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>新しいタブで編集</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>問題の内容を入力してから、類似する問題を検索してください。</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>小論文</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>穴埋め</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>類似する項目を検索</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>関連する試験問題を検索しています...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>更新</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>選択したカテゴリ内を検索します。カテゴリが選択されていない場合は、すべてのカテゴリを検索します。</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>記述式</value>

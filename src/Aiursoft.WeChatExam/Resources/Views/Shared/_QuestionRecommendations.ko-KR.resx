@@ -27,17 +27,26 @@
   <data name="Choice" xml:space="preserve">
     <value>객관식</value>
   </data>
+  <data name="Compare up to five similar questions before saving. Similarity does not mean they are duplicates." xml:space="preserve">
+    <value>저장하기 전에 유사한 문제를 최대 5개까지 비교해 보세요. 유사하다고 해서 중복 문제라는 뜻은 아닙니다.</value>
+  </data>
   <data name="Definition" xml:space="preserve">
     <value>정의</value>
   </data>
   <data name="Edit in New Tab" xml:space="preserve">
     <value>새 탭에서 편집</value>
   </data>
+  <data name="Enter question content, then find similar questions." xml:space="preserve">
+    <value>문제 내용을 입력한 다음, 유사한 문제를 찾아보세요.</value>
+  </data>
   <data name="Essay" xml:space="preserve">
     <value>논술형</value>
   </data>
   <data name="Fill in the Blank" xml:space="preserve">
     <value>빈칸 채우기</value>
+  </data>
+  <data name="Find Similar" xml:space="preserve">
+    <value>유사 항목 찾기</value>
   </data>
   <data name="Finding related exam questions..." xml:space="preserve">
     <value>관련 시험 문제를 찾는 중...</value>
@@ -59,6 +68,9 @@
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>새로고침</value>
+  </data>
+  <data name="Searches within the selected category, or all categories if none is selected." xml:space="preserve">
+    <value>선택한 범주에서 검색하며, 선택한 범주가 없으면 모든 범주에서 검색합니다.</value>
   </data>
   <data name="Short Answer" xml:space="preserve">
     <value>단답형</value>
