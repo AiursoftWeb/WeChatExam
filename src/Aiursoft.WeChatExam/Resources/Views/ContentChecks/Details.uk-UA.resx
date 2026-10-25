@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Вміст, якого це стосується</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Усі уражені матеріали</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Дозволено</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Будь-хто може відкрити цю вправу без входу в систему.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Назад до результатів</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Перш ніж змінювати спільний тег, перевірте весь вміст, на який він впливає, нижче.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Переглянути повний список</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Перевірити цей сценарій</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Точка входу</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Вправа {0} із {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Вправа: можна відкрити</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Вправа: неможливо відкрити</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Вправи</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Вправи в цьому результаті</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Для нашої команди</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Його платні позначки вказують, що вправа є платною; вони не вимагають додаткового членства в курсах.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Текст навчального матеріалу є загальнодоступним. Доступ до вправи нижче визначається чинними правилами сервера; можливість надсилати відповіді та зберігати їх тут не перевіряється.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Бали знань</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Відомості та відповідна вправа</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Текст матеріалу: загальнодоступний</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Пов&apos;язане вправлення</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Потребує уваги</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Наступна вправа</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>До цієї вправи не прив’язано жодного навчального пункту.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Відкрити налаштування</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Будь ласка, підтвердьте</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Попередня вправа</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Тарифний план</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Пов’язані налаштування та посилання для редагування</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Переглянути спільний вплив</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Спільні позначки впливають на {0} вправ у {1} курсах.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Увійдіть, маючи активний VIP для курсу, до якого належить ця вправа:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>Потрібно увійти в обліковий запис і мати VIP-доступ до відповідного курсу.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>Оплачений тег не покривається: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Ці результати оцінюють поточний доступ до сервера. Вони не імітують усі екрани мініпрограми та сценарії надсилання даних. Кожна сторінка повторно зчитує поточну конфігурацію.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Для цього облікового запису потрібен власний VIP-статус курсу цієї вправи.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Для цієї вправи не призначено курсу. Кожен платний тег має бути покритий активним VIP-доступом до курсу.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Ця вправа має кілька платних тегів. Якщо зробити безкоштовним лише один тег, вправа може залишитися обмеженою.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Сценарій користувача</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>Що потрібно переглянути</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Хто може відкрити цей матеріал?</value>
   </data>
 
 </root>

@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Περιεχόμενο που επηρεάζεται</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Όλο το περιεχόμενο που επηρεάζεται</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>Επιτρέπεται</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Οποιοσδήποτε μπορεί να φορτώσει αυτή την άσκηση χωρίς να συνδεθεί.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Επιστροφή στα αποτελέσματα</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Πριν αλλάξετε μια κοινόχρηστη ετικέτα, ελέγξτε παρακάτω όλο το περιεχόμενο που επηρεάζει.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Προβολή πλήρους λίστας</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Έλεγχος αυτού του σεναρίου</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Σημείο εισόδου</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Άσκηση {0} από {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Άσκηση: μπορεί να ανοίξει</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Άσκηση: δεν είναι δυνατή η πρόσβαση</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Ασκήσεις</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Ασκήσεις σε αυτό το αποτέλεσμα</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Για την ομάδα μας</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Οι πληρωμένες ετικέτες του επισημαίνουν την άσκηση ως επί πληρωμή· δεν απαιτούν επιπλέον συνδρομές σε μαθήματα.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Το κείμενο του σημείου γνώσης είναι δημόσιο. Η πρόσβαση στην άσκηση παρακάτω ακολουθεί τους ισχύοντες κανόνες του διακομιστή· η υποβολή και η αποθήκευση απαντήσεων δεν ελέγχονται εδώ.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Σημεία γνώσης</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Σημεία γνώσης και η αντίστοιχη άσκηση</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Κείμενο γνώσεων: δημόσιο</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Συνδεδεμένη άσκηση</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Χρειάζεται προσοχή</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Επόμενη άσκηση</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Δεν έχει συνδεθεί κανένα σημείο γνώσης με αυτή την άσκηση.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Άνοιγμα ρυθμίσεων</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Παρακαλώ επιβεβαιώστε</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Προηγούμενη άσκηση</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Ρύθμιση τιμολόγησης</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Σχετικές ρυθμίσεις και σύνδεσμοι επεξεργασίας</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Ελέγξτε τον αντίκτυπο στους κοινόχρηστους πόρους</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Οι κοινές ετικέτες επηρεάζουν {0} ασκήσεις σε {1} μαθήματα.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Συνδεθείτε με ενεργή VIP συνδρομή για το μάθημα στο οποίο ανήκει η άσκηση:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>Απαιτείται σύνδεση και το VIP του αντίστοιχου μαθήματος.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>Η επί πληρωμή ετικέτα δεν καλύπτεται: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Αυτά τα αποτελέσματα αξιολογούν την τρέχουσα πρόσβαση στον διακομιστή. Δεν προσομοιώνουν κάθε οθόνη του Mini Program ή κάθε ροή υποβολής. Κάθε σελίδα διαβάζει ξανά την τρέχουσα διαμόρφωση.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Αυτός ο λογαριασμός χρειάζεται τη VIP πρόσβαση στο μάθημα του συγκεκριμένου σετ ασκήσεων.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Αυτή η άσκηση δεν έχει αντιστοιχισμένο μάθημα. Κάθε επί πληρωμή ετικέτα πρέπει να καλύπτεται από ενεργή συνδρομή VIP σε μάθημα.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Αυτή η άσκηση έχει πολλές ετικέτες επί πληρωμή. Αν καταργηθεί η χρέωση μόνο για μία ετικέτα, η άσκηση ενδέχεται να παραμείνει περιορισμένη.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Σενάριο χρήστη</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>Τι πρέπει να ελέγξετε</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Ποιος μπορεί να ανοίξει αυτό το περιεχόμενο;</value>
   </data>
 
 </root>

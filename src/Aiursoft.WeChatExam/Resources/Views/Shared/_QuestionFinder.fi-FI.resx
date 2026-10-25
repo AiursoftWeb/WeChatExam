@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Lisäasetukset: tunnistelauseke (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Tekoälyn semanttinen haku</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Tekoälyn semanttista hakua ei käytetty. Näytetään avainsanahaun tulokset.</value>
+  </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Kaikki tyypit</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>Liitä</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Yhdistä tunnisteita, esimerkiksi: rock &amp;&amp; ei metal</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>esim. rock &amp;&amp; not metal</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Kirjoita muutama sana löytääksesi kysymyksiä.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Kirjoita aihe tai muutama sana...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Kysymyksen tyyppi kokeessa</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Etsi täsmällisiä sanoja ja niihin liittyviä merkityksiä.</value>
+  </data>
+  <data name="Find Exam Questions to Associate" xml:space="preserve">
+    <value>Etsi liitettävät koetehtävät</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Etsi kysymyksiä</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Avainsanahaku</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Etsi sanoja kysymyksen tekstistä, vastauksista ja selityksistä.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Kysymyksiä ei löytynyt.</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Poista</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Hae</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Haku ei ole käytettävissä. Yritä uudelleen.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Hakutila</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Haetaan...</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Älykäs haku (oletus)</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Tunnisteilmaisuhaku (MTQL)</value>
+  </data>
+
+</root>

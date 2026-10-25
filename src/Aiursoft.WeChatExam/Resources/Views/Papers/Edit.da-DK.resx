@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Tilføj valgte</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Tilføj valgte ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Avanceret: Tagudtryk (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI-semantisk søgning</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI-semantisk søgning blev ikke brugt. Viser søgeordresultater.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typer</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Kombinér tags, f.eks.: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Indhold</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Kladd</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>f.eks. rock &amp;&amp; ikke metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Rediger papir</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Indtast et par ord for at finde spørgsmål.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Indtast et emne eller et par ord...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Spørgsmålstype til eksamen</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Find præcise ord og relaterede betydninger.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Find spørgsmål</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Frit papir</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Lås</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Søgeordssøgning</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Marker som publicerbar</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Match ord i spørgsmålets tekst, svar og forklaringer.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Ingen spørgsmål fundet.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Rækkefølge</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Tryk på Enter for at tilføje et mærkat, eller vælg fra forslag. Klik på X for at fjerne.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Forhåndsvisning</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Udgiv snapshot</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Faktisk eksamen</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Fjern</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Tilbage til kladde</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Gem</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Gem, og vend tilbage til indholdstjek</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Point</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Søg &amp; Tilføj Spørgsmål</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Søgning er ikke tilgængelig. Prøv igen.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Søgetilstand</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Søger...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Vælg alle resultater</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Vælg spørgsmål</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Valgte spørgsmål</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Vælger du en kategori, vil den filtrere de tilgængelige spørgsmål.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Dine valg bevares, når du søger igen. Tilføj dem, når du er klar.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Smart søgning (standard)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Startordre</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Statushandlinger</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Søgning med tagudtryk (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Mærker</value>

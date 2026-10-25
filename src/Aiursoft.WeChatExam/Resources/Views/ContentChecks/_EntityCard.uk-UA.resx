@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Available to buy" xml:space="preserve">
+    <value>Доступно для придбання</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Курс</value>
+  </data>
+  <data name="Course VIPs linked to this tag entry" xml:space="preserve">
+    <value>VIP-користувачі курсу, пов’язані з цим тегом</value>
+  </data>
+  <data name="Edit course" xml:space="preserve">
+    <value>Редагувати курс</value>
+  </data>
+  <data name="Edit exercise" xml:space="preserve">
+    <value>Редагувати вправу</value>
+  </data>
+  <data name="Edit knowledge point" xml:space="preserve">
+    <value>Редагувати пункт знань</value>
+  </data>
+  <data name="Edit paper" xml:space="preserve">
+    <value>Редагувати тест</value>
+  </data>
+  <data name="Edit tag" xml:space="preserve">
+    <value>Редагувати тег</value>
+  </data>
+  <data name="Edit taxonomy" xml:space="preserve">
+    <value>Редагувати таксономію</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Редагувати VIP-продукт</value>
+  </data>
+  <data name="Exercise" xml:space="preserve">
+    <value>Вправа</value>
+  </data>
+  <data name="Knowledge point" xml:space="preserve">
+    <value>Тема знань</value>
+  </data>
+  <data name="None configured" xml:space="preserve">
+    <value>Не налаштовано</value>
+  </data>
+  <data name="Not assigned" xml:space="preserve">
+    <value>Не призначено</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Платний</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Тест</value>
+  </data>
+  <data name="Public / free" xml:space="preserve">
+    <value>Публічний / безкоштовний</value>
+  </data>
+  <data name="Read full exercise" xml:space="preserve">
+    <value>Читати всю вправу</value>
+  </data>
+  <data name="Sales disabled" xml:space="preserve">
+    <value>Продаж вимкнено</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Тег</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Таксономія</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
+    <value>Використовується у вправах ({0}), пов’язаних із базою знань ({1}). Зміна ціни тегу впливає на всі ці вправи.</value>
+  </data>
+  <data name="View frozen paper" xml:space="preserve">
+    <value>Переглянути заморожений тест</value>
+  </data>
+  <data name="View only: editing permission is required" xml:space="preserve">
+    <value>Лише перегляд: потрібен дозвіл на редагування</value>
+  </data>
+  <data name="View relationship" xml:space="preserve">
+    <value>Переглянути зв’язок</value>
+  </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>VIP-продукт</value>
+  </data>
+
+</root>
