@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI Semantic Search" xml:space="preserve">
+    <value>Ricerca semantica con IA</value>
+  </data>
+  <data name="All Categories" xml:space="preserve">
+    <value>Tutte le categorie</value>
+  </data>
+  <data name="All Content" xml:space="preserve">
+    <value>Tutti i contenuti</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Content Type" xml:space="preserve">
+    <value>Tipo di contenuto</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifica</value>
+  </data>
+  <data name="Exam Question" xml:space="preserve">
+    <value>Domanda d’esame</value>
+  </data>
+  <data name="Exam Questions" xml:space="preserve">
+    <value>Domande d&apos;esame</value>
+  </data>
+  <data name="Find existing content before editing or creating something new." xml:space="preserve">
+    <value>Cerca contenuti esistenti prima di modificarne o crearne di nuovi.</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Ricerca per parole chiave</value>
+  </data>
+  <data name="Knowledge Point" xml:space="preserve">
+    <value>Punto di conoscenza</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Argomenti</value>
+  </data>
+  <data name="No matching content found. Try fewer words or another category." xml:space="preserve">
+    <value>Nessun contenuto corrispondente trovato. Prova con meno parole o un’altra categoria.</value>
+  </data>
+  <data name="Questions and knowledge points" xml:space="preserve">
+    <value>Domande e punti di conoscenza</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="Search by name, topic, or a few words..." xml:space="preserve">
+    <value>Cerca per nome, argomento o poche parole...</value>
+  </data>
+  <data name="Search Content" xml:space="preserve">
+    <value>Cerca contenuti</value>
+  </data>
+  <data name="Show Answer" xml:space="preserve">
+    <value>Mostra risposta</value>
+  </data>
+  <data name="Showing up to 50 relevant results. Refine your search to narrow the list." xml:space="preserve">
+    <value>Fino a 50 risultati pertinenti. Per restringere l’elenco, affina la ricerca.</value>
+  </data>
+
+</root>

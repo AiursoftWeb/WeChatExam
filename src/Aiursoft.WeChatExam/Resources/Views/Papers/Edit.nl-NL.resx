@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Toevoegen geselecteerd</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Geselecteerde toevoegen ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Geavanceerd: tagexpressie (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Semantisch zoeken met AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI-semantisch zoeken is niet gebruikt. Zoekresultaten op basis van trefwoorden worden weergegeven.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle types</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categorie</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Combineer tags, bijvoorbeeld: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Inhoud</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Ontwerp</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>bijv. rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Bewerk Papier</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Voer een paar woorden in om vragen te vinden.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Voer een onderwerp of enkele woorden in...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Type examenvraag</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Zoek op exacte woorden en verwante betekenissen.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Vragen zoeken</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Gratis papier</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Vries</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Zoeken op trefwoord</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Markeer als publiceerbaar</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Zoek naar woorden in de vraagtekst, antwoorden en uitleg.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Geen vragen gevonden.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Volgorde</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Druk op Enter om een tag toe te voegen, of selecteer uit de suggesties. Klik op X om te verwijderen.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Voorbeeld</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Publiceer instantie</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Echt examen</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Terug naar concept</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Opslaan</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Opslaan en terug naar de inhoudscontroles</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Score</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Zoek &amp; Voeg Vragen Toe</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Zoeken is niet beschikbaar. Probeer het opnieuw.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Zoekmodus</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Zoeken...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Alle resultaten selecteren</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Selecteer vraag</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Geselecteerde vragen</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Een categorie kiezen filtert de beschikbare vragen.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Geselecteerde items blijven behouden wanneer u opnieuw zoekt. Voeg ze toe wanneer u er klaar voor bent.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Slim zoeken (standaard)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Startvolgorde</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Statusacties</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Zoeken op tagexpressie (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>

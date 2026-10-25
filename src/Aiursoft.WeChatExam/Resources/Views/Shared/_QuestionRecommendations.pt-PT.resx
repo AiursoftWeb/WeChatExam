@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Answer" xml:space="preserve">
+    <value>Resposta</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>Associar</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Escolha múltipla</value>
+  </data>
+  <data name="Definition" xml:space="preserve">
+    <value>Definição</value>
+  </data>
+  <data name="Edit in New Tab" xml:space="preserve">
+    <value>Editar num novo separador</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Redação</value>
+  </data>
+  <data name="Fill in the Blank" xml:space="preserve">
+    <value>Preenchimento de espaços em branco</value>
+  </data>
+  <data name="Finding related exam questions..." xml:space="preserve">
+    <value>A procurar perguntas de exame relacionadas...</value>
+  </data>
+  <data name="No related exam questions found yet." xml:space="preserve">
+    <value>Ainda não foram encontradas perguntas de exame relacionadas.</value>
+  </data>
+  <data name="Open Details" xml:space="preserve">
+    <value>Abrir detalhes</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Pré-visualizar</value>
+  </data>
+  <data name="Recommendations are unavailable. Please try again later." xml:space="preserve">
+    <value>As recomendações não estão disponíveis. Tente novamente mais tarde.</value>
+  </data>
+  <data name="Recommended Exam Questions" xml:space="preserve">
+    <value>Perguntas de exame recomendadas</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Resposta Curta</value>
+  </data>
+  <data name="Similar Exam Questions" xml:space="preserve">
+    <value>Perguntas de exame semelhantes</value>
+  </data>
+  <data name="True or False" xml:space="preserve">
+    <value>Verdadeiro ou Falso</value>
+  </data>
+  <data name="Up to five related exam questions. Refresh after changing the content." xml:space="preserve">
+    <value>Até cinco perguntas de exame relacionadas. Atualize depois de alterar o conteúdo.</value>
+  </data>
+
+</root>

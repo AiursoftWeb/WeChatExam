@@ -42,8 +42,14 @@
   <data name="Affected content" xml:space="preserve">
     <value>Etkilenen içerik</value>
   </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Etkilenen tüm içerikler</value>
+  </data>
   <data name="Allowed" xml:space="preserve">
     <value>İzin verildi</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Herkes bu alıştırmayı oturum açmadan görüntüleyebilir.</value>
   </data>
   <data name="Back to results" xml:space="preserve">
     <value>Sonuçlara geri dön</value>
@@ -53,6 +59,9 @@
   </data>
   <data name="Before changing a shared tag, check all the content it affects below." xml:space="preserve">
     <value>Paylaşılan bir etiketi değiştirmeden önce, aşağıda etkilediği tüm içerikleri kontrol edin.</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Tam listeye göz atın</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Bu senaryoyu kontrol et</value>
@@ -72,17 +81,50 @@
   <data name="Entry point" xml:space="preserve">
     <value>Giriş noktası</value>
   </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Alıştırma {0} / {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Alıştırma: açılabilir</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Alıştırma: açılamıyor</value>
+  </data>
   <data name="Exercises" xml:space="preserve">
     <value>Alıştırmalar</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Bu sonuçtaki alıştırmalar</value>
   </data>
   <data name="For our team" xml:space="preserve">
     <value>Ekibimiz için</value>
   </data>
+  <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
+    <value>Ücretli etiketleri, alıştırmanın ücretli olduğunu belirtir; ek kurs üyelikleri gerektirmez.</value>
+  </data>
+  <data name="Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Bilgi noktası metni herkese açıktır. Aşağıdaki alıştırmaya erişim mevcut sunucu kurallarına tabidir; yanıtları gönderme ve kaydetme işlemleri burada denetlenmez.</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Bilgi noktaları</value>
   </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Bilgi noktaları ve ilgili alıştırma</value>
+  </data>
+  <data name="Knowledge text: public" xml:space="preserve">
+    <value>Bilgi metni: herkese açık</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>İlişkili alıştırma</value>
+  </data>
   <data name="Needs attention" xml:space="preserve">
     <value>Dikkat gerekiyor</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Sonraki alıştırma</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Bu alıştırmayla ilişkilendirilmiş herhangi bir bilgi noktası yok.</value>
   </data>
   <data name="Open settings" xml:space="preserve">
     <value>Ayarları aç</value>
@@ -93,8 +135,14 @@
   <data name="Please confirm" xml:space="preserve">
     <value>Lütfen onaylayın</value>
   </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Önceki alıştırma</value>
+  </data>
   <data name="Pricing arrangement" xml:space="preserve">
     <value>Fiyatlandırma düzenlemesi</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>İlgili ayarlar ve düzenleme bağlantıları</value>
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Paylaşılan etkileri inceleyin</value>
@@ -108,8 +156,26 @@
   <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
     <value>Paylaşılan etiketler, {1} kurstaki {0} alıştırmayı etkiler.</value>
   </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Alıştırmanın ait olduğu kurs için etkin bir VIP hesabıyla oturum açın:</value>
+  </data>
+  <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
+    <value>Giriş yapmak ve ilgili ders için gerekli VIP üyeliğine sahip olmak gerekir.</value>
+  </data>
+  <data name="The paid tag is not covered: {0}" xml:space="preserve">
+    <value>Ücretli etiket kapsam dahilinde değil: {0}</value>
+  </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Bu sonuçlar, sunucuya şu anda erişilip erişilemediğini değerlendirir. Her Mini Program ekranını veya gönderim akışını simüle etmez. Her sayfa geçerli yapılandırmayı yeniden okur.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Bu hesabın, alıştırmanın ait olduğu kursa özel VIP üyeliğine sahip olması gerekiyor.</value>
+  </data>
+  <data name="This exercise has no assigned course. Every paid tag must be covered by an active course VIP." xml:space="preserve">
+    <value>Bu alıştırmaya herhangi bir kurs atanmamış. Ücretli her etiket, etkin bir kurs VIP üyeliğiyle karşılanmalıdır.</value>
+  </data>
+  <data name="This exercise has several paid tags. Making only one tag free may leave the exercise restricted." xml:space="preserve">
+    <value>Bu alıştırmada birden fazla ücretli etiket var. Yalnızca bir etiketi ücretsiz yapmak, alıştırmanın kısıtlı kalmasına neden olabilir.</value>
   </data>
   <data name="User scenario" xml:space="preserve">
     <value>Kullanıcı senaryosu</value>
@@ -125,6 +191,9 @@
   </data>
   <data name="What to review" xml:space="preserve">
     <value>Neler gözden geçirilmeli</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Bu içeriği kimler açabilir?</value>
   </data>
 
 </root>

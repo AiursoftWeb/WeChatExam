@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Добавить выбранные</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Добавить выбранные ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Расширенный поиск: выражение тегов (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Семантический поиск с помощью ИИ</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Семантический поиск с помощью ИИ не использовался. Показаны результаты поиска по ключевым словам.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Все типы</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Объединяйте теги, например: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Содержание</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Черновик</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>например: rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Редактировать тест</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Введите несколько слов, чтобы найти вопросы.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Введите тему или несколько слов...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Тип экзаменационного вопроса</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Находите точные слова и связанные с ними значения.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Найти вопросы</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Бесплатный тест</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Заморозить</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Поиск по ключевым словам</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Отметить как доступный для публикации</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Сопоставляет слова в тексте вопроса, ответах и пояснениях.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Вопросы не найдены.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Порядок</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Нажмите Enter, чтобы добавить тег, или выберите из предложений. Нажмите X, чтобы удалить.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Предпросмотр</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Опубликовать снимок</value>
@@ -92,6 +137,9 @@
   </data>
   <data name="Real Exam" xml:space="preserve">
     <value>Реальный экзамен</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Отменить публикацию и вернуть в черновик</value>
@@ -111,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Поиск и добавление вопросов</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Поиск недоступен. Пожалуйста, попробуйте ещё раз.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Режим поиска</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Поиск...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Выбрать все результаты</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Выберите вопрос</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Выбранные вопросы</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Выбор категории приведет к фильтрации доступных вопросов.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Выбранные вопросы сохраняются при повторном поиске. Добавьте их, когда будете готовы.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Интеллектуальный поиск (по умолчанию)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Начальный порядок</value>
@@ -125,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Действия по статусу</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Поиск по выражениям тегов (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Теги</value>

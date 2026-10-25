@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Answer" xml:space="preserve">
+    <value>Svar</value>
+  </data>
+  <data name="Associate" xml:space="preserve">
+    <value>Koppla</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Flervalsfråga</value>
+  </data>
+  <data name="Definition" xml:space="preserve">
+    <value>Definition</value>
+  </data>
+  <data name="Edit in New Tab" xml:space="preserve">
+    <value>Redigera i ny flik</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Uppsats</value>
+  </data>
+  <data name="Fill in the Blank" xml:space="preserve">
+    <value>Fyll i luckan</value>
+  </data>
+  <data name="Finding related exam questions..." xml:space="preserve">
+    <value>Hittar relaterade provfrågor...</value>
+  </data>
+  <data name="No related exam questions found yet." xml:space="preserve">
+    <value>Inga relaterade provfrågor har hittats ännu.</value>
+  </data>
+  <data name="Open Details" xml:space="preserve">
+    <value>Öppna detaljer</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Förhandsvisning</value>
+  </data>
+  <data name="Recommendations are unavailable. Please try again later." xml:space="preserve">
+    <value>Rekommendationer är inte tillgängliga. Försök igen senare.</value>
+  </data>
+  <data name="Recommended Exam Questions" xml:space="preserve">
+    <value>Rekommenderade provfrågor</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Kort svar</value>
+  </data>
+  <data name="Similar Exam Questions" xml:space="preserve">
+    <value>Liknande provfrågor</value>
+  </data>
+  <data name="True or False" xml:space="preserve">
+    <value>Sant eller falskt</value>
+  </data>
+  <data name="Up to five related exam questions. Refresh after changing the content." xml:space="preserve">
+    <value>Upp till fem relaterade provfrågor. Uppdatera efter att du har ändrat innehållet.</value>
+  </data>
+
+</root>

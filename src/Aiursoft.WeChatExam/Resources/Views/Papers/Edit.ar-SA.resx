@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>إضافة المحدد</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>إضافة المحدد ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>متقدم: تعبير الوسوم (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>البحث الدلالي بالذكاء الاصطناعي</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>لم يتم استخدام البحث الدلالي بالذكاء الاصطناعي. يتم عرض نتائج الكلمات المفتاحية.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>الفئة</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>ادمج الوسوم، على سبيل المثال: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>المحتوى</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>مسودة</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>مثال: روك &amp;&amp; ليس ميتال</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>تعديل الورقة</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>أدخِل بضع كلمات للعثور على الأسئلة.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>أدخل موضوعًا أو بضع كلمات...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>نوع سؤال الاختبار</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>ابحث عن الكلمات المطابقة تمامًا والمعاني المرتبطة بها.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>العثور على الأسئلة</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>ورقة مجانية</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>تجميد</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>البحث بالكلمات المفتاحية</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>تحديد كمُتاح للنشر</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>طابق الكلمات في نص السؤال والإجابات والتوضيحات.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>لم يتم العثور على أي أسئلة.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>الترتيب</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>اضغط Enter لإضافة وسم، أو اختر من الاقتراحات. انقر على X للإزالة.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>معاينة</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>نشر النسخة الحالية</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>امتحان حقيقي</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>إزالة</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>العودة إلى المسودة</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>حفظ</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>حفظ والعودة إلى مراجعة المحتوى</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>الدرجة</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>بحث و إضافة أسئلة</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>البحث غير متاح. يُرجى المحاولة مرة أخرى.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>وضع البحث</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>جارٍ البحث...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>تحديد جميع النتائج</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>اختيار السؤال</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>الأسئلة المحددة</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>اختيار فئة سيُحدِّد الأسئلة المتاحة.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>يتم الاحتفاظ بالتحديدات عند البحث مرة أخرى. أضِفها عندما تكون مستعدًا.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>البحث الذكي (افتراضي)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>الترتيب الابتدائي</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>إجراءات الحالة</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>البحث باستخدام تعبيرات الوسوم (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>الوسوم</value>

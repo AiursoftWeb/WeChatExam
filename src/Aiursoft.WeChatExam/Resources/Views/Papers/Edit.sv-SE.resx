@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>Lägg till valda</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Lägg till markerade ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Avancerat: Taguttryck (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI-semantisk sökning</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI-semantisk sökning användes inte. Visar sökresultat baserade på nyckelord.</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Alla typer</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Kombinera taggar, till exempel: rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Innehåll</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>Utkast</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>t.ex. rock &amp;&amp; inte metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Redigera prov</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Skriv in några ord för att hitta frågor.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Ange ett ämne eller några ord...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Typ av provfråga</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Hitta exakta ord och relaterade betydelser.</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Hitta frågor</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Gratis prov</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>Lås</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Sökning med nyckelord</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>Markera som publicerbar</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Matcha ord i frågetexten, svaren och förklaringarna.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Inga frågor hittades.</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>Ordning</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>Tryck på Enter för att lägga till en tagg, eller välj från förslag. Klicka på X för att ta bort.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Förhandsgranskning</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>Publicera ögonblicksbild</value>
@@ -93,11 +138,17 @@
   <data name="Real Exam" xml:space="preserve">
     <value>Ett äkta prov</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>Återställ till utkast</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Spara</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Spara och återvänd till innehållskontroller</value>
   </data>
   <data name="Score" xml:space="preserve">
     <value>Poäng</value>
@@ -108,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Sök &amp; Lägg till frågor</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Sökning är inte tillgänglig. Försök igen.</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Sökläge</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Söker...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Välj alla sökresultat</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>Välj fråga</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Valda frågor</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>Väljer du en kategori filtreras tillgängliga frågor.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Dina val behålls när du söker igen. Lägg till dem när du är redo.</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Smart sökning (standard)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>Startordning</value>
@@ -122,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>Statusåtgärder</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Söka med tagguttryck (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Taggar</value>

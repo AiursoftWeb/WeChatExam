@@ -33,6 +33,18 @@
   <data name="Add Selected" xml:space="preserve">
     <value>เพิ่มที่เลือก</value>
   </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>เพิ่มรายการที่เลือก ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>ขั้นสูง: นิพจน์แท็ก (MTQL)</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>การค้นหาเชิงความหมายด้วย AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>ไม่ได้ใช้การค้นหาความหมายด้วย AI แสดงผลลัพธ์แบบคำสำคัญ</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
   </data>
@@ -44,6 +56,9 @@
   </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>รวมแท็กเข้าด้วยกัน เช่น rock &amp;&amp; not metal</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>เนื้อหา</value>
@@ -57,8 +72,26 @@
   <data name="Draft" xml:space="preserve">
     <value>ร่าง</value>
   </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>เช่น rock &amp;&amp; not metal</value>
+  </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>แก้ไขแบบทดสอบ</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>ป้อนคำสองสามคำเพื่อค้นหาคำถาม</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>ป้อนหัวข้อหรือคำบางคำ...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>ประเภทข้อสอบ</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>ค้นหาคำที่ตรงกันและความหมายที่เกี่ยวข้อง</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>ค้นหาคำถาม</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>กระดาษฟรี</value>
@@ -66,8 +99,17 @@
   <data name="Freeze" xml:space="preserve">
     <value>แช่แข็ง</value>
   </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>ค้นหาด้วยคำสำคัญ</value>
+  </data>
   <data name="Mark as Publishable" xml:space="preserve">
     <value>ตั้งเป็นเผยแพร่ได้</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>ค้นหาคำในข้อความคำถาม คำตอบ และคำอธิบาย</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>ไม่พบคำถาม</value>
   </data>
   <data name="Order" xml:space="preserve">
     <value>ลำดับ</value>
@@ -77,6 +119,9 @@
   </data>
   <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
     <value>กด Enter เพื่อเพิ่มแท็ก หรือเลือกจากคำแนะนำ คลิก X เพื่อลบ</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>ดูตัวอย่าง</value>
   </data>
   <data name="Publish Snapshot" xml:space="preserve">
     <value>เผยแพร่สแนปช็อต</value>
@@ -92,6 +137,9 @@
   </data>
   <data name="Real Exam" xml:space="preserve">
     <value>ข้อสอบจริง</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>นำออก</value>
   </data>
   <data name="Revert to Draft" xml:space="preserve">
     <value>กลับไปยังร่าง</value>
@@ -111,11 +159,32 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>ค้นหาและเพิ่มคำถาม</value>
   </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>ไม่สามารถค้นหาได้ โปรดลองอีกครั้ง</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>โหมดการค้นหา</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>กำลังค้นหา...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>เลือกผลลัพธ์ทั้งหมด</value>
+  </data>
   <data name="Select Question" xml:space="preserve">
     <value>เลือกคำถาม</value>
   </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>คำถามที่เลือก</value>
+  </data>
   <data name="Selecting a category will filter available questions." xml:space="preserve">
     <value>การเลือกหมวดหมู่จะกรองคำถามที่มีอยู่</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>รายการที่เลือกไว้จะยังคงอยู่เมื่อคุณค้นหาอีกครั้ง เพิ่มรายการเหล่านั้นเมื่อพร้อม</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>ค้นหาอัจฉริยะ (ค่าเริ่มต้น)</value>
   </data>
   <data name="Starting Order" xml:space="preserve">
     <value>ลำดับเริ่มต้น</value>
@@ -125,6 +194,9 @@
   </data>
   <data name="Status Actions" xml:space="preserve">
     <value>การกระทำสถานะ</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>ค้นหาด้วยนิพจน์แท็ก (MTQL)</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>แท็ก</value>
