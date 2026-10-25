@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const preview = element('details', '');
         preview.append(element('summary', '', translate('preview', 'Preview')),
             element('p', 'mt-2 mb-0 text-break', question.preview ?? question.content));
+        if (question.answer) preview.append(element('strong', '', translate('answer', 'Answer')),
+            element('p', 'mb-0 text-break', question.answer));
+        if (question.explanation) preview.append(element('p', 'mb-0 text-break text-muted', question.explanation));
         content.append(preview); row.append(checkbox, content);
         return row;
     }
@@ -113,6 +116,43 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pendingSearch === controller) button.disabled = false;
         }
     }
+    async function findSimilar(source) {
+        pendingSearch?.abort();
+        const controller = new AbortController(); pendingSearch = controller;
+        status.replaceChildren(); results.replaceChildren(); updateSelection();
+        button.disabled = true;
+        status.append(element('p', 'text-break mb-1', translate('similar-to', 'Similar to: {0}').replace('{0}', () => source.dataset.questionTitle)),
+            element('p', 'text-muted mb-1', translate('similar-help', 'Find up to five similar questions. Existing paper questions are excluded; the original question stays unchanged.')));
+        results.append(element('p', 'list-group-item text-muted', translate('searching', 'Searching...')));
+        panel.scrollIntoView({ block: 'nearest' });
+        try {
+            const response = await fetch(panel.dataset.similarEndpoint, {
+                method: 'POST', signal: controller.signal,
+                headers: { 'Content-Type': 'application/json', RequestVerificationToken: panel.querySelector('[name="__RequestVerificationToken"]').value },
+                body: JSON.stringify({ id: source.dataset.similarQuestion,
+                    categoryIds: [document.getElementById('SelectedCategoryId').value].filter(Boolean), excludeIds: [...selected.keys()] })
+            });
+            if (!response.ok || response.redirected) throw new Error('Similar question search failed');
+            const data = await response.json();
+            if (pendingSearch !== controller) return;
+            if (!data.available) throw new Error('Similar question search unavailable');
+            status.prepend(element('span', 'badge bg-primary mb-1', translate('ai-search', 'AI Semantic Search')));
+            results.replaceChildren(...data.results.map(questionRow));
+            if (!data.results.length) results.append(element('p', 'list-group-item text-muted', translate('no-questions', 'No questions found.')));
+            updateSelection();
+        } catch (error) {
+            if (pendingSearch === controller && error.name !== 'AbortError')
+                results.replaceChildren(element('p', 'list-group-item text-muted', translate('similar-unavailable', 'Similar questions are unavailable. Please try again later.')));
+        } finally {
+            if (pendingSearch === controller) button.disabled = false;
+        }
+    }
+    document.querySelectorAll('[data-similar-question]').forEach(source => source.addEventListener('click', () => findSimilar(source)));
+    document.getElementById('SelectedCategoryId').addEventListener('change', () => {
+        pendingSearch?.abort(); pendingSearch = null;
+        button.disabled = false;
+        status.replaceChildren(); results.replaceChildren(); updateSelection();
+    });
     mode.addEventListener('change', () => {
         pendingSearch?.abort(); pendingSearch = null;
         button.disabled = false;

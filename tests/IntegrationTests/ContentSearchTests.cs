@@ -136,6 +136,88 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task PaperSimilarityRequiresReadPermissionExcludesExistingQuestionsAndNeverReplacesThem()
+    {
+        var (email, password) = await RegisterAndLoginAsync();
+        using var scope = Server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var user = await manager.FindByEmailAsync(email);
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanEditPapers))).Succeeded);
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var paper = new Paper { Id = Guid.NewGuid(), Title = "Similar paper fixture" };
+        var category = new Category { Id = Guid.NewGuid(), Title = "Similar category", ParentId = null };
+        var source = new Question { Id = Guid.NewGuid(), Content = "Original <script>fixture</script>", CategoryId = category.Id };
+        var other = new Question { Id = Guid.NewGuid(), Content = "Already in paper", CategoryId = category.Id };
+        var candidates = Enumerable.Range(0, 7).Select(i => new Question
+        {
+            Id = Guid.NewGuid(), Content = "Similar candidate " + i, CategoryId = category.Id,
+            StandardAnswer = "Answer " + i, Explanation = "Explanation " + i
+        }).ToArray();
+        db.AddRange(paper, category, source, other); db.Questions.AddRange(candidates); await db.SaveChangesAsync();
+        db.AddRange(new PaperQuestion { PaperId = paper.Id, QuestionId = source.Id, Order = 3, Score = 7 },
+            new PaperQuestion { PaperId = paper.Id, QuestionId = other.Id, Order = 5, Score = 11 });
+        var vector = new float[1024]; vector[0] = 1;
+        foreach (var question in candidates.Append(source).Append(other))
+        {
+            question.Embedding = EmbeddingHelper.Serialize(vector); question.LastEmbeddedAt = question.LastUpdatedAt;
+        }
+        await db.SaveChangesAsync();
+        GetService<IConfiguration>()["GlobalSettings:" + SettingsMap.EnableEmbeddingBasedSearch] = "True";
+        GetService<IConfiguration>()["GlobalSettings:" + SettingsMap.EmbeddingOllamaInstance] = "http://127.0.0.1:1";
+        var url = $"/Papers/SimilarQuestions/{paper.Id}";
+        async Task<HttpResponseMessage> Query(object body, bool csrf = true, string? endpoint = null)
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint ?? url);
+            request.Content = JsonContent.Create(body);
+            if (csrf) request.Headers.Add("RequestVerificationToken", await GetAntiCsrfToken($"/Papers/Edit/{paper.Id}"));
+            return await Http.SendAsync(request);
+        }
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var page = await Http.GetStringAsync($"/Papers/Edit/{paper.Id}");
+        Assert.DoesNotContain("data-similar-question=", page);
+        var denied = await Query(new { id = source.Id });
+        Assert.IsTrue(denied.StatusCode == HttpStatusCode.Forbidden || denied.Headers.Location!.ToString().Contains("/Error/Unauthorized"));
+        Assert.IsTrue((await manager.AddClaimAsync(user!, new System.Security.Claims.Claim(
+            Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanReadQuestions))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        page = await Http.GetStringAsync($"/Papers/Edit/{paper.Id}");
+        Assert.Contains($"data-similar-question=\"{source.Id}\"", page);
+        Assert.Contains("&lt;script&gt;fixture&lt;/script&gt;", page);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id }, false)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id, text = "Different draft" })).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = Guid.Empty })).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id, categoryIds = new Guid[1001] })).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Query(new { id = candidates[0].Id })).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Query(new { id = source.Id }, endpoint: $"/Papers/SimilarQuestions/{Guid.NewGuid()}")).StatusCode);
+        var response = await Query(new { id = source.Id, categoryIds = new[] { category.Id }, excludeIds = new[] { candidates[0].Id } });
+        response.EnsureSuccessStatusCode();
+        using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        Assert.IsTrue(json.RootElement.GetProperty("available").GetBoolean());
+        var results = json.RootElement.GetProperty("results").EnumerateArray().ToArray();
+        Assert.HasCount(5, results);
+        Assert.IsTrue(results.All(q => q.GetProperty("id").GetGuid() != source.Id && q.GetProperty("id").GetGuid() != other.Id && q.GetProperty("id").GetGuid() != candidates[0].Id));
+        Assert.IsTrue(results.All(q => q.GetProperty("answer").GetString()!.StartsWith("Answer ") && q.GetProperty("explanation").GetString()!.StartsWith("Explanation ")));
+        var originalLinks = await db.PaperQuestions.Where(q => q.PaperId == paper.Id).OrderBy(q => q.Order).ToListAsync();
+        Assert.AreEqual(2, originalLinks.Count); Assert.AreEqual(3, originalLinks[0].Order); Assert.AreEqual(7, originalLinks[0].Score);
+        Assert.AreEqual(9, await db.Questions.CountAsync(q => candidates.Select(c => c.Id).Append(source.Id).Append(other.Id).Contains(q.Id)));
+        await PostForm($"/Papers/BatchAddQuestions/{paper.Id}", new Dictionary<string, string>
+        {
+            ["questionIds"] = results[0].GetProperty("id").GetString()!, ["startingOrder"] = "7", ["defaultScore"] = "13"
+        }, tokenUrl: $"/Papers/Edit/{paper.Id}");
+        db.ChangeTracker.Clear();
+        var links = await db.PaperQuestions.Where(q => q.PaperId == paper.Id).OrderBy(q => q.Order).ToListAsync();
+        Assert.AreEqual(3, links.Count); Assert.AreEqual(source.Id, links[0].QuestionId); Assert.AreEqual(7, links[0].Score);
+        Assert.AreEqual(7, links[2].Order); Assert.AreEqual(13, links[2].Score);
+        var frozen = await db.Papers.SingleAsync(p => p.Id == paper.Id); frozen.Status = PaperStatus.Frozen; await db.SaveChangesAsync();
+        await PostForm($"/Papers/BatchAddQuestions/{paper.Id}", new Dictionary<string, string>
+        {
+            ["questionIds"] = candidates[0].Id.ToString(), ["startingOrder"] = "8", ["defaultScore"] = "20"
+        }, tokenUrl: "/");
+        Assert.AreEqual(3, await db.PaperQuestions.CountAsync(q => q.PaperId == paper.Id));
+    }
+
+    [TestMethod]
     public async Task KnowledgePointCreationKeepsSelectedQuestionsAfterValidationAndSavesAssociations()
     {
         await LoginAsAdmin();
