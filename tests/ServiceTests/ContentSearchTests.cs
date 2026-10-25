@@ -186,7 +186,7 @@ public class ContentSearchTests
         {
             Id = Guid.NewGuid(), Title = $"Point {i}", Content = "Related knowledge", ParentId = null
         }).ToArray();
-        db.AddRange(points); await db.SaveChangesAsync();
+        db.KnowledgePoints.AddRange(points); await db.SaveChangesAsync();
         foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
         await db.SaveChangesAsync();
         var handler = new QueryHandler(); var service = CreateSearch(db, handler);
