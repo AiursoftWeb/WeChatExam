@@ -9,6 +9,13 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
     const typeLabels = [tr.choice, tr.blank, tr.bool, tr.shortAnswer, tr.essay, tr.nounExplanation];
     let questions = [], taskId = null, generation = 0, customTag = false, titleEdited = false, confirmations = [], tagSequence = 0;
     const types = ['Choice', 'Blank', 'Bool', 'ShortAnswer', 'Essay', 'NounExplanation'];
+    const comparison = el('import-question-comparison');
+    const clearComparison = () => {
+        if (!comparison) return;
+        comparison.hidden = true;
+        el('import-form').dispatchEvent(new CustomEvent('question-draft-selected', { detail: null }));
+    };
+    el('category').addEventListener('change', clearComparison);
     const token = root.querySelector('[name="__RequestVerificationToken"]').value;
     const status = text => { el('import-status').textContent = text; };
     const extras = () => el('extra-tags').value.split('\n').map(s => s.trim()).filter(Boolean);
@@ -28,6 +35,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
     el('extra-tags').addEventListener('input', invalidateTags);
     function button(text, action) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-sm btn-outline-secondary me-1'; b.textContent = text; b.onclick = action; return b; }
     function render() {
+        clearComparison();
         el('questions').replaceChildren();
         questions.forEach((q, index) => {
             if (q.questionType === 2) {
@@ -54,7 +62,21 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
             const edit = document.createElement('div'); edit.hidden = true;
             const actions = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = root.dataset.actions; actions.append(summary, handle, button(root.dataset.edit, () => { edit.hidden = !edit.hidden; }), button(root.dataset.delete, () => { questions = questions.filter(item => item !== q); render(); }), button(root.dataset.up, () => move(index, -1)), button(root.dataset.down, () => move(index, 1))); body.append(actions);
             const hasOptions = () => q.questionType === 0 || q.questionType === 2;
+            const compare = comparison ? button(tr.findSimilar, () => {
+                el('comparison-heading').textContent = tr.comparingQuestion.replace('{0}', index + 1);
+                el('comparison-source').textContent = q.content;
+                comparison.hidden = false;
+                el('import-form').dispatchEvent(new CustomEvent('question-draft-selected', { detail: {
+                    text: [q.content, ...(hasOptions() ? q.options : []), q.standardAnswer, q.explanation].join('\n'),
+                    categoryIds: [el('category').value].filter(Boolean)
+                } }));
+                el('comparison-heading').focus({ preventScroll: true });
+                comparison.scrollIntoView({ block: 'nearest' });
+            }) : null;
+            if (compare) { compare.dataset.compareQuestion = q.clientId; body.append(compare); }
             const refresh = () => {
+                clearComparison();
+                if (compare) compare.disabled = !q.content.trim();
                 heading.textContent = `${index + 1}. (${q.originalNumber || ''}) ${q.content}`;
                 note.textContent = q.standardAnswer || root.dataset.missing;
                 updatePreview();
@@ -140,6 +162,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
     el('extract').onclick = async () => {
         if (questions.length && !confirm(root.dataset.confirm)) return;
         if (!el('source').value.trim()) { el('source').reportValidity(); return; }
+        clearComparison();
         const current = ++generation; el('extract').disabled = true; el('save-import').disabled = true;
         try {
             const started = await request('/Papers/ImportExtract', { source: el('source').value });
@@ -174,7 +197,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
         }
         if (result.mismatch) {
             const text = document.createElement('p'); text.textContent = tr.mismatch; el('tag-check').append(text);
-            result.categories.forEach(c => el('tag-check').append(button(c.title, () => { const option = [...el('category').options].find(o => o.value.toLowerCase() === c.id.toLowerCase()); if (option) el('category').value = option.value; invalidateTags(); checkTags().catch(e => status(e.message)); })));
+            result.categories.forEach(c => el('tag-check').append(button(c.title, () => { const option = [...el('category').options].find(o => o.value.toLowerCase() === c.id.toLowerCase()); if (option) el('category').value = option.value; clearComparison(); invalidateTags(); checkTags().catch(e => status(e.message)); })));
             if (!result.categories.length) { const p = document.createElement('p'); p.textContent = tr.noCategory; el('tag-check').append(p); }
         }
     }
