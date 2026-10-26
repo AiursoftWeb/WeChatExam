@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -15,13 +17,16 @@ public class QuestionImportController : Controller
 {
     private readonly WeChatExamDbContext _dbContext;
     private readonly ITagService _tagService;
+    private readonly IStringLocalizer<QuestionImportController> _localizer;
 
     public QuestionImportController(
         WeChatExamDbContext dbContext,
-        ITagService tagService)
+        ITagService tagService,
+        IStringLocalizer<QuestionImportController> localizer)
     {
         _dbContext = dbContext;
         _tagService = tagService;
+        _localizer = localizer;
     }
 
     /// <summary>
@@ -35,9 +40,10 @@ public class QuestionImportController : Controller
         CascadedLinksOrder = 3,
         LinkText = "Import Questions",
         LinkOrder = 1)]
-    public IActionResult Index(QuestionImportIndexViewModel? model)
+    public async Task<IActionResult> Index()
     {
-        model ??= new QuestionImportIndexViewModel();
+        var model = new QuestionImportIndexViewModel();
+        model.QuestionCategories = await GetQuestionCategories();
         return this.StackView(model);
     }
 
@@ -54,186 +60,155 @@ public class QuestionImportController : Controller
         return this.StackView(new QuestionExportViewModel());
     }
 
-    /// <summary>
-    /// POST: Preview - Parse JSON and show preview table
-    /// </summary>
+    private Task<List<QuestionCategory>> GetQuestionCategories() => _dbContext.QuestionCategories.AsNoTracking()
+        .Include(c => c.TotalCategory)
+        .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
+        .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
+
+    private List<ImportedQuestionItem> ReadQuestions(string json, QuestionType type)
+    {
+        if (!Enum.IsDefined(type)) throw new InvalidOperationException(_localizer["Choose a valid question type."]);
+        var data = JsonConvert.DeserializeObject<List<ImportedQuestionItem?>>(json);
+        if (data == null || data.Count == 0 || data.Any(q => q == null || string.IsNullOrWhiteSpace(q.Question)))
+            throw new InvalidOperationException(_localizer["Provide at least one question with content."]);
+        var questions = data.OfType<ImportedQuestionItem>().ToList();
+        foreach (var item in questions)
+        {
+            item.Options ??= [];
+            if (type == QuestionType.Bool) item.Options = ["正确", "错误"];
+            if (type == QuestionType.Choice && item.Options.Count == 0)
+                throw new InvalidOperationException(_localizer["Every choice question must have options."]);
+        }
+        return questions;
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Preview(QuestionImportIndexViewModel model)
+    public async Task<IActionResult> Preview(QuestionImportIndexViewModel model)
     {
-        if (!ModelState.IsValid)
-        {
-            return this.StackView(model, nameof(Index));
-        }
-
+        model.QuestionCategories = await GetQuestionCategories();
+        if (!ModelState.IsValid) return this.StackView(model, nameof(Index));
         try
         {
-            var data = JsonConvert.DeserializeObject<List<ImportedQuestionItem>>(model.JsonContent);
-            if (data == null || data.Count == 0)
+            var data = ReadQuestions(model.JsonContent, model.SelectedQuestionType);
+            return this.StackView(new QuestionImportPreviewViewModel
             {
-                throw new Exception("No questions found in JSON.");
-            }
-
-            // For Bool type, auto-fill Options if empty
-            if (model.SelectedQuestionType == QuestionType.Bool)
-            {
-                foreach (var item in data)
-                {
-                    item.Options = new List<string> { "正确", "错误" };
-                }
-            }
-
-            // For Choice type, validate that all questions have options
-            if (model.SelectedQuestionType == QuestionType.Choice)
-            {
-                var questionsWithoutOptions = data
-                    .Select((item, index) => new { Item = item, Index = index + 1 })
-                    .Where(x => x.Item.Options.Count == 0)
-                    .ToList();
-
-                if (questionsWithoutOptions.Any())
-                {
-                    var missingIndices = string.Join(", ", questionsWithoutOptions.Select(x => $"#{x.Index}"));
-                    model.ErrorMessage = $"选择题必须提供选项 (Options)。以下题目缺少选项: {missingIndices}";
-                    return this.StackView(model, nameof(Index));
-                }
-            }
-
-            var previewModel = new QuestionImportPreviewViewModel
-            {
-                JsonContent = model.JsonContent,
-                SelectedQuestionType = model.SelectedQuestionType,
-                ParsedQuestions = data
-            };
-
-            return this.StackView(previewModel, "Preview");
+                JsonContent = model.JsonContent, SelectedQuestionType = model.SelectedQuestionType,
+                DefaultQuestionCategoryId = model.DefaultQuestionCategoryId,
+                ParsedQuestions = data, QuestionCategories = model.QuestionCategories,
+                QuestionCategoryIds = data.Select(q => q.QuestionCategoryId ?? model.DefaultQuestionCategoryId).ToList()
+            });
         }
         catch (Exception e)
         {
-            model.ErrorMessage = $"JSON Parse Error: {e.Message}";
+            model.ErrorMessage = string.Format(_localizer["Unable to preview: {0}"].Value, e.Message);
             return this.StackView(model, nameof(Index));
         }
     }
 
-    /// <summary>
-    /// POST: Submit - Save questions to database
-    /// </summary>
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Submit(QuestionImportPreviewViewModel model)
     {
+        model.QuestionCategories = await GetQuestionCategories();
         try
         {
-            var data = JsonConvert.DeserializeObject<List<ImportedQuestionItem>>(model.JsonContent);
-            if (data == null || data.Count == 0)
+            // Re-read the submitted JSON and validate the whole batch before any tag service
+            // call: creating a source tag can save tracked questions as a side effect.
+            model.ParsedQuestions = ReadQuestions(model.JsonContent, model.SelectedQuestionType);
+            var validIds = model.QuestionCategories.Select(c => c.Id).ToHashSet();
+            if (!ModelState.IsValid || model.QuestionCategoryIds.Count != model.ParsedQuestions.Count ||
+                model.QuestionCategoryIds.Any(id => !id.HasValue || !validIds.Contains(id.Value)))
             {
-                throw new Exception("No questions found.");
+                model.ErrorMessage = _localizer["Choose an existing period for every question. Nothing has been imported."];
+                return ImportPreview(model);
             }
 
-            // Determine grading strategy based on question type
             var gradingStrategy = model.SelectedQuestionType switch
             {
-                QuestionType.Choice => GradingStrategy.ExactMatch,
-                QuestionType.Bool => GradingStrategy.ExactMatch,
+                QuestionType.Choice or QuestionType.Bool => GradingStrategy.ExactMatch,
                 QuestionType.Blank => GradingStrategy.FuzzyMatch,
                 _ => GradingStrategy.AiEval
             };
-
-            var importedCount = 0;
-            foreach (var item in data)
+            var ids = model.ParsedQuestions.Select(_ => Guid.NewGuid()).ToArray();
+            await _dbContext.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
             {
-                // For Bool type, force options to ["正确", "错误"]
-                var options = model.SelectedQuestionType == QuestionType.Bool
-                    ? new List<string> { "正确", "错误" }
-                    : item.Options;
-
-                // Build metadata JSON for Choice/Bool types
-                var metadata = (model.SelectedQuestionType == QuestionType.Choice ||
-                               model.SelectedQuestionType == QuestionType.Bool) && options.Count > 0
-                    ? JsonConvert.SerializeObject(new { options })
-                    : string.Empty;
-
-                // Create question entity
-                var question = new Question
+                _dbContext.ChangeTracker.Clear();
+                // The entire batch commits together. A lost commit acknowledgment must not
+                // create another batch when the database execution strategy retries.
+                if (await _dbContext.Questions.AnyAsync(q => q.Id == ids[0])) return;
+                await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+                for (var i = 0; i < model.ParsedQuestions.Count; i++)
                 {
-                    Id = Guid.NewGuid(),
-                    Content = item.Question,
-                    QuestionType = model.SelectedQuestionType,
-                    GradingStrategy = gradingStrategy,
-                    Metadata = metadata,
-                    StandardAnswer = item.Answer,
-                    Explanation = item.Analysis,
-                    CategoryId = null // 未分类
-                };
-
-                _dbContext.Questions.Add(question);
-
-                // Handle OriginalFilename as tag
-                if (!string.IsNullOrWhiteSpace(item.OriginalFilename))
-                {
-                    var tag = await _tagService.AddTagAsync(item.OriginalFilename.Trim());
-                    var exists = await _dbContext.QuestionTags
-                        .AnyAsync(qt => qt.QuestionId == question.Id && qt.TagId == tag.Id);
-
-                    if (!exists)
+                    var item = model.ParsedQuestions[i];
+                    var question = new Question
                     {
-                        var questionTag = new QuestionTag
-                        {
-                            QuestionId = question.Id,
-                            TagId = tag.Id
-                        };
-                        _dbContext.QuestionTags.Add(questionTag);
+                        Id = ids[i], Content = item.Question, QuestionType = model.SelectedQuestionType,
+                        GradingStrategy = gradingStrategy,
+                        Metadata = model.SelectedQuestionType is QuestionType.Choice or QuestionType.Bool
+                            ? JsonConvert.SerializeObject(new { options = item.Options }) : string.Empty,
+                        StandardAnswer = item.Answer, Explanation = item.Analysis,
+                        QuestionCategoryId = model.QuestionCategoryIds[i]
+                    };
+                    _dbContext.Questions.Add(question);
+                    if (!string.IsNullOrWhiteSpace(item.OriginalFilename))
+                    {
+                        var tag = await _tagService.AddTagAsync(item.OriginalFilename.Trim());
+                        _dbContext.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
                     }
                 }
-
-                importedCount++;
-            }
-
-            await _dbContext.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = $"Successfully imported {importedCount} questions.";
+                await _dbContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+            });
+            TempData["SuccessMessage"] = string.Format(_localizer["Successfully imported {0} questions."].Value, ids.Length);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception e)
         {
-            // Re-parse for preview display
-            try
-            {
-                var data = JsonConvert.DeserializeObject<List<ImportedQuestionItem>>(model.JsonContent) ?? new();
-
-                // For Bool type, auto-fill Options
-                if (model.SelectedQuestionType == QuestionType.Bool)
-                {
-                    foreach (var item in data)
-                    {
-                        item.Options = new List<string> { "正确", "错误" };
-                    }
-                }
-
-                model.ParsedQuestions = data;
-            }
-            catch
-            {
-                model.ParsedQuestions = new List<ImportedQuestionItem>();
-            }
-
-            model.ErrorMessage = $"Save Error: {e.Message}";
-            return this.StackView(model, "Preview");
+            _dbContext.ChangeTracker.Clear();
+            model.ErrorMessage = string.Format(_localizer["Unable to import: {0}"].Value, e.Message);
+            return ImportPreview(model);
         }
     }
 
-    /// <summary>
-    /// POST: ResumeEdit - Go back to edit JSON from preview
-    /// </summary>
+    private IActionResult ImportPreview(QuestionImportPreviewViewModel model)
+    {
+        // A forged/incomplete form can omit rows. Keep the correction page usable without
+        // treating the missing selections as valid input for the failed save.
+        while (model.QuestionCategoryIds.Count < model.ParsedQuestions.Count) model.QuestionCategoryIds.Add(null);
+        return this.StackView(model, "Preview");
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult ResumeEdit(QuestionImportPreviewViewModel model)
+    public async Task<IActionResult> ResumeEdit(QuestionImportPreviewViewModel model)
     {
-        var editModel = new QuestionImportIndexViewModel
+        // Keep per-question choices in the JSON so editing or reordering the text cannot
+        // accidentally attach an old row's period to a different question. Preserve extra fields.
+        try
         {
-            JsonContent = model.JsonContent,
-            SelectedQuestionType = model.SelectedQuestionType
-        };
-        return this.StackView(editModel, nameof(Index));
+            var data = JArray.Parse(model.JsonContent);
+            for (var i = 0; i < data.Count; i++)
+            {
+                if (data[i] is JObject item)
+                {
+                    foreach (var property in item.Properties().Where(p => p.Name.Equals("QuestionCategoryId", StringComparison.OrdinalIgnoreCase)).ToList())
+                        property.Remove();
+                    item["QuestionCategoryId"] = model.QuestionCategoryIds.ElementAtOrDefault(i)?.ToString();
+                }
+            }
+            model.JsonContent = data.ToString(Formatting.Indented);
+        }
+        catch (JsonException)
+        {
+            // Malformed input can still be taken back to the editor for correction.
+        }
+        ModelState.Clear();
+        return this.StackView(new QuestionImportIndexViewModel
+        {
+            JsonContent = model.JsonContent, SelectedQuestionType = model.SelectedQuestionType,
+            DefaultQuestionCategoryId = model.DefaultQuestionCategoryId,
+            QuestionCategories = await GetQuestionCategories()
+        }, nameof(Index));
     }
 }

@@ -46,7 +46,7 @@
 
                     <form asp-action="Preview" method="post">
                         @Html.AntiForgeryToken()
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
 
                         <div class="mb-3">
                             <label asp-for="SelectedQuestionType" class="form-label fw-bold">@Localizer["Question Type"]</label>
@@ -55,6 +55,23 @@
                             </select>
                             <div class="form-text">@Localizer["All imported questions will use this type, ignoring the Type field in JSON."]</div>
                             <span asp-validation-for="SelectedQuestionType" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DefaultQuestionCategoryId" class="form-label fw-bold">@Localizer["Default period"]</label>
+                            <select asp-for="DefaultQuestionCategoryId" class="form-select">
+                                <option value="">@Localizer["Choose separately in preview"]</option>
+                                @foreach (var group in Model.QuestionCategories.GroupBy(c => c.TotalCategoryId))
+                                {
+                                    <optgroup label="@group.First().TotalCategory!.Title">
+                                        @foreach (var period in group)
+                                        {
+                                            <option value="@period.Id">@period.Title</option>
+                                        }
+                                    </optgroup>
+                                }
+                            </select>
+                            <div class="form-text">@Localizer["Start with one period for the batch, then adjust individual questions in preview."]</div>
                         </div>
 
                         <div class="mb-3">

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Choose a valid question type." xml:space="preserve">
+    <value>请选择有效的题目类型。</value>
+  </data>
+  <data name="Choose an existing period for every question. Nothing has been imported." xml:space="preserve">
+    <value>请为每道题选择一个现有年代。未导入任何内容。</value>
+  </data>
+  <data name="Every choice question must have options." xml:space="preserve">
+    <value>每道选择题都必须设置选项。</value>
+  </data>
+  <data name="Provide at least one question with content." xml:space="preserve">
+    <value>请至少提供一道有内容的题目。</value>
+  </data>
+  <data name="Successfully imported {0} questions." xml:space="preserve">
+    <value>成功导入了 {0} 道题目。</value>
+  </data>
+  <data name="Unable to import: {0}" xml:space="preserve">
+    <value>无法导入：{0}</value>
+  </data>
+  <data name="Unable to preview: {0}" xml:space="preserve">
+    <value>无法预览：{0}</value>
+  </data>
+
+</root>
