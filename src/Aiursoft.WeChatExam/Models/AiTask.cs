@@ -27,18 +27,18 @@ public class AiTaskItem
     
     /// <summary>
     /// For Explanation task: Old Explanation
-    /// For Categorize task: Old Category Name
+    /// For Categorize task: Old total category / period name
     /// </summary>
     public string OldValue { get; set; } = string.Empty;
 
     /// <summary>
     /// For Explanation task: New Explanation
-    /// For Categorize task: New Category Name
+    /// For Categorize task: New total category / period name
     /// </summary>
     public string NewValue { get; set; } = string.Empty;
     
     /// <summary>
-    /// For Categorize task: New Category Id
+    /// For Categorize task: New QuestionCategory Id (never a knowledge category Id)
     /// </summary>
     public Guid? NewEntityId { get; set; }
     
