@@ -182,9 +182,15 @@ public class EmbeddingTests
     }
 
     [TestMethod]
-    public async Task LongContentRetriesWithSmallerInputAndKeepsTheConclusion()
+    [DataRow(HttpStatusCode.BadRequest, "context length exceeded")]
+    [DataRow(HttpStatusCode.RequestEntityTooLarge, "{\"error\":\"the input length exceeds the context length\"}")]
+    [DataRow(HttpStatusCode.RequestEntityTooLarge, "CONTEXT WINDOW EXCEEDED")]
+    public async Task LongContentRetriesWithSmallerInputAndKeepsTheConclusion(HttpStatusCode status, string error)
     {
-        var handler = new EmbeddingHandler { ContextLimit = 4000 };
+        var handler = new EmbeddingHandler
+        {
+            ContextLimit = 4000, ContextErrorStatusCode = status, ContextErrorMessage = error
+        };
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };
         var service = new EmbeddingService(settings, handler, NullLogger<EmbeddingService>.Instance);
         var vector = await service.GenerateAsync("Introduction " + new string('a', 10000) + " Conclusion");
@@ -194,6 +200,48 @@ public class EmbeddingTests
         Assert.AreEqual(4000, handler.Inputs[1].Length);
         Assert.StartsWith("Introduction", handler.Inputs[1]);
         Assert.EndsWith("Conclusion", handler.Inputs[1]);
+    }
+
+    [TestMethod]
+    [DataRow(HttpStatusCode.RequestEntityTooLarge, "Request entity too large")]
+    [DataRow(HttpStatusCode.RequestEntityTooLarge, "Request body length exceeds the limit")]
+    [DataRow(HttpStatusCode.RequestEntityTooLarge, "Context service unavailable")]
+    [DataRow(HttpStatusCode.BadRequest, "Unknown model")]
+    [DataRow(HttpStatusCode.InternalServerError, "context length exceeded")]
+    public async Task UnrelatedErrorsDoNotRetryWithTruncatedContent(HttpStatusCode status, string error)
+    {
+        var handler = new EmbeddingHandler
+        {
+            ContextLimit = 0, ContextErrorStatusCode = status, ContextErrorMessage = error
+        };
+        var service = new EmbeddingService(new StubGlobalSettingsService { EmbeddingEnabled = true },
+            handler, NullLogger<EmbeddingService>.Instance);
+
+        var exception = await Assert.ThrowsExactlyAsync<HttpRequestException>(() =>
+            service.GenerateAsync(new string('a', 10000)));
+
+        Assert.AreEqual(status, exception.StatusCode);
+        Assert.HasCount(1, handler.Inputs);
+        Assert.AreEqual(8000, handler.Inputs[0].Length);
+    }
+
+    [TestMethod]
+    public async Task ContextErrorsStopAtTheMinimumInputBudget()
+    {
+        var handler = new EmbeddingHandler
+        {
+            ContextLimit = 0, ContextErrorStatusCode = HttpStatusCode.RequestEntityTooLarge,
+            ContextErrorMessage = "the input length exceeds the context length"
+        };
+        var service = new EmbeddingService(new StubGlobalSettingsService { EmbeddingEnabled = true },
+            handler, NullLogger<EmbeddingService>.Instance);
+
+        var exception = await Assert.ThrowsExactlyAsync<HttpRequestException>(() =>
+            service.GenerateAsync(new string('a', 10000)));
+
+        Assert.AreEqual(HttpStatusCode.RequestEntityTooLarge, exception.StatusCode);
+        CollectionAssert.AreEqual(new[] { 8000, 4000, 2000, 1000, 500 },
+            handler.Inputs.Select(input => input.Length).ToArray());
     }
 
     private static Question NewQuestion() => new()
@@ -251,6 +299,8 @@ public class EmbeddingTests
         public bool FailQuestions { get; set; }
         public int Dimensions { get; init; } = 1024;
         public int ContextLimit { get; init; } = int.MaxValue;
+        public HttpStatusCode ContextErrorStatusCode { get; init; } = HttpStatusCode.BadRequest;
+        public string ContextErrorMessage { get; init; } = "context length exceeded";
 
         public HttpClient CreateClient(string name) => new(this, disposeHandler: false);
 
@@ -265,7 +315,7 @@ public class EmbeddingTests
             if (FailQuestions && input.Contains("Choice"))
                 return new HttpResponseMessage(HttpStatusCode.ServiceUnavailable);
             if (input.Length > ContextLimit)
-                return new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent("context length exceeded") };
+                return new HttpResponseMessage(ContextErrorStatusCode) { Content = new StringContent(ContextErrorMessage) };
             var vector = new float[Dimensions];
             vector[0] = 2;
             return new HttpResponseMessage(HttpStatusCode.OK) { Content = JsonContent.Create(new { embeddings = new[] { vector } }) };
