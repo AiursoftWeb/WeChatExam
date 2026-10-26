@@ -207,6 +207,8 @@ public class EmbeddingTests
     [DataRow(HttpStatusCode.RequestEntityTooLarge, "Request body length exceeds the limit")]
     [DataRow(HttpStatusCode.RequestEntityTooLarge, "Context service unavailable")]
     [DataRow(HttpStatusCode.BadRequest, "Unknown model")]
+    [DataRow(HttpStatusCode.BadRequest, "Request body length exceeds the limit")]
+    [DataRow(HttpStatusCode.BadRequest, "Context service unavailable")]
     [DataRow(HttpStatusCode.InternalServerError, "context length exceeded")]
     public async Task UnrelatedErrorsDoNotRetryWithTruncatedContent(HttpStatusCode status, string error)
     {
