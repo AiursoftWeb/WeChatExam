@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Assign Period" xml:space="preserve">
+    <value>Gán kỳ thi</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="Choose a period" xml:space="preserve">
+    <value>Chọn một giai đoạn</value>
+  </data>
+  <data name="Choose the one period that best describes this question. Its total category comes from that period." xml:space="preserve">
+    <value>Chọn kỳ phù hợp nhất để mô tả câu hỏi này. Danh mục tổng của câu hỏi được xác định theo kỳ đó.</value>
+  </data>
+  <data name="Create periods before assigning questions." xml:space="preserve">
+    <value>Tạo các kỳ trước khi phân công câu hỏi.</value>
+  </data>
+  <data name="Edit Question" xml:space="preserve">
+    <value>Chỉnh sửa câu hỏi</value>
+  </data>
+  <data name="Manage Periods" xml:space="preserve">
+    <value>Quản lý các kỳ</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Kỳ</value>
+  </data>
+  <data name="Save Period" xml:space="preserve">
+    <value>Lưu kỳ</value>
+  </data>
+  <data name="This step records the classification. Student access rules will switch in a later release." xml:space="preserve">
+    <value>Bước này ghi nhận việc phân loại. Quy định về quyền truy cập của học sinh sẽ được áp dụng trong một phiên bản phát hành sau.</value>
+  </data>
+
+</root>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Course Membership" xml:space="preserve">
+    <value>コース会員</value>
+  </data>
+  <data name="Create a period to start organizing this course." xml:space="preserve">
+    <value>このコースを整理するために、まず期間を作成してください。</value>
+  </data>
+  <data name="Create a total category first" xml:space="preserve">
+    <value>まず総カテゴリーを作成してください</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>期間を作成</value>
+  </data>
+  <data name="Create Total Category" xml:space="preserve">
+    <value>合計カテゴリを作成</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>表示順</value>
+  </data>
+  <data name="Edit Period" xml:space="preserve">
+    <value>期間を編集</value>
+  </data>
+  <data name="Every period belongs to one total category." xml:space="preserve">
+    <value>各期間は、いずれか1つの大分類に属します。</value>
+  </data>
+  <data name="Free Practice" xml:space="preserve">
+    <value>無料練習</value>
+  </data>
+  <data name="No periods in this course yet" xml:space="preserve">
+    <value>このコースにはまだ期間がありません</value>
+  </data>
+  <data name="Organize the periods within each course." xml:space="preserve">
+    <value>各コース内の期間を整理します。</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="Total Categories" xml:space="preserve">
+    <value>全カテゴリー</value>
+  </data>
+
+</root>

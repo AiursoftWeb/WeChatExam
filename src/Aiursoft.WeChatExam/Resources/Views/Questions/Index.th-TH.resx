@@ -45,6 +45,9 @@
   <data name="All Categories" xml:space="preserve">
     <value>หมวดหมู่ทั้งหมด</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>ทุกช่วงเวลา</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
   </data>
@@ -71,6 +74,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>คุณแน่ใจหรือไม่ว่าต้องการลบ</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>กำหนดช่วงเวลา</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
@@ -146,6 +152,12 @@
   </data>
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>ไม่พบคำถามใด ๆ ที่ตรงกับเกณฑ์การค้นหา</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>ช่วงเวลา</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>ยังไม่ได้กำหนดช่วงเวลา</value>
   </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>กรุณาใส่หมายเลขหน้าที่ถูกต้องระหว่าง 1 ถึง</value>
