@@ -47,6 +47,11 @@ public class EmbeddingService(
             var isContextError = response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
                                  (error.Contains("context", StringComparison.OrdinalIgnoreCase) ||
                                   error.Contains("length", StringComparison.OrdinalIgnoreCase) ||
+                                  error.Contains("exceed", StringComparison.OrdinalIgnoreCase)) ||
+                                 response.StatusCode == System.Net.HttpStatusCode.RequestEntityTooLarge &&
+                                 error.Contains("context", StringComparison.OrdinalIgnoreCase) &&
+                                 (error.Contains("length", StringComparison.OrdinalIgnoreCase) ||
+                                  error.Contains("window", StringComparison.OrdinalIgnoreCase) ||
                                   error.Contains("exceed", StringComparison.OrdinalIgnoreCase));
             if (!isContextError || maxChars <= 500)
                 throw new HttpRequestException($"Embedding request failed (HTTP {(int)response.StatusCode}).",
