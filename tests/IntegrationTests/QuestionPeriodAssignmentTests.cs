@@ -11,6 +11,17 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class QuestionPeriodAssignmentTests : TestBase
 {
+    internal static async Task<Guid> AddPeriod(IServiceProvider services)
+    {
+        using var scope = services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var total = new TotalCategory { Title = "Test music course" };
+        var period = new QuestionCategory { Title = "Test period", TotalCategoryId = total.Id, TotalCategory = total };
+        db.QuestionCategories.Add(period);
+        await db.SaveChangesAsync();
+        return period.Id;
+    }
+
     private async Task<(Guid Question, Guid First, Guid Second)> SeedQuestion()
     {
         using var scope = Server!.Services.CreateScope();
@@ -203,4 +214,93 @@ public class QuestionPeriodAssignmentTests : TestBase
         Assert.AreEqual("Preserved answer", await command.ExecuteScalarAsync());
         Assert.AreEqual(1, await db.QuestionCategories.CountAsync());
     }
+    [TestMethod]
+    public async Task QuestionEditorRequiresARealPeriodAndPreservesLegacyFields()
+    {
+        await LoginAsAdmin();
+        var (id, first, second) = await SeedQuestion();
+        var form = new Dictionary<string, string>
+        {
+            ["Content"] = "New classified question", ["QuestionType"] = "1", ["GradingStrategy"] = "0",
+            ["StandardAnswer"] = "Answer", ["ReturnUrl"] = "/Questions?period=" + first,
+            ["CategoryId"] = Guid.NewGuid().ToString()
+        };
+        foreach (var invalid in new[] { "", "invalid", Guid.Empty.ToString(), Guid.NewGuid().ToString() })
+        {
+            form["QuestionCategoryId"] = invalid;
+            var response = await PostForm("/Questions/Create", form);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var html = await response.Content.ReadAsStringAsync();
+            Assert.Contains("New classified question", html);
+            Assert.Contains(first.ToString(), html);
+            Assert.DoesNotContain("name=\"CategoryId\"", html);
+        }
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.IsFalse(await db.Questions.AnyAsync(q => q.Content == form["Content"]));
+        form["QuestionCategoryId"] = first.ToString();
+        AssertRedirect(await PostForm("/Questions/Create", form), form["ReturnUrl"]);
+        var created = await db.Questions.SingleAsync(q => q.Content == form["Content"]);
+        Assert.AreEqual(first, created.QuestionCategoryId);
+        Assert.IsNull(created.CategoryId, "The editor must not accept a legacy category from the client.");
+        var original = await db.Questions.AsNoTracking().SingleAsync(q => q.Id == id);
+        form["Id"] = id.ToString();
+        form["Content"] = original.Content;
+        form["QuestionCategoryId"] = second.ToString();
+        AssertRedirect(await PostForm($"/Questions/Edit/{id}", form), form["ReturnUrl"]);
+        db.ChangeTracker.Clear();
+        var updated = await db.Questions.SingleAsync(q => q.Id == id);
+        Assert.AreEqual(second, updated.QuestionCategoryId);
+        Assert.AreEqual(original.CategoryId, updated.CategoryId);
+        Assert.AreEqual("Paid label", (await db.QuestionTags.Include(t => t.Tag).SingleAsync(t => t.QuestionId == id)).Tag.DisplayName);
+        form["QuestionCategoryId"] = "";
+        form["Content"] = "Must not be saved";
+        Assert.AreEqual(HttpStatusCode.OK, (await PostForm($"/Questions/Edit/{id}", form)).StatusCode);
+        db.ChangeTracker.Clear();
+        updated = await db.Questions.SingleAsync(q => q.Id == id);
+        Assert.AreEqual(second, updated.QuestionCategoryId);
+        Assert.AreEqual(original.Content, updated.Content);
+        var page = await Http.GetStringAsync($"/Questions/Edit/{id}");
+        Assert.Contains("name=\"QuestionCategoryId\"", page);
+        Assert.DoesNotContain("name=\"CategoryId\"", page);
+        Assert.DoesNotContain("Legacy classification", page);
+    }
+
+    [TestMethod]
+    public async Task TotalCategoryFiltersUsePeriodsRatherThanTheLegacyTree()
+    {
+        await LoginAsAdmin();
+        var (id, first, second) = await SeedQuestion();
+        Guid total; Guid otherId; Guid legacyId;
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            total = (await db.QuestionCategories.SingleAsync(c => c.Id == first)).TotalCategoryId;
+            var q = await db.Questions.SingleAsync(q => q.Id == id);
+            legacyId = q.CategoryId!.Value;
+            q.QuestionCategoryId = first;
+            var other = new Question { Id = Guid.NewGuid(), Content = "Other total question", QuestionCategoryId = second, CategoryId = legacyId };
+            otherId = other.Id;
+            db.Questions.Add(other); await db.SaveChangesAsync();
+        }
+        var html = await Http.GetStringAsync($"/Questions?totalCategoryId={total}");
+        Assert.Contains($"/Questions/Details/{id}", html);
+        Assert.DoesNotContain($"/Questions/Details/{otherId}", html);
+        Assert.DoesNotContain("name=\"categoryId\"", html);
+        Assert.Contains("question-period-filter.js", html);
+        Assert.Contains("name=\"totalCategoryId\"", html);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/Questions?totalCategoryId={total}&period={second}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/Questions?totalCategoryId=invalid")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/Questions?totalCategoryId={Guid.NewGuid()}")).StatusCode);
+        var references = await Http.GetStringAsync($"/Questions?legacyCategoryId={legacyId}");
+        Assert.Contains("This link shows legacy category references.", references);
+        Assert.Contains($"/Questions/Details/{id}", references);
+        Assert.Contains($"/Questions/Details/{otherId}", references);
+        var details = await Http.GetStringAsync($"/Questions/Details/{id}");
+        Assert.DoesNotContain("Legacy classification", details);
+        var deletion = await Http.GetStringAsync($"/Questions/Delete/{id}");
+        Assert.Contains("Early music", deletion);
+        Assert.DoesNotContain("Legacy classification", deletion);
+    }
+
 }

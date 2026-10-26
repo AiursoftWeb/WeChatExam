@@ -23,7 +23,7 @@
                     @if (Model.HasQuestions)
                     {
                         <p class="mb-1">@Localizer["Cannot delete category with associated questions. Please remove or reassign these questions first."]</p>
-                        <a asp-controller="Questions" asp-action="Index" asp-route-categoryId="@Model.Category.Id" class="btn btn-sm btn-warning mt-2">
+                        <a asp-controller="Questions" asp-action="Index" asp-route-legacyCategoryId="@Model.Category.Id" class="btn btn-sm btn-warning mt-2">
                             <i class="align-middle me-1" data-lucide="external-link"></i> @Localizer["View related questions"]
                         </a>
                     }

@@ -37,7 +37,7 @@ public class QuestionsController(
     public async Task<IActionResult> Index(
         [FromQuery(Name = "mtql")] string? filterMtql,
         string? tag,
-        Guid? categoryId,
+        Guid? totalCategoryId,
         QuestionType? questionType,
         DateTime? startDate,
         DateTime? endDate,
@@ -45,9 +45,16 @@ public class QuestionsController(
         string sortOrder = "desc",
         int page = 1,
         int pageSize = 20,
-        string? period = null)
+        string? period = null,
+        Guid? legacyCategoryId = null)
     {
+        if (!ModelState.IsValid) return BadRequest();
         var query = context.Questions.AsQueryable();
+        if (totalCategoryId.HasValue)
+        {
+            if (!await context.TotalCategories.AnyAsync(c => c.Id == totalCategoryId)) return NotFound();
+            query = query.Where(q => q.QuestionCategory != null && q.QuestionCategory.TotalCategoryId == totalCategoryId);
+        }
 
         if (period == "unassigned")
         {
@@ -56,14 +63,17 @@ public class QuestionsController(
         else if (!string.IsNullOrEmpty(period))
         {
             if (!Guid.TryParse(period, out var periodId)) return BadRequest();
-            if (!await context.QuestionCategories.AnyAsync(c => c.Id == periodId)) return NotFound();
+            var selectedPeriod = await context.QuestionCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == periodId);
+            if (selectedPeriod == null) return NotFound();
+            if (totalCategoryId.HasValue && selectedPeriod.TotalCategoryId != totalCategoryId) return BadRequest();
             query = query.Where(q => q.QuestionCategoryId == periodId);
         }
 
-        // Filter by Category
-        if (categoryId.HasValue)
+        // Only the legacy category deletion page still needs to locate these references.
+        // This is not the classification used by the question editor or practice navigation.
+        if (legacyCategoryId.HasValue)
         {
-            query = query.Where(q => q.CategoryId == categoryId.Value);
+            query = query.Where(q => q.CategoryId == legacyCategoryId.Value);
         }
 
         // Filter by QuestionType
@@ -127,8 +137,6 @@ public class QuestionsController(
             .Take(pageSize)
             .ToListAsync();
 
-        var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
-
         // Prepare Dropdown Options
         var questionTypeOptions = Enum.GetValues<QuestionType>()
             .Select(t => new SelectListItem
@@ -149,11 +157,11 @@ public class QuestionsController(
         return this.StackView(new IndexViewModel
         {
             Questions = questions,
-            Periods = await GetPeriods(),
+            QuestionCategories = await GetQuestionCategories(),
             SelectedPeriod = period,
-            Categories = categories,
-            SelectedCategoryId = categoryId,
-            SelectedCategory = categories.FirstOrDefault(c => c.Id == categoryId),
+            TotalCategories = await context.TotalCategories.AsNoTracking().OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ToListAsync(),
+            TotalCategoryId = totalCategoryId,
+            LegacyCategoryId = legacyCategoryId,
 
             // Pagination
             CurrentPage = page,
@@ -219,17 +227,17 @@ public class QuestionsController(
 
     // GET: questions/create
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public async Task<IActionResult> Create(Guid? categoryId, string? returnUrl)
+    public async Task<IActionResult> Create(Guid? questionCategoryId, string? returnUrl)
     {
-        var categories = await context.Categories.ToListAsync();
+        var questionCategories = await GetQuestionCategories();
         var maxOrderIndex = await context.Questions
             .Where(q => q.OrderIndex.HasValue)
             .MaxAsync(q => q.OrderIndex);
 
         var model = new CreateViewModel
         {
-            Categories = categories,
-            CategoryId = categoryId ?? Guid.Empty,
+            QuestionCategories = questionCategories,
+            QuestionCategoryId = questionCategories.Any(c => c.Id == questionCategoryId) ? questionCategoryId : null,
             ReturnUrl = returnUrl,
             OrderIndex = (maxOrderIndex ?? 0) + 1,
             CurrentMaxOrderIndex = maxOrderIndex
@@ -246,7 +254,7 @@ public class QuestionsController(
     {
         if (!ModelState.IsValid)
         {
-            model.Categories = await context.Categories.ToListAsync();
+            model.QuestionCategories = await GetQuestionCategories();
             return this.StackView(model);
         }
 
@@ -257,14 +265,14 @@ public class QuestionsController(
             if (!model.Options.Any())
             {
                 ModelState.AddModelError(nameof(model.Options), "Options are required for Choice and Bool questions.");
-                model.Categories = await context.Categories.ToListAsync();
+                model.QuestionCategories = await GetQuestionCategories();
                 return this.StackView(model);
             }
 
             if (!model.Options.Contains(model.StandardAnswer ?? string.Empty))
             {
                  ModelState.AddModelError(nameof(model.StandardAnswer), "Standard Answer must be one of the options.");
-                 model.Categories = await context.Categories.ToListAsync();
+                 model.QuestionCategories = await GetQuestionCategories();
                  return this.StackView(model);
             }
 
@@ -275,14 +283,10 @@ public class QuestionsController(
             model.Metadata = string.Empty;
         }
 
-        // 验证分类是否存在
-        var categoryExists = await context.Categories
-            .AnyAsync(c => c.Id == model.CategoryId);
-
-        if (!categoryExists)
+        if (!await context.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {
-            ModelState.AddModelError(nameof(model.CategoryId), "Category not found");
-            model.Categories = await context.Categories.ToListAsync();
+            ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
+            model.QuestionCategories = await GetQuestionCategories();
             return this.StackView(model);
         }
 
@@ -295,7 +299,7 @@ public class QuestionsController(
             Metadata = model.Metadata ?? string.Empty,
             StandardAnswer = model.StandardAnswer ?? string.Empty,
             Explanation = model.Explanation ?? string.Empty,
-            CategoryId = model.CategoryId,
+            QuestionCategoryId = model.QuestionCategoryId,
             OrderIndex = model.OrderIndex
         };
 
@@ -321,7 +325,7 @@ public class QuestionsController(
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
 
-    private Task<List<QuestionCategory>> GetPeriods() => context.QuestionCategories.AsNoTracking()
+    private Task<List<QuestionCategory>> GetQuestionCategories() => context.QuestionCategories.AsNoTracking()
         .Include(c => c.TotalCategory)
         .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
         .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
@@ -334,7 +338,7 @@ public class QuestionsController(
         return this.StackView(new PeriodViewModel
         {
             Id = id, Content = question.Content, QuestionCategoryId = question.QuestionCategoryId,
-            Periods = await GetPeriods(), ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null
+            Periods = await GetQuestionCategories(), ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null
         });
     }
 
@@ -348,7 +352,7 @@ public class QuestionsController(
         if (question == null) return NotFound();
         model.Content = question.Content;
         model.ReturnUrl = Url.IsLocalUrl(model.ReturnUrl) ? model.ReturnUrl : null;
-        model.Periods = await GetPeriods();
+        model.Periods = await GetQuestionCategories();
         if (model.QuestionCategoryId.HasValue && model.Periods.All(c => c.Id != model.QuestionCategoryId))
         {
             ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
@@ -371,7 +375,6 @@ public class QuestionsController(
 
         var question = await context.Questions
             .Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
-            .Include(q => q.Category)
             .Include(q => q.QuestionTags)
             .ThenInclude(qt => qt.Tag)
             .FirstOrDefaultAsync(q => q.Id == id);
@@ -381,7 +384,6 @@ public class QuestionsController(
         return this.StackView(new DetailsViewModel
         {
             Question = question,
-            Category = question.Category,
             ReturnUrl = returnUrl
         });
     }
@@ -396,7 +398,7 @@ public class QuestionsController(
         var question = await context.Questions.FindAsync(id);
         if (question == null) return NotFound();
 
-        var categories = await context.Categories.ToListAsync();
+        var questionCategories = await GetQuestionCategories();
         var tags = await tagService.GetTagsForQuestionAsync(id.Value);
         var maxOrderIndex = await context.Questions
             .Where(q => q.OrderIndex.HasValue)
@@ -411,8 +413,8 @@ public class QuestionsController(
             Metadata = question.Metadata,
             StandardAnswer = question.StandardAnswer,
             Explanation = question.Explanation,
-            CategoryId = question.CategoryId ?? Guid.Empty,
-            Categories = categories,
+            QuestionCategoryId = question.QuestionCategoryId,
+            QuestionCategories = questionCategories,
             Tags = string.Join(" ", tags.Select(t => t.DisplayName)),
             ReturnUrl = returnUrl,
             OrderIndex = question.OrderIndex,
@@ -449,7 +451,7 @@ public class QuestionsController(
 
         if (!ModelState.IsValid)
         {
-            model.Categories = await context.Categories.ToListAsync();
+            model.QuestionCategories = await GetQuestionCategories();
             return this.StackView(model);
         }
 
@@ -460,14 +462,14 @@ public class QuestionsController(
             if (!model.Options.Any())
             {
                 ModelState.AddModelError(nameof(model.Options), "Options are required for Choice and Bool questions.");
-                model.Categories = await context.Categories.ToListAsync();
+                model.QuestionCategories = await GetQuestionCategories();
                 return this.StackView(model);
             }
 
             if (!model.Options.Contains(model.StandardAnswer ?? string.Empty))
             {
                  ModelState.AddModelError(nameof(model.StandardAnswer), "Standard Answer must be one of the options.");
-                 model.Categories = await context.Categories.ToListAsync();
+                 model.QuestionCategories = await GetQuestionCategories();
                  return this.StackView(model);
             }
 
@@ -481,14 +483,10 @@ public class QuestionsController(
         var question = await context.Questions.FindAsync(id);
         if (question == null) return NotFound();
 
-        // 验证分类是否存在
-        var categoryExists = await context.Categories
-            .AnyAsync(c => c.Id == model.CategoryId);
-
-        if (!categoryExists)
+        if (!await context.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {
-            ModelState.AddModelError(nameof(model.CategoryId), "Category not found");
-            model.Categories = await context.Categories.ToListAsync();
+            ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
+            model.QuestionCategories = await GetQuestionCategories();
             return this.StackView(model);
         }
 
@@ -498,7 +496,9 @@ public class QuestionsController(
         question.Metadata = model.Metadata ?? string.Empty;
         question.StandardAnswer = model.StandardAnswer ?? string.Empty;
         question.Explanation = model.Explanation ?? string.Empty;
-        question.CategoryId = model.CategoryId;
+        // Legacy category consumers migrate separately. Never let this form overwrite
+        // that field or make teachers maintain two competing classifications.
+        question.QuestionCategoryId = model.QuestionCategoryId;
         question.OrderIndex = model.OrderIndex;
 
         await context.SaveChangesAsync();
@@ -545,7 +545,7 @@ public class QuestionsController(
         if (id == null) return NotFound();
 
         var question = await context.Questions
-            .Include(q => q.Category)
+            .Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
             .FirstOrDefaultAsync(q => q.Id == id);
 
         if (question == null) return NotFound();
@@ -553,7 +553,6 @@ public class QuestionsController(
         return this.StackView(new DeleteViewModel
         {
             Question = question,
-            Category = question.Category,
             ReturnUrl = returnUrl
         });
     }
@@ -568,7 +567,7 @@ public class QuestionsController(
         var question = await context.Questions.FindAsync(id);
         if (question == null) return NotFound();
 
-        var categoryId = question.CategoryId;
+        var questionCategoryId = question.QuestionCategoryId;
 
         context.Questions.Remove(question);
         await context.SaveChangesAsync();
@@ -577,7 +576,7 @@ public class QuestionsController(
         {
             return Redirect(returnUrl);
         }
-        return RedirectToAction(nameof(Index), new { categoryId });
+        return RedirectToAction(nameof(Index), new { period = questionCategoryId });
     }
 
     // POST: questions/batch-delete

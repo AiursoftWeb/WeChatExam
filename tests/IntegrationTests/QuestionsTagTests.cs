@@ -86,33 +86,20 @@ public class QuestionsTagTests
     [TestMethod]
     public async Task CreateAndEditQuestionWithTagsTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
-
-        // 1. Create Category
-        var categoryTitle = $"Test-Category-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        var catContent = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        });
-        
-        var catResponse = await _http.PostAsync("/Categories/Create", catContent);
-        var catDetailsUrl = catResponse.Headers.Location?.OriginalString;
-        Assert.IsNotNull(catDetailsUrl);
-        var categoryId = catDetailsUrl.Split('/').Last().Split('?')[0];
 
         // 2. Create Question with Tags (Chinese)
         var qText = $"Test Question {Guid.NewGuid()}";
         var tags = "贝多芬 钢琴 奏鸣曲"; 
         
-        var createToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        var createToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
         var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Content", qText},
             { "QuestionType", "0" }, // Choice
             { "GradingStrategy", "0" }, // AllOrNothing
-            { "CategoryId", categoryId },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Tags", tags },
             { "Options[0]", "A" },
             { "Options[1]", "B" },
@@ -143,6 +130,7 @@ public class QuestionsTagTests
     [TestMethod]
     public async Task CreatePageKeepsTagsAfterValidation()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
@@ -154,7 +142,7 @@ public class QuestionsTagTests
         {
             ["Content"] = text, ["QuestionType"] = "0", ["GradingStrategy"] = "0",
             ["Options[0]"] = "A", ["Options[1]"] = "B", ["StandardAnswer"] = "A",
-            ["CategoryId"] = "", ["Tags"] = tags,
+            ["QuestionCategoryId"] = "", ["Tags"] = tags,
             ["__RequestVerificationToken"] = await GetAntiCsrfToken("/Questions/Create")
         };
         var invalid = await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(form));
@@ -165,7 +153,7 @@ public class QuestionsTagTests
         Assert.AreEqual(tags, WebUtility.HtmlDecode(hiddenTags.Groups[1].Value));
         Assert.Contains("content-editor.js", html);
         Assert.IsFalse(await db.Questions.AnyAsync(q => q.Content == text));
-        form["CategoryId"] = category.Id.ToString();
+        form["QuestionCategoryId"] = periodId.ToString();
         form["__RequestVerificationToken"] = await GetAntiCsrfToken("/Questions/Create");
         var saved = await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(form));
         Assert.AreEqual(HttpStatusCode.Found, saved.StatusCode);

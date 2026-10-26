@@ -12,7 +12,5 @@ public class DetailsViewModel : UiStackLayoutViewModel
 
     public Question? Question { get; set; }
 
-    public Category? Category { get; set; }
-
     public string? ReturnUrl { get; set; }
 }

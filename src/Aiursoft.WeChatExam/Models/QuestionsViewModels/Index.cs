@@ -13,14 +13,14 @@ public class IndexViewModel : UiStackLayoutViewModel
 
     public List<Question> Questions { get; set; } = new();
 
-    public List<QuestionCategory> Periods { get; set; } = [];
+    public List<QuestionCategory> QuestionCategories { get; set; } = [];
     public string? SelectedPeriod { get; set; }
 
-    public Guid? SelectedCategoryId { get; set; }
+    public Guid? TotalCategoryId { get; set; }
 
-    public Category? SelectedCategory { get; set; }
+    public Guid? LegacyCategoryId { get; set; }
 
-    public List<Category> Categories { get; set; } = new();
+    public List<TotalCategory> TotalCategories { get; set; } = new();
 
     // Pagination
     public int CurrentPage { get; set; } = 1;

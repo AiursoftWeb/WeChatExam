@@ -24,7 +24,14 @@
         @if (Model.IsDraft)
         {
             <p class="text-muted small">@Localizer["Compare up to five similar questions before saving. Similarity does not mean they are duplicates."]</p>
-            <p class="text-muted small">@Localizer["Searches within the selected category, or all categories if none is selected."]</p>
+            @if (Model.SearchesAllCategories)
+            {
+                <p class="text-muted small">@Localizer["Searches the entire question bank."]</p>
+            }
+            else
+            {
+                <p class="text-muted small">@Localizer["Searches within the selected category, or all categories if none is selected."]</p>
+            }
         }
         else
         {

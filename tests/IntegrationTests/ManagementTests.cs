@@ -244,31 +244,20 @@ public class ManagementTests
     [TestMethod]
     public async Task QuestionsCrudTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
-
-        // Prerequisite: Create a Category first
-        var categoryTitle = $"Q-Cat-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        var catContent = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        });
-        var catResponse = await _http.PostAsync("/Categories/Create", catContent);
-        var catDetailsUrl = catResponse.Headers.Location?.OriginalString;
-        var categoryId = catDetailsUrl!.Split('/').Last().Split('?')[0];
 
         // 1. Create Question
         var qText = $"Test Question {Guid.NewGuid()}";
         var qType = "0";
         var qStrategy= "0";
-        var createToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        var createToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
         var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Content", qText},
             { "QuestionType", qType },
             { "GradingStrategy", qStrategy },
-            { "CategoryId", categoryId },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Options[0]", "A" },
             { "Options[1]", "B" },
             { "StandardAnswer", "A" },
@@ -296,7 +285,7 @@ public class ManagementTests
             { "questionType", qType },
             { "GradingStrategy", qStrategy },
             { "Content", newText },
-            { "CategoryId", categoryId },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Options[0]", "A" },
             { "Options[1]", "B" },
             { "StandardAnswer", "B" }, // Changed answer
@@ -319,35 +308,23 @@ public class ManagementTests
     [TestMethod]
     public async Task QuestionNavigationReturnUrlTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
 
-        // 1. Setup: Create a Category and a Question
-        var categoryTitle = $"Nav-Cat-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        }));
-
-        var catIndexResponse = await _http.GetAsync("/Categories/Index");
-        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
-
-        var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        var qToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
         await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Content", "Navigation Test Question" },
             { "QuestionType", "0" },
             { "GradingStrategy", "0" },
-            { "CategoryId", categoryId },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Options[0]", "A" },
             { "Options[1]", "B" },
             { "StandardAnswer", "A" },
             { "__RequestVerificationToken", qToken }
         }));
 
-        var qIndexUrl = $"/Questions/Index?categoryId={categoryId}&page=1";
+        var qIndexUrl = $"/Questions/Index?period={periodId}&page=1";
         var qIndexResponse = await _http.GetAsync(qIndexUrl);
         var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
         var match = Regex.Match(qIndexHtml, @"/Questions/Details/([a-z0-9-]+)");
@@ -365,7 +342,7 @@ public class ManagementTests
             new KeyValuePair<string, string>("QuestionType", "0"),
             new KeyValuePair<string, string>("GradingStrategy", "0"),
             new KeyValuePair<string, string>("Content", "Updated Content"),
-            new KeyValuePair<string, string>("CategoryId", categoryId),
+            new KeyValuePair<string, string>("QuestionCategoryId", periodId.ToString()),
             new KeyValuePair<string, string>("Options", "A"),
             new KeyValuePair<string, string>("Options", "B"),
             new KeyValuePair<string, string>("StandardAnswer", "A"),
@@ -511,6 +488,7 @@ public class ManagementTests
     [TestMethod]
     public async Task ExamsCrudTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
 
         // 1. Setup prerequisite: Category, Question, Paper, and Publish
@@ -526,20 +504,20 @@ public class ManagementTests
         var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
 
         var qText = $"Exam-Prereq-Q-{Guid.NewGuid()}";
-        var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        var qToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
         await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Content", qText},
             { "QuestionType", "0" },
             { "GradingStrategy", "0" },
-            { "CategoryId", categoryId },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Options[0]", "A" },
             { "Options[1]", "B" },
             { "StandardAnswer", "A" },
             { "Explanation", "A is correct" },
             { "__RequestVerificationToken", qToken }
         }));
-        var qIndexResponse = await _http.GetAsync($"/Questions/Index?categoryId={categoryId}");
+        var qIndexResponse = await _http.GetAsync($"/Questions/Index?period={periodId}");
         var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
         var questionId = Regex.Match(qIndexHtml, @"href=""/Questions/Details/([a-z0-9-]+)").Groups[1].Value;
 

@@ -86,32 +86,21 @@ public class PaperTests
     [TestMethod]
     public async Task PaperMtqlBatchAddTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
-
-        // 1. Create a Category
-        var categoryTitle = $"Cat-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        var catContent = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        });
-        var catResponse = await _http.PostAsync("/Categories/Create", catContent);
-        var catDetailsUrl = catResponse.Headers.Location?.OriginalString;
-        var categoryId = catDetailsUrl!.Split('/').Last().Split('?')[0];
 
         // 2. Create some questions
         var questionIds = new List<string>();
         for (int i = 0; i < 3; i++)
         {
             var qText = $"MTQL Test Question {i} {Guid.NewGuid()}";
-            var createToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+            var createToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
             var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
             {
                 { "Content", qText},
                 { "QuestionType", "0" },
                 { "GradingStrategy", "0" },
-                { "CategoryId", categoryId },
+                { "QuestionCategoryId", periodId.ToString() },
                 { "Options[0]", "A" },
                 { "Options[1]", "B" },
                 { "StandardAnswer", "A" },
