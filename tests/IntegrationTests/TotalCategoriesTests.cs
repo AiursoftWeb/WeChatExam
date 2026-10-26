@@ -151,8 +151,9 @@ public class TotalCategoriesTests : TestBase
         await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite(connection).Options);
         var migrator = db.GetService<IMigrator>();
         var migrations = db.Database.GetMigrations().ToArray();
-        Assert.EndsWith("_AddTotalCategories", migrations[^1]);
-        await migrator.MigrateAsync(migrations[^2]);
+        var index = Array.FindIndex(migrations, m => m.EndsWith("_AddTotalCategories", StringComparison.Ordinal));
+        Assert.IsGreaterThan(0, index);
+        await migrator.MigrateAsync(migrations[index - 1]);
         var root = new Category { Id = Guid.NewGuid(), Title = "Music history", ParentId = null, OrderIndex = 7 };
         var child = new Category { Id = Guid.NewGuid(), Title = "Overview", ParentId = root.Id };
         var product = new VipProduct { Name = "Music membership", CategoryId = root.Id, DurationDays = 366, PriceInFen = 19800 };

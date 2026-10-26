@@ -71,6 +71,10 @@ public class ViewModelArgsInjector(
         _ = localizer["Error"];
         _ = localizer["Content Management"];
         _ = localizer["Categories"];
+        _ = localizer["Question Bank Management"];
+        _ = localizer["Periods"];
+        _ = localizer["Create Period"];
+        _ = localizer["Edit Period"];
         _ = localizer["Total Categories"];
         _ = localizer["Create Total Category"];
         _ = localizer["Edit Total Category"];
