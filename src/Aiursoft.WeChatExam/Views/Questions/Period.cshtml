@@ -1,0 +1,44 @@
+@model Aiursoft.WeChatExam.Models.QuestionsViewModels.PeriodViewModel
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-6">
+        <h1 class="h3 mb-3">@Localizer["Assign Period"]</h1>
+        <div class="card">
+            <div class="card-body">
+                <p class="fs-5 text-break">@Model.Content</p>
+                <a asp-action="Edit" asp-route-id="@Model.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">@Localizer["Edit Question"]</a>
+                <form asp-action="Period" asp-route-id="@Model.Id" method="post" class="mt-4">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label asp-for="QuestionCategoryId" class="form-label">@Localizer["Period"]</label>
+                    <select asp-for="QuestionCategoryId" class="form-select form-select-lg" required>
+                        <option value="">@Localizer["Choose a period"]</option>
+                        @foreach (var group in Model.Periods.GroupBy(c => c.TotalCategoryId))
+                        {
+                            <optgroup label="@group.First().TotalCategory!.Title">
+                                @foreach (var period in group)
+                                {
+                                    <option value="@period.Id">@period.Title</option>
+                                }
+                            </optgroup>
+                        }
+                    </select>
+                    <span asp-validation-for="QuestionCategoryId" class="text-danger"></span>
+                    <p class="text-muted mt-3">@Localizer["Choose the one period that best describes this question. Its total category comes from that period."]</p>
+                    <p class="text-muted">@Localizer["This step records the classification. Student access rules will switch in a later release."]</p>
+                    @if (Model.Periods.Count == 0)
+                    {
+                        <p>@Localizer["Create periods before assigning questions."]</p>
+                        <a asp-controller="QuestionCategories" asp-action="Index" class="btn btn-outline-primary">@Localizer["Manage Periods"]</a>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary">@Localizer["Save Period"]</button>
+                    }
+                    <a href="@(Model.ReturnUrl ?? Url.Action("Details", new { id = Model.Id }))" class="btn btn-outline-secondary ms-2">@Localizer["Back"]</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

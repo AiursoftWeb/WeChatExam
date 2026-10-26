@@ -1,3 +1,7 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@{ var canAssignPeriod = (await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanEditQuestions)).Succeeded; }
 @using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.IndexViewModel
 
@@ -30,6 +34,22 @@
                 <input type="hidden" name="page" value="1" />
 
                 <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="period" class="form-label">@Localizer["Period"]</label>
+                        <select id="period" name="period" class="form-select">
+                            <option value="">@Localizer["All Periods"]</option>
+                            <option value="unassigned" selected="@(Model.SelectedPeriod == "unassigned")">@Localizer["Period not assigned"]</option>
+                            @foreach (var group in Model.Periods.GroupBy(c => c.TotalCategoryId))
+                            {
+                                <optgroup label="@group.First().TotalCategory!.Title">
+                                    @foreach (var period in group)
+                                    {
+                                        <option value="@period.Id" selected="@(Model.SelectedPeriod == period.Id.ToString())">@period.Title</option>
+                                    }
+                                </optgroup>
+                            }
+                        </select>
+                    </div>
                     <div class="col-md-3">
                         <label class="form-label">@Localizer["Category"]</label>
                         <select name="categoryId" class="form-select">
@@ -105,7 +125,7 @@
                             @if(Model.SortBy == "QuestionType") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
                         </a>
                     </th>
-                    <th style="width: 200px;">@Localizer["Category"]</th>
+                    <th style="width: 200px;">@Localizer["Period"]</th>
                     <th style="width: 180px;">
                         <a href="javascript:void(0)" onclick="sort('CreatedAt')" class="text-decoration-none text-dark d-flex align-items-center">
                             @Localizer["Created"]
@@ -134,7 +154,21 @@
                             }
                         </td>
                         <td><span class="badge bg-secondary">@Localizer[question.QuestionType.GetDisplayName()]</span></td>
-                        <td>@Model.Categories.FirstOrDefault(c => c.Id == question.CategoryId)?.Title</td>
+                        <td>
+                            @if (question.QuestionCategory != null)
+                            {
+                                <div>@question.QuestionCategory.Title</div>
+                                <small class="text-muted">@question.QuestionCategory.TotalCategory!.Title</small>
+                            }
+                            else
+                            {
+                                <span class="text-muted">@Localizer["Period not assigned"]</span>
+                            }
+                            @if (canAssignPeriod)
+                            {
+                                <div><a asp-action="Period" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">@Localizer["Assign Period"]</a></div>
+                            }
+                        </td>
                         <td><span data-utc-time="@question.CreationTime.ToHtmlDateTime()"></span></td>
                         <td>
                             <div class="btn-group">

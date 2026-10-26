@@ -54,6 +54,19 @@ public class Question
     public Guid? CategoryId { get; set; }
 
     /// <summary>
+    /// The single period that owns this question. Null is transitional while
+    /// existing data and question creation/import flows are migrated.
+    /// </summary>
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    public Guid? QuestionCategoryId { get; set; }
+
+    [JsonIgnore]
+    [System.Text.Json.Serialization.JsonIgnore]
+    [ForeignKey(nameof(QuestionCategoryId))]
+    public QuestionCategory? QuestionCategory { get; set; }
+
+    /// <summary>
     /// 创建时间
     /// </summary>
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;

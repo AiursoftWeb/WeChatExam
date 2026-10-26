@@ -59,6 +59,12 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .HasForeignKey(c => c.TotalCategoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        builder.Entity<Question>()
+            .HasOne(q => q.QuestionCategory)
+            .WithMany()
+            .HasForeignKey(q => q.QuestionCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         // Protect financial records from being cascade-deleted when a user deletes their account.
         builder.Entity<PaymentOrder>()
             .HasOne(p => p.User)

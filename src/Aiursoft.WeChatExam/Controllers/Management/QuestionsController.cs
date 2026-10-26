@@ -44,9 +44,21 @@ public class QuestionsController(
         string sortBy = "CreatedAt",
         string sortOrder = "desc",
         int page = 1,
-        int pageSize = 20)
+        int pageSize = 20,
+        string? period = null)
     {
         var query = context.Questions.AsQueryable();
+
+        if (period == "unassigned")
+        {
+            query = query.Where(q => q.QuestionCategoryId == null);
+        }
+        else if (!string.IsNullOrEmpty(period))
+        {
+            if (!Guid.TryParse(period, out var periodId)) return BadRequest();
+            if (!await context.QuestionCategories.AnyAsync(c => c.Id == periodId)) return NotFound();
+            query = query.Where(q => q.QuestionCategoryId == periodId);
+        }
 
         // Filter by Category
         if (categoryId.HasValue)
@@ -108,6 +120,7 @@ public class QuestionsController(
         // Pagination
         var totalCount = await query.CountAsync();
         var questions = await query
+            .Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
             .Include(q => q.QuestionTags)
             .ThenInclude(qt => qt.Tag)
             .Skip((page - 1) * pageSize)
@@ -136,6 +149,8 @@ public class QuestionsController(
         return this.StackView(new IndexViewModel
         {
             Questions = questions,
+            Periods = await GetPeriods(),
+            SelectedPeriod = period,
             Categories = categories,
             SelectedCategoryId = categoryId,
             SelectedCategory = categories.FirstOrDefault(c => c.Id == categoryId),
@@ -306,6 +321,48 @@ public class QuestionsController(
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
 
+    private Task<List<QuestionCategory>> GetPeriods() => context.QuestionCategories.AsNoTracking()
+        .Include(c => c.TotalCategory)
+        .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
+        .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
+
+    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    public async Task<IActionResult> Period(Guid id, string? returnUrl)
+    {
+        var question = await context.Questions.AsNoTracking().SingleOrDefaultAsync(q => q.Id == id);
+        if (question == null) return NotFound();
+        return this.StackView(new PeriodViewModel
+        {
+            Id = id, Content = question.Content, QuestionCategoryId = question.QuestionCategoryId,
+            Periods = await GetPeriods(), ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null
+        });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditQuestions)]
+    public async Task<IActionResult> Period(Guid id, PeriodViewModel model)
+    {
+        if (id != model.Id) return NotFound();
+        var question = await context.Questions.SingleOrDefaultAsync(q => q.Id == id);
+        if (question == null) return NotFound();
+        model.Content = question.Content;
+        model.ReturnUrl = Url.IsLocalUrl(model.ReturnUrl) ? model.ReturnUrl : null;
+        model.Periods = await GetPeriods();
+        if (model.QuestionCategoryId.HasValue && model.Periods.All(c => c.Id != model.QuestionCategoryId))
+        {
+            ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
+        }
+        if (!ModelState.IsValid) return this.StackView(model);
+
+        // Classification is reviewed independently of content and legacy pricing.
+        // Never infer a period from a tag name or silently rewrite legacy fields.
+        question.QuestionCategoryId = model.QuestionCategoryId;
+        await context.SaveChangesAsync();
+        if (model.ReturnUrl != null) return LocalRedirect(model.ReturnUrl);
+        return RedirectToAction(nameof(Details), new { id });
+    }
+
     // GET: questions/{id}
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Details(Guid? id, string? returnUrl)
@@ -313,6 +370,7 @@ public class QuestionsController(
         if (id == null) return NotFound();
 
         var question = await context.Questions
+            .Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
             .Include(q => q.Category)
             .Include(q => q.QuestionTags)
             .ThenInclude(qt => qt.Tag)
