@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>進階：系統提示</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>從此教材產生的所有題目都會使用這個期別。不同期別的教材請分開擷取。</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>從資料中萃取知識</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>提供給 AI 用來解析資料的指示</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>知識類別</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>教材</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>在此貼上您的學習資料、文章或筆記…</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>學期</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>選擇分類</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>選擇期間</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>系統提示</value>

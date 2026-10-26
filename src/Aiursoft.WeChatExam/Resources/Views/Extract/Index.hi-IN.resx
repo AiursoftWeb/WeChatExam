@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>उन्नत: सिस्टम प्रॉम्प्ट</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>इस सामग्री से बनाए गए सभी प्रश्नों के लिए यह अवधि लागू होगी। अलग-अलग अवधियों की सामग्री अलग-अलग निकालें।</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>सामग्री से ज्ञान निकालें</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>सामग्री को पार्स करने के लिए AI को निर्देश</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>ज्ञान श्रेणी</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>सामग्री</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>अपना अध्ययन सामग्री, लेख या नोट्स यहां पेस्ट करें...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>अवधि</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>श्रेणी चुनें</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>अवधि चुनें</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>सिस्टम प्रॉम्प्ट</value>

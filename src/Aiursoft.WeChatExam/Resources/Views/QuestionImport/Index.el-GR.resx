@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Όλες οι εισαγόμενες ερωτήσεις θα χρησιμοποιήσουν αυτό το είδος, παραβλέποντας το πεδίο Τύπος στο JSON.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Επιλέξτε ξεχωριστά στην προεπισκόπηση</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Προεπιλεγμένη περίοδος</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Εισαγωγή ερωτήσεων από JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Τύπος Ερώτησης</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Ορίστε μία περίοδος για όλη την ομάδα και, στη συνέχεια, προσαρμόστε τις μεμονωμένες ερωτήσεις στην προεπισκόπηση.</value>
   </data>
 
 </root>

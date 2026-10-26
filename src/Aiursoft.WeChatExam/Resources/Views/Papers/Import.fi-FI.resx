@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Tarkista tunnisteet ja käyttöoikeussuositukset</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Valitse kullekin kysymykselle jakso ennen tallentamista.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Verrataan esikatselun kysymystä {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Maksullisen lähdetunnisteen nimi</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Paperin luokka (valinnainen)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Odottaa</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Kausi</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Käsitellään</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Pistemäärä</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Valitse kausi</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Lähdetagin uudelleenkäyttö tekee tästä tunnisteesta maksullisen kaikille.</value>

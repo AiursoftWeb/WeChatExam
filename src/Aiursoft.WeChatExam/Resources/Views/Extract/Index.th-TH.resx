@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>ขั้นสูง: คำสั่งระบบ</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>คำถามทั้งหมดที่สร้างจากเนื้อหานี้จะใช้ภาคเรียนนี้ โปรดแยกเนื้อหาจากภาคเรียนต่าง ๆ เพื่อดำเนินการแยกข้อมูลเป็นรายการ</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>ดึงความรู้จากวัสดุ</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>คำชี้แจงสำหรับ AI เกี่ยวกับวิธีการแยกวิเคราะห์เนื้อหา</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>หมวดหมู่ความรู้</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>วัสดุ</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>วางวัสดุการเรียน บทความ หรือโน้ตของคุณที่นี่...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>ช่วงเวลา</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>เลือกหมวดหมู่</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>เลือกช่วงเวลา</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>ระบบคำสั่ง</value>

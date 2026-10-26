@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>Alle vragen in deze batch gebruiken de geselecteerde periode. Sla materiaal uit verschillende periodes afzonderlijk op.</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>Antwoord</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>Inhoud</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Kenniscategorie</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>Geen kennispunten gevonden.</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>Geen vragen voor dit kennispunt.</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Voorbeeld &amp; Opslaan</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Vragen</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>Categorie selecteren</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Periode selecteren</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Labels</value>

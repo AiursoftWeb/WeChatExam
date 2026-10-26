@@ -66,6 +66,9 @@
   <data name="Current Category" xml:space="preserve">
     <value>現在のカテゴリ</value>
   </data>
+  <data name="Current period" xml:space="preserve">
+    <value>現在の期間</value>
+  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>現在のタグ</value>
   </data>
@@ -99,11 +102,17 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>保存して採用</value>
   </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>期間を選択</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>カテゴリを選択</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>推奨カテゴリ</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>推奨期間</value>
   </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>推奨タグ</value>

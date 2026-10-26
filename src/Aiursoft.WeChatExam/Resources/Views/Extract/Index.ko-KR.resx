@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>고급: 시스템 프롬프트</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>이 자료에서 생성되는 모든 문제에는 이 기간이 적용됩니다. 기간이 다른 자료는 각각 따로 추출하세요.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>자료에서 지식 추출하기</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>AI가 자료를 해석하는 방법에 대한 지침</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>지식 카테고리</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>자료</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>학습 자료, 기사, 또는 노트를 여기에 붙여넣으세요...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>기간</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>카테고리 선택</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>기간 선택</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>시스템 프롬프트</value>

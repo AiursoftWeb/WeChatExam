@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Nâng cao: Lời nhắc hệ thống</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Tất cả câu hỏi được tạo từ tài liệu này sẽ sử dụng kỳ này. Hãy trích xuất riêng tài liệu thuộc các kỳ khác nhau.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Trích xuất kiến thức từ tài liệu</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Hướng dẫn cho AI về cách phân tích tài liệu.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Danh mục kiến thức</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Tài liệu</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Dán tài liệu học tập, bài viết hoặc ghi chú của bạn ở đây...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Kỳ học</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Chọn danh mục</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Chọn kỳ</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Lệnh hệ thống</value>

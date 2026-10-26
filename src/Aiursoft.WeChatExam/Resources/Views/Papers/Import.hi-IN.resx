@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>टैग और पहुँच संबंधी सुझाव जाँचें</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>सहेजने से पहले प्रत्येक प्रश्न के लिए एक अवधि चुनें।</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>पूर्वदर्शन प्रश्न {0} की तुलना</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>भुगतान किए गए स्रोत टैग का नाम</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>पेपर की श्रेणी (वैकल्पिक)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>लंबित</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>अवधि</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>प्रक्रिया जारी है</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>अंक</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>एक अवधि चुनें</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>स्रोत टैग का पुनः उपयोग करने से यह टैग सभी जगह सशुल्क हो जाता है।</value>

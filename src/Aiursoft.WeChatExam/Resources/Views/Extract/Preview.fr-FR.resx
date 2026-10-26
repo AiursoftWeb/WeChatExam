@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>Toutes les questions de cette série utiliseront la période sélectionnée. Enregistrez séparément les contenus provenant de périodes différentes.</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>Réponse</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>Contenu</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Catégorie de connaissances</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>Aucun point de connaissance trouvé.</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>Aucune question pour ce point de connaissance.</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Période</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Aperçu et enregistrer</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Questions</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>Sélectionner une catégorie</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Sélectionner une période</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Mots-clés</value>

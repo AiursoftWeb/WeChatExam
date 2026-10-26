@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Alle importerede spørgsmål vil bruge denne type, og ignorerer feltet Type i JSON.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Vælg separat i forudvisning</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Standardperiode</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Importér spørgsmål fra JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Spørgsmålstype</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Start med at vælge én periode for hele holdet, og juster derefter de enkelte spørgsmål i forhåndsvisningen.</value>
   </data>
 
 </root>

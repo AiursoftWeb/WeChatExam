@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>高度な設定: システムプロンプト</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>この教材から生成されるすべての問題には、この期間が適用されます。期間ごとに分けて教材を抽出してください。</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>資料から知識を抽出する</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>AIが資料を解析する方法に関する指示</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>知識カテゴリー</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>資料</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>学習資料、記事、ノートをここに貼り付けます...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>学期</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>カテゴリを選択</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>期間を選択</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>システムプロンプト</value>

@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Semua pertanyaan yang diimpor akan menggunakan tipe ini, mengabaikan bidang Type dalam JSON.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Pilih secara terpisah di pratinjau</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Periode default</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Impor Soal dari JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Jenis Pertanyaan</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Mulai dengan satu periode untuk seluruh batch, lalu sesuaikan setiap pertanyaan di pratinjau.</value>
   </data>
 
 </root>

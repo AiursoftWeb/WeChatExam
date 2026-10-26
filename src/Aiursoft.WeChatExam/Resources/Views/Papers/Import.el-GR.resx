@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Έλεγχος ετικετών και προτάσεων πρόσβασης</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Επιλέξτε μια περίοδο για κάθε ερώτηση πριν από την αποθήκευση.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Σύγκριση ερώτησης προεπισκόπησης {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Όνομα ετικέτας επί πληρωμή πηγής</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Κατηγορία γραπτού (προαιρετικό)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Σε εκκρεμότητα</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Περίοδος</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Σε επεξεργασία</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Βαθμολογία</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Επιλέξτε μια περίοδο</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Η επαναχρησιμοποίηση της πηγής καθιστά αυτήν την ετικέτα επί πληρωμή για όλους.</value>

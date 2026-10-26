@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Усі категорії</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Усі періоди</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Усі підсумкові категорії</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Всі типи</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Ви впевнені, що хочете видалити</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Призначити період</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Скасувати</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Не знайдено питань, що відповідають критеріям пошуку</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Період</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Період не призначено</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>Введіть правильний номер сторінки від 1 до</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Цю дію не можна скасувати.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>За цим посиланням відображаються застарілі посилання на категорії. Для поточної класифікації запитань використовуються загальні категорії та періоди.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Загальна категорія</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Тип</value>

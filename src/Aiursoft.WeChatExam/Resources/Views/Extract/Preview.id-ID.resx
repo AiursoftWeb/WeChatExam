@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>Semua pertanyaan dalam kumpulan ini akan menggunakan periode yang dipilih. Simpan materi dari periode yang berbeda secara terpisah.</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>Jawaban</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>Konten</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Kategori pengetahuan</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>Tidak ditemukan poin pengetahuan.</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>Tidak ada pertanyaan untuk poin pengetahuan ini.</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Pratinjau &amp; Simpan</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Pertanyaan</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>Pilih Kategori</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Pilih Periode</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tag</value>

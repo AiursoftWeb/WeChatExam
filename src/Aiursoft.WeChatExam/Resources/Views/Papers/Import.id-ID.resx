@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Periksa tag dan rekomendasi akses</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Pilih periode untuk setiap pertanyaan sebelum menyimpan.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Membandingkan soal pratinjau {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Nama tag sumber berbayar</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Kategori naskah (opsional)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Menunggu</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Sedang diproses</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Nilai</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Pilih periode</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Penggunaan ulang sumber membuat tag ini berbayar secara global.</value>
