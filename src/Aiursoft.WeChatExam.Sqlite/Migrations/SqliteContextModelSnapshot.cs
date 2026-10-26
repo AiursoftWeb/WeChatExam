@@ -15,7 +15,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.13");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.AnswerRecord", b =>
                 {
@@ -936,6 +936,28 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Taxonomies");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.TotalCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TotalCategories");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.User", b =>

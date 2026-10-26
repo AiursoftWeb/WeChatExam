@@ -1,0 +1,58 @@
+@model Aiursoft.WeChatExam.Models.TotalCategoriesViewModels.EditViewModel
+@{
+    var creating = Model.Id == Guid.Empty;
+}
+
+<a asp-action="Index" class="d-inline-block text-decoration-none mb-3">
+    <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Total Categories"]
+</a>
+<h1 class="h3 mb-4">
+    @if (creating)
+    {
+        @Localizer["Create Total Category"]
+    }
+    else
+    {
+        @Localizer["Edit Total Category"]
+    }
+</h1>
+
+<div class="row">
+    <div class="col-lg-7 col-xl-6">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                    @if (!creating)
+                    {
+                        <input asp-for="Id" type="hidden" />
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-4">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" maxlength="200" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="OrderIndex" class="form-label"></label>
+                        <input asp-for="OrderIndex" class="form-control" min="0" aria-describedby="order-help" />
+                        <div id="order-help" class="form-text">@Localizer["Smaller numbers appear first."]</div>
+                        <span asp-validation-for="OrderIndex" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            @if (creating)
+                            {
+                                @Localizer["Create Total Category"]
+                            }
+                            else
+                            {
+                                @Localizer["Save Changes"]
+                            }
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
