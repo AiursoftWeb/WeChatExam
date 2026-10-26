@@ -4,7 +4,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Aiursoft.WeChatExam.Models.ExtractViewModels;
 
-public class ExtractIndexViewModel: UiStackLayoutViewModel
+public abstract class ExtractDestinationViewModel : UiStackLayoutViewModel
+{
+    public Guid? CategoryId { get; set; }
+
+    public Guid? QuestionCategoryId { get; set; }
+
+    public SelectList? Categories { get; set; }
+    public SelectList? QuestionCategories { get; set; }
+}
+
+public class ExtractIndexViewModel: ExtractDestinationViewModel
 {
     public ExtractIndexViewModel()
     {
@@ -14,15 +24,8 @@ public class ExtractIndexViewModel: UiStackLayoutViewModel
     [Display(Name = "Material")]
     public string Material { get; set; } =string.Empty;
 
-    [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "System Prompt")]
-    public string SystemPrompt { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "The {0} is required.")]
-    [Display(Name = "Target Category")]
-    public Guid CategoryId { get; set; }
-
-    public SelectList? Categories { get; set; }
+    public string? SystemPrompt { get; set; }
 }
 
 public class ExtractEditViewModel: UiStackLayoutViewModel
@@ -36,12 +39,15 @@ public class ExtractEditViewModel: UiStackLayoutViewModel
     [Display(Name = "JSON Content")]
     public string JsonContent { get; set; } = string.Empty;
 
+    public Guid? CategoryId { get; set; }
+    public Guid? QuestionCategoryId { get; set; }
+
     public string? ErrorMessage { get; set; }
     
     public string OriginalMaterial { get; set; } = string.Empty;
 }
 
-public class ExtractPreviewViewModel: UiStackLayoutViewModel
+public class ExtractPreviewViewModel: ExtractDestinationViewModel
 {
     public ExtractPreviewViewModel()
     {
@@ -52,10 +58,4 @@ public class ExtractPreviewViewModel: UiStackLayoutViewModel
     public List<ExtractedKnowledgePoint> Data { get; set; } = new();
 
     public string OriginalMaterial { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "The {0} is required.")]
-    [Display(Name = "Target Category")]
-    public Guid CategoryId { get; set; }
-
-    public SelectList? Categories { get; set; }
 }
