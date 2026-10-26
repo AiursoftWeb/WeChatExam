@@ -32,6 +32,7 @@ public class ImportViewModel : UiStackLayoutViewModel
     public string? ExtraTags { get; set; }
 
     public IEnumerable<SelectListItem> Categories { get; set; } = [];
+    public List<QuestionCategory> QuestionCategories { get; set; } = [];
     public IEnumerable<SelectListItem> Taxonomies { get; set; } = [];
 }
 
@@ -48,6 +49,8 @@ public class PaperImportPreview
 
 public class PaperImportQuestion
 {
+    // Assigned by the reviewer, independently of the paper's category.
+    public Guid? QuestionCategoryId { get; set; }
     [Required(AllowEmptyStrings = true), MaxLength(100)] public string OriginalNumber { get; set; } = string.Empty;
     public QuestionType QuestionType { get; set; }
     [Required, MaxLength(2000)] public string Content { get; set; } = string.Empty;

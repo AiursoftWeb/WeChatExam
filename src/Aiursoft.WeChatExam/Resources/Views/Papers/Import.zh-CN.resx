@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>检查标签并获取访问权限建议</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>保存前，请为每道题目选择年代。</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>正在比较预览题目 {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>付费来源标签名称</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>试卷分类（可选）</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>待处理</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>年代</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>处理中</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>分值</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>选择一个年代</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>复用来源会使此标签在全局范围内变为付费标签。</value>
