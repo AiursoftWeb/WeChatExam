@@ -37,13 +37,10 @@ public class KnowledgePointsController(
             .Include(k => k.CategoryKnowledgePoints)
             .ThenInclude(ck => ck.Category)
             .ToListAsync();
-        // Build a hierarchical structure
-        var rootKnowledgePoints = knowledgePoints.Where(c => c.ParentId == null).ToList();
 
         return this.StackView(new IndexViewModel
         {
-            KnowledgePoints = knowledgePoints,
-            RootKnowledgePoints = rootKnowledgePoints
+            KnowledgePoints = knowledgePoints
         });
     }
 
@@ -51,10 +48,8 @@ public class KnowledgePointsController(
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
     public async Task<IActionResult> Create()
     {
-        var knowledgePoints = await context.KnowledgePoints.ToListAsync();
         var model = new CreateViewModel
         {
-            AvailableParents = knowledgePoints,
             AvailableCategories = await context.Categories.ToListAsync(),
             AvailableQuestions = new List<Question>(),
             QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
@@ -74,7 +69,6 @@ public class KnowledgePointsController(
     {
         if (!ModelState.IsValid)
         {
-            model.AvailableParents = await context.KnowledgePoints.Where(c => c.ParentId == null).ToListAsync();
             model.AvailableCategories = await context.Categories.ToListAsync();
             model.AvailableQuestions = await context.Questions
                 .Where(q => model.SelectedQuestionIds.Contains(q.Id))
@@ -87,35 +81,11 @@ public class KnowledgePointsController(
             return this.StackView(model);
         }
 
-        // 如果指定了父分类，验证父分类是否存在
-        if (model.ParentId.HasValue)
-        {
-            var parentExists = await context.KnowledgePoints
-                .AnyAsync(c => c.Id == model.ParentId.Value);
-
-            if (!parentExists)
-            {
-                ModelState.AddModelError(nameof(model.ParentId), "Parent knowledgePoint not found");
-                model.AvailableParents = await context.KnowledgePoints.Where(c => c.ParentId == null).ToListAsync();
-                model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions
-                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
-                    .ToListAsync();
-                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
-                {
-                    Value = t.ToString(),
-                    Text = localizer[t.GetDisplayName()]
-                });
-                return this.StackView(model);
-            }
-        }
-
         var knowledgePoint = new KnowledgePoint
         {
             Id = Guid.NewGuid(),
             Title = model.Title,
-            Content = model.Content,
-            ParentId = model.ParentId
+            Content = model.Content
         };
 
         context.KnowledgePoints.Add(knowledgePoint);
@@ -157,7 +127,6 @@ public class KnowledgePointsController(
         if (id == null) return NotFound();
 
         var knowledgePoint = await context.KnowledgePoints
-            .Include(c => c.Parent)
             .Include(c => c.CategoryKnowledgePoints)
             .ThenInclude(ck => ck.Category)
             .Include(c => c.KnowledgePointQuestions)
@@ -193,10 +162,6 @@ public class KnowledgePointsController(
             
         if (knowledgePoint == null) return NotFound();
 
-        var availableParents = await context.KnowledgePoints
-            .Where(c => c.Id != id && c.ParentId == null)
-            .ToListAsync();
-
         var availableCategories = await context.Categories.ToListAsync();
         var selectedQuestions = await context.Questions
             .Where(q => knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).Contains(q.Id))
@@ -208,8 +173,6 @@ public class KnowledgePointsController(
             ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null,
             Title = knowledgePoint.Title,
             Content = knowledgePoint.Content,
-            ParentId = knowledgePoint.ParentId,
-            AvailableParents = availableParents,
             AvailableCategories = availableCategories,
             AvailableQuestions = selectedQuestions,
             SelectedCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(ck => ck.CategoryId).ToList(),
@@ -235,9 +198,6 @@ public class KnowledgePointsController(
 
         if (!ModelState.IsValid)
         {
-            model.AvailableParents = await context.KnowledgePoints
-                .Where(c => c.Id != id && c.ParentId == null)
-                .ToListAsync();
             model.AvailableCategories = await context.Categories.ToListAsync();
             model.AvailableQuestions = await context.Questions
                 .Where(q => model.SelectedQuestionIds.Contains(q.Id))
@@ -257,71 +217,8 @@ public class KnowledgePointsController(
             
         if (knowledgePoint == null) return NotFound();
 
-        // 验证不能将分类设置为自己的子孙分类的父分类
-        if (model.ParentId.HasValue)
-        {
-            if (model.ParentId.Value == id)
-            {
-                ModelState.AddModelError(nameof(model.ParentId), "KnowledgePoint cannot be its own parent");
-                model.AvailableParents = await context.KnowledgePoints
-                    .Where(c => c.Id != id && c.ParentId == null)
-                    .ToListAsync();
-                model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions
-                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
-                    .ToListAsync();
-                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
-                {
-                    Value = t.ToString(),
-                    Text = localizer[t.GetDisplayName()]
-                });
-                return this.StackView(model);
-            }
-
-            var parentExists = await context.KnowledgePoints
-                .AnyAsync(c => c.Id == model.ParentId.Value);
-
-            if (!parentExists)
-            {
-                ModelState.AddModelError(nameof(model.ParentId), "Parent knowledgePoint not found");
-                model.AvailableParents = await context.KnowledgePoints
-                    .Where(c => c.Id != id && c.ParentId == null)
-                    .ToListAsync();
-                model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions
-                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
-                    .ToListAsync();
-                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
-                {
-                    Value = t.ToString(),
-                    Text = localizer[t.GetDisplayName()]
-                });
-                return this.StackView(model);
-            }
-
-            // 防止循环引用
-            if (await IsDescendantOf(model.ParentId.Value, id))
-            {
-                ModelState.AddModelError(nameof(model.ParentId), "Cannot create circular reference");
-                model.AvailableParents = await context.KnowledgePoints
-                    .Where(c => c.Id != id && c.ParentId == null)
-                    .ToListAsync();
-                model.AvailableCategories = await context.Categories.ToListAsync();
-                model.AvailableQuestions = await context.Questions
-                    .Where(q => model.SelectedQuestionIds.Contains(q.Id))
-                    .ToListAsync();
-                model.QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
-                {
-                    Value = t.ToString(),
-                    Text = localizer[t.GetDisplayName()]
-                });
-                return this.StackView(model);
-            }
-        }
-
         knowledgePoint.Title = model.Title;
         knowledgePoint.Content = model.Content;
-        knowledgePoint.ParentId = model.ParentId;
 
         // Update Category Associations
         var currentCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(c => c.CategoryId).ToList();
@@ -398,7 +295,6 @@ public class KnowledgePointsController(
         if (id == null) return NotFound();
 
         var knowledgePoint = await context.KnowledgePoints
-            .Include(c => c.Children)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (knowledgePoint == null) return NotFound();
@@ -421,41 +317,10 @@ public class KnowledgePointsController(
         var knowledgePoint = await context.KnowledgePoints.FindAsync(id);
         if (knowledgePoint == null) return NotFound();
 
-        // Check if knowledgePoint has children
-        var hasChildren = await context.KnowledgePoints.AnyAsync(c => c.ParentId == id);
-        if (hasChildren)
-        {
-            var knowledgePointWithChildren = await context.KnowledgePoints
-                .Include(c => c.Children)
-                .FirstOrDefaultAsync(c => c.Id == id);
-
-            return this.StackView(new DeleteViewModel
-            {
-                KnowledgePoint = knowledgePointWithChildren!,
-                HasChildren = true
-            });
-        }
-
         context.KnowledgePoints.Remove(knowledgePoint);
         await context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
     }
 
-    // 辅助方法：检查 possibleAncestorId 是否是 knowledgePointId 的祖先
-    private async Task<bool> IsDescendantOf(Guid possibleAncestorId, Guid knowledgePointId)
-    {
-        var current = await context.KnowledgePoints.FindAsync(possibleAncestorId);
-
-        while (current?.ParentId != null)
-        {
-            if (current.ParentId.Value == knowledgePointId)
-            {
-                return true;
-            }
-            current = await context.KnowledgePoints.FindAsync(current.ParentId.Value);
-        }
-
-        return false;
-    }
 }

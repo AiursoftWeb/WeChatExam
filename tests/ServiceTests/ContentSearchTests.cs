@@ -26,7 +26,7 @@ public class ContentSearchTests
         var exact = NewQuestion("Boya", category.Id);
         var related = NewQuestion("Who played Flowing Water?", category.Id);
         var excluded = NewQuestion("Boya outside the selected category", other.Id);
-        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "A guqin musician", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "A guqin musician" };
         db.AddRange(category, other, exact, related, excluded, point);
         db.Add(new CategoryKnowledgePoint { CategoryId = category.Id, KnowledgePointId = point.Id });
         await db.SaveChangesAsync();
@@ -141,7 +141,7 @@ public class ContentSearchTests
         var source = NewQuestion("Source question", category.Id);
         var choices = Enumerable.Range(0, 8).Select(i => NewQuestion("Related question " + i, category.Id)).ToArray();
         var wrongCategory = NewQuestion("Related outside the category", other.Id);
-        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Guqin", Content = "Boya", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Guqin", Content = "Boya" };
         db.AddRange(category, other, point, source, wrongCategory);
         db.Questions.AddRange(choices);
         db.Add(new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = choices[0].Id });
@@ -184,7 +184,7 @@ public class ContentSearchTests
         await using var db = await CreateDatabase(relational);
         var points = Enumerable.Range(0, 10).Select(i => new KnowledgePoint
         {
-            Id = Guid.NewGuid(), Title = $"Point {i}", Content = "Related knowledge", ParentId = null
+            Id = Guid.NewGuid(), Title = $"Point {i}", Content = "Related knowledge"
         }).ToArray();
         db.KnowledgePoints.AddRange(points); await db.SaveChangesAsync();
         foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
@@ -249,7 +249,7 @@ public class ContentSearchTests
         await using var db = await CreateDatabase(relational);
         var points = Enumerable.Range(0, 8).Select(i => new KnowledgePoint
         {
-            Id = Guid.NewGuid(), Title = $"Knowledge candidate {i}", Content = "Related topic", ParentId = null
+            Id = Guid.NewGuid(), Title = $"Knowledge candidate {i}", Content = "Related topic"
         }).ToArray();
         db.KnowledgePoints.AddRange(points); await db.SaveChangesAsync();
         foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
@@ -266,7 +266,7 @@ public class ContentSearchTests
         var (failed, empty) = await service.SimilarKnowledgePointsAsync(request);
         Assert.IsFalse(failed); Assert.HasCount(0, empty);
         Assert.AreEqual(8, await db.KnowledgePoints.CountAsync());
-        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Id == Guid.Empty || k.ParentId != null));
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Id == Guid.Empty));
         Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync());
     }
 

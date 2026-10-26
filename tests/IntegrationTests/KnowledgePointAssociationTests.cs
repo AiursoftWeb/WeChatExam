@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.EntityFrameworkCore;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -80,6 +81,74 @@ public class KnowledgePointAssociationTests
         });
         var loginResponse = await _http.PostAsync("/Account/Login", loginContent);
         Assert.AreEqual(HttpStatusCode.Found, loginResponse.StatusCode);
+    }
+
+    [TestMethod]
+    public async Task KnowledgeContentRemainsInItsCategoryWithoutASecondHierarchy()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new Category { Id = Guid.NewGuid(), Title = "Music history", ParentId = null };
+        var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = course.Id };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Related exercise" };
+        db.AddRange(course, chapter, question);
+        await db.SaveChangesAsync();
+
+        var createHtml = await _http.GetStringAsync("/KnowledgePoints/Create");
+        Assert.DoesNotContain("name=\"ParentId\"", createHtml);
+        var response = await _http.PostAsync("/KnowledgePoints/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["Title"] = "Overview",
+            ["Content"] = "Original lesson content",
+            ["SelectedCategoryIds[0]"] = chapter.Id.ToString(),
+            ["SelectedQuestionIds[0]"] = question.Id.ToString(),
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken("/KnowledgePoints/Create")
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+        var id = Guid.Parse(response.Headers.Location!.OriginalString.Split('/').Last());
+        var editUrl = $"/KnowledgePoints/Edit/{id}";
+        var editHtml = await _http.GetStringAsync(editUrl);
+        Assert.DoesNotContain("name=\"ParentId\"", editHtml);
+
+        // Validation errors must still show the editor and its category/exercise choices.
+        var fields = new Dictionary<string, string>
+        {
+            ["Id"] = id.ToString(), ["Title"] = "", ["Content"] = "Updated lesson content",
+            ["SelectedCategoryIds[0]"] = chapter.Id.ToString(),
+            ["SelectedQuestionIds[0]"] = question.Id.ToString(),
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken(editUrl)
+        };
+        var invalid = await _http.PostAsync(editUrl, new FormUrlEncodedContent(fields));
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        var invalidHtml = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains(chapter.Title, invalidHtml);
+        Assert.DoesNotContain("name=\"ParentId\"", invalidHtml);
+        fields["Title"] = "Updated overview";
+        fields["__RequestVerificationToken"] = await GetAntiCsrfToken(editUrl);
+        var edited = await _http.PostAsync(editUrl, new FormUrlEncodedContent(fields));
+        Assert.AreEqual(HttpStatusCode.Found, edited.StatusCode);
+
+        var content = await _http.GetStringAsync($"/api/KnowledgePoints?categoryId={chapter.Id}");
+        Assert.Contains("Updated lesson content", content);
+        Assert.Contains(question.Content, content);
+        var list = await _http.GetStringAsync("/KnowledgePoints");
+        Assert.Contains("Updated overview", list);
+        Assert.Contains($"/Categories/Details/{chapter.Id}", list);
+        Assert.DoesNotContain("tree-tab", list);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync("/api/KnowledgePoints/all")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/KnowledgePoints/all/{id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/KnowledgePoints/{id}")).StatusCode);
+
+        var deletion = await _http.PostAsync($"/KnowledgePoints/Delete/{id}", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken($"/KnowledgePoints/Delete/{id}")
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, deletion.StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(p => p.Id == id));
+        Assert.AreEqual(course.Id, (await db.Categories.FindAsync(chapter.Id))!.ParentId);
+        Assert.IsNotNull(await db.Questions.FindAsync(question.Id));
     }
 
     [TestMethod]
@@ -264,7 +333,7 @@ public class KnowledgePointAssociationTests
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Answer comparison course", ParentId = null };
-        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Related lesson", Content = "Lesson content", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Related lesson", Content = "Lesson content" };
         var metadata = Newtonsoft.Json.JsonConvert.SerializeObject(new { options = new[] { selectedOption, "Another musician" } });
         var question = new Question
         {
@@ -406,7 +475,7 @@ public class KnowledgePointAssociationTests
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var subject = new Category { Id = Guid.NewGuid(), Title = "Grouped course", ParentId = null, IsFree = true };
         var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG", IsFree = false };
-        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", ParentId = null, Content = "Public lesson" };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", Content = "Public lesson" };
         db.AddRange(subject, tag, lesson, new VipProduct { Name = "Course VIP", CategoryId = subject.Id, DurationDays = 365 });
         await db.SaveChangesAsync();
         for (var i = 0; i < 50; i++)
@@ -453,8 +522,8 @@ public class KnowledgePointAssociationTests
         var other = new Category { Id = Guid.NewGuid(), Title = "Other relation course", ParentId = null };
         var taxonomy = new Taxonomy { Name = "Relation taxonomy" };
         var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG", IsFree = false, Taxonomy = taxonomy };
-        var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public", ParentId = null };
-        var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public", ParentId = null };
+        var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public" };
+        var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public" };
         var a = new Question { Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
         var b = new Question { Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
         var free = new Question { Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
@@ -511,7 +580,7 @@ public class KnowledgePointAssociationTests
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Origin course", ParentId = null };
-        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Origin lesson", Content = "Public", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Origin lesson", Content = "Public" };
         var question = new Question { Id = Guid.NewGuid(), Content = "Origin exercise", CategoryId = category.Id };
         var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG", IsFree = false };
         var taxonomy = new Taxonomy { Name = "Origin taxonomy" };

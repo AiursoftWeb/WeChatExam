@@ -1,33 +1,15 @@
 @model Aiursoft.WeChatExam.Entities.KnowledgePoint
-@{
-    var children = Model.Children.ToList();
-    var level = (int)(ViewData["Level"] ?? 0);
-}
 <tr>
+    <td>@Model.Title</td>
     <td>
-        @for (var i = 0; i < level; i++)
+        @foreach (var association in Model.CategoryKnowledgePoints)
         {
-            <span class="ms-4"></span>
+            <a asp-controller="Categories" asp-action="Details" asp-route-id="@association.CategoryId" class="d-block">@association.Category.Title</a>
         }
-        @if (level > 0)
-        {
-            <i class="align-middle me-1 text-muted" data-lucide="chevron-right"></i>
-        }
-        @Model.Title
     </td>
-    <td>@(Model.Parent == null ? Localizer["Top Level"].Value : Model.Parent.Title)</td>
     <td>
         <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
         <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-warning">@Localizer["Edit"]</a>
         <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">@Localizer["Delete"]</a>
     </td>
 </tr>
-@if (children.Any())
-{
-    foreach (var child in children)
-    {
-        ViewData["Level"] = level + 1;
-        @await Html.PartialAsync("_KnowledgePointRow", child, ViewData)
-    }
-    ViewData["Level"] = level;
-}

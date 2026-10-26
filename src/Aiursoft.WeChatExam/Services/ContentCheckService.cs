@@ -28,7 +28,7 @@ public class ContentCheckService(
         var questionTags = await context.QuestionTags.AsNoTracking().ToListAsync(cancellationToken);
         var knowledge = await context.KnowledgePoints.AsNoTracking().Select(k => new KnowledgePoint
         {
-            Id = k.Id, Title = k.Title, Content = "", ParentId = k.ParentId
+            Id = k.Id, Title = k.Title, Content = ""
         }).ToListAsync(cancellationToken);
         var knowledgeQuestions = await context.KnowledgePointQuestions.AsNoTracking().ToListAsync(cancellationToken);
         var knowledgeCategories = await context.CategoryKnowledgePoints.AsNoTracking().ToListAsync(cancellationToken);
@@ -52,6 +52,7 @@ public class ContentCheckService(
             }).ToList()
         });
         var knowledgeIndex = knowledge.ToDictionary(k => k.Id);
+        var categoryIndex = categories.ToDictionary(c => c.Id);
         var linkedKnowledge = knowledgeQuestions.ToLookup(k => k.QuestionId);
         var categoriesByKnowledge = knowledgeCategories.ToLookup(k => k.KnowledgePointId, k => k.CategoryId);
         var questionsByTag = questionTags.ToLookup(t => t.TagId, t => t.QuestionId);
@@ -107,15 +108,18 @@ public class ContentCheckService(
             AppPermissionNames.CanEditVipProducts, Enabled: p.IsEnabled);
         string KnowledgePath(KnowledgePoint point)
         {
-            var path = new List<string>();
-            var seen = new HashSet<Guid>();
-            for (var current = point; seen.Add(current.Id);)
+            // Content belongs to the category directory; knowledge points do not form a second tree.
+            var paths = new List<string>();
+            foreach (var categoryId in categoriesByKnowledge[point.Id])
             {
-                path.Add(current.Title);
-                if (current.ParentId is not { } parent || !knowledgeIndex.TryGetValue(parent, out current)) break;
+                var path = new List<string> { point.Title };
+                var seen = new HashSet<Guid>();
+                for (Guid? id = categoryId; id.HasValue && seen.Add(id.Value) && categoryIndex.TryGetValue(id.Value, out var category); id = category.ParentId)
+                    path.Add(category.Title);
+                path.Reverse();
+                paths.Add(string.Join(" → ", path));
             }
-            path.Reverse();
-            return string.Join(" → ", path);
+            return paths.Count == 0 ? point.Title : string.Join(" | ", paths.Order());
         }
         ContentReference KnowledgeRef(KnowledgePoint point) => new("KnowledgePoints", point.Id.ToString(),
             KnowledgePath(point), AppPermissionNames.CanEditAnyKnowledgePoint, ContentPricing.Public);

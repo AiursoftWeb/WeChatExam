@@ -26,17 +26,6 @@ public class EditViewModel: UiStackLayoutViewModel
     public string Content { get; set; } = string.Empty;
 
     /// <summary>
-    /// 父分类ID。若为 null，表示将分类移动到顶级。
-    /// </summary>
-    [Display(Name = "Parent Knowledge Point")]
-    public Guid? ParentId { get; set; }
-
-    /// <summary>
-    /// 可选的父分类列表，用于下拉菜单
-    /// </summary>
-    public List<KnowledgePoint> AvailableParents { get; set; } = new();
-
-    /// <summary>
     /// 选中的关联题目分类
     /// </summary>
     public List<Guid> SelectedCategoryIds { get; set; } = new();
