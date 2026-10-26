@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>所有导入的问题都将使用此类型，忽略 JSON 中的 Type 字段。</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>在预览中单独选择</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>默认年代</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>从 JSON 导入题目</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>题目类型</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>先为整批题目设置同一个年代，然后在预览中逐题调整。</value>
   </data>
 
 </root>

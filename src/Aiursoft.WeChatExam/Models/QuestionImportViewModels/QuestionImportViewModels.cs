@@ -22,6 +22,9 @@ public class QuestionImportIndexViewModel : UiStackLayoutViewModel
     [Display(Name = "Question Type")]
     public QuestionType SelectedQuestionType { get; set; }
 
+    public Guid? DefaultQuestionCategoryId { get; set; }
+    public List<QuestionCategory> QuestionCategories { get; set; } = [];
+
     public string? ErrorMessage { get; set; }
 }
 
@@ -32,10 +35,11 @@ public class ImportedQuestionItem
 {
     public string Type { get; set; } = string.Empty;
     public string Question { get; set; } = string.Empty;
-    public List<string> Options { get; set; } = new();
+    public List<string>? Options { get; set; } = new();
     public string Answer { get; set; } = string.Empty;
     public string Analysis { get; set; } = string.Empty;
     public string OriginalFilename { get; set; } = string.Empty;
+    public Guid? QuestionCategoryId { get; set; }
 }
 
 /// <summary>
@@ -64,6 +68,10 @@ public class QuestionImportPreviewViewModel : UiStackLayoutViewModel
     /// Parsed question items for preview display
     /// </summary>
     public List<ImportedQuestionItem> ParsedQuestions { get; set; } = new();
+    public List<Guid?> QuestionCategoryIds { get; set; } = [];
+
+    public Guid? DefaultQuestionCategoryId { get; set; }
+    public List<QuestionCategory> QuestionCategories { get; set; } = [];
 
     public string? ErrorMessage { get; set; }
 }
