@@ -800,6 +800,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<decimal?>("OrderIndex")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("QuestionCategoryId")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("QuestionType")
                         .HasColumnType("INTEGER");
 
@@ -811,6 +814,8 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("QuestionCategoryId");
 
                     b.ToTable("Questions");
                 });
@@ -1718,7 +1723,14 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .WithMany("Questions")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("Aiursoft.WeChatExam.Entities.QuestionCategory", "QuestionCategory")
+                        .WithMany()
+                        .HasForeignKey("QuestionCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("Category");
+
+                    b.Navigation("QuestionCategory");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionCategory", b =>

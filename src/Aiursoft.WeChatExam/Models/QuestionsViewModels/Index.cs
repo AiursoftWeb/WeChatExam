@@ -13,6 +13,9 @@ public class IndexViewModel : UiStackLayoutViewModel
 
     public List<Question> Questions { get; set; } = new();
 
+    public List<QuestionCategory> Periods { get; set; } = [];
+    public string? SelectedPeriod { get; set; }
+
     public Guid? SelectedCategoryId { get; set; }
 
     public Category? SelectedCategory { get; set; }

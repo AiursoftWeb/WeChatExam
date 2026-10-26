@@ -1,3 +1,7 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@{ var canAssignPeriod = (await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanEditQuestions)).Succeeded; }
 @using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.DetailsViewModel
 
@@ -11,6 +15,22 @@
 
             <dt class="col-sm-2">@Localizer["Type"]</dt>
             <dd class="col-sm-10">@Localizer[Model.Question?.QuestionType.GetDisplayName() ?? string.Empty]</dd>
+
+            <dt class="col-sm-2">@Localizer["Period"]</dt>
+            <dd class="col-sm-10">
+                @if (Model.Question?.QuestionCategory != null)
+                {
+                    <span>@Model.Question.QuestionCategory.TotalCategory!.Title · @Model.Question.QuestionCategory.Title</span>
+                }
+                else
+                {
+                    <span class="text-muted">@Localizer["Period not assigned"]</span>
+                }
+                @if (canAssignPeriod)
+                {
+                    <a asp-action="Period" asp-route-id="@Model.Question?.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="ms-2">@Localizer["Assign Period"]</a>
+                }
+            </dd>
 
             <dt class="col-sm-2">@Localizer["Category"]</dt>
             <dd class="col-sm-10">@Model.Category?.Title</dd>

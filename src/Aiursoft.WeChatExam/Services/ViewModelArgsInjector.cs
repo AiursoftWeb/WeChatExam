@@ -146,6 +146,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Delete Tag"];
     
         _ = localizer["Delete Account"];
+
+        _ = localizer["Assign Period"];
     }
 
     public void InjectSimple(
