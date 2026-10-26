@@ -85,29 +85,17 @@ public class PracticeTests
     [TestMethod]
     public async Task PracticeFlowTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
 
-        // 1. Create a Category and a Question
-        var categoryTitle = $"Practice-Cat-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        }));
-        
-        var catIndexResponse = await _http.GetAsync("/Categories/Index");
-        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
-
         var qText = $"Practice-Question-{Guid.NewGuid()}";
-        var qToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={categoryId}");
+        var qToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
         await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Content", qText},
             { "QuestionType", "0" }, // Choice
             { "GradingStrategy", "0" }, // Standard
-            { "CategoryId", categoryId },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Options[0]", "Option A" },
             { "Options[1]", "Option B" },
             { "StandardAnswer", "Option A" },
@@ -115,7 +103,7 @@ public class PracticeTests
             { "__RequestVerificationToken", qToken }
         }));
 
-        var qIndexResponse = await _http.GetAsync($"/Questions/Index?categoryId={categoryId}");
+        var qIndexResponse = await _http.GetAsync($"/Questions/Index?period={periodId}");
         var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
         var questionId = Regex.Match(qIndexHtml, @"href=""/Questions/Details/([a-z0-9-]+)").Groups[1].Value;
 

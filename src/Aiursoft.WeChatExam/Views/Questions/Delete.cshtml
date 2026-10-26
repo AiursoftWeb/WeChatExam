@@ -12,13 +12,13 @@
                 <dd class="col-sm-10">@Model.Question.Content</dd>
                 <dt class="col-sm-2">@Localizer["Type"]</dt>
                 <dd class="col-sm-10">@Localizer[Model.Question.QuestionType.GetDisplayName()]</dd>
-                <dt class="col-sm-2">@Localizer["Category"]</dt>
-                <dd class="col-sm-10">@Model.Category?.Title</dd>
+                <dt class="col-sm-2">@Localizer["Period"]</dt>
+                <dd class="col-sm-10">@Model.Question.QuestionCategory?.TotalCategory?.Title · @Model.Question.QuestionCategory?.Title</dd>
             </dl>
         </div>
         <div class="card-footer text-end">
             <button type="submit" class="btn btn-danger">@Localizer["Delete"]</button>
-            <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { categoryId = Model.Question.CategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+            <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { period = Model.Question.QuestionCategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
         </div>
     </div>
 </form>

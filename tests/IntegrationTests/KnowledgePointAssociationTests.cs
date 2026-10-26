@@ -507,6 +507,7 @@ public class KnowledgePointAssociationTests
     public async Task EditorsReturnToCheckupAfterValidationAndSaveWithoutExternalRedirects(string controller)
     {
         await LoginAsAdminAsync();
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Origin course", ParentId = null };
@@ -545,6 +546,7 @@ public class KnowledgePointAssociationTests
         values["DisplayName"] = "Origin updated";
         values["Name"] = "Origin updated";
         values["CategoryId"] = category.Id.ToString();
+        values["QuestionCategoryId"] = periodId.ToString();
         values["QuestionType"] = "0";
         values["GradingStrategy"] = "0";
         values["Options[0]"] = "Correct";

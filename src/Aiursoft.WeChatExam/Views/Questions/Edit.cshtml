@@ -35,22 +35,21 @@
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="CategoryId" class="form-label">@Localizer["Category"]</label>
-                <select asp-for="CategoryId" class="form-select" required>
-                    <option value="">@Localizer["Select category"]</option>
-                    @foreach (var category in Model.Categories)
+                <label asp-for="QuestionCategoryId" class="form-label">@Localizer["Period"]</label>
+                <select asp-for="QuestionCategoryId" class="form-select" required>
+                    <option value="">@Localizer["Select a period"]</option>
+                    @foreach (var group in Model.QuestionCategories.GroupBy(c => c.TotalCategoryId))
                     {
-                        if (Model.CategoryId == category.Id)
-                        {
-                            <option value="@category.Id" selected>@category.Title</option>
-                        }
-                        else
-                        {
-                            <option value="@category.Id">@category.Title</option>
-                        }
+                        <optgroup label="@group.First().TotalCategory!.Title">
+                            @foreach (var period in group)
+                            {
+                                <option value="@period.Id">@period.Title</option>
+                            }
+                        </optgroup>
                     }
                 </select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                <span asp-validation-for="QuestionCategoryId" class="text-danger"></span>
+                <div class="form-text">@Localizer["Choose one period under its total category."]</div>
             </div>
 
             <div class="mb-3">
@@ -116,7 +115,7 @@
                     @Localizer["Save"]
                 }
             </button>
-            <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { categoryId = Model.CategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+            <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { period = Model.QuestionCategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
         </div>
     </div>
 </form>

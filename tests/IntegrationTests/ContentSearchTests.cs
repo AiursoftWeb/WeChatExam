@@ -440,6 +440,7 @@ public class ContentSearchTests : TestBase
     [TestMethod]
     public async Task QuestionReorderingPreservesEmbeddingAndReturnsToSearch()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(Server!.Services);
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
@@ -451,7 +452,7 @@ public class ContentSearchTests : TestBase
         var response = await PostForm($"/Questions/Edit/{question.Id}", new Dictionary<string, string>
         {
             ["Id"] = question.Id.ToString(), ["Content"] = question.Content, ["QuestionType"] = "1",
-            ["GradingStrategy"] = "0", ["CategoryId"] = category.Id.ToString(), ["OrderIndex"] = "10",
+            ["GradingStrategy"] = "0", ["QuestionCategoryId"] = periodId.ToString(), ["OrderIndex"] = "10",
             ["ReturnUrl"] = "/ContentSearch?query=Boya"
         }, tokenUrl: $"/Questions/Edit/{question.Id}");
         AssertRedirect(response, "/ContentSearch?query=Boya");

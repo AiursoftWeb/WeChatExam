@@ -93,6 +93,7 @@ public class AiTasksTests
     [TestMethod]
     public async Task AutoCategorizeTaskTest()
     {
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
 
         // 1. Create Categories
@@ -122,13 +123,13 @@ public class AiTasksTests
 
         // 2. Create Question in first category
         var qText = $"Test-Question-{Guid.NewGuid()}";
-        var createQToken = await GetAntiCsrfToken($"/Questions/Create?categoryId={category.Id}");
+        var createQToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
         await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Content", qText},
             { "QuestionType", "0" },
             { "GradingStrategy", "0" },
-            { "CategoryId", category.Id.ToString() },
+            { "QuestionCategoryId", periodId.ToString() },
             { "Options[0]", "A" },
             { "Options[1]", "B" },
             { "StandardAnswer", "A" },
