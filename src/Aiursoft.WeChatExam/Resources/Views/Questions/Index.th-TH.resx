@@ -48,6 +48,9 @@
   <data name="All Periods" xml:space="preserve">
     <value>ทุกช่วงเวลา</value>
   </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>หมวดหมู่ทั้งหมด</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>การกระทำนี้ไม่สามารถย้อนกลับได้</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>ลิงก์นี้แสดงการอ้างอิงหมวดหมู่แบบเดิม การจัดประเภทคำถามในปัจจุบันใช้หมวดหมู่รวมและช่วงเวลา</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>หมวดหมู่ทั้งหมด</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>ประเภท</value>

@@ -27,6 +27,9 @@
   <data name="Back to Edit" xml:space="preserve">
     <value>Tillbaka till redigering</value>
   </data>
+  <data name="Choose a period for every question before saving. You can change each selection below." xml:space="preserve">
+    <value>Välj en period för varje fråga innan du sparar. Du kan ändra varje val nedan.</value>
+  </data>
   <data name="Confirm &amp; Save" xml:space="preserve">
     <value>Bekräfta &amp; Spara</value>
   </data>
@@ -39,11 +42,17 @@
   <data name="Options" xml:space="preserve">
     <value>Alternativ</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Förhandsgranska &amp; Spara</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Fragor</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Välj en period</value>
   </data>
   <data name="Source File" xml:space="preserve">
     <value>Källfil</value>

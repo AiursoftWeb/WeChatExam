@@ -9,12 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [Authorize(Policy = AppPermissionNames.CanUseAIExtractor)]
 public class ExtractController : Controller
 {
+    private readonly IStringLocalizer<ExtractController> _localizer;
     private readonly IExtractService _extractService;
     private readonly WeChatExamDbContext _dbContext;
     private readonly ServiceTaskQueue _taskQueue;
@@ -24,8 +26,10 @@ public class ExtractController : Controller
         IExtractService extractService,
         WeChatExamDbContext dbContext,
         ServiceTaskQueue taskQueue,
-        GlobalSettingsService globalSettingsService)
+        GlobalSettingsService globalSettingsService,
+        IStringLocalizer<ExtractController> localizer)
     {
+        _localizer = localizer;
         _extractService = extractService;
         _dbContext = dbContext;
         _taskQueue = taskQueue;
@@ -40,11 +44,9 @@ public class ExtractController : Controller
             model.SystemPrompt = await _globalSettingsService.GetSettingValueAsync(SettingsMap.AiPromptExtractDefault);
         }
 
-        var categories = await _dbContext.Categories
-            .OrderBy(c => c.Title)
-            .ToListAsync();
-        model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
-        
+        await LoadDestinations(model);
+        // Opening the form (or returning to the material) is not a submission.
+        ModelState.Clear();
         return this.StackView(model);
     }
 
@@ -52,15 +54,20 @@ public class ExtractController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Extract(ExtractIndexViewModel model)
     {
+        await ValidateDestinations(model);
         if (!ModelState.IsValid)
         {
-            var categories = await _dbContext.Categories
-                .OrderBy(c => c.Title)
-                .ToListAsync();
-            model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
+            await LoadDestinations(model);
             return this.StackView(model, nameof(Index));
         }
 
+        // The material form uses the configured prompt; it does not post a prompt field.
+        if (string.IsNullOrWhiteSpace(model.SystemPrompt))
+        {
+            model.SystemPrompt = await _globalSettingsService.GetSettingValueAsync(SettingsMap.AiPromptExtractDefault);
+        }
+        var categoryId = model.CategoryId!.Value;
+        var questionCategoryId = model.QuestionCategoryId!.Value;
         _taskQueue.QueueWithDependency<IExtractService>(
             queueName: "Extraction",
             taskName: $"AI Extraction to Category {model.CategoryId}",
@@ -70,7 +77,7 @@ public class ExtractController : Controller
                 var data = JsonConvert.DeserializeObject<List<ExtractedKnowledgePoint>>(json);
                 if (data != null)
                 {
-                    await extractService.SaveAsync(data, model.CategoryId);
+                    await extractService.SaveAsync(data, categoryId, questionCategoryId);
                 }
             });
 
@@ -94,18 +101,16 @@ public class ExtractController : Controller
                 throw new Exception("Extracted data is null.");
             }
 
-            var categories = await _dbContext.Categories
-                .OrderBy(c => c.Title)
-                .ToListAsync();
-
             var previewModel = new ExtractPreviewViewModel
             {
                 JsonContent = model.JsonContent,
                 Data = data,
                 OriginalMaterial = model.OriginalMaterial,
-                Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title))
+                CategoryId = model.CategoryId,
+                QuestionCategoryId = model.QuestionCategoryId
             };
 
+            await LoadDestinations(previewModel);
             return this.StackView(previewModel, "Preview");
         }
         catch (Exception e)
@@ -128,19 +133,20 @@ public class ExtractController : Controller
                 throw new Exception("Data is corrupted.");
             }
 
-            await _extractService.SaveAsync(data, model.CategoryId);
+            model.Data = data;
+            await ValidateDestinations(model);
+            if (!ModelState.IsValid)
+            {
+                await LoadDestinations(model);
+                return this.StackView(model, "Preview");
+            }
+            await _extractService.SaveAsync(data, model.CategoryId!.Value, model.QuestionCategoryId!.Value);
             
             return RedirectToAction(nameof(Index)); // Or a success page
         }
         catch (Exception e)
         {
-            // If error, reload preview with error.
-            // We need to reload Categories
-            var categories = await _dbContext.Categories
-                .OrderBy(c => c.Title)
-                .ToListAsync();
-
-            model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
+            await LoadDestinations(model);
             // We also need to re-deserialize data for display if we return View
             try {
                 model.Data = JsonConvert.DeserializeObject<List<ExtractedKnowledgePoint>>(model.JsonContent) ?? new();
@@ -155,6 +161,29 @@ public class ExtractController : Controller
         }
     }
 
+    private async Task LoadDestinations(ExtractDestinationViewModel model)
+    {
+        var categories = await _dbContext.Categories.AsNoTracking().OrderBy(c => c.Title).ToListAsync();
+        model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
+        var periods = await _dbContext.QuestionCategories.AsNoTracking()
+            .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
+            .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title)
+            .Select(c => new { c.Id, c.Title, Course = c.TotalCategory!.Title }).ToListAsync();
+        model.QuestionCategories = new SelectList(periods, "Id", "Title", model.QuestionCategoryId, "Course");
+    }
+
+    private async Task ValidateDestinations(ExtractDestinationViewModel model)
+    {
+        if (!await _dbContext.Categories.AnyAsync(c => c.Id == model.CategoryId))
+        {
+            ModelState.AddModelError(nameof(model.CategoryId), _localizer["Select an existing knowledge category."]);
+        }
+        if (!await _dbContext.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
+        {
+            ModelState.AddModelError(nameof(model.QuestionCategoryId), _localizer["Select an existing period."]);
+        }
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult ResumeEdit(ExtractPreviewViewModel model)
@@ -162,7 +191,9 @@ public class ExtractController : Controller
         var editModel = new ExtractEditViewModel
         {
              JsonContent = model.JsonContent,
-             OriginalMaterial = model.OriginalMaterial
+             OriginalMaterial = model.OriginalMaterial,
+             CategoryId = model.CategoryId,
+             QuestionCategoryId = model.QuestionCategoryId
         };
         return this.StackView(editModel, "Edit");
     }

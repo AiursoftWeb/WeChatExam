@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Alle geïmporteerde vragen gebruiken deze soort, de Type-veld in JSON negerend.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Kies dit afzonderlijk tijdens de preview</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Standaardperiode</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Vragen importeren uit JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Vraagtype</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Begin voor de hele batch met één periode en pas de afzonderlijke vragen daarna aan in de preview.</value>
   </data>
 
 </root>

@@ -48,6 +48,9 @@
   <data name="All Periods" xml:space="preserve">
     <value>Tất cả các giai đoạn</value>
   </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Tất cả danh mục tổng</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Tất cả các loại</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Hành động này không thể hoàn tác.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Liên kết này hiển thị các tham chiếu đến danh mục cũ. Việc phân loại câu hỏi hiện nay sử dụng các danh mục tổng và các kỳ.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Danh mục tổng</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Loại</value>

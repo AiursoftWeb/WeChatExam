@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Tags en toegang aanbevelen controleren</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Kies voor elke vraag een periode voordat je opslaat.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Vergelijking van voorbeeldvraag {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Naam van betaalde brontag</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Papiercategorie (optioneel)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>In behandeling</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Bezig met verwerken</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Score</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Selecteer een periode</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Hergebruik uit de bron maakt deze tag wereldwijd betaald.</value>

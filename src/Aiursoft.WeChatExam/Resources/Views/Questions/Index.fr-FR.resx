@@ -48,6 +48,9 @@
   <data name="All Periods" xml:space="preserve">
     <value>Toutes les périodes</value>
   </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Toutes les catégories totales</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Tous les types</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Cette action ne peut pas être annulée.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Ce lien affiche des références à l’ancienne catégorie. La classification actuelle des questions utilise les catégories générales et les périodes.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Catégorie totale</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>

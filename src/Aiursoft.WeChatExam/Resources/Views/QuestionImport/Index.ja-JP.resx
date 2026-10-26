@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>インポートされたすべての問題は、このタイプを使用します。JSON内のTypeフィールドは無視されます。</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>プレビューで個別に選択</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>デフォルトの期間</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>JSONから問題をインポート</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>問題の種類</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>一括分の期間を選択し、プレビューで各問題を調整してください。</value>
   </data>
 
 </root>

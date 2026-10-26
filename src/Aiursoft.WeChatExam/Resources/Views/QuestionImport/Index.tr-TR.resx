@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>İçe aktarılan tüm sorular bu türü kullanacak, JSON&apos;daki Type alanını göz ardı ederek.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Önizlemede ayrı ayrı seçin</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Varsayılan dönem</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>JSON&apos;den Soruları İçe Aktar</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Soru Türü</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Toplu işlem için önce tek bir dönem belirleyin, ardından önizlemede her soruyu ayrı ayrı düzenleyin.</value>
   </data>
 
 </root>

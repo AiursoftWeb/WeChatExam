@@ -27,6 +27,9 @@
   <data name="Back to Edit" xml:space="preserve">
     <value>編集に戻る</value>
   </data>
+  <data name="Choose a period for every question before saving. You can change each selection below." xml:space="preserve">
+    <value>すべての質問に期間を設定してから保存してください。選択内容は以下で変更できます。</value>
+  </data>
   <data name="Confirm &amp; Save" xml:space="preserve">
     <value>確認して保存</value>
   </data>
@@ -39,11 +42,17 @@
   <data name="Options" xml:space="preserve">
     <value>選択肢</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>期間</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>プレビュー &amp; 保存</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>質問</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>期間を選択</value>
   </data>
   <data name="Source File" xml:space="preserve">
     <value>元ファイル</value>

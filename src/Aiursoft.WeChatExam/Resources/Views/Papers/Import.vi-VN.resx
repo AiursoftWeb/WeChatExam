@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Kiểm tra thẻ và các đề xuất về quyền truy cập</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Hãy chọn một giai đoạn cho mỗi câu hỏi trước khi lưu.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Đang so sánh câu hỏi xem trước {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Tên thẻ nguồn trả phí</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Danh mục đề thi (không bắt buộc)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Đang chờ</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Kỳ thi</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Đang xử lý</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Điểm</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Chọn kỳ</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Tái sử dụng thẻ nguồn sẽ khiến thẻ này trở thành thẻ trả phí trên toàn hệ thống.</value>

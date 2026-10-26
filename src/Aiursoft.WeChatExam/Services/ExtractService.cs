@@ -27,8 +27,19 @@ public class ExtractService : IExtractService
         return await _ollamaService.AskQuestion(prompt, token);
     }
 
-    public async Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid categoryId, CancellationToken token = default)
+    public async Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid categoryId, Guid questionCategoryId, CancellationToken token = default)
     {
+        // Knowledge placement and question membership are independent classifications.
+        // Validate again here: a queued extraction can outlive the selected destination.
+        if (!await _dbContext.Categories.AnyAsync(c => c.Id == categoryId, token))
+        {
+            throw new InvalidOperationException("The selected knowledge category no longer exists.");
+        }
+        if (!await _dbContext.QuestionCategories.AnyAsync(c => c.Id == questionCategoryId, token))
+        {
+            throw new InvalidOperationException("The selected period no longer exists.");
+        }
+
         var strategy = _dbContext.Database.CreateExecutionStrategy();
         
         await strategy.ExecuteAsync<(List<ExtractedKnowledgePoint>, Guid, CancellationToken), int>(
@@ -79,7 +90,7 @@ public class ExtractService : IExtractService
                                 Metadata = JsonConvert.SerializeObject(qDto.Metadata),
                                 StandardAnswer = qDto.StandardAnswer,
                                 Explanation = qDto.Explanation,
-                                CategoryId = catId,
+                                QuestionCategoryId = questionCategoryId,
                                 CreationTime = DateTime.UtcNow
                             };
                             _dbContext.Questions.Add(question);

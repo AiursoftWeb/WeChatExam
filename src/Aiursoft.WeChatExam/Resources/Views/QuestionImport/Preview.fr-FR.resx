@@ -27,6 +27,9 @@
   <data name="Back to Edit" xml:space="preserve">
     <value>Retour à l&apos;édition</value>
   </data>
+  <data name="Choose a period for every question before saving. You can change each selection below." xml:space="preserve">
+    <value>Choisissez une période pour chaque question avant d’enregistrer. Vous pouvez modifier chaque sélection ci-dessous.</value>
+  </data>
   <data name="Confirm &amp; Save" xml:space="preserve">
     <value>Confirmer et enregistrer</value>
   </data>
@@ -39,11 +42,17 @@
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Période</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Aperçu et enregistrer</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Questions</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Sélectionnez une période</value>
   </data>
   <data name="Source File" xml:space="preserve">
     <value>Fichier source</value>

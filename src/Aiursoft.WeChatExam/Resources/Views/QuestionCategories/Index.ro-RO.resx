@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Course Membership" xml:space="preserve">
+    <value>Abonament la curs</value>
+  </data>
+  <data name="Create a period to start organizing this course." xml:space="preserve">
+    <value>Creează o perioadă pentru a începe organizarea acestui curs.</value>
+  </data>
+  <data name="Create a total category first" xml:space="preserve">
+    <value>Creați mai întâi o categorie totală</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>Creează o perioadă</value>
+  </data>
+  <data name="Create Total Category" xml:space="preserve">
+    <value>Creează o categorie generală</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>Ordinea de afișare</value>
+  </data>
+  <data name="Edit Period" xml:space="preserve">
+    <value>Editează perioada</value>
+  </data>
+  <data name="Every period belongs to one total category." xml:space="preserve">
+    <value>Fiecare perioadă aparține unei categorii generale.</value>
+  </data>
+  <data name="Free Practice" xml:space="preserve">
+    <value>Exersare gratuită</value>
+  </data>
+  <data name="No periods in this course yet" xml:space="preserve">
+    <value>Nu există încă perioade în acest curs</value>
+  </data>
+  <data name="Organize the periods within each course." xml:space="preserve">
+    <value>Organizați perioadele pentru fiecare curs.</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Perioade</value>
+  </data>
+  <data name="Total Categories" xml:space="preserve">
+    <value>Categorii totale</value>
+  </data>
+
+</root>
