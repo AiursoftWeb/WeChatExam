@@ -16,10 +16,6 @@
                     <dt>@Localizer["Content"]</dt>
                     <dd class="text-break" style="max-height: 200px; overflow-y: auto;">@Model.KnowledgePoint.Content</dd>
 
-                    <dt>@Localizer["Parent"]</dt>
-                    <dd>
-                        @(Model.KnowledgePoint.Parent == null ? Localizer["Top Level"].Value : Model.KnowledgePoint.Parent.Title)
-                    </dd>
                     <dt>@Localizer["Created"]</dt>
                     <dd><span data-utc-time="@Model.KnowledgePoint.CreationTime.ToHtmlDateTime()"></span></dd>
                 </dl>

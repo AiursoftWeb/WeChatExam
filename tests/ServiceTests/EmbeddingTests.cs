@@ -252,7 +252,7 @@ public class EmbeddingTests
 
     private static KnowledgePoint NewKnowledgePoint() => new()
     {
-        Id = Guid.NewGuid(), Title = "Flowing Water", Content = "A guqin composition associated with Boya.", ParentId = null
+        Id = Guid.NewGuid(), Title = "Flowing Water", Content = "A guqin composition associated with Boya."
     };
 
     private static async Task<WeChatExamDbContext> CreateDatabase(bool relational)

@@ -24,20 +24,6 @@
     </div>
     
     <div class="mb-3">
-        <label asp-for="ParentId" class="form-label">@Localizer["Parent KnowledgePoint"]</label>
-        <select asp-for="ParentId" class="form-select">
-            <option value="">@Localizer["Top Level"]</option>
-            @foreach (var parent in Model.AvailableParents)
-            {
-                <option value="@parent.Id" selected="@(parent.Id == Model.ParentId)">
-                    @parent.Title
-                </option>
-            }
-        </select>
-        <span asp-validation-for="ParentId" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
         <label asp-for="SelectedCategoryIds" class="form-label">@Localizer["Associated Categories"]</label>
         <select asp-for="SelectedCategoryIds" class="form-select" multiple style="height: 200px">
             @foreach (var category in Model.AvailableCategories)

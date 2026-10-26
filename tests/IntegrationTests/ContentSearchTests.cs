@@ -52,7 +52,7 @@ public class ContentSearchTests : TestBase
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
-        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "Guqin", ParentId = null };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "Guqin" };
         var question = new Question { Id = Guid.NewGuid(), Content = "Who played Flowing Water?", CategoryId = category.Id };
         db.AddRange(category, point, question); await db.SaveChangesAsync();
         var vector = new float[1024]; vector[0] = 1;
@@ -266,8 +266,8 @@ public class ContentSearchTests : TestBase
             Authorization.AppPermissions.Type, Authorization.AppPermissionNames.CanReadQuestions))).Succeeded);
         await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var source = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Source", Content = "Original content", ParentId = null };
-        var similar = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Similar <script>example</script>", Content = "Related content", ParentId = null };
+        var source = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Source", Content = "Original content" };
+        var similar = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Similar <script>example</script>", Content = "Related content" };
         db.AddRange(source, similar); await db.SaveChangesAsync();
         var vector = new float[1024]; vector[0] = 1;
         foreach (var point in new[] { source, similar }) { point.Embedding = EmbeddingHelper.Serialize(vector); point.LastEmbeddedAt = point.LastUpdatedAt; }

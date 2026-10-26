@@ -52,7 +52,6 @@ public class ExtractService : IExtractService
                             Id = Guid.NewGuid(),
                             Title = kpDto.KnowledgeTitle,
                             Content = kpDto.KnowledgeContent,
-                            ParentId = null,
                             CreationTime = DateTime.UtcNow
                         };
                         _dbContext.KnowledgePoints.Add(kp);

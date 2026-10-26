@@ -11,6 +11,4 @@ public class IndexViewModel : UiStackLayoutViewModel
     }
 
     public List<KnowledgePoint> KnowledgePoints { get; set; } = new();
-
-    public List<KnowledgePoint> RootKnowledgePoints { get; set; } = new();
 }

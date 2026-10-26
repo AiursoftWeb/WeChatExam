@@ -63,9 +63,8 @@ public class ContentCheckTests
         var question = new Question { Id = Guid.NewGuid(), Content = "Paid exercise", CategoryId = subject.Id };
         var legacy = new Question { Id = Guid.NewGuid(), Content = "Uncategorized exercise" };
         var free = new Question { Id = Guid.NewGuid(), Content = "Free exercise" };
-        var root = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Root", Content = "Public", ParentId = null };
-        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Public", ParentId = root.Id };
-        db.AddRange(subject, other, tag, question, legacy, free, root, lesson,
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Public" };
+        db.AddRange(subject, other, tag, question, legacy, free, lesson,
             new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
             new QuestionTag { QuestionId = legacy.Id, TagId = tag.Id },
             new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id },
@@ -79,7 +78,7 @@ public class ContentCheckTests
         var tagFinding = report.Findings.Single(f => f.Rule == "TAG001");
         Assert.AreEqual(2, tagFinding.Objects.Count(o => o.Controller == "Questions"));
         Assert.AreEqual(1, tagFinding.Objects.Count(o => o.Controller == "KnowledgePoints"));
-        Assert.IsTrue(tagFinding.Objects.Any(o => o.Name == "Root → Overview"));
+        Assert.IsTrue(tagFinding.Objects.Any(o => o.Name == "Western history → Overview"));
         Assert.IsTrue(tagFinding.Observations.All(o => !o.Allowed));
         Assert.AreEqual(2, report.Findings.Count(f => f.Rule == "KP001" && f.Severity == CheckSeverity.Information));
         Assert.IsTrue(report.Findings.Any(f => f.Rule == "KP002"));

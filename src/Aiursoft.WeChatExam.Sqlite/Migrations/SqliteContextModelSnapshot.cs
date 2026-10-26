@@ -493,17 +493,12 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<DateTime>("LastUpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ParentId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentId");
 
                     b.ToTable("KnowledgePoints");
                 });
@@ -1589,15 +1584,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
-                {
-                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId");
-
-                    b.Navigation("Parent");
-                });
-
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePointQuestion", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "KnowledgePoint")
@@ -1967,8 +1953,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
                 {
                     b.Navigation("CategoryKnowledgePoints");
-
-                    b.Navigation("Children");
 
                     b.Navigation("KnowledgePointQuestions");
                 });
