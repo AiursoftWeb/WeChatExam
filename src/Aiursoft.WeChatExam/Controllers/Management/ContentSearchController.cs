@@ -17,25 +17,37 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
     [RenderInNavBar(NavGroupName = "Administration", NavGroupOrder = 9999,
         CascadedLinksGroupName = "Content Management", CascadedLinksIcon = "folder-tree",
         CascadedLinksOrder = 1, LinkText = "Search Content", LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? query, string kind = "all", Guid? categoryId = null)
+    public async Task<IActionResult> Index(string? query, string kind = "all",
+        Guid? knowledgeCategoryId = null, Guid? questionCategoryId = null)
     {
+        if (!ModelState.IsValid || query?.Length > 500 || kind is not ("all" or "questions" or "knowledge"))
+            return BadRequest();
         var model = new IndexViewModel
         {
-            Query = query?.Trim() ?? string.Empty, Kind = kind, CategoryId = categoryId,
-            Categories = await db.Categories.AsNoTracking().OrderBy(c => c.Title).ToListAsync(HttpContext.RequestAborted)
+            Query = query?.Trim() ?? string.Empty, Kind = kind,
+            KnowledgeCategoryId = knowledgeCategoryId, QuestionCategoryId = questionCategoryId,
+            KnowledgeCategories = await db.Categories.AsNoTracking().OrderBy(c => c.Title)
+                .ToListAsync(HttpContext.RequestAborted),
+            QuestionCategories = await db.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory)
+                .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
+                .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ToListAsync(HttpContext.RequestAborted)
         };
-        if (model.Query.Length > 500 || kind is not ("all" or "questions" or "knowledge")) return BadRequest();
-        (model.Results, model.UsedAi) = await search.SearchAsync(model.Query, kind, categoryId,
-            cancellationToken: HttpContext.RequestAborted);
+        if (knowledgeCategoryId.HasValue && model.KnowledgeCategories.All(c => c.Id != knowledgeCategoryId) ||
+            questionCategoryId.HasValue && model.QuestionCategories.All(c => c.Id != questionCategoryId))
+            return NotFound();
+        (model.Results, model.UsedAi) = await search.SearchAsync(model.Query, kind, knowledgeCategoryId,
+            cancellationToken: HttpContext.RequestAborted, questionCategoryId: questionCategoryId);
         return this.StackView(model);
     }
 
-    public async Task<IActionResult> Questions(string? query, QuestionType? questionType, Guid? categoryId,
+    public async Task<IActionResult> Questions(string? query, QuestionType? questionType, Guid? questionCategoryId,
         bool useAi = true, bool includeSearchStatus = false)
     {
-        if (query?.Length > 500) return BadRequest();
-        var (results, usedAi) = await search.SearchAsync(query?.Trim() ?? string.Empty, "questions", categoryId,
-            questionType, useAi, cancellationToken: HttpContext.RequestAborted);
+        if (!ModelState.IsValid || query?.Length > 500) return BadRequest();
+        if (questionCategoryId.HasValue && !await db.QuestionCategories.AnyAsync(c => c.Id == questionCategoryId,
+                HttpContext.RequestAborted)) return NotFound();
+        var (results, usedAi) = await search.SearchAsync(query?.Trim() ?? string.Empty, "questions", null,
+            questionType, useAi, cancellationToken: HttpContext.RequestAborted, questionCategoryId: questionCategoryId);
         return includeSearchStatus ? Json(new { results, usedAi }) : Json(results);
     }
 

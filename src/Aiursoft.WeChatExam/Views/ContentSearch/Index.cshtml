@@ -5,7 +5,7 @@
 <div class="card mb-3">
     <div class="card-body">
         <form method="get" asp-action="Index" class="row g-3">
-            <div class="col-lg-6">
+            <div class="col-lg-10">
                 <label for="content-query" class="form-label">@Localizer["Questions and knowledge points"]</label>
                 <input id="content-query" name="query" value="@Model.Query" maxlength="500" class="form-control"
                        placeholder="@Localizer["Search by name, topic, or a few words..."]" autofocus />
@@ -18,17 +18,34 @@
                     <option value="knowledge" selected="@(Model.Kind == "knowledge")">@Localizer["Knowledge Points"]</option>
                 </select>
             </div>
-            <div class="col-sm-6 col-lg-3">
-                <label for="content-category" class="form-label">@Localizer["Category"]</label>
-                <select id="content-category" name="categoryId" class="form-select">
-                    <option value="">@Localizer["All Categories"]</option>
-                    @foreach (var category in Model.Categories)
+            <div class="col-sm-6 col-lg-5">
+                <label for="question-category" class="form-label">@Localizer["Period"]</label>
+                <select id="question-category" name="questionCategoryId" class="form-select">
+                    <option value="">@Localizer["All Periods"]</option>
+                    @foreach (var course in Model.QuestionCategories.GroupBy(c => c.TotalCategoryId))
                     {
-                        <option value="@category.Id" selected="@(Model.CategoryId == category.Id)">@category.Title</option>
+                        <optgroup label="@course.First().TotalCategory!.Title">
+                            @foreach (var period in course)
+                            {
+                                <option value="@period.Id" selected="@(Model.QuestionCategoryId == period.Id)">@period.Title</option>
+                            }
+                        </optgroup>
                     }
                 </select>
+                <div class="form-text">@Localizer["Applies only to questions."]</div>
             </div>
-            <div class="col-lg-1 d-flex align-items-end">
+            <div class="col-sm-6 col-lg-5">
+                <label for="knowledge-category" class="form-label">@Localizer["Knowledge Category"]</label>
+                <select id="knowledge-category" name="knowledgeCategoryId" class="form-select">
+                    <option value="">@Localizer["All Knowledge Categories"]</option>
+                    @foreach (var category in Model.KnowledgeCategories)
+                    {
+                        <option value="@category.Id" selected="@(Model.KnowledgeCategoryId == category.Id)">@category.Title</option>
+                    }
+                </select>
+                <div class="form-text">@Localizer["Applies only to knowledge points."]</div>
+            </div>
+            <div class="col-lg-2 d-flex align-items-end">
                 <button class="btn btn-primary w-100" type="submit">@Localizer["Search"]</button>
             </div>
         </form>

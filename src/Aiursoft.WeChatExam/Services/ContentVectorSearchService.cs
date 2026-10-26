@@ -19,17 +19,22 @@ public class ContentVectorSearchService(
     public const int MaxResults = 50;
 
     public async Task<(List<ContentSearchItem> Results, bool UsedAi)> SearchAsync(
-        string query, string kind, Guid? categoryId, QuestionType? questionType = null,
-        bool useAi = true, Guid? excludePaperId = null, CancellationToken cancellationToken = default)
+        string query, string kind, Guid? knowledgeCategoryId, QuestionType? questionType = null,
+        bool useAi = true, Guid? excludePaperId = null, Guid? questionCategoryId = null,
+        CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(query)) return ([], false);
-        var questions = QuestionScope(categoryId.HasValue ? [categoryId.Value] : [], questionType);
+        // Question periods and knowledge directories are independent scopes, including in mixed results.
+        var questions = db.Questions.AsNoTracking();
+        if (questionCategoryId.HasValue)
+            questions = questions.Where(q => q.QuestionCategoryId == questionCategoryId.Value);
+        if (questionType.HasValue) questions = questions.Where(q => q.QuestionType == questionType);
         if (excludePaperId.HasValue)
             questions = questions.Where(q => !db.PaperQuestions.Any(pq =>
                 pq.PaperId == excludePaperId.Value && pq.QuestionId == q.Id));
         var points = db.KnowledgePoints.AsNoTracking().AsQueryable();
-        if (categoryId.HasValue)
-            points = points.Where(k => k.CategoryKnowledgePoints.Any(c => c.CategoryId == categoryId.Value));
+        if (knowledgeCategoryId.HasValue)
+            points = points.Where(k => k.CategoryKnowledgePoints.Any(c => c.CategoryId == knowledgeCategoryId.Value));
         var terms = query.ToLowerInvariant().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Take(8).ToArray();
         var lowerQuery = query.ToLowerInvariant();
         var results = new List<ContentSearchItem>();
@@ -198,7 +203,8 @@ public class ContentVectorSearchService(
     private static IQueryable<ContentSearchItem> ProjectQuestions(IQueryable<Question> query) => query.Select(q => new ContentSearchItem
     {
         Id = q.Id, Title = q.Content, Preview = q.Explanation, Answer = q.StandardAnswer,
-        QuestionType = q.QuestionType, Category = q.Category == null ? string.Empty : q.Category.Title
+        QuestionType = q.QuestionType,
+        Category = q.QuestionCategory!.TotalCategory!.Title + " · " + q.QuestionCategory.Title
     });
 
     private static IQueryable<ContentSearchItem> ProjectKnowledgePoints(IQueryable<KnowledgePoint> query) => query.Select(k => new ContentSearchItem

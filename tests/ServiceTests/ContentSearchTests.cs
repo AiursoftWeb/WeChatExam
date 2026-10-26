@@ -18,32 +18,47 @@ public class ContentSearchTests
     [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
-    public async Task ExactMatchesLeadSemanticResultsAndCategoryFiltersApply(bool relational)
+    public async Task SearchScopesPeriodsAndKnowledgeDirectoriesIndependently(bool relational)
     {
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var other = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
         var exact = NewQuestion("Boya", category.Id);
-        var related = NewQuestion("Who played Flowing Water?", category.Id);
-        var excluded = NewQuestion("Boya outside the selected category", other.Id);
+        var related = NewQuestion("Who played Flowing Water?", other.Id);
+        related.QuestionCategory = exact.QuestionCategory;
+        related.StandardAnswer = "Musician";
+        exact.CategoryId = null;
+        var excluded = NewQuestion("Boya outside the selected period", category.Id);
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "A guqin musician" };
-        db.AddRange(category, other, exact, related, excluded, point);
+        var otherPoint = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya elsewhere", Content = "Another directory" };
+        db.AddRange(category, other, exact, related, excluded, point, otherPoint);
+        db.Add(new CategoryKnowledgePoint { CategoryId = other.Id, KnowledgePointId = otherPoint.Id });
         db.Add(new CategoryKnowledgePoint { CategoryId = category.Id, KnowledgePointId = point.Id });
         await db.SaveChangesAsync();
         foreach (var q in new[] { exact, related, excluded }) SetEmbedding(q);
         point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt;
+        otherPoint.Embedding = Vector(); otherPoint.LastEmbeddedAt = otherPoint.LastUpdatedAt;
         await db.SaveChangesAsync();
         var handler = new QueryHandler();
         var service = CreateSearch(db, handler);
 
-        var (results, usedAi) = await service.SearchAsync("Boya", "all", category.Id);
+        var (results, usedAi) = await service.SearchAsync("Boya", "all", category.Id, questionCategoryId: exact.QuestionCategoryId);
         Assert.IsTrue(usedAi);
         Assert.HasCount(3, results);
         Assert.IsFalse(results.Any(r => r.Id == excluded.Id));
         Assert.AreEqual(related.Id, results[^1].Id, "Exact content/title matches must precede semantic-only matches.");
         Assert.IsTrue(results.Any(r => r.Id == point.Id && r.IsKnowledgePoint));
         Assert.IsTrue(results.Any(r => r.Id == exact.Id && !r.IsKnowledgePoint));
-        await service.SearchAsync("Boya", "questions", category.Id);
+        Assert.AreEqual(exact.QuestionCategory!.TotalCategory!.Title + " · " + exact.QuestionCategory.Title,
+            results.Single(r => r.Id == exact.Id).Category);
+        var (keywords, _) = await service.SearchAsync("Boya", "all", category.Id, useAi: false,
+            questionCategoryId: exact.QuestionCategoryId);
+        CollectionAssert.AreEquivalent(new[] { exact.Id, point.Id }, keywords.Select(r => r.Id).ToArray());
+        var (allQuestions, _) = await service.SearchAsync("Boya", "questions", category.Id);
+        Assert.HasCount(3, allQuestions, "A knowledge directory must not restrict questions.");
+        var (allPoints, _) = await service.SearchAsync("Boya", "knowledge", null,
+            questionCategoryId: exact.QuestionCategoryId);
+        Assert.HasCount(2, allPoints, "A period must not restrict knowledge points.");
         Assert.AreEqual(1, handler.Calls, "Repeated searches should reuse the query vector.");
 
         handler.Fail = true;
