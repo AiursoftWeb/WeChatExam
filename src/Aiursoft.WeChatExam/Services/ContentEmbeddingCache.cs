@@ -1,5 +1,5 @@
+using Aiursoft.WebTools;
 using Aiursoft.WeChatExam.Entities;
-using Aiursoft.WeChatExam.Util;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Services;

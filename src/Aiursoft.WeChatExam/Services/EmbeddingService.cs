@@ -1,7 +1,7 @@
 using System.Net.Http.Headers;
 using Aiursoft.Scanner.Abstractions;
+using Aiursoft.WebTools;
 using Aiursoft.WeChatExam.Configuration;
-using Aiursoft.WeChatExam.Util;
 
 namespace Aiursoft.WeChatExam.Services;
 
