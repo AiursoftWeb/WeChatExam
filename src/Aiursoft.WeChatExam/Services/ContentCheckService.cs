@@ -23,7 +23,7 @@ public class ContentCheckService(
             .ThenInclude(t => t!.CategoryTaxonomies).ToListAsync(cancellationToken);
         var questions = await context.Questions.AsNoTracking().Select(q => new Question
         {
-            Id = q.Id, Content = q.Content, CategoryId = q.CategoryId
+            Id = q.Id, Content = q.Content, CategoryId = q.CategoryId, QuestionCategoryId = q.QuestionCategoryId
         }).ToListAsync(cancellationToken);
         var questionTags = await context.QuestionTags.AsNoTracking().ToListAsync(cancellationToken);
         var knowledge = await context.KnowledgePoints.AsNoTracking().Select(k => new KnowledgePoint
@@ -45,7 +45,7 @@ public class ContentCheckService(
         var tagsByQuestion = questionTags.ToLookup(t => t.QuestionId);
         var questionIndex = questions.ToDictionary(q => q.Id, q => new Question
         {
-            Id = q.Id, Content = q.Content, CategoryId = q.CategoryId,
+            Id = q.Id, Content = q.Content, CategoryId = q.CategoryId, QuestionCategoryId = q.QuestionCategoryId,
             QuestionTags = tagsByQuestion[q.Id].Where(t => tagIndex.ContainsKey(t.TagId)).Select(t => new QuestionTag
             {
                 QuestionId = q.Id, TagId = t.TagId, Tag = tagIndex[t.TagId]

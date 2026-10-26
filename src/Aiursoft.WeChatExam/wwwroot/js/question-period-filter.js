@@ -10,13 +10,6 @@
             group.disabled = excluded;
             if (excluded && [...group.children].some(option => option.selected)) period.value = '';
         }
-        // An unassigned question has no total category yet.
-        const unassigned = period.querySelector('option[value="unassigned"]');
-        if (unassigned) {
-            unassigned.hidden = total.value !== '';
-            unassigned.disabled = total.value !== '';
-            if (unassigned.disabled && unassigned.selected) period.value = '';
-        }
     }
 
     total.addEventListener('change', updatePeriods);

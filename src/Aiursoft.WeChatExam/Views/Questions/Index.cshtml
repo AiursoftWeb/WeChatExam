@@ -57,7 +57,6 @@
                         <label for="period" class="form-label">@Localizer["Period"]</label>
                         <select id="period" name="period" class="form-select">
                             <option value="">@Localizer["All Periods"]</option>
-                            <option value="unassigned" selected="@(Model.SelectedPeriod == "unassigned")">@Localizer["Period not assigned"]</option>
                             @foreach (var group in Model.QuestionCategories.GroupBy(c => c.TotalCategoryId))
                             {
                                 <optgroup label="@group.First().TotalCategory!.Title" data-total-category-id="@group.Key">

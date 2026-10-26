@@ -157,7 +157,7 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama, I
                 var question = new Question { Id = Guid.NewGuid(), Content = q.Content, QuestionType = q.QuestionType,
                     GradingStrategy = q.Options.Count > 0 ? GradingStrategy.ExactMatch : GradingStrategy.AiEval,
                     Metadata = JsonConvert.SerializeObject(new { options = q.Options }), StandardAnswer = string.IsNullOrWhiteSpace(q.StandardAnswer) ? "" : q.StandardAnswer,
-                    Explanation = q.Explanation, QuestionCategoryId = q.QuestionCategoryId, OrderIndex = i + 1 };
+                    Explanation = q.Explanation, QuestionCategoryId = q.QuestionCategoryId!.Value, OrderIndex = i + 1 };
                 db.Questions.Add(question);
                 db.PaperQuestions.Add(new PaperQuestion { PaperId = paperId, QuestionId = question.Id, Order = i + 1, Score = q.Score });
                 foreach (var tag in tags) db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id, Tag = tag });

@@ -248,6 +248,7 @@ public class EmbeddingTests
 
     private static Question NewQuestion() => new()
     {
+        QuestionCategory = IntegrationTests.QuestionPeriodAssignmentTests.TestPeriod(),
         Id = Guid.NewGuid(), Content = "Who played Flowing Water?", QuestionType = QuestionType.Choice,
         Metadata = "[\"Boya\",\"Other\"]", StandardAnswer = "Boya", Explanation = "A guqin composition."
     };

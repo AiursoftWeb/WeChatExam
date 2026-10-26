@@ -280,6 +280,7 @@ public class ContentSearchTests
 
     private static Question NewQuestion(string content, Guid categoryId) => new()
     {
+        QuestionCategory = IntegrationTests.QuestionPeriodAssignmentTests.TestPeriod(),
         Id = Guid.NewGuid(), Content = content, StandardAnswer = "Boya", CategoryId = categoryId
     };
 

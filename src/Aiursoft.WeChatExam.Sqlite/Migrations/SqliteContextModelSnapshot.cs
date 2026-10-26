@@ -795,7 +795,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<decimal?>("OrderIndex")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("QuestionCategoryId")
+                    b.Property<Guid>("QuestionCategoryId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("QuestionType")
@@ -1712,7 +1712,8 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasOne("Aiursoft.WeChatExam.Entities.QuestionCategory", "QuestionCategory")
                         .WithMany()
                         .HasForeignKey("QuestionCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Category");
 

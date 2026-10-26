@@ -56,11 +56,7 @@ public class QuestionsController(
             query = query.Where(q => q.QuestionCategory != null && q.QuestionCategory.TotalCategoryId == totalCategoryId);
         }
 
-        if (period == "unassigned")
-        {
-            query = query.Where(q => q.QuestionCategoryId == null);
-        }
-        else if (!string.IsNullOrEmpty(period))
+        if (!string.IsNullOrEmpty(period))
         {
             if (!Guid.TryParse(period, out var periodId)) return BadRequest();
             var selectedPeriod = await context.QuestionCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == periodId);
@@ -299,7 +295,7 @@ public class QuestionsController(
             Metadata = model.Metadata ?? string.Empty,
             StandardAnswer = model.StandardAnswer ?? string.Empty,
             Explanation = model.Explanation ?? string.Empty,
-            QuestionCategoryId = model.QuestionCategoryId,
+            QuestionCategoryId = model.QuestionCategoryId!.Value,
             OrderIndex = model.OrderIndex
         };
 
@@ -361,7 +357,7 @@ public class QuestionsController(
 
         // Classification is reviewed independently of content and legacy pricing.
         // Never infer a period from a tag name or silently rewrite legacy fields.
-        question.QuestionCategoryId = model.QuestionCategoryId;
+        question.QuestionCategoryId = model.QuestionCategoryId!.Value;
         await context.SaveChangesAsync();
         if (model.ReturnUrl != null) return LocalRedirect(model.ReturnUrl);
         return RedirectToAction(nameof(Details), new { id });
@@ -498,7 +494,7 @@ public class QuestionsController(
         question.Explanation = model.Explanation ?? string.Empty;
         // Legacy category consumers migrate separately. Never let this form overwrite
         // that field or make teachers maintain two competing classifications.
-        question.QuestionCategoryId = model.QuestionCategoryId;
+        question.QuestionCategoryId = model.QuestionCategoryId!.Value;
         question.OrderIndex = model.OrderIndex;
 
         await context.SaveChangesAsync();
