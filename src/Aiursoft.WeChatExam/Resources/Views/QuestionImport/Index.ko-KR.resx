@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>가져온 모든 질문은 이 유형을 사용하며, JSON의 Type 필드는 무시됩니다.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>미리보기에서 개별적으로 선택</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>기본 기간</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>JSON에서 질문 가져오기</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>질문 유형</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>일괄 적용할 기간을 하나 선택한 후, 미리 보기에서 각 질문을 개별적으로 조정하세요.</value>
   </data>
 
 </root>

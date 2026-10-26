@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Verificați etichetele și recomandările privind accesul</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Selectați o perioadă pentru fiecare întrebare înainte de a salva.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Se compară întrebarea din previzualizare {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Denumirea etichetei sursă cu plată</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Categorie de lucrare (opțional)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>În așteptare</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Perioadă</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>În curs de procesare</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Punctaj</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Selectați o perioadă</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Reutilizarea sursei face ca această etichetă să fie cu plată la nivel global.</value>

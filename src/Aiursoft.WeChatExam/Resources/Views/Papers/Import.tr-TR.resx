@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Etiketleri ve erişim önerilerini kontrol et</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Kaydetmeden önce her soru için bir dönem seçin.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Önizleme sorusu {0} karşılaştırılıyor</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Ücretli kaynak etiketi adı</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Kağıt kategorisi (isteğe bağlı)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Beklemede</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Nokta</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>İşleniyor</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Puan</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Bir dönem seçin</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Kaynak etiketinin yeniden kullanılması, bu etiketi genel olarak ücretli hâle getirir.</value>

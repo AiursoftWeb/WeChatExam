@@ -48,6 +48,9 @@
   <data name="All Periods" xml:space="preserve">
     <value>所有期間</value>
   </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>所有總類別</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>此操作無法撤銷。</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>此連結顯示舊有分類的參照資料。目前問題分類採用總分類及時段。</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>總類別</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>類型</value>

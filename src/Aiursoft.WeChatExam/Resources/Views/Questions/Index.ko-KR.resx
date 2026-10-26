@@ -48,6 +48,9 @@
   <data name="All Periods" xml:space="preserve">
     <value>전체 기간</value>
   </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>전체 총분류</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>모든 유형</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>이 작업은 되돌릴 수 없습니다.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>이 링크에는 이전 카테고리 참조가 표시됩니다. 현재 문항 분류에는 전체 카테고리와 기간이 사용됩니다.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>통합 분류</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>유형</value>

@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>تحقق من الوسوم وتوصيات الوصول</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>اختر فترة لكل سؤال قبل الحفظ.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>جارٍ مقارنة سؤال المعاينة {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>اسم وسم المصدر المدفوع</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>تصنيف الاختبار (اختياري)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>قيد الانتظار</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>الفترة</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>جارٍ المعالجة</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>الدرجة</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>اختر فترة</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>إعادة استخدام المصدر تجعل هذا الوسم مدفوعًا على مستوى النظام بأكمله.</value>

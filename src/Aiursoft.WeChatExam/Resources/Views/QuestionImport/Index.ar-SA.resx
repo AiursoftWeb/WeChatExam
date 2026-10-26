@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>جميع الأسئلة المستوردة ستستخدم هذا النوع، مع تجاهل حقل النوع في ملف JSON.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>اختر بشكل منفصل في المعاينة</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>الفترة الافتراضية</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>استيراد الأسئلة من JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>نوع السؤال</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>ابدأ بفترة واحدة للمجموعة، ثم عدّل أسئلة محددة في المعاينة.</value>
   </data>
 
 </root>

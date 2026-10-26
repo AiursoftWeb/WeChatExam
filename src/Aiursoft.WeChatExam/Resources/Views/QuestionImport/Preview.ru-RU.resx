@@ -27,6 +27,9 @@
   <data name="Back to Edit" xml:space="preserve">
     <value>Назад к редактированию</value>
   </data>
+  <data name="Choose a period for every question before saving. You can change each selection below." xml:space="preserve">
+    <value>Перед сохранением выберите период для каждого вопроса. Ниже можно изменить каждый выбранный вариант.</value>
+  </data>
   <data name="Confirm &amp; Save" xml:space="preserve">
     <value>Подтвердить и сохранить</value>
   </data>
@@ -39,11 +42,17 @@
   <data name="Options" xml:space="preserve">
     <value>Варианты</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Период</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Предварительный просмотр и сохранение</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Вопросы</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Выберите период</value>
   </data>
   <data name="Source File" xml:space="preserve">
     <value>Исходный файл</value>

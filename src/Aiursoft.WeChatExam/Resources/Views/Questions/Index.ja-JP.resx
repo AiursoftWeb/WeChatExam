@@ -48,6 +48,9 @@
   <data name="All Periods" xml:space="preserve">
     <value>すべての期間</value>
   </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>すべての総カテゴリー</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>すべてのタイプ</value>
   </data>
@@ -221,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>この操作は元に戻せません。</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>このリンクには旧カテゴリへの参照が表示されています。現在、問題の分類には総カテゴリと期間を使用しています。</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>総合カテゴリ</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>タイプ</value>

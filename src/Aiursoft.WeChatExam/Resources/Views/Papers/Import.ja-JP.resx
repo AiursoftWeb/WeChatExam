@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>タグとアクセスに関する推奨事項を確認</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>保存する前に、各問題に期間を選択してください。</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>プレビューの質問 {0} を比較中</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>有料ソースタグ名</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>問題集のカテゴリ（任意）</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>保留中</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>期間</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>処理中</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>得点</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>期間を選択</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>ソースのタグを再利用すると、そのタグは全体で有料になります。</value>

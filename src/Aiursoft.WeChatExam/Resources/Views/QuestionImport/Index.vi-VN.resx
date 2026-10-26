@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Tất cả các câu hỏi được nhập vào sẽ sử dụng loại này, bỏ qua trường Type trong JSON.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Chọn riêng trong phần xem trước</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Kỳ học mặc định</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Nhập câu hỏi từ JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Loại câu hỏi</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Đặt một kỳ chung cho cả đợt, sau đó điều chỉnh từng câu hỏi trong phần xem trước.</value>
   </data>
 
 </root>

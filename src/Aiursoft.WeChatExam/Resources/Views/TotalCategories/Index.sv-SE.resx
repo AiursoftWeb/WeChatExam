@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A total category represents a course, such as Chinese music history." xml:space="preserve">
+    <value>En övergripande kategori representerar en kurs, till exempel kinesisk musikhistoria.</value>
+  </data>
+  <data name="Create Total Category" xml:space="preserve">
+    <value>Skapa en övergripande kategori</value>
+  </data>
+  <data name="Create your first total category" xml:space="preserve">
+    <value>Skapa din första totalkategori</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>Visningsordning</value>
+  </data>
+  <data name="Edit Total Category" xml:space="preserve">
+    <value>Redigera övergripande kategori</value>
+  </data>
+  <data name="Start with the courses you teach." xml:space="preserve">
+    <value>Börja med de kurser du undervisar i.</value>
+  </data>
+  <data name="Total Categories" xml:space="preserve">
+    <value>Totalt antal kategorier</value>
+  </data>
+
+</root>

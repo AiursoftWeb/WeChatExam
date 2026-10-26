@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>جميع الفئات</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>جميع الفترات</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>جميع الفئات الإجمالية</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>هل أنت متأكد أنك تريد حذف</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>تعيين الفترة</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>إلغاء</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>لم يتم العثور على أسئلة تطابق المعايير</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>الفترة</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>الفترة غير مُسندة</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>الرجاء إدخال رقم صفحة صالح بين 1 و</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>لا يمكن التراجع عن هذه الإجراء.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>يعرض هذا الرابط مراجع التصنيفات القديمة. يعتمد تصنيف الأسئلة الحالي على التصنيفات الرئيسية والفترات.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>الفئة الإجمالية</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>النوع</value>
