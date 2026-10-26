@@ -11,14 +11,22 @@
                     <form asp-action="Extract" method="post">
                         @Html.AntiForgeryToken()
                         <div class="mb-3">
-                            <label asp-for="CategoryId" class="form-label"></label>
-                            <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select">
+                            <label asp-for="CategoryId" class="form-label">@Localizer["Knowledge category"]</label>
+                            <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select" required>
                                 <option value="">-- @Localizer["Select Category"] --</option>
                             </select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label asp-for="Material" class="form-label"></label>
+                            <label asp-for="QuestionCategoryId" class="form-label">@Localizer["Period"]</label>
+                            <select asp-for="QuestionCategoryId" asp-items="Model.QuestionCategories" class="form-select" required>
+                                <option value="">-- @Localizer["Select Period"] --</option>
+                            </select>
+                            <span asp-validation-for="QuestionCategoryId" class="text-danger"></span>
+                            <div class="form-text">@Localizer["All questions generated from this material will use this period. Extract material from different periods separately."]</div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Material" class="form-label">@Localizer["Material"]</label>
                             <textarea asp-for="Material" class="form-control" rows="15" placeholder="@Localizer["Paste your study material, articles, or notes here..."]"></textarea>
                             <span asp-validation-for="Material" class="text-danger"></span>
                         </div>

@@ -32,6 +32,8 @@
                     <form asp-action="Preview" method="post" id="previewForm">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="OriginalMaterial" />
+                        <input type="hidden" asp-for="CategoryId" />
+                        <input type="hidden" asp-for="QuestionCategoryId" />
 
                         <div class="form-group mb-3">
                             <label asp-for="JsonContent" class="control-label fw-bold">@Localizer["JSON Content"]</label>
@@ -48,6 +50,8 @@
                     </form>
                     
                     <form asp-action="Index" method="post" id="startOverForm" class="mt-2">
+                        <input type="hidden" asp-for="CategoryId" />
+                        <input type="hidden" asp-for="QuestionCategoryId" />
                         <!-- Send material back to Index to allow user to edit original text -->
                         <textarea name="Material" style="display:none">@Model.OriginalMaterial</textarea>
                          <button type="submit" class="btn btn-secondary">

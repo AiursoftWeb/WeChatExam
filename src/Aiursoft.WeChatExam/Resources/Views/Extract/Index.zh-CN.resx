@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>高级：系统提示</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>由此材料生成的所有题目都将使用此年代。请分别从不同年代的材料中提取内容。</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>从资料中提取知识</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>AI解析资料的指令</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>知识类别</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>材料</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>在此粘贴您的学习资料、文章或笔记...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>年代</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>选择类别</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>选择年代</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>系统提示</value>
