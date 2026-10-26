@@ -53,6 +53,12 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<QuestionCategory>()
+            .HasOne(c => c.TotalCategory)
+            .WithMany()
+            .HasForeignKey(c => c.TotalCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         // Protect financial records from being cascade-deleted when a user deletes their account.
         builder.Entity<PaymentOrder>()
             .HasOne(p => p.User)
@@ -68,6 +74,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     }
 
     public DbSet<TotalCategory> TotalCategories => Set<TotalCategory>();
+    public DbSet<QuestionCategory> QuestionCategories => Set<QuestionCategory>();
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<CategoryTaxonomy> CategoryTaxonomies => Set<CategoryTaxonomy>();
     public DbSet<Question> Questions => Set<Question>();

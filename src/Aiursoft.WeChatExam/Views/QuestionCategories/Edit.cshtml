@@ -1,0 +1,74 @@
+@model Aiursoft.WeChatExam.Models.QuestionCategoriesViewModels.EditViewModel
+@{
+    var creating = Model.Id == Guid.Empty;
+}
+
+<a asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="d-inline-block text-decoration-none mb-3">
+    <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Periods"]
+</a>
+<h1 class="h3 mb-4">
+    @if (creating)
+    {
+        @Localizer["Create Period"]
+    }
+    else
+    {
+        @Localizer["Edit Period"]
+    }
+</h1>
+
+<div class="row">
+    <div class="col-lg-7 col-xl-6">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                    @if (!creating)
+                    {
+                        <input asp-for="Id" type="hidden" />
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-4">
+                        <label asp-for="TotalCategoryId" class="form-label"></label>
+                        <select asp-for="TotalCategoryId" class="form-select">
+                            <option value="">@Localizer["Choose a total category"]</option>
+                            @foreach (var total in Model.TotalCategories)
+                            {
+                                <option value="@total.Id">@total.Title</option>
+                            }
+                        </select>
+                        <span asp-validation-for="TotalCategoryId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" maxlength="255" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4 form-check form-switch">
+                        <input asp-for="IsFree" class="form-check-input" aria-describedby="free-help" />
+                        <label asp-for="IsFree" class="form-check-label"></label>
+                        <div id="free-help" class="form-text">@Localizer["When disabled, practice requires membership of the selected course."]</div>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="OrderIndex" class="form-label"></label>
+                        <input asp-for="OrderIndex" class="form-control" min="0" aria-describedby="order-help" />
+                        <div id="order-help" class="form-text">@Localizer["Smaller numbers appear first."]</div>
+                        <span asp-validation-for="OrderIndex" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            @if (creating)
+                            {
+                                @Localizer["Create Period"]
+                            }
+                            else
+                            {
+                                @Localizer["Save Changes"]
+                            }
+                        </button>
+                        <a asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

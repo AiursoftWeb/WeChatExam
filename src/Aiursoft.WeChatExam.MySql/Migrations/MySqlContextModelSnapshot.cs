@@ -826,6 +826,36 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("Questions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsFree")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<Guid>("TotalCategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TotalCategoryId");
+
+                    b.ToTable("QuestionCategories");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionSnapshot", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1710,6 +1740,17 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionCategory", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.TotalCategory", "TotalCategory")
+                        .WithMany()
+                        .HasForeignKey("TotalCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TotalCategory");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionSnapshot", b =>

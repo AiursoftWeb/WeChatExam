@@ -1,0 +1,80 @@
+@model Aiursoft.WeChatExam.Models.QuestionCategoriesViewModels.IndexViewModel
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-2">@Localizer["Periods"]</h1>
+        <p class="text-muted mb-0">@Localizer["Organize the periods within each course."]</p>
+    </div>
+    @if (Model.TotalCategoryId.HasValue)
+    {
+        <a asp-action="Create" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-primary">
+            <i data-lucide="plus" class="me-1"></i> @Localizer["Create Period"]
+        </a>
+    }
+</div>
+
+@if (Model.TotalCategories.Count == 0)
+{
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <h2 class="h4">@Localizer["Create a total category first"]</h2>
+            <p class="text-muted">@Localizer["Every period belongs to one total category."]</p>
+            <a asp-controller="TotalCategories" asp-action="Create" class="btn btn-primary">@Localizer["Create Total Category"]</a>
+        </div>
+    </div>
+}
+else
+{
+    <nav aria-label="@Localizer["Total Categories"]" class="mb-4">
+        <ul class="nav nav-pills gap-2 flex-wrap">
+            @foreach (var total in Model.TotalCategories)
+            {
+                <li class="nav-item">
+                    <a asp-action="Index" asp-route-totalCategoryId="@total.Id"
+                       class="nav-link text-break @(total.Id == Model.TotalCategoryId ? "active" : "")"
+                       aria-current="@(total.Id == Model.TotalCategoryId ? "page" : null)">@total.Title</a>
+                </li>
+            }
+        </ul>
+    </nav>
+    @if (Model.Categories.Count == 0)
+    {
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i data-lucide="layers" class="text-primary mb-3"></i>
+                <h2 class="h4">@Localizer["No periods in this course yet"]</h2>
+                <p class="text-muted mb-0">@Localizer["Create a period to start organizing this course."]</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-md-6 col-xl-4">
+                    <div class="card h-100 position-relative shadow-sm">
+                        <div class="card-body p-4">
+                            <i data-lucide="layers" class="text-primary mb-3"></i>
+                            <h2 class="h4 text-break mb-3">@category.Title</h2>
+                            <p class="mb-3">
+                                @if (category.IsFree)
+                                {
+                                    <span class="badge bg-success-subtle text-success-emphasis">@Localizer["Free Practice"]</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary-subtle text-primary-emphasis">@Localizer["Course Membership"]</span>
+                                }
+                            </p>
+                            <p class="text-muted">@Localizer["Display Order"]: @category.OrderIndex</p>
+                            <a asp-action="Edit" asp-route-id="@category.Id" class="stretched-link text-decoration-none">
+                                @Localizer["Edit Period"] <i data-lucide="arrow-right" class="ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+}

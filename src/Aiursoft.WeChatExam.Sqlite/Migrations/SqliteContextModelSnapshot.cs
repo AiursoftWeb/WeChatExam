@@ -815,6 +815,36 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("Questions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsFree")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("TotalCategoryId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TotalCategoryId");
+
+                    b.ToTable("QuestionCategories");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionSnapshot", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1689,6 +1719,17 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionCategory", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.TotalCategory", "TotalCategory")
+                        .WithMany()
+                        .HasForeignKey("TotalCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TotalCategory");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.QuestionSnapshot", b =>
