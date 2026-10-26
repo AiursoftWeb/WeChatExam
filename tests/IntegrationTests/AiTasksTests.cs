@@ -2,6 +2,8 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Models;
+using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Tests.TestServices;
 using Newtonsoft.Json.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -91,7 +93,9 @@ public class AiTasksTests
     }
 
     [TestMethod]
-    public async Task AutoCategorizeTaskTest()
+    [DataRow(true)]
+    [DataRow(false)]
+    public async Task AutoCategorizeTaskTest(bool returnId)
     {
         var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
@@ -140,8 +144,13 @@ public class AiTasksTests
         var question = dbContext.Questions.FirstOrDefault(q => q.Content == qText);
         Assert.IsNotNull(question);
 
-        // 3. Mock Ollama response to return the ID of the new category
-        _mockOllamaService.Response = newCategory.Id.ToString();
+        var suggestedPeriodId = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        var suggestedPeriod = await dbContext.QuestionCategories.Include(c => c.TotalCategory).SingleAsync(c => c.Id == suggestedPeriodId);
+        suggestedPeriod.Title = "Unique suggestion " + Guid.NewGuid();
+        await dbContext.SaveChangesAsync();
+        var expectedName = $"{suggestedPeriod.TotalCategory!.Title} / {suggestedPeriod.Title}";
+        // AI candidates are periods. Legacy knowledge categories must not leak into the prompt.
+        _mockOllamaService.Response = returnId ? suggestedPeriodId.ToString() : expectedName;
 
         // 4. Trigger AutoCategorize
         var token = await GetAntiCsrfToken("/Questions/Index");
@@ -171,7 +180,7 @@ public class AiTasksTests
             {
                 var items = statusObj["items"] as JArray;
                 var item = items?[0];
-                Assert.AreEqual(newCategory.Title, item?["newValue"]?.ToString());
+                Assert.AreEqual(expectedName, item?["newValue"]?.ToString());
                 Assert.AreEqual("Completed", item?["statusText"]?.ToString());
                 isCompleted = true;
                 break;
@@ -191,7 +200,134 @@ public class AiTasksTests
         // 7. Verify Question Category Updated
         // Need to reload question from DB
         dbContext.Entry(question).Reload();
-        Assert.AreEqual(newCategory.Id, question.CategoryId);
+        Assert.AreEqual(suggestedPeriodId, question.QuestionCategoryId);
+        Assert.IsNull(question.CategoryId);
+        StringAssert.Contains(_mockOllamaService.Questions.Single(), expectedName);
+        Assert.DoesNotContain(category.Id.ToString(), _mockOllamaService.Questions.Single());
+        Assert.DoesNotContain(newCategory.Id.ToString(), _mockOllamaService.Questions.Single());
+    }
+
+    [TestMethod]
+    [DataRow("GenerateExplanations")]
+    [DataRow("GenerateAnswers")]
+    [DataRow("AutoTagging")]
+    public async Task AiPromptsUsePeriodContextInsteadOfKnowledgeCategory(string action)
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        var period = await db.QuestionCategories.Include(c => c.TotalCategory).SingleAsync(c => c.Id == periodId);
+        var legacy = new Category { Title = "Legacy context " + Guid.NewGuid(), ParentId = null };
+        var question = new Question { Content = "Question context", StandardAnswer = "Answer", QuestionCategoryId = periodId, Category = legacy };
+        db.Questions.Add(question); await db.SaveChangesAsync();
+        _mockOllamaService.Response = "Suggested answer";
+        _http.DefaultRequestHeaders.Add("RequestVerificationToken", await GetAntiCsrfToken("/Questions/Index"));
+        var response = await _http.PostAsync("/AiTasks/" + action,
+            new StringContent(System.Text.Json.JsonSerializer.Serialize(new { questionIds = new[] { question.Id } }), System.Text.Encoding.UTF8, "application/json"));
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var taskId = JObject.Parse(await response.Content.ReadAsStringAsync())["taskId"]!.ToObject<Guid>();
+        var task = scope.ServiceProvider.GetRequiredService<AiTaskService>().GetTask(taskId)!;
+        for (var attempt = 0; attempt < 40 && !task.IsCompleted; attempt++) await Task.Delay(250);
+        Assert.IsTrue(task.IsCompleted);
+        var prompt = _mockOllamaService.Questions.Single();
+        StringAssert.Contains(prompt, $"{period.TotalCategory!.Title} / {period.Title}");
+        Assert.DoesNotContain(legacy.Title, prompt);
+    }
+
+    [TestMethod]
+    public async Task PeriodAdoptionRejectsInvalidIdsWithoutPartialChanges()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var oldPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        var newPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        var deletedPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        db.QuestionCategories.Remove(await db.QuestionCategories.SingleAsync(c => c.Id == deletedPeriod));
+        var legacy = new Category { Title = "Legacy knowledge tree", ParentId = null };
+        var first = new Question { Content = "First adoption question", QuestionCategoryId = oldPeriod, Category = legacy };
+        var second = new Question { Content = "Second adoption question", QuestionCategoryId = oldPeriod, Category = legacy };
+        db.Questions.AddRange(first, second);
+        await db.SaveChangesAsync();
+        var tasks = scope.ServiceProvider.GetRequiredService<AiTaskService>();
+        var firstItem = new AiTaskItem { QuestionId = first.Id, Status = AiTaskStatus.Completed, NewEntityId = newPeriod };
+        var secondItem = new AiTaskItem { QuestionId = second.Id, Status = AiTaskStatus.Completed };
+        var task = tasks.CreateTask([firstItem, secondItem], AiTaskType.AutoCategorize);
+        var token = await GetAntiCsrfToken($"/AiTasks/Preview?taskId={task.Id}");
+        _http.DefaultRequestHeaders.Add("RequestVerificationToken", token);
+
+        foreach (var invalid in new Guid?[] { null, Guid.Empty, Guid.NewGuid(), deletedPeriod, legacy.Id })
+        {
+            secondItem.NewEntityId = invalid;
+            var single = await _http.PostAsync($"/AiTasks/Adopt?taskId={task.Id}&questionId={second.Id}", null);
+            Assert.AreEqual(HttpStatusCode.BadRequest, single.StatusCode);
+            var batch = await _http.PostAsync($"/AiTasks/AdoptAll?taskId={task.Id}", null);
+            Assert.AreEqual(HttpStatusCode.BadRequest, batch.StatusCode);
+            var edited = await _http.PostAsync($"/AiTasks/Edit?taskId={task.Id}&questionId={second.Id}",
+                new StringContent(System.Text.Json.JsonSerializer.Serialize(invalid?.ToString() ?? "not-a-guid"), System.Text.Encoding.UTF8, "application/json"));
+            Assert.AreEqual(HttpStatusCode.BadRequest, edited.StatusCode);
+            db.ChangeTracker.Clear();
+            Assert.AreEqual(oldPeriod, (await db.Questions.SingleAsync(q => q.Id == first.Id)).QuestionCategoryId);
+            Assert.AreEqual(oldPeriod, (await db.Questions.SingleAsync(q => q.Id == second.Id)).QuestionCategoryId);
+            Assert.AreEqual(2, task.Items.Count);
+            Assert.IsFalse(task.IsCanceled);
+        }
+
+        // A valid ID is still not adoptable while the AI item is unfinished.
+        secondItem.NewEntityId = newPeriod;
+        secondItem.Status = AiTaskStatus.Processing;
+        Assert.AreEqual(HttpStatusCode.BadRequest,
+            (await _http.PostAsync($"/AiTasks/Adopt?taskId={task.Id}&questionId={second.Id}", null)).StatusCode);
+        secondItem.Status = AiTaskStatus.Completed;
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.PostAsync($"/AiTasks/AdoptAll?taskId={task.Id}", null)).StatusCode);
+        db.ChangeTracker.Clear();
+        foreach (var id in new[] { first.Id, second.Id })
+        {
+            var question = await db.Questions.SingleAsync(q => q.Id == id);
+            Assert.AreEqual(newPeriod, question.QuestionCategoryId);
+            Assert.AreEqual(legacy.Id, question.CategoryId, "Adoption must not rewrite the legacy relationship.");
+        }
+        Assert.IsEmpty(task.Items);
+        Assert.IsTrue(task.IsCanceled);
+
+        var editTask = tasks.CreateTask([new AiTaskItem { QuestionId = first.Id }], AiTaskType.AutoCategorize);
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.PostAsync($"/AiTasks/Edit?taskId={editTask.Id}&questionId={first.Id}",
+            new StringContent(System.Text.Json.JsonSerializer.Serialize(oldPeriod.ToString()), System.Text.Encoding.UTF8, "application/json"))).StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(oldPeriod, (await db.Questions.SingleAsync(q => q.Id == first.Id)).QuestionCategoryId);
+        Assert.IsEmpty(editTask.Items);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task AiCannotSelectLegacyCategoryOrAmbiguousPeriod(bool ambiguousName)
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var first = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        var second = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
+        var title = "Shared period " + Guid.NewGuid();
+        (await db.QuestionCategories.SingleAsync(c => c.Id == first)).Title = title;
+        (await db.QuestionCategories.SingleAsync(c => c.Id == second)).Title = title;
+        var legacy = new Category { Title = "Not an AI candidate", ParentId = null };
+        var question = new Question { Content = "Ambiguous period question", QuestionCategoryId = first, Category = legacy };
+        db.Questions.Add(question); await db.SaveChangesAsync();
+        _mockOllamaService.Response = ambiguousName ? title : legacy.Id.ToString();
+        var token = await GetAntiCsrfToken("/Questions/Index");
+        _http.DefaultRequestHeaders.Add("RequestVerificationToken", token);
+        var response = await _http.PostAsync("/AiTasks/AutoCategorize",
+            new StringContent(System.Text.Json.JsonSerializer.Serialize(new { questionIds = new[] { question.Id } }), System.Text.Encoding.UTF8, "application/json"));
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var id = JObject.Parse(await response.Content.ReadAsStringAsync())["taskId"]!.ToObject<Guid>();
+        var task = scope.ServiceProvider.GetRequiredService<AiTaskService>().GetTask(id)!;
+        for (var attempt = 0; attempt < 40 && !task.IsCompleted; attempt++) await Task.Delay(250);
+        Assert.AreEqual(AiTaskStatus.Failed, task.Items[question.Id].Status);
+        Assert.IsNull(task.Items[question.Id].NewEntityId);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(first, (await db.Questions.SingleAsync(q => q.Id == question.Id)).QuestionCategoryId);
     }
 
     [TestMethod]

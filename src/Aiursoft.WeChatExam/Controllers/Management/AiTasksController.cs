@@ -8,6 +8,7 @@ using Aiursoft.WeChatExam.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -18,7 +19,8 @@ public class AiTasksController(
     AiTaskService aiTaskService,
     ServiceTaskQueue taskQueue,
     WeChatExamDbContext dbContext,
-    ITagService tagService) : Controller
+    ITagService tagService,
+    IStringLocalizer<AiTasksController> localizer) : Controller
 {
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -69,7 +71,8 @@ public class AiTasksController(
                         var settingsService = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
                         
                         var question = await scopedDbContext.Questions
-                            .Include(q => q.Category)
+                            .Include(q => q.QuestionCategory)
+                            .ThenInclude(c => c!.TotalCategory)
                             .Include(q => q.QuestionTags)
                             .ThenInclude(qt => qt.Tag)
                             .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
@@ -81,7 +84,7 @@ public class AiTasksController(
                         }
 
                         var tags = string.Join(", ", question.QuestionTags.Select(qt => qt.Tag.DisplayName));
-                        var category = question.Category?.Title ?? "未分类";
+                        var category = PeriodName(question.QuestionCategory);
                         var type = question.QuestionType.GetDisplayName();
                         
                         var promptBuilder = new StringBuilder();
@@ -169,7 +172,8 @@ public class AiTasksController(
         }
 
         var questions = await dbContext.Questions
-            .Include(q => q.Category)
+            .Include(q => q.QuestionCategory)
+            .ThenInclude(c => c!.TotalCategory)
             .Where(q => request.QuestionIds.Contains(q.Id))
             .ToListAsync();
             
@@ -178,7 +182,7 @@ public class AiTasksController(
             QuestionId = q.Id,
             QuestionContent = q.Content,
             QuestionStandardAnswer = q.StandardAnswer,
-            OldValue = q.Category?.Title ?? "Uncategorized",
+            OldValue = PeriodName(q.QuestionCategory),
             Status = AiTaskStatus.Pending
         }).ToList();
 
@@ -212,8 +216,8 @@ public class AiTasksController(
                             .ThenInclude(qt => qt.Tag)
                             .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
                             
-                        var allCategories = await scopedDbContext.Categories
-                            .Select(c => new { c.Id, c.Title })
+                        var allCategories = await scopedDbContext.QuestionCategories
+                            .Select(c => new { c.Id, c.Title, Name = c.TotalCategory!.Title + " / " + c.Title })
                             .ToListAsync();
                         
                         if (question == null) 
@@ -223,7 +227,7 @@ public class AiTasksController(
                             return;
                         }
 
-                        var categoriesText = string.Join("\n", allCategories.Select(c => $"- {c.Title} (ID: {c.Id})"));
+                        var categoriesText = string.Join("\n", allCategories.Select(c => $"- {c.Name} (ID: {c.Id})"));
                         var tags = string.Join(", ", question.QuestionTags.Select(t => t.Tag.DisplayName));
 
                         var promptTemplate = await settingsService.GetSettingValueAsync(SettingsMap.AiPromptAutoCategorize);
@@ -244,7 +248,7 @@ public class AiTasksController(
                             var category = allCategories.FirstOrDefault(c => c.Id == categoryId);
                             if (category != null)
                             {
-                                item.NewValue = category.Title;
+                                item.NewValue = category.Name;
                                 item.NewEntityId = category.Id;
                                 item.Status = AiTaskStatus.Completed;
                             }
@@ -256,11 +260,14 @@ public class AiTasksController(
                         }
                         else
                         {
-                             // Attempt to match by name if ID fails (AI might return name)
-                            var category = allCategories.FirstOrDefault(c => c.Title.Equals(response, StringComparison.OrdinalIgnoreCase));
+                            // Accept a name only when it identifies exactly one period. Identical
+                            // titles in different courses must never silently select the first.
+                            var matches = allCategories.Where(c => c.Name.Equals(response, StringComparison.OrdinalIgnoreCase) ||
+                                c.Title.Equals(response, StringComparison.OrdinalIgnoreCase)).ToList();
+                            var category = matches.Count == 1 ? matches[0] : null;
                             if (category != null)
                             {
-                                item.NewValue = category.Title;
+                                item.NewValue = category.Name;
                                 item.NewEntityId = category.Id;
                                 item.Status = AiTaskStatus.Completed;
                             }
@@ -339,7 +346,8 @@ public class AiTasksController(
                         var question = await scopedDbContext.Questions
                             .Include(q => q.QuestionTags)
                             .ThenInclude(qt => qt.Tag)
-                            .Include(q => q.Category)
+                            .Include(q => q.QuestionCategory)
+                            .ThenInclude(c => c!.TotalCategory)
                             .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
 
                         if (question == null)
@@ -355,7 +363,7 @@ public class AiTasksController(
                         var promptTemplate = await settingsService.GetSettingValueAsync(SettingsMap.AiPromptAutoTagging);
                         var prompt = string.Format(promptTemplate,
                             question.QuestionType.GetDisplayName(),
-                            question.Category?.Title ?? "未分类",
+                            PeriodName(question.QuestionCategory),
                             question.Content,
                             question.StandardAnswer,
                             question.Explanation,
@@ -456,7 +464,8 @@ public class AiTasksController(
                         var settingsService = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
                         
                         var question = await scopedDbContext.Questions
-                            .Include(q => q.Category)
+                            .Include(q => q.QuestionCategory)
+                            .ThenInclude(c => c!.TotalCategory)
                             .FirstOrDefaultAsync(q => q.Id == item.QuestionId);
                         if (question == null) 
                         {
@@ -465,7 +474,7 @@ public class AiTasksController(
                             return;
                         }
 
-                        var category = question.Category?.Title ?? "未分类";
+                        var category = PeriodName(question.QuestionCategory);
                         var type = question.QuestionType.GetDisplayName();
                         
                         var promptBuilder = new StringBuilder();
@@ -550,8 +559,10 @@ public class AiTasksController(
         
         if (task.Type == AiTaskType.AutoCategorize)
         {
-             ViewBag.Categories = dbContext.Categories
-                 .AsNoTracking()
+             ViewBag.QuestionCategories = dbContext.QuestionCategories
+                 .AsNoTracking().Include(c => c.TotalCategory)
+                 .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
+                 .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id)
                  .ToList();
         }
 
@@ -610,11 +621,11 @@ public class AiTasksController(
         }
         else if (task.Type == AiTaskType.AutoCategorize)
         {
-            if (item.NewEntityId.HasValue)
-            {
-                question.CategoryId = item.NewEntityId.Value;
-                await dbContext.SaveChangesAsync();
-            }
+            if (item.Status != AiTaskStatus.Completed || !await PeriodExists(item.NewEntityId))
+                return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
+
+            question.QuestionCategoryId = item.NewEntityId;
+            await dbContext.SaveChangesAsync();
         }
         else if (task.Type == AiTaskType.AutoTagging)
         {
@@ -648,40 +659,53 @@ public class AiTasksController(
         }
 
         var completedItems = task.Items.Values.Where(i => i.Status == AiTaskStatus.Completed).ToList();
-        foreach (var item in completedItems)
+        if (task.Type == AiTaskType.AutoCategorize)
         {
-            var question = await dbContext.Questions.FindAsync(item.QuestionId);
-            if (question == null) continue;
+            // Validate the whole batch before updating any question. One SaveChanges
+            // keeps adoption atomic if a period is removed while the preview is open.
+            var periodIds = completedItems.Where(i => i.NewEntityId.HasValue)
+                .Select(i => i.NewEntityId!.Value).Distinct().ToArray();
+            var existingPeriods = await dbContext.QuestionCategories.Where(c => periodIds.Contains(c.Id))
+                .Select(c => c.Id).ToListAsync();
+            if (completedItems.Any(i => !i.NewEntityId.HasValue || !existingPeriods.Contains(i.NewEntityId.Value)))
+                return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
 
-            if (task.Type == AiTaskType.GenerateExplanation)
+            var questionIds = completedItems.Select(i => i.QuestionId).ToArray();
+            var questions = await dbContext.Questions.Where(q => questionIds.Contains(q.Id)).ToListAsync();
+            var suggestions = completedItems.ToDictionary(i => i.QuestionId);
+            foreach (var question in questions)
+                question.QuestionCategoryId = suggestions[question.Id].NewEntityId;
+            await dbContext.SaveChangesAsync();
+        }
+        else
+        {
+            foreach (var item in completedItems)
             {
-                if (!string.IsNullOrWhiteSpace(item.NewValue))
+                var question = await dbContext.Questions.FindAsync(item.QuestionId);
+                if (question == null) continue;
+
+                if (task.Type == AiTaskType.GenerateExplanation)
                 {
-                    question.Explanation = item.NewValue;
-                    await dbContext.SaveChangesAsync();
+                    if (!string.IsNullOrWhiteSpace(item.NewValue))
+                    {
+                        question.Explanation = item.NewValue;
+                        await dbContext.SaveChangesAsync();
+                    }
                 }
-            }
-            else if (task.Type == AiTaskType.AutoCategorize)
-            {
-                if (item.NewEntityId.HasValue)
+                else if (task.Type == AiTaskType.AutoTagging)
                 {
-                    question.CategoryId = item.NewEntityId.Value;
-                    await dbContext.SaveChangesAsync();
+                    if (!string.IsNullOrWhiteSpace(item.NewValue) && item.NewValue != "none")
+                    {
+                        await ApplyTagsToQuestion(question.Id, item.NewValue);
+                    }
                 }
-            }
-            else if (task.Type == AiTaskType.AutoTagging)
-            {
-                if (!string.IsNullOrWhiteSpace(item.NewValue) && item.NewValue != "none")
+                else if (task.Type == AiTaskType.GenerateAnswer)
                 {
-                    await ApplyTagsToQuestion(question.Id, item.NewValue);
-                }
-            }
-            else if (task.Type == AiTaskType.GenerateAnswer)
-            {
-                if (!string.IsNullOrWhiteSpace(item.NewValue))
-                {
-                    question.StandardAnswer = item.NewValue;
-                    await dbContext.SaveChangesAsync();
+                    if (!string.IsNullOrWhiteSpace(item.NewValue))
+                    {
+                        question.StandardAnswer = item.NewValue;
+                        await dbContext.SaveChangesAsync();
+                    }
                 }
             }
         }
@@ -691,6 +715,13 @@ public class AiTasksController(
 
         return Ok();
     }
+
+    private string PeriodName(QuestionCategory? period) => period == null
+        ? localizer["Unassigned period"].Value
+        : $"{period.TotalCategory!.Title} / {period.Title}";
+
+    private Task<bool> PeriodExists(Guid? periodId) =>
+        dbContext.QuestionCategories.AnyAsync(c => c.Id == periodId);
 
     private async Task ApplyTagsToQuestion(Guid questionId, string newValue)
     {
@@ -751,11 +782,11 @@ public class AiTasksController(
         }
         else if (task.Type == AiTaskType.AutoCategorize)
         {
-             if (Guid.TryParse(newValue, out var newCategoryId))
-             {
-                 question.CategoryId = newCategoryId;
-                 await dbContext.SaveChangesAsync();
-             }
+             if (!Guid.TryParse(newValue, out var periodId) || !await PeriodExists(periodId))
+                 return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
+
+             question.QuestionCategoryId = periodId;
+             await dbContext.SaveChangesAsync();
         }
         else if (task.Type == AiTaskType.AutoTagging)
         {
