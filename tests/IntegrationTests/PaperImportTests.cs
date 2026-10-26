@@ -21,6 +21,8 @@ public class PaperImportTests
     private HttpClient _http = null!;
     private StubOllamaService _ai = null!;
     private string _token = null!;
+    private Guid _firstPeriod;
+    private Guid _secondPeriod;
     private static PaperImportPreview Preview() => new()
     {
         Title = "Source title",
@@ -49,6 +51,8 @@ public class PaperImportTests
             _host.Dispose();
             throw;
         }
+        _firstPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
+        _secondPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
         _http = new HttpClient(new HttpClientHandler { CookieContainer = new CookieContainer(), AllowAutoRedirect = false }) { BaseAddress = new Uri($"http://localhost:{port}") };
         var login = await Token("/Account/Login");
         var response = await _http.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string> { ["EmailOrUserName"] = "admin@default.com", ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = login }));
@@ -81,11 +85,12 @@ public class PaperImportTests
         }
         Assert.Fail("Extraction did not complete."); return default;
     }
-    private static PaperImportSaveRequest SaveRequest(Guid task)
+    private PaperImportSaveRequest SaveRequest(Guid task)
     {
         var questions = Preview().Questions;
         questions[0].StandardAnswer = "Manually supplied answer";
         questions[2].StandardAnswer = "True";
+        for (var i = 0; i < questions.Count; i++) questions[i].QuestionCategoryId = i == 0 ? _firstPeriod : _secondPeriod;
         return new() { TaskId = task, Title = "Edited title", SourceTagName = "Unique source tag", Questions = questions, ExtraTags = ["extra"] };
     }
 
@@ -106,6 +111,8 @@ public class PaperImportTests
         var paper = await db.Papers.SingleAsync(p => p.Id == paperId); Assert.AreEqual(180, paper.TimeLimit); Assert.IsTrue(paper.IsRealExam); Assert.IsFalse(paper.IsFree); Assert.AreEqual(PaperStatus.Draft, paper.Status);
         var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
         Assert.AreEqual("User edit", questions[0].Question.Content); Assert.AreEqual("First original question", questions[1].Question.Content); Assert.AreEqual("True", questions[0].Question.StandardAnswer); Assert.AreEqual("Manually supplied answer", questions[1].Question.StandardAnswer); Assert.IsTrue(questions.All(p => p.Question.CategoryId == null));
+        Assert.AreEqual(_secondPeriod, questions[0].Question.QuestionCategoryId);
+        Assert.AreEqual(_firstPeriod, questions[1].Question.QuestionCategoryId);
         Assert.AreEqual(2, await db.PaperTags.CountAsync(t => t.PaperId == paperId)); Assert.AreEqual(4, await db.QuestionTags.CountAsync(t => questions.Select(q => q.QuestionId).Contains(t.QuestionId))); Assert.AreEqual(0, await db.PaperCategories.CountAsync(c => c.PaperId == paperId));
         Assert.IsFalse((await db.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName)).IsFree); Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.ExtraTags[0])).IsFree);
     }
@@ -119,6 +126,7 @@ public class PaperImportTests
         save.ExtraTags = [];
         save.Questions = Enum.GetValues<QuestionType>().Select(type => new PaperImportQuestion
         {
+            QuestionCategoryId = _firstPeriod,
             QuestionType = type,
             Content = "Question " + type,
             Options = type is QuestionType.Choice or QuestionType.Bool ? ["Yes", "No"] : [],
@@ -189,6 +197,49 @@ public class PaperImportTests
         Assert.AreEqual(questionCount, await db.Questions.CountAsync());
         Assert.AreEqual(tagCount + 1, await db.Tags.CountAsync());
         Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
+        Assert.AreEqual(1, _ai.Questions.Count);
+    }
+
+    [TestMethod]
+    public async Task InvalidPeriodsLeavePaperQuestionsAndSharedTagsUnchangedThenAllowCorrection()
+    {
+        var id = await Extract();
+        using var scope = _host.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var legacy = new Category { Id = Guid.NewGuid(), Title = "Paper classification only", ParentId = null };
+        var tagName = "Period validation " + Guid.NewGuid();
+        var tag = new Tag { DisplayName = tagName, NormalizedName = tagName.ToUpperInvariant(), IsFree = true };
+        db.Categories.Add(legacy); db.Tags.Add(tag);
+        await db.SaveChangesAsync();
+        var deleted = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
+        db.QuestionCategories.Remove(await db.QuestionCategories.SingleAsync(c => c.Id == deleted));
+        await db.SaveChangesAsync();
+        var before = new[] { await db.Papers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.PaperQuestions.CountAsync() };
+        var save = SaveRequest(id);
+        save.CategoryId = legacy.Id;
+        save.SourceTagName = tagName;
+        save.Confirmations = [new() { Id = tag.Id, IsFree = true }];
+        save.ExtraTags = [];
+        foreach (var invalid in new Guid?[] { null, Guid.Empty, Guid.NewGuid(), deleted, legacy.Id })
+        {
+            save.Questions[1].QuestionCategoryId = invalid;
+            var response = await Post("ImportSave", save);
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Contains("Choose an existing period for question 2", await response.Content.ReadAsStringAsync());
+        }
+        db.ChangeTracker.Clear();
+        CollectionAssert.AreEqual(before, new[] { await db.Papers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.PaperQuestions.CountAsync() });
+        Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
+        // Correct the same preview without extracting again. The paper keeps its own
+        // classification, while each question uses its independently selected period.
+        save.Questions[1].QuestionCategoryId = _secondPeriod;
+        var saved = await Post("ImportSave", save);
+        Assert.AreEqual(HttpStatusCode.OK, saved.StatusCode, await saved.Content.ReadAsStringAsync());
+        var paperId = JObject.Parse(await saved.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>();
+        Assert.AreEqual(legacy.Id, (await db.PaperCategories.SingleAsync(p => p.PaperId == paperId)).CategoryId);
+        var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
+        CollectionAssert.AreEqual(new Guid?[] { _firstPeriod, _secondPeriod, _secondPeriod }, questions.Select(p => p.Question.QuestionCategoryId).ToArray());
+        Assert.IsTrue(questions.All(p => p.Question.CategoryId == null));
         Assert.AreEqual(1, _ai.Questions.Count);
     }
 

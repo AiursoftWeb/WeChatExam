@@ -39,6 +39,9 @@ public class PapersController(
         return this.StackView(new ImportViewModel
         {
             Categories = await context.Categories.OrderBy(c => c.Title).Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync(),
+            QuestionCategories = await context.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory)
+                .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
+                .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync(),
             Taxonomies = await context.Taxonomies.OrderBy(t => t.Name).Select(t => new SelectListItem(t.Name, t.Id.ToString())).ToListAsync()
         });
     }

@@ -15,7 +15,6 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
         comparison.hidden = true;
         el('import-form').dispatchEvent(new CustomEvent('question-draft-selected', { detail: null }));
     };
-    el('category').addEventListener('change', clearComparison);
     const token = root.querySelector('[name="__RequestVerificationToken"]').value;
     const status = text => { el('import-status').textContent = text; };
     const extras = () => el('extra-tags').value.split('\n').map(s => s.trim()).filter(Boolean);
@@ -49,6 +48,11 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
             const body = document.createElement('div'); body.className = 'card-body'; card.append(body);
             const handle = document.createElement('span'); handle.className = 'drag-handle me-2'; handle.textContent = '↕'; handle.style.cursor = 'grab'; body.append(handle);
             const heading = document.createElement('strong'); heading.textContent = `${index + 1}. (${q.originalNumber || ''}) ${q.content}`; body.append(heading);
+            const periodLabel = document.createElement('label'); periodLabel.className = 'form-label d-block mt-2'; periodLabel.textContent = tr.period || 'Period';
+            const period = el('question-period-template').content.querySelector('select').cloneNode(true);
+            period.name = `questionCategory-${q.clientId}`; period.value = q.questionCategoryId || '';
+            period.onchange = () => { q.questionCategoryId = period.value || null; clearComparison(); };
+            periodLabel.append(period); body.append(periodLabel);
             const note = document.createElement('p'); note.className = 'text-muted'; note.textContent = q.standardAnswer || root.dataset.missing; body.append(note);
             const optionList = document.createElement('ol'); optionList.className = 'mb-2';
             const explanation = document.createElement('p'); explanation.className = 'text-muted';
@@ -68,7 +72,8 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
                 comparison.hidden = false;
                 el('import-form').dispatchEvent(new CustomEvent('question-draft-selected', { detail: {
                     text: [q.content, ...(hasOptions() ? q.options : []), q.standardAnswer, q.explanation].join('\n'),
-                    categoryIds: [el('category').value].filter(Boolean)
+                    // Search all questions; the paper's legacy category is not their period.
+                    categoryIds: []
                 } }));
                 el('comparison-heading').focus({ preventScroll: true });
                 comparison.scrollIntoView({ block: 'nearest' });
@@ -175,7 +180,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
                 if (result.status === 'Failed') throw new Error(result.error);
                 if (result.status === 'Completed') {
                     taskId = started.taskId;
-                    questions = result.preview.questions.map(q => ({ ...q, questionType: typeof q.questionType === 'string' ? types.indexOf(q.questionType) : q.questionType, clientId: crypto.randomUUID() }));
+                    questions = result.preview.questions.map(q => ({ ...q, questionCategoryId: null, questionType: typeof q.questionType === 'string' ? types.indexOf(q.questionType) : q.questionType, clientId: crypto.randomUUID() }));
                     if (!titleEdited) el('title').value = result.preview.title;
                     syncTag(); invalidateTags(); render(); break;
                 }
