@@ -346,6 +346,7 @@ public class AiTasksTests
         var qText = $"Test-Question-Tagging-{Guid.NewGuid()}";
         var question = new Question
         {
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
             Content = qText,
             QuestionType = QuestionType.Choice,
             StandardAnswer = "A",
@@ -426,6 +427,7 @@ public class AiTasksTests
         var qText = $"Test-Question-Answer-{Guid.NewGuid()}";
         var question = new Question
         {
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
             Content = qText,
             QuestionType = QuestionType.Choice,
             StandardAnswer = "",

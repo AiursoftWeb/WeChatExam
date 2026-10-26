@@ -20,6 +20,7 @@ public class ContentCheckTests
 
     private static Question PaidQuestion(Guid? subject, params Tag[] tags) => new()
     {
+        QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
         Id = Guid.NewGuid(), Content = "Exercise", CategoryId = subject,
         QuestionTags = tags.Select(t => new QuestionTag { QuestionId = Guid.Empty, TagId = t.Id, Tag = t }).ToList()
     };
@@ -60,9 +61,9 @@ public class ContentCheckTests
         var subject = new Category { Id = Guid.NewGuid(), Title = "Chinese history", ParentId = null, IsFree = true };
         var other = new Category { Id = Guid.NewGuid(), Title = "Western history", ParentId = null };
         var tag = new Tag { Id = 1, DisplayName = "Works", NormalizedName = "WORKS", IsFree = false };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Paid exercise", CategoryId = subject.Id };
-        var legacy = new Question { Id = Guid.NewGuid(), Content = "Uncategorized exercise" };
-        var free = new Question { Id = Guid.NewGuid(), Content = "Free exercise" };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Paid exercise", CategoryId = subject.Id };
+        var legacy = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Uncategorized exercise" };
+        var free = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Free exercise" };
         var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Public" };
         db.AddRange(subject, other, tag, question, legacy, free, lesson,
             new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
@@ -101,7 +102,7 @@ public class ContentCheckTests
         await using var db = Database();
         var subject = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null, IsFree = true };
         var tag = new Tag { Id = 1, DisplayName = "Paid", NormalizedName = "PAID", IsFree = false };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Original", CategoryId = subject.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Original", CategoryId = subject.Id };
         var missing = new Paper { Id = Guid.NewGuid(), Title = "Missing", Status = PaperStatus.Publishable, IsFree = true };
         var empty = new Paper { Id = Guid.NewGuid(), Title = "Empty", Status = PaperStatus.Frozen, IsFree = true };
         var real = new Paper { Id = Guid.NewGuid(), Title = "Real exam", Status = PaperStatus.Frozen, IsRealExam = true };
@@ -166,7 +167,7 @@ public class ContentCheckTests
         await db.SaveChangesAsync();
         for (var i = 0; i < 500; i++)
         {
-            var question = new Question { Id = Guid.NewGuid(), Content = $"Exercise {i}", CategoryId = subject.Id };
+            var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = $"Exercise {i}", CategoryId = subject.Id };
             db.Questions.Add(question);
             db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
         }

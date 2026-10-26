@@ -261,6 +261,7 @@ public class UserPracticeHistoryApiTests
     {
         return new Question
         {
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
             Id = Guid.NewGuid(),
             Content = $"Question {Guid.NewGuid()}",
             QuestionType = questionType,

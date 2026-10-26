@@ -35,6 +35,7 @@ public class TestPapersTests : TestBase
             };
             var question = new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Id = questionId,
                 Content = questionContent,
                 QuestionType = QuestionType.Choice,
@@ -115,6 +116,7 @@ public class TestPapersTests : TestBase
         var paper = new Paper { Id = paperId, Title = "AI paper", TimeLimit = 60 };
         var question = new Question
         {
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
             Id = questionId,
             Content = "Discuss the musical significance.",
             QuestionType = QuestionType.Essay,

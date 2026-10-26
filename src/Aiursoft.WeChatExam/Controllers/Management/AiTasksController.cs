@@ -624,7 +624,7 @@ public class AiTasksController(
             if (item.Status != AiTaskStatus.Completed || !await PeriodExists(item.NewEntityId))
                 return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
 
-            question.QuestionCategoryId = item.NewEntityId;
+            question.QuestionCategoryId = item.NewEntityId!.Value;
             await dbContext.SaveChangesAsync();
         }
         else if (task.Type == AiTaskType.AutoTagging)
@@ -674,7 +674,7 @@ public class AiTasksController(
             var questions = await dbContext.Questions.Where(q => questionIds.Contains(q.Id)).ToListAsync();
             var suggestions = completedItems.ToDictionary(i => i.QuestionId);
             foreach (var question in questions)
-                question.QuestionCategoryId = suggestions[question.Id].NewEntityId;
+                question.QuestionCategoryId = suggestions[question.Id].NewEntityId!.Value;
             await dbContext.SaveChangesAsync();
         }
         else

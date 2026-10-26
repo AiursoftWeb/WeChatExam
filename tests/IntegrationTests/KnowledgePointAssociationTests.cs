@@ -91,7 +91,7 @@ public class KnowledgePointAssociationTests
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var course = new Category { Id = Guid.NewGuid(), Title = "Music history", ParentId = null };
         var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = course.Id };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Related exercise" };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Related exercise" };
         db.AddRange(course, chapter, question);
         await db.SaveChangesAsync();
 
@@ -337,6 +337,7 @@ public class KnowledgePointAssociationTests
         var metadata = Newtonsoft.Json.JsonConvert.SerializeObject(new { options = new[] { selectedOption, "Another musician" } });
         var question = new Question
         {
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
             Id = Guid.NewGuid(), Content = "Who played the instrument?", QuestionType = QuestionType.Choice,
             StandardAnswer = storedAnswer, Metadata = metadata
         };
@@ -423,7 +424,7 @@ public class KnowledgePointAssociationTests
         using var scope = _server!.Services.CreateScope();
         var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var question = new Question { Id = Guid.NewGuid(), Content = "Restricted editor" };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Restricted editor" };
         var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG", IsFree = false };
         db.AddRange(question, tag);
         await db.SaveChangesAsync();
@@ -480,7 +481,7 @@ public class KnowledgePointAssociationTests
         await db.SaveChangesAsync();
         for (var i = 0; i < 50; i++)
         {
-            var question = new Question { Id = Guid.NewGuid(), CategoryId = subject.Id, Content = $"Grouped exercise {i}" };
+            var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), CategoryId = subject.Id, Content = $"Grouped exercise {i}" };
             db.AddRange(question, new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
                 new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id });
         }
@@ -524,9 +525,9 @@ public class KnowledgePointAssociationTests
         var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG", IsFree = false, Taxonomy = taxonomy };
         var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public" };
         var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public" };
-        var a = new Question { Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
-        var b = new Question { Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
-        var free = new Question { Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
+        var a = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
+        var b = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
+        var free = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
         var product = new VipProduct { Name = "Relation VIP", CategoryId = course.Id, DurationDays = 365, IsEnabled = false };
         db.AddRange(course, other, tag, first, second, a, b, free, product,
             new QuestionTag { QuestionId = a.Id, TagId = tag.Id, Tag = tag }, new QuestionTag { QuestionId = b.Id, TagId = tag.Id, Tag = tag },
@@ -581,7 +582,7 @@ public class KnowledgePointAssociationTests
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Origin course", ParentId = null };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Origin lesson", Content = "Public" };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Origin exercise", CategoryId = category.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Origin exercise", CategoryId = category.Id };
         var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG", IsFree = false };
         var taxonomy = new Taxonomy { Name = "Origin taxonomy" };
         var product = new VipProduct { Name = "Origin VIP", CategoryId = category.Id, DurationDays = 365 };

@@ -110,12 +110,12 @@ public class TagPermissionTests
         await context.SaveChangesAsync();
 
         // 4. Setup Questions
-        var q1 = new Question { Content = "Q1", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
+        var q1 = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Q1", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
         context.Questions.Add(q1);
         await context.SaveChangesAsync();
         context.QuestionTags.Add(new QuestionTag { QuestionId = q1.Id, TagId = freeTag.Id });
 
-        var q2 = new Question { Content = "Q2", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
+        var q2 = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Q2", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
         context.Questions.Add(q2);
         await context.SaveChangesAsync();
         context.QuestionTags.Add(new QuestionTag { QuestionId = q2.Id, TagId = paidTag.Id });
@@ -141,11 +141,13 @@ public class TagPermissionTests
             foreach (var question in existing) question.CategoryId = catId;
             var untagged = new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Content = "Untagged", CategoryId = catId, OrderIndex = 2,
                 QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch
             };
             var mixed = new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Content = "Mixed", CategoryId = catId, OrderIndex = 3,
                 QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch
             };
@@ -191,8 +193,8 @@ public class TagPermissionTests
             var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
             freeId = context.Questions.Single(q => q.Content == "Q1").Id;
             paidId = context.Questions.Single(q => q.Content == "Q2").Id;
-            var mixed = new Question { Content = "Mixed", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
-            var untagged = new Question { Content = "Untagged", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
+            var mixed = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Mixed", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
+            var untagged = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Untagged", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
             context.Questions.AddRange(mixed, untagged);
             await context.SaveChangesAsync();
             mixedId = mixed.Id;
@@ -245,7 +247,7 @@ public class TagPermissionTests
             // Shared descriptive taxonomies need no subject mapping to grant subject VIP access.
             var genreTag = new Tag { DisplayName = "Dance music", NormalizedName = "DANCE MUSIC", IsFree = false, TaxonomyId = genre.Id };
             var workTag = new Tag { DisplayName = "Ancient work", NormalizedName = "ANCIENT WORK", IsFree = false, TaxonomyId = works.Id };
-            var question = new Question { Content = "Subject exercise", CategoryId = subjectId, Metadata = metadata };
+            var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Subject exercise", CategoryId = subjectId, Metadata = metadata };
             db.AddRange(genreTag, workTag, question);
             await db.SaveChangesAsync();
             questionId = question.Id;
@@ -330,9 +332,9 @@ public class TagPermissionTests
             var secondTag = new Tag { DisplayName = "Second paid", NormalizedName = "SECOND PAID", IsFree = false, TaxonomyId = secondTaxonomy.Id };
             var orphanTag = new Tag { DisplayName = "Orphan", NormalizedName = "ORPHAN", IsFree = false, TaxonomyId = null };
             var unmappedTag = new Tag { DisplayName = "Unmapped", NormalizedName = "UNMAPPED", IsFree = false, TaxonomyId = unmappedTaxonomy.Id };
-            var mixed = new Question { Content = "Two paid tags" };
-            var orphan = new Question { Content = "Orphan tag question" };
-            var unmapped = new Question { Content = "Unmapped tag question" };
+            var mixed = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Two paid tags" };
+            var orphan = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Orphan tag question" };
+            var unmapped = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Unmapped tag question" };
             db.AddRange(secondTag, orphanTag, unmappedTag, mixed, orphan, unmapped);
             await db.SaveChangesAsync();
             mixedId = mixed.Id; orphanId = orphan.Id; unmappedId = unmapped.Id;

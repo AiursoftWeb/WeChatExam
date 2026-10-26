@@ -87,6 +87,7 @@ public class QuestionsOrderTests
             // Q1: No order, creation time T1
             db.Questions.Add(new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Id = Guid.NewGuid(),
                 Content = "Q1_NoOrder_T1",
                 CategoryId = category.Id,
@@ -97,6 +98,7 @@ public class QuestionsOrderTests
             // Q2: Order 2, creation time T2 (late)
             db.Questions.Add(new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Id = Guid.NewGuid(),
                 Content = "Q2_Order2_T2",
                 CategoryId = category.Id,
@@ -107,6 +109,7 @@ public class QuestionsOrderTests
             // Q3: Order 1, creation time T3 (latest)
             db.Questions.Add(new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Id = Guid.NewGuid(),
                 Content = "Q3_Order1_T3",
                 CategoryId = category.Id,
@@ -117,6 +120,7 @@ public class QuestionsOrderTests
             // Q4: No order, creation time T0 (earliest)
             db.Questions.Add(new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Id = Guid.NewGuid(),
                 Content = "Q4_NoOrder_T0",
                 CategoryId = category.Id,
@@ -162,13 +166,13 @@ public class QuestionsOrderTests
             db.Categories.Add(category);
 
             q1Id = Guid.NewGuid();
-            db.Questions.Add(new Question { Id = q1Id, Content = "Q1_Order1", CategoryId = category.Id, OrderIndex = 1, CreationTime = DateTime.UtcNow.AddMinutes(-4) });
+            db.Questions.Add(new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = q1Id, Content = "Q1_Order1", CategoryId = category.Id, OrderIndex = 1, CreationTime = DateTime.UtcNow.AddMinutes(-4) });
             q2Id = Guid.NewGuid();
-            db.Questions.Add(new Question { Id = q2Id, Content = "Q2_Order2", CategoryId = category.Id, OrderIndex = 2, CreationTime = DateTime.UtcNow.AddMinutes(-3) });
+            db.Questions.Add(new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = q2Id, Content = "Q2_Order2", CategoryId = category.Id, OrderIndex = 2, CreationTime = DateTime.UtcNow.AddMinutes(-3) });
             q3Id = Guid.NewGuid();
-            db.Questions.Add(new Question { Id = q3Id, Content = "Q3_NoOrder", CategoryId = category.Id, OrderIndex = null, CreationTime = DateTime.UtcNow.AddMinutes(-2) });
+            db.Questions.Add(new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = q3Id, Content = "Q3_NoOrder", CategoryId = category.Id, OrderIndex = null, CreationTime = DateTime.UtcNow.AddMinutes(-2) });
             q4Id = Guid.NewGuid();
-            db.Questions.Add(new Question { Id = q4Id, Content = "Q4_NoOrder", CategoryId = category.Id, OrderIndex = null, CreationTime = DateTime.UtcNow.AddMinutes(-1) });
+            db.Questions.Add(new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = q4Id, Content = "Q4_NoOrder", CategoryId = category.Id, OrderIndex = null, CreationTime = DateTime.UtcNow.AddMinutes(-1) });
 
             await db.SaveChangesAsync();
         }

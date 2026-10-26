@@ -54,12 +54,12 @@ public class Question
     public Guid? CategoryId { get; set; }
 
     /// <summary>
-    /// The single period that owns this question. Null is transitional while
-    /// existing data and question creation/import flows are migrated.
+    /// The single period that owns this question and determines its total category.
+    /// Every creation/import path must choose an existing period.
     /// </summary>
     [JsonIgnore]
     [System.Text.Json.Serialization.JsonIgnore]
-    public Guid? QuestionCategoryId { get; set; }
+    public Guid QuestionCategoryId { get; set; }
 
     [JsonIgnore]
     [System.Text.Json.Serialization.JsonIgnore]

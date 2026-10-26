@@ -11,6 +11,12 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class QuestionPeriodAssignmentTests : TestBase
 {
+    internal static QuestionCategory TestPeriod()
+    {
+        var total = new TotalCategory { Title = "Test music course" };
+        return new QuestionCategory { Title = "Test period", TotalCategoryId = total.Id, TotalCategory = total };
+    }
+
     internal static async Task<Guid> AddPeriod(IServiceProvider services)
     {
         using var scope = services.CreateScope();
@@ -34,7 +40,7 @@ public class QuestionPeriodAssignmentTests : TestBase
         var tag = new Tag { DisplayName = "Paid label", NormalizedName = "PAID LABEL", IsFree = false };
         var question = new Question
         {
-            Id = Guid.NewGuid(), Content = "Question for classification", Category = legacy,
+            Id = Guid.NewGuid(), Content = "Question for classification", QuestionCategory = first, Category = legacy,
             CategoryId = legacy.Id, StandardAnswer = "Original answer", Explanation = "Original explanation",
             Metadata = "Original metadata", OrderIndex = 12
         };
@@ -62,9 +68,9 @@ public class QuestionPeriodAssignmentTests : TestBase
             {
                 ["Id"] = id.ToString(), ["QuestionCategoryId"] = period.ToString(),
                 ["Content"] = "Must not overwrite", ["Tags"] = "Must not change",
-                ["ReturnUrl"] = "/Questions?period=unassigned&page=2"
+                ["ReturnUrl"] = "/Questions?page=2"
             });
-            AssertRedirect(response, "/Questions?period=unassigned&page=2");
+            AssertRedirect(response, "/Questions?page=2");
             using var scope = Server!.Services.CreateScope();
             var q = await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().Questions
                 .Include(q => q.Category).Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
@@ -144,14 +150,14 @@ public class QuestionPeriodAssignmentTests : TestBase
         }, includeToken: false);
         Assert.AreEqual(HttpStatusCode.BadRequest, noToken.StatusCode);
         using var scope = Server!.Services.CreateScope();
-        Assert.IsNull((await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().Questions.SingleAsync(q => q.Id == id)).QuestionCategoryId);
+        Assert.AreEqual(first, (await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().Questions.SingleAsync(q => q.Id == id)).QuestionCategoryId);
     }
 
     [TestMethod]
-    public async Task PeriodAndUnassignedFiltersKeepEveryQuestionReachable()
+    public async Task PeriodFiltersKeepEveryQuestionReachable()
     {
         await LoginAsAdmin();
-        var (unassigned, first, second) = await SeedQuestion();
+        var (seeded, first, second) = await SeedQuestion();
         Guid other;
         using (var scope = Server!.Services.CreateScope())
         {
@@ -167,15 +173,13 @@ public class QuestionPeriodAssignmentTests : TestBase
         for (var page = 1; page <= 2; page++)
         {
             var html = await Http.GetStringAsync($"/Questions?period={first}&pageSize=10&page={page}");
-            Assert.DoesNotContain($"/Questions/Period/{unassigned}", html);
             Assert.DoesNotContain($"/Questions/Period/{other}", html);
             foreach (System.Text.RegularExpressions.Match match in System.Text.RegularExpressions.Regex.Matches(html, @"/Questions/Period/([a-f0-9-]{36})"))
                 Assert.IsTrue(ids.Add(match.Groups[1].Value));
         }
-        Assert.AreEqual(12, ids.Count);
-        var missing = await Http.GetStringAsync("/Questions?period=unassigned");
-        Assert.Contains($"/Questions/Period/{unassigned}", missing);
-        Assert.DoesNotContain($"/Questions/Period/{other}", missing);
+        Assert.AreEqual(13, ids.Count);
+        Assert.IsTrue(ids.Contains(seeded.ToString()));
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/Questions?period=unassigned")).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/Questions?period=invalid")).StatusCode);
         Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/Questions?period={Guid.NewGuid()}")).StatusCode);
     }
@@ -193,15 +197,23 @@ public class QuestionPeriodAssignmentTests : TestBase
         await migrator.MigrateAsync(migrations[index - 1]);
         var id = Guid.NewGuid();
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO Questions (Id,Content,QuestionType,GradingStrategy,Metadata,StandardAnswer,Explanation,CreationTime,LastUpdatedAt,LastEmbeddedAt) VALUES ({id},'Preserved question',0,0,'','Preserved answer','',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
+        await migrator.MigrateAsync(migrations[index]);
+        // Existing unclassified data must stop the upgrade, never receive a fabricated default.
+        await Assert.ThrowsAsync<SqliteException>(() => migrator.MigrateAsync());
+        await using (var read = connection.CreateCommand())
+        {
+            read.CommandText = "SELECT StandardAnswer FROM Questions WHERE QuestionCategoryId IS NULL";
+            Assert.AreEqual("Preserved answer", await read.ExecuteScalarAsync());
+        }
+        var period = TestPeriod();
+        db.QuestionCategories.Add(period);
+        await db.SaveChangesAsync();
+        await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE Questions SET QuestionCategoryId={period.Id} WHERE Id={id}");
         await migrator.MigrateAsync();
         var question = await db.Questions.SingleAsync();
-        Assert.IsNull(question.QuestionCategoryId);
+        Assert.AreEqual(period.Id, question.QuestionCategoryId);
         Assert.AreEqual("Preserved answer", question.StandardAnswer);
-        var total = new TotalCategory { Title = "Music history" };
-        var period = new QuestionCategory { Title = "Early music", TotalCategoryId = total.Id, TotalCategory = total };
-        db.QuestionCategories.Add(period);
-        question.QuestionCategory = period;
-        await db.SaveChangesAsync();
+        await Assert.ThrowsAsync<SqliteException>(() => db.Database.ExecuteSqlRawAsync("UPDATE Questions SET QuestionCategoryId=NULL"));
         db.ChangeTracker.Clear();
         await Assert.ThrowsAsync<SqliteException>(() => db.QuestionCategories.Where(c => c.Id == period.Id).ExecuteDeleteAsync());
         question = await db.Questions.SingleAsync();

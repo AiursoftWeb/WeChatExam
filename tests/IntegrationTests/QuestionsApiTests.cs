@@ -128,6 +128,7 @@ public class QuestionsApiTests
             {
                 context.Questions.Add(new Question
                 {
+                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                     Content = $"Random Question {i}",
                     QuestionType = QuestionType.Choice,
                     GradingStrategy = GradingStrategy.ExactMatch,
@@ -161,6 +162,7 @@ public class QuestionsApiTests
             {
                 context.Questions.Add(new Question
                 {
+                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                     Content = $"Question {i}",
                     QuestionType = QuestionType.Choice,
                     GradingStrategy = GradingStrategy.ExactMatch,
@@ -202,6 +204,7 @@ public class QuestionsApiTests
             {
                 var q = new Question
                 {
+                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                     Content = $"Resume Question {i}",
                     QuestionType = QuestionType.Choice,
                     GradingStrategy = GradingStrategy.ExactMatch,

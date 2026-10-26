@@ -23,7 +23,7 @@ public class ContentSearchTests : TestBase
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        db.Questions.Add(new Question { Id = Guid.NewGuid(), Content = "Boya <script>alert('question')</script>" });
+        db.Questions.Add(new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Boya <script>alert('question')</script>" });
         await db.SaveChangesAsync();
         var response = await Http.GetAsync("/ContentSearch?query=Boya");
         response.EnsureSuccessStatusCode();
@@ -53,7 +53,7 @@ public class ContentSearchTests : TestBase
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "Guqin" };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Who played Flowing Water?", CategoryId = category.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Who played Flowing Water?", CategoryId = category.Id };
         db.AddRange(category, point, question); await db.SaveChangesAsync();
         var vector = new float[1024]; vector[0] = 1;
         point.Embedding = EmbeddingHelper.Serialize(vector); point.LastEmbeddedAt = point.LastUpdatedAt;
@@ -101,8 +101,8 @@ public class ContentSearchTests : TestBase
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var paper = new Paper { Id = id, Title = "Search fixture" };
-        var existing = new Question { Id = Guid.NewGuid(), Content = "paper-finder existing" };
-        var available = new Question { Id = Guid.NewGuid(), Content = "paper-finder " + new string('x', 120) };
+        var existing = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "paper-finder existing" };
+        var available = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "paper-finder " + new string('x', 120) };
         var tag = new Tag { DisplayName = "finder", NormalizedName = "FINDER" };
         db.AddRange(paper, existing, available, tag); await db.SaveChangesAsync();
         db.AddRange(new PaperQuestion { PaperId = id, QuestionId = existing.Id, Order = 1, Score = 10 },
@@ -147,10 +147,11 @@ public class ContentSearchTests : TestBase
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Similar paper fixture" };
         var category = new Category { Id = Guid.NewGuid(), Title = "Similar category", ParentId = null };
-        var source = new Question { Id = Guid.NewGuid(), Content = "Original <script>fixture</script>", CategoryId = category.Id };
-        var other = new Question { Id = Guid.NewGuid(), Content = "Already in paper", CategoryId = category.Id };
+        var source = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Original <script>fixture</script>", CategoryId = category.Id };
+        var other = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Already in paper", CategoryId = category.Id };
         var candidates = Enumerable.Range(0, 7).Select(i => new Question
         {
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
             Id = Guid.NewGuid(), Content = "Similar candidate " + i, CategoryId = category.Id,
             StandardAnswer = "Answer " + i, Explanation = "Explanation " + i
         }).ToArray();
@@ -223,7 +224,7 @@ public class ContentSearchTests : TestBase
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var question = new Question { Id = Guid.NewGuid(), Content = "Create finder <script>example</script>" };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Create finder <script>example</script>" };
         db.Questions.Add(question); await db.SaveChangesAsync();
         var response = await Http.GetAsync("/KnowledgePoints/Create"); response.EnsureSuccessStatusCode();
         var html = await response.Content.ReadAsStringAsync();
@@ -445,7 +446,7 @@ public class ContentSearchTests : TestBase
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Boya", QuestionType = QuestionType.Blank, CategoryId = category.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Boya", QuestionType = QuestionType.Blank, CategoryId = category.Id };
         db.AddRange(category, question); await db.SaveChangesAsync();
         question.Embedding = new byte[4096]; question.LastEmbeddedAt = question.LastUpdatedAt;
         await db.SaveChangesAsync();

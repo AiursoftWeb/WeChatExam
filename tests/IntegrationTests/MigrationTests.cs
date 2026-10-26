@@ -25,7 +25,7 @@ public class MigrationTests
         var course = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null };
         var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = course.Id };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Preserved lesson", AudioUrl = "/lesson.mp3" };
-        var question = new Question { Id = Guid.NewGuid(), Content = "Preserved exercise" };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Preserved exercise" };
         context.AddRange(course, chapter, point, question,
             new CategoryKnowledgePoint { CategoryId = chapter.Id, KnowledgePointId = point.Id, OrderIndex = 7 },
             new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = question.Id });

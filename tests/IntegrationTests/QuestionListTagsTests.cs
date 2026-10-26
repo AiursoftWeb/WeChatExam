@@ -102,6 +102,7 @@ public class QuestionListTagsTests
 
             var question = new Question
             {
+                QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
                 Content = questionContent,
                 QuestionType = QuestionType.Choice,
                 GradingStrategy = GradingStrategy.ExactMatch,

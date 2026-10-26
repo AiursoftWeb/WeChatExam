@@ -148,7 +148,7 @@ public class QuestionImportController : Controller
                         Metadata = model.SelectedQuestionType is QuestionType.Choice or QuestionType.Bool
                             ? JsonConvert.SerializeObject(new { options = item.Options }) : string.Empty,
                         StandardAnswer = item.Answer, Explanation = item.Analysis,
-                        QuestionCategoryId = model.QuestionCategoryIds[i]
+                        QuestionCategoryId = model.QuestionCategoryIds[i]!.Value
                     };
                     _dbContext.Questions.Add(question);
                     if (!string.IsNullOrWhiteSpace(item.OriginalFilename))
