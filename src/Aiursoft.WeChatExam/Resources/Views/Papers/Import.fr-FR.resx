@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Vérifier les étiquettes et les recommandations d’accès</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Choisissez une période pour chaque question avant d’enregistrer.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Comparaison de la question d’aperçu {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Nom de l’étiquette payante de la source</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Catégorie du sujet (facultatif)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>En attente</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Période</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>En cours de traitement</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Note</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Sélectionnez une période</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>La réutilisation d’une source rend cette étiquette payante pour tous.</value>

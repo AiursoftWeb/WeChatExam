@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Alle categorieën</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Alle perioden</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Alle hoofdcategorieën</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typen</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Weet u zeker dat u wilt verwijderen</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Periode toewijzen</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuleren</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Geen vragen gevonden die overeenkomen met uw criteria</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Periode niet toegewezen</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>Voer een geldig paginanummer in tussen 1 en</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Deze actie kan niet ongedaan worden gemaakt.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Deze link verwijst naar oude categorieverwijzingen. Vragen worden momenteel ingedeeld op basis van totaalcategorieën en perioden.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Totaalcategorie</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>

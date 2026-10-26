@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Assign Period" xml:space="preserve">
+    <value>Przypisz okres</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Wstecz</value>
+  </data>
+  <data name="Choose a period" xml:space="preserve">
+    <value>Wybierz okres</value>
+  </data>
+  <data name="Choose the one period that best describes this question. Its total category comes from that period." xml:space="preserve">
+    <value>Wybierz okres najlepiej opisujący to pytanie. Jego kategoria nadrzędna wynika z wybranego okresu.</value>
+  </data>
+  <data name="Create periods before assigning questions." xml:space="preserve">
+    <value>Utwórz okresy przed przypisaniem pytań.</value>
+  </data>
+  <data name="Edit Question" xml:space="preserve">
+    <value>Edytuj pytanie</value>
+  </data>
+  <data name="Manage Periods" xml:space="preserve">
+    <value>Zarządzaj okresami</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Okres</value>
+  </data>
+  <data name="Save Period" xml:space="preserve">
+    <value>Zapisz okres</value>
+  </data>
+  <data name="This step records the classification. Student access rules will switch in a later release." xml:space="preserve">
+    <value>Ten krok zapisuje klasyfikację. Zasady dostępu dla uczniów zostaną zmienione w jednej z kolejnych wersji.</value>
+  </data>
+
+</root>

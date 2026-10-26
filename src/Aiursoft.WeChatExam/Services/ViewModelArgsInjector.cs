@@ -148,6 +148,9 @@ public class ViewModelArgsInjector(
         _ = localizer["Delete Account"];
 
         _ = localizer["Assign Period"];
+    
+        _ = localizer["Create Question"];
+        _ = localizer["Edit Question"];
     }
 
     public void InjectSimple(

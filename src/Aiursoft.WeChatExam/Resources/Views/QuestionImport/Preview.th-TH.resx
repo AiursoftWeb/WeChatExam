@@ -27,6 +27,9 @@
   <data name="Back to Edit" xml:space="preserve">
     <value>กลับไปแก้ไข</value>
   </data>
+  <data name="Choose a period for every question before saving. You can change each selection below." xml:space="preserve">
+    <value>โปรดเลือกช่วงเวลาสำหรับทุกคำถามก่อนบันทึก คุณสามารถเปลี่ยนตัวเลือกแต่ละรายการได้ด้านล่าง</value>
+  </data>
   <data name="Confirm &amp; Save" xml:space="preserve">
     <value>ยืนยันและบันทึก</value>
   </data>
@@ -39,11 +42,17 @@
   <data name="Options" xml:space="preserve">
     <value>ตัวเลือก</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>ช่วงเวลา</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>ดูตัวอย่างและบันทึก</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>คำถาม</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>เลือกช่วงเวลา</value>
   </data>
   <data name="Source File" xml:space="preserve">
     <value>ไฟล์ต้นฉบับ</value>

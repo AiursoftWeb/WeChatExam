@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Wszystkie kategorie</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Wszystkie okresy</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Wszystkie kategorie nadrzędne</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Wszystkie typy</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Czy na pewno chcesz usunąć</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Przypisz okres</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anuluj</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Nie znaleziono pytań pasujących do kryteriów</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Okres</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Nie przypisano okresu</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>Wprowadź poprawny numer strony od 1 do</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>To działanie nie może zostać cofnięte.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Ten link zawiera odwołania do dawnych kategorii. Obecna klasyfikacja pytań wykorzystuje kategorie ogólne i okresy.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Kategoria główna</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Typ</value>

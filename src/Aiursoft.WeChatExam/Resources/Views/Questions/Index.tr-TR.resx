@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Tüm Kategoriler</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Tüm Dönemler</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Tüm Üst Kategoriler</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Tüm Türler</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Silmek istediğinize emin misiniz?</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Dönem Ata</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Kriterlerinize uyan soru bulunamadı</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Dönem</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Atanmamış Dönem</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>1 ile @Model.TotalPages arasında geçerli bir sayfa numarası girin</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Bu işlem geri alınamaz.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Bu bağlantı, eski kategori referanslarını gösterir. Güncel soru sınıflandırması, genel kategorileri ve dönemleri kullanır.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Toplam Kategori</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tür</value>

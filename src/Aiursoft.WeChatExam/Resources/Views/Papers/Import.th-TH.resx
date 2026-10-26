@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>ตรวจสอบแท็กและคำแนะนำเกี่ยวกับสิทธิ์การเข้าถึง</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>เลือกช่วงเวลาสำหรับแต่ละข้อก่อนบันทึก</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>กำลังเปรียบเทียบคำถามตัวอย่าง {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>ชื่อแท็กต้นทางแบบชำระเงิน</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>หมวดหมู่ข้อสอบ (ไม่บังคับ)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>รอดำเนินการ</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>ระยะเวลา</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>กำลังประมวลผล</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>คะแนน</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>เลือกรอบเวลา</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>การนำแท็กต้นทางกลับมาใช้จะทำให้แท็กนี้เป็นแบบชำระเงินสำหรับทุกที่</value>
