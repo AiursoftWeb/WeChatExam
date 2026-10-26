@@ -1,8 +1,8 @@
 using System.Net;
 using System.Text.Json;
+using Aiursoft.WebTools;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
-using Aiursoft.WeChatExam.Util;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;

@@ -1,8 +1,8 @@
 using Aiursoft.Scanner.Abstractions;
+using Aiursoft.WebTools;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.ContentSearchViewModels;
-using Aiursoft.WeChatExam.Util;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
