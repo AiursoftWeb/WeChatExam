@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back" xml:space="preserve">
+      <data name="Assign Period" xml:space="preserve">
+    <value>기간 지정</value>
+  </data>
+  <data name="Back" xml:space="preserve">
     <value>뒤로</value>
   </data>
   <data name="Category" xml:space="preserve">
@@ -50,6 +53,12 @@
   </data>
   <data name="Options" xml:space="preserve">
     <value>선택지</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>기간</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>기간이 지정되지 않았습니다</value>
   </data>
   <data name="Question Details" xml:space="preserve">
     <value>문제 상세 정보</value>

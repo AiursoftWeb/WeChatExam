@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Course Membership" xml:space="preserve">
+    <value>강좌 회원권</value>
+  </data>
+  <data name="Create a period to start organizing this course." xml:space="preserve">
+    <value>강의를 체계적으로 구성하려면 기간을 만드세요.</value>
+  </data>
+  <data name="Create a total category first" xml:space="preserve">
+    <value>먼저 상위 카테고리를 만들어 주세요</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>기간 만들기</value>
+  </data>
+  <data name="Create Total Category" xml:space="preserve">
+    <value>전체 분류 만들기</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>표시 순서</value>
+  </data>
+  <data name="Edit Period" xml:space="preserve">
+    <value>기간 편집</value>
+  </data>
+  <data name="Every period belongs to one total category." xml:space="preserve">
+    <value>모든 기간은 하나의 전체 카테고리에 속합니다.</value>
+  </data>
+  <data name="Free Practice" xml:space="preserve">
+    <value>무료 연습</value>
+  </data>
+  <data name="No periods in this course yet" xml:space="preserve">
+    <value>이 강의에는 아직 기간이 없습니다</value>
+  </data>
+  <data name="Organize the periods within each course." xml:space="preserve">
+    <value>각 과정 내 학기를 정리하세요.</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>기간</value>
+  </data>
+  <data name="Total Categories" xml:space="preserve">
+    <value>전체 분류</value>
+  </data>
+
+</root>
