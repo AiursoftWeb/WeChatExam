@@ -308,4 +308,188 @@ public class VipAccessTests
         Assert.IsFalse(await CanEnter(course.Id), "Real-exam rights do not grant independent practice rights.");
     }
 
+
+    private async Task<(TotalCategory Course, KnowledgeCategory Directory, KnowledgePoint Lesson, Question Exercise)> AddKnowledgeAsync(bool free)
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Knowledge course" };
+        var directory = new KnowledgeCategory { Title = "Overview", TotalCategoryId = course.Id, IsFree = free };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Lesson", Content = "Protected lesson body", AudioUrl = "/protected-audio.mp3" };
+        var period = new QuestionCategory { Title = "Period", TotalCategoryId = course.Id };
+        var exercise = new Question { Id = Guid.NewGuid(), Content = "Protected exercise", StandardAnswer = " Answer ", QuestionCategory = period };
+        db.AddRange(course, directory, lesson, period, exercise,
+            new KnowledgeCategoryKnowledgePoint { Id = Guid.NewGuid(), KnowledgeCategoryId = directory.Id, KnowledgePointId = lesson.Id },
+            new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = exercise.Id });
+        await db.SaveChangesAsync();
+        return (course, directory, lesson, exercise);
+    }
+
+    [TestMethod]
+    public async Task KnowledgeNavigationReturnsOnlyMetadataAndKeepsEveryTreeLevel()
+    {
+        var (course, directory, lesson, _) = await AddKnowledgeAsync(false);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var child = new KnowledgeCategory { Title = "Free section", TotalCategoryId = course.Id, ParentKnowledgeCategoryId = directory.Id, IsFree = true };
+            var leaf = new KnowledgeCategory { Title = "Paid detail", TotalCategoryId = course.Id, ParentKnowledgeCategoryId = child.Id };
+            var other = new TotalCategory { Title = "Another course" };
+            db.AddRange(child, leaf, other,
+                new KnowledgeCategory { Title = "Excluded", TotalCategoryId = other.Id },
+                new KnowledgeCategory { Title = "First", OrderIndex = -1, TotalCategoryId = course.Id, IsFree = true });
+            await db.SaveChangesAsync();
+        }
+        var path = $"/api/TotalCategories/{course.Id}/KnowledgeCategories";
+        using var response = await _http.GetAsync(path);
+        response.EnsureSuccessStatusCode();
+        Assert.IsTrue(response.Headers.CacheControl?.NoStore);
+        var body = await response.Content.ReadAsStringAsync();
+        Assert.DoesNotContain(lesson.Content, body);
+        Assert.DoesNotContain(lesson.AudioUrl!, body);
+        Assert.DoesNotContain("Excluded", body);
+        var tree = (await response.Content.ReadFromJsonAsync<List<KnowledgeCategoryDto>>())!;
+        Assert.AreEqual("First", tree[0].Title);
+        var root = tree[1];
+        Assert.AreEqual(directory.Id, root.Id);
+        Assert.AreEqual(1, root.KnowledgePointCount);
+        Assert.IsFalse(root.HasAccess);
+        Assert.IsTrue(root.Children.Single().HasAccess);
+        Assert.IsFalse(root.Children.Single().Children.Single().HasAccess, "A free parent does not unlock a paid child.");
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/TotalCategories/{Guid.NewGuid()}/KnowledgeCategories")).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task KnowledgeBodiesAndNavigationRequireTheMatchingActiveCourseMembership()
+    {
+        var (course, directory, lesson, _) = await AddKnowledgeAsync(false);
+        async Task Check(bool allowed)
+        {
+            foreach (var path in new[] { $"/api/KnowledgePoints/{lesson.Id}", $"/api/KnowledgePoints?knowledgeCategoryId={directory.Id}" })
+            {
+                using var response = await _http.GetAsync(path);
+                Assert.AreEqual(allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, response.StatusCode);
+                Assert.IsTrue(response.Headers.CacheControl?.NoStore);
+                var body = await response.Content.ReadAsStringAsync();
+                if (allowed) Assert.Contains(lesson.Content, body);
+                else
+                {
+                    Assert.DoesNotContain(lesson.Content, body);
+                    Assert.DoesNotContain(lesson.AudioUrl!, body);
+                    Assert.Contains(course.Id.ToString(), body);
+                }
+            }
+            var tree = await _http.GetFromJsonAsync<List<KnowledgeCategoryDto>>($"/api/TotalCategories/{course.Id}/KnowledgeCategories");
+            Assert.AreEqual(allowed, tree!.Single().HasAccess);
+        }
+        await Check(false);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsync());
+        await Check(false);
+        var now = DateTime.UtcNow;
+        var product = new VipProduct { Name = "Renamed, off-sale membership", Type = VipProductType.Category, TotalCategoryId = Guid.NewGuid(), IsEnabled = false };
+        var membership = new VipMembership { UserId = "u", VipProduct = product, StartTime = now.AddDays(-1), EndTime = now.AddDays(1) };
+        _mockWeChatPayService.Memberships = [membership];
+        await Check(false); // Another course.
+        product.TotalCategoryId = course.Id;
+        await Check(true); // Neither product name nor sale availability defines purchased rights.
+        membership.EndTime = now.AddMinutes(-1);
+        await Check(false);
+        membership.StartTime = now.AddDays(1); membership.EndTime = now.AddDays(2);
+        await Check(false);
+        membership.StartTime = now.AddDays(-1); product.Type = VipProductType.RealExam; product.TotalCategoryId = null;
+        await Check(false);
+    }
+
+    [TestMethod]
+    public async Task FreeKnowledgeDoesNotLeakItsPaidExerciseOrGrantIndependentPractice()
+    {
+        var (course, directory, lesson, paid) = await AddKnowledgeAsync(true);
+        var free = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true), Content = "Free exercise", StandardAnswer = " Free answer " };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(free, new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = free.Id });
+            await db.SaveChangesAsync();
+        }
+        var path = $"/api/KnowledgePoints?knowledgeCategoryId={directory.Id}";
+        var point = (await _http.GetFromJsonAsync<List<KnowledgePointWithQuestionsDto>>(path))!.Single();
+        Assert.AreEqual(lesson.Content, point.Text);
+        var locked = point.Questions.Single(q => q.Id == paid.Id);
+        Assert.IsFalse(locked.HasAccess);
+        Assert.AreEqual(course.Id, locked.RequiredTotalCategoryId);
+        Assert.AreEqual(string.Empty, locked.Text);
+        Assert.AreEqual(string.Empty, locked.Answer);
+        var open = point.Questions.Single(q => q.Id == free.Id);
+        Assert.IsTrue(open.HasAccess);
+        Assert.AreEqual("Free answer", open.Answer);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{paid.Id}")).StatusCode);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsync());
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+            VipProduct = new VipProduct { Name = "Course", Type = VipProductType.Category, TotalCategoryId = course.Id }
+        }];
+        point = (await _http.GetFromJsonAsync<List<KnowledgePointWithQuestionsDto>>(path))!.Single();
+        var unlocked = point.Questions.Single(q => q.Id == paid.Id);
+        Assert.IsTrue(unlocked.HasAccess);
+        Assert.AreEqual(paid.Content, unlocked.Text);
+        Assert.AreEqual("Answer", unlocked.Answer);
+        using var verification = _server.Services.CreateScope();
+        var context = verification.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(2, context.KnowledgePointQuestions.Count(p => p.KnowledgePointId == lesson.Id), "Reading must not remove conflicting relationships.");
+    }
+
+    [TestMethod]
+    public async Task KnowledgeDirectLinksNeedAnAccessiblePlacementAndQueriesRejectRetiredFilters()
+    {
+        var (course, directory, lesson, _) = await AddKnowledgeAsync(false);
+        var unpublished = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Unplaced draft", Content = "Private draft body" };
+        var free = new KnowledgeCategory { Title = "Free placement", TotalCategoryId = course.Id, IsFree = true };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(unpublished, free,
+                new KnowledgeCategoryKnowledgePoint { Id = Guid.NewGuid(), KnowledgeCategoryId = free.Id, KnowledgePointId = lesson.Id });
+            await db.SaveChangesAsync();
+        }
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync($"/api/KnowledgePoints/{lesson.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/KnowledgePoints?knowledgeCategoryId={directory.Id}")).StatusCode);
+        using var draft = await _http.GetAsync($"/api/KnowledgePoints/{unpublished.Id}");
+        Assert.AreEqual(HttpStatusCode.Forbidden, draft.StatusCode);
+        Assert.DoesNotContain(unpublished.Content, await draft.Content.ReadAsStringAsync());
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/KnowledgePoints/{Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/KnowledgePoints?knowledgeCategoryId={Guid.NewGuid()}")).StatusCode);
+        foreach (var path in new[] { "/api/KnowledgePoints", $"/api/KnowledgePoints?categoryId={directory.Id}",
+                     $"/api/KnowledgePoints?knowledgeCategoryId={free.Id}&categoryId={directory.Id}" })
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.GetAsync(path)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task KnowledgeApiDoesNotTreatAnAdminCookieAsStudentMembership()
+    {
+        var (course, directory, lesson, _) = await AddKnowledgeAsync(false);
+        await _server!.SeedAsync();
+        var page = await _http.GetStringAsync("/Account/Login");
+        var csrf = System.Text.RegularExpressions.Regex.Match(page,
+            @"name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)""").Groups[1].Value;
+        Assert.IsFalse(string.IsNullOrEmpty(csrf));
+        using var login = await _http.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["EmailOrUserName"] = "admin@default.com", ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = csrf
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, login.StatusCode);
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
+            VipProduct = new VipProduct { Name = "Course", Type = VipProductType.Category, TotalCategoryId = course.Id }
+        }];
+        foreach (var path in new[] { $"/api/KnowledgePoints/{lesson.Id}", $"/api/KnowledgePoints?knowledgeCategoryId={directory.Id}" })
+            Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync(path)).StatusCode);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls, "Only a student Bearer identity can load memberships.");
+    }
+
 }

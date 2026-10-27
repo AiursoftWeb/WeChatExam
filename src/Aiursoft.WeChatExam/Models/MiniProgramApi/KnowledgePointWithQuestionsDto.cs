@@ -16,6 +16,8 @@ public class KnowledgePointWithQuestionsDto
 
 public class QuestionContentDto
 {
+    public bool HasAccess { get; set; }
+    public Guid RequiredTotalCategoryId { get; set; }
     public Guid Id { get; set; }
     [Required]
     public string Text { get; set; } = string.Empty;
