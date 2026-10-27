@@ -1,5 +1,9 @@
+using System.Security.Claims;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
+using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Services.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,87 +11,87 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 
 [Route("api/[controller]")]
 [ApiController]
-public class KnowledgePointsController : ControllerBase
+[WeChatUserOnly]
+[ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+public class KnowledgePointsController(
+    WeChatExamDbContext context,
+    IPaperAccessService accessService) : ControllerBase
 {
-    private readonly WeChatExamDbContext _context;
-
-    public KnowledgePointsController(WeChatExamDbContext context)
-    {
-        _context = context;
-    }
-
-    /// <summary>
-    /// 获取单个知识点的详细内容
-    /// </summary>
-    /// <param name="id">知识点ID</param>
-    /// <returns>知识点详细信息</returns>
-    /// <response code="200">成功返回知识点内容</response>
-    /// <response code="404">未找到指定知识点</response>
+    [AllowAnonymous]
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(KnowledgeDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetKnowledgeContent(Guid id)
+    public async Task<IActionResult> GetKnowledgeContent(Guid id, CancellationToken cancellationToken)
     {
-        var knowledgePoint = await _context.KnowledgePoints
-            .FirstOrDefaultAsync(c => c.Id == id);
+        if (!await context.KnowledgePoints.AnyAsync(k => k.Id == id, cancellationToken))
+            return NotFound(new { Message = "Knowledge point not found." });
 
-        if (knowledgePoint == null)
-        {
-            return NotFound(new { Message = "KnowledgePoint not found" });
-        }
+        var placements = await context.KnowledgeCategoryKnowledgePoints.AsNoTracking()
+            .Where(p => p.KnowledgePointId == id).Select(p => p.KnowledgeCategory)
+            .ToListAsync(cancellationToken);
+        var status = await accessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        // A lesson can have several placements. One accessible placement grants the
+        // same body; an unplaced draft grants none. An admin cookie is not a student JWT.
+        if (!placements.Any(c => KnowledgeAccess.CanRead(c, status)))
+            return StatusCode(StatusCodes.Status403Forbidden, new
+            {
+                Message = "An active membership for a course containing this lesson is required.",
+                RequiredTotalCategoryIds = placements.Select(c => c.TotalCategoryId).Distinct().ToList()
+            });
 
-        var knowledgeDto = new KnowledgeDto
-        {
-            Id = knowledgePoint.Id,
-            Title = knowledgePoint.Title,
-            Content = knowledgePoint.Content,
-            AudioUrl = knowledgePoint.AudioUrl,
-        };
-
-        return Ok(knowledgeDto);
+        var content = await context.KnowledgePoints.AsNoTracking().Where(k => k.Id == id)
+            .Select(k => new KnowledgeDto { Id = k.Id, Title = k.Title, Content = k.Content, AudioUrl = k.AudioUrl })
+            .SingleAsync(cancellationToken);
+        return Ok(content);
     }
 
-    /// <summary>
-    /// 通过分类ID获取知识点及其相关题目
-    /// </summary>
-    /// <param name="knowledgeCategoryId">分类ID</param>
-    /// <returns>知识点及题目列表</returns>
-    /// <response code="200">成功返回知识点及题目列表</response>
+    [AllowAnonymous]
     [HttpGet]
     [ProducesResponseType(typeof(List<KnowledgePointWithQuestionsDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByCategory([FromQuery] Guid knowledgeCategoryId)
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetByCategory([FromQuery] Guid knowledgeCategoryId, CancellationToken cancellationToken)
     {
-        // 查询所有属于该分类的知识点
-        var knowledgePoints = await _context.KnowledgeCategoryKnowledgePoints
-            .Where(x => x.KnowledgeCategoryId == knowledgeCategoryId)
-            .Include(x => x.KnowledgePoint)
-                .ThenInclude(kp => kp.KnowledgePointQuestions)
-                    .ThenInclude(kpq => kpq.Question)
-            .OrderBy(x => x.OrderIndex)
-            .ThenBy(x => x.KnowledgePoint.CreationTime)
-            .ThenBy(x => x.KnowledgePointId)
-            .Select(x => x.KnowledgePoint)
-            .ToListAsync();
+        if (knowledgeCategoryId == Guid.Empty || Request.Query.ContainsKey("categoryId"))
+            return BadRequest(new { Message = "Specify knowledgeCategoryId." });
+        var category = await context.KnowledgeCategories.AsNoTracking()
+            .SingleOrDefaultAsync(c => c.Id == knowledgeCategoryId, cancellationToken);
+        if (category == null) return NotFound(new { Message = "Knowledge category not found." });
 
-        var result = knowledgePoints.Select(kp => new KnowledgePointWithQuestionsDto
+        var status = await accessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        if (!KnowledgeAccess.CanRead(category, status))
+            return StatusCode(StatusCodes.Status403Forbidden, new
+            {
+                Message = "An active course membership is required.", RequiredTotalCategoryId = category.TotalCategoryId
+            });
+
+        var knowledgePoints = await context.KnowledgeCategoryKnowledgePoints.AsNoTracking()
+            .Where(p => p.KnowledgeCategoryId == knowledgeCategoryId)
+            .OrderBy(p => p.OrderIndex).ThenBy(p => p.KnowledgePoint.CreationTime).ThenBy(p => p.KnowledgePointId)
+            .Include(p => p.KnowledgePoint).ThenInclude(k => k.KnowledgePointQuestions)
+                .ThenInclude(p => p.Question).ThenInclude(q => q.QuestionCategory)
+            .Select(p => p.KnowledgePoint)
+            .ToListAsync(cancellationToken);
+
+        return Ok(knowledgePoints.Select(k => new KnowledgePointWithQuestionsDto
         {
-            Id = kp.Id,
-            Title = kp.Title,
-            Text = kp.Content,
-            AudioUrl = kp.AudioUrl,
-            Questions = kp.KnowledgePointQuestions
-                .Select(kpq => kpq.Question)
-                .Select(q => new QuestionContentDto
+            Id = k.Id, Title = k.Title, Text = k.Content, AudioUrl = k.AudioUrl,
+            Questions = k.KnowledgePointQuestions.OrderBy(p => p.QuestionId).Select(p =>
+            {
+                var allowed = QuestionAccess.CanPractice(p.Question.QuestionCategory!, status);
+                // Keep the relationship visible without exposing a paid exercise through
+                // a free lesson. Existing configuration conflicts must not bypass practice access.
+                return new QuestionContentDto
                 {
-                    Id = q.Id,
-                    Text = q.Content,
-                    // Deployed Mini Program clients trim selected option text before
-                    // comparing locally. Match the grading service's whitespace handling.
-                    Answer = q.StandardAnswer.Trim(),
-                }).ToList()
-        }).ToList();
-
-        return Ok(result);
+                    Id = p.QuestionId, HasAccess = allowed,
+                    RequiredTotalCategoryId = p.Question.QuestionCategory!.TotalCategoryId,
+                    Text = allowed ? p.Question.Content : string.Empty,
+                    // Match server grading and clients that trim the selected option.
+                    Answer = allowed ? p.Question.StandardAnswer.Trim() : string.Empty
+                };
+            }).ToList()
+        }).ToList());
     }
-
 }

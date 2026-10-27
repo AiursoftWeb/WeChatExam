@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Tests.TestServices;
 using Microsoft.EntityFrameworkCore;
 using static Aiursoft.WebTools.Extends;
 
@@ -28,9 +29,13 @@ public class KnowledgePointAssociationTests
     [TestInitialize]
     public async Task CreateServer()
     {
+        TestStartupWithMockWeChat.MockVipProductService = null;
+        TestStartupWithMockWeChat.MockWeChatService = new StubWeChatService();
+        TestStartupWithMockWeChat.MockWeChatPayService = new StubWeChatPayService();
+        TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
-        _server = await AppAsync<Startup>(["--applicationName", "Aiursoft.WeChatExam"], port: reservation.Port);
+        _server = await AppAsync<TestStartupWithMockWeChat>(["--applicationName", "Aiursoft.WeChatExam"], port: reservation.Port);
         try
         {
             reservation.ConfigureServer(_server);
@@ -97,8 +102,8 @@ public class KnowledgePointAssociationTests
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var course = new TotalCategory { Title = "Music history" };
-        var chapter = new KnowledgeCategory { Title = "Early music", TotalCategoryId = course.Id };
-        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Related exercise" };
+        var chapter = new KnowledgeCategory { Title = "Early music", TotalCategoryId = course.Id, IsFree = true };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true), Id = Guid.NewGuid(), Content = "Related exercise" };
         db.AddRange(course, chapter, question);
         await db.SaveChangesAsync();
 
@@ -271,6 +276,7 @@ public class KnowledgePointAssociationTests
         var categoryResponse = await _http.PostAsync("/KnowledgeCategories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", $"Ordered category {Guid.NewGuid()}" },
+            { "IsFree", "true" },
             { "TotalCategoryId", _courseId.ToString() },
             { "__RequestVerificationToken", categoryToken }
         }));
@@ -342,12 +348,12 @@ public class KnowledgePointAssociationTests
     {
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var category = new KnowledgeCategory { Title = "Answer comparison course", TotalCategoryId = _courseId };
+        var category = new KnowledgeCategory { Title = "Answer comparison course", TotalCategoryId = _courseId, IsFree = true };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Related lesson", Content = "Lesson content" };
         var metadata = Newtonsoft.Json.JsonConvert.SerializeObject(new { options = new[] { selectedOption, "Another musician" } });
         var question = new Question
         {
-            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true),
             Id = Guid.NewGuid(), Content = "Who played the instrument?", QuestionType = QuestionType.Choice,
             StandardAnswer = storedAnswer, Metadata = metadata
         };

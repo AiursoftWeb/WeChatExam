@@ -50,4 +50,28 @@ public class TotalCategoriesApiController(
         return Ok(categories.Select(c => new QuestionCategorySummaryDto(c.Id, c.TotalCategoryId, c.Title, c.OrderIndex,
             c.IsFree, QuestionAccess.CanPractice(c, status))).ToList());
     }
+
+    [AllowAnonymous]
+    [HttpGet("{totalCategoryId:guid}/KnowledgeCategories")]
+    [ProducesResponseType(typeof(List<KnowledgeCategoryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    public async Task<IActionResult> KnowledgeCategories(Guid totalCategoryId, CancellationToken cancellationToken)
+    {
+        if (!await context.TotalCategories.AnyAsync(c => c.Id == totalCategoryId, cancellationToken))
+            return NotFound(new { Message = "Total category not found." });
+
+        var status = await paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        var categories = await context.KnowledgeCategories.AsNoTracking()
+            .Where(c => c.TotalCategoryId == totalCategoryId)
+            .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id)
+            .Select(c => new { Category = c, c.KnowledgeCategoryKnowledgePoints.Count })
+            .ToListAsync(cancellationToken);
+        var children = categories.ToLookup(c => c.Category.ParentKnowledgeCategoryId);
+        List<KnowledgeCategoryDto> Branch(Guid? parent) => children[parent].Select(c =>
+            new KnowledgeCategoryDto(c.Category.Id, c.Category.TotalCategoryId, c.Category.Title,
+                c.Category.OrderIndex, c.Category.IsFree, KnowledgeAccess.CanRead(c.Category, status),
+                c.Count, Branch(c.Category.Id))).ToList();
+        return Ok(Branch(null));
+    }
 }
