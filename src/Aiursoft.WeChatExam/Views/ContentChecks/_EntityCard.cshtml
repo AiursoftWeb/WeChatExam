@@ -14,6 +14,7 @@
         "Taxonomies" => @Localizer["Taxonomy"],
         "TotalCategories" => @Localizer["Course"],
         "KnowledgeCategories" => @Localizer["Knowledge Category"],
+        "QuestionCategories" => @Localizer["Period"],
         "VipProducts" => @Localizer["VIP product"],
         _ => @Localizer["Paper"]
     };
@@ -25,13 +26,14 @@
         "Taxonomies" => @Localizer["Edit taxonomy"],
         "TotalCategories" => @Localizer["Edit course"],
         "KnowledgeCategories" => @Localizer["Edit knowledge category"],
+        "QuestionCategories" => @Localizer["Edit period"],
         "VipProducts" => @Localizer["Edit VIP product"],
         _ => Model.Action == "Edit" ? @Localizer["Edit paper"] : @Localizer["View frozen paper"]
     };
     var icon = Model.Controller switch
     {
         "KnowledgePoints" => "book-open", "Questions" => "list-checks", "Tags" => "tag",
-        "Taxonomies" => "folder-tree", "KnowledgeCategories" => "folder-tree", "TotalCategories" => "library-big", "VipProducts" => "badge-check", _ => "files"
+        "Taxonomies" => "folder-tree", "KnowledgeCategories" => "folder-tree", "QuestionCategories" => "list-tree", "TotalCategories" => "library-big", "VipProducts" => "badge-check", _ => "files"
     };
 }
 <article class="check-entity" data-entity-type="@Model.Controller" data-entity-id="@Model.Id">
@@ -111,8 +113,13 @@
     }
     @if (Model.Controller == "Tags" && ViewData["TagImpacts"] is Dictionary<int, List<ContentReference>> impacts && impacts.TryGetValue(int.Parse(Model.Id), out var impact))
     {
-        <p class="check-entity-impact text-muted">@string.Format(@Localizer["Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises."].Value,
+        <p class="check-entity-impact text-muted">@string.Format(@Localizer["Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing."].Value,
             impact.Count(o => o.Controller == "Questions"), impact.Count(o => o.Controller == "KnowledgePoints"))</p>
+    }
+    @if (Model.Controller == "QuestionCategories" && ViewData["PeriodImpacts"] is Dictionary<Guid, List<ContentReference>> periodImpacts && periodImpacts.TryGetValue(Guid.Parse(Model.Id), out var affected))
+    {
+        <p class="check-entity-impact text-muted">@string.Format(@Localizer["Period pricing affects {0} exercises linked to {1} knowledge points."].Value,
+            affected.Count(o => o.Controller == "Questions"), affected.Count(o => o.Controller == "KnowledgePoints"))</p>
     }
     <div class="check-entity-action">
         @if (editUrl != null)

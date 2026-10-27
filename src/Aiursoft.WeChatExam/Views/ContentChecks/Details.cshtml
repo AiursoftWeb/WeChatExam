@@ -10,6 +10,7 @@
     ViewData["CheckReturnUrl"] = Model.DetailsUrl;
     ViewData["EditPermissions"] = Model.EditPermissions;
     ViewData["TagImpacts"] = Model.Report!.TagImpacts;
+    ViewData["PeriodImpacts"] = Model.Report.PeriodImpacts;
     ViewData["TagMappings"] = Model.Report.TagMappings;
     ViewData["ExerciseUrls"] = Model.ExerciseUrls;
     ViewData["FocusedExerciseId"] = Model.Exercise?.Question.Id;
@@ -83,6 +84,7 @@
                 </div>
                 <div class="check-question-node">
                     <partial name="_EntityCard" model="exercise.Question" />
+                    <partial name="_EntityCard" model="exercise.Period" />
                     <div class="check-requirement">
                         @if (exercise.Question.Pricing == ContentPricing.Public)
                         {
@@ -92,11 +94,11 @@
                         {
                             <p class="mb-2">@Localizer["Sign in with an active VIP for the exercise's own course:"]</p>
                             <partial name="_EntityCard" model="subject" />
-                            <p class="mb-0 mt-2 text-muted">@Localizer["Its paid tags mark the exercise as paid; they do not require additional course memberships."]</p>
+                            <p class="mb-0 mt-2 text-muted">@Localizer["The exercise inherits pricing from its period. Tags do not grant or restrict practice access."]</p>
                         }
                         else
                         {
-                            <p class="mb-0">@Localizer["This exercise has no assigned course. Every paid tag must be covered by an active course VIP."]</p>
+                            <p class="mb-0">@Localizer["Review the assigned period and its course."]</p>
                         }
                     </div>
                 </div>
@@ -104,19 +106,21 @@
         </section>
         <section class="check-panel mb-4" aria-labelledby="student-access-title">
             <h2 id="student-access-title">@Localizer["Who can open this content?"]</h2>
-            <p class="text-muted">@Localizer["Knowledge point text is public. Exercise access below follows the current server rules; submitting and saving answers are not checked here."]</p>
+            <p class="text-muted">@Localizer["Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here."]</p>
             <div class="check-access-list">
                 @foreach (var access in exercise.Access)
                 {
-                    <div class="check-access-row" data-allowed="@access.Decision.Allowed.ToString().ToLowerInvariant()">
+                    <div class="check-access-row" data-allowed="@access.Allowed.ToString().ToLowerInvariant()">
                         <strong>@access.Scenario</strong>
-                        @if (exercise.KnowledgePoints.Count > 0)
-                        {
-                            <span><i data-lucide="book-open" aria-hidden="true"></i>@Localizer["Knowledge text: public"]</span>
-                        }
-                        <span>
-                            <i data-lucide="@(access.Decision.Allowed ? "circle-check" : "lock-keyhole")" aria-hidden="true"></i>
-                            @if (access.Decision.Allowed)
+                        <div class="check-knowledge-access">
+                            @foreach (var knowledge in access.Knowledge)
+                            {
+                                <span data-access="@knowledge.Allowed.ToString().ToLowerInvariant()"><i data-lucide="book-open" aria-hidden="true"></i>@knowledge.KnowledgePoint.Name: @(knowledge.Allowed ? @Localizer["Can open"] : @Localizer["Cannot open"])</span>
+                            }
+                        </div>
+                        <span data-access="@access.Allowed.ToString().ToLowerInvariant()">
+                            <i data-lucide="@(access.Allowed ? "circle-check" : "lock-keyhole")" aria-hidden="true"></i>
+                            @if (access.Allowed)
                             {
                                 @Localizer["Exercise: can open"]
                             }
@@ -125,21 +129,10 @@
                                 @Localizer["Exercise: cannot open"]
                             }
                         </span>
-                        @if (!access.Decision.Allowed)
+                        @if (!access.Allowed)
                         {
                             <span class="check-access-reason text-muted">
-                                @if (access.Decision.Denial == QuestionAccessDenial.Anonymous)
-                                {
-                                    @Localizer["Sign-in and the required course VIP are needed."]
-                                }
-                                else if (access.Decision.Denial == QuestionAccessDenial.Subject)
-                                {
-                                    @Localizer["This account needs the exercise's own course VIP."]
-                                }
-                                else
-                                {
-                                    @string.Format(@Localizer["The paid tag is not covered: {0}"].Value, access.Decision.BlockingTag?.DisplayName)
-                                }
+                                @Localizer["This account needs the exercise's own course VIP."]
                             </span>
                         }
                     </div>
@@ -163,7 +156,7 @@
                 <p>@first.Suggestion</p>
                 @if (tags.Count > 0 && !group.NeedsEngineering)
                 {
-                    <p class="text-muted">@Localizer["Before changing a shared tag, check all the content it affects below."]</p>
+                    <p class="text-muted">@Localizer["Tags organize content internally. Review the period and knowledge directory when changing access."]</p>
                     <p><strong>@string.Format(@Localizer["Shared tags affect {0} exercises in {1} courses."].Value, sharedImpact.Count(o => o.Controller == "Questions"), sharedImpact.Count(o => o.Controller == "TotalCategories"))</strong><br />
                         <a href="#shared-tag-impact">@Localizer["Review shared impact"]</a></p>
                 }
@@ -174,10 +167,6 @@
     {
         <section class="mb-4" aria-labelledby="settings-title">
             <h2 id="settings-title" class="check-section-title">@Localizer["Related settings and edit links"]</h2>
-            @if (Model.Exercise?.PaidTags.Count > 1)
-            {
-                <p class="text-muted">@Localizer["This exercise has several paid tags. Making only one tag free may leave the exercise restricted."]</p>
-            }
             <div class="check-settings-grid">
                 @foreach (var item in settings)
                 {
@@ -207,7 +196,7 @@
     {
         <section id="shared-tag-impact" class="check-panel mb-4">
             <h2>@Localizer["Before changing a shared tag"]</h2>
-            <p class="text-muted">@Localizer["A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search."]</p>
+            <p class="text-muted">@Localizer["These tags organize the listed content. They do not determine current practice or knowledge access."]</p>
             @foreach (var tag in tags)
             {
                 var impact = Model.Report!.TagImpacts.GetValueOrDefault(int.Parse(tag.Id), []);

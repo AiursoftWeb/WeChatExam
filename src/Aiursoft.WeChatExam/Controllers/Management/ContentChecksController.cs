@@ -99,28 +99,25 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
 
     private string Caption(string rule) => rule switch
     {
-        "KP001" => localizer["This exercise needs VIP"],
+        "KP001" => localizer["Free lesson has a paid exercise"],
+        "KP003" => localizer["This lesson needs a directory"],
         "KP002" => localizer["The lesson and exercise belong to different courses"],
         "TAG001" => localizer["No VIP can unlock this tag"],
-        "Q001" => localizer["No VIP can unlock these exercises"],
-        "Q002" => localizer["Different entry points require different VIPs"],
         "VIP001" or "VIP002" or "VIP004" => localizer["No suitable VIP is currently available to buy"],
         "VIP003" => localizer["This VIP product needs a course"],
         "PAPER001" => localizer["This paper is missing its published version"],
         "PAPER002" => localizer["This paper version has no exercises"],
         "PAPER003" => localizer["No VIP can unlock this paper"],
         "PAPER004" => localizer["Free paper includes paid exercises"],
-        "API001" => localizer["Exercise access differs between screens"],
         _ => localizer["Mini Program entry checks need review"]
     };
 
     private string StudentExperience(string rule) => rule switch
     {
-        "KP001" => localizer["Visitors can read the knowledge point, but cannot open these exercises for free."],
+        "KP001" => localizer["Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings."],
+        "KP003" => localizer["Students cannot open this lesson until it is assigned to a knowledge directory."],
         "KP002" => localizer["The knowledge point is linked to one course, while these exercises belong to another. Buying the first course's VIP may not unlock the exercises."],
-        "TAG001" => localizer["This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen."],
-        "Q001" => localizer["These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them."],
-        "Q002" => localizer["A student with the exercise's course VIP can open it directly, but may be blocked when browsing by its paid tag."],
+        "TAG001" => localizer["The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation."],
         "VIP001" or "VIP002" or "VIP004" => localizer["Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content."],
         "VIP003" => localizer["This VIP product is missing its course. It cannot grant the intended course access."],
         "PAPER001" => localizer["Students cannot find this paper because a published paper version has not been created."],

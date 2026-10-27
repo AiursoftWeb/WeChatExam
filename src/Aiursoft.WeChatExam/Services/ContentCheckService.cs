@@ -18,32 +18,14 @@ public class ContentCheckService(
     public async Task<ContentCheckReport> ScanAsync(Guid[] subjects, bool realExam, CancellationToken cancellationToken = default)
     {
         var report = new ContentCheckReport();
-        var categories = await context.Categories.AsNoTracking().ToListAsync(cancellationToken);
         var directories = await context.KnowledgeCategories.AsNoTracking().ToListAsync(cancellationToken);
         var courses = await context.TotalCategories.AsNoTracking().ToListAsync(cancellationToken);
-        // Legacy paper/tag diagnostics still use course-shaped categories. Project current
-        // knowledge directories for paths only; this does not restore a writable old mapping.
-        var currentCategories = categories.ToDictionary(c => c.Id);
-        foreach (var course in courses.Where(c => currentCategories.ContainsKey(c.Id) || directories.Any(d => d.TotalCategoryId == c.Id)))
-            currentCategories[course.Id] = new Category
-            {
-                Id = course.Id, Title = course.Title, ParentId = null,
-                IsFree = currentCategories.GetValueOrDefault(course.Id)?.IsFree ?? true
-            };
-        foreach (var directory in directories)
-            currentCategories[directory.Id] = new Category
-            {
-                Id = directory.Id, Title = directory.Title,
-                ParentId = directory.Id == directory.TotalCategoryId ? null : directory.ParentKnowledgeCategoryId ?? directory.TotalCategoryId,
-                IsFree = directory.IsFree, OrderIndex = directory.OrderIndex
-            };
-        categories = currentCategories.Values.ToList();
-        var directoryIds = directories.Select(c => c.Id).ToHashSet();
+        var periods = await context.QuestionCategories.AsNoTracking().ToListAsync(cancellationToken);
         var tags = await context.Tags.AsNoTracking().Include(t => t.Taxonomy)
             .ThenInclude(t => t!.CategoryTaxonomies).ToListAsync(cancellationToken);
         var questions = await context.Questions.AsNoTracking().Select(q => new Question
         {
-            Id = q.Id, Content = q.Content, CategoryId = q.CategoryId, QuestionCategoryId = q.QuestionCategoryId
+            Id = q.Id, Content = q.Content, QuestionCategoryId = q.QuestionCategoryId
         }).ToListAsync(cancellationToken);
         var questionTags = await context.QuestionTags.AsNoTracking().ToListAsync(cancellationToken);
         var knowledge = await context.KnowledgePoints.AsNoTracking().Select(k => new KnowledgePoint
@@ -63,16 +45,19 @@ public class ContentCheckService(
 
         var tagIndex = tags.ToDictionary(t => t.Id);
         var tagsByQuestion = questionTags.ToLookup(t => t.QuestionId);
+        var periodIndex = periods.ToDictionary(p => p.Id);
         var questionIndex = questions.ToDictionary(q => q.Id, q => new Question
         {
-            Id = q.Id, Content = q.Content, CategoryId = q.CategoryId, QuestionCategoryId = q.QuestionCategoryId,
+            Id = q.Id, Content = q.Content, QuestionCategoryId = q.QuestionCategoryId,
+            QuestionCategory = periodIndex[q.QuestionCategoryId],
             QuestionTags = tagsByQuestion[q.Id].Where(t => tagIndex.ContainsKey(t.TagId)).Select(t => new QuestionTag
             {
                 QuestionId = q.Id, TagId = t.TagId, Tag = tagIndex[t.TagId]
             }).ToList()
         });
         var knowledgeIndex = knowledge.ToDictionary(k => k.Id);
-        var categoryIndex = categories.ToDictionary(c => c.Id);
+        var directoryIndex = directories.ToDictionary(c => c.Id);
+        var courseIndex = courses.ToDictionary(c => c.Id);
         var linkedKnowledge = knowledgeQuestions.ToLookup(k => k.QuestionId);
         var categoriesByKnowledge = knowledgeCategories.ToLookup(k => k.KnowledgePointId, k => k.KnowledgeCategoryId);
         var questionsByTag = questionTags.ToLookup(t => t.TagId, t => t.QuestionId);
@@ -84,7 +69,7 @@ public class ContentCheckService(
             ActiveCategoryVips = availableSubjects,
             HasRealExamVip = products.Any(p => p.IsEnabled && p.Type == VipProductType.RealExam)
         };
-        report.Categories = categories.OrderBy(c => c.Title).ToList();
+        report.Categories = courses.OrderBy(c => c.Title).ToList();
         report.KnowledgePointCount = knowledge.Count;
         report.QuestionCount = questions.Count;
         report.PaperCount = papers.Count;
@@ -92,38 +77,42 @@ public class ContentCheckService(
         report.Counts[localizer["Questions"]] = questions.Count;
         report.Counts[localizer["Tags"]] = tags.Count;
         report.Counts[localizer["Taxonomies"]] = taxonomyCount;
-        report.Counts[localizer["Subjects"]] = categories.Count;
+        report.Counts[localizer["Subjects"]] = courses.Count;
+        report.Counts[localizer["Knowledge Categories"]] = directories.Count;
+        report.Counts[localizer["Periods"]] = periods.Count;
         report.Counts[localizer["VIP products"]] = products.Count;
         report.Counts[localizer["Papers"]] = papers.Count;
         report.Counts[localizer["Paper snapshots"]] = papers.Sum(p => p.PaperSnapshots.Count());
 
-        // Include referenced subjects even without a sellable product. Otherwise an absent
-        // purchase route would incorrectly look like an impossible authorization rule.
-        var allSubjects = categories.Select(c => c.Id)
-            .Concat(questions.Where(q => q.CategoryId.HasValue).Select(q => q.CategoryId!.Value))
-            .Concat(tags.SelectMany(t => t.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId) ?? []))
-            .Concat(papers.SelectMany(p => p.PaperCategories.Select(c => c.CategoryId))).ToHashSet();
-        var visitor = new AccessScenario(localizer["Anonymous"], false, new());
-        var signedIn = new AccessScenario(localizer["Signed in without active VIP"], true, new());
+        // VIPs belong to total categories, never tree directories or historical tag mappings.
+        // Include courses without products: sales availability does not revoke existing VIPs.
+        var allSubjects = courses.Select(c => c.Id).ToHashSet();
+        var visitor = new AccessScenario(localizer["Anonymous"], new());
+        var signedIn = new AccessScenario(localizer["Signed in without active VIP"], new());
         var courseScenarios = allSubjects.OrderBy(id => id).Select(subject => new AccessScenario(
-            string.Format(localizer["Subject VIP: {0}"], categories.FirstOrDefault(c => c.Id == subject)?.Title ?? subject.ToString()),
-            true, new PaperAccessStatus { ActiveCategoryVips = [subject] })).ToList();
+            string.Format(localizer["Subject VIP: {0}"], courseIndex.GetValueOrDefault(subject)?.Title ?? subject.ToString()),
+            new PaperAccessStatus { ActiveCategoryVips = [subject] })).ToList();
         var all = new PaperAccessStatus { ActiveCategoryVips = allSubjects, HasRealExamVip = true };
-        var allVips = new AccessScenario(localizer["All relevant VIPs"], true, all);
-        var custom = new AccessScenario(localizer["Custom VIP selection"], true,
+        var allVips = new AccessScenario(localizer["All relevant VIPs"], all);
+        var custom = new AccessScenario(localizer["Custom VIP selection"],
             new() { ActiveCategoryVips = subjects.Where(allSubjects.Contains).ToHashSet(), HasRealExamVip = realExam });
         report.Scenarios.AddRange([visitor, signedIn]);
         report.Scenarios.AddRange(courseScenarios);
-        report.Scenarios.Add(new(localizer["Real-exam VIP only"], true, new() { HasRealExamVip = true }));
+        report.Scenarios.Add(new(localizer["Real-exam VIP only"], new() { HasRealExamVip = true }));
         report.Scenarios.AddRange([allVips, custom]);
 
         ContentReference QuestionRef(Question q) => new("Questions", q.Id.ToString(), q.Content, AppPermissionNames.CanEditQuestions,
-            q.QuestionTags.Any(t => !t.Tag.IsFree) ? ContentPricing.Paid : ContentPricing.Public);
-        ContentReference TagRef(Tag t) => new("Tags", t.Id.ToString(), t.DisplayName, AppPermissionNames.CanManageTags,
-            t.IsFree ? ContentPricing.Public : ContentPricing.Paid);
+            q.QuestionCategory!.IsFree ? ContentPricing.Public : ContentPricing.Paid);
+        ContentReference TagRef(Tag t) => new("Tags", t.Id.ToString(), t.DisplayName, AppPermissionNames.CanManageTags);
         ContentReference PaperRef(Paper p) => new("Papers", p.Id.ToString(), p.Title, AppPermissionNames.CanEditPapers,
             p.IsFree ? ContentPricing.Public : ContentPricing.Paid, p.Status == PaperStatus.Frozen ? "Details" : "Edit");
-        ContentReference CategoryRef(Category c) => new(directoryIds.Contains(c.Id) ? "KnowledgeCategories" : "TotalCategories", c.Id.ToString(), c.Title, AppPermissionNames.CanEditAnyCategory);
+        ContentReference CourseRef(TotalCategory c) => new("TotalCategories", c.Id.ToString(), c.Title, AppPermissionNames.CanEditAnyCategory);
+        ContentReference DirectoryRef(KnowledgeCategory c) => new("KnowledgeCategories", c.Id.ToString(), c.Title,
+            AppPermissionNames.CanEditAnyCategory, c.IsFree ? ContentPricing.Public : ContentPricing.Paid);
+        ContentReference PeriodRef(QuestionCategory c) => new("QuestionCategories", c.Id.ToString(), c.Title,
+            AppPermissionNames.CanEditAnyCategory, c.IsFree ? ContentPricing.Public : ContentPricing.Paid);
+        List<KnowledgeCategory> Placements(Guid id) => categoriesByKnowledge[id]
+            .Where(directoryIndex.ContainsKey).Select(c => directoryIndex[c]).ToList();
         ContentReference ProductRef(VipProduct p) => new("VipProducts", p.Id.ToString(), p.Name,
             AppPermissionNames.CanEditVipProducts, Enabled: p.IsEnabled);
         string KnowledgePath(KnowledgePoint point)
@@ -134,75 +123,76 @@ public class ContentCheckService(
             {
                 var path = new List<string> { point.Title };
                 var seen = new HashSet<Guid>();
-                for (Guid? id = categoryId; id.HasValue && seen.Add(id.Value) && categoryIndex.TryGetValue(id.Value, out var category); id = category.ParentId)
+                for (Guid? id = categoryId; id.HasValue && seen.Add(id.Value) && directoryIndex.TryGetValue(id.Value, out var category); id = category.ParentKnowledgeCategoryId)
                     path.Add(category.Title);
+                if (directoryIndex.TryGetValue(categoryId, out var directory) && courseIndex.TryGetValue(directory.TotalCategoryId, out var course))
+                    path.Add(course.Title);
                 path.Reverse();
                 paths.Add(string.Join(" → ", path));
             }
             return paths.Count == 0 ? point.Title : string.Join(" | ", paths.Order());
         }
         ContentReference KnowledgeRef(KnowledgePoint point) => new("KnowledgePoints", point.Id.ToString(),
-            KnowledgePath(point), AppPermissionNames.CanEditAnyKnowledgePoint, ContentPricing.Public);
+            KnowledgePath(point), AppPermissionNames.CanEditAnyKnowledgePoint,
+            Placements(point.Id).Any(c => c.IsFree) ? ContentPricing.Public :
+            Placements(point.Id).Count > 0 ? ContentPricing.Paid : ContentPricing.Unspecified);
 
         foreach (var tag in tags)
         {
             var mapped = tag.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId).ToHashSet() ?? [];
             report.TagMappings[tag.Id] = new(tag.Taxonomy is { } taxonomy
                 ? new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags) : null,
-                categories.Where(c => mapped.Contains(c.Id)).Select(CategoryRef).ToList());
+                courses.Where(c => mapped.Contains(c.Id)).Select(CourseRef).ToList());
         }
 
         foreach (var q in questionIndex.Values)
         {
             var points = linkedKnowledge[q.Id].Where(k => knowledgeIndex.ContainsKey(k.KnowledgePointId))
-                .Select(k => KnowledgeRef(knowledgeIndex[k.KnowledgePointId])).DistinctBy(k => k.Id).ToList();
-            var paid = q.QuestionTags.Select(t => t.Tag).Where(t => !t.IsFree).ToList();
-            var relevantSubjects = linkedKnowledge[q.Id].SelectMany(k => categoriesByKnowledge[k.KnowledgePointId])
-                .Concat(paid.SelectMany(t => t.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId) ?? []))
-                .ToHashSet();
-            if (q.CategoryId is { } own) relevantSubjects.Add(own);
+                .Select(k => knowledgeIndex[k.KnowledgePointId]).DistinctBy(k => k.Id).ToList();
+            var placements = points.SelectMany(k => Placements(k.Id)).DistinctBy(c => c.Id).ToList();
+            var relevantSubjects = placements.Select(c => c.TotalCategoryId).Append(q.QuestionCategory!.TotalCategoryId).ToHashSet();
             var settings = q.QuestionTags.Select(t => TagRef(t.Tag)).ToList();
             settings.AddRange(q.QuestionTags.Where(t => t.Tag.Taxonomy != null).Select(t =>
                 new ContentReference("Taxonomies", t.Tag.Taxonomy!.Id.ToString(), t.Tag.Taxonomy.Name, AppPermissionNames.CanManageTags)));
-            settings.AddRange(categories.Where(c => relevantSubjects.Contains(c.Id)).Select(CategoryRef));
+            settings.AddRange(placements.Select(DirectoryRef));
+            settings.Add(PeriodRef(q.QuestionCategory!));
+            settings.AddRange(courses.Where(c => relevantSubjects.Contains(c.Id)).Select(CourseRef));
             settings.AddRange(products.Where(p => p.Type == VipProductType.Category && p.TotalCategoryId.HasValue &&
                 relevantSubjects.Contains(p.TotalCategoryId.Value)).Select(ProductRef));
-            // Show only meaningful course scenarios here; the full endpoint evidence remains
-            // in the technical report. These decisions are identical to the serving policy.
             var scenarios = new[] { visitor, signedIn }.Concat(courseScenarios
                 .Where(s => s.Status.ActiveCategoryVips.Overlaps(relevantSubjects)));
-            if (q.CategoryId == null && paid.Count > 0)
-                scenarios = scenarios.Append(allVips);
             if (subjects.Length > 0 || realExam) scenarios = scenarios.Append(custom);
-            report.Exercises[q.Id] = new(QuestionRef(q), points,
-                categories.FirstOrDefault(c => c.Id == q.CategoryId) is { } subject ? CategoryRef(subject) : null,
-                paid.Select(TagRef).ToList(), settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),
-                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.Evaluate(q, s.Authenticated, s.Status))).ToList());
+            report.Exercises[q.Id] = new(QuestionRef(q), points.Select(KnowledgeRef).ToList(),
+                CourseRef(courseIndex[q.QuestionCategory!.TotalCategoryId]), PeriodRef(q.QuestionCategory),
+                settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),
+                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.CanPractice(q.QuestionCategory, s.Status),
+                    points.Select(k => new KnowledgeContentAccess(KnowledgeRef(k),
+                        Placements(k.Id).Any(c => KnowledgeAccess.CanRead(c, s.Status)))).ToList())).ToList());
         }
         void AttachQuestion(ContentFinding finding, Question q)
         {
             finding.Objects.Add(QuestionRef(q));
-            if (q.CategoryId is { } category) finding.CategoryIds.Add(category);
+            finding.Objects.Add(PeriodRef(q.QuestionCategory!));
+            finding.CategoryIds.Add(q.QuestionCategory!.TotalCategoryId);
             foreach (var link in linkedKnowledge[q.Id])
             {
                 if (!knowledgeIndex.TryGetValue(link.KnowledgePointId, out var point)) continue;
                 finding.Objects.Add(KnowledgeRef(point));
-                finding.CategoryIds.UnionWith(categoriesByKnowledge[point.Id]);
+                finding.Objects.AddRange(Placements(point.Id).Select(DirectoryRef));
+                finding.CategoryIds.UnionWith(Placements(point.Id).Select(c => c.TotalCategoryId));
             }
         }
         void ObserveQuestion(ContentFinding finding, Question q)
         {
             foreach (var scenario in report.Scenarios)
             {
-                var decision = QuestionAccess.Evaluate(q, scenario.Authenticated, scenario.Status);
-                finding.Observations.Add(new(scenario.Name, $"GET /api/Questions/{q.Id}", decision.Allowed,
-                    decision.Denial switch
-                    {
-                        QuestionAccessDenial.None => localizer["Question content is returned (200)."],
-                        QuestionAccessDenial.Anonymous => localizer["Paid question requires sign-in (403)."],
-                        QuestionAccessDenial.Subject => localizer["The question's subject VIP is required (403)."],
-                        _ => string.Format(localizer["Paid tag denies access (403): {0}"], decision.BlockingTag!.DisplayName)
-                    }));
+                var allowed = QuestionAccess.CanPractice(q.QuestionCategory!, scenario.Status);
+                finding.Observations.Add(new(scenario.Name, $"GET /api/Questions/{q.Id}", allowed,
+                    allowed ? localizer["Question content is returned (200)."] : localizer["The question's subject VIP is required (403)."]));
+                foreach (var pointId in linkedKnowledge[q.Id].Select(k => k.KnowledgePointId).Distinct())
+                    finding.Observations.Add(new(scenario.Name, $"GET /api/KnowledgePoints/{pointId}",
+                        Placements(pointId).Any(c => KnowledgeAccess.CanRead(c, scenario.Status)),
+                        localizer["A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately."]));
             }
         }
         ContentFinding Add(string rule, CheckSeverity severity, string title, string reason, string suggestion, bool engineering = false)
@@ -212,28 +202,28 @@ public class ContentCheckService(
             return finding;
         }
 
-        foreach (var tag in tags.Where(t => !t.IsFree))
+        foreach (var tag in tags.Where(t => !t.IsFree && t.Taxonomy != null))
         {
             var mapped = tag.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId).ToArray() ?? [];
             ContentFinding? finding = null;
             if (!QuestionAccess.CanUseTag(tag, all))
                 finding = Add("TAG001", CheckSeverity.Error, localizer["Paid tag has no unlockable subject"],
-                    localizer["No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details."],
-                    localizer["If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag."]);
+                    localizer["The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access."],
+                    localizer["Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata."], true);
             else if (!QuestionAccess.CanUseTag(tag, purchasable))
                 finding = Add("VIP001", CheckSeverity.Warning, localizer["No enabled VIP product unlocks this tag"],
                     localizer["New customers have no current purchase route. Existing active memberships may still grant access."],
-                    localizer["Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects."]);
+                    localizer["Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata."], true);
             if (finding == null) continue;
             finding.Objects.Add(TagRef(tag));
             if (tag.Taxonomy is { } taxonomy)
                 finding.Objects.Add(new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags));
-            finding.CategoryIds.UnionWith(mapped);
+            finding.CategoryIds.UnionWith(mapped.Where(allSubjects.Contains));
             foreach (var id in questionsByTag[tag.Id].Distinct())
                 if (questionIndex.TryGetValue(id, out var q)) AttachQuestion(finding, q);
             foreach (var scenario in report.Scenarios)
-                finding.Observations.Add(new(scenario.Name, $"GET /api/Questions?tagName={Uri.EscapeDataString(tag.DisplayName)}",
-                    QuestionAccess.CanUseTag(tag, scenario.Status), localizer["Tag gate only; anonymous lists also exclude every question with a paid tag."]));
+                finding.Observations.Add(new(scenario.Name, $"GET /api/miniprogramapi/taxonomies/{tag.TaxonomyId}/tags",
+                    QuestionAccess.CanUseTag(tag, scenario.Status), localizer["Legacy tag metadata only: HasAccess is reported without changing question access."]));
         }
 
         // Shared impact is indexed once per tag, not copied into every question finding.
@@ -245,72 +235,52 @@ public class ContentCheckService(
             {
                 if (!questionIndex.TryGetValue(id, out var question)) continue;
                 impact.Add(QuestionRef(question));
-                if (categories.FirstOrDefault(c => c.Id == question.CategoryId) is { } category) impact.Add(CategoryRef(category));
+                impact.Add(CourseRef(courseIndex[question.QuestionCategory!.TotalCategoryId]));
                 foreach (var link in linkedKnowledge[id])
                 {
                     if (knowledgeIndex.TryGetValue(link.KnowledgePointId, out var point))
                         impact.Add(KnowledgeRef(point));
                     foreach (var categoryId in categoriesByKnowledge[link.KnowledgePointId])
-                        if (categories.FirstOrDefault(c => c.Id == categoryId) is { } linkedCategory) impact.Add(CategoryRef(linkedCategory));
+                        if (directoryIndex.TryGetValue(categoryId, out var linkedCategory)) impact.Add(DirectoryRef(linkedCategory));
                 }
             }
             report.TagImpacts[tag.Id] = impact.DistinctBy(o => (o.Controller, o.Id)).ToList();
         }
 
-        ContentFinding? listDifference = null;
-        foreach (var q in questionIndex.Values)
+        foreach (var period in periods)
+            report.PeriodImpacts[period.Id] = questionIndex.Values.Where(q => q.QuestionCategoryId == period.Id)
+                .SelectMany(q => new[] { QuestionRef(q) }.Concat(report.Exercises[q.Id].KnowledgePoints))
+                .DistinctBy(o => (o.Controller, o.Id)).ToList();
+
+        foreach (var q in questionIndex.Values.Where(q => !q.QuestionCategory!.IsFree))
         {
-            var paidTags = q.QuestionTags.Select(t => t.Tag).Where(t => !t.IsFree).ToList();
-            if (paidTags.Count == 0) continue;
             void Detail(ContentFinding finding)
             {
-                finding.QuestionSubjectId = q.CategoryId;
+                finding.QuestionSubjectId = q.QuestionCategory!.TotalCategoryId;
                 AttachQuestion(finding, q);
-                finding.Objects.AddRange(paidTags.Select(TagRef));
-                foreach (var tag in paidTags)
-                {
-                    if (tag.Taxonomy is { } taxonomy)
-                        finding.Objects.Add(new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags));
-                }
                 ObserveQuestion(finding, q);
             }
-            if (linkedKnowledge[q.Id].Any())
-                Detail(Add("KP001", CheckSeverity.Information, localizer["Public knowledge point links to a paid exercise"],
-                    localizer["Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules."],
-                    localizer["Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first."]));
-            var knowledgeSubjects = linkedKnowledge[q.Id].SelectMany(k => categoriesByKnowledge[k.KnowledgePointId]).ToHashSet();
-            if (q.CategoryId is { } own && knowledgeSubjects.Any(id => id != own))
+            var placements = linkedKnowledge[q.Id].SelectMany(k => Placements(k.KnowledgePointId)).ToList();
+            if (placements.Any(c => c.IsFree))
+                Detail(Add("KP001", CheckSeverity.Error, localizer["Free knowledge directory links to a paid exercise"],
+                    localizer["Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule."],
+                    localizer["Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it."]));
+            if (placements.Any(c => !c.IsFree && c.TotalCategoryId != q.QuestionCategory!.TotalCategoryId))
                 Detail(Add("KP002", CheckSeverity.Warning, localizer["Knowledge point and exercise reference different subjects"],
                     localizer["A membership for a linked knowledge subject does not necessarily unlock the exercise's own subject."],
-                    localizer["Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association."]));
-            if (!QuestionAccess.Evaluate(q, true, all).Allowed)
-                Detail(Add("Q001", CheckSeverity.Error, localizer["Paid question cannot be unlocked even with all VIPs"],
-                    localizer["This uncategorized question requires every paid tag; at least one tag has no subject mapping."],
-                    localizer["Assign the intended question subject, or correct its paid tags after reviewing their shared impact."]));
-            else if (!QuestionAccess.Evaluate(q, true, purchasable).Allowed)
+                    localizer["Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association."]));
+            if (!QuestionAccess.CanPractice(q.QuestionCategory!, purchasable))
                 Detail(Add("VIP002", CheckSeverity.Warning, localizer["No enabled product combination unlocks this question"],
                     localizer["Existing active VIPs can still work, but buying currently enabled products cannot unlock this question."],
-                    localizer["Review the subject and available VIP products. Disabled products do not invalidate existing active memberships."]));
-            if (q.CategoryId is { } subjectId && paidTags.Any(t => !QuestionAccess.CanUseTag(t,
-                    new PaperAccessStatus { ActiveCategoryVips = [subjectId] })))
-                Detail(Add("Q002", CheckSeverity.Warning, localizer["Subject VIP and paid tag entry disagree"],
-                    localizer["The question's subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP."],
-                    localizer["Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior."]));
-            // This is existing endpoint behavior, not a data edit recommendation. Keep it
-            // visible separately rather than silently changing authorization during a scan.
-            listDifference ??= Add("API001", CheckSeverity.Warning, localizer["Signed-in list and question details use different access rules"],
-                localizer["A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403."],
-                localizer["Engineering must review the endpoint rules. Do not change shared content pricing merely to suppress this diagnostic."], true);
-            AttachQuestion(listDifference, q);
-            if (listDifference.Observations.Count == 0)
-            {
-                listDifference.Observations.Add(new(localizer["Signed in without active VIP"], "GET /api/Questions?size=50", true,
-                localizer["Eligible for the list; pagination and other query filters still apply."]));
-                listDifference.Observations.Add(new(localizer["Signed in without active VIP"], "GET /api/Questions/{id}", false,
-                    localizer["Question details return 403."]));
-            }
+                    localizer["Review the course and available VIP products. Disabled products do not invalidate existing active memberships."]));
         }
-
+        foreach (var point in knowledge.Where(k => Placements(k.Id).Count == 0))
+        {
+            var finding = Add("KP003", CheckSeverity.Error, localizer["Knowledge point has no directory"],
+                localizer["This lesson has no directory granting access, so even a course VIP cannot read it."],
+                localizer["Assign the lesson to its intended knowledge directory."]);
+            finding.Objects.Add(KnowledgeRef(point));
+        }
         foreach (var product in products.Where(p => p.Type == VipProductType.Category &&
                      (!p.TotalCategoryId.HasValue || p.TotalCategory == null)))
         {
@@ -350,7 +320,7 @@ public class ContentCheckService(
             {
                 var originals = snapshotQuestions[latest.Id].Where(s => s.OriginalQuestionId.HasValue)
                     .Select(s => questionIndex.GetValueOrDefault(s.OriginalQuestionId!.Value)).Where(q => q != null)
-                    .Cast<Question>().Where(q => !QuestionAccess.Evaluate(q, false, new()).Allowed).DistinctBy(q => q.Id).ToList();
+                    .Cast<Question>().Where(q => !QuestionAccess.CanPractice(q.QuestionCategory!, new())).DistinctBy(q => q.Id).ToList();
                 if (originals.Count > 0)
                 {
                     var finding = Add("PAPER004", CheckSeverity.Information, localizer["Free paper contains snapshots of currently paid questions"],
@@ -361,23 +331,12 @@ public class ContentCheckService(
                 }
             }
         }
-        if (categories.Any(c => !c.IsFree))
-        {
-            var finding = Add("CLIENT001", CheckSeverity.Warning, localizer["Client entry checks require engineering verification"],
-                localizer["Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server's subject IDs."],
-                localizer["Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen."], true);
-            foreach (var category in categories.Where(c => !c.IsFree))
-            {
-                finding.Objects.Add(CategoryRef(category));
-                finding.CategoryIds.Add(category.Id);
-            }
-        }
         // Deduplicate shared impact references. Counts describe the whole finding, not the
         // first example or the number of links, and are unaffected by report pagination.
         foreach (var finding in report.Findings)
         {
             foreach (var id in finding.CategoryIds)
-                if (categories.FirstOrDefault(c => c.Id == id) is { } category) finding.Objects.Add(CategoryRef(category));
+                if (courseIndex.TryGetValue(id, out var course)) finding.Objects.Add(CourseRef(course));
             var distinct = finding.Objects.DistinctBy(o => (o.Controller, o.Id)).ToList();
             finding.Objects.Clear();
             finding.Objects.AddRange(distinct);

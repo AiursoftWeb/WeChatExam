@@ -42,6 +42,9 @@
   <data name="Edit paper" xml:space="preserve">
     <value>编辑试卷</value>
   </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>编辑年代</value>
+  </data>
   <data name="Edit tag" xml:space="preserve">
     <value>编辑标签</value>
   </data>
@@ -72,6 +75,12 @@
   <data name="Paper" xml:space="preserve">
     <value>试卷</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>年代</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>年代定价会影响 {1} 个知识点关联的 {0} 道练习。</value>
+  </data>
   <data name="Pricing changes affect {0} exercises and {1} knowledge points." xml:space="preserve">
     <value>定价变更会影响 {0} 道练习题和 {1} 个知识点。</value>
   </data>
@@ -92,6 +101,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>已关联到 {1} 个知识点的 {0} 道练习使用此标签。更改标签定价会影响所有这些练习。</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>已被关联到 {1} 个知识点的 {0} 道练习使用。标签用于内部整理，不影响练习定价。</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>查看已冻结的试卷</value>

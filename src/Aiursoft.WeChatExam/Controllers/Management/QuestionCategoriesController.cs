@@ -75,8 +75,9 @@ public class QuestionCategoriesController(
         return RedirectToAction(nameof(Index), new { totalCategoryId = model.TotalCategoryId });
     }
 
-    public async Task<IActionResult> Edit(Guid id)
+    public async Task<IActionResult> Edit(Guid id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         var category = await context.QuestionCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
         return this.StackView(new EditViewModel
@@ -92,8 +93,9 @@ public class QuestionCategoriesController(
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
         var category = await context.QuestionCategories.SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
@@ -110,6 +112,7 @@ public class QuestionCategoriesController(
         category.IsFree = model.IsFree;
         category.OrderIndex = model.OrderIndex;
         await context.SaveChangesAsync();
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
         return RedirectToAction(nameof(Index), new { totalCategoryId = model.TotalCategoryId });
     }
 

@@ -396,17 +396,17 @@ public class KnowledgePointAssociationTests
         {
             var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
             for (var i = 0; i < 55; i++)
-                db.Tags.Add(new Tag { DisplayName = $"Diagnostic tag {i}", NormalizedName = $"DIAGNOSTIC TAG {i}", IsFree = false });
+                db.Tags.Add(new Tag { DisplayName = $"Diagnostic tag {i}", NormalizedName = $"DIAGNOSTIC TAG {i}", IsFree = false, Taxonomy = new Taxonomy { Name = $"Diagnostic taxonomy {i}" } });
             await db.SaveChangesAsync();
         }
-        var first = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic");
+        var first = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&rule=TAG001&search=Diagnostic");
         Assert.AreEqual(12, Regex.Matches(first, "<article ").Count);
         StringAssert.Contains(first, "Page 1 of 5");
-        var second = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic&page=2");
+        var second = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&rule=TAG001&search=Diagnostic&page=2");
         Assert.AreEqual(12, Regex.Matches(second, "<article ").Count);
-        var last = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic&page=5");
+        var last = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&rule=TAG001&search=Diagnostic&page=5");
         Assert.AreEqual(7, Regex.Matches(last, "<article ").Count);
-        var filter = await _http.GetStringAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic%20tag%2054");
+        var filter = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&rule=TAG001&search=Diagnostic%20tag%2054");
         Assert.AreEqual(1, Regex.Matches(filter, "<article ").Count);
         Assert.IsFalse(filter.Contains("<table"));
         var detailsUrl = WebUtility.HtmlDecode(Regex.Match(filter, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
@@ -443,7 +443,7 @@ public class KnowledgePointAssociationTests
         var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Restricted editor" };
-        var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG", IsFree = false };
+        var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG", IsFree = false, Taxonomy = new Taxonomy { Name = "Diagnostic taxonomy" } };
         db.AddRange(question, tag);
         await db.SaveChangesAsync();
         db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
@@ -464,7 +464,7 @@ public class KnowledgePointAssociationTests
                 ["EmailOrUserName"] = email, ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = token
             }));
             Assert.AreEqual(HttpStatusCode.Found, signedIn.StatusCode);
-            var response = await client.GetAsync("/ContentChecks/Results?rule=TAG001&search=Diagnostic%20shared%20tag");
+            var response = await client.GetAsync("/ContentChecks/Results?view=engineering&rule=TAG001&search=Diagnostic%20shared%20tag");
             if (permitted)
             {
                 Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -492,14 +492,17 @@ public class KnowledgePointAssociationTests
         await LoginAsAdminAsync();
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var subject = new Category { Id = Guid.NewGuid(), Title = "Grouped course", ParentId = null, IsFree = true };
+        var course = new TotalCategory { Title = "Grouped course" };
+        var period = new QuestionCategory { Title = "Grouped period", TotalCategoryId = course.Id, TotalCategory = course };
+        var directory = new KnowledgeCategory { Title = "Grouped directory", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
         var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG", IsFree = false };
         var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", Content = "Public lesson" };
-        db.AddRange(subject, tag, lesson, new VipProduct { Name = "Course VIP", TotalCategory = new TotalCategory { Id = subject.Id, Title = subject.Title }, DurationDays = 365 });
+        db.AddRange(course, period, directory, tag, lesson, new VipProduct { Name = "Course VIP", TotalCategory = course, DurationDays = 365 },
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = directory.Id });
         await db.SaveChangesAsync();
         for (var i = 0; i < 50; i++)
         {
-            var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), CategoryId = subject.Id, Content = $"Grouped exercise {i}" };
+            var question = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = $"Grouped exercise {i}" };
             db.AddRange(question, new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
                 new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id });
         }
@@ -507,13 +510,13 @@ public class KnowledgePointAssociationTests
         var results = await _http.GetStringAsync("/ContentChecks/Results?rule=KP001&search=Grouped%20lesson");
         Assert.AreEqual(1, Regex.Matches(results, "<article ").Count);
         var card = Regex.Match(results, "<article[\\s\\S]*?</article>").Value;
-        StringAssert.Contains(card, "Pricing arrangement");
-        Assert.IsFalse(card.Contains("text-danger"));
+        StringAssert.Contains(card, "Needs attention");
+        Assert.IsTrue(card.Contains("text-danger"));
         Assert.IsFalse(card.Contains("<table"));
         var link = WebUtility.HtmlDecode(Regex.Match(card, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
         var detail = await _http.GetStringAsync(link);
         for (var i = 0; i < 50; i++) Assert.IsTrue(detail.Contains($"Grouped exercise {i}"));
-        StringAssert.Contains(detail, "Shared tags affect 50 exercises in 1 courses.");
+        StringAssert.Contains(detail, "Period pricing affects 50 exercises linked to 1 knowledge points.");
         StringAssert.Contains(detail, "rule=KP001");
         var seen = new HashSet<string>();
         var current = detail;
@@ -528,7 +531,7 @@ public class KnowledgePointAssociationTests
 
         var team = await _http.GetStringAsync("/ContentChecks/Results?view=engineering&search=Grouped%20lesson");
         StringAssert.Contains(team, "These items need developer review");
-        Assert.AreEqual(1, Regex.Matches(team, "<article ").Count);
+        Assert.AreEqual(0, Regex.Matches(team, "<article ").Count);
     }
 
     [TestMethod]
@@ -537,25 +540,29 @@ public class KnowledgePointAssociationTests
         await LoginAsAdminAsync();
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var course = new Category { Id = Guid.NewGuid(), Title = "Relation course", ParentId = null };
-        var other = new Category { Id = Guid.NewGuid(), Title = "Other relation course", ParentId = null };
+        var course = new TotalCategory { Title = "Relation course" };
+        var other = new TotalCategory { Title = "Other relation course" };
+        var period = new QuestionCategory { Title = "Relation period", TotalCategoryId = course.Id, TotalCategory = course };
+        var freePeriod = new QuestionCategory { Title = "Free relation period", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
+        var directory = new KnowledgeCategory { Title = "Relation directory", TotalCategoryId = other.Id, TotalCategory = other, IsFree = true };
         var taxonomy = new Taxonomy { Name = "Relation taxonomy" };
         var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG", IsFree = false, Taxonomy = taxonomy };
         var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public" };
         var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public" };
-        var a = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
-        var b = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
-        var free = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
-        var product = new VipProduct { Name = "Relation VIP", TotalCategory = new TotalCategory { Id = course.Id, Title = course.Title }, DurationDays = 365, IsEnabled = false };
-        db.AddRange(course, other, tag, first, second, a, b, free, product,
+        var a = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220) };
+        var b = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = "Relation second exercise" };
+        var free = new Question { QuestionCategory = freePeriod, Id = Guid.NewGuid(), Content = "Relation free exercise" };
+        var product = new VipProduct { Name = "Relation VIP", TotalCategory = course, DurationDays = 365, IsEnabled = false };
+        db.AddRange(course, other, period, freePeriod, directory, tag, first, second, a, b, free, product,
             new QuestionTag { QuestionId = a.Id, TagId = tag.Id, Tag = tag }, new QuestionTag { QuestionId = b.Id, TagId = tag.Id, Tag = tag },
             new KnowledgePointQuestion { KnowledgePointId = first.Id, QuestionId = a.Id },
             new KnowledgePointQuestion { KnowledgePointId = second.Id, QuestionId = b.Id },
-            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = first.Id, KnowledgeCategoryId = other.Id, KnowledgeCategory = new KnowledgeCategory { Id = other.Id, Title = other.Title, TotalCategoryId = other.Id, TotalCategory = new TotalCategory { Id = other.Id, Title = other.Title } } });
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = first.Id, KnowledgeCategoryId = directory.Id },
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = second.Id, KnowledgeCategoryId = directory.Id });
         await db.SaveChangesAsync();
         var results = await _http.GetStringAsync("/ContentChecks/Results?rule=KP001&search=Relation");
         Assert.AreEqual(1, Regex.Matches(results, "<article ").Count);
-        Assert.Contains("Review how public content and paid content are connected", results);
+        Assert.Contains("Free lesson has a paid exercise", results);
         var detailUrl = WebUtility.HtmlDecode(Regex.Match(results, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
         foreach (var (question, linked, unrelated) in new[] { (a, first, second), (b, second, first) })
         {
@@ -569,7 +576,10 @@ public class KnowledgePointAssociationTests
             Assert.Contains($"/Tags/Edit/{tag.Id}", detail);
             Assert.Contains($"/Taxonomies/Edit/{taxonomy.Id}", detail);
             Assert.Contains($"/VipProducts/Edit/{product.Id}", detail);
+            Assert.Contains($"/QuestionCategories/Edit/{period.Id}", detail);
+            Assert.Contains($"/KnowledgeCategories/Edit/{directory.Id}", detail);
             Assert.Contains("Sales disabled", detail);
+            Assert.DoesNotContain("Knowledge text: public", detail);
             Assert.Contains("data-allowed=\"false\"", detail);
             Assert.Contains("data-allowed=\"true\"", detail);
             if (question == a) Assert.Contains("This account needs the exercise's own course VIP.", WebUtility.HtmlDecode(detail));
@@ -578,10 +588,10 @@ public class KnowledgePointAssociationTests
         }
         // Sale availability is separate from an already purchased, active membership.
         var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([], false);
-        Assert.IsTrue(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Relation course").Decision.Allowed);
-        Assert.IsFalse(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Other relation course").Decision.Allowed);
+        Assert.IsTrue(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Relation course").Allowed);
+        Assert.IsFalse(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Other relation course").Allowed);
         Assert.AreEqual(Models.ContentChecksViewModels.ContentPricing.Public, report.Exercises[free.Id].Question.Pricing);
-        Assert.IsTrue(report.Exercises[free.Id].Access.First().Decision.Allowed);
+        Assert.IsTrue(report.Exercises[free.Id].Access.First().Allowed);
     }
 
     [TestMethod]
@@ -590,6 +600,7 @@ public class KnowledgePointAssociationTests
     [DataRow("Tags")]
     [DataRow("Taxonomies")]
     [DataRow("KnowledgeCategories")]
+    [DataRow("QuestionCategories")]
     [DataRow("TotalCategories")]
     [DataRow("VipProducts")]
     [DataRow("Papers")]
@@ -612,7 +623,7 @@ public class KnowledgePointAssociationTests
         var id = controller switch
         {
             "KnowledgePoints" => point.Id.ToString(), "Questions" => question.Id.ToString(), "Tags" => tag.Id.ToString(),
-            "Taxonomies" => taxonomy.Id.ToString(), "KnowledgeCategories" => directory.Id.ToString(), "TotalCategories" => category.Id.ToString(),
+            "Taxonomies" => taxonomy.Id.ToString(), "KnowledgeCategories" => directory.Id.ToString(), "QuestionCategories" => question.QuestionCategoryId.ToString(), "TotalCategories" => category.Id.ToString(),
             "VipProducts" => product.Id.ToString(), _ => paper.Id.ToString()
         };
         const string origin = "/ContentChecks/Results?view=information&search=Origin&page=2";

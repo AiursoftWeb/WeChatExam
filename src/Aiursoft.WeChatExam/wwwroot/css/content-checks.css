@@ -77,9 +77,10 @@
 .content-checks .check-requirement { padding: 1rem; border-left: 3px solid var(--bs-primary); background: rgba(var(--bs-primary-rgb), .04); border-radius: .3rem .75rem .75rem .3rem; line-height: 1.7; }
 .content-checks .check-requirement .check-entity { padding: 1rem; }
 .content-checks .check-access-row { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); gap: .75rem 1rem; padding: 1rem 0; border-top: 1px solid var(--bs-border-color); align-items: center; }
-.content-checks .check-access-row span { display: flex; gap: .5rem; align-items: center; }
+.content-checks .check-knowledge-access { display: grid; gap: .5rem; min-width: 0; }
+.content-checks .check-access-row span { display: flex; gap: .5rem; align-items: center; overflow-wrap: anywhere; min-width: 0; }
 .content-checks .check-access-row svg { width: 19px; height: 19px; flex-shrink: 0; }
-.content-checks .check-access-row[data-allowed="true"] > span:nth-of-type(2) svg { color: var(--bs-success); }
+.content-checks .check-access-row span[data-access="true"] svg { color: var(--bs-success); }
 .content-checks .check-access-reason { grid-column: 1 / -1; font-size: .95rem; }
 .content-checks .check-exercise-nav { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem; }
 .content-checks .check-exercise-nav .btn { min-height: 44px; display: inline-flex; align-items: center; white-space: normal; }
