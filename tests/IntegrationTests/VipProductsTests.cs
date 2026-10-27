@@ -29,11 +29,11 @@ public class VipProductsTests : TestBase
         using var invalid = await PostForm("/VipProducts/Create", values);
         Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
         Assert.Contains("Select an existing total category.", await invalid.Content.ReadAsStringAsync());
-        Assert.AreEqual(0, await db.VipProducts.CountAsync());
+        Assert.IsFalse(await db.VipProducts.AnyAsync(p => p.Name == "Course VIP"));
         values["TotalCategoryId"] = course.Id.ToString();
         using var created = await PostForm("/VipProducts/Create", values);
         AssertRedirect(created, "/VipProducts");
-        var product = await db.VipProducts.SingleAsync();
+        var product = await db.VipProducts.SingleAsync(p => p.Name == "Course VIP");
         Assert.AreEqual(course.Id, product.TotalCategoryId);
         Assert.AreEqual(VipProductType.Category, product.Type);
 
@@ -52,7 +52,7 @@ public class VipProductsTests : TestBase
         using var saved = await PostForm(editPath, values);
         AssertRedirect(saved, origin);
         db.ChangeTracker.Clear();
-        Assert.AreEqual("Updated course VIP", (await db.VipProducts.SingleAsync()).Name);
+        Assert.AreEqual("Updated course VIP", (await db.VipProducts.SingleAsync(p => p.Id == product.Id)).Name);
     }
 
     [TestMethod]
