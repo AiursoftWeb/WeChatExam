@@ -1,0 +1,68 @@
+@model Aiursoft.WeChatExam.Models.MockPapersViewModels.EditViewModel
+@{
+    var creating = Model.Id == Guid.Empty;
+}
+
+<a asp-action="Index" class="d-inline-block text-decoration-none mb-3">
+    <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Mock Papers"]
+</a>
+<h1 class="h3 mb-4">
+    @if (creating)
+    {
+        @Localizer["Create Mock Paper"]
+    }
+    else
+    {
+        @Localizer["Edit Mock Paper"]
+    }
+</h1>
+
+<p class="text-muted mb-4">@Localizer["Draft only. Question assembly and publication are not available yet."]</p>
+
+<div class="row">
+    <div class="col-lg-7 col-xl-6">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                    @if (!creating)
+                    {
+                        <input asp-for="Id" type="hidden" />
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-4">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" maxlength="200" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="TotalCategoryId" class="form-label"></label>
+                        <select asp-for="TotalCategoryId" class="form-select">
+                            <option value="">@Localizer["Select a course"]</option>
+                            @foreach (var course in Model.Courses)
+                            {
+                                <option value="@course.Id">@course.Title</option>
+                            }
+                        </select>
+                        <span asp-validation-for="TotalCategoryId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="TimeLimit" class="form-label"></label>
+                        <input asp-for="TimeLimit" class="form-control" min="1" />
+                        <span asp-validation-for="TimeLimit" class="text-danger"></span>
+                    </div>
+                    <div class="form-check form-switch mb-4">
+                        <input asp-for="AllowViewAnonymousely" class="form-check-input" aria-describedby="access-help" />
+                        <label asp-for="AllowViewAnonymousely" class="form-check-label"></label>
+                        <div id="access-help" class="form-text">@Localizer["After publication, anyone can take this exam. Course VIP members always have access."]</div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            @Localizer["Save Draft"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

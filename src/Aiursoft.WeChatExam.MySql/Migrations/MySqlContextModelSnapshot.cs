@@ -588,6 +588,39 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("KnowledgePointQuestions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaper", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("AllowViewAnonymousely")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TimeLimit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<Guid>("TotalCategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TotalCategoryId");
+
+                    b.ToTable("MockPapers");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Paper", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1693,6 +1726,17 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("KnowledgePoint");
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaper", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.TotalCategory", "TotalCategory")
+                        .WithMany()
+                        .HasForeignKey("TotalCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("TotalCategory");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCategory", b =>
