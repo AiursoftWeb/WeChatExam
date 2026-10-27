@@ -106,7 +106,6 @@ public class QuestionListTagsTests
                 Content = questionContent,
                 QuestionType = QuestionType.Choice,
                 GradingStrategy = GradingStrategy.ExactMatch,
-                CategoryId = category.Id
             };
             dbContext.Questions.Add(question);
             await dbContext.SaveChangesAsync();

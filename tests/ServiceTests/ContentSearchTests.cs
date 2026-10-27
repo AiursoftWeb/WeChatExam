@@ -23,12 +23,12 @@ public class ContentSearchTests
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var other = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
-        var exact = NewQuestion("Boya", category.Id);
-        var related = NewQuestion("Who played Flowing Water?", other.Id);
+        var exact = NewQuestion("Boya");
+        var related = NewQuestion("Who played Flowing Water?");
         related.QuestionCategory = exact.QuestionCategory;
         related.StandardAnswer = "Musician";
-        exact.CategoryId = null;
-        var excluded = NewQuestion("Boya outside the selected period", category.Id);
+
+        var excluded = NewQuestion("Boya outside the selected period");
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "A guqin musician" };
         var otherPoint = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya elsewhere", Content = "Another directory" };
         db.AddRange(category, other, exact, related, excluded, point, otherPoint);
@@ -78,8 +78,8 @@ public class ContentSearchTests
     {
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
-        var exact = NewQuestion("keyword-fixture", category.Id);
-        var related = NewQuestion("Who played Flowing Water?", category.Id);
+        var exact = NewQuestion("keyword-fixture");
+        var related = NewQuestion("Who played Flowing Water?");
         db.Add(category);
         db.Questions.AddRange(exact, related);
         await db.SaveChangesAsync();
@@ -115,9 +115,9 @@ public class ContentSearchTests
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Current paper" };
         var otherPaper = new Paper { Id = Guid.NewGuid(), Title = "Other paper" };
         var existing = Enumerable.Range(0, ContentVectorSearchService.MaxResults + 5)
-            .Select(_ => NewQuestion("paper-fixture", category.Id)).ToArray();
-        var keyword = NewQuestion("paper-fixture available", category.Id);
-        var related = NewQuestion("A related question", category.Id);
+            .Select(_ => NewQuestion("paper-fixture")).ToArray();
+        var keyword = NewQuestion("paper-fixture available");
+        var related = NewQuestion("A related question");
         related.QuestionType = QuestionType.Blank;
         db.AddRange(category, paper, otherPaper, keyword, related);
         db.Questions.AddRange(existing);
@@ -156,10 +156,10 @@ public class ContentSearchTests
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var other = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
-        var source = NewQuestion("Source question", category.Id);
-        var choices = Enumerable.Range(0, 8).Select(i => NewQuestion("Related question " + i, category.Id)).ToArray();
-        foreach (var choice in choices) { choice.QuestionCategory = source.QuestionCategory; choice.CategoryId = null; }
-        var wrongCategory = NewQuestion("Related outside the period", category.Id);
+        var source = NewQuestion("Source question");
+        var choices = Enumerable.Range(0, 8).Select(i => NewQuestion("Related question " + i)).ToArray();
+        foreach (var choice in choices) { choice.QuestionCategory = source.QuestionCategory; }
+        var wrongCategory = NewQuestion("Related outside the period");
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Guqin", Content = "Boya" };
         db.AddRange(category, other, point, source, wrongCategory);
         db.Questions.AddRange(choices);
@@ -239,10 +239,10 @@ public class ContentSearchTests
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var otherCategory = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
-        var choices = Enumerable.Range(0, 7).Select(i => NewQuestion($"Candidate {i}", category.Id)).ToArray();
+        var choices = Enumerable.Range(0, 7).Select(i => NewQuestion($"Candidate {i}")).ToArray();
         var period = choices[0].QuestionCategory;
-        foreach (var choice in choices) { choice.QuestionCategory = period; choice.CategoryId = null; }
-        var other = NewQuestion("Outside selected period", category.Id);
+        foreach (var choice in choices) { choice.QuestionCategory = period; }
+        var other = NewQuestion("Outside selected period");
         db.AddRange(category, otherCategory, other); db.Questions.AddRange(choices); await db.SaveChangesAsync();
         foreach (var question in choices.Append(other)) SetEmbedding(question);
         await db.SaveChangesAsync();
@@ -311,10 +311,10 @@ public class ContentSearchTests
             new MemoryCache(new MemoryCacheOptions()), NullLogger<ContentVectorSearchService>.Instance);
     }
 
-    private static Question NewQuestion(string content, Guid categoryId) => new()
+    private static Question NewQuestion(string content) => new()
     {
         QuestionCategory = IntegrationTests.QuestionPeriodAssignmentTests.TestPeriod(),
-        Id = Guid.NewGuid(), Content = content, StandardAnswer = "Boya", CategoryId = categoryId
+        Id = Guid.NewGuid(), Content = content, StandardAnswer = "Boya"
     };
 
     private static byte[] Vector()

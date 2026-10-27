@@ -111,7 +111,7 @@ public class ContentCheckTests
         var tag = new Tag { Id = 1, DisplayName = "Paid", NormalizedName = "PAID", IsFree = false };
         var paidPeriod = QuestionPeriodAssignmentTests.TestPeriod();
         paidPeriod.IsFree = false;
-        var question = new Question { QuestionCategory = paidPeriod, Id = Guid.NewGuid(), Content = "Original", CategoryId = subject.Id };
+        var question = new Question { QuestionCategory = paidPeriod, Id = Guid.NewGuid(), Content = "Original" };
         var missing = new Paper { Id = Guid.NewGuid(), Title = "Missing", Status = PaperStatus.Publishable, IsFree = true };
         var empty = new Paper { Id = Guid.NewGuid(), Title = "Empty", Status = PaperStatus.Frozen, IsFree = true };
         var real = new Paper { Id = Guid.NewGuid(), Title = "Real exam", Status = PaperStatus.Frozen, IsRealExam = true };
@@ -178,7 +178,7 @@ public class ContentCheckTests
         await db.SaveChangesAsync();
         for (var i = 0; i < 500; i++)
         {
-            var question = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = $"Exercise {i}", CategoryId = subject.Id };
+            var question = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = $"Exercise {i}" };
             db.Questions.Add(question);
             db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
         }

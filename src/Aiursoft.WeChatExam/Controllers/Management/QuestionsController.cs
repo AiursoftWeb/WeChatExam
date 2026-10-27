@@ -46,10 +46,10 @@ public class QuestionsController(
         string sortOrder = "desc",
         int page = 1,
         int pageSize = 20,
-        string? period = null,
-        Guid? legacyCategoryId = null)
+        string? period = null)
     {
-        if (!ModelState.IsValid) return BadRequest();
+        // Retired filters must not silently return an unfiltered question list.
+        if (!ModelState.IsValid || Request.Query.ContainsKey("legacyCategoryId") || Request.Query.ContainsKey("categoryId")) return BadRequest();
         var query = context.Questions.AsQueryable();
         if (totalCategoryId.HasValue)
         {
@@ -64,13 +64,6 @@ public class QuestionsController(
             if (selectedPeriod == null) return NotFound();
             if (totalCategoryId.HasValue && selectedPeriod.TotalCategoryId != totalCategoryId) return BadRequest();
             query = query.Where(q => q.QuestionCategoryId == periodId);
-        }
-
-        // Only the legacy category deletion page still needs to locate these references.
-        // This is not the classification used by the question editor or practice navigation.
-        if (legacyCategoryId.HasValue)
-        {
-            query = query.Where(q => q.CategoryId == legacyCategoryId.Value);
         }
 
         // Filter by QuestionType
@@ -158,7 +151,6 @@ public class QuestionsController(
             SelectedPeriod = period,
             TotalCategories = await context.TotalCategories.AsNoTracking().OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ToListAsync(),
             TotalCategoryId = totalCategoryId,
-            LegacyCategoryId = legacyCategoryId,
 
             // Pagination
             CurrentPage = page,

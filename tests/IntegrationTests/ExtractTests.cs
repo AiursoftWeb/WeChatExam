@@ -90,7 +90,6 @@ public class ExtractTests : TestBase
         var q = await db.Questions.Include(q => q.QuestionTags).ThenInclude(t => t.Tag)
             .SingleAsync(q => q.Content == _questionText);
         Assert.AreEqual(_period, q.QuestionCategoryId);
-        Assert.IsNull(q.CategoryId);
         Assert.AreEqual("B", q.StandardAnswer);
         Assert.AreEqual("Original explanation", q.Explanation);
         CollectionAssert.AreEqual(new[] { "A", "B" }, JsonConvert.DeserializeObject<string[]>(q.Metadata)!);

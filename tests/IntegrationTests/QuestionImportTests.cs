@@ -56,7 +56,6 @@ public class QuestionImportTests : TestBase
         Assert.AreEqual(2, questions.Count);
         Assert.AreEqual(first, questions[0].QuestionCategoryId);
         Assert.AreEqual(second, questions[1].QuestionCategoryId);
-        Assert.IsTrue(questions.All(q => q.CategoryId == null));
         Assert.AreEqual("A", questions[0].StandardAnswer);
         Assert.AreEqual("Second explanation", questions[1].Explanation);
         CollectionAssert.AreEqual(new[] { "A", "B" }, JObject.Parse(questions[0].Metadata)["options"]!.ToObject<string[]>()!);

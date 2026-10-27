@@ -53,7 +53,7 @@ public class ContentSearchTests : TestBase
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var directory = new Category { Id = Guid.NewGuid(), Title = "Knowledge directory", ParentId = null };
         var question = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "scope-fixture" };
-        var excluded = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "scope-fixture excluded", Category = directory };
+        var excluded = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "scope-fixture excluded" };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "scope-fixture point", Content = "Knowledge" };
         db.AddRange(directory, question, excluded, point);
         db.Add(new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = directory.Id, KnowledgePointId = point.Id, KnowledgeCategory = new KnowledgeCategory { Id = directory.Id, Title = directory.Title, TotalCategoryId = directory.Id, TotalCategory = new TotalCategory { Id = directory.Id, Title = directory.Title } } });
@@ -91,7 +91,7 @@ public class ContentSearchTests : TestBase
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "Guqin" };
-        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Who played Flowing Water?", CategoryId = category.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Who played Flowing Water?" };
         db.AddRange(category, point, question); await db.SaveChangesAsync();
         var vector = new float[1024]; vector[0] = 1;
         point.Embedding = EmbeddingHelper.Serialize(vector); point.LastEmbeddedAt = point.LastUpdatedAt;
@@ -185,17 +185,17 @@ public class ContentSearchTests : TestBase
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Similar paper fixture" };
         var category = new Category { Id = Guid.NewGuid(), Title = "Similar category", ParentId = null };
-        var source = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Original <script>fixture</script>", CategoryId = category.Id };
-        var other = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Already in paper", CategoryId = category.Id };
+        var source = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Original <script>fixture</script>" };
+        var other = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Already in paper" };
         var candidates = Enumerable.Range(0, 7).Select(i => new Question
         {
             QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
-            Id = Guid.NewGuid(), Content = "Similar candidate " + i, CategoryId = category.Id,
+            Id = Guid.NewGuid(), Content = "Similar candidate " + i,
             StandardAnswer = "Answer " + i, Explanation = "Explanation " + i
         }).ToArray();
-        foreach (var candidate in candidates) { candidate.QuestionCategory = source.QuestionCategory; candidate.CategoryId = null; }
+        foreach (var candidate in candidates) { candidate.QuestionCategory = source.QuestionCategory; }
         var outsidePeriod = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
-            Id = Guid.NewGuid(), Content = "Wrong period but same legacy category", CategoryId = category.Id };
+            Id = Guid.NewGuid(), Content = "Wrong period but same legacy category" };
         db.AddRange(paper, category, source, other, outsidePeriod); db.Questions.AddRange(candidates); await db.SaveChangesAsync();
         db.AddRange(new PaperQuestion { PaperId = paper.Id, QuestionId = source.Id, Order = 3, Score = 7 },
             new PaperQuestion { PaperId = paper.Id, QuestionId = other.Id, Order = 5, Score = 11 });
@@ -495,7 +495,7 @@ public class ContentSearchTests : TestBase
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
-        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Boya", QuestionType = QuestionType.Blank, CategoryId = category.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Boya", QuestionType = QuestionType.Blank };
         db.AddRange(category, question); await db.SaveChangesAsync();
         question.Embedding = new byte[4096]; question.LastEmbeddedAt = question.LastUpdatedAt;
         await db.SaveChangesAsync();

@@ -188,7 +188,6 @@ public class MtqlTests
             Content = $"content_{idSuffix}",
             QuestionType = QuestionType.Choice,
             GradingStrategy = GradingStrategy.ExactMatch,
-            CategoryId = Guid.NewGuid(),
             QuestionTags = tags.Select(t => new QuestionTag 
             { 
                Tag = new Tag { DisplayName = t, NormalizedName = t.ToUpper() },

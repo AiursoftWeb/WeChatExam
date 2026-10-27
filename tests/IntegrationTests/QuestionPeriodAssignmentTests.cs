@@ -36,12 +36,11 @@ public class QuestionPeriodAssignmentTests : TestBase
         var other = new TotalCategory { Title = "Western music history" };
         var first = new QuestionCategory { Title = "Early music", TotalCategory = course, TotalCategoryId = course.Id };
         var second = new QuestionCategory { Title = "Medieval music", TotalCategory = other, TotalCategoryId = other.Id };
-        var legacy = new Category { Id = Guid.NewGuid(), Title = "Legacy classification", ParentId = null };
         var tag = new Tag { DisplayName = "Paid label", NormalizedName = "PAID LABEL", IsFree = false };
         var question = new Question
         {
-            Id = Guid.NewGuid(), Content = "Question for classification", QuestionCategory = first, Category = legacy,
-            CategoryId = legacy.Id, StandardAnswer = "Original answer", Explanation = "Original explanation",
+            Id = Guid.NewGuid(), Content = "Question for classification", QuestionCategory = first,
+            StandardAnswer = "Original answer", Explanation = "Original explanation",
             Metadata = "Original metadata", OrderIndex = 12
         };
         db.QuestionCategories.AddRange(first, second);
@@ -55,7 +54,7 @@ public class QuestionPeriodAssignmentTests : TestBase
     }
 
     [TestMethod]
-    public async Task AssigningAndChangingPeriodPreservesQuestionContentAndLegacyRules()
+    public async Task AssigningAndChangingPeriodPreservesQuestionContentAndTags()
     {
         await LoginAsAdmin();
         var (id, first, second) = await SeedQuestion();
@@ -73,14 +72,13 @@ public class QuestionPeriodAssignmentTests : TestBase
             AssertRedirect(response, "/Questions?page=2");
             using var scope = Server!.Services.CreateScope();
             var q = await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().Questions
-                .Include(q => q.Category).Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
+                .Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
                 .Include(q => q.QuestionTags).ThenInclude(t => t.Tag).SingleAsync(q => q.Id == id);
             Assert.AreEqual(period, q.QuestionCategoryId);
             Assert.AreEqual("Question for classification", q.Content);
             Assert.AreEqual("Original answer", q.StandardAnswer);
             Assert.AreEqual("Original explanation", q.Explanation);
             Assert.AreEqual("Original metadata", q.Metadata);
-            Assert.AreEqual("Legacy classification", q.Category!.Title);
             Assert.AreEqual("Paid label", q.QuestionTags.Single().Tag.DisplayName);
             Assert.IsFalse(q.QuestionTags.Single().Tag.IsFree);
             Assert.AreEqual(12m, q.OrderIndex);
@@ -227,7 +225,49 @@ public class QuestionPeriodAssignmentTests : TestBase
         Assert.AreEqual(1, await db.QuestionCategories.CountAsync());
     }
     [TestMethod]
-    public async Task QuestionEditorRequiresARealPeriodAndPreservesLegacyFields()
+    public async Task RetiringLegacyOwnershipPreservesQuestionsAndTheirBusinessLinks()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:;Foreign Keys=True");
+        await connection.OpenAsync();
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite(connection).Options);
+        var migrator = db.GetService<IMigrator>();
+        await migrator.MigrateAsync("20261027192427_AddInstitutions");
+        var period = TestPeriod();
+        var legacy = new Category { Id = Guid.NewGuid(), Title = "Retired ownership", ParentId = null };
+        var paper = new Paper { Id = Guid.NewGuid(), Title = "Preserved paper" };
+        var tag = new Tag { DisplayName = "Internal source", NormalizedName = "INTERNAL SOURCE" };
+        db.AddRange(period, legacy, paper, tag);
+        await db.SaveChangesAsync();
+        var id = Guid.NewGuid();
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO Questions (Id,Content,QuestionType,GradingStrategy,Metadata,StandardAnswer,Explanation,CreationTime,LastUpdatedAt,LastEmbeddedAt,CategoryId,QuestionCategoryId) VALUES ({id},'Preserved question',0,0,'Options','Answer','Explanation',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,{legacy.Id},{period.Id})");
+        db.QuestionTags.Add(new QuestionTag { QuestionId = id, TagId = tag.Id });
+        db.PaperQuestions.Add(new PaperQuestion { PaperId = paper.Id, QuestionId = id, Order = 3, Score = 7 });
+        await db.SaveChangesAsync();
+        await migrator.MigrateAsync();
+        db.ChangeTracker.Clear();
+        var question = await db.Questions.Include(q => q.QuestionTags).SingleAsync();
+        Assert.AreEqual(id, question.Id);
+        Assert.AreEqual(period.Id, question.QuestionCategoryId);
+        Assert.AreEqual("Preserved question", question.Content);
+        Assert.AreEqual("Options", question.Metadata);
+        Assert.AreEqual("Answer", question.StandardAnswer);
+        Assert.AreEqual("Explanation", question.Explanation);
+        Assert.AreEqual(tag.Id, question.QuestionTags.Single().TagId);
+        var paperQuestion = await db.PaperQuestions.SingleAsync();
+        Assert.AreEqual(id, paperQuestion.QuestionId);
+        Assert.AreEqual(paper.Id, paperQuestion.PaperId);
+        Assert.AreEqual(3, paperQuestion.Order);
+        Assert.AreEqual(7, paperQuestion.Score);
+        await using var columns = connection.CreateCommand();
+        columns.CommandText = "SELECT COUNT(*) FROM pragma_table_info('Questions') WHERE name='CategoryId'";
+        Assert.AreEqual(0L, await columns.ExecuteScalarAsync());
+        Assert.AreEqual(1, await db.Categories.Where(c => c.Id == legacy.Id).ExecuteDeleteAsync());
+        Assert.AreEqual(1, await db.Questions.CountAsync());
+        await Assert.ThrowsAsync<SqliteException>(() => db.QuestionCategories.Where(c => c.Id == period.Id).ExecuteDeleteAsync());
+    }
+
+    [TestMethod]
+    public async Task QuestionEditorRequiresARealPeriodAndPreservesTags()
     {
         await LoginAsAdmin();
         var (id, first, second) = await SeedQuestion();
@@ -254,7 +294,6 @@ public class QuestionPeriodAssignmentTests : TestBase
         AssertRedirect(await PostForm("/Questions/Create", form), form["ReturnUrl"]);
         var created = await db.Questions.SingleAsync(q => q.Content == form["Content"]);
         Assert.AreEqual(first, created.QuestionCategoryId);
-        Assert.IsNull(created.CategoryId, "The editor must not accept a legacy category from the client.");
         var original = await db.Questions.AsNoTracking().SingleAsync(q => q.Id == id);
         form["Id"] = id.ToString();
         form["Content"] = original.Content;
@@ -263,7 +302,6 @@ public class QuestionPeriodAssignmentTests : TestBase
         db.ChangeTracker.Clear();
         var updated = await db.Questions.SingleAsync(q => q.Id == id);
         Assert.AreEqual(second, updated.QuestionCategoryId);
-        Assert.AreEqual(original.CategoryId, updated.CategoryId);
         Assert.AreEqual("Paid label", (await db.QuestionTags.Include(t => t.Tag).SingleAsync(t => t.QuestionId == id)).Tag.DisplayName);
         form["QuestionCategoryId"] = "";
         form["Content"] = "Must not be saved";
@@ -283,15 +321,14 @@ public class QuestionPeriodAssignmentTests : TestBase
     {
         await LoginAsAdmin();
         var (id, first, second) = await SeedQuestion();
-        Guid total; Guid otherId; Guid legacyId;
+        Guid total; Guid otherId;
         using (var scope = Server!.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
             total = (await db.QuestionCategories.SingleAsync(c => c.Id == first)).TotalCategoryId;
             var q = await db.Questions.SingleAsync(q => q.Id == id);
-            legacyId = q.CategoryId!.Value;
             q.QuestionCategoryId = first;
-            var other = new Question { Id = Guid.NewGuid(), Content = "Other total question", QuestionCategoryId = second, CategoryId = legacyId };
+            var other = new Question { Id = Guid.NewGuid(), Content = "Other total question", QuestionCategoryId = second };
             otherId = other.Id;
             db.Questions.Add(other); await db.SaveChangesAsync();
         }
@@ -304,10 +341,8 @@ public class QuestionPeriodAssignmentTests : TestBase
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/Questions?totalCategoryId={total}&period={second}")).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/Questions?totalCategoryId=invalid")).StatusCode);
         Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/Questions?totalCategoryId={Guid.NewGuid()}")).StatusCode);
-        var references = await Http.GetStringAsync($"/Questions?legacyCategoryId={legacyId}");
-        Assert.Contains("This link shows legacy category references.", references);
-        Assert.Contains($"/Questions/Details/{id}", references);
-        Assert.Contains($"/Questions/Details/{otherId}", references);
+        foreach (var retiredFilter in new[] { "legacyCategoryId", "categoryId" })
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/Questions?{retiredFilter}={Guid.NewGuid()}")).StatusCode);
         var details = await Http.GetStringAsync($"/Questions/Details/{id}");
         Assert.DoesNotContain("Legacy classification", details);
         var deletion = await Http.GetStringAsync($"/Questions/Delete/{id}");

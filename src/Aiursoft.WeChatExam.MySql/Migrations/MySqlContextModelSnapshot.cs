@@ -827,9 +827,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid?>("CategoryId")
-                        .HasColumnType("char(36)");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(2000)
@@ -875,8 +872,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .HasColumnType("varchar(5000)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("QuestionCategoryId");
 
@@ -1802,17 +1797,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Question", b =>
                 {
-                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
-                        .WithMany("Questions")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("Aiursoft.WeChatExam.Entities.QuestionCategory", "QuestionCategory")
                         .WithMany()
                         .HasForeignKey("QuestionCategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("QuestionCategory");
                 });
@@ -2017,8 +2006,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("Children");
 
                     b.Navigation("PaperCategories");
-
-                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Coupon", b =>

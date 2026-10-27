@@ -134,11 +134,10 @@ public class TagPermissionTests
         var freePeriod = new QuestionCategory { Title = "Free period", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
         var paidPeriod = new QuestionCategory { Title = "Paid period", TotalCategoryId = course.Id, TotalCategory = course };
         var otherPeriod = new QuestionCategory { Title = "Other period", TotalCategoryId = otherCourse.Id, TotalCategory = otherCourse };
-        // Old knowledge-directory ownership and internal tag pricing must not affect practice.
-        var legacy = new Category { Title = "Unrelated legacy directory", ParentId = null };
+        // Internal tag pricing must not affect practice.
         var paidLabel = new Tag { DisplayName = "Internal paid label", NormalizedName = "INTERNAL PAID LABEL", IsFree = false };
         var free = new Question { Content = "Free question", StandardAnswer = "A", Metadata = "{\"options\":[\"A\",\"B\"]}",
-            QuestionCategory = freePeriod, Category = legacy, OrderIndex = 1, GradingStrategy = GradingStrategy.ExactMatch };
+            QuestionCategory = freePeriod, OrderIndex = 1, GradingStrategy = GradingStrategy.ExactMatch };
         var paid = new Question { Content = "Paid untagged question", StandardAnswer = "A", QuestionCategory = paidPeriod, OrderIndex = 2,
             GradingStrategy = GradingStrategy.ExactMatch };
         var other = new Question { Content = "Other course question", StandardAnswer = "A", QuestionCategory = otherPeriod, OrderIndex = 3,
@@ -232,8 +231,8 @@ public class TagPermissionTests
     [TestMethod]
     public async Task PracticeFiltersRejectLegacyNavigationAndMismatchedCourses()
     {
-        var (free, paid, other) = await SeedPracticeAsync();
-        foreach (var query in new[] { "categoryId=" + free.CategoryId, "tagName=Internal", "mtql=anything", "size=0", "randomSize=-1", "page=0",
+        var (_, paid, other) = await SeedPracticeAsync();
+        foreach (var query in new[] { "categoryId=" + Guid.NewGuid(), "tagName=Internal", "mtql=anything", "size=0", "randomSize=-1", "page=0",
                      $"totalCategoryId={other.QuestionCategory!.TotalCategoryId}&questionCategoryId={paid.QuestionCategoryId}" })
             Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.GetAsync($"/api/Questions?{query}")).StatusCode, query);
         foreach (var query in new[] { $"totalCategoryId={Guid.NewGuid()}", $"questionCategoryId={Guid.NewGuid()}" })
