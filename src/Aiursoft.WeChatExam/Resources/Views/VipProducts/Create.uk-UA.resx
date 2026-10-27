@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Оберіть категорію --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- Виберіть загальну категорію --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Скасувати</value>
   </data>
@@ -56,6 +59,12 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP для реальних іспитів</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Загальна категорія</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>VIP для всіх категорій</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>Тип VIP</value>

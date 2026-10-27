@@ -225,6 +225,9 @@
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>検索またはタグを追加するには入力してください...</value>
   </data>
+  <data name="Up to five similar questions in the same period as the original question. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>元の問題と同じ期間内の類似問題を最大5件表示します。既存の試験問題は除外されます。追加する候補を選択してください。元の問題は変更されません。</value>
+  </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>選択したカテゴリ（未選択の場合は全カテゴリ）から最大5件の類似問題を抽出します。既存の試験問題は除外されます。追加する候補を選択してください。元の質問は変更されません。</value>
   </data>

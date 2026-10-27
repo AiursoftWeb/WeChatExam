@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- เลือกหมวดหมู่ --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- เลือกหมวดหมู่รวม --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
   </data>
@@ -56,6 +59,12 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP การสอบจริง</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>หมวดหมู่ทั้งหมด</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>วีไอพีหมวดหมู่ทั้งหมด</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>ประเภท VIP</value>

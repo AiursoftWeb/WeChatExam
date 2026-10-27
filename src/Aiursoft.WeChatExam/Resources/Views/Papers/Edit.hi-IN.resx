@@ -225,6 +225,9 @@
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>खोजने या टैग जोड़ने के लिए टाइप करें...</value>
   </data>
+  <data name="Up to five similar questions in the same period as the original question. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>मूल प्रश्न की ही अवधि के अधिकतम पाँच मिलते-जुलते प्रश्न। प्रश्नपत्र में पहले से मौजूद प्रश्न शामिल नहीं किए जाएँगे। जोड़ने के लिए प्रश्न चुनें; मूल प्रश्न अपरिवर्तित रहेगा।</value>
+  </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>चयनित श्रेणी में अधिकतम पाँच मिलते-जुलते प्रश्न दिखाए जाएँगे; यदि कोई श्रेणी चयनित नहीं है, तो सभी श्रेणियों के प्रश्न दिखाए जाएँगे। प्रश्नपत्र में पहले से मौजूद प्रश्न शामिल नहीं होंगे। जोड़ने के लिए प्रश्न चुनें; मूल प्रश्न में कोई बदलाव नहीं होगा।</value>
   </data>

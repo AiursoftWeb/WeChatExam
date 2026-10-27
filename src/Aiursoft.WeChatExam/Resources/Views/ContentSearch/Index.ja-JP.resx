@@ -27,6 +27,18 @@
   <data name="All Content" xml:space="preserve">
     <value>すべてのコンテンツ</value>
   </data>
+  <data name="All Knowledge Categories" xml:space="preserve">
+    <value>すべての知識カテゴリ</value>
+  </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>すべての期間</value>
+  </data>
+  <data name="Applies only to knowledge points." xml:space="preserve">
+    <value>知識ポイントにのみ適用されます。</value>
+  </data>
+  <data name="Applies only to questions." xml:space="preserve">
+    <value>質問のみに適用されます。</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>カテゴリ</value>
   </data>
@@ -48,6 +60,9 @@
   <data name="Keyword Search" xml:space="preserve">
     <value>キーワード検索</value>
   </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>知識カテゴリ</value>
+  </data>
   <data name="Knowledge Point" xml:space="preserve">
     <value>知識ポイント</value>
   </data>
@@ -56,6 +71,9 @@
   </data>
   <data name="No matching content found. Try fewer words or another category." xml:space="preserve">
     <value>該当するコンテンツが見つかりませんでした。検索語を減らすか、別のカテゴリーをお試しください。</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>年度</value>
   </data>
   <data name="Questions and knowledge points" xml:space="preserve">
     <value>質問と知識項目</value>

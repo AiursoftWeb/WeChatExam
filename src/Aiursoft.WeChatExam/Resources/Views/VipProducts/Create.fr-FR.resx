@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Sélectionner une catégorie --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- Sélectionnez une catégorie générale --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
@@ -56,6 +59,12 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP Examen Réel</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Catégorie totale</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>VIP pour une catégorie complète</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>Type de VIP</value>
