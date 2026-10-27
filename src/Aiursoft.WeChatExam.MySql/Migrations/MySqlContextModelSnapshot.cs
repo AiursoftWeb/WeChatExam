@@ -449,6 +449,28 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("GlobalSettings");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Institution", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Institutions");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategory", b =>
                 {
                     b.Property<Guid>("Id")

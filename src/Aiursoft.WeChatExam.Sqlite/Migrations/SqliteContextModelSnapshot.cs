@@ -442,6 +442,28 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("GlobalSettings");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Institution", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Institutions");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategory", b =>
                 {
                     b.Property<Guid>("Id")
