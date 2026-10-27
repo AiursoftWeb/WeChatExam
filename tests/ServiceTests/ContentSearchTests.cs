@@ -259,7 +259,7 @@ public class ContentSearchTests
         Assert.AreEqual(other.Id, allPeriods.Single().Id);
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Cross-period knowledge", Content = "Topic" };
         db.Add(point); await db.SaveChangesAsync();
-        request.Id = point.Id; request.QuestionCategoryId = period!.Id;
+        request.Id = point.Id; request.QuestionCategoryId = period.Id;
         var (_, knowledgeRecommendations) = await service.RecommendAsync(request, true);
         Assert.AreEqual(other.Id, knowledgeRecommendations.Single().Id,
             "Knowledge-point recommendations must not mistake a directory for a question period.");
