@@ -233,4 +233,79 @@ public class VipAccessTests
         Assert.IsFalse(resC!.First(p => p.Title == "Real").HasAccess);
         Assert.IsTrue(resC!.First(p => p.Title == "Cat Paper").HasAccess);
     }
+    [TestMethod]
+    public async Task PracticeNavigationUsesOnlyTotalCategoriesAndTheirOrderedPeriods()
+    {
+        var course = new TotalCategory { Title = "Navigation course", OrderIndex = 10 };
+        var empty = new TotalCategory { Title = "Empty course", OrderIndex = 20 };
+        var free = new QuestionCategory { Title = "Free period", TotalCategoryId = course.Id, IsFree = true, OrderIndex = 2 };
+        var paid = new QuestionCategory { Title = "Paid period", TotalCategoryId = course.Id, IsFree = false, OrderIndex = 1 };
+        var knowledge = new Category { Title = "Knowledge-only overview", ParentId = null };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(course, empty, free, paid, knowledge);
+            await db.SaveChangesAsync();
+        }
+
+        var courses = await _http.GetFromJsonAsync<List<TotalCategorySummaryDto>>("/api/TotalCategories");
+        Assert.IsNotNull(courses);
+        Assert.IsFalse(courses.Any(c => c.Id == knowledge.Id));
+        Assert.AreEqual(course.Title, courses.Single(c => c.Id == course.Id).Title);
+        Assert.AreEqual(course.OrderIndex, courses.Single(c => c.Id == course.Id).OrderIndex);
+        CollectionAssert.AreEqual(new[] { course.Id, empty.Id },
+            courses.Where(c => c.Id == course.Id || c.Id == empty.Id).Select(c => c.Id).ToArray());
+        var periods = await _http.GetFromJsonAsync<List<QuestionCategorySummaryDto>>($"/api/TotalCategories/{course.Id}/QuestionCategories");
+        Assert.IsNotNull(periods);
+        CollectionAssert.AreEqual(new[] { paid.Id, free.Id }, periods.Select(c => c.Id).ToArray());
+        Assert.IsTrue(periods.All(c => c.TotalCategoryId == course.Id));
+        Assert.AreEqual(paid.Title, periods[0].Title);
+        Assert.AreEqual(paid.OrderIndex, periods[0].OrderIndex);
+        Assert.IsFalse(periods[0].IsFree);
+        Assert.IsFalse(periods[0].HasAccess);
+        Assert.IsTrue(periods[1].IsFree);
+        Assert.IsTrue(periods[1].HasAccess);
+        Assert.AreEqual(0, (await _http.GetFromJsonAsync<List<QuestionCategorySummaryDto>>(
+            $"/api/TotalCategories/{empty.Id}/QuestionCategories"))!.Count);
+        using var missing = await _http.GetAsync($"/api/TotalCategories/{knowledge.Id}/QuestionCategories");
+        Assert.AreEqual(HttpStatusCode.NotFound, missing.StatusCode);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+    }
+
+    [TestMethod]
+    public async Task PracticeNavigationRequiresTheMatchingActiveCourseMembership()
+    {
+        var course = new TotalCategory { Title = "Membership course" };
+        var other = new TotalCategory { Title = "Other membership course" };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(course, other,
+                new QuestionCategory { Title = "Paid period", TotalCategoryId = course.Id },
+                new QuestionCategory { Title = "Other paid period", TotalCategoryId = other.Id });
+            await db.SaveChangesAsync();
+        }
+        var token = await LoginAsync();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        var now = DateTime.UtcNow;
+        var product = new VipProduct { Name = "Stopped sales", TotalCategoryId = course.Id, IsEnabled = false };
+        var membership = new VipMembership { UserId = "u", VipProduct = product, StartTime = now.AddDays(-1), EndTime = now.AddDays(1) };
+        async Task<bool> CanEnter(Guid id) => (await _http.GetFromJsonAsync<List<QuestionCategorySummaryDto>>(
+            $"/api/TotalCategories/{id}/QuestionCategories"))!.Single().HasAccess;
+
+        Assert.IsFalse(await CanEnter(course.Id));
+        _mockWeChatPayService.Memberships = [membership];
+        Assert.IsTrue(await CanEnter(course.Id), "Stopping sales does not revoke a purchased membership.");
+        Assert.IsFalse(await CanEnter(other.Id));
+        membership.EndTime = now.AddMinutes(-1);
+        Assert.IsFalse(await CanEnter(course.Id));
+        membership.StartTime = now.AddDays(1);
+        membership.EndTime = now.AddDays(2);
+        Assert.IsFalse(await CanEnter(course.Id));
+        membership.StartTime = now.AddDays(-1);
+        product.Type = VipProductType.RealExam;
+        product.TotalCategoryId = null;
+        Assert.IsFalse(await CanEnter(course.Id), "Real-exam rights do not grant independent practice rights.");
+    }
+
 }
