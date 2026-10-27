@@ -612,7 +612,7 @@ public class KnowledgePointAssociationTests
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var category = new Category { Id = Guid.NewGuid(), Title = "Origin course", ParentId = null };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Origin lesson", Content = "Public" };
-        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Origin exercise", CategoryId = category.Id };
+        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Origin exercise" };
         var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG", IsFree = false };
         var taxonomy = new Taxonomy { Name = "Origin taxonomy" };
         var product = new VipProduct { Name = "Origin VIP", TotalCategory = new TotalCategory { Id = category.Id, Title = category.Title }, DurationDays = 365 };

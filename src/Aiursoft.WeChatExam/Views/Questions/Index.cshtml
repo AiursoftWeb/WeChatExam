@@ -19,11 +19,6 @@
     <button type="submit" class="btn btn-outline-primary">@Localizer["Search"]</button>
 </form>
 
-@if (Model.LegacyCategoryId.HasValue)
-{
-    <p class="text-muted">@Localizer["This link shows legacy category references. Current question classification uses total categories and periods."]</p>
-}
-
 <div class="card mb-3">
     <div class="card-header cursor-pointer" data-bs-toggle="collapse" data-bs-target="#filterPanel">
         <h5 class="card-title mb-0 d-flex justify-content-between">
@@ -37,10 +32,6 @@
                 <input type="hidden" name="sortBy" value="@Model.SortBy" />
                 <input type="hidden" name="sortOrder" value="@Model.SortOrder" />
                 <input type="hidden" name="page" value="1" />
-                @if (Model.LegacyCategoryId.HasValue)
-                {
-                    <input type="hidden" name="legacyCategoryId" value="@Model.LegacyCategoryId" />
-                }
 
                 <div class="row g-3">
                     <div class="col-md-3">

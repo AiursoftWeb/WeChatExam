@@ -49,11 +49,6 @@ public class Question
     public string Explanation { get; set; } = string.Empty;
 
     /// <summary>
-    /// 所属分类的 ID（可为空，表示未分类）
-    /// </summary>
-    public Guid? CategoryId { get; set; }
-
-    /// <summary>
     /// The single period that owns this question and determines its total category.
     /// Every creation/import path must choose an existing period.
     /// </summary>
@@ -88,11 +83,6 @@ public class Question
     /// 自定义排序顺序。数字越小越靠前。为 null 表示未定义顺序，通常排在已定义顺序的题目之后。
     /// </summary>
     public decimal? OrderIndex { get; set; }
-
-    // 导航引用：Category?, JsonIgnore, ForeignKey
-    [JsonIgnore]
-    [ForeignKey(nameof(CategoryId))]
-    public Category? Category { get; set; }
 
     [InverseProperty(nameof(KnowledgePointQuestion.Question))]
     public IEnumerable<KnowledgePointQuestion> KnowledgePointQuestions { get; init; } = new List<KnowledgePointQuestion>();

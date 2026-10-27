@@ -110,8 +110,7 @@ public class PaperImportTests
         var repeat = await Post("ImportSave", save); Assert.AreEqual(paperId, JObject.Parse(await repeat.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>());
         var paper = await db.Papers.SingleAsync(p => p.Id == paperId); Assert.AreEqual(180, paper.TimeLimit); Assert.IsTrue(paper.IsRealExam); Assert.IsFalse(paper.IsFree); Assert.AreEqual(PaperStatus.Draft, paper.Status);
         var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
-        Assert.AreEqual("User edit", questions[0].Question.Content); Assert.AreEqual("First original question", questions[1].Question.Content); Assert.AreEqual("True", questions[0].Question.StandardAnswer); Assert.AreEqual("Manually supplied answer", questions[1].Question.StandardAnswer); Assert.IsTrue(questions.All(p => p.Question.CategoryId == null));
-        Assert.AreEqual(_secondPeriod, questions[0].Question.QuestionCategoryId);
+        Assert.AreEqual("User edit", questions[0].Question.Content); Assert.AreEqual("First original question", questions[1].Question.Content); Assert.AreEqual("True", questions[0].Question.StandardAnswer); Assert.AreEqual("Manually supplied answer", questions[1].Question.StandardAnswer); Assert.AreEqual(_secondPeriod, questions[0].Question.QuestionCategoryId);
         Assert.AreEqual(_firstPeriod, questions[1].Question.QuestionCategoryId);
         Assert.AreEqual(2, await db.PaperTags.CountAsync(t => t.PaperId == paperId)); Assert.AreEqual(4, await db.QuestionTags.CountAsync(t => questions.Select(q => q.QuestionId).Contains(t.QuestionId))); Assert.AreEqual(0, await db.PaperCategories.CountAsync(c => c.PaperId == paperId));
         Assert.IsFalse((await db.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName)).IsFree); Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.ExtraTags[0])).IsFree);
@@ -239,7 +238,6 @@ public class PaperImportTests
         Assert.AreEqual(legacy.Id, (await db.PaperCategories.SingleAsync(p => p.PaperId == paperId)).CategoryId);
         var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
         CollectionAssert.AreEqual(new Guid?[] { _firstPeriod, _secondPeriod, _secondPeriod }, questions.Select(p => p.Question.QuestionCategoryId).ToArray());
-        Assert.IsTrue(questions.All(p => p.Question.CategoryId == null));
         Assert.AreEqual(1, _ai.Questions.Count);
     }
 

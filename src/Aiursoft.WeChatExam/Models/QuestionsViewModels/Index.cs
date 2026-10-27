@@ -18,8 +18,6 @@ public class IndexViewModel : UiStackLayoutViewModel
 
     public Guid? TotalCategoryId { get; set; }
 
-    public Guid? LegacyCategoryId { get; set; }
-
     public List<TotalCategory> TotalCategories { get; set; } = new();
 
     // Pagination

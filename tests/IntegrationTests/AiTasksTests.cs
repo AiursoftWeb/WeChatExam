@@ -187,7 +187,6 @@ public class AiTasksTests
         // Need to reload question from DB
         dbContext.Entry(question).Reload();
         Assert.AreEqual(suggestedPeriodId, question.QuestionCategoryId);
-        Assert.IsNull(question.CategoryId);
         StringAssert.Contains(_mockOllamaService.Questions.Single(), expectedName);
         Assert.DoesNotContain(category.Id.ToString(), _mockOllamaService.Questions.Single());
         Assert.DoesNotContain(newCategory.Id.ToString(), _mockOllamaService.Questions.Single());
@@ -205,7 +204,8 @@ public class AiTasksTests
         var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
         var period = await db.QuestionCategories.Include(c => c.TotalCategory).SingleAsync(c => c.Id == periodId);
         var legacy = new Category { Title = "Legacy context " + Guid.NewGuid(), ParentId = null };
-        var question = new Question { Content = "Question context", StandardAnswer = "Answer", QuestionCategoryId = periodId, Category = legacy };
+        db.Categories.Add(legacy);
+        var question = new Question { Content = "Question context", StandardAnswer = "Answer", QuestionCategoryId = periodId };
         db.Questions.Add(question); await db.SaveChangesAsync();
         _mockOllamaService.Response = "Suggested answer";
         _http.DefaultRequestHeaders.Add("RequestVerificationToken", await GetAntiCsrfToken("/Questions/Index"));
@@ -232,8 +232,9 @@ public class AiTasksTests
         var deletedPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_server.Services);
         db.QuestionCategories.Remove(await db.QuestionCategories.SingleAsync(c => c.Id == deletedPeriod));
         var legacy = new Category { Title = "Legacy knowledge tree", ParentId = null };
-        var first = new Question { Content = "First adoption question", QuestionCategoryId = oldPeriod, Category = legacy };
-        var second = new Question { Content = "Second adoption question", QuestionCategoryId = oldPeriod, Category = legacy };
+        db.Categories.Add(legacy);
+        var first = new Question { Content = "First adoption question", QuestionCategoryId = oldPeriod };
+        var second = new Question { Content = "Second adoption question", QuestionCategoryId = oldPeriod };
         db.Questions.AddRange(first, second);
         await db.SaveChangesAsync();
         var tasks = scope.ServiceProvider.GetRequiredService<AiTaskService>();
@@ -272,7 +273,6 @@ public class AiTasksTests
         {
             var question = await db.Questions.SingleAsync(q => q.Id == id);
             Assert.AreEqual(newPeriod, question.QuestionCategoryId);
-            Assert.AreEqual(legacy.Id, question.CategoryId, "Adoption must not rewrite the legacy relationship.");
         }
         Assert.IsEmpty(task.Items);
         Assert.IsTrue(task.IsCanceled);
@@ -299,7 +299,8 @@ public class AiTasksTests
         (await db.QuestionCategories.SingleAsync(c => c.Id == first)).Title = title;
         (await db.QuestionCategories.SingleAsync(c => c.Id == second)).Title = title;
         var legacy = new Category { Title = "Not an AI candidate", ParentId = null };
-        var question = new Question { Content = "Ambiguous period question", QuestionCategoryId = first, Category = legacy };
+        db.Categories.Add(legacy);
+        var question = new Question { Content = "Ambiguous period question", QuestionCategoryId = first };
         db.Questions.Add(question); await db.SaveChangesAsync();
         _mockOllamaService.Response = ambiguousName ? title : legacy.Id.ToString();
         var token = await GetAntiCsrfToken("/Questions/Index");
