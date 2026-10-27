@@ -14,13 +14,14 @@ public class CreateViewModel : UiStackLayoutViewModel
 
     [Required]
     public string Name { get; set; } = string.Empty;
+    [EnumDataType(typeof(VipProductType))]
     public VipProductType Type { get; set; } = VipProductType.Category;
-    public Guid? CategoryId { get; set; }
+    public Guid? TotalCategoryId { get; set; }
     
     [Range(1, int.MaxValue)]
     public int PriceInFen { get; set; }
     
     [Range(1, int.MaxValue)]
     public int DurationDays { get; set; } = 365;
-    public List<SelectListItem> Categories { get; set; } = [];
+    public List<SelectListItem> TotalCategories { get; set; } = [];
 }

@@ -32,7 +32,7 @@ public class ContentCheckService(
         }).ToListAsync(cancellationToken);
         var knowledgeQuestions = await context.KnowledgePointQuestions.AsNoTracking().ToListAsync(cancellationToken);
         var knowledgeCategories = await context.CategoryKnowledgePoints.AsNoTracking().ToListAsync(cancellationToken);
-        var products = await context.VipProducts.AsNoTracking().ToListAsync(cancellationToken);
+        var products = await context.VipProducts.AsNoTracking().Include(p => p.TotalCategory).ToListAsync(cancellationToken);
         var papers = await context.Papers.AsNoTracking().Include(p => p.PaperCategories)
             .Include(p => p.PaperSnapshots).AsSplitQuery().ToListAsync(cancellationToken);
         // Only IDs and counts are needed. A deleted or modified original question does not
@@ -57,8 +57,8 @@ public class ContentCheckService(
         var categoriesByKnowledge = knowledgeCategories.ToLookup(k => k.KnowledgePointId, k => k.CategoryId);
         var questionsByTag = questionTags.ToLookup(t => t.TagId, t => t.QuestionId);
         var snapshotQuestions = snapshots.ToLookup(s => s.PaperSnapshotId);
-        var availableSubjects = products.Where(p => p.IsEnabled && p.Type == VipProductType.Category && p.CategoryId.HasValue)
-            .Select(p => p.CategoryId!.Value).ToHashSet();
+        var availableSubjects = products.Where(p => p.IsEnabled && p.Type == VipProductType.Category && p.TotalCategoryId.HasValue)
+            .Select(p => p.TotalCategoryId!.Value).ToHashSet();
         var purchasable = new PaperAccessStatus
         {
             ActiveCategoryVips = availableSubjects,
@@ -145,8 +145,8 @@ public class ContentCheckService(
             settings.AddRange(q.QuestionTags.Where(t => t.Tag.Taxonomy != null).Select(t =>
                 new ContentReference("Taxonomies", t.Tag.Taxonomy!.Id.ToString(), t.Tag.Taxonomy.Name, AppPermissionNames.CanManageTags)));
             settings.AddRange(categories.Where(c => relevantSubjects.Contains(c.Id)).Select(CategoryRef));
-            settings.AddRange(products.Where(p => p.Type == VipProductType.Category && p.CategoryId.HasValue &&
-                relevantSubjects.Contains(p.CategoryId.Value)).Select(ProductRef));
+            settings.AddRange(products.Where(p => p.Type == VipProductType.Category && p.TotalCategoryId.HasValue &&
+                relevantSubjects.Contains(p.TotalCategoryId.Value)).Select(ProductRef));
             // Show only meaningful course scenarios here; the full endpoint evidence remains
             // in the technical report. These decisions are identical to the serving policy.
             var scenarios = new[] { visitor, signedIn }.Concat(courseScenarios
@@ -292,7 +292,7 @@ public class ContentCheckService(
         }
 
         foreach (var product in products.Where(p => p.Type == VipProductType.Category &&
-                     (!p.CategoryId.HasValue || !categories.Any(c => c.Id == p.CategoryId.Value))))
+                     (!p.TotalCategoryId.HasValue || p.TotalCategory == null)))
         {
             var finding = Add("VIP003", CheckSeverity.Error, localizer["Subject VIP product has no valid subject"],
                 localizer["This product cannot grant the intended subject membership."],

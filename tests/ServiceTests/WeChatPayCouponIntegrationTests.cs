@@ -85,6 +85,38 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    public async Task CourseMembershipReadsKeepValidityAndRealExamEntitlementsIndependent()
+    {
+        var now = DateTime.UtcNow;
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Membership test user" });
+        var active = new VipProduct { Name = "Stopped sales", IsEnabled = false, TotalCategory = new TotalCategory { Title = "History" } };
+        var expired = new VipProduct { Name = "Expired", TotalCategory = new TotalCategory { Title = "Western history" } };
+        var future = new VipProduct { Name = "Future", TotalCategory = new TotalCategory { Title = "Traditional music" } };
+        var real = new VipProduct { Name = "All real exams", Type = VipProductType.RealExam };
+        _dbContext.VipMemberships.AddRange(
+            new VipMembership { UserId = _userId, VipProduct = active, StartTime = now.AddDays(-1), EndTime = now.AddDays(30) },
+            new VipMembership { UserId = _userId, VipProduct = expired, StartTime = now.AddDays(-30), EndTime = now.AddDays(-1) },
+            new VipMembership { UserId = _userId, VipProduct = future, StartTime = now.AddDays(1), EndTime = now.AddDays(30) },
+            new VipMembership { UserId = _userId, VipProduct = real, StartTime = now.AddDays(-1), EndTime = now.AddDays(30) });
+        await _dbContext.SaveChangesAsync();
+        _dbContext.ChangeTracker.Clear();
+
+        var memberships = await _payService.GetVipStatusListAsync(_userId);
+        Assert.AreEqual(4, memberships.Count);
+        Assert.AreEqual("History", memberships.Single(m => m.VipProductId == active.Id).VipProduct!.TotalCategory!.Title);
+        var access = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
+        CollectionAssert.AreEquivalent(new[] { active.TotalCategoryId!.Value }, access.ActiveCategoryVips.ToArray());
+        Assert.IsTrue(access.HasRealExamVip);
+        Assert.IsTrue(await _payService.HasVipForCategoryAsync(_userId, active.TotalCategoryId.Value));
+        Assert.IsFalse(await _payService.HasVipForCategoryAsync(_userId, expired.TotalCategoryId!.Value));
+        Assert.IsFalse(await _payService.HasVipForCategoryAsync(_userId, future.TotalCategoryId!.Value));
+        Assert.AreEqual(now.AddDays(30), memberships.Single(m => m.VipProductId == active.Id).EndTime);
+        var visitor = await new PaperAccessService(_payService).GetUserAccessStatusAsync(null);
+        Assert.AreEqual(0, visitor.ActiveCategoryVips.Count);
+        Assert.IsFalse(visitor.HasRealExamVip);
+    }
+
+    [TestMethod]
     public async Task TestCreateOrder_WithManualCoupon()
     {
         // 1. Create a coupon

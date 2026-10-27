@@ -11,7 +11,7 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
     public async Task<List<VipProduct>> GetAllAsync()
     {
         return await dbContext.VipProducts
-            .Include(v => v.Category)
+            .Include(v => v.TotalCategory)
             .OrderByDescending(v => v.CreationTime)
             .ToListAsync();
     }
@@ -19,22 +19,23 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
     public async Task<VipProduct?> GetByIdAsync(Guid id)
     {
         return await dbContext.VipProducts
-            .Include(v => v.Category)
+            .Include(v => v.TotalCategory)
             .FirstOrDefaultAsync(v => v.Id == id);
     }
 
-    public async Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays)
+    public async Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? totalCategoryId, int priceInFen, int durationDays)
     {
-        if (type == VipProductType.Category && !categoryId.HasValue)
+        if (!Enum.IsDefined(type) || (type == VipProductType.Category &&
+            (!totalCategoryId.HasValue || !await dbContext.TotalCategories.AnyAsync(c => c.Id == totalCategoryId.Value))))
         {
-            throw new ArgumentException("CategoryId is required when VIP product type is Category.");
+            throw new ArgumentException("A course VIP requires an existing total category.");
         }
 
         var product = new VipProduct
         {
             Name = name,
             Type = type,
-            CategoryId = type == VipProductType.Category ? categoryId : null,
+            TotalCategoryId = type == VipProductType.Category ? totalCategoryId : null,
             PriceInFen = priceInFen,
             DurationDays = durationDays,
             IsEnabled = true
@@ -45,11 +46,12 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         return product;
     }
 
-    public async Task UpdateAsync(Guid id, string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, bool isEnabled)
+    public async Task UpdateAsync(Guid id, string name, VipProductType type, Guid? totalCategoryId, int priceInFen, int durationDays, bool isEnabled)
     {
-        if (type == VipProductType.Category && !categoryId.HasValue)
+        if (!Enum.IsDefined(type) || (type == VipProductType.Category &&
+            (!totalCategoryId.HasValue || !await dbContext.TotalCategories.AnyAsync(c => c.Id == totalCategoryId.Value))))
         {
-            throw new ArgumentException("CategoryId is required when VIP product type is Category.");
+            throw new ArgumentException("A course VIP requires an existing total category.");
         }
 
         var product = await dbContext.VipProducts.FindAsync(id);
@@ -57,7 +59,7 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
 
         product.Name = name;
         product.Type = type;
-        product.CategoryId = type == VipProductType.Category ? categoryId : null;
+        product.TotalCategoryId = type == VipProductType.Category ? totalCategoryId : null;
         product.PriceInFen = priceInFen;
         product.DurationDays = durationDays;
         product.IsEnabled = isEnabled;
@@ -74,10 +76,10 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         await dbContext.SaveChangesAsync();
     }
 
-    public async Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null, VipProductType? type = null)
+    public async Task<List<VipProduct>> GetEnabledAsync(Guid? totalCategoryId = null, VipProductType? type = null)
     {
         var query = dbContext.VipProducts
-            .Include(v => v.Category)
+            .Include(v => v.TotalCategory)
             .Where(v => v.IsEnabled);
 
         if (type.HasValue)
@@ -85,9 +87,9 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
             query = query.Where(v => v.Type == type.Value);
         }
 
-        if (categoryId.HasValue)
+        if (totalCategoryId.HasValue)
         {
-            query = query.Where(v => v.CategoryId == categoryId.Value);
+            query = query.Where(v => v.TotalCategoryId == totalCategoryId.Value);
         }
 
         return await query

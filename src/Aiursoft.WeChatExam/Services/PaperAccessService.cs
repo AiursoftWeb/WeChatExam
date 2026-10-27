@@ -27,9 +27,11 @@ public class PaperAccessService : IPaperAccessService
             var vips = await _payService.GetVipStatusListAsync(userId);
             var activeVips = vips.Where(v => v.IsActive && v.VipProduct != null).ToList();
             
+            // Existing course IDs were retained when VIP products moved to TotalCategories.
+            // The remaining legacy content readers consume those same IDs until their migration.
             status.ActiveCategoryVips = activeVips
-                .Where(v => v.VipProduct!.Type == VipProductType.Category && v.VipProduct.CategoryId.HasValue)
-                .Select(v => v.VipProduct!.CategoryId!.Value)
+                .Where(v => v.VipProduct!.Type == VipProductType.Category && v.VipProduct.TotalCategoryId.HasValue)
+                .Select(v => v.VipProduct!.TotalCategoryId!.Value)
                 .ToHashSet();
                 
             status.HasRealExamVip = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);

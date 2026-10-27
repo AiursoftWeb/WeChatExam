@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- 选择类别 --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- 请选择总分类 --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
@@ -62,6 +65,12 @@
   </data>
   <data name="Save and return to content checks" xml:space="preserve">
     <value>保存并返回内容审核</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>总分类</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>总分类会员</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>会员类型</value>

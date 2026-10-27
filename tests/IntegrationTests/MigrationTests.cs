@@ -15,6 +15,76 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class MigrationTests
 {
     [TestMethod]
+    public async Task MovingVipProductsPreservesPurchasedEntitlementsAndRemovesTheOldForeignKey()
+    {
+        await using var context = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:").Options);
+        await context.Database.OpenConnectionAsync();
+        var migrator = context.GetService<IMigrator>();
+        await migrator.MigrateAsync("20261026191817_RequireQuestionPeriod");
+        var course = new TotalCategory { Title = "History" };
+        var legacy = new Category { Id = course.Id, Title = "Old course title", ParentId = null };
+        var student = new User { UserName = "student", DisplayName = "Student" };
+        context.AddRange(course, legacy, student);
+        await context.SaveChangesAsync();
+        var productId = Guid.NewGuid();
+        var realId = Guid.NewGuid();
+        var created = DateTime.UtcNow.AddYears(-1);
+        await context.Database.ExecuteSqlInterpolatedAsync($"""
+            INSERT INTO VipProducts (Id, Name, Type, CategoryId, PriceInFen, DurationDays, IsEnabled, CreationTime)
+            VALUES ({productId}, 'Retained course VIP', 0, {course.Id}, 19800, 366, 0, {created}),
+                   ({realId}, 'All real exams', 1, NULL, 29800, 365, 1, {created})
+            """);
+        var order = new PaymentOrder
+        {
+            OutTradeNo = "existing-paid-order", UserId = student.Id, VipProductId = productId,
+            Description = "Paid before migration", AmountInFen = 19800, Status = PaymentOrderStatus.Paid
+        };
+        var member = new VipMembership
+        {
+            UserId = student.Id, VipProductId = productId, StartTime = created, EndTime = created.AddYears(2),
+            LastPaymentOrder = order
+        };
+        var realMember = new VipMembership
+        {
+            UserId = student.Id, VipProductId = realId, StartTime = created, EndTime = created.AddYears(2)
+        };
+        context.AddRange(order, member, realMember);
+        await context.SaveChangesAsync();
+        await migrator.MigrateAsync();
+        context.ChangeTracker.Clear();
+
+        var saved = await context.VipMemberships.Include(m => m.VipProduct)
+            .ThenInclude(p => p!.TotalCategory).Include(m => m.LastPaymentOrder).SingleAsync(m => m.Id == member.Id);
+        Assert.AreEqual(productId, saved.VipProductId);
+        Assert.AreEqual(member.StartTime, saved.StartTime);
+        Assert.AreEqual(member.EndTime, saved.EndTime);
+        Assert.AreEqual(order.Id, saved.LastPaymentOrderId);
+        Assert.AreEqual(PaymentOrderStatus.Paid, saved.LastPaymentOrder!.Status);
+        Assert.AreEqual(19800, saved.LastPaymentOrder.AmountInFen);
+        Assert.AreEqual(course.Id, saved.VipProduct!.TotalCategoryId);
+        Assert.AreEqual("History", saved.VipProduct.TotalCategory!.Title);
+        Assert.AreEqual(created, saved.VipProduct.CreationTime);
+        Assert.AreEqual(366, saved.VipProduct.DurationDays);
+        Assert.IsFalse(saved.VipProduct.IsEnabled);
+        var real = await context.VipMemberships.Include(m => m.VipProduct).SingleAsync(m => m.Id == realMember.Id);
+        Assert.IsNull(real.VipProduct!.TotalCategoryId);
+        Assert.AreEqual(VipProductType.RealExam, real.VipProduct.Type);
+        Assert.AreEqual(realMember.EndTime, real.EndTime);
+
+        // A knowledge-directory entry no longer owns the purchased course membership.
+        context.Categories.Remove(await context.Categories.SingleAsync());
+        await context.SaveChangesAsync();
+        Assert.AreEqual(2, await context.VipMemberships.CountAsync());
+        context.ChangeTracker.Clear();
+        await Assert.ThrowsExactlyAsync<Microsoft.Data.Sqlite.SqliteException>(() =>
+            context.Database.ExecuteSqlInterpolatedAsync($"DELETE FROM TotalCategories WHERE Id = {course.Id}"));
+        await using var command = context.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "SELECT count(*) FROM pragma_table_info('VipProducts') WHERE name = 'CategoryId'";
+        Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+    }
+
+    [TestMethod]
     public async Task RemovingKnowledgeHierarchyPreservesContentAndCategoryOrder()
     {
         var options = new DbContextOptionsBuilder<SqliteContext>().UseSqlite("DataSource=:memory:").Options;

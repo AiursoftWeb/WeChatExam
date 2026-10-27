@@ -14,17 +14,18 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Type" class="form-label">@Localizer["VIP Type"]</label>
-                <select asp-for="Type" class="form-select" id="vipTypeSelect">
-                    <option value="@((int)VipProductType.Category)">@Localizer["Category VIP"]</option>
+                <select asp-for="Type" class="form-select" id="vipTypeSelect" data-course-type="@((int)VipProductType.Category)">
+                    <option value="@((int)VipProductType.Category)">@Localizer["Total Category VIP"]</option>
                     <option value="@((int)VipProductType.RealExam)">@Localizer["Real Exam VIP"]</option>
                 </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
             </div>
             <div class="mb-3" id="categorySection">
-                <label asp-for="CategoryId" class="form-label">@Localizer["Category"]</label>
-                <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select">
-                    <option value="">@Localizer["-- Select Category --"]</option>
+                <label asp-for="TotalCategoryId" class="form-label">@Localizer["Total Category"]</label>
+                <select asp-for="TotalCategoryId" asp-items="Model.TotalCategories" class="form-select">
+                    <option value="">@Localizer["-- Select Total Category --"]</option>
                 </select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                <span asp-validation-for="TotalCategoryId" class="text-danger"></span>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -54,21 +55,4 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var typeSelect = document.getElementById('vipTypeSelect');
-        var categorySection = document.getElementById('categorySection');
-
-        function toggleCategory() {
-            var isCategory = typeSelect.value === '@((int)VipProductType.Category)';
-            categorySection.style.display = isCategory ? '' : 'none';
-            if (!isCategory) {
-                var categorySelect = document.getElementById('CategoryId');
-                if (categorySelect) categorySelect.value = '';
-            }
-        }
-
-        typeSelect.addEventListener('change', toggleCategory);
-        toggleCategory();
-    });
-</script>
+<script src="~/js/vip-product-editor.js" asp-append-version="true" defer></script>

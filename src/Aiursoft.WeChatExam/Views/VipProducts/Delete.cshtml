@@ -25,7 +25,7 @@
                     <td>
                         @if (Model.Product.Type == VipProductType.Category)
                         {
-                            <span class="badge bg-primary">@Localizer["Category VIP"]</span>
+                            <span class="badge bg-primary">@Localizer["Total Category VIP"]</span>
                         }
                         else
                         {
@@ -36,8 +36,8 @@
                 @if (Model.Product.Type == VipProductType.Category)
                 {
                     <tr>
-                        <th>@Localizer["Category"]</th>
-                        <td><span class="badge bg-info">@(Model.Product.Category?.Title ?? "-")</span></td>
+                        <th>@Localizer["Total Category"]</th>
+                        <td><span class="badge bg-info">@(Model.Product.TotalCategory?.Title ?? "-")</span></td>
                     </tr>
                 }
                 <tr>

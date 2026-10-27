@@ -15,8 +15,9 @@ public class EditViewModel : UiStackLayoutViewModel
     public Guid Id { get; set; }
     [Required]
     public string Name { get; set; } = string.Empty;
+    [EnumDataType(typeof(VipProductType))]
     public VipProductType Type { get; set; }
-    public Guid? CategoryId { get; set; }
+    public Guid? TotalCategoryId { get; set; }
 
     [Range(1, int.MaxValue)]
     public int PriceInFen { get; set; }
@@ -24,5 +25,5 @@ public class EditViewModel : UiStackLayoutViewModel
     [Range(1, int.MaxValue)]
     public int DurationDays { get; set; }
     public bool IsEnabled { get; set; }
-    public List<SelectListItem> Categories { get; set; } = [];
+    public List<SelectListItem> TotalCategories { get; set; } = [];
 }

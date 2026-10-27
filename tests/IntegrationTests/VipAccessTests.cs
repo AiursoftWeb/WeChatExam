@@ -225,7 +225,7 @@ public class VipAccessTests
                     UserId = "u",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
-                    VipProduct = new VipProduct { Name = "C", Type = VipProductType.Category, CategoryId = catId }
+                    VipProduct = new VipProduct { Name = "C", Type = VipProductType.Category, TotalCategoryId = catId }
                 }
             };
 

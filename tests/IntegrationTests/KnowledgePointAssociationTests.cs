@@ -477,7 +477,7 @@ public class KnowledgePointAssociationTests
         var subject = new Category { Id = Guid.NewGuid(), Title = "Grouped course", ParentId = null, IsFree = true };
         var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG", IsFree = false };
         var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", Content = "Public lesson" };
-        db.AddRange(subject, tag, lesson, new VipProduct { Name = "Course VIP", CategoryId = subject.Id, DurationDays = 365 });
+        db.AddRange(subject, tag, lesson, new VipProduct { Name = "Course VIP", TotalCategory = new TotalCategory { Id = subject.Id, Title = subject.Title }, DurationDays = 365 });
         await db.SaveChangesAsync();
         for (var i = 0; i < 50; i++)
         {
@@ -528,7 +528,7 @@ public class KnowledgePointAssociationTests
         var a = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220), CategoryId = course.Id };
         var b = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation second exercise", CategoryId = course.Id };
         var free = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Relation free exercise", CategoryId = course.Id };
-        var product = new VipProduct { Name = "Relation VIP", CategoryId = course.Id, DurationDays = 365, IsEnabled = false };
+        var product = new VipProduct { Name = "Relation VIP", TotalCategory = new TotalCategory { Id = course.Id, Title = course.Title }, DurationDays = 365, IsEnabled = false };
         db.AddRange(course, other, tag, first, second, a, b, free, product,
             new QuestionTag { QuestionId = a.Id, TagId = tag.Id, Tag = tag }, new QuestionTag { QuestionId = b.Id, TagId = tag.Id, Tag = tag },
             new KnowledgePointQuestion { KnowledgePointId = first.Id, QuestionId = a.Id },
@@ -585,7 +585,7 @@ public class KnowledgePointAssociationTests
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Origin exercise", CategoryId = category.Id };
         var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG", IsFree = false };
         var taxonomy = new Taxonomy { Name = "Origin taxonomy" };
-        var product = new VipProduct { Name = "Origin VIP", CategoryId = category.Id, DurationDays = 365 };
+        var product = new VipProduct { Name = "Origin VIP", TotalCategory = new TotalCategory { Id = category.Id, Title = category.Title }, DurationDays = 365 };
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Origin paper", TimeLimit = 180 };
         db.AddRange(category, point, question, tag, taxonomy, product, paper);
         await db.SaveChangesAsync();
@@ -616,6 +616,7 @@ public class KnowledgePointAssociationTests
         values["DisplayName"] = "Origin updated";
         values["Name"] = "Origin updated";
         values["CategoryId"] = category.Id.ToString();
+        values["TotalCategoryId"] = category.Id.ToString();
         values["QuestionCategoryId"] = periodId.ToString();
         values["QuestionType"] = "0";
         values["GradingStrategy"] = "0";

@@ -271,7 +271,7 @@ public class TagPermissionTests
         VipMembership Membership(Guid? category, int startDays = -1, int endDays = 1) => new()
         {
             UserId = "test-user", StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = DateTime.UtcNow.AddDays(endDays),
-            VipProduct = new VipProduct { Name = "Subject subscription", Type = category.HasValue ? VipProductType.Category : VipProductType.RealExam, CategoryId = category }
+            VipProduct = new VipProduct { Name = "Subject subscription", Type = category.HasValue ? VipProductType.Category : VipProductType.RealExam, TotalCategoryId = category }
         };
 
         _mockWeChatPayService.Memberships = [Membership(subjectId)];
@@ -350,7 +350,7 @@ public class TagPermissionTests
         VipMembership Membership(Guid? category, int startDays = -1, int endDays = 1) => new()
         {
             UserId = "u", StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = DateTime.UtcNow.AddDays(endDays),
-            VipProduct = new VipProduct { Name = "Access test", Type = category.HasValue ? VipProductType.Category : VipProductType.RealExam, CategoryId = category }
+            VipProduct = new VipProduct { Name = "Access test", Type = category.HasValue ? VipProductType.Category : VipProductType.RealExam, TotalCategoryId = category }
         };
         foreach (var membership in new[]
                  {
@@ -440,7 +440,7 @@ public class TagPermissionTests
                     UserId = "test-user",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
-                    VipProduct = new VipProduct { Name = "V", Type = VipProductType.Category, CategoryId = catId, IsEnabled = true }
+                    VipProduct = new VipProduct { Name = "V", Type = VipProductType.Category, TotalCategoryId = catId, IsEnabled = true }
                 }
             };
 
@@ -483,7 +483,7 @@ public class TagPermissionTests
                     UserId = "test-user",
                     StartTime = DateTime.UtcNow.AddDays(-1),
                     EndTime = DateTime.UtcNow.AddDays(1),
-                    VipProduct = new VipProduct { Name = "V2", Type = VipProductType.Category, CategoryId = catId2, IsEnabled = true }
+                    VipProduct = new VipProduct { Name = "V2", Type = VipProductType.Category, TotalCategoryId = catId2, IsEnabled = true }
                 }
             };
 
@@ -555,7 +555,7 @@ public class TagPermissionTests
                     {
                         Name = "Category access",
                         Type = VipProductType.Category,
-                        CategoryId = hasMatchingVip ? categoryId : Guid.NewGuid(),
+                        TotalCategoryId = hasMatchingVip ? categoryId : Guid.NewGuid(),
                         IsEnabled = true
                     }
                 }
@@ -591,7 +591,7 @@ public class TagPermissionTests
                 _mockWeChatPayService.Memberships.Add(new VipMembership
                 {
                     UserId = "test-user", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
-                    VipProduct = new VipProduct { Name = "Subject", CategoryId = id }
+                    VipProduct = new VipProduct { Name = "Subject", TotalCategoryId = id }
                 });
             if (scenario.Status.HasRealExamVip)
                 _mockWeChatPayService.Memberships.Add(new VipMembership
