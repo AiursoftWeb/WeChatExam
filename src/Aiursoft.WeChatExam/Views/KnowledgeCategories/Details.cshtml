@@ -1,7 +1,7 @@
 @using Aiursoft.WebTools
-@model Aiursoft.WeChatExam.Models.CategoriesViewModels.DetailsViewModel
+@model Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels.DetailsViewModel
 
-<h1 class="h3 mb-3">@Localizer["Category Details"]</h1>
+<h1 class="h3 mb-3">@Localizer["Knowledge Category Details"]</h1>
 <div class="row">
     <div class="col-md-4">
         <div class="card">
@@ -10,6 +10,8 @@
             </div>
             <div class="card-body">
                 <dl>
+                    <dt>@Localizer["Total Category"]</dt>
+                    <dd><a asp-controller="TotalCategories" asp-action="Edit" asp-route-id="@Model.Category.TotalCategoryId">@Model.Category.TotalCategory!.Title</a></dd>
                     <dt>@Localizer["Title"]</dt>
                     <dd>@Model.Category.Title</dd>
                     <dt>@Localizer["Is Free"]</dt>
@@ -25,7 +27,7 @@
                     </dd>
                     <dt>@Localizer["Parent"]</dt>
                     <dd>
-                        @(Model.Category.Parent == null ? Localizer["Top Level"].Value : Model.Category.Parent.Title)
+                        @(Model.Category.ParentKnowledgeCategory == null ? Localizer["Top Level"].Value : Model.Category.ParentKnowledgeCategory.Title)
                     </dd>
                     <dt>@Localizer["Created"]</dt>
                     <dd><span data-utc-time="@Model.Category.CreationTime.ToHtmlDateTime()"></span></dd>
@@ -33,7 +35,7 @@
                 <div class="mt-3">
                     <a asp-action="Edit" asp-route-id="@Model.Category.Id" class="btn btn-warning">@Localizer["Edit"]</a>
                     <a asp-action="Delete" asp-route-id="@Model.Category.Id" class="btn btn-danger">@Localizer["Delete"]</a>
-                    <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+                    <a asp-action="Index" asp-route-totalCategoryId="@Model.Category.TotalCategoryId" class="btn btn-light">@Localizer["Back to List"]</a>
                 </div>
             </div>
         </div>
@@ -60,7 +62,7 @@
                         </tr>
                     </thead>
                     <tbody id="knowledge-points-sortable"
-                           data-update-url="@Url.Action("UpdateKnowledgePointOrder", "Categories", new { id = Model.Category.Id })">
+                           data-update-url="@Url.Action("UpdateKnowledgePointOrder", "KnowledgeCategories", new { id = Model.Category.Id })">
                         @foreach (var kp in Model.AssociatedKnowledgePoints)
                         {
                             <tr data-knowledge-point-id="@kp.Id">
@@ -89,69 +91,12 @@
 </div>
 
 @Html.AntiForgeryToken()
+<span id="knowledge-order-error" hidden>@Localizer["Failed to save order."]</span>
 
-<style>
-    .knowledge-point-drag-column {
-        width: 2.75rem;
-        text-align: center;
-    }
-
-    .knowledge-point-drag-handle {
-        cursor: grab;
-    }
-
-    .knowledge-point-drag-handle:active {
-        cursor: grabbing;
-    }
-
-    .knowledge-point-sortable-ghost {
-        opacity: .45;
-    }
-</style>
+<link rel="stylesheet" href="~/css/knowledge-categories.css" asp-append-version="true" />
 
 @* Scripts is provided by the Aiursoft.UiStack Razor class library layout. *@
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section Scripts {
-    <script type="module">
-        import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
-
-        const list = document.getElementById('knowledge-points-sortable');
-        const saveButton = document.getElementById('save-knowledge-point-order');
-
-        if (list && saveButton) {
-            Sortable.create(list, {
-                animation: 150,
-                handle: '.knowledge-point-drag-handle',
-                ghostClass: 'knowledge-point-sortable-ghost',
-                onEnd: () => saveButton.hidden = false
-            });
-
-            saveButton.addEventListener('click', async () => {
-                saveButton.disabled = true;
-                const knowledgePointIds = Array.from(list.querySelectorAll('tr[data-knowledge-point-id]'))
-                    .map(row => row.dataset.knowledgePointId);
-
-                try {
-                    const response = await fetch(list.dataset.updateUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value ?? ''
-                        },
-                        body: JSON.stringify(knowledgePointIds)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`Failed to save order: ${response.status}`);
-                    }
-
-                    window.location.reload();
-                } catch (error) {
-                    console.error(error);
-                    alert('@Localizer["Failed to save order."]');
-                    saveButton.disabled = false;
-                }
-            });
-        }
-    </script>
+    <script type="module" src="~/js/knowledge-category-details.js" asp-append-version="true"></script>
 }

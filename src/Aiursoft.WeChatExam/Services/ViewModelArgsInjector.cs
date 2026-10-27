@@ -70,7 +70,12 @@ public class ViewModelArgsInjector(
         _ = localizer["Unauthorized"];
         _ = localizer["Error"];
         _ = localizer["Content Management"];
-        _ = localizer["Categories"];
+        _ = localizer["Knowledge Categories"];
+        _ = localizer["Create Knowledge Category"];
+        _ = localizer["Edit Knowledge Category"];
+        _ = localizer["Delete Knowledge Category"];
+        _ = localizer["Knowledge Category Details"];
+        _ = localizer["Knowledge Management"];
         _ = localizer["Question Bank Management"];
         _ = localizer["Periods"];
         _ = localizer["Create Period"];

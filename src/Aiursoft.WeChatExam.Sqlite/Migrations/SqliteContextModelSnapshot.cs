@@ -113,30 +113,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryKnowledgePoint", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("KnowledgePointId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("OrderIndex")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("KnowledgePointId");
-
-                    b.ToTable("CategoryKnowledgePoints");
-                });
-
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryTaxonomy", b =>
                 {
                     b.Property<Guid>("Id")
@@ -464,6 +440,65 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.HasKey("Key");
 
                     b.ToTable("GlobalSettings");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsFree")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("ParentKnowledgeCategoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("TotalCategoryId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TotalCategoryId");
+
+                    b.HasIndex("ParentKnowledgeCategoryId", "TotalCategoryId");
+
+                    b.ToTable("KnowledgeCategories");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategoryKnowledgePoint", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("KnowledgeCategoryId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("KnowledgePointId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KnowledgeCategoryId");
+
+                    b.HasIndex("KnowledgePointId");
+
+                    b.ToTable("KnowledgeCategoryKnowledgePoints");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
@@ -1407,25 +1442,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryKnowledgePoint", b =>
-                {
-                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
-                        .WithMany("CategoryKnowledgePoints")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "KnowledgePoint")
-                        .WithMany("CategoryKnowledgePoints")
-                        .HasForeignKey("KnowledgePointId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("KnowledgePoint");
-                });
-
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryTaxonomy", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
@@ -1582,6 +1598,44 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategory", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.TotalCategory", "TotalCategory")
+                        .WithMany()
+                        .HasForeignKey("TotalCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgeCategory", "ParentKnowledgeCategory")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentKnowledgeCategoryId", "TotalCategoryId")
+                        .HasPrincipalKey("Id", "TotalCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ParentKnowledgeCategory");
+
+                    b.Navigation("TotalCategory");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategoryKnowledgePoint", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgeCategory", "KnowledgeCategory")
+                        .WithMany("KnowledgeCategoryKnowledgePoints")
+                        .HasForeignKey("KnowledgeCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.KnowledgePoint", "KnowledgePoint")
+                        .WithMany("KnowledgeCategoryKnowledgePoints")
+                        .HasForeignKey("KnowledgePointId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("KnowledgeCategory");
+
+                    b.Navigation("KnowledgePoint");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePointQuestion", b =>
@@ -1915,8 +1969,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Category", b =>
                 {
-                    b.Navigation("CategoryKnowledgePoints");
-
                     b.Navigation("CategoryTaxonomies");
 
                     b.Navigation("Children");
@@ -1950,9 +2002,16 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("AnswerRecords");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgeCategory", b =>
+                {
+                    b.Navigation("Children");
+
+                    b.Navigation("KnowledgeCategoryKnowledgePoints");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.KnowledgePoint", b =>
                 {
-                    b.Navigation("CategoryKnowledgePoints");
+                    b.Navigation("KnowledgeCategoryKnowledgePoints");
 
                     b.Navigation("KnowledgePointQuestions");
                 });

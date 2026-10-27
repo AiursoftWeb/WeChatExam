@@ -26,16 +26,16 @@ public class KnowledgePointsController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1,
+        CascadedLinksGroupName = "Knowledge Management",
+        CascadedLinksIcon = "book-open",
+        CascadedLinksOrder = 2,
         LinkText = "Knowledge Points",
         LinkOrder = 2)]
     public async Task<IActionResult> Index()
     {
         var knowledgePoints = await context.KnowledgePoints
-            .Include(k => k.CategoryKnowledgePoints)
-            .ThenInclude(ck => ck.Category)
+            .Include(k => k.KnowledgeCategoryKnowledgePoints)
+            .ThenInclude(ck => ck.KnowledgeCategory)
             .ToListAsync();
 
         return this.StackView(new IndexViewModel
@@ -50,7 +50,7 @@ public class KnowledgePointsController(
     {
         var model = new CreateViewModel
         {
-            AvailableCategories = await context.Categories.ToListAsync(),
+            AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync(),
             AvailableQuestions = new List<Question>(),
             QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
             {
@@ -67,9 +67,10 @@ public class KnowledgePointsController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
+        await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
         if (!ModelState.IsValid)
         {
-            model.AvailableCategories = await context.Categories.ToListAsync();
+            model.AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync();
             model.AvailableQuestions = await context.Questions
                 .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                 .ToListAsync();
@@ -91,15 +92,15 @@ public class KnowledgePointsController(
         context.KnowledgePoints.Add(knowledgePoint);
 
         // Add Category Associations
-        foreach (var categoryId in model.SelectedCategoryIds)
+        foreach (var categoryId in model.SelectedKnowledgeCategoryIds)
         {
-            var nextOrder = (await context.CategoryKnowledgePoints
-                .Where(association => association.CategoryId == categoryId)
+            var nextOrder = (await context.KnowledgeCategoryKnowledgePoints
+                .Where(association => association.KnowledgeCategoryId == categoryId)
                 .MaxAsync(association => (int?)association.OrderIndex) ?? -1) + 1;
-            var newAssociation = new CategoryKnowledgePoint
+            var newAssociation = new KnowledgeCategoryKnowledgePoint
             {
                 KnowledgePointId = knowledgePoint.Id,
-                CategoryId = categoryId,
+                KnowledgeCategoryId = categoryId,
                 OrderIndex = nextOrder
             };
             context.Add(newAssociation);
@@ -127,8 +128,8 @@ public class KnowledgePointsController(
         if (id == null) return NotFound();
 
         var knowledgePoint = await context.KnowledgePoints
-            .Include(c => c.CategoryKnowledgePoints)
-            .ThenInclude(ck => ck.Category)
+            .Include(c => c.KnowledgeCategoryKnowledgePoints)
+            .ThenInclude(ck => ck.KnowledgeCategory)
             .Include(c => c.KnowledgePointQuestions)
             .ThenInclude(kq => kq.Question)
             .FirstOrDefaultAsync(c => c.Id == id);
@@ -139,8 +140,8 @@ public class KnowledgePointsController(
         {
             KnowledgePoint = knowledgePoint,
             ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null,
-            AssociatedCategories = knowledgePoint.CategoryKnowledgePoints
-                .Select(ck => ck.Category)
+            AssociatedCategories = knowledgePoint.KnowledgeCategoryKnowledgePoints
+                .Select(ck => ck.KnowledgeCategory)
                 .ToList(),
             AssociatedQuestions = knowledgePoint.KnowledgePointQuestions
                 .Select(kq => kq.Question)
@@ -156,13 +157,13 @@ public class KnowledgePointsController(
         if (id == null) return NotFound();
         
         var knowledgePoint = await context.KnowledgePoints
-            .Include(k => k.CategoryKnowledgePoints)
+            .Include(k => k.KnowledgeCategoryKnowledgePoints)
             .Include(k => k.KnowledgePointQuestions)
             .FirstOrDefaultAsync(k => k.Id == id);
             
         if (knowledgePoint == null) return NotFound();
 
-        var availableCategories = await context.Categories.ToListAsync();
+        var availableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync();
         var selectedQuestions = await context.Questions
             .Where(q => knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).Contains(q.Id))
             .ToListAsync();
@@ -175,7 +176,7 @@ public class KnowledgePointsController(
             Content = knowledgePoint.Content,
             AvailableCategories = availableCategories,
             AvailableQuestions = selectedQuestions,
-            SelectedCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(ck => ck.CategoryId).ToList(),
+            SelectedKnowledgeCategoryIds = knowledgePoint.KnowledgeCategoryKnowledgePoints.Select(ck => ck.KnowledgeCategoryId).ToList(),
             SelectedQuestionIds = knowledgePoint.KnowledgePointQuestions.Select(kq => kq.QuestionId).ToList(),
             QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
             {
@@ -196,9 +197,10 @@ public class KnowledgePointsController(
         ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
 
+        await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
         if (!ModelState.IsValid)
         {
-            model.AvailableCategories = await context.Categories.ToListAsync();
+            model.AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync();
             model.AvailableQuestions = await context.Questions
                 .Where(q => model.SelectedQuestionIds.Contains(q.Id))
                 .ToListAsync();
@@ -211,7 +213,7 @@ public class KnowledgePointsController(
         }
 
         var knowledgePoint = await context.KnowledgePoints
-            .Include(k => k.CategoryKnowledgePoints)
+            .Include(k => k.KnowledgeCategoryKnowledgePoints)
             .Include(k => k.KnowledgePointQuestions)
             .FirstOrDefaultAsync(k => k.Id == id);
             
@@ -221,12 +223,12 @@ public class KnowledgePointsController(
         knowledgePoint.Content = model.Content;
 
         // Update Category Associations
-        var currentCategoryIds = knowledgePoint.CategoryKnowledgePoints.Select(c => c.CategoryId).ToList();
-        var newCategoryIds = model.SelectedCategoryIds;
+        var currentCategoryIds = knowledgePoint.KnowledgeCategoryKnowledgePoints.Select(c => c.KnowledgeCategoryId).ToList();
+        var newCategoryIds = model.SelectedKnowledgeCategoryIds;
 
         // Remove unselected
-        var toRemoveCategories = knowledgePoint.CategoryKnowledgePoints
-            .Where(ck => !newCategoryIds.Contains(ck.CategoryId))
+        var toRemoveCategories = knowledgePoint.KnowledgeCategoryKnowledgePoints
+            .Where(ck => !newCategoryIds.Contains(ck.KnowledgeCategoryId))
             .ToList();
         
         foreach (var item in toRemoveCategories)
@@ -239,13 +241,13 @@ public class KnowledgePointsController(
         {
             if (!currentCategoryIds.Contains(categoryId))
             {
-                var nextOrder = (await context.CategoryKnowledgePoints
-                    .Where(association => association.CategoryId == categoryId)
+                var nextOrder = (await context.KnowledgeCategoryKnowledgePoints
+                    .Where(association => association.KnowledgeCategoryId == categoryId)
                     .MaxAsync(association => (int?)association.OrderIndex) ?? -1) + 1;
-                var newAssociation = new CategoryKnowledgePoint
+                var newAssociation = new KnowledgeCategoryKnowledgePoint
                  {
                      KnowledgePointId = knowledgePoint.Id,
-                     CategoryId = categoryId,
+                     KnowledgeCategoryId = categoryId,
                      OrderIndex = nextOrder
                  };
                  context.Add(newAssociation);
@@ -323,4 +325,10 @@ public class KnowledgePointsController(
         return RedirectToAction(nameof(Index));
     }
 
+    private async Task ValidateKnowledgeCategories(List<Guid> ids)
+    {
+        if (ids.Distinct().Count() != ids.Count ||
+            await context.KnowledgeCategories.CountAsync(c => ids.Contains(c.Id)) != ids.Count)
+            ModelState.AddModelError("SelectedKnowledgeCategoryIds", localizer["Select existing knowledge categories."]);
+    }
 }

@@ -32,8 +32,11 @@ public class ContentSearchTests
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya", Content = "A guqin musician" };
         var otherPoint = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Boya elsewhere", Content = "Another directory" };
         db.AddRange(category, other, exact, related, excluded, point, otherPoint);
-        db.Add(new CategoryKnowledgePoint { CategoryId = other.Id, KnowledgePointId = otherPoint.Id });
-        db.Add(new CategoryKnowledgePoint { CategoryId = category.Id, KnowledgePointId = point.Id });
+        foreach (var directory in new[] { category, other })
+            db.Add(new KnowledgeCategory { Id = directory.Id, Title = directory.Title, TotalCategoryId = directory.Id,
+                TotalCategory = new TotalCategory { Id = directory.Id, Title = directory.Title } });
+        db.Add(new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = other.Id, KnowledgePointId = otherPoint.Id });
+        db.Add(new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = category.Id, KnowledgePointId = point.Id });
         await db.SaveChangesAsync();
         foreach (var q in new[] { exact, related, excluded }) SetEmbedding(q);
         point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt;

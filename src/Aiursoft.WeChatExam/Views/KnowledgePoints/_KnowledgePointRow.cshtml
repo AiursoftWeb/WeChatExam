@@ -2,9 +2,9 @@
 <tr>
     <td>@Model.Title</td>
     <td>
-        @foreach (var association in Model.CategoryKnowledgePoints)
+        @foreach (var association in Model.KnowledgeCategoryKnowledgePoints)
         {
-            <a asp-controller="Categories" asp-action="Details" asp-route-id="@association.CategoryId" class="d-block">@association.Category.Title</a>
+            <a asp-controller="KnowledgeCategories" asp-action="Details" asp-route-id="@association.KnowledgeCategoryId" class="d-block">@association.KnowledgeCategory.Title</a>
         }
     </td>
     <td>

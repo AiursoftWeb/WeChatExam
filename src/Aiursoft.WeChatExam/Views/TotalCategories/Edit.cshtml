@@ -22,6 +22,7 @@
         <div class="card">
             <div class="card-body p-4">
                 <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                    <partial name="_ContentCheckReturn" />
                     @if (!creating)
                     {
                         <input asp-for="Id" type="hidden" />
@@ -40,7 +41,11 @@
                     </div>
                     <div class="d-flex flex-wrap gap-2">
                         <button type="submit" class="btn btn-primary">
-                            @if (creating)
+                            @if (ViewData["CheckReturnUrl"] is string)
+                            {
+                                @Localizer["Save and return to content checks"]
+                            }
+                            else if (creating)
                             {
                                 @Localizer["Create Total Category"]
                             }

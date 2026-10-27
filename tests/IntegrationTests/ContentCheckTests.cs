@@ -70,7 +70,7 @@ public class ContentCheckTests
             new QuestionTag { QuestionId = legacy.Id, TagId = tag.Id },
             new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id },
             new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = legacy.Id },
-            new CategoryKnowledgePoint { KnowledgePointId = lesson.Id, CategoryId = other.Id },
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = other.Id, KnowledgeCategory = new KnowledgeCategory { Id = other.Id, Title = other.Title, TotalCategoryId = other.Id, TotalCategory = new TotalCategory { Id = other.Id, Title = other.Title } } },
             new VipProduct { Name = "Paused", TotalCategory = new TotalCategory { Id = subject.Id, Title = subject.Title }, IsEnabled = false },
             new VipProduct { Name = "Invalid", TotalCategoryId = null });
         await db.SaveChangesAsync();

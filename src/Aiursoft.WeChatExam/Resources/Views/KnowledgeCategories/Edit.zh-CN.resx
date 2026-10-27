@@ -21,23 +21,35 @@
       <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
   </data>
-  <data name="Create" xml:space="preserve">
-    <value>创建</value>
+  <data name="Edit Category" xml:space="preserve">
+    <value>编辑分类</value>
   </data>
-  <data name="Create Category" xml:space="preserve">
-    <value>创建分类</value>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>编辑知识分类</value>
   </data>
   <data name="Is Free" xml:space="preserve">
-    <value>是否免费</value>
+    <value>免费</value>
   </data>
   <data name="Parent Category" xml:space="preserve">
     <value>父级分类</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Save and return to checkup" xml:space="preserve">
+    <value>保存并返回检查</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>保存并返回内容检查</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>标题</value>
   </data>
   <data name="Top Level" xml:space="preserve">
     <value>顶级</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>总分类</value>
   </data>
 
 </root>

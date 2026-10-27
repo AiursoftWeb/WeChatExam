@@ -33,8 +33,8 @@ public class KnowledgePoint
     [System.Text.Json.Serialization.JsonIgnore]
     public DateTime LastEmbeddedAt { get; set; } = DateTime.MinValue;
 
-    [InverseProperty(nameof(CategoryKnowledgePoint.KnowledgePoint))]
-    public IEnumerable<CategoryKnowledgePoint> CategoryKnowledgePoints { get; init; } = new List<CategoryKnowledgePoint>();
+    [InverseProperty(nameof(KnowledgeCategoryKnowledgePoint.KnowledgePoint))]
+    public IEnumerable<KnowledgeCategoryKnowledgePoint> KnowledgeCategoryKnowledgePoints { get; init; } = new List<KnowledgeCategoryKnowledgePoint>();
 
     [InverseProperty(nameof(KnowledgePointQuestion.KnowledgePoint))]
     public IEnumerable<KnowledgePointQuestion> KnowledgePointQuestions { get; init; } = new List<KnowledgePointQuestion>();

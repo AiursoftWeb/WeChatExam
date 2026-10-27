@@ -104,26 +104,12 @@ public class AiTasksTests
         var categoryTitle = $"AutoCat-{Guid.NewGuid()}";
         var newCategoryTitle = $"New-AutoCat-{Guid.NewGuid()}";
         
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        }));
-        
-        catToken = await GetAntiCsrfToken("/Categories/Create"); // Refresh token
-        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", newCategoryTitle },
-            { "__RequestVerificationToken", catToken }
-        }));
-        
         using var scope = _server!.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var category = dbContext.Categories.FirstOrDefault(c => c.Title == categoryTitle);
-        var newCategory = dbContext.Categories.FirstOrDefault(c => c.Title == newCategoryTitle);
-        Assert.IsNotNull(category);
-        Assert.IsNotNull(newCategory);
+        var category = new Category { Id = Guid.NewGuid(), Title = categoryTitle, ParentId = null };
+        var newCategory = new Category { Id = Guid.NewGuid(), Title = newCategoryTitle, ParentId = null };
+        dbContext.AddRange(category, newCategory);
+        await dbContext.SaveChangesAsync();
 
         // 2. Create Question in first category
         var qText = $"Test-Question-{Guid.NewGuid()}";

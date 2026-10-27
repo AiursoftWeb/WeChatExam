@@ -56,7 +56,7 @@ public class ContentSearchTests : TestBase
         var excluded = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "scope-fixture excluded", Category = directory };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "scope-fixture point", Content = "Knowledge" };
         db.AddRange(directory, question, excluded, point);
-        db.Add(new CategoryKnowledgePoint { CategoryId = directory.Id, KnowledgePointId = point.Id });
+        db.Add(new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = directory.Id, KnowledgePointId = point.Id, KnowledgeCategory = new KnowledgeCategory { Id = directory.Id, Title = directory.Title, TotalCategoryId = directory.Id, TotalCategory = new TotalCategory { Id = directory.Id, Title = directory.Title } } });
         await db.SaveChangesAsync();
         var filters = $"query=scope-fixture&knowledgeCategoryId={directory.Id}&questionCategoryId={question.QuestionCategoryId}";
         var response = await Http.GetAsync("/ContentSearch?" + filters);

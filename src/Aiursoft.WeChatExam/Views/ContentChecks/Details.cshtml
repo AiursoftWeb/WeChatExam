@@ -164,7 +164,7 @@
                 @if (tags.Count > 0 && !group.NeedsEngineering)
                 {
                     <p class="text-muted">@Localizer["Before changing a shared tag, check all the content it affects below."]</p>
-                    <p><strong>@string.Format(@Localizer["Shared tags affect {0} exercises in {1} courses."].Value, sharedImpact.Count(o => o.Controller == "Questions"), sharedImpact.Count(o => o.Controller == "Categories"))</strong><br />
+                    <p><strong>@string.Format(@Localizer["Shared tags affect {0} exercises in {1} courses."].Value, sharedImpact.Count(o => o.Controller == "Questions"), sharedImpact.Count(o => o.Controller == "TotalCategories"))</strong><br />
                         <a href="#shared-tag-impact">@Localizer["Review shared impact"]</a></p>
                 }
             </section>

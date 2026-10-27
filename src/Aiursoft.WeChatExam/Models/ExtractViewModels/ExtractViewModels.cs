@@ -6,7 +6,7 @@ namespace Aiursoft.WeChatExam.Models.ExtractViewModels;
 
 public abstract class ExtractDestinationViewModel : UiStackLayoutViewModel
 {
-    public Guid? CategoryId { get; set; }
+    public Guid? KnowledgeCategoryId { get; set; }
 
     public Guid? QuestionCategoryId { get; set; }
 
@@ -39,7 +39,7 @@ public class ExtractEditViewModel: UiStackLayoutViewModel
     [Display(Name = "JSON Content")]
     public string JsonContent { get; set; } = string.Empty;
 
-    public Guid? CategoryId { get; set; }
+    public Guid? KnowledgeCategoryId { get; set; }
     public Guid? QuestionCategoryId { get; set; }
 
     public string? ErrorMessage { get; set; }

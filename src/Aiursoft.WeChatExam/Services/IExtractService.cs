@@ -14,5 +14,5 @@ public interface IExtractService
     /// Saves the extracted and verified data into the database.
     /// Places knowledge in its category and all generated questions in the explicitly selected period.
     /// </summary>
-    Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid categoryId, Guid questionCategoryId, CancellationToken token = default);
+    Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid knowledgeCategoryId, Guid questionCategoryId, CancellationToken token = default);
 }

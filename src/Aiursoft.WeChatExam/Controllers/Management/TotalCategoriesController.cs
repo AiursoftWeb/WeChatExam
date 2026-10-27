@@ -58,8 +58,9 @@ public class TotalCategoriesController(WeChatExamDbContext context) : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    public async Task<IActionResult> Edit(Guid id)
+    public async Task<IActionResult> Edit(Guid id, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         var category = await context.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
 
@@ -73,8 +74,9 @@ public class TotalCategoriesController(WeChatExamDbContext context) : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, EditViewModel model)
+    public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
+        ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
         if (id != model.Id) return NotFound();
         var category = await context.TotalCategories.SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
@@ -83,6 +85,7 @@ public class TotalCategoriesController(WeChatExamDbContext context) : Controller
         category.Title = model.Title.Trim();
         category.OrderIndex = model.OrderIndex;
         await context.SaveChangesAsync();
+        if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
         return RedirectToAction(nameof(Index));
     }
 }

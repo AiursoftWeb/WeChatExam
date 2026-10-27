@@ -66,18 +66,18 @@ public class ExtractController : Controller
         {
             model.SystemPrompt = await _globalSettingsService.GetSettingValueAsync(SettingsMap.AiPromptExtractDefault);
         }
-        var categoryId = model.CategoryId!.Value;
+        var knowledgeCategoryId = model.KnowledgeCategoryId!.Value;
         var questionCategoryId = model.QuestionCategoryId!.Value;
         _taskQueue.QueueWithDependency<IExtractService>(
             queueName: "Extraction",
-            taskName: $"AI Extraction to Category {model.CategoryId}",
+            taskName: $"AI Extraction to Category {model.KnowledgeCategoryId}",
             task: async (extractService) =>
             {
                 var json = await extractService.GenerateJsonAsync(model.Material, model.SystemPrompt);
                 var data = JsonConvert.DeserializeObject<List<ExtractedKnowledgePoint>>(json);
                 if (data != null)
                 {
-                    await extractService.SaveAsync(data, categoryId, questionCategoryId);
+                    await extractService.SaveAsync(data, knowledgeCategoryId, questionCategoryId);
                 }
             });
 
@@ -106,7 +106,7 @@ public class ExtractController : Controller
                 JsonContent = model.JsonContent,
                 Data = data,
                 OriginalMaterial = model.OriginalMaterial,
-                CategoryId = model.CategoryId,
+                KnowledgeCategoryId = model.KnowledgeCategoryId,
                 QuestionCategoryId = model.QuestionCategoryId
             };
 
@@ -140,7 +140,7 @@ public class ExtractController : Controller
                 await LoadDestinations(model);
                 return this.StackView(model, "Preview");
             }
-            await _extractService.SaveAsync(data, model.CategoryId!.Value, model.QuestionCategoryId!.Value);
+            await _extractService.SaveAsync(data, model.KnowledgeCategoryId!.Value, model.QuestionCategoryId!.Value);
             
             return RedirectToAction(nameof(Index)); // Or a success page
         }
@@ -163,8 +163,9 @@ public class ExtractController : Controller
 
     private async Task LoadDestinations(ExtractDestinationViewModel model)
     {
-        var categories = await _dbContext.Categories.AsNoTracking().OrderBy(c => c.Title).ToListAsync();
-        model.Categories = new SelectList(categories, nameof(Category.Id), nameof(Category.Title));
+        var categories = await _dbContext.KnowledgeCategories.AsNoTracking().Include(c => c.TotalCategory).OrderBy(c => c.Title).ToListAsync();
+        var paths = KnowledgeCategoryPaths.Build(categories);
+        model.Categories = new SelectList(categories.Select(c => new { c.Id, Title = paths[c.Id] }), "Id", "Title");
         var periods = await _dbContext.QuestionCategories.AsNoTracking()
             .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
             .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title)
@@ -174,9 +175,9 @@ public class ExtractController : Controller
 
     private async Task ValidateDestinations(ExtractDestinationViewModel model)
     {
-        if (!await _dbContext.Categories.AnyAsync(c => c.Id == model.CategoryId))
+        if (!await _dbContext.KnowledgeCategories.AnyAsync(c => c.Id == model.KnowledgeCategoryId))
         {
-            ModelState.AddModelError(nameof(model.CategoryId), _localizer["Select an existing knowledge category."]);
+            ModelState.AddModelError(nameof(model.KnowledgeCategoryId), _localizer["Select an existing knowledge category."]);
         }
         if (!await _dbContext.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {
@@ -192,7 +193,7 @@ public class ExtractController : Controller
         {
              JsonContent = model.JsonContent,
              OriginalMaterial = model.OriginalMaterial,
-             CategoryId = model.CategoryId,
+             KnowledgeCategoryId = model.KnowledgeCategoryId,
              QuestionCategoryId = model.QuestionCategoryId
         };
         return this.StackView(editModel, "Edit");

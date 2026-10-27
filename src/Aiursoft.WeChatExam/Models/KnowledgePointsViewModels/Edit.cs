@@ -28,12 +28,12 @@ public class EditViewModel: UiStackLayoutViewModel
     /// <summary>
     /// 选中的关联题目分类
     /// </summary>
-    public List<Guid> SelectedCategoryIds { get; set; } = new();
+    public List<Guid> SelectedKnowledgeCategoryIds { get; set; } = new();
 
     /// <summary>
     /// 可选的题目分类
     /// </summary>
-    public List<Category> AvailableCategories { get; set; } = new();
+    public List<KnowledgeCategory> AvailableCategories { get; set; } = new();
 
     /// <summary>
     /// 选中的关联题目

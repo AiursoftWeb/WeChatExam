@@ -27,11 +27,11 @@ public class ExtractService : IExtractService
         return await _ollamaService.AskQuestion(prompt, token);
     }
 
-    public async Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid categoryId, Guid questionCategoryId, CancellationToken token = default)
+    public async Task SaveAsync(List<ExtractedKnowledgePoint> data, Guid knowledgeCategoryId, Guid questionCategoryId, CancellationToken token = default)
     {
         // Knowledge placement and question membership are independent classifications.
         // Validate again here: a queued extraction can outlive the selected destination.
-        if (!await _dbContext.Categories.AnyAsync(c => c.Id == categoryId, token))
+        if (!await _dbContext.KnowledgeCategories.AnyAsync(c => c.Id == knowledgeCategoryId, token))
         {
             throw new InvalidOperationException("The selected knowledge category no longer exists.");
         }
@@ -43,7 +43,7 @@ public class ExtractService : IExtractService
         var strategy = _dbContext.Database.CreateExecutionStrategy();
         
         await strategy.ExecuteAsync<(List<ExtractedKnowledgePoint>, Guid, CancellationToken), int>(
-            state: (data, categoryId, token),
+            state: (data, knowledgeCategoryId, token),
             operation: async (_, state, _) =>
             {
                 var (dataList, catId, cancellationToken) = state;
@@ -51,8 +51,8 @@ public class ExtractService : IExtractService
                 using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
                 try
                 {
-                    var nextOrder = (await _dbContext.CategoryKnowledgePoints
-                        .Where(association => association.CategoryId == catId)
+                    var nextOrder = (await _dbContext.KnowledgeCategoryKnowledgePoints
+                        .Where(association => association.KnowledgeCategoryId == catId)
                         .MaxAsync(association => (int?)association.OrderIndex, cancellationToken) ?? -1) + 1;
 
                     foreach (var kpDto in dataList)
@@ -68,9 +68,9 @@ public class ExtractService : IExtractService
                         _dbContext.KnowledgePoints.Add(kp);
 
                         // Link KP to Category
-                        _dbContext.CategoryKnowledgePoints.Add(new CategoryKnowledgePoint
+                        _dbContext.KnowledgeCategoryKnowledgePoints.Add(new KnowledgeCategoryKnowledgePoint
                         {
-                            CategoryId = catId,
+                            KnowledgeCategoryId = catId,
                             KnowledgePointId = kp.Id,
                             OrderIndex = nextOrder++
                         });

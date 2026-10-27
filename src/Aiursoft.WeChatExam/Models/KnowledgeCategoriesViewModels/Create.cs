@@ -2,13 +2,13 @@ using System.ComponentModel.DataAnnotations;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Entities;
 
-namespace Aiursoft.WeChatExam.Models.CategoriesViewModels;
+namespace Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels;
 
 public class CreateViewModel: UiStackLayoutViewModel
 {
     public CreateViewModel()
     {
-        PageTitle = "Create Category";
+        PageTitle = "Create Knowledge Category";
     }
 
     [Required(ErrorMessage = "The {0} is required.")]
@@ -16,19 +16,25 @@ public class CreateViewModel: UiStackLayoutViewModel
     [Display(Name = "Title")]
     public string Title { get; set; } = string.Empty;
 
+    [Required]
+    [Display(Name = "Total Category")]
+    public Guid TotalCategoryId { get; set; }
+
+    public List<TotalCategory> TotalCategories { get; set; } = new();
+
     [Display(Name = "Is Free")]
     public bool IsFree { get; set; }
 
     /// <summary>
-    /// 父分类ID。若为 null，表示创建顶级分类。
+    /// The parent directory, or null for a top-level directory within the course.
     /// </summary>
     [Display(Name = "Parent Category")]
-    public Guid? ParentId { get; set; }
+    public Guid? ParentKnowledgeCategoryId { get; set; }
 
     /// <summary>
-    /// 可选的父分类列表，用于下拉菜单
+    /// Available parent directories.
     /// </summary>
-    public List<Category> AvailableParents { get; set; } = new();
+    public List<KnowledgeCategory> AvailableParents { get; set; } = new();
 }
 
 

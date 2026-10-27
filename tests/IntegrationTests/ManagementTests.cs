@@ -88,21 +88,27 @@ public class ManagementTests
     public async Task CategoriesCrudTest()
     {
         await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Directory course" };
+        db.Add(course);
+        await db.SaveChangesAsync();
 
         // 1. Create Category
         var categoryTitle = $"Test-Category-{Guid.NewGuid()}";
-        var createToken = await GetAntiCsrfToken("/Categories/Create");
+        var createToken = await GetAntiCsrfToken("/KnowledgeCategories/Create");
         var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
+            { "TotalCategoryId", course.Id.ToString() },
             { "Title", categoryTitle },
             { "__RequestVerificationToken", createToken }
         });
         
-        var createResponse = await _http.PostAsync("/Categories/Create", createContent);
+        var createResponse = await _http.PostAsync("/KnowledgeCategories/Create", createContent);
         Assert.AreEqual(HttpStatusCode.Found, createResponse.StatusCode);
         var detailsUrl = createResponse.Headers.Location?.OriginalString;
         Assert.IsNotNull(detailsUrl);
-        Assert.StartsWith("/Categories/Details", detailsUrl);
+        Assert.StartsWith("/KnowledgeCategories/Details", detailsUrl);
         
         var categoryId = detailsUrl.Split('/').Last().Split('?')[0]; // Extract ID
 
@@ -114,14 +120,15 @@ public class ManagementTests
 
         // 3. Edit Category
         var newTitle = $"Updated-Category-{Guid.NewGuid()}";
-        var editToken = await GetAntiCsrfToken($"/Categories/Edit/{categoryId}");
+        var editToken = await GetAntiCsrfToken($"/KnowledgeCategories/Edit/{categoryId}");
         var editContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Id", categoryId },
+            { "TotalCategoryId", course.Id.ToString() },
             { "Title", newTitle },
             { "__RequestVerificationToken", editToken }
         });
-        var editResponse = await _http.PostAsync($"/Categories/Edit/{categoryId}", editContent);
+        var editResponse = await _http.PostAsync($"/KnowledgeCategories/Edit/{categoryId}", editContent);
         Assert.AreEqual(HttpStatusCode.Found, editResponse.StatusCode);
         
         // Verify Edit
@@ -130,18 +137,18 @@ public class ManagementTests
         Assert.Contains(newTitle, verifyHtml);
 
         // 4. Delete Category
-        var deleteToken = await GetAntiCsrfToken($"/Categories/Delete/{categoryId}");
+        var deleteToken = await GetAntiCsrfToken($"/KnowledgeCategories/Delete/{categoryId}");
         var deleteContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "__RequestVerificationToken", deleteToken }
         });
-        var deleteResponse = await _http.PostAsync($"/Categories/Delete/{categoryId}", deleteContent);
+        var deleteResponse = await _http.PostAsync($"/KnowledgeCategories/Delete/{categoryId}", deleteContent);
         Assert.AreEqual(HttpStatusCode.Found, deleteResponse.StatusCode);
         var location = deleteResponse.Headers.Location?.OriginalString;
-        Assert.IsTrue(location == "/Categories/Index" || location == "/Categories");
+        Assert.IsTrue(location!.StartsWith("/KnowledgeCategories"));
 
         // Verify Deletion
-        var indexResponse = await _http.GetAsync("/Categories/Index");
+        var indexResponse = await _http.GetAsync($"/KnowledgeCategories/Index?totalCategoryId={course.Id}");
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
         Assert.DoesNotContain(newTitle, indexHtml);
     }
@@ -150,11 +157,17 @@ public class ManagementTests
     public async Task CategoriesVisualTreeIsRenderedPerRootTest()
     {
         await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Directory course" };
+        db.Add(course);
+        await db.SaveChangesAsync();
 
         var rootTitle = $"Tree-Root-{Guid.NewGuid()}";
-        var rootToken = await GetAntiCsrfToken("/Categories/Create");
-        var rootResponse = await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        var rootToken = await GetAntiCsrfToken("/KnowledgeCategories/Create");
+        var rootResponse = await _http.PostAsync("/KnowledgeCategories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
+            { "TotalCategoryId", course.Id.ToString() },
             { "Title", rootTitle },
             { "__RequestVerificationToken", rootToken }
         }));
@@ -162,16 +175,17 @@ public class ManagementTests
         var rootId = rootResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
 
         var childTitle = $"Tree-Child-{Guid.NewGuid()}";
-        var childToken = await GetAntiCsrfToken("/Categories/Create");
-        var childResponse = await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        var childToken = await GetAntiCsrfToken("/KnowledgeCategories/Create");
+        var childResponse = await _http.PostAsync("/KnowledgeCategories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
+            { "TotalCategoryId", course.Id.ToString() },
             { "Title", childTitle },
-            { "ParentId", rootId },
+            { "ParentKnowledgeCategoryId", rootId },
             { "__RequestVerificationToken", childToken }
         }));
         Assert.AreEqual(HttpStatusCode.Found, childResponse.StatusCode);
 
-        var indexResponse = await _http.GetAsync("/Categories/Index");
+        var indexResponse = await _http.GetAsync($"/KnowledgeCategories/Index?totalCategoryId={course.Id}");
         indexResponse.EnsureSuccessStatusCode();
         var indexHtml = await indexResponse.Content.ReadAsStringAsync();
         var safeRootId = $"C_{rootId.Replace("-", string.Empty)}";
@@ -181,7 +195,7 @@ public class ManagementTests
         Assert.Contains($"id=\"mermaid-source-{safeRootId}\"", indexHtml);
         Assert.Contains(rootTitle, indexHtml);
         Assert.Contains(childTitle, indexHtml);
-        Assert.Contains("maxTextSize: 100000", indexHtml);
+        Assert.Contains("/js/knowledge-categories.js", indexHtml);
         Assert.Contains("category-diagram-node", indexHtml);
         Assert.DoesNotContain("style='width:180px;padding:8px;text-align:left'", indexHtml);
     }
@@ -493,15 +507,12 @@ public class ManagementTests
 
         // 1. Setup prerequisite: Category, Question, Paper, and Publish
         var categoryTitle = $"Exam-Prereq-Cat-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        }));
-        var catIndexResponse = await _http.GetAsync("/Categories/Index");
-        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
+        using var categoryScope = _server!.Services.CreateScope();
+        var categoryDb = categoryScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var legacyCategory = new Category { Id = Guid.NewGuid(), Title = categoryTitle, ParentId = null };
+        categoryDb.Add(legacyCategory);
+        await categoryDb.SaveChangesAsync();
+        var categoryId = legacyCategory.Id.ToString();
 
         var qText = $"Exam-Prereq-Q-{Guid.NewGuid()}";
         var qToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
@@ -644,15 +655,12 @@ public class ManagementTests
 
         // 1. Setup prerequisite: Category and Paper (but NO publish)
         var categoryTitle = $"Fail-Exam-Cat-{Guid.NewGuid()}";
-        var catToken = await GetAntiCsrfToken("/Categories/Create");
-        await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", categoryTitle },
-            { "__RequestVerificationToken", catToken }
-        }));
-        var catIndexResponse = await _http.GetAsync("/Categories/Index");
-        var catIndexHtml = await catIndexResponse.Content.ReadAsStringAsync();
-        var categoryId = Regex.Match(catIndexHtml, @"href=""/Categories/Details/([a-z0-9-]+)").Groups[1].Value;
+        using var categoryScope = _server!.Services.CreateScope();
+        var categoryDb = categoryScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var legacyCategory = new Category { Id = Guid.NewGuid(), Title = categoryTitle, ParentId = null };
+        categoryDb.Add(legacyCategory);
+        await categoryDb.SaveChangesAsync();
+        var categoryId = legacyCategory.Id.ToString();
 
         var paperTitle = $"Unpublished-Paper-{Guid.NewGuid()}";
         var pToken = await GetAntiCsrfToken("/Papers/Create");
