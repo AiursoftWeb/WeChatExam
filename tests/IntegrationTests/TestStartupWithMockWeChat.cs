@@ -72,6 +72,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddScoped<IFeedbackService, FeedbackService>();
         services.AddScoped<IPaperAccessService, PaperAccessService>();
         services.AddScoped<ContentCheckService>();
+        services.AddScoped<KnowledgeExerciseValidation>();
         services.AddSingleton<ContentEmbeddingCache>();
 
         // Background job queue

@@ -14,6 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [Authorize]
 [LimitPerMin]
 public class KnowledgeCategoriesController(WeChatExamDbContext context,
+    KnowledgeExerciseValidation exerciseValidation,
     IStringLocalizer<KnowledgeCategoriesController> localizer) : Controller
 {
     [RenderInNavBar(NavGroupName = "Administration", NavGroupOrder = 9999,
@@ -152,6 +153,11 @@ public class KnowledgeCategoriesController(WeChatExamDbContext context,
         var category = await context.KnowledgeCategories.Include(c => c.TotalCategory).SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
         await ValidateParent(model.ParentKnowledgeCategoryId, category.TotalCategoryId, id);
+        if (model.IsFree && !category.IsFree)
+        {
+            var error = await exerciseValidation.ValidateFreeKnowledgeCategoryAsync(id);
+            if (error != null) ModelState.AddModelError(nameof(model.IsFree), error);
+        }
         if (!ModelState.IsValid) { await LoadEdit(model, category); return this.StackView(model); }
         if (category.ParentKnowledgeCategoryId != model.ParentKnowledgeCategoryId)
             category.OrderIndex = await NextOrder(category.TotalCategoryId, model.ParentKnowledgeCategoryId);

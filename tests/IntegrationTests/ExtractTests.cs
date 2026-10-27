@@ -174,4 +174,33 @@ public class ExtractTests : TestBase
         Assert.Contains($"selected=\"selected\" value=\"{_period}\"", html);
         Assert.Contains($"selected=\"selected\" value=\"{_category}\"", html);
     }
+
+    [TestMethod]
+    public async Task FreeExtractionRejectsPaidExercisesBeforeQueuingAndBeforeSaving()
+    {
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        (await db.KnowledgeCategories.FindAsync(_category))!.IsFree = true;
+        (await db.QuestionCategories.FindAsync(_period))!.IsFree = false;
+        await db.SaveChangesAsync();
+        foreach (var action in new[] { "Extract", "Submit" })
+        {
+            var form = Form();
+            form["Material"] = "Retain source";
+            var response = await PostForm("/Extract/" + action, form, "/Extract");
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.Contains("Choose a free question category", await response.Content.ReadAsStringAsync());
+        }
+        // A queued task must also recheck prices changed after its form was submitted.
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() => scope.ServiceProvider.GetRequiredService<IExtractService>()
+            .SaveAsync(Data(), _category, _period));
+        Assert.Contains("Choose a free question category", error.Message);
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Title == _lessonTitle));
+        Assert.IsFalse(await db.Questions.AnyAsync(q => q.Content == _questionText));
+        Assert.IsFalse(await db.Tags.AnyAsync(t => t.DisplayName == _tagName));
+        (await db.QuestionCategories.FindAsync(_period))!.IsFree = true;
+        await db.SaveChangesAsync();
+        AssertRedirect(await PostForm("/Extract/Submit", Form(), "/Extract"), "/Extract");
+        await AssertSaved();
+    }
 }

@@ -46,6 +46,7 @@
                     <div class="mb-4 form-check form-switch">
                         <input asp-for="IsFree" class="form-check-input" aria-describedby="free-help" />
                         <label asp-for="IsFree" class="form-check-label"></label>
+                        <span asp-validation-for="IsFree" class="text-danger d-block"></span>
                         <div id="free-help" class="form-text">@Localizer["When disabled, practice requires membership of the selected course."]</div>
                     </div>
                     <div class="mb-4">

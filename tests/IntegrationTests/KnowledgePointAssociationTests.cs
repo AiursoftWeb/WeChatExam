@@ -1,6 +1,8 @@
 using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
+using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Models;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Tests.TestServices;
 using Microsoft.EntityFrameworkCore;
@@ -575,7 +577,7 @@ public class KnowledgePointAssociationTests
             if (question == a) Assert.Contains("Read full exercise", relation);
         }
         // Sale availability is separate from an already purchased, active membership.
-        var report = await scope.ServiceProvider.GetRequiredService<Services.ContentCheckService>().ScanAsync([], false);
+        var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([], false);
         Assert.IsTrue(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Relation course").Decision.Allowed);
         Assert.IsFalse(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Other relation course").Decision.Allowed);
         Assert.AreEqual(Models.ContentChecksViewModels.ContentPricing.Public, report.Exercises[free.Id].Question.Pricing);
@@ -660,4 +662,200 @@ public class KnowledgePointAssociationTests
         }
     }
 
+
+    private async Task<(KnowledgeCategory Directory, QuestionCategory Free, QuestionCategory Paid, KnowledgePoint Lesson, Question Exercise)> ExercisePlacement(bool freeDirectory = true, bool freeExercise = true)
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var directory = new KnowledgeCategory { Id = Guid.NewGuid(), Title = "Public overview", TotalCategoryId = _courseId, IsFree = freeDirectory };
+        var free = new QuestionCategory { Id = Guid.NewGuid(), Title = "Free period", TotalCategoryId = _courseId, IsFree = true };
+        var paid = new QuestionCategory { Id = Guid.NewGuid(), Title = "Paid period", TotalCategoryId = _courseId, IsFree = false };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Exercise lesson", Content = "Keep lesson content" };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Keep exercise content", QuestionCategory = freeExercise ? free : paid,
+            QuestionType = QuestionType.ShortAnswer, StandardAnswer = "Original answer" };
+        db.AddRange(directory, free, paid, lesson, question);
+        db.KnowledgeCategoryKnowledgePoints.Add(new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = directory.Id, KnowledgePointId = lesson.Id });
+        db.KnowledgePointQuestions.Add(new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id });
+        await db.SaveChangesAsync();
+        return (directory, free, paid, lesson, question);
+    }
+
+    private async Task<HttpResponseMessage> SubmitEdit(string path, Dictionary<string, string> values, string? tokenPath = null)
+    {
+        values["__RequestVerificationToken"] = await GetAntiCsrfToken(tokenPath ?? path);
+        return await _http.PostAsync(path, new FormUrlEncodedContent(values));
+    }
+
+    [TestMethod]
+    public async Task FreeKnowledgeRejectsPaidAssociationsAndCanBeCorrectedWithoutLosingInput()
+    {
+        await LoginAsAdminAsync();
+        var data = await ExercisePlacement(false, false);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var freeDirectory = new KnowledgeCategory { Id = Guid.NewGuid(), Title = "Free destination", TotalCategoryId = _courseId, IsFree = true };
+        db.Add(freeDirectory);
+        await db.SaveChangesAsync();
+        var form = new Dictionary<string, string> { ["Title"] = "Keep my draft", ["Content"] = "Keep my text",
+            ["SelectedKnowledgeCategoryIds[0]"] = freeDirectory.Id.ToString(), ["SelectedQuestionIds[0]"] = data.Exercise.Id.ToString() };
+        var response = await SubmitEdit("/KnowledgePoints/Create", form);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var html = WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync());
+        Assert.Contains("Free destination", html);
+        Assert.Contains("from paid question category", html);
+        Assert.Contains("Keep my draft", html);
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Title == "Keep my draft"));
+        form["Id"] = data.Lesson.Id.ToString();
+        form["checkReturnUrl"] = "/ContentChecks?view=information";
+        response = await SubmitEdit($"/KnowledgePoints/Edit/{data.Lesson.Id}", form);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.Contains("Save and return to content checks", await response.Content.ReadAsStringAsync());
+        db.ChangeTracker.Clear();
+        Assert.AreEqual("Exercise lesson", (await db.KnowledgePoints.FindAsync(data.Lesson.Id))!.Title);
+        Assert.AreEqual(data.Directory.Id, (await db.KnowledgeCategoryKnowledgePoints.SingleAsync(k => k.KnowledgePointId == data.Lesson.Id)).KnowledgeCategoryId);
+        // Removing the conflicting exercise explicitly is allowed; pricing is never changed for the teacher.
+        form.Remove("SelectedQuestionIds[0]");
+        response = await SubmitEdit($"/KnowledgePoints/Edit/{data.Lesson.Id}", form);
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+        Assert.AreEqual(form["checkReturnUrl"], response.Headers.Location!.OriginalString);
+        db.ChangeTracker.Clear();
+        Assert.IsFalse(await db.KnowledgePointQuestions.AnyAsync(k => k.KnowledgePointId == data.Lesson.Id));
+        Assert.IsFalse((await db.QuestionCategories.FindAsync(data.Paid.Id))!.IsFree);
+        // A free exercise in a free placement still saves normally.
+        var question = await db.Questions.FindAsync(data.Exercise.Id);
+        question!.QuestionCategoryId = data.Free.Id;
+        await db.SaveChangesAsync();
+        form.Remove("Id");
+        form["SelectedQuestionIds[0]"] = question.Id.ToString();
+        Assert.AreEqual(HttpStatusCode.Found, (await SubmitEdit("/KnowledgePoints/Create", form)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task MakingKnowledgeFreeChecksDirectExercisesWithoutInheritingParentPrices()
+    {
+        await LoginAsAdminAsync();
+        var data = await ExercisePlacement(false, false);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var parent = new KnowledgeCategory { Id = Guid.NewGuid(), Title = "Navigation only", TotalCategoryId = _courseId, IsFree = false };
+        db.Add(parent);
+        (await db.KnowledgeCategories.FindAsync(data.Directory.Id))!.ParentKnowledgeCategoryId = parent.Id;
+        await db.SaveChangesAsync();
+        foreach (var (id, expected) in new[] { (parent.Id, HttpStatusCode.Found), (data.Directory.Id, HttpStatusCode.OK) })
+        {
+            var response = await SubmitEdit($"/KnowledgeCategories/Edit/{id}", new Dictionary<string, string>
+            { ["Id"] = id.ToString(), ["Title"] = "Reviewed title", ["IsFree"] = "true" });
+            Assert.AreEqual(expected, response.StatusCode);
+            if (expected == HttpStatusCode.OK) Assert.Contains("from paid question category", await response.Content.ReadAsStringAsync());
+        }
+        db.ChangeTracker.Clear();
+        Assert.IsTrue((await db.KnowledgeCategories.FindAsync(parent.Id))!.IsFree);
+        Assert.IsFalse((await db.KnowledgeCategories.FindAsync(data.Directory.Id))!.IsFree);
+        Assert.AreEqual(parent.Id, (await db.KnowledgeCategories.FindAsync(data.Directory.Id))!.ParentKnowledgeCategoryId);
+    }
+
+    [TestMethod]
+    public async Task MakingAPeriodPaidCannotBreakAFreeKnowledgeExercise()
+    {
+        await LoginAsAdminAsync();
+        var data = await ExercisePlacement();
+        var form = new Dictionary<string, string> { ["Id"] = data.Free.Id.ToString(), ["Title"] = "Do not partially save",
+            ["TotalCategoryId"] = _courseId.ToString(), ["IsFree"] = "false" };
+        var response = await SubmitEdit($"/QuestionCategories/Edit/{data.Free.Id}", form);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.Contains("from paid question category", await response.Content.ReadAsStringAsync());
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.IsTrue((await db.QuestionCategories.FindAsync(data.Free.Id))!.IsFree);
+        Assert.AreEqual("Free period", (await db.QuestionCategories.FindAsync(data.Free.Id))!.Title);
+        (await db.KnowledgeCategories.FindAsync(data.Directory.Id))!.IsFree = false;
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.Found, (await SubmitEdit($"/QuestionCategories/Edit/{data.Free.Id}", form)).StatusCode);
+    }
+
+    [TestMethod]
+    [DataRow("Period")]
+    [DataRow("Edit")]
+    public async Task QuestionEditorsRejectPaidMovesButAllowFreeMoves(string action)
+    {
+        await LoginAsAdminAsync();
+        var data = await ExercisePlacement();
+        var form = new Dictionary<string, string> { ["Id"] = data.Exercise.Id.ToString(), ["Content"] = "Do not partially update",
+            ["QuestionCategoryId"] = data.Paid.Id.ToString(), ["QuestionType"] = "ShortAnswer", ["GradingStrategy"] = "ExactMatch",
+            ["StandardAnswer"] = "Original answer" };
+        var path = $"/Questions/{action}/{data.Exercise.Id}";
+        var response = await SubmitEdit(path, form);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.Contains("from paid question category", await response.Content.ReadAsStringAsync());
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(data.Free.Id, (await db.Questions.FindAsync(data.Exercise.Id))!.QuestionCategoryId);
+        Assert.AreEqual(data.Exercise.Content, (await db.Questions.FindAsync(data.Exercise.Id))!.Content);
+        form["QuestionCategoryId"] = data.Free.Id.ToString();
+        Assert.AreEqual(HttpStatusCode.Found, (await SubmitEdit(path, form)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task AiAdoptionRejectsTheWholeConflictingBatchAndPreservesItsPreview()
+    {
+        await LoginAsAdminAsync();
+        var data = await ExercisePlacement();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var unlinked = new Question { Id = Guid.NewGuid(), Content = "Unlinked", QuestionCategoryId = data.Free.Id };
+        db.Add(unlinked);
+        await db.SaveChangesAsync();
+        var tasks = scope.ServiceProvider.GetRequiredService<AiTaskService>();
+        var task = tasks.CreateTask(new[] { data.Exercise.Id, unlinked.Id }.Select(id => new AiTaskItem
+        { QuestionId = id, Status = AiTaskStatus.Completed, NewEntityId = data.Paid.Id }), AiTaskType.AutoCategorize);
+        _http.DefaultRequestHeaders.Add("RequestVerificationToken", await GetAntiCsrfToken($"/AiTasks/Preview?taskId={task.Id}"));
+        foreach (var action in new[] { "Adopt", "AdoptAll", "Edit" })
+        {
+            using var content = action == "Edit" ? new StringContent(System.Text.Json.JsonSerializer.Serialize(data.Paid.Id),
+                System.Text.Encoding.UTF8, "application/json") : null;
+            var response = await _http.PostAsync($"/AiTasks/{action}?taskId={task.Id}&questionId={data.Exercise.Id}", content);
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Contains("from paid question category", await response.Content.ReadAsStringAsync());
+            db.ChangeTracker.Clear();
+            Assert.AreEqual(data.Free.Id, (await db.Questions.FindAsync(data.Exercise.Id))!.QuestionCategoryId);
+            Assert.AreEqual(data.Free.Id, (await db.Questions.FindAsync(unlinked.Id))!.QuestionCategoryId);
+            Assert.AreEqual(2, task.Items.Count);
+            Assert.IsFalse(task.IsCanceled);
+        }
+        task.Items[data.Exercise.Id].NewEntityId = data.Free.Id;
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.PostAsync($"/AiTasks/AdoptAll?taskId={task.Id}", null)).StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(data.Paid.Id, (await db.Questions.FindAsync(unlinked.Id))!.QuestionCategoryId);
+        Assert.IsEmpty(task.Items);
+    }
+
+
+    [TestMethod]
+    public async Task ExistingConflictRequiresExplicitKnowledgeRepairAndDisplaysLocalizedReason()
+    {
+        await LoginAsAdminAsync();
+        var data = await ExercisePlacement(true, false);
+        Assert.AreEqual(HttpStatusCode.Found, (await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/KnowledgePoints")).StatusCode);
+        var form = new Dictionary<string, string> { ["Id"] = data.Lesson.Id.ToString(), ["Title"] = "Keep this draft",
+            ["Content"] = "Preserve text", ["SelectedKnowledgeCategoryIds[0]"] = data.Directory.Id.ToString(),
+            ["SelectedQuestionIds[0]"] = data.Exercise.Id.ToString() };
+        var response = await SubmitEdit($"/KnowledgePoints/Edit/{data.Lesson.Id}", form);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var html = WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync());
+        var key = "Free knowledge category {0} cannot use exercise {1} from paid question category {2}. Choose a free exercise or review the knowledge access settings.";
+        var resources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Services.KnowledgeExerciseValidation", typeof(Startup).Assembly);
+        var translated = resources.GetResourceSet(System.Globalization.CultureInfo.GetCultureInfo("zh-CN"), true, false)!.GetString(key)!;
+        Assert.AreNotEqual(key, translated);
+        Assert.Contains(string.Format(translated, data.Directory.Title, data.Exercise.Content, data.Paid.Title), html);
+        Assert.Contains("Keep this draft", html);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(data.Lesson.Title, (await db.KnowledgePoints.FindAsync(data.Lesson.Id))!.Title);
+        Assert.IsTrue(await db.KnowledgePointQuestions.AnyAsync(k => k.KnowledgePointId == data.Lesson.Id));
+        // Repairing the period to free keeps the exercise and permits the original knowledge save.
+        var moved = await SubmitEdit($"/Questions/Period/{data.Exercise.Id}", new Dictionary<string, string>
+        { ["Id"] = data.Exercise.Id.ToString(), ["QuestionCategoryId"] = data.Free.Id.ToString() });
+        Assert.AreEqual(HttpStatusCode.Found, moved.StatusCode);
+        Assert.AreEqual(HttpStatusCode.Found, (await SubmitEdit($"/KnowledgePoints/Edit/{data.Lesson.Id}", form)).StatusCode);
+    }
 }
