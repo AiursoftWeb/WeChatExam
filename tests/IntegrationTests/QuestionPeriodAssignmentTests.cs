@@ -11,10 +11,10 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class QuestionPeriodAssignmentTests : TestBase
 {
-    internal static QuestionCategory TestPeriod()
+    internal static QuestionCategory TestPeriod(bool isFree = false)
     {
         var total = new TotalCategory { Title = "Test music course" };
-        return new QuestionCategory { Title = "Test period", TotalCategoryId = total.Id, TotalCategory = total };
+        return new QuestionCategory { IsFree = isFree, Title = "Test period", TotalCategoryId = total.Id, TotalCategory = total };
     }
 
     internal static async Task<Guid> AddPeriod(IServiceProvider services)

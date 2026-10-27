@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Services;
@@ -10,12 +11,22 @@ public record QuestionAccessDecision(QuestionAccessDenial Denial, Tag? BlockingT
 }
 
 /// <summary>
-/// Shared by the serving endpoints and configuration diagnostics. Product availability is
-/// deliberately absent: disabling a product does not revoke an existing active membership.
-/// Callers must supply loaded tag taxonomy mappings and an active membership status.
+/// Practice access is owned by a question category and its course membership.
+/// Product sale availability never revokes an existing active membership.
+/// Legacy tag-navigation and diagnostic rules remain separate during their migration.
 /// </summary>
 public static class QuestionAccess
 {
+    // Course practice uses the mandatory period, never legacy question subjects or tags.
+    // Paper snapshots have their own paper-context authorization and do not use this rule.
+    public static bool CanPractice(QuestionCategory category, PaperAccessStatus status) =>
+        category.IsFree || status.ActiveCategoryVips.Contains(category.TotalCategoryId);
+
+    public static Expression<Func<Question, bool>> PracticeFilter(PaperAccessStatus status) =>
+        question => question.QuestionCategory!.IsFree ||
+                    status.ActiveCategoryVips.Contains(question.QuestionCategory.TotalCategoryId);
+
+    // Legacy tag-navigation/diagnostic consumers remain until their separate migration.
     public static bool CanUseTag(Tag tag, PaperAccessStatus status) =>
         tag.IsFree || (tag.Taxonomy?.CategoryTaxonomies.Any(c => status.ActiveCategoryVips.Contains(c.CategoryId)) ?? false);
 

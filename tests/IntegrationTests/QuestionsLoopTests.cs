@@ -112,7 +112,7 @@ public class QuestionsLoopTests
             {
                 var q = new Question
                 {
-                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
+                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true),
                     Content = $"Loop Question {i}",
                     QuestionType = QuestionType.Choice,
                     GradingStrategy = GradingStrategy.ExactMatch,

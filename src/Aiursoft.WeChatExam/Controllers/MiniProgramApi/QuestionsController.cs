@@ -28,9 +28,8 @@ public class QuestionsController : ControllerBase
     /// <summary>
     /// 获取题目列表
     /// </summary>
-    /// <param name="categoryId">分类ID (可选)</param>
-    /// <param name="tagName">Tag 显示名称 (可选)</param>
-    /// <param name="mtql">MTQL 查询表达式 (可选，优先级高于 tagName)。例如: `rock &amp;&amp; not metal`</param>
+    /// <param name="totalCategoryId">Optional course filter.</param>
+    /// <param name="questionCategoryId">Optional question-category (period) filter.</param>
     /// <param name="type">题目类型 (可选)</param>
     /// <param name="randomSize">随机获得题目的数量(可选，不可与 size 同时使用)</param>
     /// <param name="size">非随机(按时间排序)获得题目的数量，需要和 page 配合使用(可选)</param>
@@ -45,10 +44,10 @@ public class QuestionsController : ControllerBase
     [ProducesResponseType(typeof(List<QuestionDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<IActionResult> GetQuestions(
-        [FromQuery] Guid? categoryId,
-        [FromQuery] string? tagName,
-        [FromQuery] string? mtql,
+        [FromQuery] Guid? totalCategoryId,
+        [FromQuery] Guid? questionCategoryId,
         [FromQuery] QuestionType? type,
         [FromQuery] int? randomSize,
         [FromQuery] int? size,
@@ -57,9 +56,8 @@ public class QuestionsController : ControllerBase
     {
         // 1. Parameter Validation
         // Gate: prevent fetching all questions when no filtering or limiting parameters are provided
-        if (!categoryId.HasValue &&
-            string.IsNullOrWhiteSpace(tagName) &&
-            string.IsNullOrWhiteSpace(mtql) &&
+        if (!totalCategoryId.HasValue &&
+            !questionCategoryId.HasValue &&
             !type.HasValue &&
             !randomSize.HasValue &&
             !size.HasValue &&
@@ -94,100 +92,40 @@ public class QuestionsController : ControllerBase
             return BadRequest(new { Message = "Size cannot be greater than 500." });
         }
 
-        // 2. Base Query Construction (Filters)
-        
-        // Validate Category
-        if (categoryId.HasValue)
+        // Reject retired filters rather than silently broadening an old client's request.
+        if (Request.Query.ContainsKey("categoryId") || Request.Query.ContainsKey("tagName") || Request.Query.ContainsKey("mtql"))
+            return BadRequest(new { Message = "Use totalCategoryId or questionCategoryId. Tags are internal management data." });
+
+        if (randomSize <= 0 || size <= 0 || page <= 0)
+            return BadRequest(new { Message = "Sizes and page must be positive." });
+
+        if (totalCategoryId.HasValue && !await _context.TotalCategories.AnyAsync(c => c.Id == totalCategoryId))
+            return NotFound(new { Message = "Total category not found." });
+
+        var status = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        if (questionCategoryId.HasValue)
         {
-            var categoryExists = await _context.Categories
-                .AnyAsync(c => c.Id == categoryId);
-
-            if (!categoryExists)
-            {
-                return NotFound(new { Message = "Category not found" });
-            }
-        }
-
-        var query = _context.Questions.AsQueryable();
-
-        if (categoryId.HasValue)
-        {
-            query = query.Where(q => q.CategoryId == categoryId.Value);
-        }
-
-        if (type.HasValue)
-        {
-            query = query.Where(q => q.QuestionType == type.Value);
-        }
-
-        // Apply Tag / MTQL Filters
-        List<string> queriedTags = new List<string>();
-
-        if (!string.IsNullOrWhiteSpace(mtql))
-        {
-            try
-            {
-                var tokens = MTQL.Services.Tokenizer.Tokenize(mtql);
-                var rpn = MTQL.Services.Parser.ToRpn(tokens);
-                var ast = MTQL.Services.AstBuilder.Build(rpn);
-                
-                queriedTags = MTQL.Services.TagExtractor.ExtractTags(ast);
-
-                var predicate = MTQL.Services.PredicateBuilder.Build(ast);
-                query = query.Where(predicate);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { Message = $"Invalid MTQL query: {ex.Message}" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { Message = $"Error parsing MTQL query: {ex.Message}" });
-            }
-        }
-        else if (!string.IsNullOrWhiteSpace(tagName))
-        {
-            var normalizedTagName = tagName.Trim().ToUpperInvariant();
-            queriedTags.Add(normalizedTagName);
-            
-            query = query.Include(q => q.QuestionTags).ThenInclude(qt => qt.Tag)
-                .Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTagName));
-        }
-
-        if (queriedTags.Any())
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(userId);
-
-            foreach (var tagString in queriedTags.Distinct())
-            {
-                var normalizedTagString = tagString.Trim().ToUpperInvariant();
-                var tagEntity = await _context.Tags
-                    .Include(t => t.Taxonomy)
-                    .ThenInclude(tax => tax!.CategoryTaxonomies)
-                    .FirstOrDefaultAsync(t => t.NormalizedName == normalizedTagString);
-
-                if (tagEntity != null && !tagEntity.IsFree)
+            var period = await _context.QuestionCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == questionCategoryId);
+            if (period == null) return NotFound(new { Message = "Question category not found." });
+            if (totalCategoryId.HasValue && period.TotalCategoryId != totalCategoryId)
+                return BadRequest(new { Message = "Question category does not belong to the selected total category." });
+            if (!QuestionAccess.CanPractice(period, status))
+                return StatusCode(StatusCodes.Status403Forbidden, new
                 {
-                    var hasAccess = QuestionAccess.CanUseTag(tagEntity, accessStatus);
-
-                    if (!hasAccess)
-                    {
-                        var categoryIds = tagEntity.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>();
-                        return StatusCode(StatusCodes.Status403Forbidden, new 
-                        { 
-                            Message = $"Access denied to tag: {tagEntity.DisplayName}",
-                            RequiredCategoryIds = categoryIds
-                        });
-                    }
-                }
-            }
+                    Message = "An active membership for this course is required.",
+                    RequiredTotalCategoryId = period.TotalCategoryId
+                });
         }
 
-        if (User.Identity?.IsAuthenticated != true)
-        {
-            query = query.Where(q => !q.QuestionTags.Any(qt => !qt.Tag.IsFree));
-        }
+        // Apply permission before every selection mode, including random/resume and last-item flags.
+        // Logging in alone, internal tags and real-exam rights never unlock paid course practice.
+        var query = _context.Questions.AsNoTracking().Where(QuestionAccess.PracticeFilter(status));
+        if (totalCategoryId.HasValue)
+            query = query.Where(q => q.QuestionCategory!.TotalCategoryId == totalCategoryId);
+        if (questionCategoryId.HasValue)
+            query = query.Where(q => q.QuestionCategoryId == questionCategoryId);
+        if (type.HasValue)
+            query = query.Where(q => q.QuestionType == type);
 
         var lastQuestionId = await query
             .OrderByDescending(q => q.OrderIndex == null)
@@ -212,6 +150,7 @@ public class QuestionsController : ControllerBase
                  var selectedIds = ids.OrderBy(_ => Guid.NewGuid()).Take(count).ToList();
 
                  var randomQuestions = await _context.Questions
+                     .Where(QuestionAccess.PracticeFilter(status))
                      .Where(q => selectedIds.Contains(q.Id))
                      .Select(q => new QuestionDto
                      {
@@ -241,7 +180,7 @@ public class QuestionsController : ControllerBase
              // Join UserPracticeHistory -> Question to get Question data
              // We want the LATEST practice record (CreationTime of history)
              var lastPracticedQuestion = await _context.UserPracticeHistories
-                 .Where(h => h.UserId == userId && h.PracticeType == resumeType.Value)
+                 .Where(h => h.UserId == userId && h.PracticeType == resumeType.Value && query.Any(q => q.Id == h.QuestionId))
                  .OrderByDescending(h => h.CreationTime) // Latest practice first
                  .Select(h => new { h.Question.OrderIndex, h.Question.CreationTime })
                  .FirstOrDefaultAsync();
@@ -374,10 +313,8 @@ public class QuestionsController : ControllerBase
     public async Task<IActionResult> GetQuestion(Guid id)
     {
         var question = await _context.Questions
-            .Include(q => q.QuestionTags)
-            .ThenInclude(qt => qt.Tag)
-            .ThenInclude(t => t.Taxonomy)
-            .ThenInclude(taxonomy => taxonomy!.CategoryTaxonomies)
+            .AsNoTracking()
+            .Include(q => q.QuestionCategory)
             .FirstOrDefaultAsync(q => q.Id == id);
 
         if (question == null)
@@ -385,33 +322,13 @@ public class QuestionsController : ControllerBase
             return NotFound(new { Message = "Question not found" });
         }
 
-        var paidTags = question.QuestionTags.Select(qt => qt.Tag).Where(t => !t.IsFree).ToList();
-        if (paidTags.Count > 0)
-        {
-            if (User.Identity?.IsAuthenticated != true)
+        var status = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        if (!QuestionAccess.CanPractice(question.QuestionCategory!, status))
+            return StatusCode(StatusCodes.Status403Forbidden, new
             {
-                return StatusCode(StatusCodes.Status403Forbidden, new { Message = "Access denied to paid question" });
-            }
-
-            var accessStatus = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var decision = QuestionAccess.Evaluate(question, true, accessStatus);
-            if (decision.Denial == QuestionAccessDenial.Subject)
-            {
-                return StatusCode(StatusCodes.Status403Forbidden, new
-                {
-                    Message = "Access denied to question category",
-                    RequiredCategoryIds = new[] { question.CategoryId!.Value }
-                });
-            }
-            if (decision.BlockingTag is { } tag)
-            {
-                return StatusCode(StatusCodes.Status403Forbidden, new
-                {
-                    Message = $"Access denied to tag: {tag.DisplayName}",
-                    RequiredCategoryIds = tag.Taxonomy?.CategoryTaxonomies.Select(ct => ct.CategoryId).ToList() ?? new List<Guid>()
-                });
-            }
-        }
+                Message = "An active membership for this course is required.",
+                RequiredTotalCategoryId = question.QuestionCategory!.TotalCategoryId
+            });
 
         var dto = new QuestionDto
         {

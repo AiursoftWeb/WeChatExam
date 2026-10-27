@@ -43,13 +43,11 @@ public class TotalCategoriesApiController(
 
         var status = await paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
         // Real-exam rights and sale availability do not affect course practice rights.
-        var hasCourseVip = status.ActiveCategoryVips.Contains(totalCategoryId);
         var categories = await context.QuestionCategories.AsNoTracking()
             .Where(c => c.TotalCategoryId == totalCategoryId)
             .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id)
-            .Select(c => new QuestionCategorySummaryDto(c.Id, c.TotalCategoryId, c.Title, c.OrderIndex,
-                c.IsFree, c.IsFree || hasCourseVip))
             .ToListAsync(cancellationToken);
-        return Ok(categories);
+        return Ok(categories.Select(c => new QuestionCategorySummaryDto(c.Id, c.TotalCategoryId, c.Title, c.OrderIndex,
+            c.IsFree, QuestionAccess.CanPractice(c, status))).ToList());
     }
 }
