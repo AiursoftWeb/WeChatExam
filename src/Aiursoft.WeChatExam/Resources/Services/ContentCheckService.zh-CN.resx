@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>如果某个知识点被直接分配到多个知识点分类中，只要其中任一分类授予了访问权限，就可以读取该知识点。练习的访问权限会单独检查。</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>不带标签筛选条件的列表查询可能会向未登录 VIP 的用户返回这道付费题目；其详情接口则会返回 403。</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>匿名用户</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>请工程团队审查仍在使用的旧版导航组件。不要通过调整年代或知识点分类的定价来修复旧版标签元数据。</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>指定正确的问题所属主题，或在评估付费标签的共同影响后更正这些标签。</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>在销售此产品前，请指定其所属科目。现有会员资格请另行审核。</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>将该知识点分配到预期的知识点分类中。</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>仅涉及授权：被拒绝的快照请求返回 200，HasAccess=false，且不包含任何题目。还必须存在可用的快照。</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>检查标签分类映射和问题所属科目。如果两者都是有意如此，请让工程团队检查入口行为。</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>为这条知识点选择免费练习，或检查其知识点分类和年代定价。更改某个年代会影响其中的所有题目。</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>客户端入口检查需要工程团队验证</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>确认销售是否是有意暂停；否则请启用所需的科目或真题产品。</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>请确认这是否属于有意的跨学科教学；否则，请更正题目所属年代或知识点关联。</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>请确认这是否属于有意的跨学科教学；否则，请更正题目所属学科或知识点关联。</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>现有的有效 VIP 仍可正常使用，但购买当前已启用的产品无法解锁此问题。</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>免费知识点分类关联了付费练习</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>免费试卷包含当前需付费才能使用的题目快照</value>
   </data>
@@ -87,14 +105,23 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>如果免费试卷是有意这样设置的，请保留此设置。如果希望限制该试卷的快照访问，请检查试卷自身的定价。</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>知识分类</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>知识点和练习题引用了不同的科目</value>
+  </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>知识点没有知识点分类</value>
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>知识点</value>
   </data>
   <data name="Latest paper snapshot is empty" xml:space="preserve">
     <value>最新试卷快照为空</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>仅限旧版标签元数据：报告 HasAccess，但不会更改题目访问权限。</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>新客户目前没有可供购买的途径。现有的有效会员资格仍可能授予访问权限。</value>
@@ -138,6 +165,9 @@
   <data name="Papers" xml:space="preserve">
     <value>试卷</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>年代</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>公开知识点关联了一个付费练习</value>
   </data>
@@ -162,6 +192,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>请检查其科目关联、实考设置和免费设置。</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>请检查课程和可用的 VIP 产品。已禁用的产品不会使现有有效的会员资格失效。</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>请检查试卷题目并发布修正后的快照。修改原始题目不会更新已有快照。</value>
   </data>
@@ -176,6 +209,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>快照版本 {0} 不包含任何习题。仍可请求旧快照链接。</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>学生可以在免费的知识点分类中阅读知识点，但与之关联的练习题属于付费年代。这与免费知识点规则相冲突。</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>科目 VIP 与付费标签入口不一致</value>
@@ -198,6 +234,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>分类体系</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>旧版 taxonomy API 会将此标签报告为对所有课程 VIP 均已锁定。这不会影响当前的问题或知识访问权限。</value>
+  </data>
   <data name="The paper can be listed, but its latest snapshot contains no exercises." xml:space="preserve">
     <value>试卷可以显示在列表中，但其最新快照不包含任何练习题。</value>
   </data>
@@ -209,6 +248,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>题目的所属科目 VIP 可解锁题目详情，但至少有一个付费标签条目不接受该 VIP。</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>该知识点未归属任何可授予访问权限的知识点分类，因此即使是总分类 VIP 也无法阅读。</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>此产品无法授予预期的科目会员资格。</value>

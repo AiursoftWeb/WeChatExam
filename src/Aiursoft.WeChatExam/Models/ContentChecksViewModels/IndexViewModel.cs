@@ -11,14 +11,15 @@ public enum ContentPricing { Unspecified, Public, Paid }
 public record ContentReference(string Controller, string Id, string Name, string Permission,
     ContentPricing Pricing = ContentPricing.Unspecified, string Action = "Edit", bool? Enabled = null);
 public record AccessObservation(string Scenario, string Entry, bool Allowed, string Reason);
-public record AccessScenario(string Name, bool Authenticated, PaperAccessStatus Status);
-public record ExerciseAccess(string Scenario, QuestionAccessDecision Decision);
+public record AccessScenario(string Name, PaperAccessStatus Status);
+public record KnowledgeContentAccess(ContentReference KnowledgePoint, bool Allowed);
+public record ExerciseAccess(string Scenario, bool Allowed, List<KnowledgeContentAccess> Knowledge);
 public record ContentTagMapping(ContentReference? Taxonomy, List<ContentReference> Subjects);
 
 // Preserve actual database edges before findings are grouped. A group's flat object list
 // cannot tell us which of its knowledge points belongs to which exercise.
 public record ContentExercise(ContentReference Question, List<ContentReference> KnowledgePoints,
-    ContentReference? Subject, List<ContentReference> PaidTags, List<ContentReference> Settings,
+    ContentReference? Subject, ContentReference Period, List<ContentReference> Settings,
     List<ExerciseAccess> Access);
 
 public class ContentFinding
@@ -43,10 +44,11 @@ public class ContentCheckReport
     public int KnowledgePointCount { get; set; }
     public int QuestionCount { get; set; }
     public int PaperCount { get; set; }
-    public List<Category> Categories { get; set; } = [];
+    public List<TotalCategory> Categories { get; set; } = [];
     public List<ContentFinding> Findings { get; } = [];
     public List<AccessScenario> Scenarios { get; } = [];
     public Dictionary<int, List<ContentReference>> TagImpacts { get; } = new();
+    public Dictionary<Guid, List<ContentReference>> PeriodImpacts { get; } = new();
     public Dictionary<Guid, ContentExercise> Exercises { get; } = new();
     public Dictionary<int, ContentTagMapping> TagMappings { get; } = new();
 }
@@ -90,14 +92,14 @@ public class ContentFindingGroup
 
     private static string Fingerprint(ContentFinding finding)
     {
-        // Questions sharing paid tags and subject requirements describe one configuration
+        // Questions sharing a paid period and course requirements describe one configuration
         // decision. Never combine different rules, subjects or engineering responsibilities.
         if (finding.Rule is "KP001" or "KP002" or "Q001" or "Q002" or "VIP002")
         {
-            // Public knowledge point chapters do not add question VIP requirements.
+            // Knowledge directories do not add question VIP requirements.
             // Their category context matters only for the cross-course association warning.
             var relatedSubjects = finding.Rule == "KP002" ? string.Join(',', finding.CategoryIds.Order()) : string.Empty;
-            return finding.Rule + ":question-subject=" + (finding.QuestionSubjectId?.ToString() ?? "legacy") + ":tags=" + string.Join(',', finding.Objects.Where(o => o.Controller == "Tags").Select(o => o.Id).Order())
+            return finding.Rule + ":question-subject=" + (finding.QuestionSubjectId?.ToString() ?? "legacy") + ":periods=" + string.Join(',', finding.Objects.Where(o => o.Controller == "QuestionCategories").Select(o => o.Id).Order())
                 + ":subjects=" + relatedSubjects;
         }
         var first = finding.Objects.FirstOrDefault();

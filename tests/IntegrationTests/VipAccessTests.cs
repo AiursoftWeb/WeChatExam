@@ -327,6 +327,53 @@ public class VipAccessTests
     }
 
     [TestMethod]
+    public async Task ContentCheckScenariosAgreeWithKnowledgeAndPracticeApis()
+    {
+        var (course, directory, lesson, exercise) = await AddKnowledgeAsync(false);
+        var other = new TotalCategory { Title = "Other knowledge course" };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.TotalCategories.Add(other);
+            await db.SaveChangesAsync();
+        }
+        async Task Compare(string scenarioName)
+        {
+            using var scope = _server!.Services.CreateScope();
+            var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([other.Id], false);
+            var scenario = report.Scenarios.Single(s => s.Name == scenarioName);
+            // Include all course choices on demand, not only the exercise's own course.
+            report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>()
+                .ScanAsync(scenario.Status.ActiveCategoryVips.ToArray(), scenario.Status.HasRealExamVip);
+            var access = report.Exercises[exercise.Id].Access.Single(a => a.Scenario ==
+                (scenarioName == "Anonymous" ? "Anonymous" : scenarioName == "Signed in without active VIP" ? scenarioName : "Custom VIP selection"));
+            using var questionResponse = await _http.GetAsync($"/api/Questions/{exercise.Id}");
+            using var knowledgeResponse = await _http.GetAsync($"/api/KnowledgePoints/{lesson.Id}");
+            Assert.AreEqual(access.Allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, questionResponse.StatusCode);
+            Assert.AreEqual(access.Knowledge.Single().Allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, knowledgeResponse.StatusCode);
+        }
+        await Compare("Anonymous");
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsync());
+        await Compare("Signed in without active VIP");
+        var product = new VipProduct { Name = "Off-sale course", TotalCategoryId = other.Id, IsEnabled = false };
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1)
+        }];
+        await Compare("Subject VIP: Other knowledge course");
+        product.TotalCategoryId = course.Id;
+        await Compare("Subject VIP: Knowledge course");
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.KnowledgeCategories.FindAsync(directory.Id))!.IsFree = true;
+            await db.SaveChangesAsync();
+        }
+        _http.DefaultRequestHeaders.Authorization = null;
+        await Compare("Anonymous"); // A pre-existing free-lesson/paid-exercise conflict remains restricted.
+    }
+
+    [TestMethod]
     public async Task KnowledgeNavigationReturnsOnlyMetadataAndKeepsEveryTreeLevel()
     {
         var (course, directory, lesson, _) = await AddKnowledgeAsync(false);

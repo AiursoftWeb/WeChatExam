@@ -18,82 +18,89 @@ public class ContentCheckTests
         new(db, new StringLocalizer<ContentCheckService>(new ResourceManagerStringLocalizerFactory(
             Microsoft.Extensions.Options.Options.Create(new LocalizationOptions()), Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory.Instance)));
 
-    private static Question PaidQuestion(Guid? subject, params Tag[] tags) => new()
-    {
-        QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
-        Id = Guid.NewGuid(), Content = "Exercise", CategoryId = subject,
-        QuestionTags = tags.Select(t => new QuestionTag { QuestionId = Guid.Empty, TagId = t.Id, Tag = t }).ToList()
-    };
-
     [TestMethod]
-    public void SubjectVipWinsWhileLegacyQuestionsRequireEveryPaidTag()
-    {
-        var chinese = Guid.NewGuid();
-        var western = Guid.NewGuid();
-        var unmapped = new Tag { Id = 1, DisplayName = "Works", NormalizedName = "WORKS", IsFree = false };
-        var mapped = new Tag
-        {
-            Id = 2, DisplayName = "Period", NormalizedName = "PERIOD", IsFree = false,
-            Taxonomy = new Taxonomy { Name = "Periods", CategoryTaxonomies = [new() { CategoryId = chinese, TaxonomyId = 1 }, new() { CategoryId = western, TaxonomyId = 1 }] }
-        };
-        var own = new PaperAccessStatus { ActiveCategoryVips = [chinese] };
-        var other = new PaperAccessStatus { ActiveCategoryVips = [western] };
-        var q = PaidQuestion(chinese, unmapped, mapped);
-        Assert.IsTrue(QuestionAccess.Evaluate(q, true, own).Allowed);
-        Assert.IsFalse(QuestionAccess.Evaluate(q, true, other).Allowed);
-        Assert.IsFalse(QuestionAccess.Evaluate(q, false, own).Allowed);
-        Assert.IsFalse(QuestionAccess.Evaluate(q, true, new() { HasRealExamVip = true }).Allowed);
-        Assert.IsFalse(QuestionAccess.CanUseTag(unmapped, own));
-        Assert.IsTrue(QuestionAccess.CanUseTag(mapped, other));
-        var legacy = PaidQuestion(null, unmapped, mapped);
-        Assert.AreEqual(QuestionAccessDenial.Tag, QuestionAccess.Evaluate(legacy, true, own).Denial);
-        Assert.IsTrue(QuestionAccess.Evaluate(PaidQuestion(null, mapped), true, other).Allowed);
-        unmapped.IsFree = true;
-        Assert.IsTrue(QuestionAccess.Evaluate(legacy, true, own).Allowed);
-        mapped.IsFree = true;
-        Assert.IsTrue(QuestionAccess.Evaluate(legacy, false, new()).Allowed);
-    }
-
-    [TestMethod]
-    public async Task ScanExplainsUnmappedTagsPublicLessonsAndMissingProductsWithoutChangingData()
+    public async Task ScanUsesPeriodsAndDirectKnowledgePlacementsWithoutChangingData()
     {
         await using var db = Database();
-        var subject = new Category { Id = Guid.NewGuid(), Title = "Chinese history", ParentId = null, IsFree = true };
-        var other = new Category { Id = Guid.NewGuid(), Title = "Western history", ParentId = null };
-        var tag = new Tag { Id = 1, DisplayName = "Works", NormalizedName = "WORKS", IsFree = false };
-        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Paid exercise", CategoryId = subject.Id };
-        var legacy = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Uncategorized exercise" };
-        var free = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Free exercise" };
-        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Public" };
-        db.AddRange(subject, other, tag, question, legacy, free, lesson,
-            new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
-            new QuestionTag { QuestionId = legacy.Id, TagId = tag.Id },
+        var course = new TotalCategory { Title = "Chinese history" };
+        var other = new TotalCategory { Title = "Western history" };
+        var period = new QuestionCategory { Title = "Paid period", TotalCategoryId = course.Id, TotalCategory = course };
+        var freePeriod = new QuestionCategory { Title = "Free period", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
+        var parent = new KnowledgeCategory { Title = "Free parent", TotalCategoryId = other.Id, TotalCategory = other, IsFree = true };
+        var paidDirectory = new KnowledgeCategory { Title = "Overview", TotalCategoryId = other.Id, TotalCategory = other, ParentKnowledgeCategoryId = parent.Id };
+        var freeDirectory = new KnowledgeCategory { Title = "Free overview", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
+        var question = new Question { Id = Guid.NewGuid(), QuestionCategory = period, Content = "Paid exercise without any paid tag" };
+        var free = new Question { Id = Guid.NewGuid(), QuestionCategory = freePeriod, Content = "Free exercise with paid tag" };
+        var tag = new Tag { Id = 1, DisplayName = "Internal", NormalizedName = "INTERNAL", IsFree = false };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Mixed placements", Content = "Lesson" };
+        var paidLesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Paid lesson", Content = "Paid body" };
+        var unplaced = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Draft", Content = "Not public" };
+        db.AddRange(course, other, period, freePeriod, parent, paidDirectory, freeDirectory, question, free, tag, lesson, paidLesson, unplaced,
+            new QuestionTag { QuestionId = free.Id, TagId = tag.Id, Tag = tag },
             new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id },
-            new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = legacy.Id },
-            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = other.Id, KnowledgeCategory = new KnowledgeCategory { Id = other.Id, Title = other.Title, TotalCategoryId = other.Id, TotalCategory = new TotalCategory { Id = other.Id, Title = other.Title } } },
-            new VipProduct { Name = "Paused", TotalCategory = new TotalCategory { Id = subject.Id, Title = subject.Title }, IsEnabled = false },
+            new KnowledgePointQuestion { KnowledgePointId = paidLesson.Id, QuestionId = question.Id },
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = paidDirectory.Id },
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = freeDirectory.Id },
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = paidLesson.Id, KnowledgeCategoryId = paidDirectory.Id },
+            new VipProduct { Name = "Paused", TotalCategory = course, IsEnabled = false },
             new VipProduct { Name = "Invalid", TotalCategoryId = null });
         await db.SaveChangesAsync();
         db.ChangeTracker.Clear();
-        var report = await Checker(db).ScanAsync([subject.Id], false);
-        var tagFinding = report.Findings.Single(f => f.Rule == "TAG001");
-        Assert.AreEqual(2, tagFinding.Objects.Count(o => o.Controller == "Questions"));
-        Assert.AreEqual(1, tagFinding.Objects.Count(o => o.Controller == "KnowledgePoints"));
-        Assert.IsTrue(tagFinding.Objects.Any(o => o.Name == "Western history → Overview"));
-        Assert.IsTrue(tagFinding.Observations.All(o => !o.Allowed));
-        Assert.AreEqual(2, report.Findings.Count(f => f.Rule == "KP001" && f.Severity == CheckSeverity.Information));
+        var report = await Checker(db).ScanAsync([course.Id, paidDirectory.Id], false);
+        Assert.AreEqual(2, report.Categories.Count);
+        Assert.AreEqual(2, report.Scenarios.Count(s => s.Name.StartsWith("Subject VIP:")));
+        Assert.IsTrue(report.Scenarios.Single(s => s.Name == "Custom VIP selection").Status.ActiveCategoryVips.SetEquals([course.Id]));
+        var conflict = report.Findings.Single(f => f.Rule == "KP001");
+        Assert.AreEqual(CheckSeverity.Error, conflict.Severity);
+        Assert.IsTrue(conflict.Objects.Any(o => o.Controller == "QuestionCategories" && o.Id == period.Id.ToString()));
+        Assert.IsTrue(conflict.Objects.Any(o => o.Controller == "KnowledgeCategories" && o.Id == freeDirectory.Id.ToString()));
         Assert.IsTrue(report.Findings.Any(f => f.Rule == "KP002"));
         Assert.IsTrue(report.Findings.Any(f => f.Rule == "VIP003"));
-        var impossible = report.Findings.Single(f => f.Rule == "Q001");
-        Assert.IsTrue(impossible.Observations.All(o => !o.Allowed));
-        var missingProduct = report.Findings.Single(f => f.Rule == "VIP002");
-        Assert.IsTrue(missingProduct.Observations.Single(o => o.Scenario == "All relevant VIPs").Allowed);
-        Assert.IsTrue(missingProduct.Observations.Single(o => o.Scenario == "Custom VIP selection").Allowed);
-        Assert.IsTrue(report.Findings.Where(f => f.Rule == "API001").All(f => f.NeedsEngineering));
-        Assert.IsFalse(report.Findings.SelectMany(f => f.Objects).Any(o => o.Id == free.Id.ToString()));
+        Assert.IsTrue(report.Findings.Single(f => f.Rule == "KP003").Objects.Any(o => o.Id == unplaced.Id.ToString()));
+        Assert.IsFalse(report.Findings.Any(f => f.Rule is "API001" or "CLIENT001" or "Q001" or "Q002" or "TAG001"));
+        var missing = report.Findings.Single(f => f.Rule == "VIP002");
+        Assert.IsTrue(missing.Observations.Single(o => o.Scenario == "All relevant VIPs" && o.Entry.Contains("/Questions/")).Allowed);
+        var anonymous = report.Exercises[question.Id].Access.First();
+        Assert.IsFalse(anonymous.Allowed);
+        Assert.IsTrue(anonymous.Knowledge.Single(k => k.KnowledgePoint.Id == lesson.Id.ToString()).Allowed);
+        Assert.IsFalse(anonymous.Knowledge.Single(k => k.KnowledgePoint.Id == paidLesson.Id.ToString()).Allowed,
+            "A free parent does not grant access to a paid direct placement.");
+        var owner = report.Exercises[question.Id].Access.Single(a => a.Scenario == "Subject VIP: Chinese history");
+        Assert.IsTrue(owner.Allowed);
+        Assert.IsFalse(owner.Knowledge.Single(k => k.KnowledgePoint.Id == paidLesson.Id.ToString()).Allowed);
+        var western = report.Exercises[question.Id].Access.Single(a => a.Scenario == "Subject VIP: Western history");
+        Assert.IsFalse(western.Allowed);
+        Assert.IsTrue(western.Knowledge.All(k => k.Allowed));
+        Assert.IsTrue(report.Exercises[free.Id].Access.All(a => a.Allowed));
+        Assert.AreEqual(ContentPricing.Public, report.Exercises[free.Id].Question.Pricing);
+        Assert.AreEqual(1, report.PeriodImpacts[period.Id].Count(o => o.Controller == "Questions"));
+        Assert.AreEqual(2, report.PeriodImpacts[period.Id].Count(o => o.Controller == "KnowledgePoints"));
         Assert.AreEqual(0, db.ChangeTracker.Entries().Count());
         Assert.IsFalse((await db.Tags.SingleAsync()).IsFree);
-        Assert.AreEqual(3, await db.Questions.CountAsync());
+        Assert.AreEqual(2, await db.Questions.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task LegacyTagMetadataDoesNotOverrideFreePractice()
+    {
+        await using var db = Database();
+        var period = QuestionPeriodAssignmentTests.TestPeriod(isFree: true);
+        var legacyCourse = new Category { Id = period.TotalCategoryId, Title = "Legacy course", ParentId = null };
+        var taxonomy = new Taxonomy { Id = 1, Name = "Legacy navigation" };
+        var tag = new Tag { Id = 1, DisplayName = "Paid metadata", NormalizedName = "PAID METADATA", IsFree = false, Taxonomy = taxonomy };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Free practice", QuestionCategory = period };
+        db.AddRange(legacyCourse, period, taxonomy, tag, question,
+            new CategoryTaxonomy { CategoryId = legacyCourse.Id, TaxonomyId = taxonomy.Id },
+            new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
+        await db.SaveChangesAsync();
+        var report = await Checker(db).ScanAsync([], false);
+        var finding = report.Findings.Single(f => f.Rule == "VIP001");
+        Assert.IsTrue(finding.NeedsEngineering);
+        Assert.IsTrue(finding.Observations.All(o => o.Entry == $"GET /api/miniprogramapi/taxonomies/{taxonomy.Id}/tags"));
+        Assert.IsTrue(finding.Observations.Single(o => o.Scenario == "All relevant VIPs").Allowed);
+        Assert.IsFalse(finding.Observations.Single(o => o.Scenario == "Anonymous").Allowed);
+        Assert.IsTrue(report.Exercises[question.Id].Access.All(a => a.Allowed));
+        Assert.IsFalse(report.Findings.Any(f => f.Rule == "VIP002"));
     }
 
     [TestMethod]
@@ -102,7 +109,9 @@ public class ContentCheckTests
         await using var db = Database();
         var subject = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null, IsFree = true };
         var tag = new Tag { Id = 1, DisplayName = "Paid", NormalizedName = "PAID", IsFree = false };
-        var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Original", CategoryId = subject.Id };
+        var paidPeriod = QuestionPeriodAssignmentTests.TestPeriod();
+        paidPeriod.IsFree = false;
+        var question = new Question { QuestionCategory = paidPeriod, Id = Guid.NewGuid(), Content = "Original", CategoryId = subject.Id };
         var missing = new Paper { Id = Guid.NewGuid(), Title = "Missing", Status = PaperStatus.Publishable, IsFree = true };
         var empty = new Paper { Id = Guid.NewGuid(), Title = "Empty", Status = PaperStatus.Frozen, IsFree = true };
         var real = new Paper { Id = Guid.NewGuid(), Title = "Real exam", Status = PaperStatus.Frozen, IsRealExam = true };
@@ -163,11 +172,13 @@ public class ContentCheckTests
         await db.Database.EnsureCreatedAsync();
         var subject = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null, IsFree = true };
         var tag = new Tag { DisplayName = "Shared tag", NormalizedName = "SHARED TAG", IsFree = false };
+        var period = QuestionPeriodAssignmentTests.TestPeriod();
+        period.IsFree = false;
         db.AddRange(subject, tag);
         await db.SaveChangesAsync();
         for (var i = 0; i < 500; i++)
         {
-            var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = $"Exercise {i}", CategoryId = subject.Id };
+            var question = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = $"Exercise {i}", CategoryId = subject.Id };
             db.Questions.Add(question);
             db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
         }
@@ -178,19 +189,19 @@ public class ContentCheckTests
         Assert.IsTrue(commands.Count < 20, $"Expected batched reads, observed {commands.Count} commands.");
         Assert.IsTrue(commands.All(c => !c.Contains("INSERT INTO") && !c.Contains("UPDATE ") && !c.Contains("DELETE FROM")));
         Assert.AreEqual(500, report.TagImpacts[tag.Id].Count(o => o.Controller == "Questions"));
-        Assert.AreEqual(1, report.Findings.Count(f => f.Rule == "API001"));
-        Assert.IsTrue(report.Findings.Where(f => f.Rule == "Q002").All(f => f.Objects.Count(o => o.Controller == "Questions") == 1));
+        Assert.AreEqual(0, report.Findings.Count(f => f.Rule == "API001"));
+        Assert.IsTrue(report.Findings.Where(f => f.Rule == "VIP002").All(f => f.Objects.Count(o => o.Controller == "Questions") == 1));
         Assert.AreEqual(0, db.ChangeTracker.Entries().Count());
         var groups = ContentFindingGroup.Build(report.Findings);
-        var shared = groups.Single(g => g.Rule == "Q002");
+        var shared = groups.Single(g => g.Rule == "VIP002");
         Assert.AreEqual(500, shared.Findings.Count);
         Assert.AreEqual(500, shared.Objects.Count(o => o.Controller == "Questions"));
         Assert.AreEqual(500 * report.Scenarios.Count, shared.Observations.Count());
-        Assert.AreEqual(shared.Key, ContentFindingGroup.Build(report.Findings.AsEnumerable().Reverse()).Single(g => g.Rule == "Q002").Key);
+        Assert.AreEqual(shared.Key, ContentFindingGroup.Build(report.Findings.AsEnumerable().Reverse()).Single(g => g.Rule == "VIP002").Key);
     }
 
     [TestMethod]
-    public void SharedTagGroupsKeepDifferentQuestionSubjectsSeparate()
+    public void SharedPeriodGroupsKeepDifferentQuestionSubjectsSeparate()
     {
         var firstSubject = Guid.NewGuid();
         var secondSubject = Guid.NewGuid();
@@ -202,7 +213,7 @@ public class ContentCheckTests
                 Reason = "Subject VIP required", Suggestion = "Review pricing", QuestionSubjectId = subject
             };
             finding.CategoryIds.UnionWith([firstSubject, secondSubject]);
-            finding.Objects.Add(new("Tags", "1", "Shared tag", "CanManageTags"));
+            finding.Objects.Add(new("QuestionCategories", "1", "Shared period", "CanEditAnyCategory"));
             return finding;
         }
         Assert.AreEqual(2, ContentFindingGroup.Build([Finding(firstSubject), Finding(secondSubject)]).Count);

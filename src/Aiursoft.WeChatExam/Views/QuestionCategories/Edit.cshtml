@@ -26,6 +26,7 @@
                     {
                         <input asp-for="Id" type="hidden" />
                     }
+                    <partial name="_ContentCheckReturn" />
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="mb-4">
                         <label asp-for="TotalCategoryId" class="form-label"></label>
@@ -60,6 +61,10 @@
                             @if (creating)
                             {
                                 @Localizer["Create Period"]
+                            }
+                            else if (ViewData["CheckReturnUrl"] is string origin && Url.IsLocalUrl(origin))
+                            {
+                                @Localizer["Save and return to content checks"]
                             }
                             else
                             {
