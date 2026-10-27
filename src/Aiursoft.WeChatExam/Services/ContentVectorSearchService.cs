@@ -93,7 +93,10 @@ public class ContentVectorSearchService(
         if (request.Text != null && string.IsNullOrWhiteSpace(request.Text)) return (true, []);
         var vector = await RecommendationVectorAsync(request, isKnowledgePoint, cancellationToken);
         if (vector == null) return (false, []);
-        var questions = QuestionScope(request.CategoryIds, null).Where(q => !request.ExcludeIds.Contains(q.Id));
+        var questions = db.Questions.AsNoTracking().Where(q => !request.ExcludeIds.Contains(q.Id));
+        // Knowledge points can relate to questions across periods; their directory is not a question filter.
+        if (!isKnowledgePoint && request.QuestionCategoryId.HasValue)
+            questions = questions.Where(q => q.QuestionCategoryId == request.QuestionCategoryId);
         if (isKnowledgePoint)
             questions = questions.Where(q => !q.KnowledgePointQuestions.Any(k => k.KnowledgePointId == request.Id));
         else
@@ -132,15 +135,6 @@ public class ContentVectorSearchService(
             savedText = $"{question.QuestionType}\n{question.Content}\n{question.Metadata}\n{question.StandardAnswer}\n{question.Explanation}";
         }
         return EmbeddingHelper.Deserialize(stored) ?? await TryEmbedQueryAsync(savedText, cancellationToken);
-    }
-
-    private IQueryable<Question> QuestionScope(Guid[] categoryIds, QuestionType? questionType)
-    {
-        var questions = db.Questions.AsNoTracking();
-        if (categoryIds.Length > 0)
-            questions = questions.Where(q => q.CategoryId.HasValue && categoryIds.Contains(q.CategoryId.Value));
-        if (questionType.HasValue) questions = questions.Where(q => q.QuestionType == questionType);
-        return questions;
     }
 
     private async Task<float[]?> TryEmbedQueryAsync(string text, CancellationToken cancellationToken)

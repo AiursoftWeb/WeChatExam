@@ -79,15 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
             activeRequest = controller;
             refresh.disabled = true;
             target.replaceChildren(element('p', 'text-muted mb-0', localize('loading', 'Finding related questions...')));
-            // Knowledge-point categories can be more specific than question categories.
-            const categories = selectedDraft?.categoryIds ?? (isKnowledgePoint
-                ? []
-                : [form.querySelector('#CategoryId')?.value].filter(Boolean));
+            const questionCategoryId = isKnowledgePoint ? null : selectedDraft
+                ? selectedDraft.questionCategoryId
+                : form.querySelector('#QuestionCategoryId')?.value || null;
             try {
                 const response = await fetch(panel.dataset.endpoint, {
                     method: 'POST', signal: controller.signal,
                     headers: { 'Content-Type': 'application/json', 'RequestVerificationToken': form.querySelector('input[name="__RequestVerificationToken"]').value },
-                    body: JSON.stringify({ id: panel.dataset.contentId, text: currentText, categoryIds: categories,
+                    body: JSON.stringify({ id: panel.dataset.contentId, text: currentText, questionCategoryId,
                         excludeIds: selectedIds(), refresh: forceRefresh })
                 });
                 if (!response.ok || response.redirected) throw new Error('Recommendation request failed');
@@ -123,6 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     form.querySelector('input[name="StandardAnswer"]:checked:not(:disabled)')?.value || form.querySelector('#standard-answer-input:not(:disabled)')?.value || '',
                     form.querySelector('#Explanation')?.value || ''].join('\n');
             loadRecommendations(true);
+        });
+        if (!isKnowledgePoint) form.querySelector('#QuestionCategoryId')?.addEventListener('change', () => {
+            // Use the current unsaved text and period, and cancel any result for the previous selection.
+            activeRequest?.abort(); activeRequest = null;
+            refresh.disabled = false;
+            target.replaceChildren();
+            refresh.click();
         });
         form.addEventListener('question-selection-changed', () => loadRecommendations());
         if (isDraft) target.append(element('p', 'text-muted mb-0', localize('draft-prompt', 'Enter question content, then find similar questions.')));

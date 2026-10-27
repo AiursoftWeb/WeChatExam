@@ -72,8 +72,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
                 comparison.hidden = false;
                 el('import-form').dispatchEvent(new CustomEvent('question-draft-selected', { detail: {
                     text: [q.content, ...(hasOptions() ? q.options : []), q.standardAnswer, q.explanation].join('\n'),
-                    // Search all questions; the paper's legacy category is not their period.
-                    categoryIds: []
+                    questionCategoryId: q.questionCategoryId || null
                 } }));
                 el('comparison-heading').focus({ preventScroll: true });
                 comparison.scrollIntoView({ block: 'nearest' });

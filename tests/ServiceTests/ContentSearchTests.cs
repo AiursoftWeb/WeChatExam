@@ -148,14 +148,15 @@ public class ContentSearchTests
     [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
-    public async Task RecommendationsReturnFiveAndExcludeSelfAssociatedAndOtherCategoryQuestions(bool relational)
+    public async Task RecommendationsUsePeriodsAndExcludeSelfAssociatedAndStaleQuestions(bool relational)
     {
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var other = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
         var source = NewQuestion("Source question", category.Id);
         var choices = Enumerable.Range(0, 8).Select(i => NewQuestion("Related question " + i, category.Id)).ToArray();
-        var wrongCategory = NewQuestion("Related outside the category", other.Id);
+        foreach (var choice in choices) { choice.QuestionCategory = source.QuestionCategory; choice.CategoryId = null; }
+        var wrongCategory = NewQuestion("Related outside the period", category.Id);
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Guqin", Content = "Boya" };
         db.AddRange(category, other, point, source, wrongCategory);
         db.Questions.AddRange(choices);
@@ -169,12 +170,12 @@ public class ContentSearchTests
 
         var (available, results) = await service.RecommendAsync(new RecommendationRequest
         {
-            Id = point.Id, CategoryIds = [category.Id], ExcludeIds = [choices[1].Id]
+            Id = point.Id, QuestionCategoryId = source.QuestionCategoryId, ExcludeIds = [choices[1].Id]
         }, true);
         Assert.IsTrue(available);
         Assert.HasCount(5, results);
-        Assert.IsFalse(results.Any(r => r.Id == choices[0].Id || r.Id == choices[1].Id || r.Id == wrongCategory.Id));
-        var (_, similar) = await service.RecommendAsync(new RecommendationRequest { Id = source.Id, CategoryIds = [category.Id] }, false);
+        Assert.IsFalse(results.Any(r => r.Id == choices[0].Id || r.Id == choices[1].Id));
+        var (_, similar) = await service.RecommendAsync(new RecommendationRequest { Id = source.Id, QuestionCategoryId = source.QuestionCategoryId }, false);
         Assert.HasCount(5, similar);
         Assert.IsFalse(similar.Any(r => r.Id == source.Id || r.Id == wrongCategory.Id));
         Assert.AreEqual(0, handler.Calls, "Saved source vectors avoid model requests when opening an editor.");
@@ -183,7 +184,7 @@ public class ContentSearchTests
         choices[2].Content = "Edited while the cache still contains the old vector";
         db.Remove(choices[3]);
         await db.SaveChangesAsync();
-        var (_, fresh) = await service.RecommendAsync(new RecommendationRequest { Id = point.Id, CategoryIds = [category.Id] }, true);
+        var (_, fresh) = await service.RecommendAsync(new RecommendationRequest { Id = point.Id, QuestionCategoryId = source.QuestionCategoryId }, true);
         Assert.IsFalse(fresh.Any(r => r.Id == choices[2].Id || r.Id == choices[3].Id));
         await service.RecommendAsync(new RecommendationRequest { Id = source.Id, Text = "Unsaved new question content" }, false);
         Assert.AreEqual(1, handler.Calls, "Explicit editor refresh can use unsaved content without saving it.");
@@ -205,7 +206,7 @@ public class ContentSearchTests
         foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
         await db.SaveChangesAsync();
         var handler = new QueryHandler(); var service = CreateSearch(db, handler);
-        var request = new RecommendationRequest { Id = points[0].Id, ExcludeIds = [points[1].Id], CategoryIds = [Guid.NewGuid()] };
+        var request = new RecommendationRequest { Id = points[0].Id, ExcludeIds = [points[1].Id], QuestionCategoryId = Guid.NewGuid() };
         var (available, initial) = await service.SimilarKnowledgePointsAsync(request);
         Assert.IsTrue(available); Assert.HasCount(5, initial);
         Assert.IsTrue(initial.All(k => k.IsKnowledgePoint && k.Id != points[0].Id && k.Id != points[1].Id));
@@ -230,24 +231,38 @@ public class ContentSearchTests
     [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
-    public async Task DraftSimilarityUsesUnsavedTextAndSelectedCategoryWithoutCreatingAQuestion(bool relational)
+    public async Task DraftSimilarityUsesUnsavedTextAndSelectedPeriodWithoutCreatingAQuestion(bool relational)
     {
         await using var db = await CreateDatabase(relational);
         var category = new Category { Id = Guid.NewGuid(), Title = "Music", ParentId = null };
         var otherCategory = new Category { Id = Guid.NewGuid(), Title = "Other", ParentId = null };
         var choices = Enumerable.Range(0, 7).Select(i => NewQuestion($"Candidate {i}", category.Id)).ToArray();
-        var other = NewQuestion("Outside selected category", otherCategory.Id);
+        var period = choices[0].QuestionCategory;
+        foreach (var choice in choices) { choice.QuestionCategory = period; choice.CategoryId = null; }
+        var other = NewQuestion("Outside selected period", category.Id);
         db.AddRange(category, otherCategory, other); db.Questions.AddRange(choices); await db.SaveChangesAsync();
         foreach (var question in choices.Append(other)) SetEmbedding(question);
         await db.SaveChangesAsync();
         var handler = new QueryHandler(); var service = CreateSearch(db, handler);
-        var request = new RecommendationRequest { Text = "Unsaved question and options", CategoryIds = [category.Id], ExcludeIds = [choices[0].Id] };
+        var request = new RecommendationRequest { Text = "Unsaved question and options", QuestionCategoryId = period!.Id, ExcludeIds = [choices[0].Id] };
         var (available, results) = await service.RecommendAsync(request, false);
         Assert.IsTrue(available); Assert.HasCount(5, results);
         Assert.IsTrue(results.All(q => !q.IsKnowledgePoint && q.Id != other.Id && q.Id != choices[0].Id));
         Assert.AreEqual(1, handler.Calls);
         await service.RecommendAsync(request, false);
         Assert.AreEqual(1, handler.Calls, "Repeated manual checks should reuse the query vector.");
+        request.ExcludeIds = choices.Select(q => q.Id).ToArray();
+        var (_, outsidePeriod) = await service.RecommendAsync(request, false);
+        Assert.HasCount(0, outsidePeriod);
+        request.QuestionCategoryId = null;
+        var (_, allPeriods) = await service.RecommendAsync(request, false);
+        Assert.AreEqual(other.Id, allPeriods.Single().Id);
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Cross-period knowledge", Content = "Topic" };
+        db.Add(point); await db.SaveChangesAsync();
+        request.Id = point.Id; request.QuestionCategoryId = period.Id;
+        var (_, knowledgeRecommendations) = await service.RecommendAsync(request, true);
+        Assert.AreEqual(other.Id, knowledgeRecommendations.Single().Id,
+            "Knowledge-point recommendations must not mistake a directory for a question period.");
         request.Text = "Unavailable draft query"; handler.Fail = true;
         var (failed, empty) = await service.RecommendAsync(request, false);
         Assert.IsFalse(failed); Assert.HasCount(0, empty);
@@ -270,7 +285,7 @@ public class ContentSearchTests
         foreach (var point in points) { point.Embedding = Vector(); point.LastEmbeddedAt = point.LastUpdatedAt; }
         await db.SaveChangesAsync();
         var handler = new QueryHandler(); var service = CreateSearch(db, handler);
-        var request = new RecommendationRequest { Text = "Unsaved knowledge title and content", ExcludeIds = [points[0].Id], CategoryIds = [Guid.NewGuid()] };
+        var request = new RecommendationRequest { Text = "Unsaved knowledge title and content", ExcludeIds = [points[0].Id], QuestionCategoryId = Guid.NewGuid() };
         var (available, results) = await service.SimilarKnowledgePointsAsync(request);
         Assert.IsTrue(available); Assert.HasCount(5, results);
         Assert.IsTrue(results.All(k => k.IsKnowledgePoint && k.Id != points[0].Id));

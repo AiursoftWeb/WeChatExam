@@ -112,7 +112,7 @@
 @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions))
 {
     <aside class="col-xl-4">
-        @await Html.PartialAsync("_QuestionRecommendations", new QuestionRecommendationsViewModel { IsDraft = true, SearchesAllCategories = true })
+        @await Html.PartialAsync("_QuestionRecommendations", new QuestionRecommendationsViewModel { IsDraft = true })
     </aside>
 }
 </div>
