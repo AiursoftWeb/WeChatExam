@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Усі імпортовані питання використовуватимуть цей тип, ігноруючи поле Type у JSON.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Оберіть окремо під час попереднього перегляду</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Період за замовчуванням</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Імпорт запитань із JSON</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Тип питання</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Спочатку виберіть один період для всього набору, а потім за потреби змініть період для окремих запитань у попередньому перегляді.</value>
   </data>
 
 </root>

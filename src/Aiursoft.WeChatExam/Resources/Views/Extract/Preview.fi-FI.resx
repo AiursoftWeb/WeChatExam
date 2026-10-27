@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>Kaikki tämän erän kysymykset käyttävät valittua ajanjaksoa. Tallenna eri ajanjaksojen aineistot erikseen.</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>Vastaus</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>Sisältö</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Tietoluokka</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>Tietoja ei löytynyt.</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>Ei kysymyksiä tälle tietopisteelle.</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Kysymysjakso</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Esikatselu &amp; Tallenna</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Kysymykset</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>Valitse luokka</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Valitse ajanjakso</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Tagit</value>

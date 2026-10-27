@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>此批次的所有問題都會使用所選時期。不同時期的教材請分開儲存。</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>答案</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>內容</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>知識類別</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>未找到知識要點。</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>此知識點沒有問題。</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>時期</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>預覽 &amp; 儲存</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>題目</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>選擇類別</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>選擇時期</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>標籤</value>

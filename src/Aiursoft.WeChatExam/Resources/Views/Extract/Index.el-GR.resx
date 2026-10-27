@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Προχωρημένα: Προκαθορισμένη Εντολή Συστήματος</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Όλες οι ερωτήσεις που δημιουργούνται από αυτό το υλικό θα αφορούν αυτή την περίοδο. Εξαγάγετε ξεχωριστά το υλικό για κάθε περίοδο.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Εξαγωγή Γνώσης από Υλικό</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Οδηγίες για το AI για το πώς να ερμηνεύσει το υλικό.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Κατηγορία γνώσης</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Υλικό</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Επικολλήστε τα υλικά μελέτης, άρθρα ή σημειώσεις εδώ...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Περίοδος</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Επιλέξτε Κατηγορία</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Επιλέξτε περίοδο</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Σύστημα Προσταγής</value>

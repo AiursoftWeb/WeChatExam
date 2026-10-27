@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Back" xml:space="preserve">
+      <data name="Assign Period" xml:space="preserve">
+    <value>Ανάθεση περιόδου</value>
+  </data>
+  <data name="Back" xml:space="preserve">
     <value>Πίσω</value>
   </data>
   <data name="Category" xml:space="preserve">
@@ -50,6 +53,12 @@
   </data>
   <data name="Options" xml:space="preserve">
     <value>Επιλογές</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Περίοδος</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Δεν έχει οριστεί περίοδος</value>
   </data>
   <data name="Question Details" xml:space="preserve">
     <value>Λεπτομέρειες Ερώτησης</value>

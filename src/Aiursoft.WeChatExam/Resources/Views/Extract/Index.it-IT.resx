@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Avanzate: Prompt del Sistema</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Tutte le domande generate da questo materiale faranno riferimento a questo periodo. Estrai separatamente i materiali relativi a periodi diversi.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Estrai conoscenza dal materiale</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Istruzioni per l&apos;IA su come elaborare il materiale.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Categoria di conoscenza</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Materiale</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Incolla qui il tuo materiale di studio, articoli o appunti...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Seleziona una categoria</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Seleziona il periodo</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Prompt di sistema</value>

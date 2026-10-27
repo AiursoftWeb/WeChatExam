@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>सभी श्रेणियाँ</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>सभी अवधियाँ</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>सभी कुल श्रेणियाँ</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>सभी प्रकार</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>क्या आप वाकई हटाना चाहते हैं?</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>अवधि निर्धारित करें</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>रद्द करें</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>आपके मानदंड के अनुरूप कोई प्रश्न नहीं मिला</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>अवधि</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>अवधि निर्धारित नहीं है</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>कृपया 1 और के बीच एक मान्य पृष्ठ संख्या दर्ज करें</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>इस कार्रवाई को वापस नहीं लाया जा सकता है।</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>यह लिंक पुरानी श्रेणी के संदर्भ दिखाता है। प्रश्नों का वर्तमान वर्गीकरण कुल श्रेणियों और अवधियों के आधार पर होता है।</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>कुल श्रेणी</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>प्रकार</value>

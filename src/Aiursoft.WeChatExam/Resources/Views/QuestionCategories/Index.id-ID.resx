@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Course Membership" xml:space="preserve">
+    <value>Keanggotaan Kursus</value>
+  </data>
+  <data name="Create a period to start organizing this course." xml:space="preserve">
+    <value>Buat periode untuk mulai mengatur kursus ini.</value>
+  </data>
+  <data name="Create a total category first" xml:space="preserve">
+    <value>Buat kategori total terlebih dahulu</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>Buat Periode</value>
+  </data>
+  <data name="Create Total Category" xml:space="preserve">
+    <value>Buat Kategori Utama</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>Urutan Tampilan</value>
+  </data>
+  <data name="Edit Period" xml:space="preserve">
+    <value>Edit Periode</value>
+  </data>
+  <data name="Every period belongs to one total category." xml:space="preserve">
+    <value>Setiap periode termasuk dalam satu kategori total.</value>
+  </data>
+  <data name="Free Practice" xml:space="preserve">
+    <value>Latihan Gratis</value>
+  </data>
+  <data name="No periods in this course yet" xml:space="preserve">
+    <value>Belum ada periode dalam kursus ini</value>
+  </data>
+  <data name="Organize the periods within each course." xml:space="preserve">
+    <value>Atur periode dalam setiap mata pelajaran.</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="Total Categories" xml:space="preserve">
+    <value>Kategori Total</value>
+  </data>
+
+</root>

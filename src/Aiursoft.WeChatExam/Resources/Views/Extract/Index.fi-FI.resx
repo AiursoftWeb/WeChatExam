@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Lisäasetukset: Järjestelmän viesti</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Kaikki tästä aineistosta luodut kysymykset käyttävät tätä ajanjaksoa. Poimi eri ajanjaksoja koskeva aineisto erikseen.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Tuo tieto materiaalista</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Ohjeet tekoälyn käyttöön materiaalin käsittelyyn.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Tietokategoria</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Materiaali</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Liitä opiskelumateriaalisi, artikkelit tai muistiinpanot tähän...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Kausi</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Valitse kategoria</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Valitse ajanjakso</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Järjestelmän ohje</value>

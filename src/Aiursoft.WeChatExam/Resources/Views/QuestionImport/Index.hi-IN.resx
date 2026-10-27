@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>सभी आयातित प्रश्न इस प्रकार का उपयोग करेंगे, JSON में Type फ़ील्ड को अनदेखा करते हुए।</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>पूर्वावलोकन में अलग से चुनें</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>डिफ़ॉल्ट अवधि</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>JSON से प्रश्न आयात करें</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>प्रश्न प्रकार</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>पूरे बैच के लिए पहले एक अवधि चुनें, फिर पूर्वावलोकन में अलग-अलग प्रश्नों को समायोजित करें।</value>
   </data>
 
 </root>

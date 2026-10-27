@@ -21,6 +21,12 @@
       <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
     <value>Kaikki tuodut kysymykset käyttävät tätä tyyppiä, ohittaen Type-kentän JSON:ssä.</value>
   </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Valitse erikseen esikatselussa</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Oletusjakso</value>
+  </data>
   <data name="Import Questions from JSON" xml:space="preserve">
     <value>Tuo kysymykset JSON-muodossa</value>
   </data>
@@ -35,6 +41,9 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Kysymyksen tyyppi</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Aloita valitsemalla jaksolle oletusarvo ja säädä sitten yksittäisiä kysymyksiä esikatselussa.</value>
   </data>
 
 </root>

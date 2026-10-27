@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Расширенные настройки: системный запрос</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Все вопросы, созданные на основе этого материала, будут относиться к этому периоду. Материалы за разные периоды следует добавлять отдельно.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Извлечь знания из материала</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Инструкции для ИИ по тому, как обрабатывать материал.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Категория знаний</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Материал</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Вставьте сюда материалы для изучения, статьи или заметки...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Период</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Выберите категорию</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Выберите период</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Системный запрос</value>

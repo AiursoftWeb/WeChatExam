@@ -36,6 +36,9 @@
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Перевірити теги та рекомендації щодо доступу</value>
   </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Перш ніж зберегти, виберіть період для кожного запитання.</value>
+  </data>
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Порівняння попереднього перегляду запитання {0}</value>
   </data>
@@ -138,8 +141,14 @@
   <data name="Paid source tag name" xml:space="preserve">
     <value>Назва платного вихідного тегу</value>
   </data>
+  <data name="Paper category (optional)" xml:space="preserve">
+    <value>Категорія роботи (необов’язково)</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Очікує</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Період</value>
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Обробка</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="Score" xml:space="preserve">
     <value>Бал</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Виберіть період</value>
   </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Повторне використання вихідного тегу робить його платним для всіх.</value>

@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Avancerat: Systemprompt</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Alla frågor som skapas utifrån det här materialet använder den här perioden. Extrahera material från olika perioder separat.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Extrahera kunskap från material</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Anvisningar till AI:n om hur materialet ska tolkas.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Kunskapskategori</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Material</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Klistra in ditt studiematerial, artiklar eller anteckningar här...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Välj kategori</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Välj period</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Systemprompt</value>

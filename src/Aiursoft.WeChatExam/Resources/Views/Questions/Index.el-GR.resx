@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Όλες οι Κατηγορίες</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Όλες οι περίοδοι</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Όλες οι συνολικές κατηγορίες</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Όλα τα είδη</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Είστε βέβαιοι ότι θέλετε να διαγράψετε</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Ανάθεση περιόδου</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Δεν βρέθηκαν ερωτήσεις που να ταιριάζουν με τα κριτήρια</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Περίοδος</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Δεν έχει οριστεί περίοδος</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>Παρακαλώ εισάγετε έναν έγκυρο αριθμό σελίδας μεταξύ 1 και</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Αυτός ο σύνδεσμος εμφανίζει αναφορές σε παλαιότερες κατηγορίες. Η τρέχουσα ταξινόμηση των ερωτήσεων βασίζεται στις συνολικές κατηγορίες και στις περιόδους.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Συνολική κατηγορία</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Τύπος</value>

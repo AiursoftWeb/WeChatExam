@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Alle kategorier</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Alle perioder</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Alle samlede kategorier</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typer</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Er du sikker på, at du vil slette</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Tildel periode</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuller</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Ingen spørgsmål fundet, der matcher dine kriterier</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Periode ikke tildelt</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>Indtast et gyldigt sidetal mellem 1 og</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Denne handling kan ikke fortrydes.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Dette link viser henvisninger til ældre kategorier. Den aktuelle klassificering af spørgsmål bruger overordnede kategorier og perioder.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Samlet kategori</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>Bu gruptaki tüm sorular seçilen dönemi kullanacaktır. Farklı dönemlere ait materyalleri ayrı ayrı kaydedin.</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>Cevap</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>İçerik</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Bilgi kategorisi</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>Bilgi noktası bulunamadı.</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>Bu bilgi noktasına ait soru yok.</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Dönem</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>Önizle &amp; Kaydet</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>Kategori Seçin</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Dönem Seçin</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>Etiketler</value>

@@ -45,6 +45,12 @@
   <data name="All Categories" xml:space="preserve">
     <value>Kaikki kategoriat</value>
   </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Kaikki jaksot</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Kaikki kokonaisluokat</value>
+  </data>
   <data name="All Types" xml:space="preserve">
     <value>Kaikki tyypit</value>
   </data>
@@ -71,6 +77,9 @@
   </data>
   <data name="Are you sure you want to delete" xml:space="preserve">
     <value>Oletko varma, että haluat poistaa</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Määritä ajanjakso</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Peruuta</value>
@@ -147,6 +156,12 @@
   <data name="No questions found matching your criteria" xml:space="preserve">
     <value>Ei kysymyksiä löytynyt vastaamaan ehtoja</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Jakso</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Ajanjaksoa ei ole määritetty</value>
+  </data>
   <data name="Please enter a valid page number between 1 and" xml:space="preserve">
     <value>Syötä kelvollinen sivunumero väliltä 1 ja</value>
   </data>
@@ -209,6 +224,12 @@
   </data>
   <data name="This action cannot be undone." xml:space="preserve">
     <value>Tätä toimintoa ei voi perua.</value>
+  </data>
+  <data name="This link shows legacy category references. Current question classification uses total categories and periods." xml:space="preserve">
+    <value>Tämä linkki näyttää vanhoihin luokkiin liittyvät viittaukset. Kysymysten nykyisessä luokittelussa käytetään kokonaisluokkia ja jaksoja.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Kokonaiskategoria</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tyyppi</value>

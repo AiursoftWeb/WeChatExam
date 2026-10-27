@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Answer" xml:space="preserve">
+      <data name="All questions in this batch will use the selected period. Save material from different periods separately." xml:space="preserve">
+    <value>この一括分の質問には、選択した期間が適用されます。異なる期間の資料は、分けて保存してください。</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
     <value>回答</value>
   </data>
   <data name="Back to Edit" xml:space="preserve">
@@ -30,17 +33,29 @@
   <data name="Content" xml:space="preserve">
     <value>コンテンツ</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>ナレッジカテゴリ</value>
+  </data>
   <data name="No knowledge points found." xml:space="preserve">
     <value>知識ポイントが見つかりませんでした。</value>
   </data>
   <data name="No questions for this knowledge point." xml:space="preserve">
     <value>この知識ポイントには質問がありません。</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>期間</value>
+  </data>
   <data name="Preview &amp; Save" xml:space="preserve">
     <value>プレビュー &amp; 保存</value>
   </data>
   <data name="Questions" xml:space="preserve">
     <value>質問</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>カテゴリを選択</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>期間を選択</value>
   </data>
   <data name="Tags" xml:space="preserve">
     <value>タグ</value>

@@ -21,6 +21,9 @@
       <data name="Advanced: System Prompt" xml:space="preserve">
     <value>Gelişmiş: Sistem İpucu</value>
   </data>
+  <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Bu materyalden oluşturulan tüm sorularda bu dönem kullanılacaktır. Farklı dönemlere ait materyalleri ayrı ayrı çıkarın.</value>
+  </data>
   <data name="Extract Knowledge from Material" xml:space="preserve">
     <value>Malzemeden Bilgi Çıkarma</value>
   </data>
@@ -30,14 +33,23 @@
   <data name="Instructions for the AI on how to parse the material." xml:space="preserve">
     <value>Yapay Zekâ&apos;nın materyali nasıl ayrıştıracağına dair talimatlar.</value>
   </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Bilgi kategorisi</value>
+  </data>
   <data name="Material" xml:space="preserve">
     <value>Malzeme</value>
   </data>
   <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
     <value>Buraya çalışma malzemenizi, makalelerinizi veya notlarınızı yapıştırın...</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Dönem</value>
+  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Kategori Seç</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Dönem Seçin</value>
   </data>
   <data name="System Prompt" xml:space="preserve">
     <value>Sistem İpucu</value>
