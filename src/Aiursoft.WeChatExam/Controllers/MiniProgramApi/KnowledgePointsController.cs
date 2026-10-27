@@ -50,16 +50,16 @@ public class KnowledgePointsController : ControllerBase
     /// <summary>
     /// 通过分类ID获取知识点及其相关题目
     /// </summary>
-    /// <param name="categoryId">分类ID</param>
+    /// <param name="knowledgeCategoryId">分类ID</param>
     /// <returns>知识点及题目列表</returns>
     /// <response code="200">成功返回知识点及题目列表</response>
     [HttpGet]
     [ProducesResponseType(typeof(List<KnowledgePointWithQuestionsDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByCategory([FromQuery] Guid categoryId)
+    public async Task<IActionResult> GetByCategory([FromQuery] Guid knowledgeCategoryId)
     {
         // 查询所有属于该分类的知识点
-        var knowledgePoints = await _context.CategoryKnowledgePoints
-            .Where(x => x.CategoryId == categoryId)
+        var knowledgePoints = await _context.KnowledgeCategoryKnowledgePoints
+            .Where(x => x.KnowledgeCategoryId == knowledgeCategoryId)
             .Include(x => x.KnowledgePoint)
                 .ThenInclude(kp => kp.KnowledgePointQuestions)
                     .ThenInclude(kpq => kpq.Question)

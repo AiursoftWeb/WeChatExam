@@ -9,7 +9,7 @@ public class IndexViewModel : UiStackLayoutViewModel
     public string Query { get; set; } = string.Empty;
     public string Kind { get; set; } = "all";
     public Guid? KnowledgeCategoryId { get; set; }
-    public List<Category> KnowledgeCategories { get; set; } = [];
+    public List<KnowledgeCategory> KnowledgeCategories { get; set; } = [];
     public Guid? QuestionCategoryId { get; set; }
     public List<QuestionCategory> QuestionCategories { get; set; } = [];
     public List<ContentSearchItem> Results { get; set; } = [];

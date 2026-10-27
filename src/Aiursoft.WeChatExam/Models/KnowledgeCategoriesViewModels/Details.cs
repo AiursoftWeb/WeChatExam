@@ -1,16 +1,16 @@
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Entities;
 
-namespace Aiursoft.WeChatExam.Models.CategoriesViewModels;
+namespace Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels;
 
 public class DetailsViewModel : UiStackLayoutViewModel
 {
     public DetailsViewModel()
     {
-        PageTitle = "Category Details";
+        PageTitle = "Knowledge Category Details";
     }
 
-    public required Category Category { get; set; }
+    public required KnowledgeCategory Category { get; set; }
 
     public List<KnowledgePoint> AssociatedKnowledgePoints { get; set; } = new();
 }

@@ -96,24 +96,74 @@ public class MigrationTests
         var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = course.Id };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Preserved lesson", AudioUrl = "/lesson.mp3" };
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Preserved exercise" };
-        context.AddRange(course, chapter, point, question,
-            new CategoryKnowledgePoint { CategoryId = chapter.Id, KnowledgePointId = point.Id, OrderIndex = 7 },
+        context.AddRange(new TotalCategory { Id = course.Id, Title = course.Title }, course, chapter, point, question,
             new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = question.Id });
         await context.SaveChangesAsync();
+        await context.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO CategoryKnowledgePoints (Id, CategoryId, KnowledgePointId, OrderIndex) VALUES ({Guid.NewGuid()}, {chapter.Id}, {point.Id}, 7)");
         await migrator.MigrateAsync();
         context.ChangeTracker.Clear();
-        var saved = await context.KnowledgePoints.Include(k => k.CategoryKnowledgePoints)
+        var saved = await context.KnowledgePoints.Include(k => k.KnowledgeCategoryKnowledgePoints)
             .Include(k => k.KnowledgePointQuestions).SingleAsync();
         Assert.AreEqual(point.Id, saved.Id);
         Assert.AreEqual("Preserved lesson", saved.Content);
         Assert.AreEqual("/lesson.mp3", saved.AudioUrl);
-        Assert.AreEqual(7, saved.CategoryKnowledgePoints.Single().OrderIndex);
-        Assert.AreEqual(chapter.Id, saved.CategoryKnowledgePoints.Single().CategoryId);
+        Assert.AreEqual(7, saved.KnowledgeCategoryKnowledgePoints.Single().OrderIndex);
+        Assert.AreEqual(chapter.Id, saved.KnowledgeCategoryKnowledgePoints.Single().KnowledgeCategoryId);
         Assert.AreEqual(question.Id, saved.KnowledgePointQuestions.Single().QuestionId);
         Assert.AreEqual(course.Id, (await context.Categories.SingleAsync(c => c.Id == chapter.Id)).ParentId);
         await using var command = context.Database.GetDbConnection().CreateCommand();
         command.CommandText = "SELECT count(*) FROM pragma_table_info('KnowledgePoints') WHERE name = 'ParentId'";
         Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+    }
+
+
+    [TestMethod]
+    public async Task IndependentKnowledgeTreePreservesDirectoriesAndLinksAcrossRollback()
+    {
+        await using var context = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:").Options);
+        await context.Database.OpenConnectionAsync();
+        var migrator = context.GetService<IMigrator>();
+        await migrator.MigrateAsync("20261027084515_MoveVipProductsToTotalCategories");
+        var course = new TotalCategory { Title = "Chinese history" };
+        var other = new TotalCategory { Title = "Western history" };
+        var root = new Category { Id = course.Id, Title = "Chinese history", ParentId = null };
+        var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = root.Id, IsFree = true, OrderIndex = 8 };
+        var child = new Category { Id = Guid.NewGuid(), Title = "Overview", ParentId = chapter.Id, IsFree = false, OrderIndex = 2 };
+        var lesson = new KnowledgePoint { Title = "Lesson", Content = "Original content", AudioUrl = "/audio.mp3" };
+        context.AddRange(course, other, root, chapter, child, lesson);
+        await context.SaveChangesAsync();
+        var linkId = Guid.NewGuid();
+        await context.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO CategoryKnowledgePoints (Id, CategoryId, KnowledgePointId, OrderIndex) VALUES ({linkId}, {child.Id}, {lesson.Id}, 9)");
+        await migrator.MigrateAsync();
+        context.ChangeTracker.Clear();
+        Assert.AreEqual(2, await context.KnowledgeCategories.CountAsync());
+        var migrated = await context.KnowledgeCategories.SingleAsync(c => c.Id == chapter.Id);
+        Assert.IsNull(migrated.ParentKnowledgeCategoryId);
+        Assert.AreEqual(course.Id, migrated.TotalCategoryId);
+        Assert.IsTrue(migrated.IsFree);
+        Assert.AreEqual(8, migrated.OrderIndex);
+        Assert.AreEqual(chapter.CreationTime, migrated.CreationTime);
+        Assert.AreEqual(chapter.Id, (await context.KnowledgeCategories.SingleAsync(c => c.Id == child.Id)).ParentKnowledgeCategoryId);
+        var link = await context.KnowledgeCategoryKnowledgePoints.SingleAsync();
+        Assert.AreEqual(linkId, link.Id);
+        Assert.AreEqual(9, link.OrderIndex);
+        await Assert.ThrowsExactlyAsync<Microsoft.Data.Sqlite.SqliteException>(() =>
+            context.Database.ExecuteSqlInterpolatedAsync($"UPDATE KnowledgeCategories SET TotalCategoryId = {other.Id} WHERE Id = {child.Id}"));
+        var added = new KnowledgeCategory { Title = "New chapter", TotalCategoryId = course.Id, ParentKnowledgeCategoryId = chapter.Id };
+        context.Add(added);
+        migrated.Title = "Updated early music";
+        await context.SaveChangesAsync();
+        await migrator.MigrateAsync("20261027084515_MoveVipProductsToTotalCategories");
+        context.ChangeTracker.Clear();
+        Assert.AreEqual(chapter.Id, (await context.Categories.SingleAsync(c => c.Id == added.Id)).ParentId);
+        Assert.AreEqual("Updated early music", (await context.Categories.SingleAsync(c => c.Id == chapter.Id)).Title);
+        await migrator.MigrateAsync();
+        context.ChangeTracker.Clear();
+        Assert.AreEqual(3, await context.KnowledgeCategories.CountAsync());
+        Assert.AreEqual(linkId, (await context.KnowledgeCategoryKnowledgePoints.SingleAsync()).Id);
+        Assert.AreEqual("Original content", (await context.KnowledgePoints.SingleAsync()).Content);
+        Assert.AreEqual("/audio.mp3", (await context.KnowledgePoints.SingleAsync()).AudioUrl);
     }
 
     [TestMethod]

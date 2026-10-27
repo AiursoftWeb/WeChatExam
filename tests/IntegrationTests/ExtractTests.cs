@@ -45,9 +45,9 @@ public class ExtractTests : TestBase
         _period = await QuestionPeriodAssignmentTests.AddPeriod(Server.Services);
         using var scope = Server.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var category = new Category { Title = "Knowledge directory", ParentId = null };
+        var category = new KnowledgeCategory { Title = "Knowledge directory", TotalCategoryId = Guid.NewGuid(), TotalCategory = new TotalCategory { Title = "Knowledge course" } };
         var existing = new KnowledgePoint { Title = "Existing lesson", Content = "Keep this" };
-        db.CategoryKnowledgePoints.Add(new CategoryKnowledgePoint { Category = category, CategoryId = category.Id,
+        db.KnowledgeCategoryKnowledgePoints.Add(new KnowledgeCategoryKnowledgePoint { KnowledgeCategory = category, KnowledgeCategoryId = category.Id,
             KnowledgePoint = existing, KnowledgePointId = existing.Id, OrderIndex = 7 });
         await db.SaveChangesAsync();
         _category = category.Id;
@@ -64,7 +64,7 @@ public class ExtractTests : TestBase
 
     private Dictionary<string, string> Form() => new()
     {
-        ["CategoryId"] = _category.ToString(), ["QuestionCategoryId"] = _period.ToString(),
+        ["KnowledgeCategoryId"] = _category.ToString(), ["QuestionCategoryId"] = _period.ToString(),
         ["JsonContent"] = JsonConvert.SerializeObject(Data()), ["OriginalMaterial"] = "Original source"
     };
 
@@ -97,8 +97,8 @@ public class ExtractTests : TestBase
         Assert.AreEqual(_tagName, q.QuestionTags.Single().Tag.DisplayName);
         var lesson = await db.KnowledgePoints.SingleAsync(k => k.Title == _lessonTitle);
         Assert.AreEqual("Original lesson content", lesson.Content);
-        var placement = await db.CategoryKnowledgePoints.SingleAsync(k => k.KnowledgePointId == lesson.Id);
-        Assert.AreEqual(_category, placement.CategoryId);
+        var placement = await db.KnowledgeCategoryKnowledgePoints.SingleAsync(k => k.KnowledgePointId == lesson.Id);
+        Assert.AreEqual(_category, placement.KnowledgeCategoryId);
         Assert.AreEqual(8, placement.OrderIndex);
         Assert.IsTrue(await db.KnowledgePointQuestions.AnyAsync(k => k.KnowledgePointId == lesson.Id && k.QuestionId == q.Id));
     }
@@ -125,7 +125,7 @@ public class ExtractTests : TestBase
     [TestMethod]
     public async Task InvalidDestinationsDoNotSaveAndPreserveMaterialAndChoices()
     {
-        foreach (var field in new[] { "CategoryId", "QuestionCategoryId" })
+        foreach (var field in new[] { "KnowledgeCategoryId", "QuestionCategoryId" })
         foreach (var invalid in new[] { "", "invalid", Guid.Empty.ToString(), Guid.NewGuid().ToString() })
         foreach (var action in new[] { "Submit", "Extract" })
         {

@@ -71,6 +71,17 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .HasForeignKey(q => q.QuestionCategoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        builder.Entity<KnowledgeCategory>()
+            .HasOne(c => c.TotalCategory).WithMany().HasForeignKey(c => c.TotalCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<KnowledgeCategory>()
+            .HasOne(c => c.ParentKnowledgeCategory).WithMany(c => c.Children)
+            .HasPrincipalKey(c => new { c.Id, c.TotalCategoryId })
+            .HasForeignKey(c => new { c.ParentKnowledgeCategoryId, c.TotalCategoryId }).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<KnowledgeCategoryKnowledgePoint>()
+            .HasOne(c => c.KnowledgeCategory).WithMany(c => c.KnowledgeCategoryKnowledgePoints)
+            .HasForeignKey(c => c.KnowledgeCategoryId).OnDelete(DeleteBehavior.Restrict);
+
         // Protect financial records from being cascade-deleted when a user deletes their account.
         builder.Entity<PaymentOrder>()
             .HasOne(p => p.User)
@@ -87,12 +98,13 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
 
     public DbSet<TotalCategory> TotalCategories => Set<TotalCategory>();
     public DbSet<QuestionCategory> QuestionCategories => Set<QuestionCategory>();
+    public DbSet<KnowledgeCategory> KnowledgeCategories => Set<KnowledgeCategory>();
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<CategoryTaxonomy> CategoryTaxonomies => Set<CategoryTaxonomy>();
     public DbSet<Question> Questions => Set<Question>();
     public DbSet<KnowledgePoint> KnowledgePoints => Set<KnowledgePoint>();
     public DbSet<UserPracticeHistory> UserPracticeHistories => Set<UserPracticeHistory>();
-    public DbSet<CategoryKnowledgePoint> CategoryKnowledgePoints => Set<CategoryKnowledgePoint>();
+    public DbSet<KnowledgeCategoryKnowledgePoint> KnowledgeCategoryKnowledgePoints => Set<KnowledgeCategoryKnowledgePoint>();
     public DbSet<KnowledgePointQuestion> KnowledgePointQuestions => Set<KnowledgePointQuestion>();
     public DbSet<Article> Articles => Set<Article>();
     public DbSet<Taxonomy> Taxonomies => Set<Taxonomy>();

@@ -1,6 +1,6 @@
-@model Aiursoft.WeChatExam.Models.CategoriesViewModels.DeleteViewModel
+@model Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels.DeleteViewModel
 
-<h1 class="h3 mb-3">@Localizer["Delete Category"]</h1>
+<h1 class="h3 mb-3">@Localizer["Delete Knowledge Category"]</h1>
 <div class="card">
     <div class="card-body text-center">
         <i class="align-middle text-danger" data-lucide="trash-2" style="width: 48px; height: 48px;"></i>
@@ -9,7 +9,7 @@
         <div class="d-inline-block bg-body-tertiary rounded p-2 px-3 mb-4">
             <strong class="fs-5">@Model.Category.Title</strong>
         </div>
-        @if (Model.HasChildren || Model.HasQuestions)
+        @if (Model.HasChildren || Model.HasKnowledgePoints)
         {
             <div class="alert alert-warning" role="alert">
                 <div class="alert-icon">
@@ -20,16 +20,14 @@
                     {
                         <p class="mb-1">@Localizer["Cannot delete category with children. Please delete children first."]</p>
                     }
-                    @if (Model.HasQuestions)
+                    @if (Model.HasKnowledgePoints)
                     {
-                        <p class="mb-1">@Localizer["Cannot delete category with associated questions. Please remove or reassign these questions first."]</p>
-                        <a asp-controller="Questions" asp-action="Index" asp-route-legacyCategoryId="@Model.Category.Id" class="btn btn-sm btn-warning mt-2">
-                            <i class="align-middle me-1" data-lucide="external-link"></i> @Localizer["View related questions"]
-                        </a>
+                        <p class="mb-1">@Localizer["Cannot delete category with associated knowledge points. Please move these knowledge points first."]</p>
+                        <a asp-action="Details" asp-route-id="@Model.Category.Id" class="btn btn-sm btn-warning mt-2">@Localizer["View knowledge points"]</a>
                     }
                 </div>
             </div>
-            <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+            <a asp-action="Index" asp-route-totalCategoryId="@Model.Category.TotalCategoryId" class="btn btn-light">@Localizer["Back to List"]</a>
         }
         else
         {
@@ -38,7 +36,7 @@
                     <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Yes, delete this category"]
                 </button>
             </form>
-            <a asp-action="Index" class="btn btn-light">@Localizer["Cancel"]</a>
+            <a asp-action="Index" asp-route-totalCategoryId="@Model.Category.TotalCategoryId" class="btn btn-light">@Localizer["Cancel"]</a>
         }
     </div>
 </div>

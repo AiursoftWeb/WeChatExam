@@ -34,7 +34,7 @@ public class ContentVectorSearchService(
                 pq.PaperId == excludePaperId.Value && pq.QuestionId == q.Id));
         var points = db.KnowledgePoints.AsNoTracking().AsQueryable();
         if (knowledgeCategoryId.HasValue)
-            points = points.Where(k => k.CategoryKnowledgePoints.Any(c => c.CategoryId == knowledgeCategoryId.Value));
+            points = points.Where(k => k.KnowledgeCategoryKnowledgePoints.Any(c => c.KnowledgeCategoryId == knowledgeCategoryId.Value));
         var terms = query.ToLowerInvariant().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Take(8).ToArray();
         var lowerQuery = query.ToLowerInvariant();
         var results = new List<ContentSearchItem>();

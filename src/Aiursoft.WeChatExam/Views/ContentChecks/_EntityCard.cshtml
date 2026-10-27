@@ -12,7 +12,8 @@
         "Questions" => @Localizer["Exercise"],
         "Tags" => @Localizer["Tag"],
         "Taxonomies" => @Localizer["Taxonomy"],
-        "Categories" => @Localizer["Course"],
+        "TotalCategories" => @Localizer["Course"],
+        "KnowledgeCategories" => @Localizer["Knowledge Category"],
         "VipProducts" => @Localizer["VIP product"],
         _ => @Localizer["Paper"]
     };
@@ -22,14 +23,15 @@
         "Questions" => @Localizer["Edit exercise"],
         "Tags" => @Localizer["Edit tag"],
         "Taxonomies" => @Localizer["Edit taxonomy"],
-        "Categories" => @Localizer["Edit course"],
+        "TotalCategories" => @Localizer["Edit course"],
+        "KnowledgeCategories" => @Localizer["Edit knowledge category"],
         "VipProducts" => @Localizer["Edit VIP product"],
         _ => Model.Action == "Edit" ? @Localizer["Edit paper"] : @Localizer["View frozen paper"]
     };
     var icon = Model.Controller switch
     {
         "KnowledgePoints" => "book-open", "Questions" => "list-checks", "Tags" => "tag",
-        "Taxonomies" => "folder-tree", "Categories" => "library-big", "VipProducts" => "badge-check", _ => "files"
+        "Taxonomies" => "folder-tree", "KnowledgeCategories" => "folder-tree", "TotalCategories" => "library-big", "VipProducts" => "badge-check", _ => "files"
     };
 }
 <article class="check-entity" data-entity-type="@Model.Controller" data-entity-id="@Model.Id">
@@ -92,7 +94,7 @@
                     {
                         @if (permissions.Contains(subject.Permission))
                         {
-                            <a asp-controller="Categories" asp-action="Edit" asp-route-id="@subject.Id" asp-route-checkReturnUrl="@ViewData["CheckReturnUrl"]">@subject.Name</a>
+                            <a asp-controller="@subject.Controller" asp-action="Edit" asp-route-id="@subject.Id" asp-route-checkReturnUrl="@ViewData["CheckReturnUrl"]">@subject.Name</a>
                         }
                         else
                         {

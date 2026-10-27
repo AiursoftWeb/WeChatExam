@@ -1,6 +1,8 @@
-@model Aiursoft.WeChatExam.Models.CategoriesViewModels.EditViewModel
+@model Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels.EditViewModel
 
-<h1 class="h3 mb-3">@Localizer["Edit Category"]</h1>
+@{ var paths = KnowledgeCategoryPaths.Build(Model.AvailableParents); }
+<h1 class="h3 mb-3">@Localizer["Edit Knowledge Category"]</h1>
+<p>@Localizer["Total Category"]: <a asp-controller="TotalCategories" asp-action="Edit" asp-route-id="@Model.TotalCategoryId">@Model.TotalCategoryTitle</a></p>
 <form asp-action="Edit" method="post">
     <partial name="_ContentCheckReturn" />
     <input type="hidden" asp-for="Id" />
@@ -16,17 +18,17 @@
         <span asp-validation-for="IsFree" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="ParentId" class="form-label">@Localizer["Parent Category"]</label>
-        <select asp-for="ParentId" class="form-select">
+        <label asp-for="ParentKnowledgeCategoryId" class="form-label">@Localizer["Parent Category"]</label>
+        <select asp-for="ParentKnowledgeCategoryId" class="form-select">
             <option value="">@Localizer["Top Level"]</option>
             @foreach (var parent in Model.AvailableParents)
             {
-                <option value="@parent.Id" selected="@(parent.Id == Model.ParentId)">
-                    @parent.Title
+                <option value="@parent.Id" selected="@(parent.Id == Model.ParentKnowledgeCategoryId)">
+                    @paths[parent.Id]
                 </option>
             }
         </select>
-        <span asp-validation-for="ParentId" class="text-danger"></span>
+        <span asp-validation-for="ParentKnowledgeCategoryId" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">
         <i class="align-middle me-2" data-lucide="save"></i>
@@ -39,5 +41,5 @@
             @Localizer["Save"]
         }
     </button>
-    <a asp-action="Index" class="btn btn-light">@Localizer["Back to List"]</a>
+    <a asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-light">@Localizer["Back to List"]</a>
 </form>

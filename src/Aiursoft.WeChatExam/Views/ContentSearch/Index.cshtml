@@ -1,6 +1,8 @@
 @using Aiursoft.WeChatExam.Authorization
 @model Aiursoft.WeChatExam.Models.ContentSearchViewModels.IndexViewModel
 
+@{ var knowledgePaths = KnowledgeCategoryPaths.Build(Model.KnowledgeCategories); }
+
 <h1 class="h3 mb-3">@Localizer["Search Content"]</h1>
 <div class="card mb-3">
     <div class="card-body">
@@ -40,7 +42,7 @@
                     <option value="">@Localizer["All Knowledge Categories"]</option>
                     @foreach (var category in Model.KnowledgeCategories)
                     {
-                        <option value="@category.Id" selected="@(Model.KnowledgeCategoryId == category.Id)">@category.Title</option>
+                        <option value="@category.Id" selected="@(Model.KnowledgeCategoryId == category.Id)">@knowledgePaths[category.Id]</option>
                     }
                 </select>
                 <div class="form-text">@Localizer["Applies only to knowledge points."]</div>

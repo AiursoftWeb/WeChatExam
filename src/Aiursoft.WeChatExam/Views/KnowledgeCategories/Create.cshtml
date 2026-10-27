@@ -1,0 +1,44 @@
+@model Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels.CreateViewModel
+
+@{ var paths = KnowledgeCategoryPaths.Build(Model.AvailableParents); }
+<h1 class="h3 mb-3">@Localizer["Create Knowledge Category"]</h1>
+<form method="get" class="d-flex gap-2 mb-3">
+    <label for="course-filter" class="form-label align-self-center mb-0">@Localizer["Total Category"]</label>
+    <select name="totalCategoryId" id="course-filter" class="form-select w-auto">
+        @foreach (var course in Model.TotalCategories)
+        {
+            <option value="@course.Id" selected="@(course.Id == Model.TotalCategoryId)">@course.Title</option>
+        }
+    </select>
+    <button class="btn btn-secondary" type="submit">@Localizer["Choose course"]</button>
+</form>
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="TotalCategoryId" />
+    <span asp-validation-for="TotalCategoryId" class="text-danger"></span>
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">@Localizer["Title"]</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3 form-check">
+        <input asp-for="IsFree" class="form-check-input" />
+        <label asp-for="IsFree" class="form-check-label">@Localizer["Is Free"]</label>
+        <span asp-validation-for="IsFree" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ParentKnowledgeCategoryId" class="form-label">@Localizer["Parent Category"]</label>
+        <select asp-for="ParentKnowledgeCategoryId" class="form-select">
+            <option value="">@Localizer["Top Level"]</option>
+            @foreach (var parent in Model.AvailableParents)
+            {
+                <option value="@parent.Id">@paths[parent.Id]</option>
+            }
+        </select>
+        <span asp-validation-for="ParentKnowledgeCategoryId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create"]
+    </button>
+    <a asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-light">@Localizer["Back to List"]</a>
+</form>

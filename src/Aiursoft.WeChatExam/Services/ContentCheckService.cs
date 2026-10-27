@@ -19,6 +19,26 @@ public class ContentCheckService(
     {
         var report = new ContentCheckReport();
         var categories = await context.Categories.AsNoTracking().ToListAsync(cancellationToken);
+        var directories = await context.KnowledgeCategories.AsNoTracking().ToListAsync(cancellationToken);
+        var courses = await context.TotalCategories.AsNoTracking().ToListAsync(cancellationToken);
+        // Legacy paper/tag diagnostics still use course-shaped categories. Project current
+        // knowledge directories for paths only; this does not restore a writable old mapping.
+        var currentCategories = categories.ToDictionary(c => c.Id);
+        foreach (var course in courses.Where(c => currentCategories.ContainsKey(c.Id) || directories.Any(d => d.TotalCategoryId == c.Id)))
+            currentCategories[course.Id] = new Category
+            {
+                Id = course.Id, Title = course.Title, ParentId = null,
+                IsFree = currentCategories.GetValueOrDefault(course.Id)?.IsFree ?? true
+            };
+        foreach (var directory in directories)
+            currentCategories[directory.Id] = new Category
+            {
+                Id = directory.Id, Title = directory.Title,
+                ParentId = directory.Id == directory.TotalCategoryId ? null : directory.ParentKnowledgeCategoryId ?? directory.TotalCategoryId,
+                IsFree = directory.IsFree, OrderIndex = directory.OrderIndex
+            };
+        categories = currentCategories.Values.ToList();
+        var directoryIds = directories.Select(c => c.Id).ToHashSet();
         var tags = await context.Tags.AsNoTracking().Include(t => t.Taxonomy)
             .ThenInclude(t => t!.CategoryTaxonomies).ToListAsync(cancellationToken);
         var questions = await context.Questions.AsNoTracking().Select(q => new Question
@@ -31,7 +51,7 @@ public class ContentCheckService(
             Id = k.Id, Title = k.Title, Content = ""
         }).ToListAsync(cancellationToken);
         var knowledgeQuestions = await context.KnowledgePointQuestions.AsNoTracking().ToListAsync(cancellationToken);
-        var knowledgeCategories = await context.CategoryKnowledgePoints.AsNoTracking().ToListAsync(cancellationToken);
+        var knowledgeCategories = await context.KnowledgeCategoryKnowledgePoints.AsNoTracking().ToListAsync(cancellationToken);
         var products = await context.VipProducts.AsNoTracking().Include(p => p.TotalCategory).ToListAsync(cancellationToken);
         var papers = await context.Papers.AsNoTracking().Include(p => p.PaperCategories)
             .Include(p => p.PaperSnapshots).AsSplitQuery().ToListAsync(cancellationToken);
@@ -54,7 +74,7 @@ public class ContentCheckService(
         var knowledgeIndex = knowledge.ToDictionary(k => k.Id);
         var categoryIndex = categories.ToDictionary(c => c.Id);
         var linkedKnowledge = knowledgeQuestions.ToLookup(k => k.QuestionId);
-        var categoriesByKnowledge = knowledgeCategories.ToLookup(k => k.KnowledgePointId, k => k.CategoryId);
+        var categoriesByKnowledge = knowledgeCategories.ToLookup(k => k.KnowledgePointId, k => k.KnowledgeCategoryId);
         var questionsByTag = questionTags.ToLookup(t => t.TagId, t => t.QuestionId);
         var snapshotQuestions = snapshots.ToLookup(s => s.PaperSnapshotId);
         var availableSubjects = products.Where(p => p.IsEnabled && p.Type == VipProductType.Category && p.TotalCategoryId.HasValue)
@@ -103,7 +123,7 @@ public class ContentCheckService(
             t.IsFree ? ContentPricing.Public : ContentPricing.Paid);
         ContentReference PaperRef(Paper p) => new("Papers", p.Id.ToString(), p.Title, AppPermissionNames.CanEditPapers,
             p.IsFree ? ContentPricing.Public : ContentPricing.Paid, p.Status == PaperStatus.Frozen ? "Details" : "Edit");
-        ContentReference CategoryRef(Category c) => new("Categories", c.Id.ToString(), c.Title, AppPermissionNames.CanEditAnyCategory);
+        ContentReference CategoryRef(Category c) => new(directoryIds.Contains(c.Id) ? "KnowledgeCategories" : "TotalCategories", c.Id.ToString(), c.Title, AppPermissionNames.CanEditAnyCategory);
         ContentReference ProductRef(VipProduct p) => new("VipProducts", p.Id.ToString(), p.Name,
             AppPermissionNames.CanEditVipProducts, Enabled: p.IsEnabled);
         string KnowledgePath(KnowledgePoint point)

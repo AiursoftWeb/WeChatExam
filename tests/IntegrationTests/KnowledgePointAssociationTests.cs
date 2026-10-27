@@ -12,6 +12,7 @@ public class KnowledgePointAssociationTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
+    private readonly Guid _courseId = Guid.NewGuid();
 
     public KnowledgePointAssociationTests()
     {
@@ -35,6 +36,12 @@ public class KnowledgePointAssociationTests
             reservation.ConfigureServer(_server);
             await _server.UpdateDbAsync<WeChatExamDbContext>();
             await _server.SeedAsync();
+            using (var scope = _server.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+                db.TotalCategories.Add(new TotalCategory { Id = _courseId, Title = "Test course" });
+                await db.SaveChangesAsync();
+            }
             await _server.StartAsync();
         }
         catch
@@ -89,8 +96,8 @@ public class KnowledgePointAssociationTests
         await LoginAsAdminAsync();
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var course = new Category { Id = Guid.NewGuid(), Title = "Music history", ParentId = null };
-        var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = course.Id };
+        var course = new TotalCategory { Title = "Music history" };
+        var chapter = new KnowledgeCategory { Title = "Early music", TotalCategoryId = course.Id };
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Related exercise" };
         db.AddRange(course, chapter, question);
         await db.SaveChangesAsync();
@@ -101,7 +108,7 @@ public class KnowledgePointAssociationTests
         {
             ["Title"] = "Overview",
             ["Content"] = "Original lesson content",
-            ["SelectedCategoryIds[0]"] = chapter.Id.ToString(),
+            ["SelectedKnowledgeCategoryIds[0]"] = chapter.Id.ToString(),
             ["SelectedQuestionIds[0]"] = question.Id.ToString(),
             ["__RequestVerificationToken"] = await GetAntiCsrfToken("/KnowledgePoints/Create")
         }));
@@ -115,7 +122,7 @@ public class KnowledgePointAssociationTests
         var fields = new Dictionary<string, string>
         {
             ["Id"] = id.ToString(), ["Title"] = "", ["Content"] = "Updated lesson content",
-            ["SelectedCategoryIds[0]"] = chapter.Id.ToString(),
+            ["SelectedKnowledgeCategoryIds[0]"] = chapter.Id.ToString(),
             ["SelectedQuestionIds[0]"] = question.Id.ToString(),
             ["__RequestVerificationToken"] = await GetAntiCsrfToken(editUrl)
         };
@@ -129,12 +136,12 @@ public class KnowledgePointAssociationTests
         var edited = await _http.PostAsync(editUrl, new FormUrlEncodedContent(fields));
         Assert.AreEqual(HttpStatusCode.Found, edited.StatusCode);
 
-        var content = await _http.GetStringAsync($"/api/KnowledgePoints?categoryId={chapter.Id}");
+        var content = await _http.GetStringAsync($"/api/KnowledgePoints?knowledgeCategoryId={chapter.Id}");
         Assert.Contains("Updated lesson content", content);
         Assert.Contains(question.Content, content);
         var list = await _http.GetStringAsync("/KnowledgePoints");
         Assert.Contains("Updated overview", list);
-        Assert.Contains($"/Categories/Details/{chapter.Id}", list);
+        Assert.Contains($"/KnowledgeCategories/Details/{chapter.Id}", list);
         Assert.DoesNotContain("tree-tab", list);
         Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync("/api/KnowledgePoints/all")).StatusCode);
         Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/KnowledgePoints/all/{id}")).StatusCode);
@@ -147,7 +154,7 @@ public class KnowledgePointAssociationTests
         Assert.AreEqual(HttpStatusCode.Found, deletion.StatusCode);
         db.ChangeTracker.Clear();
         Assert.IsFalse(await db.KnowledgePoints.AnyAsync(p => p.Id == id));
-        Assert.AreEqual(course.Id, (await db.Categories.FindAsync(chapter.Id))!.ParentId);
+        Assert.AreEqual(course.Id, (await db.KnowledgeCategories.FindAsync(chapter.Id))!.TotalCategoryId);
         Assert.IsNotNull(await db.Questions.FindAsync(question.Id));
     }
 
@@ -158,13 +165,14 @@ public class KnowledgePointAssociationTests
 
         // 1. Create a Category
         var categoryTitle = "Test Association Category";
-        var createCatToken = await GetAntiCsrfToken("/Categories/Create");
+        var createCatToken = await GetAntiCsrfToken("/KnowledgeCategories/Create");
         var createCatContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", categoryTitle },
+            { "TotalCategoryId", _courseId.ToString() },
             { "__RequestVerificationToken", createCatToken }
         });
-        var createCatResponse = await _http.PostAsync("/Categories/Create", createCatContent);
+        var createCatResponse = await _http.PostAsync("/KnowledgeCategories/Create", createCatContent);
         Assert.AreEqual(HttpStatusCode.Found, createCatResponse.StatusCode);
         var categoryId = createCatResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
 
@@ -189,7 +197,7 @@ public class KnowledgePointAssociationTests
             { "Id", kpId },
             { "Title", kpTitle },
             { "Content", kpContent },
-            { "SelectedCategoryIds[0]", categoryId },
+            { "SelectedKnowledgeCategoryIds[0]", categoryId },
             { "__RequestVerificationToken", editKpToken }
         });
         var editKpResponse = await _http.PostAsync($"/KnowledgePoints/Edit/{kpId}", editKpContent);
@@ -202,7 +210,7 @@ public class KnowledgePointAssociationTests
         Assert.Contains(categoryTitle, kpDetailsHtml, "Knowledge Point details should show associated category");
 
         // 5. Verify Association in Category Details
-        var catDetailsResponse = await _http.GetAsync($"/Categories/Details/{categoryId}");
+        var catDetailsResponse = await _http.GetAsync($"/KnowledgeCategories/Details/{categoryId}");
         catDetailsResponse.EnsureSuccessStatusCode();
         var catDetailsHtml = await catDetailsResponse.Content.ReadAsStringAsync();
         Assert.Contains(kpTitle, catDetailsHtml, "Category details should show associated knowledge point");
@@ -215,13 +223,14 @@ public class KnowledgePointAssociationTests
 
         // 1. Create a Category
         var categoryTitle = "Created Category";
-        var createCatToken = await GetAntiCsrfToken("/Categories/Create");
+        var createCatToken = await GetAntiCsrfToken("/KnowledgeCategories/Create");
         var createCatContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", categoryTitle },
+            { "TotalCategoryId", _courseId.ToString() },
             { "__RequestVerificationToken", createCatToken }
         });
-        var createCatResponse = await _http.PostAsync("/Categories/Create", createCatContent);
+        var createCatResponse = await _http.PostAsync("/KnowledgeCategories/Create", createCatContent);
         Assert.AreEqual(HttpStatusCode.Found, createCatResponse.StatusCode);
         var categoryId = createCatResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
 
@@ -233,7 +242,7 @@ public class KnowledgePointAssociationTests
         {
             { "Title", kpTitle },
             { "Content", kpContent },
-            { "SelectedCategoryIds[0]", categoryId },
+            { "SelectedKnowledgeCategoryIds[0]", categoryId },
             { "__RequestVerificationToken", createKpToken }
         });
         var createKpResponse = await _http.PostAsync("/KnowledgePoints/Create", createKpContent);
@@ -247,21 +256,22 @@ public class KnowledgePointAssociationTests
         Assert.Contains(categoryTitle, kpDetailsHtml, "Knowledge Point details should show associated category after creation");
 
         // 4. Verify Association in Category Details
-        var catDetailsResponse = await _http.GetAsync($"/Categories/Details/{categoryId}");
+        var catDetailsResponse = await _http.GetAsync($"/KnowledgeCategories/Details/{categoryId}");
         catDetailsResponse.EnsureSuccessStatusCode();
         var catDetailsHtml = await catDetailsResponse.Content.ReadAsStringAsync();
         Assert.Contains(kpTitle, catDetailsHtml, "Category details should show associated knowledge point after creation");
     }
 
     [TestMethod]
-    public async Task CategoryKnowledgePointOrderAffectsMiniProgramApi()
+    public async Task KnowledgeCategoryKnowledgePointOrderAffectsMiniProgramApi()
     {
         await LoginAsAdminAsync();
 
-        var categoryToken = await GetAntiCsrfToken("/Categories/Create");
-        var categoryResponse = await _http.PostAsync("/Categories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        var categoryToken = await GetAntiCsrfToken("/KnowledgeCategories/Create");
+        var categoryResponse = await _http.PostAsync("/KnowledgeCategories/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", $"Ordered category {Guid.NewGuid()}" },
+            { "TotalCategoryId", _courseId.ToString() },
             { "__RequestVerificationToken", categoryToken }
         }));
         Assert.AreEqual(HttpStatusCode.Found, categoryResponse.StatusCode);
@@ -274,7 +284,7 @@ public class KnowledgePointAssociationTests
             {
                 { "Title", title },
                 { "Content", $"Content for {title}" },
-                { "SelectedCategoryIds[0]", categoryId },
+                { "SelectedKnowledgeCategoryIds[0]", categoryId },
                 { "__RequestVerificationToken", token }
             }));
             Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
@@ -284,14 +294,14 @@ public class KnowledgePointAssociationTests
         var first = await CreateKnowledgePointAsync($"First knowledge point {Guid.NewGuid()}");
         var second = await CreateKnowledgePointAsync($"Second knowledge point {Guid.NewGuid()}");
 
-        var detailsUrl = $"/Categories/Details/{categoryId}";
+        var detailsUrl = $"/KnowledgeCategories/Details/{categoryId}";
         var orderToken = await GetAntiCsrfToken(detailsUrl);
         var detailsHtml = await (await _http.GetAsync(detailsUrl)).Content.ReadAsStringAsync();
         Assert.Contains("knowledge-points-sortable", detailsHtml);
 
         var orderRequest = new HttpRequestMessage(
             HttpMethod.Post,
-            $"/Categories/UpdateKnowledgePointOrder/{categoryId}")
+            $"/KnowledgeCategories/UpdateKnowledgePointOrder/{categoryId}")
         {
             Content = new StringContent(
                 Newtonsoft.Json.JsonConvert.SerializeObject(new[] { second.Id, first.Id }),
@@ -302,7 +312,7 @@ public class KnowledgePointAssociationTests
         var orderResponse = await _http.SendAsync(orderRequest);
         Assert.AreEqual(HttpStatusCode.OK, orderResponse.StatusCode);
 
-        var apiResponse = await _http.GetAsync($"/api/KnowledgePoints?categoryId={categoryId}");
+        var apiResponse = await _http.GetAsync($"/api/KnowledgePoints?knowledgeCategoryId={categoryId}");
         apiResponse.EnsureSuccessStatusCode();
         var apiJson = await apiResponse.Content.ReadAsStringAsync();
         Assert.IsTrue(
@@ -311,7 +321,7 @@ public class KnowledgePointAssociationTests
 
         var invalidRequest = new HttpRequestMessage(
             HttpMethod.Post,
-            $"/Categories/UpdateKnowledgePointOrder/{categoryId}")
+            $"/KnowledgeCategories/UpdateKnowledgePointOrder/{categoryId}")
         {
             Content = new StringContent(
                 Newtonsoft.Json.JsonConvert.SerializeObject(new[] { first.Id }),
@@ -332,7 +342,7 @@ public class KnowledgePointAssociationTests
     {
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var category = new Category { Id = Guid.NewGuid(), Title = "Answer comparison course", ParentId = null };
+        var category = new KnowledgeCategory { Title = "Answer comparison course", TotalCategoryId = _courseId };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Related lesson", Content = "Lesson content" };
         var metadata = Newtonsoft.Json.JsonConvert.SerializeObject(new { options = new[] { selectedOption, "Another musician" } });
         var question = new Question
@@ -342,11 +352,11 @@ public class KnowledgePointAssociationTests
             StandardAnswer = storedAnswer, Metadata = metadata
         };
         db.AddRange(category, point, question,
-            new CategoryKnowledgePoint { CategoryId = category.Id, KnowledgePointId = point.Id },
+            new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = category.Id, KnowledgePointId = point.Id },
             new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = question.Id });
         await db.SaveChangesAsync();
 
-        var response = await _http.GetAsync($"/api/KnowledgePoints?categoryId={category.Id}");
+        var response = await _http.GetAsync($"/api/KnowledgePoints?knowledgeCategoryId={category.Id}");
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         using var json = System.Text.Json.JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         var linkedQuestion = json.RootElement.EnumerateArray().Single()
@@ -533,7 +543,7 @@ public class KnowledgePointAssociationTests
             new QuestionTag { QuestionId = a.Id, TagId = tag.Id, Tag = tag }, new QuestionTag { QuestionId = b.Id, TagId = tag.Id, Tag = tag },
             new KnowledgePointQuestion { KnowledgePointId = first.Id, QuestionId = a.Id },
             new KnowledgePointQuestion { KnowledgePointId = second.Id, QuestionId = b.Id },
-            new CategoryKnowledgePoint { KnowledgePointId = first.Id, CategoryId = other.Id });
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = first.Id, KnowledgeCategoryId = other.Id, KnowledgeCategory = new KnowledgeCategory { Id = other.Id, Title = other.Title, TotalCategoryId = other.Id, TotalCategory = new TotalCategory { Id = other.Id, Title = other.Title } } });
         await db.SaveChangesAsync();
         var results = await _http.GetStringAsync("/ContentChecks/Results?rule=KP001&search=Relation");
         Assert.AreEqual(1, Regex.Matches(results, "<article ").Count);
@@ -547,7 +557,7 @@ public class KnowledgePointAssociationTests
             Assert.Contains($"/KnowledgePoints/Edit/{linked.Id}", relation);
             Assert.DoesNotContain($"/KnowledgePoints/Edit/{unrelated.Id}", relation);
             Assert.Contains($"/Questions/Edit/{question.Id}", relation);
-            Assert.Contains($"/Categories/Edit/{course.Id}", relation);
+            Assert.Contains($"/TotalCategories/Edit/{course.Id}", relation);
             Assert.Contains($"/Tags/Edit/{tag.Id}", detail);
             Assert.Contains($"/Taxonomies/Edit/{taxonomy.Id}", detail);
             Assert.Contains($"/VipProducts/Edit/{product.Id}", detail);
@@ -571,7 +581,8 @@ public class KnowledgePointAssociationTests
     [DataRow("Questions")]
     [DataRow("Tags")]
     [DataRow("Taxonomies")]
-    [DataRow("Categories")]
+    [DataRow("KnowledgeCategories")]
+    [DataRow("TotalCategories")]
     [DataRow("VipProducts")]
     [DataRow("Papers")]
     public async Task EditorsReturnToCheckupAfterValidationAndSaveWithoutExternalRedirects(string controller)
@@ -587,12 +598,13 @@ public class KnowledgePointAssociationTests
         var taxonomy = new Taxonomy { Name = "Origin taxonomy" };
         var product = new VipProduct { Name = "Origin VIP", TotalCategory = new TotalCategory { Id = category.Id, Title = category.Title }, DurationDays = 365 };
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Origin paper", TimeLimit = 180 };
-        db.AddRange(category, point, question, tag, taxonomy, product, paper);
+        var directory = new KnowledgeCategory { Title = "Origin directory", TotalCategoryId = category.Id };
+        db.AddRange(category, directory, point, question, tag, taxonomy, product, paper);
         await db.SaveChangesAsync();
         var id = controller switch
         {
             "KnowledgePoints" => point.Id.ToString(), "Questions" => question.Id.ToString(), "Tags" => tag.Id.ToString(),
-            "Taxonomies" => taxonomy.Id.ToString(), "Categories" => category.Id.ToString(),
+            "Taxonomies" => taxonomy.Id.ToString(), "KnowledgeCategories" => directory.Id.ToString(), "TotalCategories" => category.Id.ToString(),
             "VipProducts" => product.Id.ToString(), _ => paper.Id.ToString()
         };
         const string origin = "/ContentChecks/Results?view=information&search=Origin&page=2";

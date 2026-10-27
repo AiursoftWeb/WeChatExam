@@ -16,11 +16,11 @@
                          <input type="hidden" asp-for="OriginalMaterial" />
                          
                          <div class="col-md-6">
-                             <label asp-for="CategoryId" class="form-label">@Localizer["Knowledge category"]</label>
-                             <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select" required>
+                             <label asp-for="KnowledgeCategoryId" class="form-label">@Localizer["Knowledge category"]</label>
+                             <select asp-for="KnowledgeCategoryId" asp-items="Model.Categories" class="form-select" required>
                                  <option value="">-- @Localizer["Select Category"] --</option>
                              </select>
-                             <span asp-validation-for="CategoryId" class="text-danger"></span>
+                             <span asp-validation-for="KnowledgeCategoryId" class="text-danger"></span>
                          </div>
                          <div class="col-md-6">
                              <label asp-for="QuestionCategoryId" class="form-label">@Localizer["Period"]</label>

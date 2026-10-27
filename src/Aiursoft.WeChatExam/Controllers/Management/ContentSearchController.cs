@@ -26,7 +26,7 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
         {
             Query = query?.Trim() ?? string.Empty, Kind = kind,
             KnowledgeCategoryId = knowledgeCategoryId, QuestionCategoryId = questionCategoryId,
-            KnowledgeCategories = await db.Categories.AsNoTracking().OrderBy(c => c.Title)
+            KnowledgeCategories = await db.KnowledgeCategories.AsNoTracking().Include(c => c.TotalCategory).OrderBy(c => c.Title)
                 .ToListAsync(HttpContext.RequestAborted),
             QuestionCategories = await db.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory)
                 .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)

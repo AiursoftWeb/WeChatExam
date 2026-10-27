@@ -1,4 +1,5 @@
 @using Aiursoft.WeChatExam.Authorization
+@{ var paths = KnowledgeCategoryPaths.Build(Model.AvailableCategories); }
 @using Aiursoft.WeChatExam.Models.ContentSearchViewModels
 @model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.EditViewModel
 
@@ -24,15 +25,15 @@
     </div>
     
     <div class="mb-3">
-        <label asp-for="SelectedCategoryIds" class="form-label">@Localizer["Associated Categories"]</label>
-        <select asp-for="SelectedCategoryIds" class="form-select" multiple style="height: 200px">
+        <label asp-for="SelectedKnowledgeCategoryIds" class="form-label">@Localizer["Associated Categories"]</label>
+        <select asp-for="SelectedKnowledgeCategoryIds" class="form-select" multiple style="height: 200px">
             @foreach (var category in Model.AvailableCategories)
             {
-                <option value="@category.Id">@category.Title</option>
+                <option value="@category.Id">@paths[category.Id]</option>
             }
         </select>
         <div class="form-text">@Localizer["Hold Ctrl (Windows) or Command (Mac) to select multiple options."]</div>
-        <span asp-validation-for="SelectedCategoryIds" class="text-danger"></span>
+        <span asp-validation-for="SelectedKnowledgeCategoryIds" class="text-danger"></span>
     </div>
 
     @await Html.PartialAsync("_QuestionFinder", Model.QuestionTypeOptions)
