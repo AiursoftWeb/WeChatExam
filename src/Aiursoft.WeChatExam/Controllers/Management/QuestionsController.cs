@@ -21,6 +21,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class QuestionsController(
     WeChatExamDbContext context,
+    KnowledgeExerciseValidation exerciseValidation,
     ITagService tagService,
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
@@ -353,6 +354,11 @@ public class QuestionsController(
         {
             ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
         }
+        if (model.QuestionCategoryId.HasValue)
+        {
+            var error = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId.Value });
+            if (error != null) ModelState.AddModelError(nameof(model.QuestionCategoryId), error);
+        }
         if (!ModelState.IsValid) return this.StackView(model);
 
         // Classification is reviewed independently of content and legacy pricing.
@@ -482,6 +488,14 @@ public class QuestionsController(
         if (!await context.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {
             ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
+            model.QuestionCategories = await GetQuestionCategories();
+            return this.StackView(model);
+        }
+
+        var exerciseError = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId!.Value });
+        if (exerciseError != null)
+        {
+            ModelState.AddModelError(nameof(model.QuestionCategoryId), exerciseError);
             model.QuestionCategories = await GetQuestionCategories();
             return this.StackView(model);
         }

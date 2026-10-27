@@ -19,6 +19,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class KnowledgePointsController(
     WeChatExamDbContext context,
+    KnowledgeExerciseValidation exerciseValidation,
     IStringLocalizer<KnowledgePointsController> localizer) : Controller
 {
 
@@ -68,6 +69,8 @@ public class KnowledgePointsController(
     public async Task<IActionResult> Create(CreateViewModel model)
     {
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
+        var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
+        if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
         {
             model.AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync();
@@ -198,6 +201,8 @@ public class KnowledgePointsController(
         if (id != model.Id) return NotFound();
 
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
+        var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
+        if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
         {
             model.AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync();

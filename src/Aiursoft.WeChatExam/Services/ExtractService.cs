@@ -10,15 +10,18 @@ public class ExtractService : IExtractService
     private readonly IOllamaService _ollamaService;
     private readonly WeChatExamDbContext _dbContext;
     private readonly ITagService _tagService;
+    private readonly KnowledgeExerciseValidation _exerciseValidation;
 
     public ExtractService(
         IOllamaService ollamaService,
         WeChatExamDbContext dbContext,
-        ITagService tagService)
+        ITagService tagService,
+        KnowledgeExerciseValidation exerciseValidation)
     {
         _ollamaService = ollamaService;
         _dbContext = dbContext;
         _tagService = tagService;
+        _exerciseValidation = exerciseValidation;
     }
 
     public async Task<string> GenerateJsonAsync(string material, string systemPrompt, CancellationToken token = default)
@@ -40,6 +43,12 @@ public class ExtractService : IExtractService
             throw new InvalidOperationException("The selected period no longer exists.");
         }
 
+        // Recheck at save time as well as before queuing: pricing can change while AI runs.
+        if (data.Any(k => k.Questions.Count > 0))
+        {
+            var error = await _exerciseValidation.ValidateExtractionAsync(knowledgeCategoryId, questionCategoryId, token);
+            if (error != null) throw new InvalidOperationException(error);
+        }
         var strategy = _dbContext.Database.CreateExecutionStrategy();
         
         await strategy.ExecuteAsync<(List<ExtractedKnowledgePoint>, Guid, CancellationToken), int>(

@@ -19,6 +19,7 @@ public class AiTasksController(
     AiTaskService aiTaskService,
     ServiceTaskQueue taskQueue,
     WeChatExamDbContext dbContext,
+    KnowledgeExerciseValidation exerciseValidation,
     ITagService tagService,
     IStringLocalizer<AiTasksController> localizer) : Controller
 {
@@ -624,6 +625,8 @@ public class AiTasksController(
             if (item.Status != AiTaskStatus.Completed || !await PeriodExists(item.NewEntityId))
                 return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
 
+            var error = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [questionId] = item.NewEntityId!.Value });
+            if (error != null) return BadRequest(error);
             question.QuestionCategoryId = item.NewEntityId!.Value;
             await dbContext.SaveChangesAsync();
         }
@@ -670,6 +673,8 @@ public class AiTasksController(
             if (completedItems.Any(i => !i.NewEntityId.HasValue || !existingPeriods.Contains(i.NewEntityId.Value)))
                 return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
 
+            var error = await exerciseValidation.ValidateQuestionPeriodsAsync(completedItems.ToDictionary(i => i.QuestionId, i => i.NewEntityId!.Value));
+            if (error != null) return BadRequest(error);
             var questionIds = completedItems.Select(i => i.QuestionId).ToArray();
             var questions = await dbContext.Questions.Where(q => questionIds.Contains(q.Id)).ToListAsync();
             var suggestions = completedItems.ToDictionary(i => i.QuestionId);
@@ -785,6 +790,8 @@ public class AiTasksController(
              if (!Guid.TryParse(newValue, out var periodId) || !await PeriodExists(periodId))
                  return BadRequest(localizer["Choose an existing period before adopting the suggestion."].Value);
 
+             var error = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [questionId] = periodId });
+             if (error != null) return BadRequest(error);
              question.QuestionCategoryId = periodId;
              await dbContext.SaveChangesAsync();
         }

@@ -76,6 +76,7 @@ public class Startup : IWebStartup
         services.AddScoped<ICouponService, CouponService>();
         services.AddScoped<IPaperAccessService, PaperAccessService>();
         services.AddScoped<ContentCheckService>();
+        services.AddScoped<KnowledgeExerciseValidation>();
         services.AddSingleton<ContentEmbeddingCache>();
 
         // Background job queue

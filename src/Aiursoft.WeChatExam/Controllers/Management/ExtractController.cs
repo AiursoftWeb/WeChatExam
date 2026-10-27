@@ -18,12 +18,14 @@ public class ExtractController : Controller
 {
     private readonly IStringLocalizer<ExtractController> _localizer;
     private readonly IExtractService _extractService;
+    private readonly KnowledgeExerciseValidation _exerciseValidation;
     private readonly WeChatExamDbContext _dbContext;
     private readonly ServiceTaskQueue _taskQueue;
     private readonly GlobalSettingsService _globalSettingsService;
 
     public ExtractController(
         IExtractService extractService,
+        KnowledgeExerciseValidation exerciseValidation,
         WeChatExamDbContext dbContext,
         ServiceTaskQueue taskQueue,
         GlobalSettingsService globalSettingsService,
@@ -31,6 +33,7 @@ public class ExtractController : Controller
     {
         _localizer = localizer;
         _extractService = extractService;
+        _exerciseValidation = exerciseValidation;
         _dbContext = dbContext;
         _taskQueue = taskQueue;
         _globalSettingsService = globalSettingsService;
@@ -182,6 +185,11 @@ public class ExtractController : Controller
         if (!await _dbContext.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {
             ModelState.AddModelError(nameof(model.QuestionCategoryId), _localizer["Select an existing period."]);
+        }
+        if (ModelState.IsValid && (model is not ExtractPreviewViewModel preview || preview.Data.Any(k => k.Questions.Count > 0)))
+        {
+            var error = await _exerciseValidation.ValidateExtractionAsync(model.KnowledgeCategoryId!.Value, model.QuestionCategoryId!.Value);
+            if (error != null) ModelState.AddModelError(nameof(model.QuestionCategoryId), error);
         }
     }
 

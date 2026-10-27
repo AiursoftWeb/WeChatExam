@@ -15,6 +15,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
 public class QuestionCategoriesController(
     WeChatExamDbContext context,
+    KnowledgeExerciseValidation exerciseValidation,
     IStringLocalizer<QuestionCategoriesController> localizer) : Controller
 {
     [RenderInNavBar(
@@ -97,6 +98,11 @@ public class QuestionCategoriesController(
         var category = await context.QuestionCategories.SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
         await ValidateTotalCategory(model);
+        if (!model.IsFree && category.IsFree)
+        {
+            var error = await exerciseValidation.ValidatePaidQuestionCategoryAsync(id);
+            if (error != null) ModelState.AddModelError(nameof(model.IsFree), error);
+        }
         if (!ModelState.IsValid) return this.StackView(model);
 
         category.Title = model.Title.Trim();
