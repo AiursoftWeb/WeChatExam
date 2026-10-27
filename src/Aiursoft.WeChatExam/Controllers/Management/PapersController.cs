@@ -356,6 +356,9 @@ public class PapersController(
         var existingIds = await context.PaperQuestions.Where(p => p.PaperId == id)
             .Select(p => p.QuestionId).ToArrayAsync(HttpContext.RequestAborted);
         if (!existingIds.Contains(request.Id)) return NotFound();
+        // A paper may mix periods. Similarity follows the source question, not the paper's legacy category.
+        request.QuestionCategoryId = await context.Questions.Where(q => q.Id == request.Id)
+            .Select(q => q.QuestionCategoryId).SingleAsync(HttpContext.RequestAborted);
         request.ExcludeIds = request.ExcludeIds.Concat(existingIds).Distinct().ToArray();
         var (available, results) = await search.RecommendAsync(request, false, HttpContext.RequestAborted);
         return Json(new

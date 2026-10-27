@@ -99,7 +99,7 @@ public class ContentSearchTests : TestBase
         await db.SaveChangesAsync();
         GetService<IConfiguration>()["OpenAI:CompletionApiUrl"] = "http://127.0.0.1:1/api/chat";
         GetService<IConfiguration>()["GlobalSettings:" + SettingsMap.EnableEmbeddingBasedSearch] = "True";
-        var payload = new { id = point.Id, categoryIds = new[] { category.Id } };
+        var payload = new { id = point.Id };
         var rejected = await Http.PostAsJsonAsync("/ContentSearch/RecommendedQuestions", payload);
         Assert.AreEqual(HttpStatusCode.BadRequest, rejected.StatusCode);
         var token = await GetAntiCsrfToken($"/KnowledgePoints/Edit/{point.Id}");
@@ -193,11 +193,14 @@ public class ContentSearchTests : TestBase
             Id = Guid.NewGuid(), Content = "Similar candidate " + i, CategoryId = category.Id,
             StandardAnswer = "Answer " + i, Explanation = "Explanation " + i
         }).ToArray();
-        db.AddRange(paper, category, source, other); db.Questions.AddRange(candidates); await db.SaveChangesAsync();
+        foreach (var candidate in candidates) { candidate.QuestionCategory = source.QuestionCategory; candidate.CategoryId = null; }
+        var outsidePeriod = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
+            Id = Guid.NewGuid(), Content = "Wrong period but same legacy category", CategoryId = category.Id };
+        db.AddRange(paper, category, source, other, outsidePeriod); db.Questions.AddRange(candidates); await db.SaveChangesAsync();
         db.AddRange(new PaperQuestion { PaperId = paper.Id, QuestionId = source.Id, Order = 3, Score = 7 },
             new PaperQuestion { PaperId = paper.Id, QuestionId = other.Id, Order = 5, Score = 11 });
         var vector = new float[1024]; vector[0] = 1;
-        foreach (var question in candidates.Append(source).Append(other))
+        foreach (var question in candidates.Append(source).Append(other).Append(outsidePeriod))
         {
             question.Embedding = EmbeddingHelper.Serialize(vector); question.LastEmbeddedAt = question.LastUpdatedAt;
         }
@@ -226,16 +229,16 @@ public class ContentSearchTests : TestBase
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id }, false)).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id, text = "Different draft" })).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = Guid.Empty })).StatusCode);
-        Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id, categoryIds = new Guid[1001] })).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Query(new { id = source.Id, excludeIds = new Guid[5001] })).StatusCode);
         Assert.AreEqual(HttpStatusCode.NotFound, (await Query(new { id = candidates[0].Id })).StatusCode);
         Assert.AreEqual(HttpStatusCode.NotFound, (await Query(new { id = source.Id }, endpoint: $"/Papers/SimilarQuestions/{Guid.NewGuid()}")).StatusCode);
-        var response = await Query(new { id = source.Id, categoryIds = new[] { category.Id }, excludeIds = new[] { candidates[0].Id } });
+        var response = await Query(new { id = source.Id, questionCategoryId = outsidePeriod.QuestionCategoryId, excludeIds = new[] { candidates[0].Id } });
         response.EnsureSuccessStatusCode();
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         Assert.IsTrue(json.RootElement.GetProperty("available").GetBoolean());
         var results = json.RootElement.GetProperty("results").EnumerateArray().ToArray();
         Assert.HasCount(5, results);
-        Assert.IsTrue(results.All(q => q.GetProperty("id").GetGuid() != source.Id && q.GetProperty("id").GetGuid() != other.Id && q.GetProperty("id").GetGuid() != candidates[0].Id));
+        Assert.IsTrue(results.All(q => q.GetProperty("id").GetGuid() != source.Id && q.GetProperty("id").GetGuid() != other.Id && q.GetProperty("id").GetGuid() != candidates[0].Id && q.GetProperty("id").GetGuid() != outsidePeriod.Id));
         Assert.IsTrue(results.All(q => q.GetProperty("answer").GetString()!.StartsWith("Answer ") && q.GetProperty("explanation").GetString()!.StartsWith("Explanation ")));
         var originalLinks = await db.PaperQuestions.Where(q => q.PaperId == paper.Id).OrderBy(q => q.Order).ToListAsync();
         Assert.AreEqual(2, originalLinks.Count); Assert.AreEqual(3, originalLinks[0].Order); Assert.AreEqual(7, originalLinks[0].Score);
@@ -385,6 +388,14 @@ public class ContentSearchTests : TestBase
             request.Headers.Add("RequestVerificationToken", token); request.Content = JsonContent.Create(new { id = Guid.NewGuid(), text = "Draft" });
             Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.SendAsync(request)).StatusCode);
         }
+        foreach (var periodId in new[] { "not-a-guid", Guid.NewGuid().ToString() })
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
+            request.Headers.Add("RequestVerificationToken", token);
+            request.Content = JsonContent.Create(new { text = "Draft", questionCategoryId = periodId });
+            Assert.AreEqual(periodId == "not-a-guid" ? HttpStatusCode.BadRequest : HttpStatusCode.NotFound,
+                (await Http.SendAsync(request)).StatusCode);
+        }
         Assert.AreEqual(originalCount, await db.Questions.CountAsync());
         await LoginAsAdmin();
         token = await GetAntiCsrfToken("/Questions/Create");
@@ -420,7 +431,7 @@ public class ContentSearchTests : TestBase
         var originalLinks = await db.PaperQuestions.CountAsync();
         using var request = new HttpRequestMessage(HttpMethod.Post, "/ContentSearch/SimilarQuestionDrafts");
         request.Headers.Add("RequestVerificationToken", await GetAntiCsrfToken("/Papers/Import"));
-        request.Content = JsonContent.Create(new { text = "Edited import preview question", categoryIds = Array.Empty<Guid>() });
+        request.Content = JsonContent.Create(new { text = "Edited import preview question" });
         Assert.AreEqual(HttpStatusCode.OK, (await Http.SendAsync(request)).StatusCode);
         Assert.AreEqual(originalQuestions, await db.Questions.CountAsync());
         Assert.AreEqual(originalPapers, await db.Papers.CountAsync());

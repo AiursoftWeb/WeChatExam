@@ -228,8 +228,8 @@
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>输入以搜索或添加标签...</value>
   </data>
-  <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
-    <value>最多显示所选类别中的 5 个相似问题；如果未选择类别，则显示所有类别中的相似问题。已添加到试卷中的问题不会显示。选择要添加的问题；原问题保持不变。</value>
+  <data name="Up to five similar questions in the same period as the original question. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>最多可显示五道与原题属于同一年代的相似题目。已存在于试卷中的题目不会显示。请选择要添加的候选题目；原题保持不变。</value>
   </data>
 
 </root>

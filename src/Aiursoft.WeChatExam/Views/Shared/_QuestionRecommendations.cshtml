@@ -24,18 +24,18 @@
         @if (Model.IsDraft)
         {
             <p class="text-muted small">@Localizer["Compare up to five similar questions before saving. Similarity does not mean they are duplicates."]</p>
-            @if (Model.SearchesAllCategories)
-            {
-                <p class="text-muted small">@Localizer["Searches the entire question bank."]</p>
-            }
-            else
-            {
-                <p class="text-muted small">@Localizer["Searches within the selected category, or all categories if none is selected."]</p>
-            }
         }
         else
         {
             <p class="text-muted small">@Localizer["Up to five related exam questions. Refresh after changing the content."]</p>
+        }
+        @if (Model.IsKnowledgePoint)
+        {
+            <p class="text-muted small">@Localizer["Searches the entire question bank."]</p>
+        }
+        else
+        {
+            <p class="text-muted small">@Localizer["Searches within the selected period, or all periods if none is selected."]</p>
         }
         <div data-recommendation-results aria-live="polite"></div>
     </div>

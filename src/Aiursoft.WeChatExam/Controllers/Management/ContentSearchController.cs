@@ -89,6 +89,8 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
     public async Task<IActionResult> SimilarQuestionDrafts([FromBody] RecommendationRequest request)
     {
         if (!ModelState.IsValid || request.Id != Guid.Empty || string.IsNullOrWhiteSpace(request.Text)) return BadRequest();
+        if (request.QuestionCategoryId.HasValue && !await db.QuestionCategories.AnyAsync(
+                c => c.Id == request.QuestionCategoryId, HttpContext.RequestAborted)) return NotFound();
         var (available, results) = await search.RecommendAsync(request, false, HttpContext.RequestAborted);
         return Json(new { available, results });
     }
@@ -100,6 +102,8 @@ public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearch
     {
         if (!ModelState.IsValid) return BadRequest();
         if (!await db.Questions.AnyAsync(q => q.Id == request.Id, HttpContext.RequestAborted)) return NotFound();
+        if (request.QuestionCategoryId.HasValue && !await db.QuestionCategories.AnyAsync(
+                c => c.Id == request.QuestionCategoryId, HttpContext.RequestAborted)) return NotFound();
         var (available, results) = await search.RecommendAsync(request, false, HttpContext.RequestAborted);
         return Json(new { available, results });
     }

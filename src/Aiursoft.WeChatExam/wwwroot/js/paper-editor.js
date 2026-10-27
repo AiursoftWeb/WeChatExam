@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         status.replaceChildren(); results.replaceChildren(); updateSelection();
         button.disabled = true;
         status.append(element('p', 'text-break mb-1', translate('similar-to', 'Similar to: {0}').replace('{0}', () => source.dataset.questionTitle)),
-            element('p', 'text-muted mb-1', translate('similar-help', 'Find up to five similar questions. Existing paper questions are excluded; the original question stays unchanged.')));
+            element('p', 'text-muted mb-1', translate('similar-help', 'Find up to five similar questions in the same period. Existing paper questions are excluded; the original question stays unchanged.')));
         results.append(element('p', 'list-group-item text-muted', translate('searching', 'Searching...')));
         panel.scrollIntoView({ block: 'nearest' });
         try {
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST', signal: controller.signal,
                 headers: { 'Content-Type': 'application/json', RequestVerificationToken: panel.querySelector('[name="__RequestVerificationToken"]').value },
                 body: JSON.stringify({ id: source.dataset.similarQuestion,
-                    categoryIds: [document.getElementById('SelectedCategoryId').value].filter(Boolean), excludeIds: [...selected.keys()] })
+                    excludeIds: [...selected.keys()] })
             });
             if (!response.ok || response.redirected) throw new Error('Similar question search failed');
             const data = await response.json();
@@ -148,11 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     document.querySelectorAll('[data-similar-question]').forEach(source => source.addEventListener('click', () => findSimilar(source)));
-    document.getElementById('SelectedCategoryId').addEventListener('change', () => {
-        pendingSearch?.abort(); pendingSearch = null;
-        button.disabled = false;
-        status.replaceChildren(); results.replaceChildren(); updateSelection();
-    });
     mode.addEventListener('change', () => {
         pendingSearch?.abort(); pendingSearch = null;
         button.disabled = false;
