@@ -1,5 +1,6 @@
 using System.Net;
 using Aiursoft.DbTools;
+using Microsoft.AspNetCore.Identity;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
@@ -352,6 +353,9 @@ public class VipAccessTests
         Assert.AreEqual("First", tree[0].Title);
         var root = tree[1];
         Assert.AreEqual(directory.Id, root.Id);
+        Assert.AreEqual(course.Id, root.TotalCategoryId);
+        Assert.AreEqual(directory.OrderIndex, root.OrderIndex);
+        Assert.IsFalse(root.IsFree);
         Assert.AreEqual(1, root.KnowledgePointCount);
         Assert.IsFalse(root.HasAccess);
         Assert.IsTrue(root.Children.Single().HasAccess);
@@ -472,14 +476,23 @@ public class VipAccessTests
     public async Task KnowledgeApiDoesNotTreatAnAdminCookieAsStudentMembership()
     {
         var (course, directory, lesson, _) = await AddKnowledgeAsync(false);
-        await _server!.SeedAsync();
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var users = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            var roles = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var admin = new User { UserName = "knowledge_admin", Email = "knowledge-admin@example.com", DisplayName = "Knowledge administrator" };
+            Assert.IsTrue((await users.CreateAsync(admin, "Admin@123456!")).Succeeded);
+            if (!await roles.RoleExistsAsync("Admin"))
+                Assert.IsTrue((await roles.CreateAsync(new IdentityRole("Admin"))).Succeeded);
+            Assert.IsTrue((await users.AddToRoleAsync(admin, "Admin")).Succeeded);
+        }
         var page = await _http.GetStringAsync("/Account/Login");
         var csrf = System.Text.RegularExpressions.Regex.Match(page,
             @"name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)""").Groups[1].Value;
         Assert.IsFalse(string.IsNullOrEmpty(csrf));
         using var login = await _http.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            ["EmailOrUserName"] = "admin@default.com", ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = csrf
+            ["EmailOrUserName"] = "knowledge_admin", ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = csrf
         }));
         Assert.AreEqual(HttpStatusCode.Found, login.StatusCode);
         _mockWeChatPayService.Memberships = [new VipMembership

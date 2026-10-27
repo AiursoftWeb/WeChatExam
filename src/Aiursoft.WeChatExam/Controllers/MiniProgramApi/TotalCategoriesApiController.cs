@@ -65,7 +65,7 @@ public class TotalCategoriesApiController(
         var categories = await context.KnowledgeCategories.AsNoTracking()
             .Where(c => c.TotalCategoryId == totalCategoryId)
             .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id)
-            .Select(c => new { Category = c, Count = c.KnowledgeCategoryKnowledgePoints.Count })
+            .Select(c => new { Category = c, c.KnowledgeCategoryKnowledgePoints.Count })
             .ToListAsync(cancellationToken);
         var children = categories.ToLookup(c => c.Category.ParentKnowledgeCategoryId);
         List<KnowledgeCategoryDto> Branch(Guid? parent) => children[parent].Select(c =>
