@@ -168,7 +168,7 @@ public class PapersApiTests
         _mockWeChatPayService.Memberships = [new VipMembership
         {
             UserId = "u", StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1),
-            VipProduct = new VipProduct { Name = "Category", Type = VipProductType.Category, CategoryId = categoryId }
+            VipProduct = new VipProduct { Name = "Category", Type = VipProductType.Category, TotalCategoryId = categoryId }
         }];
         await AssertAccess(snapshotId,false, true);
 

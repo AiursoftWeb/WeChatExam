@@ -66,7 +66,7 @@ public class PaymentOrdersController(
         var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
         var vips = await dbContext.VipMemberships
             .Include(v => v.VipProduct)
-            .ThenInclude(p => p!.Category)
+            .ThenInclude(p => p!.TotalCategory)
             .Where(v => v.UserId == userId)
             .ToListAsync();
 

@@ -53,6 +53,12 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<VipProduct>()
+            .HasOne(p => p.TotalCategory)
+            .WithMany()
+            .HasForeignKey(p => p.TotalCategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         builder.Entity<QuestionCategory>()
             .HasOne(c => c.TotalCategory)
             .WithMany()

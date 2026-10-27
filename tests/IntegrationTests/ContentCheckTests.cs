@@ -71,8 +71,8 @@ public class ContentCheckTests
             new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id },
             new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = legacy.Id },
             new CategoryKnowledgePoint { KnowledgePointId = lesson.Id, CategoryId = other.Id },
-            new VipProduct { Name = "Paused", CategoryId = subject.Id, IsEnabled = false },
-            new VipProduct { Name = "Invalid", CategoryId = null });
+            new VipProduct { Name = "Paused", TotalCategory = new TotalCategory { Id = subject.Id, Title = subject.Title }, IsEnabled = false },
+            new VipProduct { Name = "Invalid", TotalCategoryId = null });
         await db.SaveChangesAsync();
         db.ChangeTracker.Clear();
         var report = await Checker(db).ScanAsync([subject.Id], false);
@@ -140,7 +140,7 @@ public class ContentCheckTests
     public async Task OnlyActiveMembershipsGrantAccessEvenWhenProductIsDisabled()
     {
         var subject = Guid.NewGuid();
-        var product = new VipProduct { Name = "Paused", CategoryId = subject, IsEnabled = false };
+        var product = new VipProduct { Name = "Paused", TotalCategoryId = subject, IsEnabled = false };
         var pay = new StubWeChatPayService();
         var membership = new VipMembership { UserId = "test", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1) };
         pay.Memberships.Add(membership);

@@ -165,8 +165,8 @@ UserManager<User> userManager,
         var dtos = vips.Select(v => new VipMembershipDto
         {
             Type = v.VipProduct?.Type ?? VipProductType.Category,
-            CategoryId = v.VipProduct?.CategoryId,
-            CategoryName = v.VipProduct?.Category?.Title ?? string.Empty,
+            CategoryId = v.VipProduct?.TotalCategoryId,
+            CategoryName = v.VipProduct?.TotalCategory?.Title ?? string.Empty,
             ProductName = v.VipProduct?.Name ?? "VIP",
             IsActive = v.IsActive,
             EndTime = v.EndTime
@@ -194,8 +194,8 @@ UserManager<User> userManager,
             p.Id,
             p.Name,
             Type = p.Type.ToString(),
-            p.CategoryId,
-            CategoryName = p.Category?.Title,
+            CategoryId = p.TotalCategoryId,
+            CategoryName = p.TotalCategory?.Title,
             p.PriceInFen,
             p.DurationDays
         }).ToList();

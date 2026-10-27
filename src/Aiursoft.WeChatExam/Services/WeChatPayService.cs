@@ -32,7 +32,7 @@ public class WeChatPayService(
     {
         // Look up VipProduct from DB
         var vipProduct = await dbContext.VipProducts
-            .Include(v => v.Category)
+            .Include(v => v.TotalCategory)
             .FirstOrDefaultAsync(v => v.Id == vipProductId);
 
         if (vipProduct == null)
@@ -54,7 +54,7 @@ public class WeChatPayService(
         }
 
         var amountInFen = vipProduct.PriceInFen;
-        var description = $"{vipProduct.Name} - {vipProduct.Category?.Title ?? "VIP"}";
+        var description = $"{vipProduct.Name} - {vipProduct.TotalCategory?.Title ?? "VIP"}";
         Coupon? appliedCoupon;
 
         if (!string.IsNullOrWhiteSpace(couponCode))
@@ -91,7 +91,7 @@ public class WeChatPayService(
             .FirstOrDefaultAsync(v => 
                 v.UserId == userId && 
                 v.VipProduct != null && 
-                v.VipProduct.CategoryId == vipProduct.CategoryId &&
+                v.VipProduct.TotalCategoryId == vipProduct.TotalCategoryId &&
                 v.StartTime <= now && 
                 v.EndTime > now);
 
@@ -427,7 +427,7 @@ public class WeChatPayService(
         return await dbContext.VipMemberships
             .Include(v => v.User)
             .Include(v => v.VipProduct)
-            .ThenInclude(p => p!.Category)
+            .ThenInclude(p => p!.TotalCategory)
             .Where(v => v.UserId == userId)
             .ToListAsync();
     }
@@ -439,7 +439,7 @@ public class WeChatPayService(
             .AnyAsync(v =>
                 v.UserId == userId &&
                 v.VipProduct != null &&
-                v.VipProduct.CategoryId == categoryId &&
+                v.VipProduct.TotalCategoryId == categoryId &&
                 v.StartTime <= DateTime.UtcNow &&
                 v.EndTime > DateTime.UtcNow);
     }

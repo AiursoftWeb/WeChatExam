@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Entities;
 
 /// <summary>
-/// VIP 商品（分类 VIP 可关联一个分类，真题 VIP 独立于分类）
+/// A purchasable course membership, or the existing all-real-exams membership.
 /// </summary>
-[Index(nameof(CategoryId))]
+[Index(nameof(TotalCategoryId))]
 [Index(nameof(Type))]
 public class VipProduct
 {
@@ -27,12 +27,13 @@ public class VipProduct
     public VipProductType Type { get; set; } = VipProductType.Category;
 
     /// <summary>
-    /// 关联分类 ID（仅分类VIP需要，真题VIP为null）
+    /// Course entitlement target. Existing course IDs are preserved during migration.
+    /// Real-exam membership remains independent of courses.
     /// </summary>
-    public Guid? CategoryId { get; set; }
+    public Guid? TotalCategoryId { get; set; }
 
-    [ForeignKey(nameof(CategoryId))]
-    public Category? Category { get; set; }
+    [ForeignKey(nameof(TotalCategoryId))]
+    public TotalCategory? TotalCategory { get; set; }
 
     /// <summary>
     /// 价格（单位：分）

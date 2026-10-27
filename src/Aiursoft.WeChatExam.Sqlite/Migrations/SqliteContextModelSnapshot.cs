@@ -1208,9 +1208,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("CategoryId")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
@@ -1228,12 +1225,15 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<int>("PriceInFen")
                         .HasColumnType("INTEGER");
 
+                    b.Property<Guid?>("TotalCategoryId")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("TotalCategoryId");
 
                     b.HasIndex("Type");
 
@@ -1854,11 +1854,12 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VipProduct", b =>
                 {
-                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
-                        .WithMany("VipProducts")
-                        .HasForeignKey("CategoryId");
+                    b.HasOne("Aiursoft.WeChatExam.Entities.TotalCategory", "TotalCategory")
+                        .WithMany()
+                        .HasForeignKey("TotalCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("Category");
+                    b.Navigation("TotalCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1923,8 +1924,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("PaperCategories");
 
                     b.Navigation("Questions");
-
-                    b.Navigation("VipProducts");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Coupon", b =>

@@ -22,10 +22,10 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
             query = query.Where(o => o.UserId == userIdFilter);
         }
 
-        // Including VipProduct and Category to ensure display name is available
+        // Including VipProduct and TotalCategory to ensure display name is available
         return await query
             .Include(o => o.VipProduct)
-            .ThenInclude(p => p!.Category)
+            .ThenInclude(p => p!.TotalCategory)
             .OrderByDescending(o => o.CreatedAt)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -37,7 +37,7 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
         return await dbContext.PaymentOrders
             .Include(o => o.PaymentLogs)
             .Include(o => o.VipProduct)
-            .ThenInclude(p => p!.Category)
+            .ThenInclude(p => p!.TotalCategory)
             .Include(o => o.User)
             .FirstOrDefaultAsync(o => o.Id == id);
     }
@@ -47,7 +47,7 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
         return await dbContext.PaymentOrders
             .Include(o => o.User)
             .Include(o => o.VipProduct)
-            .ThenInclude(p => p!.Category)
+            .ThenInclude(p => p!.TotalCategory)
             .Where(o => o.UserId == userId)
             .OrderByDescending(o => o.CreatedAt)
             .ToListAsync();

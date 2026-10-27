@@ -156,10 +156,14 @@ public class TotalCategoriesTests : TestBase
         await migrator.MigrateAsync(migrations[index - 1]);
         var root = new Category { Id = Guid.NewGuid(), Title = "Music history", ParentId = null, OrderIndex = 7 };
         var child = new Category { Id = Guid.NewGuid(), Title = "Overview", ParentId = root.Id };
-        var product = new VipProduct { Name = "Music membership", CategoryId = root.Id, DurationDays = 366, PriceInFen = 19800 };
+        var product = new VipProduct { Name = "Music membership", TotalCategoryId = root.Id, DurationDays = 366, PriceInFen = 19800 };
         db.Categories.AddRange(root, child);
-        db.VipProducts.Add(product);
         await db.SaveChangesAsync();
+        // Seed the historical column, not the current entity model, before upgrading.
+        await db.Database.ExecuteSqlInterpolatedAsync($"""
+            INSERT INTO VipProducts (Id, Name, Type, CategoryId, PriceInFen, DurationDays, IsEnabled, CreationTime)
+            VALUES ({product.Id}, {product.Name}, {0}, {root.Id}, {product.PriceInFen}, {product.DurationDays}, {true}, {product.CreationTime})
+            """);
         await migrator.MigrateAsync();
 
         var category = await db.TotalCategories.SingleAsync();
@@ -171,7 +175,7 @@ public class TotalCategoriesTests : TestBase
         db.ChangeTracker.Clear();
         var savedProduct = await db.VipProducts.SingleAsync();
         Assert.AreEqual(product.Id, savedProduct.Id);
-        Assert.AreEqual(root.Id, savedProduct.CategoryId);
+        Assert.AreEqual(root.Id, savedProduct.TotalCategoryId);
         Assert.AreEqual(366, savedProduct.DurationDays);
         Assert.AreEqual(19800, savedProduct.PriceInFen);
         await migrator.MigrateAsync();
