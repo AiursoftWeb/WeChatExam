@@ -46,6 +46,44 @@ public class ContentSearchTests : TestBase
     }
 
     [TestMethod]
+    public async Task SearchFiltersSeparatePeriodsFromKnowledgeDirectories()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var directory = new Category { Id = Guid.NewGuid(), Title = "Knowledge directory", ParentId = null };
+        var question = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "scope-fixture" };
+        var excluded = new Question { Id = Guid.NewGuid(), QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "scope-fixture excluded", Category = directory };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "scope-fixture point", Content = "Knowledge" };
+        db.AddRange(directory, question, excluded, point);
+        db.Add(new CategoryKnowledgePoint { CategoryId = directory.Id, KnowledgePointId = point.Id });
+        await db.SaveChangesAsync();
+        var filters = $"query=scope-fixture&knowledgeCategoryId={directory.Id}&questionCategoryId={question.QuestionCategoryId}";
+        var response = await Http.GetAsync("/ContentSearch?" + filters);
+        response.EnsureSuccessStatusCode();
+        var html = await response.Content.ReadAsStringAsync();
+        Assert.Contains($"data-content-id=\"{question.Id}\"", html);
+        Assert.Contains($"data-content-id=\"{point.Id}\"", html);
+        Assert.DoesNotContain($"data-content-id=\"{excluded.Id}\"", html);
+        Assert.Contains("name=\"questionCategoryId\"", html);
+        Assert.Contains("name=\"knowledgeCategoryId\"", html);
+        Assert.DoesNotContain("name=\"categoryId\"", html);
+        Assert.Contains("<optgroup", html);
+        Assert.Contains("returnUrl=", html);
+        var jsonResponse = await Http.GetAsync("/ContentSearch/Questions?" + filters + "&useAi=false");
+        jsonResponse.EnsureSuccessStatusCode();
+        using var json = JsonDocument.Parse(await jsonResponse.Content.ReadAsStringAsync());
+        Assert.HasCount(1, json.RootElement.EnumerateArray().ToArray());
+        Assert.AreEqual(question.Id, json.RootElement[0].GetProperty("id").GetGuid());
+        foreach (var url in new[] { "/ContentSearch?questionCategoryId=", "/ContentSearch?knowledgeCategoryId=",
+                     "/ContentSearch/Questions?questionCategoryId=" })
+        {
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync(url + "invalid")).StatusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync(url + Guid.NewGuid())).StatusCode);
+        }
+    }
+
+    [TestMethod]
     public async Task RecommendationsRequireCsrfAndAssociationsAreOnlySavedByTheEditForm()
     {
         await LoginAsAdmin();
