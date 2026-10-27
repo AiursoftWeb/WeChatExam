@@ -858,4 +858,41 @@ public class KnowledgePointAssociationTests
         Assert.AreEqual(HttpStatusCode.Found, moved.StatusCode);
         Assert.AreEqual(HttpStatusCode.Found, (await SubmitEdit($"/KnowledgePoints/Edit/{data.Lesson.Id}", form)).StatusCode);
     }
+
+    [TestMethod]
+    public async Task RelationalKnowledgeValidationProtectsPricingAndCategoryMoves()
+    {
+        await using var db = new Sqlite.SqliteContext(new DbContextOptionsBuilder<Sqlite.SqliteContext>()
+            .UseSqlite("Data Source=:memory:").Options);
+        await db.Database.OpenConnectionAsync();
+        await db.Database.EnsureCreatedAsync();
+        var course = new TotalCategory { Title = "Course" };
+        var directory = new KnowledgeCategory { Title = "Free directory", TotalCategoryId = course.Id, IsFree = true };
+        var free = new QuestionCategory { Title = "Free", TotalCategoryId = course.Id, IsFree = true };
+        var paid = new QuestionCategory { Title = "Paid", TotalCategoryId = course.Id };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Lesson", Content = "Body" };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Exercise", QuestionCategoryId = free.Id };
+        db.AddRange(course, directory, free, paid, lesson, question,
+            new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = directory.Id, KnowledgePointId = lesson.Id },
+            new KnowledgePointQuestion { QuestionId = question.Id, KnowledgePointId = lesson.Id });
+        await db.SaveChangesAsync();
+        using var scope = _server!.Services.CreateScope();
+        var validator = new KnowledgeExerciseValidation(db,
+            scope.ServiceProvider.GetRequiredService<Microsoft.Extensions.Localization.IStringLocalizer<KnowledgeExerciseValidation>>());
+        Assert.IsNull(await validator.ValidateAssociationsAsync([directory.Id], [question.Id]));
+        Assert.IsNull(await validator.ValidateFreeKnowledgeCategoryAsync(directory.Id));
+        Assert.IsNotNull(await validator.ValidatePaidQuestionCategoryAsync(free.Id));
+        Assert.IsNotNull(await validator.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [question.Id] = paid.Id }));
+        Assert.IsNull(await validator.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [question.Id] = free.Id }));
+        Assert.IsNotNull(await validator.ValidateExtractionAsync(directory.Id, paid.Id));
+        question.QuestionCategoryId = paid.Id;
+        await db.SaveChangesAsync();
+        Assert.IsNotNull(await validator.ValidateAssociationsAsync([directory.Id], [question.Id]));
+        Assert.IsNotNull(await validator.ValidateFreeKnowledgeCategoryAsync(directory.Id));
+        directory.IsFree = false;
+        await db.SaveChangesAsync();
+        Assert.IsNull(await validator.ValidateAssociationsAsync([directory.Id], [question.Id]));
+        Assert.IsNull(await validator.ValidatePaidQuestionCategoryAsync(paid.Id));
+        Assert.IsNull(await validator.ValidateExtractionAsync(directory.Id, paid.Id));
+    }
 }

@@ -40,10 +40,10 @@ public class KnowledgeExerciseValidation(
     {
         var link = await context.KnowledgePointQuestions.AsNoTracking()
             .Where(k => k.Question.QuestionCategoryId == id)
-            .SelectMany(k => k.KnowledgePoint.KnowledgeCategoryKnowledgePoints
-                .Where(c => c.KnowledgeCategory.IsFree)
-                .Select(c => new { Category = c.KnowledgeCategory.Title, k.Question.Content,
-                    Period = k.Question.QuestionCategory!.Title }))
+            .Join(context.KnowledgeCategoryKnowledgePoints.Where(c => c.KnowledgeCategory.IsFree),
+                k => k.KnowledgePointId, c => c.KnowledgePointId,
+                (k, c) => new { Category = c.KnowledgeCategory.Title, k.Question.Content,
+                    Period = k.Question.QuestionCategory!.Title })
             .OrderBy(k => k.Category).ThenBy(k => k.Content).FirstOrDefaultAsync();
         return link == null ? null : Conflict(link.Category, link.Content, link.Period);
     }
@@ -62,9 +62,9 @@ public class KnowledgeExerciseValidation(
         var changed = current.Where(q => q.QuestionCategoryId != assignments[q.Id]).Select(q => q.Id).ToArray();
         var link = await context.KnowledgePointQuestions.AsNoTracking()
             .Where(k => changed.Contains(k.QuestionId))
-            .SelectMany(k => k.KnowledgePoint.KnowledgeCategoryKnowledgePoints
-                .Where(c => c.KnowledgeCategory.IsFree)
-                .Select(c => new { Category = c.KnowledgeCategory.Title, k.QuestionId, k.Question.Content }))
+            .Join(context.KnowledgeCategoryKnowledgePoints.Where(c => c.KnowledgeCategory.IsFree),
+                k => k.KnowledgePointId, c => c.KnowledgePointId,
+                (k, c) => new { Category = c.KnowledgeCategory.Title, k.QuestionId, k.Question.Content })
             .OrderBy(k => k.QuestionId).ThenBy(k => k.Category).FirstOrDefaultAsync();
         return link == null ? null : Conflict(link.Category, link.Content, paidPeriods[assignments[link.QuestionId]]);
     }
