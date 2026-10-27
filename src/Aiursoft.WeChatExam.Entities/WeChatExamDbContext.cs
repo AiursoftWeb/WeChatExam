@@ -96,6 +96,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .OnDelete(DeleteBehavior.Restrict);
     }
 
+    public DbSet<Institution> Institutions => Set<Institution>();
     public DbSet<TotalCategory> TotalCategories => Set<TotalCategory>();
     public DbSet<QuestionCategory> QuestionCategories => Set<QuestionCategory>();
     public DbSet<KnowledgeCategory> KnowledgeCategories => Set<KnowledgeCategory>();

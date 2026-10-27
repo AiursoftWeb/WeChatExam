@@ -1,0 +1,72 @@
+@using Aiursoft.WeChatExam.Models.InstitutionsViewModels
+@model IndexViewModel
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-2">@Localizer["Institutions"]</h1>
+        <p class="text-muted mb-0">@Localizer["Manage the schools that own real exam papers."]</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">
+        <i data-lucide="plus" class="me-1"></i> @Localizer["Create Institution"]
+    </a>
+</div>
+
+<form method="get" class="d-flex gap-2 mb-4" role="search">
+    <input name="search" value="@Model.Search" class="form-control" placeholder="@Localizer["Search institutions"]" aria-label="@Localizer["Search institutions"]" />
+    <button type="submit" class="btn btn-outline-primary flex-shrink-0 text-nowrap">@Localizer["Search"]</button>
+</form>
+
+@if (Model.Institutions.Count == 0)
+{
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <i data-lucide="university" class="text-primary mb-3"></i>
+            @if (string.IsNullOrEmpty(Model.Search))
+            {
+                <h2 class="h4">@Localizer["Create your first institution"]</h2>
+            }
+            else
+            {
+                <h2 class="h4">@Localizer["No matching institutions"]</h2>
+                <a asp-action="Index">@Localizer["Show all institutions"]</a>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var institution in Model.Institutions)
+        {
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 position-relative shadow-sm">
+                    <div class="card-body p-4">
+                        <i data-lucide="university" class="text-primary mb-3"></i>
+                        <h2 class="h4 text-break mb-3">@institution.Title</h2>
+                        <p class="text-muted">@Localizer["Display Order"]: @institution.OrderIndex</p>
+                        <a asp-action="Edit" asp-route-id="@institution.Id" class="stretched-link text-decoration-none">
+                            @Localizer["Edit Institution"] <i data-lucide="arrow-right" class="ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (Model.Total > IndexViewModel.PageSize)
+{
+    <nav class="d-flex justify-content-between align-items-center mt-4" aria-label="@Localizer["Institution pages"]">
+        <span class="text-muted">@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize)</span>
+        <div class="d-flex gap-2">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="Index" asp-route-search="@Model.Search" asp-route-page="@(Model.Page - 1)" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+            @if (Model.Page * IndexViewModel.PageSize < Model.Total)
+            {
+                <a asp-action="Index" asp-route-search="@Model.Search" asp-route-page="@(Model.Page + 1)" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
+}
