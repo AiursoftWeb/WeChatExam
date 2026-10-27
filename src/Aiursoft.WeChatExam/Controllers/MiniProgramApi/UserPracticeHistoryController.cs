@@ -15,13 +15,16 @@ public class UserPracticeHistoryController : ControllerBase
 {
     private readonly WeChatExamDbContext _context;
     private readonly IGradingService _gradingService;
+    private readonly IPaperAccessService _paperAccessService;
 
     public UserPracticeHistoryController(
         WeChatExamDbContext context,
-        IGradingService gradingService)
+        IGradingService gradingService,
+        IPaperAccessService paperAccessService)
     {
         _context = context;
         _gradingService = gradingService;
+        _paperAccessService = paperAccessService;
     }
 
     /// <summary>
@@ -128,12 +131,22 @@ public class UserPracticeHistoryController : ControllerBase
 
         // 检查用户和题目是否存在
         var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
-        var question = await _context.Questions.FirstOrDefaultAsync(q => q.Id == dto.QuestionId);
+        var question = await _context.Questions.Include(q => q.QuestionCategory).FirstOrDefaultAsync(q => q.Id == dto.QuestionId);
 
         if (!userExists || question == null)
         {
             return BadRequest(new { Message = "User or Question not found" });
         }
+
+        // Check the same course entitlement as retrieval before grading (which can incur
+        // a cost), exposing an answer, or writing history. A guessed question ID is not access.
+        var status = await _paperAccessService.GetUserAccessStatusAsync(userId);
+        if (!QuestionAccess.CanPractice(question.QuestionCategory!, status))
+            return StatusCode(StatusCodes.Status403Forbidden, new
+            {
+                Message = "An active membership for this course is required.",
+                RequiredTotalCategoryId = question.QuestionCategory!.TotalCategoryId
+            });
 
         // Server-side Grading
         var gradingResult = await _gradingService.GradeAsync(question, dto.UserAnswer);

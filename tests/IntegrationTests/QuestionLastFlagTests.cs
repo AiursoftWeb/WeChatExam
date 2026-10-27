@@ -112,7 +112,7 @@ public class QuestionLastFlagTests
             {
                 var q = new Question
                 {
-                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
+                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true),
                     Content = $"Question {i}",
                     QuestionType = QuestionType.Choice,
                     GradingStrategy = GradingStrategy.ExactMatch,
@@ -166,7 +166,7 @@ public class QuestionLastFlagTests
             {
                 var q = new Question
                 {
-                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(),
+                    QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true),
                     Content = $"Question {i}",
                     QuestionType = QuestionType.Choice,
                     GradingStrategy = GradingStrategy.ExactMatch,
