@@ -27,6 +27,18 @@
   <data name="All Content" xml:space="preserve">
     <value>Весь контент</value>
   </data>
+  <data name="All Knowledge Categories" xml:space="preserve">
+    <value>Все категории знаний</value>
+  </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Все периоды</value>
+  </data>
+  <data name="Applies only to knowledge points." xml:space="preserve">
+    <value>Применяется только к пунктам знаний.</value>
+  </data>
+  <data name="Applies only to questions." xml:space="preserve">
+    <value>Применяется только к вопросам.</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
   </data>
@@ -48,6 +60,9 @@
   <data name="Keyword Search" xml:space="preserve">
     <value>Поиск по ключевым словам</value>
   </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Категория знаний</value>
+  </data>
   <data name="Knowledge Point" xml:space="preserve">
     <value>Ключевой момент знаний</value>
   </data>
@@ -56,6 +71,9 @@
   </data>
   <data name="No matching content found. Try fewer words or another category." xml:space="preserve">
     <value>Подходящий контент не найден. Попробуйте ввести меньше слов или выбрать другую категорию.</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Период</value>
   </data>
   <data name="Questions and knowledge points" xml:space="preserve">
     <value>Вопросы и ключевые знания</value>

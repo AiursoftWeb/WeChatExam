@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- เลือกหมวดหมู่ --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- เลือกหมวดหมู่ทั้งหมด --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
   </data>
@@ -59,6 +62,12 @@
   </data>
   <data name="Save and return to content checks" xml:space="preserve">
     <value>บันทึกและกลับไปที่การตรวจสอบเนื้อหา</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>หมวดหมู่รวม</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>VIP ทุกหมวดหมู่</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>ประเภท VIP</value>

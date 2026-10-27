@@ -225,6 +225,9 @@
   <data name="Type to search or add tags..." xml:space="preserve">
     <value>พิมพ์เพื่อค้นหาหรือเพิ่มแท็ก...</value>
   </data>
+  <data name="Up to five similar questions in the same period as the original question. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>แสดงคำถามที่คล้ายกันได้สูงสุดห้าข้อในภาคการศึกษาเดียวกับคำถามต้นฉบับ โดยไม่นับคำถามที่มีอยู่ในข้อสอบแล้ว เลือกคำถามที่ต้องการเพิ่มได้ โดยคำถามต้นฉบับจะไม่เปลี่ยนแปลง</value>
+  </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>แสดงคำถามที่คล้ายกันได้สูงสุด 5 ข้อในหมวดหมู่ที่เลือก หรือทุกหมวดหมู่หากไม่ได้เลือกหมวดหมู่ไว้ โดยจะไม่รวมคำถามที่มีอยู่ในข้อสอบ เลือกคำถามที่ต้องการเพิ่ม โดยคำถามเดิมจะยังคงเดิม</value>
   </data>

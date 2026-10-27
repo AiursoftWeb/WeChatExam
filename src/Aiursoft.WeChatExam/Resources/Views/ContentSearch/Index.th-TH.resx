@@ -27,6 +27,18 @@
   <data name="All Content" xml:space="preserve">
     <value>เนื้อหาทั้งหมด</value>
   </data>
+  <data name="All Knowledge Categories" xml:space="preserve">
+    <value>หมวดหมู่ความรู้ทั้งหมด</value>
+  </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>ทุกช่วงเวลา</value>
+  </data>
+  <data name="Applies only to knowledge points." xml:space="preserve">
+    <value>ใช้กับจุดความรู้เท่านั้น</value>
+  </data>
+  <data name="Applies only to questions." xml:space="preserve">
+    <value>ใช้กับคำถามเท่านั้น</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
   </data>
@@ -48,6 +60,9 @@
   <data name="Keyword Search" xml:space="preserve">
     <value>ค้นหาด้วยคำสำคัญ</value>
   </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>หมวดหมู่ความรู้</value>
+  </data>
   <data name="Knowledge Point" xml:space="preserve">
     <value>จุดความรู้</value>
   </data>
@@ -56,6 +71,9 @@
   </data>
   <data name="No matching content found. Try fewer words or another category." xml:space="preserve">
     <value>ไม่พบเนื้อหาที่ตรงกัน ลองใช้คำให้น้อยลงหรือเลือกหมวดหมู่อื่น</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>ช่วงเวลา</value>
   </data>
   <data name="Questions and knowledge points" xml:space="preserve">
     <value>คำถามและประเด็นความรู้</value>

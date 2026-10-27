@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Επιλέξτε Κατηγορία --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- Επιλέξτε Συνολική Κατηγορία --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
   </data>
@@ -56,6 +59,12 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Διαγωνιστικό Εξεταστικό VIP</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Συνολική κατηγορία</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>VIP για όλες τις κατηγορίες</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>Τύπος VIP</value>

@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- カテゴリを選択 --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- 総カテゴリーを選択 --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
   </data>
@@ -56,6 +59,12 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>実試験 VIP</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>総合カテゴリー</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>全カテゴリーVIP</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>VIP タイプ</value>

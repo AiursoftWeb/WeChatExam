@@ -21,6 +21,9 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Välj kategori --</value>
   </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- Välj totalkategori --</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Avbryt</value>
   </data>
@@ -56,6 +59,12 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP för riktiga prov</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Total kategori</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>VIP för hela kategorin</value>
   </data>
   <data name="VIP Type" xml:space="preserve">
     <value>VIP-typ</value>
