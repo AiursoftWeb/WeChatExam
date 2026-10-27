@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Editar exercício</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Editar categoria de conhecimento</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Editar ponto de conhecimento</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Editar prova</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Editar período</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Editar tag</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Exercício</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Categoria de conhecimento</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Ponto de conhecimento</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Prova</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Período</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>A precificação por período afeta {0} exercícios vinculados a {1} pontos de conhecimento.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Público / gratuito</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Usado por {0} exercícios vinculados a {1} pontos de conhecimento. Alterar o preço da tag afeta todos esses exercícios.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Usada por {0} exercícios vinculados a {1} pontos de conhecimento. As tags servem para organização interna, não para definir o preço dos exercícios.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Visualizar prova congelada</value>

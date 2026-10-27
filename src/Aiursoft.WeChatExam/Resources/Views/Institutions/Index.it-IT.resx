@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Create Institution" xml:space="preserve">
+    <value>Crea un istituto</value>
+  </data>
+  <data name="Create your first institution" xml:space="preserve">
+    <value>Crea il tuo primo istituto</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>Ordine di visualizzazione</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Modifica istituzione</value>
+  </data>
+  <data name="Institution pages" xml:space="preserve">
+    <value>Pagine delle istituzioni</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Istituzioni</value>
+  </data>
+  <data name="Manage the schools that own real exam papers." xml:space="preserve">
+    <value>Gestisci le scuole che possiedono veri fogli d&apos;esame.</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Successiva</value>
+  </data>
+  <data name="No matching institutions" xml:space="preserve">
+    <value>Nessun istituto corrispondente</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} di {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="Search institutions" xml:space="preserve">
+    <value>Cerca istituzioni</value>
+  </data>
+  <data name="Show all institutions" xml:space="preserve">
+    <value>Mostra tutte le istituzioni</value>
+  </data>
+
+</root>

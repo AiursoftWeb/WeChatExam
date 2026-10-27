@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Uma aula pode ser consultada através de qualquer diretório atribuído diretamente que conceda acesso. O acesso aos exercícios é verificado separadamente.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>Uma consulta à lista sem filtro por etiqueta pode devolver esta pergunta paga a um utilizador com sessão iniciada e sem VIP; o respetivo endpoint de detalhes devolve 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Anónimo</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Peça à equipa de engenharia que analise os restantes sistemas que ainda utilizam a navegação legada. Não altere os preços dos períodos ou dos diretórios para corrigir os metadados das etiquetas legadas.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Atribua o tema pretendido à pergunta ou corrija as respetivas etiquetas pagas após analisar o seu impacto conjunto.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Associe o tema pretendido antes de colocar este produto à venda. Analise separadamente as adesões existentes.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Atribua a lição ao diretório de conhecimentos adequado.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Apenas autorização: um instantâneo cujo acesso é negado devolve 200 com HasAccess=false e sem perguntas. Também é necessário um instantâneo utilizável.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Verifique os mapeamentos da taxonomia das etiquetas e o assunto da pergunta. Se ambos forem intencionais, peça à equipa de engenharia que analise o comportamento dos pontos de entrada.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Escolha um exercício gratuito para esta lição ou reveja o preço do respetivo diretório e período. A alteração de um período afeta todas as perguntas nele incluídas.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>As verificações de acesso do cliente requerem validação por parte da equipa de engenharia</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Confirme se as vendas estão intencionalmente suspensas; caso contrário, ative o produto necessário para a disciplina ou para o exame oficial.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Confirme se esta abordagem de ensino entre disciplinas é intencional; caso contrário, corrija o período da pergunta ou a associação ao conteúdo.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Confirme se este ensino intencional entre disciplinas; caso contrário, corrija a disciplina da pergunta ou a associação ao conhecimento.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Os VIP ativos existentes podem continuar a funcionar, mas a compra de produtos atualmente ativos não permite desbloquear esta pergunta.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Diretório de conhecimento gratuito ligado a um exercício pago</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>O caderno gratuito contém instantâneos de perguntas atualmente pagas</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Mantenha esta situação se o artigo gratuito for intencional. Reveja o preço do próprio artigo se o respetivo instantâneo dever ser restringido.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Categorias de Conhecimento</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>O ponto de conhecimento e o exercício referem-se a disciplinas diferentes</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>O ponto de conhecimento não tem diretório</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Pontos de conhecimento</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Apenas metadados de etiquetas legadas: HasAccess é reportado sem alterar o acesso às perguntas.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Os novos clientes não dispõem de uma opção de compra atualmente. As adesões ativas existentes ainda poderão conceder acesso.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Períodos</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>O ponto de conhecimento público está associado a um exercício pago</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Reveja as associações à disciplina, a definição de exame real e a definição de acesso gratuito.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Reveja o curso e os produtos VIP disponíveis. Os produtos desativados não invalidam as subscrições ativas existentes.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Reveja as perguntas do teste e publique uma versão corrigida. Alterar as perguntas originais não atualiza as versões existentes.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>A versão do instantâneo {0} não contém exercícios. Ainda é possível aceder a ligações para instantâneos antigos.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Os alunos podem consultar uma lição num diretório gratuito, mas o exercício associado pertence a um período pago. Isto contraria a regra das lições gratuitas.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>O VIP da categoria e a regra da etiqueta paga são incompatíveis</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomias</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>A API de taxonomia antiga indica que esta etiqueta está bloqueada para todos os VIP de cursos. Isto não controla o acesso atual a perguntas ou conhecimentos.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>A lista pública de provas exclui esta prova porque não existe qualquer instantâneo.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>O VIP do tema da pergunta dá acesso aos respetivos detalhes, mas pelo menos uma etiqueta paga não aceita esse mesmo VIP.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Esta aula não tem nenhum diretório que conceda acesso, pelo que nem mesmo um VIP do curso a pode consultar.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Este produto não pode conceder a adesão ao tema pretendido.</value>

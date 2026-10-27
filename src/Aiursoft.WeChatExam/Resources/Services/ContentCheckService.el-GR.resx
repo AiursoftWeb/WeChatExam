@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Ένα μάθημα μπορεί να διαβαστεί μέσω οποιουδήποτε καταλόγου στον οποίο έχει αντιστοιχιστεί απευθείας και παρέχει πρόσβαση. Η πρόσβαση στις ασκήσεις ελέγχεται ξεχωριστά.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>Ένα ερώτημα λίστας χωρίς φίλτρο ετικέτας μπορεί να επιστρέψει αυτήν την επί πληρωμή ερώτηση σε συνδεδεμένο χρήστη χωρίς VIP· το τελικό σημείο λεπτομερειών της επιστρέφει 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Ανώνυμος</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Ζητήστε από την ομάδα μηχανικών να ελέγξει τους υπόλοιπους χρήστες της παλιάς πλοήγησης. Μην αλλάξετε την τιμολόγηση των περιόδων ή των καταλόγων για να διορθώσετε τα μεταδεδομένα των παλιών ετικετών.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Ορίστε το κατάλληλο θέμα της ερώτησης ή διορθώστε τις επί πληρωμή ετικέτες της, αφού εξετάσετε τη συνολική τους επίδραση.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Ορίστε το κατάλληλο αντικείμενο πριν διαθέσετε αυτό το προϊόν προς πώληση. Ελέγξτε ξεχωριστά τις υπάρχουσες συνδρομές.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Αντιστοιχίστε το μάθημα στον κατάλληλο κατάλογο γνώσεων.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Μόνο εξουσιοδότηση: αν δεν επιτρέπεται η πρόσβαση σε ένα στιγμιότυπο, επιστρέφεται 200 με HasAccess=false και χωρίς ερωτήσεις. Απαιτείται επίσης ένα αξιοποιήσιμο στιγμιότυπο.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Ελέγξτε τις αντιστοιχίσεις ταξινομίας των ετικετών και το θέμα της ερώτησης. Αν και τα δύο είναι σκόπιμα, ζητήστε από την ομάδα μηχανικών να εξετάσει τη συμπεριφορά στα σημεία εισόδου.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Επιλέξτε μια δωρεάν άσκηση για αυτό το μάθημα ή ελέγξτε την τιμολόγηση του καταλόγου και της περιόδου του. Η αλλαγή μιας περιόδου επηρεάζει όλες τις ερωτήσεις που περιλαμβάνει.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Οι έλεγχοι εισόδου του πελάτη απαιτούν επαλήθευση από την ομάδα μηχανικών</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Επιβεβαιώστε αν οι πωλήσεις έχουν διακοπεί σκόπιμα· διαφορετικά, ενεργοποιήστε το απαιτούμενο προϊόν θεματικής ενότητας ή πραγματικών εξετάσεων.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Επιβεβαιώστε αν πρόκειται για σκόπιμη διδασκαλία μεταξύ διαφορετικών γνωστικών αντικειμένων· διαφορετικά, διορθώστε την περίοδο της ερώτησης ή τη συσχέτιση με τη γνωστική ενότητα.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Επιβεβαιώστε αν πρόκειται για σκόπιμη διδασκαλία μεταξύ διαφορετικών γνωστικών αντικειμένων· διαφορετικά, διορθώστε το γνωστικό αντικείμενο της ερώτησης ή τη συσχέτισή της με τη γνώση.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Τα VIP που είναι ήδη ενεργά εξακολουθούν να λειτουργούν, αλλά η αγορά προϊόντων που είναι αυτήν τη στιγμή ενεργοποιημένα δεν μπορεί να ξεκλειδώσει αυτήν την ερώτηση.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Ο δωρεάν κατάλογος γνώσεων συνδέεται με μια επί πληρωμή άσκηση</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Το δωρεάν διαγώνισμα περιέχει στιγμιότυπα ερωτήσεων που αυτή τη στιγμή είναι επί πληρωμή</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Διατηρήστε το εάν η δωρεάν δοκιμασία είναι εντεταγμένη. Ελέγξτε τη δική της τιμολόγηση εάν το στιγμιότυπο πρέπει να περιοριστεί.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Κατηγορίες γνώσεων</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Το γνωστικό σημείο και η άσκηση αφορούν διαφορετικά αντικείμενα</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Το γνωστικό αντικείμενο δεν έχει κατάλογο</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Σημεία γνώσης</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Μόνο μεταδεδομένα παλαιών ετικετών: Το HasAccess αναφέρεται χωρίς να αλλάζει η πρόσβαση στις ερωτήσεις.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Οι νέοι πελάτες δεν έχουν αυτήν τη στιγμή διαθέσιμο τρόπο αγοράς. Οι υπάρχουσες ενεργές συνδρομές ενδέχεται να εξακολουθούν να παρέχουν πρόσβαση.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Διαγωνίσματα</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Περίοδοι</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Δημόσιο σημείο γνώσης συνδέεται με άσκηση επί πληρωμή</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Ελέγξτε τις συσχετίσεις του με τα γνωστικά αντικείμενα, τη ρύθμιση για πραγματικές εξετάσεις και τη ρύθμιση δωρεάν πρόσβασης.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Ελέγξτε το μάθημα και τα διαθέσιμα προϊόντα VIP. Τα απενεργοποιημένα προϊόντα δεν ακυρώνουν τις υπάρχουσες ενεργές συνδρομές.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Ελέγξτε τις ερωτήσεις του διαγωνίσματος και δημοσιεύστε ένα διορθωμένο στιγμιότυπο. Η αλλαγή των αρχικών ερωτήσεων δεν ενημερώνει τα υπάρχοντα στιγμιότυπα.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Η έκδοση στιγμιότυπου {0} δεν περιέχει ασκήσεις. Μπορείτε να συνεχίσετε να ζητάτε παλιούς συνδέσμους στιγμιότυπων.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Οι μαθητές μπορούν να διαβάσουν ένα μάθημα σε έναν δωρεάν κατάλογο, αλλά η συνδεδεμένη άσκησή του ανήκει σε μια επί πληρωμή περίοδο. Αυτό έρχεται σε αντίθεση με τον κανόνα για τα δωρεάν μαθήματα.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>Το VIP του αντικειμένου και η καταχώριση της επί πληρωμή ετικέτας διαφωνούν</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomies</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>Το παλιό API ταξινομίας αναφέρει ότι αυτή η ετικέτα είναι κλειδωμένη για όλα τα VIP μαθημάτων. Αυτό δεν καθορίζει την τρέχουσα πρόσβαση στις ερωτήσεις ή στη γνώση.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Η δημόσια λίστα θεμάτων δεν περιλαμβάνει αυτό το θέμα, επειδή δεν υπάρχει στιγμιότυπο.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>Το VIP του αντικειμένου της ερώτησης αποκλειδώνει τα λεπτομερή της, αλλά τουλάχιστον μία εγγραφή πληρωμένου ετικέτας απορρίπτει το ίδιο VIP.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Αυτό το μάθημα δεν ανήκει σε κανέναν κατάλογο που παρέχει πρόσβαση, επομένως δεν μπορούν να το διαβάσουν ούτε οι VIP του μαθήματος.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Αυτό το προϊόν δεν μπορεί να παρέχει συνδρομή στο προβλεπόμενο αντικείμενο.</value>

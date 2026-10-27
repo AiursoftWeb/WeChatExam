@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Übung bearbeiten</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Wissenskategorie bearbeiten</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Wissenspunkt bearbeiten</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Arbeit an der Arbeit bearbeiten</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Zeitraum bearbeiten</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Tag bearbeiten</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Übung</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Wissenskategorie</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Wissenspunkt</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Prüfungsbogen</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Zeitraum</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Die Preisgestaltung nach Zeitraum betrifft {0} Übungen, die mit {1} Wissenspunkten verknüpft sind.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Öffentlich / kostenlos</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Wird von {0} Übungen verwendet, die mit {1} Wissenspunkten verknüpft sind. Eine Änderung der Tag-Preise betrifft alle diese Übungen.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Wird von {0} Übungen verwendet, die mit {1} Wissenspunkten verknüpft sind. Tags dienen der internen Organisation und nicht der Preisgestaltung für Übungen.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Gesperrtes Prüfungspaket anzeigen</value>

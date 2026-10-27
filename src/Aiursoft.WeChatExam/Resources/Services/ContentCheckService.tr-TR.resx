@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Bir ders, erişim izni veren doğrudan atanmış herhangi bir dizin üzerinden okunabilir. Alıştırma erişimi ayrıca denetlenir.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>Etiket filtresi olmayan bir liste sorgusu, bu ücretli soruyu VIP üyeliği olmayan oturum açmış bir kullanıcıya döndürebilir; soru ayrıntı uç noktası 403 döndürür.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Anonim</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Kalan eski gezinme bileşenlerini incelemesi için mühendislik ekibine danışın. Eski etiket meta verilerini düzeltmek için dönem veya dizin fiyatlandırmasını değiştirmeyin.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Amaçlanan soru konusunu belirleyin veya ortak etkilerini gözden geçirdikten sonra ücretli etiketlerini düzeltin.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Bu ürünü satışa sunmadan önce amaçlanan konuyu atayın. Mevcut üyelikleri ayrıca inceleyin.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Dersi amaçlanan bilgi dizinine atayın.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Yalnızca yetkilendirme: erişimi reddedilen bir anlık görüntü, HasAccess=false ve soru içermeyen bir yanıtla 200 döndürür. Ayrıca kullanılabilir bir anlık görüntü de gereklidir.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Etiket taksonomisi eşleştirmelerini ve soru konusunu kontrol edin. Her ikisi de kasıtlıysa, giriş noktası davranışını incelemesi için mühendislik ekibine başvurun.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Bu ders için ücretsiz bir alıştırma seçin veya dizinini ve dönem ücretlendirmesini gözden geçirin. Bir dönemi değiştirmek, o dönemdeki tüm soruları etkiler.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>İstemci giriş kontrolleri için mühendislik doğrulaması gerekir</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Satışların bilerek duraklatılıp duraklatılmadığını doğrulayın; aksi takdirde gerekli konu veya gerçek sınav ürününü etkinleştirin.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Bunun farklı ders alanları arasında kasıtlı bir öğretim olup olmadığını doğrulayın; değilse soru dönemini veya bilgi ilişkilendirmesini düzeltin.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Bunun farklı dersler arasında kasıtlı bir öğretim olup olmadığını doğrulayın; değilse sorunun dersini veya bilgi bağlantısını düzeltin.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Mevcut aktif VIP’ler hâlâ işe yarayabilir, ancak şu anda etkin olan ürünleri satın almak bu sorunun kilidini açamaz.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Ücretsiz bilgi dizini, ücretli bir alıştırmaya bağlantı veriyor</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Ücretsiz sınav kâğıdı, şu anda ücretli olan soruların anlık görüntülerini içeriyor</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Ücretsiz sınav kâğıdının bu şekilde olması kasıtlıysa bunu koruyun. Anlık görüntüsünün erişime kapatılması gerekiyorsa sınav kâğıdının kendi fiyatlandırmasını gözden geçirin.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Bilgi Kategorileri</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Bilgi noktası ve alıştırma farklı konulara atıfta bulunuyor</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Bilgi noktasının bağlı olduğu bir dizin yok</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Bilgi Noktaları</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Yalnızca eski etiket üst verisi: HasAccess bildirilir, soru erişimi değiştirilmez.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Yeni müşteriler şu anda satın alma yoluna sahip değil. Mevcut aktif üyelikler yine de erişim sağlayabilir.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Dönemler</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Herkese açık bilgi noktası ücretli bir etkinliğe bağlı.</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Konu ilişkilerini, gerçek sınav ve ücretsiz olma ayarlarını gözden geçirin.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Dersi ve mevcut VIP ürünlerini gözden geçirin. Devre dışı bırakılan ürünler, mevcut etkin üyelikleri geçersiz kılmaz.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Kâğıt sorularını gözden geçirin ve düzeltilmiş bir anlık görüntü yayımlayın. Orijinal sorularda yapılan değişiklikler mevcut anlık görüntüleri güncellemez.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>{0} sürümündeki anlık görüntüde hiç alıştırma yok. Eski anlık görüntü bağlantıları yine de istenebilir.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Öğrenciler ücretsiz bir dizindeki dersi okuyabilir, ancak bu derse bağlı alıştırma ücretli bir döneme aittir. Bu durum ücretsiz ders kuralıyla çelişir.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>Konu VIP üyeliği ile ücretli etiket girişi uyuşmuyor</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taksonomiler</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>Eski taksonomi API&apos;si, bu etiketi her kurs VIP&apos;i için kilitli olarak bildiriyor. Bu durum, mevcut soru veya bilgi erişimini etkilemez.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Herkese açık kâğıt listesi, anlık görüntüsü olmadığı için bu kâğıdı listeye dahil etmez.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>Sorunun ait olduğu konuya ilişkin VIP, soru ayrıntılarının kilidini açar; ancak ücretli etiket girişlerinden en az biri aynı VIP&apos;yi kabul etmez.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Bu dersin erişim izni veren bir dizini yok; bu nedenle bir kurs VIP üyesi bile dersi okuyamaz.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Bu ürün, amaçlanan konu üyeliğini sağlayamaz.</value>

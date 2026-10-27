@@ -75,6 +75,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Tạo kênh phân phối</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Tạo tổ chức</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Tạo Danh Mục Kiến Thức</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Tạo kỳ</value>
   </data>
@@ -117,6 +123,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Xóa phản hồi</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Xóa danh mục kiến thức</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Xóa Điểm Kiến Thức</value>
   </data>
@@ -140,6 +149,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Kênh phân phối</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Chỉnh sửa tổ chức</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Chỉnh sửa danh mục kiến thức</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Chỉnh sửa kỳ</value>
@@ -201,8 +216,20 @@
   <data name="Info" xml:space="preserve">
     <value>Thông tin</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Các tổ chức</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Tham gia Kỳ thi Chính thức</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Danh mục kiến thức</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Chi tiết danh mục kiến thức</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Quản lý kiến thức</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Điểm Kiến Thức</value>
@@ -263,6 +290,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Câu hỏi</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Quản lý kỳ thi thực tế</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Đăng ký</value>

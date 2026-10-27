@@ -33,6 +33,9 @@
   <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
     <value>已持有有效 VIP 的現有學生可能仍可存取。新學生目前無法購買適用的 VIP 以解鎖此內容。</value>
   </data>
+  <data name="Free lesson has a paid exercise" xml:space="preserve">
+    <value>免費課程含有付費練習</value>
+  </data>
   <data name="Free paper includes paid exercises" xml:space="preserve">
     <value>免費試卷包含付費練習題</value>
   </data>
@@ -57,8 +60,14 @@
   <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
     <value>學生找不到這份試卷，因為尚未建立已發布的試卷版本。</value>
   </data>
+  <data name="Students cannot open this lesson until it is assigned to a knowledge directory." xml:space="preserve">
+    <value>學生必須等到這堂課被指派至知識目錄後，才能開啟。</value>
+  </data>
   <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
     <value>此知識點連結至一門課程，但這些練習題屬於另一門課程。購買前一門課程的 VIP，可能無法解鎖這些練習題。</value>
+  </data>
+  <data name="The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation." xml:space="preserve">
+    <value>舊版標籤選單顯示此標籤已鎖定。目前的練習內容改以課程期間控管存取權限；我們團隊應檢視仍在使用的舊版導覽。</value>
   </data>
   <data name="The lesson and exercise belong to different courses" xml:space="preserve">
     <value>課程與練習隸屬於不同的課程</value>
@@ -68,6 +77,9 @@
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>此練習需要 VIP</value>
+  </data>
+  <data name="This lesson needs a directory" xml:space="preserve">
+    <value>此課程需要指定知識目錄</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>這份試卷尚未建立已發布版本</value>
@@ -92,6 +104,9 @@
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>訪客可以閱讀知識點，但無法免費開啟這些練習。</value>
+  </data>
+  <data name="Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings." xml:space="preserve">
+    <value>訪客可以在免費目錄中閱讀課程，但該課程的練習需要課程 VIP。請選擇免費練習，或檢查目錄與期間設定。</value>
   </data>
 
 </root>

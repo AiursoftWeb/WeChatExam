@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Dağıtım Kanalı Oluştur</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Kurum Oluştur</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Bilgi Kategorisi Oluştur</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Dönem Oluştur</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Geri Bildirim Sil</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Bilgi Kategorisini Sil</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Bilgi Noktasını Sil</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Dağıtım Kanalları</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Kurumu Düzenle</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Bilgi Kategorisini Düzenle</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Dönemi Düzenle</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>Bilgi</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Kurumlar</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Resmi Sınava Katıl</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Bilgi Kategorileri</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Bilgi Kategorisi Detayları</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Bilgi Yönetimi</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Bilgi Noktaları</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Gerçek Sınav Yönetimi</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Kayıt Ol</value>

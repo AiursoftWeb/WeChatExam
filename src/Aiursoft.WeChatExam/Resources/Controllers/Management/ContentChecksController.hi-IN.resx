@@ -33,6 +33,9 @@
   <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
     <value>जिन विद्यार्थियों के पास पहले से वैध VIP है, उन्हें अब भी पहुँच मिल सकती है। नए विद्यार्थी इस सामग्री को अनलॉक करने के लिए फिलहाल उपयुक्त VIP नहीं खरीद सकते।</value>
   </data>
+  <data name="Free lesson has a paid exercise" xml:space="preserve">
+    <value>मुफ़्त पाठ में एक सशुल्क अभ्यास है</value>
+  </data>
   <data name="Free paper includes paid exercises" xml:space="preserve">
     <value>निःशुल्क प्रश्नपत्र में सशुल्क अभ्यास शामिल हैं</value>
   </data>
@@ -57,8 +60,14 @@
   <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
     <value>छात्र इस प्रश्नपत्र को नहीं ढूँढ़ सकते, क्योंकि इसका प्रकाशित संस्करण अभी तक तैयार नहीं किया गया है।</value>
   </data>
+  <data name="Students cannot open this lesson until it is assigned to a knowledge directory." xml:space="preserve">
+    <value>इस पाठ को तब तक असाइन नहीं किया जा सकता, जब तक इसे किसी ज्ञान निर्देशिका में जोड़ा न जाए।</value>
+  </data>
   <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
     <value>ज्ञान बिंदु एक पाठ्यक्रम से जुड़ा है, जबकि ये अभ्यास किसी दूसरे पाठ्यक्रम के हैं। पहले पाठ्यक्रम का VIP खरीदने से शायद ये अभ्यास अनलॉक न हों।</value>
+  </data>
+  <data name="The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation." xml:space="preserve">
+    <value>पुराने टैग मेनू में यह टैग लॉक दिखाया गया है। वर्तमान में अभ्यास तक पहुँच के लिए टैग के बजाय अवधियों का उपयोग होता है; हमारी टीम को पुराने नेविगेशन के शेष हिस्सों की समीक्षा करनी चाहिए।</value>
   </data>
   <data name="The lesson and exercise belong to different courses" xml:space="preserve">
     <value>पाठ और अभ्यास अलग-अलग पाठ्यक्रमों से संबंधित हैं</value>
@@ -68,6 +77,9 @@
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>इस अभ्यास के लिए VIP आवश्यक है</value>
+  </data>
+  <data name="This lesson needs a directory" xml:space="preserve">
+    <value>इस पाठ के लिए एक निर्देशिका आवश्यक है</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>इस प्रश्नपत्र का प्रकाशित संस्करण उपलब्ध नहीं है।</value>
@@ -92,6 +104,9 @@
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>आगंतुक ज्ञान बिंदु पढ़ सकते हैं, लेकिन इन अभ्यासों को मुफ़्त में नहीं खोल सकते।</value>
+  </data>
+  <data name="Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings." xml:space="preserve">
+    <value>आगंतुक पाठ को निःशुल्क निर्देशिका में पढ़ सकते हैं, लेकिन उसके अभ्यास के लिए किसी कोर्स का वीआईपी सदस्यता आवश्यक है। निःशुल्क अभ्यास चुनें या निर्देशिका और अवधि की सेटिंग की समीक्षा करें।</value>
   </data>
 
 </root>

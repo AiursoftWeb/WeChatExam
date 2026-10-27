@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="Cannot delete category with associated knowledge points. Please move these knowledge points first." xml:space="preserve">
+    <value>Die Kategorie kann nicht gelöscht werden, solange ihr noch Wissenspunkte zugeordnet sind. Bitte verschieben Sie diese Wissenspunkte zuerst.</value>
+  </data>
   <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
     <value>Kategorie mit zugeordneten Fragen kann nicht gelöscht werden. Bitte entfernen oder weisen Sie diese Fragen zuerst neu zu.</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Delete Category" xml:space="preserve">
     <value>Kategorie löschen</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Wissenskategorie löschen</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Diese Aktion kann nicht rückgängig gemacht werden. Sie sind dabei, die folgende Kategorie endgültig zu löschen:</value>
+  </data>
+  <data name="View knowledge points" xml:space="preserve">
+    <value>Wissenspunkte anzeigen</value>
   </data>
   <data name="View related questions" xml:space="preserve">
     <value>Verwandte Fragen anzeigen</value>

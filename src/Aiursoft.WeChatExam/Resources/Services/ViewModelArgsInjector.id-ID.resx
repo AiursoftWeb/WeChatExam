@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Buat Saluran Distribusi</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Buat Institusi</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Buat Kategori Pengetahuan</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Buat Periode</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Hapus Umpan Balik</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Hapus Kategori Pengetahuan</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Hapus Titik Pengetahuan</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Saluran Distribusi</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Edit Institusi</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Ubah Kategori Pengetahuan</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Edit Periode</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>Informasi</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Lembaga</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Gabung Ujian Resmi</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Kategori Pengetahuan</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Detail Kategori Pengetahuan</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Manajemen Pengetahuan</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Poin Pengetahuan</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Pertanyaan</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Manajemen Ujian Nyata</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Daftar</value>

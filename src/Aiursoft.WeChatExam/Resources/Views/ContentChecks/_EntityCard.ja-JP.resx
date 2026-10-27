@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>演習を編集</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>知識カテゴリを編集</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>ナレッジポイントを編集</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>試験問題を編集</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>期間を編集</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>タグを編集</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>演習</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>知識カテゴリ</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>知識ポイント</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>試験用紙</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>期間別料金は、{1}個の知識ポイントに関連付けられた{0}件の演習に影響します。</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>公開／無料</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>{1}個の知識ポイントに関連付けられた{0}個の演習で使用されています。タグの料金を変更すると、これらすべての演習に影響します。</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>{0}件の演習が{1}件の知識ポイントに関連付けられています。タグは内部管理用であり、演習の料金設定には使用されません。</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>凍結された試験用紙を表示</value>

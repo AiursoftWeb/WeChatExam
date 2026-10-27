@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Opret distributionskanal</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Opret institution</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Opret videnskabskategori</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Opret periode</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Slet feedback</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Slet videnkategori</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Slet KnowledgePoint</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Distributionskanaler</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Rediger institution</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Redigér videnkategori</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Rediger periode</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>Info</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Institutioner</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Tilmeld dig officiel prøve</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Videnskabskategorier</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Detaljer om videnskabskategorien</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Videnstyring</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Videnpoint</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Spørgsmål</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Styring af rigtige eksamener</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registrer</value>

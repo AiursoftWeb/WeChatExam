@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Editar ejercicio</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Editar categoría de conocimientos</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Editar punto de conocimiento</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Editar examen</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Editar periodo</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Editar etiqueta</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Ejercicio</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Categoría de conocimientos</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Punto de conocimiento</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Examen</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>El precio por periodo afecta a {0} ejercicios vinculados a {1} puntos de conocimiento.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Público / gratuito</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Utilizado por {0} ejercicios vinculados a {1} puntos de conocimiento. Si cambias el precio de la etiqueta, afectarás a todos estos ejercicios.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Utilizada por {0} ejercicios vinculados a {1} puntos de conocimiento. Las etiquetas sirven para la organización interna, no para fijar el precio de las prácticas.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Ver el examen bloqueado</value>

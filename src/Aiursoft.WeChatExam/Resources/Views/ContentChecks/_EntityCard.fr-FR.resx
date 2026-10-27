@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Modifier l’exercice</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Modifier la catégorie de connaissances</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Modifier le point de connaissance</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Modifier le sujet</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Modifier la période</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Modifier le tag</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Exercice</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Catégorie de connaissances</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Point de connaissance</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Sujet</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Période</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>La tarification par période concerne {0} exercices liés à {1} points de connaissance.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Public / gratuit</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Utilisé par {0} exercices associés à {1} points de connaissance. Modifier le tarif de cette étiquette affecte tous ces exercices.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Utilisé par {0} exercices associés à {1} points de connaissance. Les tags servent à l’organisation interne, et non à la tarification des exercices.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Voir le sujet verrouillé</value>

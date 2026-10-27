@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Урок можна прочитати через будь-який безпосередньо призначений каталог, який надає доступ. Доступ до вправ перевіряється окремо.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>Запит списку без фільтра за тегом може повернути це платне запитання користувачу, який увійшов у систему без VIP; кінцева точка з деталями повертає 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Анонімний</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Попросіть команду розробників перевірити, хто ще використовує застарілу навігацію. Не змінюйте ціни на періоди чи каталоги, щоб виправити метадані застарілих тегів.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Призначте для запитання відповідну тему або виправте його платні теги, попередньо оцінивши їхній спільний вплив.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Призначте відповідну тему, перш ніж виставляти цей продукт на продаж. Наявні членства перевірте окремо.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Призначте урок до відповідного каталогу знань.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Лише авторизація: у разі відмови в доступі до знімка повертається код 200 із HasAccess=false і без запитань. Також потрібен придатний для використання знімок.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Перевірте відповідність тегів таксономіям і тему запитання. Якщо обидва налаштовано навмисно, попросіть команду розробки перевірити поведінку під час переходу до запитання.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Виберіть для цього уроку безкоштовну вправу або перевірте ціни на доступ до її розділу та періоду. Зміна періоду впливає на всі запитання в ньому.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Перевірки входу клієнта потребують інженерної перевірки</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Переконайтеся, чи продажі призупинено навмисно; якщо ні, увімкніть потрібний продукт для предмета або реального іспиту.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Переконайтеся, чи це навмисне викладання предметів у межах різних дисциплін; якщо ні, виправте період запитання або зв’язок із навчальним матеріалом.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Переконайтеся, чи є таке навчання між різними предметами навмисним; інакше виправте предмет запитання або його зв’язок із навчальним матеріалом.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Наявні активні VIP-членства й надалі можуть діяти, але придбання доступних зараз продуктів не відкриє доступ до цього запитання.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Безкоштовний каталог знань посилається на платну вправу</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Безкоштовна збірка містить знімки запитань, які наразі є платними</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Залиште це, якщо безкоштовний тест є безкоштовним навмисно. Перевірте власну ціну тесту, якщо доступ до його знімка потрібно обмежити.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Категорії знань</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Знання та вправа стосуються різних предметів</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Точка знань не має каталогу</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Бали знань</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Лише застарілі метадані тегу: HasAccess вказує на доступ без зміни доступу до запитань.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Нові клієнти наразі не мають можливості придбати доступ. Раніше оформлене активне членство все ще може надавати доступ.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Періоди</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Загальнодоступна база знань пов’язана з платною вправою</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Перевірте прив’язки до предметів, налаштування реального іспиту та безкоштовного доступу.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Перевірте курс і доступні VIP-продукти. Вимкнені продукти не анулюють наявні активні підписки.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Перевірте запитання в тесті та опублікуйте виправлений знімок. Зміни в оригінальних запитаннях не оновлюють наявні знімки.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Знімок версії {0} не містить завдань. Старі посилання на знімок усе ще можна запитувати.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Учні можуть читати урок у безкоштовному каталозі, але пов’язане з ним завдання належить до платного періоду. Це суперечить правилу безкоштовного доступу до уроків.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>VIP доступу до теми та доступ за платним тегом не узгоджуються</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Таксономії</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>Застарілий API таксономії повідомляє, що цей тег заблокований для всіх VIP-підписок на курси. Це не впливає на поточний доступ до запитань чи знань.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Цей матеріал не відображається у загальнодоступному списку матеріалів, оскільки для нього немає знімка.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>VIP предмета запитання відкриває доступ до його деталей, але принаймні один платний тег відхиляє цей самий VIP.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Цей урок не прив’язаний до каталогу, який надає доступ, тож його не може переглянути навіть VIP-учасник курсу.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Цей продукт не може надати членство в потрібній темі.</value>

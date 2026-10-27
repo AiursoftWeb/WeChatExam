@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>レッスンは、アクセス権を付与する直接割り当て済みのディレクトリを通じて閲覧できます。演習へのアクセスは別途確認されます。</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>タグによる絞り込みのない一覧クエリでは、VIP会員でないログインユーザーにもこの有料問題が返されることがありますが、詳細エンドポイントは403を返します。</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>匿名</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>エンジニアリングチームに、残存するレガシーナビゲーションのコンシューマ（利用箇所）を確認するよう依頼してください。レガシータグメタデータを修正するために、期間やディレクトリの価格設定を変更しないでください。</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>意図する設問の科目を割り当てるか、有料タグが及ぼす影響を確認したうえで、有料タグを修正してください。</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>販売する前に、適切な対象を割り当ててください。既存の会員資格は別途確認してください。</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>このレッスンを適切なナレッジディレクトリに割り当ててください。</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>権限のみ：拒否されたスナップショットは HasAccess=false かつ質問なしで 200 を返します。利用可能なスナップショットも必要です。</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>タグのタクソノミーの対応関係と問題の科目を確認してください。両方とも意図した設定である場合は、エンジニアリングチームにエントリーポイントの動作を確認してもらってください。</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>このレッスンには無料の演習を選択するか、ディレクトリと期間の料金設定を確認してください。期間を変更すると、その期間に属するすべての問題に影響します。</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>クライアント側の入口チェックにはエンジニアによる検証が必要です</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>販売を意図的に停止しているか確認してください。そうでない場合は、必要な科目または実試験用の商品を有効にしてください。</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>意図的な跨科目指導かどうかを確認してください。そうではない場合は、問題期間または知識関連を修正してください。</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>意図的に教科をまたいで指導しているか確認してください。そうでない場合は、設問の教科または知識項目との関連付けを修正してください。</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>既存の有効なVIPは引き続き利用できますが、現在有効な商品を購入しても、この問題を解放することはできません。</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>無料のナレッジディレクトリが有料の演習にリンクしています</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>無料の問題集に、現在有料の問題のスナップショットが含まれています</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>無料のペーパーとして意図したものであれば、このままにしてください。スナップショットへのアクセスを制限する必要がある場合は、ペーパー自体の価格設定を確認してください。</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>知識カテゴリ</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>ナレッジポイントと演習で参照されている科目が異なります</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>知識ポイントにディレクトリがありません</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>知識ポイント</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>レガシータグのメタデータのみ：HasAccess は報告されますが、問題へのアクセス権は変更されません。</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>新規顧客には現在、購入手段がありません。既存の有効な会員資格では、引き続きアクセスできる場合があります。</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>期間</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>公開ナレッジポイントが有料問題に紐付いています</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>科目との関連付け、実試験の設定、および無料設定を確認してください。</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>コースと利用可能なVIP商品を確認してください。無効な商品によって、既存の有効な会員資格が無効になることはありません。</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>問題用紙の設問を確認し、修正したスナップショットを公開してください。元の設問を変更しても、既存のスナップショットには反映されません。</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>スナップショットバージョン {0} には問題が含まれていません。古いスナップショットのリンクからも引き続きリクエストできます。</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>生徒は無料のディレクトリにあるレッスンを読むことができますが、リンク先の演習問題は有料期間に属しています。これは無料レッスンのルールに反します。</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>対象のVIPと有料タグの設定が一致しません</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomies</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>旧タクソノミーAPIでは、このタグはすべてのコースVIPに対してロックされていると報告されます。これは、現在の問題やナレッジへのアクセスには影響しません。</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>スナップショットが存在しないため、この用紙は公開用の用紙一覧に表示されません。</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>問題の主題に対応するVIPでは問題の詳細を閲覧できますが、有料タグの項目のうち少なくとも1つが同じVIPを拒否します。</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>このレッスンにはアクセスを許可するディレクトリがないため、コースのVIP会員であっても閲覧できません。</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>この製品では、対象の科目の会員資格を付与できません。</value>

@@ -75,6 +75,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>배포 채널 생성</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>기관 생성</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>지식 분류 생성</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>기간 생성</value>
   </data>
@@ -117,6 +123,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>피드백 삭제</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>지식 범주 삭제</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>지식 포인트 삭제</value>
   </data>
@@ -140,6 +149,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>배포 채널</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>기관 수정</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>지식 카테고리 수정</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>기간 수정</value>
@@ -201,8 +216,20 @@
   <data name="Info" xml:space="preserve">
     <value>정보</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>기관</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>공식 시험 참가하기</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>지식 분류</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>지식 카테고리 상세 정보</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>지식 관리</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>지식 포인트</value>
@@ -263,6 +290,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>질문</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>실제 시험 관리</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>회원가입</value>

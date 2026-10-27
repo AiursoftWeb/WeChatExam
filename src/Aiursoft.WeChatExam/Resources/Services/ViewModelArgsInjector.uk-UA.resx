@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Створити канал розповсюдження</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Створити установу</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Створити категорію знань</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Створити період</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Видалити відгук</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Видалити категорію знань</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Видалити KnowledgePoint</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Канали розповсюдження</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Редагувати установу</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Редагувати категорію знань</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Редагувати період</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>Інформація</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Установи</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Приєднатися до офіційного іспиту</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Категорії знань</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Деталі категорії знань</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Керування знаннями</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Бали знань</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Питання</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Керування реальними іспитами</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Реєстрація</value>

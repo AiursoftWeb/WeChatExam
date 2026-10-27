@@ -63,6 +63,12 @@
   <data name="Browse the full list" xml:space="preserve">
     <value>Esplora l’elenco completo</value>
   </data>
+  <data name="Can open" xml:space="preserve">
+    <value>Può aprire</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>Impossibile aprire</value>
+  </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Verifica questo scenario</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Knowledge text: public" xml:space="preserve">
     <value>Testo della voce di conoscenza: pubblico</value>
   </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Il testo della lezione segue le directory assegnate direttamente. Il contenuto dell’esercizio segue il relativo periodo. Qui non vengono verificati l’invio e il salvataggio delle risposte.</value>
+  </data>
   <data name="Linked exercise" xml:space="preserve">
     <value>Esercizio collegato</value>
   </data>
@@ -147,6 +156,9 @@
   <data name="Review shared impact" xml:space="preserve">
     <value>Verifica l&apos;impatto condiviso</value>
   </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>Esamina il periodo assegnato e il relativo corso.</value>
+  </data>
   <data name="Scan coverage and object IDs" xml:space="preserve">
     <value>Copertura della scansione e ID degli oggetti</value>
   </data>
@@ -162,11 +174,20 @@
   <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
     <value>È necessario accedere e disporre del VIP richiesto per il corso.</value>
   </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>I tag organizzano i contenuti internamente. Quando modifichi gli accessi, verifica il periodo e l’area delle conoscenze.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>L&apos;esercizio eredita la tariffazione dal proprio periodo. I tag non concedono né limitano l&apos;accesso all&apos;esercizio.</value>
+  </data>
   <data name="The paid tag is not covered: {0}" xml:space="preserve">
     <value>Il tag a pagamento non è coperto: {0}</value>
   </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Questi risultati valutano l’accesso attuale al server. Non simulano tutte le schermate del Mini Program né tutti i flussi di invio. Ogni pagina legge nuovamente la configurazione corrente.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>Questi tag organizzano i contenuti elencati. Non determinano la pratica attuale né l’accesso alle conoscenze.</value>
   </data>
   <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
     <value>Questo account deve disporre dell&apos;accesso VIP al corso associato all&apos;esercizio.</value>

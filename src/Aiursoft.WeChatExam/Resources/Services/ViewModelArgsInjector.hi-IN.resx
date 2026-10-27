@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>वितरण चैनल बनाएं</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>संस्थान बनाएँ</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>ज्ञान श्रेणी बनाएँ</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>अवधि बनाएँ</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>प्रतिक्रिया हटाएं</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>ज्ञान श्रेणी हटाएँ</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>ज्ञान बिंदु को हटाएं</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>वितरण चैनल</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>संस्था संपादित करें</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>ज्ञान श्रेणी संपादित करें</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>अवधि संपादित करें</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>जानकारी</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>संस्थान</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>आधिकारिक परीक्षा में शामिल हों</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>ज्ञान श्रेणियाँ</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>ज्ञान श्रेणी का विवरण</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>ज्ञान प्रबंधन</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>ज्ञान बिंदु</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>प्रश्न</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>वास्तविक परीक्षा प्रबंधन</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>पंजीकरण करें</value>

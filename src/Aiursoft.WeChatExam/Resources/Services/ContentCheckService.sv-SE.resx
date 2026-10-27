@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>En lektion kan läsas via valfri direkt tilldelad katalog som ger åtkomst. Åtkomst till övningar kontrolleras separat.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>En listfråga utan taggfilter kan returnera den här betalfrågan till en inloggad användare utan VIP; frågans detalj-endpoint returnerar 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Anonym</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Be teknikavdelningen granska återstående användare av äldre navigering. Ändra inte priserna för perioder eller kataloger för att åtgärda metadata för äldre taggar.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Ange frågans avsedda ämne eller korrigera dess betaltaggar efter att ha granskat deras gemensamma påverkan.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Tilldela rätt ämne innan du börjar sälja produkten. Granska befintliga medlemskap separat.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Tilldela lektionen till den avsedda kunskapskatalogen.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Endast behörighetskontroll: en nekad ögonblicksbild returnerar 200 med HasAccess=false och inga frågor. En användbar ögonblicksbild krävs också.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Kontrollera taxonomimappningarna för taggarna och frågans ämne. Om båda är avsiktliga, be utvecklingsteamet granska beteendet vid olika ingångspunkter.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Välj en kostnadsfri övning för den här lektionen eller granska prissättningen för dess katalog och period. Om du ändrar en period påverkas alla frågor i den.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Kontroller av klientens åtkomst kräver verifiering av utvecklingsteamet</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Bekräfta om försäljningen är pausad avsiktligt. Aktivera annars den produkt som krävs för ämnet eller det riktiga provet.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Bekräfta om detta är avsiktlig undervisning över ämnesgränser; korrigera annars frågeperioden eller kunskapskopplingen.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Bekräfta om detta är avsiktlig undervisning över ämnesgränser; korrigera annars frågans ämne eller kopplingen till kunskapspunkten.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Befintliga aktiva VIP-medlemskap kan fortfarande fungera, men köp av produkter som för närvarande är aktiverade kan inte låsa upp den här frågan.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>En kostnadsfri kunskapskatalog länkar till en betald övningsuppgift</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Gratisprovet innehåller ögonblicksbilder av frågor som för närvarande är betalfrågor</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Behåll detta om den kostnadsfria tentan är avsiktlig. Granska tentans egen prissättning om dess ögonblicksbild ska begränsas.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Kunskapskategorier</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Kunskapspunkt och övning hänvisar till olika ämnen</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Kunskapspunkten saknar katalog</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Kunskapspunkter</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Endast äldre taggmetadata: HasAccess rapporteras utan att åtkomsten till frågor ändras.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Nya kunder har ingen aktuell möjlighet att köpa. Befintliga aktiva medlemskap kan fortfarande ge åtkomst.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Perioder</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Offentlig kunskapspunkt är kopplad till en betald övning</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Granska dess ämneskopplingar, inställningarna för prov och kostnadsfri åtkomst.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Granska kursen och tillgängliga VIP-produkter. Inaktiverade produkter påverkar inte befintliga aktiva medlemskap.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Granska provfrågorna och publicera en korrigerad ögonblicksbild. Ändringar av originalfrågorna uppdaterar inte befintliga ögonblicksbilder.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Ögonblicksversion {0} innehåller inga övningar. Länkar till äldre ögonblicksbilder kan fortfarande begäras.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Elever kan läsa en lektion i en kostnadsfri katalog, men den tillhörande övningen hör till en betalperiod. Detta strider mot regeln för kostnadsfria lektioner.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>Ämnes-VIP och betald taggpost stämmer inte överens</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomies</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>Det äldre taxonomi-API:et anger att den här taggen är låst för alla kurs-VIP:ar. Detta påverkar inte den nuvarande åtkomsten till frågor eller kunskap.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Den offentliga listan över papper utesluter detta papper eftersom det inte finns någon ögonblicksbild.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>Frågans ämnes-VIP låser upp dess detaljer, men minst en betald taggpost avvisar samma VIP.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Den här lektionen saknar en katalog som ger åtkomst, så inte ens en kurs-VIP kan läsa den.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Den här produkten kan inte ge avsedd ämnesbehörighet.</value>

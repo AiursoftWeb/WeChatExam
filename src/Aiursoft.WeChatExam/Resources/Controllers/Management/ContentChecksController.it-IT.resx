@@ -33,6 +33,9 @@
   <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
     <value>Gli studenti già iscritti con un VIP valido potrebbero avere ancora accesso. Al momento, i nuovi studenti non possono acquistare un VIP adeguato per sbloccare questo contenuto.</value>
   </data>
+  <data name="Free lesson has a paid exercise" xml:space="preserve">
+    <value>La lezione gratuita ha un esercizio a pagamento</value>
+  </data>
   <data name="Free paper includes paid exercises" xml:space="preserve">
     <value>Il compito gratuito include esercizi a pagamento</value>
   </data>
@@ -57,8 +60,14 @@
   <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
     <value>Gli studenti non possono trovare questo compito perché non ne è stata creata una versione pubblicata.</value>
   </data>
+  <data name="Students cannot open this lesson until it is assigned to a knowledge directory." xml:space="preserve">
+    <value>Gli studenti non possono aprire questa lezione finché non viene assegnata a un archivio didattico.</value>
+  </data>
   <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
     <value>Il punto di conoscenza è associato a un corso, mentre questi esercizi appartengono a un altro. L’acquisto del VIP del primo corso potrebbe non sbloccare gli esercizi.</value>
+  </data>
+  <data name="The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation." xml:space="preserve">
+    <value>Il menu legacy dei tag segnala che questo tag è bloccato. L’accesso alle esercitazioni ora si basa sui periodi; il team dovrebbe verificare le voci di navigazione legacy ancora presenti.</value>
   </data>
   <data name="The lesson and exercise belong to different courses" xml:space="preserve">
     <value>La lezione e l’esercizio appartengono a corsi diversi</value>
@@ -68,6 +77,9 @@
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Questo esercizio richiede un VIP</value>
+  </data>
+  <data name="This lesson needs a directory" xml:space="preserve">
+    <value>Questa lezione richiede una directory</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>A questo paper manca la versione pubblicata</value>
@@ -92,6 +104,9 @@
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>I visitatori possono consultare il punto della lezione, ma non possono accedere gratuitamente a questi esercizi.</value>
+  </data>
+  <data name="Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings." xml:space="preserve">
+    <value>I visitatori possono leggere la lezione in una directory gratuita, ma per svolgere l’esercizio è necessario un VIP del corso. Scegli un esercizio gratuito oppure controlla le impostazioni della directory e del periodo.</value>
   </data>
 
 </root>

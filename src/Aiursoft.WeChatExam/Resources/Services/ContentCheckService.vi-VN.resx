@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Bài học có thể được đọc thông qua bất kỳ thư mục nào được gán trực tiếp và cấp quyền truy cập. Quyền truy cập bài tập được kiểm tra riêng.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>Truy vấn danh sách không có bộ lọc thẻ có thể trả về câu hỏi tính phí này cho người dùng đã đăng nhập nhưng không có VIP; API chi tiết của câu hỏi trả về mã 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Ẩn danh</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Đề nghị bộ phận kỹ thuật rà soát các thành phần điều hướng cũ còn sử dụng. Không thay đổi giá gói thời hạn hoặc giá thư mục để sửa siêu dữ liệu thẻ cũ.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Gán đúng chủ đề cho câu hỏi hoặc điều chỉnh các thẻ trả phí sau khi xem xét ảnh hưởng chung của chúng.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Chỉ định chủ đề phù hợp trước khi đưa sản phẩm này ra bán. Hãy xem xét riêng các gói thành viên hiện có.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Gán bài học vào danh mục kiến thức phù hợp.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Chỉ về quyền truy cập: snapshot bị từ chối sẽ trả về 200 với HasAccess=false và không có câu hỏi nào. Cũng cần có snapshot hợp lệ.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Kiểm tra các ánh xạ phân loại của thẻ và môn học của câu hỏi. Nếu cả hai đều là chủ ý, hãy nhờ bộ phận kỹ thuật rà soát cách xử lý tại các điểm truy cập.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Chọn một bài tập miễn phí cho bài học này hoặc xem lại giá của thư mục và kỳ học. Thay đổi một kỳ học sẽ ảnh hưởng đến mọi câu hỏi trong kỳ đó.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Các bước kiểm tra lối vào của ứng dụng khách cần được đội ngũ kỹ thuật xác minh.</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Xác nhận xem việc tạm ngừng bán có phải là chủ ý hay không; nếu không, hãy bật sản phẩm môn học hoặc sản phẩm đề thi thật phù hợp.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Xác nhận xem đây có phải là chủ ý giảng dạy liên môn hay không; nếu không, hãy điều chỉnh kỳ thi của câu hỏi hoặc mối liên kết với kiến thức.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Xác nhận xem đây có phải là chủ đích giảng dạy liên môn hay không; nếu không, hãy điều chỉnh môn học của câu hỏi hoặc mối liên kết kiến thức.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Các VIP hiện đang hoạt động vẫn có thể sử dụng, nhưng việc mua các sản phẩm đang được bật hiện tại không thể mở khóa câu hỏi này.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Thư mục kiến thức miễn phí liên kết đến một bài tập trả phí</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Đề thi miễn phí chứa ảnh chụp nhanh của các câu hỏi hiện đang tính phí</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Giữ nguyên cảnh báo này nếu việc cung cấp đề thi miễn phí là có chủ đích. Hãy xem xét mức giá riêng của đề thi nếu cần hạn chế quyền truy cập vào bản chụp nhanh của đề.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Danh mục kiến thức</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Điểm kiến thức và bài tập tham chiếu các môn học khác nhau</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Điểm kiến thức chưa có thư mục</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Các mục kiến thức</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Chỉ siêu dữ liệu thẻ cũ: HasAccess được báo cáo mà không làm thay đổi quyền truy cập câu hỏi.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Khách hàng mới hiện không có kênh mua hàng nào. Thành viên hiện tại còn hiệu lực vẫn có thể được cấp quyền truy cập.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Đề thi</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Giai đoạn</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Điểm kiến thức công khai liên kết với một bài tập có trả phí</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Hãy xem lại các môn học được liên kết, cài đặt đề thi thật và cài đặt miễn phí.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Rà soát khóa học và các sản phẩm VIP hiện có. Sản phẩm bị vô hiệu hóa không làm mất hiệu lực các gói thành viên đang hoạt động.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Kiểm tra các câu hỏi của đề và xuất bản một bản chụp nhanh đã chỉnh sửa. Việc thay đổi các câu hỏi gốc không cập nhật những bản chụp nhanh hiện có.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Phiên bản ảnh chụp {0} không có bài tập nào. Các liên kết đến ảnh chụp cũ vẫn có thể được truy cập.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Sinh viên có thể đọc một bài học trong một thư mục miễn phí, nhưng bài tập liên kết của nó thuộc về một giai đoạn trả phí. Điều này mâu thuẫn với quy tắc bài học miễn phí.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>VIP theo môn học và quyền truy cập bằng thẻ trả phí không khớp nhau</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Hệ phân loại</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>API phân loại kế thừa báo rằng thẻ này bị khóa đối với mọi VIP của khóa học. Điều này không ảnh hưởng đến quyền truy cập hiện tại vào câu hỏi hoặc kiến thức.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Danh sách đề thi công khai không hiển thị đề thi này vì chưa có bản chụp nào.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>VIP của môn học của câu hỏi mở khóa phần chi tiết, nhưng ít nhất một mục thẻ tính phí không chấp nhận VIP đó.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Bài học này không có thư mục nào cấp quyền truy cập, vì vậy ngay cả thành viên VIP của khóa học cũng không thể đọc được.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Sản phẩm này không thể cấp tư cách thành viên cho chủ đề dự kiến.</value>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Create Institution" xml:space="preserve">
+    <value>建立機構</value>
+  </data>
+  <data name="Create your first institution" xml:space="preserve">
+    <value>建立你的第一間機構</value>
+  </data>
+  <data name="Display Order" xml:space="preserve">
+    <value>顯示次序</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>編輯機構</value>
+  </data>
+  <data name="Institution pages" xml:space="preserve">
+    <value>機構頁面</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>院校</value>
+  </data>
+  <data name="Manage the schools that own real exam papers." xml:space="preserve">
+    <value>管理擁有正式試卷的學校。</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
+  <data name="No matching institutions" xml:space="preserve">
+    <value>找不到符合條件的院校</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>第 {0} 頁，共 {1} 頁</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一頁</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="Search institutions" xml:space="preserve">
+    <value>搜尋院校</value>
+  </data>
+  <data name="Show all institutions" xml:space="preserve">
+    <value>顯示所有院校</value>
+  </data>
+
+</root>

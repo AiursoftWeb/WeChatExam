@@ -75,6 +75,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>配信チャネルの作成</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>機関を作成</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>ナレッジカテゴリを作成</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>期間を作成</value>
   </data>
@@ -117,6 +123,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>フィードバックを削除</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>ナレッジカテゴリを削除</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>知識ポイントの削除</value>
   </data>
@@ -140,6 +149,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>配信チャネル</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>施設を編集</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>ナレッジカテゴリを編集</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>期間を編集</value>
@@ -201,8 +216,20 @@
   <data name="Info" xml:space="preserve">
     <value>情報</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>機関</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>公式試験に参加する</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>ナレッジカテゴリ</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>ナレッジカテゴリの詳細</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>知識管理</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>知識ポイント</value>
@@ -263,6 +290,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>質問</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>本試験管理</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>登録</value>

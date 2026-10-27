@@ -33,6 +33,9 @@
   <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
     <value>Наявні учні з чинним VIP можуть і надалі мати доступ. Нові учні наразі не можуть придбати відповідний VIP, щоб отримати доступ до цього вмісту.</value>
   </data>
+  <data name="Free lesson has a paid exercise" xml:space="preserve">
+    <value>Безкоштовний урок має платну вправу</value>
+  </data>
   <data name="Free paper includes paid exercises" xml:space="preserve">
     <value>Безкоштовний збірник містить платні вправи</value>
   </data>
@@ -57,8 +60,14 @@
   <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
     <value>Учні не можуть знайти цю роботу, оскільки опубліковану версію роботи ще не створено.</value>
   </data>
+  <data name="Students cannot open this lesson until it is assigned to a knowledge directory." xml:space="preserve">
+    <value>Учні не можуть відкрити цей урок, доки його не буде додано до каталогу знань.</value>
+  </data>
   <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
     <value>Цей пункт знань пов’язаний з одним курсом, а ці вправи належать до іншого. Купівля VIP-доступу до першого курсу може не відкрити доступ до вправ.</value>
+  </data>
+  <data name="The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation." xml:space="preserve">
+    <value>У застарілому меню тегів цей тег позначено як заблокований. Наразі доступ до практичних завдань надається через періоди; нашій команді варто переглянути, чи залишилися застарілі способи навігації.</value>
   </data>
   <data name="The lesson and exercise belong to different courses" xml:space="preserve">
     <value>Урок і вправа належать до різних курсів</value>
@@ -68,6 +77,9 @@
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Для цієї вправи потрібен VIP</value>
+  </data>
+  <data name="This lesson needs a directory" xml:space="preserve">
+    <value>Цьому уроку потрібен каталог</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>У цієї роботи немає опублікованої версії</value>
@@ -92,6 +104,9 @@
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Відвідувачі можуть переглядати цей навчальний матеріал, але не можуть безкоштовно відкривати ці вправи.</value>
+  </data>
+  <data name="Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings." xml:space="preserve">
+    <value>Відвідувачі можуть переглянути урок у безкоштовному каталозі, але для доступу до вправи потрібен VIP-доступ до курсу. Оберіть безкоштовну вправу або перевірте налаштування каталогу й періоду.</value>
   </data>
 
 </root>
