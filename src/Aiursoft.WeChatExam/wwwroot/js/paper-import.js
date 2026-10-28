@@ -18,7 +18,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
     const token = root.querySelector('[name="__RequestVerificationToken"]').value;
     const status = text => { el('import-status').textContent = text; };
     const extras = () => el('extra-tags').value.split('\n').map(s => s.trim()).filter(Boolean);
-    const tagRequest = () => ({ sourceTagName: el('source-tag').value, extraTags: extras(), categoryId: el('category').value || null, taxonomyId: el('taxonomy').value ? Number(el('taxonomy').value) : null });
+    const tagRequest = () => ({ sourceTagName: el('source-tag').value, extraTags: extras(), taxonomyId: el('taxonomy').value ? Number(el('taxonomy').value) : null });
     async function request(path, body) {
         const response = await fetch(path, body === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json', RequestVerificationToken: token }, body: JSON.stringify(body) });
         if (!response.ok) throw new Error(await response.text());
@@ -30,7 +30,7 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
     el('source-tag').addEventListener('input', () => { customTag = true; syncTag(); scheduleTagCheck(); });
     el('follow-title').onclick = () => { customTag = false; syncTag(); invalidateTags(); };
     let checkTimer; function scheduleTagCheck() { invalidateTags(); clearTimeout(checkTimer); if (el('source-tag').value.trim()) checkTimer = setTimeout(() => checkTags().catch(e => status(e.message)), 400); }
-    ['category', 'taxonomy'].forEach(id => el(id).addEventListener('change', scheduleTagCheck));
+    el('taxonomy').addEventListener('change', scheduleTagCheck);
     el('extra-tags').addEventListener('input', invalidateTags);
     function button(text, action) { const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-sm btn-outline-secondary me-1'; b.textContent = text; b.onclick = action; return b; }
     function render() {
@@ -193,16 +193,10 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
         const result = await request('/Papers/ImportCheckTags', payload);
         if (sequence !== tagSequence || snapshot !== JSON.stringify(tagRequest())) return;
         confirmations = []; el('tag-check').replaceChildren();
-        const warning = document.createElement('p'); warning.textContent = `${tr.sourceReuse} ${tr.extraReuse}`; el('tag-check').append(warning);
         for (const conflict of result.conflicts) {
             const label = document.createElement('label'); label.className = 'd-block mb-2'; const checkbox = document.createElement('input'); checkbox.type = 'checkbox';
-            checkbox.onchange = () => { confirmations = confirmations.filter(c => c.id !== conflict.id); if (checkbox.checked) confirmations.push({ id: conflict.id, isFree: conflict.isFree, taxonomyId: conflict.taxonomyId }); };
-            label.append(checkbox, document.createTextNode(` ${root.dataset.reuse}: ${conflict.displayName} (${conflict.isFree ? root.dataset.free : root.dataset.paid}; ${tr.taxonomy} ${conflict.taxonomyId ?? tr.none}). ${conflict.isSource ? tr.sourceReuse : tr.extraReuse}`)); el('tag-check').append(label);
-        }
-        if (result.mismatch) {
-            const text = document.createElement('p'); text.textContent = tr.mismatch; el('tag-check').append(text);
-            result.categories.forEach(c => el('tag-check').append(button(c.title, () => { const option = [...el('category').options].find(o => o.value.toLowerCase() === c.id.toLowerCase()); if (option) el('category').value = option.value; clearComparison(); invalidateTags(); checkTags().catch(e => status(e.message)); })));
-            if (!result.categories.length) { const p = document.createElement('p'); p.textContent = tr.noCategory; el('tag-check').append(p); }
+            checkbox.onchange = () => { confirmations = confirmations.filter(c => c.id !== conflict.id); if (checkbox.checked) confirmations.push({ id: conflict.id, taxonomyId: conflict.taxonomyId }); };
+            label.append(checkbox, document.createTextNode(` ${root.dataset.reuse}: ${conflict.displayName} (${tr.taxonomy} ${conflict.taxonomyId ?? tr.none})`)); el('tag-check').append(label);
         }
     }
     el('check-tags').onclick = () => checkTags().catch(e => status(e.message));
@@ -213,9 +207,22 @@ import Sortable from '/node_modules/sortablejs/modular/sortable.esm.js';
         if (unanswered >= 0) { status(tr.missingAnswer.replace('{0}', unanswered + 1)); return; }
         el('save-import').disabled = true;
         try {
-            const result = await request('/Papers/ImportSave', { ...tagRequest(), taskId, title: el('title').value, questions: questions.map(({ clientId, ...q }) => q), confirmations, timeLimit: Number(el('time-limit').value), isRealExam: el('real-exam').checked, isFree: el('is-free').checked });
-            window.location.assign(result.url);
+            const result = await request('/Papers/ImportSave', { ...tagRequest(), taskId, title: el('title').value, questions: questions.map(({ clientId, ...q }) => q), confirmations, timeLimit: Number(el('time-limit').value), kind: Number(el('paper-kind').value), totalCategoryId: el('paper-kind').value === '0' ? el('course').value || null : null, institutionId: el('paper-kind').value === '1' ? el('institution').value || null : null, allowViewAnonymousely: el('paper-kind').value === '0' && el('allow-anonymous').checked });
+            if (result.url) window.location.assign(result.url);
+            else {
+                status(tr.saved);
+                // This account can create drafts but cannot open their edit page.
+                taskId = null;
+            }
         } catch (e) { status(e.message); el('save-import').disabled = false; }
     };
-    syncTag();
+    function updatePaperType() {
+        const mock = el('paper-kind').value === '0', real = el('paper-kind').value === '1';
+        el('course-field').hidden = !mock; el('course').disabled = !mock; el('course').required = mock;
+        el('institution-field').hidden = !real; el('institution').disabled = !real; el('institution').required = real;
+        el('anonymous-field').hidden = !mock; el('allow-anonymous').disabled = !mock;
+        el('mock-help').hidden = !mock; el('real-help').hidden = !real;
+    }
+    el('paper-kind').addEventListener('change', updatePaperType);
+    updatePaperType(); syncTag();
 })();

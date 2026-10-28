@@ -11,7 +11,13 @@
     </div>
     @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
     {
+        <div class="d-flex gap-2 flex-wrap">
         <a asp-action="Create" asp-route-institutionId="@Model.InstitutionId" class="btn btn-primary"><i data-lucide="plus" class="me-1"></i> @Localizer["Create Real Paper"]</a>
+        @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddQuestions)).Succeeded)
+        {
+            <a asp-controller="Papers" asp-action="Import" asp-route-kind="Real" asp-route-institutionId="@Model.InstitutionId" class="btn btn-outline-primary">@Localizer["Import Paper"]</a>
+        }
+        </div>
     }
 </div>
 

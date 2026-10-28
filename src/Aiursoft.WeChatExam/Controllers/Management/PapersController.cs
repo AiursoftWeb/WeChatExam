@@ -27,18 +27,22 @@ public class PapersController(
     PaperImportService importService,
     PaperImportTasks importTasks,
     ServiceTaskQueue taskQueue,
-    IStringLocalizer<PapersController> localizer) : Controller
+    IStringLocalizer<PapersController> localizer,
+    IAuthorizationService authorization) : Controller
 {
     private string ImportOwner => User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("Missing user identity.");
 
     [HttpGet]
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public async Task<IActionResult> Import()
+    public async Task<IActionResult> Import(ImportPaperKind? kind, Guid? totalCategoryId, Guid? institutionId)
     {
         return this.StackView(new ImportViewModel
         {
-            Categories = await context.Categories.OrderBy(c => c.Title).Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync(),
+            Kind = kind.HasValue && Enum.IsDefined(kind.Value) ? kind : null,
+            TotalCategoryId = totalCategoryId, InstitutionId = institutionId,
+            Courses = await context.TotalCategories.OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync(),
+            Institutions = await context.Institutions.OrderBy(i => i.OrderIndex).ThenBy(i => i.Title).Select(i => new SelectListItem(i.Title, i.Id.ToString())).ToListAsync(),
             QuestionCategories = await context.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory)
                 .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
                 .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync(),
@@ -105,13 +109,23 @@ public class PapersController(
         await task.SaveLock.WaitAsync();
         try
         {
-            if (task.PaperId.HasValue) return Json(new { paperId = task.PaperId, url = Url.Action(nameof(Details), new { id = task.PaperId }) });
+            if (task.PaperId.HasValue) return await ImportSaved(task);
             if (task.Status != "Completed") return BadRequest("Extract and review a valid preview before saving.");
             task.PaperId = await importService.SaveAsync(request);
-            return Json(new { paperId = task.PaperId, url = Url.Action(nameof(Details), new { id = task.PaperId }) });
+            task.Kind = request.Kind;
+            return await ImportSaved(task);
         }
         catch (InvalidOperationException e) { return BadRequest(e.Message); }
         finally { task.SaveLock.Release(); }
+    }
+
+    private async Task<IActionResult> ImportSaved(PaperImportTask task)
+    {
+        // Import permission does not imply permission to edit an existing paper.
+        var canEdit = (await authorization.AuthorizeAsync(User, AppPermissionNames.CanEditPapers)).Succeeded;
+        return Json(new { paperId = task.PaperId, url = canEdit
+            ? Url.Action("Edit", task.Kind == ImportPaperKind.Mock ? "MockPapers" : "RealPapers", new { id = task.PaperId })
+            : null });
     }
 
     // GET: papers

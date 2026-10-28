@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Aiursoft.WeChatExam.Models.PapersViewModels;
 
+public enum ImportPaperKind { Mock, Real }
+
 public class ImportViewModel : UiStackLayoutViewModel
 {
     public ImportViewModel()
@@ -21,17 +23,20 @@ public class ImportViewModel : UiStackLayoutViewModel
     [Required, MaxLength(255)]
     public string SourceTagName { get; set; } = string.Empty;
 
-    public Guid? CategoryId { get; set; }
+    public Guid? TotalCategoryId { get; set; }
+    public Guid? InstitutionId { get; set; }
     public int? TaxonomyId { get; set; }
 
     [Range(1, int.MaxValue)]
     public int TimeLimit { get; set; } = 180;
 
-    public bool IsRealExam { get; set; } = true;
-    public bool IsFree { get; set; }
+    [Required]
+    public ImportPaperKind? Kind { get; set; }
+    public bool AllowViewAnonymousely { get; set; }
     public string? ExtraTags { get; set; }
 
-    public IEnumerable<SelectListItem> Categories { get; set; } = [];
+    public IEnumerable<SelectListItem> Courses { get; set; } = [];
+    public IEnumerable<SelectListItem> Institutions { get; set; } = [];
     public List<QuestionCategory> QuestionCategories { get; set; } = [];
     public IEnumerable<SelectListItem> Taxonomies { get; set; } = [];
 }
@@ -64,9 +69,11 @@ public class PaperImportSaveRequest : PaperImportPreview
 {
     public Guid TaskId { get; set; }
     [Range(1, int.MaxValue)] public int TimeLimit { get; set; } = 180;
-    public bool IsRealExam { get; set; } = true;
-    public bool IsFree { get; set; }
-    public Guid? CategoryId { get; set; }
+    [Required]
+    public ImportPaperKind? Kind { get; set; }
+    public bool AllowViewAnonymousely { get; set; }
+    public Guid? TotalCategoryId { get; set; }
+    public Guid? InstitutionId { get; set; }
     public int? TaxonomyId { get; set; }
     [MaxLength(255)] public string SourceTagName { get; set; } = string.Empty;
     public List<string> ExtraTags { get; set; } = [];
@@ -76,7 +83,6 @@ public class PaperImportSaveRequest : PaperImportPreview
 public class PaperImportTagConfirmation
 {
     public int Id { get; set; }
-    public bool IsFree { get; set; }
     public int? TaxonomyId { get; set; }
 }
 
@@ -84,6 +90,5 @@ public class PaperImportTagCheckRequest
 {
     [Required, MaxLength(255)] public string SourceTagName { get; set; } = string.Empty;
     public List<string> ExtraTags { get; set; } = [];
-    public Guid? CategoryId { get; set; }
     public int? TaxonomyId { get; set; }
 }

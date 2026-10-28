@@ -23,6 +23,8 @@ public class PaperImportTests
     private string _token = null!;
     private Guid _firstPeriod;
     private Guid _secondPeriod;
+    private Guid _institution;
+    private Guid _course;
     private static PaperImportPreview Preview() => new()
     {
         Title = "Source title",
@@ -53,6 +55,14 @@ public class PaperImportTests
         }
         _firstPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
         _secondPeriod = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
+        using (var scope = _host.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var institution = new Institution { Title = "Import institution" };
+            db.Institutions.Add(institution); await db.SaveChangesAsync();
+            _institution = institution.Id;
+            _course = await db.QuestionCategories.Where(c => c.Id == _firstPeriod).Select(c => c.TotalCategoryId).SingleAsync();
+        }
         _http = new HttpClient(new HttpClientHandler { CookieContainer = new CookieContainer(), AllowAutoRedirect = false }) { BaseAddress = new Uri($"http://localhost:{port}") };
         var login = await Token("/Account/Login");
         var response = await _http.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string> { ["EmailOrUserName"] = "admin@default.com", ["Password"] = "Admin@123456!", ["__RequestVerificationToken"] = login }));
@@ -91,29 +101,34 @@ public class PaperImportTests
         questions[0].StandardAnswer = "Manually supplied answer";
         questions[2].StandardAnswer = "True";
         for (var i = 0; i < questions.Count; i++) questions[i].QuestionCategoryId = i == 0 ? _firstPeriod : _secondPeriod;
-        return new() { TaskId = task, Title = "Edited title", SourceTagName = "Unique source tag", Questions = questions, ExtraTags = ["extra"] };
+        return new() { Kind = ImportPaperKind.Real, InstitutionId = _institution, TaskId = task, Title = "Edited title", SourceTagName = "Unique source tag " + Guid.NewGuid(), Questions = questions, ExtraTags = ["extra " + Guid.NewGuid()] };
     }
 
     [TestMethod]
     public async Task ExtractPreviewEditedSaveIsOrderedAndIdempotent()
     {
         using var baselineScope = _host.Services.CreateScope(); var baselineDb = baselineScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var initialPapers = await baselineDb.Papers.CountAsync(); var initialQuestions = await baselineDb.Questions.CountAsync();
+        var initialPapers = await baselineDb.RealPapers.CountAsync(); var initialQuestions = await baselineDb.Questions.CountAsync();
         var id = await Extract();
         for (var i = 0; i < 3; i++) await _http.GetAsync("/Papers/ImportStatus?id=" + id);
         Assert.AreEqual(1, _ai.Questions.Count(call => call.Contains("Do not solve") && call.Contains("Missing answers") && call.Contains("exact original mixed")));
         using var scope = _host.Services.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        Assert.AreEqual(initialPapers, await db.Papers.CountAsync()); Assert.AreEqual(initialQuestions, await db.Questions.CountAsync());
+        Assert.AreEqual(initialPapers, await db.RealPapers.CountAsync()); Assert.AreEqual(initialQuestions, await db.Questions.CountAsync());
         var save = SaveRequest(id); save.SourceTagName += Guid.NewGuid(); save.ExtraTags = ["extra " + Guid.NewGuid()]; save.Questions = [save.Questions[2], save.Questions[0]]; save.Questions[0].Content = "User edit";
         var response = await Post("ImportSave", save); Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, await response.Content.ReadAsStringAsync());
         var paperId = JObject.Parse(await response.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>();
+        // A retry with changed type still returns the originally committed paper.
+        save.Kind = ImportPaperKind.Mock;
         var repeat = await Post("ImportSave", save); Assert.AreEqual(paperId, JObject.Parse(await repeat.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>());
-        var paper = await db.Papers.SingleAsync(p => p.Id == paperId); Assert.AreEqual(180, paper.TimeLimit); Assert.IsTrue(paper.IsRealExam); Assert.IsFalse(paper.IsFree); Assert.AreEqual(PaperStatus.Draft, paper.Status);
-        var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
+        var paper = await db.RealPapers.SingleAsync(p => p.Id == paperId); Assert.AreEqual(180, paper.TimeLimit); Assert.AreEqual(_institution, paper.InstitutionId); Assert.AreEqual(PaperStatus.Draft, paper.Status);
+        var questions = await db.RealPaperQuestions.Where(p => p.RealPaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
         Assert.AreEqual("User edit", questions[0].Question.Content); Assert.AreEqual("First original question", questions[1].Question.Content); Assert.AreEqual("True", questions[0].Question.StandardAnswer); Assert.AreEqual("Manually supplied answer", questions[1].Question.StandardAnswer); Assert.AreEqual(_secondPeriod, questions[0].Question.QuestionCategoryId);
         Assert.AreEqual(_firstPeriod, questions[1].Question.QuestionCategoryId);
-        Assert.AreEqual(2, await db.PaperTags.CountAsync(t => t.PaperId == paperId)); Assert.AreEqual(4, await db.QuestionTags.CountAsync(t => questions.Select(q => q.QuestionId).Contains(t.QuestionId))); Assert.AreEqual(0, await db.PaperCategories.CountAsync(c => c.PaperId == paperId));
-        Assert.IsFalse((await db.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName)).IsFree); Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.ExtraTags[0])).IsFree);
+        Assert.AreEqual(0, await db.PaperTags.CountAsync(t => t.PaperId == paperId)); Assert.AreEqual(4, await db.QuestionTags.CountAsync(t => questions.Select(q => q.QuestionId).Contains(t.QuestionId))); Assert.AreEqual(0, await db.PaperCategories.CountAsync(c => c.PaperId == paperId));
+        Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName)).IsFree);
+        Assert.IsFalse(await db.Papers.AnyAsync(p => p.Id == paperId));
+        Assert.IsFalse(await db.PaperQuestions.AnyAsync(p => p.PaperId == paperId));
+        Assert.AreEqual("/RealPapers/Edit/" + paperId, JObject.Parse(await response.Content.ReadAsStringAsync())["url"]!.Value<string>()); Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.ExtraTags[0])).IsFree);
     }
 
     [TestMethod]
@@ -136,7 +151,7 @@ public class PaperImportTests
         var paperId = JObject.Parse(await response.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>();
         using var scope = _host.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).ToListAsync();
+        var questions = await db.RealPaperQuestions.Where(p => p.RealPaperId == paperId).Include(p => p.Question).ToListAsync();
         Assert.AreEqual(6, questions.Count);
         foreach (var item in questions)
         {
@@ -155,15 +170,15 @@ public class PaperImportTests
         var tagName = "Conflict source " + Guid.NewGuid();
         var tag = new Tag { DisplayName = tagName, NormalizedName = tagName.ToUpperInvariant(), TaxonomyId = taxonomy.Id }; db.Tags.Add(tag); await db.SaveChangesAsync();
         var save = SaveRequest(id); save.SourceTagName = tagName; save.ExtraTags = [];
-        var beforeCount = await db.Papers.CountAsync();
-        var denied = await Post("ImportSave", save); Assert.AreEqual(HttpStatusCode.BadRequest, denied.StatusCode); Assert.AreEqual(beforeCount, await db.Papers.CountAsync());
+        var beforeCount = await db.RealPapers.CountAsync();
+        var denied = await Post("ImportSave", save); Assert.AreEqual(HttpStatusCode.BadRequest, denied.StatusCode); Assert.AreEqual(beforeCount, await db.RealPapers.CountAsync());
         var check = await Post("ImportCheckTags", new { sourceTagName = save.SourceTagName, extraTags = save.ExtraTags });
-        var checkBody = JObject.Parse(await check.Content.ReadAsStringAsync()); Assert.AreEqual(taxonomy.Id, checkBody["effectiveTaxonomy"]!.Value<int>()); Assert.IsFalse(checkBody["mismatch"]!.Value<bool>());
-        save.Confirmations = [new() { Id = tag.Id, IsFree = false, TaxonomyId = taxonomy.Id }];
+        var checkBody = JObject.Parse(await check.Content.ReadAsStringAsync()); Assert.AreEqual(taxonomy.Id, checkBody["effectiveTaxonomy"]!.Value<int>()); Assert.IsNull(checkBody["categories"]); Assert.IsNull(checkBody["conflicts"]![0]!["isFree"]);
+        save.Confirmations = [new() { Id = tag.Id, TaxonomyId = null }];
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
-        save.Confirmations[0].IsFree = true;
+        save.Confirmations[0].TaxonomyId = taxonomy.Id;
         var success = await Post("ImportSave", save); Assert.AreEqual(HttpStatusCode.OK, success.StatusCode, await success.Content.ReadAsStringAsync());
-        db.ChangeTracker.Clear(); var actual = await db.Tags.SingleAsync(t => t.Id == tag.Id); Assert.IsFalse(actual.IsFree); Assert.AreEqual(taxonomy.Id, actual.TaxonomyId);
+        db.ChangeTracker.Clear(); var actual = await db.Tags.SingleAsync(t => t.Id == tag.Id); Assert.IsTrue(actual.IsFree); Assert.AreEqual(taxonomy.Id, actual.TaxonomyId);
     }
 
     [TestMethod]
@@ -174,7 +189,7 @@ public class PaperImportTests
         Assert.AreEqual("", preview["preview"]!["questions"]![0]!["standardAnswer"]!.Value<string>());
         using var scope = _host.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var paperCount = await db.Papers.CountAsync();
+        var paperCount = await db.RealPapers.CountAsync();
         var questionCount = await db.Questions.CountAsync();
         var tagCount = await db.Tags.CountAsync();
         var tagName = "Unchanged free tag " + Guid.NewGuid();
@@ -185,14 +200,14 @@ public class PaperImportTests
         {
             var save = SaveRequest(id);
             save.SourceTagName = tagName;
-            save.Confirmations = [new() { Id = tag.Id, IsFree = true, TaxonomyId = null }];
+            save.Confirmations = [new() { Id = tag.Id, TaxonomyId = null }];
             save.Questions[0].StandardAnswer = missing;
             var response = await Post("ImportSave", save);
             Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode);
             StringAssert.Contains(await response.Content.ReadAsStringAsync(), "Complete all standard answers before saving");
         }
         db.ChangeTracker.Clear();
-        Assert.AreEqual(paperCount, await db.Papers.CountAsync());
+        Assert.AreEqual(paperCount, await db.RealPapers.CountAsync());
         Assert.AreEqual(questionCount, await db.Questions.CountAsync());
         Assert.AreEqual(tagCount + 1, await db.Tags.CountAsync());
         Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
@@ -213,11 +228,10 @@ public class PaperImportTests
         var deleted = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
         db.QuestionCategories.Remove(await db.QuestionCategories.SingleAsync(c => c.Id == deleted));
         await db.SaveChangesAsync();
-        var before = new[] { await db.Papers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.PaperQuestions.CountAsync() };
+        var before = new[] { await db.RealPapers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.RealPaperQuestions.CountAsync() };
         var save = SaveRequest(id);
-        save.CategoryId = legacy.Id;
         save.SourceTagName = tagName;
-        save.Confirmations = [new() { Id = tag.Id, IsFree = true }];
+        save.Confirmations = [new() { Id = tag.Id }];
         save.ExtraTags = [];
         foreach (var invalid in new Guid?[] { null, Guid.Empty, Guid.NewGuid(), deleted, legacy.Id })
         {
@@ -227,18 +241,140 @@ public class PaperImportTests
             Assert.Contains("Choose an existing period for question 2", await response.Content.ReadAsStringAsync());
         }
         db.ChangeTracker.Clear();
-        CollectionAssert.AreEqual(before, new[] { await db.Papers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.PaperQuestions.CountAsync() });
+        CollectionAssert.AreEqual(before, new[] { await db.RealPapers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.RealPaperQuestions.CountAsync() });
         Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
-        // Correct the same preview without extracting again. The paper keeps its own
-        // classification, while each question uses its independently selected period.
+        // Correct the same preview without extracting again. Institution ownership
+        // permits these questions from different courses.
         save.Questions[1].QuestionCategoryId = _secondPeriod;
         var saved = await Post("ImportSave", save);
         Assert.AreEqual(HttpStatusCode.OK, saved.StatusCode, await saved.Content.ReadAsStringAsync());
         var paperId = JObject.Parse(await saved.Content.ReadAsStringAsync())["paperId"]!.ToObject<Guid>();
-        Assert.AreEqual(legacy.Id, (await db.PaperCategories.SingleAsync(p => p.PaperId == paperId)).CategoryId);
-        var questions = await db.PaperQuestions.Where(p => p.PaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
+        Assert.IsFalse(await db.PaperCategories.AnyAsync(p => p.PaperId == paperId));
+        var questions = await db.RealPaperQuestions.Where(p => p.RealPaperId == paperId).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
         CollectionAssert.AreEqual(new Guid?[] { _firstPeriod, _secondPeriod, _secondPeriod }, questions.Select(p => p.Question.QuestionCategoryId).ToArray());
         Assert.AreEqual(1, _ai.Questions.Count);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task MockImportUsesCourseAndPreservesSharedTagState(bool anonymous)
+    {
+        var task = await Extract();
+        using var scope = _host.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var tag = new Tag { DisplayName = "Shared source " + Guid.NewGuid(), NormalizedName = Guid.NewGuid().ToString(), IsFree = anonymous };
+        tag.NormalizedName = tag.DisplayName.ToUpperInvariant();
+        db.Tags.Add(tag); await db.SaveChangesAsync();
+        var oldPapers = await db.Papers.CountAsync();
+        var oldLinks = await db.PaperQuestions.CountAsync();
+        var oldTags = await db.PaperTags.CountAsync();
+        var oldCategories = await db.PaperCategories.CountAsync();
+        var save = SaveRequest(task);
+        save.Kind = ImportPaperKind.Mock; save.InstitutionId = null; save.TotalCategoryId = _course;
+        save.AllowViewAnonymousely = anonymous; save.TimeLimit = 120;
+        save.SourceTagName = tag.DisplayName; save.ExtraTags = [];
+        save.Confirmations = [new() { Id = tag.Id }];
+        foreach (var question in save.Questions) question.QuestionCategoryId = _firstPeriod;
+        var response = await Post("ImportSave", save);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, await response.Content.ReadAsStringAsync());
+        var body = JObject.Parse(await response.Content.ReadAsStringAsync());
+        var id = body["paperId"]!.ToObject<Guid>();
+        Assert.AreEqual("/MockPapers/Edit/" + id, body["url"]!.Value<string>());
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync(body["url"]!.Value<string>())).StatusCode);
+        db.ChangeTracker.Clear();
+        var paper = await db.MockPapers.SingleAsync(p => p.Id == id);
+        Assert.AreEqual(_course, paper.TotalCategoryId); Assert.AreEqual(anonymous, paper.AllowViewAnonymousely);
+        Assert.AreEqual(PaperStatus.Draft, paper.Status); Assert.AreEqual(120, paper.TimeLimit);
+        var links = await db.MockPaperQuestions.Where(p => p.MockPaperId == id).Include(p => p.Question).OrderBy(p => p.Order).ToListAsync();
+        CollectionAssert.AreEqual(new[] { 1, 2, 3 }, links.Select(q => q.Order).ToArray());
+        CollectionAssert.AreEqual(new[] { 10, 7, 10 }, links.Select(q => q.Score).ToArray());
+        Assert.IsTrue(links.All(q => q.Question.QuestionCategoryId == _firstPeriod));
+        Assert.AreEqual(anonymous, (await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
+        Assert.AreEqual(oldPapers, await db.Papers.CountAsync()); Assert.AreEqual(oldLinks, await db.PaperQuestions.CountAsync());
+        Assert.AreEqual(oldTags, await db.PaperTags.CountAsync()); Assert.AreEqual(oldCategories, await db.PaperCategories.CountAsync());
+        Assert.IsFalse(await db.RealPapers.AnyAsync(p => p.Id == id));
+        Assert.IsFalse(await db.PaperSnapshots.AnyAsync(p => p.MockPaperId == id));
+    }
+
+    [TestMethod]
+    public async Task InvalidOwnershipAndCrossCourseMockAreAtomicAndCanBeCorrected()
+    {
+        var task = await Extract();
+        using var scope = _host.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var deleted = new Institution { Title = "Deleted institution" };
+        db.Institutions.Add(deleted); await db.SaveChangesAsync();
+        db.Institutions.Remove(deleted); await db.SaveChangesAsync();
+        async Task<int[]> Counts() => [await db.Papers.CountAsync(), await db.MockPapers.CountAsync(), await db.RealPapers.CountAsync(),
+            await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(),
+            await db.MockPaperQuestions.CountAsync(), await db.RealPaperQuestions.CountAsync()];
+        var before = await Counts();
+        var invalids = new Action<PaperImportSaveRequest>[]
+        {
+            r => r.Kind = null, r => r.Kind = (ImportPaperKind)99,
+            r => r.InstitutionId = null, r => r.InstitutionId = Guid.Empty, r => r.InstitutionId = deleted.Id,
+            r => r.TotalCategoryId = _course, r => r.AllowViewAnonymousely = true,
+            r => { r.Kind = ImportPaperKind.Mock; r.TotalCategoryId = _course; }, // Schools cannot own mock papers.
+            r => { r.Kind = ImportPaperKind.Mock; r.InstitutionId = null; },
+            r => { r.Kind = ImportPaperKind.Mock; r.InstitutionId = null; r.TotalCategoryId = Guid.NewGuid(); },
+            r => { r.Kind = ImportPaperKind.Mock; r.InstitutionId = null; r.TotalCategoryId = _course; } // Mixed courses.
+        };
+        foreach (var change in invalids)
+        {
+            var save = SaveRequest(task); change(save);
+            var result = await Post("ImportSave", save);
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode, await result.Content.ReadAsStringAsync());
+            CollectionAssert.AreEqual(before, await Counts());
+        }
+        // The same reviewed cross-course questions are valid as an institution paper.
+        var success = await Post("ImportSave", SaveRequest(task));
+        Assert.AreEqual(HttpStatusCode.OK, success.StatusCode, await success.Content.ReadAsStringAsync());
+        var body = JObject.Parse(await success.Content.ReadAsStringAsync());
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync(body["url"]!.Value<string>())).StatusCode);
+        Assert.AreEqual(1, _ai.Questions.Count);
+    }
+
+    [TestMethod]
+    public async Task ImportOnlyAccountCanSaveWithoutReceivingAnUnauthorizedEditLink()
+    {
+        using var scope = _host.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
+        var email = $"import-{Guid.NewGuid():N}@example.com";
+        var user = new User { UserName = email, Email = email, DisplayName = "Import reviewer" };
+        Assert.IsTrue((await manager.CreateAsync(user, "Import@123456!")).Succeeded);
+        foreach (var permission in new[] { Authorization.AppPermissionNames.CanAddPapers, Authorization.AppPermissionNames.CanAddQuestions })
+            Assert.IsTrue((await manager.AddClaimAsync(user, new System.Security.Claims.Claim(Authorization.AppPermissions.Type, permission))).Succeeded);
+        var login = await Token("/Account/Login");
+        Assert.AreEqual(HttpStatusCode.Found, (await _http.PostAsync("/Account/Login", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["EmailOrUserName"] = email, ["Password"] = "Import@123456!", ["__RequestVerificationToken"] = login
+        }))).StatusCode);
+        _token = await Token("/Papers/Import");
+        var task = await Extract();
+        var response = await Post("ImportSave", SaveRequest(task));
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, await response.Content.ReadAsStringAsync());
+        var body = JObject.Parse(await response.Content.ReadAsStringAsync());
+        Assert.AreEqual(JTokenType.Null, body["url"]!.Type);
+        var id = body["paperId"]!.ToObject<Guid>();
+        Assert.IsTrue(await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().RealPapers.AnyAsync(p => p.Id == id));
+        Assert.AreEqual(HttpStatusCode.Found, (await _http.GetAsync("/RealPapers/Edit/" + id)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task ImportPageUsesIndependentOwnershipAndNoLegacyFeeControls()
+    {
+        foreach (var kind in new[] { "Mock", "Real" })
+        {
+            var html = await _http.GetStringAsync($"/Papers/Import?kind={kind}&totalCategoryId={_course}&institutionId={_institution}");
+            Assert.Contains("name=\"TotalCategoryId\"", html); Assert.Contains("name=\"InstitutionId\"", html);
+            Assert.Contains("name=\"AllowViewAnonymousely\"", html);
+            Assert.DoesNotContain("name=\"CategoryId\"", html); Assert.DoesNotContain("name=\"IsFree\"", html);
+            Assert.DoesNotContain("Source tags are always paid", html);
+            Assert.Contains($"value=\"{(kind == "Mock" ? 0 : 1)}\" selected=\"selected\"", html);
+            var list = await _http.GetStringAsync("/" + kind + "Papers");
+            Assert.Contains("/Papers/Import?kind=" + kind, list);
+        }
     }
 
     [TestMethod]
