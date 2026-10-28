@@ -13,7 +13,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
 [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<RealPapersController> localizer) : Controller
+public class RealPapersController(WeChatExamDbContext context, RealPaperPublishing publishing, ILogger<RealPapersController> logger, IStringLocalizer<RealPapersController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -71,7 +71,7 @@ public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<
     {
         var paper = await context.RealPapers.AsNoTracking().SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         return this.StackView(new EditViewModel
         {
             Id = paper.Id, Title = paper.Title, InstitutionId = paper.InstitutionId,
@@ -87,8 +87,11 @@ public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<
         if (id != model.Id) return NotFound();
         var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         await ValidateInstitution(model);
+        // Existing versions and purchases must keep their institution ownership.
+        if (model.InstitutionId != paper.InstitutionId && await context.PaperSnapshots.AnyAsync(s => s.RealPaperId == id))
+            ModelState.AddModelError(nameof(model.InstitutionId), localizer["The institution cannot change after this paper has a published version."]);
         if (!ModelState.IsValid) return this.StackView(model);
 
         paper.Title = model.Title.Trim();
@@ -109,7 +112,7 @@ public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<
     {
         var paper = await context.RealPapers.AsNoTracking().Include(p => p.Institution).SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         var periods = await context.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory)
             .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategory!.Title).ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
         if (questionCategoryId.HasValue && periods.All(c => c.Id != questionCategoryId)) return BadRequest();
@@ -142,7 +145,7 @@ public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<
     {
         var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         if (!ModelState.IsValid) return await QuestionPage(id, true, search, questionCategoryId, page);
         var ids = model.QuestionIds.Distinct().ToArray();
         // Institution papers may span courses; selection must not impose mock-paper course ownership.
@@ -177,7 +180,7 @@ public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<
     {
         var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         if (!ModelState.IsValid) return await QuestionPage(id, false, null, null, page);
         var link = await context.RealPaperQuestions.SingleOrDefaultAsync(q => q.RealPaperId == id && q.QuestionId == model.QuestionId);
         if (link == null) return NotFound();
@@ -193,12 +196,72 @@ public class RealPapersController(WeChatExamDbContext context, IStringLocalizer<
     {
         var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         var link = await context.RealPaperQuestions.SingleOrDefaultAsync(q => q.RealPaperId == id && q.QuestionId == questionId);
         if (link == null) return NotFound();
         context.RealPaperQuestions.Remove(link);
         await context.SaveChangesAsync();
         return RedirectToAction(nameof(Questions), new { id, page });
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Versions(Guid id, int page = 1)
+    {
+        var paper = await context.RealPapers.AsNoTracking().Include(p => p.Institution).SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        var query = context.PaperSnapshots.AsNoTracking().Where(s => s.RealPaperId == id);
+        var total = await query.CountAsync();
+        page = Math.Clamp(page, 1, Math.Max(1, (total + VersionsViewModel.PageSize - 1) / VersionsViewModel.PageSize));
+        return this.StackView(new VersionsViewModel
+        {
+            Paper = paper, Page = page, Total = total,
+            DraftQuestionCount = await context.RealPaperQuestions.CountAsync(l => l.RealPaperId == id),
+            Versions = await query.OrderByDescending(s => s.Version).Skip((page - 1) * VersionsViewModel.PageSize)
+                .Take(VersionsViewModel.PageSize).ToListAsync()
+        }, nameof(Versions));
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Publish(Guid id)
+    {
+        var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
+        PaperSnapshot snapshot;
+        try
+        {
+            snapshot = await publishing.PublishAsync(paper);
+        }
+        catch (InvalidOperationException error)
+        {
+            ModelState.AddModelError(string.Empty, error.Message);
+            return await Versions(id);
+        }
+        catch (DbUpdateException error)
+        {
+            logger.LogWarning(error, "Could not publish real paper {PaperId}", id);
+            // A concurrent publication may already have used the next version number.
+            return Conflict(localizer["The version could not be saved. Reload the version list before trying again."].Value);
+        }
+        return RedirectToAction(nameof(Version), new { id, snapshotId = snapshot.Id });
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Version(Guid id, Guid snapshotId, int page = 1)
+    {
+        var paper = await context.RealPapers.AsNoTracking().Include(p => p.Institution).SingleOrDefaultAsync(p => p.Id == id);
+        var snapshot = await context.PaperSnapshots.AsNoTracking().SingleOrDefaultAsync(s => s.Id == snapshotId && s.RealPaperId == id);
+        if (paper == null || snapshot == null) return NotFound();
+        var query = context.QuestionSnapshots.AsNoTracking().Where(q => q.PaperSnapshotId == snapshotId);
+        var total = await query.CountAsync();
+        page = Math.Clamp(page, 1, Math.Max(1, (total + VersionsViewModel.PageSize - 1) / VersionsViewModel.PageSize));
+        return this.StackView(new VersionsViewModel
+        {
+            Paper = paper, Snapshot = snapshot, Page = page, Total = total, TotalScore = await query.SumAsync(q => (long)q.Score),
+            Questions = await query.OrderBy(q => q.Order).ThenBy(q => q.OriginalQuestionId).ThenBy(q => q.Id)
+                .Skip((page - 1) * VersionsViewModel.PageSize).Take(VersionsViewModel.PageSize).ToListAsync()
+        });
     }
 
     private Task<List<Institution>> Institutions() => context.Institutions.AsNoTracking()
