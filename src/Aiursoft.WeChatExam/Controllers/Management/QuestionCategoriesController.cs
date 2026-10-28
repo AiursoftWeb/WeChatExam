@@ -16,6 +16,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class QuestionCategoriesController(
     WeChatExamDbContext context,
     KnowledgeExerciseValidation exerciseValidation,
+    MockPaperValidation mockPaperValidation,
     IStringLocalizer<QuestionCategoriesController> localizer) : Controller
 {
     [RenderInNavBar(
@@ -104,6 +105,11 @@ public class QuestionCategoriesController(
         {
             var error = await exerciseValidation.ValidatePaidQuestionCategoryAsync(id);
             if (error != null) ModelState.AddModelError(nameof(model.IsFree), error);
+        }
+        if (model.TotalCategoryId.HasValue)
+        {
+            var courseError = await mockPaperValidation.ValidatePeriodCourseAsync(id, model.TotalCategoryId.Value);
+            if (courseError != null) ModelState.AddModelError(nameof(model.TotalCategoryId), courseError);
         }
         if (!ModelState.IsValid) return this.StackView(model);
 

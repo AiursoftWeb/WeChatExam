@@ -621,6 +621,27 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("MockPapers");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaperQuestion", b =>
+                {
+                    b.Property<Guid>("MockPaperId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.HasKey("MockPaperId", "QuestionId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("MockPaperQuestions");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Paper", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1737,6 +1758,25 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .IsRequired();
 
                     b.Navigation("TotalCategory");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaperQuestion", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.MockPaper", "MockPaper")
+                        .WithMany()
+                        .HasForeignKey("MockPaperId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("MockPaper");
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperCategory", b =>

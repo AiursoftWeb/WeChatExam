@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Mock paper {0} and question {1} must belong to the same course. Remove the question from the paper before changing its course." xml:space="preserve">
+    <value>模拟试卷 {0} 和题目 {1} 必须属于同一门课程。更改题目的课程前，请先将其从试卷中移除。</value>
+  </data>
+  <data name="Question {0} is used by mock paper {1}. Remove it from the paper before deleting it." xml:space="preserve">
+    <value>试题 {0} 已被试卷 {1} 使用。请先将其从试卷中移除，再删除。</value>
+  </data>
+
+</root>

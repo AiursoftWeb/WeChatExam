@@ -13,7 +13,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
 [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-public class MockPapersController(WeChatExamDbContext context, IStringLocalizer<MockPapersController> localizer) : Controller
+public class MockPapersController(WeChatExamDbContext context, MockPaperValidation validation, IStringLocalizer<MockPapersController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -89,6 +89,11 @@ public class MockPapersController(WeChatExamDbContext context, IStringLocalizer<
         if (paper == null) return NotFound();
         if (paper.Status != PaperStatus.Draft) return Conflict();
         await ValidateCourse(model);
+        if (model.TotalCategoryId.HasValue)
+        {
+            var error = await validation.ValidatePaperCourseAsync(id, model.TotalCategoryId.Value);
+            if (error != null) ModelState.AddModelError(nameof(model.TotalCategoryId), error);
+        }
         if (!ModelState.IsValid) return this.StackView(model);
 
         paper.Title = model.Title.Trim();
@@ -97,6 +102,108 @@ public class MockPapersController(WeChatExamDbContext context, IStringLocalizer<
         paper.AllowViewAnonymousely = model.AllowViewAnonymousely;
         await context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public Task<IActionResult> Questions(Guid id, int page = 1) => QuestionPage(id, false, null, null, page);
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public Task<IActionResult> SelectQuestions(Guid id, string? search, Guid? questionCategoryId, int page = 1) =>
+        QuestionPage(id, true, search, questionCategoryId, page);
+
+    private async Task<IActionResult> QuestionPage(Guid id, bool selecting, string? search, Guid? questionCategoryId, int page)
+    {
+        var paper = await context.MockPapers.AsNoTracking().Include(p => p.TotalCategory).SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        if (paper.Status != PaperStatus.Draft) return Conflict();
+        var periods = await context.QuestionCategories.AsNoTracking().Where(c => c.TotalCategoryId == paper.TotalCategoryId)
+            .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
+        if (questionCategoryId.HasValue && periods.All(c => c.Id != questionCategoryId)) return BadRequest();
+        search = search?.Trim();
+        var selected = context.MockPaperQuestions.AsNoTracking().Where(q => q.MockPaperId == id);
+        var available = context.Questions.AsNoTracking().Where(q => q.QuestionCategory!.TotalCategoryId == paper.TotalCategoryId
+            && !selected.Any(l => l.QuestionId == q.Id));
+        if (questionCategoryId.HasValue) available = available.Where(q => q.QuestionCategoryId == questionCategoryId);
+        if (!string.IsNullOrEmpty(search)) available = available.Where(q => q.Content.Contains(search));
+        var count = await selected.CountAsync();
+        var total = selecting ? await available.CountAsync() : count;
+        page = Math.Clamp(page, 1, Math.Max(1, (total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize));
+        return this.StackView(new QuestionsViewModel
+        {
+            Paper = paper, Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
+            Page = page, Total = total, SelectedCount = count, TotalScore = await selected.SumAsync(q => (long)q.Score),
+            Periods = periods,
+            Selected = selecting ? [] : await selected.Include(q => q.Question).ThenInclude(q => q.QuestionCategory)
+                .OrderBy(q => q.Order).ThenBy(q => q.QuestionId)
+                .Skip((page - 1) * QuestionsViewModel.PageSize).Take(QuestionsViewModel.PageSize).ToListAsync(),
+            Available = !selecting ? [] : await available.Include(q => q.QuestionCategory)
+                .OrderBy(q => q.OrderIndex).ThenBy(q => q.Id)
+                .Skip((page - 1) * QuestionsViewModel.PageSize).Take(QuestionsViewModel.PageSize).ToListAsync()
+        }, nameof(Questions));
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> AddQuestions(Guid id, AddQuestionsRequest model, string? search, Guid? questionCategoryId, int page = 1)
+    {
+        var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (!ModelState.IsValid) return await QuestionPage(id, true, search, questionCategoryId, page);
+        var ids = model.QuestionIds.Distinct().ToArray();
+        var eligible = await context.Questions.Where(q => ids.Contains(q.Id) && q.QuestionCategory!.TotalCategoryId == paper.TotalCategoryId)
+            .OrderBy(q => q.OrderIndex).ThenBy(q => q.Id).Select(q => q.Id).ToListAsync();
+        // Validate the complete selection before writing any links, including crafted requests.
+        if (eligible.Count != ids.Length)
+        {
+            ModelState.AddModelError(string.Empty, localizer["Every selected question must exist and belong to this paper's course."]);
+            return await QuestionPage(id, true, search, questionCategoryId, page);
+        }
+        var existing = await context.MockPaperQuestions.Where(q => q.MockPaperId == id).ToListAsync();
+        var additions = eligible.Except(existing.Select(q => q.QuestionId)).ToArray();
+        var lastOrder = existing.Count == 0 ? 0 : existing.Max(q => q.Order);
+        if (lastOrder > int.MaxValue - additions.Length)
+        {
+            ModelState.AddModelError(string.Empty, localizer["Reduce the highest question order before adding more questions."]);
+            return await QuestionPage(id, true, search, questionCategoryId, page);
+        }
+        foreach (var questionId in additions)
+            context.MockPaperQuestions.Add(new MockPaperQuestion
+            {
+                MockPaperId = id, QuestionId = questionId, Order = ++lastOrder, Score = model.Score
+            });
+        await context.SaveChangesAsync();
+        return RedirectToAction(nameof(SelectQuestions), new { id, search, questionCategoryId, page });
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> UpdateQuestion(Guid id, UpdateQuestionRequest model, int page = 1)
+    {
+        var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (!ModelState.IsValid) return await QuestionPage(id, false, null, null, page);
+        var link = await context.MockPaperQuestions.SingleOrDefaultAsync(q => q.MockPaperId == id && q.QuestionId == model.QuestionId);
+        if (link == null) return NotFound();
+        link.Order = model.Order;
+        link.Score = model.Score;
+        await context.SaveChangesAsync();
+        return RedirectToAction(nameof(Questions), new { id, page });
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> RemoveQuestion(Guid id, Guid questionId, int page = 1)
+    {
+        var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        if (paper.Status != PaperStatus.Draft) return Conflict();
+        var link = await context.MockPaperQuestions.SingleOrDefaultAsync(q => q.MockPaperId == id && q.QuestionId == questionId);
+        if (link == null) return NotFound();
+        context.MockPaperQuestions.Remove(link);
+        await context.SaveChangesAsync();
+        return RedirectToAction(nameof(Questions), new { id, page });
     }
 
     private Task<List<TotalCategory>> Courses() => context.TotalCategories.AsNoTracking()

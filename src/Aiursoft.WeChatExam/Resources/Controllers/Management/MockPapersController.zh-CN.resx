@@ -22,4 +22,11 @@
     <value>请选择一个已存在的课程。</value>
   </data>
 
-</root>
+
+<data name="Every selected question must exist and belong to this paper's course." xml:space="preserve">
+    <value>每道选中的试题都必须存在，并且属于此试卷对应的课程。</value>
+  </data>
+  <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
+    <value>添加更多题目前，请降低题目序号的最大值。</value>
+  </data>
+  </root>

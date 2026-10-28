@@ -22,6 +22,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class QuestionsController(
     WeChatExamDbContext context,
     KnowledgeExerciseValidation exerciseValidation,
+    MockPaperValidation mockPaperValidation,
     ITagService tagService,
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
@@ -348,7 +349,8 @@ public class QuestionsController(
         }
         if (model.QuestionCategoryId.HasValue)
         {
-            var error = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId.Value });
+            var error = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId.Value })
+                ?? await mockPaperValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId.Value });
             if (error != null) ModelState.AddModelError(nameof(model.QuestionCategoryId), error);
         }
         if (!ModelState.IsValid) return this.StackView(model);
@@ -484,7 +486,8 @@ public class QuestionsController(
             return this.StackView(model);
         }
 
-        var exerciseError = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId!.Value });
+        var exerciseError = await exerciseValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId!.Value })
+                ?? await mockPaperValidation.ValidateQuestionPeriodsAsync(new Dictionary<Guid, Guid> { [id] = model.QuestionCategoryId!.Value });
         if (exerciseError != null)
         {
             ModelState.AddModelError(nameof(model.QuestionCategoryId), exerciseError);
@@ -566,8 +569,16 @@ public class QuestionsController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(Guid id, string? returnUrl)
     {
-        var question = await context.Questions.FindAsync(id);
+        var question = await context.Questions.Include(q => q.QuestionCategory).ThenInclude(c => c!.TotalCategory)
+            .SingleOrDefaultAsync(q => q.Id == id);
         if (question == null) return NotFound();
+
+        var deletionError = await mockPaperValidation.ValidateDeletionAsync([id]);
+        if (deletionError != null)
+        {
+            ModelState.AddModelError(string.Empty, deletionError);
+            return this.StackView(new DeleteViewModel { Question = question, ReturnUrl = returnUrl }, "Delete");
+        }
 
         var questionCategoryId = question.QuestionCategoryId;
 
@@ -591,6 +602,9 @@ public class QuestionsController(
         {
             return BadRequest("No questions selected for deletion.");
         }
+
+        var deletionError = await mockPaperValidation.ValidateDeletionAsync(request.QuestionIds);
+        if (deletionError != null) return BadRequest(deletionError);
 
         var questionsToDelete = await context.Questions
             .Where(q => request.QuestionIds.Contains(q.Id))

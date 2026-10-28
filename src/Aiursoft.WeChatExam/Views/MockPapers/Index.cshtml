@@ -8,7 +8,7 @@
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <div>
         <h1 class="h3 mb-2">@Localizer["Mock Papers"]</h1>
-        <p class="text-muted mb-0">@Localizer["Draft only. Question assembly and publication are not available yet."]</p>
+        <p class="text-muted mb-0">@Localizer["Draft only. Publication is not available yet."]</p>
     </div>
     @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
     {
@@ -80,9 +80,13 @@ else
                     </p>
                     @if (paper.Status == PaperStatus.Draft)
                     {
-                        <a asp-action="Edit" asp-route-id="@paper.Id" class="stretched-link text-decoration-none">
+                        <a asp-action="Edit" asp-route-id="@paper.Id" class="text-decoration-none">
                             @Localizer["Edit Mock Paper"] <i data-lucide="arrow-right" class="ms-1"></i>
                         </a>
+                        @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+                        {
+                            <a asp-action="Questions" asp-route-id="@paper.Id" class="btn btn-outline-primary mt-3 d-block">@Localizer["Manage Questions"]</a>
+                        }
                     }
                 </div></div>
             </div>

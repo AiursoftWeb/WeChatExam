@@ -1,3 +1,6 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
 @model Aiursoft.WeChatExam.Models.MockPapersViewModels.EditViewModel
 @{
     var creating = Model.Id == Guid.Empty;
@@ -17,7 +20,12 @@
     }
 </h1>
 
-<p class="text-muted mb-4">@Localizer["Draft only. Question assembly and publication are not available yet."]</p>
+<p class="text-muted mb-4">@Localizer["Draft only. Publication is not available yet."]</p>
+
+@if (!creating && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+{
+    <a asp-action="Questions" asp-route-id="@Model.Id" class="btn btn-outline-primary mb-4">@Localizer["Manage Questions"]</a>
+}
 
 <div class="row">
     <div class="col-lg-7 col-xl-6">

@@ -1,0 +1,121 @@
+@using Aiursoft.WeChatExam.Models.MockPapersViewModels
+@model QuestionsViewModel
+@{
+    var action = Model.Selecting ? "SelectQuestions" : "Questions";
+}
+<a asp-action="Index" class="d-inline-block text-decoration-none mb-3"><i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Mock Papers"]</a>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+    <div>
+        <h1 class="h3 text-break mb-2">@Model.Paper.Title</h1>
+        <p class="text-muted mb-0">@Model.Paper.TotalCategory.Title · @string.Format(@Localizer["{0} questions · {1} points"].Value, Model.SelectedCount, Model.TotalScore)</p>
+    </div>
+    <a asp-action="Edit" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Paper Settings"]</a>
+</div>
+<p class="text-muted">@Localizer["Draft only. Publication is not available yet."]</p>
+<ul class="nav nav-tabs mb-4">
+    <li class="nav-item"><a asp-action="Questions" asp-route-id="@Model.Paper.Id" class="nav-link @(!Model.Selecting ? "active" : "")">@Localizer["Selected Questions"] (@Model.SelectedCount)</a></li>
+    <li class="nav-item"><a asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" class="nav-link @(Model.Selecting ? "active" : "")">@Localizer["Select Questions"]</a></li>
+</ul>
+<div asp-validation-summary="All" class="text-danger mb-3"></div>
+@if (Model.Selecting)
+{
+    <form asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" method="get" class="row g-2 mb-4" role="search">
+        <div class="col-md-6"><input name="search" value="@Model.Search" class="form-control" placeholder="@Localizer["Search questions"]" aria-label="@Localizer["Search questions"]" /></div>
+        <div class="col-md-4">
+            <select asp-for="QuestionCategoryId" class="form-select" aria-label="@Localizer["Period"]">
+                <option value="">@Localizer["All Periods"]</option>
+                @foreach (var period in Model.Periods)
+                {
+                    <option value="@period.Id">@period.Title</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2"><button class="btn btn-outline-primary w-100" type="submit">@Localizer["Search"]</button></div>
+    </form>
+    @if (Model.Available.Count == 0)
+    {
+        <div class="card"><div class="card-body py-5 text-center">@Localizer["No more matching questions in this course."]</div></div>
+    }
+    else
+    {
+        <form asp-action="AddQuestions" asp-route-id="@Model.Paper.Id" method="post">
+            <input name="search" type="hidden" value="@Model.Search" />
+            <input name="questionCategoryId" type="hidden" value="@Model.QuestionCategoryId" />
+            <input name="page" type="hidden" value="@Model.Page" />
+            @foreach (var question in Model.Available)
+            {
+                <div class="card mb-3"><div class="card-body p-4">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="question-@question.Id" name="QuestionIds" value="@question.Id" />
+                        <label for="question-@question.Id" class="form-check-label text-break">@(question.Content.Length > 300 ? question.Content[..300] + "…" : question.Content)</label>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-between gap-2 mt-3">
+                        <span class="text-muted">@question.QuestionCategory!.Title</span>
+                        <a asp-controller="Questions" asp-action="Details" asp-route-id="@question.Id" target="_blank" rel="noopener">@Localizer["View Details"] <i data-lucide="external-link" class="ms-1"></i></a>
+                    </div>
+                </div></div>
+            }
+            <div class="d-flex flex-wrap align-items-end gap-3 mt-4">
+                <div>
+                    <label for="add-score" class="form-label">@Localizer["Score per question"]</label>
+                    <input id="add-score" name="Score" value="10" type="number" min="1" class="form-control" />
+                </div>
+                <button class="btn btn-primary" type="submit">@Localizer["Add Selected Questions"]</button>
+            </div>
+        </form>
+    }
+}
+else
+{
+    @if (Model.Selected.Count == 0)
+    {
+        <div class="card"><div class="card-body py-5 text-center">
+            <h2 class="h4 mb-3">@Localizer["Add questions from this course"]</h2>
+            <a asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" class="btn btn-primary">@Localizer["Select Questions"]</a>
+        </div></div>
+    }
+    @foreach (var link in Model.Selected)
+    {
+        <div class="card mb-3"><div class="card-body p-4">
+            <p class="text-break mb-3">@(link.Question.Content.Length > 300 ? link.Question.Content[..300] + "…" : link.Question.Content)</p>
+            <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
+                <span class="text-muted">@link.Question.QuestionCategory!.Title</span>
+                <a asp-controller="Questions" asp-action="Details" asp-route-id="@link.QuestionId" target="_blank" rel="noopener">@Localizer["View Details"] <i data-lucide="external-link" class="ms-1"></i></a>
+            </div>
+            <form asp-action="UpdateQuestion" asp-route-id="@Model.Paper.Id" method="post" class="row g-2 align-items-end">
+                <input type="hidden" name="QuestionId" value="@link.QuestionId" />
+                <input type="hidden" name="page" value="@Model.Page" />
+                <div class="col-6 col-md-4">
+                    <label for="order-@link.QuestionId" class="form-label">@Localizer["Order"]</label>
+                    <input id="order-@link.QuestionId" type="number" name="Order" value="@link.Order" min="0" class="form-control" />
+                </div>
+                <div class="col-6 col-md-4">
+                    <label for="score-@link.QuestionId" class="form-label">@Localizer["Score"]</label>
+                    <input id="score-@link.QuestionId" type="number" name="Score" value="@link.Score" min="1" class="form-control" />
+                </div>
+                <div class="col-md-4"><button type="submit" class="btn btn-outline-primary w-100">@Localizer["Save Changes"]</button></div>
+            </form>
+            <form asp-action="RemoveQuestion" asp-route-id="@Model.Paper.Id" method="post" class="mt-3">
+                <input type="hidden" name="questionId" value="@link.QuestionId" />
+                <input type="hidden" name="page" value="@Model.Page" />
+                <button type="submit" class="btn btn-outline-danger">@Localizer["Remove from Paper"]</button>
+            </form>
+        </div></div>
+    }
+}
+@if (Model.Total > QuestionsViewModel.PageSize)
+{
+    <nav class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4" aria-label="@Localizer["Question pages"]">
+        <span class="text-muted">@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize)</span>
+        <div class="d-flex gap-2">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="@action" asp-route-id="@Model.Paper.Id" asp-route-page="@(Model.Page - 1)" asp-route-search="@Model.Search" asp-route-questionCategoryId="@Model.QuestionCategoryId" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+            @if (Model.Page * QuestionsViewModel.PageSize < Model.Total)
+            {
+                <a asp-action="@action" asp-route-id="@Model.Paper.Id" asp-route-page="@(Model.Page + 1)" asp-route-search="@Model.Search" asp-route-questionCategoryId="@Model.QuestionCategoryId" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
+}
