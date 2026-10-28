@@ -20,20 +20,22 @@ public interface IVipProductService
     /// <summary>
     /// 创建 VIP 商品
     /// </summary>
-    Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? totalCategoryId, int priceInFen, int durationDays);
+    Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? totalCategoryId, int priceInFen, int durationDays, Guid? institutionId = null);
 
     /// <summary>
     /// 更新 VIP 商品
     /// </summary>
-    Task UpdateAsync(Guid id, string name, VipProductType type, Guid? totalCategoryId, int priceInFen, int durationDays, bool isEnabled);
+    Task UpdateAsync(Guid id, string name, VipProductType type, Guid? totalCategoryId, int priceInFen, int durationDays, bool isEnabled, Guid? institutionId = null);
 
     /// <summary>
     /// 删除 VIP 商品
     /// </summary>
     Task DeleteAsync(Guid id);
 
+    Task<bool> HasPurchasesAsync(Guid id);
+
     /// <summary>
     /// 获取所有启用的 VIP 商品（面向小程序端）
     /// </summary>
-    Task<List<VipProduct>> GetEnabledAsync(Guid? totalCategoryId = null, VipProductType? type = null);
+    Task<List<VipProduct>> GetEnabledAsync(Guid? totalCategoryId = null, VipProductType? type = null, Guid? institutionId = null);
 }

@@ -167,6 +167,8 @@ UserManager<User> userManager,
             Type = v.VipProduct?.Type ?? VipProductType.Category,
             CategoryId = v.VipProduct?.TotalCategoryId,
             CategoryName = v.VipProduct?.TotalCategory?.Title ?? string.Empty,
+            InstitutionId = v.VipProduct?.InstitutionId,
+            InstitutionName = v.VipProduct?.Institution?.Title ?? string.Empty,
             ProductName = v.VipProduct?.Name ?? "VIP",
             IsActive = v.IsActive,
             EndTime = v.EndTime
@@ -185,9 +187,10 @@ UserManager<User> userManager,
     [HttpGet("vip-products")]
     public async Task<IActionResult> GetVipProducts(
         [FromQuery] Guid? categoryId = null,
-        [FromQuery] VipProductType? type = null)
+        [FromQuery] VipProductType? type = null,
+        [FromQuery] Guid? institutionId = null)
     {
-        var products = await vipProductService.GetEnabledAsync(categoryId, type);
+        var products = await vipProductService.GetEnabledAsync(categoryId, type, institutionId);
         
         var dtos = products.Select(p => new
         {
@@ -196,6 +199,8 @@ UserManager<User> userManager,
             Type = p.Type.ToString(),
             CategoryId = p.TotalCategoryId,
             CategoryName = p.TotalCategory?.Title,
+            p.InstitutionId,
+            InstitutionName = p.Institution?.Title,
             p.PriceInFen,
             p.DurationDays
         }).ToList();

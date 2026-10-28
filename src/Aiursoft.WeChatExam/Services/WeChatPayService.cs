@@ -33,6 +33,7 @@ public class WeChatPayService(
         // Look up VipProduct from DB
         var vipProduct = await dbContext.VipProducts
             .Include(v => v.TotalCategory)
+            .Include(v => v.Institution)
             .FirstOrDefaultAsync(v => v.Id == vipProductId);
 
         if (vipProduct == null)
@@ -54,7 +55,7 @@ public class WeChatPayService(
         }
 
         var amountInFen = vipProduct.PriceInFen;
-        var description = $"{vipProduct.Name} - {vipProduct.TotalCategory?.Title ?? "VIP"}";
+        var description = $"{vipProduct.Name} - {vipProduct.TotalCategory?.Title ?? vipProduct.Institution?.Title ?? "VIP"}";
         Coupon? appliedCoupon;
 
         if (!string.IsNullOrWhiteSpace(couponCode))
@@ -84,14 +85,18 @@ public class WeChatPayService(
             description += $" (已优惠: {discountInFen / 100m}元)";
         }
 
-        // Check if user already has active VIP for this category
+        // Match the purchased scope, not nullable course IDs: different schools must
+        // remain independently purchasable. A legacy all-school VIP already covers any school.
         var now = DateTime.UtcNow;
         var existingVip = await dbContext.VipMemberships
             .Include(v => v.VipProduct)
             .FirstOrDefaultAsync(v => 
                 v.UserId == userId && 
                 v.VipProduct != null && 
-                v.VipProduct.TotalCategoryId == vipProduct.TotalCategoryId &&
+                ((v.VipProduct.Type == vipProduct.Type &&
+                  v.VipProduct.TotalCategoryId == vipProduct.TotalCategoryId &&
+                  v.VipProduct.InstitutionId == vipProduct.InstitutionId) ||
+                 (vipProduct.Type == VipProductType.Institution && v.VipProduct.Type == VipProductType.RealExam)) &&
                 v.StartTime <= now && 
                 v.EndTime > now);
 
@@ -100,7 +105,7 @@ public class WeChatPayService(
             return new CreateOrderResult
             {
                 Success = false,
-                ErrorMessage = "该分类 VIP 未到期，到期后可再次购买。"
+                ErrorMessage = "The requested membership is already active. Purchase again after it expires."
             };
         }
 
@@ -428,6 +433,8 @@ public class WeChatPayService(
             .Include(v => v.User)
             .Include(v => v.VipProduct)
             .ThenInclude(p => p!.TotalCategory)
+            .Include(v => v.VipProduct)
+            .ThenInclude(p => p!.Institution)
             .Where(v => v.UserId == userId)
             .ToListAsync();
     }
@@ -439,6 +446,7 @@ public class WeChatPayService(
             .AnyAsync(v =>
                 v.UserId == userId &&
                 v.VipProduct != null &&
+                v.VipProduct.Type == VipProductType.Category &&
                 v.VipProduct.TotalCategoryId == categoryId &&
                 v.StartTime <= DateTime.UtcNow &&
                 v.EndTime > DateTime.UtcNow);

@@ -678,4 +678,36 @@ public class PapersApiTests
         Assert.AreEqual(1, res4!.Count);
         Assert.AreEqual("Paper 3", res4[0].Title);
     }
+
+    [TestMethod]
+    public async Task PaymentCatalogAndStatusExposeInstitutionTargetsWithoutCourseRights()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var school = new Institution { Title = "Wuhan catalog" };
+        var other = new Institution { Title = "Suzhou catalog" };
+        var product = new VipProduct { Name = "Wuhan catalog VIP", Type = VipProductType.Institution, Institution = school, PriceInFen = 1234, DurationDays = 30 };
+        var second = new VipProduct { Name = "Other VIP", Type = VipProductType.Institution, Institution = other };
+        var disabled = new VipProduct { Name = "Stopped VIP", Type = VipProductType.Institution, Institution = school, IsEnabled = false };
+        db.AddRange(product, second, disabled);
+        await db.SaveChangesAsync();
+        using var catalog = System.Text.Json.JsonDocument.Parse(await _http.GetStringAsync($"/api/payment/vip-products?institutionId={school.Id}"));
+        var item = catalog.RootElement.EnumerateArray().Single();
+        Assert.AreEqual(product.Id, item.GetProperty("id").GetGuid());
+        Assert.AreEqual("Institution", item.GetProperty("type").GetString());
+        Assert.AreEqual(school.Id, item.GetProperty("institutionId").GetGuid());
+        Assert.AreEqual("Wuhan catalog", item.GetProperty("institutionName").GetString());
+        Assert.AreEqual(System.Text.Json.JsonValueKind.Null, item.GetProperty("categoryId").ValueKind);
+        Assert.AreEqual(1234, item.GetProperty("priceInFen").GetInt32());
+        var end = DateTime.UtcNow.AddDays(30);
+        _mockWeChatPayService.Memberships = [new VipMembership { UserId = "student", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = end }];
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        var status = await _http.GetFromJsonAsync<VipStatusResponse>("/api/payment/vip-status");
+        var membership = status!.Memberships.Single();
+        Assert.AreEqual(VipProductType.Institution, membership.Type);
+        Assert.AreEqual(school.Id, membership.InstitutionId);
+        Assert.AreEqual("Wuhan catalog", membership.InstitutionName);
+        Assert.IsNull(membership.CategoryId);
+        Assert.AreEqual(end, membership.EndTime);
+    }
 }

@@ -17,6 +17,7 @@ public class CreateViewModel : UiStackLayoutViewModel
     [EnumDataType(typeof(VipProductType))]
     public VipProductType Type { get; set; } = VipProductType.Category;
     public Guid? TotalCategoryId { get; set; }
+    public Guid? InstitutionId { get; set; }
     
     [Range(1, int.MaxValue)]
     public int PriceInFen { get; set; }
@@ -24,4 +25,5 @@ public class CreateViewModel : UiStackLayoutViewModel
     [Range(1, int.MaxValue)]
     public int DurationDays { get; set; } = 365;
     public List<SelectListItem> TotalCategories { get; set; } = [];
+    public List<SelectListItem> Institutions { get; set; } = [];
 }

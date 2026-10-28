@@ -8,7 +8,7 @@
         <form method="get" class="row g-2 align-items-end">
             <div class="col-auto">
                 <label class="form-label">@Localizer["Search"]</label>
-                <input type="text" name="search" value="@Model.SearchQuery" class="form-control form-control-sm" placeholder="@Localizer["Search by name or category"]" />
+                <input type="text" name="search" value="@Model.SearchQuery" class="form-control form-control-sm" placeholder="@Localizer["Search by name, category or institution"]" />
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary btn-sm">
@@ -34,7 +34,7 @@
                 <tr>
                     <th>@Localizer["Name"]</th>
                     <th>@Localizer["Type"]</th>
-                    <th>@Localizer["Total Category"]</th>
+                    <th>@Localizer["Access Scope"]</th>
                     <th>@Localizer["Price"]</th>
                     <th>@Localizer["Duration"]</th>
                     <th>@Localizer["Status"]</th>
@@ -51,15 +51,23 @@
                             {
                                 <span class="badge bg-primary">@Localizer["Total Category VIP"]</span>
                             }
+                            else if (product.Type == VipProductType.Institution)
+                            {
+                                <span class="badge bg-primary">@Localizer["Institution VIP"]</span>
+                            }
                             else
                             {
-                                <span class="badge bg-warning text-dark">@Localizer["Real Exam VIP"]</span>
+                                <span class="badge bg-warning text-dark">@Localizer["All Real Exams VIP (Legacy)"]</span>
                             }
                         </td>
                         <td>
                             @if (product.Type == VipProductType.Category)
                             {
                                 <span class="badge bg-info">@(product.TotalCategory?.Title ?? "-")</span>
+                            }
+                            else if (product.Type == VipProductType.Institution)
+                            {
+                                <span>@product.Institution?.Title</span>
                             }
                             else
                             {

@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Entities;
 
 /// <summary>
-/// A purchasable course membership, or the existing all-real-exams membership.
+/// A course or institution membership, or the existing all-real-exams membership.
 /// </summary>
 [Index(nameof(TotalCategoryId))]
 [Index(nameof(Type))]
+[Index(nameof(InstitutionId))]
 public class VipProduct
 {
     [Key]
@@ -34,6 +35,15 @@ public class VipProduct
 
     [ForeignKey(nameof(TotalCategoryId))]
     public TotalCategory? TotalCategory { get; set; }
+
+    /// <summary>
+    /// An institution membership covers this school's real papers, independently of courses.
+    /// Legacy RealExam products keep their all-school scope and have no institution target.
+    /// </summary>
+    public Guid? InstitutionId { get; set; }
+
+    [ForeignKey(nameof(InstitutionId))]
+    public Institution? Institution { get; set; }
 
     /// <summary>
     /// 价格（单位：分）

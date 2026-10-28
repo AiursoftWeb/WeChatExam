@@ -36,7 +36,8 @@ public class VipProductsController(
         {
             products = products
                 .Where(p => p.Name.Contains(search, StringComparison.OrdinalIgnoreCase) ||
-                            (p.TotalCategory?.Title.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false))
+                            (p.TotalCategory?.Title.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                            (p.Institution?.Title.Contains(search, StringComparison.OrdinalIgnoreCase) ?? false))
                 .ToList();
         }
 
@@ -53,7 +54,8 @@ public class VipProductsController(
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
         return this.StackView(new CreateViewModel
         {
-            TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList()
+            TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList(),
+            Institutions = await InstitutionOptionsAsync()
         });
     }
 
@@ -62,15 +64,16 @@ public class VipProductsController(
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
-        await ValidateTotalCategoryAsync(model.Type, model.TotalCategoryId);
+        await ValidateTargetAsync(model.Type, model.TotalCategoryId, model.InstitutionId);
         if (!ModelState.IsValid)
         {
             var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
             model.TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList();
+            model.Institutions = await InstitutionOptionsAsync();
             return this.StackView(model);
         }
 
-        await vipProductService.CreateAsync(model.Name, model.Type, model.TotalCategoryId, model.PriceInFen, model.DurationDays);
+        await vipProductService.CreateAsync(model.Name, model.Type, model.TotalCategoryId, model.PriceInFen, model.DurationDays, model.InstitutionId);
         return RedirectToAction(nameof(Index));
     }
 
@@ -90,10 +93,13 @@ public class VipProductsController(
             Name = product.Name,
             Type = product.Type,
             TotalCategoryId = product.TotalCategoryId,
+            InstitutionId = product.InstitutionId,
+            TargetLocked = await vipProductService.HasPurchasesAsync(product.Id),
             PriceInFen = product.PriceInFen,
             DurationDays = product.DurationDays,
             IsEnabled = product.IsEnabled,
-            TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList()
+            TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList(),
+            Institutions = await InstitutionOptionsAsync()
         });
     }
 
@@ -103,26 +109,62 @@ public class VipProductsController(
     public async Task<IActionResult> Edit(Guid id, EditViewModel model, string? checkReturnUrl = null)
     {
         ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
-        await ValidateTotalCategoryAsync(model.Type, model.TotalCategoryId);
+        if (id != model.Id) return NotFound();
+        var product = await vipProductService.GetByIdAsync(id);
+        if (product == null) return NotFound();
+        model.TargetLocked = await vipProductService.HasPurchasesAsync(id);
+        if (model.TargetLocked)
+        {
+            if (model.Type != product.Type || model.TotalCategoryId != product.TotalCategoryId || model.InstitutionId != product.InstitutionId)
+                ModelState.AddModelError(string.Empty, localizer["This product has orders or memberships. Create a new product to change its access scope."]);
+            model.Type = product.Type;
+            model.TotalCategoryId = product.TotalCategoryId;
+            model.InstitutionId = product.InstitutionId;
+            ModelState.Remove(nameof(model.Type));
+            ModelState.Remove(nameof(model.TotalCategoryId));
+            ModelState.Remove(nameof(model.InstitutionId));
+        }
+        await ValidateTargetAsync(model.Type, model.TotalCategoryId, model.InstitutionId);
         if (!ModelState.IsValid)
         {
             var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
             model.TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList();
+            model.Institutions = await InstitutionOptionsAsync();
             return this.StackView(model);
         }
 
-        await vipProductService.UpdateAsync(id, model.Name, model.Type, model.TotalCategoryId, model.PriceInFen, model.DurationDays, model.IsEnabled);
+        try
+        {
+            await vipProductService.UpdateAsync(id, model.Name, model.Type, model.TotalCategoryId, model.PriceInFen, model.DurationDays, model.IsEnabled, model.InstitutionId);
+        }
+        catch (InvalidOperationException)
+        {
+            ModelState.AddModelError(string.Empty, localizer["This product has orders or memberships. Create a new product to change its access scope."]);
+            model.TotalCategories = await dbContext.TotalCategories.OrderBy(c => c.Title)
+                .Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToListAsync();
+            model.Institutions = await InstitutionOptionsAsync();
+            return this.StackView(model);
+        }
         if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Index));
     }
 
-    private async Task ValidateTotalCategoryAsync(VipProductType type, Guid? totalCategoryId)
+    private Task<List<SelectListItem>> InstitutionOptionsAsync() => dbContext.Institutions
+        .OrderBy(i => i.OrderIndex).ThenBy(i => i.Title)
+        .Select(i => new SelectListItem(i.Title, i.Id.ToString())).ToListAsync();
+
+    private async Task ValidateTargetAsync(VipProductType type, Guid? totalCategoryId, Guid? institutionId)
     {
         if (type == VipProductType.Category &&
             (!totalCategoryId.HasValue || !await dbContext.TotalCategories.AnyAsync(c => c.Id == totalCategoryId.Value)))
         {
             ModelState.AddModelError("TotalCategoryId", localizer["Select an existing total category."]);
+        }
+        if (type == VipProductType.Institution &&
+            (!institutionId.HasValue || !await dbContext.Institutions.AnyAsync(i => i.Id == institutionId.Value)))
+        {
+            ModelState.AddModelError("InstitutionId", localizer["Select an existing institution."]);
         }
     }
 
@@ -146,7 +188,15 @@ public class VipProductsController(
     [Authorize(Policy = AppPermissionNames.CanDeleteVipProducts)]
     public async Task<IActionResult> DeleteConfirmed(Guid id)
     {
-        await vipProductService.DeleteAsync(id);
+        try
+        {
+            await vipProductService.DeleteAsync(id);
+        }
+        catch (InvalidOperationException)
+        {
+            ModelState.AddModelError(string.Empty, localizer["This product has orders or memberships. Disable it instead of deleting it."]);
+            return this.StackView(new DeleteViewModel { Product = (await vipProductService.GetByIdAsync(id))! }, nameof(Delete));
+        }
         return RedirectToAction(nameof(Index));
     }
 }
