@@ -22,6 +22,8 @@ public class MockPaper
 
     // Defaults to members only; creating a draft must not silently open paid content.
     public bool AllowViewAnonymousely { get; set; }
+    // Draft: never published; Publishable: an editable template with published versions.
+    // Frozen templates remain read only. Publishing validates the draft in one action.
     public PaperStatus Status { get; set; } = PaperStatus.Draft;
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
 }

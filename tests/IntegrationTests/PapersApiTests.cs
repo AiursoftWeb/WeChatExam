@@ -73,6 +73,19 @@ public class PapersApiTests
         _server.Dispose();
     }
 
+    [TestMethod]
+    public async Task MockPaperSnapshotsAreNotAvailableThroughLegacyPaperApi()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = QuestionPeriodAssignmentTests.TestPeriod();
+        var paper = new MockPaper { Title = "Mock publication", TotalCategory = period.TotalCategory!, TotalCategoryId = period.TotalCategoryId };
+        var snapshot = new PaperSnapshot { MockPaper = paper, Title = paper.Title, Version = 1, IsFree = true };
+        db.Add(snapshot);
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Papers/snapshots/{snapshot.Id}")).StatusCode);
+    }
+
     private async Task<string> LoginAsWeChatUserAsync()
     {
         var openId = $"test-openid-{Guid.NewGuid()}";

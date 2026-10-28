@@ -735,6 +735,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<bool>("IsFree")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<Guid?>("MockPaperId")
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid?>("PaperId")
                         .HasColumnType("char(36)");
 
@@ -753,7 +756,13 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.HasIndex("PaperId");
 
-                    b.ToTable("PaperSnapshots");
+                    b.HasIndex("MockPaperId", "Version")
+                        .IsUnique();
+
+                    b.ToTable("PaperSnapshots", t =>
+                        {
+                            t.HasCheckConstraint("CK_PaperSnapshot_SingleSource", "MockPaperId IS NULL OR PaperId IS NULL");
+                        });
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperTag", b =>
@@ -1819,9 +1828,16 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaperSnapshot", b =>
                 {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.MockPaper", "MockPaper")
+                        .WithMany()
+                        .HasForeignKey("MockPaperId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Aiursoft.WeChatExam.Entities.Paper", "Paper")
                         .WithMany("PaperSnapshots")
                         .HasForeignKey("PaperId");
+
+                    b.Navigation("MockPaper");
 
                     b.Navigation("Paper");
                 });

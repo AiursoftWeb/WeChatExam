@@ -30,7 +30,7 @@
   <data name="All Periods" xml:space="preserve">
     <value>所有年代</value>
   </data>
-  
+
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>返回模拟试卷</value>
   </data>
@@ -55,7 +55,7 @@
   <data name="Period" xml:space="preserve">
     <value>年代</value>
   </data>
-  
+
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
   </data>
@@ -89,6 +89,13 @@
   <data name="View Details" xml:space="preserve">
     <value>详情</value>
   </data>
-  
 
-</root>
+
+
+<data name="Editing the draft does not change published versions." xml:space="preserve">
+    <value>编辑草稿不会更改已发布的版本。</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>已发布版本</value>
+  </data>
+  </root>

@@ -78,6 +78,7 @@ public class Startup : IWebStartup
         services.AddScoped<ContentCheckService>();
         services.AddScoped<KnowledgeExerciseValidation>();
         services.AddScoped<MockPaperValidation>();
+        services.AddScoped<MockPaperPublishing>();
         services.AddSingleton<ContentEmbeddingCache>();
 
         // Background job queue

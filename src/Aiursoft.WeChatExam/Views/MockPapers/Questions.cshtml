@@ -9,9 +9,12 @@
         <h1 class="h3 text-break mb-2">@Model.Paper.Title</h1>
         <p class="text-muted mb-0">@Model.Paper.TotalCategory.Title · @string.Format(@Localizer["{0} questions · {1} points"].Value, Model.SelectedCount, Model.TotalScore)</p>
     </div>
-    <a asp-action="Edit" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Paper Settings"]</a>
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Paper Settings"]</a>
+        <a asp-action="Versions" asp-route-id="@Model.Paper.Id" class="btn btn-primary">@Localizer["Published Versions"]</a>
+    </div>
 </div>
-<p class="text-muted">@Localizer["Draft only. Publication is not available yet."]</p>
+<p class="text-muted">@Localizer["Editing the draft does not change published versions."]</p>
 <ul class="nav nav-tabs mb-4">
     <li class="nav-item"><a asp-action="Questions" asp-route-id="@Model.Paper.Id" class="nav-link @(!Model.Selecting ? "active" : "")">@Localizer["Selected Questions"] (@Model.SelectedCount)</a></li>
     <li class="nav-item"><a asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" class="nav-link @(Model.Selecting ? "active" : "")">@Localizer["Select Questions"]</a></li>
