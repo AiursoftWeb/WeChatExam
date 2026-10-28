@@ -1403,6 +1403,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<int>("DurationDays")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("InstitutionId")
+                        .HasColumnType("char(36)");
+
                     b.Property<bool>("IsEnabled")
                         .HasColumnType("tinyint(1)");
 
@@ -1422,11 +1425,16 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("InstitutionId");
+
                     b.HasIndex("TotalCategoryId");
 
                     b.HasIndex("Type");
 
-                    b.ToTable("VipProducts");
+                    b.ToTable("VipProducts", t =>
+                        {
+                            t.HasCheckConstraint("CK_VipProducts_InstitutionTarget", "(`Type` = 2 AND `InstitutionId` IS NOT NULL AND `TotalCategoryId` IS NULL) OR (`Type` <> 2 AND `InstitutionId` IS NULL)");
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -2134,10 +2142,17 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VipProduct", b =>
                 {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Institution", "Institution")
+                        .WithMany()
+                        .HasForeignKey("InstitutionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Aiursoft.WeChatExam.Entities.TotalCategory", "TotalCategory")
                         .WithMany()
                         .HasForeignKey("TotalCategoryId")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Institution");
 
                     b.Navigation("TotalCategory");
                 });

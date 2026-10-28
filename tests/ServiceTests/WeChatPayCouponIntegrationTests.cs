@@ -1,3 +1,8 @@
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.Json;
+using SKIT.FlurlHttpClient.Wechat.TenpayV3.Settings;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
@@ -19,6 +24,7 @@ public class WeChatPayCouponIntegrationTests
     private HttpClient _tenpayHttpClient = null!;
     private WechatTenpayClient _tenpayClient = null!;
     private Guid _productId;
+    private readonly string _privateKeyPath = Path.Combine(Path.GetTempPath(), $"school-payment-{Guid.NewGuid()}.pem");
     private string _userId = "test-user";
 
     [TestInitialize]
@@ -59,7 +65,7 @@ public class WeChatPayCouponIntegrationTests
             WeChat = new WeChatSettings 
             { 
                 AppId = "appid",
-                Payment = new WeChatPaySettings { MchId = "mchid" }
+                Payment = new WeChatPaySettings { MchId = "mchid", PrivateKeyFilePath = _privateKeyPath }
             } 
         });
         
@@ -226,5 +232,126 @@ public class WeChatPayCouponIntegrationTests
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             => throw new InvalidOperationException("Outbound WeChat Pay requests are disabled in tests.");
+    }
+
+    [TestMethod]
+    public async Task BuyingTwoSchoolsActivatesOnlyTheirIndependentMemberships()
+    {
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "School buyer" });
+        var first = new VipProduct { Name = "Wuhan", Type = VipProductType.Institution, Institution = new Institution { Title = "Wuhan" }, PriceInFen = 100, DurationDays = 30 };
+        var second = new VipProduct { Name = "Suzhou", Type = VipProductType.Institution, Institution = new Institution { Title = "Suzhou" }, PriceInFen = 100, DurationDays = 60 };
+        var course = new VipProduct { Name = "Chinese history", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 100, DurationDays = 90 };
+        _dbContext.AddRange(first, second, course);
+        await _dbContext.SaveChangesAsync();
+        var channel = await _dbContext.DistributionChannels.FirstAsync();
+        foreach (var product in new[] { first, second, course })
+        {
+            var code = "SCHOOL-" + product.Id;
+            await _couponService.CreateAsync(channel.Id, code, 100, false);
+            var result = await _payService.CreateOrderAsync(_userId, "isolated-openid", product.Id, code);
+            Assert.IsTrue(result.Success, result.ErrorMessage);
+            var order = await _dbContext.PaymentOrders.SingleAsync(o => o.OutTradeNo == result.OutTradeNo);
+            Assert.AreEqual(product.Id, order.VipProductId);
+            Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+            Assert.AreEqual(0, order.AmountInFen);
+            Assert.AreEqual(100, order.DiscountInFen);
+            var member = await _dbContext.VipMemberships.SingleAsync(m => m.VipProductId == product.Id);
+            Assert.AreEqual(product.DurationDays, (member.EndTime - member.StartTime).TotalDays);
+        }
+        var duplicate = new VipProduct { Name = "Another Wuhan plan", Type = VipProductType.Institution, InstitutionId = first.InstitutionId, PriceInFen = 100, DurationDays = 365 };
+        _dbContext.VipProducts.Add(duplicate);
+        await _dbContext.SaveChangesAsync();
+        await _couponService.CreateAsync(channel.Id, "DUPLICATE", 100, false);
+        Assert.IsFalse((await _payService.CreateOrderAsync(_userId, "isolated-openid", duplicate.Id, "DUPLICATE")).Success);
+        Assert.AreEqual(3, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(3, await _dbContext.CouponUsages.CountAsync());
+        _dbContext.ChangeTracker.Clear();
+        var memberships = await _payService.GetVipStatusListAsync(_userId);
+        Assert.AreEqual("Wuhan", memberships.Single(m => m.VipProductId == first.Id).VipProduct!.Institution!.Title);
+        var status = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
+        CollectionAssert.AreEquivalent(new[] { first.InstitutionId!.Value, second.InstitutionId!.Value }, status.ActiveInstitutionVips.ToArray());
+        CollectionAssert.AreEquivalent(new[] { course.TotalCategoryId!.Value }, status.ActiveCategoryVips.ToArray());
+        Assert.IsFalse(status.HasRealExamVip);
+        Assert.IsFalse(PaperAccessService.CanAccess(new Paper { Title = "Legacy school paper", IsRealExam = true, IsFree = false }, status));
+    }
+
+    [TestMethod]
+    [DataRow(-1, 30, false)]
+    [DataRow(-30, -1, true)]
+    [DataRow(1, 30, true)]
+    public async Task ExistingAllSchoolVipBlocksOnlyPurchasesItCurrentlyCovers(int startDays, int endDays, bool allowed)
+    {
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Old buyer" });
+        var legacy = new VipProduct { Name = "Old all-school VIP", Type = VipProductType.RealExam, IsEnabled = false };
+        var school = new VipProduct { Name = "School", Type = VipProductType.Institution, Institution = new Institution { Title = "Wuhan" }, PriceInFen = 100, DurationDays = 30 };
+        var end = DateTime.UtcNow.AddDays(endDays);
+        var old = new VipMembership { UserId = _userId, VipProduct = legacy, StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = end };
+        _dbContext.AddRange(old, school);
+        await _dbContext.SaveChangesAsync();
+        await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "SCHOOL-FULL", 100, false);
+        var result = await _payService.CreateOrderAsync(_userId, "isolated-openid", school.Id, "SCHOOL-FULL");
+        Assert.AreEqual(allowed, result.Success);
+        Assert.AreEqual(allowed ? 1 : 0, await _dbContext.PaymentOrders.CountAsync());
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync(m => m.Id == old.Id)).EndTime);
+        var status = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
+        Assert.AreEqual(!allowed, status.HasRealExamVip);
+        Assert.AreEqual(0, status.ActiveCategoryVips.Count);
+    }
+
+
+    [TestMethod]
+    public async Task SchoolPendingOrderAndSignedNotificationRetainTargetAndActivateOnce()
+    {
+        // Exercise the real SDK verification and activation locally. The HTTP handler
+        // rejects all outbound requests; this certificate belongs only to this test.
+        using var rsa = RSA.Create(2048);
+        var request = new CertificateRequest("CN=Isolated payment test", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+        using var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1));
+        var entry = new CertificateEntry(CertificateEntry.ALGORITHM_TYPE_RSA, certificate.ExportCertificatePem());
+        _tenpayClient.PlatformCertificateManager.AddEntry(entry);
+        var keyFile = _privateKeyPath;
+        try
+        {
+            await File.WriteAllTextAsync(keyFile, rsa.ExportPkcs8PrivateKeyPem());
+            _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "School buyer" });
+            var product = new VipProduct { Name = "Wuhan paid plan", Type = VipProductType.Institution, Institution = new Institution { Title = "Wuhan" }, PriceInFen = 100, DurationDays = 30 };
+            var order = new PaymentOrder { UserId = _userId, VipProduct = product, OutTradeNo = "SCHOOL-PENDING", Description = "Wuhan", AmountInFen = 100, Status = PaymentOrderStatus.Pending, ExpiredAt = DateTime.UtcNow.AddMinutes(10), PrepayId = "isolated-prepay" };
+            _dbContext.PaymentOrders.Add(order);
+            await _dbContext.SaveChangesAsync();
+            var reused = await _payService.CreateOrderAsync(_userId, "isolated-openid", product.Id);
+            Assert.IsTrue(reused.Success, reused.ErrorMessage);
+            Assert.AreEqual(order.OutTradeNo, reused.OutTradeNo);
+            Assert.AreEqual("prepay_id=isolated-prepay", reused.PayParams!.Package);
+            Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+            var plain = JsonSerializer.SerializeToUtf8Bytes(new { out_trade_no = order.OutTradeNo, transaction_id = "isolated-transaction", trade_state = "SUCCESS", amount = new { total = 100, currency = "CNY" } });
+            const string resourceNonce = "123456789012";
+            const string associated = "transaction";
+            var ciphertext = new byte[plain.Length];
+            var tag = new byte[16];
+            using (var aes = new AesGcm(Encoding.UTF8.GetBytes("12345678901234567890123456789012"), 16))
+                aes.Encrypt(Encoding.UTF8.GetBytes(resourceNonce), plain, ciphertext, tag, Encoding.UTF8.GetBytes(associated));
+            var body = JsonSerializer.Serialize(new { id = "isolated-event", event_type = "TRANSACTION.SUCCESS", resource_type = "encrypt-resource", resource = new { algorithm = "AEAD_AES_256_GCM", ciphertext = Convert.ToBase64String(ciphertext.Concat(tag).ToArray()), nonce = resourceNonce, associated_data = associated } });
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+            const string nonce = "isolated-signature-nonce";
+            var signature = Convert.ToBase64String(rsa.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{body}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
+            Assert.IsFalse(await _payService.HandlePaymentNotifyAsync(body, "invalid", timestamp, nonce, entry.SerialNumber));
+            Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+            Assert.IsTrue(await _payService.HandlePaymentNotifyAsync(body, signature, timestamp, nonce, entry.SerialNumber));
+            var member = await _dbContext.VipMemberships.SingleAsync();
+            var end = member.EndTime;
+            Assert.AreEqual(product.Id, member.VipProductId);
+            Assert.AreEqual(30, (member.EndTime - member.StartTime).TotalDays);
+            Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+            Assert.AreEqual("isolated-transaction", order.WechatTransactionId);
+            Assert.IsTrue(await _payService.HandlePaymentNotifyAsync(body, signature, timestamp, nonce, entry.SerialNumber));
+            Assert.AreEqual(1, await _dbContext.VipMemberships.CountAsync());
+            Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync()).EndTime);
+            Assert.AreEqual(1, await _dbContext.Changes.CountAsync(c => c.Type == ChangeType.VipActivatedViaPayment));
+        }
+        finally
+        {
+            File.Delete(keyFile);
+        }
     }
 }

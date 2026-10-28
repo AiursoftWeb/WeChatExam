@@ -7,6 +7,7 @@
     <div class="card-body">
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">@Localizer["Product Name"]</label>
                 <input asp-for="Name" class="form-control" placeholder="@Localizer["e.g. Popular Music VIP"]" />
@@ -14,9 +15,10 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Type" class="form-label">@Localizer["VIP Type"]</label>
-                <select asp-for="Type" class="form-select" id="vipTypeSelect" data-course-type="@((int)VipProductType.Category)">
+                <select asp-for="Type" class="form-select" id="vipTypeSelect" data-course-type="@((int)VipProductType.Category)" data-institution-type="@((int)VipProductType.Institution)">
                     <option value="@((int)VipProductType.Category)">@Localizer["Total Category VIP"]</option>
-                    <option value="@((int)VipProductType.RealExam)">@Localizer["Real Exam VIP"]</option>
+                    <option value="@((int)VipProductType.Institution)">@Localizer["Institution VIP"]</option>
+                    <option value="@((int)VipProductType.RealExam)">@Localizer["All Real Exams VIP (Legacy)"]</option>
                 </select>
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
@@ -26,6 +28,14 @@
                     <option value="">@Localizer["-- Select Total Category --"]</option>
                 </select>
                 <span asp-validation-for="TotalCategoryId" class="text-danger"></span>
+            </div>
+            <div class="mb-3" id="institutionSection">
+                <label asp-for="InstitutionId" class="form-label">@Localizer["Institution"]</label>
+                <select asp-for="InstitutionId" asp-items="Model.Institutions" class="form-select">
+                    <option value="">@Localizer["-- Select Institution --"]</option>
+                </select>
+                <span asp-validation-for="InstitutionId" class="text-danger"></span>
+                <div class="form-text">@Localizer["Includes this institution's real papers, not independent course practice."]</div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">

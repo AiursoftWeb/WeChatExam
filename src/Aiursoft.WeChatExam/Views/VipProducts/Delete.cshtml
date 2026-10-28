@@ -27,17 +27,28 @@
                         {
                             <span class="badge bg-primary">@Localizer["Total Category VIP"]</span>
                         }
+                        else if (Model.Product.Type == VipProductType.Institution)
+                        {
+                            <span class="badge bg-primary">@Localizer["Institution VIP"]</span>
+                        }
                         else
                         {
-                            <span class="badge bg-warning text-dark">@Localizer["Real Exam VIP"]</span>
+                            <span class="badge bg-warning text-dark">@Localizer["All Real Exams VIP (Legacy)"]</span>
                         }
                     </td>
                 </tr>
                 @if (Model.Product.Type == VipProductType.Category)
                 {
                     <tr>
-                        <th>@Localizer["Total Category"]</th>
+                        <th>@Localizer["Access Scope"]</th>
                         <td><span class="badge bg-info">@(Model.Product.TotalCategory?.Title ?? "-")</span></td>
+                    </tr>
+                }
+                @if (Model.Product.Type == VipProductType.Institution)
+                {
+                    <tr>
+                        <th>@Localizer["Institution"]</th>
+                        <td>@Model.Product.Institution?.Title</td>
                     </tr>
                 }
                 <tr>
@@ -66,6 +77,7 @@
 
         <form asp-action="Delete" method="post">
             @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <input type="hidden" name="id" value="@Model.Product.Id" />
             <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-danger">

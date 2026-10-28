@@ -71,6 +71,8 @@ public class VipMembershipDto
     public VipProductType Type { get; set; }
     public Guid? CategoryId { get; set; }
     public string CategoryName { get; set; } = string.Empty;
+    public Guid? InstitutionId { get; set; }
+    public string InstitutionName { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
     public bool IsActive { get; set; }
     public DateTime? EndTime { get; set; }

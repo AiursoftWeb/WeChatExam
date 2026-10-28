@@ -34,6 +34,10 @@ public class PaperAccessService : IPaperAccessService
                 .Select(v => v.VipProduct!.TotalCategoryId!.Value)
                 .ToHashSet();
                 
+            status.ActiveInstitutionVips = activeVips
+                .Where(v => v.VipProduct!.Type == VipProductType.Institution && v.VipProduct.InstitutionId.HasValue)
+                .Select(v => v.VipProduct!.InstitutionId!.Value).ToHashSet();
+
             status.HasRealExamVip = activeVips.Any(v => v.VipProduct!.Type == VipProductType.RealExam);
         }
 

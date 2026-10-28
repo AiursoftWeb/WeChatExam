@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const type = document.getElementById('vipTypeSelect');
-    const section = document.getElementById('categorySection');
-    const category = document.getElementById('TotalCategoryId');
-    if (!type || !section || !category) return;
+    if (!type) return;
 
     const update = () => {
-        const isCourse = type.value === type.dataset.courseType;
-        section.hidden = !isCourse;
-        category.required = isCourse;
-        if (!isCourse) category.value = '';
+        for (const [sectionId, fieldId, selectedType] of [
+            ['categorySection', 'TotalCategoryId', type.dataset.courseType],
+            ['institutionSection', 'InstitutionId', type.dataset.institutionType]
+        ]) {
+            const section = document.getElementById(sectionId);
+            const field = document.getElementById(fieldId);
+            if (!section || !field) continue;
+            const selected = type.value === selectedType;
+            section.hidden = !selected;
+            field.required = selected;
+            if (!selected) field.value = '';
+        }
     };
     type.addEventListener('change', update);
     update();

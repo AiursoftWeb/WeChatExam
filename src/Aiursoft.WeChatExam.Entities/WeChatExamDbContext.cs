@@ -91,6 +91,14 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .HasForeignKey(p => p.TotalCategoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        builder.Entity<VipProduct>()
+            .HasOne(p => p.Institution).WithMany().HasForeignKey(p => p.InstitutionId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<VipProduct>().ToTable(t => t.HasCheckConstraint(
+            "CK_VipProducts_InstitutionTarget",
+            "(`Type` = 2 AND `InstitutionId` IS NOT NULL AND `TotalCategoryId` IS NULL) OR " +
+            "(`Type` <> 2 AND `InstitutionId` IS NULL)"));
+
         builder.Entity<QuestionCategory>()
             .HasOne(c => c.TotalCategory)
             .WithMany()

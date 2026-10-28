@@ -117,4 +117,92 @@ public class VipProductServiceTests
         Assert.IsTrue(saved.IsActive, "Stopping new sales must not revoke an existing membership.");
         Assert.AreEqual(0, (await _service.GetEnabledAsync(course.Id)).Count);
     }
+
+    [TestMethod]
+    public async Task InstitutionProductsRequireAnExistingSchoolAndFilterIndependently()
+    {
+        var first = new Institution { Title = "Wuhan" };
+        var second = new Institution { Title = "Suzhou" };
+        var course = new TotalCategory { Title = "Chinese history" };
+        _dbContext.AddRange(first, second, course);
+        await _dbContext.SaveChangesAsync();
+        await Assert.ThrowsExactlyAsync<ArgumentException>(() =>
+            _service.CreateAsync("Missing school", VipProductType.Institution, null, 100, 30));
+        await Assert.ThrowsExactlyAsync<ArgumentException>(() =>
+            _service.CreateAsync("Not a school", VipProductType.Institution, null, 100, 30, course.Id));
+        var product = await _service.CreateAsync("Wuhan VIP", VipProductType.Institution, course.Id, 100, 30, first.Id);
+        await _service.CreateAsync("Suzhou VIP", VipProductType.Institution, null, 100, 30, second.Id);
+        await _service.CreateAsync("History VIP", VipProductType.Category, course.Id, 100, 30, first.Id);
+        await _service.CreateAsync("Legacy all schools", VipProductType.RealExam, null, 100, 30, first.Id);
+        _dbContext.ChangeTracker.Clear();
+        var selected = (await _service.GetEnabledAsync(institutionId: first.Id)).Single();
+        Assert.AreEqual(product.Id, selected.Id);
+        Assert.AreEqual("Wuhan", selected.Institution!.Title);
+        Assert.IsNull(selected.TotalCategoryId);
+        Assert.AreEqual(2, (await _service.GetEnabledAsync(type: VipProductType.Institution)).Count);
+        Assert.AreEqual(0, (await _service.GetEnabledAsync(course.Id, institutionId: first.Id)).Count);
+        Assert.IsTrue((await _service.GetAllAsync()).Where(p => p.Type != VipProductType.Institution).All(p => p.InstitutionId == null));
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task PurchasedScopeCannotBeRetargetedOrDeleted(bool pendingOrder)
+    {
+        var school = new Institution { Title = "Purchased school" };
+        var other = new Institution { Title = "Other school" };
+        _dbContext.AddRange(school, other);
+        await _dbContext.SaveChangesAsync();
+        var product = await _service.CreateAsync("School VIP", VipProductType.Institution, null, 100, 30, school.Id);
+        var end = DateTime.UtcNow.AddDays(17);
+        if (pendingOrder)
+            _dbContext.PaymentOrders.Add(new PaymentOrder { UserId = "student", VipProductId = product.Id, OutTradeNo = "Pending-school", Description = "School purchase", Status = PaymentOrderStatus.Pending });
+        else
+            _dbContext.VipMemberships.Add(new VipMembership { UserId = "student", VipProductId = product.Id, StartTime = end.AddDays(-30), EndTime = end });
+        await _dbContext.SaveChangesAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+            _service.UpdateAsync(product.Id, "Wrong", VipProductType.Institution, null, 200, 60, false, other.Id));
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+            _service.UpdateAsync(product.Id, "Wrong", VipProductType.RealExam, null, 200, 60, false));
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.DeleteAsync(product.Id));
+        await _service.UpdateAsync(product.Id, "Stopped sales", VipProductType.Institution, null, 200, 60, false, school.Id);
+        _dbContext.ChangeTracker.Clear();
+        var saved = (await _service.GetByIdAsync(product.Id))!;
+        Assert.AreEqual(school.Id, saved.InstitutionId);
+        Assert.IsFalse(saved.IsEnabled);
+        if (pendingOrder)
+        {
+            var order = await _dbContext.PaymentOrders.SingleAsync();
+            Assert.AreEqual(product.Id, order.VipProductId);
+            Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+        }
+        else
+        {
+            var membership = await _dbContext.VipMemberships.SingleAsync();
+            Assert.AreEqual(end, membership.EndTime);
+            Assert.IsTrue(membership.IsActive);
+        }
+    }
+
+    [TestMethod]
+    public async Task LegacyAllSchoolMembershipCannotBeNarrowedToOneSchool()
+    {
+        var school = new Institution { Title = "School" };
+        _dbContext.Institutions.Add(school);
+        await _dbContext.SaveChangesAsync();
+        var product = await _service.CreateAsync("Legacy", VipProductType.RealExam, null, 100, 365);
+        var start = DateTime.UtcNow.AddDays(-5);
+        var end = start.AddDays(365);
+        _dbContext.VipMemberships.Add(new VipMembership { UserId = "old-student", VipProductId = product.Id, StartTime = start, EndTime = end });
+        await _dbContext.SaveChangesAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+            _service.UpdateAsync(product.Id, "School", VipProductType.Institution, null, 100, 365, true, school.Id));
+        _dbContext.ChangeTracker.Clear();
+        var member = await _dbContext.VipMemberships.Include(m => m.VipProduct).SingleAsync();
+        Assert.AreEqual(VipProductType.RealExam, member.VipProduct!.Type);
+        Assert.IsNull(member.VipProduct.InstitutionId);
+        Assert.AreEqual(start, member.StartTime);
+        Assert.AreEqual(end, member.EndTime);
+    }
+
 }

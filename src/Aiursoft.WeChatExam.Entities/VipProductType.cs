@@ -13,5 +13,11 @@ public enum VipProductType
     /// <summary>
     /// 真题 VIP（独立于分类，购买后可访问所有真题试卷）
     /// </summary>
-    RealExam = 1
+    RealExam = 1,
+
+    /// <summary>
+    /// Real-paper access for one institution; never grants independent course access.
+    /// Keep existing enum values unchanged for purchased memberships and orders.
+    /// </summary>
+    Institution = 2
 }

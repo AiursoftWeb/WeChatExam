@@ -70,4 +70,20 @@
     <value>会员类型</value>
   </data>
 
-</root>
+
+<data name="-- Select Institution --" xml:space="preserve">
+    <value>-- 请选择院校 --</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>所有真题 VIP（旧版）</value>
+  </data>
+  <data name="Includes this institution's real papers, not independent course practice." xml:space="preserve">
+    <value>包含该院校的真题卷，不包括独立课程练习。</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>院校</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>院校会员</value>
+  </data>
+  </root>

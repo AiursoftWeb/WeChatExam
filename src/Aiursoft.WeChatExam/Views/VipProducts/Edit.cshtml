@@ -8,26 +8,43 @@
         <form asp-action="Edit" method="post">
             <partial name="_ContentCheckReturn" />
             @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <input type="hidden" asp-for="Id" />
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">@Localizer["Product Name"]</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            @if (Model.TargetLocked)
+            {
+                <p class="text-muted">@Localizer["Access scope is locked because this product has orders or memberships."]</p>
+                <input type="hidden" name="Type" value="@((int)Model.Type)" />
+                <input type="hidden" name="TotalCategoryId" value="@Model.TotalCategoryId" />
+                <input type="hidden" name="InstitutionId" value="@Model.InstitutionId" />
+            }
             <div class="mb-3">
                 <label asp-for="Type" class="form-label">@Localizer["VIP Type"]</label>
-                <select asp-for="Type" class="form-select" id="vipTypeSelect" data-course-type="@((int)VipProductType.Category)">
+                <select disabled="@Model.TargetLocked" asp-for="Type" class="form-select" id="vipTypeSelect" data-course-type="@((int)VipProductType.Category)" data-institution-type="@((int)VipProductType.Institution)">
                     <option value="@((int)VipProductType.Category)">@Localizer["Total Category VIP"]</option>
-                    <option value="@((int)VipProductType.RealExam)">@Localizer["Real Exam VIP"]</option>
+                    <option value="@((int)VipProductType.Institution)">@Localizer["Institution VIP"]</option>
+                    <option value="@((int)VipProductType.RealExam)">@Localizer["All Real Exams VIP (Legacy)"]</option>
                 </select>
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
             <div class="mb-3" id="categorySection">
                 <label asp-for="TotalCategoryId" class="form-label">@Localizer["Total Category"]</label>
-                <select asp-for="TotalCategoryId" asp-items="Model.TotalCategories" class="form-select">
+                <select disabled="@Model.TargetLocked" asp-for="TotalCategoryId" asp-items="Model.TotalCategories" class="form-select">
                     <option value="">@Localizer["-- Select Total Category --"]</option>
                 </select>
                 <span asp-validation-for="TotalCategoryId" class="text-danger"></span>
+            </div>
+            <div class="mb-3" id="institutionSection">
+                <label asp-for="InstitutionId" class="form-label">@Localizer["Institution"]</label>
+                <select disabled="@Model.TargetLocked" asp-for="InstitutionId" asp-items="Model.Institutions" class="form-select">
+                    <option value="">@Localizer["-- Select Institution --"]</option>
+                </select>
+                <span asp-validation-for="InstitutionId" class="text-danger"></span>
+                <div class="form-text">@Localizer["Includes this institution's real papers, not independent course practice."]</div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
