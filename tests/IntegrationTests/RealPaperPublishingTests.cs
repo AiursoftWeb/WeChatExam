@@ -88,8 +88,6 @@ public class RealPaperPublishingTests : TestBase
         Assert.Contains("Original question", html);
         Assert.DoesNotContain("Updated question", html);
         Assert.Contains("Original answer", html);
-        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/api/Papers/snapshots/{firstId}")).StatusCode);
-        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/api/MockPapers/snapshots/{firstId}")).StatusCode);
     }
 
     private async Task<Guid> ReadInstitution(Guid id)

@@ -78,6 +78,21 @@ public class PapersApiTests
     }
 
     [TestMethod]
+    public async Task RealPaperSnapshotsAreNotExposedByLegacyOrMockStudentApis()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var institution = new Institution { Title = "Real snapshot school" };
+        var paper = new RealPaper { Title = "Real publication", Institution = institution, InstitutionId = institution.Id };
+        var snapshot = new PaperSnapshot { Id = Guid.NewGuid(), RealPaper = paper, RealPaperId = paper.Id, Title = paper.Title, Version = 1 };
+        db.PaperSnapshots.Add(snapshot);
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Papers/snapshots/{snapshot.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/MockPapers/snapshots/{snapshot.Id}")).StatusCode);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+    }
+
+    [TestMethod]
     public async Task MockPaperSnapshotsAreNotAvailableThroughLegacyPaperApi()
     {
         using var scope = _server!.Services.CreateScope();
