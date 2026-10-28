@@ -21,7 +21,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 public class RealPapersApiController(WeChatExamDbContext context, IPaperAccessService accessService) : ControllerBase
 {
     private static bool CanRead(Guid institutionId, PaperAccessStatus access) =>
-        access.HasRealExamVip || access.ActiveInstitutionVips.Contains(institutionId);
+        PaperAccessService.CanAccessInstitution(institutionId, access);
 
     [HttpGet("institutions")]
     [ProducesResponseType(typeof(List<RealPaperInstitutionDto>), StatusCodes.Status200OK)]

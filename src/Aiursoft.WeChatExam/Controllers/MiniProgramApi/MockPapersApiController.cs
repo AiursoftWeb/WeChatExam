@@ -21,7 +21,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 public class MockPapersApiController(WeChatExamDbContext context, IPaperAccessService accessService) : ControllerBase
 {
     private static bool CanRead(MockPaper paper, PaperAccessStatus access) =>
-        paper.AllowViewAnonymousely || access.ActiveCategoryVips.Contains(paper.TotalCategoryId);
+        PaperAccessService.CanAccess(paper, access);
 
     [HttpGet]
     [ProducesResponseType(typeof(List<MockPaperSummaryDto>), StatusCodes.Status200OK)]

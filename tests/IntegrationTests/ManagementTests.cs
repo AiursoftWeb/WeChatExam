@@ -14,6 +14,7 @@ public class ManagementTests
     private readonly HttpClient _http;
     private IHost? _server;
     private readonly List<Guid> _scheduledExamIds = [];
+    private readonly List<Guid> _scheduledVipProductIds = [];
 
     public ManagementTests()
     {
@@ -60,6 +61,8 @@ public class ManagementTests
             db.AnswerRecords.RemoveRange(records.SelectMany(r => r.AnswerRecords));
             db.ExamRecords.RemoveRange(records);
             db.Exams.RemoveRange(await db.Exams.Where(e => _scheduledExamIds.Contains(e.Id)).ToListAsync());
+            db.VipMemberships.RemoveRange(await db.VipMemberships.Where(m => _scheduledVipProductIds.Contains(m.VipProductId)).ToListAsync());
+            db.VipProducts.RemoveRange(await db.VipProducts.Where(p => _scheduledVipProductIds.Contains(p.Id)).ToListAsync());
             await db.SaveChangesAsync();
         }
         await _server.StopAsync();
@@ -742,6 +745,12 @@ public class ManagementTests
         Assert.DoesNotContain("New template title", edit);
         Assert.Contains(first.Title, await _http.GetStringAsync("/Exams"));
         var user = await db.Users.FirstAsync();
+        var admission = new VipMembership { UserId = user.Id,
+            VipProduct = new VipProduct { Name = "Scheduled school membership", Type = VipProductType.Institution, InstitutionId = paper.InstitutionId },
+            StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1) };
+        _scheduledVipProductIds.Add(admission.VipProduct!.Id);
+        db.VipMemberships.Add(admission);
+        await db.SaveChangesAsync();
         var record = await service.StartExamAsync(exam.Id, user.Id);
         Assert.AreEqual(first.Id, record.PaperSnapshotId);
         var question = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == first.Id);
@@ -756,7 +765,7 @@ public class ManagementTests
     {
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var template = new Paper { Id = Guid.NewGuid(), Title = "Legacy template", Status = PaperStatus.Publishable, TimeLimit = 180 };
+        var template = new Paper { Id = Guid.NewGuid(), Title = "Legacy template", Status = PaperStatus.Publishable, TimeLimit = 180, IsFree = true };
         var snapshot = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Legacy locked title", Version = 3, TimeLimit = 180, Paper = template };
         var exam = new Exam { Id = Guid.NewGuid(), Title = "Historical exam", Paper = template, PaperSnapshot = snapshot,
             StartTime = DateTime.UtcNow.AddMinutes(-1), EndTime = DateTime.UtcNow.AddHours(1), DurationMinutes = 180, IsPublic = true };

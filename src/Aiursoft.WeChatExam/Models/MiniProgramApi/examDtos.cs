@@ -32,6 +32,8 @@ public class ExamSessionDto
     public Guid PaperSnapshotId { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
+    public string PaperTitle { get; set; } = string.Empty;
+    public List<QuestionSnapshotDto> Questions { get; set; } = new();
     public Dictionary<Guid, string> Answers { get; set; } = new();
 }
 
@@ -45,6 +47,9 @@ public class SubmitAnswerDto
 public class ExamRecordDetailDto
 {
     public Guid Id { get; set; }
+    public Guid PaperSnapshotId { get; set; }
+    public string PaperTitle { get; set; } = string.Empty;
+    public List<QuestionSnapshotDto> Questions { get; set; } = new();
     public int Score { get; set; }
     public string TeacherComment { get; set; } = string.Empty;
     public List<AnswerResultDto> Answers { get; set; } = new();

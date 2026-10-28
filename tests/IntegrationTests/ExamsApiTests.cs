@@ -17,6 +17,13 @@ public class ExamsApiTests : TestBase
     private Guid _recordId;
     private Guid _snapshotId;
     private Guid _questionId;
+    private readonly Guid _paperId = Guid.NewGuid();
+    private readonly Guid _latestId = Guid.NewGuid();
+    private readonly Guid _courseId = Guid.NewGuid();
+    private readonly Guid _otherCourseId = Guid.NewGuid();
+    private readonly Guid _schoolId = Guid.NewGuid();
+    private readonly Guid _otherSchoolId = Guid.NewGuid();
+    private readonly Guid _productId = Guid.NewGuid();
 
     [TestInitialize]
     public override async Task CreateServer()
@@ -30,7 +37,8 @@ public class ExamsApiTests : TestBase
         {
             Id = Guid.NewGuid(), PaperSnapshot = snapshot, PaperSnapshotId = snapshot.Id,
             Content = "Select the correct option", StandardAnswer = "Confidential answer",
-            GradingStrategy = GradingStrategy.ExactMatch, QuestionType = QuestionType.Choice, Score = 10
+            GradingStrategy = GradingStrategy.ExactMatch, QuestionType = QuestionType.Choice, Score = 10,
+            Metadata = "{\"options\":[\"A\",\"B\"]}"
         };
         var exam = new Exam
         {
@@ -60,8 +68,14 @@ public class ExamsApiTests : TestBase
             db.AnswerRecords.RemoveRange(await db.AnswerRecords.Where(a => records.Any(r => r.Id == a.ExamRecordId)).ToListAsync());
             db.ExamRecords.RemoveRange(await records.ToListAsync());
             db.Exams.RemoveRange(await db.Exams.Where(e => e.Id == _examId).ToListAsync());
-            db.QuestionSnapshots.RemoveRange(await db.QuestionSnapshots.Where(q => q.PaperSnapshotId == _snapshotId).ToListAsync());
-            db.PaperSnapshots.RemoveRange(await db.PaperSnapshots.Where(p => p.Id == _snapshotId).ToListAsync());
+            db.QuestionSnapshots.RemoveRange(await db.QuestionSnapshots.Where(q => q.PaperSnapshotId == _snapshotId || q.PaperSnapshotId == _latestId).ToListAsync());
+            db.PaperSnapshots.RemoveRange(await db.PaperSnapshots.Where(p => p.Id == _snapshotId || p.Id == _latestId).ToListAsync());
+            db.VipMemberships.RemoveRange(await db.VipMemberships.Where(m => m.VipProductId == _productId).ToListAsync());
+            db.VipProducts.RemoveRange(await db.VipProducts.Where(p => p.Id == _productId).ToListAsync());
+            db.MockPapers.RemoveRange(await db.MockPapers.Where(p => p.Id == _paperId).ToListAsync());
+            db.RealPapers.RemoveRange(await db.RealPapers.Where(p => p.Id == _paperId).ToListAsync());
+            db.TotalCategories.RemoveRange(await db.TotalCategories.Where(c => c.Id == _courseId || c.Id == _otherCourseId).ToListAsync());
+            db.Institutions.RemoveRange(await db.Institutions.Where(i => i.Id == _schoolId || i.Id == _otherSchoolId).ToListAsync());
             db.Users.RemoveRange(await db.Users.Where(u => u.Id == _owner.Id || u.Id == _other.Id).ToListAsync());
             await db.SaveChangesAsync();
         }
@@ -78,6 +92,173 @@ public class ExamsApiTests : TestBase
     private Task<HttpResponseMessage> Answer(Guid? question = null, string value = "My answer") =>
         Http.PostAsJsonAsync($"/api/Exams/record/{_recordId}/answer", new SubmitAnswerDto
         { QuestionSnapshotId = question ?? _questionId, Answer = value });
+
+    private async Task BindPublishedPaper(bool real, bool free, string entitlement, int startDays, int endDays)
+    {
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        db.TotalCategories.AddRange(new TotalCategory { Id = _courseId, Title = "Exam course" },
+            new TotalCategory { Id = _otherCourseId, Title = "Other course" });
+        db.Institutions.AddRange(new Institution { Id = _schoolId, Title = "Exam school" },
+            new Institution { Id = _otherSchoolId, Title = "Other school" });
+        var snapshot = await db.PaperSnapshots.SingleAsync(p => p.Id == _snapshotId);
+        // Legacy IsFree must never make an institution paper free.
+        db.Entry(snapshot).Property(p => p.IsFree).CurrentValue = true;
+        if (real)
+        {
+            db.RealPapers.Add(new RealPaper { Id = _paperId, Title = "Current template", InstitutionId = _schoolId, Status = PaperStatus.Publishable });
+            db.Entry(snapshot).Property(p => p.RealPaperId).CurrentValue = _paperId;
+        }
+        else
+        {
+            db.MockPapers.Add(new MockPaper { Id = _paperId, Title = "Current template", TotalCategoryId = _courseId,
+                AllowViewAnonymousely = free, Status = PaperStatus.Publishable });
+            db.Entry(snapshot).Property(p => p.MockPaperId).CurrentValue = _paperId;
+        }
+        if (entitlement != "none")
+        {
+            var type = entitlement.Contains("course") ? VipProductType.Category :
+                entitlement.Contains("school") ? VipProductType.Institution : VipProductType.RealExam;
+            var product = new VipProduct
+            {
+                Id = _productId, Name = "Renamed or discontinued membership", Type = type, IsEnabled = false,
+                TotalCategoryId = type == VipProductType.Category ? (entitlement == "wrong-course" ? _otherCourseId : _courseId) : null,
+                InstitutionId = type == VipProductType.Institution ? (entitlement == "wrong-school" ? _otherSchoolId : _schoolId) : null
+            };
+            db.VipMemberships.Add(new VipMembership { UserId = _other.Id, VipProductId = product.Id, VipProduct = product,
+                StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = DateTime.UtcNow.AddDays(endDays) });
+        }
+        await db.SaveChangesAsync();
+    }
+
+    [TestMethod]
+    [DataRow(false, false, "none", -1, 1, false)]
+    [DataRow(false, true, "none", -1, 1, true)]
+    [DataRow(false, false, "course", -1, 1, true)]
+    [DataRow(false, false, "wrong-course", -1, 1, false)]
+    [DataRow(false, false, "school", -1, 1, false)]
+    [DataRow(false, false, "global", -1, 1, false)]
+    [DataRow(false, false, "course", -2, -1, false)]
+    [DataRow(false, false, "course", 1, 2, false)]
+    [DataRow(true, false, "none", -1, 1, false)]
+    [DataRow(true, false, "course", -1, 1, false)]
+    [DataRow(true, false, "wrong-school", -1, 1, false)]
+    [DataRow(true, false, "school", -1, 1, true)]
+    [DataRow(true, false, "global", -1, 1, true)]
+    [DataRow(true, false, "school", -2, -1, false)]
+    [DataRow(true, false, "school", 1, 2, false)]
+    public async Task PublicScheduleRequiresWholePaperEntitlementBeforeCreatingAnAttempt(
+        bool real, bool free, string entitlement, int startDays, int endDays, bool allowed)
+    {
+        await BindPublishedPaper(real, free, entitlement, startDays, endDays);
+        Authenticate(_other);
+        var response = await Http.PostAsync($"/api/Exams/{_examId}/start", null);
+        Assert.AreEqual(allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, response.StatusCode);
+        Assert.DoesNotContain("Confidential answer", await response.Content.ReadAsStringAsync());
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(allowed ? 1 : 0, await db.ExamRecords.CountAsync(r => r.ExamId == _examId && r.UserId == _other.Id));
+        if (allowed)
+        {
+            var session = (await response.Content.ReadFromJsonAsync<ExamSessionDto>())!;
+            Assert.AreEqual(_snapshotId, session.PaperSnapshotId);
+            Assert.AreEqual(_questionId, session.Questions.Single().Id);
+            Assert.AreEqual(10, session.Questions.Single().Score);
+        }
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task SessionReturnsLockedContentAndResumesAfterMembershipExpires(bool real)
+    {
+        await BindPublishedPaper(real, false, real ? "school" : "course", -1, 1);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.PaperSnapshots.Add(new PaperSnapshot { Id = _latestId, Title = "Newer version", Version = 2,
+                MockPaperId = real ? null : _paperId, RealPaperId = real ? _paperId : null });
+            db.QuestionSnapshots.Add(new QuestionSnapshot { Id = Guid.NewGuid(), PaperSnapshotId = _latestId,
+                Content = "Unrelated newer question", StandardAnswer = "New secret", Score = 99 });
+            (await db.Exams.SingleAsync(e => e.Id == _examId)).EndTime = DateTime.UtcNow.AddMinutes(20);
+            await db.SaveChangesAsync();
+        }
+        Authenticate(_other);
+        var response = await Http.PostAsync($"/api/Exams/{_examId}/start", null);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var session = (await response.Content.ReadFromJsonAsync<ExamSessionDto>())!;
+        Assert.AreEqual("Locked exam version", session.PaperTitle);
+        Assert.AreEqual(_questionId, session.Questions.Single().Id);
+        Assert.Contains("options", session.Questions.Single().Metadata);
+        Assert.IsTrue(session.EndTime < session.StartTime.AddMinutes(30));
+        var saved = await Http.PostAsJsonAsync($"/api/Exams/record/{session.RecordId}/answer",
+            new SubmitAnswerDto { QuestionSnapshotId = _questionId, Answer = "Saved response" });
+        Assert.AreEqual(HttpStatusCode.OK, saved.StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.VipMemberships.SingleAsync(m => m.VipProductId == _productId)).EndTime = DateTime.UtcNow.AddSeconds(-1);
+            // Later schedule edits must not replace an already-started attempt's version.
+            (await db.Exams.SingleAsync(e => e.Id == _examId)).PaperSnapshotId = _latestId;
+            await db.SaveChangesAsync();
+        }
+        response = await Http.PostAsync($"/api/Exams/{_examId}/start", null);
+        var resumed = (await response.Content.ReadFromJsonAsync<ExamSessionDto>())!;
+        Assert.AreEqual(session.RecordId, resumed.RecordId);
+        Assert.AreEqual(_snapshotId, resumed.PaperSnapshotId);
+        Assert.AreEqual("Saved response", resumed.Answers[_questionId]);
+        Assert.AreEqual(_questionId, resumed.Questions.Single().Id);
+        Assert.DoesNotContain("Confidential answer", await response.Content.ReadAsStringAsync());
+        Assert.DoesNotContain("Unrelated newer question", await response.Content.ReadAsStringAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task WithdrawnTemplateBlocksNewAdmissionButKeepsAdmittedAttempt(bool real)
+    {
+        await BindPublishedPaper(real, false, real ? "school" : "course", -1, 1);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            if (real) (await db.RealPapers.SingleAsync(p => p.Id == _paperId)).Status = PaperStatus.Draft;
+            else (await db.MockPapers.SingleAsync(p => p.Id == _paperId)).Status = PaperStatus.Draft;
+            await db.SaveChangesAsync();
+        }
+        Authenticate(_other);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await Http.PostAsync($"/api/Exams/{_examId}/start", null)).StatusCode);
+        Authenticate(_owner);
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.PostAsync($"/api/Exams/{_examId}/start", null)).StatusCode);
+        using var verify = Server!.Services.CreateScope();
+        Assert.AreEqual(1, await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>().ExamRecords.CountAsync(r => r.ExamId == _examId));
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("missing-student")]
+    public async Task AdmissionRequiresAnExistingStudent(string userId)
+    {
+        using var scope = Server!.Services.CreateScope();
+        await Assert.ThrowsAsync<UnauthorizedAccessException>(() =>
+            scope.ServiceProvider.GetRequiredService<IExamService>().StartExamAsync(_examId, userId));
+        Assert.AreEqual(1, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().ExamRecords.CountAsync(r => r.ExamId == _examId));
+    }
+
+    [TestMethod]
+    public async Task OrphanAndUnconfiguredExamsCannotCreateNewAttempts()
+    {
+        Authenticate(_other);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await Http.PostAsync($"/api/Exams/{_examId}/start", null)).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.Exams.SingleAsync(e => e.Id == _examId)).PaperSnapshotId = null;
+            await db.SaveChangesAsync();
+        }
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsync($"/api/Exams/{_examId}/start", null)).StatusCode);
+        using var verify = Server!.Services.CreateScope();
+        Assert.AreEqual(1, await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>().ExamRecords.CountAsync(r => r.ExamId == _examId));
+    }
 
     [TestMethod]
     public async Task AnotherStudentCannotChangeOrReadAnAttempt()
@@ -139,6 +320,10 @@ public class ExamsApiTests : TestBase
         var session = (await response.Content.ReadFromJsonAsync<ExamSessionDto>())!;
         Assert.AreEqual(_recordId, session.RecordId);
         Assert.AreEqual(_snapshotId, session.PaperSnapshotId);
+        Assert.AreEqual("Locked exam version", session.PaperTitle);
+        Assert.AreEqual(_questionId, session.Questions.Single().Id);
+        Assert.AreEqual("Select the correct option", session.Questions.Single().Content);
+        Assert.DoesNotContain("Confidential answer", await response.Content.ReadAsStringAsync());
         Assert.AreEqual("Updated answer", session.Answers[_questionId]);
         using var scope = Server!.Services.CreateScope();
         Assert.AreEqual(1, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().AnswerRecords.CountAsync(a => a.ExamRecordId == _recordId));
@@ -245,6 +430,10 @@ public class ExamsApiTests : TestBase
         {
             var details = (await response.Content.ReadFromJsonAsync<ExamRecordDetailDto>())!;
             Assert.AreEqual("Student response", details.Answers.Single().UserAnswer);
+            Assert.AreEqual(_snapshotId, details.PaperSnapshotId);
+            Assert.AreEqual("Locked exam version", details.PaperTitle);
+            Assert.AreEqual(_questionId, details.Questions.Single().Id);
+            Assert.AreEqual("Select the correct option", details.Questions.Single().Content);
             if (released == true)
             {
                 Assert.AreEqual("Confidential answer", details.Answers.Single().StandardAnswer);
@@ -258,6 +447,7 @@ public class ExamsApiTests : TestBase
                 Assert.AreEqual(string.Empty, details.TeacherComment);
             }
         }
+        if (!(submitted && allowReview)) Assert.DoesNotContain("Select the correct option", json);
         if (!(submitted && allowReview && released == true)) Assert.DoesNotContain("Confidential answer", json);
     }
 }
