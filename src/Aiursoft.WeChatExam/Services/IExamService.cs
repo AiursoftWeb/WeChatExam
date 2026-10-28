@@ -16,8 +16,8 @@ public interface IExamService
     Task<List<Exam>> GetAvailableExamsForUserAsync(string userId);
     Task<List<ExamRecord>> GetExamRecordsForUserAsync(string userId);
     Task<ExamRecord> StartExamAsync(Guid examId, string userId);
-    Task SubmitAnswerAsync(Guid examRecordId, Guid questionSnapshotId, string answer);
-    Task<ExamRecord> FinishExamAsync(Guid examRecordId);
+    Task SubmitAnswerAsync(Guid examRecordId, string userId, Guid questionSnapshotId, string answer);
+    Task<ExamRecord> FinishExamAsync(Guid examRecordId, string userId);
     Task GradeExamAsync(Guid examRecordId);
     Task<ExamRecord?> GetExamRecordAsync(Guid recordId);
     

@@ -149,7 +149,8 @@ public class ExamService : IExamService
     {
         var now = DateTime.UtcNow;
         var exam = await _dbContext.Exams.FirstOrDefaultAsync(e => e.Id == examId);
-        if (exam == null) throw new InvalidOperationException("Exam not found");
+        // A hidden schedule must not be startable by guessing its ID.
+        if (exam == null || !exam.IsPublic) throw new InvalidOperationException("Exam not found");
 
         // 1. Time Window Check
         if (now < exam.StartTime) throw new InvalidOperationException("Exam has not started yet.");
@@ -212,13 +213,15 @@ public class ExamService : IExamService
         return newRecord;
     }
 
-    public async Task SubmitAnswerAsync(Guid examRecordId, Guid questionSnapshotId, string answer)
+    public async Task SubmitAnswerAsync(Guid examRecordId, string userId, Guid questionSnapshotId, string answer)
     {
         var record = await _dbContext.ExamRecords
             .Include(r => r.Exam)
             .FirstOrDefaultAsync(r => r.Id == examRecordId);
 
         if (record == null) throw new InvalidOperationException("Record not found");
+        // Check the authenticated owner before changing answers, status or queuing grading.
+        if (string.IsNullOrEmpty(userId) || record.UserId != userId) throw new UnauthorizedAccessException();
         EnsureExamNotExpired(record);
         
         var exists = await _dbContext.QuestionSnapshots
@@ -251,7 +254,7 @@ public class ExamService : IExamService
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<ExamRecord> FinishExamAsync(Guid examRecordId)
+    public async Task<ExamRecord> FinishExamAsync(Guid examRecordId, string userId)
     {
         var record = await _dbContext.ExamRecords
             .Include(r => r.Exam)
@@ -260,6 +263,8 @@ public class ExamService : IExamService
             .FirstOrDefaultAsync(r => r.Id == examRecordId);
 
         if (record == null) throw new InvalidOperationException("Record not found");
+        // Check the authenticated owner before changing answers, status or queuing grading.
+        if (string.IsNullOrEmpty(userId) || record.UserId != userId) throw new UnauthorizedAccessException();
         EnsureExamNotExpired(record);
 
         record.SubmitTime = DateTime.UtcNow;
