@@ -170,6 +170,7 @@ public class ViewModelArgsInjector(
         _ = localizer["Create Real Paper"];
         _ = localizer["Edit Real Paper"];
         _ = localizer["Real Papers"];
+        _ = localizer["Real Paper Questions"];
     }
 
     public void InjectSimple(

@@ -30,9 +30,6 @@
   <data name="Create Real Paper" xml:space="preserve">
     <value>创建真题卷</value>
   </data>
-  <data name="Draft only. Question assembly and publication are not available yet." xml:space="preserve">
-    <value>仅为草稿。暂不支持组卷和发布。</value>
-  </data>
   <data name="Edit Real Paper" xml:space="preserve">
     <value>编辑真题卷</value>
   </data>
@@ -43,4 +40,8 @@
     <value>选择院校</value>
   </data>
 
-</root>
+
+<data name="Draft only. Publication is not available yet." xml:space="preserve">
+    <value>目前只能编辑草稿，暂不支持发布。</value>
+  </data>
+  </root>
