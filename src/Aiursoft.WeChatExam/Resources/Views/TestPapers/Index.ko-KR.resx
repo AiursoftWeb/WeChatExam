@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>분</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>모의고사</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>일치하는 시험지가 없습니다</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>질문 없음</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>{1}페이지 중 {0}페이지</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>시험지 페이지</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>시험지 상태 필터</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>점</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>게시 가능</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>실제 시험</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>실제 시험지</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>검색</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>시험지 검색...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>전체 시험지 보기</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>테스트 시작</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>시험지</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>게시되지 않은 수정 사항을 포함해 현재 템플릿을 테스트합니다. 제출물은 실제 AI 채점을 포함한 공용 채점 엔진을 사용합니다.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>다른 제목이나 상태 필터를 시도해 보세요.</value>

@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>접근 범위</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>작업</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>전체 실제 시험 VIP (레거시)</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>카테고리</value>
@@ -48,6 +54,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>활성화됨</value>
   </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>기관 VIP</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>이름</value>
   </data>
@@ -65,6 +74,9 @@
   </data>
   <data name="Search by name or category" xml:space="preserve">
     <value>이름 또는 카테고리로 검색</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>이름, 카테고리 또는 기관으로 검색</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>상태</value>

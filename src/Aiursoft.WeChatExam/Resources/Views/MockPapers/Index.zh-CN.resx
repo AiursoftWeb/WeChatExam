@@ -39,11 +39,17 @@
   <data name="Draft" xml:space="preserve">
     <value>草稿</value>
   </data>
+  <data name="Draft only. Publication is not available yet." xml:space="preserve">
+    <value>仅为草稿，暂不可发布。</value>
+  </data>
   <data name="Draft only. Question assembly and publication are not available yet." xml:space="preserve">
     <value>仅为草稿。暂不支持组卷和发布。</value>
   </data>
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>编辑模拟试卷</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>管理题目</value>
   </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>模拟试卷</value>
@@ -63,8 +69,17 @@
   <data name="Paper pages" xml:space="preserve">
     <value>试卷分页</value>
   </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>准备试卷并发布固定版本。</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>可发布版本</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>已发布版本</value>
   </data>
   <data name="Read only" xml:space="preserve">
     <value>只读</value>
@@ -85,21 +100,4 @@
     <value>允许访客和非课程成员访问</value>
   </data>
 
-
-<data name="Draft only. Publication is not available yet." xml:space="preserve">
-    <value>仅为草稿，暂不可发布。</value>
-  </data>
-  <data name="Manage Questions" xml:space="preserve">
-    <value>管理题目</value>
-  </data>
-
-<data name="Prepare a paper and publish fixed versions." xml:space="preserve">
-    <value>准备试卷并发布固定版本。</value>
-  </data>
-  <data name="Published version available" xml:space="preserve">
-    <value>可发布版本</value>
-  </data>
-  <data name="Published Versions" xml:space="preserve">
-    <value>已发布版本</value>
-  </data>
-  </root>
+</root>

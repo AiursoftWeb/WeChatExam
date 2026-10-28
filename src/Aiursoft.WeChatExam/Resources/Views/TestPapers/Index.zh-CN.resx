@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>分钟</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模拟试卷</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>没有匹配的试卷</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>暂无题目</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>第 {0} 页，共 {1} 页</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>试卷分页</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>试卷状态筛选</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>分</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一页</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>可发布</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>真题</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>真题卷</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>搜索试卷……</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>显示所有试卷</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>开始测试</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>测试试卷</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>测试当前模板（包括尚未发布的修改）。提交内容将使用共享评分引擎进行评分，包括由真正的 AI 评分。</value>
   </data>
   <data name="This paper has no questions to test." xml:space="preserve">
     <value>这份试卷没有可测试的题目。</value>
@@ -85,31 +112,4 @@
     <value>请尝试其他标题或状态筛选。</value>
   </data>
 
-  <data name="Mock Papers" xml:space="preserve">
-    <value>模拟试卷</value>
-  </data>
-  <data name="Next" xml:space="preserve">
-    <value>下一页</value>
-  </data>
-  <data name="Page {0} of {1}" xml:space="preserve">
-    <value>第 {0} 页，共 {1} 页</value>
-  </data>
-  <data name="Paper pages" xml:space="preserve">
-    <value>试卷分页</value>
-  </data>
-  <data name="Previous" xml:space="preserve">
-    <value>上一页</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>真题卷</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>搜索</value>
-  </data>
-  <data name="Show all papers" xml:space="preserve">
-    <value>显示所有试卷</value>
-  </data>
-  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
-    <value>测试当前模板（包括尚未发布的修改）。提交内容将使用共享评分引擎进行评分，包括由真正的 AI 评分。</value>
-  </data>
 </root>

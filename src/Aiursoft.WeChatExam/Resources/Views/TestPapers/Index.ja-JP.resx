@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>分</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模擬試験問題</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>該当する試験はありません</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>問題なし</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>全{1}ページ中{0}ページ目</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>用紙のページ</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>問題紙ステータスフィルター</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>点</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前へ</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>公開可能</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>実試験</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>本番用問題用紙</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>試験問題を検索...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>すべてのテスト用紙を表示</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>テスト開始</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>テストペーパー</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>公開前の編集内容も含め、現在のテンプレートをテストできます。提出された答案は、実際のAI採点を含む共通の採点エンジンで採点されます。</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>別のタイトルやステータスフィルターをお試しください。</value>

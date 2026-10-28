@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- 카테고리 선택 --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- 기관 선택 --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- 전체 카테고리 선택 --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>이 상품에 주문 또는 멤버십이 있어 접근 범위가 잠겨 있습니다.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>모든 실기 시험 VIP (레거시)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>푼 (위안의 1/100)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>해당 기관의 실제 시험지를 포함하며, 개별 강의 연습 문제는 포함하지 않습니다.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>기관</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>기관 VIP</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>가격 (분)</value>

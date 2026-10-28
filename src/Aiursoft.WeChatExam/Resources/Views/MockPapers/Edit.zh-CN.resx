@@ -33,11 +33,20 @@
   <data name="Create Mock Paper" xml:space="preserve">
     <value>创建模拟试卷</value>
   </data>
+  <data name="Draft only. Publication is not available yet." xml:space="preserve">
+    <value>仅为草稿，暂不支持发布。</value>
+  </data>
   <data name="Draft only. Question assembly and publication are not available yet." xml:space="preserve">
     <value>目前仅为草稿，暂不支持组卷和发布。</value>
   </data>
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>编辑模拟试卷</value>
+  </data>
+  <data name="Editing the draft does not change published versions." xml:space="preserve">
+    <value>编辑草稿不会影响已发布的版本。</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>管理题目</value>
   </data>
   <data name="Save Draft" xml:space="preserve">
     <value>保存草稿</value>
@@ -46,15 +55,4 @@
     <value>选择课程</value>
   </data>
 
-
-<data name="Draft only. Publication is not available yet." xml:space="preserve">
-    <value>仅为草稿，暂不支持发布。</value>
-  </data>
-  <data name="Manage Questions" xml:space="preserve">
-    <value>管理题目</value>
-  </data>
-
-<data name="Editing the draft does not change published versions." xml:space="preserve">
-    <value>编辑草稿不会影响已发布的版本。</value>
-  </data>
-  </root>
+</root>

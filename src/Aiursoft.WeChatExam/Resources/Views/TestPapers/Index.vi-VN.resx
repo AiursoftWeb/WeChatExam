@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>phút</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Đề thi thử</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tiếp theo</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Không có đề thi phù hợp</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Không có câu hỏi</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Trang {0} trên {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Các trang đề thi</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Bộ lọc trạng thái đề thi</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>điểm</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Trước</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Có thể xuất bản</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Đề thi thật</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Đề thi chính thức</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Tìm kiếm bài thi...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Hiển thị tất cả đề thi</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Bắt đầu bài kiểm tra</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Đề thi thử</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Kiểm thử mẫu hiện tại, bao gồm cả những chỉnh sửa chưa được xuất bản. Bài nộp sẽ được chấm bằng hệ thống chấm điểm dùng chung, bao gồm cả chấm điểm bằng AI thực tế.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Hãy thử một tiêu đề hoặc bộ lọc trạng thái khác.</value>

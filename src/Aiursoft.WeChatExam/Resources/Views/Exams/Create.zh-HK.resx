@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>留空以使用試卷預設值</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>模擬試卷</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>真實試卷</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>選擇已發佈的試卷版本</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>學生作答時間。留空則使用試卷預設時間限制。</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>版本 {0} · {1} 分鐘</value>
   </data>
 
 </root>

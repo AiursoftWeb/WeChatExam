@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Chọn Danh mục --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Chọn cơ sở đào tạo --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Chọn danh mục tổng --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>Phạm vi truy cập bị khóa vì sản phẩm này đã có đơn hàng hoặc gói thành viên.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP tất cả đề thi thật (Phiên bản cũ)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Phân (1/100 Nhân dân tệ)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Bao gồm các đề thi chính thức của cơ sở này, không bao gồm bài luyện tập trong các khóa học độc lập.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Cơ sở giáo dục</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP dành cho tổ chức</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Giá (Phân)</value>
