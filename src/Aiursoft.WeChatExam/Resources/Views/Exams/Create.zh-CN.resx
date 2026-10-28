@@ -37,4 +37,17 @@
     <value>学生作答允许时间。留空则使用试卷的时限。</value>
   </data>
 
+  <data name="Mock paper" xml:space="preserve">
+    <value>模拟卷</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>真题卷</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>版本 {0} · {1} 分钟</value>
+  </data>
+
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>请选择已发布的试卷版本</value>
+  </data>
 </root>

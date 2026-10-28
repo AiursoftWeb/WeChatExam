@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Services;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -12,6 +13,7 @@ public class ManagementTests
 {
     private readonly HttpClient _http;
     private IHost? _server;
+    private readonly List<Guid> _scheduledExamIds = [];
 
     public ManagementTests()
     {
@@ -48,6 +50,18 @@ public class ManagementTests
     public async Task CleanServer()
     {
         if (_server == null) return;
+        // These cases create actual answer records; remove only their own schedules
+        // before the shared in-memory store is used by other integration classes.
+        using (var scope = _server.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var records = await db.ExamRecords.Include(r => r.AnswerRecords)
+                .Where(r => _scheduledExamIds.Contains(r.ExamId)).ToListAsync();
+            db.AnswerRecords.RemoveRange(records.SelectMany(r => r.AnswerRecords));
+            db.ExamRecords.RemoveRange(records);
+            db.Exams.RemoveRange(await db.Exams.Where(e => _scheduledExamIds.Contains(e.Id)).ToListAsync());
+            await db.SaveChangesAsync();
+        }
         await _server.StopAsync();
         _server.Dispose();
     }
@@ -502,70 +516,8 @@ public class ManagementTests
     [TestMethod]
     public async Task ExamsCrudTest()
     {
-        var periodId = await QuestionPeriodAssignmentTests.AddPeriod(_server!.Services);
         await LoginAsAdminAsync();
-
-        // 1. Setup prerequisite: Category, Question, Paper, and Publish
-        var categoryTitle = $"Exam-Prereq-Cat-{Guid.NewGuid()}";
-        using var categoryScope = _server!.Services.CreateScope();
-        var categoryDb = categoryScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var legacyCategory = new Category { Id = Guid.NewGuid(), Title = categoryTitle, ParentId = null };
-        categoryDb.Add(legacyCategory);
-        await categoryDb.SaveChangesAsync();
-        var categoryId = legacyCategory.Id.ToString();
-
-        var qText = $"Exam-Prereq-Q-{Guid.NewGuid()}";
-        var qToken = await GetAntiCsrfToken($"/Questions/Create?questionCategoryId={periodId}");
-        await _http.PostAsync("/Questions/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Content", qText},
-            { "QuestionType", "0" },
-            { "GradingStrategy", "0" },
-            { "QuestionCategoryId", periodId.ToString() },
-            { "Options[0]", "A" },
-            { "Options[1]", "B" },
-            { "StandardAnswer", "A" },
-            { "Explanation", "A is correct" },
-            { "__RequestVerificationToken", qToken }
-        }));
-        var qIndexResponse = await _http.GetAsync($"/Questions/Index?period={periodId}");
-        var qIndexHtml = await qIndexResponse.Content.ReadAsStringAsync();
-        var questionId = Regex.Match(qIndexHtml, @"href=""/Questions/Details/([a-z0-9-]+)").Groups[1].Value;
-
-        var paperTitle = $"Exam-Prereq-Paper-{Guid.NewGuid()}";
-        var pToken = await GetAntiCsrfToken("/Papers/Create");
-        var pCreateResponse = await _http.PostAsync("/Papers/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", paperTitle },
-            { "TimeLimit", "60" },
-            { "IsFree", "true" },
-            { "SelectedCategoryId", categoryId },
-            { "__RequestVerificationToken", pToken }
-        }));
-        var paperEditUrl = pCreateResponse.Headers.Location?.OriginalString;
-        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
-
-        var addQToken = await GetAntiCsrfToken(paperEditUrl);
-        await _http.PostAsync($"/Papers/AddQuestion/{paperId}", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "questionId", questionId },
-            { "order", "1" },
-            { "score", "10" },
-            { "__RequestVerificationToken", addQToken }
-        }));
-
-        var publishableToken = await GetAntiCsrfToken(paperEditUrl);
-        await _http.PostAsync($"/Papers/SetStatus/{paperId}", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "status", "1" }, // Publishable
-            { "__RequestVerificationToken", publishableToken }
-        }));
-
-        var publishToken = await GetAntiCsrfToken(paperEditUrl);
-        await _http.PostAsync($"/Papers/Publish/{paperId}", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "__RequestVerificationToken", publishToken }
-        }));
+        var snapshot = await PublishExamPaper(false);
 
         // 2. Create Exam
         var examTitle = $"Test-Exam-{Guid.NewGuid()}";
@@ -575,7 +527,7 @@ public class ManagementTests
         var createExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", examTitle },
-            { "PaperId", paperId },
+            { "PaperSnapshotId", snapshot.Id.ToString() },
             { "StartTime", startTime.ToString("O") },
             { "EndTime", endTime.ToString("O") },
             { "DurationMinutes", "60" },
@@ -597,6 +549,8 @@ public class ManagementTests
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var savedExam = await db.Exams.AsNoTracking().SingleAsync(e => e.Id == Guid.Parse(examId));
+        Assert.IsNull(savedExam.PaperId);
+        Assert.AreEqual(snapshot.Id, savedExam.PaperSnapshotId);
         Assert.AreEqual(startTime.UtcDateTime, savedExam.StartTime);
         Assert.AreEqual(endTime.UtcDateTime, savedExam.EndTime);
         var editHtml = await _http.GetStringAsync($"/Exams/Edit/{examId}");
@@ -653,27 +607,13 @@ public class ManagementTests
     {
         await LoginAsAdminAsync();
 
-        // 1. Setup prerequisite: Category and Paper (but NO publish)
-        var categoryTitle = $"Fail-Exam-Cat-{Guid.NewGuid()}";
-        using var categoryScope = _server!.Services.CreateScope();
-        var categoryDb = categoryScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var legacyCategory = new Category { Id = Guid.NewGuid(), Title = categoryTitle, ParentId = null };
-        categoryDb.Add(legacyCategory);
-        await categoryDb.SaveChangesAsync();
-        var categoryId = legacyCategory.Id.ToString();
-
-        var paperTitle = $"Unpublished-Paper-{Guid.NewGuid()}";
-        var pToken = await GetAntiCsrfToken("/Papers/Create");
-        var pCreateResponse = await _http.PostAsync("/Papers/Create", new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", paperTitle },
-            { "TimeLimit", "60" },
-            { "IsFree", "true" },
-            { "SelectedCategoryId", categoryId },
-            { "__RequestVerificationToken", pToken }
-        }));
-        var paperEditUrl = pCreateResponse.Headers.Location?.OriginalString;
-        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
+        var selectable = await PublishExamPaper(false);
+        // A template ID is not a published version ID.
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var paper = new RealPaper { Title = "Unpublished paper", Institution = new Institution { Title = "Draft school" } };
+        db.RealPapers.Add(paper);
+        await db.SaveChangesAsync();
 
         // 2. Try to create Exam
         var examTitle = $"Fail-Exam-{Guid.NewGuid()}";
@@ -683,7 +623,7 @@ public class ManagementTests
         var createExamContent = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "Title", examTitle },
-            { "PaperId", paperId },
+            { "PaperSnapshotId", paper.Id.ToString() },
             { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
             { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
             { "DurationMinutes", "60" },
@@ -695,7 +635,147 @@ public class ManagementTests
         // It should NOT redirect (Found), but stay on the page (OK) with an error message.
         Assert.AreEqual(HttpStatusCode.OK, createExamResponse.StatusCode);
         var resultHtml = await createExamResponse.Content.ReadAsStringAsync();
-        Assert.Contains("The selected paper has no published snapshots", resultHtml);
+        Assert.Contains("Select a published mock or real paper version with questions.", resultHtml);
+        Assert.Contains($"value=\"{selectable.Id}\"", resultHtml);
+    }
+
+    private async Task<PaperSnapshot> PublishExamPaper(bool real)
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var category = QuestionPeriodAssignmentTests.TestPeriod();
+        var question = new Question
+        {
+            Content = "Scheduled question", QuestionCategory = category, QuestionType = QuestionType.Choice,
+            Metadata = "{\"options\":[\"A\",\"B\"]}", StandardAnswer = "A", GradingStrategy = GradingStrategy.ExactMatch
+        };
+        if (real)
+        {
+            var institution = new Institution { Title = "Scheduled school" };
+            var paper = new RealPaper { Title = "Published real paper", TimeLimit = 150, Institution = institution, InstitutionId = institution.Id };
+            db.RealPaperQuestions.Add(new RealPaperQuestion { RealPaper = paper, Question = question, Order = 1, Score = 10 });
+            await db.SaveChangesAsync();
+            return await scope.ServiceProvider.GetRequiredService<RealPaperPublishing>().PublishAsync(paper);
+        }
+        else
+        {
+            var paper = new MockPaper { Title = "Published mock paper", TimeLimit = 120, TotalCategory = category.TotalCategory!, TotalCategoryId = category.TotalCategoryId };
+            db.MockPaperQuestions.Add(new MockPaperQuestion { MockPaper = paper, Question = question, Order = 1, Score = 10 });
+            await db.SaveChangesAsync();
+            return await scope.ServiceProvider.GetRequiredService<MockPaperPublishing>().PublishAsync(paper);
+        }
+    }
+
+    [TestMethod]
+    public async Task ExamSelectorUsesLatestPublishedVersionsAndRejectsUnavailableSources()
+    {
+        Assert.AreEqual(HttpStatusCode.Found, (await _http.GetAsync("/Exams/Create")).StatusCode);
+        await LoginAsAdminAsync();
+        var mock = await PublishExamPaper(false);
+        var real = await PublishExamPaper(true);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var service = scope.ServiceProvider.GetRequiredService<IExamService>();
+        var paper = await db.RealPapers.SingleAsync(p => p.Id == real.RealPaperId);
+        paper.Title = "Updated real version";
+        var latest = await scope.ServiceProvider.GetRequiredService<RealPaperPublishing>().PublishAsync(paper);
+        paper.Status = PaperStatus.Frozen;
+        var legacy = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Historical detached version", Version = 1, TimeLimit = 60 };
+        db.PaperSnapshots.Add(legacy);
+        await db.SaveChangesAsync();
+        var choices = await service.GetPublishedPapersForExamAsync();
+        Assert.IsTrue(choices.Any(p => p.Id == mock.Id));
+        Assert.IsTrue(choices.Any(p => p.Id == latest.Id));
+        Assert.IsFalse(choices.Any(p => p.Id == real.Id || p.Id == legacy.Id));
+        var html = await _http.GetStringAsync("/Exams/Create");
+        Assert.Contains($"value=\"{latest.Id}\"", html);
+        Assert.Contains("Version 2", html);
+        Assert.Contains("Mock paper", html);
+        Assert.Contains("Real paper", html);
+        Assert.DoesNotContain($"value=\"{real.Id}\"", html);
+        paper.Status = PaperStatus.Draft;
+        await db.SaveChangesAsync();
+        Assert.IsFalse((await service.GetPublishedPapersForExamAsync()).Any(p => p.Id == latest.Id));
+        foreach (var id in new[] { latest.Id, legacy.Id, Guid.NewGuid() })
+        {
+            await Assert.ThrowsAsync<InvalidOperationException>(() => service.CreateExamAsync("Unavailable", id,
+                DateTime.UtcNow, DateTime.UtcNow.AddHours(1)));
+        }
+        paper.Status = PaperStatus.Publishable;
+        db.QuestionSnapshots.RemoveRange(await db.QuestionSnapshots.Where(q => q.PaperSnapshotId == latest.Id).ToListAsync());
+        await db.SaveChangesAsync();
+        Assert.IsFalse((await service.GetPublishedPapersForExamAsync()).Any(p => p.RealPaperId == paper.Id));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.CreateExamAsync("Empty", latest.Id,
+            DateTime.UtcNow, DateTime.UtcNow.AddHours(1)));
+        Assert.IsFalse(await db.Exams.AnyAsync(e => e.Title == "Unavailable" || e.Title == "Empty"));
+    }
+
+    [TestMethod]
+    public async Task ScheduledExamKeepsChosenVersionAndSnapshotTitleAfterTemplateChanges()
+    {
+        await LoginAsAdminAsync();
+        var first = await PublishExamPaper(true);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var service = scope.ServiceProvider.GetRequiredService<IExamService>();
+        var paper = await db.RealPapers.SingleAsync(p => p.Id == first.RealPaperId);
+        paper.Title = "New template title";
+        paper.TimeLimit = 60;
+        await scope.ServiceProvider.GetRequiredService<RealPaperPublishing>().PublishAsync(paper);
+        // A teacher's open form still selects version 1, even after version 2 is published.
+        var token = await GetAntiCsrfToken("/Exams/Create");
+        var response = await _http.PostAsync("/Exams/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["Title"] = "Locked version exam", ["PaperSnapshotId"] = first.Id.ToString(),
+            ["StartTime"] = DateTime.UtcNow.AddMinutes(-1).ToString("O"),
+            ["EndTime"] = DateTime.UtcNow.AddHours(1).ToString("O"), ["__RequestVerificationToken"] = token
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+        var exam = await db.Exams.SingleAsync(e => e.Title == "Locked version exam");
+        _scheduledExamIds.Add(exam.Id);
+        Assert.IsNull(exam.PaperId);
+        Assert.AreEqual(first.Id, exam.PaperSnapshotId);
+        Assert.AreEqual(150, exam.DurationMinutes);
+        Assert.AreEqual(first.Title, (await service.GetExamAsync(exam.Id))!.PaperSnapshot!.Title);
+        var edit = await _http.GetStringAsync($"/Exams/Edit/{exam.Id}");
+        Assert.Contains(first.Title, edit);
+        Assert.DoesNotContain("New template title", edit);
+        Assert.Contains(first.Title, await _http.GetStringAsync("/Exams"));
+        var user = await db.Users.FirstAsync();
+        var record = await service.StartExamAsync(exam.Id, user.Id);
+        Assert.AreEqual(first.Id, record.PaperSnapshotId);
+        var question = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == first.Id);
+        await service.SubmitAnswerAsync(record.Id, question.Id, "A");
+        Assert.AreEqual(record.Id, (await service.StartExamAsync(exam.Id, user.Id)).Id);
+        Assert.AreEqual("A", (await service.GetExamRecordAsync(record.Id))!.AnswerRecords.Single().UserAnswer);
+        Assert.AreEqual(first.Title, (await service.GetAvailableExamsForUserAsync(user.Id)).Single(e => e.Id == exam.Id).PaperSnapshot!.Title);
+    }
+
+    [TestMethod]
+    public async Task ExistingExamRetainsLockedSnapshotWhenLegacyTemplateReferenceIsRemoved()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var template = new Paper { Id = Guid.NewGuid(), Title = "Legacy template", Status = PaperStatus.Publishable, TimeLimit = 180 };
+        var snapshot = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Legacy locked title", Version = 3, TimeLimit = 180, Paper = template };
+        var exam = new Exam { Id = Guid.NewGuid(), Title = "Historical exam", Paper = template, PaperSnapshot = snapshot,
+            StartTime = DateTime.UtcNow.AddMinutes(-1), EndTime = DateTime.UtcNow.AddHours(1), DurationMinutes = 180, IsPublic = true };
+        db.Exams.Add(exam);
+        _scheduledExamIds.Add(exam.Id);
+        await db.SaveChangesAsync();
+        var service = scope.ServiceProvider.GetRequiredService<IExamService>();
+        var userId = (await db.Users.FirstAsync()).Id;
+        var record = await service.StartExamAsync(exam.Id, userId);
+        exam.PaperId = null;
+        exam.Paper = null;
+        snapshot.PaperId = null;
+        snapshot.Paper = null;
+        db.Papers.Remove(template);
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(record.Id, (await service.StartExamAsync(exam.Id, userId)).Id);
+        Assert.AreEqual(snapshot.Id, (await service.GetExamRecordAsync(record.Id))!.PaperSnapshotId);
+        Assert.AreEqual(snapshot.Title, (await service.GetAllExamsAsync()).Single(e => e.Id == exam.Id).PaperSnapshot!.Title);
     }
 
     [TestMethod]

@@ -14,8 +14,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class ExamsController(
     WeChatExamDbContext context, 
-    IExamService examService,
-    IPaperService paperService) : Controller
+    IExamService examService) : Controller
 {
     // GET: exams
     [Authorize(Policy = AppPermissionNames.CanReadExams)]
@@ -37,7 +36,7 @@ public class ExamsController(
     [Authorize(Policy = AppPermissionNames.CanAddExams)]
     public async Task<IActionResult> Create()
     {
-        var papers = await paperService.GetPapersAvailableForExamAsync();
+        var papers = await examService.GetPublishedPapersForExamAsync();
         return this.StackView(new CreateViewModel { AvailablePapers = papers });
     }
 
@@ -49,7 +48,7 @@ public class ExamsController(
     {
         if (!ModelState.IsValid)
         {
-            model.AvailablePapers = await paperService.GetPapersAvailableForExamAsync();
+            model.AvailablePapers = await examService.GetPublishedPapersForExamAsync();
             return this.StackView(model);
         }
 
@@ -63,13 +62,13 @@ public class ExamsController(
             startUtc = startUtc.AddSeconds(-startUtc.Second).AddMilliseconds(-startUtc.Millisecond);
             endUtc = endUtc.AddSeconds(-endUtc.Second).AddMilliseconds(-endUtc.Millisecond);
             
-            await examService.CreateExamAsync(model.Title, model.PaperId!.Value, startUtc, endUtc, model.DurationMinutes);
+            await examService.CreateExamAsync(model.Title, model.PaperSnapshotId!.Value, startUtc, endUtc, model.DurationMinutes);
             return RedirectToAction(nameof(Index));
         }
         catch (InvalidOperationException ex)
         {
             ModelState.AddModelError("", ex.Message);
-            model.AvailablePapers = await paperService.GetPapersAvailableForExamAsync();
+            model.AvailablePapers = await examService.GetPublishedPapersForExamAsync();
             return this.StackView(model);
         }
     }
@@ -86,7 +85,7 @@ public class ExamsController(
         {
             Id = exam.Id,
             Title = exam.Title,
-            PaperTitle = exam.Paper?.Title ?? "Unknown",
+            PaperTitle = exam.PaperSnapshot?.Title ?? exam.Paper?.Title ?? "Unknown",
             StartTime = exam.StartTime.AddSeconds(-exam.StartTime.Second).AddMilliseconds(-exam.StartTime.Millisecond), // The browser converts UTC to local time for editing.
             EndTime = exam.EndTime.AddSeconds(-exam.EndTime.Second).AddMilliseconds(-exam.EndTime.Millisecond),
             DurationMinutes = exam.DurationMinutes,
