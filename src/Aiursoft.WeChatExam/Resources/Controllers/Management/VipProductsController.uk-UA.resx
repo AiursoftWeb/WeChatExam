@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing total category." xml:space="preserve">
+      <data name="Select an existing institution." xml:space="preserve">
+    <value>Виберіть наявну установу.</value>
+  </data>
+  <data name="Select an existing total category." xml:space="preserve">
     <value>Виберіть наявну категорію підсумків.</value>
+  </data>
+  <data name="This product has orders or memberships. Create a new product to change its access scope." xml:space="preserve">
+    <value>Цей продукт має замовлення або активні підписки. Створіть новий продукт, щоб змінити сферу доступу.</value>
+  </data>
+  <data name="This product has orders or memberships. Disable it instead of deleting it." xml:space="preserve">
+    <value>Цей продукт має замовлення або членства. Деактивуйте його замість видалення.</value>
   </data>
 
 </root>

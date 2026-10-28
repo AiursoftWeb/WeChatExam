@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing total category." xml:space="preserve">
+      <data name="Select an existing institution." xml:space="preserve">
+    <value>Επιλέξτε ένα υπάρχον ίδρυμα.</value>
+  </data>
+  <data name="Select an existing total category." xml:space="preserve">
     <value>Επιλέξτε μια υπάρχουσα κατηγορία συνόλων.</value>
+  </data>
+  <data name="This product has orders or memberships. Create a new product to change its access scope." xml:space="preserve">
+    <value>Αυτό το προϊόν έχει παραγγελίες ή συνδρομές. Δημιουργήστε ένα νέο προϊόν για να αλλάξετε το εύρος πρόσβασής του.</value>
+  </data>
+  <data name="This product has orders or memberships. Disable it instead of deleting it." xml:space="preserve">
+    <value>Αυτό το προϊόν έχει παραγγελίες ή συνδρομές. Απενεργοποιήστε το αντί να το διαγράψετε.</value>
   </data>
 
 </root>

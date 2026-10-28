@@ -18,19 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing course." xml:space="preserve">
-    <value>请选择一个已存在的课程。</value>
-  </data>
-
-
-<data name="Every selected question must exist and belong to this paper's course." xml:space="preserve">
+      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>每道选中的试题都必须存在，并且属于此试卷对应的课程。</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>添加更多题目前，请降低题目序号的最大值。</value>
   </data>
-
-<data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
+  <data name="Select an existing course." xml:space="preserve">
+    <value>请选择一个已存在的课程。</value>
+  </data>
+  <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>无法保存此版本。请重新加载版本列表后重试。</value>
   </data>
 

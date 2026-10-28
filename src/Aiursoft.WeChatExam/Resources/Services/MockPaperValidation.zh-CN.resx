@@ -18,15 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Mock paper {0} and question {1} must belong to the same course. Remove the question from the paper before changing its course." xml:space="preserve">
+      <data name="A published paper cannot change courses. Create another mock paper for the new course." xml:space="preserve">
+    <value>已发布的试卷无法更改所属课程。请为新课程创建另一份模拟试卷。</value>
+  </data>
+  <data name="Mock paper {0} and question {1} must belong to the same course. Remove the question from the paper before changing its course." xml:space="preserve">
     <value>模拟试卷 {0} 和题目 {1} 必须属于同一门课程。更改题目的课程前，请先将其从试卷中移除。</value>
   </data>
   <data name="Question {0} is used by mock paper {1}. Remove it from the paper before deleting it." xml:space="preserve">
     <value>试题 {0} 已被试卷 {1} 使用。请先将其从试卷中移除，再删除。</value>
   </data>
 
-
-<data name="A published paper cannot change courses. Create another mock paper for the new course." xml:space="preserve">
-    <value>已发布的试卷无法更改所属课程。请为新课程创建另一份模拟试卷。</value>
-  </data>
-  </root>
+</root>

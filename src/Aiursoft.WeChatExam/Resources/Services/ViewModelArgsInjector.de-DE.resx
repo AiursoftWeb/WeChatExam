@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Wissenskategorie erstellen</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Probeklausur erstellen</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Zeitraum erstellen</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Frage erstellen</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Echte Prüfung erstellen</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Rolle erstellen</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Wissenskategorie bearbeiten</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Probeklausur bearbeiten</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Zeitraum bearbeiten</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Frage bearbeiten</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Originalprüfung bearbeiten</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Rolle bearbeiten</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Marketing-Management</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Verwaltung von Probeprüfungen</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Fragen zu Probeklausuren</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versionen der Übungsprüfungen</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Probeklausuren</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Details zum monatlichen Finanzbericht</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Verwaltung von realen Prüfungen</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Fragen zu echten Prüfungsunterlagen</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Echte Prüfungsversionen</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Echte Prüfungsbögen</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registrieren</value>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add at least one question before publishing." xml:space="preserve">
+    <value>Thêm ít nhất một câu hỏi trước khi xuất bản.</value>
+  </data>
+  <data name="Every question must have a nonnegative order and a positive score." xml:space="preserve">
+    <value>Mỗi câu hỏi phải có thứ tự không âm và điểm số dương.</value>
+  </data>
+  <data name="Select an existing institution." xml:space="preserve">
+    <value>Chọn một cơ sở giáo dục hiện có.</value>
+  </data>
+  <data name="Set a title and a positive time limit before publishing." xml:space="preserve">
+    <value>Đặt tiêu đề và thời lượng làm bài lớn hơn 0 trước khi xuất bản.</value>
+  </data>
+  <data name="The maximum version number has been reached." xml:space="preserve">
+    <value>Đã đạt đến số phiên bản tối đa.</value>
+  </data>
+  <data name="This paper is read only." xml:space="preserve">
+    <value>Đề thi này chỉ có thể đọc.</value>
+  </data>
+
+</root>

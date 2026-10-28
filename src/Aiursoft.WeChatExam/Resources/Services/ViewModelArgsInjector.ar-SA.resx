@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>إنشاء فئة معرفية</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>إنشاء نموذج امتحان تجريبي</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>إنشاء فترة</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>إنشاء سؤال</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>إنشاء نموذج اختبار حقيقي</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>إنشاء دور</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>تعديل فئة المعرفة</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>تعديل الاختبار التجريبي</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>تعديل الفترة</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>تعديل السؤال</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>تعديل ورقة اختبار حقيقية</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>تعديل الدور</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>إدارة التسويق</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>إدارة الاختبارات التجريبية</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>أسئلة الاختبارات التجريبية</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>إصدارات الاختبارات التجريبية</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>الاختبارات التجريبية</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>تفاصيل التقرير المالي الشهري</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>إدارة الاختبارات الفعلية</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>أسئلة الاختبارات الورقية الفعلية</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>إصدارات الاختبارات الورقية الفعلية</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>النماذج الحقيقية</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>

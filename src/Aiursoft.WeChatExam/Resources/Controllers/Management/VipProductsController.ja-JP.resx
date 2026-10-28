@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing total category." xml:space="preserve">
+      <data name="Select an existing institution." xml:space="preserve">
+    <value>既存の機関を選択してください。</value>
+  </data>
+  <data name="Select an existing total category." xml:space="preserve">
     <value>既存の合計カテゴリを選択してください。</value>
+  </data>
+  <data name="This product has orders or memberships. Create a new product to change its access scope." xml:space="preserve">
+    <value>この商品には注文または会員登録があります。アクセス範囲を変更するには、新しい商品を作成してください。</value>
+  </data>
+  <data name="This product has orders or memberships. Disable it instead of deleting it." xml:space="preserve">
+    <value>この商品には注文または会員登録があるため、削除せずに無効化してください。</value>
   </data>
 
 </root>

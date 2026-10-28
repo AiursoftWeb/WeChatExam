@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Bilgi Kategorisi Oluştur</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Deneme Sınavı Oluştur</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Dönem Oluştur</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Soru Oluştur</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Gerçek Sınav Oluştur</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Rol Oluştur</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Bilgi Kategorisini Düzenle</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Deneme Sınavını Düzenle</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Dönemi Düzenle</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Soruyu Düzenle</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Gerçek Sınavı Düzenle</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Rolü Düzenle</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Pazarlama Yönetimi</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Deneme Sınavı Yönetimi</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Deneme Sınavı Soruları</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Deneme Sınavı Versiyonları</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Deneme Sınavları</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Aylık Finans Raporu Detayları</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Gerçek Sınav Yönetimi</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Gerçek Sınav Soruları</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Gerçek Sınav Kâğıdı Sürümleri</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Gerçek Sınavlar</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Kayıt Ol</value>

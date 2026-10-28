@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>ナレッジカテゴリを作成</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>模擬試験を作成</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>期間を作成</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>質問を作成</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>実際の試験問題を作成</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>ロールの作成</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>ナレッジカテゴリを編集</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>模擬試験問題を編集</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>期間を編集</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>質問を編集</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>実試験を編集</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>ロールを編集</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>マーケティング管理</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>模擬試験管理</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>模擬試験問題</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>模擬試験問題のバージョン</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模擬試験問題</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>月次財務報告詳細</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>本試験管理</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>実際の問題集の問題</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>実試験問題のバージョン</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>実試験問題</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>登録</value>

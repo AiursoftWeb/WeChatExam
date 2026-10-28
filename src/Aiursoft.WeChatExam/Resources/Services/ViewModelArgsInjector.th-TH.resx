@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>สร้างหมวดหมู่ความรู้</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>สร้างชุดข้อสอบจำลอง</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>สร้างช่วงเวลา</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>สร้างคำถาม</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>สร้างข้อสอบจริง</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>สร้างบทบาท</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>แก้ไขหมวดหมู่ความรู้</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>แก้ไขข้อสอบจำลอง</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>แก้ไขช่วงเวลา</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>แก้ไขคำถาม</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>แก้ไขข้อสอบจริง</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>แก้ไขบทบาท</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>การจัดการการตลาด</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>การจัดการการสอบจำลอง</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>คำถามสำหรับข้อสอบจำลอง</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>ชุดข้อสอบจำลอง</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>ข้อสอบจำลอง</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>รายละเอียดรายงานการเงินรายเดือน</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>การจัดการข้อสอบจริง</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>ข้อสอบจริง</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>ชุดข้อสอบฉบับจริง</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>ข้อสอบจริง</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>สมัครสมาชิก</value>

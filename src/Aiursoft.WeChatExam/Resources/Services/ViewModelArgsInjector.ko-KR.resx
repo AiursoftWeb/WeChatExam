@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>지식 분류 생성</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>모의 시험지 생성</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>기간 생성</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>질문 생성</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>실전 시험지 생성</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>역할 생성</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>지식 카테고리 수정</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>모의고사 수정</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>기간 수정</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>질문 수정</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>실제 시험지 편집</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>역할 편집</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>마케팅 관리</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>모의시험 관리</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>모의 시험 문제</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>모의 시험지 버전</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>모의고사</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>월간 재무 보고서 상세</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>실제 시험 관리</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>실전 시험 문제</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>실제 시험지 버전</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>실제 시험지</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>회원가입</value>

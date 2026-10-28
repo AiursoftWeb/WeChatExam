@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Crear categoría de conocimientos</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Crear examen de prueba</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Crear período</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Crear pregunta</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Crear examen real</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Crear Rol</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Editar categoría de conocimientos</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Editar examen de prueba</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Editar periodo</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Editar pregunta</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Editar examen real</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Editar rol</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Gestión de marketing</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Gestión de exámenes de prueba</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Preguntas de exámenes de prueba</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versiones de exámenes de prueba</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Exámenes de prueba</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Detalles del Informe Financiero Mensual</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Gestión de exámenes reales</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Preguntas de exámenes reales</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Versiones de exámenes reales</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Exámenes reales</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registrarse</value>

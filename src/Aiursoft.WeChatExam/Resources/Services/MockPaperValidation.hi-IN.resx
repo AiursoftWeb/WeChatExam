@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A published paper cannot change courses. Create another mock paper for the new course." xml:space="preserve">
+    <value>प्रकाशित प्रश्नपत्र का पाठ्यक्रम नहीं बदला जा सकता। नए पाठ्यक्रम के लिए एक और मॉक प्रश्नपत्र बनाएँ।</value>
+  </data>
+  <data name="Mock paper {0} and question {1} must belong to the same course. Remove the question from the paper before changing its course." xml:space="preserve">
+    <value>मॉक पेपर {0} और प्रश्न {1} एक ही पाठ्यक्रम के होने चाहिए। पाठ्यक्रम बदलने से पहले प्रश्न को पेपर से हटा दें।</value>
+  </data>
+  <data name="Question {0} is used by mock paper {1}. Remove it from the paper before deleting it." xml:space="preserve">
+    <value>प्रश्न {0} का उपयोग मॉक पेपर {1} में किया गया है। इसे हटाने से पहले पेपर से निकालें।</value>
+  </data>
+
+</root>
