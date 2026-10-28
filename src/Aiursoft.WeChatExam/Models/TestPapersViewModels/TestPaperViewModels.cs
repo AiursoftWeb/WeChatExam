@@ -3,6 +3,9 @@ using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.TestPapersViewModels;
 
+// IDs can overlap between the independent paper tables. Carry the kind through every test action.
+public enum TestPaperKind { Mock, Real }
+
 public class IndexViewModel : UiStackLayoutViewModel
 {
     public IndexViewModel()
@@ -10,6 +13,12 @@ public class IndexViewModel : UiStackLayoutViewModel
         PageTitle = "Test Papers";
     }
 
+    public TestPaperKind Kind { get; set; }
+    public string? Search { get; set; }
+    public PaperStatus? Status { get; set; }
+    public int Page { get; set; }
+    public int Total { get; set; }
+    public const int PageSize = 24;
     public List<TestPaperListItemViewModel> Papers { get; set; } = [];
 }
 
@@ -19,7 +28,7 @@ public class TestPaperListItemViewModel
     public string Title { get; set; } = string.Empty;
     public int TimeLimit { get; set; }
     public PaperStatus Status { get; set; }
-    public bool IsRealExam { get; set; }
+    public string GroupTitle { get; set; } = string.Empty;
     public int QuestionCount { get; set; }
     public int TotalScore { get; set; }
     public DateTime CreationTime { get; set; }
@@ -33,6 +42,7 @@ public class TakeViewModel : UiStackLayoutViewModel
     }
 
     public Guid PaperId { get; set; }
+    public TestPaperKind? Kind { get; set; }
     public string Title { get; set; } = string.Empty;
     public int TimeLimit { get; set; }
     public int TotalScore { get; set; }
@@ -53,6 +63,7 @@ public class TestPaperQuestionViewModel
 public class SubmitViewModel
 {
     public Guid PaperId { get; set; }
+    public TestPaperKind? Kind { get; set; }
     public Dictionary<Guid, string> Answers { get; set; } = [];
 }
 
@@ -64,6 +75,7 @@ public class ResultViewModel : UiStackLayoutViewModel
     }
 
     public Guid PaperId { get; set; }
+    public TestPaperKind? Kind { get; set; }
     public string Title { get; set; } = string.Empty;
     public int Score { get; set; }
     public int TotalScore { get; set; }

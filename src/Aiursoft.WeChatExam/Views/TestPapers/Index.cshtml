@@ -1,4 +1,4 @@
-@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Models.TestPapersViewModels
 @using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.TestPapersViewModels.IndexViewModel
 
@@ -12,11 +12,11 @@
         <div class="test-paper-hero-copy">
             <div class="test-exam-kicker"><i data-lucide="sparkles"></i>@Localizer["Administrator workspace"]</div>
             <h1>@Localizer["Test Papers"]</h1>
-            <p>@Localizer["Experience the current paper exactly as a candidate would. Test submissions use the production grading engine, including real AI grading."]</p>
+            <p>@Localizer["Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading."]</p>
         </div>
         <div class="test-paper-hero-stat">
             <span>@Localizer["Available papers"]</span>
-            <strong>@Model.Papers.Count</strong>
+            <strong>@Model.Total</strong>
         </div>
     </div>
 
@@ -28,18 +28,25 @@
         </div>
     }
 
-    <div class="test-exam-toolbar mb-4">
-        <div class="input-group test-exam-search">
-            <span class="input-group-text"><i data-lucide="search"></i></span>
-            <input id="paperSearch" type="search" class="form-control" placeholder="@Localizer["Search papers..."]" autocomplete="off" />
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item"><a asp-action="Index" asp-route-kind="Mock" asp-route-search="@Model.Search" asp-route-status="@Model.Status" class="nav-link @(Model.Kind == TestPaperKind.Mock ? "active" : "")">@Localizer["Mock Papers"]</a></li>
+        <li class="nav-item"><a asp-action="Index" asp-route-kind="Real" asp-route-search="@Model.Search" asp-route-status="@Model.Status" class="nav-link @(Model.Kind == TestPaperKind.Real ? "active" : "")">@Localizer["Real Papers"]</a></li>
+    </ul>
+    <form method="get" class="row g-2 mb-4" role="search">
+        <input type="hidden" name="kind" value="@Model.Kind" />
+        <div class="col-md-6">
+            <input name="search" value="@Model.Search" type="search" class="form-control" placeholder="@Localizer["Search papers..."]" aria-label="@Localizer["Search papers..."]" />
         </div>
-        <div class="test-exam-filter" role="group" aria-label="@Localizer["Paper status filter"]">
-            <button class="btn active" type="button" data-paper-filter="all">@Localizer["All"]</button>
-            <button class="btn" type="button" data-paper-filter="Draft">@Localizer["Draft"]</button>
-            <button class="btn" type="button" data-paper-filter="Publishable">@Localizer["Publishable"]</button>
-            <button class="btn" type="button" data-paper-filter="Frozen">@Localizer["Frozen"]</button>
+        <div class="col-md-4">
+            <select asp-for="Status" class="form-select" aria-label="@Localizer["Paper status filter"]">
+                <option value="">@Localizer["All"]</option>
+                <option value="Draft">@Localizer["Draft"]</option>
+                <option value="Publishable">@Localizer["Publishable"]</option>
+                <option value="Frozen">@Localizer["Frozen"]</option>
+            </select>
         </div>
-    </div>
+        <div class="col-md-2"><button type="submit" class="btn btn-outline-primary w-100">@Localizer["Search"]</button></div>
+    </form>
 
     @if (Model.Papers.Count > 0)
     {
@@ -53,9 +60,7 @@
                     PaperStatus.Frozen => "info",
                     _ => "secondary"
                 };
-                <div class="col-md-6 col-xl-4 paper-grid-item"
-                     data-paper-title="@paper.Title.ToLowerInvariant()"
-                     data-paper-status="@paper.Status">
+                <div class="col-md-6 col-xl-4 paper-grid-item">
                     <article class="test-paper-card h-100">
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between gap-3 mb-3">
@@ -68,20 +73,13 @@
                                 <span><i data-lucide="trophy"></i>@paper.TotalScore @Localizer["points"]</span>
                                 <span><i data-lucide="clock-3"></i>@paper.TimeLimit @Localizer["minutes"]</span>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between border-top mt-4 pt-3">
+                            <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between border-top mt-4 pt-3">
                                 <div class="small text-muted">
-                                    @if (paper.IsRealExam)
-                                    {
-                                        <span><i class="align-middle me-1" data-lucide="badge-check"></i>@Localizer["Real exam"]</span>
-                                    }
-                                    else
-                                    {
-                                        <span><span data-utc-time="@paper.CreationTime.ToHtmlDateTime()"></span></span>
-                                    }
+                                    <span class="text-break">@paper.GroupTitle</span>
                                 </div>
                                 @if (paper.QuestionCount > 0)
                                 {
-                                    <a asp-action="Take" asp-route-id="@paper.Id" class="btn btn-primary">
+                                    <a asp-action="Take" asp-route-id="@paper.Id" asp-route-kind="@Model.Kind" class="btn btn-primary">
                                         @Localizer["Start test"] <i class="align-middle ms-1" data-lucide="arrow-right"></i>
                                     </a>
                                 }
@@ -95,52 +93,32 @@
                 </div>
             }
         </div>
-        <div class="test-exam-empty d-none" id="noSearchResults">
-            <div class="test-exam-empty-icon"><i data-lucide="search-x"></i></div>
-            <h2 class="h5">@Localizer["No matching papers"]</h2>
-            <p>@Localizer["Try another title or status filter."]</p>
-        </div>
     }
     else
     {
         <div class="test-exam-empty">
             <div class="test-exam-empty-icon"><i data-lucide="files"></i></div>
-            <h2 class="h5">@Localizer["No papers yet"]</h2>
-            <p>@Localizer["Create a paper and add questions before starting a browser test."]</p>
-            <a asp-controller="Papers" asp-action="Create" class="btn btn-primary">@Localizer["Create paper"]</a>
+            <h2 class="h5">@Localizer["No matching papers"]</h2>
+            <p>@Localizer["Try another title or status filter."]</p>
+            <a asp-action="Index" asp-route-kind="@Model.Kind">@Localizer["Show all papers"]</a>
         </div>
     }
 </div>
 
-@* ReSharper disable once Razor.SectionNotResolved *@
-@section scripts {
-    <script>
-        (() => {
-            const search = document.getElementById('paperSearch');
-            if (!search) return;
-            const cards = [...document.querySelectorAll('.paper-grid-item')];
-            const empty = document.getElementById('noSearchResults');
-            const buttons = [...document.querySelectorAll('[data-paper-filter]')];
-            let status = 'all';
 
-            const filter = () => {
-                const term = search.value.trim().toLocaleLowerCase();
-                let visible = 0;
-                cards.forEach(card => {
-                    const match = card.dataset.paperTitle.includes(term) &&
-                        (status === 'all' || card.dataset.paperStatus === status);
-                    card.classList.toggle('d-none', !match);
-                    if (match) visible++;
-                });
-                empty?.classList.toggle('d-none', visible !== 0);
-            };
-
-            search.addEventListener('input', filter);
-            buttons.forEach(button => button.addEventListener('click', () => {
-                status = button.dataset.paperFilter;
-                buttons.forEach(item => item.classList.toggle('active', item === button));
-                filter();
-            }));
-        })();
-    </script>
+@if (Model.Total > IndexViewModel.PageSize)
+{
+    <nav class="d-flex flex-wrap gap-2 justify-content-between align-items-center mt-4" aria-label="@Localizer["Paper pages"]">
+        <span class="text-muted">@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize)</span>
+        <div class="d-flex gap-2">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="Index" asp-route-kind="@Model.Kind" asp-route-search="@Model.Search" asp-route-status="@Model.Status" asp-route-page="@(Model.Page - 1)" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+            @if (Model.Page * IndexViewModel.PageSize < Model.Total)
+            {
+                <a asp-action="Index" asp-route-kind="@Model.Kind" asp-route-search="@Model.Search" asp-route-status="@Model.Status" asp-route-page="@(Model.Page + 1)" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
 }
