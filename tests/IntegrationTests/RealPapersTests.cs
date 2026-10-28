@@ -228,7 +228,13 @@ public class RealPapersTests : TestBase
     public async Task InstitutionCardOpensItsPapersAndPreselectsTheNewDraftOwner()
     {
         await LoginAsAdmin();
-        var institutions = await Http.GetStringAsync("/Institutions");
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.Institutions.SingleAsync(i => i.Id == _institution)).Title = _institution.ToString();
+            await db.SaveChangesAsync();
+        }
+        var institutions = await Http.GetStringAsync($"/Institutions?search={_institution}");
         Assert.Contains($"/RealPapers?institutionId={_institution}", institutions);
         Assert.Contains($"/Institutions/Edit/{_institution}", institutions);
         var list = await Http.GetStringAsync($"/RealPapers?institutionId={_institution}");

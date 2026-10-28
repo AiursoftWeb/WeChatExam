@@ -53,11 +53,14 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<PaperSnapshot>().HasOne(s => s.RealPaper).WithMany()
+            .HasForeignKey(s => s.RealPaperId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<PaperSnapshot>().HasIndex(s => new { s.RealPaperId, s.Version }).IsUnique();
         builder.Entity<PaperSnapshot>().HasOne(s => s.MockPaper).WithMany()
             .HasForeignKey(s => s.MockPaperId).OnDelete(DeleteBehavior.Restrict);
         builder.Entity<PaperSnapshot>().HasIndex(s => new { s.MockPaperId, s.Version }).IsUnique();
         builder.Entity<PaperSnapshot>().ToTable(t => t.HasCheckConstraint(
-            "CK_PaperSnapshot_SingleSource", "MockPaperId IS NULL OR PaperId IS NULL"));
+            "CK_PaperSnapshot_SingleSource", "(MockPaperId IS NULL OR PaperId IS NULL) AND (RealPaperId IS NULL OR (PaperId IS NULL AND MockPaperId IS NULL))"));
 
         builder.Entity<MockPaperQuestion>().HasKey(q => new { q.MockPaperId, q.QuestionId });
         builder.Entity<MockPaperQuestion>()

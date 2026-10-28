@@ -78,6 +78,32 @@ public class PapersApiTests
     }
 
     [TestMethod]
+    public async Task RealPaperSnapshotsAreNotExposedByLegacyOrMockStudentApis()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var institution = new Institution { Title = "Real snapshot school" };
+        var paper = new RealPaper { Title = "Real publication", Institution = institution, InstitutionId = institution.Id };
+        var snapshot = new PaperSnapshot { Id = Guid.NewGuid(), RealPaper = paper, RealPaperId = paper.Id, Title = paper.Title, Version = 1 };
+        var question = new QuestionSnapshot
+        {
+            Id = Guid.NewGuid(), PaperSnapshot = snapshot, PaperSnapshotId = snapshot.Id,
+            Content = "Real question", StandardAnswer = "Protected real answer", Score = 10,
+            GradingStrategy = GradingStrategy.ExactMatch
+        };
+        db.QuestionSnapshots.Add(question);
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Papers/snapshots/{snapshot.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/MockPapers/snapshots/{snapshot.Id}")).StatusCode);
+        Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        var rejected = await _http.PostAsJsonAsync("/api/UserPracticeHistory/Snapshot", new CreateUserPracticeHistoryDto { QuestionId = question.Id, UserAnswer = "Guess" });
+        Assert.AreEqual(HttpStatusCode.NotFound, rejected.StatusCode);
+        Assert.DoesNotContain("Protected real answer", await rejected.Content.ReadAsStringAsync());
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+    }
+
+    [TestMethod]
     public async Task MockPaperSnapshotsAreNotAvailableThroughLegacyPaperApi()
     {
         using var scope = _server!.Services.CreateScope();

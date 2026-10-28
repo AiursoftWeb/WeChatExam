@@ -1,0 +1,66 @@
+@using Aiursoft.WeChatExam.Entities
+@using Aiursoft.WeChatExam.Models.RealPapersViewModels
+@using Aiursoft.WebTools
+@model VersionsViewModel
+<a asp-action="Index" class="d-inline-block text-decoration-none mb-3"><i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Real Papers"]</a>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-2 text-break">@Model.Paper.Title</h1>
+        <p class="text-muted mb-0">@Model.Paper.Institution.Title</p>
+    </div>
+    @if (Model.Paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
+    {
+        <a asp-action="Questions" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Edit Draft"]</a>
+    }
+</div>
+<div asp-validation-summary="All" class="text-danger mb-3"></div>
+@if (Model.Paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
+{
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h4 mb-3">@Localizer["Publish the Current Draft"]</h2>
+        <p>@string.Format(@Localizer["{0} questions · {1} minutes"].Value, Model.DraftQuestionCount, Model.Paper.TimeLimit)</p>
+        <p>@Localizer["Requires institution access"]</p>
+        <p class="text-muted">@Localizer["Publishing saves a fixed version. Later edits do not change existing versions."]</p>
+        <form asp-action="Publish" asp-route-id="@Model.Paper.Id" method="post">
+            <button type="submit" class="btn btn-primary" disabled="@(Model.DraftQuestionCount == 0)">@Localizer["Publish New Version"]</button>
+        </form>
+    </div></div>
+}
+<h2 class="h4 mb-3">@Localizer["Published Versions"] (@Model.Total)</h2>
+@if (Model.Versions.Count == 0)
+{
+    <p class="text-muted">@Localizer["No published versions yet."]</p>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var snapshot in Model.Versions)
+        {
+            <div class="col-md-6"><a asp-action="Version" asp-route-id="@Model.Paper.Id" asp-route-snapshotId="@snapshot.Id" class="card h-100 text-decoration-none text-body">
+                <div class="card-body p-4">
+                    <span class="badge bg-primary mb-3">@string.Format(@Localizer["Version {0}"].Value, snapshot.Version)</span>
+                    <h3 class="h5 text-break">@snapshot.Title</h3>
+                    <p class="text-muted mb-2">@string.Format(@Localizer["{0} minutes"].Value, snapshot.TimeLimit)</p>
+                    <p class="mb-2">@Localizer["Requires institution access"]</p>
+                    <span class="text-muted" data-utc-time="@snapshot.CreationTime.ToHtmlDateTime()"></span>
+                </div>
+            </a></div>
+        }
+    </div>
+}
+@if (Model.Total > VersionsViewModel.PageSize)
+{
+    <nav class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4" aria-label="@Localizer["Version pages"]">
+        <span>@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + VersionsViewModel.PageSize - 1) / VersionsViewModel.PageSize)</span>
+        <div class="d-flex gap-2">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="Versions" asp-route-id="@Model.Paper.Id" asp-route-page="@(Model.Page - 1)" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+            @if (Model.Page * VersionsViewModel.PageSize < Model.Total)
+            {
+                <a asp-action="Versions" asp-route-id="@Model.Paper.Id" asp-route-page="@(Model.Page + 1)" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
+}
