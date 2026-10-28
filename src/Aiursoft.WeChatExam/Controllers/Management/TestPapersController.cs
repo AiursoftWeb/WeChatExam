@@ -29,31 +29,44 @@ public class TestPapersController(
         CascadedLinksOrder = 2,
         LinkText = "Test Papers",
         LinkOrder = 3)]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(TestPaperKind kind = TestPaperKind.Mock, string? search = null,
+        PaperStatus? status = null, int page = 1)
     {
-        var papers = await context.Papers
-            .AsNoTracking()
-            .OrderByDescending(p => p.CreationTime)
-            .Select(p => new TestPaperListItemViewModel
+        if (!ModelState.IsValid || !Enum.IsDefined(kind) || (status.HasValue && !Enum.IsDefined(status.Value)))
+            return BadRequest();
+        search = search?.Trim();
+        var query = kind == TestPaperKind.Mock
+            ? context.MockPapers.AsNoTracking().Select(p => new TestPaperListItemViewModel
             {
-                Id = p.Id,
-                Title = p.Title,
-                TimeLimit = p.TimeLimit,
-                Status = p.Status,
-                IsRealExam = p.IsRealExam,
-                QuestionCount = p.PaperQuestions.Count(),
-                TotalScore = p.PaperQuestions.Sum(q => (int?)q.Score) ?? 0,
-                CreationTime = p.CreationTime
+                Id = p.Id, Title = p.Title, TimeLimit = p.TimeLimit, Status = p.Status,
+                GroupTitle = p.TotalCategory.Title, CreationTime = p.CreationTime,
+                QuestionCount = context.MockPaperQuestions.Count(q => q.MockPaperId == p.Id),
+                TotalScore = context.MockPaperQuestions.Where(q => q.MockPaperId == p.Id).Sum(q => (int?)q.Score) ?? 0
             })
-            .ToListAsync();
-
-        return this.StackView(new IndexViewModel { Papers = papers });
+            : context.RealPapers.AsNoTracking().Select(p => new TestPaperListItemViewModel
+            {
+                Id = p.Id, Title = p.Title, TimeLimit = p.TimeLimit, Status = p.Status,
+                GroupTitle = p.Institution.Title, CreationTime = p.CreationTime,
+                QuestionCount = context.RealPaperQuestions.Count(q => q.RealPaperId == p.Id),
+                TotalScore = context.RealPaperQuestions.Where(q => q.RealPaperId == p.Id).Sum(q => (int?)q.Score) ?? 0
+            });
+        if (!string.IsNullOrEmpty(search)) query = query.Where(p => p.Title.Contains(search));
+        if (status.HasValue) query = query.Where(p => p.Status == status);
+        var total = await query.CountAsync();
+        page = Math.Clamp(page, 1, Math.Max(1, (total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize));
+        return this.StackView(new IndexViewModel
+        {
+            Kind = kind, Search = search, Status = status, Page = page, Total = total,
+            Papers = await query.OrderByDescending(p => p.CreationTime).ThenBy(p => p.Id)
+                .Skip((page - 1) * IndexViewModel.PageSize).Take(IndexViewModel.PageSize).ToListAsync()
+        });
     }
 
     [HttpGet]
-    public async Task<IActionResult> Take(Guid id)
+    public async Task<IActionResult> Take(Guid id, TestPaperKind? kind)
     {
-        var model = await BuildTakeViewModelAsync(id);
+        if (!ModelState.IsValid || kind == null || !Enum.IsDefined(kind.Value)) return BadRequest();
+        var model = await BuildTakeViewModelAsync(id, kind.Value);
         if (model == null)
         {
             return NotFound();
@@ -62,7 +75,7 @@ public class TestPapersController(
         if (model.Questions.Count == 0)
         {
             TempData["Error"] = "This paper has no questions to test.";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { kind = model.Kind });
         }
 
         return View(model);
@@ -72,25 +85,14 @@ public class TestPapersController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Submit(SubmitViewModel model)
     {
-        var paper = await context.Papers
-            .AsNoTracking()
-            .Include(p => p.PaperQuestions)
-            .ThenInclude(pq => pq.Question)
-            .FirstOrDefaultAsync(p => p.Id == model.PaperId);
-
-        if (paper == null)
-        {
-            return NotFound();
-        }
-
-        var orderedQuestions = paper.PaperQuestions
-            .OrderBy(pq => pq.Order)
-            .ThenBy(pq => pq.Id)
-            .ToList();
+        if (!ModelState.IsValid || model.Kind == null || !Enum.IsDefined(model.Kind.Value)) return BadRequest();
+        var paper = await LoadPaperAsync(model.PaperId, model.Kind.Value);
+        if (paper == null) return NotFound();
+        var orderedQuestions = paper.Questions;
         if (orderedQuestions.Count == 0)
         {
             TempData["Error"] = "This paper has no questions to test.";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { kind = model.Kind });
         }
 
         var results = new List<TestPaperQuestionResultViewModel>(orderedQuestions.Count);
@@ -136,6 +138,7 @@ public class TestPapersController(
         return View("Result", new ResultViewModel
         {
             PaperId = paper.Id,
+            Kind = model.Kind,
             Title = paper.Title,
             Score = totalScore,
             TotalScore = orderedQuestions.Sum(q => q.Score),
@@ -144,42 +147,55 @@ public class TestPapersController(
         });
     }
 
-    private async Task<TakeViewModel?> BuildTakeViewModelAsync(Guid paperId)
+    private async Task<TakeViewModel?> BuildTakeViewModelAsync(Guid paperId, TestPaperKind kind)
     {
-        var paper = await context.Papers
-            .AsNoTracking()
-            .Include(p => p.PaperQuestions)
-            .ThenInclude(pq => pq.Question)
-            .FirstOrDefaultAsync(p => p.Id == paperId);
-
-        if (paper == null)
-        {
-            return null;
-        }
-
-        var questions = paper.PaperQuestions
-            .OrderBy(pq => pq.Order)
-            .ThenBy(pq => pq.Id)
-            .Select(pq => new TestPaperQuestionViewModel
-            {
-                Id = pq.QuestionId,
-                Order = pq.Order,
-                Score = pq.Score,
-                Content = pq.Question.Content,
-                QuestionType = pq.Question.QuestionType,
-                GradingStrategy = pq.Question.GradingStrategy,
-                Options = ParseOptions(pq.Question)
-            })
-            .ToList();
-
+        var paper = await LoadPaperAsync(paperId, kind);
+        if (paper == null) return null;
         return new TakeViewModel
         {
-            PaperId = paper.Id,
-            Title = paper.Title,
-            TimeLimit = paper.TimeLimit,
-            TotalScore = questions.Sum(q => q.Score),
-            Questions = questions
+            PaperId = paper.Id, Kind = kind, Title = paper.Title, TimeLimit = paper.TimeLimit,
+            TotalScore = paper.Questions.Sum(q => q.Score),
+            Questions = paper.Questions.Select(pq => new TestPaperQuestionViewModel
+            {
+                Id = pq.Question.Id, Order = pq.Order, Score = pq.Score,
+                Content = pq.Question.Content, QuestionType = pq.Question.QuestionType,
+                GradingStrategy = pq.Question.GradingStrategy, Options = ParseOptions(pq.Question)
+            }).ToList()
         };
+    }
+
+    // Teacher tests use the current template, including unpublished edits. Student exams continue
+    // to use their locked snapshots; this read-only path never creates a snapshot or student history.
+    private async Task<TestPaper?> LoadPaperAsync(Guid id, TestPaperKind kind)
+    {
+        var paper = kind == TestPaperKind.Mock
+            ? await context.MockPapers.AsNoTracking().Where(p => p.Id == id)
+                .Select(p => new TestPaper { Id = p.Id, Title = p.Title, TimeLimit = p.TimeLimit }).SingleOrDefaultAsync()
+            : await context.RealPapers.AsNoTracking().Where(p => p.Id == id)
+                .Select(p => new TestPaper { Id = p.Id, Title = p.Title, TimeLimit = p.TimeLimit }).SingleOrDefaultAsync();
+        if (paper == null) return null;
+        var query = kind == TestPaperKind.Mock
+            ? context.MockPaperQuestions.AsNoTracking().Where(q => q.MockPaperId == id)
+                .Select(q => new TestQuestion { Question = q.Question, Order = q.Order, Score = q.Score })
+            : context.RealPaperQuestions.AsNoTracking().Where(q => q.RealPaperId == id)
+                .Select(q => new TestQuestion { Question = q.Question, Order = q.Order, Score = q.Score });
+        paper.Questions = await query.OrderBy(q => q.Order).ThenBy(q => q.Question.Id).ToListAsync();
+        return paper;
+    }
+
+    private sealed class TestPaper
+    {
+        public Guid Id { get; init; }
+        public required string Title { get; init; }
+        public int TimeLimit { get; init; }
+        public List<TestQuestion> Questions { get; set; } = [];
+    }
+
+    private sealed class TestQuestion
+    {
+        public required Question Question { get; init; }
+        public int Order { get; init; }
+        public int Score { get; init; }
     }
 
     private static List<string> ParseOptions(Question question)

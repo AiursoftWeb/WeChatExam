@@ -16,7 +16,7 @@
     <header class="test-exam-focus-header sticky-top">
         <div class="test-exam-focus-header-inner">
             <div class="d-flex align-items-center gap-3 overflow-hidden">
-                <a asp-action="Index" class="test-exam-exit" aria-label="@Localizer["Exit test"]"><i data-lucide="x"></i></a>
+                <a asp-action="Index" asp-route-kind="@Model.Kind" class="test-exam-exit" aria-label="@Localizer["Exit test"]"><i data-lucide="x"></i></a>
                 <div class="test-paper-icon d-none d-sm-inline-flex"><i data-lucide="shield-check"></i></div>
                 <div class="overflow-hidden">
                     <div class="test-exam-kicker mb-0">@Localizer["Administrator paper test"]</div>
@@ -45,7 +45,8 @@
             </button>
         </div>
 
-        <form asp-action="Submit" method="post" id="testPaperForm" data-paper-id="@Model.PaperId" data-time-limit="@Model.TimeLimit">
+        <form asp-action="Submit" method="post" id="testPaperForm" data-paper-id="@Model.PaperId" data-paper-kind="@Model.Kind" data-time-limit="@Model.TimeLimit">
+            <input type="hidden" name="Kind" value="@Model.Kind" />
             <input type="hidden" name="PaperId" value="@Model.PaperId" />
             <div class="row g-4">
                 <aside class="col-lg-3 d-none d-lg-block">
@@ -180,121 +181,12 @@
     </div>
 
     <script src="/UIStack/dist/js/app.js"></script>
-    <script>
-        (() => {
-            const form = document.getElementById('testPaperForm');
-            const paperId = form.dataset.paperId;
-            const timeLimit = Number(form.dataset.timeLimit);
-            const storageKey = `wechat-exam:paper-test:${paperId}`;
-            const timerKey = `${storageKey}:started-at`;
-            const flagsKey = `${storageKey}:flags`;
-            const answerInputs = [...form.querySelectorAll('[data-answer]')];
-            const cards = [...document.querySelectorAll('[data-question-id]')];
-            const saveState = document.getElementById('saveState');
-            let submitting = false;
-
-            const readJson = (key, fallback) => {
-                try { return JSON.parse(localStorage.getItem(key)) ?? fallback; }
-                catch { return fallback; }
-            };
-            const answers = readJson(storageKey, {});
-            const flags = new Set(readJson(flagsKey, []));
-
-            answerInputs.forEach(input => {
-                const saved = answers[input.dataset.answer];
-                if (input.type === 'radio') input.checked = saved === input.value;
-                else if (typeof saved === 'string') input.value = saved;
-            });
-
-            const getAnswer = id => {
-                const inputs = answerInputs.filter(input => input.dataset.answer === id);
-                const radio = inputs.find(input => input.type === 'radio');
-                return radio ? (inputs.find(input => input.checked)?.value ?? '') : (inputs[0]?.value ?? '').trim();
-            };
-
-            const updateState = () => {
-                const current = {};
-                let answered = 0;
-                cards.forEach(card => {
-                    const id = card.dataset.questionId;
-                    const answer = getAnswer(id);
-                    if (answer) {
-                        current[id] = answer;
-                        answered++;
-                    }
-                    document.querySelectorAll(`[data-nav-question="${id}"]`).forEach(link => {
-                        link.classList.toggle('answered', Boolean(answer));
-                        link.classList.toggle('flagged', flags.has(id));
-                    });
-                    card.classList.toggle('is-flagged', flags.has(id));
-                });
-                localStorage.setItem(storageKey, JSON.stringify(current));
-                document.getElementById('answeredCount').textContent = answered;
-                document.getElementById('mobileAnsweredCount').textContent = answered;
-                document.getElementById('modalAnsweredCount').textContent = answered;
-                if (saveState) saveState.innerHTML = '<i data-lucide="cloud-check"></i>@Localizer["Saved in this browser"]';
-                window.lucide?.createIcons();
-            };
-
-            answerInputs.forEach(input => input.addEventListener(input.type === 'radio' ? 'change' : 'input', () => {
-                if (saveState) saveState.innerHTML = '<span class="spinner-border spinner-border-sm"></span>@Localizer["Saving..."]';
-                updateState();
-            }));
-
-            document.querySelectorAll('[data-flag-question]').forEach(button => button.addEventListener('click', () => {
-                const id = button.dataset.flagQuestion;
-                flags.has(id) ? flags.delete(id) : flags.add(id);
-                localStorage.setItem(flagsKey, JSON.stringify([...flags]));
-                updateState();
-            }));
-
-            const totalMs = Math.max(0, timeLimit) * 60 * 1000;
-            let startedAt = Number(localStorage.getItem(timerKey));
-            if (!startedAt || Number.isNaN(startedAt)) {
-                startedAt = Date.now();
-                localStorage.setItem(timerKey, String(startedAt));
-            }
-
-            const submit = () => {
-                if (submitting) return;
-                submitting = true;
-                const button = document.getElementById('confirmSubmitButton');
-                button.disabled = true;
-                button.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>@Localizer["Grading..."]';
-                form.requestSubmit();
-            };
-
-            const updateTimer = () => {
-                if (totalMs <= 0) {
-                    document.getElementById('countdown').textContent = '@Localizer["No time limit"]';
-                    return;
-                }
-                const remaining = Math.max(0, totalMs - (Date.now() - startedAt));
-                const totalSeconds = Math.floor(remaining / 1000);
-                const hours = Math.floor(totalSeconds / 3600);
-                const minutes = Math.floor((totalSeconds % 3600) / 60);
-                const seconds = totalSeconds % 60;
-                document.getElementById('countdown').textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                const ratio = Math.max(0, remaining / totalMs * 100);
-                document.getElementById('timeProgress').style.width = `${ratio}%`;
-                document.getElementById('timeProgress').classList.toggle('bg-danger', ratio < 15);
-                if (remaining <= 0) submit();
-            };
-
-            const observer = new IntersectionObserver(entries => {
-                entries.filter(entry => entry.isIntersecting).forEach(entry => {
-                    document.querySelectorAll('.test-exam-number.active').forEach(link => link.classList.remove('active'));
-                    document.querySelectorAll(`[data-nav-question="${entry.target.dataset.questionId}"]`).forEach(link => link.classList.add('active'));
-                });
-            }, { rootMargin: '-25% 0px -60% 0px' });
-            cards.forEach(card => observer.observe(card));
-
-            document.getElementById('confirmSubmitButton').addEventListener('click', submit);
-            form.addEventListener('submit', () => { submitting = true; });
-            updateState();
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        })();
-    </script>
+    <div id="loc-data" hidden>
+        <span data-key="saved">@Localizer["Saved in this browser"]</span>
+        <span data-key="saving">@Localizer["Saving..."]</span>
+        <span data-key="grading">@Localizer["Grading..."]</span>
+        <span data-key="no-limit">@Localizer["No time limit"]</span>
+    </div>
+    <script src="~/js/test-paper-take.js" asp-append-version="true"></script>
 </body>
 </html>

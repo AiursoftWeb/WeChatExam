@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="/styles/test-exam.css" />
 </head>
 <body class="test-exam-result-page test-exam-ui">
-    <main class="test-exam-result-shell">
+    <main class="test-exam-result-shell" id="testPaperResult" data-paper-id="@Model.PaperId" data-paper-kind="@Model.Kind">
         <div class="test-result-hero">
             <div class="test-result-hero-copy">
                 <div class="test-exam-kicker"><i data-lucide="badge-check"></i>@Localizer["Grading complete"]</div>
                 <h1>@Model.Title</h1>
                 <p>@Localizer["This was an administrator test. No official exam record or student practice history was created."]</p>
                 <div class="d-flex flex-wrap gap-2 mt-4">
-                    <a asp-action="Take" asp-route-id="@Model.PaperId" class="btn btn-primary"><i class="align-middle me-1" data-lucide="rotate-ccw"></i>@Localizer["Test again"]</a>
-                    <a asp-action="Index" class="btn btn-light"><i class="align-middle me-1" data-lucide="files"></i>@Localizer["Choose another paper"]</a>
+                    <a asp-action="Take" asp-route-id="@Model.PaperId" asp-route-kind="@Model.Kind" class="btn btn-primary"><i class="align-middle me-1" data-lucide="rotate-ccw"></i>@Localizer["Test again"]</a>
+                    <a asp-action="Index" asp-route-kind="@Model.Kind" class="btn btn-light"><i class="align-middle me-1" data-lucide="files"></i>@Localizer["Choose another paper"]</a>
                 </div>
             </div>
             <div class="test-result-score @scoreClass">
@@ -84,23 +84,10 @@
     </main>
 
     <script src="/UIStack/dist/js/app.js"></script>
-    <script>
-        (() => {
-            const storageKey = 'wechat-exam:paper-test:@Model.PaperId';
-            localStorage.removeItem(storageKey);
-            localStorage.removeItem(`${storageKey}:started-at`);
-            localStorage.removeItem(`${storageKey}:flags`);
-
-            const button = document.getElementById('toggleAll');
-            let expanded = false;
-            button.addEventListener('click', () => {
-                expanded = !expanded;
-                document.querySelectorAll('#resultQuestions .collapse').forEach(element => {
-                    bootstrap.Collapse.getOrCreateInstance(element, { toggle: false })[expanded ? 'show' : 'hide']();
-                });
-                button.textContent = expanded ? '@Localizer["Collapse all"]' : '@Localizer["Expand all"]';
-            });
-        })();
-    </script>
+    <div id="loc-data" hidden>
+        <span data-key="collapse">@Localizer["Collapse all"]</span>
+        <span data-key="expand">@Localizer["Expand all"]</span>
+    </div>
+    <script src="~/js/test-paper-result.js" asp-append-version="true"></script>
 </body>
 </html>
