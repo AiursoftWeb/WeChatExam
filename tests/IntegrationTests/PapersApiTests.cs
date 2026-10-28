@@ -63,6 +63,11 @@ public class PapersApiTests
             var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
             context.UserPracticeHistories.RemoveRange(context.UserPracticeHistories);
             context.Papers.RemoveRange(context.Papers);
+            var realSnapshots = context.PaperSnapshots.Where(s => s.RealPaperId != null);
+            context.QuestionSnapshots.RemoveRange(context.QuestionSnapshots.Where(q => realSnapshots.Any(s => s.Id == q.PaperSnapshotId)));
+            context.PaperSnapshots.RemoveRange(realSnapshots);
+            context.RealPaperQuestions.RemoveRange(context.RealPaperQuestions);
+            context.RealPapers.RemoveRange(context.RealPapers);
             context.Categories.RemoveRange(context.Categories);
             context.Tags.RemoveRange(context.Tags);
             await context.SaveChangesAsync();
@@ -454,6 +459,259 @@ public class PapersApiTests
         Assert.AreEqual(Guid.Empty, result.Id);
         using var afterScope = _server!.Services.CreateScope();
         Assert.AreEqual(0, await afterScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().UserPracticeHistories.CountAsync());
+    }
+
+    private async Task<(Guid Paper, Guid Snapshot, Guid Institution)> CreatePublishedReal(GradingStrategy strategy = GradingStrategy.ExactMatch)
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var school = new Institution { Title = "Published school" };
+        var paper = new RealPaper { Title = "Published real paper", Institution = school, InstitutionId = school.Id };
+        // A school paper deliberately includes paid questions from two different courses.
+        foreach (var order in new[] { 0, 1 })
+        {
+            var period = QuestionPeriodAssignmentTests.TestPeriod();
+            period.IsFree = false;
+            db.RealPaperQuestions.Add(new RealPaperQuestion
+            {
+                RealPaper = paper, Order = order, Score = 15,
+                Question = new Question { Content = "Published real question " + order,
+                    QuestionCategory = period, QuestionType = QuestionType.Choice, GradingStrategy = strategy,
+                    StandardAnswer = "Real secret", Explanation = "Real explanation", Metadata = "Real options" }
+            });
+        }
+        await db.SaveChangesAsync();
+        var snapshot = await scope.ServiceProvider.GetRequiredService<RealPaperPublishing>().PublishAsync(paper);
+        return (paper.Id, snapshot.Id, school.Id);
+    }
+
+    private static VipMembership SchoolMembership(Guid school, int start = -1, int end = 1)
+    {
+        var member = Membership(VipProductType.Institution, null, start, end);
+        member.VipProduct!.InstitutionId = school;
+        return member;
+    }
+
+    [TestMethod]
+    public async Task RealPaperAccessRequiresTheSchoolOrLegacyAllSchoolMembership()
+    {
+        var (paperId, snapshotId, school) = await CreatePublishedReal();
+        Guid course;
+        Guid original;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var q = (await db.RealPaperQuestions.Include(l => l.Question).ThenInclude(q => q.QuestionCategory)
+                .FirstAsync(l => l.RealPaperId == paperId)).Question;
+            course = q.QuestionCategory!.TotalCategoryId;
+            original = q.Id;
+            db.Entry(await db.PaperSnapshots.SingleAsync(s => s.Id == snapshotId)).Property(s => s.IsFree).CurrentValue = true; // Legacy flags never authorize a real paper.
+            await db.SaveChangesAsync();
+        }
+        async Task Check(bool allowed)
+        {
+            var schools = await _http.GetFromJsonAsync<List<RealPaperInstitutionDto>>("/api/RealPapers/institutions");
+            Assert.IsNotNull(schools);
+            Assert.AreEqual(school, schools.Single().Id);
+            Assert.AreEqual("Published school", schools.Single().Title);
+            Assert.AreEqual(1, schools.Single().PaperCount);
+            Assert.AreEqual(allowed, schools.Single().HasAccess);
+            var list = await _http.GetFromJsonAsync<List<RealPaperSummaryDto>>($"/api/RealPapers?institutionId={school}");
+            Assert.IsNotNull(list);
+            Assert.AreEqual(paperId, list.Single().Id);
+            Assert.AreEqual(school, list.Single().InstitutionId);
+            Assert.AreEqual(allowed, list.Single().HasAccess);
+            var response = await _http.GetAsync($"/api/RealPapers/snapshots/{snapshotId}");
+            Assert.AreEqual(allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, response.StatusCode);
+            var text = await response.Content.ReadAsStringAsync();
+            Assert.DoesNotContain("Real secret", text);
+            Assert.DoesNotContain("Real explanation", text);
+            Assert.DoesNotContain("standardAnswer", text);
+            Assert.IsTrue(response.Headers.CacheControl!.NoStore);
+            if (allowed)
+            {
+                var dto = (await response.Content.ReadFromJsonAsync<RealPaperSnapshotDto>())!;
+                Assert.AreEqual(2, dto.Questions.Count);
+                CollectionAssert.AreEqual(new[] { 0, 1 }, dto.Questions.Select(q => q.Order).ToArray());
+                Assert.AreEqual("Real options", dto.Questions[0].Metadata);
+                Assert.AreEqual(school, dto.InstitutionId);
+            }
+            else
+            {
+                Assert.DoesNotContain("Published real question", text);
+                Assert.DoesNotContain("Real options", text);
+                Assert.Contains(school.ToString(), text);
+            }
+        }
+        await Check(false);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        await Check(false);
+        foreach (var denied in new[] { SchoolMembership(Guid.NewGuid()), SchoolMembership(school, -2, -1),
+                     SchoolMembership(school, 1, 2), Membership(VipProductType.Category, course, -1, 1),
+                     Membership(VipProductType.RealExam, null, -2, -1), Membership(VipProductType.RealExam, null, 1, 2) })
+        {
+            _mockWeChatPayService.Memberships = [denied];
+            await Check(false);
+        }
+        foreach (var accepted in new[] { SchoolMembership(school), Membership(VipProductType.RealExam, null, -1, 1) })
+        {
+            _mockWeChatPayService.Memberships = [accepted];
+            await Check(true);
+            // Owning the school must not grant paid question-bank access in either course.
+            Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{original}")).StatusCode);
+        }
+        _http.DefaultRequestHeaders.Authorization = null;
+        await Check(false); // Do not reuse the preceding user's access for a guest.
+    }
+
+    [TestMethod]
+    public async Task RealNavigationUsesPublishedInstitutionsAndVersionMetadata()
+    {
+        var (paperId, first, school) = await CreatePublishedReal();
+        var (_, otherSnapshot, otherSchool) = await CreatePublishedReal();
+        Guid second;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var paper = await db.RealPapers.SingleAsync(p => p.Id == paperId);
+            paper.Title = "Second publication";
+            paper.TimeLimit = 90;
+            second = (await scope.ServiceProvider.GetRequiredService<RealPaperPublishing>().PublishAsync(paper)).Id;
+            paper.Title = "Unpublished rename";
+            paper.TimeLimit = 1;
+            paper.Status = PaperStatus.Frozen;
+            (await db.Institutions.SingleAsync(i => i.Id == school)).OrderIndex = -1;
+            db.RealPapers.Add(new RealPaper { Title = "Draft only", Institution = new Institution { Title = "Hidden school" } });
+            db.Institutions.Add(new Institution { Title = "Empty school" });
+            db.RealPapers.Add(new RealPaper { Title = "Missing snapshot", InstitutionId = school, Status = PaperStatus.Publishable });
+            await db.SaveChangesAsync();
+        }
+        var schools = await _http.GetFromJsonAsync<List<RealPaperInstitutionDto>>("/api/RealPapers/institutions");
+        Assert.IsNotNull(schools);
+        Assert.AreEqual(2, schools.Count, System.Text.Json.JsonSerializer.Serialize(schools));
+        Assert.AreEqual(school, schools[0].Id);
+        Assert.IsTrue(schools.All(i => i.PaperCount == 1));
+        var list = await _http.GetFromJsonAsync<List<RealPaperSummaryDto>>($"/api/RealPapers?institutionId={school}");
+        Assert.IsNotNull(list);
+        Assert.AreEqual(second, list.Single().LatestSnapshotId);
+        Assert.AreEqual(2, list.Single().LatestVersion);
+        Assert.AreEqual("Second publication", list.Single().Title);
+        Assert.AreEqual(90, list.Single().TimeLimit);
+        Assert.AreEqual(2, (await _http.GetFromJsonAsync<List<RealPaperSummaryDto>>("/api/RealPapers"))!.Count);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/RealPapers?institutionId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.GetAsync("/api/RealPapers?institutionId=invalid")).StatusCode);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        _mockWeChatPayService.Memberships = [SchoolMembership(school)];
+        Assert.AreEqual(180, (await _http.GetFromJsonAsync<RealPaperSnapshotDto>($"/api/RealPapers/snapshots/{first}"))!.TimeLimit);
+        Assert.AreEqual(90, (await _http.GetFromJsonAsync<RealPaperSnapshotDto>($"/api/RealPapers/snapshots/{second}"))!.TimeLimit);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/RealPapers/snapshots/{otherSnapshot}")).StatusCode);
+        using var afterScope = _server!.Services.CreateScope();
+        var after = afterScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        (await after.RealPapers.SingleAsync(p => p.Id == paperId)).Status = PaperStatus.Draft;
+        await after.SaveChangesAsync();
+        foreach (var id in new[] { first, second })
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/RealPapers/snapshots/{id}")).StatusCode);
+        Assert.AreEqual(otherSchool, (await _http.GetFromJsonAsync<List<RealPaperInstitutionDto>>("/api/RealPapers/institutions"))!.Single().Id);
+    }
+
+    [TestMethod]
+    public async Task RealGradingChecksSchoolBeforeAiAndUsesPublishedCrossCourseContent()
+    {
+        var (_, snapshotId, school) = await CreatePublishedReal(GradingStrategy.AiEval);
+        List<QuestionSnapshot> questions;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            questions = await db.QuestionSnapshots.Where(q => q.PaperSnapshotId == snapshotId).OrderBy(q => q.Order).ToListAsync();
+            var original = await db.Questions.SingleAsync(q => q.Id == questions[0].OriginalQuestionId);
+            original.StandardAnswer = "Unpublished answer";
+            original.Explanation = "Unpublished explanation";
+            await db.SaveChangesAsync();
+        }
+        var input = new CreateUserPracticeHistoryDto { QuestionId = questions[0].Id, UserAnswer = "My response", PracticeType = PracticeType.QuestionType };
+        var url = $"/api/RealPapers/snapshots/{snapshotId}/answers";
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        foreach (var denied in new List<VipMembership>[] { [], [SchoolMembership(Guid.NewGuid())], [SchoolMembership(school, -2, -1)],
+                     [SchoolMembership(school, 1, 2)], [Membership(VipProductType.Category, Guid.NewGuid(), -1, 1)] })
+        {
+            _mockWeChatPayService.Memberships = denied;
+            var rejected = await _http.PostAsJsonAsync(url, input);
+            Assert.AreEqual(HttpStatusCode.Forbidden, rejected.StatusCode);
+            Assert.DoesNotContain("Real secret", await rejected.Content.ReadAsStringAsync());
+            Assert.AreEqual(0, _ollama.Questions.Count);
+        }
+        _mockWeChatPayService.Memberships = [SchoolMembership(school)];
+        foreach (var question in questions)
+        {
+            input.QuestionId = question.Id;
+            var response = await _http.PostAsJsonAsync(url, input);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+            Assert.AreEqual(12, result.Score);
+            Assert.AreEqual("Real secret", result.StandardAnswer);
+            Assert.AreEqual("Real explanation", result.Explanation);
+            Assert.AreNotEqual(Guid.Empty, result.Id);
+            Assert.IsTrue(response.Headers.CacheControl!.NoStore);
+        }
+        Assert.AreEqual(2, _ollama.Questions.Count);
+        Assert.IsTrue(_ollama.Questions.All(q => q.Contains("Real explanation") && !q.Contains("Unpublished explanation")));
+        using var afterScope = _server!.Services.CreateScope();
+        var after = afterScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(2, await after.UserPracticeHistories.CountAsync());
+        Assert.AreEqual(0, await after.ExamRecords.CountAsync());
+        _mockWeChatPayService.Memberships = [];
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        Assert.AreEqual(2, _ollama.Questions.Count);
+        Assert.AreEqual(2, await after.UserPracticeHistories.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task RealGradingRejectsForeignVersionsAndRetainsDeletedSourcePayload()
+    {
+        var (paperId, snapshotId, school) = await CreatePublishedReal();
+        var (_, otherSnapshot, _) = await CreatePublishedReal();
+        var (_, mockSnapshot, _) = await CreatePublishedMock(true);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        _mockWeChatPayService.Memberships = [Membership(VipProductType.RealExam, null, -1, 1)];
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var question = await db.QuestionSnapshots.FirstAsync(q => q.PaperSnapshotId == snapshotId);
+        var legacy = new PaperSnapshot { Title = "Legacy", Version = 1 };
+        db.PaperSnapshots.Add(legacy);
+        await db.SaveChangesAsync();
+        var input = new CreateUserPracticeHistoryDto { QuestionId = question.Id, UserAnswer = " Real secret " };
+        foreach (var wrong in new[] { otherSnapshot, mockSnapshot, legacy.Id, Guid.NewGuid() })
+        {
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync($"/api/RealPapers/snapshots/{wrong}/answers", input)).StatusCode);
+            if (wrong != otherSnapshot)
+                Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/RealPapers/snapshots/{wrong}")).StatusCode);
+        }
+        var url = $"/api/RealPapers/snapshots/{snapshotId}/answers";
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.PostAsJsonAsync(url, new { questionId = question.Id, userAnswer = (string?)null })).StatusCode);
+        input.PracticeType = (PracticeType)999;
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        input.PracticeType = null;
+        input.QuestionId = Guid.NewGuid();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        input.QuestionId = question.Id;
+        var paper = await db.RealPapers.SingleAsync(p => p.Id == paperId);
+        paper.Status = PaperStatus.Draft;
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        paper.Status = PaperStatus.Frozen;
+        db.RealPaperQuestions.RemoveRange(db.RealPaperQuestions.Where(q => q.QuestionId == question.OriginalQuestionId));
+        db.Questions.Remove(await db.Questions.SingleAsync(q => q.Id == question.OriginalQuestionId));
+        await db.SaveChangesAsync();
+        var response = await _http.PostAsJsonAsync(url, input);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.IsTrue(result.IsCorrect);
+        Assert.AreEqual(15, result.Score);
+        Assert.AreEqual(Guid.Empty, result.Id);
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+        Assert.AreEqual(0, _ollama.Questions.Count);
+        Assert.AreEqual(school, (await _http.GetFromJsonAsync<RealPaperSnapshotDto>($"/api/RealPapers/snapshots/{snapshotId}"))!.InstitutionId);
     }
 
     private async Task<string> LoginAsWeChatUserAsync()
