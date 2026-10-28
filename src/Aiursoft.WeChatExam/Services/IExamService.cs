@@ -5,7 +5,8 @@ namespace Aiursoft.WeChatExam.Services;
 public interface IExamService
 {
     // Admin & Management
-    Task<Exam> CreateExamAsync(string title, Guid paperId, DateTime startTime, DateTime endTime, int? durationMinutes = null);
+    Task<List<PaperSnapshot>> GetPublishedPapersForExamAsync();
+    Task<Exam> CreateExamAsync(string title, Guid paperSnapshotId, DateTime startTime, DateTime endTime, int? durationMinutes = null);
     Task UpdateExamAsync(Guid examId, string title, DateTime startTime, DateTime endTime, int durationMinutes, bool isPublic, int allowedAttempts, bool allowReview, DateTime? showAnswerAfter);
     Task DeleteExamAsync(Guid examId);
     Task<Exam?> GetExamAsync(Guid examId);

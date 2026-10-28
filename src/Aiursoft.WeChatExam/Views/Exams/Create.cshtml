@@ -13,14 +13,15 @@
             </div>
             
             <div class="mb-3">
-                <label asp-for="PaperId" class="form-label"></label>
-                <select asp-for="PaperId" class="form-select">
+                <label asp-for="PaperSnapshotId" class="form-label"></label>
+                <select asp-for="PaperSnapshotId" class="form-select">
+                    <option value="">@Localizer["Select a published paper version"]</option>
                     @foreach(var p in Model.AvailablePapers)
                     {
-                        <option value="@p.Id">@p.Title (@p.TimeLimit min)</option>
+                        <option value="@p.Id">@(p.MockPaperId.HasValue ? @Localizer["Mock paper"] : @Localizer["Real paper"]) — @p.Title — @string.Format(@Localizer["Version {0} · {1} minutes"].Value, p.Version, p.TimeLimit)</option>
                     }
                 </select>
-                <span asp-validation-for="PaperId" class="text-danger"></span>
+                <span asp-validation-for="PaperSnapshotId" class="text-danger"></span>
             </div>
 
             <div class="row">

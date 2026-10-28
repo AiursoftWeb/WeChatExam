@@ -43,7 +43,7 @@ public class ExamsController : ControllerBase
         {
             Id = e.Id,
             Title = e.Title,
-            PaperTitle = e.Paper?.Title ?? "",
+            PaperTitle = e.PaperSnapshot?.Title ?? e.Paper?.Title ?? "",
             StartTime = e.StartTime,
             EndTime = e.EndTime,
             DurationMinutes = e.DurationMinutes,

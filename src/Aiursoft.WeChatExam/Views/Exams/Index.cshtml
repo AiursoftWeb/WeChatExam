@@ -33,7 +33,7 @@
                 {
                     <tr>
                         <td>@exam.Title</td>
-                        <td>@exam.Paper?.Title</td>
+                        <td>@(exam.PaperSnapshot?.Title ?? exam.Paper?.Title)</td>
                         <td><label class="text-monospace" data-utc-time="@exam.StartTime.ToHtmlDateTime()"></label></td>
                         <td><label class="text-monospace" data-utc-time="@exam.EndTime.ToHtmlDateTime()"></label></td>
                         <td>

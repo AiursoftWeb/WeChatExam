@@ -1,6 +1,7 @@
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.Canon.TaskQueue;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace Aiursoft.WeChatExam.Services;
 
@@ -9,41 +10,57 @@ public class ExamService : IExamService
     private readonly WeChatExamDbContext _dbContext;
     private readonly IGradingService _gradingService;
     private readonly ServiceTaskQueue _taskQueue;
+    private readonly IStringLocalizer<ExamService> _localizer;
 
     public ExamService(
         WeChatExamDbContext dbContext, 
         IGradingService gradingService,
-        ServiceTaskQueue taskQueue)
+        ServiceTaskQueue taskQueue,
+        IStringLocalizer<ExamService> localizer)
     {
         _dbContext = dbContext;
         _gradingService = gradingService;
         _taskQueue = taskQueue;
+        _localizer = localizer;
     }
 
     #region Admin & Management
 
-    public async Task<Exam> CreateExamAsync(string title, Guid paperId, DateTime startTime, DateTime endTime, int? durationMinutes = null)
+    private IQueryable<PaperSnapshot> PublishedPaperVersions() => _dbContext.PaperSnapshots
+        .Where(s => (s.MockPaper != null &&
+                        (s.MockPaper.Status == PaperStatus.Publishable || s.MockPaper.Status == PaperStatus.Frozen)) ||
+                    (s.RealPaper != null &&
+                        (s.RealPaper.Status == PaperStatus.Publishable || s.RealPaper.Status == PaperStatus.Frozen)))
+        .Where(s => s.QuestionSnapshots.Any());
+
+    public async Task<List<PaperSnapshot>> GetPublishedPapersForExamAsync()
     {
-        var paper = await _dbContext.Papers.FindAsync(paperId);
-        if (paper == null) throw new InvalidOperationException("Paper not found");
+        // One latest published version per new template. Legacy papers remain readable only
+        // through existing locked exams; they are no longer offered for new schedules.
+        return await PublishedPaperVersions().AsNoTracking()
+            .Where(s => !_dbContext.PaperSnapshots.Any(newer => newer.Version > s.Version &&
+                ((s.MockPaperId != null && newer.MockPaperId == s.MockPaperId) ||
+                 (s.RealPaperId != null && newer.RealPaperId == s.RealPaperId))))
+            .OrderBy(s => s.Title).ThenBy(s => s.Id).ToListAsync();
+    }
 
-        // Find the latest snapshot to lock this exam to a specific version
-        var latestSnapshot = await _dbContext.PaperSnapshots
-            .Where(s => s.PaperId == paperId)
-            .OrderByDescending(s => s.Version)
-            .FirstOrDefaultAsync();
+    public async Task<Exam> CreateExamAsync(string title, Guid paperSnapshotId, DateTime startTime, DateTime endTime, int? durationMinutes = null)
+    {
+        var snapshot = await PublishedPaperVersions().AsNoTracking()
+            .SingleOrDefaultAsync(s => s.Id == paperSnapshotId);
+        if (snapshot == null)
+            throw new InvalidOperationException(_localizer["Select a published mock or real paper version with questions."]);
 
-        if (latestSnapshot == null) throw new InvalidOperationException("Cannot create exam: The selected paper has no published snapshots. Please publish the paper first.");
-
+        // Lock the exact version selected by the teacher, even if another version was
+        // published while the form was open. Scheduling must never silently replace its payload.
         var exam = new Exam
         {
             Id = Guid.NewGuid(),
             Title = title,
-            PaperId = paperId,
-            PaperSnapshotId = latestSnapshot.Id, // Lock to this version
+            PaperSnapshotId = snapshot.Id,
             StartTime = startTime,
             EndTime = endTime,
-            DurationMinutes = durationMinutes ?? paper.TimeLimit,
+            DurationMinutes = durationMinutes ?? snapshot.TimeLimit,
             IsPublic = true,
             AllowedAttempts = 1
         };
@@ -88,6 +105,7 @@ public class ExamService : IExamService
     public async Task<Exam?> GetExamAsync(Guid examId)
     {
         return await _dbContext.Exams
+            .Include(e => e.PaperSnapshot)
             .Include(e => e.Paper)
             .FirstOrDefaultAsync(e => e.Id == examId);
     }
@@ -95,6 +113,7 @@ public class ExamService : IExamService
     public async Task<List<Exam>> GetAllExamsAsync()
     {
         return await _dbContext.Exams
+            .Include(e => e.PaperSnapshot)
             .Include(e => e.Paper)
             .OrderByDescending(e => e.CreationTime)
             .ToListAsync();
@@ -110,6 +129,7 @@ public class ExamService : IExamService
         // Logic: Exam is public, and current time is between start and end (or upcoming)
         // We return upcoming and active exams.
         return await _dbContext.Exams
+            .Include(e => e.PaperSnapshot)
             .Include(e => e.Paper)
             .Where(e => e.IsPublic && e.EndTime > now)
             .OrderBy(e => e.StartTime)

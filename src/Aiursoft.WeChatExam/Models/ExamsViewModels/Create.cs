@@ -17,8 +17,8 @@ public class CreateViewModel : UiStackLayoutViewModel
     public string Title { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "The {0} is required.")]
-    [Display(Name = "Paper")]
-    public Guid? PaperId { get; set; }
+    [Display(Name = "Published paper version")]
+    public Guid? PaperSnapshotId { get; set; }
 
     [Required(ErrorMessage = "The {0} is required.")]
     [Display(Name = "Start Time")]
@@ -31,5 +31,5 @@ public class CreateViewModel : UiStackLayoutViewModel
     [Display(Name = "Duration (minutes)")]
     public int? DurationMinutes { get; set; }
 
-    public List<Paper> AvailablePapers { get; set; } = new();
+    public List<PaperSnapshot> AvailablePapers { get; set; } = new();
 }

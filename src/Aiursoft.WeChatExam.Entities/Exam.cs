@@ -21,7 +21,7 @@ public class Exam
     public required string Title { get; set; }
 
     /// <summary>
-    /// 关联的试卷模板ID（如果模板被删除，此字段为空，但Exam因为有Snapshot所以不受影响）
+    /// Legacy template reference retained during migration. New exams only bind PaperSnapshotId.
     /// </summary>
     public Guid? PaperId { get; set; }
 
@@ -30,8 +30,8 @@ public class Exam
     public Paper? Paper { get; set; }
 
     /// <summary>
-    ///  绑定特定的试卷快照版本（如果为空，则使用当前最新版本 - 建议创建时锁定）
-    ///  为了保证考试一致性，建议在创建考试时将其锁定到特定Snapshot
+    /// Locks the published payload for this exam. Nullable only for historical schedules
+    /// that still require the legacy latest-version fallback during migration.
     /// </summary>
     public Guid? PaperSnapshotId { get; set; }
 
