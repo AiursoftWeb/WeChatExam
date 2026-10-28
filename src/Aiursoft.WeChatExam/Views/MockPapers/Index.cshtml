@@ -1,0 +1,108 @@
+@using Aiursoft.WeChatExam.Models.MockPapersViewModels
+@using Aiursoft.WeChatExam.Entities
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@model IndexViewModel
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-2">@Localizer["Mock Papers"]</h1>
+        <p class="text-muted mb-0">@Localizer["Draft only. Question assembly and publication are not available yet."]</p>
+    </div>
+    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
+    {
+        <a asp-action="Create" class="btn btn-primary"><i data-lucide="plus" class="me-1"></i> @Localizer["Create Mock Paper"]</a>
+    }
+</div>
+
+<form method="get" class="row g-2 mb-4" role="search">
+    <div class="col-md-6">
+        <input name="search" value="@Model.Search" class="form-control" placeholder="@Localizer["Search papers"]" aria-label="@Localizer["Search papers"]" />
+    </div>
+    <div class="col-md-4">
+        <select asp-for="TotalCategoryId" class="form-select" aria-label="@Localizer["Course"]">
+            <option value="">@Localizer["All courses"]</option>
+            @foreach (var course in Model.Courses)
+            {
+                <option value="@course.Id">@course.Title</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2"><button type="submit" class="btn btn-outline-primary w-100">@Localizer["Search"]</button></div>
+</form>
+
+@if (Model.Papers.Count == 0)
+{
+    <div class="card"><div class="card-body text-center py-5">
+        <i data-lucide="notebook-pen" class="text-primary mb-3"></i>
+        @if (string.IsNullOrEmpty(Model.Search) && !Model.TotalCategoryId.HasValue)
+        {
+            <h2 class="h4">@Localizer["Create your first mock paper"]</h2>
+        }
+        else
+        {
+            <h2 class="h4">@Localizer["No matching papers"]</h2>
+            <a asp-action="Index">@Localizer["Show all papers"]</a>
+        }
+    </div></div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var paper in Model.Papers)
+        {
+            <div class="col-md-6 col-xl-4">
+                <div class="card h-100 position-relative shadow-sm"><div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <i data-lucide="notebook-pen" class="text-primary"></i>
+                        @if (paper.Status == PaperStatus.Draft)
+                        {
+                            <span class="badge bg-secondary">@Localizer["Draft"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@Localizer["Read only"]</span>
+                        }
+                    </div>
+                    <h2 class="h4 text-break mb-3">@paper.Title</h2>
+                    <p class="text-break mb-2">@paper.TotalCategory.Title</p>
+                    <p class="text-muted mb-2">@string.Format(@Localizer["{0} minutes"].Value, paper.TimeLimit)</p>
+                    <p class="mb-4">
+                        @if (paper.AllowViewAnonymousely)
+                        {
+                            @Localizer["No membership required"]
+                        }
+                        else
+                        {
+                            @Localizer["Requires course VIP"]
+                        }
+                    </p>
+                    @if (paper.Status == PaperStatus.Draft)
+                    {
+                        <a asp-action="Edit" asp-route-id="@paper.Id" class="stretched-link text-decoration-none">
+                            @Localizer["Edit Mock Paper"] <i data-lucide="arrow-right" class="ms-1"></i>
+                        </a>
+                    }
+                </div></div>
+            </div>
+        }
+    </div>
+}
+
+@if (Model.Total > IndexViewModel.PageSize)
+{
+    <nav class="d-flex justify-content-between align-items-center mt-4" aria-label="@Localizer["Paper pages"]">
+        <span class="text-muted">@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize)</span>
+        <div class="d-flex gap-2">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="Index" asp-route-search="@Model.Search" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-page="@(Model.Page - 1)" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+            @if (Model.Page * IndexViewModel.PageSize < Model.Total)
+            {
+                <a asp-action="Index" asp-route-search="@Model.Search" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-page="@(Model.Page + 1)" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
+}
