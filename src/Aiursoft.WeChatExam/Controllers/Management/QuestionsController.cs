@@ -23,6 +23,7 @@ public class QuestionsController(
     WeChatExamDbContext context,
     KnowledgeExerciseValidation exerciseValidation,
     MockPaperValidation mockPaperValidation,
+    RealPaperValidation realPaperValidation,
     ITagService tagService,
     IStringLocalizer<QuestionsController> localizer) : Controller
 {
@@ -573,7 +574,8 @@ public class QuestionsController(
             .SingleOrDefaultAsync(q => q.Id == id);
         if (question == null) return NotFound();
 
-        var deletionError = await mockPaperValidation.ValidateDeletionAsync([id]);
+        var deletionError = await mockPaperValidation.ValidateDeletionAsync([id])
+            ?? await realPaperValidation.ValidateDeletionAsync([id]);
         if (deletionError != null)
         {
             ModelState.AddModelError(string.Empty, deletionError);
@@ -603,7 +605,8 @@ public class QuestionsController(
             return BadRequest("No questions selected for deletion.");
         }
 
-        var deletionError = await mockPaperValidation.ValidateDeletionAsync(request.QuestionIds);
+        var deletionError = await mockPaperValidation.ValidateDeletionAsync(request.QuestionIds)
+            ?? await realPaperValidation.ValidateDeletionAsync(request.QuestionIds);
         if (deletionError != null) return BadRequest(deletionError);
 
         var questionsToDelete = await context.Questions

@@ -67,6 +67,14 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .HasOne(q => q.Question).WithMany().HasForeignKey(q => q.QuestionId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        builder.Entity<RealPaperQuestion>().HasKey(q => new { q.RealPaperId, q.QuestionId });
+        builder.Entity<RealPaperQuestion>()
+            .HasOne(q => q.RealPaper).WithMany().HasForeignKey(q => q.RealPaperId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<RealPaperQuestion>()
+            .HasOne(q => q.Question).WithMany().HasForeignKey(q => q.QuestionId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         builder.Entity<RealPaper>().HasOne(p => p.Institution).WithMany()
             .HasForeignKey(p => p.InstitutionId).OnDelete(DeleteBehavior.Restrict);
 
@@ -119,6 +127,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
 
     public DbSet<MockPaperQuestion> MockPaperQuestions => Set<MockPaperQuestion>();
     public DbSet<MockPaper> MockPapers => Set<MockPaper>();
+    public DbSet<RealPaperQuestion> RealPaperQuestions => Set<RealPaperQuestion>();
     public DbSet<RealPaper> RealPapers => Set<RealPaper>();
     public DbSet<Institution> Institutions => Set<Institution>();
     public DbSet<TotalCategory> TotalCategories => Set<TotalCategory>();
