@@ -147,6 +147,8 @@ public class ExamService : IExamService
 
     public async Task<ExamRecord> StartExamAsync(Guid examId, string userId)
     {
+        if (string.IsNullOrEmpty(userId) || !await _dbContext.Users.AnyAsync(u => u.Id == userId))
+            throw new UnauthorizedAccessException("A student account is required.");
         var now = DateTime.UtcNow;
         var exam = await _dbContext.Exams.FirstOrDefaultAsync(e => e.Id == examId);
         // A hidden schedule must not be startable by guessing its ID.
@@ -165,7 +167,8 @@ public class ExamService : IExamService
         var inProgressRecord = existingRecords.FirstOrDefault(r => r.Status == ExamRecordStatus.InProgress);
         if (inProgressRecord != null)
         {
-            // Resume existing session
+            // Admission is checked when an attempt is created. Its owner may finish the
+            // locked version even if membership expires or the source template is retired.
             return inProgressRecord;
         }
 
@@ -187,6 +190,9 @@ public class ExamService : IExamService
         }
         else
         {
+            // A missing legacy ID must never match every migrated snapshot with PaperId=null.
+            if (!exam.PaperId.HasValue)
+                throw new InvalidOperationException("No paper version is configured for this exam.");
             // We find the latest snapshot for the paper
             var latestSnapshot = await _dbContext.PaperSnapshots
                 .Where(s => s.PaperId == exam.PaperId)
@@ -196,6 +202,27 @@ public class ExamService : IExamService
             if (latestSnapshot == null) throw new InvalidOperationException("No published version of this paper exists.");
             targetSnapshotId = latestSnapshot.Id;
         }
+
+        var snapshot = await _dbContext.PaperSnapshots.AsNoTracking()
+            .Include(s => s.MockPaper).Include(s => s.RealPaper)
+            .Include(s => s.Paper).ThenInclude(p => p!.PaperCategories)
+            .SingleAsync(s => s.Id == targetSnapshotId);
+        // Admission only reads saved memberships; it must not initialize a payment client.
+        var memberships = await _dbContext.VipMemberships.AsNoTracking().Include(m => m.VipProduct)
+            .Where(m => m.UserId == userId).ToListAsync();
+        var access = PaperAccessService.FromMemberships(memberships);
+        // A public exam schedule is discoverable, not a free route into a paid paper.
+        // New attempts require the same whole-paper entitlement as ordinary practice.
+        // An orphan historical version remains readable through existing attempts only.
+        var canStart = snapshot.MockPaper != null
+            ? snapshot.MockPaper.Status is PaperStatus.Publishable or PaperStatus.Frozen &&
+                PaperAccessService.CanAccess(snapshot.MockPaper, access)
+            : snapshot.RealPaper != null
+                ? snapshot.RealPaper.Status is PaperStatus.Publishable or PaperStatus.Frozen &&
+                    PaperAccessService.CanAccess(snapshot.RealPaper, access)
+                : snapshot.Paper != null && PaperAccessService.CanAccess(snapshot.Paper, access);
+        if (!canStart)
+            throw new UnauthorizedAccessException("An active membership for this paper is required.");
 
         var newRecord = new ExamRecord
         {
@@ -342,6 +369,7 @@ public class ExamService : IExamService
         return await _dbContext.ExamRecords
             .Include(r => r.Exam)
             .Include(r => r.User)
+            .Include(r => r.PaperSnapshot)
             .Include(r => r.AnswerRecords)
             .ThenInclude(ar => ar.QuestionSnapshot)
             .FirstOrDefaultAsync(r => r.Id == recordId);

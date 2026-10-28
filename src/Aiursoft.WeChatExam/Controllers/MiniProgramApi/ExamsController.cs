@@ -3,6 +3,7 @@ using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 
@@ -86,8 +87,10 @@ public class ExamsController : ControllerBase
     /// </summary>
     [HttpPost("{examId}/start")]
     [ProducesResponseType(typeof(ExamSessionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> StartExam(Guid examId)
+    public async Task<IActionResult> StartExam(Guid examId, [FromServices] WeChatExamDbContext context)
     {
         try
         {
@@ -96,22 +99,26 @@ public class ExamsController : ControllerBase
 
             var record = await _examService.StartExamAsync(examId, userId);
             
-            // Re-fetch to get details if needed, or mapping immediately 
-            // We need to return question content which comes from Snapshot
             record = await _examService.GetExamRecordAsync(record.Id) ?? record;
-
-            // Load Snapshot if not loaded
-
-            // The client should obtains the complete test paper snapshot from PaperController based on the SnapshotId
+            // Read the attempt's locked payload, not the latest template or the retired
+            // legacy Paper API. Standard answers, explanations and grading stay private.
+            var questions = await ReadQuestions(context, record.PaperSnapshotId, HttpContext.RequestAborted);
 
             return Ok(new ExamSessionDto
             {
                 RecordId = record.Id,
                 PaperSnapshotId = record.PaperSnapshotId,
+                PaperTitle = record.PaperSnapshot.Title,
+                Questions = questions,
                 StartTime = record.StartTime,
-                EndTime = record.StartTime.AddMinutes(record.Exam.DurationMinutes), // Theoretical end for this session
+                EndTime = record.StartTime.AddMinutes(record.Exam.DurationMinutes) < record.Exam.EndTime
+                    ? record.StartTime.AddMinutes(record.Exam.DurationMinutes) : record.Exam.EndTime,
                 Answers = record.AnswerRecords.ToDictionary(a => a.QuestionSnapshotId, a => a.UserAnswer)
             });
+        }
+        catch (UnauthorizedAccessException)
+        {
+            return Forbid();
         }
         catch (InvalidOperationException ex)
         {
@@ -171,7 +178,7 @@ public class ExamsController : ControllerBase
     /// 获取考试记录详情（回顾/查分）
     /// </summary>
     [HttpGet("record/{recordId}")]
-    public async Task<IActionResult> GetRecordDetails(Guid recordId)
+    public async Task<IActionResult> GetRecordDetails(Guid recordId, [FromServices] WeChatExamDbContext context)
     {
         var userId = GetUserId();
         if (string.IsNullOrEmpty(userId)) return Unauthorized();
@@ -203,6 +210,9 @@ public class ExamsController : ControllerBase
         var details = new ExamRecordDetailDto
         {
             Id = record.Id,
+            PaperSnapshotId = record.PaperSnapshotId,
+            PaperTitle = record.PaperSnapshot.Title,
+            Questions = await ReadQuestions(context, record.PaperSnapshotId, HttpContext.RequestAborted),
             Score = record.TotalScore,
             // Teacher feedback and grading explanations may contain the correct answer too.
             TeacherComment = showAnswers ? record.TeacherComment : string.Empty,
@@ -219,6 +229,16 @@ public class ExamsController : ControllerBase
         
         return Ok(details);
     }
+
+    private static Task<List<QuestionSnapshotDto>> ReadQuestions(WeChatExamDbContext context,
+        Guid snapshotId, CancellationToken cancellationToken) =>
+        context.QuestionSnapshots.AsNoTracking().Where(q => q.PaperSnapshotId == snapshotId)
+            .OrderBy(q => q.Order).ThenBy(q => q.OriginalQuestionId).ThenBy(q => q.Id)
+            .Select(q => new QuestionSnapshotDto
+            {
+                Id = q.Id, Order = q.Order, Score = q.Score, Content = q.Content,
+                QuestionType = q.QuestionType, Metadata = q.Metadata
+            }).ToListAsync(cancellationToken);
 
     // An answer-release date never permits reviewing an attempt still in progress.
     private static bool CanReview(ExamRecord record) =>
