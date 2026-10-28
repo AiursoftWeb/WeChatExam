@@ -78,4 +78,65 @@ public class MockPapersApiController(WeChatExamDbContext context, IPaperAccessSe
         return Ok(new MockPaperSnapshotDto(snapshot!.Id, paper.Id, paper.TotalCategoryId, snapshot.Version,
             snapshot.Title, snapshot.TimeLimit, paper.AllowViewAnonymousely, questions));
     }
+
+    [HttpPost("snapshots/{snapshotId:guid}/answers")]
+    [ProducesResponseType(typeof(UserPracticeHistoryDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> SubmitAnswer(Guid snapshotId, [FromBody] CreateUserPracticeHistoryDto dto,
+        [FromServices] IGradingService gradingService, CancellationToken cancellationToken)
+    {
+        if (dto.PracticeType.HasValue && !Enum.IsDefined(dto.PracticeType.Value))
+            return BadRequest(new { Message = "Invalid answer submission." });
+        var snapshot = await context.PaperSnapshots.AsNoTracking().Include(s => s.MockPaper)
+            .SingleOrDefaultAsync(s => s.Id == snapshotId && s.MockPaperId != null, cancellationToken);
+        var paper = snapshot?.MockPaper;
+        if (paper == null || paper.Status is not (PaperStatus.Publishable or PaperStatus.Frozen))
+            return NotFound(new { Message = "Published mock paper not found." });
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId != null && !await context.Users.AnyAsync(u => u.Id == userId, cancellationToken))
+            return Unauthorized();
+        var access = await accessService.GetUserAccessStatusAsync(userId);
+        // Grading can incur a cost and reveals the answer. Apply the same current whole-paper
+        // entitlement as reading, before either grading or writing a personal record.
+        if (!CanRead(paper, access))
+            return StatusCode(StatusCodes.Status403Forbidden, new
+            {
+                Message = "An active membership for this course is required.",
+                RequiredTotalCategoryId = paper.TotalCategoryId
+            });
+        var question = await context.QuestionSnapshots.AsNoTracking()
+            .SingleOrDefaultAsync(q => q.Id == dto.QuestionId && q.PaperSnapshotId == snapshotId, cancellationToken);
+        if (question == null)
+            return NotFound(new { Message = "Question snapshot not found in this paper version." });
+        // Use the published payload, even after the original question changes or is deleted.
+        // An open mock paper deliberately includes paid-period questions without granting
+        // independent question-bank practice rights.
+        var grade = await gradingService.GradeAsync(dto.UserAnswer, question.StandardAnswer,
+            question.GradingStrategy, question.Score, question.Content, question.Explanation);
+        var result = new UserPracticeHistoryDto
+        {
+            QuestionId = question.Id, UserAnswer = dto.UserAnswer, StandardAnswer = question.StandardAnswer,
+            Explanation = question.Explanation, IsCorrect = grade.IsCorrect, Score = grade.Score,
+            PracticeType = dto.PracticeType, CreationTime = DateTime.UtcNow
+        };
+        // Guests never create accounts or personal history. For members, retain the existing
+        // original-question history convention; a deleted source still permits snapshot grading.
+        if (userId != null && question.OriginalQuestionId.HasValue &&
+            await context.Questions.AnyAsync(q => q.Id == question.OriginalQuestionId, cancellationToken))
+        {
+            var history = new UserPracticeHistory
+            {
+                Id = Guid.NewGuid(), UserId = userId, QuestionId = question.OriginalQuestionId.Value,
+                UserAnswer = dto.UserAnswer, IsCorrect = grade.IsCorrect, PracticeType = dto.PracticeType,
+                CreationTime = result.CreationTime
+            };
+            context.UserPracticeHistories.Add(history);
+            await context.SaveChangesAsync(cancellationToken);
+            result.Id = history.Id;
+        }
+        return Ok(result);
+    }
 }

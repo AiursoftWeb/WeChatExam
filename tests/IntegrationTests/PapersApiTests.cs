@@ -13,6 +13,7 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class PapersApiTests
 {
     private readonly HttpClient _http;
+    private readonly StubOllamaService _ollama = new() { Response = "{\"IsCorrect\":true,\"Score\":12,\"Comment\":\"Accepted\"}" };
     private IHost? _server;
     private readonly StubWeChatService _mockWeChatService;
     private readonly StubWeChatPayService _mockWeChatPayService;
@@ -36,6 +37,7 @@ public class PapersApiTests
     [TestInitialize]
     public async Task CreateServer()
     {
+        TestStartupWithMockWeChat.MockOllamaService = _ollama;
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
         TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
@@ -59,6 +61,7 @@ public class PapersApiTests
         using (var scope = _server.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            context.UserPracticeHistories.RemoveRange(context.UserPracticeHistories);
             context.Papers.RemoveRange(context.Papers);
             context.Categories.RemoveRange(context.Categories);
             context.Tags.RemoveRange(context.Tags);
@@ -108,7 +111,7 @@ public class PapersApiTests
         Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
     }
 
-    private async Task<(Guid Paper, Guid Snapshot, Guid Course)> CreatePublishedMock(bool isFree = false)
+    private async Task<(Guid Paper, Guid Snapshot, Guid Course)> CreatePublishedMock(bool isFree = false, GradingStrategy strategy = GradingStrategy.ExactMatch)
     {
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
@@ -117,7 +120,7 @@ public class PapersApiTests
         var paper = new MockPaper { Title = "Published mock", TimeLimit = 180,
             TotalCategory = period.TotalCategory!, TotalCategoryId = period.TotalCategoryId, AllowViewAnonymousely = isFree };
         var question = new Question { Content = "Saved paid-period question", QuestionCategory = period,
-            QuestionType = QuestionType.Choice, Metadata = "[options]", StandardAnswer = "Secret answer", Explanation = "Secret explanation" };
+            QuestionType = QuestionType.Choice, GradingStrategy = strategy, Metadata = "[options]", StandardAnswer = "Secret answer", Explanation = "Secret explanation" };
         db.MockPaperQuestions.Add(new MockPaperQuestion { MockPaper = paper, Question = question, Order = 2, Score = 15 });
         await db.SaveChangesAsync();
         var snapshot = await scope.ServiceProvider.GetRequiredService<MockPaperPublishing>().PublishAsync(paper);
@@ -265,6 +268,166 @@ public class PapersApiTests
         Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/MockPapers/snapshots/{secondSnapshot}")).StatusCode);
         Assert.AreEqual(0, (await _http.GetFromJsonAsync<List<MockPaperSummaryDto>>($"/api/MockPapers?totalCategoryId={secondCourse}"))!.Count);
         Assert.AreEqual(first, (await _http.GetFromJsonAsync<List<MockPaperSummaryDto>>($"/api/MockPapers?totalCategoryId={firstCourse}"))!.Single().Id);
+    }
+
+    [TestMethod]
+    public async Task GuestMockGradingUsesPublishedContentWithoutPersonalRecords()
+    {
+        var (_, snapshotId, _) = await CreatePublishedMock(true);
+        Guid questionId;
+        int users;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var question = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == snapshotId);
+            questionId = question.Id;
+            var original = await db.Questions.SingleAsync(q => q.Id == question.OriginalQuestionId);
+            original.StandardAnswer = "New unpublished answer";
+            original.Explanation = "New unpublished explanation";
+            original.GradingStrategy = GradingStrategy.AiEval;
+            users = await db.Users.CountAsync();
+            await db.SaveChangesAsync();
+        }
+        foreach (var answer in new[] { " Secret answer ", "Wrong", "" })
+        {
+            var response = await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers",
+                new CreateUserPracticeHistoryDto { QuestionId = questionId, UserAnswer = answer });
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+            Assert.AreEqual(answer.Trim() == "Secret answer", result.IsCorrect);
+            Assert.AreEqual(result.IsCorrect ? 15 : 0, result.Score);
+            Assert.AreEqual("Secret answer", result.StandardAnswer);
+            Assert.AreEqual("Secret explanation", result.Explanation);
+            Assert.AreEqual(questionId, result.QuestionId);
+            Assert.AreEqual(Guid.Empty, result.Id);
+            Assert.IsTrue(response.Headers.CacheControl!.NoStore);
+        }
+        using var afterScope = _server!.Services.CreateScope();
+        var after = afterScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(users, await after.Users.CountAsync());
+        Assert.AreEqual(0, await after.UserPracticeHistories.CountAsync());
+        Assert.AreEqual(0, await after.ExamRecords.CountAsync());
+        Assert.AreEqual(0, _ollama.Questions.Count);
+    }
+
+    [TestMethod]
+    public async Task MockGradingChecksCurrentMembershipBeforeAiAndHistory()
+    {
+        var (paperId, snapshotId, course) = await CreatePublishedMock(true, GradingStrategy.AiEval);
+        Guid questionId;
+        Guid originalId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var question = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == snapshotId);
+            questionId = question.Id;
+            originalId = question.OriginalQuestionId!.Value;
+            var paper = await db.MockPapers.SingleAsync(p => p.Id == paperId);
+            paper.AllowViewAnonymousely = false; // Published as free, now paid.
+            paper.Status = PaperStatus.Frozen;
+            await db.SaveChangesAsync();
+        }
+        var input = new CreateUserPracticeHistoryDto { QuestionId = questionId, UserAnswer = "My response", PracticeType = PracticeType.QuestionType };
+        async Task AssertDenied()
+        {
+            var response = await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input);
+            Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
+            Assert.DoesNotContain("Secret answer", await response.Content.ReadAsStringAsync());
+            Assert.AreEqual(0, _ollama.Questions.Count);
+            using var scope = _server!.Services.CreateScope();
+            Assert.AreEqual(0, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().UserPracticeHistories.CountAsync());
+        }
+        await AssertDenied();
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        await AssertDenied();
+        foreach (var membership in new[]
+        {
+            Membership(VipProductType.Category, Guid.NewGuid(), -1, 1),
+            Membership(VipProductType.RealExam, null, -1, 1),
+            Membership(VipProductType.Category, course, -2, -1),
+            Membership(VipProductType.Category, course, 1, 2)
+        })
+        {
+            _mockWeChatPayService.Memberships = [membership];
+            await AssertDenied();
+        }
+        _mockWeChatPayService.Memberships = [Membership(VipProductType.Category, course, -1, 1)];
+        var accepted = await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input);
+        Assert.AreEqual(HttpStatusCode.OK, accepted.StatusCode);
+        var result = (await accepted.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.AreEqual(12, result.Score);
+        Assert.IsTrue(result.IsCorrect);
+        Assert.AreEqual(1, _ollama.Questions.Count);
+        Assert.Contains("Secret explanation", _ollama.Questions.Single());
+        using var finalScope = _server!.Services.CreateScope();
+        var finalDb = finalScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var history = await finalDb.UserPracticeHistories.SingleAsync(h => h.Id == result.Id);
+        Assert.AreEqual(originalId, history.QuestionId);
+        Assert.AreEqual(input.UserAnswer, history.UserAnswer);
+        Assert.AreEqual(input.PracticeType, history.PracticeType);
+        Assert.IsTrue(history.IsCorrect);
+        // A new student's request must not reuse another student's membership or record.
+        _mockWeChatPayService.Memberships = [];
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input)).StatusCode);
+        Assert.AreEqual(1, await finalDb.UserPracticeHistories.CountAsync());
+        Assert.AreEqual(1, _ollama.Questions.Count);
+    }
+
+    [TestMethod]
+    public async Task MockGradingRejectsOtherSourcesAndRetainsDeletedQuestionSnapshots()
+    {
+        var (paperId, snapshotId, _) = await CreatePublishedMock(true);
+        var (_, otherSnapshotId, _) = await CreatePublishedMock(true);
+        Guid questionId;
+        Guid originalId;
+        Guid legacyId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var q = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == snapshotId);
+            questionId = q.Id;
+            originalId = q.OriginalQuestionId!.Value;
+            var legacy = new PaperSnapshot { Title = "Legacy snapshot", Version = 1 };
+            db.PaperSnapshots.Add(legacy);
+            await db.SaveChangesAsync();
+            legacyId = legacy.Id;
+        }
+        var input = new CreateUserPracticeHistoryDto { QuestionId = questionId, UserAnswer = "Secret answer" };
+        foreach (var wrongVersion in new[] { otherSnapshotId, legacyId, Guid.NewGuid() })
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{wrongVersion}/answers", input)).StatusCode);
+        input.QuestionId = Guid.NewGuid();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input)).StatusCode);
+        input.QuestionId = questionId;
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers",
+            new { questionId, userAnswer = (string?)null })).StatusCode);
+        input.PracticeType = (PracticeType)999;
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input)).StatusCode);
+        input.PracticeType = null;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.MockPapers.SingleAsync(p => p.Id == paperId)).Status = PaperStatus.Draft;
+            await db.SaveChangesAsync();
+        }
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input)).StatusCode);
+        Assert.AreEqual(0, _ollama.Questions.Count);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.MockPapers.SingleAsync(p => p.Id == paperId)).Status = PaperStatus.Publishable;
+            db.MockPaperQuestions.RemoveRange(db.MockPaperQuestions.Where(q => q.QuestionId == originalId));
+            db.Questions.Remove(await db.Questions.SingleAsync(q => q.Id == originalId));
+            await db.SaveChangesAsync();
+        }
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        var response = await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers", input);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.IsTrue(result.IsCorrect);
+        Assert.AreEqual(Guid.Empty, result.Id);
+        using var afterScope = _server!.Services.CreateScope();
+        Assert.AreEqual(0, await afterScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().UserPracticeHistories.CountAsync());
     }
 
     private async Task<string> LoginAsWeChatUserAsync()
