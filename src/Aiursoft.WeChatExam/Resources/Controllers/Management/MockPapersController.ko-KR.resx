@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+    <value>선택한 모든 문항은 존재해야 하며 이 시험지의 강좌에 속해야 합니다.</value>
+  </data>
+  <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
+    <value>질문을 더 추가하기 전에 가장 높은 질문 순서를 낮추세요.</value>
+  </data>
+  <data name="Select an existing course." xml:space="preserve">
+    <value>기존 강좌를 선택하세요.</value>
+  </data>
+  <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
+    <value>버전을 저장할 수 없습니다. 다시 시도하기 전에 버전 목록을 새로고침하세요.</value>
+  </data>
+
+</root>

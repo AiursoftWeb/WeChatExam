@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Δημιουργία κατηγορίας γνώσης</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Δημιουργία Προσομοιωμένου Εξετάσεων</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Δημιουργία περιόδου</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Δημιουργία ερώτησης</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Δημιουργία πραγματικού διαγωνίσματος</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Δημιουργία Ρόλου</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Επεξεργασία κατηγορίας γνώσεων</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Επεξεργασία δοκιμαστικού διαγωνίσματος</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Επεξεργασία περιόδου</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Επεξεργασία ερώτησης</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Επεξεργασία πραγματικού θέματος</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Επεξεργασία Ρόλου</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Διαχείριση Μάρκετινγκ</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Διαχείριση Προσομοιωτικών Εξετάσεων</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Ερωτήσεις δοκιμαστικών διαγωνισμάτων</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Εκδόσεις Προσομοιωμένων Θεμάτων</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Προσομοιωμένα Διαγωνίσματα</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Λεπτομέρειες Μηνιαίας Οικονομικής Έκθεσης</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Διαχείριση Πραγματικών Εξετάσεων</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Ερωτήσεις πραγματικών διαγωνισμάτων</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Εκδόσεις πραγματικών εξετάσεων</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Πραγματικά Θέματα</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Εγγραφή</value>

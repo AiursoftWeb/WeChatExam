@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Creează o categorie de cunoștințe</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Creează un test de simulare</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Creează perioadă</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Creează întrebare</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Creează Subiect Real</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Creează Rol</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Editați categoria de cunoștințe</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Editează simularea de examen</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Editare perioadă</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Editează întrebarea</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Editează lucrarea de examen</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Editează Rol</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Gestionarea marketingului</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Administrarea examenelor de simulare</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Întrebări pentru subiectul de simulare</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versiuni de simulare a examenului</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Subiecte de simulare</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Detalii Raport Financiar Lunar</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Gestionarea examenelor reale</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Întrebări din testul real</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Versiuni ale subiectelor de examen reale</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Lucrări reale</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Înregistrare</value>

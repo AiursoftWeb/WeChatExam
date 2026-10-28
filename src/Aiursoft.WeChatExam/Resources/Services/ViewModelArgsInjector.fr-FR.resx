@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Créer une catégorie de connaissances</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Créer un sujet blanc</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Créer une période</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Créer une question</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Créer une copie réelle</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Créer un rôle</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Modifier la catégorie de connaissances</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Modifier le sujet d’examen blanc</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Modifier la période</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Modifier la question</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Modifier le sujet d’examen</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Modifier le rôle</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Gestion du marketing</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Gestion des examens blancs</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Questions d’examen blanc</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versions des sujets d’examen blanc</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Sujets d’examen blanc</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Détails du rapport financier mensuel</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Gestion des examens réels</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Questions des sujets d’examen</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Versions de sujets d’examen réels</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Sujets d’examen réels</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>S&apos;inscrire</value>

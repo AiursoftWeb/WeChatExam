@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Buat Kategori Pengetahuan</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Buat Naskah Ujian Simulasi</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Buat Periode</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Buat Pertanyaan</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Buat Naskah Ujian Asli</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Buat Peran</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Ubah Kategori Pengetahuan</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Edit Makalah Simulasi</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Edit Periode</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Edit Pertanyaan</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Edit Soal Nyata</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Edit Peran</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Manajemen Pemasaran</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Manajemen Ujian Simulasi</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Soal Ujian Simulasi</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versi Naskah Simulasi</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Naskah Ujian Simulasi</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Rincian Laporan Keuangan Bulanan</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Manajemen Ujian Nyata</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Pertanyaan Kertas Nyata</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Versi Naskah Ujian Asli</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Makalah Asli</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Daftar</value>

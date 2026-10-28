@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Every selected question must exist." xml:space="preserve">
+    <value>Todas as questões selecionadas devem existir.</value>
+  </data>
+  <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
+    <value>Reduza a ordem mais alta das questões antes de adicionar mais questões.</value>
+  </data>
+  <data name="Select an existing institution." xml:space="preserve">
+    <value>Selecione uma instituição existente.</value>
+  </data>
+  <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
+    <value>A instituição não pode ser alterada depois que este trabalho tiver uma versão publicada.</value>
+  </data>
+  <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
+    <value>Não foi possível salvar a versão. Recarregue a lista de versões antes de tentar novamente.</value>
+  </data>
+
+</root>

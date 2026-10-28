@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Kenniscategorie aanmaken</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Maak oefenexamen aan</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Periode aanmaken</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Vraag aanmaken</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Echt proefwerk aanmaken</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Rol aanmaken</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Kennisbankcategorie bewerken</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Mockexamen bewerken</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Periode bewerken</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Vraag bewerken</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Echt examen bewerken</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Rol bewerken</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Marketingbeheer</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Beheer van proefexamens</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Vragen voor proefexamens</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versies van proefexamens</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Proeftoetsen</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Details van het maandelijkse financieel rapport</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Beheer van echte examens</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Vragen over echte examens</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Echte tentamenversies</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Echte documenten</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registreren</value>

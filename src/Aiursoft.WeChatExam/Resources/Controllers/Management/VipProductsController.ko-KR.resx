@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing total category." xml:space="preserve">
+      <data name="Select an existing institution." xml:space="preserve">
+    <value>기존 기관을 선택하세요.</value>
+  </data>
+  <data name="Select an existing total category." xml:space="preserve">
     <value>기존 총 카테고리를 선택하세요.</value>
+  </data>
+  <data name="This product has orders or memberships. Create a new product to change its access scope." xml:space="preserve">
+    <value>이 상품에 주문 내역이나 멤버십이 있습니다. 접근 범위를 변경하려면 새 상품을 만드세요.</value>
+  </data>
+  <data name="This product has orders or memberships. Disable it instead of deleting it." xml:space="preserve">
+    <value>이 상품에는 주문 또는 멤버십이 있습니다. 삭제하지 말고 비활성화하세요.</value>
   </data>
 
 </root>

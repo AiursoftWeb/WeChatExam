@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>建立知識分類</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>建立模擬試卷</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>建立期間</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>建立問題</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>建立正式試卷</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>建立角色</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>編輯知識分類</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>編輯模擬試卷</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>編輯時段</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>編輯問題</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>編輯正式試卷</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>編輯角色</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>行銷管理</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>模擬考試管理</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>模擬試卷題目</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>模擬試卷版本</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模擬試卷</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>每月財務報告明細</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>真實試題管理</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>歷屆試題問題</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>正式試卷版本</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>正式試卷</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>註冊</value>

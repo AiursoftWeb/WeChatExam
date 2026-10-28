@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>创建知识分类</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>创建模拟试卷</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>创建周期</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>创建问题</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>创建真题卷</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>创建角色</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>编辑知识类别</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>编辑模拟试卷</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>编辑时期</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>编辑问题</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>编辑真题卷</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>编辑角色</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>营销管理</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>模拟考试管理</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>模拟试题</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>模拟试卷版本</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模拟试卷</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>月度财务报告详情</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>真题卷管理</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>真题卷题目</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>真题卷版本</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>真题卷</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>注册</value>
@@ -354,51 +387,5 @@
   <data name="VIP Products" xml:space="preserve">
     <value>VIP 产品</value>
   </data>
-
-
-<data name="Create Mock Paper" xml:space="preserve">
-    <value>创建模拟试卷</value>
-  </data>
-  <data name="Edit Mock Paper" xml:space="preserve">
-    <value>编辑模拟试卷</value>
-  </data>
-  <data name="Mock Exam Management" xml:space="preserve">
-    <value>模拟考试管理</value>
-  </data>
-  <data name="Mock Papers" xml:space="preserve">
-    <value>模拟试卷</value>
-  </data>
-
-
-<data name="Mock Paper Questions" xml:space="preserve">
-    <value>模拟试题</value>
-  </data>
-
-
-<data name="Mock Paper Versions" xml:space="preserve">
-    <value>模拟试卷版本</value>
-  </data>
-
-
-<data name="Create Real Paper" xml:space="preserve">
-    <value>创建真题卷</value>
-  </data>
-  <data name="Edit Real Paper" xml:space="preserve">
-    <value>编辑真题卷</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>真题卷</value>
-  </data>
-
-
-<data name="Real Paper Questions" xml:space="preserve">
-    <value>真题卷题目</value>
-  </data>
-
-
-<data name="Real Paper Versions" xml:space="preserve">
-    <value>真题卷版本</value>
-  </data>
-
 
 </root>

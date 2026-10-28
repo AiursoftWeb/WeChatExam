@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Tạo Danh Mục Kiến Thức</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Tạo đề thi thử</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Tạo kỳ</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Tạo câu hỏi</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Tạo đề thi thật</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Tạo Vai Trò</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Chỉnh sửa danh mục kiến thức</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Chỉnh sửa đề thi thử</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Chỉnh sửa kỳ</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Chỉnh sửa câu hỏi</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Chỉnh sửa đề thi thực tế</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Chỉnh sửa Vai trò</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Quản lý Tiếp thị</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Quản lý kỳ thi thử</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Câu hỏi đề thi thử</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Các phiên bản đề thi thử</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Đề thi thử</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Chi Tiết Báo Cáo Tài Chính Hàng Tháng</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Quản lý kỳ thi thực tế</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Câu hỏi trong đề thi thật</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Các phiên bản đề thi thật</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Đề thi thực tế</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Đăng ký</value>

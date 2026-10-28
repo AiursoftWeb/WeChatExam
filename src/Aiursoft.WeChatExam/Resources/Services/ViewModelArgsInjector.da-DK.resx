@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Opret videnskabskategori</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Opret prøveeksamen</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Opret periode</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Opret spørgsmål</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Opret en rigtig prøve</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Opret rolle</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Redigér videnkategori</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Rediger prøvesæt</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Rediger periode</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Rediger spørgsmål</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Rediger eksamenssæt</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Rediger Rolle</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Markedsføringsovervågning</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Administration af prøveeksamener</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Spørgsmål til prøvesæt</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Versioner af prøveeksamenssæt</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Prøveeksamenssæt</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Detaljer for månedlig finansrapport</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Styring af rigtige eksamener</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Spørgsmål til rigtige eksamenssæt</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Versioner af rigtige eksamensopgaver</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Rigtige prøveopgaver</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Registrer</value>

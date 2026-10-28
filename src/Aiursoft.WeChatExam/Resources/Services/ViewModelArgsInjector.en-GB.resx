@@ -81,11 +81,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Create Knowledge Category</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Create Mock Paper</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Create Period</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Create Question</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Create Exam Paper</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Create Role</value>
@@ -156,11 +162,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Edit Knowledge Category</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Edit mock paper</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Edit Period</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Edit Question</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Edit Real Paper</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Edit Role</value>
@@ -252,6 +264,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Marketing Management</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Mock Exam Management</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Mock Exam Questions</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Mock exam paper versions</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Mock Papers</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Monthly Finance Report Details</value>
   </data>
@@ -293,6 +317,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Real Exam Management</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Questions from Real Exam Papers</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Real Exam Paper Versions</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Actual Papers</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>

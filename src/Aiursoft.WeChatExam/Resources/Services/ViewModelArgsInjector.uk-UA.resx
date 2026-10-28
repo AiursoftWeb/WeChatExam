@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Створити категорію знань</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Створити пробний варіант</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Створити період</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Створити запитання</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Створити реальний екзаменаційний варіант</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Створити роль</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Редагувати категорію знань</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Редагувати пробний екзаменаційний варіант</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Редагувати період</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Редагувати запитання</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Редагувати реальний екзаменаційний варіант</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Редагувати роль</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Маркетингове управління</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Керування пробними іспитами</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Запитання до пробного тесту</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Версії пробних тестів</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Пробні іспити</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Деталі щомісячного фінансового звіту</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Керування реальними іспитами</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Запитання до справжнього іспиту</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Версії справжніх екзаменаційних білетів</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Справжні документи</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Реєстрація</value>

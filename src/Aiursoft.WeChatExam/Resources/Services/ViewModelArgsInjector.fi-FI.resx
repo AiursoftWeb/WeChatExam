@@ -78,11 +78,17 @@
   <data name="Create Knowledge Category" xml:space="preserve">
     <value>Luo tietoluokka</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Luo harjoituskoe</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Luo jakso</value>
   </data>
   <data name="Create Question" xml:space="preserve">
     <value>Luo kysymys</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Luo oikea koepaperi</value>
   </data>
   <data name="Create Role" xml:space="preserve">
     <value>Luo rooli</value>
@@ -153,11 +159,17 @@
   <data name="Edit Knowledge Category" xml:space="preserve">
     <value>Muokkaa tietoluokkaa</value>
   </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Muokkaa harjoituskoetta</value>
+  </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Muokkaa jaksoa</value>
   </data>
   <data name="Edit Question" xml:space="preserve">
     <value>Muokkaa kysymystä</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Muokkaa oikeaa koetta</value>
   </data>
   <data name="Edit Role" xml:space="preserve">
     <value>Muokkaa roolia</value>
@@ -249,6 +261,18 @@
   <data name="Marketing Management" xml:space="preserve">
     <value>Markkinointin hallinta</value>
   </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Harjoituskokeiden hallinta</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Koepetenttikysymykset</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Harjoituskoepaperien versiot</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Harjoituskokeet</value>
+  </data>
   <data name="Monthly Finance Report Details" xml:space="preserve">
     <value>Kuukausittaisen talousraportin yksityiskohdat</value>
   </data>
@@ -290,6 +314,15 @@
   </data>
   <data name="Real Exam Management" xml:space="preserve">
     <value>Oikeiden kokeiden hallinta</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Oikean tentin kysymykset</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Oikeiden koepaperien versiot</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Todelliset tentit</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Rekisteröidy</value>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add at least one question before publishing." xml:space="preserve">
+    <value>Adicione pelo menos uma pergunta antes de publicar.</value>
+  </data>
+  <data name="Every question must belong to this paper&apos;s course before publishing." xml:space="preserve">
+    <value>Cada pergunta tem de pertencer ao curso deste exame antes de este ser publicado.</value>
+  </data>
+  <data name="Every question must have a nonnegative order and a positive score." xml:space="preserve">
+    <value>Todas as perguntas têm de ter uma ordem não negativa e uma pontuação positiva.</value>
+  </data>
+  <data name="Set a title and a positive time limit before publishing." xml:space="preserve">
+    <value>Defina um título e um limite de tempo positivo antes de publicar.</value>
+  </data>
+  <data name="The maximum version number has been reached." xml:space="preserve">
+    <value>Foi atingido o número máximo de versões.</value>
+  </data>
+  <data name="This paper is read only." xml:space="preserve">
+    <value>Este exame é apenas de leitura.</value>
+  </data>
+
+</root>
