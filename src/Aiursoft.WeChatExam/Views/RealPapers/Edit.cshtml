@@ -1,0 +1,67 @@
+@model Aiursoft.WeChatExam.Models.RealPapersViewModels.EditViewModel
+@{
+    var creating = Model.Id == Guid.Empty;
+}
+
+<a asp-action="Index" class="d-inline-block text-decoration-none mb-3">
+    <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Real Papers"]
+</a>
+<h1 class="h3 mb-4">
+    @if (creating)
+    {
+        @Localizer["Create Real Paper"]
+    }
+    else
+    {
+        @Localizer["Edit Real Paper"]
+    }
+</h1>
+
+<p class="text-muted mb-4">@Localizer["Draft only. Question assembly and publication are not available yet."]</p>
+
+<div class="row">
+    <div class="col-lg-7 col-xl-6">
+        <div class="card">
+            <div class="card-body p-4">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                    @if (!creating)
+                    {
+                        <input asp-for="Id" type="hidden" />
+                    }
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-4">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" maxlength="200" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="InstitutionId" class="form-label"></label>
+                        <select asp-for="InstitutionId" class="form-select">
+                            <option value="">@Localizer["Select an institution"]</option>
+                            @foreach (var institution in Model.Institutions)
+                            {
+                                <option value="@institution.Id">@institution.Title</option>
+                            }
+                        </select>
+                        <span asp-validation-for="InstitutionId" class="text-danger"></span>
+                        @if (Model.Institutions.Count == 0)
+                        {
+                            <a asp-controller="Institutions" asp-action="Create" class="d-block mt-2">@Localizer["Create an institution first"]</a>
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="TimeLimit" class="form-label"></label>
+                        <input asp-for="TimeLimit" class="form-control" min="1" />
+                        <span asp-validation-for="TimeLimit" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            @Localizer["Save Draft"]
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
