@@ -745,7 +745,7 @@ public class ManagementTests
         var record = await service.StartExamAsync(exam.Id, user.Id);
         Assert.AreEqual(first.Id, record.PaperSnapshotId);
         var question = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == first.Id);
-        await service.SubmitAnswerAsync(record.Id, question.Id, "A");
+        await service.SubmitAnswerAsync(record.Id, user.Id, question.Id, "A");
         Assert.AreEqual(record.Id, (await service.StartExamAsync(exam.Id, user.Id)).Id);
         Assert.AreEqual("A", (await service.GetExamRecordAsync(record.Id))!.AnswerRecords.Single().UserAnswer);
         Assert.AreEqual(first.Title, (await service.GetAvailableExamsForUserAsync(user.Id)).Single(e => e.Id == exam.Id).PaperSnapshot!.Title);

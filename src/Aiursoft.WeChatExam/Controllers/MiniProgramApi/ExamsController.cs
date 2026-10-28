@@ -75,7 +75,7 @@ public class ExamsController : ControllerBase
             SubmitTime = r.SubmitTime,
             Status = r.Status.ToString(),
             TotalScore = r.TotalScore,
-            HasReview = r.Exam.AllowReview
+            HasReview = CanReview(r)
         }).ToList();
 
         return Ok(dtos);
@@ -127,12 +127,17 @@ public class ExamsController : ControllerBase
     {
         try
         {
-             // Verify ownership? StartExam checks context, but here we should too. 
-             // Omitted for brevity in MVP but critical for prod.
-            await _examService.SubmitAnswerAsync(recordId, model.QuestionSnapshotId, model.Answer);
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            await _examService.SubmitAnswerAsync(recordId, userId, model.QuestionSnapshotId, model.Answer);
             return Ok();
         }
-        catch (Exception ex)
+        catch (UnauthorizedAccessException)
+        {
+            return Forbid();
+        }
+        catch (InvalidOperationException ex)
         {
             return BadRequest(new { ex.Message });
         }
@@ -146,10 +151,17 @@ public class ExamsController : ControllerBase
     {
         try
         {
-            var result = await _examService.FinishExamAsync(recordId);
+            var userId = GetUserId();
+            if (string.IsNullOrEmpty(userId)) return Unauthorized();
+
+            var result = await _examService.FinishExamAsync(recordId, userId);
             return Ok(new { Score = result.TotalScore, Status = result.Status.ToString() });
         }
-        catch (Exception ex)
+        catch (UnauthorizedAccessException)
+        {
+            return Forbid();
+        }
+        catch (InvalidOperationException ex)
         {
             return BadRequest(new { ex.Message });
         }
@@ -170,13 +182,15 @@ public class ExamsController : ControllerBase
         if (record.UserId != userId) return Forbid();
         
         // Check if review is allowed
-        if (!record.Exam.AllowReview)
+        if (!CanReview(record))
         {
             // Only return basic info
             return Ok(new ExamRecordDto
             {
                 Id = record.Id,
                 ExamTitle = record.Exam.Title,
+                StartTime = record.StartTime,
+                SubmitTime = record.SubmitTime,
                 TotalScore = record.TotalScore,
                 Status = record.Status.ToString(),
                 HasReview = false
@@ -190,7 +204,8 @@ public class ExamsController : ControllerBase
         {
             Id = record.Id,
             Score = record.TotalScore,
-            TeacherComment = record.TeacherComment,
+            // Teacher feedback and grading explanations may contain the correct answer too.
+            TeacherComment = showAnswers ? record.TeacherComment : string.Empty,
             Answers = record.AnswerRecords.Select(a => new AnswerResultDto
             {
                 QuestionSnapshotId = a.QuestionSnapshotId,
@@ -198,12 +213,16 @@ public class ExamsController : ControllerBase
                 Score = a.Score,
                 // Only show standard answer if configured
                 StandardAnswer = showAnswers ? a.QuestionSnapshot.StandardAnswer : null,
-                GradingResult = a.GradingResult // Detailed JSON
+                GradingResult = showAnswers ? a.GradingResult : string.Empty
             }).ToList()
         };
         
         return Ok(details);
     }
+
+    // An answer-release date never permits reviewing an attempt still in progress.
+    private static bool CanReview(ExamRecord record) =>
+        record.Exam.AllowReview && record.Status != ExamRecordStatus.InProgress;
 
     private string GetStudentStatus(Exam exam, ExamRecord? activeRecord)
     {
