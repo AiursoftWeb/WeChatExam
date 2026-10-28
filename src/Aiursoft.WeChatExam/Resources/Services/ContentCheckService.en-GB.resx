@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Anonymous</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Ask the engineering team to review any remaining legacy navigation consumers. Do not change period or directory pricing to correct legacy tag metadata.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Assign the intended question subject, or correct its paid tags after reviewing their shared impact.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Assign the intended subject before offering this product for sale. Review existing memberships separately.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Assign the lesson to its intended knowledge directory.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Authorisation only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Check the tag taxonomy mappings and question subject. If both are intentional, ask the engineering team to review the entry-point behaviour.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Client entry checks require engineering verification</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Existing active VIPs can still work, but buying currently enabled products cannot unlock this question.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Free-knowledge directory links to a paid exercise</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Free paper contains snapshots of questions that are currently paid-for</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Keep this if the paper is intentionally free. Review the paper&apos;s own pricing if its snapshot should be restricted.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Knowledge Categories</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>The knowledge point and exercise relate to different subjects</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Knowledge point has no directory</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Knowledge points</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Legacy tag metadata only: HasAccess is reported without changing question access.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>New customers have no current purchase route. Existing active memberships may still grant access.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Periods</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Public knowledge point links to a paid exercise</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Review its subject associations, real-exam setting and free setting.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Review the course and available VIP products. Disabled products do not invalidate existing active memberships.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Review the paper questions and publish a corrected snapshot. Changing the original questions does not update existing snapshots.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Snapshot version {0} contains no exercises. Old snapshot links can still be requested.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>Subject VIP and paid tag entry disagree</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomies</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>The public paper list excludes this paper because no snapshot exists.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>The question’s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>This lesson isn&apos;t in a directory that grants access, so even a course VIP can&apos;t read it.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>This product cannot grant membership of the intended subject.</value>

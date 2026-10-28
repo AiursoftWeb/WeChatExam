@@ -75,6 +75,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Créer un canal de distribution</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Créer une institution</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Créer une catégorie de connaissances</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Créer une période</value>
   </data>
@@ -117,6 +123,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Supprimer les commentaires</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Supprimer la catégorie de connaissances</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Supprimer le point de connaissance</value>
   </data>
@@ -140,6 +149,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Canal de distribution</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Modifier l’établissement</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Modifier la catégorie de connaissances</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Modifier la période</value>
@@ -201,8 +216,20 @@
   <data name="Info" xml:space="preserve">
     <value>Informations</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Établissements</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Rejoindre l&apos;examen officiel</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Catégories de connaissances</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Détails de la catégorie de connaissances</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Gestion des connaissances</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Points de connaissance</value>
@@ -263,6 +290,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Questions</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Gestion des examens réels</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>S&apos;inscrire</value>

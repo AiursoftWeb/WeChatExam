@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>تعديل التمرين</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>تعديل فئة المعرفة</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>تعديل نقطة معرفية</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>تعديل الورقة</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>تعديل الفترة</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>تعديل الوسم</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>تمرين</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>فئة المعرفة</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>نقطة معرفة</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>اختبار</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>الفترة</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>يؤثر تسعير الفترة على {0} من التمارين المرتبطة بـ {1} من النقاط المعرفية.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>عام / مجاني</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>يُستخدم بواسطة {0} تمرين مرتبط بـ {1} نقطة معرفية. يؤثر تغيير تسعير الوسم في جميع هذه التمارين.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>يُستخدم بواسطة {0} تمرينًا مرتبطًا بـ {1} نقطة معرفية. تُستخدم الوسوم للتنظيم الداخلي، وليس لتحديد أسعار التمارين.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>عرض الورقة المجمّدة</value>

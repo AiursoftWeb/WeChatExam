@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Modifica esercizio</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Modifica la categoria di conoscenza</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Modifica punto di conoscenza</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Modifica l’elaborato</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Modifica il periodo</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Modifica tag</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Esercizio</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Categoria di conoscenza</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Punto di conoscenza</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Saggio</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periodo</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>La tariffazione per periodo interessa {0} esercizi collegati a {1} punti di conoscenza.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Pubblico / gratuito</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Utilizzato da {0} esercizi collegati a {1} punti di conoscenza. La modifica del prezzo del tag influisce su tutti questi esercizi.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Utilizzato da {0} esercizi collegati a {1} punti di conoscenza. I tag servono all’organizzazione interna, non alla definizione del prezzo degli esercizi.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Visualizza il compito bloccato</value>

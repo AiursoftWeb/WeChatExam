@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Free knowledge category {0} cannot use exercise {1} from paid question category {2}. Choose a free exercise or review the knowledge access settings." xml:space="preserve">
+    <value>무료 지식 카테고리 {0}에서는 유료 문제 카테고리 {2}의 연습 문제 {1}을 사용할 수 없습니다. 무료 연습 문제를 선택하거나 지식 접근 설정을 검토하세요.</value>
+  </data>
+  <data name="Free knowledge category {0} cannot use exercises from paid question category {1}. Choose a free question category or review the knowledge access settings." xml:space="preserve">
+    <value>무료 지식 범주 {0}에서는 유료 문제 범주 {1}의 연습 문제를 사용할 수 없습니다. 무료 문제 범주를 선택하거나 지식 접근 설정을 확인하세요.</value>
+  </data>
+
+</root>

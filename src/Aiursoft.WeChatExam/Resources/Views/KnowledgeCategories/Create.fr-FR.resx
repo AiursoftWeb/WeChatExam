@@ -21,11 +21,17 @@
       <data name="Back to List" xml:space="preserve">
     <value>Retour à la liste</value>
   </data>
+  <data name="Choose course" xml:space="preserve">
+    <value>Choisir le cours</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Créer</value>
   </data>
   <data name="Create Category" xml:space="preserve">
     <value>Créer une catégorie</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Créer une catégorie de connaissances</value>
   </data>
   <data name="Is Free" xml:space="preserve">
     <value>Gratuit</value>
@@ -38,6 +44,9 @@
   </data>
   <data name="Top Level" xml:space="preserve">
     <value>Niveau supérieur</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Catégorie totale</value>
   </data>
 
 </root>

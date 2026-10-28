@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>O lecție poate fi citită prin orice director atribuit direct care acordă acces. Accesul la exerciții este verificat separat.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>O interogare de listă fără filtru după etichetă poate returna această întrebare cu plată unui utilizator autentificat fără VIP; endpointul de detalii returnează 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Anonim</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Solicitați echipei de inginerie să analizeze consumatorii rămași ai navigării vechi. Nu modificați prețurile abonamentelor sau ale directoarelor pentru a corecta metadatele etichetelor vechi.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Atribuiți subiectul dorit întrebării sau corectați etichetele cu plată după ce le-ați analizat impactul comun.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Atribuiți subiectul corespunzător înainte de a pune produsul în vânzare. Verificați separat abonamentele existente.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Atribuiți lecția directorului de cunoștințe corespunzător.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Numai autorizarea: un instantaneu pentru care accesul este refuzat returnează 200 cu HasAccess=false și fără întrebări. Este necesar și un instantaneu utilizabil.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Verificați corespondențele taxonomiei etichetelor și subiectul întrebării. Dacă ambele sunt intenționate, solicitați echipei de inginerie să verifice comportamentul punctului de intrare.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Alegeți un exercițiu gratuit pentru această lecție sau verificați directorul și prețul perioadei. Modificarea unei perioade afectează toate întrebările din aceasta.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Verificările accesului din client necesită validarea echipei tehnice</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Confirmați dacă vânzările sunt întrerupte intenționat; în caz contrar, activați produsul necesar pentru materie sau examenul real.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Confirmați dacă predarea între discipline este intenționată; în caz contrar, corectați perioada întrebării sau asocierea cunoștințelor.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Confirmați dacă predarea între discipline este intenționată; în caz contrar, corectați disciplina întrebării sau asocierea cunoștințelor.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>VIP-urile active existente pot funcționa în continuare, însă achiziționarea produselor activate în prezent nu poate debloca această întrebare.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Directoriul gratuit de cunoștințe este legat de un exercițiu plătit</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Lucrarea gratuită conține instantanee ale unor întrebări care sunt în prezent contra cost</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Păstrați acest lucru dacă hârtia gratuită este intenționată. Verificați prețul propriu al lucrării dacă instantaneul acesteia ar trebui să fie restricționat.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Categorii de cunoștințe</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Punctul de cunoștințe și exercițiul fac referire la subiecte diferite</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Punctul de cunoștințe nu are un director</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Noțiuni de cunoștințe</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Metadata doar pentru eticheta veche: HasAccess este raportat fără a modifica accesul la întrebări.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Clienții noi nu au în prezent o modalitate de a face o achiziție. Abonamentele active existente pot permite în continuare accesul.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Perioade</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Un punct de cunoștințe publice este asociat cu un exercițiu contra cost</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Verificați asocierea cu materia, setarea pentru examenul real și setarea de gratuitate.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Verificați cursul și produsele VIP disponibile. Produsele dezactivate nu invalidează abonamentele active existente.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Revizuiți întrebările lucrării și publicați un instantaneu corectat. Modificarea întrebărilor originale nu actualizează instantaneele existente.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Versiunea instantaneului {0} nu conține exerciții. Linkurile către instantanee mai vechi pot fi accesate în continuare.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Elevii pot citi o lecție dintr-un director gratuit, dar exercițiul asociat acesteia aparține unei perioade cu plată. Acest lucru contravine regulii lecțiilor gratuite.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>VIP-ul subiectului și accesul prin eticheta plătită nu corespund</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomii</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>API-ul taxonomiei vechi raportează această etichetă ca blocată pentru toate nivelurile VIP ale cursurilor. Acest lucru nu controlează accesul actual la întrebări sau la cunoștințe.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Lista publică de lucrări nu include această lucrare deoarece nu există niciun instantaneu.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>VIP-ul subiectului întrebării deblochează detaliile acesteia, dar cel puțin o intrare de etichetă cu plată respinge același VIP.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Această lecție nu este asociată niciunui director care să acorde acces, așa că nici măcar un abonat VIP al cursului nu o poate citi.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Acest produs nu poate acorda calitatea de membru pentru subiectul vizat.</value>

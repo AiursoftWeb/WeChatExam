@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>แก้ไขแบบฝึกหัด</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>แก้ไขหมวดหมู่ความรู้</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>แก้ไขจุดความรู้</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>แก้ไขเอกสารข้อสอบ</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>แก้ไขช่วงเวลา</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>แก้ไขแท็ก</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>แบบฝึกหัด</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>หมวดหมู่ความรู้</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>จุดความรู้</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>ข้อสอบ</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>ช่วงเรียน</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>การกำหนดราคาตามช่วงเวลามีผลต่อแบบฝึกหัด {0} ข้อ ที่เชื่อมโยงกับจุดความรู้ {1} จุด</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>สาธารณะ / ฟรี</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>ใช้โดยแบบฝึกหัด {0} รายการที่เชื่อมโยงกับจุดความรู้ {1} จุด การเปลี่ยนราคาของแท็กจะส่งผลต่อแบบฝึกหัดทั้งหมดนี้</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>มีแบบฝึกหัด {0} ข้อที่เชื่อมโยงกับจุดความรู้ {1} จุด แท็กมีไว้เพื่อจัดระเบียบภายในเท่านั้น ไม่เกี่ยวข้องกับการกำหนดราคาแบบฝึกหัด</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>ดูเอกสารข้อสอบที่ถูกระงับ</value>

@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="Cannot delete category with associated knowledge points. Please move these knowledge points first." xml:space="preserve">
+    <value>無法刪除包含相關知識點的類別。請先移動這些知識點。</value>
+  </data>
   <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
     <value>無法刪除包含關聯問題的分類。請先移除或重新分配這些問題。</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Delete Category" xml:space="preserve">
     <value>刪除類別</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>刪除知識分類</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>此操作無法復原。您即將永久刪除以下分類：</value>
+  </data>
+  <data name="View knowledge points" xml:space="preserve">
+    <value>檢視知識點</value>
   </data>
   <data name="View related questions" xml:space="preserve">
     <value>查看相關問題</value>

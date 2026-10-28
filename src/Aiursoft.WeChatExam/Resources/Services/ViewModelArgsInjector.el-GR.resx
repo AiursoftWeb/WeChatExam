@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Δημιουργία Kanála Διανομής</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Δημιουργία Ιδρύματος</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Δημιουργία κατηγορίας γνώσης</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Δημιουργία περιόδου</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Διαγραφή Σχολίων</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Διαγραφή κατηγορίας γνώσεων</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Διαγραφή KnowledgePoint</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Κανάλια Διανομής</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Επεξεργασία Ιδρύματος</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Επεξεργασία κατηγορίας γνώσεων</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Επεξεργασία περιόδου</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>Πληροφορίες</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Ιδρύματα</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Συμμετοχή στις Επίσημες Εξετάσεις</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Κατηγορίες Γνώσεων</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Λεπτομέρειες κατηγορίας γνώσεων</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Διαχείριση Γνώσης</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Σημεία Γνώσης</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Ερωτήσεις</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Διαχείριση Πραγματικών Εξετάσεων</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Εγγραφή</value>

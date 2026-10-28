@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
   </data>
+  <data name="Cannot delete category with associated knowledge points. Please move these knowledge points first." xml:space="preserve">
+    <value>연관된 지식 포인트가 있는 카테고리는 삭제할 수 없습니다. 먼저 해당 지식 포인트를 이동해 주세요.</value>
+  </data>
   <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
     <value>연결된 질문이 있는 카테고리는 삭제할 수 없습니다. 먼저 해당 질문을 제거하거나 재할당하세요.</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Delete Category" xml:space="preserve">
     <value>카테고리 삭제</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>지식 카테고리 삭제</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>이 작업은 되돌릴 수 없습니다. 다음 카테고리를 영구적으로 삭제하려고 합니다:</value>
+  </data>
+  <data name="View knowledge points" xml:space="preserve">
+    <value>지식 포인트 보기</value>
   </data>
   <data name="View related questions" xml:space="preserve">
     <value>관련 질문 보기</value>

@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Редактировать упражнение</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Редактировать категорию знаний</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Редактировать тематический раздел</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Редактировать экзаменационный билет</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Редактировать учебный период</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Редактировать тег</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Упражнение</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Категория знаний</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Пункт знаний</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Экзаменационная работа</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Период</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Период действия цены затрагивает {0} упражнений, связанных с {1} ключевыми понятиями.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Открытый доступ / бесплатно</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Используется в {0} упражнениях, связанных с {1} пунктами знаний. Изменение стоимости тега затронет все эти упражнения.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Используется в {0} упражнениях, связанных с {1} пунктами знаний. Теги нужны для внутренней организации, а не для тарификации практики.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Просмотр замороженного теста</value>

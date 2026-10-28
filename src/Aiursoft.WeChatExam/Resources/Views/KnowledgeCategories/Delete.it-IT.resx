@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Annulla</value>
   </data>
+  <data name="Cannot delete category with associated knowledge points. Please move these knowledge points first." xml:space="preserve">
+    <value>Impossibile eliminare la categoria perché contiene punti di conoscenza associati. Sposta prima questi punti di conoscenza.</value>
+  </data>
   <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
     <value>Impossibile eliminare la categoria con domande associate. Rimuovi o riassegna prima queste domande.</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Delete Category" xml:space="preserve">
     <value>Elimina Categoria</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Elimina categoria di conoscenza</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Questa azione è irreversibile. Stai per eliminare definitivamente la seguente categoria:</value>
+  </data>
+  <data name="View knowledge points" xml:space="preserve">
+    <value>Visualizza i punti di conoscenza</value>
   </data>
   <data name="View related questions" xml:space="preserve">
     <value>Visualizza le domande correlate</value>

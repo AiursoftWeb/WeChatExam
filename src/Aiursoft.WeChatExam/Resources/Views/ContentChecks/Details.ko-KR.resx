@@ -63,6 +63,12 @@
   <data name="Browse the full list" xml:space="preserve">
     <value>전체 목록 보기</value>
   </data>
+  <data name="Can open" xml:space="preserve">
+    <value>열 수 있음</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>열 수 없음</value>
+  </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>이 시나리오 확인</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Knowledge text: public" xml:space="preserve">
     <value>지식 텍스트: 공개</value>
   </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>수업 내용은 직접 지정된 디렉터리를 따릅니다. 연습 문제 내용은 해당 학기를 따릅니다. 답안 제출 및 저장 여부는 여기서 확인하지 않습니다.</value>
+  </data>
   <data name="Linked exercise" xml:space="preserve">
     <value>연결된 연습문제</value>
   </data>
@@ -147,6 +156,9 @@
   <data name="Review shared impact" xml:space="preserve">
     <value>공유 영향 검토</value>
   </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>지정된 기간과 해당 과정을 검토하세요.</value>
+  </data>
   <data name="Scan coverage and object IDs" xml:space="preserve">
     <value>스캔 범위 및 대상 ID</value>
   </data>
@@ -162,11 +174,20 @@
   <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
     <value>로그인 및 필수 코스 VIP가 필요합니다.</value>
   </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>태그는 콘텐츠를 내부적으로 정리합니다. 접근 권한을 변경할 때는 기간과 지식 디렉터리를 확인하세요.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>연습 문제의 요금 정책은 해당 기간의 요금 정책을 따릅니다. 태그는 연습 문제에 대한 접근 권한을 부여하거나 제한하지 않습니다.</value>
+  </data>
   <data name="The paid tag is not covered: {0}" xml:space="preserve">
     <value>유료 태그를 이용할 수 없습니다: {0}</value>
   </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>이 결과는 현재 서버 접근 권한을 평가합니다. 모든 미니 프로그램 화면이나 제출 과정을 시뮬레이션하지는 않습니다. 각 페이지는 현재 설정을 다시 읽어옵니다.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>이 태그는 목록에 표시된 콘텐츠를 분류합니다. 현재의 실천 방식이나 지식 접근 권한을 결정하지는 않습니다.</value>
   </data>
   <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
     <value>이 계정은 해당 연습문제의 전용 강좌 VIP가 필요합니다.</value>

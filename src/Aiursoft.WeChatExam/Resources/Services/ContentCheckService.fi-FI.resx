@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Oppitunnin voi lukea minkä tahansa suoran käyttöoikeuden myöntävän hakemiston kautta. Harjoitusten käyttöoikeus tarkistetaan erikseen.</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>Listakysely ilman tunnistesuodatinta voi palauttaa tämän maksullisen kysymyksen kirjautuneelle käyttäjälle, jolla ei ole VIP-jäsenyyttä; kysymyksen tietoja palauttava päätepiste vastaa virhekoodilla 403.</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>Anonyymi</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>Pyydä ohjelmistokehitystä tarkistamaan jäljellä olevat vanhan navigoinnin käyttäjät. Älä muuta kausi- tai hakemistohinnoittelua vanhojen tunnisteiden metatietojen korjaamiseksi.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Määritä kysymykselle tarkoitettu aihe tai korjaa maksulliset tunnisteet, kun olet ensin arvioinut niiden yhteisvaikutuksen.</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>Määritä oikea aihe ennen tuotteen myyntiin tarjoamista. Tarkista olemassa olevat jäsenyydet erikseen.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Määritä oppitunti sille tarkoitettuun tietohakemistoon.</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Vain käyttöoikeustarkistus: käyttöoikeuden epäävästä tilannevedoksesta palautetaan 200, HasAccess=false eikä kysymyksiä. Myös käyttökelpoinen tilannevedos vaaditaan.</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>Tarkista tunnisteiden taksonomiamääritykset ja kysymyksen aihe. Jos molemmat ovat tarkoituksellisia, pyydä teknistä tiimiä tarkistamaan, miten eri käyttöpolut toimivat.</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Valitse tälle oppitunnille maksuton tehtävä tai tarkista sen hakemiston ja jakson hinnoittelu. Jakson muuttaminen vaikuttaa kaikkiin sen tehtäviin.</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Asiakasohjelman sisäänpääsytarkistukset edellyttävät teknistä varmennusta.</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>Varmista, onko myynti keskeytetty tarkoituksella. Muussa tapauksessa ota käyttöön tarvittava oppiaine- tai yo-koetuote.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Varmista, onko eri oppiaineiden välinen opetus tarkoituksellista. Muussa tapauksessa korjaa kysymyksen ajanjakso tai tietopisteen liitos.</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>Varmista, onko eri oppiaineiden välinen opetus tarkoituksellista; muussa tapauksessa korjaa kysymyksen oppiaine tai tietopisteen liitos.</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Aiemmat aktiiviset VIP-jäsenyydet voivat edelleen toimia, mutta tällä hetkellä saatavilla olevien tuotteiden ostaminen ei avaa tätä kysymystä.</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Maksuttoman tietohakemiston linkki maksulliseen tehtävään</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>Ilmaisessa kokeessa on tilannekuvia kysymyksistä, jotka ovat tällä hetkellä maksullisia.</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>Säilytä tämä, jos maksuton koepaperi on tarkoituksella maksuton. Tarkista koepaperin oma hinnoittelu, jos sen tilannekuvan käyttöä pitäisi rajoittaa.</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Tietokategoriat</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>Tietopiste ja tehtävä viittaavat eri aiheisiin</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Tietopisteellä ei ole hakemistoa</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Tietopisteet</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>Vain vanhan tunnisteen metatieto: HasAccess ilmoitetaan muuttamatta kysymyksen käyttöoikeutta.</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Uusilla asiakkailla ei ole tällä hetkellä ostomahdollisuutta. Voimassa olevat jäsenyydet voivat silti oikeuttaa käyttöön.</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>Papers</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Kaudet</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>Julkinen tietopiste linkittyy maksulliseen harjoitukseen</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>Tarkista sen oppiaineyhteydet, oikean kokeen asetus ja maksuttomuusasetus.</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Tarkista kurssi ja saatavilla olevat VIP-tuotteet. Käytöstä poistetut tuotteet eivät mitätöi voimassa olevia jäsenyyksiä.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Tarkista paperin kysymykset ja julkaise korjattu tilannekuva. Alkuperäisten kysymysten muuttaminen ei päivitä olemassa olevia tilannekuvia.</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>Tilannevedosversio {0} ei sisällä tehtäviä. Vanhoja tilannevedoslinkkejä voi edelleen käyttää.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Opiskelijat voivat lukea oppitunnin maksuttomassa hakemistossa, mutta siihen linkitetty tehtävä kuuluu maksulliseen jaksoon. Tämä on ristiriidassa maksuttomia oppitunteja koskevan säännön kanssa.</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>Aiheen VIP-jäsenyys ja maksullisen tunnisteen käyttöoikeus ovat ristiriidassa</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>Taxonomies</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>Vanha taksonomiarajapinta ilmoittaa tämän tunnisteen lukituksi kaikille kurssin VIP-jäsenille. Tämä ei vaikuta nykyiseen kysymysten tai tietosisältöjen käyttöoikeuteen.</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>Julkisella paperilistalla ei näy tätä paperia, koska siitä ei ole tilannevedosta.</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>Kysymyksen aiheeseen liittyvä VIP-jäsenyys avaa kysymyksen tiedot, mutta vähintään yksi maksullinen tunniste ei hyväksy kyseistä VIP-jäsenyyttä.</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Tällä oppitunnilla ei ole käyttöoikeudet myöntävää hakemistoa, joten edes kurssin VIP-jäsen ei voi lukea sitä.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Tämä tuote ei voi myöntää jäsenyyttä kyseiseen aiheeseen.</value>

@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>Создать канал распространения</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Создать учреждение</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Создать категорию знаний</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>Создать период</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>Удалить отзыв</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Удалить категорию знаний</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>Удалить KnowledgePoint</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>Каналы распространения</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Редактировать учреждение</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Изменить категорию знаний</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>Редактировать период</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>Информация</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Учреждения</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Присоединиться к официальному экзамену</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Категории знаний</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Сведения о категории знаний</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Управление знаниями</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>Баллы знаний</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>Вопросы</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Управление реальными экзаменами</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>

@@ -63,6 +63,12 @@
   <data name="Browse the full list" xml:space="preserve">
     <value>Xem toàn bộ danh sách</value>
   </data>
+  <data name="Can open" xml:space="preserve">
+    <value>Có thể mở</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>Không thể mở</value>
+  </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Kiểm tra tình huống này</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Knowledge text: public" xml:space="preserve">
     <value>Văn bản kiến thức: công khai</value>
   </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Nội dung bài học tuân theo các thư mục được gán trực tiếp. Nội dung bài tập tuân theo kỳ học của bài tập. Việc nộp và lưu câu trả lời không được kiểm tra tại đây.</value>
+  </data>
   <data name="Linked exercise" xml:space="preserve">
     <value>Bài tập liên kết</value>
   </data>
@@ -147,6 +156,9 @@
   <data name="Review shared impact" xml:space="preserve">
     <value>Xem xét phạm vi ảnh hưởng chung</value>
   </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>Hãy xem lại kỳ học được phân công và khóa học tương ứng.</value>
+  </data>
   <data name="Scan coverage and object IDs" xml:space="preserve">
     <value>Phạm vi quét và ID đối tượng</value>
   </data>
@@ -162,11 +174,20 @@
   <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
     <value>Cần đăng nhập và có VIP của khóa học theo yêu cầu.</value>
   </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>Thẻ giúp sắp xếp nội dung nội bộ. Khi thay đổi quyền truy cập, hãy xem lại kỳ học và danh mục kiến thức.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>Bài tập áp dụng mức phí của kỳ học. Thẻ không cấp hoặc hạn chế quyền truy cập luyện tập.</value>
+  </data>
   <data name="The paid tag is not covered: {0}" xml:space="preserve">
     <value>Thẻ trả phí chưa được bao gồm: {0}</value>
   </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Các kết quả này đánh giá quyền truy cập hiện tại trên máy chủ. Chúng không mô phỏng mọi màn hình của Mini Program hoặc quy trình gửi bài. Mỗi trang đều đọc lại cấu hình hiện tại.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>Các thẻ này dùng để sắp xếp nội dung được liệt kê. Chúng không quyết định việc luyện tập hiện tại hoặc quyền truy cập kiến thức.</value>
   </data>
   <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
     <value>Tài khoản này cần có VIP của khóa học riêng dành cho bài tập.</value>

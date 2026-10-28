@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>編輯練習</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>編輯知識分類</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>編輯知識點</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>編輯試卷</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>編輯時段</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>編輯標籤</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>練習</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>知識類別</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>知識點</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>試卷</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>時期</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>期間定價影響 {0} 個連結至 {1} 個知識點的練習。</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>公開 / 免費</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>由 {0} 個練習使用，並連結至 {1} 個知識點。更改標籤定價會影響所有這些練習。</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>供 {0} 道練習題使用，並連結至 {1} 個知識點。標籤只用於內部整理，並不代表練習題的定價。</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>查看已凍結的試卷</value>

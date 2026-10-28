@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>บทเรียนสามารถอ่านได้ผ่านไดเรกทอรีที่มอบหมายโดยตรงซึ่งมอบสิทธิ์การเข้าถึง โดยสิทธิ์การเข้าถึงแบบฝึกหัดจะได้รับการตรวจสอบแยกต่างหาก</value>
+  </data>
+  <data name="A list query without a tag filter can return this paid question to a signed-in user without VIP; its detail endpoint returns 403." xml:space="preserve">
     <value>คำขอรายการที่ไม่มีตัวกรองแท็กอาจส่งคืนคำถามที่ต้องชำระเงินนี้ให้แก่ผู้ใช้ที่ลงชื่อเข้าใช้แต่ไม่มี VIP ได้ แต่จุดเชื่อมต่อรายละเอียดจะส่งกลับ 403</value>
   </data>
   <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
@@ -30,11 +33,17 @@
   <data name="Anonymous" xml:space="preserve">
     <value>ไม่ระบุชื่อ</value>
   </data>
+  <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
+    <value>ขอให้ทีมวิศวกรรมตรวจสอบส่วนที่ยังคงใช้งานระบบนำทางแบบเดิมอยู่ อย่าเปลี่ยนราคาตามช่วงเวลาหรือราคาของไดเรกทอรีเพื่อแก้ไขข้อมูลเมตาของแท็กแบบเดิม</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>กำหนดหมวดหมู่ที่ต้องการให้กับคำถาม หรือแก้ไขแท็กแบบชำระเงินหลังจากตรวจสอบผลกระทบร่วมกันแล้ว</value>
   </data>
   <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
     <value>กำหนดหมวดหมู่ที่ต้องการก่อนนำผลิตภัณฑ์นี้ออกจำหน่าย ตรวจสอบการเป็นสมาชิกที่มีอยู่แยกต่างหาก</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>กำหนดบทเรียนให้อยู่ในไดเรกทอรีความรู้ที่ต้องการ</value>
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>เฉพาะการอนุญาตเท่านั้น: เมื่อไม่มีสิทธิ์เข้าถึงสแนปช็อต ระบบจะส่งกลับสถานะ 200 พร้อม HasAccess=false และไม่มีคำถาม นอกจากนี้ยังต้องมีสแนปช็อตที่ใช้งานได้ด้วย</value>
@@ -45,6 +54,9 @@
   <data name="Check the tag taxonomy mappings and question subject. If both are intentional, ask engineering to review entry-point behavior." xml:space="preserve">
     <value>ตรวจสอบการจับคู่อนุกรมวิธานของแท็กและหัวข้อของคำถาม หากทั้งสองอย่างเป็นไปตามที่ตั้งใจไว้ ให้ฝ่ายวิศวกรรมตรวจสอบการทำงานของจุดเริ่มต้นการเข้าถึง</value>
   </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>เลือกแบบฝึกหัดฟรีสำหรับบทเรียนนี้ หรือตรวจสอบไดเรกทอรีและราคาของช่วงเรียน การเปลี่ยนช่วงเรียนจะมีผลต่อทุกข้อคำถามในช่วงนั้น</value>
+  </data>
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>การตรวจสอบการเข้าสู่ระบบของไคลเอนต์ต้องได้รับการยืนยันจากทีมวิศวกรรม</value>
   </data>
@@ -53,6 +65,9 @@
   </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product." xml:space="preserve">
     <value>ยืนยันว่าการขายถูกระงับไว้โดยตั้งใจหรือไม่ หากไม่ได้ตั้งใจ ให้เปิดใช้งานผลิตภัณฑ์สำหรับวิชาที่จำเป็นหรือผลิตภัณฑ์สำหรับการสอบจริง</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>ยืนยันว่าการสอนข้ามวิชาเป็นไปโดยตั้งใจหรือไม่ หากไม่ใช่ ให้แก้ไขช่วงเวลาของข้อคำถามหรือการเชื่อมโยงความรู้</value>
   </data>
   <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question subject or the knowledge association." xml:space="preserve">
     <value>โปรดยืนยันว่าการสอนข้ามรายวิชานี้เป็นไปโดยตั้งใจหรือไม่ หากไม่ใช่ ให้แก้ไขรายวิชาของคำถามหรือการเชื่อมโยงความรู้</value>
@@ -75,6 +90,9 @@
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>VIP ที่ใช้งานอยู่เดิมยังคงใช้ได้ แต่การซื้อผลิตภัณฑ์ที่เปิดใช้งานอยู่ในขณะนี้ไม่สามารถปลดล็อกคำถามนี้ได้</value>
   </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>ไดเรกทอรีความรู้ฟรีเชื่อมโยงกับแบบฝึกหัดที่ต้องชำระเงิน</value>
+  </data>
   <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
     <value>ชุดข้อสอบฟรีมีภาพสแนปช็อตของคำถามที่ปัจจุบันต้องชำระเงิน</value>
   </data>
@@ -87,11 +105,20 @@
   <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
     <value>คงรายการนี้ไว้หากตั้งใจให้ข้อสอบชุดนี้ใช้งานได้ฟรี หากต้องการจำกัดการเข้าถึงฉบับบันทึกไว้ ให้ตรวจสอบการกำหนดราคาของข้อสอบชุดนี้</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>หมวดหมู่ความรู้</value>
+  </data>
   <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
     <value>หัวข้อความรู้และแบบฝึกหัดอ้างอิงคนละหัวข้อกัน</value>
   </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>จุดความรู้ไม่มีหมวดหมู่</value>
+  </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>สาระความรู้</value>
+  </data>
+  <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
+    <value>ข้อมูลเมทาดาทาของแท็กแบบเก่าเท่านั้น: รายงานค่า HasAccess โดยไม่เปลี่ยนแปลงสิทธิ์การเข้าถึงคำถาม</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>ลูกค้าใหม่ยังไม่มีช่องทางซื้อในขณะนี้ สมาชิกที่ยังใช้งานอยู่เดิมอาจยังคงได้รับสิทธิ์เข้าถึง</value>
@@ -135,6 +162,9 @@
   <data name="Papers" xml:space="preserve">
     <value>เอกสารข้อสอบ</value>
   </data>
+  <data name="Periods" xml:space="preserve">
+    <value>ช่วงเวลา</value>
+  </data>
   <data name="Public knowledge point links to a paid exercise" xml:space="preserve">
     <value>จุดความรู้สาธารณะเชื่อมโยงกับแบบฝึกหัดที่ต้องชำระเงิน</value>
   </data>
@@ -159,6 +189,9 @@
   <data name="Review its subject associations, real-exam setting and free setting." xml:space="preserve">
     <value>ตรวจสอบการเชื่อมโยงกับวิชา การตั้งค่าเป็นข้อสอบจริง และการตั้งค่าให้ใช้ฟรี</value>
   </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>ตรวจสอบหลักสูตรและผลิตภัณฑ์ VIP ที่พร้อมใช้งาน ผลิตภัณฑ์ที่ถูกปิดใช้งานจะไม่ทำให้สมาชิกภาพที่ใช้งานอยู่เดิมสิ้นสุดลง</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>ตรวจสอบคำถามในชุดข้อสอบและเผยแพร่สแนปช็อตฉบับแก้ไข การเปลี่ยนแปลงคำถามต้นฉบับจะไม่อัปเดตสแนปช็อตที่มีอยู่</value>
   </data>
@@ -173,6 +206,9 @@
   </data>
   <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
     <value>สแนปช็อตเวอร์ชัน {0} ไม่มีแบบฝึกหัด สามารถเรียกดูสแนปช็อตเวอร์ชันเก่าได้</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>นักเรียนสามารถอ่านบทเรียนในหมวดหมู่ที่เข้าถึงได้ฟรี แต่แบบฝึกหัดที่เชื่อมโยงกับบทเรียนนั้นอยู่ในช่วงเวลาที่ต้องชำระเงิน ซึ่งขัดกับกฎการเข้าถึงบทเรียนฟรี</value>
   </data>
   <data name="Subject VIP and paid tag entry disagree" xml:space="preserve">
     <value>VIP ประจำหมวดหมู่กับรายการแท็กแบบชำระเงินไม่สอดคล้องกัน</value>
@@ -195,6 +231,9 @@
   <data name="Taxonomies" xml:space="preserve">
     <value>หมวดหมู่</value>
   </data>
+  <data name="The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access." xml:space="preserve">
+    <value>API อนุกรมวิธานแบบเดิมระบุว่าแท็กนี้ถูกล็อกสำหรับ VIP ของทุกหลักสูตร ทั้งนี้ไม่มีผลต่อการเข้าถึงคำถามหรือองค์ความรู้ในปัจจุบัน</value>
+  </data>
   <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
     <value>รายการข้อสอบสาธารณะจะไม่แสดงข้อสอบนี้ เนื่องจากไม่มีสแนปช็อต</value>
   </data>
@@ -203,6 +242,9 @@
   </data>
   <data name="The question&apos;s subject VIP unlocks its details, but at least one paid tag entry rejects that same VIP." xml:space="preserve">
     <value>VIP ของหมวดหมู่คำถามปลดล็อกรายละเอียดของคำถามได้ แต่รายการแท็กที่ต้องชำระเงินอย่างน้อยหนึ่งรายการกลับไม่ยอมรับ VIP เดียวกันนี้</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>บทเรียนนี้ไม่มีสารบบที่อนุญาตให้เข้าถึงได้ ดังนั้นแม้แต่สมาชิก VIP ของหลักสูตรก็ไม่สามารถอ่านได้</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>ผลิตภัณฑ์นี้ไม่สามารถมอบสิทธิ์สมาชิกในหมวดหมู่ที่ต้องการได้</value>

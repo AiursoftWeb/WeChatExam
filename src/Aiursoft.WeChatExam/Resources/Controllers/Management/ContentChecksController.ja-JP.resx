@@ -33,6 +33,9 @@
   <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
     <value>有効なVIPをすでにお持ちの学生は、引き続き利用できる場合があります。新しい学生は現在、このコンテンツを利用するために必要なVIPを購入できません。</value>
   </data>
+  <data name="Free lesson has a paid exercise" xml:space="preserve">
+    <value>無料レッスンに有料の演習があります</value>
+  </data>
   <data name="Free paper includes paid exercises" xml:space="preserve">
     <value>無料の問題用紙に有料の問題が含まれています</value>
   </data>
@@ -57,8 +60,14 @@
   <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
     <value>公開版の問題が作成されていないため、生徒はこの問題を見つけることができません。</value>
   </data>
+  <data name="Students cannot open this lesson until it is assigned to a knowledge directory." xml:space="preserve">
+    <value>このレッスンは知識ディレクトリに割り当てられるまで、生徒は開くことができません。</value>
+  </data>
   <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
     <value>この知識ポイントはあるコースに紐付けられていますが、これらの演習は別のコースに属しています。最初のコースのVIPを購入しても、演習が利用できるようにならない場合があります。</value>
+  </data>
+  <data name="The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation." xml:space="preserve">
+    <value>旧タグメニューでは、このタグはロック中と表示されます。現在の演習へのアクセスには期間設定を使用しています。残っている旧式のナビゲーションについて、チームで確認する必要があります。</value>
   </data>
   <data name="The lesson and exercise belong to different courses" xml:space="preserve">
     <value>レッスンと演習が異なるコースに属しています</value>
@@ -68,6 +77,9 @@
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>この練習問題にはVIPが必要です</value>
+  </data>
+  <data name="This lesson needs a directory" xml:space="preserve">
+    <value>このレッスンにはディレクトリが必要です</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>この論文には公開版がありません</value>
@@ -92,6 +104,9 @@
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>訪問者はこのナレッジポイントを読むことはできますが、これらの演習問題を無料で開くことはできません。</value>
+  </data>
+  <data name="Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings." xml:space="preserve">
+    <value>無料のディレクトリでレッスンを閲覧できますが、練習問題の利用にはコースのVIPが必要です。無料の練習問題を選ぶか、ディレクトリと期間の設定を確認してください。</value>
   </data>
 
 </root>

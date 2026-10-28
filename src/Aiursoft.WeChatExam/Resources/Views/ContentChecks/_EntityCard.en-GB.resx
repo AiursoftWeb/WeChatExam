@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Edit exercise</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Edit knowledge category</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Edit knowledge point</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Edit paper</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Edit period</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Edit tag</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Exercise</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Knowledge category</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Knowledge point</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Paper</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Period pricing affects {0} exercises linked to {1} knowledge points.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Public / free</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Used by {0} exercises linked to {1} knowledge points. Tags are for internal organisation, not practice pricing.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>View frozen paper</value>

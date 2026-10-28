@@ -72,6 +72,12 @@
   <data name="Create Distribution Channel" xml:space="preserve">
     <value>إنشاء قناة توزيع</value>
   </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>إنشاء مؤسسة</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>إنشاء فئة معرفية</value>
+  </data>
   <data name="Create Period" xml:space="preserve">
     <value>إنشاء فترة</value>
   </data>
@@ -114,6 +120,9 @@
   <data name="Delete Feedback" xml:space="preserve">
     <value>حذف الملاحظات</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>حذف فئة المعرفة</value>
+  </data>
   <data name="Delete KnowledgePoint" xml:space="preserve">
     <value>حذف نقطة المعرفة</value>
   </data>
@@ -137,6 +146,12 @@
   </data>
   <data name="Distribution Channels" xml:space="preserve">
     <value>قنوات التوزيع</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>تعديل المؤسسة</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>تعديل فئة المعرفة</value>
   </data>
   <data name="Edit Period" xml:space="preserve">
     <value>تعديل الفترة</value>
@@ -198,8 +213,20 @@
   <data name="Info" xml:space="preserve">
     <value>المعلومات</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>المؤسسات</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>انضم إلى الامتحان الرسمي</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>فئات المعرفة</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>تفاصيل فئة المعرفة</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>إدارة المعرفة</value>
   </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>نقاط المعرفة</value>
@@ -260,6 +287,9 @@
   </data>
   <data name="Questions" xml:space="preserve">
     <value>الأسئلة</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>إدارة الاختبارات الفعلية</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>تسجيل</value>

@@ -33,11 +33,17 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Chỉnh sửa bài tập</value>
   </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Chỉnh sửa danh mục kiến thức</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Chỉnh sửa điểm kiến thức</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Chỉnh sửa đề thi</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Chỉnh sửa kỳ</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Chỉnh sửa thẻ</value>
@@ -50,6 +56,9 @@
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Bài tập</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Danh mục kiến thức</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Điểm kiến thức</value>
@@ -65,6 +74,12 @@
   </data>
   <data name="Paper" xml:space="preserve">
     <value>Đề thi</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Giai đoạn</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Giá theo giai đoạn ảnh hưởng đến {0} bài tập liên kết với {1} điểm kiến thức.</value>
   </data>
   <data name="Public / free" xml:space="preserve">
     <value>Công khai / miễn phí</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Được sử dụng bởi {0} bài tập liên kết với {1} điểm kiến thức. Thay đổi giá của thẻ sẽ ảnh hưởng đến tất cả các bài tập này.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Được sử dụng bởi {0} bài tập liên kết với {1} điểm kiến thức. Thẻ chỉ dùng để tổ chức nội bộ, không ảnh hưởng đến giá luyện tập.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Xem đề thi đã bị khóa</value>
