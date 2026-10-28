@@ -198,9 +198,10 @@ public class UserPracticeHistoryController : ControllerBase
             return Unauthorized();
         }
 
+        // Mock publications require their own access checks; keep them out of legacy grading.
         var snapshot = await _context.QuestionSnapshots
             .AsNoTracking()
-            .FirstOrDefaultAsync(q => q.Id == dto.QuestionId);
+            .FirstOrDefaultAsync(q => q.Id == dto.QuestionId && q.PaperSnapshot.MockPaperId == null);
 
         if (snapshot == null)
         {

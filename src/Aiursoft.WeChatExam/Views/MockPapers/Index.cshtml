@@ -8,7 +8,7 @@
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <div>
         <h1 class="h3 mb-2">@Localizer["Mock Papers"]</h1>
-        <p class="text-muted mb-0">@Localizer["Draft only. Publication is not available yet."]</p>
+        <p class="text-muted mb-0">@Localizer["Prepare a paper and publish fixed versions."]</p>
     </div>
     @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
     {
@@ -60,6 +60,10 @@ else
                         {
                             <span class="badge bg-secondary">@Localizer["Draft"]</span>
                         }
+                        else if (paper.Status == PaperStatus.Publishable)
+                        {
+                            <span class="badge bg-primary">@Localizer["Published version available"]</span>
+                        }
                         else
                         {
                             <span class="badge bg-secondary">@Localizer["Read only"]</span>
@@ -78,7 +82,7 @@ else
                             @Localizer["Requires course VIP"]
                         }
                     </p>
-                    @if (paper.Status == PaperStatus.Draft)
+                    @if (paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
                     {
                         <a asp-action="Edit" asp-route-id="@paper.Id" class="text-decoration-none">
                             @Localizer["Edit Mock Paper"] <i data-lucide="arrow-right" class="ms-1"></i>
@@ -87,6 +91,10 @@ else
                         {
                             <a asp-action="Questions" asp-route-id="@paper.Id" class="btn btn-outline-primary mt-3 d-block">@Localizer["Manage Questions"]</a>
                         }
+                    }
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+                    {
+                        <a asp-action="Versions" asp-route-id="@paper.Id" class="btn btn-outline-secondary mt-3 d-block">@Localizer["Published Versions"]</a>
                     }
                 </div></div>
             </div>

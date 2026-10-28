@@ -13,7 +13,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
 [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-public class MockPapersController(WeChatExamDbContext context, MockPaperValidation validation, IStringLocalizer<MockPapersController> localizer) : Controller
+public class MockPapersController(WeChatExamDbContext context, MockPaperValidation validation, MockPaperPublishing publishing, ILogger<MockPapersController> logger, IStringLocalizer<MockPapersController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -71,7 +71,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     {
         var paper = await context.MockPapers.AsNoTracking().SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         return this.StackView(new EditViewModel
         {
             Id = paper.Id, Title = paper.Title, TotalCategoryId = paper.TotalCategoryId,
@@ -87,7 +87,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
         if (id != model.Id) return NotFound();
         var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         await ValidateCourse(model);
         if (model.TotalCategoryId.HasValue)
         {
@@ -115,7 +115,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     {
         var paper = await context.MockPapers.AsNoTracking().Include(p => p.TotalCategory).SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         var periods = await context.QuestionCategories.AsNoTracking().Where(c => c.TotalCategoryId == paper.TotalCategoryId)
             .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
         if (questionCategoryId.HasValue && periods.All(c => c.Id != questionCategoryId)) return BadRequest();
@@ -148,7 +148,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     {
         var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         if (!ModelState.IsValid) return await QuestionPage(id, true, search, questionCategoryId, page);
         var ids = model.QuestionIds.Distinct().ToArray();
         var eligible = await context.Questions.Where(q => ids.Contains(q.Id) && q.QuestionCategory!.TotalCategoryId == paper.TotalCategoryId)
@@ -182,7 +182,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     {
         var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         if (!ModelState.IsValid) return await QuestionPage(id, false, null, null, page);
         var link = await context.MockPaperQuestions.SingleOrDefaultAsync(q => q.MockPaperId == id && q.QuestionId == model.QuestionId);
         if (link == null) return NotFound();
@@ -198,12 +198,72 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     {
         var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
-        if (paper.Status != PaperStatus.Draft) return Conflict();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         var link = await context.MockPaperQuestions.SingleOrDefaultAsync(q => q.MockPaperId == id && q.QuestionId == questionId);
         if (link == null) return NotFound();
         context.MockPaperQuestions.Remove(link);
         await context.SaveChangesAsync();
         return RedirectToAction(nameof(Questions), new { id, page });
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Versions(Guid id, int page = 1)
+    {
+        var paper = await context.MockPapers.AsNoTracking().Include(p => p.TotalCategory).SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        var query = context.PaperSnapshots.AsNoTracking().Where(s => s.MockPaperId == id);
+        var total = await query.CountAsync();
+        page = Math.Clamp(page, 1, Math.Max(1, (total + VersionsViewModel.PageSize - 1) / VersionsViewModel.PageSize));
+        return this.StackView(new VersionsViewModel
+        {
+            Paper = paper, Page = page, Total = total,
+            DraftQuestionCount = await context.MockPaperQuestions.CountAsync(l => l.MockPaperId == id),
+            Versions = await query.OrderByDescending(s => s.Version).Skip((page - 1) * VersionsViewModel.PageSize)
+                .Take(VersionsViewModel.PageSize).ToListAsync()
+        }, nameof(Versions));
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Publish(Guid id)
+    {
+        var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
+        if (paper == null) return NotFound();
+        if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
+        PaperSnapshot snapshot;
+        try
+        {
+            snapshot = await publishing.PublishAsync(paper);
+        }
+        catch (InvalidOperationException error)
+        {
+            ModelState.AddModelError(string.Empty, error.Message);
+            return await Versions(id);
+        }
+        catch (DbUpdateException error)
+        {
+            logger.LogWarning(error, "Could not publish mock paper {PaperId}", id);
+            // A concurrent publication may already have used the next version number.
+            return Conflict(localizer["The version could not be saved. Reload the version list before trying again."].Value);
+        }
+        return RedirectToAction(nameof(Version), new { id, snapshotId = snapshot.Id });
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Version(Guid id, Guid snapshotId, int page = 1)
+    {
+        var paper = await context.MockPapers.AsNoTracking().Include(p => p.TotalCategory).SingleOrDefaultAsync(p => p.Id == id);
+        var snapshot = await context.PaperSnapshots.AsNoTracking().SingleOrDefaultAsync(s => s.Id == snapshotId && s.MockPaperId == id);
+        if (paper == null || snapshot == null) return NotFound();
+        var query = context.QuestionSnapshots.AsNoTracking().Where(q => q.PaperSnapshotId == snapshotId);
+        var total = await query.CountAsync();
+        page = Math.Clamp(page, 1, Math.Max(1, (total + VersionsViewModel.PageSize - 1) / VersionsViewModel.PageSize));
+        return this.StackView(new VersionsViewModel
+        {
+            Paper = paper, Snapshot = snapshot, Page = page, Total = total, TotalScore = await query.SumAsync(q => (long)q.Score),
+            Questions = await query.OrderBy(q => q.Order).ThenBy(q => q.OriginalQuestionId).ThenBy(q => q.Id)
+                .Skip((page - 1) * VersionsViewModel.PageSize).Take(VersionsViewModel.PageSize).ToListAsync()
+        });
     }
 
     private Task<List<TotalCategory>> Courses() => context.TotalCategories.AsNoTracking()

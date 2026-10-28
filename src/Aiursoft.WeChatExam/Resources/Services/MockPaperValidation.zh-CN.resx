@@ -25,4 +25,8 @@
     <value>试题 {0} 已被试卷 {1} 使用。请先将其从试卷中移除，再删除。</value>
   </data>
 
-</root>
+
+<data name="A published paper cannot change courses. Create another mock paper for the new course." xml:space="preserve">
+    <value>已发布的试卷无法更改所属课程。请为新课程创建另一份模拟试卷。</value>
+  </data>
+  </root>

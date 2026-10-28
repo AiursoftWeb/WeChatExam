@@ -1,0 +1,44 @@
+@using Aiursoft.WeChatExam.Models.MockPapersViewModels
+@model VersionsViewModel
+@{
+    var snapshot = Model.Snapshot!;
+}
+<a asp-action="Versions" asp-route-id="@Model.Paper.Id" class="d-inline-block text-decoration-none mb-3"><i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Versions"]</a>
+<div class="mb-4">
+    <span class="badge bg-primary mb-3">@string.Format(@Localizer["Version {0}"].Value, snapshot.Version)</span>
+    <h1 class="h3 text-break">@snapshot.Title</h1>
+    <p class="text-muted">@Model.Paper.TotalCategory.Title · @string.Format(@Localizer["{0} questions · {1} points · {2} minutes"].Value, Model.Total, Model.TotalScore, snapshot.TimeLimit)</p>
+    <p>@(snapshot.IsFree ? @Localizer["No membership required"] : @Localizer["Requires course VIP"])</p>
+    <p class="text-muted">@Localizer["This is a saved version. Changes to the draft or question bank do not alter it."]</p>
+</div>
+@foreach (var question in Model.Questions)
+{
+    <div class="card mb-3"><div class="card-body p-4">
+        <p class="text-muted">@string.Format(@Localizer["Order {0} · {1} points"].Value, question.Order, question.Score)</p>
+        <p class="text-break">@question.Content</p>
+        <details>
+            <summary>@Localizer["Saved Answer and Question Data"]</summary>
+            <dl class="mt-3 mb-0 text-break">
+                <dt>@Localizer["Standard Answer"]</dt><dd>@question.StandardAnswer</dd>
+                <dt>@Localizer["Explanation"]</dt><dd>@question.Explanation</dd>
+                <dt>@Localizer["Options and Metadata"]</dt><dd>@question.Metadata</dd>
+            </dl>
+        </details>
+    </div></div>
+}
+@if (Model.Total > VersionsViewModel.PageSize)
+{
+    <nav class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4" aria-label="@Localizer["Question pages"]">
+        <span>@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + VersionsViewModel.PageSize - 1) / VersionsViewModel.PageSize)</span>
+        <div class="d-flex gap-2">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="Version" asp-route-id="@Model.Paper.Id" asp-route-snapshotId="@snapshot.Id" asp-route-page="@(Model.Page - 1)" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+            @if (Model.Page * VersionsViewModel.PageSize < Model.Total)
+            {
+                <a asp-action="Version" asp-route-id="@Model.Paper.Id" asp-route-snapshotId="@snapshot.Id" asp-route-page="@(Model.Page + 1)" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
+}

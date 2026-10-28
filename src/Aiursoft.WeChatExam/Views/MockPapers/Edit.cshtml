@@ -20,7 +20,7 @@
     }
 </h1>
 
-<p class="text-muted mb-4">@Localizer["Draft only. Publication is not available yet."]</p>
+<p class="text-muted mb-4">@Localizer["Editing the draft does not change published versions."]</p>
 
 @if (!creating && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
 {

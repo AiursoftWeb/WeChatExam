@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
@@ -71,6 +72,40 @@ public class PapersApiTests
         if (_server == null) return;
         await _server.StopAsync();
         _server.Dispose();
+    }
+
+    [TestMethod]
+    public async Task MockPaperSnapshotsAreNotAvailableThroughLegacyPaperApi()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = QuestionPeriodAssignmentTests.TestPeriod();
+        var paper = new MockPaper { Title = "Mock publication", TotalCategory = period.TotalCategory!, TotalCategoryId = period.TotalCategoryId };
+        var snapshot = new PaperSnapshot { MockPaper = paper, Title = paper.Title, Version = 1, IsFree = true };
+        var question = new QuestionSnapshot
+        {
+            Id = Guid.NewGuid(), PaperSnapshotId = snapshot.Id, PaperSnapshot = snapshot,
+            Content = "Mock question", StandardAnswer = "Protected answer", Score = 10,
+            GradingStrategy = GradingStrategy.ExactMatch
+        };
+        var legacy = new PaperSnapshot { Title = "Existing snapshot", Version = 1 };
+        var legacyQuestion = new QuestionSnapshot
+        {
+            Id = Guid.NewGuid(), PaperSnapshotId = legacy.Id, PaperSnapshot = legacy,
+            Content = "Existing question", StandardAnswer = "Known answer", Score = 10,
+            GradingStrategy = GradingStrategy.ExactMatch
+        };
+        db.AddRange(question, legacyQuestion);
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Papers/snapshots/{snapshot.Id}")).StatusCode);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        var rejected = await _http.PostAsJsonAsync("/api/UserPracticeHistory/Snapshot", new CreateUserPracticeHistoryDto { QuestionId = question.Id, UserAnswer = "Guess" });
+        Assert.AreEqual(HttpStatusCode.NotFound, rejected.StatusCode);
+        Assert.DoesNotContain("Protected answer", await rejected.Content.ReadAsStringAsync());
+        var accepted = await _http.PostAsJsonAsync("/api/UserPracticeHistory/Snapshot", new CreateUserPracticeHistoryDto { QuestionId = legacyQuestion.Id, UserAnswer = "Known answer" });
+        Assert.AreEqual(HttpStatusCode.OK, accepted.StatusCode);
+        Assert.IsTrue((await accepted.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!.IsCorrect);
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
     }
 
     private async Task<string> LoginAsWeChatUserAsync()

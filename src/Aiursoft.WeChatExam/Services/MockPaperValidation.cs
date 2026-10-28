@@ -13,6 +13,9 @@ public class MockPaperValidation(WeChatExamDbContext context, IStringLocalizer<M
 {
     public async Task<string?> ValidatePaperCourseAsync(Guid paperId, Guid courseId)
     {
+        // An existing version must keep its course entitlement even if its live questions are removed.
+        if (await context.PaperSnapshots.AnyAsync(s => s.MockPaperId == paperId && s.MockPaper!.TotalCategoryId != courseId))
+            return localizer["A published paper cannot change courses. Create another mock paper for the new course."];
         var link = await context.MockPaperQuestions.AsNoTracking()
             .Where(l => l.MockPaperId == paperId && l.Question.QuestionCategory!.TotalCategoryId != courseId)
             .OrderBy(l => l.QuestionId).Select(l => new { l.MockPaper.Title, l.Question.Content }).FirstOrDefaultAsync();

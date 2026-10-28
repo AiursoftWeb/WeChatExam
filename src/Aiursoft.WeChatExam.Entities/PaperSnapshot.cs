@@ -18,6 +18,16 @@ public class PaperSnapshot
     /// </summary>
     public Guid? PaperId { get; set; }
 
+    /// <summary>
+    /// Source mock paper. A snapshot belongs to either a legacy paper or a mock paper,
+    /// never both. The question payload remains shared with historical exam records.
+    /// </summary>
+    public Guid? MockPaperId { get; init; }
+
+    [ForeignKey(nameof(MockPaperId))]
+    [JsonIgnore]
+    public MockPaper? MockPaper { get; init; }
+
     [ForeignKey(nameof(PaperId))]
     [JsonIgnore]
     public Paper? Paper { get; set; }
