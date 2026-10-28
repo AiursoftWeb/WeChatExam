@@ -44,9 +44,10 @@ else
                         <i data-lucide="university" class="text-primary mb-3"></i>
                         <h2 class="h4 text-break mb-3">@institution.Title</h2>
                         <p class="text-muted">@Localizer["Display Order"]: @institution.OrderIndex</p>
-                        <a asp-action="Edit" asp-route-id="@institution.Id" class="stretched-link text-decoration-none">
-                            @Localizer["Edit Institution"] <i data-lucide="arrow-right" class="ms-1"></i>
+                        <a asp-controller="RealPapers" asp-action="Index" asp-route-institutionId="@institution.Id" class="stretched-link text-decoration-none">
+                            @Localizer["View Real Papers"] <i data-lucide="arrow-right" class="ms-1"></i>
                         </a>
+                        <a asp-action="Edit" asp-route-id="@institution.Id" class="btn btn-outline-secondary position-relative z-1 mt-3 d-block">@Localizer["Edit Institution"]</a>
                     </div>
                 </div>
             </div>

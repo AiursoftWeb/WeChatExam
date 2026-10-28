@@ -1032,6 +1032,36 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("QuestionTags");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.RealPaper", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("InstitutionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TimeLimit")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstitutionId");
+
+                    b.ToTable("RealPapers");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
@@ -1924,6 +1954,17 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Question");
 
                     b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.RealPaper", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.Institution", "Institution")
+                        .WithMany()
+                        .HasForeignKey("InstitutionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Institution");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Tag", b =>
