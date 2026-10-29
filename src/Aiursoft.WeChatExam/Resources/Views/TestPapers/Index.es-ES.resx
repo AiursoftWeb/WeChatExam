@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minutos</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Exámenes de prueba</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Sin exámenes coincidentes</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Sin preguntas</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Página {0} de {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Páginas de documentos</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Filtro de estado del examen</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>puntos</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicable</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Examen real</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Exámenes reales</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Buscar exámenes...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Mostrar todos los exámenes</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Iniciar prueba</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Exámenes de prueba</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Prueba la plantilla actual, incluidos los cambios no publicados. Los envíos utilizan el motor de evaluación compartido, incluida la evaluación real mediante IA.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Prueba otro título o filtro de estado.</value>

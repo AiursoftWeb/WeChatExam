@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>Leer lassen, um die Standardvorlage des Papiers zu verwenden</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Probeklausur</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Echte Klausur</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>Wählen Sie eine veröffentlichte Papierversion aus</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>Zeit, die Schülern für die Versuchszeit zur Verfügung steht. Leer lassen, um die Zeitbegrenzung des Tests zu verwenden.</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>Version {0} · {1} Minuten</value>
   </data>
 
 </root>

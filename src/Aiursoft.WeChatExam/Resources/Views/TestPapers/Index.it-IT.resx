@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minuti</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Prove d’esame simulate</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Successiva</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Nessun documento corrispondente</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Nessuna domanda</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} di {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Pagine dei compiti</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Filtro stato prova</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>punti</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Precedente</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Pubblicabile</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Esame reale</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Prove d&apos;esame ufficiali</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Cerca prove...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Mostra tutti i compiti</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Inizia il test</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Prove d&apos;esame</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Prova il modello attuale, comprese le modifiche non pubblicate. Le risposte inviate utilizzano il motore di valutazione condiviso, che include la valutazione effettiva tramite IA.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Prova un altro titolo o filtro di stato.</value>
