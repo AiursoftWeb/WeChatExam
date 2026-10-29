@@ -1,3 +1,4 @@
+@using System.Text.Json
 @using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.DashboardViewModels.IndexViewModel
 
@@ -49,11 +50,15 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-2">@Model.TotalPapers</h3>
                             <p class="mb-2">@Localizer["Papers"]</p>
+                            <p class="mb-2">
+                                <a asp-controller="MockPapers" asp-action="Index">@Localizer["Mock Papers"]: <span id="mock-paper-count">@Model.TotalMockPapers</span></a>
+                                · <a asp-controller="RealPapers" asp-action="Index">@Localizer["Real Papers"]: <span id="real-paper-count">@Model.TotalRealPapers</span></a>
+                            </p>
                             <div class="mb-0">
                                 <span class="badge badge-subtle-success me-2">
-                                    @Model.PapersFrozen @Localizer["Frozen"]
+                                    @Model.PublishedPapers @Localizer["Published"]
                                 </span>
-                                <span class="text-muted">@Model.PapersDraft @Localizer["Draft"]</span>
+                                <span class="text-muted">@Model.UnpublishedPapers @Localizer["Unpublished"]</span>
                             </div>
                         </div>
                         <div class="d-inline-block ms-3">
@@ -183,9 +188,8 @@
                                 @{
                                     var paperStatuses = new[]
                                     {
-                                        (Localizer["Draft"].Value, Model.PapersDraft, "warning"),
-                                        (Localizer["Publishable"].Value, Model.PapersPublishable, "primary"),
-                                        (Localizer["Frozen"].Value, Model.PapersFrozen, "info")
+                                        (@Localizer["Unpublished"].Value, Model.UnpublishedPapers, "warning"),
+                                        (@Localizer["Published"].Value, Model.PublishedPapers, "success")
                                     };
                                     foreach (var (name, count, color) in paperStatuses)
                                     {
@@ -429,8 +433,8 @@
                                         <i class="text-primary" data-lucide="folder" style="width:20px;height:20px;"></i>
                                     </div>
                                     <div class="flex-grow-1 ms-3">
-                                        <h4 class="mb-0">@Model.TotalCategories</h4>
-                                        <small class="text-muted">@Localizer["Categories"]</small>
+                                        <h4 class="mb-0" id="knowledge-category-count">@Model.TotalKnowledgeCategories</h4>
+                                        <small class="text-muted">@Localizer["Knowledge Categories"]</small>
                                     </div>
                                 </div>
                             </div>
@@ -567,9 +571,8 @@
     <span data-key="short-answer">@Localizer["Short Answer"]</span>
     <span data-key="essay">@Localizer["Essay"]</span>
     <span data-key="noun-explanation">@Localizer["Noun Explanation"]</span>
-    <span data-key="draft">@Localizer["Draft"]</span>
-    <span data-key="publishable">@Localizer["Publishable"]</span>
-    <span data-key="frozen">@Localizer["Frozen"]</span>
+    <span data-key="unpublished">@Localizer["Unpublished"]</span>
+    <span data-key="published">@Localizer["Published"]</span>
     <span data-key="usage-count">@Localizer["Usage Count"]</span>
     <span data-key="active">@Localizer["Active"]</span>
     <span data-key="upcoming">@Localizer["Upcoming"]</span>
@@ -578,211 +581,13 @@
 </div>
 
 @* === Chart.js Scripts === *@
-<script src="/node_modules/chart.js/dist/chart.umd.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        function getLocalizedText(key, defaultText) {
-            const el = document.querySelector(`#loc-data span[data-key="${key}"]`);
-            return el ? el.innerText : defaultText;
-        }
-
-        // --- Question Type Doughnut ---
-        var ctxQ = document.getElementById("chartQuestionTypes");
-        if (ctxQ) {
-            new Chart(ctxQ, {
-                type: "doughnut",
-                data: {
-                    labels: [
-                        getLocalizedText("choice", "Choice"),
-                        getLocalizedText("blank", "Blank"),
-                        getLocalizedText("bool", "Bool"),
-                        getLocalizedText("short-answer", "Short Answer"),
-                        getLocalizedText("essay", "Essay"),
-                        getLocalizedText("noun-explanation", "Noun Explanation")
-                    ],
-                    datasets: [{
-                        data: [
-                            @Model.QuestionsChoice,
-                            @Model.QuestionsBlank,
-                            @Model.QuestionsBool,
-                            @Model.QuestionsShortAnswer,
-                            @Model.QuestionsEssay,
-                            @Model.QuestionsNounExplanation
-                        ],
-                        backgroundColor: [
-                            "rgba(59, 125, 221, 0.85)",
-                            "rgba(40, 167, 69, 0.85)",
-                            "rgba(255, 193, 7, 0.85)",
-                            "rgba(23, 162, 184, 0.85)",
-                            "rgba(220, 53, 69, 0.85)",
-                            "rgba(108, 117, 125, 0.85)"
-                        ],
-                        borderWidth: 3,
-                        borderColor: "#fff"
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: "65%",
-                    plugins: {
-                        legend: {
-                            position: "bottom",
-                            labels: { padding: 16, usePointStyle: true, pointStyle: "circle" }
-                        }
-                    }
-                }
-            });
-        }
-
-        // --- Paper Status Pie ---
-        var ctxP = document.getElementById("chartPaperStatus");
-        if (ctxP) {
-            new Chart(ctxP, {
-                type: "pie",
-                data: {
-                    labels: [
-                        getLocalizedText("draft", "Draft"),
-                        getLocalizedText("publishable", "Publishable"),
-                        getLocalizedText("frozen", "Frozen")
-                    ],
-                    datasets: [{
-                        data: [
-                            @Model.PapersDraft,
-                            @Model.PapersPublishable,
-                            @Model.PapersFrozen
-                        ],
-                        backgroundColor: [
-                            "rgba(255, 193, 7, 0.85)",
-                            "rgba(59, 125, 221, 0.85)",
-                            "rgba(23, 162, 184, 0.85)"
-                        ],
-                        borderWidth: 3,
-                        borderColor: "#fff"
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: "bottom",
-                            labels: { padding: 16, usePointStyle: true, pointStyle: "circle" }
-                        }
-                    }
-                }
-            });
-        }
-
-        // --- Top Tags Bar ---
-        var ctxTags = document.getElementById("chartTopTags");
-        if (ctxTags) {
-            new Chart(ctxTags, {
-                type: "bar",
-                data: {
-                    labels: [@Html.Raw(string.Join(",", Model.TopTags.Select(t => $"'{t.Name.Replace("'", "\\'")}'")))],
-                    datasets: [{
-                        label: getLocalizedText("usage-count", "Usage Count"),
-                        data: [@string.Join(",", Model.TopTags.Select(t => t.UsageCount))],
-                        backgroundColor: "rgba(59, 125, 221, 0.85)",
-                        borderColor: "rgba(59, 125, 221, 0.85)",
-                        borderWidth: 1,
-                        borderRadius: 4,
-                        barPercentage: 0.5,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    indexAxis: 'y', // Horizontal bar chart
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            ticks: { stepSize: 1 }
-                        }
-                    }
-                }
-            });
-        }
-
-        // --- Taxonomy Stats Pie ---
-        var ctxTax = document.getElementById("chartTaxonomyStats");
-        if (ctxTax) {
-            new Chart(ctxTax, {
-                type: "pie",
-                data: {
-                    labels: [@Html.Raw(string.Join(",", Model.TaxonomyStats.Select(t => $"'{t.Name.Replace("'", "\\'")}'")))],
-                    datasets: [{
-                        data: [@string.Join(",", Model.TaxonomyStats.Select(t => t.TagCount))],
-                        backgroundColor: [
-                            "rgba(59, 125, 221, 0.85)",
-                            "rgba(255, 193, 7, 0.85)",
-                            "rgba(40, 167, 69, 0.85)",
-                            "rgba(220, 53, 69, 0.85)",
-                            "rgba(23, 162, 184, 0.85)"
-                        ],
-                        borderWidth: 2,
-                        borderColor: "#fff"
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: "bottom",
-                            labels: { padding: 16, usePointStyle: true, pointStyle: "circle" }
-                        }
-                    }
-                }
-            });
-        }
-
-        // --- Exam Status Bar ---
-        var ctxE = document.getElementById("chartExamStatus");
-        if (ctxE) {
-            new Chart(ctxE, {
-                type: "bar",
-                data: {
-                    labels: [
-                        getLocalizedText("active", "Active"),
-                        getLocalizedText("upcoming", "Upcoming"),
-                        getLocalizedText("ended", "Ended")
-                    ],
-                    datasets: [{
-                        label: getLocalizedText("exams", "Exams"),
-                        data: [
-                            @Model.ExamsActive,
-                            @Model.ExamsUpcoming,
-                            @Model.ExamsEnded
-                        ],
-                        backgroundColor: [
-                            "rgba(40, 167, 69, 0.85)",
-                            "rgba(23, 162, 184, 0.85)",
-                            "rgba(108, 117, 125, 0.85)"
-                        ],
-                        borderRadius: 6,
-                        barPercentage: 0.6,
-                        categoryPercentage: 0.6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: { stepSize: 1 }
-                        }
-                    }
-                }
-            });
-        }
-    });
-</script>
+<div id="dashboard-data" hidden
+     data-question-types="@JsonSerializer.Serialize(new[] { Model.QuestionsChoice, Model.QuestionsBlank, Model.QuestionsBool, Model.QuestionsShortAnswer, Model.QuestionsEssay, Model.QuestionsNounExplanation })"
+     data-paper-status="@JsonSerializer.Serialize(new[] { Model.UnpublishedPapers, Model.PublishedPapers })"
+     data-top-tags="@JsonSerializer.Serialize(Model.TopTags)"
+     data-taxonomy-stats="@JsonSerializer.Serialize(Model.TaxonomyStats)"
+     data-exam-status="@JsonSerializer.Serialize(new[] { Model.ExamsActive, Model.ExamsUpcoming, Model.ExamsEnded })"></div>
+@section Scripts {
+    <script src="~/node_modules/chart.js/dist/chart.umd.min.js" asp-append-version="true"></script>
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+}

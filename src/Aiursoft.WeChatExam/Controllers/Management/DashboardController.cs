@@ -27,18 +27,23 @@ public class DashboardController(WeChatExamDbContext context) : Controller
 
         // === Summary counts ===
         var totalQuestions = await context.Questions.CountAsync();
-        var totalPapers = await context.Papers.CountAsync();
+        var totalMockPapers = await context.MockPapers.CountAsync();
+        var totalRealPapers = await context.RealPapers.CountAsync();
         var totalExams = await context.Exams.CountAsync();
         var totalUsers = await context.Users.CountAsync();
-        var totalCategories = await context.Categories.CountAsync();
+        var totalKnowledgeCategories = await context.KnowledgeCategories.CountAsync();
         var totalKnowledgePoints = await context.KnowledgePoints.CountAsync();
         var totalTags = await context.Tags.CountAsync();
         var totalArticles = await context.Articles.CountAsync();
 
-        // === Paper status breakdown ===
-        var papersDraft = await context.Papers.CountAsync(p => p.Status == PaperStatus.Draft);
-        var papersPublishable = await context.Papers.CountAsync(p => p.Status == PaperStatus.Publishable);
-        var papersFrozen = await context.Papers.CountAsync(p => p.Status == PaperStatus.Frozen);
+        // Count each new paper once, even when it has several versions. Match student
+        // availability: a published/frozen template must also have a retained snapshot.
+        var publishedMockPapers = await context.MockPapers.CountAsync(p =>
+            (p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen) &&
+            context.PaperSnapshots.Any(s => s.MockPaperId == p.Id));
+        var publishedRealPapers = await context.RealPapers.CountAsync(p =>
+            (p.Status == PaperStatus.Publishable || p.Status == PaperStatus.Frozen) &&
+            context.PaperSnapshots.Any(s => s.RealPaperId == p.Id));
 
         // === Question type distribution ===
         var questionsChoice = await context.Questions.CountAsync(q => q.QuestionType == QuestionType.Choice);
@@ -135,17 +140,17 @@ public class DashboardController(WeChatExamDbContext context) : Controller
         var model = new IndexViewModel
         {
             TotalQuestions = totalQuestions,
-            TotalPapers = totalPapers,
+            TotalMockPapers = totalMockPapers,
+            TotalRealPapers = totalRealPapers,
             TotalExams = totalExams,
             TotalUsers = totalUsers,
-            TotalCategories = totalCategories,
+            TotalKnowledgeCategories = totalKnowledgeCategories,
             TotalKnowledgePoints = totalKnowledgePoints,
             TotalTags = totalTags,
             TotalArticles = totalArticles,
 
-            PapersDraft = papersDraft,
-            PapersPublishable = papersPublishable,
-            PapersFrozen = papersFrozen,
+            PublishedMockPapers = publishedMockPapers,
+            PublishedRealPapers = publishedRealPapers,
 
             QuestionsChoice = questionsChoice,
             QuestionsBlank = questionsBlank,

@@ -11,18 +11,21 @@ public class IndexViewModel : UiStackLayoutViewModel
 
     // === Summary counts ===
     public int TotalQuestions { get; set; }
-    public int TotalPapers { get; set; }
+    public int TotalMockPapers { get; set; }
+    public int TotalRealPapers { get; set; }
+    public int TotalPapers => TotalMockPapers + TotalRealPapers;
     public int TotalExams { get; set; }
     public int TotalUsers { get; set; }
-    public int TotalCategories { get; set; }
+    public int TotalKnowledgeCategories { get; set; }
     public int TotalKnowledgePoints { get; set; }
     public int TotalTags { get; set; }
     public int TotalArticles { get; set; }
 
     // === Paper status breakdown ===
-    public int PapersDraft { get; set; }
-    public int PapersPublishable { get; set; }
-    public int PapersFrozen { get; set; }
+    public int PublishedMockPapers { get; set; }
+    public int PublishedRealPapers { get; set; }
+    public int PublishedPapers => PublishedMockPapers + PublishedRealPapers;
+    public int UnpublishedPapers => TotalPapers - PublishedPapers;
 
     // === Question type distribution ===
     public int QuestionsChoice { get; set; }
