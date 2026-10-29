@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>เว้นว่างเพื่อใช้ค่าเริ่มต้นของกระดาษ</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>ข้อสอบจำลอง</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>ข้อสอบจริง</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>เลือกเวอร์ชันข้อสอบที่เผยแพร่แล้ว</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>เวลาที่อนุญาตให้นักเรียนทำข้อสอบ ปล่อยว่างไว้เพื่อใช้ข้อจำกัดเวลาจากแบบทดสอบ</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>เวอร์ชัน {0} · {1} นาที</value>
   </data>
 
 </root>

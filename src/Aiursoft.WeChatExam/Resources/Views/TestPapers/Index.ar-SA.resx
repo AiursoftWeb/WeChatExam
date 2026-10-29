@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>دقائق</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>نماذج تجريبية</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>لا توجد أوراق مطابقة</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>لا توجد أسئلة</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>الصفحة {0} من {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>صفحات الأوراق</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>مرشِّح حالة الورقة</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>نقاط</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>قابلة للنشر</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>امتحان حقيقي</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>الاختبارات الحقيقية</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>البحث في الأوراق...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>عرض جميع الاختبارات</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>ابدأ الاختبار</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>أوراق الاختبار</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>اختبر القالب الحالي، بما في ذلك التعديلات غير المنشورة. تُستخدم في عمليات التسليم آلية التصحيح المشتركة، بما في ذلك التصحيح الفعلي بالذكاء الاصطناعي.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>جرّب عنوانًا أو مرشح حالة آخر.</value>

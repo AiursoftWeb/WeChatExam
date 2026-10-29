@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>Ámbito de acceso</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Acciones</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP de todos los exámenes reales (heredado)</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categoría</value>
@@ -48,6 +54,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>Activado</value>
   </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP de institución</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
@@ -65,6 +74,9 @@
   </data>
   <data name="Search by name or category" xml:space="preserve">
     <value>Buscar por nombre o categoría</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>Buscar por nombre, categoría o institución</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Estado</value>

@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>分鐘</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模擬試卷</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>沒有相符的試卷</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>沒有題目</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>第 {0} 頁，共 {1} 頁</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>試卷分頁</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>試卷狀態篩選</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>分</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一頁</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>可發布</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>正式考試</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>正式試卷</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>搜尋試卷...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>顯示所有試卷</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>開始測驗</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>試卷</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>測試目前的範本，包括尚未發布的修改。提交內容會使用共用的評分引擎，包括實際的 AI 評分。</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>請嘗試其他標題或狀態篩選條件。</value>

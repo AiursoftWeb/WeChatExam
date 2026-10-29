@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} دقيقة</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>جميع الدورات</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>المقرر الدراسي</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>إنشاء نموذج اختبار تجريبي</value>
+  </data>
+  <data name="Create your first mock paper" xml:space="preserve">
+    <value>أنشئ أول ورقة تجريبية لك</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>مسودة</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>تعديل الاختبار التجريبي</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>إدارة الأسئلة</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>الاختبارات التجريبية</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>لا توجد أوراق مطابقة</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>لا يشترط وجود عضوية</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>الصفحة {0} من {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>صفحات الاختبار</value>
+  </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>أعِدّ ورقة اختبار وانشر نُسخًا ثابتة منها.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>يتوفر إصدار منشور</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>الإصدارات المنشورة</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>للقراءة فقط</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>يتطلب عضوية VIP في الدورة</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>ابحث عن الأوراق</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>عرض جميع الأوراق</value>
+  </data>
+
+</root>

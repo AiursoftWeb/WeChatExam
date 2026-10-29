@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- เลือกหมวดหมู่ --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- เลือกสถาบัน --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- เลือกหมวดหมู่ทั้งหมด --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>ไม่สามารถเปลี่ยนขอบเขตการเข้าถึงได้ เนื่องจากสินค้านี้มีคำสั่งซื้อหรือการเป็นสมาชิกแล้ว</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP ข้อสอบจริงทั้งหมด (รุ่นเก่า)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>เฟน (1/100 หยวน)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>รวมข้อสอบจริงของสถาบันนี้ ไม่รวมการฝึกทำแบบฝึกหัดจากหลักสูตรอิสระ</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>สถาบัน</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP ของสถาบัน</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>ราคา (เฟน)</value>

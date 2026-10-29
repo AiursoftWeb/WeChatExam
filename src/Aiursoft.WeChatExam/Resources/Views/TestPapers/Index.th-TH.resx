@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>นาที</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>ข้อสอบจำลอง</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>ไม่พบข้อสอบที่ตรงกัน</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>ไม่มีคำถาม</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>หน้า {0} จาก {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>หน้าของแบบทดสอบ</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>ตัวกรองสถานะข้อสอบ</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>คะแนน</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>ก่อนหน้า</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>เผยแพร่ได้</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>ข้อสอบจริง</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>ข้อสอบจริง</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>ค้นหา</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>ค้นหาข้อสอบ...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>แสดงข้อสอบทั้งหมด</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>เริ่มทำข้อสอบ</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>ชุดข้อสอบทดสอบ</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>ทดสอบเทมเพลตปัจจุบัน รวมถึงการแก้ไขที่ยังไม่ได้เผยแพร่ การส่งคำตอบจะใช้ระบบตรวจให้คะแนนร่วม ซึ่งรวมถึงการตรวจให้คะแนนด้วย AI จริง</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>ลองใช้ชื่อหรือตัวกรองสถานะอื่น</value>

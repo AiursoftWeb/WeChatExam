@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- اختر الفئة --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- اختر المؤسسة --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- اختر التصنيف الإجمالي --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>تم قفل نطاق الوصول لوجود طلبات أو عضويات لهذا المنتج.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>اشتراك VIP في جميع الاختبارات الفعلية (قديم)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>إلغاء</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>فِن (1/100 يوان)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>يشمل الاختبارات الفعلية لهذه المؤسسة، وليس التدريبات المستقلة للدورات.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>مؤسسة</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>اشتراك كبار الشخصيات للمؤسسة</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>السعر (فان)</value>

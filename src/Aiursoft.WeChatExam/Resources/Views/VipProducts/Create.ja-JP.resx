@@ -21,8 +21,14 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- カテゴリを選択 --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- 機関を選択 --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- 総カテゴリーを選択 --</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>全実試験VIP（旧版）</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
@@ -50,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>分（1/100 元）</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>この教育機関の過去問題を収録しており、独立した講座の練習問題は含まれていません。</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>機関</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>機関VIP</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>価格（分）</value>

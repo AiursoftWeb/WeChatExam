@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Select Category --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Select institution --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Select Total Category --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>The access scope is locked because this product has orders or memberships.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP access to all real exams (legacy)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Includes this institution’s real exam papers, not independent course practice.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institution</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>Institution VIP</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Price (Fen)</value>

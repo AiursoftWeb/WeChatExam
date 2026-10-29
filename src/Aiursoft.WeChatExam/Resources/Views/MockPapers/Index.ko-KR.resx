@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0}분</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>모든 강좌</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>강좌</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>모의 시험지 만들기</value>
+  </data>
+  <data name="Create your first mock paper" xml:space="preserve">
+    <value>첫 모의 시험지를 만들어 보세요</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>초안</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>모의 시험지 수정</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>문항 관리</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>모의 시험지</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>일치하는 시험지가 없습니다</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>회원 가입이 필요하지 않습니다</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>총 {1}페이지 중 {0}페이지</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>시험지 페이지</value>
+  </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>시험지를 만들고 확정된 버전을 게시하세요.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>게시된 버전 사용 가능</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>게시된 버전</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>읽기 전용</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>강좌 VIP 회원권이 필요합니다</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>논문 검색</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>모든 시험지 보기</value>
+  </data>
+
+</root>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} 分鐘</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>所有課程</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>課程</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>建立模擬試卷</value>
+  </data>
+  <data name="Create your first mock paper" xml:space="preserve">
+    <value>建立您的第一份模擬考卷</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>草稿</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>編輯模擬試卷</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>管理題目</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模擬試卷</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>找不到符合條件的考卷</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>不需會員資格</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>第 {0} 頁，共 {1} 頁</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>試卷頁面</value>
+  </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>製作試卷並發布定稿版本。</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一頁</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>已有可發布版本</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>已發布版本</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>唯讀</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>需具備課程 VIP 資格</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜尋</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>搜尋試卷</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>顯示所有試卷</value>
+  </data>
+
+</root>

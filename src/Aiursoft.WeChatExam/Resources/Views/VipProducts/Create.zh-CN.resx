@@ -21,8 +21,14 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- 选择类别 --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- 请选择院校 --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- 请选择总分类 --</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>所有真题 VIP（旧版）</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
@@ -51,6 +57,15 @@
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>分（1/100 元）</value>
   </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>包含该院校的真题卷，不包括独立课程练习。</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>院校</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>院校会员</value>
+  </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>价格（分）</value>
   </data>
@@ -70,20 +85,4 @@
     <value>会员类型</value>
   </data>
 
-
-<data name="-- Select Institution --" xml:space="preserve">
-    <value>-- 请选择院校 --</value>
-  </data>
-  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
-    <value>所有真题 VIP（旧版）</value>
-  </data>
-  <data name="Includes this institution's real papers, not independent course practice." xml:space="preserve">
-    <value>包含该院校的真题卷，不包括独立课程练习。</value>
-  </data>
-  <data name="Institution" xml:space="preserve">
-    <value>院校</value>
-  </data>
-  <data name="Institution VIP" xml:space="preserve">
-    <value>院校会员</value>
-  </data>
-  </root>
+</root>
