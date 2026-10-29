@@ -179,7 +179,7 @@ public class AuthenticationIsolationTests
         var papersResponse = await _http.GetAsync("/api/Papers");
         Assert.AreEqual(HttpStatusCode.OK, papersResponse.StatusCode);
         var taxonomiesResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
-        Assert.AreEqual(HttpStatusCode.OK, taxonomiesResponse.StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, taxonomiesResponse.StatusCode);
         Assert.AreEqual(0, TestStartupWithMockWeChat.MockWeChatPayService!.VipStatusCalls);
 
         // Act: 尝试使用 Cookie 访问微信 API

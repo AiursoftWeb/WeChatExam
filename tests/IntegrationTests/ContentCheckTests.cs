@@ -94,11 +94,10 @@ public class ContentCheckTests
             new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
         await db.SaveChangesAsync();
         var report = await Checker(db).ScanAsync([], false);
-        var finding = report.Findings.Single(f => f.Rule == "VIP001");
-        Assert.IsTrue(finding.NeedsEngineering);
-        Assert.IsTrue(finding.Observations.All(o => o.Entry == $"GET /api/miniprogramapi/taxonomies/{taxonomy.Id}/tags"));
-        Assert.IsTrue(finding.Observations.Single(o => o.Scenario == "All relevant VIPs").Allowed);
-        Assert.IsFalse(finding.Observations.Single(o => o.Scenario == "Anonymous").Allowed);
+        Assert.IsFalse(report.Findings.Any(f => f.Rule is "TAG001" or "VIP001"));
+        Assert.IsFalse(report.Findings.SelectMany(f => f.Observations).Any(o => o.Entry.Contains("/taxonomies")));
+        Assert.IsTrue(report.TagImpacts[tag.Id].Any(o => o.Controller == "Questions" && o.Id == question.Id.ToString()));
+        Assert.AreEqual(taxonomy.Id.ToString(), report.TagMappings[tag.Id].Taxonomy!.Id);
         Assert.IsTrue(report.Exercises[question.Id].Access.All(a => a.Allowed));
         Assert.IsFalse(report.Findings.Any(f => f.Rule == "VIP002"));
     }

@@ -6,7 +6,6 @@ namespace Aiursoft.WeChatExam.Services;
 /// <summary>
 /// Practice access is owned by a question category and its course membership.
 /// Product sale availability never revokes an existing active membership.
-/// Legacy tag-navigation metadata remains separate until its consumers are migrated.
 /// </summary>
 public static class QuestionAccess
 {
@@ -18,9 +17,5 @@ public static class QuestionAccess
     public static Expression<Func<Question, bool>> PracticeFilter(PaperAccessStatus status) =>
         question => question.QuestionCategory!.IsFree ||
                     status.ActiveCategoryVips.Contains(question.QuestionCategory.TotalCategoryId);
-
-    // Legacy tag-navigation/diagnostic consumers remain until their separate migration.
-    public static bool CanUseTag(Tag tag, PaperAccessStatus status) =>
-        tag.IsFree || (tag.Taxonomy?.CategoryTaxonomies.Any(c => status.ActiveCategoryVips.Contains(c.CategoryId)) ?? false);
 
 }

@@ -216,30 +216,6 @@ public class ContentCheckService(
             return finding;
         }
 
-        foreach (var tag in tags.Where(t => !t.IsFree && t.Taxonomy != null))
-        {
-            var mapped = tag.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId).ToArray() ?? [];
-            ContentFinding? finding = null;
-            if (!QuestionAccess.CanUseTag(tag, all))
-                finding = Add("TAG001", CheckSeverity.Error, localizer["Paid tag has no unlockable subject"],
-                    localizer["The legacy taxonomy API reports this tag as locked for every course VIP. This does not control current question or knowledge access."],
-                    localizer["Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata."], true);
-            else if (!QuestionAccess.CanUseTag(tag, purchasable))
-                finding = Add("VIP001", CheckSeverity.Warning, localizer["No enabled VIP product unlocks this tag"],
-                    localizer["New customers have no current purchase route. Existing active memberships may still grant access."],
-                    localizer["Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata."], true);
-            if (finding == null) continue;
-            finding.Objects.Add(TagRef(tag));
-            if (tag.Taxonomy is { } taxonomy)
-                finding.Objects.Add(new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags));
-            finding.CategoryIds.UnionWith(mapped.Where(allSubjects.Contains));
-            foreach (var id in questionsByTag[tag.Id].Distinct())
-                if (questionIndex.TryGetValue(id, out var q)) AttachQuestion(finding, q);
-            foreach (var scenario in report.Scenarios)
-                finding.Observations.Add(new(scenario.Name, $"GET /api/miniprogramapi/taxonomies/{tag.TaxonomyId}/tags",
-                    QuestionAccess.CanUseTag(tag, scenario.Status), localizer["Legacy tag metadata only: HasAccess is reported without changing question access."]));
-        }
-
         // Shared impact is indexed once per tag, not copied into every question finding.
         // This keeps scans linear in associations when hundreds of questions share a tag.
         foreach (var tag in tags)
