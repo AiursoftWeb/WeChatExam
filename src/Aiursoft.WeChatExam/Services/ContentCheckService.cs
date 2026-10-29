@@ -15,7 +15,7 @@ public class ContentCheckService(
     WeChatExamDbContext context,
     IStringLocalizer<ContentCheckService> localizer)
 {
-    public async Task<ContentCheckReport> ScanAsync(Guid[] subjects, bool realExam, CancellationToken cancellationToken = default)
+    public async Task<ContentCheckReport> ScanAsync(Guid[] subjects, bool realExam, CancellationToken cancellationToken = default, Guid[]? institutions = null)
     {
         var report = new ContentCheckReport();
         var directories = await context.KnowledgeCategories.AsNoTracking().ToListAsync(cancellationToken);
@@ -34,7 +34,12 @@ public class ContentCheckService(
         }).ToListAsync(cancellationToken);
         var knowledgeQuestions = await context.KnowledgePointQuestions.AsNoTracking().ToListAsync(cancellationToken);
         var knowledgeCategories = await context.KnowledgeCategoryKnowledgePoints.AsNoTracking().ToListAsync(cancellationToken);
-        var products = await context.VipProducts.AsNoTracking().Include(p => p.TotalCategory).ToListAsync(cancellationToken);
+        var schools = await context.Institutions.AsNoTracking().ToListAsync(cancellationToken);
+        var mockPapers = await context.MockPapers.AsNoTracking().ToListAsync(cancellationToken);
+        var realPapers = await context.RealPapers.AsNoTracking().ToListAsync(cancellationToken);
+        var newVersions = await context.PaperSnapshots.AsNoTracking()
+            .Where(s => s.MockPaperId != null || s.RealPaperId != null).ToListAsync(cancellationToken);
+        var products = await context.VipProducts.AsNoTracking().Include(p => p.Institution).Include(p => p.TotalCategory).ToListAsync(cancellationToken);
         var papers = await context.Papers.AsNoTracking().Include(p => p.PaperCategories)
             .Include(p => p.PaperSnapshots).AsSplitQuery().ToListAsync(cancellationToken);
         // Only IDs and counts are needed. A deleted or modified original question does not
@@ -67,12 +72,15 @@ public class ContentCheckService(
         var purchasable = new PaperAccessStatus
         {
             ActiveCategoryVips = availableSubjects,
+            ActiveInstitutionVips = products.Where(p => p.IsEnabled && p.Type == VipProductType.Institution && p.InstitutionId.HasValue)
+                .Select(p => p.InstitutionId!.Value).ToHashSet(),
             HasRealExamVip = products.Any(p => p.IsEnabled && p.Type == VipProductType.RealExam)
         };
+        report.Institutions = schools.OrderBy(s => s.Title).ToList();
         report.Categories = courses.OrderBy(c => c.Title).ToList();
         report.KnowledgePointCount = knowledge.Count;
         report.QuestionCount = questions.Count;
-        report.PaperCount = papers.Count;
+        report.PaperCount = papers.Count + mockPapers.Count + realPapers.Count;
         report.Counts[localizer["Knowledge points"]] = knowledge.Count;
         report.Counts[localizer["Questions"]] = questions.Count;
         report.Counts[localizer["Tags"]] = tags.Count;
@@ -81,8 +89,11 @@ public class ContentCheckService(
         report.Counts[localizer["Knowledge Categories"]] = directories.Count;
         report.Counts[localizer["Periods"]] = periods.Count;
         report.Counts[localizer["VIP products"]] = products.Count;
-        report.Counts[localizer["Papers"]] = papers.Count;
-        report.Counts[localizer["Paper snapshots"]] = papers.Sum(p => p.PaperSnapshots.Count());
+        report.Counts[localizer["Legacy papers"]] = papers.Count;
+        report.Counts[localizer["Mock papers"]] = mockPapers.Count;
+        report.Counts[localizer["Real papers"]] = realPapers.Count;
+        report.Counts[localizer["Institutions"]] = schools.Count;
+        report.Counts[localizer["Paper snapshots"]] = papers.Sum(p => p.PaperSnapshots.Count()) + newVersions.Count;
 
         // VIPs belong to total categories, never tree directories or historical tag mappings.
         // Include courses without products: sales availability does not revoke existing VIPs.
@@ -92,10 +103,12 @@ public class ContentCheckService(
         var courseScenarios = allSubjects.OrderBy(id => id).Select(subject => new AccessScenario(
             string.Format(localizer["Subject VIP: {0}"], courseIndex.GetValueOrDefault(subject)?.Title ?? subject.ToString()),
             new PaperAccessStatus { ActiveCategoryVips = [subject] })).ToList();
-        var all = new PaperAccessStatus { ActiveCategoryVips = allSubjects, HasRealExamVip = true };
+        var allInstitutions = schools.Select(s => s.Id).ToHashSet();
+        var all = new PaperAccessStatus { ActiveCategoryVips = allSubjects, ActiveInstitutionVips = allInstitutions, HasRealExamVip = true };
         var allVips = new AccessScenario(localizer["All relevant VIPs"], all);
         var custom = new AccessScenario(localizer["Custom VIP selection"],
-            new() { ActiveCategoryVips = subjects.Where(allSubjects.Contains).ToHashSet(), HasRealExamVip = realExam });
+            new() { ActiveCategoryVips = subjects.Where(allSubjects.Contains).ToHashSet(),
+                ActiveInstitutionVips = (institutions ?? []).Where(allInstitutions.Contains).ToHashSet(), HasRealExamVip = realExam });
         report.Scenarios.AddRange([visitor, signedIn]);
         report.Scenarios.AddRange(courseScenarios);
         report.Scenarios.Add(new(localizer["Real-exam VIP only"], new() { HasRealExamVip = true }));
@@ -113,6 +126,7 @@ public class ContentCheckService(
             AppPermissionNames.CanEditAnyCategory, c.IsFree ? ContentPricing.Public : ContentPricing.Paid);
         List<KnowledgeCategory> Placements(Guid id) => categoriesByKnowledge[id]
             .Where(directoryIndex.ContainsKey).Select(c => directoryIndex[c]).ToList();
+        ContentReference InstitutionRef(Institution school) => new("Institutions", school.Id.ToString(), school.Title, AppPermissionNames.CanEditPapers);
         ContentReference ProductRef(VipProduct p) => new("VipProducts", p.Id.ToString(), p.Name,
             AppPermissionNames.CanEditVipProducts, Enabled: p.IsEnabled);
         string KnowledgePath(KnowledgePoint point)
@@ -161,7 +175,7 @@ public class ContentCheckService(
                 relevantSubjects.Contains(p.TotalCategoryId.Value)).Select(ProductRef));
             var scenarios = new[] { visitor, signedIn }.Concat(courseScenarios
                 .Where(s => s.Status.ActiveCategoryVips.Overlaps(relevantSubjects)));
-            if (subjects.Length > 0 || realExam) scenarios = scenarios.Append(custom);
+            if (subjects.Length > 0 || realExam || institutions?.Length > 0) scenarios = scenarios.Append(custom);
             report.Exercises[q.Id] = new(QuestionRef(q), points.Select(KnowledgeRef).ToList(),
                 CourseRef(courseIndex[q.QuestionCategory!.TotalCategoryId]), PeriodRef(q.QuestionCategory),
                 settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),
@@ -289,6 +303,83 @@ public class ContentCheckService(
                 localizer["Assign the intended subject before offering this product for sale. Review existing memberships separately."]);
             finding.Objects.Add(ProductRef(product));
         }
+        foreach (var product in products.Where(p => p.Type == VipProductType.Institution &&
+                     (!p.InstitutionId.HasValue || p.Institution == null)))
+        {
+            var finding = Add("VIP005", CheckSeverity.Error, localizer["Institution VIP product has no valid institution"],
+                localizer["This product cannot grant the intended institution membership."],
+                localizer["Assign the intended institution before offering this product for sale. Review existing memberships separately."]);
+            finding.Objects.Add(ProductRef(product));
+        }
+
+        // Independent papers use their own entitlement, never the original questions' VIPs.
+        // Keep legacy diagnostics below until the remaining papers and exam links are migrated.
+        var mockVersions = newVersions.Where(s => s.MockPaperId.HasValue).ToLookup(s => s.MockPaperId!.Value);
+        var realVersions = newVersions.Where(s => s.RealPaperId.HasValue).ToLookup(s => s.RealPaperId!.Value);
+        void CheckPublishedPaper(ContentReference reference, IEnumerable<PaperSnapshot> versions,
+            Func<PaperAccessStatus, bool> canAccess, Guid? courseId, Guid? institutionId)
+        {
+            var saved = versions.OrderByDescending(s => s.Version).ToList();
+            var latest = saved.FirstOrDefault();
+            var relevantProducts = products.Where(p => courseId.HasValue
+                ? p.Type == VipProductType.Category && p.TotalCategoryId == courseId
+                : (p.Type == VipProductType.Institution && p.InstitutionId == institutionId) || p.Type == VipProductType.RealExam).ToList();
+            var scenarios = report.Scenarios.ToList();
+            var school = schools.FirstOrDefault(s => s.Id == institutionId);
+            // Add only this paper's institution scenario, avoiding schools × all content.
+            if (school != null)
+                scenarios.Add(new AccessScenario(string.Format(localizer["Institution VIP: {0}"], school.Title),
+                    new PaperAccessStatus { ActiveInstitutionVips = [school.Id] }));
+            void Detail(ContentFinding finding, PaperSnapshot? version = null)
+            {
+                finding.Objects.Add(reference);
+                if (courseId.HasValue) finding.CategoryIds.Add(courseId.Value);
+                if (school != null) finding.Objects.Add(InstitutionRef(school));
+                finding.Objects.AddRange(relevantProducts.Select(ProductRef));
+                foreach (var scenario in scenarios)
+                    finding.Observations.Add(new(scenario.Name,
+                        $"GET /api/{reference.Controller}/snapshots/{(version ?? latest)?.Id.ToString() ?? "{snapshotId}"}",
+                        canAccess(scenario.Status), localizer["Authorization only: a denied snapshot returns 403. A published, nonempty snapshot is also required."]));
+            }
+            if (latest == null)
+                Detail(Add("PAPER001", CheckSeverity.Error, localizer["Publishable paper has no snapshot"],
+                    localizer["The public paper list excludes this paper because no snapshot exists."],
+                    localizer["Review its questions and create a snapshot through the existing paper management workflow."]));
+            foreach (var version in saved.Where(s => !snapshotQuestions[s.Id].Any()))
+                Detail(Add("PAPER002", CheckSeverity.Error, localizer["Paper snapshot is empty"],
+                    string.Format(localizer["Snapshot version {0} contains no exercises. Old snapshot links can still be requested."], version.Version),
+                    localizer["Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots."]), version);
+            if (!canAccess(purchasable))
+                Detail(Add("VIP004", CheckSeverity.Warning, localizer["No enabled product unlocks this paper"],
+                    localizer["Existing active memberships may work, but new customers have no purchase route."],
+                    courseId.HasValue
+                        ? localizer["Review the mock paper's course VIP products. Sales availability does not revoke existing memberships."]
+                        : localizer["Review this institution's VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work."]));
+            if (reference.Pricing == ContentPricing.Public && latest != null)
+            {
+                var originals = snapshotQuestions[latest.Id].Where(s => s.OriginalQuestionId.HasValue)
+                    .Select(s => questionIndex.GetValueOrDefault(s.OriginalQuestionId!.Value)).OfType<Question>()
+                    .Where(q => !QuestionAccess.CanPractice(q.QuestionCategory!, new())).DistinctBy(q => q.Id).ToList();
+                if (originals.Count > 0)
+                {
+                    var finding = Add("PAPER004", CheckSeverity.Information, localizer["Free paper contains snapshots of currently paid questions"],
+                        localizer["Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted."],
+                        localizer["Keep this if the free paper is intentional. Review the paper's own pricing if its snapshot should be restricted."]);
+                    Detail(finding);
+                    foreach (var original in originals) AttachQuestion(finding, original);
+                }
+            }
+        }
+        foreach (var paper in mockPapers.Where(p => p.Status is PaperStatus.Publishable or PaperStatus.Frozen))
+            CheckPublishedPaper(new("MockPapers", paper.Id.ToString(), paper.Title, AppPermissionNames.CanEditPapers,
+                    paper.AllowViewAnonymousely ? ContentPricing.Public : ContentPricing.Paid,
+                    paper.Status == PaperStatus.Frozen ? "Versions" : "Edit"),
+                mockVersions[paper.Id], status => PaperAccessService.CanAccess(paper, status), paper.TotalCategoryId, null);
+        foreach (var paper in realPapers.Where(p => p.Status is PaperStatus.Publishable or PaperStatus.Frozen))
+            CheckPublishedPaper(new("RealPapers", paper.Id.ToString(), paper.Title, AppPermissionNames.CanEditPapers,
+                    ContentPricing.Paid, paper.Status == PaperStatus.Frozen ? "Versions" : "Edit"),
+                realVersions[paper.Id], status => PaperAccessService.CanAccess(paper, status), null, paper.InstitutionId);
+
         foreach (var paper in papers.Where(p => p.Status is PaperStatus.Publishable or PaperStatus.Frozen))
         {
             void Detail(ContentFinding finding, Guid? snapshotId = null)

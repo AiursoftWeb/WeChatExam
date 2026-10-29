@@ -44,6 +44,7 @@ public class ContentCheckReport
     public int KnowledgePointCount { get; set; }
     public int QuestionCount { get; set; }
     public int PaperCount { get; set; }
+    public List<Institution> Institutions { get; set; } = [];
     public List<TotalCategory> Categories { get; set; } = [];
     public List<ContentFinding> Findings { get; } = [];
     public List<AccessScenario> Scenarios { get; } = [];
@@ -75,7 +76,7 @@ public class ContentFindingGroup
     public string Icon => Primary?.Controller switch
     {
         "Tags" => "tag", "Taxonomies" => "folder-tree", "Questions" => "list-checks",
-        "Papers" => "files", "KnowledgePoints" => "book-open", "VipProducts" => "badge-check",
+        "Papers" or "MockPapers" or "RealPapers" => "files", "Institutions" => "school", "KnowledgePoints" => "book-open", "VipProducts" => "badge-check",
         _ => "clipboard-check"
     };
     public string Tone => NeedsEngineering ? "secondary" : Severity switch
@@ -124,6 +125,7 @@ public class IndexViewModel : UiStackLayoutViewModel
     public string? Rule { get; set; }
     public string? Search { get; set; }
     public Guid? CategoryId { get; set; }
+    public Guid[] Institutions { get; set; } = [];
     public Guid[] Subjects { get; set; } = [];
     public bool RealExam { get; set; }
     public bool Changed { get; set; }

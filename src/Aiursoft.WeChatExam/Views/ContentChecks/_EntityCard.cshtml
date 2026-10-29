@@ -16,6 +16,10 @@
         "KnowledgeCategories" => @Localizer["Knowledge Category"],
         "QuestionCategories" => @Localizer["Period"],
         "VipProducts" => @Localizer["VIP product"],
+        "MockPapers" => @Localizer["Mock paper"],
+        "RealPapers" => @Localizer["Real paper"],
+        "Institutions" => @Localizer["Institution"],
+        "Papers" => @Localizer["Legacy paper"],
         _ => @Localizer["Paper"]
     };
     var editLabel = Model.Controller switch
@@ -28,12 +32,13 @@
         "KnowledgeCategories" => @Localizer["Edit knowledge category"],
         "QuestionCategories" => @Localizer["Edit period"],
         "VipProducts" => @Localizer["Edit VIP product"],
+        "Institutions" => @Localizer["Edit institution"],
         _ => Model.Action == "Edit" ? @Localizer["Edit paper"] : @Localizer["View frozen paper"]
     };
     var icon = Model.Controller switch
     {
         "KnowledgePoints" => "book-open", "Questions" => "list-checks", "Tags" => "tag",
-        "Taxonomies" => "folder-tree", "KnowledgeCategories" => "folder-tree", "QuestionCategories" => "list-tree", "TotalCategories" => "library-big", "VipProducts" => "badge-check", _ => "files"
+        "Taxonomies" => "folder-tree", "KnowledgeCategories" => "folder-tree", "QuestionCategories" => "list-tree", "TotalCategories" => "library-big", "VipProducts" => "badge-check", "Institutions" => "school", _ => "files"
     };
 }
 <article class="check-entity" data-entity-type="@Model.Controller" data-entity-id="@Model.Id">

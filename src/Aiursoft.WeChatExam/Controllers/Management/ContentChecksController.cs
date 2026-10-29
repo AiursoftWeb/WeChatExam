@@ -28,9 +28,9 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     [HttpGet]
     public async Task<IActionResult> Results(string view = "all", string? severity = null, string? rule = null,
         string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null,
-        bool realExam = false, bool changed = false)
+        bool realExam = false, bool changed = false, Guid[]? institutions = null)
     {
-        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam);
+        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam, institutions);
         model.Changed = changed;
         var results = model.Groups.Where(g => view == "engineering" ? g.NeedsEngineering : !g.NeedsEngineering);
         if (Enum.TryParse<CheckSeverity>(severity, out var level)) results = results.Where(g => g.Severity == level);
@@ -57,9 +57,9 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     [HttpGet]
     public async Task<IActionResult> Details(string key, string view = "all", string? severity = null, string? rule = null,
         string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null, bool realExam = false,
-        Guid? exerciseId = null)
+        Guid? exerciseId = null, Guid[]? institutions = null)
     {
-        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam);
+        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam, institutions);
         model.Selected = model.Groups.FirstOrDefault(g => g.Key == key);
         model.ResultsUrl = ReportUrl(model);
         // Each request reads live data. A corrected or deleted finding must not lead to
@@ -81,9 +81,9 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     }
 
     private async Task<IndexViewModel> ScanAsync(string view, string? severity, string? rule, string? search,
-        Guid? categoryId, int page, Guid[]? subjects, bool realExam)
+        Guid? categoryId, int page, Guid[]? subjects, bool realExam, Guid[]? institutions)
     {
-        var report = await checks.ScanAsync(subjects ?? [], realExam, HttpContext.RequestAborted);
+        var report = await checks.ScanAsync(subjects ?? [], realExam, HttpContext.RequestAborted, institutions);
         var groups = ContentFindingGroup.Build(report.Findings);
         foreach (var group in groups)
         {
@@ -93,7 +93,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         return new IndexViewModel
         {
             Report = report, Groups = groups, View = view, Severity = severity, Rule = rule,
-            Search = search, CategoryId = categoryId, Page = page, Subjects = subjects ?? [], RealExam = realExam
+            Search = search, CategoryId = categoryId, Page = page, Subjects = subjects ?? [], RealExam = realExam, Institutions = institutions ?? []
         };
     }
 
@@ -105,6 +105,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         "TAG001" => localizer["No VIP can unlock this tag"],
         "VIP001" or "VIP002" or "VIP004" => localizer["No suitable VIP is currently available to buy"],
         "VIP003" => localizer["This VIP product needs a course"],
+        "VIP005" => localizer["This VIP product needs an institution"],
         "PAPER001" => localizer["This paper is missing its published version"],
         "PAPER002" => localizer["This paper version has no exercises"],
         "PAPER003" => localizer["No VIP can unlock this paper"],
@@ -120,6 +121,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         "TAG001" => localizer["The legacy tag menu reports this tag as locked. Current practice access uses periods instead; our team should review remaining legacy navigation."],
         "VIP001" or "VIP002" or "VIP004" => localizer["Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content."],
         "VIP003" => localizer["This VIP product is missing its course. It cannot grant the intended course access."],
+        "VIP005" => localizer["This VIP product is missing its institution. It cannot grant the intended real-paper access."],
         "PAPER001" => localizer["Students cannot find this paper because a published paper version has not been created."],
         "PAPER002" => localizer["This saved paper version contains no exercises, so it cannot provide a usable practice paper."],
         "PAPER003" => localizer["This paper requires payment, but no course VIP can unlock it."],
@@ -143,6 +145,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
             new("categoryId", model.CategoryId?.ToString()), new("realExam", model.RealExam.ToString())
         };
         values.AddRange(model.Subjects.Select(id => new KeyValuePair<string, string?>("subjects", id.ToString())));
+        values.AddRange(model.Institutions.Select(id => new KeyValuePair<string, string?>("institutions", id.ToString())));
         return QueryString.Create(values.Where(v => !string.IsNullOrEmpty(v.Value)));
     }
 }
