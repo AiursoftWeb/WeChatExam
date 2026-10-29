@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>اختر اختبارًا تجريبيًا أو اختبارًا حقيقيًا.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>اختر مقررًا دراسيًا موجودًا للورقة التجريبية، من دون جامعة.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>اختر فترة موجودة للسؤال {0} قبل الحفظ.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>اختر جامعة موجودة للاختبار السابق. لا تتضمن الاختبارات السابقة إعدادًا للمقرر أو لإتاحة الوصول بشكل مجهول.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>يجب أن ينتمي كل سؤال في الاختبار التجريبي إلى مقرره الدراسي.</value>
   </data>
 
 </root>

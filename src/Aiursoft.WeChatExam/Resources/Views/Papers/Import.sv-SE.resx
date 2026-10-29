@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Ytterligare taggar (en per rad)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Tillåt åtkomst utan medlemskap</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Kategori (valfritt)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Åtkomsten till kategorier/taxonomier kan vara inkonsekvent. Föreslagna länkade kategorier:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Kontrollera befintliga taggar</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Kontrollera taggar och åtkomstförslag</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Jämför förhandsgranskningsfråga {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Fyll i standardsvaret för fråga {0} innan du sparar.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Slutförd</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Rätt</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Eget namn; följer inte längre titeln</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Ta bort</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Utkastet har sparats. En redaktör kan granska och publicera det.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Dra i handtaget eller använd flyttknapparna. Saknade svar kan lämnas tomma i förhandsgranskningen, men alla standardsvar måste fyllas i innan du sparar.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Redigerbar förhandsvisning</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Varje fråga måste tillhöra den valda kursen.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Befintlig avgiftsstatus behålls.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Felaktigt</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Lärosäte</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Är gratis</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Är det ett riktigt prov</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Övningstenta</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Flytta ned</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Papperskategori (valfritt)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Provtyp</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Gamla tentor kräver universitets-VIP och kan innehålla frågor från olika kurser.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Väntar</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Bearbetar</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Riktig prov</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Ersätt den redigerade förhandsvisningen med en ny extrahering?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Poäng</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Välj en kurs</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Välj en provtyp</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Välj en period</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Välj en institution</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Återanvändning av källtaggen gör den betald globalt.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Källtaggens namn</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Källtaxonomi för taggar (valfritt)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Standardsvar (måste fyllas i innan du sparar)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Taggar organiserar endast importerade frågor. De påverkar inte provets pris och visas inte i studenternas provmeny. Befintliga taggar ändras inte.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taxonomi</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Typ</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Besökare kan göra hela det här övningsprovet, inklusive eventuella avgiftsbelagda frågor. Inloggning krävs för att spara personliga provresultat.</value>
   </data>
 
 </root>

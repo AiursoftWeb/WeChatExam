@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>모의 시험지 또는 실제 시험지를 선택하세요.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>모의 시험지에 사용할 기존 과목을 선택하세요. 대학은 선택하지 마세요.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>저장하기 전에 질문 {0}에 사용할 기존 기간을 선택하세요.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>기출문제에는 기존 대학을 선택하십시오. 기출문제에는 과목 또는 익명 접근 설정이 없습니다.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>모의고사의 모든 문제는 해당 과목에 속해야 합니다.</value>
   </data>
 
 </root>

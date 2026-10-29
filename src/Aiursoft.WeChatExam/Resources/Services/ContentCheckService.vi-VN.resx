@@ -36,6 +36,9 @@
   <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
     <value>Đề nghị bộ phận kỹ thuật rà soát các thành phần điều hướng cũ còn sử dụng. Không thay đổi giá gói thời hạn hoặc giá thư mục để sửa siêu dữ liệu thẻ cũ.</value>
   </data>
+  <data name="Assign the intended institution before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Gán đúng cơ sở trước khi đưa sản phẩm này ra bán. Hãy kiểm tra riêng các tư cách thành viên hiện có.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Gán đúng chủ đề cho câu hỏi hoặc điều chỉnh các thẻ trả phí sau khi xem xét ảnh hưởng chung của chúng.</value>
   </data>
@@ -47,6 +50,9 @@
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Chỉ về quyền truy cập: snapshot bị từ chối sẽ trả về 200 với HasAccess=false và không có câu hỏi nào. Cũng cần có snapshot hợp lệ.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 403. A published, nonempty snapshot is also required." xml:space="preserve">
+    <value>Chỉ về quyền truy cập: bản sao bị từ chối trả về 403. Bản sao đã phát hành, không trống cũng là yêu cầu bắt buộc.</value>
   </data>
   <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
     <value>Cài đặt miễn phí của danh mục không giới hạn API kiến thức công khai. Một số bước kiểm tra lối vào Mini Program sử dụng tên sản phẩm thay vì ID môn học trên máy chủ.</value>
@@ -99,6 +105,15 @@
   <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
     <value>Nếu đây là thẻ dùng chung để mô tả, hãy cân nhắc đặt thẻ ở chế độ miễn phí. Nếu thẻ này dùng để bán quyền truy cập, hãy ánh xạ hệ phân loại của thẻ tới chủ đề phù hợp. Hãy xem lại nội dung bị ảnh hưởng trước khi thay đổi một thẻ dùng chung.</value>
   </data>
+  <data name="Institution VIP product has no valid institution" xml:space="preserve">
+    <value>Sản phẩm VIP cơ sở không có cơ sở hợp lệ</value>
+  </data>
+  <data name="Institution VIP: {0}" xml:space="preserve">
+    <value>VIP Tổ chức: {0}</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Các cơ sở</value>
+  </data>
   <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
     <value>Giữ nguyên cấu hình này nếu bài tập được chủ ý đặt ở chế độ trả phí. Nếu bài tập cần được công khai, hãy rà soát tất cả các thẻ trả phí và tác động chung của chúng trước.</value>
   </data>
@@ -117,8 +132,14 @@
   <data name="Knowledge points" xml:space="preserve">
     <value>Các mục kiến thức</value>
   </data>
+  <data name="Legacy papers" xml:space="preserve">
+    <value>Đề cũ</value>
+  </data>
   <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
     <value>Chỉ siêu dữ liệu thẻ cũ: HasAccess được báo cáo mà không làm thay đổi quyền truy cập câu hỏi.</value>
+  </data>
+  <data name="Mock papers" xml:space="preserve">
+    <value>Đề thi thử</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Khách hàng mới hiện không có kênh mua hàng nào. Thành viên hiện tại còn hiệu lực vẫn có thể được cấp quyền truy cập.</value>
@@ -180,6 +201,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Câu hỏi</value>
   </data>
+  <data name="Real papers" xml:space="preserve">
+    <value>Đề thi thật</value>
+  </data>
   <data name="Real-exam VIP only" xml:space="preserve">
     <value>Chỉ VIP bài thi thực tế</value>
   </data>
@@ -192,11 +216,17 @@
   <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Rà soát khóa học và các sản phẩm VIP hiện có. Sản phẩm bị vô hiệu hóa không làm mất hiệu lực các gói thành viên đang hoạt động.</value>
   </data>
+  <data name="Review the mock paper&apos;s course VIP products. Sales availability does not revoke existing memberships." xml:space="preserve">
+    <value>Kiểm tra các sản phẩm VIP của khóa học thuộc đề thi thử. Việc ngừng bán không làm mất hiệu lực các gói thành viên hiện có.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Kiểm tra các câu hỏi của đề và xuất bản một bản chụp nhanh đã chỉnh sửa. Việc thay đổi các câu hỏi gốc không cập nhật những bản chụp nhanh hiện có.</value>
   </data>
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Hãy kiểm tra môn học và các sản phẩm VIP hiện có. Sản phẩm bị vô hiệu hóa không làm mất hiệu lực các gói thành viên đang hoạt động.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Xem lại các sản phẩm VIP của cơ sở này. VIP khóa học không mở khóa đề thi chính thức; các gói thành viên kỳ thi chính thức áp dụng cho toàn bộ cơ sở hiện có vẫn hoạt động.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Đã đăng nhập nhưng không có VIP đang hoạt động</value>
@@ -245,6 +275,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Bài học này không có thư mục nào cấp quyền truy cập, vì vậy ngay cả thành viên VIP của khóa học cũng không thể đọc được.</value>
+  </data>
+  <data name="This product cannot grant the intended institution membership." xml:space="preserve">
+    <value>Sản phẩm này không thể cấp tư cách thành viên tại tổ chức dự kiến.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Sản phẩm này không thể cấp tư cách thành viên cho chủ đề dự kiến.</value>

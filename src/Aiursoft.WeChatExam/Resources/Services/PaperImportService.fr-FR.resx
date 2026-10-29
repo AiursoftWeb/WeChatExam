@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Choisissez un sujet d’examen blanc ou un sujet d’examen réel.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Choisissez un cours existant pour le sujet blanc, sans établissement universitaire.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Choisissez une période existante pour la question {0} avant d’enregistrer.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Choisissez une université existante pour l’annale. Les annales ne sont associées à aucun cours et ne proposent pas de paramètre d’accès anonyme.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Chaque question d’un sujet d’entraînement doit appartenir à son cours.</value>
   </data>
 
 </root>

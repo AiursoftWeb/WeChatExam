@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Alegeți o lucrare de simulare sau o lucrare reală.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Alegeți un curs existent pentru simulare, fără o universitate.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Alegeți o perioadă existentă pentru întrebarea {0} înainte de a salva.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Alegeți o universitate existentă pentru lucrarea de examen din anii anteriori. Lucrările de examen din anii anteriori nu au un curs asociat și nu permit accesul anonim.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Fiecare întrebare dintr-un test simulat trebuie să aparțină cursului acestuia.</value>
   </data>
 
 </root>

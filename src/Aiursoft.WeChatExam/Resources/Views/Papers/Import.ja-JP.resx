@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>追加タグ（1行につき1つ）</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>会員登録なしでのアクセスを許可する</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>カテゴリー（任意）</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>カテゴリ／タクソノミーへのアクセスに不整合がある可能性があります。関連付けが推奨されるカテゴリ：</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>既存のタグを確認</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>タグとアクセスに関する推奨事項を確認</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>プレビューの質問 {0} を比較中</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>保存する前に、問題 {0} の模範解答を入力してください。</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>完了</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>正解</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>コース</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>カスタム名（タイトルに追従しない）</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>下書きを保存しました。問題編集者が確認して公開できます。</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>ハンドルをドラッグするか、移動ボタンを使用してください。未入力の回答はプレビューでは空欄のままでもかまいませんが、保存する前にすべての標準解答を入力してください。</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>編集可能なプレビュー</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>すべての問題は、選択したコースに属している必要があります。</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>既存の料金設定は維持されます。</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>不正解</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>機関</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>無料です</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>実際の試験です</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>模擬試験</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>下へ移動</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>問題集のカテゴリ（任意）</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>用紙の種類</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>過去問は大学VIPが必要です。また、異なるコースの問題を含む場合があります。</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>保留中</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>処理中</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>実際の試験問題</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>編集済みのプレビューを新しい抽出結果で置き換えますか？</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>得点</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>コースを選択してください</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>用紙の種類を選択</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>期間を選択</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>機関を選択してください</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>ソースのタグを再利用すると、そのタグは全体で有料になります。</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>出典タグ名</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>ソースタグの分類体系（任意）</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>標準解答（保存前に必須）</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>タグはインポートした問題の整理にのみ使用されます。試験の価格を設定したり、学生向けの試験一覧に表示されたりすることはありません。既存のタグは変更されません。</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>分類体系</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>種類</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>ゲストは、有料問題を含む模擬試験全体を受験できます。個人の受験記録を保存するにはログインが必要です。</value>
   </data>
 
 </root>

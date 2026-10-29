@@ -99,8 +99,14 @@
   <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
     <value>这款 VIP 产品未关联课程，因此无法授予预期的课程访问权限。</value>
   </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>该 VIP 产品缺少对应的院校，因此无法授予预期的真题卷访问权限。</value>
+  </data>
   <data name="This VIP product needs a course" xml:space="preserve">
     <value>该VIP产品需要关联课程</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>此VIP产品需要关联院校</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>访客可以查看知识点，但无法免费打开这些练习。</value>
@@ -109,11 +115,4 @@
     <value>访客可以在免费的知识点分类中阅读该知识点，但练习需要相应总分类的 VIP。请选择免费练习，或检查知识点分类和年代设置。</value>
   </data>
 
-
-<data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>该 VIP 产品缺少对应的院校，因此无法授予预期的真题卷访问权限。</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>此VIP产品需要关联院校</value>
-  </data>
-  </root>
+</root>

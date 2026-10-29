@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Scegli una simulazione d’esame o un esame reale.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Scegli un corso esistente per la simulazione d’esame, senza un’università.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Seleziona un periodo esistente per la domanda {0} prima di salvare.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Scegli un&apos;università esistente per il compito d&apos;esame degli anni precedenti. I compiti d&apos;esame degli anni precedenti non prevedono un corso né un&apos;impostazione di accesso anonimo.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Ogni domanda di una simulazione d’esame deve appartenere al corso corrispondente.</value>
   </data>
 
 </root>

@@ -99,8 +99,14 @@
   <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
     <value>Este produto VIP não está associado a nenhum curso. Não pode conceder acesso ao curso pretendido.</value>
   </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Este produto VIP não tem a instituição associada. Não pode conceder o acesso pretendido aos exames oficiais.</value>
+  </data>
   <data name="This VIP product needs a course" xml:space="preserve">
     <value>Este produto VIP precisa de um curso</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Este produto VIP necessita de uma instituição</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Os visitantes podem ler o ponto de conhecimento, mas não podem aceder gratuitamente a estes exercícios.</value>

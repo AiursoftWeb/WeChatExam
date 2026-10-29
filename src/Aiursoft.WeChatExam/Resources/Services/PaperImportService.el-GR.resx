@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Επιλέξτε ένα δοκιμαστικό ή ένα πραγματικό γραπτό.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Επιλέξτε ένα υπάρχον μάθημα για το δοκιμαστικό διαγώνισμα, χωρίς πανεπιστήμιο.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Προτού αποθηκεύσετε, επιλέξτε μια υπάρχουσα περίοδο για την ερώτηση {0}.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Επιλέξτε ένα υπάρχον πανεπιστήμιο για το παλαιό εξεταστικό θέμα. Τα παλαιά εξεταστικά θέματα δεν έχουν μάθημα ή ρύθμιση ανώνυμης πρόσβασης.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Κάθε ερώτηση σε ένα δοκιμαστικό διαγώνισμα πρέπει να ανήκει στο αντίστοιχο μάθημα.</value>
   </data>
 
 </root>

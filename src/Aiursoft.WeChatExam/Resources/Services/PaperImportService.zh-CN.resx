@@ -18,18 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
-    <value>保存前，请为第 {0} 道题选择一个已有的年代。</value>
-  </data>
-
-
-<data name="Choose a mock paper or a real paper." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
     <value>请选择模拟试卷或正式试卷。</value>
   </data>
-
-
-<data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
     <value>请为模拟试卷选择一个已有课程，且不要选择大学。</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+    <value>保存前，请为第 {0} 道题选择一个已有的年代。</value>
   </data>
   <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
     <value>为历年真题选择一所现有大学。历年真题没有课程或匿名访问设置。</value>

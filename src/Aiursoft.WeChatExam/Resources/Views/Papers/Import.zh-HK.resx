@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>附加標籤（每行一個）</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>允許非會員使用</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>類別（可選）</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>類別／分類體系的存取權限可能不一致。建議連結的類別：</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>檢查現有標籤</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>檢查標籤及存取建議</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>正在比較預覽題目 {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>請先填寫第 {0} 題的標準答案，然後再儲存。</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>已完成</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>正確</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>課程</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>自訂名稱；不再跟隨標題</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>刪除</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>草稿已儲存。試卷編輯人員可以審閱並發布。</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>拖動控制柄或使用移動按鈕。預覽中缺少的答案可以留空，但儲存前必須填妥所有標準答案。</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>可編輯預覽</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>每條題目都必須屬於所選的課程。</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>現有收費狀態維持不變。</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>不正確</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>院校</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>是否免費</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>是否為正式考試</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>模擬試卷</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>向下移動</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>試卷類別（選填）</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>試卷類型</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>歷屆試卷需要大學 VIP 權限，而且可以包含來自不同課程的題目。</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>待處理</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>處理中</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>真實試卷</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>要以新的擷取結果取代已編輯的預覽嗎？</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>分數</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>選擇課程</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>請選擇試卷類型</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>選擇一個時段</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>請選擇院校</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>重用來源標籤會令此標籤在全站變為付費。</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>來源標籤名稱</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>來源標籤分類（可選）</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>標準答案（儲存前必須填寫）</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>標籤只用於整理匯入的問題，不會設定試卷價格，也不會顯示在學生的試卷選單中。現有標籤不會被更改。</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>分類法</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>類型</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>訪客可以參加這份完整的模擬試卷，包括任何付費題目。登入後才能儲存個人考試紀錄。</value>
   </data>
 
 </root>

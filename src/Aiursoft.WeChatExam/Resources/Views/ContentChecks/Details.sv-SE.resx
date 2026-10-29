@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>Aktiva kurs-VIP:ar</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>Aktiva VIP-personer vid institutionen</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>Aktivt VIP-prov</value>
   </data>
@@ -62,6 +65,12 @@
   </data>
   <data name="Browse the full list" xml:space="preserve">
     <value>Visa hela listan</value>
+  </data>
+  <data name="Can open" xml:space="preserve">
+    <value>Kan öppna</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>Kan inte öppna</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Kontrollera detta scenario</value>
@@ -99,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>För vårt team</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Institutioner</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>Dess betalda taggar markerar övningen som avgiftsbelagd; de kräver inte ytterligare kursmedlemskap.</value>
   </data>
@@ -113,6 +125,12 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>Kunskapstext: offentlig</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>Äldre VIP för ordinarie prov (alla institutioner)</value>
+  </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Lektionstexten följer de kataloger som den har tilldelats direkt. Övningens innehåll följer dess period. Här kontrolleras inte om svar skickas in eller sparas.</value>
   </data>
   <data name="Linked exercise" xml:space="preserve">
     <value>Länkad övning</value>
@@ -132,6 +150,9 @@
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>Vårt team behöver granska det här beteendet. Du behöver inte ändra den gemensamma prissättningen för att lösa ett programproblem.</value>
   </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Prov</value>
+  </data>
   <data name="Please confirm" xml:space="preserve">
     <value>Bekräfta</value>
   </data>
@@ -146,6 +167,9 @@
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Granska gemensam påverkan</value>
+  </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>Granska den tilldelade perioden och dess kurs.</value>
   </data>
   <data name="Scan coverage and object IDs" xml:space="preserve">
     <value>Skanningens omfattning och objekt-ID:n</value>
@@ -162,11 +186,20 @@
   <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
     <value>Du måste vara inloggad och ha kursens obligatoriska VIP.</value>
   </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>Taggar organiserar innehåll internt. Granska perioden och kunskapskatalogen när du ändrar åtkomst.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>Övningen ärver prissättningen från sin period. Taggar ger inte åtkomst till övningar och begränsar inte heller åtkomsten.</value>
+  </data>
   <data name="The paid tag is not covered: {0}" xml:space="preserve">
     <value>Den betalda taggen täcks inte: {0}</value>
   </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Dessa resultat bedömer den aktuella åtkomsten till servern. De simulerar inte alla skärmbilder i Mini Program eller hela flödet för att skicka in. Varje sida läser in den aktuella konfigurationen på nytt.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>Dessa taggar organiserar det listade innehållet. De avgör inte den aktuella verksamheten eller åtkomsten till kunskap.</value>
   </data>
   <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
     <value>Det här kontot behöver kursens VIP-åtkomst för just den här övningen.</value>

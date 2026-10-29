@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Deneme sınavı mı yoksa gerçek sınav mı seçeceğinizi belirtin.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Deneme sınavı için üniversite seçmeden mevcut bir ders seçin.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Kaydetmeden önce {0} numaralı soru için mevcut bir dönem seçin.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Geçmiş sınav kâğıdı için mevcut bir üniversite seçin. Geçmiş sınav kâğıtlarında ders veya anonim erişim ayarı bulunmaz.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Deneme sınavındaki her soru, kendi dersine ait olmalıdır.</value>
   </data>
 
 </root>

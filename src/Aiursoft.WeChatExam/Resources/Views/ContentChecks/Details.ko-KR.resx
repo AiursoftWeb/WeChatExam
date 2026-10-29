@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>활성 강의 VIP</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>활성 기관 VIP</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>실제 시험 VIP 활성화</value>
   </data>
@@ -105,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>저희 팀에 전달</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>기관</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>유료 태그는 해당 연습문제가 유료임을 표시할 뿐, 추가 강좌 멤버십을 요구하지 않습니다.</value>
   </data>
@@ -119,6 +125,9 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>지식 텍스트: 공개</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>기존 실전 시험 VIP(모든 기관)</value>
   </data>
   <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
     <value>수업 내용은 직접 지정된 디렉터리를 따릅니다. 연습 문제 내용은 해당 학기를 따릅니다. 답안 제출 및 저장 여부는 여기서 확인하지 않습니다.</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>이 동작은 담당 팀에서 검토해야 합니다. 프로그램 문제를 해결하기 위해 공용 가격을 변경하실 필요는 없습니다.</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>시험지</value>
   </data>
   <data name="Please confirm" xml:space="preserve">
     <value>확인해 주세요</value>

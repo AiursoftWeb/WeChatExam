@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minuten</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>Alle cursussen</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Cursus</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Proefexamen aanmaken</value>
+  </data>
+  <data name="Create your first mock paper" xml:space="preserve">
+    <value>Maak je eerste proefexamen</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Conceptversie</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Proefwerk bewerken</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Papier importeren</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>Vragen beheren</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Proefexamens</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Geen overeenkomende papers</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>Geen lidmaatschap vereist</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} van {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Papierpagina&apos;s</value>
+  </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>Stel een examen samen en publiceer vaste versies.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Vorige</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Gepubliceerde versie beschikbaar</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>Gepubliceerde versies</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>Alleen-lezen</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>Vereist cursus-VIP</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>Zoek papers</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Alle papers weergeven</value>
+  </data>
+
+</root>

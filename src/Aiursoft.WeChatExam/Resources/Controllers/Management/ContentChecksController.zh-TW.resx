@@ -99,8 +99,14 @@
   <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
     <value>這項 VIP 商品缺少所屬課程，因此無法授予預期的課程存取權限。</value>
   </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>此 VIP 商品未設定所屬機構，因此無法提供預期的真題使用權限。</value>
+  </data>
   <data name="This VIP product needs a course" xml:space="preserve">
     <value>此 VIP 商品需要指定課程</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>此 VIP 商品需要指定機構</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>訪客可以閱讀知識點，但無法免費開啟這些練習。</value>

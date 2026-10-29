@@ -99,8 +99,14 @@
   <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
     <value>Από αυτό το προϊόν VIP λείπει το μάθημα. Δεν μπορεί να παρέχει πρόσβαση στο προβλεπόμενο μάθημα.</value>
   </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Σε αυτό το προϊόν VIP δεν έχει οριστεί ο φορέας. Δεν μπορεί να παρέχει την προβλεπόμενη πρόσβαση σε πραγματικά διαγωνίσματα.</value>
+  </data>
   <data name="This VIP product needs a course" xml:space="preserve">
     <value>Αυτό το προϊόν VIP χρειάζεται ένα μάθημα</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Αυτό το προϊόν VIP απαιτεί ένα εκπαιδευτικό ίδρυμα</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Οι επισκέπτες μπορούν να διαβάσουν το γνωστικό αντικείμενο, αλλά δεν μπορούν να ανοίξουν δωρεάν αυτές τις ασκήσεις.</value>

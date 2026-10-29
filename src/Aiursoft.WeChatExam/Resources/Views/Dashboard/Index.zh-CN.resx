@@ -150,8 +150,14 @@
   <data name="Integrated File Management" xml:space="preserve">
     <value>集成文件管理</value>
   </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>知识分类</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>知识点</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>模拟试卷</value>
   </data>
   <data name="Multiple Database Support" xml:space="preserve">
     <value>多数据库支持</value>
@@ -186,6 +192,9 @@
   <data name="Publishable" xml:space="preserve">
     <value>可发布</value>
   </data>
+  <data name="Published" xml:space="preserve">
+    <value>已发布</value>
+  </data>
   <data name="Question Type Distribution" xml:space="preserve">
     <value>题目类型分布</value>
   </data>
@@ -197,6 +206,9 @@
   </data>
   <data name="Read the document" xml:space="preserve">
     <value>阅读文档</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>真题卷</value>
   </data>
   <data name="Recent Exams" xml:space="preserve">
     <value>最近的考试</value>
@@ -267,6 +279,9 @@
   <data name="Type" xml:space="preserve">
     <value>类型</value>
   </data>
+  <data name="Unpublished" xml:space="preserve">
+    <value>未发布</value>
+  </data>
   <data name="Upcoming" xml:space="preserve">
     <value>即将开始</value>
   </data>
@@ -283,20 +298,4 @@
     <value>欢迎</value>
   </data>
 
-
-<data name="Knowledge Categories" xml:space="preserve">
-    <value>知识分类</value>
-  </data>
-  <data name="Mock Papers" xml:space="preserve">
-    <value>模拟试卷</value>
-  </data>
-  <data name="Published" xml:space="preserve">
-    <value>已发布</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>真题卷</value>
-  </data>
-  <data name="Unpublished" xml:space="preserve">
-    <value>未发布</value>
-  </data>
-  </root>
+</root>

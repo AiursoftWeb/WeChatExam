@@ -36,6 +36,9 @@
   <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
     <value>Poproś zespół inżynierski o sprawdzenie pozostałych elementów korzystających ze starszego mechanizmu nawigacji. Nie zmieniaj cen okresów ani katalogów, aby naprawić metadane starszych tagów.</value>
   </data>
+  <data name="Assign the intended institution before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Przypisz właściwą instytucję przed wystawieniem tego produktu na sprzedaż. Istniejące członkostwa sprawdź osobno.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Przypisz właściwy temat pytania lub popraw jego płatne tagi po sprawdzeniu ich łącznego wpływu.</value>
   </data>
@@ -47,6 +50,9 @@
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Dotyczy wyłącznie autoryzacji: odmowa dostępu do migawki zwraca kod 200, HasAccess=false i nie zwraca żadnych pytań. Wymagana jest również użyteczna migawka.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 403. A published, nonempty snapshot is also required." xml:space="preserve">
+    <value>Tylko autoryzacja: odmowa dostępu do migawki zwraca kod 403. Wymagana jest również opublikowana, niepusta migawka.</value>
   </data>
   <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
     <value>Ustawienia bezpłatności kategorii nie ograniczają publicznego API wiedzy. Niektóre kontrole dostępu w miniprogramie korzystają z nazw produktów zamiast z identyfikatorów przedmiotów używanych przez serwer.</value>
@@ -99,6 +105,15 @@
   <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
     <value>Jeśli jest to opisowy, wspólny tag, rozważ ustawienie go jako bezpłatnego. Jeśli zapewnia dostęp po zakupie, przypisz jego taksonomię do właściwego przedmiotu. Przed zmianą wspólnego tagu sprawdź, jakich treści dotyczy.</value>
   </data>
+  <data name="Institution VIP product has no valid institution" xml:space="preserve">
+    <value>Produkt VIP instytucji nie ma przypisanej prawidłowej instytucji</value>
+  </data>
+  <data name="Institution VIP: {0}" xml:space="preserve">
+    <value>VIP instytucjonalny: {0}</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Instytucje</value>
+  </data>
   <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
     <value>Zachowaj tę konfigurację, jeśli ćwiczenie jest celowo płatne. Jeśli ma być publiczne, najpierw sprawdź wszystkie płatne tagi i ich wspólny wpływ.</value>
   </data>
@@ -117,8 +132,14 @@
   <data name="Knowledge points" xml:space="preserve">
     <value>Punkty wiedzy</value>
   </data>
+  <data name="Legacy papers" xml:space="preserve">
+    <value>Archiwalne arkusze</value>
+  </data>
   <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
     <value>Tylko metadane starszego systemu tagów: HasAccess jest raportowane bez zmiany dostępu do pytań.</value>
+  </data>
+  <data name="Mock papers" xml:space="preserve">
+    <value>Arkusze próbne</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Nowi klienci nie mają obecnie możliwości zakupu. Istniejące aktywne członkostwa mogą nadal zapewniać dostęp.</value>
@@ -180,6 +201,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Pytania</value>
   </data>
+  <data name="Real papers" xml:space="preserve">
+    <value>Arkusze egzaminacyjne</value>
+  </data>
   <data name="Real-exam VIP only" xml:space="preserve">
     <value>Tylko VIP do egzaminu właściwego</value>
   </data>
@@ -192,11 +216,17 @@
   <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Sprawdź kurs i dostępne produkty VIP. Wyłączone produkty nie unieważniają istniejących aktywnych członkostw.</value>
   </data>
+  <data name="Review the mock paper&apos;s course VIP products. Sales availability does not revoke existing memberships." xml:space="preserve">
+    <value>Sprawdź produkty VIP dla kursu dotyczącego arkusza próbnego. Dostępność sprzedaży nie powoduje wygaśnięcia istniejących członkostw.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Sprawdź pytania w arkuszu i opublikuj poprawioną migawkę. Zmiana oryginalnych pytań nie aktualizuje istniejących migawek.</value>
   </data>
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Sprawdź przedmiot i dostępne produkty VIP. Wyłączone produkty nie unieważniają istniejących aktywnych członkostw.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Sprawdź produkty VIP tej instytucji. VIP-y kursowe nie odblokowują prawdziwych arkuszy egzaminacyjnych; nadal działają istniejące członkostwa obejmujące egzaminy ze wszystkich instytucji.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Zalogowany bez aktywnego VIP-a</value>
@@ -245,6 +275,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Ta lekcja nie ma przypisanego katalogu zapewniającego dostęp, więc nie może jej przeczytać nawet użytkownik VIP kursu.</value>
+  </data>
+  <data name="This product cannot grant the intended institution membership." xml:space="preserve">
+    <value>Ten produkt nie może zapewnić członkostwa w wybranej instytucji.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Ten produkt nie może nadać członkostwa w zamierzonym przedmiocie.</value>
