@@ -21,8 +21,7 @@ public class ContentCheckService(
         var directories = await context.KnowledgeCategories.AsNoTracking().ToListAsync(cancellationToken);
         var courses = await context.TotalCategories.AsNoTracking().ToListAsync(cancellationToken);
         var periods = await context.QuestionCategories.AsNoTracking().ToListAsync(cancellationToken);
-        var tags = await context.Tags.AsNoTracking().Include(t => t.Taxonomy)
-            .ThenInclude(t => t!.CategoryTaxonomies).ToListAsync(cancellationToken);
+        var tags = await context.Tags.AsNoTracking().Include(t => t.Taxonomy).ToListAsync(cancellationToken);
         var questions = await context.Questions.AsNoTracking().Select(q => new Question
         {
             Id = q.Id, Content = q.Content, QuestionCategoryId = q.QuestionCategoryId
@@ -153,10 +152,8 @@ public class ContentCheckService(
 
         foreach (var tag in tags)
         {
-            var mapped = tag.Taxonomy?.CategoryTaxonomies.Select(c => c.CategoryId).ToHashSet() ?? [];
             report.TagMappings[tag.Id] = new(tag.Taxonomy is { } taxonomy
-                ? new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags) : null,
-                courses.Where(c => mapped.Contains(c.Id)).Select(CourseRef).ToList());
+                ? new("Taxonomies", taxonomy.Id.ToString(), taxonomy.Name, AppPermissionNames.CanManageTags) : null);
         }
 
         foreach (var q in questionIndex.Values)

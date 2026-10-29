@@ -113,27 +113,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryTaxonomy", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("TaxonomyId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("TaxonomyId");
-
-                    b.ToTable("CategoryTaxonomies");
-                });
-
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Change", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1584,25 +1563,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.CategoryTaxonomy", b =>
-                {
-                    b.HasOne("Aiursoft.WeChatExam.Entities.Category", "Category")
-                        .WithMany("CategoryTaxonomies")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Aiursoft.WeChatExam.Entities.Taxonomy", "Taxonomy")
-                        .WithMany("CategoryTaxonomies")
-                        .HasForeignKey("TaxonomyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Taxonomy");
-                });
-
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Change", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
@@ -2186,8 +2146,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Category", b =>
                 {
-                    b.Navigation("CategoryTaxonomies");
-
                     b.Navigation("Children");
 
                     b.Navigation("PaperCategories");
@@ -2268,8 +2226,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.Taxonomy", b =>
                 {
-                    b.Navigation("CategoryTaxonomies");
-
                     b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618

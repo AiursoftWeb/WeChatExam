@@ -4,9 +4,9 @@ namespace Aiursoft.WeChatExam.Services;
 
 public interface ITaxonomyService
 {
-    Task<Taxonomy> AddTaxonomyAsync(string name, Guid[]? categoryIds = null);
-    Task<List<Taxonomy>> GetAllTaxonomiesAsync(Guid? categoryId = null, bool includeCategory = false);
+    Task<Taxonomy> AddTaxonomyAsync(string name);
+    Task<List<Taxonomy>> GetAllTaxonomiesAsync();
     Task<Taxonomy?> GetTaxonomyByIdAsync(int id);
     Task DeleteTaxonomyAsync(int id);
-    Task UpdateTaxonomyAsync(Taxonomy taxonomy, Guid[]? categoryIds = null);
+    Task UpdateTaxonomyAsync(Taxonomy taxonomy);
 }

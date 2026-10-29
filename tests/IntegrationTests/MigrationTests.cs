@@ -216,6 +216,59 @@ public class MigrationTests
     }
 
     [TestMethod]
+    public async Task RemovingTaxonomyCategoryLinksPreservesContentAndInternalOrganization()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:;Foreign Keys=True").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        const string previous = "20261029104234_RemoveTagPricing";
+        await migrator.MigrateAsync(previous);
+        var legacy = new Category { Title = "Legacy category", ParentId = null };
+        var taxonomy = new Taxonomy { Name = "Internal works" };
+        var tag = new Tag { DisplayName = "Work", NormalizedName = "WORK", OrderIndex = 8, Taxonomy = taxonomy };
+        var period = QuestionPeriodAssignmentTests.TestPeriod(isFree: true);
+        var question = new Question { Content = "Retained exercise", StandardAnswer = "Answer", QuestionCategory = period };
+        var paper = new Paper { Title = "Legacy paper", IsFree = false };
+        db.AddRange(legacy, tag, question, paper);
+        await db.SaveChangesAsync();
+        db.AddRange(new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
+            new PaperTag { PaperId = paper.Id, TagId = tag.Id });
+        await db.SaveChangesAsync();
+        var linkId = Guid.NewGuid();
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO CategoryTaxonomies (Id, CategoryId, TaxonomyId) VALUES ({linkId}, {legacy.Id}, {taxonomy.Id})");
+
+        foreach (var target in new[] { null, previous, null })
+        {
+            await migrator.MigrateAsync(target);
+            db.ChangeTracker.Clear();
+            Assert.AreEqual("Legacy category", (await db.Categories.SingleAsync()).Title);
+            var saved = await db.Tags.Include(t => t.Taxonomy).SingleAsync();
+            Assert.AreEqual(tag.Id, saved.Id);
+            Assert.AreEqual("Work", saved.DisplayName);
+            Assert.AreEqual("WORK", saved.NormalizedName);
+            Assert.AreEqual(8, saved.OrderIndex);
+            Assert.AreEqual(taxonomy.Id, saved.TaxonomyId);
+            Assert.AreEqual("Internal works", saved.Taxonomy!.Name);
+            Assert.IsTrue(await db.QuestionTags.AnyAsync(t => t.TagId == tag.Id && t.QuestionId == question.Id));
+            Assert.IsTrue(await db.PaperTags.AnyAsync(t => t.TagId == tag.Id && t.PaperId == paper.Id));
+            Assert.AreEqual("Answer", (await db.Questions.SingleAsync()).StandardAnswer);
+            Assert.IsTrue((await db.QuestionCategories.SingleAsync()).IsFree);
+            Assert.IsFalse((await db.Papers.SingleAsync()).IsFree);
+            await using var command = db.Database.GetDbConnection().CreateCommand();
+            command.CommandText = "SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'CategoryTaxonomies'";
+            Assert.AreEqual(target == null ? 0L : 1L, await command.ExecuteScalarAsync());
+            command.CommandText = "SELECT count(*) FROM pragma_foreign_key_check";
+            Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+            if (target != null)
+            {
+                // Down restores the relation schema. Historical links must come from the backup.
+                await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO CategoryTaxonomies (Id, CategoryId, TaxonomyId) VALUES ({linkId}, {legacy.Id}, {taxonomy.Id})");
+            }
+        }
+    }
+
+    [TestMethod]
     public void TestSqliteMigrations()
     {
         var options = new DbContextOptionsBuilder<SqliteContext>()

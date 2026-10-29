@@ -145,7 +145,6 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<QuestionCategory> QuestionCategories => Set<QuestionCategory>();
     public DbSet<KnowledgeCategory> KnowledgeCategories => Set<KnowledgeCategory>();
     public DbSet<Category> Categories => Set<Category>();
-    public DbSet<CategoryTaxonomy> CategoryTaxonomies => Set<CategoryTaxonomy>();
     public DbSet<Question> Questions => Set<Question>();
     public DbSet<KnowledgePoint> KnowledgePoints => Set<KnowledgePoint>();
     public DbSet<UserPracticeHistory> UserPracticeHistories => Set<UserPracticeHistory>();

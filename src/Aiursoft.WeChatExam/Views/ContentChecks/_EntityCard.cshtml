@@ -94,26 +94,6 @@
                     @Localizer["Not assigned"]
                 }
             </p>
-            @if (Model.Pricing == ContentPricing.Paid)
-            {
-                <p class="mb-0">@Localizer["Course VIPs linked to this tag entry"]:
-                    @foreach (var subject in mapping.Subjects)
-                    {
-                        @if (permissions.Contains(subject.Permission))
-                        {
-                            <a asp-controller="@subject.Controller" asp-action="Edit" asp-route-id="@subject.Id" asp-route-checkReturnUrl="@ViewData["CheckReturnUrl"]">@subject.Name</a>
-                        }
-                        else
-                        {
-                            <span>@subject.Name</span>
-                        }
-                    }
-                    @if (mapping.Subjects.Count == 0)
-                    {
-                        <strong>@Localizer["None configured"]</strong>
-                    }
-                </p>
-            }
         </div>
     }
     @if (Model.Controller == "Tags" && ViewData["TagImpacts"] is Dictionary<int, List<ContentReference>> impacts && impacts.TryGetValue(int.Parse(Model.Id), out var impact))
