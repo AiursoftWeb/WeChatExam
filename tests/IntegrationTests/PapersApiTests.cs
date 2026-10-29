@@ -812,7 +812,7 @@ public class PapersApiTests
         Assert.AreEqual("Institution", item.GetProperty("type").GetString());
         Assert.AreEqual(school.Id, item.GetProperty("institutionId").GetGuid());
         Assert.AreEqual("Wuhan catalog", item.GetProperty("institutionName").GetString());
-        Assert.AreEqual(System.Text.Json.JsonValueKind.Null, item.GetProperty("categoryId").ValueKind);
+        Assert.AreEqual(System.Text.Json.JsonValueKind.Null, item.GetProperty("totalCategoryId").ValueKind);
         Assert.AreEqual(1234, item.GetProperty("priceInFen").GetInt32());
         var end = DateTime.UtcNow.AddDays(30);
         _mockWeChatPayService.Memberships = [new VipMembership { UserId = "student", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = end }];
@@ -822,7 +822,55 @@ public class PapersApiTests
         Assert.AreEqual(VipProductType.Institution, membership.Type);
         Assert.AreEqual(school.Id, membership.InstitutionId);
         Assert.AreEqual("Wuhan catalog", membership.InstitutionName);
-        Assert.IsNull(membership.CategoryId);
+        Assert.IsNull(membership.TotalCategoryId);
         Assert.AreEqual(end, membership.EndTime);
+    }
+
+    [TestMethod]
+    public async Task PaymentCourseTargetsUseTotalCategoryIdsAndRejectObsoleteFilters()
+    {
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Course catalog" };
+        var other = new TotalCategory { Title = "Other catalog" };
+        var product = new VipProduct { Name = "Same product name", TotalCategory = course, PriceInFen = 1200, DurationDays = 30 };
+        var second = new VipProduct { Name = product.Name, TotalCategory = other };
+        var disabled = new VipProduct { Name = "Off sale", TotalCategory = course, IsEnabled = false };
+        db.AddRange(product, second, disabled);
+        await db.SaveChangesAsync();
+
+        using var catalog = System.Text.Json.JsonDocument.Parse(await _http.GetStringAsync($"/api/payment/vip-products?totalCategoryId={course.Id}"));
+        var item = catalog.RootElement.EnumerateArray().Single();
+        Assert.AreEqual(product.Id, item.GetProperty("id").GetGuid());
+        Assert.AreEqual(course.Id, item.GetProperty("totalCategoryId").GetGuid());
+        Assert.AreEqual(course.Title, item.GetProperty("totalCategoryName").GetString());
+        Assert.AreEqual("Category", item.GetProperty("type").GetString());
+        Assert.AreEqual(1200, item.GetProperty("priceInFen").GetInt32());
+        Assert.AreEqual(30, item.GetProperty("durationDays").GetInt32());
+        Assert.AreEqual(System.Text.Json.JsonValueKind.Null, item.GetProperty("institutionId").ValueKind);
+        Assert.IsFalse(item.TryGetProperty("categoryId", out _));
+        Assert.IsFalse(item.TryGetProperty("categoryName", out _));
+        foreach (var query in new[] { $"categoryId={course.Id}", $"totalCategoryId={course.Id}&categoryId={other.Id}" })
+        {
+            using var rejected = await _http.GetAsync("/api/payment/vip-products?" + query);
+            Assert.AreEqual(HttpStatusCode.BadRequest, rejected.StatusCode);
+        }
+
+        var end = DateTime.UtcNow.AddDays(30);
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "student", VipProduct = disabled, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = end
+        }];
+        using var anonymous = await _http.GetAsync("/api/payment/vip-status");
+        Assert.AreEqual(HttpStatusCode.Unauthorized, anonymous.StatusCode);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        using var status = System.Text.Json.JsonDocument.Parse(await _http.GetStringAsync("/api/payment/vip-status"));
+        var membership = status.RootElement.GetProperty("memberships").EnumerateArray().Single();
+        Assert.AreEqual(course.Id, membership.GetProperty("totalCategoryId").GetGuid());
+        Assert.AreEqual(course.Title, membership.GetProperty("totalCategoryName").GetString());
+        Assert.IsTrue(membership.GetProperty("isActive").GetBoolean(), "Off-sale products do not revoke existing memberships.");
+        Assert.AreEqual(end, membership.GetProperty("endTime").GetDateTime());
+        Assert.IsFalse(membership.TryGetProperty("categoryId", out _));
+        Assert.IsFalse(membership.TryGetProperty("categoryName", out _));
     }
 }

@@ -69,8 +69,8 @@ public class VipStatusResponse
 public class VipMembershipDto
 {
     public VipProductType Type { get; set; }
-    public Guid? CategoryId { get; set; }
-    public string CategoryName { get; set; } = string.Empty;
+    public Guid? TotalCategoryId { get; set; }
+    public string TotalCategoryName { get; set; } = string.Empty;
     public Guid? InstitutionId { get; set; }
     public string InstitutionName { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
