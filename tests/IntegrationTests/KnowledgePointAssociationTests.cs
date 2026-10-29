@@ -417,7 +417,7 @@ public class KnowledgePointAssociationTests
         Assert.IsFalse(string.IsNullOrEmpty(detailsUrl));
         var detail = await _http.GetStringAsync(detailsUrl);
         StringAssert.Contains(detail, "/Questions/Edit/");
-        StringAssert.Contains(detail, "What students experience");
+        StringAssert.Contains(detail, "Who can open this content?");
         using var checkScope = _server!.Services.CreateScope();
         var checkDb = checkScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         Assert.AreEqual(55, checkDb.Questions.Count(q => q.Content.StartsWith("Diagnostic") && !q.QuestionCategory!.IsFree));
@@ -427,7 +427,7 @@ public class KnowledgePointAssociationTests
         var culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN");
         var viewResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.ContentChecks.Details", typeof(Startup).Assembly);
         var controllerResources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Controllers.Management.ContentChecksController", typeof(Startup).Assembly);
-        StringAssert.Contains(chinese, viewResources.GetResourceSet(culture, true, false)!.GetString("What students experience")!);
+        StringAssert.Contains(chinese, viewResources.GetResourceSet(culture, true, false)!.GetString("Who can open this content?")!);
         StringAssert.Contains(chinese, controllerResources.GetResourceSet(culture, true, false)!.GetString("No suitable VIP is currently available to buy")!);
         // Correcting period pricing between listing and opening it returns a fresh list.
         var question = checkDb.Questions.Include(q => q.QuestionCategory)
