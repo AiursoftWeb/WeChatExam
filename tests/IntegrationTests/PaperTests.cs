@@ -2,6 +2,8 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Services;
+using Microsoft.EntityFrameworkCore;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -83,6 +85,59 @@ public class PaperTests
         Assert.AreEqual("/Dashboard/Index", loginResponse.Headers.Location?.OriginalString);
     }
 
+    private async Task<Guid> SeedLegacyPaper(string title, bool real = false)
+    {
+        using var scope = _server!.Services.CreateScope();
+        var service = scope.ServiceProvider.GetRequiredService<IPaperService>();
+        var paper = await service.CreatePaperAsync(title, real ? 120 : 60, real, real);
+        if (real)
+        {
+            var tags = scope.ServiceProvider.GetRequiredService<ITagService>();
+            foreach (var name in new[] { "RealTag1", "RealTag2" })
+                await tags.AddTagToPaperAsync(paper.Id, (await tags.GetOrCreateTagAsync(name)).Id);
+        }
+        return paper.Id;
+    }
+
+    [TestMethod]
+    public async Task LegacyCreationIsRetiredWhileArchiveAndNewEditorsRemainAvailable()
+    {
+        var paperId = await SeedLegacyPaper("Existing archived paper");
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var count = await db.Papers.CountAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync("/Papers/Create")).StatusCode);
+        await LoginAsAdminAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync("/Papers/Create")).StatusCode);
+        using var submitted = await _http.PostAsync("/Papers/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["Title"] = "Must not create an old paper", ["TimeLimit"] = "180",
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken($"/Papers/Edit/{paperId}")
+        }));
+        Assert.AreEqual(HttpStatusCode.NotFound, submitted.StatusCode);
+        Assert.AreEqual(count, await db.Papers.CountAsync());
+        var html = WebUtility.HtmlDecode(await _http.GetStringAsync("/Papers"));
+        StringAssert.Contains(html, "Legacy Paper Archive");
+        StringAssert.Contains(html, "Existing archived paper");
+        Assert.DoesNotContain("href=\"/Papers/Create\"", html);
+        foreach (var route in new[] { "/MockPapers/Create", "/RealPapers/Create" })
+        {
+            StringAssert.Contains(html, $"href=\"{route}\"");
+            using var editor = await _http.GetAsync(route);
+            Assert.AreEqual(HttpStatusCode.OK, editor.StatusCode);
+        }
+        Assert.Contains("href=\"/Papers/Import\"", html);
+        using var import = await _http.GetAsync("/Papers/Import");
+        Assert.AreEqual(HttpStatusCode.OK, import.StatusCode, "The shared importer creates new-model papers.");
+        using var cultureResponse = await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/Papers");
+        Assert.AreEqual(HttpStatusCode.Found, cultureResponse.StatusCode);
+        var chinese = WebUtility.HtmlDecode(await _http.GetStringAsync("/Papers"));
+        var resources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.Papers.Index", typeof(Startup).Assembly);
+        var title = resources.GetResourceSet(System.Globalization.CultureInfo.GetCultureInfo("zh-CN"), true, false)!.GetString("Legacy Paper Archive");
+        Assert.IsNotNull(title);
+        StringAssert.Contains(chinese, title);
+    }
+
     [TestMethod]
     public async Task PaperMtqlBatchAddTest()
     {
@@ -112,19 +167,9 @@ public class PaperTests
             questionIds.Add(qDetailsUrl!.Split('/').Last().Split('?')[0]);
         }
 
-        // 3. Create a Paper
-        var paperTitle = $"Test Paper {Guid.NewGuid()}";
-        var paperToken = await GetAntiCsrfToken("/Papers/Create");
-        var paperContent = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", paperTitle },
-            { "TimeLimit", "60" },
-            { "IsFree", "false" },
-            { "__RequestVerificationToken", paperToken }
-        });
-        var paperResponse = await _http.PostAsync("/Papers/Create", paperContent);
-        var paperEditUrl = paperResponse.Headers.Location?.OriginalString;
-        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
+        // The old archive remains editable; only new creation has moved to the new entities.
+        var paperId = await SeedLegacyPaper($"Test Paper {Guid.NewGuid()}");
+        var paperEditUrl = $"/Papers/Edit/{paperId}";
 
         // 4. Test SearchQuestions (MTQL)
         var mtql = "MTQLTestTag";
@@ -161,22 +206,9 @@ public class PaperTests
     {
         await LoginAsAdminAsync();
 
-        // 1. Create a Paper with IsRealExam and Tags
         var paperTitle = $"Real Exam Paper {Guid.NewGuid()}";
-        var paperToken = await GetAntiCsrfToken("/Papers/Create");
-        var paperContent = new FormUrlEncodedContent(new Dictionary<string, string>
-        {
-            { "Title", paperTitle },
-            { "TimeLimit", "120" },
-            { "IsFree", "true" },
-            { "IsRealExam", "true" },
-            { "Tags", "RealTag1 RealTag2" },
-            { "__RequestVerificationToken", paperToken }
-        });
-        var paperResponse = await _http.PostAsync("/Papers/Create", paperContent);
-        Assert.AreEqual(HttpStatusCode.Found, paperResponse.StatusCode);
-        var paperEditUrl = paperResponse.Headers.Location?.OriginalString;
-        var paperId = paperEditUrl!.Split('/').Last().Split('?')[0];
+        var paperId = (await SeedLegacyPaper(paperTitle, real: true)).ToString();
+        var paperEditUrl = $"/Papers/Edit/{paperId}";
 
         // 2. Verify Details
         var detailsResponse = await _http.GetAsync($"/Papers/Details/{paperId}");

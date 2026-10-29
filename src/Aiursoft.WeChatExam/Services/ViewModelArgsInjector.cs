@@ -87,6 +87,7 @@ public class ViewModelArgsInjector(
         _ = localizer["Questions"];
         _ = localizer["Articles"];
         _ = localizer["Papers"];
+        _ = localizer["Legacy Paper Archive"];
         _ = localizer["Mock Paper Questions"];
         _ = localizer["Mock Paper Versions"];
         _ = localizer["Real Paper Versions"];

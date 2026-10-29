@@ -181,6 +181,10 @@ public class MockPapersTests : TestBase
         var index = await Http.GetStringAsync("/MockPapers");
         Assert.Contains($"/MockPapers/Edit/{paper.Id}", index);
         Assert.DoesNotContain("href=\"/MockPapers/Create\"", index);
+        var archive = await Http.GetStringAsync("/Papers");
+        Assert.DoesNotContain("href=\"/MockPapers/Create\"", archive);
+        Assert.DoesNotContain("href=\"/RealPapers/Create\"", archive);
+        Assert.DoesNotContain("href=\"/Papers/Import\"", archive);
         Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/MockPapers/Edit/{paper.Id}")).StatusCode);
         var form = Form();
         form["__RequestVerificationToken"] = await GetAntiCsrfToken($"/MockPapers/Edit/{paper.Id}");

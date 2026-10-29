@@ -1,15 +1,28 @@
 @using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
 @model Aiursoft.WeChatExam.Models.PapersViewModels.IndexViewModel
 
-<h1 class="h3 mb-3">@Localizer["Papers"]</h1>
-
-<div class="row mb-3">
-    <div class="col-12 text-end">
-        <a asp-action="Import" class="btn btn-outline-primary btn-sm">@Localizer["Import Paper"]</a>
-        <a asp-action="Create" class="btn btn-primary btn-sm">
-            <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Create Paper"]
-        </a>
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-2">@Localizer["Legacy Paper Archive"]</h1>
+        <p class="text-muted mb-0">@Localizer["These papers are retained for migration and historical exams."]</p>
     </div>
+    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
+    {
+        <div class="d-flex gap-2 flex-wrap">
+            @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditPapers)).Succeeded)
+            {
+                <a asp-controller="MockPapers" asp-action="Create" class="btn btn-outline-primary">@Localizer["Create Mock Paper"]</a>
+                <a asp-controller="RealPapers" asp-action="Create" class="btn btn-outline-primary">@Localizer["Create Real Paper"]</a>
+            }
+            @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddQuestions)).Succeeded)
+            {
+                <a asp-action="Import" class="btn btn-outline-primary">@Localizer["Import Paper"]</a>
+            }
+        </div>
+    }
 </div>
 
 <div class="card">

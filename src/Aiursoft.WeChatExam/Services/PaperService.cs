@@ -380,33 +380,4 @@ public class PaperService : IPaperService
 
     #endregion
 
-    #region Import
-
-    public async Task<Paper> ImportPaperAsync(string content, bool saveToQuestionBank, Guid categoryId)
-    {
-        // Parse content - assuming JSON format with title and questions array
-        // This is a simplified implementation; real implementation would parse specific format
-        
-        // Create paper
-        var paper = new Paper
-        {
-            Id = Guid.NewGuid(),
-            Title = "Imported Paper",
-            TimeLimit = 60,
-            IsFree = false,
-            Status = PaperStatus.Draft
-        };
-
-        _dbContext.Papers.Add(paper);
-        await _dbContext.SaveChangesAsync();
-
-        // TODO: Parse content and extract questions
-        // For each question:
-        // 1. If saveToQuestionBank, create Question entity
-        // 2. Create PaperQuestion linking to paper
-
-        return paper;
-    }
-
-    #endregion
 }
