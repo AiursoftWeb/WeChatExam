@@ -34,6 +34,4 @@ public interface IPaperService
     Task<PaperSnapshot?> GetSnapshotAsync(Guid snapshotId);
     Task<List<PaperSnapshot>> GetSnapshotsForPaperAsync(Guid paperId);
 
-    // Import
-    Task<Paper> ImportPaperAsync(string content, bool saveToQuestionBank, Guid categoryId);
 }

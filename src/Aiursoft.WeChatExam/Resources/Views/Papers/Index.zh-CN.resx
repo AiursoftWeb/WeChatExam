@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>创建模拟试卷</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>新建试卷</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>创建真题卷</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>创建时间</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>导入试卷</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>旧试卷归档</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>未找到试卷</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>这些试卷保留用于迁移和历史考试。</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>时间限制</value>

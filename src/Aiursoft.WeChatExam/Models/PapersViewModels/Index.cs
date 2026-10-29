@@ -7,7 +7,7 @@ public class IndexViewModel : UiStackLayoutViewModel
 {
     public IndexViewModel()
     {
-        PageTitle = "Papers";
+        PageTitle = "Legacy Paper Archive";
     }
 
     public List<Paper> Papers { get; set; } = new();

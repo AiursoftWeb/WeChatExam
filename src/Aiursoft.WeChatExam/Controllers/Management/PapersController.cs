@@ -135,64 +135,12 @@ public class PapersController(
         CascadedLinksGroupName = "Exam Management",
         CascadedLinksIcon = "clipboard-list",
         CascadedLinksOrder = 2,
-        LinkText = "Papers",
+        LinkText = "Legacy Paper Archive",
         LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
         var papers = await paperService.GetAllPapersAsync();
         return this.StackView(new IndexViewModel { Papers = papers });
-    }
-
-    // GET: papers/create
-    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
-    public async Task<IActionResult> Create()
-    {
-        var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
-        var model = new CreateViewModel
-        {
-            AvailableCategories = categories.Select(c => new SelectListItem
-            {
-                Value = c.Id.ToString(),
-                Text = c.Title
-            })
-        };
-        return this.StackView(model);
-    }
-
-    // POST: papers/create
-    [Authorize(Policy = AppPermissionNames.CanAddPapers)]
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(CreateViewModel model)
-    {
-        if (!ModelState.IsValid)
-        {
-            var categories = await context.Categories.OrderBy(c => c.Title).ToListAsync();
-            model.AvailableCategories = categories.Select(c => new SelectListItem
-            {
-                Value = c.Id.ToString(),
-                Text = c.Title
-            });
-            return this.StackView(model);
-        }
-
-        var paper = await paperService.CreatePaperAsync(model.Title, model.TimeLimit, model.IsFree, model.IsRealExam);
-        if (model.SelectedCategoryId.HasValue)
-        {
-            await paperService.AssociateCategoryAsync(paper.Id, model.SelectedCategoryId.Value);
-        }
-
-        if (!string.IsNullOrWhiteSpace(model.Tags))
-        {
-            var tags = model.Tags.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            foreach (var tagDisplayName in tags)
-            {
-                var tag = await tagService.GetOrCreateTagAsync(tagDisplayName);
-                await tagService.AddTagToPaperAsync(paper.Id, tag.Id);
-            }
-        }
-
-        return RedirectToAction(nameof(Edit), new { id = paper.Id });
     }
 
     // GET: papers/{id}
