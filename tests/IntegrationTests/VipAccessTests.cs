@@ -113,8 +113,8 @@ public class VipAccessTests
             await context.SaveChangesAsync();
             taxonomyId = taxonomy.Id;
             context.Tags.AddRange(
-                new Tag { DisplayName = "Free", NormalizedName = "FREE", IsFree = true, TaxonomyId = taxonomyId },
-                new Tag { DisplayName = "Paid", NormalizedName = "PAID", IsFree = false, TaxonomyId = taxonomyId });
+                new Tag { DisplayName = "Free", NormalizedName = "FREE",  TaxonomyId = taxonomyId },
+                new Tag { DisplayName = "Paid", NormalizedName = "PAID",  TaxonomyId = taxonomyId });
             await context.SaveChangesAsync();
         }
 

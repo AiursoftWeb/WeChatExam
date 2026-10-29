@@ -36,7 +36,7 @@ public class QuestionPeriodAssignmentTests : TestBase
         var other = new TotalCategory { Title = "Western music history" };
         var first = new QuestionCategory { Title = "Early music", TotalCategory = course, TotalCategoryId = course.Id };
         var second = new QuestionCategory { Title = "Medieval music", TotalCategory = other, TotalCategoryId = other.Id };
-        var tag = new Tag { DisplayName = "Paid label", NormalizedName = "PAID LABEL", IsFree = false };
+        var tag = new Tag { DisplayName = "Paid label", NormalizedName = "PAID LABEL"};
         var question = new Question
         {
             Id = Guid.NewGuid(), Content = "Question for classification", QuestionCategory = first,
@@ -80,7 +80,6 @@ public class QuestionPeriodAssignmentTests : TestBase
             Assert.AreEqual("Original explanation", q.Explanation);
             Assert.AreEqual("Original metadata", q.Metadata);
             Assert.AreEqual("Paid label", q.QuestionTags.Single().Tag.DisplayName);
-            Assert.IsFalse(q.QuestionTags.Single().Tag.IsFree);
             Assert.AreEqual(12m, q.OrderIndex);
             CollectionAssert.AreEqual(new byte[] { 1, 2, 3 }, q.Embedding!);
             Assert.AreEqual(new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc), q.LastUpdatedAt);

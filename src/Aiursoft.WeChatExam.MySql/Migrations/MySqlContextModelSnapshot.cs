@@ -1115,9 +1115,6 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<bool>("IsFree")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("NormalizedName")
                         .IsRequired()
                         .HasMaxLength(255)

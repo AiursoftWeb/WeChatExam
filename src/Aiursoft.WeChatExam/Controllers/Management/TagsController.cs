@@ -103,7 +103,6 @@ public class TagsController(
             DisplayName = model.DisplayName,
             NormalizedName = model.DisplayName.Trim().ToUpperInvariant(),
             TaxonomyId = model.TaxonomyId,
-            IsFree = model.IsFree,
             OrderIndex = (await context.Tags.Where(t => t.TaxonomyId == model.TaxonomyId).MaxAsync(t => (int?)t.OrderIndex) ?? -1) + 1
         };
 
@@ -144,7 +143,6 @@ public class TagsController(
             Id = tag.Id,
             DisplayName = tag.DisplayName,
             TaxonomyId = tag.TaxonomyId,
-            IsFree = tag.IsFree,
             AvailableTaxonomies = taxonomies.Select(t =>
             {
                 var firstCategory = t.CategoryTaxonomies.FirstOrDefault()?.Category;
@@ -189,7 +187,6 @@ public class TagsController(
         tag.DisplayName = model.DisplayName;
         tag.NormalizedName = model.DisplayName.Trim().ToUpperInvariant();
         tag.TaxonomyId = model.TaxonomyId;
-        tag.IsFree = model.IsFree;
 
         await tagService.UpdateTagAsync(tag);
 
