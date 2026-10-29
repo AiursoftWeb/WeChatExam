@@ -14,7 +14,7 @@ public record AccessObservation(string Scenario, string Entry, bool Allowed, str
 public record AccessScenario(string Name, PaperAccessStatus Status);
 public record KnowledgeContentAccess(ContentReference KnowledgePoint, bool Allowed);
 public record ExerciseAccess(string Scenario, bool Allowed, List<KnowledgeContentAccess> Knowledge);
-public record ContentTagMapping(ContentReference? Taxonomy, List<ContentReference> Subjects);
+public record ContentTagMapping(ContentReference? Taxonomy);
 
 // Preserve actual database edges before findings are grouped. A group's flat object list
 // cannot tell us which of its knowledge points belongs to which exercise.

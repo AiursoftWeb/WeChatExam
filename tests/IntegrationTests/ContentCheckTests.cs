@@ -81,16 +81,14 @@ public class ContentCheckTests
     }
 
     [TestMethod]
-    public async Task LegacyTagMetadataDoesNotOverrideFreePractice()
+    public async Task InternalTagMetadataDoesNotOverrideFreePractice()
     {
         await using var db = Database();
         var period = QuestionPeriodAssignmentTests.TestPeriod(isFree: true);
-        var legacyCourse = new Category { Id = period.TotalCategoryId, Title = "Legacy course", ParentId = null };
         var taxonomy = new Taxonomy { Id = 1, Name = "Legacy navigation" };
         var tag = new Tag { Id = 1, DisplayName = "Paid metadata", NormalizedName = "PAID METADATA",  Taxonomy = taxonomy };
         var question = new Question { Id = Guid.NewGuid(), Content = "Free practice", QuestionCategory = period };
-        db.AddRange(legacyCourse, period, taxonomy, tag, question,
-            new CategoryTaxonomy { CategoryId = legacyCourse.Id, TaxonomyId = taxonomy.Id },
+        db.AddRange(period, taxonomy, tag, question,
             new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
         await db.SaveChangesAsync();
         var report = await Checker(db).ScanAsync([], false);

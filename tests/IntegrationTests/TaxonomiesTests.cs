@@ -183,6 +183,54 @@ public class TaxonomiesTests
     }
 
     [TestMethod]
+    public async Task InternalTaxonomyEditingPreservesTagsWithoutLegacyCourseSelection()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var service = scope.ServiceProvider.GetRequiredService<ITaxonomyService>();
+        var taxonomy = await service.AddTaxonomyAsync("Internal sources");
+        Assert.AreEqual(taxonomy.Id, (await service.AddTaxonomyAsync("Internal sources")).Id);
+        var tag = new Tag { DisplayName = "Source year", NormalizedName = "SOURCE YEAR", TaxonomyId = taxonomy.Id };
+        var question = new Question { Content = "Preserved question", QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true) };
+        db.AddRange(tag, question);
+        await db.SaveChangesAsync();
+        db.Add(new QuestionTag { TagId = tag.Id, QuestionId = question.Id });
+        await db.SaveChangesAsync();
+        Assert.DoesNotContain("name=\"CategoryId\"", await _http.GetStringAsync("/Taxonomies/Create"));
+        var url = $"/Taxonomies/Edit/{taxonomy.Id}";
+        Assert.DoesNotContain("name=\"CategoryId\"", await _http.GetStringAsync(url));
+        var invalid = await _http.PostAsync(url, new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["Id"] = taxonomy.Id.ToString(), ["Name"] = "", ["checkReturnUrl"] = "/ContentChecks/Results?view=all",
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken(url)
+        }));
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        var invalidHtml = await invalid.Content.ReadAsStringAsync();
+        Assert.DoesNotContain("name=\"CategoryId\"", invalidHtml);
+        Assert.Contains("/ContentChecks/Results?view=all", invalidHtml);
+        var edited = await _http.PostAsync(url, new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["Id"] = taxonomy.Id.ToString(), ["Name"] = "Edited sources", ["CategoryId"] = Guid.NewGuid().ToString(),
+            ["checkReturnUrl"] = "/ContentChecks/Results?view=all",
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken(url)
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, edited.StatusCode);
+        Assert.AreEqual("/ContentChecks/Results?view=all", edited.Headers.Location!.OriginalString);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual("Edited sources", (await db.Taxonomies.FindAsync(taxonomy.Id))!.Name);
+        var tagPage = await _http.GetStringAsync($"/Tags/Index?taxonomyId={taxonomy.Id}");
+        Assert.Contains("Source year", tagPage);
+        Assert.Contains("Edited sources", tagPage);
+        Assert.AreEqual(taxonomy.Id, (await db.Tags.FindAsync(tag.Id))!.TaxonomyId);
+        await service.DeleteTaxonomyAsync(taxonomy.Id);
+        db.ChangeTracker.Clear();
+        Assert.IsNull((await db.Tags.FindAsync(tag.Id))!.TaxonomyId);
+        Assert.IsTrue(await db.QuestionTags.AnyAsync(t => t.TagId == tag.Id && t.QuestionId == question.Id));
+        Assert.IsTrue(await db.Questions.AnyAsync(q => q.Id == question.Id));
+    }
+
+    [TestMethod]
     public async Task TagEditorOnlyManagesInternalMetadataAndKeepsCheckReturn()
     {
         await LoginAsAdminAsync();
