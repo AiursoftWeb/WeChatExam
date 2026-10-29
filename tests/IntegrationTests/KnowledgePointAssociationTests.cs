@@ -437,6 +437,39 @@ public class KnowledgePointAssociationTests
     }
 
     [TestMethod]
+    public async Task ContentChecksLinkIndependentPaperOwnersAndPreserveInstitutionSelection()
+    {
+        var school = new Institution { Title = "Diagnostic school" };
+        var real = new RealPaper { Title = "Diagnostic real paper", InstitutionId = school.Id, Status = PaperStatus.Frozen };
+        var mock = new MockPaper { Title = "Diagnostic mock paper", TotalCategoryId = _courseId, Status = PaperStatus.Publishable };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(school, real, mock);
+            await db.SaveChangesAsync();
+        }
+        await LoginAsAdminAsync();
+        foreach (var (id, controller, action) in new[] { (real.Id, "RealPapers", "Versions"), (mock.Id, "MockPapers", "Edit") })
+        {
+            var html = await _http.GetStringAsync($"/ContentChecks/Results?rule=PAPER001&search={id}&institutions={school.Id}");
+            var url = WebUtility.HtmlDecode(Regex.Match(html, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+            StringAssert.Contains(url, $"institutions={school.Id}");
+            var details = WebUtility.HtmlDecode(await _http.GetStringAsync(url));
+            StringAssert.Contains(details, $"/{controller}/{action}/{id}");
+            StringAssert.Contains(details, "Active institution VIPs");
+            StringAssert.Contains(details, "Legacy real-exam VIP (all institutions)");
+            using var editor = await _http.GetAsync($"/{controller}/{action}/{id}");
+            Assert.AreEqual(HttpStatusCode.OK, editor.StatusCode);
+            if (controller == "RealPapers")
+            {
+                StringAssert.Contains(details, $"/Institutions/Edit/{school.Id}");
+                using var institutionEditor = await _http.GetAsync($"/Institutions/Edit/{school.Id}");
+                Assert.AreEqual(HttpStatusCode.OK, institutionEditor.StatusCode);
+            }
+        }
+    }
+
+    [TestMethod]
     public async Task ContentCheckPermissionDoesNotExposeUnauthorizedEditLinks()
     {
         using var scope = _server!.Services.CreateScope();

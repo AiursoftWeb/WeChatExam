@@ -374,6 +374,56 @@ public class VipAccessTests
     }
 
     [TestMethod]
+    public async Task ContentChecksAgreeWithIndependentPaperApis()
+    {
+        var course = new TotalCategory { Title = "Paper check course" };
+        var school = new Institution { Title = "Paper check school" };
+        var otherSchool = new Institution { Title = "Other paper school" };
+        var mock = new MockPaper { Title = "Check mock", TotalCategoryId = course.Id, Status = PaperStatus.Publishable };
+        var real = new RealPaper { Title = "Check real", InstitutionId = school.Id, Status = PaperStatus.Frozen };
+        var mockVersion = new PaperSnapshot { Id = Guid.NewGuid(), Title = mock.Title, MockPaperId = mock.Id, Version = 1 };
+        var realVersion = new PaperSnapshot { Id = Guid.NewGuid(), Title = real.Title, RealPaperId = real.Id, Version = 1, IsFree = true };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(course, school, otherSchool, mock, real, mockVersion, realVersion,
+                new QuestionSnapshot { PaperSnapshotId = mockVersion.Id, Content = "Retained mock" },
+                new QuestionSnapshot { PaperSnapshotId = realVersion.Id, Content = "Retained mixed-course paper" });
+            await db.SaveChangesAsync();
+        }
+        async Task Compare(Guid[] subjects, Guid[] institutions, bool global)
+        {
+            using var scope = _server!.Services.CreateScope();
+            var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>()
+                .ScanAsync(subjects, global, institutions: institutions);
+            foreach (var (id, controller, version) in new[] { (mock.Id, "MockPapers", mockVersion.Id), (real.Id, "RealPapers", realVersion.Id) })
+            {
+                var finding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects[0].Id == id.ToString());
+                var observation = finding.Observations.Single(o => o.Scenario == "Custom VIP selection");
+                Assert.AreEqual($"GET /api/{controller}/snapshots/{version}", observation.Entry);
+                using var response = await _http.GetAsync($"/api/{controller}/snapshots/{version}");
+                Assert.AreEqual(observation.Allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, response.StatusCode);
+            }
+        }
+        await Compare([], [], false);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsync());
+        await Compare([], [], false);
+        var product = new VipProduct { Name = "Off-sale membership", Type = VipProductType.Institution, InstitutionId = otherSchool.Id, IsEnabled = false };
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1)
+        }];
+        await Compare([], [otherSchool.Id], false);
+        product.InstitutionId = school.Id;
+        await Compare([], [school.Id], false);
+        product.Type = VipProductType.Category;
+        product.TotalCategoryId = course.Id;
+        await Compare([course.Id], [], false);
+        product.Type = VipProductType.RealExam;
+        await Compare([], [], true);
+    }
+
+    [TestMethod]
     public async Task KnowledgeNavigationReturnsOnlyMetadataAndKeepsEveryTreeLevel()
     {
         var (course, directory, lesson, _) = await AddKnowledgeAsync(false);

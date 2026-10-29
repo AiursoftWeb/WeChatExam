@@ -268,4 +268,38 @@
     <value>访客可以阅读知识内容，但匿名访问此练习会返回 403。根据当前业务规则，付费练习是允许的。</value>
   </data>
 
-</root>
+
+<data name="Assign the intended institution before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>上架该产品前，请先指定对应的院校。现有会员资格请另行检查。</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 403. A published, nonempty snapshot is also required." xml:space="preserve">
+    <value>仅涉及授权：无权访问快照时返回 403。还必须存在已发布且非空的快照。</value>
+  </data>
+  <data name="Institution VIP product has no valid institution" xml:space="preserve">
+    <value>院校 VIP 产品未关联有效院校</value>
+  </data>
+  <data name="Institution VIP: {0}" xml:space="preserve">
+    <value>院校会员：{0}</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>院校</value>
+  </data>
+  <data name="Legacy papers" xml:space="preserve">
+    <value>旧版试卷</value>
+  </data>
+  <data name="Mock papers" xml:space="preserve">
+    <value>模拟卷</value>
+  </data>
+  <data name="Real papers" xml:space="preserve">
+    <value>真题卷</value>
+  </data>
+  <data name="Review the mock paper's course VIP products. Sales availability does not revoke existing memberships." xml:space="preserve">
+    <value>请检查该模拟卷所属分类的 VIP 商品。商品是否在售，不影响现有会员资格。</value>
+  </data>
+  <data name="Review this institution's VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>查看该院校的 VIP 产品。课程 VIP 不能解锁真题卷；现有的全院校通用真题会员仍可使用。</value>
+  </data>
+  <data name="This product cannot grant the intended institution membership." xml:space="preserve">
+    <value>该产品无法授予预期的院校会员资格。</value>
+  </data>
+  </root>

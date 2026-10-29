@@ -52,6 +52,10 @@
             {
                 <input type="hidden" name="subjects" value="@subject" />
             }
+            @foreach (var institution in Model.Institutions)
+            {
+                <input type="hidden" name="institutions" value="@institution" />
+            }
             <input type="hidden" name="realExam" value="@Model.RealExam" />
             <div class="col-md-4">
                 <label for="search" class="form-label">@Localizer["Content name"]</label>

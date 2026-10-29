@@ -259,9 +259,16 @@
                         <option value="@category.Id" selected="@(Model.Subjects.Contains(category.Id))">@category.Title</option>
                     }
                 </select>
+                <label for="institutions" class="form-label">@Localizer["Active institution VIPs"]</label>
+                <select multiple id="institutions" name="institutions" class="form-select mb-3" size="5">
+                    @foreach (var institution in Model.Report!.Institutions)
+                    {
+                        <option value="@institution.Id" selected="@(Model.Institutions.Contains(institution.Id))">@institution.Title</option>
+                    }
+                </select>
                 <div class="form-check mb-3">
                     <input type="checkbox" id="realExam" name="realExam" value="true" checked="@Model.RealExam" class="form-check-input" />
-                    <label for="realExam" class="form-check-label">@Localizer["Active real-exam VIP"]</label>
+                    <label for="realExam" class="form-check-label">@Localizer["Legacy real-exam VIP (all institutions)"]</label>
                 </div>
                 <button class="btn btn-outline-primary" type="submit">@Localizer["Check this scenario"]</button>
             </form>

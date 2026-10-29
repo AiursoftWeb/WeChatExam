@@ -146,6 +146,76 @@ public class ContentCheckTests
     }
 
     [TestMethod]
+    public async Task IndependentPapersUseCourseOrInstitutionRightsAndRetainedVersions()
+    {
+        await using var db = Database();
+        var period = QuestionPeriodAssignmentTests.TestPeriod();
+        period.IsFree = false;
+        var question = new Question { Id = Guid.NewGuid(), Content = "Paid original", QuestionCategory = period };
+        var school = new Institution { Title = "School" };
+        var other = new Institution { Title = "Other school" };
+        var mock = new MockPaper { Title = "Course mock", TotalCategoryId = period.TotalCategoryId, Status = PaperStatus.Publishable };
+        var free = new MockPaper { Title = "Anonymous mock", TotalCategoryId = period.TotalCategoryId, Status = PaperStatus.Frozen, AllowViewAnonymousely = true };
+        var real = new RealPaper { Title = "School real", InstitutionId = school.Id, Status = PaperStatus.Frozen };
+        var missing = new RealPaper { Title = "Missing version", InstitutionId = school.Id, Status = PaperStatus.Publishable };
+        var draft = new RealPaper { Title = "Draft", InstitutionId = other.Id };
+        var empty1 = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Empty first", RealPaperId = real.Id, Version = 1 };
+        var empty2 = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Empty second", RealPaperId = real.Id, Version = 2 };
+        var retained = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Retained", RealPaperId = real.Id, Version = 3, IsFree = true };
+        var freeVersion = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Free copy", MockPaperId = free.Id, Version = 1 };
+        var mockVersion = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Paid copy", MockPaperId = mock.Id, Version = 1 };
+        var paused = new VipProduct { Name = "Paused school", Type = VipProductType.Institution, Institution = school, IsEnabled = false };
+        db.AddRange(period, question, school, other, mock, free, real, missing, draft,
+            empty1, empty2, retained, freeVersion, mockVersion, paused,
+            new VipProduct { Name = "Wrong school", Type = VipProductType.Institution, Institution = other, IsEnabled = true },
+            new VipProduct { Name = "Missing school", Type = VipProductType.Institution, IsEnabled = true },
+            new QuestionSnapshot { PaperSnapshotId = retained.Id, Content = "Original deleted", OriginalQuestionId = null },
+            new QuestionSnapshot { PaperSnapshotId = freeVersion.Id, Content = "Retained paid question", OriginalQuestionId = question.Id },
+            new QuestionSnapshot { PaperSnapshotId = mockVersion.Id, Content = "Mock copy" });
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        var report = await Checker(db).ScanAsync([], false, institutions: [school.Id, Guid.NewGuid()]);
+        Assert.AreEqual(5, report.PaperCount);
+        Assert.AreEqual(2, report.Institutions.Count);
+        Assert.IsTrue(report.Scenarios.Single(s => s.Name == "Custom VIP selection").Status.ActiveInstitutionVips.SetEquals([school.Id]));
+        bool Has(string rule, Guid id) => report.Findings.Any(f => f.Rule == rule && f.Objects.Any(o => o.Id == id.ToString()));
+        Assert.IsTrue(Has("PAPER001", missing.Id));
+        Assert.IsFalse(Has("PAPER001", draft.Id));
+        Assert.IsFalse(Has("PAPER003", real.Id));
+        Assert.AreEqual(2, ContentFindingGroup.Build(report.Findings).Count(g => g.Rule == "PAPER002"));
+        Assert.IsTrue(report.Findings.Where(f => f.Rule == "PAPER002").All(f => f.Observations.All(o => !o.Entry.Contains(retained.Id.ToString()))));
+        var schoolFinding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects[0].Id == real.Id.ToString());
+        Assert.AreEqual("RealPapers", schoolFinding.Objects[0].Controller);
+        Assert.AreEqual("Versions", schoolFinding.Objects[0].Action);
+        Assert.AreEqual(ContentPricing.Paid, schoolFinding.Objects[0].Pricing);
+        Assert.AreEqual(0, schoolFinding.CategoryIds.Count);
+        Assert.IsTrue(schoolFinding.Objects.Any(o => o.Controller == "Institutions" && o.Id == school.Id.ToString()));
+        Assert.IsTrue(schoolFinding.Objects.Any(o => o.Controller == "VipProducts" && o.Id == paused.Id.ToString() && o.Enabled == false));
+        Assert.IsTrue(schoolFinding.Observations.Single(o => o.Scenario == "Institution VIP: School").Allowed);
+        Assert.IsTrue(schoolFinding.Observations.Single(o => o.Scenario == "Custom VIP selection").Allowed);
+        Assert.IsTrue(schoolFinding.Observations.Single(o => o.Scenario == "Real-exam VIP only").Allowed);
+        Assert.IsFalse(schoolFinding.Observations.Single(o => o.Scenario.StartsWith("Subject VIP:")).Allowed);
+        Assert.IsFalse(schoolFinding.Observations.Single(o => o.Scenario == "Anonymous").Allowed);
+        var mockFinding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects[0].Id == mock.Id.ToString());
+        Assert.IsTrue(mockFinding.Observations.Single(o => o.Scenario.StartsWith("Subject VIP:")).Allowed);
+        Assert.IsFalse(mockFinding.Observations.Single(o => o.Scenario == "Custom VIP selection").Allowed);
+        var opening = report.Findings.Single(f => f.Rule == "PAPER004");
+        Assert.AreEqual(CheckSeverity.Information, opening.Severity);
+        Assert.IsTrue(opening.Observations.All(o => o.Allowed));
+        Assert.IsTrue(report.Findings.Any(f => f.Rule == "VIP005"));
+        Assert.AreEqual(0, db.ChangeTracker.Entries().Count());
+
+        // A product for a different school is insufficient; an enabled product for this
+        // school removes the purchase warning without changing historical snapshots.
+        var savedProduct = await db.VipProducts.FindAsync(paused.Id);
+        savedProduct!.IsEnabled = true;
+        await db.SaveChangesAsync();
+        report = await Checker(db).ScanAsync([], false);
+        Assert.IsFalse(report.Findings.Any(f => f.Rule == "VIP004" && f.Objects[0].Id == real.Id.ToString()));
+        Assert.AreEqual(5, await db.PaperSnapshots.CountAsync());
+    }
+
+    [TestMethod]
     public async Task OnlyActiveMembershipsGrantAccessEvenWhenProductIsDisabled()
     {
         var subject = Guid.NewGuid();
@@ -186,7 +256,7 @@ public class ContentCheckTests
         db.ChangeTracker.Clear();
         commands.Clear();
         var report = await Checker(db).ScanAsync([], false);
-        Assert.IsTrue(commands.Count < 20, $"Expected batched reads, observed {commands.Count} commands.");
+        Assert.IsTrue(commands.Count < 26, $"Expected batched reads, observed {commands.Count} commands.");
         Assert.IsTrue(commands.All(c => !c.Contains("INSERT INTO") && !c.Contains("UPDATE ") && !c.Contains("DELETE FROM")));
         Assert.AreEqual(500, report.TagImpacts[tag.Id].Count(o => o.Controller == "Questions"));
         Assert.AreEqual(0, report.Findings.Count(f => f.Rule == "API001"));
