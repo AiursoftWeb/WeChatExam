@@ -193,4 +193,60 @@
     <value>类型</value>
   </data>
 
-</root>
+
+<data name="Allow access without membership" xml:space="preserve">
+    <value>允许无需会员资格即可访问</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>检查现有标签</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>课程</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>院校</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>模拟试卷</value>
+  </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>试卷类型</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>真题</value>
+  </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>选择一门课程</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>请选择试卷类型</value>
+  </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>选择院校</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>来源标签名称</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>标签仅用于整理导入的题目，不会影响试卷价格，也不会显示在学生端的试卷菜单中。现有标签不会被更改。</value>
+  </data>
+
+
+<data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>保存前，请补全第 {0} 题的标准答案。</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>每道题都必须属于所选课程。</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>历年试卷需要大学 VIP 权限，且可以包含来自不同课程的题目。</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>访客可以参加这份完整的模拟试卷，包括其中的付费题目。登录后才能保存个人考试记录。</value>
+  </data>
+
+
+<data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>草稿已保存。试卷编辑人员可以审核并发布。</value>
+  </data>
+  </root>

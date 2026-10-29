@@ -11,6 +11,7 @@ public class PaperImportTask
     public string? Error { get; set; }
     public PaperImportPreview? Preview { get; set; }
     public Guid? PaperId { get; set; }
+    public ImportPaperKind? Kind { get; set; }
     public SemaphoreSlim SaveLock { get; } = new(1, 1);
 }
 

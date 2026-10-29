@@ -86,12 +86,7 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama, I
         var tags = await db.Tags.AsNoTracking().Where(t => normalized.Contains(t.NormalizedName)).ToListAsync();
         var source = tags.FirstOrDefault(t => t.NormalizedName == Normalize(request.SourceTagName));
         var effectiveTaxonomy = source != null ? source.TaxonomyId : request.TaxonomyId;
-        var categories = effectiveTaxonomy.HasValue
-            ? await db.CategoryTaxonomies.Where(ct => ct.TaxonomyId == effectiveTaxonomy).Select(ct => new { id = ct.CategoryId, title = ct.Category.Title }).ToListAsync()
-            : [];
-        return new { conflicts = tags.Select(t => new { t.Id, t.DisplayName, t.IsFree, t.TaxonomyId, isSource = t == source }), effectiveTaxonomy, categories,
-            mismatch = request.CategoryId.HasValue && !categories.Any(c => c.id == request.CategoryId),
-            warning = "Source tags are paid even for free papers. Reusing a source tag makes it paid globally and affects ALL linked content; rename is recommended. Existing taxonomy is preserved. Without taxonomy/category associations, category VIP cannot unlock this paid tag." };
+        return new { conflicts = tags.Select(t => new { t.Id, t.DisplayName, t.TaxonomyId }), effectiveTaxonomy };
     }
 
     public async Task<Guid> SaveAsync(PaperImportSaveRequest request)
@@ -105,35 +100,48 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama, I
         RequireJsonValue(request.Confirmations);
         if (request.Confirmations.Count > 31) throw new InvalidOperationException("Invalid tag confirmations.");
         foreach (var confirmation in request.Confirmations) RequireJsonValue(confirmation);
-        if (request.CategoryId.HasValue && !await db.Categories.AnyAsync(c => c.Id == request.CategoryId)) throw new InvalidOperationException("Category no longer exists.");
         if (request.TaxonomyId.HasValue && !await db.Taxonomies.AnyAsync(t => t.Id == request.TaxonomyId)) throw new InvalidOperationException("Taxonomy no longer exists.");
+        if (!request.Kind.HasValue || !Enum.IsDefined(request.Kind.Value))
+            throw new InvalidOperationException(localizer["Choose a mock paper or a real paper."].Value);
         var paperId = Guid.NewGuid();
         var strategy = db.Database.CreateExecutionStrategy();
         await strategy.ExecuteAsync(async () =>
         {
             db.ChangeTracker.Clear();
             // A previous commit can succeed even when its acknowledgment fails.
-            if (await db.Papers.AnyAsync(p => p.Id == paperId)) return;
+            if (request.Kind == ImportPaperKind.Mock
+                ? await db.MockPapers.AnyAsync(p => p.Id == paperId)
+                : await db.RealPapers.AnyAsync(p => p.Id == paperId)) return;
             await using var transaction = await db.Database.BeginTransactionAsync();
-            // Validate every question before changing source tags or creating the paper.
-            // A paper may span multiple periods; its legacy category is not a question category.
+            // Validate ownership and every period before creating any content.
+            // Real papers may span courses; mock papers may only use their own course.
             var periodIds = request.Questions.Where(q => q.QuestionCategoryId.HasValue)
                 .Select(q => q.QuestionCategoryId!.Value).Distinct().ToArray();
-            var existingPeriods = await db.QuestionCategories.Where(c => periodIds.Contains(c.Id)).Select(c => c.Id).ToListAsync();
-            var invalidPeriod = request.Questions.FindIndex(q => !q.QuestionCategoryId.HasValue || !existingPeriods.Contains(q.QuestionCategoryId.Value));
+            var existingPeriods = await db.QuestionCategories.Where(c => periodIds.Contains(c.Id)).Select(c => new { c.Id, c.TotalCategoryId }).ToListAsync();
+            var invalidPeriod = request.Questions.FindIndex(q => !q.QuestionCategoryId.HasValue || !existingPeriods.Any(c => c.Id == q.QuestionCategoryId.Value));
             if (invalidPeriod >= 0)
                 throw new InvalidOperationException(string.Format(localizer["Choose an existing period for question {0} before saving."].Value, invalidPeriod + 1));
-            if (request.CategoryId.HasValue && !await db.Categories.AnyAsync(c => c.Id == request.CategoryId)) throw new InvalidOperationException("Category no longer exists.");
             if (request.TaxonomyId.HasValue && !await db.Taxonomies.AnyAsync(t => t.Id == request.TaxonomyId)) throw new InvalidOperationException("Taxonomy no longer exists.");
+            if (request.Kind == ImportPaperKind.Mock)
+            {
+                if (request.InstitutionId.HasValue || !request.TotalCategoryId.HasValue ||
+                    !await db.TotalCategories.AnyAsync(c => c.Id == request.TotalCategoryId))
+                    throw new InvalidOperationException(localizer["Choose an existing course for the mock paper, without a university."].Value);
+                if (existingPeriods.Any(c => c.TotalCategoryId != request.TotalCategoryId))
+                    throw new InvalidOperationException(localizer["Every question in a mock paper must belong to its course."].Value);
+            }
+            else if (request.TotalCategoryId.HasValue || request.AllowViewAnonymousely || !request.InstitutionId.HasValue ||
+                     !await db.Institutions.AnyAsync(i => i.Id == request.InstitutionId))
+            {
+                throw new InvalidOperationException(localizer["Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting."].Value);
+            }
             var normalized = names.Select(Normalize).ToArray();
             var existing = await db.Tags.Where(t => normalized.Contains(t.NormalizedName)).ToListAsync();
             foreach (var tag in existing)
-                if (!request.Confirmations.Any(c => c.Id == tag.Id && c.IsFree == tag.IsFree && c.TaxonomyId == tag.TaxonomyId))
+                if (!request.Confirmations.Any(c => c.Id == tag.Id && c.TaxonomyId == tag.TaxonomyId))
                     throw new InvalidOperationException("Tag conflict or state changed. Check tags again and explicitly confirm reuse; renaming is recommended.");
-            // Recheck the actual taxonomy associations inside the save transaction (advisory, not blocking).
-            var sourceExisting = existing.FirstOrDefault(t => t.NormalizedName == Normalize(request.SourceTagName));
-            var effectiveTaxonomy = sourceExisting != null ? sourceExisting.TaxonomyId : request.TaxonomyId;
-            if (effectiveTaxonomy.HasValue) await db.CategoryTaxonomies.Where(c => c.TaxonomyId == effectiveTaxonomy).ToListAsync();
+            // Source and extra tags organize questions only. Reuse never changes a shared
+            // tag's legacy fee flag or taxonomy, and no paper navigation tags are created.
             var tags = new List<Tag>();
             foreach (var name in names)
             {
@@ -141,16 +149,17 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama, I
                 var tag = existing.FirstOrDefault(t => t.NormalizedName == Normalize(name));
                 if (tag == null)
                 {
-                    tag = new Tag { DisplayName = name, NormalizedName = Normalize(name), IsFree = !isSource, TaxonomyId = isSource ? request.TaxonomyId : null };
+                    tag = new Tag { DisplayName = name, NormalizedName = Normalize(name), IsFree = true, TaxonomyId = isSource ? request.TaxonomyId : null };
                     db.Tags.Add(tag);
                 }
-                if (isSource) tag.IsFree = false;
                 tags.Add(tag);
             }
-            var paper = new Paper { Id = paperId, Title = request.Title.Trim(), TimeLimit = request.TimeLimit, IsFree = request.IsFree, IsRealExam = request.IsRealExam, Status = PaperStatus.Draft };
-            db.Papers.Add(paper);
-            if (request.CategoryId.HasValue) db.PaperCategories.Add(new PaperCategory { Id = Guid.NewGuid(), PaperId = paperId, CategoryId = request.CategoryId.Value });
-            foreach (var tag in tags) db.PaperTags.Add(new PaperTag { PaperId = paperId, TagId = tag.Id, Tag = tag });
+            if (request.Kind == ImportPaperKind.Mock)
+                db.MockPapers.Add(new MockPaper { Id = paperId, Title = request.Title.Trim(), TimeLimit = request.TimeLimit,
+                    TotalCategoryId = request.TotalCategoryId!.Value, AllowViewAnonymousely = request.AllowViewAnonymousely });
+            else
+                db.RealPapers.Add(new RealPaper { Id = paperId, Title = request.Title.Trim(), TimeLimit = request.TimeLimit,
+                    InstitutionId = request.InstitutionId!.Value });
             for (var i = 0; i < request.Questions.Count; i++)
             {
                 var q = request.Questions[i];
@@ -159,7 +168,10 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama, I
                     Metadata = JsonConvert.SerializeObject(new { options = q.Options }), StandardAnswer = string.IsNullOrWhiteSpace(q.StandardAnswer) ? "" : q.StandardAnswer,
                     Explanation = q.Explanation, QuestionCategoryId = q.QuestionCategoryId!.Value, OrderIndex = i + 1 };
                 db.Questions.Add(question);
-                db.PaperQuestions.Add(new PaperQuestion { PaperId = paperId, QuestionId = question.Id, Order = i + 1, Score = q.Score });
+                if (request.Kind == ImportPaperKind.Mock)
+                    db.MockPaperQuestions.Add(new MockPaperQuestion { MockPaperId = paperId, QuestionId = question.Id, Order = i + 1, Score = q.Score });
+                else
+                    db.RealPaperQuestions.Add(new RealPaperQuestion { RealPaperId = paperId, QuestionId = question.Id, Order = i + 1, Score = q.Score });
                 foreach (var tag in tags) db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id, Tag = tag });
             }
             await db.SaveChangesAsync();
