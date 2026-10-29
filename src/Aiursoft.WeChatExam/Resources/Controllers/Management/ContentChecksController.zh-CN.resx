@@ -78,8 +78,14 @@
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>此练习需要 VIP</value>
   </data>
+  <data name="This legacy paper needs migration" xml:space="preserve">
+    <value>这份旧试卷需要迁移</value>
+  </data>
   <data name="This lesson needs a directory" xml:space="preserve">
     <value>此知识点需要归入知识点分类</value>
+  </data>
+  <data name="This paper is kept for historical exams. Confirm its course or institution with the development team before making it available in the new paper lists." xml:space="preserve">
+    <value>这份试卷因历史考试需要而保留。将其列入新的试卷列表前，请与开发团队确认其所属课程或机构。</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>此论文缺少已发布版本</value>

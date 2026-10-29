@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>客户端入口检查需要工程团队验证</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>确认其所属课程或机构，并将其迁移为模拟试卷或正式试卷。保留其题目、版本和考试记录。</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>请确认是否有意暂停销售；否则，请为所需科目之一启用一个产品。</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Latest paper snapshot is empty" xml:space="preserve">
     <value>最新试卷快照为空</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>旧版试卷需要迁移</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>旧版试卷</value>
@@ -281,6 +287,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>该知识点未归属任何可授予访问权限的知识点分类，因此即使是总分类 VIP 也无法阅读。</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>该试卷保留用于管理和历史考试，不会显示在当前学生试卷列表中。</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>该产品无法授予预期的院校会员资格。</value>

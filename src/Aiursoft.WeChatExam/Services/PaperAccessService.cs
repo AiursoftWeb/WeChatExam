@@ -56,8 +56,6 @@ public class PaperAccessService : IPaperAccessService
     public static bool CanAccessInstitution(Guid institutionId, PaperAccessStatus access) =>
         access.HasRealExamVip || access.ActiveInstitutionVips.Contains(institutionId);
 
-    public bool HasAccess(Paper paper, PaperAccessStatus accessStatus) => CanAccess(paper, accessStatus);
-
     // The content checker uses the same decision without resolving payment credentials
     // or loading any customer's memberships.
     public static bool CanAccess(Paper paper, PaperAccessStatus accessStatus)

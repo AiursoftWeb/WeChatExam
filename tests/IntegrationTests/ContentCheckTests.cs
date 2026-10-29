@@ -1,3 +1,4 @@
+using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.InMemory;
 using Aiursoft.WeChatExam.Models.ContentChecksViewModels;
@@ -101,45 +102,36 @@ public class ContentCheckTests
     }
 
     [TestMethod]
-    public async Task PaperChecksUseSnapshotsAndIndependentPaperPricing()
+    public async Task LegacyPapersRequireMigrationRegardlessOfStatusOrOldPricing()
     {
         await using var db = Database();
-        var subject = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null, IsFree = true };
-        var tag = new Tag { Id = 1, DisplayName = "Paid", NormalizedName = "PAID"};
-        var paidPeriod = QuestionPeriodAssignmentTests.TestPeriod();
-        paidPeriod.IsFree = false;
-        var question = new Question { QuestionCategory = paidPeriod, Id = Guid.NewGuid(), Content = "Original" };
-        var missing = new Paper { Id = Guid.NewGuid(), Title = "Missing", Status = PaperStatus.Publishable, IsFree = true };
-        var empty = new Paper { Id = Guid.NewGuid(), Title = "Empty", Status = PaperStatus.Frozen, IsFree = true };
-        var real = new Paper { Id = Guid.NewGuid(), Title = "Real exam", Status = PaperStatus.Frozen, IsRealExam = true };
-        var impossible = new Paper { Id = Guid.NewGuid(), Title = "No subject", Status = PaperStatus.Publishable };
-        var free = new Paper { Id = Guid.NewGuid(), Title = "Free snapshot", Status = PaperStatus.Frozen, IsFree = true };
-        var draft = new Paper { Id = Guid.NewGuid(), Title = "Draft", Status = PaperStatus.Draft };
-        var retained = new Paper { Id = Guid.NewGuid(), Title = "Original deleted", Status = PaperStatus.Frozen, IsFree = true };
-        var emptySnapshot = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Empty", PaperId = empty.Id, Version = 2 };
-        var realSnapshot = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Real", PaperId = real.Id, Version = 1 };
-        var freeSnapshot = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Free", PaperId = free.Id, Version = 1, IsFree = false };
-        var retainedSnapshot = new PaperSnapshot { Id = Guid.NewGuid(), Title = "Retained", PaperId = retained.Id, Version = 1 };
-        db.AddRange(subject, tag, question, missing, empty, real, impossible, free, draft, retained,
-            emptySnapshot, realSnapshot, freeSnapshot, retainedSnapshot,
-            new QuestionTag { QuestionId = question.Id, TagId = tag.Id },
-            new QuestionSnapshot { PaperSnapshotId = realSnapshot.Id, Content = "Real question" },
-            new QuestionSnapshot { PaperSnapshotId = freeSnapshot.Id, Content = "Copy", OriginalQuestionId = question.Id },
-            new QuestionSnapshot { PaperSnapshotId = retainedSnapshot.Id, Content = "Retained copy", OriginalQuestionId = null });
+        var draft = new Paper { Id = Guid.NewGuid(), Title = "Draft archive", Status = PaperStatus.Draft };
+        var free = new Paper { Id = Guid.NewGuid(), Title = "Free archive", Status = PaperStatus.Publishable, IsFree = true };
+        var real = new Paper { Id = Guid.NewGuid(), Title = "Paid archive", Status = PaperStatus.Frozen, IsRealExam = true };
+        var snapshot = new PaperSnapshot { Id = Guid.NewGuid(), PaperId = real.Id, Title = "Retained version", Version = 2 };
+        db.AddRange(draft, free, real, snapshot,
+            new QuestionSnapshot { PaperSnapshotId = snapshot.Id, Content = "Retained copy", OriginalQuestionId = null });
         await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
         var report = await Checker(db).ScanAsync([], true);
-        bool Has(string rule, Paper paper) => report.Findings.Any(f => f.Rule == rule && f.Objects.Any(o => o.Id == paper.Id.ToString()));
-        Assert.IsTrue(Has("PAPER001", missing));
-        Assert.IsTrue(Has("PAPER002", empty));
-        Assert.IsTrue(Has("PAPER003", impossible));
-        Assert.IsTrue(Has("VIP004", real));
-        Assert.IsTrue(Has("PAPER004", free));
-        Assert.IsFalse(report.Findings.SelectMany(f => f.Objects).Any(o => o.Id == draft.Id.ToString() || o.Id == retained.Id.ToString()));
-        var realFinding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects.Any(o => o.Id == real.Id.ToString()));
-        Assert.IsTrue(realFinding.Observations.Single(o => o.Scenario == "Real-exam VIP only").Allowed);
-        Assert.IsFalse(realFinding.Observations.Single(o => o.Scenario.StartsWith("Subject VIP:")).Allowed);
-        var freeFinding = report.Findings.Single(f => f.Rule == "PAPER004");
-        Assert.IsTrue(freeFinding.Observations.Single(o => o.Scenario == "Anonymous").Allowed);
+        Assert.AreEqual(3, report.PaperCount);
+        Assert.AreEqual(1, report.Counts["Paper snapshots"]);
+        Assert.AreEqual(3, report.Findings.Count);
+        foreach (var paper in new[] { draft, free, real })
+        {
+            var finding = report.Findings.Single(f => f.Objects.Any(o => o.Id == paper.Id.ToString()));
+            Assert.AreEqual("PAPER005", finding.Rule);
+            Assert.AreEqual(CheckSeverity.Warning, finding.Severity);
+            Assert.AreEqual(0, finding.Observations.Count, "Retired routes have no current student access scenario.");
+            var reference = finding.Objects.Single();
+            Assert.AreEqual("Papers", reference.Controller);
+            Assert.AreEqual(paper.Status == PaperStatus.Frozen ? "Details" : "Edit", reference.Action);
+            Assert.AreEqual(ContentPricing.Unspecified, reference.Pricing);
+            Assert.AreEqual(AppPermissionNames.CanEditPapers, reference.Permission);
+        }
+        Assert.AreEqual(0, db.ChangeTracker.Entries().Count());
+        Assert.AreEqual(3, await db.Papers.CountAsync());
+        Assert.AreEqual("Retained copy", (await db.QuestionSnapshots.SingleAsync()).Content);
     }
 
     [TestMethod]

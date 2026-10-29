@@ -1,5 +1,3 @@
-using Aiursoft.WeChatExam.Entities;
-
 namespace Aiursoft.WeChatExam.Services;
 
 /// <summary>
@@ -19,8 +17,4 @@ public interface IPaperAccessService
     /// </summary>
     Task<PaperAccessStatus> GetUserAccessStatusAsync(string? userId);
 
-    /// <summary>
-    /// 检查是否有权限访问特定的试卷
-    /// </summary>
-    bool HasAccess(Paper paper, PaperAccessStatus accessStatus);
 }

@@ -107,7 +107,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         "VIP005" => localizer["This VIP product needs an institution"],
         "PAPER001" => localizer["This paper is missing its published version"],
         "PAPER002" => localizer["This paper version has no exercises"],
-        "PAPER003" => localizer["No VIP can unlock this paper"],
+        "PAPER005" => localizer["This legacy paper needs migration"],
         "PAPER004" => localizer["Free paper includes paid exercises"],
         _ => localizer["Mini Program entry checks need review"]
     };
@@ -122,7 +122,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         "VIP005" => localizer["This VIP product is missing its institution. It cannot grant the intended real-paper access."],
         "PAPER001" => localizer["Students cannot find this paper because a published paper version has not been created."],
         "PAPER002" => localizer["This saved paper version contains no exercises, so it cannot provide a usable practice paper."],
-        "PAPER003" => localizer["This paper requires payment, but no course VIP can unlock it."],
+        "PAPER005" => localizer["This paper is kept for historical exams. Confirm its course or institution with the development team before making it available in the new paper lists."],
         "PAPER004" => localizer["Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent."],
         _ => localizer["Different screens apply different access checks. Our team needs to review the Mini Program behavior."]
     };
