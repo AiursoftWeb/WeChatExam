@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Are you sure you want to delete this VIP product? This action cannot be undone." xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>存取範圍</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>所有實際考試 VIP（舊版）</value>
+  </data>
+  <data name="Are you sure you want to delete this VIP product? This action cannot be undone." xml:space="preserve">
     <value>您確定要刪除此 VIP 產品嗎？此操作無法撤銷。</value>
   </data>
   <data name="Cancel" xml:space="preserve">
@@ -47,6 +53,12 @@
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>已啟用</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>機構</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>機構 VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名稱</value>

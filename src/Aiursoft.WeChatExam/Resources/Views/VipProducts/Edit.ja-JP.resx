@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- カテゴリを選択 --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Institution --を選択 --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- 総カテゴリを選択 --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>この商品には注文または会員登録があるため、アクセス範囲はロックされています。</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>過去問題全件VIP（旧仕様）</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>分（元の1/100）</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>この教育機関の実際の試験問題が含まれます。独立した講座の練習問題は含まれません。</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>教育機関</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>機関 VIP</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>価格（分）</value>

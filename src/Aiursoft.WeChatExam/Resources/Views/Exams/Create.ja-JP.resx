@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>空欄のままにすると、用紙のデフォルト値が使用されます</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>模擬試験用紙</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>実際の試験用紙</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>公開済みの問題用紙のバージョンを選択</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>受験生が試験に取り組むための時間制限です。空欄の場合は、ペーパーの時間制限を使用します。</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>バージョン {0} · {1} 分</value>
   </data>
 
 </root>

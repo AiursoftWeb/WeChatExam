@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>공백으로 두면 종이 기본값을 사용합니다.</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>모의고사</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>실제 시험지</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>게시된 시험지 버전을 선택하세요</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>학생 시도에 허용되는 시간. 공백으로 두면 문제지의 시간 제한을 사용합니다.</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>버전 {0} · {1}분</value>
   </data>
 
 </root>

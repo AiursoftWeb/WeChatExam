@@ -21,8 +21,14 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Kategorie auswählen --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Institution auswählen --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Gesamtkategorie auswählen --</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP für alle Originalprüfungen (veraltet)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
@@ -50,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Enthält die Originalprüfungen dieser Institution, nicht die Übungsaufgaben des jeweiligen Kurses.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Einrichtung</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>Einrichtungs-VIP</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Preis (Fen)</value>
