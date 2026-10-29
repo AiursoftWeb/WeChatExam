@@ -72,6 +72,7 @@ public class ExamsApiTests : TestBase
             db.PaperSnapshots.RemoveRange(await db.PaperSnapshots.Where(p => p.Id == _snapshotId || p.Id == _latestId).ToListAsync());
             db.VipMemberships.RemoveRange(await db.VipMemberships.Where(m => m.VipProductId == _productId).ToListAsync());
             db.VipProducts.RemoveRange(await db.VipProducts.Where(p => p.Id == _productId).ToListAsync());
+            db.Papers.RemoveRange(await db.Papers.Where(p => p.Id == _paperId).ToListAsync());
             db.MockPapers.RemoveRange(await db.MockPapers.Where(p => p.Id == _paperId).ToListAsync());
             db.RealPapers.RemoveRange(await db.RealPapers.Where(p => p.Id == _paperId).ToListAsync());
             db.TotalCategories.RemoveRange(await db.TotalCategories.Where(c => c.Id == _courseId || c.Id == _otherCourseId).ToListAsync());
@@ -129,6 +130,37 @@ public class ExamsApiTests : TestBase
                 StartTime = DateTime.UtcNow.AddDays(startDays), EndTime = DateTime.UtcNow.AddDays(endDays) });
         }
         await db.SaveChangesAsync();
+    }
+
+    [TestMethod]
+    public async Task RetiredPaperBrowsingPreservesLockedExamsAndTheirAccessRules()
+    {
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Papers.Add(new Paper { Id = _paperId, Title = "Retained legacy source", IsRealExam = true });
+            var snapshot = await db.PaperSnapshots.SingleAsync(p => p.Id == _snapshotId);
+            db.Entry(snapshot).Property(p => p.PaperId).CurrentValue = _paperId;
+            await db.SaveChangesAsync();
+        }
+        Authenticate(_owner);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/api/Papers/snapshots/{_snapshotId}")).StatusCode);
+        var history = (await Http.GetFromJsonAsync<List<ExamRecordDto>>("/api/Exams/history"))!;
+        Assert.AreEqual(_recordId, history.Single().Id);
+        using var resumed = await Http.PostAsync($"/api/Exams/{_examId}/start", null);
+        Assert.AreEqual(HttpStatusCode.OK, resumed.StatusCode);
+        var session = (await resumed.Content.ReadFromJsonAsync<ExamSessionDto>())!;
+        Assert.AreEqual(_snapshotId, session.PaperSnapshotId);
+        Assert.AreEqual(_questionId, session.Questions.Single().Id);
+        Assert.DoesNotContain("Confidential answer", await resumed.Content.ReadAsStringAsync());
+
+        // Keeping an old exam does not let a new participant bypass its paid source.
+        Authenticate(_other);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await Http.PostAsync($"/api/Exams/{_examId}/start", null)).StatusCode);
+        using var verify = Server.Services.CreateScope();
+        var context = verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(1, await context.ExamRecords.CountAsync(r => r.ExamId == _examId));
+        Assert.AreEqual("Confidential answer", (await context.QuestionSnapshots.SingleAsync(q => q.Id == _questionId)).StandardAnswer);
     }
 
     [TestMethod]

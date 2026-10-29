@@ -39,8 +39,7 @@ public class ContentCheckService(
         var newVersions = await context.PaperSnapshots.AsNoTracking()
             .Where(s => s.MockPaperId != null || s.RealPaperId != null).ToListAsync(cancellationToken);
         var products = await context.VipProducts.AsNoTracking().Include(p => p.Institution).Include(p => p.TotalCategory).ToListAsync(cancellationToken);
-        var papers = await context.Papers.AsNoTracking().Include(p => p.PaperCategories)
-            .Include(p => p.PaperSnapshots).AsSplitQuery().ToListAsync(cancellationToken);
+        var papers = await context.Papers.AsNoTracking().Include(p => p.PaperSnapshots).ToListAsync(cancellationToken);
         // Only IDs and counts are needed. A deleted or modified original question does not
         // invalidate the independent content retained in a question snapshot.
         var snapshots = await context.QuestionSnapshots.AsNoTracking()
@@ -117,7 +116,7 @@ public class ContentCheckService(
             q.QuestionCategory!.IsFree ? ContentPricing.Public : ContentPricing.Paid);
         ContentReference TagRef(Tag t) => new("Tags", t.Id.ToString(), t.DisplayName, AppPermissionNames.CanManageTags);
         ContentReference PaperRef(Paper p) => new("Papers", p.Id.ToString(), p.Title, AppPermissionNames.CanEditPapers,
-            p.IsFree ? ContentPricing.Public : ContentPricing.Paid, p.Status == PaperStatus.Frozen ? "Details" : "Edit");
+            ContentPricing.Unspecified, p.Status == PaperStatus.Frozen ? "Details" : "Edit");
         ContentReference CourseRef(TotalCategory c) => new("TotalCategories", c.Id.ToString(), c.Title, AppPermissionNames.CanEditAnyCategory);
         ContentReference DirectoryRef(KnowledgeCategory c) => new("KnowledgeCategories", c.Id.ToString(), c.Title,
             AppPermissionNames.CanEditAnyCategory, c.IsFree ? ContentPricing.Public : ContentPricing.Paid);
@@ -286,7 +285,6 @@ public class ContentCheckService(
         }
 
         // Independent papers use their own entitlement, never the original questions' VIPs.
-        // Keep legacy diagnostics below until the remaining papers and exam links are migrated.
         var mockVersions = newVersions.Where(s => s.MockPaperId.HasValue).ToLookup(s => s.MockPaperId!.Value);
         var realVersions = newVersions.Where(s => s.RealPaperId.HasValue).ToLookup(s => s.RealPaperId!.Value);
         void CheckPublishedPaper(ContentReference reference, IEnumerable<PaperSnapshot> versions,
@@ -353,47 +351,14 @@ public class ContentCheckService(
                     ContentPricing.Paid, paper.Status == PaperStatus.Frozen ? "Versions" : "Edit"),
                 realVersions[paper.Id], status => PaperAccessService.CanAccess(paper, status), null, paper.InstitutionId);
 
-        foreach (var paper in papers.Where(p => p.Status is PaperStatus.Publishable or PaperStatus.Frozen))
+        // Legacy papers still own historical snapshots and exams. Their retired student
+        // routes cannot be unlocked by buying VIPs or changing the old pricing fields.
+        foreach (var paper in papers)
         {
-            void Detail(ContentFinding finding, Guid? snapshotId = null)
-            {
-                finding.Objects.Add(PaperRef(paper));
-                finding.CategoryIds.UnionWith(paper.PaperCategories.Select(c => c.CategoryId));
-                foreach (var scenario in report.Scenarios)
-                    finding.Observations.Add(new(scenario.Name, $"GET /api/Papers/snapshots/{snapshotId?.ToString() ?? "{snapshotId}"}", PaperAccessService.CanAccess(paper, scenario.Status),
-                        localizer["Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required."]));
-            }
-            var latest = paper.PaperSnapshots.OrderByDescending(s => s.Version).FirstOrDefault();
-            if (latest == null)
-                Detail(Add("PAPER001", CheckSeverity.Error, localizer["Publishable paper has no snapshot"],
-                    localizer["The public paper list excludes this paper because no snapshot exists."],
-                    localizer["Review its questions and create a snapshot through the existing paper management workflow."]));
-            foreach (var snapshot in paper.PaperSnapshots.Where(s => !snapshotQuestions[s.Id].Any()))
-                Detail(Add("PAPER002", CheckSeverity.Error, localizer["Paper snapshot is empty"],
-                    string.Format(localizer["Snapshot version {0} contains no exercises. Old snapshot links can still be requested."], snapshot.Version),
-                    localizer["Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots."]), snapshot.Id);
-            if (!PaperAccessService.CanAccess(paper, all))
-                Detail(Add("PAPER003", CheckSeverity.Error, localizer["Paid paper has no unlockable subject"],
-                    localizer["Even all relevant VIPs cannot unlock this paper."],
-                    localizer["Review its subject associations, real-exam setting and free setting."]));
-            else if (!PaperAccessService.CanAccess(paper, purchasable))
-                Detail(Add("VIP004", CheckSeverity.Warning, localizer["No enabled product unlocks this paper"],
-                    localizer["Existing active memberships may work, but new customers have no purchase route."],
-                    localizer["Confirm whether sales are intentionally paused; otherwise enable the required subject or real-exam product."]));
-            if (paper.IsFree && latest != null)
-            {
-                var originals = snapshotQuestions[latest.Id].Where(s => s.OriginalQuestionId.HasValue)
-                    .Select(s => questionIndex.GetValueOrDefault(s.OriginalQuestionId!.Value)).Where(q => q != null)
-                    .Cast<Question>().Where(q => !QuestionAccess.CanPractice(q.QuestionCategory!, new())).DistinctBy(q => q.Id).ToList();
-                if (originals.Count > 0)
-                {
-                    var finding = Add("PAPER004", CheckSeverity.Information, localizer["Free paper contains snapshots of currently paid questions"],
-                        localizer["Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted."],
-                        localizer["Keep this if the free paper is intentional. Review the paper's own pricing if its snapshot should be restricted."]);
-                    Detail(finding);
-                    foreach (var original in originals) AttachQuestion(finding, original);
-                }
-            }
+            var finding = Add("PAPER005", CheckSeverity.Warning, localizer["Legacy paper requires migration"],
+                localizer["This paper is retained for administration and historical exams. It is not available through the current student paper lists."],
+                localizer["Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records."]);
+            finding.Objects.Add(PaperRef(paper));
         }
         // Deduplicate shared impact references. Counts describe the whole finding, not the
         // first example or the number of links, and are unaffected by report pagination.

@@ -442,6 +442,36 @@ public class KnowledgePointAssociationTests
     }
 
     [TestMethod]
+    public async Task LegacyPaperCheckExplainsMigrationAndLinksItsEditor()
+    {
+        var paper = new Paper { Title = "Archive awaiting migration", Status = PaperStatus.Draft };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Papers.Add(paper);
+            await db.SaveChangesAsync();
+        }
+        await LoginAsAdminAsync();
+        var html = await _http.GetStringAsync($"/ContentChecks/Results?rule=PAPER005&search={paper.Id}");
+        StringAssert.Contains(html, "This legacy paper needs migration");
+        var url = WebUtility.HtmlDecode(Regex.Match(html, "href=\"([^\"]*/ContentChecks/Details[^\"]*)\"").Groups[1].Value);
+        var details = WebUtility.HtmlDecode(await _http.GetStringAsync(url));
+        StringAssert.Contains(details, "Confirm its course or institution with the development team");
+        StringAssert.Contains(details, $"/Papers/Edit/{paper.Id}");
+        Assert.DoesNotContain("/api/Papers", details);
+        using var editor = await _http.GetAsync($"/Papers/Edit/{paper.Id}");
+        Assert.AreEqual(HttpStatusCode.OK, editor.StatusCode);
+        using var cultureResponse = await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/ContentChecks");
+        Assert.AreEqual(HttpStatusCode.Found, cultureResponse.StatusCode);
+        var chinese = WebUtility.HtmlDecode(await _http.GetStringAsync(url));
+        var culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN");
+        var resources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Controllers.Management.ContentChecksController", typeof(Startup).Assembly);
+        var title = resources.GetResourceSet(culture, true, false)!.GetString("This legacy paper needs migration");
+        Assert.IsNotNull(title);
+        StringAssert.Contains(chinese, title);
+    }
+
+    [TestMethod]
     public async Task ContentChecksLinkIndependentPaperOwnersAndPreserveInstitutionSelection()
     {
         var school = new Institution { Title = "Diagnostic school" };

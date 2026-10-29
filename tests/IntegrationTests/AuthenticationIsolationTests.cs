@@ -177,7 +177,12 @@ public class AuthenticationIsolationTests
 
         // Public content must not use the web user's identity for VIP access.
         var papersResponse = await _http.GetAsync("/api/Papers");
-        Assert.AreEqual(HttpStatusCode.OK, papersResponse.StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, papersResponse.StatusCode);
+        foreach (var route in new[] { "/api/MockPapers", "/api/RealPapers" })
+        {
+            using var response = await _http.GetAsync(route);
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        }
         var taxonomiesResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
         Assert.AreEqual(HttpStatusCode.NotFound, taxonomiesResponse.StatusCode);
         Assert.AreEqual(0, TestStartupWithMockWeChat.MockWeChatPayService!.VipStatusCalls);
