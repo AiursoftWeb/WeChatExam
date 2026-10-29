@@ -350,6 +350,10 @@ public class PaperImportTests
         {
             ["EmailOrUserName"] = email, ["Password"] = "Import@123456!", ["__RequestVerificationToken"] = login
         }))).StatusCode);
+        var archive = await _http.GetStringAsync("/Papers");
+        Assert.Contains("href=\"/Papers/Import\"", archive);
+        Assert.DoesNotContain("href=\"/MockPapers/Create\"", archive);
+        Assert.DoesNotContain("href=\"/RealPapers/Create\"", archive);
         _token = await Token("/Papers/Import");
         var task = await Extract();
         var response = await Post("ImportSave", SaveRequest(task));

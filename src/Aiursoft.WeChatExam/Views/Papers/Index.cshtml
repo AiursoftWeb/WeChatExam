@@ -9,12 +9,18 @@
         <h1 class="h3 mb-2">@Localizer["Legacy Paper Archive"]</h1>
         <p class="text-muted mb-0">@Localizer["These papers are retained for migration and historical exams."]</p>
     </div>
-    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded &&
-         (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditPapers)).Succeeded)
+    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
     {
         <div class="d-flex gap-2 flex-wrap">
-            <a asp-controller="MockPapers" asp-action="Create" class="btn btn-outline-primary">@Localizer["Create Mock Paper"]</a>
-            <a asp-controller="RealPapers" asp-action="Create" class="btn btn-outline-primary">@Localizer["Create Real Paper"]</a>
+            @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditPapers)).Succeeded)
+            {
+                <a asp-controller="MockPapers" asp-action="Create" class="btn btn-outline-primary">@Localizer["Create Mock Paper"]</a>
+                <a asp-controller="RealPapers" asp-action="Create" class="btn btn-outline-primary">@Localizer["Create Real Paper"]</a>
+            }
+            @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddQuestions)).Succeeded)
+            {
+                <a asp-action="Import" class="btn btn-outline-primary">@Localizer["Import Paper"]</a>
+            }
         </div>
     }
 </div>

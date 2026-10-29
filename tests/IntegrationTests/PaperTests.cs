@@ -126,6 +126,7 @@ public class PaperTests
             using var editor = await _http.GetAsync(route);
             Assert.AreEqual(HttpStatusCode.OK, editor.StatusCode);
         }
+        Assert.Contains("href=\"/Papers/Import\"", html);
         using var import = await _http.GetAsync("/Papers/Import");
         Assert.AreEqual(HttpStatusCode.OK, import.StatusCode, "The shared importer creates new-model papers.");
         using var cultureResponse = await _http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/Papers");
