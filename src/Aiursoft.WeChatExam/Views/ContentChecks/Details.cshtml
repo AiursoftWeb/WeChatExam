@@ -178,9 +178,26 @@
     <section id="related-content" class="check-panel mb-4">
         <h2>@Localizer["All affected content"]</h2>
         <div class="check-impact-counts mb-3">
-            <span><strong>@objects.Count(o => o.Controller == "Questions")</strong>@Localizer["Exercises"]</span>
-            <span><strong>@objects.Count(o => o.Controller == "KnowledgePoints")</strong>@Localizer["Knowledge points"]</span>
-            <span><strong>@group.CategoryIds.Count()</strong>@Localizer["Courses"]</span>
+            @if (objects.Any(o => o.Controller == "Questions"))
+            {
+                <span><strong>@objects.Count(o => o.Controller == "Questions")</strong>@Localizer["Exercises"]</span>
+            }
+            @if (objects.Any(o => o.Controller == "KnowledgePoints"))
+            {
+                <span><strong>@objects.Count(o => o.Controller == "KnowledgePoints")</strong>@Localizer["Knowledge points"]</span>
+            }
+            @if (group.CategoryIds.Any())
+            {
+                <span><strong>@group.CategoryIds.Count()</strong>@Localizer["Courses"]</span>
+            }
+            @if (objects.Any(o => o.Controller is "Papers" or "MockPapers" or "RealPapers"))
+            {
+                <span><strong>@objects.Count(o => o.Controller is "Papers" or "MockPapers" or "RealPapers")</strong>@Localizer["Papers"]</span>
+            }
+            @if (objects.Any(o => o.Controller == "Institutions"))
+            {
+                <span><strong>@objects.Count(o => o.Controller == "Institutions")</strong>@Localizer["Institutions"]</span>
+            }
         </div>
         <details>
             <summary>@Localizer["Browse the full list"]</summary>
