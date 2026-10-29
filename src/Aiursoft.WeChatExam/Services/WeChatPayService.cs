@@ -355,8 +355,8 @@ public class WeChatPayService(
             // Signature verification proves the sender, not that this payment matches our order.
             // Compare the saved payable amount, not today's product price or payer_total after WeChat discounts.
             if (tradeState == "SUCCESS" &&
-                (paymentResource.Amount == null || paymentResource.Amount.Total != order.AmountInFen ||
-                 paymentResource.Amount.Currency != "CNY"))
+                (paymentResource.Amount is not { Currency: "CNY", Total: var total } ||
+                 total != order.AmountInFen))
             {
                 logger.LogWarning("Payment notify amount mismatch for order {OutTradeNo}. Expected {ExpectedAmount} CNY, received {ReceivedAmount} {Currency}",
                     outTradeNo, order.AmountInFen, paymentResource.Amount?.Total, paymentResource.Amount?.Currency);

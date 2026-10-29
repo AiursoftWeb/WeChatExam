@@ -333,7 +333,7 @@ public class WeChatPayCouponIntegrationTests
             // The saved order amount remains authoritative if the catalog price changes.
             product.PriceInFen = 200;
             await _dbContext.SaveChangesAsync();
-            async Task<bool> Notify(int? notifiedTotal, string? notifiedCurrency, bool validSignature = true)
+            async Task<bool> Notify(RSA signingKey, int? notifiedTotal, string? notifiedCurrency, bool validSignature = true)
             {
                 var plain = JsonSerializer.SerializeToUtf8Bytes(new
                 {
@@ -350,12 +350,12 @@ public class WeChatPayCouponIntegrationTests
                 var body = JsonSerializer.Serialize(new { id = "isolated-event", event_type = "TRANSACTION.SUCCESS", resource_type = "encrypt-resource", resource = new { algorithm = "AEAD_AES_256_GCM", ciphertext = Convert.ToBase64String(ciphertext.Concat(tag).ToArray()), nonce = resourceNonce, associated_data = associated } });
                 var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
                 const string nonce = "isolated-signature-nonce";
-                var signature = Convert.ToBase64String(rsa.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{body}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
+                var signature = Convert.ToBase64String(signingKey.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{body}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
                 return await _payService.HandlePaymentNotifyAsync(body, validSignature ? signature : "invalid", timestamp, nonce, entry.SerialNumber);
             }
-            Assert.IsFalse(await Notify(100, "CNY", false));
+            Assert.IsFalse(await Notify(rsa, 100, "CNY", false));
             Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
-            Assert.AreEqual(accepted, await Notify(total, currency));
+            Assert.AreEqual(accepted, await Notify(rsa, total, currency));
             if (!accepted)
             {
                 Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
@@ -365,7 +365,7 @@ public class WeChatPayCouponIntegrationTests
                 Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
                 Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
                 // A rejected callback must not prevent a corrected notification succeeding.
-                Assert.IsTrue(await Notify(100, "CNY"));
+                Assert.IsTrue(await Notify(rsa, 100, "CNY"));
             }
             var member = await _dbContext.VipMemberships.SingleAsync();
             var end = member.EndTime;
@@ -373,7 +373,7 @@ public class WeChatPayCouponIntegrationTests
             Assert.AreEqual(30, (member.EndTime - member.StartTime).TotalDays);
             Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
             Assert.AreEqual("isolated-transaction", order.WechatTransactionId);
-            Assert.IsTrue(await Notify(100, "CNY"));
+            Assert.IsTrue(await Notify(rsa, 100, "CNY"));
             Assert.AreEqual(1, await _dbContext.VipMemberships.CountAsync());
             Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync()).EndTime);
             Assert.AreEqual(1, await _dbContext.Changes.CountAsync(c => c.Type == ChangeType.VipActivatedViaPayment));
