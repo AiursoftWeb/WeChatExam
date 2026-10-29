@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
@@ -179,6 +180,43 @@ public class TaxonomiesTests
         var finalResponse = await _http.GetAsync("/Taxonomies/Index");
         var finalHtml = await finalResponse.Content.ReadAsStringAsync();
         Assert.DoesNotContain(newName, finalHtml);
+    }
+
+    [TestMethod]
+    public async Task TagEditorOnlyManagesInternalMetadataAndKeepsCheckReturn()
+    {
+        await LoginAsAdminAsync();
+        var name = "Internal tag " + Guid.NewGuid().ToString("N")[..8];
+        var create = await _http.GetStringAsync("/Tags/Create");
+        Assert.DoesNotContain("name=\"IsFree\"", create);
+        Assert.DoesNotContain("VIP membership", create);
+        var created = await _http.PostAsync("/Tags/Create", new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["DisplayName"] = name, ["IsFree"] = "false",
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken("/Tags/Create")
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, created.StatusCode);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var tag = await db.Tags.SingleAsync(t => t.DisplayName == name);
+        var editUrl = $"/Tags/Edit/{tag.Id}";
+        var edit = await _http.GetStringAsync(editUrl);
+        Assert.DoesNotContain("name=\"IsFree\"", edit);
+        Assert.DoesNotContain("VIP membership", edit);
+        var response = await _http.PostAsync(editUrl, new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["Id"] = tag.Id.ToString(), ["DisplayName"] = name + " edited", ["IsFree"] = "true",
+            ["checkReturnUrl"] = "/ContentChecks/Results?view=all",
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken(editUrl)
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, response.StatusCode);
+        Assert.AreEqual("/ContentChecks/Results?view=all", response.Headers.Location!.OriginalString);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(name + " edited", (await db.Tags.FindAsync(tag.Id))!.DisplayName);
+        var listing = await _http.GetStringAsync("/Tags/Index?search=" + Uri.EscapeDataString(name));
+        Assert.Contains(name + " edited", listing);
+        Assert.DoesNotContain("VIP Required", listing);
+        Assert.DoesNotContain("data-lucide=\"crown\"", listing);
     }
 
     [TestMethod]

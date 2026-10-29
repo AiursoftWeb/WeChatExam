@@ -481,7 +481,7 @@ public class KnowledgePointAssociationTests
         var manager = scope.ServiceProvider.GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<User>>();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Restricted editor" };
-        var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG", IsFree = false, Taxonomy = new Taxonomy { Name = "Diagnostic taxonomy" } };
+        var tag = new Tag { DisplayName = "Diagnostic shared tag", NormalizedName = "DIAGNOSTIC SHARED TAG",  Taxonomy = new Taxonomy { Name = "Diagnostic taxonomy" } };
         db.AddRange(question, tag);
         await db.SaveChangesAsync();
         db.QuestionTags.Add(new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
@@ -533,7 +533,7 @@ public class KnowledgePointAssociationTests
         var course = new TotalCategory { Title = "Grouped course" };
         var period = new QuestionCategory { Title = "Grouped period", TotalCategoryId = course.Id, TotalCategory = course };
         var directory = new KnowledgeCategory { Title = "Grouped directory", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
-        var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG", IsFree = false };
+        var tag = new Tag { DisplayName = "Grouped shared tag", NormalizedName = "GROUPED SHARED TAG"};
         var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Grouped lesson", Content = "Public lesson" };
         db.AddRange(course, period, directory, tag, lesson, new VipProduct { Name = "Course VIP", TotalCategory = course, DurationDays = 365 },
             new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = directory.Id });
@@ -584,7 +584,7 @@ public class KnowledgePointAssociationTests
         var freePeriod = new QuestionCategory { Title = "Free relation period", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
         var directory = new KnowledgeCategory { Title = "Relation directory", TotalCategoryId = other.Id, TotalCategory = other, IsFree = true };
         var taxonomy = new Taxonomy { Name = "Relation taxonomy" };
-        var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG", IsFree = false, Taxonomy = taxonomy };
+        var tag = new Tag { DisplayName = "Relation paid tag", NormalizedName = "RELATION PAID TAG",  Taxonomy = taxonomy };
         var first = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation first lesson", Content = "Public" };
         var second = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Relation second lesson", Content = "Public" };
         var a = new Question { QuestionCategory = period, Id = Guid.NewGuid(), Content = "Relation first exercise " + new string('x', 220) };
@@ -651,7 +651,7 @@ public class KnowledgePointAssociationTests
         var category = new Category { Id = Guid.NewGuid(), Title = "Origin course", ParentId = null };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Origin lesson", Content = "Public" };
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Origin exercise" };
-        var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG", IsFree = false };
+        var tag = new Tag { DisplayName = "Origin tag", NormalizedName = "ORIGIN TAG"};
         var taxonomy = new Taxonomy { Name = "Origin taxonomy" };
         var product = new VipProduct { Name = "Origin VIP", TotalCategory = new TotalCategory { Id = category.Id, Title = category.Title }, DurationDays = 365 };
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Origin paper", TimeLimit = 180 };

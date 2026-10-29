@@ -95,7 +95,7 @@ public class TagPermissionTests
         var paidPeriod = new QuestionCategory { Title = "Paid period", TotalCategoryId = course.Id, TotalCategory = course };
         var otherPeriod = new QuestionCategory { Title = "Other period", TotalCategoryId = otherCourse.Id, TotalCategory = otherCourse };
         // Internal tag pricing must not affect practice.
-        var paidLabel = new Tag { DisplayName = "Internal paid label", NormalizedName = "INTERNAL PAID LABEL", IsFree = false };
+        var paidLabel = new Tag { DisplayName = "Internal paid label", NormalizedName = "INTERNAL PAID LABEL"};
         var free = new Question { Content = "Free question", StandardAnswer = "A", Metadata = "{\"options\":[\"A\",\"B\"]}",
             QuestionCategory = freePeriod, OrderIndex = 1, GradingStrategy = GradingStrategy.ExactMatch };
         var paid = new Question { Content = "Paid untagged question", StandardAnswer = "A", QuestionCategory = paidPeriod, OrderIndex = 2,

@@ -31,7 +31,7 @@ public class ContentCheckTests
         var freeDirectory = new KnowledgeCategory { Title = "Free overview", TotalCategoryId = course.Id, TotalCategory = course, IsFree = true };
         var question = new Question { Id = Guid.NewGuid(), QuestionCategory = period, Content = "Paid exercise without any paid tag" };
         var free = new Question { Id = Guid.NewGuid(), QuestionCategory = freePeriod, Content = "Free exercise with paid tag" };
-        var tag = new Tag { Id = 1, DisplayName = "Internal", NormalizedName = "INTERNAL", IsFree = false };
+        var tag = new Tag { Id = 1, DisplayName = "Internal", NormalizedName = "INTERNAL"};
         var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Mixed placements", Content = "Lesson" };
         var paidLesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Paid lesson", Content = "Paid body" };
         var unplaced = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Draft", Content = "Not public" };
@@ -76,7 +76,7 @@ public class ContentCheckTests
         Assert.AreEqual(1, report.PeriodImpacts[period.Id].Count(o => o.Controller == "Questions"));
         Assert.AreEqual(2, report.PeriodImpacts[period.Id].Count(o => o.Controller == "KnowledgePoints"));
         Assert.AreEqual(0, db.ChangeTracker.Entries().Count());
-        Assert.IsFalse((await db.Tags.SingleAsync()).IsFree);
+        Assert.AreEqual("INTERNAL", (await db.Tags.SingleAsync()).NormalizedName);
         Assert.AreEqual(2, await db.Questions.CountAsync());
     }
 
@@ -87,7 +87,7 @@ public class ContentCheckTests
         var period = QuestionPeriodAssignmentTests.TestPeriod(isFree: true);
         var legacyCourse = new Category { Id = period.TotalCategoryId, Title = "Legacy course", ParentId = null };
         var taxonomy = new Taxonomy { Id = 1, Name = "Legacy navigation" };
-        var tag = new Tag { Id = 1, DisplayName = "Paid metadata", NormalizedName = "PAID METADATA", IsFree = false, Taxonomy = taxonomy };
+        var tag = new Tag { Id = 1, DisplayName = "Paid metadata", NormalizedName = "PAID METADATA",  Taxonomy = taxonomy };
         var question = new Question { Id = Guid.NewGuid(), Content = "Free practice", QuestionCategory = period };
         db.AddRange(legacyCourse, period, taxonomy, tag, question,
             new CategoryTaxonomy { CategoryId = legacyCourse.Id, TaxonomyId = taxonomy.Id },
@@ -107,7 +107,7 @@ public class ContentCheckTests
     {
         await using var db = Database();
         var subject = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null, IsFree = true };
-        var tag = new Tag { Id = 1, DisplayName = "Paid", NormalizedName = "PAID", IsFree = false };
+        var tag = new Tag { Id = 1, DisplayName = "Paid", NormalizedName = "PAID"};
         var paidPeriod = QuestionPeriodAssignmentTests.TestPeriod();
         paidPeriod.IsFree = false;
         var question = new Question { QuestionCategory = paidPeriod, Id = Guid.NewGuid(), Content = "Original" };
@@ -242,7 +242,7 @@ public class ContentCheckTests
         await using var db = new Sqlite.SqliteContext(options);
         await db.Database.EnsureCreatedAsync();
         var subject = new Category { Id = Guid.NewGuid(), Title = "History", ParentId = null, IsFree = true };
-        var tag = new Tag { DisplayName = "Shared tag", NormalizedName = "SHARED TAG", IsFree = false };
+        var tag = new Tag { DisplayName = "Shared tag", NormalizedName = "SHARED TAG"};
         var period = QuestionPeriodAssignmentTests.TestPeriod();
         period.IsFree = false;
         db.AddRange(subject, tag);

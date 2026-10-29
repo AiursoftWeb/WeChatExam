@@ -125,10 +125,10 @@ public class PaperImportTests
         Assert.AreEqual("User edit", questions[0].Question.Content); Assert.AreEqual("First original question", questions[1].Question.Content); Assert.AreEqual("True", questions[0].Question.StandardAnswer); Assert.AreEqual("Manually supplied answer", questions[1].Question.StandardAnswer); Assert.AreEqual(_secondPeriod, questions[0].Question.QuestionCategoryId);
         Assert.AreEqual(_firstPeriod, questions[1].Question.QuestionCategoryId);
         Assert.AreEqual(0, await db.PaperTags.CountAsync(t => t.PaperId == paperId)); Assert.AreEqual(4, await db.QuestionTags.CountAsync(t => questions.Select(q => q.QuestionId).Contains(t.QuestionId))); Assert.AreEqual(0, await db.PaperCategories.CountAsync(c => c.PaperId == paperId));
-        Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName)).IsFree);
+        Assert.AreEqual(save.SourceTagName.ToUpperInvariant(), (await db.Tags.SingleAsync(t => t.DisplayName == save.SourceTagName)).NormalizedName);
         Assert.IsFalse(await db.Papers.AnyAsync(p => p.Id == paperId));
         Assert.IsFalse(await db.PaperQuestions.AnyAsync(p => p.PaperId == paperId));
-        Assert.AreEqual("/RealPapers/Edit/" + paperId, JObject.Parse(await response.Content.ReadAsStringAsync())["url"]!.Value<string>()); Assert.IsTrue((await db.Tags.SingleAsync(t => t.DisplayName == save.ExtraTags[0])).IsFree);
+        Assert.AreEqual("/RealPapers/Edit/" + paperId, JObject.Parse(await response.Content.ReadAsStringAsync())["url"]!.Value<string>()); Assert.AreEqual(save.ExtraTags[0].ToUpperInvariant(), (await db.Tags.SingleAsync(t => t.DisplayName == save.ExtraTags[0])).NormalizedName);
     }
 
     [TestMethod]
@@ -178,7 +178,7 @@ public class PaperImportTests
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Post("ImportSave", save)).StatusCode);
         save.Confirmations[0].TaxonomyId = taxonomy.Id;
         var success = await Post("ImportSave", save); Assert.AreEqual(HttpStatusCode.OK, success.StatusCode, await success.Content.ReadAsStringAsync());
-        db.ChangeTracker.Clear(); var actual = await db.Tags.SingleAsync(t => t.Id == tag.Id); Assert.IsTrue(actual.IsFree); Assert.AreEqual(taxonomy.Id, actual.TaxonomyId);
+        db.ChangeTracker.Clear(); var actual = await db.Tags.SingleAsync(t => t.Id == tag.Id); Assert.AreEqual(tag.NormalizedName, actual.NormalizedName); Assert.AreEqual(taxonomy.Id, actual.TaxonomyId);
     }
 
     [TestMethod]
@@ -192,7 +192,7 @@ public class PaperImportTests
         var paperCount = await db.RealPapers.CountAsync();
         var questionCount = await db.Questions.CountAsync();
         var tagCount = await db.Tags.CountAsync();
-        var tagName = "Unchanged free tag " + Guid.NewGuid();
+        var tagName = "Unchanged tag " + Guid.NewGuid();
         var tag = new Tag { DisplayName = tagName, NormalizedName = tagName.ToUpperInvariant(), TaxonomyId = null };
         db.Tags.Add(tag);
         await db.SaveChangesAsync();
@@ -210,7 +210,7 @@ public class PaperImportTests
         Assert.AreEqual(paperCount, await db.RealPapers.CountAsync());
         Assert.AreEqual(questionCount, await db.Questions.CountAsync());
         Assert.AreEqual(tagCount + 1, await db.Tags.CountAsync());
-        Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
+        Assert.AreEqual(tag.NormalizedName, (await db.Tags.SingleAsync(t => t.Id == tag.Id)).NormalizedName);
         Assert.AreEqual(1, _ai.Questions.Count);
     }
 
@@ -222,7 +222,7 @@ public class PaperImportTests
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var legacy = new Category { Id = Guid.NewGuid(), Title = "Paper classification only", ParentId = null };
         var tagName = "Period validation " + Guid.NewGuid();
-        var tag = new Tag { DisplayName = tagName, NormalizedName = tagName.ToUpperInvariant(), IsFree = true };
+        var tag = new Tag { DisplayName = tagName, NormalizedName = tagName.ToUpperInvariant()};
         db.Categories.Add(legacy); db.Tags.Add(tag);
         await db.SaveChangesAsync();
         var deleted = await QuestionPeriodAssignmentTests.AddPeriod(_host.Services);
@@ -242,7 +242,7 @@ public class PaperImportTests
         }
         db.ChangeTracker.Clear();
         CollectionAssert.AreEqual(before, new[] { await db.RealPapers.CountAsync(), await db.Questions.CountAsync(), await db.Tags.CountAsync(), await db.QuestionTags.CountAsync(), await db.RealPaperQuestions.CountAsync() });
-        Assert.IsTrue((await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
+        Assert.AreEqual(tag.NormalizedName, (await db.Tags.SingleAsync(t => t.Id == tag.Id)).NormalizedName);
         // Correct the same preview without extracting again. Institution ownership
         // permits these questions from different courses.
         save.Questions[1].QuestionCategoryId = _secondPeriod;
@@ -263,7 +263,7 @@ public class PaperImportTests
         var task = await Extract();
         using var scope = _host.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var tag = new Tag { DisplayName = "Shared source " + Guid.NewGuid(), NormalizedName = Guid.NewGuid().ToString(), IsFree = anonymous };
+        var tag = new Tag { DisplayName = "Shared source " + Guid.NewGuid(), NormalizedName = Guid.NewGuid().ToString() };
         tag.NormalizedName = tag.DisplayName.ToUpperInvariant();
         db.Tags.Add(tag); await db.SaveChangesAsync();
         var oldPapers = await db.Papers.CountAsync();
@@ -290,7 +290,7 @@ public class PaperImportTests
         CollectionAssert.AreEqual(new[] { 1, 2, 3 }, links.Select(q => q.Order).ToArray());
         CollectionAssert.AreEqual(new[] { 10, 7, 10 }, links.Select(q => q.Score).ToArray());
         Assert.IsTrue(links.All(q => q.Question.QuestionCategoryId == _firstPeriod));
-        Assert.AreEqual(anonymous, (await db.Tags.SingleAsync(t => t.Id == tag.Id)).IsFree);
+        Assert.AreEqual(tag.NormalizedName, (await db.Tags.SingleAsync(t => t.Id == tag.Id)).NormalizedName);
         Assert.AreEqual(oldPapers, await db.Papers.CountAsync()); Assert.AreEqual(oldLinks, await db.PaperQuestions.CountAsync());
         Assert.AreEqual(oldTags, await db.PaperTags.CountAsync()); Assert.AreEqual(oldCategories, await db.PaperCategories.CountAsync());
         Assert.IsFalse(await db.RealPapers.AnyAsync(p => p.Id == id));

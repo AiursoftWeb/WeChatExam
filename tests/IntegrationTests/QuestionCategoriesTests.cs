@@ -167,14 +167,14 @@ public class QuestionCategoriesTests : TestBase
         Assert.IsGreaterThan(0, index);
         await migrator.MigrateAsync(migrations[index - 1]);
         var total = new TotalCategory { Title = "Music history" };
-        var tag = new Tag { DisplayName = "Legacy period", NormalizedName = "LEGACY PERIOD", IsFree = true };
+        var tag = new Tag { DisplayName = "Legacy period", NormalizedName = "LEGACY PERIOD"};
         db.TotalCategories.Add(total);
         db.Tags.Add(tag);
         await db.SaveChangesAsync();
         await migrator.MigrateAsync();
         Assert.AreEqual(0, await db.QuestionCategories.CountAsync());
         Assert.AreEqual(1, await db.Tags.CountAsync());
-        Assert.IsTrue((await db.Tags.SingleAsync()).IsFree);
+        Assert.AreEqual("LEGACY PERIOD", (await db.Tags.SingleAsync()).NormalizedName);
         var period = new QuestionCategory { Title = "Early music", TotalCategoryId = total.Id };
         db.QuestionCategories.Add(period);
         await db.SaveChangesAsync();

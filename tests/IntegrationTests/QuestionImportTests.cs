@@ -40,7 +40,7 @@ public class QuestionImportTests : TestBase
         var second = await QuestionPeriodAssignmentTests.AddPeriod(Server.Services);
         using var scope = Server.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        db.Tags.Add(new Tag { DisplayName = Source, NormalizedName = Source.ToUpperInvariant(), IsFree = false });
+        db.Tags.Add(new Tag { DisplayName = Source, NormalizedName = Source.ToUpperInvariant()});
         await db.SaveChangesAsync();
         var preview = await PostForm("/QuestionImport/Preview", new Dictionary<string, string>
         {
@@ -60,7 +60,7 @@ public class QuestionImportTests : TestBase
         Assert.AreEqual("Second explanation", questions[1].Explanation);
         CollectionAssert.AreEqual(new[] { "A", "B" }, JObject.Parse(questions[0].Metadata)["options"]!.ToObject<string[]>()!);
         Assert.IsTrue(questions.All(q => q.QuestionType == QuestionType.Choice && q.GradingStrategy == GradingStrategy.ExactMatch));
-        Assert.IsTrue(questions.All(q => q.QuestionTags.Single().Tag.DisplayName == Source && !q.QuestionTags.Single().Tag.IsFree));
+        Assert.IsTrue(questions.All(q => q.QuestionTags.Single().Tag.DisplayName == Source));
     }
 
     [TestMethod]

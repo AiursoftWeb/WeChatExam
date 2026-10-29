@@ -149,7 +149,7 @@ public class PaperImportService(WeChatExamDbContext db, IOllamaService ollama, I
                 var tag = existing.FirstOrDefault(t => t.NormalizedName == Normalize(name));
                 if (tag == null)
                 {
-                    tag = new Tag { DisplayName = name, NormalizedName = Normalize(name), IsFree = true, TaxonomyId = isSource ? request.TaxonomyId : null };
+                    tag = new Tag { DisplayName = name, NormalizedName = Normalize(name), TaxonomyId = isSource ? request.TaxonomyId : null };
                     db.Tags.Add(tag);
                 }
                 tags.Add(tag);

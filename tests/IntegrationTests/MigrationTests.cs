@@ -167,6 +167,55 @@ public class MigrationTests
     }
 
     [TestMethod]
+    public async Task RemovingTagPricingPreservesInternalOrganizationAndLinks()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:;Foreign Keys=True").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        const string previous = "20261028112940_AddInstitutionVipProducts";
+        await migrator.MigrateAsync(previous);
+        var taxonomy = new Taxonomy { Name = "Internal sources" };
+        var first = new Tag { DisplayName = "Previously free", NormalizedName = "PREVIOUSLY FREE", OrderIndex = 7, Taxonomy = taxonomy };
+        var second = new Tag { DisplayName = "Previously paid", NormalizedName = "PREVIOUSLY PAID", OrderIndex = 9 };
+        var period = QuestionPeriodAssignmentTests.TestPeriod();
+        var question = new Question { Content = "Preserved question", StandardAnswer = "Original answer", QuestionCategory = period };
+        var paper = new Paper { Title = "Retained legacy paper", IsFree = false };
+        db.AddRange(first, second, question, paper);
+        await db.SaveChangesAsync();
+        db.AddRange(new QuestionTag { QuestionId = question.Id, TagId = first.Id },
+            new QuestionTag { QuestionId = question.Id, TagId = second.Id },
+            new PaperTag { PaperId = paper.Id, TagId = first.Id });
+        await db.SaveChangesAsync();
+        await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE Tags SET IsFree = 1 WHERE Id = {first.Id}");
+
+        foreach (var target in new[] { null, previous, null })
+        {
+            await migrator.MigrateAsync(target);
+            db.ChangeTracker.Clear();
+            var tags = await db.Tags.OrderBy(t => t.OrderIndex).ToListAsync();
+            CollectionAssert.AreEqual(new[] { first.Id, second.Id }, tags.Select(t => t.Id).ToArray());
+            CollectionAssert.AreEqual(new[] { "Previously free", "Previously paid" }, tags.Select(t => t.DisplayName).ToArray());
+            CollectionAssert.AreEqual(new[] { first.NormalizedName, second.NormalizedName }, tags.Select(t => t.NormalizedName).ToArray());
+            CollectionAssert.AreEqual(new[] { 7, 9 }, tags.Select(t => t.OrderIndex).ToArray());
+            Assert.AreEqual(taxonomy.Id, tags[0].TaxonomyId);
+            Assert.IsNull(tags[1].TaxonomyId);
+            Assert.AreEqual(2, await db.QuestionTags.CountAsync(t => t.QuestionId == question.Id));
+            Assert.AreEqual(first.Id, (await db.PaperTags.SingleAsync(t => t.PaperId == paper.Id)).TagId);
+            Assert.AreEqual("Original answer", (await db.Questions.SingleAsync()).StandardAnswer);
+            Assert.IsFalse((await db.QuestionCategories.SingleAsync()).IsFree);
+            Assert.IsFalse((await db.Papers.SingleAsync()).IsFree);
+            await using var command = db.Database.GetDbConnection().CreateCommand();
+            command.CommandText = "SELECT count(*) FROM pragma_table_info('Tags') WHERE name = 'IsFree'";
+            Assert.AreEqual(target == null ? 0L : 1L, await command.ExecuteScalarAsync());
+            command.CommandText = "SELECT count(*) FROM pragma_foreign_key_check";
+            Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+        }
+        // Downgrading restores the schema default, not historical pricing values.
+        // Exact restoration of retired metadata requires the pre-upgrade backup.
+    }
+
+    [TestMethod]
     public void TestSqliteMigrations()
     {
         var options = new DbContextOptionsBuilder<SqliteContext>()

@@ -1100,9 +1100,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsFree")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("NormalizedName")
                         .IsRequired()
                         .HasMaxLength(255)

@@ -19,8 +19,5 @@ public class CreateViewModel : UiStackLayoutViewModel
     [Display(Name = "Taxonomy")]
     public int? TaxonomyId { get; set; }
 
-    [Display(Name = "Is Free")]
-    public bool IsFree { get; set; } = true;
-
     public IEnumerable<SelectListItem> AvailableTaxonomies { get; set; } = new List<SelectListItem>();
 }
