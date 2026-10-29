@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Etichete suplimentare (una pe linie)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Permite accesul fără calitatea de membru</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Categorie (opțional)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Accesul la categorii/taxonomii poate fi inconsistent. Categorii asociate sugerate:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Verificați etichetele existente</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Verificați etichetele și recomandările privind accesul</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Se compară întrebarea din previzualizare {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Completați răspunsul standard pentru întrebarea {0} înainte de a salva.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Finalizat</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Corect</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Curs</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Nume personalizat; nu mai urmează titlul</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Șterge</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Proiectul a fost salvat ca schiță. Un editor de lucrări îl poate revizui și publica.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Trageți de mâner sau folosiți butoanele de mutare. Răspunsurile lipsă pot rămâne necompletate în previzualizare, însă toate răspunsurile standard trebuie completate înainte de salvare.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Previzualizare editabilă</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Fiecare întrebare trebuie să aparțină cursului selectat.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Starea existentă a taxei se păstrează.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Incorect</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instituție</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Este gratuit</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Este examenul real</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Lucrare de simulare</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Mută în jos</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Categorie de lucrare (opțional)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Tipul lucrării</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Subiectele de examen din anii anteriori necesită statutul VIP universitar și pot conține întrebări din cursuri diferite.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>În așteptare</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>În curs de procesare</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Subiect real</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Înlocuiți previzualizarea editată cu o nouă extragere?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Punctaj</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Selectați un curs</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Selectați un tip de subiect</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Selectați o perioadă</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Selectați o instituție</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Reutilizarea sursei face ca această etichetă să fie cu plată la nivel global.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Numele etichetei sursei</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Taxonomia etichetei sursă (opțional)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Răspunsul standard (obligatoriu înainte de salvare)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Etichetele organizează doar întrebările importate. Ele nu stabilesc prețul lucrării și nu apar în meniul lucrărilor pentru elevi. Etichetele existente nu sunt modificate.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taxonomie</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tip</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Vizitatorii pot susține întreaga simulare, inclusiv întrebările contra cost. Pentru salvarea rezultatelor personale la examene, este necesară autentificarea.</value>
   </data>
 
 </root>

@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>إجراءات</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>إنشاء ورقة اختبار تجريبي</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>إنشاء ورقة</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>إنشاء اختبار ورقي حقيقي</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>تم الإنشاء</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>استيراد ورقة اختبار</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>أرشيف الاختبارات القديمة</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>لم يتم العثور على أي ورقات</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>تُحتفظ بهذه الأوراق لأغراض الترحيل والاختبارات التاريخية.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>حد الزمن</value>

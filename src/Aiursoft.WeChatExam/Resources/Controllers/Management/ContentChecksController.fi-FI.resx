@@ -78,8 +78,14 @@
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Tämä harjoitus vaatii VIP-jäsenyyden</value>
   </data>
+  <data name="This legacy paper needs migration" xml:space="preserve">
+    <value>Tämä vanha tentti on siirrettävä uuteen järjestelmään</value>
+  </data>
   <data name="This lesson needs a directory" xml:space="preserve">
     <value>Tämä lektio tarvitsee hakemiston</value>
+  </data>
+  <data name="This paper is kept for historical exams. Confirm its course or institution with the development team before making it available in the new paper lists." xml:space="preserve">
+    <value>Tämä tenttipaperi on säilytetty historiallisia kokeita varten. Varmista kehitystiimiltä, mille kurssille tai oppilaitokselle se kuuluu, ennen kuin lisäät sen uusiin tenttipaperilistoihin.</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>Tältä kokeelta puuttuu julkaistu versio</value>

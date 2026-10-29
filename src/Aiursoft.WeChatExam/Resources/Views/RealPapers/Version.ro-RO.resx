@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
+    <value>{0} întrebări · {1} puncte · {2} minute</value>
+  </data>
+  <data name="Back to Versions" xml:space="preserve">
+    <value>Înapoi la versiuni</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Explicație</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Următoarea</value>
+  </data>
+  <data name="Options and Metadata" xml:space="preserve">
+    <value>Opțiuni și metadate</value>
+  </data>
+  <data name="Order {0} · {1} points" xml:space="preserve">
+    <value>Ordinea {0} · {1} puncte</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} din {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Pagini de întrebări</value>
+  </data>
+  <data name="Requires institution access" xml:space="preserve">
+    <value>Necesită acces la instituție</value>
+  </data>
+  <data name="Saved Answer and Question Data" xml:space="preserve">
+    <value>Răspunsul salvat și datele întrebării</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Răspuns standard</value>
+  </data>
+  <data name="This is a saved version. Changes to the draft or question bank do not alter it." xml:space="preserve">
+    <value>Aceasta este o versiune salvată. Modificările aduse schiței sau băncii de întrebări nu o afectează.</value>
+  </data>
+  <data name="Version {0}" xml:space="preserve">
+    <value>Versiunea {0}</value>
+  </data>
+
+</root>

@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>क्लाइंट की एंट्री जाँच के लिए इंजीनियरिंग सत्यापन आवश्यक है</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>इसके पाठ्यक्रम या संस्थान की पुष्टि करें और इसे मॉक पेपर या वास्तविक पेपर में स्थानांतरित करें। इसके प्रश्न, संस्करण और परीक्षा रिकॉर्ड सुरक्षित रखें।</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>पुष्टि करें कि बिक्री जानबूझकर रोकी गई है या नहीं; अन्यथा आवश्यक विषयों में से किसी एक के लिए उत्पाद सक्षम करें।</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>ज्ञान बिंदु</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>पुराने पेपर का माइग्रेशन आवश्यक है</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>पुराने प्रश्नपत्र</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>इस पाठ को पहुँच देने वाली कोई निर्देशिका नहीं है, इसलिए पाठ्यक्रम का VIP सदस्य भी इसे नहीं पढ़ सकता।</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>यह पेपर प्रशासनिक कार्यों और ऐतिहासिक परीक्षाओं के लिए सुरक्षित रखा गया है। यह वर्तमान छात्र पेपर सूचियों में उपलब्ध नहीं है।</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>यह उत्पाद इच्छित संस्थान की सदस्यता प्रदान नहीं कर सकता।</value>

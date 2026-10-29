@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Aktionen</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Probeklausur erstellen</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Neues Papier erstellen</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Echte Prüfung erstellen</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Erstellt</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Klausur importieren</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Archiv älterer Prüfungen</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Keine Prüfungen gefunden</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Diese Prüfungsunterlagen werden für die Migration und für historische Prüfungen aufbewahrt.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Zeitlimit</value>

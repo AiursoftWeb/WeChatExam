@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Asiakasohjelman sisäänpääsytarkistukset edellyttävät teknistä varmennusta.</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Varmista sen kurssi tai oppilaitos ja siirrä se harjoituskokeeksi tai varsinaiseksi kokeeksi. Säilytä sen kysymykset, versiot ja koetiedot.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Varmista, onko myynti keskeytetty tarkoituksella. Muussa tapauksessa ota käyttöön tuote jollekin vaadituista aiheista.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Tietopisteet</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Vanha koe tarvitaan siirtää uuteen järjestelmään</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Vanhat kokeet</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Tällä oppitunnilla ei ole käyttöoikeudet myöntävää hakemistoa, joten edes kurssin VIP-jäsen ei voi lukea sitä.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Tämä paperi säilytetään hallinnollisia tarkoituksia ja historiallisia kokeita varten. Se ei ole saatavilla nykyisissä opiskelijoille tarkoitetuissa paperiluetteloissa.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Tällä tuotteella ei voida myöntää jäsenyyttä aiottuun oppilaitokseen.</value>

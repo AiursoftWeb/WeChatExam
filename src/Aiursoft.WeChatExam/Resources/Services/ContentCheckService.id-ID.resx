@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Pemeriksaan akses masuk klien memerlukan verifikasi oleh tim teknis</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Pastikan mata kuliah atau institusinya, lalu migrasikan menjadi naskah ujian simulasi atau naskah ujian resmi. Pertahankan soal, versi, dan catatan ujiannya.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Pastikan apakah penjualan memang sengaja dihentikan sementara; jika tidak, aktifkan produk untuk salah satu mata pelajaran yang diwajibkan.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Poin Pengetahuan</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Makalah lama perlu dimigrasikan</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Arsip soal lama</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Pelajaran ini tidak memiliki direktori yang memberikan akses, sehingga bahkan anggota VIP kursus pun tidak dapat membacanya.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Makalah ini disimpan untuk keperluan administrasi dan ujian historis. Makalah ini tidak tersedia melalui daftar makalah siswa saat ini.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Produk ini tidak dapat memberikan keanggotaan pada institusi yang dimaksud.</value>

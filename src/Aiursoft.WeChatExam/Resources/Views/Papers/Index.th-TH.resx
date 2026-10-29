@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>การกระทำ</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>สร้างข้อสอบจำลอง</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>สร้างแบบทดสอบ</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>สร้างข้อสอบจริง</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>สร้างเมื่อ</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>นำเข้าข้อสอบ</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>คลังข้อสอบเก่า</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>ไม่พบแบบทดสอบ</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>เอกสารข้อสอบเหล่านี้เก็บไว้เพื่อการย้ายข้อมูลและการอ้างอิงข้อสอบในอดีต</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>เวลาที่กำหนด</value>

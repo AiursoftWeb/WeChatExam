@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>模擬試験を作成</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>ペーパーの作成</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>実際の問題を作成</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>作成日</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>問題をインポート</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>旧形式の試験問題アーカイブ</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>論文が見つかりません</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>状態</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>これらの用紙は、移行および過去の試験記録のために保管されています。</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>時間制限</value>

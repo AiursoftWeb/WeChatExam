@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Editează exercițiul</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Editează instituția</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Editează categoria de cunoștințe</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Editează punctul de cunoaștere</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Editează lucrarea</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Editează perioada</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Editează eticheta</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Exercițiu</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instituție</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Categorie de cunoștințe</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Punct de cunoaștere</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Document vechi</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Lucrare de examen simulată</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Niciunul configurat</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>Test</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Perioadă</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Tarifarea în funcție de perioadă afectează {0} exerciții asociate cu {1} puncte de cunoaștere.</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>Public / gratuit</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Citește exercițiul complet</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Lucrare scrisă în condiții reale</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Vânzările sunt dezactivate</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Utilizat de {0} exerciții asociate cu {1} puncte de cunoaștere. Modificarea prețului etichetei afectează toate aceste exerciții.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Utilizat de {0} exerciții asociate cu {1} puncte de cunoaștere. Etichetele sunt folosite pentru organizarea internă, nu pentru tarifarea exercițiilor.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Vizualizați lucrarea înghețată</value>

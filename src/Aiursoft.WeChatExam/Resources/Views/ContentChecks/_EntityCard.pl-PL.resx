@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Edytuj ćwiczenie</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Edytuj instytucję</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Edytuj kategorię wiedzy</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Edytuj punkt wiedzy</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Edytuj arkusz</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Edytuj okres</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Edytuj tag</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Ćwiczenie</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instytucja</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Kategoria wiedzy</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Punkt wiedzy</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Stary arkusz</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Arkusz próbny</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Nie skonfigurowano</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>Arkusz</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Okres</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Cennik okresowy dotyczy {0} ćwiczeń powiązanych z {1} punktami wiedzy.</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>Publiczny / bezpłatny</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Przeczytaj całe ćwiczenie</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Prawdziwy arkusz</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Sprzedaż wyłączona</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Używany przez {0} ćwiczeń powiązanych z {1} punktami wiedzy. Zmiana ceny tagu wpływa na wszystkie te ćwiczenia.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Używany przez {0} ćwiczeń powiązanych z {1} punktami wiedzy. Tagi służą do wewnętrznej organizacji, a nie do ustalania cen ćwiczeń.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Wyświetl zablokowany arkusz</value>

@@ -78,8 +78,14 @@
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>This exercise requires VIP</value>
   </data>
+  <data name="This legacy paper needs migration" xml:space="preserve">
+    <value>This legacy paper needs to be migrated</value>
+  </data>
   <data name="This lesson needs a directory" xml:space="preserve">
     <value>This lesson needs to be assigned to a directory</value>
+  </data>
+  <data name="This paper is kept for historical exams. Confirm its course or institution with the development team before making it available in the new paper lists." xml:space="preserve">
+    <value>This paper is retained for historical exams. Confirm its course or institution with the development team before making it available in the new paper lists.</value>
   </data>
   <data name="This paper is missing its published version" xml:space="preserve">
     <value>This paper is missing its published version</value>

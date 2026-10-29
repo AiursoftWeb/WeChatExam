@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Kontrol af klientadgang kræver teknisk verifikation</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Bekræft dets kursus eller institution, og overfør det til en prøveeksamen eller en rigtig eksamen. Bevar dets spørgsmål, versioner og eksamensregistreringer.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Bekræft, om salget bevidst er sat på pause; aktivér ellers et produkt for et af de påkrævede fagområder.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Videnspunkter</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Ældre opgavesæt kræver migrering</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Ældre opgavesæt</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Denne lektion har ingen mappe, der giver adgang, så selv en kursus-VIP kan ikke læse den.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Denne opgave beholdes af hensyn til administration og historiske eksamener. Den er ikke tilgængelig via de aktuelle opgavelister for studerende.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Dette produkt kan ikke give medlemskab af den tilsigtede institution.</value>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} pytań · {1} punktów</value>
+  </data>
+  <data name="Add questions to this paper" xml:space="preserve">
+    <value>Dodaj pytania do tego arkusza</value>
+  </data>
+  <data name="Add Selected Questions" xml:space="preserve">
+    <value>Dodaj wybrane pytania</value>
+  </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Wszystkie okresy</value>
+  </data>
+  <data name="Back to Real Papers" xml:space="preserve">
+    <value>Powrót do arkuszy egzaminacyjnych</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Następna</value>
+  </data>
+  <data name="No more matching questions." xml:space="preserve">
+    <value>Brak więcej pasujących pytań.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Kolejność</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Strona {0} z {1}</value>
+  </data>
+  <data name="Paper Settings" xml:space="preserve">
+    <value>Ustawienia arkusza</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Okres</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Poprzednia</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Strony z pytaniami</value>
+  </data>
+  <data name="Remove from Paper" xml:space="preserve">
+    <value>Usuń z arkusza</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Zapisz zmiany</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Wynik</value>
+  </data>
+  <data name="Score per question" xml:space="preserve">
+    <value>Punkty za pytanie</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="Search questions" xml:space="preserve">
+    <value>Szukaj pytań</value>
+  </data>
+  <data name="Select Questions" xml:space="preserve">
+    <value>Wybierz pytania</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Wybrane pytania</value>
+  </data>
+  <data name="Test paper" xml:space="preserve">
+    <value>Arkusz testowy</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Wersje i publikacja</value>
+  </data>
+  <data name="View Details" xml:space="preserve">
+    <value>Zobacz szczegóły</value>
+  </data>
+
+</root>

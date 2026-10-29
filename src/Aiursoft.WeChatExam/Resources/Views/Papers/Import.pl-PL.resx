@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Dodatkowe tagi (jeden w każdym wierszu)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Zezwól na dostęp bez członkostwa</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Kategoria (opcjonalnie)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Dostęp do kategorii/taksonomii może być niespójny. Sugerowane powiązane kategorie:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Sprawdź istniejące tagi</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Sprawdź tagi i zalecenia dotyczące dostępu</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Porównywanie pytania z podglądu {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Uzupełnij standardową odpowiedź na pytanie {0} przed zapisaniem.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Ukończono</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Poprawna</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Kurs</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Nazwa niestandardowa; nie jest już zgodna z tytułem</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Szkic zapisany. Redaktor egzaminu może go przejrzeć i opublikować.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Przeciągnij uchwyt lub użyj przycisków zmiany kolejności. Brakujące odpowiedzi mogą pozostać puste w podglądzie, ale przed zapisaniem należy uzupełnić wszystkie standardowe odpowiedzi.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Podgląd do edycji</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Każde pytanie musi należeć do wybranego kursu.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Zachowano dotychczasowy status opłaty.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Niepoprawna</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instytucja</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Czy jest bezpłatny</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>To prawdziwy egzamin</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Arkusz próbny</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Przenieś w dół</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Kategoria arkusza (opcjonalnie)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Rodzaj arkusza</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Archiwalne arkusze egzaminacyjne wymagają statusu VIP uczelni i mogą zawierać pytania z różnych przedmiotów.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Oczekuje</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Przetwarzanie</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Prawdziwy arkusz egzaminacyjny</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Zastąpić edytowany podgląd nową ekstrakcją?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Wynik</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Wybierz przedmiot</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Wybierz typ arkusza</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Wybierz okres</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Wybierz instytucję</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Ponowne użycie tagu źródłowego oznacza, że jest on płatny dla wszystkich.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Nazwa tagu źródłowego</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Taksonomia tagu źródłowego (opcjonalnie)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Odpowiedź standardowa (wymagana przed zapisaniem)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Tagi służą wyłącznie do organizacji importowanych pytań. Nie ustawiają one ceny arkusza ani nie pojawiają się w menu arkuszy studenta. Istniejące tagi nie są zmieniane.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taksonomia</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Typ</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Odwiedzający mogą rozwiązać cały ten arkusz próbny, w tym pytania płatne. Zapisanie osobistych wyników egzaminu wymaga zalogowania się.</value>
   </data>
 
 </root>

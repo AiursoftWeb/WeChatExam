@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>I controlli di accesso dal client richiedono una verifica tecnica</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Verifica il corso o l’istituto di appartenenza e migralo a un compito simulato o a un compito d’esame reale. Mantieni le domande, le versioni e i record degli esami.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Verifica se le vendite sono state sospese intenzionalmente; in caso contrario, abilita un prodotto per una delle materie richieste.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Punti di conoscenza</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Il documento cartaceo legacy richiede la migrazione</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Temi legacy</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Questa lezione non è associata ad alcuna directory che ne consenta l’accesso, quindi nemmeno un VIP del corso può leggerla.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Questa prova è conservata a scopo amministrativo e per esami storici. Non è disponibile tramite le attuali elenchi di prove per studenti.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Questo prodotto non può concedere l&apos;iscrizione all&apos;istituto previsto.</value>

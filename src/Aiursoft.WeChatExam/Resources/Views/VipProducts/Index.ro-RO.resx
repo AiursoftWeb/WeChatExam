@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>Domeniu de acces</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Acțiuni</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>Toate Examenul Real VIP (Legacy)</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categorie</value>
@@ -48,6 +54,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>Activat</value>
   </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP instituție</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nume</value>
   </data>
@@ -65,6 +74,9 @@
   </data>
   <data name="Search by name or category" xml:space="preserve">
     <value>Caută după nume sau categorie</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>Căutați după nume, categorie sau instituție</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Stare</value>

@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Alıştırmayı düzenle</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Kurumu düzenle</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Bilgi kategorisini düzenle</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Bilgi noktasını düzenle</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Kâğıdı düzenle</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Dönemi düzenle</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Etiketi düzenle</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Alıştırma</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Kurum</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Bilgi Kategorisi</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Bilgi noktası</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Eski sınav kâğıdı</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Deneme sınavı</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Yapılandırılmamış</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>Sınav</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Dönem</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Dönem fiyatlandırması, {1} bilgi noktasına bağlı {0} alıştırmayı etkiler.</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>Herkese açık / ücretsiz</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Alıştırmanın tamamını oku</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Gerçek sınav kâğıdı</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Satış devre dışı</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>{1} bilgi noktasıyla bağlantılı {0} alıştırmada kullanılıyor. Etiket fiyatını değiştirmek, bu alıştırmaların tümünü etkiler.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>{0} alıştırmada kullanılıyor ve {1} bilgi noktasıyla bağlantılı. Etiketler kurum içi düzenleme içindir, alıştırma ücretlendirmesi için değildir.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Dondurulmuş kâğıdı görüntüle</value>
