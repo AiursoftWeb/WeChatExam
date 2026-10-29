@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Redigera övning</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Redigera institution</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Redigera kunskapskategori</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Redigera kunskapspunkten</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Redigera prov</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Redigera period</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Redigera tagg</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Övning</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institution</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Kunskapskategori</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Kunskapsområde</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Äldre prov</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Övningstentamen</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Inget konfigurerat</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>Prov</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Periodprissättningen påverkar {0} övningar kopplade till {1} kunskapspunkter.</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>Offentligt / kostnadsfritt</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Läs hela övningen</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Verkligt prov</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Försäljning inaktiverad</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Används av {0} övningar kopplade till {1} kunskapspunkter. Om taggens pris ändras påverkas alla dessa övningar.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Används av {0} övningar kopplade till {1} kunskapspunkter. Taggar används för intern organisering, inte för prissättning av övningar.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Visa låst prov</value>

@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>附加标签（每行一个）</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>允许无需会员资格即可访问</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>分类（可选）</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>分类/分类体系的访问权限可能不一致。建议关联的分类：</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>检查现有标签</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>检查标签并获取访问权限建议</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>正在比较预览题目 {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>保存前，请补全第 {0} 题的标准答案。</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>已完成</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>正确</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>课程</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>自定义名称；不再跟随标题</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>草稿已保存。试卷编辑人员可以审核并发布。</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>拖动手柄或使用移动按钮。缺失的答案可以在预览中留空，但保存前必须填写所有标准答案。</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>可编辑预览</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>每道题都必须属于所选课程。</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>保留现有费用状态。</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>错误</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>院校</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>是否免费</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>是否为正式考试</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>模拟试卷</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>下移</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>试卷分类（可选）</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>试卷类型</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>历年试卷需要大学 VIP 权限，且可以包含来自不同课程的题目。</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>待处理</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>处理中</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>真题</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>要用新的提取结果替换已编辑的预览吗？</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>分值</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>选择一门课程</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>请选择试卷类型</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>选择一个年代</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>选择院校</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>复用来源会使此标签在全局范围内变为付费标签。</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>来源标签名称</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>来源标签分类体系（可选）</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>标准答案（保存前必须填写）</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>标签仅用于整理导入的题目，不会影响试卷价格，也不会显示在学生端的试卷菜单中。现有标签不会被更改。</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>分类体系</value>
@@ -192,61 +240,8 @@
   <data name="Type" xml:space="preserve">
     <value>类型</value>
   </data>
-
-
-<data name="Allow access without membership" xml:space="preserve">
-    <value>允许无需会员资格即可访问</value>
-  </data>
-  <data name="Check existing tags" xml:space="preserve">
-    <value>检查现有标签</value>
-  </data>
-  <data name="Course" xml:space="preserve">
-    <value>课程</value>
-  </data>
-  <data name="Institution" xml:space="preserve">
-    <value>院校</value>
-  </data>
-  <data name="Mock Paper" xml:space="preserve">
-    <value>模拟试卷</value>
-  </data>
-  <data name="Paper type" xml:space="preserve">
-    <value>试卷类型</value>
-  </data>
-  <data name="Real Paper" xml:space="preserve">
-    <value>真题</value>
-  </data>
-  <data name="Select a course" xml:space="preserve">
-    <value>选择一门课程</value>
-  </data>
-  <data name="Select a paper type" xml:space="preserve">
-    <value>请选择试卷类型</value>
-  </data>
-  <data name="Select an institution" xml:space="preserve">
-    <value>选择院校</value>
-  </data>
-  <data name="Source tag name" xml:space="preserve">
-    <value>来源标签名称</value>
-  </data>
-  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
-    <value>标签仅用于整理导入的题目，不会影响试卷价格，也不会显示在学生端的试卷菜单中。现有标签不会被更改。</value>
-  </data>
-
-
-<data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
-    <value>保存前，请补全第 {0} 题的标准答案。</value>
-  </data>
-  <data name="Every question must belong to the selected course." xml:space="preserve">
-    <value>每道题都必须属于所选课程。</value>
-  </data>
-  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
-    <value>历年试卷需要大学 VIP 权限，且可以包含来自不同课程的题目。</value>
-  </data>
   <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
     <value>访客可以参加这份完整的模拟试卷，包括其中的付费题目。登录后才能保存个人考试记录。</value>
   </data>
 
-
-<data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
-    <value>草稿已保存。试卷编辑人员可以审核并发布。</value>
-  </data>
-  </root>
+</root>

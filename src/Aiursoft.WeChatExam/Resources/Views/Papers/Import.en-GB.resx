@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Additional tags (one per line)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Allow access without a membership</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Category (optional)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Access to categories and taxonomies may be inconsistent. Suggested linked categories:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Check existing tags</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Check tags and access suggestions</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Comparing preview question {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Complete the standard answer for question {0} before saving.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Completed</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Correct</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Course</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Custom name; no longer follows the title</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Draft saved. An editor can review and publish the paper.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Drag the handle or use the move buttons. Missing answers can remain blank in the preview, but all standard answers must be completed before saving.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Editable preview</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Every question must be for the selected course.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Existing fee status retained.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Incorrect</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institution</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Is free</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Is this a real exam?</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Mock exam paper</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Move down</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Paper category (optional)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Paper type</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Past exam papers require university VIP access and can include questions from different courses.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pending</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Processing</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Actual Paper</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Replace the edited preview with a new extraction?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Select a course</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Select a paper type</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Select a period</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Select an institution</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Reusing the source makes this tag paid for everyone.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Source tag name</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Source tag taxonomy (optional)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Standard answer (required before saving)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Tags organise imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taxonomy</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Visitors can sit this entire mock exam, including any paid questions. You must log in to save personal exam records.</value>
   </data>
 
 </root>

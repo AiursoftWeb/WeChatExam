@@ -36,6 +36,9 @@
   <data name="Ask engineering to review remaining legacy navigation consumers. Do not change period or directory pricing to fix legacy tag metadata." xml:space="preserve">
     <value>Kalan eski gezinme bileşenlerini incelemesi için mühendislik ekibine danışın. Eski etiket meta verilerini düzeltmek için dönem veya dizin fiyatlandırmasını değiştirmeyin.</value>
   </data>
+  <data name="Assign the intended institution before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Bu ürünü satışa sunmadan önce ilgili kurumu atayın. Mevcut üyelikleri ayrıca inceleyin.</value>
+  </data>
   <data name="Assign the intended question subject, or correct its paid tags after reviewing their shared impact." xml:space="preserve">
     <value>Amaçlanan soru konusunu belirleyin veya ortak etkilerini gözden geçirdikten sonra ücretli etiketlerini düzeltin.</value>
   </data>
@@ -47,6 +50,9 @@
   </data>
   <data name="Authorization only: a denied snapshot returns 200 with HasAccess=false and no questions. A usable snapshot is also required." xml:space="preserve">
     <value>Yalnızca yetkilendirme: erişimi reddedilen bir anlık görüntü, HasAccess=false ve soru içermeyen bir yanıtla 200 döndürür. Ayrıca kullanılabilir bir anlık görüntü de gereklidir.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 403. A published, nonempty snapshot is also required." xml:space="preserve">
+    <value>Yalnızca yetkilendirme: erişimi reddedilen bir anlık görüntü 403 döndürür. Ayrıca yayımlanmış ve boş olmayan bir anlık görüntü gereklidir.</value>
   </data>
   <data name="Category free settings do not restrict the public knowledge API. Some Mini Program entry checks use product names rather than the server&apos;s subject IDs." xml:space="preserve">
     <value>Kategori ücretsiz ayarları, herkese açık bilgi API&apos;sine erişimi kısıtlamaz. Mini Program giriş kontrollerinin bazıları, sunucunun konu kimlikleri yerine ürün adlarını kullanır.</value>
@@ -99,6 +105,15 @@
   <data name="If this is a descriptive shared tag, consider making it free. If it sells access, map its taxonomy to the intended subject. Review the affected content before changing a shared tag." xml:space="preserve">
     <value>Bu, açıklayıcı ve paylaşılan bir etiketse ücretsiz yapmayı değerlendirin. Erişim satıyorsa taksonomisini amaçlanan konuyla eşleştirin. Paylaşılan bir etiketi değiştirmeden önce etkilenen içerikleri gözden geçirin.</value>
   </data>
+  <data name="Institution VIP product has no valid institution" xml:space="preserve">
+    <value>Kurum VIP ürününün geçerli bir kurumu yok</value>
+  </data>
+  <data name="Institution VIP: {0}" xml:space="preserve">
+    <value>Kurum VIP: {0}</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Kurumlar</value>
+  </data>
   <data name="Keep this configuration if the exercise is intentionally paid. If it should be public, review all paid tags and their shared impact first." xml:space="preserve">
     <value>Alıştırma kasıtlı olarak ücretliyse bu yapılandırmayı koruyun. Herkese açık olması gerekiyorsa önce tüm ücretli etiketleri ve bunların ortak etkisini gözden geçirin.</value>
   </data>
@@ -117,8 +132,14 @@
   <data name="Knowledge points" xml:space="preserve">
     <value>Bilgi Noktaları</value>
   </data>
+  <data name="Legacy papers" xml:space="preserve">
+    <value>Eski sınav kâğıtları</value>
+  </data>
   <data name="Legacy tag metadata only: HasAccess is reported without changing question access." xml:space="preserve">
     <value>Yalnızca eski etiket üst verisi: HasAccess bildirilir, soru erişimi değiştirilmez.</value>
+  </data>
+  <data name="Mock papers" xml:space="preserve">
+    <value>Deneme sınavları</value>
   </data>
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Yeni müşteriler şu anda satın alma yoluna sahip değil. Mevcut aktif üyelikler yine de erişim sağlayabilir.</value>
@@ -180,6 +201,9 @@
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
   </data>
+  <data name="Real papers" xml:space="preserve">
+    <value>Gerçek sınav kâğıtları</value>
+  </data>
   <data name="Real-exam VIP only" xml:space="preserve">
     <value>Yalnızca gerçek sınav VIP&apos;si</value>
   </data>
@@ -192,11 +216,17 @@
   <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Dersi ve mevcut VIP ürünlerini gözden geçirin. Devre dışı bırakılan ürünler, mevcut etkin üyelikleri geçersiz kılmaz.</value>
   </data>
+  <data name="Review the mock paper&apos;s course VIP products. Sales availability does not revoke existing memberships." xml:space="preserve">
+    <value>Deneme sınavının kurs VIP ürünlerini gözden geçirin. Satış uygunluğu, mevcut üyelikleri iptal etmez.</value>
+  </data>
   <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
     <value>Kâğıt sorularını gözden geçirin ve düzeltilmiş bir anlık görüntü yayımlayın. Orijinal sorularda yapılan değişiklikler mevcut anlık görüntüleri güncellemez.</value>
   </data>
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Konuyu ve mevcut VIP ürünlerini gözden geçirin. Devre dışı bırakılan ürünler, mevcut aktif üyelikleri geçersiz kılmaz.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Bu kurumun VIP ürünlerini inceleyin. Kurs VIP’leri gerçek sınav kâğıtlarının kilidini açmaz; tüm kurumları kapsayan mevcut gerçek sınav üyelikleri çalışmaya devam eder.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Etkin VIP üyeliği olmadan oturum açmış</value>
@@ -245,6 +275,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Bu dersin erişim izni veren bir dizini yok; bu nedenle bir kurs VIP üyesi bile dersi okuyamaz.</value>
+  </data>
+  <data name="This product cannot grant the intended institution membership." xml:space="preserve">
+    <value>Bu ürün, amaçlanan kurum üyeliğini sağlayamaz.</value>
   </data>
   <data name="This product cannot grant the intended subject membership." xml:space="preserve">
     <value>Bu ürün, amaçlanan konu üyeliğini sağlayamaz.</value>

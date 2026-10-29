@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>وسوم إضافية (وسم واحد في كل سطر)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>السماح بالدخول دون عضوية</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>الفئة (اختياري)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>قد يكون الوصول إلى التصنيفات/التصنيف غير متسق. التصنيفات المرتبطة المقترحة:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>التحقق من الوسوم الموجودة</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>تحقق من الوسوم وتوصيات الوصول</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>جارٍ مقارنة سؤال المعاينة {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>أكمل الإجابة النموذجية للسؤال {0} قبل الحفظ.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>مكتمل</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>صحيح</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>المقرر الدراسي</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>اسم مخصص؛ لم يعد يتبع العنوان</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>تم حفظ المسودة. يمكن لمحرر الاختبارات مراجعتها ونشرها.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>اسحب المقبض أو استخدم أزرار التحريك. يمكن ترك الإجابات المفقودة فارغة في المعاينة، لكن يجب إكمال جميع الإجابات النموذجية قبل الحفظ.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>معاينة قابلة للتعديل</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>يجب أن ينتمي كل سؤال إلى المقرر الدراسي المحدد.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>تم الاحتفاظ بحالة الرسوم الحالية.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>غير صحيح</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>المؤسسة</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>مجاني</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>هل هو اختبار حقيقي؟</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>ورقة تجريبية</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>تحريك لأسفل</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>تصنيف الاختبار (اختياري)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>نوع الاختبار</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>تتطلب أوراق الاختبارات السابقة عضوية VIP جامعية، وقد تتضمن أسئلة من مقررات مختلفة.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>قيد الانتظار</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>جارٍ المعالجة</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>ورقة امتحان حقيقية</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>استبدال المعاينة المعدّلة باستخراج جديد؟</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>الدرجة</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>اختر مقررًا دراسيًا</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>اختر نوع الاختبار</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>اختر فترة</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>اختر مؤسسة تعليمية</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>إعادة استخدام المصدر تجعل هذا الوسم مدفوعًا على مستوى النظام بأكمله.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>اسم وسم المصدر</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>تصنيف علامات المصدر (اختياري)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>الإجابة النموذجية (مطلوبة قبل الحفظ)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>تُستخدم الوسوم لتنظيم الأسئلة المستوردة فقط. ولا تحدد سعر الاختبار ولا تظهر في قائمة الاختبارات المخصصة للطلاب. ولا تُعدَّل الوسوم الموجودة.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>التصنيف</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>النوع</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>يمكن للزوار خوض هذا الاختبار التجريبي كاملًا، بما في ذلك الأسئلة المدفوعة. ويتطلب حفظ سجلات الاختبارات الشخصية تسجيل الدخول.</value>
   </data>
 
 </root>

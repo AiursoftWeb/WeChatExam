@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>แท็กเพิ่มเติม (หนึ่งรายการต่อบรรทัด)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>อนุญาตให้เข้าถึงได้โดยไม่ต้องเป็นสมาชิก</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>หมวดหมู่ (ไม่บังคับ)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>การเข้าถึงหมวดหมู่/อนุกรมวิธานอาจไม่สอดคล้องกัน หมวดหมู่ที่เชื่อมโยงที่แนะนำ:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>ตรวจสอบแท็กที่มีอยู่</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>ตรวจสอบแท็กและคำแนะนำเกี่ยวกับสิทธิ์การเข้าถึง</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>กำลังเปรียบเทียบคำถามตัวอย่าง {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>กรุณากรอกคำตอบมาตรฐานของข้อ {0} ให้ครบถ้วนก่อนบันทึก</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>เสร็จสมบูรณ์</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>ถูกต้อง</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>รายวิชา</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>ชื่อที่กำหนดเอง; ไม่ได้ใช้ชื่อตามชื่อเรื่องอีกต่อไป</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>บันทึกฉบับร่างแล้ว บรรณาธิการข้อสอบสามารถตรวจสอบและเผยแพร่ได้</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>ลากที่จับหรือใช้ปุ่มเลื่อน ลำดับคำตอบที่ขาดหายไปสามารถเว้นว่างไว้ในตัวอย่างก่อนบันทึกได้ แต่ต้องกรอกคำตอบมาตรฐานทั้งหมดให้ครบก่อนบันทึก</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>ตัวอย่างตัวอย่างที่แก้ไขได้</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>คำถามทุกข้อจะต้องอยู่ในรายวิชาที่เลือก</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>คงสถานะค่าธรรมเนียมเดิมไว้</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>ไม่ถูกต้อง</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>สถาบัน</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>เป็นแบบไม่เสียค่าใช้จ่าย</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>เป็นการสอบจริง</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>ข้อสอบจำลอง</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>เลื่อนลง</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>หมวดหมู่ข้อสอบ (ไม่บังคับ)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>ประเภทข้อสอบ</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>ข้อสอบเก่าต้องใช้สิทธิ์ VIP ของมหาวิทยาลัย และอาจมีคำถามจากหลายรายวิชา</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>รอดำเนินการ</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>กำลังประมวลผล</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>ข้อสอบจริง</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>แทนที่ตัวอย่างที่แก้ไขแล้วด้วยการดึงข้อมูลใหม่หรือไม่?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>คะแนน</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>เลือกหลักสูตร</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>เลือกประเภทข้อสอบ</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>เลือกรอบเวลา</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>เลือกสถาบัน</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>การนำแท็กต้นทางกลับมาใช้จะทำให้แท็กนี้เป็นแบบชำระเงินสำหรับทุกที่</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>ชื่อแท็กต้นทาง</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>หมวดหมู่แท็กจากแหล่งที่มา (ไม่บังคับ)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>คำตอบมาตรฐาน (ต้องกรอกก่อนบันทึก)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>แท็กใช้สำหรับจัดระเบียบเฉพาะคำถามที่นำเข้าเท่านั้น ไม่ได้ใช้กำหนดราคาข้อสอบหรือแสดงในเมนูข้อสอบสำหรับนักเรียน แท็กที่มีอยู่จะไม่ถูกเปลี่ยนแปลง</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>หมวดหมู่อนุกรมวิธาน</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>ประเภท</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>ผู้เยี่ยมชมสามารถทำข้อสอบจำลองฉบับเต็มนี้ได้ รวมถึงข้อสอบที่ต้องชำระเงิน การบันทึกประวัติการสอบส่วนบุคคลจำเป็นต้องเข้าสู่ระบบ</value>
   </data>
 
 </root>

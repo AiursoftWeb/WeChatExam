@@ -99,8 +99,14 @@
   <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
     <value>Sản phẩm VIP này chưa được gắn khóa học. Vì vậy, sản phẩm không thể cấp quyền truy cập vào khóa học dự kiến.</value>
   </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Sản phẩm VIP này chưa được gán cho tổ chức nào nên không thể cấp quyền truy cập dự kiến vào đề thi thật.</value>
+  </data>
   <data name="This VIP product needs a course" xml:space="preserve">
     <value>Sản phẩm VIP này cần có khóa học</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Sản phẩm VIP này cần có một đơn vị.</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Khách truy cập có thể đọc mục kiến thức, nhưng không thể mở miễn phí các bài tập này.</value>

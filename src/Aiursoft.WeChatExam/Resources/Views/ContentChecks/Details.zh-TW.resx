@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>啟用中的課程 VIP</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>啟用中的機構 VIP</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>啟用正式考試 VIP</value>
   </data>
@@ -105,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>供我們團隊處理</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>機構</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>其付費標籤表示此練習為付費內容；不需要額外加入課程會員。</value>
   </data>
@@ -119,6 +125,9 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>知識內容：公開</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>舊版正式考試 VIP（所有機構）</value>
   </data>
   <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
     <value>課程內容依其直接指派的目錄而定。練習內容依其所屬的期別而定。此處不會檢查答案的提交與儲存。</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>我們的團隊需要檢視此行為。若要解決方案程式的問題，您不需要變更共用定價。</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>考卷</value>
   </data>
   <data name="Please confirm" xml:space="preserve">
     <value>請確認</value>

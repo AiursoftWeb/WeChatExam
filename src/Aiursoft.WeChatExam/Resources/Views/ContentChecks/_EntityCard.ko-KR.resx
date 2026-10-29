@@ -33,6 +33,9 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>연습문제 수정</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>기관 수정</value>
+  </data>
   <data name="Edit knowledge category" xml:space="preserve">
     <value>지식 분류 편집</value>
   </data>
@@ -57,11 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>문제</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>기관</value>
+  </data>
   <data name="Knowledge Category" xml:space="preserve">
     <value>지식 범주</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>학습 포인트</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>기존 시험지</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>모의고사</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>설정된 항목 없음</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>전체 연습 문제 읽기</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>실전 시험지</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>판매 중지</value>

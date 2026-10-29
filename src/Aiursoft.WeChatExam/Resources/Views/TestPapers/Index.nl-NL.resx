@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minuten</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Proefexamens</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Geen overeenkomende examens</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Geen vragen</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} van {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Pagina&apos;s met papers</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Filter op status van het proefwerk</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>punten</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Vorige</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicatiegereed</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Echt examen</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Echte toetsen</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Zoek examens...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Alle papieren weergeven</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Test starten</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Testvragen</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Test de huidige sjabloon, inclusief niet-gepubliceerde wijzigingen. Inzendingen worden beoordeeld met de gedeelde beoordelingsengine, inclusief echte AI-beoordeling.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Probeer een andere titel of statusfilter.</value>

@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Дополнительные теги (по одному в строке)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Разрешить доступ без участия в сообществе</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Категория (необязательно)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Доступ к категории и таксономии может быть настроен некорректно. Рекомендуемые связанные категории:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Проверить существующие теги</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Проверить метки и рекомендации по доступу</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Сравнение вопроса предварительного просмотра {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Перед сохранением заполните правильный ответ на вопрос {0}.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Завершено</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Правильный</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Учебный курс</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Пользовательское имя; больше не связано с заголовком</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Черновик сохранён. Редактор экзаменационного теста может проверить и опубликовать его.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Перетащите маркер или используйте кнопки перемещения. Ответы, отсутствующие в исходных данных, можно оставить пустыми в предварительном просмотре, но перед сохранением необходимо заполнить все стандартные ответы.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Редактируемый предварительный просмотр</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Каждый вопрос должен относиться к выбранному курсу.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Существующий статус платности сохранён.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Неверно</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Учебное заведение</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Бесплатный</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Является настоящим экзаменом</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Пробный экзамен</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Переместить вниз</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Категория работы (необязательно)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Тип экзамена</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Для просмотра архивных экзаменационных работ требуется университетский VIP-доступ. В них могут содержаться вопросы по разным дисциплинам.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>В ожидании</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Обработка</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Настоящий экзаменационный вариант</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Заменить отредактированный предпросмотр результатом нового извлечения?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Оценка</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Выберите курс</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Выберите тип экзаменационной работы</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Выберите период</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Выберите учебное заведение</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Повторное использование исходной метки делает её платной для всех.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Название исходного тега</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Таксономия исходного тега (необязательно)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Эталонный ответ (обязателен перед сохранением)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Теги используются только для организации импортированных вопросов. Они не влияют на стоимость экзамена и не отображаются в списке экзаменов для студентов. Существующие теги не изменяются.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Таксономия</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Тип</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Посетители могут пройти весь этот пробный экзамен, включая платные вопросы. Чтобы сохранить личные результаты экзамена, необходимо войти в систему.</value>
   </data>
 
 </root>

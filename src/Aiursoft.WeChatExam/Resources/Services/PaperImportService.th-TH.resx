@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>โปรดเลือกข้อสอบจำลองหรือข้อสอบจริง</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>เลือกหลักสูตรที่มีอยู่สำหรับข้อสอบจำลอง โดยไม่ระบุมหาวิทยาลัย</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>กรุณาเลือกช่วงเวลาที่มีอยู่สำหรับคำถามข้อ {0} ก่อนบันทึก</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>กรุณาเลือกมหาวิทยาลัยที่มีอยู่สำหรับข้อสอบย้อนหลัง ข้อสอบย้อนหลังไม่มีการกำหนดรายวิชาหรือการเข้าถึงแบบไม่ระบุตัวตน</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>คำถามทุกข้อในชุดข้อสอบจำลองต้องอยู่ในรายวิชาของชุดข้อสอบนั้น</value>
   </data>
 
 </root>

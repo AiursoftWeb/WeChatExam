@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Kies een proefwerk of een echt werk.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Kies een bestaande cursus voor het proefexamen, zonder universiteit.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Kies een bestaande periode voor vraag {0} voordat je opslaat.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Kies een bestaande universiteit voor het oude tentamen. Oude tentamens hebben geen vak of instelling voor anonieme toegang.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Elke vraag in een proefexamen moet bij de bijbehorende cursus horen.</value>
   </data>
 
 </root>

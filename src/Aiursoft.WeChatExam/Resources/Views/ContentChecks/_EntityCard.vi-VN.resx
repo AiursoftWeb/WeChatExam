@@ -33,6 +33,9 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Chỉnh sửa bài tập</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Chỉnh sửa cơ sở giáo dục</value>
+  </data>
   <data name="Edit knowledge category" xml:space="preserve">
     <value>Chỉnh sửa danh mục kiến thức</value>
   </data>
@@ -57,11 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Bài tập</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Cơ sở</value>
+  </data>
   <data name="Knowledge Category" xml:space="preserve">
     <value>Danh mục kiến thức</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Điểm kiến thức</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Đề thi cũ</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Đề thi thử</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Chưa cấu hình</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Đọc toàn bộ bài tập</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Đề thi thật</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Đã tắt bán</value>

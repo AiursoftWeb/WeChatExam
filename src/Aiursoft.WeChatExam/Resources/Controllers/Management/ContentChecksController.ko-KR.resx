@@ -99,8 +99,14 @@
   <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
     <value>이 VIP 상품에는 관련 강의가 없습니다. 의도한 강의 접근 권한을 부여할 수 없습니다.</value>
   </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>이 VIP 상품에는 기관이 설정되어 있지 않습니다. 따라서 의도한 실제 시험지 이용 권한을 부여할 수 없습니다.</value>
+  </data>
   <data name="This VIP product needs a course" xml:space="preserve">
     <value>이 VIP 상품에는 과정이 필요합니다</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>이 VIP 상품에는 기관이 필요합니다</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>방문자는 지식 포인트를 읽을 수 있지만, 이 연습 문제는 무료로 열람할 수 없습니다.</value>

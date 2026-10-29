@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>当前课程 VIP</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>有效院校 VIP</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>启用真实考试 VIP</value>
   </data>
@@ -105,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>供我们的团队处理</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>院校</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>其付费标签仅用于标记该练习为付费内容；无需因此额外加入课程。</value>
   </data>
@@ -119,6 +125,9 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>知识点文本：公开</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>历史真题 VIP（所有院校）</value>
   </data>
   <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
     <value>知识点文本遵循其直接指定的知识点分类。练习内容遵循其所属年代。此处不检查答案的提交和保存情况。</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>我们的团队需要评估这一行为。解决程序问题无需更改共享定价。</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>试卷</value>
   </data>
   <data name="Please confirm" xml:space="preserve">
     <value>请确认</value>
@@ -217,17 +229,4 @@
     <value>谁可以打开此内容？</value>
   </data>
 
-
-<data name="Active institution VIPs" xml:space="preserve">
-    <value>有效院校 VIP</value>
-  </data>
-  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
-    <value>历史真题 VIP（所有院校）</value>
-  </data>
-  <data name="Papers" xml:space="preserve">
-    <value>试卷</value>
-  </data>
-  <data name="Institutions" xml:space="preserve">
-    <value>院校</value>
-  </data>
-  </root>
+</root>

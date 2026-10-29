@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Extra tags (één per regel)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Toegang toestaan zonder lidmaatschap</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Categorie (optioneel)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>De toegang tot categorieën/taxonomieën is mogelijk niet consistent. Voorgestelde gekoppelde categorieën:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Bestaande tags controleren</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Tags en toegang aanbevelen controleren</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Vergelijking van voorbeeldvraag {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Vul het standaardantwoord voor vraag {0} in voordat u opslaat.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Voltooid</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Juist</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Vak</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Aangepaste naam; volgt de titel niet meer</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Verwijderen</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Concept opgeslagen. Een toetsredacteur kan deze bekijken en publiceren.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Sleep het handvat of gebruik de verplaatsknoppen. Ontbrekende antwoorden mogen leeg blijven in het voorbeeld, maar alle standaardantwoorden moeten zijn ingevuld voordat je opslaat.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Bewerkbaar voorbeeld</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Elke vraag moet bij het geselecteerde vak horen.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>De bestaande tariefstatus blijft behouden.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Onjuist</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instelling</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Is gratis</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Is dit een echt examen</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Proeftoets</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Omlaag verplaatsen</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Papiercategorie (optioneel)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Soort toets</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Voor oude tentamens is een universitaire VIP-status vereist. Ze kunnen vragen uit verschillende vakken bevatten.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>In behandeling</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Bezig met verwerken</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Echt tentamen</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>De bewerkte preview vervangen door een nieuwe extractie?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Score</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Selecteer een cursus</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Selecteer een papiertype</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Selecteer een periode</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Selecteer een instelling</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Hergebruik uit de bron maakt deze tag wereldwijd betaald.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Naam van de brontag</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Taxonomie van het brontag (optioneel)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Standaardantwoord (verplicht voordat u opslaat)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Tags ordenen alleen geïmporteerde vragen. Ze bepalen niet de prijs van het proefwerk en worden niet weergegeven in het menu met proefwerken voor studenten. Bestaande tags worden niet gewijzigd.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taxonomie</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Bezoekers kunnen dit volledige proefexamen maken, inclusief eventuele betaalde vragen. Inloggen is vereist om persoonlijke examenresultaten op te slaan.</value>
   </data>
 
 </root>

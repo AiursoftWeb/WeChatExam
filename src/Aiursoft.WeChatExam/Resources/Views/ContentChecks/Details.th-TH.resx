@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>VIP ประจำหลักสูตรที่ใช้งานอยู่</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>สถาบันที่ใช้งานอยู่ซึ่งเป็น VIP</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>เปิดใช้งาน VIP สำหรับการสอบจริง</value>
   </data>
@@ -105,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>สำหรับทีมงานของเรา</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>สถาบัน</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>แท็กแบบชำระเงินของรายการนี้ระบุว่าแบบฝึกหัดนี้เป็นแบบชำระเงิน แต่ไม่ได้กำหนดให้ต้องเป็นสมาชิกหลักสูตรเพิ่มเติม</value>
   </data>
@@ -119,6 +125,9 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>ข้อความความรู้: สาธารณะ</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>สิทธิ์ VIP สำหรับการสอบจริงแบบเดิม (ทุกสถาบัน)</value>
   </data>
   <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
     <value>เนื้อหาบทเรียนจะเป็นไปตามไดเรกทอรีที่กำหนดไว้โดยตรง ส่วนเนื้อหาแบบฝึกหัดจะเป็นไปตามช่วงเวลาของแบบฝึกหัด การส่งและบันทึกคำตอบจะไม่ได้รับการตรวจสอบที่นี่</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>ทีมของเราจำเป็นต้องตรวจสอบการทำงานนี้ คุณไม่จำเป็นต้องเปลี่ยนการกำหนดราคาที่ใช้ร่วมกันเพื่อแก้ไขปัญหาของโปรแกรม</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>เอกสารข้อสอบ</value>
   </data>
   <data name="Please confirm" xml:space="preserve">
     <value>โปรดยืนยัน</value>

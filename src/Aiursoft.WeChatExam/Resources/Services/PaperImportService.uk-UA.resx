@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Виберіть пробний або справжній екзаменаційний варіант.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Виберіть наявний курс для пробного тесту без зазначення університету.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Виберіть наявний період для запитання {0}, перш ніж зберегти.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Виберіть наявний університет для минулого екзаменаційного тесту. Для минулих екзаменаційних тестів не передбачено курсу чи налаштування анонімного доступу.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Кожне запитання в пробному варіанті має належати до відповідного курсу.</value>
   </data>
 
 </root>

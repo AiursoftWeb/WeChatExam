@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>मॉक पेपर या वास्तविक पेपर चुनें।</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>मॉक प्रश्नपत्र के लिए किसी विश्वविद्यालय के बिना एक मौजूदा पाठ्यक्रम चुनें।</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>सहेजने से पहले प्रश्न {0} के लिए कोई मौजूदा अवधि चुनें।</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>पिछले परीक्षा प्रश्नपत्र के लिए कोई मौजूदा विश्वविद्यालय चुनें। पिछले परीक्षा प्रश्नपत्रों में पाठ्यक्रम या अनाम पहुँच की कोई सेटिंग नहीं होती।</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>मॉक पेपर का हर प्रश्न उसी पाठ्यक्रम का होना चाहिए।</value>
   </data>
 
 </root>

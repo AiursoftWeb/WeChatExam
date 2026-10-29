@@ -18,8 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
+      <data name="Choose a mock paper or a real paper." xml:space="preserve">
+    <value>Pilih naskah ujian simulasi atau naskah ujian sebenarnya.</value>
+  </data>
+  <data name="Choose an existing course for the mock paper, without a university." xml:space="preserve">
+    <value>Pilih mata kuliah yang sudah ada untuk naskah ujian simulasi, tanpa universitas.</value>
+  </data>
+  <data name="Choose an existing period for question {0} before saving." xml:space="preserve">
     <value>Pilih periode yang tersedia untuk pertanyaan {0} sebelum menyimpan.</value>
+  </data>
+  <data name="Choose an existing university for the past exam paper. Past exam papers have no course or anonymous access setting." xml:space="preserve">
+    <value>Pilih universitas yang sudah ada untuk lembar ujian tahun sebelumnya. Lembar ujian tahun sebelumnya tidak memiliki pengaturan mata kuliah atau akses anonim.</value>
+  </data>
+  <data name="Every question in a mock paper must belong to its course." xml:space="preserve">
+    <value>Setiap soal dalam naskah ujian latihan harus termasuk dalam mata kuliahnya.</value>
   </data>
 
 </root>

@@ -33,6 +33,9 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>تعديل التمرين</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>تعديل المؤسسة</value>
+  </data>
   <data name="Edit knowledge category" xml:space="preserve">
     <value>تعديل فئة المعرفة</value>
   </data>
@@ -57,11 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>تمرين</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>مؤسسة</value>
+  </data>
   <data name="Knowledge Category" xml:space="preserve">
     <value>فئة المعرفة</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>نقطة معرفة</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>ورقة قديمة</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>اختبار تجريبي</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>لم يتم الإعداد</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>اقرأ التمرين كاملًا</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>ورقة امتحانية فعلية</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>المبيعات متوقفة</value>

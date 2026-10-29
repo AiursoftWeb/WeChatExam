@@ -33,6 +33,9 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Editar exercício</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Editar instituição</value>
+  </data>
   <data name="Edit knowledge category" xml:space="preserve">
     <value>Editar categoria de conhecimento</value>
   </data>
@@ -57,11 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Exercício</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instituição</value>
+  </data>
   <data name="Knowledge Category" xml:space="preserve">
     <value>Categoria de conhecimento</value>
   </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Ponto de conhecimento</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Prova legada</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Prova simulada</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Nenhum configurado</value>
@@ -86,6 +98,9 @@
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Ler exercício completo</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Prova real</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Vendas desativadas</value>
