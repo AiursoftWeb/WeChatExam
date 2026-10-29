@@ -59,6 +59,14 @@ public class UserPracticeHistory
     /// </summary>
     public PracticeType? PracticeType { get; set; }
 
+    /// <summary>The awarded score, unknown for records created before grading feedback was retained.</summary>
+    public int? Score { get; set; }
+
+    /// <summary>The grading feedback at the time of submission, independent from the current question explanation.</summary>
+    [MaxLength(4000)]
+    public string? GradingComment { get; set; }
+
+
     /// <summary>
     /// 创建时间
     /// </summary>

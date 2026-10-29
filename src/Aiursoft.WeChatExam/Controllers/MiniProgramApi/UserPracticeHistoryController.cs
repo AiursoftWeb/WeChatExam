@@ -102,6 +102,8 @@ public class UserPracticeHistoryController : ControllerBase
                 StandardAnswer = x.Question.StandardAnswer,
                 Explanation = x.Question.Explanation,
                 IsCorrect = x.IsCorrect,
+                Score = x.Score,
+                Comment = x.GradingComment ?? string.Empty,
                 PracticeType = x.PracticeType,
                 CreationTime = x.CreationTime
             })
@@ -158,6 +160,8 @@ public class UserPracticeHistoryController : ControllerBase
             QuestionId = dto.QuestionId,
             UserAnswer = dto.UserAnswer,
             IsCorrect = gradingResult.IsCorrect,
+            Score = gradingResult.Score,
+            GradingComment = gradingResult.Comment,
             PracticeType = dto.PracticeType,
             CreationTime = DateTime.UtcNow
         };
@@ -172,6 +176,8 @@ public class UserPracticeHistoryController : ControllerBase
             StandardAnswer = question.StandardAnswer,
             Explanation = question.Explanation,
             IsCorrect = entity.IsCorrect,
+            Score = gradingResult.Score,
+            Comment = gradingResult.Comment,
             PracticeType = entity.PracticeType,
             CreationTime = entity.CreationTime
         };
@@ -225,6 +231,7 @@ public class UserPracticeHistoryController : ControllerBase
             Explanation = snapshot.Explanation,
             IsCorrect = gradingResult.IsCorrect,
             Score = gradingResult.Score,
+            Comment = gradingResult.Comment,
             CreationTime = DateTime.UtcNow
         };
 
@@ -243,6 +250,8 @@ public class UserPracticeHistoryController : ControllerBase
                     QuestionId = snapshot.OriginalQuestionId.Value,
                     UserAnswer = dto.UserAnswer,
                     IsCorrect = gradingResult.IsCorrect,
+                    Score = gradingResult.Score,
+                    GradingComment = gradingResult.Comment,
                     PracticeType = dto.PracticeType,
                     CreationTime = resultDto.CreationTime
                 };

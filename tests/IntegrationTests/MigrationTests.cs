@@ -269,6 +269,54 @@ public class MigrationTests
     }
 
     [TestMethod]
+    public async Task PracticeFeedbackMigrationPreservesOldAnswersAndStoresNewPartialCredit()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        var migrations = db.Database.GetMigrations().ToArray();
+        var index = Array.FindIndex(migrations, m => m.EndsWith("_RetainPracticeGradingFeedback"));
+        var previous = migrations[index - 1];
+        await migrator.MigrateAsync(previous);
+        var student = new User { UserName = "feedback-migration", DisplayName = "Student" };
+        var question = new Question { Content = "Explain the decision", StandardAnswer = "Reference",
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod() };
+        db.AddRange(student, question);
+        await db.SaveChangesAsync();
+        var id = Guid.NewGuid();
+        var time = DateTime.UtcNow;
+        await db.Database.ExecuteSqlInterpolatedAsync($"""
+            INSERT INTO UserPracticeHistories (Id, UserId, QuestionId, UserAnswer, IsCorrect, CreationTime)
+            VALUES ({id}, {student.Id}, {question.Id}, 'An existing answer', 0, {time})
+            """);
+        await migrator.MigrateAsync();
+        var old = await db.UserPracticeHistories.SingleAsync();
+        Assert.AreEqual("An existing answer", old.UserAnswer);
+        Assert.IsFalse(old.IsCorrect);
+        Assert.AreEqual(time, old.CreationTime);
+        Assert.IsNull(old.Score);
+        Assert.IsNull(old.GradingComment);
+        var graded = new UserPracticeHistory { Id = Guid.NewGuid(), UserId = student.Id,
+            QuestionId = question.Id, UserAnswer = "A new answer", IsCorrect = false,
+            Score = 5, GradingComment = "Partial credit: one supporting check is missing." };
+        db.Add(graded);
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        var saved = await db.UserPracticeHistories.SingleAsync(h => h.Id == graded.Id);
+        Assert.AreEqual(5, saved.Score);
+        Assert.AreEqual(graded.GradingComment, saved.GradingComment);
+        await migrator.MigrateAsync(previous);
+        await migrator.MigrateAsync();
+        db.ChangeTracker.Clear();
+        var restored = await db.UserPracticeHistories.OrderBy(h => h.UserAnswer).ToListAsync();
+        Assert.AreEqual(2, restored.Count);
+        Assert.IsTrue(restored.All(h => h.Score == null && h.GradingComment == null));
+        Assert.IsTrue(restored.Any(h => h.Id == id && h.UserAnswer == "An existing answer"));
+        Assert.IsTrue(restored.Any(h => h.Id == graded.Id && h.UserAnswer == "A new answer"));
+    }
+
+    [TestMethod]
     public void TestSqliteMigrations()
     {
         var options = new DbContextOptionsBuilder<SqliteContext>()

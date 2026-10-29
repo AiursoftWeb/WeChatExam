@@ -15,11 +15,12 @@ public sealed class StubWeChatService : IWeChatService
 public sealed class StubOllamaService : IOllamaService
 {
     public string Response { get; set; } = string.Empty;
+    public Exception? Failure { get; set; }
     public List<string> Questions { get; } = new();
     public Task<string> AskQuestion(string question, CancellationToken cancellationToken = default)
     {
         Questions.Add(question);
-        return Task.FromResult(Response);
+        return Failure == null ? Task.FromResult(Response) : Task.FromException<string>(Failure);
     }
 }
 
