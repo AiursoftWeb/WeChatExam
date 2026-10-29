@@ -99,4 +99,39 @@ public class GradingServiceTests
         Assert.AreEqual(0, result.Score);
         Assert.AreEqual("No answer provided.", result.Comment);
     }
+    [TestMethod]
+    [DataRow("{}")]
+    [DataRow("null")]
+    [DataRow("not json")]
+    [DataRow("{\"Score\":10,\"Comment\":\"Missing verdict\"}")]
+    [DataRow("{\"Score\":-1,\"Comment\":\"Invalid score\",\"IsCorrect\":false}")]
+    [DataRow("{\"Score\":11,\"Comment\":\"Invalid score\",\"IsCorrect\":true}")]
+    [DataRow("{\"Score\":0,\"Comment\":\"Contradiction\",\"IsCorrect\":true}")]
+    [DataRow("{\"Score\":10,\"Comment\":\"Contradiction\",\"IsCorrect\":false}")]
+    [DataRow("{\"Score\":3,\"Comment\":\"\",\"IsCorrect\":false}")]
+    [DataRow("{\"Score\":\"3\",\"Comment\":\"Wrong type\",\"IsCorrect\":false}")]
+    public async Task InvalidAiResponseFailsInsteadOfInventingAnIncorrectGrade(string response)
+    {
+        _mockOllamaService!.Response = response;
+        await Assert.ThrowsExactlyAsync<GradingUnavailableException>(() =>
+            _gradingService!.GradeAsync("A reasoned answer", "Reference", GradingStrategy.AiEval, 10, "Question"));
+    }
+
+    [TestMethod]
+    public async Task AiTransportFailureDoesNotBecomeAZeroScore()
+    {
+        _mockOllamaService!.Failure = new HttpRequestException("Unavailable");
+        await Assert.ThrowsExactlyAsync<GradingUnavailableException>(() =>
+            _gradingService!.GradeAsync("A reasoned answer", "Reference", GradingStrategy.AiEval, 10, "Question"));
+    }
+
+    [TestMethod]
+    public async Task CoreCorrectnessDoesNotRequireFullMarksAndFeedbackIsSeparateFromExplanation()
+    {
+        _mockOllamaService!.Response = "{\"Score\":7,\"Comment\":\"The core reasoning is correct; supporting detail is missing.\",\"IsCorrect\":true}";
+        var grade = await _gradingService!.GradeAsync("A reasoned answer", "Reference", GradingStrategy.AiEval, 10, "Question", "Static explanation");
+        Assert.IsTrue(grade.IsCorrect);
+        Assert.AreEqual(7, grade.Score);
+        Assert.AreEqual("The core reasoning is correct; supporting detail is missing.", grade.Comment);
+    }
 }

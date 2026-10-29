@@ -1302,6 +1302,10 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("GradingComment")
+                        .HasMaxLength(4000)
+                        .HasColumnType("varchar(4000)");
+
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("tinyint(1)");
 
@@ -1310,6 +1314,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("char(36)");
+
+                    b.Property<int?>("Score")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserAnswer")
                         .IsRequired()

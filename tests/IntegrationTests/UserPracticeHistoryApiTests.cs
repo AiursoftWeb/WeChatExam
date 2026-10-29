@@ -16,6 +16,7 @@ public class UserPracticeHistoryApiTests
     private readonly HttpClient _http;
     private readonly StubWeChatService _mockWeChatService = new();
     private readonly StubWeChatPayService _mockWeChatPayService = new();
+    private readonly StubOllamaService _ollama = new();
     private readonly StubDistributionChannelService _mockDistributionChannelService = new();
     private IHost? _server;
 
@@ -28,6 +29,7 @@ public class UserPracticeHistoryApiTests
     public async Task CreateServer()
     {
         TestStartupWithMockWeChat.MockWeChatService = _mockWeChatService;
+        TestStartupWithMockWeChat.MockOllamaService = _ollama;
         TestStartupWithMockWeChat.MockWeChatPayService = _mockWeChatPayService;
         TestStartupWithMockWeChat.MockDistributionChannelService = _mockDistributionChannelService;
 
@@ -62,6 +64,7 @@ public class UserPracticeHistoryApiTests
             _server.Dispose();
         }
 
+        TestStartupWithMockWeChat.MockOllamaService = null;
         _http.Dispose();
     }
 
@@ -219,6 +222,60 @@ public class UserPracticeHistoryApiTests
 
         Assert.IsNotNull(histories);
         CollectionAssert.AreEqual(new[] { historyId }, histories.Select(x => x.Id).ToArray());
+    }
+
+    [TestMethod]
+    public async Task SubjectiveScoreAndFeedbackAreReturnedAndRetainedForTheOwner()
+    {
+        var user = await LoginAsync("grading-feedback-user");
+        var other = await LoginAsync("grading-feedback-other");
+        var question = CreateQuestion(QuestionType.ShortAnswer);
+        question.GradingStrategy = GradingStrategy.AiEval;
+        question.QuestionCategory!.IsFree = true;
+        await SeedAsync([question], []);
+        _ollama.Response = "{\"Score\":7,\"IsCorrect\":true,\"Comment\":\"Correct core reasoning; explain the remaining safeguard.\"}";
+        UseToken(user.Token);
+        var response = await _http.PostAsJsonAsync("/api/UserPracticeHistory", new CreateUserPracticeHistoryDto
+        { QuestionId = question.Id, UserAnswer = "A natural-language explanation", PracticeType = PracticeType.QuestionType });
+        Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+        var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.IsTrue(result.IsCorrect);
+        Assert.AreEqual(7, result.Score);
+        Assert.AreEqual("Correct core reasoning; explain the remaining safeguard.", result.Comment);
+        Assert.AreEqual(question.Explanation, result.Explanation);
+        var history = (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Single();
+        Assert.AreEqual(result.Score, history.Score);
+        Assert.AreEqual(result.Comment, history.Comment);
+        UseToken(other.Token);
+        Assert.AreEqual(0, (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Count);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task FailedGradingDoesNotWriteHistoryAndTheSameAnswerCanBeRetried(bool transportFailure)
+    {
+        var user = await LoginAsync("grading-retry-" + transportFailure);
+        var question = CreateQuestion(QuestionType.ShortAnswer);
+        question.GradingStrategy = GradingStrategy.AiEval;
+        question.QuestionCategory!.IsFree = true;
+        await SeedAsync([question], []);
+        UseToken(user.Token);
+        _ollama.Response = "{}";
+        _ollama.Failure = transportFailure ? new HttpRequestException("Provider unavailable") : null;
+        var answer = new CreateUserPracticeHistoryDto { QuestionId = question.Id, UserAnswer = "Keep my draft" };
+        var failed = await _http.PostAsJsonAsync("/api/UserPracticeHistory", answer);
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, failed.StatusCode);
+        StringAssert.Contains(await failed.Content.ReadAsStringAsync(), "grading_unavailable");
+        Assert.AreEqual(0, (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Count);
+        _ollama.Failure = null;
+        _ollama.Response = "{\"Score\":5,\"IsCorrect\":false,\"Comment\":\"Some reasoning earns partial credit.\"}";
+        var retry = await _http.PostAsJsonAsync("/api/UserPracticeHistory", answer);
+        Assert.AreEqual(HttpStatusCode.Created, retry.StatusCode);
+        var grade = (await retry.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.AreEqual(5, grade.Score);
+        Assert.IsFalse(grade.IsCorrect);
+        Assert.AreEqual(1, (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Count);
     }
 
     private async Task<(string Token, string UserId)> LoginAsync(string openId)

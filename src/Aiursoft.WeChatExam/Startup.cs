@@ -151,7 +151,7 @@ public class Startup : IWebStartup
         services.AddSingleton<NavigationState<Startup>>();
 
         // Controllers
-        services.AddControllers()
+        services.AddControllers(options => options.Filters.Add<GradingExceptionFilter>())
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;

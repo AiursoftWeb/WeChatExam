@@ -1285,6 +1285,10 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("GradingComment")
+                        .HasMaxLength(4000)
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("INTEGER");
 
@@ -1293,6 +1297,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("Score")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserAnswer")
                         .IsRequired()

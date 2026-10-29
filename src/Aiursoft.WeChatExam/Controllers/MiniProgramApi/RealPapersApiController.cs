@@ -141,7 +141,7 @@ public class RealPapersApiController(WeChatExamDbContext context, IPaperAccessSe
         var result = new UserPracticeHistoryDto
         {
             QuestionId = question.Id, UserAnswer = dto.UserAnswer, StandardAnswer = question.StandardAnswer,
-            Explanation = question.Explanation, IsCorrect = grade.IsCorrect, Score = grade.Score,
+            Explanation = question.Explanation, IsCorrect = grade.IsCorrect, Score = grade.Score, Comment = grade.Comment,
             PracticeType = dto.PracticeType, CreationTime = DateTime.UtcNow
         };
         // Retain the existing original-question history convention. A deleted source
@@ -152,7 +152,8 @@ public class RealPapersApiController(WeChatExamDbContext context, IPaperAccessSe
             var history = new UserPracticeHistory
             {
                 Id = Guid.NewGuid(), UserId = userId, QuestionId = question.OriginalQuestionId.Value,
-                UserAnswer = dto.UserAnswer, IsCorrect = grade.IsCorrect, PracticeType = dto.PracticeType,
+                UserAnswer = dto.UserAnswer, IsCorrect = grade.IsCorrect, Score = grade.Score,
+                GradingComment = grade.Comment, PracticeType = dto.PracticeType,
                 CreationTime = result.CreationTime
             };
             context.UserPracticeHistories.Add(history);
