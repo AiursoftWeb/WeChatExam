@@ -85,46 +85,6 @@ public class TagPermissionTests
         return result!.Token;
     }
 
-    private async Task<(Guid catId, int freeTagId, int paidTagId)> SetupTestDataAsync()
-    {
-        using var scope = _server!.Services.CreateScope();
-        var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-
-        // 1. Setup Category
-        var cat = new Category { Title = "Test Category", ParentId = null };
-        context.Categories.Add(cat);
-        await context.SaveChangesAsync();
-
-        // 2. Setup Taxonomy associated with Category
-        var taxonomy = new Taxonomy { Name = "Test Taxonomy" };
-        context.Taxonomies.Add(taxonomy);
-        await context.SaveChangesAsync();
-
-        context.CategoryTaxonomies.Add(new CategoryTaxonomy { CategoryId = cat.Id, TaxonomyId = taxonomy.Id });
-        await context.SaveChangesAsync();
-
-        // 3. Setup Tags
-        var freeTag = new Tag { DisplayName = "FreeTag", NormalizedName = "FREETAG", IsFree = true, TaxonomyId = taxonomy.Id };
-        var paidTag = new Tag { DisplayName = "PaidTag", NormalizedName = "PAIDTAG", IsFree = false, TaxonomyId = taxonomy.Id };
-        context.Tags.Add(freeTag);
-        context.Tags.Add(paidTag);
-        await context.SaveChangesAsync();
-
-        // 4. Setup Questions
-        var q1 = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Q1", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
-        context.Questions.Add(q1);
-        await context.SaveChangesAsync();
-        context.QuestionTags.Add(new QuestionTag { QuestionId = q1.Id, TagId = freeTag.Id });
-
-        var q2 = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Content = "Q2", QuestionType = QuestionType.Choice, GradingStrategy = GradingStrategy.ExactMatch };
-        context.Questions.Add(q2);
-        await context.SaveChangesAsync();
-        context.QuestionTags.Add(new QuestionTag { QuestionId = q2.Id, TagId = paidTag.Id });
-
-        await context.SaveChangesAsync();
-        return (cat.Id, freeTag.Id, paidTag.Id);
-    }
-
     private async Task<(Question free, Question paid, Question other)> SeedPracticeAsync()
     {
         using var scope = _server!.Services.CreateScope();
@@ -282,44 +242,6 @@ public class TagPermissionTests
         }
         var list = await _http.GetFromJsonAsync<List<QuestionDto>>($"/api/Questions?questionCategoryId={free.QuestionCategoryId}&resumeType=0&size=10");
         Assert.AreEqual(nextId, list!.Single().Id);
-    }
-
-    [TestMethod]
-    public async Task GetTags_CategoryVip_GrantsOnlyAssociatedPaidTags()
-    {
-        var (categoryId, freeTagId, paidTagId) = await SetupTestDataAsync();
-        int taxonomyId;
-        using (var scope = _server!.Services.CreateScope())
-        {
-            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-            taxonomyId = context.Tags.Single(t => t.Id == paidTagId).TaxonomyId!.Value;
-        }
-
-        var token = await LoginAsync();
-        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        foreach (var hasMatchingVip in new[] { false, true })
-        {
-            _mockWeChatPayService.Memberships = new List<VipMembership>
-            {
-                new()
-                {
-                    UserId = "test-user",
-                    StartTime = DateTime.UtcNow.AddDays(-1),
-                    EndTime = DateTime.UtcNow.AddDays(1),
-                    VipProduct = new VipProduct
-                    {
-                        Name = "Category access",
-                        Type = VipProductType.Category,
-                        TotalCategoryId = hasMatchingVip ? categoryId : Guid.NewGuid(),
-                        IsEnabled = true
-                    }
-                }
-            };
-            var tags = await _http.GetFromJsonAsync<List<TagDto>>($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags");
-            Assert.IsNotNull(tags);
-            Assert.IsTrue(tags.Single(t => t.Id == freeTagId).HasAccess);
-            Assert.AreEqual(hasMatchingVip, tags.Single(t => t.Id == paidTagId).HasAccess);
-        }
     }
 
 }

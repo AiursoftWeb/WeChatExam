@@ -137,13 +137,8 @@ public class VipAccessTests
         Assert.IsFalse(paidSnapshot.HasAccess);
         Assert.AreEqual(0, paidSnapshot.Questions.Count);
 
-        var taxonomies = await _http.GetFromJsonAsync<List<TaxonomyDto>>("/api/miniprogramapi/taxonomies");
-        Assert.IsNotNull(taxonomies);
-        Assert.IsTrue(taxonomies.Any(t => t.Id == taxonomyId));
-        var tags = await _http.GetFromJsonAsync<List<TagDto>>($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags");
-        Assert.IsNotNull(tags);
-        Assert.IsTrue(tags.Single(t => t.IsFree).HasAccess);
-        Assert.IsFalse(tags.Single(t => !t.IsFree).HasAccess);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync("/api/miniprogramapi/taxonomies")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags")).StatusCode);
         Assert.AreEqual(0, _mockWeChatPayService.VipStatusCalls);
 
         var token = await LoginAsync();

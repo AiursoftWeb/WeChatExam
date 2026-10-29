@@ -182,47 +182,39 @@ public class TaxonomiesTests
     }
 
     [TestMethod]
-    public async Task ApiTest()
+    public async Task StudentNavigationIsRetiredWithoutRemovingInternalTags()
     {
         await LoginAsAdminAsync();
-
-        // 1. Create Taxonomy via UI
-        var taxonomyName = $"API-Tax-{Guid.NewGuid().ToString().Substring(0, 8)}";
+        var name = $"Internal-{Guid.NewGuid()}";
         var createToken = await GetAntiCsrfToken("/Taxonomies/Create");
-        var createContent = new FormUrlEncodedContent(new Dictionary<string, string>
+        var created = await _http.PostAsync("/Taxonomies/Create", new FormUrlEncodedContent(new Dictionary<string, string>
         {
-            { "Name", taxonomyName },
-            { "__RequestVerificationToken", createToken }
-        });
-        await _http.PostAsync("/Taxonomies/Create", createContent);
-
-        // 2. Get Taxonomy List via API
-        var token = await LoginAsWeChatUserAsync();
-        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-        var listResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
-        listResponse.EnsureSuccessStatusCode();
-        var listJson = await listResponse.Content.ReadAsStringAsync();
-        Assert.Contains(taxonomyName, listJson);
-
-        // Get ID
-        var taxonomies = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TaxonomyDto>>(listJson);
-        var taxonomyId = taxonomies!.First(t => t.Name == taxonomyName).Id;
-
-        // 3. Seed a Tag with Taxonomy
+            { "Name", name }, { "__RequestVerificationToken", createToken }
+        }));
+        Assert.AreEqual(HttpStatusCode.Found, created.StatusCode);
+        int taxonomyId;
         using (var scope = _server!.Services.CreateScope())
         {
-            var tagService = scope.ServiceProvider.GetRequiredService<ITagService>();
-            var tag = await tagService.AddTagAsync($"Tag-{Guid.NewGuid()}");
-            tag.TaxonomyId = taxonomyId;
-            await tagService.UpdateTagAsync(tag);
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            taxonomyId = db.Taxonomies.Single(t => t.Name == name).Id;
+            db.Tags.Add(new Tag { DisplayName = name, NormalizedName = name.ToUpperInvariant(), TaxonomyId = taxonomyId });
+            await db.SaveChangesAsync();
         }
 
-        // 4. Get Tags by Taxonomy via API
-        var tagsResponse = await _http.GetAsync($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags");
-        tagsResponse.EnsureSuccessStatusCode();
-        var tagsJson = await tagsResponse.Content.ReadAsStringAsync();
-        Assert.Contains("Tag-", tagsJson);
+        // An administrator's cookie or a student's JWT cannot revive retired navigation.
+        foreach (var jwt in new[] { false, true })
+        {
+            if (jwt) _http.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync("/api/miniprogramapi/taxonomies")).StatusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/miniprogramapi/taxonomies/{taxonomyId}/tags")).StatusCode);
+        }
+        var tags = await _http.GetAsync($"/Tags/Index?taxonomyId={taxonomyId}");
+        tags.EnsureSuccessStatusCode();
+        Assert.Contains(name, await tags.Content.ReadAsStringAsync());
+        using var verifyScope = _server!.Services.CreateScope();
+        var context = verifyScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(1, context.Tags.Count(t => t.TaxonomyId == taxonomyId));
     }
 
     [TestMethod]
@@ -240,13 +232,13 @@ public class TaxonomiesTests
         });
         await _http.PostAsync("/Taxonomies/Create", createContent);
         
-        // Get Taxonomy ID (fetch from list)
-        var token = await LoginAsWeChatUserAsync();
-        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        var listResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
-        var listJson = await listResponse.Content.ReadAsStringAsync();
-        var taxonomies = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TaxonomyDto>>(listJson);
-        var taxonomyId = taxonomies!.First(t => t.Name == taxonomyName).Id;
+        // Read the ID created by the management form, without using student navigation.
+        int taxonomyId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            taxonomyId = context.Taxonomies.Single(t => t.Name == taxonomyName).Id;
+        }
 
         // 2. Create Tags
         string tag1Name = $"Tag-In-{Guid.NewGuid()}";
@@ -301,12 +293,12 @@ public class TaxonomiesTests
         await _http.PostAsync("/Taxonomies/Create", createContent);
         
         // Get Taxonomy ID
-        var token = await LoginAsWeChatUserAsync();
-        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        var listResponse = await _http.GetAsync("/api/miniprogramapi/taxonomies");
-        var listJson = await listResponse.Content.ReadAsStringAsync();
-        var taxonomies = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TaxonomyDto>>(listJson);
-        var taxonomyId = taxonomies!.First(t => t.Name == taxonomyName).Id;
+        int taxonomyId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            taxonomyId = context.Taxonomies.Single(t => t.Name == taxonomyName).Id;
+        }
 
         using (var scope = _server!.Services.CreateScope())
         {
@@ -330,10 +322,4 @@ public class TaxonomiesTests
         Assert.Contains(uncategorizedTagName, searchHtml);
         Assert.DoesNotContain(categorizedTagName, searchHtml);
     }
-}
-
-public class TaxonomyDto
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
 }
