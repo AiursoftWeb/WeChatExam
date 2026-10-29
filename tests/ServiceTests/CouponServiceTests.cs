@@ -132,6 +132,74 @@ public class CouponServiceTests
     }
 
     [TestMethod]
+    [DataRow("channel")]
+    [DataRow("coupon")]
+    [DataRow("consumed")]
+    public async Task UnavailableClaimedCouponCannotBeSelectedOrListed(string reason)
+    {
+        var coupon = await _service.CreateAsync(_channelId, "UNAVAILABLE", 5000, true);
+        await _service.ClaimCouponAsync("user1", coupon.Code);
+        if (reason == "channel")
+            (await _dbContext.DistributionChannels.FindAsync(_channelId))!.IsEnabled = false;
+        else if (reason == "coupon")
+            coupon.IsEnabled = false;
+        else
+            coupon.UsedByUserId = "another-user";
+        await _dbContext.SaveChangesAsync();
+        _dbContext.ChangeTracker.Clear();
+
+        var validation = await _service.ValidateCouponAsync(coupon.Code, _productId, "user1");
+        Assert.IsFalse(validation.IsValid);
+        Assert.IsNull(await _service.GetBestApplicableCouponAsync("user1", _productId));
+        Assert.AreEqual(0, (await _service.GetMyAvailableCouponsAsync("user1")).Count);
+        Assert.IsFalse((await _dbContext.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task DisabledChannelPreventsClaimWithoutBindingUserAndCanBeReenabled()
+    {
+        var coupon = await _service.CreateAsync(_channelId, "CHANNEL", 1000, false);
+        var channel = (await _dbContext.DistributionChannels.FindAsync(_channelId))!;
+        channel.IsEnabled = false;
+        await _dbContext.SaveChangesAsync();
+        _dbContext.ChangeTracker.Clear();
+
+        Assert.IsFalse((await _service.ClaimCouponAsync("user1", coupon.Code)).Success);
+        Assert.AreEqual(0, await _dbContext.UserClaimedCoupons.CountAsync());
+        Assert.AreEqual(0, await _dbContext.UserDistributionChannels.CountAsync());
+
+        (await _dbContext.DistributionChannels.FindAsync(_channelId))!.IsEnabled = true;
+        await _dbContext.SaveChangesAsync();
+        Assert.IsTrue((await _service.ClaimCouponAsync("user1", coupon.Code)).Success);
+        Assert.AreEqual(coupon.Id, (await _service.GetBestApplicableCouponAsync("user1", _productId))!.Id);
+    }
+
+    [TestMethod]
+    public async Task AutomaticSelectionKeepsBestEligibleProductDiscount()
+    {
+        var otherChannel = new DistributionChannel { AgencyName = "Other channel" };
+        var otherProduct = new VipProduct { Name = "Other school", PriceInFen = 10000, DurationDays = 30 };
+        _dbContext.AddRange(otherChannel, otherProduct);
+        await _dbContext.SaveChangesAsync();
+        var disabled = await _service.CreateAsync(_channelId, "DISABLED", 5000, false);
+        var wrongProduct = await _service.CreateAsync(otherChannel.Id, "OTHER", 4000, false, [otherProduct.Id]);
+        var best = await _service.CreateAsync(otherChannel.Id, "BEST", 2000, false, [_productId]);
+        var lower = await _service.CreateAsync(otherChannel.Id, "LOWER", 1000, false);
+        foreach (var coupon in new[] { disabled, wrongProduct, best, lower })
+            await _service.ClaimCouponAsync("user1", coupon.Code);
+        (await _dbContext.DistributionChannels.FindAsync(_channelId))!.IsEnabled = false;
+        await _dbContext.SaveChangesAsync();
+        _dbContext.ChangeTracker.Clear();
+
+        Assert.AreEqual(best.Id, (await _service.GetBestApplicableCouponAsync("user1", _productId))!.Id);
+        Assert.AreEqual(wrongProduct.Id, (await _service.GetBestApplicableCouponAsync("user1", otherProduct.Id))!.Id);
+        CollectionAssert.AreEquivalent(new[] { wrongProduct.Id, best.Id, lower.Id },
+            (await _service.GetMyAvailableCouponsAsync("user1")).Select(c => c.Id).ToArray());
+        Assert.IsNull(await _service.GetBestApplicableCouponAsync("unrelated-user", _productId));
+    }
+
+    [TestMethod]
     public async Task TestCreateCoupon_NegativeDiscount()
     {
         try

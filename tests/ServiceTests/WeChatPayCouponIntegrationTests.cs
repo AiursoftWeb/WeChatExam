@@ -217,6 +217,33 @@ public class WeChatPayCouponIntegrationTests
         var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId && c.Type == ChangeType.VipActivatedViaCoupon);
         Assert.IsNotNull(change);
     }
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task InvalidClaimedFullDiscountCannotActivateMembership(bool consumed)
+    {
+        var channel = await _dbContext.DistributionChannels.SingleAsync();
+        var coupon = await _couponService.CreateAsync(channel.Id, "OLD-FREE", 10000, true);
+        await _couponService.ClaimCouponAsync(_userId, coupon.Code);
+        if (consumed)
+            coupon.UsedByUserId = "another-user";
+        else
+            channel.IsEnabled = false;
+        await _dbContext.SaveChangesAsync();
+        _dbContext.ChangeTracker.Clear();
+
+        // Invalid automatic discounts must not take the zero-amount activation path.
+        // This fixture rejects outbound payment requests, so an undiscounted order
+        // cannot charge WeChat and must leave memberships and usage untouched.
+        var result = await _payService.CreateOrderAsync(_userId, "openid", _productId);
+        Assert.IsFalse(result.Success);
+        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        Assert.IsFalse((await _dbContext.UserClaimedCoupons.SingleAsync()).IsUsed);
+    }
+
     [TestCleanup]
     public void Cleanup()
     {

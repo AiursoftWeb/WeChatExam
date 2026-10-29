@@ -153,6 +153,12 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
             return (false, "优惠码无效或已禁用");
         }
 
+        // A stopped channel must not acquire new claims or referral bindings.
+        if (coupon.DistributionChannel is { IsEnabled: false })
+        {
+            return (false, "该分销渠道已关闭");
+        }
+
         // --- 补强逻辑开始 ---
         if (coupon.IsSingleUse)
         {
@@ -207,15 +213,9 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
 
     public async Task<Coupon?> GetBestApplicableCouponAsync(string userId, Guid vipProductId)
     {
-        // 获取用户已领取且未使用的所有券
-        var claimed = await context.UserClaimedCoupons
-            .Include(c => c.Coupon)
-            .ThenInclude(co => co!.TargetVipProducts)
-            .Where(c => c.UserId == userId && !c.IsUsed && c.Coupon != null && c.Coupon.IsEnabled)
-            .ToListAsync();
-
-        var bestCoupon = claimed
-            .Select(c => c.Coupon!)
+        // Checkout must apply the same current eligibility as the available-benefits list.
+        var available = await GetMyAvailableCouponsAsync(userId);
+        var bestCoupon = available
             .Where(c => !c.TargetVipProducts.Any() || c.TargetVipProducts.Any(tp => tp.VipProductId == vipProductId))
             .OrderByDescending(c => c.AmountInFen) // 优先选择折扣力度最大的
             .FirstOrDefault();
@@ -229,6 +229,10 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
             .Include(c => c.Coupon)
             .ThenInclude(co => co!.TargetVipProducts)
             .Where(c => c.UserId == userId && !c.IsUsed && c.Coupon != null && c.Coupon.IsEnabled)
+            // Claiming is not a permanent discount grant: channels can be stopped and
+            // single-use coupons can be consumed after a claim was recorded.
+            .Where(c => (c.Coupon!.DistributionChannel == null || c.Coupon.DistributionChannel.IsEnabled) &&
+                        (!c.Coupon.IsSingleUse || c.Coupon.UsedByUserId == null))
             .ToListAsync();
 
         return claimed.Select(c => c.Coupon!).ToList();
