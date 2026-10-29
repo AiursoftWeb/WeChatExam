@@ -165,8 +165,8 @@ UserManager<User> userManager,
         var dtos = vips.Select(v => new VipMembershipDto
         {
             Type = v.VipProduct?.Type ?? VipProductType.Category,
-            CategoryId = v.VipProduct?.TotalCategoryId,
-            CategoryName = v.VipProduct?.TotalCategory?.Title ?? string.Empty,
+            TotalCategoryId = v.VipProduct?.TotalCategoryId,
+            TotalCategoryName = v.VipProduct?.TotalCategory?.Title ?? string.Empty,
             InstitutionId = v.VipProduct?.InstitutionId,
             InstitutionName = v.VipProduct?.Institution?.Title ?? string.Empty,
             ProductName = v.VipProduct?.Name ?? "VIP",
@@ -186,19 +186,24 @@ UserManager<User> userManager,
     /// <returns>启用的 VIP 商品列表</returns>
     [HttpGet("vip-products")]
     public async Task<IActionResult> GetVipProducts(
-        [FromQuery] Guid? categoryId = null,
+        [FromQuery] Guid? totalCategoryId = null,
         [FromQuery] VipProductType? type = null,
         [FromQuery] Guid? institutionId = null)
     {
-        var products = await vipProductService.GetEnabledAsync(categoryId, type, institutionId);
+        // Course targets are total categories, never knowledge or question categories.
+        // Reject obsolete filters rather than silently returning an unfiltered catalog.
+        if (Request.Query.ContainsKey("categoryId"))
+            return BadRequest(new { Message = "Specify totalCategoryId." });
+
+        var products = await vipProductService.GetEnabledAsync(totalCategoryId, type, institutionId);
         
         var dtos = products.Select(p => new
         {
             p.Id,
             p.Name,
             Type = p.Type.ToString(),
-            CategoryId = p.TotalCategoryId,
-            CategoryName = p.TotalCategory?.Title,
+            TotalCategoryId = p.TotalCategoryId,
+            TotalCategoryName = p.TotalCategory?.Title,
             p.InstitutionId,
             InstitutionName = p.Institution?.Title,
             p.PriceInFen,
