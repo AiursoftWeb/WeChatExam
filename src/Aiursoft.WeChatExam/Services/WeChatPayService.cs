@@ -358,8 +358,8 @@ public class WeChatPayService(
                 (paymentResource.Amount is not { Currency: "CNY", Total: var total } ||
                  total != order.AmountInFen))
             {
-                logger.LogWarning("Payment notify amount mismatch for order {OutTradeNo}. Expected {ExpectedAmount} CNY, received {ReceivedAmount} {Currency}",
-                    outTradeNo, order.AmountInFen, paymentResource.Amount?.Total, paymentResource.Amount?.Currency);
+                logger.LogWarning("Payment notify amount or currency mismatch for order {OutTradeNo}; expected {ExpectedAmount} CNY",
+                    outTradeNo, order.AmountInFen);
                 return false;
             }
 
