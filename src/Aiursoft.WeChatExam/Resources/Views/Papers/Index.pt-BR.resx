@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Ações</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Criar prova simulada</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Criar Prova</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Criar prova oficial</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Criado</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Importar prova</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Arquivo de Provas Anteriores</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Nenhum formulário encontrado</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Estes documentos são mantidos para migração e para consultas a exames anteriores.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Limite de Tempo</value>

@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Handling</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Opret prøveeksamen</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Opret papir</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Opret en rigtig prøve</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Oprettet</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Importér opgave</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Arkiv over ældre opgaver</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Ingen papirer fundet</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Disse papirer opbevares med henblik på migrering og historiske eksamener.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Tidsgrænse</value>

@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Eylemler</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Deneme Sınavı Oluştur</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Kağıt Oluştur</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Gerçek Sınav Kâğıdı Oluştur</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Oluşturuldu</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Sınav Kâğıdını İçe Aktar</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Eski Sınav Arşivi</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Hiç kağıt bulunamadı</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Bu sınavlar, göç ve geçmiş sınavlar için saklanmaktadır.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Zaman Sınırı</value>

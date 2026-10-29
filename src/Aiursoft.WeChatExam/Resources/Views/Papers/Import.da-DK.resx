@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Yderligere tags (ét pr. linje)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Tillad adgang uden medlemskab</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Kategori (valgfri)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Adgangen til kategorier/taksonomier kan være inkonsekvent. Foreslåede tilknyttede kategorier:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Tjek eksisterende tags</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Kontrollér tags og anbefalinger om adgang</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Sammenligner forhåndsvisningsspørgsmål {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Udfyld standardsvaret for spørgsmål {0}, før du gemmer.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Fuldført</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Korrekt</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Fag</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Brugerdefineret navn; følger ikke længere titlen</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Slet</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Kladde gemt. En redaktør kan gennemgå og udgive den.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Træk i håndtaget, eller brug flytteknapperne. Manglende svar kan stå tomme i forhåndsvisningen, men alle standardsvar skal udfyldes, før du gemmer.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Redigerbar forhåndsvisning</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Hvert spørgsmål skal høre til det valgte fag.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Den eksisterende betalingsstatus er bevaret.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Forkert</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institution</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Er gratis</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Er det en rigtig eksamen</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Prøveeksamenssæt</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Flyt ned</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Papirkategori (valgfrit)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Prøvetype</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Tidligere eksamensopgaver kræver universitets-VIP og kan indeholde spørgsmål fra forskellige fag.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Afventer</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Behandler</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Rigtig eksamensopgave</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Erstat det redigerede eksempel med en ny udtrækning?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Pointtal</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Vælg et kursus</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Vælg en opgavetype</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Vælg en periode</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Vælg en institution</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Genbrug af kilden gør dette mærke betalingspligtigt globalt.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Navn på kildemærke</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Kildetagsystematik (valgfrit)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Standardsvar (skal udfyldes, før der kan gemmes)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Tags organiserer kun importerede spørgsmål. De fastsætter ikke prøvens pris og vises ikke i menuen over prøver for studerende. Eksisterende tags ændres ikke.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taksonomi</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Besøgende kan tage hele dette mock-examensopgave, herunder eventuelle betalte spørgsmål. Gemning af personlige eksamensresultater kræver login.</value>
   </data>
 
 </root>

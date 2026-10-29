@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Las comprobaciones de acceso desde el cliente requieren verificación por parte del equipo de ingeniería</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Confirme su curso o institución y migréla a un examen simulacro o a un examen real. Conserve sus preguntas, versiones y registros de exámenes.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Confirma si las ventas están pausadas intencionadamente; de lo contrario, habilita un producto para una de las materias requeridas.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Puntos de conocimiento</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>El examen antiguo requiere migración</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Exámenes anteriores</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Esta lección no está asignada a ningún directorio que conceda acceso, por lo que ni siquiera un VIP del curso puede leerla.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Este examen se conserva para tareas administrativas y exámenes históricos. No está disponible en las listas actuales de exámenes para estudiantes.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Este producto no puede conceder la afiliación a la institución prevista.</value>

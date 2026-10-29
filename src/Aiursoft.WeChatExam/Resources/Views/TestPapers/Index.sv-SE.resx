@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minuter</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Övningsprov</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Inga matchande prov</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Inga frågor</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Sida {0} av {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Sidor</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Filter för provstatus</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>poäng</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Föregående</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicerbar</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Realt prov</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Riktiga prov</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Sök</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Sök prov...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Visa alla prov</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Starta test</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Provsprövningar</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Testa den aktuella mallen, inklusive opublicerade ändringar. Inskickade svar bedöms med den gemensamma bedömningsmotorn, inklusive faktisk AI-bedömning.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Prova ett annat titel- eller statusfilter.</value>

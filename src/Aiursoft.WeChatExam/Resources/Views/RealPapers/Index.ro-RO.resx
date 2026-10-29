@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minute</value>
+  </data>
+  <data name="All institutions" xml:space="preserve">
+    <value>Toate instituțiile</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Creează un subiect de examen oficial</value>
+  </data>
+  <data name="Create your first real paper" xml:space="preserve">
+    <value>Creați prima dvs. lucrare reală</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Ciornă</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Editează lucrarea propriu-zisă</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Importă lucrarea</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instituție</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>Gestionează întrebările</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Următorul</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Nu există lucrări corespunzătoare</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} din {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Pagini ale lucrării</value>
+  </data>
+  <data name="Paper Settings" xml:space="preserve">
+    <value>Setările lucrării</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Versiunea publicată este disponibilă</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>Doar citire</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Lucrări reale</value>
+  </data>
+  <data name="Requires institution VIP" xml:space="preserve">
+    <value>Necesită statut VIP al instituției</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Caută</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>Căutați lucrări</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Afișează toate lucrările</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versiuni și publicare</value>
+  </data>
+
+</root>

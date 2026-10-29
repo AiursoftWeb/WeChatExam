@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>Åtkomstomfattning</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Åtgärder</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP för alla riktiga prov (äldre)</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
@@ -48,6 +54,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>Aktiverad</value>
   </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>Institutions-VIP</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Namn</value>
   </data>
@@ -65,6 +74,9 @@
   </data>
   <data name="Search by name or category" xml:space="preserve">
     <value>Sök efter namn eller kategori</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>Sök efter namn, kategori eller institution</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

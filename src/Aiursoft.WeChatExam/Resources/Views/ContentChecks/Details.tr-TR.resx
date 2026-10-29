@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>Etkin kurs VIP’leri</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>Aktif kurum VIP&apos;leri</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>Etkin gerçek sınav VIP&apos;si</value>
   </data>
@@ -62,6 +65,12 @@
   </data>
   <data name="Browse the full list" xml:space="preserve">
     <value>Tam listeye göz atın</value>
+  </data>
+  <data name="Can open" xml:space="preserve">
+    <value>Açabilir</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>Açılamıyor</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Bu senaryoyu kontrol et</value>
@@ -99,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>Ekibimiz için</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Kurumlar</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>Ücretli etiketleri, alıştırmanın ücretli olduğunu belirtir; ek kurs üyelikleri gerektirmez.</value>
   </data>
@@ -113,6 +125,12 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>Bilgi metni: herkese açık</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>Eski gerçek sınav VIP&apos;si (tüm kurumlar)</value>
+  </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Ders metni, doğrudan atandığı dizinleri izler. Alıştırma içeriği, ait olduğu dönemi izler. Yanıtların gönderilmesi ve kaydedilmesi burada denetlenmez.</value>
   </data>
   <data name="Linked exercise" xml:space="preserve">
     <value>İlişkili alıştırma</value>
@@ -132,6 +150,9 @@
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>Ekibimizin bu davranışı incelemesi gerekiyor. Bir program sorununu çözmek için paylaşılan fiyatlandırmayı değiştirmeniz gerekmiyor.</value>
   </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Sınav kâğıtları</value>
+  </data>
   <data name="Please confirm" xml:space="preserve">
     <value>Lütfen onaylayın</value>
   </data>
@@ -146,6 +167,9 @@
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Paylaşılan etkileri inceleyin</value>
+  </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>Atanan dönemi ve ait olduğu dersi gözden geçirin.</value>
   </data>
   <data name="Scan coverage and object IDs" xml:space="preserve">
     <value>Tarama kapsamı ve nesne kimlikleri</value>
@@ -162,11 +186,20 @@
   <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
     <value>Giriş yapmak ve ilgili ders için gerekli VIP üyeliğine sahip olmak gerekir.</value>
   </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>Etiketler içeriği kendi içinde düzenler. Erişimi değiştirirken dönemi ve bilgi dizinini gözden geçirin.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>Alıştırmanın ücretlendirmesi, bağlı olduğu dönemin ücretlendirmesini devralır. Etiketler, alıştırmaya erişim izni vermez veya erişimi kısıtlamaz.</value>
+  </data>
   <data name="The paid tag is not covered: {0}" xml:space="preserve">
     <value>Ücretli etiket kapsam dahilinde değil: {0}</value>
   </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Bu sonuçlar, sunucuya şu anda erişilip erişilemediğini değerlendirir. Her Mini Program ekranını veya gönderim akışını simüle etmez. Her sayfa geçerli yapılandırmayı yeniden okur.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>Bu etiketler listelenen içerikleri düzenler. Mevcut uygulamayı veya bilgiye erişimi belirlemez.</value>
   </data>
   <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
     <value>Bu hesabın, alıştırmanın ait olduğu kursa özel VIP üyeliğine sahip olması gerekiyor.</value>

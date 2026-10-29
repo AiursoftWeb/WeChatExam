@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Οι έλεγχοι εισόδου του πελάτη απαιτούν επαλήθευση από την ομάδα μηχανικών</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Επιβεβαιώστε το μάθημα ή το ίδρυμά του και μεταφέρετέ το σε εικονικό ή πραγματικό διαγώνισμα. Διατηρήστε τις ερωτήσεις, τις εκδόσεις και τα αρχεία εξετάσεων.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Επιβεβαιώστε αν οι πωλήσεις έχουν διακοπεί σκόπιμα· διαφορετικά, ενεργοποιήστε ένα προϊόν για ένα από τα απαιτούμενα μαθήματα.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Σημεία γνώσης</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Απαιτείται μετεγκατάσταση του παλαιού γραπτού</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Κληρονομικά τεστ</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Αυτό το μάθημα δεν ανήκει σε κανέναν κατάλογο που παρέχει πρόσβαση, επομένως δεν μπορούν να το διαβάσουν ούτε οι VIP του μαθήματος.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Το παρόν γραπτό διατηρείται για διοικητικούς σκοπούς και για ιστορικές εξετάσεις. Δεν είναι διαθέσιμο μέσω των τρεχουσών λιστών γραπτών για τους σπουδαστές.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Αυτό το προϊόν δεν μπορεί να παρέχει την προβλεπόμενη ιδιότητα μέλους στο ίδρυμα.</value>

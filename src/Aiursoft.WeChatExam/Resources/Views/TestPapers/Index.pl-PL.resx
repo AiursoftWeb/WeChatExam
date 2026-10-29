@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minut</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Arkusze próbne</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Dalej</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Brak pasujących prac</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Brak pytań</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Strona {0} z {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Strony arkuszy</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Filtr statusu testu</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>punkty</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Poprzednia</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Gotowy do publikacji</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Rzeczywisty egzamin</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Arkusze egzaminacyjne</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Szukaj prac...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Pokaż wszystkie arkusze</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Rozpocznij test</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Testowe arkusze</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Przetestuj aktualny szablon, w tym nieopublikowane zmiany. Zgłoszenia korzystają ze wspólnego silnika oceniania, w tym z rzeczywistego oceniania przez AI.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Spróbuj innego tytułu lub filtra statusu.</value>

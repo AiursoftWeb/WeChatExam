@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>Erişim Kapsamı</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>İşlemler</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>Tüm Gerçek Sınavlar VIP (Eski Sürüm)</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
@@ -48,6 +54,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>Aktif</value>
   </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>Kurum VIP</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>İsim</value>
   </data>
@@ -65,6 +74,9 @@
   </data>
   <data name="Search by name or category" xml:space="preserve">
     <value>İsim veya kategoriyle ara</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>Ad, kategori veya kuruma göre ara</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>

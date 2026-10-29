@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Välj kategori --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Välj institution --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Välj total kategori --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>Omfattningen för åtkomst är låst eftersom den här produkten har beställningar eller medlemskap.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP för alla riktiga prov (äldre)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Avbryt</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Omfattar lärosätets riktiga tentor, inte fristående kursövningar.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institution</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>Institutions-VIP</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Pris (Fen)</value>

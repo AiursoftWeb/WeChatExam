@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Hành động</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Tạo đề thi thử</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Tạo bài kiểm tra</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Tạo đề thi thật</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Đã tạo</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Nhập đề thi</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Kho lưu trữ đề thi cũ</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Không tìm thấy bài kiểm tra nào</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Các đề thi này được lưu giữ để phục vụ việc chuyển đổi dữ liệu và các kỳ thi trong quá khứ.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Giới hạn thời gian</value>

@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Создать пробный экзамен</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Создать тест</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Создать настоящий экзаменационный лист</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Создано</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Импортировать работу</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Архив старых экзаменационных работ</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Бумаги не найдены</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Эти работы сохранены для переноса данных и архивных экзаменов.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Ограничение по времени</value>

@@ -21,11 +21,17 @@
       <data name="Back to List" xml:space="preserve">
     <value>Tillbaka till listan</value>
   </data>
+  <data name="Choose course" xml:space="preserve">
+    <value>Välj kurs</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Skapa</value>
   </data>
   <data name="Create Category" xml:space="preserve">
     <value>Skapa kategori</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Skapa kunskapskategori</value>
   </data>
   <data name="Is Free" xml:space="preserve">
     <value>Är gratis</value>
@@ -38,6 +44,9 @@
   </data>
   <data name="Top Level" xml:space="preserve">
     <value>Toppnivå</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Huvudkategori</value>
   </data>
 
 </root>

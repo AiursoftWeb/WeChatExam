@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minute</value>
+  </data>
+  <data name="{0} questions · {1} minutes" xml:space="preserve">
+    <value>{0} de întrebări · {1} minute</value>
+  </data>
+  <data name="Back to Mock Papers" xml:space="preserve">
+    <value>Înapoi la variantele de examen</value>
+  </data>
+  <data name="Edit Draft" xml:space="preserve">
+    <value>Editează ciorna</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Următoarea</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>Nu este necesară înscrierea</value>
+  </data>
+  <data name="No published versions yet." xml:space="preserve">
+    <value>Încă nu există versiuni publicate.</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} din {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Publish New Version" xml:space="preserve">
+    <value>Publică o versiune nouă</value>
+  </data>
+  <data name="Publish the Current Draft" xml:space="preserve">
+    <value>Publicați versiunea curentă în lucru</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>Versiuni publicate</value>
+  </data>
+  <data name="Publishing saves a fixed version. Later edits do not change existing versions." xml:space="preserve">
+    <value>Publicarea salvează o versiune fixă. Modificările ulterioare nu schimbă versiunile existente.</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>Necesită abonament VIP</value>
+  </data>
+  <data name="Version {0}" xml:space="preserve">
+    <value>Versiunea {0}</value>
+  </data>
+  <data name="Version pages" xml:space="preserve">
+    <value>Pagini de versiuni</value>
+  </data>
+
+</root>

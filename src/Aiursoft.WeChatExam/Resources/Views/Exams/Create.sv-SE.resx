@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>Lämna tomt för att använda pappersstandard</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Övningsprov</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Riktigt prov</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>Välj en publicerad provversion</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>Tid tillåten för studentens försök. Lämna tomt för att använda pappers tidsgräns.</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>Version {0} · {1} minuter</value>
   </data>
 
 </root>

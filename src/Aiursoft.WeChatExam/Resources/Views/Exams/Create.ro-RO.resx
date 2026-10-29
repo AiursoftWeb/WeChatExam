@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>Lăsați gol pentru a utiliza implicitul hârtiei</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Lucrare de simulare</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Lucrare reală</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>Selectați o versiune publicată a lucrării</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>Timp disponibil pentru încercarea studentului. Lăsați gol pentru a folosi limita de timp a hârtiei.</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>Versiunea {0} · {1} de minute</value>
   </data>
 
 </root>

@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Acties</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Proefexamen aanmaken</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Nieuw document aanmaken</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Echt tentamen aanmaken</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Aangemaakt</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Papier importeren</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Archief van oude examens</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Geen papers gevonden</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Deze examens blijven bewaard voor migratie en historische examens.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Tijdsduur</value>

@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>dakika</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Deneme Sınavları</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Eşleşen sınav yok</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Sorular yok</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Sayfa {0} / {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Sınav sayfaları</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Sınav kağıdı durumu filtresi</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>puan</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Önceki</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Yayınlanabilir</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Gerçek sınav</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Gerçek Sınav Kâğıtları</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Ara</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Sınav kâğıtlarını ara...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Tüm sınav kâğıtlarını göster</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Teste Başla</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Sınav Kağıtları</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Yayımlanmamış değişiklikler de dâhil olmak üzere mevcut şablonu test edin. Gönderilerde, gerçek yapay zekâ ile değerlendirme de dâhil olmak üzere ortak değerlendirme altyapısı kullanılır.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Farklı bir başlık veya durum filtresi deneyin.</value>

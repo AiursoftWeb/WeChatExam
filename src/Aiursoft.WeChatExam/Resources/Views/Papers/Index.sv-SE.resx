@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Åtgärder</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Skapa provtenta</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Skapa papper</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Skapa riktigt prov</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Skapad</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Importera prov</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Arkiv över äldre prov</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Inga papper hittades</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Dessa prov bevaras för migrering och historiska prov.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Tidsgräns</value>

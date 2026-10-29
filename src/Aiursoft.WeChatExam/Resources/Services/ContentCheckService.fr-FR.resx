@@ -66,6 +66,9 @@
   <data name="Client entry checks require engineering verification" xml:space="preserve">
     <value>Les vérifications des accès côté client nécessitent une validation par l’équipe technique.</value>
   </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Confirmez sa formation ou son établissement, puis migrez-le vers un sujet blanc ou un sujet d’examen. Conservez ses questions, ses versions et ses résultats d’examen.</value>
+  </data>
   <data name="Confirm whether sales are intentionally paused; otherwise enable a product for one of the required subjects." xml:space="preserve">
     <value>Vérifiez si les ventes sont suspendues volontairement ; sinon, activez un produit pour l’un des sujets requis.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Knowledge points" xml:space="preserve">
     <value>Points de connaissance</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Le sujet d’examen hérité doit être migré.</value>
   </data>
   <data name="Legacy papers" xml:space="preserve">
     <value>Anciens sujets d’examen</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
     <value>Cette leçon n’est rattachée à aucun répertoire donnant accès au contenu ; même un membre VIP du cours ne peut donc pas la consulter.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Cet examen est conservé à des fins administratives et pour les examens historiques. Il n’est pas disponible dans les listes d’examens actuellement proposées aux étudiants.</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>Ce produit ne peut pas attribuer l’adhésion prévue à l’établissement.</value>

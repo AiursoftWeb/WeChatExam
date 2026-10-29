@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Acțiuni</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Creați o lucrare de simulare</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Crează Fișă</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Creează o lucrare oficială</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Creat</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Importă lucrarea</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Arhiva arhivelor de examene vechi</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Nu s-au găsit lucrări</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Stare</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Aceste lucrări sunt păstrate pentru migrare și pentru examenele istorice.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Limită de timp</value>
