@@ -175,7 +175,7 @@ public class ContentCheckService(
                 relevantSubjects.Contains(p.TotalCategoryId.Value)).Select(ProductRef));
             var scenarios = new[] { visitor, signedIn }.Concat(courseScenarios
                 .Where(s => s.Status.ActiveCategoryVips.Overlaps(relevantSubjects)));
-            if (subjects.Length > 0 || realExam) scenarios = scenarios.Append(custom);
+            if (subjects.Length > 0 || realExam || institutions?.Length > 0) scenarios = scenarios.Append(custom);
             report.Exercises[q.Id] = new(QuestionRef(q), points.Select(KnowledgeRef).ToList(),
                 CourseRef(courseIndex[q.QuestionCategory!.TotalCategoryId]), PeriodRef(q.QuestionCategory),
                 settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),

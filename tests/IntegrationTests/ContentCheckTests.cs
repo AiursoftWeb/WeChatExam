@@ -177,6 +177,8 @@ public class ContentCheckTests
         var report = await Checker(db).ScanAsync([], false, institutions: [school.Id, Guid.NewGuid()]);
         Assert.AreEqual(5, report.PaperCount);
         Assert.AreEqual(2, report.Institutions.Count);
+        Assert.IsFalse(report.Exercises[question.Id].Access.Single(a => a.Scenario == "Custom VIP selection").Allowed,
+            "Institution membership does not grant independent practice access.");
         Assert.IsTrue(report.Scenarios.Single(s => s.Name == "Custom VIP selection").Status.ActiveInstitutionVips.SetEquals([school.Id]));
         bool Has(string rule, Guid id) => report.Findings.Any(f => f.Rule == rule && f.Objects.Any(o => o.Id == id.ToString()));
         Assert.IsTrue(Has("PAPER001", missing.Id));
