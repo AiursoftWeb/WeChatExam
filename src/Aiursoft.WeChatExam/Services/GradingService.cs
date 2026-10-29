@@ -94,6 +94,8 @@ public class GradingService : IGradingService, IScopedDependency
                   Accept equivalent expressions and minor typos. The reference is not a phrase-matching checklist.
                 - IsCorrect means the core answer is correct, not that it earned every possible point.
                   Missing supporting details can reduce Score without making a correct core answer false.
+                  Apply any explicit sufficient-answer condition in the configured rubric independently of points.
+                  Do not invent a passing-score threshold or set IsCorrect=false merely because Score is low.
                   Mark a genuinely wrong conclusion, unsafe principle or contradictory core reasoning false.
                 - Award credit for the correct points actually expressed. Follow the supplied point allocations,
                   sum them consistently, and explain the specific missing or incorrect points in Comment.
