@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} دقيقة</value>
+  </data>
+  <data name="All institutions" xml:space="preserve">
+    <value>جميع المؤسسات</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>إنشاء ورقة اختبار فعلية</value>
+  </data>
+  <data name="Create your first real paper" xml:space="preserve">
+    <value>أنشئ ورقتك الحقيقية الأولى</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>مسودة</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>تعديل الورقة الفعلية</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>المؤسسة</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>إدارة الأسئلة</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>لا توجد أوراق مطابقة</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>الصفحة {0} من {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>صفحات الأوراق</value>
+  </data>
+  <data name="Paper Settings" xml:space="preserve">
+    <value>إعدادات الورقة</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>النسخة المنشورة متاحة</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>للقراءة فقط</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>الاختبارات الورقية الفعلية</value>
+  </data>
+  <data name="Requires institution VIP" xml:space="preserve">
+    <value>يتطلب أن تكون المؤسسة من فئة VIP</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>ابحث عن الأوراق البحثية</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>عرض جميع الأوراق</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>الإصدارات والنشر</value>
+  </data>
+
+</root>

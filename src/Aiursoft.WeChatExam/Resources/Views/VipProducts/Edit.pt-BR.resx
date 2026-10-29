@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Selecione a Categoria --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Selecione a instituição --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Selecione uma categoria total --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>O escopo de acesso está bloqueado porque este produto possui pedidos ou associações.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP para todas as provas reais (legado)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Inclui as provas oficiais desta instituição, não exercícios de cursos independentes.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Instituição</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP de instituição</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Preço (Fen)</value>

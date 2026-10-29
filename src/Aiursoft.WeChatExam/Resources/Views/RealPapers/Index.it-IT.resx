@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minuti</value>
+  </data>
+  <data name="All institutions" xml:space="preserve">
+    <value>Tutte le istituzioni</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Crea un esame cartaceo</value>
+  </data>
+  <data name="Create your first real paper" xml:space="preserve">
+    <value>Crea il tuo primo elaborato cartaceo</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Bozza</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Modifica il compito reale</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Istituzione</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>Gestisci le domande</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Successivo</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Nessun documento corrispondente</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Pagina {0} di {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Pagine dei paper</value>
+  </data>
+  <data name="Paper Settings" xml:space="preserve">
+    <value>Impostazioni del documento</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Versione pubblicata disponibile</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>Sola lettura</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Documenti d&apos;esame ufficiali</value>
+  </data>
+  <data name="Requires institution VIP" xml:space="preserve">
+    <value>Richiede un&apos;istituzione VIP</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>Cerca tra i documenti</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Mostra tutti i paper</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versioni e pubblicazione</value>
+  </data>
+
+</root>

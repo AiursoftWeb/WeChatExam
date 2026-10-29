@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minutos</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Provas Simuladas</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Próxima</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Nenhum exame correspondente</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Sem perguntas</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Página {0} de {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Páginas dos trabalhos</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Filtro de status do teste</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>pontos</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicável</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Prova real</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Provas reais</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pesquisar</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Buscar provas...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Mostrar todas as provas</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Iniciar teste</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Provas de Teste</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Teste o modelo atual, incluindo as alterações não publicadas. Os envios usam o mecanismo de correção compartilhado, incluindo a correção real por IA.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Tente outro título ou filtro de status.</value>

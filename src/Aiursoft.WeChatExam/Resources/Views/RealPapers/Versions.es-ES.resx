@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minutos</value>
+  </data>
+  <data name="{0} questions · {1} minutes" xml:space="preserve">
+    <value>{0} preguntas · {1} minutos</value>
+  </data>
+  <data name="Back to Real Papers" xml:space="preserve">
+    <value>Volver a los exámenes oficiales</value>
+  </data>
+  <data name="Edit Draft" xml:space="preserve">
+    <value>Editar borrador</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="No published versions yet." xml:space="preserve">
+    <value>Todavía no hay versiones publicadas.</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Página {0} de {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Publish New Version" xml:space="preserve">
+    <value>Publicar nueva versión</value>
+  </data>
+  <data name="Publish the Current Draft" xml:space="preserve">
+    <value>Publicar el borrador actual</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>Versiones publicadas</value>
+  </data>
+  <data name="Publishing saves a fixed version. Later edits do not change existing versions." xml:space="preserve">
+    <value>La publicación guarda una versión fija. Las modificaciones posteriores no afectan a las versiones existentes.</value>
+  </data>
+  <data name="Requires institution access" xml:space="preserve">
+    <value>Requiere acceso institucional</value>
+  </data>
+  <data name="Version {0}" xml:space="preserve">
+    <value>Versión {0}</value>
+  </data>
+  <data name="Version pages" xml:space="preserve">
+    <value>Páginas de versiones</value>
+  </data>
+
+</root>
