@@ -239,7 +239,10 @@ public class WeChatPayCouponIntegrationTests
         // cannot charge WeChat and must leave memberships and usage untouched.
         var result = await _payService.CreateOrderAsync(_userId, "openid", _productId);
         Assert.IsFalse(result.Success);
-        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync());
+        var pending = await _dbContext.PaymentOrders.SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Pending, pending.Status);
+        Assert.AreEqual(10000, pending.AmountInFen);
+        Assert.IsNull(pending.CouponId);
         Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
         Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
         Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
@@ -281,6 +284,7 @@ public class WeChatPayCouponIntegrationTests
         _tenpayClient.Dispose();
         _tenpayHttpClient.Dispose();
         _dbContext.Dispose();
+        if (File.Exists(_privateKeyPath)) File.Delete(_privateKeyPath);
     }
 
     private sealed class IsolatedTenpayClient(WechatTenpayClientOptions options, HttpClient httpClient)
@@ -290,6 +294,216 @@ public class WeChatPayCouponIntegrationTests
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             => throw new InvalidOperationException("Outbound WeChat Pay requests are disabled in tests.");
+    }
+
+    [TestMethod]
+    public async Task PendingCouponIsReservedAndSamePurchaseKeepsSavedPrice()
+    {
+        var requests = new List<string>();
+        await UseCheckoutDatabaseAsync((request, body) =>
+        {
+            Assert.AreEqual("/v3/pay/transactions/jsapi", request.RequestUri!.AbsolutePath);
+            requests.Add(body);
+            return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"reserved-prepay\"}");
+        });
+        var first = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsTrue(first.Success, first.ErrorMessage);
+        var product = await _dbContext.VipProducts.FindAsync(_productId);
+        product!.PriceInFen = 300;
+        await _dbContext.SaveChangesAsync();
+        Assert.IsFalse((await _payService.CreateOrderAsync(_userId, "openid", _productId, "DIFFERENT-CODE")).Success);
+        var retry = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsTrue(retry.Success, retry.ErrorMessage);
+        Assert.AreEqual(first.OutTradeNo, retry.OutTradeNo);
+        var second = new VipProduct { Name = "Second course", TotalCategory = new TotalCategory { Title = "Other" }, PriceInFen = 200, DurationDays = 30 };
+        _dbContext.VipProducts.Add(second);
+        await _dbContext.SaveChangesAsync();
+        Assert.IsFalse((await _payService.CreateOrderAsync(_userId, "openid", second.Id, "RESERVED")).Success);
+        Assert.AreEqual(1, requests.Count);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(100, (await _dbContext.PaymentOrders.SingleAsync()).AmountInFen);
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("NOTPAY", true, 100, "CNY", "closed")]
+    [DataRow("CLOSED", true, 100, "CNY", "closed")]
+    [DataRow("SUCCESS", true, 100, "CNY", "paid")]
+    [DataRow("SUCCESS", true, 99, "CNY", "pending")]
+    [DataRow("SUCCESS", true, 100, "USD", "pending")]
+    [DataRow("USERPAYING", true, 100, "CNY", "pending")]
+    [DataRow("NOTPAY", false, 100, "CNY", "pending")]
+    [DataRow("UNKNOWN", true, 100, "CNY", "pending")]
+    [DataRow("TIMEOUT", true, 100, "CNY", "pending")]
+    [DataRow("WRONG_APP", true, 100, "CNY", "pending")]
+    [DataRow("WRONG_MERCHANT", true, 100, "CNY", "pending")]
+    public async Task ExpiredCouponIsReleasedOnlyAfterConfirmedClosure(string state, bool closeSucceeds, int total, string currency, string expected)
+    {
+        var creates = 0;
+        var closes = 0;
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            var path = request.RequestUri!.AbsolutePath;
+            if (path.EndsWith("/close"))
+            {
+                closes++;
+                return closeSucceeds ? (System.Net.HttpStatusCode.NoContent, "") : (System.Net.HttpStatusCode.InternalServerError, "{\"code\":\"SYSTEM_ERROR\",\"message\":\"Unknown close result\"}");
+            }
+            if (request.Method == HttpMethod.Get)
+            {
+                if (state == "TIMEOUT") throw new TaskCanceledException("Synthetic query timeout");
+                if (state == "UNKNOWN") return (System.Net.HttpStatusCode.NotFound, "{\"code\":\"ORDER_NOT_EXIST\",\"message\":\"Unknown order\"}");
+                return (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new { out_trade_no = "OLD-PENDING", mchid = state == "WRONG_MERCHANT" ? "other" : "mchid", appid = state == "WRONG_APP" ? "other" : "appid", trade_state = state.StartsWith("WRONG_") ? "CLOSED" : state, transaction_id = "transaction-old", amount = new { total, currency } }));
+            }
+            Assert.AreEqual("/v3/pay/transactions/jsapi", path);
+            creates++;
+            return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"new-prepay\"}");
+        });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var old = new PaymentOrder { UserId = _userId, VipProductId = _productId, CouponId = coupon.Id,
+            OutTradeNo = "OLD-PENDING", Description = "Old pending payment", AmountInFen = 100, DiscountInFen = 100,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(-1), PrepayId = "old-prepay" };
+        _dbContext.PaymentOrders.Add(old);
+        await _dbContext.SaveChangesAsync();
+        var result = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        _dbContext.ChangeTracker.Clear();
+        var saved = await _dbContext.PaymentOrders.SingleAsync(o => o.Id == old.Id);
+        Assert.AreEqual(expected == "closed", result.Success);
+        Assert.AreEqual(expected == "closed" ? PaymentOrderStatus.Closed : expected == "paid" ? PaymentOrderStatus.Paid : PaymentOrderStatus.Pending, saved.Status);
+        Assert.AreEqual(expected == "closed" ? 2 : 1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(expected == "closed" ? 1 : 0, creates);
+        Assert.AreEqual(state == "NOTPAY" ? 1 : 0, closes);
+        Assert.AreEqual(expected == "paid" ? 1 : 0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(expected == "paid" ? 1 : 0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(expected == "paid", (await _dbContext.Coupons.SingleAsync()).UsedByUserId != null);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task LegacyCouponWithTwoPendingOrdersMustReconcileBoth(bool secondWasPaid)
+    {
+        var queries = new List<string>();
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            if (request.Method != HttpMethod.Get)
+                return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"new-prepay\"}");
+            var number = request.RequestUri!.Segments.Last();
+            queries.Add(number);
+            return (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new { out_trade_no = number, mchid = "mchid", appid = "appid",
+                trade_state = secondWasPaid && number == "LEGACY-2" ? "SUCCESS" : "CLOSED", transaction_id = "legacy-transaction", amount = new { total = 100, currency = "CNY" } }));
+        });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var anotherProduct = new VipProduct { Name = "Another course", TotalCategory = new TotalCategory { Title = "Another history" }, PriceInFen = 200, DurationDays = 30 };
+        _dbContext.VipProducts.Add(anotherProduct);
+        _dbContext.PaymentOrders.AddRange(
+            new PaymentOrder { UserId = _userId, VipProductId = _productId, CouponId = coupon.Id, OutTradeNo = "LEGACY-1", Description = "First old payment", AmountInFen = 100, DiscountInFen = 100, ExpiredAt = DateTime.UtcNow.AddMinutes(-2), CreatedAt = DateTime.UtcNow.AddDays(-2) },
+            new PaymentOrder { UserId = _userId, VipProductId = anotherProduct.Id, CouponId = coupon.Id, OutTradeNo = "LEGACY-2", Description = "Second old payment", AmountInFen = 100, DiscountInFen = 100, ExpiredAt = DateTime.UtcNow.AddMinutes(-1), CreatedAt = DateTime.UtcNow.AddDays(-1) });
+        await _dbContext.SaveChangesAsync();
+        var result = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.AreEqual(!secondWasPaid, result.Success, result.ErrorMessage);
+        CollectionAssert.AreEqual(new[] { "LEGACY-1", "LEGACY-2" }, queries);
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Closed, (await _dbContext.PaymentOrders.SingleAsync(o => o.OutTradeNo == "LEGACY-1")).Status);
+        Assert.AreEqual(secondWasPaid ? PaymentOrderStatus.Paid : PaymentOrderStatus.Closed, (await _dbContext.PaymentOrders.SingleAsync(o => o.OutTradeNo == "LEGACY-2")).Status);
+        Assert.AreEqual(secondWasPaid ? 2 : 3, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(secondWasPaid ? 1 : 0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(secondWasPaid ? 1 : 0, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task GatewayTimeoutRetainsReservationAndRetriesSameRemoteOrder()
+    {
+        var requests = new List<string>();
+        await UseCheckoutDatabaseAsync((_, body) =>
+        {
+            requests.Add(body);
+            if (requests.Count == 1) throw new TaskCanceledException("Synthetic lost prepay response");
+            return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"recovered-prepay\"}");
+        });
+        Assert.IsFalse((await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED")).Success);
+        _dbContext.ChangeTracker.Clear();
+        var reserved = await _dbContext.PaymentOrders.SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Pending, reserved.Status);
+        Assert.IsNull(reserved.PrepayId);
+        var retry = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsTrue(retry.Success, retry.ErrorMessage);
+        Assert.AreEqual(reserved.OutTradeNo, retry.OutTradeNo);
+        Assert.AreEqual(2, requests.Count);
+        Assert.AreEqual(requests[0], requests[1]);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task FullDiscountFailureRollsBackCouponMembershipAndOrder()
+    {
+        await UseCheckoutDatabaseAsync((_, _) => throw new AssertFailedException("A full discount must not contact WeChat."));
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        coupon.AmountInFen = 200;
+        await _dbContext.SaveChangesAsync();
+        await _dbContext.Database.ExecuteSqlRawAsync("CREATE TRIGGER fail_checkout_accounting BEFORE INSERT ON Changes BEGIN SELECT RAISE(ABORT, 'Synthetic accounting failure'); END;");
+        Assert.IsFalse((await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED")).Success);
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.PaymentLogs.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        Assert.IsNull((await _dbContext.Coupons.SingleAsync()).UsedByUserId);
+        await _dbContext.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_checkout_accounting;");
+        var retry = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsTrue(retry.Success, retry.ErrorMessage);
+        Assert.AreEqual("FREE", retry.PayParams!.Package);
+        Assert.AreEqual(1, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    private async Task UseCheckoutDatabaseAsync(Func<HttpRequestMessage, string, (System.Net.HttpStatusCode Status, string Body)> respond)
+    {
+        await _dbContext.DisposeAsync();
+        _dbContext = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite("Data Source=:memory:").Options);
+        await _dbContext.Database.OpenConnectionAsync();
+        await _dbContext.Database.EnsureCreatedAsync();
+        _tenpayClient.Dispose();
+        _tenpayHttpClient.Dispose();
+        using var rsa = RSA.Create(2048);
+        await File.WriteAllTextAsync(_privateKeyPath, rsa.ExportPkcs8PrivateKeyPem());
+        var request = new CertificateRequest("CN=Isolated checkout", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+        using var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1));
+        var entry = new CertificateEntry(CertificateEntry.ALGORITHM_TYPE_RSA, certificate.ExportCertificatePem());
+        _tenpayHttpClient = new HttpClient(new CheckoutGateway(respond, rsa.ExportPkcs8PrivateKeyPem(), entry.SerialNumber));
+        _tenpayClient = new IsolatedTenpayClient(new WechatTenpayClientOptions { MerchantId = "mchid", MerchantCertificateSerialNumber = "SERIAL", MerchantV3Secret = "12345678901234567890123456789012", MerchantCertificatePrivateKey = rsa.ExportPkcs8PrivateKeyPem() }, _tenpayHttpClient);
+        _tenpayClient.PlatformCertificateManager.AddEntry(entry);
+        _couponService = new CouponService(_dbContext);
+        _changeService = new ChangeService(_dbContext);
+        _payService = new WeChatPayService(_tenpayClient, _dbContext, _couponService, _changeService, _settings, NullLogger<WeChatPayService>.Instance);
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Checkout buyer" });
+        var product = new VipProduct { Name = "Reserved course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 200, DurationDays = 30 };
+        _productId = product.Id;
+        _dbContext.VipProducts.Add(product);
+        _dbContext.Coupons.Add(new Coupon { Code = "RESERVED", AmountInFen = 100, IsSingleUse = true, DistributionChannel = new DistributionChannel { AgencyName = "Checkout" } });
+        await _dbContext.SaveChangesAsync();
+    }
+
+    private sealed class CheckoutGateway(Func<HttpRequestMessage, string, (System.Net.HttpStatusCode Status, string Body)> respond, string key, string serial) : HttpMessageHandler
+    {
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var body = request.Content == null ? "" : await request.Content.ReadAsStringAsync(cancellationToken);
+            var (status, payload) = respond(request, body);
+            var response = new HttpResponseMessage(status) { Content = new StringContent(payload, Encoding.UTF8, "application/json") };
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+            const string nonce = "isolated-checkout";
+            using var rsa = RSA.Create();
+            rsa.ImportFromPem(key);
+            response.Headers.Add("Wechatpay-Serial", serial);
+            response.Headers.Add("Wechatpay-Timestamp", timestamp);
+            response.Headers.Add("Wechatpay-Nonce", nonce);
+            response.Headers.Add("Wechatpay-Signature", Convert.ToBase64String(rsa.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{payload}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1)));
+            return response;
+        }
     }
 
     [TestMethod]
