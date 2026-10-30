@@ -406,11 +406,12 @@ public class WeChatPayCouponIntegrationTests
             // The saved order amount remains authoritative if the catalog price changes.
             product.PriceInFen = 200;
             await _dbContext.SaveChangesAsync();
+            var outTradeNo = order.OutTradeNo;
             async Task<bool> Notify(RSA signingKey, int? notifiedTotal, string? notifiedCurrency, bool validSignature = true, string tradeState = "SUCCESS")
             {
                 var plain = JsonSerializer.SerializeToUtf8Bytes(new
                 {
-                    out_trade_no = order.OutTradeNo, transaction_id = "isolated-transaction", trade_state = tradeState,
+                    out_trade_no = outTradeNo, transaction_id = "isolated-transaction", trade_state = tradeState,
                     // A WeChat-funded discount can reduce payer_total without changing total.
                     amount = notifiedTotal.HasValue ? new { total = notifiedTotal.Value, currency = notifiedCurrency, payer_total = 70 } : null
                 });
