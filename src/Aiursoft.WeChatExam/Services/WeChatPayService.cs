@@ -25,264 +25,231 @@ public class WeChatPayService(
     private readonly AppSettings _settings = appSettings.Value;
 
     public async Task<CreateOrderResult> CreateOrderAsync(
-        string userId,
-        string openId,
-        Guid vipProductId,
-        string? couponCode = null)
+        string userId, string openId, Guid vipProductId, string? couponCode = null)
     {
-        // Look up VipProduct from DB
-        var vipProduct = await dbContext.VipProducts
-            .Include(v => v.TotalCategory)
-            .Include(v => v.Institution)
-            .FirstOrDefaultAsync(v => v.Id == vipProductId);
-
-        if (vipProduct == null)
-        {
-            return new CreateOrderResult
-            {
-                Success = false,
-                ErrorMessage = "VIP 商品不存在"
-            };
-        }
-
-        if (!vipProduct.IsEnabled)
-        {
-            return new CreateOrderResult
-            {
-                Success = false,
-                ErrorMessage = "该 VIP 商品已下架"
-            };
-        }
-
-        var amountInFen = vipProduct.PriceInFen;
-        var description = $"{vipProduct.Name} - {vipProduct.TotalCategory?.Title ?? vipProduct.Institution?.Title ?? "VIP"}";
-        Coupon? appliedCoupon;
-
-        if (!string.IsNullOrWhiteSpace(couponCode))
-        {
-            var (isValid, errorMessage, coupon) = await couponService.ValidateCouponAsync(couponCode, vipProductId, userId);
-            if (!isValid)
-            {
-                return new CreateOrderResult
-                {
-                    Success = false,
-                    ErrorMessage = errorMessage ?? "优惠码无效"
-                };
-            }
-            appliedCoupon = coupon;
-        }
-        else
-        {
-            // 如果用户没手动传，尝试从该用户已领取的“权益”中寻找最合适的
-            appliedCoupon = await couponService.GetBestApplicableCouponAsync(userId, vipProductId);
-        }
-
-        var discountInFen = 0;
-        if (appliedCoupon != null)
-        {
-            discountInFen = Math.Min(amountInFen, appliedCoupon.AmountInFen);
-            amountInFen -= discountInFen;
-            description += $" (已优惠: {discountInFen / 100m}元)";
-        }
-
-        // Match the purchased scope, not nullable course IDs: different schools must
-        // remain independently purchasable. A legacy all-school VIP already covers any school.
-        var now = DateTime.UtcNow;
-        var existingVip = await dbContext.VipMemberships
-            .Include(v => v.VipProduct)
-            .FirstOrDefaultAsync(v => 
-                v.UserId == userId && 
-                v.VipProduct != null && 
-                ((v.VipProduct.Type == vipProduct.Type &&
-                  v.VipProduct.TotalCategoryId == vipProduct.TotalCategoryId &&
-                  v.VipProduct.InstitutionId == vipProduct.InstitutionId) ||
-                 (vipProduct.Type == VipProductType.Institution && v.VipProduct.Type == VipProductType.RealExam)) &&
-                v.StartTime <= now && 
-                v.EndTime > now);
-
-        if (existingVip != null)
-        {
-            return new CreateOrderResult
-            {
-                Success = false,
-                ErrorMessage = "The requested membership is already active. Purchase again after it expires."
-            };
-        }
-
-        // Check for existing pending order for same user/product to avoid creating duplicates
-        var existingPending = await dbContext.PaymentOrders
-            .FirstOrDefaultAsync(o =>
-                o.UserId == userId &&
-                o.VipProductId == vipProductId &&
-                o.Status == PaymentOrderStatus.Pending &&
-                o.AmountInFen == amountInFen && // Ensure amount matches
-                o.CouponId == (appliedCoupon != null ? appliedCoupon.Id : null) && // Ensure coupon matches
-                o.ExpiredAt > DateTime.UtcNow);
-
-        if (existingPending != null)
-        {
-            // Return existing pending order's pay params
-            logger.LogInformation("Found existing pending order {OutTradeNo} for user {UserId}", existingPending.OutTradeNo, userId);
-
-            if (!string.IsNullOrEmpty(existingPending.PrepayId))
-            {
-                var existingParams = await GetJsApiPayParamsAsync(existingPending.PrepayId);
-                return new CreateOrderResult
-                {
-                    Success = true,
-                    OutTradeNo = existingPending.OutTradeNo,
-                    PrepayId = existingPending.PrepayId,
-                    PayParams = existingParams
-                };
-            }
-        }
-
+        // Keep the identity stable even if the database retries an uncertain commit.
         var outTradeNo = $"WCE{DateTime.UtcNow:yyyyMMddHHmmss}{Guid.NewGuid():N}"[..32];
-
-        // --- NEW: Handle 100% discount orders (Free VIP) ---
-        if (amountInFen == 0)
-        {
-            logger.LogInformation("Zero-amount order detected for user {UserId}, bypass WeChat Pay API", userId);
-            
-            var freeOrder = new PaymentOrder
-            {
-                OutTradeNo = outTradeNo,
-                UserId = userId,
-                VipProductId = vipProductId,
-                CouponId = appliedCoupon?.Id,
-                DiscountInFen = discountInFen,
-                Description = description + " (100% 折扣免费激活)",
-                AmountInFen = 0,
-                Status = PaymentOrderStatus.Paid, // Mark as Paid immediately
-                PrepayId = "FREE_ORDER",
-                PaidAt = DateTime.UtcNow,
-                ExpiredAt = DateTime.UtcNow.AddMinutes(30)
-            };
-
-            dbContext.PaymentOrders.Add(freeOrder);
-            
-            dbContext.PaymentLogs.Add(new PaymentLog
-            {
-                PaymentOrderId = freeOrder.Id,
-                EventType = "FreeOrderCreated",
-                RawData = JsonSerializer.Serialize(new { outTradeNo, userId, vipProductId, discountInFen })
-            });
-
-            // Process VIP activation immediately
-            await ProcessVipActivationAsync(freeOrder);
-            await dbContext.SaveChangesAsync();
-
-            return new CreateOrderResult
-            {
-                Success = true,
-                OutTradeNo = outTradeNo,
-                PrepayId = "FREE_ORDER",
-                PayParams = new JsApiPayParams 
-                { 
-                    AppId = _settings.WeChat.AppId,
-                    Package = "FREE",
-                    SignType = "NONE",
-                    PaySign = "NONE",
-                    NonceStr = "NONE",
-                    TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()
-                }
-            };
-        }
-
-        var paySettings = _settings.WeChat.Payment;
-
         try
         {
-            // Create prepay order via WeChat Pay API
-            var request = new CreatePayTransactionJsapiRequest
-            {
-                OutTradeNumber = outTradeNo,
-                AppId = _settings.WeChat.AppId,
-                MerchantId = paySettings.MchId,
-                Description = description,
-                NotifyUrl = paySettings.PaymentNotifyUrl,
-                Amount = new CreatePayTransactionJsapiRequest.Types.Amount
-                {
-                    Total = amountInFen,
-                    Currency = "CNY"
-                },
-                Payer = new CreatePayTransactionJsapiRequest.Types.Payer
-                {
-                    OpenId = openId
-                },
-                ExpireTime = DateTimeOffset.UtcNow.AddMinutes(30)
-            };
+            var (order, error) = await InPaymentTransactionAsync(() =>
+                ReserveOrderAsync(userId, vipProductId, couponCode, outTradeNo));
+            if (order == null) return new CreateOrderResult { Success = false, ErrorMessage = error };
 
-            var response = await tenpayClient.ExecuteCreatePayTransactionJsapiAsync(request);
-
-            if (!response.IsSuccessful())
-            {
-                logger.LogError("WeChat Pay create order failed: {Code} {Message}",
-                    response.ErrorCode, response.ErrorMessage);
-                return new CreateOrderResult
-                {
-                    Success = false,
-                    ErrorMessage = $"微信支付下单失败: {response.ErrorMessage}"
-                };
-            }
-
-            // Save order to database
-            var order = new PaymentOrder
-            {
-                OutTradeNo = outTradeNo,
-                UserId = userId,
-                VipProductId = vipProductId,
-                CouponId = appliedCoupon?.Id,
-                DiscountInFen = discountInFen,
-                Description = description,
-                AmountInFen = amountInFen,
-                Status = PaymentOrderStatus.Pending,
-                PrepayId = response.PrepayId,
-                ExpiredAt = DateTime.UtcNow.AddMinutes(30)
-            };
-
-            dbContext.PaymentOrders.Add(order);
-
-            // Add creation log
-            dbContext.PaymentLogs.Add(new PaymentLog
-            {
-                PaymentOrderId = order.Id,
-                EventType = "Created",
-                RawData = JsonSerializer.Serialize(new
-                {
-                    outTradeNo,
-                    amountInFen,
-                    vipProductId,
-                    vipProductName = vipProduct.Name,
-                    prepayId = response.PrepayId
-                })
-            });
-
-            await dbContext.SaveChangesAsync();
-
-            // Generate JSAPI pay parameters
-            var payParams = await GetJsApiPayParamsAsync(response.PrepayId);
-
-            logger.LogInformation("Created payment order {OutTradeNo} for user {UserId}, product {ProductName}, amount: {Amount}",
-                outTradeNo, userId, vipProduct.Name, amountInFen);
-
-            return new CreateOrderResult
-            {
-                Success = true,
-                OutTradeNo = outTradeNo,
-                PrepayId = response.PrepayId,
-                PayParams = payParams
-            };
+            // Commit the reservation BEFORE calling WeChat. A timeout must leave an
+            // order we can retry/query, rather than an untracked payable transaction.
+            return await InPaymentTransactionAsync(() => ResumeOrderAsync(order.Id, openId));
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Failed to create payment order for user {UserId}", userId);
-            return new CreateOrderResult
-            {
-                Success = false,
-                ErrorMessage = "创建支付订单异常，请稍后重试"
-            };
+            logger.LogError(ex, "Failed to create or resume payment for user {UserId}", userId);
+            return new CreateOrderResult { Success = false, ErrorMessage = "Payment could not be confirmed. Please retry the same purchase." };
         }
+    }
+
+    private async Task<T> InPaymentTransactionAsync<T>(Func<Task<T>> action)
+    {
+        var retrying = false;
+        return await dbContext.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
+        {
+            if (retrying) dbContext.ChangeTracker.Clear();
+            retrying = true;
+            await using var transaction = dbContext.Database.IsRelational()
+                ? await dbContext.Database.BeginTransactionAsync(dbContext.Database.IsSqlite()
+                    ? System.Data.IsolationLevel.Serializable : System.Data.IsolationLevel.ReadCommitted)
+                : null;
+            var result = await action();
+            await dbContext.SaveChangesAsync();
+            if (transaction != null) await transaction.CommitAsync();
+            return result;
+        });
+    }
+
+    private async Task LockBuyerAsync(string userId)
+    {
+        if (dbContext.Database.IsRelational())
+            await dbContext.Users.Where(u => u.Id == userId)
+                .ExecuteUpdateAsync(update => update.SetProperty(u => u.ConcurrencyStamp, u => u.ConcurrencyStamp));
+    }
+
+    private async Task LockCouponAsync(Guid? couponId)
+    {
+        if (couponId.HasValue && dbContext.Database.IsRelational())
+            await dbContext.Coupons.Where(c => c.Id == couponId.Value)
+                .ExecuteUpdateAsync(update => update.SetProperty(c => c.IsEnabled, c => c.IsEnabled));
+    }
+
+    private async Task LockOrderAsync(PaymentOrder order)
+    {
+        if (!dbContext.Database.IsRelational()) return;
+        await dbContext.PaymentOrders.Where(o => o.Id == order.Id)
+            .ExecuteUpdateAsync(update => update.SetProperty(o => o.Status, o => o.Status));
+        await dbContext.Entry(order).ReloadAsync();
+    }
+
+    private async Task<(PaymentOrder? Order, string? Error)> ReserveOrderAsync(
+        string userId, Guid productId, string? couponCode, string outTradeNo)
+    {
+        // Database row locks work across processes. An in-process semaphore would
+        // still allow two application instances to reserve the same coupon.
+        await LockBuyerAsync(userId);
+        var retried = await dbContext.PaymentOrders.FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo);
+        if (retried != null) return (retried, null);
+        var product = await dbContext.VipProducts.Include(v => v.TotalCategory).Include(v => v.Institution)
+            .FirstOrDefaultAsync(v => v.Id == productId);
+        if (product is not { IsEnabled: true }) return (null, "The requested VIP product is unavailable.");
+
+        var now = DateTime.UtcNow;
+        if (await dbContext.VipMemberships.AnyAsync(v => v.UserId == userId && v.VipProduct != null &&
+            ((v.VipProduct.Type == product.Type && v.VipProduct.TotalCategoryId == product.TotalCategoryId &&
+              v.VipProduct.InstitutionId == product.InstitutionId) ||
+             (product.Type == VipProductType.Institution && v.VipProduct.Type == VipProductType.RealExam)) &&
+            v.StartTime <= now && v.EndTime > now))
+            return (null, "The requested membership is already active. Purchase again after it expires.");
+
+        var pending = await dbContext.PaymentOrders.Include(o => o.Coupon)
+            .Where(o => o.UserId == userId && o.VipProductId == productId &&
+                (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed))
+            .OrderBy(o => o.CreatedAt).ToListAsync();
+        foreach (var old in pending.Where(o => o.ExpiredAt <= now || o.Status == PaymentOrderStatus.Failed))
+        {
+            await LockCouponAsync(old.CouponId);
+            if (!await ConfirmClosedAsync(old)) return (null, "The previous payment is not confirmed closed. Please check its status before purchasing again.");
+        }
+        var active = pending.Where(o => o.Status == PaymentOrderStatus.Pending).ToList();
+        if (active.Count > 1) return (null, "Multiple previous payments are still pending. Please retry after their payment windows close.");
+        if (active.Count == 1)
+        {
+            var existing = active[0];
+            await LockCouponAsync(existing.CouponId);
+            if (existing.Coupon != null && dbContext.Database.IsRelational()) await dbContext.Entry(existing.Coupon).ReloadAsync();
+            if (!string.IsNullOrWhiteSpace(couponCode) && !string.Equals(couponCode, existing.Coupon?.Code, StringComparison.OrdinalIgnoreCase))
+                return (null, "A previous payment is pending with a different coupon. Please finish or wait for that payment to close.");
+            if (existing.Coupon is { IsSingleUse: true, UsedByUserId: not null })
+            {
+                await ConfirmClosedAsync(existing);
+                return (null, "This coupon has already been used. Please check the previous payment.");
+            }
+            if (existing.Coupon is { IsSingleUse: true } && !await ClearOtherCouponOrdersAsync(existing.Coupon.Id, existing.Id))
+                return (null, "This coupon is reserved by another pending payment.");
+            // Continue the saved price/coupon, even if the current catalog changed.
+            return (existing, null);
+        }
+
+        Coupon? coupon;
+        if (!string.IsNullOrWhiteSpace(couponCode))
+        {
+            var validation = await couponService.ValidateCouponAsync(couponCode, productId, userId);
+            if (!validation.IsValid) return (null, validation.ErrorMessage ?? "Invalid coupon.");
+            coupon = validation.Coupon;
+        }
+        else coupon = await couponService.GetBestApplicableCouponAsync(userId, productId);
+        if (coupon != null)
+        {
+            await LockCouponAsync(coupon.Id);
+            if (dbContext.Database.IsRelational()) await dbContext.Entry(coupon).ReloadAsync();
+            if (coupon.IsSingleUse && !await ClearOtherCouponOrdersAsync(coupon.Id, null))
+                return (null, "This coupon is reserved by another pending payment.");
+            // A completed payment found during reconciliation may have consumed it.
+            var validation = await couponService.ValidateCouponAsync(coupon.Code, productId, userId);
+            if (!validation.IsValid) return (null, validation.ErrorMessage ?? "Invalid coupon.");
+        }
+        var discount = coupon == null ? 0 : Math.Min(product.PriceInFen, coupon.AmountInFen);
+        var order = new PaymentOrder
+        {
+            UserId = userId, VipProductId = productId, OutTradeNo = outTradeNo,
+            CouponId = coupon?.Id, DiscountInFen = discount, AmountInFen = product.PriceInFen - discount,
+            Description = $"{product.Name} - {product.TotalCategory?.Title ?? product.Institution?.Title ?? "VIP"}",
+            ExpiredAt = DateTime.UtcNow.AddMinutes(30)
+        };
+        dbContext.PaymentOrders.Add(order);
+        dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "Created", RawData = JsonSerializer.Serialize(new { outTradeNo, productId, order.AmountInFen, discount }) });
+        if (order.AmountInFen == 0)
+        {
+            // No gateway is involved, but coupon, membership and accounting must
+            // still commit together. A failed activation must not consume the coupon.
+            order.PrepayId = "FREE_ORDER";
+            await ActivatePaidOrderAsync(order, null);
+        }
+        return (order, null);
+    }
+
+    private async Task<bool> ClearOtherCouponOrdersAsync(Guid couponId, Guid? currentOrderId)
+    {
+        var others = await dbContext.PaymentOrders.Where(o => o.CouponId == couponId && o.Id != currentOrderId &&
+            (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed)).OrderBy(o => o.CreatedAt).ToListAsync();
+        foreach (var other in others)
+        {
+            if (other.Status == PaymentOrderStatus.Pending && other.ExpiredAt > DateTime.UtcNow) return false;
+            if (!await ConfirmClosedAsync(other)) return false;
+        }
+        return true;
+    }
+
+    private async Task<bool> ConfirmClosedAsync(PaymentOrder order)
+    {
+        await LockOrderAsync(order);
+        if (order.Status == PaymentOrderStatus.Closed) return true;
+        if (order.Status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded) return false;
+        var query = await tenpayClient.ExecuteGetPayTransactionByOutTradeNumberAsync(new GetPayTransactionByOutTradeNumberRequest
+        { MerchantId = _settings.WeChat.Payment.MchId, OutTradeNumber = order.OutTradeNo });
+        // Errors (including ORDER_NOT_EXIST), timeouts and a local expiry are not
+        // confirmation that a potentially in-flight WeChat transaction is closed.
+        if (!query.IsSuccessful() || query.OutTradeNumber != order.OutTradeNo ||
+            query.MerchantId != _settings.WeChat.Payment.MchId || query.AppId != _settings.WeChat.AppId) return false;
+        if (query.TradeState == "SUCCESS")
+        {
+            if (query.Amount is { Currency: "CNY", Total: var total } && total == order.AmountInFen && !string.IsNullOrEmpty(query.TransactionId) &&
+                order.VipProductId.HasValue && await dbContext.VipProducts.AnyAsync(p => p.Id == order.VipProductId))
+                await ActivatePaidOrderAsync(order, query.TransactionId);
+            return false;
+        }
+        if (query.TradeState == "NOTPAY")
+        {
+            var close = await tenpayClient.ExecuteClosePayTransactionAsync(new ClosePayTransactionRequest
+            { MerchantId = _settings.WeChat.Payment.MchId, OutTradeNumber = order.OutTradeNo });
+            if (!close.IsSuccessful()) return false;
+        }
+        else if (query.TradeState != "CLOSED") return false;
+        order.Status = PaymentOrderStatus.Closed;
+        dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "ClosedBeforeRetry", RawData = JsonSerializer.Serialize(new { order.OutTradeNo, query.TradeState }) });
+        await dbContext.SaveChangesAsync();
+        return true;
+    }
+
+    private async Task<CreateOrderResult> ResumeOrderAsync(Guid orderId, string openId)
+    {
+        var order = await dbContext.PaymentOrders.SingleAsync(o => o.Id == orderId);
+        await LockOrderAsync(order);
+        if (order.Status == PaymentOrderStatus.Paid && order.AmountInFen == 0)
+            return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = "FREE_ORDER",
+                PayParams = new JsApiPayParams { AppId = _settings.WeChat.AppId, Package = "FREE", SignType = "NONE", PaySign = "NONE", NonceStr = "NONE", TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString() } };
+        if (order.Status != PaymentOrderStatus.Pending || order.ExpiredAt <= DateTime.UtcNow)
+            return new CreateOrderResult { Success = false, ErrorMessage = "The payment state has changed. Please check your membership and retry." };
+        if (string.IsNullOrEmpty(order.PrepayId))
+        {
+            var response = await tenpayClient.ExecuteCreatePayTransactionJsapiAsync(new CreatePayTransactionJsapiRequest
+            {
+                OutTradeNumber = order.OutTradeNo, AppId = _settings.WeChat.AppId, MerchantId = _settings.WeChat.Payment.MchId,
+                Description = order.Description, NotifyUrl = _settings.WeChat.Payment.PaymentNotifyUrl,
+                Amount = new CreatePayTransactionJsapiRequest.Types.Amount { Total = order.AmountInFen, Currency = "CNY" },
+                Payer = new CreatePayTransactionJsapiRequest.Types.Payer { OpenId = openId },
+                ExpireTime = new DateTimeOffset(DateTime.SpecifyKind(order.ExpiredAt, DateTimeKind.Utc))
+            });
+            if (!response.IsSuccessful())
+                return new CreateOrderResult { Success = false, ErrorMessage = "WeChat could not create this payment. Please retry the same purchase." };
+            order.PrepayId = response.PrepayId;
+        }
+        var parameters = await GetJsApiPayParamsAsync(order.PrepayId);
+        return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = order.PrepayId, PayParams = parameters };
+    }
+
+    private async Task ActivatePaidOrderAsync(PaymentOrder order, string? transactionId)
+    {
+        order.Status = PaymentOrderStatus.Paid;
+        order.WechatTransactionId = transactionId;
+        order.PaidAt = DateTime.UtcNow;
+        await ProcessVipActivationAsync(order);
+        dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "StatusChanged", RawData = JsonSerializer.Serialize(new { newStatus = "Paid", transactionId }) });
     }
 
     public async Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId)
@@ -395,6 +362,8 @@ public class WeChatPayService(
             : null;
         if (transaction != null)
         {
+            await LockBuyerAsync(order.UserId);
+            await LockCouponAsync(order.CouponId);
             await dbContext.PaymentOrders.Where(o => o.Id == order.Id)
                 .ExecuteUpdateAsync(update => update.SetProperty(o => o.Status, o => o.Status));
             await dbContext.Entry(order).ReloadAsync();
@@ -429,22 +398,7 @@ public class WeChatPayService(
         // Update order status based on trade state
         if (tradeState == "SUCCESS")
         {
-            order.Status = PaymentOrderStatus.Paid;
-            order.WechatTransactionId = transactionId;
-            order.PaidAt = DateTime.UtcNow;
-
-            // Process VIP business logic
-            await ProcessVipActivationAsync(order);
-
-            dbContext.PaymentLogs.Add(new PaymentLog
-            {
-                PaymentOrderId = order.Id,
-                EventType = "StatusChanged",
-                RawData = JsonSerializer.Serialize(new { newStatus = "Paid", transactionId })
-            });
-
-            logger.LogInformation("Order {OutTradeNo} paid successfully, transaction: {TransactionId}",
-                outTradeNo, transactionId);
+            await ActivatePaidOrderAsync(order, transactionId);
         }
         else if (tradeState is "CLOSED" or "REVOKED" or "PAYERROR")
         {
