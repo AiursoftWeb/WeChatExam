@@ -24,10 +24,10 @@ public class TestPapersController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Exam Management",
-        CascadedLinksIcon = "clipboard-list",
-        CascadedLinksOrder = 2,
-        LinkText = "Test Papers",
+        CascadedLinksGroupName = "Advanced Management",
+        CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110,
+        LinkText = "Preview Papers",
         LinkOrder = 3)]
     public async Task<IActionResult> Index(TestPaperKind kind = TestPaperKind.Mock, string? search = null,
         PaperStatus? status = null, int page = 1)

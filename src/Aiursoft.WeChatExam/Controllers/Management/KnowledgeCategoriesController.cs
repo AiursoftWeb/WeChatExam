@@ -19,7 +19,7 @@ public class KnowledgeCategoriesController(WeChatExamDbContext context,
 {
     [RenderInNavBar(NavGroupName = "Administration", NavGroupOrder = 9999,
         CascadedLinksGroupName = "Knowledge Management", CascadedLinksIcon = "book-open",
-        CascadedLinksOrder = 2, LinkText = "Knowledge Categories", LinkOrder = 0)]
+        CascadedLinksOrder = 20, LinkText = "Knowledge Point Categories", LinkOrder = 0)]
     public async Task<IActionResult> Index(Guid? totalCategoryId)
     {
         var courses = await context.TotalCategories.OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ToListAsync();

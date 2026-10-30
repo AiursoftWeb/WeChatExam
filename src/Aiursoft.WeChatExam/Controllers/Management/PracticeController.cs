@@ -21,11 +21,11 @@ public class PracticeController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Exam Management",
-        CascadedLinksIcon = "award",
-        CascadedLinksOrder = 2,
-        LinkText = "Practice Test",
-        LinkOrder = 1)]
+        CascadedLinksGroupName = "Advanced Management",
+        CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110,
+        LinkText = "Preview Questions",
+        LinkOrder = 2)]
     public async Task<IActionResult> Index(string? mtql, QuestionType? questionType)
     {
         var query = context.Questions.AsQueryable();

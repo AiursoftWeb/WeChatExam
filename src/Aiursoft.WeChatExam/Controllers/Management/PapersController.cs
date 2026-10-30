@@ -132,11 +132,11 @@ public class PapersController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Exam Management",
-        CascadedLinksIcon = "clipboard-list",
-        CascadedLinksOrder = 2,
+        CascadedLinksGroupName = "Advanced Management",
+        CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110,
         LinkText = "Legacy Paper Archive",
-        LinkOrder = 1)]
+        LinkOrder = 4)]
     public async Task<IActionResult> Index()
     {
         var papers = await paperService.GetAllPapersAsync();

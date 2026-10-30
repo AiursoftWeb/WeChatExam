@@ -15,8 +15,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class ContentSearchController(WeChatExamDbContext db, ContentVectorSearchService search) : Controller
 {
     [RenderInNavBar(NavGroupName = "Administration", NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management", CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1, LinkText = "Search Content", LinkOrder = 0)]
+        CascadedLinksGroupName = "Advanced Management", CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110, LinkText = "Search Content", LinkOrder = 1)]
     public async Task<IActionResult> Index(string? query, string kind = "all",
         Guid? knowledgeCategoryId = null, Guid? questionCategoryId = null)
     {

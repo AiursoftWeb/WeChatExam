@@ -25,7 +25,7 @@ public class VipProductsController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Payment Management",
         CascadedLinksIcon = "credit-card",
-        CascadedLinksOrder = 3,
+        CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
     public async Task<IActionResult> Index(string? search)

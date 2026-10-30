@@ -21,13 +21,13 @@ public class HomeController : Controller
     [HttpGet]
     [Authorize]
     [RenderInNavBar(
-        NavGroupName = "Features",
-        NavGroupOrder = 1,
-        CascadedLinksGroupName = "Home",
-        CascadedLinksIcon = "home",
-        CascadedLinksOrder = 1,
-        LinkText = "Ask Ollama",
-        LinkOrder = 2)]
+        NavGroupName = "Administration",
+        NavGroupOrder = 9999,
+        CascadedLinksGroupName = "Advanced Management",
+        CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110,
+        LinkText = "AI Assistant",
+        LinkOrder = 5)]
     public IActionResult AskOllama()
     {
         return this.StackView(new AskOllamaViewModel

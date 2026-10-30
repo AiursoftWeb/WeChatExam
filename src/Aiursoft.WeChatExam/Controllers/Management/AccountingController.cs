@@ -22,9 +22,9 @@ public class AccountingController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Payment Management",
         CascadedLinksIcon = "credit-card",
-        CascadedLinksOrder = 3,
+        CascadedLinksOrder = 70,
         LinkText = "Finance Reports",
-        LinkOrder = 5)]
+        LinkOrder = 3)]
     public async Task<IActionResult> Index()
     {
         var reports = await changeService.GetMonthlyReports();
@@ -92,9 +92,9 @@ public class AccountingController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Payment Management",
         CascadedLinksIcon = "credit-card",
-        CascadedLinksOrder = 3,
+        CascadedLinksOrder = 70,
         LinkText = "VIP Change History",
-        LinkOrder = 6)]
+        LinkOrder = 4)]
     public async Task<IActionResult> History()
     {
         var changes = await changeService.GetAllHistory();

@@ -21,9 +21,9 @@ public class DistributionChannelsController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Marketing Management",
         CascadedLinksIcon = "megaphone",
-        CascadedLinksOrder = 4,
+        CascadedLinksOrder = 80,
         LinkText = "Distribution Channels",
-        LinkOrder = 2)]
+        LinkOrder = 1)]
     public async Task<IActionResult> Index(string? search)
     {
         var channels = await distributionChannelService.GetAllAsync();

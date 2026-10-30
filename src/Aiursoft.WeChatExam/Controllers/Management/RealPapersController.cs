@@ -20,7 +20,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Real Exam Management",
         CascadedLinksIcon = "university",
-        CascadedLinksOrder = 4,
+        CascadedLinksOrder = 50,
         LinkText = "Real Papers",
         LinkOrder = 1)]
     public async Task<IActionResult> Index(string? search, Guid? institutionId, int page = 1)

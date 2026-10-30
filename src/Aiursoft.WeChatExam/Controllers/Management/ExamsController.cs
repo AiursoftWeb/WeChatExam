@@ -23,9 +23,9 @@ public class ExamsController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Exam Management",
         CascadedLinksIcon = "clipboard-list",
-        CascadedLinksOrder = 2,
+        CascadedLinksOrder = 60,
         LinkText = "Exams",
-        LinkOrder = 2)]
+        LinkOrder = 0)]
     public async Task<IActionResult> Index()
     {
         var exams = await examService.GetAllExamsAsync();

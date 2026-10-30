@@ -22,11 +22,11 @@ public class SystemController(ILogger<SystemController> logger, WeChatExamDbCont
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "System",
-        CascadedLinksIcon = "cog",
-        CascadedLinksOrder = 9999,
-        LinkText = "Info",
-        LinkOrder = 1)]
+        CascadedLinksGroupName = "Advanced Management",
+        CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110,
+        LinkText = "System Info",
+        LinkOrder = 7)]
     public async Task<IActionResult> Index()
     {
         var tableCounts = await GetTableCountsAsync();

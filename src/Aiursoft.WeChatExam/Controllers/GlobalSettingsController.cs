@@ -17,11 +17,11 @@ public class GlobalSettingsController(GlobalSettingsService settingsService) : C
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "System",
+        CascadedLinksGroupName = "Advanced Management",
         CascadedLinksIcon = "settings",
-        CascadedLinksOrder = 9999,
+        CascadedLinksOrder = 110,
         LinkText = "Global Settings",
-        LinkOrder = 1)]
+        LinkOrder = 6)]
     public async Task<IActionResult> Index()
     {
         var model = new IndexViewModel();

@@ -17,10 +17,10 @@ public class FeedbacksController(IFeedbackService feedbackService) : Controller
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Feedback",
-        CascadedLinksIcon = "comment",
-        CascadedLinksOrder = 9997,
+        CascadedLinksIcon = "message-square",
+        CascadedLinksOrder = 90,
         LinkText = "User Feedbacks",
-        LinkOrder = 1)]
+        LinkOrder = 0)]
     public async Task<IActionResult> Index(int page = 1, FeedbackStatus? status = null, FeedbackType? type = null)
     {
         const int pageSize = 20;
