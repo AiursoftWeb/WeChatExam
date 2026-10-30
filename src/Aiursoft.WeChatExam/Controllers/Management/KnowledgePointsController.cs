@@ -69,6 +69,7 @@ public class KnowledgePointsController(
     public async Task<IActionResult> Create(CreateViewModel model)
     {
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
+        await ValidateQuestions(model.SelectedQuestionIds);
         var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
         if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
@@ -201,6 +202,7 @@ public class KnowledgePointsController(
         if (id != model.Id) return NotFound();
 
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
+        await ValidateQuestions(model.SelectedQuestionIds);
         var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
         if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
@@ -328,6 +330,15 @@ public class KnowledgePointsController(
         await context.SaveChangesAsync();
 
         return RedirectToAction(nameof(Index));
+    }
+
+    private async Task ValidateQuestions(List<Guid> ids)
+    {
+        // The editor may be stale after a question is deleted. Reject the whole selection
+        // before changing the lesson or its links, just as for knowledge categories.
+        if (ids.Distinct().Count() != ids.Count ||
+            await context.Questions.CountAsync(q => ids.Contains(q.Id)) != ids.Count)
+            ModelState.AddModelError("SelectedQuestionIds", localizer["Select existing questions without duplicates."]);
     }
 
     private async Task ValidateKnowledgeCategories(List<Guid> ids)

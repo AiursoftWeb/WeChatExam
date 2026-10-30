@@ -98,6 +98,83 @@ public class KnowledgePointAssociationTests
     }
 
     [TestMethod]
+    [DataRow(false, false)]
+    [DataRow(false, true)]
+    [DataRow(true, false)]
+    [DataRow(true, true)]
+    public async Task InvalidExerciseSelectionPreservesLessonUntilCorrected(bool editing, bool duplicate)
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var directory = new KnowledgeCategory { Title = "Lesson directory", TotalCategoryId = _courseId, IsFree = true };
+        var original = new Question { Id = Guid.NewGuid(), Content = "Original exercise", QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true) };
+        var selected = new Question { Id = Guid.NewGuid(), Content = "Selected exercise", QuestionCategoryId = original.QuestionCategory.Id };
+        var deleted = new Question { Id = Guid.NewGuid(), Content = "Deleted after opening editor", QuestionCategoryId = original.QuestionCategory.Id };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Saved lesson", Content = "Saved body" };
+        db.AddRange(directory, original, selected, deleted);
+        if (editing)
+        {
+            db.AddRange(lesson,
+                new KnowledgeCategoryKnowledgePoint { KnowledgePointId = lesson.Id, KnowledgeCategoryId = directory.Id, OrderIndex = 7 },
+                new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = original.Id });
+        }
+        await db.SaveChangesAsync();
+        var lessonCount = await db.KnowledgePoints.CountAsync();
+        var placementCount = await db.KnowledgeCategoryKnowledgePoints.CountAsync();
+        var exerciseCount = await db.KnowledgePointQuestions.CountAsync();
+        var url = editing ? $"/KnowledgePoints/Edit/{lesson.Id}" : "/KnowledgePoints/Create";
+        var token = await GetAntiCsrfToken(url);
+        db.Questions.Remove(deleted);
+        await db.SaveChangesAsync();
+
+        var fields = new Dictionary<string, string>
+        {
+            ["Id"] = lesson.Id.ToString(), ["Title"] = "Unsaved lesson", ["Content"] = "Unsaved body",
+            ["SelectedKnowledgeCategoryIds[0]"] = directory.Id.ToString(),
+            ["SelectedQuestionIds[0]"] = selected.Id.ToString(),
+            ["SelectedQuestionIds[1]"] = (duplicate ? selected.Id : deleted.Id).ToString(),
+            ["__RequestVerificationToken"] = token
+        };
+        var invalid = await _http.PostAsync(url, new FormUrlEncodedContent(fields));
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        var html = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains("Select existing questions without duplicates.", html);
+        Assert.Contains("Unsaved lesson", html);
+        Assert.Contains("Unsaved body", html);
+        Assert.Contains(directory.Title, html);
+        Assert.Contains(selected.Content, html);
+        Assert.DoesNotContain(deleted.Content, html);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(lessonCount, await db.KnowledgePoints.CountAsync());
+        Assert.AreEqual(placementCount, await db.KnowledgeCategoryKnowledgePoints.CountAsync());
+        Assert.AreEqual(exerciseCount, await db.KnowledgePointQuestions.CountAsync());
+        if (editing)
+        {
+            Assert.AreEqual("Saved body", (await db.KnowledgePoints.SingleAsync(k => k.Id == lesson.Id)).Content);
+            Assert.AreEqual("Saved lesson", (await db.KnowledgePoints.SingleAsync(k => k.Id == lesson.Id)).Title);
+            Assert.AreEqual(original.Id, (await db.KnowledgePointQuestions.SingleAsync(k => k.KnowledgePointId == lesson.Id)).QuestionId);
+        }
+
+        // Correct the selection on the returned form, without reopening and losing the draft.
+        fields.Remove("SelectedQuestionIds[1]");
+        fields["__RequestVerificationToken"] = Regex.Match(html,
+            @"<input name=""__RequestVerificationToken"" type=""hidden"" value=""([^""]+)"" />").Groups[1].Value;
+        var saved = await _http.PostAsync(url, new FormUrlEncodedContent(fields));
+        Assert.AreEqual(HttpStatusCode.Found, saved.StatusCode);
+        db.ChangeTracker.Clear();
+        var savedId = Guid.Parse(saved.Headers.Location!.OriginalString.Split('/').Last());
+        var result = await db.KnowledgePoints.SingleAsync(k => k.Id == savedId);
+        Assert.AreEqual("Unsaved lesson", result.Title);
+        Assert.AreEqual("Unsaved body", result.Content);
+        Assert.AreEqual(lessonCount + (editing ? 0 : 1), await db.KnowledgePoints.CountAsync());
+        Assert.AreEqual(selected.Id, (await db.KnowledgePointQuestions.SingleAsync(k => k.KnowledgePointId == result.Id)).QuestionId);
+        var placement = await db.KnowledgeCategoryKnowledgePoints.SingleAsync(k => k.KnowledgePointId == result.Id);
+        Assert.AreEqual(directory.Id, placement.KnowledgeCategoryId);
+        Assert.AreEqual(editing ? 7 : 0, placement.OrderIndex);
+    }
+
+    [TestMethod]
     public async Task KnowledgeContentRemainsInItsCategoryWithoutASecondHierarchy()
     {
         await LoginAsAdminAsync();
