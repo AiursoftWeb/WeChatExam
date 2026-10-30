@@ -89,7 +89,7 @@ UserManager<User> userManager,
     public async Task<IActionResult> GetOrderStatus(string outTradeNo)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var order = await payService.QueryOrderStatusAsync(outTradeNo);
+        var order = await payService.QueryOrderStatusAsync(outTradeNo, userId);
 
         if (order == null || order.UserId != userId)
         {

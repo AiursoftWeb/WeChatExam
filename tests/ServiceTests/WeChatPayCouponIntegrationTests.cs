@@ -460,6 +460,146 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual(1, await _dbContext.VipMemberships.CountAsync());
     }
 
+    [TestMethod]
+    public async Task OrderStatusRecoversMissingNotificationWithoutAnotherCheckout()
+    {
+        var queries = 0;
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            Assert.AreEqual(HttpMethod.Get, request.Method);
+            queries++;
+            return (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new
+            {
+                out_trade_no = "PAID-WITHOUT-NOTIFY", mchid = "mchid", appid = "appid", trade_state = "SUCCESS",
+                transaction_id = "recovered-transaction", amount = new { total = 100, currency = "CNY" }
+            }));
+        });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var order = new PaymentOrder { UserId = _userId, VipProductId = _productId, CouponId = coupon.Id,
+            OutTradeNo = "PAID-WITHOUT-NOTIFY", Description = "Missing notification", AmountInFen = 100,
+            DiscountInFen = 100, ExpiredAt = DateTime.UtcNow.AddMinutes(-1) };
+        _dbContext.PaymentOrders.Add(order);
+        await _dbContext.SaveChangesAsync();
+
+        var result = await _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId);
+        Assert.AreEqual(PaymentOrderStatus.Paid, result!.Status);
+        Assert.AreEqual("recovered-transaction", result.WechatTransactionId);
+        Assert.IsNotNull(result.PaidAt);
+        _dbContext.ChangeTracker.Clear();
+        var expiry = (await _dbContext.VipMemberships.SingleAsync()).EndTime;
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId))!.Status);
+        Assert.AreEqual(expiry, (await _dbContext.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(1, queries);
+        Assert.AreEqual(1, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _dbContext.Changes.CountAsync());
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("CLOSED", "closed")]
+    [DataRow("NOTPAY", "pending")]
+    [DataRow("USERPAYING", "pending")]
+    [DataRow("TIMEOUT", "pending")]
+    [DataRow("NOT_FOUND", "pending")]
+    [DataRow("WRONG_AMOUNT", "pending")]
+    [DataRow("WRONG_CURRENCY", "pending")]
+    [DataRow("WRONG_APP", "pending")]
+    [DataRow("WRONG_MERCHANT", "pending")]
+    [DataRow("WRONG_ORDER", "pending")]
+    [DataRow("NO_TRANSACTION", "pending")]
+    public async Task OrderStatusNeverGuessesPaymentOrClosesPayableOrders(string scenario, string expected)
+    {
+        var queries = 0;
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            queries++;
+            Assert.AreEqual(HttpMethod.Get, request.Method);
+            if (scenario == "TIMEOUT") throw new TaskCanceledException("Synthetic query timeout");
+            if (scenario == "NOT_FOUND") return (System.Net.HttpStatusCode.NotFound, "{\"code\":\"ORDER_NOT_EXIST\",\"message\":\"Unknown payment\"}");
+            return (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new
+            {
+                out_trade_no = scenario == "WRONG_ORDER" ? "other-order" : "STATUS-QUERY",
+                mchid = scenario == "WRONG_MERCHANT" ? "other" : "mchid",
+                appid = scenario == "WRONG_APP" ? "other" : "appid",
+                trade_state = scenario.StartsWith("WRONG_") || scenario == "NO_TRANSACTION" ? "SUCCESS" : scenario,
+                transaction_id = scenario == "NO_TRANSACTION" ? "" : "remote-transaction",
+                amount = new { total = scenario == "WRONG_AMOUNT" ? 99 : 100, currency = scenario == "WRONG_CURRENCY" ? "USD" : "CNY" }
+            }));
+        });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var order = new PaymentOrder { UserId = _userId, VipProductId = _productId, CouponId = coupon.Id,
+            OutTradeNo = "STATUS-QUERY", Description = "Unconfirmed order", AmountInFen = 100, DiscountInFen = 100,
+            ExpiredAt = DateTime.UtcNow.AddDays(-1) };
+        _dbContext.PaymentOrders.Add(order);
+        await _dbContext.SaveChangesAsync();
+        var result = await _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId);
+        Assert.AreEqual(expected == "closed" ? PaymentOrderStatus.Closed : PaymentOrderStatus.Pending, result!.Status);
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(result.Status, (await _dbContext.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(1, queries);
+        Assert.IsNull(result.PaidAt);
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        Assert.IsNull((await _dbContext.Coupons.SingleAsync()).UsedByUserId);
+    }
+
+    [TestMethod]
+    public async Task OrderStatusAuthorizesBeforeQueryAndKeepsTerminalOrdersLocal()
+    {
+        var queries = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { queries++; throw new AssertFailedException("Must not contact WeChat."); });
+        var order = new PaymentOrder { UserId = _userId, VipProductId = _productId,
+            OutTradeNo = "OWNER-ONLY", Description = "Private order", AmountInFen = 200 };
+        _dbContext.PaymentOrders.Add(order);
+        await _dbContext.SaveChangesAsync();
+        Assert.IsNull(await _payService.QueryOrderStatusAsync(order.OutTradeNo, "another-user"));
+        Assert.IsNull(await _payService.QueryOrderStatusAsync(order.OutTradeNo, null));
+        Assert.IsNull(await _payService.QueryOrderStatusAsync("MISSING", _userId));
+        foreach (var state in new[] { PaymentOrderStatus.Paid, PaymentOrderStatus.Refunded, PaymentOrderStatus.Closed })
+        {
+            order.Status = state;
+            await _dbContext.SaveChangesAsync();
+            Assert.AreEqual(state, (await _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId))!.Status);
+        }
+        Assert.AreEqual(0, queries);
+        Assert.AreEqual(0, await _dbContext.PaymentLogs.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task OrderStatusActivationFailureRollsBackAndCanBeRetried()
+    {
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            Assert.AreEqual(HttpMethod.Get, request.Method);
+            return (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new
+            {
+                out_trade_no = "STATUS-RETRY", mchid = "mchid", appid = "appid", trade_state = "SUCCESS",
+                transaction_id = "retry-transaction", amount = new { total = 100, currency = "CNY" }
+            }));
+        });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var order = new PaymentOrder { UserId = _userId, VipProductId = _productId, CouponId = coupon.Id,
+            OutTradeNo = "STATUS-RETRY", Description = "Retry query", AmountInFen = 100, DiscountInFen = 100,
+            Status = PaymentOrderStatus.Failed };
+        _dbContext.PaymentOrders.Add(order);
+        await _dbContext.SaveChangesAsync();
+        await _dbContext.Database.ExecuteSqlRawAsync("CREATE TRIGGER fail_status_accounting BEFORE INSERT ON Changes BEGIN SELECT RAISE(ABORT, 'Synthetic accounting failure'); END;");
+        await Assert.ThrowsExactlyAsync<DbUpdateException>(() => _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId));
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Failed, (await _dbContext.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        Assert.IsNull((await _dbContext.Coupons.SingleAsync()).UsedByUserId);
+        await _dbContext.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_status_accounting;");
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId))!.Status);
+        Assert.AreEqual(1, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(1, await _dbContext.Changes.CountAsync());
+    }
+
     private async Task UseCheckoutDatabaseAsync(Func<HttpRequestMessage, string, (System.Net.HttpStatusCode Status, string Body)> respond)
     {
         await _dbContext.DisposeAsync();

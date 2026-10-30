@@ -37,7 +37,7 @@ public sealed class StubWeChatPayService : IWeChatPayService
     public Task<bool> HandlePaymentNotifyAsync(string requestBody, string signature, string timestamp, string nonce, string serialNumber) => Task.FromResult(NotifyResult);
     public Task<CreateOrderResult> CreateOrderAsync(string userId, string openId, Guid vipProductId, string? couponCode = null) => Task.FromResult<CreateOrderResult>(null!);
     public Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId) => Task.FromResult<JsApiPayParams>(null!);
-    public Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo) => Task.FromResult<PaymentOrder?>(null);
+    public Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo, string? userId) => Task.FromResult<PaymentOrder?>(null);
     public Task<bool> HasVipForCategoryAsync(string userId, Guid categoryId) => Task.FromResult(false);
 }
 
