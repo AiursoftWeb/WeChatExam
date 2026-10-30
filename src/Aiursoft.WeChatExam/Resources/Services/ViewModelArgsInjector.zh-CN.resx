@@ -30,6 +30,12 @@
   <data name="Administration" xml:space="preserve">
     <value>管理</value>
   </data>
+  <data name="Advanced Management" xml:space="preserve">
+    <value>高级管理</value>
+  </data>
+  <data name="AI Assistant" xml:space="preserve">
+    <value>AI 助手</value>
+  </data>
   <data name="Anonymous" xml:space="preserve">
     <value>匿名</value>
   </data>
@@ -243,6 +249,9 @@
   <data name="Knowledge Management" xml:space="preserve">
     <value>知识管理</value>
   </data>
+  <data name="Knowledge Point Categories" xml:space="preserve">
+    <value>知识点分类</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>知识点</value>
   </data>
@@ -269,6 +278,9 @@
   </data>
   <data name="Mock Exam Management" xml:space="preserve">
     <value>模拟考试管理</value>
+  </data>
+  <data name="Mock Paper Management" xml:space="preserve">
+    <value>模拟卷管理</value>
   </data>
   <data name="Mock Paper Questions" xml:space="preserve">
     <value>模拟试题</value>
@@ -305,6 +317,12 @@
   </data>
   <data name="Practice Test" xml:space="preserve">
     <value>刷题测试</value>
+  </data>
+  <data name="Preview Papers" xml:space="preserve">
+    <value>预览试卷</value>
+  </data>
+  <data name="Preview Questions" xml:space="preserve">
+    <value>预览题目</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>个人资料</value>
@@ -369,6 +387,9 @@
   <data name="Total Categories" xml:space="preserve">
     <value>总分类</value>
   </data>
+  <data name="Total Category Management" xml:space="preserve">
+    <value>总分类管理</value>
+  </data>
   <data name="Unauthorized" xml:space="preserve">
     <value>未授权</value>
   </data>
@@ -377,6 +398,9 @@
   </data>
   <data name="User Feedbacks" xml:space="preserve">
     <value>用户反馈</value>
+  </data>
+  <data name="User Management" xml:space="preserve">
+    <value>用户管理</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>用户</value>
@@ -391,28 +415,4 @@
     <value>VIP 产品</value>
   </data>
 
-  <data name="Advanced Management" xml:space="preserve">
-    <value>高级管理</value>
-  </data>
-  <data name="AI Assistant" xml:space="preserve">
-    <value>AI 助手</value>
-  </data>
-  <data name="Knowledge Point Categories" xml:space="preserve">
-    <value>知识点分类</value>
-  </data>
-  <data name="Mock Paper Management" xml:space="preserve">
-    <value>模拟卷管理</value>
-  </data>
-  <data name="Preview Papers" xml:space="preserve">
-    <value>预览试卷</value>
-  </data>
-  <data name="Preview Questions" xml:space="preserve">
-    <value>预览题目</value>
-  </data>
-  <data name="Total Category Management" xml:space="preserve">
-    <value>总分类管理</value>
-  </data>
-  <data name="User Management" xml:space="preserve">
-    <value>用户管理</value>
-  </data>
 </root>
