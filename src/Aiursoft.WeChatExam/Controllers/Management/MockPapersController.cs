@@ -18,9 +18,9 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Mock Exam Management",
+        CascadedLinksGroupName = "Mock Paper Management",
         CascadedLinksIcon = "notebook-pen",
-        CascadedLinksOrder = 3,
+        CascadedLinksOrder = 40,
         LinkText = "Mock Papers",
         LinkOrder = 0)]
     public async Task<IActionResult> Index(string? search, Guid? totalCategoryId, int page = 1)

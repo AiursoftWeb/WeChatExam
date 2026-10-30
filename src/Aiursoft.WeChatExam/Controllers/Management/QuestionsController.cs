@@ -32,11 +32,11 @@ public class QuestionsController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1,
+        CascadedLinksGroupName = "Question Bank Management",
+        CascadedLinksIcon = "library-big",
+        CascadedLinksOrder = 30,
         LinkText = "Questions",
-        LinkOrder = 3)]
+        LinkOrder = 1)]
     public async Task<IActionResult> Index(
         [FromQuery(Name = "mtql")] string? filterMtql,
         string? tag,

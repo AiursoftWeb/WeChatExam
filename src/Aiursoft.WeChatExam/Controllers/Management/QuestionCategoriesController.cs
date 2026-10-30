@@ -24,7 +24,7 @@ public class QuestionCategoriesController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Question Bank Management",
         CascadedLinksIcon = "library-big",
-        CascadedLinksOrder = 2,
+        CascadedLinksOrder = 30,
         LinkText = "Periods",
         LinkOrder = 0)]
     public async Task<IActionResult> Index(Guid? totalCategoryId)

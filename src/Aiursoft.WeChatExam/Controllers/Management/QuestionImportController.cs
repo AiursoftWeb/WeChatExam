@@ -35,11 +35,11 @@ public class QuestionImportController : Controller
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Database Management",
-        CascadedLinksIcon = "database",
-        CascadedLinksOrder = 3,
+        CascadedLinksGroupName = "Question Bank Management",
+        CascadedLinksIcon = "library-big",
+        CascadedLinksOrder = 30,
         LinkText = "Import Questions",
-        LinkOrder = 1)]
+        LinkOrder = 4)]
     public async Task<IActionResult> Index()
     {
         var model = new QuestionImportIndexViewModel();
@@ -50,11 +50,11 @@ public class QuestionImportController : Controller
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Database Management",
-        CascadedLinksIcon = "database",
-        CascadedLinksOrder = 3,
+        CascadedLinksGroupName = "Question Bank Management",
+        CascadedLinksIcon = "library-big",
+        CascadedLinksOrder = 30,
         LinkText = "Export Questions",
-        LinkOrder = 2)]
+        LinkOrder = 5)]
     public IActionResult Export()
     {
         return this.StackView(new QuestionExportViewModel());

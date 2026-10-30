@@ -23,7 +23,7 @@ public class PaymentOrdersController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Payment Management",
         CascadedLinksIcon = "credit-card",
-        CascadedLinksOrder = 3,
+        CascadedLinksOrder = 70,
         LinkText = "Payment Orders",
         LinkOrder = 1)]
     public async Task<IActionResult> Index(PaymentOrderStatus? status, string? userId, int page = 1, int pageSize = 50)

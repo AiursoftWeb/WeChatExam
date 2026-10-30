@@ -27,11 +27,11 @@ public class RolesController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Directory",
+        CascadedLinksGroupName = "User Management",
         CascadedLinksIcon = "users",
-        CascadedLinksOrder = 9998,
+        CascadedLinksOrder = 100,
         LinkText = "Roles",
-        LinkOrder = 2)]
+        LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
         var roleUserCounts = await context.UserRoles

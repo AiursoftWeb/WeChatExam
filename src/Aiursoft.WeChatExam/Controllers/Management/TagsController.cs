@@ -20,11 +20,11 @@ public class TagsController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
-        CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1,
+        CascadedLinksGroupName = "Question Bank Management",
+        CascadedLinksIcon = "library-big",
+        CascadedLinksOrder = 30,
         LinkText = "Tags",
-        LinkOrder = 6)]
+        LinkOrder = 2)]
     public async Task<IActionResult> Index(string? search, int? taxonomyId)
     {
         var tags = await tagService.SearchTagsAsync(search, taxonomyId);

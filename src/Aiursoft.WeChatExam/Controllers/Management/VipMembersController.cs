@@ -25,9 +25,9 @@ public class VipMembersController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Payment Management",
         CascadedLinksIcon = "credit-card",
-        CascadedLinksOrder = 3,
+        CascadedLinksOrder = 70,
         LinkText = "VIP Members",
-        LinkOrder = 1)]
+        LinkOrder = 2)]
     public async Task<IActionResult> Index(string? userId, string? search, int page = 1, int pageSize = 15)
     {
         var query = dbContext.VipMemberships

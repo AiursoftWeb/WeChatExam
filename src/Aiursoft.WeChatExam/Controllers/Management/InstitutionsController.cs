@@ -19,7 +19,7 @@ public class InstitutionsController(WeChatExamDbContext context) : Controller
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Real Exam Management",
         CascadedLinksIcon = "university",
-        CascadedLinksOrder = 4,
+        CascadedLinksOrder = 50,
         LinkText = "Institutions",
         LinkOrder = 0)]
     public async Task<IActionResult> Index(string? search, int page = 1)

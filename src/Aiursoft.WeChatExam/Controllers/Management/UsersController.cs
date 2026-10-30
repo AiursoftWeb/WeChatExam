@@ -25,11 +25,11 @@ public class UsersController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Directory",
+        CascadedLinksGroupName = "User Management",
         CascadedLinksIcon = "users",
-        CascadedLinksOrder = 9998,
+        CascadedLinksOrder = 100,
         LinkText = "Users",
-        LinkOrder = 1)]
+        LinkOrder = 0)]
     public async Task<IActionResult> Index()
     {
         var allUsers = await context.Users.ToListAsync();

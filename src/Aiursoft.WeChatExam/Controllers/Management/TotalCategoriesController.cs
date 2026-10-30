@@ -17,9 +17,9 @@ public class TotalCategoriesController(WeChatExamDbContext context) : Controller
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management",
+        CascadedLinksGroupName = "Total Category Management",
         CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1,
+        CascadedLinksOrder = 10,
         LinkText = "Total Categories",
         LinkOrder = 0)]
     public async Task<IActionResult> Index()

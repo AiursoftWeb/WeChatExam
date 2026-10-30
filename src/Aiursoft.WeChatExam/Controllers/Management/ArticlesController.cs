@@ -26,9 +26,9 @@ public class ArticlesController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Marketing Management",
         CascadedLinksIcon = "megaphone",
-        CascadedLinksOrder = 4,
+        CascadedLinksOrder = 80,
         LinkText = "News",
-        LinkOrder = 1)]
+        LinkOrder = 0)]
     public async Task<IActionResult> Index()
     {
         var articles = await context.Articles

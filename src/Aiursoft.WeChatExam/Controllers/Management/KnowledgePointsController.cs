@@ -29,9 +29,9 @@ public class KnowledgePointsController(
         NavGroupOrder = 9999,
         CascadedLinksGroupName = "Knowledge Management",
         CascadedLinksIcon = "book-open",
-        CascadedLinksOrder = 2,
+        CascadedLinksOrder = 20,
         LinkText = "Knowledge Points",
-        LinkOrder = 2)]
+        LinkOrder = 1)]
     public async Task<IActionResult> Index()
     {
         var knowledgePoints = await context.KnowledgePoints

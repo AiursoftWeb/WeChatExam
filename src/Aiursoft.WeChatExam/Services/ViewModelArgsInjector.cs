@@ -39,6 +39,14 @@ public class ViewModelArgsInjector(
     private void _useless_for_localizer()
     {
         // Titles, navbar strings.
+        _ = localizer["Total Category Management"];
+        _ = localizer["Advanced Management"];
+        _ = localizer["Mock Paper Management"];
+        _ = localizer["User Management"];
+        _ = localizer["Knowledge Point Categories"];
+        _ = localizer["Preview Questions"];
+        _ = localizer["Preview Papers"];
+        _ = localizer["AI Assistant"];
         _ = localizer["Search Content"];
         _ = localizer["Content Configuration Checks"];
         _ = localizer["Features"];

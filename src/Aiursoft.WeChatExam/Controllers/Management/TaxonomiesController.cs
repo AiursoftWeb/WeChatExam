@@ -18,11 +18,11 @@ public class TaxonomiesController(WeChatExamDbContext context, ITaxonomyService 
         [RenderInNavBar(
             NavGroupName = "Administration",
             NavGroupOrder = 9999,
-            CascadedLinksGroupName = "Content Management",
-            CascadedLinksIcon = "folder-tree",
-            CascadedLinksOrder = 1,
+            CascadedLinksGroupName = "Question Bank Management",
+            CascadedLinksIcon = "library-big",
+            CascadedLinksOrder = 30,
             LinkText = "Taxonomies",
-            LinkOrder = 7)]
+            LinkOrder = 3)]
         public async Task<IActionResult> Index()    {
         var taxonomies = await taxonomyService.GetAllTaxonomiesAsync();
         var tagCounts = new Dictionary<int, int>();

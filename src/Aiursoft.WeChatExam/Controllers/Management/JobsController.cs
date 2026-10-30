@@ -27,11 +27,11 @@ public class JobsController(
     [RenderInNavBar(
         NavGroupName = "Administration",
         NavGroupOrder = 9999,
-        CascadedLinksGroupName = "System",
-        CascadedLinksIcon = "cog",
-        CascadedLinksOrder = 9999,
+        CascadedLinksGroupName = "Advanced Management",
+        CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110,
         LinkText = "Background Jobs",
-        LinkOrder = 2)]
+        LinkOrder = 8)]
     public IActionResult Index()
     {
         var oneHourAgo = TimeSpan.FromHours(1);

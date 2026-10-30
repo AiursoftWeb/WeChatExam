@@ -15,8 +15,8 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     IStringLocalizer<ContentChecksController> localizer) : Controller
 {
     [RenderInNavBar(NavGroupName = "Administration", NavGroupOrder = 9999,
-        CascadedLinksGroupName = "Content Management", CascadedLinksIcon = "folder-tree",
-        CascadedLinksOrder = 1, LinkText = "Content Configuration Checks", LinkOrder = 8)]
+        CascadedLinksGroupName = "Advanced Management", CascadedLinksIcon = "settings",
+        CascadedLinksOrder = 110, LinkText = "Content Configuration Checks", LinkOrder = 0)]
     [HttpGet]
     public IActionResult Index(bool run = false)
     {
