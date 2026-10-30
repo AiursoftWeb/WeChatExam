@@ -121,6 +121,13 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
             {
                 return (false, "该优惠码已被使用", coupon);
             }
+
+            // Checkout accepts codes directly, so it must honor the same existing
+            // claimant restriction as ClaimCouponAsync before granting a discount.
+            if (await context.UserClaimedCoupons.AnyAsync(c => c.CouponId == coupon.Id && c.UserId != userId))
+            {
+                return (false, "该一次性优惠券已被他人领取", coupon);
+            }
         }
 
         // Check if user has already used this multi-use coupon

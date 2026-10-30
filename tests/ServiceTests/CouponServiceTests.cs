@@ -113,6 +113,28 @@ public class CouponServiceTests
     }
 
     [TestMethod]
+    [DataRow(true)]
+    [DataRow(false)]
+    public async Task DirectRedemptionRespectsExistingSingleUseClaim(bool singleUse)
+    {
+        var coupon = await _service.CreateAsync(_channelId, "CLAIMED", 1000, singleUse);
+        // Unclaimed codes remain redeemable directly; only existing private claims restrict the user.
+        Assert.IsTrue((await _service.ValidateCouponAsync(coupon.Code, _productId, "other-user")).IsValid);
+        Assert.IsTrue((await _service.ClaimCouponAsync("owner", coupon.Code)).Success);
+        _dbContext.ChangeTracker.Clear();
+
+        var owner = await _service.ValidateCouponAsync(coupon.Code, _productId, "owner");
+        var other = await _service.ValidateCouponAsync(coupon.Code, _productId, "other-user");
+        Assert.IsTrue(owner.IsValid);
+        Assert.AreEqual(!singleUse, other.IsValid);
+        if (singleUse) Assert.AreEqual("该一次性优惠券已被他人领取", other.ErrorMessage);
+        Assert.AreEqual(1, await _dbContext.UserClaimedCoupons.CountAsync());
+        Assert.AreEqual("owner", (await _dbContext.UserClaimedCoupons.SingleAsync()).UserId);
+        Assert.IsFalse((await _dbContext.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
     public async Task TestRecordUsage()
     {
         var userId = "user1";

@@ -244,6 +244,35 @@ public class WeChatPayCouponIntegrationTests
         Assert.IsFalse((await _dbContext.UserClaimedCoupons.SingleAsync()).IsUsed);
     }
 
+    [TestMethod]
+    public async Task ClaimedSingleUseCodeCannotActivateAnotherBuyer()
+    {
+        var channel = await _dbContext.DistributionChannels.SingleAsync();
+        var coupon = await _couponService.CreateAsync(channel.Id, "OWNER-ONLY", 10000, true);
+        Assert.IsTrue((await _couponService.ClaimCouponAsync(_userId, coupon.Code)).Success);
+        _dbContext.ChangeTracker.Clear();
+
+        // Passing a code directly to checkout must not bypass the claim endpoint's owner check.
+        var other = await _payService.CreateOrderAsync("other-user", "other-openid", _productId, coupon.Code);
+        Assert.IsFalse(other.Success);
+        Assert.AreEqual("该一次性优惠券已被他人领取", other.ErrorMessage);
+        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        Assert.IsFalse((await _dbContext.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.IsNull((await _dbContext.Coupons.SingleAsync()).UsedByUserId);
+
+        // The rejected attempt must leave the owner's full discount usable, with no WeChat charge.
+        var owner = await _payService.CreateOrderAsync(_userId, "openid", _productId, coupon.Code);
+        Assert.IsTrue(owner.Success);
+        Assert.AreEqual(_userId, (await _dbContext.PaymentOrders.SingleAsync()).UserId);
+        Assert.AreEqual(_userId, (await _dbContext.VipMemberships.SingleAsync()).UserId);
+        Assert.AreEqual(_userId, (await _dbContext.CouponUsages.SingleAsync()).UserId);
+        Assert.AreEqual(_userId, (await _dbContext.Coupons.SingleAsync()).UsedByUserId);
+        Assert.IsTrue((await _dbContext.UserClaimedCoupons.SingleAsync()).IsUsed);
+    }
+
     [TestCleanup]
     public void Cleanup()
     {
