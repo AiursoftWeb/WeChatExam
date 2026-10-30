@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Επεξεργασία άσκησης</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Επεξεργασία ιδρύματος</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Επεξεργασία κατηγορίας γνώσεων</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Επεξεργασία σημείου γνώσης</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Επεξεργασία γραπτού</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Επεξεργασία περιόδου</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Επεξεργασία ετικέτας</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Άσκηση</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Ίδρυμα</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Κατηγορία γνώσεων</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Σημείο γνώσης</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Παλιό έγγραφο</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Προσομοιωμένο διαγώνισμα</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Δεν έχει διαμορφωθεί τίποτα</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>Γραπτό διαγώνισμα</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Περίοδος</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Η τιμολόγηση ανά περίοδο επηρεάζει {0} ασκήσεις που συνδέονται με {1} γνωστικά αντικείμενα.</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>Δημόσιο / δωρεάν</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Διαβάστε ολόκληρη την άσκηση</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Πραγματικό γραπτό διαγώνισμα</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Οι πωλήσεις είναι απενεργοποιημένες</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Χρησιμοποιείται από {0} ασκήσεις που συνδέονται με {1} γνωστικά αντικείμενα. Η αλλαγή της τιμής της ετικέτας επηρεάζει όλες αυτές τις ασκήσεις.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Χρησιμοποιείται από {0} ασκήσεις που συνδέονται με {1} γνωστικά σημεία. Οι ετικέτες χρησιμοποιούνται για εσωτερική οργάνωση και δεν επηρεάζουν την τιμολόγηση της εξάσκησης.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Προβολή παγωμένου διαγωνίσματος</value>

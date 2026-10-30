@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>Edit latihan</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Edit institusi</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Edit kategori pengetahuan</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>Edit poin pengetahuan</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>Edit makalah</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Edit periode</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>Edit tag</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>Latihan</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institusi</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Kategori Pengetahuan</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>Poin Pengetahuan</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Soal lama</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Makalah simulasi</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>Belum ada yang dikonfigurasi</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>Paket soal</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>Periode</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Harga berdasarkan periode memengaruhi {0} latihan yang terkait dengan {1} poin pengetahuan.</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>Umum / gratis</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>Baca seluruh latihan</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Naskah ujian asli</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>Penjualan dinonaktifkan</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>Digunakan oleh {0} latihan yang terkait dengan {1} poin pengetahuan. Mengubah harga tag akan memengaruhi semua latihan ini.</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Digunakan oleh {0} latihan yang terkait dengan {1} poin pengetahuan. Tag digunakan untuk pengorganisasian internal, bukan untuk menentukan harga latihan.</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Lihat naskah ujian yang dibekukan</value>

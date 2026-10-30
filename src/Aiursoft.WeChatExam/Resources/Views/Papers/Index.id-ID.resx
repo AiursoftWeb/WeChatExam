@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Aksi</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Buat Naskah Ujian Simulasi</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Buat Kertas</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Buat Naskah Ujian Asli</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Dibuat</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Impor Makalah</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Arsip Kertas Lama</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Tidak ada kertas yang ditemukan</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Dokumen-dokumen ini disimpan untuk keperluan migrasi dan ujian historis.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Batas Waktu</value>

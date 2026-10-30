@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Επιλέξτε Κατηγορία --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Επιλέξτε ίδρυμα --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Επιλέξτε συνολική κατηγορία --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>Το πεδίο πρόσβασης είναι κλειδωμένο επειδή αυτό το προϊόν έχει παραγγελίες ή συνδρομές.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP για όλες τις πραγματικές εξετάσεις (παλαιού τύπου)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Ακύρωση</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Φεν (1/100 Γιουάν)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Περιλαμβάνει τα αυθεντικά θέματα εξετάσεων αυτού του ιδρύματος, όχι ασκήσεις για ανεξάρτητη εξάσκηση σε μαθήματα.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Ίδρυμα</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP Ιδρύματος</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Τιμή (Φέν)</value>

@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>Biarkan kosong untuk menggunakan pengaturan default kertas</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Makalah simulasi</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Kertas asli</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>Pilih versi makalah yang telah dipublikasikan</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>Waktu yang diperbolehkan untuk percobaan siswa. Biarkan kosong untuk menggunakan batas waktu Kertas.</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>Versi {0} · {1} menit</value>
   </data>
 
 </root>

@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>хвилин</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Пробні роботи</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Далі</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Не знайдено відповідних тестів</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Немає питань</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Сторінка {0} з {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Сторінки тестів</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Фільтр статусу іспиту</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>балів</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Попередня</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Опублікована</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Реальний іспит</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Реальні роботи</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Пошук</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Пошук тестів...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Показати всі роботи</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Почати тест</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Тестові іспити</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Перевірте поточний шаблон, включно з неопублікованими змінами. Надіслані відповіді перевіряються за допомогою спільного механізму оцінювання, зокрема справжнім ШІ.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Спробуйте іншу назву або фільтр за статусом.</value>

@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>कार्रवाई</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>मॉक पेपर बनाएँ</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>कागज बनाएं</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>वास्तविक प्रश्नपत्र बनाएँ</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>बनाया गया</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>पेपर आयात करें</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>पुराने प्रश्नपत्रों का संग्रह</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>कोई पेपर नहीं मिला</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>ये प्रश्नपत्र माइग्रेशन और ऐतिहासिक परीक्षाओं के लिए सुरक्षित रखे गए हैं।</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>समय सीमा</value>

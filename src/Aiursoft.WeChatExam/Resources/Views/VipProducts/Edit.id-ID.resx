@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Pilih Kategori --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Pilih Institusi --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Pilih Kategori Total --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>Cakupan akses dikunci karena produk ini memiliki pesanan atau keanggotaan.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>VIP Semua Ujian Nyata (Versi Lama)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Batal</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Mencakup soal ujian asli dari institusi ini, bukan latihan kursus mandiri.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institusi</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP Institusi</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Harga (Fen)</value>

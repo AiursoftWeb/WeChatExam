@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>minutter</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Prøveeksamensopgaver</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Næste</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Ingen matchende opgaver</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Ingen spørgsmål</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Side {0} af {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Sider med opgaver</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Prøvestatusfilter</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>point</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Forrige</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicerbar</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Eksamen</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Rigtige opgavesæt</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Søg</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Søg efter opgaver...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Vis alle opgaver</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Start test</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Testprøver</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Afprøv den aktuelle skabelon, inklusive ikke-publicerede ændringer. Besvarelser bedømmes med den fælles bedømmelsesmotor, herunder ægte AI-bedømmelse.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Prøv et andet titel- eller statusfilter.</value>

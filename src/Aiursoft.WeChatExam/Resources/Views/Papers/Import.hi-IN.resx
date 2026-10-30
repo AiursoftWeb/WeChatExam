@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>अतिरिक्त टैग (हर पंक्ति में एक)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>सदस्यता के बिना पहुँच की अनुमति दें</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>श्रेणी (वैकल्पिक)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>श्रेणी/वर्गीकरण तक पहुँच में विसंगति हो सकती है। सुझाई गई संबद्ध श्रेणियाँ:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>मौजूदा टैग जाँचें</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>टैग और पहुँच संबंधी सुझाव जाँचें</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>पूर्वदर्शन प्रश्न {0} की तुलना</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>सहेजने से पहले प्रश्न {0} का मानक उत्तर पूरा करें।</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>पूरा हुआ</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>सही</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>पाठ्यक्रम</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>मनपसंद नाम; अब शीर्षक का अनुसरण नहीं करता</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>हटाएँ</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>ड्राफ़्ट सहेज लिया गया है। पेपर संपादक इसकी समीक्षा करके प्रकाशित कर सकता है।</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>हैंडल को खींचें या स्थान बदलने वाले बटनों का उपयोग करें। पूर्वावलोकन में छूटे हुए उत्तर खाली रह सकते हैं, लेकिन सहेजने से पहले सभी मानक उत्तर पूरे करना आवश्यक है।</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>संपादन योग्य पूर्वावलोकन</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>हर प्रश्न चयनित पाठ्यक्रम का होना चाहिए।</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>मौजूदा शुल्क की स्थिति बरकरार रखी गई।</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>गलत</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>संस्थान</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>निःशुल्क है</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>क्या यह वास्तविक परीक्षा है</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>मॉक पेपर</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>नीचे ले जाएँ</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>पेपर की श्रेणी (वैकल्पिक)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>पेपर का प्रकार</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>पिछले वर्षों के परीक्षा प्रश्नपत्रों के लिए विश्वविद्यालय की वीआईपी सदस्यता आवश्यक है और उनमें विभिन्न पाठ्यक्रमों के प्रश्न हो सकते हैं।</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>लंबित</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>प्रक्रिया जारी है</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>वास्तविक प्रश्नपत्र</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>संपादित प्रीव्यू को नए निष्कर्षण से बदलें?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>अंक</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>एक पाठ्यक्रम चुनें</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>प्रश्नपत्र का प्रकार चुनें</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>एक अवधि चुनें</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>संस्थान चुनें</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>स्रोत टैग का पुनः उपयोग करने से यह टैग सभी जगह सशुल्क हो जाता है।</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>स्रोत टैग का नाम</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>स्रोत टैग वर्गीकरण (वैकल्पिक)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>मानक उत्तर (सहेजने से पहले आवश्यक)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>टैग केवल आयात किए गए प्रश्नों को व्यवस्थित करते हैं। वे प्रश्नपत्र की कीमत तय नहीं करते और न ही विद्यार्थियों के प्रश्नपत्र मेनू में दिखाई देते हैं। मौजूदा टैग में कोई बदलाव नहीं किया जाता।</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>वर्गीकरण</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>प्रकार</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>आगंतुक इस पूरे मॉक पेपर को हल कर सकते हैं, जिसमें सशुल्क प्रश्न भी शामिल हैं। परीक्षा के व्यक्तिगत रिकॉर्ड सहेजने के लिए लॉगिन करना आवश्यक है।</value>
   </data>
 
 </root>

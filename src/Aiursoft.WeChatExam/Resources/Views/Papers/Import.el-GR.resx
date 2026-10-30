@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Επιπλέον ετικέτες (μία ανά γραμμή)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Να επιτρέπεται η πρόσβαση χωρίς συνδρομή</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Κατηγορία (προαιρετικό)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Η πρόσβαση στην κατηγορία/ταξινομία ενδέχεται να μην είναι συνεπής. Προτεινόμενες συνδεδεμένες κατηγορίες:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Έλεγχος υπαρχουσών ετικετών</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Έλεγχος ετικετών και προτάσεων πρόσβασης</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Σύγκριση ερώτησης προεπισκόπησης {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Συμπληρώστε τη σωστή απάντηση για το ερώτημα {0} πριν αποθηκεύσετε.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Ολοκληρώθηκε</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Σωστό</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Μάθημα</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Προσαρμοσμένο όνομα· δεν ακολουθεί πλέον τον τίτλο</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Διαγραφή</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Το προσχέδιο αποθηκεύτηκε. Ένας επιμελητής θεμάτων μπορεί να το ελέγξει και να το δημοσιεύσει.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Σύρετε τη λαβή ή χρησιμοποιήστε τα κουμπιά μετακίνησης. Οι απαντήσεις που λείπουν μπορούν να παραμείνουν κενές στην προεπισκόπηση, αλλά όλες οι τυπικές απαντήσεις πρέπει να συμπληρωθούν πριν από την αποθήκευση.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Επεξεργάσιμη προεπισκόπηση</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Κάθε ερώτηση πρέπει να ανήκει στο επιλεγμένο μάθημα.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Διατηρείται η υπάρχουσα κατάσταση χρέωσης.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Λανθασμένο</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Ίδρυμα</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Είναι δωρεάν</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Είναι πραγματική εξέταση</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Δοκιμαστικό διαγώνισμα</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Μετακίνηση προς τα κάτω</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Κατηγορία γραπτού (προαιρετικό)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Τύπος διαγωνίσματος</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Τα παλιά θέματα εξετάσεων απαιτούν συνδρομή VIP πανεπιστημίου και μπορεί να περιέχουν ερωτήσεις από διαφορετικά μαθήματα.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Σε εκκρεμότητα</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Σε επεξεργασία</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Πραγματικό διαγώνισμα</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Να αντικατασταθεί η επεξεργασμένη προεπισκόπηση με νέα εξαγωγή;</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Βαθμολογία</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Επιλέξτε ένα μάθημα</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Επιλέξτε τύπο γραπτού</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Επιλέξτε μια περίοδο</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Επιλέξτε ένα ίδρυμα</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Η επαναχρησιμοποίηση της πηγής καθιστά αυτήν την ετικέτα επί πληρωμή για όλους.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Όνομα ετικέτας πηγής</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Ταξινομία ετικετών πηγής (προαιρετικό)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Τυπική απάντηση (απαιτείται πριν από την αποθήκευση)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Οι ετικέτες χρησιμεύουν μόνο για την οργάνωση των εισαγόμενων ερωτήσεων. Δεν καθορίζουν την τιμή του διαγωνίσματος ούτε εμφανίζονται στο μενού διαγωνισμάτων των μαθητών. Οι υπάρχουσες ετικέτες δεν τροποποιούνται.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Ταξινομία</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Τύπος</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Οι επισκέπτες μπορούν να διαγωνιστούν σε ολόκληρο αυτό το δοκιμαστικό διαγώνισμα, συμπεριλαμβανομένων τυχόν ερωτήσεων επί πληρωμή. Για την αποθήκευση των προσωπικών αποτελεσμάτων των εξετάσεων απαιτείται σύνδεση.</value>
   </data>
 
 </root>

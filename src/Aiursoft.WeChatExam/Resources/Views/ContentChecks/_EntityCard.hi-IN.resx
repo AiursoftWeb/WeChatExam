@@ -33,11 +33,20 @@
   <data name="Edit exercise" xml:space="preserve">
     <value>अभ्यास संपादित करें</value>
   </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>संस्थान संपादित करें</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>ज्ञान श्रेणी संपादित करें</value>
+  </data>
   <data name="Edit knowledge point" xml:space="preserve">
     <value>ज्ञान बिंदु संपादित करें</value>
   </data>
   <data name="Edit paper" xml:space="preserve">
     <value>प्रश्नपत्र संपादित करें</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>अवधि संपादित करें</value>
   </data>
   <data name="Edit tag" xml:space="preserve">
     <value>टैग संपादित करें</value>
@@ -51,8 +60,20 @@
   <data name="Exercise" xml:space="preserve">
     <value>अभ्यास</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>संस्था</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>ज्ञान श्रेणी</value>
+  </data>
   <data name="Knowledge point" xml:space="preserve">
     <value>ज्ञान बिंदु</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>पुराना प्रश्नपत्र</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>मॉडल प्रश्नपत्र</value>
   </data>
   <data name="None configured" xml:space="preserve">
     <value>कोई कॉन्फ़िगरेशन नहीं</value>
@@ -66,11 +87,20 @@
   <data name="Paper" xml:space="preserve">
     <value>प्रश्नपत्र</value>
   </data>
+  <data name="Period" xml:space="preserve">
+    <value>अवधि</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>अवधि के मूल्य निर्धारण से {1} ज्ञान बिंदुओं से जुड़े {0} अभ्यास प्रभावित होते हैं।</value>
+  </data>
   <data name="Public / free" xml:space="preserve">
     <value>सार्वजनिक / निःशुल्क</value>
   </data>
   <data name="Read full exercise" xml:space="preserve">
     <value>पूरा अभ्यास पढ़ें</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>वास्तविक प्रश्नपत्र</value>
   </data>
   <data name="Sales disabled" xml:space="preserve">
     <value>बिक्री बंद है</value>
@@ -83,6 +113,9 @@
   </data>
   <data name="Used by {0} exercises linked to {1} knowledge points. Changing tag pricing affects all these exercises." xml:space="preserve">
     <value>{0} अभ्यासों द्वारा उपयोग किया जाता है, जो {1} ज्ञान बिंदुओं से जुड़े हैं। टैग की कीमत बदलने से ये सभी अभ्यास प्रभावित होते हैं।</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>{0} अभ्यासों द्वारा उपयोग किया जाता है, जो {1} ज्ञान-बिंदुओं से जुड़े हैं। टैग आंतरिक संगठन के लिए हैं, अभ्यास के मूल्य-निर्धारण के लिए नहीं।</value>
   </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>जमे हुए प्रश्नपत्र को देखें</value>

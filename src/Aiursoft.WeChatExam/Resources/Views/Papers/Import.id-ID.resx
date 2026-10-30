@@ -27,11 +27,17 @@
   <data name="Additional tags (one per line)" xml:space="preserve">
     <value>Tag tambahan (satu per baris)</value>
   </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Izinkan akses tanpa keanggotaan</value>
+  </data>
   <data name="Category (optional)" xml:space="preserve">
     <value>Kategori (opsional)</value>
   </data>
   <data name="Category/taxonomy access may be inconsistent. Suggested linked categories:" xml:space="preserve">
     <value>Akses kategori/taksonomi mungkin tidak konsisten. Kategori terkait yang disarankan:</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Periksa tag yang sudah ada</value>
   </data>
   <data name="Check tags and access recommendations" xml:space="preserve">
     <value>Periksa tag dan rekomendasi akses</value>
@@ -42,6 +48,9 @@
   <data name="Comparing preview question {0}" xml:space="preserve">
     <value>Membandingkan soal pratinjau {0}</value>
   </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Lengkapi jawaban standar untuk soal {0} sebelum menyimpan.</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>Selesai</value>
   </data>
@@ -51,11 +60,17 @@
   <data name="Correct" xml:space="preserve">
     <value>Benar</value>
   </data>
+  <data name="Course" xml:space="preserve">
+    <value>Mata Pelajaran</value>
+  </data>
   <data name="Custom name; no longer follows title" xml:space="preserve">
     <value>Nama kustom; tidak lagi mengikuti judul</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Hapus</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Draf berhasil disimpan. Editor naskah dapat meninjau dan menerbitkannya.</value>
   </data>
   <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
     <value>Seret gagangnya atau gunakan tombol pindah. Jawaban yang belum tersedia boleh dibiarkan kosong di pratinjau, tetapi semua jawaban standar harus dilengkapi sebelum menyimpan.</value>
@@ -65,6 +80,9 @@
   </data>
   <data name="Editable preview" xml:space="preserve">
     <value>Pratinjau yang dapat diedit</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Setiap soal harus termasuk dalam mata kuliah yang dipilih.</value>
   </data>
   <data name="Existing fee status retained." xml:space="preserve">
     <value>Status biaya yang sudah ada tetap dipertahankan.</value>
@@ -105,11 +123,17 @@
   <data name="Incorrect" xml:space="preserve">
     <value>Salah</value>
   </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Institusi</value>
+  </data>
   <data name="Is Free" xml:space="preserve">
     <value>Gratis</value>
   </data>
   <data name="Is Real Exam" xml:space="preserve">
     <value>Apakah Ujian Sungguhan</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Naskah Simulasi</value>
   </data>
   <data name="Move down" xml:space="preserve">
     <value>Pindahkan ke bawah</value>
@@ -144,6 +168,12 @@
   <data name="Paper category (optional)" xml:space="preserve">
     <value>Kategori naskah (opsional)</value>
   </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Jenis makalah</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Kumpulan soal ujian tahun-tahun sebelumnya memerlukan keanggotaan VIP universitas dan dapat berisi soal dari berbagai mata kuliah.</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Menunggu</value>
   </data>
@@ -152,6 +182,9 @@
   </data>
   <data name="Processing" xml:space="preserve">
     <value>Sedang diproses</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Naskah Ujian Sebenarnya</value>
   </data>
   <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
     <value>Ganti pratinjau yang telah diedit dengan hasil ekstraksi baru?</value>
@@ -165,11 +198,23 @@
   <data name="Score" xml:space="preserve">
     <value>Nilai</value>
   </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Pilih mata pelajaran</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Pilih jenis naskah soal</value>
+  </data>
   <data name="Select a period" xml:space="preserve">
     <value>Pilih periode</value>
   </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Pilih institusi</value>
+  </data>
   <data name="Source reuse makes this tag paid globally." xml:space="preserve">
     <value>Penggunaan ulang sumber membuat tag ini berbayar secara global.</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Nama tag sumber</value>
   </data>
   <data name="Source tag taxonomy (optional)" xml:space="preserve">
     <value>Taksonomi tag sumber (opsional)</value>
@@ -179,6 +224,9 @@
   </data>
   <data name="Standard answer (required before saving)" xml:space="preserve">
     <value>Jawaban standar (wajib diisi sebelum menyimpan)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Tag hanya digunakan untuk mengelompokkan soal yang diimpor. Tag tidak menentukan harga paket soal atau muncul di menu paket soal siswa. Tag yang sudah ada tidak diubah.</value>
   </data>
   <data name="Taxonomy" xml:space="preserve">
     <value>Taksonomi</value>
@@ -191,6 +239,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Jenis</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Pengunjung dapat mengerjakan seluruh ujian simulasi ini, termasuk soal berbayar. Untuk menyimpan catatan ujian pribadi, Anda harus masuk.</value>
   </data>
 
 </root>

@@ -21,11 +21,17 @@
       <data name="Back to List" xml:space="preserve">
     <value>Takaisin listaan</value>
   </data>
+  <data name="Choose course" xml:space="preserve">
+    <value>Valitse kurssi</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Luo</value>
   </data>
   <data name="Create Category" xml:space="preserve">
     <value>Luo kategoria</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Luo tietokategoria</value>
   </data>
   <data name="Is Free" xml:space="preserve">
     <value>On ilmainen</value>
@@ -38,6 +44,9 @@
   </data>
   <data name="Top Level" xml:space="preserve">
     <value>Ylin taso</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Kategoriat yhteensä</value>
   </data>
 
 </root>
