@@ -30,7 +30,7 @@ public interface IWeChatPayService
     /// <summary>
     /// 查询订单状态
     /// </summary>
-    Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo);
+    Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo, string? userId);
 
     /// <summary>
     /// 查询用户所有 VIP 状态列表

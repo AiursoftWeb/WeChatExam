@@ -198,9 +198,7 @@ public class WeChatPayService(
             query.MerchantId != _settings.WeChat.Payment.MchId || query.AppId != _settings.WeChat.AppId) return false;
         if (query.TradeState == "SUCCESS")
         {
-            if (query.Amount is { Currency: "CNY", Total: var total } && total == order.AmountInFen && !string.IsNullOrEmpty(query.TransactionId) &&
-                order.VipProductId.HasValue && await dbContext.VipProducts.AnyAsync(p => p.Id == order.VipProductId))
-                await ActivatePaidOrderAsync(order, query.TransactionId);
+            await RecoverPaidOrderAsync(order, query);
             return false;
         }
         if (query.TradeState == "NOTPAY")
@@ -417,12 +415,63 @@ public class WeChatPayService(
         return true;
     }
 
-    public async Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo)
+    public async Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo, string? userId)
     {
-        return await dbContext.PaymentOrders
-            .Include(o => o.User)
-            .Include(o => o.VipProduct)
-            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo);
+        // Authorize before contacting WeChat or reconciling anything. Looking up
+        // another buyer's order must not cause activation as a side effect.
+        if (string.IsNullOrEmpty(userId)) return null;
+        var order = await dbContext.PaymentOrders.AsNoTracking()
+            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo && o.UserId == userId);
+        if (order == null || order.Status is not (PaymentOrderStatus.Pending or PaymentOrderStatus.Failed)) return order;
+
+        GetPayTransactionByOutTradeNumberResponse query;
+        try
+        {
+            // Query outside database locks. A lost notification can be recovered
+            // by the existing payment-result screen, without another checkout.
+            query = await tenpayClient.ExecuteGetPayTransactionByOutTradeNumberAsync(new GetPayTransactionByOutTradeNumberRequest
+            { MerchantId = _settings.WeChat.Payment.MchId, OutTradeNumber = order.OutTradeNo });
+        }
+        catch (Exception ex)
+        {
+            logger.LogWarning(ex, "WeChat status is unavailable for order {OutTradeNo}", outTradeNo);
+            return order;
+        }
+        if (!query.IsSuccessful() || query.OutTradeNumber != order.OutTradeNo ||
+            query.MerchantId != _settings.WeChat.Payment.MchId || query.AppId != _settings.WeChat.AppId ||
+            query.TradeState is not ("SUCCESS" or "CLOSED")) return order;
+
+        return await InPaymentTransactionAsync(async () =>
+        {
+            var current = await dbContext.PaymentOrders.SingleAsync(o => o.Id == order.Id && o.UserId == userId);
+            // Use the same lock order as notifications and checkout. Reload after
+            // waiting so concurrent queries/notifications activate only once.
+            await LockBuyerAsync(current.UserId);
+            await LockCouponAsync(current.CouponId);
+            await LockOrderAsync(current);
+            if (current.Status is not (PaymentOrderStatus.Pending or PaymentOrderStatus.Failed)) return current;
+            if (query.TradeState == "SUCCESS")
+                await RecoverPaidOrderAsync(current, query);
+            else
+            {
+                // This read never closes a payable order. Only WeChat's confirmed
+                // CLOSED releases the reservation; NOTPAY or local expiry do not.
+                current.Status = PaymentOrderStatus.Closed;
+                dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = current.Id, EventType = "ClosedByQuery",
+                    RawData = JsonSerializer.Serialize(new { current.OutTradeNo, query.TradeState }) });
+            }
+            return current;
+        });
+    }
+
+    private async Task RecoverPaidOrderAsync(PaymentOrder order, GetPayTransactionByOutTradeNumberResponse query)
+    {
+        // Share the saved-price check with checkout recovery. Current product
+        // prices and WeChat payer discounts do not change the amount owed.
+        if (query.Amount is { Currency: "CNY", Total: var total } && total == order.AmountInFen &&
+            !string.IsNullOrEmpty(query.TransactionId) && order.VipProductId.HasValue &&
+            await dbContext.VipProducts.AnyAsync(p => p.Id == order.VipProductId))
+            await ActivatePaidOrderAsync(order, query.TransactionId);
     }
 
     public async Task<List<VipMembership>> GetVipStatusListAsync(string userId)
