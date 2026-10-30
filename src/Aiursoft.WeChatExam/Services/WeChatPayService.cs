@@ -321,113 +321,146 @@ public class WeChatPayService(
     {
         try
         {
-
-            // Verify callback signature using SDK (using positional arguments to avoid parameter name mismatches)
-            var isValid = tenpayClient.VerifyEventSignature(timestamp, nonce, requestBody, signature, serialNumber);
-
-            if (!isValid)
+            var retrying = false;
+            return await dbContext.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
             {
-                logger.LogWarning("Payment notify signature verification failed");
-                return false;
-            }
-
-            // Decrypt notification body
-            var callbackModel = tenpayClient.DeserializeEvent(requestBody);
-            var paymentResource = tenpayClient.DecryptEventResource<TransactionResource>(callbackModel);
-
-            var outTradeNo = paymentResource.OutTradeNumber;
-            var transactionId = paymentResource.TransactionId;
-            var tradeState = paymentResource.TradeState;
-
-            logger.LogInformation("Received payment notify for order {OutTradeNo}, state: {TradeState}",
-                outTradeNo, tradeState);
-
-            // Find order
-            var order = await dbContext.PaymentOrders
-                .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo);
-
-            if (order == null)
-            {
-                logger.LogWarning("Payment notify for unknown order: {OutTradeNo}", outTradeNo);
-                return true; // Return true to avoid WeChat retrying for unknown orders
-            }
-
-            // Signature verification proves the sender, not that this payment matches our order.
-            // Compare the saved payable amount, not today's product price or payer_total after WeChat discounts.
-            if (tradeState == "SUCCESS" &&
-                (paymentResource.Amount is not { Currency: "CNY", Total: var total } ||
-                 total != order.AmountInFen))
-            {
-                logger.LogWarning("Payment notify amount or currency mismatch for order {OutTradeNo}; expected {ExpectedAmount} CNY",
-                    outTradeNo, order.AmountInFen);
-                return false;
-            }
-
-            // Idempotent check: if already in final state, skip processing
-            if (order.Status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded)
-            {
-                logger.LogInformation("Order {OutTradeNo} already in final state {Status}, skipping",
-                    outTradeNo, order.Status);
-
-                // Log the duplicate notification
-                dbContext.PaymentLogs.Add(new PaymentLog
-                {
-                    PaymentOrderId = order.Id,
-                    EventType = "DuplicateNotify",
-                    RawData = requestBody
-                });
-                await dbContext.SaveChangesAsync();
-                return true;
-            }
-
-            // Log the notification
-            dbContext.PaymentLogs.Add(new PaymentLog
-            {
-                PaymentOrderId = order.Id,
-                EventType = "Notified",
-                RawData = requestBody
+                if (retrying) dbContext.ChangeTracker.Clear();
+                retrying = true;
+                return await ApplyPaymentNotifyAsync(requestBody, signature, timestamp, nonce, serialNumber);
             });
-
-            // Update order status based on trade state
-            if (tradeState == "SUCCESS")
-            {
-                order.Status = PaymentOrderStatus.Paid;
-                order.WechatTransactionId = transactionId;
-                order.PaidAt = DateTime.UtcNow;
-
-                // Process VIP business logic
-                await ProcessVipActivationAsync(order);
-
-                dbContext.PaymentLogs.Add(new PaymentLog
-                {
-                    PaymentOrderId = order.Id,
-                    EventType = "StatusChanged",
-                    RawData = JsonSerializer.Serialize(new { newStatus = "Paid", transactionId })
-                });
-
-                logger.LogInformation("Order {OutTradeNo} paid successfully, transaction: {TransactionId}",
-                    outTradeNo, transactionId);
-            }
-            else if (tradeState is "CLOSED" or "REVOKED" or "PAYERROR")
-            {
-                order.Status = tradeState == "PAYERROR" ? PaymentOrderStatus.Failed : PaymentOrderStatus.Closed;
-
-                dbContext.PaymentLogs.Add(new PaymentLog
-                {
-                    PaymentOrderId = order.Id,
-                    EventType = "StatusChanged",
-                    RawData = JsonSerializer.Serialize(new { newStatus = order.Status.ToString(), tradeState })
-                });
-            }
-
-            await dbContext.SaveChangesAsync();
-            return true;
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Failed to handle payment notify. Serial: {SerialNumber}", serialNumber);
             return false;
         }
+    }
+
+    private async Task<bool> ApplyPaymentNotifyAsync(
+        string requestBody,
+        string signature,
+        string timestamp,
+        string nonce,
+        string serialNumber)
+    {
+        // Verify callback signature using SDK (using positional arguments to avoid parameter name mismatches)
+        var isValid = tenpayClient.VerifyEventSignature(timestamp, nonce, requestBody, signature, serialNumber);
+
+        if (!isValid)
+        {
+            logger.LogWarning("Payment notify signature verification failed");
+            return false;
+        }
+
+        // Decrypt notification body
+        var callbackModel = tenpayClient.DeserializeEvent(requestBody);
+        var paymentResource = tenpayClient.DecryptEventResource<TransactionResource>(callbackModel);
+
+        var outTradeNo = paymentResource.OutTradeNumber;
+        var transactionId = paymentResource.TransactionId;
+        var tradeState = paymentResource.TradeState;
+
+        logger.LogInformation("Received payment notify for order {OutTradeNo}, state: {TradeState}",
+            outTradeNo, tradeState);
+
+        // Find order
+        var order = await dbContext.PaymentOrders
+            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo);
+
+        if (order == null)
+        {
+            logger.LogWarning("Payment notify for unknown order: {OutTradeNo}", outTradeNo);
+            return true; // Return true to avoid WeChat retrying for unknown orders
+        }
+
+        // Signature verification proves the sender, not that this payment matches our order.
+        // Compare the saved payable amount, not today's product price or payer_total after WeChat discounts.
+        if (tradeState == "SUCCESS" &&
+            (paymentResource.Amount is not { Currency: "CNY", Total: var total } ||
+             total != order.AmountInFen))
+        {
+            logger.LogWarning("Payment notify amount or currency mismatch for order {OutTradeNo}; expected {ExpectedAmount} CNY",
+                outTradeNo, order.AmountInFen);
+            return false;
+        }
+
+        // A status check alone races with simultaneous notifications. Hold this
+        // order's database write lock, then reload the state committed by the
+        // previous handler. The self-assignment acquires the lock without changing
+        // business data and works with both MySQL and SQLite.
+        // Coupon and accounting services save internally, so keep all activation
+        // writes in this transaction: a failed notification must remain retryable.
+        await using var transaction = dbContext.Database.IsRelational()
+            ? await dbContext.Database.BeginTransactionAsync()
+            : null;
+        if (transaction != null)
+        {
+            await dbContext.PaymentOrders.Where(o => o.Id == order.Id)
+                .ExecuteUpdateAsync(update => update.SetProperty(o => o.Status, o => o.Status));
+            await dbContext.Entry(order).ReloadAsync();
+        }
+
+        // Idempotent check: if already in final state, skip processing
+        if (order.Status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded)
+        {
+            logger.LogInformation("Order {OutTradeNo} already in final state {Status}, skipping",
+                outTradeNo, order.Status);
+
+            // Log the duplicate notification
+            dbContext.PaymentLogs.Add(new PaymentLog
+            {
+                PaymentOrderId = order.Id,
+                EventType = "DuplicateNotify",
+                RawData = requestBody
+            });
+            await dbContext.SaveChangesAsync();
+            if (transaction != null) await transaction.CommitAsync();
+            return true;
+        }
+
+        // Log the notification
+        dbContext.PaymentLogs.Add(new PaymentLog
+        {
+            PaymentOrderId = order.Id,
+            EventType = "Notified",
+            RawData = requestBody
+        });
+
+        // Update order status based on trade state
+        if (tradeState == "SUCCESS")
+        {
+            order.Status = PaymentOrderStatus.Paid;
+            order.WechatTransactionId = transactionId;
+            order.PaidAt = DateTime.UtcNow;
+
+            // Process VIP business logic
+            await ProcessVipActivationAsync(order);
+
+            dbContext.PaymentLogs.Add(new PaymentLog
+            {
+                PaymentOrderId = order.Id,
+                EventType = "StatusChanged",
+                RawData = JsonSerializer.Serialize(new { newStatus = "Paid", transactionId })
+            });
+
+            logger.LogInformation("Order {OutTradeNo} paid successfully, transaction: {TransactionId}",
+                outTradeNo, transactionId);
+        }
+        else if (tradeState is "CLOSED" or "REVOKED" or "PAYERROR")
+        {
+            order.Status = tradeState == "PAYERROR" ? PaymentOrderStatus.Failed : PaymentOrderStatus.Closed;
+
+            dbContext.PaymentLogs.Add(new PaymentLog
+            {
+                PaymentOrderId = order.Id,
+                EventType = "StatusChanged",
+                RawData = JsonSerializer.Serialize(new { newStatus = order.Status.ToString(), tradeState })
+            });
+        }
+
+        await dbContext.SaveChangesAsync();
+        if (transaction != null) await transaction.CommitAsync();
+        return true;
     }
 
     public async Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo)

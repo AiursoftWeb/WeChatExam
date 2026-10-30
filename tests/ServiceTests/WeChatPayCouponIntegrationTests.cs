@@ -7,6 +7,7 @@ using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.InMemory;
+using Aiursoft.WeChatExam.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -21,6 +22,7 @@ public class WeChatPayCouponIntegrationTests
     private CouponService _couponService = null!;
     private ChangeService _changeService = null!;
     private WeChatPayService _payService = null!;
+    private IOptions<AppSettings> _settings = null!;
     private HttpClient _tenpayHttpClient = null!;
     private WechatTenpayClient _tenpayClient = null!;
     private Guid _productId;
@@ -47,7 +49,7 @@ public class WeChatPayCouponIntegrationTests
             MerchantCertificatePrivateKey = "---BEGIN PRIVATE KEY---\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK...\n---END PRIVATE KEY---"
         }, _tenpayHttpClient);
         
-        var settings = Options.Create(new AppSettings
+        _settings = Options.Create(new AppSettings
         { 
             AuthProvider = "Local",
             OIDC = new OidcSettings 
@@ -76,7 +78,7 @@ public class WeChatPayCouponIntegrationTests
             _dbContext,
             _couponService,
             _changeService,
-            settings,
+            _settings,
             NullLogger<WeChatPayService>.Instance);
 
         // Setup base data
@@ -357,14 +359,29 @@ public class WeChatPayCouponIntegrationTests
 
 
     [TestMethod]
-    [DataRow(100, "CNY", true)]
-    [DataRow(99, "CNY", false)]
-    [DataRow(101, "CNY", false)]
-    [DataRow(100, "USD", false)]
-    [DataRow(100, null, false)]
-    [DataRow(null, null, false)]
-    public async Task SchoolPendingOrderAndSignedNotificationRetainTargetAndActivateOnce(int? total, string? currency, bool accepted)
+    [DataRow(100, "CNY", true, false, false)]
+    [DataRow(100, "CNY", true, true, false)]
+    [DataRow(100, "CNY", true, true, true)]
+    [DataRow(99, "CNY", false, false, false)]
+    [DataRow(101, "CNY", false, false, false)]
+    [DataRow(100, "USD", false, false, false)]
+    [DataRow(100, null, false, false, false)]
+    [DataRow(null, null, false, false, false)]
+    public async Task SchoolPendingOrderAndSignedNotificationRetainTargetAndActivateOnce(int? total, string? currency, bool accepted, bool relational, bool failAccounting)
     {
+        if (relational)
+        {
+            await _dbContext.DisposeAsync();
+            _dbContext = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+                .UseSqlite("Data Source=:memory:").Options);
+            await _dbContext.Database.OpenConnectionAsync();
+            await _dbContext.Database.EnsureCreatedAsync();
+            _couponService = new CouponService(_dbContext);
+            _changeService = new ChangeService(_dbContext);
+            _payService = new WeChatPayService(_tenpayClient, _dbContext, _couponService,
+                _changeService, _settings, NullLogger<WeChatPayService>.Instance);
+        }
+
         // Exercise the real SDK verification and activation locally. The HTTP handler
         // rejects all outbound requests; this certificate belongs only to this test.
         using var rsa = RSA.Create(2048);
@@ -389,11 +406,11 @@ public class WeChatPayCouponIntegrationTests
             // The saved order amount remains authoritative if the catalog price changes.
             product.PriceInFen = 200;
             await _dbContext.SaveChangesAsync();
-            async Task<bool> Notify(RSA signingKey, int? notifiedTotal, string? notifiedCurrency, bool validSignature = true)
+            async Task<bool> Notify(RSA signingKey, int? notifiedTotal, string? notifiedCurrency, bool validSignature = true, string tradeState = "SUCCESS")
             {
                 var plain = JsonSerializer.SerializeToUtf8Bytes(new
                 {
-                    out_trade_no = order.OutTradeNo, transaction_id = "isolated-transaction", trade_state = "SUCCESS",
+                    out_trade_no = order.OutTradeNo, transaction_id = "isolated-transaction", trade_state = tradeState,
                     // A WeChat-funded discount can reduce payer_total without changing total.
                     amount = notifiedTotal.HasValue ? new { total = notifiedTotal.Value, currency = notifiedCurrency, payer_total = 70 } : null
                 });
@@ -408,6 +425,30 @@ public class WeChatPayCouponIntegrationTests
                 const string nonce = "isolated-signature-nonce";
                 var signature = Convert.ToBase64String(signingKey.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{body}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
                 return await _payService.HandlePaymentNotifyAsync(body, validSignature ? signature : "invalid", timestamp, nonce, entry.SerialNumber);
+            }
+            if (failAccounting)
+            {
+                // Coupon activation saves before the accounting event. A failure after
+                // that save must leave the entire payment retryable, not partially paid.
+                var coupon = new Coupon { Code = "ROLLBACK", AmountInFen = 10, IsSingleUse = true,
+                    DistributionChannel = new DistributionChannel { AgencyName = "Rollback test" } };
+                _dbContext.Coupons.Add(coupon);
+                order.Coupon = coupon;
+                order.DiscountInFen = 10;
+                await _dbContext.SaveChangesAsync();
+                await _dbContext.Database.ExecuteSqlRawAsync(
+                    "CREATE TRIGGER fail_accounting BEFORE INSERT ON Changes BEGIN SELECT RAISE(ABORT, 'Synthetic accounting failure'); END;");
+                Assert.IsFalse(await Notify(rsa, 100, "CNY"));
+                _dbContext.ChangeTracker.Clear();
+                order = await _dbContext.PaymentOrders.SingleAsync(o => o.Id == order.Id);
+                Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+                Assert.IsNull(order.PaidAt);
+                Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+                Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+                Assert.AreEqual(0, await _dbContext.PaymentLogs.CountAsync());
+                Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+                Assert.IsNull((await _dbContext.Coupons.SingleAsync(c => c.Id == coupon.Id)).UsedByUserId);
+                await _dbContext.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_accounting;");
             }
             Assert.IsFalse(await Notify(rsa, 100, "CNY", false));
             Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
@@ -433,6 +474,10 @@ public class WeChatPayCouponIntegrationTests
             Assert.AreEqual(1, await _dbContext.VipMemberships.CountAsync());
             Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync()).EndTime);
             Assert.AreEqual(1, await _dbContext.Changes.CountAsync(c => c.Type == ChangeType.VipActivatedViaPayment));
+            Assert.AreEqual(failAccounting ? 1 : 0, await _dbContext.CouponUsages.CountAsync());
+            Assert.IsTrue(await Notify(rsa, 100, "CNY", tradeState: "CLOSED"));
+            Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+            Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync()).EndTime);
         }
         finally
         {
