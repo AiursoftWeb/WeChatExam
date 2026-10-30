@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Toiminnot</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Luo harjoituskoe</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Luo paperi</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Luo oikea paperikoe</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Luotu</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Tuo koepaperi</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Vanhat tentit</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Ei paperia löytynyt</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Nämä tentit säilytetään siirtymistä ja historiallisia tenttejä varten.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Aikaraja</value>

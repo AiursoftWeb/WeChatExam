@@ -27,6 +27,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Batal</value>
   </data>
+  <data name="Cannot delete category with associated knowledge points. Please move these knowledge points first." xml:space="preserve">
+    <value>Kategori tidak dapat dihapus karena memiliki poin pengetahuan terkait. Harap pindahkan poin-poin pengetahuan tersebut terlebih dahulu.</value>
+  </data>
   <data name="Cannot delete category with associated questions. Please remove or reassign these questions first." xml:space="preserve">
     <value>Tidak dapat menghapus kategori dengan pertanyaan yang terkait. Silakan hapus atau tugaskan ulang pertanyaan-pertanyaan ini terlebih dahulu.</value>
   </data>
@@ -36,8 +39,14 @@
   <data name="Delete Category" xml:space="preserve">
     <value>Hapus Kategori</value>
   </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Hapus Kategori Pengetahuan</value>
+  </data>
   <data name="This action is irreversible. You are about to permanently delete the following category:" xml:space="preserve">
     <value>Tindakan ini tidak dapat dibatalkan. Anda akan menghapus kategori berikut secara permanen:</value>
+  </data>
+  <data name="View knowledge points" xml:space="preserve">
+    <value>Lihat poin pengetahuan</value>
   </data>
   <data name="View related questions" xml:space="preserve">
     <value>Lihat pertanyaan terkait</value>

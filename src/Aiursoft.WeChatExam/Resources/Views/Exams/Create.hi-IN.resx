@@ -33,8 +33,20 @@
   <data name="Leave empty to use paper default" xml:space="preserve">
     <value>खाली छोड़ें ताकि कागज के डिफ़ॉल्ट का उपयोग किया जा सके</value>
   </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>मॉक पेपर</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>वास्तविक प्रश्नपत्र</value>
+  </data>
+  <data name="Select a published paper version" xml:space="preserve">
+    <value>प्रकाशित प्रश्नपत्र का संस्करण चुनें</value>
+  </data>
   <data name="Time allowed for student attempt. Leave empty to use Paper&apos;s Time Limit." xml:space="preserve">
     <value>छात्र के प्रयास के लिए अनुमत समय। कागज की समय सीमा का उपयोग करने के लिए खाली छोड़ें।</value>
+  </data>
+  <data name="Version {0} · {1} minutes" xml:space="preserve">
+    <value>संस्करण {0} · {1} मिनट</value>
   </data>
 
 </root>

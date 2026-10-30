@@ -33,6 +33,9 @@
   <data name="Active course VIPs" xml:space="preserve">
     <value>Ενεργά VIP μαθημάτων</value>
   </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>Ενεργά VIP ιδρυμάτων</value>
+  </data>
   <data name="Active real-exam VIP" xml:space="preserve">
     <value>Ενεργό VIP πραγματικής εξέτασης</value>
   </data>
@@ -62,6 +65,12 @@
   </data>
   <data name="Browse the full list" xml:space="preserve">
     <value>Προβολή πλήρους λίστας</value>
+  </data>
+  <data name="Can open" xml:space="preserve">
+    <value>Μπορεί να ανοίξει</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>Δεν μπορεί να ανοιχτεί</value>
   </data>
   <data name="Check this scenario" xml:space="preserve">
     <value>Έλεγχος αυτού του σεναρίου</value>
@@ -99,6 +108,9 @@
   <data name="For our team" xml:space="preserve">
     <value>Για την ομάδα μας</value>
   </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Ιδρύματα</value>
+  </data>
   <data name="Its paid tags mark the exercise as paid; they do not require additional course memberships." xml:space="preserve">
     <value>Οι πληρωμένες ετικέτες του επισημαίνουν την άσκηση ως επί πληρωμή· δεν απαιτούν επιπλέον συνδρομές σε μαθήματα.</value>
   </data>
@@ -113,6 +125,12 @@
   </data>
   <data name="Knowledge text: public" xml:space="preserve">
     <value>Κείμενο γνώσεων: δημόσιο</value>
+  </data>
+  <data name="Legacy real-exam VIP (all institutions)" xml:space="preserve">
+    <value>Παλαιό VIP πραγματικών εξετάσεων (όλα τα ιδρύματα)</value>
+  </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Το κείμενο του μαθήματος ακολουθεί τους καταλόγους στους οποίους έχει αντιστοιχιστεί απευθείας. Το περιεχόμενο της άσκησης ακολουθεί την περίοδό της. Η υποβολή και η αποθήκευση των απαντήσεων δεν ελέγχονται εδώ.</value>
   </data>
   <data name="Linked exercise" xml:space="preserve">
     <value>Συνδεδεμένη άσκηση</value>
@@ -132,6 +150,9 @@
   <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
     <value>Η ομάδα μας πρέπει να εξετάσει αυτήν τη συμπεριφορά. Δεν χρειάζεται να αλλάξετε την κοινόχρηστη τιμολόγηση για να επιλυθεί ένα πρόβλημα του προγράμματος.</value>
   </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Γραπτά δοκιμασιών</value>
+  </data>
   <data name="Please confirm" xml:space="preserve">
     <value>Παρακαλώ επιβεβαιώστε</value>
   </data>
@@ -146,6 +167,9 @@
   </data>
   <data name="Review shared impact" xml:space="preserve">
     <value>Ελέγξτε τον αντίκτυπο στους κοινόχρηστους πόρους</value>
+  </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>Εξετάστε την περίοδο στην οποία έχει ανατεθεί και το μάθημά της.</value>
   </data>
   <data name="Scan coverage and object IDs" xml:space="preserve">
     <value>Κάλυψη σάρωσης και αναγνωριστικά αντικειμένων</value>
@@ -162,11 +186,20 @@
   <data name="Sign-in and the required course VIP are needed." xml:space="preserve">
     <value>Απαιτείται σύνδεση και το VIP του αντίστοιχου μαθήματος.</value>
   </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>Οι ετικέτες οργανώνουν εσωτερικά το περιεχόμενο. Κατά την αλλαγή της πρόσβασης, ελέγξτε την περίοδο και τον κατάλογο γνώσεων.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>Η άσκηση κληρονομεί την τιμολόγησή της από την περίοδό της. Οι ετικέτες δεν παρέχουν ούτε περιορίζουν την πρόσβαση στην εξάσκηση.</value>
+  </data>
   <data name="The paid tag is not covered: {0}" xml:space="preserve">
     <value>Η επί πληρωμή ετικέτα δεν καλύπτεται: {0}</value>
   </data>
   <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
     <value>Αυτά τα αποτελέσματα αξιολογούν την τρέχουσα πρόσβαση στον διακομιστή. Δεν προσομοιώνουν κάθε οθόνη του Mini Program ή κάθε ροή υποβολής. Κάθε σελίδα διαβάζει ξανά την τρέχουσα διαμόρφωση.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>Αυτές οι ετικέτες οργανώνουν το περιεχόμενο που παρατίθεται. Δεν καθορίζουν την τρέχουσα πρακτική ή την πρόσβαση στη γνώση.</value>
   </data>
   <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
     <value>Αυτός ο λογαριασμός χρειάζεται τη VIP πρόσβαση στο μάθημα του συγκεκριμένου σετ ασκήσεων.</value>

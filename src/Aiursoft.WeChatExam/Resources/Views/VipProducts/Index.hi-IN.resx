@@ -18,8 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="Access Scope" xml:space="preserve">
+    <value>पहुँच का दायरा</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>क्रियाएँ</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>सभी वास्तविक परीक्षाओं के लिए VIP (पुराना)</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>श्रेणी</value>
@@ -48,6 +54,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>सक्रिय</value>
   </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>संस्थान वीआईपी</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>नाम</value>
   </data>
@@ -65,6 +74,9 @@
   </data>
   <data name="Search by name or category" xml:space="preserve">
     <value>नाम या श्रेणी द्वारा खोजें</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>नाम, श्रेणी या संस्था के अनुसार खोजें</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>

@@ -21,8 +21,17 @@
       <data name="-- Select Category --" xml:space="preserve">
     <value>-- Valitse kategoria --</value>
   </data>
+  <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Valitse oppilaitos --</value>
+  </data>
   <data name="-- Select Total Category --" xml:space="preserve">
     <value>-- Valitse tuoteryhmä --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>Pääsyn laajuus on lukittu, koska tässä tuotteessa on tilauksia tai jäsenyyksiä.</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>Kaikkien oikeiden kokeiden VIP (vanha)</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Peruuta</value>
@@ -47,6 +56,15 @@
   </data>
   <data name="Fen (1/100 Yuan)" xml:space="preserve">
     <value>Fen (1/100 Yuan)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Sisältää oppilaitoksen oikeat koetehtävät, ei itsenäistä kurssiharjoittelua.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Oppilaitos</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>Oppilaitoksen VIP-jäsenyys</value>
   </data>
   <data name="Price (Fen)" xml:space="preserve">
     <value>Hinta (fen)</value>

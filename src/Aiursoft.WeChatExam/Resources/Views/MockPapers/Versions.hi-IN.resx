@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} मिनट</value>
+  </data>
+  <data name="{0} questions · {1} minutes" xml:space="preserve">
+    <value>{0} प्रश्न · {1} मिनट</value>
+  </data>
+  <data name="Back to Mock Papers" xml:space="preserve">
+    <value>मॉक पेपरों पर वापस जाएँ</value>
+  </data>
+  <data name="Edit Draft" xml:space="preserve">
+    <value>ड्राफ़्ट संपादित करें</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>अगला</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>सदस्यता आवश्यक नहीं</value>
+  </data>
+  <data name="No published versions yet." xml:space="preserve">
+    <value>अभी तक कोई संस्करण प्रकाशित नहीं हुआ है।</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>पृष्ठ {0} / {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>पिछला</value>
+  </data>
+  <data name="Publish New Version" xml:space="preserve">
+    <value>नया संस्करण प्रकाशित करें</value>
+  </data>
+  <data name="Publish the Current Draft" xml:space="preserve">
+    <value>वर्तमान ड्राफ़्ट प्रकाशित करें</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>प्रकाशित संस्करण</value>
+  </data>
+  <data name="Publishing saves a fixed version. Later edits do not change existing versions." xml:space="preserve">
+    <value>प्रकाशित करने से एक स्थायी संस्करण सहेजा जाता है। बाद में किए गए बदलाव मौजूदा संस्करणों को नहीं बदलते।</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>कोर्स के लिए VIP आवश्यक है</value>
+  </data>
+  <data name="Version {0}" xml:space="preserve">
+    <value>संस्करण {0}</value>
+  </data>
+  <data name="Version pages" xml:space="preserve">
+    <value>संस्करण पृष्ठ</value>
+  </data>
+
+</root>

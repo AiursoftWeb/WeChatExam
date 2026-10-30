@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>λεπτά</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Δοκιμαστικά θέματα</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>Καμία σύμπτωση δοκιμασιών</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>Χωρίς ερωτήσεις</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Σελίδα {0} από {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Σελίδες θεμάτων</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>Φίλτρο κατάστασης δοκιμασίας</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>βαθμοί</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Προηγούμενο</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Διαθέσιμο για δημοσίευση</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>Πραγματικό εξεταστικό</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Πραγματικά διαγωνίσματα</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Αναζήτηση</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>Αναζήτηση εξετάσεων...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Εμφάνιση όλων των διαγωνισμάτων</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>Εκκίνηση δοκιμαστικού</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>Δελτία Εξετάσεων</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>Δοκιμάστε το τρέχον πρότυπο, συμπεριλαμβανομένων των μη δημοσιευμένων επεξεργασιών. Οι υποβολές χρησιμοποιούν τον κοινό μηχανισμό βαθμολόγησης, συμπεριλαμβανομένης της πραγματικής βαθμολόγησης από AI.</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Δοκιμάστε έναν άλλο τίτλο ή φίλτρο κατάστασης.</value>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} λεπτά</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>Όλα τα μαθήματα</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Μάθημα</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Δημιουργία δοκιμαστικού διαγωνίσματος</value>
+  </data>
+  <data name="Create your first mock paper" xml:space="preserve">
+    <value>Δημιουργήστε το πρώτο σας δοκιμαστικό διαγώνισμα</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Πρόχειρο</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Επεξεργασία δοκιμαστικού διαγωνίσματος</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Εισαγωγή γραπτού διαγωνίσματος</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>Διαχείριση ερωτήσεων</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Προσομοιωμένα διαγωνίσματα</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Δεν βρέθηκαν σχετικά έγγραφα</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>Δεν απαιτείται συνδρομή</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Σελίδα {0} από {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Σελίδες διαγωνίσματος</value>
+  </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>Προετοιμάστε ένα διαγώνισμα και δημοσιεύστε τις οριστικές εκδόσεις.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Προηγούμενο</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Διαθέσιμη δημοσιευμένη έκδοση</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>Δημοσιευμένες εκδόσεις</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>Μόνο για ανάγνωση</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>Απαιτείται συνδρομή VIP στο μάθημα</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Αναζήτηση</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>Αναζήτηση εργασιών</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Εμφάνιση όλων των διαγωνισμάτων</value>
+  </data>
+
+</root>

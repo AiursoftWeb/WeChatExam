@@ -21,8 +21,14 @@
       <data name="Actions" xml:space="preserve">
     <value>Дії</value>
   </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Створити пробний тест</value>
+  </data>
   <data name="Create Paper" xml:space="preserve">
     <value>Створити тест</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Створити реальний варіант</value>
   </data>
   <data name="Created" xml:space="preserve">
     <value>Створено</value>
@@ -45,6 +51,9 @@
   <data name="Import Paper" xml:space="preserve">
     <value>Імпортувати тест</value>
   </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Архів старих іспитових робіт</value>
+  </data>
   <data name="No papers found" xml:space="preserve">
     <value>Паперів не знайдено</value>
   </data>
@@ -59,6 +68,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="These papers are retained for migration and historical exams." xml:space="preserve">
+    <value>Ці документи зберігаються для перенесення та проведення історичних іспитів.</value>
   </data>
   <data name="Time Limit" xml:space="preserve">
     <value>Часова межа</value>

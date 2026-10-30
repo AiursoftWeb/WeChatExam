@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minuuttia</value>
+  </data>
+  <data name="All institutions" xml:space="preserve">
+    <value>Kaikki oppilaitokset</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Luo oikea koepaperi</value>
+  </data>
+  <data name="Create your first real paper" xml:space="preserve">
+    <value>Luo ensimmäinen oikea paperisi</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Luonnos</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Muokkaa varsinaista koetta</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Tuo paperi</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Oppilaitos</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>Hallinnoi kysymyksiä</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Ei vastaavia papereita</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Sivu {0}/{1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Paperin sivut</value>
+  </data>
+  <data name="Paper Settings" xml:space="preserve">
+    <value>Paperin asetukset</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Edellinen</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Julkaisuversio saatavilla</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>Vain luku</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Todelliset koepaperit</value>
+  </data>
+  <data name="Requires institution VIP" xml:space="preserve">
+    <value>Edellyttää, että oppilaitos on VIP-asiakas</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Hae</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>Etsi artikkeleita</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Näytä kaikki artikkelit</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versiot ja julkaisu</value>
+  </data>
+
+</root>

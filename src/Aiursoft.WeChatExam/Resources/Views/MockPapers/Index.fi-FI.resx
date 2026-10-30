@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minuuttia</value>
+  </data>
+  <data name="All courses" xml:space="preserve">
+    <value>Kaikki kurssit</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Kurssi</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Luo koepaperi</value>
+  </data>
+  <data name="Create your first mock paper" xml:space="preserve">
+    <value>Luo ensimmäinen harjoituskoe</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Luonnos</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Muokkaa koepaperia</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Tuo paperi</value>
+  </data>
+  <data name="Manage Questions" xml:space="preserve">
+    <value>Hallinnoi kysymyksiä</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Harjoituskokeet</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
+  <data name="No matching papers" xml:space="preserve">
+    <value>Ei vastaavia koepapereita</value>
+  </data>
+  <data name="No membership required" xml:space="preserve">
+    <value>Ei jäsenyyttä vaadita</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Sivu {0} / {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Paperisivut</value>
+  </data>
+  <data name="Prepare a paper and publish fixed versions." xml:space="preserve">
+    <value>Valmistele koepaperi ja julkaise siitä lukitut versiot.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Edellinen</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Julkaistu versio saatavilla</value>
+  </data>
+  <data name="Published Versions" xml:space="preserve">
+    <value>Julkaistut versiot</value>
+  </data>
+  <data name="Read only" xml:space="preserve">
+    <value>Vain luku</value>
+  </data>
+  <data name="Requires course VIP" xml:space="preserve">
+    <value>Vaatii kurssi-VIP-jäsenyyden</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Hae</value>
+  </data>
+  <data name="Search papers" xml:space="preserve">
+    <value>Hae kokeita</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>Näytä kaikki kokeet</value>
+  </data>
+
+</root>

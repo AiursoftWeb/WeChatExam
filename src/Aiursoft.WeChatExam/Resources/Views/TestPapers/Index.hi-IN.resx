@@ -45,6 +45,12 @@
   <data name="minutes" xml:space="preserve">
     <value>मिनट</value>
   </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>मॉक पेपर</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>अगला</value>
+  </data>
   <data name="No matching papers" xml:space="preserve">
     <value>कोई मेल खाते पेपर नहीं</value>
   </data>
@@ -54,11 +60,20 @@
   <data name="No questions" xml:space="preserve">
     <value>कोई प्रश्न नहीं</value>
   </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>पृष्ठ {0} में से {1}</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>पेपर के पृष्ठ</value>
+  </data>
   <data name="Paper status filter" xml:space="preserve">
     <value>पत्र स्थिति फ़िल्टर</value>
   </data>
   <data name="points" xml:space="preserve">
     <value>अंक</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>पिछला</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>प्रकाशित करने योग्य</value>
@@ -69,14 +84,26 @@
   <data name="Real exam" xml:space="preserve">
     <value>वास्तविक परीक्षा</value>
   </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>वास्तविक प्रश्नपत्र</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>खोजें</value>
+  </data>
   <data name="Search papers..." xml:space="preserve">
     <value>परीक्षाएँ खोजें...</value>
+  </data>
+  <data name="Show all papers" xml:space="preserve">
+    <value>सभी प्रश्नपत्र दिखाएँ</value>
   </data>
   <data name="Start test" xml:space="preserve">
     <value>परीक्षण शुरू करें</value>
   </data>
   <data name="Test Papers" xml:space="preserve">
     <value>परीक्षा पत्र</value>
+  </data>
+  <data name="Test the current template, including unpublished edits. Submissions use the shared grading engine, including real AI grading." xml:space="preserve">
+    <value>अप्रकाशित बदलावों सहित मौजूदा टेम्पलेट का परीक्षण करें। प्रस्तुतियाँ साझा मूल्यांकन इंजन का उपयोग करती हैं, जिसमें वास्तविक AI मूल्यांकन भी शामिल है।</value>
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>कोई अन्य शीर्षक या स्थिति फ़िल्टर आज़माएँ।</value>
