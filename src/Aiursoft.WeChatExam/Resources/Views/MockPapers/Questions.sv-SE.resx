@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} frågor · {1} poäng</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} valda på den här sidan</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Lägg till frågor från den här kursen</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Alla perioder</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Alla typer</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Tillbaka till övningsprov</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Redigering av utkastet påverkar inte publicerade versioner.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Internt taggnamn</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Nästa</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Frågesidor</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Frågetyp</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Ta bort från provet</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Sök frågor</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Markera alla på den här sidan</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Välj frågor</value>

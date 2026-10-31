@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} questões · {1} pontos</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} selecionados nesta página</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Adicionar questões deste curso</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Todos os períodos</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Todos os tipos</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Voltar para as provas simuladas</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Editar o rascunho não altera as versões publicadas.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Nome da etiqueta interna</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Próxima</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Páginas de perguntas</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Tipo de pergunta</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Remover da prova</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Pesquisar questões</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Selecionar tudo nesta página</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Selecionar questões</value>

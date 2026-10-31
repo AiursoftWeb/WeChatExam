@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} câu hỏi · {1} điểm</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Đã chọn {0} mục trên trang này</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Thêm câu hỏi vào đề thi này</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>Tất cả các kỳ</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Tất cả loại</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Quay lại danh sách đề thi thực tế</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Tên thẻ nội bộ</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Tiếp theo</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Các trang câu hỏi</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Loại câu hỏi</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Xóa khỏi Bài thi</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Tìm kiếm câu hỏi</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Chọn tất cả trên trang này</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Chọn câu hỏi</value>

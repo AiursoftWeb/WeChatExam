@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0}問 · {1}点</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>このページで{0}件選択中</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>このコースから問題を追加</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>すべての期間</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>すべての種類</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>模擬試験一覧に戻る</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>下書きを編集しても、公開済みのバージョンは変更されません。</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>内部タグ名</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>次へ</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>質問ページ</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>問題の種類</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>用紙から削除</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>問題を検索</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>このページのすべてを選択</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>問題を選択</value>

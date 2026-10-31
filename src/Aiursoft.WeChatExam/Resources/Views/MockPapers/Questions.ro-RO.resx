@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} întrebări · {1} puncte</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} selectate pe această pagină</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Adaugă întrebări din acest curs</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Toate perioadele</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Toate tipurile</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Înapoi la variantele de examen</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Editarea versiunii nepublicate nu modifică versiunile publicate.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Numele etichetei interne</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Următoarea</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Pagini de întrebări</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Tipul întrebării</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Elimină din lucrare</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Căutare întrebări</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Selectați tot de pe această pagină</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Selectează întrebări</value>

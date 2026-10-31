@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} 條問題 · {1} 分</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>此頁已選取 {0} 項</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>從此課程加入問題</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>所有時段</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>所有類型</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>返回模擬試卷</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>編輯草稿不會更改已發布的版本。</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>內部標籤名稱</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>下一頁</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>題目頁面</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>題型</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>從試卷中移除</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>搜尋題目</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>選取此頁面的全部項目</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>選擇題目</value>

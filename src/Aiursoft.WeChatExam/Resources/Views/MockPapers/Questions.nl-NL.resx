@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} vragen · {1} punten</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} geselecteerd op deze pagina</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Vragen uit deze cursus toevoegen</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Alle periodes</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Alle typen</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Terug naar proefexamens</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Het bewerken van het concept heeft geen invloed op gepubliceerde versies.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Interne tagnaam</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Volgende</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Vragenpagina&apos;s</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Vraagtype</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Verwijderen uit het werkblad</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Vragen zoeken</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Selecteer alles op deze pagina</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Vragen selecteren</value>

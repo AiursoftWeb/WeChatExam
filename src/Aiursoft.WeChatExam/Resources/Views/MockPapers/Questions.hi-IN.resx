@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} प्रश्न · {1} अंक</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>इस पृष्ठ पर {0} चयनित</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>इस पाठ्यक्रम से प्रश्न जोड़ें</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>सभी अवधियाँ</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>सभी प्रकार</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>मॉक पेपर्स पर वापस जाएँ</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>मसौदे में बदलाव करने से प्रकाशित संस्करणों पर कोई असर नहीं पड़ता।</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>आंतरिक टैग का नाम</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>अगला</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>प्रश्न पृष्ठ</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>प्रश्न का प्रकार</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>पेपर से हटाएँ</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>प्रश्न खोजें</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>इस पेज पर सभी चुनें</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>प्रश्न चुनें</value>

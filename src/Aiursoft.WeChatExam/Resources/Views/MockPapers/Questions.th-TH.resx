@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} ข้อ · {1} คะแนน</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>เลือกแล้ว {0} ข้อในหน้านี้</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>เพิ่มคำถามจากหลักสูตรนี้</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>ทุกช่วงเวลา</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>ทุกประเภท</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>กลับไปยังชุดข้อสอบจำลอง</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>การแก้ไขฉบับร่างจะไม่เปลี่ยนแปลงฉบับที่เผยแพร่แล้ว</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>ชื่อแท็กภายใน</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>ถัดไป</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>หน้าคำถาม</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>ประเภทคำถาม</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>นำออกจากเอกสารข้อสอบ</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>ค้นหาคำถาม</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>เลือกทั้งหมดในหน้านี้</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>เลือกคำถาม</value>

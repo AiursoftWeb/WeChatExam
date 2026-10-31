@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} вопросов · {1} баллов</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>На этой странице выбрано: {0}</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Добавьте вопросы в эту работу</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>Все периоды</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Все типы</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Назад к реальным экзаменационным работам</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Внутреннее название тега</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Далее</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Страницы вопросов</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Тип вопроса</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Удалить из задания</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Поиск вопросов</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Выбрать всё на этой странице</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Выбрать вопросы</value>
