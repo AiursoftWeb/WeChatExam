@@ -92,10 +92,9 @@ else if (Model.Selecting)
                 }
             </select>
         </div>
-        <div class="col-md-3"><input asp-for="Tag" class="form-control" placeholder="@Localizer["Search or select a tag"]" aria-label="@Localizer["Search or select a tag"]" list="paper-tag-suggestions" data-tag-suggestions-url="@Url.Action("Autocomplete", "Tags")" autocomplete="off" /></div>
+        <div class="col-md-3"><div class="position-relative"><input asp-for="Tag" class="form-control" placeholder="@Localizer["Search or select a tag"]" aria-label="@Localizer["Search or select a tag"]" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="paper-tag-suggestions" data-tag-suggestions-url="@Url.Action("Autocomplete", "Tags")" autocomplete="off" /><div id="paper-tag-suggestions" class="list-group position-absolute w-100 shadow" role="listbox" aria-label="@Localizer["Search or select a tag"]" hidden></div></div></div>
         <div class="col-12"><button class="btn btn-outline-primary" type="submit">@Localizer["Search"]</button></div>
     </form>
-    <datalist id="paper-tag-suggestions"></datalist>
     @if (Model.Available.Count == 0)
     {
         <div class="card"><div class="card-body py-5 text-center">@Localizer["No more matching questions in this course."]</div></div>
