@@ -188,7 +188,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
                 await using var transaction = context.Database.IsRelational()
                     ? await context.Database.BeginTransactionAsync(IsolationLevel.Serializable) : null;
                 var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
-                if (paper == null) return (IActionResult)NotFound();
+                if (paper == null) return NotFound();
                 if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
                 var ids = await MatchingQuestions(paper, search, questionCategoryId, tag, questionType)
                     .OrderBy(q => q.OrderIndex).ThenBy(q => q.Id).Select(q => q.Id).ToListAsync();
