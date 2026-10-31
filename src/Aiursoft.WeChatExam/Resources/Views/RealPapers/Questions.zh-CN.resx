@@ -109,4 +109,31 @@
     <value>查看详情</value>
   </data>
 
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>尚未添加 {0} 道匹配的题目</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>要添加所有 {0} 道匹配的考试题目吗？</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>添加所有 {0} 道符合条件的题目</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>返回选择</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>确认添加 {0} 道考试题</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>预览本页题目</value>
+  </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>搜索或选择标签</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>这会添加所有结果页中的试题，并跳过试卷中已有的试题。</value>
+  </data>
 </root>

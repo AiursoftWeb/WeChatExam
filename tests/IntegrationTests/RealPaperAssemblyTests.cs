@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using System.Net;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Sqlite;
@@ -137,6 +138,122 @@ public class RealPaperAssemblyTests : TestBase
     }
 
     [TestMethod]
+    public async Task MatchingBatchAddsEveryPageAndPreservesPublishedSnapshots()
+    {
+        await LoginAsAdmin();
+        Guid first;
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var tag = new Tag { DisplayName = "苏州大学2026年考试试卷", NormalizedName = "苏州大学2026年考试试卷" };
+            var questions = Enumerable.Range(0, 211).Select(i => new Question
+            {
+                Id = Guid.NewGuid(), Content = $"Batch item {i:000}", QuestionCategoryId = _period,
+                QuestionType = QuestionType.Choice, OrderIndex = i
+            }).ToArray();
+            db.Questions.AddRange(questions);
+            db.Tags.Add(tag);
+            var wrongType = new Question { Id = Guid.NewGuid(), Content = "Batch wrong type", QuestionCategoryId = _period, QuestionType = QuestionType.Blank };
+            db.Questions.Add(wrongType);
+            (await db.Questions.SingleAsync(q => q.Id == _foreignQuestion)).Content = "Batch foreign course";
+            await db.SaveChangesAsync();
+            db.QuestionTags.AddRange(questions.Append(wrongType).Select(q => new QuestionTag { QuestionId = q.Id, TagId = tag.Id }));
+            db.QuestionTags.Add(new QuestionTag { QuestionId = _foreignQuestion, TagId = tag.Id });
+            await db.SaveChangesAsync();
+            first = questions[0].Id;
+        }
+        await Add(first);
+        Assert.AreEqual(HttpStatusCode.Found, (await PostForm($"/RealPapers/Publish/{_paper}", new Dictionary<string, string>(), tokenUrl: $"/RealPapers/Versions/{_paper}")).StatusCode);
+        var suggestions = await Http.GetStringAsync("/Tags/Autocomplete?query=" + Uri.EscapeDataString("苏州大学2026"));
+        using var suggestionData = System.Text.Json.JsonDocument.Parse(suggestions);
+        Assert.IsTrue(suggestionData.RootElement.EnumerateArray().Any(x => x.GetProperty("displayName").GetString() == "苏州大学2026年考试试卷"));
+        var query = "?search=Batch&tag=" + Uri.EscapeDataString("苏州大学2026年考试试卷") + "&questionType=Choice&page=2";
+        var review = await Http.GetStringAsync($"/RealPapers/ReviewMatches/{_paper}" + query);
+        Assert.Contains("Add all 211 matching exam questions?", review);
+        var form = new Dictionary<string, string>
+        {
+            ["MatchFingerprint"] = MatchConfirmation(review), ["Score"] = "4",
+            ["search"] = "Batch", ["tag"] = "苏州大学2026年考试试卷", ["questionType"] = "Choice", ["page"] = "2"
+        };
+        var result = await PostForm($"/RealPapers/AddMatchingQuestions/{_paper}", form, tokenUrl: $"/RealPapers/ReviewMatches/{_paper}" + query);
+        Assert.AreEqual(HttpStatusCode.Found, result.StatusCode);
+        Assert.Contains("/RealPapers/Questions", result.Headers.Location!.OriginalString);
+        // A retry must not add duplicates, even though this set spans more than the manual 200-ID limit.
+        Assert.AreEqual(HttpStatusCode.Found, (await PostForm($"/RealPapers/AddMatchingQuestions/{_paper}", form, tokenUrl: $"/RealPapers/Questions/{_paper}")).StatusCode);
+        using var verify = Server!.Services.CreateScope();
+        var current = verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var links = await current.RealPaperQuestions.Where(q => q.RealPaperId == _paper).OrderBy(q => q.Order).ToListAsync();
+        Assert.AreEqual(212, links.Count);
+        Assert.AreEqual(7, links.Single(q => q.QuestionId == first).Score);
+        Assert.IsTrue(links.Where(q => q.QuestionId != first).All(q => q.Score == 4));
+        CollectionAssert.AreEqual(Enumerable.Range(1, 212).ToArray(), links.Select(q => q.Order).ToArray());
+        Assert.IsTrue(links.Any(q => q.QuestionId == _foreignQuestion));
+        var snapshot = await current.PaperSnapshots.Include(q => q.QuestionSnapshots).SingleAsync(q => q.RealPaperId == _paper);
+        Assert.AreEqual(1, snapshot.QuestionSnapshots.Count());
+        Assert.AreEqual(7, snapshot.QuestionSnapshots.Single().Score);
+        Assert.AreEqual("Batch item 000", snapshot.QuestionSnapshots.Single().Content);
+    }
+
+    private static string MatchConfirmation(string html)
+    {
+        var match = Regex.Match(html, "name=\"MatchFingerprint\" value=\"([0-9A-F]{64})\"");
+        Assert.IsTrue(match.Success, "The review page must describe a stable matching set.");
+        return match.Groups[1].Value;
+    }
+
+    [TestMethod]
+    public async Task ChangedMatchingSetRequiresFreshConfirmationWithoutPartialWrites()
+    {
+        await LoginAsAdmin();
+        int tagId;
+        Guid replaced;
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var tag = new Tag { DisplayName = "Batch review", NormalizedName = "BATCH REVIEW" };
+            var second = new Question { Id = Guid.NewGuid(), Content = "Review second", QuestionCategoryId = _period };
+            db.AddRange(tag, second);
+            await db.SaveChangesAsync();
+            db.QuestionTags.AddRange(new QuestionTag { QuestionId = _question, TagId = tag.Id }, new QuestionTag { QuestionId = second.Id, TagId = tag.Id });
+            await db.SaveChangesAsync();
+            (tagId, replaced) = (tag.Id, second.Id);
+        }
+        var reviewUrl = $"/RealPapers/ReviewMatches/{_paper}?tag=Batch%20review";
+        var oldFingerprint = MatchConfirmation(await Http.GetStringAsync(reviewUrl));
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.QuestionTags.Remove(await db.QuestionTags.SingleAsync(q => q.TagId == tagId && q.QuestionId == replaced));
+            var replacement = new Question { Id = Guid.NewGuid(), Content = "Review replacement", QuestionCategoryId = _period };
+            db.Questions.Add(replacement);
+            db.QuestionTags.Add(new QuestionTag { QuestionId = replacement.Id, TagId = tagId });
+            await db.SaveChangesAsync();
+        }
+        var form = new Dictionary<string, string> { ["MatchFingerprint"] = oldFingerprint, ["Score"] = "5", ["tag"] = "Batch review" };
+        var stale = await PostForm($"/RealPapers/AddMatchingQuestions/{_paper}", form, tokenUrl: reviewUrl);
+        Assert.AreEqual(HttpStatusCode.OK, stale.StatusCode);
+        var html = await stale.Content.ReadAsStringAsync();
+        Assert.Contains("The matching exam questions changed.", html);
+        var freshFingerprint = MatchConfirmation(html);
+        Assert.AreNotEqual(oldFingerprint, freshFingerprint, "Same count with different IDs must still require review.");
+        form.Remove("__RequestVerificationToken");
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await PostForm($"/RealPapers/AddMatchingQuestions/{_paper}", form, includeToken: false)).StatusCode);
+        form["MatchFingerprint"] = freshFingerprint;
+        form["Score"] = "0";
+        Assert.AreEqual(HttpStatusCode.OK, (await PostForm($"/RealPapers/AddMatchingQuestions/{_paper}", form, tokenUrl: reviewUrl)).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(0, await db.RealPaperQuestions.CountAsync(q => q.RealPaperId == _paper));
+            (await db.RealPapers.SingleAsync(q => q.Id == _paper)).Status = PaperStatus.Frozen;
+            await db.SaveChangesAsync();
+        }
+        form["Score"] = "5";
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.GetAsync(reviewUrl)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Conflict, (await PostForm($"/RealPapers/AddMatchingQuestions/{_paper}", form, tokenUrl: "/")).StatusCode);
+    }
+
+    [TestMethod]
     public async Task OrderScoreAndUnlinkingNeverChangeTheOriginalQuestion()
     {
         await LoginAsAdmin();
@@ -192,6 +309,8 @@ public class RealPaperAssemblyTests : TestBase
         await RegisterAndLoginAsync();
         var denied = await Http.GetAsync($"/RealPapers/SelectQuestions/{_paper}");
         Assert.IsTrue(denied.StatusCode == HttpStatusCode.Forbidden || denied.Headers.Location?.ToString().Contains("/Error/Unauthorized") == true);
+        var deniedReview = await Http.GetAsync($"/RealPapers/ReviewMatches/{_paper}");
+        Assert.IsTrue(deniedReview.StatusCode == HttpStatusCode.Forbidden || deniedReview.Headers.Location?.ToString().Contains("/Error/Unauthorized") == true);
         await LoginAsAdmin();
         Assert.AreEqual(HttpStatusCode.BadRequest, (await PostForm($"/RealPapers/AddQuestions/{_paper}", new Dictionary<string, string> { ["QuestionIds[0]"] = _question.ToString() }, includeToken: false)).StatusCode);
         using (var scope = Server!.Services.CreateScope())

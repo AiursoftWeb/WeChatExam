@@ -1,3 +1,7 @@
+using System.Data;
+using System.Security.Cryptography;
+using System.Text;
+using Aiursoft.WeChatExam.Models;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Authorization;
@@ -108,7 +112,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
     public Task<IActionResult> SelectQuestions(Guid id, string? search, Guid? questionCategoryId, int page = 1, string? tag = null, QuestionType? questionType = null) =>
         ModelState.IsValid ? QuestionPage(id, true, search, questionCategoryId, page, tag, questionType) : Task.FromResult<IActionResult>(BadRequest());
 
-    private async Task<IActionResult> QuestionPage(Guid id, bool selecting, string? search, Guid? questionCategoryId, int page, string? tag = null, QuestionType? questionType = null)
+    private async Task<IActionResult> QuestionPage(Guid id, bool selecting, string? search, Guid? questionCategoryId, int page, string? tag = null, QuestionType? questionType = null, bool reviewingMatches = false, int score = 10)
     {
         var paper = await context.RealPapers.AsNoTracking().Include(p => p.Institution).SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
@@ -120,23 +124,16 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         search = search?.Trim();
         tag = tag?.Trim();
         var selected = context.RealPaperQuestions.AsNoTracking().Where(q => q.RealPaperId == id);
-        var available = context.Questions.AsNoTracking().Where(q => !selected.Any(l => l.QuestionId == q.Id));
-        if (questionCategoryId.HasValue) available = available.Where(q => q.QuestionCategoryId == questionCategoryId);
-        if (!string.IsNullOrEmpty(search)) available = available.Where(q => q.Content.Contains(search));
-        if (questionType.HasValue) available = available.Where(q => q.QuestionType == questionType);
-        if (!string.IsNullOrEmpty(tag))
-        {
-            // Match the question library's single internal-tag filter without changing paper eligibility.
-            var normalizedTag = tag.ToUpperInvariant();
-            available = available.Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTag));
-        }
+        var available = MatchingQuestions(paper, search, questionCategoryId, tag, questionType);
+        var matchingIds = reviewingMatches ? await available.OrderBy(q => q.OrderIndex).ThenBy(q => q.Id).Select(q => q.Id).ToListAsync() : null;
         var count = await selected.CountAsync();
-        var total = selecting ? await available.CountAsync() : count;
+        var total = selecting ? matchingIds?.Count ?? await available.CountAsync() : count;
         page = Math.Clamp(page, 1, Math.Max(1, (total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize));
         return this.StackView(new QuestionsViewModel
         {
             Paper = paper, Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
-            Tag = tag, QuestionType = questionType,
+            Tag = tag, QuestionType = questionType, ReviewingMatches = reviewingMatches, Score = score,
+            MatchFingerprint = matchingIds == null ? null : Fingerprint(matchingIds),
             Page = page, Total = total, SelectedCount = count, TotalScore = await selected.SumAsync(q => (long)q.Score),
             Periods = periods,
             Selected = selecting ? [] : await selected.Include(q => q.Question).ThenInclude(q => q.QuestionCategory)
@@ -147,6 +144,86 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
                 .OrderBy(q => q.OrderIndex).ThenBy(q => q.Id)
                 .Skip((page - 1) * QuestionsViewModel.PageSize).Take(QuestionsViewModel.PageSize).ToListAsync()
         }, nameof(Questions));
+    }
+
+    private IQueryable<Question> MatchingQuestions(RealPaper paper, string? search, Guid? questionCategoryId, string? tag, QuestionType? questionType)
+    {
+        var selected = context.RealPaperQuestions.Where(q => q.RealPaperId == paper.Id);
+        var available = context.Questions.AsNoTracking().Where(q => !selected.Any(l => l.QuestionId == q.Id));
+        search = search?.Trim();
+        tag = tag?.Trim();
+        if (questionCategoryId.HasValue) available = available.Where(q => q.QuestionCategoryId == questionCategoryId);
+        if (!string.IsNullOrEmpty(search)) available = available.Where(q => q.Content.Contains(search));
+        if (questionType.HasValue) available = available.Where(q => q.QuestionType == questionType);
+        if (!string.IsNullOrEmpty(tag))
+        {
+            var normalizedTag = tag.ToUpperInvariant();
+            available = available.Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTag));
+        }
+        return available;
+    }
+
+    // This is a stale-results check, not authorization: every write re-applies the paper's eligibility rules.
+    private static string Fingerprint(IEnumerable<Guid> ids) =>
+        Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(string.Join("\n", ids))));
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public Task<IActionResult> ReviewMatches(Guid id, string? search, Guid? questionCategoryId, int page = 1, string? tag = null, QuestionType? questionType = null) =>
+        ModelState.IsValid ? QuestionPage(id, true, search, questionCategoryId, page, tag, questionType, true) : Task.FromResult<IActionResult>(BadRequest());
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> AddMatchingQuestions(Guid id, AddMatchingQuestionsRequest model, string? search, Guid? questionCategoryId, int page = 1, string? tag = null, QuestionType? questionType = null)
+    {
+        if (!ModelState.IsValid) return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType, true, model.Score);
+        try
+        {
+            return await context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
+            {
+                context.ChangeTracker.Clear();
+                // Keep the paper's editable state and matching set stable until this batch commits.
+                // Retrying a lost commit acknowledgement re-reads links, so it cannot duplicate the batch.
+                await using var transaction = context.Database.IsRelational()
+                    ? await context.Database.BeginTransactionAsync(IsolationLevel.Serializable) : null;
+                var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
+                if (paper == null) return NotFound();
+                if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
+                var ids = await MatchingQuestions(paper, search, questionCategoryId, tag, questionType)
+                    .OrderBy(q => q.OrderIndex).ThenBy(q => q.Id).Select(q => q.Id).ToListAsync();
+                if (ids.Count == 0)
+                {
+                    TempData["SuccessMessage"] = localizer["No additional matching exam questions to add."].Value;
+                    return RedirectToAction(nameof(Questions), new { id });
+                }
+                if (Fingerprint(ids) != model.MatchFingerprint)
+                {
+                    ModelState.AddModelError(string.Empty, localizer["The matching exam questions changed. Review the current results before confirming again."]);
+                    return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType, true, model.Score);
+                }
+                var lastOrder = await context.RealPaperQuestions.Where(q => q.RealPaperId == id).MaxAsync(q => (int?)q.Order) ?? 0;
+                if (lastOrder > int.MaxValue - ids.Count)
+                {
+                    ModelState.AddModelError(string.Empty, localizer["Reduce the highest question order before adding more questions."]);
+                    return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType, true, model.Score);
+                }
+                context.RealPaperQuestions.AddRange(ids.Select((questionId, i) => new RealPaperQuestion
+                {
+                    RealPaperId = id, QuestionId = questionId, Order = lastOrder + i + 1, Score = model.Score
+                }));
+                // A single atomic save adds the whole set, independent of the 20-row display page.
+                await context.SaveChangesAsync();
+                if (transaction != null) await transaction.CommitAsync();
+                TempData["SuccessMessage"] = string.Format(localizer["Added {0} matching questions."].Value, ids.Count);
+                return RedirectToAction(nameof(Questions), new { id });
+            });
+        }
+        catch (DbUpdateException ex)
+        {
+            logger.LogWarning(ex, "Could not confirm matching question additions for paper {PaperId}.", id);
+            context.ChangeTracker.Clear();
+            ModelState.AddModelError(string.Empty, localizer["Could not confirm the batch was added. Review the current questions before trying again."]);
+            return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType, true, model.Score);
+        }
     }
 
     [HttpPost, ValidateAntiForgeryToken]
