@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} 道题 · {1} 分</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>本页已选择 {0} 项</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>向此试卷添加题目</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>全部年代</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>所有类型</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>返回真题卷</value>
   </data>
   <data name="Draft only. Publication is not available yet." xml:space="preserve">
     <value>目前仅为草稿，暂不支持发布。</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>内部标签名称</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>下一页</value>
@@ -60,6 +69,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>题目分页</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>题目类型</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>从试卷中移除</value>
   </data>
@@ -77,6 +89,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>搜索题目</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>全选本页</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>选择题目</value>

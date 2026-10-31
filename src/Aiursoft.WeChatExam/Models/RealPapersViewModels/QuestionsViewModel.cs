@@ -9,6 +9,8 @@ public class QuestionsViewModel : UiStackLayoutViewModel
     public required RealPaper Paper { get; init; }
     public bool Selecting { get; init; }
     public string? Search { get; init; }
+    public string? Tag { get; init; }
+    public QuestionType? QuestionType { get; init; }
     public Guid? QuestionCategoryId { get; init; }
     public int Page { get; init; }
     public int Total { get; init; }
