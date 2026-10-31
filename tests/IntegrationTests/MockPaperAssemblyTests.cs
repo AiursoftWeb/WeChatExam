@@ -90,7 +90,7 @@ public class MockPaperAssemblyTests : TestBase
                 QuestionType = QuestionType.Choice, OrderIndex = i
             }).ToArray();
             var wrongType = new Question { Id = Guid.NewGuid(), Content = "Filtered wrong type", QuestionCategoryId = _period, QuestionType = QuestionType.Blank };
-            db.AddRange(questions);
+            db.Questions.AddRange(questions);
             db.Add(wrongType);
             await db.SaveChangesAsync();
             db.QuestionTags.AddRange(questions.Append(wrongType).Select(q => new QuestionTag { QuestionId = q.Id, TagId = tag.Id }));
