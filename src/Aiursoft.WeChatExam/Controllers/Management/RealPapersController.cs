@@ -105,10 +105,10 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
     public Task<IActionResult> Questions(Guid id, int page = 1) => QuestionPage(id, false, null, null, page);
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
-    public Task<IActionResult> SelectQuestions(Guid id, string? search, Guid? questionCategoryId, int page = 1) =>
-        QuestionPage(id, true, search, questionCategoryId, page);
+    public Task<IActionResult> SelectQuestions(Guid id, string? search, Guid? questionCategoryId, int page = 1, string? tag = null, QuestionType? questionType = null) =>
+        ModelState.IsValid ? QuestionPage(id, true, search, questionCategoryId, page, tag, questionType) : Task.FromResult<IActionResult>(BadRequest());
 
-    private async Task<IActionResult> QuestionPage(Guid id, bool selecting, string? search, Guid? questionCategoryId, int page)
+    private async Task<IActionResult> QuestionPage(Guid id, bool selecting, string? search, Guid? questionCategoryId, int page, string? tag = null, QuestionType? questionType = null)
     {
         var paper = await context.RealPapers.AsNoTracking().Include(p => p.Institution).SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
@@ -116,17 +116,27 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         var periods = await context.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory)
             .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategory!.Title).ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
         if (questionCategoryId.HasValue && periods.All(c => c.Id != questionCategoryId)) return BadRequest();
+        if (questionType.HasValue && !Enum.IsDefined(questionType.Value)) return BadRequest();
         search = search?.Trim();
+        tag = tag?.Trim();
         var selected = context.RealPaperQuestions.AsNoTracking().Where(q => q.RealPaperId == id);
         var available = context.Questions.AsNoTracking().Where(q => !selected.Any(l => l.QuestionId == q.Id));
         if (questionCategoryId.HasValue) available = available.Where(q => q.QuestionCategoryId == questionCategoryId);
         if (!string.IsNullOrEmpty(search)) available = available.Where(q => q.Content.Contains(search));
+        if (questionType.HasValue) available = available.Where(q => q.QuestionType == questionType);
+        if (!string.IsNullOrEmpty(tag))
+        {
+            // Match the question library's single internal-tag filter without changing paper eligibility.
+            var normalizedTag = tag.ToUpperInvariant();
+            available = available.Where(q => q.QuestionTags.Any(qt => qt.Tag.NormalizedName == normalizedTag));
+        }
         var count = await selected.CountAsync();
         var total = selecting ? await available.CountAsync() : count;
         page = Math.Clamp(page, 1, Math.Max(1, (total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize));
         return this.StackView(new QuestionsViewModel
         {
             Paper = paper, Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
+            Tag = tag, QuestionType = questionType,
             Page = page, Total = total, SelectedCount = count, TotalScore = await selected.SumAsync(q => (long)q.Score),
             Periods = periods,
             Selected = selecting ? [] : await selected.Include(q => q.Question).ThenInclude(q => q.QuestionCategory)
@@ -141,12 +151,12 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
 
     [HttpPost, ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
-    public async Task<IActionResult> AddQuestions(Guid id, AddQuestionsRequest model, string? search, Guid? questionCategoryId, int page = 1)
+    public async Task<IActionResult> AddQuestions(Guid id, AddQuestionsRequest model, string? search, Guid? questionCategoryId, int page = 1, string? tag = null, QuestionType? questionType = null)
     {
         var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
         if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
-        if (!ModelState.IsValid) return await QuestionPage(id, true, search, questionCategoryId, page);
+        if (!ModelState.IsValid) return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType);
         var ids = model.QuestionIds.Distinct().ToArray();
         // Institution papers may span courses; selection must not impose mock-paper course ownership.
         var eligible = await context.Questions.Where(q => ids.Contains(q.Id))
@@ -155,7 +165,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         if (eligible.Count != ids.Length)
         {
             ModelState.AddModelError(string.Empty, localizer["Every selected question must exist."]);
-            return await QuestionPage(id, true, search, questionCategoryId, page);
+            return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType);
         }
         var existing = await context.RealPaperQuestions.Where(q => q.RealPaperId == id).ToListAsync();
         var additions = eligible.Except(existing.Select(q => q.QuestionId)).ToArray();
@@ -163,7 +173,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         if (lastOrder > int.MaxValue - additions.Length)
         {
             ModelState.AddModelError(string.Empty, localizer["Reduce the highest question order before adding more questions."]);
-            return await QuestionPage(id, true, search, questionCategoryId, page);
+            return await QuestionPage(id, true, search, questionCategoryId, page, tag, questionType);
         }
         foreach (var questionId in additions)
             context.RealPaperQuestions.Add(new RealPaperQuestion
@@ -171,7 +181,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
                 RealPaperId = id, QuestionId = questionId, Order = ++lastOrder, Score = model.Score
             });
         await context.SaveChangesAsync();
-        return RedirectToAction(nameof(SelectQuestions), new { id, search, questionCategoryId, page });
+        return RedirectToAction(nameof(SelectQuestions), new { id, search, questionCategoryId, page, tag, questionType });
     }
 
     [HttpPost, ValidateAntiForgeryToken]

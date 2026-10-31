@@ -75,6 +75,74 @@ public class MockPaperAssemblyTests : TestBase
     }
 
     [TestMethod]
+    public async Task InternalTagAndTypeFiltersComposeAndSurvivePaginationAndAdding()
+    {
+        await LoginAsAdmin();
+        Guid lastQuestion;
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var tag = new Tag { DisplayName = "Batch&2026", NormalizedName = "BATCH&2026" };
+            db.Tags.Add(tag);
+            var questions = Enumerable.Range(0, 21).Select(i => new Question
+            {
+                Id = Guid.NewGuid(), Content = $"Filtered question {i:00}", QuestionCategoryId = _period,
+                QuestionType = QuestionType.Choice, OrderIndex = i
+            }).ToArray();
+            var wrongType = new Question { Id = Guid.NewGuid(), Content = "Filtered wrong type", QuestionCategoryId = _period, QuestionType = QuestionType.Blank };
+            db.Questions.AddRange(questions);
+            db.Add(wrongType);
+            await db.SaveChangesAsync();
+            db.QuestionTags.AddRange(questions.Append(wrongType).Select(q => new QuestionTag { QuestionId = q.Id, TagId = tag.Id }));
+            // Shared tags cannot broaden the course/period boundary or include untagged questions.
+            var existing = await db.Questions.SingleAsync(q => q.Id == _question);
+            existing.Content = "Filtered without tag";
+            var foreign = await db.Questions.SingleAsync(q => q.Id == _foreignQuestion);
+            foreign.Content = "Filtered other course";
+            db.QuestionTags.Add(new QuestionTag { QuestionId = foreign.Id, TagId = tag.Id });
+            await db.SaveChangesAsync();
+            lastQuestion = questions[^1].Id;
+        }
+        var url = $"/MockPapers/SelectQuestions/{_paper}?search=Filtered&questionCategoryId={_period}&tag=%20batch%262026%20&questionType=Choice";
+        var first = await Http.GetStringAsync(url);
+        Assert.Contains("Filtered question 00", first);
+        Assert.DoesNotContain("Filtered question 20", first);
+        Assert.DoesNotContain("Filtered wrong type", first);
+        Assert.DoesNotContain("Filtered without tag", first);
+        Assert.DoesNotContain("Filtered other course", first);
+        Assert.Contains("tag=batch%262026", first);
+        Assert.Contains("questionType=Choice", first);
+        var last = await Http.GetStringAsync(url + "&page=2");
+        Assert.Contains("Filtered question 20", last);
+        Assert.DoesNotContain("Filtered question 00", last);
+        Assert.DoesNotContain("Filtered question", await Http.GetStringAsync(url.Replace("batch%262026", "missing")));
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync(url.Replace("Choice", "999"))).StatusCode);
+        var form = new Dictionary<string, string>
+        {
+            ["QuestionIds[0]"] = lastQuestion.ToString(), ["Score"] = "0", ["search"] = "Filtered",
+            ["questionCategoryId"] = _period.ToString(), ["tag"] = "batch&2026", ["questionType"] = "Choice", ["page"] = "2"
+        };
+        var invalid = await PostForm($"/MockPapers/AddQuestions/{_paper}", form, tokenUrl: url);
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        var invalidHtml = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains("Filtered question 20", invalidHtml);
+        Assert.Contains("value=\"batch&amp;2026\"", invalidHtml);
+        Assert.DoesNotContain("Filtered wrong type", invalidHtml);
+        form["Score"] = "7";
+        var added = await PostForm($"/MockPapers/AddQuestions/{_paper}", form, tokenUrl: url);
+        Assert.AreEqual(HttpStatusCode.Found, added.StatusCode);
+        Assert.Contains("tag=batch%262026", added.Headers.Location!.OriginalString);
+        Assert.Contains("questionType=Choice", added.Headers.Location.OriginalString);
+        Assert.Contains("page=2", added.Headers.Location.OriginalString);
+        Assert.DoesNotContain("Filtered question 20", await Http.GetStringAsync(added.Headers.Location));
+        Assert.Contains("Filtered question 20", await Http.GetStringAsync($"/MockPapers/Questions/{_paper}"));
+        using var verify = Server!.Services.CreateScope();
+        var link = await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MockPaperQuestions.SingleAsync(l => l.MockPaperId == _paper);
+        Assert.AreEqual(lastQuestion, link.QuestionId);
+        Assert.AreEqual(7, link.Score);
+    }
+
+    [TestMethod]
     public async Task OrderScoreAndUnlinkingNeverChangeTheOriginalQuestion()
     {
         await LoginAsAdmin();
