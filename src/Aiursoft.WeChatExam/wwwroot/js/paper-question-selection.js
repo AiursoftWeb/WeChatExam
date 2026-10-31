@@ -98,7 +98,8 @@ document.querySelectorAll('[data-tag-suggestions-url]').forEach(input => {
             choose(options[active].textContent);
         } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
             event.preventDefault();
-            active = (active + (event.key === 'ArrowDown' ? 1 : options.length - 1) + options.length) % options.length;
+            active = active < 0 ? (event.key === 'ArrowDown' ? 0 : options.length - 1)
+                : (active + (event.key === 'ArrowDown' ? 1 : options.length - 1)) % options.length;
             options.forEach((option, index) => {
                 option.classList.toggle('active', index === active);
                 option.setAttribute('aria-selected', String(index === active));
