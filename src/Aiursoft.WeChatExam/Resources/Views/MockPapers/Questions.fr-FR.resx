@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} questions correspondantes pas encore ajoutées</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} questions · {1} points</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} sélectionné(s) sur cette page</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Ajouter toutes les {0} questions d’examen correspondantes ?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Ajouter les {0} questions correspondantes</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Ajouter des questions de ce cours</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Retour aux sujets d&apos;entraînement</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Retour à la sélection</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Confirmer l’ajout de {0} questions d’examen</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>La modification du brouillon ne change pas les versions publiées.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Période</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Aperçu de cette page de questions</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Rechercher ou sélectionner un tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Rechercher des questions</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Questions sélectionnées</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Étiquette</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Sujet d’examen</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Cette opération ajoute les questions d’examen de toutes les pages de résultats et ignore celles qui figurent déjà dans ce sujet.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Voir les détails</value>

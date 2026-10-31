@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>尚未添加 {0} 道匹配的题目</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} 道题 · {1} 分</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>本页已选择 {0} 项</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>要添加所有 {0} 道匹配的考试题目吗？</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>添加所有 {0} 道符合条件的题目</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>添加本课程的题目</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>返回模拟试卷</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>返回选择</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>确认添加 {0} 道考试题</value>
   </data>
   <data name="Draft only. Publication is not available yet." xml:space="preserve">
     <value>仅为草稿，暂不可发布。</value>
@@ -66,6 +81,9 @@
   <data name="Period" xml:space="preserve">
     <value>年代</value>
   </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>预览本页题目</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
   </data>
@@ -93,6 +111,9 @@
   <data name="Search" xml:space="preserve">
     <value>搜索</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>搜索或选择标签</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>搜索问题</value>
   </data>
@@ -105,38 +126,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>已选题目</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>试卷</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>这会添加所有结果页中的试题，并跳过试卷中已有的试题。</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>详情</value>
   </data>
 
-  <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>尚未添加 {0} 道匹配的题目</value>
-  </data>
-  <data name="Add all {0} matching exam questions?" xml:space="preserve">
-    <value>要添加所有 {0} 道匹配的考试题目吗？</value>
-  </data>
-  <data name="Add all {0} matching questions" xml:space="preserve">
-    <value>添加所有 {0} 道符合条件的题目</value>
-  </data>
-  <data name="Back to selection" xml:space="preserve">
-    <value>返回选择</value>
-  </data>
-  <data name="Confirm adding {0} exam questions" xml:space="preserve">
-    <value>确认添加 {0} 道考试题</value>
-  </data>
-  <data name="Preview this page of questions" xml:space="preserve">
-    <value>预览本页题目</value>
-  </data>
-  <data name="Search or select a tag" xml:space="preserve">
-    <value>搜索或选择标签</value>
-  </data>
-  <data name="Tag" xml:space="preserve">
-    <value>标签</value>
-  </data>
-  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
-    <value>这会添加所有结果页中的试题，并跳过试卷中已有的试题。</value>
-  </data>
 </root>

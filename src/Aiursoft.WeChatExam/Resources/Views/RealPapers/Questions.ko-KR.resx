@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>아직 추가되지 않은 일치하는 질문 {0}개</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>문항 {0}개 · {1}점</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>이 페이지에서 {0}개 선택됨</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>일치하는 시험 문제 {0}개를 모두 추가하시겠습니까?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>일치하는 질문 {0}개 모두 추가</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>이 시험지에 문제를 추가하세요</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>실제 시험지 목록으로 돌아가기</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>선택 화면으로 돌아가기</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>시험 문제 {0}개 추가 확인</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>내부 태그 이름</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>기간</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>이 페이지의 문제 미리보기</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>이전</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>검색</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>태그를 검색하거나 선택하세요</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>문제 검색</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>선택된 질문</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>태그</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>시험지</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>이 기능은 모든 검색 결과 페이지의 시험 문제를 추가하고, 이미 이 시험지에 포함된 문제는 건너뜁니다.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>버전 및 게시</value>

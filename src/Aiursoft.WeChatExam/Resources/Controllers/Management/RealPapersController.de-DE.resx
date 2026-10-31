@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>{0} passende Fragen wurden hinzugefügt.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Der Sammelvorgang konnte nicht bestätigt werden. Überprüfen Sie die aktuellen Fragen, bevor Sie es erneut versuchen.</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>Jede ausgewählte Frage muss existieren.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Keine weiteren passenden Prüfungsfragen zum Hinzufügen vorhanden.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Reduzieren Sie die höchste Fragenreihenfolge, bevor Sie weitere Fragen hinzufügen.</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Die Institution kann nicht mehr geändert werden, nachdem für diese Arbeit eine veröffentlichte Version vorliegt.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Die passenden Prüfungsfragen haben sich geändert. Überprüfen Sie die aktuellen Ergebnisse, bevor Sie erneut bestätigen.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Die Version konnte nicht gespeichert werden. Laden Sie die Versionsliste neu, bevor Sie es erneut versuchen.</value>

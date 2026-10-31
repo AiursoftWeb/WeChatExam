@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} pertanyaan yang sesuai belum ditambahkan</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} soal · {1} poin</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} dipilih di halaman ini</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Tambahkan semua {0} soal ujian yang cocok?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Tambahkan semua {0} pertanyaan yang cocok</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Tambahkan pertanyaan ke lembar soal ini</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Kembali ke Kertas Ujian Asli</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Kembali ke pemilihan</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Konfirmasi penambahan {0} soal ujian</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Nama tag internal</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Periode</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Pratinjau halaman pertanyaan ini</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Cari</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Cari atau pilih tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Cari pertanyaan</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Pertanyaan yang Dipilih</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Naskah Ujian</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Ini akan menambahkan soal ujian dari setiap halaman hasil dan melewati soal yang sudah ada di naskah ini.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Versi dan Publikasi</value>

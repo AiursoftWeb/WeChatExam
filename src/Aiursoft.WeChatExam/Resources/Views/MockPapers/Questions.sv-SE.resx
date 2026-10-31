@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} matchande frågor har ännu inte lagts till</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} frågor · {1} poäng</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} valda på den här sidan</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Lägg till alla {0} matchande provfrågor?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Lägg till alla {0} matchande frågor</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Lägg till frågor från den här kursen</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Tillbaka till övningsprov</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Tillbaka till urvalet</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Bekräfta att lägga till {0} tentamensfrågor</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Redigering av utkastet påverkar inte publicerade versioner.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Period</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Förhandsgranska den här sidan med frågor</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Föregående</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Sök</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Sök efter eller välj en tagg</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Sök frågor</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Valda frågor</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tagg</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Testprov</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Det här lägger till provfrågor från alla resultatsidor och hoppar över dem som redan finns i det här provet.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Visa detaljer</value>

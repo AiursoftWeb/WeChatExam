@@ -18,14 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>{0} passende Fragen hinzugefügt.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Der Stapel konnte nicht als hinzugefügt bestätigt werden. Überprüfen Sie die aktuellen Fragen, bevor Sie es erneut versuchen.</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>Jede ausgewählte Frage muss existieren und zum Kurs dieser Arbeit gehören.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Keine weiteren passenden Prüfungsfragen zum Hinzufügen.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Verringern Sie die höchste Fragennummer, bevor Sie weitere Fragen hinzufügen.</value>
   </data>
   <data name="Select an existing course." xml:space="preserve">
     <value>Wählen Sie einen bestehenden Kurs aus.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Die passenden Prüfungsfragen haben sich geändert. Überprüfen Sie die aktuellen Ergebnisse, bevor Sie erneut bestätigen.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Die Version konnte nicht gespeichert werden. Laden Sie die Versionsliste neu, bevor Sie es erneut versuchen.</value>

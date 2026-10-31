@@ -18,14 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Додано запитань, що відповідають критеріям: {0}.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Не вдалося підтвердити додавання всіх запитань. Перевірте поточні запитання, перш ніж спробувати ще раз.</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>Кожне вибране запитання має існувати та належати до курсу цієї роботи.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Немає інших відповідних екзаменаційних запитань для додавання.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Зменште максимальний порядок запитання, перш ніж додавати нові запитання.</value>
   </data>
   <data name="Select an existing course." xml:space="preserve">
     <value>Виберіть наявний курс.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Відповідні запитання іспиту змінилися. Перегляньте поточні результати, перш ніж підтвердити ще раз.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Не вдалося зберегти версію. Перезавантажте список версій і спробуйте ще раз.</value>

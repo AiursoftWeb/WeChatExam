@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Еще не добавлено вопросов, соответствующих критериям: {0}</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} вопросов · {1} баллов</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>На этой странице выбрано: {0}</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Добавить все {0} подходящих экзаменационных вопросов?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Добавить все вопросы, соответствующие критериям ({0})</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Добавьте вопросы в эту работу</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Назад к реальным экзаменационным работам</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Назад к выбору</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Подтвердить добавление {0} экзаменационных вопросов</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Внутреннее название тега</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Период</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Предварительный просмотр вопросов на этой странице</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Предыдущая</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Найдите тег или выберите его</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Поиск вопросов</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Выбранные вопросы</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Тег</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Экзаменационная работа</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>При этом добавляются экзаменационные вопросы со всех страниц результатов, а уже включённые в эту работу пропускаются.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Версии и публикация</value>

@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>ยังไม่ได้เพิ่มคำถามที่ตรงกัน {0} ข้อ</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} ข้อ · {1} คะแนน</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>เลือกแล้ว {0} ข้อในหน้านี้</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>เพิ่มข้อสอบที่ตรงกันทั้งหมด {0} ข้อใช่หรือไม่?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>เพิ่มคำถามที่ตรงกันทั้งหมด {0} ข้อ</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>เพิ่มคำถามจากหลักสูตรนี้</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>กลับไปยังชุดข้อสอบจำลอง</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>กลับไปเลือก</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>ยืนยันการเพิ่มข้อสอบ {0} ข้อ</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>การแก้ไขฉบับร่างจะไม่เปลี่ยนแปลงฉบับที่เผยแพร่แล้ว</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>ภาคเรียน</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>ดูตัวอย่างคำถามในหน้านี้</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>ก่อนหน้า</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>ค้นหา</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>ค้นหาหรือเลือกแท็ก</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>ค้นหาคำถาม</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>คำถามที่เลือกแล้ว</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>แท็ก</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>กระดาษทดสอบ</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>การดำเนินการนี้จะเพิ่มข้อสอบจากผลการค้นหาทุกหน้า และข้ามข้อสอบที่มีอยู่ในชุดข้อสอบนี้แล้ว</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>ดูรายละเอียด</value>

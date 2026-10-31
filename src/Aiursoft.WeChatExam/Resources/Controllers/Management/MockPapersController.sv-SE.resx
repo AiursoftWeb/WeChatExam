@@ -18,14 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Lade till {0} matchande frågor.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Det gick inte att bekräfta att alla frågor lades till. Granska de aktuella frågorna innan du försöker igen.</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>Varje vald fråga måste finnas och tillhöra kursen för det här provet.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Inga fler matchande tentamensfrågor att lägga till.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Minska det högsta frågeordningstalet innan du lägger till fler frågor.</value>
   </data>
   <data name="Select an existing course." xml:space="preserve">
     <value>Välj en befintlig kurs.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Matchande tentamensfrågor har ändrats. Granska de aktuella resultaten innan du bekräftar igen.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versionen kunde inte sparas. Läs in versionslistan igen innan du försöker på nytt.</value>

@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} pertanyaan yang cocok belum ditambahkan</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} pertanyaan · {1} poin</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} dipilih di halaman ini</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Tambahkan semua {0} soal ujian yang cocok?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Tambahkan semua {0} pertanyaan yang cocok</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Tambahkan pertanyaan dari kursus ini</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Kembali ke Kertas Simulasi</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Kembali ke pemilihan</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Konfirmasi penambahan {0} soal ujian</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Mengedit draf tidak mengubah versi yang telah diterbitkan.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Periode</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Pratinjau halaman soal ini</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Cari</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Cari atau pilih tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Cari pertanyaan</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Pertanyaan yang Dipilih</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Naskah Ujian</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Ini akan menambahkan soal ujian dari setiap halaman hasil dan melewati soal yang sudah ada di makalah ini.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Lihat Detail</value>

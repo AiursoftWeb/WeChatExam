@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} overeenkomende vragen nog niet toegevoegd</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} vragen · {1} punten</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} geselecteerd op deze pagina</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Alle {0} overeenkomende examenvragen toevoegen?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Alle {0} overeenkomende vragen toevoegen</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Vragen uit deze cursus toevoegen</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Terug naar proefexamens</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Terug naar selectie</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Bevestig het toevoegen van {0} examenvragen</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Het bewerken van het concept heeft geen invloed op gepubliceerde versies.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Periode</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Voorbeeld van deze vragenpagina</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Vorige</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Zoeken</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Zoek naar of selecteer een tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Vragen zoeken</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Geselecteerde vragen</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Label</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Proeftoets</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Hiermee worden examenvragen van alle resultaatpagina&apos;s toegevoegd, behalve vragen die al in dit proefwerk staan.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Details bekijken</value>

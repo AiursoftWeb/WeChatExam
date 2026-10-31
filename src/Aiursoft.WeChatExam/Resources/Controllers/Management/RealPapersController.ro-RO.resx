@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Au fost adăugate {0} întrebări corespunzătoare.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Nu s-a putut confirma adăugarea grupului. Verificați întrebările curente înainte de a încerca din nou.</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>Fiecare întrebare selectată trebuie să existe.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Nu există alte întrebări de examen corespunzătoare de adăugat.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Reduceți ordinea celei mai mari întrebări înainte de a adăuga mai multe întrebări.</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Instituția nu poate fi schimbată după ce această lucrare are o versiune publicată.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Întrebările de examen corespunzătoare s-au schimbat. Examinați rezultatele curente înainte de a confirma din nou.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versiunea nu a putut fi salvată. Reîncărcați lista versiunilor înainte de a încerca din nou.</value>

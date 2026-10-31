@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Lisättiin {0} vastaavaa kysymystä.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Erän lisäämistä ei voitu vahvistaa. Tarkista nykyiset kysymykset ennen kuin yrität uudelleen.</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>Jokaisen valitun kysymyksen on oltava olemassa.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Ei muita vastaavia koetehtäviä lisättäväksi.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Pienennä kysymysten suurinta järjestysnumeroa ennen kuin lisäät uusia kysymyksiä.</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Oppilaitosta ei voi muuttaa sen jälkeen, kun tästä kokeesta on julkaistu versio.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Vastaavat koetehtävät ovat muuttuneet. Tarkista nykyiset tulokset ennen kuin vahvistat uudelleen.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versiota ei voitu tallentaa. Lataa versioluettelo uudelleen ennen kuin yrität uudelleen.</value>

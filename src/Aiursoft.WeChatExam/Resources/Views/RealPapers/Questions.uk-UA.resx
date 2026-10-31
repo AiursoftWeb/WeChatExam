@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Ще не додано відповідні запитання: {0}</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} запитань · {1} балів</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>На цій сторінці вибрано: {0}</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Додати всі {0} відповідні екзаменаційні запитання?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Додати всі відповідні запитання ({0})</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Додайте запитання до цієї роботи</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Назад до справжніх робіт</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Повернутися до вибору</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Підтвердити додавання {0} екзаменаційних запитань</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Внутрішній тег</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Період</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Попередній перегляд запитань на цій сторінці</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Попередня</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Пошук</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Шукайте тег або виберіть його</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Шукати запитання</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Обрані питання</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Тег</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Тестова робота</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Це додає екзаменаційні запитання з усіх сторінок результатів і пропускає ті, що вже є в цій роботі.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Версії та публікація</value>

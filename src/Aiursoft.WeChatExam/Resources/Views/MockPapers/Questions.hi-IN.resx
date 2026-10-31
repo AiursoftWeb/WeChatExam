@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} मेल खाते प्रश्न अभी तक नहीं जोड़े गए</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} प्रश्न · {1} अंक</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>इस पृष्ठ पर {0} चयनित</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>क्या सभी {0} मेल खाते परीक्षा प्रश्न जोड़ें?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>सभी {0} मिलते-जुलते प्रश्न जोड़ें</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>इस पाठ्यक्रम से प्रश्न जोड़ें</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>मॉक पेपर्स पर वापस जाएँ</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>चयन पर वापस जाएँ</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>जोड़ने की पुष्टि करें: {0} परीक्षा प्रश्न</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>मसौदे में बदलाव करने से प्रकाशित संस्करणों पर कोई असर नहीं पड़ता।</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>अवधि</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>इस पृष्ठ के प्रश्नों का पूर्वावलोकन</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>पिछला</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>खोजें</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>टैग खोजें या चुनें</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>प्रश्न खोजें</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>चयनित प्रश्न</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>टैग</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>परीक्षा पत्र</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>इससे परिणामों के सभी पृष्ठों से परीक्षा के प्रश्न जुड़ जाते हैं और जो प्रश्न पहले से इस प्रश्नपत्र में हैं, उन्हें छोड़ दिया जाता है।</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>विवरण देखें</value>
