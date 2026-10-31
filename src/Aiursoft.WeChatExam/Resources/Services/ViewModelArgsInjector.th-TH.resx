@@ -30,6 +30,12 @@
   <data name="Administration" xml:space="preserve">
     <value>การจัดการ</value>
   </data>
+  <data name="Advanced Management" xml:space="preserve">
+    <value>การจัดการขั้นสูง</value>
+  </data>
+  <data name="AI Assistant" xml:space="preserve">
+    <value>ผู้ช่วย AI</value>
+  </data>
   <data name="Anonymous" xml:space="preserve">
     <value>ไม่ระบุชื่อ</value>
   </data>
@@ -243,6 +249,9 @@
   <data name="Knowledge Management" xml:space="preserve">
     <value>การจัดการองค์ความรู้</value>
   </data>
+  <data name="Knowledge Point Categories" xml:space="preserve">
+    <value>หมวดหมู่หัวข้อความรู้</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>คะแนนความรู้</value>
   </data>
@@ -269,6 +278,9 @@
   </data>
   <data name="Mock Exam Management" xml:space="preserve">
     <value>การจัดการการสอบจำลอง</value>
+  </data>
+  <data name="Mock Paper Management" xml:space="preserve">
+    <value>การจัดการข้อสอบจำลอง</value>
   </data>
   <data name="Mock Paper Questions" xml:space="preserve">
     <value>คำถามสำหรับข้อสอบจำลอง</value>
@@ -305,6 +317,12 @@
   </data>
   <data name="Practice Test" xml:space="preserve">
     <value>การทดสอบฝึกฝน</value>
+  </data>
+  <data name="Preview Papers" xml:space="preserve">
+    <value>ดูตัวอย่างข้อสอบ</value>
+  </data>
+  <data name="Preview Questions" xml:space="preserve">
+    <value>ดูตัวอย่างคำถาม</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>โปรไฟล์</value>
@@ -369,6 +387,9 @@
   <data name="Total Categories" xml:space="preserve">
     <value>หมวดหมู่ทั้งหมด</value>
   </data>
+  <data name="Total Category Management" xml:space="preserve">
+    <value>การจัดการหมวดหมู่ทั้งหมด</value>
+  </data>
   <data name="Unauthorized" xml:space="preserve">
     <value>ไม่ได้รับอนุญาต</value>
   </data>
@@ -377,6 +398,9 @@
   </data>
   <data name="User Feedbacks" xml:space="preserve">
     <value>ข้อเสนอแนะจากผู้ใช้</value>
+  </data>
+  <data name="User Management" xml:space="preserve">
+    <value>การจัดการผู้ใช้</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>ผู้ใช้</value>

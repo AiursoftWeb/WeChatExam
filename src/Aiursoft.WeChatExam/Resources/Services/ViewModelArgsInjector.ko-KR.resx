@@ -30,6 +30,12 @@
   <data name="Administration" xml:space="preserve">
     <value>관리</value>
   </data>
+  <data name="Advanced Management" xml:space="preserve">
+    <value>고급 관리</value>
+  </data>
+  <data name="AI Assistant" xml:space="preserve">
+    <value>AI 어시스턴트</value>
+  </data>
   <data name="Anonymous" xml:space="preserve">
     <value>익명</value>
   </data>
@@ -243,6 +249,9 @@
   <data name="Knowledge Management" xml:space="preserve">
     <value>지식 관리</value>
   </data>
+  <data name="Knowledge Point Categories" xml:space="preserve">
+    <value>지식 포인트 카테고리</value>
+  </data>
   <data name="Knowledge Points" xml:space="preserve">
     <value>지식 포인트</value>
   </data>
@@ -269,6 +278,9 @@
   </data>
   <data name="Mock Exam Management" xml:space="preserve">
     <value>모의시험 관리</value>
+  </data>
+  <data name="Mock Paper Management" xml:space="preserve">
+    <value>모의 시험지 관리</value>
   </data>
   <data name="Mock Paper Questions" xml:space="preserve">
     <value>모의 시험 문제</value>
@@ -305,6 +317,12 @@
   </data>
   <data name="Practice Test" xml:space="preserve">
     <value>연습 시험</value>
+  </data>
+  <data name="Preview Papers" xml:space="preserve">
+    <value>시험지 미리보기</value>
+  </data>
+  <data name="Preview Questions" xml:space="preserve">
+    <value>문제 미리보기</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>프로필</value>
@@ -369,6 +387,9 @@
   <data name="Total Categories" xml:space="preserve">
     <value>전체 카테고리</value>
   </data>
+  <data name="Total Category Management" xml:space="preserve">
+    <value>전체 카테고리 관리</value>
+  </data>
   <data name="Unauthorized" xml:space="preserve">
     <value>권한 없음</value>
   </data>
@@ -377,6 +398,9 @@
   </data>
   <data name="User Feedbacks" xml:space="preserve">
     <value>사용자 피드백</value>
+  </data>
+  <data name="User Management" xml:space="preserve">
+    <value>사용자 관리</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>사용자</value>
