@@ -8,6 +8,9 @@ public class QuestionsViewModel : UiStackLayoutViewModel
     public QuestionsViewModel() => PageTitle = "Mock Paper Questions";
     public required MockPaper Paper { get; init; }
     public bool Selecting { get; init; }
+    public bool ReviewingMatches { get; init; }
+    public string? MatchFingerprint { get; init; }
+    public int Score { get; init; } = 10;
     public string? Search { get; init; }
     public string? Tag { get; init; }
     public QuestionType? QuestionType { get; init; }

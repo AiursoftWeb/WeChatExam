@@ -28,7 +28,49 @@
     <li class="nav-item"><a asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" class="nav-link @(Model.Selecting ? "active" : "")">@Localizer["Select Questions"]</a></li>
 </ul>
 <div asp-validation-summary="All" class="text-danger mb-3"></div>
-@if (Model.Selecting)
+@if (Model.ReviewingMatches)
+{
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h4 mb-3">@string.Format(@Localizer["Add all {0} matching exam questions?"].Value, Model.Total)</h2>
+        <p class="text-muted">@Localizer["This adds exam questions from every result page and skips those already in this paper."]</p>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+            @if (!string.IsNullOrEmpty(Model.Tag)) { <span class="badge bg-secondary">@Localizer["Tag"]: @Model.Tag</span> }
+            @if (!string.IsNullOrEmpty(Model.Search)) { <span class="badge bg-secondary">@Localizer["Search"]: @Model.Search</span> }
+            @if (Model.QuestionCategoryId.HasValue) { <span class="badge bg-secondary">@Localizer["Period"]: @Model.Periods.Single(c => c.Id == Model.QuestionCategoryId).Title</span> }
+            @if (Model.QuestionType.HasValue) { <span class="badge bg-secondary">@Localizer["Question Type"]: @Localizer[Model.QuestionType.Value.GetDisplayName()]</span> }
+        </div>
+        @if (Model.Total > 0)
+        {
+            <form asp-action="AddMatchingQuestions" asp-route-id="@Model.Paper.Id" method="post" data-add-matching>
+                <input type="hidden" name="MatchFingerprint" value="@Model.MatchFingerprint" />
+                <input type="hidden" name="search" value="@Model.Search" />
+                <input type="hidden" name="questionCategoryId" value="@Model.QuestionCategoryId" />
+                <input type="hidden" name="tag" value="@Model.Tag" />
+                <input type="hidden" name="questionType" value="@Model.QuestionType" />
+                <input type="hidden" name="page" value="@Model.Page" />
+                <div class="d-flex flex-wrap align-items-end gap-3">
+                    <div><label asp-for="Score" class="form-label">@Localizer["Score per question"]</label><input asp-for="Score" type="number" min="1" class="form-control" /></div>
+                    <button type="submit" class="btn btn-primary">@string.Format(@Localizer["Confirm adding {0} exam questions"].Value, Model.Total)</button>
+                </div>
+            </form>
+        }
+        <a asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" asp-route-search="@Model.Search" asp-route-questionCategoryId="@Model.QuestionCategoryId" asp-route-tag="@Model.Tag" asp-route-questionType="@Model.QuestionType" asp-route-page="@Model.Page" class="btn btn-outline-secondary mt-3">@Localizer["Back to selection"]</a>
+    </div></div>
+    @if (Model.Available.Count > 0)
+    {
+        <details class="mb-4">
+            <summary class="mb-3">@Localizer["Preview this page of questions"]</summary>
+            @foreach (var question in Model.Available)
+            {
+                <div class="card mb-3"><div class="card-body p-4">
+                    <p class="text-break">@(question.Content.Length > 300 ? question.Content[..300] + "…" : question.Content)</p>
+                    <a asp-controller="Questions" asp-action="Details" asp-route-id="@question.Id" target="_blank" rel="noopener">@Localizer["View Details"]</a>
+                </div></div>
+            }
+        </details>
+    }
+}
+else if (Model.Selecting)
 {
     <form asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" method="get" class="row g-2 mb-4" role="search">
         <div class="col-md-4"><input name="search" value="@Model.Search" class="form-control" placeholder="@Localizer["Search questions"]" aria-label="@Localizer["Search questions"]" /></div>
@@ -50,15 +92,20 @@
                 }
             </select>
         </div>
-        <div class="col-md-3"><input asp-for="Tag" class="form-control" placeholder="@Localizer["Internal tag name"]" aria-label="@Localizer["Internal tag name"]" /></div>
+        <div class="col-md-3"><input asp-for="Tag" class="form-control" placeholder="@Localizer["Search or select a tag"]" aria-label="@Localizer["Search or select a tag"]" list="paper-tag-suggestions" data-tag-suggestions-url="@Url.Action("Autocomplete", "Tags")" autocomplete="off" /></div>
         <div class="col-12"><button class="btn btn-outline-primary" type="submit">@Localizer["Search"]</button></div>
     </form>
+    <datalist id="paper-tag-suggestions"></datalist>
     @if (Model.Available.Count == 0)
     {
         <div class="card"><div class="card-body py-5 text-center">@Localizer["No more matching questions in this course."]</div></div>
     }
     else
     {
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <p class="mb-0">@string.Format(@Localizer["{0} matching questions not yet added"].Value, Model.Total)</p>
+            <a asp-action="ReviewMatches" asp-route-id="@Model.Paper.Id" asp-route-search="@Model.Search" asp-route-questionCategoryId="@Model.QuestionCategoryId" asp-route-tag="@Model.Tag" asp-route-questionType="@Model.QuestionType" asp-route-page="@Model.Page" class="btn btn-outline-primary">@string.Format(@Localizer["Add all {0} matching questions"].Value, Model.Total)</a>
+        </div>
         <form asp-action="AddQuestions" asp-route-id="@Model.Paper.Id" method="post" data-question-selection>
             <input name="search" type="hidden" value="@Model.Search" />
             <input name="questionCategoryId" type="hidden" value="@Model.QuestionCategoryId" />
@@ -133,7 +180,7 @@ else
         </div></div>
     }
 }
-@if (Model.Total > QuestionsViewModel.PageSize)
+@if (!Model.ReviewingMatches && Model.Total > QuestionsViewModel.PageSize)
 {
     <nav class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4" aria-label="@Localizer["Question pages"]">
         <span class="text-muted">@string.Format(@Localizer["Page {0} of {1}"].Value, Model.Page, (Model.Total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize)</span>
