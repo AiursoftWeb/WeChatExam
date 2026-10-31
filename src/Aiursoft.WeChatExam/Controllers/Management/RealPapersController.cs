@@ -181,7 +181,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
             return await context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
             {
                 context.ChangeTracker.Clear();
-                // Keep the paper's editable state, course and matching set stable until this batch commits.
+                // Keep the paper's editable state and matching set stable until this batch commits.
                 // Retrying a lost commit acknowledgement re-reads links, so it cannot duplicate the batch.
                 await using var transaction = context.Database.IsRelational()
                     ? await context.Database.BeginTransactionAsync(IsolationLevel.Serializable) : null;
