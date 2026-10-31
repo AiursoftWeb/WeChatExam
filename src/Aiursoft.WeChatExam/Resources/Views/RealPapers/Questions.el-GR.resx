@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} ερωτήσεις · {1} βαθμοί</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Επιλέχθηκαν {0} σε αυτή τη σελίδα</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Προσθέστε ερωτήσεις σε αυτό το γραπτό</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>Όλες οι Περιοδές</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Όλοι οι τύποι</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Επιστροφή στα πραγματικά γραπτά</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Εσωτερική ονομασία ετικέτας</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Επόμενη</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Σελίδες ερωτήσεων</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Τύπος ερώτησης</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Αφαίρεση από το γραπτό</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Αναζήτηση ερωτήσεων</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Επιλογή όλων σε αυτή τη σελίδα</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Επιλογή ερωτήσεων</value>

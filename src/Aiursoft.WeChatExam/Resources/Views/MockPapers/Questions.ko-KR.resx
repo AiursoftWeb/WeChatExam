@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0}개 문제 · {1}점</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>이 페이지에서 {0}개 선택됨</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>이 강좌의 문제를 추가하세요</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>전체 기간</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>모든 유형</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>모의고사 목록으로 돌아가기</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>초안을 수정해도 게시된 버전은 변경되지 않습니다.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>내부 태그 이름</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>다음</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>질문 페이지</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>문제 유형</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>시험지에서 제거</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>문제 검색</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>이 페이지의 항목 모두 선택</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>문제 선택</value>

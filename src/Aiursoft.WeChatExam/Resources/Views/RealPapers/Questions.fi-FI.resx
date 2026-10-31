@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} kysymystä · {1} pistettä</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} valittu tällä sivulla</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Lisää kysymyksiä tähän paperiin</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>Kaikki ajanjaksot</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Kaikki tyypit</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Takaisin varsinaisiin koepapereihin</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Sisäisen tunnisteen nimi</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Seuraava</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Kysymyssivut</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Kysymystyyppi</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Poista kokeesta</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Etsi kysymyksiä</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Valitse kaikki tällä sivulla</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Valitse kysymykset</value>

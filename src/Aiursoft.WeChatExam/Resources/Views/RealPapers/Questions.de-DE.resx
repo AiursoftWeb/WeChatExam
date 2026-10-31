@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} Fragen · {1} Punkte</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} auf dieser Seite ausgewählt</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Fragen zu diesem Prüfungssatz hinzufügen</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>Alle Zeiträume</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Alle Typen</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Zurück zu den Originalarbeiten</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Interner Tagname</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Weiter</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Fragenseiten</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Fragetyp</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Aus dem Aufgabenblatt entfernen</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Fragen suchen</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Alle auf dieser Seite auswählen</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Fragen auswählen</value>

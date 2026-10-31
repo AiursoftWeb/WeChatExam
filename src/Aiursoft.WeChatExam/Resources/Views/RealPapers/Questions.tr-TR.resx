@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} soru · {1} puan</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Bu sayfada {0} öğe seçildi</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Bu sınava soru ekleyin</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>Tüm Dönemler</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Tüm Türler</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Gerçek Sınav Kâğıtlarına Dön</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Dahili etiket adı</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Sonraki</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Soru sayfaları</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Soru Türü</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Kağıttan Kaldır</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Soruları ara</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Bu sayfadakilerin tümünü seç</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Soruları Seç</value>

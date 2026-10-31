@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} سؤال · {1} نقطة</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>تم تحديد {0} في هذه الصفحة</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>أضف أسئلة من هذه الدورة</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>جميع الفترات</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>جميع الأنواع</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>العودة إلى الاختبارات التجريبية</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>تعديل المسودة لا يؤثر في الإصدارات المنشورة.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>اسم الوسم الداخلي</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>التالي</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>صفحات الأسئلة</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>نوع السؤال</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>إزالة من الورقة</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>ابحث عن الأسئلة</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>تحديد الكل في هذه الصفحة</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>اختر الأسئلة</value>

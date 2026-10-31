@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>문항 {0}개 · {1}점</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>이 페이지에서 {0}개 선택됨</value>
+  </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>이 시험지에 문제를 추가하세요</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="All Periods" xml:space="preserve">
     <value>모든 기간</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>모든 유형</value>
+  </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>실제 시험지 목록으로 돌아가기</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>내부 태그 이름</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>다음</value>
@@ -57,6 +66,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>질문 페이지</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>문제 유형</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>종이에서 제거</value>
   </data>
@@ -74,6 +86,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>문제 검색</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>이 페이지의 모든 항목 선택</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>문제 선택</value>

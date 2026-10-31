@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} ερωτήσεις · {1} βαθμοί</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Επιλέχθηκαν {0} σε αυτή τη σελίδα</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Προσθέστε ερωτήσεις από αυτό το μάθημα</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Όλες οι περίοδοι</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Όλοι οι τύποι</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Επιστροφή στις δοκιμαστικές εξετάσεις</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Η επεξεργασία του πρόχειρου δεν αλλάζει τις δημοσιευμένες εκδόσεις.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Εσωτερική ονομασία ετικέτας</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Επόμενο</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Σελίδες ερωτήσεων</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Τύπος ερώτησης</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Αφαίρεση από το γραπτό</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Αναζήτηση ερωτήσεων</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Επιλογή όλων σε αυτή τη σελίδα</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Επιλογή ερωτήσεων</value>

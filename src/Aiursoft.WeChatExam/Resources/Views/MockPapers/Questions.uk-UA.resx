@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} питань · {1} балів</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>На цій сторінці вибрано: {0}</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Додайте запитання з цього курсу</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Усі періоди</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Усі типи</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Назад до тестових робіт</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Редагування чернетки не змінює опубліковані версії.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Внутрішній тег</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Далі</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Сторінки запитань</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Тип запитання</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Вилучити з тесту</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Шукати запитання</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Вибрати все на цій сторінці</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Вибрати запитання</value>

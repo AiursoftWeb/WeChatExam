@@ -21,6 +21,9 @@
       <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} domande · {1} punti</value>
   </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} selezionati in questa pagina</value>
+  </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Aggiungi domande da questo corso</value>
   </data>
@@ -30,11 +33,17 @@
   <data name="All Periods" xml:space="preserve">
     <value>Tutti i periodi</value>
   </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Tutti i tipi</value>
+  </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Torna ai fac-simile d&apos;esame</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>La modifica della bozza non influisce sulle versioni pubblicate.</value>
+  </data>
+  <data name="Internal tag name" xml:space="preserve">
+    <value>Nome del tag interno</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Avanti</value>
@@ -63,6 +72,9 @@
   <data name="Question pages" xml:space="preserve">
     <value>Pagine delle domande</value>
   </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Tipo di domanda</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Rimuovi dalla prova</value>
   </data>
@@ -80,6 +92,9 @@
   </data>
   <data name="Search questions" xml:space="preserve">
     <value>Cerca domande</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Seleziona tutto in questa pagina</value>
   </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Seleziona le domande</value>
