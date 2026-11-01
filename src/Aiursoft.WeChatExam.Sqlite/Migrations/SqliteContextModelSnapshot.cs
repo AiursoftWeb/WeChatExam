@@ -630,7 +630,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.Property<string>("UserAnswer")
                         .IsRequired()
-                        .HasMaxLength(1024)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")

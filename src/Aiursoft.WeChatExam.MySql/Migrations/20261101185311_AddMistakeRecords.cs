@@ -32,7 +32,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     QuestionType = table.Column<int>(type: "int", nullable: false),
                     Metadata = table.Column<string>(type: "text", maxLength: 5000, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserAnswer = table.Column<string>(type: "varchar(1024)", maxLength: 1024, nullable: false)
+                    UserAnswer = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StandardAnswer = table.Column<string>(type: "varchar(5000)", maxLength: 5000, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),

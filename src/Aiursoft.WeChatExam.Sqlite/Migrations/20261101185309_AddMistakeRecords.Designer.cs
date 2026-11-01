@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aiursoft.WeChatExam.Sqlite.Migrations
 {
     [DbContext(typeof(SqliteContext))]
-    [Migration("20261101185120_AddMistakeRecords")]
+    [Migration("20261101185309_AddMistakeRecords")]
     partial class AddMistakeRecords
     {
         /// <inheritdoc />
@@ -633,7 +633,6 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.Property<string>("UserAnswer")
                         .IsRequired()
-                        .HasMaxLength(1024)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")

@@ -637,8 +637,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Property<string>("UserAnswer")
                         .IsRequired()
-                        .HasMaxLength(1024)
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()

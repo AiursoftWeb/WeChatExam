@@ -772,10 +772,12 @@ public class PapersApiTests
         db.RealPaperQuestions.RemoveRange(db.RealPaperQuestions.Where(q => q.QuestionId == original.Id));
         db.Questions.Remove(original);
         await db.SaveChangesAsync();
+        answer.UserAnswer = new string('误', 2048);
         response = await _http.PostAsJsonAsync(url, answer);
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         Assert.AreEqual(Guid.Empty, (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!.Id);
         Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+        Assert.IsTrue(await db.MistakeRecords.AnyAsync(m => m.UserAnswer == answer.UserAnswer));
         Assert.IsTrue(await db.MistakeRecords.AnyAsync(m => m.Id == mistake.Id && m.Content == question.Content));
         Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync(h => h.QuestionId == original.Id));
         foreach (var text in new[] { "", "   ", question.StandardAnswer })

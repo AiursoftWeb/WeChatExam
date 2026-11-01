@@ -28,7 +28,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     Content = table.Column<string>(type: "TEXT", maxLength: 2000, nullable: false),
                     QuestionType = table.Column<int>(type: "INTEGER", nullable: false),
                     Metadata = table.Column<string>(type: "text", maxLength: 5000, nullable: false),
-                    UserAnswer = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: false),
+                    UserAnswer = table.Column<string>(type: "TEXT", nullable: false),
                     StandardAnswer = table.Column<string>(type: "TEXT", maxLength: 5000, nullable: false),
                     Explanation = table.Column<string>(type: "TEXT", maxLength: 3000, nullable: false),
                     Score = table.Column<int>(type: "INTEGER", nullable: false),

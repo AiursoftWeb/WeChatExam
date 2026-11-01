@@ -43,7 +43,6 @@ public class MistakeRecord
     [MaxLength(5000)]
     public required string Metadata { get; init; }
 
-    [MaxLength(1024)]
     public required string UserAnswer { get; init; }
 
     [MaxLength(5000)]

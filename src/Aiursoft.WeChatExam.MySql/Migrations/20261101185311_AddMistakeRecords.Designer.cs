@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Aiursoft.WeChatExam.MySql.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20261101185122_AddMistakeRecords")]
+    [Migration("20261101185311_AddMistakeRecords")]
     partial class AddMistakeRecords
     {
         /// <inheritdoc />
@@ -640,8 +640,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Property<string>("UserAnswer")
                         .IsRequired()
-                        .HasMaxLength(1024)
-                        .HasColumnType("varchar(1024)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
