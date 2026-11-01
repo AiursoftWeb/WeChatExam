@@ -32,6 +32,7 @@ public class TestStartupWithMockWeChat : IWebStartup
     public static StubDistributionChannelService? MockDistributionChannelService { get; set; }
     public static StubOllamaService? MockOllamaService { get; set; }
     public static StubVipProductService? MockVipProductService { get; set; }
+    public static string? SqliteConnectionString { get; set; }
 
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -41,8 +42,8 @@ public class TestStartupWithMockWeChat : IWebStartup
         // Relational database
         var (connectionString, dbType, allowCache) = configuration.GetDbSettings();
         services.AddSwitchableRelationalDatabase(
-            dbType: EntryExtends.IsInUnitTests() ? "InMemory" : dbType,
-            connectionString: connectionString,
+            dbType: SqliteConnectionString != null ? "Sqlite" : EntryExtends.IsInUnitTests() ? "InMemory" : dbType,
+            connectionString: SqliteConnectionString ?? connectionString,
             supportedDbs:
             [
                 new MySqlSupportedDb(allowCache: allowCache, splitQuery: false),
