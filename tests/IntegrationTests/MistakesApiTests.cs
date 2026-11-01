@@ -1,30 +1,15 @@
 using System.Net;
 using System.Net.Http.Headers;
 using Aiursoft.DbTools;
-using Aiursoft.WebTools.Abstractions.Models;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
-using Aiursoft.WeChatExam.Sqlite;
 using Aiursoft.WeChatExam.Tests.TestServices;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
-
-// Exercise real relational grouping and bulk deletion, as well as the normal Bearer authentication middleware.
-public class MistakesApiTestStartup : TestStartupWithMockWeChat, IWebStartup
-{
-    public static string ConnectionString { get; set; } = string.Empty;
-
-    public new void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
-    {
-        base.ConfigureServices(configuration, environment, services);
-        services.AddDbContext<SqliteContext>(options => options.UseSqlite(ConnectionString));
-        services.AddScoped<WeChatExamDbContext>(provider => provider.GetRequiredService<SqliteContext>());
-    }
-}
 
 [TestClass]
 public class MistakesApiTests : TestBase
@@ -43,11 +28,18 @@ public class MistakesApiTests : TestBase
         TestStartupWithMockWeChat.MockVipProductService = null;
         _keeper = new SqliteConnection($"Data Source=mistakes-{Guid.NewGuid():N};Mode=Memory;Cache=Shared;Foreign Keys=True");
         await _keeper.OpenAsync();
-        MistakesApiTestStartup.ConnectionString = _keeper.ConnectionString;
+        TestStartupWithMockWeChat.SqliteConnectionString = _keeper.ConnectionString;
         _storage = Directory.CreateTempSubdirectory("MistakesApi-").FullName;
         using var reservation = new TestPortReservation();
         Http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
-        Server = await AppAsync<MistakesApiTestStartup>([$"Storage:Path={_storage}"], port: reservation.Port);
+        try
+        {
+            Server = await AppAsync<TestStartupWithMockWeChat>([$"Storage:Path={_storage}"], port: reservation.Port);
+        }
+        finally
+        {
+            TestStartupWithMockWeChat.SqliteConnectionString = null;
+        }
         reservation.ConfigureServer(Server);
         await Server.UpdateDbAsync<WeChatExamDbContext>();
         await Server.StartAsync();
@@ -132,6 +124,11 @@ public class MistakesApiTests : TestBase
         Assert.AreEqual(1, list.Total);
         Assert.AreEqual(latest.Id, list.Items.Single().Id);
         Assert.AreEqual(3, list.Items.Single().MistakeCount);
+        Assert.AreEqual(latest.Content, list.Items.Single().Content);
+        Assert.AreEqual(latest.QuestionType, list.Items.Single().QuestionType);
+        Assert.AreEqual(latest.Source, list.Items.Single().Source);
+        Assert.AreEqual(latest.SourcePaperTitle, list.Items.Single().SourcePaperTitle);
+        Assert.AreEqual(latest.CreationTime, list.Items.Single().CreationTime);
         var json = await response.Content.ReadAsStringAsync();
         Assert.DoesNotContain("standardAnswer", json);
         Assert.DoesNotContain("userAnswer", json);
