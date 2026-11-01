@@ -166,6 +166,8 @@ public class UserPracticeHistoryController : ControllerBase
             CreationTime = DateTime.UtcNow
         };
         _context.UserPracticeHistories.Add(entity);
+        MistakeRecording.Record(_context, userId, question, dto.UserAnswer, gradingResult,
+            dto.PracticeType, entity.CreationTime);
         await _context.SaveChangesAsync();
 
         var result = new UserPracticeHistoryDto

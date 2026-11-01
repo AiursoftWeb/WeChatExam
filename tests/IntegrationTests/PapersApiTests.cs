@@ -61,6 +61,7 @@ public class PapersApiTests
         using (var scope = _server.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            context.MistakeRecords.RemoveRange(context.MistakeRecords);
             context.UserPracticeHistories.RemoveRange(context.UserPracticeHistories);
             context.Papers.RemoveRange(context.Papers);
             var realSnapshots = context.PaperSnapshots.Where(s => s.RealPaperId != null);
@@ -338,6 +339,7 @@ public class PapersApiTests
         Assert.AreEqual(users, await after.Users.CountAsync());
         Assert.AreEqual(0, await after.UserPracticeHistories.CountAsync());
         Assert.AreEqual(0, await after.ExamRecords.CountAsync());
+        Assert.AreEqual(0, await after.MistakeRecords.CountAsync());
         Assert.AreEqual(0, _ollama.Questions.Count);
     }
 
@@ -365,6 +367,8 @@ public class PapersApiTests
             Assert.AreEqual(HttpStatusCode.Forbidden, response.StatusCode);
             Assert.DoesNotContain("Secret answer", await response.Content.ReadAsStringAsync());
             Assert.AreEqual(0, _ollama.Questions.Count);
+            using var check = _server!.Services.CreateScope();
+            Assert.AreEqual(0, await check.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MistakeRecords.CountAsync());
             using var scope = _server!.Services.CreateScope();
             Assert.AreEqual(0, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().UserPracticeHistories.CountAsync());
         }
@@ -389,6 +393,8 @@ public class PapersApiTests
         Assert.AreEqual(12, result.Score);
         Assert.IsTrue(result.IsCorrect);
         Assert.AreEqual(1, _ollama.Questions.Count);
+        using (var check = _server!.Services.CreateScope())
+            Assert.AreEqual(0, await check.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MistakeRecords.CountAsync());
         Assert.Contains("Secret explanation", _ollama.Questions.Single());
         using var finalScope = _server!.Services.CreateScope();
         var finalDb = finalScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
@@ -660,6 +666,7 @@ public class PapersApiTests
         var after = afterScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         Assert.AreEqual(2, await after.UserPracticeHistories.CountAsync());
         Assert.AreEqual(0, await after.ExamRecords.CountAsync());
+        Assert.AreEqual(0, await after.MistakeRecords.CountAsync());
         _mockWeChatPayService.Memberships = [];
         Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.PostAsJsonAsync(url, input)).StatusCode);
         Assert.AreEqual(2, _ollama.Questions.Count);
@@ -712,6 +719,101 @@ public class PapersApiTests
         Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
         Assert.AreEqual(0, _ollama.Questions.Count);
         Assert.AreEqual(school, (await _http.GetFromJsonAsync<RealPaperSnapshotDto>($"/api/RealPapers/snapshots/{snapshotId}"))!.InstitutionId);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task PaperMistakesCopyThePublishedVersionAndSurviveDeletedOriginals(bool realPaper)
+    {
+        var (paperId, snapshotId, target) = realPaper ? await CreatePublishedReal() : await CreatePublishedMock(true);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        if (realPaper) _mockWeChatPayService.Memberships = [SchoolMembership(target)];
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var question = await db.QuestionSnapshots.AsNoTracking().Where(q => q.PaperSnapshotId == snapshotId)
+            .OrderBy(q => q.Order).FirstAsync();
+        var snapshot = await db.PaperSnapshots.AsNoTracking().SingleAsync(p => p.Id == snapshotId);
+        var original = await db.Questions.SingleAsync(q => q.Id == question.OriginalQuestionId);
+        original.Content = "Unpublished replacement";
+        original.StandardAnswer = "Unpublished answer";
+        original.Explanation = "Unpublished explanation";
+        original.Metadata = "Unpublished options";
+        await db.SaveChangesAsync();
+        var url = $"/api/{(realPaper ? "RealPapers" : "MockPapers")}/snapshots/{snapshotId}/answers";
+        var answer = new CreateUserPracticeHistoryDto { QuestionId = question.Id, UserAnswer = "My incorrect answer" };
+        var response = await _http.PostAsJsonAsync(url, answer);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.IsFalse(result.IsCorrect);
+        var mistake = await db.MistakeRecords.AsNoTracking().SingleAsync();
+        Assert.AreEqual((await db.UserPracticeHistories.SingleAsync(h => h.Id == result.Id)).UserId, mistake.UserId);
+        Assert.AreEqual(realPaper ? MistakeSource.RealPaper : MistakeSource.MockPaper, mistake.Source);
+        Assert.AreEqual(original.Id, mistake.SourceQuestionId);
+        Assert.AreEqual(question.Id, mistake.SourceQuestionSnapshotId);
+        Assert.AreEqual(paperId, mistake.SourcePaperId);
+        Assert.AreEqual(snapshotId, mistake.SourcePaperSnapshotId);
+        Assert.AreEqual(snapshot.Version, mistake.SourcePaperVersion);
+        Assert.AreEqual(snapshot.Title, mistake.SourcePaperTitle);
+        Assert.AreEqual(question.Content, mistake.Content);
+        Assert.AreEqual(question.QuestionType, mistake.QuestionType);
+        Assert.AreEqual(question.Metadata, mistake.Metadata);
+        Assert.AreEqual(question.StandardAnswer, mistake.StandardAnswer);
+        Assert.AreEqual(question.Explanation, mistake.Explanation);
+        Assert.AreEqual(answer.UserAnswer, mistake.UserAnswer);
+        Assert.AreEqual(result.Score, mistake.Score);
+        Assert.AreEqual(question.Score, mistake.MaxScore);
+        Assert.AreEqual(result.Comment, mistake.GradingComment);
+        Assert.AreEqual(result.CreationTime, mistake.CreationTime);
+
+        // Removing the old source and legacy history must not erase the independent copy.
+        db.UserPracticeHistories.RemoveRange(db.UserPracticeHistories.Where(h => h.QuestionId == original.Id));
+        db.MockPaperQuestions.RemoveRange(db.MockPaperQuestions.Where(q => q.QuestionId == original.Id));
+        db.RealPaperQuestions.RemoveRange(db.RealPaperQuestions.Where(q => q.QuestionId == original.Id));
+        db.Questions.Remove(original);
+        await db.SaveChangesAsync();
+        answer.UserAnswer = new string('误', 2048);
+        response = await _http.PostAsJsonAsync(url, answer);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.AreEqual(Guid.Empty, (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!.Id);
+        Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+        Assert.IsTrue(await db.MistakeRecords.AnyAsync(m => m.UserAnswer == answer.UserAnswer));
+        Assert.IsTrue(await db.MistakeRecords.AnyAsync(m => m.Id == mistake.Id && m.Content == question.Content));
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync(h => h.QuestionId == original.Id));
+        foreach (var text in new[] { "", "   ", question.StandardAnswer })
+        {
+            answer.UserAnswer = text;
+            Assert.AreEqual(HttpStatusCode.OK, (await _http.PostAsJsonAsync(url, answer)).StatusCode);
+        }
+        Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task PaperGradingFailureDoesNotCollectAMistakeAndRetryKeepsFeedback(bool realPaper)
+    {
+        var (_, snapshotId, target) = realPaper
+            ? await CreatePublishedReal(GradingStrategy.AiEval) : await CreatePublishedMock(true, GradingStrategy.AiEval);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        if (realPaper) _mockWeChatPayService.Memberships = [SchoolMembership(target)];
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var questionId = await db.QuestionSnapshots.Where(q => q.PaperSnapshotId == snapshotId)
+            .OrderBy(q => q.Order).Select(q => q.Id).FirstAsync();
+        var url = $"/api/{(realPaper ? "RealPapers" : "MockPapers")}/snapshots/{snapshotId}/answers";
+        var input = new CreateUserPracticeHistoryDto { QuestionId = questionId, UserAnswer = "Some incorrect reasoning" };
+        _ollama.Failure = new HttpRequestException("Provider unavailable");
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        Assert.AreEqual(0, await db.MistakeRecords.CountAsync());
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+        _ollama.Failure = null;
+        _ollama.Response = "{\"IsCorrect\":false,\"Score\":5,\"Comment\":\"The conclusion is wrong, but supporting work earns credit.\"}";
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.PostAsJsonAsync(url, input)).StatusCode);
+        var mistake = await db.MistakeRecords.SingleAsync();
+        Assert.AreEqual(5, mistake.Score);
+        Assert.AreEqual(15, mistake.MaxScore);
+        Assert.AreEqual("The conclusion is wrong, but supporting work earns credit.", mistake.GradingComment);
     }
 
     private async Task<string> LoginAsWeChatUserAsync()

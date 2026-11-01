@@ -135,9 +135,11 @@ public class MockPapersApiController(WeChatExamDbContext context, IPaperAccessSe
                 CreationTime = result.CreationTime
             };
             context.UserPracticeHistories.Add(history);
-            await context.SaveChangesAsync(cancellationToken);
             result.Id = history.Id;
         }
+        MistakeRecording.Record(context, userId, question, snapshot!, dto.UserAnswer, grade,
+            dto.PracticeType, result.CreationTime);
+        if (userId != null) await context.SaveChangesAsync(cancellationToken);
         return Ok(result);
     }
 }
