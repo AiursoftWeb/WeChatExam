@@ -1,5 +1,6 @@
 using Aiursoft.WeChatExam.MySql;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Services;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Aiursoft.WeChatExam.Sqlite;
@@ -314,6 +315,62 @@ public class MigrationTests
         Assert.IsTrue(restored.All(h => h.Score == null && h.GradingComment == null));
         Assert.IsTrue(restored.Any(h => h.Id == id && h.UserAnswer == "An existing answer"));
         Assert.IsTrue(restored.Any(h => h.Id == graded.Id && h.UserAnswer == "A new answer"));
+    }
+
+    [TestMethod]
+    public async Task MistakeMigrationPreservesHistoryAndCopiesOutliveTheirSources()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:;Foreign Keys=True").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        var migrations = db.Database.GetMigrations().ToArray();
+        var previous = migrations[Array.FindIndex(migrations, m => m.EndsWith("_AddMistakeRecords")) - 1];
+        await migrator.MigrateAsync(previous);
+        var user = new User { UserName = "mistake-migration", DisplayName = "Student" };
+        var source = new Question { Content = "Original question", StandardAnswer = "Original answer",
+            Metadata = "Original options", Explanation = "Original explanation",
+            QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true) };
+        var retainedQuestion = new Question { Content = "Retained history question", QuestionCategory = source.QuestionCategory };
+        db.AddRange(user, source, retainedQuestion);
+        var history = new UserPracticeHistory { Id = Guid.NewGuid(), UserId = user.Id,
+            QuestionId = retainedQuestion.Id, UserAnswer = "Old answer", IsCorrect = false };
+        db.UserPracticeHistories.Add(history);
+        await db.SaveChangesAsync();
+        await migrator.MigrateAsync();
+        Assert.AreEqual(0, await db.MistakeRecords.CountAsync()); // No invented backfill from today's questions.
+        Assert.AreEqual("Old answer", (await db.UserPracticeHistories.SingleAsync()).UserAnswer);
+        var time = DateTime.UtcNow;
+        MistakeRecording.Record(db, user.Id, source, "My incorrect answer",
+            new GradingResult { IsCorrect = false, Score = 0, Comment = "Historical feedback" }, null, time);
+        await db.SaveChangesAsync();
+        source.Content = "Replaced content";
+        source.StandardAnswer = "Replaced answer";
+        await db.SaveChangesAsync();
+        db.Questions.Remove(source);
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        var copy = await db.MistakeRecords.SingleAsync();
+        Assert.AreEqual("Original question", copy.Content);
+        Assert.AreEqual("Original answer", copy.StandardAnswer);
+        Assert.AreEqual("Original options", copy.Metadata);
+        Assert.AreEqual("Original explanation", copy.Explanation);
+        Assert.AreEqual("Historical feedback", copy.GradingComment);
+        Assert.AreEqual("My incorrect answer", copy.UserAnswer);
+        Assert.AreEqual(source.Id, copy.SourceQuestionId);
+        Assert.AreEqual(time, copy.CreationTime);
+        Assert.AreEqual(history.Id, (await db.UserPracticeHistories.SingleAsync()).Id);
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "SELECT count(*) FROM pragma_foreign_key_check";
+        Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+        command.CommandText = "SELECT count(*) FROM pragma_foreign_key_list('MistakeRecords') WHERE \"table\" <> 'AspNetUsers'";
+        Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+        // Rolling back this new feature drops its copies, but must retain existing answer history.
+        await migrator.MigrateAsync(previous);
+        Assert.AreEqual(history.Id, (await db.UserPracticeHistories.SingleAsync()).Id);
+        await migrator.MigrateAsync();
+        Assert.AreEqual(0, await db.MistakeRecords.CountAsync());
+        Assert.AreEqual(1, await db.UserPracticeHistories.CountAsync());
     }
 
     [TestMethod]

@@ -50,6 +50,7 @@ public class UserPracticeHistoryApiTests
 
         using var scope = _server.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        context.MistakeRecords.RemoveRange(context.MistakeRecords);
         context.UserPracticeHistories.RemoveRange(context.UserPracticeHistories);
         context.Questions.RemoveRange(context.Questions);
         await context.SaveChangesAsync();
@@ -243,6 +244,11 @@ public class UserPracticeHistoryApiTests
         Assert.AreEqual(7, result.Score);
         Assert.AreEqual("Correct core reasoning; explain the remaining safeguard.", result.Comment);
         Assert.AreEqual(question.Explanation, result.Explanation);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            // A correct core answer earning 7/10 is not a wrong answer.
+            Assert.AreEqual(0, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MistakeRecords.CountAsync());
+        }
         var history = (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Single();
         Assert.AreEqual(result.Score, history.Score);
         Assert.AreEqual(result.Comment, history.Comment);
@@ -268,6 +274,10 @@ public class UserPracticeHistoryApiTests
         Assert.AreEqual(HttpStatusCode.ServiceUnavailable, failed.StatusCode);
         StringAssert.Contains(await failed.Content.ReadAsStringAsync(), "grading_unavailable");
         Assert.AreEqual(0, (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Count);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            Assert.AreEqual(0, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MistakeRecords.CountAsync());
+        }
         _ollama.Failure = null;
         _ollama.Response = "{\"Score\":5,\"IsCorrect\":false,\"Comment\":\"Some reasoning earns partial credit.\"}";
         var retry = await _http.PostAsJsonAsync("/api/UserPracticeHistory", answer);
@@ -275,7 +285,79 @@ public class UserPracticeHistoryApiTests
         var grade = (await retry.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
         Assert.AreEqual(5, grade.Score);
         Assert.IsFalse(grade.IsCorrect);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var mistake = await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MistakeRecords.SingleAsync();
+            Assert.AreEqual(5, mistake.Score);
+            Assert.AreEqual(grade.Comment, mistake.GradingComment);
+            Assert.AreEqual(answer.UserAnswer, mistake.UserAnswer);
+        }
         Assert.AreEqual(1, (await _http.GetFromJsonAsync<List<UserPracticeHistoryDto>>("/api/UserPracticeHistory?questionId=" + question.Id))!.Count);
+    }
+
+    [TestMethod]
+    public async Task WrongAnswersKeepTheirOwnContentAfterTheOriginalIsEditedAndDeleted()
+    {
+        var user = await LoginAsync("mistake-owner");
+        var question = CreateQuestion(QuestionType.Choice);
+        question.QuestionCategory!.IsFree = true;
+        question.Content = "Original question";
+        question.Metadata = "{\"options\":[\"Answer\",\"Wrong\"]}";
+        await SeedAsync([question], []);
+        UseToken(user.Token);
+        var response = await _http.PostAsJsonAsync("/api/UserPracticeHistory", new CreateUserPracticeHistoryDto
+        { QuestionId = question.Id, UserAnswer = "Wrong", PracticeType = PracticeType.QuestionType });
+        Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+        var result = (await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>())!;
+        Assert.IsFalse(result.IsCorrect);
+
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var first = await db.MistakeRecords.AsNoTracking().SingleAsync();
+        Assert.AreEqual(user.UserId, first.UserId);
+        Assert.AreEqual(MistakeSource.QuestionBank, first.Source);
+        Assert.AreEqual(question.Id, first.SourceQuestionId);
+        Assert.AreEqual(question.Content, first.Content);
+        Assert.AreEqual(question.QuestionType, first.QuestionType);
+        Assert.AreEqual(question.Metadata, first.Metadata);
+        Assert.AreEqual("Wrong", first.UserAnswer);
+        Assert.AreEqual(question.StandardAnswer, first.StandardAnswer);
+        Assert.AreEqual(question.Explanation, first.Explanation);
+        Assert.AreEqual(0, first.Score);
+        Assert.AreEqual(10, first.MaxScore);
+        Assert.AreEqual(result.Comment, first.GradingComment);
+        Assert.AreEqual(result.CreationTime, first.CreationTime);
+        Assert.AreEqual(PracticeType.QuestionType, first.PracticeType);
+        Assert.IsNull(first.SourceQuestionSnapshotId);
+        Assert.IsNull(first.SourcePaperId);
+
+        var original = await db.Questions.SingleAsync(q => q.Id == question.Id);
+        original.Content = "Edited question";
+        original.Metadata = "{}";
+        original.StandardAnswer = "Edited answer";
+        original.Explanation = "Edited explanation";
+        await db.SaveChangesAsync();
+        response = await _http.PostAsJsonAsync("/api/UserPracticeHistory", new CreateUserPracticeHistoryDto
+        { QuestionId = question.Id, UserAnswer = "Wrong again", PracticeType = null });
+        Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+        db.UserPracticeHistories.RemoveRange(db.UserPracticeHistories.Where(h => h.QuestionId == question.Id));
+        db.Questions.Remove(original);
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        var records = await db.MistakeRecords.ToListAsync();
+        Assert.AreEqual(2, records.Count);
+        var retained = records.Single(m => m.Id == first.Id);
+        Assert.AreEqual("Original question", retained.Content);
+        Assert.AreEqual(question.Metadata, retained.Metadata);
+        Assert.AreEqual("Answer", retained.StandardAnswer);
+        Assert.AreEqual("Explanation", retained.Explanation);
+        Assert.AreEqual("Wrong", retained.UserAnswer);
+        var second = records.Single(m => m.Id != first.Id);
+        Assert.AreEqual("Edited question", second.Content);
+        Assert.AreEqual("Edited answer", second.StandardAnswer);
+        Assert.AreEqual("Edited explanation", second.Explanation);
+        Assert.AreEqual("Wrong again", second.UserAnswer);
+        Assert.IsNull(second.PracticeType);
     }
 
     private async Task<(string Token, string UserId)> LoginAsync(string openId)

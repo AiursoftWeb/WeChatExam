@@ -53,6 +53,8 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<MistakeRecord>().HasIndex(m => new { m.UserId, m.CreationTime, m.Id });
+
         builder.Entity<PaperSnapshot>().HasOne(s => s.RealPaper).WithMany()
             .HasForeignKey(s => s.RealPaperId).OnDelete(DeleteBehavior.Restrict);
         builder.Entity<PaperSnapshot>().HasIndex(s => new { s.RealPaperId, s.Version }).IsUnique();
@@ -148,6 +150,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<Question> Questions => Set<Question>();
     public DbSet<KnowledgePoint> KnowledgePoints => Set<KnowledgePoint>();
     public DbSet<UserPracticeHistory> UserPracticeHistories => Set<UserPracticeHistory>();
+    public DbSet<MistakeRecord> MistakeRecords => Set<MistakeRecord>();
     public DbSet<KnowledgeCategoryKnowledgePoint> KnowledgeCategoryKnowledgePoints => Set<KnowledgeCategoryKnowledgePoint>();
     public DbSet<KnowledgePointQuestion> KnowledgePointQuestions => Set<KnowledgePointQuestion>();
     public DbSet<Article> Articles => Set<Article>();

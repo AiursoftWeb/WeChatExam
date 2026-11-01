@@ -157,9 +157,11 @@ public class RealPapersApiController(WeChatExamDbContext context, IPaperAccessSe
                 CreationTime = result.CreationTime
             };
             context.UserPracticeHistories.Add(history);
-            await context.SaveChangesAsync(cancellationToken);
             result.Id = history.Id;
         }
+        MistakeRecording.Record(context, userId, question, snapshot!, dto.UserAnswer, grade,
+            dto.PracticeType, result.CreationTime);
+        await context.SaveChangesAsync(cancellationToken);
         return Ok(result);
     }
 }

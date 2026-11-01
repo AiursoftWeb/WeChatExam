@@ -567,6 +567,91 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.ToTable("KnowledgePointQuestions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MistakeRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("varchar(2000)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Explanation")
+                        .IsRequired()
+                        .HasMaxLength(3000)
+                        .HasColumnType("varchar(3000)");
+
+                    b.Property<string>("GradingComment")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("text");
+
+                    b.Property<int>("MaxScore")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Metadata")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("text");
+
+                    b.Property<int?>("PracticeType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Source")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SourcePaperId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("SourcePaperSnapshotId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("SourcePaperTitle")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<int?>("SourcePaperVersion")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SourceQuestionId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("SourceQuestionSnapshotId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("StandardAnswer")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("varchar(5000)");
+
+                    b.Property<string>("UserAnswer")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("varchar(1024)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId", "CreationTime", "Id");
+
+                    b.ToTable("MistakeRecords");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaper", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1785,6 +1870,17 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Navigation("KnowledgePoint");
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MistakeRecord", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaper", b =>

@@ -560,6 +560,91 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("KnowledgePointQuestions");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MistakeRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Explanation")
+                        .IsRequired()
+                        .HasMaxLength(3000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GradingComment")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("text");
+
+                    b.Property<int>("MaxScore")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Metadata")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("text");
+
+                    b.Property<int?>("PracticeType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuestionType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Source")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("SourcePaperId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("SourcePaperSnapshotId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SourcePaperTitle")
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("SourcePaperVersion")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("SourceQuestionId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("SourceQuestionSnapshotId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StandardAnswer")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserAnswer")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId", "CreationTime", "Id");
+
+                    b.ToTable("MistakeRecords");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaper", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1764,6 +1849,17 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("KnowledgePoint");
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MistakeRecord", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.MockPaper", b =>
