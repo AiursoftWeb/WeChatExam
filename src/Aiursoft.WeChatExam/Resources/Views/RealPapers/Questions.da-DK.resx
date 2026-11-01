@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} matchende spørgsmål er endnu ikke tilføjet</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} spørgsmål · {1} point</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} valgt på denne side</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Tilføj alle {0} matchende eksamensspørgsmål?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Tilføj alle {0} matchende spørgsmål</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Tilføj spørgsmål til denne opgave</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Tilbage til de rigtige eksamensopgaver</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Tilbage til valg</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Bekræft tilføjelse af {0} eksamensspørgsmål</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Internt tagnavn</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Periode</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Forhåndsvis denne side med spørgsmål</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Forrige</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Søg</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Søg efter eller vælg et tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Søg efter spørgsmål</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Valgte spørgsmål</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Emneord</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Prøveeksamen</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Dette tilføjer eksamensspørgsmål fra alle resultatsider og springer dem over, der allerede findes i denne opgave.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Versioner og offentliggørelse</value>

@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} preguntas coincidentes aún no añadidas</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} preguntas · {1} puntos</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} seleccionados en esta página</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>¿Añadir todas las {0} preguntas de examen coincidentes?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Añadir las {0} preguntas coincidentes</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Añadir preguntas a este examen</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Volver a los exámenes reales</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Volver a la selección</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Confirmar la adición de {0} preguntas de examen</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Nombre de etiqueta interno</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Periodo</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Vista previa de esta página de preguntas</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Buscar</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Buscar o seleccionar una etiqueta</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Buscar preguntas</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Preguntas seleccionadas</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Examen</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Esto añade preguntas de examen de todas las páginas de resultados y omite las que ya están en este examen.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Versiones y publicación</value>

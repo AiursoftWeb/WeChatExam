@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>{0} मेल खाते प्रश्न जोड़े गए।</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>यह पुष्टि नहीं हो सकी कि प्रश्नों का पूरा समूह जोड़ा गया था। फिर से प्रयास करने से पहले मौजूदा प्रश्नों की समीक्षा करें।</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>चयनित प्रत्येक प्रश्न का अस्तित्व होना आवश्यक है।</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>जोड़ने के लिए इससे मेल खाने वाले कोई अन्य परीक्षा प्रश्न नहीं हैं।</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>और प्रश्न जोड़ने से पहले, प्रश्नों का अधिकतम क्रमांक कम करें।</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>इस शोधपत्र का प्रकाशित संस्करण उपलब्ध होने के बाद संस्थान को बदला नहीं जा सकता।</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>मेल खाते परीक्षा प्रश्न बदल गए हैं। फिर से पुष्टि करने से पहले मौजूदा परिणामों की समीक्षा करें।</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>संस्करण सहेजा नहीं जा सका। फिर से प्रयास करने से पहले संस्करणों की सूची पुनः लोड करें।</value>

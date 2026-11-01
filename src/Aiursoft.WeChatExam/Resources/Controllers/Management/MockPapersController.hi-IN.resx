@@ -18,14 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>{0} मिलते-जुलते प्रश्न जोड़े गए।</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>बैच जोड़ा गया था, इसकी पुष्टि नहीं हो सकी। दोबारा प्रयास करने से पहले मौजूदा प्रश्नों की समीक्षा करें।</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>चयनित प्रत्येक प्रश्न का अस्तित्व होना चाहिए और वह इस प्रश्नपत्र के पाठ्यक्रम से संबंधित होना चाहिए।</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>जोड़ने के लिए इससे मेल खाने वाले कोई अतिरिक्त परीक्षा प्रश्न नहीं हैं।</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>और प्रश्न जोड़ने से पहले प्रश्नों के अधिकतम क्रमांक को कम करें।</value>
   </data>
   <data name="Select an existing course." xml:space="preserve">
     <value>कृपया कोई मौजूदा पाठ्यक्रम चुनें।</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>मिलान वाले परीक्षा प्रश्न बदल गए हैं। दोबारा पुष्टि करने से पहले मौजूदा परिणामों की समीक्षा करें।</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>संस्करण सहेजा नहीं जा सका। फिर से प्रयास करने से पहले संस्करणों की सूची पुनः लोड करें।</value>

@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>尚未新增的 {0} 個符合條件的問題</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} 題 · {1} 分</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>本頁已選取 {0} 個</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>要加入所有符合條件的 {0} 道考題嗎？</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>新增所有符合條件的 {0} 個問題</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>將題目新增至此試卷</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>返回歷屆試卷</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>返回選擇</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>確認新增 {0} 題考試題目</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>內部標籤名稱</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>期間</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>預覽本頁題目</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一頁</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>搜尋</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>搜尋或選取標籤</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>搜尋題目</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>已選取的題目</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>標籤</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>試卷</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>這會從每一個搜尋結果頁面加入考題，並略過已加入此試卷的考題。</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>版本與發布</value>

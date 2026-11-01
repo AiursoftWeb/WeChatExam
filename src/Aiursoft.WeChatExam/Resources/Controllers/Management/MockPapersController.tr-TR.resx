@@ -18,14 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>{0} eşleşen soru eklendi.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Toplu eklemenin yapıldığı doğrulanamadı. Yeniden denemeden önce mevcut soruları gözden geçirin.</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>Seçilen her soru mevcut olmalı ve bu sınavın dersine ait olmalıdır.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Eklenecek başka eşleşen sınav sorusu yok.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Daha fazla soru eklemeden önce en yüksek soru sırası değerini düşürün.</value>
   </data>
   <data name="Select an existing course." xml:space="preserve">
     <value>Mevcut bir kurs seçin.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Eşleşen sınav soruları değişti. Lütfen yeniden onaylamadan önce mevcut sonuçları gözden geçirin.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Sürüm kaydedilemedi. Yeniden denemeden önce sürüm listesini yeniden yükleyin.</value>

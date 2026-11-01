@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} vastaavaa kysymystä vielä lisäämättä</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} kysymystä · {1} pistettä</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} valittu tällä sivulla</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Lisätäänkö kaikki {0} hakuehtoja vastaavaa tenttikysymystä?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Lisää kaikki {0} vastaavaa kysymystä</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Lisää kysymyksiä tältä kurssilta</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Takaisin koepapereihin</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Takaisin valintaan</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Vahvista {0} koetehtävän lisääminen</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Luonnoksen muokkaaminen ei muuta julkaistuja versioita.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Jakso</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Esikatsele tämän sivun kysymyksiä</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Edellinen</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Hae</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Hae tunnistetta tai valitse tunniste</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Hae kysymyksiä</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Valitut kysymykset</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tunniste</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Koepaperi</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Tämä lisää tenttikysymykset kaikilta tulossivuilta ja ohittaa ne, jotka ovat jo tässä tentissä.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Näytä tiedot</value>

@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>已添加 {0} 道符合条件的题目。</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>无法确认是否已添加此批次。请检查当前题目后重试。</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>每道选中的试题都必须存在，并且属于此试卷对应的课程。</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>没有更多符合条件的试题可添加。</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>添加更多题目前，请降低题目序号的最大值。</value>
@@ -27,20 +36,11 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>请选择一个已存在的课程。</value>
   </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>匹配的考试题目已发生变化。请查看当前结果后再重新确认。</value>
+  </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>无法保存此版本。请重新加载版本列表后重试。</value>
   </data>
 
-  <data name="Added {0} matching questions." xml:space="preserve">
-    <value>已添加 {0} 道符合条件的题目。</value>
-  </data>
-  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
-    <value>无法确认是否已添加此批次。请检查当前题目后重试。</value>
-  </data>
-  <data name="No additional matching exam questions to add." xml:space="preserve">
-    <value>没有更多符合条件的试题可添加。</value>
-  </data>
-  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
-    <value>匹配的考试题目已发生变化。请查看当前结果后再重新确认。</value>
-  </data>
 </root>

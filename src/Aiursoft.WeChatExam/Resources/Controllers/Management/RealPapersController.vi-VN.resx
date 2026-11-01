@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Đã thêm {0} câu hỏi phù hợp.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Không thể xác nhận đã thêm lô câu hỏi. Vui lòng xem lại các câu hỏi hiện tại trước khi thử lại.</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>Mọi câu hỏi được chọn đều phải tồn tại.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Không còn câu hỏi thi phù hợp nào để thêm.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Hãy giảm thứ tự câu hỏi cao nhất trước khi thêm câu hỏi mới.</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Không thể thay đổi tổ chức sau khi đề thi này đã có phiên bản được phát hành.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Các câu hỏi thi khớp đã thay đổi. Vui lòng xem lại kết quả hiện tại trước khi xác nhận lại.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Không thể lưu phiên bản. Hãy tải lại danh sách phiên bản trước khi thử lại.</value>

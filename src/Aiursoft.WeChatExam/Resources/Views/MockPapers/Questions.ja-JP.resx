@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>追加されていない該当する質問は{0}件です</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0}問 · {1}点</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>このページで{0}件選択中</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>該当する試験問題をすべて（{0}件）追加しますか？</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>該当する質問{0}件をすべて追加</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>このコースから問題を追加</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>模擬試験一覧に戻る</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>選択画面に戻る</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>{0}件の試験問題を追加する</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>下書きを編集しても、公開済みのバージョンは変更されません。</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>期間</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>このページの問題をプレビュー</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>前へ</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>検索</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>タグを検索または選択</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>問題を検索</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>選択済みの質問</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>タグ</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>テスト用紙</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>すべての検索結果ページから試験問題を追加し、この用紙にすでに含まれている問題はスキップします。</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>詳細を表示</value>

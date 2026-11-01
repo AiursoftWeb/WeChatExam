@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>一致する問題を{0}件追加しました。</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>一括追加を確認できませんでした。再試行する前に、現在の問題を確認してください。</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>選択したすべての問題が存在している必要があります。</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>追加できる一致する試験問題はありません。</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>質問を追加する前に、最も大きい質問順序の値を小さくしてください。</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>論文に公開版がある場合、所属機関は変更できません。</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>照合対象の試験問題が変更されました。再度確定する前に、現在の結果を確認してください。</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>バージョンを保存できませんでした。再試行する前に、バージョン一覧を再読み込みしてください。</value>

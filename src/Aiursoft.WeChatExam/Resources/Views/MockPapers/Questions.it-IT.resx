@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} domande corrispondenti non ancora aggiunte</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} domande · {1} punti</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} selezionati in questa pagina</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Aggiungere tutte le {0} domande d’esame corrispondenti?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Aggiungi tutte le {0} domande corrispondenti</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Aggiungi domande da questo corso</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Torna ai fac-simile d&apos;esame</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Torna alla selezione</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Conferma l’aggiunta di {0} domande d’esame</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>La modifica della bozza non influisce sulle versioni pubblicate.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Periodo</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Anteprima di questa pagina di domande</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Precedente</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Cerca</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Cerca o seleziona un tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Cerca domande</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Domande selezionate</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etichetta</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Compito d’esame</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Aggiunge le domande d’esame da tutte le pagine dei risultati e salta quelle già presenti in questo compito.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Visualizza i dettagli</value>

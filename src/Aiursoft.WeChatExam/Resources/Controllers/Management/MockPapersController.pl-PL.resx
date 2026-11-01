@@ -18,14 +18,26 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Dodano {0} pasujących pytań.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Nie udało się potwierdzić dodania zestawu. Przed ponowną próbą sprawdź aktualne pytania.</value>
+  </data>
+  <data name="Every selected question must exist and belong to this paper&apos;s course." xml:space="preserve">
     <value>Każde wybrane pytanie musi istnieć i należeć do kursu tego arkusza.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Brak dodatkowych pasujących pytań egzaminacyjnych do dodania.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Przed dodaniem kolejnych pytań zmniejsz najwyższy numer porządkowy pytania.</value>
   </data>
   <data name="Select an existing course." xml:space="preserve">
     <value>Wybierz istniejący kurs.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Pytania egzaminacyjne pasujące do kryteriów uległy zmianie. Przejrzyj aktualne wyniki przed ponownym potwierdzeniem.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Nie udało się zapisać wersji. Przed ponowną próbą odśwież listę wersji.</value>

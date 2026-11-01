@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>Aggiunte {0} domande corrispondenti.</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>Impossibile confermare l’aggiunta del gruppo. Controlla le domande attuali prima di riprovare.</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>Ogni domanda selezionata deve esistere.</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>Non ci sono altre domande d&apos;esame corrispondenti da aggiungere.</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>Riduci l&apos;ordine della domanda più alta prima di aggiungere altre domande.</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>L’istituzione non può essere modificata dopo la pubblicazione di una versione di questo elaborato.</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>Le domande d’esame corrispondenti sono cambiate. Rivedi i risultati attuali prima di confermare di nuovo.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Impossibile salvare la versione. Ricarica l’elenco delle versioni prima di riprovare.</value>

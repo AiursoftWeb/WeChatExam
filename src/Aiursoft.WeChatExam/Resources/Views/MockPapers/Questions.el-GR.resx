@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Δεν έχουν προστεθεί ακόμη {0} αντίστοιχες ερωτήσεις</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} ερωτήσεις · {1} βαθμοί</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>Επιλέχθηκαν {0} σε αυτή τη σελίδα</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Να προστεθούν όλες οι {0} ερωτήσεις εξετάσεων που αντιστοιχούν;</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Προσθήκη όλων των {0} ερωτήσεων που αντιστοιχούν</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Προσθέστε ερωτήσεις από αυτό το μάθημα</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Επιστροφή στις δοκιμαστικές εξετάσεις</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Επιστροφή στην επιλογή</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Επιβεβαίωση προσθήκης {0} ερωτήσεων εξετάσεων</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Η επεξεργασία του πρόχειρου δεν αλλάζει τις δημοσιευμένες εκδόσεις.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Περίοδος</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Προεπισκόπηση αυτής της σελίδας ερωτήσεων</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Προηγούμενο</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Αναζήτηση</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Αναζητήστε ή επιλέξτε μια ετικέτα</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Αναζήτηση ερωτήσεων</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Επιλεγμένες ερωτήσεις</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Ετικέτα</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Διαγώνισμα</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Αυτό προσθέτει ερωτήσεις εξετάσεων από όλες τις σελίδες αποτελεσμάτων και παραλείπει όσες υπάρχουν ήδη σε αυτό το διαγώνισμα.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Προβολή λεπτομερειών</value>

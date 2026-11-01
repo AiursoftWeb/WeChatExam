@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} câu hỏi phù hợp chưa được thêm</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} câu hỏi · {1} điểm</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>Đã chọn {0} mục trên trang này</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Thêm tất cả {0} câu hỏi thi phù hợp?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Thêm tất cả {0} câu hỏi phù hợp</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Thêm câu hỏi từ khóa học này</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Quay lại Bộ đề thi thử</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Quay lại bước chọn</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Xác nhận thêm {0} câu hỏi thi</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Chỉnh sửa bản nháp không làm thay đổi các phiên bản đã xuất bản.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Giai đoạn</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Xem trước trang câu hỏi này</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Trước</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Tìm kiếm hoặc chọn thẻ</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Tìm kiếm câu hỏi</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Các câu hỏi đã chọn</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Thẻ</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Đề thi</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Thao tác này thêm các câu hỏi thi từ tất cả các trang kết quả và bỏ qua những câu hỏi đã có trong đề này.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Xem chi tiết</value>

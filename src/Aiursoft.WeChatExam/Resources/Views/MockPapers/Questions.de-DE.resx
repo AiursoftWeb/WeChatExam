@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} passende Fragen noch nicht hinzugefügt</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} Fragen · {1} Punkte</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} auf dieser Seite ausgewählt</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Alle {0} passenden Prüfungsfragen hinzufügen?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Alle {0} passenden Fragen hinzufügen</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Fragen aus diesem Kurs hinzufügen</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Zurück zu den Probeprüfungen</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Zurück zur Auswahl</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Hinzufügen von {0} Prüfungsfragen bestätigen</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Das Bearbeiten des Entwurfs ändert keine veröffentlichten Versionen.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Zeitraum</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Diese Fragenseite anzeigen</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Zurück</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Suchen</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Tag suchen oder auswählen</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Fragen suchen</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Ausgewählte Fragen</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Schlagwort</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Prüfungsbogen</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Dadurch werden Prüfungsfragen von allen Ergebnisseiten hinzugefügt und bereits in dieser Arbeit enthaltene Fragen übersprungen.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Details anzeigen</value>

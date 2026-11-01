@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Încă nu au fost adăugate {0} de întrebări corespunzătoare</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} întrebări · {1} puncte</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} selectate pe această pagină</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Adăugați toate cele {0} de întrebări de examen corespunzătoare?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Adăugați toate cele {0} întrebări corespunzătoare</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Adăugați întrebări la această lucrare</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Înapoi la lucrările de examen</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Înapoi la selecție</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Confirmați adăugarea a {0} de întrebări de examen</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Numele etichetei interne</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Perioadă</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Previzualizați această pagină de întrebări</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Caută</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Caută sau selectează o etichetă</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Caută întrebări</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Întrebări selectate</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Etichetă</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Lucrare de test</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Aceasta adaugă întrebări de examen de pe toate paginile cu rezultate și le omite pe cele deja incluse în această lucrare.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Versiuni și publicare</value>

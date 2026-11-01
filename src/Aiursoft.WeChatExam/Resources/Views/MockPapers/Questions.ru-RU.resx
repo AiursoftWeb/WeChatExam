@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Еще не добавлено подходящих вопросов: {0}</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} вопросов · {1} баллов</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>На этой странице выбрано: {0}</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Добавить все {0} подходящих экзаменационных вопросов?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Добавить все подходящие вопросы ({0})</value>
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>Добавьте вопросы из этого курса</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Mock Papers" xml:space="preserve">
     <value>Назад к пробным экзаменам</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Вернуться к выбору</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Подтвердить добавление {0} экзаменационных вопросов</value>
   </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Редактирование черновика не влияет на опубликованные версии.</value>
@@ -62,6 +77,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Период</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Предварительный просмотр вопросов на этой странице</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Назад</value>
@@ -90,6 +108,9 @@
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Найдите тег или выберите его</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Поиск вопросов</value>
   </data>
@@ -102,8 +123,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Выбранные вопросы</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Тег</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Контрольная работа</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Это добавляет вопросы экзамена со всех страниц результатов, пропуская те, которые уже есть в этой работе.</value>
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Посмотреть подробности</value>

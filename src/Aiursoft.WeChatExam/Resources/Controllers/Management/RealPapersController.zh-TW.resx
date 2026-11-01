@@ -18,8 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Every selected question must exist." xml:space="preserve">
+      <data name="Added {0} matching questions." xml:space="preserve">
+    <value>已新增 {0} 個符合條件的題目。</value>
+  </data>
+  <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
+    <value>無法確認是否已新增這批題目。請檢查目前的題目後再試一次。</value>
+  </data>
+  <data name="Every selected question must exist." xml:space="preserve">
     <value>每個選取的問題都必須存在。</value>
+  </data>
+  <data name="No additional matching exam questions to add." xml:space="preserve">
+    <value>沒有其他符合條件的考題可新增。</value>
   </data>
   <data name="Reduce the highest question order before adding more questions." xml:space="preserve">
     <value>新增更多題目之前，請先降低目前最高的題目順序。</value>
@@ -29,6 +38,9 @@
   </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>本文發佈版本後，便無法變更所屬機構。</value>
+  </data>
+  <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
+    <value>符合條件的考題已變更。請檢視目前的結果，然後再次確認。</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>無法儲存此版本。請重新載入版本清單後再試一次。</value>

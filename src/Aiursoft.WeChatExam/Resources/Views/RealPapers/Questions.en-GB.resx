@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} matching questions not yet added</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>{0} questions · {1} points</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>{0} selected on this page</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Add all {0} matching exam questions?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Add all {0} matching questions</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Add questions to this paper</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>Back to Real Papers</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Back to selection</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Confirm adding {0} exam questions</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Internal tag name</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>Period</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Preview this page of questions</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Search or select a tag</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>Search questions</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Selected Questions</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>Test paper</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>This adds exam questions from every results page and skips those already in this paper.</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Versions and publication</value>

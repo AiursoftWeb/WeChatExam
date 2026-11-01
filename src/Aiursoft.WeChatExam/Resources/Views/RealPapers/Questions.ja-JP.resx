@@ -18,11 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points" xml:space="preserve">
+      <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>未追加の一致する問題は{0}件です</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
     <value>問題数：{0} · 配点：{1}点</value>
   </data>
   <data name="{0} selected on this page" xml:space="preserve">
     <value>このページで{0}件選択中</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>一致する試験問題を{0}件すべて追加しますか？</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>一致する質問を{0}件すべて追加</value>
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>この問題用紙に問題を追加</value>
@@ -38,6 +47,12 @@
   </data>
   <data name="Back to Real Papers" xml:space="preserve">
     <value>実際の問題用紙に戻る</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>選択画面に戻る</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>{0}問の試験問題の追加を確定</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>内部タグ名</value>
@@ -59,6 +74,9 @@
   </data>
   <data name="Period" xml:space="preserve">
     <value>期間</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>このページの問題をプレビュー</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>前へ</value>
@@ -84,6 +102,9 @@
   <data name="Search" xml:space="preserve">
     <value>検索</value>
   </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>タグを検索または選択</value>
+  </data>
   <data name="Search questions" xml:space="preserve">
     <value>問題を検索</value>
   </data>
@@ -96,8 +117,14 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>選択済みの質問</value>
   </data>
+  <data name="Tag" xml:space="preserve">
+    <value>タグ</value>
+  </data>
   <data name="Test paper" xml:space="preserve">
     <value>テスト用紙</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>すべての検索結果ページにある試験問題を追加し、この問題用紙にすでに含まれている問題はスキップします。</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>バージョンと公開</value>
