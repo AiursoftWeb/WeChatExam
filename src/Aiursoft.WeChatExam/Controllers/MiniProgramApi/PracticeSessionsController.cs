@@ -227,13 +227,13 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         if (item == null) return NotFound();
         if (session!.Kind == PracticeSessionKind.BlindSpot) return Conflict();
         if (item.ReplacedAt.HasValue) return item.ReplacementReason == request.Reason
-            ? Ok(await Project(session!, cancellationToken)) : Conflict();
+            ? Ok(await Project(session, cancellationToken)) : Conflict();
         if (item.SubmittedAt.HasValue) return Conflict();
         var mistake = await db.MistakeRecords.AsNoTracking().SingleOrDefaultAsync(
-            m => m.Id == session!.SourceMistakeId && m.UserId == userId, cancellationToken);
+            m => m.Id == session.SourceMistakeId && m.UserId == userId, cancellationToken);
         if (mistake == null) return NotFound();
         var access = await accessService.GetUserAccessStatusAsync(userId);
-        var candidates = await related.FindReplacementAsync(mistake, access, session!.Items, itemId, cancellationToken);
+        var candidates = await related.FindReplacementAsync(mistake, access, session.Items, itemId, cancellationToken);
         if (!candidates.Available) return StatusCode(StatusCodes.Status503ServiceUnavailable);
         var candidate = candidates.Items.SingleOrDefault();
         if (candidate == null) return UnprocessableEntity(new { Message = "No eligible replacement is available. The original item is unchanged." });
