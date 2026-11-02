@@ -154,8 +154,23 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
     public async Task<IActionResult> Replace(Guid id, Guid itemId, ReplacePracticeSessionItemDto request,
         CancellationToken cancellationToken)
     {
-        if (UserId == null) return Unauthorized();
+        var userId = UserId;
+        if (userId == null) return Unauthorized();
         if (request.Reason == null || !Enum.IsDefined(request.Reason.Value)) return BadRequest();
+        var retrying = false;
+        return await db.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
+        {
+            // Re-read the committed replacement after transient failures, including a lost
+            // commit acknowledgement. Never reuse tracked candidates from a rolled-back attempt.
+            if (retrying) db.ChangeTracker.Clear();
+            retrying = true;
+            return await ReplaceOnce(userId, id, itemId, request, cancellationToken);
+        });
+    }
+
+    private async Task<IActionResult> ReplaceOnce(string userId, Guid id, Guid itemId,
+        ReplacePracticeSessionItemDto request, CancellationToken cancellationToken)
+    {
         var session = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
         var item = session?.Items.SingleOrDefault(i => i.Id == itemId);
         if (item == null) return NotFound();
@@ -163,15 +178,15 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
             ? Ok(await Project(session!, cancellationToken)) : Conflict();
         if (item.SubmittedAt.HasValue) return Conflict();
         var mistake = await db.MistakeRecords.AsNoTracking().SingleOrDefaultAsync(
-            m => m.Id == session!.SourceMistakeId && m.UserId == UserId, cancellationToken);
+            m => m.Id == session!.SourceMistakeId && m.UserId == userId, cancellationToken);
         if (mistake == null) return NotFound();
-        var access = await accessService.GetUserAccessStatusAsync(UserId);
+        var access = await accessService.GetUserAccessStatusAsync(userId);
         var candidates = await related.FindReplacementAsync(mistake, access, session!.Items, itemId, cancellationToken);
         if (!candidates.Available) return StatusCode(StatusCodes.Status503ServiceUnavailable);
         var candidate = candidates.Items.SingleOrDefault();
         if (candidate == null) return UnprocessableEntity(new { Message = "No eligible replacement is available. The original item is unchanged." });
         // Recheck current access and content after ranking, before capturing the replacement.
-        access = await accessService.GetUserAccessStatusAsync(UserId);
+        access = await accessService.GetUserAccessStatusAsync(userId);
         var question = await db.Questions.AsNoTracking().Where(QuestionAccess.PracticeFilter(access))
             .SingleOrDefaultAsync(q => q.Id == candidate.Id, cancellationToken);
         if (question == null || question.QuestionCategoryId != candidate.QuestionCategoryId ||
@@ -181,7 +196,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         // A round-wide compare-and-swap prevents two positions choosing the same replacement
         // or adding a second long answer. Answering competes on the old item's conditional write.
         var version = session.ReplacementVersion;
-        var claimed = await db.PracticeSessions.Where(s => s.Id == id && s.UserId == UserId &&
+        var claimed = await db.PracticeSessions.Where(s => s.Id == id && s.UserId == userId &&
                 s.ReplacementVersion == version)
             .ExecuteUpdateAsync(set => set.SetProperty(s => s.ReplacementVersion, s => s.ReplacementVersion + 1), cancellationToken);
         if (claimed == 0)

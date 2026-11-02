@@ -206,6 +206,61 @@ public class MistakesApiTests : TestBase
         Assert.AreEqual(1, await db.PracticeSessionItems.CountAsync(i => i.SubmittedAt != null));
     }
 
+    [TestMethod]
+    [DataRow(0)]
+    [DataRow(1)]
+    [DataRow(2)]
+    public async Task PracticeReplacementsSupportRetryingTransactionsWithoutReplacingTwice(int failurePoint)
+    {
+        var owner = await Login("replacement-retry-owner");
+        var (mistakeId, _) = await SeedPractice(owner, 4);
+        var failure = new AnswerSaveFailure();
+        var commitFailure = new AnswerCommitFailure();
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite(_keeper!.ConnectionString)
+            .ReplaceService<IExecutionStrategyFactory, AnswerRetryStrategyFactory>()
+            .AddInterceptors(failure, commitFailure).Options);
+        using var scope = Server!.Services.CreateScope();
+        var controller = new PracticeSessionsController(db,
+            new RelatedQuestionService(db, scope.ServiceProvider.GetRequiredService<ContentEmbeddingCache>(),
+                scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>(),
+                scope.ServiceProvider.GetRequiredService<ContentVectorSearchService>()),
+            scope.ServiceProvider.GetRequiredService<IPaperAccessService>(),
+            scope.ServiceProvider.GetRequiredService<IGradingService>())
+        {
+            ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier, owner)], "Bearer"))
+            } }
+        };
+        var id = Guid.NewGuid();
+        var started = (ObjectResult)await controller.Start(id, new StartPracticeSessionDto { MistakeId = mistakeId }, default);
+        var initial = (PracticeSessionDto)started.Value!;
+        var original = initial.Items.First();
+        failure.Armed = failurePoint == 1;
+        commitFailure.Armed = failurePoint == 2;
+        var request = new ReplacePracticeSessionItemDto { Reason = PracticeReplacementReason.Familiar };
+        var response = (OkObjectResult)await controller.Replace(id, original.Id, request, default);
+        var result = (PracticeSessionDto)response.Value!;
+        Assert.AreEqual(3, result.Items.Count);
+        Assert.AreEqual(0, result.AnsweredCount);
+        Assert.IsFalse(result.Completed);
+        Assert.IsFalse(result.Items.Any(i => i.Id == original.Id));
+        Assert.AreEqual(2, result.Items.Count(i => initial.Items.Any(old => old.Id == i.Id)));
+        Assert.IsFalse(failure.Armed);
+        Assert.IsFalse(commitFailure.Armed);
+        var replay = (OkObjectResult)await controller.Replace(id, original.Id, request, default);
+        CollectionAssert.AreEqual(result.Items.Select(i => i.Id).ToArray(),
+            ((PracticeSessionDto)replay.Value!).Items.Select(i => i.Id).ToArray());
+        Assert.IsInstanceOfType<ConflictResult>(await controller.Replace(id, original.Id,
+            new ReplacePracticeSessionItemDto { Reason = PracticeReplacementReason.NotRelated }, default));
+        Assert.AreEqual(1, await db.PracticeSessionItems.CountAsync(i => i.ReplacedAt != null));
+        Assert.AreEqual(4, await db.PracticeSessionItems.CountAsync());
+        Assert.AreEqual(1, (await db.PracticeSessions.AsNoTracking().SingleAsync()).ReplacementVersion);
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+        Assert.AreEqual(1, await db.MistakeRecords.CountAsync());
+    }
+
     private sealed class AnswerRetryStrategyFactory(ExecutionStrategyDependencies dependencies) : IExecutionStrategyFactory
     {
         public IExecutionStrategy Create() => new AnswerRetryStrategy(dependencies);
