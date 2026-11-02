@@ -17,6 +17,7 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class MistakesApiTests : TestBase
 {
     private readonly StubWeChatService _wechat = new();
+    private readonly StubOllamaService _ollama = new();
     private SqliteConnection? _keeper;
     private string? _storage;
 
@@ -26,7 +27,7 @@ public class MistakesApiTests : TestBase
         TestStartupWithMockWeChat.MockWeChatService = _wechat;
         TestStartupWithMockWeChat.MockWeChatPayService = new StubWeChatPayService();
         TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
-        TestStartupWithMockWeChat.MockOllamaService = new StubOllamaService();
+        TestStartupWithMockWeChat.MockOllamaService = _ollama;
         TestStartupWithMockWeChat.MockVipProductService = null;
         _keeper = new SqliteConnection($"Data Source=mistakes-{Guid.NewGuid():N};Mode=Memory;Cache=Shared;Foreign Keys=True");
         await _keeper.OpenAsync();
@@ -108,6 +109,187 @@ public class MistakesApiTests : TestBase
         await AssertUnauthorized();
         await RegisterAndLoginAsync();
         await AssertUnauthorized();
+    }
+
+    private async Task<(Guid MistakeId, Question[] Questions)> SeedPractice(string owner)
+    {
+        var copy = Copy(owner, Guid.NewGuid());
+        await Seed(copy);
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var settings = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
+        await settings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "true");
+        await settings.UpdateSettingAsync(SettingsMap.EmbeddingOllamaInstance, "https://embedding.example.invalid");
+        await settings.UpdateSettingAsync(SettingsMap.EmbeddingModel, "bge-m3:latest");
+        var period = QuestionPeriodAssignmentTests.TestPeriod(true);
+        var source = new Question { Id = copy.SourceQuestionId!.Value, QuestionCategory = period,
+            Content = copy.Content, QuestionType = copy.QuestionType, Metadata = copy.Metadata,
+            StandardAnswer = copy.StandardAnswer, Explanation = copy.Explanation };
+        var questions = Enumerable.Range(0, 3).Select(i => new Question
+        {
+            Id = Guid.NewGuid(), QuestionCategory = period, Content = "Related practice " + i,
+            Metadata = "{\"options\":[\"A\",\"B\"]}", StandardAnswer = "ANSWER" + i,
+            Explanation = "PRIVATE EXPLANATION " + i,
+            QuestionType = i == 2 ? QuestionType.ShortAnswer : QuestionType.Choice,
+            GradingStrategy = i == 2 ? GradingStrategy.AiEval : GradingStrategy.ExactMatch
+        }).ToArray();
+        db.Add(source); db.Questions.AddRange(questions); await db.SaveChangesAsync();
+        var seed = new float[1024]; seed[0] = 1;
+        source.Embedding = EmbeddingHelper.Serialize(seed); source.LastEmbeddedAt = source.LastUpdatedAt;
+        for (var i = 0; i < questions.Length; i++)
+        {
+            var vector = new float[1024]; vector[0] = 0.8f; vector[i + 1] = 0.6f;
+            questions[i].Embedding = EmbeddingHelper.Serialize(vector);
+            questions[i].LastEmbeddedAt = questions[i].LastUpdatedAt;
+        }
+        await db.SaveChangesAsync();
+        return (copy.Id, questions);
+    }
+
+    [TestMethod]
+    public async Task PracticeSessionsKeepFixedCopiesAndCommitEachAnswerOnce()
+    {
+        var owner = await Login("session-owner");
+        var (mistakeId, questions) = await SeedPractice(owner);
+        var id = Guid.NewGuid();
+        var url = $"/api/PracticeSessions/{id}";
+        var starts = await Task.WhenAll(Enumerable.Range(0, 3).Select(_ =>
+            Http.PutAsJsonAsync(url, new StartPracticeSessionDto { MistakeId = mistakeId })));
+        Assert.AreEqual(1, starts.Count(r => r.StatusCode == HttpStatusCode.Created));
+        Assert.IsTrue(starts.All(r => r.StatusCode is HttpStatusCode.Created or HttpStatusCode.OK));
+        var created = starts.Single(r => r.StatusCode == HttpStatusCode.Created);
+        Assert.IsTrue(created.Headers.CacheControl!.NoStore);
+        var initial = (await created.Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        Assert.AreEqual(id, initial.Id); Assert.AreEqual(mistakeId, initial.SourceMistakeId);
+        Assert.IsTrue(initial.CreationTime > DateTime.UtcNow.AddMinutes(-1));
+        Assert.AreEqual(0, initial.AnsweredCount); Assert.IsFalse(initial.Completed);
+        Assert.HasCount(3, initial.Items);
+        Assert.IsTrue(initial.Items.All(i => i.StandardAnswer == null && i.Explanation == null && i.UserAnswer == null));
+        foreach (var item in initial.Items)
+        {
+            var q = questions.Single(q => q.Id == item.SourceQuestionId);
+            Assert.AreEqual(q.Content, item.Content); Assert.AreEqual(q.Metadata, item.Metadata);
+            Assert.AreEqual(q.QuestionType, item.QuestionType); Assert.AreEqual("Ready", item.Availability);
+        }
+        CollectionAssert.AreEqual(new[] {0, 1, 2}, initial.Items.Select(i => i.Position).ToArray());
+        var repeated = await Http.PutAsJsonAsync(url, new StartPracticeSessionDto { MistakeId = mistakeId });
+        Assert.AreEqual(HttpStatusCode.OK, repeated.StatusCode);
+        CollectionAssert.AreEqual(initial.Items.Select(i => i.Id).ToArray(),
+            (await repeated.Content.ReadFromJsonAsync<PracticeSessionDto>())!.Items.Select(i => i.Id).ToArray());
+        var first = initial.Items.Single(i => i.SourceQuestionId == questions[0].Id);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var live = await db.Questions.SingleAsync(q => q.Id == questions[0].Id);
+            live.Content = "Later edited content"; live.StandardAnswer = "Later edited answer";
+            await db.SaveChangesAsync();
+        }
+        var answerUrl = url + $"/items/{first.Id}/answer";
+        var attempts = await Task.WhenAll(Enumerable.Range(0, 3).Select(_ =>
+            Http.PostAsJsonAsync(answerUrl, new PracticeSessionAnswerDto {UserAnswer = "wrong"})));
+        foreach (var response in attempts) Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var answered = (await attempts[0].Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        var result = answered.Items.Single(i => i.Id == first.Id);
+        Assert.AreEqual(1, answered.AnsweredCount); Assert.AreEqual("Answered", result.Availability);
+        Assert.AreEqual(questions[0].Content, result.Content); Assert.AreEqual("ANSWER0", result.StandardAnswer);
+        Assert.AreEqual(questions[0].Explanation, result.Explanation); Assert.AreEqual("wrong", result.UserAnswer);
+        Assert.AreEqual(false, result.IsCorrect); Assert.AreEqual(0, result.Score); Assert.IsNotNull(result.SubmittedAt);
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PostAsJsonAsync(answerUrl,
+            new PracticeSessionAnswerDto { UserAnswer = "ANSWER0" })).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(1, await db.PracticeSessions.CountAsync());
+            Assert.AreEqual(1, await db.UserPracticeHistories.CountAsync());
+            Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+            var captured = await db.MistakeRecords.SingleAsync(m => m.Id != mistakeId);
+            Assert.AreEqual(questions[0].Content, captured.Content); Assert.AreEqual("ANSWER0", captured.StandardAnswer);
+        }
+        var second = initial.Items.Single(i => i.SourceQuestionId == questions[1].Id);
+        (await Http.PostAsJsonAsync(url + $"/items/{second.Id}/answer",
+            new PracticeSessionAnswerDto { UserAnswer = "ANSWER1" })).EnsureSuccessStatusCode();
+        var last = initial.Items.Single(i => i.SourceQuestionId == questions[2].Id);
+        _ollama.Failure = new HttpRequestException("Synthetic grading outage");
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, (await Http.PostAsJsonAsync(url + $"/items/{last.Id}/answer",
+            new PracticeSessionAnswerDto { UserAnswer = "My explanation" })).StatusCode);
+        var pending = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        Assert.AreEqual(2, pending.AnsweredCount); Assert.IsNull(pending.Items.Single(i => i.Id == last.Id).SubmittedAt);
+        _ollama.Failure = null;
+        _ollama.Response = "{\"Score\":7,\"IsCorrect\":true,\"Comment\":\"Core correct; supporting detail missing.\"}";
+        var completedResponse = await Http.PostAsJsonAsync(url + $"/items/{last.Id}/answer",
+            new PracticeSessionAnswerDto { UserAnswer = "My explanation" });
+        completedResponse.EnsureSuccessStatusCode();
+        var completed = (await completedResponse.Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        Assert.IsTrue(completed.Completed); Assert.AreEqual(3, completed.AnsweredCount);
+        Assert.AreEqual(7, completed.Items.Single(i => i.Id == last.Id).Score);
+        Assert.AreEqual("Core correct; supporting detail missing.", completed.Items.Single(i => i.Id == last.Id).GradingComment);
+        var calls = _ollama.Questions.Count;
+        (await Http.PostAsJsonAsync(url + $"/items/{last.Id}/answer",
+            new PracticeSessionAnswerDto { UserAnswer = "My explanation" })).EnsureSuccessStatusCode();
+        Assert.AreEqual(calls, _ollama.Questions.Count, "A committed AI answer must never be graded again.");
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(3, await db.UserPracticeHistories.CountAsync());
+            Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+            db.Questions.Remove(await db.Questions.SingleAsync(q => q.Id == questions[0].Id));
+            db.MistakeRecords.Remove(await db.MistakeRecords.SingleAsync(m => m.Id == mistakeId));
+            await db.SaveChangesAsync();
+        }
+        var retained = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        Assert.IsTrue(retained.Completed); Assert.AreEqual("ANSWER0", retained.Items.Single(i => i.Id == first.Id).StandardAnswer);
+    }
+
+    [TestMethod]
+    public async Task PracticeSessionsRecheckRightsAndIsolateOwners()
+    {
+        var owner = await Login("rights-owner");
+        var (mistakeId, questions) = await SeedPractice(owner);
+        var id = Guid.NewGuid(); var url = $"/api/PracticeSessions/{id}";
+        (await Http.PutAsJsonAsync(url, new StartPracticeSessionDto { MistakeId = mistakeId })).EnsureSuccessStatusCode();
+        var initial = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        var item = initial.Items[0];
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "   "})).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = new string('x', 1025)})).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var period = await db.QuestionCategories.SingleAsync(c => c.Id == questions[0].QuestionCategoryId);
+            period.IsFree = false; await db.SaveChangesAsync();
+        }
+        Assert.AreEqual(HttpStatusCode.UnprocessableEntity, (await Http.PutAsJsonAsync($"/api/PracticeSessions/{Guid.NewGuid()}",
+            new StartPracticeSessionDto { MistakeId = mistakeId })).StatusCode);
+        var locked = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        Assert.IsTrue(locked.Items.All(i => i.Availability == "MembershipRequired" && i.Content == null && i.Metadata == null));
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "A"})).StatusCode);
+        await Login("foreign-owner");
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync(url)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "A"})).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.PutAsJsonAsync($"/api/PracticeSessions/{Guid.NewGuid()}",
+            new StartPracticeSessionDto {MistakeId = mistakeId})).StatusCode);
+        await Login("rights-owner");
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Questions.Remove(await db.Questions.SingleAsync(q => q.Id == item.SourceQuestionId));
+            await db.SaveChangesAsync();
+            Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+            Assert.AreEqual(1, await db.MistakeRecords.CountAsync());
+        }
+        var deleted = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        Assert.AreEqual("QuestionUnavailable", deleted.Items.Single(i => i.Id == item.Id).Availability);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "A"})).StatusCode);
+        Http.DefaultRequestHeaders.Authorization = null;
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.GetAsync(url)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.PutAsJsonAsync(url,
+            new StartPracticeSessionDto {MistakeId = mistakeId})).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "A"})).StatusCode);
     }
 
     [TestMethod]
