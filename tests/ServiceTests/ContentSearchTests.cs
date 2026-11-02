@@ -428,6 +428,32 @@ public class ContentSearchTests
         Assert.HasCount(0, (await service.FindAsync(copy, new PaperAccessStatus())).Items);
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task ReplacementExcludesPriorVersionsAndKeepsOneLongAnswer(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var source = NewQuestion("Original exercise"); source.QuestionCategory!.IsFree = true;
+        var rows = new[] {"Current long answer", "Replaced question", "Replaced question!", "Another long answer", "Eligible choice"}
+            .Select(NewQuestion).ToArray();
+        foreach (var q in rows) q.QuestionCategory = source.QuestionCategory;
+        rows[0].QuestionType = QuestionType.ShortAnswer; rows[3].QuestionType = QuestionType.Essay;
+        db.Add(source); db.Questions.AddRange(rows); await db.SaveChangesAsync();
+        SetEmbedding(source);
+        for (var i = 0; i < rows.Length; i++) SetRelatedVector(rows[i], 0.9f - i * 0.03f, i + 1);
+        await db.SaveChangesAsync();
+        var current = new PracticeSessionItem {SourceQuestionId = rows[0].Id, Content = rows[0].Content,
+            QuestionType = rows[0].QuestionType, Metadata = "{}", StandardAnswer = "A", Explanation = "B"};
+        var replaced = new PracticeSessionItem {SourceQuestionId = rows[1].Id, Content = rows[1].Content,
+            Metadata = "{}", StandardAnswer = "A", Explanation = "B", ReplacedAt = DateTime.UtcNow};
+        var service = CreateRelated(db, new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance), new QueryHandler());
+        var result = await service.FindReplacementAsync(Captured(source), new PaperAccessStatus(), [current, replaced], replaced.Id);
+        Assert.HasCount(1, result.Items); Assert.AreEqual(rows[4].Id, result.Items[0].Id);
+        var replacingLong = await service.FindReplacementAsync(Captured(source), new PaperAccessStatus(), [current, replaced], current.Id);
+        Assert.HasCount(1, replacingLong.Items); Assert.AreEqual(rows[3].Id, replacingLong.Items[0].Id);
+    }
+
     private static MistakeRecord Captured(Question q, string? content = null) => new()
     {
         UserId = "synthetic-owner", Content = content ?? q.Content, QuestionType = q.QuestionType,

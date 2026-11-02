@@ -44,13 +44,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
             if (!questions.TryGetValue(candidate.Id, out var question) ||
                 question.QuestionCategoryId != candidate.QuestionCategoryId ||
                 question.QuestionType != candidate.QuestionType || question.Content != candidate.Content) continue;
-            session.Items.Add(new PracticeSessionItem
-            {
-                SessionId = id, Position = session.Items.Count, SourceQuestionId = question.Id,
-                Content = question.Content, QuestionType = question.QuestionType,
-                Metadata = question.Metadata, StandardAnswer = question.StandardAnswer,
-                Explanation = question.Explanation, GradingStrategy = question.GradingStrategy
-            });
+            session.Items.Add(Capture(question, id, session.Items.Count));
         }
         if (session.Items.Count == 0) return UnprocessableEntity(new { Message = "Related questions changed. Please start again." });
         db.PracticeSessions.Add(session);
@@ -89,6 +83,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         var session = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
         var item = session?.Items.SingleOrDefault(i => i.Id == itemId);
         if (item == null) return NotFound();
+        if (item.ReplacedAt.HasValue) return Conflict();
         if (item.SubmittedAt.HasValue) return item.UserAnswer == request.UserAnswer
             ? Ok(await Project(session!, cancellationToken)) : Conflict();
         var question = await db.Questions.AsNoTracking().Include(q => q.QuestionCategory)
@@ -102,14 +97,15 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         // a process crash: this guarantees one committed result, not exactly-once external AI billing.
         await using var transaction = await db.Database.BeginTransactionAsync(cancellationToken);
         var submittedAt = DateTime.UtcNow;
-        var claimed = await db.PracticeSessionItems.Where(i => i.Id == itemId && i.SessionId == id && i.SubmittedAt == null)
+        var claimed = await db.PracticeSessionItems.Where(i => i.Id == itemId && i.SessionId == id && i.SubmittedAt == null && i.ReplacedAt == null)
             .ExecuteUpdateAsync(set => set.SetProperty(i => i.SubmittedAt, submittedAt)
                 .SetProperty(i => i.UserAnswer, request.UserAnswer), cancellationToken);
         if (claimed == 0)
         {
             await transaction.RollbackAsync(cancellationToken);
             session = await Owned.SingleAsync(s => s.Id == id, cancellationToken);
-            return session.Items.Single(i => i.Id == itemId).UserAnswer == request.UserAnswer
+            var committed = session.Items.Single(i => i.Id == itemId);
+            return committed.ReplacedAt == null && committed.UserAnswer == request.UserAnswer
                 ? Ok(await Project(session, cancellationToken)) : Conflict();
         }
 
@@ -138,13 +134,77 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         return Ok(await Project(session, CancellationToken.None));
     }
 
+    /// <summary>Replace an unanswered item once. Retrying the same reason returns the current round.</summary>
+    [HttpPost("{id:guid}/items/{itemId:guid}/replace")]
+    public async Task<IActionResult> Replace(Guid id, Guid itemId, ReplacePracticeSessionItemDto request,
+        CancellationToken cancellationToken)
+    {
+        if (UserId == null) return Unauthorized();
+        if (request.Reason == null || !Enum.IsDefined(request.Reason.Value)) return BadRequest();
+        var session = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
+        var item = session?.Items.SingleOrDefault(i => i.Id == itemId);
+        if (item == null) return NotFound();
+        if (item.ReplacedAt.HasValue) return item.ReplacementReason == request.Reason
+            ? Ok(await Project(session!, cancellationToken)) : Conflict();
+        if (item.SubmittedAt.HasValue) return Conflict();
+        var mistake = await db.MistakeRecords.AsNoTracking().SingleOrDefaultAsync(
+            m => m.Id == session!.SourceMistakeId && m.UserId == UserId, cancellationToken);
+        if (mistake == null) return NotFound();
+        var access = await accessService.GetUserAccessStatusAsync(UserId);
+        var candidates = await related.FindReplacementAsync(mistake, access, session!.Items, itemId, cancellationToken);
+        if (!candidates.Available) return StatusCode(StatusCodes.Status503ServiceUnavailable);
+        var candidate = candidates.Items.SingleOrDefault();
+        if (candidate == null) return UnprocessableEntity(new { Message = "No eligible replacement is available. The original item is unchanged." });
+        // Recheck current access and content after ranking, before capturing the replacement.
+        access = await accessService.GetUserAccessStatusAsync(UserId);
+        var question = await db.Questions.AsNoTracking().Where(QuestionAccess.PracticeFilter(access))
+            .SingleOrDefaultAsync(q => q.Id == candidate.Id, cancellationToken);
+        if (question == null || question.QuestionCategoryId != candidate.QuestionCategoryId ||
+            question.QuestionType != candidate.QuestionType || question.Content != candidate.Content) return Conflict();
+
+        await using var transaction = await db.Database.BeginTransactionAsync(cancellationToken);
+        // A round-wide compare-and-swap prevents two positions choosing the same replacement
+        // or adding a second long answer. Answering competes on the old item's conditional write.
+        var version = session.ReplacementVersion;
+        var claimed = await db.PracticeSessions.Where(s => s.Id == id && s.UserId == UserId &&
+                s.ReplacementVersion == version)
+            .ExecuteUpdateAsync(set => set.SetProperty(s => s.ReplacementVersion, s => s.ReplacementVersion + 1), cancellationToken);
+        if (claimed == 0)
+        {
+            await transaction.RollbackAsync(cancellationToken);
+            session = await Owned.SingleAsync(s => s.Id == id, cancellationToken);
+            var prior = session.Items.Single(i => i.Id == itemId);
+            return prior.ReplacedAt.HasValue && prior.ReplacementReason == request.Reason
+                ? Ok(await Project(session, cancellationToken)) : Conflict();
+        }
+        claimed = await db.PracticeSessionItems.Where(i => i.Id == itemId && i.SessionId == id &&
+                i.SubmittedAt == null && i.ReplacedAt == null)
+            .ExecuteUpdateAsync(set => set.SetProperty(i => i.ReplacedAt, DateTime.UtcNow)
+                .SetProperty(i => i.ReplacementReason, request.Reason), cancellationToken);
+        if (claimed == 0) return Conflict(); // Disposing the transaction rolls back the version claim.
+        db.PracticeSessionItems.Add(Capture(question, id, item.Position));
+        await db.SaveChangesAsync(cancellationToken);
+        await transaction.CommitAsync(cancellationToken);
+        session = await Owned.SingleAsync(s => s.Id == id, cancellationToken);
+        return Ok(await Project(session, cancellationToken));
+    }
+
+    private static PracticeSessionItem Capture(Question question, Guid sessionId, int position) => new()
+    {
+        SessionId = sessionId, Position = position, SourceQuestionId = question.Id,
+        Content = question.Content, QuestionType = question.QuestionType,
+        Metadata = question.Metadata, StandardAnswer = question.StandardAnswer,
+        Explanation = question.Explanation, GradingStrategy = question.GradingStrategy
+    };
+
     private async Task<PracticeSessionDto> Project(PracticeSession session, CancellationToken cancellationToken)
     {
         var access = await accessService.GetUserAccessStatusAsync(session.UserId);
-        var ids = session.Items.Select(i => i.SourceQuestionId).ToArray();
+        var active = session.Items.Where(i => i.ReplacedAt == null).ToArray();
+        var ids = active.Select(i => i.SourceQuestionId).ToArray();
         var current = await db.Questions.AsNoTracking().Where(q => ids.Contains(q.Id))
             .Select(q => new { q.Id, q.QuestionCategory }).ToDictionaryAsync(q => q.Id, cancellationToken);
-        var items = session.Items.OrderBy(i => i.Position).Select(i =>
+        var items = active.OrderBy(i => i.Position).Select(i =>
         {
             var submitted = i.SubmittedAt.HasValue;
             var exists = current.TryGetValue(i.SourceQuestionId, out var question) && question.QuestionCategory != null;

@@ -54,7 +54,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
         base.OnModelCreating(builder);
 
         builder.Entity<PracticeSession>().HasIndex(s => new { s.UserId, s.CreationTime, s.Id });
-        builder.Entity<PracticeSessionItem>().HasIndex(i => new { i.SessionId, i.Position }).IsUnique();
+        builder.Entity<PracticeSessionItem>().HasIndex(i => new { i.SessionId, i.Position });
         builder.Entity<PracticeSessionItem>().HasOne(i => i.Session).WithMany(s => s.Items)
             .HasForeignKey(i => i.SessionId).OnDelete(DeleteBehavior.Cascade);
         builder.Entity<MistakeRecord>().HasIndex(m => new { m.UserId, m.CreationTime, m.Id });

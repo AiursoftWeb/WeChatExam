@@ -13,6 +13,12 @@ public class PracticeSessionAnswerDto
     [Required, MaxLength(1024)] public required string UserAnswer { get; init; }
 }
 
+public class ReplacePracticeSessionItemDto
+{
+    [Required, EnumDataType(typeof(PracticeReplacementReason))]
+    public PracticeReplacementReason? Reason { get; init; }
+}
+
 public record PracticeSessionDto(Guid Id, Guid SourceMistakeId, DateTime CreationTime,
     int AnsweredCount, bool Completed, IReadOnlyList<PracticeSessionItemDto> Items);
 

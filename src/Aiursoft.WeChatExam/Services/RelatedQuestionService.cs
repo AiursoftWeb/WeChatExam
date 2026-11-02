@@ -16,8 +16,17 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
     private const float DuplicateSimilarity = 0.98f;
     private const int MaximumResults = 3;
 
-    public async Task<RelatedQuestionsDto> FindAsync(MistakeRecord mistake, PaperAccessStatus access,
-        CancellationToken cancellationToken = default)
+    public Task<RelatedQuestionsDto> FindAsync(MistakeRecord mistake, PaperAccessStatus access,
+        CancellationToken cancellationToken = default) =>
+        FindAsync(mistake, access, [], MaximumResults, false, cancellationToken);
+
+    public Task<RelatedQuestionsDto> FindReplacementAsync(MistakeRecord mistake, PaperAccessStatus access,
+        IReadOnlyList<PracticeSessionItem> items, Guid replacingItemId, CancellationToken cancellationToken = default) =>
+        FindAsync(mistake, access, items, 1, items.Any(i => i.Id != replacingItemId && i.ReplacedAt == null &&
+            i.QuestionType is QuestionType.ShortAnswer or QuestionType.Essay), cancellationToken);
+
+    private async Task<RelatedQuestionsDto> FindAsync(MistakeRecord mistake, PaperAccessStatus access,
+        IReadOnlyList<PracticeSessionItem> excluded, int limit, bool hasLongAnswer, CancellationToken cancellationToken)
     {
         if (!await settings.IsAiSearchEnabledAsync()) return new(false, []);
         // Old copies carry no course FK. If the original is gone, retain historical review
@@ -29,11 +38,12 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
         var index = cache.Snapshot().Questions;
         if (index.Count == 0) return new(false, []);
         var indexedIds = index.Keys.ToList();
+        var excludedIds = excluded.Select(i => i.SourceQuestionId).ToArray();
 
         // Apply independent practice rights BEFORE ranking or limiting. Owning a real paper
         // (or a historical copy) does not grant access to paid questions in the same course.
         var eligible = db.Questions.AsNoTracking().Where(QuestionAccess.PracticeFilter(access))
-            .Where(q => q.Id != source.Id && indexedIds.Contains(q.Id) && q.Embedding != null &&
+            .Where(q => q.Id != source.Id && !excludedIds.Contains(q.Id) && indexedIds.Contains(q.Id) && q.Embedding != null &&
                 q.LastEmbeddedAt >= q.LastUpdatedAt &&
                 q.QuestionCategory!.TotalCategoryId == source.QuestionCategory.TotalCategoryId);
         var candidates = await eligible.Select(q => new
@@ -63,9 +73,12 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
             .OrderByDescending(q => q.Question.QuestionCategoryId == source.QuestionCategoryId)
             .ThenByDescending(q => q.Score).ThenBy(q => q.Question.Id);
         var seenText = new HashSet<string> { NormalizeStem(mistake.Content), NormalizeStem(source.Content) };
-        var selectedVectors = new List<float[]>();
+        // Keep every prior version out of this round, including replaced questions and
+        // their near duplicates. Feedback does not change rankings for other rounds.
+        seenText.UnionWith(excluded.Select(i => NormalizeStem(i.Content)));
+        var selectedVectors = excluded.Where(i => index.ContainsKey(i.SourceQuestionId))
+            .Select(i => index[i.SourceQuestionId].Vector).ToList();
         var results = new List<RelatedQuestionDto>();
-        var hasLongAnswer = false;
         foreach (var candidate in ranked)
         {
             var q = candidate.Question;
@@ -79,7 +92,7 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
             selectedVectors.Add(candidate.Vector);
             seenText.Add(stem);
             hasLongAnswer |= longAnswer;
-            if (results.Count == MaximumResults) break;
+            if (results.Count == limit) break;
         }
         return new(true, results);
     }
