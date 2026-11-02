@@ -13,6 +13,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [WeChatUserOnly]
 [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionService related,
+    BlindSpotPreviewService blindSpot,
     IPaperAccessService accessService, IGradingService grading) : ControllerBase
 {
     private string? UserId => User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -26,7 +27,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         if (UserId == null) return Unauthorized();
         if (id == Guid.Empty || request.MistakeId == Guid.Empty) return BadRequest();
         var existing = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
-        if (existing != null) return existing.SourceMistakeId == request.MistakeId
+        if (existing != null) return existing.Kind == PracticeSessionKind.Related && existing.SourceMistakeId == request.MistakeId
             ? Ok(await Project(existing, cancellationToken)) : Conflict();
         var mistake = await db.MistakeRecords.AsNoTracking()
             .SingleOrDefaultAsync(m => m.Id == request.MistakeId && m.UserId == UserId, cancellationToken);
@@ -59,7 +60,57 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
                 if (await db.PracticeSessions.AnyAsync(s => s.Id == id, cancellationToken)) return Conflict();
                 throw;
             }
-            if (existing.SourceMistakeId != request.MistakeId) return Conflict();
+            if (existing.Kind != PracticeSessionKind.Related || existing.SourceMistakeId != request.MistakeId) return Conflict();
+            return Ok(await Project(existing, cancellationToken));
+        }
+        return StatusCode(StatusCodes.Status201Created, await Project(session, cancellationToken));
+    }
+
+    /// <summary>Freeze a server-selected round. Repeating this UUID returns the same committed items.</summary>
+    [HttpPut("{id:guid}/blind-spot")]
+    public async Task<IActionResult> StartBlindSpot(Guid id, CancellationToken cancellationToken)
+    {
+        var userId = UserId;
+        if (userId == null) return Unauthorized();
+        if (id == Guid.Empty) return BadRequest();
+        var existing = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
+        if (existing != null) return existing.Kind == PracticeSessionKind.BlindSpot
+            ? Ok(await Project(existing, cancellationToken)) : Conflict();
+        // The UUID is global. A foreign owner's round must never be reused or revealed.
+        if (await db.PracticeSessions.AnyAsync(s => s.Id == id, cancellationToken)) return Conflict();
+
+        var access = await accessService.GetUserAccessStatusAsync(userId);
+        var preview = await blindSpot.FindAsync(userId, access, cancellationToken);
+        if (!preview.Available) return StatusCode(StatusCodes.Status503ServiceUnavailable);
+        if (preview.Items.Count == 0) return UnprocessableEntity(new { Message = "No eligible blind-spot questions are available." });
+
+        var ids = preview.Items.Select(i => i.QuestionId).ToArray();
+        // Ranking can outlive an edit or a membership change. Check both again before copying.
+        access = await accessService.GetUserAccessStatusAsync(userId);
+        var questions = await db.Questions.AsNoTracking().Where(QuestionAccess.PracticeFilter(access))
+            .Where(q => ids.Contains(q.Id)).ToDictionaryAsync(q => q.Id, cancellationToken);
+        var session = new PracticeSession { Id = id, UserId = userId,
+            SourceMistakeId = preview.Items[0].SourceMistakeId, Kind = PracticeSessionKind.BlindSpot };
+        foreach (var candidate in preview.Items)
+        {
+            if (!questions.TryGetValue(candidate.QuestionId, out var question) ||
+                question.QuestionCategoryId != candidate.QuestionCategoryId ||
+                question.QuestionType != candidate.QuestionType || question.Content != candidate.Content) continue;
+            session.Items.Add(Capture(question, id, session.Items.Count));
+        }
+        if (session.Items.Count == 0) return UnprocessableEntity(new { Message = "Blind-spot questions changed. Please start again." });
+        db.PracticeSessions.Add(session);
+        try { await db.SaveChangesAsync(cancellationToken); }
+        catch (DbUpdateException)
+        {
+            db.ChangeTracker.Clear();
+            existing = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
+            if (existing == null)
+            {
+                if (await db.PracticeSessions.AnyAsync(s => s.Id == id, cancellationToken)) return Conflict();
+                throw;
+            }
+            if (existing.Kind != PracticeSessionKind.BlindSpot) return Conflict();
             return Ok(await Project(existing, cancellationToken));
         }
         return StatusCode(StatusCodes.Status201Created, await Project(session, cancellationToken));
@@ -174,6 +225,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         var session = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
         var item = session?.Items.SingleOrDefault(i => i.Id == itemId);
         if (item == null) return NotFound();
+        if (session!.Kind == PracticeSessionKind.BlindSpot) return Conflict();
         if (item.ReplacedAt.HasValue) return item.ReplacementReason == request.Reason
             ? Ok(await Project(session!, cancellationToken)) : Conflict();
         if (item.SubmittedAt.HasValue) return Conflict();
@@ -246,6 +298,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
                 submitted ? i.Explanation : null, i.GradingComment);
         }).ToArray();
         var count = items.Count(i => i.SubmittedAt.HasValue);
-        return new(session.Id, session.SourceMistakeId, session.CreationTime, count, count == items.Length, items);
+        return new(session.Id, session.SourceMistakeId, session.CreationTime, count, count == items.Length, items)
+        { Kind = session.Kind };
     }
 }

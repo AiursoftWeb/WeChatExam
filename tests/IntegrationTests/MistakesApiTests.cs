@@ -179,7 +179,7 @@ public class MistakesApiTests : TestBase
         failure.Armed = failurePoint == 1;
         commitFailure.Armed = failurePoint == 2;
         using var scope = Server!.Services.CreateScope();
-        var controller = new PracticeSessionsController(db, null!,
+        var controller = new PracticeSessionsController(db, null!, null!,
             scope.ServiceProvider.GetRequiredService<IPaperAccessService>(),
             scope.ServiceProvider.GetRequiredService<IGradingService>())
         {
@@ -225,6 +225,7 @@ public class MistakesApiTests : TestBase
             new RelatedQuestionService(db, scope.ServiceProvider.GetRequiredService<ContentEmbeddingCache>(),
                 scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>(),
                 scope.ServiceProvider.GetRequiredService<ContentVectorSearchService>()),
+            null!,
             scope.ServiceProvider.GetRequiredService<IPaperAccessService>(),
             scope.ServiceProvider.GetRequiredService<IGradingService>())
         {
@@ -635,6 +636,85 @@ public class MistakesApiTests : TestBase
         Assert.HasCount(0, afterPricingChange.Items, "Cached vectors must not cache yesterday's access rights.");
         Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
         Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task BlindSpotRoundFreezesServerChoicesAndReusesExistingGrading()
+    {
+        var owner = await Login("blind-round-owner");
+        var (mistakeId, questions) = await SeedPractice(owner);
+        var id = Guid.NewGuid();
+        var url = $"/api/PracticeSessions/{id}";
+        var startUrl = url + "/blind-spot";
+        var starts = await Task.WhenAll(Enumerable.Range(0, 3).Select(_ => Http.PutAsync(startUrl, null)));
+        Assert.AreEqual(1, starts.Count(r => r.StatusCode == HttpStatusCode.Created));
+        Assert.IsTrue(starts.All(r => r.StatusCode is HttpStatusCode.Created or HttpStatusCode.OK));
+        var first = (await starts.Single(r => r.StatusCode == HttpStatusCode.Created)
+            .Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        Assert.AreEqual(PracticeSessionKind.BlindSpot, first.Kind);
+        Assert.AreEqual(mistakeId, first.SourceMistakeId);
+        Assert.IsTrue(first.Items.Count is >= 1 and <= 3);
+        Assert.IsTrue(first.Items.All(i => questions.Any(q => q.Id == i.SourceQuestionId)));
+        Assert.IsTrue(first.Items.All(i => i.StandardAnswer == null && i.Explanation == null));
+        foreach (var response in starts.Where(r => r.StatusCode == HttpStatusCode.OK))
+        {
+            var replay = (await response.Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+            CollectionAssert.AreEqual(first.Items.Select(i => i.Id).ToArray(),
+                replay.Items.Select(i => i.Id).ToArray());
+        }
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PutAsJsonAsync(url,
+            new StartPracticeSessionDto { MistakeId = mistakeId })).StatusCode);
+        var choice = first.Items.First(i => i.QuestionType == QuestionType.Choice);
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PostAsJsonAsync(
+            url + $"/items/{choice.Id}/replace",
+            new ReplacePracticeSessionItemDto { Reason = PracticeReplacementReason.Familiar })).StatusCode);
+
+        var answerUrl = url + $"/items/{choice.Id}/answer";
+        var answer = (await Http.PostAsJsonAsync(answerUrl,
+            new PracticeSessionAnswerDto { UserAnswer = "wrong" })).EnsureSuccessStatusCode();
+        var graded = (await answer.Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        Assert.AreEqual(1, graded.AnsweredCount);
+        Assert.IsNotNull(graded.Items.Single(i => i.Id == choice.Id).StandardAnswer);
+        (await Http.PostAsJsonAsync(answerUrl,
+            new PracticeSessionAnswerDto { UserAnswer = "wrong" })).EnsureSuccessStatusCode();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(1, await db.PracticeSessions.CountAsync());
+            Assert.AreEqual(1, await db.UserPracticeHistories.CountAsync());
+        }
+
+        await Login("blind-round-foreign");
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PutAsync(startUrl, null)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync(url)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.PostAsJsonAsync(answerUrl,
+            new PracticeSessionAnswerDto { UserAnswer = "wrong" })).StatusCode);
+        Http.DefaultRequestHeaders.Authorization = null;
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.PutAsync(startUrl, null)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task BlindSpotRoundDistinguishesUnavailableAndNoEligibleQuestions()
+    {
+        var owner = await Login("blind-round-empty");
+        var url = $"/api/PracticeSessions/{Guid.NewGuid()}/blind-spot";
+        Assert.AreEqual(HttpStatusCode.UnprocessableEntity, (await Http.PutAsync(url, null)).StatusCode);
+        using var scope = Server!.Services.CreateScope();
+        var settings = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
+        await settings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "false");
+        // Without history there is no reason to call the vector service; still no eligible set.
+        Assert.AreEqual(HttpStatusCode.UnprocessableEntity, (await Http.PutAsync(url, null)).StatusCode);
+        var (_, questions) = await SeedPractice(owner);
+        using var refreshedScope = Server!.Services.CreateScope();
+        var currentSettings = refreshedScope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
+        await currentSettings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "false");
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, (await Http.PutAsync(url, null)).StatusCode);
+        await currentSettings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "true");
+        var db = refreshedScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = await db.QuestionCategories.SingleAsync(c => c.Id == questions[0].QuestionCategoryId);
+        period.IsFree = false;
+        await db.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.UnprocessableEntity, (await Http.PutAsync(url, null)).StatusCode);
     }
 
     [TestMethod]
