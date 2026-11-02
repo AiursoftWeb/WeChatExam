@@ -88,7 +88,7 @@ public class GradingService : IGradingService, IScopedDependency
         };
     }
 
-    private async Task<GradingResult> GradeAiEvalAsync(string userAnswer, string standardAnswer, int maxScore, string content, string explanation, QuestionType? questionType = null)
+    private async Task<GradingResult> GradeAiEvalAsync(string userAnswer, string standardAnswer, int maxScore, string content, string explanation)
     {
         if (string.IsNullOrWhiteSpace(userAnswer))
         {
