@@ -116,7 +116,7 @@ public class TestPapersController(
                 question.StandardAnswer,
                 question.GradingStrategy,
                 paperQuestion.Score,
-                question.Content);
+                question.Content, string.Empty, question.QuestionType);
 
             totalScore += grading.Score;
             results.Add(new TestPaperQuestionResultViewModel

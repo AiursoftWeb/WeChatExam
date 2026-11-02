@@ -25,6 +25,39 @@ public class GradingServiceTests
     }
 
     [TestMethod]
+    [DataRow("true", "正确", true)]
+    [DataRow(" 正确 ", "TRUE", true)]
+    [DataRow("对", "true", true)]
+    [DataRow("false", "错误", true)]
+    [DataRow("错", "FALSE", true)]
+    [DataRow("错误", "false", true)]
+    [DataRow("false", "正确", false)]
+    [DataRow("true", "错误", false)]
+    [DataRow("", "错误", false)]
+    [DataRow("不正确", "正确", false)]
+    public async Task BooleanAnswersUseMeaning(string answer, string reference, bool correct)
+    {
+        foreach (var strategy in Enum.GetValues<GradingStrategy>())
+        {
+            var result = await _gradingService!.GradeAsync(answer, reference, strategy, 7,
+                "Boolean question", "", QuestionType.Bool);
+            Assert.AreEqual(correct, result.IsCorrect);
+            Assert.AreEqual(correct ? 7 : 0, result.Score);
+        }
+    }
+
+    [TestMethod]
+    public async Task BooleanNormalizationDoesNotChangeTextQuestions()
+    {
+        var result = await _gradingService!.GradeAsync("true", "正确", GradingStrategy.ExactMatch,
+            10, "Text question", "", QuestionType.Blank);
+        Assert.IsFalse(result.IsCorrect);
+        Assert.AreEqual(0, result.Score);
+        await Assert.ThrowsExactlyAsync<GradingUnavailableException>(() => _gradingService.GradeAsync(
+            "unknown", "unknown", GradingStrategy.ExactMatch, 10, "Invalid reference", "", QuestionType.Bool));
+    }
+
+    [TestMethod]
     public async Task TestGradeExactMatch_Correct()
     {
         var result = await _gradingService!.GradeAsync("Answer", "Answer", GradingStrategy.ExactMatch, 10, "Question");

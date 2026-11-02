@@ -222,7 +222,7 @@ public class UserPracticeHistoryController : ControllerBase
             snapshot.StandardAnswer,
             snapshot.GradingStrategy,
             snapshot.Score,
-            snapshot.Content);
+            snapshot.Content, string.Empty, snapshot.QuestionType);
 
         var resultDto = new UserPracticeHistoryDto
         {

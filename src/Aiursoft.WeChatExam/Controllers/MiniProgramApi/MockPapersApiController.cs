@@ -115,7 +115,7 @@ public class MockPapersApiController(WeChatExamDbContext context, IPaperAccessSe
         // An open mock paper deliberately includes paid-period questions without granting
         // independent question-bank practice rights.
         var grade = await gradingService.GradeAsync(dto.UserAnswer, question.StandardAnswer,
-            question.GradingStrategy, question.Score, question.Content, question.Explanation);
+            question.GradingStrategy, question.Score, question.Content, question.Explanation, question.QuestionType);
         var result = new UserPracticeHistoryDto
         {
             QuestionId = question.Id, UserAnswer = dto.UserAnswer, StandardAnswer = question.StandardAnswer,
