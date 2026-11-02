@@ -321,7 +321,7 @@ public class ContentSearchTests
         choices[2].QuestionType = QuestionType.Bool;
         var otherCourse = NewQuestion("Another course");
         otherCourse.QuestionCategory!.IsFree = true;
-        db.AddRange(source, otherCourse); db.AddRange(paid); db.AddRange(choices);
+        db.AddRange(source, otherCourse); db.Questions.AddRange(paid); db.Questions.AddRange(choices);
         await db.SaveChangesAsync();
         SetEmbedding(source);
         foreach (var q in paid) SetRelatedVector(q, 0.95f, 1);
@@ -336,6 +336,13 @@ public class ContentSearchTests
         Assert.IsTrue(result.Available);
         CollectionAssert.AreEquivalent(choices.Select(q => q.Id).ToArray(), result.Items.Select(q => q.Id).ToArray());
         Assert.IsTrue(result.Items.All(q => !q.SameQuestionCategory));
+        foreach (var item in result.Items)
+        {
+            var question = choices.Single(q => q.Id == item.Id);
+            Assert.AreEqual(question.Content, item.Content);
+            Assert.AreEqual(freePeriod.Id, item.QuestionCategoryId);
+            Assert.AreEqual(freePeriod.Title, item.QuestionCategoryTitle);
+        }
         Assert.AreEqual(0, handler.Calls, "An unchanged source reuses its indexed vector.");
         var member = await service.FindAsync(Captured(source), new PaperAccessStatus
         {
@@ -364,7 +371,7 @@ public class ContentSearchTests
         rows[2].QuestionType = QuestionType.ShortAnswer;
         rows[3].QuestionType = QuestionType.Essay;
         rows[6].QuestionType = QuestionType.Blank;
-        db.Add(source); db.AddRange(rows); await db.SaveChangesAsync();
+        db.Add(source); db.Questions.AddRange(rows); await db.SaveChangesAsync();
         SetEmbedding(source);
         for (var i = 0; i < rows.Length; i++) SetRelatedVector(rows[i], 0.95f - i * 0.03f, i + 1);
         SetRelatedVector(rows[1], 0.995f, 2);

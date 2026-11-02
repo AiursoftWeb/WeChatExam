@@ -57,7 +57,7 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
         if (vector == null) return new(false, []);
 
         var ranked = candidates.Where(q => index[q.Id].UpdatedAt == q.LastUpdatedAt)
-            .Select(q => new { Question = q, Vector = index[q.Id].Vector,
+            .Select(q => new { Question = q, index[q.Id].Vector,
                 Score = EmbeddingHelper.CosineSimilarity(vector, index[q.Id].Vector) })
             .Where(q => q.Score >= MinimumSimilarity && q.Score < DuplicateSimilarity)
             .OrderByDescending(q => q.Question.QuestionCategoryId == source.QuestionCategoryId)
