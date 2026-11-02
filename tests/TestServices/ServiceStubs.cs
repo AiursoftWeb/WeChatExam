@@ -94,5 +94,5 @@ public sealed class StubGradingService : IGradingService
         return Grade(userAnswer, standardAnswer, strategy, maxScore, content);
     }
     public Task<GradingResult> GradeAsync(Question question, string userAnswer) => throw new NotSupportedException();
-    public Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation) => throw new NotSupportedException();
+    public Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation, QuestionType? questionType = null) => GradeAsync(userAnswer, standardAnswer, strategy, maxScore, content);
 }

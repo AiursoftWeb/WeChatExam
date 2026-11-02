@@ -160,6 +160,37 @@ public class PapersApiTests
     }
 
     [TestMethod]
+    public async Task BooleanPaperAnswersAcceptEquivalentValuesWithoutCreatingMistakes()
+    {
+        var (_, snapshotId, _) = await CreatePublishedMock(true);
+        _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
+        Guid questionId;
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var snapshotQuestion = await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshotId == snapshotId);
+            db.Entry(snapshotQuestion).Property(q => q.QuestionType).CurrentValue = QuestionType.Bool;
+            db.Entry(snapshotQuestion).Property(q => q.StandardAnswer).CurrentValue = "正确";
+            db.Entry(snapshotQuestion).Property(q => q.GradingStrategy).CurrentValue = GradingStrategy.ExactMatch;
+            questionId = snapshotQuestion.Id;
+            await db.SaveChangesAsync();
+        }
+        foreach (var answer in new[] { "true", "正确", "对" })
+        {
+            var response = await _http.PostAsJsonAsync($"/api/MockPapers/snapshots/{snapshotId}/answers",
+                new CreateUserPracticeHistoryDto { QuestionId = questionId, UserAnswer = answer });
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var result = await response.Content.ReadFromJsonAsync<UserPracticeHistoryDto>();
+            Assert.IsTrue(result!.IsCorrect);
+            Assert.AreEqual(15, result.Score);
+        }
+        using var check = _server!.Services.CreateScope();
+        var context = check.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(0, await context.MistakeRecords.CountAsync());
+        Assert.AreEqual(3, await context.UserPracticeHistories.CountAsync(h => h.IsCorrect && h.Score == 15));
+    }
+
+    [TestMethod]
     public async Task MockAccessFollowsCurrentCourseMembershipAndNeverReturnsAnswers()
     {
         var (paperId, snapshotId, course) = await CreatePublishedMock();

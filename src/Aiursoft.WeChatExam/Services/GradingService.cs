@@ -21,7 +21,7 @@ public class GradingService : IGradingService, IScopedDependency
 
     public async Task<GradingResult> GradeAsync(Question question, string userAnswer)
     {
-        return await GradeAsync(userAnswer, question.StandardAnswer, question.GradingStrategy, 10, question.Content, question.Explanation);
+        return await GradeAsync(userAnswer, question.StandardAnswer, question.GradingStrategy, 10, question.Content, question.Explanation, question.QuestionType);
     }
 
     public Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content)
@@ -29,10 +29,21 @@ public class GradingService : IGradingService, IScopedDependency
         return GradeAsync(userAnswer, standardAnswer, strategy, maxScore, content, string.Empty);
     }
 
-    public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation)
+    public async Task<GradingResult> GradeAsync(string userAnswer, string standardAnswer, GradingStrategy strategy, int maxScore, string content, string explanation, QuestionType? questionType = null)
     {
         userAnswer = userAnswer.Trim();
         standardAnswer = standardAnswer.Trim();
+
+        // Boolean controls and imported questions use different equivalent spellings.
+        // Normalize only this question type; never reinterpret arbitrary text answers.
+        if (questionType == QuestionType.Bool)
+        {
+            var expected = ParseBooleanAnswer(standardAnswer);
+            if (!expected.HasValue)
+                throw new GradingUnavailableException(new InvalidOperationException("Invalid boolean reference answer."));
+            var correct = ParseBooleanAnswer(userAnswer) == expected;
+            return new GradingResult { IsCorrect = correct, Score = correct ? maxScore : 0 };
+        }
 
         switch (strategy)
         {
@@ -49,6 +60,13 @@ public class GradingService : IGradingService, IScopedDependency
                 return GradeExactMatch(userAnswer, standardAnswer, maxScore);
         }
     }
+
+    private static bool? ParseBooleanAnswer(string answer) => answer.Trim().ToLowerInvariant() switch
+    {
+        "true" or "正确" or "对" => true,
+        "false" or "错误" or "错" => false,
+        _ => null
+    };
 
     private GradingResult GradeExactMatch(string userAnswer, string standardAnswer, int maxScore)
     {
