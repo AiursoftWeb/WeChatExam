@@ -1,6 +1,8 @@
 using System.Net;
 using System.Net.Http.Headers;
 using Aiursoft.DbTools;
+using Aiursoft.WebTools;
+using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
@@ -98,7 +100,7 @@ public class MistakesApiTests : TestBase
     {
         async Task AssertUnauthorized()
         {
-            foreach (var url in new[] { "/api/Mistakes", $"/api/Mistakes/{Guid.NewGuid()}", $"/api/Mistakes/{Guid.NewGuid()}/attempts" })
+            foreach (var url in new[] { "/api/Mistakes", $"/api/Mistakes/{Guid.NewGuid()}", $"/api/Mistakes/{Guid.NewGuid()}/attempts", $"/api/Mistakes/{Guid.NewGuid()}/related" })
                 Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.GetAsync(url)).StatusCode);
             foreach (var url in new[] { "/api/Mistakes", $"/api/Mistakes/{Guid.NewGuid()}" })
                 Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.DeleteAsync(url)).StatusCode);
@@ -106,6 +108,57 @@ public class MistakesApiTests : TestBase
         await AssertUnauthorized();
         await RegisterAndLoginAsync();
         await AssertUnauthorized();
+    }
+
+    [TestMethod]
+    public async Task RelatedCandidatesAreOwnerScopedAndNeverExposeAnswersOrPaidPractice()
+    {
+        var other = await Login("related-other");
+        var owner = await Login("related-owner");
+        var copy = Copy(owner, Guid.NewGuid(), order: 1);
+        var foreign = Copy(other, copy.SourceQuestionId, order: 2);
+        await Seed(copy, foreign);
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var settings = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
+        await settings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "true");
+        await settings.UpdateSettingAsync(SettingsMap.EmbeddingOllamaInstance, "https://embedding.example.invalid");
+        await settings.UpdateSettingAsync(SettingsMap.EmbeddingModel, "bge-m3:latest");
+        var period = QuestionPeriodAssignmentTests.TestPeriod();
+        var freePeriod = new QuestionCategory { Title = "Free period", IsFree = true,
+            TotalCategoryId = period.TotalCategoryId, TotalCategory = period.TotalCategory };
+        var source = new Question { Id = copy.SourceQuestionId!.Value, QuestionCategory = period,
+            Content = copy.Content, QuestionType = copy.QuestionType, Metadata = copy.Metadata,
+            StandardAnswer = copy.StandardAnswer, Explanation = copy.Explanation };
+        var free = new Question { Id = Guid.NewGuid(), QuestionCategory = freePeriod,
+            Content = "A free related exercise", StandardAnswer = "PRIVATE REFERENCE", Explanation = "PRIVATE EXPLANATION" };
+        var paid = new Question { Id = Guid.NewGuid(), QuestionCategory = period,
+            Content = "A paid related exercise", StandardAnswer = "PAID REFERENCE" };
+        db.AddRange(source, free, paid); await db.SaveChangesAsync();
+        foreach (var (q, similarity) in new[] { (source, 1f), (free, 0.8f), (paid, 0.9f) })
+        {
+            var vector = new float[1024]; vector[0] = similarity; vector[1] = MathF.Sqrt(1 - similarity * similarity);
+            q.Embedding = EmbeddingHelper.Serialize(vector); q.LastEmbeddedAt = q.LastUpdatedAt;
+        }
+        await db.SaveChangesAsync();
+        var response = await Http.GetAsync($"/api/Mistakes/{copy.Id}/related?userId={other}");
+        response.EnsureSuccessStatusCode();
+        Assert.IsTrue(response.Headers.CacheControl!.NoStore);
+        var result = (await response.Content.ReadFromJsonAsync<RelatedQuestionsDto>())!;
+        Assert.IsTrue(result.Available); Assert.HasCount(1, result.Items);
+        Assert.AreEqual(free.Id, result.Items.Single().Id);
+        var json = await response.Content.ReadAsStringAsync();
+        Assert.DoesNotContain("PRIVATE", json); Assert.DoesNotContain("PAID", json);
+        Assert.DoesNotContain("standardAnswer", json); Assert.DoesNotContain("explanation", json);
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await Http.GetAsync($"/api/Questions/{paid.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.OK, (await Http.GetAsync($"/api/Questions/{free.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/api/Mistakes/{foreign.Id}/related")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/api/Mistakes/{Guid.NewGuid()}/related")).StatusCode);
+        freePeriod.IsFree = false; await db.SaveChangesAsync();
+        var afterPricingChange = (await Http.GetFromJsonAsync<RelatedQuestionsDto>($"/api/Mistakes/{copy.Id}/related"))!;
+        Assert.HasCount(0, afterPricingChange.Items, "Cached vectors must not cache yesterday's access rights.");
+        Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
     }
 
     [TestMethod]

@@ -137,7 +137,7 @@ public class ContentVectorSearchService(
         return EmbeddingHelper.Deserialize(stored) ?? await TryEmbedQueryAsync(savedText, cancellationToken);
     }
 
-    private async Task<float[]?> TryEmbedQueryAsync(string text, CancellationToken cancellationToken)
+    internal async Task<float[]?> TryEmbedQueryAsync(string text, CancellationToken cancellationToken)
     {
         var model = await settings.GetSettingValueAsync(SettingsMap.EmbeddingModel);
         var endpoint = await settings.GetEmbeddingEndpointAsync();
