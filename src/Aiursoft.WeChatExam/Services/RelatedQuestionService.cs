@@ -18,15 +18,21 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
 
     public Task<RelatedQuestionsDto> FindAsync(MistakeRecord mistake, PaperAccessStatus access,
         CancellationToken cancellationToken = default) =>
-        FindAsync(mistake, access, [], MaximumResults, false, cancellationToken);
+        FindAsync(mistake, access, [], MaximumResults, false, null, cancellationToken);
+
+    /// <summary>Finds unseen practice questions for one owned mistake, respecting current practice rights.</summary>
+    public Task<RelatedQuestionsDto> FindUnseenAsync(MistakeRecord mistake, PaperAccessStatus access,
+        string userId, CancellationToken cancellationToken = default) =>
+        FindAsync(mistake, access, [], MaximumResults, false, userId, cancellationToken);
 
     public Task<RelatedQuestionsDto> FindReplacementAsync(MistakeRecord mistake, PaperAccessStatus access,
         IReadOnlyList<PracticeSessionItem> items, Guid replacingItemId, CancellationToken cancellationToken = default) =>
         FindAsync(mistake, access, items, 1, items.Any(i => i.Id != replacingItemId && i.ReplacedAt == null &&
-            i.QuestionType is QuestionType.ShortAnswer or QuestionType.Essay), cancellationToken);
+            i.QuestionType is QuestionType.ShortAnswer or QuestionType.Essay), null, cancellationToken);
 
     private async Task<RelatedQuestionsDto> FindAsync(MistakeRecord mistake, PaperAccessStatus access,
-        IReadOnlyList<PracticeSessionItem> excluded, int limit, bool hasLongAnswer, CancellationToken cancellationToken)
+        IReadOnlyList<PracticeSessionItem> excluded, int limit, bool hasLongAnswer, string? unseenByUser,
+        CancellationToken cancellationToken)
     {
         if (!await settings.IsAiSearchEnabledAsync()) return new(false, []);
         // Old copies carry no course FK. If the original is gone, retain historical review
@@ -46,6 +52,16 @@ public class RelatedQuestionService(WeChatExamDbContext db, ContentEmbeddingCach
             .Where(q => q.Id != source.Id && !excludedIds.Contains(q.Id) && indexedIds.Contains(q.Id) && q.Embedding != null &&
                 q.LastEmbeddedAt >= q.LastUpdatedAt &&
                 q.QuestionCategory!.TotalCategoryId == source.QuestionCategory.TotalCategoryId);
+        if (unseenByUser != null)
+        {
+            // A paper question may have been answered without entering the mistake notebook.
+            // Exclude every prior answer and every question ever shown in a related round,
+            // including unanswered and replaced items. Personal mistake copies are also history.
+            eligible = eligible.Where(q =>
+                !db.UserPracticeHistories.Any(h => h.UserId == unseenByUser && h.QuestionId == q.Id) &&
+                !db.MistakeRecords.Any(m => m.UserId == unseenByUser && m.SourceQuestionId == q.Id) &&
+                !db.PracticeSessionItems.Any(i => i.SourceQuestionId == q.Id && i.Session!.UserId == unseenByUser));
+        }
         var candidates = await eligible.Select(q => new
         {
             q.Id, q.Content, q.QuestionType, q.QuestionCategoryId,
