@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using System.Security.Claims;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
+using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -77,6 +78,20 @@ public class MistakesController(WeChatExamDbContext context) : ControllerBase
         if (string.IsNullOrEmpty(userId)) return Unauthorized();
         var result = await Owned(userId).Where(m => m.Id == id).Select(Details).SingleOrDefaultAsync(cancellationToken);
         return result == null ? NotFound() : Ok(result);
+    }
+
+    /// <summary>Suggests authorized related practice without exposing answers or granting new rights.</summary>
+    [HttpGet("{id:guid}/related")]
+    [ProducesResponseType(typeof(RelatedQuestionsDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Related(Guid id, [FromServices] RelatedQuestionService related,
+        [FromServices] IPaperAccessService accessService, CancellationToken cancellationToken)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId)) return Unauthorized();
+        var mistake = await Owned(userId).SingleOrDefaultAsync(m => m.Id == id, cancellationToken);
+        if (mistake == null) return NotFound();
+        var access = await accessService.GetUserAccessStatusAsync(userId);
+        return Ok(await related.FindAsync(mistake, access, cancellationToken));
     }
 
     /// <summary>Lists this question's wrong submissions, retaining each version's own content and answer.</summary>

@@ -303,6 +303,147 @@ public class ContentSearchTests
         Assert.AreEqual(0, await db.KnowledgePointQuestions.CountAsync());
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RelatedPracticeFiltersRightsBeforeRankingAndAllowsDifferentTypes(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var source = NewQuestion("The original mistake");
+        var freePeriod = IntegrationTests.QuestionPeriodAssignmentTests.TestPeriod(true);
+        freePeriod.TotalCategory = source.QuestionCategory!.TotalCategory;
+        freePeriod.TotalCategoryId = source.QuestionCategory.TotalCategoryId;
+        var paid = Enumerable.Range(0, 55).Select(i => NewQuestion("Paid candidate " + i)).ToArray();
+        foreach (var q in paid) q.QuestionCategory = source.QuestionCategory;
+        var choices = Enumerable.Range(0, 3).Select(i => NewQuestion("Free exercise " + i)).ToArray();
+        foreach (var q in choices) q.QuestionCategory = freePeriod;
+        choices[1].QuestionType = QuestionType.Blank;
+        choices[2].QuestionType = QuestionType.Bool;
+        var otherCourse = NewQuestion("Another course");
+        otherCourse.QuestionCategory!.IsFree = true;
+        db.AddRange(source, otherCourse); db.AddRange(paid); db.AddRange(choices);
+        await db.SaveChangesAsync();
+        SetEmbedding(source);
+        foreach (var q in paid) SetRelatedVector(q, 0.95f, 1);
+        for (var i = 0; i < choices.Length; i++) SetRelatedVector(choices[i], 0.8f, i + 2);
+        SetRelatedVector(otherCourse, 0.97f, 9);
+        await db.SaveChangesAsync();
+        var handler = new QueryHandler();
+        var cache = new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance);
+        var service = CreateRelated(db, cache, handler);
+        // Even an all-institution member has no additional independent course rights.
+        var result = await service.FindAsync(Captured(source), new PaperAccessStatus { HasRealExamVip = true });
+        Assert.IsTrue(result.Available);
+        CollectionAssert.AreEquivalent(choices.Select(q => q.Id).ToArray(), result.Items.Select(q => q.Id).ToArray());
+        Assert.IsTrue(result.Items.All(q => !q.SameQuestionCategory));
+        Assert.AreEqual(0, handler.Calls, "An unchanged source reuses its indexed vector.");
+        var member = await service.FindAsync(Captured(source), new PaperAccessStatus
+        {
+            ActiveCategoryVips = [source.QuestionCategory.TotalCategoryId]
+        });
+        Assert.IsTrue(member.Items.Any(q => paid.Any(p => p.Id == q.Id)));
+        Assert.IsTrue(member.Items[0].SameQuestionCategory);
+        // Membership checks and entity freshness must not be cached with vector rankings.
+        freePeriod.IsFree = false;
+        await db.SaveChangesAsync();
+        var revoked = await service.FindAsync(Captured(source), new PaperAccessStatus());
+        Assert.HasCount(0, revoked.Items);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RelatedPracticeDeduplicatesLimitsLongAnswersAndRejectsStaleContent(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var source = NewQuestion("Source exercise"); source.QuestionCategory!.IsFree = true;
+        var rows = new[] { "Source, exercise!", "Near duplicate", "Explain the event", "Discuss the event",
+            "Identify the instrument", "Identify the instrument!", "Name the composer", "Unrelated" }
+            .Select(NewQuestion).ToArray();
+        foreach (var q in rows) q.QuestionCategory = source.QuestionCategory;
+        rows[2].QuestionType = QuestionType.ShortAnswer;
+        rows[3].QuestionType = QuestionType.Essay;
+        rows[6].QuestionType = QuestionType.Blank;
+        db.Add(source); db.AddRange(rows); await db.SaveChangesAsync();
+        SetEmbedding(source);
+        for (var i = 0; i < rows.Length; i++) SetRelatedVector(rows[i], 0.95f - i * 0.03f, i + 1);
+        SetRelatedVector(rows[1], 0.995f, 2);
+        SetRelatedVector(rows[7], 0.2f, 8);
+        await db.SaveChangesAsync();
+        var cache = new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance);
+        var service = CreateRelated(db, cache, new QueryHandler());
+        var result = await service.FindAsync(Captured(source), new PaperAccessStatus());
+        CollectionAssert.AreEquivalent(new[] { rows[2].Id, rows[4].Id, rows[6].Id }, result.Items.Select(q => q.Id).ToArray());
+        Assert.AreEqual(1, result.Items.Count(q => q.QuestionType is QuestionType.ShortAnswer or QuestionType.Essay));
+        rows[2].Content = "Changed after the cached vector was loaded";
+        db.Remove(rows[4]);
+        var otherPeriod = IntegrationTests.QuestionPeriodAssignmentTests.TestPeriod(true);
+        db.Add(otherPeriod);
+        rows[6].QuestionCategory = otherPeriod;
+        await db.SaveChangesAsync();
+        var current = await service.FindAsync(Captured(source), new PaperAccessStatus());
+        Assert.IsFalse(current.Items.Any(q => new[] { rows[2].Id, rows[4].Id, rows[6].Id }.Contains(q.Id)));
+        Assert.IsTrue(current.Items.Count < 3, "Never pad with stale, unrelated or duplicate questions.");
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RelatedPracticeUsesCapturedContentAndHandlesUnavailableIndex(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var source = NewQuestion("Original topic"); source.QuestionCategory!.IsFree = true;
+        var related = NewQuestion("Related topic"); related.QuestionCategory = source.QuestionCategory;
+        db.AddRange(source, related); await db.SaveChangesAsync();
+        var copy = Captured(source);
+        var handler = new QueryHandler();
+        var cache = new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance);
+        var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };
+        var service = CreateRelated(db, cache, handler, settings);
+        var empty = await service.FindAsync(copy, new PaperAccessStatus());
+        Assert.IsFalse(empty.Available); Assert.AreEqual(0, handler.Calls);
+        SetEmbedding(source); SetRelatedVector(related, 0.8f, 1); await db.SaveChangesAsync();
+        await cache.LoadAsync(db);
+        source.Content = "A different topic after the mistake was captured";
+        await db.SaveChangesAsync();
+        var historical = await service.FindAsync(copy, new PaperAccessStatus());
+        Assert.HasCount(1, historical.Items); Assert.AreEqual(1, handler.Calls);
+        Assert.Contains("Original topic", handler.LastInput!);
+        Assert.DoesNotContain("A different topic", handler.LastInput!);
+        settings.EmbeddingEnabled = false;
+        Assert.IsFalse((await service.FindAsync(copy, new PaperAccessStatus())).Available);
+        Assert.AreEqual(1, handler.Calls);
+        settings.EmbeddingEnabled = true; handler.Fail = true;
+        copy = Captured(source, "Another historical topic that has no cached query");
+        var failed = await service.FindAsync(copy, new PaperAccessStatus());
+        Assert.IsFalse(failed.Available); Assert.HasCount(0, failed.Items);
+        db.Remove(source); await db.SaveChangesAsync();
+        Assert.HasCount(0, (await service.FindAsync(copy, new PaperAccessStatus())).Items);
+    }
+
+    private static MistakeRecord Captured(Question q, string? content = null) => new()
+    {
+        UserId = "synthetic-owner", Content = content ?? q.Content, QuestionType = q.QuestionType,
+        Metadata = q.Metadata, StandardAnswer = q.StandardAnswer, Explanation = q.Explanation,
+        SourceQuestionId = q.Id, UserAnswer = "A wrong answer", GradingComment = string.Empty
+    };
+
+    private static void SetRelatedVector(Question q, float similarity, int axis)
+    {
+        var vector = new float[1024]; vector[0] = similarity; vector[axis] = MathF.Sqrt(1 - similarity * similarity);
+        q.Embedding = EmbeddingHelper.Serialize(vector); q.LastEmbeddedAt = q.LastUpdatedAt;
+    }
+
+    private static RelatedQuestionService CreateRelated(WeChatExamDbContext db, ContentEmbeddingCache cache,
+        QueryHandler handler, StubGlobalSettingsService? settings = null)
+    {
+        settings ??= new StubGlobalSettingsService { EmbeddingEnabled = true };
+        var search = new ContentVectorSearchService(db, cache, settings,
+            new EmbeddingService(settings, handler, NullLogger<EmbeddingService>.Instance),
+            new MemoryCache(new MemoryCacheOptions()), NullLogger<ContentVectorSearchService>.Instance);
+        return new RelatedQuestionService(db, cache, settings, search);
+    }
+
     private static ContentVectorSearchService CreateSearch(WeChatExamDbContext db, QueryHandler handler)
     {
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };
@@ -340,15 +481,17 @@ public class ContentSearchTests
     {
         public int Calls { get; private set; }
         public bool Fail { get; set; }
+        public string? LastInput { get; private set; }
         public HttpClient CreateClient(string name) => new(this, disposeHandler: false);
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             Calls++;
-            if (Fail) return Task.FromResult(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable));
-            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+            LastInput = await request.Content!.ReadAsStringAsync(cancellationToken);
+            if (Fail) return new HttpResponseMessage(HttpStatusCode.ServiceUnavailable);
+            return new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = JsonContent.Create(new { embeddings = new[] { EmbeddingHelper.Deserialize(Vector())! } })
-            });
+            };
         }
     }
 }
