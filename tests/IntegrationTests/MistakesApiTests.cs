@@ -111,7 +111,7 @@ public class MistakesApiTests : TestBase
         await AssertUnauthorized();
     }
 
-    private async Task<(Guid MistakeId, Question[] Questions)> SeedPractice(string owner)
+    private async Task<(Guid MistakeId, Question[] Questions)> SeedPractice(string owner, int count = 3)
     {
         var copy = Copy(owner, Guid.NewGuid());
         await Seed(copy);
@@ -125,7 +125,7 @@ public class MistakesApiTests : TestBase
         var source = new Question { Id = copy.SourceQuestionId!.Value, QuestionCategory = period,
             Content = copy.Content, QuestionType = copy.QuestionType, Metadata = copy.Metadata,
             StandardAnswer = copy.StandardAnswer, Explanation = copy.Explanation };
-        var questions = Enumerable.Range(0, 3).Select(i => new Question
+        var questions = Enumerable.Range(0, count).Select(i => new Question
         {
             Id = Guid.NewGuid(), QuestionCategory = period, Content = "Related practice " + i,
             Metadata = "{\"options\":[\"A\",\"B\"]}", StandardAnswer = "ANSWER" + i,
@@ -238,6 +238,150 @@ public class MistakesApiTests : TestBase
         }
         var retained = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
         Assert.IsTrue(retained.Completed); Assert.AreEqual("ANSWER0", retained.Items.Single(i => i.Id == first.Id).StandardAnswer);
+    }
+
+    [TestMethod]
+    public async Task ReplacingPracticeItemsIsIdempotentAndNeverCreatesAnswerHistory()
+    {
+        var owner = await Login("replace-owner");
+        var (mistakeId, _) = await SeedPractice(owner, 6);
+        var url = $"/api/PracticeSessions/{Guid.NewGuid()}";
+        (await Http.PutAsJsonAsync(url, new StartPracticeSessionDto {MistakeId = mistakeId})).EnsureSuccessStatusCode();
+        var initial = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        var item = initial.Items[0];
+        var replaceUrl = url + $"/items/{item.Id}/replace";
+        var request = new ReplacePracticeSessionItemDto {Reason = PracticeReplacementReason.Familiar};
+        var responses = await Task.WhenAll(Enumerable.Range(0, 3).Select(_ => Http.PostAsJsonAsync(replaceUrl, request)));
+        Assert.IsTrue(responses.All(r => r.StatusCode == HttpStatusCode.OK));
+        var current = (await responses[0].Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        Assert.HasCount(3, current.Items); Assert.AreEqual(0, current.AnsweredCount); Assert.IsFalse(current.Completed);
+        Assert.IsFalse(current.Items.Any(i => i.Id == item.Id || i.SourceQuestionId == item.SourceQuestionId));
+        var replacement = current.Items.Single(i => i.Position == item.Position);
+        CollectionAssert.AreEquivalent(initial.Items.Where(i => i.Id != item.Id).Select(i => i.Id).ToArray(),
+            current.Items.Where(i => i.Id != replacement.Id).Select(i => i.Id).ToArray());
+        Assert.IsNull(replacement.StandardAnswer); Assert.IsNull(replacement.Explanation);
+        Assert.IsNull(replacement.SubmittedAt); Assert.IsNull(replacement.Score);
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PostAsJsonAsync(replaceUrl,
+            new ReplacePracticeSessionItemDto {Reason = PracticeReplacementReason.NotRelated})).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PostAsJsonAsync(url + $"/items/{item.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "A"})).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var old = await db.PracticeSessionItems.SingleAsync(i => i.Id == item.Id);
+            Assert.IsNotNull(old.ReplacedAt); Assert.AreEqual(request.Reason, old.ReplacementReason);
+            Assert.IsNull(old.SubmittedAt); Assert.IsNull(old.IsCorrect); Assert.IsNull(old.UserAnswer);
+            Assert.AreEqual(4, await db.PracticeSessionItems.CountAsync());
+            Assert.AreEqual(1, (await db.PracticeSessions.SingleAsync()).ReplacementVersion);
+            Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+            Assert.AreEqual(1, await db.MistakeRecords.CountAsync());
+        }
+        // Repeated replacements exclude the complete history, not just the three visible items.
+        var seen = initial.Items.Select(i => i.SourceQuestionId).Append(replacement.SourceQuestionId).ToHashSet();
+        for (var attempt = 0; attempt < 6; attempt++)
+        {
+            var response = await Http.PostAsJsonAsync(url + $"/items/{replacement.Id}/replace", request);
+            if (response.StatusCode == HttpStatusCode.UnprocessableEntity) break;
+            response.EnsureSuccessStatusCode();
+            current = (await response.Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+            replacement = current.Items.Single(i => i.Position == item.Position);
+            Assert.IsTrue(seen.Add(replacement.SourceQuestionId));
+        }
+        Assert.AreEqual(HttpStatusCode.UnprocessableEntity, (await Http.PostAsJsonAsync(
+            url + $"/items/{replacement.Id}/replace", request)).StatusCode);
+        var exhausted = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        CollectionAssert.AreEqual(current.Items.Select(i => i.Id).ToArray(), exhausted.Items.Select(i => i.Id).ToArray());
+        Assert.AreEqual(0, _ollama.Questions.Count, "Replacement feedback must not invoke grading.");
+        _ollama.Response = "{\"Score\":0,\"IsCorrect\":false,\"Comment\":\"Incorrect\"}";
+        (await Http.PostAsJsonAsync(url + $"/items/{replacement.Id}/answer",
+            new PracticeSessionAnswerDto {UserAnswer = "wrong"})).EnsureSuccessStatusCode();
+        Assert.AreEqual(HttpStatusCode.Conflict, (await Http.PostAsJsonAsync(
+            url + $"/items/{replacement.Id}/replace", request)).StatusCode);
+        var replay = (await (await Http.PostAsJsonAsync(replaceUrl, request)).Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+        Assert.AreEqual(1, replay.AnsweredCount);
+    }
+
+    [TestMethod]
+    public async Task ReplacementRequiresOwnershipValidReasonAndEligibleCandidates()
+    {
+        var owner = await Login("replace-rights");
+        var (mistakeId, questions) = await SeedPractice(owner, 6);
+        var url = $"/api/PracticeSessions/{Guid.NewGuid()}";
+        (await Http.PutAsJsonAsync(url, new StartPracticeSessionDto {MistakeId = mistakeId})).EnsureSuccessStatusCode();
+        var initial = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        var replaceUrl = url + $"/items/{initial.Items[0].Id}/replace";
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(replaceUrl, new { })).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.PostAsJsonAsync(replaceUrl, new {reason = 99})).StatusCode);
+        var request = new ReplacePracticeSessionItemDto {Reason = PracticeReplacementReason.QuestionProblem};
+        await Login("replace-foreign");
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.PostAsJsonAsync(replaceUrl, request)).StatusCode);
+        Http.DefaultRequestHeaders.Authorization = null;
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.PostAsJsonAsync(replaceUrl, request)).StatusCode);
+        await Login("replace-rights");
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var category = await db.QuestionCategories.SingleAsync(c => c.Id == questions[0].QuestionCategoryId);
+            category.IsFree = false; await db.SaveChangesAsync();
+        }
+        Assert.AreEqual(HttpStatusCode.UnprocessableEntity, (await Http.PostAsJsonAsync(replaceUrl, request)).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(3, await db.PracticeSessionItems.CountAsync());
+            Assert.IsFalse(await db.PracticeSessionItems.AnyAsync(i => i.ReplacedAt != null));
+            Assert.AreEqual(0, (await db.PracticeSessions.SingleAsync()).ReplacementVersion);
+            var settings = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
+            await settings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "false");
+        }
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, (await Http.PostAsJsonAsync(replaceUrl, request)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task ConcurrentReplacementsOfDifferentPositionsKeepDistinctCandidates()
+    {
+        var owner = await Login("replace-two-positions");
+        var (mistakeId, _) = await SeedPractice(owner, 6);
+        var url = $"/api/PracticeSessions/{Guid.NewGuid()}";
+        (await Http.PutAsJsonAsync(url, new StartPracticeSessionDto {MistakeId = mistakeId})).EnsureSuccessStatusCode();
+        var initial = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        var responses = await Task.WhenAll(initial.Items.Take(2).Select(i => Http.PostAsJsonAsync(
+            url + $"/items/{i.Id}/replace", new ReplacePracticeSessionItemDto {Reason = PracticeReplacementReason.NotRelated})));
+        Assert.IsTrue(responses.Any(r => r.StatusCode == HttpStatusCode.OK));
+        Assert.IsTrue(responses.All(r => r.StatusCode is HttpStatusCode.OK or HttpStatusCode.Conflict));
+        var current = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        Assert.AreEqual(3, current.Items.Select(i => i.Position).Distinct().Count());
+        Assert.AreEqual(3, current.Items.Select(i => i.SourceQuestionId).Distinct().Count());
+        Assert.IsTrue(current.Items.Count(i => i.QuestionType is QuestionType.ShortAnswer or QuestionType.Essay) <= 1);
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(responses.Count(r => r.StatusCode == HttpStatusCode.OK),
+            await db.PracticeSessionItems.CountAsync(i => i.ReplacedAt != null));
+        Assert.AreEqual(0, await db.UserPracticeHistories.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task ConcurrentAnswersAndReplacementsCommitOnlyOneOutcome()
+    {
+        var owner = await Login("replace-race");
+        var (mistakeId, _) = await SeedPractice(owner, 6);
+        var url = $"/api/PracticeSessions/{Guid.NewGuid()}";
+        (await Http.PutAsJsonAsync(url, new StartPracticeSessionDto {MistakeId = mistakeId})).EnsureSuccessStatusCode();
+        var initial = (await Http.GetFromJsonAsync<PracticeSessionDto>(url))!;
+        var first = initial.Items.First(i => i.QuestionType == QuestionType.Choice);
+        var responses = await Task.WhenAll(
+            Http.PostAsJsonAsync(url + $"/items/{first.Id}/answer", new PracticeSessionAnswerDto {UserAnswer = "wrong"}),
+            Http.PostAsJsonAsync(url + $"/items/{first.Id}/replace", new ReplacePracticeSessionItemDto {Reason = PracticeReplacementReason.NotRelated}));
+        Assert.AreEqual(1, responses.Count(r => r.StatusCode == HttpStatusCode.OK));
+        Assert.AreEqual(1, responses.Count(r => r.StatusCode == HttpStatusCode.Conflict));
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var old = await db.PracticeSessionItems.SingleAsync(i => i.Id == first.Id);
+        Assert.AreNotEqual(old.SubmittedAt.HasValue, old.ReplacedAt.HasValue);
+        Assert.AreEqual(old.SubmittedAt.HasValue ? 1 : 0, await db.UserPracticeHistories.CountAsync());
+        var active = await db.PracticeSessionItems.Where(i => i.ReplacedAt == null).ToArrayAsync();
+        Assert.AreEqual(3, active.Select(i => i.Position).Distinct().Count());
+        Assert.AreEqual(3, active.Select(i => i.SourceQuestionId).Distinct().Count());
     }
 
     [TestMethod]

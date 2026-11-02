@@ -951,6 +951,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("ReplacementVersion")
+                        .HasColumnType("INTEGER");
+
                     b.Property<Guid>("SourceMistakeId")
                         .HasColumnType("TEXT");
 
@@ -1003,6 +1006,12 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<int>("QuestionType")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("ReplacedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ReplacementReason")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("Score")
                         .HasColumnType("INTEGER");
 
@@ -1026,8 +1035,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SessionId", "Position")
-                        .IsUnique();
+                    b.HasIndex("SessionId", "Position");
 
                     b.ToTable("PracticeSessionItems");
                 });

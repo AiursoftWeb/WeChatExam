@@ -962,6 +962,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("ReplacementVersion")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("SourceMistakeId")
                         .HasColumnType("char(36)");
 
@@ -1014,6 +1017,12 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<int>("QuestionType")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("ReplacedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("ReplacementReason")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Score")
                         .HasColumnType("int");
 
@@ -1037,8 +1046,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SessionId", "Position")
-                        .IsUnique();
+                    b.HasIndex("SessionId", "Position");
 
                     b.ToTable("PracticeSessionItems");
                 });

@@ -12,6 +12,8 @@ public class PracticeSession
     [ForeignKey(nameof(UserId)), JsonIgnore] public User? User { get; init; }
     public Guid SourceMistakeId { get; init; }
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
+    // Serializes replacements across different positions without holding a lock during vector search.
+    public int ReplacementVersion { get; set; }
     public List<PracticeSessionItem> Items { get; init; } = [];
 }
 
@@ -34,7 +36,17 @@ public class PracticeSessionItem
     [Column(TypeName = "text"), MaxLength(3000)] public required string Explanation { get; init; }
     [MaxLength(1024)] public string? UserAnswer { get; set; }
     public DateTime? SubmittedAt { get; set; }
+    public DateTime? ReplacedAt { get; set; }
+    public PracticeReplacementReason? ReplacementReason { get; set; }
     public bool? IsCorrect { get; set; }
     public int? Score { get; set; }
     [Column(TypeName = "text"), MaxLength(4000)] public string? GradingComment { get; set; }
+}
+
+/// <summary>Self-reported replacement feedback, never evidence of a correct answer or mastery.</summary>
+public enum PracticeReplacementReason
+{
+    Familiar = 0,
+    NotRelated = 1,
+    QuestionProblem = 2
 }

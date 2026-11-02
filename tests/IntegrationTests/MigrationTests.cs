@@ -16,6 +16,39 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class MigrationTests
 {
     [TestMethod]
+    public async Task PracticeReplacementMigrationPreservesExistingRoundsAndRollbackKeepsActiveItems()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite("DataSource=:memory:").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        await migrator.MigrateAsync("20261102074346_AddPracticeSessions");
+        var user = new User {UserName = "replacement-migration", DisplayName = "Replacement migration"};
+        db.Users.Add(user); await db.SaveChangesAsync();
+        var sessionId = Guid.NewGuid(); var itemId = Guid.NewGuid(); var sourceId = Guid.NewGuid();
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO PracticeSessions (Id, UserId, SourceMistakeId, CreationTime) VALUES ({sessionId}, {user.Id}, {Guid.NewGuid()}, {DateTime.UtcNow})");
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO PracticeSessionItems (Id, SessionId, Position, SourceQuestionId, Content, QuestionType, GradingStrategy, Metadata, StandardAnswer, Explanation) VALUES ({itemId}, {sessionId}, 0, {sourceId}, 'Old question', 0, 0, '{{}}', 'A', 'Explanation')");
+        await migrator.MigrateAsync();
+        var round = await db.PracticeSessions.Include(s => s.Items).SingleAsync();
+        Assert.AreEqual(0, round.ReplacementVersion); Assert.HasCount(1, round.Items);
+        var old = round.Items.Single(); Assert.IsNull(old.ReplacedAt); Assert.IsNull(old.ReplacementReason);
+        Assert.AreEqual(sourceId, old.SourceQuestionId); Assert.AreEqual("Old question", old.Content);
+        old.ReplacedAt = DateTime.UtcNow; old.ReplacementReason = PracticeReplacementReason.Familiar;
+        round.ReplacementVersion = 1;
+        db.PracticeSessionItems.Add(new PracticeSessionItem {SessionId = sessionId, Position = 0, SourceQuestionId = Guid.NewGuid(),
+            Content = "Active replacement", Metadata = "{}", StandardAnswer = "B", Explanation = "Retained explanation",
+            SubmittedAt = DateTime.UtcNow, UserAnswer = "B", IsCorrect = true, Score = 10});
+        await db.SaveChangesAsync(); db.ChangeTracker.Clear();
+        await migrator.MigrateAsync("20261102074346_AddPracticeSessions");
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "SELECT Content FROM PracticeSessionItems";
+        Assert.AreEqual("Active replacement", await command.ExecuteScalarAsync());
+        await migrator.MigrateAsync();
+        var retained = await db.PracticeSessionItems.SingleAsync();
+        Assert.AreEqual("B", retained.UserAnswer); Assert.AreEqual(10, retained.Score);
+        Assert.IsNull(retained.ReplacedAt); Assert.AreEqual(sessionId, retained.SessionId);
+    }
+
+    [TestMethod]
     public async Task PracticeSessionsMigrateWithoutChangingExistingCopiesAndCascadeOnlyFromTheirOwner()
     {
         await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
