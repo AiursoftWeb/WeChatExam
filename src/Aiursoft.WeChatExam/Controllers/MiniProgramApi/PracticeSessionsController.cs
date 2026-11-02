@@ -84,8 +84,23 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
     public async Task<IActionResult> Answer(Guid id, Guid itemId, PracticeSessionAnswerDto request,
         CancellationToken cancellationToken)
     {
-        if (UserId == null) return Unauthorized();
+        var userId = UserId;
+        if (userId == null) return Unauthorized();
         if (string.IsNullOrWhiteSpace(request.UserAnswer)) return BadRequest();
+        var retrying = false;
+        return await db.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
+        {
+            // A rolled-back attempt may leave saved entities in the change tracker.
+            // Reload ownership, access and committed progress before trying again.
+            if (retrying) db.ChangeTracker.Clear();
+            retrying = true;
+            return await AnswerOnce(userId, id, itemId, request, cancellationToken);
+        });
+    }
+
+    private async Task<IActionResult> AnswerOnce(string userId, Guid id, Guid itemId, PracticeSessionAnswerDto request,
+        CancellationToken cancellationToken)
+    {
         var session = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
         var item = session?.Items.SingleOrDefault(i => i.Id == itemId);
         if (item == null) return NotFound();
@@ -94,7 +109,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         var question = await db.Questions.AsNoTracking().Include(q => q.QuestionCategory)
             .SingleOrDefaultAsync(q => q.Id == item.SourceQuestionId, cancellationToken);
         if (question?.QuestionCategory == null) return NotFound();
-        var access = await accessService.GetUserAccessStatusAsync(UserId);
+        var access = await accessService.GetUserAccessStatusAsync(userId);
         if (!QuestionAccess.CanPractice(question.QuestionCategory, access)) return StatusCode(StatusCodes.Status403Forbidden);
 
         // The conditional write holds this row until grading and all local history commit.
@@ -126,10 +141,10 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         tracked.IsCorrect = result.IsCorrect; tracked.Score = result.Score; tracked.GradingComment = result.Comment;
         db.UserPracticeHistories.Add(new UserPracticeHistory
         {
-            Id = Guid.NewGuid(), UserId = UserId, QuestionId = question.Id, UserAnswer = request.UserAnswer,
+            Id = Guid.NewGuid(), UserId = userId, QuestionId = question.Id, UserAnswer = request.UserAnswer,
             IsCorrect = result.IsCorrect, Score = result.Score, GradingComment = result.Comment, CreationTime = submittedAt
         });
-        MistakeRecording.Record(db, UserId, captured, request.UserAnswer, result, null, submittedAt);
+        MistakeRecording.Record(db, userId, captured, request.UserAnswer, result, null, submittedAt);
         // Finish persistence even if the HTTP client disconnects after grading. A later GET/retry
         // discovers the same committed result instead of charging a second grading attempt.
         await db.SaveChangesAsync(CancellationToken.None);
