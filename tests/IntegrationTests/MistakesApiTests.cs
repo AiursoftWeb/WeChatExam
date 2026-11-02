@@ -1,14 +1,21 @@
 using System.Net;
 using System.Net.Http.Headers;
+using System.Data.Common;
+using System.Security.Claims;
 using Aiursoft.DbTools;
 using Aiursoft.WebTools;
 using Aiursoft.WeChatExam.Configuration;
+using Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
+using Aiursoft.WeChatExam.Sqlite;
 using Aiursoft.WeChatExam.Tests.TestServices;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.AspNetCore.Mvc;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -144,6 +151,94 @@ public class MistakesApiTests : TestBase
         }
         await db.SaveChangesAsync();
         return (copy.Id, questions);
+    }
+
+    [TestMethod]
+    [DataRow(0)]
+    [DataRow(1)]
+    [DataRow(2)]
+    public async Task PracticeAnswersSupportRetryingTransactionsWithoutDuplicatingHistory(int failurePoint)
+    {
+        var failure = new AnswerSaveFailure();
+        var commitFailure = new AnswerCommitFailure();
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("Data Source=:memory:")
+            .ReplaceService<IExecutionStrategyFactory, AnswerRetryStrategyFactory>()
+            .AddInterceptors(failure, commitFailure).Options);
+        await db.Database.OpenConnectionAsync();
+        await db.Database.EnsureCreatedAsync();
+        var owner = new User { UserName = "retry-owner", DisplayName = "Retry owner" };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Fixed question", StandardAnswer = "Right",
+            Explanation = "Fixed explanation", QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true) };
+        var session = new PracticeSession { Id = Guid.NewGuid(), UserId = owner.Id, SourceMistakeId = Guid.NewGuid() };
+        var item = new PracticeSessionItem { SessionId = session.Id, SourceQuestionId = question.Id,
+            Content = question.Content, Metadata = "{}", StandardAnswer = question.StandardAnswer, Explanation = question.Explanation };
+        session.Items.Add(item);
+        db.AddRange(owner, question, session);
+        await db.SaveChangesAsync();
+        failure.Armed = failurePoint == 1;
+        commitFailure.Armed = failurePoint == 2;
+        using var scope = Server!.Services.CreateScope();
+        var controller = new PracticeSessionsController(db, null!,
+            scope.ServiceProvider.GetRequiredService<IPaperAccessService>(),
+            scope.ServiceProvider.GetRequiredService<IGradingService>())
+        {
+            ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier, owner.Id)], "Bearer"))
+            } }
+        };
+        var request = new PracticeSessionAnswerDto { UserAnswer = "Wrong" };
+        var response = (OkObjectResult)await controller.Answer(session.Id, item.Id, request, default);
+        var result = (PracticeSessionDto)response.Value!;
+        Assert.IsTrue(result.Completed);
+        Assert.AreEqual(1, result.AnsweredCount);
+        Assert.AreEqual("Wrong", result.Items.Single().UserAnswer);
+        Assert.AreEqual("Right", result.Items.Single().StandardAnswer);
+        Assert.AreEqual(false, result.Items.Single().IsCorrect);
+        Assert.IsFalse(failure.Armed);
+        Assert.IsFalse(commitFailure.Armed);
+        Assert.IsInstanceOfType<OkObjectResult>(await controller.Answer(session.Id, item.Id, request, default));
+        Assert.IsInstanceOfType<ConflictResult>(await controller.Answer(session.Id, item.Id,
+            new PracticeSessionAnswerDto { UserAnswer = "Changed" }, default));
+        Assert.AreEqual(1, await db.UserPracticeHistories.CountAsync());
+        Assert.AreEqual(1, await db.MistakeRecords.CountAsync());
+        Assert.AreEqual(1, await db.PracticeSessionItems.CountAsync(i => i.SubmittedAt != null));
+    }
+
+    private sealed class AnswerRetryStrategyFactory(ExecutionStrategyDependencies dependencies) : IExecutionStrategyFactory
+    {
+        public IExecutionStrategy Create() => new AnswerRetryStrategy(dependencies);
+    }
+
+    private sealed class AnswerRetryStrategy(ExecutionStrategyDependencies dependencies)
+        : ExecutionStrategy(dependencies, 1, TimeSpan.Zero)
+    {
+        protected override bool ShouldRetryOn(Exception exception) => exception is TimeoutException;
+    }
+
+    private sealed class AnswerSaveFailure : SaveChangesInterceptor
+    {
+        public bool Armed { get; set; }
+        public override ValueTask<int> SavedChangesAsync(SaveChangesCompletedEventData eventData, int result,
+            CancellationToken cancellationToken = default)
+        {
+            if (!Armed) return ValueTask.FromResult(result);
+            Armed = false;
+            throw new TimeoutException("Synthetic failure after saving answer history, before commit.");
+        }
+    }
+
+    private sealed class AnswerCommitFailure : DbTransactionInterceptor
+    {
+        public bool Armed { get; set; }
+        public override Task TransactionCommittedAsync(DbTransaction transaction, TransactionEndEventData eventData,
+            CancellationToken cancellationToken = default)
+        {
+            if (!Armed) return Task.CompletedTask;
+            Armed = false;
+            throw new TimeoutException("Synthetic lost acknowledgement after answer commit.");
+        }
     }
 
     [TestMethod]
