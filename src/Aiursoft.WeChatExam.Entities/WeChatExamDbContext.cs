@@ -53,6 +53,10 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        builder.Entity<PracticeSession>().HasIndex(s => new { s.UserId, s.CreationTime, s.Id });
+        builder.Entity<PracticeSessionItem>().HasIndex(i => new { i.SessionId, i.Position }).IsUnique();
+        builder.Entity<PracticeSessionItem>().HasOne(i => i.Session).WithMany(s => s.Items)
+            .HasForeignKey(i => i.SessionId).OnDelete(DeleteBehavior.Cascade);
         builder.Entity<MistakeRecord>().HasIndex(m => new { m.UserId, m.CreationTime, m.Id });
 
         builder.Entity<PaperSnapshot>().HasOne(s => s.RealPaper).WithMany()
@@ -150,6 +154,8 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<Question> Questions => Set<Question>();
     public DbSet<KnowledgePoint> KnowledgePoints => Set<KnowledgePoint>();
     public DbSet<UserPracticeHistory> UserPracticeHistories => Set<UserPracticeHistory>();
+    public DbSet<PracticeSession> PracticeSessions => Set<PracticeSession>();
+    public DbSet<PracticeSessionItem> PracticeSessionItems => Set<PracticeSessionItem>();
     public DbSet<MistakeRecord> MistakeRecords => Set<MistakeRecord>();
     public DbSet<KnowledgeCategoryKnowledgePoint> KnowledgeCategoryKnowledgePoints => Set<KnowledgeCategoryKnowledgePoint>();
     public DbSet<KnowledgePointQuestion> KnowledgePointQuestions => Set<KnowledgePointQuestion>();

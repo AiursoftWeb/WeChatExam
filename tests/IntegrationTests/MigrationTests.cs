@@ -16,6 +16,45 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class MigrationTests
 {
     [TestMethod]
+    public async Task PracticeSessionsMigrateWithoutChangingExistingCopiesAndCascadeOnlyFromTheirOwner()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        await migrator.MigrateAsync("20261101185309_AddMistakeRecords");
+        var user = new User { UserName = "session-owner", DisplayName = "Session owner" };
+        db.Users.Add(user); await db.SaveChangesAsync();
+        var copy = new MistakeRecord { UserId = user.Id, SourceQuestionId = Guid.NewGuid(), Content = "Retained copy",
+            Metadata = "{}", UserAnswer = "Wrong", StandardAnswer = "Right", Explanation = "Explanation", GradingComment = "Feedback" };
+        db.MistakeRecords.Add(copy); await db.SaveChangesAsync();
+        await migrator.MigrateAsync();
+        var session = new PracticeSession {Id = Guid.NewGuid(), UserId = user.Id, SourceMistakeId = copy.Id};
+        session.Items.Add(new PracticeSessionItem {SessionId = session.Id, Position = 0, SourceQuestionId = copy.SourceQuestionId!.Value,
+            Content = copy.Content, Metadata = copy.Metadata, StandardAnswer = copy.StandardAnswer, Explanation = copy.Explanation});
+        db.PracticeSessions.Add(session); await db.SaveChangesAsync();
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "SELECT count(*) FROM pragma_foreign_key_list('PracticeSessionItems') WHERE \"table\" != 'PracticeSessions'";
+        Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+        command.CommandText = "SELECT count(*) FROM pragma_foreign_key_list('PracticeSessions') WHERE \"table\" != 'AspNetUsers'";
+        Assert.AreEqual(0L, await command.ExecuteScalarAsync());
+        await migrator.MigrateAsync("20261101185309_AddMistakeRecords");
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(copy.Content, (await db.MistakeRecords.SingleAsync()).Content);
+        await migrator.MigrateAsync();
+        Assert.AreEqual(0, await db.PracticeSessions.CountAsync());
+        var retained = new PracticeSession {Id = Guid.NewGuid(), UserId = user.Id, SourceMistakeId = copy.Id};
+        retained.Items.Add(new PracticeSessionItem {SessionId = retained.Id, SourceQuestionId = Guid.NewGuid(),
+            Content = "Independent", Metadata = "{}", StandardAnswer = "A", Explanation = "B"});
+        db.PracticeSessions.Add(retained); await db.SaveChangesAsync();
+        db.MistakeRecords.Remove(await db.MistakeRecords.SingleAsync()); await db.SaveChangesAsync();
+        Assert.AreEqual(1, await db.PracticeSessionItems.CountAsync());
+        await db.Users.ExecuteDeleteAsync();
+        Assert.AreEqual(0, await db.PracticeSessions.CountAsync());
+        Assert.AreEqual(0, await db.PracticeSessionItems.CountAsync());
+    }
+
+    [TestMethod]
     public async Task MovingVipProductsPreservesPurchasedEntitlementsAndRemovesTheOldForeignKey()
     {
         await using var context = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
