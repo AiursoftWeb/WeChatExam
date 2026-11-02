@@ -638,6 +638,101 @@ public class MistakesApiTests : TestBase
     }
 
     [TestMethod]
+    public async Task BlindSpotPreviewUsesOnlyOwnedCluesAndUnseenAuthorizedQuestions()
+    {
+        var other = await Login("blind-other");
+        var owner = await Login("blind-owner");
+        var sourceId = Guid.NewGuid();
+        var copy = Copy(owner, sourceId, order: 61);
+        await Seed(copy, Copy(other, Guid.NewGuid(), order: 62));
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var settings = scope.ServiceProvider.GetRequiredService<IGlobalSettingsService>();
+        await settings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "true");
+        await settings.UpdateSettingAsync(SettingsMap.EmbeddingOllamaInstance, "https://embedding.example.invalid");
+        await settings.UpdateSettingAsync(SettingsMap.EmbeddingModel, "bge-m3:latest");
+        var paidPeriod = QuestionPeriodAssignmentTests.TestPeriod();
+        var freePeriod = new QuestionCategory { Title = "Free period", IsFree = true,
+            TotalCategoryId = paidPeriod.TotalCategoryId, TotalCategory = paidPeriod.TotalCategory };
+        var source = new Question { Id = sourceId, QuestionCategory = paidPeriod,
+            Content = copy.Content, QuestionType = copy.QuestionType, Metadata = copy.Metadata,
+            StandardAnswer = copy.StandardAnswer, Explanation = copy.Explanation };
+        Question Candidate(string content, QuestionCategory period) => new()
+        {
+            Id = Guid.NewGuid(), QuestionCategory = period, Content = content,
+            StandardAnswer = "PRIVATE ANSWER", Explanation = "PRIVATE EXPLANATION"
+        };
+        var fresh = Candidate("Fresh authorized related question", freePeriod);
+        var foreignSeen = Candidate("Another fresh related question", freePeriod);
+        var answered = Candidate("Previously answered related question", freePeriod);
+        var shown = Candidate("Previously shown related question", freePeriod);
+        var paid = Candidate("Paid related question", paidPeriod);
+        db.AddRange(source, fresh, foreignSeen, answered, shown, paid);
+        db.UserPracticeHistories.AddRange(
+            new UserPracticeHistory { Id = Guid.NewGuid(), UserId = owner, QuestionId = answered.Id,
+                UserAnswer = "B", IsCorrect = true },
+            new UserPracticeHistory { Id = Guid.NewGuid(), UserId = other, QuestionId = foreignSeen.Id,
+                UserAnswer = "B", IsCorrect = true });
+        db.PracticeSessions.Add(new PracticeSession { Id = Guid.NewGuid(), UserId = owner,
+            SourceMistakeId = copy.Id, Items =
+            [
+                new PracticeSessionItem { SourceQuestionId = shown.Id, Content = shown.Content,
+                    Metadata = "{}", StandardAnswer = "A", Explanation = "", Position = 0 }
+            ] });
+        await db.SaveChangesAsync();
+        foreach (var (question, similarity) in new[]
+                 { (source, 1f), (fresh, 0.90f), (foreignSeen, 0.85f),
+                     (answered, 0.95f), (shown, 0.92f), (paid, 0.99f) })
+        {
+            var vector = new float[1024]; vector[0] = similarity;
+            vector[1] = (question == foreignSeen ? -1 : 1) * MathF.Sqrt(1 - similarity * similarity);
+            question.Embedding = EmbeddingHelper.Serialize(vector);
+            question.LastEmbeddedAt = question.LastUpdatedAt;
+        }
+        await db.SaveChangesAsync();
+
+        var response = await Http.GetAsync("/api/BlindSpotPreview?userId=" + other);
+        response.EnsureSuccessStatusCode();
+        Assert.IsTrue(response.Headers.CacheControl!.NoStore);
+        var result = (await response.Content.ReadFromJsonAsync<BlindSpotPreviewDto>())!;
+        Assert.IsTrue(result.Available);
+        Assert.IsTrue(result.HasUsableHistory);
+        CollectionAssert.AreEquivalent(new[] { fresh.Id, foreignSeen.Id },
+            result.Items.Select(i => i.QuestionId).ToArray());
+        Assert.IsTrue(result.Items.All(i => i.SourceMistakeId == copy.Id));
+        var json = await response.Content.ReadAsStringAsync();
+        Assert.DoesNotContain("PRIVATE", json);
+        Assert.DoesNotContain("standardAnswer", json);
+        Assert.DoesNotContain("explanation", json);
+        Assert.AreEqual(1, await db.PracticeSessions.CountAsync(), "Preview is read-only.");
+        Assert.AreEqual(2, await db.MistakeRecords.CountAsync());
+
+        freePeriod.IsFree = false;
+        await db.SaveChangesAsync();
+        result = (await Http.GetFromJsonAsync<BlindSpotPreviewDto>("/api/BlindSpotPreview"))!;
+        Assert.IsTrue(result.Available);
+        Assert.HasCount(0, result.Items, "Rights must be checked on each request.");
+        await settings.UpdateSettingAsync(SettingsMap.EnableEmbeddingBasedSearch, "false");
+        result = (await Http.GetFromJsonAsync<BlindSpotPreviewDto>("/api/BlindSpotPreview"))!;
+        Assert.IsFalse(result.Available, "Unavailable AI must not be reported as no candidate.");
+        Http.DefaultRequestHeaders.Authorization = null;
+        Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.GetAsync("/api/BlindSpotPreview")).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task BlindSpotPreviewExplainsMissingHistoryWithoutCreatingASet()
+    {
+        var user = await Login("blind-empty");
+        var result = (await Http.GetFromJsonAsync<BlindSpotPreviewDto>("/api/BlindSpotPreview"))!;
+        Assert.IsTrue(result.Available);
+        Assert.IsFalse(result.HasUsableHistory);
+        Assert.HasCount(0, result.Items);
+        await Seed(Copy(user, Guid.NewGuid(), order: 63));
+        result = (await Http.GetFromJsonAsync<BlindSpotPreviewDto>("/api/BlindSpotPreview"))!;
+        Assert.IsFalse(result.HasUsableHistory, "A deleted original cannot identify a dependable course scope.");
+    }
+
+    [TestMethod]
     public async Task ListsOnlyOwnQuestionsAndKeepsEveryPublishedVersionInAttempts()
     {
         var other = await Login("mistakes-other");
