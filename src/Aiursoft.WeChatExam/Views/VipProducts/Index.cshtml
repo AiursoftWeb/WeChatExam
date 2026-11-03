@@ -6,6 +6,10 @@
 <div class="card mb-3">
     <div class="card-body">
         <form method="get" class="row g-2 align-items-end">
+            @if (Model.InstitutionId.HasValue)
+            {
+                <input type="hidden" name="institutionId" value="@Model.InstitutionId" />
+            }
             <div class="col-auto">
                 <label class="form-label">@Localizer["Search"]</label>
                 <input type="text" name="search" value="@Model.SearchQuery" class="form-control form-control-sm" placeholder="@Localizer["Search by name, category or institution"]" />

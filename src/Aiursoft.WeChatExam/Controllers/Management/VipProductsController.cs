@@ -28,9 +28,12 @@ public class VipProductsController(
         CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? search)
+    public async Task<IActionResult> Index(string? search, Guid? institutionId)
     {
         var products = await vipProductService.GetAllAsync();
+
+        if (institutionId.HasValue)
+            products = products.Where(p => p.Type == VipProductType.Institution && p.InstitutionId == institutionId).ToList();
 
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -44,16 +47,21 @@ public class VipProductsController(
         return this.StackView(new IndexViewModel
         {
             Products = products,
-            SearchQuery = search
+            SearchQuery = search,
+            InstitutionId = institutionId
         });
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create(Guid? institutionId)
     {
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
+        var selectedInstitution = institutionId.HasValue && await dbContext.Institutions.AnyAsync(i => i.Id == institutionId.Value)
+            ? institutionId : null;
         return this.StackView(new CreateViewModel
         {
+            Type = selectedInstitution.HasValue ? VipProductType.Institution : VipProductType.Category,
+            InstitutionId = selectedInstitution,
             TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList(),
             Institutions = await InstitutionOptionsAsync()
         });

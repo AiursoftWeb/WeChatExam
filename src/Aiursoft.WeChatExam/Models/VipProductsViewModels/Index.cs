@@ -12,4 +12,5 @@ public class IndexViewModel : UiStackLayoutViewModel
 
     public List<VipProduct> Products { get; set; } = [];
     public string? SearchQuery { get; set; }
+    public Guid? InstitutionId { get; set; }
 }
