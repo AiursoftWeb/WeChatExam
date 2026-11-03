@@ -16,6 +16,7 @@ for (const picker of document.querySelectorAll('[data-category-picker]')) {
     }
     picker.addEventListener('change', updateCount);
     updateCount();
+    search.addEventListener('keydown', event => { if (event.key === 'Enter') event.preventDefault(); });
     search.addEventListener('input', () => {
         const query = search.value.trim().toLocaleLowerCase();
         if (query && !expansion) {
