@@ -1759,7 +1759,8 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
                         .WithMany()
-                        .HasForeignKey("CouponId");
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "TargetUser")
                         .WithMany()
@@ -1769,11 +1770,13 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "TriggerUser")
                         .WithMany()
-                        .HasForeignKey("TriggerUserId");
+                        .HasForeignKey("TriggerUserId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
                         .WithMany()
-                        .HasForeignKey("VipProductId");
+                        .HasForeignKey("VipProductId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Coupon");
 
