@@ -54,7 +54,7 @@
                         }
                     </td>
                     <td>
-                        @(change.VipProduct?.Name ?? "N/A")
+                        @(change.VipProduct?.Name ?? change.ArchivedVipProductName ?? "N/A")
                     </td>
                     <td>
                         @(change.TriggerUser?.DisplayName ?? "System")

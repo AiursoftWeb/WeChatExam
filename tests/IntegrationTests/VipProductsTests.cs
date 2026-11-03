@@ -225,7 +225,7 @@ public class VipProductsTests : TestBase
     [TestMethod]
     [DataRow(true)]
     [DataRow(false)]
-    public async Task DeleteProductWithChangeRecordsIsRejectedAndPreservesHistory(bool isEnabled)
+    public async Task DeleteRetiredProductPreservesAuditIdentity(bool isEnabled)
     {
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
@@ -258,15 +258,54 @@ public class VipProductsTests : TestBase
         {
             ["id"] = product.Id.ToString()
         });
-        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("This product has audit history. Disable it instead of deleting it.", await response.Content.ReadAsStringAsync());
+        if (isEnabled)
+        {
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Assert.Contains("This product has audit history. Disable it instead of deleting it.", await response.Content.ReadAsStringAsync());
+        }
+        else
+        {
+            AssertRedirect(response, "/VipProducts");
+        }
 
         db.ChangeTracker.Clear();
-        Assert.AreEqual(product.Name, (await db.VipProducts.SingleAsync(p => p.Id == product.Id)).Name);
+        Assert.AreEqual(isEnabled, await db.VipProducts.AnyAsync(p => p.Id == product.Id));
         var reloadedChange = await db.Changes.SingleAsync(c => c.Id == change.Id);
-        Assert.AreEqual(product.Id, reloadedChange.VipProductId);
+        Assert.AreEqual(isEnabled ? product.Id : null, reloadedChange.VipProductId);
+        Assert.AreEqual(isEnabled ? null : product.Id, reloadedChange.ArchivedVipProductId);
+        Assert.AreEqual(isEnabled ? null : product.Name, reloadedChange.ArchivedVipProductName);
         Assert.AreEqual(change.TriggerUserId, reloadedChange.TriggerUserId);
         Assert.AreEqual("Historical admin grant", reloadedChange.Details);
+        if (!isEnabled)
+        {
+            var history = await Http.GetStringAsync("/Accounting/History");
+            Assert.Contains(product.Name, history);
+        }
+    }
+
+    [TestMethod]
+    public async Task OrdinaryProductWithAuditStillCannotBeDeleted()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var user = await db.Users.FirstAsync();
+        var course = new TotalCategory { Title = "Course with audit" };
+        var product = new VipProduct { Name = "Current course", Type = VipProductType.Category,
+            TotalCategory = course, IsEnabled = false };
+        db.VipProducts.Add(product);
+        db.Changes.Add(new Change { Type = ChangeType.VipActivatedViaAdmin,
+            TargetUserId = user.Id, VipProduct = product, Details = "Historical grant" });
+        await db.SaveChangesAsync();
+
+        using var response = await PostForm($"/VipProducts/Delete/{product.Id}",
+            new Dictionary<string, string> { ["id"] = product.Id.ToString() });
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.Contains("This product has audit history. Disable it instead of deleting it.",
+            await response.Content.ReadAsStringAsync());
+        db.ChangeTracker.Clear();
+        Assert.IsTrue(await db.VipProducts.AnyAsync(p => p.Id == product.Id));
+        Assert.IsTrue(await db.Changes.AnyAsync(c => c.VipProductId == product.Id));
     }
 
     [TestMethod]

@@ -30,10 +30,9 @@ public class MigrationTests
         var user = new User { UserName = "audit-owner", DisplayName = "Audit owner" };
         var product = new VipProduct { Name = "Retained historical product", Type = VipProductType.RealExam };
         db.AddRange(user, product);
-        var change = new Change { TargetUserId = user.Id, TriggerUserId = user.Id,
-            VipProductId = product.Id, Type = ChangeType.VipActivatedViaAdmin, Details = "Original grant" };
-        db.Changes.Add(change);
         await db.SaveChangesAsync();
+        var changeId = Guid.NewGuid();
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO Changes (Id, TargetUserId, TriggerUserId, VipProductId, Type, Details, CreateTime) VALUES ({changeId}, {user.Id}, {user.Id}, {product.Id}, {(int)ChangeType.VipActivatedViaAdmin}, {"Original grant"}, {DateTime.UtcNow})");
         db.ChangeTracker.Clear();
         await migrator.MigrateAsync();
 
@@ -41,7 +40,7 @@ public class MigrationTests
         var error = await Assert.ThrowsExactlyAsync<Microsoft.Data.Sqlite.SqliteException>(() =>
             db.VipProducts.Where(p => p.Id == product.Id).ExecuteDeleteAsync());
         Assert.AreEqual(787, error.SqliteExtendedErrorCode);
-        var retained = await db.Changes.Include(c => c.VipProduct).SingleAsync(c => c.Id == change.Id);
+        var retained = await db.Changes.Include(c => c.VipProduct).SingleAsync(c => c.Id == changeId);
         Assert.AreEqual(product.Id, retained.VipProductId);
         Assert.AreEqual(product.Name, retained.VipProduct!.Name);
         Assert.AreEqual(user.Id, retained.TriggerUserId);
