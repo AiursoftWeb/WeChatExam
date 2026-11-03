@@ -3,9 +3,22 @@
 
 <h1 class="h3 mb-3">@Localizer["VIP Products"]</h1>
 
+@if (Model.ScopeTitle != null)
+{
+    <p class="text-break"><strong>@Model.ScopeTitle</strong></p>
+    @if (User.HasClaim(Aiursoft.WeChatExam.Authorization.AppPermissions.Type, Aiursoft.WeChatExam.Authorization.AppPermissionNames.CanEditAnyCategory))
+    {
+        <a asp-controller="TotalCategories" asp-action="Edit" asp-route-id="@Model.TotalCategoryId" class="d-inline-block mb-3">@Localizer["Back to Course Settings"]</a>
+    }
+}
+
 <div class="card mb-3">
     <div class="card-body">
         <form method="get" class="row g-2 align-items-end">
+            @if (Model.TotalCategoryId.HasValue)
+            {
+                <input type="hidden" name="totalCategoryId" value="@Model.TotalCategoryId" />
+            }
             @if (Model.InstitutionId.HasValue)
             {
                 <input type="hidden" name="institutionId" value="@Model.InstitutionId" />
@@ -20,7 +33,7 @@
                 </button>
             </div>
             <div class="col-auto ms-auto">
-                <a asp-action="Create" class="btn btn-success btn-sm">
+                <a asp-action="Create" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" class="btn btn-success btn-sm">
                     <i class="align-middle me-1" data-lucide="plus"></i> @Localizer["Create VIP Product"]
                 </a>
             </div>

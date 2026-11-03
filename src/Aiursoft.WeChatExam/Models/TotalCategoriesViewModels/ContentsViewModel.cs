@@ -8,5 +8,6 @@ public class ContentsViewModel
     public int PeriodCount { get; init; }
     public int QuestionCount { get; init; }
     public int KnowledgeCategoryCount { get; init; }
+    public int KnowledgePointCount { get; init; }
     public int MockPaperCount { get; init; }
 }

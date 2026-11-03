@@ -1,6 +1,24 @@
 @using Aiursoft.WeChatExam.Authorization
 @model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.IndexViewModel
 
+@if (Model.Course != null)
+{
+    <div class="card mb-3"><div class="card-body">
+        <p class="mb-2 text-break"><strong>@Model.Course.Title</strong>@if (Model.Category != null) { <span> / @Model.Category.Title</span> }</p>
+        <div class="d-flex flex-wrap gap-3">
+            @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditAnyCategory))
+            {
+                <a asp-controller="TotalCategories" asp-action="Details" asp-route-id="@Model.Course.Id">@Localizer["Back to Course Contents"]</a>
+            }
+            @if (Model.Category != null)
+            {
+                <a asp-controller="KnowledgeCategories" asp-action="Details" asp-route-id="@Model.Category.Id">@Localizer["Back to Knowledge Directory"]</a>
+            }
+            <a asp-action="Index">@Localizer["Show All Knowledge Points"]</a>
+        </div>
+    </div></div>
+}
+
 @* Standard page title for consistency. *@
 <h1 class="h3 mb-3">@Localizer["KnowledgePoints"]</h1>
 

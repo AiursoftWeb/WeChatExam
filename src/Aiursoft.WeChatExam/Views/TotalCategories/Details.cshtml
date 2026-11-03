@@ -60,7 +60,10 @@
                         }
                     </ul>
                 }
-                <a asp-controller="KnowledgeCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Knowledge Directories"]</a>
+                <div class="d-grid gap-3">
+                    <a asp-controller="KnowledgeCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Knowledge Directories"]</a>
+                    <a asp-controller="KnowledgePoints" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2">@Localizer["Knowledge Points"] <span class="badge bg-secondary">@Model.KnowledgePointCount</span></a>
+                </div>
             </div>
         </section>
     </div>

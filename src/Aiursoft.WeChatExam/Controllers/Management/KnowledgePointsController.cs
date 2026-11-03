@@ -32,16 +32,30 @@ public class KnowledgePointsController(
         CascadedLinksOrder = 20,
         LinkText = "Knowledge Points",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(Guid? totalCategoryId, Guid? knowledgeCategoryId)
     {
-        var knowledgePoints = await context.KnowledgePoints
-            .Include(k => k.KnowledgeCategoryKnowledgePoints)
-            .ThenInclude(ck => ck.KnowledgeCategory)
-            .ToListAsync();
+        var course = totalCategoryId.HasValue
+            ? await context.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == totalCategoryId.Value) : null;
+        if (totalCategoryId.HasValue && course == null) return NotFound();
+        var category = knowledgeCategoryId.HasValue
+            ? await context.KnowledgeCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == knowledgeCategoryId.Value) : null;
+        if (knowledgeCategoryId.HasValue && category == null) return NotFound();
+        if (category != null && totalCategoryId.HasValue && category.TotalCategoryId != totalCategoryId.Value) return BadRequest();
+        if (category != null && course == null)
+            course = await context.TotalCategories.AsNoTracking().SingleAsync(c => c.Id == category.TotalCategoryId);
+
+        var query = context.KnowledgePoints.AsNoTracking();
+        // Filter the point, not the join rows: a point in several directories appears once.
+        if (course != null)
+            query = query.Where(k => k.KnowledgeCategoryKnowledgePoints.Any(a => a.KnowledgeCategory.TotalCategoryId == course.Id));
+        if (category != null)
+            query = query.Where(k => k.KnowledgeCategoryKnowledgePoints.Any(a => a.KnowledgeCategoryId == category.Id));
+        var knowledgePoints = await query.Include(k => k.KnowledgeCategoryKnowledgePoints)
+            .ThenInclude(ck => ck.KnowledgeCategory).OrderBy(k => k.Title).ThenBy(k => k.Id).ToListAsync();
 
         return this.StackView(new IndexViewModel
         {
-            KnowledgePoints = knowledgePoints
+            Course = course, Category = category, KnowledgePoints = knowledgePoints
         });
     }
 

@@ -29,9 +29,15 @@ public class VipProductsController(
         CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? search, Guid? institutionId)
+    public async Task<IActionResult> Index(string? search, Guid? institutionId, Guid? totalCategoryId)
     {
+        if (institutionId.HasValue && totalCategoryId.HasValue) return BadRequest();
+        var course = totalCategoryId.HasValue
+            ? await dbContext.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == totalCategoryId.Value) : null;
+        if (totalCategoryId.HasValue && course == null) return NotFound();
         var products = await vipProductService.GetAllAsync();
+        if (totalCategoryId.HasValue)
+            products = products.Where(p => p.Type == VipProductType.Category && p.TotalCategoryId == totalCategoryId).ToList();
 
         if (institutionId.HasValue)
             products = products.Where(p => p.Type == VipProductType.Institution && p.InstitutionId == institutionId).ToList();
@@ -49,20 +55,23 @@ public class VipProductsController(
         {
             Products = products,
             SearchQuery = search,
-            InstitutionId = institutionId
+            InstitutionId = institutionId, TotalCategoryId = totalCategoryId, ScopeTitle = course?.Title
         });
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]
-    public async Task<IActionResult> Create(Guid? institutionId)
+    public async Task<IActionResult> Create(Guid? institutionId, Guid? totalCategoryId)
     {
+        if (institutionId.HasValue && totalCategoryId.HasValue) return BadRequest();
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
+        if (totalCategoryId.HasValue && categories.All(c => c.Id != totalCategoryId.Value)) return NotFound();
         var selectedInstitution = institutionId.HasValue && await dbContext.Institutions.AnyAsync(i => i.Id == institutionId.Value)
             ? institutionId : null;
         return this.StackView(new CreateViewModel
         {
             Type = selectedInstitution.HasValue ? VipProductType.Institution : VipProductType.Category,
             InstitutionId = selectedInstitution,
+            TotalCategoryId = totalCategoryId,
             TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList(),
             Institutions = await InstitutionOptionsAsync()
         });
