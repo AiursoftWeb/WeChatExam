@@ -30,6 +30,8 @@ public class QuestionCategoriesTests : TestBase
         foreach (var html in new[] { await Http.GetStringAsync($"/QuestionCategories/Edit/{period.Id}"), await invalid.Content.ReadAsStringAsync() })
         {
             Assert.Contains($"/TotalCategories/Edit/{first}", html);
+            Assert.Contains($"href=\"/QuestionCategories?totalCategoryId={first}\"", html);
+            Assert.DoesNotContain($"href=\"/QuestionCategories?totalCategoryId={second}\"", html);
             Assert.Contains($"/Questions?totalCategoryId={first}&amp;period={period.Id}", html);
             Assert.DoesNotContain($"/Questions?totalCategoryId={second}", html);
         }

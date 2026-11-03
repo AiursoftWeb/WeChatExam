@@ -4,9 +4,10 @@
 @inject IAuthorizationService Authorization
 @{
     var creating = Model.Id == Guid.Empty;
+    var returnCourseId = Model.SavedTotalCategory?.Id ?? Model.TotalCategoryId;
 }
 
-<a asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="d-inline-block text-decoration-none mb-3">
+<a asp-action="Index" asp-route-totalCategoryId="@returnCourseId" class="d-inline-block text-decoration-none mb-3">
     <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Periods"]
 </a>
 <h1 class="h3 mb-4">
@@ -79,7 +80,7 @@
                                 @Localizer["Save Changes"]
                             }
                         </button>
-                        <a asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                        <a asp-action="Index" asp-route-totalCategoryId="@returnCourseId" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
                     </div>
                 </form>
             </div>
