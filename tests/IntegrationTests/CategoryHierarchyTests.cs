@@ -258,8 +258,14 @@ public class CategoryHierarchyTests
             Assert.IsNotNull(await db.KnowledgeCategories.FindAsync(id));
         }
         var editor = WebUtility.HtmlDecode(await _http.GetStringAsync("/KnowledgePoints/Create"));
-        Assert.Contains("Test course / Early music / Overview", editor);
-        Assert.Contains("Other course / Overview", editor);
+        Assert.Contains("Test course", editor);
+        Assert.Contains("Other course", editor);
+        var branch = Regex.Match(editor, $"(?s)<ul id=\"category-branch-{root.Id}\"[^>]*>(.*?)</ul>").Groups[1].Value;
+        Assert.Contains($"id=\"category-choice-{child.Id}\"", branch);
+        Assert.DoesNotContain($"id=\"category-choice-{other.Id}\"", branch);
+        var editPage = await _http.GetStringAsync($"/KnowledgePoints/Edit/{lesson.Id}");
+        Assert.IsTrue(Regex.IsMatch(editPage, $"<input(?=[^>]*id=\"category-choice-{child.Id}\")(?=[^>]*checked)[^>]*>"));
+        Assert.IsFalse(Regex.IsMatch(editPage, $"<input(?=[^>]*id=\"category-choice-{other.Id}\")(?=[^>]*checked)[^>]*>"));
         Assert.IsNotNull(await db.KnowledgePoints.FindAsync(lesson.Id));
     }
 }
