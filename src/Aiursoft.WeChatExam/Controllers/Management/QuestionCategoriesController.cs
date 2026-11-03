@@ -33,13 +33,22 @@ public class QuestionCategoriesController(
         totalCategoryId ??= totals.FirstOrDefault()?.Id;
         if (totalCategoryId.HasValue && totals.All(c => c.Id != totalCategoryId.Value)) return NotFound();
 
+        var counts = await context.Questions.AsNoTracking()
+            .Where(q => q.QuestionCategory!.TotalCategoryId == totalCategoryId)
+            .GroupBy(q => new { q.QuestionCategoryId, q.QuestionType })
+            .Select(group => new { group.Key.QuestionCategoryId, group.Key.QuestionType, Count = group.Count() })
+            .ToListAsync();
+
         return this.StackView(new IndexViewModel
         {
             TotalCategories = totals,
             TotalCategoryId = totalCategoryId,
             Categories = await context.QuestionCategories.AsNoTracking()
                 .Where(c => c.TotalCategoryId == totalCategoryId)
-                .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync()
+                .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync(),
+            QuestionCounts = counts.GroupBy(c => c.QuestionCategoryId).ToDictionary(
+                group => group.Key,
+                group => group.Select(c => new QuestionTypeCount(c.QuestionType, c.Count)).OrderBy(c => c.Type).ToList())
         });
     }
 
