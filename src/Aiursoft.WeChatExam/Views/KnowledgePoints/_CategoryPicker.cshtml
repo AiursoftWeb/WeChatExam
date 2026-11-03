@@ -1,0 +1,24 @@
+@model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.CategoryPickerViewModel
+<fieldset class="category-picker mb-3" data-category-picker>
+    <legend class="form-label fs-6">@Localizer["Associated Categories"]</legend>
+    <div class="d-flex align-items-center gap-3 mb-2">
+        <input type="search" class="form-control" data-category-search placeholder="@Localizer["Search categories"]" aria-label="@Localizer["Search categories"]" autocomplete="off" />
+        <output class="small text-muted text-nowrap" data-category-count data-format="@Localizer["{0} selected"].Value" aria-live="polite"></output>
+    </div>
+    <div class="category-picker-tree border rounded p-2">
+        @foreach (var course in Model.Courses)
+        {
+            <details data-category-course open="@course.Nodes.Any(n => n.HasSelection)">
+                <summary class="fw-semibold">@course.Title</summary>
+                <ul>
+                    @foreach (var node in course.Nodes)
+                    {
+                        @await Html.PartialAsync("_CategoryPickerNode", node)
+                    }
+                </ul>
+            </details>
+        }
+        <p class="small text-muted m-2" data-category-empty hidden="@(Model.Courses.Count != 0)">@Localizer["No categories found."]</p>
+    </div>
+    @Html.ValidationMessage("SelectedKnowledgeCategoryIds", null, new { @class = "text-danger" })
+</fieldset>
