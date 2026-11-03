@@ -24,5 +24,11 @@
   <data name="Free knowledge category {0} cannot use exercises from paid question category {1}. Choose a free question category or review the knowledge access settings." xml:space="preserve">
     <value>หมวดหมู่ความรู้ฟรี {0} ไม่สามารถใช้แบบฝึกหัดจากหมวดหมู่คำถามแบบชำระเงิน {1} ได้ โปรดเลือกหมวดหมู่คำถามฟรี หรือตรวจสอบการตั้งค่าการเข้าถึงความรู้</value>
   </data>
+  <data name="Knowledge point exercises support choice questions only." xml:space="preserve">
+    <value>แบบฝึกหัดของหัวข้อความรู้รองรับเฉพาะคำถามแบบเลือกตอบเท่านั้น</value>
+  </data>
+  <data name="Knowledge point exercises support choice questions only. Replace {0} with a choice question." xml:space="preserve">
+    <value>แบบฝึกหัดของหัวข้อความรู้รองรับเฉพาะคำถามแบบเลือกตอบเท่านั้น โปรดแทนที่ {0} ด้วยคำถามแบบเลือกตอบ</value>
+  </data>
 
 </root>

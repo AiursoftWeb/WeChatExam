@@ -60,6 +60,9 @@
   <data name="No questions found." xml:space="preserve">
     <value>질문이 발견되지 않았습니다.</value>
   </data>
+  <data name="Only choice questions can be associated with knowledge points." xml:space="preserve">
+    <value>선택형 문항만 지식 포인트와 연결할 수 있습니다.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>상위 지식 포인트</value>
   </data>
@@ -77,6 +80,9 @@
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>선택한 질문들</value>
+  </data>
+  <data name="This question type is not supported here. Remove or replace it." xml:space="preserve">
+    <value>이 질문 유형은 여기서 지원되지 않습니다. 삭제하거나 다른 유형으로 바꿔 주세요.</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>제목</value>

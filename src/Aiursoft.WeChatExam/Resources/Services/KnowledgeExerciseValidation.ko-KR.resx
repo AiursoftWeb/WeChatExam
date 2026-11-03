@@ -24,5 +24,11 @@
   <data name="Free knowledge category {0} cannot use exercises from paid question category {1}. Choose a free question category or review the knowledge access settings." xml:space="preserve">
     <value>무료 지식 범주 {0}에서는 유료 문제 범주 {1}의 연습 문제를 사용할 수 없습니다. 무료 문제 범주를 선택하거나 지식 접근 설정을 확인하세요.</value>
   </data>
+  <data name="Knowledge point exercises support choice questions only." xml:space="preserve">
+    <value>지식 항목 연습 문제는 선택형 문제만 지원합니다.</value>
+  </data>
+  <data name="Knowledge point exercises support choice questions only. Replace {0} with a choice question." xml:space="preserve">
+    <value>지식 포인트 연습 문제는 객관식만 지원합니다. {0}을(를) 객관식 문제로 바꾸세요.</value>
+  </data>
 
 </root>

@@ -21,6 +21,12 @@
       <data name="Actions" xml:space="preserve">
     <value>Działania</value>
   </data>
+  <data name="Add Knowledge Point" xml:space="preserve">
+    <value>Dodaj punkt wiedzy</value>
+  </data>
+  <data name="Add Subdirectory" xml:space="preserve">
+    <value>Dodaj podkatalog</value>
+  </data>
   <data name="Associated Knowledge Points" xml:space="preserve">
     <value>Powiązane punkty wiedzy</value>
   </data>
@@ -57,8 +63,17 @@
   <data name="Knowledge Category Details" xml:space="preserve">
     <value>Szczegóły kategorii wiedzy</value>
   </data>
+  <data name="Knowledge Points Directly in This Directory" xml:space="preserve">
+    <value>Punkty wiedzy bezpośrednio w tym katalogu</value>
+  </data>
   <data name="No knowledge points associated" xml:space="preserve">
     <value>Brak powiązanych punktów wiedzy</value>
+  </data>
+  <data name="No knowledge points directly in this directory." xml:space="preserve">
+    <value>Brak punktów wiedzy bezpośrednio w tym katalogu.</value>
+  </data>
+  <data name="No subdirectories in this directory." xml:space="preserve">
+    <value>Brak podkatalogów w tym katalogu.</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Płatny</value>
@@ -68,6 +83,9 @@
   </data>
   <data name="Save Order" xml:space="preserve">
     <value>Zapisz kolejność</value>
+  </data>
+  <data name="Subdirectories" xml:space="preserve">
+    <value>Podkatalogi</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Tytuł</value>

@@ -21,6 +21,12 @@
       <data name="Actions" xml:space="preserve">
     <value>Дії</value>
   </data>
+  <data name="Add Knowledge Point" xml:space="preserve">
+    <value>Додати точку знань</value>
+  </data>
+  <data name="Add Subdirectory" xml:space="preserve">
+    <value>Додати підкаталог</value>
+  </data>
   <data name="Associated Knowledge Points" xml:space="preserve">
     <value>Пов’язані точки знань</value>
   </data>
@@ -57,8 +63,17 @@
   <data name="Knowledge Category Details" xml:space="preserve">
     <value>Подробиці категорії знань</value>
   </data>
+  <data name="Knowledge Points Directly in This Directory" xml:space="preserve">
+    <value>Бали знань безпосередньо в цьому каталозі</value>
+  </data>
   <data name="No knowledge points associated" xml:space="preserve">
     <value>Немає пов’язаних навчальних пунктів</value>
+  </data>
+  <data name="No knowledge points directly in this directory." xml:space="preserve">
+    <value>У цій категорії безпосередньо немає пунктів знань.</value>
+  </data>
+  <data name="No subdirectories in this directory." xml:space="preserve">
+    <value>У цій теці немає підкаталогів.</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Платний</value>
@@ -68,6 +83,9 @@
   </data>
   <data name="Save Order" xml:space="preserve">
     <value>Зберегти порядок</value>
+  </data>
+  <data name="Subdirectories" xml:space="preserve">
+    <value>Підкаталоги</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Назва</value>

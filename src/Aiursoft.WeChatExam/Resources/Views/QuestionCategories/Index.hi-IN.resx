@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Course Membership" xml:space="preserve">
+      <data name="{0} questions" xml:space="preserve">
+    <value>{0} प्रश्न</value>
+  </data>
+  <data name="Course Membership" xml:space="preserve">
     <value>कोर्स की सदस्यता</value>
   </data>
   <data name="Create a period to start organizing this course." xml:space="preserve">
@@ -39,11 +42,23 @@
   <data name="Edit Period" xml:space="preserve">
     <value>अवधि संपादित करें</value>
   </data>
+  <data name="Essay" xml:space="preserve">
+    <value>निबंध</value>
+  </data>
   <data name="Every period belongs to one total category." xml:space="preserve">
     <value>हर पीरियड एक कुल श्रेणी से संबंधित होता है।</value>
   </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>रिक्त स्थान भरें</value>
+  </data>
   <data name="Free Practice" xml:space="preserve">
     <value>निःशुल्क अभ्यास</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>छिपा हुआ</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>बहुविकल्पीय प्रश्न</value>
   </data>
   <data name="No periods in this course yet" xml:space="preserve">
     <value>इस पाठ्यक्रम में अभी तक कोई अवधि नहीं है</value>
@@ -54,8 +69,20 @@
   <data name="Periods" xml:space="preserve">
     <value>अवधियाँ</value>
   </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>संक्षिप्त उत्तर</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>पारिभाषिक शब्द की व्याख्या</value>
+  </data>
   <data name="Total Categories" xml:space="preserve">
     <value>कुल श्रेणियाँ</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>सही या गलत</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>प्रश्न देखें</value>
   </data>
 
 </root>
