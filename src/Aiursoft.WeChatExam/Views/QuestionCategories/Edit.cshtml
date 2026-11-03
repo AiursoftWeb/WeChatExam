@@ -50,6 +50,11 @@
                         <span asp-validation-for="IsFree" class="text-danger d-block"></span>
                         <div id="free-help" class="form-text">@Localizer["When disabled, practice requires membership of the selected course."]</div>
                     </div>
+                    <div class="mb-4 form-check form-switch">
+                        <input asp-for="IsVisible" class="form-check-input" aria-describedby="visibility-help" />
+                        <label asp-for="IsVisible" class="form-check-label"></label>
+                        <div id="visibility-help" class="form-text">@Localizer["Hidden periods are excluded from browsing and random practice. Papers and linked knowledge points can still use their questions."]</div>
+                    </div>
                     <div class="mb-4">
                         <label asp-for="OrderIndex" class="form-label"></label>
                         <input asp-for="OrderIndex" class="form-control" min="0" aria-describedby="order-help" />

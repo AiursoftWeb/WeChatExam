@@ -44,7 +44,7 @@ public class TotalCategoriesApiController(
         var status = await paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
         // Real-exam rights and sale availability do not affect course practice rights.
         var categories = await context.QuestionCategories.AsNoTracking()
-            .Where(c => c.TotalCategoryId == totalCategoryId)
+            .Where(c => c.TotalCategoryId == totalCategoryId && c.IsVisible)
             .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id)
             .ToListAsync(cancellationToken);
         return Ok(categories.Select(c => new QuestionCategorySummaryDto(c.Id, c.TotalCategoryId, c.Title, c.OrderIndex,

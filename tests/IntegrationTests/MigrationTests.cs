@@ -206,6 +206,7 @@ public class MigrationTests
         var chapter = new Category { Id = Guid.NewGuid(), Title = "Early music", ParentId = course.Id };
         var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Overview", Content = "Preserved lesson", AudioUrl = "/lesson.mp3" };
         var question = new Question { QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(), Id = Guid.NewGuid(), Content = "Preserved exercise" };
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(context, question.QuestionCategory!);
         context.AddRange(new TotalCategory { Id = course.Id, Title = course.Title }, course, chapter, point, question,
             new KnowledgePointQuestion { KnowledgePointId = point.Id, QuestionId = question.Id });
         await context.SaveChangesAsync();
@@ -289,6 +290,7 @@ public class MigrationTests
         var first = new Tag { DisplayName = "Previously free", NormalizedName = "PREVIOUSLY FREE", OrderIndex = 7, Taxonomy = taxonomy };
         var second = new Tag { DisplayName = "Previously paid", NormalizedName = "PREVIOUSLY PAID", OrderIndex = 9 };
         var period = QuestionPeriodAssignmentTests.TestPeriod();
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(db, period);
         var question = new Question { Content = "Preserved question", StandardAnswer = "Original answer", QuestionCategory = period };
         var paper = new Paper { Title = "Retained legacy paper", IsFree = false };
         db.AddRange(first, second, question, paper);
@@ -313,7 +315,7 @@ public class MigrationTests
             Assert.AreEqual(2, await db.QuestionTags.CountAsync(t => t.QuestionId == question.Id));
             Assert.AreEqual(first.Id, (await db.PaperTags.SingleAsync(t => t.PaperId == paper.Id)).TagId);
             Assert.AreEqual("Original answer", (await db.Questions.SingleAsync()).StandardAnswer);
-            Assert.IsFalse((await db.QuestionCategories.SingleAsync()).IsFree);
+            Assert.IsFalse(await db.QuestionCategories.Select(c => c.IsFree).SingleAsync());
             Assert.IsFalse((await db.Papers.SingleAsync()).IsFree);
             await using var command = db.Database.GetDbConnection().CreateCommand();
             command.CommandText = "SELECT count(*) FROM pragma_table_info('Tags') WHERE name = 'IsFree'";
@@ -338,6 +340,7 @@ public class MigrationTests
         var taxonomy = new Taxonomy { Name = "Internal works" };
         var tag = new Tag { DisplayName = "Work", NormalizedName = "WORK", OrderIndex = 8, Taxonomy = taxonomy };
         var period = QuestionPeriodAssignmentTests.TestPeriod(isFree: true);
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(db, period);
         var question = new Question { Content = "Retained exercise", StandardAnswer = "Answer", QuestionCategory = period };
         var paper = new Paper { Title = "Legacy paper", IsFree = false };
         db.AddRange(legacy, tag, question, paper);
@@ -363,7 +366,7 @@ public class MigrationTests
             Assert.IsTrue(await db.QuestionTags.AnyAsync(t => t.TagId == tag.Id && t.QuestionId == question.Id));
             Assert.IsTrue(await db.PaperTags.AnyAsync(t => t.TagId == tag.Id && t.PaperId == paper.Id));
             Assert.AreEqual("Answer", (await db.Questions.SingleAsync()).StandardAnswer);
-            Assert.IsTrue((await db.QuestionCategories.SingleAsync()).IsFree);
+            Assert.IsTrue(await db.QuestionCategories.Select(c => c.IsFree).SingleAsync());
             Assert.IsFalse((await db.Papers.SingleAsync()).IsFree);
             await using var command = db.Database.GetDbConnection().CreateCommand();
             command.CommandText = "SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'CategoryTaxonomies'";
@@ -392,6 +395,7 @@ public class MigrationTests
         var student = new User { UserName = "feedback-migration", DisplayName = "Student" };
         var question = new Question { Content = "Explain the decision", StandardAnswer = "Reference",
             QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod() };
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(db, question.QuestionCategory!);
         db.AddRange(student, question);
         await db.SaveChangesAsync();
         var id = Guid.NewGuid();
@@ -441,6 +445,7 @@ public class MigrationTests
             Metadata = "Original options", Explanation = "Original explanation",
             QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod(isFree: true) };
         var retainedQuestion = new Question { Content = "Retained history question", QuestionCategory = source.QuestionCategory };
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(db, source.QuestionCategory!);
         db.AddRange(user, source, retainedQuestion);
         var history = new UserPracticeHistory { Id = Guid.NewGuid(), UserId = user.Id,
             QuestionId = retainedQuestion.Id, UserAnswer = "Old answer", IsCorrect = false };

@@ -408,6 +408,7 @@ public class MockPaperAssemblyTests : TestBase
         var period = QuestionPeriodAssignmentTests.TestPeriod();
         var question = new Question { Id = Guid.NewGuid(), Content = "Retained question", QuestionCategory = period };
         var paper = new MockPaper { Title = "Retained draft", TotalCategory = period.TotalCategory!, TotalCategoryId = period.TotalCategoryId };
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(db, period);
         db.AddRange(question, paper);
         await db.SaveChangesAsync();
         await migrator.MigrateAsync();

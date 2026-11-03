@@ -62,6 +62,10 @@ else
                             <i data-lucide="layers" class="text-primary mb-3"></i>
                             <h2 class="h4 text-break mb-3">@category.Title</h2>
                             <p class="mb-3">
+                                @if (!category.IsVisible)
+                                {
+                                    <span class="badge bg-secondary">@Localizer["Hidden"]</span>
+                                }
                                 @if (category.IsFree)
                                 {
                                     <span class="badge bg-success-subtle text-success-emphasis">@Localizer["Free Practice"]</span>

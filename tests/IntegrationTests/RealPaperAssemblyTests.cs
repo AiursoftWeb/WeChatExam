@@ -388,6 +388,7 @@ public class RealPaperAssemblyTests : TestBase
         var period = QuestionPeriodAssignmentTests.TestPeriod();
         var question = new Question { Id = Guid.NewGuid(), Content = "Retained question", QuestionCategory = period };
         var paper = new RealPaper { Title = "Retained draft", Institution = new Institution { Title = "Retained institution" } };
+        await QuestionPeriodAssignmentTests.InsertLegacyPeriodAsync(db, period);
         db.AddRange(question, paper);
         await db.SaveChangesAsync();
         await migrator.MigrateAsync();
