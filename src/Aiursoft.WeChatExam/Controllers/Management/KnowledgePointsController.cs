@@ -61,10 +61,13 @@ public class KnowledgePointsController(
 
     // GET: knowledgePoints/create
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create(Guid? knowledgeCategoryId)
     {
+        if (knowledgeCategoryId.HasValue &&
+            !await context.KnowledgeCategories.AnyAsync(c => c.Id == knowledgeCategoryId.Value)) return NotFound();
         var model = new CreateViewModel
         {
+            SelectedKnowledgeCategoryIds = knowledgeCategoryId.HasValue ? [knowledgeCategoryId.Value] : [],
             AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync(),
             AvailableQuestions = new List<Question>(),
             QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem

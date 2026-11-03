@@ -1,4 +1,7 @@
 @using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
 @model Aiursoft.WeChatExam.Models.KnowledgeCategoriesViewModels.DetailsViewModel
 
 <h1 class="h3 mb-3">@Model.Category.Title</h1>
@@ -49,8 +52,12 @@
     </div>
     <div class="col-md-8">
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <h2 class="h5 card-title mb-0">@Localizer["Subdirectories"] <span class="badge bg-secondary">@Model.ChildCategories.Count</span></h2>
+                @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditAnyCategory)).Succeeded)
+                {
+                    <a asp-action="Create" asp-route-totalCategoryId="@Model.Category.TotalCategoryId" asp-route-parentKnowledgeCategoryId="@Model.Category.Id" class="btn btn-sm btn-outline-primary">@Localizer["Add Subdirectory"]</a>
+                }
             </div>
             <div class="card-body">
                 @if (Model.ChildCategories.Count == 0)
@@ -71,13 +78,19 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h2 class="h5 card-title mb-0">@Localizer["Knowledge Points Directly in This Directory"] <span class="badge bg-secondary">@Model.AssociatedKnowledgePoints.Count</span></h2>
-                @if (Model.AssociatedKnowledgePoints.Count > 1)
-                {
-                    <button id="save-knowledge-point-order" class="btn btn-success btn-sm" type="button" hidden>
-                        <i class="align-middle me-1" data-lucide="save"></i>
-                        @Localizer["Save Order"]
-                    </button>
-                }
+                <div class="d-flex flex-wrap gap-2">
+                    @if (Model.AssociatedKnowledgePoints.Count > 1)
+                    {
+                        <button id="save-knowledge-point-order" class="btn btn-success btn-sm" type="button" hidden>
+                            <i class="align-middle me-1" data-lucide="save"></i>
+                            @Localizer["Save Order"]
+                        </button>
+                    }
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditAnyKnowledgePoint)).Succeeded)
+                    {
+                        <a asp-controller="KnowledgePoints" asp-action="Create" asp-route-knowledgeCategoryId="@Model.Category.Id" class="btn btn-sm btn-outline-primary">@Localizer["Add Knowledge Point"]</a>
+                    }
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">

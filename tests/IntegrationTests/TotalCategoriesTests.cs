@@ -15,6 +15,40 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class TotalCategoriesTests : TestBase
 {
     [TestMethod]
+    public async Task EmptyContentActionsKeepTheCourseAndDirectoryWhenCreating()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var emptyCourse = new TotalCategory { Title = "Empty course" };
+        var otherCourse = new TotalCategory { Title = "Other course" };
+        var directory = new KnowledgeCategory { Title = "Parent directory", TotalCategoryId = otherCourse.Id, TotalCategory = otherCourse };
+        db.TotalCategories.AddRange(emptyCourse, otherCourse);
+        db.KnowledgeCategories.Add(directory);
+        await db.SaveChangesAsync();
+
+        var coursePage = await Http.GetStringAsync($"/TotalCategories/Details/{emptyCourse.Id}");
+        Assert.Contains($"/QuestionCategories/Create?totalCategoryId={emptyCourse.Id}", coursePage);
+        Assert.Contains($"/KnowledgeCategories/Create?totalCategoryId={emptyCourse.Id}", coursePage);
+        Assert.Contains($"/MockPapers/Create?totalCategoryId={emptyCourse.Id}", coursePage);
+        var periodForm = await Http.GetStringAsync($"/QuestionCategories/Create?totalCategoryId={emptyCourse.Id}");
+        var directoryForm = await Http.GetStringAsync($"/KnowledgeCategories/Create?totalCategoryId={emptyCourse.Id}");
+        var paperForm = await Http.GetStringAsync($"/MockPapers/Create?totalCategoryId={emptyCourse.Id}");
+        foreach (var form in new[] { periodForm, directoryForm, paperForm })
+            Assert.Contains(emptyCourse.Id.ToString(), form);
+
+        var directoryPage = await Http.GetStringAsync($"/KnowledgeCategories/Details/{directory.Id}");
+        Assert.Contains($"parentKnowledgeCategoryId={directory.Id}", directoryPage);
+        Assert.Contains($"/KnowledgePoints/Create?knowledgeCategoryId={directory.Id}", directoryPage);
+        var childForm = await Http.GetStringAsync($"/KnowledgeCategories/Create?totalCategoryId={otherCourse.Id}&parentKnowledgeCategoryId={directory.Id}");
+        Assert.IsTrue(Regex.IsMatch(childForm, $"<option[^>]*value=\"{directory.Id}\"[^>]*selected|<option[^>]*selected[^>]*value=\"{directory.Id}\""));
+        var pointForm = await Http.GetStringAsync($"/KnowledgePoints/Create?knowledgeCategoryId={directory.Id}");
+        Assert.IsTrue(Regex.IsMatch(pointForm, $"<input[^>]*value=\"{directory.Id}\"[^>]*checked|<input[^>]*checked[^>]*value=\"{directory.Id}\""));
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/KnowledgeCategories/Create?totalCategoryId={emptyCourse.Id}&parentKnowledgeCategoryId={directory.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/KnowledgePoints/Create?knowledgeCategoryId={Guid.NewGuid()}")).StatusCode);
+    }
+
+    [TestMethod]
     public async Task CourseContentCountsAndLinksKeepSameNamedCoursesSeparate()
     {
         await LoginAsAdmin();

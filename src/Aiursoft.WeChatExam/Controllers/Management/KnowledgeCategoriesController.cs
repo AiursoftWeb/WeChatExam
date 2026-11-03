@@ -63,9 +63,18 @@ public class KnowledgeCategoriesController(WeChatExamDbContext context,
     }
 
     [Authorize(Policy = AppPermissionNames.CanEditAnyCategory)]
-    public async Task<IActionResult> Create(Guid? totalCategoryId)
+    public async Task<IActionResult> Create(Guid? totalCategoryId, Guid? parentKnowledgeCategoryId)
     {
         var model = new CreateViewModel { TotalCategoryId = totalCategoryId ?? Guid.Empty };
+        if (parentKnowledgeCategoryId.HasValue)
+        {
+            var parent = await context.KnowledgeCategories.AsNoTracking()
+                .SingleOrDefaultAsync(c => c.Id == parentKnowledgeCategoryId.Value);
+            if (parent == null || (totalCategoryId.HasValue && parent.TotalCategoryId != totalCategoryId.Value))
+                return NotFound();
+            model.TotalCategoryId = parent.TotalCategoryId;
+            model.ParentKnowledgeCategoryId = parent.Id;
+        }
         await LoadCreate(model);
         return this.StackView(model);
     }
