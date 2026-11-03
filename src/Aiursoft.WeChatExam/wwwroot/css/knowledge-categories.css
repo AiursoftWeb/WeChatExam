@@ -13,9 +13,7 @@
     }
 
     #mermaid-output .category-diagram-node {
-        width: 180px;
-        padding: 8px;
-        text-align: left;
+        overflow-wrap: anywhere;
     }
 
     #mermaid-output .category-diagram-title {
