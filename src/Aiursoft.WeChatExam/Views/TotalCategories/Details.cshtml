@@ -1,3 +1,6 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
 @model Aiursoft.WeChatExam.Models.TotalCategoriesViewModels.DetailsViewModel
 
 <a asp-action="Index" class="d-inline-block text-decoration-none mb-3">
@@ -38,7 +41,13 @@
                         }
                     </ul>
                 }
-                <a asp-controller="QuestionCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Periods"]</a>
+                <div class="d-flex flex-wrap gap-2">
+                    @if (Model.PeriodCount == 0 && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditAnyCategory)).Succeeded)
+                    {
+                        <a asp-controller="QuestionCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-primary">@Localizer["Add Period"]</a>
+                    }
+                    <a asp-controller="QuestionCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Periods"]</a>
+                </div>
             </div>
         </section>
     </div>
@@ -49,6 +58,10 @@
                 @if (Model.KnowledgeCategoryCount == 0)
                 {
                     <p class="text-muted">@Localizer["No knowledge directories in this course yet."]</p>
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditAnyCategory)).Succeeded)
+                    {
+                        <a asp-controller="KnowledgeCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-primary mb-3">@Localizer["Add Knowledge Directory"]</a>
+                    }
                 }
                 else
                 {
@@ -88,7 +101,13 @@
                             }
                         </ul>
                     }
-                    <a asp-controller="MockPapers" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Mock Papers"]</a>
+                    <div class="d-flex flex-wrap gap-2">
+                        @if (Model.MockPaperCount == 0 && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
+                        {
+                            <a asp-controller="MockPapers" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-primary">@Localizer["Add Mock Paper"]</a>
+                        }
+                        <a asp-controller="MockPapers" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Mock Papers"]</a>
+                    </div>
                 </div>
             </section>
         </div>
