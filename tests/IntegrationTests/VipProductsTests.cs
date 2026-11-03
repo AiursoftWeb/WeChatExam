@@ -132,7 +132,8 @@ public class VipProductsTests : TestBase
         Assert.AreEqual(HttpStatusCode.OK, deleted.StatusCode);
         Assert.Contains("Disable it instead of deleting it.", await deleted.Content.ReadAsStringAsync());
         Assert.IsTrue(await db.VipProducts.AnyAsync(p => p.Id == product.Id));
-        Assert.Contains("Stopped Wuhan sales", await Http.GetStringAsync("/VipProducts?search=Wuhan%20buyer%20school"));
+        Assert.DoesNotContain("Stopped Wuhan sales", await Http.GetStringAsync("/VipProducts?search=Wuhan%20buyer%20school"));
+        Assert.Contains("Stopped Wuhan sales", await Http.GetStringAsync("/VipProducts?showDisabled=true&search=Wuhan%20buyer%20school"));
     }
 
 
