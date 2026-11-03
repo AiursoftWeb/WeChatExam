@@ -15,7 +15,7 @@
         <div class="d-flex flex-wrap gap-3 align-items-center">
             @if (!Model.QuestionCategories.Any() && User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditAnyCategory))
             {
-                <a asp-controller="QuestionCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["Create Period"]</a>
+                <a asp-controller="QuestionCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2">@Localizer["Create Period"]</a>
             }
             @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions))
             {
