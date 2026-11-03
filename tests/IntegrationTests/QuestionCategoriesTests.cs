@@ -34,6 +34,38 @@ public class QuestionCategoriesTests : TestBase
     }
 
     [TestMethod]
+    public async Task PeriodCardsShowDirectQuestionCountsAndTypeBreakdown()
+    {
+        await LoginAsAdmin();
+        var (first, second) = await CreateCourses();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var populated = new QuestionCategory { Title = "Populated period", TotalCategoryId = first };
+            var empty = new QuestionCategory { Title = "Visible empty period", TotalCategoryId = first, IsVisible = true };
+            var hidden = new QuestionCategory { Title = "Hidden empty period", TotalCategoryId = first, IsVisible = false };
+            var other = new QuestionCategory { Title = "Other course period", TotalCategoryId = second };
+            db.QuestionCategories.AddRange(populated, empty, hidden, other);
+            db.Questions.AddRange(
+                new Question { Content = "Choice in selected course", QuestionCategoryId = populated.Id, QuestionType = QuestionType.Choice },
+                new Question { Content = "Blank in selected course", QuestionCategoryId = populated.Id, QuestionType = QuestionType.Blank },
+                new Question { Content = "Choice in other course", QuestionCategoryId = other.Id, QuestionType = QuestionType.Choice });
+            await db.SaveChangesAsync();
+        }
+
+        var html = await Http.GetStringAsync($"/QuestionCategories?totalCategoryId={first}");
+        Assert.Contains("Populated period", html);
+        Assert.Contains("2 questions", html);
+        Assert.Contains("Multiple choice 1", html);
+        Assert.Contains("Fill in the blank 1", html);
+        Assert.Contains("Visible empty period", html);
+        Assert.Contains("Hidden empty period", html);
+        Assert.AreEqual(2, System.Text.RegularExpressions.Regex.Matches(html, "0 questions").Count);
+        Assert.AreEqual(1, System.Text.RegularExpressions.Regex.Matches(html, "badge bg-danger[^>]*>\\s*0 questions").Count);
+        Assert.DoesNotContain("Other course period", html);
+    }
+
+    [TestMethod]
     public async Task CreateEditAndCourseTabsKeepPeriodsInExactlyOneCourse()
     {
         await LoginAsAdmin();

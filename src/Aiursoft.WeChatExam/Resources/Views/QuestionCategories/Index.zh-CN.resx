@@ -64,4 +64,25 @@
     <value>查看题目</value>
   </data>
 
+  <data name="{0} questions" xml:space="preserve">
+    <value>{0} 道题</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>选择题</value>
+  </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>填空题</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>判断题</value>
+  </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>简答题</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>论述题</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>名词解释</value>
+  </data>
 </root>
