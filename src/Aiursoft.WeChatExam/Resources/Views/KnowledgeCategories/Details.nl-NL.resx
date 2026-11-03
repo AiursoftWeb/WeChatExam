@@ -21,6 +21,12 @@
       <data name="Actions" xml:space="preserve">
     <value>Acties</value>
   </data>
+  <data name="Add Knowledge Point" xml:space="preserve">
+    <value>Kennisitem toevoegen</value>
+  </data>
+  <data name="Add Subdirectory" xml:space="preserve">
+    <value>Submap toevoegen</value>
+  </data>
   <data name="Associated Knowledge Points" xml:space="preserve">
     <value>Geassocieerde kennispunten</value>
   </data>
@@ -57,8 +63,17 @@
   <data name="Knowledge Category Details" xml:space="preserve">
     <value>Details van kenniscategorie</value>
   </data>
+  <data name="Knowledge Points Directly in This Directory" xml:space="preserve">
+    <value>Kennisitems direct in deze map</value>
+  </data>
   <data name="No knowledge points associated" xml:space="preserve">
     <value>Geen kennispunten gekoppeld</value>
+  </data>
+  <data name="No knowledge points directly in this directory." xml:space="preserve">
+    <value>Geen kennisitems direct in deze categorie.</value>
+  </data>
+  <data name="No subdirectories in this directory." xml:space="preserve">
+    <value>Geen submappen in deze map.</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Betaald</value>
@@ -68,6 +83,9 @@
   </data>
   <data name="Save Order" xml:space="preserve">
     <value>Volgorde opslaan</value>
+  </data>
+  <data name="Subdirectories" xml:space="preserve">
+    <value>Submappen</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>

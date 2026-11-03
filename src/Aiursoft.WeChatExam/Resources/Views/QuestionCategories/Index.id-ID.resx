@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Course Membership" xml:space="preserve">
+      <data name="{0} questions" xml:space="preserve">
+    <value>{0} pertanyaan</value>
+  </data>
+  <data name="Course Membership" xml:space="preserve">
     <value>Keanggotaan Kursus</value>
   </data>
   <data name="Create a period to start organizing this course." xml:space="preserve">
@@ -39,11 +42,23 @@
   <data name="Edit Period" xml:space="preserve">
     <value>Edit Periode</value>
   </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Esai</value>
+  </data>
   <data name="Every period belongs to one total category." xml:space="preserve">
     <value>Setiap periode termasuk dalam satu kategori total.</value>
   </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>Isian</value>
+  </data>
   <data name="Free Practice" xml:space="preserve">
     <value>Latihan Gratis</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Tersembunyi</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>Pilihan ganda</value>
   </data>
   <data name="No periods in this course yet" xml:space="preserve">
     <value>Belum ada periode dalam kursus ini</value>
@@ -54,8 +69,20 @@
   <data name="Periods" xml:space="preserve">
     <value>Periode</value>
   </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>Jawaban singkat</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>Penjelasan istilah</value>
+  </data>
   <data name="Total Categories" xml:space="preserve">
     <value>Kategori Total</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>Benar atau salah</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>Lihat Pertanyaan</value>
   </data>
 
 </root>

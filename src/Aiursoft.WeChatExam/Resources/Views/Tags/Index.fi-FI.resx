@@ -57,8 +57,14 @@
   <data name="Edit / Categorize" xml:space="preserve">
     <value>Muokkaa / Luokittele</value>
   </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Muokkaa tunnistetta</value>
+  </data>
   <data name="Failed to delete tags:" xml:space="preserve">
     <value>Ei voitu poistaa tunnuksia:</value>
+  </data>
+  <data name="Grouping is optional for internal tags." xml:space="preserve">
+    <value>Sisäisten tunnisteiden ryhmittely on valinnaista.</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>Hallitse kategorioita</value>

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Course Membership" xml:space="preserve">
+      <data name="{0} questions" xml:space="preserve">
+    <value>{0} spørgsmål</value>
+  </data>
+  <data name="Course Membership" xml:space="preserve">
     <value>Kursusmedlemskab</value>
   </data>
   <data name="Create a period to start organizing this course." xml:space="preserve">
@@ -39,11 +42,23 @@
   <data name="Edit Period" xml:space="preserve">
     <value>Rediger periode</value>
   </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Stilopgave</value>
+  </data>
   <data name="Every period belongs to one total category." xml:space="preserve">
     <value>Hver periode hører til én overordnet kategori.</value>
   </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>Udfyld det tomme felt</value>
+  </data>
   <data name="Free Practice" xml:space="preserve">
     <value>Gratis øvelse</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Skjult</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>Multiple choice</value>
   </data>
   <data name="No periods in this course yet" xml:space="preserve">
     <value>Der er endnu ingen perioder på dette kursus</value>
@@ -54,8 +69,20 @@
   <data name="Periods" xml:space="preserve">
     <value>Perioder</value>
   </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>Kort svar</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>Begrebsforklaring</value>
+  </data>
   <data name="Total Categories" xml:space="preserve">
     <value>Kategorier i alt</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>Sandt eller falsk</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>Se spørgsmål</value>
   </data>
 
 </root>

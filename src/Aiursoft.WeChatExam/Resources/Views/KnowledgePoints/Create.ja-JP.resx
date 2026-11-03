@@ -60,6 +60,9 @@
   <data name="No questions found." xml:space="preserve">
     <value>質問が見つかりません。</value>
   </data>
+  <data name="Only choice questions can be associated with knowledge points." xml:space="preserve">
+    <value>選択式の問題のみ、知識ポイントに関連付けることができます。</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>親ナレッジポイント</value>
   </data>
@@ -77,6 +80,9 @@
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>選択された質問</value>
+  </data>
+  <data name="This question type is not supported here. Remove or replace it." xml:space="preserve">
+    <value>この問題形式はここではサポートされていません。削除するか、別のものに置き換えてください。</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>タイトル</value>

@@ -24,5 +24,11 @@
   <data name="Free knowledge category {0} cannot use exercises from paid question category {1}. Choose a free question category or review the knowledge access settings." xml:space="preserve">
     <value>Die kostenlose Wissenskategorie {0} kann keine Übungen aus der kostenpflichtigen Fragenkategorie {1} verwenden. Wählen Sie eine kostenlose Fragenkategorie oder überprüfen Sie die Zugriffseinstellungen für Wissen.</value>
   </data>
+  <data name="Knowledge point exercises support choice questions only." xml:space="preserve">
+    <value>Für Übungen zu Wissenspunkten sind nur Multiple-Choice-Fragen zulässig.</value>
+  </data>
+  <data name="Knowledge point exercises support choice questions only. Replace {0} with a choice question." xml:space="preserve">
+    <value>Wissenspunktübungen unterstützen nur Multiple-Choice-Fragen. Ersetzen Sie {0} durch eine Multiple-Choice-Frage.</value>
+  </data>
 
 </root>

@@ -24,5 +24,11 @@
   <data name="Free knowledge category {0} cannot use exercises from paid question category {1}. Choose a free question category or review the knowledge access settings." xml:space="preserve">
     <value>無料の知識カテゴリ「{0}」では、有料の問題カテゴリ「{1}」の演習を使用できません。無料の問題カテゴリを選択するか、知識へのアクセス設定を確認してください。</value>
   </data>
+  <data name="Knowledge point exercises support choice questions only." xml:space="preserve">
+    <value>ナレッジポイントの演習では、選択式問題のみをサポートしています。</value>
+  </data>
+  <data name="Knowledge point exercises support choice questions only. Replace {0} with a choice question." xml:space="preserve">
+    <value>知識ポイントの演習では選択問題のみ使用できます。{0}を選択問題に置き換えてください。</value>
+  </data>
 
 </root>
