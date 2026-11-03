@@ -45,15 +45,10 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
-    public async Task<IActionResult> Create(Guid? totalCategoryId)
+    public async Task<IActionResult> Create() => this.StackView(new EditViewModel
     {
-        var courses = await Courses();
-        if (totalCategoryId.HasValue && courses.All(c => c.Id != totalCategoryId.Value)) return NotFound();
-        return this.StackView(new EditViewModel
-        {
-            PageTitle = "Create Mock Paper", Courses = courses, TotalCategoryId = totalCategoryId
-        }, nameof(Edit));
-    }
+        PageTitle = "Create Mock Paper", Courses = await Courses()
+    }, nameof(Edit));
 
     [HttpPost]
     [ValidateAntiForgeryToken]

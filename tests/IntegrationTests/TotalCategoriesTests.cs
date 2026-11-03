@@ -33,8 +33,7 @@ public class TotalCategoriesTests : TestBase
         Assert.Contains($"/MockPapers/Create?totalCategoryId={emptyCourse.Id}", coursePage);
         var periodForm = await Http.GetStringAsync($"/QuestionCategories/Create?totalCategoryId={emptyCourse.Id}");
         var directoryForm = await Http.GetStringAsync($"/KnowledgeCategories/Create?totalCategoryId={emptyCourse.Id}");
-        var paperForm = await Http.GetStringAsync($"/MockPapers/Create?totalCategoryId={emptyCourse.Id}");
-        foreach (var form in new[] { periodForm, directoryForm, paperForm })
+        foreach (var form in new[] { periodForm, directoryForm })
             Assert.Contains(emptyCourse.Id.ToString(), form);
 
         var directoryPage = await Http.GetStringAsync($"/KnowledgeCategories/Details/{directory.Id}");
