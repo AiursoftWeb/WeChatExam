@@ -21,6 +21,12 @@
       <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
+  <data name="Add Knowledge Point" xml:space="preserve">
+    <value>Добавить базу знаний</value>
+  </data>
+  <data name="Add Subdirectory" xml:space="preserve">
+    <value>Добавить подкаталог</value>
+  </data>
   <data name="Associated Knowledge Points" xml:space="preserve">
     <value>Связанные пункты знаний</value>
   </data>
@@ -57,8 +63,17 @@
   <data name="Knowledge Category Details" xml:space="preserve">
     <value>Подробная информация о категории знаний</value>
   </data>
+  <data name="Knowledge Points Directly in This Directory" xml:space="preserve">
+    <value>База знаний непосредственно в этом разделе</value>
+  </data>
   <data name="No knowledge points associated" xml:space="preserve">
     <value>Нет связанных точек знаний</value>
+  </data>
+  <data name="No knowledge points directly in this directory." xml:space="preserve">
+    <value>В этом каталоге нет связанных знаний напрямую.</value>
+  </data>
+  <data name="No subdirectories in this directory." xml:space="preserve">
+    <value>В этой папке нет вложенных папок.</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Платно</value>
@@ -68,6 +83,9 @@
   </data>
   <data name="Save Order" xml:space="preserve">
     <value>Сохранить порядок</value>
+  </data>
+  <data name="Subdirectories" xml:space="preserve">
+    <value>Подкаталоги</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>

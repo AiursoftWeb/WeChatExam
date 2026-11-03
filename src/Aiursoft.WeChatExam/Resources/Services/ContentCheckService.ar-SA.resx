@@ -234,6 +234,9 @@
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
     <value>راجع منتجات VIP الخاصة بهذه المؤسسة. لا تتيح منتجات VIP للدورات الوصول إلى الأوراق الاختبارية الفعلية؛ وتظل عضويات الاختبارات الفعلية القائمة التي تشمل جميع المؤسسات سارية.</value>
   </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
+    <value>راجع منتجات VIP الخاصة بهذه المؤسسة. لا تتيح عضويات VIP الخاصة بالدورات الوصول إلى الاختبارات الفعلية.</value>
+  </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>تم تسجيل الدخول دون اشتراك VIP نشط</value>
   </data>
@@ -284,6 +287,9 @@
   </data>
   <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
     <value>يُحتفَظ بهذا الاختبار لأغراض الإدارة والاختبارات التاريخية. ولا يظهر ضمن قوائم الاختبارات الحالية للطلاب.</value>
+  </data>
+  <data name="This period is hidden from independent practice (404)." xml:space="preserve">
+    <value>هذه الفترة مخفية عن التدريب المستقل (404).</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>لا يمكن لهذا المنتج منح العضوية المستهدفة في المؤسسة.</value>

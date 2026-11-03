@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>เพิ่มคำถาม</value>
   </data>
+  <data name="Back to Questions" xml:space="preserve">
+    <value>กลับไปยังรายการคำถาม</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>ยกเลิก</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="Correct" xml:space="preserve">
     <value>ถูกต้อง</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>สร้างหมวดหมู่ช่วงเวลา</value>
   </data>
   <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
     <value>ดัชนีการจัดลำดับแบบกำหนดเอง ตัวเลขที่น้อยกว่าจะอยู่ก่อน ดัชนีสูงสุดปัจจุบันคือ:</value>
@@ -110,6 +116,9 @@
   </data>
   <data name="Text" xml:space="preserve">
     <value>ข้อความ</value>
+  </data>
+  <data name="This course has no question categories. Add one before creating questions." xml:space="preserve">
+    <value>หลักสูตรนี้ยังไม่มีหมวดหมู่คำถาม โปรดเพิ่มหมวดหมู่ก่อนสร้างคำถาม</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>ประเภท</value>

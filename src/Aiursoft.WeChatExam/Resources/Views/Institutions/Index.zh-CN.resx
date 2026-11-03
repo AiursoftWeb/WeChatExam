@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Create Institution" xml:space="preserve">
+      <data name="{0} drafts" xml:space="preserve">
+    <value>草稿 {0} 套</value>
+  </data>
+  <data name="{0} visible papers" xml:space="preserve">
+    <value>学生端可见 {0} 套</value>
+  </data>
+  <data name="Create Institution" xml:space="preserve">
     <value>创建院校</value>
   </data>
   <data name="Create your first institution" xml:space="preserve">
@@ -60,17 +66,11 @@
   <data name="Show all institutions" xml:space="preserve">
     <value>显示所有院校</value>
   </data>
+  <data name="This institution is not yet visible to students." xml:space="preserve">
+    <value>该院校目前尚未在学生端显示。</value>
+  </data>
   <data name="View Real Papers" xml:space="preserve">
     <value>查看真题卷</value>
   </data>
 
-  <data name="{0} visible papers" xml:space="preserve">
-    <value>学生端可见 {0} 套</value>
-  </data>
-  <data name="{0} drafts" xml:space="preserve">
-    <value>草稿 {0} 套</value>
-  </data>
-  <data name="This institution is not yet visible to students." xml:space="preserve">
-    <value>该院校目前尚未在学生端显示。</value>
-  </data>
 </root>
