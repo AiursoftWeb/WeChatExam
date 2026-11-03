@@ -45,7 +45,7 @@ else
                         <i data-lucide="university" class="text-primary mb-3"></i>
                         <h2 class="h4 text-break mb-3">@institution.Title</h2>
                         <div class="d-flex flex-wrap gap-2 mb-2">
-                            <span class="badge bg-success-subtle text-success-emphasis">@string.Format(@Localizer["{0} visible papers"].Value, counts.Visible)</span>
+                            <span class="badge @(counts.Visible == 0 ? "bg-secondary" : "bg-success-subtle text-success-emphasis")">@string.Format(@Localizer["{0} visible papers"].Value, counts.Visible)</span>
                             <span class="badge bg-secondary">@string.Format(@Localizer["{0} drafts"].Value, counts.Draft)</span>
                         </div>
                         @if (counts.Visible == 0)
