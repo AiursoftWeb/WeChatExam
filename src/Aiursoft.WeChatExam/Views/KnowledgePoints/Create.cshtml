@@ -1,5 +1,4 @@
 @using Aiursoft.WeChatExam.Authorization
-@{ var paths = KnowledgeCategoryPaths.Build(Model.AvailableCategories); }
 @using Aiursoft.WeChatExam.Models.ContentSearchViewModels
 @model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.CreateViewModel
 
@@ -20,17 +19,7 @@
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="SelectedKnowledgeCategoryIds" class="form-label">@Localizer["Associated Categories"]</label>
-        <select asp-for="SelectedKnowledgeCategoryIds" class="form-select" multiple style="height: 200px">
-            @foreach (var category in Model.AvailableCategories)
-            {
-                <option value="@category.Id">@paths[category.Id]</option>
-            }
-        </select>
-        <div class="form-text">@Localizer["Hold Ctrl (Windows) or Command (Mac) to select multiple options."]</div>
-        <span asp-validation-for="SelectedKnowledgeCategoryIds" class="text-danger"></span>
-    </div>
+    @await Html.PartialAsync("_CategoryPicker", new Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.CategoryPickerViewModel(Model.AvailableCategories, Model.SelectedKnowledgeCategoryIds))
 
     @await Html.PartialAsync("_QuestionFinder", Model.QuestionTypeOptions)
     <div class="mb-3">
@@ -64,6 +53,12 @@
 
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts {
+    <script src="~/js/knowledge-category-picker.js" asp-append-version="true"></script>
     <script src="~/js/content-editor.js" asp-append-version="true"></script>
     <script src="~/js/knowledge-point-recommendations.js" asp-append-version="true"></script>
+}
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section styles {
+    <link rel="stylesheet" href="~/css/knowledge-category-picker.css" asp-append-version="true" />
 }

@@ -1,0 +1,26 @@
+@model Aiursoft.WeChatExam.Models.KnowledgePointsViewModels.CategoryPickerViewModel.Node
+<li data-category-node data-category-title="@Model.Title">
+    <div class="category-picker-row">
+        @if (Model.Children.Count != 0)
+        {
+            <button type="button" class="btn btn-link category-picker-toggle" data-category-toggle aria-expanded="@Model.HasSelection.ToString().ToLowerInvariant()" aria-controls="category-branch-@Model.Id" aria-label="@Model.Title"><span aria-hidden="true">›</span></button>
+        }
+        else
+        {
+            <span class="category-picker-spacer" aria-hidden="true"></span>
+        }
+        <label class="category-picker-label" for="category-choice-@Model.Id">
+            <input type="checkbox" class="form-check-input" id="category-choice-@Model.Id" name="SelectedKnowledgeCategoryIds" value="@Model.Id" checked="@Model.Selected" />
+            <span>@Model.Title</span>
+        </label>
+    </div>
+    @if (Model.Children.Count != 0)
+    {
+        <ul id="category-branch-@Model.Id" hidden="@(!Model.HasSelection)">
+            @foreach (var child in Model.Children)
+            {
+                @await Html.PartialAsync("_CategoryPickerNode", child)
+            }
+        </ul>
+    }
+</li>
