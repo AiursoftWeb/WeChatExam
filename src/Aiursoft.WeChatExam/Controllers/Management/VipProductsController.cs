@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using MySqlConnector;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -200,9 +201,17 @@ public class VipProductsController(
         {
             await vipProductService.DeleteAsync(id);
         }
-        catch (Exception ex) when (ex is InvalidOperationException or DbUpdateException)
+        catch (InvalidOperationException ex) when (ex.Message == "This product has orders or memberships. Disable it instead of deleting it.")
         {
             ModelState.AddModelError(string.Empty, localizer["This product has orders or memberships. Disable it instead of deleting it."]);
+            return this.StackView(new DeleteViewModel { Product = (await vipProductService.GetByIdAsync(id))! }, nameof(Delete));
+        }
+        catch (Exception ex) when (
+            ex is InvalidOperationException { Message: "This product has audit history. Disable it instead of deleting it." } ||
+            ex is DbUpdateException { InnerException: MySqlException { Number: 1451 } mysql } &&
+            mysql.Message.Contains("`FK_Changes_VipProducts_VipProductId`", StringComparison.Ordinal))
+        {
+            ModelState.AddModelError(string.Empty, localizer["This product has audit history. Disable it instead of deleting it."]);
             return this.StackView(new DeleteViewModel { Product = (await vipProductService.GetByIdAsync(id))! }, nameof(Delete));
         }
         return RedirectToAction(nameof(Index));

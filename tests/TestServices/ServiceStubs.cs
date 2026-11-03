@@ -54,11 +54,12 @@ public sealed class StubDistributionChannelService : IDistributionChannelService
 
 public sealed class StubVipProductService : IVipProductService
 {
+    public Exception? DeleteException { get; init; }
     public Task<List<VipProduct>> GetAllAsync() => Task.FromResult(new List<VipProduct>());
     public Task<VipProduct?> GetByIdAsync(Guid id) => Task.FromResult<VipProduct?>(null);
     public Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, Guid? institutionId = null) => Task.FromResult<VipProduct>(null!);
     public Task UpdateAsync(Guid id, string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, bool isEnabled, Guid? institutionId = null) => Task.CompletedTask;
-    public Task DeleteAsync(Guid id) => Task.CompletedTask;
+    public Task DeleteAsync(Guid id) => DeleteException == null ? Task.CompletedTask : Task.FromException(DeleteException);
     public Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null, VipProductType? type = null, Guid? institutionId = null) => Task.FromResult(new List<VipProduct>());
     public Task<bool> HasPurchasesAsync(Guid id) => Task.FromResult(false);
 }

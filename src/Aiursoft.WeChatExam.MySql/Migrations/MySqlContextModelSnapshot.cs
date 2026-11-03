@@ -1780,8 +1780,7 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.Coupon", "Coupon")
                         .WithMany()
-                        .HasForeignKey("CouponId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("CouponId");
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "TargetUser")
                         .WithMany()
@@ -1791,13 +1790,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.User", "TriggerUser")
                         .WithMany()
-                        .HasForeignKey("TriggerUserId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("TriggerUserId");
 
                     b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
                         .WithMany()
-                        .HasForeignKey("VipProductId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("VipProductId");
 
                     b.Navigation("Coupon");
 
