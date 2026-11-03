@@ -27,7 +27,14 @@
                     </dd>
                     <dt>@Localizer["Parent"]</dt>
                     <dd>
-                        @(Model.Category.ParentKnowledgeCategory == null ? Localizer["Top Level"].Value : Model.Category.ParentKnowledgeCategory.Title)
+                        @if (Model.Category.ParentKnowledgeCategory == null)
+                        {
+                            @Localizer["Top Level"]
+                        }
+                        else
+                        {
+                            <a asp-action="Details" asp-route-id="@Model.Category.ParentKnowledgeCategoryId">@Model.Category.ParentKnowledgeCategory.Title</a>
+                        }
                     </dd>
                     <dt>@Localizer["Created"]</dt>
                     <dd><span data-utc-time="@Model.Category.CreationTime.ToHtmlDateTime()"></span></dd>
