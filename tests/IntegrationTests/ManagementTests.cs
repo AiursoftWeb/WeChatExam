@@ -230,12 +230,9 @@ public class ManagementTests
         var rootRow = Regex.Match(indexHtml, $@"<tr data-id=""{rootId}""[\s\S]*?</tr>").Value;
         var emptyLeafRow = Regex.Match(indexHtml, $@"<tr data-id=""{childId}""[\s\S]*?</tr>").Value;
         var filledLeafRow = Regex.Match(indexHtml, $@"<tr data-id=""{filledChild.Id}""[\s\S]*?</tr>").Value;
-        Assert.Contains("bg-secondary", rootRow);
-        Assert.Contains(">0", Regex.Replace(rootRow, @"\s+", ""));
-        Assert.Contains("bg-danger", emptyLeafRow);
-        Assert.Contains(">0", Regex.Replace(emptyLeafRow, @"\s+", ""));
-        Assert.Contains("bg-secondary", filledLeafRow);
-        Assert.Contains(">1", Regex.Replace(filledLeafRow, @"\s+", ""));
+        Assert.IsTrue(Regex.IsMatch(rootRow, @"<span class=""badge bg-secondary"">\s*0\s*</span>"));
+        Assert.IsTrue(Regex.IsMatch(emptyLeafRow, @"<span class=""badge bg-danger"">\s*0\s*</span>"));
+        Assert.IsTrue(Regex.IsMatch(filledLeafRow, @"<span class=""badge bg-secondary"">\s*1\s*</span>"));
         Assert.Contains("/js/knowledge-categories.js", indexHtml);
         Assert.Contains("category-diagram-node", indexHtml);
         Assert.DoesNotContain("style='width:180px;padding:8px;text-align:left'", indexHtml);
