@@ -35,6 +35,34 @@ public class MockPapersTests : TestBase
     };
 
     [TestMethod]
+    public async Task CourseScopedPaperCreationPreselectsAndReturnsToItsCourse()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Creation course" };
+        var other = new TotalCategory { Title = course.Title };
+        db.TotalCategories.AddRange(course, other);
+        await db.SaveChangesAsync();
+        Assert.Contains($"/MockPapers/Create?totalCategoryId={course.Id}", await Http.GetStringAsync($"/MockPapers?totalCategoryId={course.Id}"));
+        var path = $"/MockPapers/Create?totalCategoryId={course.Id}";
+        var html = await Http.GetStringAsync(path);
+        Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(html, $"<option(?=[^>]*selected)(?=[^>]*value=\"{course.Id}\")[^>]*>"));
+        Assert.Contains($"/MockPapers?totalCategoryId={course.Id}", html);
+        var data = new Dictionary<string, string> { ["Title"] = "Scoped draft paper", ["TotalCategoryId"] = course.Id.ToString(), ["TimeLimit"] = "0" };
+        var invalid = await PostForm(path, data);
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        html = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains("Scoped draft paper", html);
+        Assert.Contains($"/MockPapers?totalCategoryId={course.Id}", html);
+        data["TimeLimit"] = "60";
+        AssertRedirect(await PostForm(path, data), $"/MockPapers?totalCategoryId={course.Id}");
+        Assert.AreEqual(course.Id, (await db.MockPapers.SingleAsync(p => p.Title == data["Title"])).TotalCategoryId);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/MockPapers/Create?totalCategoryId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/MockPapers/Create?totalCategoryId=invalid")).StatusCode);
+    }
+
+    [TestMethod]
     public async Task EditorCreatesOnlyDraftsAndCanChangeCourseDurationAndOpening()
     {
         await LoginAsAdmin();
@@ -45,7 +73,7 @@ public class MockPapersTests : TestBase
         var forgedId = Guid.NewGuid();
         form["Id"] = forgedId.ToString();
         form["Status"] = "2";
-        AssertRedirect(await PostForm("/MockPapers/Create", form), "/MockPapers");
+        AssertRedirect(await PostForm("/MockPapers/Create", form), $"/MockPapers?totalCategoryId={_course}");
         Guid id;
         using (var scope = Server!.Services.CreateScope())
         {
