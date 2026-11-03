@@ -82,6 +82,7 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>@Localizer["Title"]</th>
+                                        <th>@Localizer["Direct Knowledge Points"]</th>
                                         <th>@Localizer["Free"]</th>
                                         <th>@Localizer["Parent"]</th>
                                         <th style="width: 150px;">@Localizer["Actions"]</th>
@@ -95,7 +96,7 @@
                                     @if (!Model.RootCategories.Any())
                                     {
                                         <tr>
-                                            <td colspan="4" class="text-center text-muted py-4">
+                                            <td colspan="5" class="text-center text-muted py-4">
                                                 @Localizer["No categories found"]
                                             </td>
                                         </tr>

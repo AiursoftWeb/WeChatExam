@@ -17,6 +17,11 @@
         @Model.Title
     </td>
     <td>
+        <span class="badge @(children.Count == 0 && Model.KnowledgeCategoryKnowledgePoints.Count == 0 ? "bg-danger" : "bg-secondary")">
+            @Model.KnowledgeCategoryKnowledgePoints.Count
+        </span>
+    </td>
+    <td>
         @if (Model.IsFree)
         {
             <span class="badge bg-success">@Localizer["Free"]</span>
