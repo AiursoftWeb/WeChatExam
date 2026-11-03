@@ -92,7 +92,7 @@ public class QuestionCategoriesTests : TestBase
         var (course, _) = await CreateCourses();
         var html = await Http.GetStringAsync($"/Questions/Create?totalCategoryId={course}&returnUrl=https://example.invalid");
         Assert.Contains("This course has no question categories.", html);
-        Assert.Contains($"/QuestionCategories?totalCategoryId={course}", html);
+        Assert.Contains($"/QuestionCategories/Create?totalCategoryId={course}", html);
         Assert.DoesNotContain("href=\"https://example.invalid", html);
         Assert.Contains("disabled", html);
     }
