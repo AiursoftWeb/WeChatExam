@@ -33,20 +33,19 @@ public class TotalCategoriesTests : TestBase
         db.MockPapers.Add(new MockPaper { Title = "Scoped mock", TotalCategoryId = course.Id });
         await db.SaveChangesAsync();
 
-        foreach (var path in new[] { "/TotalCategories", $"/TotalCategories/Edit/{course.Id}" })
+        var html = await Http.GetStringAsync($"/TotalCategories/Edit/{course.Id}");
+        var contents = Regex.Match(html, $"data-course-contents=\"{course.Id}\"[^>]*>(.*?)</div>", RegexOptions.Singleline).Groups[1].Value;
+        Assert.IsFalse(string.IsNullOrEmpty(contents));
+        foreach (var (controller, count) in new[] { ("QuestionCategories", 1), ("Questions", 21), ("KnowledgeCategories", 1), ("MockPapers", 1) })
         {
-            var html = await Http.GetStringAsync(path);
-            var contents = Regex.Match(html, $"data-course-contents=\"{course.Id}\"[^>]*>(.*?)</div>", RegexOptions.Singleline).Groups[1].Value;
-            Assert.IsFalse(string.IsNullOrEmpty(contents));
-            foreach (var (controller, count) in new[] { ("QuestionCategories", 1), ("Questions", 21), ("KnowledgeCategories", 1), ("MockPapers", 1) })
-            {
-                var link = Regex.Match(contents, $"<a[^>]*href=\"/{controller}\\?totalCategoryId={course.Id}\"[^>]*>(.*?)</a>", RegexOptions.Singleline);
-                Assert.IsTrue(link.Success, controller);
-                Assert.Contains($">{count}</span>", link.Groups[1].Value);
-                var target = await Http.GetStringAsync($"/{controller}?totalCategoryId={course.Id}");
-                Assert.Contains(controller == "Questions" ? "Scoped question" : controller == "QuestionCategories" ? "Scoped period" : controller == "KnowledgeCategories" ? "Scoped knowledge category" : "Scoped mock", target);
-            }
+            var link = Regex.Match(contents, $"<a[^>]*href=\"/{controller}\\?totalCategoryId={course.Id}\"[^>]*>(.*?)</a>", RegexOptions.Singleline);
+            Assert.IsTrue(link.Success, controller);
+            Assert.Contains($">{count}</span>", link.Groups[1].Value);
+            var target = await Http.GetStringAsync($"/{controller}?totalCategoryId={course.Id}");
+            Assert.Contains(controller == "Questions" ? "Scoped question" : controller == "QuestionCategories" ? "Scoped period" : controller == "KnowledgeCategories" ? "Scoped knowledge category" : "Scoped mock", target);
         }
+        Assert.Contains($"/TotalCategories/Details/{course.Id}", await Http.GetStringAsync("/TotalCategories"));
+        Assert.Contains("Scoped period", await Http.GetStringAsync($"/TotalCategories/Details/{course.Id}"));
         var emptyHtml = await Http.GetStringAsync($"/TotalCategories/Edit/{empty.Id}");
         var emptyContents = Regex.Match(emptyHtml, $"data-course-contents=\"{empty.Id}\"[^>]*>(.*?)</div>", RegexOptions.Singleline).Groups[1].Value;
         Assert.AreEqual(4, Regex.Matches(emptyContents, ">0</span>").Count);

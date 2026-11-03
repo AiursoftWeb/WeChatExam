@@ -38,35 +38,33 @@ public class VipProductServiceTests
     }
 
     [TestMethod]
-    public async Task CreateAsync_RealExamVip_ClearsTotalCategoryId()
+    public async Task CreateAsync_RejectsRetiredRealExamVip()
     {
         var catId = Guid.NewGuid();
         _dbContext.TotalCategories.Add(new TotalCategory { Id = catId, Title = "Course" });
         await _dbContext.SaveChangesAsync();
-        var result = await _service.CreateAsync("Real VIP", VipProductType.RealExam, catId, 100, 30);
-        
-        Assert.AreEqual(VipProductType.RealExam, result.Type);
-        Assert.IsNull(result.TotalCategoryId);
-        
-        var saved = await _dbContext.VipProducts.FindAsync(result.Id);
-        Assert.IsNotNull(saved);
-        Assert.IsNull(saved.TotalCategoryId);
+        await Assert.ThrowsExactlyAsync<ArgumentException>(() =>
+            _service.CreateAsync("Real VIP", VipProductType.RealExam, catId, 100, 30));
+        Assert.AreEqual(0, await _dbContext.VipProducts.CountAsync());
     }
 
     [TestMethod]
     public async Task UpdateAsync_ChangesTypeAndCategory()
     {
         var catId = Guid.NewGuid();
+        var school = new Institution { Title = "School" };
+        _dbContext.Institutions.Add(school);
         _dbContext.TotalCategories.Add(new TotalCategory { Id = catId, Title = "Course" });
         await _dbContext.SaveChangesAsync();
         var product = await _service.CreateAsync("Initial", VipProductType.Category, catId, 100, 30);
         
-        await _service.UpdateAsync(product.Id, "Updated", VipProductType.RealExam, catId, 200, 60, true);
+        await _service.UpdateAsync(product.Id, "Updated", VipProductType.Institution, catId, 200, 60, true, school.Id);
         
         var updated = await _dbContext.VipProducts.FindAsync(product.Id);
         Assert.AreEqual("Updated", updated!.Name);
-        Assert.AreEqual(VipProductType.RealExam, updated.Type);
+        Assert.AreEqual(VipProductType.Institution, updated.Type);
         Assert.IsNull(updated.TotalCategoryId);
+        Assert.AreEqual(school.Id, updated.InstitutionId);
     }
 
     [TestMethod]
@@ -77,13 +75,15 @@ public class VipProductServiceTests
         await _dbContext.SaveChangesAsync();
         await _service.CreateAsync("Cat 1", VipProductType.Category, catId, 100, 30);
         await _service.CreateAsync("Cat 2", VipProductType.Category, catId, 100, 30);
-        await _service.CreateAsync("Real 1", VipProductType.RealExam, null, 100, 30);
+        _dbContext.VipProducts.Add(new VipProduct { Name = "Retired", Type = VipProductType.RealExam, IsEnabled = true });
+        await _dbContext.SaveChangesAsync();
         
         var cats = await _service.GetEnabledAsync(type: VipProductType.Category);
         Assert.AreEqual(2, cats.Count);
         
         var reals = await _service.GetEnabledAsync(type: VipProductType.RealExam);
-        Assert.AreEqual(1, reals.Count);
+        Assert.AreEqual(0, reals.Count);
+        Assert.AreEqual(2, (await _service.GetEnabledAsync()).Count);
     }
 
     [TestMethod]
@@ -133,7 +133,8 @@ public class VipProductServiceTests
         var product = await _service.CreateAsync("Wuhan VIP", VipProductType.Institution, course.Id, 100, 30, first.Id);
         await _service.CreateAsync("Suzhou VIP", VipProductType.Institution, null, 100, 30, second.Id);
         await _service.CreateAsync("History VIP", VipProductType.Category, course.Id, 100, 30, first.Id);
-        await _service.CreateAsync("Legacy all schools", VipProductType.RealExam, null, 100, 30, first.Id);
+        _dbContext.VipProducts.Add(new VipProduct { Name = "Legacy all schools", Type = VipProductType.RealExam });
+        await _dbContext.SaveChangesAsync();
         _dbContext.ChangeTracker.Clear();
         var selected = (await _service.GetEnabledAsync(institutionId: first.Id)).Single();
         Assert.AreEqual(product.Id, selected.Id);
@@ -162,7 +163,7 @@ public class VipProductServiceTests
         await _dbContext.SaveChangesAsync();
         await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
             _service.UpdateAsync(product.Id, "Wrong", VipProductType.Institution, null, 200, 60, false, other.Id));
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+        await Assert.ThrowsExactlyAsync<ArgumentException>(() =>
             _service.UpdateAsync(product.Id, "Wrong", VipProductType.RealExam, null, 200, 60, false));
         await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.DeleteAsync(product.Id));
         await _service.UpdateAsync(product.Id, "Stopped sales", VipProductType.Institution, null, 200, 60, false, school.Id);
@@ -190,7 +191,9 @@ public class VipProductServiceTests
         var school = new Institution { Title = "School" };
         _dbContext.Institutions.Add(school);
         await _dbContext.SaveChangesAsync();
-        var product = await _service.CreateAsync("Legacy", VipProductType.RealExam, null, 100, 365);
+        var product = new VipProduct { Name = "Legacy", Type = VipProductType.RealExam, PriceInFen = 100, DurationDays = 365 };
+        _dbContext.VipProducts.Add(product);
+        await _dbContext.SaveChangesAsync();
         var start = DateTime.UtcNow.AddDays(-5);
         var end = start.AddDays(365);
         _dbContext.VipMemberships.Add(new VipMembership { UserId = "old-student", VipProductId = product.Id, StartTime = start, EndTime = end });

@@ -1,4 +1,7 @@
 using System.Net;
+using Aiursoft.WeChatExam.Controllers.Management;
+using Aiursoft.WeChatExam.Tests.TestServices;
+using Microsoft.Extensions.Localization;
 using Aiursoft.WeChatExam.Sqlite;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -117,7 +120,7 @@ public class VipProductsTests : TestBase
     }
 
     [TestMethod]
-    public async Task RealExamProductHasNoCourseAndForgedTypesCannotBeSaved()
+    public async Task RetiredRealExamAndForgedTypesCannotBeCreated()
     {
         await LoginAsAdmin();
         var values = new Dictionary<string, string>
@@ -131,11 +134,37 @@ public class VipProductsTests : TestBase
         Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
         Assert.IsFalse(await db.VipProducts.AnyAsync(p => p.Name == "All real exams"));
         values["Type"] = "1";
-        using var created = await PostForm("/VipProducts/Create", values);
-        AssertRedirect(created, "/VipProducts");
-        var product = await db.VipProducts.SingleAsync(p => p.Name == "All real exams");
-        Assert.IsNull(product.TotalCategoryId);
-        Assert.AreEqual(VipProductType.RealExam, product.Type);
+        using var retired = await PostForm("/VipProducts/Create", values);
+        Assert.AreEqual(HttpStatusCode.OK, retired.StatusCode);
+        Assert.Contains("Invalid VIP product type.", await retired.Content.ReadAsStringAsync());
+        Assert.IsFalse(await db.VipProducts.AnyAsync(p => p.Name == "All real exams"));
+    }
+
+    [TestMethod]
+    public async Task AdminCannotGrantRetiredAllSchoolMembership()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var user = await db.Users.FirstAsync();
+        var product = new VipProduct
+        {
+            Name = "Retired all-school VIP", Type = VipProductType.RealExam,
+            IsEnabled = true, PriceInFen = 100, DurationDays = 30
+        };
+        db.VipProducts.Add(product);
+        await db.SaveChangesAsync();
+
+        var form = await Http.GetStringAsync("/VipMembers/Create");
+        Assert.DoesNotContain(product.Name, form);
+        using var response = await PostForm("/VipMembers/Create", new Dictionary<string, string>
+        {
+            ["UserId"] = user.Id, ["VipProductId"] = product.Id.ToString(),
+            ["StartTime"] = DateTime.UtcNow.ToString("O"),
+            ["EndTime"] = DateTime.UtcNow.AddDays(30).ToString("O")
+        });
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.AreEqual(0, await db.VipMemberships.CountAsync());
     }
 
     [TestMethod]
@@ -194,7 +223,9 @@ public class VipProductsTests : TestBase
 
 
     [TestMethod]
-    public async Task DeleteProductWithChangeRecordsSucceedsAndSetsNull()
+    [DataRow(true)]
+    [DataRow(false)]
+    public async Task DeleteProductWithChangeRecordsIsRejectedAndPreservesHistory(bool isEnabled)
     {
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
@@ -203,11 +234,11 @@ public class VipProductsTests : TestBase
 
         var product = new VipProduct
         {
-            Name = "Product to delete with audit history",
+            Name = "Product with audit history",
             Type = VipProductType.RealExam,
             PriceInFen = 1000,
             DurationDays = 30,
-            IsEnabled = true
+            IsEnabled = isEnabled
         };
         db.VipProducts.Add(product);
         await db.SaveChangesAsync();
@@ -227,13 +258,57 @@ public class VipProductsTests : TestBase
         {
             ["id"] = product.Id.ToString()
         });
-        AssertRedirect(response, "/VipProducts");
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.Contains("This product has audit history. Disable it instead of deleting it.", await response.Content.ReadAsStringAsync());
 
         db.ChangeTracker.Clear();
-        Assert.IsFalse(await db.VipProducts.AnyAsync(p => p.Id == product.Id));
+        Assert.AreEqual(product.Name, (await db.VipProducts.SingleAsync(p => p.Id == product.Id)).Name);
         var reloadedChange = await db.Changes.SingleAsync(c => c.Id == change.Id);
-        Assert.IsNull(reloadedChange.VipProductId);
+        Assert.AreEqual(product.Id, reloadedChange.VipProductId);
+        Assert.AreEqual(change.TriggerUserId, reloadedChange.TriggerUserId);
         Assert.AreEqual("Historical admin grant", reloadedChange.Details);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task DeleteDoesNotMisreportUnexpectedFailuresAsPurchaseConflicts(bool databaseFailure)
+    {
+        using var scope = Server!.Services.CreateScope();
+        Exception failure = databaseFailure
+            ? new DbUpdateException("Database unavailable")
+            : new InvalidOperationException("Unexpected operation failure");
+        var controller = new VipProductsController(
+            new StubVipProductService { DeleteException = failure },
+            scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>(),
+            scope.ServiceProvider.GetRequiredService<IStringLocalizer<VipProductsController>>());
+        try
+        {
+            await controller.DeleteConfirmed(Guid.NewGuid());
+            Assert.Fail("Unexpected failures must reach normal error handling.");
+        }
+        catch (Exception ex) when (ReferenceEquals(ex, failure))
+        {
+            Assert.IsFalse(controller.ModelState.Any());
+        }
+    }
+
+    [TestMethod]
+    public async Task DeleteUnusedProductStillSucceeds()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var product = new VipProduct { Name = "Unused product", Type = VipProductType.RealExam };
+        db.VipProducts.Add(product);
+        await db.SaveChangesAsync();
+        using var response = await PostForm($"/VipProducts/Delete/{product.Id}", new Dictionary<string, string>
+        {
+            ["id"] = product.Id.ToString()
+        });
+        AssertRedirect(response, "/VipProducts");
+        db.ChangeTracker.Clear();
+        Assert.IsFalse(await db.VipProducts.AnyAsync(p => p.Id == product.Id));
     }
 
     [TestMethod]

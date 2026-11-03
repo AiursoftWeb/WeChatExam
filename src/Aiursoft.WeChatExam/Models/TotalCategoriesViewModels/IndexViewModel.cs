@@ -1,4 +1,5 @@
 using Aiursoft.UiStack.Layout;
+using Aiursoft.WeChatExam.Entities;
 
 namespace Aiursoft.WeChatExam.Models.TotalCategoriesViewModels;
 
@@ -9,5 +10,5 @@ public class IndexViewModel : UiStackLayoutViewModel
         PageTitle = "Total Categories";
     }
 
-    public List<ContentsViewModel> Categories { get; init; } = [];
+    public List<TotalCategory> Categories { get; init; } = [];
 }

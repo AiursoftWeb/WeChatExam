@@ -16,6 +16,42 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class MigrationTests
 {
     [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task AuditReferenceCorrectionPreservesHistoryAndBlocksDatabaseDeletion(bool alreadyUpgraded)
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrator = db.GetService<IMigrator>();
+        var migrations = db.Database.GetMigrations().ToArray();
+        var setNullIndex = Array.FindIndex(migrations, m => m.EndsWith("_SetNullForChangeAuditReferences", StringComparison.Ordinal));
+        await migrator.MigrateAsync(migrations[alreadyUpgraded ? setNullIndex : setNullIndex - 1]);
+        var user = new User { UserName = "audit-owner", DisplayName = "Audit owner" };
+        var product = new VipProduct { Name = "Retained historical product", Type = VipProductType.RealExam };
+        db.AddRange(user, product);
+        var change = new Change { TargetUserId = user.Id, TriggerUserId = user.Id,
+            VipProductId = product.Id, Type = ChangeType.VipActivatedViaAdmin, Details = "Original grant" };
+        db.Changes.Add(change);
+        await db.SaveChangesAsync();
+        db.ChangeTracker.Clear();
+        await migrator.MigrateAsync();
+
+        // Bypass the service and EF tracking to verify the database constraint itself.
+        var error = await Assert.ThrowsExactlyAsync<Microsoft.Data.Sqlite.SqliteException>(() =>
+            db.VipProducts.Where(p => p.Id == product.Id).ExecuteDeleteAsync());
+        Assert.AreEqual(787, error.SqliteExtendedErrorCode);
+        var retained = await db.Changes.Include(c => c.VipProduct).SingleAsync(c => c.Id == change.Id);
+        Assert.AreEqual(product.Id, retained.VipProductId);
+        Assert.AreEqual(product.Name, retained.VipProduct!.Name);
+        Assert.AreEqual(user.Id, retained.TriggerUserId);
+        Assert.AreEqual("Original grant", retained.Details);
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "SELECT count(*) FROM pragma_foreign_key_list('Changes') WHERE \"from\" IN ('VipProductId', 'CouponId', 'TriggerUserId') AND on_delete = 'NO ACTION'";
+        Assert.AreEqual(3L, await command.ExecuteScalarAsync());
+    }
+
+    [TestMethod]
     public async Task PracticeReplacementMigrationPreservesExistingRoundsAndRollbackKeepsActiveItems()
     {
         await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite("DataSource=:memory:").Options);

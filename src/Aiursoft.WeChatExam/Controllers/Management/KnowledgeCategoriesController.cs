@@ -105,6 +105,9 @@ public class KnowledgeCategoriesController(WeChatExamDbContext context,
         return this.StackView(new DetailsViewModel
         {
             Category = category,
+            ChildCategories = await context.KnowledgeCategories.AsNoTracking()
+                .Where(c => c.ParentKnowledgeCategoryId == id)
+                .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync(),
             AssociatedKnowledgePoints = category.KnowledgeCategoryKnowledgePoints.OrderBy(c => c.OrderIndex)
                 .ThenBy(c => c.KnowledgePoint.CreationTime).ThenBy(c => c.KnowledgePointId).Select(c => c.KnowledgePoint).ToList()
         });

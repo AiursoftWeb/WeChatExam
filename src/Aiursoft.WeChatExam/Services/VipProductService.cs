@@ -79,7 +79,9 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
 
     private async Task ValidateTargetAsync(VipProductType type, Guid? totalCategoryId, Guid? institutionId)
     {
-        if (!Enum.IsDefined(type)) throw new ArgumentException("Invalid VIP product type.");
+        // Type 1 remains reserved for historical records, but cannot be issued again.
+        if (type is not (VipProductType.Category or VipProductType.Institution))
+            throw new ArgumentException("Invalid VIP product type.");
         if (type == VipProductType.Category &&
             (!totalCategoryId.HasValue || !await dbContext.TotalCategories.AnyAsync(c => c.Id == totalCategoryId.Value)))
             throw new ArgumentException("A course VIP requires an existing total category.");
@@ -96,11 +98,8 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         if (await HasPurchasesAsync(id))
             throw new InvalidOperationException("This product has orders or memberships. Disable it instead of deleting it.");
 
-        var relatedChanges = await dbContext.Changes.Where(c => c.VipProductId == id).ToListAsync();
-        foreach (var change in relatedChanges)
-        {
-            change.VipProductId = null;
-        }
+        if (await dbContext.Changes.AnyAsync(c => c.VipProductId == id))
+            throw new InvalidOperationException("This product has audit history. Disable it instead of deleting it.");
 
         dbContext.VipProducts.Remove(product);
         await dbContext.SaveChangesAsync();
@@ -111,7 +110,7 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         var query = dbContext.VipProducts
             .Include(v => v.TotalCategory)
             .Include(v => v.Institution)
-            .Where(v => v.IsEnabled);
+            .Where(v => v.IsEnabled && (v.Type == VipProductType.Category || v.Type == VipProductType.Institution));
 
         if (type.HasValue)
         {

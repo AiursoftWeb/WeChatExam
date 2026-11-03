@@ -13,4 +13,7 @@ public class IndexViewModel : UiStackLayoutViewModel
     public List<TotalCategory> TotalCategories { get; init; } = [];
     public Guid? TotalCategoryId { get; init; }
     public List<QuestionCategory> Categories { get; init; } = [];
+    public Dictionary<Guid, List<QuestionTypeCount>> QuestionCounts { get; init; } = [];
 }
+
+public record QuestionTypeCount(QuestionType Type, int Count);

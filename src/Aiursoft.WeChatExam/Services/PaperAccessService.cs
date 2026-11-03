@@ -40,8 +40,7 @@ public class PaperAccessService : IPaperAccessService
             ActiveCategoryVips = active.Where(p => p.Type == VipProductType.Category && p.TotalCategoryId.HasValue)
                 .Select(p => p.TotalCategoryId!.Value).ToHashSet(),
             ActiveInstitutionVips = active.Where(p => p.Type == VipProductType.Institution && p.InstitutionId.HasValue)
-                .Select(p => p.InstitutionId!.Value).ToHashSet(),
-            HasRealExamVip = active.Any(p => p.Type == VipProductType.RealExam)
+                .Select(p => p.InstitutionId!.Value).ToHashSet()
         };
     }
 
@@ -54,7 +53,7 @@ public class PaperAccessService : IPaperAccessService
         CanAccessInstitution(paper.InstitutionId, access);
 
     public static bool CanAccessInstitution(Guid institutionId, PaperAccessStatus access) =>
-        access.HasRealExamVip || access.ActiveInstitutionVips.Contains(institutionId);
+        access.ActiveInstitutionVips.Contains(institutionId);
 
     // The content checker uses the same decision without resolving payment credentials
     // or loading any customer's memberships.
@@ -67,7 +66,7 @@ public class PaperAccessService : IPaperAccessService
         
         if (paper.IsRealExam)
         {
-            return accessStatus.HasRealExamVip;
+            return false;
         }
         
         var categoryIds = paper.PaperCategories.Select(pc => pc.CategoryId).ToList();

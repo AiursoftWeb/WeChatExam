@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Entities;
 
 /// <summary>
-/// A course or institution membership, or the existing all-real-exams membership.
+/// A course or institution membership. Type 1 remains reserved for historical records.
 /// </summary>
 [Index(nameof(TotalCategoryId))]
 [Index(nameof(Type))]
@@ -23,13 +23,13 @@ public class VipProduct
     public required string Name { get; set; }
 
     /// <summary>
-    /// VIP 商品类型（分类VIP 或 真题VIP）
+    /// Course or institution VIP product type.
     /// </summary>
     public VipProductType Type { get; set; } = VipProductType.Category;
 
     /// <summary>
     /// Course entitlement target. Existing course IDs are preserved during migration.
-    /// Real-exam membership remains independent of courses.
+    /// Institution membership remains independent of courses.
     /// </summary>
     public Guid? TotalCategoryId { get; set; }
 
@@ -38,7 +38,7 @@ public class VipProduct
 
     /// <summary>
     /// An institution membership covers this school's real papers, independently of courses.
-    /// Legacy RealExam products keep their all-school scope and have no institution target.
+    /// Historical type 1 products have no institution target and grant no current access.
     /// </summary>
     public Guid? InstitutionId { get; set; }
 

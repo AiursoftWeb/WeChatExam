@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 
 /// <summary>
-/// Reads published institution papers. School membership (or a valid legacy all-school
-/// membership) covers the whole mixed-course paper, never independent question-bank rights.
+/// Reads published institution papers. School membership covers the whole mixed-course
+/// paper, never independent question-bank rights.
 /// </summary>
 [Route("api/RealPapers")]
 [ApiController]
