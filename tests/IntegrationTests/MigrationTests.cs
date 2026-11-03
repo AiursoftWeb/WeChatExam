@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Aiursoft.WeChatExam.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.Sqlite;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 
@@ -39,7 +38,7 @@ public class MigrationTests
         await migrator.MigrateAsync();
 
         // Bypass the service and EF tracking to verify the database constraint itself.
-        var error = await Assert.ThrowsExactlyAsync<SqliteException>(() =>
+        var error = await Assert.ThrowsExactlyAsync<Microsoft.Data.Sqlite.SqliteException>(() =>
             db.VipProducts.Where(p => p.Id == product.Id).ExecuteDeleteAsync());
         Assert.AreEqual(787, error.SqliteExtendedErrorCode);
         var retained = await db.Changes.Include(c => c.VipProduct).SingleAsync(c => c.Id == change.Id);
