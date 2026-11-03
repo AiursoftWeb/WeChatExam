@@ -137,6 +137,49 @@ public class VipProductsTests : TestBase
 
 
     [TestMethod]
+    public async Task DeleteProductWithChangeRecordsSucceedsAndSetsNull()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var user = await db.Users.FirstAsync();
+
+        var product = new VipProduct
+        {
+            Name = "Product to delete with audit history",
+            Type = VipProductType.RealExam,
+            PriceInFen = 1000,
+            DurationDays = 30,
+            IsEnabled = true
+        };
+        db.VipProducts.Add(product);
+        await db.SaveChangesAsync();
+
+        var change = new Change
+        {
+            Type = ChangeType.VipActivatedViaAdmin,
+            TargetUserId = user.Id,
+            TriggerUserId = user.Id,
+            VipProductId = product.Id,
+            Details = "Historical admin grant"
+        };
+        db.Changes.Add(change);
+        await db.SaveChangesAsync();
+
+        using var response = await PostForm($"/VipProducts/Delete/{product.Id}", new Dictionary<string, string>
+        {
+            ["id"] = product.Id.ToString()
+        });
+        AssertRedirect(response, "/VipProducts");
+
+        db.ChangeTracker.Clear();
+        Assert.IsFalse(await db.VipProducts.AnyAsync(p => p.Id == product.Id));
+        var reloadedChange = await db.Changes.SingleAsync(c => c.Id == change.Id);
+        Assert.IsNull(reloadedChange.VipProductId);
+        Assert.AreEqual("Historical admin grant", reloadedChange.Details);
+    }
+
+    [TestMethod]
     public async Task InstitutionMigrationPreservesPurchasedProductsAndRejectsInvalidTargets()
     {
         await using var connection = new SqliteConnection("Data Source=:memory:");

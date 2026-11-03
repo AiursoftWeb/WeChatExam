@@ -192,7 +192,7 @@ public class VipProductsController(
         {
             await vipProductService.DeleteAsync(id);
         }
-        catch (InvalidOperationException)
+        catch (Exception ex) when (ex is InvalidOperationException or DbUpdateException)
         {
             ModelState.AddModelError(string.Empty, localizer["This product has orders or memberships. Disable it instead of deleting it."]);
             return this.StackView(new DeleteViewModel { Product = (await vipProductService.GetByIdAsync(id))! }, nameof(Delete));

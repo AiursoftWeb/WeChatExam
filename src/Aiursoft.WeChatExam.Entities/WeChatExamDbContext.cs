@@ -140,6 +140,24 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .WithMany()
             .HasForeignKey(v => v.UserId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<Change>()
+            .HasOne(c => c.VipProduct)
+            .WithMany()
+            .HasForeignKey(c => c.VipProductId)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        builder.Entity<Change>()
+            .HasOne(c => c.Coupon)
+            .WithMany()
+            .HasForeignKey(c => c.CouponId)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        builder.Entity<Change>()
+            .HasOne(c => c.TriggerUser)
+            .WithMany()
+            .HasForeignKey(c => c.TriggerUserId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 
     public DbSet<MockPaperQuestion> MockPaperQuestions => Set<MockPaperQuestion>();
