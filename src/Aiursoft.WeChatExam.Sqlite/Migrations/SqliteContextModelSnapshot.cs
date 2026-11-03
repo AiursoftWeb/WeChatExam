@@ -119,6 +119,13 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("ArchivedVipProductId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ArchivedVipProductName")
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid?>("CouponId")
                         .HasColumnType("TEXT");
 

@@ -124,6 +124,13 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("ArchivedVipProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ArchivedVipProductName")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
                     b.Property<Guid?>("CouponId")
                         .HasColumnType("char(36)");
 

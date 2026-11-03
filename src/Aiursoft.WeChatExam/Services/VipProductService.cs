@@ -98,8 +98,19 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
         if (await HasPurchasesAsync(id))
             throw new InvalidOperationException("This product has orders or memberships. Disable it instead of deleting it.");
 
-        if (await dbContext.Changes.AnyAsync(c => c.VipProductId == id))
-            throw new InvalidOperationException("This product has audit history. Disable it instead of deleting it.");
+        var changes = await dbContext.Changes.Where(c => c.VipProductId == id).ToListAsync();
+        if (changes.Count > 0)
+        {
+            if (product.Type != VipProductType.RealExam || product.IsEnabled)
+                throw new InvalidOperationException("This product has audit history. Disable it instead of deleting it.");
+
+            foreach (var change in changes)
+            {
+                change.ArchivedVipProductId = product.Id;
+                change.ArchivedVipProductName = product.Name;
+                change.VipProductId = null;
+            }
+        }
 
         dbContext.VipProducts.Remove(product);
         await dbContext.SaveChangesAsync();
