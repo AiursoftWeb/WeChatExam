@@ -38,11 +38,20 @@ else
     <div class="row g-4">
         @foreach (var institution in Model.Institutions)
         {
+            var counts = Model.PaperCounts.GetValueOrDefault(institution.Id) ?? new InstitutionPaperCounts(0, 0);
             <div class="col-md-6 col-xl-4">
                 <div class="card h-100 position-relative shadow-sm">
                     <div class="card-body p-4">
                         <i data-lucide="university" class="text-primary mb-3"></i>
                         <h2 class="h4 text-break mb-3">@institution.Title</h2>
+                        <div class="d-flex flex-wrap gap-2 mb-2">
+                            <span class="badge bg-success-subtle text-success-emphasis">@string.Format(@Localizer["{0} visible papers"].Value, counts.Visible)</span>
+                            <span class="badge bg-secondary">@string.Format(@Localizer["{0} drafts"].Value, counts.Draft)</span>
+                        </div>
+                        @if (counts.Visible == 0)
+                        {
+                            <p class="text-warning-emphasis small mb-2">@Localizer["This institution is not yet visible to students."]</p>
+                        }
                         <p class="text-muted">@Localizer["Display Order"]: @institution.OrderIndex</p>
                         <a asp-controller="RealPapers" asp-action="Index" asp-route-institutionId="@institution.Id" class="stretched-link text-decoration-none">
                             @Localizer["View Real Papers"] <i data-lucide="arrow-right" class="ms-1"></i>

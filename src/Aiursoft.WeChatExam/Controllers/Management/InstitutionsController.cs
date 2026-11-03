@@ -29,11 +29,25 @@ public class InstitutionsController(WeChatExamDbContext context) : Controller
         if (!string.IsNullOrEmpty(search)) query = query.Where(i => i.Title.Contains(search));
         var total = await query.CountAsync();
         page = Math.Clamp(page, 1, Math.Max(1, (total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize));
+        var institutions = await query.OrderBy(i => i.OrderIndex).ThenBy(i => i.Title).ThenBy(i => i.Id)
+            .Skip((page - 1) * IndexViewModel.PageSize).Take(IndexViewModel.PageSize).ToListAsync();
+        var ids = institutions.Select(i => i.Id).ToArray();
+        var papers = await context.RealPapers.AsNoTracking()
+            .Where(p => ids.Contains(p.InstitutionId))
+            .Select(p => new
+            {
+                p.InstitutionId, p.Status,
+                HasSnapshot = context.PaperSnapshots.Any(s => s.RealPaperId == p.Id)
+            }).ToListAsync();
         return this.StackView(new IndexViewModel
         {
             Search = search, Page = page, Total = total,
-            Institutions = await query.OrderBy(i => i.OrderIndex).ThenBy(i => i.Title).ThenBy(i => i.Id)
-                .Skip((page - 1) * IndexViewModel.PageSize).Take(IndexViewModel.PageSize).ToListAsync()
+            Institutions = institutions,
+            PaperCounts = papers.GroupBy(p => p.InstitutionId).ToDictionary(
+                group => group.Key,
+                group => new InstitutionPaperCounts(
+                    group.Count(p => (p.Status is PaperStatus.Publishable or PaperStatus.Frozen) && p.HasSnapshot),
+                    group.Count(p => p.Status == PaperStatus.Draft)))
         });
     }
 

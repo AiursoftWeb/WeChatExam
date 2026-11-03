@@ -64,4 +64,13 @@
     <value>查看真题卷</value>
   </data>
 
+  <data name="{0} visible papers" xml:space="preserve">
+    <value>学生端可见 {0} 套</value>
+  </data>
+  <data name="{0} drafts" xml:space="preserve">
+    <value>草稿 {0} 套</value>
+  </data>
+  <data name="This institution is not yet visible to students." xml:space="preserve">
+    <value>该院校目前尚未在学生端显示。</value>
+  </data>
 </root>
