@@ -63,4 +63,10 @@
             </div>
         </div>
     </div>
+    @if (!creating)
+    {
+        <div class="col-lg-5 col-xl-6 mt-4 mt-lg-0">
+            @await Component.InvokeAsync("InstitutionSales", new { realPaperId = Model.Id })
+        </div>
+    }
 </div>
