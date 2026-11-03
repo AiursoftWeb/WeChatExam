@@ -89,7 +89,7 @@ public class QuestionCategoriesController(
     public async Task<IActionResult> Edit(Guid id, string? checkReturnUrl = null)
     {
         ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
-        var category = await context.QuestionCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
+        var category = await context.QuestionCategories.AsNoTracking().Include(c => c.TotalCategory).SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
         return this.StackView(new EditViewModel
         {
@@ -99,7 +99,9 @@ public class QuestionCategoriesController(
             IsFree = category.IsFree,
             IsVisible = category.IsVisible,
             OrderIndex = category.OrderIndex,
-            TotalCategories = await GetTotalCategories()
+            TotalCategories = await GetTotalCategories(),
+            SavedTotalCategory = category.TotalCategory,
+            QuestionCount = await context.Questions.CountAsync(q => q.QuestionCategoryId == id)
         });
     }
 
@@ -122,7 +124,12 @@ public class QuestionCategoriesController(
             var courseError = await mockPaperValidation.ValidatePeriodCourseAsync(id, model.TotalCategoryId.Value);
             if (courseError != null) ModelState.AddModelError(nameof(model.TotalCategoryId), courseError);
         }
-        if (!ModelState.IsValid) return this.StackView(model);
+        if (!ModelState.IsValid)
+        {
+            model.SavedTotalCategory = await context.TotalCategories.AsNoTracking().SingleAsync(c => c.Id == category.TotalCategoryId);
+            model.QuestionCount = await context.Questions.CountAsync(q => q.QuestionCategoryId == id);
+            return this.StackView(model);
+        }
 
         category.Title = model.Title.Trim();
         category.TotalCategoryId = model.TotalCategoryId!.Value;

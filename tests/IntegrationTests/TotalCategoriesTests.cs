@@ -1,6 +1,9 @@
 using System.Net;
+using System.Text.RegularExpressions;
+using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Sqlite;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -11,6 +14,74 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class TotalCategoriesTests : TestBase
 {
+    [TestMethod]
+    public async Task CourseContentCountsAndLinksKeepSameNamedCoursesSeparate()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Same course name" };
+        var empty = new TotalCategory { Title = course.Title };
+        var period = new QuestionCategory { Title = "Scoped period", TotalCategory = course, TotalCategoryId = course.Id };
+        db.TotalCategories.Add(empty);
+        db.QuestionCategories.Add(period);
+        db.Questions.AddRange(Enumerable.Range(1, 21).Select(i => new Question
+        {
+            Id = Guid.NewGuid(), Content = $"Scoped question {i}", QuestionCategory = period
+        }));
+        db.KnowledgeCategories.Add(new KnowledgeCategory { Title = "Scoped knowledge category", TotalCategoryId = course.Id });
+        db.MockPapers.Add(new MockPaper { Title = "Scoped mock", TotalCategoryId = course.Id });
+        await db.SaveChangesAsync();
+
+        var html = await Http.GetStringAsync($"/TotalCategories/Edit/{course.Id}");
+        var contents = Regex.Match(html, $"data-course-contents=\"{course.Id}\"[^>]*>(.*?)</div>", RegexOptions.Singleline).Groups[1].Value;
+        Assert.IsFalse(string.IsNullOrEmpty(contents));
+        foreach (var (controller, count) in new[] { ("QuestionCategories", 1), ("Questions", 21), ("KnowledgeCategories", 1), ("MockPapers", 1) })
+        {
+            var link = Regex.Match(contents, $"<a[^>]*href=\"/{controller}\\?totalCategoryId={course.Id}\"[^>]*>(.*?)</a>", RegexOptions.Singleline);
+            Assert.IsTrue(link.Success, controller);
+            Assert.Contains($">{count}</span>", link.Groups[1].Value);
+            var target = await Http.GetStringAsync($"/{controller}?totalCategoryId={course.Id}");
+            Assert.Contains(controller == "Questions" ? "Scoped question" : controller == "QuestionCategories" ? "Scoped period" : controller == "KnowledgeCategories" ? "Scoped knowledge category" : "Scoped mock", target);
+        }
+        Assert.Contains($"/TotalCategories/Details/{course.Id}", await Http.GetStringAsync("/TotalCategories"));
+        Assert.Contains("Scoped period", await Http.GetStringAsync($"/TotalCategories/Details/{course.Id}"));
+        var emptyHtml = await Http.GetStringAsync($"/TotalCategories/Edit/{empty.Id}");
+        var emptyContents = Regex.Match(emptyHtml, $"data-course-contents=\"{empty.Id}\"[^>]*>(.*?)</div>", RegexOptions.Singleline).Groups[1].Value;
+        Assert.AreEqual(4, Regex.Matches(emptyContents, ">0</span>").Count);
+        var nextPage = await Http.GetStringAsync($"/Questions?totalCategoryId={course.Id}&page=2");
+        Assert.Contains("Scoped question", nextPage);
+        Assert.Contains(course.Id.ToString(), nextPage);
+
+        var invalid = await PostForm($"/TotalCategories/Edit/{course.Id}", new Dictionary<string, string>
+        {
+            ["Id"] = course.Id.ToString(), ["Title"] = "", ["OrderIndex"] = "-1"
+        });
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        Assert.Contains($"data-course-contents=\"{course.Id}\"", await invalid.Content.ReadAsStringAsync());
+        Assert.DoesNotContain("data-course-contents", await Http.GetStringAsync("/TotalCategories/Create"));
+    }
+
+    [TestMethod]
+    public async Task CategoryEditorsWithoutQuestionOrPaperPermissionsOnlySeeAccessibleContentLinks()
+    {
+        var (email, password) = await RegisterAndLoginAsync();
+        using var scope = Server!.Services.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+        var user = (await manager.FindByEmailAsync(email))!;
+        Assert.IsTrue((await manager.AddClaimAsync(user, new System.Security.Claims.Claim(AppPermissions.Type, AppPermissionNames.CanEditAnyCategory))).Succeeded);
+        await PostForm("/Account/Login", new Dictionary<string, string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Editable course" };
+        db.TotalCategories.Add(course);
+        await db.SaveChangesAsync();
+        var html = await Http.GetStringAsync($"/TotalCategories/Edit/{course.Id}");
+        Assert.Contains($"/QuestionCategories?totalCategoryId={course.Id}", html);
+        Assert.Contains($"/KnowledgeCategories?totalCategoryId={course.Id}", html);
+        Assert.DoesNotContain($"/Questions?totalCategoryId={course.Id}", html);
+        Assert.DoesNotContain($"/MockPapers?totalCategoryId={course.Id}", html);
+    }
+
     [TestInitialize]
     public override async Task CreateServer()
     {

@@ -11,6 +11,36 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 [TestClass]
 public class QuestionCategoriesTests : TestBase
 {
+    [TestMethod]
+    public async Task EditorContentLinksUseTheSavedCourseEvenAfterInvalidChanges()
+    {
+        await LoginAsAdmin();
+        var (first, second) = await CreateCourses();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = new QuestionCategory { Title = "Saved period", TotalCategoryId = first };
+        db.QuestionCategories.Add(period);
+        db.Questions.Add(new Question { Id = Guid.NewGuid(), Content = "Saved period question", QuestionCategory = period });
+        await db.SaveChangesAsync();
+        var invalid = await PostForm($"/QuestionCategories/Edit/{period.Id}", new Dictionary<string, string>
+        {
+            ["Id"] = period.Id.ToString(), ["Title"] = "", ["TotalCategoryId"] = second.ToString()
+        });
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        foreach (var html in new[] { await Http.GetStringAsync($"/QuestionCategories/Edit/{period.Id}"), await invalid.Content.ReadAsStringAsync() })
+        {
+            Assert.Contains($"/TotalCategories/Edit/{first}", html);
+            Assert.Contains($"href=\"/QuestionCategories?totalCategoryId={first}\"", html);
+            Assert.DoesNotContain($"href=\"/QuestionCategories?totalCategoryId={second}\"", html);
+            Assert.Contains($"/Questions?totalCategoryId={first}&amp;period={period.Id}", html);
+            Assert.DoesNotContain($"/Questions?totalCategoryId={second}", html);
+        }
+        var questions = await Http.GetStringAsync($"/Questions?totalCategoryId={first}&period={period.Id}");
+        Assert.Contains("Saved period question", questions);
+        var create = await Http.GetStringAsync($"/QuestionCategories/Create?totalCategoryId={first}");
+        Assert.DoesNotContain("Related Content", create);
+    }
+
     [TestInitialize]
     public override async Task CreateServer()
     {

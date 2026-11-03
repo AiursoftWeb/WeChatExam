@@ -91,14 +91,16 @@ public class TotalCategoriesController(WeChatExamDbContext context, IAuthorizati
     public async Task<IActionResult> Edit(Guid id, string? checkReturnUrl = null)
     {
         ViewData["CheckReturnUrl"] = Url.IsLocalUrl(checkReturnUrl) ? checkReturnUrl : null;
-        var category = await context.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
-        if (category == null) return NotFound();
+        var contents = await Contents().SingleOrDefaultAsync(c => c.Category.Id == id);
+        if (contents == null) return NotFound();
+        var category = contents.Category;
 
         return this.StackView(new EditViewModel
         {
             Id = category.Id,
             Title = category.Title,
-            OrderIndex = category.OrderIndex
+            OrderIndex = category.OrderIndex,
+            Contents = contents
         });
     }
 
@@ -110,7 +112,11 @@ public class TotalCategoriesController(WeChatExamDbContext context, IAuthorizati
         if (id != model.Id) return NotFound();
         var category = await context.TotalCategories.SingleOrDefaultAsync(c => c.Id == id);
         if (category == null) return NotFound();
-        if (!ModelState.IsValid) return this.StackView(model);
+        if (!ModelState.IsValid)
+        {
+            model.Contents = await Contents().SingleAsync(c => c.Category.Id == id);
+            return this.StackView(model);
+        }
 
         category.Title = model.Title.Trim();
         category.OrderIndex = model.OrderIndex;
@@ -118,4 +124,14 @@ public class TotalCategoriesController(WeChatExamDbContext context, IAuthorizati
         if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
         return RedirectToAction(nameof(Index));
     }
+
+    private IQueryable<ContentsViewModel> Contents() => context.TotalCategories.AsNoTracking()
+        .Select(category => new ContentsViewModel
+        {
+            Category = category,
+            PeriodCount = context.QuestionCategories.Count(c => c.TotalCategoryId == category.Id),
+            QuestionCount = context.Questions.Count(q => q.QuestionCategory!.TotalCategoryId == category.Id),
+            KnowledgeCategoryCount = context.KnowledgeCategories.Count(c => c.TotalCategoryId == category.Id),
+            MockPaperCount = context.MockPapers.Count(p => p.TotalCategoryId == category.Id)
+        });
 }

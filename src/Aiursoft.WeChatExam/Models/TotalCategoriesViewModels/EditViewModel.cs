@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Aiursoft.UiStack.Layout;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Aiursoft.WeChatExam.Models.TotalCategoriesViewModels;
 
@@ -11,6 +13,9 @@ public class EditViewModel : UiStackLayoutViewModel
     }
 
     public Guid Id { get; set; }
+
+    [BindNever, ValidateNever]
+    public ContentsViewModel? Contents { get; set; }
 
     [Required(ErrorMessage = "The {0} is required.")]
     [MaxLength(200, ErrorMessage = "The {0} cannot exceed {1} characters.")]

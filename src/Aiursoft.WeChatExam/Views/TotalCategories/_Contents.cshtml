@@ -1,0 +1,25 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@model Aiursoft.WeChatExam.Models.TotalCategoriesViewModels.ContentsViewModel
+
+<div class="d-grid gap-3" data-course-contents="@Model.Category.Id">
+    <a asp-controller="QuestionCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Category.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2 d-flex justify-content-between align-items-center gap-3">
+        @Localizer["Periods"] <span class="badge bg-secondary">@Model.PeriodCount</span>
+    </a>
+    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+    {
+        <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@Model.Category.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2 d-flex justify-content-between align-items-center gap-3">
+            @Localizer["Questions"] <span class="badge bg-secondary">@Model.QuestionCount</span>
+        </a>
+    }
+    <a asp-controller="KnowledgeCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Category.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2 d-flex justify-content-between align-items-center gap-3">
+        @Localizer["Knowledge Point Categories"] <span class="badge bg-secondary">@Model.KnowledgeCategoryCount</span>
+    </a>
+    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditPapers)).Succeeded)
+    {
+        <a asp-controller="MockPapers" asp-action="Index" asp-route-totalCategoryId="@Model.Category.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2 d-flex justify-content-between align-items-center gap-3">
+            @Localizer["Mock Papers"] <span class="badge bg-secondary">@Model.MockPaperCount</span>
+        </a>
+    }
+</div>
