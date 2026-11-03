@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Aiursoft.WeChatExam.Models.QuestionCategoriesViewModels;
 
@@ -13,6 +14,12 @@ public class EditViewModel : UiStackLayoutViewModel
     }
 
     public Guid Id { get; set; }
+
+    [BindNever, ValidateNever]
+    public TotalCategory? SavedTotalCategory { get; set; }
+
+    [BindNever]
+    public int QuestionCount { get; set; }
 
     [Required(ErrorMessage = "The {0} is required.")]
     [MaxLength(255, ErrorMessage = "The {0} cannot exceed {1} characters.")]

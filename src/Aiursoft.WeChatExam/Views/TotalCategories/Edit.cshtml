@@ -21,7 +21,7 @@
     <div class="col-lg-7 col-xl-6">
         <div class="card">
             <div class="card-body p-4">
-                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post" data-edit-form data-edit-dirty="@(!ViewData.ModelState.IsValid ? "true" : "false")">
                     <partial name="_ContentCheckReturn" />
                     @if (!creating)
                     {
@@ -60,4 +60,18 @@
             </div>
         </div>
     </div>
+    @if (Model.Contents != null)
+    {
+        <aside class="col-lg-5 col-xl-6 mt-4 mt-lg-0">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h2 class="h5 mb-2">@Localizer["Course Content"]</h2>
+                    <p class="text-muted mb-4">@Model.Contents.Category.Title</p>
+                    @await Html.PartialAsync("_Contents", Model.Contents)
+                </div>
+            </div>
+        </aside>
+    }
 </div>
+
+<script src="~/js/edit-navigation.js" asp-append-version="true" defer></script>

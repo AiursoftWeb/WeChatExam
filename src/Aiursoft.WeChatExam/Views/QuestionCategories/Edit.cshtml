@@ -1,4 +1,7 @@
 @model Aiursoft.WeChatExam.Models.QuestionCategoriesViewModels.EditViewModel
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
 @{
     var creating = Model.Id == Guid.Empty;
 }
@@ -21,7 +24,7 @@
     <div class="col-lg-7 col-xl-6">
         <div class="card">
             <div class="card-body p-4">
-                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post" data-edit-form data-edit-dirty="@(!ViewData.ModelState.IsValid ? "true" : "false")">
                     @if (!creating)
                     {
                         <input asp-for="Id" type="hidden" />
@@ -82,4 +85,26 @@
             </div>
         </div>
     </div>
+    @if (!creating && Model.SavedTotalCategory != null)
+    {
+        <aside class="col-lg-5 col-xl-6 mt-4 mt-lg-0">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h2 class="h5 mb-3">@Localizer["Related Content"]</h2>
+                    <p class="mb-4">
+                        @Localizer["Total Category"]:
+                        <a asp-controller="TotalCategories" asp-action="Edit" asp-route-id="@Model.SavedTotalCategory.Id">@Model.SavedTotalCategory.Title</a>
+                    </p>
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+                    {
+                        <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@Model.SavedTotalCategory.Id" asp-route-period="@Model.Id" class="btn btn-outline-primary py-2 d-flex justify-content-between align-items-center gap-3">
+                            @Localizer["View Questions"] <span class="badge bg-secondary">@Model.QuestionCount</span>
+                        </a>
+                    }
+                </div>
+            </div>
+        </aside>
+    }
 </div>
+
+<script src="~/js/edit-navigation.js" asp-append-version="true" defer></script>
