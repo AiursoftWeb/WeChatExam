@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const labels = document.querySelector('[data-editor-localization]');
     const translate = (key, fallback) => labels?.querySelector(`[data-key="${key}"]`)?.textContent || fallback;
     const selected = document.getElementById('selected-questions-container');
+    const typeFilter = document.getElementById('type-filter');
+    if (selected && typeFilter && !typeFilter.value) typeFilter.value = 'Choice';
     const selectedIds = () => [...form.querySelectorAll('input[name="SelectedQuestionIds"]')].map(input => input.value);
     const element = (tag, className, text) => {
         const node = document.createElement(tag);
@@ -14,7 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function selectQuestion(question) {
-        if (!selected || selectedIds().includes(question.id)) return;
+        if (!selected || selectedIds().includes(question.id)) return false;
+        // Search returns enum names for MTQL and numbers for content search.
+        if (question.questionType !== 'Choice' && question.questionType !== 0 && question.questionType !== '0') {
+            window.alert(translate('choice-only', 'Knowledge point exercises support choice questions only.'));
+            return false;
+        }
         const row = element('div', 'list-group-item d-flex gap-2 justify-content-between align-items-center');
         row.dataset.questionId = question.id;
         row.append(element('span', 'text-break', question.title));
@@ -26,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         row.append(remove, hidden);
         selected.append(row);
         form.dispatchEvent(new Event('question-selection-changed'));
+        return true;
     }
     selected?.addEventListener('click', event => {
         const button = event.target.closest('[data-remove-question]');
@@ -198,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const add = element('button', 'btn btn-sm btn-outline-primary flex-shrink-0 text-nowrap', translate('associate', 'Associate'));
                     add.type = 'button'; add.dataset.associateQuestion = question.id;
                     add.disabled = selectedIds().includes(question.id);
-                    add.addEventListener('click', () => { selectQuestion(question); add.disabled = true; });
+                    add.addEventListener('click', () => { if (selectQuestion(question)) add.disabled = true; });
                     row.append(add); results.append(row);
                 }
             } catch (error) {

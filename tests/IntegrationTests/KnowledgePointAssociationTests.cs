@@ -98,6 +98,77 @@ public class KnowledgePointAssociationTests
     }
 
     [TestMethod]
+    public async Task KnowledgeEditorRejectsNewTextExercisesButPreservesLegacyLinks()
+    {
+        await LoginAsAdminAsync();
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = QuestionPeriodAssignmentTests.TestPeriod(isFree: true);
+        var directory = new KnowledgeCategory { Id = Guid.NewGuid(), Title = "Free directory", TotalCategoryId = _courseId, IsFree = true };
+        var choice = new Question { Id = Guid.NewGuid(), Content = "Choice exercise", QuestionCategory = period, QuestionType = QuestionType.Choice };
+        var blank = new Question { Id = Guid.NewGuid(), Content = "Blank exercise", QuestionCategory = period, QuestionType = QuestionType.Blank };
+        var legacy = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Legacy lesson", Content = "Original body" };
+        db.AddRange(directory, choice, blank, legacy,
+            new KnowledgeCategoryKnowledgePoint { KnowledgePointId = legacy.Id, KnowledgeCategoryId = directory.Id },
+            new KnowledgePointQuestion { KnowledgePointId = legacy.Id, QuestionId = blank.Id });
+        await db.SaveChangesAsync();
+
+        var create = new Dictionary<string, string> { ["Title"] = "New lesson", ["Content"] = "New body",
+            ["SelectedKnowledgeCategoryIds[0]"] = directory.Id.ToString(),
+            ["SelectedQuestionIds[0]"] = blank.Id.ToString(),
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken("/KnowledgePoints/Create") };
+        var rejected = await _http.PostAsync("/KnowledgePoints/Create", new FormUrlEncodedContent(create));
+        Assert.AreEqual(HttpStatusCode.OK, rejected.StatusCode);
+        Assert.Contains("support choice questions only", await rejected.Content.ReadAsStringAsync());
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Title == "New lesson"));
+
+        // A legacy text link is visible and removable, but must not lock unrelated lesson edits.
+        var legacyUrl = $"/KnowledgePoints/Edit/{legacy.Id}";
+        var legacyHtml = await _http.GetStringAsync(legacyUrl);
+        Assert.Contains("not supported here", legacyHtml);
+        var edit = new Dictionary<string, string> { ["Id"] = legacy.Id.ToString(), ["Title"] = "Updated legacy lesson",
+            ["Content"] = "Updated body", ["SelectedKnowledgeCategoryIds[0]"] = directory.Id.ToString(),
+            ["SelectedQuestionIds[0]"] = blank.Id.ToString(),
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken(legacyUrl) };
+        Assert.AreEqual(HttpStatusCode.Found, (await _http.PostAsync(legacyUrl, new FormUrlEncodedContent(edit))).StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.IsTrue(await db.KnowledgePointQuestions.AnyAsync(k => k.KnowledgePointId == legacy.Id && k.QuestionId == blank.Id));
+
+        edit["SelectedQuestionIds[1]"] = choice.Id.ToString();
+        edit["__RequestVerificationToken"] = await GetAntiCsrfToken(legacyUrl);
+        Assert.AreEqual(HttpStatusCode.Found, (await _http.PostAsync(legacyUrl, new FormUrlEncodedContent(edit))).StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(2, await db.KnowledgePointQuestions.CountAsync(k => k.KnowledgePointId == legacy.Id));
+
+        // A newly introduced text link is rejected even if the editor is posted directly.
+        edit["SelectedQuestionIds[0]"] = choice.Id.ToString();
+        edit["SelectedQuestionIds[1]"] = blank.Id.ToString();
+        var clean = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Clean lesson", Content = "Body" };
+        db.AddRange(clean, new KnowledgeCategoryKnowledgePoint { KnowledgePointId = clean.Id, KnowledgeCategoryId = directory.Id },
+            new KnowledgePointQuestion { KnowledgePointId = clean.Id, QuestionId = choice.Id });
+        await db.SaveChangesAsync();
+        edit["Id"] = clean.Id.ToString();
+        var cleanUrl = $"/KnowledgePoints/Edit/{clean.Id}";
+        edit["__RequestVerificationToken"] = await GetAntiCsrfToken(cleanUrl);
+        rejected = await _http.PostAsync(cleanUrl, new FormUrlEncodedContent(edit));
+        Assert.AreEqual(HttpStatusCode.OK, rejected.StatusCode);
+        Assert.Contains("support choice questions only", await rejected.Content.ReadAsStringAsync());
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(choice.Id, (await db.KnowledgePointQuestions.SingleAsync(k => k.KnowledgePointId == clean.Id)).QuestionId);
+
+        var questionUrl = $"/Questions/Edit/{choice.Id}";
+        var changeType = new Dictionary<string, string> { ["Id"] = choice.Id.ToString(), ["Content"] = choice.Content,
+            ["QuestionType"] = QuestionType.Blank.ToString(), ["GradingStrategy"] = GradingStrategy.ExactMatch.ToString(),
+            ["QuestionCategoryId"] = period.Id.ToString(), ["StandardAnswer"] = "answer",
+            ["__RequestVerificationToken"] = await GetAntiCsrfToken(questionUrl) };
+        rejected = await _http.PostAsync(questionUrl, new FormUrlEncodedContent(changeType));
+        Assert.AreEqual(HttpStatusCode.OK, rejected.StatusCode);
+        Assert.Contains("support choice questions only", await rejected.Content.ReadAsStringAsync());
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(QuestionType.Choice, (await db.Questions.FindAsync(choice.Id))!.QuestionType);
+    }
+
+    [TestMethod]
     [DataRow(false, false)]
     [DataRow(false, true)]
     [DataRow(true, false)]
@@ -849,6 +920,9 @@ public class KnowledgePointAssociationTests
         var data = await ExercisePlacement(false, false);
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        // This test covers pricing, with a supported exercise type.
+        (await db.Questions.FindAsync(data.Exercise.Id))!.QuestionType = QuestionType.Choice;
+        await db.SaveChangesAsync();
         var freeDirectory = new KnowledgeCategory { Id = Guid.NewGuid(), Title = "Free destination", TotalCategoryId = _courseId, IsFree = true };
         db.Add(freeDirectory);
         await db.SaveChangesAsync();

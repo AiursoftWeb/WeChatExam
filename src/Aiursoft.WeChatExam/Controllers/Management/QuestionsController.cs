@@ -484,6 +484,16 @@ public class QuestionsController(
         var question = await context.Questions.FindAsync(id);
         if (question == null) return NotFound();
 
+        // Changing a linked choice to a text question would break the knowledge card.
+        // Leave pre-existing text links alone so unrelated edits remain possible.
+        if (model.QuestionType != QuestionType.Choice && model.QuestionType != question.QuestionType &&
+            await context.KnowledgePointQuestions.AnyAsync(k => k.QuestionId == id))
+        {
+            ModelState.AddModelError(nameof(model.QuestionType), exerciseValidation.ChoiceOnly());
+            model.QuestionCategories = await GetQuestionCategories();
+            return this.StackView(model);
+        }
+
         if (!await context.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {
             ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
