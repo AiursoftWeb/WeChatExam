@@ -201,6 +201,21 @@ public class ManagementTests
             { "__RequestVerificationToken", childToken }
         }));
         Assert.AreEqual(HttpStatusCode.Found, childResponse.StatusCode);
+        var childId = childResponse.Headers.Location!.OriginalString.Split('/').Last().Split('?')[0];
+
+        var filledChild = new KnowledgeCategory
+        {
+            Title = $"Filled-Child-{Guid.NewGuid()}",
+            TotalCategoryId = course.Id,
+            ParentKnowledgeCategoryId = Guid.Parse(rootId)
+        };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Category count lesson", Content = "Lesson content" };
+        db.AddRange(filledChild, lesson, new KnowledgeCategoryKnowledgePoint
+        {
+            KnowledgeCategoryId = filledChild.Id,
+            KnowledgePointId = lesson.Id
+        });
+        await db.SaveChangesAsync();
 
         var indexResponse = await _http.GetAsync($"/KnowledgeCategories/Index?totalCategoryId={course.Id}");
         indexResponse.EnsureSuccessStatusCode();
@@ -212,6 +227,12 @@ public class ManagementTests
         Assert.Contains($"id=\"mermaid-source-{safeRootId}\"", indexHtml);
         Assert.Contains(rootTitle, indexHtml);
         Assert.Contains(childTitle, indexHtml);
+        var rootRow = Regex.Match(indexHtml, $@"<tr data-id=""{rootId}""[\s\S]*?</tr>").Value;
+        var emptyLeafRow = Regex.Match(indexHtml, $@"<tr data-id=""{childId}""[\s\S]*?</tr>").Value;
+        var filledLeafRow = Regex.Match(indexHtml, $@"<tr data-id=""{filledChild.Id}""[\s\S]*?</tr>").Value;
+        Assert.IsTrue(Regex.IsMatch(rootRow, @"<span class=""badge bg-secondary"">\s*0\s*</span>"));
+        Assert.IsTrue(Regex.IsMatch(emptyLeafRow, @"<span class=""badge bg-danger"">\s*0\s*</span>"));
+        Assert.IsTrue(Regex.IsMatch(filledLeafRow, @"<span class=""badge bg-secondary"">\s*1\s*</span>"));
         Assert.Contains("/js/knowledge-categories.js", indexHtml);
         Assert.Contains("category-diagram-node", indexHtml);
         Assert.DoesNotContain("style='width:180px;padding:8px;text-align:left'", indexHtml);
