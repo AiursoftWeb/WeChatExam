@@ -220,7 +220,7 @@ public class CategoryHierarchyTests
         var root = new KnowledgeCategory { Title = "Early music", TotalCategoryId = _courseId };
         var child = new KnowledgeCategory { Title = "Overview", TotalCategoryId = _courseId, ParentKnowledgeCategoryId = root.Id };
         var other = new KnowledgeCategory { Title = "Overview", TotalCategoryId = otherCourse.Id };
-        var lesson = new KnowledgePoint { Title = "Retained lesson", Content = "Retained content" };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Retained lesson", Content = "Retained content" };
         db.AddRange(otherCourse, root, child, other, lesson,
             new KnowledgeCategoryKnowledgePoint { KnowledgeCategoryId = child.Id, KnowledgePointId = lesson.Id });
         await db.SaveChangesAsync();
