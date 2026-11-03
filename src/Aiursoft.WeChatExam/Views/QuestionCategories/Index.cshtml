@@ -1,4 +1,8 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 @model Aiursoft.WeChatExam.Models.QuestionCategoriesViewModels.IndexViewModel
+@{ var canReadQuestions = (await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded; }
 
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <div>
@@ -68,9 +72,17 @@ else
                                 }
                             </p>
                             <p class="text-muted">@Localizer["Display Order"]: @category.OrderIndex</p>
-                            <a asp-action="Edit" asp-route-id="@category.Id" class="stretched-link text-decoration-none">
-                                @Localizer["Edit Period"] <i data-lucide="arrow-right" class="ms-1"></i>
-                            </a>
+                            <div class="d-flex flex-wrap gap-3 align-items-center">
+                                @if (canReadQuestions)
+                                {
+                                    <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@category.TotalCategoryId" asp-route-period="@category.Id" class="text-decoration-none">
+                                        @Localizer["View Questions"] <i data-lucide="arrow-right" class="ms-1"></i>
+                                    </a>
+                                }
+                                <a asp-action="Edit" asp-route-id="@category.Id" class="text-decoration-none">
+                                    @Localizer["Edit Period"]
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
