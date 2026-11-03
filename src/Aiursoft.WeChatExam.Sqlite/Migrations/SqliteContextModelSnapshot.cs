@@ -1112,6 +1112,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<bool>("IsFree")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsVisible")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(true);
+
                     b.Property<int>("OrderIndex")
                         .HasColumnType("INTEGER");
 

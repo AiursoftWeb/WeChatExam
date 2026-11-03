@@ -26,6 +26,9 @@ public class EditViewModel : UiStackLayoutViewModel
     [Display(Name = "Free Practice")]
     public bool IsFree { get; set; }
 
+    [Display(Name = "Visible to students")]
+    public bool IsVisible { get; set; } = true;
+
     [Range(0, int.MaxValue, ErrorMessage = "The {0} must be between {1} and {2}.")]
     [Display(Name = "Display Order")]
     public int OrderIndex { get; set; }

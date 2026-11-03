@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Services;
 
@@ -14,8 +15,17 @@ public static class QuestionAccess
     public static bool CanPractice(QuestionCategory category, PaperAccessStatus status) =>
         category.IsFree || status.ActiveCategoryVips.Contains(category.TotalCategoryId);
 
+    public static bool CanBrowse(QuestionCategory category, PaperAccessStatus status) =>
+        category.IsVisible && CanPractice(category, status);
+
+    public static Task<bool> HasKnowledgeContextAsync(WeChatExamDbContext context, Guid questionId,
+        Guid knowledgePointId, PaperAccessStatus status) => context.KnowledgePointQuestions.AsNoTracking()
+        .AnyAsync(link => link.QuestionId == questionId && link.KnowledgePointId == knowledgePointId &&
+            link.KnowledgePoint.KnowledgeCategoryKnowledgePoints.Any(placement =>
+                placement.KnowledgeCategory.IsFree || status.ActiveCategoryVips.Contains(placement.KnowledgeCategory.TotalCategoryId)));
+
     public static Expression<Func<Question, bool>> PracticeFilter(PaperAccessStatus status) =>
-        question => question.QuestionCategory!.IsFree ||
-                    status.ActiveCategoryVips.Contains(question.QuestionCategory.TotalCategoryId);
+        question => question.QuestionCategory!.IsVisible && (question.QuestionCategory.IsFree ||
+                    status.ActiveCategoryVips.Contains(question.QuestionCategory.TotalCategoryId));
 
 }

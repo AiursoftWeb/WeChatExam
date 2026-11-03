@@ -70,6 +70,7 @@ public class QuestionCategoriesController(
             Title = model.Title.Trim(),
             TotalCategoryId = model.TotalCategoryId!.Value,
             IsFree = model.IsFree,
+            IsVisible = model.IsVisible,
             OrderIndex = model.OrderIndex
         });
         await context.SaveChangesAsync();
@@ -87,6 +88,7 @@ public class QuestionCategoriesController(
             Title = category.Title,
             TotalCategoryId = category.TotalCategoryId,
             IsFree = category.IsFree,
+            IsVisible = category.IsVisible,
             OrderIndex = category.OrderIndex,
             TotalCategories = await GetTotalCategories()
         });
@@ -116,6 +118,7 @@ public class QuestionCategoriesController(
         category.Title = model.Title.Trim();
         category.TotalCategoryId = model.TotalCategoryId!.Value;
         category.IsFree = model.IsFree;
+        category.IsVisible = model.IsVisible;
         category.OrderIndex = model.OrderIndex;
         await context.SaveChangesAsync();
         if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);

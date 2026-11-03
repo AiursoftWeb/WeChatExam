@@ -143,6 +143,9 @@ public class UserPracticeHistoryController : ControllerBase
         // Check the same course entitlement as retrieval before grading (which can incur
         // a cost), exposing an answer, or writing history. A guessed question ID is not access.
         var status = await _paperAccessService.GetUserAccessStatusAsync(userId);
+        if ((!question.QuestionCategory!.IsVisible && !dto.KnowledgePointId.HasValue) ||
+            (dto.KnowledgePointId.HasValue && !await QuestionAccess.HasKnowledgeContextAsync(_context, question.Id, dto.KnowledgePointId.Value, status)))
+            return NotFound(new { Message = "Question not found" });
         if (!QuestionAccess.CanPractice(question.QuestionCategory!, status))
             return StatusCode(StatusCodes.Status403Forbidden, new
             {

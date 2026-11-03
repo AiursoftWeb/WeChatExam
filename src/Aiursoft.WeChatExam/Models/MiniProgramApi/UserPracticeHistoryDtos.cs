@@ -81,6 +81,8 @@ public class UserPracticeHistoryDto
 
 public class CreateUserPracticeHistoryDto
 {
+    public Guid? KnowledgePointId { get; set; }
+
     [Required]
     public Guid QuestionId { get; set; }
     

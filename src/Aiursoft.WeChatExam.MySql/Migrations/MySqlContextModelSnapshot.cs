@@ -1123,6 +1123,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<bool>("IsFree")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool>("IsVisible")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
                     b.Property<int>("OrderIndex")
                         .HasColumnType("int");
 

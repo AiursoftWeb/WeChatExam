@@ -175,7 +175,7 @@ public class ContentCheckService(
             report.Exercises[q.Id] = new(QuestionRef(q), points.Select(KnowledgeRef).ToList(),
                 CourseRef(courseIndex[q.QuestionCategory!.TotalCategoryId]), PeriodRef(q.QuestionCategory),
                 settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),
-                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.CanPractice(q.QuestionCategory, s.Status),
+                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.CanBrowse(q.QuestionCategory, s.Status),
                     points.Select(k => new KnowledgeContentAccess(KnowledgeRef(k),
                         Placements(k.Id).Any(c => KnowledgeAccess.CanRead(c, s.Status)))).ToList())).ToList());
         }
@@ -196,9 +196,11 @@ public class ContentCheckService(
         {
             foreach (var scenario in report.Scenarios)
             {
-                var allowed = QuestionAccess.CanPractice(q.QuestionCategory!, scenario.Status);
+                var allowed = QuestionAccess.CanBrowse(q.QuestionCategory!, scenario.Status);
                 finding.Observations.Add(new(scenario.Name, $"GET /api/Questions/{q.Id}", allowed,
-                    allowed ? localizer["Question content is returned (200)."] : localizer["The question's subject VIP is required (403)."]));
+                    allowed ? localizer["Question content is returned (200)."] : !q.QuestionCategory!.IsVisible
+                        ? localizer["This period is hidden from independent practice (404)."]
+                        : localizer["The question's subject VIP is required (403)."]));
                 foreach (var pointId in linkedKnowledge[q.Id].Select(k => k.KnowledgePointId).Distinct())
                     finding.Observations.Add(new(scenario.Name, $"GET /api/KnowledgePoints/{pointId}",
                         Placements(pointId).Any(c => KnowledgeAccess.CanRead(c, scenario.Status)),
