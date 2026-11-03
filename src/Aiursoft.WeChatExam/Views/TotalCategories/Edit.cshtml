@@ -70,6 +70,7 @@
                     @await Html.PartialAsync("_Contents", Model.Contents)
                 </div>
             </div>
+            @await Component.InvokeAsync("CourseSales", new { totalCategoryId = Model.Id })
         </aside>
     }
 </div>

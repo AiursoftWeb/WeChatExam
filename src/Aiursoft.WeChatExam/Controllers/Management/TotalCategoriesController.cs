@@ -49,6 +49,7 @@ public class TotalCategoriesController(WeChatExamDbContext context, IAuthorizati
             Periods = await context.QuestionCategories.AsNoTracking().Where(c => c.TotalCategoryId == id)
                 .OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id)
                 .Take(PreviewCount).ToListAsync(),
+            KnowledgePointCount = await context.KnowledgePoints.CountAsync(k => k.KnowledgeCategoryKnowledgePoints.Any(a => a.KnowledgeCategory.TotalCategoryId == id)),
             KnowledgeCategoryCount = await context.KnowledgeCategories.CountAsync(c => c.TotalCategoryId == id),
             RootKnowledgeCategories = await context.KnowledgeCategories.AsNoTracking()
                 .Where(c => c.TotalCategoryId == id && c.ParentKnowledgeCategoryId == null)
@@ -132,6 +133,7 @@ public class TotalCategoriesController(WeChatExamDbContext context, IAuthorizati
             PeriodCount = context.QuestionCategories.Count(c => c.TotalCategoryId == category.Id),
             QuestionCount = context.Questions.Count(q => q.QuestionCategory!.TotalCategoryId == category.Id),
             KnowledgeCategoryCount = context.KnowledgeCategories.Count(c => c.TotalCategoryId == category.Id),
+            KnowledgePointCount = context.KnowledgePoints.Count(k => k.KnowledgeCategoryKnowledgePoints.Any(a => a.KnowledgeCategory.TotalCategoryId == category.Id)),
             MockPaperCount = context.MockPapers.Count(p => p.TotalCategoryId == category.Id)
         });
 }

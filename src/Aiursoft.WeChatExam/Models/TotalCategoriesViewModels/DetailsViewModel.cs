@@ -14,6 +14,7 @@ public class DetailsViewModel : UiStackLayoutViewModel
     public List<QuestionCategory> Periods { get; init; } = [];
     public int PeriodCount { get; init; }
     public List<KnowledgeCategory> RootKnowledgeCategories { get; init; } = [];
+    public int KnowledgePointCount { get; init; }
     public int KnowledgeCategoryCount { get; init; }
     public List<MockPaper> MockPapers { get; init; } = [];
     public int MockPaperCount { get; init; }

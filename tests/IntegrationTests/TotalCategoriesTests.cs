@@ -48,7 +48,7 @@ public class TotalCategoriesTests : TestBase
         Assert.Contains("Scoped period", await Http.GetStringAsync($"/TotalCategories/Details/{course.Id}"));
         var emptyHtml = await Http.GetStringAsync($"/TotalCategories/Edit/{empty.Id}");
         var emptyContents = Regex.Match(emptyHtml, $"data-course-contents=\"{empty.Id}\"[^>]*>(.*?)</div>", RegexOptions.Singleline).Groups[1].Value;
-        Assert.AreEqual(4, Regex.Matches(emptyContents, ">0</span>").Count);
+        Assert.AreEqual(5, Regex.Matches(emptyContents, ">0</span>").Count);
         var nextPage = await Http.GetStringAsync($"/Questions?totalCategoryId={course.Id}&page=2");
         Assert.Contains("Scoped question", nextPage);
         Assert.Contains(course.Id.ToString(), nextPage);
@@ -80,6 +80,84 @@ public class TotalCategoriesTests : TestBase
         Assert.Contains($"/KnowledgeCategories?totalCategoryId={course.Id}", html);
         Assert.DoesNotContain($"/Questions?totalCategoryId={course.Id}", html);
         Assert.DoesNotContain($"/MockPapers?totalCategoryId={course.Id}", html);
+        Assert.Contains("Ask an administrator with VIP product permissions", html);
+        Assert.DoesNotContain($"/VipProducts/Create?totalCategoryId={course.Id}", html);
+    }
+
+    [TestMethod]
+    public async Task CourseKnowledgePointsAreUniqueAndDirectoryFiltersKeepTheirScope()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Duplicate course" };
+        var other = new TotalCategory { Title = course.Title };
+        var root = new KnowledgeCategory { Title = "Root directory", TotalCategoryId = course.Id, TotalCategory = course };
+        var child = new KnowledgeCategory { Title = "Child directory", TotalCategoryId = course.Id, TotalCategory = course, ParentKnowledgeCategory = root };
+        var unrelated = new KnowledgeCategory { Title = root.Title, TotalCategoryId = other.Id, TotalCategory = other };
+        var point = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Shared point", Content = "Shared content" };
+        var otherPoint = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Other course point", Content = "Other content" };
+        db.KnowledgeCategoryKnowledgePoints.AddRange(
+            new KnowledgeCategoryKnowledgePoint { Id = Guid.NewGuid(), KnowledgeCategoryId = root.Id, KnowledgePointId = point.Id, KnowledgeCategory = root, KnowledgePoint = point },
+            new KnowledgeCategoryKnowledgePoint { Id = Guid.NewGuid(), KnowledgeCategoryId = child.Id, KnowledgePointId = point.Id, KnowledgeCategory = child, KnowledgePoint = point },
+            new KnowledgeCategoryKnowledgePoint { Id = Guid.NewGuid(), KnowledgeCategoryId = unrelated.Id, KnowledgePointId = otherPoint.Id, KnowledgeCategory = unrelated, KnowledgePoint = otherPoint });
+        await db.SaveChangesAsync();
+        var editor = await Http.GetStringAsync($"/TotalCategories/Edit/{course.Id}");
+        var link = Regex.Match(editor, $"<a[^>]*href=\"/KnowledgePoints\\?totalCategoryId={course.Id}\"[^>]*>(.*?)</a>", RegexOptions.Singleline);
+        Assert.IsTrue(link.Success);
+        Assert.Contains(">1</span>", link.Groups[1].Value);
+        foreach (var path in new[] { $"/KnowledgePoints?totalCategoryId={course.Id}", $"/KnowledgePoints?knowledgeCategoryId={child.Id}", $"/KnowledgePoints?totalCategoryId={course.Id}&knowledgeCategoryId={root.Id}" })
+        {
+            var html = await Http.GetStringAsync(path);
+            Assert.AreEqual(1, Regex.Matches(html, ">Shared point</td>").Count);
+            Assert.DoesNotContain("Other course point", html);
+            Assert.Contains($"/TotalCategories/Details/{course.Id}", html);
+        }
+        Assert.Contains($"/KnowledgePoints?totalCategoryId={course.Id}", await Http.GetStringAsync($"/TotalCategories/Details/{course.Id}"));
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/KnowledgePoints?totalCategoryId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/KnowledgePoints?knowledgeCategoryId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/KnowledgePoints?totalCategoryId={other.Id}&knowledgeCategoryId={root.Id}")).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task CourseSalesUseSavedScopeAndPreselectTheExactCourse()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Sales course" };
+        var other = new TotalCategory { Title = course.Title };
+        db.TotalCategories.AddRange(course, other);
+        await db.SaveChangesAsync();
+        var path = $"/TotalCategories/Edit/{course.Id}";
+        var empty = await Http.GetStringAsync(path);
+        Assert.Contains("Students cannot buy this course.", empty);
+        Assert.Contains($"/VipProducts/Create?totalCategoryId={course.Id}", empty);
+        var create = await Http.GetStringAsync($"/VipProducts/Create?totalCategoryId={course.Id}");
+        Assert.IsTrue(Regex.IsMatch(create, $"<option[^>]*selected[^>]*value=\"{course.Id}\""));
+        var product = new VipProduct { Name = "Exact course plan", Type = VipProductType.Category, TotalCategoryId = course.Id, PriceInFen = 1234, DurationDays = 30, IsEnabled = false };
+        db.VipProducts.AddRange(product, new VipProduct { Name = "Different course plan", Type = VipProductType.Category, TotalCategoryId = other.Id, PriceInFen = 100, DurationDays = 7 });
+        await db.SaveChangesAsync();
+        var paused = await Http.GetStringAsync(path);
+        Assert.Contains("Sales paused", paused);
+        Assert.Contains("12.34", paused);
+        Assert.Contains($"/VipProducts/Edit/{product.Id}", paused);
+        Assert.DoesNotContain("Different course plan", paused);
+        product.IsEnabled = true;
+        db.VipProducts.Add(new VipProduct { Name = "Second course plan", Type = VipProductType.Category, TotalCategoryId = course.Id, PriceInFen = 100, DurationDays = 7, IsEnabled = false });
+        await db.SaveChangesAsync();
+        Assert.Contains("On sale", await Http.GetStringAsync(path));
+        Assert.Contains($"/VipProducts?totalCategoryId={course.Id}", await Http.GetStringAsync(path));
+        var filtered = await Http.GetStringAsync($"/VipProducts?totalCategoryId={course.Id}&search=course");
+        Assert.Contains("Exact course plan", filtered);
+        Assert.Contains("Second course plan", filtered);
+        Assert.DoesNotContain("Different course plan", filtered);
+        Assert.Contains($"name=\"totalCategoryId\" value=\"{course.Id}\"", filtered);
+        var invalid = await PostForm(path, new Dictionary<string, string> { ["Id"] = course.Id.ToString(), ["Title"] = "", ["OrderIndex"] = "-1" });
+        Assert.Contains($"data-course-sales=\"{course.Id}\"", await invalid.Content.ReadAsStringAsync());
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/VipProducts/Create?totalCategoryId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/VipProducts?totalCategoryId={course.Id}&institutionId={Guid.NewGuid()}")).StatusCode);
+        Assert.DoesNotContain("data-course-sales", await Http.GetStringAsync("/TotalCategories/Create"));
     }
 
     [TestInitialize]

@@ -10,5 +10,8 @@ public class IndexViewModel : UiStackLayoutViewModel
         PageTitle = "KnowledgePoints";
     }
 
+    public TotalCategory? Course { get; init; }
+    public KnowledgeCategory? Category { get; init; }
+
     public List<KnowledgePoint> KnowledgePoints { get; set; } = new();
 }
