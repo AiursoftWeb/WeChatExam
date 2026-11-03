@@ -78,21 +78,30 @@ else
                     <p class="text-break mb-2"><a asp-controller="Institutions" asp-action="Edit" asp-route-id="@paper.InstitutionId" class="position-relative z-1">@paper.Institution.Title</a></p>
                     <p class="text-muted mb-2">@string.Format(@Localizer["{0} minutes"].Value, paper.TimeLimit)</p>
                     <p class="mb-4">@Localizer["Requires institution VIP"]</p>
-                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
-                    {
-                        <a asp-action="Versions" asp-route-id="@paper.Id" class="btn btn-outline-primary position-relative z-1 d-block mb-3">@Localizer["Versions and Publication"]</a>
-                    }
                     @if (paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
                     {
                         @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
                         {
-                            <a asp-action="Questions" asp-route-id="@paper.Id" class="stretched-link text-decoration-none">@Localizer["Manage Questions"] <i data-lucide="arrow-right" class="ms-1"></i></a>
-                            <a asp-action="Edit" asp-route-id="@paper.Id" class="btn btn-outline-secondary position-relative z-1 d-block mt-3">@Localizer["Paper Settings"]</a>
+                            <a asp-action="Questions" asp-route-id="@paper.Id" class="btn btn-outline-primary d-block mb-3">@Localizer["Manage Questions"]</a>
                         }
-                        else
-                        {
-                            <a asp-action="Edit" asp-route-id="@paper.Id" class="stretched-link text-decoration-none">@Localizer["Edit Real Paper"]</a>
-                        }
+                    }
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+                    {
+                        <a asp-action="Versions" asp-route-id="@paper.Id" class="btn btn-outline-secondary d-block mb-3">@Localizer["Versions and Publication"]</a>
+                    }
+                    @if (paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
+                    {
+                        <a asp-action="Edit" asp-route-id="@paper.Id" class="text-decoration-none">
+                            @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+                            {
+                                @Localizer["Paper Settings"]
+                            }
+                            else
+                            {
+                                @Localizer["Edit Real Paper"]
+                            }
+                            <i data-lucide="arrow-right" class="ms-1"></i>
+                        </a>
                     }
                 </div></div>
             </div>
