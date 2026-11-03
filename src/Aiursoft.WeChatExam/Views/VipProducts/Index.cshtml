@@ -6,6 +6,7 @@
 <div class="card mb-3">
     <div class="card-body">
         <form method="get" class="row g-2 align-items-end">
+            <input type="hidden" name="showDisabled" value="@Model.ShowDisabled.ToString().ToLowerInvariant()" />
             <div class="col-auto">
                 <label class="form-label">@Localizer["Search"]</label>
                 <input type="text" name="search" value="@Model.SearchQuery" class="form-control form-control-sm" placeholder="@Localizer["Search by name, category or institution"]" />
@@ -23,6 +24,19 @@
         </form>
     </div>
 </div>
+
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+        <a asp-action="Index" asp-route-search="@Model.SearchQuery" class="nav-link @(!Model.ShowDisabled ? "active" : "")" aria-current="@(!Model.ShowDisabled ? "page" : null)">
+            @Localizer["Enabled"] (@Model.EnabledCount)
+        </a>
+    </li>
+    <li class="nav-item">
+        <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-showDisabled="true" class="nav-link @(Model.ShowDisabled ? "active" : "")" aria-current="@(Model.ShowDisabled ? "page" : null)">
+            @Localizer["Disabled"] (@Model.DisabledCount)
+        </a>
+    </li>
+</ul>
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">

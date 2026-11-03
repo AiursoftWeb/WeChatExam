@@ -28,7 +28,7 @@ public class VipProductsController(
         CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? search)
+    public async Task<IActionResult> Index(string? search, bool showDisabled = false)
     {
         var products = await vipProductService.GetAllAsync();
 
@@ -41,10 +41,16 @@ public class VipProductsController(
                 .ToList();
         }
 
+        var enabledCount = products.Count(p => p.IsEnabled);
+        var disabledCount = products.Count - enabledCount;
+
         return this.StackView(new IndexViewModel
         {
-            Products = products,
-            SearchQuery = search
+            Products = products.Where(p => p.IsEnabled != showDisabled).ToList(),
+            SearchQuery = search,
+            ShowDisabled = showDisabled,
+            EnabledCount = enabledCount,
+            DisabledCount = disabledCount
         });
     }
 
