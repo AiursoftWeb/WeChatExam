@@ -156,7 +156,7 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
             .SingleOrDefaultAsync(q => q.Id == item.SourceQuestionId, cancellationToken);
         if (question?.QuestionCategory == null) return NotFound();
         var access = await accessService.GetUserAccessStatusAsync(userId);
-        if (!QuestionAccess.CanPractice(question.QuestionCategory, access)) return StatusCode(StatusCodes.Status403Forbidden);
+        if (!QuestionAccess.CanBrowse(question.QuestionCategory, access)) return StatusCode(StatusCodes.Status403Forbidden);
 
         // The conditional write holds this row until grading and all local history commit.
         // Concurrent requests cannot grade it again. Rollback leaves it retryable, including
@@ -290,8 +290,8 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         {
             var submitted = i.SubmittedAt.HasValue;
             var exists = current.TryGetValue(i.SourceQuestionId, out var question) && question.QuestionCategory != null;
-            var allowed = exists && QuestionAccess.CanPractice(question!.QuestionCategory!, access);
-            var availability = submitted ? "Answered" : !exists ? "QuestionUnavailable" : allowed ? "Ready" : "MembershipRequired";
+            var allowed = exists && QuestionAccess.CanBrowse(question!.QuestionCategory!, access);
+            var availability = submitted ? "Answered" : !exists || !question!.QuestionCategory!.IsVisible ? "QuestionUnavailable" : allowed ? "Ready" : "MembershipRequired";
             return new PracticeSessionItemDto(i.Id, i.Position, i.SourceQuestionId, availability,
                 submitted || allowed ? i.Content : null, i.QuestionType, submitted || allowed ? i.Metadata : null,
                 i.SubmittedAt, i.UserAnswer, i.IsCorrect, i.Score, submitted ? i.StandardAnswer : null,
