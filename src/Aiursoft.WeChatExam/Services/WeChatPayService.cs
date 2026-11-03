@@ -96,13 +96,13 @@ public class WeChatPayService(
         if (retried != null) return (retried, null);
         var product = await dbContext.VipProducts.Include(v => v.TotalCategory).Include(v => v.Institution)
             .FirstOrDefaultAsync(v => v.Id == productId);
-        if (product is not { IsEnabled: true }) return (null, "The requested VIP product is unavailable.");
+        if (product is not { IsEnabled: true } || product.Type is not (VipProductType.Category or VipProductType.Institution))
+            return (null, "The requested VIP product is unavailable.");
 
         var now = DateTime.UtcNow;
         if (await dbContext.VipMemberships.AnyAsync(v => v.UserId == userId && v.VipProduct != null &&
-            ((v.VipProduct.Type == product.Type && v.VipProduct.TotalCategoryId == product.TotalCategoryId &&
-              v.VipProduct.InstitutionId == product.InstitutionId) ||
-             (product.Type == VipProductType.Institution && v.VipProduct.Type == VipProductType.RealExam)) &&
+            v.VipProduct.Type == product.Type && v.VipProduct.TotalCategoryId == product.TotalCategoryId &&
+            v.VipProduct.InstitutionId == product.InstitutionId &&
             v.StartTime <= now && v.EndTime > now))
             return (null, "The requested membership is already active. Purchase again after it expires.");
 

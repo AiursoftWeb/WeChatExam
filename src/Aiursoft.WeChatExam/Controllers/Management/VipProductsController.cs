@@ -94,6 +94,7 @@ public class VipProductsController(
 
         var product = await vipProductService.GetByIdAsync(id.Value);
         if (product == null) return NotFound();
+        if (product.Type == VipProductType.RealExam) return NotFound();
 
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
         return this.StackView(new EditViewModel
@@ -121,6 +122,7 @@ public class VipProductsController(
         if (id != model.Id) return NotFound();
         var product = await vipProductService.GetByIdAsync(id);
         if (product == null) return NotFound();
+        if (product.Type == VipProductType.RealExam) return NotFound();
         model.TargetLocked = await vipProductService.HasPurchasesAsync(id);
         if (model.TargetLocked)
         {
@@ -165,6 +167,8 @@ public class VipProductsController(
 
     private async Task ValidateTargetAsync(VipProductType type, Guid? totalCategoryId, Guid? institutionId)
     {
+        if (type is not (VipProductType.Category or VipProductType.Institution))
+            ModelState.AddModelError("Type", localizer["Invalid VIP product type."]);
         if (type == VipProductType.Category &&
             (!totalCategoryId.HasValue || !await dbContext.TotalCategories.AnyAsync(c => c.Id == totalCategoryId.Value)))
         {

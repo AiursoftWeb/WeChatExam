@@ -176,7 +176,7 @@ public class ExamsApiTests : TestBase
     [DataRow(true, false, "course", -1, 1, false)]
     [DataRow(true, false, "wrong-school", -1, 1, false)]
     [DataRow(true, false, "school", -1, 1, true)]
-    [DataRow(true, false, "global", -1, 1, true)]
+    [DataRow(true, false, "global", -1, 1, false)]
     [DataRow(true, false, "school", -2, -1, false)]
     [DataRow(true, false, "school", 1, 2, false)]
     public async Task PublicScheduleRequiresWholePaperEntitlementBeforeCreatingAnAttempt(

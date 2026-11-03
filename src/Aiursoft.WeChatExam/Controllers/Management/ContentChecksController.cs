@@ -28,9 +28,9 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     [HttpGet]
     public async Task<IActionResult> Results(string view = "all", string? severity = null, string? rule = null,
         string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null,
-        bool realExam = false, bool changed = false, Guid[]? institutions = null)
+        bool changed = false, Guid[]? institutions = null)
     {
-        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam, institutions);
+        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, institutions);
         model.Changed = changed;
         var results = model.Groups.Where(g => view == "engineering" ? g.NeedsEngineering : !g.NeedsEngineering);
         if (Enum.TryParse<CheckSeverity>(severity, out var level)) results = results.Where(g => g.Severity == level);
@@ -56,10 +56,10 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
 
     [HttpGet]
     public async Task<IActionResult> Details(string key, string view = "all", string? severity = null, string? rule = null,
-        string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null, bool realExam = false,
+        string? search = null, Guid? categoryId = null, int page = 1, Guid[]? subjects = null,
         Guid? exerciseId = null, Guid[]? institutions = null)
     {
-        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, realExam, institutions);
+        var model = await ScanAsync(view, severity, rule, search, categoryId, page, subjects, institutions);
         model.Selected = model.Groups.FirstOrDefault(g => g.Key == key);
         model.ResultsUrl = ReportUrl(model);
         // Each request reads live data. A corrected or deleted finding must not lead to
@@ -81,9 +81,9 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
     }
 
     private async Task<IndexViewModel> ScanAsync(string view, string? severity, string? rule, string? search,
-        Guid? categoryId, int page, Guid[]? subjects, bool realExam, Guid[]? institutions)
+        Guid? categoryId, int page, Guid[]? subjects, Guid[]? institutions)
     {
-        var report = await checks.ScanAsync(subjects ?? [], realExam, HttpContext.RequestAborted, institutions);
+        var report = await checks.ScanAsync(subjects ?? [], HttpContext.RequestAborted, institutions);
         var groups = ContentFindingGroup.Build(report.Findings);
         foreach (var group in groups)
         {
@@ -93,7 +93,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         return new IndexViewModel
         {
             Report = report, Groups = groups, View = view, Severity = severity, Rule = rule,
-            Search = search, CategoryId = categoryId, Page = page, Subjects = subjects ?? [], RealExam = realExam, Institutions = institutions ?? []
+            Search = search, CategoryId = categoryId, Page = page, Subjects = subjects ?? [], Institutions = institutions ?? []
         };
     }
 
@@ -140,7 +140,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         {
             new("view", view ?? model.View), new("page", (page ?? model.Page).ToString()),
             new("severity", model.Severity), new("rule", model.Rule), new("search", model.Search),
-            new("categoryId", model.CategoryId?.ToString()), new("realExam", model.RealExam.ToString())
+            new("categoryId", model.CategoryId?.ToString())
         };
         values.AddRange(model.Subjects.Select(id => new KeyValuePair<string, string?>("subjects", id.ToString())));
         values.AddRange(model.Institutions.Select(id => new KeyValuePair<string, string?>("institutions", id.ToString())));

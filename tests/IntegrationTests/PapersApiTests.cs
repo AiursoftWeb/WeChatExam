@@ -530,7 +530,7 @@ public class PapersApiTests
     }
 
     [TestMethod]
-    public async Task RealPaperAccessRequiresTheSchoolOrLegacyAllSchoolMembership()
+    public async Task RealPaperAccessRequiresTheSchoolMembership()
     {
         var (paperId, snapshotId, school) = await CreatePublishedReal();
         Guid course;
@@ -585,18 +585,16 @@ public class PapersApiTests
         await Check(false);
         foreach (var denied in new[] { SchoolMembership(Guid.NewGuid()), SchoolMembership(school, -2, -1),
                      SchoolMembership(school, 1, 2), Membership(VipProductType.Category, course, -1, 1),
-                     Membership(VipProductType.RealExam, null, -2, -1), Membership(VipProductType.RealExam, null, 1, 2) })
+                     Membership(VipProductType.RealExam, null, -2, -1), Membership(VipProductType.RealExam, null, 1, 2),
+                     Membership(VipProductType.RealExam, null, -1, 1) })
         {
             _mockWeChatPayService.Memberships = [denied];
             await Check(false);
         }
-        foreach (var accepted in new[] { SchoolMembership(school), Membership(VipProductType.RealExam, null, -1, 1) })
-        {
-            _mockWeChatPayService.Memberships = [accepted];
-            await Check(true);
-            // Owning the school must not grant paid question-bank access in either course.
-            Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{original}")).StatusCode);
-        }
+        _mockWeChatPayService.Memberships = [SchoolMembership(school)];
+        await Check(true);
+        // Owning the school must not grant paid question-bank access in either course.
+        Assert.AreEqual(HttpStatusCode.Forbidden, (await _http.GetAsync($"/api/Questions/{original}")).StatusCode);
         _http.DefaultRequestHeaders.Authorization = null;
         await Check(false); // Do not reuse the preceding user's access for a guest.
     }
@@ -711,7 +709,7 @@ public class PapersApiTests
         var (_, otherSnapshot, _) = await CreatePublishedReal();
         var (_, mockSnapshot, _) = await CreatePublishedMock(true);
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsWeChatUserAsync());
-        _mockWeChatPayService.Memberships = [Membership(VipProductType.RealExam, null, -1, 1)];
+        _mockWeChatPayService.Memberships = [SchoolMembership(school)];
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var question = await db.QuestionSnapshots.FirstAsync(q => q.PaperSnapshotId == snapshotId);
@@ -721,9 +719,9 @@ public class PapersApiTests
         var input = new CreateUserPracticeHistoryDto { QuestionId = question.Id, UserAnswer = " Real secret " };
         foreach (var wrong in new[] { otherSnapshot, mockSnapshot, legacy.Id, Guid.NewGuid() })
         {
-            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.PostAsJsonAsync($"/api/RealPapers/snapshots/{wrong}/answers", input)).StatusCode);
-            if (wrong != otherSnapshot)
-                Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/RealPapers/snapshots/{wrong}")).StatusCode);
+            var expected = wrong == otherSnapshot ? HttpStatusCode.Forbidden : HttpStatusCode.NotFound;
+            Assert.AreEqual(expected, (await _http.PostAsJsonAsync($"/api/RealPapers/snapshots/{wrong}/answers", input)).StatusCode);
+            Assert.AreEqual(expected, (await _http.GetAsync($"/api/RealPapers/snapshots/{wrong}")).StatusCode);
         }
         var url = $"/api/RealPapers/snapshots/{snapshotId}/answers";
         Assert.AreEqual(HttpStatusCode.BadRequest, (await _http.PostAsJsonAsync(url, new { questionId = question.Id, userAnswer = (string?)null })).StatusCode);

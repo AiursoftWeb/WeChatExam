@@ -283,10 +283,6 @@
                         <option value="@institution.Id" selected="@(Model.Institutions.Contains(institution.Id))">@institution.Title</option>
                     }
                 </select>
-                <div class="form-check mb-3">
-                    <input type="checkbox" id="realExam" name="realExam" value="true" checked="@Model.RealExam" class="form-check-input" />
-                    <label for="realExam" class="form-check-label">@Localizer["Legacy real-exam VIP (all institutions)"]</label>
-                </div>
                 <button class="btn btn-outline-primary" type="submit">@Localizer["Check this scenario"]</button>
             </form>
         </details>

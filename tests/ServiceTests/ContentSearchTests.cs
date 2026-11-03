@@ -338,7 +338,7 @@ public class ContentSearchTests
         var cache = new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance);
         var service = CreateRelated(db, cache, handler);
         // Even an all-institution member has no additional independent course rights.
-        var result = await service.FindAsync(Captured(source), new PaperAccessStatus { HasRealExamVip = true });
+        var result = await service.FindAsync(Captured(source), new PaperAccessStatus());
         Assert.IsTrue(result.Available);
         CollectionAssert.AreEquivalent(choices.Select(q => q.Id).ToArray(), result.Items.Select(q => q.Id).ToArray());
         Assert.IsTrue(result.Items.All(q => !q.SameQuestionCategory));
