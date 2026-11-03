@@ -57,8 +57,14 @@
   <data name="Edit / Categorize" xml:space="preserve">
     <value>編輯 / 分類</value>
   </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>編輯標籤</value>
+  </data>
   <data name="Failed to delete tags:" xml:space="preserve">
     <value>刪除標籤失敗：</value>
+  </data>
+  <data name="Grouping is optional for internal tags." xml:space="preserve">
+    <value>內部標籤可選擇是否分組。</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>管理分類</value>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add Knowledge Directory" xml:space="preserve">
+    <value>Добавить каталог знаний</value>
+  </data>
+  <data name="Add Mock Paper" xml:space="preserve">
+    <value>Добавить пробный экзамен</value>
+  </data>
+  <data name="Add Period" xml:space="preserve">
+    <value>Добавить период</value>
+  </data>
+  <data name="Back to Courses" xml:space="preserve">
+    <value>Назад к курсам</value>
+  </data>
+  <data name="Course Contents" xml:space="preserve">
+    <value>Содержание курса</value>
+  </data>
+  <data name="Edit Course Settings" xml:space="preserve">
+    <value>Изменить настройки курса</value>
+  </data>
+  <data name="Knowledge Directories" xml:space="preserve">
+    <value>Каталоги знаний</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Элементы знаний</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Пробные экзаменационные работы</value>
+  </data>
+  <data name="No knowledge directories in this course yet." xml:space="preserve">
+    <value>В этом курсе пока нет каталогов знаний.</value>
+  </data>
+  <data name="No mock papers in this course yet." xml:space="preserve">
+    <value>В этом курсе пока нет пробных экзаменационных работ.</value>
+  </data>
+  <data name="No periods in this course yet." xml:space="preserve">
+    <value>В этом курсе пока нет периодов.</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Периоды</value>
+  </data>
+  <data name="Top-level directories" xml:space="preserve">
+    <value>Каталоги верхнего уровня</value>
+  </data>
+  <data name="View All Knowledge Directories" xml:space="preserve">
+    <value>Просмотреть все разделы базы знаний</value>
+  </data>
+  <data name="View All Mock Papers" xml:space="preserve">
+    <value>Посмотреть все пробные экзамены</value>
+  </data>
+  <data name="View All Periods" xml:space="preserve">
+    <value>Посмотреть все периоды</value>
+  </data>
+
+</root>

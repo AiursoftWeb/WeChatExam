@@ -33,6 +33,12 @@
   <data name="Edit Period" xml:space="preserve">
     <value>แก้ไขช่วงเวลา</value>
   </data>
+  <data name="Hidden periods are excluded from browsing and random practice. Papers and linked knowledge points can still use their questions." xml:space="preserve">
+    <value>ช่วงเวลาที่ซ่อนอยู่จะไม่แสดงในการเรียกดูและการฝึกแบบสุ่ม แต่ข้อสอบและจุดความรู้ที่เชื่อมโยงกันยังสามารถใช้คำถามของช่วงเวลาเหล่านี้ได้</value>
+  </data>
+  <data name="Related Content" xml:space="preserve">
+    <value>เนื้อหาที่เกี่ยวข้อง</value>
+  </data>
   <data name="Save and return to content checks" xml:space="preserve">
     <value>บันทึกและกลับไปยังการตรวจสอบเนื้อหา</value>
   </data>
@@ -41,6 +47,12 @@
   </data>
   <data name="Smaller numbers appear first." xml:space="preserve">
     <value>ตัวเลขที่น้อยกว่าจะปรากฏก่อน</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>หมวดหมู่รวม</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>ดูคำถาม</value>
   </data>
   <data name="When disabled, practice requires membership of the selected course." xml:space="preserve">
     <value>เมื่อปิดใช้งาน การฝึกจะต้องเป็นสมาชิกของหลักสูตรที่เลือก</value>

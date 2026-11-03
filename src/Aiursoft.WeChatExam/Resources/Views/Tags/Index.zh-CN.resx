@@ -60,6 +60,9 @@
   <data name="Failed to delete tags:" xml:space="preserve">
     <value>删除标签失败：</value>
   </data>
+  <data name="Grouping is optional for internal tags." xml:space="preserve">
+    <value>内部标签可以不归入分类体系。</value>
+  </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>管理分类</value>
   </data>
@@ -95,9 +98,6 @@
   </data>
   <data name="Tags Management" xml:space="preserve">
     <value>标签管理</value>
-  </data>
-  <data name="Grouping is optional for internal tags." xml:space="preserve">
-    <value>内部标签可以不归入分类体系。</value>
   </data>
   <data name="Toggle Dropdown" xml:space="preserve">
     <value>切换下拉菜单</value>

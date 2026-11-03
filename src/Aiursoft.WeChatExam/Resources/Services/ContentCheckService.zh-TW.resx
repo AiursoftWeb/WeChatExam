@@ -234,6 +234,9 @@
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
     <value>請檢視此機構的 VIP 產品。課程 VIP 無法解鎖正式考卷；現有的全機構正式考試會員資格仍可使用。</value>
   </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
+    <value>請檢查此機構的 VIP 產品。課程 VIP 無法解鎖正式試卷。</value>
+  </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>已登入但沒有啟用中的 VIP</value>
   </data>
@@ -284,6 +287,9 @@
   </data>
   <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
     <value>此試卷僅保留供管理及歷史考試使用，無法透過目前的學生試卷清單取得。</value>
+  </data>
+  <data name="This period is hidden from independent practice (404)." xml:space="preserve">
+    <value>此時段不會顯示於自主練習中 (404)。</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>此產品無法授予預期的機構會員資格。</value>

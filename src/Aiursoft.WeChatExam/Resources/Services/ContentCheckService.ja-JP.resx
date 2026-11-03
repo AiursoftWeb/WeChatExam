@@ -234,6 +234,9 @@
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
     <value>この機関のVIP商品を確認してください。コースVIPでは実際の試験問題は解放されませんが、全機関対象の実試験会員権は引き続き利用できます。</value>
   </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
+    <value>この教育機関のVIP商品を確認してください。コースVIPでは実際の試験問題は利用できません。</value>
+  </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>VIPが有効でない状態でログイン</value>
   </data>
@@ -284,6 +287,9 @@
   </data>
   <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
     <value>この用紙は管理および過去の試験のために保管されています。現在の学生向け用紙一覧には掲載されていません。</value>
+  </data>
+  <data name="This period is hidden from independent practice (404)." xml:space="preserve">
+    <value>この期間は独習の対象として非表示です（404）。</value>
   </data>
   <data name="This product cannot grant the intended institution membership." xml:space="preserve">
     <value>この商品では、対象の機関の会員資格を付与できません。</value>

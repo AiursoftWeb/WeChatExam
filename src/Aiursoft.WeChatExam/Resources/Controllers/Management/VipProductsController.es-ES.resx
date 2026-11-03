@@ -18,11 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing institution." xml:space="preserve">
+      <data name="Invalid VIP product type." xml:space="preserve">
+    <value>Tipo de producto VIP no válido.</value>
+  </data>
+  <data name="Select an existing institution." xml:space="preserve">
     <value>Seleccione una institución existente.</value>
   </data>
   <data name="Select an existing total category." xml:space="preserve">
     <value>Selecciona una categoría de totales existente.</value>
+  </data>
+  <data name="This product has audit history. Disable it instead of deleting it." xml:space="preserve">
+    <value>Este producto tiene un historial de auditoría. Desactívelo en lugar de eliminarlo.</value>
   </data>
   <data name="This product has orders or memberships. Create a new product to change its access scope." xml:space="preserve">
     <value>Este producto tiene pedidos o suscripciones. Crea un producto nuevo para cambiar su ámbito de acceso.</value>

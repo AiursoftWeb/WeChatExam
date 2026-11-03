@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Create Institution" xml:space="preserve">
+      <data name="{0} drafts" xml:space="preserve">
+    <value>{0} Entwürfe</value>
+  </data>
+  <data name="{0} visible papers" xml:space="preserve">
+    <value>{0} sichtbare Arbeiten</value>
+  </data>
+  <data name="Create Institution" xml:space="preserve">
     <value>Institution erstellen</value>
   </data>
   <data name="Create your first institution" xml:space="preserve">
@@ -59,6 +65,9 @@
   </data>
   <data name="Show all institutions" xml:space="preserve">
     <value>Alle Institutionen anzeigen</value>
+  </data>
+  <data name="This institution is not yet visible to students." xml:space="preserve">
+    <value>Diese Einrichtung ist für Studierende noch nicht sichtbar.</value>
   </data>
   <data name="View Real Papers" xml:space="preserve">
     <value>Echte Unterlagen ansehen</value>

@@ -1,10 +1,11 @@
-<?xml version='1.0' encoding='utf-8'?>
-<root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:schema id="root">
-        <xs:element name="root" ns1:IsDataSet="true">
+<?xml version="1.0" encoding="utf-8"?>
 
-        </xs:element>
-    </xs:schema>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
     <resheader name="resmimetype">
         <value>text/microsoft-resx</value>
     </resheader>
@@ -40,6 +41,9 @@
   </data>
   <data name="Correct" xml:space="preserve">
     <value>正确</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>创建年代</value>
   </data>
   <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
     <value>自定义排序索引。数字越小越靠前。当前最大索引为：</value>
@@ -123,7 +127,4 @@
     <value>输入以搜索或添加标签...</value>
   </data>
 
-<data name="Create Period" xml:space="preserve">
-    <value>创建年代</value>
-  </data>
-  </root>
+</root>
