@@ -46,6 +46,9 @@ public class ExtractService : IExtractService
         // Recheck at save time as well as before queuing: pricing can change while AI runs.
         if (data.Any(k => k.Questions.Count > 0))
         {
+            var typeError = _exerciseValidation.ValidateExtractedQuestionTypes(
+                data.SelectMany(k => k.Questions).Select(q => q.QuestionType));
+            if (typeError != null) throw new InvalidOperationException(typeError);
             var error = await _exerciseValidation.ValidateExtractionAsync(knowledgeCategoryId, questionCategoryId, token);
             if (error != null) throw new InvalidOperationException(error);
         }
@@ -96,7 +99,7 @@ public class ExtractService : IExtractService
                                 Content = qDto.QuestionContent,
                                 QuestionType = qDto.QuestionType,
                                 GradingStrategy = gradingStrategy,
-                                Metadata = JsonConvert.SerializeObject(qDto.Metadata),
+                                Metadata = JsonConvert.SerializeObject(new { options = qDto.Metadata }),
                                 StandardAnswer = qDto.StandardAnswer,
                                 Explanation = qDto.Explanation,
                                 QuestionCategoryId = questionCategoryId,

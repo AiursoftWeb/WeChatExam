@@ -87,6 +87,8 @@ public class KnowledgePointsController(
     {
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
         await ValidateQuestions(model.SelectedQuestionIds);
+        var typeError = await exerciseValidation.ValidateNewQuestionTypesAsync(model.SelectedQuestionIds);
+        if (typeError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), typeError);
         var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
         if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
@@ -220,6 +222,13 @@ public class KnowledgePointsController(
 
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
         await ValidateQuestions(model.SelectedQuestionIds);
+        // Existing unsupported links remain editable/removable until the teacher resolves them.
+        // Only reject newly selected questions; never silently remove saved associations.
+        var existingQuestionIds = await context.KnowledgePointQuestions.AsNoTracking()
+            .Where(k => k.KnowledgePointId == id).Select(k => k.QuestionId).ToListAsync();
+        var typeError = await exerciseValidation.ValidateNewQuestionTypesAsync(
+            model.SelectedQuestionIds.Except(existingQuestionIds));
+        if (typeError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), typeError);
         var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
         if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
