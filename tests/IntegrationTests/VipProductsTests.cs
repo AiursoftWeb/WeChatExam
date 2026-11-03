@@ -12,6 +12,63 @@ namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
 public class VipProductsTests : TestBase
 {
     [TestMethod]
+    public async Task RealPaperAndInstitutionEditorsShowTheSavedInstitutionsSalesState()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var institution = new Institution { Title = "School with a paper" };
+        var other = new Institution { Title = "Other school" };
+        db.Institutions.AddRange(institution, other);
+        var paper = new RealPaper { Title = "Paper for sale", Institution = institution, TimeLimit = 180 };
+        db.RealPapers.Add(paper);
+        await db.SaveChangesAsync();
+
+        var paperPath = $"/RealPapers/Edit/{paper.Id}";
+        var noProduct = await Http.GetStringAsync(paperPath);
+        Assert.Contains("No VIP product is configured.", noProduct);
+        Assert.Contains($"/VipProducts/Create?institutionId={institution.Id}", noProduct);
+        Assert.Contains("Saving a new VIP product immediately opens sales.", noProduct);
+        var create = await Http.GetStringAsync($"/VipProducts/Create?institutionId={institution.Id}");
+        Assert.Contains("School with a paper", create);
+        var optionPosition = create.IndexOf($"value=\"{institution.Id}\"", StringComparison.Ordinal);
+        Assert.IsTrue(optionPosition >= 0);
+        var selectedOption = create[create.LastIndexOf("<option", optionPosition, StringComparison.Ordinal)..create.IndexOf("</option>", optionPosition, StringComparison.Ordinal)];
+        Assert.Contains("selected", selectedOption);
+
+        var product = new VipProduct
+        {
+            Name = "School plan", Type = VipProductType.Institution, InstitutionId = institution.Id,
+            PriceInFen = 1234, DurationDays = 90, IsEnabled = false
+        };
+        db.VipProducts.Add(product);
+        await db.SaveChangesAsync();
+        var paused = await Http.GetStringAsync(paperPath);
+        Assert.Contains("Sales paused", paused);
+        Assert.Contains("School plan", paused);
+        Assert.Contains("12.34", paused);
+        Assert.Contains($"/VipProducts/Edit/{product.Id}", paused);
+        Assert.Contains("Sales paused", await Http.GetStringAsync($"/Institutions/Edit/{institution.Id}"));
+
+        var filtered = await Http.GetStringAsync($"/VipProducts?institutionId={institution.Id}");
+        Assert.Contains("School plan", filtered);
+        Assert.DoesNotContain("Other school plan", filtered);
+        product.IsEnabled = true;
+        db.VipProducts.Add(new VipProduct
+        {
+            Name = "Other school plan", Type = VipProductType.Institution, InstitutionId = other.Id,
+            PriceInFen = 100, DurationDays = 30, IsEnabled = true
+        });
+        await db.SaveChangesAsync();
+        var onSale = await Http.GetStringAsync(paperPath);
+        Assert.Contains("On sale", onSale);
+        Assert.Contains("School plan", onSale);
+        Assert.DoesNotContain("Other school plan", onSale);
+        filtered = await Http.GetStringAsync($"/VipProducts?institutionId={institution.Id}");
+        Assert.DoesNotContain("Other school plan", filtered);
+    }
+
+    [TestMethod]
     public async Task EditorOffersOnlyTotalCategoriesAndRejectsKnowledgeDirectoryIds()
     {
         await LoginAsAdmin();
