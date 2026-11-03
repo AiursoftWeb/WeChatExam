@@ -80,14 +80,7 @@
                             @foreach (var paper in Model.MockPapers)
                             {
                                 <li class="mb-2 text-break">
-                                    @if (Model.CanReadQuestions)
-                                    {
-                                        <a asp-controller="MockPapers" asp-action="Questions" asp-route-id="@paper.Id">@paper.Title</a>
-                                    }
-                                    else
-                                    {
-                                        @paper.Title
-                                    }
+                                    <a asp-controller="MockPapers" asp-action="Questions" asp-route-id="@paper.Id">@paper.Title</a>
                                 </li>
                             }
                         </ul>
