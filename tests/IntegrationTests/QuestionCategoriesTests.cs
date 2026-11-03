@@ -41,6 +41,62 @@ public class QuestionCategoriesTests : TestBase
         Assert.DoesNotContain("Related Content", create);
     }
 
+    [TestMethod]
+    public async Task CourseScopedQuestionCreationKeepsScopeAndRejectsAnotherCoursesPeriod()
+    {
+        await LoginAsAdmin();
+        var (course, other) = await CreateCourses();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = new QuestionCategory { Title = "Scoped creation period", TotalCategoryId = course };
+        var otherPeriod = new QuestionCategory { Title = "Unrelated creation period", TotalCategoryId = other };
+        db.QuestionCategories.AddRange(period, otherPeriod);
+        await db.SaveChangesAsync();
+        var list = await Http.GetStringAsync($"/Questions?totalCategoryId={course}");
+        Assert.Contains($"/Questions/Create?totalCategoryId={course}", list);
+        var path = $"/Questions/Create?totalCategoryId={course}";
+        var html = await Http.GetStringAsync(path);
+        Assert.Contains("Scoped creation period", html);
+        Assert.DoesNotContain("Unrelated creation period", html);
+        Assert.Contains($"name=\"TotalCategoryId\" value=\"{course}\"", html);
+        var count = await db.Questions.CountAsync();
+        var data = new Dictionary<string, string>
+        {
+            ["Content"] = "Keep this question draft", ["TotalCategoryId"] = course.ToString(),
+            ["QuestionCategoryId"] = otherPeriod.Id.ToString(), ["QuestionType"] = "Blank",
+            ["GradingStrategy"] = "ExactMatch", ["StandardAnswer"] = "Answer"
+        };
+        var invalid = await PostForm(path, data);
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        html = await invalid.Content.ReadAsStringAsync();
+        Assert.Contains("Keep this question draft", html);
+        Assert.DoesNotContain("Unrelated creation period", html);
+        Assert.Contains($"/Questions?totalCategoryId={course}", html);
+        Assert.AreEqual(count, await db.Questions.CountAsync());
+        data["QuestionCategoryId"] = period.Id.ToString();
+        data["ReturnUrl"] = $"/Questions?totalCategoryId={course}";
+        var saved = await PostForm(path, data);
+        AssertRedirect(saved, data["ReturnUrl"]);
+        Assert.AreEqual(period.Id, (await db.Questions.SingleAsync(q => q.Content == data["Content"])).QuestionCategoryId);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/Questions/Create?totalCategoryId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync(path + $"&questionCategoryId={otherPeriod.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/Questions/Create?totalCategoryId=invalid")).StatusCode);
+        data["TotalCategoryId"] = "invalid";
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await PostForm(path, data)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task EmptyCourseQuestionFormExplainsMissingPeriodsAndKeepsSafeReturn()
+    {
+        await LoginAsAdmin();
+        var (course, _) = await CreateCourses();
+        var html = await Http.GetStringAsync($"/Questions/Create?totalCategoryId={course}&returnUrl=https://example.invalid");
+        Assert.Contains("This course has no question categories.", html);
+        Assert.Contains($"/QuestionCategories/Create?totalCategoryId={course}", html);
+        Assert.DoesNotContain("href=\"https://example.invalid", html);
+        Assert.Contains("disabled", html);
+    }
+
     [TestInitialize]
     public override async Task CreateServer()
     {

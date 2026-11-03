@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Aiursoft.UiStack.Layout;
 using Aiursoft.WeChatExam.Entities;
 
@@ -57,6 +59,11 @@ public class CreateViewModel : UiStackLayoutViewModel
     public List<QuestionCategory> QuestionCategories { get; set; } = new();
 
     public List<string> Options { get; set; } = new();
+
+    public Guid? TotalCategoryId { get; set; }
+
+    [BindNever, ValidateNever]
+    public TotalCategory? Course { get; set; }
 
     public string? ReturnUrl { get; set; }
 }

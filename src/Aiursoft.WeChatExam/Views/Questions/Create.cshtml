@@ -4,11 +4,33 @@
 
 <h1 class="h3 mb-3">@Localizer["Add Question"]</h1>
 
+@if (Model.Course != null)
+{
+    <div class="card mb-3"><div class="card-body">
+        <p class="mb-3 text-break"><strong>@Model.Course.Title</strong></p>
+        @if (!Model.QuestionCategories.Any())
+        {
+            <p class="text-warning-emphasis">@Localizer["This course has no question categories. Add one before creating questions."]</p>
+        }
+        <div class="d-flex flex-wrap gap-3 align-items-center">
+            @if (!Model.QuestionCategories.Any() && User.HasClaim(AppPermissions.Type, AppPermissionNames.CanEditAnyCategory))
+            {
+                <a asp-controller="QuestionCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2">@Localizer["Create Period"]</a>
+            }
+            @if (User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions))
+            {
+                <a asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id">@Localizer["Back to Questions"]</a>
+            }
+        </div>
+    </div></div>
+}
+
 <div class="row g-3">
 <div class="@(User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadQuestions) ? "col-xl-8" : "col-12")">
-<form asp-action="Create" method="post" data-content-editor>
+<form asp-action="Create" method="post" data-content-editor data-edit-form data-edit-dirty="@(!ViewData.ModelState.IsValid ? "true" : "false")">
     <div asp-validation-summary="All" class="text-danger mb-3"></div>
     <input type="hidden" asp-for="ReturnUrl" />
+    <input type="hidden" asp-for="TotalCategoryId" />
     <div class="card mb-3">
         <div class="card-body">
             <div class="mb-3">
@@ -103,8 +125,8 @@
             </div>
         </div>
         <div class="card-footer text-end">
-            <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
-            <a href="@(string.IsNullOrWhiteSpace(Model.ReturnUrl) ? Url.Action("Index", new { period = Model.QuestionCategoryId }) : Model.ReturnUrl)" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
+            <button type="submit" class="btn btn-primary" disabled="@(Model.Course != null && !Model.QuestionCategories.Any())">@Localizer["Save"]</button>
+            <a href="@(Url.IsLocalUrl(Model.ReturnUrl) ? Model.ReturnUrl : Url.Action("Index", new { totalCategoryId = Model.TotalCategoryId, period = Model.QuestionCategoryId }))" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
         </div>
     </div>
 </form>
@@ -132,3 +154,5 @@
     <script src="~/js/tag-input.js" asp-append-version="true"></script>
     <script src="~/js/content-editor.js" asp-append-version="true"></script>
 }
+
+<script src="~/js/edit-navigation.js" asp-append-version="true" defer></script>
