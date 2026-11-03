@@ -962,6 +962,9 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("Kind")
+                        .HasColumnType("int");
+
                     b.Property<int>("ReplacementVersion")
                         .HasColumnType("int");
 

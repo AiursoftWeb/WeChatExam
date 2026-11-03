@@ -29,6 +29,7 @@ public class MigrationTests
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO PracticeSessionItems (Id, SessionId, Position, SourceQuestionId, Content, QuestionType, GradingStrategy, Metadata, StandardAnswer, Explanation) VALUES ({itemId}, {sessionId}, 0, {sourceId}, 'Old question', 0, 0, '{{}}', 'A', 'Explanation')");
         await migrator.MigrateAsync();
         var round = await db.PracticeSessions.Include(s => s.Items).SingleAsync();
+        Assert.AreEqual(PracticeSessionKind.Related, round.Kind, "Old rounds keep their original behavior.");
         Assert.AreEqual(0, round.ReplacementVersion); Assert.HasCount(1, round.Items);
         var old = round.Items.Single(); Assert.IsNull(old.ReplacedAt); Assert.IsNull(old.ReplacementReason);
         Assert.AreEqual(sourceId, old.SourceQuestionId); Assert.AreEqual("Old question", old.Content);

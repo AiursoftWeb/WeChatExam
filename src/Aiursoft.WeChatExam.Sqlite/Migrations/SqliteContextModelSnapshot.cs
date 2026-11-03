@@ -951,6 +951,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Kind")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ReplacementVersion")
                         .HasColumnType("INTEGER");
 

@@ -11,10 +11,18 @@ public class PracticeSession
     [StringLength(64)] public required string UserId { get; init; }
     [ForeignKey(nameof(UserId)), JsonIgnore] public User? User { get; init; }
     public Guid SourceMistakeId { get; init; }
+    // Existing sessions are related-question rounds. Keep zero as their persisted default.
+    public PracticeSessionKind Kind { get; init; } = PracticeSessionKind.Related;
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;
     // Serializes replacements across different positions without holding a lock during vector search.
     public int ReplacementVersion { get; set; }
     public List<PracticeSessionItem> Items { get; init; } = [];
+}
+
+public enum PracticeSessionKind
+{
+    Related = 0,
+    BlindSpot = 1
 }
 
 /// <summary>

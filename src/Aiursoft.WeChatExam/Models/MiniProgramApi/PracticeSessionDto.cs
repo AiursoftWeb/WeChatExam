@@ -20,7 +20,10 @@ public class ReplacePracticeSessionItemDto
 }
 
 public record PracticeSessionDto(Guid Id, Guid SourceMistakeId, DateTime CreationTime,
-    int AnsweredCount, bool Completed, IReadOnlyList<PracticeSessionItemDto> Items);
+    int AnsweredCount, bool Completed, IReadOnlyList<PracticeSessionItemDto> Items)
+{
+    public PracticeSessionKind Kind { get; init; }
+}
 
 public record PracticeSessionItemDto(Guid Id, int Position, Guid SourceQuestionId,
     string Availability, string? Content, QuestionType QuestionType, string? Metadata,
