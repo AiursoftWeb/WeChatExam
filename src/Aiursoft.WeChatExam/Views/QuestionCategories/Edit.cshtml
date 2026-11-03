@@ -97,7 +97,7 @@
                     </p>
                     @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
                     {
-                        <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@Model.SavedTotalCategory.Id" asp-route-period="@Model.Id" class="btn btn-outline-primary py-2 d-flex justify-content-between align-items-center gap-3">
+                        <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@Model.SavedTotalCategory.Id" asp-route-period="@Model.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2 d-flex justify-content-between align-items-center gap-3">
                             @Localizer["View Questions"] <span class="badge bg-secondary">@Model.QuestionCount</span>
                         </a>
                     }
