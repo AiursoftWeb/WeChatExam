@@ -23,6 +23,32 @@ public class InstitutionsTests : TestBase
     }
 
     [TestMethod]
+    public async Task InstitutionCardsCountPublishedSnapshotsAndShowDrafts()
+    {
+        await LoginAsAdmin();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var visible = new Institution { Title = "Visible school" };
+            var draftOnly = new Institution { Title = "Draft-only school" };
+            var missingSnapshot = new Institution { Title = "Missing-snapshot school" };
+            db.Institutions.AddRange(visible, draftOnly, missingSnapshot);
+            var published = new RealPaper { Title = "Ready paper", Institution = visible, Status = PaperStatus.Publishable };
+            db.RealPapers.AddRange(published,
+                new RealPaper { Title = "Unpublished draft", Institution = visible },
+                new RealPaper { Title = "Draft at other school", Institution = draftOnly },
+                new RealPaper { Title = "Status without snapshot", Institution = missingSnapshot, Status = PaperStatus.Publishable });
+            db.PaperSnapshots.Add(new PaperSnapshot { Title = "Ready version", RealPaperId = published.Id, Version = 1 });
+            await db.SaveChangesAsync();
+        }
+
+        var html = await Http.GetStringAsync("/Institutions");
+        Assert.Contains("1 visible papers", html);
+        Assert.Contains("1 drafts", html);
+        Assert.AreEqual(2, System.Text.RegularExpressions.Regex.Matches(html, "This institution is not yet visible to students").Count);
+    }
+
+    [TestMethod]
     public async Task AdministratorsCanCreateEditAndOrderIndependentInstitutions()
     {
         await LoginAsAdmin();
