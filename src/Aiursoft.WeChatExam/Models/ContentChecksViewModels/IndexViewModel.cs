@@ -127,7 +127,6 @@ public class IndexViewModel : UiStackLayoutViewModel
     public Guid? CategoryId { get; set; }
     public Guid[] Institutions { get; set; } = [];
     public Guid[] Subjects { get; set; } = [];
-    public bool RealExam { get; set; }
     public bool Changed { get; set; }
     public List<ContentExercise> Exercises { get; set; } = [];
     public ContentExercise? Exercise { get; set; }

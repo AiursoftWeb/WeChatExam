@@ -569,7 +569,7 @@ public class KnowledgePointAssociationTests
             var details = WebUtility.HtmlDecode(await _http.GetStringAsync(url));
             StringAssert.Contains(details, $"/{controller}/{action}/{id}");
             StringAssert.Contains(details, "Active institution VIPs");
-            StringAssert.Contains(details, "Legacy real-exam VIP (all institutions)");
+            Assert.DoesNotContain("Legacy real-exam VIP (all institutions)", details);
             using var editor = await _http.GetAsync($"/{controller}/{action}/{id}");
             Assert.AreEqual(HttpStatusCode.OK, editor.StatusCode);
             if (controller == "RealPapers")
@@ -732,7 +732,7 @@ public class KnowledgePointAssociationTests
             if (question == a) Assert.Contains("Read full exercise", relation);
         }
         // Sale availability is separate from an already purchased, active membership.
-        var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([], false);
+        var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([]);
         Assert.IsTrue(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Relation course").Allowed);
         Assert.IsFalse(report.Exercises[a.Id].Access.Single(x => x.Scenario == "Subject VIP: Other relation course").Allowed);
         Assert.AreEqual(Models.ContentChecksViewModels.ContentPricing.Public, report.Exercises[free.Id].Question.Pricing);

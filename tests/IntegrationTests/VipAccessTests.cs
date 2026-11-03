@@ -297,11 +297,11 @@ public class VipAccessTests
         async Task Compare(string scenarioName)
         {
             using var scope = _server!.Services.CreateScope();
-            var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([other.Id], false);
+            var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([other.Id]);
             var scenario = report.Scenarios.Single(s => s.Name == scenarioName);
             // Include all course choices on demand, not only the exercise's own course.
             report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>()
-                .ScanAsync(scenario.Status.ActiveCategoryVips.ToArray(), scenario.Status.HasRealExamVip);
+                .ScanAsync(scenario.Status.ActiveCategoryVips.ToArray());
             var access = report.Exercises[exercise.Id].Access.Single(a => a.Scenario ==
                 (scenarioName == "Anonymous" ? "Anonymous" : scenarioName == "Signed in without active VIP" ? scenarioName : "Custom VIP selection"));
             using var questionResponse = await _http.GetAsync($"/api/Questions/{exercise.Id}");
@@ -348,11 +348,11 @@ public class VipAccessTests
                 new QuestionSnapshot { PaperSnapshotId = realVersion.Id, Content = "Retained mixed-course paper" });
             await db.SaveChangesAsync();
         }
-        async Task Compare(Guid[] subjects, Guid[] institutions, bool global)
+        async Task Compare(Guid[] subjects, Guid[] institutions)
         {
             using var scope = _server!.Services.CreateScope();
             var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>()
-                .ScanAsync(subjects, global, institutions: institutions);
+                .ScanAsync(subjects, institutions: institutions);
             foreach (var (id, controller, version) in new[] { (mock.Id, "MockPapers", mockVersion.Id), (real.Id, "RealPapers", realVersion.Id) })
             {
                 var finding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects[0].Id == id.ToString());
@@ -362,22 +362,22 @@ public class VipAccessTests
                 Assert.AreEqual(observation.Allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, response.StatusCode);
             }
         }
-        await Compare([], [], false);
+        await Compare([], []);
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsync());
-        await Compare([], [], false);
+        await Compare([], []);
         var product = new VipProduct { Name = "Off-sale membership", Type = VipProductType.Institution, InstitutionId = otherSchool.Id, IsEnabled = false };
         _mockWeChatPayService.Memberships = [new VipMembership
         {
             UserId = "u", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1)
         }];
-        await Compare([], [otherSchool.Id], false);
+        await Compare([], [otherSchool.Id]);
         product.InstitutionId = school.Id;
-        await Compare([], [school.Id], false);
+        await Compare([], [school.Id]);
         product.Type = VipProductType.Category;
         product.TotalCategoryId = course.Id;
-        await Compare([course.Id], [], false);
+        await Compare([course.Id], []);
         product.Type = VipProductType.RealExam;
-        await Compare([], [], true);
+        await Compare([], []);
     }
 
     [TestMethod]

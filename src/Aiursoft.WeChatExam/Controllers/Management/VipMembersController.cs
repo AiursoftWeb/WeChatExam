@@ -92,7 +92,9 @@ public class VipMembersController(
     [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
     public async Task<IActionResult> Create(string? userId)
     {
-        var products = await dbContext.VipProducts.OrderBy(p => p.Name).ToListAsync();
+        var products = await dbContext.VipProducts
+            .Where(p => p.Type == VipProductType.Category || p.Type == VipProductType.Institution)
+            .OrderBy(p => p.Name).ToListAsync();
         var model = new CreateViewModel
         {
             VipProducts = products.Select(p => new SelectListItem($"{p.Name} ({p.DurationDays} days)", p.Id.ToString())).ToList(),
@@ -123,10 +125,17 @@ public class VipMembersController(
         {
             ModelState.AddModelError(nameof(model.UserId), "User not found.");
         }
+        if (!await dbContext.VipProducts.AnyAsync(p => p.Id == model.VipProductId &&
+            (p.Type == VipProductType.Category || p.Type == VipProductType.Institution)))
+        {
+            ModelState.AddModelError(nameof(model.VipProductId), "Select an available VIP product.");
+        }
 
         if (!ModelState.IsValid)
         {
-            var products = await dbContext.VipProducts.OrderBy(p => p.Name).ToListAsync();
+            var products = await dbContext.VipProducts
+                .Where(p => p.Type == VipProductType.Category || p.Type == VipProductType.Institution)
+                .OrderBy(p => p.Name).ToListAsync();
             model.VipProducts = products.Select(p => new SelectListItem($"{p.Name} ({p.DurationDays} days)", p.Id.ToString())).ToList();
             if (user != null) model.UserName = user.DisplayName;
             return this.StackView(model);

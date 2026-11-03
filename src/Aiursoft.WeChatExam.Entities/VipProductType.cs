@@ -11,13 +11,13 @@ public enum VipProductType
     Category = 0,
 
     /// <summary>
-    /// 真题 VIP（独立于分类，购买后可访问所有真题试卷）
+    /// Reserved historical database value. New products and entitlements must not use it.
     /// </summary>
     RealExam = 1,
 
     /// <summary>
     /// Real-paper access for one institution; never grants independent course access.
-    /// Keep existing enum values unchanged for purchased memberships and orders.
+    /// Keep this numeric value unchanged while historical type 1 records remain stored.
     /// </summary>
     Institution = 2
 }
