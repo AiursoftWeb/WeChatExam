@@ -60,6 +60,9 @@
   <data name="No questions found." xml:space="preserve">
     <value>Δεν βρέθηκαν ερωτήσεις.</value>
   </data>
+  <data name="Only choice questions can be associated with knowledge points." xml:space="preserve">
+    <value>Μόνο οι ερωτήσεις πολλαπλής επιλογής μπορούν να συσχετιστούν με σημεία γνώσης.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Γονικό Σημείο Γνώσης</value>
   </data>
@@ -77,6 +80,9 @@
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Επιλεγμένες Ερωτήσεις</value>
+  </data>
+  <data name="This question type is not supported here. Remove or replace it." xml:space="preserve">
+    <value>Αυτός ο τύπος ερώτησης δεν υποστηρίζεται εδώ. Αφαιρέστε τον ή αντικαταστήστε τον.</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Τίτλος</value>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add Knowledge Directory" xml:space="preserve">
+    <value>Προσθήκη φακέλου γνώσης</value>
+  </data>
+  <data name="Add Mock Paper" xml:space="preserve">
+    <value>Προσθήκη δοκιμαστικού διαγωνίσματος</value>
+  </data>
+  <data name="Add Period" xml:space="preserve">
+    <value>Προσθήκη περιόδου</value>
+  </data>
+  <data name="Back to Courses" xml:space="preserve">
+    <value>Επιστροφή στα μαθήματα</value>
+  </data>
+  <data name="Course Contents" xml:space="preserve">
+    <value>Περιεχόμενα μαθήματος</value>
+  </data>
+  <data name="Edit Course Settings" xml:space="preserve">
+    <value>Επεξεργασία ρυθμίσεων μαθήματος</value>
+  </data>
+  <data name="Knowledge Directories" xml:space="preserve">
+    <value>Κατάλογοι γνώσεων</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Σημεία Γνώσης</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Δοκιμαστικά Διαγωνίσματα</value>
+  </data>
+  <data name="No knowledge directories in this course yet." xml:space="preserve">
+    <value>Δεν υπάρχουν ακόμη κατάλογοι γνώσεων σε αυτό το μάθημα.</value>
+  </data>
+  <data name="No mock papers in this course yet." xml:space="preserve">
+    <value>Δεν υπάρχουν ακόμη δοκιμαστικά διαγωνίσματα σε αυτό το μάθημα.</value>
+  </data>
+  <data name="No periods in this course yet." xml:space="preserve">
+    <value>Δεν υπάρχουν ακόμη περίοδοι σε αυτό το μάθημα.</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Περίοδοι</value>
+  </data>
+  <data name="Top-level directories" xml:space="preserve">
+    <value>Κατάλογοι ανώτατου επιπέδου</value>
+  </data>
+  <data name="View All Knowledge Directories" xml:space="preserve">
+    <value>Προβολή όλων των καταλόγων γνώσεων</value>
+  </data>
+  <data name="View All Mock Papers" xml:space="preserve">
+    <value>Προβολή όλων των διαγωνισμάτων προσομοίωσης</value>
+  </data>
+  <data name="View All Periods" xml:space="preserve">
+    <value>Προβολή όλων των περιόδων</value>
+  </data>
+
+</root>
