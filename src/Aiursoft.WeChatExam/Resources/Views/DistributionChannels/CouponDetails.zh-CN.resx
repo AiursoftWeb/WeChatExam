@@ -99,6 +99,9 @@
   <data name="This coupon has no completed purchases yet." xml:space="preserve">
     <value>该优惠券目前还没有已完成的购买记录。</value>
   </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>该优惠券已标记为已使用，但其已完成订单不可用。无法核实历史买家及金额信息。</value>
+  </data>
   <data name="Through" xml:space="preserve">
     <value>至</value>
   </data>

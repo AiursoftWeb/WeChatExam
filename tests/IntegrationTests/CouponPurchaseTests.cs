@@ -117,6 +117,27 @@ public class CouponPurchaseTests : TestBase
     }
 
     [TestMethod]
+    public async Task LegacyUsedFlagDoesNotInventAPurchase()
+    {
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Coupons.Add(new Coupon
+            {
+                Id = _couponId, Code = Guid.NewGuid().ToString("N"),
+                DistributionChannel = new DistributionChannel { Id = _channelId, AgencyName = "Legacy agency" },
+                IsSingleUse = true, UsedByUserId = "unrecoverable-legacy-buyer", AmountInFen = 5000
+            });
+            await db.SaveChangesAsync();
+        }
+        await LoginAsAdmin();
+        var html = await Http.GetStringAsync($"/DistributionChannels/CouponDetails/{_couponId}");
+        Assert.Contains("The historical buyer and amounts cannot be verified.", html);
+        Assert.DoesNotContain("This coupon has no completed purchases yet.", html);
+        Assert.DoesNotContain("unrecoverable-legacy-buyer", html);
+    }
+
+    [TestMethod]
     public async Task MarketingReadAloneDoesNotGrantAccessToPurchaseDetails()
     {
         await SeedOrders();

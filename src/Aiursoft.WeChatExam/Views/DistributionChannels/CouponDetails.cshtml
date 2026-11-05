@@ -80,6 +80,10 @@
             {
                 <p class="mb-0">@Localizer["No completed purchases match these filters."]</p>
             }
+            else if (Model.Coupon.IsSingleUse && Model.Coupon.UsedByUserId != null)
+            {
+                <p class="text-warning mb-0">@Localizer["This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified."]</p>
+            }
             else
             {
                 <p class="mb-0">@Localizer["This coupon has no completed purchases yet."]</p>
