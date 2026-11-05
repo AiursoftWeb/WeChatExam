@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Подтвердить добавление {0} экзаменационных вопросов</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Редактировать исходный вопрос</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Редактирование черновика не влияет на опубликованные версии.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Редактирование исходного вопроса также изменяет его в банке вопросов и других неопубликованных работах.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Пояснение</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Внутреннее название тега</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Далее</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Пока нет пояснения.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>В этом курсе больше нет подходящих вопросов.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Тип вопроса</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Эталонный ответ и объяснение</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Эталонный ответ требует внимания</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Убрать из бланка</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Выбранные вопросы</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Стандартный ответ</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Тег</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Контрольная работа</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Эталонный ответ отсутствует или повторяет вопрос. Заполните его перед публикацией.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Это добавляет вопросы экзамена со всех страниц результатов, пропуская те, которые уже есть в этой работе.</value>

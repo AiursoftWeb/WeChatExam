@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Confirmer l’ajout de {0} question(s) d’examen</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Modifier la question originale</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Modifier la question d&apos;origine entraîne également sa modification dans la banque de questions et dans les autres sujets non publiés.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Explication</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Nom de tag interne</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Aucune explication pour le moment.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Aucune autre question correspondante.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Type de question</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Réponse de référence et explication</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>La réponse de référence nécessite une attention particulière</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Retirer du sujet</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Questions sélectionnées</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Réponse standard</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Étiquette</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Sujet d&apos;examen</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>La réponse de référence est manquante ou répète la question. Complétez-la avant de publier.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Cette opération ajoute les questions d’examen de toutes les pages de résultats et ignore celles déjà présentes dans ce sujet.</value>

@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Hinzufügen von {0} Prüfungsfragen bestätigen</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Originalfrage bearbeiten</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Das Bearbeiten der ursprünglichen Frage ändert sie auch im Fragenarchiv und in anderen nicht veröffentlichten Prüfungen.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Erklärung</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Interner Tagname</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Weiter</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Noch keine Erklärung vorhanden.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Keine weiteren passenden Fragen.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Fragetyp</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Musterlösung und Erklärung</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Referenzantwort bedarf der Aufmerksamkeit</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Aus dem Aufgabenblatt entfernen</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Ausgewählte Fragen</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Musterlösung</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Schlagwort</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Prüfungsbogen</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Die Musterlösung fehlt oder wiederholt die Frage. Bitte vervollständigen Sie sie vor der Veröffentlichung.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Dadurch werden Prüfungsfragen von allen Ergebnisseiten hinzugefügt. Fragen, die sich bereits in dieser Klausur befinden, werden übersprungen.</value>

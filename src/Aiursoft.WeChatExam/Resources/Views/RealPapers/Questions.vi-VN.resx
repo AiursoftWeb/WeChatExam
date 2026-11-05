@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Xác nhận thêm {0} câu hỏi thi</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Sửa câu hỏi gốc</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Viết lại câu hỏi gốc cũng sẽ thay đổi nó trong ngân hàng câu hỏi và các bài thi chưa xuất bản khác.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Giải thích</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Tên thẻ nội bộ</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Tiếp theo</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Chưa có lời giải thích.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Không tìm thấy câu hỏi phù hợp nào khác.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Loại câu hỏi</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Đáp án và Giải thích</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Đáp án tham khảo cần chú ý</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Xóa khỏi Bài thi</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Câu hỏi đã chọn</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Đáp án chuẩn</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Thẻ</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Làm bài thi</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Đáp án tham khảo bị thiếu hoặc lặp lại câu hỏi. Hãy hoàn thành trước khi xuất bản.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Thao tác này thêm các câu hỏi thi từ tất cả các trang kết quả và bỏ qua những câu hỏi đã có trong đề thi này.</value>

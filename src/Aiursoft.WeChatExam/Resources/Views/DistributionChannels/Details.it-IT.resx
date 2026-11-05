@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0} acquisti completati</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Azioni</value>
   </data>
   <data name="Active" xml:space="preserve">
@@ -41,6 +44,9 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Informazioni sul canale</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>I totali del canale includono gli acquisti degli studenti referiti, anche senza coupon. Apri un coupon per visualizzare solo gli acquisti effettuati con quel codice.</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Codice</value>
@@ -84,6 +90,9 @@
   <data name="Paid Orders" xml:space="preserve">
     <value>Ordini pagati</value>
   </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>Permesso di pagamento richiesto</value>
+  </data>
   <data name="Payment statistics are not yet implemented." xml:space="preserve">
     <value>I dati relativi ai pagamenti non sono ancora implementati.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Utilizzo</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>Visualizza acquisti</value>
   </data>
 
 </root>
