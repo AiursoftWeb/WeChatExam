@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="More options" xml:space="preserve">
+    <value>Flere muligheder</value>
+  </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Ikke publiceret</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Publiceringshistorik</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Udgiv opgave</value>
+  </data>
+  <data name="Publish Updates" xml:space="preserve">
+    <value>Udgiv opdateringer</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Udgivet</value>
+  </data>
+  <data name="Students cannot access this paper. Save your edits, then publish when it is ready." xml:space="preserve">
+    <value>Studerende kan ikke få adgang til dette eksamensspørgsmål. Gem dine rettelser og udgiv, når det er klar.</value>
+  </data>
+  <data name="Students see the published content. Saved edits need to be published before students see them." xml:space="preserve">
+    <value>Studerende ser det publicerede indhold. Gemte rettelser skal publiceres, før studerende kan se dem.</value>
+  </data>
+  <data name="Students still see the last published content. Publish your updates when ready." xml:space="preserve">
+    <value>Studerende ser stadig det seneste publicerede indhold. Publicer dine opdateringer, når de er klar.</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Fjern publicering af opgave</value>
+  </data>
+  <data name="Unpublished changes" xml:space="preserve">
+    <value>Upublicerede ændringer</value>
+  </data>
+  <data name="View Published Content" xml:space="preserve">
+    <value>Vis offentliggjort indhold</value>
+  </data>
+
+</root>

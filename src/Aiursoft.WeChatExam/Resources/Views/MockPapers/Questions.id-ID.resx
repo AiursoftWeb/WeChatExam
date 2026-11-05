@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Konfirmasi penambahan {0} soal ujian</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Ubah Soal Asli</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Mengedit draf tidak mengubah versi yang telah diterbitkan.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Mengedit pertanyaan asli juga akan mengubahnya di bank soal dan kertas ujian lain yang belum dipublikasikan.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Penjelasan</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Nama tag internal</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Berikutnya</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Belum ada penjelasan.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>Tidak ada lagi soal yang cocok dalam kursus ini.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Jenis Pertanyaan</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Jawaban Referensi dan Penjelasan</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Jawaban referensi perlu perhatian</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Hapus dari Naskah</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Pertanyaan yang Dipilih</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Jawaban Standar</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Naskah Ujian</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Jawaban referensi tidak ada atau mengulang pertanyaan. Lengkapi sebelum dipublikasikan.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Ini akan menambahkan soal ujian dari setiap halaman hasil dan melewati soal yang sudah ada di makalah ini.</value>

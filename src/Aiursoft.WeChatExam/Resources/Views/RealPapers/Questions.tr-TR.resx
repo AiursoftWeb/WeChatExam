@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>{0} sınav sorusunun eklenmesini onayla</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Orijinal Soruyu Düzenle</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Orijinal soruyu düzenlemek, soru bankasındaki ve diğer yayınlanmamış sınavlardaki hâlini de değiştirir.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Dahili etiket adı</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Sonraki</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Henüz açıklama yok.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Eşleşen başka soru yok.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Soru Türü</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Örnek Cevap ve Açıklama</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Referans cevap dikkat gerektiriyor</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Kağıttan Kaldır</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Seçilen Sorular</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Standart Cevap</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Etiket</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Sınav kâğıdı</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Örnek cevap eksik veya soruyu tekrar ediyor. Yayınlamadan önce tamamlayın.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Bu işlem, tüm sonuç sayfalarındaki sınav sorularını ekler ve bu kâğıtta zaten bulunanları atlar.</value>

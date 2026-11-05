@@ -33,6 +33,9 @@
   <data name="Draft" xml:space="preserve">
     <value>Чернетка</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Редагувати статтю</value>
+  </data>
   <data name="Edit Real Paper" xml:space="preserve">
     <value>Редагувати справжню роботу</value>
   </data>
@@ -51,6 +54,9 @@
   <data name="No matching papers" xml:space="preserve">
     <value>Відповідних робіт не знайдено</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Не опубліковано</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Сторінка {0} з {1}</value>
   </data>
@@ -62,6 +68,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Попередня</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Історія публікацій</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Опублікувати статтю</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Опубліковано</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Доступна опублікована версія</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Показати всі роботи</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Зняти з публікації</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Версії та публікація</value>

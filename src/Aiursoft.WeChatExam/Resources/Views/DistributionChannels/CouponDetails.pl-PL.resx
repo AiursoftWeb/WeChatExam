@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>Kwoty pochodzą z zrealizowanego zamówienia, a nie z dzisiejszej ceny produktu ani wartości kuponu. Sumy odpowiadają wybranym filtrom.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Zastosuj</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>Ukończono</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>Zakończone zakupy z użyciem tego kodu, w tym zamówienia w pełni zrabatowane. Odebranie kuponu nie jest zakupem.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>Szczegóły użycia kuponu</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>Daty i godziny są wyświetlane w strefie czasowej Twojego urządzenia.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Wyłączony</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>Naliczony rabat</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>Filtruj zakupy</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Od</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>Dopasowane zakupy</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Wielokrotnego użycia</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Następna</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>Brak ukończonych zakupów pasujących do tych filtrów.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>Niezarejestrowane</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Zamówienie</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>Cena oryginalna zamówienia</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Opłacone</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Poprzednia</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>Historia zakupów</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>Strony zakupów</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>Zakupiona zawartość</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Resetuj</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Jednorazowe</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>Numer studenta, produktu lub zamówienia</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>Ta karta rabatowa nie ma jeszcze żadnych zakończonych zakupów.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>Ten kupon jest oznaczony jako użyty, ale jego zakończone zamówienie jest niedostępne. Nie można zweryfikować danych historycznego kupującego ani kwot.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>Do</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>Rabat całkowity</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>Suma opłacona</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>Nieznany uczeń</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>Zobacz zamówienie</value>
+  </data>
+
+</root>

@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Potwierdź dodanie {0} pytań egzaminacyjnych</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Edytuj oryginalne pytanie</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Edycja oryginalnego pytania zmienia je również w banku pytań oraz w innych, nieopublikowanych arkuszach.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Wyjaśnienie</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Wewnętrzna nazwa tagu</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Następna</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Brak jeszcze wyjaśnienia.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Brak więcej pasujących pytań.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Typ pytania</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Odpowiedź wzorcowa i wyjaśnienie</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Odpowiedź wzorcową należy uzupełnić</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Usuń z arkusza</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Wybrane pytania</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Poprawna odpowiedź</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Tag</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Arkusz testowy</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Brak wzorcowej odpowiedzi lub powtarza ona treść pytania. Uzupełnij ją przed opublikowaniem.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Ta opcja dodaje pytania egzaminacyjne ze wszystkich stron wyników i pomija te, które już znajdują się w tym arkuszu.</value>
