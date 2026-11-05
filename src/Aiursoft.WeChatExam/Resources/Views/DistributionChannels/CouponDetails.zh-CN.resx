@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>金额来自已完成的订单，而非今日商品价格或优惠券面值。合计金额遵循所选筛选条件。</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>完成时间</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>使用此代码完成的购买，包括全额折扣订单。领取优惠券不算购买。</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>优惠券使用详情</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>日期和时间使用您设备的时区。</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>已应用折扣</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>筛选购买记录</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>从</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>匹配订单</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>多次使用</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>没有符合这些筛选条件的已完成购买。</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>未记录</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>订单</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>订单原价</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>已支付</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>购买记录</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>购买记录分页</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>已购内容</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>一次性使用</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>学生、产品或订单号</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>该优惠券目前还没有已完成的购买记录。</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>该优惠券已标记为已使用，但其已完成订单不可用。无法核实历史买家及金额信息。</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>至</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>总折扣</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>实付总额</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>未命名学生</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>查看订单</value>
+  </data>
+
+</root>

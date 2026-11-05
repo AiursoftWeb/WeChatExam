@@ -587,6 +587,7 @@
      data-top-tags="@JsonSerializer.Serialize(Model.TopTags)"
      data-taxonomy-stats="@JsonSerializer.Serialize(Model.TaxonomyStats)"
      data-exam-status="@JsonSerializer.Serialize(new[] { Model.ExamsActive, Model.ExamsUpcoming, Model.ExamsEnded })"></div>
+@* ReSharper disable once Razor.SectionNotResolved *@
 @section Scripts {
     <script src="~/node_modules/chart.js/dist/chart.umd.min.js" asp-append-version="true"></script>
     <script src="~/js/dashboard.js" asp-append-version="true"></script>
