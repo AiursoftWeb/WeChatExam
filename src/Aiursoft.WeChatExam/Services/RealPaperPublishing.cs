@@ -1,3 +1,4 @@
+using System.Data;
 using Aiursoft.WeChatExam.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -10,7 +11,30 @@ namespace Aiursoft.WeChatExam.Services;
 /// </summary>
 public class RealPaperPublishing(WeChatExamDbContext context, IStringLocalizer<RealPaperPublishing> localizer)
 {
-    public async Task<PaperSnapshot> PublishAsync(RealPaper paper)
+    public Task<PaperSnapshot> PublishAsync(RealPaper paper)
+    {
+        context.ChangeTracker.DetectChanges();
+        var edits = context.Entry(paper).Properties.Where(p => p.IsModified)
+            .ToDictionary(p => p.Metadata.Name, p => p.CurrentValue);
+        var firstAttempt = true;
+        return context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
+        {
+            var id = paper.Id;
+            // Preserve the caller's tracked edits on the first attempt. After a failed
+            // transaction, retry against committed data, including a possibly lost acknowledgement.
+            if (!firstAttempt) context.ChangeTracker.Clear();
+            firstAttempt = false;
+            await using var transaction = context.Database.IsRelational()
+                ? await context.Database.BeginTransactionAsync(IsolationLevel.Serializable) : null;
+            var current = await context.RealPapers.SingleAsync(p => p.Id == id);
+            foreach (var (property, value) in edits) context.Entry(current).Property(property).CurrentValue = value;
+            var result = await PublishCoreAsync(current);
+            if (transaction != null) await transaction.CommitAsync();
+            return result;
+        });
+    }
+
+    private async Task<PaperSnapshot> PublishCoreAsync(RealPaper paper)
     {
         if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable))
             throw new InvalidOperationException(localizer["This paper is read only."]);
@@ -26,8 +50,9 @@ public class RealPaperPublishing(WeChatExamDbContext context, IStringLocalizer<R
             throw new InvalidOperationException(localizer["Every question must have a nonnegative order and a positive score."]);
         if (string.IsNullOrWhiteSpace(paper.Title) || paper.TimeLimit <= 0)
             throw new InvalidOperationException(localizer["Set a title and a positive time limit before publishing."]);
-        var version = await context.PaperSnapshots.Where(s => s.RealPaperId == paper.Id)
-            .MaxAsync(s => (int?)s.Version) ?? 0;
+        var latest = await context.PaperSnapshots.AsNoTracking().Include(s => s.QuestionSnapshots)
+            .Where(s => s.RealPaperId == paper.Id).OrderByDescending(s => s.Version).FirstOrDefaultAsync();
+        var version = latest?.Version ?? 0;
         if (version == int.MaxValue)
             throw new InvalidOperationException(localizer["The maximum version number has been reached."]);
         var snapshotId = Guid.NewGuid();
@@ -44,6 +69,14 @@ public class RealPaperPublishing(WeChatExamDbContext context, IStringLocalizer<R
                 Explanation = l.Question.Explanation
             }).ToList()
         };
+        if (snapshot.QuestionSnapshots.Any(PaperPublication.NeedsAnswer))
+            throw new InvalidOperationException(localizer["Complete the reference answers before publishing. An answer must not simply repeat the question."]);
+        if (latest != null && PaperPublication.SameContent(snapshot, latest))
+        {
+            paper.Status = PaperStatus.Publishable;
+            await context.SaveChangesAsync();
+            return latest;
+        }
         context.PaperSnapshots.Add(snapshot);
         paper.Status = PaperStatus.Publishable;
         // One save keeps the version, all question copies and template status atomic.

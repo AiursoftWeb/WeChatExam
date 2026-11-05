@@ -9,6 +9,9 @@ public class EditViewModel : UiStackLayoutViewModel
 {
     public EditViewModel() => PageTitle = "Edit Real Paper";
 
+    [BindNever]
+    public PaperPublicationViewModel? Publication { get; set; }
+
     public Guid Id { get; set; }
 
     [Required(ErrorMessage = "The {0} is required.")]

@@ -522,6 +522,29 @@ public class PapersApiTests
         return (paper.Id, snapshot.Id, school.Id);
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task UnpublishedPapersLeaveStudentNavigationButRetainHistoricalPayload(bool real)
+    {
+        var (paperId, snapshotId, _) = real ? await CreatePublishedReal() : await CreatePublishedMock(true);
+        var route = real ? "/api/RealPapers" : "/api/MockPapers";
+        Assert.Contains(paperId.ToString(), await _http.GetStringAsync(route));
+        using (var scope = _server!.Services.CreateScope())
+            await scope.ServiceProvider.GetRequiredService<PaperPublication>().UnpublishAsync(paperId, real);
+        Assert.DoesNotContain(paperId.ToString(), await _http.GetStringAsync(route));
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"{route}/snapshots/{snapshotId}")).StatusCode);
+        using var verify = _server!.Services.CreateScope();
+        var db = verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.IsTrue(await db.QuestionSnapshots.AnyAsync(q => q.PaperSnapshotId == snapshotId));
+        if (real)
+            await verify.ServiceProvider.GetRequiredService<RealPaperPublishing>().PublishAsync(await db.RealPapers.SingleAsync(p => p.Id == paperId));
+        else
+            await verify.ServiceProvider.GetRequiredService<MockPaperPublishing>().PublishAsync(await db.MockPapers.SingleAsync(p => p.Id == paperId));
+        Assert.Contains(paperId.ToString(), await _http.GetStringAsync(route));
+        Assert.AreEqual(snapshotId, (await db.PaperSnapshots.SingleAsync(p => real ? p.RealPaperId == paperId : p.MockPaperId == paperId)).Id);
+    }
+
     private static VipMembership SchoolMembership(Guid school, int start = -1, int end = 1)
     {
         var member = Membership(VipProductType.Institution, null, start, end);

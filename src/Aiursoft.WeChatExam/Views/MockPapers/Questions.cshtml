@@ -7,6 +7,7 @@
 @{
     var action = Model.Selecting ? "SelectQuestions" : "Questions";
 }
+<link rel="stylesheet" href="~/css/paper-editor.css" asp-append-version="true" />
 <a asp-action="Index" class="d-inline-block text-decoration-none mb-3"><i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Mock Papers"]</a>
 <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
     <div>
@@ -18,12 +19,17 @@
         {
             <a asp-controller="TestPapers" asp-action="Take" asp-route-kind="Mock" asp-route-id="@Model.Paper.Id" class="btn btn-outline-primary">@Localizer["Test paper"]</a>
         }
-        <a asp-action="Edit" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Paper Settings"]</a>
+
         <a asp-action="Versions" asp-route-id="@Model.Paper.Id" class="btn btn-primary">@Localizer["Published Versions"]</a>
     </div>
 </div>
 <p class="text-muted">@Localizer["Editing the draft does not change published versions."]</p>
+@if (Model.Publication != null)
+{
+    <partial name="_PaperPublicationStatus" model="Model.Publication" />
+}
 <ul class="nav nav-tabs mb-4">
+    <li class="nav-item"><a asp-action="Edit" asp-route-id="@Model.Paper.Id" class="nav-link">@Localizer["Paper Settings"]</a></li>
     <li class="nav-item"><a asp-action="Questions" asp-route-id="@Model.Paper.Id" class="nav-link @(!Model.Selecting ? "active" : "")">@Localizer["Selected Questions"] (@Model.SelectedCount)</a></li>
     <li class="nav-item"><a asp-action="SelectQuestions" asp-route-id="@Model.Paper.Id" class="nav-link @(Model.Selecting ? "active" : "")">@Localizer["Select Questions"]</a></li>
 </ul>
@@ -154,10 +160,39 @@ else
     {
         <div class="card mb-3"><div class="card-body p-4">
             <p class="text-break mb-3">@(link.Question.Content.Length > 300 ? link.Question.Content[..300] + "…" : link.Question.Content)</p>
+            @if (string.IsNullOrWhiteSpace(link.Question.StandardAnswer) || link.Question.StandardAnswer.Trim() == link.Question.Content.Trim())
+            {
+                <span class="badge bg-danger mb-3">@Localizer["Reference answer needs attention"]</span>
+            }
             <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
                 <span class="text-muted">@link.Question.QuestionCategory!.Title</span>
                 <a asp-controller="Questions" asp-action="Details" asp-route-id="@link.QuestionId" target="_blank" rel="noopener">@Localizer["View Details"] <i data-lucide="external-link" class="ms-1"></i></a>
             </div>
+            <details class="mb-4">
+                <summary>@Localizer["Reference Answer and Explanation"]</summary>
+                <div class="mt-3 text-break">
+                    @if (string.IsNullOrWhiteSpace(link.Question.StandardAnswer) || link.Question.StandardAnswer.Trim() == link.Question.Content.Trim())
+                    {
+                        <p class="text-danger">@Localizer["The reference answer is missing or repeats the question. Complete it before publishing."]</p>
+                    }
+                    <h3 class="h6">@Localizer["Standard Answer"]</h3>
+                    <p class="paper-reference-text">@link.Question.StandardAnswer</p>
+                    <h3 class="h6">@Localizer["Explanation"]</h3>
+                    @if (string.IsNullOrWhiteSpace(link.Question.Explanation))
+                    {
+                        <p class="text-muted">@Localizer["No explanation yet."]</p>
+                    }
+                    else
+                    {
+                        <p class="paper-reference-text">@link.Question.Explanation</p>
+                    }
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditQuestions)).Succeeded)
+                    {
+                        <a asp-controller="Questions" asp-action="Edit" asp-route-id="@link.QuestionId" asp-route-returnUrl="@Url.Action("Questions", new { id = Model.Paper.Id, page = Model.Page })" target="_blank" rel="noopener" class="btn btn-outline-primary">@Localizer["Edit Original Question"]</a>
+                        <p class="form-text mt-2">@Localizer["Editing the original question also changes it in the question bank and other unpublished papers."]</p>
+                    }
+                </div>
+            </details>
             <form asp-action="UpdateQuestion" asp-route-id="@Model.Paper.Id" method="post" class="row g-2 align-items-end">
                 <input type="hidden" name="QuestionId" value="@link.QuestionId" />
                 <input type="hidden" name="page" value="@Model.Page" />

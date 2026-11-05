@@ -35,7 +35,7 @@ public class MockPapersTests : TestBase
     };
 
     [TestMethod]
-    public async Task CourseScopedPaperCreationPreselectsAndReturnsToItsCourse()
+    public async Task CourseScopedPaperCreationPreselectsAndOpensItsEditor()
     {
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
@@ -56,7 +56,7 @@ public class MockPapersTests : TestBase
         Assert.Contains("Scoped draft paper", html);
         Assert.Contains($"/MockPapers?totalCategoryId={course.Id}", html);
         data["TimeLimit"] = "60";
-        AssertRedirect(await PostForm(path, data), $"/MockPapers?totalCategoryId={course.Id}");
+        AssertRedirect(await PostForm(path, data), "/MockPapers/Edit/", exact: false);
         Assert.AreEqual(course.Id, (await db.MockPapers.SingleAsync(p => p.Title == data["Title"])).TotalCategoryId);
         Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/MockPapers/Create?totalCategoryId={Guid.NewGuid()}")).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync("/MockPapers/Create?totalCategoryId=invalid")).StatusCode);
@@ -73,7 +73,7 @@ public class MockPapersTests : TestBase
         var forgedId = Guid.NewGuid();
         form["Id"] = forgedId.ToString();
         form["Status"] = "2";
-        AssertRedirect(await PostForm("/MockPapers/Create", form), $"/MockPapers?totalCategoryId={_course}");
+        AssertRedirect(await PostForm("/MockPapers/Create", form), "/MockPapers/Edit/", exact: false);
         Guid id;
         using (var scope = Server!.Services.CreateScope())
         {
@@ -93,10 +93,10 @@ public class MockPapersTests : TestBase
         form["TotalCategoryId"] = _otherCourse.ToString();
         form["TimeLimit"] = "120";
         form["AllowViewAnonymousely"] = "true";
-        AssertRedirect(await PostForm($"/MockPapers/Edit/{id}", form), "/MockPapers");
+        AssertRedirect(await PostForm($"/MockPapers/Edit/{id}", form), $"/MockPapers/Edit/{id}");
         var html = await Http.GetStringAsync($"/MockPapers/Edit/{id}");
         Assert.Contains("Updated practice", html);
-        Assert.Contains("Save Draft", html);
+        Assert.Contains("Save Settings", html);
         using var verify = Server!.Services.CreateScope();
         var saved = await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>().MockPapers.SingleAsync();
         Assert.AreEqual(_otherCourse, saved.TotalCategoryId);

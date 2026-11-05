@@ -5,8 +5,9 @@ namespace Aiursoft.WeChatExam.Models.MockPapersViewModels;
 
 public class QuestionsViewModel : UiStackLayoutViewModel
 {
-    public QuestionsViewModel() => PageTitle = "Mock Paper Questions";
+    public QuestionsViewModel() => PageTitle = "Edit Mock Paper";
     public required MockPaper Paper { get; init; }
+    public PaperPublicationViewModel? Publication { get; init; }
     public bool Selecting { get; init; }
     public bool ReviewingMatches { get; init; }
     public string? MatchFingerprint { get; init; }

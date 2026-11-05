@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>已添加 {0} 道符合条件的题目。</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>无法确认发布。请重新加载试卷后再试。</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>无法确认是否已添加此批次。请检查当前题目后重试。</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>请选择一个已存在的课程。</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>设置已保存。试卷准备就绪后，请发布您的更新。</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>匹配的考试题目已发生变化。请查看当前结果后再重新确认。</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>试卷已发布。学生现在可以使用已发布的内容。</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>试卷已取消发布。题目及之前的学生记录均已保留。</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>无法保存此版本。请重新加载版本列表后重试。</value>

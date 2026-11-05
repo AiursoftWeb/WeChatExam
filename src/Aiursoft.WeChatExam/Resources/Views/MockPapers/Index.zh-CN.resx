@@ -48,6 +48,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>编辑模拟试卷</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>编辑试卷</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>导入试卷</value>
   </data>
@@ -66,6 +69,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>无需会员</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>未发布</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>第 {0} 页，共 {1} 页</value>
   </data>
@@ -77,6 +83,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>发布历史</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>发布试卷</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>已发布</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>可发布版本</value>
@@ -98,6 +113,9 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>显示所有试卷</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>取消发布试卷</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>版本与发布</value>

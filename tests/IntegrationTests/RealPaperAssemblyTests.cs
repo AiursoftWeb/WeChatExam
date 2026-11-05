@@ -148,7 +148,7 @@ public class RealPaperAssemblyTests : TestBase
             var tag = new Tag { DisplayName = "苏州大学2026年考试试卷", NormalizedName = "苏州大学2026年考试试卷" };
             var questions = Enumerable.Range(0, 211).Select(i => new Question
             {
-                Id = Guid.NewGuid(), Content = $"Batch item {i:000}", QuestionCategoryId = _period,
+                Id = Guid.NewGuid(), Content = $"Batch item {i:000}", StandardAnswer = $"Batch reference {i:000}", QuestionCategoryId = _period,
                 QuestionType = QuestionType.Choice, OrderIndex = i
             }).ToArray();
             db.Questions.AddRange(questions);
@@ -163,7 +163,7 @@ public class RealPaperAssemblyTests : TestBase
             first = questions[0].Id;
         }
         await Add(first);
-        Assert.AreEqual(HttpStatusCode.Found, (await PostForm($"/RealPapers/Publish/{_paper}", new Dictionary<string, string>(), tokenUrl: $"/RealPapers/Versions/{_paper}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Found, (await PostForm($"/RealPapers/Publish/{_paper}", new Dictionary<string, string>(), tokenUrl: $"/RealPapers/Publication/{_paper}")).StatusCode);
         var suggestions = await Http.GetStringAsync("/Tags/Autocomplete?query=" + Uri.EscapeDataString("苏州大学2026"));
         using var suggestionData = System.Text.Json.JsonDocument.Parse(suggestions);
         Assert.IsTrue(suggestionData.RootElement.EnumerateArray().Any(x => x.GetProperty("displayName").GetString() == "苏州大学2026年考试试卷"));
