@@ -1,0 +1,65 @@
+@using Aiursoft.WeChatExam.Entities
+@model Aiursoft.WeChatExam.Models.PaperPublicationViewModel
+@{
+    var unpublishing = ViewData["Unpublishing"] as bool? == true;
+}
+<a asp-controller="@Model.Controller" asp-action="Questions" asp-route-id="@Model.Id" class="d-inline-block mb-4">@Localizer["Back to Editing"]</a>
+<h1 class="h3 text-break mb-4">@Model.Title</h1>
+<div asp-validation-summary="All" class="text-danger mb-4"></div>
+@if (unpublishing)
+{
+    <div class="card"><div class="card-body p-4">
+        <h2 class="h4 mb-3">@Localizer["Unpublish this paper?"]</h2>
+        <p>@Localizer["Students will no longer be able to open this paper or submit answers to it, including attempts already in progress."]</p>
+        <p>@Localizer["Questions, previous answers, scores and mistake records will be kept. You can edit and publish the paper again later."]</p>
+        <form asp-controller="@Model.Controller" asp-action="Unpublish" asp-route-id="@Model.Id" method="post" class="d-flex flex-wrap gap-3 mt-4">
+            <button type="submit" class="btn btn-danger">@Localizer["Confirm Unpublish"]</button>
+            <a asp-controller="@Model.Controller" asp-action="Questions" asp-route-id="@Model.Id" class="btn btn-outline-secondary">@Localizer["Keep Published"]</a>
+        </form>
+    </div></div>
+}
+else
+{
+    <div class="card mb-4"><div class="card-body p-4">
+        <h2 class="h4 mb-3">@Localizer["Check Before Publishing"]</h2>
+        <p>@string.Format(@Localizer["{0} questions · {1} points · {2} minutes"].Value, Model.Current.QuestionSnapshots.Count(), Model.Current.QuestionSnapshots.Sum(q => (long)q.Score), Model.Current.TimeLimit)</p>
+        @if (Model.Current.QuestionSnapshots.Any())
+        {
+            @if (Model.AnswerIssues.Count == 0)
+            {
+                <p class="text-success">@Localizer["Every question has a reference answer. Please also check its accuracy."]</p>
+            }
+            else
+            {
+                <h3 class="h6 text-danger">@string.Format(@Localizer["Complete or correct the reference answers for {0} questions before publishing."].Value, Model.AnswerIssues.Count)</h3>
+                <p>@Localizer["These answers are empty or simply repeat the question. Open each question to correct it, then return here."]</p>
+                <ol class="mb-4">
+                    @foreach (var question in Model.AnswerIssues)
+                    {
+                        <li class="mb-3 text-break"><a asp-controller="Questions" asp-action="Details" asp-route-id="@question.OriginalQuestionId" target="_blank" rel="noopener">@(question.Content.Length > 160 ? question.Content[..160] + "…" : question.Content)</a></li>
+                    }
+                </ol>
+            }
+            @if (Model.MissingExplanations > 0)
+            {
+                <p class="text-muted">@string.Format(@Localizer["{0} questions have no explanation. Adding explanations is recommended but not required for publication."].Value, Model.MissingExplanations)</p>
+            }
+        }
+        else
+        {
+            <p class="text-danger">@Localizer["Add at least one question before publishing."]</p>
+        }
+        <p>@Localizer["Publishing makes your saved content available to students. Existing student records will not be rewritten."]</p>
+        @if (Model.Published && !Model.HasChanges)
+        {
+            <p>@Localizer["There are no saved changes to publish."]</p>
+        }
+        else if (Model.Status != PaperStatus.Frozen)
+        {
+            <form asp-controller="@Model.Controller" asp-action="Publish" asp-route-id="@Model.Id" method="post" class="mt-4">
+                <button type="submit" class="btn btn-primary" disabled="@(!Model.Current.QuestionSnapshots.Any() || Model.AnswerIssues.Count > 0)">@Localizer["Confirm Publish"]</button>
+            </form>
+        }
+        <a asp-controller="@Model.Controller" asp-action="Questions" asp-route-id="@Model.Id" class="btn btn-outline-secondary mt-3">@Localizer["Continue Editing"]</a>
+    </div></div>
+}

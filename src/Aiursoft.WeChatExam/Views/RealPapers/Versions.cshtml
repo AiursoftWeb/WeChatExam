@@ -10,23 +10,11 @@
     </div>
     @if (Model.Paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
     {
-        <a asp-action="Questions" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Edit Draft"]</a>
+        <a asp-action="Questions" asp-route-id="@Model.Paper.Id" class="btn btn-outline-secondary">@Localizer["Edit Paper"]</a>
     }
 </div>
 <div asp-validation-summary="All" class="text-danger mb-3"></div>
-@if (Model.Paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
-{
-    <div class="card mb-4"><div class="card-body p-4">
-        <h2 class="h4 mb-3">@Localizer["Publish the Current Draft"]</h2>
-        <p>@string.Format(@Localizer["{0} questions · {1} minutes"].Value, Model.DraftQuestionCount, Model.Paper.TimeLimit)</p>
-        <p>@Localizer["Requires institution access"]</p>
-        <p class="text-muted">@Localizer["Publishing saves a fixed version. Later edits do not change existing versions."]</p>
-        <form asp-action="Publish" asp-route-id="@Model.Paper.Id" method="post">
-            <button type="submit" class="btn btn-primary" disabled="@(Model.DraftQuestionCount == 0)">@Localizer["Publish New Version"]</button>
-        </form>
-    </div></div>
-}
-<h2 class="h4 mb-3">@Localizer["Published Versions"] (@Model.Total)</h2>
+<h2 class="h4 mb-3">@Localizer["Publication History"] (@Model.Total)</h2>
 @if (Model.Versions.Count == 0)
 {
     <p class="text-muted">@Localizer["No published versions yet."]</p>

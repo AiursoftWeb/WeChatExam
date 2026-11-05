@@ -5,8 +5,9 @@ namespace Aiursoft.WeChatExam.Models.RealPapersViewModels;
 
 public class QuestionsViewModel : UiStackLayoutViewModel
 {
-    public QuestionsViewModel() => PageTitle = "Real Paper Questions";
+    public QuestionsViewModel() => PageTitle = "Edit Real Paper";
     public required RealPaper Paper { get; init; }
+    public PaperPublicationViewModel? Publication { get; init; }
     public bool Selecting { get; init; }
     public bool ReviewingMatches { get; init; }
     public string? MatchFingerprint { get; init; }

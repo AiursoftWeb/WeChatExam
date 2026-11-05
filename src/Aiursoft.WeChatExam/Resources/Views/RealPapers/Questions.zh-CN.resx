@@ -57,11 +57,23 @@
   <data name="Draft only. Publication is not available yet." xml:space="preserve">
     <value>目前仅为草稿，暂不支持发布。</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>编辑原始题目</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>编辑原始题目也会同步更新题库及其他未发布试卷中的该题目。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解析</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>内部标签名称</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>下一页</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>暂无解析。</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>没有更多符合条件的题目。</value>
@@ -89,6 +101,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>题目类型</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>参考答案与解析</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>参考答案需关注</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>从试卷中移除</value>
@@ -120,11 +138,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>已选题目</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>标准答案</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>标签</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>试卷</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>参考答案缺失或与题目重复。发布前请补全。</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>这会添加所有结果页中的试题，并跳过试卷中已有的试题。</value>

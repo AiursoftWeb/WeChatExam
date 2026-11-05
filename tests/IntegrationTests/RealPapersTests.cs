@@ -47,7 +47,7 @@ public class RealPapersTests : TestBase
         form["Status"] = "2";
         form["IsFree"] = "true";
         form["TotalCategoryId"] = Guid.NewGuid().ToString();
-        AssertRedirect(await PostForm("/RealPapers/Create", form), "/RealPapers");
+        AssertRedirect(await PostForm("/RealPapers/Create", form), "/RealPapers/Edit/", exact: false);
         Guid id;
         using (var scope = Server!.Services.CreateScope())
         {
@@ -66,10 +66,10 @@ public class RealPapersTests : TestBase
         form["InstitutionId"] = _otherInstitution.ToString();
         form["TimeLimit"] = "120";
         form["AllowViewAnonymousely"] = "true"; // Legacy opening fields must not change real-paper semantics.
-        AssertRedirect(await PostForm($"/RealPapers/Edit/{id}", form), "/RealPapers");
+        AssertRedirect(await PostForm($"/RealPapers/Edit/{id}", form), $"/RealPapers/Edit/{id}");
         var html = await Http.GetStringAsync($"/RealPapers/Edit/{id}");
         Assert.Contains("Updated practice", html);
-        Assert.Contains("Save Draft", html);
+        Assert.Contains("Save Settings", html);
         Assert.DoesNotContain("name=\"AllowViewAnonymousely\"", html);
         Assert.DoesNotContain("name=\"TotalCategoryId\"", html);
         using var verify = Server!.Services.CreateScope();

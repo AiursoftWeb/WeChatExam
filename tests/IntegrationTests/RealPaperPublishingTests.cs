@@ -108,7 +108,7 @@ public class RealPaperPublishingTests : TestBase
         using (var scope = Server!.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-            var other = new Question { Content = "Other course", QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod() };
+            var other = new Question { Content = "Other course", StandardAnswer = "Other course reference answer", QuestionCategory = QuestionPeriodAssignmentTests.TestPeriod() };
             db.Questions.Add(other); otherQuestion = other.Id;
             db.RealPaperQuestions.AddRange(
                 new RealPaperQuestion { RealPaperId = id, QuestionId = question, Order = 1, Score = 10 },
@@ -231,6 +231,90 @@ public class RealPaperPublishingTests : TestBase
         await db.SaveChangesAsync();
         Assert.AreEqual(HttpStatusCode.Conflict, (await Publish(id)).StatusCode);
         Assert.AreEqual(1, await db.PaperSnapshots.CountAsync(s => s.RealPaperId == id));
+    }
+
+    [TestMethod]
+    public async Task UnchangedPublicationAndUnpublishKeepTheSameHistoricalPayload()
+    {
+        await LoginAsAdmin();
+        var (id, _, _) = await Seed();
+        Assert.AreEqual(HttpStatusCode.Found, (await Publish(id)).StatusCode);
+        Assert.AreEqual(HttpStatusCode.Found, (await Publish(id)).StatusCode);
+        Guid snapshotId;
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            snapshotId = (await db.PaperSnapshots.SingleAsync(s => s.RealPaperId == id)).Id;
+        }
+        Assert.AreEqual(HttpStatusCode.BadRequest, (await PostForm($"/RealPapers/Unpublish/{id}", [], includeToken: false)).StatusCode);
+        var confirmation = await Http.GetStringAsync($"/RealPapers/Publication/{id}?unpublish=true");
+        Assert.Contains("including attempts already in progress", confirmation);
+        Assert.AreEqual(HttpStatusCode.Found, (await PostForm($"/RealPapers/Unpublish/{id}", [], tokenUrl: $"/RealPapers/Questions/{id}")).StatusCode);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(PaperStatus.Draft, (await db.RealPapers.SingleAsync(p => p.Id == id)).Status);
+            Assert.AreEqual(snapshotId, (await db.PaperSnapshots.SingleAsync(s => s.RealPaperId == id)).Id);
+            Assert.AreEqual(1, await db.QuestionSnapshots.CountAsync(q => q.PaperSnapshotId == snapshotId));
+            Assert.AreEqual(1, await db.RealPaperQuestions.CountAsync(q => q.RealPaperId == id));
+        }
+        Assert.AreEqual(HttpStatusCode.Found, (await Publish(id)).StatusCode);
+        using var verify = Server!.Services.CreateScope();
+        var context = verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(snapshotId, (await context.PaperSnapshots.SingleAsync(s => s.RealPaperId == id)).Id);
+        Assert.AreEqual(PaperStatus.Publishable, (await context.RealPapers.SingleAsync(p => p.Id == id)).Status);
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("Original question")]
+    public async Task IncompleteAnswersAreListedAndCannotBePublished(string answer)
+    {
+        await LoginAsAdmin();
+        var (id, questionId, _) = await Seed();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            (await db.Questions.SingleAsync(q => q.Id == questionId)).StandardAnswer = answer;
+            await db.SaveChangesAsync();
+        }
+        var response = await Publish(id);
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        var html = await response.Content.ReadAsStringAsync();
+        Assert.Contains("Original question", html);
+        Assert.Contains("simply repeat the question", html);
+        Assert.Contains("disabled", html);
+        using var verify = Server!.Services.CreateScope();
+        Assert.IsFalse(await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>().PaperSnapshots.AnyAsync(s => s.RealPaperId == id));
+    }
+
+    [TestMethod]
+    public async Task AnswerOnlyChangesAreVisibleToTheEditorUntilExplicitPublication()
+    {
+        await LoginAsAdmin();
+        var (id, questionId, _) = await Seed();
+        await Publish(id);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var question = await db.Questions.SingleAsync(q => q.Id == questionId);
+            question.StandardAnswer = "Corrected reference answer";
+            await db.SaveChangesAsync();
+        }
+        var html = await Http.GetStringAsync($"/RealPapers/Questions/{id}");
+        Assert.Contains("Unpublished changes", html);
+        Assert.Contains("Corrected reference answer", html);
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual("Original answer", (await db.QuestionSnapshots.SingleAsync(q => q.PaperSnapshot.RealPaperId == id)).StandardAnswer);
+        }
+        await Publish(id);
+        html = await Http.GetStringAsync($"/RealPapers/Questions/{id}");
+        Assert.DoesNotContain("Unpublished changes", html);
+        Assert.Contains("Publication History", html);
+        using var verify = Server!.Services.CreateScope();
+        Assert.AreEqual(2, await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>().PaperSnapshots.CountAsync(s => s.RealPaperId == id));
     }
 
     [TestMethod]

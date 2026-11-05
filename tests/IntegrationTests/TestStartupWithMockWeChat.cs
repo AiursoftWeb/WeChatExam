@@ -76,6 +76,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddScoped<KnowledgeExerciseValidation>();
         services.AddScoped<MockPaperValidation>();
         services.AddScoped<RealPaperValidation>();
+        services.AddScoped<PaperPublication>();
         services.AddScoped<RealPaperPublishing>();
         services.AddScoped<MockPaperPublishing>();
         services.AddSingleton<ContentEmbeddingCache>();

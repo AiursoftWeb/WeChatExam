@@ -63,11 +63,11 @@ else
                         <i data-lucide="notebook-pen" class="text-primary"></i>
                         @if (paper.Status == PaperStatus.Draft)
                         {
-                            <span class="badge bg-secondary">@Localizer["Draft"]</span>
+                            <span class="badge bg-secondary">@Localizer["Not published"]</span>
                         }
                         else if (paper.Status == PaperStatus.Publishable)
                         {
-                            <span class="badge bg-primary">@Localizer["Published version available"]</span>
+                            <span class="badge bg-primary">@Localizer["Published"]</span>
                         }
                         else
                         {
@@ -82,26 +82,26 @@ else
                     {
                         @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
                         {
-                            <a asp-action="Questions" asp-route-id="@paper.Id" class="btn btn-outline-primary d-block mb-3">@Localizer["Manage Questions"]</a>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a asp-action="Questions" asp-route-id="@paper.Id" class="btn btn-primary">@Localizer["Edit Paper"]</a>
+                                @if (paper.Status == PaperStatus.Publishable)
+                                {
+                                    <a asp-action="Publication" asp-route-id="@paper.Id" asp-route-unpublish="true" class="btn btn-outline-secondary">@Localizer["Unpublish Paper"]</a>
+                                }
+                                else
+                                {
+                                    <a asp-action="Publication" asp-route-id="@paper.Id" class="btn btn-outline-primary">@Localizer["Publish Paper"]</a>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <a asp-action="Edit" asp-route-id="@paper.Id" class="btn btn-primary">@Localizer["Edit Paper"]</a>
                         }
                     }
-                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
+                    else if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
                     {
-                        <a asp-action="Versions" asp-route-id="@paper.Id" class="btn btn-outline-secondary d-block mb-3">@Localizer["Versions and Publication"]</a>
-                    }
-                    @if (paper.Status is PaperStatus.Draft or PaperStatus.Publishable)
-                    {
-                        <a asp-action="Edit" asp-route-id="@paper.Id" class="text-decoration-none">
-                            @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
-                            {
-                                @Localizer["Paper Settings"]
-                            }
-                            else
-                            {
-                                @Localizer["Edit Real Paper"]
-                            }
-                            <i data-lucide="arrow-right" class="ms-1"></i>
-                        </a>
+                        <a asp-action="Versions" asp-route-id="@paper.Id">@Localizer["Publication History"]</a>
                     }
                 </div></div>
             </div>

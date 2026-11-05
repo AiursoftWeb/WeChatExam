@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
 [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-public class RealPapersController(WeChatExamDbContext context, RealPaperPublishing publishing, ILogger<RealPapersController> logger, IStringLocalizer<RealPapersController> localizer) : Controller
+public class RealPapersController(WeChatExamDbContext context, RealPaperPublishing publishing, PaperPublication publication, ILogger<RealPapersController> logger, IStringLocalizer<RealPapersController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -62,13 +62,14 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         await ValidateInstitution(model);
         if (!ModelState.IsValid) return this.StackView(model, nameof(Edit));
 
-        context.RealPapers.Add(new RealPaper
+        var paper = new RealPaper
         {
             Title = model.Title.Trim(), InstitutionId = model.InstitutionId!.Value,
             TimeLimit = model.TimeLimit
-        });
+        };
+        context.RealPapers.Add(paper);
         await context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Edit), new { id = paper.Id });
     }
 
     public async Task<IActionResult> Edit(Guid id)
@@ -78,6 +79,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         return this.StackView(new EditViewModel
         {
+            Publication = await publication.ReadAsync(id, true),
             Id = paper.Id, Title = paper.Title, InstitutionId = paper.InstitutionId,
             TimeLimit = paper.TimeLimit,
             Institutions = await Institutions()
@@ -102,7 +104,8 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         paper.InstitutionId = model.InstitutionId!.Value;
         paper.TimeLimit = model.TimeLimit;
         await context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        TempData["SuccessMessage"] = localizer["Settings saved. Publish your updates when the paper is ready."].Value;
+        return RedirectToAction(nameof(Edit), new { id });
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
@@ -131,7 +134,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         page = Math.Clamp(page, 1, Math.Max(1, (total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize));
         return this.StackView(new QuestionsViewModel
         {
-            Paper = paper, Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
+            Paper = paper, Publication = await publication.ReadAsync(id, true), Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
             Tag = tag, QuestionType = questionType, ReviewingMatches = reviewingMatches, Score = score,
             MatchFingerprint = matchingIds == null ? null : Fingerprint(matchingIds),
             Page = page, Total = total, SelectedCount = count, TotalScore = await selected.SumAsync(q => (long)q.Score),
@@ -292,6 +295,34 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Publication(Guid id, bool unpublish = false)
+    {
+        var state = await publication.ReadAsync(id, true);
+        if (state == null) return NotFound();
+        if (state.Status == PaperStatus.Frozen) return Conflict();
+        ViewData["Unpublishing"] = unpublish;
+        return this.StackView(state, "~/Views/Shared/PaperPublication.cshtml");
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Unpublish(Guid id)
+    {
+        if (!await context.RealPapers.AnyAsync(p => p.Id == id)) return NotFound();
+        if (await context.RealPapers.AnyAsync(p => p.Id == id && p.Status == PaperStatus.Frozen)) return Conflict();
+        try
+        {
+            await publication.UnpublishAsync(id, true);
+        }
+        catch (InvalidOperationException error) when (error.Message == "This paper is read only.")
+        {
+            return Conflict();
+        }
+        TempData["SuccessMessage"] = localizer["The paper is unpublished. Questions and previous student records have been kept."].Value;
+        return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Versions(Guid id, int page = 1)
     {
         var paper = await context.RealPapers.AsNoTracking().Include(p => p.Institution).SingleOrDefaultAsync(p => p.Id == id);
@@ -315,23 +346,23 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
         var paper = await context.RealPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
         if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
-        PaperSnapshot snapshot;
         try
         {
-            snapshot = await publishing.PublishAsync(paper);
+            await publishing.PublishAsync(paper);
         }
         catch (InvalidOperationException error)
         {
             ModelState.AddModelError(string.Empty, error.Message);
-            return await Versions(id);
+            return await Publication(id);
         }
         catch (DbUpdateException error)
         {
             logger.LogWarning(error, "Could not publish real paper {PaperId}", id);
             // A concurrent publication may already have used the next version number.
-            return Conflict(localizer["The version could not be saved. Reload the version list before trying again."].Value);
+            return Conflict(localizer["Could not confirm publication. Reload the paper before trying again."].Value);
         }
-        return RedirectToAction(nameof(Version), new { id, snapshotId = snapshot.Id });
+        TempData["SuccessMessage"] = localizer["The paper is published. Students can now use the published content."].Value;
+        return RedirectToAction(nameof(Questions), new { id });
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
@@ -357,6 +388,7 @@ public class RealPapersController(WeChatExamDbContext context, RealPaperPublishi
     private async Task ValidateInstitution(EditViewModel model)
     {
         model.Institutions = await Institutions();
+        if (model.Id != Guid.Empty) model.Publication = await publication.ReadAsync(model.Id, true);
         if (model.InstitutionId.HasValue && model.Institutions.All(c => c.Id != model.InstitutionId.Value))
             ModelState.AddModelError(nameof(model.InstitutionId), localizer["Select an existing institution."]);
     }
