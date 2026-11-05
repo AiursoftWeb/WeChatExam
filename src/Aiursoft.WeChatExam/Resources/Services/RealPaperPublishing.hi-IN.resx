@@ -21,6 +21,9 @@
       <data name="Add at least one question before publishing." xml:space="preserve">
     <value>प्रकाशित करने से पहले कम से कम एक प्रश्न जोड़ें।</value>
   </data>
+  <data name="Complete the reference answers before publishing. An answer must not simply repeat the question." xml:space="preserve">
+    <value>प्रकाशन से पहले संदर्भ उत्तर पूरे करें। उत्तर केवल प्रश्न को दोहराने वाला नहीं होना चाहिए।</value>
+  </data>
   <data name="Every question must have a nonnegative order and a positive score." xml:space="preserve">
     <value>प्रत्येक प्रश्न का क्रमांक शून्य या उससे अधिक और अंक शून्य से अधिक होने चाहिए।</value>
   </data>

@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Добавлено вопросов, соответствующих критериям: {0}.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Не удалось подтвердить публикацию. Обновите работу перед повторной попыткой.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Не удалось подтвердить добавление набора. Перед повторной попыткой проверьте текущие вопросы.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Выберите существующее учреждение.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Настройки сохранены. Опубликуйте обновления, когда работа будет готова.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>После публикации версии этой работы учреждение нельзя изменить.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Набор подходящих экзаменационных вопросов изменился. Проверьте текущие результаты, прежде чем подтвердить выбор ещё раз.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Работа опубликована. Теперь студенты могут использовать опубликованный контент.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Работа снята с публикации. Вопросы и записи о предыдущих студентах сохранены.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Не удалось сохранить версию. Перед повторной попыткой обновите список версий.</value>

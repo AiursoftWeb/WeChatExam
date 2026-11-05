@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>確認新增 {0} 條試題</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>編輯原題</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>編輯原題時，題庫及其他未發佈試卷中的題目也會同時更新。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解析</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>內部標籤名稱</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>下一頁</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>暫無解釋。</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>沒有更多符合條件的問題。</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>問題類型</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>參考答案及解釋</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>參考答案需留意</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>從試卷中移除</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>已選問題</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>標準答案</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>標籤</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>測驗卷</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>參考答案缺失或與題目重複。請在發佈前補全。</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>此操作會從每一頁搜尋結果加入試題，並略過已加入此試卷的試題。</value>

@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Dodano {0} pasujących pytań.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Nie można potwierdzić publikacji. Przeładuj pracę przed ponowną próbą.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Nie udało się potwierdzić dodania zestawu. Przed ponowną próbą sprawdź aktualne pytania.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Wybierz istniejącą instytucję.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Ustawienia zapisane. Opublikuj swoje aktualizacje, gdy praca będzie gotowa.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Nie można zmienić instytucji po opublikowaniu wersji tej pracy.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Pytania egzaminacyjne spełniające kryteria uległy zmianie. Przed ponownym potwierdzeniem sprawdź aktualne wyniki.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Praca została opublikowana. Studenci mogą teraz korzystać z opublikowanej treści.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Praca została wycofana. Pytania oraz wcześniejsze rekordy studentów zostały zachowane.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Nie udało się zapisać wersji. Przed ponowną próbą odśwież listę wersji.</value>

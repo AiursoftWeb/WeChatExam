@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>{0} eşleşen soru eklendi.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Yayın onaylanamadı. Tekrar denemeden önce sınavı yeniden yükleyin.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Toplu ekleme işlemi onaylanamadı. Tekrar denemeden önce mevcut soruları gözden geçirin.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Mevcut bir kurum seçin.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Ayarlar kaydedildi. Makale hazır olduğunda güncellemelerinizi yayımlayın.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Bu makalenin yayımlanmış bir sürümü olduktan sonra kurum değiştirilemez.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Eşleşen sınav soruları değişti. Yeniden onaylamadan önce güncel sonuçları gözden geçirin.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Sınav yayımlandı. Öğrenciler artık yayımlanan içeriği kullanabilir.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Makale yayından kaldırıldı. Sorular ve önceki öğrenci kayıtları saklanmıştır.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Sürüm kaydedilemedi. Tekrar denemeden önce sürüm listesini yeniden yükleyin.</value>

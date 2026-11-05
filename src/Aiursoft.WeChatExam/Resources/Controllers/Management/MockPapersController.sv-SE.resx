@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Lade till {0} matchande frågor.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Det gick inte att bekräfta publiceringen. Ladda om provet innan du försöker igen.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Det gick inte att bekräfta att alla frågor lades till. Granska de aktuella frågorna innan du försöker igen.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Välj en befintlig kurs.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Inställningar sparade. Publicera dina uppdateringar när uppsatsen är klar.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Matchande tentamensfrågor har ändrats. Granska de aktuella resultaten innan du bekräftar igen.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Provet är publicerat. Studenter kan nu använda det publicerade innehållet.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Arbetet är opublicerat. Frågor och tidigare studentregistreringar har bevarats.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versionen kunde inte sparas. Läs in versionslistan igen innan du försöker på nytt.</value>

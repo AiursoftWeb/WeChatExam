@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>{0} soal yang cocok telah ditambahkan.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Tidak dapat mengonfirmasi publikasi. Muat ulang makalah sebelum mencoba lagi.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Tidak dapat memastikan bahwa kumpulan tersebut berhasil ditambahkan. Tinjau pertanyaan saat ini sebelum mencoba lagi.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Pilih institusi yang sudah ada.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Pengaturan disimpan. Terbitkan pembaruan Anda saat makalah siap.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Institusi tidak dapat diubah setelah makalah ini memiliki versi yang telah diterbitkan.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Soal ujian yang cocok telah berubah. Tinjau hasil saat ini sebelum mengonfirmasi kembali.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Ujian telah dipublikasikan. Siswa sekarang dapat menggunakan konten yang telah dipublikasikan.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Makalah tidak dipublikasikan. Pertanyaan dan catatan mahasiswa sebelumnya telah disimpan.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versi tidak dapat disimpan. Muat ulang daftar versi sebelum mencoba lagi.</value>

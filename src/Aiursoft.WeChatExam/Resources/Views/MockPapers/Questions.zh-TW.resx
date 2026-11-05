@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>確認新增 {0} 道考題</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>編輯原始題目</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>編輯草稿不會變更已發布的版本。</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>編輯原始題目也會同時變更題庫及其他未發布考卷中的該題目。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解析</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>內部標籤名稱</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>下一頁</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>尚未提供說明。</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>此課程中沒有更多符合條件的題目。</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>題目類型</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>參考答案與解析</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>参考答案需檢查</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>從試卷中移除</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>已選取的題目</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>標準答案</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>標籤</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>測驗卷</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>參考答案遺漏或重複題目內容。請於發布前補完。</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>這會從每一頁搜尋結果中加入考題，並略過已加入此試卷的題目。</value>

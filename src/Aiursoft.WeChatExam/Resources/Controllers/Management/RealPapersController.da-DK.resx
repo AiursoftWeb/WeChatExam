@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Tilføjede {0} matchende spørgsmål.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Kunne ikke bekræfte publikation. Genindlæs opgaven, før du prøver igen.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Kunne ikke bekræfte, at gruppen blev tilføjet. Gennemgå de aktuelle spørgsmål, før du prøver igen.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Vælg en eksisterende institution.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Indstillinger gemt. Udgiv dine opdateringer, når opgaven er klar.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Institutionen kan ikke ændres, efter at denne opgave er blevet udgivet.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>De matchende eksamensspørgsmål er ændret. Gennemgå de aktuelle resultater, før du bekræfter igen.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Opgaven er publiceret. Studerende kan nu bruge det publicerede indhold.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Afhandlingen er upubliceret. Spørgsmål og tidligere elevoptegnelser er bevaret.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versionen kunne ikke gemmes. Indlæs versionslisten igen, før du prøver igen.</value>

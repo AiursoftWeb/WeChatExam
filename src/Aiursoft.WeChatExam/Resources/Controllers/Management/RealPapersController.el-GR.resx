@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Προστέθηκαν {0} ερωτήσεις που πληρούν τα κριτήρια.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Δεν ήταν δυνατή η επιβεβαίωση της δημοσίευσης. Επαναφορτώστε το έγγραφο πριν δοκιμάσετε ξανά.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Δεν ήταν δυνατή η επιβεβαίωση της προσθήκης της δέσμης. Ελέγξτε τις τρέχουσες ερωτήσεις πριν προσπαθήσετε ξανά.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Επιλέξτε μια υπάρχουσα ιδρυματική οντότητα.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Τα ρυθμίσεις αποθηκεύτηκαν. Δημοσιεύστε τις ενημερώσεις σας όταν το έγγραφο είναι έτοιμο.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Ο θεσμός δεν μπορεί να αλλάξει αφού το άρθρο έχει δημοσιευμένη έκδοση.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Οι αντίστοιχες ερωτήσεις της εξέτασης άλλαξαν. Ελέγξτε τα τρέχοντα αποτελέσματα πριν επιβεβαιώσετε ξανά.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Το τεστ δημοσιεύτηκε. Οι φοιτητές μπορούν πλέον να χρησιμοποιήσουν το δημοσιευμένο περιεχόμενο.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Το έγγραφο έχει αποδημοσιευτεί. Οι ερωτήσεις και τα προηγούμενα αρχεία φοιτητών έχουν διατηρηθεί.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Δεν ήταν δυνατή η αποθήκευση της έκδοσης. Φορτώστε ξανά τη λίστα εκδόσεων πριν προσπαθήσετε ξανά.</value>

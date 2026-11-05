@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>{0}件の試験問題を追加する</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>元の質問を編集</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>下書きを編集しても、公開済みのバージョンは変更されません。</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>元の質問を編集すると、問題バンクや他の未公開の問題集でも変更されます。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解説</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>内部タグ名</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>次へ</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>解説はまだありません。</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>このコースに一致する問題はこれ以上ありません。</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>問題の種類</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>参考答案と解説</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>正答に注意が必要です</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>用紙から削除</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>選択済みの質問</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>正答</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>タグ</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>テスト用紙</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>参考解答が欠落しているか、問題文と重複しています。公開する前に補完してください。</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>すべての検索結果ページから試験問題を追加し、この用紙にすでに含まれている問題はスキップします。</value>

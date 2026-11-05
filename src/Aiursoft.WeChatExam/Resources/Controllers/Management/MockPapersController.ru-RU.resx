@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Добавлено вопросов, соответствующих условиям: {0}.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Не удалось подтвердить публикацию. Перезагрузите документ перед повторной попыткой.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Не удалось подтвердить добавление набора. Проверьте текущие вопросы и повторите попытку.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Выберите существующий курс.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Настройки сохранены. Опубликуйте свои обновления, когда работа будет готова.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Состав соответствующих экзаменационных вопросов изменился. Проверьте текущие результаты, прежде чем подтвердить ещё раз.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Работа опубликована. Теперь студенты могут использовать опубликованный контент.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Работа снята с публикации. Вопросы и предыдущие записи студентов сохранены.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Не удалось сохранить версию. Обновите список версий перед повторной попыткой.</value>

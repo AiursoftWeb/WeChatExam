@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Aggiunte {0} domande corrispondenti.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Impossibile confermare la pubblicazione. Ricarica il documento prima di riprovare.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Impossibile confermare l’aggiunta del gruppo. Controlla le domande attuali prima di riprovare.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Seleziona un corso esistente.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Impostazioni salvate. Pubblica le tue modifiche quando il documento è pronto.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Le domande d’esame corrispondenti sono cambiate. Rivedi i risultati attuali prima di confermare di nuovo.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>La prova è stata pubblicata. Gli studenti possono ora utilizzare i contenuti pubblicati.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>La prova è stata despubblicata. Le domande e i registri degli studenti precedenti sono stati conservati.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Impossibile salvare la versione. Ricarica l&apos;elenco delle versioni prima di riprovare.</value>
