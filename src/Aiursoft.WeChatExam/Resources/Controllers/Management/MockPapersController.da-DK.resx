@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Tilføjede {0} matchende spørgsmål.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Kunne ikke bekræfte offentliggørelse. Genindlæs opgaven, før du prøver igen.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Kunne ikke bekræfte, at gruppen blev tilføjet. Gennemgå de aktuelle spørgsmål, før du prøver igen.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Vælg et eksisterende kursus.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Indstillinger gemt. Udgiv dine opdateringer, når opgaven er klar.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>De matchende eksamensspørgsmål er ændret. Gennemgå de aktuelle resultater, før du bekræfter igen.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Prøven er offentliggjort. Studenterne kan nu bruge det offentliggjorte indhold.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Opgaven er udpublishet. Spørgsmål og tidligere elevoptegnelser er blevet bevaret.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versionen kunne ikke gemmes. Genindlæs versionslisten, før du prøver igen.</value>

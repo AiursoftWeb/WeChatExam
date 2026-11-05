@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>已新增 {0} 條符合條件的題目。</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>無法確認發佈。請重新載入卷紙後再試一次。</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>無法確認是否已成功批量新增。請檢查目前的題目，然後再試一次。</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>請選擇一間現有的機構。</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>設定已儲存。試卷準備好後，請發布你的更新。</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>論文發佈版本後，所屬機構便不能更改。</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>相符的考試題目已更改。請先查看目前的結果，再次確認。</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>試卷已發布。學生現在可以使用已發布的內容。</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>該試卷已取消發佈。題目及過往學生記錄已保留。</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>無法儲存此版本。請重新載入版本清單，然後再試一次。</value>

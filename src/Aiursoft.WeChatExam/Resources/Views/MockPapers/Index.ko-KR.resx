@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>모의 시험지 수정</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>문제 편집</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>시험지 가져오기</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>회원 가입이 필요하지 않습니다</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>미게시</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>총 {1}페이지 중 {0}페이지</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>이전</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>게시 이력</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>문제지 공개</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>게시됨</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>게시된 버전 사용 가능</value>
@@ -89,6 +104,9 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>모든 시험지 보기</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>시험지 비공개</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>버전 및 게시</value>

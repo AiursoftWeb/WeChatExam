@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>금액은 완료된 주문에서 가져오며, 오늘의 제품 가격이나 쿠폰 금액이 아닙니다. 합계는 선택된 필터에 따라 표시됩니다.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>완료 시각</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>해당 코드로 완료된 구매 내역으로, 전액 할인된 주문을 포함합니다. 쿠폰 청구는 구매로 간주되지 않습니다.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>쿠폰 사용 내역</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>날짜와 시간은 기기의 시간대를 사용합니다.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>비활성화됨</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>적용된 할인</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>구매 내역 필터링</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>일치하는 구매</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>다중 사용</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>이 필터와 일치하는 완료된 구매가 없습니다.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>기록되지 않음</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>주문</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>주문 원가</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>지불됨</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>구매 내역</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>구매 페이지</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>구매한 콘텐츠</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>1회용</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>학생</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>학생, 제품 또는 주문 번호</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>이 쿠폰에는 아직 완료된 구매 내역이 없습니다.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>쿠폰은 사용된 것으로 표시되어 있지만 완료된 주문을 사용할 수 없습니다. 과거의 구매자 및 금액을 확인할 수 없습니다.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>~까지</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>총 할인</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>총 결제 금액</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>이름 없는 학생</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>주문 보기</value>
+  </data>
+
+</root>

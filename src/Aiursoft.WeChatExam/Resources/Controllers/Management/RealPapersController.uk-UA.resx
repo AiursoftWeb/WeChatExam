@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Додано {0} відповідних запитань.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Не вдалося підтвердити публікацію. Оновіть документ перед повторною спробою.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Не вдалося підтвердити додавання набору. Перевірте поточні запитання, перш ніж спробувати ще раз.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Виберіть наявну установу.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Налаштування збережено. Опублікуйте свої оновлення, коли стаття буде готова.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Установу не можна змінити після публікації цієї роботи.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Відповідність екзаменаційних запитань змінилася. Перегляньте поточні результати, перш ніж підтверджувати ще раз.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Тестову роботу опубліковано. Студенти можуть тепер використовувати опубліковані матеріали.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Статтю знято з публікації. Питання та попередні записи студентів збережено.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Не вдалося зберегти версію. Перед повторною спробою перезавантажте список версій.</value>

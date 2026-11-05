@@ -33,6 +33,9 @@
   <data name="Draft" xml:space="preserve">
     <value>下書き</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>論文を編集</value>
+  </data>
   <data name="Edit Real Paper" xml:space="preserve">
     <value>実際の試験を編集</value>
   </data>
@@ -51,6 +54,9 @@
   <data name="No matching papers" xml:space="preserve">
     <value>該当する論文はありません</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>未公開</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>全{1}ページ中{0}ページ目</value>
   </data>
@@ -62,6 +68,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>前へ</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>公開履歴</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>論文を公開</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>公開済み</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>公開版を利用できます</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>すべての論文を表示</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>論文の公開を解除</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>バージョンと公開</value>

@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>一致する問題を{0}件追加しました。</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>公開を確認できませんでした。再試行する前に論文を再読み込みしてください。</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>一括追加を確認できませんでした。再試行する前に、現在の問題を確認してください。</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>既存の機関を選択してください。</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>設定が保存されました。論文が準備できたら、更新内容を公開してください。</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>論文に公開版がある場合、所属機関は変更できません。</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>照合対象の試験問題が変更されました。再度確定する前に、現在の結果を確認してください。</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>論文が公開されました。学生は公開されたコンテンツを利用できます。</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>論文は非公開にされました。質問および過去の学生記録は保持されています。</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>バージョンを保存できませんでした。再試行する前に、バージョン一覧を再読み込みしてください。</value>

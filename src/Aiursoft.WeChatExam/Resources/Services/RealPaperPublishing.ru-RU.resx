@@ -21,6 +21,9 @@
       <data name="Add at least one question before publishing." xml:space="preserve">
     <value>Перед публикацией добавьте хотя бы один вопрос.</value>
   </data>
+  <data name="Complete the reference answers before publishing. An answer must not simply repeat the question." xml:space="preserve">
+    <value>Заполните эталонные ответы перед публикацией. Ответ не должен просто повторять вопрос.</value>
+  </data>
   <data name="Every question must have a nonnegative order and a positive score." xml:space="preserve">
     <value>У каждого вопроса должен быть неотрицательный порядок и положительный балл.</value>
   </data>

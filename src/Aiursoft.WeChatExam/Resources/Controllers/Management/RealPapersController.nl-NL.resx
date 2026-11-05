@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>{0} overeenkomende vragen toegevoegd.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Kon de publicatie niet bevestigen. Laad het paper opnieuw op voordat u het opnieuw probeert.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Kon niet bevestigen dat de batch is toegevoegd. Controleer de huidige vragen voordat u het opnieuw probeert.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Selecteer een bestaande instelling.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Instellingen opgeslagen. Publiceer uw updates wanneer het document klaar is.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>De instelling kan niet worden gewijzigd nadat er een gepubliceerde versie van dit paper is.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>De bijbehorende examenvragen zijn gewijzigd. Controleer de huidige resultaten voordat u opnieuw bevestigt.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Het proefwerk is gepubliceerd. Studenten kunnen nu de gepubliceerde inhoud gebruiken.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Het document is niet gepubliceerd. Vragen en eerdere studentrecords zijn behouden gebleven.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>De versie kon niet worden opgeslagen. Laad de versielijst opnieuw voordat u het opnieuw probeert.</value>

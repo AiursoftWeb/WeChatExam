@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Đã thêm {0} câu hỏi phù hợp.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Không thể xác nhận việc xuất bản. Vui lòng tải lại bài thi trước khi thử lại.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Không thể xác nhận đã thêm toàn bộ câu hỏi. Vui lòng kiểm tra các câu hỏi hiện tại trước khi thử lại.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Chọn một khóa học hiện có.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Đã lưu cài đặt. Hãy xuất bản các cập nhật của bạn khi bài viết đã sẵn sàng.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Các câu hỏi thi phù hợp đã thay đổi. Vui lòng xem lại kết quả hiện tại trước khi xác nhận lại.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Đề thi đã được phát hành. Sinh viên giờ đây có thể sử dụng nội dung đã phát hành.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Bài kiểm tra đã bị hủy công bố. Các câu hỏi và hồ sơ học sinh trước đó vẫn được lưu giữ.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Không thể lưu phiên bản. Hãy tải lại danh sách phiên bản trước khi thử lại.</value>

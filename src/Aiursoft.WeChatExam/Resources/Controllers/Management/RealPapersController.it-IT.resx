@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Aggiunte {0} domande corrispondenti.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Non è stato possibile confermare la pubblicazione. Ricarica la tesi prima di riprovare.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Impossibile confermare l’aggiunta del gruppo. Controlla le domande attuali prima di riprovare.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Seleziona un istituto esistente.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Impostazioni salvate. Pubblica le tue modifiche quando il documento è pronto.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>L’istituzione non può essere modificata dopo la pubblicazione di una versione di questo elaborato.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Le domande d’esame corrispondenti sono cambiate. Rivedi i risultati attuali prima di confermare di nuovo.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>La prova è stata pubblicata. Gli studenti possono ora utilizzare il contenuto pubblicato.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>La pubblicazione è stata annullata. Le domande e i record precedenti degli studenti sono stati conservati.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Impossibile salvare la versione. Ricarica l’elenco delle versioni prima di riprovare.</value>

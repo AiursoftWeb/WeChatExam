@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>{0}問の試験問題の追加を確定</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>元の質問を編集</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>元の質問を編集すると、問題集および他の未公開の問題にも変更が反映されます。</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>解説</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>内部タグ名</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>次へ</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>まだ説明はありません。</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>一致する質問はこれ以上ありません。</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>問題の種類</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>参考答案と解説</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>正答例の確認が必要です</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>問題用紙から削除</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>選択済みの質問</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>標準解答</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>タグ</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>テスト用紙</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>正答例が欠落しているか、問題文と重複しています。公開する前に補完してください。</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>すべての検索結果ページにある試験問題を追加し、この問題用紙にすでに含まれている問題はスキップします。</value>
