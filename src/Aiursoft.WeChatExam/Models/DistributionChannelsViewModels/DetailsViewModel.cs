@@ -13,4 +13,5 @@ public class DetailsViewModel : UiStackLayoutViewModel
 
     public required DistributionChannel Channel { get; set; }
     public required ChannelStats Stats { get; set; }
+    public Dictionary<Guid, int> CouponPaidOrderCounts { get; init; } = [];
 }

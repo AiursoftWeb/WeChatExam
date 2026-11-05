@@ -1,0 +1,163 @@
+@model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.CouponDetailsViewModel
+@using Aiursoft.WebTools
+@{
+    var from = Model.From?.ToString("yyyy-MM-dd");
+    var to = Model.To?.ToString("yyyy-MM-dd");
+}
+
+<a asp-action="Details" asp-route-id="@Model.Coupon.DistributionChannelId" class="d-inline-flex align-items-center gap-2 mb-3">
+    <i data-lucide="arrow-left"></i> @Model.Coupon.DistributionChannel?.AgencyName
+</a>
+<div class="d-flex align-items-center flex-wrap gap-3 mb-3">
+    <h1 class="h3 mb-0">@Localizer["Coupon Usage Details"] · <code class="user-select-all text-break">@Model.Coupon.Code</code></h1>
+    @if (Model.Coupon.IsSingleUse)
+    {
+        <span class="badge bg-info">@Localizer["Single Use"]</span>
+    }
+    else
+    {
+        <span class="badge bg-primary">@Localizer["Multi Use"]</span>
+    }
+    @if (!Model.Coupon.IsEnabled)
+    {
+        <span class="badge bg-secondary">@Localizer["Disabled"]</span>
+    }
+</div>
+<p class="text-muted">@Localizer["Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase."]</p>
+
+<div class="row g-3 mb-4">
+    <div class="col-sm-4"><div class="card h-100 mb-0"><div class="card-body">
+        <div class="text-muted mb-2">@Localizer["Matching Purchases"]</div>
+        <div class="h2 mb-0">@Model.TotalCount</div>
+    </div></div></div>
+    <div class="col-sm-4"><div class="card h-100 mb-0"><div class="card-body">
+        <div class="text-muted mb-2">@Localizer["Total Discount"]</div>
+        <div class="h2 mb-0">¥@((Model.TotalDiscountInFen / 100m).ToString("F2"))</div>
+    </div></div></div>
+    <div class="col-sm-4"><div class="card h-100 mb-0"><div class="card-body">
+        <div class="text-muted mb-2">@Localizer["Total Paid"]</div>
+        <div class="h2 mb-0">¥@((Model.TotalPaidInFen / 100m).ToString("F2"))</div>
+    </div></div></div>
+</div>
+
+<details class="card mb-3" open="@(!ViewData.ModelState.IsValid || Model.From.HasValue || Model.To.HasValue || !string.IsNullOrEmpty(Model.Search))">
+    <summary class="card-header">@Localizer["Filter Purchases"]</summary>
+    <div class="card-body">
+        <form method="get" class="row g-3 align-items-end" data-coupon-filters>
+            <input type="hidden" name="id" value="@Model.Coupon.Id" />
+            <input type="hidden" name="timeZone" value="@Model.TimeZone" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="col-md-3">
+                <label for="from" class="form-label">@Localizer["From"]</label>
+                <input id="from" name="from" type="date" min="1900-01-01" value="@from" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="to" class="form-label">@Localizer["Through"]</label>
+                <input id="to" name="to" type="date" min="1900-01-01" value="@to" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label for="search" class="form-label">@Localizer["Student, Product or Order Number"]</label>
+                <input id="search" name="search" value="@Model.Search" class="form-control" />
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">@Localizer["Apply"]</button>
+                <a asp-action="CouponDetails" asp-route-id="@Model.Coupon.Id" class="btn btn-outline-secondary">@Localizer["Reset"]</a>
+            </div>
+        </form>
+    </div>
+</details>
+
+<div class="card">
+    <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <h2 class="h5 mb-0">@Localizer["Purchase History"]</h2>
+        <span class="text-muted small">@Localizer["Dates and times use your device's time zone."]</span>
+    </div>
+    @if (Model.Orders.Count == 0)
+    {
+        <div class="card-body text-center py-5">
+            <i data-lucide="receipt-text" class="mb-3 text-muted"></i>
+            @if (Model.From.HasValue || Model.To.HasValue || !string.IsNullOrEmpty(Model.Search))
+            {
+                <p class="mb-0">@Localizer["No completed purchases match these filters."]</p>
+            }
+            else
+            {
+                <p class="mb-0">@Localizer["This coupon has no completed purchases yet."]</p>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" style="min-width: 60rem;">
+                <thead><tr>
+                    <th>@Localizer["Completed At"]</th>
+                    <th>@Localizer["Student"]</th>
+                    <th>@Localizer["Purchased Content"]</th>
+                    <th class="text-end text-nowrap">@Localizer["Order Original Price"]</th>
+                    <th class="text-end text-nowrap">@Localizer["Discount Applied"]</th>
+                    <th class="text-end text-nowrap">@Localizer["Paid"]</th>
+                    <th>@Localizer["Order"]</th>
+                </tr></thead>
+                <tbody>
+                @foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td class="text-nowrap">
+                            @if (order.PaidAt.HasValue)
+                            {
+                                <span data-utc-time="@order.PaidAt.Value.ToHtmlDateTime()"></span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">@Localizer["Not Recorded"]</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="PaymentOrders" asp-action="UserPayments" asp-route-userId="@order.UserId">
+                                @if (string.IsNullOrWhiteSpace(order.User?.DisplayName))
+                                {
+                                    @Localizer["Unnamed Student"]
+                                }
+                                else
+                                {
+                                    @order.User.DisplayName
+                                }
+                            </a>
+                        </td>
+                        <td>@order.Description</td>
+                        <td class="text-end text-nowrap">¥@((((long)order.AmountInFen + order.DiscountInFen) / 100m).ToString("F2"))</td>
+                        <td class="text-end text-nowrap">−¥@((order.DiscountInFen / 100m).ToString("F2"))</td>
+                        <td class="text-end text-nowrap fw-semibold">¥@((order.AmountInFen / 100m).ToString("F2"))</td>
+                        <td><a asp-controller="PaymentOrders" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary text-nowrap">@Localizer["View Order"]</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+    <div class="card-footer">
+        <p class="text-muted small mb-3">@Localizer["Amounts come from the completed order, not today's product price or coupon value. Totals follow the selected filters."]</p>
+        @if (Model.TotalPages > 1)
+        {
+            <nav aria-label="@Localizer["Purchase pages"]">
+                <ul class="pagination justify-content-end mb-0">
+                    @if (Model.CurrentPage > 1)
+                    {
+                        <li class="page-item"><a asp-action="CouponDetails" asp-route-id="@Model.Coupon.Id" asp-route-from="@from" asp-route-to="@to" asp-route-search="@Model.Search" asp-route-timeZone="@Model.TimeZone" asp-route-page="@(Model.CurrentPage - 1)" class="page-link">@Localizer["Previous"]</a></li>
+                    }
+                    <li class="page-item disabled"><span class="page-link">@Model.CurrentPage / @Model.TotalPages</span></li>
+                    @if (Model.CurrentPage < Model.TotalPages)
+                    {
+                        <li class="page-item"><a asp-action="CouponDetails" asp-route-id="@Model.Coupon.Id" asp-route-from="@from" asp-route-to="@to" asp-route-search="@Model.Search" asp-route-timeZone="@Model.TimeZone" asp-route-page="@(Model.CurrentPage + 1)" class="page-link">@Localizer["Next"]</a></li>
+                    }
+                </ul>
+            </nav>
+        }
+    </div>
+</div>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
+    <script src="~/js/coupon-purchases.js" asp-append-version="true" defer></script>
+}
