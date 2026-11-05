@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>Редактировать пробный вариант</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Редактировать работу</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>Импортировать работу</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>Членство не требуется</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Не опубликовано</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Страница {0} из {1}</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Предыдущая</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>История публикаций</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Опубликовать работу</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Опубликован</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Доступна опубликованная версия</value>
@@ -89,6 +104,9 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Показать все работы</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Снять с публикации</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Версии и публикация</value>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>Số tiền được lấy từ đơn hàng đã hoàn thành, không phải giá sản phẩm hay giá trị phiếu giảm giá hôm nay. Tổng cộng tuân theo bộ lọc đã chọn.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>Hoàn thành lúc</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>Các đơn hàng đã hoàn tất sử dụng mã này, bao gồm cả các đơn hàng được giảm giá toàn bộ. Việc nhận mã giảm giá không được tính là một đơn hàng.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>Chi tiết sử dụng mã giảm giá</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>Ngày và giờ sử dụng múi giờ của thiết bị của bạn.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Bị vô hiệu</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>Chiết khấu áp dụng</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>Lọc mua hàng</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>Giao dịch khớp</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Dùng nhiều lần</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tiếp theo</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>Không có giao dịch mua hoàn tất nào phù hợp với bộ lọc này.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>Chưa ghi nhận</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Đặt hàng</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>Giá gốc đơn hàng</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Đã thanh toán</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Trước</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>Lịch sử mua hàng</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>Trang mua hàng</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>Nội dung đã mua</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Đặt lại</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Dùng một lần</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Sinh viên</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>Mã sinh viên, sản phẩm hoặc đơn hàng</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>Voucher này chưa có giao dịch mua hàng hoàn thành nào.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>Mã giảm giá này được đánh dấu là đã sử dụng, nhưng đơn hàng hoàn thành của nó không khả dụng. Người mua và số tiền trong quá khứ không thể được xác minh.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>Tổng giảm giá</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>Tổng thanh toán</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>Học sinh không tên</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>Xem đơn hàng</value>
+  </data>
+
+</root>
