@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>اختر تواريخ في 1 يناير 1900 أو بعده.</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>تم حفظ مبلغ القسيمة. تستخدم الطلبات الجديدة المبلغ الجديد؛ الطلبات الحالية وسجل الشراء لم يتم تغييرها.</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>تم تعطيل القسيمة. تم الحفاظ على المطالبات والطلبات والعضويات الحالية.</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>نطاق التاريخ أو المنطقة الزمنية غير صالح.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>لا يمكن أن يتجاوز الخصم سعر أي منتج مطبق. أدخل مبلغًا أصغر.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>يجب ألا يكون تاريخ البدء بعد تاريخ الانتهاء.</value>

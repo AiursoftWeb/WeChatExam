@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="Edit Coupon Amount" xml:space="preserve">
+    <value>कूपन राशि संपादित करें</value>
+  </data>
+  <data name="Fen" xml:space="preserve">
+    <value>फ़ेन</value>
+  </data>
+  <data name="Save Amount" xml:space="preserve">
+    <value>राशि सहेजें</value>
+  </data>
+  <data name="The new amount applies to orders created after saving, including coupons already claimed but not yet ordered. Existing orders and purchase history keep their original amounts." xml:space="preserve">
+    <value>नया राशि सहेजने के बाद बनाए गए ऑर्डरों पर लागू होता है, जिसमें पहले से प्राप्त किए गए लेकिन अभी तक ऑर्डर नहीं किए गए कूपन भी शामिल हैं। मौजूदा ऑर्डर और खरीदारी का इतिहास अपनी मूल राशियों को बनाए रखते हैं।</value>
+  </data>
+
+</root>

@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>เลือกวันที่ตั้งแต่ 1 มกราคม 1900 เป็นต้นไป</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>บันทึกจำนวนเงินคูปองแล้ว คำสั่งซื้อใหม่จะใช้จำนวนเงินใหม่ ส่วนคำสั่งซื้อที่มีอยู่และประวัติการซื้อจะไม่เปลี่ยนแปลง</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>คูปองถูกปิดใช้งานแล้ว การเคลม คำสั่งซื้อ และสมาชิกภาพที่มีอยู่ยังคงถูกเก็บรักษาไว้</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>ช่วงวันที่หรือเขตเวลาไม่ถูกต้อง</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>ส่วนลดไม่สามารถเกินราคาของผลิตภัณฑ์ที่เข้าเกณฑ์ใด ๆ ได้ กรุณากรอกจำนวนที่น้อยกว่านี้</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>วันที่เริ่มต้นต้องไม่อยู่หลังวันที่สิ้นสุด</value>

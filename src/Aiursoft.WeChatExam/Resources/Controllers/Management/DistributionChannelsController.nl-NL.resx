@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Kies data op of na 1 januari 1900.</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>Couponbedrag opgeslagen. Nieuwe bestellingen gebruiken het nieuwe bedrag; bestaande bestellingen en aankoopgeschiedenis blijven ongewijzigd.</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>Coupon uitgeschakeld. Bestaande claims, bestellingen en lidmaatschappen zijn behouden.</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>De datumreeks of tijdzone is ongeldig.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>De korting kan niet hoger zijn dan de prijs van enig toepasselijk product. Voer een kleiner bedrag in.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>De startdatum mag niet na de einddatum liggen.</value>

@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Επιλέξτε ημερομηνίες από την 1η Ιανουαρίου 1900 και μετά.</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>Το ποσό του κουπονιού αποθηκεύτηκε. Τα νέα παραγγέλματα χρησιμοποιούν το νέο ποσό· τα υπάρχοντα παραγγέλματα και το ιστορικό αγορών δεν έχουν αλλάξει.</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>Το κουπόνι απενεργοποιήθηκε. Οι υπάρχουσες αξιώσεις, παραγγελίες και συνδρομές διατηρήθηκαν.</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Το εύρος ημερομηνιών ή η ζώνη ώρας δεν είναι έγκυρη.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>Η έκπτωση δεν μπορεί να υπερβαίνει την τιμή οποιουδήποτε εφαρμοστέου προϊόντος. Εισαγάγετε ένα μικρότερο ποσό.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Η ημερομηνία έναρξης δεν πρέπει να είναι μετά την ημερομηνία λήξης.</value>

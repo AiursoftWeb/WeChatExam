@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Оберіть дати 1 січня 1900 року або пізніше.</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>Суму купона збережено. Нові замовлення використовуватимуть нову суму; наявні замовлення та історія покупок залишаються незмінними.</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>Купон вимкнено. Існуючі претензії, замовлення та членства збережено.</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Діапазон дат або часовий пояс недійсні.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>Знижка не може перевищувати ціну жодного відповідного продукту. Введіть меншу суму.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Дата початку не повинна бути пізнішою за дату завершення.</value>

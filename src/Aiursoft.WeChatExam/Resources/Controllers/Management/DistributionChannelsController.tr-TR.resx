@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>1 Ocak 1900 veya daha sonraki tarihleri seçin.</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>Kupon tutarı kaydedildi. Yeni siparişler yeni tutarı kullanır; mevcut siparişler ve satın alma geçmişi değiştirilmedi.</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>Kupon devre dışı bırakıldı. Mevcut talepler, siparişler ve üyelikler korundu.</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Tarih aralığı veya saat dilimi geçerli değil.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>İndirim, herhangi bir uygun ürünün fiyatını aşamaz. Daha küçük bir tutar girin.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Başlangıç tarihi, bitiş tarihinden sonra olamaz.</value>

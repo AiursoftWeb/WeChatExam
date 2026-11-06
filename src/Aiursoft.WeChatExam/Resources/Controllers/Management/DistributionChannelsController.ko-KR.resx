@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>1900년 1월 1일 이후의 날짜를 선택하세요.</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>쿠폰 금액이 저장되었습니다. 새 주문에는 새 금액이 적용되며, 기존 주문 및 구매 내역은 변경되지 않습니다.</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>쿠폰이 비활성화되었습니다. 기존 청구, 주문 및 멤버십은 유지되었습니다.</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>날짜 범위 또는 시간대가 유효하지 않습니다.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>할인 금액은 적용 가능한 제품의 가격을 초과할 수 없습니다. 더 작은 금액을 입력하세요.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>시작일은 종료일 이후일 수 없습니다.</value>
