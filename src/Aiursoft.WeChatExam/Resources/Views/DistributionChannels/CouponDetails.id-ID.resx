@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>Jumlah berasal dari pesanan yang telah diselesaikan, bukan harga produk hari ini atau nilai kupon. Total mengikuti filter yang dipilih.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Terapkan</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>Selesai Pada</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>Pembelian yang diselesaikan menggunakan kode ini, termasuk pesanan yang mendapat diskon penuh. Mengklaim kupon bukanlah pembelian.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>Detail Penggunaan Kupon</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>Tanggal dan waktu menggunakan zona waktu perangkat Anda.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Nonaktif</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>Diskon Diterapkan</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>Saring Pembelian</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Dari</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>Pembelian yang Cocok</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Penggunaan Ganda</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>Tidak ada pembelian yang diselesaikan yang cocok dengan filter ini.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>Tidak Direkam</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Pesanan</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>Harga Asli Pesanan</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Dibayar</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Sebelumnya</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>Riwayat Pembelian</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>Halaman pembelian</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>Konten yang Dibeli</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Atur Ulang</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Sekali Pakai</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Siswa</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>Nomor Siswa, Produk, atau Pesanan</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>Kupon ini belum memiliki pembelian yang selesai.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>Kupon ini ditandai sebagai sudah digunakan, tetapi pesanan yang selesai tidak tersedia. Pembeli historis dan jumlah tidak dapat diverifikasi.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>Sampai</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>Total Diskon</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>Total Dibayar</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>Mahasiswa Tanpa Nama</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>Lihat Pesanan</value>
+  </data>
+
+</root>

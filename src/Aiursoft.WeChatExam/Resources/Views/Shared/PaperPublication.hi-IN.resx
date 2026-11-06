@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
+    <value>{0} प्रश्न · {1} अंक · {2} मिनट</value>
+  </data>
+  <data name="{0} questions have no explanation. Adding explanations is recommended but not required for publication." xml:space="preserve">
+    <value>{0} प्रश्नों में कोई व्याख्या नहीं है। प्रकाशन के लिए व्याख्या जोड़ना अनुशंसित है, लेकिन आवश्यक नहीं है।</value>
+  </data>
+  <data name="Add at least one question before publishing." xml:space="preserve">
+    <value>प्रकाशित करने से पहले कम से कम एक प्रश्न जोड़ें।</value>
+  </data>
+  <data name="Back to Editing" xml:space="preserve">
+    <value>संपादन पर वापस जाएँ</value>
+  </data>
+  <data name="Check Before Publishing" xml:space="preserve">
+    <value>प्रकाशन से पहले जाँच करें</value>
+  </data>
+  <data name="Complete or correct the reference answers for {0} questions before publishing." xml:space="preserve">
+    <value>प्रकाशित करने से पहले {0} प्रश्नों के लिए संदर्भ उत्तरों को पूर्ण या सही करें।</value>
+  </data>
+  <data name="Confirm Publish" xml:space="preserve">
+    <value>प्रकाशन की पुष्टि करें</value>
+  </data>
+  <data name="Confirm Unpublish" xml:space="preserve">
+    <value>अनपब्लिश की पुष्टि करें</value>
+  </data>
+  <data name="Continue Editing" xml:space="preserve">
+    <value>संपादन जारी रखें</value>
+  </data>
+  <data name="Every question has a reference answer. Please also check its accuracy." xml:space="preserve">
+    <value>प्रत्येक प्रश्न का एक संदर्भ उत्तर है। कृपया इसकी सटीकता भी जाँचें।</value>
+  </data>
+  <data name="Keep Published" xml:space="preserve">
+    <value>प्रकाशित रखें</value>
+  </data>
+  <data name="Publishing makes your saved content available to students. Existing student records will not be rewritten." xml:space="preserve">
+    <value>प्रकाशित करने से आपका सहेजा गया सामग्री छात्रों के लिए उपलब्ध हो जाता है। मौजूदा छात्र रिकॉर्ड फिर से लिखे नहीं जाएंगे।</value>
+  </data>
+  <data name="Questions, previous answers, scores and mistake records will be kept. You can edit and publish the paper again later." xml:space="preserve">
+    <value>प्रश्न, पिछले उत्तर, अंक और गलती के रिकॉर्ड सहेजे जाएंगे। आप बाद में कागज़ को संपादित करके फिर से प्रकाशित कर सकते हैं।</value>
+  </data>
+  <data name="Students will no longer be able to open this paper or submit answers to it, including attempts already in progress." xml:space="preserve">
+    <value>छात्रों को अब इस परीक्षा पत्र को खोलने या उसके उत्तर जमा करने में सक्षम नहीं रहेंगे, जिसमें पहले से ही प्रगति पर चल रहे प्रयास भी शामिल हैं।</value>
+  </data>
+  <data name="There are no saved changes to publish." xml:space="preserve">
+    <value>प्रकाशित करने के लिए कोई सहेजे गए परिवर्तन नहीं हैं।</value>
+  </data>
+  <data name="These answers are empty or simply repeat the question. Open each question to correct it, then return here." xml:space="preserve">
+    <value>ये उत्तर खाली हैं या बस प्रश्न को दोहरा रहे हैं। प्रत्येक प्रश्न को सही करने के लिए खोलें, फिर यहाँ वापस आएं।</value>
+  </data>
+  <data name="Unpublish this paper?" xml:space="preserve">
+    <value>क्या यह पेपर अनपब्लिश करें?</value>
+  </data>
+
+</root>

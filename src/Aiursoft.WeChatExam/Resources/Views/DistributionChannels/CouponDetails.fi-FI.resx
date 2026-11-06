@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>Summat perustuvat valmiiseen tilaukseen, eivät tämän päivän tuotteen hintaan tai kuponin arvoon. Yhteensä-kentät noudattavat valittuja suodattimia.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Sovella</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>Suoritettu</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>Valmiit ostokset, joissa tätä koodia on käytetty, mukaan lukien täysin alennetut tilaukset. Kuponin lunastaminen ei ole ostos.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>Alennuskoodin käyttöyhteenveto</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>Päivämäärät ja kellonajat käyttävät laitteesi aikavyöhykettä.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Ei käytössä</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>Alennus sovellettu</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>Suodata ostoja</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Alkaen</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>Vastaa ostokset</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Monikäyttöinen</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>Valmiita ostoja ei löydy näillä suodattimilla.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>Ei kirjattu</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Tilaus</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>Tilauksen alkuperainen hinta</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Maksettu</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Edellinen</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>Ostohistoria</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>Ostos sivut</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>Ostettu sisältö</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Nollaa</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Kertakäyttöinen</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Opiskelija</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>Oppilas, tuote tai tilausnumero</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>Tällä kupongilla ei vielä ole yhtään valmista osto-ostoa.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>Tämä kuponki on merkitty käytetyksi, mutta sen valmis tilaus ei ole saatavilla. Alkuperäistä ostajaa ja summia ei voida vahvistaa.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>Mihin</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>Kokonaisalennus</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>Maksettu yhteensä</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>Nimetön opiskelija</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>Näytä tilaus</value>
+  </data>
+
+</root>
