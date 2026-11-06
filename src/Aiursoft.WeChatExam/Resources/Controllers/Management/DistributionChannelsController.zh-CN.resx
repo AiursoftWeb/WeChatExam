@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>请选择1900年1月1日或之后的日期。</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>优惠券金额已保存。新订单将使用新金额；现有订单和购买历史保持不变。</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>优惠券已禁用。已有的领取记录、订单和会员资格已保留。</value>
   </data>
@@ -30,8 +33,14 @@
   <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
     <value>优惠券已启用。单次使用记录尚未重置。</value>
   </data>
+  <data name="Enter no more than two decimal places." xml:space="preserve">
+    <value>请输入不超过两位小数。</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>日期范围或时区无效。</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>折扣金额不能超过任何适用产品的价格。请输入较小的金额。</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>开始日期不能晚于结束日期。</value>

@@ -36,6 +36,37 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
             throw new InvalidOperationException($"Coupon code {code} already exists.");
         }
 
+        await ValidateAmountAsync(amountInFen, targetVipProductIds);
+
+        var coupon = new Coupon
+        {
+            DistributionChannelId = channelId,
+            Code = code.ToUpper(),
+            AmountInFen = amountInFen,
+            IsSingleUse = isSingleUse,
+            IsEnabled = true
+        };
+
+        context.Coupons.Add(coupon);
+
+        if (targetVipProductIds != null && targetVipProductIds.Any())
+        {
+            foreach (var productId in targetVipProductIds)
+            {
+                context.CouponVipProducts.Add(new CouponVipProduct
+                {
+                    CouponId = coupon.Id,
+                    VipProductId = productId
+                });
+            }
+        }
+
+        await context.SaveChangesAsync();
+        return coupon;
+    }
+
+    private async Task ValidateAmountAsync(int amountInFen, List<Guid>? targetVipProductIds)
+    {
         if (amountInFen < 0)
         {
             throw new InvalidOperationException("Discount amount cannot be negative.");
@@ -68,32 +99,17 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
                 throw new InvalidOperationException($"Global discount amount ({amountInFen / 100.0} CNY) cannot exceed the minimum product price ({minProductPrice.Value / 100.0} CNY).");
             }
         }
+    }
 
-        var coupon = new Coupon
-        {
-            DistributionChannelId = channelId,
-            Code = code.ToUpper(),
-            AmountInFen = amountInFen,
-            IsSingleUse = isSingleUse,
-            IsEnabled = true
-        };
-
-        context.Coupons.Add(coupon);
-
-        if (targetVipProductIds != null && targetVipProductIds.Any())
-        {
-            foreach (var productId in targetVipProductIds)
-            {
-                context.CouponVipProducts.Add(new CouponVipProduct
-                {
-                    CouponId = coupon.Id,
-                    VipProductId = productId
-                });
-            }
-        }
-
+    public async Task UpdateAmountAsync(Guid id, int amountInFen)
+    {
+        var coupon = await context.Coupons.Include(c => c.TargetVipProducts).FirstOrDefaultAsync(c => c.Id == id);
+        if (coupon == null) return;
+        await ValidateAmountAsync(amountInFen, coupon.TargetVipProducts.Select(p => p.VipProductId).ToList());
+        // Claims refer to the current coupon. Only future orders use this amount;
+        // pending and completed orders retain their saved discount and payment amount.
+        coupon.AmountInFen = amountInFen;
         await context.SaveChangesAsync();
-        return coupon;
     }
 
     public async Task<(bool IsValid, string? ErrorMessage, Coupon? Coupon)> ValidateCouponAsync(string code, Guid vipProductId, string userId)

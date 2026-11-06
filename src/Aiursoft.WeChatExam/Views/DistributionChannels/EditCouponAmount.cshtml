@@ -1,0 +1,25 @@
+@model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.EditCouponAmountViewModel
+
+<h1 class="h3 mb-3">@Localizer["Edit Coupon Amount"]</h1>
+<div class="row"><div class="col-lg-7">
+    <div class="card"><div class="card-body">
+        <h2 class="h4 text-break"><code>@Model.Code</code></h2>
+        <p class="text-muted">@Model.ChannelName</p>
+        <form method="post" asp-action="EditCouponAmount" asp-route-id="@Model.Id" asp-route-channelId="@Model.ChannelId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Amount" class="form-label"></label>
+                <div class="input-group">
+                    <span class="input-group-text">¥</span>
+                    <input asp-for="Amount" type="number" step="0.01" min="0" max="21474836.47" class="form-control" aria-describedby="amount-help" />
+                </div>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <p id="amount-help">@Localizer["The new amount applies to orders created after saving, including coupons already claimed but not yet ordered. Existing orders and purchase history keep their original amounts."]</p>
+            <div class="d-flex flex-wrap gap-2">
+                <button type="submit" class="btn btn-primary">@Localizer["Save Amount"]</button>
+                <a asp-action="Details" asp-route-id="@Model.ChannelId" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div></div>
+</div></div>

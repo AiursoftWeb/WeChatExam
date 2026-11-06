@@ -148,6 +148,7 @@
                                 }
                                 @if (canEditCoupons)
                                 {
+                                    <a asp-action="EditCouponAmount" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="btn btn-sm btn-outline-primary me-2 mb-1">@Localizer["Edit Amount"]</a>
                                     <form method="post" asp-action="SetCouponEnabled" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="d-inline-block me-2 mb-1">
                                         <input type="hidden" name="isEnabled" value="@(coupon.IsEnabled ? "false" : "true")" />
                                         @if (coupon.IsEnabled)
