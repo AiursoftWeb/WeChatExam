@@ -53,7 +53,8 @@ public class VipProductsTests : TestBase
         Assert.Contains($"/VipProducts/Edit/{product.Id}", paused);
         Assert.Contains("Sales paused", await Http.GetStringAsync($"/Institutions/Edit/{institution.Id}"));
 
-        var filtered = await Http.GetStringAsync($"/VipProducts?institutionId={institution.Id}");
+        Assert.DoesNotContain("School plan", await Http.GetStringAsync($"/VipProducts?institutionId={institution.Id}"));
+        var filtered = await Http.GetStringAsync($"/VipProducts?institutionId={institution.Id}&showDisabled=true");
         Assert.Contains("School plan", filtered);
         Assert.DoesNotContain("Other school plan", filtered);
         product.IsEnabled = true;
@@ -69,6 +70,59 @@ public class VipProductsTests : TestBase
         Assert.DoesNotContain("Other school plan", onSale);
         filtered = await Http.GetStringAsync($"/VipProducts?institutionId={institution.Id}");
         Assert.DoesNotContain("Other school plan", filtered);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task StatusTabsPreserveCourseOrInstitutionScopeAndSearch(bool institutionScope)
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var course = new TotalCategory { Title = "Music course one" };
+        var school = new Institution { Title = "Music school one" };
+        var otherCourse = new TotalCategory { Title = "Other music course" };
+        var otherSchool = new Institution { Title = "Other music school" };
+        db.AddRange(course, school, otherCourse, otherSchool);
+        VipProduct Product(string name, bool enabled, bool outside = false) => new()
+        {
+            Name = name, IsEnabled = enabled, PriceInFen = 100, DurationDays = 30,
+            Type = institutionScope ? VipProductType.Institution : VipProductType.Category,
+            InstitutionId = institutionScope ? outside ? otherSchool.Id : school.Id : null,
+            TotalCategoryId = institutionScope ? null : outside ? otherCourse.Id : course.Id
+        };
+        db.VipProducts.AddRange(Product("Scope active", true), Product("Scope inactive", false),
+            Product("Outside Scope active", true, true), Product("Outside Scope inactive", false, true),
+            Product("Unmatched active", true), Product("Unmatched inactive", false));
+        await db.SaveChangesAsync();
+        var key = institutionScope ? "institutionId" : "totalCategoryId";
+        var id = institutionScope ? school.Id : course.Id;
+        var html = await Http.GetStringAsync($"/VipProducts?{key}={id}&search=Scope");
+        Assert.Contains("Scope active", html);
+        Assert.DoesNotContain("Scope inactive", html);
+        Assert.DoesNotContain("Outside Scope", html);
+        Assert.DoesNotContain("Unmatched", html);
+        Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(html, @"Enabled\s*\(1\)"));
+        Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(html, @"Disabled\s*\(1\)"));
+        var tabs = System.Text.RegularExpressions.Regex.Matches(html, @"<a\b[^>]*class=""nav-link[^""]*""[^>]*>")
+            .Select(m => WebUtility.HtmlDecode(System.Text.RegularExpressions.Regex.Match(m.Value, @"href=""([^""]+)""").Groups[1].Value))
+            .Where(link => link.StartsWith("/VipProducts?", StringComparison.Ordinal)).ToArray();
+        Assert.AreEqual(2, tabs.Length);
+        var disabledLink = tabs.Single(link => link.Contains("showDisabled=true", StringComparison.Ordinal));
+        foreach (var link in tabs)
+        {
+            var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(new Uri(new Uri("http://localhost"), link).Query);
+            Assert.AreEqual(id.ToString(), query[key].ToString());
+            Assert.AreEqual("Scope", query["search"].ToString());
+        }
+        var disabled = await Http.GetStringAsync(disabledLink);
+        Assert.Contains("Scope inactive", disabled);
+        Assert.DoesNotContain("Scope active", disabled);
+        Assert.DoesNotContain("Outside Scope", disabled);
+        Assert.DoesNotContain("Unmatched", disabled);
+        Assert.Contains($"name=\"{key}\" value=\"{id}\"", disabled);
+        Assert.Contains("name=\"showDisabled\" value=\"true\"", disabled);
     }
 
     [TestMethod]
@@ -218,7 +272,8 @@ public class VipProductsTests : TestBase
         Assert.AreEqual(HttpStatusCode.OK, deleted.StatusCode);
         Assert.Contains("Disable it instead of deleting it.", await deleted.Content.ReadAsStringAsync());
         Assert.IsTrue(await db.VipProducts.AnyAsync(p => p.Id == product.Id));
-        Assert.Contains("Stopped Wuhan sales", await Http.GetStringAsync("/VipProducts?search=Wuhan%20buyer%20school"));
+        Assert.DoesNotContain("Stopped Wuhan sales", await Http.GetStringAsync("/VipProducts?search=Wuhan%20buyer%20school"));
+        Assert.Contains("Stopped Wuhan sales", await Http.GetStringAsync("/VipProducts?showDisabled=true&search=Wuhan%20buyer%20school"));
     }
 
 

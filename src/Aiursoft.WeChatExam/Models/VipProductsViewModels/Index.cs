@@ -12,6 +12,9 @@ public class IndexViewModel : UiStackLayoutViewModel
 
     public List<VipProduct> Products { get; set; } = [];
     public string? SearchQuery { get; set; }
+    public bool ShowDisabled { get; set; }
+    public int EnabledCount { get; set; }
+    public int DisabledCount { get; set; }
     public Guid? TotalCategoryId { get; set; }
     public string? ScopeTitle { get; set; }
     public Guid? InstitutionId { get; set; }

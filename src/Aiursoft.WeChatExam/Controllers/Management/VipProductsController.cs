@@ -29,7 +29,7 @@ public class VipProductsController(
         CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? search, Guid? institutionId, Guid? totalCategoryId)
+    public async Task<IActionResult> Index(string? search, Guid? institutionId, Guid? totalCategoryId, bool showDisabled = false)
     {
         if (institutionId.HasValue && totalCategoryId.HasValue) return BadRequest();
         var course = totalCategoryId.HasValue
@@ -51,10 +51,16 @@ public class VipProductsController(
                 .ToList();
         }
 
+        var enabledCount = products.Count(p => p.IsEnabled);
+        var disabledCount = products.Count - enabledCount;
+
         return this.StackView(new IndexViewModel
         {
-            Products = products,
+            Products = products.Where(p => p.IsEnabled != showDisabled).ToList(),
             SearchQuery = search,
+            ShowDisabled = showDisabled,
+            EnabledCount = enabledCount,
+            DisabledCount = disabledCount,
             InstitutionId = institutionId, TotalCategoryId = totalCategoryId, ScopeTitle = course?.Title
         });
     }

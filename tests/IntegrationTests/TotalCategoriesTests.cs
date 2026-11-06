@@ -183,7 +183,11 @@ public class TotalCategoriesTests : TestBase
         Assert.Contains($"/VipProducts?totalCategoryId={course.Id}", await Http.GetStringAsync(path));
         var filtered = await Http.GetStringAsync($"/VipProducts?totalCategoryId={course.Id}&search=course");
         Assert.Contains("Exact course plan", filtered);
-        Assert.Contains("Second course plan", filtered);
+        Assert.DoesNotContain("Second course plan", filtered);
+        var disabled = await Http.GetStringAsync($"/VipProducts?totalCategoryId={course.Id}&search=course&showDisabled=true");
+        Assert.Contains("Second course plan", disabled);
+        Assert.DoesNotContain("Exact course plan", disabled);
+        Assert.DoesNotContain("Different course plan", disabled);
         Assert.DoesNotContain("Different course plan", filtered);
         Assert.Contains($"name=\"totalCategoryId\" value=\"{course.Id}\"", filtered);
         var invalid = await PostForm(path, new Dictionary<string, string> { ["Id"] = course.Id.ToString(), ["Title"] = "", ["OrderIndex"] = "-1" });
