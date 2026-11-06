@@ -280,6 +280,28 @@ public class DistributionChannelsController(
         }
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> SetCouponEnabled(Guid id, Guid channelId, bool? isEnabled, bool returnToReview = false)
+    {
+        if (!ModelState.IsValid || !isEnabled.HasValue) return BadRequest();
+        var coupon = await couponService.GetByIdAsync(id);
+        if (coupon == null || coupon.DistributionChannelId != channelId) return NotFound();
+
+        // Send the desired state rather than toggling: retrying a request must
+        // never accidentally re-enable a coupon that was just disabled.
+        await couponService.SetEnabledAsync(id, isEnabled.Value);
+        TempData["SuccessMessage"] = !isEnabled.Value
+            ? localizer["Coupon disabled. Existing claims, orders and memberships have been kept."].Value
+            : coupon.DistributionChannel is { IsEnabled: false }
+                ? localizer["Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled."].Value
+                : localizer["Coupon enabled. Single-use history has not been reset."].Value;
+        return returnToReview
+            ? RedirectToAction(nameof(DeleteCoupon), new { id, channelId })
+            : RedirectToAction(nameof(Details), new { id = channelId });
+    }
+
     [HttpGet]
     [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
     public async Task<IActionResult> DeleteCoupon(Guid id, Guid channelId)

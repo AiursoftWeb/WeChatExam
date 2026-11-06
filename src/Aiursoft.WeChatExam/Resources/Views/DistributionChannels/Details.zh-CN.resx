@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>渠道详情</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>渠道已禁用</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>渠道信息</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>停用渠道</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>停用优惠券</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>已禁用</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>禁用优惠券将阻止新的领取和使用该优惠券的新订单。已创建的支付订单可能仍会完成。现有会员资格和历史记录将保留。</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>折扣</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>启用渠道</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>启用优惠券</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>已启用</value>
@@ -111,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>状态</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>左右滑动优惠券列表以查看所有操作。</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>总金额</value>
   </data>
@@ -119,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>使用次数</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>已使用（单次使用）</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>查看购买记录</value>

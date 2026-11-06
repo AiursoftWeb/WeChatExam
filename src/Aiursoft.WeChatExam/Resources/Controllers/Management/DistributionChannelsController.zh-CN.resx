@@ -21,6 +21,15 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>请选择1900年1月1日或之后的日期。</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>优惠券已禁用。已有的领取记录、订单和会员资格已保留。</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>优惠券已启用，但渠道已禁用。在渠道启用之前，优惠券仍不可用。</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>优惠券已启用。单次使用记录尚未重置。</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>日期范围或时区无效。</value>
   </data>

@@ -35,6 +35,45 @@ public class CouponServiceTests
     }
 
     [TestMethod]
+    public async Task StoppingOneCouponPreservesClaimsAndAllowsRestoringAnUnusedClaim()
+    {
+        var coupon = await _service.CreateAsync(_channelId, "STOP-RESTORE", 500, false);
+        Assert.IsTrue((await _service.ClaimCouponAsync("claimant", coupon.Code)).Success);
+        await _service.SetEnabledAsync(coupon.Id, false);
+        Assert.IsFalse((await _service.ValidateCouponAsync(coupon.Code, _productId, "claimant")).IsValid);
+        Assert.IsFalse((await _service.ClaimCouponAsync("other-buyer", coupon.Code)).Success);
+        Assert.IsFalse((await _service.GetMyAvailableCouponsAsync("claimant")).Any(c => c.Id == coupon.Id));
+        Assert.AreEqual(1, await _dbContext.UserClaimedCoupons.CountAsync(c => c.CouponId == coupon.Id));
+        await _service.SetEnabledAsync(coupon.Id, true);
+        Assert.IsTrue((await _service.GetMyAvailableCouponsAsync("claimant")).Any(c => c.Id == coupon.Id));
+        Assert.IsTrue((await _service.ValidateCouponAsync(coupon.Code, _productId, "claimant")).IsValid);
+    }
+
+    [TestMethod]
+    public async Task ExistingOrderCanRecordSettlementAfterDisableAndEnablingDoesNotResetSingleUse()
+    {
+        var coupon = await _service.CreateAsync(_channelId, "ALREADY-ORDERED", 500, true);
+        var order = new PaymentOrder { UserId = "buyer", CouponId = coupon.Id, OutTradeNo = "Reserved", Description = "Reserved purchase", AmountInFen = 500, DiscountInFen = 500, Status = PaymentOrderStatus.Paid };
+        _dbContext.PaymentOrders.Add(order);
+        await _dbContext.SaveChangesAsync();
+        await _service.SetEnabledAsync(coupon.Id, false);
+        // Settlement records a previously created order; it must not depend on
+        // whether the coupon can be offered to new buyers today.
+        await _service.RecordUsageAsync(coupon.Id, "buyer", order.Id, 500);
+        await _service.SetEnabledAsync(coupon.Id, true);
+        _dbContext.ChangeTracker.Clear();
+        var stored = (await _dbContext.Coupons.FindAsync(coupon.Id))!;
+        Assert.AreEqual("buyer", stored.UsedByUserId);
+        Assert.IsNotNull(stored.UsedAt);
+        Assert.AreEqual(500, stored.AmountInFen);
+        Assert.IsFalse((await _service.ValidateCouponAsync(coupon.Code, _productId, "buyer")).IsValid);
+        Assert.IsTrue(await _dbContext.CouponUsages.AnyAsync(u => u.CouponId == coupon.Id && u.PaymentOrderId == order.Id));
+        var savedOrder = (await _dbContext.PaymentOrders.FindAsync(order.Id))!;
+        Assert.AreEqual(500, savedOrder.AmountInFen);
+        Assert.AreEqual(500, savedOrder.DiscountInFen);
+    }
+
+    [TestMethod]
     public async Task TestCreateCoupon()
     {
         var coupon = await _service.CreateAsync(_channelId, "SAVE50", 5000, false);
