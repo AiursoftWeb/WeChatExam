@@ -289,7 +289,7 @@ public class DistributionChannelsController(
         return this.StackView(new EditCouponAmountViewModel
         {
             Id = id, ChannelId = channelId, Code = coupon.Code, ChannelName = coupon.DistributionChannel!.AgencyName,
-            Amount = coupon.AmountInFen / 100m
+            AmountInFen = coupon.AmountInFen
         });
     }
 
@@ -300,13 +300,11 @@ public class DistributionChannelsController(
     {
         var coupon = await couponService.GetByIdAsync(id);
         if (coupon == null || coupon.DistributionChannelId != channelId) return NotFound();
-        if (model.Amount.HasValue && decimal.Round(model.Amount.Value, 2) != model.Amount.Value)
-            ModelState.AddModelError(nameof(model.Amount), localizer["Enter no more than two decimal places."]);
         if (ModelState.IsValid)
         {
             try
             {
-                await couponService.UpdateAmountAsync(id, (int)(model.Amount!.Value * 100m));
+                await couponService.UpdateAmountAsync(id, model.AmountInFen!.Value);
                 TempData["SuccessMessage"] = localizer["Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged."].Value;
                 return RedirectToAction(nameof(Details), new { id = channelId });
             }

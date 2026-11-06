@@ -18,11 +18,11 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Discount Amount (CNY)" xml:space="preserve">
-    <value>优惠金额（人民币）</value>
+      <data name="Discount Amount (Fen)" xml:space="preserve">
+    <value>折扣金额（分）</value>
   </data>
-  <data name="Enter an amount between 0 and 21474836.47 CNY." xml:space="preserve">
-    <value>请输入 0 到 21474836.47 元（人民币）之间的金额。</value>
+  <data name="Enter a whole number of fen between 0 and 2147483647." xml:space="preserve">
+    <value>请输入0到2147483647之间的整数分值。</value>
   </data>
 
 </root>

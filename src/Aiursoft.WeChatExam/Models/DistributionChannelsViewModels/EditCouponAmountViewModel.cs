@@ -13,7 +13,7 @@ public class EditCouponAmountViewModel : UiStackLayoutViewModel
     public string ChannelName { get; set; } = string.Empty;
 
     [Required]
-    [Display(Name = "Discount Amount (CNY)")]
-    [Range(typeof(decimal), "0", "21474836.47", ErrorMessage = "Enter an amount between 0 and 21474836.47 CNY.")]
-    public decimal? Amount { get; set; }
+    [Display(Name = "Discount Amount (Fen)")]
+    [Range(0, int.MaxValue, ErrorMessage = "Enter a whole number of fen between 0 and 2147483647.")]
+    public int? AmountInFen { get; set; }
 }

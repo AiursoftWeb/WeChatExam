@@ -24,19 +24,19 @@ public class CouponAmountTests : TestBase
 
     private string Url(Guid? channel = null) => $"/DistributionChannels/EditCouponAmount/{_coupon}?channelId={channel ?? _channel}";
     private Task<HttpResponseMessage> Save(string? amount, bool csrf = true, Guid? channel = null) =>
-        PostForm(Url(channel), amount == null ? new Dictionary<string, string>() : new Dictionary<string, string> { ["Amount"] = amount },
+        PostForm(Url(channel), amount == null ? new Dictionary<string, string>() : new Dictionary<string, string> { ["AmountInFen"] = amount },
             tokenUrl: Url(), includeToken: csrf);
 
     [TestMethod]
-    public async Task EditorShowsYuanAndChangesOnlyTheDiscount()
+    public async Task EditorShowsFenAndChangesOnlyTheDiscount()
     {
         await Seed(); await LoginAsAdmin();
         var html = await Http.GetStringAsync(Url());
-        Assert.Contains("12.34", html);
+        Assert.Contains("1234", html);
         Assert.Contains("including coupons already claimed", html);
         var channel = await Http.GetStringAsync($"/DistributionChannels/Details/{_channel}");
         Assert.Contains($"/DistributionChannels/EditCouponAmount/{_coupon}", channel);
-        using var saved = await Save("30.05");
+        using var saved = await Save("3005");
         AssertRedirect(saved, $"/DistributionChannels/Details/{_channel}");
         Assert.Contains("existing orders and purchase history are unchanged", await Http.GetStringAsync($"/DistributionChannels/Details/{_channel}"));
         using var scope = Server!.Services.CreateScope();
@@ -53,7 +53,7 @@ public class CouponAmountTests : TestBase
     public async Task InvalidAmountsKeepTheEditorAndStoredAmount()
     {
         await Seed(); await LoginAsAdmin();
-        foreach (var amount in new[] { null, "not-money", "-1", "1.001", "21474836.48", "51" })
+        foreach (var amount in new[] { null, "not-money", "-1", "1.001", "2147483648", "5001" })
         {
             using var response = await Save(amount);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode, amount);
@@ -86,7 +86,7 @@ public class CouponAmountTests : TestBase
         Assert.DoesNotContain("EditCouponAmount", await Http.GetStringAsync($"/DistributionChannels/Details/{_channel}"));
         using var deniedGet = await Http.GetAsync(Url());
         Assert.IsTrue(deniedGet.StatusCode == HttpStatusCode.Forbidden || deniedGet.Headers.Location?.ToString().Contains("/Error/Unauthorized") == true);
-        using var deniedPost = await PostForm(Url(), new Dictionary<string, string> { ["Amount"] = "5" }, tokenUrl: $"/DistributionChannels/Details/{_channel}");
+        using var deniedPost = await PostForm(Url(), new Dictionary<string, string> { ["AmountInFen"] = "5" }, tokenUrl: $"/DistributionChannels/Details/{_channel}");
         Assert.IsTrue(deniedPost.StatusCode == HttpStatusCode.Forbidden || deniedPost.Headers.Location?.ToString().Contains("/Error/Unauthorized") == true);
         using var final = Server!.Services.CreateScope();
         Assert.AreEqual(1234, (await final.ServiceProvider.GetRequiredService<WeChatExamDbContext>().Coupons.FindAsync(_coupon))!.AmountInFen);
