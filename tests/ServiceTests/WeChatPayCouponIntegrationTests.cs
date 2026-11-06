@@ -331,6 +331,53 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    public async Task EditedCouponUsesNewAmountForClaimsButKeepsExistingOrderAndSettlementAmounts()
+    {
+        var reservedOrders = new List<PaymentOrder>();
+        await UseCheckoutDatabaseAsync((request, _) => request.Method == HttpMethod.Post
+            ? (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"amount-prepay\"}")
+            : (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new
+            {
+                out_trade_no = reservedOrders.Single().OutTradeNo, mchid = "mchid", appid = "appid", trade_state = "SUCCESS",
+                transaction_id = "amount-transaction", amount = new { total = reservedOrders.Single().AmountInFen, currency = "CNY" }
+            })));
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        coupon.IsSingleUse = false;
+        await _dbContext.SaveChangesAsync();
+        Assert.IsTrue((await _couponService.ClaimCouponAsync(_userId, coupon.Code)).Success);
+        var original = await _payService.CreateOrderAsync(_userId, "openid", _productId, coupon.Code);
+        Assert.IsTrue(original.Success, original.ErrorMessage);
+        var before = await _dbContext.PaymentOrders.SingleAsync();
+        var originalAmount = before.AmountInFen;
+        var originalDiscount = before.DiscountInFen;
+        reservedOrders.Add(before);
+        await _couponService.UpdateAmountAsync(coupon.Id, 50);
+        var retry = await _payService.CreateOrderAsync(_userId, "openid", _productId, coupon.Code);
+        Assert.IsTrue(retry.Success, retry.ErrorMessage);
+        Assert.AreEqual(original.OutTradeNo, retry.OutTradeNo);
+        Assert.AreEqual(originalAmount, before.AmountInFen);
+        Assert.AreEqual(originalDiscount, before.DiscountInFen);
+
+        var otherProduct = new VipProduct { Name = "New purchase", TotalCategory = new TotalCategory { Title = "Another course" }, PriceInFen = 200, DurationDays = 30 };
+        _dbContext.VipProducts.Add(otherProduct);
+        await _dbContext.SaveChangesAsync();
+        // The already claimed coupon automatically applies its new amount to a new order.
+        var next = await _payService.CreateOrderAsync(_userId, "openid", otherProduct.Id);
+        Assert.IsTrue(next.Success, next.ErrorMessage);
+        var after = await _dbContext.PaymentOrders.SingleAsync(o => o.VipProductId == otherProduct.Id);
+        Assert.AreEqual(50, after.DiscountInFen);
+        Assert.AreEqual(150, after.AmountInFen);
+        await _payService.QueryOrderStatusAsync(before.OutTradeNo, _userId);
+        _dbContext.ChangeTracker.Clear();
+        var saved = (await _dbContext.PaymentOrders.FindAsync(before.Id))!;
+        Assert.AreEqual(originalAmount, saved.AmountInFen);
+        Assert.AreEqual(originalDiscount, saved.DiscountInFen);
+        Assert.AreEqual(PaymentOrderStatus.Paid, saved.Status);
+        Assert.AreEqual(originalDiscount, (await _dbContext.CouponUsages.SingleAsync(u => u.PaymentOrderId == saved.Id)).DiscountInFen);
+        Assert.IsTrue(await _dbContext.VipMemberships.AnyAsync(v => v.UserId == _userId && v.VipProductId == _productId));
+    }
+
+    [TestMethod]
     public async Task PendingCouponIsReservedAndSamePurchaseKeepsSavedPrice()
     {
         var requests = new List<string>();

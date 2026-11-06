@@ -12,6 +12,7 @@ public interface ICouponService
     Task RecordUsageAsync(Guid couponId, string userId, Guid paymentOrderId, int discountInFen);
     Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id);
     Task DeleteAsync(Guid id);
+    Task UpdateAmountAsync(Guid id, int amountInFen);
     Task SetEnabledAsync(Guid id, bool isEnabled);
     Task<(bool Success, string? ErrorMessage)> ClaimCouponAsync(string userId, string code);
     Task<Coupon?> GetBestApplicableCouponAsync(string userId, Guid vipProductId);

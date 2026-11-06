@@ -280,6 +280,47 @@ public class DistributionChannelsController(
         }
     }
 
+    [HttpGet]
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> EditCouponAmount(Guid id, Guid channelId)
+    {
+        var coupon = await couponService.GetByIdAsync(id);
+        if (coupon == null || coupon.DistributionChannelId != channelId) return NotFound();
+        return this.StackView(new EditCouponAmountViewModel
+        {
+            Id = id, ChannelId = channelId, Code = coupon.Code, ChannelName = coupon.DistributionChannel!.AgencyName,
+            AmountInFen = coupon.AmountInFen
+        });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> EditCouponAmount(Guid id, Guid channelId, EditCouponAmountViewModel model)
+    {
+        var coupon = await couponService.GetByIdAsync(id);
+        if (coupon == null || coupon.DistributionChannelId != channelId) return NotFound();
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                await couponService.UpdateAmountAsync(id, model.AmountInFen!.Value);
+                TempData["SuccessMessage"] = localizer["Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged."].Value;
+                return RedirectToAction(nameof(Details), new { id = channelId });
+            }
+            catch (InvalidOperationException)
+            {
+                ModelState.AddModelError(string.Empty, localizer["The discount cannot exceed the price of any applicable product. Enter a smaller amount."]);
+            }
+        }
+        // Identity and navigation come from the stored coupon, never posted labels.
+        model.Id = id;
+        model.ChannelId = channelId;
+        model.Code = coupon.Code;
+        model.ChannelName = coupon.DistributionChannel!.AgencyName;
+        return this.StackView(model);
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]

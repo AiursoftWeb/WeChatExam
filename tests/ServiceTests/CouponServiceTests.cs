@@ -35,6 +35,25 @@ public class CouponServiceTests
     }
 
     [TestMethod]
+    public async Task AmountEditsRespectApplicableProductPricesAndPreserveClaimHistory()
+    {
+        var targeted = await _service.CreateAsync(_channelId, "EDIT-TARGETED", 500, false, [_productId]);
+        Assert.IsTrue((await _service.ClaimCouponAsync("buyer", targeted.Code)).Success);
+        await _service.UpdateAmountAsync(targeted.Id, 2500);
+        Assert.AreEqual(2500, (await _service.GetBestApplicableCouponAsync("buyer", _productId))!.AmountInFen);
+        foreach (var amount in new[] { -1, 10001 })
+            await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.UpdateAmountAsync(targeted.Id, amount));
+        var global = await _service.CreateAsync(_channelId, "EDIT-GLOBAL", 500, false);
+        _dbContext.VipProducts.Add(new VipProduct { Name = "Cheaper product", PriceInFen = 600 });
+        await _dbContext.SaveChangesAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.UpdateAmountAsync(global.Id, 601));
+        await _service.UpdateAmountAsync(global.Id, 0);
+        Assert.AreEqual(0, global.AmountInFen);
+        Assert.AreEqual(2500, targeted.AmountInFen);
+        Assert.AreEqual(1, await _dbContext.UserClaimedCoupons.CountAsync(c => c.CouponId == targeted.Id));
+    }
+
+    [TestMethod]
     public async Task StoppingOneCouponPreservesClaimsAndAllowsRestoringAnUnusedClaim()
     {
         var coupon = await _service.CreateAsync(_channelId, "STOP-RESTORE", 500, false);
