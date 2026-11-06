@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using MySqlConnector;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -209,8 +210,9 @@ public class DistributionChannelsController(
         return this.StackView(new DeleteViewModel
         {
             Channel = channel,
+            Deletion = await distributionChannelService.GetDeletionSummaryAsync(id.Value),
             RegistrationCount = stats.RegistrationCount
-        });
+        }, nameof(Delete));
     }
 
     [HttpPost]
@@ -219,8 +221,17 @@ public class DistributionChannelsController(
     [Authorize(Policy = AppPermissionNames.CanDeleteDistributionChannels)]
     public async Task<IActionResult> DeleteConfirmed(Guid id)
     {
-        await distributionChannelService.DeleteAsync(id);
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            await distributionChannelService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception ex) when (IsDeletionConflict(ex))
+        {
+            dbContext.ChangeTracker.Clear();
+            ModelState.AddModelError(string.Empty, localizer["This channel has coupon history. Keep it for reference and disable the channel to stop future use."]);
+            return await Delete(id);
+        }
     }
 
     [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
@@ -269,12 +280,45 @@ public class DistributionChannelsController(
         }
     }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
+    [HttpGet]
     [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
     public async Task<IActionResult> DeleteCoupon(Guid id, Guid channelId)
     {
-        await couponService.DeleteAsync(id);
-        return RedirectToAction(nameof(Details), new { id = channelId });
+        var coupon = await couponService.GetByIdAsync(id);
+        if (coupon == null || coupon.DistributionChannelId != channelId) return NotFound();
+        return this.StackView(new DeleteCouponViewModel
+        {
+            Coupon = coupon,
+            Deletion = await couponService.GetDeletionSummaryAsync(id)
+        }, nameof(DeleteCoupon));
     }
+
+    [HttpPost]
+    [ActionName(nameof(DeleteCoupon))]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
+    public async Task<IActionResult> DeleteCouponConfirmed(Guid id, Guid channelId)
+    {
+        var coupon = await couponService.GetByIdAsync(id);
+        if (coupon == null || coupon.DistributionChannelId != channelId) return NotFound();
+        try
+        {
+            await couponService.DeleteAsync(id);
+            return RedirectToAction(nameof(Details), new { id = channelId });
+        }
+        catch (Exception ex) when (IsDeletionConflict(ex))
+        {
+            dbContext.ChangeTracker.Clear();
+            ModelState.AddModelError(string.Empty, localizer["This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved."]);
+            return await DeleteCoupon(id, channelId);
+        }
+    }
+
+    // Only known reference conflicts are business rejections. Unexpected database
+    // or programming errors must remain visible to error monitoring.
+    private static bool IsDeletionConflict(Exception exception) =>
+        exception is InvalidOperationException { Message: CouponDeletionSummary.HistoryExists } ||
+        exception is DbUpdateException { InnerException: MySqlException { Number: 1451 } mysql } &&
+        (mysql.Message.Contains("`FK_PaymentOrders_Coupons_CouponId`", StringComparison.Ordinal) ||
+         mysql.Message.Contains("`FK_Changes_Coupons_CouponId`", StringComparison.Ordinal));
 }

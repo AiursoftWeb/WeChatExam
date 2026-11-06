@@ -49,6 +49,7 @@ public sealed class StubDistributionChannelService : IDistributionChannelService
     public Task SetEnabledAsync(Guid id, bool isEnabled) => Task.CompletedTask;
     public Task<bool> BindUserByCouponCodeAsync(string userId, string code) => Task.FromResult(false);
     public Task<ChannelStats> GetStatsAsync(Guid channelId) => Task.FromResult<ChannelStats>(null!);
+    public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) => Task.FromResult(new CouponDeletionSummary());
     public Task DeleteAsync(Guid id) => Task.CompletedTask;
 }
 

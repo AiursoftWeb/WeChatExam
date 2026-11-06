@@ -131,12 +131,9 @@
                                         <i data-lucide="receipt-text"></i> @Localizer["View Purchases"]
                                     </a>
                                 }
-                                <form method="post" asp-action="DeleteCoupon" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" onsubmit="return confirm('@Localizer["Are you sure?"]')" style="display: inline;">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                                        <i data-lucide="trash-2"></i>
-                                    </button>
-                                </form>
+                                <a asp-action="DeleteCoupon" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="btn btn-sm btn-outline-danger mb-1">
+                                    <i data-lucide="trash-2"></i> @Localizer["Review Deletion"]
+                                </a>
                             </td>
                         </tr>
                     }

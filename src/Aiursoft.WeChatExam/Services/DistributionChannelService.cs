@@ -127,14 +127,26 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
         };
     }
 
+    public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) =>
+        CouponDeletionSummary.LoadAsync(context, context.Coupons.Where(c => c.DistributionChannelId == id));
+
     public async Task DeleteAsync(Guid id)
     {
+        // Keep the checks and deletion together: new claims/orders must not slip
+        // between them and be erased by the existing cascading relationships.
+        await using var transaction = context.Database.IsRelational()
+            ? await context.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable)
+            : null;
+        if (!(await GetDeletionSummaryAsync(id)).CanDelete)
+            throw new InvalidOperationException(CouponDeletionSummary.HistoryExists);
+
         var channel = await context.DistributionChannels.FindAsync(id);
         if (channel != null)
         {
             context.DistributionChannels.Remove(channel);
             await context.SaveChangesAsync();
         }
+        if (transaction != null) await transaction.CommitAsync();
     }
 
     private async Task<string> GenerateUniqueCodeAsync()

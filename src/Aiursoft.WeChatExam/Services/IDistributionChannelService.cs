@@ -60,5 +60,6 @@ public interface IDistributionChannelService
     /// <summary>
     /// 删除分销渠道
     /// </summary>
+    Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id);
     Task DeleteAsync(Guid id);
 }

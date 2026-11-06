@@ -1,0 +1,34 @@
+@model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.DeleteCouponViewModel
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<h1 class="h3 mb-3">@Localizer["Delete Coupon"]</h1>
+<div class="card"><div class="card-body">
+    <h2 class="h4 text-break"><code>@Model.Coupon.Code</code></h2>
+    <p>@Model.Coupon.DistributionChannel?.AgencyName · ¥@((Model.Coupon.AmountInFen / 100m).ToString("F2"))</p>
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <partial name="_CouponDeletionSummary" model="Model.Deletion" />
+    @if (Model.Deletion.CanDelete)
+    {
+        <p>@Localizer["Deleting this unused coupon permanently removes its code and product restrictions. This cannot be undone."]</p>
+    }
+    else
+    {
+        <p>@Localizer["Keep this coupon for reference. To stop all coupons in this channel, return to the channel and disable it. This affects every coupon in the channel."]</p>
+    }
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        @if ((await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanReadDistributionChannels)).Succeeded &&
+             (await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanReadPaymentOrders)).Succeeded)
+        {
+            <a asp-action="CouponDetails" asp-route-id="@Model.Coupon.Id" class="btn btn-outline-primary">@Localizer["View Completed Purchases"]</a>
+        }
+    </div>
+    <form method="post" asp-action="DeleteCoupon" asp-route-id="@Model.Coupon.Id" asp-route-channelId="@Model.Coupon.DistributionChannelId">
+        @Html.AntiForgeryToken()
+        <div class="d-flex flex-wrap gap-2">
+            <button type="submit" class="btn btn-danger" disabled="@(!Model.Deletion.CanDelete)">@Localizer["Permanently Delete Coupon"]</button>
+            <a asp-action="Details" asp-route-id="@Model.Coupon.DistributionChannelId" class="btn btn-secondary">@Localizer["Back to Channel"]</a>
+        </div>
+    </form>
+</div></div>
