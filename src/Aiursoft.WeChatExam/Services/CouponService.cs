@@ -281,8 +281,9 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
     public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) =>
         CouponDeletionSummary.LoadAsync(context, context.Coupons.Where(c => c.Id == id));
 
-    public async Task DeleteAsync(Guid id)
+    public Task DeleteAsync(Guid id) => context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
     {
+        context.ChangeTracker.Clear();
         // Keep the checks and deletion together: new claims/orders must not slip
         // between them and be erased by the existing cascading relationships.
         await using var transaction = context.Database.IsRelational()
@@ -298,5 +299,5 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
             await context.SaveChangesAsync();
         }
         if (transaction != null) await transaction.CommitAsync();
-    }
+    });
 }

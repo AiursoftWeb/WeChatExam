@@ -130,8 +130,9 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
     public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) =>
         CouponDeletionSummary.LoadAsync(context, context.Coupons.Where(c => c.DistributionChannelId == id));
 
-    public async Task DeleteAsync(Guid id)
+    public Task DeleteAsync(Guid id) => context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
     {
+        context.ChangeTracker.Clear();
         // Keep the checks and deletion together: new claims/orders must not slip
         // between them and be erased by the existing cascading relationships.
         await using var transaction = context.Database.IsRelational()
@@ -147,7 +148,7 @@ public class DistributionChannelService(WeChatExamDbContext context) : IDistribu
             await context.SaveChangesAsync();
         }
         if (transaction != null) await transaction.CommitAsync();
-    }
+    });
 
     private async Task<string> GenerateUniqueCodeAsync()
     {
