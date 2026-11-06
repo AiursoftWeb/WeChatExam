@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>Bedragen zijn afkomstig van de voltooide bestelling, niet van de huidige productprijs of couponwaarde. Totalen volgen de geselecteerde filters.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Toepassen</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>Voltooid op</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>Voltooide aankopen met deze code, inclusief volledig korting ontvangen bestellingen. Het opeisen van een coupon is geen aankoop.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>Kortingscodegebruik</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>Data en tijden gebruiken de tijdzone van uw apparaat.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Gedeactiveerd</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>Toegepaste korting</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>Kooptransacties filteren</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Van</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>Overeenkomende aankopen</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Meervoudig gebruik</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>Er zijn geen voltooide aankopen die overeenkomen met deze filters.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>Niet geregistreerd</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Bestelling</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>Originele prijs van de bestelling</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Betaald</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Vorige</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>Aankoopgeschiedenis</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>Aankooppagina&apos;s</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>Aangekochte inhoud</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Resetten</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Eenmalig gebruik</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>Student, product of ordernummer</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>Deze coupon heeft nog geen voltooide aankopen.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>Deze coupon is gemarkeerd als gebruikt, maar de bijbehorende voltooide bestelling is niet beschikbaar. De historische koper en bedragen kunnen niet worden geverifieerd.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>Tot</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>Totale korting</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>Totaal betaald</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>Naamloze student</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>Bestel details weergeven</value>
+  </data>
+
+</root>

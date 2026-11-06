@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Підтвердити додавання {0} екзаменаційних запитань</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Редагувати оригінальне запитання</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Редагування початкового запитання також змінює його в банку запитань та інших опублікованих роботах.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Пояснення</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Внутрішній тег</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Далі</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Поки немає пояснення.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Більше не знайдено відповідних запитань.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Тип запитання</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Еталонна відповідь та пояснення</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Зразкову відповідь потрібно перевірити</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Вилучити з контрольної роботи</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Обрані питання</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Стандартна відповідь</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Тег</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Тестова робота</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Відсутня зразкова відповідь або вона дублює запитання. Заповніть її перед оприлюдненням.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Це додає екзаменаційні запитання з усіх сторінок результатів і пропускає ті, що вже є в цій роботі.</value>

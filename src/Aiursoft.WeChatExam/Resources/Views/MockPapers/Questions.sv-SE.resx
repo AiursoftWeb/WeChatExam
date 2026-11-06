@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Bekräfta att lägga till {0} tentamensfrågor</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Redigera originalfrågan</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Redigering av utkastet påverkar inte publicerade versioner.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Att redigera den ursprungliga frågan ändrar även den i frågebanken och i andra opublicerade prov.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Förklaring</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Internt taggnamn</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Nästa</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Ingen förklaring än.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>Inga fler matchande frågor i den här kursen.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Frågetyp</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Referenssvar och förklaring</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Referenssvar behöver uppmärksamhet</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Ta bort från provet</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Valda frågor</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Standard svar</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Tagg</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Testprov</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Referenssvaret saknas eller upprepar frågan. Slutför det innan publicering.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Det här lägger till provfrågor från alla resultatsidor och hoppar över dem som redan finns i det här provet.</value>
