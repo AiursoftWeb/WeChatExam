@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Szczegóły kanału</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Kanał wyłączony</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Informacje o kanale</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Wyłącz kanał</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Wyłącz kupon</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Wyłączony</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Wyłączenie kuponu uniemożliwia jego nowe wykorzystanie oraz tworzenie nowych zamówień z jego użyciem. Już utworzone płatności mogą zostać dokończone. Istniejące członkostwa i historia pozostają zachowane.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Rabat</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Włącz kanał</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Włącz kupon</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Włączony</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Rejestracje</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Przegląd usunięcia</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>Pojedyncze użycie</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Przesuń listę kuponów w bok, aby zobaczyć wszystkie akcje.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Łączna kwota</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Użycie</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Wykorzystany (Jednorazowy)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Zobacz zakupy</value>

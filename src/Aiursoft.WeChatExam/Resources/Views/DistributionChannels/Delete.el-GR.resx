@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Διαγραφή Kanālou Διανομής</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>Η διαγραφή αφαιρεί οριστικά αυτόν τον κανάλι, τα μη χρησιμοποιημένα κουπόνια και όλες τις συνδέσεις χρηστών. Αυτή η ενέργεια δεν μπορεί να ανακληθεί.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Διατηρήστε αυτόν τον κανάλι για αναφορά. Απενεργοποιήστε το από τη σελίδα λεπτομερειών του καναλιού για να σταματήσετε τη μελλοντική χρήση κουπονιών διατηρώντας παράλληλα το ιστορικό.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Εγγραφές</value>
   </data>

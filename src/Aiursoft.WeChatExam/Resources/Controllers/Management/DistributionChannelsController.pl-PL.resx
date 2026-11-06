@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Wybierz daty od 1 stycznia 1900 r. lub późniejsze.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Kupon wyłączony. Istniejące roszczenia, zamówienia i subskrypcje zostały zachowane.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Kupon włączony, ale kanał jest wyłączony. Pozostaje niedostępny do momentu, aż kanał zostanie włączony.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Kupon włączony. Historia jednorazowego użycia nie została zresetowana.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Zakres dat lub strefa czasowa nie są prawidłowe.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Data rozpoczęcia nie może być późniejsza niż data zakończenia.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Ten kanał ma historię kuponów. Zachowaj go jako referencję i dezaktywuj kanał, aby zapobiec dalszemu użyciu.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Ten kupon ma historię i nie może zostać usunięty. Jego zamówienia, roszczenia i zapisy członkowskie muszą zostać zachowane.</value>
   </data>
 
 </root>

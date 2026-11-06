@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>配信チャネルの削除</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>削除すると、このチャネル、未使用のクーポン、およびすべてのユーザーバインディングが恒久的に削除されます。この操作は取り消せません。</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>このチャンネルを参照用として保持してください。今後のクーポン利用を停止しつつ履歴を保持するには、チャンネル詳細ページから無効化してください。</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>登録</value>
   </data>

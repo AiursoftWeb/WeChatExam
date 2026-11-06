@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Détails du canal</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Canal désactivé</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Informations sur le canal</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Désactiver le canal</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Désactiver le coupon</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Désactivé</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>La désactivation d&apos;un coupon empêche les nouvelles réclamations et les nouvelles commandes qui l&apos;utilisent. Les commandes de paiement déjà créées peuvent toujours être finalisées. Les abonnements existants et l&apos;historique sont conservés.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Remise</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Activer le canal</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Activer le coupon</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Activé</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Inscriptions</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Suppression de la revue</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>Usage unique</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Statut</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Faites défiler la liste des coupons latéralement pour voir toutes les actions.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Montant total</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Utilisation</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Utilisé (Usage unique)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Voir les achats</value>

@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>1 Ocak 1900 veya daha sonraki tarihleri seçin.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Kupon devre dışı bırakıldı. Mevcut talepler, siparişler ve üyelikler korundu.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Kupon etkinleştirildi, ancak kanal devre dışı. Kanal etkinleştirilene kadar kullanılamaz durumda kalır.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Kupon etkinleştirildi. Tek kullanımlık geçmiş sıfırlanmadı.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Tarih aralığı veya saat dilimi geçerli değil.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Başlangıç tarihi, bitiş tarihinden sonra olamaz.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Bu kanalın kupon geçmişi var. Referans için saklayın ve gelecekteki kullanımı durdurmak için kanalı devre dışı bırakın.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Bu kuponun geçmişi var ve silinemez. Sipariş, talep ve üyelik kayıtları korunmalıdır.</value>
   </data>
 
 </root>

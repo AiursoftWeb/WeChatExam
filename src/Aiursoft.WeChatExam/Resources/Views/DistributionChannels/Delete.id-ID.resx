@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Hapus Saluran Distribusi</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>Penghapusan akan secara permanen menghapus saluran ini, kupon yang tidak digunakan, dan semua pengikatan pengguna. Tindakan ini tidak dapat dibatalkan.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Simpan saluran ini untuk referensi. Nonaktifkan dari halaman detail saluran untuk menghentikan penggunaan kupon di masa mendatang sambil mempertahankan riwayat.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Pendaftaran</value>
   </data>

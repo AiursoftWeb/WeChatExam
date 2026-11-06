@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Back to Channel" xml:space="preserve">
+    <value>Zurück zum Kanal</value>
+  </data>
+  <data name="Delete Coupon" xml:space="preserve">
+    <value>Gutschein löschen</value>
+  </data>
+  <data name="Deleting this unused coupon permanently removes its code and product restrictions. This cannot be undone." xml:space="preserve">
+    <value>Das Löschen dieses ungenutzten Gutscheins entfernt dauerhaft seinen Code und die Produktbeschränkungen. Dies kann nicht rückgängig gemacht werden.</value>
+  </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Gutschein deaktivieren</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Gutschein aktivieren</value>
+  </data>
+  <data name="Keep this coupon for reference. Disable only this coupon to stop new claims and new orders using it. Existing payment orders may still complete, and history is kept." xml:space="preserve">
+    <value>Bewahren Sie diesen Gutschein zur Referenz auf. Deaktivieren Sie nur diesen Gutschein, um neue Einlösungen und neue Bestellungen mit diesem Gutschein zu verhindern. Bestehende Zahlungsbestellungen können möglicherweise noch abgeschlossen werden, und der Verlauf wird beibehalten.</value>
+  </data>
+  <data name="Permanently Delete Coupon" xml:space="preserve">
+    <value>Gutschein endgültig löschen</value>
+  </data>
+  <data name="The channel is disabled. Enabling this coupon alone will not make it available." xml:space="preserve">
+    <value>Der Kanal ist deaktiviert. Das Aktivieren dieses Gutscheins allein macht ihn nicht verfügbar.</value>
+  </data>
+  <data name="View Completed Purchases" xml:space="preserve">
+    <value>Abgeschlossene Käufe anzeigen</value>
+  </data>
+
+</root>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>कूपन उपयोग किया गया चिह्नित है। इसकी मूल ऑर्डर उपलब्ध न होने पर भी इसे बनाए रखें।</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>मिटाना संभव नहीं है: इस कूपन या चैनल का इतिहास मौजूद है।</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>कूपन दावे, उपयोग किए गए दावों सहित</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>कूपन उपयोग रिकॉर्ड</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>कूपन</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>सदस्यता परिवर्तन रिकॉर्ड</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>कोई ऑर्डर, दावे या इतिहास हटाने को रोक नहीं रहा है।</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>सदस्यता परिवर्तन इतिहास खोलें</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>भुगतान ऑर्डर खोलें</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>ऑर्डर, जिसमें अदायगी नहीं किए गए ऑर्डर शामिल हैं</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>ऑर्डर, सदस्यता परिवर्तन, दावे और उपयोग रिकॉर्ड को सुरक्षित रखा जाना चाहिए। एक ऐसा कूपन जिसके पास पूर्ण किए गए कोई खरीदारी नहीं है, उसके पास भी इन रिकॉर्ड्स का होना संभव है।</value>
+  </data>
+
+</root>

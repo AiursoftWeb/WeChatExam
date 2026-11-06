@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>Ένα κουπόνι έχει σημειωθεί ως χρησιμοποιημένο. Διατηρήστε το, ακόμα και αν η αρχική του παραγγελία δεν είναι διαθέσιμη.</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>Δεν είναι δυνατή η διαγραφή: αυτό το κουπόνι ή κανάλι έχει ιστορικό.</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>Δικαιώματα κουπονιού, συμπεριλαμβανομένων των χρησιμοποιημένων</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>Εγγραφές χρήσης κουπονιών</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Εισιτήρια</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>Καταγραφές αλλαγών συνδρομής</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>Δεν υπάρχει εμπόδιο στη διαγραφή από παραγγελίες, απαιτήσεις ή ιστορικό.</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>Ανοίξτε Ιστορικό Αλλαγών Συμμετοχής</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>Ανοίξτε Εντολές Πληρωμής</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>Παραγγελίες, συμπεριλαμβανομένων των μη εξοφλημένων παραγγελιών</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>Τα παραγγέλματα, οι αλλαγές συνδρομής, οι απαιτήσεις και τα αρχεία χρήσης πρέπει να διατηρούνται. Ένα κουπόνι χωρίς ολοκληρωμένες αγορές μπορεί να διαθέτει ακόμα αυτά τα αρχεία.</value>
+  </data>
+
+</root>

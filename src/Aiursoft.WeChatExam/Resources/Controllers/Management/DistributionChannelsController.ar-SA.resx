@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>اختر تواريخ في 1 يناير 1900 أو بعده.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>تم تعطيل القسيمة. تم الحفاظ على المطالبات والطلبات والعضويات الحالية.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>تم تفعيل القسيمة، لكن القناة معطلة. ستبقى غير متاحة حتى يتم تفعيل القناة.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>تم تفعيل القسيمة. لم يتم إعادة تعيين سجل الاستخدام الفردي.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>نطاق التاريخ أو المنطقة الزمنية غير صالح.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>يجب ألا يكون تاريخ البدء بعد تاريخ الانتهاء.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>لدى هذا القناة سجل قسائم. احتفظ به كمرجع وعطّل القناة لتوقف الاستخدام المستقبلي.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>هذا القسيمة له سجل ولا يمكن حذفه. يجب الحفاظ على طلباته وادعاءاته وسجلات عضويته.</value>
   </data>
 
 </root>

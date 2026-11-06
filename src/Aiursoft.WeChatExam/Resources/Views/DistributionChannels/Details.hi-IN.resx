@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>चैनल विवरण</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>चैनल अक्षम</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>चैनल जानकारी</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>चैनल असक्रिय करें</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>कूपन निष्क्रिय करें</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>अक्षम</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>कूपन को अक्षम करने से इसका उपयोग करते हुए नए दावे और नए ऑर्डर रुक जाते हैं। पहले से बनाए गए भुगतान ऑर्डर अभी भी पूरे हो सकते हैं। मौजूदा सदस्यताएँ और इतिहास सुरक्षित रहते हैं।</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>छूट</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>चैनल सक्षम करें</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>कूपन सक्षम करें</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>सक्षम</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>पंजीकरण</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>हटाई की समीक्षा</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>एक बार उपयोग</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>सभी कार्रवाइयाँ देखने के लिए कूपन सूची को साइडवेज़ स्वाइप करें।</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>कुल राशि</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>उपयोग</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>उपयोग किया गया (एक बार के लिए)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>खरीदारी देखें</value>

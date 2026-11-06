@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Slet distributionskanal</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>Sletning fjerner permanent denne kanal, dens ubrugte kuponer og alle brugerbindinger. Dette kan ikke fortrydes.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Bevar denne kanal som reference. Deaktiver den fra kanalens detaljeside for at stoppe fremtidig kuponbrug, mens historikken bevares.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Registreringer</value>
   </data>

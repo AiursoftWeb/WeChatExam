@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>A coupon is marked as used. Retain it even if its original order is unavailable.</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>Cannot delete: this coupon or channel has history.</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>Coupon claims, including used claims</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>Coupon usage records</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Coupons</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>Membership change records</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>No orders, claims or history block deletion.</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>Open Membership Change History</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>Open Payment Orders</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>Orders, including unpaid orders</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records.</value>
+  </data>
+
+</root>

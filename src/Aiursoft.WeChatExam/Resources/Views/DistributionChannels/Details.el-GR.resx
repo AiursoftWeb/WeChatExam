@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Λεπτομέρειες Καναλιού</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Μη ενεργός Κανάλι</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Πληροφορίες καναλιού</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Απενεργοποίηση Καναλιού</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Απενεργοποίηση Κωδικού</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Απενεργοποιημένο</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Το απενεργοποίηση ενός κουπονιού σταματά τις νέες δηλώσεις και τα νέα παραγγέλματα που το χρησιμοποιούν. Τα παραγγέλματα πληρωμής που έχουν ήδη δημιουργηθεί μπορεί να ολοκληρωθούν. Οι υπάρχουσες συνδρομές και το ιστορικό διατηρούνται.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Έκπτωση</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Ενεργοποίηση Καναλιού</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Ενεργοποίηση Εκπτώσεων</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Ενεργό</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Εγγραφές</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Εξετάστε Διαγραφή</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>Μιας Χρήσης</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Κατάσταση</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Κάντε οριζόντια κύλιση στη λίστα κουπονιών για να δείτε όλες τις ενέργειες.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Σύνολο Ποσό</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Χρήση</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Χρησιμοποιημένο (Μονής χρήσης)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Προβολή Αγορών</value>

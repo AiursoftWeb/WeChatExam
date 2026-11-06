@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>يتم تحديد القسيمة على أنها مستخدمة. احتفظ بها حتى لو لم تكن طلبتها الأصلي متاحًا.</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>تعذّر الحذف: هذا القسيمة أو القناة لديها سجلات.</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>مطالبات القسائم، بما في ذلك المطالبات المستخدمة</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>سجلات استخدام القسيمة</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>القسائم</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>سجلات تغييرات العضوية</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>لا توجد طلبات أو مطالبات أو سجلات تمنع الحذف.</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>فتح سجل تغييرات العضوية</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>فتح أوامر الدفع</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>الطلبات، بما في ذلك الطلبات غير المدفوعة</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>يجب الحفاظ على الطلبات وتغييرات العضوية والمطالبات وسجلات الاستخدام. قد تحتوي القسيمة التي لا توجد لها عمليات شراء مكتملة على هذه السجلات.</value>
+  </data>
+
+</root>

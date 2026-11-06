@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Back to Channel" xml:space="preserve">
+    <value>返回頻道</value>
+  </data>
+  <data name="Delete Coupon" xml:space="preserve">
+    <value>刪除優惠券</value>
+  </data>
+  <data name="Deleting this unused coupon permanently removes its code and product restrictions. This cannot be undone." xml:space="preserve">
+    <value>刪除呢張未使用嘅優惠券會永久移除其代碼同產品限制。此操作無法復原。</value>
+  </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>停用優惠券</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>啟用優惠券</value>
+  </data>
+  <data name="Keep this coupon for reference. Disable only this coupon to stop new claims and new orders using it. Existing payment orders may still complete, and history is kept." xml:space="preserve">
+    <value>請保留此優惠券以供參考。僅停用此優惠券即可停止新的兌換及新訂單使用該優惠券。現有付款訂單仍可能完成，且記錄將予以保留。</value>
+  </data>
+  <data name="Permanently Delete Coupon" xml:space="preserve">
+    <value>永久刪除優惠券</value>
+  </data>
+  <data name="The channel is disabled. Enabling this coupon alone will not make it available." xml:space="preserve">
+    <value>該渠道已停用。單獨啟用此優惠券並不能使其可用。</value>
+  </data>
+  <data name="View Completed Purchases" xml:space="preserve">
+    <value>查看已完成購買</value>
+  </data>
+
+</root>

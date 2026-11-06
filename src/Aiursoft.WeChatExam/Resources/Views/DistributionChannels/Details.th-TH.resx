@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>รายละเอียดช่องทาง</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>ช่องทางปิดใช้งาน</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>ข้อมูลช่องทาง</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>ปิดการใช้งานช่องทาง</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>ปิดใช้คูปอง</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>ปิดใช้งาน</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>การปิดใช้งานคูปองจะหยุดการรับสิทธิ์ใหม่และการสั่งซื้อใหม่ที่ใช้คูปองนี้ คำสั่งชำระเงินที่สร้างไว้แล้วอาจดำเนินการต่อได้ต่อไป สมาชิกภาพที่มีอยู่และประวัติจะยังคงอยู่</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>ส่วนลด</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>เปิดใช้งานช่องทาง</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>เปิดใช้งานคูปอง</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>เปิดใช้งานแล้ว</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>การลงทะเบียน</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>ตรวจสอบการลบ</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>ใช้ครั้งเดียว</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>ปัดรายการคูปองไปด้านข้างเพื่อดูการกระทำทั้งหมด</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>ยอดรวม</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>การใช้งาน</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>ใช้แล้ว (ใช้ครั้งเดียว)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>ดูรายการซื้อ</value>

@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>تفاصيل القناة</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>القناة معطلة</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>معلومات القناة</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>إيقاف القناة</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>تعطيل القسيمة</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>معطل</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>تعطيل القسيمة يوقف المطالبات الجديدة والطلبات الجديدة التي تستخدمها. قد تكتمل أوامر الدفع التي تم إنشاؤها مسبقًا. يتم الاحتفاظ بالعضويات الحالية والسجل.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>خصم</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>تمكين القناة</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>تفعيل القسيمة</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>مُفعّل</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>التسجيلات</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>مراجعة الحذف</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>استخدام واحد</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>اسحب قائمة القسائم جانبًا لعرض جميع الإجراءات.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>المجموع الكلي</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>الاستخدام</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>مستخدمة (للاستخدام الواحد)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>عرض المشتريات</value>

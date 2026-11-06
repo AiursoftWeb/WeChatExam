@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Оберіть дати 1 січня 1900 року або пізніше.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Купон вимкнено. Існуючі претензії, замовлення та членства збережено.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Купон увімкнено, але канал вимкнено. Він залишається недоступним, доки канал не буде увімкнено.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Купон активовано. Історію одноразового використання не скинуто.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Діапазон дат або часовий пояс недійсні.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Дата початку не повинна бути пізнішою за дату завершення.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Цей канал має історію купонів. Залиште його для довідки та вимкніть канал, щоб припинити подальше використання.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Цей купон має історію і не може бути видалений. Його замовлення, претензії та записи про членство мають бути збережені.</value>
   </data>
 
 </root>

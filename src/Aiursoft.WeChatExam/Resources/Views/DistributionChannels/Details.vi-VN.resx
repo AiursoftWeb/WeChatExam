@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Chi tiết kênh</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Kênh bị vô hiệu</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Thông tin kênh</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Tạm ngừng Kênh</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Vô hiệu hóa Mã giảm giá</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Vô hiệu hóa</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Việc vô hiệu hóa mã giảm giá sẽ ngăn các lượt yêu cầu mới và các đơn hàng mới sử dụng mã này. Các đơn thanh toán đã được tạo có thể vẫn hoàn tất. Các thành viên hiện có và lịch sử sẽ được giữ nguyên.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Giảm giá</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Kích hoạt Kênh</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Kích hoạt mã giảm giá</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Đã bật</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Đăng ký</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>Sử dụng một lần</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Vuốt danh sách mã giảm giá sang ngang để xem tất cả các thao tác.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Tổng số tiền</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Sử dụng</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Đã sử dụng (Dùng một lần)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Xem các lần mua</value>

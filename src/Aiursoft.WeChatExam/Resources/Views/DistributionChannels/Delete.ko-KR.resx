@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>배포 채널 삭제</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>삭제는 이 채널, 미사용 쿠폰 및 모든 사용자 바인딩을 영구적으로 제거합니다. 이 작업은 되돌릴 수 없습니다.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>참고용으로 이 채널을 유지하세요. 채널 상세 페이지에서 비활성화하여 향후 쿠폰 사용을 중단하되, 이력은 보존됩니다.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>등록 수</value>
   </data>

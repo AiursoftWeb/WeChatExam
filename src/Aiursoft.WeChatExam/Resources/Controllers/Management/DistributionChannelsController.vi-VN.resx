@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Chọn ngày từ ngày 1 tháng 1 năm 1900 trở đi.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Mã giảm giá đã bị vô hiệu hóa. Các yêu cầu, đơn hàng và quyền thành viên hiện có vẫn được giữ nguyên.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Mã giảm giá đã được bật, nhưng kênh phân phối đang ở trạng thái tắt. Mã sẽ tiếp tục không khả dụng cho đến khi kênh phân phối được bật.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Voucher đã được kích hoạt. Lịch sử sử dụng một lần chưa được đặt lại.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Khoảng ngày hoặc múi giờ không hợp lệ.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Ngày bắt đầu không được muộn hơn ngày kết thúc.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Kênh này có lịch sử mã giảm giá. Hãy giữ lại để tham khảo và vô hiệu hóa kênh để ngăn sử dụng trong tương lai.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Phiếu này có lịch sử và không thể bị xóa. Các đơn hàng, yêu cầu và hồ sơ thành viên của nó phải được bảo lưu.</value>
   </data>
 
 </root>
