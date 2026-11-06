@@ -93,6 +93,22 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    public async Task DisabledCouponCannotReserveANewPaymentOrder()
+    {
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Buyer" });
+        var product = new VipProduct { Name = "Coupon course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 1000, DurationDays = 30 };
+        _dbContext.VipProducts.Add(product);
+        await _dbContext.SaveChangesAsync();
+        var coupon = await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "STOP-NEW-ORDERS", 400, false);
+        await _couponService.SetEnabledAsync(coupon.Id, false);
+        var result = await _payService.CreateOrderAsync(_userId, "isolated-openid", product.Id, coupon.Code);
+        Assert.IsFalse(result.Success);
+        Assert.AreEqual("优惠码已禁用", result.ErrorMessage);
+        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync(o => o.CouponId == coupon.Id));
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
     public async Task CourseMembershipReadsKeepValidityAndRealExamEntitlementsIndependent()
     {
         var now = DateTime.UtcNow;

@@ -4,6 +4,10 @@
 @inject IAuthorizationService AuthorizationService
 
 <h1 class="h3 mb-3">@Localizer["Delete Coupon"]</h1>
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div class="alert @(Model.Coupon.DistributionChannel is { IsEnabled: false } ? "alert-warning" : "alert-success")" role="status"><div class="alert-message">@message</div></div>
+}
 <div class="card"><div class="card-body">
     <h2 class="h4 text-break"><code>@Model.Coupon.Code</code></h2>
     <p>@Model.Coupon.DistributionChannel?.AgencyName · ¥@((Model.Coupon.AmountInFen / 100m).ToString("F2"))</p>
@@ -15,7 +19,23 @@
     }
     else
     {
-        <p>@Localizer["Keep this coupon for reference. To stop all coupons in this channel, return to the channel and disable it. This affects every coupon in the channel."]</p>
+        <p>@Localizer["Keep this coupon for reference. Disable only this coupon to stop new claims and new orders using it. Existing payment orders may still complete, and history is kept."]</p>
+        @if (!Model.Coupon.DistributionChannel!.IsEnabled)
+        {
+            <p class="text-warning">@Localizer["The channel is disabled. Enabling this coupon alone will not make it available."]</p>
+        }
+        <form method="post" asp-action="SetCouponEnabled" asp-route-id="@Model.Coupon.Id" asp-route-channelId="@Model.Coupon.DistributionChannelId" class="mb-3">
+            <input type="hidden" name="isEnabled" value="@(Model.Coupon.IsEnabled ? "false" : "true")" />
+            <input type="hidden" name="returnToReview" value="true" />
+            @if (Model.Coupon.IsEnabled)
+            {
+                <button type="submit" class="btn btn-warning">@Localizer["Disable Coupon"]</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-outline-success">@Localizer["Enable Coupon"]</button>
+            }
+        </form>
     }
     <div class="d-flex flex-wrap gap-2 mb-3">
         @if ((await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanReadDistributionChannels)).Succeeded &&

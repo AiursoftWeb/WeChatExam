@@ -5,10 +5,15 @@
 @model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.DetailsViewModel
 
 @{
+    var canEditCoupons = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditDistributionChannels)).Succeeded;
     var canReadOrders = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadPaymentOrders)).Succeeded;
 }
 
 <h1 class="h3 mb-3">@Localizer["Channel Details"]</h1>
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div class="alert @(Model.Channel.IsEnabled ? "alert-success" : "alert-warning")" role="status"><div class="alert-message">@message</div></div>
+}
 
 <div class="row">
     <div class="col-md-6">
@@ -74,6 +79,7 @@
         </a>
     </div>
     <div class="card-body">
+        <p class="px-3 pt-3 mb-0 text-muted">@Localizer["Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept."]</p>
         <div class="table-responsive">
             <table class="table table-hover mb-0">
                 <thead>
@@ -115,13 +121,21 @@
                                 }
                             </td>
                             <td>
-                                @if (coupon.IsEnabled)
+                                @if (!coupon.IsEnabled)
                                 {
-                                    <span class="text-success">@Localizer["Active"]</span>
+                                    <span class="text-danger">@Localizer["Disabled"]</span>
+                                }
+                                else if (!Model.Channel.IsEnabled)
+                                {
+                                    <span class="text-warning">@Localizer["Channel Disabled"]</span>
+                                }
+                                else if (coupon.IsSingleUse && coupon.UsedByUserId != null)
+                                {
+                                    <span class="text-secondary">@Localizer["Used (Single Use)"]</span>
                                 }
                                 else
                                 {
-                                    <span class="text-danger">@Localizer["Disabled"]</span>
+                                    <span class="text-success">@Localizer["Active"]</span>
                                 }
                             </td>
                             <td class="text-end">
@@ -130,6 +144,20 @@
                                     <a asp-action="CouponDetails" asp-route-id="@coupon.Id" class="btn btn-sm btn-outline-primary me-2 mb-1">
                                         <i data-lucide="receipt-text"></i> @Localizer["View Purchases"]
                                     </a>
+                                }
+                                @if (canEditCoupons)
+                                {
+                                    <form method="post" asp-action="SetCouponEnabled" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="d-inline-block me-2 mb-1">
+                                        <input type="hidden" name="isEnabled" value="@(coupon.IsEnabled ? "false" : "true")" />
+                                        @if (coupon.IsEnabled)
+                                        {
+                                            <button type="submit" class="btn btn-sm btn-outline-warning">@Localizer["Disable Coupon"]</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-sm btn-outline-success">@Localizer["Enable Coupon"]</button>
+                                        }
+                                    </form>
                                 }
                                 <a asp-action="DeleteCoupon" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="btn btn-sm btn-outline-danger mb-1">
                                     <i data-lucide="trash-2"></i> @Localizer["Review Deletion"]

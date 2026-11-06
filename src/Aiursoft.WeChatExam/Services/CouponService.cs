@@ -278,6 +278,16 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
         await context.SaveChangesAsync();
     }
 
+    public async Task SetEnabledAsync(Guid id, bool isEnabled)
+    {
+        var coupon = await context.Coupons.FindAsync(id);
+        if (coupon == null) return;
+        // Only availability changes. Claims, pending orders and single-use history
+        // keep their original terms and remain available for reconciliation.
+        coupon.IsEnabled = isEnabled;
+        await context.SaveChangesAsync();
+    }
+
     public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) =>
         CouponDeletionSummary.LoadAsync(context, context.Coupons.Where(c => c.Id == id));
 
