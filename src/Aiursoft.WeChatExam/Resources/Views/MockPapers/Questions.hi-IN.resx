@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>जोड़ने की पुष्टि करें: {0} परीक्षा प्रश्न</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>मूल प्रश्न संपादित करें</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>मसौदे में बदलाव करने से प्रकाशित संस्करणों पर कोई असर नहीं पड़ता।</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>मूल प्रश्न में संपादन करने से प्रश्न बैंक और अन्य प्रकाशित न किए गए पेपरों में भी यह बदल जाता है।</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>व्याख्या</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>आंतरिक टैग का नाम</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>अगला</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>अभी कोई व्याख्या नहीं।</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>इस पाठ्यक्रम में अब कोई और मेल खाते प्रश्न नहीं हैं।</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>प्रश्न का प्रकार</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>संदर्भ उत्तर और व्याख्या</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>संदर्भ उत्तर को ध्यान की आवश्यकता है</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>पेपर से हटाएँ</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>चयनित प्रश्न</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>मानक उत्तर</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>टैग</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>परीक्षा पत्र</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>संदर्भ उत्तर अभाव में है या प्रश्न को दोहरा रहा है। प्रकाशित करने से पहले इसे पूरा करें।</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>इससे परिणामों के सभी पृष्ठों से परीक्षा के प्रश्न जुड़ जाते हैं और जो प्रश्न पहले से इस प्रश्नपत्र में हैं, उन्हें छोड़ दिया जाता है।</value>

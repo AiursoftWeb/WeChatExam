@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0} suoritettua ostoja</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Toiminnot</value>
   </data>
   <data name="Active" xml:space="preserve">
@@ -41,6 +44,9 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanavan tiedot</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>Kanavayhteet sisältävät suosituksilla hankkiutuneiden opiskelijoiden ostokset, myös ilman kuponkia. Avaa kuponki nähdäksesi vain sen koodin kanssa tehdyt ostokset.</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Koodi</value>
@@ -84,6 +90,9 @@
   <data name="Paid Orders" xml:space="preserve">
     <value>Maksetut tilaukset</value>
   </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>Maksuoikeudet vaaditaan</value>
+  </data>
   <data name="Payment statistics are not yet implemented." xml:space="preserve">
     <value>Maksustatistiikkaa ei ole vielä toteutettu.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Käyttö</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>Näytä ostokset</value>
   </data>
 
 </root>

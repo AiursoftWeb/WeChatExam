@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Vahvista {0} koetehtävän lisääminen</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Muokkaa alkuperäistä kysymystä</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Luonnoksen muokkaaminen ei muuta julkaistuja versioita.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Alkuperäisen kysymyksen muokkaaminen muuttaa sen myös kysymyspankissa ja muissa julkaistamattomissa kokeissa.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Selitys</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Sisäisen tunnisteen nimi</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Seuraava</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Ei vielä selitettä.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>Tällä kurssilla ei ole enää hakuehtoja vastaavia kysymyksiä.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Kysymystyyppi</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Viitausvastaus ja selitys</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Viitevastaus vaatii tarkistusta</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Poista lomakkeesta</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Valitut kysymykset</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Oikea vastaus</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Tunniste</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Koepaperi</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Viitevastaus puuttuu tai toistaa kysymyksen. Täydennä se ennen julkaisemista.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Tämä lisää tenttikysymykset kaikilta tulossivuilta ja ohittaa ne, jotka ovat jo tässä tentissä.</value>
