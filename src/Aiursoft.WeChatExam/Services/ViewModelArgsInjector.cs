@@ -119,6 +119,7 @@ public class ViewModelArgsInjector(
     
         _ = localizer["Channel Details"];
         _ = localizer["Coupon Usage Details"];
+        _ = localizer["Delete Coupon"];
         _ = localizer["Create Distribution Channel"];
         _ = localizer["Dashboard"];
         _ = localizer["Delete Category"];

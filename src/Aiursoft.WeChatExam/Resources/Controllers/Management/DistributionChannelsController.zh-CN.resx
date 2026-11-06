@@ -27,5 +27,11 @@
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>开始日期不能晚于结束日期。</value>
   </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>该渠道存在优惠券历史记录。请保留以供参考，并禁用该渠道以停止后续使用。</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>该优惠券存在历史记录，无法删除。其订单、领取记录和会员记录必须予以保留。</value>
+  </data>
 
 </root>

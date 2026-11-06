@@ -28,22 +28,24 @@
             </dd>
         </dl>
 
-        <div class="alert alert-danger" role="alert">
-            <div class="alert-icon">
-                <i data-lucide="alert-triangle"></i>
-            </div>
-            <div class="alert-message">
-                @Localizer["This action cannot be undone. All associated user bindings will also be deleted."]
-            </div>
-        </div>
+        <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+        <partial name="_CouponDeletionSummary" model="Model.Deletion" />
+        @if (Model.Deletion.CanDelete)
+        {
+            <p>@Localizer["Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone."]</p>
+        }
+        else
+        {
+            <p>@Localizer["Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history."]</p>
+        }
 
         <form method="post" asp-action="Delete" asp-route-id="@Model.Channel.Id">
             @Html.AntiForgeryToken()
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-danger">
+                <button type="submit" class="btn btn-danger" disabled="@(!Model.Deletion.CanDelete)">
                     <i data-lucide="trash-2"></i> @Localizer["Delete"]
                 </button>
-                <a asp-action="Index" class="btn btn-secondary">
+                <a asp-action="Details" asp-route-id="@Model.Channel.Id" class="btn btn-secondary">
                     <i data-lucide="x"></i> @Localizer["Cancel"]
                 </a>
             </div>
