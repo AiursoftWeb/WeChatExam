@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>請選擇 1900 年 1 月 1 日或之後的日期。</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>優惠券金額已儲存。新訂單將使用新金額；現有訂單和購買記錄保持不變。</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>優惠券已停用。現有的領取記錄、訂單和會員資格均已保留。</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>日期範圍或時區無效。</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>折扣金額不得超過任何適用產品的價格。請輸入較小的金額。</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>開始日期不得晚於結束日期。</value>

@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>1 जनवरी 1900 या उसके बाद की तारीखें चुनें।</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>कूपन राशि सहेजी गई। नए ऑर्डर नई राशि का उपयोग करते हैं; मौजूदा ऑर्डर और खरीदारी का इतिहास अपरिवर्तित है।</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>कूपन अक्षम कर दिया गया है। मौजूदा दावे, ऑर्डर और सदस्यता बनाए रखी गई हैं।</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>तारीख़ सीमा या समय क्षेत्र मान्य नहीं है।</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>छूट किसी भी लागू उत्पाद की कीमत से अधिक नहीं हो सकती। एक छोटी राशि दर्ज करें।</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>प्रारंभ तिथि अंत तिथि के बाद नहीं हो सकती।</value>

@@ -21,6 +21,9 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>1900年1月1日以降の日付を選択してください。</value>
   </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>クーポン金額が保存されました。新規注文には新しい金額が適用され、既存の注文や購入履歴は変更されません。</value>
+  </data>
   <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
     <value>クーポンは無効化されました。既存の適用、注文、メンバーシップは保持されています。</value>
   </data>
@@ -32,6 +35,9 @@
   </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>日付範囲またはタイムゾーンが有効ではありません。</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>割引は適用可能な商品の価格を超えることはできません。より少ない金額を入力してください。</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>開始日は終了日より後に設定できません。</value>

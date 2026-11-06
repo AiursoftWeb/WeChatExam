@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="Edit Coupon Amount" xml:space="preserve">
+    <value>Edytuj kwotę kuponu</value>
+  </data>
+  <data name="Fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="Save Amount" xml:space="preserve">
+    <value>Zapisz kwotę</value>
+  </data>
+  <data name="The new amount applies to orders created after saving, including coupons already claimed but not yet ordered. Existing orders and purchase history keep their original amounts." xml:space="preserve">
+    <value>Nowa kwota dotyczy zamówień utworzonych po zapisaniu, w tym kuponów już odebranych, ale nie jeszcze zamówionych. Istniejące zamówienia i historia zakupów zachowują swoje oryginalne kwoty.</value>
+  </data>
+
+</root>
