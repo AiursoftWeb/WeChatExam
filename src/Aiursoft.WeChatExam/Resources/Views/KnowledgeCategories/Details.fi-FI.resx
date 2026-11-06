@@ -21,6 +21,12 @@
       <data name="Actions" xml:space="preserve">
     <value>Toiminnot</value>
   </data>
+  <data name="Add Knowledge Point" xml:space="preserve">
+    <value>Lisää tietopiste</value>
+  </data>
+  <data name="Add Subdirectory" xml:space="preserve">
+    <value>Lisää alihakemisto</value>
+  </data>
   <data name="Associated Knowledge Points" xml:space="preserve">
     <value>Liittyvät tietopisteet</value>
   </data>
@@ -57,8 +63,17 @@
   <data name="Knowledge Category Details" xml:space="preserve">
     <value>Tietoja tietopankkikategoriasta</value>
   </data>
+  <data name="Knowledge Points Directly in This Directory" xml:space="preserve">
+    <value>Tietopisteet suoraan tässä hakemistossa</value>
+  </data>
   <data name="No knowledge points associated" xml:space="preserve">
     <value>Ei liitettyjä tietopisteitä</value>
+  </data>
+  <data name="No knowledge points directly in this directory." xml:space="preserve">
+    <value>Tässä kansiossa ei ole suoraan tietopisteitä.</value>
+  </data>
+  <data name="No subdirectories in this directory." xml:space="preserve">
+    <value>Tässä hakemistossa ei ole alihakemistoja.</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Maksullinen</value>
@@ -68,6 +83,9 @@
   </data>
   <data name="Save Order" xml:space="preserve">
     <value>Tallenna järjestys</value>
+  </data>
+  <data name="Subdirectories" xml:space="preserve">
+    <value>Alahakemistot</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Otsikko</value>

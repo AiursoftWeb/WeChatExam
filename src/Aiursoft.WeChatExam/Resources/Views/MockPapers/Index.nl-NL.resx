@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>Proefwerk bewerken</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Paper bewerken</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>Papier importeren</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>Geen lidmaatschap vereist</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Niet gepubliceerd</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Pagina {0} van {1}</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Vorige</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Publicatiegeschiedenis</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Publiceer Proef</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Gepubliceerd</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Gepubliceerde versie beschikbaar</value>
@@ -89,6 +104,12 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Alle papers weergeven</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Publicatie intrekken</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versies en publicatie</value>
   </data>
 
 </root>

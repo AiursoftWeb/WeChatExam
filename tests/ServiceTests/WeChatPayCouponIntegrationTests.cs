@@ -93,6 +93,22 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    public async Task DisabledCouponCannotReserveANewPaymentOrder()
+    {
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Buyer" });
+        var product = new VipProduct { Name = "Coupon course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 1000, DurationDays = 30 };
+        _dbContext.VipProducts.Add(product);
+        await _dbContext.SaveChangesAsync();
+        var coupon = await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "STOP-NEW-ORDERS", 400, false);
+        await _couponService.SetEnabledAsync(coupon.Id, false);
+        var result = await _payService.CreateOrderAsync(_userId, "isolated-openid", product.Id, coupon.Code);
+        Assert.IsFalse(result.Success);
+        Assert.AreEqual("优惠码已禁用", result.ErrorMessage);
+        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync(o => o.CouponId == coupon.Id));
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
     public async Task CourseMembershipReadsKeepValidityAndRealExamEntitlementsIndependent()
     {
         var now = DateTime.UtcNow;
@@ -114,14 +130,32 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual("History", memberships.Single(m => m.VipProductId == active.Id).VipProduct!.TotalCategory!.Title);
         var access = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
         CollectionAssert.AreEquivalent(new[] { active.TotalCategoryId!.Value }, access.ActiveCategoryVips.ToArray());
-        Assert.IsTrue(access.HasRealExamVip);
+        Assert.IsFalse(PaperAccessService.CanAccessInstitution(Guid.NewGuid(), access));
         Assert.IsTrue(await _payService.HasVipForCategoryAsync(_userId, active.TotalCategoryId.Value));
         Assert.IsFalse(await _payService.HasVipForCategoryAsync(_userId, expired.TotalCategoryId!.Value));
         Assert.IsFalse(await _payService.HasVipForCategoryAsync(_userId, future.TotalCategoryId!.Value));
         Assert.AreEqual(now.AddDays(30), memberships.Single(m => m.VipProductId == active.Id).EndTime);
         var visitor = await new PaperAccessService(_payService).GetUserAccessStatusAsync(null);
         Assert.AreEqual(0, visitor.ActiveCategoryVips.Count);
-        Assert.IsFalse(visitor.HasRealExamVip);
+        Assert.AreEqual(0, visitor.ActiveInstitutionVips.Count);
+    }
+
+    [TestMethod]
+    public async Task EnabledHistoricalProductCannotCreateAnotherOrder()
+    {
+        _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Buyer" });
+        var legacy = new VipProduct
+        {
+            Name = "Retired all-school VIP", Type = VipProductType.RealExam,
+            IsEnabled = true, PriceInFen = 100, DurationDays = 30
+        };
+        _dbContext.VipProducts.Add(legacy);
+        await _dbContext.SaveChangesAsync();
+
+        var result = await _payService.CreateOrderAsync(_userId, "isolated-openid", legacy.Id);
+        Assert.IsFalse(result.Success);
+        Assert.AreEqual(0, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
     }
 
     [TestMethod]
@@ -683,15 +717,14 @@ public class WeChatPayCouponIntegrationTests
         var status = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
         CollectionAssert.AreEquivalent(new[] { first.InstitutionId!.Value, second.InstitutionId!.Value }, status.ActiveInstitutionVips.ToArray());
         CollectionAssert.AreEquivalent(new[] { course.TotalCategoryId!.Value }, status.ActiveCategoryVips.ToArray());
-        Assert.IsFalse(status.HasRealExamVip);
         Assert.IsFalse(PaperAccessService.CanAccess(new Paper { Title = "Legacy school paper", IsRealExam = true, IsFree = false }, status));
     }
 
     [TestMethod]
-    [DataRow(-1, 30, false)]
-    [DataRow(-30, -1, true)]
-    [DataRow(1, 30, true)]
-    public async Task ExistingAllSchoolVipBlocksOnlyPurchasesItCurrentlyCovers(int startDays, int endDays, bool allowed)
+    [DataRow(-1, 30)]
+    [DataRow(-30, -1)]
+    [DataRow(1, 30)]
+    public async Task LegacyVipDoesNotBlockInstitutionPurchase(int startDays, int endDays)
     {
         _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Old buyer" });
         var legacy = new VipProduct { Name = "Old all-school VIP", Type = VipProductType.RealExam, IsEnabled = false };
@@ -702,12 +735,12 @@ public class WeChatPayCouponIntegrationTests
         await _dbContext.SaveChangesAsync();
         await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "SCHOOL-FULL", 100, false);
         var result = await _payService.CreateOrderAsync(_userId, "isolated-openid", school.Id, "SCHOOL-FULL");
-        Assert.AreEqual(allowed, result.Success);
-        Assert.AreEqual(allowed ? 1 : 0, await _dbContext.PaymentOrders.CountAsync());
+        Assert.IsTrue(result.Success);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
         _dbContext.ChangeTracker.Clear();
         Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync(m => m.Id == old.Id)).EndTime);
         var status = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
-        Assert.AreEqual(!allowed, status.HasRealExamVip);
+        Assert.IsFalse(PaperAccessService.CanAccessInstitution(Guid.NewGuid(), status));
         Assert.AreEqual(0, status.ActiveCategoryVips.Count);
     }
 

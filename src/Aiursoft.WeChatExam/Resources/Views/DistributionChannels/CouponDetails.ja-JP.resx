@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>金額は完了した注文に基づいており、当日の商品価格やクーポンの価値ではありません。合計額は選択されたフィルターに従います。</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>完了日時</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>このコードを使用した完了した購入（全額割引の注文を含む）。クーポンの取得は購入には含まれません。</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>クーポン使用詳細</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>日付と時刻は、お使いのデバイスのタイムゾーンを使用します。</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>適用された割引</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>購入を絞り込む</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>該当する購入数</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>複数回利用</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>該当するフィルターに一致する完了した購入はありません。</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>記録なし</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>注文</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>注文元価格</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>支払い済み</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>購入履歴</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>購入ページ</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>購入したコンテンツ</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>1回限り</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>学生、商品または注文番号</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>このクーポンには、完了した購入はまだありません。</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>このクーポンは使用済みとマークされていますが、完了した注文は利用できません。過去の購入者や金額は確認できません。</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>まで</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>合計割引額</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>支払合計</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>氏名未登録の学生</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>注文の詳細</value>
+  </data>
+
+</root>

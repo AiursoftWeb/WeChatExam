@@ -33,7 +33,7 @@
                         <div class="small text-muted">@detail.User.UserName</div>
                     </td>
                     <td>
-                        @(detail.ActivationEvent.VipProduct?.Name ?? "Unknown")
+                        @(detail.ActivationEvent.VipProduct?.Name ?? detail.ActivationEvent.ArchivedVipProductName ?? "Unknown")
                     </td>
                     <td>
                         @switch (detail.ActivationEvent.Type)

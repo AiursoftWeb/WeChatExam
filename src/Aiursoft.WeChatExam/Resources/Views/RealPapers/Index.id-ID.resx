@@ -33,6 +33,9 @@
   <data name="Draft" xml:space="preserve">
     <value>Draf</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Edit Makalah</value>
+  </data>
   <data name="Edit Real Paper" xml:space="preserve">
     <value>Edit Naskah Asli</value>
   </data>
@@ -51,6 +54,9 @@
   <data name="No matching papers" xml:space="preserve">
     <value>Tidak ada makalah yang cocok</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Belum diterbitkan</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Halaman {0} dari {1}</value>
   </data>
@@ -62,6 +68,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Riwayat Publikasi</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Terbitkan Makalah</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Diterbitkan</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Versi yang telah dipublikasikan tersedia</value>
@@ -83,6 +98,9 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Tampilkan semua makalah</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Tarik Publikasi Makalah</value>
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Versi dan Publikasi</value>

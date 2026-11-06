@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Berhasil menambahkan {0} soal yang sesuai.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Tidak dapat mengonfirmasi penerbitan. Muat ulang naskah sebelum mencoba lagi.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Tidak dapat memastikan bahwa kumpulan soal berhasil ditambahkan. Tinjau soal saat ini sebelum mencoba lagi.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Pilih kursus yang tersedia.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Pengaturan disimpan. Publikasikan pembaruan Anda ketika makalah siap.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Pertanyaan ujian yang cocok telah berubah. Tinjau hasil saat ini sebelum mengonfirmasi kembali.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Kertas telah diterbitkan. Siswa sekarang dapat menggunakan konten yang diterbitkan.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Kertas tidak diterbitkan. Pertanyaan dan catatan siswa sebelumnya telah disimpan.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versi tidak dapat disimpan. Muat ulang daftar versi sebelum mencoba lagi.</value>

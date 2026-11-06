@@ -31,9 +31,12 @@ else
                         <i data-lucide="library-big" class="text-primary mb-3"></i>
                         <h2 class="h4 text-break mb-3">@category.Title</h2>
                         <p class="text-muted">@Localizer["Display Order"]: @category.OrderIndex</p>
-                        <a asp-action="Edit" asp-route-id="@category.Id" class="stretched-link text-decoration-none">
-                            @Localizer["Edit Total Category"] <i data-lucide="arrow-right" class="ms-1"></i>
-                        </a>
+                        <div class="d-flex flex-wrap gap-3 align-items-center">
+                            <a asp-action="Details" asp-route-id="@category.Id" class="stretched-link text-decoration-none">
+                                @Localizer["View Course Contents"] <i data-lucide="arrow-right" class="ms-1"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@category.Id" class="position-relative z-1 text-decoration-none">@Localizer["Edit Total Category"]</a>
+                        </div>
                     </div>
                 </div>
             </div>

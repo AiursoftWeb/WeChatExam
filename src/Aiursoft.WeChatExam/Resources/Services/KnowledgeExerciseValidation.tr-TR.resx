@@ -24,5 +24,11 @@
   <data name="Free knowledge category {0} cannot use exercises from paid question category {1}. Choose a free question category or review the knowledge access settings." xml:space="preserve">
     <value>Ücretsiz bilgi kategorisi {0}, ücretli soru kategorisindeki {1} alıştırmaları kullanamaz. Ücretsiz bir soru kategorisi seçin veya bilgi erişim ayarlarını gözden geçirin.</value>
   </data>
+  <data name="Knowledge point exercises support choice questions only." xml:space="preserve">
+    <value>Bilgi noktası alıştırmaları yalnızca çoktan seçmeli soruları destekler.</value>
+  </data>
+  <data name="Knowledge point exercises support choice questions only. Replace {0} with a choice question." xml:space="preserve">
+    <value>Bilgi noktası alıştırmaları yalnızca çoktan seçmeli soruları destekler. {0} öğesini çoktan seçmeli bir soruyla değiştirin.</value>
+  </data>
 
 </root>

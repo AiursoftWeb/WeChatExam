@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>Redigera övningsprov</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Redigera papper</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>Importera prov</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>Inget medlemskap krävs</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Ej publicerad</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Sida {0} av {1}</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Föregående</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Publiceringshistorik</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Publicera prov</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Publicerad</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Publicerad version tillgänglig</value>
@@ -89,6 +104,12 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Visa alla uppsatser</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Avpublicera prov</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versioner och publicering</value>
   </data>
 
 </root>

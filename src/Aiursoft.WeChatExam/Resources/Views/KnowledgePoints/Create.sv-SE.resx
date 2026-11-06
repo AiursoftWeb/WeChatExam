@@ -60,6 +60,9 @@
   <data name="No questions found." xml:space="preserve">
     <value>Inga frågor hittades.</value>
   </data>
+  <data name="Only choice questions can be associated with knowledge points." xml:space="preserve">
+    <value>Endast flervalsfrågor kan kopplas till kunskapspunkter.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Överordnad kunskapspunkt</value>
   </data>
@@ -77,6 +80,9 @@
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Valda frågor</value>
+  </data>
+  <data name="This question type is not supported here. Remove or replace it." xml:space="preserve">
+    <value>Den här frågetypen stöds inte här. Ta bort den eller ersätt den.</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>

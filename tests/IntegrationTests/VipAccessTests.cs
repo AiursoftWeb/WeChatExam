@@ -121,6 +121,116 @@ public class VipAccessTests
     }
 
     [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task HiddenPeriodsAreExcludedFromEveryIndependentPracticeMode(bool member)
+    {
+        var course = new TotalCategory { Title = "Visibility course" };
+        var visible = new QuestionCategory { Title = "Visible", TotalCategoryId = course.Id, IsFree = true };
+        var hidden = new QuestionCategory { Title = "Hidden free", TotalCategoryId = course.Id, IsFree = true, IsVisible = false };
+        var hiddenPaid = new QuestionCategory { Title = "Hidden paid", TotalCategoryId = course.Id, IsVisible = false };
+        var publicQuestion = new Question { Id = Guid.NewGuid(), Content = "Public exercise", StandardAnswer = "A", QuestionCategory = visible };
+        var privateQuestion = new Question { Id = Guid.NewGuid(), Content = "Hidden exercise", StandardAnswer = "A", QuestionCategory = hidden };
+        var privatePaid = new Question { Id = Guid.NewGuid(), Content = "Hidden paid exercise", StandardAnswer = "A", QuestionCategory = hiddenPaid };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(course, publicQuestion, privateQuestion, privatePaid);
+            await db.SaveChangesAsync();
+        }
+        if (member)
+        {
+            _http.DefaultRequestHeaders.Authorization = new("Bearer", await LoginAsync());
+            _mockWeChatPayService.Memberships = [new VipMembership
+            {
+                UserId = "u", VipProduct = new VipProduct { Name = "Course", TotalCategoryId = course.Id },
+                StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1)
+            }];
+        }
+        var periods = (await _http.GetFromJsonAsync<List<QuestionCategorySummaryDto>>($"/api/TotalCategories/{course.Id}/QuestionCategories"))!;
+        CollectionAssert.AreEqual(new[] { visible.Id }, periods.Select(c => c.Id).ToArray());
+        foreach (var filter in new[] { "size=50", "randomSize=50", "type=0", "size=50&page=1" })
+        {
+            var questions = (await _http.GetFromJsonAsync<List<QuestionDto>>($"/api/Questions?totalCategoryId={course.Id}&{filter}"))!;
+            CollectionAssert.AreEqual(new[] { publicQuestion.Id }, questions.Select(q => q.Id).ToArray());
+            Assert.IsTrue(questions.Single().IsLastQuestion);
+        }
+        foreach (var id in new[] { hidden.Id, hiddenPaid.Id })
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Questions?questionCategoryId={id}&randomSize=10")).StatusCode);
+        foreach (var id in new[] { privateQuestion.Id, privatePaid.Id })
+            Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Questions/{id}")).StatusCode);
+        if (!member) _http.DefaultRequestHeaders.Authorization = new("Bearer", await LoginAsync());
+        var resumed = (await _http.GetFromJsonAsync<List<QuestionDto>>($"/api/Questions?totalCategoryId={course.Id}&resumeType=0&size=50"))!;
+        CollectionAssert.AreEqual(new[] { publicQuestion.Id }, resumed.Select(q => q.Id).ToArray());
+        var rejected = await _http.PostAsJsonAsync("/api/UserPracticeHistory", new CreateUserPracticeHistoryDto
+            { QuestionId = privateQuestion.Id, UserAnswer = "A" });
+        Assert.AreEqual(HttpStatusCode.NotFound, rejected.StatusCode);
+        using var check = _server!.Services.CreateScope();
+        Assert.AreEqual(0, check.ServiceProvider.GetRequiredService<WeChatExamDbContext>().UserPracticeHistories.Count(h => h.QuestionId == privateQuestion.Id));
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task HiddenExercisesRequireAnAccessibleLinkedLessonAndKeepPricing(bool freeQuestion)
+    {
+        var (course, directory, lesson, question) = await AddKnowledgeAsync(true, "Hidden exercise course " + Guid.NewGuid());
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var period = db.QuestionCategories.Single(c => c.Id == question.QuestionCategoryId);
+            period.IsVisible = false; period.IsFree = freeQuestion;
+            await db.SaveChangesAsync();
+        }
+        var path = $"/api/Questions/{question.Id}?knowledgePointId={lesson.Id}";
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Questions/{question.Id}")).StatusCode);
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Questions/{question.Id}?knowledgePointId={Guid.NewGuid()}")).StatusCode);
+        Assert.AreEqual(freeQuestion ? HttpStatusCode.OK : HttpStatusCode.Forbidden, (await _http.GetAsync(path)).StatusCode);
+        var point = (await _http.GetFromJsonAsync<List<KnowledgePointWithQuestionsDto>>($"/api/KnowledgePoints?knowledgeCategoryId={directory.Id}"))!.Single();
+        Assert.AreEqual(freeQuestion, point.Questions.Single().HasAccess);
+        _http.DefaultRequestHeaders.Authorization = new("Bearer", await LoginAsync());
+        _mockWeChatPayService.Memberships = [new VipMembership
+        {
+            UserId = "u", VipProduct = new VipProduct { Name = "Course", TotalCategoryId = course.Id },
+            StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1)
+        }];
+        Assert.AreEqual(HttpStatusCode.OK, (await _http.GetAsync(path)).StatusCode);
+        var rejected = await _http.PostAsJsonAsync("/api/UserPracticeHistory", new CreateUserPracticeHistoryDto
+            { QuestionId = question.Id, KnowledgePointId = Guid.NewGuid(), UserAnswer = "Answer" });
+        Assert.AreEqual(HttpStatusCode.NotFound, rejected.StatusCode);
+        var submitted = await _http.PostAsJsonAsync("/api/UserPracticeHistory", new CreateUserPracticeHistoryDto
+            { QuestionId = question.Id, KnowledgePointId = lesson.Id, UserAnswer = "Answer" });
+        Assert.AreEqual(HttpStatusCode.Created, submitted.StatusCode);
+        using var verify = _server!.Services.CreateScope();
+        var context = verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(1, context.UserPracticeHistories.Count(h => h.QuestionId == question.Id));
+        context.KnowledgeCategoryKnowledgePoints.RemoveRange(context.KnowledgeCategoryKnowledgePoints.Where(c => c.KnowledgePointId == lesson.Id));
+        await context.SaveChangesAsync();
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync(path)).StatusCode, "An unplaced lesson must not grant hidden question access.");
+    }
+
+    [TestMethod]
+    public async Task HidingOriginalsDoesNotRemovePublishedPaperSnapshots()
+    {
+        var course = new TotalCategory { Title = "Hidden paper originals" };
+        var period = new QuestionCategory { Title = "Staging", TotalCategoryId = course.Id, IsVisible = false };
+        var question = new Question { Id = Guid.NewGuid(), Content = "Hidden original", StandardAnswer = "A", QuestionCategory = period };
+        var paper = new MockPaper { Title = "Public paper", TotalCategoryId = course.Id, Status = PaperStatus.Publishable, AllowViewAnonymousely = true };
+        var version = new PaperSnapshot { Id = Guid.NewGuid(), Title = paper.Title, MockPaperId = paper.Id, Version = 1 };
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.AddRange(course, question, paper, version, new QuestionSnapshot
+                { PaperSnapshotId = version.Id, OriginalQuestionId = question.Id, Content = question.Content });
+            await db.SaveChangesAsync();
+        }
+        Assert.AreEqual(HttpStatusCode.NotFound, (await _http.GetAsync($"/api/Questions/{question.Id}")).StatusCode);
+        var snapshot = await _http.GetAsync($"/api/MockPapers/snapshots/{version.Id}");
+        Assert.AreEqual(HttpStatusCode.OK, snapshot.StatusCode);
+        Assert.Contains("Hidden original", await snapshot.Content.ReadAsStringAsync());
+    }
+
+    [TestMethod]
     public async Task PracticeNavigationRequiresTheMatchingActiveCourseMembership()
     {
         var course = new TotalCategory { Title = "Membership course" };
@@ -157,11 +267,11 @@ public class VipAccessTests
     }
 
 
-    private async Task<(TotalCategory Course, KnowledgeCategory Directory, KnowledgePoint Lesson, Question Exercise)> AddKnowledgeAsync(bool free)
+    private async Task<(TotalCategory Course, KnowledgeCategory Directory, KnowledgePoint Lesson, Question Exercise)> AddKnowledgeAsync(bool free, string courseTitle = "Knowledge course")
     {
         using var scope = _server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var course = new TotalCategory { Title = "Knowledge course" };
+        var course = new TotalCategory { Title = courseTitle };
         var directory = new KnowledgeCategory { Title = "Overview", TotalCategoryId = course.Id, IsFree = free };
         var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Lesson", Content = "Protected lesson body", AudioUrl = "/protected-audio.mp3" };
         var period = new QuestionCategory { Title = "Period", TotalCategoryId = course.Id };
@@ -187,11 +297,11 @@ public class VipAccessTests
         async Task Compare(string scenarioName)
         {
             using var scope = _server!.Services.CreateScope();
-            var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([other.Id], false);
+            var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>().ScanAsync([other.Id]);
             var scenario = report.Scenarios.Single(s => s.Name == scenarioName);
             // Include all course choices on demand, not only the exercise's own course.
             report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>()
-                .ScanAsync(scenario.Status.ActiveCategoryVips.ToArray(), scenario.Status.HasRealExamVip);
+                .ScanAsync(scenario.Status.ActiveCategoryVips.ToArray());
             var access = report.Exercises[exercise.Id].Access.Single(a => a.Scenario ==
                 (scenarioName == "Anonymous" ? "Anonymous" : scenarioName == "Signed in without active VIP" ? scenarioName : "Custom VIP selection"));
             using var questionResponse = await _http.GetAsync($"/api/Questions/{exercise.Id}");
@@ -238,11 +348,11 @@ public class VipAccessTests
                 new QuestionSnapshot { PaperSnapshotId = realVersion.Id, Content = "Retained mixed-course paper" });
             await db.SaveChangesAsync();
         }
-        async Task Compare(Guid[] subjects, Guid[] institutions, bool global)
+        async Task Compare(Guid[] subjects, Guid[] institutions)
         {
             using var scope = _server!.Services.CreateScope();
             var report = await scope.ServiceProvider.GetRequiredService<ContentCheckService>()
-                .ScanAsync(subjects, global, institutions: institutions);
+                .ScanAsync(subjects, institutions: institutions);
             foreach (var (id, controller, version) in new[] { (mock.Id, "MockPapers", mockVersion.Id), (real.Id, "RealPapers", realVersion.Id) })
             {
                 var finding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects[0].Id == id.ToString());
@@ -252,22 +362,22 @@ public class VipAccessTests
                 Assert.AreEqual(observation.Allowed ? HttpStatusCode.OK : HttpStatusCode.Forbidden, response.StatusCode);
             }
         }
-        await Compare([], [], false);
+        await Compare([], []);
         _http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await LoginAsync());
-        await Compare([], [], false);
+        await Compare([], []);
         var product = new VipProduct { Name = "Off-sale membership", Type = VipProductType.Institution, InstitutionId = otherSchool.Id, IsEnabled = false };
         _mockWeChatPayService.Memberships = [new VipMembership
         {
             UserId = "u", VipProduct = product, StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(1)
         }];
-        await Compare([], [otherSchool.Id], false);
+        await Compare([], [otherSchool.Id]);
         product.InstitutionId = school.Id;
-        await Compare([], [school.Id], false);
+        await Compare([], [school.Id]);
         product.Type = VipProductType.Category;
         product.TotalCategoryId = course.Id;
-        await Compare([course.Id], [], false);
+        await Compare([course.Id], []);
         product.Type = VipProductType.RealExam;
-        await Compare([], [], true);
+        await Compare([], []);
     }
 
     [TestMethod]

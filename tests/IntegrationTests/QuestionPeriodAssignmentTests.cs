@@ -17,6 +17,15 @@ public class QuestionPeriodAssignmentTests : TestBase
         return new QuestionCategory { IsFree = isFree, Title = "Test period", TotalCategoryId = total.Id, TotalCategory = total };
     }
 
+    internal static async Task InsertLegacyPeriodAsync(SqliteContext db, QuestionCategory period)
+    {
+        // Seed the historical schema without writing columns introduced by later migrations.
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO TotalCategories (Id,Title,OrderIndex,CreationTime) VALUES ({period.TotalCategoryId},{period.TotalCategory!.Title},0,CURRENT_TIMESTAMP)");
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO QuestionCategories (Id,Title,TotalCategoryId,IsFree,OrderIndex,CreationTime) VALUES ({period.Id},{period.Title},{period.TotalCategoryId},{period.IsFree},0,CURRENT_TIMESTAMP)");
+        db.Attach(period.TotalCategory);
+        db.Attach(period);
+    }
+
     internal static async Task<Guid> AddPeriod(IServiceProvider services)
     {
         using var scope = services.CreateScope();
@@ -203,8 +212,7 @@ public class QuestionPeriodAssignmentTests : TestBase
             Assert.AreEqual("Preserved answer", await read.ExecuteScalarAsync());
         }
         var period = TestPeriod();
-        db.QuestionCategories.Add(period);
-        await db.SaveChangesAsync();
+        await InsertLegacyPeriodAsync(db, period);
         await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE Questions SET QuestionCategoryId={period.Id} WHERE Id={id}");
         await migrator.MigrateAsync();
         var question = await db.Questions.SingleAsync();
@@ -224,6 +232,63 @@ public class QuestionPeriodAssignmentTests : TestBase
         Assert.AreEqual(1, await db.QuestionCategories.CountAsync());
     }
     [TestMethod]
+    public async Task TeachersCanHideAndRestoreAPeriodWithoutChangingItsQuestions()
+    {
+        await LoginAsAdmin();
+        var (id, periodId, _) = await SeedQuestion();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var period = await db.QuestionCategories.SingleAsync(c => c.Id == periodId);
+        var form = new Dictionary<string, string>
+        {
+            ["Id"] = periodId.ToString(), ["Title"] = period.Title,
+            ["TotalCategoryId"] = period.TotalCategoryId.ToString(), ["IsFree"] = period.IsFree.ToString(),
+            ["IsVisible"] = "false", ["OrderIndex"] = period.OrderIndex.ToString()
+        };
+        var saved = await PostForm($"/QuestionCategories/Edit/{periodId}", form);
+        Assert.AreEqual(HttpStatusCode.Found, saved.StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.IsFalse((await db.QuestionCategories.SingleAsync(c => c.Id == periodId)).IsVisible);
+        Assert.AreEqual(periodId, (await db.Questions.SingleAsync(q => q.Id == id)).QuestionCategoryId);
+        Assert.Contains("Hidden", await Http.GetStringAsync($"/QuestionCategories?totalCategoryId={period.TotalCategoryId}"));
+        form["Title"] = "";
+        var invalid = await PostForm($"/QuestionCategories/Edit/{periodId}", form);
+        Assert.AreEqual(HttpStatusCode.OK, invalid.StatusCode);
+        form["Title"] = period.Title; form["IsVisible"] = "true";
+        Assert.AreEqual(HttpStatusCode.Found, (await PostForm($"/QuestionCategories/Edit/{periodId}", form)).StatusCode);
+        db.ChangeTracker.Clear();
+        Assert.IsTrue((await db.QuestionCategories.SingleAsync(c => c.Id == periodId)).IsVisible);
+    }
+
+    [TestMethod]
+    public async Task PeriodVisibilityUpgradeKeepsExistingPeriodsVisibleAndPreservesAssignments()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:;Foreign Keys=True");
+        await connection.OpenAsync();
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>().UseSqlite(connection).Options);
+        var migrator = db.GetService<IMigrator>();
+        var migrations = db.Database.GetMigrations().ToArray();
+        var index = Array.FindIndex(migrations, m => m.EndsWith("_AddPeriodVisibility", StringComparison.Ordinal));
+        await migrator.MigrateAsync(migrations[index - 1]);
+        var period = TestPeriod();
+        await InsertLegacyPeriodAsync(db, period);
+        await migrator.MigrateAsync();
+        db.ChangeTracker.Clear();
+        var retained = await db.QuestionCategories.SingleAsync();
+        Assert.IsTrue(retained.IsVisible);
+        Assert.AreEqual(period.Title, retained.Title);
+        Assert.AreEqual(period.TotalCategoryId, retained.TotalCategoryId);
+        retained.IsVisible = false; await db.SaveChangesAsync(); db.ChangeTracker.Clear();
+        Assert.IsFalse((await db.QuestionCategories.SingleAsync()).IsVisible);
+        await migrator.MigrateAsync(migrations[index - 1]);
+        await using var read = connection.CreateCommand();
+        read.CommandText = "SELECT Title FROM QuestionCategories";
+        Assert.AreEqual(period.Title, await read.ExecuteScalarAsync());
+        await migrator.MigrateAsync(); db.ChangeTracker.Clear();
+        Assert.IsTrue((await db.QuestionCategories.SingleAsync()).IsVisible);
+    }
+
+    [TestMethod]
     public async Task RetiringLegacyOwnershipPreservesQuestionsAndTheirBusinessLinks()
     {
         await using var connection = new SqliteConnection("Data Source=:memory:;Foreign Keys=True");
@@ -235,7 +300,8 @@ public class QuestionPeriodAssignmentTests : TestBase
         var legacy = new Category { Id = Guid.NewGuid(), Title = "Retired ownership", ParentId = null };
         var paper = new Paper { Id = Guid.NewGuid(), Title = "Preserved paper" };
         var tag = new Tag { DisplayName = "Internal source", NormalizedName = "INTERNAL SOURCE" };
-        db.AddRange(period, legacy, paper, tag);
+        await InsertLegacyPeriodAsync(db, period);
+        db.AddRange(legacy, paper, tag);
         await db.SaveChangesAsync();
         var id = Guid.NewGuid();
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO Questions (Id,Content,QuestionType,GradingStrategy,Metadata,StandardAnswer,Explanation,CreationTime,LastUpdatedAt,LastEmbeddedAt,CategoryId,QuestionCategoryId) VALUES ({id},'Preserved question',0,0,'Options','Answer','Explanation',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,{legacy.Id},{period.Id})");

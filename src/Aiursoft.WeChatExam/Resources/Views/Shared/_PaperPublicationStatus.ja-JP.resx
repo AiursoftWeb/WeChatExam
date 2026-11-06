@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="More options" xml:space="preserve">
+    <value>詳細オプション</value>
+  </data>
+  <data name="Not published" xml:space="preserve">
+    <value>未公開</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>公開履歴</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>論文を公開</value>
+  </data>
+  <data name="Publish Updates" xml:space="preserve">
+    <value>更新を公開</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>公開済み</value>
+  </data>
+  <data name="Students cannot access this paper. Save your edits, then publish when it is ready." xml:space="preserve">
+    <value>学生はこの論文にアクセスできません。編集を保存してから、準備ができたら公開してください。</value>
+  </data>
+  <data name="Students see the published content. Saved edits need to be published before students see them." xml:space="preserve">
+    <value>学生は公開済みのコンテンツを確認できます。保存された編集内容は、公開するまで学生には表示されません。</value>
+  </data>
+  <data name="Students still see the last published content. Publish your updates when ready." xml:space="preserve">
+    <value>学生はまだ最後に公開された内容を確認しています。準備ができたら更新を公開してください。</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>試験を非公開にする</value>
+  </data>
+  <data name="Unpublished changes" xml:space="preserve">
+    <value>未公開の変更</value>
+  </data>
+  <data name="View Published Content" xml:space="preserve">
+    <value>公開済みコンテンツを表示</value>
+  </data>
+
+</root>

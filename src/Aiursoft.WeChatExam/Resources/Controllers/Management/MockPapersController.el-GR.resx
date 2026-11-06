@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>Προστέθηκαν {0} ερωτήσεις που πληρούν τα κριτήρια.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Δεν ήταν δυνατή η επιβεβαίωση της δημοσίευσης. Επαναφορτώστε το τεστ πριν ξαναδοκιμάσετε.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Δεν ήταν δυνατή η επιβεβαίωση της προσθήκης της ομάδας. Ελέγξτε τις τρέχουσες ερωτήσεις πριν δοκιμάσετε ξανά.</value>
   </data>
@@ -36,8 +39,17 @@
   <data name="Select an existing course." xml:space="preserve">
     <value>Επιλέξτε ένα υπάρχον μάθημα.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Οι ρυθμίσεις αποθηκεύτηκαν. Δημοσιεύστε τις ενημερώσεις σας όταν το άρθρο είναι έτοιμο.</value>
+  </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Οι ερωτήσεις της εξέτασης που πληρούν τα κριτήρια άλλαξαν. Ελέγξτε τα τρέχοντα αποτελέσματα πριν επιβεβαιώσετε ξανά.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Το εξεταστικό έχει δημοσιευτεί. Οι μαθητές μπορούν πλέον να χρησιμοποιήσουν το δημοσιευμένο περιεχόμενο.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Το εξεταστικό έχει αποδημοσιευθεί. Οι ερωτήσεις και τα προηγούμενα αρχεία μαθητών έχουν διατηρηθεί.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Δεν ήταν δυνατή η αποθήκευση της έκδοσης. Φορτώστε ξανά τη λίστα εκδόσεων πριν προσπαθήσετε ξανά.</value>

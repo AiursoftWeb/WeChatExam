@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Bekræft tilføjelse af {0} eksamensspørgsmål</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Rediger oprindelig spørgsmål</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Redigering af kladden ændrer ikke de offentliggjorte versioner.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Redigering af den oprindelige spørgsmål ændrer også spørgsmålet i spørgsmålsbanken og i andre upublicerede prøver.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Forklaring</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Internt mærkenavn</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Næste</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Ingen forklaring endnu.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>Der er ikke flere matchende spørgsmål på dette kursus.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Spørgsmålstype</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Referencесvar og forklaring</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Referencens svar kræver opmærksomhed</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Fjern fra opgavesættet</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Valgte spørgsmål</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Standard svar</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Mærkat</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Prøveopgave</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Det referenceret svar mangler eller gentager spørgsmålet. Udfyld det, før det offentliggøres.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Dette tilføjer eksamensspørgsmål fra alle resultatsider og springer dem over, der allerede er i denne opgave.</value>

@@ -6,7 +6,7 @@
     var creating = Model.Id == Guid.Empty;
 }
 
-<a asp-action="Index" class="d-inline-block text-decoration-none mb-3">
+<a asp-action="Index" asp-route-totalCategoryId="@(creating ? Model.TotalCategoryId : null)" class="d-inline-block text-decoration-none mb-3">
     <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Mock Papers"]
 </a>
 <h1 class="h3 mb-4">
@@ -20,18 +20,25 @@
     }
 </h1>
 
-<p class="text-muted mb-4">@Localizer["Editing the draft does not change published versions."]</p>
+
 
 @if (!creating && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded)
 {
-    <a asp-action="Questions" asp-route-id="@Model.Id" class="btn btn-outline-primary mb-4">@Localizer["Manage Questions"]</a>
+    @if (Model.Publication != null)
+    {
+        <partial name="_PaperPublicationStatus" model="Model.Publication" />
+    }
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item"><a asp-action="Edit" asp-route-id="@Model.Id" class="nav-link active">@Localizer["Paper Settings"]</a></li>
+        <li class="nav-item"><a asp-action="Questions" asp-route-id="@Model.Id" class="nav-link">@Localizer["Selected Questions"]</a></li>
+        <li class="nav-item"><a asp-action="SelectQuestions" asp-route-id="@Model.Id" class="nav-link">@Localizer["Select Questions"]</a></li>
+    </ul>
 }
-
 <div class="row">
     <div class="col-lg-7 col-xl-6">
         <div class="card">
             <div class="card-body p-4">
-                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post">
+                <form asp-action="@(creating ? "Create" : "Edit")" asp-route-id="@(creating ? null : Model.Id.ToString())" method="post" data-edit-form data-edit-dirty="@(!ViewData.ModelState.IsValid ? "true" : "false")">
                     @if (!creating)
                     {
                         <input asp-for="Id" type="hidden" />
@@ -65,12 +72,14 @@
                     </div>
                     <div class="d-flex flex-wrap gap-2">
                         <button type="submit" class="btn btn-primary">
-                            @Localizer["Save Draft"]
+                            @Localizer["Save Settings"]
                         </button>
-                        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
+                        <a asp-action="Index" asp-route-totalCategoryId="@(creating ? Model.TotalCategoryId : null)" class="btn btn-outline-secondary">@Localizer["Cancel"]</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script src="~/js/edit-navigation.js" asp-append-version="true" defer></script>

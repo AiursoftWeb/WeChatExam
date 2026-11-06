@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0} pembelian selesai</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>Tindakan</value>
   </data>
   <data name="Active" xml:space="preserve">
@@ -41,6 +44,9 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Informasi Saluran</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>Total saluran mencakup pembelian oleh siswa yang dirujuk, bahkan tanpa kupon. Buka kupon untuk melihat hanya pembelian yang dibuat dengan kode tersebut.</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Kode</value>
@@ -84,6 +90,9 @@
   <data name="Paid Orders" xml:space="preserve">
     <value>Pesanan Berbayar</value>
   </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>Izin pembayaran diperlukan</value>
+  </data>
   <data name="Payment statistics are not yet implemented." xml:space="preserve">
     <value>Statistik pembayaran belum diimplementasikan.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Penggunaan</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>Lihat Pembelian</value>
   </data>
 
 </root>

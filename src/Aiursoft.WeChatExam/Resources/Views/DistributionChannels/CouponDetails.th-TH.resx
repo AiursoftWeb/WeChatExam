@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>จำนวนเงินอ้างอิงจากคำสั่งซื้อที่เสร็จสมบูรณ์ ไม่ใช่ราคาผลิตภัณฑ์หรือมูลค่าคูปองในปัจจุบัน ยอดรวมจะแสดงตามตัวกรองที่เลือก</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>ใช้</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>วันที่เสร็จสิ้น</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>ยอดซื้อที่เสร็จสมบูรณ์โดยใช้โค้ดนี้ รวมถึงคำสั่งซื้อที่ลดราคาเต็มจำนวน การรับคูปองไม่ถือเป็นยอดซื้อ</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>รายละเอียดการใช้คูปอง</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>วันที่และเวลาจะแสดงตามเขตเวลาของอุปกรณ์ของคุณ</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>ปิดใช้งาน</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>ส่วนลดที่ใช้</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>กรองรายการซื้อ</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>ตั้งแต่</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>รายการซื้อที่ตรงกัน</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>ใช้หลายครั้ง</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>ไม่มีการซื้อที่เสร็จสมบูรณ์ตรงกับตัวกรองเหล่านี้</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>ไม่ได้บันทึก</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>คำสั่งซื้อ</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>ราคาเดิมของคำสั่งซื้อ</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>ชำระแล้ว</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>ก่อนหน้า</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>ประวัติการซื้อ</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>หน้าการซื้อ</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>เนื้อหาที่ซื้อ</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>รีเซ็ต</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>ใช้ครั้งเดียว</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>นักเรียน</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>นักเรียน สินค้า หรือหมายเลขคำสั่งซื้อ</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>คูปองนี้ยังไม่มีรายการซื้อที่เสร็จสมบูรณ์</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>คูปองนี้ถูกกำหนดให้เป็นแบบใช้แล้ว แต่คำสั่งซื้อที่เสร็จสมบูรณ์ไม่สามารถเรียกดูได้ ไม่สามารถตรวจสอบผู้ซื้อและจำนวนเงินในอดีตได้</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>ถึง</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>ส่วนลดรวม</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>ยอดชำระรวม</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>นักเรียนที่ไม่มีชื่อ</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>ดูคำสั่งซื้อ</value>
+  </data>
+
+</root>

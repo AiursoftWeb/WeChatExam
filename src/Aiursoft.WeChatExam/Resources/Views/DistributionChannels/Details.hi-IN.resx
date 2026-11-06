@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0} पूर्ण खरीदारी</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>क्रियाएँ</value>
   </data>
   <data name="Active" xml:space="preserve">
@@ -41,6 +44,9 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>चैनल जानकारी</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>चैनल के कुल मूल्य में उन छात्रों द्वारा की गई खरीदारी भी शामिल है जिन्हें रेफर किया गया था, चाहे कूपन हो या न हो। केवल उस कोड से की गई खरीदारी देखने के लिए एक कूपन खोलें।</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>कोड</value>
@@ -84,6 +90,9 @@
   <data name="Paid Orders" xml:space="preserve">
     <value>भुगतान किए गए आदेश</value>
   </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>भुगतान की अनुमति आवश्यक है</value>
+  </data>
   <data name="Payment statistics are not yet implemented." xml:space="preserve">
     <value>भुगतान सांख्यिकी अभी तक कार्यान्वित नहीं की गई है।</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>उपयोग</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>खरीदारी देखें</value>
   </data>
 
 </root>

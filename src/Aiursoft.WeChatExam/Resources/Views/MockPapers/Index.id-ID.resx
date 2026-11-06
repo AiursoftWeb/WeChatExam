@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>Edit Naskah Simulasi</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Edit Kertas</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>Impor Makalah</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>Tidak memerlukan keanggotaan</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Belum diterbitkan</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Halaman {0} dari {1}</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Riwayat Publikasi</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Terbitkan Kertas</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Diterbitkan</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Versi terbit tersedia</value>
@@ -89,6 +104,12 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Tampilkan semua makalah</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Tarik Publikasi Makalah</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versi dan Publikasi</value>
   </data>
 
 </root>

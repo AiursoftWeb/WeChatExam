@@ -1,0 +1,115 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@model Aiursoft.WeChatExam.Models.TotalCategoriesViewModels.DetailsViewModel
+
+<a asp-action="Index" class="d-inline-block text-decoration-none mb-3">
+    <i data-lucide="arrow-left" class="me-1"></i> @Localizer["Back to Courses"]
+</a>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+    <div>
+        <h1 class="h3 text-break mb-2">@Model.Course.Title</h1>
+        <p class="text-muted mb-0">@Localizer["Course Contents"]</p>
+    </div>
+    <a asp-action="Edit" asp-route-id="@Model.Course.Id" class="btn btn-outline-secondary">@Localizer["Edit Course Settings"]</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <section class="card h-100">
+            <div class="card-body p-4">
+                <h2 class="h5 mb-3">@Localizer["Periods"] <span class="badge bg-secondary">@Model.PeriodCount</span></h2>
+                @if (Model.PeriodCount == 0)
+                {
+                    <p class="text-muted">@Localizer["No periods in this course yet."]</p>
+                }
+                else
+                {
+                    <ul class="list-unstyled mb-4">
+                        @foreach (var period in Model.Periods)
+                        {
+                            <li class="mb-2 text-break">
+                                @if (Model.CanReadQuestions)
+                                {
+                                    <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" asp-route-period="@period.Id">@period.Title</a>
+                                }
+                                else
+                                {
+                                    @period.Title
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+                <div class="d-flex flex-wrap gap-2">
+                    @if (Model.PeriodCount == 0 && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditAnyCategory)).Succeeded)
+                    {
+                        <a asp-controller="QuestionCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-primary">@Localizer["Add Period"]</a>
+                    }
+                    <a asp-controller="QuestionCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Periods"]</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-4">
+        <section class="card h-100">
+            <div class="card-body p-4">
+                <h2 class="h5 mb-3">@Localizer["Knowledge Directories"] <span class="badge bg-secondary">@Model.RootKnowledgeCategories.Count</span></h2>
+                @if (Model.KnowledgeCategoryCount == 0)
+                {
+                    <p class="text-muted">@Localizer["No knowledge directories in this course yet."]</p>
+                    @if ((await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditAnyCategory)).Succeeded)
+                    {
+                        <a asp-controller="KnowledgeCategories" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-primary mb-3">@Localizer["Add Knowledge Directory"]</a>
+                    }
+                }
+                else
+                {
+                    <p class="text-muted small">@Localizer["Top-level directories"]</p>
+                    <ul class="list-unstyled mb-4">
+                        @foreach (var category in Model.RootKnowledgeCategories)
+                        {
+                            <li class="mb-2 text-break"><a asp-controller="KnowledgeCategories" asp-action="Details" asp-route-id="@category.Id">@category.Title</a></li>
+                        }
+                    </ul>
+                }
+                <div class="d-grid gap-3">
+                    <a asp-controller="KnowledgeCategories" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Knowledge Directories"]</a>
+                    <a asp-controller="KnowledgePoints" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary bg-body-tertiary text-body-emphasis py-2">@Localizer["Knowledge Points"] <span class="badge bg-secondary">@Model.KnowledgePointCount</span></a>
+                </div>
+            </div>
+        </section>
+    </div>
+    @if (Model.CanEditPapers)
+    {
+        <div class="col-lg-4">
+            <section class="card h-100">
+                <div class="card-body p-4">
+                    <h2 class="h5 mb-3">@Localizer["Mock Papers"] <span class="badge bg-secondary">@Model.MockPaperCount</span></h2>
+                    @if (Model.MockPaperCount == 0)
+                    {
+                        <p class="text-muted">@Localizer["No mock papers in this course yet."]</p>
+                    }
+                    else
+                    {
+                        <ul class="list-unstyled mb-4">
+                            @foreach (var paper in Model.MockPapers)
+                            {
+                                <li class="mb-2 text-break">
+                                    <a asp-controller="MockPapers" asp-action="Questions" asp-route-id="@paper.Id">@paper.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    <div class="d-flex flex-wrap gap-2">
+                        @if (Model.MockPaperCount == 0 && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanAddPapers)).Succeeded)
+                        {
+                            <a asp-controller="MockPapers" asp-action="Create" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-primary">@Localizer["Add Mock Paper"]</a>
+                        }
+                        <a asp-controller="MockPapers" asp-action="Index" asp-route-totalCategoryId="@Model.Course.Id" class="btn btn-outline-primary">@Localizer["View All Mock Papers"]</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    }
+</div>

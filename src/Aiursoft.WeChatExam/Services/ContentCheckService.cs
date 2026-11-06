@@ -15,7 +15,7 @@ public class ContentCheckService(
     WeChatExamDbContext context,
     IStringLocalizer<ContentCheckService> localizer)
 {
-    public async Task<ContentCheckReport> ScanAsync(Guid[] subjects, bool realExam, CancellationToken cancellationToken = default, Guid[]? institutions = null)
+    public async Task<ContentCheckReport> ScanAsync(Guid[] subjects, CancellationToken cancellationToken = default, Guid[]? institutions = null)
     {
         var report = new ContentCheckReport();
         var directories = await context.KnowledgeCategories.AsNoTracking().ToListAsync(cancellationToken);
@@ -71,8 +71,7 @@ public class ContentCheckService(
         {
             ActiveCategoryVips = availableSubjects,
             ActiveInstitutionVips = products.Where(p => p.IsEnabled && p.Type == VipProductType.Institution && p.InstitutionId.HasValue)
-                .Select(p => p.InstitutionId!.Value).ToHashSet(),
-            HasRealExamVip = products.Any(p => p.IsEnabled && p.Type == VipProductType.RealExam)
+                .Select(p => p.InstitutionId!.Value).ToHashSet()
         };
         report.Institutions = schools.OrderBy(s => s.Title).ToList();
         report.Categories = courses.OrderBy(c => c.Title).ToList();
@@ -102,14 +101,13 @@ public class ContentCheckService(
             string.Format(localizer["Subject VIP: {0}"], courseIndex.GetValueOrDefault(subject)?.Title ?? subject.ToString()),
             new PaperAccessStatus { ActiveCategoryVips = [subject] })).ToList();
         var allInstitutions = schools.Select(s => s.Id).ToHashSet();
-        var all = new PaperAccessStatus { ActiveCategoryVips = allSubjects, ActiveInstitutionVips = allInstitutions, HasRealExamVip = true };
+        var all = new PaperAccessStatus { ActiveCategoryVips = allSubjects, ActiveInstitutionVips = allInstitutions };
         var allVips = new AccessScenario(localizer["All relevant VIPs"], all);
         var custom = new AccessScenario(localizer["Custom VIP selection"],
             new() { ActiveCategoryVips = subjects.Where(allSubjects.Contains).ToHashSet(),
-                ActiveInstitutionVips = (institutions ?? []).Where(allInstitutions.Contains).ToHashSet(), HasRealExamVip = realExam });
+                ActiveInstitutionVips = (institutions ?? []).Where(allInstitutions.Contains).ToHashSet() });
         report.Scenarios.AddRange([visitor, signedIn]);
         report.Scenarios.AddRange(courseScenarios);
-        report.Scenarios.Add(new(localizer["Real-exam VIP only"], new() { HasRealExamVip = true }));
         report.Scenarios.AddRange([allVips, custom]);
 
         ContentReference QuestionRef(Question q) => new("Questions", q.Id.ToString(), q.Content, AppPermissionNames.CanEditQuestions,
@@ -171,11 +169,11 @@ public class ContentCheckService(
                 relevantSubjects.Contains(p.TotalCategoryId.Value)).Select(ProductRef));
             var scenarios = new[] { visitor, signedIn }.Concat(courseScenarios
                 .Where(s => s.Status.ActiveCategoryVips.Overlaps(relevantSubjects)));
-            if (subjects.Length > 0 || realExam || institutions?.Length > 0) scenarios = scenarios.Append(custom);
+            if (subjects.Length > 0 || institutions?.Length > 0) scenarios = scenarios.Append(custom);
             report.Exercises[q.Id] = new(QuestionRef(q), points.Select(KnowledgeRef).ToList(),
                 CourseRef(courseIndex[q.QuestionCategory!.TotalCategoryId]), PeriodRef(q.QuestionCategory),
                 settings.DistinctBy(s => (s.Controller, s.Id)).ToList(),
-                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.CanPractice(q.QuestionCategory, s.Status),
+                scenarios.Select(s => new ExerciseAccess(s.Name, QuestionAccess.CanBrowse(q.QuestionCategory, s.Status),
                     points.Select(k => new KnowledgeContentAccess(KnowledgeRef(k),
                         Placements(k.Id).Any(c => KnowledgeAccess.CanRead(c, s.Status)))).ToList())).ToList());
         }
@@ -196,9 +194,11 @@ public class ContentCheckService(
         {
             foreach (var scenario in report.Scenarios)
             {
-                var allowed = QuestionAccess.CanPractice(q.QuestionCategory!, scenario.Status);
+                var allowed = QuestionAccess.CanBrowse(q.QuestionCategory!, scenario.Status);
                 finding.Observations.Add(new(scenario.Name, $"GET /api/Questions/{q.Id}", allowed,
-                    allowed ? localizer["Question content is returned (200)."] : localizer["The question's subject VIP is required (403)."]));
+                    allowed ? localizer["Question content is returned (200)."] : !q.QuestionCategory!.IsVisible
+                        ? localizer["This period is hidden from independent practice (404)."]
+                        : localizer["The question's subject VIP is required (403)."]));
                 foreach (var pointId in linkedKnowledge[q.Id].Select(k => k.KnowledgePointId).Distinct())
                     finding.Observations.Add(new(scenario.Name, $"GET /api/KnowledgePoints/{pointId}",
                         Placements(pointId).Any(c => KnowledgeAccess.CanRead(c, scenario.Status)),
@@ -294,7 +294,7 @@ public class ContentCheckService(
             var latest = saved.FirstOrDefault();
             var relevantProducts = products.Where(p => courseId.HasValue
                 ? p.Type == VipProductType.Category && p.TotalCategoryId == courseId
-                : (p.Type == VipProductType.Institution && p.InstitutionId == institutionId) || p.Type == VipProductType.RealExam).ToList();
+                : p.Type == VipProductType.Institution && p.InstitutionId == institutionId).ToList();
             var scenarios = report.Scenarios.ToList();
             var school = schools.FirstOrDefault(s => s.Id == institutionId);
             // Add only this paper's institution scenario, avoiding schools × all content.
@@ -325,7 +325,7 @@ public class ContentCheckService(
                     localizer["Existing active memberships may work, but new customers have no purchase route."],
                     courseId.HasValue
                         ? localizer["Review the mock paper's course VIP products. Sales availability does not revoke existing memberships."]
-                        : localizer["Review this institution's VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work."]));
+                        : localizer["Review this institution's VIP products. Course VIPs do not unlock real papers."]));
             if (reference.Pricing == ContentPricing.Public && latest != null)
             {
                 var originals = snapshotQuestions[latest.Id].Where(s => s.OriginalQuestionId.HasValue)

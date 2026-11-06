@@ -119,6 +119,13 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("ArchivedVipProductId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ArchivedVipProductName")
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid?>("CouponId")
                         .HasColumnType("TEXT");
 
@@ -1111,6 +1118,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
 
                     b.Property<bool>("IsFree")
                         .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsVisible")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("OrderIndex")
                         .HasColumnType("INTEGER");

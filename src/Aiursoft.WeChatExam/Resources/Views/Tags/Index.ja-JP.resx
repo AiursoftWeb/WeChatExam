@@ -57,8 +57,14 @@
   <data name="Edit / Categorize" xml:space="preserve">
     <value>編集 / カテゴリ分け</value>
   </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>タグを編集</value>
+  </data>
   <data name="Failed to delete tags:" xml:space="preserve">
     <value>タグの削除に失敗しました:</value>
+  </data>
+  <data name="Grouping is optional for internal tags." xml:space="preserve">
+    <value>内部タグのグループ化は任意です。</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>分類の管理</value>

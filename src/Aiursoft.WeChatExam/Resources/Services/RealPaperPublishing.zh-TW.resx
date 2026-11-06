@@ -21,6 +21,9 @@
       <data name="Add at least one question before publishing." xml:space="preserve">
     <value>發布前請至少新增一個問題。</value>
   </data>
+  <data name="Complete the reference answers before publishing. An answer must not simply repeat the question." xml:space="preserve">
+    <value>發布前請完成參考答案。答案不得單純重複問題。</value>
+  </data>
   <data name="Every question must have a nonnegative order and a positive score." xml:space="preserve">
     <value>每道題目的順序必須為非負數，且分數必須為正數。</value>
   </data>

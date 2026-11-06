@@ -105,6 +105,8 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             "(`Type` = 2 AND `InstitutionId` IS NOT NULL AND `TotalCategoryId` IS NULL) OR " +
             "(`Type` <> 2 AND `InstitutionId` IS NULL)"));
 
+        builder.Entity<QuestionCategory>().Property(c => c.IsVisible).HasDefaultValue(true);
+
         builder.Entity<QuestionCategory>()
             .HasOne(c => c.TotalCategory)
             .WithMany()
@@ -140,6 +142,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
             .WithMany()
             .HasForeignKey(v => v.UserId)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 
     public DbSet<MockPaperQuestion> MockPaperQuestions => Set<MockPaperQuestion>();

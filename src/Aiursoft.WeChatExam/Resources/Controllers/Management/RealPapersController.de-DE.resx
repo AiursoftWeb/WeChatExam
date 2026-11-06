@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>{0} passende Fragen wurden hinzugefügt.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Veröffentlichung konnte nicht bestätigt werden. Laden Sie das Dokument neu, bevor Sie es erneut versuchen.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Der Sammelvorgang konnte nicht bestätigt werden. Überprüfen Sie die aktuellen Fragen, bevor Sie es erneut versuchen.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Wählen Sie eine bestehende Institution aus.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Einstellungen gespeichert. Veröffentlichen Sie Ihre Aktualisierungen, wenn die Arbeit bereit ist.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Die Institution kann nicht mehr geändert werden, nachdem für diese Arbeit eine veröffentlichte Version vorliegt.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Die passenden Prüfungsfragen haben sich geändert. Überprüfen Sie die aktuellen Ergebnisse, bevor Sie erneut bestätigen.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Die Klausur wurde veröffentlicht. Studierende können die veröffentlichten Inhalte jetzt nutzen.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Die Arbeit wurde zurückgezogen. Fragen und frühere Studentenprotokolle wurden beibehalten.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Die Version konnte nicht gespeichert werden. Laden Sie die Versionsliste neu, bevor Sie es erneut versuchen.</value>

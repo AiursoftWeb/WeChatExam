@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Course Membership" xml:space="preserve">
+      <data name="{0} questions" xml:space="preserve">
+    <value>{0} domande</value>
+  </data>
+  <data name="Course Membership" xml:space="preserve">
     <value>Iscrizione al corso</value>
   </data>
   <data name="Create a period to start organizing this course." xml:space="preserve">
@@ -39,11 +42,23 @@
   <data name="Edit Period" xml:space="preserve">
     <value>Modifica periodo</value>
   </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Tema</value>
+  </data>
   <data name="Every period belongs to one total category." xml:space="preserve">
     <value>Ogni periodo appartiene a una categoria generale.</value>
   </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>Completa lo spazio vuoto</value>
+  </data>
   <data name="Free Practice" xml:space="preserve">
     <value>Esercitazione gratuita</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Nascosto</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>Scelta multipla</value>
   </data>
   <data name="No periods in this course yet" xml:space="preserve">
     <value>Nessun periodo in questo corso per ora</value>
@@ -54,8 +69,20 @@
   <data name="Periods" xml:space="preserve">
     <value>Periodi</value>
   </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>Risposta breve</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>Spiegazione di un termine</value>
+  </data>
   <data name="Total Categories" xml:space="preserve">
     <value>Categorie totali</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>Vero o falso</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>Visualizza domande</value>
   </data>
 
 </root>

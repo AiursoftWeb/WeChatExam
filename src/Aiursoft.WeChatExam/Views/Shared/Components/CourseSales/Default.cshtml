@@ -1,0 +1,77 @@
+@model Aiursoft.WeChatExam.Views.Shared.Components.CourseSales.CourseSalesViewModel
+@{
+    var enabledCount = Model.Products.Count(p => p.IsEnabled);
+}
+
+<div data-course-sales="@Model.TotalCategoryId" class="card @(Model.Products.Count == 0 ? "border-warning" : enabledCount > 0 ? "border-success" : "border-secondary")" aria-label="@Localizer["Sales status"]">
+    <div class="card-body p-4">
+        <h2 class="h5 mb-3">@Localizer["Sales status"]</h2>
+        <p class="mb-2">@Model.CourseTitle</p>
+        @if (Model.Products.Count == 0)
+        {
+            <p class="text-warning-emphasis mb-3">@Localizer["No VIP product is configured. Students cannot buy this course."]</p>
+        }
+        else
+        {
+            <p class="mb-3">
+                @if (enabledCount > 0)
+                {
+                    <span class="badge bg-success">@Localizer["On sale"]</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">@Localizer["Sales paused"]</span>
+                }
+            </p>
+            <ul class="list-unstyled mb-3">
+                @foreach (var product in Model.Products)
+                {
+                    <li class="mb-2">
+                        <strong>@product.Name</strong> · ¥@((product.PriceInFen / 100m).ToString("F2")) ·
+                        @string.Format(@Localizer["{0} days"].Value, product.DurationDays)
+                        <span class="badge @(product.IsEnabled ? "bg-success" : "bg-secondary")">
+                            @if (product.IsEnabled)
+                            {
+                                @Localizer["Enabled"]
+                            }
+                            else
+                            {
+                                @Localizer["Disabled"]
+                            }
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+        @if (Model.Products.Count == 0 && Model.CanAddProducts)
+        {
+            <p class="form-text mb-3">@Localizer["Saving a new VIP product immediately opens sales."]</p>
+            <a asp-controller="VipProducts" asp-action="Create" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-primary">
+                @Localizer["Configure sales"]
+            </a>
+        }
+        else if (Model.Products.Count == 1 && Model.CanEditProducts)
+        {
+            <a asp-controller="VipProducts" asp-action="Edit" asp-route-id="@Model.Products[0].Id" class="btn btn-primary">
+                @Localizer["Manage sales"]
+            </a>
+        }
+        else if (Model.Products.Count > 0 && Model.CanReadProducts)
+        {
+            <a asp-controller="VipProducts" asp-action="Index" asp-route-totalCategoryId="@Model.TotalCategoryId" class="btn btn-outline-primary">
+                @if (Model.CanEditProducts)
+                {
+                    @Localizer["Manage sales"]
+                }
+                else
+                {
+                    @Localizer["View products"]
+                }
+            </a>
+        }
+        else
+        {
+            <p class="text-muted mb-0">@Localizer["Ask an administrator with VIP product permissions to configure sales."]</p>
+        }
+    </div>
+</div>

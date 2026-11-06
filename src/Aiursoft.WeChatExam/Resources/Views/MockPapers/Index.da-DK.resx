@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>Rediger prøveeksamen</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Rediger papir</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>Importér opgave</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>Intet medlemskab påkrævet</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Ikke udgivet</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Side {0} af {1}</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Forrige</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Udgivelseshistorik</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Udgiv opgave</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Publiceret</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Udgivet version tilgængelig</value>
@@ -89,6 +104,12 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Vis alle opgaver</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Fjern publicering af opgave</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versioner og publicering</value>
   </data>
 
 </root>

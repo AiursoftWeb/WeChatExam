@@ -106,7 +106,7 @@ public class QuestionsController : ControllerBase
         if (questionCategoryId.HasValue)
         {
             var period = await _context.QuestionCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == questionCategoryId);
-            if (period == null) return NotFound(new { Message = "Question category not found." });
+            if (period == null || !period.IsVisible) return NotFound(new { Message = "Question category not found." });
             if (totalCategoryId.HasValue && period.TotalCategoryId != totalCategoryId)
                 return BadRequest(new { Message = "Question category does not belong to the selected total category." });
             if (!QuestionAccess.CanPractice(period, status))
@@ -301,6 +301,7 @@ public class QuestionsController : ControllerBase
     /// 获取单个题目详情
     /// </summary>
     /// <param name="id">题目ID</param>
+    /// <param name="knowledgePointId">Optional linked lesson context; its placement and exercise membership are verified.</param>
     /// <returns>单个题目详情</returns>
     /// <response code="200">成功返回题目详情</response>
     /// <response code="403">An active VIP for the paid question's subject is required.</response>
@@ -310,7 +311,7 @@ public class QuestionsController : ControllerBase
     [ProducesResponseType(typeof(QuestionDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetQuestion(Guid id)
+    public async Task<IActionResult> GetQuestion(Guid id, [FromQuery] Guid? knowledgePointId)
     {
         var question = await _context.Questions
             .AsNoTracking()
@@ -323,6 +324,9 @@ public class QuestionsController : ControllerBase
         }
 
         var status = await _paperAccessService.GetUserAccessStatusAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        if ((!question.QuestionCategory!.IsVisible && !knowledgePointId.HasValue) ||
+            (knowledgePointId.HasValue && !await QuestionAccess.HasKnowledgeContextAsync(_context, id, knowledgePointId.Value, status)))
+            return NotFound(new { Message = "Question not found" });
         if (!QuestionAccess.CanPractice(question.QuestionCategory!, status))
             return StatusCode(StatusCodes.Status403Forbidden, new
             {

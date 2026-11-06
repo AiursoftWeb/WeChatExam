@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} days" xml:space="preserve">
+    <value>{0} днів</value>
+  </data>
+  <data name="Ask an administrator with VIP product permissions to configure sales." xml:space="preserve">
+    <value>Попросіть адміністратора з правами на керування VIP-продуктами налаштувати продажі.</value>
+  </data>
+  <data name="Configure sales" xml:space="preserve">
+    <value>Налаштувати продажі</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Вимкнено</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Увімкнено</value>
+  </data>
+  <data name="Existing legacy VIP memberships remain valid." xml:space="preserve">
+    <value>Чинність наявного членства VIP, оформленого за старими правилами, зберігається.</value>
+  </data>
+  <data name="Manage sales" xml:space="preserve">
+    <value>Керувати продажами</value>
+  </data>
+  <data name="No VIP product is configured. Students cannot buy these papers." xml:space="preserve">
+    <value>Не налаштовано жодного VIP-продукту. Учні не можуть купувати ці роботи.</value>
+  </data>
+  <data name="On sale" xml:space="preserve">
+    <value>У продажу</value>
+  </data>
+  <data name="Sales paused" xml:space="preserve">
+    <value>Продаж призупинено</value>
+  </data>
+  <data name="Sales status" xml:space="preserve">
+    <value>Статус продажів</value>
+  </data>
+  <data name="Saving a new VIP product immediately opens sales." xml:space="preserve">
+    <value>Збереження нового VIP-продукту одразу відкриває продажі.</value>
+  </data>
+  <data name="View products" xml:space="preserve">
+    <value>Переглянути товари</value>
+  </data>
+
+</root>

@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Confirmar a adição de {0} perguntas de exame</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Editar Pergunta Original</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Editar o rascunho não altera as versões publicadas.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>A edição da pergunta original também a altera no banco de perguntas e em outros exames não publicados.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Explicação</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Nome da etiqueta interna</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Seguinte</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Sem explicação ainda.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>Não existem mais perguntas correspondentes neste curso.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Tipo de pergunta</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Resposta de Referência e Explicação</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>A resposta de referência necessita de atenção</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Remover do enunciado</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Perguntas selecionadas</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Resposta Padrão</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Etiqueta</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Prova de avaliação</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>A resposta de referência está em falta ou repete a pergunta. Complete-a antes de publicar.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Isto adiciona perguntas de exame de todas as páginas de resultados e ignora as que já se encontram neste teste.</value>

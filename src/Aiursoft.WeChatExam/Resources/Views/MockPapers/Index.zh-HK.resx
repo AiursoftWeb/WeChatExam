@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>編輯模擬試卷</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>編輯試卷</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>匯入試卷</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>毋須會員資格</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>未發布</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>第 {0} 頁，共 {1} 頁</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一頁</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>發佈歷史</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>發佈試卷</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>已發佈</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>已提供已發佈版本</value>
@@ -89,6 +104,12 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>顯示所有試卷</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>取消發布試卷</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>版本及發佈</value>
   </data>
 
 </root>

@@ -24,6 +24,9 @@
   <data name="Add Question" xml:space="preserve">
     <value>添加题目</value>
   </data>
+  <data name="Back to Questions" xml:space="preserve">
+    <value>返回题目列表</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="Correct" xml:space="preserve">
     <value>正确</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>创建年代</value>
   </data>
   <data name="Custom order index. Lower numbers come first. Current max index is:" xml:space="preserve">
     <value>自定义排序索引。数字越小越靠前。当前最大索引为：</value>
@@ -110,6 +116,9 @@
   </data>
   <data name="Text" xml:space="preserve">
     <value>题目文本</value>
+  </data>
+  <data name="This course has no question categories. Add one before creating questions." xml:space="preserve">
+    <value>本课程尚无题目分类。请先添加一个分类，再创建题目。</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>类型</value>

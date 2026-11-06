@@ -16,4 +16,7 @@ public class IndexViewModel : UiStackLayoutViewModel
     public const int PageSize = 24;
 
     public List<Institution> Institutions { get; init; } = [];
+    public Dictionary<Guid, InstitutionPaperCounts> PaperCounts { get; init; } = [];
 }
+
+public record InstitutionPaperCounts(int Visible, int Draft);

@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>{0} matchande frågor har lagts till.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Kunde inte bekräfta publiceringen. Ladda om uppgiften innan du försöker igen.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Det gick inte att bekräfta att alla frågor lades till. Granska de aktuella frågorna innan du försöker igen.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Välj en befintlig institution.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Inställningar sparade. Publicera dina uppdateringar när uppsatsen är klar.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>Institutionen kan inte ändras när det finns en publicerad version av denna uppgift.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>De matchande provfrågorna har ändrats. Granska de aktuella resultaten innan du bekräftar igen.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Uppsatserna är publicerade. Studenter kan nu använda det publicerade innehållet.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>Artikeln är odokumenterad. Frågor och tidigare studentregister har sparats.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>Versionen kunde inte sparas. Läs in versionslistan igen innan du försöker på nytt.</value>

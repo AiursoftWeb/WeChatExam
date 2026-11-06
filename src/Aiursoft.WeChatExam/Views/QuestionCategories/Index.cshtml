@@ -1,4 +1,20 @@
+@using Aiursoft.WeChatExam.Authorization
+@using Aiursoft.WeChatExam.Entities
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 @model Aiursoft.WeChatExam.Models.QuestionCategoriesViewModels.IndexViewModel
+@{
+    var canReadQuestions = (await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanReadQuestions)).Succeeded;
+    var typeNames = new Dictionary<QuestionType, string>
+    {
+        [QuestionType.Choice] = @Localizer["Multiple choice"].Value,
+        [QuestionType.Blank] = @Localizer["Fill in the blank"].Value,
+        [QuestionType.Bool] = @Localizer["True or false"].Value,
+        [QuestionType.ShortAnswer] = @Localizer["Short answer"].Value,
+        [QuestionType.Essay] = @Localizer["Essay"].Value,
+        [QuestionType.NounExplanation] = @Localizer["Term explanation"].Value
+    };
+}
 
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <div>
@@ -52,12 +68,18 @@ else
         <div class="row g-4">
             @foreach (var category in Model.Categories)
             {
+                var byType = Model.QuestionCounts.GetValueOrDefault(category.Id) ?? [];
+                var questionCount = byType.Sum(item => item.Count);
                 <div class="col-md-6 col-xl-4">
                     <div class="card h-100 position-relative shadow-sm">
                         <div class="card-body p-4">
                             <i data-lucide="layers" class="text-primary mb-3"></i>
                             <h2 class="h4 text-break mb-3">@category.Title</h2>
                             <p class="mb-3">
+                                @if (!category.IsVisible)
+                                {
+                                    <span class="badge bg-secondary">@Localizer["Hidden"]</span>
+                                }
                                 @if (category.IsFree)
                                 {
                                     <span class="badge bg-success-subtle text-success-emphasis">@Localizer["Free Practice"]</span>
@@ -67,10 +89,32 @@ else
                                     <span class="badge bg-primary-subtle text-primary-emphasis">@Localizer["Course Membership"]</span>
                                 }
                             </p>
+                            <p class="mb-2">
+                                <span class="badge @(questionCount == 0 && category.IsVisible ? "bg-danger" : "bg-secondary")">
+                                    @string.Format(@Localizer["{0} questions"].Value, questionCount)
+                                </span>
+                            </p>
+                            @if (byType.Count > 0)
+                            {
+                                <p class="text-muted small mb-3">
+                                    @foreach (var item in byType)
+                                    {
+                                        <span class="me-2 text-nowrap">@typeNames[item.Type] @item.Count</span>
+                                    }
+                                </p>
+                            }
                             <p class="text-muted">@Localizer["Display Order"]: @category.OrderIndex</p>
-                            <a asp-action="Edit" asp-route-id="@category.Id" class="stretched-link text-decoration-none">
-                                @Localizer["Edit Period"] <i data-lucide="arrow-right" class="ms-1"></i>
-                            </a>
+                            <div class="d-flex flex-wrap gap-3 align-items-center">
+                                @if (canReadQuestions)
+                                {
+                                    <a asp-controller="Questions" asp-action="Index" asp-route-totalCategoryId="@category.TotalCategoryId" asp-route-period="@category.Id" class="text-decoration-none">
+                                        @Localizer["View Questions"] <i data-lucide="arrow-right" class="ms-1"></i>
+                                    </a>
+                                }
+                                <a asp-action="Edit" asp-route-id="@category.Id" class="text-decoration-none">
+                                    @Localizer["Edit Period"]
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

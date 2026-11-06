@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} days" xml:space="preserve">
+    <value>{0}일</value>
+  </data>
+  <data name="Ask an administrator with VIP product permissions to configure sales." xml:space="preserve">
+    <value>VIP 상품 권한이 있는 관리자에게 판매를 설정해 달라고 요청하세요.</value>
+  </data>
+  <data name="Configure sales" xml:space="preserve">
+    <value>판매 설정</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>사용 안 함</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>활성화됨</value>
+  </data>
+  <data name="Existing legacy VIP memberships remain valid." xml:space="preserve">
+    <value>기존 레거시 VIP 멤버십은 계속 유효합니다.</value>
+  </data>
+  <data name="Manage sales" xml:space="preserve">
+    <value>판매 관리</value>
+  </data>
+  <data name="No VIP product is configured. Students cannot buy these papers." xml:space="preserve">
+    <value>VIP 상품이 설정되지 않았습니다. 학생들은 이 시험지를 구매할 수 없습니다.</value>
+  </data>
+  <data name="On sale" xml:space="preserve">
+    <value>판매 중</value>
+  </data>
+  <data name="Sales paused" xml:space="preserve">
+    <value>판매 일시 중지</value>
+  </data>
+  <data name="Sales status" xml:space="preserve">
+    <value>판매 현황</value>
+  </data>
+  <data name="Saving a new VIP product immediately opens sales." xml:space="preserve">
+    <value>새 VIP 상품을 저장하면 즉시 판매가 시작됩니다.</value>
+  </data>
+  <data name="View products" xml:space="preserve">
+    <value>상품 보기</value>
+  </data>
+
+</root>

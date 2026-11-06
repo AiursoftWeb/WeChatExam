@@ -39,6 +39,9 @@
   <data name="Edit Mock Paper" xml:space="preserve">
     <value>Editar examen de prueba</value>
   </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Editar examen</value>
+  </data>
   <data name="Import Paper" xml:space="preserve">
     <value>Importar examen</value>
   </data>
@@ -57,6 +60,9 @@
   <data name="No membership required" xml:space="preserve">
     <value>No se requiere membresía</value>
   </data>
+  <data name="Not published" xml:space="preserve">
+    <value>No publicado</value>
+  </data>
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Página {0} de {1}</value>
   </data>
@@ -68,6 +74,15 @@
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Historial de publicación</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Publicar examen</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Publicado</value>
   </data>
   <data name="Published version available" xml:space="preserve">
     <value>Versión publicada disponible</value>
@@ -89,6 +104,12 @@
   </data>
   <data name="Show all papers" xml:space="preserve">
     <value>Mostrar todos los exámenes</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Despublicar examen</value>
+  </data>
+  <data name="Versions and Publication" xml:space="preserve">
+    <value>Versiones y publicación</value>
   </data>
 
 </root>

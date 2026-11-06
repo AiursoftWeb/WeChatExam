@@ -13,6 +13,22 @@ public class KnowledgeExerciseValidation(
     WeChatExamDbContext context,
     IStringLocalizer<KnowledgeExerciseValidation> localizer)
 {
+    public async Task<string?> ValidateNewQuestionTypesAsync(IEnumerable<Guid> questionIds)
+    {
+        var question = await context.Questions.AsNoTracking()
+            .Where(q => questionIds.Contains(q.Id) && q.QuestionType != QuestionType.Choice)
+            .OrderBy(q => q.Id).Select(q => q.Content).FirstOrDefaultAsync();
+        return question == null ? null : ChoiceOnly(question);
+    }
+
+    public string? ValidateExtractedQuestionTypes(IEnumerable<QuestionType> types) =>
+        types.Any(t => t != QuestionType.Choice) ? ChoiceOnly() : null;
+
+    public string ChoiceOnly(string? question = null) => question == null
+        ? localizer["Knowledge point exercises support choice questions only."].Value
+        : string.Format(localizer["Knowledge point exercises support choice questions only. Replace {0} with a choice question."].Value,
+            question.Length > 100 ? question[..100] + "…" : question);
+
     public async Task<string?> ValidateAssociationsAsync(IEnumerable<Guid> categoryIds, IEnumerable<Guid> questionIds)
     {
         var category = await context.KnowledgeCategories.AsNoTracking()

@@ -54,14 +54,26 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Bevestig het toevoegen van {0} examenvragen</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Bewerk originele vraag</value>
+  </data>
   <data name="Editing the draft does not change published versions." xml:space="preserve">
     <value>Het bewerken van het concept heeft geen invloed op gepubliceerde versies.</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Het bewerken van de oorspronkelijke vraag wijzigt deze ook in de vraagbank en andere onuitgegeven toetsen.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Uitleg</value>
   </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Interne tagnaam</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Volgende</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Nog geen uitleg.</value>
   </data>
   <data name="No more matching questions in this course." xml:space="preserve">
     <value>Er zijn geen overeenkomende vragen meer in deze cursus.</value>
@@ -93,6 +105,12 @@
   <data name="Question Type" xml:space="preserve">
     <value>Vraagtype</value>
   </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Referentieantwoord en Uitleg</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Referentieantwoord vereist aandacht</value>
+  </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Verwijderen uit het werkblad</value>
   </data>
@@ -123,11 +141,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Geselecteerde vragen</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Standaardantwoord</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Label</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Proeftoets</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Het referentieantwoord ontbreekt of herhaalt de vraag. Vul het aan voordat u publiceert.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Hiermee worden examenvragen van alle resultaatpagina&apos;s toegevoegd, behalve vragen die al in dit proefwerk staan.</value>

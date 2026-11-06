@@ -17,7 +17,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 
 [LimitPerMin]
 [Authorize(Policy = AppPermissionNames.CanEditPapers)]
-public class MockPapersController(WeChatExamDbContext context, MockPaperValidation validation, MockPaperPublishing publishing, ILogger<MockPapersController> logger, IStringLocalizer<MockPapersController> localizer) : Controller
+public class MockPapersController(WeChatExamDbContext context, MockPaperValidation validation, MockPaperPublishing publishing, PaperPublication publication, ILogger<MockPapersController> logger, IStringLocalizer<MockPapersController> localizer) : Controller
 {
     [RenderInNavBar(
         NavGroupName = "Administration",
@@ -45,10 +45,16 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddPapers)]
-    public async Task<IActionResult> Create() => this.StackView(new EditViewModel
+    public async Task<IActionResult> Create(Guid? totalCategoryId)
     {
-        PageTitle = "Create Mock Paper", Courses = await Courses()
-    }, nameof(Edit));
+        if (!ModelState.IsValid) return BadRequest();
+        var courses = await Courses();
+        if (totalCategoryId.HasValue && courses.All(c => c.Id != totalCategoryId.Value)) return NotFound();
+        return this.StackView(new EditViewModel
+        {
+            PageTitle = "Create Mock Paper", Courses = courses, TotalCategoryId = totalCategoryId
+        }, nameof(Edit));
+    }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -62,13 +68,14 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
         await ValidateCourse(model);
         if (!ModelState.IsValid) return this.StackView(model, nameof(Edit));
 
-        context.MockPapers.Add(new MockPaper
+        var paper = new MockPaper
         {
             Title = model.Title.Trim(), TotalCategoryId = model.TotalCategoryId!.Value,
             TimeLimit = model.TimeLimit, AllowViewAnonymousely = model.AllowViewAnonymousely
-        });
+        };
+        context.MockPapers.Add(paper);
         await context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Edit), new { id = paper.Id });
     }
 
     public async Task<IActionResult> Edit(Guid id)
@@ -78,6 +85,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
         if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
         return this.StackView(new EditViewModel
         {
+            Publication = await publication.ReadAsync(id, false),
             Id = paper.Id, Title = paper.Title, TotalCategoryId = paper.TotalCategoryId,
             TimeLimit = paper.TimeLimit, AllowViewAnonymousely = paper.AllowViewAnonymousely,
             Courses = await Courses()
@@ -105,7 +113,8 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
         paper.TimeLimit = model.TimeLimit;
         paper.AllowViewAnonymousely = model.AllowViewAnonymousely;
         await context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        TempData["SuccessMessage"] = localizer["Settings saved. Publish your updates when the paper is ready."].Value;
+        return RedirectToAction(nameof(Edit), new { id });
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
@@ -134,7 +143,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
         page = Math.Clamp(page, 1, Math.Max(1, (total + QuestionsViewModel.PageSize - 1) / QuestionsViewModel.PageSize));
         return this.StackView(new QuestionsViewModel
         {
-            Paper = paper, Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
+            Paper = paper, Publication = await publication.ReadAsync(id, false), Selecting = selecting, Search = search, QuestionCategoryId = questionCategoryId,
             Tag = tag, QuestionType = questionType, ReviewingMatches = reviewingMatches, Score = score,
             MatchFingerprint = matchingIds == null ? null : Fingerprint(matchingIds),
             Page = page, Total = total, SelectedCount = count, TotalScore = await selected.SumAsync(q => (long)q.Score),
@@ -293,6 +302,34 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Publication(Guid id, bool unpublish = false)
+    {
+        var state = await publication.ReadAsync(id, false);
+        if (state == null) return NotFound();
+        if (state.Status == PaperStatus.Frozen) return Conflict();
+        ViewData["Unpublishing"] = unpublish;
+        return this.StackView(state, "~/Views/Shared/PaperPublication.cshtml");
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
+    public async Task<IActionResult> Unpublish(Guid id)
+    {
+        if (!await context.MockPapers.AnyAsync(p => p.Id == id)) return NotFound();
+        if (await context.MockPapers.AnyAsync(p => p.Id == id && p.Status == PaperStatus.Frozen)) return Conflict();
+        try
+        {
+            await publication.UnpublishAsync(id, false);
+        }
+        catch (InvalidOperationException error) when (error.Message == "This paper is read only.")
+        {
+            return Conflict();
+        }
+        TempData["SuccessMessage"] = localizer["The paper is unpublished. Questions and previous student records have been kept."].Value;
+        return RedirectToAction(nameof(Index));
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
     public async Task<IActionResult> Versions(Guid id, int page = 1)
     {
         var paper = await context.MockPapers.AsNoTracking().Include(p => p.TotalCategory).SingleOrDefaultAsync(p => p.Id == id);
@@ -316,23 +353,23 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
         var paper = await context.MockPapers.SingleOrDefaultAsync(p => p.Id == id);
         if (paper == null) return NotFound();
         if (paper.Status is not (PaperStatus.Draft or PaperStatus.Publishable)) return Conflict();
-        PaperSnapshot snapshot;
         try
         {
-            snapshot = await publishing.PublishAsync(paper);
+            await publishing.PublishAsync(paper);
         }
         catch (InvalidOperationException error)
         {
             ModelState.AddModelError(string.Empty, error.Message);
-            return await Versions(id);
+            return await Publication(id);
         }
         catch (DbUpdateException error)
         {
             logger.LogWarning(error, "Could not publish mock paper {PaperId}", id);
             // A concurrent publication may already have used the next version number.
-            return Conflict(localizer["The version could not be saved. Reload the version list before trying again."].Value);
+            return Conflict(localizer["Could not confirm publication. Reload the paper before trying again."].Value);
         }
-        return RedirectToAction(nameof(Version), new { id, snapshotId = snapshot.Id });
+        TempData["SuccessMessage"] = localizer["The paper is published. Students can now use the published content."].Value;
+        return RedirectToAction(nameof(Questions), new { id });
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadQuestions)]
@@ -358,6 +395,7 @@ public class MockPapersController(WeChatExamDbContext context, MockPaperValidati
     private async Task ValidateCourse(EditViewModel model)
     {
         model.Courses = await Courses();
+        if (model.Id != Guid.Empty) model.Publication = await publication.ReadAsync(model.Id, false);
         if (model.TotalCategoryId.HasValue && model.Courses.All(c => c.Id != model.TotalCategoryId.Value))
             ModelState.AddModelError(nameof(model.TotalCategoryId), localizer["Select an existing course."]);
     }

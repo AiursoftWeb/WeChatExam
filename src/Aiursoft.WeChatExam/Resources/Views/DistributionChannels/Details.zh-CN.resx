@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0} 笔已完成订单</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>操作</value>
   </data>
   <data name="Active" xml:space="preserve">
@@ -39,8 +42,14 @@
   <data name="Channel Details" xml:space="preserve">
     <value>渠道详情</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>渠道已禁用</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>渠道信息</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>渠道总计包括推荐学生的购买，即使没有使用优惠券。打开优惠券以查看仅使用该代码的购买。</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>代码</value>
@@ -57,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>停用渠道</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>停用优惠券</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>已禁用</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>禁用优惠券将阻止新的领取和使用该优惠券的新订单。已创建的支付订单可能仍会完成。现有会员资格和历史记录将保留。</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>折扣</value>
@@ -69,6 +84,9 @@
   <data name="Enable Channel" xml:space="preserve">
     <value>启用渠道</value>
   </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>启用优惠券</value>
+  </data>
   <data name="Enabled" xml:space="preserve">
     <value>已启用</value>
   </data>
@@ -76,7 +94,7 @@
     <value>通用</value>
   </data>
   <data name="Multi Use" xml:space="preserve">
-    <value>多用途</value>
+    <value>多次使用</value>
   </data>
   <data name="Not Used" xml:space="preserve">
     <value>未使用</value>
@@ -84,20 +102,29 @@
   <data name="Paid Orders" xml:space="preserve">
     <value>已支付订单</value>
   </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>需要支付权限</value>
+  </data>
   <data name="Payment statistics are not yet implemented." xml:space="preserve">
     <value>支付统计功能尚未实现。</value>
   </data>
   <data name="Registrations" xml:space="preserve">
     <value>注册数</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>删除审核</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
-    <value>单次使用</value>
+    <value>一次性使用</value>
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>统计</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>
+  </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>左右滑动优惠券列表以查看所有操作。</value>
   </data>
   <data name="Total Amount" xml:space="preserve">
     <value>总金额</value>
@@ -107,6 +134,12 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>使用次数</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>已使用（单次使用）</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>查看购买记录</value>
   </data>
 
 </root>

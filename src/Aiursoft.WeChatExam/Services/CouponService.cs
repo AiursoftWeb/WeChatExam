@@ -278,13 +278,36 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
         await context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task SetEnabledAsync(Guid id, bool isEnabled)
     {
+        var coupon = await context.Coupons.FindAsync(id);
+        if (coupon == null) return;
+        // Only availability changes. Claims, pending orders and single-use history
+        // keep their original terms and remain available for reconciliation.
+        coupon.IsEnabled = isEnabled;
+        await context.SaveChangesAsync();
+    }
+
+    public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) =>
+        CouponDeletionSummary.LoadAsync(context, context.Coupons.Where(c => c.Id == id));
+
+    public Task DeleteAsync(Guid id) => context.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
+    {
+        context.ChangeTracker.Clear();
+        // Keep the checks and deletion together: new claims/orders must not slip
+        // between them and be erased by the existing cascading relationships.
+        await using var transaction = context.Database.IsRelational()
+            ? await context.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable)
+            : null;
+        if (!(await GetDeletionSummaryAsync(id)).CanDelete)
+            throw new InvalidOperationException(CouponDeletionSummary.HistoryExists);
+
         var coupon = await context.Coupons.FindAsync(id);
         if (coupon != null)
         {
             context.Coupons.Remove(coupon);
             await context.SaveChangesAsync();
         }
-    }
+        if (transaction != null) await transaction.CommitAsync();
+    });
 }

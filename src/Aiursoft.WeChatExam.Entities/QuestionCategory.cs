@@ -22,6 +22,8 @@ public class QuestionCategory
 
     public bool IsFree { get; set; }
 
+    public bool IsVisible { get; set; } = true;
+
     public int OrderIndex { get; set; }
 
     public DateTime CreationTime { get; init; } = DateTime.UtcNow;

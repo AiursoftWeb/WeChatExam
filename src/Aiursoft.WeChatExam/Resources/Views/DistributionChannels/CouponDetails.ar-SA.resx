@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>المبالغ مستمدة من الطلب المكتمل، وليست من سعر المنتج اليوم أو قيمة القسيمة. الإجماليات تتبع المرشحات المحددة.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>اكتمل في</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>المشتريات المكتملة باستخدام هذا الرمز، بما في ذلك الطلبات المُخفَّضة بالكامل. المطالبة بقسيمة لا تُعدّ عملية شراء.</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>تفاصيل استخدام القسيمة</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>تُستخدم التواريخ والأوقات حسب المنطقة الزمنية لجهازك.</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>معطل</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>الخصم المطبق</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>تصفية المشتريات</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>المشتريات المطابقة</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>استخدام متعدد</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>لا توجد عمليات شراء مكتملة تطابق هذه المرشحات.</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>غير مسجل</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>طلب</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>السعر الأصلي للطلب</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>مدفوع</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>سجل المشتريات</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>صفحات الشراء</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>المحتوى المُشترى</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>إعادة تعيين</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>استخدام واحد</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>طالب</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>رقم الطالب أو المنتج أو الطلب</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>لا توجد مشتريات مكتملة لهذا القسيمة بعد.</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>هذا القسيمة مُشارَكة على أنها مستخدمة، لكن طلبها المكتمل غير متاح. لا يمكن التحقق من المشتري السابق والمبالغ.</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>إجمالي الخصم</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>إجمالي المدفوع</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>طالب بدون اسم</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>عرض الطلب</value>
+  </data>
+
+</root>

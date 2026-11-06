@@ -21,6 +21,12 @@
       <data name="Actions" xml:space="preserve">
     <value>Eylemler</value>
   </data>
+  <data name="Add Knowledge Point" xml:space="preserve">
+    <value>Bilgi Noktası Ekle</value>
+  </data>
+  <data name="Add Subdirectory" xml:space="preserve">
+    <value>Alt dizin ekle</value>
+  </data>
   <data name="Associated Knowledge Points" xml:space="preserve">
     <value>İlişkili Bilgi Noktaları</value>
   </data>
@@ -57,8 +63,17 @@
   <data name="Knowledge Category Details" xml:space="preserve">
     <value>Bilgi Kategorisi Ayrıntıları</value>
   </data>
+  <data name="Knowledge Points Directly in This Directory" xml:space="preserve">
+    <value>Bu Dizindeki Doğrudan Bilgi Noktaları</value>
+  </data>
   <data name="No knowledge points associated" xml:space="preserve">
     <value>Bağlı bilgi noktaları yok</value>
+  </data>
+  <data name="No knowledge points directly in this directory." xml:space="preserve">
+    <value>Bu dizinde doğrudan ilişkilendirilmiş bilgi noktası yok.</value>
+  </data>
+  <data name="No subdirectories in this directory." xml:space="preserve">
+    <value>Bu dizinde alt dizin bulunmuyor.</value>
   </data>
   <data name="Paid" xml:space="preserve">
     <value>Ücretli</value>
@@ -68,6 +83,9 @@
   </data>
   <data name="Save Order" xml:space="preserve">
     <value>Sıralamayı Kaydet</value>
+  </data>
+  <data name="Subdirectories" xml:space="preserve">
+    <value>Alt dizinler</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Başlık</value>

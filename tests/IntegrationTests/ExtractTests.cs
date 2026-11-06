@@ -92,7 +92,7 @@ public class ExtractTests : TestBase
         Assert.AreEqual(_period, q.QuestionCategoryId);
         Assert.AreEqual("B", q.StandardAnswer);
         Assert.AreEqual("Original explanation", q.Explanation);
-        CollectionAssert.AreEqual(new[] { "A", "B" }, JsonConvert.DeserializeObject<string[]>(q.Metadata)!);
+        CollectionAssert.AreEqual(new[] { "A", "B" }, JsonConvert.DeserializeObject<ChoiceMetadata>(q.Metadata)!.Options);
         Assert.AreEqual(_tagName, q.QuestionTags.Single().Tag.DisplayName);
         var lesson = await db.KnowledgePoints.SingleAsync(k => k.Title == _lessonTitle);
         Assert.AreEqual("Original lesson content", lesson.Content);
@@ -100,6 +100,25 @@ public class ExtractTests : TestBase
         Assert.AreEqual(_category, placement.KnowledgeCategoryId);
         Assert.AreEqual(8, placement.OrderIndex);
         Assert.IsTrue(await db.KnowledgePointQuestions.AnyAsync(k => k.KnowledgePointId == lesson.Id && k.QuestionId == q.Id));
+    }
+
+    private sealed class ChoiceMetadata
+    {
+        public string[] Options { get; set; } = [];
+    }
+
+    [TestMethod]
+    public async Task ExtractionRejectsTextExercisesWithoutSavingPartialContent()
+    {
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var data = Data();
+        data[0].Questions[0].QuestionType = QuestionType.Blank;
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            scope.ServiceProvider.GetRequiredService<IExtractService>().SaveAsync(data, _category, _period));
+        Assert.Contains("support choice questions only", error.Message);
+        Assert.IsFalse(await db.KnowledgePoints.AnyAsync(k => k.Title == _lessonTitle));
+        Assert.IsFalse(await db.Questions.AnyAsync(q => q.Content == _questionText));
     }
 
     [TestMethod]

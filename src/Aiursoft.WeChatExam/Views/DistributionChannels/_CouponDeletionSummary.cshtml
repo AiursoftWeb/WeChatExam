@@ -1,0 +1,39 @@
+@model Aiursoft.WeChatExam.Services.CouponDeletionSummary
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<div class="alert @(Model.CanDelete ? "alert-info" : "alert-warning")" role="alert">
+    <div class="alert-message">
+        @if (Model.CanDelete)
+        {
+            <strong>@Localizer["No orders, claims or history block deletion."]</strong>
+        }
+        else
+        {
+            <strong>@Localizer["Cannot delete: this coupon or channel has history."]</strong>
+            <p class="mb-0">@Localizer["Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records."]</p>
+        }
+    </div>
+</div>
+<dl class="row mb-3">
+    <dt class="col-sm-7">@Localizer["Coupons"]</dt><dd class="col-sm-5">@Model.CouponCount</dd>
+    <dt class="col-sm-7">@Localizer["Orders, including unpaid orders"]</dt><dd class="col-sm-5">@Model.OrderCount</dd>
+    <dt class="col-sm-7">@Localizer["Membership change records"]</dt><dd class="col-sm-5">@Model.AuditCount</dd>
+    <dt class="col-sm-7">@Localizer["Coupon claims, including used claims"]</dt><dd class="col-sm-5">@Model.ClaimCount</dd>
+    <dt class="col-sm-7">@Localizer["Coupon usage records"]</dt><dd class="col-sm-5">@Model.UsageCount</dd>
+</dl>
+@if (Model.HasLegacyUsage)
+{
+    <p class="text-warning">@Localizer["A coupon is marked as used. Keep it even if its original order is unavailable."]</p>
+}
+<div class="d-flex flex-wrap gap-2 mb-3">
+    @if ((await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanReadPaymentOrders)).Succeeded)
+    {
+        <a asp-controller="PaymentOrders" asp-action="Index" class="btn btn-outline-secondary">@Localizer["Open Payment Orders"]</a>
+    }
+    @if ((await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanManageAccounting)).Succeeded)
+    {
+        <a asp-controller="Accounting" asp-action="History" class="btn btn-outline-secondary">@Localizer["Open Membership Change History"]</a>
+    }
+</div>

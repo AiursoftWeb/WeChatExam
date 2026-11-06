@@ -6,7 +6,6 @@ namespace Aiursoft.WeChatExam.Services;
 public class PaperAccessStatus
 {
     public HashSet<Guid> ActiveCategoryVips { get; set; } = new();
-    public bool HasRealExamVip { get; set; }
     public HashSet<Guid> ActiveInstitutionVips { get; set; } = new();
 }
 

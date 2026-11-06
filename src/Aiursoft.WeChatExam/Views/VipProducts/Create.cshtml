@@ -18,7 +18,6 @@
                 <select asp-for="Type" class="form-select" id="vipTypeSelect" data-course-type="@((int)VipProductType.Category)" data-institution-type="@((int)VipProductType.Institution)">
                     <option value="@((int)VipProductType.Category)">@Localizer["Total Category VIP"]</option>
                     <option value="@((int)VipProductType.Institution)">@Localizer["Institution VIP"]</option>
-                    <option value="@((int)VipProductType.RealExam)">@Localizer["All Real Exams VIP (Legacy)"]</option>
                 </select>
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>

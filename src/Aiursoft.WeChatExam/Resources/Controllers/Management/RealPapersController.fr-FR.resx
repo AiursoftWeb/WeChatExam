@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>{0} questions correspondantes ajoutées.</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>Impossible de confirmer la publication. Rechargez le document avant de réessayer.</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>Impossible de confirmer l’ajout du lot. Vérifiez les questions actuelles avant de réessayer.</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>Sélectionnez un établissement existant.</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>Paramètres enregistrés. Publiez vos mises à jour lorsque le document est prêt.</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>L’établissement ne peut pas être modifié après la publication d’une version de ce sujet.</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>Les questions d’examen correspondantes ont changé. Consultez les résultats actuels avant de confirmer à nouveau.</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>Le document est publié. Les étudiants peuvent désormais utiliser le contenu publié.</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>L&apos;article est dépublié. Les questions et les dossiers des étudiants précédents ont été conservés.</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>La version n’a pas pu être enregistrée. Rechargez la liste des versions avant de réessayer.</value>

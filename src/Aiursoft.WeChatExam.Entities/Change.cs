@@ -52,6 +52,12 @@ public class Change
     [ForeignKey(nameof(VipProductId))]
     public VipProduct? VipProduct { get; set; }
 
+    // Keep the identity of a retired product after its optional live reference is removed.
+    public Guid? ArchivedVipProductId { get; set; }
+
+    [MaxLength(200)]
+    public string? ArchivedVipProductName { get; set; }
+
     public Guid? CouponId { get; set; }
 
     [ForeignKey(nameof(CouponId))]

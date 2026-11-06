@@ -218,15 +218,21 @@ public class QuestionsController(
 
     // GET: questions/create
     [Authorize(Policy = AppPermissionNames.CanAddQuestions)]
-    public async Task<IActionResult> Create(Guid? questionCategoryId, string? returnUrl)
+    public async Task<IActionResult> Create(Guid? questionCategoryId, string? returnUrl, Guid? totalCategoryId)
     {
-        var questionCategories = await GetQuestionCategories();
+        if (!ModelState.IsValid) return BadRequest();
+        var course = totalCategoryId.HasValue
+            ? await context.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == totalCategoryId.Value) : null;
+        if (totalCategoryId.HasValue && course == null) return NotFound();
+        var questionCategories = await GetQuestionCategories(totalCategoryId);
+        if (questionCategoryId.HasValue && totalCategoryId.HasValue && questionCategories.All(c => c.Id != questionCategoryId)) return BadRequest();
         var maxOrderIndex = await context.Questions
             .Where(q => q.OrderIndex.HasValue)
             .MaxAsync(q => q.OrderIndex);
 
         var model = new CreateViewModel
         {
+            TotalCategoryId = totalCategoryId, Course = course,
             QuestionCategories = questionCategories,
             QuestionCategoryId = questionCategories.Any(c => c.Id == questionCategoryId) ? questionCategoryId : null,
             ReturnUrl = returnUrl,
@@ -243,9 +249,15 @@ public class QuestionsController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
+        if (ModelState.TryGetValue(nameof(model.TotalCategoryId), out var courseState) && courseState.Errors.Count > 0) return BadRequest();
+        model.Course = model.TotalCategoryId.HasValue
+            ? await context.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == model.TotalCategoryId.Value) : null;
+        if (model.TotalCategoryId.HasValue && model.Course == null) return NotFound();
+        model.QuestionCategories = await GetQuestionCategories(model.TotalCategoryId);
+        if (model.QuestionCategoryId.HasValue && model.QuestionCategories.All(c => c.Id != model.QuestionCategoryId))
+            ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
         if (!ModelState.IsValid)
         {
-            model.QuestionCategories = await GetQuestionCategories();
             return this.StackView(model);
         }
 
@@ -256,15 +268,13 @@ public class QuestionsController(
             if (!model.Options.Any())
             {
                 ModelState.AddModelError(nameof(model.Options), "Options are required for Choice and Bool questions.");
-                model.QuestionCategories = await GetQuestionCategories();
                 return this.StackView(model);
             }
 
             if (!model.Options.Contains(model.StandardAnswer ?? string.Empty))
             {
-                 ModelState.AddModelError(nameof(model.StandardAnswer), "Standard Answer must be one of the options.");
-                 model.QuestionCategories = await GetQuestionCategories();
-                 return this.StackView(model);
+                ModelState.AddModelError(nameof(model.StandardAnswer), "Standard Answer must be one of the options.");
+                return this.StackView(model);
             }
 
             model.Metadata = JsonConvert.SerializeObject(new { options = model.Options });
@@ -272,13 +282,6 @@ public class QuestionsController(
         else
         {
             model.Metadata = string.Empty;
-        }
-
-        if (!await context.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
-        {
-            ModelState.AddModelError(nameof(model.QuestionCategoryId), localizer["Choose an existing period."]);
-            model.QuestionCategories = await GetQuestionCategories();
-            return this.StackView(model);
         }
 
         var question = new Question
@@ -316,7 +319,8 @@ public class QuestionsController(
         return RedirectToAction(nameof(Details), new { id = question.Id });
     }
 
-    private Task<List<QuestionCategory>> GetQuestionCategories() => context.QuestionCategories.AsNoTracking()
+    private Task<List<QuestionCategory>> GetQuestionCategories(Guid? totalCategoryId = null) => context.QuestionCategories.AsNoTracking()
+        .Where(c => !totalCategoryId.HasValue || c.TotalCategoryId == totalCategoryId.Value)
         .Include(c => c.TotalCategory)
         .OrderBy(c => c.TotalCategory!.OrderIndex).ThenBy(c => c.TotalCategoryId)
         .ThenBy(c => c.OrderIndex).ThenBy(c => c.Title).ThenBy(c => c.Id).ToListAsync();
@@ -479,6 +483,16 @@ public class QuestionsController(
 
         var question = await context.Questions.FindAsync(id);
         if (question == null) return NotFound();
+
+        // Changing a linked choice to a text question would break the knowledge card.
+        // Leave pre-existing text links alone so unrelated edits remain possible.
+        if (model.QuestionType != QuestionType.Choice && model.QuestionType != question.QuestionType &&
+            await context.KnowledgePointQuestions.AnyAsync(k => k.QuestionId == id))
+        {
+            ModelState.AddModelError(nameof(model.QuestionType), exerciseValidation.ChoiceOnly());
+            model.QuestionCategories = await GetQuestionCategories();
+            return this.StackView(model);
+        }
 
         if (!await context.QuestionCategories.AnyAsync(c => c.Id == model.QuestionCategoryId))
         {

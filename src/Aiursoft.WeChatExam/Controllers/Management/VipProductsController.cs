@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using MySqlConnector;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -28,9 +29,18 @@ public class VipProductsController(
         CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? search, bool showDisabled = false)
+    public async Task<IActionResult> Index(string? search, Guid? institutionId, Guid? totalCategoryId, bool showDisabled = false)
     {
+        if (institutionId.HasValue && totalCategoryId.HasValue) return BadRequest();
+        var course = totalCategoryId.HasValue
+            ? await dbContext.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == totalCategoryId.Value) : null;
+        if (totalCategoryId.HasValue && course == null) return NotFound();
         var products = await vipProductService.GetAllAsync();
+        if (totalCategoryId.HasValue)
+            products = products.Where(p => p.Type == VipProductType.Category && p.TotalCategoryId == totalCategoryId).ToList();
+
+        if (institutionId.HasValue)
+            products = products.Where(p => p.Type == VipProductType.Institution && p.InstitutionId == institutionId).ToList();
 
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -50,16 +60,24 @@ public class VipProductsController(
             SearchQuery = search,
             ShowDisabled = showDisabled,
             EnabledCount = enabledCount,
-            DisabledCount = disabledCount
+            DisabledCount = disabledCount,
+            InstitutionId = institutionId, TotalCategoryId = totalCategoryId, ScopeTitle = course?.Title
         });
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create(Guid? institutionId, Guid? totalCategoryId)
     {
+        if (institutionId.HasValue && totalCategoryId.HasValue) return BadRequest();
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
+        if (totalCategoryId.HasValue && categories.All(c => c.Id != totalCategoryId.Value)) return NotFound();
+        var selectedInstitution = institutionId.HasValue && await dbContext.Institutions.AnyAsync(i => i.Id == institutionId.Value)
+            ? institutionId : null;
         return this.StackView(new CreateViewModel
         {
+            Type = selectedInstitution.HasValue ? VipProductType.Institution : VipProductType.Category,
+            InstitutionId = selectedInstitution,
+            TotalCategoryId = totalCategoryId,
             TotalCategories = categories.Select(c => new SelectListItem(c.Title, c.Id.ToString())).ToList(),
             Institutions = await InstitutionOptionsAsync()
         });
@@ -91,6 +109,7 @@ public class VipProductsController(
 
         var product = await vipProductService.GetByIdAsync(id.Value);
         if (product == null) return NotFound();
+        if (product.Type == VipProductType.RealExam) return NotFound();
 
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
         return this.StackView(new EditViewModel
@@ -118,6 +137,7 @@ public class VipProductsController(
         if (id != model.Id) return NotFound();
         var product = await vipProductService.GetByIdAsync(id);
         if (product == null) return NotFound();
+        if (product.Type == VipProductType.RealExam) return NotFound();
         model.TargetLocked = await vipProductService.HasPurchasesAsync(id);
         if (model.TargetLocked)
         {
@@ -162,6 +182,8 @@ public class VipProductsController(
 
     private async Task ValidateTargetAsync(VipProductType type, Guid? totalCategoryId, Guid? institutionId)
     {
+        if (type is not (VipProductType.Category or VipProductType.Institution))
+            ModelState.AddModelError("Type", localizer["Invalid VIP product type."]);
         if (type == VipProductType.Category &&
             (!totalCategoryId.HasValue || !await dbContext.TotalCategories.AnyAsync(c => c.Id == totalCategoryId.Value)))
         {
@@ -198,9 +220,17 @@ public class VipProductsController(
         {
             await vipProductService.DeleteAsync(id);
         }
-        catch (InvalidOperationException)
+        catch (InvalidOperationException ex) when (ex.Message == "This product has orders or memberships. Disable it instead of deleting it.")
         {
             ModelState.AddModelError(string.Empty, localizer["This product has orders or memberships. Disable it instead of deleting it."]);
+            return this.StackView(new DeleteViewModel { Product = (await vipProductService.GetByIdAsync(id))! }, nameof(Delete));
+        }
+        catch (Exception ex) when (
+            ex is InvalidOperationException { Message: "This product has audit history. Disable it instead of deleting it." } ||
+            ex is DbUpdateException { InnerException: MySqlException { Number: 1451 } mysql } &&
+            mysql.Message.Contains("`FK_Changes_VipProducts_VipProductId`", StringComparison.Ordinal))
+        {
+            ModelState.AddModelError(string.Empty, localizer["This product has audit history. Disable it instead of deleting it."]);
             return this.StackView(new DeleteViewModel { Product = (await vipProductService.GetByIdAsync(id))! }, nameof(Delete));
         }
         return RedirectToAction(nameof(Index));

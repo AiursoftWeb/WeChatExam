@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Course Membership" xml:space="preserve">
+      <data name="{0} questions" xml:space="preserve">
+    <value>{0} 道题</value>
+  </data>
+  <data name="Course Membership" xml:space="preserve">
     <value>课程会员</value>
   </data>
   <data name="Create a period to start organizing this course." xml:space="preserve">
@@ -39,11 +42,23 @@
   <data name="Edit Period" xml:space="preserve">
     <value>编辑年代</value>
   </data>
+  <data name="Essay" xml:space="preserve">
+    <value>论述题</value>
+  </data>
   <data name="Every period belongs to one total category." xml:space="preserve">
     <value>每个年代都属于一个总分类。</value>
   </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>填空题</value>
+  </data>
   <data name="Free Practice" xml:space="preserve">
     <value>免费练习</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>已隐藏</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>选择题</value>
   </data>
   <data name="No periods in this course yet" xml:space="preserve">
     <value>此课程尚无年代</value>
@@ -54,8 +69,20 @@
   <data name="Periods" xml:space="preserve">
     <value>年代</value>
   </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>简答题</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>名词解释</value>
+  </data>
   <data name="Total Categories" xml:space="preserve">
     <value>总分类</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>判断题</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>查看题目</value>
   </data>
 
 </root>

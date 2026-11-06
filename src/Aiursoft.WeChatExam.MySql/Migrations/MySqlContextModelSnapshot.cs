@@ -124,6 +124,13 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("ArchivedVipProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ArchivedVipProductName")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
                     b.Property<Guid?>("CouponId")
                         .HasColumnType("char(36)");
 
@@ -1122,6 +1129,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
 
                     b.Property<bool>("IsFree")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsVisible")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("OrderIndex")
                         .HasColumnType("int");

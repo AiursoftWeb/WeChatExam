@@ -21,6 +21,9 @@
       <data name="Add at least one question before publishing." xml:space="preserve">
     <value>เพิ่มคำถามอย่างน้อยหนึ่งข้อก่อนเผยแพร่</value>
   </data>
+  <data name="Complete the reference answers before publishing. An answer must not simply repeat the question." xml:space="preserve">
+    <value>กรอกคำตอบอ้างอิงให้ครบถ้วนก่อนเผยแพร่ คำตอบต้องไม่เพียงแต่ซ้ำกับคำถามเท่านั้น</value>
+  </data>
   <data name="Every question must have a nonnegative order and a positive score." xml:space="preserve">
     <value>คำถามทุกข้อจะต้องมีลำดับเป็นศูนย์หรือมากกว่า และมีคะแนนมากกว่าศูนย์</value>
   </data>

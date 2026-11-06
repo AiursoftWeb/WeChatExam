@@ -47,7 +47,7 @@ public class ContentCheckTests
             new VipProduct { Name = "Invalid", TotalCategoryId = null });
         await db.SaveChangesAsync();
         db.ChangeTracker.Clear();
-        var report = await Checker(db).ScanAsync([course.Id, paidDirectory.Id], false);
+        var report = await Checker(db).ScanAsync([course.Id, paidDirectory.Id]);
         Assert.AreEqual(2, report.Categories.Count);
         Assert.AreEqual(2, report.Scenarios.Count(s => s.Name.StartsWith("Subject VIP:")));
         Assert.IsTrue(report.Scenarios.Single(s => s.Name == "Custom VIP selection").Status.ActiveCategoryVips.SetEquals([course.Id]));
@@ -92,7 +92,7 @@ public class ContentCheckTests
         db.AddRange(period, taxonomy, tag, question,
             new QuestionTag { QuestionId = question.Id, TagId = tag.Id });
         await db.SaveChangesAsync();
-        var report = await Checker(db).ScanAsync([], false);
+        var report = await Checker(db).ScanAsync([]);
         Assert.IsFalse(report.Findings.Any(f => f.Rule is "TAG001" or "VIP001"));
         Assert.IsFalse(report.Findings.SelectMany(f => f.Observations).Any(o => o.Entry.Contains("/taxonomies")));
         Assert.IsTrue(report.TagImpacts[tag.Id].Any(o => o.Controller == "Questions" && o.Id == question.Id.ToString()));
@@ -113,7 +113,7 @@ public class ContentCheckTests
             new QuestionSnapshot { PaperSnapshotId = snapshot.Id, Content = "Retained copy", OriginalQuestionId = null });
         await db.SaveChangesAsync();
         db.ChangeTracker.Clear();
-        var report = await Checker(db).ScanAsync([], true);
+        var report = await Checker(db).ScanAsync([]);
         Assert.AreEqual(3, report.PaperCount);
         Assert.AreEqual(1, report.Counts["Paper snapshots"]);
         Assert.AreEqual(3, report.Findings.Count);
@@ -163,7 +163,7 @@ public class ContentCheckTests
             new QuestionSnapshot { PaperSnapshotId = mockVersion.Id, Content = "Mock copy" });
         await db.SaveChangesAsync();
         db.ChangeTracker.Clear();
-        var report = await Checker(db).ScanAsync([], false, institutions: [school.Id, Guid.NewGuid()]);
+        var report = await Checker(db).ScanAsync([], institutions: [school.Id, Guid.NewGuid()]);
         Assert.AreEqual(5, report.PaperCount);
         Assert.AreEqual(2, report.Institutions.Count);
         Assert.IsFalse(report.Exercises[question.Id].Access.Single(a => a.Scenario == "Custom VIP selection").Allowed,
@@ -184,7 +184,7 @@ public class ContentCheckTests
         Assert.IsTrue(schoolFinding.Objects.Any(o => o.Controller == "VipProducts" && o.Id == paused.Id.ToString() && o.Enabled == false));
         Assert.IsTrue(schoolFinding.Observations.Single(o => o.Scenario == "Institution VIP: School").Allowed);
         Assert.IsTrue(schoolFinding.Observations.Single(o => o.Scenario == "Custom VIP selection").Allowed);
-        Assert.IsTrue(schoolFinding.Observations.Single(o => o.Scenario == "Real-exam VIP only").Allowed);
+        Assert.IsFalse(schoolFinding.Observations.Any(o => o.Scenario == "Real-exam VIP only"));
         Assert.IsFalse(schoolFinding.Observations.Single(o => o.Scenario.StartsWith("Subject VIP:")).Allowed);
         Assert.IsFalse(schoolFinding.Observations.Single(o => o.Scenario == "Anonymous").Allowed);
         var mockFinding = report.Findings.Single(f => f.Rule == "VIP004" && f.Objects[0].Id == mock.Id.ToString());
@@ -201,7 +201,7 @@ public class ContentCheckTests
         var savedProduct = await db.VipProducts.FindAsync(paused.Id);
         savedProduct!.IsEnabled = true;
         await db.SaveChangesAsync();
-        report = await Checker(db).ScanAsync([], false);
+        report = await Checker(db).ScanAsync([]);
         Assert.IsFalse(report.Findings.Any(f => f.Rule == "VIP004" && f.Objects[0].Id == real.Id.ToString()));
         Assert.AreEqual(5, await db.PaperSnapshots.CountAsync());
     }
@@ -246,7 +246,7 @@ public class ContentCheckTests
         await db.SaveChangesAsync();
         db.ChangeTracker.Clear();
         commands.Clear();
-        var report = await Checker(db).ScanAsync([], false);
+        var report = await Checker(db).ScanAsync([]);
         Assert.IsTrue(commands.Count < 26, $"Expected batched reads, observed {commands.Count} commands.");
         Assert.IsTrue(commands.All(c => !c.Contains("INSERT INTO") && !c.Contains("UPDATE ") && !c.Contains("DELETE FROM")));
         Assert.AreEqual(500, report.TagImpacts[tag.Id].Count(o => o.Controller == "Questions"));

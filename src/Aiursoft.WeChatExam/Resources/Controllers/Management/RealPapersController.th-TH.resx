@@ -21,6 +21,9 @@
       <data name="Added {0} matching questions." xml:space="preserve">
     <value>เพิ่มข้อสอบที่ตรงกันแล้ว {0} ข้อ</value>
   </data>
+  <data name="Could not confirm publication. Reload the paper before trying again." xml:space="preserve">
+    <value>ไม่สามารถยืนยันการเผยแพร่ได้ กรุณาโหลดเอกสารใหม่ก่อนลองอีกครั้ง</value>
+  </data>
   <data name="Could not confirm the batch was added. Review the current questions before trying again." xml:space="preserve">
     <value>ไม่สามารถยืนยันได้ว่าเพิ่มชุดคำถามแล้ว โปรดตรวจสอบคำถามปัจจุบันก่อนลองอีกครั้ง</value>
   </data>
@@ -36,11 +39,20 @@
   <data name="Select an existing institution." xml:space="preserve">
     <value>กรุณาเลือกสถาบันที่มีอยู่</value>
   </data>
+  <data name="Settings saved. Publish your updates when the paper is ready." xml:space="preserve">
+    <value>บันทึกการตั้งค่าแล้ว เผยแพร่การอัปเดตของคุณเมื่อเอกสารพร้อมแล้ว</value>
+  </data>
   <data name="The institution cannot change after this paper has a published version." xml:space="preserve">
     <value>ไม่สามารถเปลี่ยนสถาบันได้หลังจากเอกสารฉบับนี้มีฉบับเผยแพร่แล้ว</value>
   </data>
   <data name="The matching exam questions changed. Review the current results before confirming again." xml:space="preserve">
     <value>คำถามข้อสอบที่ตรงกันมีการเปลี่ยนแปลง โปรดตรวจสอบผลลัพธ์ปัจจุบันก่อนยืนยันอีกครั้ง</value>
+  </data>
+  <data name="The paper is published. Students can now use the published content." xml:space="preserve">
+    <value>ข้อสอบถูกเผยแพร่แล้ว นักเรียนสามารถใช้เนื้อหาที่เผยแพร่แล้วได้ทันที</value>
+  </data>
+  <data name="The paper is unpublished. Questions and previous student records have been kept." xml:space="preserve">
+    <value>บทความนี้ได้ถูกยกเลิกการเผยแพร่แล้ว คำถามและบันทึกข้อมูลของนักศึกษาเดิมยังคงถูกเก็บรักษาไว้</value>
   </data>
   <data name="The version could not be saved. Reload the version list before trying again." xml:space="preserve">
     <value>ไม่สามารถบันทึกเวอร์ชันได้ โปรดโหลดรายการเวอร์ชันใหม่ก่อนลองอีกครั้ง</value>

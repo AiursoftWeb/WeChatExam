@@ -1,7 +1,19 @@
 @using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
 @model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.DetailsViewModel
 
+@{
+    var canEditCoupons = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditDistributionChannels)).Succeeded;
+    var canReadOrders = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadPaymentOrders)).Succeeded;
+}
+
 <h1 class="h3 mb-3">@Localizer["Channel Details"]</h1>
+@if (TempData["SuccessMessage"] is string message)
+{
+    <div class="alert @(Model.Channel.IsEnabled ? "alert-success" : "alert-warning")" role="status"><div class="alert-message">@message</div></div>
+}
 
 <div class="row">
     <div class="col-md-6">
@@ -39,31 +51,21 @@
                 <h5 class="card-title mb-0">@Localizer["Statistics"]</h5>
             </div>
             <div class="card-body">
-                <div class="row text-center">
-                    <div class="col-4">
-                        <div class="display-6 text-primary">@Model.Stats.RegistrationCount</div>
+                <div class="row text-center gy-3">
+                    <div class="col-12 col-xl-4">
+                        <div class="h2 text-primary">@Model.Stats.RegistrationCount</div>
                         <div class="text-muted">@Localizer["Registrations"]</div>
                     </div>
-                    <div class="col-4">
-                        <div class="display-6 text-success">@Model.Stats.PaidOrderCount</div>
+                    <div class="col-12 col-xl-4">
+                        <div class="h2 text-success">@Model.Stats.PaidOrderCount</div>
                         <div class="text-muted">@Localizer["Paid Orders"]</div>
                     </div>
-                    <div class="col-4">
-                        <div class="display-6 text-info">@Model.Stats.TotalPaidAmount.ToString("C")</div>
+                    <div class="col-12 col-xl-4">
+                        <div class="h2 text-info">@Model.Stats.TotalPaidAmount.ToString("C")</div>
                         <div class="text-muted">@Localizer["Total Amount"]</div>
                     </div>
                 </div>
-                @if (Model.Stats.PaidOrderCount == 0 && Model.Stats.TotalPaidAmount == 0)
-                {
-                    <div class="alert alert-warning mt-3 mb-0" role="alert">
-                        <div class="alert-icon">
-                            <i data-lucide="alert-triangle"></i>
-                        </div>
-                        <div class="alert-message">
-                            @Localizer["Payment statistics are not yet implemented."]
-                        </div>
-                    </div>
-                }
+                <p class="text-muted small mt-3 mb-0">@Localizer["Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code."]</p>
             </div>
         </div>
     </div>
@@ -77,8 +79,10 @@
         </a>
     </div>
     <div class="card-body">
+        <p class="px-3 pt-3 mb-0 text-muted">@Localizer["Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept."]</p>
+        <p class="px-3 mt-2 d-sm-none text-muted small">@Localizer["Swipe the coupon list sideways to see all actions."]</p>
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover text-nowrap mb-0">
                 <thead>
                     <tr>
                         <th>@Localizer["Code"]</th>
@@ -106,39 +110,59 @@
                             </td>
                             <td>¥@(coupon.AmountInFen / 100m)</td>
                             <td>
-                                @if (coupon.IsSingleUse)
+                                @if (canReadOrders)
                                 {
-                                    if (coupon.UsedByUserId != null)
-                                    {
-                                        <span class="text-success" title="@coupon.UsedAt">@Localizer["Used by {0}", coupon.UsedByUserId]</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted">@Localizer["Not Used"]</span>
-                                    }
+                                    <a asp-action="CouponDetails" asp-route-id="@coupon.Id" class="text-decoration-none">
+                                        @string.Format(@Localizer["{0} completed purchases"].Value, Model.CouponPaidOrderCounts.GetValueOrDefault(coupon.Id))
+                                    </a>
                                 }
                                 else
                                 {
-                                    <span>@Localizer["Global"]</span>
+                                    <span class="text-muted">@Localizer["Payment permission required"]</span>
                                 }
                             </td>
                             <td>
-                                @if (coupon.IsEnabled)
-                                {
-                                    <span class="text-success">@Localizer["Active"]</span>
-                                }
-                                else
+                                @if (!coupon.IsEnabled)
                                 {
                                     <span class="text-danger">@Localizer["Disabled"]</span>
                                 }
+                                else if (!Model.Channel.IsEnabled)
+                                {
+                                    <span class="text-warning">@Localizer["Channel Disabled"]</span>
+                                }
+                                else if (coupon.IsSingleUse && coupon.UsedByUserId != null)
+                                {
+                                    <span class="text-secondary">@Localizer["Used (Single Use)"]</span>
+                                }
+                                else
+                                {
+                                    <span class="text-success">@Localizer["Active"]</span>
+                                }
                             </td>
                             <td class="text-end">
-                                <form method="post" asp-action="DeleteCoupon" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" onsubmit="return confirm('@Localizer["Are you sure?"]')" style="display: inline;">
-                                    @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                                        <i data-lucide="trash-2"></i>
-                                    </button>
-                                </form>
+                                @if (canReadOrders)
+                                {
+                                    <a asp-action="CouponDetails" asp-route-id="@coupon.Id" class="btn btn-sm btn-outline-primary me-2 mb-1">
+                                        <i data-lucide="receipt-text"></i> @Localizer["View Purchases"]
+                                    </a>
+                                }
+                                @if (canEditCoupons)
+                                {
+                                    <form method="post" asp-action="SetCouponEnabled" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="d-inline-block me-2 mb-1">
+                                        <input type="hidden" name="isEnabled" value="@(coupon.IsEnabled ? "false" : "true")" />
+                                        @if (coupon.IsEnabled)
+                                        {
+                                            <button type="submit" class="btn btn-sm btn-outline-warning">@Localizer["Disable Coupon"]</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-sm btn-outline-success">@Localizer["Enable Coupon"]</button>
+                                        }
+                                    </form>
+                                }
+                                <a asp-action="DeleteCoupon" asp-route-id="@coupon.Id" asp-route-channelId="@Model.Channel.Id" class="btn btn-sm btn-outline-danger mb-1">
+                                    <i data-lucide="trash-2"></i> @Localizer["Review Deletion"]
+                                </a>
                             </td>
                         </tr>
                     }

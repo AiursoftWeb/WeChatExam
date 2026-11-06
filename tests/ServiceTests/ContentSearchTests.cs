@@ -321,18 +321,24 @@ public class ContentSearchTests
         choices[2].QuestionType = QuestionType.Bool;
         var otherCourse = NewQuestion("Another course");
         otherCourse.QuestionCategory!.IsFree = true;
+        var hidden = NewQuestion("Hidden high-ranking candidate");
+        hidden.QuestionCategory!.TotalCategory = source.QuestionCategory.TotalCategory;
+        hidden.QuestionCategory.TotalCategoryId = source.QuestionCategory.TotalCategoryId;
+        hidden.QuestionCategory.IsFree = true; hidden.QuestionCategory.IsVisible = false;
+        db.Add(hidden);
         db.AddRange(source, otherCourse); db.Questions.AddRange(paid); db.Questions.AddRange(choices);
         await db.SaveChangesAsync();
         SetEmbedding(source);
         foreach (var q in paid) SetRelatedVector(q, 0.95f, 1);
         for (var i = 0; i < choices.Length; i++) SetRelatedVector(choices[i], 0.8f, i + 2);
         SetRelatedVector(otherCourse, 0.97f, 9);
+        SetRelatedVector(hidden, 0.97f, 10);
         await db.SaveChangesAsync();
         var handler = new QueryHandler();
         var cache = new ContentEmbeddingCache(NullLogger<ContentEmbeddingCache>.Instance);
         var service = CreateRelated(db, cache, handler);
         // Even an all-institution member has no additional independent course rights.
-        var result = await service.FindAsync(Captured(source), new PaperAccessStatus { HasRealExamVip = true });
+        var result = await service.FindAsync(Captured(source), new PaperAccessStatus());
         Assert.IsTrue(result.Available);
         CollectionAssert.AreEquivalent(choices.Select(q => q.Id).ToArray(), result.Items.Select(q => q.Id).ToArray());
         Assert.IsTrue(result.Items.All(q => !q.SameQuestionCategory));
@@ -350,6 +356,7 @@ public class ContentSearchTests
         });
         Assert.IsTrue(member.Items.Any(q => paid.Any(p => p.Id == q.Id)));
         Assert.IsTrue(member.Items[0].SameQuestionCategory);
+        Assert.IsFalse(member.Items.Any(q => q.Id == hidden.Id));
         // Membership checks and entity freshness must not be cached with vector rankings.
         freePeriod.IsFree = false;
         await db.SaveChangesAsync();
@@ -452,6 +459,38 @@ public class ContentSearchTests
         Assert.HasCount(1, result.Items); Assert.AreEqual(rows[4].Id, result.Items[0].Id);
         var replacingLong = await service.FindReplacementAsync(Captured(source), new PaperAccessStatus(), [current, replaced], current.Id);
         Assert.HasCount(1, replacingLong.Items); Assert.AreEqual(rows[3].Id, replacingLong.Items[0].Id);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task HiddenQuestionKnowledgeContextRequiresItsOwnAccessiblePlacement(bool relational)
+    {
+        await using var db = await CreateDatabase(relational);
+        var question = NewQuestion("Hidden lesson exercise");
+        question.QuestionCategory!.IsVisible = false; question.QuestionCategory.IsFree = true;
+        var course = new TotalCategory { Title = "Lesson course" };
+        var directory = new KnowledgeCategory { Title = "Paid lesson directory", TotalCategoryId = course.Id };
+        var lesson = new KnowledgePoint { Id = Guid.NewGuid(), Title = "Linked lesson", Content = "Lesson body" };
+        db.AddRange(question, course, directory, lesson,
+            new KnowledgePointQuestion { KnowledgePointId = lesson.Id, QuestionId = question.Id },
+            new KnowledgeCategoryKnowledgePoint { Id = Guid.NewGuid(), KnowledgePointId = lesson.Id, KnowledgeCategoryId = directory.Id });
+        await db.SaveChangesAsync();
+        Assert.IsFalse(await QuestionAccess.HasKnowledgeContextAsync(db, question.Id, lesson.Id, new()));
+        Assert.IsFalse(await QuestionAccess.HasKnowledgeContextAsync(db, question.Id, lesson.Id,
+            new PaperAccessStatus { ActiveCategoryVips = [question.QuestionCategory.TotalCategoryId] }));
+        var member = new PaperAccessStatus { ActiveCategoryVips = [course.Id] };
+        Assert.IsTrue(await QuestionAccess.HasKnowledgeContextAsync(db, question.Id, lesson.Id, member));
+        Assert.IsFalse(await QuestionAccess.HasKnowledgeContextAsync(db, Guid.NewGuid(), lesson.Id, member));
+        Assert.IsFalse(await QuestionAccess.HasKnowledgeContextAsync(db, question.Id, Guid.NewGuid(), member));
+        Assert.AreEqual(0, await db.Questions.Where(QuestionAccess.PracticeFilter(member)).CountAsync());
+        directory.IsFree = true; await db.SaveChangesAsync();
+        Assert.IsTrue(await QuestionAccess.HasKnowledgeContextAsync(db, question.Id, lesson.Id, new()));
+        db.KnowledgeCategoryKnowledgePoints.RemoveRange(db.KnowledgeCategoryKnowledgePoints);
+        await db.SaveChangesAsync();
+        Assert.IsFalse(await QuestionAccess.HasKnowledgeContextAsync(db, question.Id, lesson.Id, member));
+        db.ChangeTracker.Clear();
+        Assert.IsFalse((await db.QuestionCategories.SingleAsync(c => c.Id == question.QuestionCategoryId)).IsVisible);
     }
 
     private static MistakeRecord Captured(Question q, string? content = null) => new()

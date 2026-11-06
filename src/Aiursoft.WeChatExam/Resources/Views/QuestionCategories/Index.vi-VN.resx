@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Course Membership" xml:space="preserve">
+      <data name="{0} questions" xml:space="preserve">
+    <value>{0} câu hỏi</value>
+  </data>
+  <data name="Course Membership" xml:space="preserve">
     <value>Gói hội viên khóa học</value>
   </data>
   <data name="Create a period to start organizing this course." xml:space="preserve">
@@ -39,11 +42,23 @@
   <data name="Edit Period" xml:space="preserve">
     <value>Chỉnh sửa giai đoạn</value>
   </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Bài luận</value>
+  </data>
   <data name="Every period belongs to one total category." xml:space="preserve">
     <value>Mỗi kỳ học thuộc về một danh mục tổng.</value>
   </data>
+  <data name="Fill in the blank" xml:space="preserve">
+    <value>Điền vào chỗ trống</value>
+  </data>
   <data name="Free Practice" xml:space="preserve">
     <value>Luyện tập miễn phí</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="Multiple choice" xml:space="preserve">
+    <value>Trắc nghiệm</value>
   </data>
   <data name="No periods in this course yet" xml:space="preserve">
     <value>Khóa học này chưa có kỳ học nào</value>
@@ -54,8 +69,20 @@
   <data name="Periods" xml:space="preserve">
     <value>Các kỳ học</value>
   </data>
+  <data name="Short answer" xml:space="preserve">
+    <value>Câu trả lời ngắn</value>
+  </data>
+  <data name="Term explanation" xml:space="preserve">
+    <value>Giải thích thuật ngữ</value>
+  </data>
   <data name="Total Categories" xml:space="preserve">
     <value>Danh mục tổng thể</value>
+  </data>
+  <data name="True or false" xml:space="preserve">
+    <value>Đúng hoặc sai</value>
+  </data>
+  <data name="View Questions" xml:space="preserve">
+    <value>Xem câu hỏi</value>
   </data>
 
 </root>

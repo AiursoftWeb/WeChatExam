@@ -94,6 +94,8 @@ public class ContentVectorSearchService(
         var vector = await RecommendationVectorAsync(request, isKnowledgePoint, cancellationToken);
         if (vector == null) return (false, []);
         var questions = db.Questions.AsNoTracking().Where(q => !request.ExcludeIds.Contains(q.Id));
+        if (isKnowledgePoint)
+            questions = questions.Where(q => q.QuestionType == QuestionType.Choice);
         // Knowledge points can relate to questions across periods; their directory is not a question filter.
         if (!isKnowledgePoint && request.QuestionCategoryId.HasValue)
             questions = questions.Where(q => q.QuestionCategoryId == request.QuestionCategoryId);

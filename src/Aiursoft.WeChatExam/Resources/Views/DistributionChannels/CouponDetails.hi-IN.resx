@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts come from the completed order, not today&apos;s product price or coupon value. Totals follow the selected filters." xml:space="preserve">
+    <value>राशि पूरी हुई ऑर्डर से आती है, न कि आज के उत्पाद की कीमत या कूपन की मूल्य से। कुल योग चयनित फ़िल्टर के अनुसार होते हैं।</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>लागू करें</value>
+  </data>
+  <data name="Completed At" xml:space="preserve">
+    <value>पूर्ण होने का समय</value>
+  </data>
+  <data name="Completed purchases using this code, including fully discounted orders. Claiming a coupon is not a purchase." xml:space="preserve">
+    <value>इस कोड का उपयोग करके पूरे किए गए खरीद, जिसमें पूरी तरह से छूट वाले ऑर्डर भी शामिल हैं। कूपन का दावा खरीद नहीं है।</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>कूपन उपयोग विवरण</value>
+  </data>
+  <data name="Dates and times use your device&apos;s time zone." xml:space="preserve">
+    <value>तारीखें और समय आपके डिवाइस के टाइम ज़ोन का उपयोग करते हैं।</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>अक्षम</value>
+  </data>
+  <data name="Discount Applied" xml:space="preserve">
+    <value>प्रयुक्त छूट</value>
+  </data>
+  <data name="Filter Purchases" xml:space="preserve">
+    <value>खरीदारी फ़िल्टर करें</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>से</value>
+  </data>
+  <data name="Matching Purchases" xml:space="preserve">
+    <value>मेल खाने वाली खरीदारी</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>बहु-उपयोग</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>अगला</value>
+  </data>
+  <data name="No completed purchases match these filters." xml:space="preserve">
+    <value>इन फ़िल्टर से कोई पूर्ण खरीदारी मेल नहीं खाती।</value>
+  </data>
+  <data name="Not Recorded" xml:space="preserve">
+    <value>नहीं दर्ज किया गया</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>ऑर्डर</value>
+  </data>
+  <data name="Order Original Price" xml:space="preserve">
+    <value>ऑर्डर मूल मूल्य</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>भुगतान किया</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>पिछला</value>
+  </data>
+  <data name="Purchase History" xml:space="preserve">
+    <value>खरीदारी का इतिहास</value>
+  </data>
+  <data name="Purchase pages" xml:space="preserve">
+    <value>खरीदारी पृष्ठ</value>
+  </data>
+  <data name="Purchased Content" xml:space="preserve">
+    <value>खरीदा गया सामग्री</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>रीसेट</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>एक बार के उपयोग के लिए</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>छात्र</value>
+  </data>
+  <data name="Student, Product or Order Number" xml:space="preserve">
+    <value>छात्र, उत्पाद या ऑर्डर नंबर</value>
+  </data>
+  <data name="This coupon has no completed purchases yet." xml:space="preserve">
+    <value>इस कूपन के लिए अभी तक कोई पूर्ण खरीदारी नहीं हुई है।</value>
+  </data>
+  <data name="This coupon is marked as used, but its completed order is unavailable. The historical buyer and amounts cannot be verified." xml:space="preserve">
+    <value>यह कूपन उपयोग किया हुआ के रूप में चिह्नित है, लेकिन इसका पूर्ण ऑर्डर उपलब्ध नहीं है। ऐतिहासिक खरीदार और राशि को सत्यापित नहीं किया जा सकता है।</value>
+  </data>
+  <data name="Through" xml:space="preserve">
+    <value>तक</value>
+  </data>
+  <data name="Total Discount" xml:space="preserve">
+    <value>कुल छूट</value>
+  </data>
+  <data name="Total Paid" xml:space="preserve">
+    <value>कुल भुगतान</value>
+  </data>
+  <data name="Unnamed Student" xml:space="preserve">
+    <value>अनाम छात्र</value>
+  </data>
+  <data name="View Order" xml:space="preserve">
+    <value>ऑर्डर देखें</value>
+  </data>
+
+</root>

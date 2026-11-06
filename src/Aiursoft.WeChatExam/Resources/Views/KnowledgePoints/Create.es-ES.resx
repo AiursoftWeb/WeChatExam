@@ -60,6 +60,9 @@
   <data name="No questions found." xml:space="preserve">
     <value>No se han encontrado preguntas.</value>
   </data>
+  <data name="Only choice questions can be associated with knowledge points." xml:space="preserve">
+    <value>Solo se pueden asociar preguntas de opción múltiple a los puntos de conocimiento.</value>
+  </data>
   <data name="Parent KnowledgePoint" xml:space="preserve">
     <value>Punto de conocimiento padre</value>
   </data>
@@ -77,6 +80,9 @@
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Preguntas seleccionadas</value>
+  </data>
+  <data name="This question type is not supported here. Remove or replace it." xml:space="preserve">
+    <value>Este tipo de pregunta no es compatible aquí. Elimínala o sustitúyela.</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Título</value>

@@ -54,11 +54,23 @@
   <data name="Confirm adding {0} exam questions" xml:space="preserve">
     <value>Επιβεβαιώστε την προσθήκη {0} ερωτήσεων εξετάσεων</value>
   </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Επεξεργασία Αρκεταί ερώτηση</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Η επεξεργασία του αρχικού ερωτήματος το τροποποιεί επίσης στην τράπεζα ερωτήσεων και σε άλλα μη δημοσιευμένα εξεταστικά.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Επεξήγηση</value>
+  </data>
   <data name="Internal tag name" xml:space="preserve">
     <value>Εσωτερική ονομασία ετικέτας</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Επόμενη</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Δεν υπάρχει ακόμη εξήγηση.</value>
   </data>
   <data name="No more matching questions." xml:space="preserve">
     <value>Δεν υπάρχουν άλλες ερωτήσεις που να ταιριάζουν.</value>
@@ -86,6 +98,12 @@
   </data>
   <data name="Question Type" xml:space="preserve">
     <value>Τύπος ερώτησης</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Προτεινόμενη Απάντηση και Εξήγηση</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Η αναφορά απάντησης χρειάζεται προσοχή</value>
   </data>
   <data name="Remove from Paper" xml:space="preserve">
     <value>Αφαίρεση από το γραπτό</value>
@@ -117,11 +135,17 @@
   <data name="Selected Questions" xml:space="preserve">
     <value>Επιλεγμένες ερωτήσεις</value>
   </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Σταandard Απάντηση</value>
+  </data>
   <data name="Tag" xml:space="preserve">
     <value>Ετικέτα</value>
   </data>
   <data name="Test paper" xml:space="preserve">
     <value>Διαγώνισμα</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Η αναφορά απάντηση λείπει ή επαναλαμβάνει την ερώτηση. Συμπληρώστε την πριν από τη δημοσίευση.</value>
   </data>
   <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
     <value>Αυτό προσθέτει ερωτήσεις εξετάσεων από όλες τις σελίδες αποτελεσμάτων και παραλείπει όσες υπάρχουν ήδη σε αυτό το διαγώνισμα.</value>

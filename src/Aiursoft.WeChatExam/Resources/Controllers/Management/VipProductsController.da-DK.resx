@@ -18,11 +18,17 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Select an existing institution." xml:space="preserve">
+      <data name="Invalid VIP product type." xml:space="preserve">
+    <value>Ugyldig VIP-produkttype.</value>
+  </data>
+  <data name="Select an existing institution." xml:space="preserve">
     <value>Vælg en eksisterende institution.</value>
   </data>
   <data name="Select an existing total category." xml:space="preserve">
     <value>Vælg en eksisterende total kategori.</value>
+  </data>
+  <data name="This product has audit history. Disable it instead of deleting it." xml:space="preserve">
+    <value>Dette produkt har en revisionshistorik. Deaktiver det i stedet for at slette det.</value>
   </data>
   <data name="This product has orders or memberships. Create a new product to change its access scope." xml:space="preserve">
     <value>Dette produkt har ordrer eller medlemskaber. Opret et nyt produkt for at ændre dets adgangsomfang.</value>

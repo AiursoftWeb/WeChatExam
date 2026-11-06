@@ -49,16 +49,18 @@ public sealed class StubDistributionChannelService : IDistributionChannelService
     public Task SetEnabledAsync(Guid id, bool isEnabled) => Task.CompletedTask;
     public Task<bool> BindUserByCouponCodeAsync(string userId, string code) => Task.FromResult(false);
     public Task<ChannelStats> GetStatsAsync(Guid channelId) => Task.FromResult<ChannelStats>(null!);
+    public Task<CouponDeletionSummary> GetDeletionSummaryAsync(Guid id) => Task.FromResult(new CouponDeletionSummary());
     public Task DeleteAsync(Guid id) => Task.CompletedTask;
 }
 
 public sealed class StubVipProductService : IVipProductService
 {
+    public Exception? DeleteException { get; init; }
     public Task<List<VipProduct>> GetAllAsync() => Task.FromResult(new List<VipProduct>());
     public Task<VipProduct?> GetByIdAsync(Guid id) => Task.FromResult<VipProduct?>(null);
     public Task<VipProduct> CreateAsync(string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, Guid? institutionId = null) => Task.FromResult<VipProduct>(null!);
     public Task UpdateAsync(Guid id, string name, VipProductType type, Guid? categoryId, int priceInFen, int durationDays, bool isEnabled, Guid? institutionId = null) => Task.CompletedTask;
-    public Task DeleteAsync(Guid id) => Task.CompletedTask;
+    public Task DeleteAsync(Guid id) => DeleteException == null ? Task.CompletedTask : Task.FromException(DeleteException);
     public Task<List<VipProduct>> GetEnabledAsync(Guid? categoryId = null, VipProductType? type = null, Guid? institutionId = null) => Task.FromResult(new List<VipProduct>());
     public Task<bool> HasPurchasesAsync(Guid id) => Task.FromResult(false);
 }

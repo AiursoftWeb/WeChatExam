@@ -3,10 +3,27 @@
 
 <h1 class="h3 mb-3">@Localizer["VIP Products"]</h1>
 
+@if (Model.ScopeTitle != null)
+{
+    <p class="text-break"><strong>@Model.ScopeTitle</strong></p>
+    @if (User.HasClaim(Aiursoft.WeChatExam.Authorization.AppPermissions.Type, Aiursoft.WeChatExam.Authorization.AppPermissionNames.CanEditAnyCategory))
+    {
+        <a asp-controller="TotalCategories" asp-action="Edit" asp-route-id="@Model.TotalCategoryId" class="d-inline-block mb-3">@Localizer["Back to Course Settings"]</a>
+    }
+}
+
 <div class="card mb-3">
     <div class="card-body">
         <form method="get" class="row g-2 align-items-end">
             <input type="hidden" name="showDisabled" value="@Model.ShowDisabled.ToString().ToLowerInvariant()" />
+            @if (Model.TotalCategoryId.HasValue)
+            {
+                <input type="hidden" name="totalCategoryId" value="@Model.TotalCategoryId" />
+            }
+            @if (Model.InstitutionId.HasValue)
+            {
+                <input type="hidden" name="institutionId" value="@Model.InstitutionId" />
+            }
             <div class="col-auto">
                 <label class="form-label">@Localizer["Search"]</label>
                 <input type="text" name="search" value="@Model.SearchQuery" class="form-control form-control-sm" placeholder="@Localizer["Search by name, category or institution"]" />
@@ -17,7 +34,7 @@
                 </button>
             </div>
             <div class="col-auto ms-auto">
-                <a asp-action="Create" class="btn btn-success btn-sm">
+                <a asp-action="Create" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" class="btn btn-success btn-sm">
                     <i class="align-middle me-1" data-lucide="plus"></i> @Localizer["Create VIP Product"]
                 </a>
             </div>
@@ -27,12 +44,12 @@
 
 <ul class="nav nav-tabs mb-3">
     <li class="nav-item">
-        <a asp-action="Index" asp-route-search="@Model.SearchQuery" class="nav-link @(!Model.ShowDisabled ? "active" : "")" aria-current="@(!Model.ShowDisabled ? "page" : null)">
+        <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" class="nav-link @(!Model.ShowDisabled ? "active" : "")" aria-current="@(!Model.ShowDisabled ? "page" : null)">
             @Localizer["Enabled"] (@Model.EnabledCount)
         </a>
     </li>
     <li class="nav-item">
-        <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-showDisabled="true" class="nav-link @(Model.ShowDisabled ? "active" : "")" aria-current="@(Model.ShowDisabled ? "page" : null)">
+        <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" asp-route-showDisabled="true" class="nav-link @(Model.ShowDisabled ? "active" : "")" aria-current="@(Model.ShowDisabled ? "page" : null)">
             @Localizer["Disabled"] (@Model.DisabledCount)
         </a>
     </li>
@@ -101,9 +118,12 @@
                             }
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
-                                <i class="align-middle" data-lucide="edit"></i>
-                            </a>
+                            @if (product.Type != VipProductType.RealExam)
+                            {
+                                <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
+                                    <i class="align-middle" data-lucide="edit"></i>
+                                </a>
+                            }
                             <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
                                 <i class="align-middle" data-lucide="trash-2"></i>
                             </a>

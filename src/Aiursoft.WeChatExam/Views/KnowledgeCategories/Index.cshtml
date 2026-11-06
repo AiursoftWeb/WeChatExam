@@ -8,7 +8,9 @@
     {
         var badge = isRoot ? "Root" : "Child";
         var title = WebUtility.HtmlEncode(cat.Title);
-        var label = $"<div class='category-diagram-node'><div class='category-diagram-title'>{title}</div><span class='category-diagram-badge'>{badge}</span></div>";
+        // Mermaid measures HTML labels before the page stylesheet is applied.
+        // Size and wrap the complete label inline so its SVG viewBox includes all text.
+        var label = $"<div class='category-diagram-node' style='width:180px;padding:8px;text-align:left;white-space:normal'><div class='category-diagram-title' style='font-size:14px;font-weight:700;word-break:break-all;margin-bottom:4px'>{title}</div><span class='category-diagram-badge' style='font-size:11px'>{badge}</span></div>";
         return $"\"{label}\"";
     }
 

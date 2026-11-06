@@ -32,25 +32,42 @@ public class KnowledgePointsController(
         CascadedLinksOrder = 20,
         LinkText = "Knowledge Points",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(Guid? totalCategoryId, Guid? knowledgeCategoryId)
     {
-        var knowledgePoints = await context.KnowledgePoints
-            .Include(k => k.KnowledgeCategoryKnowledgePoints)
-            .ThenInclude(ck => ck.KnowledgeCategory)
-            .ToListAsync();
+        var course = totalCategoryId.HasValue
+            ? await context.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == totalCategoryId.Value) : null;
+        if (totalCategoryId.HasValue && course == null) return NotFound();
+        var category = knowledgeCategoryId.HasValue
+            ? await context.KnowledgeCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == knowledgeCategoryId.Value) : null;
+        if (knowledgeCategoryId.HasValue && category == null) return NotFound();
+        if (category != null && totalCategoryId.HasValue && category.TotalCategoryId != totalCategoryId.Value) return BadRequest();
+        if (category != null && course == null)
+            course = await context.TotalCategories.AsNoTracking().SingleAsync(c => c.Id == category.TotalCategoryId);
+
+        var query = context.KnowledgePoints.AsNoTracking();
+        // Filter the point, not the join rows: a point in several directories appears once.
+        if (course != null)
+            query = query.Where(k => k.KnowledgeCategoryKnowledgePoints.Any(a => a.KnowledgeCategory.TotalCategoryId == course.Id));
+        if (category != null)
+            query = query.Where(k => k.KnowledgeCategoryKnowledgePoints.Any(a => a.KnowledgeCategoryId == category.Id));
+        var knowledgePoints = await query.Include(k => k.KnowledgeCategoryKnowledgePoints)
+            .ThenInclude(ck => ck.KnowledgeCategory).OrderBy(k => k.Title).ThenBy(k => k.Id).ToListAsync();
 
         return this.StackView(new IndexViewModel
         {
-            KnowledgePoints = knowledgePoints
+            Course = course, Category = category, KnowledgePoints = knowledgePoints
         });
     }
 
     // GET: knowledgePoints/create
     [Authorize(Policy = AppPermissionNames.CanEditAnyKnowledgePoint)]
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create(Guid? knowledgeCategoryId)
     {
+        if (knowledgeCategoryId.HasValue &&
+            !await context.KnowledgeCategories.AnyAsync(c => c.Id == knowledgeCategoryId.Value)) return NotFound();
         var model = new CreateViewModel
         {
+            SelectedKnowledgeCategoryIds = knowledgeCategoryId.HasValue ? [knowledgeCategoryId.Value] : [],
             AvailableCategories = await context.KnowledgeCategories.Include(c => c.TotalCategory).ToListAsync(),
             AvailableQuestions = new List<Question>(),
             QuestionTypeOptions = Enum.GetValues<QuestionType>().Select(t => new SelectListItem
@@ -70,6 +87,8 @@ public class KnowledgePointsController(
     {
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
         await ValidateQuestions(model.SelectedQuestionIds);
+        var typeError = await exerciseValidation.ValidateNewQuestionTypesAsync(model.SelectedQuestionIds);
+        if (typeError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), typeError);
         var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
         if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)
@@ -203,6 +222,13 @@ public class KnowledgePointsController(
 
         await ValidateKnowledgeCategories(model.SelectedKnowledgeCategoryIds);
         await ValidateQuestions(model.SelectedQuestionIds);
+        // Existing unsupported links remain editable/removable until the teacher resolves them.
+        // Only reject newly selected questions; never silently remove saved associations.
+        var existingQuestionIds = await context.KnowledgePointQuestions.AsNoTracking()
+            .Where(k => k.KnowledgePointId == id).Select(k => k.QuestionId).ToListAsync();
+        var typeError = await exerciseValidation.ValidateNewQuestionTypesAsync(
+            model.SelectedQuestionIds.Except(existingQuestionIds));
+        if (typeError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), typeError);
         var exerciseError = await exerciseValidation.ValidateAssociationsAsync(model.SelectedKnowledgeCategoryIds, model.SelectedQuestionIds);
         if (exerciseError != null) ModelState.AddModelError(nameof(model.SelectedQuestionIds), exerciseError);
         if (!ModelState.IsValid)

@@ -12,5 +12,7 @@ public class DetailsViewModel : UiStackLayoutViewModel
 
     public required KnowledgeCategory Category { get; set; }
 
+    public List<KnowledgeCategory> ChildCategories { get; set; } = new();
+
     public List<KnowledgePoint> AssociatedKnowledgePoints { get; set; } = new();
 }

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
+      <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0}건 완료된 구매</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
     <value>작업</value>
   </data>
   <data name="Active" xml:space="preserve">
@@ -41,6 +44,9 @@
   </data>
   <data name="Channel Information" xml:space="preserve">
     <value>채널 정보</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>채널 총액에는 쿠폰 없이 추천된 학생의 구매도 포함됩니다. 특정 코드로만 이루어진 구매만 확인하려면 쿠폰을 열어야 합니다.</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>코드</value>
@@ -84,6 +90,9 @@
   <data name="Paid Orders" xml:space="preserve">
     <value>결제 완료 주문</value>
   </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>결제 권한이 필요합니다</value>
+  </data>
   <data name="Payment statistics are not yet implemented." xml:space="preserve">
     <value>결제 통계는 아직 구현되지 않았습니다.</value>
   </data>
@@ -107,6 +116,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>사용 횟수</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>구매 내역 보기</value>
   </data>
 
 </root>

@@ -57,8 +57,14 @@
   <data name="Edit / Categorize" xml:space="preserve">
     <value>수정 / 분류</value>
   </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>태그 편집</value>
+  </data>
   <data name="Failed to delete tags:" xml:space="preserve">
     <value>태그 삭제에 실패했습니다:</value>
+  </data>
+  <data name="Grouping is optional for internal tags." xml:space="preserve">
+    <value>내부 태그는 선택적으로 그룹화할 수 있습니다.</value>
   </data>
   <data name="Manage Taxonomies" xml:space="preserve">
     <value>분류 관리</value>

@@ -39,6 +39,7 @@ public class ViewModelArgsInjector(
     private void _useless_for_localizer()
     {
         // Titles, navbar strings.
+        _ = localizer["Paper Publication"];
         _ = localizer["Total Category Management"];
         _ = localizer["Advanced Management"];
         _ = localizer["Mock Paper Management"];
@@ -117,6 +118,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Marketing"];
     
         _ = localizer["Channel Details"];
+        _ = localizer["Coupon Usage Details"];
+        _ = localizer["Delete Coupon"];
         _ = localizer["Create Distribution Channel"];
         _ = localizer["Dashboard"];
         _ = localizer["Delete Category"];
@@ -181,6 +184,8 @@ public class ViewModelArgsInjector(
         _ = localizer["Edit Real Paper"];
         _ = localizer["Real Papers"];
         _ = localizer["Real Paper Questions"];
+    
+        _ = localizer["Course Contents"];
     }
 
     public void InjectSimple(

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
+    <value>{0} 题 · {1} 分 · {2} 分钟</value>
+  </data>
+  <data name="{0} questions have no explanation. Adding explanations is recommended but not required for publication." xml:space="preserve">
+    <value>{0} 道题目缺少解析。建议添加解析，但发布时并非必须。</value>
+  </data>
+  <data name="Add at least one question before publishing." xml:space="preserve">
+    <value>发布前请至少添加一个问题。</value>
+  </data>
+  <data name="Back to Editing" xml:space="preserve">
+    <value>返回编辑</value>
+  </data>
+  <data name="Check Before Publishing" xml:space="preserve">
+    <value>发布前检查</value>
+  </data>
+  <data name="Complete or correct the reference answers for {0} questions before publishing." xml:space="preserve">
+    <value>发布前，请完善或更正 {0} 道题的参考答案。</value>
+  </data>
+  <data name="Confirm Publish" xml:space="preserve">
+    <value>确认发布</value>
+  </data>
+  <data name="Confirm Unpublish" xml:space="preserve">
+    <value>确认下架</value>
+  </data>
+  <data name="Continue Editing" xml:space="preserve">
+    <value>继续编辑</value>
+  </data>
+  <data name="Every question has a reference answer. Please also check its accuracy." xml:space="preserve">
+    <value>每道题都有参考答案。请同时检查其准确性。</value>
+  </data>
+  <data name="Keep Published" xml:space="preserve">
+    <value>保持发布</value>
+  </data>
+  <data name="Publishing makes your saved content available to students. Existing student records will not be rewritten." xml:space="preserve">
+    <value>发布后，学生即可访问您保存的内容。已有的学生记录不会被重写。</value>
+  </data>
+  <data name="Questions, previous answers, scores and mistake records will be kept. You can edit and publish the paper again later." xml:space="preserve">
+    <value>题目、历史作答、分数和错题记录将予以保留。您之后可以再次编辑并重新发布该试卷。</value>
+  </data>
+  <data name="Students will no longer be able to open this paper or submit answers to it, including attempts already in progress." xml:space="preserve">
+    <value>学生将无法再打开该试卷或提交答案，包括已进行中的作答尝试。</value>
+  </data>
+  <data name="There are no saved changes to publish." xml:space="preserve">
+    <value>没有需要发布的已保存更改。</value>
+  </data>
+  <data name="These answers are empty or simply repeat the question. Open each question to correct it, then return here." xml:space="preserve">
+    <value>这些答案为空，或者只是重复了题目。请打开每道题目进行修正，然后返回此处。</value>
+  </data>
+  <data name="Unpublish this paper?" xml:space="preserve">
+    <value>确定要下架此试卷吗？</value>
+  </data>
+
+</root>
