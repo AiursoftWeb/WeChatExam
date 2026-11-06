@@ -106,7 +106,9 @@ public class VipProductsTests : TestBase
         Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(html, @"Enabled\s*\(1\)"));
         Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(html, @"Disabled\s*\(1\)"));
         var tabs = System.Text.RegularExpressions.Regex.Matches(html, @"<a\b[^>]*class=""nav-link[^""]*""[^>]*>")
-            .Select(m => WebUtility.HtmlDecode(System.Text.RegularExpressions.Regex.Match(m.Value, @"href=""([^""]+)""").Groups[1].Value)).ToArray();
+            .Select(m => WebUtility.HtmlDecode(System.Text.RegularExpressions.Regex.Match(m.Value, @"href=""([^""]+)""").Groups[1].Value))
+            .Where(link => link.StartsWith("/VipProducts?", StringComparison.Ordinal)).ToArray();
+        Assert.AreEqual(2, tabs.Length);
         var disabledLink = tabs.Single(link => link.Contains("showDisabled=true", StringComparison.Ordinal));
         foreach (var link in tabs)
         {
