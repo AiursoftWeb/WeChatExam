@@ -80,8 +80,8 @@ public class VipProductsTests : TestBase
         await LoginAsAdmin();
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        var course = new TotalCategory { Title = "Scoped music course" };
-        var school = new Institution { Title = "Scoped music school" };
+        var course = new TotalCategory { Title = "Music course one" };
+        var school = new Institution { Title = "Music school one" };
         var otherCourse = new TotalCategory { Title = "Other music course" };
         var otherSchool = new Institution { Title = "Other music school" };
         db.AddRange(course, school, otherCourse, otherSchool);
