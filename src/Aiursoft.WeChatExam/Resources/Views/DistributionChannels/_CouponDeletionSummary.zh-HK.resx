@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>優惠券已被標記為已使用。即使其原訂單已無法查看，也請予以保留。</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>無法刪除：此優惠券或頻道已有歷史記錄。</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>優惠券認領，包括已使用的認領</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>優惠券使用記錄</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>優惠券</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>會員變更記錄</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>無訂單、索賠或歷史記錄，可執行刪除。</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>開啟會員變更記錄</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>開啟付款訂單</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>訂單，包括未付款訂單</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>訂單、會員變更、兌換記錄及使用記錄必須予以保留。即使優惠券沒有已完成購買，仍可能存在這些記錄。</value>
+  </data>
+
+</root>

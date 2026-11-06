@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>1900年1月1日以降の日付を選択してください。</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>クーポンは無効化されました。既存の適用、注文、メンバーシップは保持されています。</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>クーポンは有効化されましたが、チャネルは無効化されています。チャネルが有効化されるまで利用できません。</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>クーポンが有効になりました。一回きりの利用履歴はリセットされていません。</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>日付範囲またはタイムゾーンが有効ではありません。</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>開始日は終了日より後に設定できません。</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>このチャンネルにはクーポンの履歴があります。参考のために保持し、今後の利用を停止するにはチャンネルを無効にしてください。</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>このクーポンは履歴があるため削除できません。注文、請求、およびメンバーシップの記録は保存されなければなりません。</value>
   </data>
 
 </root>

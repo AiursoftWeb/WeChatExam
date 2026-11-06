@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Kanal Detayları</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Kanal Devre Dışı</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanal Bilgisi</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Kanalı Devre Dışı Bırak</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Kuponu Devre Dışı Bırak</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Devre Dışı</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Kuponun devre dışı bırakılması, onunla yapılan yeni talepleri ve yeni siparişleri durdurur. Zaten oluşturulmuş ödeme siparişleri tamamlanmaya devam edebilir. Mevcut üyelikler ve geçmiş kayıtlar korunur.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>İndirim</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Kanalı Etkinleştir</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Kuponu Etkinleştir</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Etkin</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Kayıtlar</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Silinmeyi İncele</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>Tek Kullanımlık</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Tüm eylemleri görmek için kupon listesini yan kaydırın.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Toplam Tutar</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Kullanım</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Kullanıldı (Tek Kullanımlık)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Satın Alışları Görüntüle</value>

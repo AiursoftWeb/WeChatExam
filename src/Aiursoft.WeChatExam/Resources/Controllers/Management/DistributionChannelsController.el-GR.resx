@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Επιλέξτε ημερομηνίες από την 1η Ιανουαρίου 1900 και μετά.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Το κουπόνι απενεργοποιήθηκε. Οι υπάρχουσες αξιώσεις, παραγγελίες και συνδρομές διατηρήθηκαν.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Το κουπόνι ενεργοποιήθηκε, αλλά ο κανάλι είναι απενεργοποιημένο. Παραμένει μη διαθέσιμο έως ότου το κανάλι ενεργοποιηθεί.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Το κουπόνι ενεργοποιήθηκε. Το ιστορικό μονοχρησίας δεν έχει επαναφερθεί.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Το εύρος ημερομηνιών ή η ζώνη ώρας δεν είναι έγκυρη.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Η ημερομηνία έναρξης δεν πρέπει να είναι μετά την ημερομηνία λήξης.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Αυτός ο κανάλι έχει ιστορικό κουπονιών. Διατηρήστε το για αναφορά και απενεργοποιήστε το κανάλι για να σταματήσετε τη μελλοντική χρήση.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Αυτό το κουπόνι έχει ιστορικό και δεν μπορεί να διαγραφεί. Οι παραγγελίες, οι αξιώσεις και τα αρχεία εγγραφής του πρέπει να διατηρηθούν.</value>
   </data>
 
 </root>

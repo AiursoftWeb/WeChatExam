@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>เลือกวันที่ตั้งแต่ 1 มกราคม 1900 เป็นต้นไป</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>คูปองถูกปิดใช้งานแล้ว การเคลม คำสั่งซื้อ และสมาชิกภาพที่มีอยู่ยังคงถูกเก็บรักษาไว้</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>คูปองถูกเปิดใช้งานแล้ว แต่ช่องทางถูกปิดใช้งานอยู่ จึงยังคงไม่สามารถใช้งานได้จนกว่าช่องทางจะถูกเปิดใช้งาน</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>คูปองถูกเปิดใช้งานแล้ว ประวัติการใช้งานครั้งเดียวยังไม่ถูกล้าง</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>ช่วงวันที่หรือเขตเวลาไม่ถูกต้อง</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>วันที่เริ่มต้นต้องไม่อยู่หลังวันที่สิ้นสุด</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>ช่องทางนี้มีประวัติคูปอง ให้คงไว้เพื่อใช้อ้างอิง และปิดใช้งานช่องทางเพื่อหยุดการใช้งานในอนาคต</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>คูปองนี้มีประวัติการใช้งานจึงไม่สามารถลบได้ ต้องรักษาบันทึกคำสั่งซื้อ การแลกใช้ และข้อมูลสมาชิกไว้</value>
   </data>
 
 </root>

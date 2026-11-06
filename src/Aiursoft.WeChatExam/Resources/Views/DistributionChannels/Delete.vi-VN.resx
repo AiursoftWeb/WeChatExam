@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Xóa kênh phân phối</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>Việc xóa sẽ xóa vĩnh viễn kênh này, các mã giảm giá chưa sử dụng và tất cả các liên kết người dùng. Thao tác này không thể hoàn tác.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Giữ lại kênh này để tham khảo. Vô hiệu hóa nó từ trang chi tiết kênh để ngừng sử dụng mã giảm giá trong tương lai trong khi vẫn lưu giữ lịch sử.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Đăng ký</value>
   </data>

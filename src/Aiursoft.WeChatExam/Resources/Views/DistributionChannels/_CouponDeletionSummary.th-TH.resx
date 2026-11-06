@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>คูปองถูกกำหนดสถานะว่าใช้แล้ว ให้เก็บรักษาไว้แม้ว่าคำสั่งซื้อเดิมจะไม่สามารถเข้าถึงได้</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>ไม่สามารถลบได้: บัตรกำนัลหรือช่องทางนี้มีประวัติการใช้งาน</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>การรับสิทธิ์คูปอง รวมถึงสิทธิ์ที่ถูกใช้แล้ว</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>บันทึกการใช้งานคูปอง</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>คูปอง</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>บันทึกการเปลี่ยนแปลงสมาชิก</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>ไม่มีคำสั่งซื้อ การแลกใช้ หรือประวัติที่ขัดขวางการลบ</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>เปิดประวัติการเปลี่ยนแปลงสมาชิก</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>เปิดคำสั่งชำระเงิน</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>คำสั่งซื้อ รวมถึงคำสั่งซื้อที่ยังไม่ได้ชำระเงิน</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>คำสั่งซื้อ การเปลี่ยนแปลงสมาชิกภาพ การรับสิทธิ์ และบันทึกการใช้งานต้องได้รับการรักษาไว้ คูปองที่ไม่มีการซื้อที่เสร็จสมบูรณ์อาจยังคงมีบันทึกเหล่านี้</value>
+  </data>
+
+</root>

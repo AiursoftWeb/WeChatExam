@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Șterge canalul de distribuție</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>Ștergerea elimină definitiv acest canal, cupoanele sale neutilizate și toate legăturile cu utilizatorii. Această operațiune nu poate fi anulată.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Păstrați acest canal pentru referință. Dezactivați-l din pagina detaliilor canalului pentru a opri utilizarea viitoare a cupoanelor, păstrând în același timp istoricul.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Înregistrări</value>
   </data>

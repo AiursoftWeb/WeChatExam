@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Kanaaldetails</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Kanaal uitgeschakeld</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanaalinformatie</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Kanaal uitschakelen</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Coupon deactiveren</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Uitgeschakeld</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Het uitschakelen van een coupon stopt nieuwe inlossingen en nieuwe bestellingen die het gebruiken. Reeds aangemaakte betaalbestellingen kunnen nog steeds worden voltooid. Bestaande lidmaatschappen en geschiedenis worden behouden.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Korting</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Kanaal inschakelen</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Coupon activeren</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Ingeschakeld</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Inschrijvingen</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Verwijdering controleren</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>Enkele keer</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Veeg de couponlijst horizontaal om alle acties te zien.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Totaalbedrag</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Gebruik</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Gebruikt (Enkele keer)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Aankopen bekijken</value>

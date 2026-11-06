@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Eliminar Canal de Distribuição</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>A eliminação remove permanentemente este canal, os seus cupões não utilizados e todas as associações de utilizadores. Esta ação não pode ser revertida.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Mantenha este canal para referência. Desative-o na página de detalhes do canal para impedir o uso futuro de cupons, preservando o histórico.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Registos</value>
   </data>

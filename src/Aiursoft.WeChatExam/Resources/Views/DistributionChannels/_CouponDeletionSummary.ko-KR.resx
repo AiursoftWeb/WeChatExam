@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A coupon is marked as used. Keep it even if its original order is unavailable." xml:space="preserve">
+    <value>쿠폰이 사용된 것으로 표시되어 있습니다. 원본 주문을 사용할 수 없어도 유지하십시오.</value>
+  </data>
+  <data name="Cannot delete: this coupon or channel has history." xml:space="preserve">
+    <value>삭제할 수 없음: 이 쿠폰 또는 채널에 기록이 있습니다.</value>
+  </data>
+  <data name="Coupon claims, including used claims" xml:space="preserve">
+    <value>쿠폰 청구, 사용된 청구 포함</value>
+  </data>
+  <data name="Coupon usage records" xml:space="preserve">
+    <value>쿠폰 사용 기록</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>쿠폰</value>
+  </data>
+  <data name="Membership change records" xml:space="preserve">
+    <value>멤버십 변경 기록</value>
+  </data>
+  <data name="No orders, claims or history block deletion." xml:space="preserve">
+    <value>주문, 쿠폰 수령 또는 기록이 없어 삭제할 수 있습니다.</value>
+  </data>
+  <data name="Open Membership Change History" xml:space="preserve">
+    <value>멤버십 변경 이력 열기</value>
+  </data>
+  <data name="Open Payment Orders" xml:space="preserve">
+    <value>결제 주문 열기</value>
+  </data>
+  <data name="Orders, including unpaid orders" xml:space="preserve">
+    <value>주문 (미결제 주문 포함)</value>
+  </data>
+  <data name="Orders, membership changes, claims and usage records must be preserved. A coupon with no completed purchases may still have these records." xml:space="preserve">
+    <value>주문, 멤버십 변경, 쿠폰 청구 및 사용 기록은 보존되어야 합니다. 완료된 구매가 없는 쿠폰에도 이러한 기록이 존재할 수 있습니다.</value>
+  </data>
+
+</root>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Back to Channel" xml:space="preserve">
+    <value>กลับไปยังช่อง</value>
+  </data>
+  <data name="Delete Coupon" xml:space="preserve">
+    <value>ลบคูปอง</value>
+  </data>
+  <data name="Deleting this unused coupon permanently removes its code and product restrictions. This cannot be undone." xml:space="preserve">
+    <value>การลบคูปองที่ยังไม่ได้ใช้งานนี้เป็นการลบรหัสและข้อจำกัดของผลิตภัณฑ์อย่างถาวร การดำเนินการนี้ไม่สามารถย้อนกลับได้</value>
+  </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>ปิดใช้คูปอง</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>เปิดใช้งานคูปอง</value>
+  </data>
+  <data name="Keep this coupon for reference. Disable only this coupon to stop new claims and new orders using it. Existing payment orders may still complete, and history is kept." xml:space="preserve">
+    <value>เก็บคูปองนี้ไว้เป็นข้อมูลอ้างอิง ปิดใช้งานเฉพาะคูปองนี้เพื่อหยุดการรับสิทธิ์ใหม่และคำสั่งซื้อใหม่ที่ใช้คูปองนี้ คำสั่งซื้อที่ชำระเงินอยู่แล้วอาจดำเนินการต่อจนเสร็จ และประวัติจะยังคงถูกเก็บไว้</value>
+  </data>
+  <data name="Permanently Delete Coupon" xml:space="preserve">
+    <value>ลบคูปองอย่างถาวร</value>
+  </data>
+  <data name="The channel is disabled. Enabling this coupon alone will not make it available." xml:space="preserve">
+    <value>ช่องทางนี้ถูกระงับการใช้งาน การเปิดใช้งานคูปองนี้เพียงอย่างเดียวจะไม่สามารถทำให้คูปองพร้อมใช้งานได้</value>
+  </data>
+  <data name="View Completed Purchases" xml:space="preserve">
+    <value>ดูการซื้อที่เสร็จสิ้น</value>
+  </data>
+
+</root>

@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>管道詳細資訊</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>頻道已停用</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>通路資訊</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>停用通路</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>停用優惠券</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>已停用</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>停用優惠券後，將無法進行新的兌換及使用該優惠券下新訂單。已建立的付款訂單仍可完成。現有的會員資格與歷史記錄將予以保留。</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>折扣</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>啟用通路</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>啟用優惠券</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>啟用</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>註冊人數</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>檢視刪除</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>單次使用</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>狀態</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>左右滑動優惠券列表以查看所有操作。</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>總金額</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>使用次數</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>已使用（單次使用）</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>查看購買紀錄</value>

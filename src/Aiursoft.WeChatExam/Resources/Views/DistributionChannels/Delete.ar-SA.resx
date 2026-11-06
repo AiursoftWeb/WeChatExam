@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>حذف قناة التوزيع</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>الحذف يزيل هذا القناة بشكل دائم، بما في ذلك قسائمها غير المستخدمة وجميع روابط المستخدمين. لا يمكن التراجع عن هذا الإجراء.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>احتفظ بهذا القناة للرجوع إليها. قم بتعطيلها من صفحة تفاصيل القناة لإيقاف استخدام القسائم المستقبلية مع الحفاظ على السجل.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>التسجيلات</value>
   </data>

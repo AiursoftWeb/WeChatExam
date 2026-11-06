@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Choose dates on or after 1 January 1900.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Coupon disabled. Existing claims, orders and memberships have been kept.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Coupon enabled. Single-use history has not been reset.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>The date range or time zone is not valid.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>The start date must not be after the end date.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>This channel has coupon history. Keep it for reference and disable the channel to stop future use.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved.</value>
   </data>
 
 </root>

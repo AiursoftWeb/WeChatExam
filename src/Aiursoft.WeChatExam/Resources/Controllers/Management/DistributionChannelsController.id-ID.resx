@@ -21,11 +21,26 @@
       <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
     <value>Pilih tanggal pada atau setelah 1 Januari 1900.</value>
   </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Kupon dinonaktifkan. Klaim, pesanan, dan keanggotaan yang sudah ada tetap dipertahankan.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Kupon diaktifkan, tetapi saluran dinonaktifkan. Kupon tetap tidak tersedia hingga saluran diaktifkan.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Kupon diaktifkan. Riwayat penggunaan satu kali tidak direset.</value>
+  </data>
   <data name="The date range or time zone is not valid." xml:space="preserve">
     <value>Rentang tanggal atau zona waktu tidak valid.</value>
   </data>
   <data name="The start date must not be after the end date." xml:space="preserve">
     <value>Tanggal mulai tidak boleh setelah tanggal berakhir.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Saluran ini memiliki riwayat kupon. Simpan sebagai referensi dan nonaktifkan saluran untuk menghentikan penggunaan di masa mendatang.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Kupon ini memiliki riwayat dan tidak dapat dihapus. Pesanan, klaim, dan catatan keanggotaannya harus dipertahankan.</value>
   </data>
 
 </root>

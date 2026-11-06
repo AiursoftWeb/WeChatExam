@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Kanalinformation</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Kanal inaktiverad</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Kanalinformation</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Inaktivera kanal</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Inaktivera kupong</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Inaktiverad</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Att inaktivera en kupong stoppar nya ansökningar och nya beställningar som använder den. Allreda skapade betalningsbeställningar kan fortfarande slutföras. Befintliga medlemskap och historik behålls.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Rabatt</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Aktivera kanal</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Aktivera kupong</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Aktiverat</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Registreringar</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Granska borttagning</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>En gångsbruk</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Svep kuponglistan åt sidan för att se alla åtgärder.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Totalt belopp</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Användning</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Använd (Enkelskick)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Visa köp</value>

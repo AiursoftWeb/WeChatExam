@@ -39,6 +39,12 @@
   <data name="Delete Distribution Channel" xml:space="preserve">
     <value>Dağıtım Kanalını Sil</value>
   </data>
+  <data name="Deletion permanently removes this channel, its unused coupons and all user bindings. This cannot be undone." xml:space="preserve">
+    <value>Silme işlemi, bu kanalı, kullanılmamış kuponlarını ve tüm kullanıcı bağlantılarını kalıcı olarak kaldırır. Bu işlem geri alınamaz.</value>
+  </data>
+  <data name="Keep this channel for reference. Disable it from the channel details page to stop future coupon use while preserving history." xml:space="preserve">
+    <value>Bu kanalı referans olarak saklayın. Gelecekteki kupon kullanımını durdurmak ve geçmişin korunmasını sağlamak için kanalı, kanal ayrıntıları sayfasından devre dışı bırakın.</value>
+  </data>
   <data name="Registrations" xml:space="preserve">
     <value>Kayıtlar</value>
   </data>

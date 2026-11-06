@@ -42,6 +42,9 @@
   <data name="Channel Details" xml:space="preserve">
     <value>Detalii canal</value>
   </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Canal dezactivat</value>
+  </data>
   <data name="Channel Information" xml:space="preserve">
     <value>Informații canal</value>
   </data>
@@ -63,8 +66,14 @@
   <data name="Disable Channel" xml:space="preserve">
     <value>Dezactivează canalul</value>
   </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Dezactivează Cuponul</value>
+  </data>
   <data name="Disabled" xml:space="preserve">
     <value>Dezactivat</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Dezactivarea unui cupon oprește noi revendicări și noi comenzi care îl folosesc. Comenzile de plată deja create pot încă fi finalizate. Abonamentele existente și istoricul sunt păstrate.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Scont</value>
@@ -74,6 +83,9 @@
   </data>
   <data name="Enable Channel" xml:space="preserve">
     <value>Activează canalul</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Activează cuponul</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>Activat</value>
@@ -99,6 +111,9 @@
   <data name="Registrations" xml:space="preserve">
     <value>Înregistrări</value>
   </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Ștergere</value>
+  </data>
   <data name="Single Use" xml:space="preserve">
     <value>O singură utilizare</value>
   </data>
@@ -108,6 +123,9 @@
   <data name="Status" xml:space="preserve">
     <value>Stare</value>
   </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Glisați lista de cupoane lateral pentru a vedea toate acțiunile.</value>
+  </data>
   <data name="Total Amount" xml:space="preserve">
     <value>Sumă totală</value>
   </data>
@@ -116,6 +134,9 @@
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Utilizare</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Folosit (Utilizare unică)</value>
   </data>
   <data name="View Purchases" xml:space="preserve">
     <value>Vizualizează achizițiile</value>
