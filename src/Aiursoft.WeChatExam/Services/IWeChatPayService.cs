@@ -48,6 +48,12 @@ public interface IWeChatPayService
 /// </summary>
 public class CreateOrderResult
 {
+    // These amounts describe the saved order, including retries after catalog changes.
+    public int OriginalAmountInFen { get; set; }
+    public int DiscountInFen { get; set; }
+    public int AmountInFen { get; set; }
+    public string? AppliedCouponCode { get; set; }
+
     public bool Success { get; set; }
     public string? OutTradeNo { get; set; }
     public string? PrepayId { get; set; }
