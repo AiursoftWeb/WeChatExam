@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Accounting Reports" xml:space="preserve">
+      <data name="Access Denied" xml:space="preserve">
+    <value>Доступ заборонено</value>
+  </data>
+  <data name="Accounting Reports" xml:space="preserve">
     <value>Звіти з бухгалтерського обліку</value>
   </data>
   <data name="Admin" xml:space="preserve">
@@ -47,6 +50,9 @@
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Фонові завдання</value>
+  </data>
+  <data name="Bad Request" xml:space="preserve">
+    <value>Некоректний запит</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Категорії</value>
@@ -246,6 +252,9 @@
   <data name="Institutions" xml:space="preserve">
     <value>Установи</value>
   </data>
+  <data name="Internal Server Error" xml:space="preserve">
+    <value>Внутрішня помилка сервера</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Приєднатися до офіційного іспиту</value>
   </data>
@@ -305,6 +314,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Новини</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Не знайдено</value>
   </data>
   <data name="Paper Publication" xml:space="preserve">
     <value>Публікація тесту</value>

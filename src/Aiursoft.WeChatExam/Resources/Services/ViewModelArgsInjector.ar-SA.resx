@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Accounting Reports" xml:space="preserve">
+      <data name="Access Denied" xml:space="preserve">
+    <value>تم رفض الوصول</value>
+  </data>
+  <data name="Accounting Reports" xml:space="preserve">
     <value>التقارير المحاسبية</value>
   </data>
   <data name="Admin" xml:space="preserve">
@@ -47,6 +50,9 @@
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>وظائف الخلفية</value>
+  </data>
+  <data name="Bad Request" xml:space="preserve">
+    <value>طلب غير صالح</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>فئات</value>
@@ -246,6 +252,9 @@
   <data name="Institutions" xml:space="preserve">
     <value>المؤسسات</value>
   </data>
+  <data name="Internal Server Error" xml:space="preserve">
+    <value>خطأ في الخادم الداخلي</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>انضم إلى الامتحان الرسمي</value>
   </data>
@@ -305,6 +314,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>الأخبار</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>غير موجود</value>
   </data>
   <data name="Paper Publication" xml:space="preserve">
     <value>نشر الأوراق</value>

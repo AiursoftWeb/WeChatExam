@@ -42,6 +42,9 @@
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AIで説明を生成する</value>
   </data>
+  <data name="AI Tools" xml:space="preserve">
+    <value>AIツール</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>すべてのカテゴリ</value>
   </data>
@@ -197,6 +200,12 @@
   </data>
   <data name="Select All / Deselect All" xml:space="preserve">
     <value>すべて選択 / 選択解除</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>このページのすべてを選択</value>
+  </data>
+  <data name="Select question" xml:space="preserve">
+    <value>質問を選択</value>
   </data>
   <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
     <value>AI分類の候補となるカテゴリを選択してください。AIは各質問に対して正確に1つのカテゴリを選択します。</value>

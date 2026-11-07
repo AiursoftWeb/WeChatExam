@@ -42,6 +42,9 @@
   <data name="AI Generate Explanations" xml:space="preserve">
     <value>AI 설명 생성</value>
   </data>
+  <data name="AI Tools" xml:space="preserve">
+    <value>AI 도구</value>
+  </data>
   <data name="All Categories" xml:space="preserve">
     <value>전체 카테고리</value>
   </data>
@@ -197,6 +200,12 @@
   </data>
   <data name="Select All / Deselect All" xml:space="preserve">
     <value>전체 선택 / 전체 해제</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>이 페이지의 모든 항목 선택</value>
+  </data>
+  <data name="Select question" xml:space="preserve">
+    <value>질문 선택</value>
   </data>
   <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
     <value>AI 분류를 위한 후보 카테고리를 선택하세요. AI는 각 질문에 대해 정확히 하나의 카테고리를 선택합니다.</value>
