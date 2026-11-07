@@ -356,7 +356,7 @@ public class KnowledgePointsController(
         context.KnowledgePoints.Remove(knowledgePoint);
         await context.SaveChangesAsync();
 
-        if (Url.IsLocalUrl(returnUrl)) return LocalRedirect(returnUrl!);
+        if (Url.IsLocalUrl(returnUrl)) return LocalRedirect(returnUrl);
         return RedirectToAction(nameof(Index));
     }
 
