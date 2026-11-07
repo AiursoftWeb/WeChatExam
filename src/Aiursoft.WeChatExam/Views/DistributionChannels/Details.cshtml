@@ -175,6 +175,7 @@
 
 <div class="d-flex gap-2">
     <form method="post" asp-action="ToggleEnabled" asp-route-id="@Model.Channel.Id" style="display: inline;">
+        <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
         @Html.AntiForgeryToken()
         @if (Model.Channel.IsEnabled)
         {
@@ -192,7 +193,7 @@
     <a asp-action="Delete" asp-route-id="@Model.Channel.Id" class="btn btn-danger">
         <i data-lucide="trash-2"></i> @Localizer["Delete"]
     </a>
-    <a asp-action="Index" class="btn btn-secondary">
+    <a href="@(Url.IsLocalUrl(Model.ReturnUrl) ? Model.ReturnUrl : Url.Action("Index"))" class="btn btn-secondary">
         <i data-lucide="arrow-left"></i> @Localizer["Back to List"]
     </a>
 </div>

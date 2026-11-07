@@ -10,10 +10,11 @@
             <strong class="fs-5">@Model.KnowledgePoint.Title</strong>
         </div>
         <form asp-action="Delete" asp-route-id="@Model.KnowledgePoint.Id" method="post" class="d-inline-block">
+            <input type="hidden" asp-for="ReturnUrl" />
             <button type="submit" class="btn btn-danger">
                 <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Yes, delete this knowledgePoint"]
             </button>
         </form>
-        <a asp-action="Index" class="btn btn-light">@Localizer["Cancel"]</a>
+        <a href="@(Url.IsLocalUrl(Model.ReturnUrl) ? Model.ReturnUrl : Url.Action("Index"))" class="btn btn-light">@Localizer["Cancel"]</a>
     </div>
 </div>

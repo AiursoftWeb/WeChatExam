@@ -105,13 +105,13 @@
                            data-update-url="@Url.Action("UpdateKnowledgePointOrder", "KnowledgeCategories", new { id = Model.Category.Id })">
                         @foreach (var kp in Model.AssociatedKnowledgePoints)
                         {
-                            <tr data-knowledge-point-id="@kp.Id">
+                            <tr id="knowledge-point-@kp.Id" data-knowledge-point-id="@kp.Id">
                                 <td class="knowledge-point-drag-column text-muted">
                                     <i class="align-middle knowledge-point-drag-handle" data-lucide="grip-vertical"></i>
                                 </td>
                                 <td>@kp.Title</td>
                                 <td>
-                                    <a asp-controller="KnowledgePoints" asp-action="Details" asp-route-id="@kp.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
+                                    <a asp-controller="KnowledgePoints" asp-action="Details" asp-route-id="@kp.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#knowledge-point-" + kp.Id)" class="btn btn-sm btn-info">@Localizer["Details"]</a>
                                 </td>
                             </tr>
                         }
