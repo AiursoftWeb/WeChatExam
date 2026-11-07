@@ -1,9 +1,11 @@
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Aiursoft.WeChatExam.Services.Authentication;
@@ -107,7 +109,8 @@ public static class AuthenticationExtensions
 
                 options.Events = new OpenIdConnectEvents
                 {
-                    OnTokenValidated = SyncOidcContext
+                    OnTokenValidated = SyncOidcContext,
+                    OnRemoteFailure = HandleRemoteFailure
                 };
             });
         }
@@ -122,6 +125,42 @@ public static class AuthenticationExtensions
             }
         });
         return services;
+    }
+
+    /// <summary>
+    /// Reject invalid callbacks and recover from expected OIDC login failures.
+    /// </summary>
+    private static async Task HandleRemoteFailure(RemoteFailureContext context)
+    {
+        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
+
+        // Explicit authentication rejections include missing/invalid state and expired correlation cookies.
+        // Failures with an inner exception retain the normal server-error path.
+        if (context.Failure is AuthenticationFailureException { InnerException: null })
+        {
+            logger.LogWarning("Rejected an invalid or expired OIDC callback.");
+            context.HandleResponse();
+            context.Response.StatusCode = StatusCodes.Status400BadRequest;
+        }
+        else if (context.Failure is OpenIdConnectProtocolException &&
+                 context.Failure.Data["error"] is "invalid_grant" or "access_denied" or
+                     "login_required" or "interaction_required" or "consent_required")
+        {
+            logger.LogWarning("OIDC login could not be completed. Initiating cleanup and redirect.");
+
+            // 1. Mark the exception as handled to prevent the yellow screen of death
+            context.HandleResponse();
+
+            // 2. Force cleanup of local cookies
+            // Clear External Scheme (temporary cookie used by OIDC middleware)
+            await context.HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            // Clear Application Scheme (to prevent stale login state)
+            await context.HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+
+            // 3. Redirect back to login page to let user retry with a fresh request
+            context.Response.Redirect("/Account/Login");
+        }
+        // Unexpected failures propagate to the exception middleware; do not log them twice here.
     }
 
     private static async Task SyncOidcContext(TokenValidatedContext context)
@@ -145,7 +184,7 @@ public static class AuthenticationExtensions
             string.IsNullOrEmpty(email) ||
             string.IsNullOrEmpty(providerKey))
         {
-            context.Fail("Could not find the required username, displayName, email, or sub claim in the OIDC token.");
+            context.Fail(new InvalidOperationException("Could not find the required username, displayName, email, or sub claim in the OIDC token."));
             return;
         }
 
@@ -166,7 +205,7 @@ public static class AuthenticationExtensions
         if (!syncResult.Succeeded)
         {
             var errors = string.Join(", ", syncResult.Errors.Select(error => error.Description));
-            context.Fail($"Failed to synchronize the OIDC account: {errors}");
+            context.Fail(new InvalidOperationException($"Failed to synchronize the OIDC account: {errors}"));
         }
     }
 }
