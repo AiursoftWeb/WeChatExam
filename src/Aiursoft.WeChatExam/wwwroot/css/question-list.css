@@ -1,0 +1,194 @@
+.questions-table .question-select {
+    width: 40px;
+}
+
+.questions-table .question-tags, .questions-table .question-created {
+    width: 180px;
+}
+
+.questions-table .question-type {
+    width: 150px;
+}
+
+.questions-table .question-period {
+    width: 200px;
+}
+
+.questions-table .question-actions {
+    width: 140px;
+}
+
+.questions-table .question-content {
+    max-width: 400px;
+}
+
+.question-select-target {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin: 0;
+}
+
+.question-select-target input {
+    margin: 0;
+}
+
+
+@media (max-width: 575.98px) {
+    .questions-table, .questions-table thead, .questions-table tbody {
+        display: block;
+    }
+
+    .questions-table thead tr {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .5rem;
+        padding: .5rem 1rem;
+    }
+
+    .questions-table thead th {
+        display: block;
+        width: auto;
+        border: 0;
+        padding: 0;
+        font-size: .8rem;
+    }
+
+    .questions-table thead .question-tags, .questions-table thead .question-period, .questions-table thead .question-actions {
+        display: none;
+    }
+
+    .questions-table thead .question-select, .questions-table thead .question-type, .questions-table thead .question-created {
+        width: auto;
+    }
+
+    .card > .table-responsive > .questions-table thead th:first-child {
+        padding-left: 0;
+    }
+
+    .questions-table thead a {
+        min-height: 44px;
+    }
+
+    .questions-table tbody tr {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr) auto;
+        gap: .375rem .5rem;
+        padding: 1rem;
+        border-top: 1px solid var(--bs-border-color);
+    }
+
+    .card > .table-responsive > .questions-table tbody tr td {
+        display: block;
+        width: auto;
+        padding: 0;
+        border: 0;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .card > .table-responsive > .questions-table tbody td:first-child {
+        padding-left: 0;
+    }
+
+    .card > .table-responsive > .questions-table tbody td:last-child {
+        padding-right: 0;
+    }
+
+    .questions-table tbody tr:has(.row-selector:checked) {
+        background-color: var(--bs-table-active-bg);
+    }
+
+    .questions-table .question-select {
+        grid-column: 1;
+        grid-row: 1 / span 5;
+    }
+
+    .questions-table .question-content {
+        grid-column: 2 / -1;
+        grid-row: 1;
+        max-width: none;
+        white-space: normal;
+    }
+
+    .question-preview {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .questions-table .question-type {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .questions-table .question-created {
+        grid-column: 3;
+        grid-row: 2;
+        font-size: .7rem;
+        color: var(--bs-secondary-color);
+    }
+
+    .card > .table-responsive > .questions-table tbody .question-period {
+        grid-column: 2 / -1;
+        grid-row: 3;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .25rem .75rem;
+        font-size: .8rem;
+    }
+
+    .questions-table .question-tags {
+        grid-column: 2 / -1;
+        grid-row: 4;
+    }
+
+    .card > .table-responsive > .questions-table .question-tags-empty {
+        display: none;
+    }
+
+    .questions-table .question-actions {
+        grid-column: 2 / -1;
+        grid-row: 5;
+    }
+
+    .questions-table .question-actions .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .questions-table td[colspan] {
+        grid-column: 1 / -1;
+    }
+
+    #batchToolbar {
+        padding: .5rem;
+    }
+
+    #batchToolbar .btn {
+        min-height: 44px;
+    }
+
+    #batchToolbar .dropdown-menu {
+        max-width: calc(100vw - 2rem);
+    }
+
+    #batchToolbar .dropdown-item {
+        white-space: normal;
+        min-height: 44px;
+    }
+
+}
+
+body:has(#batchToolbar:not(.d-none)) main {
+    padding-bottom: 9rem;
+}

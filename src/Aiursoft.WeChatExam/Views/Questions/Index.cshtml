@@ -4,6 +4,23 @@
 @{ var canAssignPeriod = (await AuthorizationService.AuthorizeAsync(User, AppPermissionNames.CanEditQuestions)).Succeeded; }
 @using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.QuestionsViewModels.IndexViewModel
+@{
+    var filters = new List<string>();
+    var courseTitle = Model.TotalCategories.FirstOrDefault(c => c.Id == Model.TotalCategoryId)?.Title;
+    var periodTitle = Model.QuestionCategories.FirstOrDefault(c => c.Id.ToString() == Model.SelectedPeriod)?.Title;
+    if (courseTitle != null) filters.Add(courseTitle);
+    if (periodTitle != null) filters.Add(periodTitle);
+    if (Model.FilterQuestionType.HasValue) filters.Add(Localizer[Model.FilterQuestionType.Value.GetDisplayName()].Value);
+    if (!string.IsNullOrWhiteSpace(Model.FilterTag)) filters.Add(Model.FilterTag);
+    if (Model.FilterStartDate.HasValue) filters.Add(Localizer["From {0}", Model.FilterStartDate.Value.ToString("yyyy-MM-dd")].Value);
+    if (Model.FilterEndDate.HasValue) filters.Add(Localizer["Until {0}", Model.FilterEndDate.Value.ToString("yyyy-MM-dd")].Value);
+    if (!string.IsNullOrWhiteSpace(Model.FilterMtql)) filters.Add(Model.FilterMtql);
+    var filterErrors = ViewData.ModelState.ErrorCount > 0;
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/css/question-list.css" asp-append-version="true" />
+}
 
 <div class="row mb-3">
     <div class="col-12 d-flex justify-content-between align-items-center">
@@ -20,13 +37,17 @@
 </form>
 
 <div class="card mb-3">
-    <div class="card-header cursor-pointer" data-bs-toggle="collapse" data-bs-target="#filterPanel">
-        <h5 class="card-title mb-0 d-flex justify-content-between">
-            <span><i class="align-middle me-2" data-lucide="filter"></i> @Localizer["Filters & Search"]</span>
-            <i class="align-middle" data-lucide="chevron-down"></i>
-        </h5>
+    <div class="card-header">
+        <button type="button" class="btn btn-link text-body text-start text-decoration-none p-0 w-100"
+                data-bs-toggle="collapse" data-bs-target="#filterPanel" aria-controls="filterPanel" aria-expanded="@(filterErrors ? "true" : "false")">
+            <span class="d-flex align-items-center justify-content-between gap-2">
+                <span><i class="align-middle me-2" data-lucide="filter"></i> @Localizer["Filters & Search"]</span>
+                <i class="align-middle" data-lucide="chevron-down"></i>
+            </span>
+            <span class="small text-muted d-block mt-2 text-break">@(filters.Count == 0 ? Localizer["All Questions"].Value : string.Join(" · ", filters)) · @Model.TotalCount @Localizer["Questions"]</span>
+        </button>
     </div>
-    <div id="filterPanel" class="collapse show">
+    <div id="filterPanel" class="collapse @(filterErrors ? "show" : "")">
         <div class="card-body">
             <form asp-action="Index" method="get" id="filterForm">
                 <input type="hidden" name="sortBy" value="@Model.SortBy" />
@@ -105,46 +126,46 @@
 
 <div class="card position-relative">
     <div class="table-responsive">
-        <table class="table table-hover mb-0">
-            <thead class="table-light">
+        <table class="table table-hover mb-0 questions-table">
+            <thead>
                 <tr>
-                    <th style="width: 40px;">
-                        <input type="checkbox" class="form-check-input" id="selectAll" onclick="toggleSelectAll(this)" />
+                    <th class="question-select">
+                        <label class="question-select-target"><input type="checkbox" class="form-check-input" id="selectAll" onclick="toggleSelectAll(this)" /><span class="visually-hidden">@Localizer["Select all on this page"]</span></label>
                     </th>
                     <th>
-                        <a href="javascript:void(0)" onclick="sort('Content')" class="text-decoration-none text-dark d-flex align-items-center">
+                        <a href="javascript:void(0)" onclick="sort('Content')" class="text-decoration-none text-body d-flex align-items-center">
                             @Localizer["Content"]
                             @if(Model.SortBy == "Content") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
                         </a>
                     </th>
-                    <th style="width: 180px;">@Localizer["Tags"]</th>
-                    <th style="width: 150px;">
-                        <a href="javascript:void(0)" onclick="sort('QuestionType')" class="text-decoration-none text-dark d-flex align-items-center">
+                    <th class="question-tags">@Localizer["Tags"]</th>
+                    <th class="question-type">
+                        <a href="javascript:void(0)" onclick="sort('QuestionType')" class="text-decoration-none text-body d-flex align-items-center">
                             @Localizer["Type"]
                             @if(Model.SortBy == "QuestionType") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
                         </a>
                     </th>
-                    <th style="width: 200px;">@Localizer["Period"]</th>
-                    <th style="width: 180px;">
-                        <a href="javascript:void(0)" onclick="sort('CreatedAt')" class="text-decoration-none text-dark d-flex align-items-center">
+                    <th class="question-period">@Localizer["Period"]</th>
+                    <th class="question-created">
+                        <a href="javascript:void(0)" onclick="sort('CreatedAt')" class="text-decoration-none text-body d-flex align-items-center">
                             @Localizer["Created"]
                             @if(Model.SortBy == "CreatedAt") { <i class="align-middle ms-1" data-lucide="@(Model.SortOrder == "Desc" ? "arrow-down" : "arrow-up")"></i> }
                         </a>
                     </th>
-                    <th style="width: 140px;">@Localizer["Actions"]</th>
+                    <th class="question-actions">@Localizer["Actions"]</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var question in Model.Questions)
                 {
                     <tr id="question-@question.Id">
-                        <td>
-                            <input type="checkbox" class="form-check-input row-selector" value="@question.Id" onchange="updateSelection(this)" />
+                        <td class="question-select">
+                            <label class="question-select-target"><input type="checkbox" class="form-check-input row-selector" value="@question.Id" onchange="updateSelection(this)" /><span class="visually-hidden">@Localizer["Select question"]</span></label>
                         </td>
-                        <td class="text-truncate" style="max-width: 400px;" title="@question.Content">
-                            @question.Content
+                        <td class="question-content text-truncate" title="@question.Content">
+                            <span class="question-preview">@question.Content</span>
                         </td>
-                        <td>
+                        <td class="question-tags @(question.QuestionTags.Any() ? "" : "question-tags-empty")">
                             @foreach (var qt in question.QuestionTags.Take(5))
                             {
                                 <a asp-action="Index" asp-route-tag="@qt.Tag.DisplayName" class="badge bg-info text-decoration-none me-1" style="font-size: 0.7rem;">
@@ -152,8 +173,8 @@
                                 </a>
                             }
                         </td>
-                        <td><span class="badge bg-secondary">@Localizer[question.QuestionType.GetDisplayName()]</span></td>
-                        <td>
+                        <td class="question-type"><span class="badge bg-secondary">@Localizer[question.QuestionType.GetDisplayName()]</span></td>
+                        <td class="question-period">
                             @if (question.QuestionCategory != null)
                             {
                                 <div>@question.QuestionCategory.Title</div>
@@ -168,16 +189,16 @@
                                 <div><a asp-action="Period" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)">@Localizer["Assign Period"]</a></div>
                             }
                         </td>
-                        <td><span data-utc-time="@question.CreationTime.ToHtmlDateTime()"></span></td>
-                        <td>
+                        <td class="question-created"><span data-utc-time="@question.CreationTime.ToHtmlDateTime()"></span></td>
+                        <td class="question-actions">
                             <div class="btn-group">
-                                <a asp-action="Edit" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
+                                <a asp-action="Edit" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]" aria-label="@Localizer["Edit"]">
                                     <i class="align-middle" data-lucide="edit"></i>
                                 </a>
-                                <a asp-action="Details" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]">
+                                <a asp-action="Details" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]" aria-label="@Localizer["Details"]">
                                     <i class="align-middle" data-lucide="eye"></i>
                                 </a>
-                                <a asp-action="Delete" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                <a asp-action="Delete" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]" aria-label="@Localizer["Delete"]">
                                     <i class="align-middle" data-lucide="trash-2"></i>
                                 </a>
                             </div>
@@ -277,34 +298,29 @@
 </div>
 
 <!-- Batch Action Toolbar -->
-<div id="batchToolbar" class="fixed-bottom bg-white border-top shadow-lg d-none flex-row align-items-center px-4 py-3" style="z-index: 1020;"
+<div id="batchToolbar" class="fixed-bottom bg-body border-top shadow-lg d-none flex-row align-items-center px-4 py-3" style="z-index: 1020;"
      data-generate-explanations-url="@Url.Action("GenerateExplanations", "AiTasks")"
      data-auto-categorize-url="@Url.Action("AutoCategorize", "AiTasks")"
      data-auto-tagging-url="@Url.Action("AutoTagging", "AiTasks")"
      data-generate-answers-url="@Url.Action("GenerateAnswers", "AiTasks")"
      data-batch-delete-url="@Url.Action("BatchDelete")"
      data-preview-url="@Url.Action("Preview", "AiTasks")">
-    <div class="container-fluid d-flex align-items-center">
+    <div class="container-fluid d-flex flex-wrap align-items-center gap-2">
         <span class="fw-bold me-4 text-primary">
             <i class="align-middle me-2" data-lucide="check-square"></i>
             <span id="selectedCount">0</span> @Localizer["selected"]
         </span>
-        <div class="btn-group">
-            <button class="btn btn-danger" onclick="confirmBatchDelete()">
-                <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Delete"]
-            </button>
-            <button class="btn btn-info" onclick="generateAiExplanations()">
-                <i class="align-middle me-2" data-lucide="brain"></i> @Localizer["AI Generate Explanations"]
-            </button>
-            <button class="btn btn-warning" onclick="autoCategorize()">
-                <i class="align-middle me-2" data-lucide="folder-tree"></i> @Localizer["AI Auto Categorize"]
-            </button>
-            <button class="btn btn-success" onclick="autoTagging()">
-                <i class="align-middle me-2" data-lucide="tag"></i> @Localizer["AI Auto Tagging"]
-            </button>
-            <button class="btn btn-primary" onclick="generateAiAnswers()">
-                <i class="align-middle me-2" data-lucide="lightbulb"></i> @Localizer["AI Generate Answers"]
-            </button>
+        <button class="btn btn-danger" onclick="confirmBatchDelete()">
+            <i class="align-middle me-2" data-lucide="trash-2"></i> @Localizer["Delete"]
+        </button>
+        <div class="dropup">
+            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">@Localizer["AI Tools"]</button>
+            <ul class="dropdown-menu">
+                <li><button type="button" class="dropdown-item" onclick="generateAiExplanations()">@Localizer["AI Generate Explanations"]</button></li>
+                <li><button type="button" class="dropdown-item" onclick="autoCategorize()">@Localizer["AI Auto Categorize"]</button></li>
+                <li><button type="button" class="dropdown-item" onclick="autoTagging()">@Localizer["AI Auto Tagging"]</button></li>
+                <li><button type="button" class="dropdown-item" onclick="generateAiAnswers()">@Localizer["AI Generate Answers"]</button></li>
+            </ul>
         </div>
         <button class="btn btn-link text-secondary ms-auto" onclick="clearSelection()">
             @Localizer["Cancel"]
