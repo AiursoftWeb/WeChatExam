@@ -11,6 +11,7 @@ public class DetailsViewModel : UiStackLayoutViewModel
         PageTitle = "Channel Details";
     }
 
+    public string? ReturnUrl { get; set; }
     public required DistributionChannel Channel { get; set; }
     public required ChannelStats Stats { get; set; }
     public Dictionary<Guid, int> CouponPaidOrderCounts { get; init; } = [];

@@ -11,4 +11,5 @@ public class DeleteViewModel : UiStackLayoutViewModel
     }
 
     public required KnowledgePoint KnowledgePoint { get; set; }
+    public string? ReturnUrl { get; set; }
 }

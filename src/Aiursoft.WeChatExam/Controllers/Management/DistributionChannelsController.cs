@@ -78,7 +78,7 @@ public class DistributionChannelsController(
     }
 
     [Authorize(Policy = AppPermissionNames.CanReadDistributionChannels)]
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(Guid? id, string? returnUrl = null)
     {
         if (id == null) return NotFound();
 
@@ -102,7 +102,8 @@ public class DistributionChannelsController(
         {
             Channel = channel,
             Stats = stats,
-            CouponPaidOrderCounts = couponCounts
+            CouponPaidOrderCounts = couponCounts,
+            ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null
         });
     }
 
@@ -188,12 +189,13 @@ public class DistributionChannelsController(
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Policy = AppPermissionNames.CanEditDistributionChannels)]
-    public async Task<IActionResult> ToggleEnabled(Guid id)
+    public async Task<IActionResult> ToggleEnabled(Guid id, string? returnUrl = null)
     {
         var channel = await distributionChannelService.GetByIdAsync(id);
         if (channel == null) return NotFound();
 
         await distributionChannelService.SetEnabledAsync(id, !channel.IsEnabled);
+        if (Url.IsLocalUrl(returnUrl)) return LocalRedirect(returnUrl!);
         return RedirectToAction(nameof(Index));
     }
 

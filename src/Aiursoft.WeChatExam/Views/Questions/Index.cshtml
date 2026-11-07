@@ -137,7 +137,7 @@
             <tbody>
                 @foreach (var question in Model.Questions)
                 {
-                    <tr>
+                    <tr id="question-@question.Id">
                         <td>
                             <input type="checkbox" class="form-check-input row-selector" value="@question.Id" onchange="updateSelection(this)" />
                         </td>
@@ -165,19 +165,19 @@
                             }
                             @if (canAssignPeriod)
                             {
-                                <div><a asp-action="Period" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)">@Localizer["Assign Period"]</a></div>
+                                <div><a asp-action="Period" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)">@Localizer["Assign Period"]</a></div>
                             }
                         </td>
                         <td><span data-utc-time="@question.CreationTime.ToHtmlDateTime()"></span></td>
                         <td>
                             <div class="btn-group">
-                                <a asp-action="Edit" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
+                                <a asp-action="Edit" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
                                     <i class="align-middle" data-lucide="edit"></i>
                                 </a>
-                                <a asp-action="Details" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]">
+                                <a asp-action="Details" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-secondary" title="@Localizer["Details"]">
                                     <i class="align-middle" data-lucide="eye"></i>
                                 </a>
-                                <a asp-action="Delete" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString)" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
+                                <a asp-action="Delete" asp-route-id="@question.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#question-" + question.Id)" class="btn btn-sm btn-outline-danger" title="@Localizer["Delete"]">
                                     <i class="align-middle" data-lucide="trash-2"></i>
                                 </a>
                             </div>

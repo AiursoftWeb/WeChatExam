@@ -325,7 +325,7 @@ public class KnowledgePointsController(
 
     // GET: knowledgePoints/{id}/delete
     [Authorize(Policy = AppPermissionNames.CanDeleteAnyKnowledgePoint)]
-    public async Task<IActionResult> Delete(Guid? id)
+    public async Task<IActionResult> Delete(Guid? id, string? returnUrl = null)
     {
         if (id == null) return NotFound();
 
@@ -336,7 +336,8 @@ public class KnowledgePointsController(
 
         return this.StackView(new DeleteViewModel
         {
-            KnowledgePoint = knowledgePoint
+            KnowledgePoint = knowledgePoint,
+            ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : null
         });
     }
 
@@ -345,7 +346,7 @@ public class KnowledgePointsController(
     [HttpPost]
     [ValidateAntiForgeryToken]
     [ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfirmed(Guid? id)
+    public async Task<IActionResult> DeleteConfirmed(Guid? id, string? returnUrl = null)
     {
         if (id == null) return NotFound();
 
@@ -355,6 +356,7 @@ public class KnowledgePointsController(
         context.KnowledgePoints.Remove(knowledgePoint);
         await context.SaveChangesAsync();
 
+        if (Url.IsLocalUrl(returnUrl)) return LocalRedirect(returnUrl!);
         return RedirectToAction(nameof(Index));
     }
 

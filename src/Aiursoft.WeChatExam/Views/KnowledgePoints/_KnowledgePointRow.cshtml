@@ -1,5 +1,5 @@
 @model Aiursoft.WeChatExam.Entities.KnowledgePoint
-<tr>
+<tr id="knowledge-point-@Model.Id">
     <td>@Model.Title</td>
     <td>
         @foreach (var association in Model.KnowledgeCategoryKnowledgePoints)
@@ -8,8 +8,8 @@
         }
     </td>
     <td>
-        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-info">@Localizer["Details"]</a>
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-warning">@Localizer["Edit"]</a>
-        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">@Localizer["Delete"]</a>
+        <a asp-action="Details" asp-route-id="@Model.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#knowledge-point-" + Model.Id)" class="btn btn-sm btn-info">@Localizer["Details"]</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#knowledge-point-" + Model.Id)" class="btn btn-sm btn-warning">@Localizer["Edit"]</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" asp-route-returnUrl="@(Context.Request.Path + Context.Request.QueryString + "#knowledge-point-" + Model.Id)" class="btn btn-sm btn-danger">@Localizer["Delete"]</a>
     </td>
 </tr>
