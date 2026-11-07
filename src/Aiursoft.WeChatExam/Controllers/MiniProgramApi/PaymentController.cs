@@ -65,6 +65,10 @@ UserManager<User> userManager,
         {
             Success = true,
             OutTradeNo = result.OutTradeNo,
+            OriginalAmountInFen = result.OriginalAmountInFen,
+            DiscountInFen = result.DiscountInFen,
+            AmountInFen = result.AmountInFen,
+            AppliedCouponCode = result.AppliedCouponCode,
             PayParams = result.PayParams == null ? null : new PaymentJsApiParams
             {
                 AppId = result.PayParams.AppId,

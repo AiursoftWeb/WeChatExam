@@ -122,7 +122,7 @@ public class WeChatPayService(
             var existing = active[0];
             await LockCouponAsync(existing.CouponId);
             if (existing.Coupon != null && dbContext.Database.IsRelational()) await dbContext.Entry(existing.Coupon).ReloadAsync();
-            if (!string.IsNullOrWhiteSpace(couponCode) && !string.Equals(couponCode, existing.Coupon?.Code, StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrWhiteSpace(couponCode) && CouponService.NormalizeCode(couponCode) != (existing.Coupon == null ? null : CouponService.NormalizeCode(existing.Coupon.Code)))
                 return (null, "A previous payment is pending with a different coupon. Please finish or wait for that payment to close.");
             if (existing.Coupon is { IsSingleUse: true, UsedByUserId: not null })
             {
@@ -216,10 +216,12 @@ public class WeChatPayService(
 
     private async Task<CreateOrderResult> ResumeOrderAsync(Guid orderId, string openId)
     {
-        var order = await dbContext.PaymentOrders.SingleAsync(o => o.Id == orderId);
+        var order = await dbContext.PaymentOrders.Include(o => o.Coupon).SingleAsync(o => o.Id == orderId);
         await LockOrderAsync(order);
         if (order.Status == PaymentOrderStatus.Paid && order.AmountInFen == 0)
             return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = "FREE_ORDER",
+                OriginalAmountInFen = order.AmountInFen + order.DiscountInFen, DiscountInFen = order.DiscountInFen, AmountInFen = order.AmountInFen,
+                AppliedCouponCode = order.Coupon?.Code.Trim(),
                 PayParams = new JsApiPayParams { AppId = _settings.WeChat.AppId, Package = "FREE", SignType = "NONE", PaySign = "NONE", NonceStr = "NONE", TimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString() } };
         if (order.Status != PaymentOrderStatus.Pending || order.ExpiredAt <= DateTime.UtcNow)
             return new CreateOrderResult { Success = false, ErrorMessage = "The payment state has changed. Please check your membership and retry." };
@@ -238,7 +240,10 @@ public class WeChatPayService(
             order.PrepayId = response.PrepayId;
         }
         var parameters = await GetJsApiPayParamsAsync(order.PrepayId);
-        return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = order.PrepayId, PayParams = parameters };
+        return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = order.PrepayId, PayParams = parameters,
+            // Return the reserved order, never a recalculation from today's catalog.
+            OriginalAmountInFen = order.AmountInFen + order.DiscountInFen, DiscountInFen = order.DiscountInFen,
+            AmountInFen = order.AmountInFen, AppliedCouponCode = order.Coupon?.Code.Trim() };
     }
 
     private async Task ActivatePaidOrderAsync(PaymentOrder order, string? transactionId)

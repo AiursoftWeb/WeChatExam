@@ -248,6 +248,10 @@ public class WeChatPayCouponIntegrationTests
 
         // 3. Verify success and immediate activation
         Assert.IsTrue(result.Success);
+        Assert.AreEqual(10000, result.OriginalAmountInFen);
+        Assert.AreEqual(10000, result.DiscountInFen);
+        Assert.AreEqual(0, result.AmountInFen);
+        Assert.AreEqual("FREE", result.AppliedCouponCode);
         
         // 4. Verify Change is recorded as ViaCoupon
         var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId && c.Type == ChangeType.VipActivatedViaCoupon);
@@ -331,6 +335,40 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    public async Task ExplicitLegacyCouponOverridesLargerClaimAndCannotSilentlyReuseAnotherCouponOrder()
+    {
+        var requests = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { requests++; return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"explicit-prepay\"}"); });
+        var product = (await _dbContext.VipProducts.FindAsync(_productId))!;
+        product.PriceInFen = 19800;
+        var larger = await _dbContext.Coupons.SingleAsync();
+        larger.IsSingleUse = false;
+        larger.AmountInFen = 13000;
+        var legacy = new Coupon { Code = "\u00a0LOWER120", AmountInFen = 12000, DistributionChannelId = larger.DistributionChannelId };
+        _dbContext.Coupons.Add(legacy);
+        await _dbContext.SaveChangesAsync();
+        Assert.IsTrue((await _couponService.ClaimCouponAsync(_userId, larger.Code)).Success);
+        Assert.IsTrue((await _couponService.ClaimCouponAsync(_userId, "LOWER120")).Success);
+        var first = await _payService.CreateOrderAsync(_userId, "openid", _productId, " lower120 ");
+        Assert.IsTrue(first.Success, first.ErrorMessage);
+        Assert.AreEqual(19800, first.OriginalAmountInFen);
+        Assert.AreEqual(12000, first.DiscountInFen);
+        Assert.AreEqual(7800, first.AmountInFen);
+        Assert.AreEqual("LOWER120", first.AppliedCouponCode);
+        var saved = await _dbContext.PaymentOrders.SingleAsync();
+        Assert.AreEqual(legacy.Id, saved.CouponId);
+        Assert.AreEqual(7800, saved.AmountInFen);
+        var retry = await _payService.CreateOrderAsync(_userId, "openid", _productId, "LOWER120");
+        Assert.IsTrue(retry.Success, retry.ErrorMessage);
+        Assert.AreEqual(first.OutTradeNo, retry.OutTradeNo);
+        var changed = await _payService.CreateOrderAsync(_userId, "openid", _productId, larger.Code);
+        Assert.IsFalse(changed.Success);
+        Assert.AreEqual(1, requests);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
     public async Task EditedCouponUsesNewAmountForClaimsButKeepsExistingOrderAndSettlementAmounts()
     {
         var reservedOrders = new List<PaymentOrder>();
@@ -357,6 +395,9 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual(original.OutTradeNo, retry.OutTradeNo);
         Assert.AreEqual(originalAmount, before.AmountInFen);
         Assert.AreEqual(originalDiscount, before.DiscountInFen);
+        Assert.AreEqual(originalAmount, retry.AmountInFen);
+        Assert.AreEqual(originalDiscount, retry.DiscountInFen);
+        Assert.AreEqual(originalAmount + originalDiscount, retry.OriginalAmountInFen);
 
         var otherProduct = new VipProduct { Name = "New purchase", TotalCategory = new TotalCategory { Title = "Another course" }, PriceInFen = 200, DurationDays = 30 };
         _dbContext.VipProducts.Add(otherProduct);

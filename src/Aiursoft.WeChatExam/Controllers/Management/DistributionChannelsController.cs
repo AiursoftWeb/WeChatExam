@@ -195,7 +195,7 @@ public class DistributionChannelsController(
         if (channel == null) return NotFound();
 
         await distributionChannelService.SetEnabledAsync(id, !channel.IsEnabled);
-        if (Url.IsLocalUrl(returnUrl)) return LocalRedirect(returnUrl!);
+        if (Url.IsLocalUrl(returnUrl)) return LocalRedirect(returnUrl);
         return RedirectToAction(nameof(Index));
     }
 

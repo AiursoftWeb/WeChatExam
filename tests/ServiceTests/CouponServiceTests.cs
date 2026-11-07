@@ -35,6 +35,35 @@ public class CouponServiceTests
     }
 
     [TestMethod]
+    [DataRow(" ", "\t")]
+    [DataRow("\u00a0", "\u3000")]
+    public async Task LegacyCouponBoundaryWhitespaceDoesNotChangeIdentity(string prefix, string suffix)
+    {
+        var legacy = new Coupon { Code = prefix + "LEGACY" + suffix, DistributionChannelId = _channelId, AmountInFen = 1000 };
+        _dbContext.Coupons.Add(legacy);
+        await _dbContext.SaveChangesAsync();
+        var (valid, _, coupon) = await _service.ValidateCouponAsync("  legacy\n", _productId, "buyer");
+        Assert.IsTrue(valid);
+        Assert.AreEqual(legacy.Id, coupon!.Id);
+        Assert.IsTrue((await _service.ClaimCouponAsync("buyer", "LEGACY")).Success);
+        Assert.AreEqual(prefix + "LEGACY" + suffix, (await _dbContext.Coupons.SingleAsync()).Code);
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.CreateAsync(_channelId, "legacy", 1000, false));
+    }
+
+    [TestMethod]
+    public async Task NewCouponTrimsOnlyBoundariesAndRejectsBlankOrAmbiguousCodes()
+    {
+        var coupon = await _service.CreateAsync(_channelId, "\u00a0 Save 100 \u3000", 1000, false);
+        Assert.AreEqual("SAVE 100", coupon.Code);
+        Assert.IsNull(await _service.GetByCodeAsync("SAVE100"));
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.CreateAsync(_channelId, " \u00a0", 1000, false));
+        _dbContext.Coupons.Add(new Coupon { Code = "SAVE 100\u00a0", DistributionChannelId = _channelId, AmountInFen = 2000 });
+        await _dbContext.SaveChangesAsync();
+        Assert.IsNull(await _service.GetByCodeAsync("SAVE 100"));
+        Assert.IsFalse((await _service.ClaimCouponAsync("buyer", "SAVE 100")).Success);
+    }
+
+    [TestMethod]
     public async Task AmountEditsRespectApplicableProductPricesAndPreserveClaimHistory()
     {
         var targeted = await _service.CreateAsync(_channelId, "EDIT-TARGETED", 500, false, [_productId]);

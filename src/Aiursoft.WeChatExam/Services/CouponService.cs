@@ -5,12 +5,30 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class CouponService(WeChatExamDbContext context) : ICouponService
 {
+    internal static string NormalizeCode(string code) => code.Trim().ToUpperInvariant();
+
+    private async Task<List<Guid>> FindMatchingIdsAsync(string normalizedCode)
+    {
+        // Legacy rows may contain Unicode boundary whitespace that SQL TRIM does
+        // not remove consistently. Narrow candidates in SQL, then compare identities
+        // in .NET; internal spaces remain meaningful and must never be discarded.
+        var candidates = await context.Coupons
+            .Where(c => c.Code.ToUpper().Contains(normalizedCode))
+            .Select(c => new { c.Id, c.Code }).ToListAsync();
+        return candidates.Where(c => NormalizeCode(c.Code) == normalizedCode)
+            .Select(c => c.Id).Take(2).ToList();
+    }
+
     public async Task<Coupon?> GetByCodeAsync(string code)
     {
-        return await context.Coupons
+        var normalized = NormalizeCode(code);
+        if (normalized.Length == 0) return null;
+        var matches = await FindMatchingIdsAsync(normalized);
+        // Never choose an arbitrary discount if old rows normalize to the same code.
+        return matches.Count == 1 ? await context.Coupons
             .Include(c => c.DistributionChannel)
             .Include(c => c.TargetVipProducts)
-            .FirstOrDefaultAsync(c => c.Code == code);
+            .SingleAsync(c => c.Id == matches[0]) : null;
     }
 
     public async Task<Coupon?> GetByIdAsync(Guid id)
@@ -31,7 +49,9 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
 
     public async Task<Coupon> CreateAsync(Guid channelId, string code, int amountInFen, bool isSingleUse, List<Guid>? targetVipProductIds = null)
     {
-        if (await context.Coupons.AnyAsync(c => c.Code == code))
+        code = NormalizeCode(code);
+        if (code.Length == 0) throw new InvalidOperationException("Coupon code cannot be empty.");
+        if ((await FindMatchingIdsAsync(code)).Count > 0)
         {
             throw new InvalidOperationException($"Coupon code {code} already exists.");
         }
@@ -41,7 +61,7 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
         var coupon = new Coupon
         {
             DistributionChannelId = channelId,
-            Code = code.ToUpper(),
+            Code = code,
             AmountInFen = amountInFen,
             IsSingleUse = isSingleUse,
             IsEnabled = true
@@ -114,7 +134,7 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
 
     public async Task<(bool IsValid, string? ErrorMessage, Coupon? Coupon)> ValidateCouponAsync(string code, Guid vipProductId, string userId)
     {
-        var coupon = await GetByCodeAsync(code.ToUpper());
+        var coupon = await GetByCodeAsync(code);
 
         if (coupon == null)
         {
@@ -170,7 +190,7 @@ public class CouponService(WeChatExamDbContext context) : ICouponService
 
     public async Task<(bool Success, string? ErrorMessage)> ClaimCouponAsync(string userId, string code)
     {
-        var coupon = await GetByCodeAsync(code.ToUpper());
+        var coupon = await GetByCodeAsync(code);
         if (coupon == null || !coupon.IsEnabled)
         {
             return (false, "优惠码无效或已禁用");
