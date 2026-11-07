@@ -38,8 +38,8 @@
         </a>
     </div>
     <div class="table-responsive">
-        <table class="table table-hover mb-0">
-            <thead class="table-light">
+        <table class="table table-hover mb-0 knowledge-point-list">
+            <thead>
                 <tr>
                     <th>@Localizer["Title"]</th>
                     <th>@Localizer["Associated Categories"]</th>
@@ -63,3 +63,7 @@
         </table>
     </div>
 </div>
+
+@section styles {
+    <link rel="stylesheet" href="~/css/knowledge-point-list.css" asp-append-version="true" />
+}

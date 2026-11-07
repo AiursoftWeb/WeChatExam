@@ -1,0 +1,53 @@
+@media (max-width: 575.98px) {
+    .knowledge-point-list thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .knowledge-point-list tbody,
+    .knowledge-point-list tr,
+    .knowledge-point-list td {
+        display: block;
+    }
+
+    .knowledge-point-list tr {
+        padding: 1rem;
+        border-bottom: 1px solid var(--bs-border-color);
+    }
+
+    .knowledge-point-list tr:last-child {
+        border-bottom: 0;
+    }
+
+    .knowledge-point-list td {
+        padding: 0;
+        border: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .knowledge-point-list td:first-child {
+        font-weight: 600;
+    }
+
+    .knowledge-point-list td + td {
+        margin-top: .75rem;
+    }
+
+    .knowledge-point-list td:nth-child(2),
+    .knowledge-point-list td:nth-child(3) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    .knowledge-point-list .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: .5rem .875rem;
+    }
+}
