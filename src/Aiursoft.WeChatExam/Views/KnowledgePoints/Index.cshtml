@@ -31,15 +31,15 @@
 }
 
 <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card-header d-flex flex-wrap gap-2 justify-content-between align-items-center">
         <h5 class="card-title mb-0">@Localizer["KnowledgePoint List"]</h5>
         <a asp-action="Create" class="btn btn-primary btn-sm">
             <i class="align-middle me-2" data-lucide="plus-circle"></i> @Localizer["Add KnowledgePoint"]
         </a>
     </div>
     <div class="table-responsive">
-        <table class="table table-hover mb-0">
-            <thead class="table-light">
+        <table class="table table-hover mb-0 knowledge-point-list">
+            <thead>
                 <tr>
                     <th>@Localizer["Title"]</th>
                     <th>@Localizer["Associated Categories"]</th>
@@ -63,3 +63,7 @@
         </table>
     </div>
 </div>
+
+@section styles {
+    <link rel="stylesheet" href="~/css/knowledge-point-list.css" asp-append-version="true" />
+}
