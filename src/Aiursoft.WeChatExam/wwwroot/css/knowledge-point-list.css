@@ -28,8 +28,12 @@
         overflow-wrap: anywhere;
     }
 
-    .knowledge-point-list tbody tr td:first-child {
-        padding-left: 0;
+    .card > .table-responsive > .knowledge-point-list td:first-child,
+    .card > .table-responsive > .knowledge-point-list td:last-child {
+        padding: 0;
+    }
+
+    .knowledge-point-list td:first-child {
         font-weight: 600;
     }
 
