@@ -28,7 +28,8 @@
         overflow-wrap: anywhere;
     }
 
-    .knowledge-point-list td:first-child {
+    .knowledge-point-list tbody tr td:first-child {
+        padding-left: 0;
         font-weight: 600;
     }
 
