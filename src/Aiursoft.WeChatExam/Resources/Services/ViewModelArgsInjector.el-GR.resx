@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Accounting Reports" xml:space="preserve">
+      <data name="Access Denied" xml:space="preserve">
+    <value>Απαγόρευση Πρόσβασης</value>
+  </data>
+  <data name="Accounting Reports" xml:space="preserve">
     <value>Λογιστικές Αναφορές</value>
   </data>
   <data name="Admin" xml:space="preserve">
@@ -47,6 +50,9 @@
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Ημίκαρα Εργασιών</value>
+  </data>
+  <data name="Bad Request" xml:space="preserve">
+    <value>Λάθος Αίτημα</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Κατηγορίες</value>
@@ -246,6 +252,9 @@
   <data name="Institutions" xml:space="preserve">
     <value>Ιδρύματα</value>
   </data>
+  <data name="Internal Server Error" xml:space="preserve">
+    <value>Εσωτερικό Σφάλμα Διακομιστικού</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Συμμετοχή στις Επίσημες Εξετάσεις</value>
   </data>
@@ -305,6 +314,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Ειδήσεις</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Δεν βρέθηκε</value>
   </data>
   <data name="Paper Publication" xml:space="preserve">
     <value>Δημοσίευση Εξεταστικού</value>

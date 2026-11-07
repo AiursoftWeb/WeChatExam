@@ -187,6 +187,11 @@ public class ViewModelArgsInjector(
         _ = localizer["Real Paper Questions"];
     
         _ = localizer["Course Contents"];
+    
+        _ = localizer["Access Denied"];
+        _ = localizer["Bad Request"];
+        _ = localizer["Internal Server Error"];
+        _ = localizer["Not Found"];
     }
 
     public void InjectSimple(

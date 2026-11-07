@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Account Settings" xml:space="preserve">
+      <data name="Access Denied" xml:space="preserve">
+    <value>Zugriff verweigert</value>
+  </data>
+  <data name="Account Settings" xml:space="preserve">
     <value>Kontoeinstellungen</value>
   </data>
   <data name="Accounting Reports" xml:space="preserve">
@@ -50,6 +53,9 @@
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Hintergrundaufgaben</value>
+  </data>
+  <data name="Bad Request" xml:space="preserve">
+    <value>Schlechte Anfrage</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>Kategorien</value>
@@ -249,6 +255,9 @@
   <data name="Institutions" xml:space="preserve">
     <value>Institutionen</value>
   </data>
+  <data name="Internal Server Error" xml:space="preserve">
+    <value>Interner Serverfehler</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>Offizielle Prüfung beitreten</value>
   </data>
@@ -308,6 +317,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>Nachrichten</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Nicht gefunden</value>
   </data>
   <data name="Paper Publication" xml:space="preserve">
     <value>Prüfungspublikation</value>

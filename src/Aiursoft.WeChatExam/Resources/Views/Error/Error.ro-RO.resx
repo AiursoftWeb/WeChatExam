@@ -30,6 +30,15 @@
   <data name="Error." xml:space="preserve">
     <value>Eroare.</value>
   </data>
+  <data name="If you believe you should have access, please contact your system administrator. Or try signing out and signing in again." xml:space="preserve">
+    <value>Dacă credeți că ar trebui să aveți acces, vă rugăm să contactați administratorul de sistem. Sau încercați să vă deconectați și să vă reconectați.</value>
+  </data>
+  <data name="Please check the URL and try again. If you believe this is a server error, please contact support." xml:space="preserve">
+    <value>Vă rugăm să verificați URL-ul și să încercați din nou. Dacă considerați că este o eroare de server, vă rugăm să contactați serviciul de asistență.</value>
+  </data>
+  <data name="Please check your request and try again. If you believe this is a server error, please contact support." xml:space="preserve">
+    <value>Vă rugăm să verificați cererea și să încercați din nou. Dacă considerați că este o eroare de server, vă rugăm să contactați suportul.</value>
+  </data>
   <data name="Please contact the administrator for help." xml:space="preserve">
     <value>Vă rugăm să contactați administratorul pentru asistență.</value>
   </data>
@@ -39,8 +48,20 @@
   <data name="Request ID:" xml:space="preserve">
     <value>ID-ul cererii:</value>
   </data>
+  <data name="Sorry, you do not have the necessary permissions to access this page." xml:space="preserve">
+    <value>Ne pare rău, nu aveți permisiunile necesare pentru a accesa această pagină.</value>
+  </data>
+  <data name="The page you are looking for might have been removed, had its name changed, or is temporarily unavailable." xml:space="preserve">
+    <value>Pagina pe care o căutați a fost posibil să fi fost eliminată, să-și fi schimbat numele sau este temporar indisponibilă.</value>
+  </data>
+  <data name="Try again" xml:space="preserve">
+    <value>Încearcă din nou</value>
+  </data>
   <data name="We&apos;re sorry, something went wrong while processing your request." xml:space="preserve">
     <value>Ne cerem scuze, a apărut o eroare la procesarea solicitării dumneavoastră.</value>
+  </data>
+  <data name="Your browser sent a request that this server could not understand." xml:space="preserve">
+    <value>Browserul dvs. a trimis o cerere pe care acest server nu a putut s-o înțeleagă.</value>
   </data>
 
 </root>

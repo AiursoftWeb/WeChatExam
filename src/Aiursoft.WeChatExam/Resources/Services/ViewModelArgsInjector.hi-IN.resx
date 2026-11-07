@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Accounting Reports" xml:space="preserve">
+      <data name="Access Denied" xml:space="preserve">
+    <value>पहुँच अस्वीकृत</value>
+  </data>
+  <data name="Accounting Reports" xml:space="preserve">
     <value>लेखा रिपोर्ट्स</value>
   </data>
   <data name="Admin" xml:space="preserve">
@@ -47,6 +50,9 @@
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>बैकग्राउंड जॉब्स</value>
+  </data>
+  <data name="Bad Request" xml:space="preserve">
+    <value>खराब अनुरोध</value>
   </data>
   <data name="Categories" xml:space="preserve">
     <value>श्रेणियाँ</value>
@@ -246,6 +252,9 @@
   <data name="Institutions" xml:space="preserve">
     <value>संस्थान</value>
   </data>
+  <data name="Internal Server Error" xml:space="preserve">
+    <value>आंतरिक सर्वर त्रुटि</value>
+  </data>
   <data name="Join Official Exam" xml:space="preserve">
     <value>आधिकारिक परीक्षा में शामिल हों</value>
   </data>
@@ -305,6 +314,9 @@
   </data>
   <data name="News" xml:space="preserve">
     <value>समाचार</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>नहीं मिला</value>
   </data>
   <data name="Paper Publication" xml:space="preserve">
     <value>पत्रिका प्रकाशन</value>
