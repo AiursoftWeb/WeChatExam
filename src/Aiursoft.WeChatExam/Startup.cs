@@ -59,6 +59,7 @@ public class Startup : IWebStartup
         // Virtual payment URLs contain an access_token; never log their raw URLs.
         services.AddHttpClient(nameof(VirtualPaymentQueryService)).RemoveAllLoggers();
         services.AddHttpClient(nameof(VirtualPaymentAccessTokenService)).RemoveAllLoggers();
+        services.AddHttpClient(nameof(VirtualPaymentDeliveryService)).RemoveAllLoggers();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IVirtualPaymentQueryService, VirtualPaymentQueryService>();
         services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();

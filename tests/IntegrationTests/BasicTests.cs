@@ -65,6 +65,7 @@ public class BasicTests
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentQueryService>());
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentAccessTokenService>());
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentReconciliationService>());
+        Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentDeliveryService>());
     }
 
     /// <summary>
