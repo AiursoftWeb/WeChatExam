@@ -97,7 +97,7 @@ public class VirtualPaymentCheckoutTests
     {
         if (fault == "missing-openid") await _db.Users.ExecuteUpdateAsync(s => s.SetProperty(u => u.MiniProgramOpenId, (string?)null));
         var service = CreateService(enabled: fault != "disabled", weChatEnabled: fault != "wechat-off", secret: fault == "missing-appsecret" ? "" : "app-secret");
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => service.CreateAsync(fault == "missing-user" ? "missing" : _buyer.Id,
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.CreateAsync(fault == "missing-user" ? "missing" : _buyer.Id,
             _product.Id, fault == "empty-code" ? " " : fault == "large-code" ? new string('x', 513) : "fresh-login"));
         Assert.AreEqual(0, _handler.Calls); await AssertEmptyPurchase();
     }
@@ -111,7 +111,7 @@ public class VirtualPaymentCheckoutTests
     public async Task FailedFreshLoginCannotChargeAnotherAccountOrExposeCredentials(string fault)
     {
         _handler.Fault = fault;
-        var ex = await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+        var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
         Assert.DoesNotContain("sensitive", ex.ToString()); Assert.DoesNotContain("app-secret", ex.ToString());
         Assert.AreEqual("old-session", (await _db.Users.SingleAsync()).SessionKey);
         await AssertEmptyPurchase();
@@ -121,7 +121,7 @@ public class VirtualPaymentCheckoutTests
     public async Task ChangedBuyerAfterLoginCannotReserveAnOrder()
     {
         _handler.Hook = async () => { await _db.Users.ExecuteUpdateAsync(s => s.SetProperty(u => u.MiniProgramOpenId, "changed")); };
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
         await AssertEmptyPurchase();
     }
 
@@ -135,7 +135,7 @@ public class VirtualPaymentCheckoutTests
         var old = new PaymentOrder { UserId = _buyer.Id, VipProductId = _product.Id, Channel = channel, Status = status,
             OutTradeNo = "OLD-ORDER", Description = "Old", AmountInFen = 19800, ExpiredAt = DateTime.UtcNow.AddDays(-1) };
         _db.Add(old); await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
         Assert.AreEqual(1, await _db.PaymentOrders.CountAsync());
         Assert.AreEqual(status, (await _db.PaymentOrders.SingleAsync()).Status);
         Assert.AreEqual(0, await _db.VirtualPaymentSnapshots.CountAsync());
@@ -151,7 +151,7 @@ public class VirtualPaymentCheckoutTests
         _db.Add(new PaymentOrder { User = other, UserId = other.Id, OutTradeNo = "OTHER-ORDER", Description = "Other",
             Channel = channel, CouponId = _coupon.Id, AmountInFen = 7800, ExpiredAt = DateTime.UtcNow.AddDays(-1) });
         await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login", _coupon.Code));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login", _coupon.Code));
         Assert.AreEqual(1, await _db.PaymentOrders.CountAsync());
         Assert.AreEqual(0, await _db.VirtualPaymentSnapshots.CountAsync());
         Assert.IsNull((await _db.Coupons.SingleAsync()).UsedByUserId);
@@ -177,7 +177,7 @@ public class VirtualPaymentCheckoutTests
             _db.Add(new UserClaimedCoupon { User = other, UserId = other.Id, CouponId = _coupon.Id });
         }
         await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService(mapping: fault != "missing-mapping", price: fault == "wrong-price" ? 19801 : 19800)
+        await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService(mapping: fault != "missing-mapping", price: fault == "wrong-price" ? 19801 : 19800)
             .CreateAsync(_buyer.Id, _product.Id, "fresh-login", _coupon.Code));
         Assert.AreEqual(0, await _db.PaymentOrders.CountAsync()); Assert.AreEqual(0, await _db.VirtualPaymentSnapshots.CountAsync());
         Assert.AreEqual(0, await _db.PaymentLogs.CountAsync()); Assert.AreEqual(0, await _db.Changes.CountAsync());
@@ -233,7 +233,7 @@ public class VirtualPaymentCheckoutTests
     public async Task RepeatedSeparateRequestDoesNotExposeOrReplaceTheSamePayableNumber()
     {
         var service = CreateService(); var first = await service.CreateAsync(_buyer.Id, _product.Id, "first-code");
-        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => service.CreateAsync(_buyer.Id, _product.Id, "second-code"));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.CreateAsync(_buyer.Id, _product.Id, "second-code"));
         Assert.AreEqual(first.OutTradeNo, (await _db.PaymentOrders.SingleAsync()).OutTradeNo);
         Assert.AreEqual(1, await _db.VirtualPaymentSnapshots.CountAsync());
     }
@@ -242,10 +242,10 @@ public class VirtualPaymentCheckoutTests
     public async Task CallerOwnedTransactionIsRejectedBeforeConsumingLoginCode()
     {
         await using (await _db.Database.BeginTransactionAsync())
-            await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+            await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
         Assert.AreEqual(0, _handler.Calls); await AssertEmptyPurchase();
         using (new System.Transactions.TransactionScope(System.Transactions.TransactionScopeAsyncFlowOption.Enabled))
-            await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+            await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
         Assert.AreEqual(0, _handler.Calls); await AssertEmptyPurchase();
     }
 

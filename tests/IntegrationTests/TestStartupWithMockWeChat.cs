@@ -33,6 +33,7 @@ public class TestStartupWithMockWeChat : IWebStartup
     public static StubOllamaService? MockOllamaService { get; set; }
     public static StubVipProductService? MockVipProductService { get; set; }
     public static string? SqliteConnectionString { get; set; }
+    public static IHttpClientFactory? VirtualPaymentHttpClientFactory { get; set; }
 
     public void ConfigureServices(IConfiguration configuration, IWebHostEnvironment environment, IServiceCollection services)
     {
@@ -57,8 +58,11 @@ public class TestStartupWithMockWeChat : IWebStartup
         // Services
         services.AddMemoryCache();
         services.AddHttpClient();
+        if (VirtualPaymentHttpClientFactory != null) services.AddSingleton(VirtualPaymentHttpClientFactory);
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();
+        services.AddScoped<ICouponService, CouponService>();
+        services.AddScoped<IVirtualPaymentQueryService, VirtualPaymentQueryService>();
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<ITaxonomyService, TaxonomyService>();

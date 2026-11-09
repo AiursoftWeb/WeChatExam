@@ -27,15 +27,15 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
         cancellationToken.ThrowIfCancellationRequested();
         var settings = options.Value.WeChat;
         if (!options.Value.WeChatEnabled || !settings.VirtualPayment.Enabled)
-            throw new InvalidOperationException("Virtual payment is not enabled.");
+            throw new VirtualPaymentCheckoutException("Virtual payment is not enabled.");
         if (!db.Database.IsRelational() || db.Database.CurrentTransaction != null || System.Transactions.Transaction.Current != null)
             throw new InvalidOperationException("Virtual checkout requires its own relational transaction.");
         if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(loginCode) || loginCode.Length > 512 ||
             string.IsNullOrWhiteSpace(settings.AppId) || string.IsNullOrWhiteSpace(settings.AppSecret))
-            throw new InvalidOperationException("Please sign in again before paying.");
+            throw new VirtualPaymentCheckoutException("Please sign in again before paying.");
         var buyer = await db.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Id == userId, cancellationToken);
         if (buyer == null || string.IsNullOrWhiteSpace(buyer.MiniProgramOpenId))
-            throw new InvalidOperationException("Please sign in again before paying.");
+            throw new VirtualPaymentCheckoutException("Please sign in again before paying.");
 
         // A JWT or a historical stored session_key is not a fresh payment session.
         // Refresh outside database locks; never persist or return this session_key.
@@ -46,9 +46,9 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
             SnsJsCode2SessionResponse response;
             try { response = await client.ExecuteSnsJsCode2SessionAsync(new SnsJsCode2SessionRequest { JsCode = loginCode }, cancellationToken); }
             catch (CommonException) when (cancellationToken.IsCancellationRequested) { throw new OperationCanceledException(cancellationToken); }
-            catch (CommonException) { throw new InvalidOperationException("Payment login could not be verified. Please sign in again."); }
+            catch (CommonException) { throw new VirtualPaymentCheckoutException("Payment login could not be verified. Please sign in again."); }
             if (!response.IsSuccessful() || response.OpenId != buyer.MiniProgramOpenId || string.IsNullOrWhiteSpace(response.SessionKey))
-                throw new InvalidOperationException("Payment login could not be verified. Please sign in again.");
+                throw new VirtualPaymentCheckoutException("Payment login could not be verified. Please sign in again.");
             buyer.SessionKey = response.SessionKey;
         }
 
@@ -66,7 +66,7 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
             if (await db.Users.Where(u => u.Id == userId).ExecuteUpdateAsync(u =>
                     u.SetProperty(x => x.ConcurrencyStamp, x => x.ConcurrencyStamp), cancellationToken) != 1 ||
                 !await db.Users.AsNoTracking().AnyAsync(u => u.Id == userId && u.MiniProgramOpenId == buyer.MiniProgramOpenId, cancellationToken))
-                throw new InvalidOperationException("The payment identity changed. Please sign in again.");
+                throw new VirtualPaymentCheckoutException("The payment identity changed. Please sign in again.");
 
             var saved = await db.PaymentOrders.Include(o => o.Coupon).SingleOrDefaultAsync(o => o.Id == id, cancellationToken);
             if (saved != null)
@@ -85,23 +85,23 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
             if (product is not { IsEnabled: true, PriceInFen: >= 0, DurationDays: > 0 } ||
                 product.Type is not (VipProductType.Category or VipProductType.Institution) ||
                 (product.Type == VipProductType.Category ? product.TotalCategoryId == null : product.InstitutionId == null))
-                throw new InvalidOperationException("The requested VIP product is unavailable.");
+                throw new VirtualPaymentCheckoutException("The requested VIP product is unavailable.");
             var now = DateTime.UtcNow;
             if (await db.VipMemberships.AnyAsync(v => v.UserId == userId && v.VipProduct != null &&
                     v.VipProduct.Type == product.Type && v.VipProduct.TotalCategoryId == product.TotalCategoryId &&
                     v.VipProduct.InstitutionId == product.InstitutionId && v.StartTime <= now && v.EndTime > now, cancellationToken))
-                throw new InvalidOperationException("The requested membership is already active. Purchase again after it expires.");
+                throw new VirtualPaymentCheckoutException("The requested membership is already active. Purchase again after it expires.");
             // Local expiration, Failed and another gateway are NOT proof of closure.
             // This first-reservation service cannot release, resume or close them.
             if (await db.PaymentOrders.AnyAsync(o => o.UserId == userId && o.VipProductId == productId &&
                     (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed), cancellationToken))
-                throw new InvalidOperationException("A previous payment is not confirmed closed. Please check its status before purchasing again.");
+                throw new VirtualPaymentCheckoutException("A previous payment is not confirmed closed. Please check its status before purchasing again.");
 
             Coupon? coupon;
             if (!string.IsNullOrWhiteSpace(couponCode))
             {
                 var validation = await coupons.ValidateCouponAsync(couponCode, productId, userId);
-                if (!validation.IsValid) throw new InvalidOperationException(validation.ErrorMessage ?? "Invalid coupon.");
+                if (!validation.IsValid) throw new VirtualPaymentCheckoutException(validation.ErrorMessage ?? "Invalid coupon.");
                 coupon = validation.Coupon;
             }
             else coupon = await coupons.GetBestApplicableCouponAsync(userId, productId);
@@ -111,10 +111,10 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
                 await db.Entry(coupon).ReloadAsync(cancellationToken);
                 if (coupon.IsSingleUse && await db.PaymentOrders.AnyAsync(o => o.CouponId == coupon.Id &&
                         (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed), cancellationToken))
-                    throw new InvalidOperationException("This coupon is reserved by another pending payment.");
+                    throw new VirtualPaymentCheckoutException("This coupon is reserved by another pending payment.");
                 var validation = await coupons.ValidateCouponAsync(coupon.Code, productId, userId);
-                if (!validation.IsValid) throw new InvalidOperationException(validation.ErrorMessage ?? "Invalid coupon.");
-                if (coupon.AmountInFen < 0) throw new InvalidOperationException("Invalid coupon amount.");
+                if (!validation.IsValid) throw new VirtualPaymentCheckoutException(validation.ErrorMessage ?? "Invalid coupon.");
+                if (coupon.AmountInFen < 0) throw new VirtualPaymentCheckoutException("Invalid coupon amount.");
             }
             var discount = coupon == null ? 0 : Math.Min(product.PriceInFen, coupon.AmountInFen);
             var order = new PaymentOrder
@@ -154,3 +154,6 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
 
 public sealed record VirtualPaymentCheckoutResult(string OutTradeNo, PaymentOrderStatus Status, int AmountInFen,
     int DiscountInFen, string? AppliedCouponCode, VirtualPaymentParameters? PayParams);
+
+// Deliberate, safe business feedback; infrastructure exceptions remain private.
+public sealed class VirtualPaymentCheckoutException(string message) : InvalidOperationException(message);
