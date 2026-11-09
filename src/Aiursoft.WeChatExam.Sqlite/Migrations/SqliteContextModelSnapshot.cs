@@ -1605,6 +1605,31 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", b =>
+                {
+                    b.Property<Guid>("PaymentOrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AppId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OpenId")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SignData")
+                        .IsRequired()
+                        .HasMaxLength(4096)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("PaymentOrderId");
+
+                    b.ToTable("VirtualPaymentSnapshots");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -2333,6 +2358,17 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("Institution");
 
                     b.Navigation("TotalCategory");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "PaymentOrder")
+                        .WithOne()
+                        .HasForeignKey("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", "PaymentOrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("PaymentOrder");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
