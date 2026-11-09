@@ -52,10 +52,11 @@ public class PaymentIntegrationTests
     [TestMethod]
     public async Task TestCreateOrderUnauthorized()
     {
-        _ = await _http.PostAsJsonAsync("/api/payment/create-order", new CreatePaymentOrderRequest
+        var response = await _http.PostAsJsonAsync("/api/payment/create-order", new CreatePaymentOrderRequest
         {
             VipProductId = Guid.NewGuid()
         });
+        Assert.AreEqual(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
     [TestMethod]

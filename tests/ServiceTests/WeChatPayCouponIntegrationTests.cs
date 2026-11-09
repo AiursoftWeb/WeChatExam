@@ -252,6 +252,7 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual(10000, result.DiscountInFen);
         Assert.AreEqual(0, result.AmountInFen);
         Assert.AreEqual("FREE", result.AppliedCouponCode);
+        Assert.AreEqual(PaymentChannel.WeChatJsApi, (await _dbContext.PaymentOrders.SingleAsync()).Channel);
         
         // 4. Verify Change is recorded as ViaCoupon
         var change = await _dbContext.Changes.FirstOrDefaultAsync(c => c.TargetUserId == _userId && c.Type == ChangeType.VipActivatedViaCoupon);

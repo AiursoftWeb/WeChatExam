@@ -53,6 +53,10 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     {
         base.OnModelCreating(builder);
 
+        // The database default also protects inserts made by the previous app version.
+        builder.Entity<PaymentOrder>().Property(o => o.Channel)
+            .HasDefaultValue(PaymentChannel.WeChatJsApi);
+
         builder.Entity<PracticeSession>().HasIndex(s => new { s.UserId, s.CreationTime, s.Id });
         builder.Entity<PracticeSessionItem>().HasIndex(i => new { i.SessionId, i.Position });
         builder.Entity<PracticeSessionItem>().HasOne(i => i.Session).WithMany(s => s.Items)
