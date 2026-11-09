@@ -231,9 +231,9 @@ public class PaymentFulfillmentTests
     [TestMethod]
     public async Task ZeroAmountVirtualGrantStillRecordsItsEntitlementAndDoesNotRestoreTheCoupon()
     {
-        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        await CreateOrderAsync(PaymentChannel.WeChatVirtual);
         await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.AmountInFen, 0).SetProperty(o => o.DiscountInFen, 19800));
-        _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        _db.ChangeTracker.Clear(); var order = await _db.PaymentOrders.SingleAsync();
         await using var transaction = await _db.Database.BeginTransactionAsync();
         await _service.CompleteAsync(order, null); await transaction.CommitAsync();
         Assert.AreEqual(order.Id, ReadReceipt(await _db.PaymentLogs.SingleAsync()).After.LastPaymentOrderId);
@@ -246,9 +246,9 @@ public class PaymentFulfillmentTests
     [DataRow(PaymentChannel.WeChatVirtual)]
     public async Task MissingEntitlementTargetCannotProduceAVirtualPaidOrderButKeepsLegacyBehavior(PaymentChannel channel)
     {
-        var order = await CreateOrderAsync(channel);
+        await CreateOrderAsync(channel);
         await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.VipProductId, (Guid?)null));
-        _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        _db.ChangeTracker.Clear(); var order = await _db.PaymentOrders.SingleAsync();
         await using var transaction = await _db.Database.BeginTransactionAsync();
         if (channel == PaymentChannel.WeChatVirtual)
         {
