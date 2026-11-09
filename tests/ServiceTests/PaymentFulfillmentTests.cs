@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Sqlite;
@@ -58,7 +59,20 @@ public class PaymentFulfillmentTests
         Assert.IsTrue((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
         Assert.AreEqual(order.UserId, (await _db.Coupons.SingleAsync()).UsedByUserId);
         Assert.AreEqual(ChangeType.VipActivatedViaPayment, (await _db.Changes.SingleAsync()).Type);
-        Assert.AreEqual("StatusChanged", (await _db.PaymentLogs.SingleAsync()).EventType);
+        var log = await _db.PaymentLogs.SingleAsync();
+        Assert.AreEqual("StatusChanged", log.EventType);
+        if (channel == PaymentChannel.WeChatJsApi)
+            Assert.AreEqual("{\"newStatus\":\"Paid\",\"transactionId\":\"confirmed-transaction\"}", log.RawData);
+        else
+        {
+            var receipt = ReadReceipt(log);
+            Assert.AreEqual(1, receipt.Version); Assert.AreEqual(membership.Id, receipt.MembershipId);
+            Assert.AreEqual(order.UserId, receipt.UserId); Assert.AreEqual(order.VipProductId, receipt.VipProductId);
+            Assert.IsNull(receipt.Before);
+            Assert.AreEqual(membership.StartTime, receipt.After.StartTime);
+            Assert.AreEqual(membership.EndTime, receipt.After.EndTime);
+            Assert.AreEqual(order.Id, receipt.After.LastPaymentOrderId);
+        }
     }
 
     [TestMethod]
@@ -109,9 +123,11 @@ public class PaymentFulfillmentTests
     }
 
     [TestMethod]
-    public async Task RefundedOrderCannotBeReactivatedByALatePaymentResult()
+    [DataRow(PaymentChannel.WeChatJsApi)]
+    [DataRow(PaymentChannel.WeChatVirtual)]
+    public async Task RefundedOrderCannotBeReactivatedByALatePaymentResult(PaymentChannel channel)
     {
-        var order = await CreateOrderAsync();
+        var order = await CreateOrderAsync(channel);
         order.Status = PaymentOrderStatus.Refunded;
         await _db.SaveChangesAsync();
         await using var transaction = await _db.Database.BeginTransactionAsync();
@@ -121,6 +137,140 @@ public class PaymentFulfillmentTests
         Assert.AreEqual(0, await _db.VipMemberships.CountAsync());
         Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
         Assert.AreEqual(0, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task VirtualGrantKeepsTheExactPreviousMembershipAndLeavesOtherProductsUntouched(bool active)
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        var oldOrder = new PaymentOrder { UserId = order.UserId, VipProductId = order.VipProductId,
+            OutTradeNo = "OLDER-PURCHASE", Description = "Previous purchase", AmountInFen = 19800, Status = PaymentOrderStatus.Paid };
+        var prior = new VipMembership { UserId = order.UserId, VipProductId = order.VipProductId!.Value,
+            StartTime = DateTime.UtcNow.AddDays(-60), EndTime = DateTime.UtcNow.AddDays(active ? 60 : -30), LastPaymentOrderId = oldOrder.Id };
+        var other = new VipMembership { UserId = order.UserId, VipProduct = new VipProduct { Name = "Another course", PriceInFen = 100 },
+            StartTime = DateTime.UtcNow.AddDays(-10), EndTime = DateTime.UtcNow.AddDays(100) };
+        _db.AddRange(oldOrder, prior, other); await _db.SaveChangesAsync();
+        var original = new PaymentEntitlementState(prior.StartTime, prior.EndTime, prior.LastPaymentOrderId);
+        var otherEnd = other.EndTime;
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            await _service.CompleteAsync(order, "confirmed");
+            await transaction.CommitAsync();
+        }
+        _db.ChangeTracker.Clear();
+        var receipt = ReadReceipt(await _db.PaymentLogs.SingleAsync());
+        var saved = await _db.VipMemberships.SingleAsync(v => v.Id == prior.Id);
+        Assert.AreEqual(original, receipt.Before);
+        Assert.AreEqual(new PaymentEntitlementState(saved.StartTime, saved.EndTime, order.Id), receipt.After);
+        Assert.AreEqual(prior.Id, receipt.MembershipId);
+        if (active) Assert.AreEqual(original.EndTime.AddDays(30), saved.EndTime);
+        else Assert.AreEqual(30, (saved.EndTime - saved.StartTime).TotalDays);
+        Assert.AreEqual(otherEnd, (await _db.VipMemberships.SingleAsync(v => v.Id == other.Id)).EndTime);
+        // Future catalog edits cannot change the receipt of this purchase.
+        (await _db.VipProducts.FindAsync(order.VipProductId))!.DurationDays = 900;
+        await _db.SaveChangesAsync();
+        Assert.AreEqual(receipt, ReadReceipt(await _db.PaymentLogs.SingleAsync()));
+    }
+
+    [TestMethod]
+    public async Task VirtualReceiptUsesPersistedTimestampPrecisionRatherThanTrackedValues()
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        // Simulate storage precision loss; real MySQL datetime(6) also has fewer
+        // fractional digits than a .NET DateTime. Evidence must match the database.
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER round_membership AFTER INSERT ON VipMemberships BEGIN UPDATE VipMemberships SET StartTime = strftime('%Y-%m-%d %H:%M:%f', NEW.StartTime), EndTime = strftime('%Y-%m-%d %H:%M:%f', NEW.EndTime) WHERE Id = NEW.Id; END;");
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        await _service.CompleteAsync(order, "confirmed"); await transaction.CommitAsync();
+        var receipt = ReadReceipt(await _db.PaymentLogs.SingleAsync());
+        var stored = await _db.VipMemberships.AsNoTracking().SingleAsync();
+        Assert.AreEqual(stored.StartTime, receipt.After.StartTime); Assert.AreEqual(stored.EndTime, receipt.After.EndTime);
+        Assert.AreEqual(0, receipt.After.EndTime.Ticks % TimeSpan.TicksPerMillisecond);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task VirtualReceiptFailureRollsBackPaymentMembershipCouponAndAccountingTogether(bool hasGift)
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        var giftEnd = DateTime.UtcNow.AddDays(45);
+        if (hasGift)
+        {
+            _db.Add(new VipMembership { UserId = order.UserId, VipProductId = order.VipProductId!.Value,
+                StartTime = DateTime.UtcNow.AddDays(-1), EndTime = giftEnd });
+            await _db.SaveChangesAsync();
+        }
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER reject_receipt BEFORE INSERT ON PaymentLogs WHEN json_type(NEW.RawData, '$.entitlement') IS NOT NULL BEGIN SELECT RAISE(ABORT, 'Synthetic receipt failure'); END;");
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            await Assert.ThrowsExactlyAsync<DbUpdateException>(() => _service.CompleteAsync(order, "confirmed"));
+            await transaction.RollbackAsync();
+        }
+        _db.ChangeTracker.Clear();
+        order = await _db.PaymentOrders.SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Pending, order.Status); Assert.IsNull(order.PaidAt);
+        Assert.AreEqual(hasGift ? 1 : 0, await _db.VipMemberships.CountAsync());
+        if (hasGift)
+        {
+            var savedGift = await _db.VipMemberships.SingleAsync();
+            Assert.AreEqual(giftEnd, savedGift.EndTime); Assert.IsNull(savedGift.LastPaymentOrderId);
+        }
+        Assert.AreEqual(0, await _db.Changes.CountAsync());
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync()); Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
+        Assert.IsFalse((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.IsNull((await _db.Coupons.SingleAsync()).UsedByUserId);
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER reject_receipt;");
+        await using var retry = await _db.Database.BeginTransactionAsync();
+        await _service.CompleteAsync(order, "confirmed"); await retry.CommitAsync();
+        Assert.AreEqual(order.Id, ReadReceipt(await _db.PaymentLogs.SingleAsync()).After.LastPaymentOrderId);
+        Assert.AreEqual(1, await _db.VipMemberships.CountAsync()); Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task ZeroAmountVirtualGrantStillRecordsItsEntitlementAndDoesNotRestoreTheCoupon()
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.AmountInFen, 0).SetProperty(o => o.DiscountInFen, 19800));
+        _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        await _service.CompleteAsync(order, null); await transaction.CommitAsync();
+        Assert.AreEqual(order.Id, ReadReceipt(await _db.PaymentLogs.SingleAsync()).After.LastPaymentOrderId);
+        Assert.AreEqual(ChangeType.VipActivatedViaCoupon, (await _db.Changes.SingleAsync()).Type);
+        Assert.AreEqual(order.UserId, (await _db.Coupons.SingleAsync()).UsedByUserId);
+    }
+
+    [TestMethod]
+    [DataRow(PaymentChannel.WeChatJsApi)]
+    [DataRow(PaymentChannel.WeChatVirtual)]
+    public async Task MissingEntitlementTargetCannotProduceAVirtualPaidOrderButKeepsLegacyBehavior(PaymentChannel channel)
+    {
+        var order = await CreateOrderAsync(channel);
+        await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.VipProductId, (Guid?)null));
+        _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        if (channel == PaymentChannel.WeChatVirtual)
+        {
+            await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.CompleteAsync(order, "confirmed"));
+            await transaction.RollbackAsync(); _db.ChangeTracker.Clear();
+            Assert.AreEqual(PaymentOrderStatus.Pending, (await _db.PaymentOrders.SingleAsync()).Status);
+            Assert.AreEqual(0, await _db.PaymentLogs.CountAsync());
+        }
+        else
+        {
+            await _service.CompleteAsync(order, "confirmed"); await transaction.CommitAsync();
+            Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+            using var json = JsonDocument.Parse((await _db.PaymentLogs.SingleAsync()).RawData!);
+            Assert.IsFalse(json.RootElement.TryGetProperty("entitlement", out _));
+        }
+        Assert.AreEqual(0, await _db.VipMemberships.CountAsync()); Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
+    }
+
+    private static VirtualPaymentEntitlementReceipt ReadReceipt(PaymentLog log)
+    {
+        using var json = JsonDocument.Parse(log.RawData!);
+        return json.RootElement.GetProperty("entitlement").Deserialize<VirtualPaymentEntitlementReceipt>()!;
     }
 
     private async Task<PaymentOrder> CreateOrderAsync(PaymentChannel channel = PaymentChannel.WeChatJsApi)
