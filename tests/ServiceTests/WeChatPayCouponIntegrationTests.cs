@@ -765,6 +765,183 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, false)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, true)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Failed, true)]
+    [DataRow((PaymentChannel)99, PaymentOrderStatus.Pending, false)]
+    [DataRow((PaymentChannel)99, PaymentOrderStatus.Failed, true)]
+    public async Task OrdinaryCheckoutCannotReuseOrCloseAnotherChannelOrder(PaymentChannel channel, PaymentOrderStatus status, bool expired)
+    {
+        var requests = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { requests++; return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"ordinary-prepay\"}"); });
+        var order = await SeedOtherChannelOrderAsync(channel, status, expired, _productId);
+        var before = await OrderSnapshotAsync(order.Id);
+
+        var result = await _payService.CreateOrderAsync(_userId, "openid", _productId);
+
+        Assert.IsFalse(result.Success);
+        Assert.IsNull(result.PayParams);
+        Assert.IsNull(result.PrepayId);
+        Assert.AreEqual(0, requests);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(before, await OrderSnapshotAsync(order.Id));
+        await AssertNoSettlementAsync();
+    }
+
+    [TestMethod]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, false, false)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, true, false)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Failed, true, false)]
+    [DataRow((PaymentChannel)99, PaymentOrderStatus.Failed, true, false)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Closed, true, true)]
+    public async Task OtherChannelKeepsItsSingleUseCouponUntilConfirmedClosed(PaymentChannel channel, PaymentOrderStatus status, bool expired, bool allowed)
+    {
+        var requests = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { requests++; return (System.Net.HttpStatusCode.OK, "{\"prepay_id\":\"ordinary-prepay\"}"); });
+        var anotherProduct = new VipProduct { Name = "Another course", TotalCategory = new TotalCategory { Title = "Another history" }, PriceInFen = 200, DurationDays = 30 };
+        _dbContext.VipProducts.Add(anotherProduct);
+        await _dbContext.SaveChangesAsync();
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var order = await SeedOtherChannelOrderAsync(channel, status, expired, anotherProduct.Id, coupon.Id);
+        var before = await OrderSnapshotAsync(order.Id);
+
+        // Different product: the shared coupon reservation, not the product check,
+        // must prevent an ordinary payment from spending an in-flight virtual discount.
+        var result = await _payService.CreateOrderAsync(_userId, "openid", _productId, coupon.Code);
+
+        Assert.AreEqual(allowed, result.Success, result.ErrorMessage);
+        Assert.AreEqual(allowed ? 1 : 0, requests);
+        Assert.AreEqual(allowed ? 2 : 1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(before, await OrderSnapshotAsync(order.Id));
+        if (allowed)
+        {
+            var ordinary = await _dbContext.PaymentOrders.SingleAsync(o => o.Channel == PaymentChannel.WeChatJsApi);
+            Assert.AreEqual(100, ordinary.AmountInFen);
+            Assert.AreEqual(100, ordinary.DiscountInFen);
+            Assert.AreEqual("prepay_id=ordinary-prepay", result.PayParams!.Package);
+        }
+        await AssertNoSettlementAsync(allowed ? 1 : 0);
+    }
+
+    [TestMethod]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Failed)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Closed)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Paid)]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Refunded)]
+    [DataRow((PaymentChannel)99, PaymentOrderStatus.Pending)]
+    public async Task OrdinaryStatusQueryNeverReconcilesAnotherChannel(PaymentChannel channel, PaymentOrderStatus status)
+    {
+        var requests = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { requests++; return (System.Net.HttpStatusCode.NotFound, "{\"code\":\"ORDER_NOT_EXIST\"}"); });
+        var order = await SeedOtherChannelOrderAsync(channel, status, false, _productId);
+        var before = await OrderSnapshotAsync(order.Id);
+
+        Assert.IsNull(await _payService.QueryOrderStatusAsync(order.OutTradeNo, _userId));
+        Assert.AreEqual(0, requests);
+        Assert.AreEqual(before, await OrderSnapshotAsync(order.Id));
+        await AssertNoSettlementAsync();
+    }
+
+    [TestMethod]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, "SUCCESS")]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, "CLOSED")]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Pending, "PAYERROR")]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Paid, "SUCCESS")]
+    [DataRow(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Refunded, "SUCCESS")]
+    [DataRow((PaymentChannel)99, PaymentOrderStatus.Pending, "SUCCESS")]
+    public async Task SignedOrdinaryNotificationCannotChangeAnotherChannel(PaymentChannel channel, PaymentOrderStatus status, string tradeState)
+    {
+        var requests = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { requests++; return (System.Net.HttpStatusCode.BadRequest, "{}"); });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var order = await SeedOtherChannelOrderAsync(channel, status, false, _productId, coupon.Id);
+        var before = await OrderSnapshotAsync(order.Id);
+        using var rsa = RSA.Create(2048);
+        var request = new CertificateRequest("CN=Other channel notification", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+        using var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1));
+        var entry = new CertificateEntry(CertificateEntry.ALGORITHM_TYPE_RSA, certificate.ExportCertificatePem());
+        _tenpayClient.PlatformCertificateManager.AddEntry(entry);
+
+        // Verify/decrypt a genuine isolated SDK envelope. A correct ordinary
+        // signature and amount must not authorize a virtual order with the same ID.
+        Assert.IsTrue(await SendSignedPaymentNotificationAsync(rsa, entry.SerialNumber, order.OutTradeNo, order.AmountInFen, "CNY", tradeState: tradeState));
+
+        Assert.AreEqual(0, requests);
+        Assert.AreEqual(before, await OrderSnapshotAsync(order.Id));
+        await AssertNoSettlementAsync();
+    }
+
+    [TestMethod]
+    public async Task VirtualMembershipStillBlocksOrdinaryRepurchase()
+    {
+        var requests = 0;
+        await UseCheckoutDatabaseAsync((_, _) => { requests++; return (System.Net.HttpStatusCode.BadRequest, "{}"); });
+        var order = await SeedOtherChannelOrderAsync(PaymentChannel.WeChatVirtual, PaymentOrderStatus.Paid, false, _productId);
+        var membership = new VipMembership { UserId = _userId, VipProductId = _productId, LastPaymentOrderId = order.Id,
+            StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(30) };
+        _dbContext.VipMemberships.Add(membership);
+        await _dbContext.SaveChangesAsync();
+        var expiry = membership.EndTime;
+
+        Assert.IsFalse((await _payService.CreateOrderAsync(_userId, "openid", _productId)).Success);
+
+        Assert.AreEqual(0, requests);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(expiry, (await _dbContext.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+    }
+
+    private async Task<PaymentOrder> SeedOtherChannelOrderAsync(PaymentChannel channel, PaymentOrderStatus status, bool expired, Guid productId, Guid? couponId = null)
+    {
+        var order = new PaymentOrder { UserId = _userId, VipProductId = productId, OutTradeNo = "OTHER-CHANNEL",
+            Channel = channel, Status = status, CouponId = couponId, AmountInFen = 100, DiscountInFen = couponId.HasValue ? 100 : 0,
+            Description = "Other channel purchase", PrepayId = "foreign-prepay",
+            PaidAt = status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded ? DateTime.UtcNow : null,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(expired ? -1 : 30) };
+        _dbContext.PaymentOrders.Add(order);
+        await _dbContext.SaveChangesAsync();
+        return order;
+    }
+
+    private async Task<string> OrderSnapshotAsync(Guid id) => JsonSerializer.Serialize(await _dbContext.PaymentOrders.AsNoTracking()
+        .Where(o => o.Id == id).Select(o => new { o.Id, o.UserId, o.VipProductId, o.OutTradeNo, o.Channel, o.Status,
+            o.AmountInFen, o.DiscountInFen, o.CouponId, o.PrepayId, o.PaidAt, o.WechatTransactionId, o.CreatedAt, o.ExpiredAt }).SingleAsync());
+
+    private async Task AssertNoSettlementAsync(int expectedLogs = 0)
+    {
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        Assert.AreEqual(expectedLogs, await _dbContext.PaymentLogs.CountAsync());
+        Assert.IsFalse(await _dbContext.UserClaimedCoupons.AnyAsync(c => c.IsUsed));
+        Assert.IsFalse(await _dbContext.Coupons.AnyAsync(c => c.UsedByUserId != null));
+    }
+
+    private async Task<bool> SendSignedPaymentNotificationAsync(RSA signingKey, string serialNumber, string outTradeNo,
+        int? notifiedTotal, string? notifiedCurrency, bool validSignature = true, string tradeState = "SUCCESS")
+    {
+        var plain = JsonSerializer.SerializeToUtf8Bytes(new
+        {
+            out_trade_no = outTradeNo, transaction_id = "isolated-transaction", trade_state = tradeState,
+            // A WeChat-funded discount can reduce payer_total without changing total.
+            amount = notifiedTotal.HasValue ? new { total = notifiedTotal.Value, currency = notifiedCurrency, payer_total = 70 } : null
+        });
+        const string resourceNonce = "123456789012";
+        const string associated = "transaction";
+        var ciphertext = new byte[plain.Length];
+        var tag = new byte[16];
+        using (var aes = new AesGcm(Encoding.UTF8.GetBytes("12345678901234567890123456789012"), 16))
+            aes.Encrypt(Encoding.UTF8.GetBytes(resourceNonce), plain, ciphertext, tag, Encoding.UTF8.GetBytes(associated));
+        var body = JsonSerializer.Serialize(new { id = "isolated-event", event_type = "TRANSACTION.SUCCESS", resource_type = "encrypt-resource", resource = new { algorithm = "AEAD_AES_256_GCM", ciphertext = Convert.ToBase64String(ciphertext.Concat(tag).ToArray()), nonce = resourceNonce, associated_data = associated } });
+        var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+        const string nonce = "isolated-signature-nonce";
+        var signature = Convert.ToBase64String(signingKey.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{body}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
+        return await _payService.HandlePaymentNotifyAsync(body, validSignature ? signature : "invalid", timestamp, nonce, serialNumber);
+    }
+
+    [TestMethod]
     public async Task BuyingTwoSchoolsActivatesOnlyTheirIndependentMemberships()
     {
         _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "School buyer" });
@@ -878,26 +1055,8 @@ public class WeChatPayCouponIntegrationTests
             product.PriceInFen = 200;
             await _dbContext.SaveChangesAsync();
             var outTradeNo = order.OutTradeNo;
-            async Task<bool> Notify(RSA signingKey, int? notifiedTotal, string? notifiedCurrency, bool validSignature = true, string tradeState = "SUCCESS")
-            {
-                var plain = JsonSerializer.SerializeToUtf8Bytes(new
-                {
-                    out_trade_no = outTradeNo, transaction_id = "isolated-transaction", trade_state = tradeState,
-                    // A WeChat-funded discount can reduce payer_total without changing total.
-                    amount = notifiedTotal.HasValue ? new { total = notifiedTotal.Value, currency = notifiedCurrency, payer_total = 70 } : null
-                });
-                const string resourceNonce = "123456789012";
-                const string associated = "transaction";
-                var ciphertext = new byte[plain.Length];
-                var tag = new byte[16];
-                using (var aes = new AesGcm(Encoding.UTF8.GetBytes("12345678901234567890123456789012"), 16))
-                    aes.Encrypt(Encoding.UTF8.GetBytes(resourceNonce), plain, ciphertext, tag, Encoding.UTF8.GetBytes(associated));
-                var body = JsonSerializer.Serialize(new { id = "isolated-event", event_type = "TRANSACTION.SUCCESS", resource_type = "encrypt-resource", resource = new { algorithm = "AEAD_AES_256_GCM", ciphertext = Convert.ToBase64String(ciphertext.Concat(tag).ToArray()), nonce = resourceNonce, associated_data = associated } });
-                var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-                const string nonce = "isolated-signature-nonce";
-                var signature = Convert.ToBase64String(signingKey.SignData(Encoding.UTF8.GetBytes($"{timestamp}\n{nonce}\n{body}\n"), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1));
-                return await _payService.HandlePaymentNotifyAsync(body, validSignature ? signature : "invalid", timestamp, nonce, entry.SerialNumber);
-            }
+            Task<bool> Notify(RSA signingKey, int? notifiedTotal, string? notifiedCurrency, bool validSignature = true, string tradeState = "SUCCESS") =>
+                SendSignedPaymentNotificationAsync(signingKey, entry.SerialNumber, outTradeNo, notifiedTotal, notifiedCurrency, validSignature, tradeState);
             if (failAccounting)
             {
                 // Coupon activation saves before the accounting event. A failure after
