@@ -14,7 +14,7 @@ namespace Aiursoft.WeChatExam.Services;
 /// is not a public API and must never accept a token or order from a client.
 /// See https://developers.weixin.qq.com/miniprogram/dev/server/API/VirtualPayment/api_query_order.html
 /// </summary>
-public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClientFactory httpClientFactory) : IScopedDependency
+public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClientFactory httpClientFactory) : IVirtualPaymentQueryService, IScopedDependency
 {
     public async Task<VirtualPaymentQueryResult> QueryAsync(PaymentOrder order, VirtualPaymentSnapshot snapshot,
         string accessToken, CancellationToken cancellationToken = default)
@@ -51,7 +51,7 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
             throw new InvalidOperationException("Virtual payment order query failed.");
         }
         if (!response.IsSuccessful())
-            throw new InvalidOperationException($"Virtual payment order query failed (code {response.ErrorCode}).");
+            throw new VirtualPaymentGatewayException(response.ErrorCode);
 
         var remote = response.Order;
         // Request env is 0/1; response env_type is 1/2. Refund orders (1/8)
@@ -83,7 +83,7 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
 
         // paid_fee may differ due to platform subsidies. order_fee must equal
         // the merchant's saved payable amount, not today's price or full price.
-        return new VirtualPaymentQueryResult(state, remote.WxOrderId, remote.TransactionId);
+        return new VirtualPaymentQueryResult(state, remote.WxOrderId, remote.TransactionId, order.Id, order.AmountInFen);
     }
 
     private sealed class QueryClient(WechatApiClientOptions settings, HttpClient httpClient)
@@ -102,4 +102,5 @@ public enum VirtualPaymentOrderState
 }
 
 /// <summary>A validated observation, not a command to fulfill or close an order.</summary>
-public sealed record VirtualPaymentQueryResult(VirtualPaymentOrderState State, string PlatformOrderId, string? TransactionId);
+public sealed record VirtualPaymentQueryResult(VirtualPaymentOrderState State, string PlatformOrderId, string? TransactionId,
+    Guid PaymentOrderId, int AmountInFen);

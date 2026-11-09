@@ -79,6 +79,26 @@ public sealed class VirtualPaymentAccessTokenService(
         }
     }
 
+    /// <summary>
+    /// Remove only the rejected cached credential. Serialize with acquisition so
+    /// a delayed rejection cannot evict a newer token; never force-refresh WeChat.
+    /// </summary>
+    public async Task ForgetRejectedAsync(string appId, string rejectedToken, CancellationToken cancellationToken = default)
+    {
+        if (appId != options.Value.WeChat.AppId)
+            throw new InvalidOperationException("Virtual payment access-token app is mismatched.");
+        await _refreshLock.WaitAsync(cancellationToken);
+        try
+        {
+            if (cache.TryGetValue<string>(_cacheKey, out var current) && current == rejectedToken)
+                cache.Remove(_cacheKey);
+        }
+        finally
+        {
+            _refreshLock.Release();
+        }
+    }
+
     public void Dispose() => _refreshLock.Dispose();
 
     private sealed class TokenClient(WechatApiClientOptions settings, HttpClient httpClient)

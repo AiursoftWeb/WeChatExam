@@ -162,6 +162,22 @@ public class VirtualPaymentAccessTokenTests
         Assert.AreEqual(1, handler.Calls);
     }
 
+    [TestMethod]
+    public async Task DelayedRejectionCannotEvictANewerCachedCredential()
+    {
+        using var cache = new MemoryCache(new MemoryCacheOptions());
+        using var handler = new TokenHandler();
+        using var service = Service(cache, handler);
+        await service.GetAsync("app-a");
+        await service.ForgetRejectedAsync("app-a", "stale-token");
+        await service.GetAsync("app-a");
+        Assert.AreEqual(1, handler.Calls);
+        await service.ForgetRejectedAsync("app-a", Token);
+        await service.GetAsync("app-a");
+        Assert.AreEqual(2, handler.Calls);
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => service.ForgetRejectedAsync("another-app", Token));
+    }
+
     private static VirtualPaymentAccessTokenService Service(IMemoryCache cache, TokenHandler handler,
         string appId = "app-a", string secret = Secret) => new(Options.Create(new AppSettings
         {
