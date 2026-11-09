@@ -61,6 +61,7 @@ public class BasicTests
         Assert.IsNotNull(_server);
         using var scope = _server.Services.CreateScope();
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<PaymentFulfillmentService>());
+        Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentParameterService>());
     }
 
     /// <summary>

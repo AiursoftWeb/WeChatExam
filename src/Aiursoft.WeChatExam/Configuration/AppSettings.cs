@@ -123,6 +123,10 @@ public class WeChatSettings
     /// WeChat Pay configuration
     /// </summary>
     public WeChatPaySettings Payment { get; init; } = new();
+
+    // Optional and independent of ordinary payment. Missing configuration must
+    // not stop existing clients, callbacks or application startup.
+    public VirtualPaymentSettings VirtualPayment { get; init; } = new();
 }
 
 public class WeChatPaySettings
