@@ -38,7 +38,7 @@ public class VirtualPaymentParameterService(IOptions<AppSettings> options) : ISc
         if ((long)order.AmountInFen + order.DiscountInFen != product.PriceInFen)
             throw new InvalidOperationException("The saved order price does not match the virtual product.");
 
-        var signData = JsonSerializer.Serialize(new Purchase
+        var signData = JsonSerializer.Serialize(new VirtualPaymentPurchase
         {
             OfferId = settings.OfferId, BuyQuantity = 1, Env = settings.Environment, CurrencyType = "CNY",
             ProductId = product.ProductId, GoodsPrice = product.PriceInFen,
@@ -66,21 +66,7 @@ public class VirtualPaymentParameterService(IOptions<AppSettings> options) : ISc
         if (snapshot.PaymentOrderId != order.Id || snapshot.AppId != options.Value.WeChat.AppId ||
             snapshot.OpenId != openId || snapshot.SignData.Length > 4096)
             throw new InvalidOperationException("The virtual payment snapshot does not match this purchase.");
-        Purchase? purchase;
-        try
-        {
-            purchase = JsonSerializer.Deserialize<Purchase>(snapshot.SignData, SigningJson);
-        }
-        catch (JsonException)
-        {
-            throw new InvalidOperationException("The virtual payment snapshot is invalid.");
-        }
-        if (purchase == null || purchase.Env is not (0 or 1) || purchase.OfferId != settings.OfferId ||
-            string.IsNullOrWhiteSpace(purchase.OfferId) || purchase.BuyQuantity != 1 || purchase.CurrencyType != "CNY" ||
-            string.IsNullOrWhiteSpace(purchase.ProductId) || purchase.OutTradeNo != order.OutTradeNo || purchase.Attach != order.Id.ToString("N") ||
-            purchase.GoodsPrice != (long)order.AmountInFen + order.DiscountInFen ||
-            (purchase.ActivitySellingPrice ?? purchase.GoodsPrice) != order.AmountInFen)
-            throw new InvalidOperationException("The virtual payment snapshot does not match this purchase.");
+        var purchase = VirtualPaymentPurchase.Read(order, snapshot, options.Value.WeChat.AppId, settings.OfferId);
         return new VirtualPaymentParameters
         {
             SignData = snapshot.SignData,
@@ -126,17 +112,4 @@ public class VirtualPaymentParameterService(IOptions<AppSettings> options) : ISc
 
     private static bool IsValidOrderNumber(string value) => value.Length is >= 8 and <= 32 && value[0] != '_' &&
         value.All(c => char.IsAsciiLetterOrDigit(c) || "_-|*@".Contains(c));
-
-    private sealed class Purchase
-    {
-        public string OfferId { get; init; } = string.Empty;
-        public int BuyQuantity { get; init; }
-        public int Env { get; init; }
-        public string CurrencyType { get; init; } = string.Empty;
-        public string ProductId { get; init; } = string.Empty;
-        public int GoodsPrice { get; init; }
-        public int? ActivitySellingPrice { get; init; }
-        public string OutTradeNo { get; init; } = string.Empty;
-        public string Attach { get; init; } = string.Empty;
-    }
 }

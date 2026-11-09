@@ -56,6 +56,8 @@ public class Startup : IWebStartup
         // Services
         services.AddMemoryCache();
         services.AddHttpClient();
+        // Virtual payment URLs contain an access_token; never log their raw URLs.
+        services.AddHttpClient(nameof(VirtualPaymentQueryService)).RemoveAllLoggers();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();
         services.AddScoped<IGradingService, GradingService>();
