@@ -269,6 +269,34 @@ public class VirtualPaymentApiTests
         Assert.AreEqual(1, _handler.Queries);
     }
 
+    [TestMethod]
+    public async Task ServerConfirmedClosureAllowsAFreshNumberAndTheSameUnusedCoupon()
+    {
+        await SignIn();
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Add(new Coupon { Code = "RESERVED", AmountInFen = 1000, IsSingleUse = true,
+                DistributionChannel = new DistributionChannel { Id = Guid.NewGuid(), AgencyName = "Agency" } });
+            await db.SaveChangesAsync();
+        }
+        using var initial = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("RESERVED"));
+        Assert.AreEqual(HttpStatusCode.OK, initial.StatusCode);
+        var first = (await initial.Content.ReadFromJsonAsync<CreateVirtualPaymentOrderResponse>())!;
+        _handler.Order = first.OutTradeNo; _handler.OrderStatus = 6; _handler.OrderFee = 18800;
+        using var closed = await _http.GetAsync("/api/virtual-payment/order-status/" + first.OutTradeNo);
+        Assert.AreEqual("Closed", (await closed.Content.ReadFromJsonAsync<PaymentOrderStatusResponse>())!.Status);
+        using var next = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("RESERVED"));
+        Assert.AreEqual(HttpStatusCode.OK, next.StatusCode);
+        var second = (await next.Content.ReadFromJsonAsync<CreateVirtualPaymentOrderResponse>())!;
+        Assert.AreNotEqual(first.OutTradeNo, second.OutTradeNo);
+        Assert.AreEqual(18800, second.AmountInFen); Assert.AreEqual("RESERVED", second.AppliedCouponCode);
+        using var check = _server.Services.CreateScope(); var context = check.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(2, await context.PaymentOrders.CountAsync()); Assert.AreEqual(0, await context.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await context.VipMemberships.CountAsync());
+        Assert.IsNull((await context.Coupons.SingleAsync(c => c.Code == "RESERVED")).UsedByUserId);
+    }
+
     private CreateVirtualPaymentOrderRequest Purchase(string? coupon = null) => new() { VipProductId = _productId, LoginCode = "fresh-code", CouponCode = coupon };
     private async Task<string> CreatePurchase()
     {
@@ -292,6 +320,7 @@ public class VirtualPaymentApiTests
         public string OpenId { get; set; } = "buyer-openid";
         public string? Order { get; set; }
         public int OrderFee { get; set; } = 19800;
+        public int OrderStatus { get; set; } = 2;
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             Calls++;
@@ -302,7 +331,8 @@ public class VirtualPaymentApiTests
             else if (path == "/xpay/query_order")
             {
                 Queries++; body = JsonSerializer.Serialize(new { errcode = 0, order = new { order_id = Order,
-                    env_type = 2, order_type = 0, status = 2, biz_type = 0, order_fee = OrderFee, paid_fee = OrderFee, wx_order_id = "platform-order" } });
+                    env_type = 2, order_type = 0, status = OrderStatus, biz_type = 0, order_fee = OrderFee,
+                    paid_fee = OrderStatus == 6 ? 0 : OrderFee, wx_order_id = "platform-order" } });
             }
             else throw new InvalidOperationException("Unexpected virtual-payment endpoint.");
             return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(body) });

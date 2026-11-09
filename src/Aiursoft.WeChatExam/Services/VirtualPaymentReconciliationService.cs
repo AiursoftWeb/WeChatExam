@@ -49,7 +49,7 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
             string.IsNullOrWhiteSpace(result.PlatformOrderId))
             throw new InvalidOperationException("The virtual payment result does not match this order.");
         if (result.State is not (VirtualPaymentOrderState.PaidAwaitingDelivery or VirtualPaymentOrderState.Delivering or
-            VirtualPaymentOrderState.Delivered)) return order;
+            VirtualPaymentOrderState.Delivered or VirtualPaymentOrderState.Closed)) return order;
 
         var retrying = false;
         // Once verified, finish persistence even if the phone disconnects. A
@@ -81,6 +81,18 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
                 saved.AppId != snapshot.AppId || saved.OpenId != snapshot.OpenId || saved.SignData != snapshot.SignData)
                 throw new InvalidOperationException("The virtual purchase changed during reconciliation.");
             _ = VirtualPaymentPurchase.Read(current, saved, options.Value.WeChat.AppId, options.Value.WeChat.VirtualPayment.OfferId);
+            if (result.State == VirtualPaymentOrderState.Closed)
+            {
+                // Only authenticated server proof can release this reservation.
+                // A phone cancellation or local deadline cannot close a payable
+                // WeChat order. Never consume/restore a coupon or grant rights here.
+                current.Status = PaymentOrderStatus.Closed;
+                db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = current.Id, EventType = "VirtualPaymentClosed",
+                    RawData = JsonSerializer.Serialize(new { current.OutTradeNo, result.PlatformOrderId }) });
+                await db.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return current;
+            }
             if (!current.VipProductId.HasValue || !await db.VipProducts.AnyAsync(p => p.Id == current.VipProductId))
                 throw new InvalidOperationException("The virtual payment product is unavailable.");
 

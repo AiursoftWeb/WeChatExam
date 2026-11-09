@@ -119,13 +119,75 @@ public class VirtualPaymentReconciliationTests
     [TestMethod]
     [DataRow(VirtualPaymentOrderState.Initializing)]
     [DataRow(VirtualPaymentOrderState.Created)]
-    [DataRow(VirtualPaymentOrderState.Closed)]
     [DataRow(VirtualPaymentOrderState.RefundOrReversal)]
     public async Task UnconfirmedOrRefundedPlatformStateDoesNotGrantOrReleaseReservation(VirtualPaymentOrderState state)
     {
         _query.State = state;
         Assert.AreEqual(PaymentOrderStatus.Pending, (await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId))!.Status);
         await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    [DataRow(PaymentOrderStatus.Pending)]
+    [DataRow(PaymentOrderStatus.Failed)]
+    public async Task ConfirmedClosureReleasesOnlyTheReservationAndIsIdempotent(PaymentOrderStatus previous)
+    {
+        await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, previous));
+        _query.State = VirtualPaymentOrderState.Closed;
+        var result = await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        Assert.AreEqual(PaymentOrderStatus.Closed, result!.Status);
+        Assert.IsNull(result.PaidAt); Assert.IsNull(result.WechatTransactionId);
+        Assert.AreEqual(_order.CouponId, result.CouponId); Assert.AreEqual(13000, result.DiscountInFen);
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        Assert.AreEqual(1, _query.Calls);
+        Assert.AreEqual("VirtualPaymentClosed", (await _db.PaymentLogs.SingleAsync()).EventType);
+        Assert.AreEqual(0, await _db.VipMemberships.CountAsync()); Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _db.Changes.CountAsync());
+        Assert.IsNull((await _db.Coupons.SingleAsync()).UsedByUserId);
+        Assert.IsFalse((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(0, _handler.NotifyCalls);
+    }
+
+    [TestMethod]
+    public async Task AlreadyCommittedPaymentWinsOverAnOlderClosureProof()
+    {
+        _query.State = VirtualPaymentOrderState.Closed;
+        _query.Hook = async () =>
+        {
+            await using var other = new SqliteContext(_dbOptions);
+            await CreateService(other, new Query()).ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        };
+        var result = await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        Assert.AreEqual(PaymentOrderStatus.Paid, result!.Status);
+        Assert.AreEqual(1, await _db.VipMemberships.CountAsync()); Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentClosed"));
+    }
+
+    [TestMethod]
+    public async Task ClosureCannotRestoreACouponThatWasAlreadyConsumed()
+    {
+        await _db.Coupons.ExecuteUpdateAsync(s => s.SetProperty(c => c.UsedByUserId, _order.UserId));
+        await _db.UserClaimedCoupons.ExecuteUpdateAsync(s => s.SetProperty(c => c.IsUsed, true));
+        _query.State = VirtualPaymentOrderState.Closed;
+        Assert.AreEqual(PaymentOrderStatus.Closed, (await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId))!.Status);
+        Assert.AreEqual(_order.UserId, (await _db.Coupons.SingleAsync()).UsedByUserId);
+        Assert.IsTrue((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(0, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task ClosureLogFailureRollsBackAndLeavesTheCouponReservedUntilRetry()
+    {
+        _query.State = VirtualPaymentOrderState.Closed;
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER fail_closure BEFORE INSERT ON PaymentLogs WHEN NEW.EventType = 'VirtualPaymentClosed' BEGIN SELECT RAISE(ABORT, 'synthetic failure'); END;");
+        await Assert.ThrowsExactlyAsync<DbUpdateException>(() => _service.ReconcileAsync(_order.OutTradeNo, _order.UserId));
+        _db.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Pending, (await _db.PaymentOrders.SingleAsync()).Status);
+        await AssertNoFinancialEffects();
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_closure;");
+        Assert.AreEqual(PaymentOrderStatus.Closed, (await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId))!.Status);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync());
     }
 
     [TestMethod]
