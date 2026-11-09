@@ -53,7 +53,7 @@ public class VirtualPaymentReconciliationTests
         _db.VirtualPaymentSnapshots.Add(new VirtualPaymentParameterService(captureSettings).Capture(_order, user));
         user.SessionKey = null;
         await _db.SaveChangesAsync();
-        _recovery = Settings(virtualSettings: new VirtualPaymentSettings { OfferId = "offer", SandboxAppKey = "synthetic-key" });
+        _recovery = Settings(virtualSettings: new VirtualPaymentSettings { OfferId = "offer", SandboxAppKey = "synthetic-key", AppKey = "synthetic-live-key" });
         _tokens = new VirtualPaymentAccessTokenService(_recovery, new TokenFactory(_handler), _cache);
         _service = CreateService(_db, _query);
         _db.ChangeTracker.Clear();
@@ -310,6 +310,203 @@ public class VirtualPaymentReconciliationTests
         Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
     }
 
+    [TestMethod]
+    [DataRow(0)]
+    [DataRow(1)]
+    public async Task DeliveryFallbackSignsSavedPurchaseOnlyAfterCommittedFulfillment(int environment)
+    {
+        var saved = await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync();
+        var purchase = System.Text.Json.Nodes.JsonNode.Parse(saved.SignData)!;
+        purchase["env"] = environment;
+        var raw = purchase.ToJsonString();
+        await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.SignData, raw));
+        var delivery = CreateDelivery();
+        Assert.IsFalse(await delivery.ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(0, _handler.Calls);
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        var end = (await _db.VipMemberships.SingleAsync()).EndTime;
+        _handler.NotifyObserver = () => Assert.IsNull(_db.Database.CurrentTransaction);
+        Assert.IsTrue(await delivery.ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(1, _handler.NotifyCalls);
+        Assert.IsNotNull(_handler.NotifyUrl);
+        var parameters = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(_handler.NotifyUrl.Query);
+        Assert.AreEqual("token-1", parameters["access_token"].ToString());
+        var signature = Convert.ToHexStringLower(System.Security.Cryptography.HMACSHA256.HashData(
+            System.Text.Encoding.UTF8.GetBytes(environment == 1 ? "synthetic-key" : "synthetic-live-key"),
+            System.Text.Encoding.UTF8.GetBytes("/xpay/notify_provide_goods&" + _handler.NotifyBody)));
+        Assert.AreEqual(signature, parameters["pay_sig"].ToString());
+        using var body = System.Text.Json.JsonDocument.Parse(_handler.NotifyBody!);
+        Assert.AreEqual(environment, body.RootElement.GetProperty("env").GetInt32());
+        Assert.AreEqual(_order.OutTradeNo, body.RootElement.GetProperty("order_id").GetString());
+        Assert.IsFalse(body.RootElement.TryGetProperty("wx_order_id", out _));
+        Assert.AreEqual(end, (await _db.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task DeliveryRejectsUncommittedTrackedStateAndAnyOpenTransaction()
+    {
+        var tracked = await _db.PaymentOrders.SingleAsync();
+        tracked.Status = PaymentOrderStatus.Paid;
+        Assert.IsFalse(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(0, _handler.Calls);
+        _db.ChangeTracker.Clear();
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.IsFalse(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(0, _handler.NotifyCalls);
+    }
+
+    [TestMethod]
+    public async Task DeliveryRejectsAnAmbientTransactionBeforeAnyDatabaseOrGatewayAccess()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        using var transaction = new System.Transactions.TransactionScope(System.Transactions.TransactionScopeAsyncFlowOption.Enabled);
+        Assert.IsFalse(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(0, _handler.NotifyCalls);
+        transaction.Complete();
+    }
+
+    [TestMethod]
+    [DataRow(VirtualPaymentOrderState.Delivered, true)]
+    [DataRow(VirtualPaymentOrderState.Delivering, true)]
+    [DataRow(VirtualPaymentOrderState.Created, false)]
+    [DataRow(VirtualPaymentOrderState.Initializing, false)]
+    [DataRow(VirtualPaymentOrderState.Closed, false)]
+    [DataRow(VirtualPaymentOrderState.RefundOrReversal, false)]
+    public async Task DeliveryRechecksRemoteStateAndSkipsAlreadyDelivered(VirtualPaymentOrderState state, bool success)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _query.State = state;
+        Assert.AreEqual(success, await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(state == VirtualPaymentOrderState.Delivering ? 1 : 0, _handler.NotifyCalls);
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    [DataRow("owner")]
+    [DataRow("channel")]
+    [DataRow("refund")]
+    [DataRow("snapshot")]
+    [DataRow("missing-snapshot")]
+    [DataRow("amount")]
+    public async Task DeliveryCannotAcknowledgeAnUnauthorizedOrInvalidLocalPurchase(string fault)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        if (fault == "channel") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Channel, PaymentChannel.WeChatJsApi));
+        if (fault == "refund") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, PaymentOrderStatus.Refunded));
+        if (fault == "snapshot") await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(o => o.SignData, "invalid"));
+        if (fault == "missing-snapshot") await _db.VirtualPaymentSnapshots.ExecuteDeleteAsync();
+        if (fault == "amount") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.AmountInFen, 1));
+        Assert.IsFalse(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, fault == "owner" ? "other-buyer" : _order.UserId));
+        Assert.AreEqual(1, _handler.Calls);
+        Assert.AreEqual(1, _query.Calls);
+        Assert.AreEqual(0, _handler.NotifyCalls);
+    }
+
+    [TestMethod]
+    [DataRow("network")]
+    [DataRow("malformed")]
+    [DataRow("missing-code")]
+    [DataRow("empty")]
+    [DataRow("http")]
+    [DataRow("platform")]
+    public async Task FailedAcknowledgementDoesNotUndoRightsOrExposeGatewaySecrets(string fault)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _handler.NotifyFault = fault;
+        var logger = new DeliveryLogger();
+        Assert.IsFalse(await CreateDelivery(logger).ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(1, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.DoesNotContain("sensitive-response", logger.Message);
+        Assert.DoesNotContain("token-1", logger.Message);
+        Assert.IsNull(logger.Exception);
+    }
+
+    [TestMethod]
+    [DataRow(40001)]
+    [DataRow(40014)]
+    [DataRow(42001)]
+    public async Task DeliveryReacquiresRejectedCredentialOnceWithoutDoubleGranting(int code)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _handler.NotifyError = code;
+        _handler.FailOnce = true;
+        Assert.IsTrue(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(2, _handler.NotifyCalls);
+        Assert.AreEqual(3, _query.Calls);
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task DeliveryRetryIsBoundedWhenNewCredentialsAreStillRejected()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _handler.NotifyError = 40014;
+        Assert.IsFalse(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(2, _handler.NotifyCalls);
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task UncertainNetworkReplyIsRequeriedBeforeAnotherAcknowledgement()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _handler.NotifyFault = "network";
+        _handler.NotifyObserver = () => _query.State = VirtualPaymentOrderState.Delivered;
+        var delivery = CreateDelivery();
+        Assert.IsFalse(await delivery.ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.IsTrue(await delivery.ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(1, _handler.NotifyCalls);
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("refund")]
+    [DataRow("snapshot")]
+    [DataRow("result")]
+    public async Task DeliveryRejectsChangesWhileWaitingForRemoteProof(string fault)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        if (fault == "result") _query.WrongAmount = true;
+        _query.Hook = async () =>
+        {
+            if (fault == "refund") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, PaymentOrderStatus.Refunded));
+            if (fault == "snapshot") await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(o => o.OpenId, "changed"));
+        };
+        Assert.IsFalse(await CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(0, _handler.NotifyCalls);
+    }
+
+    [TestMethod]
+    public async Task DeliveryCancellationLeavesCommittedRightsIntact()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        using var cancellation = new CancellationTokenSource();
+        var requestToken = cancellation.Token;
+        _handler.NotifyObserver = cancellation.Cancel;
+        await Assert.ThrowsAsync<OperationCanceledException>(() => CreateDelivery().ConfirmRecoveryAsync(_order.OutTradeNo, _order.UserId, requestToken));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    private VirtualPaymentDeliveryService CreateDelivery(ILogger<VirtualPaymentDeliveryService>? logger = null) =>
+        new(_db, _query, _tokens, new TokenFactory(_handler), _recovery, logger ?? NullLogger<VirtualPaymentDeliveryService>.Instance);
+
+    private sealed class DeliveryLogger : ILogger<VirtualPaymentDeliveryService>
+    {
+        public string Message { get; private set; } = "";
+        public Exception? Exception { get; private set; }
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
+        public bool IsEnabled(LogLevel logLevel) => true;
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+        { Message = formatter(state, exception); Exception = exception; }
+    }
+
     private VirtualPaymentReconciliationService CreateService(SqliteContext db, IVirtualPaymentQueryService query) => new(db, query,
         _tokens,
         new PaymentFulfillmentService(db, new CouponService(db), new ChangeService(db), NullLogger<PaymentFulfillmentService>.Instance),
@@ -343,6 +540,13 @@ public class VirtualPaymentReconciliationTests
         public int Calls => _calls;
         public string? Body { get; private set; }
         public bool Fail { get; set; }
+        public int NotifyCalls { get; private set; }
+        public string? NotifyBody { get; private set; }
+        public Uri? NotifyUrl { get; private set; }
+        public string? NotifyFault { get; set; }
+        public int NotifyError { get; set; }
+        public bool FailOnce { get; set; }
+        public Action? NotifyObserver { get; set; }
         public bool AnswerQuery { get; set; }
         public Uri? QueryUrl { get; private set; }
         public string? QueryBody { get; private set; }
@@ -350,6 +554,18 @@ public class VirtualPaymentReconciliationTests
         {
             Interlocked.Increment(ref _calls);
             Body = await request.Content!.ReadAsStringAsync(cancellationToken);
+            if (request.RequestUri!.AbsolutePath == "/xpay/notify_provide_goods")
+            {
+                NotifyCalls++;
+                NotifyUrl = request.RequestUri;
+                NotifyBody = Body;
+                NotifyObserver?.Invoke();
+                cancellationToken.ThrowIfCancellationRequested();
+                if (NotifyFault == "network") throw new HttpRequestException("sensitive-response " + request.RequestUri);
+                return new HttpResponseMessage(NotifyFault == "http" ? System.Net.HttpStatusCode.BadGateway : System.Net.HttpStatusCode.OK)
+                { Content = new StringContent(NotifyFault == "malformed" ? "sensitive-response" : NotifyFault == "missing-code" ? "{}" : NotifyFault == "empty" ? "" : System.Text.Json.JsonSerializer.Serialize(new
+                { errcode = NotifyFault == "platform" ? 50000 : (FailOnce && NotifyCalls > 1 ? 0 : NotifyError), errmsg = "sensitive-response" })) };
+            }
             if (AnswerQuery && request.RequestUri!.AbsolutePath == "/xpay/query_order")
             {
                 QueryUrl = request.RequestUri;
