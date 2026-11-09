@@ -91,12 +91,26 @@ public class VirtualPaymentQueryTests
     public async Task PartiallyRefundedPaymentCannotLookLikeFreshPayment(int status, bool onlyRemainingBalance)
     {
         var response = Response(status: status);
-        response["order"]![onlyRemainingBalance ? "left_fee" : "refund_fee"] = onlyRemainingBalance ? 6700 : 100;
+        response["order"]![onlyRemainingBalance ? "left_fee" : "refund_fee"] = onlyRemainingBalance ? 6600 : 100;
         var settings = CreateSettings();
         var order = CreateOrder();
         using var handler = new QueryHandler(response);
         var result = await CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token);
         Assert.AreEqual(VirtualPaymentOrderState.RefundOrReversal, result.State);
+    }
+
+    [TestMethod]
+    [DataRow(6700)]
+    [DataRow(6800)]
+    public async Task SubsidizedPaymentIsNotMistakenForPartialRefund(int refundableBalance)
+    {
+        var response = Response();
+        response["order"]!["left_fee"] = refundableBalance;
+        var settings = CreateSettings();
+        var order = CreateOrder();
+        using var handler = new QueryHandler(response);
+        var result = await CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token);
+        Assert.AreEqual(VirtualPaymentOrderState.PaidAwaitingDelivery, result.State);
     }
 
     [TestMethod]
@@ -116,6 +130,7 @@ public class VirtualPaymentQueryTests
     [DataRow("refund_fee", 6801)]
     [DataRow("left_fee", -1)]
     [DataRow("left_fee", 6801)]
+    [DataRow("paid_fee", -1)]
     [DataRow("status", 99)]
     public async Task RejectsMismatchedOrUnknownPlatformOrders(string field, object value)
     {

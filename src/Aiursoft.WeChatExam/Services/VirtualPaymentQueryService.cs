@@ -59,7 +59,7 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
         if (remote == null || remote.OrderId != order.OutTradeNo || remote.Environment != purchase.Env + 1 ||
             remote.OrderType is not (0 or 7) || remote.BusinessType != 0 || remote.OrderFee != order.AmountInFen ||
             string.IsNullOrWhiteSpace(remote.WxOrderId) || remote.RefundFee is < 0 || remote.RefundFee > order.AmountInFen ||
-            remote.LeftFee is < 0 || remote.LeftFee > order.AmountInFen)
+            remote.LeftFee is < 0 || remote.LeftFee > order.AmountInFen || remote.PaidFee < 0)
             throw new InvalidOperationException("The virtual payment query does not match this purchase.");
 
         var state = remote.Status switch
@@ -73,9 +73,10 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
             5 or 7 or 8 or 9 or 10 => VirtualPaymentOrderState.RefundOrReversal,
             _ => throw new InvalidOperationException("The virtual payment query returned an unknown state.")
         };
-        // Do not treat a partially refunded purchase as a fresh payment. Refund
-        // reconciliation is separate, and must not reactivate revoked rights.
-        if ((remote.RefundFee is > 0 || remote.LeftFee < order.AmountInFen) &&
+        // A subsidy can make paid_fee smaller than order_fee. A balance below
+        // BOTH amounts is a refund signal; merely below order_fee is not.
+        // Refund reconciliation remains separate and cannot reactivate rights.
+        if ((remote.RefundFee is > 0 || remote.LeftFee < Math.Min(remote.PaidFee, order.AmountInFen)) &&
             state is VirtualPaymentOrderState.PaidAwaitingDelivery or
             VirtualPaymentOrderState.Delivering or VirtualPaymentOrderState.Delivered)
             state = VirtualPaymentOrderState.RefundOrReversal;
