@@ -56,6 +56,8 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
         // The database default also protects inserts made by the previous app version.
         builder.Entity<PaymentOrder>().Property(o => o.Channel)
             .HasDefaultValue(PaymentChannel.WeChatJsApi);
+        builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.PaymentOrder).WithOne()
+            .HasForeignKey<VirtualPaymentSnapshot>(s => s.PaymentOrderId).OnDelete(DeleteBehavior.Restrict);
 
         builder.Entity<PracticeSession>().HasIndex(s => new { s.UserId, s.CreationTime, s.Id });
         builder.Entity<PracticeSessionItem>().HasIndex(i => new { i.SessionId, i.Position });
@@ -188,6 +190,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<GlobalSetting> GlobalSettings => Set<GlobalSetting>();
     public DbSet<Feedback> Feedbacks => Set<Feedback>();
     public DbSet<PaymentOrder> PaymentOrders => Set<PaymentOrder>();
+    public DbSet<VirtualPaymentSnapshot> VirtualPaymentSnapshots => Set<VirtualPaymentSnapshot>();
     public DbSet<PaymentLog> PaymentLogs => Set<PaymentLog>();
     public DbSet<VipMembership> VipMemberships => Set<VipMembership>();
     public DbSet<Change> Changes => Set<Change>();
