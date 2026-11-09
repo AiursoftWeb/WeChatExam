@@ -53,7 +53,8 @@ public class VirtualPaymentReconciliationTests
         _db.VirtualPaymentSnapshots.Add(new VirtualPaymentParameterService(captureSettings).Capture(_order, user));
         user.SessionKey = null;
         await _db.SaveChangesAsync();
-        _recovery = Settings(virtualSettings: new VirtualPaymentSettings { OfferId = "offer", SandboxAppKey = "synthetic-key", AppKey = "synthetic-live-key" });
+        _recovery = Settings(virtualSettings: new VirtualPaymentSettings { OfferId = "offer", SandboxAppKey = "synthetic-key", AppKey = "synthetic-live-key", CallbackToken = "syntheticPushToken",
+            CallbackEncodingAesKey = NotificationAesKey });
         _tokens = new VirtualPaymentAccessTokenService(_recovery, new TokenFactory(_handler), _cache);
         _service = CreateService(_db, _query);
         _db.ChangeTracker.Clear();
@@ -505,6 +506,257 @@ public class VirtualPaymentReconciliationTests
         public bool IsEnabled(LogLevel logLevel) => true;
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
         { Message = formatter(state, exception); Exception = exception; }
+    }
+
+    private static readonly string NotificationAesKey = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("0123456789abcdef0123456789abcdef")).TrimEnd('=');
+    private const string PushTimestamp = "1794236400";
+    private const string PushNonce = "notification-nonce";
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task AuthenticatedNotificationCommitsOnceAndAcknowledgesRepeatedDelivery(bool xml)
+    {
+        var payload = NotificationPayload();
+        var (body, signature) = EncryptNotification(payload, xml);
+        var notifications = CreateNotifications();
+        for (var i = 0; i < 3; i++)
+            Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await notifications.HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(1, _query.Calls);
+        Assert.AreEqual(1, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(0, _handler.NotifyCalls); // Normal callback success needs no fallback API.
+        Assert.IsNull(_db.Database.CurrentTransaction);
+    }
+
+    [TestMethod]
+    [DataRow("openid")]
+    [DataRow("order")]
+    [DataRow("environment")]
+    [DataRow("missing-env")]
+    [DataRow("product")]
+    [DataRow("quantity")]
+    [DataRow("original-price")]
+    [DataRow("attachment")]
+    [DataRow("event")]
+    [DataRow("message-type")]
+    [DataRow("team")]
+    public async Task SignedButMismatchedNotificationCannotStartAQueryOrGrantAnything(string fault)
+    {
+        var payload = NotificationPayload();
+        if (fault == "openid") payload["OpenId"] = "different-buyer";
+        if (fault == "order") payload["OutTradeNo"] = "another-order";
+        if (fault == "environment") payload["Env"] = 0;
+        if (fault == "missing-env") payload.Remove("Env");
+        if (fault == "product") payload["GoodsInfo"]!["ProductId"] = "other-product";
+        if (fault == "quantity") payload["GoodsInfo"]!["Quantity"] = 2;
+        if (fault == "original-price") payload["GoodsInfo"]!["OrigPrice"] = 1;
+        if (fault == "attachment") payload["GoodsInfo"]!["Attach"] = "other-order";
+        if (fault == "event") payload["Event"] = "xpay_refund_notify";
+        if (fault == "message-type") payload["MsgType"] = "text";
+        if (fault == "team") payload["TeamInfo"] = new System.Text.Json.Nodes.JsonObject { ["TeamId"] = "team" };
+        var (body, signature) = EncryptNotification(payload, false);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(0, _query.Calls);
+        await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    [DataRow("signature")]
+    [DataRow("timestamp")]
+    [DataRow("nonce")]
+    [DataRow("application")]
+    [DataRow("plaintext")]
+    [DataRow("ciphertext")]
+    [DataRow("oversized")]
+    [DataRow("xml-dtd")]
+    public async Task UnauthenticatedOrMalformedPushCannotHaveFinancialEffects(string fault)
+    {
+        var (body, signature) = EncryptNotification(NotificationPayload(), false, fault == "application" ? "other-app" : "test-app");
+        if (fault == "signature") signature = new string('0', 40);
+        if (fault == "plaintext") body = NotificationPayload().ToJsonString();
+        if (fault == "ciphertext") body = "{\"Encrypt\":\"not encrypted\"}";
+        if (fault == "oversized") body = new string('x', 65537);
+        if (fault == "xml-dtd") body = "<!DOCTYPE xml [<!ENTITY x SYSTEM 'file:///must-not-be-read'>]><xml><Encrypt>&x;</Encrypt></xml>";
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected, await CreateNotifications().HandleAsync(body,
+            fault == "timestamp" ? "invalid" : PushTimestamp, fault == "nonce" ? "wrong-nonce" : PushNonce, signature));
+        Assert.AreEqual(0, _query.Calls);
+        Assert.AreEqual(0, _handler.Calls);
+        await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    public async Task InvalidCipherWithValidMacIsRejectedWithoutExposingSdkErrors()
+    {
+        var cipher = Convert.ToBase64String(new byte[32]);
+        var body = System.Text.Json.JsonSerializer.Serialize(new { Encrypt = cipher });
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected,
+            await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, PushSignature(cipher)));
+        await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task NotificationMustExplicitlyNameLiveEnvironmentInsteadOfDefaultingToZero(bool xml)
+    {
+        var saved = await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync();
+        var purchase = System.Text.Json.Nodes.JsonNode.Parse(saved.SignData)!; purchase["env"] = 0;
+        var raw = purchase.ToJsonString();
+        await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.SignData, raw));
+        var payload = NotificationPayload(); payload.Remove("Env");
+        var (body, signature) = EncryptNotification(payload, xml);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(0, _query.Calls);
+        await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    [DataRow("length")]
+    [DataRow("padding")]
+    public async Task SignedMalformedEnvelopeCannotPassItsFrameValidation(string fault)
+    {
+        var (body, signature) = EncryptNotification(NotificationPayload(), false, frameFault: fault);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    public async Task NotificationPriceIsNotMistakenForServerVerifiedMerchantAmount()
+    {
+        var payload = NotificationPayload();
+        payload["GoodsInfo"]!["ActualPrice"] = 6700; // A platform-funded discount.
+        var (body, signature) = EncryptNotification(payload, false);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(6800, (await _db.PaymentOrders.SingleAsync()).AmountInFen);
+    }
+
+    [TestMethod]
+    public async Task NotificationCannotSucceedWhenGatewayHasNotConfirmedPayment()
+    {
+        _query.State = VirtualPaymentOrderState.Created;
+        var (body, signature) = EncryptNotification(NotificationPayload(), false);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        await AssertNoFinancialEffects();
+    }
+
+    [TestMethod]
+    public async Task NotificationAccountingFailureRollsBackAndCanBeRetried()
+    {
+        var (body, signature) = EncryptNotification(NotificationPayload(), true);
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER reject_push_accounting BEFORE INSERT ON Changes BEGIN SELECT RAISE(ABORT, 'Synthetic accounting failure'); END;");
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        _db.ChangeTracker.Clear();
+        await AssertNoFinancialEffects();
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER reject_push_accounting;");
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task NotificationCannotAcknowledgeInsideAnotherTransaction()
+    {
+        var (body, signature) = EncryptNotification(NotificationPayload(), false);
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(0, _query.Calls);
+    }
+
+    [TestMethod]
+    public void CallbackEchoRequiresSignatureAndOptionalSettingsDoNotDependOnNewSales()
+    {
+        var service = CreateNotifications();
+        Assert.IsTrue(service.IsConfigured);
+        Assert.IsTrue(service.VerifyEcho(PushTimestamp, PushNonce, PushSignature("")));
+        Assert.IsFalse(service.VerifyEcho(PushTimestamp, PushNonce, new string('0', 40)));
+        Assert.IsFalse(service.VerifyEcho(PushTimestamp, PushNonce, "not-hex"));
+        var missing = Settings(new VirtualPaymentSettings());
+        Assert.IsFalse(new VirtualPaymentNotificationService(_db, _service, missing, NullLogger<VirtualPaymentNotificationService>.Instance).IsConfigured);
+    }
+
+    [TestMethod]
+    public async Task CallbackControllerRepliesSuccessOnlyAfterCommitAndSeparatesAuthAndRetry()
+    {
+        var service = CreateNotifications();
+        var controller = new Controllers.MiniProgramApi.VirtualPaymentNotificationController(service);
+        var context = new DefaultHttpContext();
+        controller.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext { HttpContext = context };
+        var (body, signature) = EncryptNotification(NotificationPayload(), false);
+        context.Request.Body = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(body));
+        var result = await controller.Notify(PushTimestamp, PushNonce, signature);
+        Assert.IsInstanceOfType<Microsoft.AspNetCore.Mvc.ContentResult>(result);
+        Assert.AreEqual("success", ((Microsoft.AspNetCore.Mvc.ContentResult)result).Content);
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        context.Request.Body = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(body));
+        result = await controller.Notify(PushTimestamp, PushNonce, new string('0', 40));
+        Assert.AreEqual(403, ((Microsoft.AspNetCore.Mvc.StatusCodeResult)result).StatusCode);
+        var echo = controller.Verify(PushTimestamp, PushNonce, PushSignature(""), "verification-challenge");
+        Assert.AreEqual("verification-challenge", ((Microsoft.AspNetCore.Mvc.ContentResult)echo).Content);
+    }
+
+    [TestMethod]
+    public async Task NotificationAcceptsTheInstalledSdksEncryptedWireEnvelope()
+    {
+        using var client = new SKIT.FlurlHttpClient.Wechat.Api.WechatApiClient(new SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientOptions
+        { AppId = "test-app", PushToken = "syntheticPushToken", PushEncodingAESKey = NotificationAesKey });
+        var message = new SKIT.FlurlHttpClient.Wechat.Api.Events.XPayGoodsDeliverNotifyEvent
+        {
+            MessageType = "event", Event = "xpay_goods_deliver_notify", OpenId = "saved-openid", OutTradeNumber = _order.OutTradeNo, Environment = 1,
+            GoodsInfo = new SKIT.FlurlHttpClient.Wechat.Api.Events.XPayGoodsDeliverNotifyEvent.Types.GoodsInfo
+            { ProductId = "course", Quantity = 1, OriginalPrice = 19800, ActualPrice = 6800, Attachment = _order.Id.ToString("N") }
+        };
+        var body = SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientEventExtensions.SerializeEventToJson(client, message);
+        using var json = System.Text.Json.JsonDocument.Parse(body);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body,
+            json.RootElement.GetProperty("TimeStamp").ToString(), json.RootElement.GetProperty("Nonce").GetString(),
+            json.RootElement.GetProperty("MsgSignature").GetString()));
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    private VirtualPaymentNotificationService CreateNotifications() => new(_db, _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance);
+
+    private System.Text.Json.Nodes.JsonObject NotificationPayload() => new()
+    {
+        ["ToUserName"] = "mini-program-original-id", ["FromUserName"] = "wechat-official-push-not-buyer",
+        ["CreateTime"] = 1794236400, ["MsgType"] = "event", ["Event"] = "xpay_goods_deliver_notify",
+        ["OpenId"] = "saved-openid", ["OutTradeNo"] = _order.OutTradeNo, ["Env"] = 1,
+        ["GoodsInfo"] = new System.Text.Json.Nodes.JsonObject
+        { ["ProductId"] = "course", ["Quantity"] = 1, ["OrigPrice"] = 19800, ["ActualPrice"] = 6800, ["Attach"] = _order.Id.ToString("N") }
+    };
+
+    private static (string Body, string Signature) EncryptNotification(System.Text.Json.Nodes.JsonObject payload, bool xml, string appId = "test-app", string? frameFault = null)
+    {
+        // Independent implementation of Tencent's documented wire format. Do not
+        // test the installed SDK by encrypting/decrypting with the same helper.
+        static System.Xml.Linq.XElement Element(string name, System.Text.Json.Nodes.JsonNode? node) => node is System.Text.Json.Nodes.JsonObject obj
+            ? new System.Xml.Linq.XElement(name, obj.Select(p => Element(p.Key, p.Value)))
+            : new System.Xml.Linq.XElement(name, node?.ToString());
+        var plain = xml ? Element("xml", payload).ToString(System.Xml.Linq.SaveOptions.DisableFormatting) : payload.ToJsonString();
+        var text = System.Text.Encoding.UTF8.GetBytes(plain);
+        var app = System.Text.Encoding.UTF8.GetBytes(appId);
+        var bytes = new byte[20 + text.Length + app.Length];
+        System.Security.Cryptography.RandomNumberGenerator.Fill(bytes.AsSpan(0, 16));
+        System.Buffers.Binary.BinaryPrimitives.WriteInt32BigEndian(bytes.AsSpan(16, 4), text.Length);
+        text.CopyTo(bytes, 20); app.CopyTo(bytes, 20 + text.Length);
+        var padding = 32 - bytes.Length % 32;
+        var padded = new byte[bytes.Length + padding]; bytes.CopyTo(padded, 0);
+        Array.Fill(padded, (byte)padding, bytes.Length, padding);
+        if (frameFault == "length") System.Buffers.Binary.BinaryPrimitives.WriteInt32BigEndian(padded.AsSpan(16, 4), int.MaxValue);
+        if (frameFault == "padding") padded[^1] = 0;
+        var key = Convert.FromBase64String(NotificationAesKey + "=");
+        using var aes = System.Security.Cryptography.Aes.Create(); aes.Key = key;
+        var encrypted = Convert.ToBase64String(aes.EncryptCbc(padded, key[..16], System.Security.Cryptography.PaddingMode.None));
+        var body = xml ? new System.Xml.Linq.XElement("xml", new System.Xml.Linq.XElement("Encrypt", encrypted)).ToString()
+            : System.Text.Json.JsonSerializer.Serialize(new { Encrypt = encrypted });
+        return (body, PushSignature(encrypted));
+    }
+
+    private static string PushSignature(string encrypted)
+    {
+        var parts = new[] { "syntheticPushToken", PushTimestamp, PushNonce, encrypted };
+        Array.Sort(parts, StringComparer.Ordinal);
+        return Convert.ToHexStringLower(System.Security.Cryptography.SHA1.HashData(System.Text.Encoding.UTF8.GetBytes(string.Concat(parts))));
     }
 
     private VirtualPaymentReconciliationService CreateService(SqliteContext db, IVirtualPaymentQueryService query) => new(db, query,
