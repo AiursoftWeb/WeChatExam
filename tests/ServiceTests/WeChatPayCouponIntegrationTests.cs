@@ -77,7 +77,7 @@ public class WeChatPayCouponIntegrationTests
             _tenpayClient,
             _dbContext,
             _couponService,
-            _changeService,
+            CreateFulfillmentService(),
             _settings,
             NullLogger<WeChatPayService>.Instance);
 
@@ -185,13 +185,13 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
-    public async Task TestProcessVipActivation_RecordsCouponUsage()
+    public async Task ConfirmedPaymentRecordsCouponUsage()
     {
         // 1. Setup a coupon and a claim
         var coupon = await _couponService.CreateAsync(_dbContext.DistributionChannels.First().Id, "PROMO", 1000, false);
         await _couponService.ClaimCouponAsync(_userId, "PROMO");
 
-        // 2. Manually create a Paid order that used this coupon
+        // 2. Prepare the order whose payment has been verified by the gateway.
         var order = new PaymentOrder
         {
             OutTradeNo = "ORDER1",
@@ -200,23 +200,15 @@ public class WeChatPayCouponIntegrationTests
             CouponId = coupon.Id,
             DiscountInFen = 1000,
             AmountInFen = 9000,
-            Status = PaymentOrderStatus.Paid,
+            Status = PaymentOrderStatus.Pending,
             Description = "Test"
         };
         _dbContext.PaymentOrders.Add(order);
         await _dbContext.SaveChangesAsync();
 
-        // 3. Trigger activation (this is private, but we can call it indirectly via HandlePaymentNotify or just test the logic)
-        // Since ProcessVipActivationAsync is private, we'll use Reflection or just test the HandlePaymentNotify if we had a way to mock the body.
-        // Actually, in our WeChatPayService, ProcessVipActivationAsync is private.
-        
-        // Let's use a PrivateObject-like approach or just make it internal and use InternalsVisibleTo? 
-        // For now, I'll use Reflection to test this critical path.
-        
-        var method = typeof(WeChatPayService).GetMethod("ProcessVipActivationAsync", 
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        
-        await (Task)method!.Invoke(_payService, new object[] { order })!;
+        // 3. Apply the trusted result through the shared fulfillment path.
+        await CreateFulfillmentService().CompleteAsync(order, "confirmed-transaction");
+        Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
 
         // 4. Verify VIP is active
         var vip = await _dbContext.VipMemberships.AnyAsync(v => v.UserId == _userId && v.VipProductId == _productId);
@@ -723,6 +715,9 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual(1, await _dbContext.Changes.CountAsync());
     }
 
+    private PaymentFulfillmentService CreateFulfillmentService() =>
+        new(_dbContext, _couponService, _changeService, NullLogger<PaymentFulfillmentService>.Instance);
+
     private async Task UseCheckoutDatabaseAsync(Func<HttpRequestMessage, string, (System.Net.HttpStatusCode Status, string Body)> respond)
     {
         await _dbContext.DisposeAsync();
@@ -741,7 +736,7 @@ public class WeChatPayCouponIntegrationTests
         _tenpayClient.PlatformCertificateManager.AddEntry(entry);
         _couponService = new CouponService(_dbContext);
         _changeService = new ChangeService(_dbContext);
-        _payService = new WeChatPayService(_tenpayClient, _dbContext, _couponService, _changeService, _settings, NullLogger<WeChatPayService>.Instance);
+        _payService = new WeChatPayService(_tenpayClient, _dbContext, _couponService, CreateFulfillmentService(), _settings, NullLogger<WeChatPayService>.Instance);
         _dbContext.Users.Add(new User { Id = _userId, UserName = _userId, DisplayName = "Checkout buyer" });
         var product = new VipProduct { Name = "Reserved course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 200, DurationDays = 30 };
         _productId = product.Id;
@@ -855,7 +850,7 @@ public class WeChatPayCouponIntegrationTests
             _couponService = new CouponService(_dbContext);
             _changeService = new ChangeService(_dbContext);
             _payService = new WeChatPayService(_tenpayClient, _dbContext, _couponService,
-                _changeService, _settings, NullLogger<WeChatPayService>.Instance);
+                CreateFulfillmentService(), _settings, NullLogger<WeChatPayService>.Instance);
         }
 
         // Exercise the real SDK verification and activation locally. The HTTP handler

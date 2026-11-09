@@ -2,6 +2,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Aiursoft.DbTools;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Services;
 using static Aiursoft.WebTools.Extends;
 
 namespace Aiursoft.WeChatExam.Tests.IntegrationTests;
@@ -52,6 +53,14 @@ public class BasicTests
         if (_server == null) return;
         await _server.StopAsync();
         _server.Dispose();
+    }
+
+    [TestMethod]
+    public void SharedFulfillmentResolvesWithoutNewGatewayCredentials()
+    {
+        Assert.IsNotNull(_server);
+        using var scope = _server.Services.CreateScope();
+        Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<PaymentFulfillmentService>());
     }
 
     /// <summary>
