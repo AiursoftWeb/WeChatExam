@@ -84,6 +84,26 @@ public class VirtualPaymentQueryTests
     }
 
     [TestMethod]
+    [DataRow("paid")]
+    [DataRow("missing-paid")]
+    [DataRow("refund")]
+    [DataRow("transaction")]
+    [DataRow("missing-code")]
+    public async Task AmbiguousClosureCannotReleaseAnUnpaidReservation(string fault)
+    {
+        var response = Response(status: 6);
+        if (fault == "paid") response["order"]!["paid_fee"] = 100;
+        if (fault == "missing-paid") response["order"]!.AsObject().Remove("paid_fee");
+        if (fault == "refund") response["order"]!["refund_fee"] = 100;
+        if (fault == "transaction") response["order"]!["wxpay_order_id"] = "previous-payment";
+        if (fault == "missing-code") response.Remove("errcode");
+        var settings = CreateSettings(); var order = CreateOrder();
+        using var handler = new QueryHandler(response);
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token));
+        Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+    }
+
+    [TestMethod]
     [DataRow(2, false)]
     [DataRow(3, false)]
     [DataRow(4, false)]
@@ -259,8 +279,8 @@ public class VirtualPaymentQueryTests
             ["order_id"] = OrderNumber, ["env_type"] = environment + 1, ["order_type"] = orderType,
             ["status"] = status, ["biz_type"] = 0, ["order_fee"] = 6800,
             // Platform-funded discount does not alter the merchant order amount.
-            ["paid_fee"] = 6700, ["wx_order_id"] = "platform-order",
-            ["wxpay_order_id"] = orderType == 7 ? null : "wechat-transaction"
+            ["paid_fee"] = status == 6 ? 0 : 6700, ["wx_order_id"] = "platform-order",
+            ["wxpay_order_id"] = orderType == 7 || status == 6 ? null : "wechat-transaction"
         }
     };
 

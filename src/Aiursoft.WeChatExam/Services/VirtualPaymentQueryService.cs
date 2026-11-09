@@ -73,6 +73,25 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
             5 or 7 or 8 or 9 or 10 => VirtualPaymentOrderState.RefundOrReversal,
             _ => throw new InvalidOperationException("The virtual payment query returned an unknown state.")
         };
+        if (state == VirtualPaymentOrderState.Closed)
+        {
+            // Closure will release a local reservation. Require explicit success
+            // and zero paid money; missing SDK defaults or refund evidence are
+            // not sufficient proof that it is safe to start a new purchase.
+            try
+            {
+                using var json = System.Text.Json.JsonDocument.Parse(response.GetRawBytes());
+                if (!json.RootElement.TryGetProperty("errcode", out var code) || !code.TryGetInt32(out var error) || error != 0 ||
+                    !json.RootElement.TryGetProperty("order", out var original) ||
+                    !original.TryGetProperty("paid_fee", out var paid) || !paid.TryGetInt32(out var amount) || amount != 0 ||
+                    remote.RefundFee is > 0 || !string.IsNullOrWhiteSpace(remote.TransactionId))
+                    throw new InvalidOperationException("The closed virtual order does not have unambiguous unpaid evidence.");
+            }
+            catch (System.Text.Json.JsonException)
+            {
+                throw new InvalidOperationException("The closed virtual order response is invalid.");
+            }
+        }
         // A subsidy can make paid_fee smaller than order_fee. A balance below
         // BOTH amounts is a refund signal; merely below order_fee is not.
         // Refund reconciliation remains separate and cannot reactivate rights.
