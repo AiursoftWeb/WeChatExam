@@ -11,6 +11,11 @@ public class VirtualPaymentSettings
     public string AppKey { get; init; } = string.Empty;
     public string SandboxAppKey { get; init; } = string.Empty;
 
+    // Mini-program message-push credentials, independent of Tenpay v3. Empty
+    // defaults keep the new callback unavailable without affecting old clients.
+    public string CallbackToken { get; init; } = string.Empty;
+    public string CallbackEncodingAesKey { get; init; } = string.Empty;
+
     // Server-managed mapping from our VIP product to the published WeChat goods.
     // The price is the published full price in fen, before our order's discount.
     // ConfigurationBinder supports string dictionary keys, not Guid keys.

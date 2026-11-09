@@ -66,6 +66,51 @@ public class BasicTests
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentAccessTokenService>());
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentReconciliationService>());
         Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentDeliveryService>());
+        Assert.IsNotNull(scope.ServiceProvider.GetRequiredService<VirtualPaymentNotificationService>());
+    }
+
+    [TestMethod]
+    public async Task UnconfiguredVirtualNotificationsAreUnavailableWithoutAffectingOldRoutes()
+    {
+        using var get = await _http.GetAsync("/api/virtual-payment/notify?timestamp=1&nonce=n&signature=s&echostr=echo");
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, get.StatusCode);
+        using var body = new StringContent("{}", System.Text.Encoding.UTF8, "application/json");
+        using var post = await _http.PostAsync("/api/virtual-payment/notify", body);
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, post.StatusCode);
+        using var legacy = await _http.PostAsJsonAsync("/api/payment/create-order", new { vipProductId = Guid.NewGuid() });
+        Assert.AreEqual(HttpStatusCode.Unauthorized, legacy.StatusCode);
+    }
+
+    [TestMethod]
+    public async Task ConfiguredVirtualCallbackVerifiesEchoAndEnforcesItsHttpBodyLimit()
+    {
+        var key = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("0123456789abcdef0123456789abcdef")).TrimEnd('=');
+        using var reservation = new TestPortReservation();
+        using var server = await AppAsync<Startup>([
+            "--AppSettings:WeChat:AppId=test-app",
+            "--AppSettings:WeChat:VirtualPayment:CallbackToken=syntheticPushToken",
+            "--AppSettings:WeChat:VirtualPayment:CallbackEncodingAesKey=" + key
+        ], port: reservation.Port);
+        reservation.ConfigureServer(server);
+        await server.UpdateDbAsync<WeChatExamDbContext>();
+        await server.SeedAsync();
+        await server.StartAsync();
+        try
+        {
+            using var http = server.Services.GetRequiredService<IHttpClientFactory>().CreateClient();
+            http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+            var fields = new[] { "syntheticPushToken", "1794236400", "nonce" }; Array.Sort(fields, StringComparer.Ordinal);
+            var signature = Convert.ToHexStringLower(System.Security.Cryptography.SHA1.HashData(System.Text.Encoding.UTF8.GetBytes(string.Concat(fields))));
+            using var echo = await http.GetAsync($"/api/virtual-payment/notify?timestamp=1794236400&nonce=nonce&signature={signature}&echostr=challenge");
+            Assert.AreEqual(HttpStatusCode.OK, echo.StatusCode);
+            Assert.AreEqual("challenge", await echo.Content.ReadAsStringAsync());
+            using var invalid = await http.GetAsync("/api/virtual-payment/notify?timestamp=1794236400&nonce=nonce&signature=invalid&echostr=challenge");
+            Assert.AreEqual(HttpStatusCode.Forbidden, invalid.StatusCode);
+            using var body = new StringContent(new string('x', VirtualPaymentNotificationService.MaximumBodyBytes + 1), System.Text.Encoding.UTF8, "application/json");
+            using var oversized = await http.PostAsync("/api/virtual-payment/notify", body);
+            Assert.AreEqual(HttpStatusCode.RequestEntityTooLarge, oversized.StatusCode);
+        }
+        finally { await server.StopAsync(); }
     }
 
     /// <summary>
