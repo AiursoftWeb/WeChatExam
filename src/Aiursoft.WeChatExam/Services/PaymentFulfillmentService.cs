@@ -32,21 +32,35 @@ public class PaymentFulfillmentService(
         order.Status = PaymentOrderStatus.Paid;
         order.WechatTransactionId = transactionId;
         order.PaidAt = DateTime.UtcNow;
-        await ProcessVipActivationAsync(order);
-        dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "StatusChanged", RawData = JsonSerializer.Serialize(new { newStatus = "Paid", transactionId }) });
+        var entitlement = await ProcessVipActivationAsync(order);
+        // Preserve the ordinary JSAPI log contract. New virtual grants also keep
+        // the exact before/after entitlement, so a refund need not guess from
+        // today's product duration or remove unrelated purchases and gifts.
+        var rawData = entitlement == null
+            ? JsonSerializer.Serialize(new { newStatus = "Paid", transactionId })
+            : JsonSerializer.Serialize(new { newStatus = "Paid", transactionId, entitlement });
+        dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "StatusChanged", RawData = rawData });
         // Coupon/accounting services also save internally, so all saves stay in
         // the caller's transaction and are rolled back together if any step fails.
         await dbContext.SaveChangesAsync();
     }
 
-    private async Task ProcessVipActivationAsync(PaymentOrder order)
+    private async Task<VirtualPaymentEntitlementReceipt?> ProcessVipActivationAsync(PaymentOrder order)
     {
         if (order.VipProductId == null)
-            return;
+        {
+            if (order.Channel == PaymentChannel.WeChatVirtual)
+                throw new InvalidOperationException("A virtual payment requires an entitlement target.");
+            return null;
+        }
 
         var vipProduct = await dbContext.VipProducts.FindAsync(order.VipProductId);
         if (vipProduct == null)
-            return;
+        {
+            if (order.Channel == PaymentChannel.WeChatVirtual)
+                throw new InvalidOperationException("The virtual payment entitlement target is unavailable.");
+            return null;
+        }
 
         var durationDays = vipProduct.DurationDays;
         var now = DateTime.UtcNow;
@@ -54,6 +68,9 @@ public class PaymentFulfillmentService(
         var existingVip = await dbContext.VipMemberships
             .FirstOrDefaultAsync(v => v.UserId == order.UserId && v.VipProductId == order.VipProductId);
 
+        var before = order.Channel == PaymentChannel.WeChatVirtual && existingVip != null
+            ? new PaymentEntitlementState(existingVip.StartTime, existingVip.EndTime, existingVip.LastPaymentOrderId)
+            : null;
         if (existingVip == null)
         {
             // New VIP membership for this product
@@ -66,6 +83,7 @@ public class PaymentFulfillmentService(
                 LastPaymentOrderId = order.Id
             };
             dbContext.VipMemberships.Add(vip);
+            existingVip = vip;
 
             logger.LogInformation("Activated VIP {ProductName} for user {UserId}, expires {EndTime}",
                 vipProduct.Name, order.UserId, vip.EndTime);
@@ -103,5 +121,16 @@ public class PaymentFulfillmentService(
             couponId: order.CouponId,
             details: $"Order: {order.OutTradeNo}. Amount: {order.AmountInFen / 100m}元. Discount: {order.DiscountInFen / 100m}元."
         );
+
+        if (order.Channel != PaymentChannel.WeChatVirtual) return null;
+        await dbContext.SaveChangesAsync();
+        // Read back the persisted value, not tracked DateTime values: providers
+        // can round timestamps (e.g. MySQL datetime(6)). A later refund must compare
+        // against the actual stored grant, inside the same transaction and locks.
+        var after = await dbContext.VipMemberships.AsNoTracking().Where(v => v.Id == existingVip.Id &&
+                v.UserId == order.UserId && v.VipProductId == order.VipProductId)
+            .Select(v => new PaymentEntitlementState(v.StartTime, v.EndTime, v.LastPaymentOrderId))
+            .SingleAsync();
+        return new VirtualPaymentEntitlementReceipt(1, existingVip.Id, order.UserId, vipProduct.Id, before, after);
     }
 }
