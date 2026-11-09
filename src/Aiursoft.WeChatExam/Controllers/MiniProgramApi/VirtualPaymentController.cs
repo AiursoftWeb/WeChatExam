@@ -1,9 +1,11 @@
 using System.Security.Claims;
 using Aiursoft.WeChatExam.Configuration;
+using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Models.MiniProgramApi;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
@@ -17,7 +19,7 @@ namespace Aiursoft.WeChatExam.Controllers.MiniProgramApi;
 [WeChatUserOnly]
 [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public class VirtualPaymentController(VirtualPaymentCheckoutService checkout,
-    VirtualPaymentReconciliationService reconciliation, IOptions<AppSettings> options,
+    VirtualPaymentReconciliationService reconciliation, WeChatExamDbContext context, IOptions<AppSettings> options,
     ILogger<VirtualPaymentController> logger) : ControllerBase
 {
     [HttpPost("create-order")]
@@ -51,6 +53,41 @@ public class VirtualPaymentController(VirtualPaymentCheckoutService checkout,
             // SQL/SDK exceptions can include secrets. Preserve the reservation
             // and ask the caller to query; never expose or log the raw exception.
             logger.LogError("Virtual payment checkout could not be confirmed.");
+            return Unavailable();
+        }
+    }
+
+    /// <summary>
+    /// Finds the buyer's original numbers when a checkout response was lost.
+    /// Local statuses are discovery only; query order-status to reconcile one.
+    /// </summary>
+    [HttpGet("orders")]
+    [ProducesResponseType(typeof(VirtualPaymentOrderPage), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetOrders([FromQuery] VirtualPaymentOrderQuery query)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrWhiteSpace(userId)) return Unauthorized();
+        if (query.VipProductId == Guid.Empty) return BadRequest();
+        try
+        {
+            // Neither current sales/catalog settings nor local expiry may hide an
+            // original purchase. Include terminal/zero orders even without a snapshot.
+            // Project saved financial fields only: no session, signatures or navigation
+            // entities. Discovery must never query a gateway or release a reservation.
+            var owned = context.PaymentOrders.AsNoTracking().Where(o => o.UserId == userId &&
+                o.Channel == PaymentChannel.WeChatVirtual && o.VipProductId == query.VipProductId);
+            var total = await owned.CountAsync(HttpContext.RequestAborted);
+            var items = await owned.OrderByDescending(o => o.CreatedAt).ThenByDescending(o => o.Id)
+                .Skip(query.Offset).Take(query.Count)
+                .Select(o => new VirtualPaymentOrderSummary(o.OutTradeNo, o.Description, o.Status.ToString(),
+                    o.AmountInFen + o.DiscountInFen, o.DiscountInFen, o.AmountInFen, o.CreatedAt, o.PaidAt))
+                .ToListAsync(HttpContext.RequestAborted);
+            return Ok(new VirtualPaymentOrderPage(total, query.Offset, query.Count, items));
+        }
+        catch (OperationCanceledException) when (HttpContext.RequestAborted.IsCancellationRequested) { throw; }
+        catch (Exception)
+        {
+            logger.LogError("Virtual payment orders could not be retrieved.");
             return Unavailable();
         }
     }
