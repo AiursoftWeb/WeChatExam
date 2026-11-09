@@ -267,6 +267,263 @@ public class PaymentFulfillmentTests
         Assert.AreEqual(0, await _db.VipMemberships.CountAsync()); Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
     }
 
+    [TestMethod]
+    public async Task ConfirmedFullRefundExpiresOnlyThisGrantOnceAndKeepsItsSpentCoupon()
+    {
+        var order = await CreateRefundOrderAsync();
+        var refund = Refund(order);
+        var service = new VirtualPaymentRefundService(_db);
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            Assert.AreEqual(VirtualPaymentRefundOutcome.Completed, await service.CompleteAsync(order, refund));
+            await transaction.CommitAsync();
+        }
+        _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        var membership = await _db.VipMemberships.SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Refunded, order.Status);
+        Assert.IsFalse(membership.IsActive); Assert.AreEqual(membership.StartTime, membership.EndTime);
+        Assert.AreEqual(order.Id, membership.LastPaymentOrderId);
+        Assert.AreEqual(order.UserId, (await _db.Coupons.SingleAsync()).UsedByUserId);
+        Assert.IsTrue((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(6800, order.AmountInFen); Assert.AreEqual(13000, order.DiscountInFen);
+        await using var repeated = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentRefundOutcome.Completed, await service.CompleteAsync(order, refund));
+        await _service.CompleteAsync(order, "late-payment");
+        await repeated.CommitAsync();
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task FullRefundRestoresThePreviousGiftOrPurchaseInsteadOfDeletingMembership(bool previousPurchase)
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        Guid? previous = null;
+        if (previousPurchase)
+        {
+            var older = new PaymentOrder { UserId = order.UserId, VipProductId = order.VipProductId, OutTradeNo = "ORIGINAL-PAID",
+                Description = "Earlier purchase", AmountInFen = 100, Status = PaymentOrderStatus.Paid };
+            _db.Add(older); previous = older.Id;
+        }
+        var gift = new VipMembership { UserId = order.UserId, VipProductId = order.VipProductId!.Value,
+            StartTime = DateTime.UtcNow.AddDays(-5), EndTime = DateTime.UtcNow.AddDays(30), LastPaymentOrderId = previous };
+        var other = new VipMembership { UserId = order.UserId, VipProduct = new VipProduct { Name = "Other membership" },
+            StartTime = DateTime.UtcNow.AddDays(-1), EndTime = DateTime.UtcNow.AddDays(100) };
+        _db.AddRange(gift, other); await _db.SaveChangesAsync();
+        var before = new PaymentEntitlementState(gift.StartTime, gift.EndTime, previous);
+        var otherEnd = other.EndTime;
+        await SettleRefundOrderAsync(order);
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentRefundOutcome.Completed, await new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync(); _db.ChangeTracker.Clear();
+        var restored = await _db.VipMemberships.SingleAsync(v => v.Id == gift.Id);
+        Assert.AreEqual(before, new PaymentEntitlementState(restored.StartTime, restored.EndTime, restored.LastPaymentOrderId));
+        Assert.IsTrue(restored.IsActive);
+        Assert.AreEqual(otherEnd, (await _db.VipMemberships.SingleAsync(v => v.Id == other.Id)).EndTime);
+    }
+
+    [TestMethod]
+    [DataRow("changed")]
+    [DataRow("missing")]
+    public async Task FullRefundWithChangedOrMissingMembershipRecordsReviewWithoutOverwritingRights(string fault)
+    {
+        var order = await CreateRefundOrderAsync();
+        if (fault == "changed") await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.EndTime, v => v.EndTime.AddDays(10)));
+        else await _db.VipMemberships.ExecuteDeleteAsync();
+        var before = await _db.VipMemberships.AsNoTracking().Select(v => v.EndTime).ToListAsync();
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        var service = new VirtualPaymentRefundService(_db);
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await service.CompleteAsync(order, Refund(order)));
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await service.CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync(); _db.ChangeTracker.Clear();
+        CollectionAssert.AreEqual(before, await _db.VipMemberships.Select(v => v.EndTime).ToListAsync());
+        Assert.AreEqual(PaymentOrderStatus.Refunded, (await _db.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReview"));
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("missing")]
+    [DataRow("malformed")]
+    [DataRow("version")]
+    [DataRow("owner")]
+    [DataRow("before-missing")]
+    [DataRow("after-null")]
+    [DataRow("after-source")]
+    public async Task UnusableGrantEvidenceNeverGuessesAwayTheMembership(string fault)
+    {
+        var order = await CreateRefundOrderAsync();
+        var log = await _db.PaymentLogs.SingleAsync(l => l.EventType == "StatusChanged");
+        var json = System.Text.Json.Nodes.JsonNode.Parse(log.RawData!)!;
+        if (fault == "missing") json.AsObject().Remove("entitlement");
+        if (fault == "version") json["entitlement"]!["Version"] = 2;
+        if (fault == "owner") json["entitlement"]!["UserId"] = "somebody-else";
+        if (fault == "before-missing") json["entitlement"]!.AsObject().Remove("Before");
+        if (fault == "after-null") json["entitlement"]!["After"] = null;
+        if (fault == "after-source") json["entitlement"]!["After"]!["LastPaymentOrderId"] = Guid.NewGuid();
+        var raw = fault == "malformed" ? "not-json" : json.ToJsonString();
+        await _db.PaymentLogs.Where(l => l.Id == log.Id).ExecuteUpdateAsync(s => s.SetProperty(l => l.RawData, raw));
+        var before = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync(); _db.ChangeTracker.Clear();
+        Assert.AreEqual(before, (await _db.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(PaymentOrderStatus.Refunded, (await _db.PaymentOrders.SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    public async Task PartialRefundIsReviewOnlyAndTheSameRefundIdCannotChangeAmount()
+    {
+        var order = await CreateRefundOrderAsync(); var before = (await _db.VipMemberships.SingleAsync()).EndTime;
+        var refund = Refund(order) with { AmountInFen = 100 };
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        var service = new VirtualPaymentRefundService(_db);
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await service.CompleteAsync(order, refund));
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await service.CompleteAsync(order, refund));
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => service.CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync(); _db.ChangeTracker.Clear();
+        Assert.AreEqual(before, (await _db.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReview"));
+    }
+
+    [TestMethod]
+    [DataRow("legacy")]
+    [DataRow("other-order")]
+    [DataRow("other-platform")]
+    [DataRow("zero")]
+    [DataRow("over-refund")]
+    public async Task RefundIdentityMismatchCannotAlterAnOrderOrItsMembership(string fault)
+    {
+        var order = await CreateRefundOrderAsync();
+        if (fault == "legacy")
+        {
+            await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Channel, PaymentChannel.WeChatJsApi));
+            _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        }
+        var refund = Refund(order);
+        if (fault == "other-order") refund = refund with { PaymentOrderId = Guid.NewGuid() };
+        if (fault == "other-platform") refund = refund with { PlatformOrderId = "another-payment" };
+        if (fault == "zero") refund = refund with { AmountInFen = 0 };
+        if (fault == "over-refund") refund = refund with { AmountInFen = 6801 };
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => new VirtualPaymentRefundService(_db).CompleteAsync(order, refund));
+        await transaction.RollbackAsync(); _db.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.SingleAsync()).Status);
+        Assert.IsTrue((await _db.VipMemberships.SingleAsync()).IsActive);
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RefundAuditFailureRollsBackMembershipAndOrderAndAllowsSafeRetry(bool manualReview)
+    {
+        var order = await CreateRefundOrderAsync();
+        if (manualReview) await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.EndTime, v => v.EndTime.AddDays(10)));
+        var before = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER reject_refund BEFORE INSERT ON PaymentLogs WHEN NEW.EventType IN ('VirtualPaymentRefunded', 'VirtualPaymentRefundReview') BEGIN SELECT RAISE(ABORT, 'Synthetic refund audit failure'); END;");
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            await Assert.ThrowsExactlyAsync<DbUpdateException>(() => new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+            await transaction.RollbackAsync();
+        }
+        _db.ChangeTracker.Clear(); order = await _db.PaymentOrders.SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+        Assert.AreEqual(before, (await _db.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER reject_refund;");
+        await using var retry = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(manualReview ? VirtualPaymentRefundOutcome.ReviewRequired : VirtualPaymentRefundOutcome.Completed,
+            await new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        await retry.CommitAsync();
+    }
+
+    [TestMethod]
+    public async Task RefundSettlementRequiresTheCallersTransaction()
+    {
+        var order = await CreateRefundOrderAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    [TestMethod]
+    public async Task RefundBeforeLocalPaymentSettlementKeepsItsReservationAndMarksReview()
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync();
+        Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+        Assert.AreEqual(0, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
+        Assert.IsNull((await _db.Coupons.SingleAsync()).UsedByUserId);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReview"));
+    }
+
+    [TestMethod]
+    public async Task MissingOriginalPlatformEvidenceCannotCancelAMembership()
+    {
+        var order = await CreateRefundOrderAsync();
+        await _db.PaymentLogs.Where(l => l.EventType == "VirtualPaymentConfirmed").ExecuteDeleteAsync();
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync();
+        Assert.AreEqual(PaymentOrderStatus.Paid, order.Status);
+        Assert.IsTrue((await _db.VipMemberships.AsNoTracking().SingleAsync()).IsActive);
+    }
+
+    [TestMethod]
+    public async Task ARefundCannotResurrectAnEarlierRefundedMembershipPurchase()
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        var older = new PaymentOrder { UserId = order.UserId, VipProductId = order.VipProductId,
+            OutTradeNo = "OLDER-REFUNDED", Description = "Earlier purchase", AmountInFen = 100, Status = PaymentOrderStatus.Paid };
+        _db.Add(older);
+        _db.Add(new VipMembership { UserId = order.UserId, VipProductId = order.VipProductId!.Value,
+            StartTime = DateTime.UtcNow.AddDays(-5), EndTime = DateTime.UtcNow.AddDays(15), LastPaymentOrderId = older.Id });
+        await _db.SaveChangesAsync(); await SettleRefundOrderAsync(order);
+        await _db.PaymentOrders.Where(o => o.Id == older.Id).ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, PaymentOrderStatus.Refunded));
+        var currentEnd = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.AreEqual(VirtualPaymentRefundOutcome.ReviewRequired, await new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        await transaction.CommitAsync(); _db.ChangeTracker.Clear();
+        var membership = await _db.VipMemberships.SingleAsync();
+        Assert.AreEqual(order.Id, membership.LastPaymentOrderId); Assert.AreEqual(currentEnd, membership.EndTime);
+    }
+
+    [TestMethod]
+    public async Task DetachedOrderCannotBeUsedToBypassTheCallersReloadAndLocks()
+    {
+        var order = await CreateRefundOrderAsync(); _db.ChangeTracker.Clear();
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => new VirtualPaymentRefundService(_db).CompleteAsync(order, Refund(order)));
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    private static VirtualPaymentRefundConfirmation Refund(PaymentOrder order) => new(order.Id, "original-platform-order", "platform-refund", 6800);
+
+    private async Task<PaymentOrder> CreateRefundOrderAsync()
+    {
+        var order = await CreateOrderAsync(PaymentChannel.WeChatVirtual);
+        await SettleRefundOrderAsync(order);
+        return order;
+    }
+
+    private async Task SettleRefundOrderAsync(PaymentOrder order)
+    {
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        await _service.CompleteAsync(order, "confirmed");
+        _db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "VirtualPaymentConfirmed",
+            RawData = JsonSerializer.Serialize(new { order.OutTradeNo, PlatformOrderId = "original-platform-order" }) });
+        await _db.SaveChangesAsync(); await transaction.CommitAsync();
+        _db.ChangeTracker.Clear(); _db.Attach(order);
+    }
+
     private static VirtualPaymentEntitlementReceipt ReadReceipt(PaymentLog log)
     {
         using var json = JsonDocument.Parse(log.RawData!);
