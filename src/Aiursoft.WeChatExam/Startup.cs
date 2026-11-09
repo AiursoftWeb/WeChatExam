@@ -60,6 +60,7 @@ public class Startup : IWebStartup
         services.AddHttpClient(nameof(VirtualPaymentQueryService)).RemoveAllLoggers();
         services.AddHttpClient(nameof(VirtualPaymentAccessTokenService)).RemoveAllLoggers();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
+        services.AddScoped<IVirtualPaymentQueryService, VirtualPaymentQueryService>();
         services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();

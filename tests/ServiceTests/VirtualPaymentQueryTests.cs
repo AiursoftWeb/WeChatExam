@@ -35,6 +35,8 @@ public class VirtualPaymentQueryTests
         var result = await CreateService(settings, handler).QueryAsync(order, snapshot, Token);
         Assert.AreEqual(VirtualPaymentOrderState.PaidAwaitingDelivery, result.State);
         Assert.AreEqual("platform-order", result.PlatformOrderId);
+        Assert.AreEqual(order.Id, result.PaymentOrderId);
+        Assert.AreEqual(6800, result.AmountInFen);
         Assert.AreEqual(orderType == 7 ? null : "wechat-transaction", result.TransactionId);
         Assert.AreEqual(HttpMethod.Post, handler.Method);
         Assert.IsNotNull(handler.Uri);
@@ -221,8 +223,14 @@ public class VirtualPaymentQueryTests
         if (fault == "missing-order") response.Remove("order");
         using var handler = new QueryHandler(response, fault == "http" ? HttpStatusCode.BadGateway : HttpStatusCode.OK,
             fault == "malformed" ? "not json " + Token : null, networkFailure: fault == "network");
-        var ex = await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+        var ex = await Assert.ThrowsAsync<InvalidOperationException>(() =>
             CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token));
+        if (fault == "error")
+        {
+            Assert.IsInstanceOfType<VirtualPaymentGatewayException>(ex);
+            Assert.AreEqual(40001, ((VirtualPaymentGatewayException)ex).ErrorCode);
+            Assert.IsTrue(((VirtualPaymentGatewayException)ex).IsInvalidAccessToken);
+        }
         Assert.DoesNotContain(Token, ex.ToString());
         Assert.DoesNotContain(Uri.EscapeDataString(Token), ex.ToString());
         Assert.DoesNotContain("sandbox-secret", ex.ToString());
