@@ -18,7 +18,7 @@ public class WeChatPayService(
     WechatTenpayClient tenpayClient,
     WeChatExamDbContext dbContext,
     ICouponService couponService,
-    ChangeService changeService,
+    PaymentFulfillmentService fulfillmentService,
     IOptions<AppSettings> appSettings,
     ILogger<WeChatPayService> logger) : IWeChatPayService
 {
@@ -168,7 +168,7 @@ public class WeChatPayService(
             // No gateway is involved, but coupon, membership and accounting must
             // still commit together. A failed activation must not consume the coupon.
             order.PrepayId = "FREE_ORDER";
-            await ActivatePaidOrderAsync(order, null);
+            await fulfillmentService.CompleteAsync(order, null);
         }
         return (order, null);
     }
@@ -244,15 +244,6 @@ public class WeChatPayService(
             // Return the reserved order, never a recalculation from today's catalog.
             OriginalAmountInFen = order.AmountInFen + order.DiscountInFen, DiscountInFen = order.DiscountInFen,
             AmountInFen = order.AmountInFen, AppliedCouponCode = order.Coupon?.Code.Trim() };
-    }
-
-    private async Task ActivatePaidOrderAsync(PaymentOrder order, string? transactionId)
-    {
-        order.Status = PaymentOrderStatus.Paid;
-        order.WechatTransactionId = transactionId;
-        order.PaidAt = DateTime.UtcNow;
-        await ProcessVipActivationAsync(order);
-        dbContext.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "StatusChanged", RawData = JsonSerializer.Serialize(new { newStatus = "Paid", transactionId }) });
     }
 
     public async Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId)
@@ -401,7 +392,7 @@ public class WeChatPayService(
         // Update order status based on trade state
         if (tradeState == "SUCCESS")
         {
-            await ActivatePaidOrderAsync(order, transactionId);
+            await fulfillmentService.CompleteAsync(order, transactionId);
         }
         else if (tradeState is "CLOSED" or "REVOKED" or "PAYERROR")
         {
@@ -476,7 +467,7 @@ public class WeChatPayService(
         if (query.Amount is { Currency: "CNY", Total: var total } && total == order.AmountInFen &&
             !string.IsNullOrEmpty(query.TransactionId) && order.VipProductId.HasValue &&
             await dbContext.VipProducts.AnyAsync(p => p.Id == order.VipProductId))
-            await ActivatePaidOrderAsync(order, query.TransactionId);
+            await fulfillmentService.CompleteAsync(order, query.TransactionId);
     }
 
     public async Task<List<VipMembership>> GetVipStatusListAsync(string userId)
@@ -504,72 +495,4 @@ public class WeChatPayService(
                 v.EndTime > DateTime.UtcNow);
     }
 
-    /// <summary>
-    /// 支付成功后处理 VIP 激活
-    /// </summary>
-    private async Task ProcessVipActivationAsync(PaymentOrder order)
-    {
-        if (order.VipProductId == null)
-            return;
-
-        var vipProduct = await dbContext.VipProducts.FindAsync(order.VipProductId);
-        if (vipProduct == null)
-            return;
-
-        var durationDays = vipProduct.DurationDays;
-        var now = DateTime.UtcNow;
-
-        var existingVip = await dbContext.VipMemberships
-            .FirstOrDefaultAsync(v => v.UserId == order.UserId && v.VipProductId == order.VipProductId);
-
-        if (existingVip == null)
-        {
-            // New VIP membership for this product
-            var vip = new VipMembership
-            {
-                UserId = order.UserId,
-                VipProductId = order.VipProductId.Value,
-                StartTime = now,
-                EndTime = now.AddDays(durationDays),
-                LastPaymentOrderId = order.Id
-            };
-            dbContext.VipMemberships.Add(vip);
-
-            logger.LogInformation("Activated VIP {ProductName} for user {UserId}, expires {EndTime}",
-                vipProduct.Name, order.UserId, vip.EndTime);
-        }
-        else
-        {
-            // Re-purchase: re-activate and extend from existing end time if still valid
-            existingVip.EndTime = Math.Max(now.Ticks, existingVip.EndTime.Ticks) == existingVip.EndTime.Ticks
-                ? existingVip.EndTime.AddDays(durationDays)
-                : now.AddDays(durationDays);
-                
-            existingVip.StartTime = now;
-            existingVip.LastPaymentOrderId = order.Id;
-
-            logger.LogInformation("Re-activated VIP {ProductName} for user {UserId}, new expiry {EndTime}",
-                vipProduct.Name, order.UserId, existingVip.EndTime);
-        }
-
-        // Record coupon usage if applicable
-        if (order.CouponId.HasValue)
-        {
-            await couponService.RecordUsageAsync(order.CouponId.Value, order.UserId, order.Id, order.DiscountInFen);
-        }
-
-        // --- NEW: Record Change Event for Accounting ---
-        var changeType = (order.AmountInFen == 0 && order.CouponId.HasValue) 
-            ? ChangeType.VipActivatedViaCoupon 
-            : ChangeType.VipActivatedViaPayment;
-
-        await changeService.RecordChange(
-            type: changeType,
-            targetUserId: order.UserId,
-            triggerUserId: order.UserId, // User triggered their own activation
-            vipProductId: order.VipProductId,
-            couponId: order.CouponId,
-            details: $"Order: {order.OutTradeNo}. Amount: {order.AmountInFen / 100m}元. Discount: {order.DiscountInFen / 100m}元."
-        );
-    }
 }
