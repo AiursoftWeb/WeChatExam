@@ -6,7 +6,7 @@
         return el ? el.innerText : defaultText;
     }
 
-    mermaid.initialize({
+    mermaid.initialize({ layout: 'dagre',
         startOnLoad: false,
         maxTextSize: 100000,
         securityLevel: 'loose',
