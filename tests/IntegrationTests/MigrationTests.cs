@@ -149,16 +149,24 @@ public class MigrationTests
             OutTradeNo = "existing-paid-order", UserId = student.Id, VipProductId = productId,
             Description = "Paid before migration", AmountInFen = 19800, Status = PaymentOrderStatus.Paid
         };
+        // Seed through the historical schema, rather than asking today's model
+        // to write columns (such as Channel) that did not exist before this migration.
+        await context.Database.ExecuteSqlInterpolatedAsync($"""
+            INSERT INTO PaymentOrders (Id, OutTradeNo, UserId, VipProductId, Description,
+                AmountInFen, DiscountInFen, Status, CreatedAt, ExpiredAt)
+            VALUES ({order.Id}, {order.OutTradeNo}, {order.UserId}, {order.VipProductId}, {order.Description},
+                {order.AmountInFen}, 0, {(int)order.Status}, {order.CreatedAt}, {order.ExpiredAt})
+            """);
         var member = new VipMembership
         {
             UserId = student.Id, VipProductId = productId, StartTime = created, EndTime = created.AddYears(2),
-            LastPaymentOrder = order
+            LastPaymentOrderId = order.Id
         };
         var realMember = new VipMembership
         {
             UserId = student.Id, VipProductId = realId, StartTime = created, EndTime = created.AddYears(2)
         };
-        context.AddRange(order, member, realMember);
+        context.AddRange(member, realMember);
         await context.SaveChangesAsync();
         await migrator.MigrateAsync();
         context.ChangeTracker.Clear();

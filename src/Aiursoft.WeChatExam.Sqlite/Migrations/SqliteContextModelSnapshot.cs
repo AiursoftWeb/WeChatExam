@@ -889,6 +889,11 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<int>("AmountInFen")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Channel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(0);
+
                     b.Property<Guid?>("CouponId")
                         .HasColumnType("TEXT");
 

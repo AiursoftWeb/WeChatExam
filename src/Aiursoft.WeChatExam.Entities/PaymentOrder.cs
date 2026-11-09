@@ -71,6 +71,12 @@ public class PaymentOrder
     public PaymentOrderStatus Status { get; set; } = PaymentOrderStatus.Pending;
 
     /// <summary>
+    /// The gateway responsible for this order. Existing orders remain ordinary
+    /// WeChat JSAPI orders; adding virtual payments must not reinterpret their IDs.
+    /// </summary>
+    public PaymentChannel Channel { get; init; } = PaymentChannel.WeChatJsApi;
+
+    /// <summary>
     /// 微信支付交易号（支付成功后返回）
     /// </summary>
     [MaxLength(64)]

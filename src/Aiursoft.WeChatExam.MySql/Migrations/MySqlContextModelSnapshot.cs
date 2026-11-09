@@ -900,6 +900,11 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                     b.Property<int>("AmountInFen")
                         .HasColumnType("int");
 
+                    b.Property<int>("Channel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<Guid?>("CouponId")
                         .HasColumnType("char(36)");
 
