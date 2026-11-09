@@ -76,6 +76,8 @@ public class VirtualPaymentApiTests
         if (invalidToken) _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "invalid-token");
         using var create = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase());
         using var query = await _http.GetAsync("/api/virtual-payment/order-status/unknown-order");
+        using var lookup = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={_productId}");
+        Assert.AreEqual(HttpStatusCode.Unauthorized, lookup.StatusCode);
         using var legacy = await _http.PostAsJsonAsync("/api/payment/create-order", new { vipProductId = _productId });
         Assert.AreEqual(HttpStatusCode.Unauthorized, create.StatusCode);
         Assert.AreEqual(HttpStatusCode.Unauthorized, query.StatusCode);
@@ -239,6 +241,11 @@ public class VirtualPaymentApiTests
         using var query = await _http.GetAsync("/api/virtual-payment/order-status/" + result.OutTradeNo);
         Assert.AreEqual("Paid", (await query.Content.ReadFromJsonAsync<PaymentOrderStatusResponse>())!.Status);
         Assert.AreEqual(0, _handler.Queries);
+        var orders = await FindOrders();
+        Assert.AreEqual(result.OutTradeNo, orders.Items.Single().OutTradeNo);
+        Assert.AreEqual("Paid", orders.Items.Single().Status);
+        Assert.AreEqual(0, orders.Items.Single().AmountInFen);
+        Assert.IsNotNull(orders.Items.Single().PaidAt);
     }
 
     [TestMethod]
@@ -262,6 +269,12 @@ public class VirtualPaymentApiTests
                     productId = "course", goodsPrice = 19800, outTradeNo = number, attach = order.Id.ToString("N") }) });
             await db.SaveChangesAsync();
         }
+        // Recovery discovery does not require a currently configured product.
+        var settings = _server!.Services.GetRequiredService<IOptions<AppSettings>>().Value.WeChat.VirtualPayment;
+        settings.Products.Clear();
+        var orders = await FindOrders();
+        Assert.AreEqual(number, orders.Items.Single().OutTradeNo);
+        Assert.AreEqual(0, _handler.Calls);
         _handler.Order = number;
         using var query = await _http.GetAsync("/api/virtual-payment/order-status/" + number);
         Assert.AreEqual(HttpStatusCode.OK, query.StatusCode);
@@ -295,6 +308,140 @@ public class VirtualPaymentApiTests
         Assert.AreEqual(2, await context.PaymentOrders.CountAsync()); Assert.AreEqual(0, await context.CouponUsages.CountAsync());
         Assert.AreEqual(0, await context.VipMemberships.CountAsync());
         Assert.IsNull((await context.Coupons.SingleAsync(c => c.Code == "RESERVED")).UsedByUserId);
+    }
+
+    [TestMethod]
+    public async Task LostCheckoutResponseIsDiscoverableWithoutSigningOrReleasingItsCoupon()
+    {
+        await SignIn();
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Add(new Coupon { Code = "LOST", AmountInFen = 1000, IsSingleUse = true,
+                DistributionChannel = new DistributionChannel { Id = Guid.NewGuid(), AgencyName = "Agency" } });
+            await db.SaveChangesAsync();
+        }
+        // Deliberately discard the successful response body: the phone has no number.
+        using (var lost = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("LOST")))
+            Assert.AreEqual(HttpStatusCode.OK, lost.StatusCode);
+        var calls = _handler.Calls;
+        using var response = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={_productId}");
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        Assert.IsTrue(response.Headers.CacheControl!.NoStore);
+        var body = await response.Content.ReadAsStringAsync();
+        foreach (var secret in new[] { "payParams", "signData", "paySig", "signature", "session", "buyer-openid", "sandbox-key" })
+            Assert.DoesNotContain(secret, body);
+        var orders = JsonSerializer.Deserialize<VirtualPaymentOrderPage>(body, new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+        var original = orders.Items.Single();
+        Assert.AreEqual(1, orders.Total); Assert.AreEqual("Pending", original.Status);
+        Assert.AreEqual(19800, original.OriginalAmountInFen); Assert.AreEqual(1000, original.DiscountInFen);
+        Assert.AreEqual(18800, original.AmountInFen); Assert.AreEqual(calls, _handler.Calls);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(PaymentOrderStatus.Pending, (await db.PaymentOrders.SingleAsync()).Status);
+            Assert.AreEqual(0, await db.VipMemberships.CountAsync()); Assert.AreEqual(0, await db.CouponUsages.CountAsync());
+            Assert.IsNull((await db.Coupons.SingleAsync(c => c.Code == "LOST")).UsedByUserId);
+        }
+        using var duplicate = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("LOST"));
+        Assert.AreEqual(HttpStatusCode.BadRequest, duplicate.StatusCode);
+        _handler.Order = original.OutTradeNo; _handler.OrderFee = 18800;
+        using var confirmed = await _http.GetAsync("/api/virtual-payment/order-status/" + original.OutTradeNo);
+        Assert.AreEqual("Paid", (await confirmed.Content.ReadFromJsonAsync<PaymentOrderStatusResponse>())!.Status);
+        Assert.AreEqual("Paid", (await FindOrders()).Items.Single().Status);
+    }
+
+    [TestMethod]
+    public async Task DiscoveryIncludesAllLocalStatesAndExpiredReservationsButOnlyOwnedVirtualProductOrders()
+    {
+        await SignIn("other-buyer"); await SignIn();
+        var instant = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var buyer = await db.Users.SingleAsync(u => u.MiniProgramOpenId == "buyer-openid");
+            var other = await db.Users.SingleAsync(u => u.MiniProgramOpenId == "other-buyer");
+            for (var i = 0; i < 55; i++)
+                db.Add(new PaymentOrder { UserId = buyer.Id, VipProductId = _productId, OutTradeNo = $"OWN-{i}",
+                    Channel = PaymentChannel.WeChatVirtual, Description = "Saved course price", AmountInFen = 18800,
+                    DiscountInFen = 1000, CreatedAt = instant, ExpiredAt = instant.AddMinutes(30), Status = (PaymentOrderStatus)(i % 5) });
+            db.Add(new PaymentOrder { UserId = other.Id, VipProductId = _productId, OutTradeNo = "OTHER-OWNER",
+                Channel = PaymentChannel.WeChatVirtual, Description = "Other buyer", AmountInFen = 19800 });
+            db.Add(new PaymentOrder { UserId = buyer.Id, VipProductId = _productId, OutTradeNo = "ORDINARY",
+                Channel = PaymentChannel.WeChatJsApi, Description = "Ordinary purchase", AmountInFen = 19800 });
+            db.Add(new PaymentOrder { UserId = buyer.Id, VipProduct = new VipProduct { Name = "Other product", PriceInFen = 100 },
+                OutTradeNo = "OTHER-PRODUCT", Channel = PaymentChannel.WeChatVirtual, Description = "Other product", AmountInFen = 100 });
+            var product = await db.VipProducts.SingleAsync(p => p.Id == _productId);
+            product.IsEnabled = false; product.PriceInFen = 999;
+            await db.SaveChangesAsync();
+        }
+        var first = await FindOrders(count: 50); var last = await FindOrders(offset: 50, count: 50);
+        var all = first.Items.Concat(last.Items).ToList();
+        Assert.AreEqual(55, first.Total); Assert.AreEqual(55, last.Total);
+        Assert.AreEqual(50, first.Items.Count); Assert.AreEqual(5, last.Items.Count);
+        Assert.AreEqual(55, all.Select(o => o.OutTradeNo).Distinct().Count());
+        CollectionAssert.AreEquivalent(new[] { "Pending", "Paid", "Failed", "Closed", "Refunded" }, all.Select(o => o.Status).Distinct().ToArray());
+        Assert.IsTrue(all.All(o => o.OutTradeNo.StartsWith("OWN-", StringComparison.Ordinal) && o.CreatedAt == instant &&
+            o.Description == "Saved course price" && o.OriginalAmountInFen == 19800 && o.DiscountInFen == 1000 && o.AmountInFen == 18800));
+        CollectionAssert.AreEqual(first.Items.Select(o => o.OutTradeNo).ToArray(), (await FindOrders(count: 50)).Items.Select(o => o.OutTradeNo).ToArray());
+        Assert.AreEqual(0, (await FindOrders(offset: int.MaxValue)).Items.Count);
+        Assert.AreEqual(0, _handler.Calls);
+        using var check = _server!.Services.CreateScope(); var context = check.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(58, await context.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await context.PaymentLogs.CountAsync()); Assert.AreEqual(0, await context.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("?vipProductId=invalid")]
+    [DataRow("?vipProductId=00000000-0000-0000-0000-000000000000")]
+    [DataRow("?offset=-1")]
+    [DataRow("?count=0")]
+    [DataRow("?count=51")]
+    [DataRow("?offset=2147483648")]
+    public async Task DiscoveryRejectsMissingOrInvalidProductAndPagination(string suffix)
+    {
+        await SignIn();
+        if (suffix.StartsWith("?offset=", StringComparison.Ordinal) || suffix.StartsWith("?count=", StringComparison.Ordinal))
+            suffix += $"&vipProductId={_productId}";
+        using var response = await _http.GetAsync("/api/virtual-payment/orders" + suffix);
+        Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode); Assert.AreEqual(0, _handler.Calls);
+    }
+
+    [TestMethod]
+    public async Task DiscoveryReturnsAnEmptyPageForAnUnknownProductOrAnotherBuyer()
+    {
+        await SignIn(); await CreatePurchase(); await SignIn("other-buyer");
+        var calls = _handler.Calls;
+        Assert.AreEqual(0, (await FindOrders()).Total);
+        using var spoofed = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={_productId}&userId=buyer&channel=WeChatJsApi");
+        Assert.AreEqual(0, (await spoofed.Content.ReadFromJsonAsync<VirtualPaymentOrderPage>())!.Total);
+        using var missing = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={Guid.NewGuid()}");
+        Assert.AreEqual(HttpStatusCode.OK, missing.StatusCode);
+        Assert.AreEqual(0, (await missing.Content.ReadFromJsonAsync<VirtualPaymentOrderPage>())!.Total);
+        Assert.AreEqual(calls, _handler.Calls);
+    }
+
+    [TestMethod]
+    public async Task DiscoveryDatabaseFailureReturnsSanitizedUnavailableWithoutGatewayRequests()
+    {
+        await SignIn();
+        using (var scope = _server!.Services.CreateScope())
+            await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().Database.ExecuteSqlRawAsync(
+                "ALTER TABLE PaymentOrders RENAME TO SensitiveOrderStorage;");
+        using var response = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={_productId}");
+        Assert.AreEqual(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+        var body = await response.Content.ReadAsStringAsync();
+        Assert.Contains("virtual_payment_unavailable", body);
+        Assert.DoesNotContain("SQLite", body); Assert.DoesNotContain("PaymentOrders", body);
+        Assert.DoesNotContain(_database, body); Assert.AreEqual(0, _handler.Calls);
+    }
+
+    private async Task<VirtualPaymentOrderPage> FindOrders(int offset = 0, int count = 20)
+    {
+        using var response = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={_productId}&offset={offset}&count={count}");
+        Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        return (await response.Content.ReadFromJsonAsync<VirtualPaymentOrderPage>())!;
     }
 
     private CreateVirtualPaymentOrderRequest Purchase(string? coupon = null) => new() { VipProductId = _productId, LoginCode = "fresh-code", CouponCode = coupon };

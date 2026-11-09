@@ -26,3 +26,22 @@ public class CreateVirtualPaymentOrderResponse
     public string? AppliedCouponCode { get; init; }
     public VirtualPaymentParameters? PayParams { get; init; }
 }
+
+public class VirtualPaymentOrderQuery
+{
+    [Required]
+    public Guid? VipProductId { get; set; }
+
+    [Range(0, int.MaxValue)]
+    public int Offset { get; set; }
+
+    [Range(1, 50)]
+    public int Count { get; set; } = 20;
+}
+
+// Saved order values, not today's catalog price or coupon settings. Status is
+// local, not a fresh gateway verdict; absence never authorizes a second payment.
+public record VirtualPaymentOrderSummary(string OutTradeNo, string Description, string Status,
+    int OriginalAmountInFen, int DiscountInFen, int AmountInFen, DateTime CreatedAt, DateTime? PaidAt);
+
+public record VirtualPaymentOrderPage(int Total, int Offset, int Count, List<VirtualPaymentOrderSummary> Items);
