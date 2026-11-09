@@ -93,7 +93,10 @@ public class WeChatPayService(
         // still allow two application instances to reserve the same coupon.
         await LockBuyerAsync(userId);
         var retried = await dbContext.PaymentOrders.FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo);
-        if (retried != null) return (retried, null);
+        if (retried != null)
+            return retried.Channel == PaymentChannel.WeChatJsApi
+                ? (retried, null)
+                : (null, "The previous order belongs to another payment channel.");
         var product = await dbContext.VipProducts.Include(v => v.TotalCategory).Include(v => v.Institution)
             .FirstOrDefaultAsync(v => v.Id == productId);
         if (product is not { IsEnabled: true } || product.Type is not (VipProductType.Category or VipProductType.Institution))
@@ -110,6 +113,11 @@ public class WeChatPayService(
             .Where(o => o.UserId == userId && o.VipProductId == productId &&
                 (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed))
             .OrderBy(o => o.CreatedAt).ToListAsync();
+        // Reservations are shared across channels, but only their own gateway can
+        // confirm payment or closure. Never reuse virtual parameters as JSAPI ones,
+        // and never treat local expiry as permission to charge a second time.
+        if (pending.Any(o => o.Channel != PaymentChannel.WeChatJsApi))
+            return (null, "A previous payment in another channel is not confirmed closed. Please check its status before purchasing again.");
         foreach (var old in pending.Where(o => o.ExpiredAt <= now || o.Status == PaymentOrderStatus.Failed))
         {
             await LockCouponAsync(old.CouponId);
@@ -156,7 +164,7 @@ public class WeChatPayService(
         var discount = coupon == null ? 0 : Math.Min(product.PriceInFen, coupon.AmountInFen);
         var order = new PaymentOrder
         {
-            UserId = userId, VipProductId = productId, OutTradeNo = outTradeNo,
+            UserId = userId, VipProductId = productId, OutTradeNo = outTradeNo, Channel = PaymentChannel.WeChatJsApi,
             CouponId = coupon?.Id, DiscountInFen = discount, AmountInFen = product.PriceInFen - discount,
             Description = $"{product.Name} - {product.TotalCategory?.Title ?? product.Institution?.Title ?? "VIP"}",
             ExpiredAt = DateTime.UtcNow.AddMinutes(30)
@@ -187,6 +195,9 @@ public class WeChatPayService(
 
     private async Task<bool> ConfirmClosedAsync(PaymentOrder order)
     {
+        // This also protects single-use coupons reserved by another channel.
+        // Unknown or expired foreign orders stay reserved until that gateway confirms closure.
+        if (order.Channel != PaymentChannel.WeChatJsApi) return false;
         await LockOrderAsync(order);
         if (order.Status == PaymentOrderStatus.Closed) return true;
         if (order.Status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded) return false;
@@ -217,6 +228,8 @@ public class WeChatPayService(
     private async Task<CreateOrderResult> ResumeOrderAsync(Guid orderId, string openId)
     {
         var order = await dbContext.PaymentOrders.Include(o => o.Coupon).SingleAsync(o => o.Id == orderId);
+        if (order.Channel != PaymentChannel.WeChatJsApi)
+            return new CreateOrderResult { Success = false, ErrorMessage = "This order belongs to another payment channel." };
         await LockOrderAsync(order);
         if (order.Status == PaymentOrderStatus.Paid && order.AmountInFen == 0)
             return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = "FREE_ORDER",
@@ -324,9 +337,9 @@ public class WeChatPayService(
         logger.LogInformation("Received payment notify for order {OutTradeNo}, state: {TradeState}",
             outTradeNo, tradeState);
 
-        // Find order
+        // A valid ordinary-payment signature does not authorize another gateway's order.
         var order = await dbContext.PaymentOrders
-            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo);
+            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo && o.Channel == PaymentChannel.WeChatJsApi);
 
         if (order == null)
         {
@@ -417,7 +430,7 @@ public class WeChatPayService(
         // another buyer's order must not cause activation as a side effect.
         if (string.IsNullOrEmpty(userId)) return null;
         var order = await dbContext.PaymentOrders.AsNoTracking()
-            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo && o.UserId == userId);
+            .FirstOrDefaultAsync(o => o.OutTradeNo == outTradeNo && o.UserId == userId && o.Channel == PaymentChannel.WeChatJsApi);
         if (order == null || order.Status is not (PaymentOrderStatus.Pending or PaymentOrderStatus.Failed)) return order;
 
         GetPayTransactionByOutTradeNumberResponse query;
@@ -439,7 +452,7 @@ public class WeChatPayService(
 
         return await InPaymentTransactionAsync(async () =>
         {
-            var current = await dbContext.PaymentOrders.SingleAsync(o => o.Id == order.Id && o.UserId == userId);
+            var current = await dbContext.PaymentOrders.SingleAsync(o => o.Id == order.Id && o.UserId == userId && o.Channel == PaymentChannel.WeChatJsApi);
             // Use the same lock order as notifications and checkout. Reload after
             // waiting so concurrent queries/notifications activate only once.
             await LockBuyerAsync(current.UserId);
@@ -464,7 +477,8 @@ public class WeChatPayService(
     {
         // Share the saved-price check with checkout recovery. Current product
         // prices and WeChat payer discounts do not change the amount owed.
-        if (query.Amount is { Currency: "CNY", Total: var total } && total == order.AmountInFen &&
+        if (order.Channel == PaymentChannel.WeChatJsApi &&
+            query.Amount is { Currency: "CNY", Total: var total } && total == order.AmountInFen &&
             !string.IsNullOrEmpty(query.TransactionId) && order.VipProductId.HasValue &&
             await dbContext.VipProducts.AnyAsync(p => p.Id == order.VipProductId))
             await fulfillmentService.CompleteAsync(order, query.TransactionId);
