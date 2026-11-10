@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>先前嘅購買已唔再係已付款狀態。自動恢復可能會重新給予已退款嘅權限。</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>請聯絡技術支援以核實此記錄。切勿根據不完整資料更改會員身份。</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>退款後更改權限前，請先檢查訂單及現有會員資格。</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>管理會員</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>會員資格驗證</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>此頁面上沒有退款核對記錄。</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>訂單編號</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>第 {0} 頁</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>付款訂單</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>平台退款編號</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一頁</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>記錄時間</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>退款金額</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>退款對賬頁面</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>退款對賬記錄</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>顯示所有退款核對記錄</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>會員資格已被更改或找不到。為保護其他已付費或贈送的會員資格，已停止自動移除會員資格。</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>無法驗證原始會員權益授予。移除任何權限前，請先檢查購買記錄。</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>原始平台付款確認遺失。更改會員資格前，請先核實該筆交易。</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>退款金額與訂單付款金額不符。在更改任何會員身份之前，請先查看平台記錄。</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>手動更改後，這些記錄仍會保留。檢視此頁面不會更改會員資格或優惠券。</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>此訂單未在本機確認已付款。請先檢查其平台付款及退款記錄，再更改會員狀態。</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>無法取得</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>查看會員及購買記錄</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>查看訂單</value>
+  </data>
+
+</root>

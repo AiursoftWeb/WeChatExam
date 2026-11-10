@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Μια προηγούμενη αγορά δεν πληρώθηκε πλέον. Η αυτόματη επαναφορά της θα μπορούσε να επαναφέρει δικαιώματα που έχουν επιστραφεί.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Ζητήστε από την τεχνική υποστήριξη να επαληθεύσει αυτό το αρχείο. Μην αλλάξετε την συνδρομή βάσει ανύπαρκτων ή ατελών στοιχείων.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Ελέγξτε τη παραγγελία και τα υπάρχοντα συνδρομητικά δικαιώματα πριν αλλάξετε δικαιώματα μετά από μια επιστροφή χρημάτων.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Διαχείριση συνδρομών</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Επαλήθευση εγγραφής</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>Δεν υπάρχουν εγγραφές συνεννόησης επιστροφών σε αυτήν τη σελίδα.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Αριθμός παραγγελίας</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Σελίδα {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Συμβόλαια πληρωμής</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Αριθμός επιστροφής πλατφόρμας</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Προηγούμενο</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Ημερομηνία καταχώρισης</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Ποσό επιστροφής</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Σελίδες διακανονισμού επιστροφών</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Καταγραφές ρύθμισης επιστροφών</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Εμφάνιση όλων των εγγραφών συνδιαλλαγής επιστροφών</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Το μέλος τροποποιήθηκε ή δεν βρέθηκε. Η αυτόματη αφαίρεση του μέλους διακόπηκε για να προστατευθούν άλλα πληρωμένα ή δωρεάν μέλη.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Δεν ήταν δυνατή η επαλήθευση της αρχικής χορήγησης μελών. Ελέγξτε το ιστορικό αγορών πριν αφαιρέσετε οποιαδήποτε δικαιώματα.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Λείπει η αρχική επιβεβαίωση πληρωμής από την πλατφόρμα. Επαληθεύστε τη συναλλαγή πριν αλλάξετε τη συνδρομή.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Το ποσό της επιστροφής διαφέρει από την πληρωμή της παραγγελίας. Ελέγξτε το αρχείο της πλατφόρμας πριν από οποιαδήποτε αλλαγή στην εγγραφή.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Αυτά τα αρχεία παραμένουν μετά από χειροκίνητες αλλαγές. Η προβολή αυτής της σελίδας δεν αλλάζει συνδρομές ή κουπόνια.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Αυτή η παραγγελία δεν επιβεβαιώθηκε τοπικά ως πληρωμένη. Ελέγξτε την πληρωμή και την επιστροφή χρημάτων της πλατφόρμας πριν από οποιαδήποτε αλλαγή στη συνδρομή.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Μη διαθέσιμο</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Προβολή συνδρομών και αγορών</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Προβολή παραγγελίας</value>
+  </data>
+
+</root>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Món hàng được mua trước đó không còn được thanh toán. Khôi phục nó tự động có thể cấp lại các quyền lợi đã được hoàn tiền.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Hãy liên hệ bộ phận hỗ trợ kỹ thuật để xác minh bản ghi này. Không thay đổi quyền thành viên dựa trên các chi tiết chưa đầy đủ.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Kiểm tra đơn hàng và các thành viên hiện có trước khi thay đổi quyền sau khi hoàn tiền.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Quản lý thành viên</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Xác minh quyền thành viên</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tiếp theo</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>Không có bản ghi đối soát hoàn tiền trên trang này.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Số đơn hàng</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Trang {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Đơn đặt hàng thanh toán</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Số đơn hoàn tiền của nền tảng</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Trước</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Thời gian ghi nhận</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Số tiền hoàn lại</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Trang đối soát hoàn tiền</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Bản ghi đối soát hoàn tiền</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Hiển thị tất cả bản đối soát hoàn tiền</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Quyền thành viên đã bị thay đổi hoặc không thể tìm thấy. Việc tự động xóa quyền thành viên đã bị dừng để bảo vệ các quyền thành viên trả phí hoặc được tặng khác.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Quyền thành viên ban đầu không thể được xác minh. Hãy kiểm tra lịch sử mua hàng trước khi xóa bất kỳ quyền nào.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Xác nhận thanh toán gốc từ nền tảng bị thiếu. Hãy xác minh giao dịch trước khi thay đổi quyền thành viên.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Số tiền hoàn lại khác với thanh toán đơn hàng. Kiểm tra bản ghi nền tảng trước khi thay đổi bất kỳ quyền thành viên nào.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Các bản ghi này vẫn được giữ lại sau các thay đổi thủ công. Việc xem trang này không thay đổi quyền thành viên hoặc phiếu giảm giá.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Đơn hàng này chưa được xác nhận đã thanh toán trên hệ thống cục bộ. Vui lòng kiểm tra thanh toán và hoàn tiền trên nền tảng trước khi thay đổi quyền thành viên.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Không khả dụng</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Xem thành viên và mua sắm</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Xem đơn hàng</value>
+  </data>
+
+</root>

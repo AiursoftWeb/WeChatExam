@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>以前の購入は未払いの状態です。自動的に復元すると、返金済みの権限が再度付与される可能性があります。</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>技術サポートにこのレコードを確認してもらう。不完全な情報に基づいてメンバーシップを変更しないでください。</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>返金後に権限を変更する前に、注文と既存のメンバーシップを確認してください。</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>メンバーシップの管理</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>会員資格の確認</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>このページには返金照合記録がありません。</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>注文番号</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>{0}ページ</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>支払い注文</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>プラットフォーム返金番号</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>記録日時</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>返金額</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>返金照合ページ</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>返金照合記録</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>全返金照合記録を表示</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>メンバーシップが変更されているか、見つかりませんでした。他の有料またはプレゼントされたメンバーシップを保護するため、自動的なメンバーシップ削除を停止しました。</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>元のメンバーシップ付与を検証できませんでした。権限を削除する前に購入履歴を確認してください。</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>元のプラットフォームの支払い確認情報が欠落しています。会員資格を変更する前に、取引を確認してください。</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>返金額が注文の支払い額と異なります。メンバーシップを変更する前に、プラットフォームの記録を確認してください。</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>これらの記録は手動変更後も残ります。このページを表示しても、メンバーシップやクーポンは変更されません。</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>この注文は、ローカルで支払い完了として確認されていません。メンバーシップを変更する前に、プラットフォームの支払いおよび返金を確認してください。</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>利用不可</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>メンバーシップと購入履歴を表示</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>注文を見る</value>
+  </data>
+
+</root>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Ein früherer Kauf wird nicht mehr bezahlt. Eine automatische Wiederherstellung könnte erteilte Rechte zurückgeben, die bereits erstattet wurden.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Bitte den technischen Support bitten, diesen Datensatz zu überprüfen. Ändern Sie die Mitgliedschaft nicht auf Grundlage unvollständiger Angaben.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Prüfen Sie die Bestellung und bestehenden Mitgliedschaften, bevor Sie nach einer Rückerstattung Berechtigungen ändern.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Mitgliedschaften verwalten</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Mitgliedschaftsüberprüfung</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>Keine Rückbuchungsaufzeichnungen auf dieser Seite.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Seite {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Zahlungsaufträge</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Plattform-Rückerstattungsnummer</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Erfasst am</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Rückerstattungsbetrag</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Seitennavigation zur Rückerstattungsabrechnung</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Rückerstattungsabgleichsprotokolle</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Alle Rückerstattungs-Abschreibungsaufzeichnungen anzeigen</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Die Mitgliedschaft wurde geändert oder konnte nicht gefunden werden. Die automatische Entfernung der Mitgliedschaft wurde gestoppt, um andere bezahlte oder geschenkte Mitgliedschaften zu schützen.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Die ursprüngliche Mitgliedschaftsbewilligung konnte nicht verifiziert werden. Prüfen Sie den Kaufverlauf, bevor Sie Berechtigungen entfernen.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Die Bestätigung der ursprünglichen Plattformzahlung fehlt. Prüfen Sie die Transaktion, bevor Sie die Mitgliedschaft ändern.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Der Erstattungsbetrag weicht von der Zahlung der Bestellung ab. Prüfen Sie den Plattformverlauf, bevor Sie eine Mitgliedschaft ändern.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Diese Einträge bleiben auch nach manuellen Änderungen erhalten. Das Anzeigen dieser Seite ändert keine Mitgliedschaften oder Gutscheine.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Für diese Bestellung wurde die Zahlung lokal nicht bestätigt. Prüfen Sie die Zahlung und die Rückerstattung auf der Plattform, bevor Sie die Mitgliedschaft ändern.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Nicht verfügbar</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Mitgliedschaften und Käufe anzeigen</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Bestellung anzeigen</value>
+  </data>
+
+</root>
