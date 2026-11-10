@@ -673,6 +673,29 @@ public class PaymentFulfillmentTests
         Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
     }
 
+    [TestMethod]
+    [DataRow(100, VirtualPaymentRefundOutcome.ReviewRequired)]
+    [DataRow(6800, VirtualPaymentRefundOutcome.Completed)]
+    public async Task IosRefundAdviceCannotOverrideACompletedOrPartiallyRefundedPurchase(int amount, VirtualPaymentRefundOutcome expected)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        Assert.IsNotNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            var current = await _db.PaymentOrders.SingleAsync();
+            Assert.AreEqual(expected, await new VirtualPaymentRefundService(_db).CompleteAsync(current,
+                new VirtualPaymentRefundConfirmation(order.Id, "original-platform-order", "actual-refund", amount)));
+            await transaction.CommitAsync();
+        }
+        _db.ChangeTracker.Clear();
+        // A partial refund keeps Paid and active access; its review record must
+        // still prevent an automatic recommendation to refuse the refund.
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.IsTrue((await _db.UserClaimedCoupons.AsNoTracking().SingleAsync()).IsUsed);
+        Assert.AreEqual(3, await _db.PaymentLogs.CountAsync());
+    }
+
     private VirtualPaymentIosRefundAdviceService CreateAdviceService() => new(_db,
         Options.Create(new AppSettings
         {

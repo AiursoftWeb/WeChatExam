@@ -58,9 +58,13 @@ public class VirtualPaymentIosRefundAdviceService(WeChatExamDbContext db, IOptio
         // Check the still-paid original order AND its unchanged active grant in
         // ONE SQL statement. A later purchase, gift, refund or manual edit must
         // not be used as evidence that this purchase is currently delivered.
+        // Partial refunds can leave Paid unchanged, so refund audit records
+        // must also exclude an order from automatic refusal advice.
         var delivered = await db.PaymentOrders.AsNoTracking().AnyAsync(o => o.Id == order.Id && o.UserId == order.UserId &&
             o.Channel == PaymentChannel.WeChatVirtual && o.Status == PaymentOrderStatus.Paid &&
             o.PaidAt == order.PaidAt && o.VipProductId == order.VipProductId && o.AmountInFen == order.AmountInFen &&
+            !db.PaymentLogs.Any(l => l.PaymentOrderId == o.Id &&
+                (l.EventType == "VirtualPaymentRefundReview" || l.EventType == "VirtualPaymentRefunded")) &&
             db.VipMemberships.Any(v => v.Id == receipt.MembershipId && v.UserId == o.UserId && v.VipProductId == o.VipProductId &&
                 v.StartTime == receipt.After.StartTime && v.EndTime == receipt.After.EndTime && v.LastPaymentOrderId == o.Id &&
                 v.StartTime <= now && v.EndTime > now), cancellationToken);
