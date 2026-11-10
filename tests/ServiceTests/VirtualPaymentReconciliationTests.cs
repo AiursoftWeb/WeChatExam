@@ -951,7 +951,10 @@ public class VirtualPaymentReconciliationTests
         var payload = RefundPayload();
         var (body, signature) = EncryptNotification(payload, false);
         await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
             Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+            Assert.AreSame(transaction, _db.Database.CurrentTransaction);
+        }
         Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
         Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
         payload["RefundFee"] = 1;
