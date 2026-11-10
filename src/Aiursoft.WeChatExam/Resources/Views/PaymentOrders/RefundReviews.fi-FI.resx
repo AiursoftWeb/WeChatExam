@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Aiempi ostos ei enää ole maksettu. Sen automaattinen palauttaminen voisi antaa takaisin palautetut oikeudet.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Pyydä teknistä tukea varmistaakseen tämän tallenteen. Älä muuta jäsenyyttä epätarkkojen tietojen perusteella.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Tarkista tilaus ja olemassa olevat jäsenyydet ennen oikeuksien muuttamista palautuksen jälkeen.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Hallitse jäsenyyksiä</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Jäsenyyden vahvistus</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>Tällä sivulla ei ole palautuksen sovitusmerkintöjä.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Tilausnumero</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Sivu {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Maksut</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Alustan palautusnumero</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Edellinen</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Kirjattu</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Palautussumma</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Palautussovitusnäkymät</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Palautusten tiliötöinnin tallenteet</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Näytä kaikki palautussovitusrekisterit</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Jäsenyys oli muuttunut tai sitä ei löytynyt. Automaattinen jäsenyyden poisto keskeytettiin suojellakseen muita maksettuja tai lahjoja jäsenyyksiä.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Alkuperäistä jäsenyyden myöntämistä ei voitu todentaa. Tarkista ostohistoria ennen oikeuksien poistamista.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Alkuperäinen alustan maksuvarmistus puuttuu. Tarkista transaktio ennen jäsenyyden muuttamista.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Palautussumma poikkeaa tilauksen maksamismäärästä. Tarkista alustan kirjaukset ennen joidenkin jäsenyyksien muuttamista.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Nämä kirjanpidot säilyvät manuaalisten muutosten jälkeen. Tämän sivun katselu ei muuta jäsenyyksiä tai kupongeja.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Tätä tilausta ei ole paikallisesti vahvistettu maksetuksi. Tarkista sen alustan maksu ja palautus ennen jäsenyyden muuttamista.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Ei käytettävissä</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Näytä jäsenyydet ja ostokset</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Näytä tilaus</value>
+  </data>
+
+</root>

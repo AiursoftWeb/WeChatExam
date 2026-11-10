@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Pembelian sebelumnya tidak lagi berstatus dibayar. Memulihkannya secara otomatis dapat mengembalikan hak yang telah di-refund.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Minta dukungan teknis untuk memverifikasi catatan ini. Jangan ubah keanggotaan berdasarkan detail yang tidak lengkap.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Periksa pesanan dan keanggotaan yang ada sebelum mengubah hak setelah pengembalian dana.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Kelola keanggotaan</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Verifikasi keanggotaan</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>Tidak ada catatan rekonsiliasi pengembalian dana di halaman ini.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Nomor pesanan</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Halaman {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Pesanan pembayaran</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Nomor pengembalian dana platform</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Sebelumnya</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Dicatat pada</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Jumlah pengembalian dana</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Halaman rekonsiliasi pengembalian dana</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Catatan rekonsiliasi pengembalian dana</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Tampilkan semua rekonsiliasi catatan pengembalian dana</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Keanggotaan telah diubah atau tidak dapat ditemukan. Penghapusan keanggotaan otomatis dihentikan untuk melindungi keanggotaan berbayar atau hadiah lainnya.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Pemberian keanggotaan asli tidak dapat diverifikasi. Periksa riwayat pembelian sebelum menghapus hak apa pun.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Konfirmasi pembayaran platform asli tidak ditemukan. Verifikasi transaksi sebelum mengubah keanggotaan.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Jumlah pengembalian dana berbeda dari pembayaran pesanan. Periksa catatan platform sebelum mengubah keanggotaan apa pun.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Catatan ini tetap ada setelah perubahan manual. Menampilkan halaman ini tidak mengubah keanggotaan atau kupon.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Pesanan ini tidak dikonfirmasi sebagai sudah dibayar secara lokal. Periksa pembayaran dan pengembalian dana platformnya sebelum mengubah keanggotaan.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Tidak tersedia</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Lihat keanggotaan dan pembelian</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Lihat pesanan</value>
+  </data>
+
+</root>

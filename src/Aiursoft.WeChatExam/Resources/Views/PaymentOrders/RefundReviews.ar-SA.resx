@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>لم تعد عملية الشراء السابقة مدفوعة. قد يؤدي استعادتها تلقائيًا إلى إعادة حقوق تم استردادها.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>اطلب من الدعم الفني التحقق من هذا السجل. لا تُغيّر العضوية بناءً على تفاصيل غير مكتملة.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>تحقق من الطلب والعضويات الحالية قبل تغيير الصلاحيات بعد إجراء استرداد.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>إدارة العضويات</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>التحقق من العضوية</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>لا توجد سجلات تسوية استرداد على هذه الصفحة.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>صفحة {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>أوامر الدفع</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>رقم استرداد المنصة</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>سُجِّل في</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>مبلغ الاسترداد</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>صفحات مطابقة المبالغ المستردة</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>سجلات تسوية الاسترداد</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>عرض جميع سجلات تسوية المرتجعات</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>تم تغيير العضوية أو تعذّر العثور عليها. تم إيقاف إزالة العضوية تلقائيًا لحماية العضويات المدفوعة أو المهداة الأخرى.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>تعذّر التحقق من منح العضوية الأصلي. تحقق من سجل المشتريات قبل إزالة أي حقوق.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>تأكيد الدفع الأصلي للمنصة مفقود. تحقق من المعاملة قبل تغيير العضوية.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>تختلف قيمة المبلغ المسترد عن دفعة الطلب. تحقق من سجل المنصة قبل تغيير أي عضوية.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>تبقى هذه السجلات بعد التغييرات اليدوية. عرض هذه الصفحة لا يغيّر العضويات أو القسائم.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>لم يتم تأكيد هذا الطلب محليًا كمدفوع. تحقق من دفعه واسترداده على المنصة قبل تغيير العضوية.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>غير متوفر</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>عرض العضويات والمشتريات</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>عرض الطلب</value>
+  </data>
+
+</root>

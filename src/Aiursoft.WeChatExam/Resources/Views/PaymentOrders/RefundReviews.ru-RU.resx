@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Ранняя покупка больше не оплачена. Автоматическое восстановление может вернуть отменённые права.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Обратитесь в техническую поддержку для подтверждения этой записи. Не изменяйте статус членства на основании неполных данных.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Проверьте заказ и существующие членства перед изменением прав после возврата средств.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Управление подписками</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Проверка членства</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>На этой странице нет записей о сверке возвратов.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Номер заказа</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Страница {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Платёжные заказы</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Номер возврата на платформе</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Предыдущая</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Дата записи</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Сумма возврата</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Страницы сверки возвратов</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Записи сверки возвратов</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Показать все записи сверки возвратов</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Подписка была изменена или не найдена. Автоматическое удаление подписки остановлено для защиты других платных или подарочных подписок.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Не удалось подтвердить исходное предоставление членства. Проверьте историю покупок перед удалением каких-либо прав.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Отсутствует подтверждение оригинальной оплаты на платформе. Проверьте транзакцию перед изменением членства.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Сумма возврата отличается от суммы оплаты заказа. Проверьте запись платформы перед изменением любой подписки.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Эти записи сохраняются после ручных изменений. Просмотр этой страницы не изменяет статусы подписки или купоны.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Этот заказ не был локально подтверждён как оплаченный. Проверьте платёж и возврат средств на платформе перед изменением членства.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Недоступно</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Просмотр подписок и покупок</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Просмотр заказа</value>
+  </data>
+
+</root>

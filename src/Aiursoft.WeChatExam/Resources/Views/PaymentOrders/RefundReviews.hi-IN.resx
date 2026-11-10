@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>पिछली खरीद अब भुगतान नहीं की गई है। इसे स्वतः पुनर्स्थापित करने से वापस की गई अधिकृतता वापस मिल सकती है।</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>इस रिकॉर्ड की पुष्टि के लिए तकनीकी सहायता से संपर्क करें। अधूरी जानकारी के आधार पर सदस्यता में कोई परिवर्तन न करें।</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>रिफ़ंड के बाद अधिकारों में बदलाव करने से पहले ऑर्डर और मौजूदा सदस्यताओं की जाँच करें।</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>सदस्यता प्रबंधित करें</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>सदस्यता सत्यापन</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>अगला</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>इस पेज पर कोई रिफंड समन्वय रिकॉर्ड नहीं है।</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>ऑर्डर नंबर</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>पृष्ठ {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>भुगतान आदेश</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>प्लेटफ़ॉर्म रिफ़ंड संख्या</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>पिछला</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>रिकॉर्ड किया गया</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>रिफंड राशि</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>रिफंड समन्वय पृष्ठ</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>पुनर्प्राप्ति समायोजन रिकॉर्ड</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>सभी रिफंड समायोजन रिकॉर्ड दिखाएँ</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>सदस्यता बदल दी गई थी या नहीं मिल सकी। अन्य भुगतान किए गए या उपहार के रूप में प्राप्त सदस्यताओं की रक्षा के लिए स्वचालित सदस्यता हटाव रोक दिया गया है।</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>मूल सदस्यता प्रदान की गई की पुष्टि नहीं की जा सकी। किसी भी अधिकारों को हटाने से पहले खरीदारी के इतिहास की जाँच करें।</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>मूल प्लेटफ़ॉर्म भुगतान पुष्टि अनुपलब्ध है। सदस्यता बदलने से पहले लेन-देन की सत्यापित करें।</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>रिफंड राशि ऑर्डर भुगतान से अलग है। किसी भी सदस्यता में परिवर्तन करने से पहले प्लेटफ़ॉर्म रिकॉर्ड की जाँच करें।</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>मैनुअल परिवर्तनों के बाद ये रिकॉर्ड बनाए रहते हैं। इस पेज को देखने से सदस्यता या कूपन में कोई परिवर्तन नहीं होता है।</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>यह ऑर्डर स्थानीय रूप से भुगतान के रूप में पुष्टि नहीं किया गया था। सदस्यता में बदलाव करने से पहले इसकी प्लेटफ़ॉर्म भुगतान और रीफंड की जाँच करें।</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>उपलब्ध नहीं</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>सदस्यता और खरीदारी देखें</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>ऑर्डर देखें</value>
+  </data>
+
+</root>

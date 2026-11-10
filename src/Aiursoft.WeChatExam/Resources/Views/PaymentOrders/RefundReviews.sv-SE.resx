@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights." xml:space="preserve">
+    <value>Ett tidigare köp är inte längre betalt. Om det återställs automatiskt kan återsända rättigheter återvinnas.</value>
+  </data>
+  <data name="Ask technical support to verify this record. Do not change membership based on incomplete details." xml:space="preserve">
+    <value>Bevära teknisk support för att verifiera denna post. Ändra inte medlemskap baserat på ofullständiga uppgifter.</value>
+  </data>
+  <data name="Check the order and existing memberships before changing rights after a refund." xml:space="preserve">
+    <value>Kontrollera ordern och befintliga medlemskap innan du ändrar rättigheter efter en återbetalning.</value>
+  </data>
+  <data name="Manage memberships" xml:space="preserve">
+    <value>Hantera medlemskap</value>
+  </data>
+  <data name="Membership verification" xml:space="preserve">
+    <value>Medlemskapsverifiering</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Nästa</value>
+  </data>
+  <data name="No refund reconciliation records on this page." xml:space="preserve">
+    <value>Inga bokslutsposter för återbetalningar på denna sida.</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Ordernummer</value>
+  </data>
+  <data name="Page {0}" xml:space="preserve">
+    <value>Sida {0}</value>
+  </data>
+  <data name="Payment orders" xml:space="preserve">
+    <value>Betalningsordrar</value>
+  </data>
+  <data name="Platform refund number" xml:space="preserve">
+    <value>Plattformens återbetalningsnummer</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Föregående</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Registrerad vid</value>
+  </data>
+  <data name="Refund amount" xml:space="preserve">
+    <value>Återbetalningsbelopp</value>
+  </data>
+  <data name="Refund reconciliation pages" xml:space="preserve">
+    <value>Sidor för återbetalningsrekonciliering</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Återbetalningsförteckningar</value>
+  </data>
+  <data name="Show all refund reconciliation records" xml:space="preserve">
+    <value>Visa alla återbetalningsavstämningsposter</value>
+  </data>
+  <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
+    <value>Medlemskapet har ändrats eller kunde inte hittas. Automatisk borttagning av medlemskap stoppades för att skydda andra betalda eller gåvomedlemskap.</value>
+  </data>
+  <data name="The original membership grant could not be verified. Check the purchase history before removing any rights." xml:space="preserve">
+    <value>Den ursprungliga medlemskapstilldelningen kunde inte verifieras. Kontrollera köphistoriken innan du tar bort några rättigheter.</value>
+  </data>
+  <data name="The original platform payment confirmation is missing. Verify the transaction before changing membership." xml:space="preserve">
+    <value>Den ursprungliga betalbekräftelsen från plattformen saknas. Verifiera transaktionen innan du ändrar medlemskapet.</value>
+  </data>
+  <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
+    <value>Återbetalningsbeloppet skiljer sig från orderns betalning. Kontrollera plattformens postering innan du ändrar någon medlemskap.</value>
+  </data>
+  <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
+    <value>Dessa poster kvarstår efter manuella ändringar. Visningen av denna sida ändrar inte medlemskap eller kuponger.</value>
+  </data>
+  <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
+    <value>Detta köp har inte bekräftats som betalat lokalt. Kontrollera betalningen och eventuell återbetalning på plattformen innan du ändrar medlemskapet.</value>
+  </data>
+  <data name="Unavailable" xml:space="preserve">
+    <value>Otillgänglig</value>
+  </data>
+  <data name="View memberships and purchases" xml:space="preserve">
+    <value>Visa medlemskap och köp</value>
+  </data>
+  <data name="View order" xml:space="preserve">
+    <value>Visa order</value>
+  </data>
+
+</root>
