@@ -734,7 +734,7 @@ public class VirtualPaymentReconciliationTests
         Assert.IsFalse(service.VerifyEcho(PushTimestamp, PushNonce, new string('0', 40)));
         Assert.IsFalse(service.VerifyEcho(PushTimestamp, PushNonce, "not-hex"));
         var missing = Settings(new VirtualPaymentSettings());
-        Assert.IsFalse(new VirtualPaymentNotificationService(_db, _service, missing, NullLogger<VirtualPaymentNotificationService>.Instance).IsConfigured);
+        Assert.IsFalse(new VirtualPaymentNotificationService(_db, _service, missing, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db)).IsConfigured);
     }
 
     [TestMethod]
@@ -776,7 +776,201 @@ public class VirtualPaymentReconciliationTests
         Assert.AreEqual(1, await _db.Changes.CountAsync());
     }
 
-    private VirtualPaymentNotificationService CreateNotifications() => new(_db, _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance);
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task CompletedRefundPushCommitsOnceWithoutSalesSessionOrEnvironmentField(bool xml)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        var (body, signature) = EncryptNotification(RefundPayload(), xml);
+        var service = CreateNotifications();
+        for (var i = 0; i < 3; i++)
+            Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await service.HandleAsync(body, PushTimestamp, PushNonce, signature));
+        var order = await _db.PaymentOrders.AsNoTracking().SingleAsync();
+        var membership = await _db.VipMemberships.AsNoTracking().SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Refunded, order.Status);
+        Assert.AreEqual(membership.StartTime, membership.EndTime);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.IsTrue((await _db.UserClaimedCoupons.AsNoTracking().SingleAsync()).IsUsed);
+        Assert.AreEqual(_order.UserId, (await _db.Coupons.AsNoTracking().SingleAsync()).UsedByUserId);
+        Assert.AreEqual(1, _query.Calls); // No broad query state can substitute for refund proof.
+        Assert.IsNull(_db.Database.CurrentTransaction);
+        var (paidBody, paidSignature) = EncryptNotification(NotificationPayload(), xml);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await service.HandleAsync(paidBody, PushTimestamp, PushNonce, paidSignature));
+        Assert.AreEqual(membership.EndTime, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+    }
+
+    [TestMethod]
+    [DataRow("openid")]
+    [DataRow("order")]
+    [DataRow("platform-order")]
+    [DataRow("refund-id")]
+    [DataRow("missing-result")]
+    [DataRow("failed")]
+    [DataRow("amount-zero")]
+    [DataRow("amount-over")]
+    [DataRow("amount-string")]
+    [DataRow("start-time")]
+    [DataRow("finish-time")]
+    [DataRow("missing-finish")]
+    [DataRow("environment")]
+    [DataRow("environment-string")]
+    [DataRow("subscription")]
+    [DataRow("team")]
+    [DataRow("signature")]
+    [DataRow("application")]
+    public async Task UntrustedOrUnboundRefundNeverRevokesMembership(string fault)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        var end = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        var payload = RefundPayload();
+        if (fault == "openid") payload["OpenId"] = "other-buyer";
+        if (fault == "order") payload["MchOrderId"] = "other-order";
+        if (fault == "platform-order") payload["WxOrderId"] = "other-platform-order";
+        if (fault == "refund-id") payload["WxRefundId"] = "";
+        if (fault == "missing-result") payload.Remove("RetCode");
+        if (fault == "failed") payload["RetCode"] = 1;
+        if (fault == "amount-zero") payload["RefundFee"] = 0;
+        if (fault == "amount-over") payload["RefundFee"] = 6801;
+        if (fault == "amount-string") payload["RefundFee"] = "6800";
+        if (fault == "start-time") payload["RefundStartTimestamp"] = 0;
+        if (fault == "finish-time") payload["RefundSuccTimestamp"] = 1794236000;
+        if (fault == "missing-finish") payload.Remove("RefundSuccTimestamp");
+        if (fault == "environment") payload["Env"] = 0;
+        if (fault == "environment-string") payload["Env"] = "1";
+        if (fault == "subscription") payload["Event"] = "xpay_subscribe_ios_refund_query_notify";
+        if (fault == "team") payload["TeamInfo"] = new System.Text.Json.Nodes.JsonObject();
+        var (body, signature) = EncryptNotification(payload, false, fault == "application" ? "other-app" : "test-app");
+        if (fault == "signature") signature = new string('0', 40);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(end, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("pending")]
+    [DataRow("snapshot")]
+    [DataRow("payment-proof")]
+    [DataRow("ordinary")]
+    public async Task RefundRequiresOriginalVirtualPaymentBeforeAcknowledgement(string fault)
+    {
+        if (fault != "pending") await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        if (fault == "snapshot") await _db.VirtualPaymentSnapshots.ExecuteDeleteAsync();
+        if (fault == "payment-proof") await _db.PaymentLogs.Where(l => l.EventType == "VirtualPaymentConfirmed").ExecuteDeleteAsync();
+        if (fault == "ordinary") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Channel, PaymentChannel.WeChatJsApi));
+        var count = await _db.PaymentLogs.CountAsync();
+        var (body, signature) = EncryptNotification(RefundPayload(), true);
+        Assert.AreEqual(fault == "ordinary" ? VirtualPaymentNotificationResult.Rejected : VirtualPaymentNotificationResult.Retry,
+            await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(count, await _db.PaymentLogs.CountAsync());
+        Assert.AreNotEqual(PaymentOrderStatus.Refunded, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    [DataRow("partial")]
+    [DataRow("edited-membership")]
+    [DataRow("missing-receipt")]
+    public async Task RefundAcknowledgesDurableReviewWithoutGuessingRights(string fault)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        if (fault == "edited-membership")
+            await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.EndTime, DateTime.UtcNow.AddYears(1)));
+        if (fault == "missing-receipt") await _db.PaymentLogs.Where(l => l.EventType == "StatusChanged").ExecuteDeleteAsync();
+        var end = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        var payload = RefundPayload();
+        if (fault == "partial") payload["RefundFee"] = 100;
+        var (body, signature) = EncryptNotification(payload, false);
+        for (var i = 0; i < 2; i++)
+            Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(end, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+        Assert.AreEqual(fault == "partial" ? PaymentOrderStatus.Paid : PaymentOrderStatus.Refunded,
+            (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReview"));
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+        Assert.IsTrue((await _db.UserClaimedCoupons.AsNoTracking().SingleAsync()).IsUsed);
+    }
+
+    [TestMethod]
+    public async Task RefundAuditFailureRollsBackBeforeRetryAndHttpAcknowledgement()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        var end = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER reject_refund_push BEFORE INSERT ON PaymentLogs BEGIN SELECT RAISE(ABORT, 'Synthetic audit failure'); END;");
+        var (body, signature) = EncryptNotification(RefundPayload(), false);
+        var service = CreateNotifications();
+        var controller = new Controllers.MiniProgramApi.VirtualPaymentNotificationController(service);
+        var context = new DefaultHttpContext();
+        controller.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext { HttpContext = context };
+        context.Request.Body = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(body));
+        var result = await controller.Notify(PushTimestamp, PushNonce, signature);
+        Assert.AreEqual(503, ((Microsoft.AspNetCore.Mvc.StatusCodeResult)result).StatusCode);
+        _db.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(end, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER reject_refund_push;");
+        context.Request.Body = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(body));
+        result = await controller.Notify(PushTimestamp, PushNonce, signature);
+        Assert.AreEqual("success", ((Microsoft.AspNetCore.Mvc.ContentResult)result).Content);
+        Assert.AreEqual(PaymentOrderStatus.Refunded, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    public async Task RefundAcceptsInstalledSdkEnvelopeAndIgnoresCurrentCatalogAndEnvironment()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        // Original purchase was sandbox. Current config/catalog must not reinterpret it.
+        var savedSettings = _recovery.Value.WeChat.VirtualPayment;
+        _recovery = Settings(new VirtualPaymentSettings
+        {
+            OfferId = savedSettings.OfferId, Environment = 0, AppKey = savedSettings.AppKey, SandboxAppKey = savedSettings.SandboxAppKey,
+            CallbackToken = savedSettings.CallbackToken, CallbackEncodingAesKey = savedSettings.CallbackEncodingAesKey
+        });
+        using var client = new SKIT.FlurlHttpClient.Wechat.Api.WechatApiClient(new SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientOptions
+        { AppId = "test-app", PushToken = "syntheticPushToken", PushEncodingAESKey = NotificationAesKey });
+        var message = new SKIT.FlurlHttpClient.Wechat.Api.Events.XPayRefundNotifyEvent
+        {
+            MessageType = "event", Event = "xpay_refund_notify", OpenId = "saved-openid", MerchantOrderId = _order.OutTradeNo,
+            WechatpayTransactionId = "platform-order", WechatpayRefundId = "platform-refund", MerchantRefundId = "merchant-refund",
+            RefundFee = 6800, ReturnCode = 0, StartTimestamp = 1794236400, SuccessTimestamp = 1794236410
+        };
+        var body = SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientEventExtensions.SerializeEventToJson(client, message);
+        using var json = System.Text.Json.JsonDocument.Parse(body);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body,
+            json.RootElement.GetProperty("TimeStamp").ToString(), json.RootElement.GetProperty("Nonce").GetString(),
+            json.RootElement.GetProperty("MsgSignature").GetString()));
+        Assert.AreEqual(PaymentOrderStatus.Refunded, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    public async Task RefundCannotRunInCallersTransactionOrChangePreviouslyAcknowledgedRefund()
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        var payload = RefundPayload();
+        var (body, signature) = EncryptNotification(payload, false);
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+            Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        payload["RefundFee"] = 1;
+        (body, signature) = EncryptNotification(payload, false);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReview"));
+    }
+
+    private System.Text.Json.Nodes.JsonObject RefundPayload() => new()
+    {
+        ["ToUserName"] = "mini-program-original-id", ["FromUserName"] = "wechat-official-push-not-buyer",
+        ["CreateTime"] = 1794236400, ["MsgType"] = "event", ["Event"] = "xpay_refund_notify",
+        ["OpenId"] = "saved-openid", ["MchOrderId"] = _order.OutTradeNo, ["WxOrderId"] = "platform-order",
+        ["WxRefundId"] = "platform-refund", ["MchRefundId"] = "merchant-refund", ["RefundFee"] = 6800,
+        ["RetCode"] = 0, ["RefundStartTimestamp"] = 1794236400, ["RefundSuccTimestamp"] = 1794236410
+    };
+
+    private VirtualPaymentNotificationService CreateNotifications() => new(_db, _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db));
 
     private System.Text.Json.Nodes.JsonObject NotificationPayload() => new()
     {
