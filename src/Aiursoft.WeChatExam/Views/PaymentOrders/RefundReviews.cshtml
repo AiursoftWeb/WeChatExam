@@ -1,0 +1,108 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Authorization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@model Aiursoft.WeChatExam.Models.PaymentOrdersViewModels.RefundReviewsViewModel
+@{
+    var canManageMembers = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanManageVipMembers)).Succeeded;
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+    <h1 class="h3 mb-0">@Localizer["Refund reconciliation records"] <span class="badge bg-secondary">@Model.TotalCount</span></h1>
+    <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Payment orders"]</a>
+</div>
+<p class="text-muted">@Localizer["Check the order and existing memberships before changing rights after a refund."]</p>
+<p class="text-muted">@Localizer["These records remain after manual changes. Viewing this page does not change memberships or coupons."]</p>
+@if (Model.OrderIdFilter.HasValue)
+{
+    <a asp-action="RefundReviews" class="btn btn-outline-secondary mb-3">@Localizer["Show all refund reconciliation records"]</a>
+}
+@if (Model.Reviews.Count == 0)
+{
+    <div class="card"><div class="card-body text-center py-5">@Localizer["No refund reconciliation records on this page."]</div></div>
+}
+@foreach (var item in Model.Reviews)
+{
+    <article class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+                <div>
+                    <h2 class="h4 mb-1">@(item.Order.VipProduct?.Name ?? item.Order.Description)</h2>
+                    <span class="text-muted">@(item.Order.User?.DisplayName ?? item.Order.UserId)</span>
+                </div>
+                <span class="badge bg-warning text-dark">@Localizer["Membership verification"]</span>
+            </div>
+            <p class="mb-3">
+                @switch (item.Reason)
+                {
+                    case "partial_or_adjusted_refund":
+                        @Localizer["The refund amount differs from the order payment. Check the platform record before changing any membership."]
+                        break;
+                    case "membership_changed_or_missing":
+                        @Localizer["The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships."]
+                        break;
+                    case "entitlement_evidence_missing_or_invalid":
+                        @Localizer["The original membership grant could not be verified. Check the purchase history before removing any rights."]
+                        break;
+                    case "previous_entitlement_purchase_unavailable":
+                        @Localizer["An earlier purchase is no longer paid. Restoring it automatically could give back refunded rights."]
+                        break;
+                    case "payment_not_locally_settled":
+                        @Localizer["This order was not locally confirmed as paid. Check its platform payment and refund before changing membership."]
+                        break;
+                    case "original_payment_evidence_missing":
+                        @Localizer["The original platform payment confirmation is missing. Verify the transaction before changing membership."]
+                        break;
+                    default:
+                        @Localizer["Ask technical support to verify this record. Do not change membership based on incomplete details."]
+                        break;
+                }
+            </p>
+            <dl class="row mb-3">
+                <dt class="col-sm-4">@Localizer["Order number"]</dt>
+                <dd class="col-sm-8 text-break">@item.Order.OutTradeNo</dd>
+                <dt class="col-sm-4">@Localizer["Refund amount"]</dt>
+                <dd class="col-sm-8">
+                    @if (item.AmountInFen.HasValue)
+                    {
+                        <span>¥@((item.AmountInFen.Value / 100m).ToString("F2"))</span>
+                    }
+                    else
+                    {
+                        @Localizer["Unavailable"]
+                    }
+                </dd>
+                <dt class="col-sm-4">@Localizer["Recorded at"]</dt>
+                <dd class="col-sm-8"><label data-utc-time="@item.RecordedAt.ToHtmlDateTime()"></label></dd>
+                <dt class="col-sm-4">@Localizer["Platform refund number"]</dt>
+                <dd class="col-sm-8 text-break">@(item.PlatformRefundId ?? "—")</dd>
+            </dl>
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-action="Details" asp-route-id="@item.Order.Id" class="btn btn-outline-primary">@Localizer["View order"]</a>
+                <a asp-action="UserPayments" asp-route-userId="@item.Order.UserId" class="btn btn-outline-secondary">@Localizer["View memberships and purchases"]</a>
+                @if (canManageMembers)
+                {
+                    <a asp-controller="VipMembers" asp-action="Index" asp-route-userId="@item.Order.UserId" class="btn btn-outline-secondary">@Localizer["Manage memberships"]</a>
+                }
+            </div>
+        </div>
+    </article>
+}
+@if (Model.TotalCount > Model.PageSize)
+{
+    <nav class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3" aria-label="@Localizer["Refund reconciliation pages"]">
+        <div>
+            @if (Model.CurrentPage > 1)
+            {
+                <a asp-action="RefundReviews" asp-route-orderId="@Model.OrderIdFilter" asp-route-page="@(Model.CurrentPage - 1)" class="btn btn-outline-secondary">@Localizer["Previous"]</a>
+            }
+        </div>
+        <span>@string.Format(@Localizer["Page {0}"].Value, Model.CurrentPage)</span>
+        <div>
+            @if ((long)Model.CurrentPage * Model.PageSize < Model.TotalCount)
+            {
+                <a asp-action="RefundReviews" asp-route-orderId="@Model.OrderIdFilter" asp-route-page="@(Model.CurrentPage + 1)" class="btn btn-outline-secondary">@Localizer["Next"]</a>
+            }
+        </div>
+    </nav>
+}

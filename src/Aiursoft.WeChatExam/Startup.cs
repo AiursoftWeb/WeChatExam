@@ -80,6 +80,8 @@ public class Startup : IWebStartup
         services.AddScoped<IFeedbackService, FeedbackService>();
         services.AddScoped<IVipProductService, VipProductService>();
         services.AddScoped<ICouponService, CouponService>();
+        // Reading payment history must also work without the legacy gateway.
+        services.AddScoped<IPaymentOrderService, PaymentOrderService>();
         services.AddScoped<IPaperAccessService, PaperAccessService>();
         services.AddScoped<ContentCheckService>();
         services.AddScoped<KnowledgeExerciseValidation>();
@@ -148,7 +150,6 @@ public class Startup : IWebStartup
             });
 
             services.AddScoped<IWeChatPayService, WeChatPayService>();
-            services.AddScoped<IPaymentOrderService, PaymentOrderService>();
         }
 
         // Add Razor Pages and MVC for admin web interface
