@@ -56,7 +56,7 @@ public class VirtualPaymentRefundService(WeChatExamDbContext db) : IScopedDepend
         order.Status = PaymentOrderStatus.Refunded;
         var grants = await db.PaymentLogs.AsNoTracking().Where(l => l.PaymentOrderId == order.Id &&
             l.EventType == "StatusChanged").Select(l => l.RawData).ToListAsync();
-        var receipt = grants.Count == 1 ? ReadReceipt(grants[0]) : null;
+        var receipt = grants.Count == 1 ? VirtualPaymentEntitlementReceipt.ReadGrant(grants[0]) : null;
         if (receipt == null || receipt.Version != 1 || receipt.UserId != order.UserId ||
             receipt.VipProductId != order.VipProductId || receipt.MembershipId == Guid.Empty ||
             receipt.After.LastPaymentOrderId != order.Id || receipt.After.EndTime <= receipt.After.StartTime ||
@@ -101,28 +101,6 @@ public class VirtualPaymentRefundService(WeChatExamDbContext db) : IScopedDepend
         {
             using var json = JsonDocument.Parse(raw ?? "");
             return json.RootElement.GetProperty("confirmation").Deserialize<VirtualPaymentRefundConfirmation>();
-        }
-        catch (Exception ex) when (ex is JsonException or KeyNotFoundException or InvalidOperationException) { return null; }
-    }
-
-    private static VirtualPaymentEntitlementReceipt? ReadReceipt(string? raw)
-    {
-        try
-        {
-            using var json = JsonDocument.Parse(raw ?? "");
-            if (json.RootElement.GetProperty("newStatus").GetString() != "Paid") return null;
-            var entitlement = json.RootElement.GetProperty("entitlement");
-            // An omitted Before is NOT evidence that no membership existed.
-            // Require the original schema, including explicit nulls, before restoring it.
-            var before = entitlement.GetProperty("Before");
-            var after = entitlement.GetProperty("After");
-            if (before.ValueKind is not (JsonValueKind.Object or JsonValueKind.Null)) return null;
-            foreach (var name in new[] { "StartTime", "EndTime", "LastPaymentOrderId" })
-            {
-                _ = after.GetProperty(name);
-                if (before.ValueKind == JsonValueKind.Object) _ = before.GetProperty(name);
-            }
-            return entitlement.Deserialize<VirtualPaymentEntitlementReceipt>();
         }
         catch (Exception ex) when (ex is JsonException or KeyNotFoundException or InvalidOperationException) { return null; }
     }

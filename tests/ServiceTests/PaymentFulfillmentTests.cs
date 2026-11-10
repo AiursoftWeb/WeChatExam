@@ -1,9 +1,11 @@
 using System.Text.Json;
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 
 namespace Aiursoft.WeChatExam.Tests.ServiceTests;
 
@@ -506,6 +508,218 @@ public class PaymentFulfillmentTests
     }
 
     private static VirtualPaymentRefundConfirmation Refund(PaymentOrder order) => new(order.Id, "original-platform-order", "platform-refund", 6800);
+
+    [TestMethod]
+    public async Task IosRefundAdviceUsesCommittedDeliveryFactsWithoutExposingBuyerOrClaimingUsage()
+    {
+        var order = await CreateAdvisedOrderAsync();
+        var before = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        var service = CreateAdviceService();
+        var advice = await service.GetAdviceAsync(Enquiry(order));
+        Assert.IsNotNull(advice); Assert.AreEqual(1, advice.ResultCode);
+        Assert.Contains("delivered", advice.ResultInfo);
+        using var json = JsonDocument.Parse(advice.Evidence);
+        Assert.AreEqual("membership_access_granted", json.RootElement.GetProperty("kind").GetString());
+        Assert.AreEqual(order.OutTradeNo, json.RootElement.GetProperty("merchantOrder").GetString());
+        Assert.AreEqual("original-platform-order", json.RootElement.GetProperty("platformOrder").GetString());
+        Assert.AreEqual("original-product", json.RootElement.GetProperty("product").GetString());
+        Assert.AreEqual(1, json.RootElement.GetProperty("quantity").GetInt32());
+        Assert.AreEqual(before, json.RootElement.GetProperty("accessEndsAt").GetDateTime().ToUniversalTime());
+        Assert.DoesNotContain(order.UserId, advice.Evidence);
+        Assert.DoesNotContain("saved-private-openid", advice.Evidence);
+        Assert.DoesNotContain("CONFIRMED130", advice.Evidence);
+        Assert.DoesNotContain("session", advice.Evidence);
+        Assert.DoesNotContain("consumed", advice.Evidence);
+        Assert.AreEqual(advice, await service.GetAdviceAsync(Enquiry(order)));
+        Assert.AreEqual(0, _db.ChangeTracker.Entries().Count());
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.IsTrue((await _db.UserClaimedCoupons.AsNoTracking().SingleAsync()).IsUsed);
+        Assert.AreEqual(before, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    [DataRow("empty-order")]
+    [DataRow("other-order")]
+    [DataRow("platform-order")]
+    [DataRow("product")]
+    [DataRow("quantity")]
+    [DataRow("not-provided")]
+    [DataRow("providing")]
+    public async Task IosRefundAdviceCannotBindToAnotherOrUndeliveredPurchase(string fault)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        var request = Enquiry(order);
+        if (fault == "empty-order") request = request with { PaymentOrderId = Guid.Empty };
+        if (fault == "other-order") request = request with { PaymentOrderId = Guid.NewGuid() };
+        if (fault == "platform-order") request = request with { PlatformOrderId = "other-payment" };
+        if (fault == "product") request = request with { ProductId = "other-product" };
+        if (fault == "quantity") request = request with { Quantity = 2 };
+        if (fault == "not-provided") request = request with { ProvidedStatus = 0 };
+        if (fault == "providing") request = request with { ProvidedStatus = 2 };
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(request));
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(PaymentOrderStatus.Pending)]
+    [DataRow(PaymentOrderStatus.Failed)]
+    [DataRow(PaymentOrderStatus.Closed)]
+    [DataRow(PaymentOrderStatus.Refunded)]
+    public async Task IosRefundAdviceDoesNotRefuseOnUnpaidClosedOrRefundedOrders(PaymentOrderStatus status)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, status));
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        Assert.AreEqual(status, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    [DataRow("snapshot")]
+    [DataRow("application")]
+    [DataRow("payment-proof")]
+    [DataRow("duplicate-payment")]
+    [DataRow("grant-proof")]
+    [DataRow("malformed-grant")]
+    [DataRow("wrong-owner")]
+    [DataRow("unknown-version")]
+    [DataRow("missing-before")]
+    public async Task IosRefundAdviceLeavesIncompleteOrContradictoryEvidenceUndecided(string fault)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        if (fault == "snapshot") await _db.VirtualPaymentSnapshots.ExecuteDeleteAsync();
+        if (fault == "application") await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(v => v.AppId, "other-app"));
+        if (fault == "payment-proof") await _db.PaymentLogs.Where(l => l.EventType == "VirtualPaymentConfirmed").ExecuteDeleteAsync();
+        if (fault == "duplicate-payment")
+        {
+            var raw = (await _db.PaymentLogs.AsNoTracking().SingleAsync(l => l.EventType == "VirtualPaymentConfirmed")).RawData;
+            _db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "VirtualPaymentConfirmed", RawData = raw });
+            await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
+        }
+        if (fault == "grant-proof") await _db.PaymentLogs.Where(l => l.EventType == "StatusChanged").ExecuteDeleteAsync();
+        if (fault is "malformed-grant" or "wrong-owner" or "unknown-version" or "missing-before")
+        {
+            var raw = (await _db.PaymentLogs.AsNoTracking().SingleAsync(l => l.EventType == "StatusChanged")).RawData!;
+            var node = System.Text.Json.Nodes.JsonNode.Parse(raw)!;
+            if (fault == "wrong-owner") node["entitlement"]!["UserId"] = "different-buyer";
+            if (fault == "unknown-version") node["entitlement"]!["Version"] = 99;
+            if (fault == "missing-before") node["entitlement"]!.AsObject().Remove("Before");
+            raw = fault == "malformed-grant" ? "not-json" : node.ToJsonString();
+            await _db.PaymentLogs.Where(l => l.EventType == "StatusChanged").ExecuteUpdateAsync(s => s.SetProperty(l => l.RawData, raw));
+        }
+        var count = await _db.PaymentLogs.CountAsync();
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        Assert.AreEqual(count, await _db.PaymentLogs.CountAsync());
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    [DataRow("gift")]
+    [DataRow("later-purchase")]
+    [DataRow("missing")]
+    public async Task IosRefundAdviceDoesNotAttributeChangedMembershipToOriginalPurchase(string fault)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        if (fault == "gift") await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.EndTime, DateTime.UtcNow.AddYears(2)));
+        if (fault == "later-purchase") await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.LastPaymentOrderId, (Guid?)null));
+        if (fault == "missing") await _db.VipMemberships.ExecuteDeleteAsync();
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task IosRefundAdviceRequiresCurrentlyActiveAccessEvenWhenReceiptMatches(bool future)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        var start = DateTime.UtcNow.AddDays(future ? 1 : -2);
+        var end = start.AddDays(1);
+        await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.StartTime, start).SetProperty(v => v.EndTime, end));
+        var log = await _db.PaymentLogs.AsNoTracking().SingleAsync(l => l.EventType == "StatusChanged");
+        var node = System.Text.Json.Nodes.JsonNode.Parse(log.RawData!)!;
+        node["entitlement"]!["After"]!["StartTime"] = start;
+        node["entitlement"]!["After"]!["EndTime"] = end;
+        var raw = node.ToJsonString();
+        await _db.PaymentLogs.Where(l => l.Id == log.Id).ExecuteUpdateAsync(s => s.SetProperty(l => l.RawData, raw));
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+    }
+
+    [TestMethod]
+    public async Task IosRefundAdviceIgnoresNewCatalogButNotUncommittedOrOrdinaryPayments()
+    {
+        var order = await CreateAdvisedOrderAsync();
+        await _db.VipProducts.ExecuteUpdateAsync(s => s.SetProperty(v => v.DurationDays, 999).SetProperty(v => v.PriceInFen, 1));
+        var service = CreateAdviceService(); // Sales, legacy WeChat and AppKeys are all absent/disabled.
+        Assert.IsNotNull(await service.GetAdviceAsync(Enquiry(order)));
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            Assert.IsNull(await service.GetAdviceAsync(Enquiry(order)));
+            Assert.AreSame(transaction, _db.Database.CurrentTransaction);
+        }
+        await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Channel, PaymentChannel.WeChatJsApi));
+        Assert.IsNull(await service.GetAdviceAsync(Enquiry(order)));
+    }
+
+    [TestMethod]
+    public async Task IosRefundAdviceCancellationDoesNotSettleAnOrderOrRefund()
+    {
+        var order = await CreateAdvisedOrderAsync();
+        using var cancellation = new CancellationTokenSource(); cancellation.Cancel();
+        await Assert.ThrowsAsync<OperationCanceledException>(() => CreateAdviceService().GetAdviceAsync(Enquiry(order), cancellation.Token));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(100, VirtualPaymentRefundOutcome.ReviewRequired)]
+    [DataRow(6800, VirtualPaymentRefundOutcome.Completed)]
+    public async Task IosRefundAdviceCannotOverrideACompletedOrPartiallyRefundedPurchase(int amount, VirtualPaymentRefundOutcome expected)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        Assert.IsNotNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            var current = await _db.PaymentOrders.SingleAsync();
+            Assert.AreEqual(expected, await new VirtualPaymentRefundService(_db).CompleteAsync(current,
+                new VirtualPaymentRefundConfirmation(order.Id, "original-platform-order", "actual-refund", amount)));
+            await transaction.CommitAsync();
+        }
+        _db.ChangeTracker.Clear();
+        // A partial refund keeps Paid and active access; its review record must
+        // still prevent an automatic recommendation to refuse the refund.
+        Assert.IsNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.IsTrue((await _db.UserClaimedCoupons.AsNoTracking().SingleAsync()).IsUsed);
+        Assert.AreEqual(3, await _db.PaymentLogs.CountAsync());
+    }
+
+    private VirtualPaymentIosRefundAdviceService CreateAdviceService() => new(_db,
+        Options.Create(new AppSettings
+        {
+            AuthProvider = "Local", Local = new LocalSettings(),
+            OIDC = new OidcSettings { Authority = "", ClientId = "", ClientSecret = "", RolePropertyName = "",
+                UserIdentityPropertyName = "", UserDisplayNamePropertyName = "", UsernamePropertyName = "", EmailPropertyName = "" },
+            WeChatEnabled = false, WeChat = new WeChatSettings
+            { AppId = "original-app", VirtualPayment = new() { OfferId = "original-offer" } }
+        }));
+
+    private static VirtualPaymentIosRefundEnquiry Enquiry(PaymentOrder order) =>
+        new(order.Id, "original-platform-order", "original-product", 1, 1);
+
+    private async Task<PaymentOrder> CreateAdvisedOrderAsync()
+    {
+        var order = await CreateRefundOrderAsync();
+        _db.VirtualPaymentSnapshots.Add(new VirtualPaymentSnapshot
+        {
+            PaymentOrderId = order.Id, AppId = "original-app", OpenId = "saved-private-openid",
+            SignData = JsonSerializer.Serialize(new { offerId = "original-offer", buyQuantity = 1, env = 1, currencyType = "CNY",
+                productId = "original-product", goodsPrice = 19800, activitySellingPrice = 6800, outTradeNo = order.OutTradeNo, attach = order.Id.ToString("N") })
+        });
+        await _db.SaveChangesAsync(); _db.ChangeTracker.Clear(); return order;
+    }
 
     private async Task<PaymentOrder> CreateRefundOrderAsync()
     {
