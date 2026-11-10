@@ -44,6 +44,29 @@ public class PaymentOrdersController(
         });
     }
 
+    // GET: PaymentOrders/RefundReviews
+    [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
+    public async Task<IActionResult> RefundReviews(Guid? orderId, int page = 1)
+    {
+        const int pageSize = 20;
+        if (!ModelState.IsValid || page < 1 || page > int.MaxValue / pageSize) return BadRequest();
+        // Audit records are not a mutable task queue. A manual membership edit
+        // must never erase refund evidence or silently mark a review resolved.
+        var query = dbContext.PaymentLogs.AsNoTracking().Where(l => l.EventType == "VirtualPaymentRefundReview" &&
+            l.PaymentOrder != null && l.PaymentOrder.Channel == PaymentChannel.WeChatVirtual);
+        if (orderId.HasValue) query = query.Where(l => l.PaymentOrderId == orderId.Value);
+        var totalCount = await query.CountAsync();
+        var logs = await query.Include(l => l.PaymentOrder).ThenInclude(o => o!.User)
+            .Include(l => l.PaymentOrder).ThenInclude(o => o!.VipProduct)
+            .OrderByDescending(l => l.CreatedAt).ThenByDescending(l => l.Id)
+            .Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+        return this.StackView(new RefundReviewsViewModel
+        {
+            Reviews = logs.Select(RefundReviewItem.FromLog).ToList(), TotalCount = totalCount,
+            CurrentPage = page, PageSize = pageSize, OrderIdFilter = orderId
+        });
+    }
+
     // GET: PaymentOrders/Details/{id}
     [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
     public async Task<IActionResult> Details(Guid? id)

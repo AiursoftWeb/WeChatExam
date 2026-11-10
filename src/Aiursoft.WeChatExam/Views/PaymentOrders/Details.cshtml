@@ -5,6 +5,13 @@
 
 <h1 class="h3 mb-3">@Localizer["Payment Order Details"]</h1>
 
+@if (Model.Order.Channel == PaymentChannel.WeChatVirtual && Model.Order.PaymentLogs.Any(l => l.EventType == "VirtualPaymentRefundReview"))
+{
+    <a asp-action="RefundReviews" asp-route-orderId="@Model.Order.Id" class="btn btn-outline-warning mb-3">
+        <i class="align-middle me-1" data-lucide="clipboard-list"></i> @Localizer["View refund reconciliation records"]
+    </a>
+}
+
 <div class="row">
     <div class="col-lg-8">
         <div class="card mb-3">

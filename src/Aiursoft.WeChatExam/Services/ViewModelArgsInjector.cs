@@ -39,6 +39,7 @@ public class ViewModelArgsInjector(
     private void _useless_for_localizer()
     {
         // Titles, navbar strings.
+        _ = localizer["Refund reconciliation records"];
         _ = localizer["Edit Coupon Amount"];
         _ = localizer["Paper Publication"];
         _ = localizer["Total Category Management"];
