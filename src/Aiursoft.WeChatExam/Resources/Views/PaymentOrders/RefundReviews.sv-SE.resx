@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Återbetalningsförteckningar</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Granskning avslutad</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Visa alla återbetalningsavstämningsposter</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Beviset är ofullständigt eller stämmer inte. Denna post behöver fortfarande teknisk granskning; inga rättigheter eller kuponger har ändrats.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>Medlemskapet har ändrats eller kunde inte hittas. Automatisk borttagning av medlemskap stoppades för att skydda andra betalda eller gåvomedlemskap.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Återbetalningsbeloppet skiljer sig från orderns betalning. Kontrollera plattformens postering innan du ändrar någon medlemskap.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>Verifieringen kunde inte slutföras. Ordern är fortfarande reserverad. Försök igen senare.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>Den verifierade återbetalningen är genomförd. Kupongen för denna order förblir förbrukad; övriga medlemskap är oförändrade.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Dessa poster kvarstår efter manuella ändringar. Visningen av denna sida ändrar inte medlemskap eller kuponger.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Detta verifierar en befintlig återbetalning; den begär ingen återbetalning. Endast en verifierad fullständig återbetalning utan lokal utförande kan avräknas.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>Detta köp har inte bekräftats som betalat lokalt. Kontrollera betalningen och eventuell återbetalning på plattformen innan du ändrar medlemskapet.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>Detta köp återbetalades innan medlemskapet aktiverades. Andra betalda eller gåvade medlemskap påverkas inte.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Otillgänglig</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Verifiera återbetalning och stäng granskning</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Visa medlemskap och köp</value>

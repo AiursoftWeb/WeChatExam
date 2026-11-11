@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Teruggaafafletteringen</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Review gesloten</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Toon alle terugbetalingsafrekeningsrecords</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Het bewijs is onvolledig of komt niet overeen. Dit record vereist nog technische review; er zijn geen rechten of coupons gewijzigd.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>De lidmaatschap is gewijzigd of kon niet worden gevonden. Automatische verwijdering van het lidmaatschap is gestopt om andere betaalde of cadeau-lidmaatschappen te beschermen.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Het terugbetalingsbedrag verschilt van de bestellingsbetaling. Controleer het platformrecord voordat u enige lidmaatschap wijzigt.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>De verificatie kon niet worden voltooid. De bestelling blijft gereserveerd. Probeer het later opnieuw.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>De geverifieerde terugbetaling is afgerond. De coupon van deze bestelling blijft verbruikt; andere lidmaatschappen zijn ongewijzigd.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Deze records blijven behouden na handmatige wijzigingen. Het bekijken van deze pagina wijzigt geen lidmaatschappen of coupons.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Dit controleert een bestaande terugbetaling; het vraagt geen terugbetaling aan. Alleen een geverifieerde volledige terugbetaling zonder lokale vervulling kan worden afgerond.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>Deze bestelling is lokaal niet als betaald bevestigd. Controleer de platformbetaling en het retourbedrag voordat u het lidmaatschap wijzigt.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>Deze bestelling is teruggestort vóór activering van het lidmaatschap. Andere betaalde of geschenkte lidmaatschappen zijn ongewijzigd.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Niet beschikbaar</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Verifieer terugbetaling en sluit review af</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Weergeven lidmaatschappen en aankopen</value>

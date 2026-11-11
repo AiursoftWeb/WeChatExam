@@ -17,7 +17,7 @@
     <PackageReference Include="Aiursoft.DbTools.Switchable" Version="10.0.31" />
     <PackageReference Include="Aiursoft.GptClient" Version="10.0.29" />
     <PackageReference Include="Aiursoft.Scanner" Version="10.0.16" />
-    <PackageReference Include="Aiursoft.UiStack" Version="10.0.40" />
+    <PackageReference Include="Aiursoft.UiStack" Version="10.0.41" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.15" />
@@ -27,8 +27,8 @@
     </PackageReference>
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Api" Version="3.17.0" />
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.TenpayV3" Version="3.19.0" />
-    <PackageReference Include="SkiaSharp" Version="4.155.0" />
-    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.155.0" />
+    <PackageReference Include="SkiaSharp" Version="4.156.0" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.156.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="11.0.0" />
   </ItemGroup>
   <ItemGroup>

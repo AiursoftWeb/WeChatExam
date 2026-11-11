@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>Vui lòng yêu cầu quản trị viên ánh xạ sản phẩm VIP này đến một sản phẩm ảo đã được phát hành.</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>Yêu cầu quản trị viên triển khai cập nhật cấu hình máy chủ. Không dán khóa vào chat hoặc trang này.</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>Quay lại đơn hàng</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Kiểm tra lại</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>Kiểm tra khóa học hoặc tổ chức, giá và thời hạn thành viên của sản phẩm.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Kiểm tra lúc</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>Chọn môi trường thử nghiệm (1) hoặc môi trường thực (0) một cách rõ ràng.</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>Cấu hình khóa cho môi trường đã chọn. Khóa từ môi trường khác sẽ không được sử dụng.</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>Cấu hình Token thông điệp và EncodingAESKey hợp lệ trên máy chủ.</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Cấu hình OfferId từ cài đặt thanh toán ảo của mini program này.</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>Cấu hình AppID đích và AppSecret tương ứng trên máy chủ.</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>Đã cấu hình cục bộ</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>Xác nhận ánh xạ mã tham chiếu đơn hàng hoàn tiền iOS và phản hồi mã hóa với nền tảng trước khi bật tư vấn tự động.</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>Thông tin xác thực không bao giờ được hiển thị. Các kiểm tra về sự tồn tại và định dạng không thể xác minh quyền sở hữu, tính hợp lệ hay sự phê duyệt của nền tảng.</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Sửa sản phẩm VIP</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>Bật quyền truy cập WeChat trong cấu hình máy chủ.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>Sản phẩm miễn phí: không cần thanh toán qua nền tảng.</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>Môi trường không hợp lệ</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Chức năng tư vấn hoàn tiền iOS đang bị vô hiệu hóa, chờ xác minh từ nền tảng.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Chức năng tư vấn hoàn tiền iOS đã được bật. Trang cục bộ này không thể xác nhận rằng giao thức nền tảng của nó đã được kiểm chứng.</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>Môi trường thực</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>Kiểm tra cục bộ đã đạt</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>Ánh xạ cục bộ và giá khớp; việc công bố trên nền tảng vẫn cần xác minh.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>các ánh xạ không khớp với sản phẩm VIP đang bật. Hãy yêu cầu quản trị viên xem xét chúng; không được xóa các sản phẩm hoặc đơn hàng lịch sử.</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>Thông tin xác thực thông báo</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>Truy cập ứng dụng mini</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>Định danh ứng dụng nhỏ</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>Nhiều ánh xạ đang chia sẻ sản phẩm nền tảng này. Hãy xác nhận quyền lợi dự định trước khi kiểm thử.</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>Cần cấu hình</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>Bán hàng ảo mới đã bị tắt</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>Bán hàng ảo mới đã được bật</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>Không tìm thấy sản phẩm VIP khóa học hoặc tổ chức nào đang được kích hoạt.</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>Môi trường thanh toán</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>Khóa ký thanh toán</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>Sản phẩm khả dụng trong mini program</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Môi trường thử nghiệm</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>Cấu hình máy chủ</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>Cấu hình cần kiểm tra</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>Vẫn còn yêu cầu trước khi giao hàng</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>Kiểm tra thanh toán, phiếu giảm giá, hủy và khôi phục trên Android và iPhone; xác minh hoàn tiền của nền tảng và việc gỡ bỏ quyền thành viên.</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>Giá gốc đã ánh xạ khác với giá VIP. Vui lòng xác nhận cả hai giá trước khi cập nhật ánh xạ.</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>Trang này chỉ kiểm tra cấu hình cục bộ. Nó không liên hệ với WeChat, thay đổi cài đặt hoặc thực hiện thanh toán. Việc vượt qua các kiểm tra này không có nghĩa là sẵn sàng bán hàng.</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>Sử dụng bản build thử nghiệm thanh toán ảo được chỉ định rõ ràng. Bản build mini program mặc định vẫn sử dụng thanh toán thông thường.</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>Kiểm tra phê duyệt nền tảng, AppID, OfferId và các sản phẩm đã phát hành trong bảng điều khiển WeChat.</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>Xác minh URL tin nhắn HTTPS công khai và mã hóa callback với WeChat.</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>Chỉ xem</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>Mã ID sản phẩm VIP</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>Tài khoản thanh toán ảo</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Cấu hình thanh toán ảo</value>
+  </data>
+
+</root>

@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>退款對賬記錄</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>審計已關閉</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>顯示所有退款核對記錄</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>證據不完整或不相符。此記錄仍需技術審查；權限及優惠券均未作更改。</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>會員資格已被更改或找不到。為保護其他已付費或贈送的會員資格，已停止自動移除會員資格。</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>退款金額與訂單付款金額不符。在更改任何會員身份之前，請先查看平台記錄。</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>無法完成驗證。該訂單仍保留。請稍後再試。</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>已核實的退款已完成結算。此訂單的優惠券維持已使用狀態；其他會員資格不受影響。</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>手動更改後，這些記錄仍會保留。檢視此頁面不會更改會員資格或優惠券。</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>此操作只核對現有退款，並非申請退款。只有已驗證的全額退款且無本地履行，方可結算。</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>此訂單未在本機確認已付款。請先檢查其平台付款及退款記錄，再更改會員狀態。</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>此訂單已在會員權益啟用前退款。其他已付費或獲贈送的會員權益不受影響。</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>無法取得</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>核實退款並關閉審閱</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>查看會員及購買記錄</value>

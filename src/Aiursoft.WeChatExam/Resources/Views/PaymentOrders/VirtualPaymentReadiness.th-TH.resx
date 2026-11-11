@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>ขอให้ผู้ดูแลระบบทำการจับคู่ผลิตภัณฑ์ VIP นี้กับผลิตภัณฑ์เสมือนที่เผยแพร่แล้ว</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>แจ้งผู้ดูแลระบบการติดตั้งให้ตั้งค่าเซิร์ฟเวอร์ใหม่ ห้ามวางคีย์ไว้ในแชทหรือหน้าเพจนี้</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>กลับไปที่คำสั่งซื้อ</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>ตรวจสอบอีกครั้ง</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>ตรวจสอบคอร์สหรือสถาบัน ราคา และระยะเวลาความเป็นสมาชิกของผลิตภัณฑ์</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>ตรวจสอบเมื่อ</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>เลือกสภาพแวดล้อม sandbox (1) หรือ live (0) อย่างชัดเจน</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>กำหนดค่าคีย์สำหรับสภาพแวดล้อมที่เลือก คีย์จากสภาพแวดล้อมอื่นจะไม่ถูกใช้งาน</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>กำหนดค่า Token ของข้อความและ EncodingAESKey ที่ถูกต้องบนเซิร์ฟเวอร์</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>ตั้งค่า OfferId จากการตั้งค่าการชำระเงินเสมือนของมินิโปรแกรมนี้</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>กำหนดค่า AppID และ AppSecret ของแอปเป้าหมายบนเซิร์ฟเวอร์</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>ตั้งค่าแล้วในเครื่อง</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>ตรวจสอบการแมปหมายเลขอ้างอิงคำสั่งซื้อการคืนเงิน iOS และการตอบกลับแบบเข้ารหัสกับแพลตฟอร์มก่อนเปิดใช้งานการแนะนำอัตโนมัติ</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>ข้อมูลรับรองจะไม่ถูกแสดงเสมอ การตรวจสอบการมีอยู่และรูปแบบไม่สามารถยืนยันความเป็นเจ้าของ ความถูกต้อง หรือการอนุมัติจากแพลตฟอร์มได้</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>แก้ไขผลิตภัณฑ์ VIP</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>เปิดใช้งานการเข้าถึง WeChat ในค่าการตั้งค่าเซิร์ฟเวอร์</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>เฟน</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>สินค้าฟรี: ไม่จำเป็นต้องชำระเงินผ่านแพลตฟอร์ม</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>สภาพแวดล้อมไม่ถูกต้อง</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>คำแนะนำการคืนเงินสำหรับ iOS ปิดอยู่ระหว่างรอการตรวจสอบแพลตฟอร์ม</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>คำแนะนำการคืนเงิน iOS ถูกเปิดใช้งานแล้ว หน้าเว็บภายในนี้ไม่สามารถรับรองว่าโปรโตคอลของแพลตฟอร์มได้รับการตรวจสอบแล้ว</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>สภาพแวดล้อมจริง</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>การตรวจสอบในเครื่องผ่านแล้ว</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>การแมปและราคาตรงกันภายในระบบแล้ว แต่การเผยแพร่บนแพลตฟอร์มยังต้องตรวจสอบยืนยัน</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>แมปปิ้งที่ไม่ตรงกับผลิตภัณฑ์ VIP ที่เปิดใช้งานอยู่ ขอให้ผู้ดูแลระบบตรวจสอบ; ห้ามลบผลิตภัณฑ์หรือคำสั่งซื้อทางประวัติศาสตร์</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>ข้อมูลรับรองการยืนยันข้อความ</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>การเข้าถึงโปรแกรมย่อย</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>ตัวตนของมินิโปรแกรม</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>การแมปหลายรายการใช้ผลิตภัณฑ์แพลตฟอร์มนี้ร่วมกัน กรุณาตรวจสอบสิทธิ์ที่ระบุไว้ก่อนทำการทดสอบ</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>ต้องกำหนดค่า</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>การขายเสมือนใหม่ถูกปิดใช้งาน</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>เปิดใช้งานการขายเสมือนใหม่แล้ว</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>ไม่พบผลิตภัณฑ์คอร์สหรือผลิตภัณฑ์ VIP ของสถาบันที่เปิดใช้งาน</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>สภาพแวดล้อมการชำระเงิน</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>คีย์ลายเซ็นการชำระเงิน</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>สินค้าที่พร้อมใช้งานในมินิโปรแกรม</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>แซนด์บ็อกซ์</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>การตั้งค่าเซิร์ฟเวอร์</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>การตั้งค่าต้องการการตรวจสอบ</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>ยังจำเป็นต้องดำเนินการก่อนจัดส่ง</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>ทดสอบการชำระเงิน คูปอง การยกเลิกและการกู้คืนบน Android และ iPhone; ตรวจสอบการคืนเงินจากแพลตฟอร์มและการยกเลิกสมาชิก</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>ราคาเต็มที่จับคู่ไม่ตรงกับราคา VIP กรุณาตรวจสอบราคาทั้งสองก่อนอัปเดตการจับคู่</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>หน้านี้ตรวจสอบการกำหนดค่าภายในเท่านั้น ไม่ได้ติดต่อ WeChat เปลี่ยนการตั้งค่า หรือดำเนินการชำระเงิน การผ่านการตรวจสอบเหล่านี้ไม่ได้หมายความว่าพร้อมขายแล้ว</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>ใช้ชุดทดสอบที่ระบุอย่างชัดเจนว่าเป็นการชำระเงินเสมือน การสร้างแอปมินิโปรแกรมเริ่มต้นยังคงใช้การชำระเงินปกติ</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>ตรวจสอบการอนุมัติจากแพลตฟอร์ม AppID OfferId และผลิตภัณฑ์ที่เผยแพร่แล้วในคอนโซล WeChat</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>ตรวจสอบ URL ข้อความสาธารณะผ่าน HTTPS และ callback ที่เข้ารหัสกับ WeChat</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>ดูเท่านั้น</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>รหัสสินค้า VIP</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>บัญชีชำระเงินเสมือน</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>การตั้งค่าการชำระเงินแบบเสมือน</value>
+  </data>
+
+</root>

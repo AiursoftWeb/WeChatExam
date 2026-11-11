@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>管理者に、このVIP商品を公開済みの仮想商品にマッピングするよう依頼してください。</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>デプロイ管理者にサーバー設定の更新を依頼してください。チャットやこのページにキーを貼り付けたりしないでください。</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>注文に戻る</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>再確認する</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>商品のコースまたは機関、価格、メンバーシップ期間を確認してください。</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>確認日時</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>サンドボックス（1）または本番（0）を明示的に選択してください。</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>選択した環境用のキーを設定してください。別の環境のキーは使用されません。</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>サーバーにメッセージTokenと有効なEncodingAESKeyを設定してください。</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>このミニプログラムの仮想決済設定から OfferId を設定してください。</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>サーバー上で対象のAppIDとそのAppSecretを設定してください。</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>ローカル設定済み</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>iOSの返金注文参照マッピングと暗号化された応答をプラットフォームと確認してから、自動アドバイス機能を有効にしてください。</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>認証情報は表示されません。存在確認および形式チェックでは、所有権、有効性、プラットフォーム承認を検証できません。</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>VIP商品を編集</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>サーバー設定でWeChatアクセスを有効にしてください。</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>無料商品：プラットフォームの決済は不要です。</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>無効な環境</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOSの返金助言は、プラットフォームの検証を待って無効化されています。</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOSの返金アドバイスが有効になっています。このローカルページでは、プラットフォームプロトコルが検証済みであることを保証できません。</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>本番環境</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>ローカルチェック合格</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>ローカルマッピングと価格が一致していますが、プラットフォームでの公開は未確認です。</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>マッピングが有効なVIP製品と一致しません。管理者に確認を依頼してください。過去の製品や注文を削除しないでください。</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>メッセージ検証資格情報</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>ミニプログラムへのアクセス</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>ミニプログラムID</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>複数のマッピングが同じプラットフォーム製品を共有しています。テスト前に、意図された権限を確認してください。</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>設定が必要です</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>新規仮想販売無効</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>新規仮想販売が有効化されました</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>有効なコースまたは機関のVIP製品が見つかりませんでした。</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>決済環境</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>決済署名キー</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>ミニプログラムで利用可能な製品</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>サンドボックス</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>サーバー設定</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>設定に注意が必要です</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>配信前に引き続き必要</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>AndroidおよびiPhone上で支払い、クーポン、キャンセルと復旧をテストし、プラットフォームの返金とメンバーシップの解除を確認します。</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>マッピングされた通常価格がVIP価格と異なります。マッピングを更新する前に、両方の価格を確認してください。</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>このページはローカル設定のみを確認します。WeChatに接続したり、設定を変更したり、支払いを実行したりすることはありません。これらのチェックに合格しても、販売が準備完了したことを意味しません。</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>仮想決済用のテストビルドを明示的に使用してください。デフォルトのミニプログラムビルドは、通常の決済を使用しています。</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>WeChatコンソールで、プラットフォームの承認、AppID、OfferId、および公開済みの商品を確認してください。</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>WeChatでパブリックHTTPSメッセージURLおよび暗号化コールバックを検証してください。</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>閲覧のみ</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP製品ID</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>バーチャル決済アカウント</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>仮想決済の設定</value>
+  </data>
+
+</root>

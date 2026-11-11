@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Bản ghi đối soát hoàn tiền</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Đã đóng xem xét</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Hiển thị tất cả bản đối soát hoàn tiền</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Bằng chứng không đầy đủ hoặc không khớp. Hồ sơ này vẫn cần xem xét kỹ thuật; không có quyền hay phiếu giảm giá nào bị thay đổi.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>Quyền thành viên đã bị thay đổi hoặc không thể tìm thấy. Việc tự động xóa quyền thành viên đã bị dừng để bảo vệ các quyền thành viên trả phí hoặc được tặng khác.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Số tiền hoàn lại khác với thanh toán đơn hàng. Kiểm tra bản ghi nền tảng trước khi thay đổi bất kỳ quyền thành viên nào.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>Việc xác minh không thể hoàn tất. Đơn hàng vẫn đang được giữ. Vui lòng thử lại sau.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>Khoản hoàn tiền đã được xác minh và hoàn tất. Phiếu giảm giá của đơn hàng này vẫn được coi là đã sử dụng; các thành viên khác không bị thay đổi.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Các bản ghi này vẫn được giữ lại sau các thay đổi thủ công. Việc xem trang này không thay đổi quyền thành viên hoặc phiếu giảm giá.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Thao tác này kiểm tra một khoản hoàn tiền hiện có; không yêu cầu hoàn tiền. Chỉ khoản hoàn tiền đầy đủ đã được xác minh và không có việc thực hiện tại địa phương mới có thể được thanh toán.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>Đơn hàng này chưa được xác nhận đã thanh toán trên hệ thống cục bộ. Vui lòng kiểm tra thanh toán và hoàn tiền trên nền tảng trước khi thay đổi quyền thành viên.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>Đơn hàng này đã được hoàn tiền trước khi kích hoạt thành viên. Các thành viên trả phí hoặc được tặng khác không thay đổi.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Không khả dụng</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Xác minh hoàn tiền và đóng kiểm tra</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Xem thành viên và mua sắm</value>
