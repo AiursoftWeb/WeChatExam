@@ -48,6 +48,8 @@ public class VirtualPaymentGoodsSyncTests
         Assert.AreNotEqual(Guid.Empty, revision);
         await _db.SaveChangesAsync(); Assert.AreEqual(revision, _product.VirtualGoodsRevision);
         var service = new VipProductService(_db, _options);
+        await service.UpdateAsync(_product.Id, "Course", VipProductType.Category, _product.TotalCategoryId, 19800, 365, true);
+        Assert.AreEqual(revision, _product.VirtualGoodsRevision);
         await service.UpdateAsync(_product.Id, "Course", VipProductType.Category, _product.TotalCategoryId, 18800, 365, true);
         Assert.AreNotEqual(revision, _product.VirtualGoodsRevision); Assert.AreEqual(18800, _product.PriceInFen);
         Assert.AreEqual(0, _gateway.Starts);
@@ -238,6 +240,24 @@ public class VirtualPaymentGoodsSyncTests
         Assert.AreEqual(5, _gateway.Starts); Assert.AreEqual(5, await _db.VirtualPaymentGoods.CountAsync());
         Assert.AreEqual(5, await _db.VirtualPaymentGoods.Select(g => g.GoodsId).Distinct().CountAsync());
         Assert.AreEqual("failed", (await Catalog().GetDisplayAsync([_product]))[_product.Id].State);
+    }
+
+    [TestMethod]
+    public async Task StolenLeaseCannotSubmitOrOverwriteTheNewOwnersState()
+    {
+        var replacement = Guid.NewGuid();
+        _gateway.BeforeQuery = async () =>
+        {
+            await using var other = new SqliteContext(_dbOptions);
+            await other.VirtualPaymentGoodsLeases.ExecuteUpdateAsync(s => s
+                .SetProperty(l => l.Owner, replacement).SetProperty(l => l.Until, DateTime.UtcNow.AddMinutes(5)));
+        };
+        await Worker(_db).RunOnceAsync();
+        Assert.AreEqual(0, _gateway.Starts);
+        await using var verify = new SqliteContext(_dbOptions);
+        Assert.AreEqual(VirtualGoodsState.Queued, (await verify.VirtualPaymentGoods.SingleAsync()).State);
+        var lease = await verify.VirtualPaymentGoodsLeases.SingleAsync();
+        Assert.AreEqual(replacement, lease.Owner); Assert.IsTrue(lease.Until > DateTime.UtcNow);
     }
 
     private VirtualPaymentGoodsSynchronizer Worker(SqliteContext db, IOptions<AppSettings>? options = null) =>

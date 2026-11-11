@@ -92,7 +92,7 @@ public class VirtualPaymentGoodsSynchronizer(WeChatExamDbContext db, IOptions<Ap
                 item.NextAttemptAt = DateTime.UtcNow.AddMinutes(Math.Min(60, Math.Pow(2, Math.Min(item.Failures, 6))));
                 logger.LogWarning("Virtual goods {GoodsId}: request failed; saved state will be checked before retrying.", item.GoodsId);
             }
-            if (await OwnsLeaseAsync(leaseId, owner, token)) await db.SaveChangesAsync(token);
+            if (await RenewLeaseAsync(leaseId, owner, token)) await db.SaveChangesAsync(token);
         }
         finally
         {
@@ -103,7 +103,7 @@ public class VirtualPaymentGoodsSynchronizer(WeChatExamDbContext db, IOptions<Ap
 
     private async Task StepAsync(VirtualPaymentGoods item, string leaseId, Guid owner, CancellationToken token)
     {
-        if (!await OwnsLeaseAsync(leaseId, owner, token)) return;
+        if (!await RenewLeaseAsync(leaseId, owner, token)) return;
         if (item.State is VirtualGoodsState.Queued or VirtualGoodsState.ReadyToPublish)
         {
             // Upload and publish are platform-wide task slots, not per-product jobs.
@@ -114,7 +114,7 @@ public class VirtualPaymentGoodsSynchronizer(WeChatExamDbContext db, IOptions<Ap
             item.State = publishing ? VirtualGoodsState.Publishing : VirtualGoodsState.Uploading;
             item.Error = null;
             item.NextAttemptAt = DateTime.UtcNow.AddSeconds(20);
-            if (!await OwnsLeaseAsync(leaseId, owner, token)) return;
+            if (!await RenewLeaseAsync(leaseId, owner, token)) return;
             await db.SaveChangesAsync(token);
             // A timeout leaves Uploading/Publishing durable. Next run QUERIES;
             // it must not blindly repeat a request whose outcome is unknown.
@@ -154,6 +154,11 @@ public class VirtualPaymentGoodsSynchronizer(WeChatExamDbContext db, IOptions<Ap
         item.NextAttemptAt = DateTime.UtcNow;
     }
 
-    private Task<bool> OwnsLeaseAsync(string leaseId, Guid owner, CancellationToken token) =>
-        db.VirtualPaymentGoodsLeases.AnyAsync(l => l.Id == leaseId && l.Owner == owner && l.Until > DateTime.UtcNow, token);
+    private async Task<bool> RenewLeaseAsync(string leaseId, Guid owner, CancellationToken token)
+    {
+        var now = DateTime.UtcNow;
+        // Extend before an external write; an expired/stolen lease is never revived.
+        return await db.VirtualPaymentGoodsLeases.Where(l => l.Id == leaseId && l.Owner == owner && l.Until > now)
+            .ExecuteUpdateAsync(s => s.SetProperty(l => l.Until, now.AddMinutes(5)), token) == 1;
+    }
 }
