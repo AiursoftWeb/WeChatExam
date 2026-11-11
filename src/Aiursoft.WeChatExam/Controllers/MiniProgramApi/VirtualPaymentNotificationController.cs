@@ -29,10 +29,14 @@ public class VirtualPaymentNotificationController(VirtualPaymentNotificationServ
         try { body = await reader.ReadToEndAsync(HttpContext.RequestAborted); }
         catch (BadHttpRequestException ex) when (ex.StatusCode == StatusCodes.Status413PayloadTooLarge)
         { return StatusCode(StatusCodes.Status413PayloadTooLarge); }
-        var result = await notifications.HandleAsync(body, timestamp, nonce, signature, HttpContext.RequestAborted);
+        var response = await notifications.HandleWithReplyAsync(body, timestamp, nonce, signature, HttpContext.RequestAborted);
+        // iOS advice carries an encrypted business reply. Ordinary pushes keep
+        // their existing plain acknowledgement after a committed result.
         // WeChat explicitly accepts plain "success" for JSON and XML push. It
         // must only be sent after committed fulfillment, never on a parse/DB error.
-        return result switch
+        if (response.Result == VirtualPaymentNotificationResult.Completed && response.Body != null)
+            return Content(response.Body, response.ContentType);
+        return response.Result switch
         {
             VirtualPaymentNotificationResult.Completed => Content("success", "text/plain"),
             VirtualPaymentNotificationResult.Rejected => StatusCode(StatusCodes.Status403Forbidden),

@@ -9,8 +9,8 @@ namespace Aiursoft.WeChatExam.Services;
 
 /// <summary>
 /// Read-only facts for an AUTHENTICATED platform refund enquiry, not a public
-/// endpoint or refund authorizer. The future transport must resolve the original
-/// payment and verify the platform message before calling this internal boundary.
+/// endpoint or refund authorizer. The transport must resolve the original payment
+/// and verify the platform message before calling this internal boundary.
 /// A missing answer means insufficient evidence, never automatic refund approval.
 /// </summary>
 public class VirtualPaymentIosRefundAdviceService(WeChatExamDbContext db, IOptions<AppSettings> options) : IScopedDependency
@@ -41,9 +41,25 @@ public class VirtualPaymentIosRefundAdviceService(WeChatExamDbContext db, IOptio
     public async Task<VirtualPaymentIosRefundAdvice?> GetAdviceAsync(VirtualPaymentIosRefundEnquiry enquiry,
         CancellationToken cancellationToken = default)
     {
+        if (db.Database.CurrentTransaction != null || System.Transactions.Transaction.Current != null) return null;
+        return await ReadFactsAsync(enquiry, cancellationToken);
+    }
+
+    // Only the notification transport calls this after taking the existing
+    // buyer/coupon/order locks, before making ANY tracked changes in its own
+    // transaction. Public callers must never attest to uncommitted grants.
+    internal async Task<VirtualPaymentIosRefundAdvice?> GetAdviceForLockedOrderAsync(VirtualPaymentIosRefundEnquiry enquiry,
+        CancellationToken cancellationToken)
+    {
+        if (db.Database.CurrentTransaction == null || db.ChangeTracker.HasChanges()) return null;
+        return await ReadFactsAsync(enquiry, cancellationToken);
+    }
+
+    private async Task<VirtualPaymentIosRefundAdvice?> ReadFactsAsync(VirtualPaymentIosRefundEnquiry enquiry,
+        CancellationToken cancellationToken)
+    {
         // Never attest to our own uncommitted membership grant or a client claim.
-        if (!db.Database.IsRelational() || db.Database.CurrentTransaction != null ||
-            System.Transactions.Transaction.Current != null || enquiry.PaymentOrderId == Guid.Empty ||
+        if (!db.Database.IsRelational() || System.Transactions.Transaction.Current != null || enquiry.PaymentOrderId == Guid.Empty ||
             string.IsNullOrWhiteSpace(enquiry.PlatformOrderId) || enquiry.PlatformOrderId.Length > 128 ||
             string.IsNullOrWhiteSpace(enquiry.ProductId) || enquiry.ProductId.Length > 128 ||
             enquiry.Quantity != 1 || enquiry.ProvidedStatus != 1) return null;
@@ -103,7 +119,8 @@ public class VirtualPaymentIosRefundAdviceService(WeChatExamDbContext db, IOptio
             accessStartsAt = DateTime.SpecifyKind(receipt.After.StartTime, DateTimeKind.Utc),
             accessEndsAt = DateTime.SpecifyKind(receipt.After.EndTime, DateTimeKind.Utc)
         });
-        return new VirtualPaymentIosRefundAdvice(1, "Digital membership access was delivered for this order.", evidence);
+        return new VirtualPaymentIosRefundAdvice(1, "Digital membership access was delivered for this order.", evidence)
+        { PaymentOrderId = order.Id, Environment = purchase.Env };
     }
 }
 
@@ -112,4 +129,10 @@ public sealed record VirtualPaymentIosRefundEnquiry(Guid PaymentOrderId, string 
     string ProductId, int Quantity, int ProvidedStatus);
 
 /// <summary>Platform advice only. Apple still decides; an actual refund follows the separate settlement path.</summary>
-public sealed record VirtualPaymentIosRefundAdvice(int ResultCode, string ResultInfo, string Evidence);
+public sealed record VirtualPaymentIosRefundAdvice(int ResultCode, string ResultInfo, string Evidence)
+{
+    // Internal binding metadata; the transport explicitly serializes only the
+    // documented response fields, never these local identifiers.
+    public Guid PaymentOrderId { get; init; }
+    public int Environment { get; init; } = 1;
+}
