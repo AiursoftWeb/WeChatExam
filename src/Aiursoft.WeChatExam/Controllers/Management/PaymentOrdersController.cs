@@ -1,3 +1,5 @@
+using System.Data.Common;
+using System.Security.Claims;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Authorization;
@@ -14,7 +16,9 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class PaymentOrdersController(
     IPaymentOrderService paymentOrderService,
-    WeChatExamDbContext dbContext) : Controller
+    WeChatExamDbContext dbContext,
+    VirtualPaymentRefundReconciliationService refunds,
+    ILogger<PaymentOrdersController> logger) : Controller
 {
     // GET: PaymentOrders
     [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
@@ -60,11 +64,35 @@ public class PaymentOrdersController(
             .Include(l => l.PaymentOrder).ThenInclude(o => o!.VipProduct)
             .OrderByDescending(l => l.CreatedAt).ThenByDescending(l => l.Id)
             .Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+        var orderIds = logs.Select(l => l.PaymentOrderId).Distinct().ToList();
+        var resolutions = await dbContext.PaymentLogs.AsNoTracking().Where(l => orderIds.Contains(l.PaymentOrderId) &&
+            l.EventType == "VirtualPaymentRefunded").ToListAsync();
         return this.StackView(new RefundReviewsViewModel
         {
-            Reviews = logs.Select(RefundReviewItem.FromLog).ToList(), TotalCount = totalCount,
+            Reviews = logs.Select(l => RefundReviewItem.FromLog(l, resolutions.Where(r => r.PaymentOrderId == l.PaymentOrderId).ToList())).ToList(), TotalCount = totalCount,
             CurrentPage = page, PageSize = pageSize, OrderIdFilter = orderId
         });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
+    [Authorize(Policy = AppPermissionNames.CanManageVipMembers)]
+    public async Task<IActionResult> ReconcileRefund(Guid id)
+    {
+        if (!ModelState.IsValid || id == Guid.Empty) return BadRequest();
+        var actor = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrWhiteSpace(actor)) return Forbid();
+        VirtualPaymentRefundReconciliationResult result;
+        try { result = await refunds.ReconcileAsync(id, actor, HttpContext.RequestAborted); }
+        catch (Exception ex) when (ex is DbUpdateException or DbException)
+        {
+            logger.LogError("Refund reconciliation persistence failed for order {OrderId}.", id);
+            result = VirtualPaymentRefundReconciliationResult.Unavailable;
+        }
+        if (result == VirtualPaymentRefundReconciliationResult.NotFound) return NotFound();
+        TempData["RefundReconciliationResult"] = (int)result;
+        return RedirectToAction(nameof(RefundReviews), new { orderId = id });
     }
 
     // GET: PaymentOrders/Details/{id}

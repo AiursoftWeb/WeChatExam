@@ -13,6 +13,23 @@
 </div>
 <p class="text-muted">@Localizer["Check the order and existing memberships before changing rights after a refund."]</p>
 <p class="text-muted">@Localizer["These records remain after manual changes. Viewing this page does not change memberships or coupons."]</p>
+@if (TempData["RefundReconciliationResult"] is int outcome)
+{
+    <div class="card mb-3"><div class="card-body" role="status">
+        @switch ((Aiursoft.WeChatExam.Services.VirtualPaymentRefundReconciliationResult)outcome)
+        {
+            case Aiursoft.WeChatExam.Services.VirtualPaymentRefundReconciliationResult.Completed:
+                @Localizer["The verified refund is settled. This order's coupon remains spent; other memberships are unchanged."]
+                break;
+            case Aiursoft.WeChatExam.Services.VirtualPaymentRefundReconciliationResult.Unavailable:
+                @Localizer["The verification could not be completed. The order remains reserved. Please try again later."]
+                break;
+            default:
+                @Localizer["The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed."]
+                break;
+        }
+    </div></div>
+}
 @if (Model.OrderIdFilter.HasValue)
 {
     <a asp-action="RefundReviews" class="btn btn-outline-secondary mb-3">@Localizer["Show all refund reconciliation records"]</a>
@@ -30,11 +47,24 @@
                     <h2 class="h4 mb-1">@(item.Order.VipProduct?.Name ?? item.Order.Description)</h2>
                     <span class="text-muted">@(item.Order.User?.DisplayName ?? item.Order.UserId)</span>
                 </div>
-                <span class="badge bg-warning text-dark">@Localizer["Membership verification"]</span>
+                @if (item.IsResolved)
+                {
+                    <span class="badge bg-success">@Localizer["Review closed"]</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning text-dark">@Localizer["Membership verification"]</span>
+                }
             </div>
             <p class="mb-3">
-                @switch (item.Reason)
+                @if (item.IsResolved)
                 {
+                    @Localizer["This order was refunded before membership activation. Other paid or gifted memberships are unchanged."]
+                }
+                else
+                {
+                    switch (item.Reason)
+                    {
                     case "partial_or_adjusted_refund":
                         @Localizer["The refund amount differs from the order payment. Check the platform record before changing any membership."]
                         break;
@@ -57,6 +87,7 @@
                         @Localizer["Ask technical support to verify this record. Do not change membership based on incomplete details."]
                         break;
                 }
+                }
             </p>
             <dl class="row mb-3">
                 <dt class="col-sm-4">@Localizer["Order number"]</dt>
@@ -77,6 +108,14 @@
                 <dt class="col-sm-4">@Localizer["Platform refund number"]</dt>
                 <dd class="col-sm-8 text-break">@(item.PlatformRefundId ?? "—")</dd>
             </dl>
+            @if (canManageMembers && item.CanReconcile)
+            {
+                <p class="text-muted">@Localizer["This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled."]</p>
+                <form asp-action="ReconcileRefund" method="post" class="mb-3">
+                    <input type="hidden" name="id" value="@item.Order.Id" />
+                    <button type="submit" class="btn btn-primary">@Localizer["Verify refund and close review"]</button>
+                </form>
+            }
             <div class="d-flex flex-wrap gap-2">
                 <a asp-action="Details" asp-route-id="@item.Order.Id" class="btn btn-outline-primary">@Localizer["View order"]</a>
                 <a asp-action="UserPayments" asp-route-userId="@item.Order.UserId" class="btn btn-outline-secondary">@Localizer["View memberships and purchases"]</a>

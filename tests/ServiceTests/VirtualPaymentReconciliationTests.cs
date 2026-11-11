@@ -1319,6 +1319,130 @@ public class VirtualPaymentReconciliationTests
         ["channel_bill"] = "private-apple-bill", ["refund_request_reason"] = "private-refund-reason"
     };
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task AdminEarlyRefundQueriesOriginalPurchaseOnceAndAcknowledgesOnlyMatchingDuplicates(bool xml)
+    {
+        await RecordEarlyRefund(xml);
+        _query.State = VirtualPaymentOrderState.RefundOrReversal;
+        var service = CreateRefundReconciliation();
+        Assert.AreEqual(VirtualPaymentRefundReconciliationResult.Completed, await service.ReconcileAsync(_order.Id, "synthetic-admin"));
+        Assert.AreEqual(VirtualPaymentRefundReconciliationResult.Completed, await service.ReconcileAsync(_order.Id, "synthetic-admin"));
+        Assert.AreEqual(1, _query.Calls); Assert.AreEqual(1, _handler.Calls);
+        var order = await _db.PaymentOrders.AsNoTracking().SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Refunded, order.Status); Assert.IsNull(order.PaidAt);
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync()); Assert.AreEqual(0, await _db.Changes.CountAsync());
+        Assert.AreEqual(0, await _db.VipMemberships.CountAsync());
+        var audit = await _db.PaymentLogs.SingleAsync(l => l.EventType == "VirtualPaymentRefundReconciled");
+        Assert.Contains("synthetic-admin", audit.RawData!);
+        Assert.DoesNotContain("saved-openid", audit.RawData!); Assert.DoesNotContain("token-", audit.RawData!);
+        var payload = RefundPayload();
+        var (body, signature) = EncryptNotification(payload, xml);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed,
+            await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        foreach (var field in new[] { "WxRefundId", "WxOrderId", "RefundFee" })
+        {
+            payload = RefundPayload();
+            if (field == "RefundFee") payload[field] = 100; else payload[field] = "another-identity";
+            (body, signature) = EncryptNotification(payload, xml);
+            Assert.AreEqual(VirtualPaymentNotificationResult.Retry,
+                await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        }
+        Assert.AreEqual(3, await _db.PaymentLogs.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("missing-review")]
+    [DataRow("partial")]
+    [DataRow("unavailable")]
+    [DataRow("paid-query")]
+    [DataRow("closed-query")]
+    [DataRow("wrong-order")]
+    [DataRow("wrong-amount")]
+    [DataRow("wrong-platform")]
+    public async Task AdminEarlyRefundCannotUseMissingPartialOrContradictoryEvidence(string fault)
+    {
+        if (fault != "missing-review") await RecordEarlyRefund(amount: fault == "partial" ? 100 : 6800);
+        _query.State = fault == "paid-query" ? VirtualPaymentOrderState.Delivered :
+            fault == "closed-query" ? VirtualPaymentOrderState.Closed : VirtualPaymentOrderState.RefundOrReversal;
+        _query.WrongOrder = fault == "wrong-order"; _query.WrongAmount = fault == "wrong-amount";
+        if (fault == "wrong-platform") _query.PlatformOrderId = "another-payment";
+        if (fault == "unavailable") _handler.Fail = true;
+        Assert.AreEqual(fault == "unavailable" ? VirtualPaymentRefundReconciliationResult.Unavailable : VirtualPaymentRefundReconciliationResult.ReviewRequired,
+            await CreateRefundReconciliation().ReconcileAsync(_order.Id, "synthetic-admin"));
+        Assert.AreEqual(0, await _db.CouponUsages.CountAsync()); Assert.AreEqual(0, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+        Assert.AreEqual(PaymentOrderStatus.Pending, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        if (fault is "missing-review" or "partial") Assert.AreEqual(0, _query.Calls);
+    }
+
+    [TestMethod]
+    [DataRow("coupon")]
+    [DataRow("snapshot")]
+    [DataRow("review")]
+    public async Task AdminEarlyRefundRechecksPurchaseAndEvidenceChangedDuringQuery(string fault)
+    {
+        await RecordEarlyRefund(); _query.State = VirtualPaymentOrderState.RefundOrReversal;
+        _query.Hook = async () =>
+        {
+            Assert.IsNull(_db.Database.CurrentTransaction);
+            await using var other = new SqliteContext(_dbOptions);
+            if (fault == "coupon") await other.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.CouponId, (Guid?)null));
+            if (fault == "snapshot") await other.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(v => v.OpenId, "another-buyer"));
+            if (fault == "review") await other.PaymentLogs.ExecuteDeleteAsync();
+        };
+        Assert.AreEqual(VirtualPaymentRefundReconciliationResult.ReviewRequired,
+            await CreateRefundReconciliation().ReconcileAsync(_order.Id, "synthetic-admin"));
+        Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+    }
+
+    [TestMethod]
+    public async Task AdminEarlyRefundAuditFailureRollsBackSettlementAndSafeRetryIncludesActor()
+    {
+        await RecordEarlyRefund(); _query.State = VirtualPaymentOrderState.RefundOrReversal;
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER fail_actor_audit BEFORE INSERT ON PaymentLogs WHEN NEW.EventType = 'VirtualPaymentRefundReconciled' BEGIN SELECT RAISE(ABORT, 'Synthetic actor audit failure'); END;");
+        await Assert.ThrowsExactlyAsync<DbUpdateException>(() => CreateRefundReconciliation().ReconcileAsync(_order.Id, "synthetic-admin"));
+        _db.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Pending, (await _db.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(0, await _db.CouponUsages.CountAsync());
+        Assert.IsNull((await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync()).PlatformOrderId);
+        Assert.IsFalse((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync());
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_actor_audit;");
+        Assert.AreEqual(VirtualPaymentRefundReconciliationResult.Completed,
+            await CreateRefundReconciliation().ReconcileAsync(_order.Id, "synthetic-admin"));
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReconciled"));
+    }
+
+    [TestMethod]
+    public async Task AdminEarlyRefundRefreshesRejectedTokenOnceAndRejectsCallerTransactions()
+    {
+        await RecordEarlyRefund(); _query.State = VirtualPaymentOrderState.RefundOrReversal;
+        _query.Hook = () => _query.Calls == 1 ? throw new VirtualPaymentGatewayException(40014) : Task.CompletedTask;
+        Assert.AreEqual(VirtualPaymentRefundReconciliationResult.Completed,
+            await CreateRefundReconciliation().ReconcileAsync(_order.Id, "synthetic-admin"));
+        Assert.AreEqual(2, _query.Calls); Assert.AreEqual(2, _handler.Calls);
+        Assert.AreNotEqual(_query.Tokens[0], _query.Tokens[1]);
+        await using var tx = await _db.Database.BeginTransactionAsync();
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateRefundReconciliation().ReconcileAsync(_order.Id, "synthetic-admin"));
+    }
+
+    private async Task RecordEarlyRefund(bool xml = false, int amount = 6800)
+    {
+        var payload = RefundPayload(); payload["RefundFee"] = amount;
+        var (body, signature) = EncryptNotification(payload, xml);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed,
+            await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        _db.ChangeTracker.Clear();
+    }
+
+    private VirtualPaymentRefundReconciliationService CreateRefundReconciliation() => new(_db, _query, _tokens,
+        new VirtualPaymentEarlyRefundService(_db, new CouponService(_db)), _recovery,
+        NullLogger<VirtualPaymentRefundReconciliationService>.Instance);
+
     private VirtualPaymentNotificationService CreateNotifications(SqliteContext db) => new(db, CreateService(db, new Query()),
         _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(db),
         new VirtualPaymentIosRefundAdviceService(db, _recovery));
@@ -1481,12 +1605,13 @@ public class VirtualPaymentReconciliationTests
         public bool WrongOrder { get; set; }
         public bool WrongAmount { get; set; }
         public string? TransactionId { get; set; }
+        public string PlatformOrderId { get; set; } = "platform-order";
         public async Task<VirtualPaymentQueryResult> QueryAsync(PaymentOrder order, VirtualPaymentSnapshot snapshot, string accessToken, CancellationToken cancellationToken = default)
         {
             Calls++;
             Tokens.Add(accessToken);
             if (Hook != null) await Hook();
-            return new VirtualPaymentQueryResult(State, "platform-order", TransactionId, WrongOrder ? Guid.NewGuid() : order.Id, WrongAmount ? 1 : order.AmountInFen);
+            return new VirtualPaymentQueryResult(State, PlatformOrderId, TransactionId, WrongOrder ? Guid.NewGuid() : order.Id, WrongAmount ? 1 : order.AmountInFen);
         }
     }
 }

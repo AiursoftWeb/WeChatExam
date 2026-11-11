@@ -153,6 +153,56 @@ public class PaymentRefundReviewTests : TestBase
     }
 
     [TestMethod]
+    public async Task EarlyRefundActionRequiresPostCsrfAndValidOrderId()
+    {
+        await Seed(reason: "payment_not_locally_settled"); await LoginAsAdmin();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var order = await db.PaymentOrders.SingleAsync(o => o.Id == _orderId);
+            order.Status = PaymentOrderStatus.Pending; order.PaidAt = null;
+            await db.SaveChangesAsync();
+        }
+        var html = await Http.GetStringAsync(ReviewUrl());
+        Assert.Contains("Verify refund and close review", html);
+        Assert.Contains("does not request a refund", html);
+        using var get = await Http.GetAsync($"/PaymentOrders/ReconcileRefund?id={_orderId}");
+        Assert.AreEqual(HttpStatusCode.MethodNotAllowed, get.StatusCode);
+        using var noToken = await Http.PostAsync("/PaymentOrders/ReconcileRefund", new FormUrlEncodedContent(new Dictionary<string, string> { ["id"] = _orderId.ToString() }));
+        Assert.AreEqual(HttpStatusCode.BadRequest, noToken.StatusCode);
+        using var badId = await PostForm("/PaymentOrders/ReconcileRefund", new Dictionary<string, string> { ["id"] = "invalid" }, ReviewUrl());
+        Assert.AreEqual(HttpStatusCode.BadRequest, badId.StatusCode);
+        using var check = Server!.Services.CreateScope();
+        var saved = check.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(PaymentOrderStatus.Pending, (await saved.PaymentOrders.FindAsync(_orderId))!.Status);
+        Assert.AreEqual(1, await saved.PaymentLogs.CountAsync(l => l.PaymentOrderId == _orderId));
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task OnlyAnExactlyLinkedSettlementChangesTheReviewBadge(bool wrongLink)
+    {
+        await Seed(reason: "payment_not_locally_settled"); await LoginAsAdmin();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var order = await db.PaymentOrders.SingleAsync(o => o.Id == _orderId);
+            order.PaidAt = null;
+            var review = await db.PaymentLogs.SingleAsync(l => l.PaymentOrderId == _orderId);
+            db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = _orderId, EventType = "VirtualPaymentRefunded",
+                RawData = JsonSerializer.Serialize(new { reviewId = wrongLink ? Guid.NewGuid() : review.Id,
+                    reason = "refunded_before_local_fulfillment",
+                    confirmation = new VirtualPaymentRefundConfirmation(_orderId, "platform-order", "refund-00", 6800) }) });
+            await db.SaveChangesAsync();
+        }
+        var html = await Http.GetStringAsync(ReviewUrl());
+        Assert.AreEqual(!wrongLink, html.Contains("This order was refunded before membership activation"));
+        Assert.DoesNotContain("Verify refund and close review", html);
+        Assert.Contains("refund-00", html);
+    }
+
+    [TestMethod]
     public async Task ReviewAccessRequiresOrderReadPermissionAndMembershipManagementIsSeparate()
     {
         await Seed();
@@ -170,5 +220,8 @@ public class PaymentRefundReviewTests : TestBase
         var html = await Http.GetStringAsync(ReviewUrl());
         Assert.Contains("View memberships and purchases", html);
         Assert.DoesNotContain("Manage memberships", html);
+        Assert.DoesNotContain("Verify refund and close review", html);
+        using var post = await Http.PostAsync("/PaymentOrders/ReconcileRefund", new FormUrlEncodedContent(new Dictionary<string, string> { ["id"] = _orderId.ToString() }));
+        Assert.IsTrue(post.StatusCode == HttpStatusCode.Forbidden || post.Headers.Location?.ToString().Contains("/Error/Unauthorized") == true);
     }
 }
