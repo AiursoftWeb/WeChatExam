@@ -86,7 +86,26 @@ public class VirtualPaymentEarlyRefundService(WeChatExamDbContext db, ICouponSer
         return VirtualPaymentRefundOutcome.Completed;
     }
 
-    private static bool TryReadReview(PaymentLog log, out VirtualPaymentRefundConfirmation? confirmation)
+    // Shared terminal proof for duplicate callbacks and administrator retries.
+    // Refunded status alone is never enough to acknowledge a different refund.
+    internal static async Task<bool> IsCompletedAsync(WeChatExamDbContext db, PaymentOrder order,
+        VirtualPaymentRefundConfirmation? expected = null)
+    {
+        if (order.Channel != PaymentChannel.WeChatVirtual || order.Status != PaymentOrderStatus.Refunded ||
+            order.PaidAt != null || order.AmountInFen <= 0) return false;
+        var reviews = await db.PaymentLogs.AsNoTracking().Where(l => l.PaymentOrderId == order.Id &&
+            l.EventType == "VirtualPaymentRefundReview").ToListAsync();
+        if (reviews.Count != 1 || !TryReadReview(reviews[0], out var confirmation) || confirmation == null ||
+            confirmation.PaymentOrderId != order.Id || confirmation.AmountInFen != order.AmountInFen ||
+            (expected != null && confirmation != expected)) return false;
+        var resolutions = await db.PaymentLogs.AsNoTracking().Where(l => l.PaymentOrderId == order.Id &&
+            l.EventType == "VirtualPaymentRefunded").ToListAsync();
+        var snapshot = await db.VirtualPaymentSnapshots.AsNoTracking().SingleOrDefaultAsync(s => s.PaymentOrderId == order.Id);
+        return resolutions.Count == 1 && IsSameResolution(resolutions[0], reviews[0].Id, confirmation) &&
+               snapshot?.PlatformOrderId == confirmation.PlatformOrderId;
+    }
+
+    internal static bool TryReadReview(PaymentLog log, out VirtualPaymentRefundConfirmation? confirmation)
     {
         confirmation = null;
         try
@@ -101,7 +120,7 @@ public class VirtualPaymentEarlyRefundService(WeChatExamDbContext db, ICouponSer
         catch (Exception ex) when (ex is JsonException or KeyNotFoundException or InvalidOperationException) { return false; }
     }
 
-    private static bool IsSameResolution(PaymentLog log, Guid reviewId, VirtualPaymentRefundConfirmation confirmation)
+    internal static bool IsSameResolution(PaymentLog log, Guid reviewId, VirtualPaymentRefundConfirmation confirmation)
     {
         try
         {

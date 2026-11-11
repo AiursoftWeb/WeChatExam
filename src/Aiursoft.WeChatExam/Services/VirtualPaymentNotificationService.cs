@@ -237,6 +237,15 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
                 saved.AppId != snapshot.AppId || saved.OpenId != snapshot.OpenId || saved.SignData != snapshot.SignData)
                 throw new InvalidOperationException("The virtual purchase changed during refund settlement.");
             _ = VirtualPaymentPurchase.Read(current, saved, options.Value.WeChat.AppId, options.Value.WeChat.VirtualPayment.OfferId);
+            if (current.Status == PaymentOrderStatus.Refunded && current.PaidAt == null)
+            {
+                // This path intentionally has no fabricated local payment/grant.
+                // Require the exact persisted full refund AND linked resolution.
+                return await VirtualPaymentEarlyRefundService.IsCompletedAsync(db, current,
+                    new VirtualPaymentRefundConfirmation(current.Id, message.PlatformOrderId,
+                        message.PlatformRefundId, message.AmountInFen))
+                    ? VirtualPaymentNotificationResult.Completed : VirtualPaymentNotificationResult.Retry;
+            }
             if (current.Status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded)
             {
                 if (current.PaidAt == null) return VirtualPaymentNotificationResult.Retry;
