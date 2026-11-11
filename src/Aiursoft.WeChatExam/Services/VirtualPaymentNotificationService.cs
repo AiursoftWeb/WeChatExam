@@ -19,6 +19,7 @@ namespace Aiursoft.WeChatExam.Services;
 /// Authenticated mini-program message push, separate from ordinary Tenpay v3.
 /// Goods pushes require server query/reconciliation before granting membership.
 /// Completed refund pushes bind to that original proof before recovering rights.
+/// Early refunds remain durable manual-review records until the payment is verified.
 /// Reply success only after the corresponding transaction committed.
 /// </summary>
 public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPaymentReconciliationService reconciliation,
@@ -96,15 +97,6 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
         // purchase and server-confirmed platform payment, never today's sales env.
         if (snapshot.OpenId != message.OpenId || message.AmountInFen > order.AmountInFen ||
             (message.Environment.HasValue && message.Environment != purchase.Env)) return VirtualPaymentNotificationResult.Rejected;
-        if (order.Status is not (PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded) || order.PaidAt == null)
-            return VirtualPaymentNotificationResult.Retry;
-        var payments = await db.PaymentLogs.AsNoTracking().Where(l => l.PaymentOrderId == order.Id &&
-            l.EventType == "VirtualPaymentConfirmed").Select(l => l.RawData).ToListAsync(cancellationToken);
-        if (payments.Count != 1) return VirtualPaymentNotificationResult.Retry;
-        using (var proof = JsonDocument.Parse(payments[0]!))
-            if (proof.RootElement.GetProperty("OutTradeNo").GetString() != order.OutTradeNo ||
-                proof.RootElement.GetProperty("PlatformOrderId").GetString() != message.PlatformOrderId)
-                return VirtualPaymentNotificationResult.Rejected;
 
         var retrying = false;
         // Authenticated RetCode=0 + completion timestamp is refund proof. The
@@ -132,8 +124,23 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
                 saved.AppId != snapshot.AppId || saved.OpenId != snapshot.OpenId || saved.SignData != snapshot.SignData)
                 throw new InvalidOperationException("The virtual purchase changed during refund settlement.");
             _ = VirtualPaymentPurchase.Read(current, saved, options.Value.WeChat.AppId, options.Value.WeChat.VirtualPayment.OfferId);
-            if (current.Status is not (PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded) || current.PaidAt == null)
+            if (current.Status is PaymentOrderStatus.Paid or PaymentOrderStatus.Refunded)
+            {
+                if (current.PaidAt == null) return VirtualPaymentNotificationResult.Retry;
+                var payments = await db.PaymentLogs.AsNoTracking().Where(l => l.PaymentOrderId == current.Id &&
+                    l.EventType == "VirtualPaymentConfirmed").Select(l => l.RawData).ToListAsync();
+                if (payments.Count != 1) return VirtualPaymentNotificationResult.Retry;
+                using var proof = JsonDocument.Parse(payments[0]!);
+                if (proof.RootElement.GetProperty("OutTradeNo").GetString() != current.OutTradeNo ||
+                    proof.RootElement.GetProperty("PlatformOrderId").GetString() != message.PlatformOrderId)
+                    return VirtualPaymentNotificationResult.Rejected;
+            }
+            else if (current.Status is not (PaymentOrderStatus.Pending or PaymentOrderStatus.Failed))
                 return VirtualPaymentNotificationResult.Retry;
+            // An authenticated refund can precede our payment confirmation. Keep
+            // its claimed original payment in the existing manual-review record,
+            // without inventing payment evidence or granting/revoking membership.
+            // Reconciliation must honor this marker under the same order locks.
             var outcome = await refunds.CompleteAsync(current, new VirtualPaymentRefundConfirmation(current.Id,
                 message.PlatformOrderId, message.PlatformRefundId, message.AmountInFen));
             await transaction.CommitAsync();

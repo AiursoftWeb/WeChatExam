@@ -26,6 +26,8 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
         if (order == null || order.Status is not (PaymentOrderStatus.Pending or PaymentOrderStatus.Failed)) return order;
         if (!db.Database.IsRelational())
             throw new InvalidOperationException("Virtual payment reconciliation requires a relational database.");
+        if (await db.PaymentLogs.AsNoTracking().AnyAsync(l => l.PaymentOrderId == order.Id &&
+                (l.EventType == "VirtualPaymentRefundReview" || l.EventType == "VirtualPaymentRefunded"), cancellationToken)) return order;
         var snapshot = await db.VirtualPaymentSnapshots.AsNoTracking()
             .SingleOrDefaultAsync(s => s.PaymentOrderId == order.Id, cancellationToken);
         if (snapshot == null) return order;
@@ -71,6 +73,11 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
                 .ExecuteUpdateAsync(o => o.SetProperty(x => x.Status, x => x.Status));
             await db.Entry(current).ReloadAsync();
             if (current.Status is not (PaymentOrderStatus.Pending or PaymentOrderStatus.Failed)) return current;
+            // A refund can commit while the remote payment query is in flight.
+            // Do not grant rights OR close/release its coupon reservation until
+            // that refund is reconciled; a paid/closed query cannot erase it.
+            if (await db.PaymentLogs.AsNoTracking().AnyAsync(l => l.PaymentOrderId == current.Id &&
+                    (l.EventType == "VirtualPaymentRefundReview" || l.EventType == "VirtualPaymentRefunded"))) return current;
 
             var saved = await db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync(s => s.PaymentOrderId == current.Id);
             // A response obtained before waiting for locks cannot settle a
