@@ -15,7 +15,7 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.15");
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.AnswerRecord", b =>
                 {
@@ -1591,6 +1591,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
+                    b.Property<Guid>("VirtualGoodsRevision")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("InstitutionId");
@@ -1603,6 +1606,116 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         {
                             t.HasCheckConstraint("CK_VipProducts_InstitutionTarget", "(`Type` = 2 AND `InstitutionId` IS NOT NULL AND `TotalCategoryId` IS NULL) OR (`Type` <> 2 AND `InstitutionId` IS NULL)");
                         });
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentGoods", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AppId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Attempt")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DurationDays")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Environment")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Error")
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Failures")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Fingerprint")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GoodsId")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("NextAttemptAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OfferId")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PictureUrl")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PriceInFen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Remark")
+                        .IsRequired()
+                        .HasMaxLength(1024)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("SourceProductId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("State")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("VipProductId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VipProductId");
+
+                    b.HasIndex("AppId", "Environment", "GoodsId")
+                        .IsUnique();
+
+                    b.HasIndex("AppId", "Environment", "OfferId", "State", "NextAttemptAt");
+
+                    b.HasIndex("AppId", "Environment", "OfferId", "SourceProductId", "Fingerprint", "Attempt")
+                        .IsUnique();
+
+                    b.ToTable("VirtualPaymentGoods");
+                });
+
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentGoodsLease", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(80)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("Owner")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Until")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VirtualPaymentGoodsLeases");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", b =>
@@ -1629,7 +1742,12 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasMaxLength(4096)
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("VirtualPaymentGoodsId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("PaymentOrderId");
+
+                    b.HasIndex("VirtualPaymentGoodsId");
 
                     b.HasIndex("AppId", "PlatformOrderId");
 
@@ -2366,6 +2484,16 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("TotalCategory");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentGoods", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.VipProduct", "VipProduct")
+                        .WithMany()
+                        .HasForeignKey("VipProductId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("VipProduct");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "PaymentOrder")
@@ -2374,7 +2502,14 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Aiursoft.WeChatExam.Entities.VirtualPaymentGoods", "VirtualPaymentGoods")
+                        .WithMany()
+                        .HasForeignKey("VirtualPaymentGoodsId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("PaymentOrder");
+
+                    b.Navigation("VirtualPaymentGoods");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

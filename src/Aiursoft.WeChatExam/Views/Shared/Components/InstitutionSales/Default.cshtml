@@ -1,3 +1,4 @@
+@inject VirtualPaymentGoodsCatalog GoodsCatalog
 @model Aiursoft.WeChatExam.Views.Shared.Components.InstitutionSales.InstitutionSalesViewModel
 @{
     var enabledCount = Model.Products.Count(p => p.IsEnabled);
@@ -45,7 +46,14 @@
         }
         @if (Model.Products.Count == 0 && Model.CanAddProducts)
         {
-            <p class="form-text mb-3">@Localizer["Saving a new VIP product immediately opens sales."]</p>
+            @if (GoodsCatalog.Enabled)
+            {
+                <p class="form-text mb-3">@Localizer["Save the VIP product here. New virtual payments become available after automatic WeChat synchronization."]</p>
+            }
+            else
+            {
+                <p class="form-text mb-3">@Localizer["Saving a new VIP product immediately opens sales."]</p>
+            }
             <a asp-controller="VipProducts" asp-action="Create" asp-route-institutionId="@Model.InstitutionId" class="btn btn-primary">
                 @Localizer["Configure sales"]
             </a>

@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using MySqlConnector;
+using Microsoft.Extensions.Options;
+using Aiursoft.WeChatExam.Configuration;
 
 namespace Aiursoft.WeChatExam.Controllers.Management;
 
@@ -18,7 +20,8 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 public class VipProductsController(
     IVipProductService vipProductService,
     WeChatExamDbContext dbContext,
-    IStringLocalizer<VipProductsController> localizer) : Controller
+    IStringLocalizer<VipProductsController> localizer,
+    VirtualPaymentGoodsCatalog goodsCatalog, IOptions<AppSettings> options) : Controller
 {
     [Authorize(Policy = AppPermissionNames.CanReadVipProducts)]
     [RenderInNavBar(
@@ -54,6 +57,7 @@ public class VipProductsController(
         var enabledCount = products.Count(p => p.IsEnabled);
         var disabledCount = products.Count - enabledCount;
 
+        ViewData["VirtualGoodsStates"] = await goodsCatalog.GetDisplayAsync(products);
         return this.StackView(new IndexViewModel
         {
             Products = products.Where(p => p.IsEnabled != showDisabled).ToList(),
@@ -88,6 +92,7 @@ public class VipProductsController(
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]
     public async Task<IActionResult> Create(CreateViewModel model)
     {
+        ValidateGoodsName(model.Name);
         await ValidateTargetAsync(model.Type, model.TotalCategoryId, model.InstitutionId);
         if (!ModelState.IsValid)
         {
@@ -112,6 +117,7 @@ public class VipProductsController(
         if (product.Type == VipProductType.RealExam) return NotFound();
 
         var categories = await dbContext.TotalCategories.OrderBy(c => c.Title).ToListAsync();
+        ViewData["VirtualGoodsStates"] = await goodsCatalog.GetDisplayAsync([product]);
         return this.StackView(new EditViewModel
         {
             Id = product.Id,
@@ -139,6 +145,7 @@ public class VipProductsController(
         if (product == null) return NotFound();
         if (product.Type == VipProductType.RealExam) return NotFound();
         model.TargetLocked = await vipProductService.HasPurchasesAsync(id);
+        ViewData["VirtualGoodsStates"] = await goodsCatalog.GetDisplayAsync([product]);
         if (model.TargetLocked)
         {
             if (model.Type != product.Type || model.TotalCategoryId != product.TotalCategoryId || model.InstitutionId != product.InstitutionId)
@@ -150,6 +157,7 @@ public class VipProductsController(
             ModelState.Remove(nameof(model.TotalCategoryId));
             ModelState.Remove(nameof(model.InstitutionId));
         }
+        ValidateGoodsName(model.Name);
         await ValidateTargetAsync(model.Type, model.TotalCategoryId, model.InstitutionId);
         if (!ModelState.IsValid)
         {
@@ -174,6 +182,34 @@ public class VipProductsController(
         if (Url.IsLocalUrl(checkReturnUrl)) return LocalRedirect(checkReturnUrl);
 
         return RedirectToAction(nameof(Index));
+    }
+
+    private void ValidateGoodsName(string? name)
+    {
+        if (goodsCatalog.Enabled && (name == null || name.EnumerateRunes().Count() is 0 or > 20))
+            ModelState.AddModelError("Name", localizer["WeChat product names must contain 1 to 20 characters."]);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Policy = AppPermissionNames.CanEditVipProducts)]
+    public async Task<IActionResult> RetryGoods(Guid id)
+    {
+        if (!goodsCatalog.Enabled) return NotFound();
+        var product = await dbContext.VipProducts.FindAsync(id);
+        if (product == null) return NotFound();
+        var settings = options.Value.WeChat.VirtualPayment;
+        var fingerprint = VirtualPaymentGoodsCatalog.Fingerprint(product, settings.GoodsSync.PictureUrl);
+        var row = await dbContext.VirtualPaymentGoods.Where(g => g.SourceProductId == id &&
+            g.AppId == options.Value.WeChat.AppId && g.Environment == settings.Environment &&
+            g.OfferId == settings.OfferId && g.Fingerprint == fingerprint)
+            .OrderByDescending(g => g.Attempt).FirstOrDefaultAsync();
+        if (row?.State == VirtualGoodsState.Failed)
+            product.VirtualGoodsRevision = Guid.NewGuid(); // New ID; never overwrite an existing platform item.
+        else if (row != null && row.State != VirtualGoodsState.Published)
+            row.NextAttemptAt = DateTime.UtcNow; // Recover the SAME uncertain task by querying it.
+        await dbContext.SaveChangesAsync();
+        return RedirectToAction(nameof(Edit), new { id });
     }
 
     private Task<List<SelectListItem>> InstitutionOptionsAsync() => dbContext.Institutions

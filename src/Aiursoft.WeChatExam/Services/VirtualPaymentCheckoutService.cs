@@ -80,6 +80,10 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
                 return retried;
             }
 
+            // Serialize a new virtual reservation with commercial edits. Existing
+            // reservations continue to use their immutable price/goods snapshot.
+            await db.VipProducts.Where(p => p.Id == productId).ExecuteUpdateAsync(s =>
+                s.SetProperty(p => p.PriceInFen, p => p.PriceInFen), cancellationToken);
             var product = await db.VipProducts.Include(p => p.TotalCategory).Include(p => p.Institution)
                 .SingleOrDefaultAsync(p => p.Id == productId, cancellationToken);
             if (product is not { IsEnabled: true, PriceInFen: >= 0, DurationDays: > 0 } ||
@@ -136,7 +140,9 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
             }
             else
             {
-                var snapshot = parameters.Capture(order, buyer);
+                var synchronized = options.Value.WeChat.VirtualPayment.GoodsSync.Enabled
+                    ? await new VirtualPaymentGoodsCatalog(db, options).ResolveAsync(product, cancellationToken) : null;
+                var snapshot = parameters.Capture(order, buyer, synchronized);
                 db.VirtualPaymentSnapshots.Add(snapshot);
                 pay = parameters.Prepare(order, buyer, snapshot);
             }

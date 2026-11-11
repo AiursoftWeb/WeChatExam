@@ -26,8 +26,11 @@ public class PaymentChannelMigrationTests
         var user = new User { UserName = "channel-migration", DisplayName = "Historical buyer" };
         var product = new VipProduct { Name = "Historical course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 19800, DurationDays = 30 };
         var coupon = new Coupon { Code = "HISTORICAL130", AmountInFen = 13000, DistributionChannel = new DistributionChannel { AgencyName = "Historical agency" } };
-        db.AddRange(user, product, coupon);
+        db.AddRange(user, product.TotalCategory!, coupon);
         await db.SaveChangesAsync();
+        // Seed with the historical writer's columns; the new sync revision did not exist yet.
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO VipProducts (Id,Name,Type,TotalCategoryId,InstitutionId,PriceInFen,DurationDays,IsEnabled,CreationTime) VALUES ({product.Id},{product.Name},{(int)product.Type},{product.TotalCategory?.Id},{product.InstitutionId},{product.PriceInFen},{product.DurationDays},{product.IsEnabled},{product.CreationTime})");
+
 
         var now = new DateTime(2026, 11, 1, 12, 0, 0, DateTimeKind.Utc);
         var paidId = Guid.NewGuid();

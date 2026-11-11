@@ -25,15 +25,18 @@ public class VirtualPaymentParameterService(IOptions<AppSettings> options) : ISc
     /// with its order before exposing payment parameters. Never recapture an old
     /// order from today's catalog; load its existing snapshot instead.
     /// </summary>
-    public VirtualPaymentSnapshot Capture(PaymentOrder order, User buyer)
+    public VirtualPaymentSnapshot Capture(PaymentOrder order, User buyer, VirtualPaymentProductSettings? synchronizedProduct = null)
     {
         var settings = GetSettings();
         if (settings.Environment is not (0 or 1) || string.IsNullOrWhiteSpace(settings.OfferId))
             throw new InvalidOperationException("Virtual payment configuration is incomplete.");
         _ = GetAppKey(settings.Environment);
         var (openId, _) = ValidateOrderAndGetSession(order, buyer);
-        if (order.VipProductId is not { } productId || !settings.Products.TryGetValue(productId.ToString("D"), out var product) ||
-            string.IsNullOrWhiteSpace(product.ProductId) || product.PriceInFen <= 0)
+        var product = synchronizedProduct;
+        if (!settings.GoodsSync.Enabled && order.VipProductId is { } productId)
+            settings.Products.TryGetValue(productId.ToString("D"), out product);
+        if (product == null || string.IsNullOrWhiteSpace(product.ProductId) || product.PriceInFen <= 0 ||
+            settings.GoodsSync.Enabled && product.GoodsVersionId == null)
             throw new InvalidOperationException("This product is unavailable for virtual payment.");
         if ((long)order.AmountInFen + order.DiscountInFen != product.PriceInFen)
             throw new InvalidOperationException("The saved order price does not match the virtual product.");
@@ -49,6 +52,7 @@ public class VirtualPaymentParameterService(IOptions<AppSettings> options) : ISc
             throw new InvalidOperationException("Virtual payment configuration exceeds supported limits.");
         return new VirtualPaymentSnapshot
         {
+            VirtualPaymentGoodsId = settings.GoodsSync.Enabled ? product.GoodsVersionId : null,
             PaymentOrderId = order.Id, AppId = options.Value.WeChat.AppId,
             OpenId = openId, SignData = signData
         };

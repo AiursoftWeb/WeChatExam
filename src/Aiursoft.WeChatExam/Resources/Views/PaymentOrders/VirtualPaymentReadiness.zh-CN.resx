@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>映射的全价与 VIP 价格不一致。更新映射前，请确认两个价格。</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>已保存的 VIP 产品正在同步。新的虚拟支付已暂停。</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>此页面仅检查本地配置。它不会联系微信、更改设置或进行支付。通过这些检查并不意味着销售已准备就绪。</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>此已保存的产品版本已发布至微信，且其激活延迟时间已过。</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>请使用明确指定虚拟支付的测试构建版本。默认的小程序构建版本仍使用普通支付。</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>虚拟支付设置</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>微信同步失败。请打开 VIP 产品，检查其设置后重试。</value>
   </data>
 
 </root>

@@ -63,6 +63,19 @@ public class PaymentFulfillmentService(
         }
 
         var durationDays = vipProduct.DurationDays;
+        if (order.Channel == PaymentChannel.WeChatVirtual)
+        {
+            var goodsId = await dbContext.VirtualPaymentSnapshots.Where(s => s.PaymentOrderId == order.Id)
+                .Select(s => s.VirtualPaymentGoodsId).SingleOrDefaultAsync();
+            if (goodsId != null)
+            {
+                var goods = await dbContext.VirtualPaymentGoods.SingleAsync(g => g.Id == goodsId);
+                if (goods.SourceProductId != order.VipProductId || goods.DurationDays <= 0 ||
+                    goods.PriceInFen != (long)order.AmountInFen + order.DiscountInFen)
+                    throw new InvalidOperationException("The saved goods revision does not match this purchase.");
+                durationDays = goods.DurationDays;
+            }
+        }
         var now = DateTime.UtcNow;
 
         var existingVip = await dbContext.VipMemberships

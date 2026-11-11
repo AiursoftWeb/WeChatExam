@@ -13,9 +13,9 @@ public class VirtualPaymentReadinessViewModel : UiStackLayoutViewModel
     public IReadOnlyList<VirtualPaymentProductCheck> Products { get; init; } = [];
     public int UnusedMappingCount { get; init; }
     public bool LocalChecksPassed => Checks.All(c => c.Passed) && Products.Count > 0 &&
-        Products.All(p => p.Status is VirtualProductSetupStatus.Configured or VirtualProductSetupStatus.Free);
+        Products.All(p => p.Status is VirtualProductSetupStatus.Configured or VirtualProductSetupStatus.Free or VirtualProductSetupStatus.Published);
 }
 
 public record VirtualPaymentSetupCheck(string Code, bool Passed);
 public record VirtualPaymentProductCheck(Guid Id, string Name, int PriceInFen, VirtualProductSetupStatus Status);
-public enum VirtualProductSetupStatus { Configured, Free, InvalidProduct, MissingMapping, PriceMismatch, DuplicateMapping }
+public enum VirtualProductSetupStatus { Configured, Free, InvalidProduct, MissingMapping, PriceMismatch, DuplicateMapping, Synchronizing, SyncFailed, Published }

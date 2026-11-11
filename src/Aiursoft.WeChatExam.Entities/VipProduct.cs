@@ -12,6 +12,9 @@ namespace Aiursoft.WeChatExam.Entities;
 [Index(nameof(InstitutionId))]
 public class VipProduct
 {
+    // Durable sync intent. Updated atomically with every commercial edit.
+    public Guid VirtualGoodsRevision { get; set; }
+
     [Key]
     public Guid Id { get; init; } = Guid.NewGuid();
 

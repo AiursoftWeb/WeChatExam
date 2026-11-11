@@ -27,6 +27,13 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
 
     private void InvalidateChangedEmbeddings()
     {
+        foreach (var entry in ChangeTracker.Entries<VipProduct>().Where(e =>
+                     e.State == EntityState.Added || e.State == EntityState.Modified &&
+                     (e.Property(p => p.Name).IsModified || e.Property(p => p.PriceInFen).IsModified ||
+                      e.Property(p => p.DurationDays).IsModified || e.Property(p => p.Type).IsModified ||
+                      e.Property(p => p.TotalCategoryId).IsModified || e.Property(p => p.InstitutionId).IsModified)))
+            entry.Entity.VirtualGoodsRevision = Guid.NewGuid();
+
         // Keep imports, manual edits and AI edits on the same content-update path.
         foreach (var entry in ChangeTracker.Entries<Question>().Where(e =>
                      e.State == EntityState.Added || e.State == EntityState.Modified &&
@@ -59,6 +66,12 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
         builder.Entity<VirtualPaymentSnapshot>().HasIndex(s => new { s.AppId, s.PlatformOrderId });
         builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.PaymentOrder).WithOne()
             .HasForeignKey<VirtualPaymentSnapshot>(s => s.PaymentOrderId).OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.VirtualPaymentGoods).WithMany()
+            .HasForeignKey(s => s.VirtualPaymentGoodsId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<VirtualPaymentGoods>().HasOne(g => g.VipProduct).WithMany()
+            .HasForeignKey(g => g.VipProductId).OnDelete(DeleteBehavior.SetNull);
+        builder.Entity<VirtualPaymentGoods>().HasIndex(g => new { g.AppId, g.Environment, g.GoodsId }).IsUnique();
 
         builder.Entity<PracticeSession>().HasIndex(s => new { s.UserId, s.CreationTime, s.Id });
         builder.Entity<PracticeSessionItem>().HasIndex(i => new { i.SessionId, i.Position });
@@ -195,5 +208,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<PaymentLog> PaymentLogs => Set<PaymentLog>();
     public DbSet<VipMembership> VipMemberships => Set<VipMembership>();
     public DbSet<Change> Changes => Set<Change>();
+    public DbSet<VirtualPaymentGoods> VirtualPaymentGoods => Set<VirtualPaymentGoods>();
+    public DbSet<VirtualPaymentGoodsLease> VirtualPaymentGoodsLeases => Set<VirtualPaymentGoodsLease>();
     public DbSet<VipProduct> VipProducts => Set<VipProduct>();
 }
