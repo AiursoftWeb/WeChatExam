@@ -83,6 +83,61 @@ public class VirtualPaymentSnapshotMigrationTests
         Assert.AreEqual(1, await db.Changes.CountAsync());
     }
 
+    [TestMethod]
+    public async Task PlatformReferenceMigrationPreservesOldSnapshotsFinancialHistoryAndOldWriters()
+    {
+        await using var db = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>()
+            .UseSqlite("DataSource=:memory:").Options);
+        await db.Database.OpenConnectionAsync();
+        var migrations = db.Database.GetMigrations().ToArray();
+        var index = Array.FindIndex(migrations, m => m.EndsWith("_AddVirtualPaymentPlatformReference", StringComparison.Ordinal));
+        Assert.IsTrue(index > 0);
+        var previous = migrations[index - 1];
+        var migrator = db.GetService<IMigrator>();
+        await migrator.MigrateAsync(previous);
+        var user = new User { Id = "reference-buyer", UserName = "reference-buyer", DisplayName = "Historical buyer" };
+        var product = new VipProduct { Name = "Course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 19800, DurationDays = 30 };
+        var paid = new PaymentOrder { OutTradeNo = "OLD-VIRTUAL-PAID", UserId = user.Id, VipProduct = product,
+            Description = "Old paid order", AmountInFen = 19800, Status = PaymentOrderStatus.Paid,
+            Channel = PaymentChannel.WeChatVirtual, PaidAt = DateTime.UtcNow };
+        var pending = new PaymentOrder { OutTradeNo = "OLD-VIRTUAL-PENDING", UserId = user.Id,
+            Description = "Old pending order", Channel = PaymentChannel.WeChatVirtual };
+        db.AddRange(user, paid, pending,
+            new PaymentLog { PaymentOrderId = paid.Id, EventType = "VirtualPaymentConfirmed", RawData = "Old proof retained exactly" },
+            new VipMembership { UserId = user.Id, VipProduct = product, LastPaymentOrderId = paid.Id,
+                StartTime = DateTime.UtcNow, EndTime = DateTime.UtcNow.AddDays(30) });
+        await db.SaveChangesAsync();
+        const string signData = "{ \"productId\": \"课程\", \"env\": 1 }";
+        foreach (var id in new[] { paid.Id, pending.Id })
+            await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO VirtualPaymentSnapshots (PaymentOrderId,AppId,OpenId,SignData) VALUES ({id},{"app"},{"buyer"},{signData})");
+        var before = await FinancialHistoryAsync(db);
+        db.ChangeTracker.Clear();
+        await migrator.MigrateAsync();
+        Assert.AreEqual(before, await FinancialHistoryAsync(db));
+        Assert.AreEqual(2, await db.VirtualPaymentSnapshots.CountAsync(s => s.PlatformOrderId == null && s.SignData == signData));
+        // A binary rollback keeps the column. Schema downgrade is tested only
+        // while every new reference is null, so it discards no payment evidence.
+        await migrator.MigrateAsync(previous);
+        Assert.AreEqual(before, await FinancialHistoryAsync(db));
+        await migrator.MigrateAsync();
+        Assert.AreEqual(before, await FinancialHistoryAsync(db));
+        Assert.AreEqual(2, await db.VirtualPaymentSnapshots.CountAsync(s => s.PlatformOrderId == null));
+        var oldWriter = new PaymentOrder { OutTradeNo = "OLD-WRITER-REFERENCE", UserId = user.Id,
+            Description = "Old writer", Channel = PaymentChannel.WeChatVirtual };
+        db.PaymentOrders.Add(oldWriter); await db.SaveChangesAsync();
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO VirtualPaymentSnapshots (PaymentOrderId,AppId,OpenId,SignData) VALUES ({oldWriter.Id},{"app"},{"buyer"},{signData})");
+        Assert.IsNull((await db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync(s => s.PaymentOrderId == oldWriter.Id)).PlatformOrderId);
+        await db.VirtualPaymentSnapshots.Where(s => s.PaymentOrderId == paid.Id)
+            .ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, "platform-paid"));
+        Assert.AreEqual(paid.Id, await db.VirtualPaymentSnapshots.Where(s => s.AppId == "app" && s.PlatformOrderId == "platform-paid")
+            .Select(s => s.PaymentOrderId).SingleAsync());
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "EXPLAIN QUERY PLAN SELECT PaymentOrderId FROM VirtualPaymentSnapshots WHERE AppId='app' AND PlatformOrderId='platform-paid'";
+        await using var reader = await command.ExecuteReaderAsync();
+        Assert.IsTrue(await reader.ReadAsync());
+        Assert.Contains("IX_VirtualPaymentSnapshots_AppId_PlatformOrderId", reader.GetString(3));
+    }
+
     private static async Task<string> FinancialHistoryAsync(SqliteContext db)
     {
         var history = new List<string>();

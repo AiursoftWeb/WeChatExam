@@ -696,6 +696,72 @@ public class PaymentFulfillmentTests
         Assert.AreEqual(3, await _db.PaymentLogs.CountAsync());
     }
 
+    [TestMethod]
+    public async Task PlatformReferenceLookupStillUsesOriginalDeliveryEvidenceAndWritesNothing()
+    {
+        var order = await CreateAdvisedOrderAsync();
+        await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, "original-platform-order"));
+        var service = CreateAdviceService();
+        Assert.AreEqual(await service.GetAdviceAsync(Enquiry(order)),
+            await service.GetAdviceByPlatformOrderAsync("original-platform-order", "original-product", 1, 1));
+        Assert.AreEqual(0, _db.ChangeTracker.Entries().Count());
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync());
+        Assert.AreEqual(1, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("missing")]
+    [DataRow("application")]
+    [DataRow("case")]
+    [DataRow("proof")]
+    [DataRow("ordinary")]
+    [DataRow("refunded")]
+    [DataRow("review")]
+    [DataRow("duplicate")]
+    public async Task PlatformReferenceIsOnlyALookupAndCannotReplaceOriginalPaymentEvidence(string fault)
+    {
+        var order = await CreateAdvisedOrderAsync();
+        await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, "original-platform-order"));
+        if (fault == "missing") await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, (string?)null));
+        if (fault == "application") await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.AppId, "another-app"));
+        if (fault == "proof") await _db.PaymentLogs.Where(l => l.EventType == "VirtualPaymentConfirmed")
+            .ExecuteUpdateAsync(s => s.SetProperty(l => l.RawData, "{}"));
+        if (fault == "ordinary") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Channel, PaymentChannel.WeChatJsApi));
+        if (fault == "refunded") await _db.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, PaymentOrderStatus.Refunded));
+        if (fault == "review")
+        {
+            _db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = order.Id, EventType = "VirtualPaymentRefundReview" });
+            await _db.SaveChangesAsync();
+        }
+        if (fault == "duplicate")
+        {
+            var duplicate = new PaymentOrder { OutTradeNo = "DUPLICATE-PLATFORM-REFERENCE", UserId = order.UserId,
+                Description = "Ambiguous reference", Channel = PaymentChannel.WeChatVirtual };
+            _db.AddRange(duplicate, new VirtualPaymentSnapshot { PaymentOrderId = duplicate.Id, AppId = "original-app",
+                OpenId = "other-buyer", SignData = "{}", PlatformOrderId = "original-platform-order" });
+            await _db.SaveChangesAsync();
+        }
+        _db.ChangeTracker.Clear();
+        Assert.IsNull(await CreateAdviceService().GetAdviceByPlatformOrderAsync(
+            fault == "case" ? "ORIGINAL-PLATFORM-ORDER" : "original-platform-order", "original-product", 1, 1));
+        Assert.AreEqual(0, _db.ChangeTracker.Entries().Count());
+        if (fault == "missing") Assert.IsNotNull(await CreateAdviceService().GetAdviceAsync(Enquiry(order)));
+    }
+
+    [TestMethod]
+    public async Task PlatformReferenceAdviceCannotUseUncommittedFactsOrMalformedReferences()
+    {
+        await CreateAdvisedOrderAsync();
+        await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, "original-platform-order"));
+        var service = CreateAdviceService();
+        Assert.IsNull(await service.GetAdviceByPlatformOrderAsync("", "original-product", 1, 1));
+        Assert.IsNull(await service.GetAdviceByPlatformOrderAsync(new string('x', 129), "original-product", 1, 1));
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        Assert.IsNull(await service.GetAdviceByPlatformOrderAsync("original-platform-order", "original-product", 1, 1));
+        Assert.AreSame(transaction, _db.Database.CurrentTransaction);
+    }
+
     private VirtualPaymentIosRefundAdviceService CreateAdviceService() => new(_db,
         Options.Create(new AppSettings
         {

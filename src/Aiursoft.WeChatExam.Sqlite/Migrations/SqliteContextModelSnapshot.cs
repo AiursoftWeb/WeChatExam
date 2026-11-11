@@ -1620,12 +1620,18 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PlatformOrderId")
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("SignData")
                         .IsRequired()
                         .HasMaxLength(4096)
                         .HasColumnType("TEXT");
 
                     b.HasKey("PaymentOrderId");
+
+                    b.HasIndex("AppId", "PlatformOrderId");
 
                     b.ToTable("VirtualPaymentSnapshots");
                 });

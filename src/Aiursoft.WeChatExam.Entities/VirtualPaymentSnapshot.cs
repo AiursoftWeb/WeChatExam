@@ -19,6 +19,11 @@ public class VirtualPaymentSnapshot
     [MaxLength(128)]
     public required string OpenId { get; init; }
 
+    // Optional, server-confirmed payment reference. Older writers and unpaid
+    // purchases leave it null; never populate it from a phone or a refund claim.
+    [MaxLength(128)]
+    public string? PlatformOrderId { get; set; }
+
     [MaxLength(4096)]
     public required string SignData { get; init; }
 }

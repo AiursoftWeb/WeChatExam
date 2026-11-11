@@ -48,7 +48,7 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
             return order;
         }
         if (result.PaymentOrderId != order.Id || result.AmountInFen != order.AmountInFen ||
-            string.IsNullOrWhiteSpace(result.PlatformOrderId))
+            string.IsNullOrWhiteSpace(result.PlatformOrderId) || result.PlatformOrderId.Length > 128)
             throw new InvalidOperationException("The virtual payment result does not match this order.");
         if (result.State is not (VirtualPaymentOrderState.PaidAwaitingDelivery or VirtualPaymentOrderState.Delivering or
             VirtualPaymentOrderState.Delivered or VirtualPaymentOrderState.Closed)) return order;
@@ -102,6 +102,18 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
             }
             if (!current.VipProductId.HasValue || !await db.VipProducts.AnyAsync(p => p.Id == current.VipProductId))
                 throw new InvalidOperationException("The virtual payment product is unavailable.");
+
+            // Commit the lookup reference with the original proof and grant.
+            // A contradictory existing reference must never be overwritten.
+            if (saved.PlatformOrderId != null && saved.PlatformOrderId != result.PlatformOrderId)
+                throw new InvalidOperationException("The confirmed platform payment reference changed.");
+            if (saved.PlatformOrderId == null)
+            {
+                var references = await db.VirtualPaymentSnapshots.Where(s => s.PaymentOrderId == current.Id && s.PlatformOrderId == null)
+                    .ExecuteUpdateAsync(s => s.SetProperty(x => x.PlatformOrderId, result.PlatformOrderId));
+                if (references != 1)
+                    throw new InvalidOperationException("The confirmed platform payment reference changed.");
+            }
 
             // iOS need not have an ordinary WeChat transaction ID. Retain the
             // virtual platform reference separately; never fabricate that ID.

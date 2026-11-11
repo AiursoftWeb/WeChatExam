@@ -15,6 +15,29 @@ namespace Aiursoft.WeChatExam.Services;
 /// </summary>
 public class VirtualPaymentIosRefundAdviceService(WeChatExamDbContext db, IOptions<AppSettings> options) : IScopedDependency
 {
+    /// <summary>
+    /// Looks up a known platform payment reference without scanning audit JSON.
+    /// This is an internal boundary, not an interpretation of a wire field.
+    /// Missing or ambiguous references remain undecided; the original proof and
+    /// membership grant are still verified by GetAdviceAsync.
+    /// </summary>
+    public async Task<VirtualPaymentIosRefundAdvice?> GetAdviceByPlatformOrderAsync(string platformOrderId,
+        string productId, int quantity, int providedStatus, CancellationToken cancellationToken = default)
+    {
+        if (!db.Database.IsRelational() || db.Database.CurrentTransaction != null ||
+            System.Transactions.Transaction.Current != null || string.IsNullOrWhiteSpace(platformOrderId) ||
+            platformOrderId.Length > 128 || string.IsNullOrWhiteSpace(options.Value.WeChat.AppId)) return null;
+        var references = await db.VirtualPaymentSnapshots.AsNoTracking().Where(s =>
+                s.AppId == options.Value.WeChat.AppId && s.PlatformOrderId == platformOrderId)
+            .Select(s => new { s.AppId, s.PlatformOrderId, s.PaymentOrderId }).Take(2).ToListAsync(cancellationToken);
+        // Some providers use case-insensitive collations. The opaque reference
+        // must also match exactly before it can identify the original purchase.
+        if (references.Count != 1 || references[0].AppId != options.Value.WeChat.AppId ||
+            references[0].PlatformOrderId != platformOrderId) return null;
+        return await GetAdviceAsync(new VirtualPaymentIosRefundEnquiry(references[0].PaymentOrderId,
+            platformOrderId, productId, quantity, providedStatus), cancellationToken);
+    }
+
     public async Task<VirtualPaymentIosRefundAdvice?> GetAdviceAsync(VirtualPaymentIosRefundEnquiry enquiry,
         CancellationToken cancellationToken = default)
     {
