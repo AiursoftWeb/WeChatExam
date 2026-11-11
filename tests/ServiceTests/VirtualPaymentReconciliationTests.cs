@@ -88,6 +88,7 @@ public class VirtualPaymentReconciliationTests
         Assert.IsTrue((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
         Assert.AreEqual(_order.UserId, (await _db.Coupons.SingleAsync()).UsedByUserId);
         Assert.IsNull(result.WechatTransactionId);
+        Assert.AreEqual("platform-order", (await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync()).PlatformOrderId);
         Assert.Contains("platform-order", (await _db.PaymentLogs.SingleAsync(l => l.EventType == "VirtualPaymentConfirmed")).RawData!);
     }
 
@@ -247,9 +248,23 @@ public class VirtualPaymentReconciliationTests
         _db.ChangeTracker.Clear();
         Assert.AreEqual(PaymentOrderStatus.Pending, (await _db.PaymentOrders.SingleAsync()).Status);
         await AssertNoFinancialEffects();
+        Assert.IsNull((await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync()).PlatformOrderId);
         await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER reject_virtual_accounting;");
         Assert.AreEqual(PaymentOrderStatus.Paid, (await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId))!.Status);
         Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("another-platform-order")]
+    [DataRow("PLATFORM-ORDER")]
+    public async Task AConflictingPlatformReferenceCannotBeOverwrittenBySettlement(string reference)
+    {
+        await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, reference));
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => _service.ReconcileAsync(_order.OutTradeNo, _order.UserId));
+        Assert.AreEqual(reference, (await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync()).PlatformOrderId);
+        Assert.AreEqual(PaymentOrderStatus.Pending, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        await AssertNoFinancialEffects();
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync());
     }
 
     [TestMethod]

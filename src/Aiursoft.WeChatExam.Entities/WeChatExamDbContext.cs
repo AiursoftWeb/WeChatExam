@@ -56,6 +56,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
         // The database default also protects inserts made by the previous app version.
         builder.Entity<PaymentOrder>().Property(o => o.Channel)
             .HasDefaultValue(PaymentChannel.WeChatJsApi);
+        builder.Entity<VirtualPaymentSnapshot>().HasIndex(s => new { s.AppId, s.PlatformOrderId });
         builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.PaymentOrder).WithOne()
             .HasForeignKey<VirtualPaymentSnapshot>(s => s.PaymentOrderId).OnDelete(DeleteBehavior.Restrict);
 

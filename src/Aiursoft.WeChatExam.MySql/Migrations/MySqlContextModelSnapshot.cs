@@ -1637,12 +1637,18 @@ namespace Aiursoft.WeChatExam.MySql.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)");
 
+                    b.Property<string>("PlatformOrderId")
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
                     b.Property<string>("SignData")
                         .IsRequired()
                         .HasMaxLength(4096)
                         .HasColumnType("varchar(4096)");
 
                     b.HasKey("PaymentOrderId");
+
+                    b.HasIndex("AppId", "PlatformOrderId");
 
                     b.ToTable("VirtualPaymentSnapshots");
                 });
