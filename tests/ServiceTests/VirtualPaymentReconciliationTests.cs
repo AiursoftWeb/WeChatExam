@@ -749,7 +749,7 @@ public class VirtualPaymentReconciliationTests
         Assert.IsFalse(service.VerifyEcho(PushTimestamp, PushNonce, new string('0', 40)));
         Assert.IsFalse(service.VerifyEcho(PushTimestamp, PushNonce, "not-hex"));
         var missing = Settings(new VirtualPaymentSettings());
-        Assert.IsFalse(new VirtualPaymentNotificationService(_db, _service, missing, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db)).IsConfigured);
+        Assert.IsFalse(new VirtualPaymentNotificationService(_db, _service, missing, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db), new VirtualPaymentIosRefundAdviceService(_db, missing)).IsConfigured);
     }
 
     [TestMethod]
@@ -950,7 +950,7 @@ public class VirtualPaymentReconciliationTests
         {
             await using var other = new SqliteContext(_dbOptions);
             var push = new VirtualPaymentNotificationService(other, CreateService(other, new Query()), _recovery,
-                NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(other));
+                NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(other), new VirtualPaymentIosRefundAdviceService(other, _recovery));
             var (body, signature) = EncryptNotification(RefundPayload(), false);
             Assert.AreEqual(VirtualPaymentNotificationResult.Completed,
                 await push.HandleAsync(body, PushTimestamp, PushNonce, signature));
@@ -1110,6 +1110,241 @@ public class VirtualPaymentReconciliationTests
         Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefundReview"));
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task IosRefundAdviceRepliesWithSdkVerifiedCiphertextAfterAuditingWithoutFinancialChanges(bool xml)
+    {
+        await PrepareIosAdviceAsync();
+        var expiry = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        var (body, signature) = EncryptNotification(IosQueryPayload(), xml);
+        var controller = new Controllers.MiniProgramApi.VirtualPaymentNotificationController(CreateNotifications());
+        var context = new DefaultHttpContext();
+        controller.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext { HttpContext = context };
+        context.Request.Body = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(body));
+        var result = await controller.Notify(PushTimestamp, PushNonce, signature);
+        Assert.IsInstanceOfType<Microsoft.AspNetCore.Mvc.ContentResult>(result);
+        var content = (Microsoft.AspNetCore.Mvc.ContentResult)result;
+        Assert.AreEqual(xml ? "application/xml" : "application/json", content.ContentType);
+        Assert.DoesNotContain("membership_access_granted", content.Content!);
+        using var client = new SKIT.FlurlHttpClient.Wechat.Api.WechatApiClient(new SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientOptions
+        { AppId = "test-app", PushToken = "syntheticPushToken", PushEncodingAESKey = NotificationAesKey });
+        string plain;
+        if (xml)
+        {
+            var envelope = System.Xml.Linq.XElement.Parse(content.Content!);
+            Assert.IsTrue(SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientEventExtensions.VerifyEventSignatureFromXml(client,
+                envelope.Element("TimeStamp")!.Value, envelope.Element("Nonce")!.Value, content.Content!, envelope.Element("MsgSignature")!.Value).Result);
+            plain = SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientEventExtensions.DecryptEventFromXml(client, content.Content!);
+            var reply = System.Xml.Linq.XElement.Parse(plain);
+            Assert.AreEqual("0", reply.Element("ErrCode")!.Value);
+            Assert.AreEqual("1", reply.Element("IosRefundQueryResponse")!.Element("result_code")!.Value);
+        }
+        else
+        {
+            using var envelope = System.Text.Json.JsonDocument.Parse(content.Content!);
+            Assert.IsTrue(SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientEventExtensions.VerifyEventSignatureFromJson(client,
+                envelope.RootElement.GetProperty("TimeStamp").GetString()!, envelope.RootElement.GetProperty("Nonce").GetString()!,
+                content.Content!, envelope.RootElement.GetProperty("MsgSignature").GetString()!).Result);
+            plain = SKIT.FlurlHttpClient.Wechat.Api.WechatApiClientEventExtensions.DecryptEventFromJson(client, content.Content!);
+            using var reply = System.Text.Json.JsonDocument.Parse(plain);
+            Assert.AreEqual(0, reply.RootElement.GetProperty("ErrCode").GetInt32());
+            Assert.AreEqual(1, reply.RootElement.GetProperty("IosRefundQueryResponse").GetProperty("result_code").GetInt32());
+        }
+        Assert.Contains("membership_access_granted", plain);
+        Assert.DoesNotContain(_order.UserId, plain);
+        Assert.DoesNotContain(_order.Id.ToString(), plain);
+        Assert.DoesNotContain("saved-openid", plain);
+        var audit = await _db.PaymentLogs.AsNoTracking().SingleAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice");
+        Assert.AreEqual(_order.Id, audit.PaymentOrderId);
+        Assert.Contains("RequestHash", audit.RawData!);
+        Assert.DoesNotContain("private-apple-bill", audit.RawData!);
+        Assert.DoesNotContain("private-refund-reason", audit.RawData!);
+        var repeated = await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed, repeated.Result);
+        Assert.AreNotEqual(content.Content, repeated.Body);
+        Assert.AreEqual(2, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.AreEqual(expiry, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+        Assert.IsTrue((await _db.UserClaimedCoupons.AsNoTracking().SingleAsync()).IsUsed);
+        Assert.IsFalse(_recovery.Value.WeChat.VirtualPayment.Enabled);
+        Assert.AreEqual(1, _query.Calls);
+        Assert.AreEqual(1, _handler.Calls);
+    }
+
+    [TestMethod]
+    [DataRow("disabled")]
+    [DataRow("sandbox")]
+    [DataRow("index")]
+    [DataRow("merchant-number")]
+    [DataRow("not-provided")]
+    [DataRow("review")]
+    [DataRow("membership")]
+    public async Task IosRefundQueryWithInsufficientFactsNeverInventsEitherRefundOrRefusal(string fault)
+    {
+        await PrepareIosAdviceAsync(fault != "disabled", fault != "sandbox");
+        var payload = IosQueryPayload();
+        if (fault == "index") await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.PlatformOrderId, (string?)null));
+        if (fault == "merchant-number") payload["pay_order_id"] = _order.OutTradeNo;
+        if (fault == "not-provided") payload["provide_status"] = "0";
+        if (fault == "review")
+        {
+            _db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = _order.Id, EventType = "VirtualPaymentRefundReview" });
+            await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
+        }
+        if (fault == "membership") await _db.VipMemberships.ExecuteUpdateAsync(s => s.SetProperty(v => v.EndTime, DateTime.UtcNow));
+        var (body, signature) = EncryptNotification(payload, false);
+        var reply = await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, reply.Result);
+        Assert.IsNull(reply.Body);
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("signature")]
+    [DataRow("application")]
+    [DataRow("numeric-count")]
+    [DataRow("status")]
+    [DataRow("missing-order")]
+    [DataRow("time")]
+    public async Task MalformedOrUnauthenticatedIosQueryCannotRecordAdvice(string fault)
+    {
+        await PrepareIosAdviceAsync();
+        var payload = IosQueryPayload();
+        if (fault == "numeric-count") payload["p_count"] = 1;
+        if (fault == "status") payload["provide_status"] = "-1";
+        if (fault == "missing-order") payload.Remove("pay_order_id");
+        if (fault == "time") payload["refund_time"] = "1";
+        var (body, signature) = EncryptNotification(payload, false, fault == "application" ? "another-app" : "test-app");
+        if (fault == "signature") signature = new string('0', 40);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Rejected,
+            (await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature)).Result);
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+    }
+
+    [TestMethod]
+    public async Task IosAdviceAuditFailureRequiresRetryWithoutChangingRights()
+    {
+        await PrepareIosAdviceAsync();
+        var expiry = (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime;
+        await _db.Database.ExecuteSqlRawAsync("CREATE TRIGGER fail_ios_advice BEFORE INSERT ON PaymentLogs WHEN NEW.EventType='VirtualPaymentIosRefundAdvice' BEGIN SELECT RAISE(ABORT, 'synthetic failure'); END;");
+        var (body, signature) = EncryptNotification(IosQueryPayload(), false);
+        var response = await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, response.Result); Assert.IsNull(response.Body);
+        _db.ChangeTracker.Clear();
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(expiry, (await _db.VipMemberships.AsNoTracking().SingleAsync()).EndTime);
+        await _db.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_ios_advice;");
+        Assert.AreEqual(VirtualPaymentNotificationResult.Completed,
+            (await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature)).Result);
+    }
+
+    [TestMethod]
+    public async Task RefundBetweenIosLookupAndLockCannotBeOverriddenByEarlierFacts()
+    {
+        await PrepareIosAdviceAsync();
+        var hook = new BeforeIosAdviceTransaction(async () =>
+        {
+            await using var refundDb = new SqliteContext(_dbOptions);
+            var (body, signature) = EncryptNotification(RefundPayload(), false);
+            Assert.AreEqual(VirtualPaymentNotificationResult.Completed,
+                await CreateNotifications(refundDb).HandleAsync(body, PushTimestamp, PushNonce, signature));
+        });
+        await using var adviceDb = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>(_dbOptions).AddInterceptors(hook).Options);
+        var (query, querySignature) = EncryptNotification(IosQueryPayload(), false);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry,
+            (await CreateNotifications(adviceDb).HandleWithReplyAsync(query, PushTimestamp, PushNonce, querySignature)).Result);
+        Assert.AreEqual(PaymentOrderStatus.Refunded, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+    }
+
+    [TestMethod]
+    public async Task IosQueryBudgetCancelsCooperativeDatabaseWorkWithoutAnsweringOrSettling()
+    {
+        await PrepareIosAdviceAsync();
+        await using var adviceDb = new SqliteContext(new DbContextOptionsBuilder<SqliteContext>(_dbOptions)
+            .AddInterceptors(new PauseIosAdviceLookup()).Options);
+        var (body, signature) = EncryptNotification(IosQueryPayload(), false);
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        var reply = await CreateNotifications(adviceDb).HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature);
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry, reply.Result); Assert.IsNull(reply.Body);
+        Assert.IsTrue(timer.Elapsed < TimeSpan.FromSeconds(8));
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.AsNoTracking().SingleAsync()).Status);
+    }
+
+    [TestMethod]
+    public async Task IosQueryCannotCommitCallersChangesOrRespondFromTheirUncommittedTransaction()
+    {
+        await PrepareIosAdviceAsync();
+        var (body, signature) = EncryptNotification(IosQueryPayload(), false);
+        await using (var transaction = await _db.Database.BeginTransactionAsync())
+        {
+            Assert.AreEqual(VirtualPaymentNotificationResult.Retry,
+                (await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature)).Result);
+            Assert.AreSame(transaction, _db.Database.CurrentTransaction);
+        }
+        var user = await _db.Users.SingleAsync(); user.DisplayName = "Unsaved edit";
+        Assert.AreEqual(VirtualPaymentNotificationResult.Retry,
+            (await CreateNotifications().HandleWithReplyAsync(body, PushTimestamp, PushNonce, signature)).Result);
+        Assert.AreEqual(0, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentIosRefundAdvice"));
+        Assert.IsTrue(_db.ChangeTracker.HasChanges());
+    }
+
+    private async Task PrepareIosAdviceAsync(bool enabled = true, bool live = true)
+    {
+        if (live)
+        {
+            var saved = await _db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync();
+            var data = System.Text.Json.Nodes.JsonNode.Parse(saved.SignData)!; data["env"] = 0;
+            var json = data.ToJsonString();
+            await _db.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(p => p.SignData, json));
+        }
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _recovery = Settings(new VirtualPaymentSettings { OfferId = "offer", CallbackToken = "syntheticPushToken",
+            CallbackEncodingAesKey = NotificationAesKey, IosRefundAdviceEnabled = enabled });
+        _db.ChangeTracker.Clear();
+    }
+
+    private System.Text.Json.Nodes.JsonObject IosQueryPayload() => new()
+    {
+        ["MsgType"] = "event", ["Event"] = "xpay_subscribe_ios_refund_query_notify", ["pay_order_id"] = "platform-order",
+        ["product_id"] = "course", ["p_count"] = "1", ["provide_status"] = "1",
+        ["refund_time"] = "1794236410", ["order_time"] = "1794236400",
+        ["channel_bill"] = "private-apple-bill", ["refund_request_reason"] = "private-refund-reason"
+    };
+
+    private VirtualPaymentNotificationService CreateNotifications(SqliteContext db) => new(db, CreateService(db, new Query()),
+        _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(db),
+        new VirtualPaymentIosRefundAdviceService(db, _recovery));
+
+    private sealed class PauseIosAdviceLookup : Microsoft.EntityFrameworkCore.Diagnostics.DbCommandInterceptor
+    {
+        public override async ValueTask<Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<System.Data.Common.DbDataReader>> ReaderExecutingAsync(
+            System.Data.Common.DbCommand command, Microsoft.EntityFrameworkCore.Diagnostics.CommandEventData eventData,
+            Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<System.Data.Common.DbDataReader> result, CancellationToken cancellationToken = default)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(10), cancellationToken);
+            return result;
+        }
+    }
+
+    private sealed class BeforeIosAdviceTransaction(Func<Task> action) : Microsoft.EntityFrameworkCore.Diagnostics.DbTransactionInterceptor
+    {
+        public override async ValueTask<Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<System.Data.Common.DbTransaction>> TransactionStartingAsync(
+            System.Data.Common.DbConnection connection, Microsoft.EntityFrameworkCore.Diagnostics.TransactionStartingEventData eventData,
+            Microsoft.EntityFrameworkCore.Diagnostics.InterceptionResult<System.Data.Common.DbTransaction> result, CancellationToken cancellationToken = default)
+        {
+            await action();
+            return result;
+        }
+    }
+
     private System.Text.Json.Nodes.JsonObject RefundPayload() => new()
     {
         ["ToUserName"] = "mini-program-original-id", ["FromUserName"] = "wechat-official-push-not-buyer",
@@ -1119,7 +1354,7 @@ public class VirtualPaymentReconciliationTests
         ["RetCode"] = 0, ["RefundStartTimestamp"] = 1794236400, ["RefundSuccTimestamp"] = 1794236410
     };
 
-    private VirtualPaymentNotificationService CreateNotifications() => new(_db, _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db));
+    private VirtualPaymentNotificationService CreateNotifications() => new(_db, _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db), new VirtualPaymentIosRefundAdviceService(_db, _recovery));
 
     private System.Text.Json.Nodes.JsonObject NotificationPayload() => new()
     {

@@ -4,6 +4,10 @@ public class VirtualPaymentSettings
 {
     public bool Enabled { get; init; }
 
+    // Opt in only after validating the iOS order-reference mapping and encrypted
+    // HTTP reply with the platform. This is independent of accepting new sales.
+    public bool IosRefundAdviceEnabled { get; init; }
+
     // WeChat uses 0 for live and 1 for sandbox. Never infer this from the
     // client's platform or fall back to a key belonging to another environment.
     public int Environment { get; init; } = 1;

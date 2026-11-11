@@ -23,7 +23,8 @@ namespace Aiursoft.WeChatExam.Services;
 /// Reply success only after the corresponding transaction committed.
 /// </summary>
 public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPaymentReconciliationService reconciliation,
-    IOptions<AppSettings> options, ILogger<VirtualPaymentNotificationService> logger, VirtualPaymentRefundService refunds) : IScopedDependency
+    IOptions<AppSettings> options, ILogger<VirtualPaymentNotificationService> logger, VirtualPaymentRefundService refunds,
+    VirtualPaymentIosRefundAdviceService iosAdvice) : IScopedDependency
 {
     public const int MaximumBodyBytes = 65536;
 
@@ -44,13 +45,27 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
     public bool VerifyEcho(string? timestamp, string? nonce, string? signature) =>
         IsConfigured && VerifySignature(timestamp, nonce, "", signature);
 
+    // Existing callers retain the acknowledgement result. HTTP callers use the
+    // reply-aware entry point so an iOS business response is never discarded.
     public async Task<VirtualPaymentNotificationResult> HandleAsync(string body, string? timestamp, string? nonce,
+        string? signature, CancellationToken cancellationToken = default) =>
+        (await HandleWithReplyAsync(body, timestamp, nonce, signature, cancellationToken)).Result;
+
+    public async Task<VirtualPaymentNotificationResponse> HandleWithReplyAsync(string body, string? timestamp, string? nonce,
         string? signature, CancellationToken cancellationToken = default)
     {
         if (!IsConfigured || !db.Database.IsRelational() || db.Database.CurrentTransaction != null ||
-            System.Transactions.Transaction.Current != null) return VirtualPaymentNotificationResult.Retry;
+            System.Transactions.Transaction.Current != null) return new(VirtualPaymentNotificationResult.Retry);
         var authenticated = ReadAuthenticatedMessage(body, timestamp, nonce, signature);
-        if (authenticated == null) return VirtualPaymentNotificationResult.Rejected;
+        if (authenticated == null) return new(VirtualPaymentNotificationResult.Rejected);
+        return authenticated.IosRefund != null
+            ? await HandleIosRefundAsync(authenticated, cancellationToken)
+            : new(await HandleAuthenticatedAsync(authenticated, cancellationToken));
+    }
+
+    private async Task<VirtualPaymentNotificationResult> HandleAuthenticatedAsync(AuthenticatedMessage authenticated,
+        CancellationToken cancellationToken)
+    {
         try
         {
             if (authenticated.Refund is { } refund) return await HandleRefundAsync(refund, cancellationToken);
@@ -82,6 +97,104 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
             logger.LogError("Virtual payment notification could not commit its result.");
             return VirtualPaymentNotificationResult.Retry;
         }
+    }
+
+    private async Task<VirtualPaymentNotificationResponse> HandleIosRefundAsync(AuthenticatedMessage authenticated,
+        CancellationToken cancellationToken)
+    {
+        if (!options.Value.WeChat.VirtualPayment.IosRefundAdviceEnabled || db.ChangeTracker.HasChanges())
+            return new(VirtualPaymentNotificationResult.Retry);
+        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        deadline.CancelAfter(TimeSpan.FromSeconds(2));
+        try
+        {
+            var retrying = false;
+            return await db.Database.CreateExecutionStrategy().ExecuteAsync<VirtualPaymentNotificationResponse>(async token =>
+            {
+                if (retrying) db.ChangeTracker.Clear();
+                retrying = true;
+                var query = authenticated.IosRefund!;
+                // Deliberately no merchant-ID fallback or guessed query_order alias.
+                // Activation requires platform confirmation that pay_order_id matches
+                // this server-verified platform reference; otherwise stay undecided.
+                var advice = await iosAdvice.GetAdviceByPlatformOrderAsync(query.OrderId, query.ProductId,
+                    query.Quantity, query.ProvidedStatus, token);
+                if (advice is not { ResultCode: 1, Environment: 0 } || advice.PaymentOrderId == Guid.Empty ||
+                    string.IsNullOrWhiteSpace(advice.Evidence) || db.ChangeTracker.HasChanges())
+                    return new(VirtualPaymentNotificationResult.Retry);
+                var original = await db.PaymentOrders.AsNoTracking().SingleAsync(o => o.Id == advice.PaymentOrderId, token);
+                await using var transaction = await db.Database.BeginTransactionAsync(db.Database.IsSqlite()
+                    ? IsolationLevel.Serializable : IsolationLevel.ReadCommitted, token);
+                await db.Users.Where(u => u.Id == original.UserId)
+                    .ExecuteUpdateAsync(u => u.SetProperty(x => x.ConcurrencyStamp, x => x.ConcurrencyStamp), token);
+                var current = await db.PaymentOrders.AsNoTracking().SingleAsync(o => o.Id == original.Id, token);
+                if (current.UserId != original.UserId) return new(VirtualPaymentNotificationResult.Retry);
+                if (current.CouponId.HasValue)
+                    await db.Coupons.Where(c => c.Id == current.CouponId)
+                        .ExecuteUpdateAsync(c => c.SetProperty(x => x.IsEnabled, x => x.IsEnabled), token);
+                await db.PaymentOrders.Where(o => o.Id == current.Id)
+                    .ExecuteUpdateAsync(o => o.SetProperty(x => x.Status, x => x.Status), token);
+                // Re-check committed delivery facts under the same locks as refund
+                // settlement: an earlier lookup must not override an intervening refund.
+                advice = await iosAdvice.GetAdviceForLockedOrderAsync(new VirtualPaymentIosRefundEnquiry(current.Id,
+                    query.OrderId, query.ProductId, query.Quantity, query.ProvidedStatus), token);
+                if (advice is not { ResultCode: 1, Environment: 0 }) return new(VirtualPaymentNotificationResult.Retry);
+                db.PaymentLogs.Add(new PaymentLog { PaymentOrderId = advice.PaymentOrderId,
+                    EventType = "VirtualPaymentIosRefundAdvice", RawData = JsonSerializer.Serialize(new
+                    {
+                        authenticated.RequestHash, query.OrderId, query.ProductId, query.Quantity, query.ProvidedStatus,
+                        query.RefundTime, advice.ResultCode, advice.ResultInfo, advice.Evidence
+                    }) });
+                // Each answer attempt has its own audit record, not a financial
+                // settlement. Save failure must never produce an unaudited answer.
+                await db.SaveChangesAsync(token);
+                await transaction.CommitAsync(token);
+                token.ThrowIfCancellationRequested();
+                return new(VirtualPaymentNotificationResult.Completed, EncryptIosReply(advice, authenticated.Xml),
+                    authenticated.Xml ? "application/xml" : "application/json");
+            }, deadline.Token);
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            return new(VirtualPaymentNotificationResult.Retry);
+        }
+        catch (OperationCanceledException) { throw; }
+        catch (Exception)
+        {
+            logger.LogError("iOS virtual payment refund advice could not be recorded or returned.");
+            return new(VirtualPaymentNotificationResult.Retry);
+        }
+    }
+
+    private string EncryptIosReply(VirtualPaymentIosRefundAdvice advice, bool xml)
+    {
+        // The nested business response is documented for cloud callbacks. Keep
+        // this HTTP transport opt-in until its shape is accepted by the platform.
+        var plain = xml ? new XElement("xml", new XElement("ErrCode", 0), new XElement("ErrMsg", "success"),
+            new XElement("IosRefundQueryResponse", new XElement("result_code", advice.ResultCode),
+                new XElement("result_info", advice.ResultInfo), new XElement("evidence", advice.Evidence))).ToString(SaveOptions.DisableFormatting)
+            : JsonSerializer.Serialize(new { ErrCode = 0, ErrMsg = "success", IosRefundQueryResponse = new
+            { result_code = advice.ResultCode, result_info = advice.ResultInfo, evidence = advice.Evidence } });
+        var text = Encoding.UTF8.GetBytes(plain);
+        var app = Encoding.UTF8.GetBytes(options.Value.WeChat.AppId);
+        var length = 20 + text.Length + app.Length;
+        var padding = 32 - length % 32;
+        var bytes = new byte[length + padding];
+        RandomNumberGenerator.Fill(bytes.AsSpan(0, 16));
+        System.Buffers.Binary.BinaryPrimitives.WriteInt32BigEndian(bytes.AsSpan(16, 4), text.Length);
+        text.CopyTo(bytes, 20); app.CopyTo(bytes, 20 + text.Length);
+        Array.Fill(bytes, (byte)padding, length, padding);
+        var key = Convert.FromBase64String(options.Value.WeChat.VirtualPayment.CallbackEncodingAesKey + "=");
+        using var aes = Aes.Create(); aes.Key = key;
+        var encrypted = Convert.ToBase64String(aes.EncryptCbc(bytes, key.AsSpan(0, 16), PaddingMode.None));
+        var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture);
+        var nonce = Convert.ToHexString(RandomNumberGenerator.GetBytes(16));
+        var fields = new[] { options.Value.WeChat.VirtualPayment.CallbackToken, timestamp, nonce, encrypted };
+        Array.Sort(fields, StringComparer.Ordinal);
+        var signature = Convert.ToHexString(SHA1.HashData(Encoding.UTF8.GetBytes(string.Concat(fields)))).ToLowerInvariant();
+        return xml ? new XElement("xml", new XElement("Encrypt", encrypted), new XElement("MsgSignature", signature),
+            new XElement("TimeStamp", timestamp), new XElement("Nonce", nonce)).ToString(SaveOptions.DisableFormatting)
+            : JsonSerializer.Serialize(new { Encrypt = encrypted, MsgSignature = signature, TimeStamp = timestamp, Nonce = nonce });
     }
 
     private async Task<VirtualPaymentNotificationResult> HandleRefundAsync(RefundMessage message, CancellationToken cancellationToken)
@@ -172,6 +285,20 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
                 : json!.RootElement.TryGetProperty(name, out var value) && value.TryGetInt64(out var jsonNumber) ? jsonNumber : null;
             bool Has(string name) => root != null ? root.Element(name) != null : json!.RootElement.TryGetProperty(name, out _);
             if (Text("MsgType") != "event") return null;
+            if (Text("Event") == "xpay_subscribe_ios_refund_query_notify")
+            {
+                var order = Text("pay_order_id"); var product = Text("product_id");
+                var names = new[] { "pay_order_id", "product_id", "p_count", "provide_status", "refund_time", "order_time" };
+                if (root != null && names.Any(n => root.Element(n)?.HasElements == true)) return null;
+                if (string.IsNullOrWhiteSpace(order) || order.Length > 128 || string.IsNullOrWhiteSpace(product) || product.Length > 128 ||
+                    !int.TryParse(Text("p_count"), NumberStyles.None, CultureInfo.InvariantCulture, out var quantity) || quantity <= 0 ||
+                    !int.TryParse(Text("provide_status"), NumberStyles.None, CultureInfo.InvariantCulture, out var provided) || provided is < 0 or > 2 ||
+                    !long.TryParse(Text("refund_time"), NumberStyles.None, CultureInfo.InvariantCulture, out var refundTime) ||
+                    !long.TryParse(Text("order_time"), NumberStyles.None, CultureInfo.InvariantCulture, out var orderTime) ||
+                    orderTime <= 0 || refundTime < orderTime || refundTime > DateTimeOffset.MaxValue.ToUnixTimeSeconds()) return null;
+                return new AuthenticatedMessage(IosRefund: new IosRefundMessage(order, product, quantity, provided, refundTime),
+                    Xml: xml, RequestHash: Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(plain))));
+            }
             if (Text("Event") == "xpay_refund_notify")
             {
                 var amount = Number("RefundFee");
@@ -203,7 +330,9 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
         }
     }
 
-    private sealed record AuthenticatedMessage(XPayGoodsDeliverNotifyEvent? Goods = null, RefundMessage? Refund = null);
+    private sealed record AuthenticatedMessage(XPayGoodsDeliverNotifyEvent? Goods = null, RefundMessage? Refund = null,
+        IosRefundMessage? IosRefund = null, bool Xml = false, string? RequestHash = null);
+    private sealed record IosRefundMessage(string OrderId, string ProductId, int Quantity, int ProvidedStatus, long RefundTime);
     private sealed record RefundMessage(string OpenId, string MerchantOrderId, string PlatformOrderId,
         string PlatformRefundId, int AmountInFen, int? Environment);
 
@@ -265,3 +394,6 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
 }
 
 public enum VirtualPaymentNotificationResult { Rejected, Retry, Completed }
+
+public sealed record VirtualPaymentNotificationResponse(VirtualPaymentNotificationResult Result,
+    string? Body = null, string ContentType = "text/plain");
