@@ -48,6 +48,12 @@ public class PaymentOrdersController(
         });
     }
 
+    [HttpGet]
+    [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    public async Task<IActionResult> VirtualPaymentReadiness([FromServices] VirtualPaymentReadinessService readiness) =>
+        this.StackView(await readiness.CheckAsync(HttpContext.RequestAborted));
+
     // GET: PaymentOrders/RefundReviews
     [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
     public async Task<IActionResult> RefundReviews(Guid? orderId, int page = 1)
