@@ -1381,6 +1381,8 @@ public class VirtualPaymentReconciliationTests
     [TestMethod]
     [DataRow("coupon")]
     [DataRow("snapshot")]
+    [DataRow("snapshot-removed")]
+    [DataRow("buyer")]
     [DataRow("review")]
     public async Task AdminEarlyRefundRechecksPurchaseAndEvidenceChangedDuringQuery(string fault)
     {
@@ -1391,6 +1393,13 @@ public class VirtualPaymentReconciliationTests
             await using var other = new SqliteContext(_dbOptions);
             if (fault == "coupon") await other.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.CouponId, (Guid?)null));
             if (fault == "snapshot") await other.VirtualPaymentSnapshots.ExecuteUpdateAsync(s => s.SetProperty(v => v.OpenId, "another-buyer"));
+            if (fault == "snapshot-removed") await other.VirtualPaymentSnapshots.ExecuteDeleteAsync();
+            if (fault == "buyer")
+            {
+                var otherBuyer = new User { Id = Guid.NewGuid().ToString(), UserName = "another-buyer", DisplayName = "Another buyer" };
+                other.Users.Add(otherBuyer); await other.SaveChangesAsync();
+                await other.PaymentOrders.ExecuteUpdateAsync(s => s.SetProperty(o => o.UserId, otherBuyer.Id));
+            }
             if (fault == "review") await other.PaymentLogs.ExecuteDeleteAsync();
         };
         Assert.AreEqual(VirtualPaymentRefundReconciliationResult.ReviewRequired,

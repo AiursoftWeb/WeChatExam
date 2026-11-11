@@ -239,7 +239,8 @@ public class PaymentRefundReviewTests : TestBase
         Assert.AreEqual(HttpStatusCode.Found, culture.StatusCode);
         var chinese = WebUtility.HtmlDecode(await Http.GetStringAsync(ReviewUrl()));
         var resources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.PaymentOrders.RefundReviews", typeof(Startup).Assembly);
-        var translated = resources.GetString("Review closed", System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
+        var translated = resources.GetResourceSet(System.Globalization.CultureInfo.GetCultureInfo("zh-CN"), true, false)?.GetString("Review closed")
+            ?? throw new InvalidOperationException("The Chinese refund review status is missing.");
         Assert.IsFalse(string.IsNullOrWhiteSpace(translated)); Assert.AreNotEqual("Review closed", translated);
         Assert.Contains(translated, chinese);
         using var check = Server!.Services.CreateScope();

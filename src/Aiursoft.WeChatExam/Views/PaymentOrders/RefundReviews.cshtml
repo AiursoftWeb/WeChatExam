@@ -1,3 +1,4 @@
+@using Aiursoft.WeChatExam.Services
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Authorization
 @using Microsoft.AspNetCore.Authorization
@@ -16,12 +17,12 @@
 @if (TempData["RefundReconciliationResult"] is int outcome)
 {
     <div class="card mb-3"><div class="card-body" role="status">
-        @switch ((Aiursoft.WeChatExam.Services.VirtualPaymentRefundReconciliationResult)outcome)
+        @switch ((VirtualPaymentRefundReconciliationResult)outcome)
         {
-            case Aiursoft.WeChatExam.Services.VirtualPaymentRefundReconciliationResult.Completed:
+            case VirtualPaymentRefundReconciliationResult.Completed:
                 @Localizer["The verified refund is settled. This order's coupon remains spent; other memberships are unchanged."]
                 break;
-            case Aiursoft.WeChatExam.Services.VirtualPaymentRefundReconciliationResult.Unavailable:
+            case VirtualPaymentRefundReconciliationResult.Unavailable:
                 @Localizer["The verification could not be completed. The order remains reserved. Please try again later."]
                 break;
             default:

@@ -70,14 +70,16 @@ public class VirtualPaymentRefundReconciliationService(WeChatExamDbContext db, I
                 ? IsolationLevel.Serializable : IsolationLevel.ReadCommitted);
             await db.Users.Where(u => u.Id == order.UserId)
                 .ExecuteUpdateAsync(s => s.SetProperty(u => u.ConcurrencyStamp, u => u.ConcurrencyStamp));
-            var current = await db.PaymentOrders.SingleAsync(o => o.Id == order.Id && o.UserId == order.UserId);
+            var current = await db.PaymentOrders.SingleOrDefaultAsync(o => o.Id == order.Id && o.UserId == order.UserId);
+            if (current == null) return VirtualPaymentRefundReconciliationResult.ReviewRequired;
             if (current.CouponId.HasValue)
                 await db.Coupons.Where(c => c.Id == current.CouponId)
                     .ExecuteUpdateAsync(s => s.SetProperty(c => c.IsEnabled, c => c.IsEnabled));
             await db.PaymentOrders.Where(o => o.Id == current.Id)
                 .ExecuteUpdateAsync(s => s.SetProperty(o => o.Status, o => o.Status));
             await db.Entry(current).ReloadAsync();
-            var saved = await db.VirtualPaymentSnapshots.AsNoTracking().SingleAsync(s => s.PaymentOrderId == current.Id);
+            var saved = await db.VirtualPaymentSnapshots.AsNoTracking().SingleOrDefaultAsync(s => s.PaymentOrderId == current.Id);
+            if (saved == null) return VirtualPaymentRefundReconciliationResult.ReviewRequired;
             if (current.Channel != PaymentChannel.WeChatVirtual || current.OutTradeNo != order.OutTradeNo ||
                 current.AmountInFen != order.AmountInFen || current.DiscountInFen != order.DiscountInFen ||
                 current.CouponId != order.CouponId || current.VipProductId != order.VipProductId ||
