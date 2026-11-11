@@ -62,6 +62,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();
         services.AddScoped<ICouponService, CouponService>();
+        services.AddScoped<IPaymentOrderService, PaymentOrderService>();
         services.AddScoped<IVirtualPaymentQueryService, VirtualPaymentQueryService>();
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();

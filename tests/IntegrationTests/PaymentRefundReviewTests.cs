@@ -1,6 +1,8 @@
 using System.Net;
 using System.Security.Claims;
 using System.Text.Json;
+using Aiursoft.DbTools;
+using static Aiursoft.WebTools.Extends;
 using Aiursoft.WeChatExam.Authorization;
 using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.Services;
@@ -15,6 +17,28 @@ public class PaymentRefundReviewTests : TestBase
     private readonly Guid _orderId = Guid.NewGuid();
     private readonly Guid _productId = Guid.NewGuid();
     private readonly string _buyerId = Guid.NewGuid().ToString();
+
+    private string _testDirectory = null!;
+    private readonly RefundHandler _handler = new();
+
+    [TestInitialize]
+    public override async Task CreateServer()
+    {
+        _testDirectory = Directory.CreateTempSubdirectory("RefundReviewTests-").FullName;
+        TestStartupWithMockWeChat.SqliteConnectionString = $"Data Source={_testDirectory}/refund.db";
+        TestStartupWithMockWeChat.VirtualPaymentHttpClientFactory = new RefundFactory(_handler);
+        using var reservation = new TestPortReservation();
+        Http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        Server = await AppAsync<TestStartupWithMockWeChat>(["--applicationName", "Aiursoft.WeChatExam",
+            "--AppSettings:WeChat:AppId=test-app", "--AppSettings:WeChat:AppSecret=synthetic-app-secret-with-at-least-32-characters",
+            "--AppSettings:WeChat:VirtualPayment:Enabled=false", "--AppSettings:WeChat:VirtualPayment:OfferId=offer",
+            "--AppSettings:WeChat:VirtualPayment:SandboxAppKey=synthetic-key",
+            $"--Storage:Path={_testDirectory}/storage"], port: reservation.Port);
+        reservation.ConfigureServer(Server);
+        await Server.UpdateDbAsync<WeChatExamDbContext>();
+        await Server.SeedAsync();
+        await Server.StartAsync();
+    }
 
     private async Task Seed(int count = 1, string reason = "membership_changed_or_missing", bool malformed = false,
         PaymentChannel channel = PaymentChannel.WeChatVirtual, string eventType = "VirtualPaymentRefundReview")
@@ -48,12 +72,18 @@ public class PaymentRefundReviewTests : TestBase
             var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
             db.PaymentLogs.RemoveRange(await db.PaymentLogs.Where(l => l.PaymentOrderId == _orderId).ToListAsync());
             db.VipMemberships.RemoveRange(await db.VipMemberships.Where(v => v.UserId == _buyerId).ToListAsync());
+            db.VirtualPaymentSnapshots.RemoveRange(await db.VirtualPaymentSnapshots.Where(v => v.PaymentOrderId == _orderId).ToListAsync());
             db.PaymentOrders.RemoveRange(await db.PaymentOrders.Where(o => o.Id == _orderId).ToListAsync());
             db.VipProducts.RemoveRange(await db.VipProducts.Where(p => p.Id == _productId).ToListAsync());
             db.Users.RemoveRange(await db.Users.Where(u => u.Id == _buyerId).ToListAsync());
             await db.SaveChangesAsync();
         }
         await base.CleanServer();
+        TestStartupWithMockWeChat.SqliteConnectionString = null;
+        TestStartupWithMockWeChat.VirtualPaymentHttpClientFactory = null;
+        _handler.Dispose();
+        Microsoft.Data.Sqlite.SqliteConnection.ClearAllPools();
+        if (Directory.Exists(_testDirectory)) Directory.Delete(_testDirectory, recursive: true);
     }
 
     private string ReviewUrl(int page = 1) => $"/PaymentOrders/RefundReviews?orderId={_orderId}&page={page}";
@@ -179,6 +209,47 @@ public class PaymentRefundReviewTests : TestBase
     }
 
     [TestMethod]
+    public async Task AuthorizedPostSettlesThroughTheRealQueryAdapterAndShowsClosedReviewInChinese()
+    {
+        await Seed(reason: "payment_not_locally_settled"); await LoginAsAdmin();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            var order = await db.PaymentOrders.SingleAsync(o => o.Id == _orderId);
+            order.Status = PaymentOrderStatus.Pending; order.PaidAt = null;
+            db.VipMemberships.RemoveRange(await db.VipMemberships.Where(v => v.UserId == _buyerId).ToListAsync());
+            db.VirtualPaymentSnapshots.Add(new VirtualPaymentSnapshot { PaymentOrderId = _orderId,
+                AppId = "test-app", OpenId = "saved-openid", SignData = JsonSerializer.Serialize(new {
+                    offerId = "offer", buyQuantity = 1, env = 1, currencyType = "CNY", productId = "course",
+                    goodsPrice = 6800, outTradeNo = order.OutTradeNo, attach = order.Id.ToString("N") }) });
+            _handler.OrderNumber = order.OutTradeNo;
+            await db.SaveChangesAsync();
+        }
+        var data = new Dictionary<string, string> { ["id"] = _orderId.ToString() };
+        using var post = await PostForm("/PaymentOrders/ReconcileRefund", data, ReviewUrl());
+        Assert.AreEqual(HttpStatusCode.Found, post.StatusCode);
+        var html = WebUtility.HtmlDecode(await Http.GetStringAsync(post.Headers.Location));
+        Assert.Contains("The verified refund is settled", html);
+        Assert.Contains("Review closed", html);
+        Assert.DoesNotContain("Verify refund and close review", html);
+        using var repeated = await PostForm("/PaymentOrders/ReconcileRefund", data, ReviewUrl());
+        Assert.AreEqual(HttpStatusCode.Found, repeated.StatusCode);
+        Assert.AreEqual(1, _handler.Queries);
+        using var culture = await Http.GetAsync("/Culture/Set?culture=zh-CN&returnUrl=/PaymentOrders/RefundReviews");
+        Assert.AreEqual(HttpStatusCode.Found, culture.StatusCode);
+        var chinese = WebUtility.HtmlDecode(await Http.GetStringAsync(ReviewUrl()));
+        var resources = new System.Resources.ResourceManager("Aiursoft.WeChatExam.Resources.Views.PaymentOrders.RefundReviews", typeof(Startup).Assembly);
+        var translated = resources.GetString("Review closed", System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
+        Assert.IsFalse(string.IsNullOrWhiteSpace(translated)); Assert.AreNotEqual("Review closed", translated);
+        Assert.Contains(translated, chinese);
+        using var check = Server!.Services.CreateScope();
+        var saved = check.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(PaymentOrderStatus.Refunded, (await saved.PaymentOrders.FindAsync(_orderId))!.Status);
+        Assert.AreEqual(0, await saved.VipMemberships.CountAsync(v => v.UserId == _buyerId));
+        Assert.AreEqual(1, await saved.PaymentLogs.CountAsync(l => l.PaymentOrderId == _orderId && l.EventType == "VirtualPaymentRefundReconciled"));
+    }
+
+    [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
     public async Task OnlyAnExactlyLinkedSettlementChangesTheReviewBadge(bool wrongLink)
@@ -224,4 +295,30 @@ public class PaymentRefundReviewTests : TestBase
         using var post = await Http.PostAsync("/PaymentOrders/ReconcileRefund", new FormUrlEncodedContent(new Dictionary<string, string> { ["id"] = _orderId.ToString() }));
         Assert.IsTrue(post.StatusCode == HttpStatusCode.Forbidden || post.Headers.Location?.ToString().Contains("/Error/Unauthorized") == true);
     }
+    private sealed class RefundFactory(RefundHandler handler) : IHttpClientFactory
+    {
+        public HttpClient CreateClient(string name) => new(handler, disposeHandler: false);
+    }
+
+    private sealed class RefundHandler : HttpMessageHandler
+    {
+        public string? OrderNumber { get; set; }
+        public int Queries { get; private set; }
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            string body;
+            if (request.RequestUri!.AbsolutePath == "/cgi-bin/stable_token")
+                body = "{\"access_token\":\"synthetic-token\",\"expires_in\":7200}";
+            else if (request.RequestUri.AbsolutePath == "/xpay/query_order")
+            {
+                Queries++;
+                body = JsonSerializer.Serialize(new { errcode = 0, order = new { order_id = OrderNumber, env_type = 2,
+                    order_type = 0, status = 5, biz_type = 0, order_fee = 6800, paid_fee = 6800, refund_fee = 6800,
+                    left_fee = 0, wx_order_id = "platform-order" } });
+            }
+            else throw new InvalidOperationException("Unexpected external endpoint in refund reconciliation.");
+            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(body) });
+        }
+    }
+
 }
