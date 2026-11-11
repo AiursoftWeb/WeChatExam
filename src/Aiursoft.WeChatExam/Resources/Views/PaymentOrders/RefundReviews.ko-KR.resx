@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>환불 정산 기록</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>검토 완료</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>모든 환불 정산 기록 표시</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>증거가 불완전하거나 일치하지 않습니다. 이 기록은 여전히 기술 검토가 필요하며, 권리나 쿠폰은 변경되지 않았습니다.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>멤버십이 변경되었거나 찾을 수 없습니다. 다른 유료 또는 선물 멤버십을 보호하기 위해 자동 멤버십 삭제가 중단되었습니다.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>환불 금액이 주문 결제 금액과 다릅니다. 멤버십을 변경하기 전에 플랫폼 기록을 확인하세요.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>인증 확인을 완료할 수 없습니다. 주문은 예약 상태로 유지됩니다. 잠시 후 다시 시도해 주세요.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>확인된 환불이 정산되었습니다. 이 주문의 쿠폰은 사용 상태로 유지되며, 다른 멤버십에는 변경 사항이 없습니다.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>수동 변경 후에도 이 기록들은 유지됩니다. 이 페이지를 görüntülen 것은 멤버십이나 쿠폰을 변경하지 않습니다.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>이 기능은 기존 환불을 확인하는 것이며, 환불을 요청하는 것이 아닙니다. 로컬 처리가 없는 검증된 전액 환불만 정산할 수 있습니다.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>이 주문은 로컬에서 결제가 완료되지 않았습니다. 멤버십을 변경하기 전에 해당 플랫폼의 결제 및 환불 내역을 확인하세요.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>이 주문은 멤버십 활성화 전에 환불되었습니다. 다른 유료 또는 선물된 멤버십은 변경되지 않았습니다.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>미확인</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>환불 확인 및 검토 종료</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>멤버십 및 구매 내역 보기</value>
