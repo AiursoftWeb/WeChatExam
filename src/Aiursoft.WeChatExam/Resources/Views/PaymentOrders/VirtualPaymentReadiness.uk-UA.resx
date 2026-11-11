@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>Зверніться до адміністратора, щоб він пов&apos;язав цей VIP-продукт із опублікованим віртуальним продуктом.</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>Зверніться до адміністратора розгортання, щоб він оновив конфігурацію сервера. Не вставляйте ключі в чат або на цю сторінку.</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>Назад до замовлень</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Перевірити знову</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>Перевірте курс або установу продукту, ціну та тривалість членства.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Перевірено на</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>Оберіть пісочницю (1) або продакшн (0) явно.</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>Налаштуйте ключ для обраного середовища. Ключ із іншого середовища не використовується.</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>Налаштуйте токен повідомлення та дійсний EncodingAESKey на сервері.</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Налаштуйте OfferId з налаштувань віртуальних платежів цього міні-програми.</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>Налаштуйте цільовий AppID та його AppSecret на сервері.</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>Налаштовано локально</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>Підтвердіть з платформою відповідність посилань на замовлення iOS-повернення та шифровану відповідь перед ввімкненням автоматичних рекомендацій.</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>Облікові дані ніколи не відображаються. Перевірки наявності та формату не можуть підтвердити власність, діючість або затвердження платформою.</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Редагувати VIP-продукт</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>Увімкніть доступ WeChat у конфігурації сервера.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>фен</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>Безкоштовний продукт: оплата через платформу не потрібна.</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>Некоректне середовище</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Порада щодо відшкодування на iOS вимкнена, поки не буде завершено перевірку платформи.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Порада щодо відшкодування коштів для iOS увімкнена. Ця локальна сторінка не може підтвердити, що протокол платформи було перевірено.</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>Продуктивне середовище</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>Локальні перевірки пройдено</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>Локальне зіставлення та відповідність ціни; публікація на платформі потребує додаткового підтвердження.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>мапінги не відповідають активному продукту VIP. Попросіть адміністратора переглянути їх; не видаляйте історичні продукти або замовлення.</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>Реєстраційні дані для перевірки повідомлень</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>Доступ міні-програми</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>Ідентифікація міні-програми</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>Кілька прив&apos;язок використовують цей платформний продукт. Перевірте бажане право на доступ перед тестуванням.</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>Потребує налаштування</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>Нові віртуальні продажі вимкнено</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>Нові віртуальні продажі активовано</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>Не знайдено жодних активних VIP-продуктів курсів чи установ.</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>Середовище оплат</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>Ключ підпису платежу</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>Продукти, доступні в міні-програмі</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Песочниця</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>Конфігурація сервера</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>Налаштування потребує уваги</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>Ще потрібно зробити перед постачанням</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>Протестуйте оплату, купони, скасування та відновлення на Android та iPhone; перевірте відшкодування на платформі та видалення членства.</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>Задана повна ціна відрізняється від ціни VIP. Перевірте обидві ціни перед оновленням відповідності.</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>Ця сторінка перевіряє лише локальну конфігурацію. Вона не зв&apos;язується з WeChat, не змінює налаштування та не здійснює оплати. Проходження цих перевірок не означає, що продажі готові до роботи.</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>Використовуйте явно вказану тестову збірку для віртуальних платежів. Типова збірка міні-програми все ще використовує звичайні платежі.</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>Перевірте схвалення платформи, AppID, OfferId та опубліковані продукти в консолі WeChat.</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>Перевірте публічний URL HTTPS-повідомлення та шифрований callback із WeChat.</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>Тільки перегляд</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>ІД VIP-продукту</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>Віртуальний платіжний акаунт</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Налаштування віртуальних платежів</value>
+  </data>
+
+</root>

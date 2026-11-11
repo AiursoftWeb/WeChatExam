@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>Ζητήστε από τον διαχειριστή να συνδέσει αυτό το προϊόν VIP με ένα δημοσιευμένο εικονικό προϊόν.</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>Ζητήστε από τον διαχειριστή ανάπτυξης να ενημερώσει τη διαμόρφωση του διακομιστή. Μην επικολλείτε κλειδιά σε συνομιλίες ή σε αυτήν τη σελίδα.</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>Επιστροφή στα παραγγέλματα</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Ελέγξτε ξανά</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>Ελέγξτε το μάθημα ή τον οργανισμό του προϊόντος, την τιμή και τη διάρκεια της συνδρομής.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Έλεγχος στις</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>Επιλέξτε ρητά το περιβάλλον sandbox (1) ή live (0).</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>Ρυθμίστε το κλειδί για την επιλεγμένη περιβάλλον. Ένα κλειδί από άλλο περιβάλλον δεν χρησιμοποιείται.</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>Ρυθμίστε το Token μηνύματος και ένα έγκυρο EncodingAESKey στον διακομιστή.</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Ρυθμίστε το OfferId από τις ρυθμίσεις εικονικών πληρωμών του παρόντος προγράμματος.</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>Ρυθμίστε τον AppID και το AppSecret του στο διακομιστή.</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>Ρυθμισμένο τοπικά</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>Επιβεβαιώστε την αντιστοίχιση αναφοράς παραγγελίας για επιστροφές iOS και την κρυπτογραφημένη απάντηση με τη πλατφόρμα πριν ενεργοποιήσετε την αυτόματη συμβουλή.</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>Τα διαπιστευτήρια δεν εμφανίζονται ποτέ. Οι έλεγχοι παρουσίας και μορφής δεν μπορούν να επαληθεύσουν την ιδιοκτησία, τη θεμελιωδότητα ή την έγκριση από τη πλατφόρμα.</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Επεξεργασία προϊόντος VIP</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>Ενεργοποιήστε την πρόσβαση WeChat στη διαμόρφωση του διακομιστή.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>Δωρεάν προϊόν: δεν απαιτείται πληρωμή πλατφόρμας.</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>Μη έγκυρο περιβάλλον</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Η συμβουλή επιστροφής χρημάτων iOS είναι απενεργοποιημένη εκκρεμής επαλήθευσης πλατφόρμας.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Η συμβουλή επιστροφής χρημάτων iOS είναι ενεργοποιημένη. Αυτή η τοπική σελίδα δεν μπορεί να πιστοποιήσει ότι το πρωτόκολλο πλατφόρμας της έχει επαληθευτεί.</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>Προσωρινό περιβάλλον</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>Τοπικοί έλεγχοι περαστήκαν</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>Τοπική χαρτογράφηση και αντιστοίχιση τιμών· η δημοσίευση στην πλατφόρμα απαιτεί ακόμα επιβεβαίωση.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>συνοδεύσεις δεν ταιριάζουν σε ένα ενεργό προϊόν VIP. Ζητήστε από τον διαχειριστή να τα ελέγξει· μην διαγράφετε ιστορικά προϊόντα ή παραγγελίες.</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>Πιστοποιητικά επαλήθευσης μηνυμάτων</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>Πρόσβαση στο mini program</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>Ταυτότητα μικρού προγράμματος</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>Πολλαπλές απεικονίσεις μοιράζονται αυτό το προϊόν πλατφόρμας. Επιβεβαιώστε τα προβλεπόμενα δικαιώματα πριν από τη δοκιμή.</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>Χρειάζεται ρύθμιση</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>Οι νέες εικονικές πωλήσεις είναι απενεργοποιημένες</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>Ενεργοποιήθηκαν νέες εικονικές πωλήσεις</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>Δεν βρέθηκαν ενεργοί VIP προϊόντες μαθημάτων ή ιδρυμάτων.</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>Περιβάλλον πληρωμής</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>Κλειδί υπογραφής πληρωμής</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>Προϊόντα διαθέσιμα στο μικρό πρόγραμμα</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Περιβάλλον δοκιμών</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>Διαμόρφωση διακομιστή</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>Η ρύθμιση χρειάζεται προσοχή</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>Απαιτείται ακόμα πριν την παράδοση</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>Δοκιμάστε πληρωμές, κουπόνια, ακυρώσεις και αποκατάσταση σε Android και iPhone· επιβεβαιώστε τις επιστροφές πλατφόρμας και την αφαίρεση συνδρομής.</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>Η τιμή πλήρους τιμολόγησης της αντιστοίχισης διαφέρει από την τιμή VIP. Επιβεβαιώστε και τις δύο τιμές πριν ενημερώσετε την αντιστοίχιση.</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>Αυτή η σελίδα ελέγχει μόνο την τοπική διαμόρφωση. Δεν επικοινωνεί με το WeChat, δεν αλλάζει ρυθμίσεις και δεν πραγματοποιεί πληρωμή. Το πέρασμα αυτών των ελέγχων δεν σημαίνει ότι οι πωλήσεις είναι έτοιμες.</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>Χρησιμοποιήστε μια έκδοση δοκιμής ρητά ορισμένης εικονικής πληρωμής. Η προεπιλεγμένη έκδοση της εφαρμογής mini program εξακολουθεί να χρησιμοποιεί συνηθισμένη πληρωμή.</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>Επαληθεύστε την έγκριση της πλατφόρμας, το AppID, το OfferId και τα δημοσιευμένα προϊόντα στην κονσόλα WeChat.</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>Επαληθεύστε το δημόσιο URL μηνύματος HTTPS και το κρυπτογραφημένο callback με το WeChat.</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>Μόνο προβολή</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>Αριθμός προϊόντος VIP</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>Λογαριασμός εικονικών πληρωμών</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Ρύθμιση εικονικών πληρωμών</value>
+  </data>
+
+</root>

@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Rekordy weryfikacji zwrotów</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Recenzja zamknięta</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Pokaż wszystkie rekordy rozliczeń zwrotów</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Dowody są niekompletne lub niezgodne. Ten rekord nadal wymaga weryfikacji technicznej; nie zmieniono żadnych uprawnień ani kuponów.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>Członkostwo zostało zmienione lub nie można go było znaleźć. Automatyczne usunięcie członkostwa zostało wstrzymane, aby chronić inne płatne lub podarowane członkostwa.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Kwota zwrotu różni się od płatności za zamówienie. Sprawdź rekord platformy przed zmianą jakiejkolwiek członkostwa.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>Weryfikacja nie mogła zostać zakończona. Zamówienie pozostaje zarezerwowane. Spróbuj ponownie później.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>Zweryfikowany zwrot został rozliczony. Kupon z tego zamówienia pozostaje wykorzystany; inne subskrypcje nie uległy zmianie.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Te pozycje pozostają po ręcznych zmianach. Wyświetlanie tej strony nie zmienia członkostw ani kuponów.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Ta funkcja sprawdza istniejący zwrot; nie występuje ona o zwrot. Tylko zweryfikowany pełny zwrot bez lokalnego wykonania może zostać rozliczony.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>To zamówienie nie zostało lokalnie potwierdzone jako opłacone. Sprawdź płatność i zwrot na platformie przed zmianą członkostwa.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>To zamówienie zostało zwrócone przed aktywacją członkostwa. Inne płatne lub podarowane członkostwa nie uległy zmianie.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Niedostępne</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Zweryfikuj zwrot i zamknij przegląd</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Wyświetl członkostwa i zakupy</value>

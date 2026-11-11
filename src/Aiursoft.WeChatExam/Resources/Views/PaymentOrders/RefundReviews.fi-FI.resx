@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Palautusten tiliötöinnin tallenteet</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Tarkastelu suljettu</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Näytä kaikki palautussovitusrekisterit</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Todisteet ovat puutteellisia tai eivät täsmää. Tämä kirjaus vaatii edelleen teknistä tarkastelua; oikeuksia tai kupongeja ei ole muutettu.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>Jäsenyys oli muuttunut tai sitä ei löytynyt. Automaattinen jäsenyyden poisto keskeytettiin suojellakseen muita maksettuja tai lahjoja jäsenyyksiä.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Palautussumma poikkeaa tilauksen maksamismäärästä. Tarkista alustan kirjaukset ennen joidenkin jäsenyyksien muuttamista.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>Vahvistusta ei voitu suorittaa. Tilaus on edelleen varattu. Yritä myöhemmin uudelleen.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>Vahvistettu palautus on suoritettu. Tämän tilauksen kuponki on edelleen käytetty; muut jäsenyydet ovat muuttumattomia.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Nämä kirjanpidot säilyvät manuaalisten muutosten jälkeen. Tämän sivun katselu ei muuta jäsenyyksiä tai kupongeja.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Tämä tarkistaa olemassa olevan palautuksen; se ei pyydä palautusta. Vain vahvistettu täytpalautus ilman paikallista täyttämistä voidaan kirjata.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>Tätä tilausta ei ole paikallisesti vahvistettu maksetuksi. Tarkista sen alustan maksu ja palautus ennen jäsenyyden muuttamista.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>Tämä tilaus palautettiin ennen jäsenyyden aktivointia. Muut maksetut tai lahjoinen jäsenyydet eivät ole muuttuneet.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Ei käytettävissä</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Vahvista palautus ja sulje tarkastelu</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Näytä jäsenyydet ja ostokset</value>

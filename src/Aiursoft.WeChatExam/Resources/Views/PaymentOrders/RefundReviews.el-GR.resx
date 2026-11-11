@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Καταγραφές ρύθμισης επιστροφών</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Εξέταση κλειστή</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Εμφάνιση όλων των εγγραφών συνδιαλλαγής επιστροφών</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Τα στοιχεία είναι ελλιπή ή δεν ταιριάζουν. Αυτό το εγγραφή απαιτεί ακόμα τεχνική αξιολόγηση; δεν έγιναν αλλαγές σε δικαιώματα ή κουπόνια.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>Το μέλος τροποποιήθηκε ή δεν βρέθηκε. Η αυτόματη αφαίρεση του μέλους διακόπηκε για να προστατευθούν άλλα πληρωμένα ή δωρεάν μέλη.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Το ποσό της επιστροφής διαφέρει από την πληρωμή της παραγγελίας. Ελέγξτε το αρχείο της πλατφόρμας πριν από οποιαδήποτε αλλαγή στην εγγραφή.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>Η επαλήθευση δεν μπόρεσε να ολοκληρωθεί. Η παραγγελία παραμένει εδωμένη. Παρακαλώ προσπαθήστε ξανά αργότερα.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>Το επαληθευμένο επιστροφή κεφαλαίου έχει εξοφληθεί. Το κουπόνι της παραγγελίας παραμένει χρησιμοποιημένο· τα άλλα δικαιώματα μέλους παραμένουν αμετάβλητα.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Αυτά τα αρχεία παραμένουν μετά από χειροκίνητες αλλαγές. Η προβολή αυτής της σελίδας δεν αλλάζει συνδρομές ή κουπόνια.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Αυτό ελέγχει μια υπάρχουσα επιστροφή χρημάτων. Δεν ζητά επιστροφή χρημάτων. Μόνο μια επαληθευμένη πλήρης επιστροφή χρημάτων χωρίς τοπική εκπλήρωση μπορεί να εξοφληθεί.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>Αυτή η παραγγελία δεν επιβεβαιώθηκε τοπικά ως πληρωμένη. Ελέγξτε την πληρωμή και την επιστροφή χρημάτων της πλατφόρμας πριν από οποιαδήποτε αλλαγή στη συνδρομή.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>Αυτή η παραγγελία επιστράφηκε πριν από την ενεργοποίηση της συνδρομής. Οι υπόλοιπες πληρωμένες ή δωρεάν συνδρομές δεν έχουν μεταβληθεί.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Μη διαθέσιμο</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Επαληθεύστε την επιστροφή και κλείστε την αναθεώρηση</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Προβολή συνδρομών και αγορών</value>

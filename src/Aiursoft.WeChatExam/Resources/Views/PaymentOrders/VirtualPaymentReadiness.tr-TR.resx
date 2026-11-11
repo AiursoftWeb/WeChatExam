@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>Yöneticiden bu VIP ürününü yayımlanmış bir sanal ürüne eşlemesini isteyin.</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>Sunucu yapılandırmasını güncellemesi için dağıtım yöneticisine başvurun. Anahtarları sohbetlere veya bu sayfaya yapıştırmayın.</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>Siparişlere geri dön</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Tekrar kontrol et</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>Ürünün kurs veya kuruluşunu, fiyatını ve üyelik süresini kontrol edin.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Kontrol Edilme Zamanı</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>Sandbox (1) veya canlı (0) ortamını açıkça seçin.</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>Seçilen ortam için anahtarı yapılandırın. Başka bir ortamdan gelen anahtar kullanılmaz.</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>Sunucuda mesaj Token&apos;ını ve geçerli bir EncodingAESKey&apos;ı yapılandırın.</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Bu mini programın sanal ödeme ayarlarından OfferId&apos;yi yapılandırın.</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>Sunucuda hedef AppID&apos;yi ve AppSecret&apos;ını yapılandırın.</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>Yerel olarak yapılandırıldı</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>Otomatik iade önerisini etkinleştirmeden önce iOS iade sipariş referans eşlemesini ve şifreli yanıtı platformla doğrulayın.</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>Kimlik bilgileri asla görüntülenmez. Varlık ve biçim denetimleri, sahipliği, geçerliliği veya platform onayını doğrulayamaz.</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>VIP ürününü düzenle</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>Sunucu yapılandırmasında WeChat erişimini etkinleştirin.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>Ücretsiz ürün: platform ödemesi gerekmez.</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>Geçersiz ortam</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOS iade önerisi, platform doğrulaması beklenirken devre dışı bırakılmıştır.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOS iade önerisi etkinleştirildi. Bu yerel sayfa, platform protokolünün doğrulandığını garanti edemez.</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>Canlı ortam</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>Yerel kontrollerden geçti</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>Yerel eşleme ve fiyat uyumu tamam; platform yayınlaması hâlâ doğrulanmalı.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>eşlemeler etkin bir VIP ürününe uymuyor. Yöneticinin bunları incelemesini isteyin; geçmiş ürünleri veya siparişleri silmeyin.</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>Mesaj doğrulama kimlik bilgileri</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>Mini program erişimi</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>Mini program kimliği</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>Birden fazla eşleme bu platform ürününü paylaşır. Test etmeden önce hedeflenen yetkiyi doğrulayın.</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>Yapılandırma gerekli</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>Yeni sanal satışlar devre dışı</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>Yeni sanal satışlar etkinleştirildi</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>Etkinleştirilmiş kurs veya kurum VIP ürünü bulunamadı.</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>Ödeme ortamı</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>Ödeme imzalama anahtarı</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>Mini programda kullanılabilir ürünler</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Sanal ortam</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>Sunucu yapılandırması</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>Kurulum dikkat gerektiriyor</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>Teslimat Öncesi Hâlâ Gerekli</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>Android ve iPhone üzerinde ödeme, kupon, iptal ve kurtarma işlemlerini test edin; platform iadelerini ve üyelik silme işlemlerini doğrulayın.</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>Eşlenen tam fiyat, VIP fiyatından farklıdır. Eşlemeyi güncellemeden önce her iki fiyatı da doğrulayın.</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>Bu sayfa yalnızca yerel yapılandırmayı kontrol eder. WeChat ile bağlantı kurmaz, ayarları değiştirmez veya ödeme yapmaz. Bu kontrollerden geçmek, satışların hazır olduğu anlamına gelmez.</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>Açıkça sanal ödeme test derlemesi kullanın. Varsayılan mini program derlemesi hâlâ sıradan ödemeyi kullanmaktadır.</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>WeChat konsolunda platform onayını, AppID&apos;yi, OfferId&apos;yi ve yayınlanmış ürünleri doğrulayın.</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>Herkese açık HTTPS mesaj URL&apos;sini ve şifreli geri bildirimi WeChat ile doğrulayın.</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>Sadece görüntüle</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP ürün kimliği</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>Sanal ödeme hesabı</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Sanal ödeme kurulumu</value>
+  </data>
+
+</root>
