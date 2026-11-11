@@ -1,0 +1,97 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Authorization
+@using Aiursoft.WeChatExam.Models.PaymentOrdersViewModels
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService Authorization
+@model VirtualPaymentReadinessViewModel
+@{
+    var canEdit = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditVipProducts)).Succeeded;
+    var checks = new Dictionary<string, (string Name, string Help)>
+    {
+        ["weChat"] = (@Localizer["Mini program access"].Value, @Localizer["Enable WeChat access in the server configuration."].Value),
+        ["app"] = (@Localizer["Mini program identity"].Value, @Localizer["Configure the target AppID and its AppSecret on the server."].Value),
+        ["environment"] = (@Localizer["Payment environment"].Value, @Localizer["Choose sandbox (1) or live (0) explicitly."].Value),
+        ["offer"] = (@Localizer["Virtual payment account"].Value, @Localizer["Configure the OfferId from this mini program's virtual payment settings."].Value),
+        ["key"] = (@Localizer["Payment signing key"].Value, @Localizer["Configure the key for the selected environment. A key from another environment is not used."].Value),
+        ["callback"] = (@Localizer["Message verification credentials"].Value, @Localizer["Configure the message Token and a valid EncodingAESKey on the server."].Value)
+    };
+    var statuses = new Dictionary<VirtualProductSetupStatus, string>
+    {
+        [VirtualProductSetupStatus.Configured] = @Localizer["Local mapping and price match; platform publication still needs verification."].Value,
+        [VirtualProductSetupStatus.Free] = @Localizer["Free product: no platform payment is needed."].Value,
+        [VirtualProductSetupStatus.InvalidProduct] = @Localizer["Check the product's course or institution, price and membership duration."].Value,
+        [VirtualProductSetupStatus.MissingMapping] = @Localizer["Ask the administrator to map this VIP product to a published virtual product."].Value,
+        [VirtualProductSetupStatus.PriceMismatch] = @Localizer["The mapped full price differs from the VIP price. Confirm both prices before updating the mapping."].Value,
+        [VirtualProductSetupStatus.DuplicateMapping] = @Localizer["Multiple mappings share this platform product. Confirm the intended entitlement before testing."].Value
+    };
+}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+    <h1 class="h3 mb-0">@Localizer["Virtual payment setup"]</h1>
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-action="VirtualPaymentReadiness" class="btn btn-outline-primary">@Localizer["Check again"]</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">@Localizer["Back to orders"]</a>
+    </div>
+</div>
+<div class="alert alert-info"><div class="alert-message">
+    @Localizer["This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready."]
+</div></div>
+<div class="card mb-3"><div class="card-body">
+    <div class="d-flex flex-wrap gap-3 align-items-center mb-3">
+        @if (Model.LocalChecksPassed) { <span class="badge bg-success">@Localizer["Local checks passed"]</span> }
+        else { <span class="badge bg-warning text-dark">@Localizer["Setup needs attention"]</span> }
+        @if (Model.SalesEnabled) { <span class="badge bg-warning text-dark">@Localizer["New virtual sales enabled"]</span> }
+        else { <span class="badge bg-secondary">@Localizer["New virtual sales disabled"]</span> }
+        @if (Model.Environment == 1) { <span>@Localizer["Sandbox"]</span> }
+        else if (Model.Environment == 0) { <span>@Localizer["Live environment"]</span> }
+        else { <span>@Localizer["Invalid environment"]</span> }
+    </div>
+    <small class="text-muted">@Localizer["Checked at"] <time data-utc-time="@Model.CheckedAt.ToHtmlDateTime()"></time></small>
+    <p class="mb-0 mt-2">@Localizer["Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval."]</p>
+</div></div>
+<div class="card mb-3"><div class="card-body">
+    <h2 class="h5">@Localizer["Server configuration"]</h2>
+    @foreach (var check in Model.Checks)
+    {
+        <div class="d-flex flex-wrap gap-2 align-items-start border-bottom py-2">
+            @if (check.Passed) { <span class="badge bg-success">@Localizer["Configured locally"]</span> }
+            else { <span class="badge bg-danger">@Localizer["Needs configuration"]</span> }
+            <div><strong>@checks[check.Code].Name</strong>
+                @if (!check.Passed) { <p class="mb-0 mt-1">@checks[check.Code].Help</p> }
+            </div>
+        </div>
+    }
+    <p class="mt-3 mb-0">@Localizer["Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page."]</p>
+</div></div>
+<div class="card mb-3"><div class="card-body">
+    <h2 class="h5">@Localizer["Products available in the mini program"] <span class="badge bg-secondary">@Model.Products.Count</span></h2>
+    @if (Model.Products.Count == 0) { <p>@Localizer["No enabled course or institution VIP products were found."]</p> }
+    @foreach (var product in Model.Products)
+    {
+        <div class="border rounded p-3 mt-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                <strong>@product.Name</strong>
+                <span>@product.PriceInFen @Localizer["fen"]</span>
+                @if (canEdit) { <a asp-controller="VipProducts" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-outline-primary">@Localizer["Edit VIP product"]</a> }
+                else { <span class="text-muted">@Localizer["View only"]</span> }
+            </div>
+            <p class="mt-2 mb-1">@statuses[product.Status]</p>
+            <small class="text-muted">@Localizer["VIP product ID"]: @product.Id</small>
+        </div>
+    }
+    @if (Model.UnusedMappingCount > 0)
+    {
+        <p class="text-warning mt-3 mb-0">@Model.UnusedMappingCount @Localizer["mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders."]</p>
+    }
+</div></div>
+<div class="card"><div class="card-body">
+    <h2 class="h5">@Localizer["Still required before delivery"]</h2>
+    <ol class="mb-3">
+        <li class="mb-2">@Localizer["Verify platform approval, AppID, OfferId and published products in the WeChat console."]</li>
+        <li class="mb-2">@Localizer["Verify the public HTTPS message URL and encrypted callback with WeChat."] <code>/api/virtual-payment/notify</code></li>
+        <li class="mb-2">@Localizer["Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment."]</li>
+        <li class="mb-2">@Localizer["Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal."]</li>
+        <li>@Localizer["Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice."]</li>
+    </ol>
+    @if (Model.IosAdviceEnabled) { <p class="mb-0 text-warning">@Localizer["iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified."]</p> }
+    else { <p class="mb-0">@Localizer["iOS refund advice is disabled pending platform verification."]</p> }
+</div></div>

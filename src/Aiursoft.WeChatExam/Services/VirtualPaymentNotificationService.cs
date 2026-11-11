@@ -30,17 +30,7 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
 
     // Optional message credentials must not prevent old application startup.
     // Independent of new-sales Enabled: past purchases still need notifications.
-    public bool IsConfigured
-    {
-        get
-        {
-            var settings = options.Value.WeChat;
-            if (string.IsNullOrWhiteSpace(settings.AppId) || string.IsNullOrWhiteSpace(settings.VirtualPayment.CallbackToken) ||
-                settings.VirtualPayment.CallbackToken.Length > 256 || settings.VirtualPayment.CallbackEncodingAesKey.Length != 43) return false;
-            try { return Convert.FromBase64String(settings.VirtualPayment.CallbackEncodingAesKey + "=").Length == 32; }
-            catch (FormatException) { return false; }
-        }
-    }
+    public bool IsConfigured => options.Value.WeChat.VirtualPayment.HasValidCallbackCredentials(options.Value.WeChat.AppId);
 
     public bool VerifyEcho(string? timestamp, string? nonce, string? signature) =>
         IsConfigured && VerifySignature(timestamp, nonce, "", signature);

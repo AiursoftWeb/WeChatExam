@@ -20,6 +20,16 @@ public class VirtualPaymentSettings
     public string CallbackToken { get; init; } = string.Empty;
     public string CallbackEncodingAesKey { get; init; } = string.Empty;
 
+    // Shared with the actual notification endpoint; diagnostics must not report
+    // a callback as configured when the endpoint would reject its credentials.
+    public bool HasValidCallbackCredentials(string appId)
+    {
+        if (string.IsNullOrWhiteSpace(appId) || string.IsNullOrWhiteSpace(CallbackToken) ||
+            CallbackToken.Length > 256 || CallbackEncodingAesKey.Length != 43) return false;
+        try { return Convert.FromBase64String(CallbackEncodingAesKey + "=").Length == 32; }
+        catch (FormatException) { return false; }
+    }
+
     // Server-managed mapping from our VIP product to the published WeChat goods.
     // The price is the published full price in fen, before our order's discount.
     // ConfigurationBinder supports string dictionary keys, not Guid keys.

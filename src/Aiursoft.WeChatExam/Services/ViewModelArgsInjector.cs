@@ -40,6 +40,7 @@ public class ViewModelArgsInjector(
     {
         // Titles, navbar strings.
         _ = localizer["Refund reconciliation records"];
+        _ = localizer["Virtual payment setup"];
         _ = localizer["Edit Coupon Amount"];
         _ = localizer["Paper Publication"];
         _ = localizer["Total Category Management"];
