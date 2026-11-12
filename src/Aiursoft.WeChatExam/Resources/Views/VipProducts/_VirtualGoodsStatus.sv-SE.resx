@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Check this product&apos;s name and settings, then retry synchronization." xml:space="preserve">
+    <value>Kontrollera produktens namn och inställningar och försök sedan synkroniseringen igen.</value>
+  </data>
+  <data name="New purchases are disabled" xml:space="preserve">
+    <value>Nya köp är inaktiverade</value>
+  </data>
+  <data name="New virtual payments are paused until this price is active. Existing orders keep their saved price." xml:space="preserve">
+    <value>Nya virtuella betalningar är pausade tills detta pris är aktivt. Befintliga ordrar behåller sitt sparade pris.</value>
+  </data>
+  <data name="No payment required" xml:space="preserve">
+    <value>Ingen betalning krävs</value>
+  </data>
+  <data name="Please check the product name, price and access scope" xml:space="preserve">
+    <value>Vänligen kontrollera produktens namn, pris och tillgångsomfattning</value>
+  </data>
+  <data name="Synchronizing with WeChat" xml:space="preserve">
+    <value>Synkroniserar med WeChat</value>
+  </data>
+  <data name="The last check did not complete. The system will check again automatically." xml:space="preserve">
+    <value>Den senaste kontrollen slutfördes inte. Systemet kommer att kontrollera igen automatiskt.</value>
+  </data>
+  <data name="WeChat price is active" xml:space="preserve">
+    <value>WeChat-priset är aktivt</value>
+  </data>
+  <data name="WeChat synchronization failed" xml:space="preserve">
+    <value>WeChat-synkronisering misslyckades</value>
+  </data>
+
+</root>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Check this product&apos;s name and settings, then retry synchronization." xml:space="preserve">
+    <value>Tarkista tämän tuotteen nimi ja asetukset, ja yritä synkronointia uudelleen.</value>
+  </data>
+  <data name="New purchases are disabled" xml:space="preserve">
+    <value>Uudet ostot ovat poistettu käytöstä</value>
+  </data>
+  <data name="New virtual payments are paused until this price is active. Existing orders keep their saved price." xml:space="preserve">
+    <value>Uudet virtuaalimaksut on keskeytetty, kunnes tämä hinta on voimassa. Olemassa olevat tilaukset säilyttävät tallennetun hintansa.</value>
+  </data>
+  <data name="No payment required" xml:space="preserve">
+    <value>Maksua ei vaadita</value>
+  </data>
+  <data name="Please check the product name, price and access scope" xml:space="preserve">
+    <value>Tarkista tuotteen nimi, hinta ja käyttöoikeusalue</value>
+  </data>
+  <data name="Synchronizing with WeChat" xml:space="preserve">
+    <value>Synkronoidaan WeChatia</value>
+  </data>
+  <data name="The last check did not complete. The system will check again automatically." xml:space="preserve">
+    <value>Viimeisin tarkistus ei valmis. Järjestelmä tarkistaa uudelleen automaattisesti.</value>
+  </data>
+  <data name="WeChat price is active" xml:space="preserve">
+    <value>WeChat-hinta on voimassa</value>
+  </data>
+  <data name="WeChat synchronization failed" xml:space="preserve">
+    <value>WeChat-synkronointi epäonnistui</value>
+  </data>
+
+</root>

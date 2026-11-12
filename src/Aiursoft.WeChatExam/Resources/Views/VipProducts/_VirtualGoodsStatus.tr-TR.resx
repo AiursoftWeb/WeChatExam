@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Check this product&apos;s name and settings, then retry synchronization." xml:space="preserve">
+    <value>Bu ürünün adını ve ayarlarını kontrol edin, ardından senkronizasyonu tekrar deneyin.</value>
+  </data>
+  <data name="New purchases are disabled" xml:space="preserve">
+    <value>Yeni alımlar devre dışı bırakıldı</value>
+  </data>
+  <data name="New virtual payments are paused until this price is active. Existing orders keep their saved price." xml:space="preserve">
+    <value>Yeni sanal ödemeler, bu fiyat etkin olana kadar duraklatılır. Mevcut siparişler kaydedilen fiyatlarını korur.</value>
+  </data>
+  <data name="No payment required" xml:space="preserve">
+    <value>Ödeme gerekmez</value>
+  </data>
+  <data name="Please check the product name, price and access scope" xml:space="preserve">
+    <value>Lütfen ürün adını, fiyatını ve erişim kapsamını kontrol edin</value>
+  </data>
+  <data name="Synchronizing with WeChat" xml:space="preserve">
+    <value>WeChat ile senkronize ediliyor</value>
+  </data>
+  <data name="The last check did not complete. The system will check again automatically." xml:space="preserve">
+    <value>Son kontrol tamamlanmadı. Sistem otomatik olarak yeniden kontrol edecek.</value>
+  </data>
+  <data name="WeChat price is active" xml:space="preserve">
+    <value>WeChat fiyatı etkin</value>
+  </data>
+  <data name="WeChat synchronization failed" xml:space="preserve">
+    <value>WeChat senkronizasyonu başarısız oldu</value>
+  </data>
+
+</root>

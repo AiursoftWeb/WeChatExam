@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Prețul integral mapat diferă de prețul VIP. Confirmați ambele prețuri înainte de a actualiza maparea.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Produsul VIP salvat este sincronizat. Plățile virtuale noi sunt în pauză.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Această pagină verifică doar configurația locală. Nu contactează WeChat, nu modifică setările și nu efectuează o plată. Trecerea cu succes a acestor verificări nu înseamnă că vânzările sunt gata de utilizare.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Această revizie salvată a produsului a fost publicată pe WeChat și întârzierea sa de activare a expirat.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Utiliza o build de testare pentru plată virtuală explicit. Build-ul implicit al mini-programului utilizează în continuare plata obișnuită.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Configurarea plăților virtuale</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>Sincronizarea cu WeChat a eșuat. Deschideți produsul VIP pentru a vă verifica setările și încercați din nou.</value>
   </data>
 
 </root>

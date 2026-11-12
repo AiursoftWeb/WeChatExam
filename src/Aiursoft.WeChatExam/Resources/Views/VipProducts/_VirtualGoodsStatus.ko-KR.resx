@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Check this product&apos;s name and settings, then retry synchronization." xml:space="preserve">
+    <value>이 제품의 이름과 설정을 확인한 후 동기화를 다시 시도하세요.</value>
+  </data>
+  <data name="New purchases are disabled" xml:space="preserve">
+    <value>새로운 구매가 비활성화되었습니다</value>
+  </data>
+  <data name="New virtual payments are paused until this price is active. Existing orders keep their saved price." xml:space="preserve">
+    <value>이 가격이 활성화될 때까지 새로운 가상 결제가 일시 중지됩니다. 기존 주문은 저장된 가격이 유지됩니다.</value>
+  </data>
+  <data name="No payment required" xml:space="preserve">
+    <value>결제 불필요</value>
+  </data>
+  <data name="Please check the product name, price and access scope" xml:space="preserve">
+    <value>제품 이름, 가격 및 접근 범위를 확인해 주세요</value>
+  </data>
+  <data name="Synchronizing with WeChat" xml:space="preserve">
+    <value>WeChat 동기화 중</value>
+  </data>
+  <data name="The last check did not complete. The system will check again automatically." xml:space="preserve">
+    <value>마지막 확인이 완료되지 않았습니다. 시스템이 자동으로 다시 확인합니다.</value>
+  </data>
+  <data name="WeChat price is active" xml:space="preserve">
+    <value>WeChat 가격이 활성화되었습니다</value>
+  </data>
+  <data name="WeChat synchronization failed" xml:space="preserve">
+    <value>WeChat 동기화 실패</value>
+  </data>
+
+</root>

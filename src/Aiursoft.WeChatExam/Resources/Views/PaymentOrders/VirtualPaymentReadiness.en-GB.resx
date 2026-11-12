@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>The mapped full price differs from the VIP price. Confirm both prices before updating the mapping.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>The saved VIP product is being synchronised. New virtual payments are paused.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>This saved product revision was published to WeChat and its activation delay has passed.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Virtual payment setup</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>WeChat synchronisation failed. Open the VIP product to review its settings and retry.</value>
   </data>
 
 </root>

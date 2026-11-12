@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>マッピングされた通常価格がVIP価格と異なります。マッピングを更新する前に、両方の価格を確認してください。</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>保存済みのVIP商品を同期しています。新しい仮想決済は一時停止されています。</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>このページはローカル設定のみを確認します。WeChatに接続したり、設定を変更したり、支払いを実行したりすることはありません。これらのチェックに合格しても、販売が準備完了したことを意味しません。</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>この保存済みの商品改訂版はWeChatに公開され、その有効化の遅延期間が経過しました。</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>仮想決済用のテストビルドを明示的に使用してください。デフォルトのミニプログラムビルドは、通常の決済を使用しています。</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>仮想決済の設定</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>WeChatとの同期に失敗しました。VIP製品を開いて設定を確認し、再試行してください。</value>
   </data>
 
 </root>

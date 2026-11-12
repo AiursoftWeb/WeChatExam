@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Den mappade fullpriset skiljer sig från VIP-priset. Bekräfta båda priserna innan du uppdaterar mappningen.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Den sparade VIP-produkten synkroniseras. Nya virtuella betalningar är pausade.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Den här sidan kontrollerar endast den lokala konfigurationen. Den kontaktar inte WeChat, ändrar inte inställningar eller utför någon betalning. Att dessa kontroller godkänns innebär inte att försäljningen är redo.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Den sparade produktrevisionen har publicerats till WeChat och dess aktiveringsfördröjning har passerat.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Använd en explicit testbyggnad för virtuella betalningar. Den standardinställda mini-programbyggnaden använder fortfarande vanlig betalning.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Inställning av virtual betalning</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>WeChat-synkroniseringen misslyckades. Öppna VIP-produkten för att granska inställningarna och försök igen.</value>
   </data>
 
 </root>

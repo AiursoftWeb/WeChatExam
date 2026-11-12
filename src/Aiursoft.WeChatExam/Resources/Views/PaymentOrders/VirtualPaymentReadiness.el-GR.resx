@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Η τιμή πλήρους τιμολόγησης της αντιστοίχισης διαφέρει από την τιμή VIP. Επιβεβαιώστε και τις δύο τιμές πριν ενημερώσετε την αντιστοίχιση.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Το αποθηκευμένο προϊόν VIP συγχρονίζεται. Οι νέες εικονικές πληρωμές έχουν ανασταλεί.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Αυτή η σελίδα ελέγχει μόνο την τοπική διαμόρφωση. Δεν επικοινωνεί με το WeChat, δεν αλλάζει ρυθμίσεις και δεν πραγματοποιεί πληρωμή. Το πέρασμα αυτών των ελέγχων δεν σημαίνει ότι οι πωλήσεις είναι έτοιμες.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Αυτή η αποθηκευμένη αναθεώρηση προϊόντος δημοσιεύτηκε στο WeChat και η καθυστέρηση ενεργοποίησής της έχει παρέλθει.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Χρησιμοποιήστε μια έκδοση δοκιμής ρητά ορισμένης εικονικής πληρωμής. Η προεπιλεγμένη έκδοση της εφαρμογής mini program εξακολουθεί να χρησιμοποιεί συνηθισμένη πληρωμή.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Ρύθμιση εικονικών πληρωμών</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>Η συγχρονισμός WeChat απέτυχε. Ανοίξτε το προϊόν VIP για να ελέγξετε τις ρυθμίσεις του και ξαναδοκιμάστε.</value>
   </data>
 
 </root>

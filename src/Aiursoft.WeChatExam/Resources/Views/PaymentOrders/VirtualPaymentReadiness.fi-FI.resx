@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Kartografoidun kokonaishinta poikkeaa VIP-hinnasta. Varmista molemmat hinnat ennen kartografoinnin päivittämistä.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Tallennettua VIP-tuotetta synkronoidaan. Uudet virtuaalimaksut ovat keskeytetyt.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Tämä sivu tarkistaa vain paikallista konfigurointia. Se ei ota yhteyttä WeChatiin, muuta asetuksia eikä suorita maksua. Tarkistusten läpäisy ei tarkoita, että myynti on valmis.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Tämä tallennettu tuotteen versio julkistettiin WeChatiin ja sen aktivoinnin viive on kulunut umpeen.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Käytä erillisesti virtuaalimaksutestirakennetta. Oletusmini-ohjelmarakennus käyttää edelleen tavanomaista maksua.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Virtuaalimaksujen asennus</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>WeChat-synkronointi epäonnistui. Avaa VIP-tuote, tarkista sen asetukset ja yritä uudelleen.</value>
   </data>
 
 </root>

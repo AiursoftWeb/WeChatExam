@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>El precio completo mapeado difiere del precio VIP. Confirme ambos precios antes de actualizar el mapeo.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>El producto VIP guardado se está sincronizando. Los nuevos pagos virtuales están en pausa.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Esta página solo comprueba la configuración local. No contacta con WeChat, no modifica la configuración ni realiza ningún pago. Superar estas comprobaciones no significa que las ventas estén listas.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Esta revisión del producto guardada se publicó en WeChat y su plazo de activación ha transcurrido.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Utilice una compilación de prueba de pago virtual explícita. La compilación predeterminada de la miniapp sigue utilizando el pago ordinario.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Configuración del pago virtual</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>La sincronización con WeChat ha fallado. Abra el producto VIP para revisar su configuración e inténtelo de nuevo.</value>
   </data>
 
 </root>
