@@ -8,6 +8,12 @@ public class SettingsMap
     public const string BrandName = "BrandName";
     public const string BrandHomeUrl = "BrandHomeUrl";
     public const string ProjectLogo = "ProjectLogo";
+    public const string PublicOperatorName = "PublicOperatorName";
+    public const string PublicTechnicalProvider = "PublicTechnicalProvider";
+    public const string PublicSupportContact = "PublicSupportContact";
+    public const string PublicSupportPhone = "PublicSupportPhone";
+    public const string PublicSupportEmail = "PublicSupportEmail";
+    public const string PublicSupportWechat = "PublicSupportWechat";
     public const string AllowUserAdjustNickname = "Allow_User_Adjust_Nickname";
     public const string Icp = "Icp";
     public const string EnableEmbeddingBasedSearch = "EnableEmbeddingBasedSearch";
@@ -35,6 +41,54 @@ public class SettingsMap
 
     public static readonly List<GlobalSettingDefinition> Definitions = new()
     {
+        new GlobalSettingDefinition
+        {
+            Key = PublicOperatorName,
+            Name = "运营主体（公开）",
+            Description = "小程序关于页公开显示的运营公司完整名称。请填写法律实体，而不是品牌名称。",
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
+        new GlobalSettingDefinition
+        {
+            Key = PublicTechnicalProvider,
+            Name = "技术支持公司（公开）",
+            Description = "小程序关于页公开显示的技术支持公司，与运营主体分别展示。",
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
+        new GlobalSettingDefinition
+        {
+            Key = PublicSupportContact,
+            Name = "客服联系人（公开）",
+            Description = "小程序关于页公开显示的客服姓名或团队名称。",
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
+        new GlobalSettingDefinition
+        {
+            Key = PublicSupportPhone,
+            Name = "客服电话（公开）",
+            Description = "学生可以在小程序关于页查看、复制和拨打此号码。不填写则不显示拨号按钮。",
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
+        new GlobalSettingDefinition
+        {
+            Key = PublicSupportEmail,
+            Name = "客服邮箱（公开）",
+            Description = "学生可以在小程序关于页查看并复制此邮箱。",
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
+        new GlobalSettingDefinition
+        {
+            Key = PublicSupportWechat,
+            Name = "客服微信号（公开）",
+            Description = "学生可以在小程序关于页查看并复制此微信号。",
+            Type = SettingType.Text,
+            DefaultValue = ""
+        },
         new GlobalSettingDefinition
         {
             Key = EnableEmbeddingBasedSearch,
