@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Задана повна ціна відрізняється від ціни VIP. Перевірте обидві ціни перед оновленням відповідності.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Збережений VIP-продукт синхронізується. Нові віртуальні платежі призупинено.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Ця сторінка перевіряє лише локальну конфігурацію. Вона не зв&apos;язується з WeChat, не змінює налаштування та не здійснює оплати. Проходження цих перевірок не означає, що продажі готові до роботи.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Цю збережену версію продукту опубліковано у WeChat, і термін затримки активації вже минув.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Використовуйте явно вказану тестову збірку для віртуальних платежів. Типова збірка міні-програми все ще використовує звичайні платежі.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Налаштування віртуальних платежів</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>Синхронізацію з WeChat не вдалося завершити. Відкрийте VIP-продукт, щоб переглянути його налаштування та повторити спробу.</value>
   </data>
 
 </root>

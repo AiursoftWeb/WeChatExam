@@ -36,5 +36,8 @@
   <data name="This product has orders or memberships. Disable it instead of deleting it." xml:space="preserve">
     <value>สินค้านี้มีคำสั่งซื้อหรือสมาชิกอยู่แล้ว ให้ปิดใช้งานแทนการลบ</value>
   </data>
+  <data name="WeChat product names must contain 1 to 20 characters." xml:space="preserve">
+    <value>ชื่อผลิตภัณฑ์ WeChat ต้องมีตัวอักษร 1 ถึง 20 ตัว</value>
+  </data>
 
 </root>

@@ -36,5 +36,8 @@
   <data name="This product has orders or memberships. Disable it instead of deleting it." xml:space="preserve">
     <value>この商品には注文または会員登録があるため、削除せずに無効化してください。</value>
   </data>
+  <data name="WeChat product names must contain 1 to 20 characters." xml:space="preserve">
+    <value>WeChatの商品名は1文字以上20文字以下で入力してください。</value>
+  </data>
 
 </root>

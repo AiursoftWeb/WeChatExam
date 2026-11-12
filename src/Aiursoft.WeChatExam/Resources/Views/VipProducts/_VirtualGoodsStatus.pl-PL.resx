@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Check this product&apos;s name and settings, then retry synchronization." xml:space="preserve">
+    <value>Sprawdź nazwę i ustawienia tego produktu, a następnie ponów synchronizację.</value>
+  </data>
+  <data name="New purchases are disabled" xml:space="preserve">
+    <value>Nowe zakupy są nieaktywne</value>
+  </data>
+  <data name="New virtual payments are paused until this price is active. Existing orders keep their saved price." xml:space="preserve">
+    <value>Nowe wirtualne płatności są wstrzymane, dopóki ta cena nie będzie aktywna. Istniejące zamówienia zachowują swoją zapisaną cenę.</value>
+  </data>
+  <data name="No payment required" xml:space="preserve">
+    <value>Brak wymagania płatności</value>
+  </data>
+  <data name="Please check the product name, price and access scope" xml:space="preserve">
+    <value>Sprawdź nazwę produktu, cenę i zakres dostępu</value>
+  </data>
+  <data name="Synchronizing with WeChat" xml:space="preserve">
+    <value>Synchronizacja z WeChat</value>
+  </data>
+  <data name="The last check did not complete. The system will check again automatically." xml:space="preserve">
+    <value>Ostatnia kontrola nie została zakończona. System ponownie wykona ją automatycznie.</value>
+  </data>
+  <data name="WeChat price is active" xml:space="preserve">
+    <value>Cena WeChat jest aktywna</value>
+  </data>
+  <data name="WeChat synchronization failed" xml:space="preserve">
+    <value>Synchronizacja z WeChat nie powiodła się</value>
+  </data>
+
+</root>

@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Harga penuh yang dipetakan berbeda dari harga VIP. Pastikan kedua harga tersebut sebelum memperbarui pemetaan.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Produk VIP yang disimpan sedang disinkronkan. Pembayaran virtual baru dijeda.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Halaman ini hanya memeriksa konfigurasi lokal. Tidak menghubungi WeChat, mengubah pengaturan, atau melakukan pembayaran. Lulus pemeriksaan ini tidak berarti penjualan sudah siap.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Revisi produk yang disimpan ini telah dipublikasikan ke WeChat dan jeda aktivasinya telah berlalu.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Gunakan build uji pembayaran virtual secara eksplisit. Build mini program default masih menggunakan pembayaran biasa.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Pengaturan pembayaran virtual</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>Sinkronisasi WeChat gagal. Buka produk VIP untuk meninjau pengaturannya dan coba lagi.</value>
   </data>
 
 </root>

@@ -144,8 +144,14 @@
   <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
     <value>Giá gốc đã ánh xạ khác với giá VIP. Vui lòng xác nhận cả hai giá trước khi cập nhật ánh xạ.</value>
   </data>
+  <data name="The saved VIP product is being synchronized. New virtual payments are paused." xml:space="preserve">
+    <value>Sản phẩm VIP đã lưu đang được đồng bộ hóa. Các thanh toán ảo mới đã bị tạm dừng.</value>
+  </data>
   <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
     <value>Trang này chỉ kiểm tra cấu hình cục bộ. Nó không liên hệ với WeChat, thay đổi cài đặt hoặc thực hiện thanh toán. Việc vượt qua các kiểm tra này không có nghĩa là sẵn sàng bán hàng.</value>
+  </data>
+  <data name="This saved product revision was published to WeChat and its activation delay has passed." xml:space="preserve">
+    <value>Phiên bản sản phẩm đã lưu này đã được xuất bản lên WeChat và thời gian kích hoạt trì hoãn đã hết.</value>
   </data>
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Sử dụng bản build thử nghiệm thanh toán ảo được chỉ định rõ ràng. Bản build mini program mặc định vẫn sử dụng thanh toán thông thường.</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="Virtual payment setup" xml:space="preserve">
     <value>Cấu hình thanh toán ảo</value>
+  </data>
+  <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
+    <value>Đồng bộ WeChat thất bại. Mở sản phẩm VIP để xem lại cài đặt và thử lại.</value>
   </data>
 
 </root>
