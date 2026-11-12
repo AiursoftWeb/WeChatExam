@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
@@ -648,8 +649,8 @@ public class ManagementTests
         {
             { "Title", examTitle },
             { "PaperSnapshotId", paper.Id.ToString() },
-            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm") },
-            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm") },
+            { "StartTime", startTime.ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture) },
+            { "EndTime", endTime.ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture) },
             { "DurationMinutes", "60" },
             { "__RequestVerificationToken", createExamToken }
         });

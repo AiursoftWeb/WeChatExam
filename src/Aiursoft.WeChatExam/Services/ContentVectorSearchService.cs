@@ -83,7 +83,7 @@ public class ContentVectorSearchService(
             }
         }
         return (results.GroupBy(r => (r.IsKnowledgePoint, r.Id)).Select(g => g.MaxBy(r => r.Score)!)
-            .OrderByDescending(r => r.Score).ThenBy(r => r.Title).ThenBy(r => r.Id).Take(MaxResults).ToList(), usedAi);
+            .OrderByDescending(r => r.Score).ThenBy(r => r.Title, StringComparer.CurrentCulture).ThenBy(r => r.Id).Take(MaxResults).ToList(), usedAi);
     }
 
     public async Task<(bool Available, List<ContentSearchItem> Results)> RecommendAsync(

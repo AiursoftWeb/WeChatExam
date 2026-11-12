@@ -88,7 +88,7 @@ public class ContentFindingGroup
     public static List<ContentFindingGroup> Build(IEnumerable<ContentFinding> findings) => findings
         .GroupBy(Fingerprint).Select(g => new ContentFindingGroup
         {
-            Key = g.Key, Findings = g.OrderBy(f => f.Objects.FirstOrDefault()?.Id).ToList()
+            Key = g.Key, Findings = g.OrderBy(f => f.Objects.FirstOrDefault()?.Id, StringComparer.Ordinal).ToList()
         }).ToList();
 
     private static string Fingerprint(ContentFinding finding)

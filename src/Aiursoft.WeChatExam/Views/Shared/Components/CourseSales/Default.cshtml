@@ -1,3 +1,4 @@
+@using System.Globalization
 @inject VirtualPaymentGoodsCatalog GoodsCatalog
 @model Aiursoft.WeChatExam.Views.Shared.Components.CourseSales.CourseSalesViewModel
 @{
@@ -28,7 +29,7 @@
                 @foreach (var product in Model.Products)
                 {
                     <li class="mb-2">
-                        <strong>@product.Name</strong> · ¥@((product.PriceInFen / 100m).ToString("F2")) ·
+                        <strong>@product.Name</strong> · ¥@((product.PriceInFen / 100m).ToString("F2", CultureInfo.CurrentCulture)) ·
                         @string.Format(@Localizer["{0} days"].Value, product.DurationDays)
                         <span class="badge @(product.IsEnabled ? "bg-success" : "bg-secondary")">
                             @if (product.IsEnabled)

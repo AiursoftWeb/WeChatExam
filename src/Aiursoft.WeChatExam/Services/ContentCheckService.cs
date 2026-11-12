@@ -73,8 +73,8 @@ public class ContentCheckService(
             ActiveInstitutionVips = products.Where(p => p.IsEnabled && p.Type == VipProductType.Institution && p.InstitutionId.HasValue)
                 .Select(p => p.InstitutionId!.Value).ToHashSet()
         };
-        report.Institutions = schools.OrderBy(s => s.Title).ToList();
-        report.Categories = courses.OrderBy(c => c.Title).ToList();
+        report.Institutions = schools.OrderBy(s => s.Title, StringComparer.CurrentCulture).ToList();
+        report.Categories = courses.OrderBy(c => c.Title, StringComparer.CurrentCulture).ToList();
         report.KnowledgePointCount = knowledge.Count;
         report.QuestionCount = questions.Count;
         report.PaperCount = papers.Count + mockPapers.Count + realPapers.Count;

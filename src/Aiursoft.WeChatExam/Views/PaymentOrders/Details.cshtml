@@ -1,3 +1,4 @@
+@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Entities
 
@@ -43,7 +44,7 @@
                         </tr>
                         <tr>
                             <th>@Localizer["Amount"]</th>
-                            <td class="fw-bold">¥@((Model.Order.AmountInFen / 100.0).ToString("F2"))</td>
+                            <td class="fw-bold">¥@((Model.Order.AmountInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
                         </tr>
                         <tr>
                             <th>@Localizer["Status"]</th>

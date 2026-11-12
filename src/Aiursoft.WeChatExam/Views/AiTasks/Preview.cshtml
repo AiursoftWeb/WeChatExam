@@ -183,7 +183,7 @@
 @* Configuration and URLs for JavaScript *@
 <div id="ai-task-config" hidden
      data-task-id="@Model.Id"
-     data-is-categorization="@(isCategorization.ToString().ToLower())"
+     data-is-categorization="@(isCategorization.ToString().ToLowerInvariant())"
      data-get-status-url="@Url.Action("GetStatus")"
      data-adopt-url="@Url.Action("Adopt")"
      data-adopt-all-url="@Url.Action("AdoptAll")"

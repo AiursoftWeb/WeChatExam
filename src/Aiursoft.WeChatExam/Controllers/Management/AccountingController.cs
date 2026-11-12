@@ -1,3 +1,4 @@
+using System.Globalization;
 using Aiursoft.UiStack.Navigation;
 using Aiursoft.WebTools.Attributes;
 using Aiursoft.WeChatExam.Authorization;
@@ -78,7 +79,7 @@ public class AccountingController(
         for (var i = 0; i <= 30; i++)
         {
             var date = day30DaysAgo.Date.AddDays(i);
-            model.ChartLabels.Add(date.ToString("MM-dd"));
+            model.ChartLabels.Add(date.ToString("MM-dd", CultureInfo.InvariantCulture));
             model.NewUsersData.Add(usersHistory.FirstOrDefault(t => t.Time == date)?.Count ?? 0);
             model.NewVipData.Add(vipHistory.FirstOrDefault(t => t.Time == date)?.Count ?? 0);
         }

@@ -108,7 +108,7 @@ public class QuestionsController(
         }
 
         // Sorting
-        query = (sortBy, sortOrder.ToLower()) switch
+        query = (sortBy, sortOrder.ToLowerInvariant()) switch
         {
             ("OrderIndex", "asc") => query.OrderBy(q => q.OrderIndex == null).ThenBy(q => q.OrderIndex).ThenBy(q => q.CreationTime),
             ("OrderIndex", "desc") => query.OrderBy(q => q.OrderIndex == null).ThenByDescending(q => q.OrderIndex).ThenByDescending(q => q.CreationTime),

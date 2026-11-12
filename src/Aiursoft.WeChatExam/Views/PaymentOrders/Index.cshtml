@@ -1,3 +1,4 @@
+@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Entities
 
@@ -69,7 +70,7 @@
                         <td>
                             <span class="badge bg-info">@(order.VipProduct?.Name ?? "-")</span>
                         </td>
-                        <td>¥@((order.AmountInFen / 100.0).ToString("F2"))</td>
+                        <td>¥@((order.AmountInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
                         <td>
                             @{
                                 var badgeClass = order.Status switch

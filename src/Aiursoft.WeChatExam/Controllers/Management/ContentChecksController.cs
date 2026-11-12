@@ -41,7 +41,7 @@ public class ContentChecksController(ContentCheckService checks, IAuthorizationS
         if (!string.IsNullOrWhiteSpace(search))
             results = results.Where(g => g.Caption.Contains(search, StringComparison.CurrentCultureIgnoreCase) ||
                 g.Objects.Any(o => o.Name.Contains(search, StringComparison.CurrentCultureIgnoreCase) || o.Id.Contains(search, StringComparison.OrdinalIgnoreCase)));
-        var ordered = results.OrderBy(g => g.Severity).ThenBy(g => g.Rule).ThenBy(g => g.Key).ToList();
+        var ordered = results.OrderBy(g => g.Severity).ThenBy(g => g.Rule, StringComparer.Ordinal).ThenBy(g => g.Key, StringComparer.Ordinal).ToList();
         model.Total = ordered.Count;
         model.Page = Math.Clamp(page, 1, Math.Max(1, (model.Total + IndexViewModel.PageSize - 1) / IndexViewModel.PageSize));
         model.Results = ordered.Skip((model.Page - 1) * IndexViewModel.PageSize).Take(IndexViewModel.PageSize).ToList();

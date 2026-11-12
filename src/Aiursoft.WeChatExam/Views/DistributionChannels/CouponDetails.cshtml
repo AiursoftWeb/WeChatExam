@@ -1,8 +1,9 @@
+@using System.Globalization
 @model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.CouponDetailsViewModel
 @using Aiursoft.WebTools
 @{
-    var from = Model.From?.ToString("yyyy-MM-dd");
-    var to = Model.To?.ToString("yyyy-MM-dd");
+    var from = Model.From?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+    var to = Model.To?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
 }
 
 <a asp-action="Details" asp-route-id="@Model.Coupon.DistributionChannelId" class="d-inline-flex align-items-center gap-2 mb-3">
@@ -32,11 +33,11 @@
     </div></div></div>
     <div class="col-sm-4"><div class="card h-100 mb-0"><div class="card-body">
         <div class="text-muted mb-2">@Localizer["Total Discount"]</div>
-        <div class="h2 mb-0">¥@((Model.TotalDiscountInFen / 100m).ToString("F2"))</div>
+        <div class="h2 mb-0">¥@((Model.TotalDiscountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
     </div></div></div>
     <div class="col-sm-4"><div class="card h-100 mb-0"><div class="card-body">
         <div class="text-muted mb-2">@Localizer["Total Paid"]</div>
-        <div class="h2 mb-0">¥@((Model.TotalPaidInFen / 100m).ToString("F2"))</div>
+        <div class="h2 mb-0">¥@((Model.TotalPaidInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
     </div></div></div>
 </div>
 
@@ -130,9 +131,9 @@
                             </a>
                         </td>
                         <td>@order.Description</td>
-                        <td class="text-end text-nowrap">¥@((((long)order.AmountInFen + order.DiscountInFen) / 100m).ToString("F2"))</td>
-                        <td class="text-end text-nowrap">−¥@((order.DiscountInFen / 100m).ToString("F2"))</td>
-                        <td class="text-end text-nowrap fw-semibold">¥@((order.AmountInFen / 100m).ToString("F2"))</td>
+                        <td class="text-end text-nowrap">¥@((((long)order.AmountInFen + order.DiscountInFen) / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
+                        <td class="text-end text-nowrap">−¥@((order.DiscountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
+                        <td class="text-end text-nowrap fw-semibold">¥@((order.AmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
                         <td><a asp-controller="PaymentOrders" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary text-nowrap">@Localizer["View Order"]</a></td>
                     </tr>
                 }

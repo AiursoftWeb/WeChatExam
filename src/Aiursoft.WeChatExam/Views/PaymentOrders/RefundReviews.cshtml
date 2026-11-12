@@ -1,3 +1,4 @@
+@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Authorization
 @using Microsoft.AspNetCore.Authorization
@@ -96,7 +97,7 @@
                 <dd class="col-sm-8">
                     @if (item.AmountInFen.HasValue)
                     {
-                        <span>¥@((item.AmountInFen.Value / 100m).ToString("F2"))</span>
+                        <span>¥@((item.AmountInFen.Value / 100m).ToString("F2", CultureInfo.CurrentCulture))</span>
                     }
                     else
                     {
