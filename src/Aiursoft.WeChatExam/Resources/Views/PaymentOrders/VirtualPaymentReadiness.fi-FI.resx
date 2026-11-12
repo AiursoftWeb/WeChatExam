@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>Pyydä ylläpitäjää kartoittamaan tämä VIP-tuote julkaistuun virtuaalituotteeseen.</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>Pyydä laitonhallintoa päivittämään palvelimen asetukset. Älä liitä avaimia keskusteluun tai tälle sivulle.</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>Takaisin tilauksiin</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Tarkista uudelleen</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>Tarkista tuotteen kurssi tai oppilaitos, hinta ja jäsenyyden kesto.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Tarkistettu</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>Valitse hiekkalaatikko (1) tai tuotanto (0) eksplisiittisesti.</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>Määritä avain valitulle ympäristölle. Toisen ympäristön avainta ei käytetä.</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>Määritä viestin Token ja kelvollinen EncodingAESKey palvelimella.</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Määritä OfferId tämän miniohjelman virtuaalimaksutarkistusten asetuksista.</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>Määritä kohde AppID ja sen AppSecret palvelimella.</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>Määritetty paikallisesti</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>Varmista iOS-palautusten tilausviitteen kartoitus ja salattu vastaus alustan kanssa ennen automaattisen neuvon antamisen启用.</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>Tunnustietoja ei koskaan näytetä. Olemassaolo- ja muotoilutarkistukset eivät voi vahvistaa omistajuutta, voimassaoloa tai alustan hyväksyntää.</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Muokkaa VIP-tuotetta</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>Ota WeChat-pääsy käyttöön palvelimen asetuksissa.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>Ilmainen tuote: alustan maksu ei ole välttämätön.</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>Virheellinen ympäristö</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOS-palautusneuvonta on poistettu käytöstä alustan varmentusta odottaen.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOS-palautusneuvonta on käytössä. Tämä paikallinen sivu ei voi todentaa, että sen alustaprotokolla on vahvistettu.</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>Tuotantoympäristö</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>Paikalliset tarkistukset onnistuivat</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>Paikallinen kartoitus ja hinnan vastavuus; alustan julkaisu vaatii vielä tarkistuksen.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>mappings eivät vastaa aktiivista VIP-tuotetta. Pyydä ylläpitäjää tarkistamaan ne; älä poista historiallisia tuotteita tai tilauksia.</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>Viestien todennusluottamusdata</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>Mini-ohjelman käyttöoikeus</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>Mini-ohjelman tunnistetiedot</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>Useita kartoituksia jaetaan tämän alustatuotteen kesken. Varmista tarkoitettu oikeus ennen testaamista.</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>Vaatii konfigurointia</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>Uudet virtuaalimyyntitoiminnot poistettu käytöstä</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>Uudet virtuaalimyyntitoiminnot käytössä</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>Aktivoituja kurssin tai laitoksen VIP-tuotteita ei löytynyt.</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>Maksuympäristö</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>Maksun allekirjoitustunnus</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>Mini-ohjelmassa käytettävissä olevat tuotteet</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Testiympäristö</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>Palvelinkonfiguraatio</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>Asetukset vaativat huomiota</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>Yhä vaadittava ennen toimitusta</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>Testaa maksuja, kupongeja, peruutuksia ja palautuksia Androidilla ja iPhonessa; varmista alustan palautukset ja jäsenyyden poisto.</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>Kartografoidun kokonaishinta poikkeaa VIP-hinnasta. Varmista molemmat hinnat ennen kartografoinnin päivittämistä.</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>Tämä sivu tarkistaa vain paikallista konfigurointia. Se ei ota yhteyttä WeChatiin, muuta asetuksia eikä suorita maksua. Tarkistusten läpäisy ei tarkoita, että myynti on valmis.</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>Käytä erillisesti virtuaalimaksutestirakennetta. Oletusmini-ohjelmarakennus käyttää edelleen tavanomaista maksua.</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>Tarkista alustan hyväksyntä, AppID, OfferId ja julkaistut tuotteet WeChat-ohjelmassa.</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>Tarkista julkinen HTTPS-viestiosoitteen osoite ja salattu palautus WeChatissa.</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>Vain katselu</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP-tuotetunnus</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>Virtuaalimaksutili</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Virtuaalimaksujen asennus</value>
+  </data>
+
+</root>

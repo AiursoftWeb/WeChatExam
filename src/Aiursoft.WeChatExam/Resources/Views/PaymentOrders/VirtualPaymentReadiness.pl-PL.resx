@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Ask the administrator to map this VIP product to a published virtual product." xml:space="preserve">
+    <value>Poproś administratora o zmapowanie tego produktu VIP na opublikowany produkt wirtualny.</value>
+  </data>
+  <data name="Ask the deployment administrator to update server configuration. Do not paste keys into chat or this page." xml:space="preserve">
+    <value>Poproś administratora wdrożenia o zaktualizowanie konfiguracji serwera. Nie wklejaj kluczy w czacie ani na tej stronie.</value>
+  </data>
+  <data name="Back to orders" xml:space="preserve">
+    <value>Powrót do zamówień</value>
+  </data>
+  <data name="Check again" xml:space="preserve">
+    <value>Sprawdź ponownie</value>
+  </data>
+  <data name="Check the product&apos;s course or institution, price and membership duration." xml:space="preserve">
+    <value>Sprawdź kurs lub instytucję produktu, cenę oraz czas trwania członkostwa.</value>
+  </data>
+  <data name="Checked at" xml:space="preserve">
+    <value>Sprawdzono w</value>
+  </data>
+  <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
+    <value>Wybierz wyraźnie środowisko testowe (1) lub produkcyjne (0).</value>
+  </data>
+  <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
+    <value>Skonfiguruj klucz dla wybranego środowiska. Klucz z innego środowiska nie jest używany.</value>
+  </data>
+  <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
+    <value>Skonfiguruj Token wiadomości oraz ważny klucz EncodingAESKey na serwerze.</value>
+  </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Skonfiguruj OfferId z ustawień płatności wirtualnych tej aplikacji mini.</value>
+  </data>
+  <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
+    <value>Skonfiguruj docelowy AppID oraz jego AppSecret na serwerze.</value>
+  </data>
+  <data name="Configured locally" xml:space="preserve">
+    <value>Skonfigurowano lokalnie</value>
+  </data>
+  <data name="Confirm the iOS refund order-reference mapping and encrypted reply with the platform before enabling automatic advice." xml:space="preserve">
+    <value>Potwierdź z platformą mapowanie referencji zamówienia dla zwrotów na iOS oraz zaszyfrowaną odpowiedź przed włączeniem automatycznych powiadomień.</value>
+  </data>
+  <data name="Credentials are never displayed. Presence and format checks cannot verify ownership, validity or platform approval." xml:space="preserve">
+    <value>Poświadczenia nigdy nie są wyświetlane. Sprawdzanie obecności i formatu nie może zweryfikować własności, ważności ani zatwierdzenia przez platformę.</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Edytuj produkt VIP</value>
+  </data>
+  <data name="Enable WeChat access in the server configuration." xml:space="preserve">
+    <value>Włącz dostęp WeChat w konfiguracji serwera.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="Free product: no platform payment is needed." xml:space="preserve">
+    <value>Produkt darmowy: nie jest wymagana płatność platformowa.</value>
+  </data>
+  <data name="Invalid environment" xml:space="preserve">
+    <value>Nieprawidłowe środowisko</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Doradztwo w sprawie zwrotów na iOS jest wyłączone w oczekiwaniu na weryfikację platformy.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Porady dotyczące zwrotów kosztów na iOS są włączone. Ta lokalna strona nie może poświadczyć, że jej protokół platformowy został zweryfikowany.</value>
+  </data>
+  <data name="Live environment" xml:space="preserve">
+    <value>Środowisko produkcyjne</value>
+  </data>
+  <data name="Local checks passed" xml:space="preserve">
+    <value>Lokalne sprawdzenia zakończone pomyślnie</value>
+  </data>
+  <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
+    <value>Mapowanie lokalne i zgodność cen; publikacja na platformie nadal wymaga weryfikacji.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>mapowania nie odpowiadają aktywnemu produktowi VIP. Poproś administratora o ich weryfikację; nie usuwaj historycznych produktów ani zamówień.</value>
+  </data>
+  <data name="Message verification credentials" xml:space="preserve">
+    <value>Dane uwierzytelniające weryfikacji wiadomości</value>
+  </data>
+  <data name="Mini program access" xml:space="preserve">
+    <value>Dostęp do mini programu</value>
+  </data>
+  <data name="Mini program identity" xml:space="preserve">
+    <value>Tożsamość mini programu</value>
+  </data>
+  <data name="Multiple mappings share this platform product. Confirm the intended entitlement before testing." xml:space="preserve">
+    <value>Wiele mapowań jest powiązanych z tym produktem platformy. Przed przetestowaniem potwierdź zamierzone uprawnienie.</value>
+  </data>
+  <data name="Needs configuration" xml:space="preserve">
+    <value>Wymaga konfiguracji</value>
+  </data>
+  <data name="New virtual sales disabled" xml:space="preserve">
+    <value>Nowe wirtualne sprzedaże wyłączone</value>
+  </data>
+  <data name="New virtual sales enabled" xml:space="preserve">
+    <value>Włączone nowe wirtualne sprzedaże</value>
+  </data>
+  <data name="No enabled course or institution VIP products were found." xml:space="preserve">
+    <value>Nie znaleziono żadnych włączonych produktów VIP dla kursów lub instytucji.</value>
+  </data>
+  <data name="Payment environment" xml:space="preserve">
+    <value>Środowisko płatności</value>
+  </data>
+  <data name="Payment signing key" xml:space="preserve">
+    <value>Klucz podpisu płatności</value>
+  </data>
+  <data name="Products available in the mini program" xml:space="preserve">
+    <value>Produkty dostępne w miniprogramie</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Sandbox</value>
+  </data>
+  <data name="Server configuration" xml:space="preserve">
+    <value>Konfiguracja serwera</value>
+  </data>
+  <data name="Setup needs attention" xml:space="preserve">
+    <value>Konfiguracja wymaga uwagi</value>
+  </data>
+  <data name="Still required before delivery" xml:space="preserve">
+    <value>Wymagane nadal przed dostawą</value>
+  </data>
+  <data name="Test payment, coupons, cancellation and recovery on Android and iPhone; verify platform refunds and membership removal." xml:space="preserve">
+    <value>Przetestuj płatności, kupony, anulowanie i odzyskiwanie na Androidzie i iPhone; zweryfikuj zwroty środków z platformy i usuwanie członkostwa.</value>
+  </data>
+  <data name="The mapped full price differs from the VIP price. Confirm both prices before updating the mapping." xml:space="preserve">
+    <value>Zmapowana pełna cena różni się od ceny VIP. Potwierdź obie ceny przed zaktualizowaniem mapowania.</value>
+  </data>
+  <data name="This page checks local configuration only. It does not contact WeChat, change settings or make a payment. Passing these checks does not mean sales are ready." xml:space="preserve">
+    <value>Ta strona sprawdza wyłącznie lokalną konfigurację. Nie kontaktuje się z WeChat, nie zmienia ustawień i nie dokonuje płatności. Przejście tych sprawdzeń nie oznacza, że sprzedaż jest gotowa.</value>
+  </data>
+  <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
+    <value>Użyj wyraźnie testowej kompilacji wirtualnej płatności. Domyślna kompilacja mini programu nadal korzysta ze zwykłej płatności.</value>
+  </data>
+  <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
+    <value>Zweryfikuj zatwierdzenie platformy, AppID, OfferId oraz opublikowane produkty w konsoli WeChat.</value>
+  </data>
+  <data name="Verify the public HTTPS message URL and encrypted callback with WeChat." xml:space="preserve">
+    <value>Zweryfikuj publiczny adres URL wiadomości HTTPS i szyfrowane wywołanie zwrotne z WeChat.</value>
+  </data>
+  <data name="View only" xml:space="preserve">
+    <value>Tylko podgląd</value>
+  </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>ID produktu VIP</value>
+  </data>
+  <data name="Virtual payment account" xml:space="preserve">
+    <value>Wirtualny rachunek płatniczy</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Konfiguracja płatności wirtualnych</value>
+  </data>
+
+</root>

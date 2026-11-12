@@ -66,8 +66,14 @@
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Refunderingsafregningsposter</value>
   </data>
+  <data name="Review closed" xml:space="preserve">
+    <value>Gennemgang lukket</value>
+  </data>
   <data name="Show all refund reconciliation records" xml:space="preserve">
     <value>Vis alle tilbagebetalingsafstemningsposter</value>
+  </data>
+  <data name="The evidence is incomplete or does not match. This record still needs technical review; no rights or coupons were changed." xml:space="preserve">
+    <value>Beviset er ufuldstændigt eller stemmer ikke overens. Denne optagelse kræver stadig teknisk gennemgang; ingen rettigheder eller kuponer er ændret.</value>
   </data>
   <data name="The membership was changed or could not be found. Automatic membership removal stopped to protect other paid or gifted memberships." xml:space="preserve">
     <value>Medlemskabet blev ændret eller kunne ikke findes. Automatisk fjernelse af medlemskab stoppede for at beskytte andre betalte eller givne medlemskaber.</value>
@@ -81,14 +87,29 @@
   <data name="The refund amount differs from the order payment. Check the platform record before changing any membership." xml:space="preserve">
     <value>Refundbeløbet adskiller sig fra ordrebetalingen. Tjek platformoptegnelsen, før du ændrer noget medlemskab.</value>
   </data>
+  <data name="The verification could not be completed. The order remains reserved. Please try again later." xml:space="preserve">
+    <value>Verifikationen kunne ikke gennemføres. Ordren forbliver reserveret. Prøv igen senere.</value>
+  </data>
+  <data name="The verified refund is settled. This order&apos;s coupon remains spent; other memberships are unchanged." xml:space="preserve">
+    <value>Den verificerede refusion er afsluttet. Kuppontilbudget for denne ordre er stadig brugt; andre medlemskaber er uændret.</value>
+  </data>
   <data name="These records remain after manual changes. Viewing this page does not change memberships or coupons." xml:space="preserve">
     <value>Disse optegnelser forbliver efter manuelle ændringer. Visning af denne side ændrer ikke medlemskaber eller kuponer.</value>
+  </data>
+  <data name="This checks an existing refund; it does not request a refund. Only a verified full refund without local fulfillment can be settled." xml:space="preserve">
+    <value>Dette tjekker en eksisterende refusion; den anmoder ikke om en refusion. Kun en verificeret fuldstændig refusion uden lokal opfyldelse kan afregnes.</value>
   </data>
   <data name="This order was not locally confirmed as paid. Check its platform payment and refund before changing membership." xml:space="preserve">
     <value>Denne ordre blev ikke lokalt bekræftet som betalt. Tjek betalingen og eventuel refusion på platformen, før du ændrer medlemskabet.</value>
   </data>
+  <data name="This order was refunded before membership activation. Other paid or gifted memberships are unchanged." xml:space="preserve">
+    <value>Denne ordre blev refunderet, før medlemskabet blev aktiveret. Andre betalte eller givne medlemskaber er uændrede.</value>
+  </data>
   <data name="Unavailable" xml:space="preserve">
     <value>Ikke tilgængelig</value>
+  </data>
+  <data name="Verify refund and close review" xml:space="preserve">
+    <value>Bekræft refusion og luk gennemgang</value>
   </data>
   <data name="View memberships and purchases" xml:space="preserve">
     <value>Vis medlemskaber og køb</value>
