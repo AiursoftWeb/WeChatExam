@@ -1,0 +1,38 @@
+@model Guid
+@using Aiursoft.WebTools
+@if (ViewData["VirtualGoodsStates"] is Dictionary<Guid, VirtualGoodsDisplay> states && states.TryGetValue(Model, out var state))
+{
+    <div class="mt-2 text-break">
+        @switch (state.State)
+        {
+            case "ready":
+                <span class="badge bg-success">@Localizer["WeChat price is active"]</span>
+                break;
+            case "disabled":
+                <span class="badge bg-secondary">@Localizer["New purchases are disabled"]</span>
+                break;
+            case "free":
+                <span class="badge bg-secondary">@Localizer["No payment required"]</span>
+                break;
+            case "invalid":
+                <span class="badge bg-danger">@Localizer["Please check the product name, price and access scope"]</span>
+                break;
+            case "failed":
+                <span class="badge bg-danger">@Localizer["WeChat synchronization failed"]</span>
+                <div class="small mt-2">@Localizer["Check this product's name and settings, then retry synchronization."]</div>
+                break;
+            default:
+                <span class="badge bg-warning text-dark">@Localizer["Synchronizing with WeChat"]</span>
+                <div class="small mt-2">@Localizer["New virtual payments are paused until this price is active. Existing orders keep their saved price."]</div>
+                @if (state.Error != null)
+                {
+                    <div class="small mt-2">@Localizer["The last check did not complete. The system will check again automatically."]</div>
+                }
+                break;
+        }
+        @if (state.State == "ready" && state.PublishedAt is { } published)
+        {
+            <div class="small text-muted mt-2"><time data-utc-time="@published.ToHtmlDateTime()"></time></div>
+        }
+    </div>
+}

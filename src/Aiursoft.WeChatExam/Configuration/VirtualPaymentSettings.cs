@@ -3,6 +3,7 @@ namespace Aiursoft.WeChatExam.Configuration;
 public class VirtualPaymentSettings
 {
     public bool Enabled { get; init; }
+    public VirtualPaymentGoodsSyncSettings GoodsSync { get; init; } = new();
 
     // Opt in only after validating the iOS order-reference mapping and encrypted
     // HTTP reply with the platform. This is independent of accepting new sales.
@@ -39,6 +40,14 @@ public class VirtualPaymentSettings
 
 public class VirtualPaymentProductSettings
 {
+    public Guid? GoodsVersionId { get; init; }
     public string ProductId { get; init; } = string.Empty;
     public int PriceInFen { get; init; }
+}
+
+public class VirtualPaymentGoodsSyncSettings
+{
+    // Independent opt-in: goods can be prepared while accepting new payments is off.
+    public bool Enabled { get; init; }
+    public string PictureUrl { get; init; } = string.Empty;
 }

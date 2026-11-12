@@ -1,4 +1,7 @@
 using Aiursoft.WeChatExam.Entities;
+using Aiursoft.WeChatExam.Configuration;
+using Microsoft.Extensions.Options;
+using System.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aiursoft.WeChatExam.Services;
@@ -6,7 +9,7 @@ namespace Aiursoft.WeChatExam.Services;
 /// <summary>
 /// VIP 商品管理服务实现
 /// </summary>
-public class VipProductService(WeChatExamDbContext dbContext) : IVipProductService
+public class VipProductService(WeChatExamDbContext dbContext, IOptions<AppSettings>? options = null) : IVipProductService
 {
     public async Task<List<VipProduct>> GetAllAsync()
     {
@@ -49,28 +52,39 @@ public class VipProductService(WeChatExamDbContext dbContext) : IVipProductServi
     {
         await ValidateTargetAsync(type, totalCategoryId, institutionId);
 
-        var product = await dbContext.VipProducts.FindAsync(id);
-        if (product == null) return;
-
-        var targetCourse = type == VipProductType.Category ? totalCategoryId : null;
-        var targetInstitution = type == VipProductType.Institution ? institutionId : null;
-        // Memberships and pending orders refer to this product. Retargeting it would
-        // silently change what a student has bought, including legacy all-school VIPs.
-        if ((product.Type != type || product.TotalCategoryId != targetCourse || product.InstitutionId != targetInstitution)
-            && await HasPurchasesAsync(id))
+        await dbContext.Database.CreateExecutionStrategy().ExecuteAsync(async () =>
         {
-            throw new InvalidOperationException("This product has orders or memberships. Create a new product to change its access scope.");
-        }
+            var synchronize = options?.Value.WeChat.VirtualPayment.GoodsSync.Enabled == true;
+            await using var transaction = synchronize
+                ? await dbContext.Database.BeginTransactionAsync(IsolationLevel.Serializable) : null;
+            if (synchronize)
+                await dbContext.VipProducts.Where(p => p.Id == id).ExecuteUpdateAsync(s =>
+                    s.SetProperty(p => p.PriceInFen, p => p.PriceInFen));
+            var product = await dbContext.VipProducts.FindAsync(id);
+            if (product != null && synchronize) await dbContext.Entry(product).ReloadAsync();
+            if (product == null) return;
 
-        product.Name = name;
-        product.Type = type;
-        product.TotalCategoryId = targetCourse;
-        product.InstitutionId = targetInstitution;
-        product.PriceInFen = priceInFen;
-        product.DurationDays = durationDays;
-        product.IsEnabled = isEnabled;
+            var targetCourse = type == VipProductType.Category ? totalCategoryId : null;
+            var targetInstitution = type == VipProductType.Institution ? institutionId : null;
+            // Memberships and pending orders refer to this product. Retargeting it would
+            // silently change what a student has bought, including legacy all-school VIPs.
+            if ((product.Type != type || product.TotalCategoryId != targetCourse || product.InstitutionId != targetInstitution)
+                && await HasPurchasesAsync(id))
+            {
+                throw new InvalidOperationException("This product has orders or memberships. Create a new product to change its access scope.");
+            }
 
-        await dbContext.SaveChangesAsync();
+            product.Name = name;
+            product.Type = type;
+            product.TotalCategoryId = targetCourse;
+            product.InstitutionId = targetInstitution;
+            product.PriceInFen = priceInFen;
+            product.DurationDays = durationDays;
+            product.IsEnabled = isEnabled;
+
+            await dbContext.SaveChangesAsync();
+            if (transaction != null) await transaction.CommitAsync();
+        });
     }
 
     public async Task<bool> HasPurchasesAsync(Guid id) =>

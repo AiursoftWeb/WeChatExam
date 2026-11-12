@@ -17,6 +17,9 @@
     };
     var statuses = new Dictionary<VirtualProductSetupStatus, string>
     {
+        [VirtualProductSetupStatus.Synchronizing] = @Localizer["The saved VIP product is being synchronized. New virtual payments are paused."].Value,
+        [VirtualProductSetupStatus.SyncFailed] = @Localizer["WeChat synchronization failed. Open the VIP product to review its settings and retry."].Value,
+        [VirtualProductSetupStatus.Published] = @Localizer["This saved product revision was published to WeChat and its activation delay has passed."].Value,
         [VirtualProductSetupStatus.Configured] = @Localizer["Local mapping and price match; platform publication still needs verification."].Value,
         [VirtualProductSetupStatus.Free] = @Localizer["Free product: no platform payment is needed."].Value,
         [VirtualProductSetupStatus.InvalidProduct] = @Localizer["Check the product's course or institution, price and membership duration."].Value,

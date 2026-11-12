@@ -20,8 +20,8 @@ public class VirtualPaymentReadinessService(WeChatExamDbContext db, IOptions<App
         var settings = app.WeChat.VirtualPayment;
         var products = await db.VipProducts.AsNoTracking()
             .Where(p => p.IsEnabled && (p.Type == VipProductType.Category || p.Type == VipProductType.Institution))
-            .OrderBy(p => p.Name).Select(p => new { p.Id, p.Name, p.PriceInFen, p.DurationDays, p.Type,
-                p.TotalCategoryId, p.InstitutionId }).ToListAsync(cancellationToken);
+            .OrderBy(p => p.Name).ToListAsync(cancellationToken);
+        var synchronized = await new VirtualPaymentGoodsCatalog(db, options).GetDisplayAsync(products, cancellationToken);
         var configured = settings.Products;
         var duplicateIds = configured.Values.Where(p => !string.IsNullOrWhiteSpace(p.ProductId))
             .GroupBy(p => p.ProductId, StringComparer.Ordinal).Where(g => g.Count() > 1)
@@ -33,6 +33,14 @@ public class VirtualPaymentReadinessService(WeChatExamDbContext db, IOptions<App
                 (p.Type == VipProductType.Category ? p.TotalCategoryId == null : p.InstitutionId == null))
                 status = VirtualProductSetupStatus.InvalidProduct;
             else if (p.PriceInFen == 0) status = VirtualProductSetupStatus.Free;
+            else if (settings.GoodsSync.Enabled)
+                status = synchronized[p.Id].State switch
+                {
+                    "ready" => VirtualProductSetupStatus.Published,
+                    "failed" => VirtualProductSetupStatus.SyncFailed,
+                    "invalid" => VirtualProductSetupStatus.InvalidProduct,
+                    _ => VirtualProductSetupStatus.Synchronizing
+                };
             else if (!configured.TryGetValue(p.Id.ToString("D"), out var mapping) || string.IsNullOrWhiteSpace(mapping.ProductId))
                 status = VirtualProductSetupStatus.MissingMapping;
             else if (mapping.PriceInFen != p.PriceInFen) status = VirtualProductSetupStatus.PriceMismatch;
@@ -53,7 +61,7 @@ public class VirtualPaymentReadinessService(WeChatExamDbContext db, IOptions<App
                 new("callback", settings.HasValidCallbackCredentials(app.WeChat.AppId))
             ],
             Products = results,
-            UnusedMappingCount = configured.Keys.Count(k => !Guid.TryParseExact(k, "D", out var id) || !ids.Contains(id))
+            UnusedMappingCount = settings.GoodsSync.Enabled ? 0 : configured.Keys.Count(k => !Guid.TryParseExact(k, "D", out var id) || !ids.Contains(id))
         };
     }
 }

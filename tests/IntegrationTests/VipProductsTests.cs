@@ -1,5 +1,8 @@
 using System.Net;
+using Microsoft.Extensions.Options;
+using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Controllers.Management;
+using Aiursoft.WeChatExam.Services;
 using Aiursoft.WeChatExam.Tests.TestServices;
 using Microsoft.Extensions.Localization;
 using Aiursoft.WeChatExam.Sqlite;
@@ -375,7 +378,9 @@ public class VipProductsTests : TestBase
         var controller = new VipProductsController(
             new StubVipProductService { DeleteException = failure },
             scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>(),
-            scope.ServiceProvider.GetRequiredService<IStringLocalizer<VipProductsController>>());
+            scope.ServiceProvider.GetRequiredService<IStringLocalizer<VipProductsController>>(),
+            scope.ServiceProvider.GetRequiredService<VirtualPaymentGoodsCatalog>(),
+            scope.ServiceProvider.GetRequiredService<IOptions<AppSettings>>());
         try
         {
             await controller.DeleteConfirmed(Guid.NewGuid());

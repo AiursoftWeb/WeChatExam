@@ -29,8 +29,11 @@ public class MigrationTests
         await migrator.MigrateAsync(migrations[alreadyUpgraded ? setNullIndex : setNullIndex - 1]);
         var user = new User { UserName = "audit-owner", DisplayName = "Audit owner" };
         var product = new VipProduct { Name = "Retained historical product", Type = VipProductType.RealExam };
-        db.AddRange(user, product);
+        db.Add(user);
         await db.SaveChangesAsync();
+        // Seed with the historical writer's columns; the new sync revision did not exist yet.
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO VipProducts (Id,Name,Type,TotalCategoryId,InstitutionId,PriceInFen,DurationDays,IsEnabled,CreationTime) VALUES ({product.Id},{product.Name},{(int)product.Type},{product.TotalCategory?.Id},{product.InstitutionId},{product.PriceInFen},{product.DurationDays},{product.IsEnabled},{product.CreationTime})");
+
         var changeId = Guid.NewGuid();
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO Changes (Id, TargetUserId, TriggerUserId, VipProductId, Type, Details, CreateTime) VALUES ({changeId}, {user.Id}, {user.Id}, {product.Id}, {(int)ChangeType.VipActivatedViaAdmin}, {"Original grant"}, {DateTime.UtcNow})");
         db.ChangeTracker.Clear();

@@ -24,6 +24,11 @@ public class VirtualPaymentSnapshot
     [MaxLength(128)]
     public string? PlatformOrderId { get; set; }
 
+    // New synchronized purchases retain the exact immutable goods revision.
+    // Older writers and manual-mapping purchases leave this null.
+    public Guid? VirtualPaymentGoodsId { get; init; }
+    public VirtualPaymentGoods? VirtualPaymentGoods { get; init; }
+
     [MaxLength(4096)]
     public required string SignData { get; init; }
 }

@@ -27,8 +27,11 @@ public class VirtualPaymentSnapshotMigrationTests
         var user = new User { Id = "snapshot-buyer", UserName = "snapshot-buyer", DisplayName = "Historical buyer" };
         var product = new VipProduct { Name = "Course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 19800, DurationDays = 30 };
         var coupon = new Coupon { Code = "HISTORY130", AmountInFen = 13000, DistributionChannel = new DistributionChannel { AgencyName = "Agency" } };
-        db.AddRange(user, product, coupon);
+        db.AddRange(user, product.TotalCategory!, coupon);
         await db.SaveChangesAsync();
+        // Seed with the historical writer's columns; the new sync revision did not exist yet.
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO VipProducts (Id,Name,Type,TotalCategoryId,InstitutionId,PriceInFen,DurationDays,IsEnabled,CreationTime) VALUES ({product.Id},{product.Name},{(int)product.Type},{product.TotalCategory?.Id},{product.InstitutionId},{product.PriceInFen},{product.DurationDays},{product.IsEnabled},{product.CreationTime})");
+
         var paidId = Guid.NewGuid();
         foreach (var status in new[] { PaymentOrderStatus.Paid, PaymentOrderStatus.Pending, PaymentOrderStatus.Closed })
             db.PaymentOrders.Add(new PaymentOrder { Id = status == PaymentOrderStatus.Paid ? paidId : Guid.NewGuid(),
@@ -97,12 +100,16 @@ public class VirtualPaymentSnapshotMigrationTests
         await migrator.MigrateAsync(previous);
         var user = new User { Id = "reference-buyer", UserName = "reference-buyer", DisplayName = "Historical buyer" };
         var product = new VipProduct { Name = "Course", TotalCategory = new TotalCategory { Title = "History" }, PriceInFen = 19800, DurationDays = 30 };
+        db.AddRange(user, product.TotalCategory!); await db.SaveChangesAsync();
+        // Seed with the historical writer's columns; the new sync revision did not exist yet.
+        await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO VipProducts (Id,Name,Type,TotalCategoryId,InstitutionId,PriceInFen,DurationDays,IsEnabled,CreationTime) VALUES ({product.Id},{product.Name},{(int)product.Type},{product.TotalCategory?.Id},{product.InstitutionId},{product.PriceInFen},{product.DurationDays},{product.IsEnabled},{product.CreationTime})");
+        db.Attach(product);
         var paid = new PaymentOrder { OutTradeNo = "OLD-VIRTUAL-PAID", UserId = user.Id, VipProduct = product,
             Description = "Old paid order", AmountInFen = 19800, Status = PaymentOrderStatus.Paid,
             Channel = PaymentChannel.WeChatVirtual, PaidAt = DateTime.UtcNow };
         var pending = new PaymentOrder { OutTradeNo = "OLD-VIRTUAL-PENDING", UserId = user.Id,
             Description = "Old pending order", Channel = PaymentChannel.WeChatVirtual };
-        db.AddRange(user, paid, pending,
+        db.AddRange(paid, pending,
             new PaymentLog { PaymentOrderId = paid.Id, EventType = "VirtualPaymentConfirmed", RawData = "Old proof retained exactly" },
             new VipMembership { UserId = user.Id, VipProduct = product, LastPaymentOrderId = paid.Id,
                 StartTime = DateTime.UtcNow, EndTime = DateTime.UtcNow.AddDays(30) });

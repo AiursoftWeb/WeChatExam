@@ -111,6 +111,7 @@
                             @if (product.IsEnabled)
                             {
                                 <span class="badge bg-success">@Localizer["Enabled"]</span>
+                                <partial name="_VirtualGoodsStatus" model="product.Id" />
                             }
                             else
                             {

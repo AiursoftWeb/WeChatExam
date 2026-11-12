@@ -78,6 +78,8 @@ public class Startup : IWebStartup
         services.AddScoped<IExtractService, ExtractService>();
         services.AddScoped<IOptimizationService, OptimizationService>();
         services.AddScoped<IFeedbackService, FeedbackService>();
+        services.AddScoped<IVirtualPaymentGoodsGateway, VirtualPaymentGoodsGateway>();
+        services.AddHttpClient(nameof(VirtualPaymentGoodsGateway)).RemoveAllLoggers();
         services.AddScoped<IVipProductService, VipProductService>();
         services.AddScoped<ICouponService, CouponService>();
         // Reading payment history must also work without the legacy gateway.
@@ -96,6 +98,9 @@ public class Startup : IWebStartup
         services.AddTaskQueueEngine();
         services.AddScheduledTaskEngine();
         services.RegisterBackgroundJob<Services.BackgroundJobs.DummyJob>();
+        var virtualGoodsJob = services.RegisterBackgroundJob<Services.BackgroundJobs.SyncVirtualPaymentGoodsJob>();
+        services.RegisterScheduledTask(registration: virtualGoodsJob,
+            period: TimeSpan.FromMinutes(1), startDelay: TimeSpan.FromMinutes(1));
         var orphanAvatarCleanupJob = services.RegisterBackgroundJob<Services.BackgroundJobs.OrphanAvatarCleanupJob>();
         services.RegisterScheduledTask(registration: orphanAvatarCleanupJob, period: TimeSpan.FromHours(6), startDelay: TimeSpan.FromMinutes(5));
 

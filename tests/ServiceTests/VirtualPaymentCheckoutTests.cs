@@ -282,8 +282,52 @@ public class VirtualPaymentCheckoutTests
         Assert.AreEqual(1, await _db.PaymentLogs.CountAsync()); Assert.AreEqual(0, await _db.Changes.CountAsync());
     }
 
+    [TestMethod]
+    public async Task SynchronizingCatalogBlocksNewOrdersAndDoesNotFallBackToManualMapping()
+    {
+        await Assert.ThrowsExactlyAsync<VirtualPaymentCheckoutException>(() => CreateService(goodsSync: true)
+            .CreateAsync(_buyer.Id, _product.Id, "fresh-login", _coupon.Code));
+        await AssertEmptyPurchase();
+    }
+
+    [TestMethod]
+    public async Task PublishedDatabaseMappingSignsCouponPriceAndOldSnapshotSurvivesLaterEdits()
+    {
+        var product = await _db.VipProducts.SingleAsync();
+        var row = new VirtualPaymentGoods
+        {
+            SourceProductId = product.Id, VipProductId = product.Id, AppId = "test-app", Environment = 1,
+            OfferId = "offer", Fingerprint = VirtualPaymentGoodsCatalog.Fingerprint(product, "https://example.test/goods.png"),
+            GoodsId = "published-db-item", Name = product.Name, PriceInFen = 19800, DurationDays = product.DurationDays,
+            Remark = "Membership", PictureUrl = "https://example.test/goods.png", State = VirtualGoodsState.Published,
+            PublishedAt = DateTime.UtcNow.AddMinutes(-11)
+        };
+        _db.Add(row); await _db.SaveChangesAsync();
+        var service = CreateService(goodsSync: true);
+        var result = await service.CreateAsync(_buyer.Id, product.Id, "fresh-login", _coupon.Code);
+        Assert.AreEqual(7800, result.AmountInFen); Assert.AreEqual(12000, result.DiscountInFen);
+        Assert.IsNotNull(result.PayParams);
+        using var json = JsonDocument.Parse(result.PayParams.SignData);
+        Assert.AreEqual("published-db-item", json.RootElement.GetProperty("productId").GetString());
+        Assert.AreEqual(7800, json.RootElement.GetProperty("activitySellingPrice").GetInt32());
+        var original = (await _db.VirtualPaymentSnapshots.SingleAsync()).SignData;
+        product.PriceInFen = 20800; product.DurationDays = 1; await _db.SaveChangesAsync();
+        Assert.AreEqual(original, (await _db.VirtualPaymentSnapshots.SingleAsync()).SignData);
+        Assert.AreEqual(7800, (await _db.PaymentOrders.SingleAsync()).AmountInFen);
+        Assert.AreEqual(19800, row.PriceInFen);
+        Assert.AreEqual(row.Id, (await _db.VirtualPaymentSnapshots.SingleAsync()).VirtualPaymentGoodsId);
+        Assert.AreEqual(0, await _db.CouponUsages.CountAsync()); Assert.AreEqual(0, await _db.VipMemberships.CountAsync());
+        await using var transaction = await _db.Database.BeginTransactionAsync();
+        var fulfillment = new PaymentFulfillmentService(_db, new CouponService(_db), new ChangeService(_db),
+            NullLogger<PaymentFulfillmentService>.Instance);
+        await fulfillment.CompleteAsync(await _db.PaymentOrders.SingleAsync(), "confirmed-platform-transaction");
+        await transaction.CommitAsync();
+        var membership = await _db.VipMemberships.SingleAsync();
+        Assert.AreEqual(row.DurationDays, (membership.EndTime - membership.StartTime).TotalDays, 0.001);
+    }
+
     private VirtualPaymentCheckoutService CreateService(SqliteContext? db = null, int environment = 1, bool enabled = true,
-        bool weChatEnabled = true, string secret = "app-secret", bool mapping = true, int price = 19800)
+        bool weChatEnabled = true, string secret = "app-secret", bool mapping = true, int price = 19800, bool goodsSync = false)
     {
         db ??= _db;
         var settings = Options.Create(new AppSettings
@@ -292,6 +336,7 @@ public class VirtualPaymentCheckoutTests
             OIDC = new OidcSettings { Authority = "", ClientId = "", ClientSecret = "", RolePropertyName = "", UserIdentityPropertyName = "", UserDisplayNamePropertyName = "", UsernamePropertyName = "", EmailPropertyName = "" },
             WeChat = new WeChatSettings { AppId = "test-app", AppSecret = secret, VirtualPayment = new VirtualPaymentSettings
             { Enabled = enabled, Environment = environment, OfferId = "offer", SandboxAppKey = "sandbox-key", AppKey = "live-key",
+                GoodsSync = new() { Enabled = goodsSync, PictureUrl = "https://example.test/goods.png" },
                 Products = mapping ? new() { [_product.Id.ToString()] = new() { ProductId = "course", PriceInFen = price } } : new() } }
         });
         return new VirtualPaymentCheckoutService(db, new CouponService(db),
