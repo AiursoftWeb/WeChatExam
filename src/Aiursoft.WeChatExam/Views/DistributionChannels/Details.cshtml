@@ -1,3 +1,4 @@
+@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Authorization
 @using Microsoft.AspNetCore.Authorization
@@ -61,7 +62,7 @@
                         <div class="text-muted">@Localizer["Paid Orders"]</div>
                     </div>
                     <div class="col-12 col-xl-4">
-                        <div class="h2 text-info">@Model.Stats.TotalPaidAmount.ToString("C")</div>
+                        <div class="h2 text-info">¥@Model.Stats.TotalPaidAmount.ToString("N2", CultureInfo.CurrentCulture)</div>
                         <div class="text-muted">@Localizer["Total Amount"]</div>
                     </div>
                 </div>
