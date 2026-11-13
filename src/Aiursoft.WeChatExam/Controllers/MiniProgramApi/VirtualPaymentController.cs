@@ -45,6 +45,8 @@ public class VirtualPaymentController(VirtualPaymentCheckoutService checkout,
         catch (VirtualPaymentCheckoutException ex)
         {
             // Only deliberate business rejections may become public messages.
+            // These same safe messages diagnose checkout without logging payment credentials.
+            logger.LogWarning("Virtual payment checkout rejected: {Reason}", ex.Message);
             return BadRequest(new { code = "virtual_payment_rejected", error = ex.Message });
         }
         catch (OperationCanceledException) when (HttpContext.RequestAborted.IsCancellationRequested) { throw; }
