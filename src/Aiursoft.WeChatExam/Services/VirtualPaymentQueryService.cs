@@ -56,8 +56,10 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
         var remote = response.Order;
         // Request env is 0/1; response env_type is 1/2. Refund orders (1/8)
         // are never evidence of a successful purchase, including on Apple iOS.
+        // General-goods purchases also return business type 1000; short-drama
+        // queries use 0. Keep the accepted business types explicit.
         if (remote == null || remote.OrderId != order.OutTradeNo || remote.Environment != purchase.Env + 1 ||
-            remote.OrderType is not (0 or 7) || remote.BusinessType != 0 || remote.OrderFee != order.AmountInFen ||
+            remote.OrderType is not (0 or 7) || remote.BusinessType is not (0 or 1000) || remote.OrderFee != order.AmountInFen ||
             string.IsNullOrWhiteSpace(remote.WxOrderId) || remote.RefundFee is < 0 || remote.RefundFee > order.AmountInFen ||
             remote.LeftFee is < 0 || remote.LeftFee > order.AmountInFen || remote.PaidFee < 0)
             throw new InvalidOperationException("The virtual payment query does not match this purchase.");

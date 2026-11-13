@@ -19,11 +19,15 @@ public class VirtualPaymentQueryTests
     private static readonly Guid ProductId = Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
 
     [TestMethod]
-    [DataRow(0, 0)]
-    [DataRow(0, 7)]
-    [DataRow(1, 0)]
-    [DataRow(1, 7)]
-    public async Task QueriesSavedEnvironmentAndSignsExactWireBodyWithoutLogin(int environment, int orderType)
+    [DataRow(0, 0, 0)]
+    [DataRow(0, 7, 0)]
+    [DataRow(1, 0, 0)]
+    [DataRow(1, 7, 0)]
+    [DataRow(0, 0, 1000)]
+    [DataRow(0, 7, 1000)]
+    [DataRow(1, 0, 1000)]
+    [DataRow(1, 7, 1000)]
+    public async Task QueriesSavedEnvironmentAndSignsExactWireBodyWithoutLogin(int environment, int orderType, int businessType)
     {
         var order = CreateOrder();
         var settings = CreateSettings(environment);
@@ -31,7 +35,7 @@ public class VirtualPaymentQueryTests
         // New sales are off, catalog is gone and the active environment changed.
         // Reconciliation still uses the original snapshot, without a User/session.
         settings = CreateSettings(1 - environment, enabled: false, products: false);
-        using var handler = new QueryHandler(Response(environment, orderType));
+        using var handler = new QueryHandler(Response(environment, orderType, businessType: businessType));
         var result = await CreateService(settings, handler).QueryAsync(order, snapshot, Token);
         Assert.AreEqual(VirtualPaymentOrderState.PaidAwaitingDelivery, result.State);
         Assert.AreEqual("platform-order", result.PlatformOrderId);
@@ -59,6 +63,34 @@ public class VirtualPaymentQueryTests
         Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
         Assert.IsNull(order.PaidAt);
         Assert.IsNull(order.WechatTransactionId);
+    }
+
+    [TestMethod]
+    [DataRow(200)]
+    [DataRow(19800)]
+    public async Task GeneralGoodsStillRequireTheSavedDiscountedAmount(int platformOrderFee)
+    {
+        var settings = CreateSettings(environment: 0);
+        var order = CreateOrder(amountInFen: 200);
+        // Sanitized shape observed from the live general-goods purchase:
+        // delivering, two-yuan payable, and no refund_fee field.
+        var response = Response(environment: 0, status: 3, businessType: 1000);
+        response["order"]!["order_fee"] = platformOrderFee;
+        response["order"]!["paid_fee"] = 200;
+        response["order"]!["left_fee"] = 200;
+        using var handler = new QueryHandler(response);
+        var service = CreateService(settings, handler);
+        var snapshot = Capture(order, settings);
+        if (platformOrderFee == 200)
+        {
+            var result = await service.QueryAsync(order, snapshot, Token);
+            Assert.AreEqual(VirtualPaymentOrderState.Delivering, result.State);
+            Assert.AreEqual(200, result.AmountInFen);
+        }
+        else
+            await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => service.QueryAsync(order, snapshot, Token));
+        Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+        Assert.IsNull(order.PaidAt);
     }
 
     [TestMethod]
@@ -144,6 +176,8 @@ public class VirtualPaymentQueryTests
     [DataRow("order_type", 8)]
     [DataRow("order_type", 99)]
     [DataRow("biz_type", 1)]
+    [DataRow("biz_type", 999)]
+    [DataRow("biz_type", 1001)]
     [DataRow("order_fee", 19800)]
     [DataRow("order_fee", 6799)]
     [DataRow("order_fee", 0)]
@@ -271,24 +305,24 @@ public class VirtualPaymentQueryTests
         Assert.DoesNotContain(Uri.EscapeDataString(Token), ex.ToString());
     }
 
-    private static JsonObject Response(int environment = 1, int orderType = 0, int status = 2) => new()
+    private static JsonObject Response(int environment = 1, int orderType = 0, int status = 2, int businessType = 0) => new()
     {
         ["errcode"] = 0,
         ["order"] = new JsonObject
         {
             ["order_id"] = OrderNumber, ["env_type"] = environment + 1, ["order_type"] = orderType,
-            ["status"] = status, ["biz_type"] = 0, ["order_fee"] = 6800,
+            ["status"] = status, ["biz_type"] = businessType, ["order_fee"] = 6800,
             // Platform-funded discount does not alter the merchant order amount.
             ["paid_fee"] = status == 6 ? 0 : 6700, ["wx_order_id"] = "platform-order",
             ["wxpay_order_id"] = orderType == 7 || status == 6 ? null : "wechat-transaction"
         }
     };
 
-    private static PaymentOrder CreateOrder(bool expired = false, PaymentChannel channel = PaymentChannel.WeChatVirtual) => new()
+    private static PaymentOrder CreateOrder(bool expired = false, PaymentChannel channel = PaymentChannel.WeChatVirtual, int amountInFen = 6800) => new()
     {
         Id = Guid.Parse("11111111-2222-3333-4444-555555555555"), UserId = "buyer", Channel = channel,
-        OutTradeNo = OrderNumber, VipProductId = ProductId, Description = "membership", AmountInFen = 6800,
-        DiscountInFen = 13000, ExpiredAt = expired ? DateTime.UtcNow.AddMinutes(-1) : DateTime.UtcNow.AddMinutes(15)
+        OutTradeNo = OrderNumber, VipProductId = ProductId, Description = "membership", AmountInFen = amountInFen,
+        DiscountInFen = 19800 - amountInFen, ExpiredAt = expired ? DateTime.UtcNow.AddMinutes(-1) : DateTime.UtcNow.AddMinutes(15)
     };
 
     private static VirtualPaymentSettings CreateSettings(int environment = 1, bool enabled = true,

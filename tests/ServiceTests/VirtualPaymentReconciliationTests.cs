@@ -371,11 +371,15 @@ public class VirtualPaymentReconciliationTests
     }
 
     [TestMethod]
-    public async Task RealSdkUsesServerCredentialAndSavedPurchaseBeforeGrantingMembership()
+    [DataRow(0)]
+    [DataRow(1000)]
+    public async Task RealSdkUsesServerCredentialAndSavedPurchaseBeforeGrantingMembership(int businessType)
     {
         _handler.AnswerQuery = true;
+        _handler.QueryBusinessType = businessType;
         var realQuery = new VirtualPaymentQueryService(_recovery, new TokenFactory(_handler));
-        var result = await CreateService(_db, realQuery).ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        var service = CreateService(_db, realQuery);
+        var result = await service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
         Assert.AreEqual(PaymentOrderStatus.Paid, result!.Status);
         Assert.AreEqual("sdk-transaction", result.WechatTransactionId);
         Assert.AreEqual(2, _handler.Calls);
@@ -386,6 +390,13 @@ public class VirtualPaymentReconciliationTests
         Assert.AreEqual(_order.OutTradeNo, queryBody.RootElement.GetProperty("order_id").GetString());
         Assert.AreEqual(1, await _db.VipMemberships.CountAsync());
         Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        var end = (await _db.VipMemberships.SingleAsync()).EndTime;
+        await service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        Assert.AreEqual(2, _handler.Calls);
+        Assert.AreEqual(end, (await _db.VipMemberships.SingleAsync()).EndTime);
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.IsTrue((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
     }
 
     [TestMethod]
@@ -604,6 +615,32 @@ public class VirtualPaymentReconciliationTests
         Assert.AreEqual(1, await _db.Changes.CountAsync());
         Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
         Assert.AreEqual(0, _handler.NotifyCalls); // Normal callback success needs no fallback API.
+        Assert.IsNull(_db.Database.CurrentTransaction);
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task GeneralGoodsNotificationUsesRealSdkAndAcknowledgesOnlyOnceCommitted(bool xml)
+    {
+        _handler.AnswerQuery = true;
+        _handler.QueryBusinessType = 1000;
+        var service = CreateService(_db, new VirtualPaymentQueryService(_recovery, new TokenFactory(_handler)));
+        var notifications = CreateNotifications(service);
+        var (body, signature) = EncryptNotification(NotificationPayload(), xml);
+        for (var i = 0; i < 3; i++)
+            Assert.AreEqual(VirtualPaymentNotificationResult.Completed,
+                await notifications.HandleAsync(body, PushTimestamp, PushNonce, signature));
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await _db.PaymentOrders.SingleAsync()).Status);
+        Assert.IsNotNull((await _db.PaymentOrders.SingleAsync()).PaidAt);
+        Assert.AreEqual(1, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(1, await _db.Changes.CountAsync());
+        Assert.AreEqual(1, await _db.CouponUsages.CountAsync());
+        Assert.IsTrue((await _db.UserClaimedCoupons.SingleAsync()).IsUsed);
+        Assert.AreEqual(_order.UserId, (await _db.Coupons.SingleAsync()).UsedByUserId);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentConfirmed"));
+        Assert.AreEqual(2, _handler.Calls);
+        Assert.AreEqual(0, _handler.NotifyCalls);
         Assert.IsNull(_db.Database.CurrentTransaction);
     }
 
@@ -1487,7 +1524,7 @@ public class VirtualPaymentReconciliationTests
         ["RetCode"] = 0, ["RefundStartTimestamp"] = 1794236400, ["RefundSuccTimestamp"] = 1794236410
     };
 
-    private VirtualPaymentNotificationService CreateNotifications() => new(_db, _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db), new VirtualPaymentIosRefundAdviceService(_db, _recovery));
+    private VirtualPaymentNotificationService CreateNotifications(VirtualPaymentReconciliationService? service = null) => new(_db, service ?? _service, _recovery, NullLogger<VirtualPaymentNotificationService>.Instance, new VirtualPaymentRefundService(_db), new VirtualPaymentIosRefundAdviceService(_db, _recovery));
 
     private System.Text.Json.Nodes.JsonObject NotificationPayload() => new()
     {
@@ -1573,6 +1610,7 @@ public class VirtualPaymentReconciliationTests
         public bool FailOnce { get; set; }
         public Action? NotifyObserver { get; set; }
         public bool AnswerQuery { get; set; }
+        public int QueryBusinessType { get; set; }
         public Uri? QueryUrl { get; private set; }
         public string? QueryBody { get; private set; }
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -1596,7 +1634,9 @@ public class VirtualPaymentReconciliationTests
                 QueryUrl = request.RequestUri;
                 QueryBody = Body;
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new StringContent(
-                    "{\"errcode\":0,\"order\":{\"order_id\":\"RECOVER-ORDER\",\"env_type\":2,\"order_type\":0,\"status\":2,\"biz_type\":0,\"order_fee\":6800,\"paid_fee\":6800,\"wx_order_id\":\"sdk-platform\",\"wxpay_order_id\":\"sdk-transaction\"}}") };
+                    System.Text.Json.JsonSerializer.Serialize(new { errcode = 0, order = new { order_id = "RECOVER-ORDER",
+                        env_type = 2, order_type = 0, status = 2, biz_type = QueryBusinessType, order_fee = 6800,
+                        paid_fee = 6800, wx_order_id = "sdk-platform", wxpay_order_id = "sdk-transaction" } })) };
             }
             return new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new StringContent(Fail
                 ? "{\"errcode\":40164,\"errmsg\":\"synthetic-sensitive-error\"}"
