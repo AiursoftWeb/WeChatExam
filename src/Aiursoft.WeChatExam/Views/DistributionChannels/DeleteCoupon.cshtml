@@ -1,3 +1,4 @@
+@using System.Globalization
 @model Aiursoft.WeChatExam.Models.DistributionChannelsViewModels.DeleteCouponViewModel
 @using Aiursoft.WeChatExam.Authorization
 @using Microsoft.AspNetCore.Authorization
@@ -10,7 +11,7 @@
 }
 <div class="card"><div class="card-body">
     <h2 class="h4 text-break"><code>@Model.Coupon.Code</code></h2>
-    <p>@Model.Coupon.DistributionChannel?.AgencyName · ¥@((Model.Coupon.AmountInFen / 100m).ToString("F2"))</p>
+    <p>@Model.Coupon.DistributionChannel?.AgencyName · ¥@((Model.Coupon.AmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</p>
     <div asp-validation-summary="All" class="text-danger" role="alert"></div>
     <partial name="_CouponDeletionSummary" model="Model.Deletion" />
     @if (Model.Deletion.CanDelete)

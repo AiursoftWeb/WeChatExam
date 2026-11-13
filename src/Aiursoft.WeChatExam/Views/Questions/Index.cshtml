@@ -1,3 +1,4 @@
+@using System.Globalization
 @using Aiursoft.WeChatExam.Authorization
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
@@ -12,8 +13,8 @@
     if (periodTitle != null) filters.Add(periodTitle);
     if (Model.FilterQuestionType.HasValue) filters.Add(Localizer[Model.FilterQuestionType.Value.GetDisplayName()].Value);
     if (!string.IsNullOrWhiteSpace(Model.FilterTag)) filters.Add(Model.FilterTag);
-    if (Model.FilterStartDate.HasValue) filters.Add(Localizer["From {0}", Model.FilterStartDate.Value.ToString("yyyy-MM-dd")].Value);
-    if (Model.FilterEndDate.HasValue) filters.Add(Localizer["Until {0}", Model.FilterEndDate.Value.ToString("yyyy-MM-dd")].Value);
+    if (Model.FilterStartDate.HasValue) filters.Add(Localizer["From {0}", Model.FilterStartDate.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)].Value);
+    if (Model.FilterEndDate.HasValue) filters.Add(Localizer["Until {0}", Model.FilterEndDate.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)].Value);
     if (!string.IsNullOrWhiteSpace(Model.FilterMtql)) filters.Add(Model.FilterMtql);
     var filterErrors = ViewData.ModelState.ErrorCount > 0;
 }
@@ -89,11 +90,11 @@
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">@Localizer["Start Date"]</label>
-                        <input type="date" name="startDate" value="@(Model.FilterStartDate?.ToString("yyyy-MM-dd"))" class="form-control" />
+                        <input type="date" name="startDate" value="@(Model.FilterStartDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" class="form-control" />
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">@Localizer["End Date"]</label>
-                        <input type="date" name="endDate" value="@(Model.FilterEndDate?.ToString("yyyy-MM-dd"))" class="form-control" />
+                        <input type="date" name="endDate" value="@(Model.FilterEndDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" class="form-control" />
                     </div>
 
                     <div class="col-md-4">

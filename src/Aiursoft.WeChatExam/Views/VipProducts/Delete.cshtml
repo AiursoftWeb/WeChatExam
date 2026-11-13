@@ -1,3 +1,4 @@
+@using System.Globalization
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.DeleteViewModel
 @using Aiursoft.WeChatExam.Entities
 
@@ -53,7 +54,7 @@
                 }
                 <tr>
                     <th>@Localizer["Price"]</th>
-                    <td>¥@((Model.Product.PriceInFen / 100.0).ToString("F2"))</td>
+                    <td>¥@((Model.Product.PriceInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
                 </tr>
                 <tr>
                     <th>@Localizer["Duration"]</th>

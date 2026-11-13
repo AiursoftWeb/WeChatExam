@@ -1,3 +1,4 @@
+using System.Globalization;
 using Aiursoft.Scanner.Abstractions;
 using Aiursoft.WeChatExam.Configuration;
 using Aiursoft.WeChatExam.Entities;
@@ -68,7 +69,7 @@ public class GlobalSettingsService(
     public async Task<int> GetIntSettingAsync(string key)
     {
         var value = await GetSettingValueAsync(key);
-        return int.TryParse(value, out var result) ? result : 0;
+        return int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var result) ? result : 0;
     }
 
     public bool IsOverriddenByConfig(string key)
@@ -124,7 +125,8 @@ public class GlobalSettingsService(
                 }
                 break;
             case SettingType.Number:
-                if (!double.TryParse(value, out _))
+                if (!double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out var number) ||
+                    !double.IsFinite(number))
                 {
                     throw new InvalidOperationException($"Value '{value}' is not a valid number for setting {key}.");
                 }

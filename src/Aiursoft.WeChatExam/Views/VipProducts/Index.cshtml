@@ -1,3 +1,4 @@
+@using System.Globalization
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.IndexViewModel
 @using Aiursoft.WeChatExam.Entities
 
@@ -105,7 +106,7 @@
                                 <span class="text-muted">-</span>
                             }
                         </td>
-                        <td>¥@((product.PriceInFen / 100.0).ToString("F2"))</td>
+                        <td>¥@((product.PriceInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
                         <td>@product.DurationDays @Localizer["days"]</td>
                         <td>
                             @if (product.IsEnabled)

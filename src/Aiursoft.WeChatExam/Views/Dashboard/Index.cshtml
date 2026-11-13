@@ -1,3 +1,4 @@
+@using System.Globalization
 @using System.Text.Json
 @using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.DashboardViewModels.IndexViewModel
@@ -378,7 +379,7 @@
                     <div class="card-body py-4">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
-                                <h3 class="mb-2">@Model.AverageExamScore.ToString("F1")</h3>
+                                <h3 class="mb-2">@Model.AverageExamScore.ToString("F1", CultureInfo.CurrentCulture)</h3>
                                 <p class="mb-2">@Localizer["Average Score"]</p>
                                 <div class="mb-0">
                                     <span class="text-muted">@Localizer["across all completed exams"]</span>

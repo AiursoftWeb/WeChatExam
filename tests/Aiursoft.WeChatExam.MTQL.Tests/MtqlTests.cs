@@ -190,7 +190,7 @@ public class MtqlTests
             GradingStrategy = GradingStrategy.ExactMatch,
             QuestionTags = tags.Select(t => new QuestionTag 
             { 
-               Tag = new Tag { DisplayName = t, NormalizedName = t.ToUpper() },
+               Tag = new Tag { DisplayName = t, NormalizedName = t.ToUpperInvariant() },
                TagId = 1,
                QuestionId = Guid.NewGuid()
             }).ToList()

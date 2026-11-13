@@ -1,10 +1,11 @@
+@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.AccountingViewModels.DetailsViewModel
 
 <div class="row mb-2 mb-xl-3">
     <div class="col-auto d-none d-sm-block">
-        <h3>@Localizer["Finance Report Details"] - @Model.Report.Month.ToString("MMMM yyyy")</h3>
+        <h3>@Localizer["Finance Report Details"] - @Model.Report.Month.ToString("MMMM yyyy", CultureInfo.CurrentCulture)</h3>
     </div>
 </div>
 

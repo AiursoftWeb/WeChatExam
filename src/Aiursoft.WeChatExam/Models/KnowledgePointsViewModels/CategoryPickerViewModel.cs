@@ -11,9 +11,9 @@ public class CategoryPickerViewModel
         var selected = selectedIds.ToHashSet();
         foreach (var group in categories.GroupBy(c => c.TotalCategoryId)
                      .OrderBy(g => g.First().TotalCategory?.OrderIndex)
-                     .ThenBy(g => g.First().TotalCategory?.Title))
+                     .ThenBy(g => g.First().TotalCategory?.Title, StringComparer.CurrentCulture))
         {
-            var ordered = group.OrderBy(c => c.OrderIndex).ThenBy(c => c.Title).ToList();
+            var ordered = group.OrderBy(c => c.OrderIndex).ThenBy(c => c.Title, StringComparer.CurrentCulture).ToList();
             var ids = ordered.Select(c => c.Id).ToHashSet();
             var children = ordered.Where(c => c.ParentKnowledgeCategoryId.HasValue)
                 .ToLookup(c => c.ParentKnowledgeCategoryId!.Value);
