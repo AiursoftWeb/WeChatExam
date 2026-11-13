@@ -181,6 +181,26 @@ public class WeChatPayService(
         return (order, null);
     }
 
+    public async Task ReconcilePreviousOrdersAsync(string userId, Guid productId)
+    {
+        if (string.IsNullOrWhiteSpace(userId)) return;
+        await InPaymentTransactionAsync(async () =>
+        {
+            await LockBuyerAsync(userId);
+            var now = DateTime.UtcNow;
+            var previous = await dbContext.PaymentOrders.Where(o => o.UserId == userId &&
+                    o.VipProductId == productId && o.Channel == PaymentChannel.WeChatJsApi &&
+                    (o.Status == PaymentOrderStatus.Failed || o.Status == PaymentOrderStatus.Pending))
+                .OrderBy(o => o.CreatedAt).ToListAsync();
+            foreach (var order in previous)
+            {
+                await LockCouponAsync(order.CouponId);
+                if (!await ConfirmClosedAsync(order, order.ExpiredAt <= now || order.Status == PaymentOrderStatus.Failed)) break;
+            }
+            return true;
+        });
+    }
+
     private async Task<bool> ClearOtherCouponOrdersAsync(Guid couponId, Guid? currentOrderId)
     {
         var others = await dbContext.PaymentOrders.Where(o => o.CouponId == couponId && o.Id != currentOrderId &&
@@ -193,7 +213,7 @@ public class WeChatPayService(
         return true;
     }
 
-    private async Task<bool> ConfirmClosedAsync(PaymentOrder order)
+    private async Task<bool> ConfirmClosedAsync(PaymentOrder order, bool closeUnpaid = true)
     {
         // This also protects single-use coupons reserved by another channel.
         // Unknown or expired foreign orders stay reserved until that gateway confirms closure.
@@ -214,6 +234,7 @@ public class WeChatPayService(
         }
         if (query.TradeState == "NOTPAY")
         {
+            if (!closeUnpaid) return false;
             var close = await tenpayClient.ExecuteClosePayTransactionAsync(new ClosePayTransactionRequest
             { MerchantId = _settings.WeChat.Payment.MchId, OutTradeNumber = order.OutTradeNo });
             if (!close.IsSuccessful()) return false;
