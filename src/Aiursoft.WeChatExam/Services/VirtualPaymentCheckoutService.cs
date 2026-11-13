@@ -13,13 +13,13 @@ using SKIT.FlurlHttpClient.Wechat.Api.Models;
 namespace Aiursoft.WeChatExam.Services;
 
 /// <summary>
-/// Reserves a FIRST virtual purchase. No public route, gateway charge or resume:
-/// previous attempts must be reconciled/closed by their own channel separately.
+/// Reserves a FIRST virtual purchase, reconciling ordinary reservations through
+/// their original service first. No gateway charge or virtual-order resume.
 /// Nothing payable escapes before the order and immutable snapshot commit.
 /// </summary>
 public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponService coupons,
     PaymentFulfillmentService fulfillment, VirtualPaymentParameterService parameters,
-    IOptions<AppSettings> options, IHttpClientFactory httpClientFactory) : IScopedDependency
+    IOptions<AppSettings> options, IHttpClientFactory httpClientFactory, IWeChatPayService? legacyPayments = null) : IScopedDependency
 {
     public async Task<VirtualPaymentCheckoutResult> CreateAsync(string userId, Guid productId, string loginCode,
         string? couponCode = null, CancellationToken cancellationToken = default)
@@ -51,6 +51,13 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
                 throw new VirtualPaymentCheckoutException("Payment login could not be verified. Please sign in again.");
             buyer.SessionKey = response.SessionKey;
         }
+
+        // Reconcile old ordinary reservations through their original gateway before
+        // entering our own reservation transaction. A later rejection must not roll
+        // back a recovered payment or confirmed closure. Recheck all states below.
+        if (legacyPayments != null)
+            await legacyPayments.ReconcilePreviousOrdersAsync(userId, productId);
+        cancellationToken.ThrowIfCancellationRequested();
 
         // Stable across EF execution-strategy retries, including an uncertain commit.
         var id = Guid.NewGuid();

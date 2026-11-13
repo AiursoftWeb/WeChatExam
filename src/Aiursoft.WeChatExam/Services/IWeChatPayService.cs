@@ -23,6 +23,11 @@ public interface IWeChatPayService
     Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId);
 
     /// <summary>
+    /// Reconcile this buyer's ordinary reservations without creating another ordinary order.
+    /// </summary>
+    Task ReconcilePreviousOrdersAsync(string userId, Guid productId);
+
+    /// <summary>
     /// 处理支付结果通知回调
     /// </summary>
     Task<bool> HandlePaymentNotifyAsync(string requestBody, string signature, string timestamp, string nonce, string serialNumber);

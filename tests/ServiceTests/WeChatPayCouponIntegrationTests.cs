@@ -495,6 +495,201 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    [DataRow("CLOSED", true, true, "closed")]
+    [DataRow("CLOSED", true, false, "closed")]
+    [DataRow("NOTPAY", true, true, "closed")]
+    [DataRow("NOTPAY", true, false, "pending")]
+    [DataRow("NOTPAY", false, true, "pending")]
+    [DataRow("FAILED", true, false, "closed")]
+    [DataRow("SUCCESS", true, true, "paid")]
+    [DataRow("SUCCESS", true, false, "paid")]
+    [DataRow("WRONG_AMOUNT", true, true, "pending")]
+    [DataRow("WRONG_CURRENCY", true, true, "pending")]
+    [DataRow("WRONG_APP", true, true, "pending")]
+    [DataRow("WRONG_MERCHANT", true, true, "pending")]
+    [DataRow("USERPAYING", true, true, "pending")]
+    [DataRow("UNKNOWN", true, true, "pending")]
+    [DataRow("TIMEOUT", true, true, "pending")]
+    public async Task VirtualCheckoutReconcilesOrdinaryOrderWithoutAnotherOrdinaryPurchase(
+        string state, bool closeSucceeds, bool expired, string expected)
+    {
+        var queries = 0;
+        var closes = 0;
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            var path = request.RequestUri!.AbsolutePath;
+            if (path.EndsWith("/close"))
+            {
+                closes++;
+                return closeSucceeds ? (System.Net.HttpStatusCode.NoContent, "")
+                    : (System.Net.HttpStatusCode.InternalServerError, "{\"code\":\"SYSTEM_ERROR\"}");
+            }
+            Assert.AreEqual(HttpMethod.Get, request.Method, "Reconciliation must never create another ordinary payment.");
+            queries++;
+            if (state == "TIMEOUT") throw new TaskCanceledException("Synthetic query timeout");
+            if (state == "UNKNOWN") return (System.Net.HttpStatusCode.NotFound, "{\"code\":\"ORDER_NOT_EXIST\"}");
+            return (System.Net.HttpStatusCode.OK, JsonSerializer.Serialize(new
+            {
+                out_trade_no = "OLD-PENDING", mchid = state == "WRONG_MERCHANT" ? "other" : "mchid",
+                appid = state == "WRONG_APP" ? "other" : "appid",
+                trade_state = state == "FAILED" ? "NOTPAY" : state.StartsWith("WRONG_")
+                    ? state is "WRONG_AMOUNT" or "WRONG_CURRENCY" ? "SUCCESS" : "CLOSED" : state,
+                transaction_id = "original-transaction",
+                amount = new { total = state == "WRONG_AMOUNT" ? 99 : 100, currency = state == "WRONG_CURRENCY" ? "USD" : "CNY" }
+            }));
+        });
+        var coupon = await _dbContext.Coupons.SingleAsync();
+        var old = new PaymentOrder { UserId = _userId, VipProductId = _productId, CouponId = coupon.Id,
+            OutTradeNo = "OLD-PENDING", Description = "Original ordinary purchase", AmountInFen = 100, DiscountInFen = 100,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(expired ? -1 : 30),
+            Status = state == "FAILED" ? PaymentOrderStatus.Failed : PaymentOrderStatus.Pending };
+        _dbContext.Add(old); await _dbContext.SaveChangesAsync();
+        var checkout = await CreateVirtualCheckoutAsync();
+        if (expected == "closed")
+        {
+            var result = await checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED");
+            Assert.AreEqual(100, result.AmountInFen); Assert.IsNotNull(result.PayParams);
+            Assert.AreEqual(PaymentChannel.WeChatVirtual, (await _dbContext.PaymentOrders.SingleAsync(o => o.OutTradeNo == result.OutTradeNo)).Channel);
+        }
+        else if (state == "TIMEOUT")
+            await Assert.ThrowsAsync<SKIT.FlurlHttpClient.CommonException>(() => checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED"));
+        else
+        {
+            var rejection = await Assert.ThrowsAsync<VirtualPaymentCheckoutException>(() => checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED"));
+            Assert.AreEqual(expected == "paid" ? "The requested membership is already active. Purchase again after it expires."
+                : "The previous payment is not confirmed closed. Please check its status before purchasing again.", rejection.Message);
+        }
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(expected == "closed" ? PaymentOrderStatus.Closed : expected == "paid" ? PaymentOrderStatus.Paid : PaymentOrderStatus.Pending,
+            (await _dbContext.PaymentOrders.SingleAsync(o => o.Id == old.Id)).Status);
+        Assert.AreEqual(expected == "closed" ? 2 : 1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(expected == "closed" ? 1 : 0, await _dbContext.VirtualPaymentSnapshots.CountAsync());
+        Assert.AreEqual(expected == "paid" ? 1 : 0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(expected == "paid" ? 1 : 0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(expected == "paid" ? 1 : 0, await _dbContext.Changes.CountAsync());
+        Assert.AreEqual(expected == "paid", (await _dbContext.Coupons.SingleAsync()).UsedByUserId != null);
+        Assert.AreEqual(1, queries);
+        Assert.AreEqual(state == "NOTPAY" && expired || state == "FAILED" ? 1 : 0, closes);
+        if (expected is "closed" or "paid")
+        {
+            await Assert.ThrowsAsync<VirtualPaymentCheckoutException>(() => checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED"));
+            Assert.AreEqual(expected == "closed" ? 2 : 1, await _dbContext.PaymentOrders.CountAsync());
+            Assert.AreEqual(expected == "paid" ? 1 : 0, await _dbContext.VipMemberships.CountAsync());
+            Assert.AreEqual(1, queries);
+        }
+    }
+
+    [TestMethod]
+    [DataRow("other-user")]
+    [DataRow("other-product")]
+    [DataRow("virtual")]
+    [DataRow("unknown-channel")]
+    [DataRow("paid")]
+    [DataRow("refunded")]
+    [DataRow("closed")]
+    public async Task OrdinaryReconciliationCannotTouchUnrelatedOrFinalOrders(string scope)
+    {
+        await UseCheckoutDatabaseAsync((_, _) => throw new AssertFailedException("Unrelated orders must not contact a gateway."));
+        var buyerId = _userId;
+        var productId = _productId;
+        if (scope == "other-user")
+        {
+            var other = new User { UserName = "other", DisplayName = "Other" };
+            _dbContext.Add(other); buyerId = other.Id;
+        }
+        if (scope == "other-product")
+        {
+            var other = new VipProduct { Name = "Other", TotalCategory = new TotalCategory { Title = "Other" } };
+            _dbContext.Add(other); productId = other.Id;
+        }
+        var order = new PaymentOrder { UserId = buyerId, VipProductId = productId, OutTradeNo = "UNRELATED-ORDER",
+            Description = "Unrelated reservation", ExpiredAt = DateTime.UtcNow.AddMinutes(-1), AmountInFen = 100,
+            Channel = scope == "virtual" ? PaymentChannel.WeChatVirtual : scope == "unknown-channel" ? (PaymentChannel)99 : PaymentChannel.WeChatJsApi,
+            Status = scope == "paid" ? PaymentOrderStatus.Paid : scope == "refunded" ? PaymentOrderStatus.Refunded
+                : scope == "closed" ? PaymentOrderStatus.Closed : PaymentOrderStatus.Pending };
+        _dbContext.Add(order); await _dbContext.SaveChangesAsync();
+        var original = await OrderSnapshotAsync(order.Id);
+        await _payService.ReconcilePreviousOrdersAsync(_userId, _productId);
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(original, await OrderSnapshotAsync(order.Id));
+        await AssertNoSettlementAsync();
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task ConfirmedOrdinaryClosureSurvivesARejectedVirtualReservation(bool failSnapshot)
+    {
+        await UseCheckoutDatabaseAsync((request, _) =>
+        {
+            Assert.AreEqual(HttpMethod.Get, request.Method);
+            return (System.Net.HttpStatusCode.OK, "{\"out_trade_no\":\"OLD-PENDING\",\"mchid\":\"mchid\",\"appid\":\"appid\",\"trade_state\":\"CLOSED\"}");
+        });
+        _dbContext.Add(new PaymentOrder { UserId = _userId, VipProductId = _productId, OutTradeNo = "OLD-PENDING",
+            Description = "Closed ordinary purchase", AmountInFen = 100, ExpiredAt = DateTime.UtcNow.AddMinutes(-1) });
+        await _dbContext.SaveChangesAsync();
+        var checkout = await CreateVirtualCheckoutAsync();
+        if (failSnapshot)
+            await _dbContext.Database.ExecuteSqlRawAsync("CREATE TRIGGER fail_virtual_snapshot BEFORE INSERT ON VirtualPaymentSnapshots BEGIN SELECT RAISE(ABORT, 'Synthetic snapshot failure'); END;");
+        else
+            await _dbContext.VipProducts.Where(p => p.Id == _productId).ExecuteUpdateAsync(s => s.SetProperty(p => p.IsEnabled, false));
+        _dbContext.ChangeTracker.Clear();
+        if (failSnapshot)
+            await Assert.ThrowsAsync<DbUpdateException>(() => checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED"));
+        else
+            await Assert.ThrowsAsync<VirtualPaymentCheckoutException>(() => checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED"));
+        _dbContext.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Closed, (await _dbContext.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(0, await _dbContext.VirtualPaymentSnapshots.CountAsync());
+        await AssertNoSettlementAsync(expectedLogs: 1);
+        if (failSnapshot) await _dbContext.Database.ExecuteSqlRawAsync("DROP TRIGGER fail_virtual_snapshot;");
+        else await _dbContext.VipProducts.Where(p => p.Id == _productId).ExecuteUpdateAsync(s => s.SetProperty(p => p.IsEnabled, true));
+        Assert.IsNotNull((await checkout.CreateAsync(_userId, _productId, "fresh-login", "RESERVED")).PayParams);
+        Assert.AreEqual(2, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(1, await _dbContext.VirtualPaymentSnapshots.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("another-account")]
+    public async Task UnverifiedVirtualLoginCannotReconcileAnOrdinaryOrder(string loginOpenId)
+    {
+        await UseCheckoutDatabaseAsync((_, _) => throw new AssertFailedException("An unverified login must not query or close an order."));
+        var order = new PaymentOrder { UserId = _userId, VipProductId = _productId, OutTradeNo = "OLD-PENDING",
+            Description = "Original reservation", AmountInFen = 100, ExpiredAt = DateTime.UtcNow.AddMinutes(-1) };
+        _dbContext.Add(order); await _dbContext.SaveChangesAsync();
+        var checkout = await CreateVirtualCheckoutAsync(loginOpenId);
+        var before = await OrderSnapshotAsync(order.Id);
+        await Assert.ThrowsAsync<VirtualPaymentCheckoutException>(() => checkout.CreateAsync(_userId, _productId, "fresh-login"));
+        Assert.AreEqual(before, await OrderSnapshotAsync(order.Id));
+        await AssertNoSettlementAsync();
+    }
+
+    private async Task<VirtualPaymentCheckoutService> CreateVirtualCheckoutAsync(string loginOpenId = "openid")
+    {
+        var settings = Options.Create(new AppSettings { AuthProvider = "Local", Local = _settings.Value.Local,
+            OIDC = _settings.Value.OIDC, WeChatEnabled = true,
+            WeChat = new WeChatSettings { AppId = "appid", AppSecret = "test-secret",
+                VirtualPayment = new VirtualPaymentSettings { Enabled = true, Environment = 0,
+                    OfferId = "offer", AppKey = "test-key", Products = new()
+                    { [_productId.ToString()] = new() { ProductId = "course", PriceInFen = 200 } } } } });
+        await _dbContext.Users.Where(u => u.Id == _userId).ExecuteUpdateAsync(s => s.SetProperty(u => u.MiniProgramOpenId, "openid"));
+        return new VirtualPaymentCheckoutService(_dbContext, _couponService, CreateFulfillmentService(),
+            new VirtualPaymentParameterService(settings), settings, new VirtualLoginFactory(loginOpenId), _payService);
+    }
+
+    private sealed class VirtualLoginFactory(string openId) : IHttpClientFactory
+    {
+        public HttpClient CreateClient(string name) => new(new VirtualLoginHandler(openId));
+    }
+    private sealed class VirtualLoginHandler(string openId) : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
+            Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+            { Content = new StringContent(JsonSerializer.Serialize(new { errcode = 0, openid = openId, session_key = "fresh-session" })) });
+    }
+
+    [TestMethod]
     [DataRow(false)]
     [DataRow(true)]
     public async Task LegacyCouponWithTwoPendingOrdersMustReconcileBoth(bool secondWasPaid)
