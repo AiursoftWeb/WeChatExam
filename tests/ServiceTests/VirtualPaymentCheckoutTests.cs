@@ -135,7 +135,8 @@ public class VirtualPaymentCheckoutTests
         var old = new PaymentOrder { UserId = _buyer.Id, VipProductId = _product.Id, Channel = channel, Status = status,
             OutTradeNo = "OLD-ORDER", Description = "Old", AmountInFen = 19800, ExpiredAt = DateTime.UtcNow.AddDays(-1) };
         _db.Add(old); await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
-        await Assert.ThrowsAsync<InvalidOperationException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+        var rejection = await Assert.ThrowsAsync<VirtualPaymentCheckoutException>(() => CreateService().CreateAsync(_buyer.Id, _product.Id, "fresh-login"));
+        Assert.AreEqual("The previous payment is not confirmed closed. Please check its status before purchasing again.", rejection.Message);
         Assert.AreEqual(1, await _db.PaymentOrders.CountAsync());
         Assert.AreEqual(status, (await _db.PaymentOrders.SingleAsync()).Status);
         Assert.AreEqual(0, await _db.VirtualPaymentSnapshots.CountAsync());

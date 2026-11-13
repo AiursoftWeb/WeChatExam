@@ -99,7 +99,7 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
             // This first-reservation service cannot release, resume or close them.
             if (await db.PaymentOrders.AnyAsync(o => o.UserId == userId && o.VipProductId == productId &&
                     (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed), cancellationToken))
-                throw new VirtualPaymentCheckoutException("A previous payment is not confirmed closed. Please check its status before purchasing again.");
+                throw new VirtualPaymentCheckoutException("The previous payment is not confirmed closed. Please check its status before purchasing again.");
 
             Coupon? coupon;
             if (!string.IsNullOrWhiteSpace(couponCode))
