@@ -4,7 +4,7 @@
 @{
     var originalAmount = (long)Model.AmountInFen + Model.DiscountInFen;
 }
-<div class="small text-nowrap">
+<div class="text-nowrap">
     <div class="text-muted">@Localizer["Original price"]: ¥@((originalAmount / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
     <div class="text-muted">@Localizer["Discount"]: −¥@((Model.DiscountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
     <div class="fw-bold">@Localizer["Order amount"]: ¥@((Model.AmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
