@@ -91,7 +91,7 @@ public class ProductSalesTests : TestBase
             .Select(name => new VipProduct { Name = name, IsEnabled = name != "Overview Disabled",
                 TotalCategory = new TotalCategory { Title = name } }).ToArray();
         db.AddRange(first, second, freeOnly);
-        db.AddRange(products);
+        db.VipProducts.AddRange(products);
         PaymentOrder Order(int product, User user, int amount, PaymentOrderStatus status = PaymentOrderStatus.Paid) => new()
         {
             UserId = user.Id, User = user, VipProduct = products[product], Status = status, AmountInFen = amount,

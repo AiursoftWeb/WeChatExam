@@ -35,8 +35,8 @@
     }
     <div class="sales-toolbar">
         <nav class="sales-switch" aria-label="@Localizer["Product status"]">
-            <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" class="@(!Model.ShowDisabled ? "active" : "")" aria-current="@(!Model.ShowDisabled ? "page" : null)">@Localizer["Enabled"] (@Model.EnabledCount)</a>
-            <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" asp-route-showDisabled="true" class="@(Model.ShowDisabled ? "active" : "")" aria-current="@(Model.ShowDisabled ? "page" : null)">@Localizer["Disabled"] (@Model.DisabledCount)</a>
+            <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" class="nav-link @(!Model.ShowDisabled ? "active" : "")" aria-current="@(!Model.ShowDisabled ? "page" : null)">@Localizer["Enabled"] (@Model.EnabledCount)</a>
+            <a asp-action="Index" asp-route-search="@Model.SearchQuery" asp-route-totalCategoryId="@Model.TotalCategoryId" asp-route-institutionId="@Model.InstitutionId" asp-route-showDisabled="true" class="nav-link @(Model.ShowDisabled ? "active" : "")" aria-current="@(Model.ShowDisabled ? "page" : null)">@Localizer["Disabled"] (@Model.DisabledCount)</a>
         </nav>
         <form method="get" class="sales-search">
             <input type="hidden" name="showDisabled" value="@Model.ShowDisabled.ToString().ToLowerInvariant()" />
