@@ -114,6 +114,13 @@ public class VirtualPaymentReconciliationService(WeChatExamDbContext db, IVirtua
                 if (references != 1)
                     throw new InvalidOperationException("The confirmed platform payment reference changed.");
             }
+            if (result.Platform is { } platform)
+            {
+                if (saved.Platform.HasValue && saved.Platform != platform)
+                    throw new InvalidOperationException("The verified payment platform changed.");
+                await db.VirtualPaymentSnapshots.Where(s => s.PaymentOrderId == current.Id && s.Platform == null)
+                    .ExecuteUpdateAsync(s => s.SetProperty(x => x.Platform, platform));
+            }
 
             // iOS need not have an ordinary WeChat transaction ID. Retain the
             // virtual platform reference separately; never fabricate that ID.

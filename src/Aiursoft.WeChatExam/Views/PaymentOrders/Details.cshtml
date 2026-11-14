@@ -4,6 +4,10 @@
 @model Aiursoft.WeChatExam.Models.PaymentOrdersViewModels.DetailsViewModel
 
 <h1 class="h3 mb-3">@Localizer["Payment Order Details"]</h1>
+<div class="d-flex flex-wrap gap-2 mb-3">
+    <a asp-controller="Refunds" asp-action="Process" asp-route-id="@Model.Order.Id" class="btn btn-outline-danger">@Localizer["Refund handling"]</a>
+    <a asp-controller="Refunds" asp-action="Index" class="btn btn-outline-primary">@Localizer["Refund management"]</a>
+</div>
 
 @if (Model.Order.Channel == PaymentChannel.WeChatVirtual && Model.Order.PaymentLogs.Any(l => l.EventType == "VirtualPaymentRefundReview"))
 {
@@ -47,7 +51,7 @@
                         </tr>
                         <tr>
                             <th>@Localizer["Payment channel"]</th>
-                            <td><partial name="_PaymentChannel" model="Model.Order.Channel" /></td>
+                            <td><partial name="_PaymentChannel" model="Model.Order" /></td>
                         </tr>
                         <tr>
                             <th>@Localizer["Coupon code"]</th>

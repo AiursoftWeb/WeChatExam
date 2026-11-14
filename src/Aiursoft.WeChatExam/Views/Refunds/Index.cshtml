@@ -1,0 +1,39 @@
+@using Aiursoft.WebTools
+@using Aiursoft.WeChatExam.Models.PaymentOrdersViewModels
+@model RefundManagementViewModel
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+    <h1 class="h3 mb-0">@Localizer["Refund management"] <span class="badge bg-secondary">@Model.TotalCount</span></h1>
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-controller="PaymentOrders" asp-action="Index" class="btn btn-primary">@Localizer["Find an order to refund"]</a>
+        <a asp-controller="PaymentOrders" asp-action="RefundReviews" class="btn btn-outline-warning">@Localizer["Memberships needing review"]</a>
+    </div>
+</div>
+<div class="card"><div class="table-responsive">
+    <table class="table table-hover mb-0">
+        <thead><tr><th>@Localizer["Buyer and product"]</th><th>@Localizer["Payment method"]</th><th>@Localizer["Refund"]</th><th>@Localizer["Membership handling"]</th><th>@Localizer["Recorded at"]</th><th>@Localizer["Actions"]</th></tr></thead>
+        <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td><strong>@(order.User?.DisplayName ?? order.UserId)</strong><br />@(order.VipProduct?.Name ?? "-")<br /><code class="text-break">@order.OutTradeNo</code></td>
+                <td><partial name="~/Views/PaymentOrders/_PaymentChannel.cshtml" model="order" /></td>
+                <td>@if (RefundOrderViewModel.RefundAmount(order) is { } amount) { <span>@($"¥{amount / 100m:F2}")</span> }
+                    else { <span>@Localizer["Amount needs verification"]</span> }<br /><partial name="_RefundStatus" model="order" /></td>
+                <td>
+                    @if (RefundOrderViewModel.NeedsReview(order)) { <span class="badge bg-warning text-dark">@Localizer["Needs review"]</span> }
+                    else if (RefundOrderViewModel.RightsHandled(order)) { @Localizer["Handled for this order"] }
+                    else if (order.Status == Aiursoft.WeChatExam.Entities.PaymentOrderStatus.Refunded) { @Localizer["Needs review"] }
+                    else { @Localizer["Awaiting refund confirmation"] }
+                </td>
+                <td>@if (RefundOrderViewModel.RecordedAt(order) is { } time) { <time data-utc-time="@time.ToHtmlDateTime()"></time> } else { <span>-</span> }</td>
+                <td><a asp-action="Process" asp-route-id="@order.Id" class="btn btn-outline-primary btn-sm">@Localizer["Refund details"]</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @if (Model.Orders.Count == 0) { <p class="p-3 mb-0">@Localizer["No refunds yet. Find a payment order to begin."]</p> }
+</div><div class="card-footer d-flex justify-content-end align-items-center gap-3">
+    @if (Model.CurrentPage > 1) { <a asp-route-page="@(Model.CurrentPage - 1)">@Localizer["Previous"]</a> }
+    <span>@Model.CurrentPage / @Math.Max(1, (int)Math.Ceiling(Model.TotalCount / (double)Model.PageSize))</span>
+    @if ((long)Model.CurrentPage * Model.PageSize < Model.TotalCount) { <a asp-route-page="@(Model.CurrentPage + 1)">@Localizer["Next"]</a> }
+</div></div>

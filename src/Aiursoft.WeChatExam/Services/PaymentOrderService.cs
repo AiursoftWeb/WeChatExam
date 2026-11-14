@@ -29,6 +29,8 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
 
         // Load names separately so historical orders with missing user rows remain visible.
         var orders = await query
+            .Include(o => o.VirtualPaymentSnapshot)
+            .Include(o => o.RefundRequest)
             .Include(o => o.VipProduct)
             .ThenInclude(p => p!.TotalCategory)
             .OrderByDescending(o => o.CreatedAt)
@@ -44,6 +46,8 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
     public async Task<PaymentOrder?> GetOrderDetailAsync(Guid id)
     {
         return await dbContext.PaymentOrders
+            .Include(o => o.VirtualPaymentSnapshot)
+            .Include(o => o.RefundRequest)
             .Include(o => o.PaymentLogs)
             .Include(o => o.Coupon)
             .Include(o => o.VipProduct)
@@ -55,6 +59,8 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
     public async Task<List<PaymentOrder>> GetUserPaymentsAsync(string userId)
     {
         return await dbContext.PaymentOrders
+            .Include(o => o.VirtualPaymentSnapshot)
+            .Include(o => o.RefundRequest)
             .Include(o => o.User)
             .Include(o => o.VipProduct)
             .ThenInclude(p => p!.TotalCategory)

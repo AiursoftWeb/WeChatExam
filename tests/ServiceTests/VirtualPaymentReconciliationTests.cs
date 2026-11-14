@@ -1515,6 +1515,24 @@ public class VirtualPaymentReconciliationTests
         }
     }
 
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RealRefundNotificationCompletesTheDurableStaffIntentEvenBeforeSubmissionReturns(bool xml)
+    {
+        await _service.ReconcileAsync(_order.OutTradeNo, _order.UserId);
+        _db.VirtualPaymentRefundRequests.Add(new VirtualPaymentRefundRequest { PaymentOrderId = _order.Id,
+            RefundOrderId = "merchant-refund", ActorId = "staff", AmountInFen = 6800 });
+        await _db.SaveChangesAsync(); _db.ChangeTracker.Clear();
+        var (body, signature) = EncryptNotification(RefundPayload(), xml);
+        for (var i = 0; i < 2; i++)
+            Assert.AreEqual(VirtualPaymentNotificationResult.Completed, await CreateNotifications().HandleAsync(body, PushTimestamp, PushNonce, signature));
+        var request = await _db.VirtualPaymentRefundRequests.AsNoTracking().SingleAsync();
+        Assert.AreEqual(VirtualPaymentRefundRequestState.Completed, request.State);
+        Assert.AreEqual("platform-refund", request.PlatformRefundId); Assert.IsNotNull(request.CompletedAt);
+        Assert.AreEqual(1, await _db.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentRefunded"));
+    }
+
     private System.Text.Json.Nodes.JsonObject RefundPayload() => new()
     {
         ["ToUserName"] = "mini-program-original-id", ["FromUserName"] = "wechat-official-push-not-buyer",

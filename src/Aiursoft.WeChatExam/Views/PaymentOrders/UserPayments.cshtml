@@ -66,7 +66,7 @@
                                 <td><code class="small">@order.OutTradeNo</code></td>
                                 <td><span class="badge bg-info">@(order.VipProduct?.Name ?? "-")</span></td>
                                 <td><partial name="_OrderAmounts" model="order" /></td>
-                                <td><partial name="_PaymentChannel" model="order.Channel" /></td>
+                                <td><partial name="_PaymentChannel" model="order" /></td>
                                 <td>
                                     <partial name="_PaymentStatus" model="order.Status" />
                                 </td>

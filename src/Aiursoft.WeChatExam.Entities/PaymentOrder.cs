@@ -76,6 +76,9 @@ public class PaymentOrder
     /// </summary>
     public PaymentChannel Channel { get; init; } = PaymentChannel.WeChatJsApi;
 
+    public VirtualPaymentSnapshot? VirtualPaymentSnapshot { get; set; }
+    public VirtualPaymentRefundRequest? RefundRequest { get; set; }
+
     /// <summary>
     /// 微信支付交易号（支付成功后返回）
     /// </summary>

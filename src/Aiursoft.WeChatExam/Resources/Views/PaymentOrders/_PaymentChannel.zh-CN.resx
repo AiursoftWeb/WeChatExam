@@ -18,7 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Unknown" xml:space="preserve">
+      <data name="Apple IAP payment" xml:space="preserve">
+    <value>Apple IAP 支付</value>
+  </data>
+  <data name="Payment method not yet verified" xml:space="preserve">
+    <value>支付方式尚未验证</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
     <value>未知</value>
   </data>
   <data name="WeChat Pay" xml:space="preserve">
@@ -26,6 +32,9 @@
   </data>
   <data name="WeChat virtual payment" xml:space="preserve">
     <value>微信虚拟支付</value>
+  </data>
+  <data name="WeChat virtual payment (non-Apple)" xml:space="preserve">
+    <value>微信虚拟支付（非苹果）</value>
   </data>
 
 </root>

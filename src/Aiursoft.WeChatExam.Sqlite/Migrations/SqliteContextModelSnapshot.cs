@@ -1718,6 +1718,51 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.ToTable("VirtualPaymentGoodsLeases");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentRefundRequest", b =>
+                {
+                    b.Property<Guid>("PaymentOrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ActorId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AmountInFen")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ErrorCode")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PlatformRefundId")
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RefundOrderId")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("State")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("PaymentOrderId");
+
+                    b.HasIndex("RefundOrderId")
+                        .IsUnique();
+
+                    b.ToTable("VirtualPaymentRefundRequests");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", b =>
                 {
                     b.Property<Guid>("PaymentOrderId")
@@ -1732,6 +1777,9 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("Platform")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("PlatformOrderId")
                         .HasMaxLength(128)
@@ -2494,10 +2542,21 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
                     b.Navigation("VipProduct");
                 });
 
+            modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentRefundRequest", b =>
+                {
+                    b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "PaymentOrder")
+                        .WithOne("RefundRequest")
+                        .HasForeignKey("Aiursoft.WeChatExam.Entities.VirtualPaymentRefundRequest", "PaymentOrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("PaymentOrder");
+                });
+
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", b =>
                 {
                     b.HasOne("Aiursoft.WeChatExam.Entities.PaymentOrder", "PaymentOrder")
-                        .WithOne()
+                        .WithOne("VirtualPaymentSnapshot")
                         .HasForeignKey("Aiursoft.WeChatExam.Entities.VirtualPaymentSnapshot", "PaymentOrderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -2627,6 +2686,10 @@ namespace Aiursoft.WeChatExam.Sqlite.Migrations
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PaymentOrder", b =>
                 {
                     b.Navigation("PaymentLogs");
+
+                    b.Navigation("RefundRequest");
+
+                    b.Navigation("VirtualPaymentSnapshot");
                 });
 
             modelBuilder.Entity("Aiursoft.WeChatExam.Entities.PracticeSession", b =>

@@ -172,6 +172,10 @@ public class AppPermissions
                 localizer["Read Payment Orders"],
                 localizer["Allows viewing payment orders, payment details, and user payment history."]),
 
+            new(AppPermissionNames.CanRefundPaymentOrders,
+                localizer["Refund Payment Orders"],
+                localizer["Allows verifying payment methods, requesting full virtual-payment refunds and checking their results."]),
+
             new(AppPermissionNames.CanReadVipProducts,
                 localizer["Read VIP Products"],
                 localizer["Allows viewing VIP products and their configuration."]),
