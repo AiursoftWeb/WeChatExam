@@ -341,15 +341,16 @@ public class VirtualPaymentCheckoutTests
     }
 
     [TestMethod]
-    [DataRow(0, true)]
-    [DataRow(100, true)]
-    [DataRow(200, true)]
-    [DataRow(1, false)]
-    [DataRow(99, false)]
-    public async Task AppleMinimumDoesNotChangeFreeFulfillmentOrOtherClients(int payable, bool appleClient)
+    [DataRow(0, true, 0)]
+    [DataRow(0, true, 1)]
+    [DataRow(100, true, 0)]
+    [DataRow(200, true, 0)]
+    [DataRow(1, false, 0)]
+    [DataRow(99, false, 0)]
+    public async Task AppleMinimumDoesNotChangeFreeFulfillmentOrOtherClients(int payable, bool appleClient, int environment)
     {
         await _db.Coupons.ExecuteUpdateAsync(c => c.SetProperty(x => x.AmountInFen, 19800 - payable));
-        var result = await CreateService(environment: 0).CreateAsync(_buyer.Id, _product.Id, "fresh-login", "VIRTUAL120", isAppleClient: appleClient);
+        var result = await CreateService(environment: environment).CreateAsync(_buyer.Id, _product.Id, "fresh-login", "VIRTUAL120", isAppleClient: appleClient);
         Assert.AreEqual(payable, result.AmountInFen);
         Assert.AreEqual(payable == 0 ? PaymentOrderStatus.Paid : PaymentOrderStatus.Pending, result.Status);
         Assert.AreEqual(payable == 0, result.PayParams == null);
@@ -361,12 +362,12 @@ public class VirtualPaymentCheckoutTests
     }
 
     [TestMethod]
-    public async Task AppleSandboxIsRejectedWithoutConsumingLoginOrReservingAnything()
+    public async Task PaidAppleSandboxCheckoutIsRejectedBeforeReservingAnything()
     {
         var error = await Assert.ThrowsExactlyAsync<VirtualPaymentCheckoutException>(() =>
             CreateService(environment: 1).CreateAsync(_buyer.Id, _product.Id, "fresh-login", isAppleClient: true));
         Assert.Contains("live environment", error.Message);
-        Assert.AreEqual(0, _handler.Calls);
+        Assert.AreEqual(1, _handler.Calls);
         await AssertEmptyPurchase();
     }
 
