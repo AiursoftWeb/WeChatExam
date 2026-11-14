@@ -380,6 +380,27 @@ public class VirtualPaymentApiTests
     }
 
     [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RetryPreservesReconciledOldStateWhenNewCheckoutIsRejected(bool oldWasPaid)
+    {
+        await SignIn();
+        var original = await CreatePurchase();
+        _handler.Order = original; _handler.OrderStatus = oldWasPaid ? 2 : 6;
+        _handler.BusinessType = 1000; _handler.OmitClosedPaymentFields = true;
+        // The old gateway result commits independently: an invalid coupon or
+        // recovered active membership must not roll it back to Pending.
+        using var retry = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("DOES-NOT-EXIST"));
+        Assert.AreEqual(HttpStatusCode.BadRequest, retry.StatusCode);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(oldWasPaid ? PaymentOrderStatus.Paid : PaymentOrderStatus.Closed,
+            (await db.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(oldWasPaid ? 1 : 0, await db.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
     public async Task LostCheckoutResponseIsDiscoverableWithoutSigningOrReleasingItsCoupon()
     {
         await SignIn();
