@@ -137,7 +137,13 @@
                         {
                             var sales = Model.Sales.GetValueOrDefault(product.Id) ?? new ProductSalesSummary();
                             <td data-sales="paid">@sales.PaidOrderCount</td>
-                            <td data-sales="receipts" class="text-nowrap fw-bold">¥@((sales.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
+                            <td data-sales="receipts" class="text-nowrap">
+                                <strong>¥@((sales.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</strong>
+                                @if (sales.RefundReviewCount > 0)
+                                {
+                                    <div class="small"><a asp-controller="PaymentOrders" asp-action="RefundReviews">@Localizer["Refunds need review"] (@sales.RefundReviewCount)</a></div>
+                                }
+                            </td>
                             <td data-sales="buyers">@sales.BuyerCount</td>
                             <td data-sales="free">@sales.FreeOrderCount</td>
                             <td data-sales="refunded">@sales.RefundedOrderCount</td>

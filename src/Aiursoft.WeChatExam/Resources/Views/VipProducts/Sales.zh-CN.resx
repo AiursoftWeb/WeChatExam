@@ -96,5 +96,11 @@
   <data name="Refunded orders" xml:space="preserve">
     <value>已退款订单</value>
   </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>存在待核对的退款，以下实收金额可能高于最终留存金额。</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>核对退款</value>
+  </data>
 
 </root>

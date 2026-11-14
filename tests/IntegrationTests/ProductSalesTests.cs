@@ -122,4 +122,30 @@ public class ProductSalesTests : TestBase
             }
         }
     }
+
+    [TestMethod]
+    public async Task PendingRefundReviewsWarnAboutReceiptsWithoutGuessingNetCash()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var buyer = await db.Users.FirstAsync();
+        var product = new VipProduct { Name = "Refund review product", TotalCategory = new TotalCategory { Title = "Course" } };
+        var order = new PaymentOrder { UserId = buyer.Id, VipProduct = product, OutTradeNo = "REVIEW-SALE",
+            Description = "Purchase with an uncertain refund", Status = PaymentOrderStatus.Paid, AmountInFen = 1000 };
+        db.Add(order);
+        for (var i = 0; i < 2; i++)
+            db.PaymentLogs.Add(new PaymentLog { PaymentOrder = order, PaymentOrderId = order.Id,
+                EventType = "VirtualPaymentRefundReview", RawData = "{}" });
+        await db.SaveChangesAsync();
+        var index = WebUtility.HtmlDecode(await Http.GetStringAsync("/VipProducts"));
+        Assert.Contains("Refunds need review (1)", index);
+        var details = WebUtility.HtmlDecode(await Http.GetStringAsync($"/VipProducts/Sales/{product.Id}"));
+        Assert.Contains("These receipts may overstate the amount retained.", details);
+        Assert.Contains("/PaymentOrders/RefundReviews", details);
+        Assert.Contains("¥10.00", details);
+        db.ChangeTracker.Clear();
+        Assert.AreEqual(PaymentOrderStatus.Paid, (await db.PaymentOrders.SingleAsync(o => o.Id == order.Id)).Status);
+        Assert.AreEqual(2, await db.PaymentLogs.CountAsync(l => l.PaymentOrderId == order.Id));
+    }
 }

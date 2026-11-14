@@ -23,12 +23,14 @@ public class ProductSalesService(WeChatExamDbContext db) : IScopedDependency
                 RevenueInFen = g.Sum(o => o.Status == PaymentOrderStatus.Paid && o.AmountInFen > 0 ? (long)o.AmountInFen : 0),
                 FreeOrderCount = g.Count(o => o.Status == PaymentOrderStatus.Paid && o.AmountInFen == 0),
                 RefundedOrderCount = g.Count(o => o.Status == PaymentOrderStatus.Refunded),
+                RefundReviewCount = g.Count(o => o.Status == PaymentOrderStatus.Paid && o.AmountInFen > 0 &&
+                    o.PaymentLogs.Any(l => l.EventType == "VirtualPaymentRefundReview")),
                 RefundedAmountInFen = g.Sum(o => o.Status == PaymentOrderStatus.Refunded ? (long)o.AmountInFen : 0)
             }).ToDictionaryAsync(x => x.Id, x => new ProductSalesSummary
             {
                 PaidOrderCount = x.PaidOrderCount, BuyerCount = x.BuyerCount, RevenueInFen = x.RevenueInFen,
                 FreeOrderCount = x.FreeOrderCount, RefundedOrderCount = x.RefundedOrderCount,
-                RefundedAmountInFen = x.RefundedAmountInFen
+                RefundedAmountInFen = x.RefundedAmountInFen, RefundReviewCount = x.RefundReviewCount
             });
     }
 

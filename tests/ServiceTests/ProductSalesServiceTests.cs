@@ -32,6 +32,12 @@ public class ProductSalesServiceTests
             Order(product, second, PaymentOrderStatus.Pending, 99900), Order(product, second, PaymentOrderStatus.Failed, 99900),
             Order(product, second, PaymentOrderStatus.Closed, 99900), Order(other, buyer, PaymentOrderStatus.Paid, 99900),
             Order(null, buyer, PaymentOrderStatus.Paid, 99900));
+        // Partial or uncertain refunds retain Paid until manual reconciliation.
+        // Repeated review logs must flag an order only once.
+        var reviewed = db.PaymentOrders.Local.First();
+        for (var i = 0; i < 2; i++)
+            db.PaymentLogs.Add(new PaymentLog { PaymentOrder = reviewed, PaymentOrderId = reviewed.Id,
+                EventType = "VirtualPaymentRefundReview", RawData = "{}" });
         db.VipMemberships.Add(new VipMembership { User = second, UserId = second.Id, VipProduct = product, StartTime = DateTime.UtcNow, EndTime = DateTime.UtcNow.AddYears(1) });
         await db.SaveChangesAsync();
         var service = new ProductSalesService(db);
@@ -44,6 +50,7 @@ public class ProductSalesServiceTests
         Assert.AreEqual(1, summary.FreeOrderCount);
         Assert.AreEqual(1, summary.RefundedOrderCount);
         Assert.AreEqual(500L, summary.RefundedAmountInFen);
+        Assert.AreEqual(1, summary.RefundReviewCount);
         var details = await service.DetailsAsync(product, "paid", 0);
         Assert.AreEqual(1, details.CurrentPage);
         Assert.AreEqual(3, details.TotalCount);
@@ -57,7 +64,7 @@ public class ProductSalesServiceTests
         Assert.AreEqual(500, (await service.DetailsAsync(product, "refunded", 1)).Orders.Single().AmountInFen);
         Assert.AreEqual(10, await db.PaymentOrders.CountAsync());
         Assert.AreEqual(1, await db.VipMemberships.CountAsync());
-        Assert.AreEqual(0, await db.PaymentLogs.CountAsync());
+        Assert.AreEqual(2, await db.PaymentLogs.CountAsync());
     }
 
     [TestMethod]

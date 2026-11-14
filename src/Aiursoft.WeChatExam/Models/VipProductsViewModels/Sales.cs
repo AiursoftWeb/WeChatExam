@@ -11,6 +11,7 @@ public class ProductSalesSummary
     public int FreeOrderCount { get; init; }
     public int RefundedOrderCount { get; init; }
     public long RefundedAmountInFen { get; init; }
+    public int RefundReviewCount { get; init; }
 }
 
 public class SalesPriceGroup

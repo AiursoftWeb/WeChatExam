@@ -5,6 +5,13 @@
 <a asp-action="Index" asp-route-showDisabled="@(!Model.Product.IsEnabled)" class="d-inline-block mb-3">@Localizer["Back to products"]</a>
 <h1 class="h3 mb-3 text-break">@Model.Product.Name · @Localizer["Product sales"]</h1>
 <p class="text-muted">@Localizer["All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs."]</p>
+@if (Model.Summary.RefundReviewCount > 0)
+{
+    <p class="text-warning-emphasis">
+        @Localizer["Refunds are awaiting reconciliation. These receipts may overstate the amount retained."]
+        <a asp-controller="PaymentOrders" asp-action="RefundReviews">@Localizer["Review refunds"] (@Model.Summary.RefundReviewCount)</a>
+    </p>
+}
 
 <div class="row g-3 mb-3">
     <div class="col-6 col-lg-3"><div class="card h-100"><div class="card-body">
