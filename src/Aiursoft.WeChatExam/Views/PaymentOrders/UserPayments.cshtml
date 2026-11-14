@@ -1,6 +1,4 @@
-@using System.Globalization
 @using Aiursoft.WebTools
-@using Aiursoft.WeChatExam.Entities
 
 @model Aiursoft.WeChatExam.Models.PaymentOrdersViewModels.UserPaymentsViewModel
 
@@ -26,14 +24,7 @@
                                 <div><strong>@Localizer["Product"]:</strong> <span class="badge bg-info">@(vip.VipProduct?.Name ?? "-")</span></div>
                                 <div>
                                     <strong>@Localizer["Status"]:</strong>
-                                    @if (vip.IsActive)
-                                    {
-                                        <span class="badge bg-success">@Localizer["Active"]</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-secondary">@Localizer["Expired"]</span>
-                                    }
+                                    <partial name="_MembershipStatus" model="vip" />
                                 </div>
                                 <div><small><strong>@Localizer["Start"]:</strong> <label data-utc-time="@vip.StartTime.ToHtmlDateTime()"></label></small></div>
                                 <div><small><strong>@Localizer["End"]:</strong> <label data-utc-time="@vip.EndTime.ToHtmlDateTime()"></label></small></div>
@@ -54,13 +45,15 @@
             <div class="card-header">
                 <h5 class="card-title mb-0">@Localizer["Payment History"] (@Model.Orders.Count)</h5>
             </div>
+            <p class="text-muted small px-3 mb-3">@Localizer["Amounts are saved with the order. An unconfirmed order is not a completed purchase."]</p>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead class="table-light">
                         <tr>
                             <th>@Localizer["Order No"]</th>
                             <th>@Localizer["Product"]</th>
-                            <th>@Localizer["Amount"]</th>
+                            <th>@Localizer["Amounts"]</th>
+                            <th>@Localizer["Payment channel"]</th>
                             <th>@Localizer["Status"]</th>
                             <th>@Localizer["Created"]</th>
                             <th>@Localizer["Actions"]</th>
@@ -72,18 +65,10 @@
                             <tr>
                                 <td><code class="small">@order.OutTradeNo</code></td>
                                 <td><span class="badge bg-info">@(order.VipProduct?.Name ?? "-")</span></td>
-                                <td>¥@((order.AmountInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
+                                <td><partial name="_OrderAmounts" model="order" /></td>
+                                <td><partial name="_PaymentChannel" model="order.Channel" /></td>
                                 <td>
-                                    @{
-                                        var badgeClass = order.Status switch
-                                        {
-                                            PaymentOrderStatus.Paid => "bg-success",
-                                            PaymentOrderStatus.Pending => "bg-warning text-dark",
-                                            PaymentOrderStatus.Failed => "bg-danger",
-                                            _ => "bg-secondary"
-                                        };
-                                    }
-                                    <span class="badge @badgeClass">@order.Status</span>
+                                    <partial name="_PaymentStatus" model="order.Status" />
                                 </td>
                                 <td><label class="text-monospace" data-utc-time="@order.CreatedAt.ToHtmlDateTime()"></label></td>
                                 <td>

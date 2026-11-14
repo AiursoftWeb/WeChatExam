@@ -11,4 +11,5 @@ public class DetailsViewModel: UiStackLayoutViewModel
     }
 
     public required PaymentOrder Order { get; set; }
+    public VipMembership? CurrentMembership { get; init; }
 }

@@ -30,18 +30,19 @@ public class PaymentOrdersController(
         CascadedLinksOrder = 70,
         LinkText = "Payment Orders",
         LinkOrder = 1)]
-    public async Task<IActionResult> Index(PaymentOrderStatus? status, string? userId, int page = 1, int pageSize = 50)
+    public async Task<IActionResult> Index(PaymentOrderStatus? status, string? userId, int page = 1, int pageSize = 50, string? orderNumber = null)
     {
-        var orders = await paymentOrderService.GetAllOrdersAsync(page, pageSize, status, userId);
+        var orders = await paymentOrderService.GetAllOrdersAsync(page, pageSize, status, userId, orderNumber);
         
         // Ensure VipProducts are loaded for orders implicitly or directly loaded in the service.
-        var totalCount = await paymentOrderService.GetOrderCountAsync(status, userId);
+        var totalCount = await paymentOrderService.GetOrderCountAsync(status, userId, orderNumber);
 
         return this.StackView(new IndexViewModel
         {
             Orders = orders,
             StatusFilter = status,
             UserIdFilter = userId,
+            OrderNumberFilter = orderNumber?.Trim(),
             TotalCount = totalCount,
             CurrentPage = page,
             PageSize = pageSize
@@ -110,7 +111,11 @@ public class PaymentOrdersController(
         var order = await paymentOrderService.GetOrderDetailAsync(id.Value);
         if (order == null) return NotFound();
 
-        return this.StackView(new DetailsViewModel { Order = order });
+        var membership = order.VipProductId.HasValue
+            ? await dbContext.VipMemberships.AsNoTracking().SingleOrDefaultAsync(v =>
+                v.UserId == order.UserId && v.VipProductId == order.VipProductId.Value)
+            : null;
+        return this.StackView(new DetailsViewModel { Order = order, CurrentMembership = membership });
     }
 
     // GET: PaymentOrders/UserPayments/{userId}

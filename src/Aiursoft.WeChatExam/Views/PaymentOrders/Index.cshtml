@@ -1,4 +1,3 @@
-@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Entities
 
@@ -23,9 +22,32 @@
                     <option value="">@Localizer["All"]</option>
                     @foreach (var s in Enum.GetValues<PaymentOrderStatus>())
                     {
-                        <option value="@s" selected="@(Model.StatusFilter == s)">@s</option>
+                        <option value="@s" selected="@(Model.StatusFilter == s)">
+                            @switch (s)
+                            {
+                                case PaymentOrderStatus.Paid:
+                                    @Localizer["Payment confirmed"]
+                                    break;
+                                case PaymentOrderStatus.Pending:
+                                    @Localizer["Awaiting payment confirmation"]
+                                    break;
+                                case PaymentOrderStatus.Failed:
+                                    @Localizer["Payment needs verification"]
+                                    break;
+                                case PaymentOrderStatus.Closed:
+                                    @Localizer["Closed"]
+                                    break;
+                                case PaymentOrderStatus.Refunded:
+                                    @Localizer["Refunded"]
+                                    break;
+                            }
+                        </option>
                     }
                 </select>
+            </div>
+            <div class="col-auto">
+                <label class="form-label" for="orderNumber">@Localizer["Order number"]</label>
+                <input id="orderNumber" type="text" name="orderNumber" value="@Model.OrderNumberFilter" maxlength="64" class="form-control form-control-sm" />
             </div>
             <div class="col-auto">
                 <label class="form-label">@Localizer["User ID"]</label>
@@ -44,6 +66,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">@Localizer["Orders"] (@Model.TotalCount)</h5>
     </div>
+    <p class="text-muted small px-3 mb-3">@Localizer["Amounts are saved with the order. An unconfirmed order is not a completed purchase."]</p>
     <div class="table-responsive">
         <table class="table table-hover mb-0">
             <thead class="table-light">
@@ -51,7 +74,8 @@
                     <th>@Localizer["Order No"]</th>
                     <th>@Localizer["User"]</th>
                     <th>@Localizer["Product"]</th>
-                    <th>@Localizer["Amount"]</th>
+                    <th>@Localizer["Amounts"]</th>
+                    <th>@Localizer["Payment channel"]</th>
                     <th>@Localizer["Status"]</th>
                     <th>@Localizer["Created"]</th>
                     <th>@Localizer["Actions"]</th>
@@ -70,20 +94,10 @@
                         <td>
                             <span class="badge bg-info">@(order.VipProduct?.Name ?? "-")</span>
                         </td>
-                        <td>¥@((order.AmountInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
+                        <td><partial name="_OrderAmounts" model="order" /></td>
+                        <td><partial name="_PaymentChannel" model="order.Channel" /></td>
                         <td>
-                            @{
-                                var badgeClass = order.Status switch
-                                {
-                                    PaymentOrderStatus.Paid => "bg-success",
-                                    PaymentOrderStatus.Pending => "bg-warning text-dark",
-                                    PaymentOrderStatus.Failed => "bg-danger",
-                                    PaymentOrderStatus.Closed => "bg-secondary",
-                                    PaymentOrderStatus.Refunded => "bg-info",
-                                    _ => "bg-secondary"
-                                };
-                            }
-                            <span class="badge @badgeClass">@order.Status</span>
+                            <partial name="_PaymentStatus" model="order.Status" />
                         </td>
                         <td><label class="text-monospace" data-utc-time="@order.CreatedAt.ToHtmlDateTime()"></label></td>
                         <td>
@@ -102,7 +116,7 @@
                 @if (Model.CurrentPage > 1)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="?status=@Model.StatusFilter&userId=@Model.UserIdFilter&page=@(Model.CurrentPage - 1)&pageSize=@Model.PageSize">@Localizer["Previous"]</a>
+                        <a class="page-link" asp-action="Index" asp-route-status="@Model.StatusFilter" asp-route-userId="@Model.UserIdFilter" asp-route-orderNumber="@Model.OrderNumberFilter" asp-route-page="@(Model.CurrentPage - 1)" asp-route-pageSize="@Model.PageSize">@Localizer["Previous"]</a>
                     </li>
                 }
                 else
@@ -119,7 +133,7 @@
                 @if (Model.CurrentPage * Model.PageSize < Model.TotalCount)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="?status=@Model.StatusFilter&userId=@Model.UserIdFilter&page=@(Model.CurrentPage + 1)&pageSize=@Model.PageSize">@Localizer["Next"]</a>
+                        <a class="page-link" asp-action="Index" asp-route-status="@Model.StatusFilter" asp-route-userId="@Model.UserIdFilter" asp-route-orderNumber="@Model.OrderNumberFilter" asp-route-page="@(Model.CurrentPage + 1)" asp-route-pageSize="@Model.PageSize">@Localizer["Next"]</a>
                     </li>
                 }
                 else

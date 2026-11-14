@@ -1,0 +1,14 @@
+@using Aiursoft.WeChatExam.Entities
+@model PaymentChannel
+@switch (Model)
+{
+    case PaymentChannel.WeChatVirtual:
+        @Localizer["WeChat virtual payment"]
+        break;
+    case PaymentChannel.WeChatJsApi:
+        @Localizer["WeChat Pay"]
+        break;
+    default:
+        @Localizer["Unknown"]
+        break;
+}
