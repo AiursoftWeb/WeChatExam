@@ -7,6 +7,11 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class ProductSalesService(WeChatExamDbContext db) : IScopedDependency
 {
+    public Task<int> PayingBuyerCountAsync(List<Guid> productIds) => db.PaymentOrders.AsNoTracking()
+        .Where(o => o.VipProductId.HasValue && productIds.Contains(o.VipProductId.Value) &&
+                    o.Status == PaymentOrderStatus.Paid && o.AmountInFen > 0)
+        .Select(o => o.UserId).Distinct().CountAsync();
+
     // One order purchases one product. Memberships also contain manual grants and
     // renewals, so they cannot be used to count sales or reconstruct receipts.
     public async Task<Dictionary<Guid, ProductSalesSummary>> SummariesAsync(List<Guid> productIds)
@@ -54,7 +59,8 @@ public class ProductSalesService(WeChatExamDbContext db) : IScopedDependency
         const int pageSize = 25;
         var count = await query.CountAsync();
         page = Math.Clamp(page, 1, Math.Max(1, (int)Math.Ceiling(count / (double)pageSize)));
-        var orders = await query.OrderByDescending(o => o.PaidAt).ThenByDescending(o => o.CreatedAt).ThenBy(o => o.Id)
+        var orders = await query.Include(o => o.VirtualPaymentSnapshot)
+            .OrderByDescending(o => o.PaidAt).ThenByDescending(o => o.CreatedAt).ThenBy(o => o.Id)
             .Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
         // Keep orphaned historical receipts, as the existing order list does.
         var userIds = orders.Select(o => o.UserId).Distinct().ToList();
