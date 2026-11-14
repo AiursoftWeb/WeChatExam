@@ -93,7 +93,7 @@ public class ProductSalesServiceTests
             PaidAt = at, CreatedAt = now, OutTradeNo = Guid.NewGuid().ToString("N"), Description = "Saved daily receipt"
         };
         db.PaymentOrders.AddRange(Order(startUtc.AddTicks(-1), 999), Order(startUtc, 200),
-            Order(midnight.AddSeconds(-1), 300), Order(midnight, 400), Order(now, 500),
+            Order(midnight.AddTicks(-1), 300), Order(midnight, 400), Order(now, 500),
             Order(now.AddSeconds(1), 999), Order(now.AddDays(1), 999), Order(now, 0),
             Order(now, 700, PaymentOrderStatus.Refunded), Order(now, 999, PaymentOrderStatus.Pending),
             Order(null, 600), Order(now, 900, target: other));
