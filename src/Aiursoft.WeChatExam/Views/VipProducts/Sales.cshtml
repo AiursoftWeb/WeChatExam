@@ -1,70 +1,86 @@
 @using System.Globalization
 @using Aiursoft.WebTools
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.SalesViewModel
-
-<a asp-action="Index" asp-route-showDisabled="@(!Model.Product.IsEnabled)" class="d-inline-block mb-3">@Localizer["Back to products"]</a>
-<h1 class="h3 mb-3 text-break">@Model.Product.Name · @Localizer["Product sales"]</h1>
-<p class="text-muted">@Localizer["All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs."]</p>
-@if (Model.Summary.RefundReviewCount > 0)
-{
-    <p class="text-warning-emphasis">
-        @Localizer["Refunds are awaiting reconciliation. These receipts may overstate the amount retained."]
-        <a asp-controller="PaymentOrders" asp-action="RefundReviews">@Localizer["Review refunds"] (@Model.Summary.RefundReviewCount)</a>
-    </p>
+@{
+    var summary = Model.Summary;
 }
-
-<div class="row g-3 mb-3">
-    <div class="col-6 col-lg-3"><div class="card h-100"><div class="card-body">
-        <div class="text-muted">@Localizer["Paid sales"]</div>
-        <div class="h3 mb-0">@Model.Summary.PaidOrderCount</div>
-    </div></div></div>
-    <div class="col-6 col-lg-3"><div class="card h-100"><div class="card-body">
-        <div class="text-muted">@Localizer["Order receipts"]</div>
-        <div class="h3 mb-0 text-break">¥@((Model.Summary.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
-    </div></div></div>
-    <div class="col-6 col-lg-3"><div class="card h-100"><div class="card-body">
-        <div class="text-muted">@Localizer["Paying buyers"]</div>
-        <div class="h3 mb-0">@Model.Summary.BuyerCount</div>
-    </div></div></div>
-    <div class="col-6 col-lg-3"><div class="card h-100"><div class="card-body">
-        <div class="text-muted">@Localizer["Average paid price"]</div>
-        <div class="h3 mb-0 text-break">¥@((Model.Summary.PaidOrderCount == 0 ? 0m : Model.Summary.RevenueInFen / 100m / Model.Summary.PaidOrderCount).ToString("F2", CultureInfo.CurrentCulture))</div>
-    </div></div></div>
-</div>
-
-<div class="card mb-3">
-    <div class="card-header"><h2 class="h5 mb-0">@Localizer["Actual paid prices"]</h2></div>
-    <div class="table-responsive">
-        <table class="table text-nowrap mb-0">
-            <thead><tr><th>@Localizer["Paid price"]</th><th>@Localizer["Paid sales"]</th><th>@Localizer["Paying buyers"]</th><th>@Localizer["Order receipts"]</th></tr></thead>
-            <tbody>
-                @if (Model.Prices.Count == 0)
-                {
-                    <tr><td colspan="4" class="text-muted text-center py-3">@Localizer["No confirmed paid purchases yet."]</td></tr>
-                }
-                @foreach (var price in Model.Prices)
-                {
-                    <tr><td>¥@((price.AmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td><td>@price.OrderCount</td><td>@price.BuyerCount</td><td>¥@((price.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td></tr>
-                }
-            </tbody>
-        </table>
+<link rel="stylesheet" href="~/css/product-sales.css" asp-append-version="true" />
+<div class="product-sales">
+    <a asp-action="Index" asp-route-showDisabled="@(!Model.Product.IsEnabled)" class="sales-back"><i data-lucide="arrow-left" aria-hidden="true"></i> @Localizer["Back to products"]</a>
+    <header class="sales-heading">
+        <div>
+            <p class="sales-eyebrow"><i data-lucide="book-open" aria-hidden="true"></i> @Localizer["Product sales"]</p>
+            <h1 class="text-break">@Model.Product.Name</h1>
+            <p class="text-muted mb-0">@Localizer["Follow each sale from paid price to buyer and order."]</p>
+        </div>
+        @if (Model.Product.IsEnabled) { <span class="sales-tag">@Localizer["Enabled"]</span> }
+        else { <span class="sales-tag">@Localizer["Disabled"]</span> }
+    </header>
+    <div class="sales-period"><i data-lucide="history" aria-hidden="true"></i> @Localizer["All time · this product"]</div>
+    <div class="sales-metrics">
+        <section class="card sales-metric sales-metric-primary">
+            <div class="sales-metric-label"><span>@Localizer["Order receipts"]</span><i data-lucide="wallet" aria-hidden="true"></i></div>
+            <div class="sales-metric-value">¥@((summary.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</div>
+            <p>@Localizer["Before platform fees and costs"]</p>
+        </section>
+        <section class="card sales-metric">
+            <div class="sales-metric-label"><span>@Localizer["Paid sales"]</span><i data-lucide="shopping-bag" aria-hidden="true"></i></div>
+            <div class="sales-metric-value">@summary.PaidOrderCount <small>@Localizer["units"]</small></div>
+            <p>@Localizer["Refunds and free claims excluded"]</p>
+        </section>
+        <section class="card sales-metric">
+            <div class="sales-metric-label"><span>@Localizer["Paying buyers"]</span><i data-lucide="users" aria-hidden="true"></i></div>
+            <div class="sales-metric-value">@summary.BuyerCount <small>@Localizer["people"]</small></div>
+            <p>@Localizer["Repeat purchases count once"]</p>
+        </section>
+        <section class="card sales-metric">
+            <div class="sales-metric-label"><span>@Localizer["Average paid price"]</span><i data-lucide="receipt" aria-hidden="true"></i></div>
+            <div class="sales-metric-value">¥@((summary.PaidOrderCount == 0 ? 0m : summary.RevenueInFen / 100m / summary.PaidOrderCount).ToString("F2", CultureInfo.CurrentCulture))</div>
+            <p>@Localizer["Receipts per paid order"]</p>
+        </section>
     </div>
-    <div class="card-footer small text-muted">@Localizer["Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated."]</div>
-</div>
-
-<ul class="nav nav-tabs mb-3">
-    <li class="nav-item"><a asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="paid" class="nav-link @(Model.Kind == "paid" ? "active" : "")">@Localizer["Paid sales"] (@Model.Summary.PaidOrderCount)</a></li>
-    <li class="nav-item"><a asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="free" class="nav-link @(Model.Kind == "free" ? "active" : "")">@Localizer["Free claims"] (@Model.Summary.FreeOrderCount)</a></li>
-    <li class="nav-item"><a asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="refunded" class="nav-link @(Model.Kind == "refunded" ? "active" : "")">@Localizer["Refunded orders"] (@Model.Summary.RefundedOrderCount)</a></li>
-</ul>
-@if (Model.Kind == "refunded")
-{
-    <p>@Localizer["Refunded order amount"]: ¥@((Model.Summary.RefundedAmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</p>
-}
-<div class="card">
-    <div class="card-header"><h2 class="h5 mb-0">@Localizer["Buyer orders"] (@Model.TotalCount)</h2></div>
+    @if (summary.RefundReviewCount > 0)
+    {
+        <div class="sales-warning"><i data-lucide="triangle-alert" aria-hidden="true"></i><div>@Localizer["Refunds are awaiting reconciliation. These receipts may overstate the amount retained."] <a asp-controller="PaymentOrders" asp-action="RefundReviews">@Localizer["Review refunds"] (@summary.RefundReviewCount)</a></div></div>
+    }
+    <div class="sales-analysis">
+        <section class="card sales-panel sales-table-panel">
+            <div class="sales-panel-heading"><div><h2><i data-lucide="tags" aria-hidden="true"></i> @Localizer["Actual paid prices"]</h2><p>@Localizer["What buyers paid · share of paid orders"]</p></div></div>
+            <div class="table-responsive">
+                <table class="table sales-detail-price mb-0">
+                    <thead><tr><th>@Localizer["Paid price"]</th><th>@Localizer["Paid sales"]</th><th>@Localizer["Paying buyers"]</th><th>@Localizer["Order receipts"]</th><th>@Localizer["Share"]</th></tr></thead>
+                    <tbody>
+                        @if (Model.Prices.Count == 0)
+                        {
+                            <tr><td colspan="5" class="sales-empty">@Localizer["No confirmed paid purchases yet."]</td></tr>
+                        }
+                        @foreach (var price in Model.Prices)
+                        {
+                            var share = summary.PaidOrderCount == 0 ? 0m : 100m * price.OrderCount / summary.PaidOrderCount;
+                            <tr><td class="fw-bold">¥@((price.AmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td><td>@price.OrderCount</td><td>@price.BuyerCount</td><td>¥@((price.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td><td class="sales-price-share">@share.ToString("F1", CultureInfo.CurrentCulture)%<div class="sales-track" aria-hidden="true"><span style="width: @share.ToString("F2", CultureInfo.InvariantCulture)%"></span></div></td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="sales-footer">@Localizer["Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated."]</div>
+        </section>
+        <section class="card sales-panel">
+            <div class="sales-panel-heading"><div><h2><i data-lucide="list-filter" aria-hidden="true"></i> @Localizer["Order mix"]</h2><p>@Localizer["Select a group to inspect its orders."]</p></div></div>
+            <a class="sales-mix-row" asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="paid"><span><i data-lucide="shopping-bag" aria-hidden="true"></i>@Localizer["Paid sales"]</span><strong>@summary.PaidOrderCount</strong></a>
+            <a class="sales-mix-row" asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="free"><span><i data-lucide="gift" aria-hidden="true"></i>@Localizer["Free claims"]</span><strong>@summary.FreeOrderCount</strong></a>
+            <a class="sales-mix-row" asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="refunded"><span><i data-lucide="undo-2" aria-hidden="true"></i>@Localizer["Refunded orders"]</span><strong>@summary.RefundedOrderCount</strong></a>
+            <p class="sales-panel-note">@Localizer["Refunded order amount"] <strong>¥@((summary.RefundedAmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</strong></p>
+        </section>
+    </div>
+    <section class="card sales-panel sales-table-panel">
+        <div class="sales-panel-heading sales-orders-heading"><div><h2><i data-lucide="receipt-text" aria-hidden="true"></i> @Localizer["Buyer orders"] <span class="sales-count">@Model.TotalCount</span></h2><p>@Localizer["Saved amounts at purchase · open an order for its full history"]</p></div></div>
+        <nav class="sales-order-tabs" aria-label="@Localizer["Order group"]">
+            <a asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="paid" class="@(Model.Kind == "paid" ? "active" : "")" aria-current="@(Model.Kind == "paid" ? "page" : null)"><i data-lucide="shopping-bag" aria-hidden="true"></i>@Localizer["Paid sales"] <span>@summary.PaidOrderCount</span></a>
+            <a asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="free" class="@(Model.Kind == "free" ? "active" : "")" aria-current="@(Model.Kind == "free" ? "page" : null)"><i data-lucide="gift" aria-hidden="true"></i>@Localizer["Free claims"] <span>@summary.FreeOrderCount</span></a>
+            <a asp-action="Sales" asp-route-id="@Model.Product.Id" asp-route-kind="refunded" class="@(Model.Kind == "refunded" ? "active" : "")" aria-current="@(Model.Kind == "refunded" ? "page" : null)"><i data-lucide="undo-2" aria-hidden="true"></i>@Localizer["Refunded orders"] <span>@summary.RefundedOrderCount</span></a>
+        </nav>
     <div class="table-responsive">
-        <table class="table table-hover text-nowrap mb-0">
+        <table class="table table-hover sales-orders text-nowrap mb-0">
             <thead><tr><th>@Localizer["Buyer"]</th><th>@Localizer["Order amount"]</th><th>@Localizer["Original price"]</th><th>@Localizer["Discount"]</th><th>@Localizer["Payment channel"]</th><th>@Localizer["Paid at"]</th><th>@Localizer["Order number"]</th></tr></thead>
             <tbody>
                 @if (Model.Orders.Count == 0)
@@ -74,11 +90,11 @@
                 @foreach (var order in Model.Orders)
                 {
                     <tr>
-                        <td><a asp-controller="PaymentOrders" asp-action="UserPayments" asp-route-userId="@order.UserId">@(order.User?.DisplayName ?? order.UserId)</a></td>
+                        <td><div class="sales-buyer"><i data-lucide="user-round" aria-hidden="true"></i><a asp-controller="PaymentOrders" asp-action="UserPayments" asp-route-userId="@order.UserId">@(order.User?.DisplayName ?? order.UserId)</a></div></td>
                         <td class="text-nowrap fw-bold">¥@((order.AmountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
                         <td class="text-nowrap">¥@((((long)order.AmountInFen + order.DiscountInFen) / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
                         <td class="text-nowrap">¥@((order.DiscountInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
-                        <td><partial name="~/Views/PaymentOrders/_PaymentChannel.cshtml" model="order.Channel" /></td>
+                        <td><partial name="~/Views/PaymentOrders/_PaymentChannel.cshtml" model="order" /></td>
                         <td>
                             @if (order.PaidAt.HasValue)
                             {
@@ -95,7 +111,7 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer">
+    <div class="sales-footer">
         <nav aria-label="@Localizer["Page navigation"]"><ul class="pagination pagination-sm justify-content-end mb-0">
             @if (Model.CurrentPage > 1)
             {
@@ -108,4 +124,5 @@
             }
         </ul></nav>
     </div>
+</section>
 </div>

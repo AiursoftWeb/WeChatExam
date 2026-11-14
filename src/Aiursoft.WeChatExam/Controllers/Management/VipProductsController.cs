@@ -70,6 +70,8 @@ public class VipProductsController(
         {
             Products = visibleProducts,
             CanReadSales = canReadSales, Sales = sales,
+            PayingBuyerCount = canReadSales
+                ? await productSalesService.PayingBuyerCountAsync(visibleProducts.Select(p => p.Id).ToList()) : 0,
             SearchQuery = search,
             ShowDisabled = showDisabled,
             EnabledCount = enabledCount,

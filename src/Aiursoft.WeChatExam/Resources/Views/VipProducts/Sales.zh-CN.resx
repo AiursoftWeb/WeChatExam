@@ -21,6 +21,9 @@
       <data name="Actual paid prices" xml:space="preserve">
     <value>成交价格分布</value>
   </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>全部历史 · 当前商品</value>
+  </data>
   <data name="All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs." xml:space="preserve">
     <value>统计全部历史已确认且未退款的付费订单，零元领取单列。实收未扣平台手续费和成本。</value>
   </data>
@@ -28,7 +31,10 @@
     <value>平均实付价格</value>
   </data>
   <data name="Back to products" xml:space="preserve">
-    <value>返回产品列表</value>
+    <value>返回商品列表</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>未扣平台手续费和成本</value>
   </data>
   <data name="Buyer" xml:space="preserve">
     <value>买家</value>
@@ -36,8 +42,17 @@
   <data name="Buyer orders" xml:space="preserve">
     <value>买家订单</value>
   </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
   <data name="Discount" xml:space="preserve">
     <value>优惠</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>从成交价格到买家订单，每一笔收入都可追溯。</value>
   </data>
   <data name="Free claims" xml:space="preserve">
     <value>零元领取</value>
@@ -53,6 +68,12 @@
   </data>
   <data name="Order amount" xml:space="preserve">
     <value>订单金额</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>订单分组</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>订单构成</value>
   </data>
   <data name="Order number" xml:space="preserve">
     <value>订单编号</value>
@@ -70,7 +91,7 @@
     <value>支付时间</value>
   </data>
   <data name="Paid price" xml:space="preserve">
-    <value>支付价格</value>
+    <value>成交价格</value>
   </data>
   <data name="Paid sales" xml:space="preserve">
     <value>付费销量</value>
@@ -81,14 +102,20 @@
   <data name="Payment channel" xml:space="preserve">
     <value>支付渠道</value>
   </data>
+  <data name="people" xml:space="preserve">
+    <value>人</value>
+  </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
   </data>
   <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
-    <value>价格来自已保存的订单金额。支付过不同价格的买家会出现在每个价格组中；总买家数已去重。</value>
+    <value>按历史订单实付金额统计。同一买家可能出现在多个价格组，各组人数不可相加。</value>
   </data>
   <data name="Product sales" xml:space="preserve">
-    <value>产品销量</value>
+    <value>商品销售明细</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>每套商品的平均实付金额</value>
   </data>
   <data name="Refunded order amount" xml:space="preserve">
     <value>退款订单金额</value>
@@ -96,11 +123,32 @@
   <data name="Refunded orders" xml:space="preserve">
     <value>已退款订单</value>
   </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>不含已退款和零元领取</value>
+  </data>
   <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
     <value>存在待核对的退款，以下实收金额可能高于最终留存金额。</value>
   </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>同一人多次购买只计一人</value>
+  </data>
   <data name="Review refunds" xml:space="preserve">
     <value>核对退款</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>金额以购买时为准 · 点击订单查看完整记录</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>点击查看对应的买家订单。</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>占比</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>套</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>实际成交价 · 占付费销量的比例</value>
   </data>
 
 </root>

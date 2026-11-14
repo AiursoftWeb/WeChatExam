@@ -65,8 +65,55 @@ public class ProductSalesTests : TestBase
         Assert.Contains($"/PaymentOrders/Details/{order.Id}", details);
         Assert.Contains("data-utc-time=", details);
         Assert.Contains("WeChat virtual payment", decoded);
+        order.VirtualPaymentSnapshot = new VirtualPaymentSnapshot
+        {
+            PaymentOrderId = order.Id, AppId = "test-app", OpenId = "test-buyer", SignData = "{}",
+            Platform = VirtualPaymentPlatform.Apple
+        };
+        await db.SaveChangesAsync();
+        var verified = await Http.GetStringAsync($"/VipProducts/Sales/{product.Id}");
+        Assert.Contains("Apple IAP payment", verified);
+        Assert.DoesNotContain("Payment method not yet verified", verified);
         Assert.AreEqual(HttpStatusCode.NotFound, (await Http.GetAsync($"/VipProducts/Sales/{Guid.NewGuid()}")).StatusCode);
         Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync($"/VipProducts/Sales/{product.Id}?kind=pending")).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task OverviewDeduplicatesBuyersAndFollowsProductFilters()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var first = new User { DisplayName = "Repeat buyer" };
+        var second = new User { DisplayName = "Other buyer" };
+        var freeOnly = new User { DisplayName = "Free or unpaid only" };
+        var products = new[] { "Overview A", "Overview B", "Overview Disabled" }
+            .Select(name => new VipProduct { Name = name, IsEnabled = name != "Overview Disabled",
+                TotalCategory = new TotalCategory { Title = name } }).ToArray();
+        db.AddRange(first, second, freeOnly);
+        db.AddRange(products);
+        PaymentOrder Order(int product, User user, int amount, PaymentOrderStatus status = PaymentOrderStatus.Paid) => new()
+        {
+            UserId = user.Id, User = user, VipProduct = products[product], Status = status, AmountInFen = amount,
+            OutTradeNo = Guid.NewGuid().ToString("N"), Description = "Overview sale"
+        };
+        db.AddRange(Order(0, first, 200), Order(0, first, 200), Order(1, first, 1000), Order(1, second, 500),
+            Order(1, freeOnly, 0), Order(1, freeOnly, 200, PaymentOrderStatus.Refunded),
+            Order(1, freeOnly, 99900, PaymentOrderStatus.Pending), Order(2, freeOnly, 3000));
+        await db.SaveChangesAsync();
+        var index = WebUtility.HtmlDecode(await Http.GetStringAsync("/VipProducts?search=Overview"));
+        Assert.Contains("data-overview=\"buyers\">2", index);
+        Assert.Contains("data-overview=\"paid\">4", index);
+        Assert.Contains("data-overview=\"receipts\">¥19.00", index);
+        var filtered = await Http.GetStringAsync("/VipProducts?search=Overview%20A");
+        Assert.Contains("data-overview=\"buyers\">1", filtered);
+        Assert.DoesNotContain(products[1].Id.ToString(), filtered);
+        var disabled = WebUtility.HtmlDecode(await Http.GetStringAsync("/VipProducts?search=Overview&showDisabled=true"));
+        Assert.Contains("data-overview=\"buyers\">1", disabled);
+        Assert.Contains("data-overview=\"receipts\">¥30.00", disabled);
+        var empty = await Http.GetStringAsync("/VipProducts?search=NoSuchProduct");
+        Assert.Contains("data-overview=\"buyers\">0", empty);
+        Assert.Contains("data-overview=\"paid\">0", empty);
     }
 
     [TestMethod]

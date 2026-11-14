@@ -41,6 +41,9 @@ public class ProductSalesServiceTests
         db.VipMemberships.Add(new VipMembership { User = second, UserId = second.Id, VipProduct = product, StartTime = DateTime.UtcNow, EndTime = DateTime.UtcNow.AddYears(1) });
         await db.SaveChangesAsync();
         var service = new ProductSalesService(db);
+        Assert.AreEqual(2, await service.PayingBuyerCountAsync([product.Id, other.Id]));
+        Assert.AreEqual(1, await service.PayingBuyerCountAsync([other.Id]));
+        Assert.AreEqual(0, await service.PayingBuyerCountAsync([]));
         var summaries = await service.SummariesAsync([product.Id]);
         Assert.AreEqual(1, summaries.Count);
         var summary = summaries[product.Id];

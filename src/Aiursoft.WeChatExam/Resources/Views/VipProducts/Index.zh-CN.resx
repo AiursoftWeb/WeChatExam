@@ -27,17 +27,35 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>全部真题 VIP（旧版）</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>全部历史 · 当前筛选</value>
+  </data>
   <data name="All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs. Highest receipts first." xml:space="preserve">
     <value>统计全部历史已确认且未退款的付费订单，零元领取单列。实收未扣平台手续费和成本，默认按实收从高到低排序。</value>
   </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>成交概况</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>平均实付价格</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>返回课程设置</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>未扣平台手续费和成本</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>按实收排序</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>类别</value>
   </data>
   <data name="Category VIP" xml:space="preserve">
     <value>分类 VIP</value>
+  </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>统计已确认的付费、零元及退款订单</value>
   </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>创建 VIP 产品</value>
@@ -47,6 +65,9 @@
   </data>
   <data name="days" xml:space="preserve">
     <value>天</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>同一买家跨商品去重</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
@@ -72,11 +93,20 @@
   <data name="Name" xml:space="preserve">
     <value>名称</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>暂无已确认的付费购买记录。</value>
+  </data>
   <data name="No products match these filters." xml:space="preserve">
     <value>没有产品符合这些筛选条件。</value>
   </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>点击商品，查看成交价格和买家订单。</value>
+  </data>
   <data name="Order receipts" xml:space="preserve">
     <value>订单实收</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>其他订单</value>
   </data>
   <data name="Paid sales" xml:space="preserve">
     <value>付费销量</value>
@@ -84,20 +114,50 @@
   <data name="Paying buyers" xml:space="preserve">
     <value>购买人数</value>
   </data>
+  <data name="people" xml:space="preserve">
+    <value>人</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>价格</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>商品运营</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>商品表现</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>商品状态</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>产品</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>已有付费成交的商品</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>尚无付费成交</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>真实考试 VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>每套商品的平均实付金额</value>
   </data>
   <data name="Refunded orders" xml:space="preserve">
     <value>已退款订单</value>
   </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>不含已退款和零元领取</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>存在待核对的退款，以下实收金额可能高于最终留存金额。</value>
+  </data>
   <data name="Refunds need review" xml:space="preserve">
     <value>退款待核对</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>核对退款</value>
   </data>
   <data name="Sales details" xml:space="preserve">
     <value>销售详情</value>
@@ -111,8 +171,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>按名称、类别或院校搜索</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>哪些商品在卖、多少人买过、实际收了多少钱。</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>实收前五 · 占当前筛选商品总实收的比例</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>总分类</value>
@@ -123,8 +189,14 @@
   <data name="Type" xml:space="preserve">
     <value>类型</value>
   </data>
+  <data name="units" xml:space="preserve">
+    <value>套</value>
+  </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP 产品</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>商品实收贡献</value>
   </data>
 
 </root>
