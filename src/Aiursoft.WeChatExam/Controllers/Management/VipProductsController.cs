@@ -33,9 +33,10 @@ public class VipProductsController(
         CascadedLinksOrder = 70,
         LinkText = "VIP Products",
         LinkOrder = 0)]
-    public async Task<IActionResult> Index(string? search, Guid? institutionId, Guid? totalCategoryId, bool showDisabled = false)
+    public async Task<IActionResult> Index(string? search, Guid? institutionId, Guid? totalCategoryId, bool showDisabled = false, int days = 30)
     {
         if (institutionId.HasValue && totalCategoryId.HasValue) return BadRequest();
+        if (days is not (7 or 30 or 90)) return BadRequest();
         var course = totalCategoryId.HasValue
             ? await dbContext.TotalCategories.AsNoTracking().SingleOrDefaultAsync(c => c.Id == totalCategoryId.Value) : null;
         if (totalCategoryId.HasValue && course == null) return NotFound();
@@ -70,6 +71,8 @@ public class VipProductsController(
         {
             Products = visibleProducts,
             CanReadSales = canReadSales, Sales = sales,
+            Trend = canReadSales
+                ? await productSalesService.DailyTrendAsync(visibleProducts.Select(p => p.Id).ToList(), days, DateTime.UtcNow) : null,
             PayingBuyerCount = canReadSales
                 ? await productSalesService.PayingBuyerCountAsync(visibleProducts.Select(p => p.Id).ToList()) : 0,
             SearchQuery = search,
@@ -82,12 +85,12 @@ public class VipProductsController(
 
     [Authorize(Policy = AppPermissionNames.CanReadVipProducts)]
     [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
-    public async Task<IActionResult> Sales(Guid id, string kind = "paid", int page = 1)
+    public async Task<IActionResult> Sales(Guid id, string kind = "paid", int page = 1, int days = 30)
     {
-        if (kind is not ("paid" or "free" or "refunded")) return BadRequest();
+        if (kind is not ("paid" or "free" or "refunded") || days is not (7 or 30 or 90)) return BadRequest();
         var product = await vipProductService.GetByIdAsync(id);
         if (product == null) return NotFound();
-        return this.StackView(await productSalesService.DetailsAsync(product, kind, page));
+        return this.StackView(await productSalesService.DetailsAsync(product, kind, page, days));
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]

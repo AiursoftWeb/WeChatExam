@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Apply" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="By payment date · Beijing time (UTC+8)" xml:space="preserve">
+    <value>按付款日期 · 北京时间（UTC+8）</value>
+  </data>
+  <data name="Daily receipts" xml:space="preserve">
+    <value>每日实收趋势</value>
+  </data>
+  <data name="Daily receipts (CNY)" xml:space="preserve">
+    <value>当天实收（元）</value>
+  </data>
+  <data name="Daily receipts by payment date" xml:space="preserve">
+    <value>按付款日期统计的每日实收</value>
+  </data>
+  <data name="Date (Beijing time)" xml:space="preserve">
+    <value>日期（北京时间）</value>
+  </data>
+  <data name="Date range" xml:space="preserve">
+    <value>日期范围</value>
+  </data>
+  <data name="Historical paid orders without a payment date are excluded from this chart." xml:space="preserve">
+    <value>缺少付款时间的历史付费订单未计入趋势图。</value>
+  </data>
+  <data name="Last 30 days" xml:space="preserve">
+    <value>近 30 天</value>
+  </data>
+  <data name="Last 7 days" xml:space="preserve">
+    <value>近 7 天</value>
+  </data>
+  <data name="Last 90 days" xml:space="preserve">
+    <value>近 90 天</value>
+  </data>
+  <data name="No confirmed paid purchases in this period. Days without receipts are shown as zero." xml:space="preserve">
+    <value>所选时段暂无已确认的付费订单，没有成交的日期显示为零。</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>订单实收</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>付费销量</value>
+  </data>
+  <data name="Period receipts" xml:space="preserve">
+    <value>所选时段实收</value>
+  </data>
+  <data name="Select a day" xml:space="preserve">
+    <value>选择日期</value>
+  </data>
+  <data name="Select a day to see its receipts" xml:space="preserve">
+    <value>拖动选择日期，查看当天实收</value>
+  </data>
+  <data name="Today is still in progress" xml:space="preserve">
+    <value>今天尚未结束</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>套</value>
+  </data>
+  <data name="View daily data" xml:space="preserve">
+    <value>查看每日数据</value>
+  </data>
+
+</root>

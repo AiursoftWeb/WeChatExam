@@ -7,6 +7,30 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class ProductSalesService(WeChatExamDbContext db) : IScopedDependency
 {
+    public async Task<DailyReceiptsTrend> DailyTrendAsync(List<Guid> productIds, int days, DateTime utcNow)
+    {
+        if (days is not (7 or 30 or 90)) throw new ArgumentOutOfRangeException(nameof(days));
+        // Daily operations use Beijing time (UTC+8). Filter on the saved UTC
+        // payment timestamp before grouping; missing dates are never guessed.
+        var today = utcNow.AddHours(8).Date;
+        var start = today.AddDays(1 - days);
+        var startUtc = start.AddHours(-8);
+        var paid = db.PaymentOrders.AsNoTracking().Where(o => o.VipProductId.HasValue &&
+            productIds.Contains(o.VipProductId.Value) && o.Status == PaymentOrderStatus.Paid && o.AmountInFen > 0);
+        var dated = await paid.Where(o => o.PaidAt >= startUtc && o.PaidAt <= utcNow)
+            .GroupBy(o => o.PaidAt!.Value.AddHours(8).Date)
+            .Select(g => new DailySalesPoint
+            {
+                Date = g.Key, RevenueInFen = g.Sum(o => (long)o.AmountInFen), PaidOrderCount = g.Count()
+            }).ToDictionaryAsync(p => p.Date);
+        return new DailyReceiptsTrend
+        {
+            Points = Enumerable.Range(0, days).Select(offset => start.AddDays(offset))
+                .Select(date => dated.GetValueOrDefault(date) ?? new DailySalesPoint { Date = date }).ToList(),
+            UndatedOrderCount = await paid.CountAsync(o => !o.PaidAt.HasValue)
+        };
+    }
+
     public Task<int> PayingBuyerCountAsync(List<Guid> productIds) => db.PaymentOrders.AsNoTracking()
         .Where(o => o.VipProductId.HasValue && productIds.Contains(o.VipProductId.Value) &&
                     o.Status == PaymentOrderStatus.Paid && o.AmountInFen > 0)
@@ -39,7 +63,7 @@ public class ProductSalesService(WeChatExamDbContext db) : IScopedDependency
             });
     }
 
-    public async Task<SalesViewModel> DetailsAsync(VipProduct product, string kind, int page)
+    public async Task<SalesViewModel> DetailsAsync(VipProduct product, string kind, int page, int days = 30)
     {
         var all = db.PaymentOrders.AsNoTracking().Where(o => o.VipProductId == product.Id);
         var paid = all.Where(o => o.Status == PaymentOrderStatus.Paid && o.AmountInFen > 0);
@@ -70,7 +94,8 @@ public class ProductSalesService(WeChatExamDbContext db) : IScopedDependency
         return new SalesViewModel
         {
             Product = product, Summary = summaries.GetValueOrDefault(product.Id) ?? new ProductSalesSummary(),
-            Prices = prices, Orders = orders, Kind = kind, TotalCount = count, CurrentPage = page, PageSize = pageSize
+            Prices = prices, Orders = orders, Kind = kind, TotalCount = count, CurrentPage = page, PageSize = pageSize,
+            Trend = await DailyTrendAsync([product.Id], days, DateTime.UtcNow)
         };
     }
 }

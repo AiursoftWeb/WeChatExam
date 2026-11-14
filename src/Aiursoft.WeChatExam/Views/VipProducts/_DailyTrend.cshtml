@@ -1,0 +1,79 @@
+@using System.Globalization
+@model Aiursoft.WeChatExam.Models.VipProductsViewModels.DailyReceiptsTrend
+@{
+    var count = Model.Points.Count;
+    var maximum = Math.Max(1L, Model.Points.Max(p => p.RevenueInFen));
+    var line = string.Join(" ", Model.Points.Select((point, index) =>
+        (1000m * index / (count - 1)).ToString("F2", CultureInfo.InvariantCulture) + "," +
+        (200m - 200m * point.RevenueInFen / maximum).ToString("F2", CultureInfo.InvariantCulture)));
+    var selected = Model.Points[^1];
+    var ticks = Enumerable.Range(0, 5).Select(index => (int)Math.Round(index * (count - 1) / 4m)).ToList();
+}
+<section class="card sales-panel sales-trend" data-daily-trend>
+    <div class="sales-panel-heading">
+        <div><h2 id="daily-trend-title"><i data-lucide="trending-up" aria-hidden="true"></i> @Localizer["Daily receipts"]</h2><p>@Localizer["By payment date · Beijing time (UTC+8)"]</p></div>
+        <form method="get" class="sales-trend-range">
+            @foreach (var key in new[] { "search", "institutionId", "totalCategoryId", "showDisabled", "kind", "page" })
+            {
+                @if (!string.IsNullOrEmpty(Context.Request.Query[key]))
+                {
+                    <input type="hidden" name="@key" value="@Context.Request.Query[key]" />
+                }
+            }
+            <label for="trend-days" class="visually-hidden">@Localizer["Date range"]</label>
+            <select name="days" id="trend-days" class="form-select form-select-sm">
+                <option value="7" selected="@(count == 7)">@Localizer["Last 7 days"]</option>
+                <option value="30" selected="@(count == 30)">@Localizer["Last 30 days"]</option>
+                <option value="90" selected="@(count == 90)">@Localizer["Last 90 days"]</option>
+            </select>
+            <button class="btn btn-sm btn-outline-primary" type="submit">@Localizer["Apply"]</button>
+        </form>
+    </div>
+    <div class="sales-trend-summary">
+        <div><span>@Localizer["Period receipts"]</span><strong data-trend-total>¥@((Model.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</strong></div>
+        <p>@Localizer["Paid sales"] <strong>@Model.PaidOrderCount</strong> @Localizer["units"] <span>· @Localizer["Today is still in progress"]</span></p>
+    </div>
+    <div class="sales-trend-unit">@Localizer["Daily receipts (CNY)"]</div>
+    <div class="sales-trend-chart">
+        <div class="sales-trend-y" aria-hidden="true"><span>@((maximum / 100m).ToString("F2", CultureInfo.CurrentCulture))</span>@if (maximum > 1) { <span>@((maximum / 200m).ToString("F2", CultureInfo.CurrentCulture))</span> } else { <span></span> }<span>0</span></div>
+        <div class="sales-trend-plot" data-trend-plot>
+            <svg viewBox="0 0 1000 200" preserveAspectRatio="none" role="img" aria-labelledby="daily-trend-title">
+                <title>@Localizer["Daily receipts by payment date"]</title>
+                <path d="M0 0H1000 M0 100H1000 M0 200H1000" class="sales-trend-grid" />
+                <polygon points="0,200 @line 1000,200" class="sales-trend-area" />
+                <polyline points="@line" class="sales-trend-line" />
+                <line x1="1000" x2="1000" y1="0" y2="200" class="sales-trend-cursor" data-trend-cursor />
+            </svg>
+        </div>
+        <div class="sales-trend-x" aria-hidden="true">
+            @foreach (var tick in ticks) { <span style="left: @((100m * tick / (count - 1)).ToString("F2", CultureInfo.InvariantCulture))%">@Model.Points[tick].Date.ToString("MM-dd", CultureInfo.CurrentCulture)</span> }
+        </div>
+    </div>
+    <div class="sales-trend-selected">
+        <div><span data-trend-date>@selected.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)</span><strong data-trend-receipts>¥@((selected.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</strong><span><b data-trend-orders>@selected.PaidOrderCount</b> @Localizer["units"]</span></div>
+        <label for="trend-day" class="text-muted small">@Localizer["Select a day to see its receipts"]</label>
+        <input id="trend-day" type="range" min="0" max="@(count - 1)" value="@(count - 1)" step="1" class="form-range" aria-label="@Localizer["Select a day"]" data-trend-day />
+    </div>
+    <div class="sales-trend-series" hidden>
+        @foreach (var point in Model.Points)
+        {
+            <span data-date="@point.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" data-receipts="¥@((point.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))" data-orders="@point.PaidOrderCount" data-value-text="@point.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) · ¥@((point.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture)) · @point.PaidOrderCount @Localizer["units"]"></span>
+        }
+    </div>
+    @if (Model.PaidOrderCount == 0)
+    {
+        <p class="sales-panel-note">@Localizer["No confirmed paid purchases in this period. Days without receipts are shown as zero."]</p>
+    }
+    @if (Model.UndatedOrderCount > 0)
+    {
+        <p class="sales-panel-note">@Localizer["Historical paid orders without a payment date are excluded from this chart."] (@Model.UndatedOrderCount)</p>
+    }
+    <details class="sales-trend-details">
+        <summary>@Localizer["View daily data"]</summary>
+        <div class="table-responsive"><table class="table table-sm mb-0">
+            <thead><tr><th>@Localizer["Date (Beijing time)"]</th><th>@Localizer["Order receipts"]</th><th>@Localizer["Paid sales"]</th></tr></thead>
+            <tbody>@foreach (var point in Model.Points) { <tr><td>@point.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)</td><td>¥@((point.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td><td>@point.PaidOrderCount</td></tr> }</tbody>
+        </table></div>
+    </details>
+</section>
+<script src="~/js/product-sales-trend.js" asp-append-version="true" defer></script>

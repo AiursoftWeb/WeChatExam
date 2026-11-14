@@ -117,6 +117,42 @@ public class ProductSalesTests : TestBase
     }
 
     [TestMethod]
+    public async Task DailyTrendKeepsProductScopeAndRangeAcrossOrderGroups()
+    {
+        await LoginAsAdmin();
+        using var scope = Server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var buyer = await db.Users.FirstAsync();
+        var product = new VipProduct { Name = "Daily trend A", TotalCategory = new TotalCategory { Title = "A" } };
+        var other = new VipProduct { Name = "Daily trend B", TotalCategory = new TotalCategory { Title = "B" } };
+        PaymentOrder Order(VipProduct item, int amount) => new()
+        {
+            VipProduct = item, UserId = buyer.Id, Status = PaymentOrderStatus.Paid, AmountInFen = amount,
+            PaidAt = DateTime.UtcNow.AddMinutes(-1), OutTradeNo = Guid.NewGuid().ToString("N"), Description = "Daily sale"
+        };
+        db.PaymentOrders.AddRange(Order(product, 100), Order(other, 500));
+        var undated = Order(product, 200);
+        undated.PaidAt = null;
+        db.PaymentOrders.Add(undated);
+        await db.SaveChangesAsync();
+        var index = WebUtility.HtmlDecode(await Http.GetStringAsync("/VipProducts?search=Daily%20trend%20A&days=7"));
+        Assert.Contains("data-daily-trend", index);
+        Assert.Contains("data-trend-total>¥1.00", index);
+        Assert.Contains("Historical paid orders without a payment date are excluded from this chart. (1)", index);
+        Assert.AreEqual(7, System.Text.RegularExpressions.Regex.Matches(index, "<span data-date=").Count);
+        Assert.Contains("name=\"days\" value=\"7\"", index);
+        Assert.Contains("days=7", index);
+        Assert.Contains("name=\"search\" value=\"Daily trend A\"", index);
+        var details = WebUtility.HtmlDecode(await Http.GetStringAsync($"/VipProducts/Sales/{product.Id}?kind=free&days=90"));
+        Assert.Contains("data-trend-total>¥1.00", details);
+        Assert.AreEqual(90, System.Text.RegularExpressions.Regex.Matches(details, "<span data-date=").Count);
+        Assert.Contains("days=90", details);
+        Assert.Contains("name=\"kind\" value=\"free\"", details);
+        foreach (var url in new[] { "/VipProducts?days=0", "/VipProducts?days=365", $"/VipProducts/Sales/{product.Id}?days=-1" })
+            Assert.AreEqual(HttpStatusCode.BadRequest, (await Http.GetAsync(url)).StatusCode);
+    }
+
+    [TestMethod]
     public async Task SalesRequireBothProductAndOrderReadPermission()
     {
         var url = $"/VipProducts/Sales/{Guid.NewGuid()}";
@@ -131,6 +167,7 @@ public class ProductSalesTests : TestBase
         var index = await Http.GetStringAsync("/VipProducts");
         Assert.DoesNotContain("Order receipts", index);
         Assert.DoesNotContain("data-sales=", index);
+        Assert.DoesNotContain("data-daily-trend", index);
         Assert.AreNotEqual(HttpStatusCode.NotFound, (await Http.GetAsync(url)).StatusCode);
         using (var scope = Server!.Services.CreateScope())
         {
