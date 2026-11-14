@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>成交价格分布</value>
+  </data>
+  <data name="All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs." xml:space="preserve">
+    <value>统计全部历史已确认且未退款的付费订单，零元领取单列。实收未扣平台手续费和成本。</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>平均实付价格</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>返回产品列表</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>买家</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>买家订单</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>优惠</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>零元领取</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>暂无已确认的付费订单。</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>该分组暂无订单。</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>订单金额</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>订单编号</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>订单实收</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>原价</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>页面导航</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>支付时间</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>支付价格</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>付费销量</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>购买人数</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>支付渠道</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>价格来自已保存的订单金额。支付过不同价格的买家会出现在每个价格组中；总买家数已去重。</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>产品销量</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>退款订单金额</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>已退款订单</value>
+  </data>
+
+</root>
