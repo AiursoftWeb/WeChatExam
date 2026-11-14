@@ -83,13 +83,13 @@
                 {
                     <div class="sales-empty"><i data-lucide="shopping-bag" aria-hidden="true"></i><p>@Localizer["No confirmed paid purchases yet."]</p></div>
                 }
-                @for (var rank = 0; rank < leaders.Count; rank++)
+                @foreach (var entry in leaders.Select((product, index) => (Product: product, Rank: index + 1)))
                 {
-                    var product = leaders[rank];
+                    var product = entry.Product;
                     var sales = Model.Sales[product.Id];
                     var share = receipts == 0 ? 0m : 100m * sales.RevenueInFen / receipts;
                     <a class="sales-ranking" asp-action="Sales" asp-route-id="@product.Id">
-                        <span class="sales-rank">@((rank + 1).ToString("D2"))</span>
+                        <span class="sales-rank">@entry.Rank.ToString("D2")</span>
                         <div class="sales-ranking-body"><div class="sales-ranking-label"><strong>@product.Name</strong><strong>¥@((sales.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</strong></div>
                             <div class="sales-track" aria-hidden="true"><span style="width: @share.ToString("F2", CultureInfo.InvariantCulture)%"></span></div>
                             <div class="sales-ranking-caption"><span>@sales.PaidOrderCount @Localizer["units"] · @sales.BuyerCount @Localizer["people"]</span><span>@share.ToString("F1", CultureInfo.CurrentCulture)%</span></div>
