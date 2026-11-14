@@ -45,3 +45,10 @@ public record VirtualPaymentOrderSummary(string OutTradeNo, string Description, 
     int OriginalAmountInFen, int DiscountInFen, int AmountInFen, DateTime CreatedAt, DateTime? PaidAt);
 
 public record VirtualPaymentOrderPage(int Total, int Offset, int Count, List<VirtualPaymentOrderSummary> Items);
+
+public class VirtualPaymentOrderStatusResponse : PaymentOrderStatusResponse
+{
+    public int OriginalAmountInFen { get; init; }
+    public int DiscountInFen { get; init; }
+    public string? AppliedCouponCode { get; init; }
+}
