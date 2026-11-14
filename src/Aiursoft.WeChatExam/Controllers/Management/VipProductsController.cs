@@ -19,6 +19,7 @@ namespace Aiursoft.WeChatExam.Controllers.Management;
 [LimitPerMin]
 public class VipProductsController(
     IVipProductService vipProductService,
+    ProductSalesService productSalesService,
     WeChatExamDbContext dbContext,
     IStringLocalizer<VipProductsController> localizer,
     VirtualPaymentGoodsCatalog goodsCatalog, IOptions<AppSettings> options) : Controller
@@ -56,17 +57,35 @@ public class VipProductsController(
 
         var enabledCount = products.Count(p => p.IsEnabled);
         var disabledCount = products.Count - enabledCount;
+        var visibleProducts = products.Where(p => p.IsEnabled != showDisabled).ToList();
+        var canReadSales = User.HasClaim(AppPermissions.Type, AppPermissionNames.CanReadPaymentOrders);
+        var sales = canReadSales
+            ? await productSalesService.SummariesAsync(visibleProducts.Select(p => p.Id).ToList()) : [];
+        visibleProducts = visibleProducts.OrderByDescending(p => sales.GetValueOrDefault(p.Id)?.RevenueInFen ?? 0)
+            .ThenByDescending(p => sales.GetValueOrDefault(p.Id)?.PaidOrderCount ?? 0)
+            .ThenBy(p => p.Name, StringComparer.OrdinalIgnoreCase).ToList();
 
         ViewData["VirtualGoodsStates"] = await goodsCatalog.GetDisplayAsync(products);
         return this.StackView(new IndexViewModel
         {
-            Products = products.Where(p => p.IsEnabled != showDisabled).ToList(),
+            Products = visibleProducts,
+            CanReadSales = canReadSales, Sales = sales,
             SearchQuery = search,
             ShowDisabled = showDisabled,
             EnabledCount = enabledCount,
             DisabledCount = disabledCount,
             InstitutionId = institutionId, TotalCategoryId = totalCategoryId, ScopeTitle = course?.Title
         });
+    }
+
+    [Authorize(Policy = AppPermissionNames.CanReadVipProducts)]
+    [Authorize(Policy = AppPermissionNames.CanReadPaymentOrders)]
+    public async Task<IActionResult> Sales(Guid id, string kind = "paid", int page = 1)
+    {
+        if (kind is not ("paid" or "free" or "refunded")) return BadRequest();
+        var product = await vipProductService.GetByIdAsync(id);
+        if (product == null) return NotFound();
+        return this.StackView(await productSalesService.DetailsAsync(product, kind, page));
     }
 
     [Authorize(Policy = AppPermissionNames.CanAddVipProducts)]

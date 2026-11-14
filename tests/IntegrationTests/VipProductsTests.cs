@@ -377,6 +377,7 @@ public class VipProductsTests : TestBase
             : new InvalidOperationException("Unexpected operation failure");
         var controller = new VipProductsController(
             new StubVipProductService { DeleteException = failure },
+            scope.ServiceProvider.GetRequiredService<ProductSalesService>(),
             scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>(),
             scope.ServiceProvider.GetRequiredService<IStringLocalizer<VipProductsController>>(),
             scope.ServiceProvider.GetRequiredService<VirtualPaymentGoodsCatalog>(),

@@ -27,6 +27,9 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>全部真题 VIP（旧版）</value>
   </data>
+  <data name="All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs. Highest receipts first." xml:space="preserve">
+    <value>统计全部历史已确认且未退款的付费订单，零元领取单列。实收未扣平台手续费和成本，默认按实收从高到低排序。</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>返回课程设置</value>
   </data>
@@ -38,6 +41,9 @@
   </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>创建 VIP 产品</value>
+  </data>
+  <data name="Current price" xml:space="preserve">
+    <value>当前价格</value>
   </data>
   <data name="days" xml:space="preserve">
     <value>天</value>
@@ -57,11 +63,26 @@
   <data name="Enabled" xml:space="preserve">
     <value>已启用</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>零元领取</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>院校 VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名称</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>没有产品符合这些筛选条件。</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>订单实收</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>付费销量</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>购买人数</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>价格</value>
@@ -71,6 +92,15 @@
   </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>真实考试 VIP</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>已退款订单</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>退款待核对</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>销售详情</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>搜索</value>

@@ -1,6 +1,7 @@
 @using System.Globalization
 @model Aiursoft.WeChatExam.Models.VipProductsViewModels.IndexViewModel
 @using Aiursoft.WeChatExam.Entities
+@using Aiursoft.WeChatExam.Models.VipProductsViewModels
 
 <h1 class="h3 mb-3">@Localizer["VIP Products"]</h1>
 
@@ -60,66 +61,99 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">@Localizer["Products"] (@Model.Products.Count)</h5>
     </div>
+    @if (Model.CanReadSales)
+    {
+        <p class="text-muted small px-3">@Localizer["All-time confirmed paid orders, excluding refunds and free claims. Receipts are before platform fees and costs. Highest receipts first."]</p>
+    }
     <div class="table-responsive">
-        <table class="table table-hover mb-0">
+        <table class="table table-hover text-nowrap mb-0">
             <thead class="table-light">
                 <tr>
                     <th>@Localizer["Name"]</th>
-                    <th>@Localizer["Type"]</th>
-                    <th>@Localizer["Access Scope"]</th>
-                    <th>@Localizer["Price"]</th>
-                    <th>@Localizer["Duration"]</th>
-                    <th>@Localizer["Status"]</th>
+                    @if (Model.CanReadSales)
+                    {
+                        <th>@Localizer["Paid sales"]</th>
+                        <th>@Localizer["Order receipts"]</th>
+                        <th>@Localizer["Paying buyers"]</th>
+                        <th>@Localizer["Free claims"]</th>
+                        <th>@Localizer["Refunded orders"]</th>
+                    }
+                    <th>@Localizer["Current price"]</th>
                     <th>@Localizer["Actions"]</th>
                 </tr>
             </thead>
             <tbody>
+                @if (Model.Products.Count == 0)
+                {
+                    <tr><td colspan="@(Model.CanReadSales ? 8 : 3)" class="text-center text-muted py-4">@Localizer["No products match these filters."]</td></tr>
+                }
                 @foreach (var product in Model.Products)
                 {
                     <tr>
-                        <td><strong>@product.Name</strong></td>
                         <td>
-                            @if (product.Type == VipProductType.Category)
-                            {
-                                <span class="badge bg-primary">@Localizer["Total Category VIP"]</span>
-                            }
-                            else if (product.Type == VipProductType.Institution)
-                            {
-                                <span class="badge bg-primary">@Localizer["Institution VIP"]</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-warning text-dark">@Localizer["All Real Exams VIP (Legacy)"]</span>
-                            }
+                            <strong>@product.Name</strong>
+                            <div class="small text-muted mt-1">
+                                @if (product.Type == VipProductType.Category)
+                                {
+                                    <span class="badge bg-primary">@Localizer["Total Category VIP"]</span>
+                                }
+                                else if (product.Type == VipProductType.Institution)
+                                {
+                                    <span class="badge bg-primary">@Localizer["Institution VIP"]</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">@Localizer["All Real Exams VIP (Legacy)"]</span>
+                                }
+                            </div>
+                            <div class="small mt-1">
+                                @if (product.Type == VipProductType.Category)
+                                {
+                                    <span class="badge bg-info">@(product.TotalCategory?.Title ?? "-")</span>
+                                }
+                                else if (product.Type == VipProductType.Institution)
+                                {
+                                    <span>@product.Institution?.Title</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </div>
+                            <div class="small text-muted mt-1">@product.DurationDays @Localizer["days"]</div>
+                            <div class="mt-1">
+                                @if (product.IsEnabled)
+                                {
+                                    <span class="badge bg-success">@Localizer["Enabled"]</span>
+                                    <partial name="_VirtualGoodsStatus" model="product.Id" />
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">@Localizer["Disabled"]</span>
+                                }
+                            </div>
                         </td>
+                        @if (Model.CanReadSales)
+                        {
+                            var sales = Model.Sales.GetValueOrDefault(product.Id) ?? new ProductSalesSummary();
+                            <td data-sales="paid">@sales.PaidOrderCount</td>
+                            <td data-sales="receipts" class="text-nowrap">
+                                <strong>¥@((sales.RevenueInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</strong>
+                                @if (sales.RefundReviewCount > 0)
+                                {
+                                    <div class="small"><a asp-controller="PaymentOrders" asp-action="RefundReviews">@Localizer["Refunds need review"] (@sales.RefundReviewCount)</a></div>
+                                }
+                            </td>
+                            <td data-sales="buyers">@sales.BuyerCount</td>
+                            <td data-sales="free">@sales.FreeOrderCount</td>
+                            <td data-sales="refunded">@sales.RefundedOrderCount</td>
+                        }
+                        <td class="text-nowrap">¥@((product.PriceInFen / 100m).ToString("F2", CultureInfo.CurrentCulture))</td>
                         <td>
-                            @if (product.Type == VipProductType.Category)
+                            @if (Model.CanReadSales)
                             {
-                                <span class="badge bg-info">@(product.TotalCategory?.Title ?? "-")</span>
+                                <a asp-action="Sales" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary mb-1">@Localizer["Sales details"]</a>
                             }
-                            else if (product.Type == VipProductType.Institution)
-                            {
-                                <span>@product.Institution?.Title</span>
-                            }
-                            else
-                            {
-                                <span class="text-muted">-</span>
-                            }
-                        </td>
-                        <td>¥@((product.PriceInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
-                        <td>@product.DurationDays @Localizer["days"]</td>
-                        <td>
-                            @if (product.IsEnabled)
-                            {
-                                <span class="badge bg-success">@Localizer["Enabled"]</span>
-                                <partial name="_VirtualGoodsStatus" model="product.Id" />
-                            }
-                            else
-                            {
-                                <span class="badge bg-secondary">@Localizer["Disabled"]</span>
-                            }
-                        </td>
-                        <td>
                             @if (product.Type != VipProductType.RealExam)
                             {
                                 <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary" title="@Localizer["Edit"]">
