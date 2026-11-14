@@ -42,13 +42,16 @@ public class RefundManagementTests : TestBase
         await base.CleanServer(); if (Directory.Exists(_directory)) Directory.Delete(_directory, true);
     }
 
-    private async Task<Guid> Seed(VirtualPaymentPlatform? platform, PaymentChannel channel = PaymentChannel.WeChatVirtual, bool pendingRefund = false, bool partial = false)
+    private async Task<Guid> Seed(VirtualPaymentPlatform? platform, PaymentChannel channel = PaymentChannel.WeChatVirtual,
+        bool pendingRefund = false, bool partial = false, PaymentOrderStatus status = PaymentOrderStatus.Paid,
+        int amountInFen = 200, bool expired = false, bool missingPaidAt = false)
     {
         using var scope = Server!.Services.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         var user = new User { UserName = Guid.NewGuid().ToString("N"), DisplayName = "Buyer <one>" };
         var order = new PaymentOrder { User = user, UserId = user.Id, OutTradeNo = "WEB-" + Guid.NewGuid().ToString("N")[..20], Description = "Synthetic",
             VipProduct = new VipProduct { Name = "Synthetic course", PriceInFen = 49900, DurationDays = 366 },
-            Channel = channel, AmountInFen = 200, DiscountInFen = 19600, Status = PaymentOrderStatus.Paid, PaidAt = DateTime.UtcNow };
+            Channel = channel, AmountInFen = amountInFen, DiscountInFen = 19600, Status = status,
+            PaidAt = missingPaidAt ? null : expired ? DateTime.UtcNow.AddDays(-366) : DateTime.UtcNow };
         db.Add(order);
         if (channel == PaymentChannel.WeChatVirtual)
             db.Add(new VirtualPaymentSnapshot { PaymentOrderId = order.Id, AppId = "synthetic", OpenId = "synthetic", SignData = "{}", Platform = platform, PlatformOrderId = "synthetic-platform" });
@@ -78,7 +81,14 @@ public class RefundManagementTests : TestBase
             Assert.Contains("WeChat virtual payment (non-Apple)", html); Assert.Contains("Confirm full refund ¥2.00", html);
             Assert.Contains("name=\"confirmed\"", html); Assert.Contains("__RequestVerificationToken", html);
         }
-        else { Assert.Contains("Verify payment method", html); Assert.DoesNotContain("action=\"/Refunds/Submit\"", html); }
+        else
+        {
+            Assert.Contains("Check how this order can be refunded", html);
+            Assert.Contains("Check refund method", html);
+            Assert.Contains("action=\"/Refunds/Verify\"", html);
+            Assert.DoesNotContain("action=\"/Refunds/Submit\"", html);
+        }
+        Assert.Contains("<details", html);
         Assert.Contains("Refund management", await Http.GetStringAsync("/PaymentOrders"));
     }
 
@@ -116,7 +126,10 @@ public class RefundManagementTests : TestBase
             await manager.AddClaimAsync((await manager.FindByEmailAsync(email))!, new Claim(AppPermissions.Type, AppPermissionNames.CanReadPaymentOrders));
         }
         await PostForm("/Account/Login", new Dictionary<string,string> { ["EmailOrUserName"] = email, ["Password"] = password });
-        var html = await Http.GetStringAsync(page); Assert.DoesNotContain("action=\"/Refunds/Submit\"", html);
+        var html = await Http.GetStringAsync(page);
+        Assert.Contains("Your account does not have permission to issue refunds", html);
+        Assert.Contains("Ask your administrator to enable Refund Payment Orders", html);
+        Assert.DoesNotContain("action=\"/Refunds/Submit\"", html);
         using var denied = await Http.PostAsync("/Refunds/Submit", new FormUrlEncodedContent(new Dictionary<string,string> { ["id"] = id.ToString(), ["amountInFen"] = "200", ["confirmed"] = "true" }));
         Assert.AreNotEqual(HttpStatusCode.OK, denied.StatusCode);
         await LoginAsAdmin();
@@ -127,5 +140,52 @@ public class RefundManagementTests : TestBase
         Assert.AreEqual(HttpStatusCode.BadRequest, unconfirmed.StatusCode);
         using var scope2 = Server!.Services.CreateScope();
         Assert.AreEqual(0, await scope2.ServiceProvider.GetRequiredService<WeChatExamDbContext>().VirtualPaymentRefundRequests.CountAsync(r => r.PaymentOrderId == id));
+    }
+
+    [TestMethod]
+    public async Task UnknownPaymentWithReadOnlyPermissionExplainsTheMissingPermissionInsteadOfOfferingAnImpossibleStep()
+    {
+        var id = await Seed(null);
+        var (email, password) = await RegisterAndLoginAsync();
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var manager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            var user = (await manager.FindByEmailAsync(email))!;
+            await manager.AddClaimsAsync(user, new[] { AppPermissionNames.CanReadPaymentOrders,
+                AppPermissionNames.CanReadRoles, AppPermissionNames.CanEditRoles }
+                .Select(p => new Claim(AppPermissions.Type, p)));
+        }
+        await PostForm("/Account/Login", new Dictionary<string,string> { ["EmailOrUserName"] = email, ["Password"] = password });
+        var html = await Http.GetStringAsync($"/Refunds/Process/{id}");
+        Assert.Contains("Your account does not have permission to issue refunds", html);
+        Assert.Contains("Open role permissions", html);
+        Assert.DoesNotContain("Check how this order can be refunded", html);
+        Assert.DoesNotContain("action=\"/Refunds/Verify\"", html);
+        Assert.DoesNotContain("action=\"/Refunds/Submit\"", html);
+        using var denied = await PostForm("/Refunds/Verify", new Dictionary<string,string> { ["id"] = id.ToString() });
+        Assert.AreNotEqual(HttpStatusCode.OK, denied.StatusCode);
+    }
+
+    [TestMethod]
+    public async Task OrdersWithoutRefundablePaymentGiveASpecificReasonAndNoRefundAction()
+    {
+        var unpaid = await Seed(null, status: PaymentOrderStatus.Pending);
+        var zero = await Seed(VirtualPaymentPlatform.WeChat, amountInFen: 0);
+        var expired = await Seed(VirtualPaymentPlatform.WeChat, expired: true);
+        var incomplete = await Seed(VirtualPaymentPlatform.WeChat, missingPaidAt: true);
+        await LoginAsAdmin();
+        foreach (var (id, reason) in new[]
+        {
+            (unpaid, "This order cannot be refunded because no payment is confirmed"),
+            (zero, "No refund is needed for this order"),
+            (expired, "This payment is outside the refund period supported here"),
+            (incomplete, "Payment information is incomplete, so this refund cannot be started here")
+        })
+        {
+            var html = await Http.GetStringAsync($"/Refunds/Process/{id}");
+            Assert.Contains(reason, html);
+            Assert.DoesNotContain("action=\"/Refunds/Submit\"", html);
+            Assert.DoesNotContain("action=\"/Refunds/Verify\"", html);
+        }
     }
 }
