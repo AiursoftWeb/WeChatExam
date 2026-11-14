@@ -140,3 +140,44 @@
     .sales-products td[colspan] { grid-column: 1 / -1; }
     .sales-products .sales-catalog-price { white-space: normal; }
 }
+.sales-trend { margin-bottom: 1.25rem; }
+.sales-trend-range { display: flex; gap: .5rem; align-items: center; }
+.sales-trend-range .form-select { width: auto; min-width: 8rem; }
+.sales-trend-summary { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.sales-trend-summary > div { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+.sales-trend-summary > div > span, .sales-trend-summary p { color: var(--bs-secondary-color); font-size: .8rem; }
+.sales-trend-summary > div > strong { font-size: 1.7rem; font-weight: 650; color: var(--bs-primary); font-variant-numeric: tabular-nums; }
+.sales-trend-summary p { margin: 0; }
+.sales-trend-unit { color: var(--bs-secondary-color); font-size: .72rem; margin-bottom: .7rem; }
+.sales-trend-chart { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: .75rem; }
+.sales-trend-y { height: 210px; display: flex; flex-direction: column; justify-content: space-between; text-align: right; color: var(--bs-secondary-color); font-size: .7rem; font-variant-numeric: tabular-nums; }
+.sales-trend-plot { height: 200px; margin-top: 5px; touch-action: pan-y; }
+.product-sales .sales-trend-plot svg { width: 100%; height: 100%; overflow: visible; }
+.sales-trend-grid { fill: none; stroke: var(--sales-line); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 4 4; }
+.sales-trend-area { fill: rgba(var(--bs-primary-rgb), .09); }
+.sales-trend-line { fill: none; stroke: var(--bs-primary); stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.sales-trend-cursor { stroke: var(--bs-secondary-color); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 3 3; }
+.sales-trend-x { grid-column: 2; position: relative; height: 1.7rem; margin-top: .6rem; color: var(--bs-secondary-color); font-size: .7rem; font-variant-numeric: tabular-nums; }
+.sales-trend-x span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.sales-trend-x span:first-child { transform: none; }
+.sales-trend-x span:last-child { transform: translateX(-100%); }
+.sales-trend-selected { margin-top: 1rem; padding: .8rem 1rem; border-radius: .5rem; background: var(--sales-soft); }
+.sales-trend-selected > div { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; margin-bottom: .6rem; font-variant-numeric: tabular-nums; }
+.sales-trend-selected strong { font-size: 1.1rem; color: var(--bs-primary); }
+.sales-trend-selected b { font-weight: 400; }
+.sales-trend-selected .form-range { display: block; margin: .5rem 0 0; width: 100%; }
+.sales-trend-details { margin-top: 1rem; font-size: .8rem; }
+.sales-trend-details summary { cursor: pointer; padding: .3rem 0; color: var(--bs-secondary-color); }
+.sales-trend-details .table { margin-top: .75rem; }
+.sales-trend-details .table td { padding-block: .6rem; white-space: nowrap; }
+@media (max-width: 767px) {
+    .sales-trend > .sales-panel-heading { flex-direction: column; }
+    .sales-trend-range { width: 100%; }
+    .sales-trend-range .form-select { flex: 1; }
+    .sales-trend-summary { gap: .4rem; }
+    .sales-trend-summary p > span { display: inline-block; }
+    .sales-trend-selected { padding: .8rem; }
+}
+@media (max-width: 575px) {
+    .sales-trend-x span:nth-child(2), .sales-trend-x span:nth-child(4) { display: none; }
+}

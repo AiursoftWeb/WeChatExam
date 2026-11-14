@@ -18,6 +18,7 @@ public class IndexViewModel : UiStackLayoutViewModel
     public Guid? TotalCategoryId { get; set; }
     public string? ScopeTitle { get; set; }
     public Guid? InstitutionId { get; set; }
+    public DailyReceiptsTrend? Trend { get; init; }
     public int PayingBuyerCount { get; init; }
     public bool CanReadSales { get; init; }
     public Dictionary<Guid, ProductSalesSummary> Sales { get; init; } = [];

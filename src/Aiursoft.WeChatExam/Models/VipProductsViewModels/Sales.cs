@@ -30,6 +30,7 @@ public class SalesViewModel : UiStackLayoutViewModel
     public ProductSalesSummary Summary { get; init; } = new();
     public List<SalesPriceGroup> Prices { get; init; } = [];
     public List<PaymentOrder> Orders { get; init; } = [];
+    public DailyReceiptsTrend? Trend { get; init; }
     public string Kind { get; init; } = "paid";
     public int TotalCount { get; init; }
     public int CurrentPage { get; init; } = 1;
