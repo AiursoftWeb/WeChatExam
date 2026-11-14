@@ -23,7 +23,7 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
     VirtualPaymentReconciliationService? virtualPayments = null) : IScopedDependency
 {
     public async Task<VirtualPaymentCheckoutResult> CreateAsync(string userId, Guid productId, string loginCode,
-        string? couponCode = null, CancellationToken cancellationToken = default)
+        string? couponCode = null, CancellationToken cancellationToken = default, bool isAppleClient = false)
     {
         cancellationToken.ThrowIfCancellationRequested();
         var settings = options.Value.WeChat;
@@ -141,10 +141,23 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
                 if (coupon.AmountInFen < 0) throw new VirtualPaymentCheckoutException("Invalid coupon amount.");
             }
             var discount = coupon == null ? 0 : Math.Min(product.PriceInFen, coupon.AmountInFen);
+            var payable = product.PriceInFen - discount;
+            // Apple supports live payments of at least 1 yuan. Reject an
+            // unsupported positive amount before persisting any reservation;
+            // otherwise the rejected native attempt could strand its coupon.
+            // A fully discounted order still uses atomic local fulfillment.
+            // The hint never selects credentials, confirms money or grants access.
+            if (isAppleClient && payable > 0)
+            {
+                if (settings.VirtualPayment.Environment != 0)
+                    throw new VirtualPaymentCheckoutException("Apple payments require the live environment.");
+                if (payable < 100)
+                    throw new VirtualPaymentCheckoutException("Apple payments require at least 1 yuan. Use a different coupon.");
+            }
             var order = new PaymentOrder
             {
                 Id = id, OutTradeNo = number, UserId = userId, VipProductId = productId, Channel = PaymentChannel.WeChatVirtual,
-                CouponId = coupon?.Id, Coupon = coupon, DiscountInFen = discount, AmountInFen = product.PriceInFen - discount,
+                CouponId = coupon?.Id, Coupon = coupon, DiscountInFen = discount, AmountInFen = payable,
                 Description = $"{product.Name} - {product.TotalCategory?.Title ?? product.Institution?.Title ?? "VIP"}",
                 ExpiredAt = now.AddMinutes(30)
             };

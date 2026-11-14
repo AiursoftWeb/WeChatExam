@@ -33,7 +33,7 @@ public class VirtualPaymentController(VirtualPaymentCheckoutService checkout,
         try
         {
             var result = await checkout.CreateAsync(userId, request.VipProductId, request.LoginCode,
-                request.CouponCode, HttpContext.RequestAborted);
+                request.CouponCode, HttpContext.RequestAborted, isAppleClient: request.ClientPlatform == "ios");
             return Ok(new CreateVirtualPaymentOrderResponse
             {
                 OutTradeNo = result.OutTradeNo, Status = result.Status.ToString(),
