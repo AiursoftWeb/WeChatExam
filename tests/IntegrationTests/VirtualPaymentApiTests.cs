@@ -35,10 +35,12 @@ public class VirtualPaymentApiTests
         TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
+        var liveAppleTest = TestContext.TestName?.StartsWith(nameof(OptionalAppleHintRejectsOnlyUnsupportedAppleAmountsAndAllowsChangingCoupon), StringComparison.Ordinal) == true;
         _server = await AppAsync<TestStartupWithMockWeChat>([
             "--AppSettings:WeChatEnabled=true", "--AppSettings:WeChat:AppId=test-app", "--AppSettings:WeChat:AppSecret=synthetic-app-secret-with-at-least-32-characters",
-            "--AppSettings:WeChat:VirtualPayment:Enabled=" + (TestContext.TestName != nameof(DisabledSalesRejectNewCheckoutButRecoverExistingPurchases)), "--AppSettings:WeChat:VirtualPayment:Environment=1",
+            "--AppSettings:WeChat:VirtualPayment:Enabled=" + (TestContext.TestName != nameof(DisabledSalesRejectNewCheckoutButRecoverExistingPurchases)), "--AppSettings:WeChat:VirtualPayment:Environment=" + (liveAppleTest ? "0" : "1"),
             "--AppSettings:WeChat:VirtualPayment:OfferId=offer", "--AppSettings:WeChat:VirtualPayment:SandboxAppKey=sandbox-key",
+            "--AppSettings:WeChat:VirtualPayment:AppKey=synthetic-live-key",
             $"--AppSettings:WeChat:VirtualPayment:Products:{_productId}:ProductId=course",
             $"--AppSettings:WeChat:VirtualPayment:Products:{_productId}:PriceInFen=19800"
         ], port: reservation.Port);
@@ -116,11 +118,13 @@ public class VirtualPaymentApiTests
     [DataRow("missing-code")]
     [DataRow("oversized-code")]
     [DataRow("invalid-guid")]
+    [DataRow("invalid-client-platform")]
     public async Task InvalidModelsAreRejectedBeforeCodeExchange(string fault)
     {
         await SignIn();
         using var response = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", new
-        { vipProductId = fault == "invalid-guid" ? "invalid" : _productId.ToString(), loginCode = fault == "missing-code" ? "" : fault == "oversized-code" ? new string('x', 513) : "fresh-code" });
+        { vipProductId = fault == "invalid-guid" ? "invalid" : _productId.ToString(), loginCode = fault == "missing-code" ? "" : fault == "oversized-code" ? new string('x', 513) : "fresh-code",
+            clientPlatform = fault == "invalid-client-platform" ? "iphone" : null });
         Assert.AreEqual(HttpStatusCode.BadRequest, response.StatusCode); Assert.AreEqual(0, _handler.Calls);
     }
 
@@ -532,6 +536,46 @@ public class VirtualPaymentApiTests
         using var response = await _http.GetAsync($"/api/virtual-payment/orders?vipProductId={_productId}&offset={offset}&count={count}");
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         return (await response.Content.ReadFromJsonAsync<VirtualPaymentOrderPage>())!;
+    }
+
+    [TestMethod]
+    [DataRow(null)]
+    [DataRow("other")]
+    [DataRow("ios")]
+    public async Task OptionalAppleHintRejectsOnlyUnsupportedAppleAmountsAndAllowsChangingCoupon(string? platform)
+    {
+        await SignIn();
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Add(new Coupon { Code = "LOW-AMOUNT", AmountInFen = 19701, IsSingleUse = true,
+                DistributionChannel = new DistributionChannel { AgencyName = "Synthetic" } });
+            await db.SaveChangesAsync();
+        }
+        var request = Purchase("LOW-AMOUNT"); request.ClientPlatform = platform;
+        using var first = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", request);
+        if (platform != "ios")
+        {
+            Assert.AreEqual(HttpStatusCode.OK, first.StatusCode);
+            Assert.AreEqual(99, (await first.Content.ReadFromJsonAsync<CreateVirtualPaymentOrderResponse>())!.AmountInFen);
+            return;
+        }
+        Assert.AreEqual(HttpStatusCode.BadRequest, first.StatusCode);
+        var error = await first.Content.ReadAsStringAsync();
+        Assert.Contains("virtual_payment_rejected", error); Assert.Contains("at least 1 yuan", error);
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            Assert.AreEqual(0, await db.PaymentOrders.CountAsync());
+            Assert.AreEqual(0, await db.VirtualPaymentSnapshots.CountAsync());
+            Assert.AreEqual(0, await db.CouponUsages.CountAsync());
+            Assert.AreEqual(0, await db.VipMemberships.CountAsync());
+            await db.Coupons.ExecuteUpdateAsync(c => c.SetProperty(x => x.AmountInFen, 19700));
+        }
+        request.LoginCode = "another-fresh-code";
+        using var retried = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", request);
+        Assert.AreEqual(HttpStatusCode.OK, retried.StatusCode);
+        Assert.AreEqual(100, (await retried.Content.ReadFromJsonAsync<CreateVirtualPaymentOrderResponse>())!.AmountInFen);
     }
 
     private CreateVirtualPaymentOrderRequest Purchase(string? coupon = null) => new() { VipProductId = _productId, LoginCode = "fresh-code", CouponCode = coupon };

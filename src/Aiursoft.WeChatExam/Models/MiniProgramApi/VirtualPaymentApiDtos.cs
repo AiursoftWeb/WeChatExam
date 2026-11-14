@@ -13,6 +13,11 @@ public class CreateVirtualPaymentOrderRequest
 
     [StringLength(256)]
     public string? CouponCode { get; set; }
+
+    // Optional compatibility hint for Apple-only checkout constraints. It is
+    // never payment evidence: query_order still determines the actual channel.
+    [RegularExpression("^(ios|other)$")]
+    public string? ClientPlatform { get; set; }
 }
 
 public class CreateVirtualPaymentOrderResponse

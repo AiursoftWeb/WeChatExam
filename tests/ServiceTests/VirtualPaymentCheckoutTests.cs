@@ -327,6 +327,49 @@ public class VirtualPaymentCheckoutTests
         Assert.AreEqual(row.DurationDays, (membership.EndTime - membership.StartTime).TotalDays, 0.001);
     }
 
+    [TestMethod]
+    [DataRow(1)]
+    [DataRow(99)]
+    public async Task UnsupportedAppleAmountRollsBackBeforeReservingOrderOrCoupon(int payable)
+    {
+        await _db.Coupons.ExecuteUpdateAsync(c => c.SetProperty(x => x.AmountInFen, 19800 - payable));
+        var error = await Assert.ThrowsExactlyAsync<VirtualPaymentCheckoutException>(() =>
+            CreateService(environment: 0).CreateAsync(_buyer.Id, _product.Id, "fresh-login", "VIRTUAL120", isAppleClient: true));
+        Assert.Contains("at least 1 yuan", error.Message);
+        Assert.AreEqual(1, _handler.Calls);
+        await AssertEmptyPurchase();
+    }
+
+    [TestMethod]
+    [DataRow(0, true)]
+    [DataRow(100, true)]
+    [DataRow(200, true)]
+    [DataRow(1, false)]
+    [DataRow(99, false)]
+    public async Task AppleMinimumDoesNotChangeFreeFulfillmentOrOtherClients(int payable, bool appleClient)
+    {
+        await _db.Coupons.ExecuteUpdateAsync(c => c.SetProperty(x => x.AmountInFen, 19800 - payable));
+        var result = await CreateService(environment: 0).CreateAsync(_buyer.Id, _product.Id, "fresh-login", "VIRTUAL120", isAppleClient: appleClient);
+        Assert.AreEqual(payable, result.AmountInFen);
+        Assert.AreEqual(payable == 0 ? PaymentOrderStatus.Paid : PaymentOrderStatus.Pending, result.Status);
+        Assert.AreEqual(payable == 0, result.PayParams == null);
+        Assert.AreEqual(payable == 0 ? 1 : 0, await _db.VipMemberships.CountAsync());
+        Assert.AreEqual(payable == 0 ? 1 : 0, await _db.CouponUsages.CountAsync());
+        if (payable > 0)
+            Assert.IsNull((await _db.VirtualPaymentSnapshots.SingleAsync()).Platform,
+                "A client hint must not become a verified payment platform.");
+    }
+
+    [TestMethod]
+    public async Task AppleSandboxIsRejectedWithoutConsumingLoginOrReservingAnything()
+    {
+        var error = await Assert.ThrowsExactlyAsync<VirtualPaymentCheckoutException>(() =>
+            CreateService(environment: 1).CreateAsync(_buyer.Id, _product.Id, "fresh-login", isAppleClient: true));
+        Assert.Contains("live environment", error.Message);
+        Assert.AreEqual(0, _handler.Calls);
+        await AssertEmptyPurchase();
+    }
+
     private VirtualPaymentCheckoutService CreateService(SqliteContext? db = null, int environment = 1, bool enabled = true,
         bool weChatEnabled = true, string secret = "app-secret", bool mapping = true, int price = 19800, bool goodsSync = false)
     {

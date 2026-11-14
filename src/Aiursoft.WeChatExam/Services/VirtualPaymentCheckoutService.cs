@@ -23,12 +23,14 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
     VirtualPaymentReconciliationService? virtualPayments = null) : IScopedDependency
 {
     public async Task<VirtualPaymentCheckoutResult> CreateAsync(string userId, Guid productId, string loginCode,
-        string? couponCode = null, CancellationToken cancellationToken = default)
+        string? couponCode = null, CancellationToken cancellationToken = default, bool isAppleClient = false)
     {
         cancellationToken.ThrowIfCancellationRequested();
         var settings = options.Value.WeChat;
         if (!options.Value.WeChatEnabled || !settings.VirtualPayment.Enabled)
             throw new VirtualPaymentCheckoutException("Virtual payment is not enabled.");
+        if (isAppleClient && settings.VirtualPayment.Environment != 0)
+            throw new VirtualPaymentCheckoutException("Apple payments require the live environment.");
         if (!db.Database.IsRelational() || db.Database.CurrentTransaction != null || System.Transactions.Transaction.Current != null)
             throw new InvalidOperationException("Virtual checkout requires its own relational transaction.");
         if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(loginCode) || loginCode.Length > 512 ||
@@ -141,6 +143,13 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
                 if (coupon.AmountInFen < 0) throw new VirtualPaymentCheckoutException("Invalid coupon amount.");
             }
             var discount = coupon == null ? 0 : Math.Min(product.PriceInFen, coupon.AmountInFen);
+            // Apple supports live payments of at least 1 yuan. Reject an
+            // unsupported positive amount before persisting any reservation;
+            // otherwise the rejected native attempt could strand its coupon.
+            // A fully discounted order still uses atomic local fulfillment.
+            // The hint never selects credentials, confirms money or grants access.
+            if (isAppleClient && product.PriceInFen - discount is > 0 and < 100)
+                throw new VirtualPaymentCheckoutException("Apple payments require at least 1 yuan. Use a different coupon.");
             var order = new PaymentOrder
             {
                 Id = id, OutTradeNo = number, UserId = userId, VipProductId = productId, Channel = PaymentChannel.WeChatVirtual,
