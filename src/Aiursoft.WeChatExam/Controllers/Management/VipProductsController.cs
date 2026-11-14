@@ -62,7 +62,8 @@ public class VipProductsController(
         var sales = canReadSales
             ? await productSalesService.SummariesAsync(visibleProducts.Select(p => p.Id).ToList()) : [];
         visibleProducts = visibleProducts.OrderByDescending(p => sales.GetValueOrDefault(p.Id)?.RevenueInFen ?? 0)
-            .ThenByDescending(p => sales.GetValueOrDefault(p.Id)?.PaidOrderCount ?? 0).ThenBy(p => p.Name).ToList();
+            .ThenByDescending(p => sales.GetValueOrDefault(p.Id)?.PaidOrderCount ?? 0)
+            .ThenBy(p => p.Name, StringComparer.OrdinalIgnoreCase).ToList();
 
         ViewData["VirtualGoodsStates"] = await goodsCatalog.GetDisplayAsync(products);
         return this.StackView(new IndexViewModel
