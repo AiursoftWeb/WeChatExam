@@ -116,7 +116,7 @@
     .sales-table-panel > .sales-panel-heading { padding: 1.1rem 1.1rem 0; }
     .sales-ranking { gap: .55rem; }
     .sales-ranking-label strong { font-size: .8rem; }
-    .sales-tag { white-space: normal; text-align: center; }
+    .sales-panel-heading > .sales-tag { display: none; }
     .sales-products, .sales-products tbody { display: block; }
     .sales-products thead { display: none; }
     .sales-products tbody tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem .6rem; padding: 1.1rem; border-top: 1px solid var(--sales-line); }
