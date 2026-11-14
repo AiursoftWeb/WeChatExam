@@ -35,7 +35,7 @@ public class VirtualPaymentApiTests
         TestStartupWithMockWeChat.MockDistributionChannelService = new StubDistributionChannelService();
         using var reservation = new TestPortReservation();
         _http.BaseAddress = new Uri($"http://localhost:{reservation.Port}");
-        var liveAppleTest = TestContext.TestName?.StartsWith(nameof(OptionalAppleHintRejectsOnlyUnsupportedAppleAmountsAndAllowsChangingCoupon), StringComparison.Ordinal) == true;
+        var liveAppleTest = TestContext.TestName.StartsWith(nameof(OptionalAppleHintRejectsOnlyUnsupportedAppleAmountsAndAllowsChangingCoupon), StringComparison.Ordinal);
         _server = await AppAsync<TestStartupWithMockWeChat>([
             "--AppSettings:WeChatEnabled=true", "--AppSettings:WeChat:AppId=test-app", "--AppSettings:WeChat:AppSecret=synthetic-app-secret-with-at-least-32-characters",
             "--AppSettings:WeChat:VirtualPayment:Enabled=" + (TestContext.TestName != nameof(DisabledSalesRejectNewCheckoutButRecoverExistingPurchases)), "--AppSettings:WeChat:VirtualPayment:Environment=" + (liveAppleTest ? "0" : "1"),
