@@ -648,7 +648,8 @@ public class MistakesApiTests : TestBase
         var startUrl = url + "/blind-spot";
         var starts = await Task.WhenAll(Enumerable.Range(0, 3).Select(_ => Http.PutAsync(startUrl, null)));
         Assert.AreEqual(1, starts.Count(r => r.StatusCode == HttpStatusCode.Created));
-        Assert.IsTrue(starts.All(r => r.StatusCode is HttpStatusCode.Created or HttpStatusCode.OK));
+        Assert.IsTrue(starts.All(r => r.StatusCode is HttpStatusCode.Created or HttpStatusCode.OK),
+            "Concurrent blind-spot start responses: " + string.Join(", ", starts.Select(r => (int)r.StatusCode)));
         var first = (await starts.Single(r => r.StatusCode == HttpStatusCode.Created)
             .Content.ReadFromJsonAsync<PracticeSessionDto>())!;
         Assert.AreEqual(PracticeSessionKind.BlindSpot, first.Kind);
@@ -691,6 +692,56 @@ public class MistakesApiTests : TestBase
             new PracticeSessionAnswerDto { UserAnswer = "wrong" })).StatusCode);
         Http.DefaultRequestHeaders.Authorization = null;
         Assert.AreEqual(HttpStatusCode.Unauthorized, (await Http.PutAsync(startUrl, null)).StatusCode);
+    }
+
+    [TestMethod]
+    public async Task BlindSpotStartReusesRoundCommittedWhileChoosingUnseenQuestions()
+    {
+        var owner = await Login("blind-round-delayed-owner");
+        await SeedPractice(owner);
+        var id = Guid.NewGuid();
+        PracticeSessionDto? winner = null;
+        using var scope = Server!.Services.CreateScope();
+        var controller = new PracticeSessionsController(
+            scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>(),
+            scope.ServiceProvider.GetRequiredService<RelatedQuestionService>(),
+            scope.ServiceProvider.GetRequiredService<BlindSpotPreviewService>(),
+            new CommitBeforeAccess(scope.ServiceProvider.GetRequiredService<IPaperAccessService>(), async () =>
+            {
+                // Another request commits after this request observed no existing round.
+                var created = await Http.PutAsync($"/api/PracticeSessions/{id}/blind-spot", null);
+                Assert.AreEqual(HttpStatusCode.Created, created.StatusCode);
+                winner = (await created.Content.ReadFromJsonAsync<PracticeSessionDto>())!;
+            }),
+            scope.ServiceProvider.GetRequiredService<IGradingService>())
+        {
+            ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier, owner)], "Bearer"))
+            } }
+        };
+        var response = await controller.StartBlindSpot(id, default);
+        Assert.IsInstanceOfType<OkObjectResult>(response,
+            "The winner has consumed the unseen candidates; replay its committed round instead of returning 422.");
+        var replay = (PracticeSessionDto)((OkObjectResult)response).Value!;
+        Assert.IsNotNull(winner);
+        CollectionAssert.AreEqual(winner.Items.Select(i => i.Id).ToArray(), replay.Items.Select(i => i.Id).ToArray());
+        Assert.AreEqual(1, await scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>().PracticeSessions.CountAsync());
+    }
+
+    private sealed class CommitBeforeAccess(IPaperAccessService inner, Func<Task> commit) : IPaperAccessService
+    {
+        private bool _committed;
+
+        public async Task<PaperAccessStatus> GetUserAccessStatusAsync(string? userId)
+        {
+            if (!_committed)
+            {
+                _committed = true;
+                await commit();
+            }
+            return await inner.GetUserAccessStatusAsync(userId);
+        }
     }
 
     [TestMethod]

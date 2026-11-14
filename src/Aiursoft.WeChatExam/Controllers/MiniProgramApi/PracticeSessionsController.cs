@@ -73,16 +73,20 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
         var userId = UserId;
         if (userId == null) return Unauthorized();
         if (id == Guid.Empty) return BadRequest();
-        var existing = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
-        if (existing != null) return existing.Kind == PracticeSessionKind.BlindSpot
-            ? Ok(await Project(existing, cancellationToken)) : Conflict();
-        // The UUID is global. A foreign owner's round must never be reused or revealed.
-        if (await db.PracticeSessions.AnyAsync(s => s.Id == id, cancellationToken)) return Conflict();
+        var replay = await ReplayBlindSpot(id, cancellationToken);
+        if (replay != null) return replay;
 
         var access = await accessService.GetUserAccessStatusAsync(userId);
         var preview = await blindSpot.FindAsync(userId, access, cancellationToken);
-        if (!preview.Available) return StatusCode(StatusCodes.Status503ServiceUnavailable);
-        if (preview.Items.Count == 0) return UnprocessableEntity(new { Message = "No eligible blind-spot questions are available." });
+        if (!preview.Available || preview.Items.Count == 0)
+        {
+            // A concurrent winner makes its questions no longer unseen. Resume
+            // that committed round before treating an empty preview as an error.
+            replay = await ReplayBlindSpot(id, cancellationToken);
+            if (replay != null) return replay;
+            return !preview.Available ? StatusCode(StatusCodes.Status503ServiceUnavailable)
+                : UnprocessableEntity(new { Message = "No eligible blind-spot questions are available." });
+        }
 
         var ids = preview.Items.Select(i => i.QuestionId).ToArray();
         // Ranking can outlive an edit or a membership change. Check both again before copying.
@@ -98,22 +102,29 @@ public class PracticeSessionsController(WeChatExamDbContext db, RelatedQuestionS
                 question.QuestionType != candidate.QuestionType || question.Content != candidate.Content) continue;
             session.Items.Add(Capture(question, id, session.Items.Count));
         }
-        if (session.Items.Count == 0) return UnprocessableEntity(new { Message = "Blind-spot questions changed. Please start again." });
+        if (session.Items.Count == 0) return await ReplayBlindSpot(id, cancellationToken)
+            ?? UnprocessableEntity(new { Message = "Blind-spot questions changed. Please start again." });
         db.PracticeSessions.Add(session);
         try { await db.SaveChangesAsync(cancellationToken); }
         catch (DbUpdateException)
         {
             db.ChangeTracker.Clear();
-            existing = await Owned.SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
-            if (existing == null)
-            {
-                if (await db.PracticeSessions.AnyAsync(s => s.Id == id, cancellationToken)) return Conflict();
-                throw;
-            }
-            if (existing.Kind != PracticeSessionKind.BlindSpot) return Conflict();
-            return Ok(await Project(existing, cancellationToken));
+            replay = await ReplayBlindSpot(id, cancellationToken);
+            if (replay == null) throw;
+            return replay;
         }
         return StatusCode(StatusCodes.Status201Created, await Project(session, cancellationToken));
+    }
+
+    private async Task<IActionResult?> ReplayBlindSpot(Guid id, CancellationToken cancellationToken)
+    {
+        // Read existence and ownership together: another request can commit
+        // between a separate owner-scoped lookup and a global existence check.
+        var existing = await db.PracticeSessions.AsNoTracking().Include(s => s.Items)
+            .SingleOrDefaultAsync(s => s.Id == id, cancellationToken);
+        if (existing == null) return null;
+        return existing.UserId == UserId && existing.Kind == PracticeSessionKind.BlindSpot
+            ? Ok(await Project(existing, cancellationToken)) : Conflict();
     }
 
     [HttpGet("{id:guid}")]
