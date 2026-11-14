@@ -120,7 +120,9 @@
     .sales-products, .sales-products tbody { display: block; }
     .sales-products thead { display: none; }
     .sales-products tbody tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem .6rem; padding: 1.1rem; border-top: 1px solid var(--sales-line); }
-    .sales-products tbody td { display: block; padding: 0; border: 0; min-width: 0; overflow-wrap: anywhere; }
+    .product-sales .table.sales-products tbody tr td { display: block; padding: 0; border: 0; min-width: 0; overflow-wrap: anywhere; }
+    .product-sales .sales-products td:first-child { padding-left: 0 !important; }
+    .product-sales .sales-products td:last-child { padding-right: 0 !important; }
     .sales-products td::before { content: attr(data-label); display: block; font-size: .7rem; font-weight: 400; color: var(--bs-secondary-color); margin-bottom: .35rem; }
     .sales-products .sales-product-name { grid-column: 1 / -1; min-width: 0; max-width: none; }
     .sales-products .sales-product-name::before, .sales-products .sales-row-actions::before { display: none; }
