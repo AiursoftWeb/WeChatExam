@@ -1,4 +1,3 @@
-@using System.Globalization
 @using Aiursoft.WebTools
 @using Aiursoft.WeChatExam.Entities
 
@@ -24,7 +23,7 @@
                     <tbody>
                         <tr>
                             <th style="width:200px">@Localizer["Order No"]</th>
-                            <td><code>@Model.Order.OutTradeNo</code></td>
+                            <td><code class="text-break user-select-all">@Model.Order.OutTradeNo</code></td>
                         </tr>
                         <tr>
                             <th>@Localizer["User"]</th>
@@ -43,24 +42,21 @@
                             <td>@Model.Order.Description</td>
                         </tr>
                         <tr>
-                            <th>@Localizer["Amount"]</th>
-                            <td class="fw-bold">¥@((Model.Order.AmountInFen / 100.0).ToString("F2", CultureInfo.CurrentCulture))</td>
+                            <th>@Localizer["Amounts"]</th>
+                            <td><partial name="_OrderAmounts" model="Model.Order" /></td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Payment channel"]</th>
+                            <td><partial name="_PaymentChannel" model="Model.Order.Channel" /></td>
+                        </tr>
+                        <tr>
+                            <th>@Localizer["Coupon code"]</th>
+                            <td><code class="text-break">@(Model.Order.Coupon?.Code ?? "-")</code></td>
                         </tr>
                         <tr>
                             <th>@Localizer["Status"]</th>
                             <td>
-                                @{
-                                    var badgeClass = Model.Order.Status switch
-                                    {
-                                        PaymentOrderStatus.Paid => "bg-success",
-                                        PaymentOrderStatus.Pending => "bg-warning text-dark",
-                                        PaymentOrderStatus.Failed => "bg-danger",
-                                        PaymentOrderStatus.Closed => "bg-secondary",
-                                        PaymentOrderStatus.Refunded => "bg-info",
-                                        _ => "bg-secondary"
-                                    };
-                                }
-                                <span class="badge @badgeClass">@Model.Order.Status</span>
+                                <partial name="_PaymentStatus" model="Model.Order.Status" />
                             </td>
                         </tr>
                         <tr>
@@ -95,10 +91,29 @@
     </div>
 
     <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">@Localizer["Payment Logs"]</h5>
+        <div class="card mb-3">
+            <div class="card-header"><h5 class="card-title mb-0">@Localizer["Current membership"]</h5></div>
+            <div class="card-body">
+                <p class="text-muted small">@Localizer["Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today."]</p>
+                @if (Model.CurrentMembership is { } membership)
+                {
+                    <partial name="_MembershipStatus" model="membership" />
+                    <dl class="mb-0 mt-3">
+                        <dt>@Localizer["Start"]</dt>
+                        <dd><label data-utc-time="@membership.StartTime.ToHtmlDateTime()"></label></dd>
+                        <dt>@Localizer["End"]</dt>
+                        <dd><label data-utc-time="@membership.EndTime.ToHtmlDateTime()"></label></dd>
+                    </dl>
+                }
+                else
+                {
+                    <span class="text-muted">@Localizer["No membership record for this product"]</span>
+                }
+                <a asp-action="UserPayments" asp-route-userId="@Model.Order.UserId" class="btn btn-outline-primary btn-sm mt-3">@Localizer["View user payment history"]</a>
             </div>
+        </div>
+        <details class="card">
+            <summary class="card-header">@Localizer["Technical payment logs"] (@Model.Order.PaymentLogs.Count())</summary>
             <div class="card-body p-0">
                 @if (Model.Order.PaymentLogs.Any())
                 {
@@ -127,7 +142,7 @@
                     </div>
                 }
             </div>
-        </div>
+        </details>
     </div>
 </div>
 

@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>金额</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>金额与订单一起保存。未确认的订单不代表已完成的购买。</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>待支付确认</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>已关闭</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>创建时间</value>
   </data>
@@ -42,8 +54,20 @@
   <data name="Order No" xml:space="preserve">
     <value>订单号</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>订单号</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>订单</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>支付渠道</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>已支付</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>支付需验证</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>支付订单</value>
@@ -56,6 +80,9 @@
   </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>退款对账记录</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>已退款</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>

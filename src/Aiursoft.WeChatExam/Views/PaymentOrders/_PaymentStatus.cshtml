@@ -1,0 +1,23 @@
+@using Aiursoft.WeChatExam.Entities
+@model PaymentOrderStatus
+@switch (Model)
+{
+    case PaymentOrderStatus.Paid:
+        <span class="badge bg-success">@Localizer["Payment confirmed"]</span>
+        break;
+    case PaymentOrderStatus.Pending:
+        <span class="badge bg-warning text-dark">@Localizer["Awaiting payment confirmation"]</span>
+        break;
+    case PaymentOrderStatus.Failed:
+        <span class="badge bg-danger">@Localizer["Payment needs verification"]</span>
+        break;
+    case PaymentOrderStatus.Closed:
+        <span class="badge bg-secondary">@Localizer["Closed"]</span>
+        break;
+    case PaymentOrderStatus.Refunded:
+        <span class="badge bg-info">@Localizer["Refunded"]</span>
+        break;
+    default:
+        <span class="badge bg-secondary">@Localizer["Unknown"]</span>
+        break;
+}

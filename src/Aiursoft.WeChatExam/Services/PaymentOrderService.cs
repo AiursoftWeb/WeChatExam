@@ -8,7 +8,7 @@ namespace Aiursoft.WeChatExam.Services;
 /// </summary>
 public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderService
 {
-    public async Task<List<PaymentOrder>> GetAllOrdersAsync(int page = 1, int pageSize = 50, PaymentOrderStatus? statusFilter = null, string? userIdFilter = null)
+    public async Task<List<PaymentOrder>> GetAllOrdersAsync(int page = 1, int pageSize = 50, PaymentOrderStatus? statusFilter = null, string? userIdFilter = null, string? orderNumberFilter = null)
     {
         var query = dbContext.PaymentOrders.AsQueryable();
 
@@ -21,21 +21,31 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
         {
             query = query.Where(o => o.UserId == userIdFilter);
         }
+        if (!string.IsNullOrWhiteSpace(orderNumberFilter))
+        {
+            var orderNumber = orderNumberFilter.Trim();
+            query = query.Where(o => o.OutTradeNo == orderNumber);
+        }
 
-        // Including VipProduct and TotalCategory to ensure display name is available
-        return await query
+        // Load names separately so historical orders with missing user rows remain visible.
+        var orders = await query
             .Include(o => o.VipProduct)
             .ThenInclude(p => p!.TotalCategory)
             .OrderByDescending(o => o.CreatedAt)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
+        var userIds = orders.Select(o => o.UserId).Distinct().ToList();
+        var users = await dbContext.Users.Where(u => userIds.Contains(u.Id)).ToDictionaryAsync(u => u.Id);
+        foreach (var order in orders) order.User = users.GetValueOrDefault(order.UserId);
+        return orders;
     }
 
     public async Task<PaymentOrder?> GetOrderDetailAsync(Guid id)
     {
         return await dbContext.PaymentOrders
             .Include(o => o.PaymentLogs)
+            .Include(o => o.Coupon)
             .Include(o => o.VipProduct)
             .ThenInclude(p => p!.TotalCategory)
             .Include(o => o.User)
@@ -53,7 +63,7 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
             .ToListAsync();
     }
 
-    public async Task<int> GetOrderCountAsync(PaymentOrderStatus? statusFilter = null, string? userIdFilter = null)
+    public async Task<int> GetOrderCountAsync(PaymentOrderStatus? statusFilter = null, string? userIdFilter = null, string? orderNumberFilter = null)
     {
         var query = dbContext.PaymentOrders.AsQueryable();
         
@@ -65,6 +75,11 @@ public class PaymentOrderService(WeChatExamDbContext dbContext) : IPaymentOrderS
         if (!string.IsNullOrEmpty(userIdFilter))
         {
             query = query.Where(o => o.UserId == userIdFilter);
+        }
+        if (!string.IsNullOrWhiteSpace(orderNumberFilter))
+        {
+            var orderNumber = orderNumberFilter.Trim();
+            query = query.Where(o => o.OutTradeNo == orderNumber);
         }
         
         return await query.CountAsync();

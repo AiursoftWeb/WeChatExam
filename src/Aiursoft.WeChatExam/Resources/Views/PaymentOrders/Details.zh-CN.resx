@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>金额</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>金额</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>优惠码</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>创建时间</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>当前访问权限可能包含后续购买或手动更改。已确认的付款并不意味着会员资格今天仍然有效。</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>当前会员资格</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>描述</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>结束</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>过期时间</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>暂无日志</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>该产品没有会员记录</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>订单信息</value>
@@ -45,6 +63,9 @@
   <data name="Paid At" xml:space="preserve">
     <value>支付时间</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>支付渠道</value>
+  </data>
   <data name="Payment Logs" xml:space="preserve">
     <value>支付日志</value>
   </data>
@@ -54,14 +75,23 @@
   <data name="Product" xml:space="preserve">
     <value>商品</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>开始</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>状态</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>技术支付日志</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>用户</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>查看退款对账记录</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>查看用户付款记录</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>微信交易单号</value>

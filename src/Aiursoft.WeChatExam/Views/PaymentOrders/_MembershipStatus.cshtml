@@ -1,0 +1,14 @@
+@using Aiursoft.WeChatExam.Entities
+@model VipMembership
+@if (Model.IsActive)
+{
+    <span class="badge bg-success">@Localizer["Active"]</span>
+}
+else if (Model.StartTime > DateTime.UtcNow)
+{
+    <span class="badge bg-secondary">@Localizer["Not started"]</span>
+}
+else
+{
+    <span class="badge bg-secondary">@Localizer["Expired"]</span>
+}
