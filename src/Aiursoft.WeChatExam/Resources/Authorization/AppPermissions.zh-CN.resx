@@ -153,6 +153,9 @@
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>允许更新用户反馈的状态。</value>
   </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>允许验证支付方式、申请全额虚拟支付退款并查看退款结果。</value>
+  </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>允许查看和管理后台任务队列及其执行状态。</value>
   </data>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>重启此应用</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>退款支付订单</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>触发优化任务</value>

@@ -255,6 +255,17 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
             // Reconciliation must honor this marker under the same order locks.
             var outcome = await refunds.CompleteAsync(current, new VirtualPaymentRefundConfirmation(current.Id,
                 message.PlatformOrderId, message.PlatformRefundId, message.AmountInFen));
+            var request = await db.VirtualPaymentRefundRequests.SingleOrDefaultAsync(r => r.PaymentOrderId == current.Id);
+            if (request != null && request.AmountInFen == message.AmountInFen &&
+                (request.PlatformRefundId == message.PlatformRefundId || request.RefundOrderId == message.MerchantRefundId) &&
+                (request.PlatformRefundId == null || request.PlatformRefundId == message.PlatformRefundId))
+            {
+                request.PlatformRefundId = message.PlatformRefundId;
+                request.State = VirtualPaymentRefundRequestState.Completed;
+                request.UpdatedAt = DateTime.UtcNow;
+                request.CompletedAt ??= DateTime.UtcNow;
+                await db.SaveChangesAsync();
+            }
             await transaction.CommitAsync();
             // A durable manual-review marker also acknowledges delivery, NOT that
             // uncertain rights were revoked. Its operator workflow is separate.
@@ -300,6 +311,8 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
             }
             if (Text("Event") == "xpay_refund_notify")
             {
+                var merchantRefund = Text("MchRefundId");
+                if (Has("MchRefundId") && (string.IsNullOrWhiteSpace(merchantRefund) || merchantRefund.Length > 128)) return null;
                 var amount = Number("RefundFee");
                 var start = Number("RefundStartTimestamp");
                 var success = Number("RefundSuccTimestamp");
@@ -310,7 +323,7 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
                     fields.Any(f => string.IsNullOrWhiteSpace(f) || f.Length > 128) || Has("TeamInfo") ||
                     (Has("Env") && environment is not (0 or 1))) return null;
                 return new AuthenticatedMessage(Refund: new RefundMessage(fields[0]!, fields[1]!, fields[2]!, fields[3]!,
-                    (int)amount.Value, (int?)environment));
+                    (int)amount.Value, (int?)environment, merchantRefund));
             }
             if (Text("Event") != "xpay_goods_deliver_notify") return null;
             // Env=0 is meaningful for goods. Missing Env must still be rejected.
@@ -333,7 +346,7 @@ public class VirtualPaymentNotificationService(WeChatExamDbContext db, VirtualPa
         IosRefundMessage? IosRefund = null, bool Xml = false, string? RequestHash = null);
     private sealed record IosRefundMessage(string OrderId, string ProductId, int Quantity, int ProvidedStatus, long RefundTime);
     private sealed record RefundMessage(string OpenId, string MerchantOrderId, string PlatformOrderId,
-        string PlatformRefundId, int AmountInFen, int? Environment);
+        string PlatformRefundId, int AmountInFen, int? Environment, string? MerchantRefundId);
 
     private bool VerifySignature(string? timestamp, string? nonce, string encrypted, string? signature)
     {

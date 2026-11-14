@@ -1,0 +1,18 @@
+@using Aiursoft.WeChatExam.Entities
+@model PaymentOrder
+@if (Model.RefundRequest?.State == VirtualPaymentRefundRequestState.Completed || Model.Status == PaymentOrderStatus.Refunded)
+{
+    <span class="badge bg-success">@Localizer["Refund completed"]</span>
+}
+else if (Model.RefundRequest?.State == VirtualPaymentRefundRequestState.Failed)
+{
+    <span class="badge bg-danger">@Localizer["Refund failed"]</span>
+}
+else if (Model.RefundRequest?.State == VirtualPaymentRefundRequestState.Accepted)
+{
+    <span class="badge bg-warning text-dark">@Localizer["Refund processing"]</span>
+}
+else
+{
+    <span class="badge bg-warning text-dark">@Localizer["Refund needs verification"]</span>
+}

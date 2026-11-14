@@ -80,6 +80,7 @@ public static class AppPermissionNames
 
     // Payment Management
     public const string CanReadPaymentOrders = nameof(CanReadPaymentOrders);
+    public const string CanRefundPaymentOrders = nameof(CanRefundPaymentOrders);
 
     // VIP Product Management
     public const string CanReadVipProducts = nameof(CanReadVipProducts);

@@ -63,6 +63,8 @@ public class Startup : IWebStartup
         services.AddHttpClient(nameof(VirtualPaymentCheckoutService)).RemoveAllLoggers();
         services.AddAssemblyDependencies(typeof(Startup).Assembly);
         services.AddScoped<IVirtualPaymentQueryService, VirtualPaymentQueryService>();
+        services.AddScoped<IVirtualPaymentRefundGateway, VirtualPaymentRefundGateway>();
+        services.AddHttpClient(nameof(VirtualPaymentRefundGateway)).RemoveAllLoggers();
         services.AddScoped<IGlobalSettingsService, GlobalSettingsService>();
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();

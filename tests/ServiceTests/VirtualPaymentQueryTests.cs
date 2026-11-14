@@ -41,6 +41,7 @@ public class VirtualPaymentQueryTests
         Assert.AreEqual("platform-order", result.PlatformOrderId);
         Assert.AreEqual(order.Id, result.PaymentOrderId);
         Assert.AreEqual(6800, result.AmountInFen);
+        Assert.AreEqual((VirtualPaymentPlatform)orderType, result.Platform);
         Assert.AreEqual(orderType == 7 ? null : "wechat-transaction", result.TransactionId);
         Assert.AreEqual(HttpMethod.Post, handler.Method);
         Assert.IsNotNull(handler.Uri);

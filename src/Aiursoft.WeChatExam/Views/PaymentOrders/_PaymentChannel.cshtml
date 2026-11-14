@@ -1,9 +1,20 @@
 @using Aiursoft.WeChatExam.Entities
-@model PaymentChannel
-@switch (Model)
+@model PaymentOrder
+@switch (Model.Channel)
 {
     case PaymentChannel.WeChatVirtual:
-        @Localizer["WeChat virtual payment"]
+        @if (Model.VirtualPaymentSnapshot?.Platform == VirtualPaymentPlatform.Apple)
+        {
+            @Localizer["Apple IAP payment"]
+        }
+        else if (Model.VirtualPaymentSnapshot?.Platform == VirtualPaymentPlatform.WeChat)
+        {
+            @Localizer["WeChat virtual payment (non-Apple)"]
+        }
+        else
+        {
+            @Localizer["WeChat virtual payment"]<br /><small class="text-muted">@Localizer["Payment method not yet verified"]</small>
+        }
         break;
     case PaymentChannel.WeChatJsApi:
         @Localizer["WeChat Pay"]

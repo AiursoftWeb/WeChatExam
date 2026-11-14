@@ -64,6 +64,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddScoped<ICouponService, CouponService>();
         services.AddScoped<IPaymentOrderService, PaymentOrderService>();
         services.AddScoped<IVirtualPaymentQueryService, VirtualPaymentQueryService>();
+        services.AddScoped<IVirtualPaymentRefundGateway, VirtualPaymentRefundGateway>();
         services.AddScoped<IGradingService, GradingService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<ITaxonomyService, TaxonomyService>();

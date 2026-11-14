@@ -64,8 +64,11 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
         builder.Entity<PaymentOrder>().Property(o => o.Channel)
             .HasDefaultValue(PaymentChannel.WeChatJsApi);
         builder.Entity<VirtualPaymentSnapshot>().HasIndex(s => new { s.AppId, s.PlatformOrderId });
-        builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.PaymentOrder).WithOne()
+        builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.PaymentOrder).WithOne(o => o.VirtualPaymentSnapshot)
             .HasForeignKey<VirtualPaymentSnapshot>(s => s.PaymentOrderId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<VirtualPaymentRefundRequest>().HasOne(r => r.PaymentOrder).WithOne(o => o.RefundRequest)
+            .HasForeignKey<VirtualPaymentRefundRequest>(r => r.PaymentOrderId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<VirtualPaymentRefundRequest>().HasIndex(r => r.RefundOrderId).IsUnique();
 
         builder.Entity<VirtualPaymentSnapshot>().HasOne(s => s.VirtualPaymentGoods).WithMany()
             .HasForeignKey(s => s.VirtualPaymentGoodsId).OnDelete(DeleteBehavior.Restrict);
@@ -205,6 +208,7 @@ public abstract class WeChatExamDbContext(DbContextOptions options) : IdentityDb
     public DbSet<Feedback> Feedbacks => Set<Feedback>();
     public DbSet<PaymentOrder> PaymentOrders => Set<PaymentOrder>();
     public DbSet<VirtualPaymentSnapshot> VirtualPaymentSnapshots => Set<VirtualPaymentSnapshot>();
+    public DbSet<VirtualPaymentRefundRequest> VirtualPaymentRefundRequests => Set<VirtualPaymentRefundRequest>();
     public DbSet<PaymentLog> PaymentLogs => Set<PaymentLog>();
     public DbSet<VipMembership> VipMemberships => Set<VipMembership>();
     public DbSet<Change> Changes => Set<Change>();

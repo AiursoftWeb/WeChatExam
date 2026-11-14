@@ -108,7 +108,8 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
 
         // paid_fee may differ due to platform subsidies. order_fee must equal
         // the merchant's saved payable amount, not today's price or full price.
-        return new VirtualPaymentQueryResult(state, remote.WxOrderId, remote.TransactionId, order.Id, order.AmountInFen);
+        return new VirtualPaymentQueryResult(state, remote.WxOrderId, remote.TransactionId, order.Id, order.AmountInFen,
+            (VirtualPaymentPlatform)remote.OrderType, remote.LeftFee, remote.PaidFee);
     }
 
     private sealed class QueryClient(WechatApiClientOptions settings, HttpClient httpClient)
@@ -128,4 +129,5 @@ public enum VirtualPaymentOrderState
 
 /// <summary>A validated observation, not a command to fulfill or close an order.</summary>
 public sealed record VirtualPaymentQueryResult(VirtualPaymentOrderState State, string PlatformOrderId, string? TransactionId,
-    Guid PaymentOrderId, int AmountInFen);
+    Guid PaymentOrderId, int AmountInFen, VirtualPaymentPlatform? Platform = null,
+    int? RemainingInFen = null, int? PaidInFen = null);
