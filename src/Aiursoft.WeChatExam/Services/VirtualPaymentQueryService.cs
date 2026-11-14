@@ -77,17 +77,21 @@ public class VirtualPaymentQueryService(IOptions<AppSettings> options, IHttpClie
         };
         if (state == VirtualPaymentOrderState.Closed)
         {
-            // Closure will release a local reservation. Require explicit success
-            // and zero paid money; missing SDK defaults or refund evidence are
-            // not sufficient proof that it is safe to start a new purchase.
+            // WeChat omits payment fields on genuinely unpaid closed orders.
+            // Require an explicit successful CLOSED observation, rather than
+            // inventing an obligation for the gateway to return paid_fee=0.
+            // Any present payment/refund evidence must still be unambiguous.
             try
             {
                 using var json = System.Text.Json.JsonDocument.Parse(response.GetRawBytes());
                 if (!json.RootElement.TryGetProperty("errcode", out var code) || !code.TryGetInt32(out var error) || error != 0 ||
                     !json.RootElement.TryGetProperty("order", out var original) ||
-                    !original.TryGetProperty("paid_fee", out var paid) || !paid.TryGetInt32(out var amount) || amount != 0 ||
+                    !original.TryGetProperty("status", out var status) || !status.TryGetInt32(out var stateCode) || stateCode != 6 ||
                     remote.RefundFee is > 0 || !string.IsNullOrWhiteSpace(remote.TransactionId))
                     throw new InvalidOperationException("The closed virtual order does not have unambiguous unpaid evidence.");
+                foreach (var field in new[] { "paid_fee", "refund_fee", "left_fee", "paid_time", "provide_time" })
+                    if (original.TryGetProperty(field, out var value) && (!value.TryGetInt64(out var amount) || amount != 0))
+                        throw new InvalidOperationException("The closed virtual order contains payment or refund evidence.");
             }
             catch (System.Text.Json.JsonException)
             {

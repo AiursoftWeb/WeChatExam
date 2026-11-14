@@ -117,7 +117,6 @@ public class VirtualPaymentQueryTests
 
     [TestMethod]
     [DataRow("paid")]
-    [DataRow("missing-paid")]
     [DataRow("refund")]
     [DataRow("transaction")]
     [DataRow("missing-code")]
@@ -125,7 +124,6 @@ public class VirtualPaymentQueryTests
     {
         var response = Response(status: 6);
         if (fault == "paid") response["order"]!["paid_fee"] = 100;
-        if (fault == "missing-paid") response["order"]!.AsObject().Remove("paid_fee");
         if (fault == "refund") response["order"]!["refund_fee"] = 100;
         if (fault == "transaction") response["order"]!["wxpay_order_id"] = "previous-payment";
         if (fault == "missing-code") response.Remove("errcode");
@@ -133,6 +131,42 @@ public class VirtualPaymentQueryTests
         using var handler = new QueryHandler(response);
         await Assert.ThrowsExactlyAsync<InvalidOperationException>(() => CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token));
         Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+    }
+
+    [TestMethod]
+    public async Task GeneralGoodsClosureMayOmitPaymentFieldsThatDoNotExist()
+    {
+        // Shape returned by the live, cancelled Suzhou purchase. WeChat has
+        // already closed it; unpaid orders do not necessarily have these fields.
+        var response = Response(environment: 0, status: 6, businessType: 1000);
+        foreach (var field in new[] { "paid_fee", "refund_fee", "left_fee", "wxpay_order_id" })
+            response["order"]!.AsObject().Remove(field);
+        var settings = CreateSettings(environment: 0);
+        var order = CreateOrder();
+        using var handler = new QueryHandler(response);
+        var result = await CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token);
+        Assert.AreEqual(VirtualPaymentOrderState.Closed, result.State);
+        Assert.AreEqual("platform-order", result.PlatformOrderId);
+        Assert.IsNull(result.TransactionId);
+        Assert.AreEqual(PaymentOrderStatus.Pending, order.Status);
+    }
+
+    [TestMethod]
+    [DataRow("paid_fee", "null")]
+    [DataRow("paid_fee", "\"0\"")]
+    [DataRow("refund_fee", "1")]
+    [DataRow("paid_time", "1")]
+    [DataRow("provide_time", "1")]
+    [DataRow("left_fee", "1")]
+    public async Task ClosureStillRejectsPresentPaymentOrMalformedEvidence(string field, string value)
+    {
+        var response = Response(status: 6);
+        response["order"]![field] = JsonNode.Parse(value);
+        var settings = CreateSettings();
+        var order = CreateOrder();
+        using var handler = new QueryHandler(response);
+        await Assert.ThrowsExactlyAsync<InvalidOperationException>(() =>
+            CreateService(settings, handler).QueryAsync(order, Capture(order, settings), Token));
     }
 
     [TestMethod]

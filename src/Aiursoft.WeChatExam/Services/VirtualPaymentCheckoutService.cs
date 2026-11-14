@@ -19,7 +19,8 @@ namespace Aiursoft.WeChatExam.Services;
 /// </summary>
 public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponService coupons,
     PaymentFulfillmentService fulfillment, VirtualPaymentParameterService parameters,
-    IOptions<AppSettings> options, IHttpClientFactory httpClientFactory, IWeChatPayService? legacyPayments = null) : IScopedDependency
+    IOptions<AppSettings> options, IHttpClientFactory httpClientFactory, IWeChatPayService? legacyPayments = null,
+    VirtualPaymentReconciliationService? virtualPayments = null) : IScopedDependency
 {
     public async Task<VirtualPaymentCheckoutResult> CreateAsync(string userId, Guid productId, string loginCode,
         string? couponCode = null, CancellationToken cancellationToken = default)
@@ -57,6 +58,18 @@ public class VirtualPaymentCheckoutService(WeChatExamDbContext db, ICouponServic
         // back a recovered payment or confirmed closure. Recheck all states below.
         if (legacyPayments != null)
             await legacyPayments.ReconcilePreviousOrdersAsync(userId, productId);
+        if (virtualPayments != null)
+        {
+            // Re-entry, a cancelled dialog and a lost response can all leave a
+            // local reservation after WeChat has already closed the attempt.
+            // Commit that verified result before attempting a fresh checkout.
+            var previous = await db.PaymentOrders.AsNoTracking().Where(o => o.UserId == userId &&
+                    o.VipProductId == productId && o.Channel == PaymentChannel.WeChatVirtual &&
+                    (o.Status == PaymentOrderStatus.Pending || o.Status == PaymentOrderStatus.Failed))
+                .OrderBy(o => o.CreatedAt).Select(o => o.OutTradeNo).ToListAsync(cancellationToken);
+            foreach (var oldNumber in previous)
+                await virtualPayments.ReconcileAsync(oldNumber, userId, cancellationToken);
+        }
         cancellationToken.ThrowIfCancellationRequested();
 
         // Stable across EF execution-strategy retries, including an uncertain commit.

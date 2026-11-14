@@ -106,9 +106,14 @@ public class VirtualPaymentController(VirtualPaymentCheckoutService checkout,
             // authorizes owner/channel before any gateway call or financial effect.
             var order = await reconciliation.ReconcileAsync(outTradeNo, userId, HttpContext.RequestAborted);
             if (order == null) return NotFound();
-            return Ok(new PaymentOrderStatusResponse
+            var couponCode = order.CouponId.HasValue
+                ? await context.Coupons.AsNoTracking().Where(c => c.Id == order.CouponId)
+                    .Select(c => c.Code).SingleOrDefaultAsync(HttpContext.RequestAborted) : null;
+            return Ok(new VirtualPaymentOrderStatusResponse
             {
                 OutTradeNo = order.OutTradeNo, Status = order.Status.ToString(), AmountInFen = order.AmountInFen,
+                OriginalAmountInFen = checked(order.AmountInFen + order.DiscountInFen),
+                DiscountInFen = order.DiscountInFen, AppliedCouponCode = couponCode,
                 WechatTransactionId = order.WechatTransactionId, CreatedAt = order.CreatedAt, PaidAt = order.PaidAt
             });
         }

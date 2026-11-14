@@ -311,6 +311,96 @@ public class VirtualPaymentApiTests
     }
 
     [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task CancelledGeneralGoodsPurchaseCanRetryAndFulfillExactlyOnce(bool queryBeforeRetry)
+    {
+        await SignIn();
+        using (var scope = _server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Add(new Coupon { Code = "RETRY196", AmountInFen = 19600, IsSingleUse = true,
+                DistributionChannel = new DistributionChannel { Id = Guid.NewGuid(), AgencyName = "Agency" } });
+            await db.SaveChangesAsync();
+        }
+        using var initial = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("RETRY196"));
+        var original = (await initial.Content.ReadFromJsonAsync<CreateVirtualPaymentOrderResponse>())!;
+        // This is the real cancelled general-goods response shape: explicit
+        // CLOSED, but no payment fields. Do not manually close the local row.
+        _handler.Order = original.OutTradeNo; _handler.OrderStatus = 6; _handler.OrderFee = 200;
+        _handler.BusinessType = 1000; _handler.OmitClosedPaymentFields = true;
+        if (queryBeforeRetry)
+        {
+            using var closed = await _http.GetAsync("/api/virtual-payment/order-status/" + original.OutTradeNo);
+            var status = (await closed.Content.ReadFromJsonAsync<VirtualPaymentOrderStatusResponse>())!;
+            Assert.AreEqual("Closed", status.Status);
+            Assert.AreEqual(19800, status.OriginalAmountInFen);
+            Assert.AreEqual(19600, status.DiscountInFen);
+            Assert.AreEqual("RETRY196", status.AppliedCouponCode);
+        }
+        using var retry = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("RETRY196"));
+        Assert.AreEqual(HttpStatusCode.OK, retry.StatusCode);
+        var replacement = (await retry.Content.ReadFromJsonAsync<CreateVirtualPaymentOrderResponse>())!;
+        Assert.AreNotEqual(original.OutTradeNo, replacement.OutTradeNo);
+        Assert.AreEqual(200, replacement.AmountInFen);
+        Assert.AreEqual("RETRY196", replacement.AppliedCouponCode);
+        _handler.Order = replacement.OutTradeNo; _handler.OrderStatus = 2;
+        for (var i = 0; i < 3; i++)
+        {
+            using var paid = await _http.GetAsync("/api/virtual-payment/order-status/" + replacement.OutTradeNo);
+            Assert.AreEqual("Paid", (await paid.Content.ReadFromJsonAsync<PaymentOrderStatusResponse>())!.Status);
+        }
+        using var check = _server!.Services.CreateScope();
+        var context = check.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        var old = await context.PaymentOrders.SingleAsync(o => o.OutTradeNo == original.OutTradeNo);
+        Assert.AreEqual(PaymentOrderStatus.Closed, old.Status);
+        Assert.IsNull(old.PaidAt);
+        Assert.AreEqual(2, await context.PaymentOrders.CountAsync());
+        Assert.AreEqual(1, await context.VipMemberships.CountAsync());
+        Assert.AreEqual(1, await context.CouponUsages.CountAsync());
+        Assert.AreEqual(1, await context.Changes.CountAsync());
+        Assert.AreEqual(1, await context.PaymentLogs.CountAsync(l => l.EventType == "VirtualPaymentConfirmed"));
+    }
+
+    [TestMethod]
+    [DataRow(1, false)]
+    [DataRow(6, true)]
+    public async Task RetryDoesNotReplacePayableOrMismatchedOrders(int platformStatus, bool wrongAmount)
+    {
+        await SignIn();
+        var original = await CreatePurchase();
+        _handler.Order = original; _handler.OrderStatus = platformStatus;
+        _handler.OrderFee = wrongAmount ? 1 : 19800;
+        using var retry = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase());
+        Assert.AreEqual(HttpStatusCode.BadRequest, retry.StatusCode);
+        using var scope = _server!.Services.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(PaymentOrderStatus.Pending, (await context.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(0, await context.VipMemberships.CountAsync());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task RetryPreservesReconciledOldStateWhenNewCheckoutIsRejected(bool oldWasPaid)
+    {
+        await SignIn();
+        var original = await CreatePurchase();
+        _handler.Order = original; _handler.OrderStatus = oldWasPaid ? 2 : 6;
+        _handler.BusinessType = 1000; _handler.OmitClosedPaymentFields = true;
+        // The old gateway result commits independently: an invalid coupon or
+        // recovered active membership must not roll it back to Pending.
+        using var retry = await _http.PostAsJsonAsync("/api/virtual-payment/create-order", Purchase("DOES-NOT-EXIST"));
+        Assert.AreEqual(HttpStatusCode.BadRequest, retry.StatusCode);
+        using var scope = _server!.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+        Assert.AreEqual(oldWasPaid ? PaymentOrderStatus.Paid : PaymentOrderStatus.Closed,
+            (await db.PaymentOrders.SingleAsync()).Status);
+        Assert.AreEqual(oldWasPaid ? 1 : 0, await db.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await db.CouponUsages.CountAsync());
+    }
+
+    [TestMethod]
     public async Task LostCheckoutResponseIsDiscoverableWithoutSigningOrReleasingItsCoupon()
     {
         await SignIn();
@@ -468,6 +558,8 @@ public class VirtualPaymentApiTests
         public string? Order { get; set; }
         public int OrderFee { get; set; } = 19800;
         public int OrderStatus { get; set; } = 2;
+        public int BusinessType { get; set; }
+        public bool OmitClosedPaymentFields { get; set; }
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             Calls++;
@@ -478,8 +570,14 @@ public class VirtualPaymentApiTests
             else if (path == "/xpay/query_order")
             {
                 Queries++; body = JsonSerializer.Serialize(new { errcode = 0, order = new { order_id = Order,
-                    env_type = 2, order_type = 0, status = OrderStatus, biz_type = 0, order_fee = OrderFee,
+                    env_type = 2, order_type = 0, status = OrderStatus, biz_type = BusinessType, order_fee = OrderFee,
                     paid_fee = OrderStatus == 6 ? 0 : OrderFee, wx_order_id = "platform-order" } });
+                if (OrderStatus == 6 && OmitClosedPaymentFields)
+                {
+                    var response = System.Text.Json.Nodes.JsonNode.Parse(body)!;
+                    response["order"]!.AsObject().Remove("paid_fee");
+                    body = response.ToJsonString();
+                }
             }
             else throw new InvalidOperationException("Unexpected virtual-payment endpoint.");
             return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(body) });
