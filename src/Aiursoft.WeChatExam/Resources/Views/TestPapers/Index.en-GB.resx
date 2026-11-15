@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Frozen</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Practice Papers</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Paper status filter</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>points</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publishable</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>questions</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Actual Papers</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Real exam</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Actual Papers</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Try another title or status filter.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>points</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>questions</value>
   </data>
 
 </root>

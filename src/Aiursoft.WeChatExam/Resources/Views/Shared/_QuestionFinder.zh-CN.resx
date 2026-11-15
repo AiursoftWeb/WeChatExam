@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
-    <value>高级：标签表达式 (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
+      <data name="AI Semantic Search" xml:space="preserve">
     <value>AI 语义搜索</value>
   </data>
   <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
     <value>未使用 AI 语义搜索。正在显示关键词搜索结果。</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>高级：标签表达式 (MTQL)</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>所有类型</value>
@@ -36,9 +36,6 @@
   <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
     <value>组合标签，例如：rock &amp;&amp; not metal</value>
   </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>例如：rock &amp;&amp; not metal</value>
-  </data>
   <data name="Enter a few words to find questions." xml:space="preserve">
     <value>输入几个词来查找问题。</value>
   </data>
@@ -48,14 +45,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>考试题目类型</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>查找确切的词语及相关含义。</value>
-  </data>
   <data name="Find Exam Questions to Associate" xml:space="preserve">
     <value>查找要关联的考试题目</value>
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>查找问题</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>查找确切的词语及相关含义。</value>
   </data>
   <data name="Keyword Search" xml:space="preserve">
     <value>关键词搜索</value>
@@ -75,11 +72,11 @@
   <data name="Search" xml:space="preserve">
     <value>搜索</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>搜索暂不可用，请重试。</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>搜索模式</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>搜索暂不可用，请重试。</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>正在搜索...</value>
@@ -89,6 +86,9 @@
   </data>
   <data name="Tag Expression Search (MTQL)" xml:space="preserve">
     <value>标签表达式搜索（MTQL）</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例如：rock &amp;&amp; not metal</value>
   </data>
 
 </root>

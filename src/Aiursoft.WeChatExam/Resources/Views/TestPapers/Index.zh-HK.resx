@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>凍結</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>分鐘</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>模擬試卷</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>試卷狀態篩選</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>分</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>上一頁</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>可發佈</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>題</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>真實試卷</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>正式考試</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>真實試卷</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>搜尋</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>試試其他標題或狀態篩選器。</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>題</value>
   </data>
 
 </root>

@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Даже все соответствующие VIP-клиенты не смогут разблокировать эту работу.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Действующие подписки могут работать, но новые клиенты не смогут оформить покупку.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Ранее оформленные активные VIP-подписки по-прежнему могут предоставлять доступ, но покупка доступных сейчас продуктов не позволит открыть этот вопрос.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Действующие подписки могут работать, но новые клиенты не смогут оформить покупку.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Бесплатный каталог знаний ссылается на платное упражнение</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Новые клиенты сейчас не могут оформить покупку. Действующие подписки могут по-прежнему предоставлять доступ.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Ни одна VIP-подписка не позволяет получить доступ к этой записи тега. Вопрос с собственной темой всё ещё может быть доступен в подробностях вопроса.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Ни один включённый VIP-продукт не открывает доступ к этой метке</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Ни одна комбинация включённых продуктов не позволяет разблокировать этот вопрос</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Ни один включённый продукт не открывает доступ к этой работе</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Ни один включённый VIP-продукт не открывает доступ к этой метке</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Ни одна VIP-подписка не позволяет получить доступ к этой записи тега. Вопрос с собственной темой всё ещё может быть доступен в подробностях вопроса.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>У платного варианта работы нет доступной для разблокировки темы</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Проверьте тематику и доступные VIP-продукты. Отключённые продукты не влияют на уже действующие активные подписки.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Проверьте VIP-продукты этого учреждения. VIP-подписки на курсы не открывают доступ к реальным экзаменационным работам; действующие VIP-подписки на реальные экзамены во всех учреждениях продолжают работать.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Проверьте VIP-продукты этого учреждения. VIP-продукты курсов не открывают доступ к реальным экзаменационным работам.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Проверьте VIP-продукты этого учреждения. VIP-подписки на курсы не открывают доступ к реальным экзаменационным работам; действующие VIP-подписки на реальные экзамены во всех учреждениях продолжают работать.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Вошёл в систему без активного VIP</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Для этого вопроса без категории требуются все платные теги; как минимум у одного тега не указана связь с предметом.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Отдельно проверьте опубликованную мини-программу. Эта проверка на сервере не моделирует навигацию в клиентском приложении и не подтверждает, что пользователь может открыть каждый экран.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP-продукты</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Отдельно проверьте опубликованную мини-программу. Эта проверка на сервере не моделирует навигацию в клиентском приложении и не подтверждает, что пользователь может открыть каждый экран.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Посетители могут читать учебные материалы, но для анонимных пользователей это упражнение возвращает код 403. Согласно действующим бизнес-правилам платные упражнения разрешены.</value>

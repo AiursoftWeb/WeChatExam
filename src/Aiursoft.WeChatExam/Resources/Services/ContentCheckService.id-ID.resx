@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Bahkan semua anggota VIP yang relevan tidak dapat membuka akses ke makalah ini.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Keanggotaan aktif yang sudah ada mungkin tetap berfungsi, tetapi pelanggan baru tidak memiliki cara untuk membeli.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>VIP yang sudah aktif masih dapat digunakan, tetapi membeli produk yang saat ini tersedia tidak dapat membuka akses ke soal ini.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Keanggotaan aktif yang sudah ada mungkin tetap berfungsi, tetapi pelanggan baru tidak memiliki cara untuk membeli.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Direktori pengetahuan gratis tertaut ke latihan berbayar</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Pelanggan baru saat ini tidak memiliki jalur pembelian. Keanggotaan aktif yang sudah ada mungkin tetap memberikan akses.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Tidak ada VIP yang dapat membuka akses ke entri tag ini. Pertanyaan dengan subjeknya sendiri mungkin tetap dapat diakses melalui detail pertanyaan.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Tidak ada produk VIP aktif yang membuka akses ke tag ini</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Tidak ada kombinasi produk yang aktif yang dapat membuka akses ke pertanyaan ini</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Tidak ada produk aktif yang dapat membuka akses ke makalah ini</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Tidak ada produk VIP aktif yang membuka akses ke tag ini</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Tidak ada VIP yang dapat membuka akses ke entri tag ini. Pertanyaan dengan subjeknya sendiri mungkin tetap dapat diakses melalui detail pertanyaan.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Makalah berbayar tidak memiliki subjek yang dapat dibuka</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Tinjau subjek dan produk VIP yang tersedia. Produk yang dinonaktifkan tidak membatalkan keanggotaan aktif yang sudah ada.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Tinjau produk VIP institusi ini. VIP kursus tidak membuka akses ke naskah ujian asli; keanggotaan ujian asli yang mencakup semua institusi tetap berlaku.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Tinjau produk VIP institusi ini. VIP kursus tidak membuka akses ke makalah sungguhan.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Tinjau produk VIP institusi ini. VIP kursus tidak membuka akses ke naskah ujian asli; keanggotaan ujian asli yang mencakup semua institusi tetap berlaku.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Masuk tanpa VIP aktif</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Pertanyaan tanpa kategori ini memerlukan semua tag berbayar; setidaknya satu tag tidak memiliki pemetaan mata pelajaran.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Verifikasi Mini Program yang telah diterapkan secara terpisah. Pemindaian server ini tidak menyimulasikan navigasi klien atau membuktikan bahwa pelanggan dapat mengakses setiap layar.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>Produk VIP</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Verifikasi Mini Program yang telah diterapkan secara terpisah. Pemindaian server ini tidak menyimulasikan navigasi klien atau membuktikan bahwa pelanggan dapat mengakses setiap layar.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Pengunjung dapat membaca konten pengetahuan, tetapi latihan ini menghasilkan respons 403 jika diakses secara anonim. Latihan berbayar diizinkan berdasarkan aturan bisnis yang berlaku.</value>

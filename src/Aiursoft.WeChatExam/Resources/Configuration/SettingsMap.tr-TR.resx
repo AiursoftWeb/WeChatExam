@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Gömme Modeli</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Sorular ve bilgi noktaları için arka planda gömme oluşturmayı etkinleştirin.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Gömme Tabanlı Aramayı Etkinleştir</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Sorular ve bilgi noktaları için arka planda gömme oluşturmayı etkinleştirin.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP Numarası</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>Soru değerlendirme için AI istemi. İçerik için {0}, standart cevap için {1}, açıklama için {2}, öğrenci cevabı için {3} ve maksimum puan için {4} kullanın.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>Çin ana karasında kullanıcılar için ICP lisans numarası. Gizlemek için boş bırakın.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Gömme işlemleri için Ollama API temel URL’si. Yalnızca ana makine kullanılır; /api/embed otomatik olarak eklenir. Boş bırakıldığında OpenAI tamamlama uç noktasına geri dönülür.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Footer&apos;da gösterilen marka adı.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Sorular ve bilgi noktaları için gömme modeli. Mevcut vektörler, bge-m3 1024 boyutlu dizin sözleşmesini kullanır.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>Çin ana karasında kullanıcılar için ICP lisans numarası. Gizlemek için boş bırakın.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Projenin navbar ve footer&apos;da gösterilen logosu. jpg, png, svg desteklenir.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Ön yüzte görüntülenen proje adı.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>Gömme işlemleri için Ollama API temel URL’si. Yalnızca ana makine kullanılır; /api/embed otomatik olarak eklenir. Boş bırakıldığında OpenAI tamamlama uç noktasına geri dönülür.</value>
   </data>
 
 </root>

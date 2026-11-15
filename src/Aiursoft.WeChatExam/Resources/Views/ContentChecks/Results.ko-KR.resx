@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>영향을 받은 항목 {0}개</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>연습문제 {0}개</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>검토할 항목 {0}개</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>전체 과정</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>검사 완료</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>지식 포인트 {0}개, 연습 문제 {1}개, 시험지 {2}개를 확인했습니다.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>확인 시각</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>지식 포인트 {0}개, 연습 문제 {1}개, 시험지 {2}개를 확인했습니다.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>카드를 선택하면 학생들이 어떤 경험을 하게 되는지, 무엇을 검토해야 하는지 확인할 수 있습니다.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>검사 결과</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>영향을 받은 항목 {0}개</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>연습문제 {0}개</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>검토할 항목 {0}개</value>
   </data>
 
 </root>

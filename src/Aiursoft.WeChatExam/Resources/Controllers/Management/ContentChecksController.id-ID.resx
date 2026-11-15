@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Pemeriksaan akses Mini Program perlu ditinjau</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Saat ini tidak ada VIP yang sesuai untuk dibeli</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Tidak ada VIP yang dapat membuka latihan-latihan ini.</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Tidak ada VIP yang dapat membuka tag ini</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Saat ini tidak ada VIP yang sesuai untuk dibeli</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Siswa dapat membuka makalah gratis ini meskipun latihan aslinya berbayar. Harga makalah dan harga setiap latihan ditentukan secara terpisah.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Latihan-latihan ini tidak memiliki kursus yang ditetapkan dan memiliki tag berbayar tanpa kursus yang cocok. Membeli semua VIP tetap tidak dapat membuka akses ke latihan-latihan ini.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Produk VIP ini tidak memiliki kursus. Produk ini tidak dapat memberikan akses ke kursus yang dimaksud.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Produk VIP ini belum memiliki institusi. Produk ini tidak dapat memberikan akses ke naskah ujian yang dimaksud.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Produk VIP ini memerlukan sebuah kursus</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Produk VIP ini memerlukan sebuah institusi</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Latihan ini memerlukan VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Tag ini ditandai sebagai berbayar, tetapi tidak ditautkan ke VIP kursus mana pun. Membeli semua VIP tetap tidak dapat membuka tag ini. Latihan yang memiliki kursus sendiri mungkin dapat diakses dari layar lain.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Produk VIP ini tidak memiliki kursus. Produk ini tidak dapat memberikan akses ke kursus yang dimaksud.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Produk VIP ini belum memiliki institusi. Produk ini tidak dapat memberikan akses ke naskah ujian yang dimaksud.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Produk VIP ini memerlukan sebuah kursus</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Produk VIP ini memerlukan sebuah institusi</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Pengunjung dapat membaca materi pengetahuan ini, tetapi tidak dapat mengakses latihan-latihan ini secara gratis.</value>

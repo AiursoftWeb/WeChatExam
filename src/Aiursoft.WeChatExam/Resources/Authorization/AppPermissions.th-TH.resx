@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>เพิ่มผลิตภัณฑ์ VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>อนุญาตให้อ่านข้อสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้เพิ่ม knowledgePoint ใดๆ ก็ได้ โดยไม่คำนึงถึงความเป็นเจ้าของ</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>อนุญาตให้แก้ไขรายละเอียดผู้ใช้ เช่น อีเมลและบทบาท และยังสามารถรีเซ็ตรหัสผ่านของผู้ใช้ได้</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>อนุญาตให้แก้ไขการตั้งค่าระบบระดับโลก</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>อนุญาตให้แก้ไขการตั้งค่าผลิตภัณฑ์ VIP รวมถึงราคา ระยะเวลา และสถานะการใช้งาน</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>อนุญาตให้อ่านข้อสอบ ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>อนุญาตให้แก้ไขการตั้งค่าระบบระดับโลก</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>อนุญาตให้อ่านคำถาม ไม่ว่าจะเป็นเจ้าของหรือไม่ก็ตาม</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>อนุญาตให้ลบผลิตภัณฑ์ VIP ถาวรได้</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>อนุญาตให้ลบช่องทางการจัดส่งอย่างถาวร</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>อนุญาตให้ลบบัญชีผู้ใช้อย่างถาวร</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>อนุญาตให้ลบผลิตภัณฑ์ VIP ถาวรได้</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>อนุญาตให้เริ่มงานเบื้องหลังเพื่อปรับปรุงคำตอบและคำอธิบายของคำถามโดยใช้ AI</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>อนุญาตให้ปรับปรุงสถานะของคำติชมจากผู้ใช้ได้</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>อนุญาตให้ตรวจสอบวิธีการชำระเงิน ขอให้คืนเงินเต็มจำนวนสำหรับการชำระเงินเสมือนจริง และตรวจสอบผลลัพธ์</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>อนุญาตให้ดูผลิตภัณฑ์ VIP และการตั้งค่าของผลิตภัณฑ์เหล่านั้น</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>อนุญาตให้ดูและจัดการคิวงานหลังบ้านและสถานะการดำเนินการของงาน</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>อนุญาตให้ดูรายการข้อเสนอแนะของผู้ใช้</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>อนุญาตให้ดูผลิตภัณฑ์ VIP และการตั้งค่าของผลิตภัณฑ์เหล่านั้น</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>อนุญาตให้ดู เพิ่ม และลบสมาชิก VIP ของผู้ใช้</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>รีบูตแอปนี้</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>การคืนเงินตามคำสั่งซื้อ</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>เริ่มงานปรับปรุง</value>

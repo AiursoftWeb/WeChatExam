@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Додати VIP-продукти</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Дозволяє читання іспитів, незалежно від власності.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Дозволяє додавання будь-якого knowledgePoint, незалежно від власності.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Дозволяє змінювати дані користувача, такі як електронна пошта та ролі, а також скидати паролі користувачів.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Дозволяє змінювати глобальні системні налаштування.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Дозволяє змінювати налаштування VIP-продуктів, включаючи ціну, термін дії та статус увімкнення.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Дозволяє читання іспитів, незалежно від власності.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Дозволяє змінювати глобальні системні налаштування.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Дозволяє читання питань, незалежно від власності.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Дозволяє безповоротне видалення VIP-продуктів.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Дозволяє незворотне видалення каналів розповсюдження.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Дозволяє остаточне видалення облікових записів користувачів.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Дозволяє безповоротне видалення VIP-продуктів.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Дозволяє запускати фонові завдання для оптимізації відповідей на запитання та пояснень за допомогою ШІ.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Дозволяє оновлювати статус відгуків користувачів.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Дозволяє перевіряти способи оплати, запитувати повні повернення коштів за віртуальними платежами та відстежувати їхні результати.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Дозволяє переглядати VIP-товари та їх налаштування.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Дозволяє переглядати та керувати чергами фонових завдань та їхнім статусом виконання.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Дозволяє переглядати список відгуків користувачів.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Дозволяє переглядати VIP-товари та їх налаштування.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Дозволяє переглядати, додавати та видаляти VIP-підписки для користувачів.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Перезавантажити цей додаток</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Повернення платіжних замовлень</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Запустити завдання оптимізації</value>

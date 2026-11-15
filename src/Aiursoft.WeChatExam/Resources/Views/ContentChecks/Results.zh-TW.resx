@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>{0} 個受影響的項目</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} 個練習</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>待審查的項目數：{0}</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>所有課程</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>檢查完成</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>已檢查 {0} 個知識點、{1} 道練習題和 {2} 份試卷。</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>檢查時間</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>已檢查 {0} 個知識點、{1} 道練習題和 {2} 份試卷。</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>選擇一張卡片，查看學生會遇到的情況，以及需要檢查的項目。</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>您的檢查結果</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>{0} 個受影響的項目</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} 個練習</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>待審查的項目數：{0}</value>
   </data>
 
 </root>

@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>是否启用</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>项</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>每页项数</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>未找到 VIP 会员</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>of</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>重置</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>按用户或产品名称搜索...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>搜索关键词</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>按用户或产品名称搜索...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>显示</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>开始时间</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>to</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>用户</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>VIP 会员资格</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>项</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>to</value>
   </data>
 
 </root>

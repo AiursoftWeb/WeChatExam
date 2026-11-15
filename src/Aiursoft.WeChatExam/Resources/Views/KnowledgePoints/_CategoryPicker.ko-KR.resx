@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} selected" xml:space="preserve">
-    <value>{0}개 선택됨</value>
-  </data>
-  <data name="Associated Categories" xml:space="preserve">
+      <data name="Associated Categories" xml:space="preserve">
     <value>관련 카테고리</value>
   </data>
   <data name="No categories found." xml:space="preserve">
@@ -29,6 +26,9 @@
   </data>
   <data name="Search categories" xml:space="preserve">
     <value>카테고리 검색</value>
+  </data>
+  <data name="{0} selected" xml:space="preserve">
+    <value>{0}개 선택됨</value>
   </data>
 
 </root>

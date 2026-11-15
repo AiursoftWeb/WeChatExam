@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="By payment date · Beijing time (UTC+8)" xml:space="preserve">
+    <value>支払い日順 · 北京時間 (UTC+8)</value>
+  </data>
+  <data name="Daily receipts" xml:space="preserve">
+    <value>日次売上高</value>
+  </data>
+  <data name="Daily receipts (CNY)" xml:space="preserve">
+    <value>日次売上高（人民元）</value>
+  </data>
+  <data name="Daily receipts by payment date" xml:space="preserve">
+    <value>支払日別の1日あたり売上</value>
+  </data>
+  <data name="Date (Beijing time)" xml:space="preserve">
+    <value>日付（北京時間）</value>
+  </data>
+  <data name="Date range" xml:space="preserve">
+    <value>日付範囲</value>
+  </data>
+  <data name="Historical paid orders without a payment date are excluded from this chart." xml:space="preserve">
+    <value>支払日がない過去の決済済み注文は、このグラフから除外されています。</value>
+  </data>
+  <data name="Last 30 days" xml:space="preserve">
+    <value>直近30日間</value>
+  </data>
+  <data name="Last 7 days" xml:space="preserve">
+    <value>過去7日間</value>
+  </data>
+  <data name="Last 90 days" xml:space="preserve">
+    <value>過去90日間</value>
+  </data>
+  <data name="No confirmed paid purchases in this period. Days without receipts are shown as zero." xml:space="preserve">
+    <value>この期間内に確定した有料購入はありません。売上がない日はゼロとして表示されます。</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>注文の売上</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>売上（決済済み）</value>
+  </data>
+  <data name="Period receipts" xml:space="preserve">
+    <value>期間収入</value>
+  </data>
+  <data name="Select a day" xml:space="preserve">
+    <value>日を選択してください</value>
+  </data>
+  <data name="Select a day to see its receipts" xml:space="preserve">
+    <value>日付を選択して売上を確認</value>
+  </data>
+  <data name="Today is still in progress" xml:space="preserve">
+    <value>本日はまだ集計中です</value>
+  </data>
+  <data name="View daily data" xml:space="preserve">
+    <value>日別データを表示</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>件</value>
+  </data>
+
+</root>

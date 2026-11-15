@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>分层知识点</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>工作原理</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>我如何部署微信考试？</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>试卷快照如何确保公平性？</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>工作原理</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>集成微信支付（TenpayV3）以实现考试商业化。通过微信直接收取高级考试访问、认证或课程材料的费用。</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>应用场景</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>使用强大的领域特定语言 Mark-to-Query Language (MTQL)，通过类似 &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; 的布尔逻辑筛选题目，以实现精准选题。</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>使用 MTQL 按标签和知识点筛选试题。定义考试结构、时长和评分规则。</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>使用强大的领域特定语言 Mark-to-Query Language (MTQL)，通过类似 &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; 的布尔逻辑筛选题目，以实现精准选题。</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>在 GitHub 上查看</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>微信集成</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>WeChat 集成是可选的。该平台完全作为独立的 Web 应用程序运行。仅当您想要启用微信登录、小程序访问或微信支付时，才需要微信凭据。</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>微信小程序</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>微信支付</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat 集成是可选的。该平台完全作为独立的 Web 应用程序运行。仅当您想要启用微信登录、小程序访问或微信支付时，才需要微信凭据。</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam 适用于广泛的教育和评估场景。</value>

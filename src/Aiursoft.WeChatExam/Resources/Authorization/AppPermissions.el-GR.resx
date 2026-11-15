@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Προσθήκη Προϊόντων VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Επιτρέπει την ανάγνωση εξετάσεων, ανεξάρτητα από την κατοχή.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την προσθήκη οποιουδήποτε knowledgePoint, ανεξάρτητα από την ιδιοκτησία.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Επιτρέπει την τροποποίηση λεπτομερειών χρήστη, όπως ηλεκτρονικό ταχυδρομείο και ρόλους, και μπορεί επίσης να επαναφέρει κωδικούς πρόσβασης χρηστών.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Επιτρέπει την τροποποίηση των γενικών ρυθμίσεων του συστήματος.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Επιτρέπει την τροποποίηση των ρυθμίσεων προϊόντων VIP, συμπεριλαμβανομένης της τιμής, της διάρκειας και της κατάστασης ενεργοποίησης.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Επιτρέπει την ανάγνωση εξετάσεων, ανεξάρτητα από την κατοχή.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Επιτρέπει την τροποποίηση των γενικών ρυθμίσεων του συστήματος.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Επιτρέπει την ανάγνωση ερωτήσεων, ανεξάρτητα από την κατοχή τους.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Επιτρέπει τη μόνιμη διαγραφή των προϊόντων VIP.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Επιτρέπει την τελείως διαγραφή καναλιών διανομής.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Επιτρέπει τη μόνιμη διαγραφή των λογαριασμών χρηστών.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Επιτρέπει τη μόνιμη διαγραφή των προϊόντων VIP.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Επιτρέπει την εκκίνηση εργασιών στο παρασκήνιο για τη βελτιστοποίηση των απαντήσεων και εξηγήσεων σε ερωτήσεις με χρήση ΤΝ.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Επιτρέπει την ενημέρωση της κατάστασης των σχολίων των χρηστών.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Επιτρέπει την επαλήθευση μεθόδων πληρωμής, την αίτηση πλήρους επιστροφής εικονικών πληρωμών και την παρακολούθηση των αποτελεσμάτων τους.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Επιτρέπει την προβολή προϊόντων VIP και της διαμόρφωσής τους.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Επιτρέπει την προβολή και διαχείριση των ουρών εργασιών στο παρασκήνιο και την κατάσταση εκτέλεσής τους.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Επιτρέπει την προβολή της λίστας των σχολίων των χρηστών.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Επιτρέπει την προβολή προϊόντων VIP και της διαμόρφωσής τους.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Επιτρέπει την προβολή, προσθήκη και διαγραφή συνδρομών VIP για τους χρήστες.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Επανεκκίνηση αυτής της εφαρμογής</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Επιστροφές Ενταλμάτων Πληρωμής</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Εκκίνηση Εργασιών Βελτιστοποίησης</value>

@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>小程式入口檢查需要審查</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>目前沒有合適的 VIP 可供購買</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>沒有任何 VIP 可以解鎖這些練習</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>沒有任何 VIP 能解鎖這個標籤</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>目前沒有合適的 VIP 可供購買</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>學生即使原本的練習題需要付費，也能開啟這份免費試卷。試卷與個別練習題的定價彼此獨立。</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>這些習題未指定所屬課程，且帶有找不到對應課程的付費標籤。即使購買所有 VIP，也無法解鎖這些習題。</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>這項 VIP 商品缺少所屬課程，因此無法授予預期的課程存取權限。</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>此 VIP 商品未設定所屬機構，因此無法提供預期的真題使用權限。</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>此 VIP 商品需要指定課程</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>此 VIP 商品需要指定機構</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>此練習需要 VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>此標籤已標示為付費，但未連結任何課程 VIP。即使購買所有 VIP，仍無法解鎖此標籤。自行設有課程的練習，可能可以從其他畫面使用。</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>這項 VIP 商品缺少所屬課程，因此無法授予預期的課程存取權限。</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>此 VIP 商品未設定所屬機構，因此無法提供預期的真題使用權限。</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>此 VIP 商品需要指定課程</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>此 VIP 商品需要指定機構</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>訪客可以閱讀知識點，但無法免費開啟這些練習。</value>

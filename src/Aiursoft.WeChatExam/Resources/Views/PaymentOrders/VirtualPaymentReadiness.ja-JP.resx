@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>サンドボックス（1）または本番（0）を明示的に選択してください。</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>このミニプログラムの仮想決済設定から OfferId を設定してください。</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>選択した環境用のキーを設定してください。別の環境のキーは使用されません。</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>サーバーにメッセージTokenと有効なEncodingAESKeyを設定してください。</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>このミニプログラムの仮想決済設定から OfferId を設定してください。</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>サーバー上で対象のAppIDとそのAppSecretを設定してください。</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>サーバー設定でWeChatアクセスを有効にしてください。</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>分</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>無料商品：プラットフォームの決済は不要です。</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>無効な環境</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>iOSの返金助言は、プラットフォームの検証を待って無効化されています。</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>iOSの返金アドバイスが有効になっています。このローカルページでは、プラットフォームプロトコルが検証済みであることを保証できません。</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>本番環境</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>ローカルマッピングと価格が一致していますが、プラットフォームでの公開は未確認です。</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>マッピングが有効なVIP製品と一致しません。管理者に確認を依頼してください。過去の製品や注文を削除しないでください。</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>メッセージ検証資格情報</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>仮想決済用のテストビルドを明示的に使用してください。デフォルトのミニプログラムビルドは、通常の決済を使用しています。</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP製品ID</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>WeChatコンソールで、プラットフォームの承認、AppID、OfferId、および公開済みの商品を確認してください。</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>閲覧のみ</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>VIP製品ID</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>バーチャル決済アカウント</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>WeChatとの同期に失敗しました。VIP製品を開いて設定を確認し、再試行してください。</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOSの返金助言は、プラットフォームの検証を待って無効化されています。</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOSの返金アドバイスが有効になっています。このローカルページでは、プラットフォームプロトコルが検証済みであることを保証できません。</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>マッピングが有効なVIP製品と一致しません。管理者に確認を依頼してください。過去の製品や注文を削除しないでください。</value>
   </data>
 
 </root>

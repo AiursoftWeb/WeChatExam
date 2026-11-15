@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>返金が報告されましたが、この注文の会員権限の確認が必要です。新たな返金を開始する代わりに、既存の返金を確認してください。</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>使用済みのワンタイムクーポンは復元されません。</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>実質支払額</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>返金が正常に完了すると、この注文によるメンバーシップは取り消されます。</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Appleの決済は加盟店による返金対応ができません。以下の手順を学生にお伝えしてください。</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Appleの返金サイト</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>管理者に、下の注文詳細で元の支払い方法を確認してもらうよう依頼してください。</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>管理者に、下記の注文詳細で元の支払い記録を確認するように依頼してください。</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>返金権限を持つ管理者に結果を確認してください。</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>管理者にロールへの「返金注文」の許可を依頼してください。その後、サインアウトして再度サインインしてください。</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>この注文の返金方法を確認する</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>返金方法を確認</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>返金結果を確認</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>下の既存の返金を確認してください。返金が正常に確認されると、メンバーシップの変更が反映されます。</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>確認中…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>完了日時</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>全額返金を確認</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>コピーしました</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>学生用説明をコピー</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>該当するロールで「返金注文の許可」を有効にし、その後、サインアウトして再度サインインしてください。</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>生徒、返金額、メンバーシップの変更を確認しました。</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>この注文は返金不要です</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>WeChat Pay マーチャントプラットフォームを開く</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>注文詳細を開く</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>ロール権限を開く</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>注文番号</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>注文詳細</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>支払日時</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>決済情報が不完全なため、ここでは返金を開始できません</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>支払い方法</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>指示を手動で選択してコピーしてください。</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>返金処理</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>返金管理</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>返金番号</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>WeChat Pay（微信支付）の加盟店プラットフォームで、この注文を返金してください</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>返金額</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>リクエスト日時</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>会員権処理の確認</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>学生にこの手順を送ってください</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>送信中…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>実際の支払額は、学生の元の支払い方法に戻されます。</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>WeChatで支払い方法が確認されました。</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>365日以上前の支払いのため、このページから返金を申請できません。</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>プラットフォームはこの返金を確認しました。以下のメンバーシップ処理をご確認ください。</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>返金が記録されていますが、メンバーシップの処理を確認する必要があります。</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>返金が記録されています。金額を確認するには、下記の注文詳細を開いてください。</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>返金リクエストが送信されました。確認には時間がかかる場合があります。別の返金を作成しないでください。</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>返金結果はまだ確定していません</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>結果を確認できませんでした。保存された返金リクエストを確認してください。再度申請しないでください。</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>生徒はAppleにこの返金を請求する必要があります</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>この注文では学生が支払いを行っていないため、返金すべき金額はありません。</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>返金可能な確定済みの支払いがありません。学生に請求が行われた場合は、まず元の支払い記録を確認してください。</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>この確認は支払い方法の識別のみを行い、注文の返金を実行しません。</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>この注文にはすでに返金リクエストがあります。再送信する代わりに、その結果を確認してください。</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>支払いが確認されていないため、この注文は返金できません</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>この注文はすでに返金されています</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>この注文はここで全額返金の対象外です。支払い方法と現在のステータスを確認してください。</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>この注文は以前のWeChat Payサービスを使用しています。元の加盟店アカウントで注文を確認し、そちらで返金処理を行ってください。</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>この注文はAppleを通じて支払われました。購入時に使用したAppleアカウントで https://reportaproblem.apple.com/ にサインインし、この注文の払い戻しを申請してください。Appleが申請を審査し、判断します。</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>この注文はAppleを通じて支払われました。教師はここで返金できません。Appleが学生のリクエストを審査します。</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>この注文のメンバーシップは処理済みです。その他の購入内容は変更されていません。また、使い捨てクーポンは復元されません。</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>この支払いは、当ページでサポートされている返金期間を超えています</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>この支払い方法は、ここでは返金に対応していません</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>この返金には管理者のレビューが必要です</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>まずWeChatでこの支払いを確認する必要があります。結果として、Apple支払いの指示が表示されるか、返金ボタンが表示されます。</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>この注文について返金をリクエストできます</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>あなたのアカウントには返金を発行する権限がありません</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>返金処理中です</value>
+  </data>
+
+</root>

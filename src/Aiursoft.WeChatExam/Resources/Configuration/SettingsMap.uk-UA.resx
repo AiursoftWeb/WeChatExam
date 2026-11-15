@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Модель векторних представлень</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Увімкнути фонове створення векторних представлень для запитань і фрагментів бази знань.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Увімкнути пошук на основі векторних представлень</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Увімкнути фонове створення векторних представлень для запитань і фрагментів бази знань.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Номер реєстрації ICP</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>Промпт ШІ для оцінювання запитань. Використовуйте {0} для змісту, {1} для еталонної відповіді, {2} для пояснення, {3} для відповіді учня та {4} для максимальної кількості балів.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>Номер ліцензії ICP для користувачів Китаю (материкова частина). Залиште порожнім, щоб приховати.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Базова URL-адреса API Ollama для векторних представлень. Використовується лише хост; шлях `/api/embed` додається автоматично. Якщо значення порожнє, використовується кінцева точка OpenAI для генерації доповнень.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Назва бренду, яка відображається в підвалі.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Модель векторизації для запитань і бази знань. Для наявних векторів використовується індекс із розмірністю 1024 відповідно до контракту bge-m3.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>Номер ліцензії ICP для користувачів Китаю (материкова частина). Залиште порожнім, щоб приховати.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Логотип проекту, що відображається в навбарі та футері. Підтримується jpg, png, svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Назва проекту, що відображається на фронтенді.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>Базова URL-адреса API Ollama для векторних представлень. Використовується лише хост; шлях `/api/embed` додається автоматично. Якщо значення порожнє, використовується кінцева точка OpenAI для генерації доповнень.</value>
   </data>
 
 </root>

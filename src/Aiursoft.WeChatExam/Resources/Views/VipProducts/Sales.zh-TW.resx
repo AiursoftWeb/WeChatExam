@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>實際支付價格</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>全部時間 · 此產品</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>平均成交價</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>返回產品</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>扣除平台費用與成本前</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>買方</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>買家訂單</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>已停用</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>已啟用</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>追蹤每筆銷售，從實付價格到買家與訂單。</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>免費領取</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一頁</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>目前尚無已確認的付費購買紀錄。</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>此群組中沒有訂單。</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>訂單金額</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>訂單分組</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>訂單組成</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>訂單編號</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>訂單收款</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>原價</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>頁面導覽</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>付款時間</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>已付價格</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>已付款銷售</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>付費買家</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>付款管道</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一頁</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>價格來自已儲存的訂單金額。若買家以不同價格付款，會分別計入各價格分組；總買家數已去重。</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>產品銷售</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>每筆已付款訂單之收入</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>退款訂單金額</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>已退款訂單</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>不含退款與免費索償</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>退款正在等待對帳。這些收款金額可能會高估實際保留的金額。</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>重複購買僅計一次</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>檢視退款</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>購買時保存的金額 · 開啟訂單以查看其完整記錄</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>選擇一個群組以檢視其訂單。</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>占比</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>買家實際支付金額 · 已付款訂單佔比</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>人</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>件</value>
+  </data>
+
+</root>

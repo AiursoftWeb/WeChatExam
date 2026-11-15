@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Model de embedding</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Activați generarea în fundal a reprezentărilor vectoriale pentru întrebări și puncte de cunoaștere.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Activați căutarea bazată pe embedderi</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Activați generarea în fundal a reprezentărilor vectoriale pentru întrebări și puncte de cunoaștere.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Număr ICP</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>Prompt-ul AI pentru evaluarea întrebărilor. Folosiți {0} pentru conținut, {1} pentru răspunsul standard, {2} pentru explicație, {3} pentru răspunsul elevului și {4} pentru scorul maxim.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>Numărul de înregistrare ICP pentru utilizatorii din China continentală. Lăsați gol pentru a ascunde.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Adresa URL de bază a API-ului Ollama pentru vectorizări. Se folosește doar gazda; /api/embed este adăugat automat. Dacă este goală, se folosește endpointul de completare OpenAI.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Numele mărcii afișat în subsol.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Modelul de vectorizare pentru întrebări și puncte de cunoaștere. Vectorii existenți respectă contractul de indexare bge-m3 cu 1024 de dimensiuni.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>Numărul de înregistrare ICP pentru utilizatorii din China continentală. Lăsați gol pentru a ascunde.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Logo-ul proiectului afișat în bara de navigare și în subsol. Suportă jpg, png, svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Numele proiectului afișat în interfața utilizatorului.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>Adresa URL de bază a API-ului Ollama pentru vectorizări. Se folosește doar gazda; /api/embed este adăugat automat. Dacă este goală, se folosește endpointul de completare OpenAI.</value>
   </data>
 
 </root>

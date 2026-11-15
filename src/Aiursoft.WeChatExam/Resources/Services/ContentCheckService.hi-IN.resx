@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>सभी संबंधित VIP सदस्य भी इस पेपर को अनलॉक नहीं कर सकते।</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>मौजूदा सक्रिय सदस्यताएँ काम कर सकती हैं, लेकिन नए ग्राहकों के पास खरीदारी का कोई तरीका नहीं है।</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>मौजूदा सक्रिय VIPs अब भी काम कर सकते हैं, लेकिन फ़िलहाल उपलब्ध उत्पाद खरीदने से यह प्रश्न अनलॉक नहीं हो सकता।</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>मौजूदा सक्रिय सदस्यताएँ काम कर सकती हैं, लेकिन नए ग्राहकों के पास खरीदारी का कोई तरीका नहीं है।</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>निःशुल्क ज्ञान निर्देशिका का लिंक एक सशुल्क अभ्यास से जुड़ा है</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>नए ग्राहकों के पास अभी खरीदारी का कोई विकल्प नहीं है। मौजूदा सक्रिय सदस्यताओं से अब भी पहुँच मिल सकती है।</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>कोई भी वीआईपी इस टैग प्रविष्टि को अनलॉक नहीं कर सकता। अपने विषय वाला कोई प्रश्न, प्रश्न के विवरण के माध्यम से फिर भी उपलब्ध हो सकता है।</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>इस टैग को अनलॉक करने वाला कोई भी VIP उत्पाद सक्रिय नहीं है</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>सक्षम उत्पादों का कोई भी संयोजन इस प्रश्न को अनलॉक नहीं करता</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>कोई भी सक्षम उत्पाद इस प्रश्नपत्र को अनलॉक नहीं करता</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>इस टैग को अनलॉक करने वाला कोई भी VIP उत्पाद सक्रिय नहीं है</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>कोई भी वीआईपी इस टैग प्रविष्टि को अनलॉक नहीं कर सकता। अपने विषय वाला कोई प्रश्न, प्रश्न के विवरण के माध्यम से फिर भी उपलब्ध हो सकता है।</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>भुगतान किए गए प्रश्नपत्र को अनलॉक करने के लिए कोई विषय उपलब्ध नहीं है</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>विषय और उपलब्ध VIP उत्पादों की समीक्षा करें। निष्क्रिय उत्पादों से मौजूदा सक्रिय सदस्यताएँ अमान्य नहीं होतीं।</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>इस संस्थान के VIP उत्पादों की समीक्षा करें। कोर्स VIP से वास्तविक प्रश्नपत्र अनलॉक नहीं होते; सभी संस्थानों के लिए मौजूदा वास्तविक परीक्षा सदस्यताएँ अभी भी काम करती हैं।</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>इस संस्थान के VIP उत्पादों की समीक्षा करें। कोर्स VIP वास्तविक प्रश्नपत्रों को अनलॉक नहीं करते।</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>इस संस्थान के VIP उत्पादों की समीक्षा करें। कोर्स VIP से वास्तविक प्रश्नपत्र अनलॉक नहीं होते; सभी संस्थानों के लिए मौजूदा वास्तविक परीक्षा सदस्यताएँ अभी भी काम करती हैं।</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>सक्रिय VIP के बिना साइन इन किया हुआ</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>इस अवर्गीकृत प्रश्न के लिए सभी सशुल्क टैग आवश्यक हैं; कम से कम एक टैग का विषय से कोई मैपिंग नहीं है।</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>तैनात किए गए Mini Program की अलग से जाँच करें। यह सर्वर स्कैन क्लाइंट नेविगेशन का अनुकरण नहीं करता और न ही यह साबित करता है कि कोई ग्राहक हर स्क्रीन पर जा सकता है।</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>वीआईपी उत्पाद</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>तैनात किए गए Mini Program की अलग से जाँच करें। यह सर्वर स्कैन क्लाइंट नेविगेशन का अनुकरण नहीं करता और न ही यह साबित करता है कि कोई ग्राहक हर स्क्रीन पर जा सकता है।</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>आगंतुक ज्ञान-सामग्री पढ़ सकते हैं, लेकिन गुमनाम रूप से इस अभ्यास को खोलने पर 403 त्रुटि मिलती है। मौजूदा व्यावसायिक नियमों के अनुसार, सशुल्क अभ्यासों की अनुमति है।</value>

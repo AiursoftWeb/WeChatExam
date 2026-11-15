@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>金額</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>金額會隨訂單一併儲存。未確認的訂單並非已完成的購買。</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>等待付款確認</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>已關閉</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>建立時間</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>訂單編號</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>訂單編號</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>訂單</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>付款訂單</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>付款渠道</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>已確認付款</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>付款需要驗證</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一頁</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>產品</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>退款處理</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>退款管理</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>退款核對記錄</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>已退款</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>狀態</value>

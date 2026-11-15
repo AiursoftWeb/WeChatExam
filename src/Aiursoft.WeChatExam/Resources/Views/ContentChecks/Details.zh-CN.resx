@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} exercises" xml:space="preserve">
-    <value>{0} 个练习</value>
-  </data>
-  <data name="{0} knowledge points" xml:space="preserve">
-    <value>{0} 个知识点</value>
-  </data>
-  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+      <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
     <value>标签也可能用于其他课程。更改其定价会影响此处列出的所有内容，包括搜索结果之外的项目。</value>
   </data>
   <data name="Access" xml:space="preserve">
@@ -227,6 +221,12 @@
   </data>
   <data name="Who can open this content?" xml:space="preserve">
     <value>谁可以打开此内容？</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} 个练习</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} 个知识点</value>
   </data>
 
 </root>

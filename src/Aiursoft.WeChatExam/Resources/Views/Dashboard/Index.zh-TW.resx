@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>一個現代化、功能豐富且高度可擴展的基礎架構，為您的下一個網路應用程式奠定根基。</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>所有已完成測驗的平均分數</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>AI 驅動翻譯</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>進行中</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>考試微信小程式管理後台</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>AI 驅動翻譯</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>所有相依元件都會自動註冊，並始終可透過建構函式注入使用。</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>內容概覽</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>正確答案</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>數量</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>論文</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>考試次數</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>考試紀錄</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>世界，你好！</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>在資料庫中</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>進行中</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>歡迎</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>所有已完成測驗的平均分數</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>正確答案</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>考試次數</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>在資料庫中</value>
   </data>
 
 </root>

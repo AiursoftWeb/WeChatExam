@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>تحتاج فحوصات الدخول إلى البرنامج المصغّر إلى المراجعة</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>لا يوجد حاليًا اشتراك VIP مناسب للشراء</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>لا يمكن لأي اشتراك VIP فتح هذه التمارين</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>لا يمكن لأي اشتراك VIP فتح هذا الوسم</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>لا يوجد حاليًا اشتراك VIP مناسب للشراء</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>يمكن للطلاب فتح هذه الورقة المجانية حتى لو كانت تمارينها الأصلية مدفوعة. تسعير الورقة مستقل عن تسعير كل تمرين على حدة.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>هذه التمارين غير مرتبطة بأي مقرر، وتحمل وسومًا مدفوعة لا يوجد مقرر مطابق لها. وحتى شراء جميع باقات VIP لن يتيح فتحها.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>هذا المنتج المميز لا يتضمن دورة تدريبية، لذا لا يمكنه منح صلاحية الوصول إلى الدورة التدريبية المقصودة.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>هذا المنتج الخاص بكبار الشخصيات يفتقر إلى الجهة التعليمية. ولا يمكنه منح صلاحية الوصول المطلوبة إلى الاختبارات الورقية.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>يتطلب منتج VIP هذا دورة تدريبية</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>يتطلب هذا المنتج المميز (VIP) مؤسسة</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>هذا التمرين يتطلب اشتراك VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>تم تحديد هذا الوسم على أنه مدفوع، لكن لم يُربط به اشتراك VIP لأي مقرر. وحتى شراء جميع اشتراكات VIP لن يتيح هذا الوسم. قد تعمل التمارين المرتبطة بمقرر خاص بها من شاشة أخرى.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>هذا المنتج المميز لا يتضمن دورة تدريبية، لذا لا يمكنه منح صلاحية الوصول إلى الدورة التدريبية المقصودة.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>هذا المنتج الخاص بكبار الشخصيات يفتقر إلى الجهة التعليمية. ولا يمكنه منح صلاحية الوصول المطلوبة إلى الاختبارات الورقية.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>يتطلب منتج VIP هذا دورة تدريبية</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>يتطلب هذا المنتج المميز (VIP) مؤسسة</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>يمكن للزوار قراءة موضوع المعرفة، لكن لا يمكنهم فتح هذه التمارين مجانًا.</value>

@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Добавить VIP-продукты</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Позволяет читать экзамены, независимо от владения.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Разрешает добавление любого knowledgePoint, независимо от владельца.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Разрешает изменение данных пользователя, таких как email и роли, а также позволяет сбрасывать пароли пользователей.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Позволяет изменять глобальные системные настройки.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Позволяет изменять настройки продуктов VIP, включая цену, срок действия и статус включения.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Позволяет читать экзамены, независимо от владения.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Позволяет изменять глобальные системные настройки.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Позволяет читать вопросы, независимо от владения.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Разрешает безвозвратное удаление продуктов VIP.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Позволяет постоянное удаление каналов распространения.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Разрешает окончательное удаление учетных записей пользователей.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Разрешает безвозвратное удаление продуктов VIP.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Позволяет запускать фоновые задачи для оптимизации ответов на вопросы и объяснений с использованием ИИ.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Позволяет обновлять статус отзывов пользователей.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Позволяет проверять способы оплаты, запрашивать полный возврат средств по виртуальным платежам и отслеживать результаты.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Позволяет просматривать VIP-продукты и их конфигурацию.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Позволяет просматривать и управлять очередями фоновых задач и их статусом выполнения.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Позволяет просматривать список отзывов пользователей.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Позволяет просматривать VIP-продукты и их конфигурацию.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Разрешает просматривать, добавлять и удалять VIP-подписки для пользователей.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Перезапустить это приложение</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Возвраты платежей</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Запустить задания оптимизации</value>

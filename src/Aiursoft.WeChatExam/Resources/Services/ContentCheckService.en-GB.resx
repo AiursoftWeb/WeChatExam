@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Even all relevant VIPs cannot unlock this paper.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Existing active memberships may still work, but new customers have no way to make a purchase.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Existing active VIPs can still work, but buying currently enabled products cannot unlock this question.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Existing active memberships may still work, but new customers have no way to make a purchase.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Free-knowledge directory links to a paid exercise</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>New customers have no current purchase route. Existing active memberships may still grant access.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>No enabled VIP product unlocks this tag</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>No enabled product combination unlocks this question</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>No enabled product unlocks this paper</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>No enabled VIP product unlocks this tag</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Paid paper has no subject that can be unlocked</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Review the subject and available VIP products. Disabled products do not invalidate existing active memberships.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Review this institution’s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Review this institution’s VIP products. Course VIPs do not unlock real papers.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Review this institution’s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Signed in without an active VIP</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>This uncategorised question requires every paid tag; at least one tag has no subject mapping.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP products</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Visitors can read the knowledge content, but this exercise returns 403 when accessed anonymously. Paid exercises are permitted under the current business rules.</value>

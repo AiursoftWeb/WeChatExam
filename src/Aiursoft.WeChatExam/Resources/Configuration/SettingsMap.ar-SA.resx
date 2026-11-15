@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>نموذج التضمين</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>تفعيل إنشاء التضمينات في الخلفية للأسئلة ونقاط المعرفة.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>تفعيل البحث القائم على التضمينات</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>تفعيل إنشاء التضمينات في الخلفية للأسئلة ونقاط المعرفة.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>رقم الترخيص ICP</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>دعوة الذكاء الاصطناعي لتصحيح الأسئلة. استخدم {0} للمحتوى، و{1} للإجابة القياسية، و{2} للتفسير، و{3} لإجابة الطالب، و{4} للدرجة القصوى.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>رقم ترخيص ICP للمستخدمين في الصين القارية. اتركه فارغًا لإخفائه.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>عنوان URL الأساسي لواجهة Ollama API الخاصة بالتضمينات. يُستخدم المضيف فقط، وتُضاف ‎/api/embed‎ تلقائيًا. عند تركه فارغًا، يُستخدم عنوان نقطة نهاية إكمال OpenAI كبديل.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>اسم العلامة التجارية المُعرض في التذييل.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>نموذج التضمين للأسئلة والنقاط المعرفية. تستخدم المتجهات الحالية عقد فهرسة بأبعاد 1024 لـ bge-m3.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>رقم ترخيص ICP للمستخدمين في الصين القارية. اتركه فارغًا لإخفائه.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>الشعار الخاص بالمشروع يتم عرضه في شريط التنقل والقدم. يدعم jpg، png، svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>اسم المشروع المُعرض في الواجهة الأمامية.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>عنوان URL الأساسي لواجهة Ollama API الخاصة بالتضمينات. يُستخدم المضيف فقط، وتُضاف ‎/api/embed‎ تلقائيًا. عند تركه فارغًا، يُستخدم عنوان نقطة نهاية إكمال OpenAI كبديل.</value>
   </data>
 
 </root>

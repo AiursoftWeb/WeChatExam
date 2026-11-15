@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>एम्बेडिंग मॉडल</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>प्रश्नों और ज्ञान बिंदुओं के लिए बैकग्राउंड में एम्बेडिंग जनरेशन सक्षम करें।</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>एम्बेडिंग-आधारित खोज सक्षम करें</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>प्रश्नों और ज्ञान बिंदुओं के लिए बैकग्राउंड में एम्बेडिंग जनरेशन सक्षम करें।</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>आईसीपी नंबर</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>प्रश्नों को अंक देने के लिए एआई प्रॉम्प्ट। सामग्री के लिए {0} का उपयोग करें, मानक उत्तर के लिए {1}, व्याख्या के लिए {2}, छात्र के उत्तर के लिए {3}, और अधिकतम अंक के लिए {4}।</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>चीन मुख्यभूमि के उपयोगकर्ताओं के लिए ICP लाइसेंस संख्या। छिपाने के लिए खाली छोड़ें।</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>एम्बेडिंग के लिए Ollama API का बेस URL। केवल होस्ट का उपयोग किया जाता है; /api/embed अपने आप जोड़ दिया जाता है। खाली होने पर OpenAI completion endpoint का उपयोग किया जाता है।</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>फुटर में प्रदर्शित ब्रांड का नाम</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>प्रश्नों और ज्ञान बिंदुओं के लिए एम्बेडिंग मॉडल। मौजूदा वेक्टर bge-m3 के 1024-आयाम वाले इंडेक्स अनुबंध का उपयोग करते हैं।</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>चीन मुख्यभूमि के उपयोगकर्ताओं के लिए ICP लाइसेंस संख्या। छिपाने के लिए खाली छोड़ें।</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>प्रोजेक्ट का लोगो नेवबार और फुटर में प्रदर्शित किया जाता है। jpg, png, svg समर्थित हैं।</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>फ्रंटएंड में दिखाए जाने वाले प्रोजेक्ट का नाम।</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>एम्बेडिंग के लिए Ollama API का बेस URL। केवल होस्ट का उपयोग किया जाता है; /api/embed अपने आप जोड़ दिया जाता है। खाली होने पर OpenAI completion endpoint का उपयोग किया जाता है।</value>
   </data>
 
 </root>

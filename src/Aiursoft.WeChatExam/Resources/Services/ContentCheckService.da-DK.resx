@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Selv alle relevante VIP-medlemskaber kan ikke låse denne prøve op.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Eksisterende aktive medlemskaber fungerer muligvis, men nye kunder har ingen mulighed for at købe adgang.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Eksisterende aktive VIP-medlemskaber kan stadig fungere, men køb af produkter, der er aktiveret i øjeblikket, kan ikke låse dette spørgsmål op.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Eksisterende aktive medlemskaber fungerer muligvis, men nye kunder har ingen mulighed for at købe adgang.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Gratis vidensmappe linker til en betalingsøvelse</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Nye kunder har ingen aktuel mulighed for at købe adgang. Eksisterende aktive medlemskaber kan stadig give adgang.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Ingen VIP kan låse denne tagpost op. Et spørgsmål med sit eget emne kan stadig være tilgængeligt via spørgsmålsdetaljerne.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Intet aktiveret VIP-produkt låser dette tag op</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Ingen kombination af aktiverede produkter giver adgang til dette spørgsmål</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Intet aktiveret produkt låser op for denne opgave</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Intet aktiveret VIP-produkt låser dette tag op</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Ingen VIP kan låse denne tagpost op. Et spørgsmål med sit eget emne kan stadig være tilgængeligt via spørgsmålsdetaljerne.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Betalt prøve har intet oplåseligt emne</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Gennemgå emnet og de tilgængelige VIP-produkter. Deaktiverede produkter ugyldiggør ikke eksisterende aktive medlemskaber.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Gennemgå denne institutions VIP-produkter. Kursus-VIP’er giver ikke adgang til rigtige eksamensopgaver; eksisterende medlemskaber til rigtige eksamener på tværs af alle institutioner fungerer stadig.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Gennemgå denne institutions VIP-produkter. Kursus-VIP&apos;er giver ikke adgang til rigtige opgaver.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Gennemgå denne institutions VIP-produkter. Kursus-VIP’er giver ikke adgang til rigtige eksamensopgaver; eksisterende medlemskaber til rigtige eksamener på tværs af alle institutioner fungerer stadig.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Logget ind uden aktivt VIP-medlemskab</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Dette ukategoriserede spørgsmål kræver alle betalte tags; mindst ét tag har ingen fagtilknytning.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Kontrollér det udrullede Mini Program separat. Denne serverscanning simulerer ikke navigation i klienten og beviser ikke, at en kunde kan få adgang til alle skærmbilleder.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP-produkter</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Kontrollér det udrullede Mini Program separat. Denne serverscanning simulerer ikke navigation i klienten og beviser ikke, at en kunde kan få adgang til alle skærmbilleder.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Besøgende kan læse vidensindholdet, men denne øvelse giver fejlen 403 for anonyme brugere. Betalte øvelser er tilladt efter de gældende forretningsregler.</value>

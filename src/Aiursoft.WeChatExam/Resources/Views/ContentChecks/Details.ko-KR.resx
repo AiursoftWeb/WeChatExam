@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} exercises" xml:space="preserve">
-    <value>{0}개의 연습 문제</value>
-  </data>
-  <data name="{0} knowledge points" xml:space="preserve">
-    <value>지식 항목 {0}개</value>
-  </data>
-  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+      <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
     <value>태그는 다른 강좌에서도 사용될 수 있습니다. 태그의 가격을 변경하면 검색 결과에 포함되지 않은 항목을 비롯해 여기에 나열된 모든 콘텐츠에 영향을 미칩니다.</value>
   </data>
   <data name="Access" xml:space="preserve">
@@ -227,6 +221,12 @@
   </data>
   <data name="Who can open this content?" xml:space="preserve">
     <value>누가 이 콘텐츠를 열 수 있나요?</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0}개의 연습 문제</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>지식 항목 {0}개</value>
   </data>
 
 </root>

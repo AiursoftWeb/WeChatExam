@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Adicionar Produtos VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite a leitura de exames, independentemente da propriedade.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Permite adicionar qualquer knowledgePoint, independentemente da propriedade.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Permite a modificação de detalhes do utilizador, como email e funções, e também pode redefinir palavras-passe de utilizadores.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Permite a modificação de configurações globais do sistema.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Permite modificar as definições de produtos VIP, incluindo preço, duração e estado de ativação.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Permite a leitura de exames, independentemente da propriedade.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Permite a modificação de configurações globais do sistema.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Permite a leitura de perguntas, independentemente da propriedade.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Permite a eliminação permanente de produtos VIP.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Permite a eliminação permanente de canais de distribuição.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Permite a eliminação permanente de contas de utilizador.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Permite a eliminação permanente de produtos VIP.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Permite ativar tarefas em segundo plano para otimizar respostas e explicações de perguntas utilizando IA.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Permite atualizar o estado dos feedbacks dos utilizadores.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Permite verificar os métodos de pagamento, solicitar reembolsos completos de pagamentos virtuais e verificar os respetivos resultados.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Permite visualizar produtos VIP e a respetiva configuração.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Permite visualizar e gerir filas de tarefas em segundo plano e o seu estado de execução.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Permite visualizar a lista de feedbacks dos utilizadores.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Permite visualizar produtos VIP e a respetiva configuração.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Permite visualizar, adicionar e eliminar as associações VIP dos utilizadores.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Reiniciar Esta Aplicação</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Reembolsar Pedidos de Pagamento</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Ativar Tarefas de Otimização</value>

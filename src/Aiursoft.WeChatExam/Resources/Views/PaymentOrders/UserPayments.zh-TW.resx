@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>金額</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>金額隨訂單儲存。未確認的訂單不視為已完成購買。</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>返回列表</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>付款紀錄</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>付款方式</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>產品</value>

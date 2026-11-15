@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>إضافة منتجات VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>يسمح بقراءة الامتحانات، بغض النظر عن الملكية.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>يسمح بإضافة أي نقطة معرفة، بغض النظر عن الملكية.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>يسمح بتعديل تفاصيل المستخدم مثل البريد الإلكتروني والأدوار، ويمكن أيضًا إعادة تعيين كلمات مرور المستخدمين.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>يسمح بتعديل إعدادات النظام العالمية.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>يتيح تعديل إعدادات منتجات VIP بما في ذلك السعر والمدة وحالة التفعيل.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>يسمح بقراءة الامتحانات، بغض النظر عن الملكية.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>يسمح بتعديل إعدادات النظام العالمية.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>يسمح بقراءة الأسئلة، بغض النظر عن الملكية.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>يسمح بحذف منتجات VIP بشكل دائم.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>يسمح بالحذف الدائم للقنوات المتعددة للتوزيع.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>يسمح بالحذف الدائم لحسابات المستخدمين.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>يسمح بحذف منتجات VIP بشكل دائم.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>يُمكّن من تشغيل مهام خلفية لتحسين إجابات الأسئلة والشروحات باستخدام الذكاء الاصطناعي.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>يسمح بتحديث حالة تعليقات المستخدمين.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>يسمح بالتحقق من طرق الدفع، وطلب استرداد كامل للمدفوعات الافتراضية، والتحقق من نتائجها.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>يسمح بعرض منتجات VIP وإعداداتها.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>يُتيح عرض وإدارة صفوف المهام الخلفية وحالة تنفيذها.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>يسمح بعرض قائمة ملاحظات المستخدمين.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>يسمح بعرض منتجات VIP وإعداداتها.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>يسمح بعرض وإضافة وحذف عضويات VIP للمستخدمين.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>إعادة تشغيل هذا التطبيق</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>استرداد طلبات الدفع</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>تشغيل مهام التحسين</value>

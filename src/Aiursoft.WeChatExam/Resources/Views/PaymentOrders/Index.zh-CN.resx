@@ -60,6 +60,9 @@
   <data name="Orders" xml:space="preserve">
     <value>订单</value>
   </data>
+  <data name="Payment Orders" xml:space="preserve">
+    <value>支付订单</value>
+  </data>
   <data name="Payment channel" xml:space="preserve">
     <value>支付渠道</value>
   </data>
@@ -68,9 +71,6 @@
   </data>
   <data name="Payment needs verification" xml:space="preserve">
     <value>支付需验证</value>
-  </data>
-  <data name="Payment Orders" xml:space="preserve">
-    <value>支付订单</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>

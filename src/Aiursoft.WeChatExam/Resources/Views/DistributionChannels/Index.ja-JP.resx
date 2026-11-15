@@ -36,9 +36,6 @@
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="detail" xml:space="preserve">
-    <value>詳細</value>
-  </data>
   <data name="Disable" xml:space="preserve">
     <value>無効化</value>
   </data>
@@ -74,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>状態</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>詳細</value>
   </data>
 
 </root>

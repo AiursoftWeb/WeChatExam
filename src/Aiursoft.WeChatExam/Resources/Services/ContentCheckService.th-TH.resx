@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>แม้แต่สมาชิก VIP ที่เกี่ยวข้องทั้งหมดก็ไม่สามารถปลดล็อกเอกสารฉบับนี้ได้</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>สมาชิกที่ยังใช้งานอยู่อาจใช้ได้ แต่ลูกค้าใหม่ไม่มีช่องทางในการซื้อ</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>VIP ที่ใช้งานอยู่เดิมยังคงใช้ได้ แต่การซื้อผลิตภัณฑ์ที่เปิดใช้งานอยู่ในขณะนี้ไม่สามารถปลดล็อกคำถามนี้ได้</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>สมาชิกที่ยังใช้งานอยู่อาจใช้ได้ แต่ลูกค้าใหม่ไม่มีช่องทางในการซื้อ</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>ไดเรกทอรีความรู้ฟรีเชื่อมโยงกับแบบฝึกหัดที่ต้องชำระเงิน</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>ลูกค้าใหม่ยังไม่มีช่องทางซื้อในขณะนี้ สมาชิกที่ยังใช้งานอยู่เดิมอาจยังคงได้รับสิทธิ์เข้าถึง</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>ไม่มี VIP รายใดที่ปลดล็อกรายการแท็กนี้ได้ อย่างไรก็ตาม คำถามที่มีหัวข้อของตนเองอาจยังเข้าถึงได้จากรายละเอียดคำถาม</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>ไม่มีผลิตภัณฑ์ VIP ที่เปิดใช้งานซึ่งปลดล็อกแท็กนี้</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>ไม่มีชุดผลิตภัณฑ์ที่เปิดใช้งานชุดใดปลดล็อกคำถามนี้ได้</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>ไม่มีผลิตภัณฑ์ที่เปิดใช้งานรายการใดปลดล็อกเอกสารฉบับนี้</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>ไม่มีผลิตภัณฑ์ VIP ที่เปิดใช้งานซึ่งปลดล็อกแท็กนี้</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>ไม่มี VIP รายใดที่ปลดล็อกรายการแท็กนี้ได้ อย่างไรก็ตาม คำถามที่มีหัวข้อของตนเองอาจยังเข้าถึงได้จากรายละเอียดคำถาม</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>เอกสารที่ต้องชำระเงินไม่มีหมวดวิชาที่สามารถใช้ปลดล็อกได้</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>ตรวจสอบวิชาและผลิตภัณฑ์ VIP ที่มีให้บริการ ผลิตภัณฑ์ที่ปิดใช้งานจะไม่ทำให้สมาชิกภาพที่ยังใช้งานอยู่เดิมเป็นโมฆะ</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>ตรวจสอบผลิตภัณฑ์ VIP ของสถาบันนี้ VIP ของหลักสูตรไม่สามารถปลดล็อกข้อสอบจริงได้ แต่สมาชิกสอบจริงแบบครอบคลุมทุกสถาบันที่มีอยู่แล้วจะยังใช้งานได้</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>ตรวจสอบผลิตภัณฑ์ VIP ของสถาบันนี้ VIP ของหลักสูตรไม่สามารถปลดล็อกข้อสอบจริงได้</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>ตรวจสอบผลิตภัณฑ์ VIP ของสถาบันนี้ VIP ของหลักสูตรไม่สามารถปลดล็อกข้อสอบจริงได้ แต่สมาชิกสอบจริงแบบครอบคลุมทุกสถาบันที่มีอยู่แล้วจะยังใช้งานได้</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>เข้าสู่ระบบโดยไม่มี VIP ที่ใช้งานอยู่</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>คำถามนี้ไม่ได้จัดอยู่ในหมวดหมู่ จึงต้องใช้แท็กแบบชำระเงินทั้งหมด และมีแท็กอย่างน้อยหนึ่งแท็กที่ไม่มีการกำหนดหมวดหมู่วิชา</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>ตรวจสอบ Mini Program ที่นำขึ้นใช้งานแล้วแยกต่างหาก การสแกนฝั่งเซิร์ฟเวอร์นี้ไม่ได้จำลองการนำทางของผู้ใช้ และไม่สามารถยืนยันได้ว่าลูกค้าจะเข้าถึงทุกหน้าจอได้</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>ผลิตภัณฑ์ VIP</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>ตรวจสอบ Mini Program ที่นำขึ้นใช้งานแล้วแยกต่างหาก การสแกนฝั่งเซิร์ฟเวอร์นี้ไม่ได้จำลองการนำทางของผู้ใช้ และไม่สามารถยืนยันได้ว่าลูกค้าจะเข้าถึงทุกหน้าจอได้</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>ผู้เยี่ยมชมสามารถอ่านเนื้อหาความรู้ได้ แต่แบบฝึกหัดนี้จะแสดงข้อผิดพลาด 403 เมื่อเข้าถึงโดยไม่เข้าสู่ระบบ ตามกฎทางธุรกิจปัจจุบัน อนุญาตให้มีแบบฝึกหัดแบบชำระเงินได้</value>

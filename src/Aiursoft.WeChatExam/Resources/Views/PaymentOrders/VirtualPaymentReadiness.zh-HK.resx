@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>請明確選擇沙盒（1）或正式環境（0）。</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>請根據此小程式的虛擬支付設定配置 OfferId。</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>請為選定的環境設定金鑰。其他環境的金鑰將不會被使用。</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>請在伺服器上設定訊息 Token 及有效的 EncodingAESKey。</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>請根據此小程式的虛擬支付設定配置 OfferId。</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>在伺服器上設定目標 AppID 及其 AppSecret。</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>在伺服器設定中啟用微信存取。</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>分</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>免費產品：無需平台支付。</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>無效環境</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>iOS 退款建議已停用，待平台驗證。</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>iOS 退款建議已啟用。此本地頁面無法確認其平台協議已通過驗證。</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>生產環境</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>本地對應及價格一致；平台發布仍須核實。</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>這些映射與任何已啟用的VIP產品不符。請要求管理員檢查它們；切勿刪除歷史產品或訂單。</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>訊息驗證憑證</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>請使用明確的虛擬支付測試構建。預設的小程序構建仍然使用普通支付。</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP 產品 ID</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>請在微信後台確認平台審核狀態、AppID、OfferId 及已發佈的產品。</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>只讀</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>VIP 產品 ID</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>虛擬支付帳戶</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>WeChat 同步失敗。請開啟 VIP 產品以檢查其設定並重試。</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOS 退款建議已停用，待平台驗證。</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOS 退款建議已啟用。此本地頁面無法確認其平台協議已通過驗證。</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>這些映射與任何已啟用的VIP產品不符。請要求管理員檢查它們；切勿刪除歷史產品或訂單。</value>
   </data>
 
 </root>

@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>ควรตรวจสอบการตรวจสอบช่องทางเข้า Mini Program อีกครั้ง</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>ขณะนี้ยังไม่มี VIP ที่เหมาะสมให้ซื้อ</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>ไม่มี VIP ใดที่ปลดล็อกแบบฝึกหัดเหล่านี้ได้</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>ไม่มี VIP ใดที่ปลดล็อกแท็กนี้ได้</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>ขณะนี้ยังไม่มี VIP ที่เหมาะสมให้ซื้อ</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>นักเรียนสามารถเปิดแบบฝึกหัดชุดนี้ได้ฟรี แม้ว่าแบบฝึกหัดต้นฉบับจะต้องชำระเงินก็ตาม ราคาของชุดแบบฝึกหัดและราคาของแบบฝึกหัดแต่ละข้อแยกจากกัน</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>แบบฝึกหัดเหล่านี้ไม่ได้กำหนดหลักสูตรไว้ และมีแท็กแบบชำระเงินที่ไม่มีหลักสูตรตรงกัน แม้ซื้อ VIP ทุกแพ็กเกจแล้วก็ยังปลดล็อกไม่ได้</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP นี้ไม่มีหลักสูตร จึงไม่สามารถให้สิทธิ์เข้าถึงหลักสูตรที่ต้องการได้</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP นี้ไม่ได้ระบุสถาบัน จึงไม่สามารถให้สิทธิ์เข้าถึงข้อสอบจริงตามที่ต้องการได้</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP นี้จำเป็นต้องมีคอร์ส</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP นี้จำเป็นต้องระบุสถาบัน</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>แบบฝึกหัดนี้ต้องใช้ VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>แท็กนี้ถูกกำหนดให้เป็นแบบชำระเงิน แต่ไม่ได้เชื่อมโยงกับ VIP ของหลักสูตรใดเลย แม้จะซื้อ VIP ทุกหลักสูตรแล้วก็ยังปลดล็อกแท็กนี้ไม่ได้ แบบฝึกหัดที่มีหลักสูตรของตัวเองอาจเข้าใช้งานได้จากอีกหน้าจอหนึ่ง</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>ผลิตภัณฑ์ VIP นี้ไม่มีหลักสูตร จึงไม่สามารถให้สิทธิ์เข้าถึงหลักสูตรที่ต้องการได้</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>ผลิตภัณฑ์ VIP นี้ไม่ได้ระบุสถาบัน จึงไม่สามารถให้สิทธิ์เข้าถึงข้อสอบจริงตามที่ต้องการได้</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>ผลิตภัณฑ์ VIP นี้จำเป็นต้องมีคอร์ส</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>ผลิตภัณฑ์ VIP นี้จำเป็นต้องระบุสถาบัน</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>ผู้เข้าชมสามารถอ่านหัวข้อความรู้ได้ แต่ไม่สามารถเปิดแบบฝึกหัดเหล่านี้ได้ฟรี</value>

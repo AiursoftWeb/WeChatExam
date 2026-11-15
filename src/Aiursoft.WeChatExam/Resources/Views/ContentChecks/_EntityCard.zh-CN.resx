@@ -27,6 +27,9 @@
   <data name="Course VIPs linked to this tag entry" xml:space="preserve">
     <value>与此标签条目关联的课程 VIP</value>
   </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>编辑 VIP 产品</value>
+  </data>
   <data name="Edit course" xml:space="preserve">
     <value>编辑课程</value>
   </data>
@@ -53,9 +56,6 @@
   </data>
   <data name="Edit taxonomy" xml:space="preserve">
     <value>编辑分类体系</value>
-  </data>
-  <data name="Edit VIP product" xml:space="preserve">
-    <value>编辑 VIP 产品</value>
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>练习</value>
@@ -120,6 +120,9 @@
   <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
     <value>已被关联到 {1} 个知识点的 {0} 道练习使用。标签用于内部整理，不影响练习定价。</value>
   </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>VIP商品</value>
+  </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>查看已冻结的试卷</value>
   </data>
@@ -128,9 +131,6 @@
   </data>
   <data name="View relationship" xml:space="preserve">
     <value>查看关联关系</value>
-  </data>
-  <data name="VIP product" xml:space="preserve">
-    <value>VIP商品</value>
   </data>
 
 </root>

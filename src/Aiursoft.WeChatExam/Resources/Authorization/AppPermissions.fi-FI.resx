@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Lisää VIP-tuotteita</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Salli kokeiden lukemisen, riippumatta omistajuudesta.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Sallii minkä tahansa knowledgePointin lisäämisen, riippumatta omistajuudesta.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Sallii käyttäjätietojen, kuten sähköpostiosoitteen ja roolien, muokkaamisen sekä käyttäjien salasanojen nollaamisen.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Sallii globaalien järjestelmäasetusten muokkaamisen.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Sallii VIP-tuotteen asetusten muokkaamisen, mukaan lukien hinnan, keston ja käytön tilan.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Salli kokeiden lukemisen, riippumatta omistajuudesta.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Sallii globaalien järjestelmäasetusten muokkaamisen.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Sallii kysymysten lukemisen, riippumatta omistajuudesta.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Sallii VIP-tuotteiden pysyvän poistamisen.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Sallii jakaumakanavien pysyvän poistamisen.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Sallii käyttäjätilien pysyvän poistamisen.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Sallii VIP-tuotteiden pysyvän poistamisen.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Sallii taustatehtävien käynnistämisen kysymysten vastausten ja selitysten optimointiin tekoälyä käyttäen.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Salli käyttäjän palautteen tilan päivittämisen.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Sallii maksutapojen varmentamisen, täysimääräisten virtuaalimaksujen palautusten pyytämisen ja niiden tulosten tarkistamisen.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Sallii VIP-tuotteiden ja niiden konfiguraation näkemisen.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Sallii taustatehtävien jonon tarkastelun ja hallinnan sekä niiden suoritusvalmiuden tarkkailun.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Sallii käyttäjän palautteen listan näyttämisen.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Sallii VIP-tuotteiden ja niiden konfiguraation näkemisen.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Sallii VIP-jäsenyyksien katselun, lisäämisen ja poistamisen käyttäjille.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Käynnistä tämä sovellus uudelleen</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Maksutilien palautukset</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Käynnistä optimointitehtävät</value>

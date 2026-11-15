@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Adaugă produse VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Permite citirea examenelor, indiferent de deținător.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Permite adăugarea oricărui knowledgePoint, indiferent de proprietate.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Permite modificarea detaliilor utilizatorului, cum ar fi adresa de e-mail și rolurile, și poate, de asemenea, să reseteze parolele utilizatorilor.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Permite modificarea setărilor globale ale sistemului.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Permite modificarea setărilor produselor VIP, inclusiv prețul, durata și starea de activare.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Permite citirea examenelor, indiferent de deținător.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Permite modificarea setărilor globale ale sistemului.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Permite citirea întrebărilor, indiferent de posesie.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Permite ștergerea definitivă a produselor VIP.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Permite ștergerea permanentă a canalelor de distribuție.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Permite ștergerea permanentă a conturilor de utilizator.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Permite ștergerea definitivă a produselor VIP.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Permite declanșarea joburilor în fundal pentru optimizarea răspunsurilor și explicațiilor la întrebări utilizând IA.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Permite actualizarea statusului feedback-urilor utilizatorilor.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Permite verificarea metodelor de plată, solicitarea rambursărilor complete pentru plăți virtuale și verificarea rezultatelor acestora.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Permite vizualizarea produselor VIP și a configurației acestora.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Permite vizualizarea și gestionarea cozilor de sarcini în fundal și a stării de execuție a acestora.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Permite vizualizarea listei de feedback-uri de la utilizatori.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Permite vizualizarea produselor VIP și a configurației acestora.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Permite vizualizarea, adăugarea și ștergerea membrilor VIP pentru utilizatori.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Repornește această aplicație</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Rambursare Comenzi de Plată</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Declanșare sarcini de optimizare</value>

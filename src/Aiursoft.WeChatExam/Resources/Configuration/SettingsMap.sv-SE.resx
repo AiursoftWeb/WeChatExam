@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Inbäddningsmodell</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Aktivera generering av vektorinbäddningar i bakgrunden för frågor och kunskapspunkter.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Aktivera inbäddningsbaserad sökning</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Aktivera generering av vektorinbäddningar i bakgrunden för frågor och kunskapspunkter.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>ICP-nummer</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>AI-prompt för bedömning av frågor. Använd {0} för innehåll, {1} för standard svar, {2} för förklaring, {3} för elevens svar och {4} för maximal poäng.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>ICP-licensnummer för användare i Kina. Lämna tomt för att dölja.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Bas-URL:en för Ollamas API för embeddingar. Endast värdnamnet används; /api/embed läggs till automatiskt. Om fältet är tomt används OpenAI:s completion-endpoint.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Det varumärke som visas i sidfoten.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Inbäddningsmodellen för frågor och kunskapspunkter. Befintliga vektorer använder indexkontraktet bge-m3 med 1 024 dimensioner.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>ICP-licensnummer för användare i Kina. Lämna tomt för att dölja.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Logotypen för projektet som visas i navigeringsfältet och sidfoten. Stöd för jpg, png, svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Projektets namn som visas i användargränssnittet.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>Bas-URL:en för Ollamas API för embeddingar. Endast värdnamnet används; /api/embed läggs till automatiskt. Om fältet är tomt används OpenAI:s completion-endpoint.</value>
   </data>
 
 </root>

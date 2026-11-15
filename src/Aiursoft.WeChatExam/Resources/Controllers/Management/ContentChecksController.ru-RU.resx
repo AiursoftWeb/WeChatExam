@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Требуется проверить проверки входа в мини-приложение</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Сейчас нет подходящего VIP, который можно купить.</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Ни один VIP не сможет открыть эти упражнения.</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Ни один VIP не открывает доступ к этой метке</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Сейчас нет подходящего VIP, который можно купить.</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Ученики могут открыть эту бесплатную работу, даже если исходные упражнения в ней платные. Цена работы и стоимость отдельных упражнений не зависят друг от друга.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Для этих упражнений не указан курс, а их платные теги не привязаны ни к одному курсу. Даже покупка всех VIP-подписок не позволит разблокировать эти упражнения.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>В этом VIP-товаре не указан курс. Он не может предоставить доступ к нужному курсу.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>В этом VIP-продукте не указано учебное заведение. Он не сможет предоставить доступ к соответствующему бумажному экзамену.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Для этого VIP-продукта требуется курс</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Для этого VIP-продукта необходимо указать организацию</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Для этого упражнения требуется VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Эта метка отмечена как платная, но к ней не привязан VIP-доступ ни к одному курсу. Даже покупка всех VIP-доступов не позволит открыть эту метку. Упражнения, привязанные к отдельному курсу, могут быть доступны с другого экрана.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>В этом VIP-товаре не указан курс. Он не может предоставить доступ к нужному курсу.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>В этом VIP-продукте не указано учебное заведение. Он не сможет предоставить доступ к соответствующему бумажному экзамену.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Для этого VIP-продукта требуется курс</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Для этого VIP-продукта необходимо указать организацию</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Посетители могут просматривать этот учебный материал, но не могут бесплатно открывать эти упражнения.</value>

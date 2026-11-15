@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>VIP Ürünleri Ekle</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Sahiplik durumundan bağımsız olarak sınavları okuma izni verir.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Herhangi bir knowledgePoint&apos;in, sahipliğine bakılmaksızın eklenmesine izin verir.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Kullanıcı detaylarını (e-posta ve roller gibi) değiştirmeye izin verir ve ayrıca kullanıcı şifrelerini sıfırlayabilir.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Genel sistem ayarlarını değiştirme izni verir.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Fiyat, süre ve aktif durum dahil olmak üzere VIP ürün ayarlarının değiştirilmesine izin verir.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Sahiplik durumundan bağımsız olarak sınavları okuma izni verir.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Genel sistem ayarlarını değiştirme izni verir.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Soruların sahipliğine bakılmaksızın okunmasına izin verir.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>VIP ürünlerinin kalıcı olarak silinmesine izin verir.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Dağıtım kanallarının kalıcı olarak silinmesine izin verir.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Kullanıcı hesaplarının kalıcı olarak silinmesine izin verir.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>VIP ürünlerinin kalıcı olarak silinmesine izin verir.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Yapay zekâ kullanarak soru yanıtlarını ve açıklamalarını optimize etmek için arka plan işlerinin tetiklenmesine izin verir.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Kullanıcı geri bildirimlerinin durumunu güncellemeye izin verir.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Ödeme yöntemlerini doğrulamaya, tam sanal ödeme iadelerini talep etmeye ve sonuçlarını kontrol etmeye izin verir.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>VIP ürünlerini ve yapılandırmalarını görüntülemeye izin verir.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Arka plan görev kuyruklarını görüntüleme ve yönetme ve bunların çalıştırma durumlarını görme izni verir.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Kullanıcı geri bildirimlerinin listesini görüntülemeye izin verir.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>VIP ürünlerini ve yapılandırmalarını görüntülemeye izin verir.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Kullanıcılar için VIP üyeliklerini görüntüleme, ekleme ve silmeye izin verir.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Bu Uygulamayı Yeniden Başlat</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Ödeme Emirlerini İade Et</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Optimizasyon İşlerini Tetikle</value>
