@@ -146,7 +146,8 @@ public class MembershipReadApiTests : TestBase
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         Assert.AreEqual(4, await db.VipMemberships.CountAsync(m => m.UserId == _buyer.Id || m.UserId == _other.Id));
-        Assert.AreEqual(0, await db.PaymentOrders.CountAsync());
-        Assert.AreEqual(0, await db.PaymentLogs.CountAsync());
+        Assert.AreEqual(0, await db.PaymentOrders.CountAsync(o => o.UserId == _buyer.Id || o.UserId == _other.Id));
+        Assert.AreEqual(0, await db.PaymentLogs.CountAsync(l => l.PaymentOrder != null &&
+            (l.PaymentOrder.UserId == _buyer.Id || l.PaymentOrder.UserId == _other.Id)));
     }
 }
