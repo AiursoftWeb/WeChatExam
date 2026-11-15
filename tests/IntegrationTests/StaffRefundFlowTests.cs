@@ -60,12 +60,12 @@ public class StaffRefundFlowTests : TestBase
         await LoginAsAdmin(); var page = $"/Refunds/Process/{id}";
         using var sent = await PostForm("/Refunds/Submit", new Dictionary<string,string> { ["id"] = id.ToString(), ["amountInFen"] = "200", ["confirmed"] = "true" }, page);
         Assert.AreEqual(HttpStatusCode.Redirect, sent.StatusCode); Assert.AreEqual(1, _handler.Submissions);
-        Assert.Contains("Refund processing", await Http.GetStringAsync(page));
+        Assert.Contains("Your refund is being processed", await Http.GetStringAsync(page));
         using var duplicate = await PostForm("/Refunds/Submit", new Dictionary<string,string> { ["id"] = id.ToString(), ["amountInFen"] = "200", ["confirmed"] = "true" }, page);
         Assert.AreEqual(1, _handler.Submissions);
         using var checkedResult = await PostForm("/Refunds/Check", new Dictionary<string,string> { ["id"] = id.ToString() }, page);
         Assert.AreEqual(HttpStatusCode.Redirect, checkedResult.StatusCode);
-        Assert.Contains("Refund completed", await Http.GetStringAsync(page));
+        Assert.Contains("This order has already been refunded", await Http.GetStringAsync(page));
         using var finalScope = Server!.Services.CreateScope(); var final = finalScope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
         Assert.AreEqual(VirtualPaymentRefundRequestState.Completed, (await final.VirtualPaymentRefundRequests.SingleAsync()).State);
         Assert.AreEqual(PaymentOrderStatus.Refunded, (await final.PaymentOrders.SingleAsync(o => o.Id == id)).Status);

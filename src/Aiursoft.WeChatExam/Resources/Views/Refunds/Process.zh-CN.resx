@@ -21,6 +21,18 @@
       <data name="A refund requires a confirmed nonzero payment within the platform&apos;s refund period and the Refund Payment Orders permission. Partial or conflicting refunds need administrator review." xml:space="preserve">
     <value>退款需在平台规定的退款期内确认非零支付，并拥有“退款支付订单”权限。部分退款或存在冲突的退款需管理员审核。</value>
   </data>
+  <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>已报告退款，但该订单的会员资格需要核查。请查看现有退款，而不是发起新的退款。</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>已使用的一次性优惠券不会被恢复。</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>实际支付</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>退款成功后，该订单对应的会员权益将被撤销。</value>
+  </data>
   <data name="An uncertain result is checked using the same refund number. It is never resubmitted automatically." xml:space="preserve">
     <value>不确定的结果将使用相同的退款编号进行查询，且绝不会自动重新提交。</value>
   </data>
@@ -36,8 +48,32 @@
   <data name="Apple refund website" xml:space="preserve">
     <value>苹果退款网站</value>
   </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>请管理员在下方订单详情中查看原始支付方式。</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>请让管理员在下方订单详情中查看原始付款记录。</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>请让具有退款权限的管理员来检查结果。</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>请联系管理员为您的角色启用“退款支付订单”权限，然后注销并重新登录。</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>查看此订单的退款方式</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>检查退款方式</value>
+  </data>
+  <data name="Check refund options" xml:space="preserve">
+    <value>查询退款选项</value>
+  </data>
   <data name="Check refund result" xml:space="preserve">
     <value>查询退款结果</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>请查看下方的现有退款。会员权益变更将在退款成功确认后生效。</value>
   </data>
   <data name="Checking…" xml:space="preserve">
     <value>检查中…</value>
@@ -54,11 +90,17 @@
   <data name="Copy student instructions" xml:space="preserve">
     <value>复制学生操作说明</value>
   </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>为相应角色启用退款支付订单权限，然后退出并重新登录。</value>
+  </data>
   <data name="Handle this order in its original WeChat Pay merchant platform. This page does not submit a virtual-payment refund for a legacy order." xml:space="preserve">
     <value>请在原微信支付商户平台处理此订单。此页面不会为旧订单提交虚拟支付退款。</value>
   </data>
   <data name="I have checked the buyer, refund amount and membership consequences." xml:space="preserve">
     <value>我已确认买家、退款金额及会员权益影响。</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>我已确认学员信息、退款金额及会员状态变更。</value>
   </data>
   <data name="Legacy WeChat Pay order" xml:space="preserve">
     <value>旧版微信支付订单</value>
@@ -69,11 +111,29 @@
   <data name="Membership handling" xml:space="preserve">
     <value>会员处理</value>
   </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>该订单无需退款</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>查看完整订单详情</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>打开角色权限</value>
+  </data>
   <data name="Open WeChat Pay merchant platform" xml:space="preserve">
     <value>打开微信支付商户平台</value>
   </data>
   <data name="Order details" xml:space="preserve">
     <value>订单详情</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>订单号</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>支付时间</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>支付信息不完整，无法在此发起退款</value>
   </data>
   <data name="Payment method" xml:space="preserve">
     <value>支付方式</value>
@@ -96,6 +156,12 @@
   <data name="Refund result" xml:space="preserve">
     <value>退款结果</value>
   </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>请在微信支付商户平台对该订单进行退款</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>退款金额</value>
+  </data>
   <data name="Requested at" xml:space="preserve">
     <value>申请时间</value>
   </data>
@@ -105,14 +171,23 @@
   <data name="Send these instructions to the student" xml:space="preserve">
     <value>请将此说明发送给学生</value>
   </data>
+  <data name="Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
   <data name="Submitting…" xml:space="preserve">
     <value>提交中…</value>
   </data>
   <data name="The actual paid amount is returned to the original payment method. Only this order&apos;s membership grant is reversed; later purchases or manual changes may need review. A spent single-use coupon is not restored." xml:space="preserve">
     <value>实际支付金额将退回至原支付方式。仅撤销本订单的会员权益；后续购买或手动变更可能需要审核。已使用的一次性优惠券不会恢复。</value>
   </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>实际支付金额将原路退回至学生的原支付方式。</value>
+  </data>
   <data name="The payment method has been verified with WeChat." xml:space="preserve">
     <value>已通过微信支付验证支付方式。</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>该付款已超过365天。此页面无法再提交退款申请。</value>
   </data>
   <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
     <value>平台已确认此笔退款。请查看下方的会员处理情况。</value>
@@ -120,11 +195,29 @@
   <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
     <value>退款已记录，但会员处理需要核实。</value>
   </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>退款已记录。请打开下方的订单详情以查看金额。</value>
+  </data>
   <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
     <value>退款申请已提交。确认可能需要一些时间，请勿再次创建退款。</value>
   </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>退款结果尚未确认</value>
+  </data>
   <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
     <value>无法确认结果。请查询已保存的退款请求；请勿再次提交。</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>学生必须向 Apple 申请此退款</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>学生在此订单中未支付任何费用，因此没有款项可退还。</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>没有已确认的付款可退还。如果学生已被扣款，请先检查原始付款记录。</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>此检查仅用于识别支付方式，不会执行订单退款。</value>
   </data>
   <data name="This historical virtual order has not been classified. Verify its actual payment method with WeChat before choosing how to refund it. The student&apos;s current phone does not determine it." xml:space="preserve">
     <value>该历史虚拟订单尚未分类。请选择退款方式前，先通过微信核实其实际支付方式。学生当前使用的手机并不决定支付方式。</value>
@@ -135,20 +228,59 @@
   <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
     <value>该订单已存在退款申请，请查看其结果，请勿重复提交。</value>
   </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>该订单无法退款，因为尚未确认支付</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>该订单已退款</value>
+  </data>
   <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
     <value>该订单不符合全额退款条件。请核实其支付方式及当前状态。</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>该订单使用的是旧版微信支付服务。请在原商户账户中找到该订单，并在该账户中办理退款。</value>
   </data>
   <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
     <value>此订单通过 Apple 支付。请使用用于购买的 Apple 账户登录 https://reportaproblem.apple.com/，并针对此订单申请退款。Apple 将审核并决定该申请。</value>
   </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>此订单通过 Apple 支付。教师无法在此处退款；Apple 将审核学生的退款申请。</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>该订单的会员权益已处理完毕，其他购买项目保持不变，一次性优惠券不予恢复。</value>
+  </data>
   <data name="This order&apos;s membership was handled. Other purchases are unchanged and the single-use coupon remains spent." xml:space="preserve">
     <value>该订单的会员资格已处理。其他购买项目保持不变，一次性优惠券仍处于已使用状态。</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>该笔付款已超出此处支持的退款期限</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>此支付方式不支持在此处退款</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>此退款需要管理员审核</value>
   </data>
   <data name="Verify payment method" xml:space="preserve">
     <value>验证支付方式</value>
   </data>
   <data name="Verify the original payment method" xml:space="preserve">
     <value>核实原始支付方式</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>我们需要先通过微信核实此笔付款。结果将显示退款按钮或 Apple 支付的操作说明。</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>您可以申请此订单的退款</value>
+  </data>
+  <data name="You can view this order, but an administrator must enable refund permission for your role before you can check or issue a refund." xml:space="preserve">
+    <value>您可以查看此订单，但管理员必须为您的角色启用退款权限后，您才能查看或发起退款。</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>您的账户没有权限发起退款</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>您的退款正在处理中</value>
   </data>
 
 </root>

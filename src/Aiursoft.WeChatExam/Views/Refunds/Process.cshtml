@@ -8,6 +8,10 @@
 @{
     var order = Model.Order;
     var canRefund = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanRefundPaymentOrders)).Succeeded;
+    var canManageRoles = (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanReadRoles)).Succeeded
+        && (await Authorization.AuthorizeAsync(User, AppPermissionNames.CanEditRoles)).Succeeded;
+    var needsReview = RefundOrderViewModel.NeedsReview(order);
+    var hasRefund = order.RefundRequest != null || order.Status == PaymentOrderStatus.Refunded || needsReview;
 }
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
     <h1 class="h3 mb-0">@Localizer["Refund handling"]</h1>
@@ -31,99 +35,151 @@
         }
     </div></div>
 }
-<div class="card mb-3"><div class="card-body">
-    <h2 class="h5">@(order.VipProduct?.Name ?? order.Description)</h2>
-    <p>@(order.User?.DisplayName ?? order.UserId)</p>
-    <p class="mb-2"><code class="text-break user-select-all">@order.OutTradeNo</code></p>
-    <p><strong>@Localizer["Payment method"]:</strong> <partial name="~/Views/PaymentOrders/_PaymentChannel.cshtml" model="order" /></p>
-    <partial name="~/Views/PaymentOrders/_OrderAmounts.cshtml" model="order" />
-</div></div>
-@if (order.RefundRequest != null || order.Status == PaymentOrderStatus.Refunded || RefundOrderViewModel.NeedsReview(order))
-{
-    <div class="card mb-3"><div class="card-body">
-        <h2 class="h5">@Localizer["Refund result"]</h2>
-        <partial name="_RefundStatus" model="order" />
-        @if (canRefund && order.Channel == PaymentChannel.WeChatVirtual && order.VirtualPaymentSnapshot?.Platform == null)
+<div class="card mb-3"><div class="card-body p-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 border-bottom pb-3 mb-4">
+        <div><h2 class="h5">@(order.VipProduct?.Name ?? order.Description)</h2>
+            <p class="mb-0">@Localizer["Student"]: <strong>@(order.User?.DisplayName ?? order.UserId)</strong></p></div>
+        <div><span class="text-muted">@Localizer["Actually paid"]</span><div class="h3 mb-0">@($"¥{order.AmountInFen / 100m:F2}")</div></div>
+    </div>
+    @if (hasRefund)
+    {
+        @if (needsReview)
         {
-            <form asp-action="Verify" method="post" class="mt-3" data-refund-form><input type="hidden" name="id" value="@order.Id" />
-                <button class="btn btn-outline-primary" data-busy-text="@Localizer["Checking…"]">@Localizer["Verify payment method"]</button>
-            </form>
+            <h2 class="h4 fw-bold">@Localizer["This refund needs an administrator's review"]</h2>
+            <p>@Localizer["A refund was reported, but this order's membership needs checking. Review the existing refund instead of starting another one."]</p>
+            <a asp-controller="PaymentOrders" asp-action="RefundReviews" asp-route-orderId="@order.Id" class="btn btn-warning mt-2">@Localizer["Review membership handling"]</a>
         }
-        @if (order.RefundRequest is { } saved)
+        else if (order.Status == PaymentOrderStatus.Refunded || order.RefundRequest?.State == VirtualPaymentRefundRequestState.Completed)
         {
-            <dl class="mt-3 mb-0"><dt>@Localizer["Refund number"]</dt><dd><code class="text-break">@saved.RefundOrderId</code></dd>
-                <dt>@Localizer["Requested at"]</dt><dd><time data-utc-time="@saved.CreatedAt.ToHtmlDateTime()"></time></dd>
-                @if (saved.CompletedAt.HasValue) { <dt>@Localizer["Completed at"]</dt><dd><time data-utc-time="@saved.CompletedAt.Value.ToHtmlDateTime()"></time></dd> }
-            </dl>
-            @if (canRefund && saved.State != VirtualPaymentRefundRequestState.Completed)
+            <h2 class="h4 fw-bold">@Localizer["This order has already been refunded"]</h2>
+            @if (RefundOrderViewModel.RefundAmount(order) is { } refunded)
+            { <p>@Localizer["Refunded amount"]: <strong>@($"¥{refunded / 100m:F2}")</strong></p> }
+            else { <p>@Localizer["The refund is recorded. Open Order details below to check the amount."]</p> }
+            @if (RefundOrderViewModel.RightsHandled(order))
+            { <p class="mb-0">@Localizer["This order's membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored."]</p> }
+            else { <p class="mb-0">@Localizer["The refund is recorded, but membership handling needs verification."]</p> }
+        }
+        else
+        {
+            @if (order.RefundRequest?.State == VirtualPaymentRefundRequestState.Accepted)
+            { <h2 class="h4 fw-bold">@Localizer["Your refund is being processed"]</h2> }
+            else { <h2 class="h4 fw-bold">@Localizer["The refund result is not confirmed yet"]</h2> }
+            <p>@Localizer["Check the existing refund below. Membership changes take effect after a successful refund is confirmed."]</p>
+        }
+        @if (order.RefundRequest is { State: not VirtualPaymentRefundRequestState.Completed })
+        {
+            @if (canRefund)
             {
                 <form asp-action="Check" method="post" class="mt-3" data-refund-form>
                     <input type="hidden" name="id" value="@order.Id" />
                     <button class="btn btn-primary" data-busy-text="@Localizer["Checking…"]">@Localizer["Check refund result"]</button>
                 </form>
-                <p class="text-muted mt-2 mb-0">@Localizer["An uncertain result is checked using the same refund number. It is never resubmitted automatically."]</p>
             }
+            else { <p class="mt-3 mb-0">@Localizer["Ask an administrator with refund permission to check the result."]</p> }
         }
-        <h3 class="h6 mt-4">@Localizer["Membership handling"]</h3>
-        @if (RefundOrderViewModel.NeedsReview(order))
-        {
-            <p>@Localizer["This membership has changed or needs reconciliation. Other purchases are preserved; review the original grant before changing rights."]</p>
-            <a asp-controller="PaymentOrders" asp-action="RefundReviews" asp-route-orderId="@order.Id" class="btn btn-outline-warning">@Localizer["Review membership handling"]</a>
-        }
-        else if (RefundOrderViewModel.RightsHandled(order)) { <p>@Localizer["This order's membership was handled. Other purchases are unchanged and the single-use coupon remains spent."]</p> }
-        else if (order.Status == PaymentOrderStatus.Refunded) { <p>@Localizer["The refund is recorded, but membership handling needs verification."]</p> }
-        else { <p>@Localizer["Membership and coupons are unchanged until a successful refund is confirmed."]</p> }
-    </div></div>
-}
-else if (order.Channel == PaymentChannel.WeChatJsApi)
-{
-    <div class="card"><div class="card-body"><h2 class="h5">@Localizer["Legacy WeChat Pay order"]</h2>
-        <p>@Localizer["Handle this order in its original WeChat Pay merchant platform. This page does not submit a virtual-payment refund for a legacy order."]</p>
-        <a href="https://pay.weixin.qq.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">@Localizer["Open WeChat Pay merchant platform"]</a>
-    </div></div>
-}
-else if (order.VirtualPaymentSnapshot?.Platform == VirtualPaymentPlatform.Apple)
-{
-    <div class="card"><div class="card-body"><h2 class="h5">@Localizer["Apple handles this refund"]</h2>
-        <p>@Localizer["Apple payments cannot be refunded by the merchant. The student must apply to Apple, which decides the outcome."]</p>
+    }
+    else if (order.Status != PaymentOrderStatus.Paid)
+    {
+        <h2 class="h4 fw-bold">@Localizer["This order cannot be refunded because no payment is confirmed"]</h2>
+        <p class="mb-0">@Localizer["There is no confirmed payment to return. If the student was charged, check the original payment record first."]</p>
+    }
+    else if (order.AmountInFen <= 0)
+    {
+        <h2 class="h4 fw-bold">@Localizer["No refund is needed for this order"]</h2>
+        <p class="mb-0">@Localizer["The student paid nothing for this order, so there is no money to return."]</p>
+    }
+    else if (order.Channel == PaymentChannel.WeChatJsApi)
+    {
+        <h2 class="h4 fw-bold">@Localizer["Refund this order in the WeChat Pay merchant platform"]</h2>
+        <p>@Localizer["This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there."]</p>
+        <a href="https://pay.weixin.qq.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-2">@Localizer["Open WeChat Pay merchant platform"]</a>
+    }
+    else if (order.Channel == PaymentChannel.WeChatVirtual && order.VirtualPaymentSnapshot?.Platform == VirtualPaymentPlatform.Apple)
+    {
+        <h2 class="h4 fw-bold">@Localizer["The student must request this refund from Apple"]</h2>
+        <p>@Localizer["This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student's request."]</p>
         <label for="apple-refund-guide" class="form-label">@Localizer["Send these instructions to the student"]</label>
         <textarea id="apple-refund-guide" rows="4" class="form-control mb-3" readonly>@Localizer["This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request."]</textarea>
         <div class="d-flex flex-wrap align-items-center gap-3">
             <button type="button" class="btn btn-primary" data-copy-refund-guide data-success-text="@Localizer["Copied"]" data-failure-text="@Localizer["Please select and copy the instructions manually."]">@Localizer["Copy student instructions"]</button>
             <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener noreferrer">@Localizer["Apple refund website"]</a>
         </div><p class="mt-3 mb-0" role="status" id="copy-refund-result"></p>
-    </div></div>
-}
-else if (order.VirtualPaymentSnapshot?.Platform == null)
-{
-    <div class="card"><div class="card-body"><h2 class="h5">@Localizer["Verify the original payment method"]</h2>
-        <p>@Localizer["This historical virtual order has not been classified. Verify its actual payment method with WeChat before choosing how to refund it. The student's current phone does not determine it."]</p>
-        @if (canRefund && order.Status == PaymentOrderStatus.Paid)
+    }
+    else if (!canRefund)
+    {
+        <h2 class="h4 fw-bold">@Localizer["Your account does not have permission to issue refunds"]</h2>
+        @if (canManageRoles)
         {
-            <form asp-action="Verify" method="post" data-refund-form><input type="hidden" name="id" value="@order.Id" />
-                <button class="btn btn-primary" data-busy-text="@Localizer["Checking…"]">@Localizer["Verify payment method"]</button>
-            </form>
+            <a asp-controller="Roles" asp-action="Index" class="btn btn-primary mt-2">@Localizer["Open role permissions"]</a>
+            <p class="text-muted mt-3 mb-0">@Localizer["Enable Refund Payment Orders for the appropriate role, then sign out and sign in again."]</p>
         }
-    </div></div>
-}
-else if (Model.CanRequest && canRefund)
-{
-    <div class="card"><div class="card-body"><h2 class="h5">@Localizer["Confirm full refund"]</h2>
-        <p>@Localizer["Refund amount"]: <strong>@($"¥{order.AmountInFen / 100m:F2}")</strong></p>
-        <p>@Localizer["The actual paid amount is returned to the original payment method. Only this order's membership grant is reversed; later purchases or manual changes may need review. A spent single-use coupon is not restored."]</p>
+        else { <p class="mb-0">@Localizer["Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again."]</p> }
+    }
+    else if (order.Channel != PaymentChannel.WeChatVirtual || order.VirtualPaymentSnapshot == null || order.PaidAt == null)
+    {
+        <h2 class="h4 fw-bold">@Localizer["Payment information is incomplete, so this refund cannot be started here"]</h2>
+        <p class="mb-0">@Localizer["Ask an administrator to check the original payment record in Order details below."]</p>
+    }
+    else if (order.PaidAt < DateTime.UtcNow.AddDays(-365))
+    {
+        <h2 class="h4 fw-bold">@Localizer["This payment is outside the refund period supported here"]</h2>
+        <p class="mb-0">@Localizer["The payment was made more than 365 days ago. This page can no longer submit its refund."]</p>
+    }
+    else if (order.VirtualPaymentSnapshot.Platform == null)
+    {
+        <h2 class="h4 fw-bold">@Localizer["Check how this order can be refunded"]</h2>
+        <p>@Localizer["We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments."]</p>
+        <form asp-action="Verify" method="post" class="mt-3" data-refund-form>
+            <input type="hidden" name="id" value="@order.Id" />
+            <button class="btn btn-primary" data-busy-text="@Localizer["Checking…"]">@Localizer["Check refund method"]</button>
+        </form>
+        <p class="text-muted mt-3 mb-0">@Localizer["This check only identifies the payment method; it does not refund the order."]</p>
+    }
+    else if (Model.CanRequest)
+    {
+        <h2 class="h4 fw-bold">@Localizer["You can request a refund for this order"]</h2>
+        <p>@Localizer["The actual paid amount will be returned to the student's original payment method."]</p>
+        <ul class="mb-3">
+            <li>@Localizer["After a successful refund, the membership from this order is reversed."]</li>
+            <li>@Localizer["A used single-use coupon is not restored."]</li>
+        </ul>
         <form asp-action="Submit" method="post" data-refund-form>
             <input type="hidden" name="id" value="@order.Id" /><input type="hidden" name="amountInFen" value="@order.AmountInFen" />
             <div class="form-check my-3"><input class="form-check-input" type="checkbox" id="confirmed" name="confirmed" value="true" required />
-                <label class="form-check-label" for="confirmed">@Localizer["I have checked the buyer, refund amount and membership consequences."]</label>
+                <label class="form-check-label" for="confirmed">@Localizer["I have checked the student, refund amount and membership changes."]</label>
             </div>
             <button class="btn btn-danger mt-2" data-busy-text="@Localizer["Submitting…"]">@Localizer["Confirm full refund"] @($"¥{order.AmountInFen / 100m:F2}")</button>
         </form>
-    </div></div>
-}
-else
-{
-    <div class="card"><div class="card-body"><p class="mb-0">@Localizer["A refund requires a confirmed nonzero payment within the platform's refund period and the Refund Payment Orders permission. Partial or conflicting refunds need administrator review."]</p></div></div>
-}
+    }
+    else
+    {
+        <h2 class="h4 fw-bold">@Localizer["This payment method is not supported for refunds here"]</h2>
+        <p class="mb-0">@Localizer["Ask an administrator to check the original payment method in Order details below."]</p>
+    }
+</div></div>
+<details class="card mb-3">
+    <summary class="card-header">@Localizer["Order details"]</summary>
+    <div class="card-body">
+        <p><strong>@Localizer["Order No"]:</strong> <code class="text-break user-select-all">@order.OutTradeNo</code></p>
+        <p><strong>@Localizer["Payment method"]:</strong> <partial name="~/Views/PaymentOrders/_PaymentChannel.cshtml" model="order" /></p>
+        <partial name="~/Views/PaymentOrders/_OrderAmounts.cshtml" model="order" />
+        @if (order.PaidAt.HasValue) { <p class="mt-3">@Localizer["Paid At"]: <time data-utc-time="@order.PaidAt.Value.ToHtmlDateTime()"></time></p> }
+        @if (order.RefundRequest is { } saved)
+        {
+            <dl class="mt-3 mb-0"><dt>@Localizer["Refund number"]</dt><dd><code class="text-break">@saved.RefundOrderId</code></dd>
+                <dt>@Localizer["Requested at"]</dt><dd><time data-utc-time="@saved.CreatedAt.ToHtmlDateTime()"></time></dd>
+                @if (saved.CompletedAt.HasValue) { <dt>@Localizer["Completed at"]</dt><dd><time data-utc-time="@saved.CompletedAt.Value.ToHtmlDateTime()"></time></dd> }
+            </dl>
+        }
+        @if (hasRefund && canRefund && order.Channel == PaymentChannel.WeChatVirtual && order.VirtualPaymentSnapshot?.Platform == null)
+        {
+            <form asp-action="Verify" method="post" class="mt-3" data-refund-form><input type="hidden" name="id" value="@order.Id" />
+                <button class="btn btn-outline-primary" data-busy-text="@Localizer["Checking…"]">@Localizer["Check refund method"]</button>
+            </form>
+        }
+        <a asp-controller="PaymentOrders" asp-action="Details" asp-route-id="@order.Id" class="btn btn-outline-secondary mt-3">@Localizer["Open full order details"]</a>
+    </div>
+</details>
 @* The scripts section is rendered by the shared UiStack Razor library. *@
 @* ReSharper disable once Razor.SectionNotResolved *@
 @section scripts { <script src="~/js/refunds.js" asp-append-version="true"></script> }
