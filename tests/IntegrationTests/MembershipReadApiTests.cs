@@ -40,8 +40,33 @@ public class MembershipReadApiTests : TestBase
     [TestCleanup]
     public override async Task CleanServer()
     {
-        await base.CleanServer();
-        if (Directory.Exists(_directory)) Directory.Delete(_directory, true);
+        try
+        {
+            if (Server != null)
+            {
+                using var scope = Server.Services.CreateScope();
+                var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+                var versions = await db.PaperSnapshots.Where(s => s.Id == _mockVersion || s.Id == _pausedVersion ||
+                    s.Id == _realVersion || s.Id == _otherVersion).ToListAsync();
+                var mockIds = versions.Where(v => v.MockPaperId.HasValue).Select(v => v.MockPaperId!.Value).ToArray();
+                var realIds = versions.Where(v => v.RealPaperId.HasValue).Select(v => v.RealPaperId!.Value).ToArray();
+                db.PaperSnapshots.RemoveRange(versions);
+                db.MockPapers.RemoveRange(await db.MockPapers.Where(p => mockIds.Contains(p.Id)).ToListAsync());
+                db.RealPapers.RemoveRange(await db.RealPapers.Where(p => realIds.Contains(p.Id)).ToListAsync());
+                db.VipMemberships.RemoveRange(await db.VipMemberships.Where(m => m.UserId == _buyer.Id || m.UserId == _other.Id).ToListAsync());
+                db.VipProducts.RemoveRange(await db.VipProducts.Where(p => p.TotalCategoryId == _course || p.TotalCategoryId == _paused ||
+                    p.InstitutionId == _school || p.InstitutionId == _otherSchool).ToListAsync());
+                db.TotalCategories.RemoveRange(await db.TotalCategories.Where(c => c.Id == _course || c.Id == _paused).ToListAsync());
+                db.Institutions.RemoveRange(await db.Institutions.Where(i => i.Id == _school || i.Id == _otherSchool).ToListAsync());
+                db.Users.RemoveRange(await db.Users.Where(u => u.Id == _buyer.Id || u.Id == _other.Id).ToListAsync());
+                await db.SaveChangesAsync();
+            }
+        }
+        finally
+        {
+            await base.CleanServer();
+            if (Directory.Exists(_directory)) Directory.Delete(_directory, true);
+        }
     }
 
     private async Task Seed(int startDays = -1, int endDays = 1)
@@ -120,7 +145,7 @@ public class MembershipReadApiTests : TestBase
         Assert.AreEqual(HttpStatusCode.Forbidden, (await Http.GetAsync($"/api/RealPapers/snapshots/{_otherVersion}")).StatusCode);
         using var scope = Server!.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
-        Assert.AreEqual(4, await db.VipMemberships.CountAsync());
+        Assert.AreEqual(4, await db.VipMemberships.CountAsync(m => m.UserId == _buyer.Id || m.UserId == _other.Id));
         Assert.AreEqual(0, await db.PaymentOrders.CountAsync());
         Assert.AreEqual(0, await db.PaymentLogs.CountAsync());
     }
