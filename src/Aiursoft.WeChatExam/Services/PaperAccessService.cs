@@ -4,13 +4,13 @@ namespace Aiursoft.WeChatExam.Services;
 
 public class PaperAccessService : IPaperAccessService
 {
-    private readonly IWeChatPayService _payService;
+    private readonly IVipMembershipService _membershipService;
     private PaperAccessStatus? _cachedStatus;
     private string? _cachedUserId;
 
-    public PaperAccessService(IWeChatPayService payService)
+    public PaperAccessService(IVipMembershipService membershipService)
     {
-        _payService = payService;
+        _membershipService = membershipService;
     }
 
     public async Task<PaperAccessStatus> GetUserAccessStatusAsync(string? userId)
@@ -20,7 +20,7 @@ public class PaperAccessService : IPaperAccessService
             return _cachedStatus;
         }
 
-        var memberships = userId == null ? [] : await _payService.GetVipStatusListAsync(userId);
+        var memberships = userId == null ? [] : await _membershipService.GetVipStatusListAsync(userId);
         var status = FromMemberships(memberships);
 
         _cachedStatus = status;

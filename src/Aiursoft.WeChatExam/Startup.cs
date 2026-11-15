@@ -86,6 +86,7 @@ public class Startup : IWebStartup
         services.AddScoped<ICouponService, CouponService>();
         // Reading payment history must also work without the legacy gateway.
         services.AddScoped<IPaymentOrderService, PaymentOrderService>();
+        services.AddScoped<IVipMembershipService, VipMembershipService>();
         services.AddScoped<IPaperAccessService, PaperAccessService>();
         services.AddScoped<ContentCheckService>();
         services.AddScoped<KnowledgeExerciseValidation>();

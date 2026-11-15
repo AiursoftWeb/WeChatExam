@@ -505,29 +505,4 @@ public class WeChatPayService(
             await fulfillmentService.CompleteAsync(order, query.TransactionId);
     }
 
-    public async Task<List<VipMembership>> GetVipStatusListAsync(string userId)
-    {
-        return await dbContext.VipMemberships
-            .Include(v => v.User)
-            .Include(v => v.VipProduct)
-            .ThenInclude(p => p!.TotalCategory)
-            .Include(v => v.VipProduct)
-            .ThenInclude(p => p!.Institution)
-            .Where(v => v.UserId == userId)
-            .ToListAsync();
-    }
-
-    public async Task<bool> HasVipForCategoryAsync(string userId, Guid categoryId)
-    {
-        return await dbContext.VipMemberships
-            .Include(v => v.VipProduct)
-            .AnyAsync(v =>
-                v.UserId == userId &&
-                v.VipProduct != null &&
-                v.VipProduct.Type == VipProductType.Category &&
-                v.VipProduct.TotalCategoryId == categoryId &&
-                v.StartTime <= DateTime.UtcNow &&
-                v.EndTime > DateTime.UtcNow);
-    }
-
 }

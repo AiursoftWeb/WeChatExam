@@ -37,15 +37,6 @@ public interface IWeChatPayService
     /// </summary>
     Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo, string? userId);
 
-    /// <summary>
-    /// 查询用户所有 VIP 状态列表
-    /// </summary>
-    Task<List<VipMembership>> GetVipStatusListAsync(string userId);
-
-    /// <summary>
-    /// 检查用户是否拥有指定分类的有效 VIP
-    /// </summary>
-    Task<bool> HasVipForCategoryAsync(string userId, Guid categoryId);
 }
 
 /// <summary>

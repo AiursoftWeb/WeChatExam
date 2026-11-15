@@ -92,6 +92,9 @@ public class TestStartupWithMockWeChat : IWebStartup
         services.AddScheduledTaskEngine();
         services.RegisterBackgroundJob<Services.BackgroundJobs.DummyJob>();
 
+        if (MockWeChatPayService == null)
+            services.AddScoped<IVipMembershipService, VipMembershipService>();
+
         // Configure Mock SKIT WeChat API Client instead of real one
         if (MockWeChatService != null)
         {
@@ -101,6 +104,7 @@ public class TestStartupWithMockWeChat : IWebStartup
         if (MockWeChatPayService != null)
         {
             services.AddScoped<IWeChatPayService>(_ => MockWeChatPayService);
+            services.AddScoped<IVipMembershipService>(_ => MockWeChatPayService);
         }
         
         if (MockDistributionChannelService != null)
