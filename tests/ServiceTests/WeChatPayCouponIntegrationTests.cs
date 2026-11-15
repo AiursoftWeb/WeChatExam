@@ -722,6 +722,43 @@ public class WeChatPayCouponIntegrationTests
     }
 
     [TestMethod]
+    [DataRow("{}")]
+    [DataRow("{\"prepay_id\":null}")]
+    [DataRow("{\"prepay_id\":\"\"}")]
+    [DataRow("{\"prepay_id\":\"   \"}")]
+    public async Task MissingPrepayIdRetainsReservationAndRetriesSameRemoteOrder(string payload)
+    {
+        var requests = new List<string>();
+        await UseCheckoutDatabaseAsync((_, body) =>
+        {
+            requests.Add(body);
+            return (System.Net.HttpStatusCode.OK, requests.Count == 1 ? payload : "{\"prepay_id\":\"recovered-prepay\"}");
+        });
+        var first = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsFalse(first.Success);
+        Assert.IsNull(first.PayParams);
+        Assert.AreEqual("WeChat could not create this payment. Please retry the same purchase.", first.ErrorMessage);
+        _dbContext.ChangeTracker.Clear();
+        var reserved = await _dbContext.PaymentOrders.SingleAsync();
+        Assert.AreEqual(PaymentOrderStatus.Pending, reserved.Status);
+        Assert.IsNull(reserved.PrepayId);
+        var retry = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsTrue(retry.Success, retry.ErrorMessage);
+        Assert.AreEqual(reserved.OutTradeNo, retry.OutTradeNo);
+        Assert.AreEqual("prepay_id=recovered-prepay", retry.PayParams!.Package);
+        Assert.HasCount(2, requests);
+        Assert.AreEqual(requests[0], requests[1]);
+        Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
+        Assert.AreEqual(0, await _dbContext.CouponUsages.CountAsync());
+        Assert.AreEqual(0, await _dbContext.VipMemberships.CountAsync());
+        Assert.AreEqual(0, await _dbContext.Changes.CountAsync());
+        var cached = await _payService.CreateOrderAsync(_userId, "openid", _productId, "RESERVED");
+        Assert.IsTrue(cached.Success, cached.ErrorMessage);
+        Assert.AreEqual(reserved.OutTradeNo, cached.OutTradeNo);
+        Assert.HasCount(2, requests);
+    }
+
+    [TestMethod]
     public async Task GatewayTimeoutRetainsReservationAndRetriesSameRemoteOrder()
     {
         var requests = new List<string>();
