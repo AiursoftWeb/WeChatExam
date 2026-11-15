@@ -269,9 +269,10 @@ public class WeChatPayService(
                 Payer = new CreatePayTransactionJsapiRequest.Types.Payer { OpenId = openId },
                 ExpireTime = new DateTimeOffset(DateTime.SpecifyKind(order.ExpiredAt, DateTimeKind.Utc))
             });
-            if (!response.IsSuccessful())
+            var prepayId = response.PrepayId;
+            if (!response.IsSuccessful() || string.IsNullOrWhiteSpace(prepayId))
                 return new CreateOrderResult { Success = false, ErrorMessage = "WeChat could not create this payment. Please retry the same purchase." };
-            order.PrepayId = response.PrepayId;
+            order.PrepayId = prepayId;
         }
         var parameters = await GetJsApiPayParamsAsync(order.PrepayId);
         return new CreateOrderResult { Success = true, OutTradeNo = order.OutTradeNo, PrepayId = order.PrepayId, PayParams = parameters,
