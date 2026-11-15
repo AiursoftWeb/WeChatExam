@@ -58,7 +58,7 @@ public class VipController(IVipMembershipService membershipService, IVipProductS
             return BadRequest(new { Message = "Specify totalCategoryId." });
 
         var products = await vipProductService.GetEnabledAsync(totalCategoryId, type, institutionId);
-        
+
         var dtos = products.Select(p => new
         {
             p.Id,
@@ -71,7 +71,7 @@ public class VipController(IVipMembershipService membershipService, IVipProductS
             p.PriceInFen,
             p.DurationDays
         }).ToList();
-        
+
         return Ok(dtos);
     }
 }
