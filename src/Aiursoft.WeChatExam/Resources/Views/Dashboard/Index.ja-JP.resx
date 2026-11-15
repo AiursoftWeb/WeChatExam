@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>モダンで機能豊富、そして高い拡張性を備えた、次世代のWebアプリケーションの基盤。</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>すべての完了した試験にわたって</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>AIによる翻訳</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>有効</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>試験用WeChatミニプログラム管理センター</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>AIによる翻訳</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>すべての依存関係は自動的に登録され、コンストラクタインジェクションを通じて常に利用可能です。</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>コンテンツ概要</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>正解</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>件数</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>記述問題</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>試験の受験回数</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>試験記録</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>こんにちは、世界！</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>データベース内</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>進行中</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>ようこそ</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>すべての完了した試験にわたって</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>正解</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>試験の受験回数</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>データベース内</value>
   </data>
 
 </root>

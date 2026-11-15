@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>関連するVIPがすべていても、この問題集のロックを解除できません。</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>既存の有効な会員資格は利用できる可能性がありますが、新規顧客には購入手段がありません。</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>既存の有効なVIPは引き続き利用できますが、現在有効な商品を購入しても、この問題を解放することはできません。</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>既存の有効な会員資格は利用できる可能性がありますが、新規顧客には購入手段がありません。</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>無料のナレッジディレクトリが有料の演習にリンクしています</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>新規顧客には現在、購入手段がありません。既存の有効な会員資格では、引き続きアクセスできる場合があります。</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>このタグ項目を解除できるVIPはいません。質問固有の科目が設定されている場合は、質問の詳細からアクセスできることがあります。</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>このタグを解除できる有効なVIP商品がありません</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>有効な商品をどのように組み合わせても、この問題を解放できません</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>この論文を利用可能にする有効な商品がありません</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>このタグを解除できる有効なVIP商品がありません</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>このタグ項目を解除できるVIPはいません。質問固有の科目が設定されている場合は、質問の詳細からアクセスできることがあります。</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>有料の問題に解放可能な科目がありません</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>対象の科目と利用可能なVIP商品を確認してください。無効化された商品によって、既存の有効なメンバーシップが無効になることはありません。</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>この機関のVIP商品を確認してください。コースVIPでは実際の試験問題は解放されませんが、全機関対象の実試験会員権は引き続き利用できます。</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>この教育機関のVIP商品を確認してください。コースVIPでは実際の試験問題は利用できません。</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>この機関のVIP商品を確認してください。コースVIPでは実際の試験問題は解放されませんが、全機関対象の実試験会員権は引き続き利用できます。</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>VIPが有効でない状態でログイン</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>この未分類の問題はすべての有料タグを必要とします。少なくとも1つのタグに科目の紐付けがありません。</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>デプロイ済みのミニプログラムは別途確認してください。このサーバーのスキャンでは、クライアント側の画面遷移をシミュレートできず、顧客がすべての画面にアクセスできることも証明できません。</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP商品</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>デプロイ済みのミニプログラムは別途確認してください。このサーバーのスキャンでは、クライアント側の画面遷移をシミュレートできず、顧客がすべての画面にアクセスできることも証明できません。</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>訪問者はナレッジの内容を閲覧できますが、この演習は匿名では403を返します。現在のビジネスルールでは、有料の演習が認められています。</value>

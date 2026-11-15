@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Χρειάζεται επανεξέταση των ελέγχων πρόσβασης στο Mini Program.</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Δεν υπάρχει αυτή τη στιγμή κατάλληλο VIP προς αγορά</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Κανένα VIP δεν μπορεί να ξεκλειδώσει αυτές τις ασκήσεις</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Κανένα VIP δεν μπορεί να ξεκλειδώσει αυτήν την ετικέτα</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Δεν υπάρχει αυτή τη στιγμή κατάλληλο VIP προς αγορά</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Οι μαθητές μπορούν να ανοίξουν αυτό το δωρεάν διαγώνισμα, ακόμη κι αν οι αρχικές ασκήσεις του είναι επί πληρωμή. Η τιμολόγηση του διαγωνίσματος είναι ανεξάρτητη από την τιμολόγηση κάθε άσκησης ξεχωριστά.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Αυτές οι ασκήσεις δεν έχουν αντιστοιχιστεί σε κάποιο μάθημα και έχουν χρεώσιμες ετικέτες χωρίς αντίστοιχο μάθημα. Ακόμη κι αν αγοραστούν όλα τα VIP, οι ασκήσεις δεν θα ξεκλειδώσουν.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Από αυτό το προϊόν VIP λείπει το μάθημα. Δεν μπορεί να παρέχει πρόσβαση στο προβλεπόμενο μάθημα.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Σε αυτό το προϊόν VIP δεν έχει οριστεί ο φορέας. Δεν μπορεί να παρέχει την προβλεπόμενη πρόσβαση σε πραγματικά διαγωνίσματα.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Αυτό το προϊόν VIP χρειάζεται ένα μάθημα</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Αυτό το προϊόν VIP απαιτεί ένα εκπαιδευτικό ίδρυμα</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Αυτή η άσκηση απαιτεί VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Αυτή η ετικέτα έχει επισημανθεί ως επί πληρωμή, αλλά δεν έχει συνδεθεί με VIP κάποιου μαθήματος. Η αγορά όλων των VIP εξακολουθεί να μην ξεκλειδώνει αυτή την ετικέτα. Οι ασκήσεις που έχουν δικό τους μάθημα ενδέχεται να είναι προσβάσιμες από άλλη οθόνη.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Από αυτό το προϊόν VIP λείπει το μάθημα. Δεν μπορεί να παρέχει πρόσβαση στο προβλεπόμενο μάθημα.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Σε αυτό το προϊόν VIP δεν έχει οριστεί ο φορέας. Δεν μπορεί να παρέχει την προβλεπόμενη πρόσβαση σε πραγματικά διαγωνίσματα.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Αυτό το προϊόν VIP χρειάζεται ένα μάθημα</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Αυτό το προϊόν VIP απαιτεί ένα εκπαιδευτικό ίδρυμα</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Οι επισκέπτες μπορούν να διαβάσουν το γνωστικό αντικείμενο, αλλά δεν μπορούν να ανοίξουν δωρεάν αυτές τις ασκήσεις.</value>

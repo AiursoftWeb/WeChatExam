@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Ακόμη και όλα τα σχετικά μέλη VIP δεν μπορούν να ξεκλειδώσουν αυτό το γραπτό.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Οι υπάρχουσες ενεργές συνδρομές ενδέχεται να λειτουργούν, αλλά οι νέοι πελάτες δεν έχουν τρόπο να αγοράσουν.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Τα VIP που είναι ήδη ενεργά εξακολουθούν να λειτουργούν, αλλά η αγορά προϊόντων που είναι αυτήν τη στιγμή ενεργοποιημένα δεν μπορεί να ξεκλειδώσει αυτήν την ερώτηση.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Οι υπάρχουσες ενεργές συνδρομές ενδέχεται να λειτουργούν, αλλά οι νέοι πελάτες δεν έχουν τρόπο να αγοράσουν.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Ο δωρεάν κατάλογος γνώσεων συνδέεται με μια επί πληρωμή άσκηση</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Οι νέοι πελάτες δεν έχουν αυτήν τη στιγμή διαθέσιμο τρόπο αγοράς. Οι υπάρχουσες ενεργές συνδρομές ενδέχεται να εξακολουθούν να παρέχουν πρόσβαση.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Κανένα VIP δεν μπορεί να ξεκλειδώσει αυτήν την καταχώριση ετικέτας. Μια ερώτηση με δικό της θέμα ενδέχεται να είναι προσβάσιμη από τις λεπτομέρειες της ερώτησης.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Κανένα ενεργό προϊόν VIP δεν ξεκλειδώνει αυτήν την ετικέτα</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Κανένας ενεργοποιημένος συνδυασμός προϊόντων δεν αποκλείει αυτό το ερώτημα</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Κανένα ενεργό προϊόν δεν ξεκλειδώνει αυτό το δοκίμιο</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Κανένα ενεργό προϊόν VIP δεν ξεκλειδώνει αυτήν την ετικέτα</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Κανένα VIP δεν μπορεί να ξεκλειδώσει αυτήν την καταχώριση ετικέτας. Μια ερώτηση με δικό της θέμα ενδέχεται να είναι προσβάσιμη από τις λεπτομέρειες της ερώτησης.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Το επί πληρωμή τεύχος δεν έχει ξεκλειδώσιμο γνωστικό αντικείμενο</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Ελέγξτε το αντικείμενο και τα διαθέσιμα προϊόντα VIP. Τα απενεργοποιημένα προϊόντα δεν ακυρώνουν τις υπάρχουσες ενεργές συνδρομές.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Ελέγξτε τα προϊόντα VIP αυτού του ιδρύματος. Τα VIP μαθημάτων δεν ξεκλειδώνουν πραγματικά διαγωνίσματα· οι υπάρχουσες συνδρομές για πραγματικές εξετάσεις σε όλα τα ιδρύματα εξακολουθούν να ισχύουν.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Ελέγξτε τα προϊόντα VIP του ιδρύματος. Τα VIP μαθημάτων δεν ξεκλειδώνουν πραγματικά διαγωνίσματα.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Ελέγξτε τα προϊόντα VIP αυτού του ιδρύματος. Τα VIP μαθημάτων δεν ξεκλειδώνουν πραγματικά διαγωνίσματα· οι υπάρχουσες συνδρομές για πραγματικές εξετάσεις σε όλα τα ιδρύματα εξακολουθούν να ισχύουν.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Συνδεδεμένος χωρίς ενεργή VIP συνδρομή</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Αυτή η ερώτηση χωρίς κατηγοριοποίηση απαιτεί όλες τις επί πληρωμή ετικέτες· τουλάχιστον μία ετικέτα δεν έχει αντιστοίχιση σε θεματική ενότητα.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Επαληθεύστε ξεχωριστά το Mini Program που έχει αναπτυχθεί. Αυτός ο έλεγχος στον διακομιστή δεν προσομοιώνει την πλοήγηση του χρήστη ούτε αποδεικνύει ότι ένας πελάτης μπορεί να μεταβεί σε κάθε οθόνη.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>Προϊόντα VIP</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Επαληθεύστε ξεχωριστά το Mini Program που έχει αναπτυχθεί. Αυτός ο έλεγχος στον διακομιστή δεν προσομοιώνει την πλοήγηση του χρήστη ούτε αποδεικνύει ότι ένας πελάτης μπορεί να μεταβεί σε κάθε οθόνη.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Οι επισκέπτες μπορούν να διαβάσουν το περιεχόμενο γνώσεων, αλλά αυτό το τεστ επιστρέφει 403 σε ανώνυμους χρήστες. Οι επί πληρωμή ασκήσεις επιτρέπονται από τους ισχύοντες επιχειρηματικούς κανόνες.</value>

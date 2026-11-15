@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>小程序入口检查需要复核</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>目前没有合适的 VIP 可供购买</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>没有任何 VIP 能解锁这些习题</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>没有 VIP 可以解锁此标签</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>目前没有合适的 VIP 可供购买</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>即使这份试卷中的原始练习需要付费，学生也可以免费打开这份试卷。试卷定价与单个练习的定价相互独立。</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>这些练习未指定所属课程，且带有找不到对应课程的付费标签。即使购买所有 VIP，也仍然无法解锁这些练习。</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>这款 VIP 产品未关联课程，因此无法授予预期的课程访问权限。</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>该 VIP 产品缺少对应的院校，因此无法授予预期的真题卷访问权限。</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>该VIP产品需要关联课程</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>此VIP产品需要关联院校</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>此练习需要 VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>此标签被标记为付费，但未关联任何课程 VIP。即使购买所有 VIP，也无法解锁此标签。拥有独立课程的练习可能可以从其他页面访问。</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>这款 VIP 产品未关联课程，因此无法授予预期的课程访问权限。</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>该 VIP 产品缺少对应的院校，因此无法授予预期的真题卷访问权限。</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>该VIP产品需要关联课程</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>此VIP产品需要关联院校</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>访客可以查看知识点，但无法免费打开这些练习。</value>

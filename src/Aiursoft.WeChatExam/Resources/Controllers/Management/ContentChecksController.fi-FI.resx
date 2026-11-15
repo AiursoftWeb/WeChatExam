@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Mini Programin sisääntulotarkistukset on tarkistettava</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Sopivaa VIP-tuotetta ei ole tällä hetkellä ostettavissa</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Mikään VIP ei voi avata näitä harjoituksia</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Mikään VIP-jäsenyys ei avaa tätä tunnistetta</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Sopivaa VIP-tuotetta ei ole tällä hetkellä ostettavissa</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Opiskelijat voivat avata tämän maksuttoman paperin, vaikka sen alkuperäiset tehtävät ovat maksullisia. Paperin ja yksittäisten tehtävien hinnoittelu ovat toisistaan riippumattomia.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Näille tehtäville ei ole määritetty kurssia, ja niissä on maksullisia tunnisteita, joihin ei liity kurssia. Niitä ei voi avata ostamalla kaikkia VIP-jäsenyyksiä.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Tästä VIP-tuotteesta puuttuu kurssi. Se ei voi myöntää pääsyä tarkoitettuun kurssiin.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Tästä VIP-tuotteesta puuttuu oppilaitos. Se ei voi myöntää tarkoitettua pääsyä oikeisiin kokeisiin.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Tämä VIP-tuote tarvitsee kurssin</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Tämä VIP-tuote tarvitsee oppilaitoksen</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Tämä harjoitus vaatii VIP-jäsenyyden</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Tämä tunniste on merkitty maksulliseksi, mutta siihen ei ole liitetty kurssikohtaista VIP-jäsenyyttä. Tunnistetta ei voi avata ostamalla kaikkia VIP-jäsenyyksiä. Harjoitukset, joilla on oma kurssi, saattavat toimia toisella näytöllä.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Tästä VIP-tuotteesta puuttuu kurssi. Se ei voi myöntää pääsyä tarkoitettuun kurssiin.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Tästä VIP-tuotteesta puuttuu oppilaitos. Se ei voi myöntää tarkoitettua pääsyä oikeisiin kokeisiin.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Tämä VIP-tuote tarvitsee kurssin</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Tämä VIP-tuote tarvitsee oppilaitoksen</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Vierailijat voivat lukea tietopisteen, mutta eivät voi avata näitä harjoituksia maksutta.</value>

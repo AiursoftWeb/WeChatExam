@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Μοντέλο ενσωμάτωσης</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Ενεργοποίηση της δημιουργίας διανυσματικών αναπαραστάσεων στο παρασκήνιο για ερωτήσεις και σημεία γνώσης.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Ενεργοποίηση αναζήτησης βάσει διανυσματικών ενσωματώσεων</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Ενεργοποίηση της δημιουργίας διανυσματικών αναπαραστάσεων στο παρασκήνιο για ερωτήσεις και σημεία γνώσης.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Αριθμός ΑΔΚ</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>Η εντολή AI για βαθμολόγηση ερωτήσεων. Χρησιμοποιήστε το {0} για το περιεχόμενο, το {1} για τη σωστή απάντηση, το {2} για την εξήγηση, το {3} για την απάντηση του μαθητή και το {4} για τη μέγιστη βαθμολογία.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>Ο αριθμός άδειας ICP για χρήστες της Κίνας. Αφήστε κενό για να κρυφτεί.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Ο βασικός URL της API του Ollama για ενσωματώσεις. Χρησιμοποιείται μόνο ο υπολογιστής; το /api/embed προστίθεται αυτόματα. Επιστρέφει στο τελικό σημείο συμπλήρωσης της OpenAI όταν είναι κενό.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Το όνομα της εταιρείας που εμφανίζεται στον ποδόσκαλο.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Το μοντέλο ενσωμάτωσης για τις ερωτήσεις και τα σημεία γνώσης. Τα υπάρχοντα διανύσματα ακολουθούν τη σύμβαση ευρετηρίου 1024 διαστάσεων του bge-m3.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>Ο αριθμός άδειας ICP για χρήστες της Κίνας. Αφήστε κενό για να κρυφτεί.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Το λογότυπο του έργου που εμφανίζεται στην ναβιγατόρια και τον πόδα. Υποστήριξη jpg, png, svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Το όνομα του έργου που εμφανίζεται στην εμπρόσθια όψη.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>Ο βασικός URL της API του Ollama για ενσωματώσεις. Χρησιμοποιείται μόνο ο υπολογιστής; το /api/embed προστίθεται αυτόματα. Επιστρέφει στο τελικό σημείο συμπλήρωσης της OpenAI όταν είναι κενό.</value>
   </data>
 
 </root>

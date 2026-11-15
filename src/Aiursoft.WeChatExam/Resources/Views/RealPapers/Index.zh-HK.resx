@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} minutes" xml:space="preserve">
-    <value>{0} 分鐘</value>
-  </data>
-  <data name="All institutions" xml:space="preserve">
+      <data name="All institutions" xml:space="preserve">
     <value>所有院校</value>
   </data>
   <data name="Create Real Paper" xml:space="preserve">
@@ -60,11 +57,11 @@
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>第 {0} 頁，共 {1} 頁</value>
   </data>
-  <data name="Paper pages" xml:space="preserve">
-    <value>試卷頁面</value>
-  </data>
   <data name="Paper Settings" xml:space="preserve">
     <value>試卷設定</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>試卷頁面</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>上一頁</value>
@@ -104,6 +101,9 @@
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>版本及發佈</value>
+  </data>
+  <data name="{0} minutes" xml:space="preserve">
+    <value>{0} 分鐘</value>
   </data>
 
 </root>

@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Access Denied" xml:space="preserve">
+      <data name="AI Assistant" xml:space="preserve">
+    <value>एआई सहायक</value>
+  </data>
+  <data name="Access Denied" xml:space="preserve">
     <value>पहुँच अस्वीकृत</value>
   </data>
   <data name="Accounting Reports" xml:space="preserve">
@@ -32,9 +35,6 @@
   </data>
   <data name="Advanced Management" xml:space="preserve">
     <value>उन्नत प्रबंधन</value>
-  </data>
-  <data name="AI Assistant" xml:space="preserve">
-    <value>एआई सहायक</value>
   </data>
   <data name="Anonymous" xml:space="preserve">
     <value>अनाम</value>
@@ -371,6 +371,12 @@
   </data>
   <data name="Real Papers" xml:space="preserve">
     <value>वास्तविक प्रश्नपत्र</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>रिफंड प्रबंधन</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>रीफ़ंड प्रबंधन</value>
   </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>रीफंड समायोजन रिकॉर्ड</value>

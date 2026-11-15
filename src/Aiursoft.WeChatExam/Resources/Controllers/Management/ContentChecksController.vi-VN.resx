@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Cần rà soát các kiểm tra quyền truy cập Mini Program</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Hiện chưa có VIP phù hợp để mua</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Không có gói VIP nào có thể mở khóa các bài tập này</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Không có gói VIP nào mở khóa được thẻ này</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Hiện chưa có VIP phù hợp để mua</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Học sinh có thể mở đề thi miễn phí này ngay cả khi các bài tập gốc trong đó phải trả phí. Giá của đề thi và giá của từng bài tập được tính độc lập.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Các bài tập này chưa được gán khóa học và có các thẻ tính phí nhưng không có khóa học tương ứng. Dù mua tất cả gói VIP cũng không thể mở khóa chúng.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Sản phẩm VIP này chưa được gắn khóa học. Vì vậy, sản phẩm không thể cấp quyền truy cập vào khóa học dự kiến.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Sản phẩm VIP này chưa được gán cho tổ chức nào nên không thể cấp quyền truy cập dự kiến vào đề thi thật.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Sản phẩm VIP này cần có khóa học</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Sản phẩm VIP này cần có một đơn vị.</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Bài tập này cần có gói VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Thẻ này được đánh dấu là có tính phí nhưng chưa được liên kết với VIP khóa học nào. Dù mua tất cả VIP cũng không thể mở khóa thẻ này. Các bài tập có khóa học riêng có thể truy cập được từ màn hình khác.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Sản phẩm VIP này chưa được gắn khóa học. Vì vậy, sản phẩm không thể cấp quyền truy cập vào khóa học dự kiến.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Sản phẩm VIP này chưa được gán cho tổ chức nào nên không thể cấp quyền truy cập dự kiến vào đề thi thật.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Sản phẩm VIP này cần có khóa học</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Sản phẩm VIP này cần có một đơn vị.</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Khách truy cập có thể đọc mục kiến thức, nhưng không thể mở miễn phí các bài tập này.</value>

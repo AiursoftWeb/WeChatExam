@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>미니 프로그램 진입 경로 점검이 필요합니다</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>현재 구매할 수 있는 적합한 VIP가 없습니다</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>이 연습 문제들을 이용할 수 있는 VIP가 없습니다</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>어떤 VIP로도 이 태그를 잠금 해제할 수 없습니다</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>현재 구매할 수 있는 적합한 VIP가 없습니다</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>학생은 원래 문제가 유료여도 이 무료 시험지를 열 수 있습니다. 시험지 가격과 개별 문제 가격은 서로 별개입니다.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>이 연습 문제들은 배정된 강좌가 없고, 연결된 강좌가 없는 유료 태그가 붙어 있습니다. 모든 VIP 상품을 구매해도 잠금을 해제할 수 없습니다.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>이 VIP 상품에는 관련 강의가 없습니다. 의도한 강의 접근 권한을 부여할 수 없습니다.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>이 VIP 상품에는 기관이 설정되어 있지 않습니다. 따라서 의도한 실제 시험지 이용 권한을 부여할 수 없습니다.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>이 VIP 상품에는 과정이 필요합니다</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>이 VIP 상품에는 기관이 필요합니다</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>이 연습 문제에는 VIP가 필요합니다</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>이 태그는 유료로 표시되어 있지만 연결된 코스 VIP가 없습니다. 모든 VIP를 구매해도 이 태그를 해제할 수 없습니다. 자체 코스가 있는 연습 문제는 다른 화면에서 이용할 수 있을 수도 있습니다.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>이 VIP 상품에는 관련 강의가 없습니다. 의도한 강의 접근 권한을 부여할 수 없습니다.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>이 VIP 상품에는 기관이 설정되어 있지 않습니다. 따라서 의도한 실제 시험지 이용 권한을 부여할 수 없습니다.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>이 VIP 상품에는 과정이 필요합니다</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>이 VIP 상품에는 기관이 필요합니다</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>방문자는 지식 포인트를 읽을 수 있지만, 이 연습 문제는 무료로 열람할 수 없습니다.</value>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>実際の支払価格</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>全期間 · この商品</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>平均支払価格</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>商品一覧に戻る</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>プラットフォーム手数料およびコスト前</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>購入者</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>購入者のご注文</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>割引</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>支払い価格から購入者や注文まで、各販売を追跡します。</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>無料リクエスト</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>まだ確定した有料購入はありません。</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>このグループには注文がありません。</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>注文金額</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>注文グループ</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>注文構成</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>注文番号</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>受注売上</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>元の価格</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>ページナビゲーション</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>支払日時</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>支払価格</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>有料販売</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>購入者数</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>決済方法</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>価格は保存された注文額に基づいています。異なる価格を支払った購入者は各価格グループに計上され、購入者の総数は重複を排除して集計されています。</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>商品売上</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>1件あたりの受取額</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>返金注文金額</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>返金済み注文</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>返品および無料クレームは除外</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>返金が照合待ちです。これらの売上は、実際の保有額より過大に表示される可能性があります。</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>リピート購入は1回として集計</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>返金を確認</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>購入時の保存額 · 注文を開いて履歴全体を確認</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>グループを選択して、その注文を確認してください。</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>シェア</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>購入者の実質支払額 · 有料注文の割合</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>人</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>件</value>
+  </data>
+
+</root>

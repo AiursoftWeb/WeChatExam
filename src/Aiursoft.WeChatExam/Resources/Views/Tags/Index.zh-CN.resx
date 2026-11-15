@@ -78,20 +78,11 @@
   <data name="No tags match your search query." xml:space="preserve">
     <value>没有标签匹配您的搜索条件。</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>题目</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>搜索</value>
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>搜索标签...</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>已选</value>
-  </data>
-  <data name="selected tags? This action cannot be undone." xml:space="preserve">
-    <value>已选择的标签？此操作无法撤销。</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>标签名称</value>
@@ -110,6 +101,15 @@
   </data>
   <data name="VIP Required" xml:space="preserve">
     <value>需要 VIP</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>题目</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>已选</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>已选择的标签？此操作无法撤销。</value>
   </data>
 
 </root>

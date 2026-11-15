@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>アクティブ</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>アイテム</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>1ページあたりのアイテム数</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>VIPメンバーシップが見つかりません</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>の</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>前へ</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>リセット</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>ユーザーまたは製品名で検索...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>検索キーワード</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>ユーザーまたは製品名で検索...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>表示中</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>開始時刻</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>to</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>ユーザー</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>VIPメンバーシップ</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>アイテム</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>の</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>to</value>
   </data>
 
 </root>

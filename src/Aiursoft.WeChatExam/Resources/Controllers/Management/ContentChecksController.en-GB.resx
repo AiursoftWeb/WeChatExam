@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Mini Program entry checks need reviewing</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>No suitable VIP is currently available to purchase</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>No VIP can unlock these exercises</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>No VIP can unlock this tag</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>No suitable VIP is currently available to purchase</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Students can access this free paper even if its original exercises are paid. The paper’s price and the prices of individual exercises are independent.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>These exercises have no course assigned and have paid tags that are not linked to a course. Buying every VIP still will not unlock them.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>This VIP product is missing its course. It cannot provide access to the intended course.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>This VIP product is missing its institution. It cannot grant the intended real-paper access.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>This VIP product requires a course</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>This VIP product needs an institution</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>This exercise requires VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>This VIP product is missing its course. It cannot provide access to the intended course.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>This VIP product is missing its institution. It cannot grant the intended real-paper access.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>This VIP product requires a course</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>This VIP product needs an institution</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Visitors can read the knowledge point, but cannot access these exercises for free.</value>

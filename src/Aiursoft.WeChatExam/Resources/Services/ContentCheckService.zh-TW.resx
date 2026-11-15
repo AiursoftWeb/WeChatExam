@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>即使所有相關 VIP 都無法解鎖這份試卷。</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>現有的有效會員資格可能仍可使用，但新客戶沒有可購買的途徑。</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>現有的有效 VIP 仍可正常使用，但購買目前已啟用的產品無法解鎖此問題。</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>現有的有效會員資格可能仍可使用，但新客戶沒有可購買的途徑。</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>免費知識目錄連結至付費練習</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>新客戶目前沒有可用的購買管道。現有的有效會員資格仍可能授予存取權限。</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>沒有任何 VIP 可以解鎖此標籤項目。具有自身主旨的問題仍可能透過問題詳細資料存取。</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>沒有已啟用的 VIP 產品可解鎖此標籤</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>沒有任何已啟用的商品組合能解鎖此題</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>沒有已啟用的產品可解鎖此試卷</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>沒有已啟用的 VIP 產品可解鎖此標籤</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>沒有任何 VIP 可以解鎖此標籤項目。具有自身主旨的問題仍可能透過問題詳細資料存取。</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>付費試卷沒有可解鎖的科目</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>請檢查主題及可購買的 VIP 產品。停用產品不會使現有的有效會員資格失效。</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>請檢視此機構的 VIP 產品。課程 VIP 無法解鎖正式考卷；現有的全機構正式考試會員資格仍可使用。</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>請檢查此機構的 VIP 產品。課程 VIP 無法解鎖正式試卷。</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>請檢視此機構的 VIP 產品。課程 VIP 無法解鎖正式考卷；現有的全機構正式考試會員資格仍可使用。</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>已登入但沒有啟用中的 VIP</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>這道未分類的題目需要所有付費標籤；至少有一個標籤未對應任何科目。</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>請另外確認已部署的小程式。此伺服器掃描不會模擬用戶端導覽，也無法證明顧客能進入每個畫面。</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP 商品</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>請另外確認已部署的小程式。此伺服器掃描不會模擬用戶端導覽，也無法證明顧客能進入每個畫面。</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>訪客可以閱讀知識內容，但未登入時，此練習會回傳 403。依照目前的業務規則，付費練習是允許的。</value>

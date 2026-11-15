@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Model osadzeń</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Włącz generowanie osadzeń w tle dla pytań i punktów wiedzy.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Włącz wyszukiwanie na podstawie wektorów</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Włącz generowanie osadzeń w tle dla pytań i punktów wiedzy.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Numer ICP</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>Prompt AI do oceniania pytań. Użyj {0} dla treści, {1} dla prawidłowej odpowiedzi, {2} dla wyjaśnienia, {3} dla odpowiedzi ucznia oraz {4} dla maksymalnej liczby punktów.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>Numer licencji ICP dla użytkowników z Chin kontynentalnych. Pozostaw puste, aby ukryć.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Bazowy adres URL API Ollama dla osadzeń. Wykorzystywana jest tylko nazwa hosta; ścieżka /api/embed jest dołączana automatycznie. W przypadku pustej wartości używany jest punkt końcowy uzupełniania OpenAI.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Nazwa marki wyświetlana w stopce.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Model osadzający dla pytań i punktów wiedzy. Istniejące wektory korzystają z kontraktu indeksu bge-m3 o wymiarze 1024.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>Numer licencji ICP dla użytkowników z Chin kontynentalnych. Pozostaw puste, aby ukryć.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Logo projektu wyświetlany w pasku nawigacyjnym i stopce. Obsługiwane formaty: jpg, png, svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Nazwa projektu wyświetlana w interfejsie użytkownika.</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>Bazowy adres URL API Ollama dla osadzeń. Wykorzystywana jest tylko nazwa hosta; ścieżka /api/embed jest dołączana automatycznie. W przypadku pustej wartości używany jest punkt końcowy uzupełniania OpenAI.</value>
   </data>
 
 </root>

@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>金額</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>金額</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>金額は注文に保存されます。未確認の注文は完了した購入ではありません。</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>一覧に戻る</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>支払い履歴</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>決済手段</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>商品</value>

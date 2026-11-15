@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Ngay cả tất cả hội viên VIP phù hợp cũng không thể mở khóa đề thi này.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Các gói thành viên đang hoạt động hiện tại có thể vẫn dùng được, nhưng khách hàng mới không có cách nào mua.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Các VIP hiện đang hoạt động vẫn có thể sử dụng, nhưng việc mua các sản phẩm đang được bật hiện tại không thể mở khóa câu hỏi này.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Các gói thành viên đang hoạt động hiện tại có thể vẫn dùng được, nhưng khách hàng mới không có cách nào mua.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Thư mục kiến thức miễn phí liên kết đến một bài tập trả phí</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Khách hàng mới hiện không có kênh mua hàng nào. Thành viên hiện tại còn hiệu lực vẫn có thể được cấp quyền truy cập.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Không có VIP nào có thể mở khóa mục thẻ này. Câu hỏi có chủ đề riêng vẫn có thể truy cập được qua phần chi tiết câu hỏi.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Không có sản phẩm VIP nào đang được kích hoạt để mở khóa thẻ này</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Không có tổ hợp sản phẩm nào đang được bật có thể mở khóa câu hỏi này</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Không có sản phẩm nào đang được bật để mở khóa đề thi này</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Không có sản phẩm VIP nào đang được kích hoạt để mở khóa thẻ này</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Không có VIP nào có thể mở khóa mục thẻ này. Câu hỏi có chủ đề riêng vẫn có thể truy cập được qua phần chi tiết câu hỏi.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Đề thi trả phí không có môn học nào có thể mở khóa</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Hãy kiểm tra môn học và các sản phẩm VIP hiện có. Sản phẩm bị vô hiệu hóa không làm mất hiệu lực các gói thành viên đang hoạt động.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Xem lại các sản phẩm VIP của cơ sở này. VIP khóa học không mở khóa đề thi chính thức; các gói thành viên kỳ thi chính thức áp dụng cho toàn bộ cơ sở hiện có vẫn hoạt động.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Hãy xem xét các gói VIP của cơ sở này. Gói VIP khóa học không mở khóa các đề thi chính thức.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Xem lại các sản phẩm VIP của cơ sở này. VIP khóa học không mở khóa đề thi chính thức; các gói thành viên kỳ thi chính thức áp dụng cho toàn bộ cơ sở hiện có vẫn hoạt động.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Đã đăng nhập nhưng không có VIP đang hoạt động</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Câu hỏi chưa được phân loại này yêu cầu tất cả các thẻ trả phí; ít nhất một thẻ chưa được ánh xạ với môn học nào.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Hãy kiểm tra riêng Mini Program đã triển khai. Bản quét phía máy chủ này không mô phỏng quá trình điều hướng của ứng dụng khách và cũng không chứng minh được rằng khách hàng có thể truy cập mọi màn hình.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>Sản phẩm VIP</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Hãy kiểm tra riêng Mini Program đã triển khai. Bản quét phía máy chủ này không mô phỏng quá trình điều hướng của ứng dụng khách và cũng không chứng minh được rằng khách hàng có thể truy cập mọi màn hình.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Khách truy cập có thể đọc nội dung kiến thức, nhưng bài tập này trả về lỗi 403 khi người dùng chưa đăng nhập. Theo quy tắc nghiệp vụ hiện hành, bài tập có thể yêu cầu trả phí.</value>

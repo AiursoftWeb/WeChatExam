@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>De controles voor de toegang tot het miniprogramma moeten worden nagekeken</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Er is momenteel geen geschikte VIP beschikbaar om te kopen</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Geen enkele VIP kan deze oefeningen ontgrendelen</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Geen enkele VIP kan deze tag ontgrendelen</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Er is momenteel geen geschikte VIP beschikbaar om te kopen</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Leerlingen kunnen dit gratis proefwerk openen, ook als de oorspronkelijke oefeningen betaald zijn. De prijs van het proefwerk staat los van de prijs van de afzonderlijke oefeningen.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Aan deze oefeningen is geen cursus toegewezen en ze hebben betaalde tags zonder bijbehorende cursus. Zelfs als je alle VIP-abonnementen koopt, kun je ze nog steeds niet ontgrendelen.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Bij dit VIP-product ontbreekt de cursus. Het geeft daardoor geen toegang tot de beoogde cursus.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Dit VIP-product is niet aan een instelling gekoppeld. Het kan daardoor geen toegang verlenen tot het bedoelde echte examenpapier.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Voor dit VIP-product is een cursus vereist</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Voor dit VIP-product is een instelling vereist</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Voor deze oefening is VIP nodig</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Deze tag is gemarkeerd als betaald, maar er is geen VIP voor een cursus aan gekoppeld. Zelfs als je alle VIP&apos;s koopt, kun je deze tag nog steeds niet ontgrendelen. Oefeningen met een eigen cursus zijn mogelijk wel toegankelijk via een ander scherm.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Bij dit VIP-product ontbreekt de cursus. Het geeft daardoor geen toegang tot de beoogde cursus.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Dit VIP-product is niet aan een instelling gekoppeld. Het kan daardoor geen toegang verlenen tot het bedoelde echte examenpapier.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Voor dit VIP-product is een cursus vereist</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Voor dit VIP-product is een instelling vereist</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Bezoekers kunnen het kennisitem lezen, maar deze oefeningen niet gratis openen.</value>

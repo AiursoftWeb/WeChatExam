@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>金額</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>金額</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>一覧に戻る</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>クーポンコード</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>作成日時</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>現在のアクセス権には、後日の購入や手動での変更が含まれる場合があります。支払いが確認されたからといって、現在のメンバーシップが有効であるとは限りません。</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>現在のメンバーシップ</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>説明</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>終了</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>有効期限</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>まだログはありません</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>この商品の会員記録がありません</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>注文情報</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>支払い注文の詳細</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>支払方法</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>商品</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>返金処理</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>返金管理</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>開始日</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>ステータス</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>技術的な支払いログ</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>ユーザー</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>返金照合記録を表示</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>ユーザーの支払い履歴を表示</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>WeChat 取引 ID</value>

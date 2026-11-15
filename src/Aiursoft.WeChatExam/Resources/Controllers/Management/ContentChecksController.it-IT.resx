@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>È necessario rivedere i controlli di accesso al Mini Program.</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Al momento non è disponibile alcun VIP adatto da acquistare</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Nessun VIP può sbloccare questi esercizi</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Nessun VIP può sbloccare questo tag</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Al momento non è disponibile alcun VIP adatto da acquistare</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Gli studenti possono aprire questo compito gratuito anche se gli esercizi originali sono a pagamento. Il prezzo del compito è indipendente da quello dei singoli esercizi.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Questi esercizi non hanno un corso assegnato e sono associati a tag a pagamento senza un corso corrispondente. Neanche acquistando tutti i VIP sarà possibile sbloccarli.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>A questo prodotto VIP manca il corso. Non può concedere l&apos;accesso al corso previsto.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Questo prodotto VIP non è associato a un istituto. Non può quindi garantire l’accesso previsto ai compiti d’esame reali.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Questo prodotto VIP richiede un corso</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Questo prodotto VIP ha bisogno di un ente.</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Questo esercizio richiede un VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Questo tag è contrassegnato come a pagamento, ma non è associato a nessun VIP del corso. Anche acquistando tutti i VIP, non sarà comunque possibile sbloccare questo tag. Gli esercizi associati a un corso specifico potrebbero essere accessibili da un’altra schermata.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>A questo prodotto VIP manca il corso. Non può concedere l&apos;accesso al corso previsto.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Questo prodotto VIP non è associato a un istituto. Non può quindi garantire l’accesso previsto ai compiti d’esame reali.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Questo prodotto VIP richiede un corso</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Questo prodotto VIP ha bisogno di un ente.</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>I visitatori possono consultare il punto della lezione, ma non possono accedere gratuitamente a questi esercizi.</value>

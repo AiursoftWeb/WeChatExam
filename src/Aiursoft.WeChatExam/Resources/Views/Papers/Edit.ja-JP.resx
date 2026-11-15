@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- カテゴリを選択 (任意) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AIセマンティック検索</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AIセマンティック検索は使用されませんでした。キーワード検索の結果を表示しています。</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>追加</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>詳細設定：タグ式（MTQL）</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>AIセマンティック検索</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>AIセマンティック検索は使用されませんでした。キーワード検索の結果を表示しています。</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>すべての種類</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>デフォルトスコア</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>削除</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>下書き</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>例: rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>用紙を編集</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>試験問題の種類</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>完全一致する語句と関連する意味を検索します。</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>問題を検索</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>類似する問題を探す</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>完全一致する語句と関連する意味を検索します。</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>無料の試験</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>検索して質問を追加</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>検索を利用できません。もう一度お試しください。</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>検索モード</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>検索を利用できません。もう一度お試しください。</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>検索中...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>選択したカテゴリ（未選択の場合は全カテゴリ）から最大5件の類似問題を抽出します。既存の試験問題は除外されます。追加する候補を選択してください。元の質問は変更されません。</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例: rock &amp;&amp; not metal</value>
   </data>
 
 </root>

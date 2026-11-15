@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>İlgili tüm VIP&apos;ler bile bu makalenin kilidini açamaz.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Mevcut aktif üyelikler çalışabilir, ancak yeni müşterilerin satın alma olanağı yoktur.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Mevcut aktif VIP’ler hâlâ işe yarayabilir, ancak şu anda etkin olan ürünleri satın almak bu sorunun kilidini açamaz.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Mevcut aktif üyelikler çalışabilir, ancak yeni müşterilerin satın alma olanağı yoktur.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Ücretsiz bilgi dizini, ücretli bir alıştırmaya bağlantı veriyor</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Yeni müşteriler şu anda satın alma yoluna sahip değil. Mevcut aktif üyelikler yine de erişim sağlayabilir.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Hiçbir VIP bu etiket kaydının kilidini açamaz. Kendi konusuna sahip bir soruya yine de soru ayrıntıları üzerinden erişilebilir.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Bu etiketi açan etkin bir VIP ürünü yok</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Etkin ürün kombinasyonlarının hiçbiri bu sorunun kilidini açmıyor.</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Bu makalenin kilidini açan etkin bir ürün yok</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Bu etiketi açan etkin bir VIP ürünü yok</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Hiçbir VIP bu etiket kaydının kilidini açamaz. Kendi konusuna sahip bir soruya yine de soru ayrıntıları üzerinden erişilebilir.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Ücretli sınavın kilidini açabilecek bir konusu yok</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Konuyu ve mevcut VIP ürünlerini gözden geçirin. Devre dışı bırakılan ürünler, mevcut aktif üyelikleri geçersiz kılmaz.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Bu kurumun VIP ürünlerini inceleyin. Kurs VIP’leri gerçek sınav kâğıtlarının kilidini açmaz; tüm kurumları kapsayan mevcut gerçek sınav üyelikleri çalışmaya devam eder.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Bu kuruma ait VIP ürünlerini gözden geçirin. Kurs VIP’leri gerçek sınavlara erişim sağlamaz.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Bu kurumun VIP ürünlerini inceleyin. Kurs VIP’leri gerçek sınav kâğıtlarının kilidini açmaz; tüm kurumları kapsayan mevcut gerçek sınav üyelikleri çalışmaya devam eder.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Etkin VIP üyeliği olmadan oturum açmış</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Kategorisiz bu soru, ücretli etiketlerin tümünü gerektiriyor; en az bir etiketin konu eşlemesi yok.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Yayına alınmış Mini Program&apos;ı ayrıca doğrulayın. Bu sunucu taraması, istemci gezinmesini simüle etmez veya müşterilerin her ekrana erişebileceğini kanıtlamaz.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP ürünleri</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Yayına alınmış Mini Program&apos;ı ayrıca doğrulayın. Bu sunucu taraması, istemci gezinmesini simüle etmez veya müşterilerin her ekrana erişebileceğini kanıtlamaz.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Ziyaretçiler bilgi içeriğini okuyabilir, ancak bu alıştırma anonim erişimde 403 hatası döndürür. Mevcut iş kuralları ücretli alıştırmalara izin verir.</value>

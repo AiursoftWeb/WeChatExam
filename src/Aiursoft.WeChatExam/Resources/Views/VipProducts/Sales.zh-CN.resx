@@ -102,9 +102,6 @@
   <data name="Payment channel" xml:space="preserve">
     <value>支付渠道</value>
   </data>
-  <data name="people" xml:space="preserve">
-    <value>人</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
   </data>
@@ -144,11 +141,14 @@
   <data name="Share" xml:space="preserve">
     <value>占比</value>
   </data>
-  <data name="units" xml:space="preserve">
-    <value>套</value>
-  </data>
   <data name="What buyers paid · share of paid orders" xml:space="preserve">
     <value>实际成交价 · 占付费销量的比例</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>人</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>套</value>
   </data>
 
 </root>

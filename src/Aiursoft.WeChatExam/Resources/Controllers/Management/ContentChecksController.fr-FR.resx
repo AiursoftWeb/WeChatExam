@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Les contrôles d’accès du mini-programme doivent être vérifiés</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Aucun forfait VIP adapté n’est actuellement disponible à l’achat.</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Aucun VIP ne peut débloquer ces exercices</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Aucun VIP ne peut déverrouiller cette étiquette</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Aucun forfait VIP adapté n’est actuellement disponible à l’achat.</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Les élèves peuvent ouvrir ce sujet gratuit même si les exercices d’origine sont payants. Le prix du sujet et celui de chaque exercice sont indépendants.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Ces exercices ne sont associés à aucun cours et comportent des étiquettes payantes sans cours correspondant. Même en achetant tous les VIP, il est impossible de les débloquer.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Ce produit VIP n’est associé à aucun cours. Il ne peut donc pas donner accès au cours prévu.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Ce produit VIP n’est associé à aucun établissement. Il ne peut donc pas donner accès aux sujets d’examen réels concernés.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Ce produit VIP nécessite une formation.</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Ce produit VIP doit être associé à un établissement</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Cet exercice nécessite un accès VIP</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Cette étiquette est marquée comme payante, mais aucun VIP de cours ne lui est associé. Même en achetant tous les VIP, il est impossible de débloquer cette étiquette. Les exercices associés à leur propre cours peuvent être accessibles depuis un autre écran.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Ce produit VIP n’est associé à aucun cours. Il ne peut donc pas donner accès au cours prévu.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Ce produit VIP n’est associé à aucun établissement. Il ne peut donc pas donner accès aux sujets d’examen réels concernés.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Ce produit VIP nécessite une formation.</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Ce produit VIP doit être associé à un établissement</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Les visiteurs peuvent consulter ce point de connaissance, mais ne peuvent pas accéder gratuitement à ces exercices.</value>

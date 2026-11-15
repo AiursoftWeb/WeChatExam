@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>凍結済み</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>分</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>模擬試験問題</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>問題紙ステータスフィルター</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>点</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>前へ</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>公開可能</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>問</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>本番用問題用紙</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>実試験</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>本番用問題用紙</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>検索</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>別のタイトルやステータスフィルターをお試しください。</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>点</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>問</value>
   </data>
 
 </root>

@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>追加されていない該当する質問は{0}件です</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0}問 · {1}点</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>このページで{0}件選択中</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>選択した問題を追加</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>該当する試験問題をすべて（{0}件）追加しますか？</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>このコースから問題を追加</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>選択した問題を追加</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>すべての期間</value>
@@ -99,11 +90,11 @@
   <data name="Published Versions" xml:space="preserve">
     <value>公開済みバージョン</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>質問ページ</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>問題の種類</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>質問ページ</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>参考答案と解説</value>
@@ -132,11 +123,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>問題を検索</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>このページのすべてを選択</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>問題を選択</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>このページのすべてを選択</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>選択済みの質問</value>
@@ -158,6 +149,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>詳細を表示</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>追加されていない該当する質問は{0}件です</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0}問 · {1}点</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>このページで{0}件選択中</value>
   </data>
 
 </root>

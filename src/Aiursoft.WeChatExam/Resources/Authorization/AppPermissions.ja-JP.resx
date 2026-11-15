@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>VIP 商品の追加</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>所有者にかかわらず試験の閲覧を許可します。</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>所有権に関係なく、任意のknowledgePointを追加できます。</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>ユーザーのメールアドレスやロールなどの詳細情報の変更を許可し、ユーザーのパスワードをリセットすることもできます。</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>グローバルシステム設定の変更を許可します。</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>価格、期間、有効ステータスを含む VIP 製品設定の変更を許可します。</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>所有者にかかわらず試験の閲覧を許可します。</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>グローバルシステム設定の変更を許可します。</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>所有者の所有権にかかわらず、質問の閲覧を許可します。</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>VIP 製品の恒久的な削除を許可します。</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>配信チャネルの永続的な削除を許可します。</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>ユーザーアカウントの完全削除を許可します。</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>VIP 製品の恒久的な削除を許可します。</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>AIを活用して、質問の回答および解説を最適化するバックグラウンドジョブを開始できる。</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>ユーザーフィードバックのステータス更新を許可します。</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>支払い方法の確認、完全な仮想決済の返金請求、およびその結果の確認を許可します。</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>VIP 製品とその設定を表示できます。</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>バックグラウンドジョブキューの表示および管理、および実行状態の確認を許可します。</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>ユーザーフィードバックの一覧を表示できます。</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>VIP 製品とその設定を表示できます。</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>ユーザーの VIP メンバーシップの表示、追加、削除を許可します。</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>このアプリを再起動</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>返金注文</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>最適化ジョブの実行</value>

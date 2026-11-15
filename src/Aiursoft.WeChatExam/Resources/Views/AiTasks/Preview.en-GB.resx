@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>Abandon</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>Adopt</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>Adopt All</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>AI New Answer</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI Task Preview</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>Abandon</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>Adopt</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Adopt All</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>Are you sure you want to adopt all AI suggestions?</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>Current Category</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>Current period</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>Current Tags</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>Current period</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>Save &amp; Adopt</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>Select a period</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Select Category</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Select a period</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>Suggested Category</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>Suggested period</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Suggested Tags</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>Suggested period</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>Tasks are still processing. Do you want to adopt the completed ones and abandon the rest?</value>

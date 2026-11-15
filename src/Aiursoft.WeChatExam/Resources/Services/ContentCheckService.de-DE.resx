@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Selbst alle relevanten VIPs können dieses Paper nicht freischalten.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Bestehende aktive Mitgliedschaften können weiterhin funktionieren, aber Neukunden haben keine Möglichkeit, einen Kauf zu tätigen.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Bestehende aktive VIPs können weiterhin funktionieren, aber der Kauf derzeit aktivierter Produkte kann diese Frage nicht entsperren.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Bestehende aktive Mitgliedschaften können weiterhin funktionieren, aber Neukunden haben keine Möglichkeit, einen Kauf zu tätigen.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Kostenloses Wissensverzeichnis verknüpft mit einer kostenpflichtigen Übung</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Neukunden haben derzeit keine Möglichkeit zum Kauf. Bestehende aktive Mitgliedschaften können weiterhin Zugriff gewähren.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Kein VIP kann diesen Tag-Eintrag freischalten. Eine Frage mit einem eigenen Fachgebiet ist möglicherweise weiterhin über die Fragedetails zugänglich.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Kein aktiviertes VIP-Produkt schaltet dieses Tag frei</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Keine aktivierte Produktkombination schaltet diese Frage frei</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Kein aktiviertes Produkt schaltet diese Arbeit frei</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Kein aktiviertes VIP-Produkt schaltet dieses Tag frei</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Kein VIP kann diesen Tag-Eintrag freischalten. Eine Frage mit einem eigenen Fachgebiet ist möglicherweise weiterhin über die Fragedetails zugänglich.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Für das kostenpflichtige Aufgabenblatt ist kein Freischaltthema verfügbar</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Prüfen Sie das Fach und die verfügbaren VIP-Produkte. Deaktivierte Produkte machen bestehende aktive Mitgliedschaften nicht ungültig.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Prüfen Sie die VIP-Produkte dieser Einrichtung. Kurs-VIPs schalten keine realen Prüfungen frei; bestehende Mitgliedschaften für reale Prüfungen an allen Einrichtungen bleiben weiterhin gültig.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Überprüfen Sie die VIP-Produkte dieser Institution. Kurs-VIPs schalten keine echten Prüfungen frei.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Prüfen Sie die VIP-Produkte dieser Einrichtung. Kurs-VIPs schalten keine realen Prüfungen frei; bestehende Mitgliedschaften für reale Prüfungen an allen Einrichtungen bleiben weiterhin gültig.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Angemeldet ohne aktives VIP</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Diese nicht kategorisierte Frage erfordert alle kostenpflichtigen Tags; mindestens einem Tag ist kein Fachgebiet zugeordnet.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Überprüfen Sie das bereitgestellte Mini-Programm separat. Dieser serverseitige Scan simuliert nicht die Navigation im Client und beweist nicht, dass Kunden jeden Bildschirm aufrufen können.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP-Produkte</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Überprüfen Sie das bereitgestellte Mini-Programm separat. Dieser serverseitige Scan simuliert nicht die Navigation im Client und beweist nicht, dass Kunden jeden Bildschirm aufrufen können.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Besucher können die Wissensinhalte lesen, aber dieser Übung wird anonym mit HTTP 403 der Zugriff verweigert. Kostenpflichtige Übungen sind nach den aktuellen Geschäftsregeln zulässig.</value>

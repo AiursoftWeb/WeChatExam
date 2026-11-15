@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>添加 VIP 产品</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>允许阅读任何考试，不受拥有权限制。</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>允许添加任何知识点，无论其归属如何。</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>允许修改用户详细信息（如邮箱和角色），并可重置用户密码。</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>允许修改全局系统设置。</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>允许修改 VIP 产品设置，包括价格、有效期和启用状态。</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>允许阅读任何考试，不受拥有权限制。</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>允许修改全局系统设置。</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>允许阅读问题，无论所有权归属。</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>允许永久删除 VIP 产品。</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>允许永久删除分发渠道。</value>
@@ -144,9 +147,6 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>允许永久删除用户账户。</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>允许永久删除 VIP 产品。</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>允许触发后台任务，使用人工智能优化问题答案和解释。</value>
   </data>
@@ -155,6 +155,9 @@
   </data>
   <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
     <value>允许验证支付方式、申请全额虚拟支付退款并查看退款结果。</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>允许查看 VIP 产品及其配置。</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>允许查看和管理后台任务队列及其执行状态。</value>
@@ -176,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>允许查看用户反馈列表。</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>允许查看 VIP 产品及其配置。</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>允许查看、添加和删除用户的 VIP 会员资格。</value>

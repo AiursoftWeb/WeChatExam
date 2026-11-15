@@ -81,20 +81,11 @@
   <data name="No tags match your search query." xml:space="preserve">
     <value>検索条件に一致するタグは見つかりませんでした。</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>質問</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>検索</value>
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>タグを検索...</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>選択済み</value>
-  </data>
-  <data name="selected tags? This action cannot be undone." xml:space="preserve">
-    <value>選択されたタグを削除しますか？この操作は元に戻せません。</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>タグ名</value>
@@ -116,6 +107,15 @@
   </data>
   <data name="VIP Required" xml:space="preserve">
     <value>VIP が必要</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>質問</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>選択済み</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>選択されたタグを削除しますか？この操作は元に戻せません。</value>
   </data>
 
 </root>

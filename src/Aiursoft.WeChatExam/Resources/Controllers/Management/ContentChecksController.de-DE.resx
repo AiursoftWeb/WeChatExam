@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>Die Zugangskontrollen des Mini-Programms müssen überprüft werden.</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>Derzeit ist kein passender VIP zum Kauf verfügbar</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>Kein VIP kann diese Übungen freischalten</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>Kein VIP kann diesen Tag freischalten</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Derzeit ist kein passender VIP zum Kauf verfügbar</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>Schülerinnen und Schüler können dieses kostenlose Arbeitsblatt auch dann öffnen, wenn die darin ursprünglich enthaltenen Übungen kostenpflichtig sind. Der Preis des Arbeitsblatts ist unabhängig von der Preisgestaltung der einzelnen Übungen.</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>Diesen Übungen ist kein Kurs zugeordnet, und sie haben kostenpflichtige Tags, denen kein passender Kurs zugeordnet ist. Auch der Kauf aller VIPs kann sie nicht freischalten.</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Diesem VIP-Produkt ist kein Kurs zugeordnet. Es kann daher keinen Zugriff auf den vorgesehenen Kurs gewähren.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Bei diesem VIP-Produkt fehlt die Institution. Es kann den vorgesehenen Zugang zu echten Prüfungsarbeiten nicht gewähren.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Dieses VIP-Produkt benötigt einen Kurs</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Für dieses VIP-Produkt ist eine Institution erforderlich.</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>Diese Übung erfordert VIP.</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>Dieser Tag ist als kostenpflichtig gekennzeichnet, ihm ist jedoch kein Kurs-VIP zugeordnet. Auch der Kauf aller VIPs kann diesen Tag nicht freischalten. Übungen mit einem eigenen Kurs funktionieren möglicherweise über einen anderen Bildschirm.</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>Diesem VIP-Produkt ist kein Kurs zugeordnet. Es kann daher keinen Zugriff auf den vorgesehenen Kurs gewähren.</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>Bei diesem VIP-Produkt fehlt die Institution. Es kann den vorgesehenen Zugang zu echten Prüfungsarbeiten nicht gewähren.</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>Dieses VIP-Produkt benötigt einen Kurs</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>Für dieses VIP-Produkt ist eine Institution erforderlich.</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>Besucher können den Wissenspunkt lesen, diese Übungen aber nicht kostenlos öffnen.</value>

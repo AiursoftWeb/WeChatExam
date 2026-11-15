@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Kaikki asiaankuuluvat VIP-jäsenyydetkään eivät voi avata tätä koetta.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Olemassa olevat voimassa olevat jäsenyydet voivat toimia, mutta uusilla asiakkailta puuttuu ostopolku.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Aiemmat aktiiviset VIP-jäsenyydet voivat edelleen toimia, mutta tällä hetkellä saatavilla olevien tuotteiden ostaminen ei avaa tätä kysymystä.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Olemassa olevat voimassa olevat jäsenyydet voivat toimia, mutta uusilla asiakkailta puuttuu ostopolku.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Maksuttoman tietohakemiston linkki maksulliseen tehtävään</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Uusilla asiakkailla ei ole tällä hetkellä ostomahdollisuutta. Voimassa olevat jäsenyydet voivat silti oikeuttaa käyttöön.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Yksikään VIP-jäsenyys ei voi avata tätä tunnistemerkintää. Kysymys, jolla on oma aihealueensa, voi silti olla käytettävissä kysymyksen tietojen kautta.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Mikään käytössä oleva VIP-tuote ei avaa tätä tunnistetta</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Mikään käytössä oleva tuoteyhdistelmä ei avaa tätä kysymystä</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Yksikään käytössä oleva tuote ei avaa tätä koepaperia</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Mikään käytössä oleva VIP-tuote ei avaa tätä tunnistetta</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Yksikään VIP-jäsenyys ei voi avata tätä tunnistemerkintää. Kysymys, jolla on oma aihealueensa, voi silti olla käytettävissä kysymyksen tietojen kautta.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Maksulliselle paperille ei ole avattavaa oppiainetta</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Tarkista aihe ja saatavilla olevat VIP-tuotteet. Käytöstä poistetut tuotteet eivät mitätöi olemassa olevia aktiivisia jäsenyyksiä.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Tarkista tämän oppilaitoksen VIP-tuotteet. Kurssin VIP-jäsenyydet eivät avaa pääsyä oikeisiin kokeisiin, mutta olemassa olevat kaikkia oppilaitoksia koskevat oikeiden kokeiden jäsenyydet toimivat edelleen.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Tarkista tämän oppilaitoksen VIP-tuotteet. Kurssien VIP-tuotteet eivät avaa pääsyä varsinaisiin kokeisiin.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Tarkista tämän oppilaitoksen VIP-tuotteet. Kurssin VIP-jäsenyydet eivät avaa pääsyä oikeisiin kokeisiin, mutta olemassa olevat kaikkia oppilaitoksia koskevat oikeiden kokeiden jäsenyydet toimivat edelleen.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Kirjautunut sisään ilman aktiivista VIP-jäsenyyttä</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Tämä luokittelematon kysymys edellyttää kaikkia maksullisia tunnisteita; vähintään yhdeltä tunnisteelta puuttuu aihealuekytkentä.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Varmista erikseen julkaistun Mini Programin toiminta. Tämä palvelinskannaus ei simuloi asiakkaan siirtymistä näkymästä toiseen eikä todista, että asiakas pääsee kaikkiin näkymiin.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>VIP-tuotteet</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Varmista erikseen julkaistun Mini Programin toiminta. Tämä palvelinskannaus ei simuloi asiakkaan siirtymistä näkymästä toiseen eikä todista, että asiakas pääsee kaikkiin näkymiin.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Vierailijat voivat lukea tietosisältöä, mutta tämä harjoitus palauttaa anonyymeille käyttäjille 403-virheen. Maksulliset harjoitukset ovat nykyisten liiketoimintasääntöjen mukaan sallittuja.</value>

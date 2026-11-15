@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Mesmo todos os VIPs relevantes não conseguem desbloquear este documento.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>As adesões ativas existentes poderão funcionar, mas os novos clientes não têm forma de comprar.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>Os VIP ativos existentes podem continuar a funcionar, mas a compra de produtos atualmente ativos não permite desbloquear esta pergunta.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>As adesões ativas existentes poderão funcionar, mas os novos clientes não têm forma de comprar.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Diretório de conhecimento gratuito ligado a um exercício pago</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Os novos clientes não dispõem de uma opção de compra atualmente. As adesões ativas existentes ainda poderão conceder acesso.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Nenhum membro VIP pode desbloquear esta entrada da etiqueta. Uma pergunta com um tema próprio poderá, ainda assim, estar acessível através dos detalhes da pergunta.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Nenhum produto VIP ativo desbloqueia esta etiqueta</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Nenhuma combinação de produtos ativados desbloqueia esta pergunta</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Nenhum produto ativo desbloqueia este exame</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Nenhum produto VIP ativo desbloqueia esta etiqueta</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Nenhum membro VIP pode desbloquear esta entrada da etiqueta. Uma pergunta com um tema próprio poderá, ainda assim, estar acessível através dos detalhes da pergunta.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>O artigo pago não tem uma disciplina desbloqueável</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Reveja o tema e os produtos VIP disponíveis. Os produtos desativados não invalidam as adesões ativas existentes.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Consulte os produtos VIP desta instituição. Os VIP de curso não dão acesso a exames reais; as subscrições existentes para exames reais de todas as instituições continuam a funcionar.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Analise os produtos VIP desta instituição. Os VIPs de cursos não desbloqueiam provas reais.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Consulte os produtos VIP desta instituição. Os VIP de curso não dão acesso a exames reais; as subscrições existentes para exames reais de todas as instituições continuam a funcionar.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Sessão iniciada sem VIP ativo</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Esta pergunta sem categoria requer todas as etiquetas pagas; pelo menos uma etiqueta não tem associação a uma disciplina.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Verifique o Mini Program implantado separadamente. Esta verificação do servidor não simula a navegação do cliente nem prova que um cliente pode aceder a todos os ecrãs.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>Produtos VIP</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Verifique o Mini Program implantado separadamente. Esta verificação do servidor não simula a navegação do cliente nem prova que um cliente pode aceder a todos os ecrãs.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Os visitantes podem consultar os conteúdos de conhecimento, mas este exercício devolve o erro 403 a utilizadores não autenticados. As regras de negócio atuais permitem exercícios pagos.</value>

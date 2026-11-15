@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>حتى جميع أعضاء كبار الشخصيات المعنيين لا يمكنهم فتح هذه الورقة.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>قد تظل العضويات النشطة الحالية تعمل، لكن لا يتوفر للعملاء الجدد مسار للشراء.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>يمكن أن تظل عضويات كبار الشخصيات (VIP) النشطة الحالية سارية، لكن شراء المنتجات المفعّلة حاليًا لا يتيح فتح هذا السؤال.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>قد تظل العضويات النشطة الحالية تعمل، لكن لا يتوفر للعملاء الجدد مسار للشراء.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>دليل المعرفة المجاني يرتبط بتمرين مدفوع</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>لا يتوفر للعملاء الجدد مسار شراء حالي. وقد تظل العضويات النشطة الحالية تتيح الوصول.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>لا يمكن لأي عضو VIP فتح هذا الوسم. قد يظل السؤال الذي له تصنيفه الخاص متاحًا من خلال تفاصيل السؤال.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>لا يوجد منتج VIP مفعّل يتيح فتح هذا الوسم</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>لا توجد أي مجموعة من المنتجات المفعّلة تتيح الوصول إلى هذا السؤال</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>لا يوجد منتج مُفعّل يتيح فتح هذه الورقة</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>لا يوجد منتج VIP مفعّل يتيح فتح هذا الوسم</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>لا يمكن لأي عضو VIP فتح هذا الوسم. قد يظل السؤال الذي له تصنيفه الخاص متاحًا من خلال تفاصيل السؤال.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>لا يوجد موضوع قابل للفتح للورقة المدفوعة</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>راجع المادة والمنتجات المتاحة لعضوية كبار الشخصيات. لا يؤدي تعطيل المنتجات إلى إبطال العضويات النشطة الحالية.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>راجع منتجات VIP الخاصة بهذه المؤسسة. لا تتيح منتجات VIP للدورات الوصول إلى الأوراق الاختبارية الفعلية؛ وتظل عضويات الاختبارات الفعلية القائمة التي تشمل جميع المؤسسات سارية.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>راجع منتجات VIP الخاصة بهذه المؤسسة. لا تتيح عضويات VIP الخاصة بالدورات الوصول إلى الاختبارات الفعلية.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>راجع منتجات VIP الخاصة بهذه المؤسسة. لا تتيح منتجات VIP للدورات الوصول إلى الأوراق الاختبارية الفعلية؛ وتظل عضويات الاختبارات الفعلية القائمة التي تشمل جميع المؤسسات سارية.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>تم تسجيل الدخول دون اشتراك VIP نشط</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>يتطلب هذا السؤال غير المصنّف جميع الوسوم المدفوعة؛ ولا يوجد ربط لمادة دراسية لوسم واحد على الأقل.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>تحقق من البرنامج المصغّر المنشر بشكل منفصل. لا يحاكي هذا الفحص على الخادم تنقّل العميل ولا يثبت أن بإمكان العميل الدخول إلى كل شاشة.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>منتجات كبار الشخصيات</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>تحقق من البرنامج المصغّر المنشر بشكل منفصل. لا يحاكي هذا الفحص على الخادم تنقّل العميل ولا يثبت أن بإمكان العميل الدخول إلى كل شاشة.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>يمكن للزوار قراءة المحتوى المعرفي، لكن هذا التمرين يعيد رمز الخطأ 403 عند الوصول إليه دون تسجيل الدخول. وتسمح قواعد العمل الحالية بالتمارين المدفوعة.</value>

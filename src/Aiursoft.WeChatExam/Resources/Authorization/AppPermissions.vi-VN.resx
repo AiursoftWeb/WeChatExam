@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Thêm sản phẩm VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Cho phép đọc các bài kiểm tra, bất kể quyền sở hữu.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Cho phép thêm bất kỳ knowledgePoint nào, bất kể quyền sở hữu.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Cho phép sửa đổi thông tin chi tiết của người dùng như email và vai trò, đồng thời có thể đặt lại mật khẩu người dùng.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Cho phép chỉnh sửa cài đặt hệ thống toàn cục.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Cho phép chỉnh sửa cài đặt sản phẩm VIP bao gồm giá, thời hạn và trạng thái kích hoạt.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Cho phép đọc các bài kiểm tra, bất kể quyền sở hữu.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Cho phép chỉnh sửa cài đặt hệ thống toàn cục.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Cho phép đọc các câu hỏi, bất kể quyền sở hữu.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Cho phép xóa vĩnh viễn các sản phẩm VIP.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn các kênh phân phối.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Cho phép xóa vĩnh viễn tài khoản người dùng.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Cho phép xóa vĩnh viễn các sản phẩm VIP.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Cho phép kích hoạt các công việc nền để tối ưu hóa câu trả lời và giải thích câu hỏi bằng AI.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Cho phép cập nhật trạng thái của phản hồi người dùng.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Cho phép xác minh phương thức thanh toán, yêu cầu hoàn tiền ảo toàn bộ và kiểm tra kết quả.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Cho phép xem các sản phẩm VIP và cấu hình của chúng.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Cho phép xem và quản lý các hàng đợi công việc nền cùng trạng thái thực thi của chúng.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Cho phép xem danh sách phản hồi của người dùng.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Cho phép xem các sản phẩm VIP và cấu hình của chúng.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Cho phép xem, thêm và xóa quyền thành viên VIP cho người dùng.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Khởi Động Lại Ứng Dụng Này</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Hoàn tiền đơn hàng thanh toán</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Khởi động các Nhiệm vụ Tối ưu hóa</value>

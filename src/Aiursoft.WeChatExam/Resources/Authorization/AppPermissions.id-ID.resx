@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Tambah Produk VIP</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Memungkinkan pembacaan ujian, terlepas dari kepemilikan.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan penambahan knowledgePoint apa pun, terlepas dari kepemilikannya.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Memungkinkan modifikasi detail pengguna seperti email dan peran, serta dapat mengatur ulang kata sandi pengguna.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Memungkinkan modifikasi pengaturan sistem global.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Memungkinkan pengeditan pengaturan produk VIP termasuk harga, durasi, dan status aktif.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Memungkinkan pembacaan ujian, terlepas dari kepemilikan.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Memungkinkan modifikasi pengaturan sistem global.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Memungkinkan pembacaan pertanyaan, terlepas dari kepemilikan.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Mengizinkan penghapusan permanen produk VIP.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Memungkinkan penghapusan permanen saluran distribusi.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Memungkinkan penghapusan permanen akun pengguna.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Mengizinkan penghapusan permanen produk VIP.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Memungkinkan memicu pekerjaan latar belakang untuk mengoptimalkan jawaban dan penjelasan pertanyaan menggunakan AI.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Memungkinkan pembaruan status umpan balik pengguna.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Mengizinkan verifikasi metode pembayaran, permintaan pengembalian dana virtual penuh, dan pemeriksaan hasilnya.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Memungkinkan penelusuran produk VIP dan konfigurasinya.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Memungkinkan melihat dan mengelola antrian pekerjaan latar belakang serta status eksekusi mereka.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Memungkinkan melihat daftar umpan balik pengguna.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Memungkinkan penelusuran produk VIP dan konfigurasinya.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Memungkinkan melihat, menambahkan, dan menghapus keanggotaan VIP untuk pengguna.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Mulai Ulang Aplikasi Ini</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Refund Pesanan Pembayaran</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Jalankan Pekerjaan Optimalisasi</value>

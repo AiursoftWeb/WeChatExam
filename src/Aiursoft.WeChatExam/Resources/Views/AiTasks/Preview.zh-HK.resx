@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>放棄</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>採用</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>全部採用</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>AI 新答案</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 任務預覽</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>放棄</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>採用</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>全部採用</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>您確定要採用所有 AI 建議嗎？</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>現有分類</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>目前時段</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>現有標籤</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>目前時段</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>編輯</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>儲存並採用</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>選擇期間</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>選擇分類</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>選擇期間</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>建議分類</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>建議時段</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>建議標籤</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>建議時段</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>任務仍在處理中。您是否要採用已完成的部分並放棄其餘部分？</value>

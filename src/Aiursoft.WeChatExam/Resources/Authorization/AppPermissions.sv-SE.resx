@@ -45,6 +45,9 @@
   <data name="Add VIP Products" xml:space="preserve">
     <value>Lägg till VIP-produkter</value>
   </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Tillåter läsning av prov, oavsett ägande.</value>
+  </data>
   <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
     <value>Tillåter att lägga till vilken knowledgePoint som helst, oavsett ägarskap.</value>
   </data>
@@ -123,17 +126,17 @@
   <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
     <value>Tillåter ändring av användardetaljer som e-post och roller, och kan också återställa användarlösenord.</value>
   </data>
-  <data name="Allows modifying global system settings." xml:space="preserve">
-    <value>Tillåter ändring av globala systeminställningar.</value>
-  </data>
   <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
     <value>Tillåter ändring av VIP-produkter, inklusive pris, varaktighet och aktiveringsstatus.</value>
   </data>
-  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
-    <value>Tillåter läsning av prov, oavsett ägande.</value>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Tillåter ändring av globala systeminställningar.</value>
   </data>
   <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
     <value>Tillåter läsning av frågor, oavsett ägande.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Tillåter permanent radering av VIP-produkter.</value>
   </data>
   <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
     <value>Tillåter permanent borttagning av distributionskanaler.</value>
@@ -144,14 +147,17 @@
   <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
     <value>Tillåter permanent borttagning av användarkonton.</value>
   </data>
-  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
-    <value>Tillåter permanent radering av VIP-produkter.</value>
-  </data>
   <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
     <value>Tillåter utlösning av bakgrundsjobb för att optimera frågevarianter och förklaringar med hjälp av AI.</value>
   </data>
   <data name="Allows updating the status of user feedbacks." xml:space="preserve">
     <value>Tillåter uppdatering av status för användarfeedback.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Tillåter verifiering av betalningsmetoder, begäran om fullständiga återbetalningar för virtuella betalningar och kontroll av deras resultat.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Tillåter visning av VIP-produkter och deras konfiguration.</value>
   </data>
   <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
     <value>Tillåter visning och hantering av bakgrundsjobbsköer och deras utförandestatus.</value>
@@ -173,9 +179,6 @@
   </data>
   <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
     <value>Tillåter visning av listan över användaråterkopplingar.</value>
-  </data>
-  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
-    <value>Tillåter visning av VIP-produkter och deras konfiguration.</value>
   </data>
   <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
     <value>Tillåter att visa, lägga till och ta bort VIP-medlemskap för användare.</value>
@@ -299,6 +302,9 @@
   </data>
   <data name="Reboot This App" xml:space="preserve">
     <value>Starta om den här appen</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Återbetalning av betalningsordrar</value>
   </data>
   <data name="Trigger Optimization Jobs" xml:space="preserve">
     <value>Utlösa optimeringsjobb</value>

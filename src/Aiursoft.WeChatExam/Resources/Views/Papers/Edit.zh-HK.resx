@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- 選擇分類（可選）--</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI 語意搜尋</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>未有使用 AI 語意搜尋。顯示關鍵字搜尋結果。</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>新增</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>進階：標籤運算式（MTQL）</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>AI 語意搜尋</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>未有使用 AI 語意搜尋。顯示關鍵字搜尋結果。</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>所有類型</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>預設分數</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>刪除</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>草稿</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>例如：rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>編輯試卷</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>試題類型</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>搜尋完全相符的字詞及相關意思。</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>尋找問題</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>尋找類似問題</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>搜尋完全相符的字詞及相關意思。</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>免費試卷</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>搜尋並新增問題</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>搜尋服務暫時無法使用，請再試一次。</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>搜尋模式</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>搜尋服務暫時無法使用，請再試一次。</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>正在搜尋……</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>最多顯示五條所選分類中的相似問題；如未有選擇分類，則顯示所有分類的相似問題。已在試卷中的問題不會顯示。選取要加入的候選問題；原有問題不會更改。</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>例如：rock &amp;&amp; not metal</value>
   </data>
 
 </root>

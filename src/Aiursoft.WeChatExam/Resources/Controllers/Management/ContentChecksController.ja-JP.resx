@@ -42,9 +42,6 @@
   <data name="Mini Program entry checks need review" xml:space="preserve">
     <value>ミニプログラムの導線チェックが必要です</value>
   </data>
-  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
-    <value>現在購入できる適切なVIPはありません</value>
-  </data>
   <data name="No VIP can unlock these exercises" xml:space="preserve">
     <value>どのVIPでもこれらの演習を解放できません</value>
   </data>
@@ -53,6 +50,9 @@
   </data>
   <data name="No VIP can unlock this tag" xml:space="preserve">
     <value>タグを解除できるVIPがありません</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>現在購入できる適切なVIPはありません</value>
   </data>
   <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
     <value>元の問題が有料でも、学生はこの無料の問題用紙を開くことができます。問題用紙の価格と個々の問題の価格は、それぞれ独立しています。</value>
@@ -74,6 +74,18 @@
   </data>
   <data name="These exercises have no assigned course and have paid tags with no matching course. Buying every VIP still cannot unlock them." xml:space="preserve">
     <value>これらの演習には割り当てられたコースがなく、対応するコースのない有料タグが付いています。すべてのVIPを購入しても、これらをアンロックすることはできません。</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>このVIP商品にはコースが設定されていません。意図したコースへのアクセス権を付与できません。</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>このVIP商品には所属機関が設定されていません。そのため、想定されている実試験問題へのアクセスを許可できません。</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>このVIP商品にはコースが必要です</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>このVIP商品には所属機関が必要です</value>
   </data>
   <data name="This exercise needs VIP" xml:space="preserve">
     <value>この練習問題にはVIPが必要です</value>
@@ -101,18 +113,6 @@
   </data>
   <data name="This tag is marked as paid, but has no course VIP linked to it. Buying all VIPs still cannot unlock this tag. Exercises with their own course may work from another screen." xml:space="preserve">
     <value>このタグは有料に設定されていますが、紐付けられたコースVIPがありません。すべてのVIPを購入しても、このタグは解除できません。独自のコースがある演習は、別の画面から利用できる場合があります。</value>
-  </data>
-  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
-    <value>このVIP商品にはコースが設定されていません。意図したコースへのアクセス権を付与できません。</value>
-  </data>
-  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
-    <value>このVIP商品には所属機関が設定されていません。そのため、想定されている実試験問題へのアクセスを許可できません。</value>
-  </data>
-  <data name="This VIP product needs a course" xml:space="preserve">
-    <value>このVIP商品にはコースが必要です</value>
-  </data>
-  <data name="This VIP product needs an institution" xml:space="preserve">
-    <value>このVIP商品には所属機関が必要です</value>
   </data>
   <data name="Visitors can read the knowledge point, but cannot open these exercises for free." xml:space="preserve">
     <value>訪問者はこのナレッジポイントを読むことはできますが、これらの演習問題を無料で開くことはできません。</value>

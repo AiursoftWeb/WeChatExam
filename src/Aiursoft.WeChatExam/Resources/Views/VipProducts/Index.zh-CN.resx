@@ -63,9 +63,6 @@
   <data name="Current price" xml:space="preserve">
     <value>当前价格</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>天</value>
-  </data>
   <data name="Deduplicated across these products" xml:space="preserve">
     <value>同一买家跨商品去重</value>
   </data>
@@ -113,9 +110,6 @@
   </data>
   <data name="Paying buyers" xml:space="preserve">
     <value>购买人数</value>
-  </data>
-  <data name="people" xml:space="preserve">
-    <value>人</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>价格</value>
@@ -189,14 +183,20 @@
   <data name="Type" xml:space="preserve">
     <value>类型</value>
   </data>
-  <data name="units" xml:space="preserve">
-    <value>套</value>
-  </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP 产品</value>
   </data>
   <data name="Where receipts come from" xml:space="preserve">
     <value>商品实收贡献</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>人</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>套</value>
   </data>
 
 </root>

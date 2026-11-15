@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} minutes" xml:space="preserve">
-    <value>{0} 分钟</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>所有课程</value>
   </data>
   <data name="Course" xml:space="preserve">
@@ -93,11 +90,11 @@
   <data name="Published" xml:space="preserve">
     <value>已发布</value>
   </data>
-  <data name="Published version available" xml:space="preserve">
-    <value>可发布版本</value>
-  </data>
   <data name="Published Versions" xml:space="preserve">
     <value>已发布版本</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>可发布版本</value>
   </data>
   <data name="Read only" xml:space="preserve">
     <value>只读</value>
@@ -122,6 +119,9 @@
   </data>
   <data name="Visitors and nonmembers allowed" xml:space="preserve">
     <value>允许访客和非课程成员访问</value>
+  </data>
+  <data name="{0} minutes" xml:space="preserve">
+    <value>{0} 分钟</value>
   </data>
 
 </root>

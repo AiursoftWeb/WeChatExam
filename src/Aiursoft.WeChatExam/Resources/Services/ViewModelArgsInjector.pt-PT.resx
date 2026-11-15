@@ -18,7 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Access Denied" xml:space="preserve">
+      <data name="AI Assistant" xml:space="preserve">
+    <value>Assistente de IA</value>
+  </data>
+  <data name="Access Denied" xml:space="preserve">
     <value>Acesso Negado</value>
   </data>
   <data name="Accounting Reports" xml:space="preserve">
@@ -32,9 +35,6 @@
   </data>
   <data name="Advanced Management" xml:space="preserve">
     <value>Gestão avançada</value>
-  </data>
-  <data name="AI Assistant" xml:space="preserve">
-    <value>Assistente de IA</value>
   </data>
   <data name="Anonymous" xml:space="preserve">
     <value>Anónimo</value>
@@ -371,6 +371,12 @@
   </data>
   <data name="Real Papers" xml:space="preserve">
     <value>Provas Reais</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Gestão de reembolsos</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestão de reembolsos</value>
   </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Registos de conciliação de reembolsos</value>

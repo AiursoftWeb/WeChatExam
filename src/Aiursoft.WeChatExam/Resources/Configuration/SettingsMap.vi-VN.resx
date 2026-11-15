@@ -72,11 +72,11 @@
   <data name="Embedding Model" xml:space="preserve">
     <value>Mô hình nhúng</value>
   </data>
-  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
-    <value>Bật tính năng tạo embedding nền cho câu hỏi và các điểm kiến thức.</value>
-  </data>
   <data name="Enable Embedding-Based Search" xml:space="preserve">
     <value>Bật tìm kiếm dựa trên embedding</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Bật tính năng tạo embedding nền cho câu hỏi và các điểm kiến thức.</value>
   </data>
   <data name="ICP Number" xml:space="preserve">
     <value>Số đăng ký ICP</value>
@@ -117,6 +117,12 @@
   <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
     <value>Lời nhắc AI để chấm điểm câu hỏi. Sử dụng {0} cho nội dung, {1} cho đáp án chuẩn, {2} cho giải thích, {3} cho câu trả lời của học sinh và {4} cho điểm tối đa.</value>
   </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>Số giấy phép ICP cho người dùng Trung Quốc đại lục. Để trống để ẩn.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>URL cơ sở của API Ollama dùng để tạo embedding. Chỉ sử dụng tên máy chủ; `/api/embed` sẽ được tự động thêm vào. Nếu để trống, hệ thống sẽ chuyển sang dùng endpoint hoàn thành của OpenAI.</value>
+  </data>
   <data name="The brand name displayed in the footer." xml:space="preserve">
     <value>Tên thương hiệu được hiển thị trong phần chân trang.</value>
   </data>
@@ -126,17 +132,11 @@
   <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
     <value>Mô hình embedding dành cho câu hỏi và điểm kiến thức. Các vector hiện có sử dụng quy ước chỉ mục 1024 chiều của bge-m3.</value>
   </data>
-  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
-    <value>Số giấy phép ICP cho người dùng Trung Quốc đại lục. Để trống để ẩn.</value>
-  </data>
   <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
     <value>Logo của dự án được hiển thị trong thanh điều hướng và chân trang. Hỗ trợ định dạng jpg, png, svg.</value>
   </data>
   <data name="The name of the project displayed in the frontend." xml:space="preserve">
     <value>Tên dự án được hiển thị trên giao diện người dùng</value>
-  </data>
-  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
-    <value>URL cơ sở của API Ollama dùng để tạo embedding. Chỉ sử dụng tên máy chủ; `/api/embed` sẽ được tự động thêm vào. Nếu để trống, hệ thống sẽ chuyển sang dùng endpoint hoàn thành của OpenAI.</value>
   </data>
 
 </root>

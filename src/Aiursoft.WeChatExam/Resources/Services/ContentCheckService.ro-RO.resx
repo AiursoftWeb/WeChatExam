@@ -93,11 +93,11 @@
   <data name="Even all relevant VIPs cannot unlock this paper." xml:space="preserve">
     <value>Nici măcar toți membrii VIP relevanți nu pot debloca această lucrare.</value>
   </data>
-  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
-    <value>Abonamentele active existente pot funcționa, dar clienții noi nu au nicio modalitate de a cumpăra.</value>
-  </data>
   <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
     <value>VIP-urile active existente pot funcționa în continuare, însă achiziționarea produselor activate în prezent nu poate debloca această întrebare.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Abonamentele active existente pot funcționa, dar clienții noi nu au nicio modalitate de a cumpăra.</value>
   </data>
   <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
     <value>Directoriul gratuit de cunoștințe este legat de un exercițiu plătit</value>
@@ -150,17 +150,17 @@
   <data name="New customers have no current purchase route. Existing active memberships may still grant access." xml:space="preserve">
     <value>Clienții noi nu au în prezent o modalitate de a face o achiziție. Abonamentele active existente pot permite în continuare accesul.</value>
   </data>
+  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
+    <value>Niciun abonament VIP nu poate debloca această etichetă. O întrebare cu propriul subiect poate fi totuși accesată prin detaliile întrebării.</value>
+  </data>
+  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
+    <value>Niciun produs VIP activ nu deblochează această etichetă</value>
+  </data>
   <data name="No enabled product combination unlocks this question" xml:space="preserve">
     <value>Nicio combinație de produse active nu deblochează această întrebare</value>
   </data>
   <data name="No enabled product unlocks this paper" xml:space="preserve">
     <value>Niciun produs activat nu deblochează această lucrare</value>
-  </data>
-  <data name="No enabled VIP product unlocks this tag" xml:space="preserve">
-    <value>Niciun produs VIP activ nu deblochează această etichetă</value>
-  </data>
-  <data name="No VIP can unlock this tag entry. A question with its own subject may still be accessible through question details." xml:space="preserve">
-    <value>Niciun abonament VIP nu poate debloca această etichetă. O întrebare cu propriul subiect poate fi totuși accesată prin detaliile întrebării.</value>
   </data>
   <data name="Paid paper has no unlockable subject" xml:space="preserve">
     <value>Lucrarea plătită nu are niciun subiect care poate fi deblocat</value>
@@ -231,11 +231,11 @@
   <data name="Review the subject and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
     <value>Verificați materia și produsele VIP disponibile. Produsele dezactivate nu invalidează abonamentele active existente.</value>
   </data>
-  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
-    <value>Verificați produsele VIP ale acestei instituții. Abonamentele VIP pentru cursuri nu deblochează examenele reale; abonamentele existente pentru examene reale, valabile în toate instituțiile, funcționează în continuare.</value>
-  </data>
   <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
     <value>Verificați produsele VIP ale acestei instituții. Abonamentele VIP pentru cursuri nu deblochează lucrările reale.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers; existing all-institution real-exam memberships still work." xml:space="preserve">
+    <value>Verificați produsele VIP ale acestei instituții. Abonamentele VIP pentru cursuri nu deblochează examenele reale; abonamentele existente pentru examene reale, valabile în toate instituțiile, funcționează în continuare.</value>
   </data>
   <data name="Signed in without active VIP" xml:space="preserve">
     <value>Autentificat fără VIP activ</value>
@@ -300,11 +300,11 @@
   <data name="This uncategorized question requires every paid tag; at least one tag has no subject mapping." xml:space="preserve">
     <value>Această întrebare fără categorie necesită toate etichetele cu plată; cel puțin o etichetă nu are nicio asociere cu o materie.</value>
   </data>
-  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
-    <value>Verificați separat Mini Program-ul implementat. Această scanare a serverului nu simulează navigarea în aplicația client și nu demonstrează că un client poate accesa fiecare ecran.</value>
-  </data>
   <data name="VIP products" xml:space="preserve">
     <value>Produse VIP</value>
+  </data>
+  <data name="Verify the deployed Mini Program separately. This server scan does not simulate client navigation or prove that a customer can enter every screen." xml:space="preserve">
+    <value>Verificați separat Mini Program-ul implementat. Această scanare a serverului nu simulează navigarea în aplicația client și nu demonstrează că un client poate accesa fiecare ecran.</value>
   </data>
   <data name="Visitors can read the knowledge content, but this exercise returns 403 anonymously. Paid exercises are allowed by the current business rules." xml:space="preserve">
     <value>Vizitatorii pot citi conținutul educațional, dar acest exercițiu returnează codul 403 pentru utilizatorii neautentificați. Exercițiile contra cost sunt permise de regulile de business actuale.</value>

@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>尚未添加 {0} 道匹配的题目</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} 道题 · {1} 分</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>本页已选择 {0} 项</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>添加所选题目</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>要添加所有 {0} 道匹配的考试题目吗？</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>向此试卷添加题目</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>添加所选题目</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>全部年代</value>
@@ -96,11 +87,11 @@
   <data name="Previous" xml:space="preserve">
     <value>上一页</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>题目分页</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>题目类型</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>题目分页</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>参考答案与解析</value>
@@ -129,11 +120,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>搜索题目</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>全选本页</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>选择题目</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>全选本页</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>已选题目</value>
@@ -158,6 +149,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>查看详情</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>尚未添加 {0} 道匹配的题目</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} 道题 · {1} 分</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>本页已选择 {0} 项</value>
   </data>
 
 </root>
