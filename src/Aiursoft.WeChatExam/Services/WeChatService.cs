@@ -31,7 +31,8 @@ public class WeChatService(WechatApiClient wechatApiClient) : IWeChatService
 
         return new WeChatSessionResult
         {
-            IsSuccess = response.IsSuccessful(),
+            IsSuccess = response.IsSuccessful() && !string.IsNullOrWhiteSpace(response.OpenId) &&
+                        !string.IsNullOrWhiteSpace(response.SessionKey),
             OpenId = response.OpenId,
             SessionKey = response.SessionKey,
             UnionId = response.UnionId,
