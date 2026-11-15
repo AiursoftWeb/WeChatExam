@@ -64,6 +64,7 @@ public class AuthenticationIsolationTests
     [TestCleanup]
     public async Task CleanServer()
     {
+        TestStartupWithMockWeChat.MockVipProductService = null;
         if (_server == null) return;
         await _server.StopAsync();
         _server.Dispose();

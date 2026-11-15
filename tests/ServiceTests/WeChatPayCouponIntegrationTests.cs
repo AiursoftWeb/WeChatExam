@@ -22,6 +22,7 @@ public class WeChatPayCouponIntegrationTests
     private CouponService _couponService = null!;
     private ChangeService _changeService = null!;
     private WeChatPayService _payService = null!;
+    private VipMembershipService _membershipService = null!;
     private IOptions<AppSettings> _settings = null!;
     private HttpClient _tenpayHttpClient = null!;
     private WechatTenpayClient _tenpayClient = null!;
@@ -36,6 +37,7 @@ public class WeChatPayCouponIntegrationTests
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         _dbContext = new InMemoryContext(options);
+        _membershipService = new VipMembershipService(_dbContext);
         
         _couponService = new CouponService(_dbContext);
         _changeService = new ChangeService(_dbContext);
@@ -125,17 +127,14 @@ public class WeChatPayCouponIntegrationTests
         await _dbContext.SaveChangesAsync();
         _dbContext.ChangeTracker.Clear();
 
-        var memberships = await _payService.GetVipStatusListAsync(_userId);
+        var memberships = await _membershipService.GetVipStatusListAsync(_userId);
         Assert.AreEqual(4, memberships.Count);
         Assert.AreEqual("History", memberships.Single(m => m.VipProductId == active.Id).VipProduct!.TotalCategory!.Title);
-        var access = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
+        var access = await new PaperAccessService(_membershipService).GetUserAccessStatusAsync(_userId);
         CollectionAssert.AreEquivalent(new[] { active.TotalCategoryId!.Value }, access.ActiveCategoryVips.ToArray());
         Assert.IsFalse(PaperAccessService.CanAccessInstitution(Guid.NewGuid(), access));
-        Assert.IsTrue(await _payService.HasVipForCategoryAsync(_userId, active.TotalCategoryId.Value));
-        Assert.IsFalse(await _payService.HasVipForCategoryAsync(_userId, expired.TotalCategoryId!.Value));
-        Assert.IsFalse(await _payService.HasVipForCategoryAsync(_userId, future.TotalCategoryId!.Value));
         Assert.AreEqual(now.AddDays(30), memberships.Single(m => m.VipProductId == active.Id).EndTime);
-        var visitor = await new PaperAccessService(_payService).GetUserAccessStatusAsync(null);
+        var visitor = await new PaperAccessService(_membershipService).GetUserAccessStatusAsync(null);
         Assert.AreEqual(0, visitor.ActiveCategoryVips.Count);
         Assert.AreEqual(0, visitor.ActiveInstitutionVips.Count);
     }
@@ -1168,9 +1167,9 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual(3, await _dbContext.PaymentOrders.CountAsync());
         Assert.AreEqual(3, await _dbContext.CouponUsages.CountAsync());
         _dbContext.ChangeTracker.Clear();
-        var memberships = await _payService.GetVipStatusListAsync(_userId);
+        var memberships = await _membershipService.GetVipStatusListAsync(_userId);
         Assert.AreEqual("Wuhan", memberships.Single(m => m.VipProductId == first.Id).VipProduct!.Institution!.Title);
-        var status = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
+        var status = await new PaperAccessService(_membershipService).GetUserAccessStatusAsync(_userId);
         CollectionAssert.AreEquivalent(new[] { first.InstitutionId!.Value, second.InstitutionId!.Value }, status.ActiveInstitutionVips.ToArray());
         CollectionAssert.AreEquivalent(new[] { course.TotalCategoryId!.Value }, status.ActiveCategoryVips.ToArray());
         Assert.IsFalse(PaperAccessService.CanAccess(new Paper { Title = "Legacy school paper", IsRealExam = true, IsFree = false }, status));
@@ -1195,7 +1194,7 @@ public class WeChatPayCouponIntegrationTests
         Assert.AreEqual(1, await _dbContext.PaymentOrders.CountAsync());
         _dbContext.ChangeTracker.Clear();
         Assert.AreEqual(end, (await _dbContext.VipMemberships.SingleAsync(m => m.Id == old.Id)).EndTime);
-        var status = await new PaperAccessService(_payService).GetUserAccessStatusAsync(_userId);
+        var status = await new PaperAccessService(_membershipService).GetUserAccessStatusAsync(_userId);
         Assert.IsFalse(PaperAccessService.CanAccessInstitution(Guid.NewGuid(), status));
         Assert.AreEqual(0, status.ActiveCategoryVips.Count);
     }

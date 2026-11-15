@@ -24,7 +24,7 @@ public sealed class StubOllamaService : IOllamaService
     }
 }
 
-public sealed class StubWeChatPayService : IWeChatPayService
+public sealed class StubWeChatPayService : IWeChatPayService, IVipMembershipService
 {
     public List<VipMembership> Memberships { get; set; } = new();
     public int VipStatusCalls { get; private set; }
@@ -39,7 +39,6 @@ public sealed class StubWeChatPayService : IWeChatPayService
     public Task<JsApiPayParams> GetJsApiPayParamsAsync(string prepayId) => Task.FromResult<JsApiPayParams>(null!);
     public Task<PaymentOrder?> QueryOrderStatusAsync(string outTradeNo, string? userId) => Task.FromResult<PaymentOrder?>(null);
     public Task ReconcilePreviousOrdersAsync(string userId, Guid productId) => Task.CompletedTask;
-    public Task<bool> HasVipForCategoryAsync(string userId, Guid categoryId) => Task.FromResult(false);
 }
 
 public sealed class StubDistributionChannelService : IDistributionChannelService
