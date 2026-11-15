@@ -293,6 +293,41 @@ public class ExamsApiTests : TestBase
     }
 
     [TestMethod]
+    public async Task LegacyPaperWithoutLockedVersionCannotStartButExistingAttemptCanResume()
+    {
+        using (var scope = Server!.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<WeChatExamDbContext>();
+            db.Papers.Add(new Paper { Id = _paperId, Title = "Legacy free paper", IsFree = true });
+            var snapshot = await db.PaperSnapshots.SingleAsync(p => p.Id == _snapshotId);
+            db.Entry(snapshot).Property(p => p.PaperId).CurrentValue = _paperId;
+            db.PaperSnapshots.Add(new PaperSnapshot
+            {
+                Id = _latestId, PaperId = _paperId, Title = "Newer published version", Version = 2
+            });
+            var exam = await db.Exams.SingleAsync(e => e.Id == _examId);
+            exam.PaperSnapshotId = null;
+            exam.PaperId = _paperId;
+            await db.SaveChangesAsync();
+        }
+        Authenticate(_other);
+        using var denied = await Http.PostAsync($"/api/Exams/{_examId}/start", null);
+        Assert.AreEqual(HttpStatusCode.BadRequest, denied.StatusCode);
+        Assert.Contains("No paper version is configured", await denied.Content.ReadAsStringAsync());
+
+        // An existing attempt keeps its own locked snapshot even if the schedule is incomplete.
+        Authenticate(_owner);
+        using var resumed = await Http.PostAsync($"/api/Exams/{_examId}/start", null);
+        Assert.AreEqual(HttpStatusCode.OK, resumed.StatusCode);
+        var session = (await resumed.Content.ReadFromJsonAsync<ExamSessionDto>())!;
+        Assert.AreEqual(_recordId, session.RecordId);
+        Assert.AreEqual(_snapshotId, session.PaperSnapshotId);
+        using var verify = Server!.Services.CreateScope();
+        Assert.AreEqual(1, await verify.ServiceProvider.GetRequiredService<WeChatExamDbContext>()
+            .ExamRecords.CountAsync(r => r.ExamId == _examId));
+    }
+
+    [TestMethod]
     public async Task AnotherStudentCannotChangeOrReadAnAttempt()
     {
         Authenticate(_other);

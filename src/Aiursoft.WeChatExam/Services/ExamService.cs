@@ -177,31 +177,12 @@ public class ExamService : IExamService
             throw new InvalidOperationException("Maximum attempts reached.");
         }
 
-        // 3. Create New Record
-        // Lock to the latest Paper Snapshot OR the specifically locked snapshot for this exam
-        Guid targetSnapshotId;
-        
-        if (exam.PaperSnapshotId.HasValue)
-        {
-            targetSnapshotId = exam.PaperSnapshotId.Value;
-            // Verify it exists (optional but safe)
-            var exists = await _dbContext.PaperSnapshots.AnyAsync(s => s.Id == targetSnapshotId);
-            if (!exists) throw new InvalidOperationException("Configured paper snapshot not found.");
-        }
-        else
-        {
-            // A missing legacy ID must never match every migrated snapshot with PaperId=null.
-            if (!exam.PaperId.HasValue)
-                throw new InvalidOperationException("No paper version is configured for this exam.");
-            // We find the latest snapshot for the paper
-            var latestSnapshot = await _dbContext.PaperSnapshots
-                .Where(s => s.PaperId == exam.PaperId)
-                .OrderByDescending(s => s.Version)
-                .FirstOrDefaultAsync();
-                
-            if (latestSnapshot == null) throw new InvalidOperationException("No published version of this paper exists.");
-            targetSnapshotId = latestSnapshot.Id;
-        }
+        // New attempts always use the version explicitly locked by the exam schedule.
+        if (!exam.PaperSnapshotId.HasValue)
+            throw new InvalidOperationException("No paper version is configured for this exam.");
+        var targetSnapshotId = exam.PaperSnapshotId.Value;
+        var exists = await _dbContext.PaperSnapshots.AnyAsync(s => s.Id == targetSnapshotId);
+        if (!exists) throw new InvalidOperationException("Configured paper snapshot not found.");
 
         var snapshot = await _dbContext.PaperSnapshots.AsNoTracking()
             .Include(s => s.MockPaper).Include(s => s.RealPaper)

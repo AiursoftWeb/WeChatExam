@@ -30,8 +30,8 @@ public class Exam
     public Paper? Paper { get; set; }
 
     /// <summary>
-    /// Locks the published payload for this exam. Nullable only for historical schedules
-    /// that still require the legacy latest-version fallback during migration.
+    /// Locks the published payload for this exam. Historical schedules may retain null,
+    /// but cannot create a new attempt until a version is explicitly configured.
     /// </summary>
     public Guid? PaperSnapshotId { get; set; }
 
