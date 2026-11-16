@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>관리자 시험 문제</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>AI 채점</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>제출 후 AI 문제가 설정된 모델로 전송됩니다.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>관리자 시험 문제</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>답안지</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>실시간 채점 미리보기</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>분</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>제한 시간 없음</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>지필 시험</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>점수</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>진행 상황</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>문제</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>제출할 준비가 되셨나요?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>여기에 답을 입력하세요...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>점수</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>문제</value>
   </data>
 
 </root>

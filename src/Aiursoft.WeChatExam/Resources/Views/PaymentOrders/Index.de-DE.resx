@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Betrag</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Beträge</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Beträge werden mit der Bestellung gespeichert. Eine nicht bestätigte Bestellung ist kein abgeschlossener Kauf.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Zahlungsbestätigung ausstehend</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Geschlossen</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Erstellt</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Bestellnr.</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Bestellnummer</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Bestellungen</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Zahlungsaufträge</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Zahlungskanal</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Zahlung bestätigt</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Zahlung muss verifiziert werden</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Zurück</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Rückerstattungsverarbeitung</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Rückerstattungsverwaltung</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Rückerstattungsabgleichsprotokolle</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Erstattet</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

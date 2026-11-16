@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP tất cả đề thi chính thức (cũ)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Toàn bộ thời gian · bộ lọc hiện tại</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Nhìn tổng quan</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Giá bán trung bình</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Quay lại phần cài đặt khóa học</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Trước phí và chi phí nền tảng</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Theo doanh thu</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Danh mục</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Danh mục VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Chỉ đơn hàng đã xác nhận</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Tạo sản phẩm VIP</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>ngày</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Giá hiện tại</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Loại bỏ trùng lặp giữa các sản phẩm này</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Xóa</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Đã bật</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Khuyến mãi miễn phí</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>VIP tổ chức</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Chưa có giao dịch thanh toán nào được xác nhận.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Không có sản phẩm nào phù hợp với bộ lọc này.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Mở một sản phẩm để xem giá đã trả và đơn hàng của người mua.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Doanh thu từ đơn hàng</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Các đơn hàng khác</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Doanh thu đã thanh toán</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Người mua đã thanh toán</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Giá</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Tổng quan sản phẩm</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Hiệu suất sản phẩm</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Trạng thái sản phẩm</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Sản phẩm</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Sản phẩm có doanh thu đã thanh toán</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Sản phẩm không có doanh thu trả phí</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP Đề Thi Thật</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Doanh thu trên mỗi đơn hàng đã thanh toán</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Đơn hàng đã hoàn tiền</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Không bao gồm hoàn tiền và yêu cầu miễn phí</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Các khoản hoàn tiền đang chờ đối soát. Số tiền nhận được này có thể cao hơn số tiền thực giữ lại.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Hoàn tiền cần xem xét</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Xem xét hoàn tiền</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Chi tiết bán hàng</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Tìm kiếm theo tên, danh mục hoặc tổ chức</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Xem sản phẩm nào bán chạy, ai mua và họ thực trả bao nhiêu.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>5 sản phẩm hàng đầu · tỷ lệ doanh thu đã lọc</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Tổng số danh mục</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Sản phẩm VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Nguồn doanh thu</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>ngày</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>người</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>đơn vị</value>
   </data>
 
 </root>

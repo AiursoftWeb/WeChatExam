@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
-    <value>ขั้นสูง: นิพจน์แท็ก (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
+      <data name="AI Semantic Search" xml:space="preserve">
     <value>การค้นหาเชิงความหมายด้วย AI</value>
   </data>
   <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
     <value>ไม่ได้ใช้การค้นหาเชิงความหมายด้วย AI กำลังแสดงผลการค้นหาด้วยคำสำคัญ</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>ขั้นสูง: นิพจน์แท็ก (MTQL)</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
@@ -36,9 +36,6 @@
   <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
     <value>รวมแท็ก เช่น: rock &amp;&amp; not metal</value>
   </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>เช่น rock &amp;&amp; not metal</value>
-  </data>
   <data name="Enter a few words to find questions." xml:space="preserve">
     <value>ป้อนคำสองสามคำเพื่อค้นหาคำถาม</value>
   </data>
@@ -48,14 +45,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>ประเภทข้อสอบ</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>ค้นหาคำที่ตรงกันและความหมายที่เกี่ยวข้อง</value>
-  </data>
   <data name="Find Exam Questions to Associate" xml:space="preserve">
     <value>ค้นหาข้อสอบเพื่อเชื่อมโยง</value>
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>ค้นหาคำถาม</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>ค้นหาคำที่ตรงกันและความหมายที่เกี่ยวข้อง</value>
   </data>
   <data name="Keyword Search" xml:space="preserve">
     <value>การค้นหาด้วยคำสำคัญ</value>
@@ -75,11 +72,11 @@
   <data name="Search" xml:space="preserve">
     <value>ค้นหา</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>ไม่สามารถค้นหาได้ในขณะนี้ โปรดลองอีกครั้ง</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>โหมดการค้นหา</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>ไม่สามารถค้นหาได้ในขณะนี้ โปรดลองอีกครั้ง</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>กำลังค้นหา...</value>
@@ -89,6 +86,9 @@
   </data>
   <data name="Tag Expression Search (MTQL)" xml:space="preserve">
     <value>ค้นหาด้วยนิพจน์แท็ก (MTQL)</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>เช่น rock &amp;&amp; not metal</value>
   </data>
 
 </root>

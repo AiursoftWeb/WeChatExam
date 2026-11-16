@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Đã có báo cáo hoàn tiền, nhưng quyền thành viên của đơn hàng này cần được kiểm tra. Hãy xem xét yêu cầu hoàn tiền hiện có thay vì bắt đầu một yêu cầu mới.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Mã giảm giá dùng một lần đã sử dụng sẽ không được khôi phục.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Thực tế đã trả</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Sau khi hoàn tiền thành công, quyền thành viên từ đơn hàng này sẽ bị thu hồi.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Thanh toán Apple không thể được hoàn tiền bởi người bán. Hãy cung cấp cho sinh viên các hướng dẫn bên dưới.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Trang web hoàn tiền của Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Vui lòng liên hệ quản trị viên để kiểm tra phương thức thanh toán ban đầu trong Chi tiết đơn hàng bên dưới.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Vui lòng yêu cầu quản trị viên kiểm tra bản ghi thanh toán ban đầu trong Chi tiết đơn hàng bên dưới.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Vui lòng nhờ một quản trị viên có quyền hoàn tiền kiểm tra kết quả.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Hãy yêu cầu quản trị viên của bạn bật tính năng Hoàn tiền cho đơn thanh toán của vai trò của bạn, sau đó đăng xuất và đăng nhập lại.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Kiểm tra cách hoàn tiền cho đơn hàng này</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Kiểm tra phương thức hoàn tiền</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Kiểm tra kết quả hoàn tiền</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Kiểm tra khoản hoàn tiền hiện có bên dưới. Các thay đổi về thành viên sẽ có hiệu lực sau khi hoàn tiền thành công được xác nhận.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Đang kiểm tra…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Hoàn thành lúc</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Xác nhận hoàn tiền toàn bộ</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Đã sao chép</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Sao chép hướng dẫn cho sinh viên</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Bật quyền Refund Payment Orders cho vai trò phù hợp, sau đó đăng xuất và đăng nhập lại.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Tôi đã kiểm tra thông tin học sinh, số tiền hoàn lại và các thay đổi về thành viên.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Không cần hoàn tiền cho đơn hàng này</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Mở nền tảng thương nhân WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Mở chi tiết đơn hàng đầy đủ</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Mở quyền vai trò</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Số đơn hàng</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Chi tiết đơn hàng</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Thời gian thanh toán</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Thông tin thanh toán không đầy đủ, nên không thể bắt đầu hoàn tiền tại đây</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Phương thức thanh toán</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Vui lòng chọn và sao chép hướng dẫn thủ công.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Xử lý hoàn tiền</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Quản lý hoàn tiền</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Số đơn hoàn tiền</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Hoàn tiền cho đơn hàng này trên nền tảng nhà cung cấp WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Số tiền đã hoàn</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Thời điểm yêu cầu</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Xem xét xử lý quyền thành viên</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Gửi hướng dẫn này cho sinh viên</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Sinh viên</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Đang gửi…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Số tiền thực tế đã thanh toán sẽ được hoàn trả vào phương thức thanh toán ban đầu của sinh viên.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Phương thức thanh toán đã được xác minh với WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Thanh toán đã được thực hiện hơn 365 ngày trước. Trang này không còn có thể gửi yêu cầu hoàn tiền cho nó.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Nền tảng đã xác nhận khoản hoàn tiền này. Kiểm tra việc xử lý quyền thành viên bên dưới.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Việc hoàn tiền đã được ghi nhận, nhưng việc xử lý quyền thành viên cần được xác minh.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Giao dịch hoàn tiền đã được ghi nhận. Mở Chi tiết đơn hàng bên dưới để kiểm tra số tiền.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Yêu cầu hoàn tiền đã được gửi. Xác nhận có thể mất thời gian; vui lòng không tạo thêm yêu cầu hoàn tiền khác.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Kết quả hoàn tiền chưa được xác nhận</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Không thể xác nhận kết quả. Truy vấn yêu cầu hoàn tiền đã lưu; không gửi yêu cầu khác.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Học sinh phải yêu cầu hoàn tiền này từ Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Sinh viên không thanh toán gì cho đơn hàng này, vì vậy không có tiền để hoàn lại.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Không có thanh toán nào được xác nhận để hoàn lại. Nếu học sinh đã bị trừ tiền, hãy kiểm tra bản ghi thanh toán ban đầu trước.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Việc kiểm tra này chỉ xác định phương thức thanh toán; không hoàn tiền cho đơn hàng.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Đơn hàng này đã có yêu cầu hoàn tiền. Vui lòng kiểm tra kết quả thay vì gửi lại.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Đơn hàng này không thể hoàn tiền vì chưa có thanh toán được xác nhận</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Đơn hàng này đã được hoàn tiền</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Đơn hàng này không đủ điều kiện để hoàn tiền toàn bộ tại đây. Vui lòng xác minh phương thức thanh toán và trạng thái hiện tại của nó.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Đơn hàng này đã sử dụng dịch vụ WeChat Pay trước đó. Vui lòng tìm đơn hàng trong tài khoản thương nhân ban đầu và hoàn tiền tại đó.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Đơn hàng này đã được thanh toán qua Apple. Vui lòng đăng nhập vào https://reportaproblem.apple.com/ bằng Tài khoản Apple đã được sử dụng cho giao dịch mua hàng và yêu cầu hoàn tiền cho đơn hàng này. Apple sẽ xem xét và quyết định yêu cầu.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Đơn hàng này được thanh toán qua Apple. Giáo viên không thể hoàn tiền ở đây; Apple sẽ xem xét yêu cầu của học sinh.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Quyền thành viên của đơn hàng này đã được xử lý. Các giao dịch mua khác không thay đổi và mã giảm giá dùng một lần không được hoàn lại.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Thanh toán này nằm ngoài thời hạn hoàn tiền được hỗ trợ tại đây</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Phương thức thanh toán này không được hỗ trợ hoàn tiền tại đây</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Việc hoàn tiền này cần được quản trị viên xem xét</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Chúng tôi cần kiểm tra thanh toán này với WeChat trước. Kết quả sẽ hiển thị nút hoàn tiền hoặc hướng dẫn cho các thanh toán Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Bạn có thể yêu cầu hoàn tiền cho đơn hàng này</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Tài khoản của bạn không có quyền thực hiện hoàn tiền</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Việc hoàn tiền của bạn đang được xử lý</value>
+  </data>
+
+</root>

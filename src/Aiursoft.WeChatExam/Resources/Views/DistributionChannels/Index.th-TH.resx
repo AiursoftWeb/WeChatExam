@@ -36,9 +36,6 @@
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
   </data>
-  <data name="detail" xml:space="preserve">
-    <value>รายละเอียด</value>
-  </data>
   <data name="Disable" xml:space="preserve">
     <value>ปิดใช้งาน</value>
   </data>
@@ -74,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>รายละเอียด</value>
   </data>
 
 </root>

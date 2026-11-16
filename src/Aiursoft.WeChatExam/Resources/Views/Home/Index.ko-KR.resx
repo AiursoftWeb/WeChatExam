@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>계층형 지식 포인트</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>작동 방식</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>WeChatExam를 어떻게 배포하나요?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>페이퍼 스냅샷이 공정성을 어떻게 보장합니까?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>작동 방식</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>중국어 결제(텐페이V3)를 통합하여 시험 수익화를 지원합니다. 위챗을 통해 프리미엄 시험 접근, 인증서 또는 강의 자료에 대한 결제를 직접 처리하세요.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>사용 사례</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>강력한 DSL인 Mark-to-Query Language(MTQL)을 사용하여 &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;와 같은 부울 논리로 질문을 필터링하고 정확한 질문을 선택하세요.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>MTQL을 사용하여 태그 및 지식 포인트별로 문제를 선택하세요. 시험 구조, 시간 및 채점 규칙을 정의합니다.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>강력한 DSL인 Mark-to-Query Language(MTQL)을 사용하여 &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;와 같은 부울 논리로 질문을 필터링하고 정확한 질문을 선택하세요.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>GitHub에서 보기</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>위챗 연동</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>WeChat 통합은 선택 사항입니다. 플랫폼은 독립형 웹 애플리케이션으로 완전히 작동합니다. WeChat 로그인, 미니 프로그램 접근 또는 WeChat 결제를 활성화하려는 경우에만 WeChat 자격 증명이 필요합니다.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>위챗 미니프로그램</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>위챗 페이</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat 통합은 선택 사항입니다. 플랫폼은 독립형 웹 애플리케이션으로 완전히 작동합니다. WeChat 로그인, 미니 프로그램 접근 또는 WeChat 결제를 활성화하려는 경우에만 WeChat 자격 증명이 필요합니다.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam은 다양한 교육 및 평가 시나리오에 적합합니다.</value>

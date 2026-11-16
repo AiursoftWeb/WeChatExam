@@ -27,6 +27,9 @@
   <data name="Course VIPs linked to this tag entry" xml:space="preserve">
     <value>Các khóa học VIP được liên kết với mục thẻ này</value>
   </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Chỉnh sửa sản phẩm VIP</value>
+  </data>
   <data name="Edit course" xml:space="preserve">
     <value>Chỉnh sửa khóa học</value>
   </data>
@@ -53,9 +56,6 @@
   </data>
   <data name="Edit taxonomy" xml:space="preserve">
     <value>Chỉnh sửa phân loại</value>
-  </data>
-  <data name="Edit VIP product" xml:space="preserve">
-    <value>Chỉnh sửa sản phẩm VIP</value>
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>Bài tập</value>
@@ -117,6 +117,9 @@
   <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
     <value>Được sử dụng bởi {0} bài tập liên kết với {1} điểm kiến thức. Thẻ chỉ dùng để tổ chức nội bộ, không ảnh hưởng đến giá luyện tập.</value>
   </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>Sản phẩm VIP</value>
+  </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>Xem đề thi đã bị khóa</value>
   </data>
@@ -125,9 +128,6 @@
   </data>
   <data name="View relationship" xml:space="preserve">
     <value>Xem mối quan hệ</value>
-  </data>
-  <data name="VIP product" xml:space="preserve">
-    <value>Sản phẩm VIP</value>
   </data>
 
 </root>

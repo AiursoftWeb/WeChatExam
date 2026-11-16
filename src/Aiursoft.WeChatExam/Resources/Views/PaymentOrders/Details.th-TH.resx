@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>จำนวนเงิน</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>กลับสู่รายการ</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>รหัสคูปอง</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>สร้างเมื่อ</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>สิทธิ์การใช้งานในปัจจุบันอาจรวมถึงการซื้อเพิ่มเติมหรือการแก้ไขโดยระบบการชำระเงินที่ยืนยันแล้วไม่ได้หมายความว่าสมาชิกภาพยังคงมีผลในวันนี้</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>สมาชิกปัจจุบัน</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>คำอธิบาย</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>สิ้นสุด</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>หมดอายุเมื่อ</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>ยังไม่มีบันทึกใด ๆ</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>ไม่มีบันทึกสมาชิกสำหรับผลิตภัณฑ์นี้</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>ข้อมูลคำสั่งซื้อ</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>รายละเอียดคำสั่งชำระเงิน</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>ช่องทางการชำระเงิน</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>สินค้า</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>การดำเนินการคืนเงิน</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>การจัดการเงินคืน</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>เริ่มต้น</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>บันทึกการชำระเงินทางเทคนิค</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>ผู้ใช้</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>ดูบันทึกการปรับยอดเงินคืน</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>ดูประวัติการชำระเงินของผู้ใช้</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>รหัสธุรกรรม WeChat</value>

@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} câu hỏi khớp chưa được thêm</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} câu hỏi · {1} điểm</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>Đã chọn {0} mục trên trang này</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Thêm câu hỏi đã chọn</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Thêm tất cả {0} câu hỏi thi phù hợp?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Thêm câu hỏi vào đề thi này</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Thêm câu hỏi đã chọn</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Tất cả các kỳ</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Trước</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Các trang câu hỏi</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Loại câu hỏi</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Các trang câu hỏi</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Đáp án và Giải thích</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Tìm kiếm câu hỏi</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Chọn tất cả trên trang này</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Chọn câu hỏi</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Chọn tất cả trên trang này</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Câu hỏi đã chọn</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Xem chi tiết</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} câu hỏi khớp chưa được thêm</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} câu hỏi · {1} điểm</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Đã chọn {0} mục trên trang này</value>
   </data>
 
 </root>

@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Đóng băng</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>phút</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Đề thi thử</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Bộ lọc trạng thái đề thi</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>điểm</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Trước</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Có thể xuất bản</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>câu hỏi</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Đề thi chính thức</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Đề thi thật</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Đề thi chính thức</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Hãy thử một tiêu đề hoặc bộ lọc trạng thái khác.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>phút</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>điểm</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>câu hỏi</value>
   </data>
 
 </root>

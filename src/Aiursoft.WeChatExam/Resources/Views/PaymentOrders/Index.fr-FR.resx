@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Montant</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Montants</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Les montants sont enregistrés avec la commande. Une commande non confirmée n&apos;est pas un achat finalisé.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>En attente de confirmation de paiement</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Fermé</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Créé</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>N° de commande</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Numéro de commande</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Commandes</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Commandes de paiement</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canal de paiement</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Paiement confirmé</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Paiement à vérifier</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Précédent</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Produit</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Gestion des remboursements</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestion des remboursements</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Registres de réconciliation des remboursements</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Remboursé</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Statut</value>

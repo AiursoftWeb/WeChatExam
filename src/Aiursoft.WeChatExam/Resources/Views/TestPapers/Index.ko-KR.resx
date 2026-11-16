@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>동결됨</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>분</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>모의고사</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>시험지 상태 필터</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>점</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>이전</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>게시 가능</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>문제</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>실제 시험지</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>실제 시험</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>실제 시험지</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>검색</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>다른 제목이나 상태 필터를 시도해 보세요.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>분</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>점</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>문제</value>
   </data>
 
 </root>

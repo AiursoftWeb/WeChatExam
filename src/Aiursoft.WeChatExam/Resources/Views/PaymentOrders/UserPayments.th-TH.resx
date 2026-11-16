@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>จำนวนเงิน</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>จำนวนเงินจะถูกบันทึกไว้กับคำสั่งซื้อ คำสั่งซื้อที่ยังไม่ได้รับการยืนยันไม่ใช่การซื้อที่เสร็จสมบูรณ์</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>กลับไปยังรายการ</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>ประวัติการชำระเงิน</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>ช่องทางการชำระเงิน</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>สินค้า</value>

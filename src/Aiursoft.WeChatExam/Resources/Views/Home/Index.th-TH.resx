@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>จุดความรู้แบบลำดับชั้น</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>วิธีทำงาน</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>ฉันจะปรับใช้ WeChatExam ได้อย่างไร?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>กระดาษข้อสอบช่วยรับประกันความยุติธรรมได้อย่างไร?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>วิธีทำงาน</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>รองรับการชำระเงินผ่าน WeChat Pay (TenpayV3) เพื่อสร้างรายได้จากการสอบ เรียกเก็บค่าธรรมเนียมสำหรับการเข้าถึงข้อสอบระดับพรีเมียม ใบรับรอง หรือสื่อการเรียนการสอนโดยตรงผ่าน WeChat</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>กรณีการใช้งาน</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>ใช้ภาษา Mark-to-Query Language (MTQL) ซึ่งเป็น DSL ที่มีประสิทธิภาพ เพื่อกรองคำถามด้วยตรรกะบูลีน เช่น &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; สำหรับการเลือกคำถามอย่างแม่นยำ</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>ใช้ MTQL เพื่อเลือกคำถามตามแท็กและจุดความรู้ กำหนดโครงสร้างข้อสอบ ระยะเวลา และกฎการให้คะแนน</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>ใช้ภาษา Mark-to-Query Language (MTQL) ซึ่งเป็น DSL ที่มีประสิทธิภาพ เพื่อกรองคำถามด้วยตรรกะบูลีน เช่น &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; สำหรับการเลือกคำถามอย่างแม่นยำ</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>ดูบน GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>การผสานรวมกับ WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>การผสานรวม WeChat เป็นตัวเลือก คุณลักษณะของแพลตฟอร์มสามารถทำงานเป็นเว็บแอปพลิเคชันแบบแยกได้อย่างสมบูรณ์ คุณจำเป็นต้องมีข้อมูลประจำตัว WeChat ก็ต่อเมื่อต้องการเปิดใช้งานการเข้าสู่ระบบ WeChat การเข้าถึง Mini Program หรือ WeChat Pay</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>โปรแกรม WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>การชำระเงินผ่าน WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>การผสานรวม WeChat เป็นตัวเลือก คุณลักษณะของแพลตฟอร์มสามารถทำงานเป็นเว็บแอปพลิเคชันแบบแยกได้อย่างสมบูรณ์ คุณจำเป็นต้องมีข้อมูลประจำตัว WeChat ก็ต่อเมื่อต้องการเปิดใช้งานการเข้าสู่ระบบ WeChat การเข้าถึง Mini Program หรือ WeChat Pay</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam เข้ากันได้กับสถานการณ์ทางการศึกษาและการประเมินผลที่หลากหลาย</value>

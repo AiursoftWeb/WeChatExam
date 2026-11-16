@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>ถูกล็อก</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>นาที</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>ข้อสอบจำลอง</value>
   </data>
@@ -69,22 +66,16 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>ตัวกรองสถานะข้อสอบ</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>คะแนน</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>ก่อนหน้า</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>เผยแพร่ได้</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>ข้อ</value>
-  </data>
-  <data name="Real exam" xml:space="preserve">
+  <data name="Real Papers" xml:space="preserve">
     <value>ข้อสอบจริง</value>
   </data>
-  <data name="Real Papers" xml:space="preserve">
+  <data name="Real exam" xml:space="preserve">
     <value>ข้อสอบจริง</value>
   </data>
   <data name="Search" xml:space="preserve">
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>ลองใช้ชื่อหรือตัวกรองสถานะอื่น</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>นาที</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>คะแนน</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>ข้อ</value>
   </data>
 
 </root>

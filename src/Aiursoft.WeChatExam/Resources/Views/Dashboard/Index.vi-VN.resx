@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Một nền tảng hiện đại, đầy đủ tính năng và có khả năng mở rộng cao cho ứng dụng web tiếp theo của bạn.</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>trên tất cả các bài kiểm tra đã hoàn thành</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>Bản dịch hỗ trợ bởi AI</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>Đang hoạt động</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Trung tâm quản trị cho ứng dụng mini WeChat thi cử</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>Bản dịch hỗ trợ bởi AI</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Tất cả các dependency đều được tự động đăng ký và luôn sẵn sàng để sử dụng thông qua constructor injection.</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>Tổng quan nội dung</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>câu trả lời đúng</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>Số lượng</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>Tự luận</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>lượt thi</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>Bản ghi bài kiểm tra</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Xin chào Thế giới!</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>trong cơ sở dữ liệu</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>Đang thực hiện</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Chào mừng</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>trên tất cả các bài kiểm tra đã hoàn thành</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>câu trả lời đúng</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>lượt thi</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>trong cơ sở dữ liệu</value>
   </data>
 
 </root>

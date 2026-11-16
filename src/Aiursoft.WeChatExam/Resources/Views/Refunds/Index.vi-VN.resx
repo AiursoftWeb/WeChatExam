@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Thao tác</value>
+  </data>
+  <data name="Amount needs verification" xml:space="preserve">
+    <value>Số tiền cần xác minh</value>
+  </data>
+  <data name="Awaiting refund confirmation" xml:space="preserve">
+    <value>Đang chờ xác nhận hoàn tiền</value>
+  </data>
+  <data name="Buyer and product" xml:space="preserve">
+    <value>Người mua và sản phẩm</value>
+  </data>
+  <data name="Find an order to refund" xml:space="preserve">
+    <value>Tìm đơn hàng để hoàn tiền</value>
+  </data>
+  <data name="Handled for this order" xml:space="preserve">
+    <value>Đã xử lý cho đơn này</value>
+  </data>
+  <data name="Membership handling" xml:space="preserve">
+    <value>Xử lý quyền thành viên</value>
+  </data>
+  <data name="Memberships needing review" xml:space="preserve">
+    <value>Thành viên cần xem xét</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Cần xem xét</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Tiếp theo</value>
+  </data>
+  <data name="No refunds yet. Find a payment order to begin." xml:space="preserve">
+    <value>Chưa có hoàn tiền nào. Tìm một đơn hàng thanh toán để bắt đầu.</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Phương thức thanh toán</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Trước</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Thời gian ghi nhận</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Hoàn tiền</value>
+  </data>
+  <data name="Refund details" xml:space="preserve">
+    <value>Chi tiết hoàn tiền</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Quản lý hoàn tiền</value>
+  </data>
+
+</root>

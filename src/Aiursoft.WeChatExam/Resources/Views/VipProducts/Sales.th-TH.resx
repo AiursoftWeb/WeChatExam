@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>ราคาที่จ่ายจริง</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>ตลอดเวลา · สินค้านี้</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>ราคาเฉลี่ยที่ชำระแล้ว</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>กลับไปยังสินค้า</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>ก่อนหักค่าธรรมเนียมและค่าใช้จ่ายของแพลตฟอร์ม</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>ผู้ซื้อ</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>คำสั่งซื้อของผู้ซื้อ</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>ปิดใช้งาน</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>ส่วนลด</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>เปิดใช้งาน</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>ติดตามยอดขายแต่ละรายการตั้งแต่ราคาชำระจนถึงผู้ซื้อและคำสั่งซื้อ</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>การรับสิทธิ์ฟรี</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>ถัดไป</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>ยังไม่มีรายการชำระเงินที่ตรวจสอบยืนยันแล้ว</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>ไม่มีคำสั่งซื้อในหมวดนี้</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>จำนวนเงินในคำสั่งซื้อ</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>กลุ่มคำสั่งซื้อ</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>สัดส่วนคำสั่งซื้อ</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>หมายเลขคำสั่งซื้อ</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>รายได้จากการสั่งซื้อ</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>ราคาปกติ</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>การนำทางหน้า</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>ชำระแล้วเมื่อ</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>ราคาที่จ่าย</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>ยอดขายที่ชำระแล้ว</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>ผู้ซื้อที่ชำระเงิน</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>ช่องทางการชำระเงิน</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>ก่อนหน้า</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>ราคาอ้างอิงจากรายละเอียดคำสั่งซื้อที่บันทึกไว้ ผู้ซื้อที่ชำระเงินในราคาต่างกันจะปรากฏในกลุ่มราคานั้นๆ โดยจำนวนผู้ซื้อรวมจะไม่นับซ้ำ</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>ยอดขายผลิตภัณฑ์</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>ยอดรับชำระต่อคำสั่งซื้อที่ชำระแล้ว</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>จำนวนเงินคำสั่งซื้อที่คืนเงิน</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>คำสั่งซื้อที่คืนเงินแล้ว</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>ไม่รวมการคืนเงินและสิทธิ์การขอฟรี</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>เงินคืนกำลังรอการตรวจสอบความถูกต้อง ยอดรับเงินเหล่านี้อาจสูงกว่าจำนวนเงินที่คงเหลือจริง</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>การซื้อซ้ำนับเพียงครั้งเดียว</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>ตรวจสอบการคืนเงิน</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>จำนวนเงินที่บันทึกไว้ ณ ขณะซื้อ · เปิดดูคำสั่งซื้อเพื่อตรวจสอบประวัติทั้งหมด</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>เลือกกลุ่มเพื่อดูคำสั่งซื้อของกลุ่มนั้น</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>สัดส่วน</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>ราคาซื้อจริง · สัดส่วนของคำสั่งซื้อที่ชำระเงินแล้ว</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>คน</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>รายการ</value>
+  </data>
+
+</root>

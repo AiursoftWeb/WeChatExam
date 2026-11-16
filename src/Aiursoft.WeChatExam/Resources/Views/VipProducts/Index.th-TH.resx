@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP สำหรับข้อสอบจริงทั้งหมด (แบบเดิม)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>ทั้งหมด · ตัวกรองปัจจุบัน</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>ภาพรวม</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>ราคาเฉลี่ยที่ชำระแล้ว</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>กลับไปที่การตั้งค่าหลักสูตร</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>ก่อนหักค่าธรรมเนียมและต้นทุนของแพลตฟอร์ม</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>ตามยอดใบเสร็จ</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>หมวดหมู่</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>VIP หมวดหมู่</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>เฉพาะคำสั่งซื้อที่ยืนยันแล้วเท่านั้น</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>สร้างผลิตภัณฑ์ VIP</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>วัน</value>
+  <data name="Current price" xml:space="preserve">
+    <value>ราคาปัจจุบัน</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>ไม่ซ้ำกันระหว่างสินค้าเหล่านี้</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>ลบ</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>เปิดใช้งาน</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>การรับฟรี</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>วีไอพีของสถาบัน</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>ชื่อ</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>ยังไม่มีรายการซื้อที่ชำระเงินแล้ว</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>ไม่มีผลิตภัณฑ์ใดที่ตรงกับตัวกรองเหล่านี้</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>เปิดดูผลิตภัณฑ์เพื่อเห็นราคาชำระแล้วและคำสั่งซื้อของผู้ซื้อ</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>รายได้จากการสั่งซื้อ</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>คำสั่งอื่น ๆ</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>ยอดขายที่ชำระแล้ว</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>ผู้ซื้อที่ชำระเงินแล้ว</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>ราคา</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>ภาพรวมผลิตภัณฑ์</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>ประสิทธิภาพของผลิตภัณฑ์</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>สถานะผลิตภัณฑ์</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>ผลิตภัณฑ์</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>สินค้าที่มีการขายแบบชำระเงิน</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>สินค้าที่ไม่มียอดขายจากการชำระเงิน</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP การสอบจริง</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>ยอดรับชำระต่อคำสั่งซื้อที่ชำระเงินแล้ว</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>คำสั่งซื้อที่ถูกคืนเงิน</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>ไม่รวมการคืนเงินและการเคลมฟรี</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>การคืนเงินกำลังรอการปรับยอด เงินที่ได้รับอาจสูงกว่ายอดเงินคงเหลือจริง</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>การคืนเงินต้องตรวจสอบ</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>ตรวจสอบการคืนเงิน</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>รายละเอียดการขาย</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>ค้นหา</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>ค้นหาตามชื่อ หมวดหมู่ หรือสถาบัน</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>ดูว่าอะไรขายดี ใครซื้อ และจ่ายจริงเท่าไหร่</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>ผลิตภัณฑ์ 5 อันดับแรก · สัดส่วนของยอดรับชำระหลังกรอง</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>หมวดหมู่ทั้งหมด</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>ผลิตภัณฑ์ VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>รายได้มาจากไหน</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>คน</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>หน่วย</value>
   </data>
 
 </root>

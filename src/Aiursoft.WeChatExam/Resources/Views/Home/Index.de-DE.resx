@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Hierarchische Wissenspunkte</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>So funktioniert es</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Wie stelle ich WeChatExam bereit?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Wie gewährleisten Papier-Snapshots die Fairness?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>So funktioniert es</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Integrierte WeChat Pay (TenpayV3) zur Monetarisierung von Prüfungen. Berechnen Sie Gebühren für den Zugang zu Premium-Prüfungen, Zertifizierungen oder Kursmaterialien direkt über WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Anwendungsfälle</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Verwenden Sie die Mark-to-Query Language (MTQL), eine leistungsstarke DSL, um Fragen mit boolescher Logik wie &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; zu filtern, um präzise Fragen auszuwählen.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Verwenden Sie MTQL, um Fragen nach Tags und Wissenspunkten auszuwählen. Definieren Sie die Prüfungsstruktur, die Dauer und die Bewertungsregeln.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Verwenden Sie die Mark-to-Query Language (MTQL), eine leistungsstarke DSL, um Fragen mit boolescher Logik wie &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; zu filtern, um präzise Fragen auszuwählen.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Auf GitHub ansehen</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>WeChat-Integration</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>Die WeChat-Integration ist optional. Die Plattform funktioniert vollständig als eigenständige Webanwendung. Sie benötigen nur WeChat-Anmeldedaten, wenn Sie das WeChat-Login, den Zugriff auf die Mini-Programme oder WeChat Pay aktivieren möchten.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>WeChat-Miniprogramme</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>WeChat-Zahlung</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>Die WeChat-Integration ist optional. Die Plattform funktioniert vollständig als eigenständige Webanwendung. Sie benötigen nur WeChat-Anmeldedaten, wenn Sie das WeChat-Login, den Zugriff auf die Mini-Programme oder WeChat Pay aktivieren möchten.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam passt sich einer breiten Palette von Bildungs- und Bewertungsszenarien an.</value>

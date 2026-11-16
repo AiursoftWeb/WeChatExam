@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>Abbrechen</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>Übernehmen</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>Alle übernehmen</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>KI-Neue-Antwort</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI-Aufgaben-Vorschau</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>Übernehmen</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Alle übernehmen</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>Möchten Sie wirklich alle KI-Vorschläge übernehmen?</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>Aktuelle Kategorie</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>Aktueller Zeitraum</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>Aktuelle Tags</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>Aktueller Zeitraum</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>Speichern &amp; Übernehmen</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>Zeitraum auswählen</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Kategorie auswählen</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Zeitraum auswählen</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>Vorgeschlagene Kategorie</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>Vorgeschlagener Zeitraum</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Vorgeschlagene Tags</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>Vorgeschlagener Zeitraum</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>Die Aufgaben werden noch verarbeitet. Möchten Sie die abgeschlossenen übernehmen und den Rest verwerfen?</value>

@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- เลือกหมวดหมู่ (ไม่จำเป็น) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>การค้นหาเชิงความหมายด้วย AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>ไม่ได้ใช้การค้นหาความหมายด้วย AI แสดงผลลัพธ์แบบคำสำคัญ</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>เพิ่ม</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>ขั้นสูง: นิพจน์แท็ก (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>การค้นหาเชิงความหมายด้วย AI</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>ไม่ได้ใช้การค้นหาความหมายด้วย AI แสดงผลลัพธ์แบบคำสำคัญ</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>ทุกประเภท</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>คะแนนเริ่มต้น</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>ลบ</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>ร่าง</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>เช่น rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>แก้ไขแบบทดสอบ</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>ประเภทข้อสอบ</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>ค้นหาคำที่ตรงกันและความหมายที่เกี่ยวข้อง</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>ค้นหาคำถาม</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>ค้นหาคำถามที่คล้ายกัน</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>ค้นหาคำที่ตรงกันและความหมายที่เกี่ยวข้อง</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>กระดาษฟรี</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>ค้นหาและเพิ่มคำถาม</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>ไม่สามารถค้นหาได้ โปรดลองอีกครั้ง</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>โหมดการค้นหา</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>ไม่สามารถค้นหาได้ โปรดลองอีกครั้ง</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>กำลังค้นหา...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>แสดงคำถามที่คล้ายกันได้สูงสุด 5 ข้อในหมวดหมู่ที่เลือก หรือทุกหมวดหมู่หากไม่ได้เลือกหมวดหมู่ไว้ โดยจะไม่รวมคำถามที่มีอยู่ในข้อสอบ เลือกคำถามที่ต้องการเพิ่ม โดยคำถามเดิมจะยังคงเดิม</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>เช่น rock &amp;&amp; not metal</value>
   </data>
 
 </root>

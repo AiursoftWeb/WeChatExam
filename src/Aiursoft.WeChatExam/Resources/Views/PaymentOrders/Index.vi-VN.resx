@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Số tiền</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Số tiền</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Các khoản tiền được lưu cùng với đơn hàng. Một đơn hàng chưa được xác nhận không phải là một giao dịch mua hoàn tất.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Chờ xác nhận thanh toán</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Đã đóng</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Đã tạo</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Mã đơn hàng</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Số đơn hàng</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Đơn hàng</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Đơn Thanh Toán</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Kênh thanh toán</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Đã xác nhận thanh toán</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Thanh toán cần xác minh</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Trước</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Sản phẩm</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Xử lý hoàn tiền</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Quản lý hoàn tiền</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Bản ghi đối soát hoàn tiền</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Đã hoàn tiền</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
