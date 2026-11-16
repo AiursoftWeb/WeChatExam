@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>{0} عنصرًا متأثرًا</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} تمرينًا</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>مطلوب مراجعة {0} عنصر</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>كل المقررات</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>اكتمل الفحص</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>تم التحقق من {0} نقطة معرفية و{1} تمرينًا و{2} ورقة.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>تم الفحص في</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>تم التحقق من {0} نقطة معرفية و{1} تمرينًا و{2} ورقة.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>اختر بطاقة لمعرفة ما يختبره الطلاب وما ينبغي مراجعته.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>نتائجك</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>{0} عنصرًا متأثرًا</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} تمرينًا</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>مطلوب مراجعة {0} عنصر</value>
   </data>
 
 </root>

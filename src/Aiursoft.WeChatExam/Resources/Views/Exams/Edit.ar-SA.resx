@@ -33,9 +33,6 @@
   <data name="Edit Exam" xml:space="preserve">
     <value>تعديل الامتحان</value>
   </data>
-  <data name="end time" xml:space="preserve">
-    <value>وقت الانتهاء</value>
-  </data>
   <data name="Exam Settings" xml:space="preserve">
     <value>إعدادات الامتحان</value>
   </data>
@@ -54,11 +51,14 @@
   <data name="Show Answers After" xml:space="preserve">
     <value>إظهار الإجابات بعد</value>
   </data>
-  <data name="start time" xml:space="preserve">
-    <value>وقت البدء</value>
-  </data>
   <data name="Title" xml:space="preserve">
     <value>العنوان</value>
+  </data>
+  <data name="end time" xml:space="preserve">
+    <value>وقت الانتهاء</value>
+  </data>
+  <data name="start time" xml:space="preserve">
+    <value>وقت البدء</value>
   </data>
 
 </root>

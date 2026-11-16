@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Belopp</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Belopp</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Beloppen sparas med beställningen. En obekräftad beställning är inte ett genomfört köp.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tillbaka till listan</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>Betalningshistorik</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betalningskanal</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>

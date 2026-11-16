@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>أساس حديث، غني بالميزات، وقابل للتوسعة بشكل كبير لتطبيق الويب القادم الخاص بك.</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>عبر جميع الامتحانات المكتملة</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>الترجمات المدعومة بالذكاء الاصطناعي</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>نشط</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>مركز الإدارة لبرنامج وي تشات المصغر الخاص بالامتحان</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>الترجمات المدعومة بالذكاء الاصطناعي</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>يتم تسجيل جميع التبعيات تلقائيًا وهي متاحة دائمًا عبر حقن المُنشئ.</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>نظرة عامة على المحتوى</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>الإجابات الصحيحة</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>العدد</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>مقال</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>محاولات الامتحان</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>سجلات الاختبارات</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>مرحباً أيها العالم!</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>في قاعدة البيانات</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>قيد التنفيذ</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>مرحباً</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>عبر جميع الامتحانات المكتملة</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>الإجابات الصحيحة</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>محاولات الامتحان</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>في قاعدة البيانات</value>
   </data>
 
 </root>

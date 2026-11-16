@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Sumă</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Sume</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Sumele sunt salvate împreună cu comanda. O comandă neconfirmată nu reprezintă o achiziție finalizată.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>În așteptarea confirmării plății</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Închis</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Creat</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Nr. Comandă</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Numărul comenzii</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Comenzi</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Comenzi de Plată</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Metodă de plată</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Plată confirmată</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Plata necesită verificare</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Produs</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Procesarea rambursării</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestionarea rambursărilor</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Reconcilierea rambursărilor</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Rambursată</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Stare</value>

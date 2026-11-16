@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Selecteer categorie (optioneel) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Semantisch zoeken met AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI-semantisch zoeken is niet gebruikt. Zoekresultaten op basis van trefwoorden worden weergegeven.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Toevoegen</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Geavanceerd: tagexpressie (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>Semantisch zoeken met AI</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>AI-semantisch zoeken is niet gebruikt. Zoekresultaten op basis van trefwoorden worden weergegeven.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle types</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Standaard score</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>verwijderen</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Ontwerp</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>bijv. rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Bewerk Papier</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Type examenvraag</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Zoek op exacte woorden en verwante betekenissen.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Vragen zoeken</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Vergelijkbare vragen zoeken</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Zoek op exacte woorden en verwante betekenissen.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Gratis papier</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Zoek &amp; Voeg Vragen Toe</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Zoeken is niet beschikbaar. Probeer het opnieuw.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Zoekmodus</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Zoeken is niet beschikbaar. Probeer het opnieuw.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Zoeken...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Tot vijf vergelijkbare vragen in de geselecteerde categorie, of in alle categorieën als er geen is geselecteerd. Bestaande vragen uit het examen worden uitgesloten. Selecteer kandidaten om toe te voegen; de oorspronkelijke vraag blijft ongewijzigd.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>verwijderen</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>bijv. rock &amp;&amp; not metal</value>
   </data>
 
 </root>

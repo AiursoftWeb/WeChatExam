@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>{0} berørte elementer</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} øvelser</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>{0} punkter, der skal gennemgås</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>Alle kurser</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>Kontrol fuldført</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>Kontrollerede {0} videnspunkter, {1} øvelser og {2} opgaver.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>Kontrolleret den</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Kontrollerede {0} videnspunkter, {1} øvelser og {2} opgaver.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>Vælg et kort for at se, hvad de studerende oplever, og hvad der bør gennemgås.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>Dine resultater</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>{0} berørte elementer</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} øvelser</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} punkter, der skal gennemgås</value>
   </data>
 
 </root>

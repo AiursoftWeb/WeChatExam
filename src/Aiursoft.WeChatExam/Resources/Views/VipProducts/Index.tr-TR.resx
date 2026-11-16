@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>Tüm Gerçek Sınavlar VIP (Eski Sürüm)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Tüm zamanlar · mevcut filtreler</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Genel Bakış</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Ortalama ödenen fiyat</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Kurs Ayarlarına Geri Dön</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Platform ücretleri ve masraflar düşülmeden önce</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Tahsilat tutarına göre</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Kategori VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Yalnızca onaylanmış siparişler</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>VIP Ürün Oluştur</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>gün</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Güncel fiyat</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Bu ürünler genelinde tekilleştirilmiştir.</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Sil</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Aktif</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Ücretsiz talepler</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>Kurum VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>İsim</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Henüz onaylanmış ücretli satın alma yok.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Bu filtrelere uygun ürün bulunamadı.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Ödenen fiyatları ve alıcı siparişlerini görmek için bir ürünü açın.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Sipariş gelirleri</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Diğer siparişler</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Ücretli satışlar</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Ödeme yapan alıcılar</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Fiyat</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Ürünlere genel bakış</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Ürün performansı</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Ürün durumu</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Ürünler</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Ücretli satışı olan ürünler</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Ücretli satışı olmayan ürünler</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Gerçek Sınav VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Ücretli sipariş başına tahsilat</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>İade edilen siparişler</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>İadeler ve ücretsiz siparişler hariçtir</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>İade işlemleri mutabakat bekliyor. Bu makbuzlar, elde tutulan tutarı olduğundan yüksek gösterebilir.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>İadelerin incelenmesi gerekiyor</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>İadeleri incele</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Satış detayları</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Ara</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Ad, kategori veya kuruma göre ara</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Nelerin satıldığını, kimlerin satın aldığını ve gerçekte ne kadar ödediklerini görün.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>En çok satan 5 ürün · filtrelenmiş makbuzların payı</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Toplam Kategori</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Özel Ürünler</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Gelirlerin Kaynağı</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>gün</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>kişi</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>adet</value>
   </data>
 
 </root>

@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>Välj testmiljö (1) eller produktionsmiljö (0) explicit.</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Konfigurera OfferId från den här miniappens inställningar för virtuell betalning.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>Konfigurera nyckeln för den valda miljön. En nyckel från en annan miljö används inte.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>Konfigurera meddelandetoken och en giltig EncodingAESKey på servern.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>Konfigurera OfferId från den här miniappens inställningar för virtuell betalning.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>Konfigurera målets AppID och dess AppSecret på servern.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>Aktivera WeChat-åtkomst i serverkonfigurationen.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>fen</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>Gratisprodukt: ingen plattformsbetaling krävs.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>Ogiltig miljö</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>iOS-återbetalningsråd är inaktiverat i avvaktan på plattformssäkerställning.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>Rådgivning om iOS-återbetalningar är aktiverad. Den lokala sidan kan inte bekräfta att dess plattformsprotokoll har verifierats.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>Produktionsmiljö</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>Lokal mappning och prisöverensstämmelse; publicering på plattformen kräver fortfarande verifiering.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>mappningar matchar inte en aktiverad VIP-produkt. Be administratören granska dem; ta inte bort historiska produkter eller ordrar.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>Meddelandeverifieringsuppgifter</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Använd en explicit testbyggnad för virtuella betalningar. Den standardinställda mini-programbyggnaden använder fortfarande vanlig betalning.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP-produkt-ID</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>Verifiera godkännande från plattformen, AppID, OfferId och publicerade produkter i WeChat-konsolen.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>Endast läsning</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>VIP-produkt-ID</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>Virtuellt betalkonto</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>WeChat-synkroniseringen misslyckades. Öppna VIP-produkten för att granska inställningarna och försök igen.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOS-återbetalningsråd är inaktiverat i avvaktan på plattformssäkerställning.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Rådgivning om iOS-återbetalningar är aktiverad. Den lokala sidan kan inte bekräfta att dess plattformsprotokoll har verifierats.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>mappningar matchar inte en aktiverad VIP-produkt. Be administratören granska dem; ta inte bort historiska produkter eller ordrar.</value>
   </data>
 
 </root>

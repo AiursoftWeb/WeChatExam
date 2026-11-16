@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} overeenkomende vragen nog niet toegevoegd</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} vragen · {1} punten</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>{0} geselecteerd op deze pagina</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Geselecteerde vragen toevoegen</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Alle {0} overeenkomende examenvragen toevoegen?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Vragen aan dit werkblad toevoegen</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Geselecteerde vragen toevoegen</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Alle perioden</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Vorige</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Vragenpagina&apos;s</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Vraagtype</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Vragenpagina&apos;s</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Modelantwoord en Uitleg</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Zoek vragen</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Alles op deze pagina selecteren</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Vragen selecteren</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Alles op deze pagina selecteren</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Geselecteerde vragen</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Details bekijken</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} overeenkomende vragen nog niet toegevoegd</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} vragen · {1} punten</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} geselecteerd op deze pagina</value>
   </data>
 
 </root>

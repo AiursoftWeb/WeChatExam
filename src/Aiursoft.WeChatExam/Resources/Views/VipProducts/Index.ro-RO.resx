@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>Toate Examenul Real VIP (Legacy)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Toată perioada · filtrele curente</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Dintr-o privire</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Prețul mediu plătit</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Înapoi la setările cursului</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Înainte de deducerea comisioanelor și costurilor platformei</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>După încasări</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Categorie</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Categorie VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Doar comenzi confirmate</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Creează produs VIP</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>zile</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Prețul actual</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Deduplicați între aceste produse</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Șterge</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Activat</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Solicitări gratuite</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>VIP instituție</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nume</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Nu există încă achiziții plătite confirmate.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Niciun produs nu corespunde acestor filtre.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Deschideți un produs pentru a vedea prețurile achitate și comenzile cumpărătorilor.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Încasări din comenzi</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Alte comenzi</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Vânzări plătite</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Cumpărători plătitori</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Preț</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Prezentare generală a produselor</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Performanța produselor</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Starea produsului</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Produse</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Produse cu vânzări plătite</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Produse fără vânzări plătite</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP Real Exam</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Încasări per comandă plătită</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Comenzi rambursate</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Rambursările și solicitările gratuite sunt excluse</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Rambursările așteaptă reconcilierea. Aceste încasări pot supraestima suma reținută.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Rambursările necesită verificare</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Verificați rambursările</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Detalii despre vânzări</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Caută</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Căutați după nume, categorie sau instituție</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Vezi ce se vinde, cine cumpără și cât plătesc efectiv.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Stare</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Top 5 produse · ponderea încasărilor filtrate</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Categorie totală</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Produse VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>De unde provin încasările</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>zile</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>persoane</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unități</value>
   </data>
 
 </root>

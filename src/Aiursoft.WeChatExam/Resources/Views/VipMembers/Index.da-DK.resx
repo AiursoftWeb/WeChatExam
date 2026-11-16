@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>Aktiv</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>artikler</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>Emner pr. side</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>Ingen VIP-medlemskaber fundet</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>af</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Forrige</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>Nulstil</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>Søg efter bruger- eller produktnavn...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>Søgeord</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>Søg efter bruger- eller produktnavn...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>Viser</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>Starttid</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>til</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>Bruger</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>VIP-medlemskaber</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>artikler</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>af</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>til</value>
   </data>
 
 </root>

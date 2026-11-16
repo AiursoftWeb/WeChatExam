@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} drafts" xml:space="preserve">
-    <value>{0} مسودات</value>
-  </data>
-  <data name="{0} visible papers" xml:space="preserve">
-    <value>{0} بحث مرئي</value>
-  </data>
-  <data name="Create Institution" xml:space="preserve">
+      <data name="Create Institution" xml:space="preserve">
     <value>إنشاء مؤسسة</value>
   </data>
   <data name="Create your first institution" xml:space="preserve">
@@ -71,6 +65,12 @@
   </data>
   <data name="View Real Papers" xml:space="preserve">
     <value>عرض الأوراق الفعلية</value>
+  </data>
+  <data name="{0} drafts" xml:space="preserve">
+    <value>{0} مسودات</value>
+  </data>
+  <data name="{0} visible papers" xml:space="preserve">
+    <value>{0} بحث مرئي</value>
   </data>
 
 </root>

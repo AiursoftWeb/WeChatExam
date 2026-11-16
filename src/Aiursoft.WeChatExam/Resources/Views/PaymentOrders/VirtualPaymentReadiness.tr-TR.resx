@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>Sandbox (1) veya canlı (0) ortamını açıkça seçin.</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Bu mini programın sanal ödeme ayarlarından OfferId&apos;yi yapılandırın.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>Seçilen ortam için anahtarı yapılandırın. Başka bir ortamdan gelen anahtar kullanılmaz.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>Sunucuda mesaj Token&apos;ını ve geçerli bir EncodingAESKey&apos;ı yapılandırın.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>Bu mini programın sanal ödeme ayarlarından OfferId&apos;yi yapılandırın.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>Sunucuda hedef AppID&apos;yi ve AppSecret&apos;ını yapılandırın.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>Sunucu yapılandırmasında WeChat erişimini etkinleştirin.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>fen</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>Ücretsiz ürün: platform ödemesi gerekmez.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>Geçersiz ortam</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>iOS iade önerisi, platform doğrulaması beklenirken devre dışı bırakılmıştır.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>iOS iade önerisi etkinleştirildi. Bu yerel sayfa, platform protokolünün doğrulandığını garanti edemez.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>Canlı ortam</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>Yerel eşleme ve fiyat uyumu tamam; platform yayınlaması hâlâ doğrulanmalı.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>eşlemeler etkin bir VIP ürününe uymuyor. Yöneticinin bunları incelemesini isteyin; geçmiş ürünleri veya siparişleri silmeyin.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>Mesaj doğrulama kimlik bilgileri</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Açıkça sanal ödeme test derlemesi kullanın. Varsayılan mini program derlemesi hâlâ sıradan ödemeyi kullanmaktadır.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP ürün kimliği</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>WeChat konsolunda platform onayını, AppID&apos;yi, OfferId&apos;yi ve yayınlanmış ürünleri doğrulayın.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>Sadece görüntüle</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>VIP ürün kimliği</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>Sanal ödeme hesabı</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>WeChat senkronizasyonu başarısız oldu. Ayarlarını gözden geçirmek ve yeniden denemek için VIP ürününü açın.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOS iade önerisi, platform doğrulaması beklenirken devre dışı bırakılmıştır.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOS iade önerisi etkinleştirildi. Bu yerel sayfa, platform protokolünün doğrulandığını garanti edemez.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>eşlemeler etkin bir VIP ürününe uymuyor. Yöneticinin bunları incelemesini isteyin; geçmiş ürünleri veya siparişleri silmeyin.</value>
   </data>
 
 </root>

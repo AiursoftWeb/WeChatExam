@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>Henüz eklenmemiş {0} eşleşen soru</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} soru · {1} puan</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>Bu sayfada {0} öğe seçildi</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Seçili Soruları Ekle</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Eşleşen {0} sınav sorusunun tümü eklensin mi?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Bu sınava soru ekleyin</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Seçili Soruları Ekle</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Tüm Dönemler</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Önceki</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Soru sayfaları</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Soru Türü</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Soru sayfaları</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Örnek Cevap ve Açıklama</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Soruları ara</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Bu sayfadakilerin tümünü seç</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Soruları Seç</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Bu sayfadakilerin tümünü seç</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Seçilen Sorular</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Ayrıntıları Görüntüle</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Henüz eklenmemiş {0} eşleşen soru</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} soru · {1} puan</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Bu sayfada {0} öğe seçildi</value>
   </data>
 
 </root>

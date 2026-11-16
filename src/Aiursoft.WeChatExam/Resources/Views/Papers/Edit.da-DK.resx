@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Vælg kategori (valgfrit) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI-semantisk søgning</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI-semantisk søgning blev ikke brugt. Viser søgeordresultater.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Tilføj</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Avanceret: Tagudtryk (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>AI-semantisk søgning</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>AI-semantisk søgning blev ikke brugt. Viser søgeordresultater.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typer</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Standardpoint</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>slet</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Kladd</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>f.eks. rock &amp;&amp; ikke metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Rediger papir</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Spørgsmålstype til eksamen</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Find præcise ord og relaterede betydninger.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Find spørgsmål</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Find lignende spørgsmål</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Find præcise ord og relaterede betydninger.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Frit papir</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Søg &amp; Tilføj Spørgsmål</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Søgning er ikke tilgængelig. Prøv igen.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Søgetilstand</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Søgning er ikke tilgængelig. Prøv igen.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Søger...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Op til fem lignende spørgsmål i den valgte kategori eller i alle kategorier, hvis ingen er valgt. Eksisterende spørgsmål i prøven udelades. Vælg spørgsmål, der skal tilføjes; det oprindelige spørgsmål forbliver uændret.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>slet</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>f.eks. rock &amp;&amp; ikke metal</value>
   </data>
 
 </root>

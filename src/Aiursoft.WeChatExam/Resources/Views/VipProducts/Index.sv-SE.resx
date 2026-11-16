@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP för alla riktiga prov (äldre)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Hela perioden · aktuella filter</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Överblick</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Genomsnittligt pris för betalda köp</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Tillbaka till kursinställningarna</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Före plattformsavgifter och kostnader</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Efter intäkter</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Kategorivip</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Endast bekräftade beställningar</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Skapa VIP-produkt</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>dagar</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Aktuellt pris</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Unika köpare för dessa produkter</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Ta bort</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Aktiverad</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Kostnadsfria anspråk</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>Institutions-VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Namn</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Inga bekräftade köp med betalning ännu.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Inga produkter matchar dessa filter.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Öppna en produkt för att se betalda priser och beställningar från köpare.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Orderintäkter</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Övriga beställningar</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Betalda försäljningar</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Köpare som har betalat</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Pris</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Produktöversikt</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Produkternas resultat</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Produktstatus</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Produkter</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Produkter med betald försäljning</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Produkter utan betald försäljning</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Riktig examinations-VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Intäkter per betald order</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Återbetalda beställningar</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Återbetalningar och kostnadsfria anspråk exkluderas</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Återbetalningarna väntar på avstämning. Dessa kvitton kan ange ett högre belopp än det som behållits.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Återbetalningar behöver granskas</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Granska återbetalningar</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Försäljningsdetaljer</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Sök</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Sök efter namn, kategori eller institution</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Se vad som säljer, vem som köper och vad de faktiskt betalar.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Topp 5 produkter · andel av filtrerade kvitton</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Totalkategori</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP-produkter</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Varifrån intäkterna kommer</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>dagar</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>personer</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>stycken</value>
   </data>
 
 </root>

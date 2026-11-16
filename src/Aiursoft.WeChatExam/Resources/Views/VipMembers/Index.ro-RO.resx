@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>Activ</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>elemente</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>Elemente pe pagină</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>Nu s-au găsit abonați VIP</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>of</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Înapoi</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>Caută după numele utilizatorului sau al produsului...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>Cuvânt cheie căutare</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>Caută după numele utilizatorului sau al produsului...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>Se afișează</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>Ora de începere</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>to</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>Utilizator</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>Abonamente VIP</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>elemente</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>to</value>
   </data>
 
 </root>

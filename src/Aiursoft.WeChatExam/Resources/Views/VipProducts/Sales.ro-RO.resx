@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>Prețuri efectiv plătite</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>Tot timpul · acest produs</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Prețul mediu plătit</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Înapoi la produse</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Înainte de deducerea comisioanelor și costurilor platformei</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Cumpărător</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>Comenzile cumpărătorilor</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Dezactivat</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Reducere</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activat</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>Urmăriți fiecare vânzare, de la prețul plătit până la cumpărător și comandă.</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Solicitări gratuite</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Următoarea</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Încă nu există achiziții plătite confirmate.</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>Nu există comenzi în acest grup.</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>Valoarea comenzii</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>Grup de comenzi</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>Structura comenzilor</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Numărul comenzii</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Încasări din comenzi</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>Prețul inițial</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>Navigarea paginilor</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>Plătit la</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>Preț plătit</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Vânzări plătite</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Cumpărători plătitori</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Metodă de plată</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>Prețurile provin din sumele salvate ale comenzilor. Un cumpărător care a plătit prețuri diferite apare în fiecare grupă de preț; numărul total de cumpărători este deduplicat.</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>Vânzări de produse</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Încasări per comandă plătită</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>Valoarea rambursată a comenzilor</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Comenzi rambursate</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Rambursările și revendicările gratuite sunt excluse</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Rambursările așteaptă reconcilierea. Aceste încasări pot supraestima suma reținută.</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>Achizițiile repetate se numără o singură dată.</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Verificați rambursările</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>Sumele salvate la momentul achiziției · deschideți o comandă pentru istoricul complet</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>Selectați un grup pentru a-i examina comenzile.</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Pondere</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>Cât au plătit cumpărătorii · ponderea comenzilor plătite</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>persoane</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unități</value>
+  </data>
+
+</root>

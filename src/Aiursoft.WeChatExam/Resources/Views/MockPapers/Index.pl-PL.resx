@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} minutes" xml:space="preserve">
-    <value>{0} minut</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>Wszystkie kursy</value>
   </data>
   <data name="Course" xml:space="preserve">
@@ -84,11 +81,11 @@
   <data name="Published" xml:space="preserve">
     <value>Opublikowany</value>
   </data>
-  <data name="Published version available" xml:space="preserve">
-    <value>Dostępna jest opublikowana wersja</value>
-  </data>
   <data name="Published Versions" xml:space="preserve">
     <value>Opublikowane wersje</value>
+  </data>
+  <data name="Published version available" xml:space="preserve">
+    <value>Dostępna jest opublikowana wersja</value>
   </data>
   <data name="Read only" xml:space="preserve">
     <value>Tylko do odczytu</value>
@@ -110,6 +107,9 @@
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Wersje i publikacja</value>
+  </data>
+  <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minut</value>
   </data>
 
 </root>

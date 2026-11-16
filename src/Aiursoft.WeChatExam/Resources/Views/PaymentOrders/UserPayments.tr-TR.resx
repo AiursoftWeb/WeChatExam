@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Tutar</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Tutarlar</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Tutarlar siparişle birlikte kaydedilir. Onaylanmamış bir sipariş, tamamlanmış bir satın alma işlemi değildir.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Listeye Dön</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>Ödeme Geçmişi</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Ödeme kanalı</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Ürün</value>

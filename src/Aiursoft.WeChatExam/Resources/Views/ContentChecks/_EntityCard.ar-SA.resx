@@ -27,6 +27,9 @@
   <data name="Course VIPs linked to this tag entry" xml:space="preserve">
     <value>كبار الشخصيات في الدورات المرتبطون بمدخل هذا الوسم</value>
   </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>تعديل منتج VIP</value>
+  </data>
   <data name="Edit course" xml:space="preserve">
     <value>تعديل الدورة التدريبية</value>
   </data>
@@ -53,9 +56,6 @@
   </data>
   <data name="Edit taxonomy" xml:space="preserve">
     <value>تعديل التصنيف</value>
-  </data>
-  <data name="Edit VIP product" xml:space="preserve">
-    <value>تعديل منتج VIP</value>
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>تمرين</value>
@@ -117,6 +117,9 @@
   <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
     <value>يُستخدم بواسطة {0} تمرينًا مرتبطًا بـ {1} نقطة معرفية. تُستخدم الوسوم للتنظيم الداخلي، وليس لتحديد أسعار التمارين.</value>
   </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>منتج لكبار الشخصيات</value>
+  </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>عرض الورقة المجمّدة</value>
   </data>
@@ -125,9 +128,6 @@
   </data>
   <data name="View relationship" xml:space="preserve">
     <value>عرض العلاقة</value>
-  </data>
-  <data name="VIP product" xml:space="preserve">
-    <value>منتج لكبار الشخصيات</value>
   </data>
 
 </root>

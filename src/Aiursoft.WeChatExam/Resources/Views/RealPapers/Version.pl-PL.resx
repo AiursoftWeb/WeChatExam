@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
-    <value>{0} pytań · {1} punktów · {2} minut</value>
-  </data>
-  <data name="Back to Versions" xml:space="preserve">
+      <data name="Back to Versions" xml:space="preserve">
     <value>Powrót do wersji</value>
   </data>
   <data name="Explanation" xml:space="preserve">
@@ -59,6 +56,9 @@
   </data>
   <data name="Version {0}" xml:space="preserve">
     <value>Wersja {0}</value>
+  </data>
+  <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
+    <value>{0} pytań · {1} punktów · {2} minut</value>
   </data>
 
 </root>
