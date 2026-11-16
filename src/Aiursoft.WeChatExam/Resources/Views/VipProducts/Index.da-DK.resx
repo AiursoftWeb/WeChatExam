@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP til alle rigtige eksamener (ældre)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Al tid · aktuelle filtre</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>På et blik</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Gennemsnitlig betalt pris</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Tilbage til kursusindstillinger</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Før platformgebyrer og omkostninger</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Efter omsætning</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategori</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Kategori VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Kun bekræftede ordrer</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Opret VIP-produkt</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>dage</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Aktuel pris</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Deduplikeret på tværs af disse produkter</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Slet</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Aktiveret</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Gratis hævninger</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>Institutions-VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Navn</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Ingen bekræftede betalte køb endnu.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Ingen produkter matcher disse filtre.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Åbn et produkt for at se betalte priser og køberorders.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Ordreindtægter</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Andre bestillinger</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Betalt salg</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Betalende købere</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Pris</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Produktoversigt</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Produktpræstation</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Produktstatus</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Produkter</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Produkter med betalte salg</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Produkter uden betalt salg</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Virkelig eksamen VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Omsætning pr. betalt ordre</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Refunderede ordrer</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Refunderinger og gratis krav er ikke medtaget</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Refunderinger venter på afstemning. Disse indtægter kan overvurdere det tilbageholdte beløb.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Refusioner skal gennemses</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Gennemgå tilbagebetalinger</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Salgsdetaljer</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Søg</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Søg efter navn, kategori eller institution</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Se, hvad der sælger, hvem der køber og hvad de faktisk betaler.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Top 5 produkter · andel af filtrerede kasseringsbeløb</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Samlet kategori</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP-produkter</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Hvor indtægterne kommer fra</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>dage</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>personer</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>enheder</value>
   </data>
 
 </root>
