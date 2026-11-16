@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>لم تتم إضافة {0} من الأسئلة المطابقة بعد</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} سؤال · {1} نقطة</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>تم تحديد {0} في هذه الصفحة</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>إضافة الأسئلة المحددة</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>هل تريد إضافة جميع أسئلة الاختبار المطابقة وعددها {0}؟</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions from this course" xml:space="preserve">
     <value>أضف أسئلة من هذه الدورة</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>إضافة الأسئلة المحددة</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>جميع الفترات</value>
@@ -99,11 +90,11 @@
   <data name="Published Versions" xml:space="preserve">
     <value>الإصدارات المنشورة</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>صفحات الأسئلة</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>نوع السؤال</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>صفحات الأسئلة</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>الإجابة المرجعية والتفسير</value>
@@ -132,11 +123,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>ابحث عن الأسئلة</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>تحديد الكل في هذه الصفحة</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>اختر الأسئلة</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>تحديد الكل في هذه الصفحة</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>الأسئلة المحددة</value>
@@ -158,6 +149,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>عرض التفاصيل</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>لم تتم إضافة {0} من الأسئلة المطابقة بعد</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} سؤال · {1} نقطة</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>تم تحديد {0} في هذه الصفحة</value>
   </data>
 
 </root>

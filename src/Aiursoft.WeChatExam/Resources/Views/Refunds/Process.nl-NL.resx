@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Er is een terugbetaling gemeld, maar het lidmaatschap bij deze bestelling moet worden gecontroleerd. Controleer de bestaande terugbetaling in plaats van een nieuwe aan te vragen.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Een gebruikte eenmalige kortingsbon wordt niet teruggegeven.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Werkelijk betaald</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Na een succesvolle terugbetaling wordt het lidmaatschap bij deze bestelling teruggedraaid.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Apple-betalingen kunnen niet door de verkoper worden terugbetaald. Geef de student de onderstaande instructies.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Apple-website voor terugbetalingen</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Vraag een beheerder om de oorspronkelijke betaalmethode te controleren bij de onderstaande bestelgegevens.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Vraag een beheerder om het oorspronkelijke betaalrecord te controleren bij Bestelgegevens hieronder.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Vraag een beheerder met restitutierechten om het resultaat te controleren.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Vraag uw beheerder om de machtiging ‘Refund Payment Orders’ voor uw rol in te schakelen en meld u daarna af en weer aan.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Controleer hoe deze bestelling kan worden terugbetaald</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Controleer de terugbetalingsmethode</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Controleer het restitutieresultaat</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Controleer hieronder de bestaande terugbetaling. Wijzigingen in het lidmaatschap worden pas van kracht nadat de terugbetaling is bevestigd.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Controleren…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Voltooid op</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Volledige terugbetaling bevestigen</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Gekopieerd</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Instructies voor de leerling kopiëren</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Schakel Betalingsorders terugbetalen in voor de juiste rol en meld u daarna af en weer aan.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Ik heb gecontroleerd om welke student het gaat, wat het terug te betalen bedrag is en welke gevolgen dit heeft voor het lidmaatschap.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Voor deze bestelling is geen terugbetaling nodig</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Open het WeChat Pay-verkopersplatform</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Volledige bestelgegevens openen</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Rolmachtigingen openen</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Bestelnummer</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Bestelgegevens</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Betaald op</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>De betalingsgegevens zijn onvolledig, dus deze terugbetaling kan hier niet worden gestart.</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Betaalmethode</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Selecteer de instructies en kopieer ze handmatig.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Afhandeling van terugbetalingen</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Terugbetalingsbeheer</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Terugbetalingsnummer</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Restitueer deze bestelling via het WeChat Pay-handelaarsplatform</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Terugbetaald bedrag</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Aangevraagd op</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Controleer de afhandeling van het lidmaatschap</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Stuur deze instructies naar de student</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Bezig met verzenden…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Het daadwerkelijk betaalde bedrag wordt teruggestort via de oorspronkelijke betaalmethode van de student.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>De betaalmethode is geverifieerd bij WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>De betaling is meer dan 365 dagen geleden gedaan. Deze pagina kan de terugbetaling niet meer indienen.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Het platform heeft deze terugbetaling bevestigd. Controleer hieronder de afhandeling van het lidmaatschap.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>De terugbetaling is geregistreerd, maar de afhandeling van het lidmaatschap moet worden gecontroleerd.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>De terugbetaling is geregistreerd. Open hieronder de bestelgegevens om het bedrag te bekijken.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Het terugbetalingsverzoek is ingediend. De bevestiging kan even duren; dien geen tweede terugbetalingsverzoek in.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>De uitslag van de terugbetaling is nog niet bevestigd</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Het resultaat kon niet worden bevestigd. Raadpleeg het opgeslagen restitutieverzoek; dien geen nieuw verzoek in.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>De student moet deze terugbetaling bij Apple aanvragen</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>De student heeft niets voor deze bestelling betaald, dus er is geen geld om terug te betalen.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Er is geen bevestigde betaling om terug te storten. Als de student is afgeschreven, controleer dan eerst de oorspronkelijke betalingsgegevens.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Deze controle stelt alleen de betaalmethode vast; de bestelling wordt niet terugbetaald.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Voor deze bestelling is al een terugbetalingsverzoek ingediend. Controleer de status ervan in plaats van opnieuw een verzoek in te dienen.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Deze bestelling kan niet worden terugbetaald omdat er geen betaling is bevestigd</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Deze bestelling is al terugbetaald</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Deze bestelling komt hier niet in aanmerking voor een volledige terugbetaling. Controleer de betaalmethode en de huidige status.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Deze bestelling is via de vorige WeChat Pay-service betaald. Zoek de bestelling op in het oorspronkelijke verkopersaccount en betaal het bedrag daar terug.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Deze bestelling is via Apple betaald. Log in op https://reportaproblem.apple.com/ met de Apple Account die voor de aankoop is gebruikt en vraag een terugbetaling voor deze bestelling aan. Apple beoordeelt het verzoek en beslist erover.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Deze bestelling is via Apple betaald. De docent kan de betaling hier niet terugbetalen; Apple beoordeelt het verzoek van de leerling.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Het lidmaatschap voor deze bestelling is afgehandeld. Andere aankopen blijven ongewijzigd en de eenmalige kortingsbon wordt niet opnieuw geactiveerd.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Deze betaling valt buiten de terugbetalingstermijn die hier wordt ondersteund.</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Deze betaalmethode wordt hier niet ondersteund voor terugbetalingen</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Voor deze terugbetaling is beoordeling door een beheerder nodig</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>We moeten deze betaling eerst bij WeChat controleren. Het resultaat toont een terugbetalingsknop of de instructies voor Apple-betalingen.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>U kunt voor deze bestelling een terugbetaling aanvragen</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Je account is niet bevoegd om terugbetalingen uit te voeren</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Je terugbetaling wordt verwerkt</value>
+  </data>
+
+</root>

@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- اختر الفئة (اختياري) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>البحث الدلالي بالذكاء الاصطناعي</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>لم يتم استخدام البحث الدلالي بالذكاء الاصطناعي. يتم عرض نتائج الكلمات المفتاحية.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>إضافة</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>متقدم: تعبير الوسوم (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>البحث الدلالي بالذكاء الاصطناعي</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>لم يتم استخدام البحث الدلالي بالذكاء الاصطناعي. يتم عرض نتائج الكلمات المفتاحية.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>الدرجة الافتراضية</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>حذف</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>مسودة</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>مثال: روك &amp;&amp; ليس ميتال</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>تعديل الورقة</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>نوع سؤال الاختبار</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>ابحث عن الكلمات المطابقة تمامًا والمعاني المرتبطة بها.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>العثور على الأسئلة</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>العثور على أسئلة مشابهة</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>ابحث عن الكلمات المطابقة تمامًا والمعاني المرتبطة بها.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>ورقة مجانية</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>بحث و إضافة أسئلة</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>البحث غير متاح. يُرجى المحاولة مرة أخرى.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>وضع البحث</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>البحث غير متاح. يُرجى المحاولة مرة أخرى.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>جارٍ البحث...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>حتى خمسة أسئلة مشابهة في التصنيف المحدد، أو جميع التصنيفات إذا لم يتم تحديد أيٍّ منها. تُستبعد أسئلة الامتحان الموجودة مسبقًا. اختر المرشحين للإضافة؛ يبقى السؤال الأصلي دون تغيير.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>مثال: روك &amp;&amp; ليس ميتال</value>
   </data>
 
 </root>

@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>Dotyczy {0} elementów</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} ćwiczeń</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>{0} elementów do sprawdzenia</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>Wszystkie kursy</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>Sprawdzanie zakończone</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>Sprawdzono {0} zagadnień, {1} ćwiczeń i {2} arkuszy.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>Sprawdzono</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Sprawdzono {0} zagadnień, {1} ćwiczeń i {2} arkuszy.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>Wybierz kartę, aby zobaczyć, czego doświadczają uczniowie i co należy sprawdzić.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>Twoje wyniki</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>Dotyczy {0} elementów</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} ćwiczeń</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} elementów do sprawdzenia</value>
   </data>
 
 </root>

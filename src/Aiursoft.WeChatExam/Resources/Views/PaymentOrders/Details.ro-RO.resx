@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Sumă</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Sume</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Înapoi la listă</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Codul cuponului</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Creat la</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Accesul actual poate include achiziții ulterioare sau modificări manuale. O plată confirmată nu înseamnă că abonamentul este încă activ în prezent.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Abonamentul curent</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Descriere</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Sfârșit</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Expirat la</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Încă nu există jurnale</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Nu există o înregistrare de membru pentru acest produs</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Informații despre comandă</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Detalii comanda de plată</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canal de plată</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Produs</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Procesarea rambursării</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestionarea rambursărilor</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Început</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Stare</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Jurnale tehnice de plată</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Utilizator</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Vizualizați înregistrările de reconciliere a rambursărilor</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Vezi istoricul plăților utilizatorului</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>ID tranzacție WeChat</value>

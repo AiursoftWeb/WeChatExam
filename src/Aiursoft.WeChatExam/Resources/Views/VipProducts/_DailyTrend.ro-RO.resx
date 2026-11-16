@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Apply" xml:space="preserve">
+    <value>Aplică</value>
+  </data>
+  <data name="By payment date · Beijing time (UTC+8)" xml:space="preserve">
+    <value>În funcție de data plății · ora Beijingului (UTC+8)</value>
+  </data>
+  <data name="Daily receipts" xml:space="preserve">
+    <value>Încasări zilnice</value>
+  </data>
+  <data name="Daily receipts (CNY)" xml:space="preserve">
+    <value>Încasări zilnice (CNY)</value>
+  </data>
+  <data name="Daily receipts by payment date" xml:space="preserve">
+    <value>Încasări zilnice în funcție de data plății</value>
+  </data>
+  <data name="Date (Beijing time)" xml:space="preserve">
+    <value>Data (ora Beijingului)</value>
+  </data>
+  <data name="Date range" xml:space="preserve">
+    <value>Interval de date</value>
+  </data>
+  <data name="Historical paid orders without a payment date are excluded from this chart." xml:space="preserve">
+    <value>Comenzile istorice plătite fără o dată de plată sunt excluse din acest grafic.</value>
+  </data>
+  <data name="Last 30 days" xml:space="preserve">
+    <value>Ultimele 30 de zile</value>
+  </data>
+  <data name="Last 7 days" xml:space="preserve">
+    <value>Ultimele 7 zile</value>
+  </data>
+  <data name="Last 90 days" xml:space="preserve">
+    <value>Ultimele 90 de zile</value>
+  </data>
+  <data name="No confirmed paid purchases in this period. Days without receipts are shown as zero." xml:space="preserve">
+    <value>Nu există achiziții plătite confirmate în această perioadă. Zilele fără încasări sunt afișate cu valoarea zero.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Încasări din comenzi</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Vânzări plătite</value>
+  </data>
+  <data name="Period receipts" xml:space="preserve">
+    <value>Încasări în perioadă</value>
+  </data>
+  <data name="Select a day" xml:space="preserve">
+    <value>Selectați o zi</value>
+  </data>
+  <data name="Select a day to see its receipts" xml:space="preserve">
+    <value>Selectați o zi pentru a vedea încasările acesteia</value>
+  </data>
+  <data name="Today is still in progress" xml:space="preserve">
+    <value>Ziua de astăzi este încă în desfășurare</value>
+  </data>
+  <data name="View daily data" xml:space="preserve">
+    <value>Vizualizați datele zilnice</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unități</value>
+  </data>
+
+</root>

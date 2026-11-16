@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>نشط</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>العناصر</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>العناصر لكل صفحة</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>لم يتم العثور على عضويات VIP</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>من</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>السابق</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>إعادة تعيين</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>ابحث باسم المستخدم أو المنتج...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>كلمة البحث</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>ابحث باسم المستخدم أو المنتج...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>عرض</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>وقت البدء</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>إلى</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>المستخدم</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>عضويات النخبة</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>العناصر</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>إلى</value>
   </data>
 
 </root>

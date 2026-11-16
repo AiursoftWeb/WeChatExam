@@ -33,9 +33,6 @@
   <data name="Edit Exam" xml:space="preserve">
     <value>Bewerk examen</value>
   </data>
-  <data name="end time" xml:space="preserve">
-    <value>eindtijd</value>
-  </data>
   <data name="Exam Settings" xml:space="preserve">
     <value>Exameninstellingen</value>
   </data>
@@ -54,11 +51,14 @@
   <data name="Show Answers After" xml:space="preserve">
     <value>Antwoorden tonen na</value>
   </data>
-  <data name="start time" xml:space="preserve">
-    <value>starttijd</value>
-  </data>
   <data name="Title" xml:space="preserve">
     <value>Titel</value>
+  </data>
+  <data name="end time" xml:space="preserve">
+    <value>eindtijd</value>
+  </data>
+  <data name="start time" xml:space="preserve">
+    <value>starttijd</value>
   </data>
 
 </root>

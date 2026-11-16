@@ -18,23 +18,20 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions" xml:space="preserve">
-    <value>{0} questões</value>
-  </data>
-  <data name="Course Membership" xml:space="preserve">
+      <data name="Course Membership" xml:space="preserve">
     <value>Inscrição no curso</value>
-  </data>
-  <data name="Create a period to start organizing this course." xml:space="preserve">
-    <value>Crie um período para começar a organizar este curso.</value>
-  </data>
-  <data name="Create a total category first" xml:space="preserve">
-    <value>Crie primeiro uma categoria geral</value>
   </data>
   <data name="Create Period" xml:space="preserve">
     <value>Criar período</value>
   </data>
   <data name="Create Total Category" xml:space="preserve">
     <value>Criar categoria geral</value>
+  </data>
+  <data name="Create a period to start organizing this course." xml:space="preserve">
+    <value>Crie um período para começar a organizar este curso.</value>
+  </data>
+  <data name="Create a total category first" xml:space="preserve">
+    <value>Crie primeiro uma categoria geral</value>
   </data>
   <data name="Display Order" xml:space="preserve">
     <value>Ordem de exibição</value>
@@ -83,6 +80,9 @@
   </data>
   <data name="View Questions" xml:space="preserve">
     <value>Ver questões</value>
+  </data>
+  <data name="{0} questions" xml:space="preserve">
+    <value>{0} questões</value>
   </data>
 
 </root>

@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Puncte de cunoaștere ierarhice</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Cum funcționează</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Cum pot implementa WeChatExam?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Cum asigură fotografiile instantanee ale hârtiei corectitudinea?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Cum funcționează</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Integrare WeChat Pay (TenpayV3) pentru monetizarea examenelor. Permiteți plata accesului la examene premium, certificări sau materiale de curs direct prin WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Cazuri de utilizare</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Utilizați Limbajul de Interogare Mark-to-Query (MTQL), un DSL puternic, pentru a filtra întrebările cu logică booleană precum &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; pentru o selecție precisă a întrebărilor.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Utilizați MTQL pentru a selecta întrebări în funcție de etichete și puncte de cunoștințe. Defineți structura examenului, durata și regulile de evaluare.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Utilizați Limbajul de Interogare Mark-to-Query (MTQL), un DSL puternic, pentru a filtra întrebările cu logică booleană precum &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; pentru o selecție precisă a întrebărilor.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Vizualizați pe GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>Integrare WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>Integrarea WeChat este opțională. Platforma funcționează complet ca o aplicație web autonomă. Aveți nevoie doar de acreditările WeChat dacă doriți să activați autentificarea WeChat, accesul la Mini Program sau WeChat Pay.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>Mini programe WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>Plată WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>Integrarea WeChat este opțională. Platforma funcționează complet ca o aplicație web autonomă. Aveți nevoie doar de acreditările WeChat dacă doriți să activați autentificarea WeChat, accesul la Mini Program sau WeChat Pay.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam se adaptează la o gamă largă de scenarii educaționale și de evaluare.</value>

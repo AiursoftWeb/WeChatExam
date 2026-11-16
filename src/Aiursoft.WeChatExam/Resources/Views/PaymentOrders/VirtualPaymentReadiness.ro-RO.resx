@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>Alegeți explicit mediul de testare (1) sau mediul de producție (0).</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Configurați OfferId din setările de plată virtuală ale acestui mini program.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>Configurați cheia pentru mediul selectat. O cheie dintr-un alt mediu nu este utilizată.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>Configurați Token-ul de mesaj și un EncodingAESKey valid pe server.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>Configurați OfferId din setările de plată virtuală ale acestui mini program.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>Configurați AppID-ul țintă și AppSecret-ul acestuia pe server.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>Activați accesul WeChat în configurația serverului.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>fen</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>Produs gratuit: nu este necesară nicio plată prin platformă.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>Mediu invalid</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>Sfaturile pentru rambursare iOS sunt dezactivate în așteptarea verificării platformei.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>Sfaturile de rambursare iOS sunt activate. Această pagină locală nu poate certifica că protocolul platformei a fost verificat.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>Mediu de producție</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>Mapare locală și potrivirea prețului; publicarea pe platformă încă necesită verificare.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>mappings nu corespund unui produs VIP activ. Cereți administratorului să le verifice; nu ștergeți produsele sau comenzile istorice.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>Credențiale de verificare a mesajelor</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Utiliza o build de testare pentru plată virtuală explicit. Build-ul implicit al mini-programului utilizează în continuare plata obișnuită.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>ID produs VIP</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>Verifica aprobarea platformei, AppID, OfferId și produsele publicate în consola WeChat.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>Doar vizualizare</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>ID produs VIP</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>Contul de plată virtuală</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>Sincronizarea cu WeChat a eșuat. Deschideți produsul VIP pentru a vă verifica setările și încercați din nou.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Sfaturile pentru rambursare iOS sunt dezactivate în așteptarea verificării platformei.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Sfaturile de rambursare iOS sunt activate. Această pagină locală nu poate certifica că protocolul platformei a fost verificat.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>mappings nu corespund unui produs VIP activ. Cereți administratorului să le verifice; nu ștergeți produsele sau comenzile istorice.</value>
   </data>
 
 </root>

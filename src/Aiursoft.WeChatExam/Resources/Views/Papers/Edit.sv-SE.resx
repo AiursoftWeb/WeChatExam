@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Välj kategori (valfritt) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI-semantisk sökning</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI-semantisk sökning användes inte. Visar sökresultat baserade på nyckelord.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Lägg till</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Avancerat: Taguttryck (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>AI-semantisk sökning</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>AI-semantisk sökning användes inte. Visar sökresultat baserade på nyckelord.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alla typer</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Standardpoäng</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>ta bort</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Utkast</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>t.ex. rock &amp;&amp; inte metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Redigera prov</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Typ av provfråga</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Hitta exakta ord och relaterade betydelser.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Hitta frågor</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Hitta liknande frågor</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Hitta exakta ord och relaterade betydelser.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Gratis prov</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Sök &amp; Lägg till frågor</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Sökning är inte tillgänglig. Försök igen.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Sökläge</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Sökning är inte tillgänglig. Försök igen.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Söker...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Upp till fem liknande frågor i den valda kategorin, eller i alla kategorier om ingen är vald. Frågor som redan finns i provet utesluts. Välj frågor att lägga till; originalfrågan förblir oförändrad.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>ta bort</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>t.ex. rock &amp;&amp; inte metal</value>
   </data>
 
 </root>

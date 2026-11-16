@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Belopp</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Belopp</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tillbaka till listan</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Kupongkod</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Skapad</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Den aktuella åtkomsten kan omfatta senare köp eller manuella ändringar. En bekräftad betalning innebär inte att medlemskapet fortfarande är aktivt i dag.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Nuvarande medlemskap</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Beskrivning</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Slut</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Utgången vid</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Inga loggar än</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Ingen medlemsregistrering för den här produkten</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Beställningsinformation</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Detaljer för betalningsorder</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betalkanal</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Hantering av återbetalning</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Hantering av återbetalningar</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Tekniska betalningsloggar</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Användare</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Visa återbetalningsavstämning</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Visa användarens betalningshistorik</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>WeChat transaktions-ID</value>

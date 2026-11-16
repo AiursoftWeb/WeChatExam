@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>مجمّد</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>دقائق</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>نماذج تجريبية</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>مرشِّح حالة الورقة</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>نقاط</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>السابق</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>قابلة للنشر</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>أسئلة</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>الاختبارات الحقيقية</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>امتحان حقيقي</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>الاختبارات الحقيقية</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>جرّب عنوانًا أو مرشح حالة آخر.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>دقائق</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>نقاط</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>أسئلة</value>
   </data>
 
 </root>

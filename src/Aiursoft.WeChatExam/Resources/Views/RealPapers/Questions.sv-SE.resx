@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} matchande frågor har inte lagts till än</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} frågor · {1} poäng</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>{0} valda på den här sidan</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Lägg till valda frågor</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Lägg till alla {0} matchande tentafrågor?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Lägg till frågor i det här provet</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Lägg till valda frågor</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Alla perioder</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Föregående</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Frågesidor</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Frågetyp</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Frågesidor</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Referenssvar och förklaring</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Sök frågor</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Välj alla på den här sidan</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Välj frågor</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Välj alla på den här sidan</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Valda frågor</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Visa detaljer</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} matchande frågor har inte lagts till än</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} frågor · {1} poäng</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} valda på den här sidan</value>
   </data>
 
 </root>

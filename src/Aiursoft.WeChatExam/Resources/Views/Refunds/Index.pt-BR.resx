@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Ações</value>
+  </data>
+  <data name="Amount needs verification" xml:space="preserve">
+    <value>O valor precisa ser verificado</value>
+  </data>
+  <data name="Awaiting refund confirmation" xml:space="preserve">
+    <value>Aguardando a confirmação do reembolso</value>
+  </data>
+  <data name="Buyer and product" xml:space="preserve">
+    <value>Comprador e produto</value>
+  </data>
+  <data name="Find an order to refund" xml:space="preserve">
+    <value>Encontrar um pedido para reembolsar</value>
+  </data>
+  <data name="Handled for this order" xml:space="preserve">
+    <value>Tratado para este pedido</value>
+  </data>
+  <data name="Membership handling" xml:space="preserve">
+    <value>Gerenciamento da assinatura</value>
+  </data>
+  <data name="Memberships needing review" xml:space="preserve">
+    <value>Associações que precisam de revisão</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Precisa de revisão</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Próxima</value>
+  </data>
+  <data name="No refunds yet. Find a payment order to begin." xml:space="preserve">
+    <value>Ainda não há reembolsos. Encontre um pedido de pagamento para começar.</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Método de pagamento</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Registrado em</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Reembolso</value>
+  </data>
+  <data name="Refund details" xml:space="preserve">
+    <value>Detalhes do reembolso</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gerenciamento de reembolsos</value>
+  </data>
+
+</root>

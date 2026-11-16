@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Bevroren</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>minuten</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Proefexamens</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Filter op status van het proefwerk</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>punten</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Vorige</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicatiegereed</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>vragen</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Echte toetsen</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Echt examen</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Echte toetsen</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Zoeken</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Probeer een andere titel of statusfilter.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minuten</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>punten</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>vragen</value>
   </data>
 
 </root>

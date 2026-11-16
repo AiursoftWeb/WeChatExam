@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>A fost raportată o rambursare, dar trebuie verificată gestionarea abonamentului aferentă acestei comenzi. Verificați rambursarea existentă în loc să inițiați o alta.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Un cupon de unică folosință utilizat nu este reactivat.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Plătit efectiv</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>După rambursarea cu succes, abonamentul asociat acestei comenzi este anulat.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Plățile prin Apple nu pot fi rambursate de comerciant. Oferiți-i studentului instrucțiunile de mai jos.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Site-ul Apple pentru rambursări</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Solicitați unui administrator să verifice metoda de plată inițială în detaliile comenzii de mai jos.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Rugați un administrator să verifice înregistrarea plății inițiale în detaliile comenzii de mai jos.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Solicitați unui administrator cu permisiunea de a efectua rambursări să verifice rezultatul.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Cereți administratorului să activeze permisiunea „Rambursarea comenzilor de plată” pentru rolul dvs., apoi deconectați-vă și conectați-vă din nou.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Verificați cum poate fi rambursată această comandă</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Verificați metoda de rambursare</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Verifică rezultatul rambursării</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Verificați rambursarea existentă de mai jos. Modificările abonamentului intră în vigoare după confirmarea unei rambursări reușite.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Se verifică…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Finalizat la</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Confirmă rambursarea integrală</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copiat</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Copiază instrucțiunile pentru student</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Activați permisiunea de rambursare a comenzilor de plată pentru rolul corespunzător, apoi deconectați-vă și conectați-vă din nou.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Am verificat elevul, suma rambursării și modificările abonamentului.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Nu este necesară nicio rambursare pentru această comandă</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Deschideți platforma pentru comercianți WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Deschide detaliile complete ale comenzii</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Deschide permisiunile rolurilor</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Nr. comenzii</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Detalii comandă</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Plătit la</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Informațiile de plată sunt incomplete, așadar rambursarea nu poate fi inițiată aici.</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Metoda de plată</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Selectați și copiați instrucțiunile manual.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Gestionarea rambursărilor</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestionarea rambursărilor</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Numărul rambursării</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Rambursați această comandă în platforma pentru comercianți WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Suma rambursată</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Solicitat la</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Verificați gestionarea abonamentului</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Trimite aceste instrucțiuni studentului</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Se trimite…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Suma efectiv plătită va fi returnată prin metoda de plată inițială a studentului.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Metoda de plată a fost verificată prin WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Plata a fost efectuată cu mai mult de 365 de zile în urmă. Această pagină nu mai poate trimite cererea de rambursare.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Platforma a confirmat această rambursare. Verificați mai jos gestionarea calității de membru.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Rambursarea a fost înregistrată, dar trebuie verificată gestionarea abonamentului.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Rambursarea a fost înregistrată. Deschideți mai jos detaliile comenzii pentru a verifica suma.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Solicitarea de rambursare a fost trimisă. Confirmarea poate dura; nu creați o altă solicitare de rambursare.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Rezultatul rambursării nu este încă confirmat</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Rezultatul nu a putut fi confirmat. Verificați solicitarea de rambursare salvată; nu trimiteți o altă solicitare.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Studentul trebuie să solicite această rambursare de la Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Elevul nu a plătit nimic pentru această comandă, așadar nu există bani de rambursat.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Nu există nicio plată confirmată care să poată fi rambursată. Dacă studentului i s-au retras bani, verificați mai întâi înregistrarea plății inițiale.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Această verificare identifică doar metoda de plată; nu rambursează comanda.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Această comandă are deja o cerere de rambursare. Verificați rezultatul acesteia în loc să trimiteți o altă cerere.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Această comandă nu poate fi rambursată deoarece plata nu este confirmată.</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Această comandă a fost deja rambursată</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Această comandă nu este eligibilă pentru o rambursare integrală aici. Verificați metoda de plată și starea actuală a comenzii.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Această comandă a folosit vechiul serviciu WeChat Pay. Găsiți comanda în contul de comerciant original și rambursați-o de acolo.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Această comandă a fost plătită prin Apple. Conectați-vă la https://reportaproblem.apple.com/ folosind contul Apple utilizat la achiziție și solicitați rambursarea acestei comenzi. Apple analizează solicitarea și decide dacă o aprobă.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Această comandă a fost plătită prin Apple. Profesorul nu o poate rambursa aici; Apple analizează solicitarea elevului.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Abonamentul aferent acestei comenzi a fost gestionat. Celelalte achiziții rămân neschimbate, iar cuponul de unică folosință nu este reactivat.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Această plată depășește perioada de rambursare disponibilă aici.</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Această metodă de plată nu este acceptată aici pentru rambursări</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Această rambursare necesită verificarea unui administrator</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Mai întâi, trebuie să verificăm această plată prin WeChat. Rezultatul va afișa un buton de rambursare sau instrucțiunile pentru plățile efectuate prin Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Puteți solicita rambursarea acestei comenzi</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Contul dvs. nu are permisiunea de a emite rambursări</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Rambursarea dumneavoastră este în curs de procesare</value>
+  </data>
+
+</root>

@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
-    <value>متقدم: تعبير الوسوم (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
+      <data name="AI Semantic Search" xml:space="preserve">
     <value>البحث الدلالي بالذكاء الاصطناعي</value>
   </data>
   <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
     <value>لم يُستخدم البحث الدلالي بالذكاء الاصطناعي. يتم عرض نتائج البحث بالكلمات المفتاحية.</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>متقدم: تعبير الوسوم (MTQL)</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>جميع الأنواع</value>
@@ -36,9 +36,6 @@
   <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
     <value>اجمع الوسوم، على سبيل المثال: rock &amp;&amp; not metal</value>
   </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>مثال: روك &amp;&amp; ليس ميتال</value>
-  </data>
   <data name="Enter a few words to find questions." xml:space="preserve">
     <value>أدخل بضع كلمات للعثور على الأسئلة.</value>
   </data>
@@ -48,14 +45,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>نوع سؤال الاختبار</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>اعثر على الكلمات المطابقة والمعاني ذات الصلة.</value>
-  </data>
   <data name="Find Exam Questions to Associate" xml:space="preserve">
     <value>العثور على أسئلة الاختبار لربطها</value>
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>البحث عن الأسئلة</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>اعثر على الكلمات المطابقة والمعاني ذات الصلة.</value>
   </data>
   <data name="Keyword Search" xml:space="preserve">
     <value>البحث بالكلمات المفتاحية</value>
@@ -75,11 +72,11 @@
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>البحث غير متاح. يُرجى المحاولة مرة أخرى.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>وضع البحث</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>البحث غير متاح. يُرجى المحاولة مرة أخرى.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>جارٍ البحث...</value>
@@ -89,6 +86,9 @@
   </data>
   <data name="Tag Expression Search (MTQL)" xml:space="preserve">
     <value>البحث باستخدام تعبيرات الوسوم (MTQL)</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>مثال: روك &amp;&amp; ليس ميتال</value>
   </data>
 
 </root>

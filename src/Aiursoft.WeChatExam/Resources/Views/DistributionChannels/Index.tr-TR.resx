@@ -36,9 +36,6 @@
   <data name="Delete" xml:space="preserve">
     <value>Sil</value>
   </data>
-  <data name="detail" xml:space="preserve">
-    <value>Ayrıntılar</value>
-  </data>
   <data name="Disable" xml:space="preserve">
     <value>Devre Dışı Bırak</value>
   </data>
@@ -74,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>Ayrıntılar</value>
   </data>
 
 </root>

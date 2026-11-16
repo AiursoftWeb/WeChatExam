@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>نقاط المعرفة الهرمية</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>كيف يعمل</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>كيف يمكنني نشر WeChatExam؟</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>كيف تضمن لقطات الورقة العدالة؟</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>كيف يعمل</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>تكامل مع الدفع عبر وي تشات (TenpayV3) لتجنيب الامتحانات. احصل على رسوم للوصول إلى الامتحانات المميزة، والشهادات، أو مواد الدورة التدريبية مباشرةً عبر وي تشات.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>حالات الاستخدام</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>استخدم لغة الاستعلام بالعلامة (MTQL)، وهي لغة مجال خاص قوية، لفلترة الأسئلة باستخدام المنطق البولياني مثل &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; لاختيار الأسئلة بدقة.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>استخدم MTQL لاختيار الأسئلة بناءً على الوسوم ونقاط المعرفة. حدد هيكل الامتحان ومدة الاختبار وقواعد التقييم.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>استخدم لغة الاستعلام بالعلامة (MTQL)، وهي لغة مجال خاص قوية، لفلترة الأسئلة باستخدام المنطق البولياني مثل &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; لاختيار الأسئلة بدقة.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>عرض على GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>تكامل وي تشات</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>تكامل WeChat اختياري. تعمل المنصة بشكل كامل كتطبيق ويب مستقل. لا تحتاج إلى بيانات اعتماد WeChat إلا إذا كنت تريد تمكين تسجيل الدخول عبر WeChat، أو الوصول إلى البرنامج المصغر، أو الدفع عبر WeChat.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>برامج WeChat المصغرة</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>الدفع عبر وي تشات</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>تكامل WeChat اختياري. تعمل المنصة بشكل كامل كتطبيق ويب مستقل. لا تحتاج إلى بيانات اعتماد WeChat إلا إذا كنت تريد تمكين تسجيل الدخول عبر WeChat، أو الوصول إلى البرنامج المصغر، أو الدفع عبر WeChat.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>يتكيف WeChatExam مع مجموعة واسعة من السيناريوهات التعليمية والتقييمية.</value>

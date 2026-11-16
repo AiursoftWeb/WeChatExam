@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Tutar</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Tutarlar</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Listeye Dön</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Kupon kodu</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Oluşturulma Tarihi</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Mevcut erişim, daha sonra yapılan satın alımları veya manuel değişiklikleri içerebilir. Ödemenin onaylanmış olması, üyeliğin bugün hâlâ etkin olduğu anlamına gelmez.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Mevcut üyelik</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Açıklama</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Bitiş</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Geçerlilik Bitiş Tarihi</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Henüz log yok</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Bu ürün için üyelik kaydı bulunmuyor</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Sipariş Bilgileri</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Ödeme Siparişi Detayları</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Ödeme kanalı</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Ürün</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>İade işlemleri</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>İade yönetimi</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Başlangıç</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Durum</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Teknik ödeme günlükleri</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Kullanıcı</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>İade mutabakat kayıtlarını görüntüle</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Kullanıcının ödeme geçmişini görüntüle</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>WeChat İşlem Kimliği</value>

@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
-    <value>Geavanceerd: tag-expressie (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
+      <data name="AI Semantic Search" xml:space="preserve">
     <value>Semantisch zoeken met AI</value>
   </data>
   <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
     <value>AI-semantisch zoeken is niet gebruikt. Zoekresultaten op basis van trefwoorden worden weergegeven.</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Geavanceerd: tag-expressie (MTQL)</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Alle typen</value>
@@ -36,9 +36,6 @@
   <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
     <value>Combineer tags, bijvoorbeeld: rock &amp;&amp; not metal</value>
   </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>bijv. rock &amp;&amp; niet metal</value>
-  </data>
   <data name="Enter a few words to find questions." xml:space="preserve">
     <value>Voer een paar woorden in om vragen te vinden.</value>
   </data>
@@ -48,14 +45,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Type examenvraag</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Vind exacte woorden en verwante betekenissen.</value>
-  </data>
   <data name="Find Exam Questions to Associate" xml:space="preserve">
     <value>Zoek examenvragen om te koppelen</value>
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Vragen zoeken</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Vind exacte woorden en verwante betekenissen.</value>
   </data>
   <data name="Keyword Search" xml:space="preserve">
     <value>Zoeken op trefwoord</value>
@@ -75,11 +72,11 @@
   <data name="Search" xml:space="preserve">
     <value>Zoeken</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Zoeken is niet beschikbaar. Probeer het opnieuw.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Zoekmodus</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Zoeken is niet beschikbaar. Probeer het opnieuw.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Zoeken...</value>
@@ -89,6 +86,9 @@
   </data>
   <data name="Tag Expression Search (MTQL)" xml:space="preserve">
     <value>Zoeken op tagexpressies (MTQL)</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>bijv. rock &amp;&amp; niet metal</value>
   </data>
 
 </root>

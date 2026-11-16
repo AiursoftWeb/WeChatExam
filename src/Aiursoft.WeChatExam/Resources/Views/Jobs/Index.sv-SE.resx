@@ -18,11 +18,11 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
-    <value>Åtgärder</value>
-  </data>
-  <data name="AI Optimization Tasks" xml:space="preserve">
+      <data name="AI Optimization Tasks" xml:space="preserve">
     <value>AI-optimeringstup</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Åtgärder</value>
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Bakgrundsjobb</value>
@@ -44,9 +44,6 @@
   </data>
   <data name="Job Name" xml:space="preserve">
     <value>Jobbnamn</value>
-  </data>
-  <data name="last hour" xml:space="preserve">
-    <value>undergående timmen</value>
   </data>
   <data name="Last run" xml:space="preserve">
     <value>Senaste körning</value>
@@ -116,6 +113,9 @@
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Visa resultat</value>
+  </data>
+  <data name="last hour" xml:space="preserve">
+    <value>undergående timmen</value>
   </data>
 
 </root>

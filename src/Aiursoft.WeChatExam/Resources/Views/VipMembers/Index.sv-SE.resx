@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>Aktiv</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>artiklar</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>Objekt per sida</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>Inga VIP-medlemskap hittades</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>av</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Föregående</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>Återställ</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>Sök efter användare eller produktnamn...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>Sökord</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>Sök efter användare eller produktnamn...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>Visar</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>Starttid</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>till</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>Användare</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>VIP-medlemskap</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>artiklar</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>av</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>till</value>
   </data>
 
 </root>

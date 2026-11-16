@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
-    <value>İşlemler</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Soru Ekle</value>
-  </data>
-  <data name="AI Auto Categorize" xml:space="preserve">
+      <data name="AI Auto Categorize" xml:space="preserve">
     <value>Yapay Zeka Otomatik Kategorileştir</value>
   </data>
   <data name="AI Auto Tagging" xml:space="preserve">
@@ -44,6 +38,12 @@
   </data>
   <data name="AI Tools" xml:space="preserve">
     <value>Yapay Zeka Araçları</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>Soru Ekle</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>Tüm Kategoriler</value>
@@ -183,9 +183,6 @@
   <data name="Questions" xml:space="preserve">
     <value>Sorular</value>
   </data>
-  <data name="questions?" xml:space="preserve">
-    <value>sorular?</value>
-  </data>
   <data name="Reset" xml:space="preserve">
     <value>Sıfırla</value>
   </data>
@@ -209,9 +206,6 @@
   </data>
   <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
     <value>Yapay Zeka sınıflandırması için aday kategorileri seçin. AI, her bir soru için tam olarak bir kategori seçecektir.</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>seçili</value>
   </data>
   <data name="Start Classification" xml:space="preserve">
     <value>Sınıflandırma Başlat</value>
@@ -242,6 +236,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tür</value>
+  </data>
+  <data name="questions?" xml:space="preserve">
+    <value>sorular?</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>seçili</value>
   </data>
 
 </root>

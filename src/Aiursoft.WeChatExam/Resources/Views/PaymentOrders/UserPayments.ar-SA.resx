@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>المبلغ</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>المبالغ</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>تُحفَظ المبالغ مع الطلب. ولا يُعدّ الطلب غير المؤكَّد عملية شراء مكتملة.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>العودة إلى القائمة</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>سجل المدفوعات</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>قناة الدفع</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>المنتج</value>

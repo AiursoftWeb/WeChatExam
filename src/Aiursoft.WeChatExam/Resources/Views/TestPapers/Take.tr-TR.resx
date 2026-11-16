@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>Yönetici Sınavı</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>Yapay zekâ değerlendirme</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>Yapay zekâ soruları, gönderimden sonra yapılandırılan modele iletilir.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>Yönetici Sınavı</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>Cevap kağıdı</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>Canlı değerlendirme önizlemesi</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>dakika</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>Süre sınırı yok</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>Sınav Kağıdı</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>puan</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>İlerleme</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>soru</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>Teslim etmeye hazır mısınız?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>Cevabınızı buraya yazın...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>dakika</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>puan</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>soru</value>
   </data>
 
 </root>

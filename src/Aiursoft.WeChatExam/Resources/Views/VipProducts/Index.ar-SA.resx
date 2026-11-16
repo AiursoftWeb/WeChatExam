@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>اشتراك VIP في جميع الاختبارات الحقيقية (قديم)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>كل الوقت · عوامل التصفية الحالية</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>نظرة سريعة</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>متوسط سعر الشراء</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>العودة إلى إعدادات الدورة</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>قبل خصم رسوم المنصة والتكاليف</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>حسب الإيرادات</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>الفئة</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>VIP الفئات</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>الطلبات المؤكدة فقط</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>إنشاء منتج VIP</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>أيام</value>
+  <data name="Current price" xml:space="preserve">
+    <value>السعر الحالي</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>عدد المشترين بعد إزالة التكرار عبر هذه المنتجات</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>حذف</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>مفعل</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>مطالبات مجانية</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>العضوية المميزة للمؤسسات</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>لا توجد مشتريات مدفوعة مؤكدة حتى الآن.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>لا توجد منتجات تطابق عوامل التصفية هذه.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>افتح منتجًا للاطلاع على الأسعار المدفوعة وطلبات المشترين.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>إيرادات الطلبات</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>طلبات أخرى</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>المبيعات المدفوعة</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>المشترون الذين دفعوا</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>السعر</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>نظرة عامة على المنتجات</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>أداء المنتجات</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>حالة المنتج</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>المنتجات</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>المنتجات التي حققت مبيعات مدفوعة</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>المنتجات التي لم تحقق مبيعات مدفوعة</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP امتحان حقيقي</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>الإيرادات لكل طلب مدفوع</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>الطلبات المستردة</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>لا تشمل المبيعات المبالغ المستردة والمطالبات المجانية</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>تخضع المبالغ المستردة للتسوية. وقد تُظهر هذه الإيصالات مبلغًا محتفظًا به أكبر من المبلغ الفعلي.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>عمليات الاسترداد بحاجة إلى مراجعة</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>مراجعة طلبات الاسترداد</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>تفاصيل المبيعات</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>ابحث حسب الاسم أو الفئة أو المؤسسة</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>تعرّف على المنتجات الأكثر مبيعًا، ومن يشتريها، والمبالغ التي يدفعونها فعليًا.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>أفضل 5 منتجات · نسبة الإيصالات المُصفّاة</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>إجمالي الفئات</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>منتجات VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>مصادر الإيرادات</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>أيام</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>أشخاص</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>وحدات</value>
   </data>
 
 </root>

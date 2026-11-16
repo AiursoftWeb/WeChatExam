@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Selectați categorie (opțional) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Căutare semantică cu IA</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Căutarea semantică AI nu a fost utilizată. Se afișează rezultatele căutării după cuvinte-cheie.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Adaugă</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Avansat: expresie de etichete (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>Căutare semantică cu IA</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>Căutarea semantică AI nu a fost utilizată. Se afișează rezultatele căutării după cuvinte-cheie.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Toate tipurile</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Scor implicit</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>șterge</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Proiect</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>ex. rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Editare lucrare</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Tipul întrebării de examen</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Găsiți cuvinte exacte și sensuri asociate.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Găsiți întrebări</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Găsiți întrebări similare</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Găsiți cuvinte exacte și sensuri asociate.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Hârtie gratuită</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Caută și adaugă întrebări</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Căutarea nu este disponibilă. Vă rugăm să încercați din nou.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Mod de căutare</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Căutarea nu este disponibilă. Vă rugăm să încercați din nou.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Se caută...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Până la cinci întrebări similare din categoria selectată sau din toate categoriile, dacă nu este selectată niciuna. Întrebările existente din lucrare sunt excluse. Selectați întrebările pe care doriți să le adăugați; întrebarea originală rămâne neschimbată.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>șterge</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>ex. rock &amp;&amp; not metal</value>
   </data>
 
 </root>

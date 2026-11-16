@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>تم الإبلاغ عن عملية استرداد، لكن يلزم التحقق من عضوية هذا الطلب. راجع عملية الاسترداد الحالية بدلًا من بدء عملية أخرى.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>لا يُعاد القسيم أحادي الاستخدام بعد استخدامه.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>المبلغ المدفوع فعليًا</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>بعد إتمام استرداد المبلغ بنجاح، تُلغى العضوية المرتبطة بهذا الطلب.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>لا يمكن للتاجر ردّ مدفوعات Apple. أبلغ الطالب بالتعليمات أدناه.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>موقع استرداد الأموال من Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>اطلب من أحد المسؤولين التحقق من طريقة الدفع الأصلية ضمن تفاصيل الطلب أدناه.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>اطلب من أحد المسؤولين التحقق من سجل الدفع الأصلي في تفاصيل الطلب أدناه.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>اطلب من مسؤول لديه صلاحية استرداد المبالغ التحقق من النتيجة.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>اطلب من المسؤول تفعيل إذن «استرداد مدفوعات الطلبات» لدورك، ثم سجّل الخروج وأعد تسجيل الدخول.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>تحقّق من كيفية استرداد قيمة هذا الطلب</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>تحقّق من طريقة استرداد المبلغ</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>تحقق من نتيجة الاسترداد</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>تحقّق من طلب استرداد المبلغ الحالي أدناه. تسري التغييرات على العضوية بعد تأكيد نجاح استرداد المبلغ.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>جارٍ التحقق…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>اكتمل في</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>تأكيد استرداد المبلغ بالكامل</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>تم النسخ</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>انسخ التعليمات للطالب</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>فعِّل صلاحية استرداد طلبات الدفع للدور المناسب، ثم سجّل الخروج وسجّل الدخول مرة أخرى.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>لقد تحققت من الطالب ومبلغ الاسترداد والتغييرات التي ستطرأ على العضوية.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>لا يلزم استرداد المبلغ لهذا الطلب</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>فتح منصة تجار WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>عرض تفاصيل الطلب كاملة</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>فتح أذونات الأدوار</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>تاريخ الدفع</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>معلومات الدفع غير مكتملة، لذا لا يمكن بدء عملية استرداد المبلغ من هنا</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>طريقة الدفع</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>يُرجى تحديد التعليمات ونسخها يدويًا.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>معالجة المبالغ المستردة</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>إدارة عمليات استرداد الأموال</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>رقم الاسترداد</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>استرداد قيمة هذا الطلب من منصة تجار WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>المبلغ المسترد</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>تاريخ الطلب</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>مراجعة معالجة العضوية</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>أرسل هذه التعليمات إلى الطالب</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>الطالب</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>جارٍ الإرسال…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>سيُعاد المبلغ المدفوع فعليًا إلى وسيلة الدفع الأصلية للطالب.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>تم التحقق من طريقة الدفع عبر WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>تم الدفع منذ أكثر من 365 يومًا. لم يعد بإمكان هذه الصفحة إرسال طلب استرداد المبلغ.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>أكدت المنصة استرداد المبلغ. راجع أدناه معالجة العضوية.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>تم تسجيل المبلغ المسترد، لكن يلزم التحقق من معالجة العضوية.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>تم تسجيل مبلغ الاسترداد. افتح تفاصيل الطلب أدناه للتحقق من المبلغ.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>تم إرسال طلب استرداد المبلغ. قد يستغرق تأكيده بعض الوقت؛ لا تُنشئ طلب استرداد آخر.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>لم يتم تأكيد نتيجة استرداد المبلغ بعد</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>تعذّر تأكيد النتيجة. تحقّق من طلب استرداد المبلغ المحفوظ، ولا تقدّم طلبًا آخر.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>يجب على الطالب طلب استرداد المبلغ من Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>لم يدفع الطالب أي مبلغ مقابل هذا الطلب، لذا لا يوجد مبلغ لإعادته.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>لا توجد دفعة مؤكدة لردّها. إذا كان الطالب قد دُفعت منه رسوم، فتحقّق أولًا من سجل الدفعة الأصلية.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>هذا التحقق يحدد طريقة الدفع فقط؛ ولا يسترد مبلغ الطلب.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>يوجد بالفعل طلب استرداد لهذا الطلب. تحقّق من نتيجته بدلًا من تقديم طلب آخر.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>لا يمكن استرداد قيمة هذا الطلب لعدم تأكيد الدفع</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>تم استرداد مبلغ هذا الطلب بالفعل</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>هذا الطلب غير مؤهل لاسترداد كامل المبلغ من هنا. يُرجى التحقق من طريقة الدفع وحالة الطلب الحالية.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>استخدم هذا الطلب خدمة WeChat Pay السابقة. اعثر على الطلب في حساب التاجر الأصلي واسترد المبلغ منه.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>تم دفع قيمة هذا الطلب عبر Apple. يُرجى تسجيل الدخول إلى https://reportaproblem.apple.com/ باستخدام حساب Apple الذي استُخدم لإجراء عملية الشراء، وطلب استرداد المبلغ لهذا الطلب. تراجع Apple الطلب وتتخذ القرار بشأنه.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>تم دفع قيمة هذا الطلب عبر Apple. لا يمكن للمعلم رد المبلغ من هنا؛ إذ تراجع Apple طلب الطالب.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>تمت معالجة عضوية هذا الطلب. لم تتغير المشتريات الأخرى، ولم تتم استعادة القسيمة أحادية الاستخدام.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>تجاوزت هذه الدفعة مدة استرداد المبلغ المعتمدة هنا</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>طريقة الدفع هذه غير مدعومة لاسترداد المبلغ هنا</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>تتطلب عملية استرداد المبلغ هذه مراجعة المسؤول</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>نحتاج أولًا إلى التحقق من هذه الدفعة عبر WeChat. ستُظهر النتيجة زرًا لاسترداد المبلغ أو تعليمات استرداد المدفوعات عبر Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>يمكنك طلب استرداد قيمة هذا الطلب</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>حسابك لا يملك صلاحية إصدار المبالغ المستردة</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>تتم معالجة طلب استرداد أموالك</value>
+  </data>
+
+</root>

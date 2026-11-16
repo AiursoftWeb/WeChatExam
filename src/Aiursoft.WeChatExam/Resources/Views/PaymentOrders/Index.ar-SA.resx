@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>المبلغ</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>المبالغ</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>تُحفَظ المبالغ مع الطلب. والطلب غير المؤكَّد لا يُعدّ عملية شراء مكتملة.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>بانتظار تأكيد الدفع</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>مغلق</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>تم الإنشاء</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>رقم الطلب</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>الطلبات</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>أوامر الدفع</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>قناة الدفع</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>تم تأكيد الدفع</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>الدفع بحاجة إلى التحقق</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>السابق</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>المنتج</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>معالجة الاسترداد</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>إدارة المبالغ المستردة</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>سجلات تسوية الاسترداد</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>تم استرداد المبلغ</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>الحالة</value>

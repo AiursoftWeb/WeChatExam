@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Bedrag</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Bedragen</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Bedragen worden bij de bestelling opgeslagen. Een niet-bevestigde bestelling is geen voltooide aankoop.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>In afwachting van betalingsbevestiging</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Gesloten</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Aangemaakt</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Bestelnr.</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Bestelnummer</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Bestellingen</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Betalingen</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betaalkanaal</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Betaling bevestigd</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Betaling moet worden gecontroleerd</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Vorige</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Product</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Terugbetaling afhandelen</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Beheer van terugbetalingen</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Terugboekingverzoeken</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Terugbetaald</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

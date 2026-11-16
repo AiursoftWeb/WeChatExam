@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Bedrag</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Bedragen</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Terug naar lijst</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Kortingscode</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Gemaakt op</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>De huidige toegang kan latere aankopen of handmatige wijzigingen omvatten. Een bevestigde betaling betekent niet dat het lidmaatschap vandaag nog actief is.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Huidig lidmaatschap</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Omschrijving</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Einde</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Vervallen op</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Nog geen logs</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Geen lidmaatschapsgegevens voor dit product</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Bestelinformatie</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Details van de betalingsorder</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betaalkanaal</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Terugbetalingen afhandelen</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Terugbetalingsbeheer</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Begindatum</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Technische betalingslogboeken</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Gebruiker</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Weergave van terugbetalingsafrekeningsrecords</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Bekijk de betalingsgeschiedenis van de gebruiker</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>WeChat Transactie-ID</value>

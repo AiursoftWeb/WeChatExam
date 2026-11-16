@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Bedrag</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Bedragen</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Bedragen worden bij de bestelling opgeslagen. Een niet-bevestigde bestelling is geen afgeronde aankoop.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Terug naar lijst</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>Betalinggeschiedenis</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betaalkanaal</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
