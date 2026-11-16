@@ -33,9 +33,6 @@
   <data name="Edit Exam" xml:space="preserve">
     <value>Редактировать экзамен</value>
   </data>
-  <data name="end time" xml:space="preserve">
-    <value>время окончания</value>
-  </data>
   <data name="Exam Settings" xml:space="preserve">
     <value>Настройки экзамена</value>
   </data>
@@ -54,11 +51,14 @@
   <data name="Show Answers After" xml:space="preserve">
     <value>Показать ответы после</value>
   </data>
-  <data name="start time" xml:space="preserve">
-    <value>Время начала</value>
-  </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>
+  </data>
+  <data name="end time" xml:space="preserve">
+    <value>время окончания</value>
+  </data>
+  <data name="start time" xml:space="preserve">
+    <value>Время начала</value>
   </data>
 
 </root>

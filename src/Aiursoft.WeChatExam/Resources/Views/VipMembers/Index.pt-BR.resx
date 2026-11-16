@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>Ativo</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>itens</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>Itens por página</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>Nenhum membro VIP encontrado</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>de</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>Redefinir</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>Pesquisar por nome de usuário ou produto...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>Palavra-chave de pesquisa</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>Pesquisar por nome de usuário ou produto...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>Exibindo</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>Início</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>para</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>Usuário</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>Membros VIP</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>itens</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>para</value>
   </data>
 
 </root>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Apply" xml:space="preserve">
+    <value>Applica</value>
+  </data>
+  <data name="By payment date · Beijing time (UTC+8)" xml:space="preserve">
+    <value>Per data di pagamento · Ora di Pechino (UTC+8)</value>
+  </data>
+  <data name="Daily receipts" xml:space="preserve">
+    <value>Incassi giornalieri</value>
+  </data>
+  <data name="Daily receipts (CNY)" xml:space="preserve">
+    <value>Ricavi giornalieri (CNY)</value>
+  </data>
+  <data name="Daily receipts by payment date" xml:space="preserve">
+    <value>Incasso giornaliero per data di pagamento</value>
+  </data>
+  <data name="Date (Beijing time)" xml:space="preserve">
+    <value>Data (ora di Pechino)</value>
+  </data>
+  <data name="Date range" xml:space="preserve">
+    <value>Intervallo di date</value>
+  </data>
+  <data name="Historical paid orders without a payment date are excluded from this chart." xml:space="preserve">
+    <value>Gli ordini storici pagati senza data di pagamento sono esclusi da questo grafico.</value>
+  </data>
+  <data name="Last 30 days" xml:space="preserve">
+    <value>Ultimi 30 giorni</value>
+  </data>
+  <data name="Last 7 days" xml:space="preserve">
+    <value>Ultimi 7 giorni</value>
+  </data>
+  <data name="Last 90 days" xml:space="preserve">
+    <value>Ultimi 90 giorni</value>
+  </data>
+  <data name="No confirmed paid purchases in this period. Days without receipts are shown as zero." xml:space="preserve">
+    <value>Nessuni acquisti pagati confermati in questo periodo. I giorni senza incassi sono mostrati come zero.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Ricavi ordini</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Vendite pagate</value>
+  </data>
+  <data name="Period receipts" xml:space="preserve">
+    <value>Ricevute del periodo</value>
+  </data>
+  <data name="Select a day" xml:space="preserve">
+    <value>Seleziona un giorno</value>
+  </data>
+  <data name="Select a day to see its receipts" xml:space="preserve">
+    <value>Seleziona un giorno per vedere i suoi incassi</value>
+  </data>
+  <data name="Today is still in progress" xml:space="preserve">
+    <value>Oggi è ancora in corso</value>
+  </data>
+  <data name="View daily data" xml:space="preserve">
+    <value>Visualizza dati giornalieri</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unità</value>
+  </data>
+
+</root>

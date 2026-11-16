@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>Явно выберите песочницу (1) или боевой режим (0).</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Настройте OfferId в настройках виртуальных платежей этого мини-приложения.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>Настройте ключ для выбранной среды. Ключ из другой среды не используется.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>Настройте токен сообщения и действующий EncodingAESKey на сервере.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>Настройте OfferId в настройках виртуальных платежей этого мини-приложения.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>Настройте целевой AppID и соответствующий AppSecret на сервере.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>Включите доступ WeChat в конфигурации сервера.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>фэнь</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>Бесплатный продукт: оплата через платформу не требуется.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>Недействительная среда</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>Совет по возврату средств на iOS отключен до подтверждения со стороны платформы.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>Совет по возвратам на iOS включен. Эта локальная страница не может подтвердить, что её протокол платформы был верифицирован.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>Продакшен</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>Локальное сопоставление и совпадение цены; публикация на платформе по-прежнему требует проверки.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>маппинги не соответствуют активному VIP-продукту. Попросите администратора проверить их; не удаляйте исторические продукты или заказы.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>Удостоверения для проверки сообщений</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Используйте тестовую сборку с явной поддержкой виртуальных платежей. Сборка мини-программы по умолчанию по-прежнему использует обычные платежи.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>ID VIP-продукта</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>Проверьте одобрение платформы, AppID, OfferId и опубликованные продукты в консоли WeChat.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>Только просмотр</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>ID VIP-продукта</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>Виртуальный платёжный аккаунт</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>Синхронизация с WeChat не удалась. Откройте продукт VIP, проверьте его настройки и повторите попытку.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>фэнь</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Совет по возврату средств на iOS отключен до подтверждения со стороны платформы.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Совет по возвратам на iOS включен. Эта локальная страница не может подтвердить, что её протокол платформы был верифицирован.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>маппинги не соответствуют активному VIP-продукту. Попросите администратора проверить их; не удаляйте исторические продукты или заказы.</value>
   </data>
 
 </root>

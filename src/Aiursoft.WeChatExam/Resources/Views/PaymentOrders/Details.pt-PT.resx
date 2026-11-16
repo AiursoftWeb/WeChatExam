@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Montante</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Valores</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Voltar à Lista</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Código do cupão</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Criado em</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>O acesso atual pode incluir compras posteriores ou alterações manuais. Um pagamento confirmado não significa que a adesão ainda esteja ativa hoje.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Membro atual</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Descrição</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fim</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Expirou em</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Ainda não há registos</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Sem registo de subscrição para este produto</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Informações do Pedido</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Detalhes da Ordem de Pagamento</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canal de pagamento</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Produto</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Processamento de reembolsos</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestão de reembolsos</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Início</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Estado</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Registos técnicos de pagamentos</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Utilizador</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Verificar registos de reconciliação de reembolsos</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Ver histórico de pagamentos do utilizador</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>ID da Transação WeChat</value>

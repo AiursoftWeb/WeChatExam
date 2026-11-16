@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Un remboursement a été signalé, mais l&apos;adhésion associée à cette commande doit être vérifiée. Consultez le remboursement existant au lieu d&apos;en initier un nouveau.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Un coupon à usage unique déjà utilisé n&apos;est pas réactivé.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Montant réellement payé</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Après un remboursement réussi, l&apos;abonnement lié à cette commande est annulé.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Les paiements Apple ne peuvent pas être remboursés par le marchand. Donnez à l&apos;étudiant les instructions ci-dessous.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Site de remboursement Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Demandez à un administrateur de vérifier le mode de paiement d&apos;origine dans les détails de la commande ci-dessous.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Demandez à un administrateur de vérifier le paiement d&apos;origine dans les Détails de la commande ci-dessous.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Demandez à un administrateur disposant de l&apos;autorisation de remboursement de vérifier le résultat.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Demandez à votre administrateur d&apos;activer les commandes de remboursement pour votre rôle, puis déconnectez-vous et reconnectez-vous.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Vérifier comment cette commande peut être remboursée</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Vérifier la méthode de remboursement</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Vérifier le résultat du remboursement</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Vérifiez le remboursement existant ci-dessous. Les modifications de l&apos;adhésion prennent effet après la confirmation d&apos;un remboursement réussi.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Vérification…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Effectué le</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Confirmer le remboursement intégral</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copié</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Copier les instructions pour l&apos;étudiant</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Activez les commandes de remboursement pour le rôle approprié, puis déconnectez-vous et reconnectez-vous.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>J&apos;ai vérifié l&apos;étudiant, le montant du remboursement et les modifications d&apos;adhésion.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Aucun remboursement n&apos;est nécessaire pour cette commande</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Ouvrir la plateforme marchands WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Afficher les détails complets de la commande</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Ouvrir les permissions des rôles</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>N° de commande</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Détails de la commande</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Payé le</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Les informations de paiement sont incomplètes, par conséquent ce remboursement ne peut pas être initié ici</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Moyen de paiement</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Veuillez sélectionner et copier les instructions manuellement.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Gestion des remboursements</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestion des remboursements</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Numéro de remboursement</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Effectuer le remboursement de cette commande sur la plateforme marchands WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Montant remboursé</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Demandé le</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Examiner la gestion de l&apos;abonnement</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Envoyez ces instructions à l&apos;étudiant</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Étudiant</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Envoi en cours…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Le montant réellement payé sera remboursé sur le moyen de paiement d&apos;origine de l&apos;étudiant.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Le moyen de paiement a été vérifié avec WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Le paiement a été effectué il y a plus de 365 jours. Cette page ne peut plus soumettre le remboursement.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>La plateforme a confirmé ce remboursement. Consultez le traitement de l&apos;adhésion ci-dessous.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Le remboursement est enregistré, mais le traitement de l&apos;abonnement doit être vérifié.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Le remboursement est enregistré. Ouvrez les détails de la commande ci-dessous pour vérifier le montant.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>La demande de remboursement a été soumise. La confirmation peut prendre du temps ; ne créez pas un autre remboursement.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Le résultat du remboursement n&apos;est pas encore confirmé</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Le résultat n&apos;a pas pu être confirmé. Consultez la demande de remboursement enregistrée ; n&apos;en soumettez pas une autre.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>L&apos;élève doit demander ce remboursement auprès d&apos;Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>L&apos;étudiant n&apos;a rien payé pour cette commande, il n&apos;y a donc pas d&apos;argent à rembourser.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Aucun paiement confirmé n&apos;est à rembourser. Si l&apos;étudiant a été débité, vérifiez d&apos;abord l&apos;enregistrement du paiement d&apos;origine.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Cette vérification identifie uniquement le mode de paiement ; elle ne rembourse pas la commande.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Cette commande comporte déjà une demande de remboursement. Consultez son résultat au lieu de la soumettre à nouveau.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Cette commande ne peut pas être remboursée car aucun paiement n&apos;est confirmé</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Cette commande a déjà été remboursée</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Cette commande n&apos;est pas éligible à un remboursement intégral ici. Vérifiez son mode de paiement et son statut actuel.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Cette commande utilisait l’ancien service WeChat Pay. Trouvez la commande dans son compte marchand d’origine et effectuez le remboursement à cet endroit.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Cette commande a été payée via Apple. Veuillez vous connecter à https://reportaproblem.apple.com/ avec le compte Apple utilisé pour l&apos;achat et demander un remboursement pour cette commande. Apple examine et décide de la demande.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Cette commande a été payée via Apple. L&apos;enseignant ne peut pas l&apos;annuler ici ; Apple examine la demande de l&apos;étudiant.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>L&apos;adhésion de cette commande a été prise en charge. Les autres achats sont inchangés, et le coupon à usage unique n&apos;est pas restitué.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Ce paiement est hors de la période de remboursement prise en charge ici</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Cette méthode de paiement n&apos;est pas prise en charge pour les remboursements ici</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Ce remboursement nécessite une vérification par un administrateur</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Nous devons d&apos;abord vérifier ce paiement avec WeChat. Le résultat affichera un bouton de remboursement ou les instructions pour les paiements Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Vous pouvez demander un remboursement pour cette commande</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Votre compte n&apos;a pas l&apos;autorisation d&apos;émettre des remboursements</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Votre remboursement est en cours de traitement</value>
+  </data>
+
+</root>

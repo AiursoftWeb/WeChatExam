@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Selecione a Categoria (Opcional) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Busca semântica com IA</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>A busca semântica por IA não foi usada. Exibindo resultados por palavra-chave.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Adicionar</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Avançado: Expressão de tags (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>Busca semântica com IA</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>A busca semântica por IA não foi usada. Exibindo resultados por palavra-chave.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Todos os Tipos</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Pontuação Padrão</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>excluir</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Rascunho</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>ex.: rock &amp;&amp; não metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Editar Prova</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Tipo de questão da prova</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Encontre palavras exatas e significados relacionados.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Encontrar questões</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Encontrar perguntas semelhantes</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Encontre palavras exatas e significados relacionados.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Prova Gratuita</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Buscar e Adicionar Perguntas</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>A busca está indisponível. Tente novamente.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Modo de pesquisa</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>A busca está indisponível. Tente novamente.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Pesquisando...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Até cinco perguntas semelhantes na categoria selecionada ou em todas as categorias, caso nenhuma seja selecionada. As perguntas já existentes na prova são excluídas. Selecione as perguntas que deseja adicionar; a pergunta original permanece inalterada.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>excluir</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>ex.: rock &amp;&amp; não metal</value>
   </data>
 
 </root>

@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Una base moderna, con múltiples funciones y altamente extensible para tu próxima aplicación web.</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>en todos los exámenes completados</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>Traducciones con IA</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>Activo</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Centro de administración para el miniprograma de exámenes de WeChat</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>Traducciones con IA</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Todas las dependencias se registran automáticamente y están siempre disponibles mediante inyección de constructor.</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>Resumen de contenido</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>respuestas correctas</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>Contador</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>Ensayo</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>intentos de examen</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>Registros de exámenes</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>¡Hola Mundo!</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>en la base de datos</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>En progreso</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenido</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>en todos los exámenes completados</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>respuestas correctas</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>intentos de examen</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>en la base de datos</value>
   </data>
 
 </root>

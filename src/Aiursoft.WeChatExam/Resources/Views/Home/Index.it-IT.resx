@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Punti di conoscenza gerarchici</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Come Funziona</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Come distribuisco WeChatExam?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Come garantiscono l&apos;equità gli snapshot del test?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Come Funziona</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>PayPal WeChat integrato (TenpayV3) per monetizzare gli esami. Addebita l&apos;accesso a esami premium, certificazioni o materiali didattici direttamente tramite WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Casi d&apos;uso</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Utilizza il linguaggio di query Mark-to-Query (MTQL), un DSL potente, per filtrare le domande con logica booleana come &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; per una selezione precisa delle domande.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Utilizza MTQL per selezionare le domande per tag e punti di conoscenza. Definisci la struttura dell&apos;esame, la durata e le regole di valutazione.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Utilizza il linguaggio di query Mark-to-Query (MTQL), un DSL potente, per filtrare le domande con logica booleana come &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; per una selezione precisa delle domande.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Visualizza su GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>Integrazione con WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>L&apos;integrazione con WeChat è facoltativa. La piattaforma funziona completamente come un&apos;applicazione web indipendente. Sono necessarie le credenziali di WeChat solo se si desidera abilitare l&apos;accesso tramite WeChat, l&apos;accesso al Mini Program o WeChat Pay.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>Mini Program di WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>Pagamento WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>L&apos;integrazione con WeChat è facoltativa. La piattaforma funziona completamente come un&apos;applicazione web indipendente. Sono necessarie le credenziali di WeChat solo se si desidera abilitare l&apos;accesso tramite WeChat, l&apos;accesso al Mini Program o WeChat Pay.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam si adatta a una vasta gamma di scenari educativi e di valutazione.</value>
