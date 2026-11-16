@@ -27,6 +27,9 @@
   <data name="Course VIPs linked to this tag entry" xml:space="preserve">
     <value>VIP ของหลักสูตรที่เชื่อมโยงกับรายการแท็กนี้</value>
   </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>แก้ไขสินค้าสำหรับสมาชิก VIP</value>
+  </data>
   <data name="Edit course" xml:space="preserve">
     <value>แก้ไขหลักสูตร</value>
   </data>
@@ -53,9 +56,6 @@
   </data>
   <data name="Edit taxonomy" xml:space="preserve">
     <value>แก้ไขอนุกรมวิธาน</value>
-  </data>
-  <data name="Edit VIP product" xml:space="preserve">
-    <value>แก้ไขสินค้าสำหรับสมาชิก VIP</value>
   </data>
   <data name="Exercise" xml:space="preserve">
     <value>แบบฝึกหัด</value>
@@ -117,6 +117,9 @@
   <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
     <value>มีแบบฝึกหัด {0} ข้อที่เชื่อมโยงกับจุดความรู้ {1} จุด แท็กมีไว้เพื่อจัดระเบียบภายในเท่านั้น ไม่เกี่ยวข้องกับการกำหนดราคาแบบฝึกหัด</value>
   </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>ผลิตภัณฑ์ VIP</value>
+  </data>
   <data name="View frozen paper" xml:space="preserve">
     <value>ดูเอกสารข้อสอบที่ถูกระงับ</value>
   </data>
@@ -125,9 +128,6 @@
   </data>
   <data name="View relationship" xml:space="preserve">
     <value>ดูความสัมพันธ์</value>
-  </data>
-  <data name="VIP product" xml:space="preserve">
-    <value>ผลิตภัณฑ์ VIP</value>
   </data>
 
 </root>

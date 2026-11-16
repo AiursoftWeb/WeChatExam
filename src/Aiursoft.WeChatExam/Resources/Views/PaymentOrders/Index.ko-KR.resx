@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>금액</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>금액</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>금액은 주문과 함께 저장됩니다. 확인되지 않은 주문은 완료된 구매가 아닙니다.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>결제 확인 대기 중</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>닫힘</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>생성일</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>주문 번호</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>주문 번호</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>주문</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>결제 주문</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>결제 채널</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>결제 완료</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>검증이 필요한 결제</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>이전</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>제품</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>환불 처리</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>환불 관리</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>환불 정산 기록</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>환불됨</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>상태</value>

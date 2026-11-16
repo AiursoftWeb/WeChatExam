@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="By payment date · Beijing time (UTC+8)" xml:space="preserve">
+    <value>결제일 기준 · 베이징 시간 (UTC+8)</value>
+  </data>
+  <data name="Daily receipts" xml:space="preserve">
+    <value>일일 매출</value>
+  </data>
+  <data name="Daily receipts (CNY)" xml:space="preserve">
+    <value>일일 매출 (CNY)</value>
+  </data>
+  <data name="Daily receipts by payment date" xml:space="preserve">
+    <value>결제일 기준 일별 매출</value>
+  </data>
+  <data name="Date (Beijing time)" xml:space="preserve">
+    <value>날짜 (베이징 시간)</value>
+  </data>
+  <data name="Date range" xml:space="preserve">
+    <value>날짜 범위</value>
+  </data>
+  <data name="Historical paid orders without a payment date are excluded from this chart." xml:space="preserve">
+    <value>결제 날짜가 없는 과거의 결제 완료 주문은 이 차트에서 제외됩니다.</value>
+  </data>
+  <data name="Last 30 days" xml:space="preserve">
+    <value>최근 30일</value>
+  </data>
+  <data name="Last 7 days" xml:space="preserve">
+    <value>최근 7일</value>
+  </data>
+  <data name="Last 90 days" xml:space="preserve">
+    <value>최근 90일</value>
+  </data>
+  <data name="No confirmed paid purchases in this period. Days without receipts are shown as zero." xml:space="preserve">
+    <value>해당 기간에 확정된 유료 구매가 없습니다. 영수증이 없는 날짜는 0으로 표시됩니다.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>주문 매출</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>결제 완료 매출</value>
+  </data>
+  <data name="Period receipts" xml:space="preserve">
+    <value>기간 매출</value>
+  </data>
+  <data name="Select a day" xml:space="preserve">
+    <value>날짜 선택</value>
+  </data>
+  <data name="Select a day to see its receipts" xml:space="preserve">
+    <value>날짜를 선택하여 해당 날짜의 매출을 확인하세요</value>
+  </data>
+  <data name="Today is still in progress" xml:space="preserve">
+    <value>오늘은 아직 진행 중입니다</value>
+  </data>
+  <data name="View daily data" xml:space="preserve">
+    <value>일별 데이터 보기</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>건</value>
+  </data>
+
+</root>

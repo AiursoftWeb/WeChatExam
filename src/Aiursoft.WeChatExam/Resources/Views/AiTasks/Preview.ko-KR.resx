@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>포기</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>채택</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>모두 적용</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>AI 새 답변</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>AI 작업 미리보기</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>포기</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>채택</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>모두 적용</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>모든 AI 제안사항을 적용하시겠습니까?</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>현재 카테고리</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>현재 기간</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>현재 태그</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>현재 기간</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>수정</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>저장 및 채택</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>기간을 선택하세요</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>카테고리 선택</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>기간을 선택하세요</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>제안된 카테고리</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>제안된 기간</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>제안된 태그</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>제안된 기간</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>작업이 아직 처리 중입니다. 완료된 항목만 적용하고 나머지는 포기하시겠습니까?</value>

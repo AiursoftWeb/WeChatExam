@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
-    <value>작업</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>질문 추가</value>
-  </data>
-  <data name="AI Auto Categorize" xml:space="preserve">
+      <data name="AI Auto Categorize" xml:space="preserve">
     <value>AI 자동 분류</value>
   </data>
   <data name="AI Auto Tagging" xml:space="preserve">
@@ -44,6 +38,12 @@
   </data>
   <data name="AI Tools" xml:space="preserve">
     <value>AI 도구</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>작업</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>질문 추가</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>전체 카테고리</value>
@@ -183,9 +183,6 @@
   <data name="Questions" xml:space="preserve">
     <value>질문</value>
   </data>
-  <data name="questions?" xml:space="preserve">
-    <value>질문들?</value>
-  </data>
   <data name="Reset" xml:space="preserve">
     <value>초기화</value>
   </data>
@@ -209,9 +206,6 @@
   </data>
   <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
     <value>AI 분류를 위한 후보 카테고리를 선택하세요. AI는 각 질문에 대해 정확히 하나의 카테고리를 선택합니다.</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>선택됨</value>
   </data>
   <data name="Start Classification" xml:space="preserve">
     <value>분류 시작</value>
@@ -242,6 +236,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>유형</value>
+  </data>
+  <data name="questions?" xml:space="preserve">
+    <value>질문들?</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>선택됨</value>
   </data>
 
 </root>

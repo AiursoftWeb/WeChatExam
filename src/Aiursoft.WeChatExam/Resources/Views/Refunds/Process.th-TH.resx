@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>มีการรายงานการคืนเงิน แต่สถานะสมาชิกของคำสั่งซื้อนี้ต้องได้รับการตรวจสอบ กรุณาตรวจสอบการคืนเงินที่มีอยู่แทนการเริ่มต้นการคืนเงินอีกครั้ง</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>คูปองแบบใช้ครั้งเดียวที่ใช้ไปแล้วจะไม่ถูกคืนกลับ</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>จำนวนเงินที่ชำระจริง</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>หลังจากดำเนินการคืนเงินสำเร็จแล้ว สิทธิ์สมาชิกจากคำสั่งซื้อนี้将被ยกเลิก</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>การชำระเงินผ่าน Apple ไม่สามารถขอเงินคืนจากผู้ขายได้ กรุณาแจ้งขั้นตอนด้านล่างนี้ให้แก่นักศึกษา</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>เว็บไซต์คืนเงินของ Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>ขอให้อดมินิสเทรเตอร์ตรวจสอบวิธีการชำระเงินเดิมในรายละเอียดคำสั่งซื้อด้านล่าง</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>ขอให้ผู้ดูแลระบบตรวจสอบบันทึกการชำระเงินเดิมในรายละเอียดคำสั่งซื้อด้านล่าง</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>ติดต่อผู้ดูแลระบบที่มีสิทธิ์คืนเงินเพื่อตรวจสอบผลลัพธ์</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>ขอให้อดมินนิสเตรเตอร์ของคุณเปิดใช้งานการคืนเงินสำหรับบทบาทของคุณ จากนั้นออกจากระบบและเข้าสู่ระบบอีกครั้ง</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>ตรวจสอบวิธีการคืนเงินสำหรับคำสั่งซื้อนี้</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>ตรวจสอบวิธีการคืนเงิน</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>ตรวจสอบผลการคืนเงิน</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>ตรวจสอบการคืนเงินที่มีอยู่แล้วด้านล่าง การเปลี่ยนแปลงสมาชิกภาพจะมีผลหลังจากยืนยันการคืนเงินสำเร็จแล้ว</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>กำลังตรวจสอบ…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>เสร็จสิ้นเมื่อ</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>ยืนยันการคืนเงินเต็มจำนวน</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>คัดลอกแล้ว</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>คัดลอกคำแนะนำสำหรับนักเรียน</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>เปิดใช้งานสิทธิ์การคืนเงินสำหรับบทบาทที่เหมาะสม จากนั้นออกจากระบบและเข้าสู่ระบบใหม่อีกครั้ง</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>ฉันได้ตรวจสอบข้อมูลนักเรียน จำนวนเงินคืน และสถานะการเปลี่ยนแปลงสมาชิกภาพแล้ว</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>ไม่จำเป็นต้องคืนเงินสำหรับคำสั่งซื้อนี้</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>เปิดแพลตฟอร์มผู้ให้บริการ WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>เปิดดูรายละเอียดคำสั่งซื้อทั้งหมด</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>เปิดการตั้งค่าสิทธิ์บทบาท</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>เลขที่คำสั่งซื้อ</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>รายละเอียดคำสั่งซื้อ</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>เวลาชำระ</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>ข้อมูลการชำระเงินไม่สมบูรณ์ จึงไม่สามารถเริ่มการคืนเงินได้ที่นี่</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>วิธีการชำระเงิน</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>โปรดเลือกและคัดลอกคำแนะนำด้วยตนเอง</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>การจัดการเงินคืน</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>การจัดการเงินคืน</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>หมายเลขการคืนเงิน</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>ดำเนินการคืนเงินสำหรับคำสั่งซื้อนี้ในแพลตฟอร์มร้านค้า WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>จำนวนเงินที่คืนแล้ว</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>วันที่ขอคืนเงิน</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>ตรวจสอบการจัดการสมาชิก</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>ส่งคำแนะนำเหล่านี้给学生</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>นักเรียน</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>กำลังส่ง…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>จำนวนเงินที่ชำระจริงจะถูกคืนไปยังวิธีการชำระเงินเดิมของนักศึกษา</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>วิธีการชำระเงินได้รับการยืนยันกับ WeChat แล้ว</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>การชำระเงินนี้เกิดขึ้นมากกว่า 365 วันแล้ว หน้าเว็บนี้ไม่สามารถส่งคำขอคืนเงินได้อีกต่อไป</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>แพลตฟอร์มยืนยันการคืนเงินนี้แล้ว ตรวจสอบการจัดการสมาชิกด้านล่าง</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>การคืนเงินถูกบันทึกแล้ว แต่การจัดการสมาชิกต้องได้รับการยืนยัน</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>การคืนเงินได้ถูกบันทึกแล้ว เปิดรายละเอียดคำสั่งซื้อด้านล่างเพื่อตรวจสอบจำนวนเงิน</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>คำขอเงินคืนถูกส่งเรียบร้อยแล้ว การยืนยันอาจใช้เวลา; กรุณาอย่าสร้างคำขอเงินคืนอีกครั้ง</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>สถานะการคืนเงินยังได้รับการยืนยันไม่เสร็จสิ้น</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>ไม่สามารถยืนยันผลลัพธ์ได้ โปรดตรวจสอบคำขอเงินคืนที่บันทึกไว้แล้ว และอย่าส่งคำขอซ้ำอีก</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>นักเรียนต้องยื่นคำร้องขอเงินคืนจาก Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>นักเรียนไม่ได้ชำระเงินสำหรับคำสั่งซื้อนี้ ดังนั้นจึงไม่มีเงินที่ต้องคืน</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>ไม่มีรายการชำระเงินที่ได้รับการยืนยันให้คืนเงิน หากนักเรียนถูกเรียกเก็บเงินแล้ว ให้ตรวจสอบบันทึกการชำระเงินเดิมก่อน</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>การตรวจสอบนี้ระบุเฉพาะวิธีการชำระเงินเท่านั้น ไม่มีการคืนเงินสำหรับคำสั่งซื้อ</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>คำสั่งนี้มีคำขอเงินคืนอยู่แล้ว กรุณาตรวจสอบผลลัพธ์ของคำขอนั้นแทนการส่งคำขอซ้ำ</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>ไม่สามารถคืนเงินสำหรับคำสั่งซื้อนี้ เนื่องจากไม่มีหลักฐานการชำระเงินที่ยืนยันแล้ว</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>คำสั่งนี้ได้รับการคืนเงินแล้ว</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>คำสั่งนี้ไม่เข้าเกณฑ์ในการขอเงินคืนเต็มจำนวนในที่นี่ กรุณาตรวจสอบวิธีการชำระเงินและสถานะปัจจุบัน</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>คำสั่งนี้ใช้บริการ WeChat Pay เดิม ค้นหาคำสั่งในบัญชีผู้ขายเดิมและดำเนินการคืนเงินที่นั่น</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>คำสั่งซื้อนี้ถูกชำระผ่าน Apple กรุณาเข้าสู่ระบบที่ https://reportaproblem.apple.com/ โดยใช้ Apple Account ที่ใช้ในการซื้อ และขอคืนเงินสำหรับคำสั่งซื้อนี้ Apple จะตรวจสอบและตัดสินใจในคำขอนี้</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>คำสั่งซื้อนี้ชำระเงินผ่าน Apple ครูไม่สามารถคืนเงินได้ที่นี่ Apple จะเป็นผู้ตรวจสอบคำขอของนักเรียน</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>การเป็นสมาชิกของคำสั่งซื้อนี้ได้รับการจัดการแล้ว การซื้ออื่น ๆ ไม่มีการเปลี่ยนแปลง และคูปองแบบใช้ครั้งเดียวจะไม่ถูกคืนกลับ</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>การชำระเงินนี้เกินช่วงระยะเวลาการคืนเงินที่รองรับในหน้านี้</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>วิธีการชำระเงินนี้ไม่รองรับการคืนเงินที่นี่</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>การคืนเงินนี้ต้องได้รับการตรวจสอบจากผู้ดูแลระบบ</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>เราต้องตรวจสอบการชำระเงินนี้กับ WeChat ก่อน ผลลัพธ์จะแสดงปุ่มขอเงินคืนหรือคำแนะนำสำหรับการชำระเงินผ่าน Apple</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>คุณสามารถขอคืนเงินสำหรับคำสั่งซื้อนี้</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>บัญชีของคุณไม่มีสิทธิ์ดำเนินการคืนเงิน</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>การคืนเงินของคุณกำลังดำเนินการอยู่</value>
+  </data>
+
+</root>

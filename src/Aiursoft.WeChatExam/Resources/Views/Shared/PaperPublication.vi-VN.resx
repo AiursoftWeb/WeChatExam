@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
-    <value>{0} câu hỏi · {1} điểm · {2} phút</value>
-  </data>
-  <data name="{0} questions have no explanation. Adding explanations is recommended but not required for publication." xml:space="preserve">
-    <value>{0} câu hỏi không có giải thích. Việc thêm giải thích được khuyến nghị nhưng không bắt buộc khi phát hành.</value>
-  </data>
-  <data name="Add at least one question before publishing." xml:space="preserve">
+      <data name="Add at least one question before publishing." xml:space="preserve">
     <value>Thêm ít nhất một câu hỏi trước khi xuất bản.</value>
   </data>
   <data name="Back to Editing" xml:space="preserve">
@@ -68,6 +62,12 @@
   </data>
   <data name="Unpublish this paper?" xml:space="preserve">
     <value>Hủy công bố bài thi này?</value>
+  </data>
+  <data name="{0} questions have no explanation. Adding explanations is recommended but not required for publication." xml:space="preserve">
+    <value>{0} câu hỏi không có giải thích. Việc thêm giải thích được khuyến nghị nhưng không bắt buộc khi phát hành.</value>
+  </data>
+  <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
+    <value>{0} câu hỏi · {1} điểm · {2} phút</value>
   </data>
 
 </root>

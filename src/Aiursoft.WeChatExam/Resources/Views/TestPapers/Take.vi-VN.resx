@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>Bài kiểm tra giấy của quản trị viên</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>Chấm điểm AI</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>Các câu hỏi AI sẽ được gửi đến mô hình đã cấu hình sau khi nộp bài.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>Bài kiểm tra giấy của quản trị viên</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>Phiếu trả lời</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>Xem trước chấm điểm trực tiếp</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>phút</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>Không giới hạn thời gian</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>Kiểm tra đề thi</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>điểm</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>Tiến độ</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>câu hỏi</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>Sẵn sàng nộp bài chưa?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>Viết câu trả lời của bạn tại đây...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>phút</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>điểm</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>câu hỏi</value>
   </data>
 
 </root>

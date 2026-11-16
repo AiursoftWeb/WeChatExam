@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>Administrativer Papier-Test</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>KI-Bewertung</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>KI-Fragen werden nach der Abgabe an das konfigurierte Modell gesendet.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>Administrativer Papier-Test</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>Antwortbogen</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>Live-Bewertungsvorschau</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>Minuten</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>Keine Zeitbeschränkung</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>Prüfung</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>Punkte</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>Fortschritt</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>Fragen</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>Bereit zum Einreichen?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>Schreiben Sie Ihre Antwort hier...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>Punkte</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>Fragen</value>
   </data>
 
 </root>

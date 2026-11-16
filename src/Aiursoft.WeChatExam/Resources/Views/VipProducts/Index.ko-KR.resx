@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>전체 실제 시험 VIP (레거시)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>전체 기간 · 현재 필터</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>한눈에 보기</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>평균 결제 가격</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>강의 설정으로 돌아가기</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>플랫폼 수수료 및 비용 차감 전</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>매출액 기준</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>카테고리</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>카테고리 VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>확정 주문만 포함</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>VIP 상품 생성</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>일</value>
+  <data name="Current price" xml:space="preserve">
+    <value>현재 가격</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>해당 상품 간 중복 제거</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>삭제</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>활성화됨</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>무료 청구</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>기관 VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>이름</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>아직 확인된 유료 구매가 없습니다.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>해당 필터에 일치하는 제품이 없습니다.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>제품을 열면 유료 가격과 구매자 주문을 확인할 수 있습니다.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>주문 매출</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>기타 주문</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>결제 완료 판매</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>결제 구매자</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>가격</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>제품 개요</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>제품 실적</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>제품 상태</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>제품</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>판매된 제품이 있는 상품</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>유료 판매가 없는 제품</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>실제 시험 VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>결제 완료 주문당 매출액</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>환불 주문</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>환불 및 무료 청구 제외</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>환불이 정산을 기다리고 있습니다. 이러한 매출액은 실제 보유 금액을 과대계상했을 수 있습니다.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>환불 검토 필요</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>환불 검토</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>판매 상세</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>검색</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>이름, 카테고리 또는 기관으로 검색</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>잘 팔리는 상품, 구매자, 실제 결제 금액을 확인하세요.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>상태</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>상위 5개 제품 · 필터링된 매출 비중</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>총 카테고리</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP 제품</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>수익의 출처</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>명</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>개</value>
   </data>
 
 </root>

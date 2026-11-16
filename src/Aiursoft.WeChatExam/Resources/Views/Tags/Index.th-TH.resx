@@ -81,20 +81,11 @@
   <data name="No tags match your search query." xml:space="preserve">
     <value>ไม่มีแท็กใดตรงกับคำค้นหาของคุณ</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>คำถาม</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>ค้นหา</value>
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>ค้นหาแท็ก...</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>ที่เลือก</value>
-  </data>
-  <data name="selected tags? This action cannot be undone." xml:space="preserve">
-    <value>แท็กที่เลือกไว้หรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>ชื่อแท็ก</value>
@@ -116,6 +107,15 @@
   </data>
   <data name="VIP Required" xml:space="preserve">
     <value>ต้องเป็นสมาชิก VIP</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>คำถาม</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>ที่เลือก</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>แท็กที่เลือกไว้หรือไม่? การดำเนินการนี้ไม่สามารถย้อนกลับได้</value>
   </data>
 
 </root>

@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>금액</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>금액</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>금액은 주문과 함께 저장됩니다. 확인되지 않은 주문은 완료된 구매가 아닙니다.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>목록으로 돌아가기</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>결제 내역</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>결제 수단</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>제품</value>

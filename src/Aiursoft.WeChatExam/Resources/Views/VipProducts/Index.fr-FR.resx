@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP pour tous les examens réels (ancienne version)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Période totale · filtres actuels</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>En un coup d&apos;œil</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Prix moyen payé</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Retour aux paramètres du cours</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Avant les frais et coûts de la plateforme</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Par encaissements</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Catégorie</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Catégorie VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Commandes confirmées uniquement</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Créer un produit VIP</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>jours</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Prix actuel</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Dédupliqué sur ces produits</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Activé</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Demandes gratuites</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>VIP d’établissement</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nom</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Aucun achat payé confirmé pour le moment.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Aucun produit ne correspond à ces filtres.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Ouvrez un produit pour voir les prix payés et les commandes des acheteurs.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Encaissements des commandes</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Autres commandes</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Ventes payées</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Acheteurs payants</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Prix</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Aperçu des produits</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Performance des produits</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Statut du produit</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Produits</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Produits avec des ventes payées</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Produits sans ventes payées</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>VIP Examen Réel</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Revenus par commande payée</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Commandes remboursées</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Remboursements et réclamations gratuites exclus</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Les remboursements sont en attente de réconciliation. Ces reçus peuvent surestimer le montant retenu.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Remboursements à examiner</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Examiner les remboursements</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Détails des ventes</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Rechercher par nom, catégorie ou établissement</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Découvrez ce qui se vend, qui achète et ce qu&apos;ils paient réellement.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Statut</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Top 5 produits · part des reçus filtrés</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Nombre total de catégories</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Produits VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Origine des encaissements</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>jours</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>personnes</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unités</value>
   </data>
 
 </root>

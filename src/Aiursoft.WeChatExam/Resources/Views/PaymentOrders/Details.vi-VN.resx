@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Số tiền</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Số tiền</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Quay lại danh sách</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Mã giảm giá</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Ngày tạo</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Quyền truy cập hiện tại có thể bao gồm các lần mua sau này hoặc thay đổi thủ công. Thanh toán đã xác nhận không có nghĩa là thành viên vẫn còn hoạt động vào ngày hôm nay.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Gói thành viên hiện tại</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Mô tả</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Kết thúc</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Hết hạn lúc</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Chưa có nhật ký nào</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Không có hồ sơ thành viên cho sản phẩm này</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Thông tin đơn hàng</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Chi tiết đơn thanh toán</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Kênh thanh toán</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Sản phẩm</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Xử lý hoàn tiền</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Quản lý hoàn tiền</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Bắt đầu</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Trạng thái</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Nhật ký thanh toán kỹ thuật</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Người dùng</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Xem hồ sơ đối soát hoàn tiền</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Xem lịch sử thanh toán của người dùng</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>Mã giao dịch WeChat</value>

@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} exercises" xml:space="preserve">
-    <value>{0} bài tập</value>
-  </data>
-  <data name="{0} knowledge points" xml:space="preserve">
-    <value>{0} điểm kiến thức</value>
-  </data>
-  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+      <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
     <value>Một thẻ cũng có thể được sử dụng trong các khóa học khác. Việc thay đổi giá của thẻ sẽ ảnh hưởng đến toàn bộ nội dung được liệt kê ở đây, bao gồm cả những mục nằm ngoài phạm vi tìm kiếm của bạn.</value>
   </data>
   <data name="Access" xml:space="preserve">
@@ -227,6 +221,12 @@
   </data>
   <data name="Who can open this content?" xml:space="preserve">
     <value>Ai có thể mở nội dung này?</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} bài tập</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} điểm kiến thức</value>
   </data>
 
 </root>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>Prix réellement payés</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>Période totale · ce produit</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Prix moyen payé</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Retour aux produits</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Avant frais et coûts de la plateforme</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Acheteur</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>Commandes des acheteurs</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Remise</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>Suivez chaque vente, du prix payé à l&apos;acheteur et à la commande.</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Demandes gratuites</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Aucun achat payé confirmé pour le moment.</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>Aucune commande dans ce groupe.</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>Montant de la commande</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>Groupe de commandes</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>Répartition des commandes</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Numéro de commande</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Revenus des commandes</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>Prix initial</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>Navigation de page</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>Payé le</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>Prix payé</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Ventes payées</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Acheteurs payants</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canal de paiement</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>Les prix proviennent des montants des commandes enregistrés. Un acheteur ayant payé à différents prix apparaît dans chaque groupe de prix ; le nombre total d&apos;acheteurs est dédupliqué.</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>Ventes de produits</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Revenus par commande payée</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>Montant des commandes remboursées</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Commandes remboursées</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Remboursements et demandes gratuites exclus</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Les remboursements sont en attente de rapprochement. Ces reçus peuvent surestimer le montant conservé.</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>Les achats répétés ne comptent qu&apos;une fois</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Consulter les remboursements</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>Montants enregistrés à l&apos;achat · ouvrez une commande pour son historique complet</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>Sélectionnez un groupe pour examiner ses commandes.</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Part</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>Ce que les acheteurs ont payé · part des commandes payées</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>personnes</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unités</value>
+  </data>
+
+</root>

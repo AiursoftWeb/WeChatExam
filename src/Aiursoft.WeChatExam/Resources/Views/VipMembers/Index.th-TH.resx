@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>กำลังใช้งานอยู่</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>รายการ</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>จำนวนรายการต่อหน้า</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>ไม่พบสมาชิก VIP</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>ของ</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>ก่อนหน้า</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>รีเซ็ต</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>ค้นหาตามชื่อผู้ใช้หรือชื่อสินค้า...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>คำสำคัญในการค้นหา</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>ค้นหาตามชื่อผู้ใช้หรือชื่อสินค้า...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>แสดง</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>เวลาเริ่มต้น</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>ถึง</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>ผู้ใช้</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>การเป็นสมาชิก VIP</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>รายการ</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>ของ</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>ถึง</value>
   </data>
 
 </root>

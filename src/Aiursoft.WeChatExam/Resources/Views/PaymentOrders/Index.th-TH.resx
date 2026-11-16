@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>จำนวนเงิน</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>จำนวนเงินจะถูกบันทึกไว้กับคำสั่งซื้อ คำสั่งซื้อที่ยังไม่ได้รับการยืนยันไม่ถือเป็นธุรกรรมที่เสร็จสมบูรณ์</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>รอการยืนยันการชำระเงิน</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>ปิดแล้ว</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>สร้างเมื่อ</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>เลขที่คำสั่งซื้อ</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>หมายเลขคำสั่งซื้อ</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>คำสั่งซื้อ</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>คำสั่งชำระเงิน</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>ช่องทางชำระเงิน</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>การชำระเงินยืนยันแล้ว</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>การชำระเงินต้องได้รับการตรวจสอบ</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>ก่อนหน้า</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>สินค้า</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>การจัดการการคืนเงิน</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>การจัดการการคืนเงิน</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>บันทึกการกระทบยอดการคืนเงิน</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>คืนเงินแล้ว</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>สถานะ</value>

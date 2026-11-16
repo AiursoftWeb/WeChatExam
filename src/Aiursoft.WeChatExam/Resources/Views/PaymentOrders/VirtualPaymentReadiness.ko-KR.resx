@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>샌드박스(1) 또는 라이브(0)를 명시적으로 선택하세요.</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>이 미니프로그램의 가상 결제 설정에서 OfferId를 구성하세요.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>선택한 환경에 대한 키를 설정합니다. 다른 환경의 키는 사용되지 않습니다.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>서버에서 메시지 Token과 유효한 EncodingAESKey를 구성하세요.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>이 미니프로그램의 가상 결제 설정에서 OfferId를 구성하세요.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>서버에서 대상 AppID와 해당 AppSecret을 설정하세요.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>서버 설정에서 WeChat 접근을 활성화합니다.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>分</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>무료 상품: 플랫폼 결제가 필요하지 않습니다.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>유효하지 않은 환경</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>iOS 환불 조언은 플랫폼 확인을 대기 중이며 비활성화되어 있습니다.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>iOS 환불 조언이 활성화되어 있습니다. 이 로컬 페이지에서는 플랫폼 프로토콜이 검증되었는지 인증할 수 없습니다.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>운영 환경</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>로컬 매핑 및 가격 일치; 플랫폼 게시 상태는 여전히 확인이 필요합니다.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>개조가 활성화된 VIP 제품과 일치하지 않습니다. 관리자에게 검토를 요청하십시오. 과거 제품이나 주문을 삭제하지 마십시오.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>메시지 인증 자격 증명</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>명시적으로 가상 결제 테스트 빌드를 사용하십시오. 기본 미니 프로그램 빌드는 여전히 일반 결제를 사용합니다.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>VIP 상품 ID</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>WeChat 콘솔에서 플랫폼 승인, AppID, OfferId 및 게시된 상품을 확인하세요.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>읽기 전용</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>VIP 상품 ID</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>가상 결제 계정</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>WeChat 동기화가 실패했습니다. VIP 제품을 열어 설정을 검토한 후 다시 시도하십시오.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>iOS 환불 조언은 플랫폼 확인을 대기 중이며 비활성화되어 있습니다.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>iOS 환불 조언이 활성화되어 있습니다. 이 로컬 페이지에서는 플랫폼 프로토콜이 검증되었는지 인증할 수 없습니다.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>개조가 활성화된 VIP 제품과 일치하지 않습니다. 관리자에게 검토를 요청하십시오. 과거 제품이나 주문을 삭제하지 마십시오.</value>
   </data>
 
 </root>
