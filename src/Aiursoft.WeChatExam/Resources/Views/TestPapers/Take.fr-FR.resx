@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>Test de papier administrateur</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>Correction par IA</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>Les questions à réponse IA sont envoyées au modèle configuré après la soumission.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>Test de papier administrateur</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>Feuille de réponses</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>Aperçu de la correction en direct</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>Pas de limite de temps</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>Test de papier</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>points</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>Progression</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>questions</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>Prêt à envoyer ?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>Écrivez votre réponse ici...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>points</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>questions</value>
   </data>
 
 </root>

@@ -81,20 +81,11 @@
   <data name="No tags match your search query." xml:space="preserve">
     <value>Aucune étiquette ne correspond à votre requête de recherche.</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>questions</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Rechercher des balises...</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>sélectionnés</value>
-  </data>
-  <data name="selected tags? This action cannot be undone." xml:space="preserve">
-    <value>balises sélectionnées ? Cette action ne peut pas être annulée.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Nom de balise</value>
@@ -116,6 +107,15 @@
   </data>
   <data name="VIP Required" xml:space="preserve">
     <value>Accès réservé aux membres VIP</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>questions</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>sélectionnés</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>balises sélectionnées ? Cette action ne peut pas être annulée.</value>
   </data>
 
 </root>

@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Puntos de Conocimiento Jerárquicos</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Cómo funciona</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>¿Cómo despliego WeChatExam?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>¿Cómo garantizan la equidad las instantáneas del examen?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Cómo funciona</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Integración de WeChat Pay (TenpayV3) para monetizar los exámenes. Cobra por el acceso a exámenes premium, certificaciones o materiales del curso directamente a través de WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Casos de uso</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Utiliza el Lenguaje Mark-to-Query (MTQL), un DSL potente, para filtrar preguntas con lógica booleana como &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; y seleccionar las preguntas con precisión.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Utiliza MTQL para seleccionar preguntas por etiquetas y puntos de conocimiento. Define la estructura del examen, la duración y las reglas de puntuación.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Utiliza el Lenguaje Mark-to-Query (MTQL), un DSL potente, para filtrar preguntas con lógica booleana como &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; y seleccionar las preguntas con precisión.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Ver en GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>Integración con WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>La integración con WeChat es opcional. La plataforma funciona completamente como una aplicación web independiente. Solo necesitas las credenciales de WeChat si deseas habilitar el inicio de sesión con WeChat, el acceso a Mini Program o WeChat Pay.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>Mini programas de WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>Pago WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>La integración con WeChat es opcional. La plataforma funciona completamente como una aplicación web independiente. Solo necesitas las credenciales de WeChat si deseas habilitar el inicio de sesión con WeChat, el acceso a Mini Program o WeChat Pay.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam se adapta a una amplia gama de escenarios educativos y de evaluación.</value>

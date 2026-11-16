@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP для всех реальных экзаменов (устаревшая версия)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>За всё время · текущие фильтры</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Обзор</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Средняя цена</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Вернуться к настройкам курса</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>До вычета комиссий платформы и расходов</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>По выручке</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Категория VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Только подтвержденные заказы</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Создать VIP-продукт</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>дней</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Текущая цена</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Уникальные покупатели среди этих товаров</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Активировано</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Бесплатные заявки</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>VIP для организации</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Название</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Пока нет подтверждённых платных покупок.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Нет товаров, соответствующих этим фильтрам.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Откройте товар, чтобы увидеть цены за оплату и заказы покупателей.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Выручка от заказов</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Другие заказы</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Оплаченные продажи</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Покупатели, совершившие оплату</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Цена</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Обзор продукта</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Продажи товаров</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Статус продукта</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Товары</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Товары с оплаченными продажами</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Товары без оплаченных продаж</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Реальный экзамен VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Средний чек за оплаченный заказ</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Возвращённые заказы</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Возвраты и бесплатные заказы не учитываются</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Возвраты ожидают сверки. Эти поступления могут завышать сумму удержанных средств.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Возвраты требуют проверки</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Просмотреть возвраты</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Детали продаж</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Поиск по названию, категории или учреждению</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Узнайте, что продаётся, кто покупает и сколько они реально платят.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Топ-5 товаров · доля отфильтрованных поступлений</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Категория</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Продукты VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Откуда поступают выручка</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>дней</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>чел.</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>единиц</value>
   </data>
 
 </root>

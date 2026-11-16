@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Importo</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Importi</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Gli importi vengono salvati con l&apos;ordine. Un ordine non confermato non costituisce un acquisto completato.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>In attesa di conferma del pagamento</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Chiuso</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Creato</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>N. Ordine</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Numero ordine</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Ordini</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Ordini di Pagamento</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canale di pagamento</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Pagamento confermato</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Pagamento da verificare</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Precedente</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Prodotto</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Gestione rimborsi</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestione rimborsi</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Registri di riconciliazione dei rimborsi</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Rimborsato</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Stato</value>

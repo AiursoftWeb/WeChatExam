@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
-    <value>Azioni</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Aggiungi Domanda</value>
-  </data>
-  <data name="AI Auto Categorize" xml:space="preserve">
+      <data name="AI Auto Categorize" xml:space="preserve">
     <value>Intelligenza Artificiale: Categorizzazione Automatica</value>
   </data>
   <data name="AI Auto Tagging" xml:space="preserve">
@@ -44,6 +38,12 @@
   </data>
   <data name="AI Tools" xml:space="preserve">
     <value>Strumenti AI</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Azioni</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>Aggiungi Domanda</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>Tutte le categorie</value>
@@ -183,9 +183,6 @@
   <data name="Questions" xml:space="preserve">
     <value>Domande</value>
   </data>
-  <data name="questions?" xml:space="preserve">
-    <value>domande?</value>
-  </data>
   <data name="Reset" xml:space="preserve">
     <value>Reimposta</value>
   </data>
@@ -209,9 +206,6 @@
   </data>
   <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
     <value>Seleziona le categorie candidate per la classificazione con IA. L&apos;IA sceglierà esattamente una categoria per ogni domanda.</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>selezionati</value>
   </data>
   <data name="Start Classification" xml:space="preserve">
     <value>Avvia la classificazione</value>
@@ -242,6 +236,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Tipo</value>
+  </data>
+  <data name="questions?" xml:space="preserve">
+    <value>domande?</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>selezionati</value>
   </data>
 
 </root>

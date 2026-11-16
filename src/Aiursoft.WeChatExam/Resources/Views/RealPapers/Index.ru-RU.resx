@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} minutes" xml:space="preserve">
-    <value>{0} мин.</value>
-  </data>
-  <data name="All institutions" xml:space="preserve">
+      <data name="All institutions" xml:space="preserve">
     <value>Все учреждения</value>
   </data>
   <data name="Create Real Paper" xml:space="preserve">
@@ -60,11 +57,11 @@
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Страница {0} из {1}</value>
   </data>
-  <data name="Paper pages" xml:space="preserve">
-    <value>Страницы экзамена</value>
-  </data>
   <data name="Paper Settings" xml:space="preserve">
     <value>Настройки работы</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Страницы экзамена</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Предыдущая</value>
@@ -104,6 +101,9 @@
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Версии и публикация</value>
+  </data>
+  <data name="{0} minutes" xml:space="preserve">
+    <value>{0} мин.</value>
   </data>
 
 </root>

@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Importo</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Importi</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Gli importi sono salvati con l&apos;ordine. Un ordine non confermato non è un acquisto completato.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Torna all&apos;elenco</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>Cronologia dei pagamenti</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canale di pagamento</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Prodotto</value>

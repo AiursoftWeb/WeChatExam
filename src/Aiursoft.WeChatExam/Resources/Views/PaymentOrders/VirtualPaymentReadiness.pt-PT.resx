@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>Escolha explicitamente o ambiente de teste (1) ou de produção (0).</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Configure o OfferId a partir das definições de pagamento virtual deste mini programa.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>Configure a chave para o ambiente selecionado. Uma chave de outro ambiente não é utilizada.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>Configure o Token da mensagem e uma chave EncodingAESKey válida no servidor.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>Configure o OfferId a partir das definições de pagamento virtual deste mini programa.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>Configure o AppID de destino e o respetivo AppSecret no servidor.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>Ativar o acesso WeChat na configuração do servidor.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>fen</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>Produto gratuito: não é necessário pagamento pela plataforma.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>Ambiente inválido</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>O aconselhamento de reembolsos do iOS está desativado pendente da verificação da plataforma.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>Aconselhamento de reembolsos iOS está ativado. Esta página local não pode certificar que o protocolo da plataforma foi verificado.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>Ambiente de produção</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>Mapeamento local e correspondência de preço; a publicação na plataforma ainda necessita de verificação.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>mappings não correspondem a um produto VIP ativo. Peça ao administrador para os rever; não elimine produtos ou encomendas históricos.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>Credenciais de verificação de mensagens</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Utilize uma compilação de teste de pagamento virtual explícita. A compilação padrão do mini programa continua a utilizar o pagamento comum.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>ID do produto VIP</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>Verifique a aprovação da plataforma, o AppID, o OfferId e os produtos publicados na consola do WeChat.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>Somente visualização</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>ID do produto VIP</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>Conta de pagamento virtual</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>A sincronização com o WeChat falhou. Abra o produto VIP para rever as suas definições e tentar novamente.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>O aconselhamento de reembolsos do iOS está desativado pendente da verificação da plataforma.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Aconselhamento de reembolsos iOS está ativado. Esta página local não pode certificar que o protocolo da plataforma foi verificado.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>mappings não correspondem a um produto VIP ativo. Peça ao administrador para os rever; não elimine produtos ou encomendas históricos.</value>
   </data>
 
 </root>

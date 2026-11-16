@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Иерархические точки знаний</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Как это работает</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Как развернуть WeChatExam?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Как снимки экзамена обеспечивают справедливость?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Как это работает</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Интеграция WeChat Pay (TenpayV3) для монетизации экзаменов. Взимайте плату за доступ к премиум-экзаменам, сертификатам или учебным материалам напрямую через WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Варианты использования</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Используйте язык запросов Mark-to-Query (MTQL) — мощный DSL — для фильтрации вопросов с помощью булевой логики, например &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;, для точного выбора вопросов.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Используйте MTQL для выбора вопросов по тегам и темам. Определите структуру экзамена, продолжительность и правила оценивания.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Используйте язык запросов Mark-to-Query (MTQL) — мощный DSL — для фильтрации вопросов с помощью булевой логики, например &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;, для точного выбора вопросов.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Посмотреть на GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>Интеграция с WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>Интеграция с WeChat не обязательна. Платформа полностью функционирует как автономное веб-приложение. Учетные данные WeChat потребуются только в том случае, если вы хотите включить вход через WeChat, доступ к мини-приложению или оплату через WeChat Pay.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>Мини-приложения WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>Оплата через WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>Интеграция с WeChat не обязательна. Платформа полностью функционирует как автономное веб-приложение. Учетные данные WeChat потребуются только в том случае, если вы хотите включить вход через WeChat, доступ к мини-приложению или оплату через WeChat Pay.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam адаптируется к широкому спектру образовательных и оценочных сценариев.</value>

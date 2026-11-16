@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} domande corrispondenti non ancora aggiunte</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} domande · {1} punti</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>{0} selezionati in questa pagina</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Aggiungi le domande selezionate</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Aggiungere tutte le {0} domande d’esame corrispondenti?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Aggiungi domande a questo compito</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Aggiungi le domande selezionate</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Tutti i periodi</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Precedente</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Pagine delle domande</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Tipo di domanda</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Pagine delle domande</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Risposta di riferimento e spiegazione</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Cerca domande</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Seleziona tutto in questa pagina</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Seleziona le domande</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Seleziona tutto in questa pagina</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Domande selezionate</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Visualizza i dettagli</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} domande corrispondenti non ancora aggiunte</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} domande · {1} punti</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} selezionati in questa pagina</value>
   </data>
 
 </root>

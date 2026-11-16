@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Congelada</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>minutos</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Exámenes de prueba</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Filtro de estado del examen</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>puntos</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicable</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>preguntas</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Exámenes reales</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Examen real</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Exámenes reales</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Buscar</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Prueba otro título o filtro de estado.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minutos</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>puntos</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>preguntas</value>
   </data>
 
 </root>

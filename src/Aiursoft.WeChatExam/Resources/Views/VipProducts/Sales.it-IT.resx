@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>Prezzi effettivi pagati</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>Tutto il periodo · questo prodotto</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Prezzo medio pagato</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Torna ai prodotti</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Prima di commissioni e costi della piattaforma</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Acquirente</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>Ordini degli acquirenti</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Disattivato</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Sconto</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Abilitato</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>Segui ogni vendita, dal prezzo pagato all&apos;acquirente e all&apos;ordine.</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Richieste gratuite</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Successiva</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Nessun acquisto a pagamento confermato al momento.</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>Nessun ordine in questo gruppo.</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>Importo dell&apos;ordine</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>Gruppo ordini</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>Composizione degli ordini</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Numero ordine</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Ricavi degli ordini</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>Prezzo originale</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>Navigazione pagine</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>Pagato il</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>Prezzo pagato</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Vendite pagate</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Acquirenti paganti</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canale di pagamento</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>I prezzi derivano dagli importi degli ordini salvati. Un acquirente che ha pagato prezzi diversi compare in ogni gruppo di prezzo; il numero totale di acquirenti è deduplicato.</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>Vendite del prodotto</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Ricavi per ordine pagato</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>Importo ordini rimborsati</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Ordini rimborsati</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Rimborsi e richieste gratuite esclusi</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>I rimborsi sono in attesa di riconciliazione. Questi incassi potrebbero sovrastimare l&apos;importo trattenuto.</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>Gli acquisti ripetuti contano una sola volta</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Rivedi i rimborsi</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>Importi salvati al momento dell&apos;acquisto · apri un ordine per la sua cronologia completa</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>Seleziona un gruppo per ispezionarne gli ordini.</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Quota</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>Cosa hanno pagato gli acquirenti · quota degli ordini pagati</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>persone</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>unità</value>
+  </data>
+
+</root>

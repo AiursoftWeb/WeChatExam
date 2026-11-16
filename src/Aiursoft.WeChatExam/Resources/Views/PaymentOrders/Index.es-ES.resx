@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Importe</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Importes</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Los importes se guardan con el pedido. Un pedido no confirmado no es una compra completada.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Pendiente de confirmación de pago</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Cerrada</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Creado</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>N.º de pedido</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Número de pedido</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Pedidos</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Órdenes de Pago</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Canal de pago</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Pago confirmado</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Pago requiere verificación</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Anterior</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Producto</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Gestión de reembolsos</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Gestión de reembolsos</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Registros de conciliación de reembolsos</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Reembolsado</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Estado</value>

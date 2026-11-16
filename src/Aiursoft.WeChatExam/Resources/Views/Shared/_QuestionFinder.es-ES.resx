@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
-    <value>Avanzado: expresión de etiquetas (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
+      <data name="AI Semantic Search" xml:space="preserve">
     <value>Búsqueda semántica con IA</value>
   </data>
   <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
     <value>No se ha utilizado la búsqueda semántica con IA. Se muestran los resultados por palabras clave.</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Avanzado: expresión de etiquetas (MTQL)</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Todos los tipos</value>
@@ -36,9 +36,6 @@
   <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
     <value>Combina etiquetas, por ejemplo: rock &amp;&amp; not metal</value>
   </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>p. ej.: rock &amp;&amp; not metal</value>
-  </data>
   <data name="Enter a few words to find questions." xml:space="preserve">
     <value>Introduce algunas palabras para encontrar preguntas.</value>
   </data>
@@ -48,14 +45,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Tipo de pregunta del examen</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Encuentra palabras exactas y significados relacionados.</value>
-  </data>
   <data name="Find Exam Questions to Associate" xml:space="preserve">
     <value>Buscar preguntas de examen para asociar</value>
   </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Buscar preguntas</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Encuentra palabras exactas y significados relacionados.</value>
   </data>
   <data name="Keyword Search" xml:space="preserve">
     <value>Búsqueda por palabras clave</value>
@@ -75,11 +72,11 @@
   <data name="Search" xml:space="preserve">
     <value>Buscar</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>La búsqueda no está disponible. Vuelva a intentarlo.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Modo de búsqueda</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>La búsqueda no está disponible. Vuelva a intentarlo.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Buscando...</value>
@@ -89,6 +86,9 @@
   </data>
   <data name="Tag Expression Search (MTQL)" xml:space="preserve">
     <value>Búsqueda por expresión de etiquetas (MTQL)</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>p. ej.: rock &amp;&amp; not metal</value>
   </data>
 
 </root>

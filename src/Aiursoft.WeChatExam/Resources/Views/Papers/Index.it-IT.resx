@@ -33,17 +33,8 @@
   <data name="Created" xml:space="preserve">
     <value>Creato</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>elimina</value>
-  </data>
-  <data name="detail" xml:space="preserve">
-    <value>dettagli</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Bozza</value>
-  </data>
-  <data name="edit" xml:space="preserve">
-    <value>modifica</value>
   </data>
   <data name="Frozen" xml:space="preserve">
     <value>Congelato</value>
@@ -77,6 +68,15 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Titolo</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>elimina</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>dettagli</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>modifica</value>
   </data>
 
 </root>

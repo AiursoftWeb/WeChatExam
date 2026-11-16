@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Возврат средств был зафиксирован, но статус подписки по этому заказу требует проверки. Просмотрите существующий возврат вместо оформления нового.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Использованный одноразовый купон не восстанавливается.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Фактически оплачено</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>После успешного возврата средств членство, полученное по этому заказу, аннулируется.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Оплата через Apple не может быть возвращена продавцом. Предоставьте студенту инструкции ниже.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Сайт для возврата средств Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Попросите администратора проверить исходный способ оплаты в деталях заказа ниже.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Попросите администратора проверить исходную запись об оплате в разделе «Детали заказа» ниже.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Попросите администратора с правами на возврат средств проверить результат.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Попросите вашего администратора включить возможность возврата платежей для вашей роли, затем выйдите из системы и войдите снова.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Проверьте, как можно оформить возврат средств по этому заказу</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Проверить способ возврата средств</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Проверить результат возврата</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Проверьте существующий возврат средств ниже. Изменения членства вступают в силу после подтверждения успешного возврата.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Проверка…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Завершено в</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Подтвердить полный возврат</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Скопировано</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Скопировать инструкции для студента</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Включите функцию «Возврат платежей» для соответствующей роли, затем выйдите из системы и войдите снова.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Я проверил данные студента, сумму возврата и изменения членства.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Возврат средств по этому заказу не требуется</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Открыть платформу для мерчантов WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Открыть полные детали заказа</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Открыть разрешения ролей</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Номер заказа</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Детали заказа</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Оплачено</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Информация о платеже неполная, поэтому этот возврат средств нельзя инициировать здесь</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Способ оплаты</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Пожалуйста, выделите и скопируйте инструкции вручную.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Обработка возврата средств</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Управление возвратами</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Номер возврата</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Верните этот заказ на платформе мерчантов WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Сумма возврата</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Запрошено</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Проверить обработку членства</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Отправьте эти инструкции студенту</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Студент</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Отправка…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Фактически оплаченная сумма будет возвращена на первоначальный способ оплаты студента.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Способ оплаты подтверждён через WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Оплата была произведена более 365 дней назад. Эта страница больше не может отправить запрос на возврат средств.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Платформа подтвердила этот возврат. Проверьте обработку членства ниже.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Возврат средств зафиксирован, но обработка статуса членства требует проверки.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Возврат средств зафиксирован. Откройте детали заказа ниже, чтобы проверить сумму.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Запрос на возврат средств был отправлен. Подтверждение может занять время; не создавайте другой возврат.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Результат возврата средств пока не подтверждён</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Результат не мог быть подтверждён. Запросите сохранённый запрос на возврат средств; не отправляйте другой.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Студенту необходимо запросить этот возврат средств через Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Студент ничего не платил за этот заказ, поэтому возвращать нечего.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Нет подтверждённого платежа для возврата. Если со студента была произведена оплата, сначала проверьте исходную запись об оплате.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Эта проверка определяет только способ оплаты; она не возвращает средства за заказ.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>По этому заказу уже существует запрос на возврат средств. Проверьте его результат вместо повторного отправки.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Этот заказ нельзя вернуть, так как оплата не подтверждена</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Этот заказ уже был возвращен</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Этот заказ не подлежит полному возврату средств. Проверьте способ оплаты и текущий статус.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Этот заказ использовал предыдущий сервис WeChat Pay. Найдите заказ в исходном аккаунте мерчанта и оформите возврат средств там.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Этот заказ был оплачен через Apple. Пожалуйста, войдите на https://reportaproblem.apple.com/ с помощью учётной записи Apple, использованной для покупки, и запросите возврат средств за этот заказ. Apple рассматривает и принимает решение по запросу.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Этот заказ был оплачен через Apple. Преподаватель не может оформить возврат средств здесь; Apple рассматривает запрос студента.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Членство по этому заказу было обработано. Другие покупки не изменились, а одноразовый купон не восстановлен.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Этот платёж находится за пределами поддерживаемого здесь периода возврата средств</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Этот способ оплаты не поддерживает возвраты в данном случае</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Этот возврат средств требует проверки администратором</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Сначала необходимо проверить этот платёж через WeChat. Результат покажет кнопку возврата средств или инструкции для платежей Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Вы можете запросить возврат средств за этот заказ</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Ваша учетная запись не имеет разрешения на оформление возвратов</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Ваш возврат средств обрабатывается</value>
+  </data>
+
+</root>

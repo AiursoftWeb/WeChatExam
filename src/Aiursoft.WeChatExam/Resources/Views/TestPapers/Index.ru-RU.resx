@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Заморожено</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>минут</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Пробные экзаменационные работы</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Фильтр по статусу теста</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>баллов</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Предыдущая</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Готово к публикации</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>вопросов</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Настоящие тесты</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Реальный экзамен</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Настоящие тесты</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Поиск</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Попробуйте другой заголовок или фильтр по статусу.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>минут</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>баллов</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>вопросов</value>
   </data>
 
 </root>

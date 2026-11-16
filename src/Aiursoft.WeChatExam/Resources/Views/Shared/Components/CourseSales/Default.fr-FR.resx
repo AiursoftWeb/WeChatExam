@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} days" xml:space="preserve">
-    <value>{0} jours</value>
-  </data>
-  <data name="Ask an administrator with VIP product permissions to configure sales." xml:space="preserve">
+      <data name="Ask an administrator with VIP product permissions to configure sales." xml:space="preserve">
     <value>Demandez à un administrateur disposant des droits sur les produits VIP de configurer les ventes.</value>
   </data>
   <data name="Configure sales" xml:space="preserve">
@@ -56,6 +53,9 @@
   </data>
   <data name="View products" xml:space="preserve">
     <value>Voir les produits</value>
+  </data>
+  <data name="{0} days" xml:space="preserve">
+    <value>{0} jours</value>
   </data>
 
 </root>
