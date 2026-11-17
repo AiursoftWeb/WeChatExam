@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Handlinger</value>
+  </data>
+  <data name="Amount needs verification" xml:space="preserve">
+    <value>Beløb skal verificeres</value>
+  </data>
+  <data name="Awaiting refund confirmation" xml:space="preserve">
+    <value>Afventer bekræftelse på refundering</value>
+  </data>
+  <data name="Buyer and product" xml:space="preserve">
+    <value>Køber og produkt</value>
+  </data>
+  <data name="Find an order to refund" xml:space="preserve">
+    <value>Find en ordre til refundering</value>
+  </data>
+  <data name="Handled for this order" xml:space="preserve">
+    <value>Håndteret for denne ordre</value>
+  </data>
+  <data name="Membership handling" xml:space="preserve">
+    <value>Medlemskabshåndtering</value>
+  </data>
+  <data name="Memberships needing review" xml:space="preserve">
+    <value>Medlemskaber der skal gennemgås</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Kræver gennemgang</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Næste</value>
+  </data>
+  <data name="No refunds yet. Find a payment order to begin." xml:space="preserve">
+    <value>Ingen refunderinger endnu. Find en betalingsordre for at komme i gang.</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Betalingsmetode</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Forrige</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Registreret</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Refundering</value>
+  </data>
+  <data name="Refund details" xml:space="preserve">
+    <value>Refusionsdetaljer</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Refundhåndtering</value>
+  </data>
+
+</root>

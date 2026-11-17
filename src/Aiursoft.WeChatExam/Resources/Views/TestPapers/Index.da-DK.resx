@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Frossen</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>minutter</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Prøveeksamensopgaver</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Prøvestatusfilter</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>point</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Forrige</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Publicerbar</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>spørgsmål</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Rigtige opgavesæt</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Eksamen</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Rigtige opgavesæt</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Søg</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Prøv et andet titel- eller statusfilter.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minutter</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>point</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>spørgsmål</value>
   </data>
 
 </root>
