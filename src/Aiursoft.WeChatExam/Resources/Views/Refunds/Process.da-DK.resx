@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Der er rapporteret en refusion, men medlemskabet for denne ordre skal tjekkes. Gennemgå den eksisterende refusion i stedet for at starte en ny.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>En brugt engangskupon gendannes ikke.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Faktisk betalt</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Efter en vellykket tilbagebetaling ophæves medlemskabet fra denne ordre.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Apple-betalinger kan ikke refunderes af forhandleren. Giv den studerende instruktionerne nedenfor.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Apple refunderingshjemmeside</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Bed en administrator om at kontrollere den oprindelige betalingsmetode i ordreoplysningerne nedenfor.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Bed en administrator om at kontrollere den oprindelige betalingspost i ordredetaljer nedenfor.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Bed en administrator med rettigheder til refundering om at kontrollere resultatet.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Bed din administrator om at aktivere refundering af betalingsordrer for din rolle, log derefter ud og log ind igen.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Tjek, hvordan denne ordre kan refunderes</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Tjek refunderingsmetode</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Tjek refunderingsresultat</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Tjek den eksisterende refundering nedenfor. Medlemskabsændringer træder i kraft, når en vellykket refundering er bekræftet.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Tjekker…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Fuldført kl.</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Bekræft fuld tilbagebetaling</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Kopieret</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Kopiér elevens anvisninger</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Aktivér Rambetaling af betalingsordrer for den relevante rolle, log derefter ud og log ind igen.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Jeg har kontrolleret elev, refusionsbeløb og medlemskabsændringer.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Der er ikke behov for refundering af denne ordre</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Åbn WeChat Pay-forhandlerplatformen</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Åbn fulde ordredetaljer</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Åbn rolletilladelser</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Ordrenr.</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Ordreoplysninger</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Betalt tidspunkt</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Betalingsoplysningerne er ufuldstændige, så denne refusion kan ikke startes her</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Betalingsmetode</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Vælg og kopier instruktionerne manuelt.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Håndtering af refundering</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Refundhåndtering</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Refunderingsnummer</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Refundér denne ordre i WeChat Pay-handlerplatformen</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Refunderet beløb</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Anmodet den</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Gennemgå medlemskabets håndtering</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Send disse anvisninger til eleven</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Studerende</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Sender…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Den faktiske betalte sum vil blive refunderet til elevens oprindelige betalingsmetode.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Betalingsmetoden er blevet verificeret med WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Betalingen blev foretaget for mere end 365 dage siden. Denne side kan ikke længere indsende refusionen.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Platformen har bekræftet denne refusion. Tjek medlemsbehandling nedenfor.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Refusionen er registreret, men medlemskabshåndteringen skal verificeres.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Refusionen er registreret. Åbn ordredetaljerne nedenfor for at kontrollere beløbet.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Refunderingsanmodningen er indsendt. Bekræftelse kan tage tid; opret ikke en ny refundering.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Refunderingsresultatet er endnu ikke bekræftet</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Resultatet kunne ikke bekræftes. Forespørg den gemte refunderingsanmodning; indsend ikke en ny.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Studerende skal anmode om denne refundering hos Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Elev har ikke betalt noget for denne ordre, så er der ingen penge at tilbagebetale.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Der er ingen bekræftet betaling at refundere. Hvis eleven er blevet opkrævet, skal du først tjekke den oprindelige betalingspost.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Denne kontrol identificerer kun betalingsmetoden; den refunderer ikke ordren.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Denne ordre har allerede en refunderingsanmodning. Tjek resultatet i stedet for at indsende den igen.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Denne ordre kan ikke refunderes, da der ikke er bekræftet nogen betaling.</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Denne ordre er allerede refunderet</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Denne ordre er ikke berettiget til fuld refusion her. Tjek dens betalingsmetode og den aktuelle status.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Denne ordre brugte den tidligere WeChat Pay-tjeneste. Find ordren i den oprindelige handlerkonto og refunder den der.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Denne ordre blev betalt via Apple. Log venligst ind på https://reportaproblem.apple.com/ med den Apple-konto, der blev brugt til købet, og anmod om en refusion for denne ordre. Apple gennemgår og beslutter anmodningen.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Denne ordre blev betalt via Apple. Læreren kan ikke tilbagebetale den her; Apple gennemgår elevens anmodning.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Medlemskabet for denne ordre er blevet håndteret. Øvrige køb er uændrede, og engangs-couponen er ikke gendannet.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Denne betaling er uden for den refunderingsperiode, der understøttes her.</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Denne betalingsmetode understøttes ikke til refundering her</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Denne refusion kræver gennemgang af en administrator</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Vi skal først tjekke denne betaling med WeChat. Resultatet vil vise en refunderingsknap eller vejledning til Apple-betalinger.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Du kan anmode om refusion for denne ordre</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Din konto har ikke tilladelse til at foretage refunderinger</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Din refusion er under behandling</value>
+  </data>
+
+</root>

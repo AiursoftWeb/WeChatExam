@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Beløb</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Beløb</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Tilbage til liste</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Rabatkode</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Oprettet kl.</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Aktuel adgang kan omfatte senere køb eller manuelle ændringer. En bekræftet betaling betyder ikke, at medlemskabet stadig er aktivt i dag.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Aktuelt medlemskab</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Beskrivelse</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Slut</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Udløbet Kl.</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Ingen logs endnu</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Ingen medlemskabsregistrering for dette produkt</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Bestillingsoplysninger</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Detaljer for betalingsordre</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betalingskanal</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Refundbehandling</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Refundhåndtering</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Tekniske betalingslogge</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Bruger</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Se refundopgørelsesposter</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Vis brugerens betalingshistorik</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>WeChat-transaktions-ID</value>

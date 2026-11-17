@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Beløb</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Beløb</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Beløb gemmes sammen med ordren. En ubekræftet ordre er ikke et gennemført køb.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Afventer betalingsbekræftelse</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Lukket</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Oprettet</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Ordrenr.</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Ordrenummer</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Ordrer</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Betalingsordrer</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Betalingskanal</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Betaling bekræftet</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Betaling kræver verificering</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Forrige</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Refundering</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Refundering</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Tilbagebetalingsforligelsesoptegnelser</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Refunderet</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
