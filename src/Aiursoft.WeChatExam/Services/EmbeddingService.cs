@@ -18,13 +18,13 @@ public class EmbeddingService(
         var token = await settingsService.GetEmbeddingTokenAsync();
         var http = httpClientFactory.CreateClient();
 
-        // bge-m3 has an 8192-token context window. Preserve the head and tail,
+        // Start with an 8192-character budget. Preserve the head and tail,
         // then halve the budget if the model still reports a context error.
-        var maxChars = 8000;
+        var maxChars = 8192;
         while (true)
         {
             using var request = new HttpRequestMessage(HttpMethod.Post, $"{endpoint}/api/embed?keep_alive=-1");
-            request.Content = JsonContent.Create(new { model, input = TruncateForEmbedding(text, maxChars) });
+            request.Content = JsonContent.Create(new { model, input = TruncateForEmbedding(text, maxChars), truncate = false });
             if (!string.IsNullOrWhiteSpace(token))
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -45,7 +45,7 @@ public class EmbeddingService(
 
             var error = await response.Content.ReadAsStringAsync(timeout.Token);
             var isContextError = EmbeddingHelper.IsContextLengthError(response.StatusCode, error);
-            if (!isContextError || maxChars <= 500)
+            if (!isContextError || maxChars <= 512)
                 throw new HttpRequestException($"Embedding request failed (HTTP {(int)response.StatusCode}).",
                     null, response.StatusCode);
 
@@ -57,9 +57,17 @@ public class EmbeddingService(
     private static string TruncateForEmbedding(string text, int maxChars)
     {
         if (text.Length <= maxChars) return text;
-        var head = (int)(maxChars * 0.75);
-        var tail = maxChars - head - 5;
-        return string.Concat(text.AsSpan(0, head), "\n...\n", text.AsSpan(text.Length - tail));
+
+        const string separator = "\n...\n";
+        var contentBudget = maxChars - separator.Length;
+        var head = contentBudget * 4 / 5;
+        var tailStart = text.Length - (contentBudget - head);
+
+        // Do not split a UTF-16 surrogate pair at either retained boundary.
+        if (char.IsHighSurrogate(text[head - 1]) && char.IsLowSurrogate(text[head])) head--;
+        if (char.IsLowSurrogate(text[tailStart]) && char.IsHighSurrogate(text[tailStart - 1])) tailStart++;
+
+        return string.Concat(text.AsSpan(0, head), separator, text.AsSpan(tailStart));
     }
 
     private sealed class OllamaEmbedResponse
