@@ -5,12 +5,14 @@
   "author": "Anduin Xue",
   "license": "MIT",
   "dependencies": {
+    "@aiursoft/uistack": "^2.0.25",
     "dropify": "^0.2.2",
     "mermaid": "^12.3.0",
     "sortablejs": "^1.15.7",
     "chart.js": "^4.6.1"
   },
   "keep": {
+    "@aiursoft/uistack": "dist",
     "dropify": "dist",
     "mermaid": "dist",
     "sortablejs": ".",

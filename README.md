@@ -35,8 +35,8 @@ Install Docker, then use the image and persistent-volume commands in [Run in Doc
 Requirements about how to run
 
 1. Install [.NET 10 SDK](http://dot.net/) and [Node.js](https://nodejs.org/).
-2. Execute `npm install` at `wwwroot` folder to install the dependencies.
-3. Execute `dotnet run` to run the app.
+2. The .NET build automatically runs `npm ci` and `npm run build` to prepare the frontend assets. Node.js and npm must be available when building from source.
+3. Execute `dotnet run --project src/Aiursoft.WeChatExam/Aiursoft.WeChatExam.csproj -- --urls http://localhost:5000` to run the app.
 4. Use your browser to view [http://localhost:5000](http://localhost:5000).
 
 ## Run in Microsoft Visual Studio
