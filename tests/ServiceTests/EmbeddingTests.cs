@@ -189,15 +189,15 @@ public class EmbeddingTests
     {
         var handler = new EmbeddingHandler
         {
-            ContextLimit = 4000, ContextErrorStatusCode = status, ContextErrorMessage = error
+            ContextLimit = 4096, ContextErrorStatusCode = status, ContextErrorMessage = error
         };
         var settings = new StubGlobalSettingsService { EmbeddingEnabled = true };
         var service = new EmbeddingService(settings, handler, NullLogger<EmbeddingService>.Instance);
         var vector = await service.GenerateAsync("Introduction " + new string('a', 10000) + " Conclusion");
         Assert.HasCount(1024, vector);
         Assert.HasCount(2, handler.Inputs);
-        Assert.AreEqual(8000, handler.Inputs[0].Length);
-        Assert.AreEqual(4000, handler.Inputs[1].Length);
+        Assert.AreEqual(8192, handler.Inputs[0].Length);
+        Assert.AreEqual(4096, handler.Inputs[1].Length);
         Assert.StartsWith("Introduction", handler.Inputs[1]);
         Assert.EndsWith("Conclusion", handler.Inputs[1]);
     }
@@ -224,7 +224,7 @@ public class EmbeddingTests
 
         Assert.AreEqual(status, exception.StatusCode);
         Assert.HasCount(1, handler.Inputs);
-        Assert.AreEqual(8000, handler.Inputs[0].Length);
+        Assert.AreEqual(8192, handler.Inputs[0].Length);
     }
 
     [TestMethod]
@@ -242,8 +242,32 @@ public class EmbeddingTests
             service.GenerateAsync(new string('a', 10000)));
 
         Assert.AreEqual(HttpStatusCode.RequestEntityTooLarge, exception.StatusCode);
-        CollectionAssert.AreEqual(new[] { 8000, 4000, 2000, 1000, 500 },
+        CollectionAssert.AreEqual(new[] { 8192, 4096, 2048, 1024, 512 },
             handler.Inputs.Select(input => input.Length).ToArray());
+    }
+
+    [TestMethod]
+    [DataRow(false)]
+    [DataRow(true)]
+    public async Task LongInputsPreserveBothEndsWithoutSplittingSurrogatePairs(bool unicodeBoundaries)
+    {
+        var handler = new EmbeddingHandler();
+        var service = new EmbeddingService(new StubGlobalSettingsService { EmbeddingEnabled = true },
+            handler, NullLogger<EmbeddingService>.Instance);
+        var text = unicodeBoundaries
+            ? new string('a', 6548) + "😀" + new string('m', 10000) + "😀" + new string('z', 1637)
+            : new string('a', 6549) + new string('m', 10000) + new string('z', 1638);
+
+        await service.GenerateAsync(text);
+
+        Assert.HasCount(1, handler.Inputs);
+        var input = handler.Inputs[0];
+        Assert.IsTrue(input.Length <= 8192);
+        Assert.IsFalse(input.Contains('m'));
+        Assert.IsFalse(input.Contains('\uFFFD'));
+        StringAssert.StartsWith(input, new string('a', unicodeBoundaries ? 6548 : 6549));
+        StringAssert.EndsWith(input, new string('z', unicodeBoundaries ? 1637 : 1638));
+        StringAssert.Contains(input, "\n...\n");
     }
 
     private static Question NewQuestion() => new()
@@ -312,6 +336,7 @@ public class EmbeddingTests
             Assert.AreEqual("/api/embed", request.RequestUri!.AbsolutePath);
             var body = JsonDocument.Parse(await request.Content!.ReadAsStringAsync(cancellationToken));
             Assert.AreEqual("bge-m3:latest", body.RootElement.GetProperty("model").GetString());
+            Assert.IsFalse(body.RootElement.GetProperty("truncate").GetBoolean());
             var input = body.RootElement.GetProperty("input").GetString()!;
             Inputs.Add(input);
             if (BeforeResponse != null) await BeforeResponse(input);
