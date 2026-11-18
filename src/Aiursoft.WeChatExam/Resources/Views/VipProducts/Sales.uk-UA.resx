@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>Фактично сплачені ціни</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>За весь час · цей продукт</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Середня оплачена ціна</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Повернутися до товарів</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>До вирахування комісії платформи та витрат</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Покупець</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>Замовлення покупців</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Вимкнено</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Знижка</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Увімкнено</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>Стежте за кожним продажем — від сплаченої ціни до покупця та замовлення.</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Безкоштовні замовлення</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Далі</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Ще немає підтверджених оплачених покупок.</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>У цій групі немає замовлень.</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>Сума замовлення</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>Група замовлень</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>Структура замовлень</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Номер замовлення</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Надходження за замовленнями</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>Початкова ціна</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>Навігація по сторінках</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>Оплачено</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>Оплачена ціна</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Оплачені продажі</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Покупці, які оплатили</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Канал оплати</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Попередня</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>Ціни формуються на основі збережених сум замовлень. Покупець, який платив за різні ціни, відображається в кожній групі цін; загальна кількість покупців знедубльована.</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>Продажі товару</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Квитанції на оплачене замовлення</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>Сума повернених замовлень</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Повернуті замовлення</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Повернення та безоплатні претензії не враховано</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Повернення коштів очікують на узгодження. Ці надходження можуть завищувати суму, що залишається.</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>Повторні покупки враховуються один раз</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Перевірити повернення</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>Збережені суми на момент покупки · відкрийте замовлення, щоб переглянути його повну історію</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>Оберіть групу, щоб переглянути її замовлення.</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Частка</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>Ціни, за які платили покупці · частка оплачених замовлень</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>осіб</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>штук</value>
+  </data>
+
+</root>
