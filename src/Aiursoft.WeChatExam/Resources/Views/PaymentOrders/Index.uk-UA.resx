@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Сума</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Суми</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Суми зберігаються разом із замовленням. Не підтверджене замовлення не є завершеною покупкою.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Очікування підтвердження оплати</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Закрито</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Створено</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Номер замовлення</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Номер замовлення</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Замовлення</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Платіжні замовлення</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Канал оплати</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Платіж підтверджено</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Платіж потребує перевірки</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Попередня</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Товар</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Обробка повернення коштів</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Керування поверненнями коштів</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Записи про відшкодування</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Повернуто</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>

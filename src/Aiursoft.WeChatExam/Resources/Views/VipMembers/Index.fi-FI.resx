@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>Aktiivinen</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>kohteet</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>Kappaleita sivulla</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>Ei VIP-jäsenyyksiä löytynyt</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>-</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Edellinen</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>Nollaa</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>Hae käyttäjän tai tuotteen nimellä...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>Hakusana</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>Hae käyttäjän tai tuotteen nimellä...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>Näytetään</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>Aloitusaika</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>ei</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>Käyttäjä</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>VIP-jäsenyydet</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>kohteet</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>ei</value>
   </data>
 
 </root>

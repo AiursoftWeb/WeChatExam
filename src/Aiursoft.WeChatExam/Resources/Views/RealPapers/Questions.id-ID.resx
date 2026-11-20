@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} pertanyaan yang sesuai belum ditambahkan</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} soal · {1} poin</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>{0} dipilih di halaman ini</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Tambahkan Pertanyaan yang Dipilih</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Tambahkan semua {0} soal ujian yang cocok?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Tambahkan pertanyaan ke lembar soal ini</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Tambahkan Pertanyaan yang Dipilih</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Semua Periode</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Halaman pertanyaan</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Jenis Pertanyaan</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Halaman pertanyaan</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Jawaban Referensi dan Penjelasan</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Cari pertanyaan</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Pilih semua di halaman ini</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Pilih Pertanyaan</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Pilih semua di halaman ini</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Pertanyaan yang Dipilih</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Lihat Detail</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} pertanyaan yang sesuai belum ditambahkan</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} soal · {1} poin</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} dipilih di halaman ini</value>
   </data>
 
 </root>

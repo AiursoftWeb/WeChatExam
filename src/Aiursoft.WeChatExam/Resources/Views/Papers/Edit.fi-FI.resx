@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Valitse kategoria (valinnainen) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Tekoälyn semanttinen haku</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Tekoälyn semanttista hakua ei käytetty. Näytetään avainsanahakutulokset.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Lisää</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Edistynyt: tunnisteilmaus (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>Tekoälyn semanttinen haku</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>Tekoälyn semanttista hakua ei käytetty. Näytetään avainsanahakutulokset.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Kaikki tyypit</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Oletusarvo</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>poista</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Luonnos</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>fi: rock &amp;&amp; not metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Muokkaa koetta</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Koekysymyksen tyyppi</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Etsi tarkkoja sanoja ja niihin liittyviä merkityksiä.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Etsi kysymyksiä</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Etsi samankaltaisia kysymyksiä</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Etsi tarkkoja sanoja ja niihin liittyviä merkityksiä.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Ilmainen paperi</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Etsi ja lisää kysymykset</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Haku ei ole käytettävissä. Yritä uudelleen.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Hakutila</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Haku ei ole käytettävissä. Yritä uudelleen.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Haetaan...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Enintään viisi samankaltaista kysymystä valitusta kategoriasta tai kaikista kategorioista, jos mitään kategoriaa ei ole valittu. Paperissa jo olevat kysymykset jätetään pois. Valitse lisättävät kysymykset; alkuperäinen kysymys säilyy ennallaan.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>poista</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>fi: rock &amp;&amp; not metal</value>
   </data>
 
 </root>

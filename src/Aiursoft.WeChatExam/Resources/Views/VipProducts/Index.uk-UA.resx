@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>VIP для всіх реальних іспитів (застарілий)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Увесь час · поточні фільтри</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Огляд</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Середня ціна оплачених замовлень</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Назад до налаштувань курсу</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>До вирахування комісій та витрат платформи</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>За надходженнями</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Категорія</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Категорія VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Лише підтверджені замовлення</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Створити VIP-товар</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>днів</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Поточна ціна</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Дедупліковані між цими продуктами</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Увімкнено</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Безкоштовні отримання</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>VIP закладу</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Назва</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Поки немає підтверджених оплачених покупок.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Немає продуктів, що відповідають цим фільтрам.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Відкрийте продукт, щоб переглянути оплачені ціни та замовлення покупців.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Надходження від замовлень</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Інші замовлення</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Оплачені продажі</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Клієнти, які здійснили оплату</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Ціна</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Огляд продуктів</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Робота товарів</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Статус продукту</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Товари</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Продукти з оплаченими продажами</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Продукти без платних продажів</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Реальний іспит VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Отримання на оплачене замовлення</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Повернені замовлення</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Повернення коштів та безкоштовні претензії виключено</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Повернення коштів очікують узгодження. Ці надходження можуть завищувати фактично збережену суму.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Повернення коштів потребують перевірки</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Перевірити повернення коштів</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Деталі продажів</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Пошук</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Пошук за назвою, категорією або установою</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Дивіться, що продається, хто купує та скільки вони реально платять.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Топ-5 продуктів · частка відфільтрованих надходжень</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Загальна категорія</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>Продукти VIP</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Звідси надходять надходження</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>днів</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>осіб</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>одиниць</value>
   </data>
 
 </root>

@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Määrä</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Summat</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Takaisin listaan</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Kupongikoodi</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Luotu</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Nykyinen pääsy voi sisältää myöhempiä ostoksia tai manuaalisia muutoksia. Vahvistettu maksu ei tarkoita, että jäsenyys olisi edelleen voimassa tänään.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Nykyinen jäsenyys</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Kuvaus</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Päättyy</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Vanhentunut</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Ei vielä lokitietoja</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Ei jäsenyyshakemistoa tälle tuotteelle</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Tilauksen tiedot</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Maksutilaus-tiedot</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Maksukanava</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Tuote</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Palautuksen käsittely</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Palautusten hallinta</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Aloitus</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Tekniset maksulokit</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Käyttäjä</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Näytä palautusten täsmäyskirjaukset</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Näytä käyttäjän maksuhistoria</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>WeChat-tapahtumaid</value>

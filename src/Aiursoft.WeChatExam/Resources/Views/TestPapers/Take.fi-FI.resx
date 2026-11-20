@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>Ylläpitäjän koe</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>Tekoälyn arviointi</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>Tekoälyn kysymykset lähetetään määritetylle mallille lähetettyäsi.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>Ylläpitäjän koe</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>Vastauspohja</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>Suoranaisten arviointien esikatselu</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>minuuttia</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>Ei aikarajaa</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>Kokeen suoritukset</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>pistettä</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>Edistyminen</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>kysymystä</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>Valmis lähettämään?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>Kirjaa vastauksesi tähän...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minuuttia</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>pistettä</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>kysymystä</value>
   </data>
 
 </root>

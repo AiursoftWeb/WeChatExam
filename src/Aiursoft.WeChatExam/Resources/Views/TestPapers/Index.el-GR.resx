@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Περιορισμένο</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>λεπτά</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Δοκιμαστικά θέματα</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Φίλτρο κατάστασης δοκιμασίας</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>βαθμοί</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Προηγούμενο</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Διαθέσιμο για δημοσίευση</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>ερωτήματα</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Πραγματικά διαγωνίσματα</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Πραγματικό εξεταστικό</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Πραγματικά διαγωνίσματα</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Αναζήτηση</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Δοκιμάστε έναν άλλο τίτλο ή φίλτρο κατάστασης.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>λεπτά</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>βαθμοί</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>ερωτήματα</value>
   </data>
 
 </root>

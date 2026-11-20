@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} exercises" xml:space="preserve">
-    <value>{0} latihan</value>
-  </data>
-  <data name="{0} knowledge points" xml:space="preserve">
-    <value>{0} poin pengetahuan</value>
-  </data>
-  <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
+      <data name="A tag can be used in other courses too. Changing its pricing affects all the content listed here, including items outside your search." xml:space="preserve">
     <value>Tag dapat digunakan di mata kuliah lain juga. Mengubah harganya akan memengaruhi semua konten yang tercantum di sini, termasuk item di luar pencarian Anda.</value>
   </data>
   <data name="Access" xml:space="preserve">
@@ -227,6 +221,12 @@
   </data>
   <data name="Who can open this content?" xml:space="preserve">
     <value>Siapa yang dapat membuka konten ini?</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} latihan</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} poin pengetahuan</value>
   </data>
 
 </root>

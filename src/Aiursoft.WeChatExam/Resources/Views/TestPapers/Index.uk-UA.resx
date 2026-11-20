@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Заморожений</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>хвилин</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Пробні роботи</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Фільтр статусу іспиту</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>балів</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Попередня</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Опублікована</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>питань</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Реальні роботи</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Реальний іспит</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Реальні роботи</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Пошук</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Спробуйте іншу назву або фільтр за статусом.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>хвилин</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>балів</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>питань</value>
   </data>
 
 </root>

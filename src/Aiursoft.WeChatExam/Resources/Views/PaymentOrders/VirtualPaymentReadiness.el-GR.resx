@@ -39,14 +39,14 @@
   <data name="Choose sandbox (1) or live (0) explicitly." xml:space="preserve">
     <value>Επιλέξτε ρητά το περιβάλλον sandbox (1) ή live (0).</value>
   </data>
+  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
+    <value>Ρυθμίστε το OfferId από τις ρυθμίσεις εικονικών πληρωμών του παρόντος προγράμματος.</value>
+  </data>
   <data name="Configure the key for the selected environment. A key from another environment is not used." xml:space="preserve">
     <value>Ρυθμίστε το κλειδί για την επιλεγμένη περιβάλλον. Ένα κλειδί από άλλο περιβάλλον δεν χρησιμοποιείται.</value>
   </data>
   <data name="Configure the message Token and a valid EncodingAESKey on the server." xml:space="preserve">
     <value>Ρυθμίστε το Token μηνύματος και ένα έγκυρο EncodingAESKey στον διακομιστή.</value>
-  </data>
-  <data name="Configure the OfferId from this mini program&apos;s virtual payment settings." xml:space="preserve">
-    <value>Ρυθμίστε το OfferId από τις ρυθμίσεις εικονικών πληρωμών του παρόντος προγράμματος.</value>
   </data>
   <data name="Configure the target AppID and its AppSecret on the server." xml:space="preserve">
     <value>Ρυθμίστε τον AppID και το AppSecret του στο διακομιστή.</value>
@@ -66,20 +66,11 @@
   <data name="Enable WeChat access in the server configuration." xml:space="preserve">
     <value>Ενεργοποιήστε την πρόσβαση WeChat στη διαμόρφωση του διακομιστή.</value>
   </data>
-  <data name="fen" xml:space="preserve">
-    <value>fen</value>
-  </data>
   <data name="Free product: no platform payment is needed." xml:space="preserve">
     <value>Δωρεάν προϊόν: δεν απαιτείται πληρωμή πλατφόρμας.</value>
   </data>
   <data name="Invalid environment" xml:space="preserve">
     <value>Μη έγκυρο περιβάλλον</value>
-  </data>
-  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
-    <value>Η συμβουλή επιστροφής χρημάτων iOS είναι απενεργοποιημένη εκκρεμής επαλήθευσης πλατφόρμας.</value>
-  </data>
-  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
-    <value>Η συμβουλή επιστροφής χρημάτων iOS είναι ενεργοποιημένη. Αυτή η τοπική σελίδα δεν μπορεί να πιστοποιήσει ότι το πρωτόκολλο πλατφόρμας της έχει επαληθευτεί.</value>
   </data>
   <data name="Live environment" xml:space="preserve">
     <value>Προσωρινό περιβάλλον</value>
@@ -89,9 +80,6 @@
   </data>
   <data name="Local mapping and price match; platform publication still needs verification." xml:space="preserve">
     <value>Τοπική χαρτογράφηση και αντιστοίχιση τιμών· η δημοσίευση στην πλατφόρμα απαιτεί ακόμα επιβεβαίωση.</value>
-  </data>
-  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
-    <value>συνοδεύσεις δεν ταιριάζουν σε ένα ενεργό προϊόν VIP. Ζητήστε από τον διαχειριστή να τα ελέγξει· μην διαγράφετε ιστορικά προϊόντα ή παραγγελίες.</value>
   </data>
   <data name="Message verification credentials" xml:space="preserve">
     <value>Πιστοποιητικά επαλήθευσης μηνυμάτων</value>
@@ -156,6 +144,9 @@
   <data name="Use an explicitly virtual-payment test build. The default mini program build still uses ordinary payment." xml:space="preserve">
     <value>Χρησιμοποιήστε μια έκδοση δοκιμής ρητά ορισμένης εικονικής πληρωμής. Η προεπιλεγμένη έκδοση της εφαρμογής mini program εξακολουθεί να χρησιμοποιεί συνηθισμένη πληρωμή.</value>
   </data>
+  <data name="VIP product ID" xml:space="preserve">
+    <value>Αριθμός προϊόντος VIP</value>
+  </data>
   <data name="Verify platform approval, AppID, OfferId and published products in the WeChat console." xml:space="preserve">
     <value>Επαληθεύστε την έγκριση της πλατφόρμας, το AppID, το OfferId και τα δημοσιευμένα προϊόντα στην κονσόλα WeChat.</value>
   </data>
@@ -165,9 +156,6 @@
   <data name="View only" xml:space="preserve">
     <value>Μόνο προβολή</value>
   </data>
-  <data name="VIP product ID" xml:space="preserve">
-    <value>Αριθμός προϊόντος VIP</value>
-  </data>
   <data name="Virtual payment account" xml:space="preserve">
     <value>Λογαριασμός εικονικών πληρωμών</value>
   </data>
@@ -176,6 +164,18 @@
   </data>
   <data name="WeChat synchronization failed. Open the VIP product to review its settings and retry." xml:space="preserve">
     <value>Η συγχρονισμός WeChat απέτυχε. Ανοίξτε το προϊόν VIP για να ελέγξετε τις ρυθμίσεις του και ξαναδοκιμάστε.</value>
+  </data>
+  <data name="fen" xml:space="preserve">
+    <value>fen</value>
+  </data>
+  <data name="iOS refund advice is disabled pending platform verification." xml:space="preserve">
+    <value>Η συμβουλή επιστροφής χρημάτων iOS είναι απενεργοποιημένη εκκρεμής επαλήθευσης πλατφόρμας.</value>
+  </data>
+  <data name="iOS refund advice is enabled. This local page cannot certify that its platform protocol has been verified." xml:space="preserve">
+    <value>Η συμβουλή επιστροφής χρημάτων iOS είναι ενεργοποιημένη. Αυτή η τοπική σελίδα δεν μπορεί να πιστοποιήσει ότι το πρωτόκολλο πλατφόρμας της έχει επαληθευτεί.</value>
+  </data>
+  <data name="mappings do not match an enabled VIP product. Ask the administrator to review them; do not delete historical products or orders." xml:space="preserve">
+    <value>συνοδεύσεις δεν ταιριάζουν σε ένα ενεργό προϊόν VIP. Ζητήστε από τον διαχειριστή να τα ελέγξει· μην διαγράφετε ιστορικά προϊόντα ή παραγγελίες.</value>
   </data>
 
 </root>

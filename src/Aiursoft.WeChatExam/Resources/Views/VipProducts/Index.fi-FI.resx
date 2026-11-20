@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>Kaikkien oikeiden kokeiden VIP (vanha)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Kaikki ajat · nykyiset suodattimet</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Yleiskuva</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Keskimääräinen maksettu hinta</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>Takaisin kurssin asetuksiin</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Alennettu alustakulut ja -kustannukset</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Myyntitulojen mukaan</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Kategoria</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>Luokan VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Vain vahvistetut tilaukset</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>Luo VIP-tuote</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>päivää</value>
+  <data name="Current price" xml:space="preserve">
+    <value>Nykyinen hinta</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Poistettu kaksoiskappaleet näiden tuotteiden välillä</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Poista</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>Käytössä</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Maksuttomat lunastukset</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>Oppilaitoksen VIP</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nimi</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Ei vielä vahvistettuja maksettuja ostoja.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Yhtään tuotetta ei vasta näitä suodattimia.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Avaa tuote nähdäksesi maksetut hinnat ja ostajien tilaukset.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Tilaukset</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Muut tilaukset</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Maksetut myynnit</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Maksetut ostajat</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Hinta</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Tuotteen yleiskatsaus</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Tuotteen suorituskyky</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Tuotteen tila</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>Tuotteet</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Tuotteet, joilla on maksetut myynnit</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Tuotteita ilman maksullisia myyntejä</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>Todellinen koe VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Kulutukset per maksettu tilaus</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Palautetut tilaukset</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Palautukset ja maksuttomat vaateet suljettu pois</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Palautukset odottavat sovittelua. Nämä kuitit voivat yliarvioida pidätetyn summan.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Palautukset vaativat tarkistuksen</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Tarkista palautukset</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Myyntitiedot</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Etsi</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>Hae nimellä, kategorialla tai oppilaitoksella</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Näe, mitä myydytään, kuka ostaa ja mitä he todella maksavat.</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Viisi myydyttä tuotetta · suodatettujen kassakuittien osuus</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>Kategorioiden kokonaismäärä</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>VIP-tuotteet</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Mistä kuitit tulevat</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>päivää</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>henkilöä</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>kpl</value>
   </data>
 
 </root>

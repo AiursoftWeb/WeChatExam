@@ -18,11 +18,11 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
-    <value>Ενέργειες</value>
-  </data>
-  <data name="AI Optimization Tasks" xml:space="preserve">
+      <data name="AI Optimization Tasks" xml:space="preserve">
     <value>AI Εργασίες Βελτιστοποίησης</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Ενέργειες</value>
   </data>
   <data name="Background Jobs" xml:space="preserve">
     <value>Εργασίες Υποβάθρου</value>
@@ -44,9 +44,6 @@
   </data>
   <data name="Job Name" xml:space="preserve">
     <value>Όνομα Εργασίας</value>
-  </data>
-  <data name="last hour" xml:space="preserve">
-    <value>τελευταία ώρα</value>
   </data>
   <data name="Last run" xml:space="preserve">
     <value>Τελευταία εκτέλεση</value>
@@ -116,6 +113,9 @@
   </data>
   <data name="View Result" xml:space="preserve">
     <value>Προβολή Αποτελέσματος</value>
+  </data>
+  <data name="last hour" xml:space="preserve">
+    <value>τελευταία ώρα</value>
   </data>
 
 </root>

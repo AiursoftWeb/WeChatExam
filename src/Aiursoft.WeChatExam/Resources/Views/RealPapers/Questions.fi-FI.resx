@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} vastaavaa kysymystä lisäämättä</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} kysymystä · {1} pistettä</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>{0} valittu tällä sivulla</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Lisää valitut kysymykset</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Lisätäänkö kaikki {0} vastaavaa koetehtävää?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Lisää kysymyksiä tähän paperiin</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Lisää valitut kysymykset</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Kaikki ajanjaksot</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Edellinen</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Kysymyssivut</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Kysymystyyppi</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Kysymyssivut</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Viitausvastaus ja selitys</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Etsi kysymyksiä</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Valitse kaikki tällä sivulla</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Valitse kysymykset</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Valitse kaikki tällä sivulla</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Valitut kysymykset</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Näytä tiedot</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} vastaavaa kysymystä lisäämättä</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} kysymystä · {1} pistettä</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} valittu tällä sivulla</value>
   </data>
 
 </root>

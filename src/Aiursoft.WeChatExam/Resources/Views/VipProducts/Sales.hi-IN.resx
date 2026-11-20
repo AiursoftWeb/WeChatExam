@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>वास्तविक भुगतान कीमतें</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>समय · यह उत्पाद</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>औसत भुगतान कीमत</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>उत्पादों पर वापस जाएँ</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>प्लेटफ़ॉर्म शुल्क और लागत से पहले</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>खरीदार</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>खरीदार ऑर्डर</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>अक्षम</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>छूट</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>सक्रिय</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>प्रत्येक बिक्री को भुगतान कीमत से खरीदार और ऑर्डर तक ट्रैक करें।</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>मुफ़्त दावे</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>अगला</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>अभी तक कोई पुष्टि प्राप्त भुगतान खरीदारी नहीं।</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>इस समूह में कोई ऑर्डर नहीं हैं।</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>ऑर्डर राशि</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>ऑर्डर समूह</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>ऑर्डर मिक्स</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>ऑर्डर संख्या</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>ऑर्डर रसीदें</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>मूल मूल्य</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>पृष्ठ नेविगेशन</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>भुगतान समय</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>भुगतान किया गया मूल्य</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>भुगतान किए गए बिक्री</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>भुगतान करने वाले खरीदार</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>भुगतान चैनल</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>पिछला</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>मूल्य सहेजे गए ऑर्डर राशियों से प्राप्त होते हैं। एक खरीदार जिसने अलग-अलग मूल्य चुकाए हैं, वह हर मूल्य समूह में दिखाई देता है; कुल खरीदार संख्या दोहराव हटाकर (deduplicated) की गई है।</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>उत्पाद बिक्री</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>प्रति भुगतान किए गए ऑर्डर की राशि</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>वापसी की गई ऑर्डर राशि</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>रिफंड किए गए ऑर्डर</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>रिफंड और मुफ्त दावे को छोड़ दिया गया है</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>राजस्वों का समन्वय बाकी है। इन रसीदों में रखा गया राशि अधिक हो सकती है।</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>दोहराव वाले खरीद एक बार गिने जाते हैं</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>रिफंड समीक्षा करें</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>खरीदारी पर सहेजे गए राशि · पूर्ण इतिहास के लिए ऑर्डर खोलें</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>अपने ऑर्डर देखने के लिए एक समूह चुनें।</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>हिस्सा</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>खरीदारों ने क्या भुगतान किया · भुगतान किए गए ऑर्डर का हिस्सा</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>व्यक्ति</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>यूनिट</value>
+  </data>
+
+</root>

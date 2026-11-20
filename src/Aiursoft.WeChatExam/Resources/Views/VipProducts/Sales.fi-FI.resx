@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>Maksututelliset hinnat</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>Kaikki ajat · tämä tuote</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Keskimääräinen maksettu hinta</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Takaisin tuotteisiin</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Ennen alustan kuluja ja kustannuksia</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Ostaja</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>Ostajien tilaukset</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Ei käytössä</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Alennus</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Käytössä</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>Seuraa jokaista myyntiä maksetusta hinnasta ostajaan ja tilaukseen.</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Ilmaiset lunastukset</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Ei vielä vahvistettuja maksettuja ostoja.</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>Tässä ryhmässä ei ole tilauksia.</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>Tilauksen summa</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>Tilausryhmä</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>Tilausrakenne</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Tilausnumero</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Tilaukset</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>Alkuperäinen hinta</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>Sivunavigointi</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>Maksettu</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>Maksettu hinta</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Maksutut ostot</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Maksetut ostajat</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Maksukanava</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Edellinen</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>Hinnat perustuvat tallennettuihin tilaussummiin. Ostaja, joka on maksanut eri hintoja, näkyy jokaisessa hintaryhmässä; ostajien kokonaismäärä on deduploitettu.</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>Tuotemyynti</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Kuitit maksetusta tilauksesta</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>Palautettu tilaussumma</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Palautetut tilaukset</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Palautukset ja ilmaiset vaateet suljettu pois</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Palautukset odottavat sovittamista. Nämä kuittitiedot voivat yleistää pidätetyn summan.</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>Toistuvat ostot lasketaan kerran</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Tarkista palautukset</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>Tallennetut summat ostohetkellä · avaa tilaus sen täydellistä historiaa varten</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>Valitse ryhmä tarkistaaksesi sen tilaukset.</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Osuus</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>Mitä ostajat maksoivat · osuus maksetuista tilauksista</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>henkilöä</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>kpl</value>
+  </data>
+
+</root>

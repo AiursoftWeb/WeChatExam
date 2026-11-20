@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>Dibekukan</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>menit</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>Soal Simulasi</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>Filter status ujian</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>poin</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>Dapat Dipublikasikan</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>pertanyaan</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Naskah Ujian Sungguhan</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>Ujian nyata</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>Naskah Ujian Sungguhan</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Cari</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>Coba judul atau filter status lain.</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>menit</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>poin</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>pertanyaan</value>
   </data>
 
 </root>

@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} minutes" xml:space="preserve">
-    <value>{0} minuuttia</value>
-  </data>
-  <data name="{0} questions · {1} minutes" xml:space="preserve">
-    <value>{0} kysymystä · {1} minuuttia</value>
-  </data>
-  <data name="Back to Real Papers" xml:space="preserve">
+      <data name="Back to Real Papers" xml:space="preserve">
     <value>Takaisin todellisiin kokeisiin</value>
   </data>
   <data name="Edit Draft" xml:space="preserve">
@@ -63,11 +57,17 @@
   <data name="Requires institution access" xml:space="preserve">
     <value>Edellyttää oppilaitoksen käyttöoikeuksia</value>
   </data>
+  <data name="Version pages" xml:space="preserve">
+    <value>Versiosivut</value>
+  </data>
   <data name="Version {0}" xml:space="preserve">
     <value>Versio {0}</value>
   </data>
-  <data name="Version pages" xml:space="preserve">
-    <value>Versiosivut</value>
+  <data name="{0} minutes" xml:space="preserve">
+    <value>{0} minuuttia</value>
+  </data>
+  <data name="{0} questions · {1} minutes" xml:space="preserve">
+    <value>{0} kysymystä · {1} minuuttia</value>
   </data>
 
 </root>

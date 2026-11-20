@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Ιεραρχικά Σημεία Γνώσης</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Πώς Λειτουργεί</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Πώς εγκαθιστώ το WeChatExam;</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Πώς διασφαλίζουν οι στιγμιότυπα του τεστ τη δικαιοσύνη;</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Πώς Λειτουργεί</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Ολοκληρωμένη ολοκλήρωση του WeChat Pay (TenpayV3) για την εμπορευματοποίηση εξετάσεων. Χρεώστε την πρόσβαση σε εξετάσεις premium, πιστοποιήσεις ή εκπαιδευτικό υλικό απευθείας μέσω του WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Περίπτωση Χρήσης</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Χρησιμοποιήστε τη Γλώσσα Ερωτήσεων Mark-to-Query (MTQL), μια ισχυρή DSL, για να φιλτράρετε ερωτήσεις με λογική boolean όπως &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; για ακριβή επιλογή ερωτήσεων.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Χρησιμοποιήστε το MTQL για την επιλογή ερωτήσεων με βάση ετικέτες και σημεία γνώσης. Ορίστε τη δομή του εξεταστικού δελτίου, τη διάρκεια και τους κανόνες βαθμολόγησης.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Χρησιμοποιήστε τη Γλώσσα Ερωτήσεων Mark-to-Query (MTQL), μια ισχυρή DSL, για να φιλτράρετε ερωτήσεις με λογική boolean όπως &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; για ακριβή επιλογή ερωτήσεων.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Προβολή στο GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>Ολοκλήρωση με το WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>Η ενσωμάτωση του WeChat είναι προαιρετική. Η πλατφόρμα λειτουργεί πλήρως ως αυτόνομη εφαρμογή ιστού. Χρειάζεστε διαπιστευτήρια WeChat μόνο αν θέλετε να ενεργοποιήσετε την είσοδο μέσω WeChat, την πρόσβαση σε Mini Program ή το WeChat Pay.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>Μικροεφαρμογές WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>Πληρωμή WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>Η ενσωμάτωση του WeChat είναι προαιρετική. Η πλατφόρμα λειτουργεί πλήρως ως αυτόνομη εφαρμογή ιστού. Χρειάζεστε διαπιστευτήρια WeChat μόνο αν θέλετε να ενεργοποιήσετε την είσοδο μέσω WeChat, την πρόσβαση σε Mini Program ή το WeChat Pay.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>Το WeChatExam προσαρμόζεται σε ένα ευρύ φάσμα εκπαιδευτικών και αξιολογητικών σεναρίων.</value>

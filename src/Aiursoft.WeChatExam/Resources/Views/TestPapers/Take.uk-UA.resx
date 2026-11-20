@@ -18,14 +18,14 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Administrator paper test" xml:space="preserve">
-    <value>Адміністративний тест</value>
-  </data>
-  <data name="AI grading" xml:space="preserve">
+      <data name="AI grading" xml:space="preserve">
     <value>Оцінювання ШІ</value>
   </data>
   <data name="AI questions are sent to the configured model after submission." xml:space="preserve">
     <value>Питання, що оцінюються ШІ, надсилаються до налаштованої моделі після надсилання.</value>
+  </data>
+  <data name="Administrator paper test" xml:space="preserve">
+    <value>Адміністративний тест</value>
   </data>
   <data name="Answer sheet" xml:space="preserve">
     <value>Аркуш відповідей</value>
@@ -57,23 +57,14 @@
   <data name="Live grading preview" xml:space="preserve">
     <value>Перегляд живого оцінювання</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>хвилин</value>
-  </data>
   <data name="No time limit" xml:space="preserve">
     <value>Без обмеження часу</value>
   </data>
   <data name="Paper Test" xml:space="preserve">
     <value>Тест</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>балів</value>
-  </data>
   <data name="Progress" xml:space="preserve">
     <value>Прогрес</value>
-  </data>
-  <data name="questions" xml:space="preserve">
-    <value>питань</value>
   </data>
   <data name="Ready to submit?" xml:space="preserve">
     <value>Готові надіслати?</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Write your answer here..." xml:space="preserve">
     <value>Напишіть вашу відповідь тут...</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>хвилин</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>балів</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>питань</value>
   </data>
 
 </root>

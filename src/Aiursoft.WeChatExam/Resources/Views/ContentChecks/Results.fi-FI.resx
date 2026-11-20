@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>{0} kohteeseen vaikuttavaa</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} harjoitusta</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>{0} tarkistettavaa kohdetta</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>Kaikki kurssit</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>Tarkistus valmis</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>Tarkistettu {0} oppimiskohdetta, {1} tehtävää ja {2} koetta.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>Tarkistettu</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Tarkistettu {0} oppimiskohdetta, {1} tehtävää ja {2} koetta.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>Valitse kortti nähdäksesi, mitä opiskelijat kokevat ja mitä kannattaa tarkistaa.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>Tuloksesi</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>{0} kohteeseen vaikuttavaa</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} harjoitusta</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} tarkistettavaa kohdetta</value>
   </data>
 
 </root>

@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>राशि</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>राशि</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>राशि ऑर्डर के साथ सहेजी जाती है। एक पुष्टि न होने वाला ऑर्डर पूर्ण खरीद नहीं है।</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>भुगतान पुष्टि का प्रतीक्षा में</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>बंद</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>सृष्ट</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>ऑर्डर नंबर</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>ऑर्डर नंबर</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>ऑर्डर</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>भुगतान आदेश</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>भुगतान चैनल</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>भुगतान की पुष्टि</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>भुगतान की सत्यापन आवश्यक है</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>पिछला</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>उत्पाद</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>रिफंड प्रोसेसिंग</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>रिफंड प्रबंधन</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>रिफंड समन्वय रिकॉर्ड</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>पुनःप्रतिपान</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>

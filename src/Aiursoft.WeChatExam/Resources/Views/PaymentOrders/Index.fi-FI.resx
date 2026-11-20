@@ -27,6 +27,18 @@
   <data name="Amount" xml:space="preserve">
     <value>Määrä</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Summat</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Summat tallennetaan tilauksen yhteyteen. Vahvistamaton tilaus ei ole valmis osto.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Odottaa maksun vahvistusta</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Suljettu</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Luotu</value>
   </data>
@@ -42,11 +54,23 @@
   <data name="Order No" xml:space="preserve">
     <value>Tilauksen nro</value>
   </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Tilausnumero</value>
+  </data>
   <data name="Orders" xml:space="preserve">
     <value>Tilaukset</value>
   </data>
   <data name="Payment Orders" xml:space="preserve">
     <value>Maksukäskyt</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Maksukanava</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Maksu vahvistettu</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Maksu vaatii tarkistusta</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Edellinen</value>
@@ -54,8 +78,17 @@
   <data name="Product" xml:space="preserve">
     <value>Tuote</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Palautuksen käsittely</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Palautusten hallinta</value>
+  </data>
   <data name="Refund reconciliation records" xml:space="preserve">
     <value>Palautuksen sovitusmerkinnät</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Palautettu</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>

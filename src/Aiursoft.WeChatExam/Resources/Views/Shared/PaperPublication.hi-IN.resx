@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
-    <value>{0} प्रश्न · {1} अंक · {2} मिनट</value>
-  </data>
-  <data name="{0} questions have no explanation. Adding explanations is recommended but not required for publication." xml:space="preserve">
-    <value>{0} प्रश्नों में कोई व्याख्या नहीं है। प्रकाशन के लिए व्याख्या जोड़ना अनुशंसित है, लेकिन आवश्यक नहीं है।</value>
-  </data>
-  <data name="Add at least one question before publishing." xml:space="preserve">
+      <data name="Add at least one question before publishing." xml:space="preserve">
     <value>प्रकाशित करने से पहले कम से कम एक प्रश्न जोड़ें।</value>
   </data>
   <data name="Back to Editing" xml:space="preserve">
@@ -68,6 +62,12 @@
   </data>
   <data name="Unpublish this paper?" xml:space="preserve">
     <value>क्या यह पेपर अनपब्लिश करें?</value>
+  </data>
+  <data name="{0} questions have no explanation. Adding explanations is recommended but not required for publication." xml:space="preserve">
+    <value>{0} प्रश्नों में कोई व्याख्या नहीं है। प्रकाशन के लिए व्याख्या जोड़ना अनुशंसित है, लेकिन आवश्यक नहीं है।</value>
+  </data>
+  <data name="{0} questions · {1} points · {2} minutes" xml:space="preserve">
+    <value>{0} प्रश्न · {1} अंक · {2} मिनट</value>
   </data>
 
 </root>

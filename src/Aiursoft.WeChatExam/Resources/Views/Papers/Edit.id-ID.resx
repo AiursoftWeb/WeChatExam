@@ -24,6 +24,12 @@
   <data name="-- Select Category (Optional) --" xml:space="preserve">
     <value>-- Pilih Kategori (Opsional) --</value>
   </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>Pencarian Semantik AI</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>Pencarian semantik AI tidak digunakan. Menampilkan hasil kata kunci.</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Tambah</value>
   </data>
@@ -38,12 +44,6 @@
   </data>
   <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
     <value>Lanjutan: Ekspresi Tag (MTQL)</value>
-  </data>
-  <data name="AI Semantic Search" xml:space="preserve">
-    <value>Pencarian Semantik AI</value>
-  </data>
-  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
-    <value>Pencarian semantik AI tidak digunakan. Menampilkan hasil kata kunci.</value>
   </data>
   <data name="All Types" xml:space="preserve">
     <value>Semua Jenis</value>
@@ -69,14 +69,8 @@
   <data name="Default Score" xml:space="preserve">
     <value>Skor Default</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>hapus</value>
-  </data>
   <data name="Draft" xml:space="preserve">
     <value>Draf</value>
-  </data>
-  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
-    <value>mis. rock &amp;&amp; bukan metal</value>
   </data>
   <data name="Edit Paper" xml:space="preserve">
     <value>Edit Kertas</value>
@@ -90,14 +84,14 @@
   <data name="Exam Question Type" xml:space="preserve">
     <value>Jenis Soal Ujian</value>
   </data>
-  <data name="Find exact words and related meanings." xml:space="preserve">
-    <value>Temukan kata-kata yang persis dan makna terkait.</value>
-  </data>
   <data name="Find Questions" xml:space="preserve">
     <value>Cari Pertanyaan</value>
   </data>
   <data name="Find Similar Questions" xml:space="preserve">
     <value>Temukan Pertanyaan Serupa</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Temukan kata-kata yang persis dan makna terkait.</value>
   </data>
   <data name="Free Paper" xml:space="preserve">
     <value>Kertas Gratis</value>
@@ -165,11 +159,11 @@
   <data name="Search &amp; Add Questions" xml:space="preserve">
     <value>Cari &amp; Tambah Pertanyaan</value>
   </data>
-  <data name="Search is unavailable. Please try again." xml:space="preserve">
-    <value>Pencarian tidak tersedia. Silakan coba lagi.</value>
-  </data>
   <data name="Search Mode" xml:space="preserve">
     <value>Mode Pencarian</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Pencarian tidak tersedia. Silakan coba lagi.</value>
   </data>
   <data name="Searching..." xml:space="preserve">
     <value>Sedang mencari...</value>
@@ -230,6 +224,12 @@
   </data>
   <data name="Up to five similar questions in the selected category, or all categories if none is selected. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
     <value>Maksimal lima pertanyaan serupa dalam kategori yang dipilih, atau dalam semua kategori jika tidak ada yang dipilih. Pertanyaan yang sudah ada di lembar soal tidak disertakan. Pilih pertanyaan yang ingin ditambahkan; pertanyaan asli tetap tidak berubah.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>hapus</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>mis. rock &amp;&amp; bukan metal</value>
   </data>
 
 </root>

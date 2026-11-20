@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Сучасна, багатофункціональна та високо розширювана основа для вашої наступної веб-програми.</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>у всіх завершених екзаменах</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>Переклади на основі ШІ</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>Активні</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Адмін-центр для екзаменаційного міні-програми WeChat</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>Переклади на основі ШІ</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Усі залежності автоматично реєструються та завжди доступні через ін&apos;єкцію в конструктор.</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>Огляд контенту</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>правильні відповіді</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>Кількість</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>Есе</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>спроби здачі іспиту</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>Результати екзаменів</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Привіт, Світе!</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>у базі даних</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>У процесі</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Ласкаво просимо</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>у всіх завершених екзаменах</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>правильні відповіді</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>спроби здачі іспиту</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>у базі даних</value>
   </data>
 
 </root>

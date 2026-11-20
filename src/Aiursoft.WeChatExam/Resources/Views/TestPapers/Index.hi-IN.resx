@@ -42,9 +42,6 @@
   <data name="Frozen" xml:space="preserve">
     <value>फ्रोज़न</value>
   </data>
-  <data name="minutes" xml:space="preserve">
-    <value>मिनट</value>
-  </data>
   <data name="Mock Papers" xml:space="preserve">
     <value>मॉक पेपर</value>
   </data>
@@ -69,23 +66,17 @@
   <data name="Paper status filter" xml:space="preserve">
     <value>पत्र स्थिति फ़िल्टर</value>
   </data>
-  <data name="points" xml:space="preserve">
-    <value>अंक</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>पिछला</value>
   </data>
   <data name="Publishable" xml:space="preserve">
     <value>प्रकाशित करने योग्य</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>प्रश्न</value>
+  <data name="Real Papers" xml:space="preserve">
+    <value>वास्तविक प्रश्नपत्र</value>
   </data>
   <data name="Real exam" xml:space="preserve">
     <value>वास्तविक परीक्षा</value>
-  </data>
-  <data name="Real Papers" xml:space="preserve">
-    <value>वास्तविक प्रश्नपत्र</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>खोजें</value>
@@ -107,6 +98,15 @@
   </data>
   <data name="Try another title or status filter." xml:space="preserve">
     <value>कोई अन्य शीर्षक या स्थिति फ़िल्टर आज़माएँ।</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>मिनट</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>अंक</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>प्रश्न</value>
   </data>
 
 </root>

@@ -36,9 +36,6 @@
   <data name="Delete" xml:space="preserve">
     <value>Poista</value>
   </data>
-  <data name="detail" xml:space="preserve">
-    <value>tarkemmin</value>
-  </data>
   <data name="Disable" xml:space="preserve">
     <value>Poista käytöstä</value>
   </data>
@@ -74,6 +71,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Tila</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>tarkemmin</value>
   </data>
 
 </root>
