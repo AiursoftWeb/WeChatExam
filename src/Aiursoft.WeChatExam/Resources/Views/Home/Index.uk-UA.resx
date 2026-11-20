@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Ієрархічні знаннєві точки</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Як це працює</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Як розгорнути WeChatExam?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Як знімки паперу забезпечують справедливість?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Як це працює</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Інтегровано WeChat Pay (TenpayV3) для монетизації іспитів. Надавайте доступ до преміум-іспитів, сертифікацій або навчальних матеріалів за плату напряму через WeChat.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Варіанти використання</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Використовуйте мову позначок-до-запитів (MTQL), потужну предметно-орієнтовану мову (DSL), для фільтрації питань за допомогою булевої логіки, наприклад &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;, для точного вибору питань.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Використовуйте MTQL для вибору запитань за тегами та тематичними точками. Визначте структуру іспиту, тривалість та правила оцінювання.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Використовуйте мову позначок-до-запитів (MTQL), потужну предметно-орієнтовану мову (DSL), для фільтрації питань за допомогою булевої логіки, наприклад &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot;, для точного вибору питань.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Переглянути на GitHub</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>Інтеграція з WeChat</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>Інтеграція з WeChat є необов’язковою. Платформа повністю працює як автономний веб-додаток. Облікові дані WeChat потрібні лише тоді, коли ви хочете увімкнути вхід через WeChat, доступ до міні-програм або оплату через WeChat Pay.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>Міні-програми WeChat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>Оплата через WeChat</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>Інтеграція з WeChat є необов’язковою. Платформа повністю працює як автономний веб-додаток. Облікові дані WeChat потрібні лише тоді, коли ви хочете увімкнути вхід через WeChat, доступ до міні-програм або оплату через WeChat Pay.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam адаптується до широкого спектра освітніх та оцінювальних сценаріїв.</value>

@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>Απορρίψτε</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>Αποδοχή</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>Εφαρμογή όλων</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>Νέα Απάντηση Τεχνητής Νοημοσύνης</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Προεπισκόπηση εργασίας ΤΝ</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>Απορρίψτε</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>Αποδοχή</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Εφαρμογή όλων</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>Είστε σίγουροι ότι θέλετε να υιοθετήσετε όλες τις προτάσεις της Τεχνητής Νοημοσύνης;</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>Τρέχουσα Κατηγορία</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>Τρέχουσα περίοδος</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>Τρέχουσες ετικέτες</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>Τρέχουσα περίοδος</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Επεξεργασία</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>Αποθήκευση &amp; Αποδοχή</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>Επιλέξτε μια περίοδο</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Επιλογή Κατηγορίας</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Επιλέξτε μια περίοδο</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>Προτεινόμενη Κατηγορία</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>Προτεινόμενη περίοδος</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Προτεινόμενα Ετικέτες</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>Προτεινόμενη περίοδος</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>Οι εργασίες επεξεργάζονται ακόμα. Θέλετε να υιοθετήσετε τις ολοκληρωμένες και να εγκαταλείψετε τις υπόλοιπες;</value>

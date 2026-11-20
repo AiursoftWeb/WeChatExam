@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>{0} αντίστοιχες ερωτήσεις δεν έχουν προστεθεί ακόμη</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} ερωτήσεις · {1} βαθμοί</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>Επιλέχθηκαν {0} σε αυτή τη σελίδα</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Προσθήκη επιλεγμένων ερωτήσεων</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Να προστεθούν όλες οι {0} αντίστοιχες ερωτήσεις εξετάσεων;</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Προσθέστε ερωτήσεις σε αυτό το γραπτό</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Προσθήκη επιλεγμένων ερωτήσεων</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Όλες οι Περιοδές</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Προηγούμενο</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Σελίδες ερωτήσεων</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Τύπος ερώτησης</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Σελίδες ερωτήσεων</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Προτεινόμενη Απάντηση και Εξήγηση</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Αναζήτηση ερωτήσεων</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Επιλογή όλων σε αυτή τη σελίδα</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Επιλογή ερωτήσεων</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Επιλογή όλων σε αυτή τη σελίδα</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Επιλεγμένες ερωτήσεις</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Προβολή λεπτομερειών</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} αντίστοιχες ερωτήσεις δεν έχουν προστεθεί ακόμη</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} ερωτήσεις · {1} βαθμοί</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>Επιλέχθηκαν {0} σε αυτή τη σελίδα</value>
   </data>
 
 </root>

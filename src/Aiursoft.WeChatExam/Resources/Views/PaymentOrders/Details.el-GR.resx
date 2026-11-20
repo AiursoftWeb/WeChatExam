@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>Ποσό</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Ποσά</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Επιστροφή στη Λίστα</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Κωδικός κουπονιού</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>Δημιουργήθηκε Στις</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Η τρέχουσα πρόσβαση μπορεί να περιλαμβάνει μεταγενέστερες αγορές ή χειροκίνητες αλλαγές. Ένας επιβεβαιωμένος πληρωμή δεν σημαίνει ότι η συνδρομή είναι ακόμα ενεργή σήμερα.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Τρέχουσα συνδρομή</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Περιγραφή</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Τέλος</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>Λήξη</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>Δεν υπάρχουν ακόμη ημερολόγια</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Δεν υπάρχει εγγραφή συνδρομής για αυτό το προϊόν</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>Πληροφορίες Παραγγελίας</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>Λεπτομέρειες Εντολής Πληρωμής</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Κανάλι πληρωμής</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Προϊόν</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Χειρισμός επιστροφών</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Διαχείριση επιστροφών</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Έναρξη</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Κατάσταση</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Τεχνικά αρχεία καταγραφής πληρωμών</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Χρήστης</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>Προβολή εγγραφών ενοποίησης επιστροφών</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Προβολή ιστορικού πληρωμών χρήστη</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>Αναγνωριστικό Συναλλαγής WeChat</value>

@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>Status Aktif</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>item</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>Item per halaman</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>Tidak ditemukan keanggotaan VIP</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>dari</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>Sebelumnya</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>Atur Ulang</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>Cari berdasarkan Nama Pengguna atau Produk...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>Kata Kunci Pencarian</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>Cari berdasarkan Nama Pengguna atau Produk...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>Menampilkan</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>Waktu Mulai</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>untuk</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>Pengguna</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>Keanggotaan VIP</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>dari</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>untuk</value>
   </data>
 
 </root>

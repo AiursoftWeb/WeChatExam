@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Αναφέρθηκε μια επιστροφή χρημάτων, αλλά η συνδρομή αυτής της παραγγελίας χρειάζεται έλεγχο. Εξετάστε την υπάρχουσα επιστροφή χρημάτων αντί να ξεκινήσετε μια άλλη.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Ένα χρησιμοποιημένο κουπόνι μονοχρήσης δεν επαναφέρει.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Πραγματικά πληρωθέν</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Μετά από μια επιτυχημένη επιστροφή χρημάτων, η συνδρομή από αυτήν τη παραγγελία αναιρείται.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Οι πληρωμές Apple δεν μπορούν να επιστραφούν από τον έμπορο. Δώστε στον μαθητή τις οδηγίες παρακάτω.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Ιστοσελίδα επιστροφών Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Ζητήστε από έναν διαχειριστή να ελέγξει την αρχική μέθοδο πληρωμής στις Λεπτομέρειες παραγγελίας παρακάτω.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Ζητήστε από έναν διαχειριστή να ελέγξει το αρχικό αρχείο πληρωμής στις Λεπτομέρειες παραγγελίας παρακάτω.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Ζητήστε από έναν διαχειριστή με εξουσία επιστροφής χρημάτων να ελέγξει το αποτέλεσμα.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Ζητήστε από τον διαχειριστή σας να ενεργοποιήσει τις Εντολές Επιστροφής Πληρωμών για τον ρόλο σας και στη συνέχεια αποσυνδεθείτε και συνδεθείτε ξανά.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Ελέγξτε πώς μπορεί να εκδοθεί επιστροφή για αυτήν την παραγγελία</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Έλεγχος μεθόδου επιστροφής</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Έλεγχος αποτελέσματος επιστροφής</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Ελέγξτε την υπάρχουσα επιστροφή χρημάτων παρακάτω. Οι αλλαγές στη συνδρομή έχουν ισχύ αφού επιβεβαιωθεί μια επιτυχημένη επιστροφή.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Ελέγχεται…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Ολοκληρώθηκε στις</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Επιβεβαίωση πλήρους επιστροφής χρημάτων</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Αντιγράφηκε</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Αντιγραφή οδηγιών μαθητή</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Ενεργοποιήστε τις Εντολές Επιστροφής Πληρωμής για τον κατάλληλο ρόλο και στη συνέχεια αποσυνδεθείτε και συνδεθείτε ξανά.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Έχω ελέγξει τον μαθητή, το ποσό επιστροφής και τις αλλαγές στη συνδρομή.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Δεν απαιτείται επιστροφή χρημάτων για αυτή τη παραγγελία</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Άνοιγμα πλατφόρμας εμπορικών WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Ανοίξτε τα πλήρη στοιχεία παραγγελίας</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Άνοιγμα δικαιωμάτων ρόλων</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Αριθμός Παραγγελίας</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Λεπτομέρειες παραγγελίας</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Ώρα πληρωμής</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Οι πληροφορίες πληρωμής είναι ατελείς, οπότε αυτή η επιστροφή δεν μπορεί να ξεκινήσει εδώ</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Τρόπος πληρωμής</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε και αντιγράψτε τις οδηγίες χειροκίνητα.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Χειρισμός επιστροφών</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Διαχείριση επιστροφών</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Αριθμός επιστροφής</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Εκδώστε επιστροφή χρημάτων για αυτή τη παραγγελία στην πλατφόρμα εμπορικών του WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Ποσό επιστροφής</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Αιτήθηκε στις</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Επιθεώρηση διαχείρισης συνδρομής</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Στείλτε αυτές τις οδηγίες στον μαθητή</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Μαθητής</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Υποβολή…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Το πραγματικό πληρωμένο ποσό θα επιστραφεί στον αρχικό τρόπο πληρωμής του μαθητή.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Η μέθοδος πληρωμής έχει επιβεβαιωθεί από το WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Η πληρωμή πραγματοποιήθηκε πριν από περισσότερες από 365 ημέρες. Αυτή η σελίδα δεν μπορεί πλέον να υποβάλει την επιστροφή χρημάτων της.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Η πλατφόρμα επιβεβαίωσε αυτή την επιστροφή χρημάτων. Ελέγξτε τη διαχείριση της συνδρομής παρακάτω.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Η επιστροφή χρημάτων έχει καταχωρηθεί, αλλά η διαχείριση της συνδρομής χρειάζεται επαλήθευση.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Η επιστροφή χρημάτων έχει καταχωρηθεί. Ανοίξτε τις λεπτομέρειες παραγγελίας παρακάτω για να ελέγξετε το ποσό.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Το αίτημα επιστροφής κατατέθηκε. Η επιβεβαίωση μπορεί να πάρει χρόνο; μην δημιουργήσετε άλλη επιστροφή.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Το αποτέλεσμα της επιστροφής δεν έχει επιβεβαιωθεί ακόμη</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Δεν μπόρεσε να επιβεβαιωθεί το αποτέλεσμα. Ελέγξτε την αποθηκευμένη αίτηση επιστροφής; μην υποβάλετε άλλη μία.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Ο μαθητής πρέπει να ζητήσει αυτή την επιστροφή από την Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Ο μαθητής δεν πληρωμή τίποτα για αυτή τη παραγγελία, οπότε δεν υπάρχουν χρήματα να επιστραφούν.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Δεν υπάρχει επιβεβαιωμένη πληρωμή για επιστροφή. Αν ο μαθητής χρεώθηκε, ελέγξτε πρώτα το αρχικό αρχείο πληρωμής.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Αυτή η έλεγχος αναγνωρίζει μόνο τη μέθοδο πληρωμής· δεν εκτελεί επιστροφή χρημάτων για την παραγγελία.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Αυτή η παραγγελία έχει ήδη αίτημα επιστροφής. Ελέγξτε το αποτέλεσμα αντί να υποβάλετε εκ νέου.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Αυτή η παραγγελία δεν μπορεί να επιστραφεί επειδή δεν έχει επιβεβαιωθεί πληρωμή</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Αυτή η παραγγελία έχει ήδη επιστραφεί</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Αυτή η παραγγελία δεν δικαιούται πλήρη επιστροφή χρημάτων εδώ. Επαληθεύστε τη μέθοδο πληρωμής και την τρέχουσα κατάσταση της.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Αυτή η παραγγελία χρησιμοποιούσε την προηγούμενη υπηρεσία WeChat Pay. Βρείτε την παραγγελία στον αρχικό λογαριασμό εμπόρου και εκδώστε την επιστροφή εκεί.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Αυτή η παραγγελία πληρώθηκε μέσω της Apple. Παρακαλούμε συνδεθείτε στο https://reportaproblem.apple.com/ με τον Λογαριασμό Apple που χρησιμοποιήθηκε για την αγορά και ζητήστε επιστροφή χρημάτων για αυτήν την παραγγελία. Η Apple εξετάζει και αποφασίζει για την αίτηση.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Αυτή η παραγγελία πληρώθηκε μέσω της Apple. Ο εκπαιδευτής δεν μπορεί να εκδώσει επιστροφή χρημάτων εδώ· η Apple αξιολογεί την αίτηση του μαθητή.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Η συνδρομή για αυτήν την παραγγελία έχει χειριστεί. Οι υπόλοιπες αγορές δεν έχουν αλλάξει και το μονοχρήσιμο κουπόνι δεν επαναφέρει.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Αυτή η πληρωμή βρίσκεται εκτός της περιόδου επιστροφής που υποστηρίζεται εδώ</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Αυτή η μέθοδος πληρωμής δεν υποστηρίζεται για επιστροφές εδώ</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Αυτή η επιστροφή χρημάτων χρειάζεται έλεγχο από διαχειριστή</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Πρέπει πρώτα να ελέγξουμε αυτή την πληρωμή μέσω WeChat. Το αποτέλεσμα θα εμφανίσει ένα κουμπί επιστροφής ή τις οδηγίες για πληρωμές Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Μπορείτε να ζητήσετε επιστροφή χρημάτων για αυτήν την παραγγελία</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Ο λογαριασμός σας δεν έχει άδεια έκδοσης επιστροφών</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Η επιστροφή χρημάτων σας επεξεργάζεται</value>
+  </data>
+
+</root>

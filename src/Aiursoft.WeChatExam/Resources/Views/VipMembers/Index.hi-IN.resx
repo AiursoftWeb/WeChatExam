@@ -54,9 +54,6 @@
   <data name="Is Active" xml:space="preserve">
     <value>सक्रिय है</value>
   </data>
-  <data name="items" xml:space="preserve">
-    <value>वस्तुएं</value>
-  </data>
   <data name="Items per page" xml:space="preserve">
     <value>पृष्ठ प्रति आइटम</value>
   </data>
@@ -72,9 +69,6 @@
   <data name="No VIP memberships found" xml:space="preserve">
     <value>कोई VIP सदस्यता नहीं मिली</value>
   </data>
-  <data name="of" xml:space="preserve">
-    <value>का</value>
-  </data>
   <data name="Previous" xml:space="preserve">
     <value>पिछला</value>
   </data>
@@ -84,11 +78,11 @@
   <data name="Reset" xml:space="preserve">
     <value>रीसेट</value>
   </data>
-  <data name="Search by User or Product Name..." xml:space="preserve">
-    <value>उपयोगकर्ता या उत्पाद के नाम से खोजें...</value>
-  </data>
   <data name="Search Keyword" xml:space="preserve">
     <value>खोज कीवर्ड</value>
+  </data>
+  <data name="Search by User or Product Name..." xml:space="preserve">
+    <value>उपयोगकर्ता या उत्पाद के नाम से खोजें...</value>
   </data>
   <data name="Showing" xml:space="preserve">
     <value>दिखा रहे हैं</value>
@@ -96,14 +90,20 @@
   <data name="Start Time" xml:space="preserve">
     <value>प्रारंभ समय</value>
   </data>
-  <data name="to" xml:space="preserve">
-    <value>को</value>
-  </data>
   <data name="User" xml:space="preserve">
     <value>उपयोगकर्ता</value>
   </data>
   <data name="VIP Memberships" xml:space="preserve">
     <value>वीआईपी सदस्यताएं</value>
+  </data>
+  <data name="items" xml:space="preserve">
+    <value>वस्तुएं</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>का</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>को</value>
   </data>
 
 </root>

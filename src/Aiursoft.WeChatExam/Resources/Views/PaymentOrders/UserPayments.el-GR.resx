@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Ποσό</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Ποσά</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Τα ποσά αποθηκεύονται με την παραγγελία. Μια μη επιβεβαιωμένη παραγγελία δεν αποτελεί ολοκληρωμένη αγορά.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Επιστροφή στη λίστα</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>Ιστορικό Πληρωμών</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Κανάλι πληρωμής</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Προϊόν</value>

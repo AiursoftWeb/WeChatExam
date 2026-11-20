@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>राशि</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>राशि</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>राशि ऑर्डर के साथ सहेजी जाती है। एक अनकन्फर्म्ड ऑर्डर एक पूर्ण खरीदारी नहीं है।</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>सूची पर वापस जाएं</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>भुगतान का इतिहास</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>भुगतान चैनल</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>उत्पाद</value>

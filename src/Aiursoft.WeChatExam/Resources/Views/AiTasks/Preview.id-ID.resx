@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>Tinggalkan</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>Terima</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>Terima Semua</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>Jawaban Baru AI</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Pratinjau Tugas AI</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>Tinggalkan</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>Terima</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Terima Semua</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>Apakah Anda yakin ingin mengadopsi semua saran AI?</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>Kategori Saat Ini</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>Periode Saat Ini</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>Tag Saat Ini</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>Periode Saat Ini</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>Simpan &amp; Terapkan</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>Pilih periode</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Pilih Kategori</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Pilih periode</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>Kategori yang Disarankan</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>Periode yang disarankan</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Tag yang Disarankan</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>Periode yang disarankan</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>Tugas masih diproses. Apakah Anda ingin mengadopsi yang telah selesai dan mengabaikan sisanya?</value>

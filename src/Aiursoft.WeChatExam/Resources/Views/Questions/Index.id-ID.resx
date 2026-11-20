@@ -18,13 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Actions" xml:space="preserve">
-    <value>Aksi</value>
-  </data>
-  <data name="Add Question" xml:space="preserve">
-    <value>Tambah Pertanyaan</value>
-  </data>
-  <data name="AI Auto Categorize" xml:space="preserve">
+      <data name="AI Auto Categorize" xml:space="preserve">
     <value>AI Otomatis Kategorikan</value>
   </data>
   <data name="AI Auto Tagging" xml:space="preserve">
@@ -44,6 +38,12 @@
   </data>
   <data name="AI Tools" xml:space="preserve">
     <value>AI Tools</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Aksi</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>Tambah Pertanyaan</value>
   </data>
   <data name="All Categories" xml:space="preserve">
     <value>Semua Kategori</value>
@@ -183,9 +183,6 @@
   <data name="Questions" xml:space="preserve">
     <value>Pertanyaan</value>
   </data>
-  <data name="questions?" xml:space="preserve">
-    <value>pertanyaan?</value>
-  </data>
   <data name="Reset" xml:space="preserve">
     <value>Atur Ulang</value>
   </data>
@@ -209,9 +206,6 @@
   </data>
   <data name="Select the candidate categories for AI classification. The AI will choose exactly one category for each question." xml:space="preserve">
     <value>Pilih kategori kandidat untuk klasifikasi AI. AI akan memilih tepat satu kategori untuk setiap pertanyaan.</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>terpilih</value>
   </data>
   <data name="Start Classification" xml:space="preserve">
     <value>Mulai Klasifikasi</value>
@@ -242,6 +236,12 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Jenis</value>
+  </data>
+  <data name="questions?" xml:space="preserve">
+    <value>pertanyaan?</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>terpilih</value>
   </data>
 
 </root>

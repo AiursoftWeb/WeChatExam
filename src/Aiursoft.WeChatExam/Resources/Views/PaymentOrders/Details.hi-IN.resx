@@ -21,20 +21,38 @@
       <data name="Amount" xml:space="preserve">
     <value>राशि</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>राशि</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>सूची पर वापस जाएं</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>कूपन कोड</value>
   </data>
   <data name="Created At" xml:space="preserve">
     <value>सृष्टि की तारीख</value>
   </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>वर्तमान पहुंच में बाद की खरीदारी या मैनुअल परिवर्तन शामिल हो सकते हैं। एक पुष्टि की गई भुगतान का अर्थ यह नहीं है कि सदस्यता आज भी सक्रिय है।</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>वर्तमान सदस्यता</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>विवरण</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>अंत</value>
   </data>
   <data name="Expired At" xml:space="preserve">
     <value>समाप्त समय पर</value>
   </data>
   <data name="No logs yet" xml:space="preserve">
     <value>अभी तक कोई लॉग नहीं है</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>इस उत्पाद के लिए कोई सदस्यता रिकॉर्ड नहीं</value>
   </data>
   <data name="Order Information" xml:space="preserve">
     <value>ऑर्डर जानकारी</value>
@@ -51,17 +69,35 @@
   <data name="Payment Order Details" xml:space="preserve">
     <value>भुगतान आदेश विवरण</value>
   </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>भुगतान चैनल</value>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>उत्पाद</value>
   </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>रिफंड प्रोसेसिंग</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>रिफंड प्रबंधन</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>शुरुआत</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>तकनीकी भुगतान लॉग</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>उपयोगकर्ता</value>
   </data>
   <data name="View refund reconciliation records" xml:space="preserve">
     <value>रिफंड समन्वय रिकॉर्ड देखें</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>उपयोगकर्ता भुगतान इतिहास देखें</value>
   </data>
   <data name="WeChat Transaction ID" xml:space="preserve">
     <value>वीचैट लेनदेन आईडी</value>

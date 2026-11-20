@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="Abandon" xml:space="preserve">
-    <value>Забрати</value>
-  </data>
-  <data name="Adopt" xml:space="preserve">
-    <value>Прийняти</value>
-  </data>
-  <data name="Adopt All" xml:space="preserve">
-    <value>Прийняти всі</value>
-  </data>
-  <data name="AI New Answer" xml:space="preserve">
+      <data name="AI New Answer" xml:space="preserve">
     <value>AI нова відповідь</value>
   </data>
   <data name="AI New Explanation" xml:space="preserve">
@@ -35,6 +26,15 @@
   </data>
   <data name="AI Task Preview" xml:space="preserve">
     <value>Попередній перегляд завдання AI</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>Забрати</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>Прийняти</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Прийняти всі</value>
   </data>
   <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
     <value>Ви впевнені, що хочете прийняти всі пропозиції ШІ?</value>
@@ -66,11 +66,11 @@
   <data name="Current Category" xml:space="preserve">
     <value>Поточна категорія</value>
   </data>
-  <data name="Current period" xml:space="preserve">
-    <value>Поточний період</value>
-  </data>
   <data name="Current Tags" xml:space="preserve">
     <value>Поточні теги</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>Поточний період</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Редагувати</value>
@@ -102,20 +102,20 @@
   <data name="Save &amp; Adopt" xml:space="preserve">
     <value>Зберегти та прийняти</value>
   </data>
-  <data name="Select a period" xml:space="preserve">
-    <value>Виберіть період</value>
-  </data>
   <data name="Select Category" xml:space="preserve">
     <value>Вибрати категорію</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Виберіть період</value>
   </data>
   <data name="Suggested Category" xml:space="preserve">
     <value>Спробована категорія</value>
   </data>
-  <data name="Suggested period" xml:space="preserve">
-    <value>Рекомендований період</value>
-  </data>
   <data name="Suggested Tags" xml:space="preserve">
     <value>Підібрані теги</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>Рекомендований період</value>
   </data>
   <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
     <value>Завдання все ще обробляються. Чи хочете ви прийняти завершені та відмовитися від решти?</value>

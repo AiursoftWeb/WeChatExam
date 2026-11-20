@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>{0} item terdampak</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} soal latihan</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>{0} item untuk ditinjau</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>Semua kursus</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>Pemeriksaan selesai</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>Memeriksa {0} poin pengetahuan, {1} latihan, dan {2} makalah.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>Diperiksa pada</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Memeriksa {0} poin pengetahuan, {1} latihan, dan {2} makalah.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>Pilih kartu untuk melihat pengalaman siswa dan hal yang perlu ditinjau.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>Hasil Anda</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>{0} item terdampak</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} soal latihan</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} item untuk ditinjau</value>
   </data>
 
 </root>

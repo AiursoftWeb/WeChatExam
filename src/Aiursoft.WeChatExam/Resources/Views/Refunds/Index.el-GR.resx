@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Ενέργειες</value>
+  </data>
+  <data name="Amount needs verification" xml:space="preserve">
+    <value>Το ποσό απαιτεί επαλήθευση</value>
+  </data>
+  <data name="Awaiting refund confirmation" xml:space="preserve">
+    <value>Αναμονή επιβεβαίωσης επιστροφής</value>
+  </data>
+  <data name="Buyer and product" xml:space="preserve">
+    <value>Αγοραστής και προϊόν</value>
+  </data>
+  <data name="Find an order to refund" xml:space="preserve">
+    <value>Εύρεση παραγγελίας για επιστροφή χρημάτων</value>
+  </data>
+  <data name="Handled for this order" xml:space="preserve">
+    <value>Επεξεργάστηκε για αυτήν την παραγγελία</value>
+  </data>
+  <data name="Membership handling" xml:space="preserve">
+    <value>Διαχείριση συνδρομών</value>
+  </data>
+  <data name="Memberships needing review" xml:space="preserve">
+    <value>Συγκροτήματα που χρειάζονται επανεξέταση</value>
+  </data>
+  <data name="Needs review" xml:space="preserve">
+    <value>Απαιτείται έλεγχος</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="No refunds yet. Find a payment order to begin." xml:space="preserve">
+    <value>Δεν υπάρχουν επιστροφές ακόμη. Βρείτε ένα εντολή πληρωμής για να ξεκινήσετε.</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Τρόπος πληρωμής</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Προηγούμενη</value>
+  </data>
+  <data name="Recorded at" xml:space="preserve">
+    <value>Καταχωρήθηκε στις</value>
+  </data>
+  <data name="Refund" xml:space="preserve">
+    <value>Επιστροφή χρημάτων</value>
+  </data>
+  <data name="Refund details" xml:space="preserve">
+    <value>Λεπτομέρειες επιστροφής χρημάτων</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Διαχείριση επιστροφών</value>
+  </data>
+
+</root>

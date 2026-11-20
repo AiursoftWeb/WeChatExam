@@ -27,6 +27,12 @@
   <data name="Amount" xml:space="preserve">
     <value>Määrä</value>
   </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Summat</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Summat tallennetaan tilauksen yhteyteen. Vahvistamaton tilaus ei ole valmis osto.</value>
+  </data>
   <data name="Back to List" xml:space="preserve">
     <value>Takaisin listaan</value>
   </data>
@@ -47,6 +53,9 @@
   </data>
   <data name="Payment History" xml:space="preserve">
     <value>Maksuhistoria</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Maksukanava</value>
   </data>
   <data name="Product" xml:space="preserve">
     <value>Tuote</value>

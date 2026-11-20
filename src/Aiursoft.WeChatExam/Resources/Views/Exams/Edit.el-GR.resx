@@ -33,9 +33,6 @@
   <data name="Edit Exam" xml:space="preserve">
     <value>Επεξεργασία Εξέτασης</value>
   </data>
-  <data name="end time" xml:space="preserve">
-    <value>τέλος ώρας</value>
-  </data>
   <data name="Exam Settings" xml:space="preserve">
     <value>Ρυθμίσεις εξετάσεων</value>
   </data>
@@ -54,11 +51,14 @@
   <data name="Show Answers After" xml:space="preserve">
     <value>Εμφάνιση Απαντήσεων Μετά από</value>
   </data>
-  <data name="start time" xml:space="preserve">
-    <value>ώρα έναρξης</value>
-  </data>
   <data name="Title" xml:space="preserve">
     <value>Τίτλος</value>
+  </data>
+  <data name="end time" xml:space="preserve">
+    <value>τέλος ώρας</value>
+  </data>
+  <data name="start time" xml:space="preserve">
+    <value>ώρα έναρξης</value>
   </data>
 
 </root>

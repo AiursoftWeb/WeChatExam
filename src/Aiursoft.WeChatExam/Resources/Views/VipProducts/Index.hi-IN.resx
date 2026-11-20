@@ -27,8 +27,23 @@
   <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
     <value>सभी वास्तविक परीक्षाओं के लिए VIP (पुराना)</value>
   </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>समय · वर्तमान फ़िल्टर</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>एक नज़र में</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>औसत भुगतान कीमत</value>
+  </data>
   <data name="Back to Course Settings" xml:space="preserve">
     <value>पाठ्यक्रम सेटिंग पर वापस जाएँ</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>प्लेटफ़ॉर्म शुल्क और लागत से पहले</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>रसीदों के अनुसार</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>श्रेणी</value>
@@ -36,11 +51,17 @@
   <data name="Category VIP" xml:space="preserve">
     <value>श्रेणी VIP</value>
   </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>केवल पुष्टि की गई ऑर्डर</value>
+  </data>
   <data name="Create VIP Product" xml:space="preserve">
     <value>वीआईपी उत्पाद बनाएं</value>
   </data>
-  <data name="days" xml:space="preserve">
-    <value>दिन</value>
+  <data name="Current price" xml:space="preserve">
+    <value>वर्तमान मूल्य</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>इन उत्पादों के बीच विलोपित</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>हटाएं</value>
@@ -57,20 +78,80 @@
   <data name="Enabled" xml:space="preserve">
     <value>सक्रिय</value>
   </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>मुफ़्त दावे</value>
+  </data>
   <data name="Institution VIP" xml:space="preserve">
     <value>संस्थान वीआईपी</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>नाम</value>
   </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>अभी तक कोई पुष्टि प्राप्त भुगतान किया गया खरीदारी नहीं।</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>इन फ़िल्टरों से मेल खाने वाले कोई उत्पाद नहीं हैं।</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>भुगतान कीमतें और खरीदार के ऑर्डर देखने के लिए एक उत्पाद खोलें।</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>ऑर्डर प्राप्तियाँ</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>अन्य ऑर्डर</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>भुगतान की गई बिक्री</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>भुगतान करने वाले खरीदार</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>मूल्य</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>उत्पाद अवलोकन</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>उत्पाद प्रदर्शन</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>उत्पाद स्थिति</value>
   </data>
   <data name="Products" xml:space="preserve">
     <value>उत्पाद</value>
   </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>भुगतान वाली बिक्री वाले उत्पाद</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>बिना भुगतान वाले बिक्री वाले उत्पाद</value>
+  </data>
   <data name="Real Exam VIP" xml:space="preserve">
     <value>वास्तविक परीक्षा VIP</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>प्रति भुगतान किए गए ऑर्डर की आय</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>वापसी की गई ऑर्डर</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>रिफंड और मुफ्त दावों को छोड़ा गया है</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>रिफंडों की मेलखाती बाकी है। ये रसीदें रखे गए राशि का अतिरंजित अनुमान प्रस्तुत कर सकती हैं।</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>वापसी की समीक्षा आवश्यक है</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>रिफंड समीक्षा करें</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>बिक्री विवरण</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>खोजें</value>
@@ -81,8 +162,14 @@
   <data name="Search by name, category or institution" xml:space="preserve">
     <value>नाम, श्रेणी या संस्था के अनुसार खोजें</value>
   </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>देखें कि क्या बिकता है, कौन खरीदता है, और वे वास्तव में क्या भुगतान करते हैं।</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>स्थिति</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>शीर्ष 5 उत्पाद · छँटे गए रसीदों का हिस्सा</value>
   </data>
   <data name="Total Category" xml:space="preserve">
     <value>कुल श्रेणियाँ</value>
@@ -95,6 +182,18 @@
   </data>
   <data name="VIP Products" xml:space="preserve">
     <value>वीआईपी उत्पाद</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>राजस्व कहाँ से आता है</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>दिन</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>लोग</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>इकाइयाँ</value>
   </data>
 
 </root>

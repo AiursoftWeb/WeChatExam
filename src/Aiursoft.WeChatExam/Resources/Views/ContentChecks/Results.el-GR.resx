@@ -18,16 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} affected items" xml:space="preserve">
-    <value>{0} στοιχεία που επηρεάστηκαν</value>
-  </data>
-  <data name="{0} exercises" xml:space="preserve">
-    <value>{0} ασκήσεις</value>
-  </data>
-  <data name="{0} items to review" xml:space="preserve">
-    <value>{0} στοιχεία προς έλεγχο</value>
-  </data>
-  <data name="All courses" xml:space="preserve">
+      <data name="All courses" xml:space="preserve">
     <value>Όλα τα μαθήματα</value>
   </data>
   <data name="All results" xml:space="preserve">
@@ -42,11 +33,11 @@
   <data name="Check complete" xml:space="preserve">
     <value>Ο έλεγχος ολοκληρώθηκε</value>
   </data>
-  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
-    <value>Ελέγχθηκαν {0} σημεία γνώσης, {1} ασκήσεις και {2} γραπτά.</value>
-  </data>
   <data name="Checked at" xml:space="preserve">
     <value>Ελέγχθηκε στις</value>
+  </data>
+  <data name="Checked {0} knowledge points, {1} exercises and {2} papers." xml:space="preserve">
+    <value>Ελέγχθηκαν {0} σημεία γνώσης, {1} ασκήσεις και {2} γραπτά.</value>
   </data>
   <data name="Choose a card to see what students experience and what to review." xml:space="preserve">
     <value>Επιλέξτε μια κάρτα για να δείτε τι βιώνουν οι μαθητές και τι χρειάζεται επανεξέταση.</value>
@@ -131,6 +122,15 @@
   </data>
   <data name="Your results" xml:space="preserve">
     <value>Τα αποτελέσματά σας</value>
+  </data>
+  <data name="{0} affected items" xml:space="preserve">
+    <value>{0} στοιχεία που επηρεάστηκαν</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} ασκήσεις</value>
+  </data>
+  <data name="{0} items to review" xml:space="preserve">
+    <value>{0} στοιχεία προς έλεγχο</value>
   </data>
 
 </root>

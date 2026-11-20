@@ -81,20 +81,11 @@
   <data name="No tags match your search query." xml:space="preserve">
     <value>Ei tagkeita vastaa hakuehtojasi.</value>
   </data>
-  <data name="questions" xml:space="preserve">
-    <value>kysymykset</value>
-  </data>
   <data name="Search" xml:space="preserve">
     <value>Haku</value>
   </data>
   <data name="Search tags..." xml:space="preserve">
     <value>Hae tunnisteita...</value>
-  </data>
-  <data name="selected" xml:space="preserve">
-    <value>valittu</value>
-  </data>
-  <data name="selected tags? This action cannot be undone." xml:space="preserve">
-    <value>valitut tunnisteet? Tätä toimintoa ei voi perua.</value>
   </data>
   <data name="Tag Name" xml:space="preserve">
     <value>Tag Name</value>
@@ -116,6 +107,15 @@
   </data>
   <data name="VIP Required" xml:space="preserve">
     <value>VIP-tarvitaan</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>kysymykset</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>valittu</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>valitut tunnisteet? Tätä toimintoa ei voi perua.</value>
   </data>
 
 </root>

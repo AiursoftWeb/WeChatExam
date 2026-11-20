@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actual paid prices" xml:space="preserve">
+    <value>Πραγματικές τιμές πληρωμής</value>
+  </data>
+  <data name="All time · this product" xml:space="preserve">
+    <value>Όλες οι περιόδους · αυτό το προϊόν</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Μέση πληρωμένη τιμή</value>
+  </data>
+  <data name="Back to products" xml:space="preserve">
+    <value>Επιστροφή στα προϊόντα</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Πριν από τα τέλη και τα κόστη πλατφόρμας</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Αγοραστής</value>
+  </data>
+  <data name="Buyer orders" xml:space="preserve">
+    <value>Συλλογές αγοραστών</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Απενεργοποιημένο</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Έκπτωση</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Ενεργό</value>
+  </data>
+  <data name="Follow each sale from paid price to buyer and order." xml:space="preserve">
+    <value>Παρακολουθήστε κάθε πώληση από την πληρωμένη τιμή έως τον αγοραστή και τη παραγγελία.</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Δωρεάν αιτήματα</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Επόμενο</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Δεν υπάρχουν ακόμη επιβεβαιωμένες πληρωμένες αγορές.</value>
+  </data>
+  <data name="No orders in this group." xml:space="preserve">
+    <value>Δεν υπάρχουν παραγγελίες σε αυτό το όμαδο.</value>
+  </data>
+  <data name="Order amount" xml:space="preserve">
+    <value>Ποσό παραγγελίας</value>
+  </data>
+  <data name="Order group" xml:space="preserve">
+    <value>Ομάδα παραγγελιών</value>
+  </data>
+  <data name="Order mix" xml:space="preserve">
+    <value>Σύνθεση παραγγελιών</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Αριθμός παραγγελίας</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Παραγγελίες εισπράξεων</value>
+  </data>
+  <data name="Original price" xml:space="preserve">
+    <value>Αρχική τιμή</value>
+  </data>
+  <data name="Page navigation" xml:space="preserve">
+    <value>Πλοήγηση σελίδας</value>
+  </data>
+  <data name="Paid at" xml:space="preserve">
+    <value>Πληρώθηκε στις</value>
+  </data>
+  <data name="Paid price" xml:space="preserve">
+    <value>Πληρωμένο τίμο</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Πληρωμένες πωλήσεις</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Αγοραστές που πληρώνουν</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Κανάλια πληρωμής</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Προηγούμενη</value>
+  </data>
+  <data name="Prices come from saved order amounts. A buyer who paid different prices appears in each price group; the total buyer count is deduplicated." xml:space="preserve">
+    <value>Οι τιμές προέρχονται από τα αποθηκευμένα ποσά παραγγελιών. Ένας αγοραστής που πλήρωσε διαφορετικές τιμές εμφανίζεται σε κάθε ομάδα τιμών· το συνολικό πλήθος αγοραστών είναι αποσυμπεπλεγμένο.</value>
+  </data>
+  <data name="Product sales" xml:space="preserve">
+    <value>Πωλήσεις προϊόντων</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Έσοδα ανά πληρωμένο παραγγελία</value>
+  </data>
+  <data name="Refunded order amount" xml:space="preserve">
+    <value>Ποσό επιστροφής παραγγελίας</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Παραγγελίες με επιστροφή χρημάτων</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Εκτός επιστροφές και δωρεάν απαιτήσεις</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Οι επιστροφές εκκρεμούν για ταυτοποίηση. Τα παραστατικά αυτά ενδέχεται να υπερεκτιμούν το ποσό που διατηρείται.</value>
+  </data>
+  <data name="Repeat purchases count once" xml:space="preserve">
+    <value>Οι επαναλαμβανόμενες αγορές μετρώνται μία φορά</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Εξέταση επιστροφών</value>
+  </data>
+  <data name="Saved amounts at purchase · open an order for its full history" xml:space="preserve">
+    <value>Ποσά αποθηκευμένα κατά την αγορά · ανοίξτε μια παραγγελία για το πλήρες ιστορικό της</value>
+  </data>
+  <data name="Select a group to inspect its orders." xml:space="preserve">
+    <value>Επιλέξτε μια ομάδα για να εξετάσετε τις παραγγελίες της.</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Μερίδιο</value>
+  </data>
+  <data name="What buyers paid · share of paid orders" xml:space="preserve">
+    <value>Τι πλήρωσαν οι αγοραστές · ποσοστό πληρωμένων παραγγελιών</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>άνθρωποι</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>μονάδες</value>
+  </data>
+
+</root>

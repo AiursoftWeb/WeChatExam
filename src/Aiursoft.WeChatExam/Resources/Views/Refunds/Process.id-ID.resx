@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Pengembalian dana telah dilaporkan, tetapi keanggotaan pesanan ini perlu diperiksa. Tinjau pengembalian dana yang sudah ada daripada memulai yang baru.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Kupon sekali pakai yang sudah digunakan tidak akan dikembalikan.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Jumlah yang dibayarkan</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Setelah pengembalian dana berhasil, keanggotaan dari pesanan ini dibatalkan.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Pembayaran Apple tidak dapat dikembalikan oleh pedagang. Berikan kepada siswa instruksi di bawah ini.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Situs web pengembalian dana Apple</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Minta administrator untuk memeriksa metode pembayaran asli di Detail Pesanan di bawah.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Minta administrator untuk memeriksa catatan pembayaran asli di Detail Pesanan di bawah.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Minta administrator dengan izin pengembalian dana untuk memeriksa hasilnya.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Minta administrator Anda untuk mengaktifkan Pesanan Pembayaran Pengembalian untuk peran Anda, lalu keluar dan masuk kembali.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Periksa cara pesanan ini dapat dikembalikan</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Periksa metode pengembalian dana</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Periksa hasil pengembalian dana</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Periksa pengembalian dana yang sudah ada di bawah ini. Perubahan keanggotaan berlaku setelah pengembalian dana berhasil dikonfirmasi.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Memeriksa…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Selesai pada</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Konfirmasi pengembalian dana penuh</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Disalin</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Salin instruksi siswa</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Aktifkan Refund Payment Orders untuk peran yang sesuai, lalu keluar dan masuk kembali.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Saya telah memeriksa siswa, jumlah pengembalian dana, dan perubahan keanggotaan.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Tidak diperlukan pengembalian dana untuk pesanan ini</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Buka platform merchant WeChat Pay</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Buka detail pesanan lengkap</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Buka izin peran</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>No. Pesanan</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Detail pesanan</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Dibayar Pada</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Informasi pembayaran tidak lengkap, sehingga pengembalian dana ini tidak dapat dimulai di sini</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Metode pembayaran</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Silakan pilih dan salin instruksinya secara manual.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Penanganan pengembalian dana</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Manajemen Pengembalian Dana</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Nomor pengembalian dana</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Kembalikan pesanan ini di platform pedagang WeChat Pay</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Jumlah yang dikembalikan</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Diminta pada</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Tinjau penanganan keanggotaan</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Kirim instruksi ini kepada siswa</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Siswa</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Mengirim…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Jumlah yang sebenarnya dibayarkan akan dikembalikan ke metode pembayaran asli siswa.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Metode pembayaran telah diverifikasi dengan WeChat.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Pembayaran dilakukan lebih dari 365 hari yang lalu. Halaman ini tidak dapat lagi mengajukan pengembalian dananya.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Platform telah mengonfirmasi pengembalian dana ini. Periksa penanganan keanggotaan di bawah.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Pengembalian dana telah dicatat, tetapi penanganan keanggotaan perlu diverifikasi.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Pengembalian dana telah dicatat. Buka detail pesanan di bawah untuk memeriksa jumlahnya.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Permintaan pengembalian dana telah dikirim. Konfirmasi dapat memakan waktu; jangan buat pengembalian dana lainnya.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Hasil pengembalian dana belum dikonfirmasi</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Hasil tidak dapat dikonfirmasi. Periksa permintaan pengembalian dana yang disimpan; jangan ajukan yang lain.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Siswa harus mengajukan pengembalian dana ini ke Apple</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Siswa tidak membayar apa pun untuk pesanan ini, sehingga tidak ada uang yang perlu dikembalikan.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Tidak ada pembayaran yang dikonfirmasi untuk dikembalikan. Jika siswa telah dikenakan biaya, periksa catatan pembayaran asli terlebih dahulu.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Pemeriksaan ini hanya mengidentifikasi metode pembayaran; tidak memproses pengembalian dana pesanan.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Pesanan ini sudah memiliki permintaan pengembalian dana. Periksa hasilnya alih-alih mengirimkannya lagi.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Pesanan ini tidak dapat dikembalikan karena tidak ada pembayaran yang dikonfirmasi</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Pesanan ini sudah dipulangkan</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Pesanan ini tidak memenuhi syarat untuk pengembalian dana penuh di sini. Verifikasi metode pembayaran dan status saat ini.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Pesanan ini menggunakan layanan WeChat Pay sebelumnya. Cari pesanan di akun merchant aslinya dan lakukan pengembalian dana di sana.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Pesanan ini dibayar melalui Apple. Silakan masuk ke https://reportaproblem.apple.com/ dengan Akun Apple yang digunakan untuk pembelian dan ajukan pengembalian dana untuk pesanan ini. Apple akan meninjau dan memutuskan permintaan tersebut.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Pesanan ini dibayar melalui Apple. Guru tidak dapat memproses pengembalian dana di sini; Apple meninjau permintaan siswa.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Keanggotaan pesanan ini telah ditangani. Pembelian lainnya tidak berubah, dan kupon sekali pakai tidak dikembalikan.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Pembayaran ini berada di luar periode pengembalian dana yang didukung di sini</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Metode pembayaran ini tidak didukung untuk pengembalian dana di sini</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Pengembalian dana ini memerlukan peninjauan oleh administrator</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Kami perlu memeriksa pembayaran ini dengan WeChat terlebih dahulu. Hasilnya akan menampilkan tombol pengembalian dana atau instruksi untuk pembayaran Apple.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Anda dapat mengajukan pengembalian dana untuk pesanan ini</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Akun Anda tidak memiliki izin untuk menerbitkan pengembalian dana</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Pengembalian dana Anda sedang diproses</value>
+  </data>
+
+</root>

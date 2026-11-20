@@ -18,14 +18,8 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} matching questions not yet added" xml:space="preserve">
-    <value>Ще не додано відповідні запитання: {0}</value>
-  </data>
-  <data name="{0} questions · {1} points" xml:space="preserve">
-    <value>{0} запитань · {1} балів</value>
-  </data>
-  <data name="{0} selected on this page" xml:space="preserve">
-    <value>На цій сторінці вибрано: {0}</value>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Додати вибрані запитання</value>
   </data>
   <data name="Add all {0} matching exam questions?" xml:space="preserve">
     <value>Додати всі {0} відповідні екзаменаційні запитання?</value>
@@ -35,9 +29,6 @@
   </data>
   <data name="Add questions to this paper" xml:space="preserve">
     <value>Додайте запитання до цієї роботи</value>
-  </data>
-  <data name="Add Selected Questions" xml:space="preserve">
-    <value>Додати вибрані запитання</value>
   </data>
   <data name="All Periods" xml:space="preserve">
     <value>Усі періоди</value>
@@ -93,11 +84,11 @@
   <data name="Previous" xml:space="preserve">
     <value>Попередня</value>
   </data>
-  <data name="Question pages" xml:space="preserve">
-    <value>Сторінки запитань</value>
-  </data>
   <data name="Question Type" xml:space="preserve">
     <value>Тип запитання</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Сторінки запитань</value>
   </data>
   <data name="Reference Answer and Explanation" xml:space="preserve">
     <value>Еталонна відповідь та пояснення</value>
@@ -126,11 +117,11 @@
   <data name="Search questions" xml:space="preserve">
     <value>Шукати запитання</value>
   </data>
-  <data name="Select all on this page" xml:space="preserve">
-    <value>Вибрати все на цій сторінці</value>
-  </data>
   <data name="Select Questions" xml:space="preserve">
     <value>Вибрати запитання</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Вибрати все на цій сторінці</value>
   </data>
   <data name="Selected Questions" xml:space="preserve">
     <value>Обрані питання</value>
@@ -155,6 +146,15 @@
   </data>
   <data name="View Details" xml:space="preserve">
     <value>Переглянути деталі</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>Ще не додано відповідні запитання: {0}</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} запитань · {1} балів</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>На цій сторінці вибрано: {0}</value>
   </data>
 
 </root>

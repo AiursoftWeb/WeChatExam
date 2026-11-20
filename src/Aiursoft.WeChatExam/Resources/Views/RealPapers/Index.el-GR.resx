@@ -18,10 +18,7 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-      <data name="{0} minutes" xml:space="preserve">
-    <value>{0} λεπτά</value>
-  </data>
-  <data name="All institutions" xml:space="preserve">
+      <data name="All institutions" xml:space="preserve">
     <value>Όλα τα ιδρύματα</value>
   </data>
   <data name="Create Real Paper" xml:space="preserve">
@@ -60,11 +57,11 @@
   <data name="Page {0} of {1}" xml:space="preserve">
     <value>Σελίδα {0} από {1}</value>
   </data>
-  <data name="Paper pages" xml:space="preserve">
-    <value>Σελίδες γραπτού</value>
-  </data>
   <data name="Paper Settings" xml:space="preserve">
     <value>Ρυθμίσεις γραπτού</value>
+  </data>
+  <data name="Paper pages" xml:space="preserve">
+    <value>Σελίδες γραπτού</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Προηγούμενο</value>
@@ -104,6 +101,9 @@
   </data>
   <data name="Versions and Publication" xml:space="preserve">
     <value>Εκδόσεις και δημοσίευση</value>
+  </data>
+  <data name="{0} minutes" xml:space="preserve">
+    <value>{0} λεπτά</value>
   </data>
 
 </root>

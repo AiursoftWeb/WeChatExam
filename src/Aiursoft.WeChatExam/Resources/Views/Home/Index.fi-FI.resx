@@ -120,14 +120,14 @@
   <data name="Hierarchical Knowledge Points" xml:space="preserve">
     <value>Hierarkiset tiedepisteet</value>
   </data>
+  <data name="How It Works" xml:space="preserve">
+    <value>Näin se toimii</value>
+  </data>
   <data name="How do I deploy WeChatExam?" xml:space="preserve">
     <value>Kuinka asennan WeChatExam:n?</value>
   </data>
   <data name="How do paper snapshots ensure fairness?" xml:space="preserve">
     <value>Miten paperikuvakaappaukset varmistavat reiluuden?</value>
-  </data>
-  <data name="How It Works" xml:space="preserve">
-    <value>Näin se toimii</value>
   </data>
   <data name="Integrated WeChat Pay (TenpayV3) for monetizing exams. Charge for premium exam access, certifications, or course materials directly through WeChat." xml:space="preserve">
     <value>Integroi WeChat Payn (TenpayV3) kokeiden rahallistamiseen. Peritä maksuja premium-kokeiden pääsystä, sertifikaateista tai kurssimateriaaleista suoraan WeChatin kautta.</value>
@@ -204,11 +204,11 @@
   <data name="Use Cases" xml:space="preserve">
     <value>Käyttötapaukset</value>
   </data>
-  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
-    <value>Käytä Mark-to-Query Languagea (MTQL), tehokasta DSL:tä, suodattaaksesi kysymyksiä booleenkalla logiikalla kuten &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; tarkan kysymysten valinnan varmistamiseksi.</value>
-  </data>
   <data name="Use MTQL to select questions by tags and knowledge points. Define the exam structure, duration, and scoring rules." xml:space="preserve">
     <value>Käytä MTQL:ää valitaksesi kysymyksiä tunnisteiden ja osaamisalueiden perusteella. Määritä kokeen rakenne, kesto ja arviointisäännöt.</value>
+  </data>
+  <data name="Use Mark-to-Query Language (MTQL), a powerful DSL, to filter questions with boolean logic like &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; for precise question selection." xml:space="preserve">
+    <value>Käytä Mark-to-Query Languagea (MTQL), tehokasta DSL:tä, suodattaaksesi kysymyksiä booleenkalla logiikalla kuten &quot;(difficulty:hard || source:textbook) &amp;&amp; not year:2020&quot; tarkan kysymysten valinnan varmistamiseksi.</value>
   </data>
   <data name="View on GitHub" xml:space="preserve">
     <value>Katso GitHubissä</value>
@@ -216,14 +216,14 @@
   <data name="WeChat Integration" xml:space="preserve">
     <value>WeChat-integraatio</value>
   </data>
-  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
-    <value>WeChat-integraatio on valinnainen. Alusta toimii täysin itsenäisenä verkkosovelluksena. Tarvitset WeChat-tunnisteet vain, jos haluat ottaa käyttöön WeChat-kirjautumisen, Pienohjelman käytön tai WeChat-maksut.</value>
-  </data>
   <data name="WeChat Mini Programs" xml:space="preserve">
     <value>WeChatin pienet ohjelmat</value>
   </data>
   <data name="WeChat Payment" xml:space="preserve">
     <value>WeChat-maksu</value>
+  </data>
+  <data name="WeChat integration is optional. The platform works fully as a standalone web application. You only need WeChat credentials if you want to enable WeChat login, Mini Program access, or WeChat Pay." xml:space="preserve">
+    <value>WeChat-integraatio on valinnainen. Alusta toimii täysin itsenäisenä verkkosovelluksena. Tarvitset WeChat-tunnisteet vain, jos haluat ottaa käyttöön WeChat-kirjautumisen, Pienohjelman käytön tai WeChat-maksut.</value>
   </data>
   <data name="WeChatExam adapts to a wide range of educational and assessment scenarios." xml:space="preserve">
     <value>WeChatExam soveltuu laajaan valikoimaan koulutus- ja arviointitilanteita.</value>

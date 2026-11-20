@@ -30,17 +30,14 @@
   <data name="A modern, feature-rich, and highly extensible foundation for your next web application." xml:space="preserve">
     <value>Μια σύγχρονη, πλούσια σε λειτουργίες και εξαιρετικά επεκτάσιμη βάση για την επόμενη εφαρμογή σας στον ιστό.</value>
   </data>
-  <data name="across all completed exams" xml:space="preserve">
-    <value>σε όλα τα ολοκληρωμένα διαγωνίσματα</value>
+  <data name="AI-Powered Translations" xml:space="preserve">
+    <value>Μεταφράσεις με Τεχνητή Νοημοσύνη</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>Ενεργά</value>
   </data>
   <data name="Admin center for exam WeChat mini program" xml:space="preserve">
     <value>Κέντρο Διαχείρισης για το μίνι πρόγραμμα εξετάσεων WeChat</value>
-  </data>
-  <data name="AI-Powered Translations" xml:space="preserve">
-    <value>Μεταφράσεις με Τεχνητή Νοημοσύνη</value>
   </data>
   <data name="All dependencies are automatically registered and always available via constructor injection." xml:space="preserve">
     <value>Όλες οι εξαρτήσεις καταχωρούνται αυτόματα και είναι πάντα διαθέσιμες μέσω της εισαγωγής στον κατασκευαστή.</value>
@@ -87,9 +84,6 @@
   <data name="Content Overview" xml:space="preserve">
     <value>Επισκόπηση Περιεχομένου</value>
   </data>
-  <data name="correct answers" xml:space="preserve">
-    <value>σωστές απαντήσεις</value>
-  </data>
   <data name="Count" xml:space="preserve">
     <value>Αριθμός</value>
   </data>
@@ -117,9 +111,6 @@
   <data name="Essay" xml:space="preserve">
     <value>Επιστολή</value>
   </data>
-  <data name="exam attempts" xml:space="preserve">
-    <value>προσπάθειες εξετάσεων</value>
-  </data>
   <data name="Exam Records" xml:space="preserve">
     <value>Αποτελέσματα εξετάσεων</value>
   </data>
@@ -137,9 +128,6 @@
   </data>
   <data name="Hello World!" xml:space="preserve">
     <value>Γεια σου Κόσμε!</value>
-  </data>
-  <data name="in database" xml:space="preserve">
-    <value>στη βάση δεδομένων</value>
   </data>
   <data name="In Progress" xml:space="preserve">
     <value>Εν εξέλιξη</value>
@@ -296,6 +284,18 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Καλώς ορίσατε</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>σε όλα τα ολοκληρωμένα διαγωνίσματα</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>σωστές απαντήσεις</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>προσπάθειες εξετάσεων</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>στη βάση δεδομένων</value>
   </data>
 
 </root>
