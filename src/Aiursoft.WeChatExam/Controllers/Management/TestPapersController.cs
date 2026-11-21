@@ -78,7 +78,7 @@ public class TestPapersController(
             return RedirectToAction(nameof(Index), new { kind = model.Kind });
         }
 
-        return View(model);
+        return this.SimpleView(model);
     }
 
     [HttpPost]
@@ -135,7 +135,7 @@ public class TestPapersController(
             });
         }
 
-        return View("Result", new ResultViewModel
+        return this.SimpleView(new ResultViewModel
         {
             PaperId = paper.Id,
             Kind = model.Kind,
@@ -144,7 +144,7 @@ public class TestPapersController(
             TotalScore = orderedQuestions.Sum(q => q.Score),
             AnsweredCount = answeredCount,
             Questions = results
-        });
+        }, "Result");
     }
 
     private async Task<TakeViewModel?> BuildTakeViewModelAsync(Guid paperId, TestPaperKind kind)

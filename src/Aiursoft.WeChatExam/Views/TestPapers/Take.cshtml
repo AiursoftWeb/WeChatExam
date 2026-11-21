@@ -1,19 +1,19 @@
 @using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.TestPapersViewModels.TakeViewModel
 @{
-    Layout = null;
+    Model.PageTitle = Model.Title + " - " + Localizer["Paper Test"].Value;
 }
-<!doctype html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@Model.Title - @Localizer["Paper Test"]</title>
-    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" asp-append-version="true" />
-    <link rel="stylesheet" href="@Url.Content("~/node_modules/@aiursoft/uistack/dist/css/app.css")" />
-    <link rel="stylesheet" href="/styles/test-exam.css" />
-</head>
-<body class="test-exam-focus test-exam-ui">
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section styles {
+    <link rel="stylesheet" href="~/styles/test-exam.css" asp-append-version="true" />
+    <style>
+        /* Let the sticky exam header follow the viewport on mobile. */
+        .wrapper > .main { overflow: visible; }
+    </style>
+}
+
+<div class="test-exam-focus test-exam-ui">
     <header class="test-exam-focus-header sticky-top">
         <div class="test-exam-focus-header-inner">
             <div class="d-flex align-items-center gap-3 overflow-hidden">
@@ -38,7 +38,7 @@
         <div class="progress rounded-0" style="height: 4px"><div class="progress-bar" id="timeProgress" style="width: 100%"></div></div>
     </header>
 
-    <main class="test-exam-focus-shell">
+    <div class="test-exam-focus-shell">
         <div class="test-exam-mobile-summary d-lg-none mb-3">
             <button class="btn btn-light w-100 d-flex justify-content-between" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavigator">
                 <span><i class="align-middle me-2" data-lucide="layout-grid"></i>@Localizer["Answer sheet"]</span>
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </form>
-    </main>
+    </div>
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNavigator">
         <div class="offcanvas-header"><h2 class="h5 mb-0">@Localizer["Answer sheet"]</h2><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
@@ -158,7 +158,7 @@
             <div class="test-exam-number-grid">
                 @for (var i = 0; i < Model.Questions.Count; i++)
                 {
-                    <a href="#question-@Model.Questions[i].Id" class="test-exam-number" data-nav-question="@Model.Questions[i].Id" data-bs-dismiss="offcanvas">@(i + 1)</a>
+                    <a href="#question-@Model.Questions[i].Id" class="test-exam-number" data-nav-question="@Model.Questions[i].Id">@(i + 1)</a>
                 }
             </div>
         </div>
@@ -181,13 +181,15 @@
         </div>
     </div>
 
-    <script src="@Url.Content("~/node_modules/@aiursoft/uistack/dist/js/app.js")"></script>
     <div id="loc-data" hidden>
         <span data-key="saved">@Localizer["Saved in this browser"]</span>
         <span data-key="saving">@Localizer["Saving..."]</span>
         <span data-key="grading">@Localizer["Grading..."]</span>
         <span data-key="no-limit">@Localizer["No time limit"]</span>
     </div>
+</div>
+
+@* ReSharper disable once Razor.SectionNotResolved *@
+@section scripts {
     <script src="~/js/test-paper-take.js" asp-append-version="true"></script>
-</body>
-</html>
+}

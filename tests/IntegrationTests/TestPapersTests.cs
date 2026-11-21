@@ -56,6 +56,8 @@ public class TestPapersTests : TestBase
         Assert.Contains(questionContent, takeHtml);
         Assert.Contains("Real AI grading", takeHtml);
         Assert.Contains($"Answers[{questionId}]", takeHtml);
+        Assert.Contains("class=\"wrapper\"", takeHtml);
+        Assert.Contains("/favicon.svg", takeHtml);
 
         int examRecordsBefore;
         int practiceRecordsBefore;
@@ -77,6 +79,8 @@ public class TestPapersTests : TestBase
         Assert.Contains("Grading complete", resultHtml);
         Assert.Contains("10<small>/10</small>", resultHtml);
         Assert.Contains("Bach is the expected answer.", resultHtml);
+        Assert.Contains("class=\"wrapper\"", resultHtml);
+        Assert.Contains("/favicon.svg", resultHtml);
 
         using (var scope = Server.Services.CreateScope())
         {
@@ -126,7 +130,14 @@ public class TestPapersTests : TestBase
             return Task.FromResult(new GradingResult { IsCorrect = true, Score = 17, Comment = "Strong answer" });
         };
 
-        var controller = new TestPapersController(context, gradingService);
+        using var scope = Server!.Services.CreateScope();
+        var controller = new TestPapersController(context, gradingService)
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext { RequestServices = scope.ServiceProvider }
+            }
+        };
         var actionResult = await controller.Submit(new SubmitViewModel
         {
             PaperId = paperId, Kind = kind,
@@ -202,7 +213,14 @@ public class TestPapersTests : TestBase
         first.Content = "First corrected";
         await db.SaveChangesAsync();
         var grading = new StubGradingService { Grade = (_, _, _, max, _) => Task.FromResult(new GradingResult { Score = max }) };
-        var controller = new TestPapersController(db, grading);
+        using var scope = Server!.Services.CreateScope();
+        var controller = new TestPapersController(db, grading)
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext { RequestServices = scope.ServiceProvider }
+            }
+        };
         var take = (TakeViewModel)((ViewResult)await controller.Take(id, kind)).Model!;
         Assert.AreEqual(27, take.TotalScore);
         Assert.AreEqual("First corrected", take.Questions[0].Content);

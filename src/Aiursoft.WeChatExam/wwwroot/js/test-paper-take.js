@@ -66,6 +66,24 @@
         updateState();
     }));
 
+    const mobileNavigator = document.getElementById('mobileNavigator');
+    mobileNavigator.addEventListener('click', event => {
+        const link = event.target.closest('[data-nav-question]');
+        const drawer = window.bootstrap?.Offcanvas?.getInstance(mobileNavigator);
+        if (!link || !drawer) return;
+
+        event.preventDefault();
+        mobileNavigator.addEventListener('hidden.bs.offcanvas', () => {
+            // Jump after Bootstrap releases the viewport's scroll lock.
+            if (window.location.hash !== link.hash) {
+                window.location.hash = link.hash;
+            } else {
+                document.getElementById(link.hash.slice(1))?.scrollIntoView();
+            }
+        }, { once: true });
+        drawer.hide();
+    });
+
     const totalMs = Math.max(0, timeLimit) * 60 * 1000;
     let startedAt = Number(localStorage.getItem(timerKey));
     if (!startedAt || Number.isNaN(startedAt)) {
