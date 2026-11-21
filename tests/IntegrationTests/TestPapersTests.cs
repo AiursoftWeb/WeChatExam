@@ -4,7 +4,6 @@ using Aiursoft.WeChatExam.Entities;
 using Aiursoft.WeChatExam.InMemory;
 using Aiursoft.WeChatExam.Models.TestPapersViewModels;
 using Aiursoft.WeChatExam.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Aiursoft.WeChatExam.Tests.TestServices;
