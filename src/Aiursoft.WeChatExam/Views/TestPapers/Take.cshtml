@@ -9,6 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@Model.Title - @Localizer["Paper Test"]</title>
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" asp-append-version="true" />
     <link rel="stylesheet" href="@Url.Content("~/node_modules/@aiursoft/uistack/dist/css/app.css")" />
     <link rel="stylesheet" href="/styles/test-exam.css" />
 </head>
@@ -70,7 +71,7 @@
                                     <span><i class="is-answered"></i>@Localizer["Answered"]</span>
                                     <span><i class="is-flagged"></i>@Localizer["Flagged"]</span>
                                 </div>
-                                <div class="test-exam-save-state" id="saveState"><i data-lucide="cloud-check"></i>@Localizer["Saved in this browser"]</div>
+                                <div class="test-exam-save-state"><i data-lucide="save"></i><span id="saveState">@Localizer["Saved in this browser"]</span></div>
                             </div>
                         </div>
                     </div>
