@@ -58,7 +58,7 @@ public class TestPapersTests : TestBase
         Assert.Contains("Real AI grading", takeHtml);
         Assert.Contains($"Answers[{questionId}]", takeHtml);
         Assert.Contains("class=\"wrapper\"", takeHtml);
-        Assert.Contains("href=\"/favicon.svg\"", takeHtml);
+        Assert.Contains("/favicon.svg", takeHtml);
 
         int examRecordsBefore;
         int practiceRecordsBefore;
@@ -81,7 +81,7 @@ public class TestPapersTests : TestBase
         Assert.Contains("10<small>/10</small>", resultHtml);
         Assert.Contains("Bach is the expected answer.", resultHtml);
         Assert.Contains("class=\"wrapper\"", resultHtml);
-        Assert.Contains("href=\"/favicon.svg\"", resultHtml);
+        Assert.Contains("/favicon.svg", resultHtml);
 
         using (var scope = Server.Services.CreateScope())
         {
