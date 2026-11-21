@@ -1,22 +1,17 @@
 @using Aiursoft.WeChatExam.Entities
 @model Aiursoft.WeChatExam.Models.TestPapersViewModels.ResultViewModel
 @{
-    Layout = null;
+    Model.PageTitle = Model.Title + " - " + Localizer["Paper Test Result"].Value;
     var percentage = Model.TotalScore > 0 ? (int)Math.Round(Model.Score * 100d / Model.TotalScore) : 0;
     var scoreClass = percentage >= 60 ? "success" : "warning";
 }
-<!doctype html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@Model.Title - @Localizer["Paper Test Result"]</title>
-    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" asp-append-version="true" />
-    <link rel="stylesheet" href="@Url.Content("~/node_modules/@aiursoft/uistack/dist/css/app.css")" />
-    <link rel="stylesheet" href="/styles/test-exam.css" />
-</head>
-<body class="test-exam-result-page test-exam-ui">
-    <main class="test-exam-result-shell" id="testPaperResult" data-paper-id="@Model.PaperId" data-paper-kind="@Model.Kind">
+
+@section styles {
+    <link rel="stylesheet" href="~/styles/test-exam.css" asp-append-version="true" />
+}
+
+<div class="test-exam-result-page test-exam-ui">
+    <div class="test-exam-result-shell" id="testPaperResult" data-paper-id="@Model.PaperId" data-paper-kind="@Model.Kind">
         <div class="test-result-hero">
             <div class="test-result-hero-copy">
                 <div class="test-exam-kicker"><i data-lucide="badge-check"></i>@Localizer["Grading complete"]</div>
@@ -82,13 +77,14 @@
                 </article>
             }
         </div>
-    </main>
+    </div>
 
-    <script src="@Url.Content("~/node_modules/@aiursoft/uistack/dist/js/app.js")"></script>
     <div id="loc-data" hidden>
         <span data-key="collapse">@Localizer["Collapse all"]</span>
         <span data-key="expand">@Localizer["Expand all"]</span>
     </div>
+</div>
+
+@section scripts {
     <script src="~/js/test-paper-result.js" asp-append-version="true"></script>
-</body>
-</html>
+}
