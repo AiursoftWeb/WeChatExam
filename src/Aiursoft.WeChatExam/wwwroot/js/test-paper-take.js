@@ -69,7 +69,7 @@
     const mobileNavigator = document.getElementById('mobileNavigator');
     mobileNavigator.addEventListener('click', event => {
         const link = event.target.closest('[data-nav-question]');
-        const drawer = window.bootstrap?.Offcanvas.getInstance(mobileNavigator);
+        const drawer = window.bootstrap?.Offcanvas?.getInstance(mobileNavigator);
         if (!link || !drawer) return;
 
         event.preventDefault();
