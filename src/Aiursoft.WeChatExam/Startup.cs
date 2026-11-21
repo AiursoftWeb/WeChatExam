@@ -214,7 +214,6 @@ public class Startup : IWebStartup
         // The mini-program API retains its existing JSON/empty status responses.
         app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"),
             branch => branch.UseStatusCodePagesWithReExecute("/Error/Code{0}"));
-        app.UseUIStack();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthentication();

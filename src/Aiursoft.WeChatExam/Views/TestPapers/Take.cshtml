@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@Model.Title - @Localizer["Paper Test"]</title>
-    <link rel="stylesheet" href="/UIStack/dist/css/app.css" />
+    <link rel="stylesheet" href="@Url.Content("~/node_modules/@aiursoft/uistack/dist/css/app.css")" />
     <link rel="stylesheet" href="/styles/test-exam.css" />
 </head>
 <body class="test-exam-focus test-exam-ui">
@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    <script src="/UIStack/dist/js/app.js"></script>
+    <script src="@Url.Content("~/node_modules/@aiursoft/uistack/dist/js/app.js")"></script>
     <div id="loc-data" hidden>
         <span data-key="saved">@Localizer["Saved in this browser"]</span>
         <span data-key="saving">@Localizer["Saving..."]</span>
