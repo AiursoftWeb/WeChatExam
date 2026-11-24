@@ -1,4 +1,5 @@
-﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Aiursoft.WeChatExam.MySql.Migrations
 {
     /// <inheritdoc />
+    [ExcludeFromCodeCoverage]
     public partial class AddTaxonomy : Migration
     {
         /// <inheritdoc />
