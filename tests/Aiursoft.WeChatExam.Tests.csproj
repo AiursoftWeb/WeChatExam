@@ -32,4 +32,8 @@
     <EmbeddedResource Remove="Aiursoft.WeChatExam.MTQL.Tests\**" />
     <None Remove="Aiursoft.WeChatExam.MTQL.Tests\**" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="../src/Aiursoft.WeChatExam/wwwroot/scripts/uploader.js" TargetPath="wwwroot/scripts/uploader.js" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../src/Aiursoft.WeChatExam/wwwroot/styles/uploader.css" TargetPath="wwwroot/styles/uploader.css" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>
