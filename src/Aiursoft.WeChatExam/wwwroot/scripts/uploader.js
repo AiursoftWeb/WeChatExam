@@ -86,7 +86,7 @@ class Uploader {
             },
             success: (data)=> {
                 window.onbeforeunload = that.onbeforeunloadBackup;
-                that.addressInput.val(data.Path);
+                that.addressInput.val(data.path ?? data.Path);
                 that.progressbar.addClass('bg-success');
                 that.progressbar.removeClass('progress-bar-animated');
                 that.progressbar.css('width', '100%');
