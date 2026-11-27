@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Sve</value>
+  </data>
+  <data name="Amounts" xml:space="preserve">
+    <value>Iznosi</value>
+  </data>
+  <data name="Amounts are saved with the order. An unconfirmed order is not a completed purchase." xml:space="preserve">
+    <value>Iznosi se spremaju s narudžbom. Nepotvrđena narudžba nije završena kupnja.</value>
+  </data>
+  <data name="Awaiting payment confirmation" xml:space="preserve">
+    <value>Čeka potvrdu plaćanja</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Zatvoreno</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Izrađeno</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="Filter by User ID" xml:space="preserve">
+    <value>Filtriraj po ID korisnika</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Dalje</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Broj narudžbe</value>
+  </data>
+  <data name="Order number" xml:space="preserve">
+    <value>Broj narudžbe</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Narudžbe</value>
+  </data>
+  <data name="Payment Orders" xml:space="preserve">
+    <value>Nalozi za plaćanje</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Kanal plaćanja</value>
+  </data>
+  <data name="Payment confirmed" xml:space="preserve">
+    <value>Plaćanje potvrđeno</value>
+  </data>
+  <data name="Payment needs verification" xml:space="preserve">
+    <value>Plaćanje zahtijeva provjeru</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Prethodna</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Proizvod</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Obrada povrata</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Upravljanje povratima</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Zapisi usklađivanja povrata</value>
+  </data>
+  <data name="Refunded" xml:space="preserve">
+    <value>Vraćeno</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Korisnik</value>
+  </data>
+  <data name="User ID" xml:space="preserve">
+    <value>Korisnički ID</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Postavka virtualnog plaćanja</value>
+  </data>
+
+</root>

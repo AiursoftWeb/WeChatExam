@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Available to buy" xml:space="preserve">
+    <value>Dostupno za kupnju</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Tečaj</value>
+  </data>
+  <data name="Edit VIP product" xml:space="preserve">
+    <value>Uredi VIP proizvod</value>
+  </data>
+  <data name="Edit course" xml:space="preserve">
+    <value>Uredi tečaj</value>
+  </data>
+  <data name="Edit exercise" xml:space="preserve">
+    <value>Uredi vježbu</value>
+  </data>
+  <data name="Edit institution" xml:space="preserve">
+    <value>Uredi ustanovu</value>
+  </data>
+  <data name="Edit knowledge category" xml:space="preserve">
+    <value>Uredi kategoriju znanja</value>
+  </data>
+  <data name="Edit knowledge point" xml:space="preserve">
+    <value>Uredi točku znanja</value>
+  </data>
+  <data name="Edit paper" xml:space="preserve">
+    <value>Uredi ispit</value>
+  </data>
+  <data name="Edit period" xml:space="preserve">
+    <value>Uredi razdoblje</value>
+  </data>
+  <data name="Edit tag" xml:space="preserve">
+    <value>Uredi oznaku</value>
+  </data>
+  <data name="Edit taxonomy" xml:space="preserve">
+    <value>Uredi taksonomiju</value>
+  </data>
+  <data name="Exercise" xml:space="preserve">
+    <value>Vježba</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Ustanova</value>
+  </data>
+  <data name="Knowledge Category" xml:space="preserve">
+    <value>Kategorija znanja</value>
+  </data>
+  <data name="Knowledge point" xml:space="preserve">
+    <value>Točkica znanja</value>
+  </data>
+  <data name="Legacy paper" xml:space="preserve">
+    <value>Stari ispit</value>
+  </data>
+  <data name="Mock paper" xml:space="preserve">
+    <value>Probni ispit</value>
+  </data>
+  <data name="Not assigned" xml:space="preserve">
+    <value>Nedodijeljeno</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Plaćeno</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Pisac</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Razdoblje</value>
+  </data>
+  <data name="Period pricing affects {0} exercises linked to {1} knowledge points." xml:space="preserve">
+    <value>Cjenovna politika razdoblja utječe na {0} vježbi povezanih s {1} točkama znanja.</value>
+  </data>
+  <data name="Public / free" xml:space="preserve">
+    <value>Javno / besplatno</value>
+  </data>
+  <data name="Read full exercise" xml:space="preserve">
+    <value>Pročitaj cijelo vježbanje</value>
+  </data>
+  <data name="Real paper" xml:space="preserve">
+    <value>Stvarni ispit</value>
+  </data>
+  <data name="Sales disabled" xml:space="preserve">
+    <value>Prodaja onemogućena</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Oznaka</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taksonomija</value>
+  </data>
+  <data name="Used by {0} exercises linked to {1} knowledge points. Tags are internal organization, not practice pricing." xml:space="preserve">
+    <value>Koriste ga {0} vježbe povezane s {1} točkama znanja. Oznake su za unutarnju organizaciju, a ne za cijene vježbanja.</value>
+  </data>
+  <data name="VIP product" xml:space="preserve">
+    <value>VIP proizvod</value>
+  </data>
+  <data name="View frozen paper" xml:space="preserve">
+    <value>Prikaži zamrznuti ispit</value>
+  </data>
+  <data name="View only: editing permission is required" xml:space="preserve">
+    <value>Samo pregled: potrebna je dozvola za uređivanje</value>
+  </data>
+  <data name="View relationship" xml:space="preserve">
+    <value>Prikaži vezu</value>
+  </data>
+
+</root>

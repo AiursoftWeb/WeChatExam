@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Select Institution --" xml:space="preserve">
+    <value>-- Odaberite ustanovu --</value>
+  </data>
+  <data name="-- Select Total Category --" xml:space="preserve">
+    <value>-- Odaberite ukupnu kategoriju --</value>
+  </data>
+  <data name="Access scope is locked because this product has orders or memberships." xml:space="preserve">
+    <value>Opseg pristupa je zaključan jer ovaj proizvod ima narudžbe ili članstva.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Dana</value>
+  </data>
+  <data name="Duration (Days)" xml:space="preserve">
+    <value>Trajanje (dani)</value>
+  </data>
+  <data name="Edit VIP Product" xml:space="preserve">
+    <value>Uredi VIP proizvod</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Omogućeno</value>
+  </data>
+  <data name="Fen (1/100 Yuan)" xml:space="preserve">
+    <value>Fen (1/100 juana)</value>
+  </data>
+  <data name="Includes this institution&apos;s real papers, not independent course practice." xml:space="preserve">
+    <value>Uključuje stvarne ispite ove institucije, a ne nezavisne vježbe iz tečaja.</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Ustanova</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP institucije</value>
+  </data>
+  <data name="Price (Fen)" xml:space="preserve">
+    <value>Cijena (fen)</value>
+  </data>
+  <data name="Product Name" xml:space="preserve">
+    <value>Naziv proizvoda</value>
+  </data>
+  <data name="Retry synchronization" xml:space="preserve">
+    <value>Ponovi sinkronizaciju</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Spremi i vrati se na provjere sadržaja</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Ukupna kategorija</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>VIP za ukupnu kategoriju</value>
+  </data>
+  <data name="VIP Type" xml:space="preserve">
+    <value>Vrsta VIP-a</value>
+  </data>
+
+</root>

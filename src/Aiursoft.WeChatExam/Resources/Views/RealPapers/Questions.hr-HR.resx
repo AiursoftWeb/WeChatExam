@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add Selected Questions" xml:space="preserve">
+    <value>Dodaj odabrana pitanja</value>
+  </data>
+  <data name="Add all {0} matching exam questions?" xml:space="preserve">
+    <value>Dodati sva {0} odgovarajuća ispitna pitanja?</value>
+  </data>
+  <data name="Add all {0} matching questions" xml:space="preserve">
+    <value>Dodaj svih {0} odgovarajućih pitanja</value>
+  </data>
+  <data name="Add questions to this paper" xml:space="preserve">
+    <value>Dodajte pitanja na ovaj ispit</value>
+  </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Svi periodi</value>
+  </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Sve vrste</value>
+  </data>
+  <data name="Back to Real Papers" xml:space="preserve">
+    <value>Natrag na stvarne ispite</value>
+  </data>
+  <data name="Back to selection" xml:space="preserve">
+    <value>Natrag na odabir</value>
+  </data>
+  <data name="Confirm adding {0} exam questions" xml:space="preserve">
+    <value>Potvrdi dodavanje {0} ispitnih pitanja</value>
+  </data>
+  <data name="Edit Original Question" xml:space="preserve">
+    <value>Uredi izvorno pitanje</value>
+  </data>
+  <data name="Editing the original question also changes it in the question bank and other unpublished papers." xml:space="preserve">
+    <value>Uređivanje izvornog pitanja također ga mijenja u banci pitanja i drugim neobjavljenim ispitima.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Obrazloženje</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Sljedeće</value>
+  </data>
+  <data name="No explanation yet." xml:space="preserve">
+    <value>Još nema objašnjenja.</value>
+  </data>
+  <data name="No more matching questions." xml:space="preserve">
+    <value>Nema više odgovarajućih pitanja.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Redoslijed</value>
+  </data>
+  <data name="Page {0} of {1}" xml:space="preserve">
+    <value>Stranica {0} od {1}</value>
+  </data>
+  <data name="Paper Settings" xml:space="preserve">
+    <value>Postavke ispita</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Razdoblje</value>
+  </data>
+  <data name="Preview this page of questions" xml:space="preserve">
+    <value>Pregledajte ovu stranicu pitanja</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Prethodna</value>
+  </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Vrsta pitanja</value>
+  </data>
+  <data name="Question pages" xml:space="preserve">
+    <value>Stranice pitanja</value>
+  </data>
+  <data name="Reference Answer and Explanation" xml:space="preserve">
+    <value>Referentni odgovor i objašnjenje</value>
+  </data>
+  <data name="Reference answer needs attention" xml:space="preserve">
+    <value>Referentni odgovor zahtijeva pažnju</value>
+  </data>
+  <data name="Remove from Paper" xml:space="preserve">
+    <value>Ukloni iz ispita</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Spremi promjene</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Bodovi</value>
+  </data>
+  <data name="Score per question" xml:space="preserve">
+    <value>Bodovi po pitanju</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pretraga</value>
+  </data>
+  <data name="Search or select a tag" xml:space="preserve">
+    <value>Pretražite ili odaberite oznaku</value>
+  </data>
+  <data name="Search questions" xml:space="preserve">
+    <value>Pretraži pitanja</value>
+  </data>
+  <data name="Select Questions" xml:space="preserve">
+    <value>Odaberi pitanja</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Odaberi sve na ovoj stranici</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Odabrana pitanja</value>
+  </data>
+  <data name="Standard Answer" xml:space="preserve">
+    <value>Standardni odgovor</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Oznaka</value>
+  </data>
+  <data name="Test paper" xml:space="preserve">
+    <value>Ispitni ispit</value>
+  </data>
+  <data name="The reference answer is missing or repeats the question. Complete it before publishing." xml:space="preserve">
+    <value>Referentni odgovor nedostaje ili ponavlja pitanje. Dovršite ga prije objave.</value>
+  </data>
+  <data name="This adds exam questions from every result page and skips those already in this paper." xml:space="preserve">
+    <value>Ovo dodaje ispitna pitanja sa svake stranice rezultata i preskače ona koja su već u ovom ispitu.</value>
+  </data>
+  <data name="View Details" xml:space="preserve">
+    <value>Pogledaj pojedinosti</value>
+  </data>
+  <data name="{0} matching questions not yet added" xml:space="preserve">
+    <value>{0} odgovarajućih pitanja još nije dodano</value>
+  </data>
+  <data name="{0} questions · {1} points" xml:space="preserve">
+    <value>{0} pitanja · {1} bodova</value>
+  </data>
+  <data name="{0} selected on this page" xml:space="preserve">
+    <value>{0} odabrano na ovoj stranici</value>
+  </data>
+
+</root>

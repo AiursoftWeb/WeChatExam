@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Select Category (Optional) --" xml:space="preserve">
+    <value>-- Odaberite kategoriju (neobavezno) --</value>
+  </data>
+  <data name="AI Semantic Search" xml:space="preserve">
+    <value>AI semantička pretraga</value>
+  </data>
+  <data name="AI semantic search was not used. Showing keyword results." xml:space="preserve">
+    <value>AI semantičko pretraživanje nije korišteno. Prikazuju se rezultati ključnih riječi.</value>
+  </data>
+  <data name="Add Selected" xml:space="preserve">
+    <value>Dodaj odabrane</value>
+  </data>
+  <data name="Add Selected ({0})" xml:space="preserve">
+    <value>Dodaj odabrane ({0})</value>
+  </data>
+  <data name="Advanced: Tag Expression (MTQL)" xml:space="preserve">
+    <value>Napredno: Izraz oznake (MTQL)</value>
+  </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Svi tipovi</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Odgovor</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategorija</value>
+  </data>
+  <data name="Combine tags, for example: rock &amp;&amp; not metal" xml:space="preserve">
+    <value>Spajaj oznake, na primjer: rock &amp;&amp; not metal</value>
+  </data>
+  <data name="Default Score" xml:space="preserve">
+    <value>Zadana ocjena</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Nacrt</value>
+  </data>
+  <data name="Edit Paper" xml:space="preserve">
+    <value>Uredi ispit</value>
+  </data>
+  <data name="Enter a few words to find questions." xml:space="preserve">
+    <value>Unesite nekoliko riječi za pretraživanje pitanja.</value>
+  </data>
+  <data name="Enter a topic or a few words..." xml:space="preserve">
+    <value>Unesite temu ili nekoliko riječi...</value>
+  </data>
+  <data name="Exam Question Type" xml:space="preserve">
+    <value>Vrsta ispitnog pitanja</value>
+  </data>
+  <data name="Find Questions" xml:space="preserve">
+    <value>Pronađi pitanja</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Pronađi slična pitanja</value>
+  </data>
+  <data name="Find exact words and related meanings." xml:space="preserve">
+    <value>Pronađite točne riječi i povezana značenja.</value>
+  </data>
+  <data name="Free Paper" xml:space="preserve">
+    <value>Besplatni ispit</value>
+  </data>
+  <data name="Freeze" xml:space="preserve">
+    <value>Zamrzni</value>
+  </data>
+  <data name="Keyword Search" xml:space="preserve">
+    <value>Pretraga po ključnim riječima</value>
+  </data>
+  <data name="Mark as Publishable" xml:space="preserve">
+    <value>Označi kao objavljivo</value>
+  </data>
+  <data name="Match words in the question text, answers and explanations." xml:space="preserve">
+    <value>Pronađi riječi u tekstu pitanja, odgovorima i objašnjenjima.</value>
+  </data>
+  <data name="No questions found." xml:space="preserve">
+    <value>Nema pronađenih pitanja.</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Redoslijed</value>
+  </data>
+  <data name="Paper Info" xml:space="preserve">
+    <value>Podaci o ispitu</value>
+  </data>
+  <data name="Press Enter to add a tag, or select from suggestions. Click X to remove." xml:space="preserve">
+    <value>Pritisnite Enter za dodavanje oznake ili odaberite iz prijedloga. Kliknite X za uklanjanje.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Pregled</value>
+  </data>
+  <data name="Publish Snapshot" xml:space="preserve">
+    <value>Objavi trenutno stanje</value>
+  </data>
+  <data name="Publishable" xml:space="preserve">
+    <value>Objavljeno</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Pitanje</value>
+  </data>
+  <data name="Questions in Paper" xml:space="preserve">
+    <value>Pitanja u ispitnom listu</value>
+  </data>
+  <data name="Real Exam" xml:space="preserve">
+    <value>Pravi ispit</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Ukloni</value>
+  </data>
+  <data name="Revert to Draft" xml:space="preserve">
+    <value>Vrati u nacrt</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spremi</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Spremi i vrati se na provjere sadržaja</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Bodovi</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pretraži</value>
+  </data>
+  <data name="Search &amp; Add Questions" xml:space="preserve">
+    <value>Pretraži i dodaj pitanja</value>
+  </data>
+  <data name="Search Mode" xml:space="preserve">
+    <value>Način pretraživanja</value>
+  </data>
+  <data name="Search is unavailable. Please try again." xml:space="preserve">
+    <value>Pretraga nije dostupna. Pokušajte ponovno.</value>
+  </data>
+  <data name="Searching..." xml:space="preserve">
+    <value>Pretraživanje...</value>
+  </data>
+  <data name="Select All Results" xml:space="preserve">
+    <value>Odaberi sve rezultate</value>
+  </data>
+  <data name="Select Question" xml:space="preserve">
+    <value>Odaberi pitanje</value>
+  </data>
+  <data name="Selected Questions" xml:space="preserve">
+    <value>Odabrana pitanja</value>
+  </data>
+  <data name="Selecting a category will filter available questions." xml:space="preserve">
+    <value>Odabir kategorije filtrirat će dostupna pitanja.</value>
+  </data>
+  <data name="Selections are kept when you search again. Add them when you are ready." xml:space="preserve">
+    <value>Odabiri se zadržavaju pri ponovnoj pretrazi. Dodajte ih kada budete spremni.</value>
+  </data>
+  <data name="Similar questions are unavailable. Please try again later." xml:space="preserve">
+    <value>Slična pitanja nisu dostupna. Pokušajte ponovno kasnije.</value>
+  </data>
+  <data name="Similar to: {0}" xml:space="preserve">
+    <value>Slično: {0}</value>
+  </data>
+  <data name="Smart Search (Default)" xml:space="preserve">
+    <value>Pametno pretraživanje (zadano)</value>
+  </data>
+  <data name="Starting Order" xml:space="preserve">
+    <value>Početni redni broj</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Status Actions" xml:space="preserve">
+    <value>Radnje s statusom</value>
+  </data>
+  <data name="Tag Expression Search (MTQL)" xml:space="preserve">
+    <value>Pretraga izraza oznaka (MTQL)</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Oznake</value>
+  </data>
+  <data name="Time Limit (minutes)" xml:space="preserve">
+    <value>Vremensko ograničenje (minute)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="Type to search or add tags..." xml:space="preserve">
+    <value>Ukucajte za pretraživanje ili dodavanje oznaka...</value>
+  </data>
+  <data name="Up to five similar questions in the same period as the original question. Existing paper questions are excluded. Select candidates to add; the original question stays unchanged." xml:space="preserve">
+    <value>Do pet sličnih pitanja iz istog razdoblja kao i izvorno pitanje. Postojeća pitanja iz ispita su isključena. Odaberite kandidate za dodavanje; izvorno pitanje ostaje nepromijenjeno.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>obriši</value>
+  </data>
+  <data name="e.g. rock &amp;&amp; not metal" xml:space="preserve">
+    <value>npr. rock &amp;&amp; not metal</value>
+  </data>
+
+</root>
