@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Amounts" xml:space="preserve">
+    <value>Iznosi</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Natrag na popis</value>
+  </data>
+  <data name="Coupon code" xml:space="preserve">
+    <value>Kod kupona</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Vrijeme kreiranja</value>
+  </data>
+  <data name="Current access can include later purchases or manual changes. A confirmed payment does not mean the membership is still active today." xml:space="preserve">
+    <value>Trenutni pristup može uključivati kasnije kupnje ili ručne izmjene. Potvrđena naplata ne znači da je članstvo i dalje aktivno danas.</value>
+  </data>
+  <data name="Current membership" xml:space="preserve">
+    <value>Trenutna članstva</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Kraj</value>
+  </data>
+  <data name="Expired At" xml:space="preserve">
+    <value>Istječe</value>
+  </data>
+  <data name="No logs yet" xml:space="preserve">
+    <value>Još nema zapisa</value>
+  </data>
+  <data name="No membership record for this product" xml:space="preserve">
+    <value>Nema zapisa o članstvu za ovaj proizvod</value>
+  </data>
+  <data name="Order Information" xml:space="preserve">
+    <value>Informacije o narudžbi</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Broj narudžbe</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Plaćeno</value>
+  </data>
+  <data name="Payment Order Details" xml:space="preserve">
+    <value>Detalji naloge za plaćanje</value>
+  </data>
+  <data name="Payment channel" xml:space="preserve">
+    <value>Kanal za plaćanje</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Proizvod</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Obrada povrata</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Upravljanje povratima</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Početak</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Technical payment logs" xml:space="preserve">
+    <value>Tehnički dnevnik naplata</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Korisnik</value>
+  </data>
+  <data name="View refund reconciliation records" xml:space="preserve">
+    <value>Pregled zapisa o usklađivanju povrata</value>
+  </data>
+  <data name="View user payment history" xml:space="preserve">
+    <value>Prikaži povijest plaćanja korisnika</value>
+  </data>
+  <data name="WeChat Transaction ID" xml:space="preserve">
+    <value>WeChat ID transakcije</value>
+  </data>
+
+</root>

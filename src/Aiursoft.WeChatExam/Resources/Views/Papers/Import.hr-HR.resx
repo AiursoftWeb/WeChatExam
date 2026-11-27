@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="Add Option" xml:space="preserve">
+    <value>Dodaj opciju</value>
+  </data>
+  <data name="Additional tags (one per line)" xml:space="preserve">
+    <value>Dodatne oznake (jedna po retku)</value>
+  </data>
+  <data name="Allow access without membership" xml:space="preserve">
+    <value>Dozvoli pristup bez članstva</value>
+  </data>
+  <data name="Check existing tags" xml:space="preserve">
+    <value>Provjerite postojeće oznake</value>
+  </data>
+  <data name="Choose a period for each question before saving." xml:space="preserve">
+    <value>Odaberite razdoblje za svako pitanje prije spremanja.</value>
+  </data>
+  <data name="Comparing preview question {0}" xml:space="preserve">
+    <value>Usporedba pretpregleda pitanja {0}</value>
+  </data>
+  <data name="Complete the standard answer for question {0} before saving." xml:space="preserve">
+    <value>Popunite standardni odgovor za pitanje {0} prije spremanja.</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Završeno</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Sadržaj</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Točno</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>Predmet</value>
+  </data>
+  <data name="Custom name; no longer follows title" xml:space="preserve">
+    <value>Prilagođeni naziv; više ne prati naslov</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Obriši</value>
+  </data>
+  <data name="Draft saved. A paper editor can review and publish it." xml:space="preserve">
+    <value>Nacrt je spremljen. Urednik ispita može ga pregledati i objaviti.</value>
+  </data>
+  <data name="Drag the handle or use move buttons. Missing answers may remain blank in the preview, but all standard answers must be completed before saving." xml:space="preserve">
+    <value>Povucite ručku ili koristite gumbove za pomicanje. Nedostajući odgovori mogu ostati prazni u pregledu, ali svi standardni odgovori moraju biti popunjeni prije spremanja.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="Editable preview" xml:space="preserve">
+    <value>Uređivi pregled</value>
+  </data>
+  <data name="Every question must belong to the selected course." xml:space="preserve">
+    <value>Svako pitanje mora pripadati odabranoj nastavi.</value>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Obrazloženje</value>
+  </data>
+  <data name="Explicitly reuse this existing tag" xml:space="preserve">
+    <value>Eksplicitno ponovno koristi ovaj postojeći tag</value>
+  </data>
+  <data name="Extract / regenerate preview" xml:space="preserve">
+    <value>Izdvajanje / regeneracija pregleda</value>
+  </data>
+  <data name="Extraction timed out. Please explicitly extract again." xml:space="preserve">
+    <value>Ekstrakcija je istekla. Molimo vas da eksplicitno ponovno izvršite ekstrakciju.</value>
+  </data>
+  <data name="Extracts source information only. Missing answers stay blank. Nothing is saved until you manually save the draft." xml:space="preserve">
+    <value>Izvlači samo informacije iz izvora. Nedostajući odgovori ostaju prazni. Ništa se ne sprema dok ručno ne spremate nacrt.</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Neuspješno</value>
+  </data>
+  <data name="Find Similar Questions" xml:space="preserve">
+    <value>Pronađi slična pitanja</value>
+  </data>
+  <data name="Follow title again" xml:space="preserve">
+    <value>Prati naslov ponovno</value>
+  </data>
+  <data name="Follows title" xml:space="preserve">
+    <value>Prati naslov</value>
+  </data>
+  <data name="Import Paper" xml:space="preserve">
+    <value>Uvoz ispitnog lista</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Netočno</value>
+  </data>
+  <data name="Institution" xml:space="preserve">
+    <value>Ustanova</value>
+  </data>
+  <data name="Mock Paper" xml:space="preserve">
+    <value>Ispitni list</value>
+  </data>
+  <data name="Move down" xml:space="preserve">
+    <value>Pomakni dolje</value>
+  </data>
+  <data name="Move up" xml:space="preserve">
+    <value>Pomakni gore</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Nijedno</value>
+  </data>
+  <data name="Not provided in source" xml:space="preserve">
+    <value>Nije navedeno u izvoru</value>
+  </data>
+  <data name="Option content" xml:space="preserve">
+    <value>Sadržaj opcije</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opcije</value>
+  </data>
+  <data name="Original paper text" xml:space="preserve">
+    <value>Izvorni tekst ispita</value>
+  </data>
+  <data name="Paper type" xml:space="preserve">
+    <value>Vrsta ispita</value>
+  </data>
+  <data name="Past exam papers require university VIP and can contain questions from different courses." xml:space="preserve">
+    <value>Stari ispitni upitnici zahtijevaju VIP status sveučilišta i mogu sadržavati pitanja iz različitih kolegija.</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>U tijeku</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Razdoblje</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Obrada</value>
+  </data>
+  <data name="Real Paper" xml:space="preserve">
+    <value>Pravi ispit</value>
+  </data>
+  <data name="Replace the edited preview with a new extraction?" xml:space="preserve">
+    <value>Zamijeniti uređeni pregled novom ekstrakcijom?</value>
+  </data>
+  <data name="Review similar existing questions before saving. To omit a preview question, use its Delete action. Existing questions are not automatically reused." xml:space="preserve">
+    <value>Pregledajte slična postojeća pitanja prije spremanja. Da biste izostavili pregledno pitanje, koristite njegovu akciju Obriši. Postojeća pitanja se ne koriste automatski.</value>
+  </data>
+  <data name="Save draft manually" xml:space="preserve">
+    <value>Ručno spremi nacrt</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Bodovi</value>
+  </data>
+  <data name="Select a course" xml:space="preserve">
+    <value>Odaberite tečaj</value>
+  </data>
+  <data name="Select a paper type" xml:space="preserve">
+    <value>Odaberite vrstu ispita</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Odaberite razdoblje</value>
+  </data>
+  <data name="Select an institution" xml:space="preserve">
+    <value>Odaberite instituciju</value>
+  </data>
+  <data name="Source tag name" xml:space="preserve">
+    <value>Naziv izvorne oznake</value>
+  </data>
+  <data name="Source tag taxonomy (optional)" xml:space="preserve">
+    <value>Taksonomija izvorne oznake (neobavezno)</value>
+  </data>
+  <data name="Standard answer (required before saving)" xml:space="preserve">
+    <value>Standardni odgovor (obavezan prije spremanja)</value>
+  </data>
+  <data name="Tags organize imported questions only. They do not set the paper price or appear in the student paper menu. Existing tags are not changed." xml:space="preserve">
+    <value>Oznake služe samo za organizaciju uvezenih pitanja. Ne određuju cijenu ispita niti se pojavljuju u izborniku ispita za studente. Postojeće oznake se ne mijenjaju.</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taksonomija</value>
+  </data>
+  <data name="Time limit (minutes)" xml:space="preserve">
+    <value>Vremensko ograničenje (minute)</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Vrsta</value>
+  </data>
+  <data name="Visitors can take this whole mock paper, including any paid questions. Saving personal exam records requires login." xml:space="preserve">
+    <value>Posjetitelji mogu riješiti ovaj cijeli simulirani ispit, uključujući i plaćena pitanja. Spremanje osobnih zapisa o ispitima zahtijeva prijavu.</value>
+  </data>
+
+</root>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="All imported questions will use this type, ignoring the Type field in JSON." xml:space="preserve">
+    <value>Sve uvezene pitanje koristit će ovaj tip, ignorirajući polje Type u JSON-u.</value>
+  </data>
+  <data name="Choose separately in preview" xml:space="preserve">
+    <value>Odaberite odvojeno u pregledu</value>
+  </data>
+  <data name="Default period" xml:space="preserve">
+    <value>Zadano razdoblje</value>
+  </data>
+  <data name="Import Questions from JSON" xml:space="preserve">
+    <value>Uvoz pitanja iz JSON-a</value>
+  </data>
+  <data name="JSON Content" xml:space="preserve">
+    <value>JSON sadržaj</value>
+  </data>
+  <data name="Paste your JSON array of questions below. Each question should have: Question, Options (array), Answer, Analysis, and OriginalFilename fields." xml:space="preserve">
+    <value>Zalijepite svoju JSON matricu pitanja u nastavku. Svako pitanje treba imati polja: Question, Options (matrica), Answer, Analysis i OriginalFilename.</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Pregled</value>
+  </data>
+  <data name="Question Type" xml:space="preserve">
+    <value>Vrsta pitanja</value>
+  </data>
+  <data name="Start with one period for the batch, then adjust individual questions in preview." xml:space="preserve">
+    <value>Počnite s jednim razdobljem za cijelu seriju, a zatim prilagodite pojedinačna pitanja u pregledu.</value>
+  </data>
+
+</root>

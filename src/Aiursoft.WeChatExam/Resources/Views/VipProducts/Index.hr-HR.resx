@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Radnje</value>
+  </data>
+  <data name="All Real Exams VIP (Legacy)" xml:space="preserve">
+    <value>Svi stvarni ispiti VIP (Legacy)</value>
+  </data>
+  <data name="All time · current filters" xml:space="preserve">
+    <value>Sve vrijeme · trenutni filteri</value>
+  </data>
+  <data name="At a glance" xml:space="preserve">
+    <value>Pregled</value>
+  </data>
+  <data name="Average paid price" xml:space="preserve">
+    <value>Prosječna plaćena cijena</value>
+  </data>
+  <data name="Back to Course Settings" xml:space="preserve">
+    <value>Natrag na postavke tečaja</value>
+  </data>
+  <data name="Before platform fees and costs" xml:space="preserve">
+    <value>Prije naknada i troškova platforme</value>
+  </data>
+  <data name="By receipts" xml:space="preserve">
+    <value>Po prihodima</value>
+  </data>
+  <data name="Confirmed orders only" xml:space="preserve">
+    <value>Samo potvrđene narudžbe</value>
+  </data>
+  <data name="Create VIP Product" xml:space="preserve">
+    <value>Stvori VIP proizvod</value>
+  </data>
+  <data name="Current price" xml:space="preserve">
+    <value>Trenutna cijena</value>
+  </data>
+  <data name="Deduplicated across these products" xml:space="preserve">
+    <value>Bez duplikata unutar ovih proizvoda</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Obriši</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Onemogućeno</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Omogućeno</value>
+  </data>
+  <data name="Free claims" xml:space="preserve">
+    <value>Besplatne prijavke</value>
+  </data>
+  <data name="Institution VIP" xml:space="preserve">
+    <value>VIP Institucija</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Ime</value>
+  </data>
+  <data name="No confirmed paid purchases yet." xml:space="preserve">
+    <value>Još nema potvrđenih plaćenih kupovina.</value>
+  </data>
+  <data name="No products match these filters." xml:space="preserve">
+    <value>Nijedan proizvod ne odgovara ovim filterima.</value>
+  </data>
+  <data name="Open a product to see paid prices and buyer orders." xml:space="preserve">
+    <value>Otvorite proizvod da biste vidjeli plaćene cijene i narudžbe kupaca.</value>
+  </data>
+  <data name="Order receipts" xml:space="preserve">
+    <value>Prihod od narudžbi</value>
+  </data>
+  <data name="Other orders" xml:space="preserve">
+    <value>Ostale narudžbe</value>
+  </data>
+  <data name="Paid sales" xml:space="preserve">
+    <value>Plaćene prodaje</value>
+  </data>
+  <data name="Paying buyers" xml:space="preserve">
+    <value>Kupci koji plaćaju</value>
+  </data>
+  <data name="Product overview" xml:space="preserve">
+    <value>Pregled proizvoda</value>
+  </data>
+  <data name="Product performance" xml:space="preserve">
+    <value>Učinkovitost proizvoda</value>
+  </data>
+  <data name="Product status" xml:space="preserve">
+    <value>Status proizvoda</value>
+  </data>
+  <data name="Products with paid sales" xml:space="preserve">
+    <value>Proizvodi s plaćenim prodajama</value>
+  </data>
+  <data name="Products without paid sales" xml:space="preserve">
+    <value>Proizvodi bez plaćenih prodaja</value>
+  </data>
+  <data name="Receipts per paid order" xml:space="preserve">
+    <value>Prihod po plaćenoj narudžbi</value>
+  </data>
+  <data name="Refunded orders" xml:space="preserve">
+    <value>Vraćene narudžbe</value>
+  </data>
+  <data name="Refunds and free claims excluded" xml:space="preserve">
+    <value>Povrat novca i besplatne reklamacije isključeni</value>
+  </data>
+  <data name="Refunds are awaiting reconciliation. These receipts may overstate the amount retained." xml:space="preserve">
+    <value>Povraćaja čekaju na usklađivanje. Ovi prihodovi mogu precijeniti zadržani iznos.</value>
+  </data>
+  <data name="Refunds need review" xml:space="preserve">
+    <value>Povraće treba pregledati</value>
+  </data>
+  <data name="Review refunds" xml:space="preserve">
+    <value>Pregledaj povrate</value>
+  </data>
+  <data name="Sales details" xml:space="preserve">
+    <value>Detalji prodaje</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pretraži</value>
+  </data>
+  <data name="Search by name, category or institution" xml:space="preserve">
+    <value>Pretraži po nazivu, kategoriji ili instituciji</value>
+  </data>
+  <data name="See what sells, who buys, and what they actually pay." xml:space="preserve">
+    <value>Pogledajte što se prodaje, tko kupuje i koliko zapravo plaćaju.</value>
+  </data>
+  <data name="Top 5 products · share of filtered receipts" xml:space="preserve">
+    <value>Top 5 proizvoda · udio filtriranih prihoda</value>
+  </data>
+  <data name="Total Category VIP" xml:space="preserve">
+    <value>Ukupna kategorija VIP</value>
+  </data>
+  <data name="VIP Products" xml:space="preserve">
+    <value>VIP proizvodi</value>
+  </data>
+  <data name="Where receipts come from" xml:space="preserve">
+    <value>Otkud potječu prihodi</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>dana</value>
+  </data>
+  <data name="people" xml:space="preserve">
+    <value>osoba</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>komada</value>
+  </data>
+
+</root>

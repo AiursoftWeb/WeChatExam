@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Access" xml:space="preserve">
+    <value>Pristup</value>
+  </data>
+  <data name="Active course VIPs" xml:space="preserve">
+    <value>Aktivni VIP-ovi tečajeva</value>
+  </data>
+  <data name="Active institution VIPs" xml:space="preserve">
+    <value>Aktivni VIP-ovi institucija</value>
+  </data>
+  <data name="Actual behavior" xml:space="preserve">
+    <value>Stvarno ponašanje</value>
+  </data>
+  <data name="All affected content" xml:space="preserve">
+    <value>Svi pogođeni sadržaji</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Dozvoljeno</value>
+  </data>
+  <data name="Anyone can load this exercise without signing in." xml:space="preserve">
+    <value>Svatko može učitati ovaj vježbeni zadatak bez prijavljivanja.</value>
+  </data>
+  <data name="Back to results" xml:space="preserve">
+    <value>Natrag na rezultate</value>
+  </data>
+  <data name="Before changing a shared tag" xml:space="preserve">
+    <value>Prije promjene dijeljene oznake</value>
+  </data>
+  <data name="Browse the full list" xml:space="preserve">
+    <value>Pregledajte puni popis</value>
+  </data>
+  <data name="Can open" xml:space="preserve">
+    <value>Može otvoriti</value>
+  </data>
+  <data name="Cannot open" xml:space="preserve">
+    <value>Ne može se otvoriti</value>
+  </data>
+  <data name="Check this scenario" xml:space="preserve">
+    <value>Provjerite ovaj scenarij</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Kursevi</value>
+  </data>
+  <data name="Custom VIP scenario" xml:space="preserve">
+    <value>Prilagođeni VIP scenarij</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Odbijeno</value>
+  </data>
+  <data name="Detailed diagnosis for developers" xml:space="preserve">
+    <value>Detaljna dijagnoza za developere</value>
+  </data>
+  <data name="Entry point" xml:space="preserve">
+    <value>Točka ulaska</value>
+  </data>
+  <data name="Exercise {0} of {1}" xml:space="preserve">
+    <value>Vježba {0} od {1}</value>
+  </data>
+  <data name="Exercise: can open" xml:space="preserve">
+    <value>Vježba: može se otvoriti</value>
+  </data>
+  <data name="Exercise: cannot open" xml:space="preserve">
+    <value>Vježba: ne može se otvoriti</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>Vježbe</value>
+  </data>
+  <data name="Exercises in this result" xml:space="preserve">
+    <value>Vježbe u ovom rezultatu</value>
+  </data>
+  <data name="For our team" xml:space="preserve">
+    <value>Za naš tim</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Ustanove</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Točkice znanja</value>
+  </data>
+  <data name="Knowledge points and their exercise" xml:space="preserve">
+    <value>Točkice znanja i njihovo vježbanje</value>
+  </data>
+  <data name="Lesson text follows its directly assigned directories. Exercise content follows its period. Submitting and saving answers are not checked here." xml:space="preserve">
+    <value>Tekst lekcije slijedi svojim izravno dodijeljenim direktorijima. Sadržaj vježbe slijedi svom razdoblju. Slanje i spremanje odgovora se ovdje ne provjeravaju.</value>
+  </data>
+  <data name="Linked exercise" xml:space="preserve">
+    <value>Povezana vježba</value>
+  </data>
+  <data name="Needs attention" xml:space="preserve">
+    <value>Zahtijeva pažnju</value>
+  </data>
+  <data name="Next exercise" xml:space="preserve">
+    <value>Sljedeća vježba</value>
+  </data>
+  <data name="No knowledge point is linked to this exercise." xml:space="preserve">
+    <value>Ovaj vježbi nije povezan nijedan točka znanja.</value>
+  </data>
+  <data name="Our team needs to review this behavior. You do not need to change shared pricing to resolve a program issue." xml:space="preserve">
+    <value>Naš tim mora pregledati ovo ponašanje. Nemojte mijenjati zajedničko cijenošenje za rješavanje problema s programom.</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papi</value>
+  </data>
+  <data name="Please confirm" xml:space="preserve">
+    <value>Molimo potvrdite</value>
+  </data>
+  <data name="Previous exercise" xml:space="preserve">
+    <value>Prethodna vježba</value>
+  </data>
+  <data name="Pricing arrangement" xml:space="preserve">
+    <value>Nadzor cijena</value>
+  </data>
+  <data name="Related settings and edit links" xml:space="preserve">
+    <value>Povezane postavke i veze za uređivanje</value>
+  </data>
+  <data name="Review shared impact" xml:space="preserve">
+    <value>Pregledajte zajednički utjecaj</value>
+  </data>
+  <data name="Review the assigned period and its course." xml:space="preserve">
+    <value>Pregledajte dodijeljeno razdoblje i njegov tečaj.</value>
+  </data>
+  <data name="Scan coverage and object IDs" xml:space="preserve">
+    <value>Pokrivenost skeniranja i ID-jevi objekata</value>
+  </data>
+  <data name="Scan window (UTC)" xml:space="preserve">
+    <value>Vremenski okvir skeniranja (UTC)</value>
+  </data>
+  <data name="Shared tags affect {0} exercises in {1} courses." xml:space="preserve">
+    <value>Dijeljeni oznake utječu na {0} vježbi u {1} tečajeva.</value>
+  </data>
+  <data name="Sign in with an active VIP for the exercise&apos;s own course:" xml:space="preserve">
+    <value>Prijavite se s aktivnim VIP-om za vlastiti tečaj vježbe:</value>
+  </data>
+  <data name="Tags organize content internally. Review the period and knowledge directory when changing access." xml:space="preserve">
+    <value>Oznake internim organiziraju sadržaj. Provjerite razdoblje i direktorij znanja pri promjeni pristupa.</value>
+  </data>
+  <data name="The exercise inherits pricing from its period. Tags do not grant or restrict practice access." xml:space="preserve">
+    <value>Vježba nasljeđuje cijene od svog razdoblja. Oznake ne dodjeljuju niti ograničavaju pristup vježbanju.</value>
+  </data>
+  <data name="These results evaluate current server access. They do not simulate every Mini Program screen or submission flow. Each page reads current configuration again." xml:space="preserve">
+    <value>Ovi rezultati ocjenjuju trenutni pristup poslužitelju. Ne simuliraju svaki zaslon Mini Programa ni tijek slanja. Svaka stranica ponovno čita trenutnu konfiguraciju.</value>
+  </data>
+  <data name="These tags organize the listed content. They do not determine current practice or knowledge access." xml:space="preserve">
+    <value>Ove oznake organiziraju navedeni sadržaj. Ne određuju trenutnu praksu ni pristup znanju.</value>
+  </data>
+  <data name="This account needs the exercise&apos;s own course VIP." xml:space="preserve">
+    <value>Ovaj račun zahtijeva VIP status vlastitog tečaja vježbe.</value>
+  </data>
+  <data name="User scenario" xml:space="preserve">
+    <value>Korisnički scenarij</value>
+  </data>
+  <data name="What students experience" xml:space="preserve">
+    <value>Što studenti doživljavaju</value>
+  </data>
+  <data name="What to review" xml:space="preserve">
+    <value>Što pregledati</value>
+  </data>
+  <data name="Who can open this content?" xml:space="preserve">
+    <value>Tko može otvoriti ovaj sadržaj?</value>
+  </data>
+  <data name="{0} exercises" xml:space="preserve">
+    <value>{0} vježbi</value>
+  </data>
+  <data name="{0} knowledge points" xml:space="preserve">
+    <value>{0} točkâ znanja</value>
+  </data>
+
+</root>

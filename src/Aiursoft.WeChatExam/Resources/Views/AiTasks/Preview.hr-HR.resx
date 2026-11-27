@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI New Answer" xml:space="preserve">
+    <value>AI novi odgovor</value>
+  </data>
+  <data name="AI New Explanation" xml:space="preserve">
+    <value>AI novo objašnjenje</value>
+  </data>
+  <data name="AI Task Preview" xml:space="preserve">
+    <value>Pregled AI zadatka</value>
+  </data>
+  <data name="Abandon" xml:space="preserve">
+    <value>Odbaci</value>
+  </data>
+  <data name="Adopt" xml:space="preserve">
+    <value>Usvoji</value>
+  </data>
+  <data name="Adopt All" xml:space="preserve">
+    <value>Prihvati sve</value>
+  </data>
+  <data name="Are you sure you want to adopt all AI suggestions?" xml:space="preserve">
+    <value>Jeste li sigurni da želite usvojiti sve prijedloge AI-a?</value>
+  </data>
+  <data name="Are you sure you want to cancel all pending tasks?" xml:space="preserve">
+    <value>Jeste li sigurni da želite otkazati sva zadataka u tijeku?</value>
+  </data>
+  <data name="Auto Categorize" xml:space="preserve">
+    <value>Automatska kategorizacija</value>
+  </data>
+  <data name="Auto Tagging" xml:space="preserve">
+    <value>Automatsko označavanje</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Natrag</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Poništi</value>
+  </data>
+  <data name="Cancel All" xml:space="preserve">
+    <value>Poništi sve</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Završeno</value>
+  </data>
+  <data name="Current Answer" xml:space="preserve">
+    <value>Trenutni odgovor</value>
+  </data>
+  <data name="Current Tags" xml:space="preserve">
+    <value>Trenutne oznake</value>
+  </data>
+  <data name="Current period" xml:space="preserve">
+    <value>Trenutno razdoblje</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="Edit AI Suggestion" xml:space="preserve">
+    <value>Uredi AI prijedlog</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="Failed to adopt suggestions." xml:space="preserve">
+    <value>Neuspjelo usvajanje prijedloga.</value>
+  </data>
+  <data name="Generate Answer" xml:space="preserve">
+    <value>Generiranje odgovora</value>
+  </data>
+  <data name="Generate Explanation" xml:space="preserve">
+    <value>Generiraj objašnjenje</value>
+  </data>
+  <data name="Old Explanation" xml:space="preserve">
+    <value>Stara objašnjenja</value>
+  </data>
+  <data name="Processing..." xml:space="preserve">
+    <value>Obrada...</value>
+  </data>
+  <data name="Save &amp; Adopt" xml:space="preserve">
+    <value>Spremi i usvoji</value>
+  </data>
+  <data name="Select a period" xml:space="preserve">
+    <value>Odaberite razdoblje</value>
+  </data>
+  <data name="Suggested Tags" xml:space="preserve">
+    <value>Predložene oznake</value>
+  </data>
+  <data name="Suggested period" xml:space="preserve">
+    <value>Predloženo razdoblje</value>
+  </data>
+  <data name="Tasks are still processing. Do you want to adopt completed ones and abandon the rest?" xml:space="preserve">
+    <value>Zadaci se i dalje obrađuju. Želite li usvojiti završene i odustati od ostalih?</value>
+  </data>
+  <data name="Too many requests, waiting 30s..." xml:space="preserve">
+    <value>Previše zahtjeva, čekanje 30s...</value>
+  </data>
+
+</root>

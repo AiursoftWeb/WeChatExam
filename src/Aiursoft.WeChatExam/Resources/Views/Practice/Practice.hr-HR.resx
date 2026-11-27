@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Analysis:" xml:space="preserve">
+    <value>Analiza:</value>
+  </data>
+  <data name="Back to Practice Home" xml:space="preserve">
+    <value>Natrag na početnu stranicu vježbe</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Bulova</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Odabir</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Točno</value>
+  </data>
+  <data name="Correct Answers:" xml:space="preserve">
+    <value>Točni odgovori:</value>
+  </data>
+  <data name="Correct!" xml:space="preserve">
+    <value>Točno!</value>
+  </data>
+  <data name="Error:" xml:space="preserve">
+    <value>Pogreška:</value>
+  </data>
+  <data name="Failed to grade" xml:space="preserve">
+    <value>Neuspješno ocjenjivanje</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Netočno</value>
+  </data>
+  <data name="No analysis available." xml:space="preserve">
+    <value>Analiza nije dostupna.</value>
+  </data>
+  <data name="Please select an option." xml:space="preserve">
+    <value>Odaberite opciju.</value>
+  </data>
+  <data name="Please type an answer." xml:space="preserve">
+    <value>Unesite odgovor.</value>
+  </data>
+  <data name="Practice Results" xml:space="preserve">
+    <value>Rezultati vježbe</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>Vježbana sesija</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Pitanje</value>
+  </data>
+  <data name="Score:" xml:space="preserve">
+    <value>Bodovi:</value>
+  </data>
+  <data name="Standard Answer:" xml:space="preserve">
+    <value>Standardni odgovor:</value>
+  </data>
+  <data name="Total Questions:" xml:space="preserve">
+    <value>Ukupno pitanja:</value>
+  </data>
+  <data name="Wrong" xml:space="preserve">
+    <value>Pogrešno</value>
+  </data>
+  <data name="You have completed the practice session!" xml:space="preserve">
+    <value>Završili ste vježbnu sesiju!</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>od</value>
+  </data>
+
+</root>
