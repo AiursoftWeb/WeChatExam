@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Add Any KnowledgePoint" xml:space="preserve">
+    <value>Dodaj bilo koju točku znanja</value>
+  </data>
+  <data name="Add Articles" xml:space="preserve">
+    <value>Dodavanje članaka</value>
+  </data>
+  <data name="Add Distribution Channels" xml:space="preserve">
+    <value>Dodaj kanale distribucije</value>
+  </data>
+  <data name="Add Exams" xml:space="preserve">
+    <value>Dodaj ispite</value>
+  </data>
+  <data name="Add New Roles" xml:space="preserve">
+    <value>Dodaj nove uloge</value>
+  </data>
+  <data name="Add New Users" xml:space="preserve">
+    <value>Dodaj nove korisnike</value>
+  </data>
+  <data name="Add Papers" xml:space="preserve">
+    <value>Dodavanje radova</value>
+  </data>
+  <data name="Add Questions" xml:space="preserve">
+    <value>Dodavanje pitanja</value>
+  </data>
+  <data name="Add VIP Products" xml:space="preserve">
+    <value>Dodaj VIP proizvode</value>
+  </data>
+  <data name="Allows Reading of exams, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje čitanje ispita, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows adding of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje dodavanje bilo kojeg knowledgePointa, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows adding of articles, regardless of ownership." xml:space="preserve">
+    <value>Omogućava dodavanje članaka, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows adding of exams, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje dodavanje ispita, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows adding of papers, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje dodavanje radova, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows adding of questions, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje dodavanje pitanja, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows assigning or removing roles for any user." xml:space="preserve">
+    <value>Omogućuje dodjeljivanje ili uklanjanje uloga za bilo kojeg korisnika.</value>
+  </data>
+  <data name="Allows creating new VIP products with category, price, and duration settings." xml:space="preserve">
+    <value>Omogućuje kreiranje novih VIP proizvoda s postavkama kategorije, cijene i trajanja.</value>
+  </data>
+  <data name="Allows deleting tags from the system. Note that deleting a tag will not delete associated questions." xml:space="preserve">
+    <value>Omogućava brisanje oznaka iz sustava. Napomena: brisanje oznake neće obrisati povezana pitanja.</value>
+  </data>
+  <data name="Allows deleting user feedbacks." xml:space="preserve">
+    <value>Omogućava brisanje korisničkih povratnih informacija.</value>
+  </data>
+  <data name="Allows deletion of any category, regardless of ownership." xml:space="preserve">
+    <value>Dozvolava brisanje bilo koje kategorije, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows deletion of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Omogućava brisanje bilo koje točke znanja, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows deletion of articles, regardless of ownership." xml:space="preserve">
+    <value>Omogućava brisanje članaka, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows deletion of exams, regardless of ownership." xml:space="preserve">
+    <value>Dozvoljava brisanje ispita, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows deletion of papers, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje brisanje radova, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows deletion of questions, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje brisanje pitanja, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows editing of any category, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje uređivanje bilo koje kategorije, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows editing of any knowledgePoint, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje uređivanje bilo kojeg knowledgePointa, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows editing of articles, regardless of ownership." xml:space="preserve">
+    <value>Dozvoljava uređivanje članaka, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows editing of exams, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje uređivanje ispita, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows editing of papers, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje uređivanje radova, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows editing of questions, regardless of ownership." xml:space="preserve">
+    <value>Omogućuje uređivanje pitanja, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows extracting knowledge points, questions, tags from articles using AI." xml:space="preserve">
+    <value>Omogućuje izvlačenje točaka znanja, pitanja i oznaka iz članaka pomoću umjetne inteligencije.</value>
+  </data>
+  <data name="Allows managing accounting." xml:space="preserve">
+    <value>Omogućuje upravljanje računovodstvom.</value>
+  </data>
+  <data name="Allows modification of distribution channel details and enabling/disabling channels." xml:space="preserve">
+    <value>Omogućuje izmjenu detalja distribucijskih kanala te aktiviranje/deaktiviranje kanala.</value>
+  </data>
+  <data name="Allows modification of role names and their assigned permissions." xml:space="preserve">
+    <value>Omogućuje izmjenu imena uloga i njihovih dodijeljenih dopuštenja.</value>
+  </data>
+  <data name="Allows modification of user details like email and roles, and can also reset user passwords." xml:space="preserve">
+    <value>Omogućuje izmjenu korisničkih podataka poput e-pošte i uloga, te omogućuje i ponovno postavljanje korisničkih lozinki.</value>
+  </data>
+  <data name="Allows modifying VIP product settings including price, duration, and enabled status." xml:space="preserve">
+    <value>Omogućuje izmjenu postavki VIP proizvoda, uključujući cijenu, trajanje i status aktivnosti.</value>
+  </data>
+  <data name="Allows modifying global system settings." xml:space="preserve">
+    <value>Omogućuje izmjenu globalnih postavki sustava.</value>
+  </data>
+  <data name="Allows reading of questions, regardless of ownership." xml:space="preserve">
+    <value>Dozvoljava čitanje pitanja, bez obzira na vlasništvo.</value>
+  </data>
+  <data name="Allows the permanent deletion of VIP products." xml:space="preserve">
+    <value>Omogućuje trajno brisanje VIP proizvoda.</value>
+  </data>
+  <data name="Allows the permanent deletion of distribution channels." xml:space="preserve">
+    <value>Dozvolava trajno brisanje kanala distribucije.</value>
+  </data>
+  <data name="Allows the permanent deletion of roles." xml:space="preserve">
+    <value>Omogućuje trajno brisanje uloga.</value>
+  </data>
+  <data name="Allows the permanent deletion of user accounts." xml:space="preserve">
+    <value>Omogućuje trajno brisanje korisničkih računa.</value>
+  </data>
+  <data name="Allows triggering background jobs to optimize question answers and explanations using AI." xml:space="preserve">
+    <value>Omogućuje pokretanje pozadinskih poslova za optimizaciju odgovora i objašnjenja na pitanja pomoću AI-a.</value>
+  </data>
+  <data name="Allows updating the status of user feedbacks." xml:space="preserve">
+    <value>Omogućuje ažuriranje statusa korisničkih povratnih informacija.</value>
+  </data>
+  <data name="Allows verifying payment methods, requesting full virtual-payment refunds and checking their results." xml:space="preserve">
+    <value>Omogućuje provjeru metoda plaćanja, zahtijevanje punih povrata virtualnih plaćanja i provjeru njihovih rezultata.</value>
+  </data>
+  <data name="Allows viewing VIP products and their configuration." xml:space="preserve">
+    <value>Omogućuje pregled VIP proizvoda i njihovih postavki.</value>
+  </data>
+  <data name="Allows viewing and managing background job queues and their execution status." xml:space="preserve">
+    <value>Omogućuje pregled i upravljanje redovima pozadinskih poslova te njihovim statusom izvršavanja.</value>
+  </data>
+  <data name="Allows viewing payment orders, payment details, and user payment history." xml:space="preserve">
+    <value>Omogućuje pregled naplatnih naloga, detalja naplate i povijesti korisničkih naplata.</value>
+  </data>
+  <data name="Allows viewing system-level information and settings." xml:space="preserve">
+    <value>Omogućuje pregled informacija i postavki sustavne razine.</value>
+  </data>
+  <data name="Allows viewing the list of all users." xml:space="preserve">
+    <value>Omogućuje pregled popisa svih korisnika.</value>
+  </data>
+  <data name="Allows viewing the list of distribution channels and their statistics." xml:space="preserve">
+    <value>Omogućuje pregled popisa kanala distribucije i njihovih statistika.</value>
+  </data>
+  <data name="Allows viewing the list of roles and their assigned permissions." xml:space="preserve">
+    <value>Omogućuje pregled popisa uloga i njihovih dodijeljenih dopuštenja.</value>
+  </data>
+  <data name="Allows viewing the list of user feedbacks." xml:space="preserve">
+    <value>Omogućuje pregled popisa korisničkih povratnih informacija.</value>
+  </data>
+  <data name="Allows viewing, adding, and deleting VIP memberships for users." xml:space="preserve">
+    <value>Omogućuje pregled, dodavanje i brisanje VIP članstava za korisnike.</value>
+  </data>
+  <data name="Assign Roles to Users" xml:space="preserve">
+    <value>Dodijeli uloge korisnicima</value>
+  </data>
+  <data name="Delete Any Category" xml:space="preserve">
+    <value>Brisanje bilo koje kategorije</value>
+  </data>
+  <data name="Delete Any KnowledgePoint" xml:space="preserve">
+    <value>Obriši bilo koju točku znanja</value>
+  </data>
+  <data name="Delete Articles" xml:space="preserve">
+    <value>Brisanje članaka</value>
+  </data>
+  <data name="Delete Distribution Channels" xml:space="preserve">
+    <value>Brisanje kanala distribucije</value>
+  </data>
+  <data name="Delete Exams" xml:space="preserve">
+    <value>Brisanje ispitâ</value>
+  </data>
+  <data name="Delete Feedbacks" xml:space="preserve">
+    <value>Brisanje povratnih informacija</value>
+  </data>
+  <data name="Delete Papers" xml:space="preserve">
+    <value>Brisanje radova</value>
+  </data>
+  <data name="Delete Questions" xml:space="preserve">
+    <value>Brisanje pitanja</value>
+  </data>
+  <data name="Delete Roles" xml:space="preserve">
+    <value>Brisanje uloga</value>
+  </data>
+  <data name="Delete Users" xml:space="preserve">
+    <value>Brisanje korisnika</value>
+  </data>
+  <data name="Delete VIP Products" xml:space="preserve">
+    <value>Briši VIP proizvode</value>
+  </data>
+  <data name="Edit Any Category" xml:space="preserve">
+    <value>Uredi bilo koju kategoriju</value>
+  </data>
+  <data name="Edit Any KnowledgePoint" xml:space="preserve">
+    <value>Uredi bilo koju točku znanja</value>
+  </data>
+  <data name="Edit Articles" xml:space="preserve">
+    <value>Uredi članke</value>
+  </data>
+  <data name="Edit Distribution Channels" xml:space="preserve">
+    <value>Uredi kanale distribucije</value>
+  </data>
+  <data name="Edit Exams" xml:space="preserve">
+    <value>Uredi ispite</value>
+  </data>
+  <data name="Edit Feedbacks" xml:space="preserve">
+    <value>Uredi povratne informacije</value>
+  </data>
+  <data name="Edit Papers" xml:space="preserve">
+    <value>Uređivanje radova</value>
+  </data>
+  <data name="Edit Questions" xml:space="preserve">
+    <value>Uredi pitanja</value>
+  </data>
+  <data name="Edit Role Information" xml:space="preserve">
+    <value>Uredi informacije o ulozi</value>
+  </data>
+  <data name="Edit User Information" xml:space="preserve">
+    <value>Uredi korisničke podatke</value>
+  </data>
+  <data name="Edit VIP Products" xml:space="preserve">
+    <value>Uredi VIP proizvode</value>
+  </data>
+  <data name="Grants permission to create new distribution channels." xml:space="preserve">
+    <value>Odobrava ovlast za kreiranje novih distribucijskih kanala.</value>
+  </data>
+  <data name="Grants permission to create new roles." xml:space="preserve">
+    <value>Odobrava dopuštenje za stvaranje novih uloga.</value>
+  </data>
+  <data name="Grants permission to create new user accounts." xml:space="preserve">
+    <value>Daje dopuštenje za stvaranje novih korisničkih računa.</value>
+  </data>
+  <data name="Grants permission to restart the application instance. May cause availability interruptions but all settings and cache will be reloaded." xml:space="preserve">
+    <value>Daje dopuštenje za ponovno pokretanje instance aplikacije. Može uzrokovati prekide dostupnosti, ali će se sve postavke i keš ponovno učitati.</value>
+  </data>
+  <data name="Manage Accounting" xml:space="preserve">
+    <value>Upravljanje knjigovodstvom</value>
+  </data>
+  <data name="Manage Global Settings" xml:space="preserve">
+    <value>Upravljanje globalnim postavkama</value>
+  </data>
+  <data name="Manage Tags" xml:space="preserve">
+    <value>Upravljanje oznakama</value>
+  </data>
+  <data name="Manage VIP Members" xml:space="preserve">
+    <value>Upravljaj VIP članovima</value>
+  </data>
+  <data name="Read Distribution Channels" xml:space="preserve">
+    <value>Čitaj kanale distribucije</value>
+  </data>
+  <data name="Read Exams" xml:space="preserve">
+    <value>Pregled ispita</value>
+  </data>
+  <data name="Read Feedbacks" xml:space="preserve">
+    <value>Pregled povratnih informacija</value>
+  </data>
+  <data name="Read Payment Orders" xml:space="preserve">
+    <value>Pregled naplatnih nalogu</value>
+  </data>
+  <data name="Read Questions" xml:space="preserve">
+    <value>Čitanje pitanja</value>
+  </data>
+  <data name="Read Roles" xml:space="preserve">
+    <value>Čitanje uloga</value>
+  </data>
+  <data name="Read Users" xml:space="preserve">
+    <value>Čitanje korisnika</value>
+  </data>
+  <data name="Read VIP Products" xml:space="preserve">
+    <value>Čitanje VIP proizvoda</value>
+  </data>
+  <data name="Reboot This App" xml:space="preserve">
+    <value>Ponovno pokreni ovu aplikaciju</value>
+  </data>
+  <data name="Refund Payment Orders" xml:space="preserve">
+    <value>Povrat plaćanja narudžbi</value>
+  </data>
+  <data name="Trigger Optimization Jobs" xml:space="preserve">
+    <value>Pokretanje poslova optimizacije</value>
+  </data>
+  <data name="Use AI Extractor" xml:space="preserve">
+    <value>Koristi AI ekstraktor</value>
+  </data>
+  <data name="View Background Jobs" xml:space="preserve">
+    <value>Prikaz pozadinskih poslova</value>
+  </data>
+  <data name="View System Context" xml:space="preserve">
+    <value>Prikaz konteksta sustava</value>
+  </data>
+
+</root>

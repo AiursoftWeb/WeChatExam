@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name=" The link to the brand&apos;s home page." xml:space="preserve">
+    <value>Poveznica na početnu stranicu brenda.</value>
+  </data>
+  <data name="AI Prompt: Auto Categorize" xml:space="preserve">
+    <value>AI upit: Automatska kategorizacija</value>
+  </data>
+  <data name="AI Prompt: Auto Tagging" xml:space="preserve">
+    <value>AI upit: Automatsko označavanje</value>
+  </data>
+  <data name="AI Prompt: Base Explanation" xml:space="preserve">
+    <value>AI uput: Osnovno objašnjenje</value>
+  </data>
+  <data name="AI Prompt: Deep Explanation" xml:space="preserve">
+    <value>AI uput: Duboko objašnjenje</value>
+  </data>
+  <data name="AI Prompt: Default Extraction" xml:space="preserve">
+    <value>AI uput: Zadano izdvajanje</value>
+  </data>
+  <data name="AI Prompt: Default Grading" xml:space="preserve">
+    <value>AI upit: Zadano ocjenjivanje</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Blank)" xml:space="preserve">
+    <value>AI upit: Generiranje odgovora (Prazno polje)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Bool)" xml:space="preserve">
+    <value>AI uput: Generiranje odgovora (Bool)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Choice)" xml:space="preserve">
+    <value>AI uput: Generiranje odgovora (Izbor)</value>
+  </data>
+  <data name="AI Prompt: Generate Answer (Subjective)" xml:space="preserve">
+    <value>AI upit: Generiranje odgovora (subjektivno)</value>
+  </data>
+  <data name="Allow User Adjust Nickname" xml:space="preserve">
+    <value>Dozvoli korisniku prilagodbu nadimka</value>
+  </data>
+  <data name="Allow users to adjust their nickname in the profile management page." xml:space="preserve">
+    <value>Dozvolite korisnicima da prilagode svoje nadimke na stranici za upravljanje profilom.</value>
+  </data>
+  <data name="Brand Home URL" xml:space="preserve">
+    <value>URL početne stranice brenda</value>
+  </data>
+  <data name="Brand Name" xml:space="preserve">
+    <value>Naziv brenda</value>
+  </data>
+  <data name="Embedding API Token" xml:space="preserve">
+    <value>Embedding API Token</value>
+  </data>
+  <data name="Embedding Endpoint" xml:space="preserve">
+    <value>Endpoint za ugrađene vektore</value>
+  </data>
+  <data name="Embedding Model" xml:space="preserve">
+    <value>Model za ugrađivanje</value>
+  </data>
+  <data name="Enable Embedding-Based Search" xml:space="preserve">
+    <value>Omogući pretragu temeljenu na ugrađivanju</value>
+  </data>
+  <data name="Enable background embedding generation for questions and knowledge points." xml:space="preserve">
+    <value>Omogući pozadinsko generiranje ugrađivanja za pitanja i točke znanja.</value>
+  </data>
+  <data name="ICP Number" xml:space="preserve">
+    <value>ICP broj</value>
+  </data>
+  <data name="Optional bearer token for the embedding endpoint. Falls back to the OpenAI token when empty." xml:space="preserve">
+    <value>Izborni bearer token za endpoint za ugrađivanje. Ako je prazan, koristi se OpenAI token.</value>
+  </data>
+  <data name="Project Logo" xml:space="preserve">
+    <value>Logo projekta</value>
+  </data>
+  <data name="Project Name" xml:space="preserve">
+    <value>Naziv projekta</value>
+  </data>
+  <data name="The AI prompt for auto categorizing questions. Use {0} for content, {1} for metadata, {2} for answer, {3} for tags, {4} for explanation, and {5} for categories list." xml:space="preserve">
+    <value>AI uputstvo za automatsko kategoriziranje pitanja. Koristite {0} za sadržaj, {1} za metapodatke, {2} za odgovor, {3} za oznake, {4} za objašnjenje i {5} za popis kategorija.</value>
+  </data>
+  <data name="The AI prompt for auto tagging questions. Use {0} for type, {1} for category, {2} for content, {3} for answer, {4} for explanation, {5} for existing tags, and {6} for taxonomy instructions." xml:space="preserve">
+    <value>AI uputstvo za automatsko označavanje pitanja. Koristite {0} za tip, {1} za kategoriju, {2} za sadržaj, {3} za odgovor, {4} za objašnjenje, {5} za postojeće oznake i {6} za upute o taksonomiji.</value>
+  </data>
+  <data name="The AI prompt for generating answers for blank-filling questions." xml:space="preserve">
+    <value>AI uputstvo za generiranje odgovora za pitanja s praznim poljima.</value>
+  </data>
+  <data name="The AI prompt for generating answers for choice questions." xml:space="preserve">
+    <value>AI uput za generiranje odgovora na pitanja s ponuđenim odgovorima.</value>
+  </data>
+  <data name="The AI prompt for generating answers for subjective questions (Short Answer, Essay, Noun Explanation)." xml:space="preserve">
+    <value>AI uputstvo za generiranje odgovora za subjektivna pitanja (kratak odgovor, esej, objašnjenje pojma).</value>
+  </data>
+  <data name="The AI prompt for generating answers for true/false questions." xml:space="preserve">
+    <value>AI uputstvo za generiranje odgovora na pitanja tipa točno/netočno.</value>
+  </data>
+  <data name="The AI prompt for generating base explanations." xml:space="preserve">
+    <value>AI uputstvo za generiranje osnovnih objašnjenja.</value>
+  </data>
+  <data name="The AI prompt for generating deep explanations." xml:space="preserve">
+    <value>AI uputa za generiranje detaljnih objašnjenja.</value>
+  </data>
+  <data name="The AI prompt for grading questions. Use {0} for content, {1} for standard answer, {2} for explanation, {3} for student answer, and {4} for max score." xml:space="preserve">
+    <value>AI uputstvo za ocjenjivanje pitanja. Koristite {0} za sadržaj, {1} za standardni odgovor, {2} za objašnjenje, {3} za odgovor učenika i {4} za maksimalni broj bodova.</value>
+  </data>
+  <data name="The ICP license number for China mainland users. Leave empty to hide." xml:space="preserve">
+    <value>ICP broj licence za korisnike iz kontinentalne Kine. Ostavite prazno za skrivanje.</value>
+  </data>
+  <data name="The Ollama API base URL for embeddings. Only the host is used; /api/embed is appended automatically. Falls back to the OpenAI completion endpoint when empty." xml:space="preserve">
+    <value>Osnovna URL adresa Ollama API-ja za ugrađivanja. Koristi se samo domaćin; /api/embed se automatski dodaje. Ako je prazno, koristi se OpenAI završna točka.</value>
+  </data>
+  <data name="The brand name displayed in the footer." xml:space="preserve">
+    <value>Naziv brenda prikazan u podnožju.</value>
+  </data>
+  <data name="The default system prompt for extracting knowledge from material." xml:space="preserve">
+    <value>Zadani sustavni prompt za izdvajanje znanja iz materijala.</value>
+  </data>
+  <data name="The embedding model for questions and knowledge points. Existing vectors use the bge-m3 1024-dimension index contract." xml:space="preserve">
+    <value>Model za ugradnje pitanja i točaka znanja. Postojeći vektori koriste ugovor o indeksu od 1024 dimenzije bge-m3.</value>
+  </data>
+  <data name="The logo of the project displayed in the navbar and footer. Support jpg, png, svg." xml:space="preserve">
+    <value>Logo projekta prikazan u navigacijskoj traci i podnožju. Podržava jpg, png, svg.</value>
+  </data>
+  <data name="The name of the project displayed in the frontend." xml:space="preserve">
+    <value>Naziv projekta prikazan u sučelju.</value>
+  </data>
+
+</root>

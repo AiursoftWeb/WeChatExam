@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Choose dates on or after January 1, 1900." xml:space="preserve">
+    <value>Odaberite datume od 1. siječnja 1900. ili kasnije.</value>
+  </data>
+  <data name="Coupon amount saved. New orders use the new amount; existing orders and purchase history are unchanged." xml:space="preserve">
+    <value>Iznos kupona je spremljen. Novi narudžbenici koriste novi iznos; postojeći narudžbenici i povijest kupnje ostaju nepromijenjeni.</value>
+  </data>
+  <data name="Coupon disabled. Existing claims, orders and memberships have been kept." xml:space="preserve">
+    <value>Kupon je onemogućen. Postojeće iskoristene kupone, narudžbe i članstva su zadržani.</value>
+  </data>
+  <data name="Coupon enabled, but the channel is disabled. It remains unavailable until the channel is enabled." xml:space="preserve">
+    <value>Kupon je omogućen, ali je kanal onemogućen. Ostaje nedostupan dok se kanal ne omogući.</value>
+  </data>
+  <data name="Coupon enabled. Single-use history has not been reset." xml:space="preserve">
+    <value>Kupon je omogućen. Povijest jednokratne upotrebe nije poništena.</value>
+  </data>
+  <data name="The date range or time zone is not valid." xml:space="preserve">
+    <value>Raspon datuma ili vremenska zona nije valjana.</value>
+  </data>
+  <data name="The discount cannot exceed the price of any applicable product. Enter a smaller amount." xml:space="preserve">
+    <value>Popust ne smije premašiti cijenu bilo kojeg primjenjivog proizvoda. Unesite manji iznos.</value>
+  </data>
+  <data name="The start date must not be after the end date." xml:space="preserve">
+    <value>Početni datum ne smije biti nakon završnog datuma.</value>
+  </data>
+  <data name="This channel has coupon history. Keep it for reference and disable the channel to stop future use." xml:space="preserve">
+    <value>Ovaj kanal ima povijest kupona. Zadržite ga radi referencije i onemogućite kanal kako biste zaustavili buduće korištenje.</value>
+  </data>
+  <data name="This coupon has history and cannot be deleted. Its orders, claims and membership records must be preserved." xml:space="preserve">
+    <value>Ovaj kupon ima povijest i ne može se izbrisati. Njegove narudžbe, prijava i zapisi članstva moraju se sačuvati.</value>
+  </data>
+
+</root>
