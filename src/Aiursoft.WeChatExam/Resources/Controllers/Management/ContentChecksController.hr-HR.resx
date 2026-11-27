@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Different screens apply different access checks. Our team needs to review the Mini Program behavior." xml:space="preserve">
+    <value>Različite zaslone primjenjuju različite provjere pristupa. Naš tim mora pregledati ponašanje Mini Programa.</value>
+  </data>
+  <data name="Existing students with a valid VIP may still have access. New students cannot currently buy a suitable VIP to unlock this content." xml:space="preserve">
+    <value>Postojeći studenti s važećim VIP-om i dalje mogu imati pristup. Novi studenti trenutno ne mogu kupiti odgovarajući VIP za otključavanje ovog sadržaja.</value>
+  </data>
+  <data name="Free lesson has a paid exercise" xml:space="preserve">
+    <value>Besplatna lekcija ima plaćenu vježbu</value>
+  </data>
+  <data name="Free paper includes paid exercises" xml:space="preserve">
+    <value>Besplatni ispit sadrži plaćene vježbe</value>
+  </data>
+  <data name="Mini Program entry checks need review" xml:space="preserve">
+    <value>Provjere ulaza Mini Programa trebaju pregled</value>
+  </data>
+  <data name="No suitable VIP is currently available to buy" xml:space="preserve">
+    <value>Trenutno nije dostupan prikladan VIP za kupnju</value>
+  </data>
+  <data name="Students can open this free paper even when its original exercises are paid. Paper pricing and individual exercise pricing are independent." xml:space="preserve">
+    <value>Učenici mogu otvoriti ovaj besplatan ispitni upitnik čak i ako su njegovi izvorni zadaci naplatni. Cijena upitnika i cijena pojedinačnih zadataka neovisne su jedna o drugoj.</value>
+  </data>
+  <data name="Students cannot find this paper because a published paper version has not been created." xml:space="preserve">
+    <value>Učenici ne mogu pronaći ovaj ispit jer nije kreirana objavljena verzija ispita.</value>
+  </data>
+  <data name="Students cannot open this lesson until it is assigned to a knowledge directory." xml:space="preserve">
+    <value>Učenici ne mogu otvoriti ovaj lekciju dok se ne dodeli u direktorij znanja.</value>
+  </data>
+  <data name="The knowledge point is linked to one course, while these exercises belong to another. Buying the first course&apos;s VIP may not unlock the exercises." xml:space="preserve">
+    <value>Točka znanja povezana je s jednim tečajem, dok ove vježbe pripadaju drugom. Kupnja VIP pristupa za prvi tečaj možda neće otključati vježbe.</value>
+  </data>
+  <data name="The lesson and exercise belong to different courses" xml:space="preserve">
+    <value>Lekcija i vježba pripadaju različitim tečajevima</value>
+  </data>
+  <data name="This VIP product is missing its course. It cannot grant the intended course access." xml:space="preserve">
+    <value>Ovaj VIP proizvod nema svoju tečaj. Ne može odobriti predviđeni pristup tečaju.</value>
+  </data>
+  <data name="This VIP product is missing its institution. It cannot grant the intended real-paper access." xml:space="preserve">
+    <value>Ovaj VIP proizvod nema svoju ustanovu. Ne može odobriti predviđeni pristup stvarnim ispitnim listovima.</value>
+  </data>
+  <data name="This VIP product needs a course" xml:space="preserve">
+    <value>Ovaj VIP proizvod zahtijeva tečaj</value>
+  </data>
+  <data name="This VIP product needs an institution" xml:space="preserve">
+    <value>Ovaj VIP proizvod zahtijeva ustanovu</value>
+  </data>
+  <data name="This legacy paper needs migration" xml:space="preserve">
+    <value>Ovaj zastarjeli ispit zahtijeva migraciju</value>
+  </data>
+  <data name="This lesson needs a directory" xml:space="preserve">
+    <value>Ova lekcija zahtijeva direktorij</value>
+  </data>
+  <data name="This paper is kept for historical exams. Confirm its course or institution with the development team before making it available in the new paper lists." xml:space="preserve">
+    <value>Ovaj ispitni list čuva se radi povijesnih ispita. Provjerite njegov tijek ili instituciju s razvojnim timom prije nego što ga učinite dostupnim u novim popisima ispitnih listova.</value>
+  </data>
+  <data name="This paper is missing its published version" xml:space="preserve">
+    <value>Ovaj ispit nema objavljenu verziju</value>
+  </data>
+  <data name="This paper version has no exercises" xml:space="preserve">
+    <value>Ova verzija ispita nema vježbi</value>
+  </data>
+  <data name="This saved paper version contains no exercises, so it cannot provide a usable practice paper." xml:space="preserve">
+    <value>Ova spremljena verzija ispita ne sadrži vježbe, pa ne može pružiti upotrebljiv ispit za vježbanje.</value>
+  </data>
+  <data name="Visitors can read the lesson in a free directory, but its exercise requires a course VIP. Choose a free exercise or review the directory and period settings." xml:space="preserve">
+    <value>Posjetitelji mogu pročitati lekciju u besplatnom direktoriju, ali njezina vježba zahtijeva VIP pretplatu na tečaj. Odaberite besplatnu vježbu ili pregledajte postavke direktorija i razdoblja.</value>
+  </data>
+
+</root>

@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI Assistant" xml:space="preserve">
+    <value>AI asistent</value>
+  </data>
+  <data name="Access Denied" xml:space="preserve">
+    <value>Pristup odbijen</value>
+  </data>
+  <data name="Accounting Reports" xml:space="preserve">
+    <value>Računovodstveni izvještaji</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administracija</value>
+  </data>
+  <data name="Advanced Management" xml:space="preserve">
+    <value>Napredno upravljanje</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Članci</value>
+  </data>
+  <data name="Ask Ollama" xml:space="preserve">
+    <value>Pitaj Ollamu</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Dodeli razdoblje</value>
+  </data>
+  <data name="Background Jobs" xml:space="preserve">
+    <value>Pozadinske poslove</value>
+  </data>
+  <data name="Bad Request" xml:space="preserve">
+    <value>Loš zahtjev</value>
+  </data>
+  <data name="Change Avatar" xml:space="preserve">
+    <value>Promijeni avatar</value>
+  </data>
+  <data name="Change Password" xml:space="preserve">
+    <value>Promjena lozinke</value>
+  </data>
+  <data name="Change Profile" xml:space="preserve">
+    <value>Promjena profila</value>
+  </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>Detalji kanala</value>
+  </data>
+  <data name="Click to login" xml:space="preserve">
+    <value>Kliknite za prijavu</value>
+  </data>
+  <data name="Content Configuration Checks" xml:space="preserve">
+    <value>Provjeri postavke sadržaja</value>
+  </data>
+  <data name="Content Management" xml:space="preserve">
+    <value>Upravljanje sadržajem</value>
+  </data>
+  <data name="Coupon Usage Details" xml:space="preserve">
+    <value>Detalji korištenja kupona</value>
+  </data>
+  <data name="Course Contents" xml:space="preserve">
+    <value>Sadržaj tečaja</value>
+  </data>
+  <data name="Create Coupon" xml:space="preserve">
+    <value>Kreiraj kupon</value>
+  </data>
+  <data name="Create Distribution Channel" xml:space="preserve">
+    <value>Kreiraj kanal distribucije</value>
+  </data>
+  <data name="Create Institution" xml:space="preserve">
+    <value>Kreiranje ustanove</value>
+  </data>
+  <data name="Create Knowledge Category" xml:space="preserve">
+    <value>Stvori kategoriju znanja</value>
+  </data>
+  <data name="Create Mock Paper" xml:space="preserve">
+    <value>Kreiraj simulirani ispit</value>
+  </data>
+  <data name="Create Period" xml:space="preserve">
+    <value>Kreiranje razdoblja</value>
+  </data>
+  <data name="Create Question" xml:space="preserve">
+    <value>Kreiraj pitanje</value>
+  </data>
+  <data name="Create Real Paper" xml:space="preserve">
+    <value>Kreiraj stvarni ispit</value>
+  </data>
+  <data name="Create Role" xml:space="preserve">
+    <value>Kreiraj ulogu</value>
+  </data>
+  <data name="Create Tag" xml:space="preserve">
+    <value>Izradi oznaku</value>
+  </data>
+  <data name="Create Taxonomy" xml:space="preserve">
+    <value>Kreiranje taksonomije</value>
+  </data>
+  <data name="Create Total Category" xml:space="preserve">
+    <value>Kreiranje ukupne kategorije</value>
+  </data>
+  <data name="Create User" xml:space="preserve">
+    <value>Kreiraj korisnika</value>
+  </data>
+  <data name="Create VIP Membership" xml:space="preserve">
+    <value>Kreiraj VIP članstvo</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Nadzorna ploča</value>
+  </data>
+  <data name="Database Management" xml:space="preserve">
+    <value>Upravljanje bazom podataka</value>
+  </data>
+  <data name="Delete Account" xml:space="preserve">
+    <value>Obriši račun</value>
+  </data>
+  <data name="Delete Category" xml:space="preserve">
+    <value>Izbrisi kategoriju</value>
+  </data>
+  <data name="Delete Coupon" xml:space="preserve">
+    <value>Obriši kupon</value>
+  </data>
+  <data name="Delete Distribution Channel" xml:space="preserve">
+    <value>Obriši kanal distribucije</value>
+  </data>
+  <data name="Delete Feedback" xml:space="preserve">
+    <value>Obriši povratne informacije</value>
+  </data>
+  <data name="Delete Knowledge Category" xml:space="preserve">
+    <value>Brisanje kategorije znanja</value>
+  </data>
+  <data name="Delete KnowledgePoint" xml:space="preserve">
+    <value>Obriši točku znanja</value>
+  </data>
+  <data name="Delete Role" xml:space="preserve">
+    <value>Brisanje uloge</value>
+  </data>
+  <data name="Delete Tag" xml:space="preserve">
+    <value>Obriši oznaku</value>
+  </data>
+  <data name="Delete Taxonomy" xml:space="preserve">
+    <value>Obriši taksonomiju</value>
+  </data>
+  <data name="Delete User" xml:space="preserve">
+    <value>Brisanje korisnika</value>
+  </data>
+  <data name="Delete VIP Membership" xml:space="preserve">
+    <value>Obriši VIP članstvo</value>
+  </data>
+  <data name="Directory" xml:space="preserve">
+    <value>Direktorij</value>
+  </data>
+  <data name="Distribution Channels" xml:space="preserve">
+    <value>Kanali distribucije</value>
+  </data>
+  <data name="Edit Coupon Amount" xml:space="preserve">
+    <value>Uredi iznos kupona</value>
+  </data>
+  <data name="Edit Institution" xml:space="preserve">
+    <value>Uredi ustanovu</value>
+  </data>
+  <data name="Edit Knowledge Category" xml:space="preserve">
+    <value>Uredi kategoriju znanja</value>
+  </data>
+  <data name="Edit Mock Paper" xml:space="preserve">
+    <value>Uredi simulirani ispit</value>
+  </data>
+  <data name="Edit Period" xml:space="preserve">
+    <value>Uredi razdoblje</value>
+  </data>
+  <data name="Edit Question" xml:space="preserve">
+    <value>Uredi pitanje</value>
+  </data>
+  <data name="Edit Real Paper" xml:space="preserve">
+    <value>Uredi stvarni ispit</value>
+  </data>
+  <data name="Edit Role" xml:space="preserve">
+    <value>Uredi ulogu</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Uredi oznaku</value>
+  </data>
+  <data name="Edit Taxonomy" xml:space="preserve">
+    <value>Uredi taksonomiju</value>
+  </data>
+  <data name="Edit Total Category" xml:space="preserve">
+    <value>Uredi ukupnu kategoriju</value>
+  </data>
+  <data name="Edit User" xml:space="preserve">
+    <value>Uredi korisnika</value>
+  </data>
+  <data name="Edit VIP Membership" xml:space="preserve">
+    <value>Uredi VIP članstvo</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Greška</value>
+  </data>
+  <data name="Exam Management" xml:space="preserve">
+    <value>Upravljanje ispitima</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Ispiti</value>
+  </data>
+  <data name="Export Questions" xml:space="preserve">
+    <value>Izvoz pitanja</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Značajke</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Povratne informacije</value>
+  </data>
+  <data name="Finance Reports" xml:space="preserve">
+    <value>Financijski izvještaji</value>
+  </data>
+  <data name="Global Settings" xml:space="preserve">
+    <value>Globalna postavka</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Početna</value>
+  </data>
+  <data name="Import Questions" xml:space="preserve">
+    <value>Uvoz pitanja</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Indeks</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Informacije</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Ustanove</value>
+  </data>
+  <data name="Internal Server Error" xml:space="preserve">
+    <value>Interna greška poslužitelja</value>
+  </data>
+  <data name="Join Official Exam" xml:space="preserve">
+    <value>Pridruži se službenom ispitu</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Kategorije znanja</value>
+  </data>
+  <data name="Knowledge Category Details" xml:space="preserve">
+    <value>Detalji kategorije znanja</value>
+  </data>
+  <data name="Knowledge Management" xml:space="preserve">
+    <value>Upravljanje znanjem</value>
+  </data>
+  <data name="Knowledge Point Categories" xml:space="preserve">
+    <value>Kategorije točaka znanja</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Točke znanja</value>
+  </data>
+  <data name="Legacy Paper Archive" xml:space="preserve">
+    <value>Arhiva starih ispitnih radova</value>
+  </data>
+  <data name="Lockout" xml:space="preserve">
+    <value>Blokada</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Prijava</value>
+  </data>
+  <data name="Login to get access to all features." xml:space="preserve">
+    <value>Prijavite se za pristup svim funkcijama.</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Upravljanje</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="Marketing Management" xml:space="preserve">
+    <value>Uprava marketingom</value>
+  </data>
+  <data name="Mock Exam Management" xml:space="preserve">
+    <value>Upravljanje simuliranim ispitima</value>
+  </data>
+  <data name="Mock Paper Management" xml:space="preserve">
+    <value>Upravljanje simuliranim ispitima</value>
+  </data>
+  <data name="Mock Paper Questions" xml:space="preserve">
+    <value>Pitanja simuliranih ispitnih zadataka</value>
+  </data>
+  <data name="Mock Paper Versions" xml:space="preserve">
+    <value>Verzije simuliranih ispitnih zadataka</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Simulirani ispitni zadaci</value>
+  </data>
+  <data name="Monthly Finance Report Details" xml:space="preserve">
+    <value>Detalji mjesečnog financijskog izvještaja</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Vijesti</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>Nije pronađeno</value>
+  </data>
+  <data name="Paper Publication" xml:space="preserve">
+    <value>Objava ispita</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Pregledni radovi</value>
+  </data>
+  <data name="Payment Management" xml:space="preserve">
+    <value>Upravljanje plaćanjima</value>
+  </data>
+  <data name="Payment Orders" xml:space="preserve">
+    <value>Narudžbe za plaćanje</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Razdoblja</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Osobno</value>
+  </data>
+  <data name="Practice Session" xml:space="preserve">
+    <value>Vježbana sesija</value>
+  </data>
+  <data name="Practice Test" xml:space="preserve">
+    <value>Vježbeni ispit</value>
+  </data>
+  <data name="Preview Papers" xml:space="preserve">
+    <value>Pregled testova</value>
+  </data>
+  <data name="Preview Questions" xml:space="preserve">
+    <value>Pregled pitanja</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Profile Settings" xml:space="preserve">
+    <value>Postavke profila</value>
+  </data>
+  <data name="Question Bank Management" xml:space="preserve">
+    <value>Upravljanje bankom pitanja</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Pitanja</value>
+  </data>
+  <data name="Real Exam Management" xml:space="preserve">
+    <value>Uprava stvarnim ispitima</value>
+  </data>
+  <data name="Real Paper Questions" xml:space="preserve">
+    <value>Pitanja stvarnih ispita</value>
+  </data>
+  <data name="Real Paper Versions" xml:space="preserve">
+    <value>Verzije stvarnih ispitnih papira</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Stvarni ispiti</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Obrada povrata</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Upravljanje povratima</value>
+  </data>
+  <data name="Refund reconciliation records" xml:space="preserve">
+    <value>Zapisi usklađivanja povrata</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registracija</value>
+  </data>
+  <data name="Role Details" xml:space="preserve">
+    <value>Detalji uloge</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Uloge</value>
+  </data>
+  <data name="Search Content" xml:space="preserve">
+    <value>Pretraži sadržaj</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Postavke</value>
+  </data>
+  <data name="Sign out" xml:space="preserve">
+    <value>Odjava</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sustav</value>
+  </data>
+  <data name="System Info" xml:space="preserve">
+    <value>Informacije o sustavu</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Oznake</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taksonomije</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Upravljanje taksonomijama</value>
+  </data>
+  <data name="Test Papers" xml:space="preserve">
+    <value>Ispitni listovi</value>
+  </data>
+  <data name="Total Categories" xml:space="preserve">
+    <value>Ukupne kategorije</value>
+  </data>
+  <data name="Total Category Management" xml:space="preserve">
+    <value>Upravljanje kategorijama</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>Neovlašteno</value>
+  </data>
+  <data name="User Details" xml:space="preserve">
+    <value>Detalji korisnika</value>
+  </data>
+  <data name="User Feedbacks" xml:space="preserve">
+    <value>Povratne informacije korisnika</value>
+  </data>
+  <data name="User Management" xml:space="preserve">
+    <value>Uprava korisnicima</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Korisnici</value>
+  </data>
+  <data name="VIP Change History" xml:space="preserve">
+    <value>Povijest promjena VIP-a</value>
+  </data>
+  <data name="VIP Members" xml:space="preserve">
+    <value>VIP članovi</value>
+  </data>
+  <data name="VIP Products" xml:space="preserve">
+    <value>VIP proizvodi</value>
+  </data>
+  <data name="Virtual payment setup" xml:space="preserve">
+    <value>Postavka virtualnog plaćanja</value>
+  </data>
+
+</root>

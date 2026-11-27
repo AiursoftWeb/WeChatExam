@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A lesson can be read through any directly assigned directory that grants access. Exercise access is checked separately." xml:space="preserve">
+    <value>Lekciju se može pročitati putem bilo koje izravno dodijeljene direktorije koja omogućuje pristup. Pristup vježbama provjerava se zasebno.</value>
+  </data>
+  <data name="A membership for a linked knowledge subject does not necessarily unlock the exercise&apos;s own subject." xml:space="preserve">
+    <value>Članstvo za povezanu znanstvenu temu ne nužno otključava vlastitu temu vježbe.</value>
+  </data>
+  <data name="All relevant VIPs" xml:space="preserve">
+    <value>Svi relevantni VIP-ovi</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Anonimno</value>
+  </data>
+  <data name="Assign the intended institution before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Dodijelite namjeravanu ustanovu prije ponude ovog proizvoda za prodaju. Postojeća članstva pregledajte odvojeno.</value>
+  </data>
+  <data name="Assign the intended subject before offering this product for sale. Review existing memberships separately." xml:space="preserve">
+    <value>Dodijelite namjeravanu predmetnu oblast prije nego što ponudite ovaj proizvod za prodaju. Postojeće članstva pregledajte odvojeno.</value>
+  </data>
+  <data name="Assign the lesson to its intended knowledge directory." xml:space="preserve">
+    <value>Dodijelite lekciju svojoj namijenjenoj direktoriji znanja.</value>
+  </data>
+  <data name="Authorization only: a denied snapshot returns 403. A published, nonempty snapshot is also required." xml:space="preserve">
+    <value>Samo autorizacija: odbijeni snapshot vraća 403. Također je potreban objavljen, neprazan snapshot.</value>
+  </data>
+  <data name="Choose a free exercise for this lesson, or review its directory and period pricing. Changing a period affects every question in it." xml:space="preserve">
+    <value>Odaberite besplatnu vježbu za ovaj lekciju ili pregledajte njezinu direktorij i cijenama razdoblja. Promjena razdoblja utječe na svako pitanje u njemu.</value>
+  </data>
+  <data name="Confirm its course or institution and migrate it to a mock paper or real paper. Keep its questions, versions and exam records." xml:space="preserve">
+    <value>Potvrdite njezin tečaj ili instituciju i migrirajte je u probni ili stvarni ispit. Zadržite njezina pitanja, verzije i zapise ispita.</value>
+  </data>
+  <data name="Confirm whether this is intentional cross-subject teaching; otherwise correct the question period or the knowledge association." xml:space="preserve">
+    <value>Potvrdite je li namjeravan prekrižni nastavni sadržaj; u suprotnom ispravite razdoblje pitanja ili povezivanje znanja.</value>
+  </data>
+  <data name="Custom VIP selection" xml:space="preserve">
+    <value>Prilagodbe VIP odabira</value>
+  </data>
+  <data name="Existing active VIPs can still work, but buying currently enabled products cannot unlock this question." xml:space="preserve">
+    <value>Postojeće aktivne VIP pretplate i dalje mogu funkcionirati, ali kupnja trenutno aktiviranih proizvoda ne može otključati ovo pitanje.</value>
+  </data>
+  <data name="Existing active memberships may work, but new customers have no purchase route." xml:space="preserve">
+    <value>Postojeće aktivne članarine mogu funkcionirati, ali novi kupci nemaju put za kupnju.</value>
+  </data>
+  <data name="Free knowledge directory links to a paid exercise" xml:space="preserve">
+    <value>Besplatni direktorij znanja povezuje se s plaćanom vježbom</value>
+  </data>
+  <data name="Free paper contains snapshots of currently paid questions" xml:space="preserve">
+    <value>Besplatni ispit sadrži snimke trenutno naplaćenih pitanja</value>
+  </data>
+  <data name="Institution VIP product has no valid institution" xml:space="preserve">
+    <value>VIP proizvod institucije nema valjanu instituciju</value>
+  </data>
+  <data name="Institution VIP: {0}" xml:space="preserve">
+    <value>Ustanova VIP: {0}</value>
+  </data>
+  <data name="Institutions" xml:space="preserve">
+    <value>Ustanove</value>
+  </data>
+  <data name="Keep this if the free paper is intentional. Review the paper&apos;s own pricing if its snapshot should be restricted." xml:space="preserve">
+    <value>Zadržite ovo ako je besplatni ispit namjerno takav. Provjerite vlastitu cijenu ispita ako bi njegov snimak trebao biti ograničen.</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Kategorije znanja</value>
+  </data>
+  <data name="Knowledge point and exercise reference different subjects" xml:space="preserve">
+    <value>Točka znanja i vježba se odnose na različite predmete</value>
+  </data>
+  <data name="Knowledge point has no directory" xml:space="preserve">
+    <value>Točka znanja nema direktorij</value>
+  </data>
+  <data name="Knowledge points" xml:space="preserve">
+    <value>Točkovi znanja</value>
+  </data>
+  <data name="Legacy paper requires migration" xml:space="preserve">
+    <value>Zastarjeli ispit zahtijeva migraciju</value>
+  </data>
+  <data name="Legacy papers" xml:space="preserve">
+    <value>Stari ispitni zadaci</value>
+  </data>
+  <data name="Mock papers" xml:space="preserve">
+    <value>Probni ispitni zadaci</value>
+  </data>
+  <data name="No enabled product combination unlocks this question" xml:space="preserve">
+    <value>Nijena omogućena kombinacija proizvoda ne otključava ovo pitanje</value>
+  </data>
+  <data name="No enabled product unlocks this paper" xml:space="preserve">
+    <value>Nijedan aktivni proizvod ne otključava ovaj ispit</value>
+  </data>
+  <data name="Paper access is independent of original question access. The retained snapshot remains usable even if an original changes or is deleted." xml:space="preserve">
+    <value>Pristup ispitnom papiru neovisan je o pristupu izvornim pitanjima. Zadržani snimak ostaje upotrebljiv čak i ako se izvornik promijeni ili izbriše.</value>
+  </data>
+  <data name="Paper snapshot is empty" xml:space="preserve">
+    <value>Snimka ispita je prazna</value>
+  </data>
+  <data name="Paper snapshots" xml:space="preserve">
+    <value>Snimke ispitnih zadataka</value>
+  </data>
+  <data name="Periods" xml:space="preserve">
+    <value>Razdoblja</value>
+  </data>
+  <data name="Publishable paper has no snapshot" xml:space="preserve">
+    <value>Objavljivi ispit nema snimku</value>
+  </data>
+  <data name="Question content is returned (200)." xml:space="preserve">
+    <value>Sadržaj pitanja se vraća (200).</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Pitanja</value>
+  </data>
+  <data name="Real papers" xml:space="preserve">
+    <value>Stvarni ispitni zadaci</value>
+  </data>
+  <data name="Review its questions and create a snapshot through the existing paper management workflow." xml:space="preserve">
+    <value>Pregledajte njegova pitanja i kreirajte snimku putem postojećeg tijeka rada za upravljanje ispitima.</value>
+  </data>
+  <data name="Review the course and available VIP products. Disabled products do not invalidate existing active memberships." xml:space="preserve">
+    <value>Pregledajte tečaj i dostupne VIP proizvode. Onemogućeni proizvodi ne poništavaju postojeća aktivna članstva.</value>
+  </data>
+  <data name="Review the mock paper&apos;s course VIP products. Sales availability does not revoke existing memberships." xml:space="preserve">
+    <value>Pregledajte VIP proizvode tečaja za probni ispit. Dostupnost za prodaju ne otkazuje postojeća članstva.</value>
+  </data>
+  <data name="Review the paper questions and publish a corrected snapshot. Changing original questions does not update existing snapshots." xml:space="preserve">
+    <value>Pregledajte pitanja ispita i objavite ispravljenu verziju. Promjena izvornih pitanja ne ažurira postojeće verzije.</value>
+  </data>
+  <data name="Review this institution&apos;s VIP products. Course VIPs do not unlock real papers." xml:space="preserve">
+    <value>Pregledajte VIP proizvode ove institucije. VIP-ovi tečajeva ne otključavaju stvarne ispite.</value>
+  </data>
+  <data name="Signed in without active VIP" xml:space="preserve">
+    <value>Prijavljen bez aktivnog VIP-a</value>
+  </data>
+  <data name="Snapshot version {0} contains no exercises. Old snapshot links can still be requested." xml:space="preserve">
+    <value>Verzija trenutka {0} ne sadrži vježbe. Stare veze trenutaka i dalje se mogu zatražiti.</value>
+  </data>
+  <data name="Students can read a lesson in a free directory, but its linked exercise belongs to a paid period. This conflicts with the free-lesson rule." xml:space="preserve">
+    <value>Učenici mogu čitati lekciju u besplatnom direktoriju, ali njeno povezano vježbanje pripada plaćenom razdoblju. To je u suprotnosti s pravilom o besplatnim lekcijama.</value>
+  </data>
+  <data name="Subject VIP product has no valid subject" xml:space="preserve">
+    <value>VIP proizvod za predmet nema valjani predmet</value>
+  </data>
+  <data name="Subject VIP: {0}" xml:space="preserve">
+    <value>VIP predmeta: {0}</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Predmeti</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Oznake</value>
+  </data>
+  <data name="Taxonomies" xml:space="preserve">
+    <value>Taksonomije</value>
+  </data>
+  <data name="The public paper list excludes this paper because no snapshot exists." xml:space="preserve">
+    <value>Javni popis ispita isključuje ovaj ispit jer ne postoji nikakav snimak.</value>
+  </data>
+  <data name="The question&apos;s subject VIP is required (403)." xml:space="preserve">
+    <value>Za pitanje je obavezan VIP predmeta (403).</value>
+  </data>
+  <data name="This lesson has no directory granting access, so even a course VIP cannot read it." xml:space="preserve">
+    <value>Ova lekcija nema direktorij koji dodjeljuje pristup, pa čak ni VIP tečaja ne može pročitati.</value>
+  </data>
+  <data name="This paper is retained for administration and historical exams. It is not available through the current student paper lists." xml:space="preserve">
+    <value>Ovaj ispitni list zadržan je radi administracije i povijesnih ispita. Nije dostupan putem aktualnih studentskih popisa ispitnih listova.</value>
+  </data>
+  <data name="This period is hidden from independent practice (404)." xml:space="preserve">
+    <value>Ovo razdoblje je skriveno od neovisne prakse (404).</value>
+  </data>
+  <data name="This product cannot grant the intended institution membership." xml:space="preserve">
+    <value>Ovaj proizvod ne može dodijeliti namjeravanu članstvo institucije.</value>
+  </data>
+  <data name="This product cannot grant the intended subject membership." xml:space="preserve">
+    <value>Ovaj proizvod ne može dodijeliti članstvo u namijenjenoj predmetnoj kategoriji.</value>
+  </data>
+  <data name="VIP products" xml:space="preserve">
+    <value>VIP proizvodi</value>
+  </data>
+
+</root>

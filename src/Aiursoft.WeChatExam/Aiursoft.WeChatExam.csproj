@@ -27,8 +27,8 @@
     </PackageReference>
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.Api" Version="4.0.1" />
     <PackageReference Include="SKIT.FlurlHttpClient.Wechat.TenpayV3" Version="4.0.1" />
-    <PackageReference Include="SkiaSharp" Version="4.157.0" />
-    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.157.0" />
+    <PackageReference Include="SkiaSharp" Version="4.158.0" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="4.158.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="11.0.1" />
   </ItemGroup>
   <ItemGroup>
