@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- All Taxonomies --" xml:space="preserve">
+    <value>-- Sve taksonomije --</value>
+  </data>
+  <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Nekategorizirano --</value>
+  </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Došlo je do pogreške tijekom brisanja.</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Jeste li sigurni da želite obrisati</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Očisti</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Potvrdi grupno brisanje</value>
+  </data>
+  <data name="Create Tag" xml:space="preserve">
+    <value>Kreiraj oznaku</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="Delete Selected" xml:space="preserve">
+    <value>Izbriši odabrane</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Uredi oznaku</value>
+  </data>
+  <data name="Failed to delete tags:" xml:space="preserve">
+    <value>Neuspjelo brisanje oznaka:</value>
+  </data>
+  <data name="Grouping is optional for internal tags." xml:space="preserve">
+    <value>Grupiranje je opcionalno za interne oznake.</value>
+  </data>
+  <data name="Manage Taxonomies" xml:space="preserve">
+    <value>Upravljaj taksonomijama</value>
+  </data>
+  <data name="No tags found matching your criteria." xml:space="preserve">
+    <value>Nema pronađenih oznaka koje odgovaraju vašim kriterijima.</value>
+  </data>
+  <data name="No tags in this taxonomy matching your search." xml:space="preserve">
+    <value>Nema oznaka u ovoj taksonomiji koje odgovaraju vašem pretraživanju.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pretraži</value>
+  </data>
+  <data name="Search tags..." xml:space="preserve">
+    <value>Pretraži oznake...</value>
+  </data>
+  <data name="Tags Management" xml:space="preserve">
+    <value>Upravljanje oznakama</value>
+  </data>
+  <data name="Toggle Dropdown" xml:space="preserve">
+    <value>Prikaži padajući izbornik</value>
+  </data>
+  <data name="Uncategorized Tags" xml:space="preserve">
+    <value>Oznake bez kategorije</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>odabrano</value>
+  </data>
+  <data name="selected tags? This action cannot be undone." xml:space="preserve">
+    <value>odabranih oznaka? Ova radnja se ne može poništiti.</value>
+  </data>
+
+</root>

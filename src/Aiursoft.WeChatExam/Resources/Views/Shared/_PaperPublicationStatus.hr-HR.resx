@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="More options" xml:space="preserve">
+    <value>Više opcija</value>
+  </data>
+  <data name="Not published" xml:space="preserve">
+    <value>Nepublikovano</value>
+  </data>
+  <data name="Publication History" xml:space="preserve">
+    <value>Povijest objavljivanja</value>
+  </data>
+  <data name="Publish Paper" xml:space="preserve">
+    <value>Objavi ispit</value>
+  </data>
+  <data name="Publish Updates" xml:space="preserve">
+    <value>Objavi ažuriranja</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Objavljeno</value>
+  </data>
+  <data name="Students cannot access this paper. Save your edits, then publish when it is ready." xml:space="preserve">
+    <value>Studenti ne mogu pristupiti ovom ispitu. Spremite svoje izmjene, a zatim objavite kada je spreman.</value>
+  </data>
+  <data name="Students see the published content. Saved edits need to be published before students see them." xml:space="preserve">
+    <value>Učenici vide objavljene sadržaje. Spremljene izmjene moraju biti objavljene prije nego što ih učenici vide.</value>
+  </data>
+  <data name="Students still see the last published content. Publish your updates when ready." xml:space="preserve">
+    <value>Učenici i dalje vide zadnje objavljene sadržaje. Objavite svoje ažuriranja kada budete spremni.</value>
+  </data>
+  <data name="Unpublish Paper" xml:space="preserve">
+    <value>Poništi objavu testa</value>
+  </data>
+  <data name="Unpublished changes" xml:space="preserve">
+    <value>Nepublikovane izmjene</value>
+  </data>
+  <data name="View Published Content" xml:space="preserve">
+    <value>Prikaži objavljene sadržaje</value>
+  </data>
+
+</root>

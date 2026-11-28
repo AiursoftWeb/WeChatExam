@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="Add Category" xml:space="preserve">
+    <value>Dodaj kategoriju</value>
+  </data>
+  <data name="An error occurred while saving order." xml:space="preserve">
+    <value>Došlo je do pogreške tijekom spremanja narudžbe.</value>
+  </data>
+  <data name="Category List" xml:space="preserve">
+    <value>Popis kategorija</value>
+  </data>
+  <data name="Direct Knowledge Points" xml:space="preserve">
+    <value>Direktne točke znanja</value>
+  </data>
+  <data name="Failed to render tree:" xml:space="preserve">
+    <value>Neuspjelo iscrtavanje stabla:</value>
+  </data>
+  <data name="Failed to save order." xml:space="preserve">
+    <value>Neuspješno spremanje redoslijeda.</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Besplatno</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Kategorije znanja</value>
+  </data>
+  <data name="List View" xml:space="preserve">
+    <value>Prikaz popisa</value>
+  </data>
+  <data name="No categories found" xml:space="preserve">
+    <value>Nema pronađenih kategorija</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Roditelj</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>Spremi redoslijed</value>
+  </data>
+  <data name="Saving..." xml:space="preserve">
+    <value>Spremanje...</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Ukupna kategorija</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Pregled</value>
+  </data>
+  <data name="Visual Tree" xml:space="preserve">
+    <value>Vizualno stablo</value>
+  </data>
+
+</root>

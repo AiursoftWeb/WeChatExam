@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="-- Uncategorized --" xml:space="preserve">
+    <value>-- Nekategorizirano --</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Edit Tag" xml:space="preserve">
+    <value>Uredi oznaku</value>
+  </data>
+  <data name="Enter tag name..." xml:space="preserve">
+    <value>Unesite naziv oznake...</value>
+  </data>
+  <data name="Grouping tags by taxonomy helps in filtering and organization." xml:space="preserve">
+    <value>Grupiranje oznaka prema taksonomiji pomaže pri filtriranju i organizaciji.</value>
+  </data>
+  <data name="If you need a new taxonomy, you can manage them in the" xml:space="preserve">
+    <value>Ako vam je potrebna nova taksonomija, možete ih upravljati u</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>Spremi promjene</value>
+  </data>
+  <data name="Save and return to content checks" xml:space="preserve">
+    <value>Spremi i vrati se na provjere sadržaja</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Oznake</value>
+  </data>
+  <data name="Tags are used to group questions. Assigning a taxonomy makes it easier for users to find questions by category." xml:space="preserve">
+    <value>Oznake se koriste za grupiranje pitanja. Dodjeljivanjem taksonomije korisnicima je lakše pronaći pitanja po kategoriji.</value>
+  </data>
+  <data name="Taxonomies Management" xml:space="preserve">
+    <value>Upravljanje taksonomijama</value>
+  </data>
+  <data name="Tips" xml:space="preserve">
+    <value>Savjeti</value>
+  </data>
+
+</root>
