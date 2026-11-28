@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Actions" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktivno</value>
+  </data>
+  <data name="Add Coupon" xml:space="preserve">
+    <value>Dodaj kupon</value>
+  </data>
+  <data name="Agency Name" xml:space="preserve">
+    <value>Naziv agencije</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>Natrag na popis</value>
+  </data>
+  <data name="Channel Details" xml:space="preserve">
+    <value>Detalji kanala</value>
+  </data>
+  <data name="Channel Disabled" xml:space="preserve">
+    <value>Kanal onemogućen</value>
+  </data>
+  <data name="Channel Information" xml:space="preserve">
+    <value>Informacije o kanalu</value>
+  </data>
+  <data name="Channel totals include purchases by referred students, even without a coupon. Open a coupon to see only purchases made with that code." xml:space="preserve">
+    <value>Ukupni iznosi kanala uključuju kupnje studenata preporučitelja, čak i bez kupona. Otvorite kupon da biste vidjeli samo kupnje izvršene s tim kodom.</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Kod</value>
+  </data>
+  <data name="Coupons" xml:space="preserve">
+    <value>Kuponi</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>Kreirano</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Izbriši</value>
+  </data>
+  <data name="Disable Channel" xml:space="preserve">
+    <value>Onemogući kanal</value>
+  </data>
+  <data name="Disable Coupon" xml:space="preserve">
+    <value>Onemogući kupon</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Onemogućeno</value>
+  </data>
+  <data name="Disabling a coupon stops new claims and new orders using it. Already-created payment orders may still complete. Existing memberships and history are kept." xml:space="preserve">
+    <value>Onemogućavanje kupona zaustavlja nove upite i nove narudžbe koje ga koriste. Već kreirane narudžbe za plaćanje mogu i dalje biti dovršene. Postojeća članstva i povijest se zadržavaju.</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Popust</value>
+  </data>
+  <data name="Edit Amount" xml:space="preserve">
+    <value>Uredi iznos</value>
+  </data>
+  <data name="Enable Channel" xml:space="preserve">
+    <value>Omogući kanal</value>
+  </data>
+  <data name="Enable Coupon" xml:space="preserve">
+    <value>Omogući kupon</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Omogućeno</value>
+  </data>
+  <data name="Multi Use" xml:space="preserve">
+    <value>Višestruka upotreba</value>
+  </data>
+  <data name="Paid Orders" xml:space="preserve">
+    <value>Plaćene narudžbe</value>
+  </data>
+  <data name="Payment permission required" xml:space="preserve">
+    <value>Potrebna dozvola za plaćanje</value>
+  </data>
+  <data name="Registrations" xml:space="preserve">
+    <value>Registracije</value>
+  </data>
+  <data name="Review Deletion" xml:space="preserve">
+    <value>Pregled brisanja</value>
+  </data>
+  <data name="Single Use" xml:space="preserve">
+    <value>Jedнократна upotreba</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistike</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Swipe the coupon list sideways to see all actions." xml:space="preserve">
+    <value>Povucite popis kupona u stranu da biste vidjeli sve akcije.</value>
+  </data>
+  <data name="Total Amount" xml:space="preserve">
+    <value>Ukupni iznos</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Vrsta</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Korištenje</value>
+  </data>
+  <data name="Used (Single Use)" xml:space="preserve">
+    <value>Korišteno (Jednokratna upotreba)</value>
+  </data>
+  <data name="View Purchases" xml:space="preserve">
+    <value>Pogledaj kupnje</value>
+  </data>
+  <data name="{0} completed purchases" xml:space="preserve">
+    <value>{0} dovršenih kupovina</value>
+  </data>
+
+</root>

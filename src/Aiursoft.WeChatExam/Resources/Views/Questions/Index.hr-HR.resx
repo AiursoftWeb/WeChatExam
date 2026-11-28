@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="AI Auto Categorize" xml:space="preserve">
+    <value>AI automatska kategorizacija</value>
+  </data>
+  <data name="AI Auto Tagging" xml:space="preserve">
+    <value>AI automatsko označavanje</value>
+  </data>
+  <data name="AI Generate Answers" xml:space="preserve">
+    <value>AI generiranje odgovora</value>
+  </data>
+  <data name="AI Generate Explanations" xml:space="preserve">
+    <value>AI generiranje objašnjenja</value>
+  </data>
+  <data name="AI Tools" xml:space="preserve">
+    <value>AI alati</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Akcije</value>
+  </data>
+  <data name="Add Question" xml:space="preserve">
+    <value>Dodaj pitanje</value>
+  </data>
+  <data name="All Periods" xml:space="preserve">
+    <value>Svi periodi</value>
+  </data>
+  <data name="All Total Categories" xml:space="preserve">
+    <value>Sve ukupne kategorije</value>
+  </data>
+  <data name="All Types" xml:space="preserve">
+    <value>Sve vrste</value>
+  </data>
+  <data name="An error occurred during deletion." xml:space="preserve">
+    <value>Došlo je do greške tijekom brisanja.</value>
+  </data>
+  <data name="An error occurred while starting AI answer generation." xml:space="preserve">
+    <value>Došlo je do greške pri pokretanju generiranja AI odgovora.</value>
+  </data>
+  <data name="An error occurred while starting AI categorization." xml:space="preserve">
+    <value>Došlo je do greške pri pokretanju AI kategorizacije.</value>
+  </data>
+  <data name="An error occurred while starting AI generation." xml:space="preserve">
+    <value>Došlo je do greške pri pokretanju AI generiranja.</value>
+  </data>
+  <data name="An error occurred while starting AI tagging." xml:space="preserve">
+    <value>Došlo je do greške pri pokretanju AI označavanja.</value>
+  </data>
+  <data name="Apply Filters" xml:space="preserve">
+    <value>Primijeni filtre</value>
+  </data>
+  <data name="Are you sure you want to delete" xml:space="preserve">
+    <value>Jeste li sigurni da želite obrisati</value>
+  </data>
+  <data name="Assign Period" xml:space="preserve">
+    <value>Dodijeli razdoblje</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="Confirm Batch Delete" xml:space="preserve">
+    <value>Potvrdi masno brisanje</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Sadržaj</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Kreirano</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Obriši</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalji</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Uredi</value>
+  </data>
+  <data name="End Date" xml:space="preserve">
+    <value>Krajnji datum</value>
+  </data>
+  <data name="Failed to delete questions. Please try again." xml:space="preserve">
+    <value>Brisanje pitanja nije uspjelo. Pokušajte ponovno.</value>
+  </data>
+  <data name="Failed to start AI answer generation." xml:space="preserve">
+    <value>Neuspješno pokretanje AI generiranja odgovora.</value>
+  </data>
+  <data name="Failed to start AI categorization." xml:space="preserve">
+    <value>Neuspjelo pokretanje AI klasifikacije.</value>
+  </data>
+  <data name="Failed to start AI generation." xml:space="preserve">
+    <value>Neuspjelo pokretanje AI generiranja.</value>
+  </data>
+  <data name="Failed to start AI tagging." xml:space="preserve">
+    <value>Neuspjelo pokretanje AI označavanja.</value>
+  </data>
+  <data name="Filters &amp; Search" xml:space="preserve">
+    <value>Filteri i pretraživanje</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Idi</value>
+  </data>
+  <data name="Items per page" xml:space="preserve">
+    <value>Stavki po stranici</value>
+  </data>
+  <data name="MTQL Query" xml:space="preserve">
+    <value>MTQL upit</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Dalje</value>
+  </data>
+  <data name="No questions found matching your criteria" xml:space="preserve">
+    <value>Nema pronađenih pitanja koja odgovaraju vašim kriterijima</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Razdoblje</value>
+  </data>
+  <data name="Period not assigned" xml:space="preserve">
+    <value>Razdoblje nije dodijeljeno</value>
+  </data>
+  <data name="Please enter a valid page number between 1 and" xml:space="preserve">
+    <value>Unesite ispravan broj stranice između 1 i</value>
+  </data>
+  <data name="Please select at least one question." xml:space="preserve">
+    <value>Odaberite barem jedno pitanje.</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Prethodna</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Pitanja</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Poništi</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pretraži</value>
+  </data>
+  <data name="Search Questions and Knowledge Points" xml:space="preserve">
+    <value>Pretraži pitanja i točke znanja</value>
+  </data>
+  <data name="Search questions and knowledge points..." xml:space="preserve">
+    <value>Pretraži pitanja i točke znanja...</value>
+  </data>
+  <data name="Select all on this page" xml:space="preserve">
+    <value>Odaberi sve na ovoj stranici</value>
+  </data>
+  <data name="Select question" xml:space="preserve">
+    <value>Odaberi pitanje</value>
+  </data>
+  <data name="Start Date" xml:space="preserve">
+    <value>Početni datum</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Oznaka</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Oznake</value>
+  </data>
+  <data name="This action cannot be undone." xml:space="preserve">
+    <value>Ova radnja ne može se poništiti.</value>
+  </data>
+  <data name="Total Category" xml:space="preserve">
+    <value>Ukupna kategorija</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="questions?" xml:space="preserve">
+    <value>pitanja?</value>
+  </data>
+  <data name="selected" xml:space="preserve">
+    <value>odabrano</value>
+  </data>
+
+</root>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Assign Period" xml:space="preserve">
+    <value>Dodela razdoblja</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Natrag</value>
+  </data>
+  <data name="Choose a period" xml:space="preserve">
+    <value>Odaberite razdoblje</value>
+  </data>
+  <data name="Choose the one period that best describes this question. Its total category comes from that period." xml:space="preserve">
+    <value>Odaberite razdoblje koje najbolje opisuje ovo pitanje. Njegova ukupna kategorija potječe iz tog razdoblja.</value>
+  </data>
+  <data name="Create periods before assigning questions." xml:space="preserve">
+    <value>Stvorite razdoblja prije dodjele pitanja.</value>
+  </data>
+  <data name="Edit Question" xml:space="preserve">
+    <value>Uredi pitanje</value>
+  </data>
+  <data name="Manage Periods" xml:space="preserve">
+    <value>Upravljaj razdobljima</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Razdoblje</value>
+  </data>
+  <data name="Save Period" xml:space="preserve">
+    <value>Spremi razdoblje</value>
+  </data>
+  <data name="This step records the classification. Student access rules will switch in a later release." xml:space="preserve">
+    <value>Ovaj korak bilježi klasifikaciju. Pravila pristupa za studente bit će promijenjena u kasnijoj verziji.</value>
+  </data>
+
+</root>

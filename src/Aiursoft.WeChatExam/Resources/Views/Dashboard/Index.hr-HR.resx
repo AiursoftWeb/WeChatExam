@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="Active" xml:space="preserve">
+    <value>Aktivni</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Članci</value>
+  </data>
+  <data name="Average Score" xml:space="preserve">
+    <value>Prosječna ocjena</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Prazno</value>
+  </data>
+  <data name="Bool" xml:space="preserve">
+    <value>Bool</value>
+  </data>
+  <data name="Channels" xml:space="preserve">
+    <value>Kanali</value>
+  </data>
+  <data name="Choice" xml:space="preserve">
+    <value>Izbor</value>
+  </data>
+  <data name="Content Overview" xml:space="preserve">
+    <value>Pregled sadržaja</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Broj</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Nadzorna ploča</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Kraj</value>
+  </data>
+  <data name="Ended" xml:space="preserve">
+    <value>Završeno</value>
+  </data>
+  <data name="Essay" xml:space="preserve">
+    <value>Esej</value>
+  </data>
+  <data name="Exam Records" xml:space="preserve">
+    <value>Pisami ispit</value>
+  </data>
+  <data name="Exam Status Overview" xml:space="preserve">
+    <value>Pregled statusa ispita</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Ispiti</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>U tijeku</value>
+  </data>
+  <data name="Knowledge Categories" xml:space="preserve">
+    <value>Kategorije znanja</value>
+  </data>
+  <data name="Knowledge Points" xml:space="preserve">
+    <value>Točke znanja</value>
+  </data>
+  <data name="Mock Papers" xml:space="preserve">
+    <value>Probni ispitni zadaci</value>
+  </data>
+  <data name="No exams yet" xml:space="preserve">
+    <value>Još nema ispita</value>
+  </data>
+  <data name="No tags used yet" xml:space="preserve">
+    <value>Još nema korištenih oznaka</value>
+  </data>
+  <data name="No taxonomies yet" xml:space="preserve">
+    <value>Još nema taksonomija</value>
+  </data>
+  <data name="No users yet" xml:space="preserve">
+    <value>Još nema korisnika</value>
+  </data>
+  <data name="Noun Explanation" xml:space="preserve">
+    <value>Objašnjenje imenice</value>
+  </data>
+  <data name="Paper Status" xml:space="preserve">
+    <value>Status ispita</value>
+  </data>
+  <data name="Papers" xml:space="preserve">
+    <value>Papiri</value>
+  </data>
+  <data name="Practice Accuracy" xml:space="preserve">
+    <value>Točnost vježbanja</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Objavljeno</value>
+  </data>
+  <data name="Question Type Distribution" xml:space="preserve">
+    <value>Raspodjela tipova pitanja</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>Pitanja</value>
+  </data>
+  <data name="Real Papers" xml:space="preserve">
+    <value>Stvarni ispiti</value>
+  </data>
+  <data name="Recent Exams" xml:space="preserve">
+    <value>Nedavni ispiti</value>
+  </data>
+  <data name="Recent Users" xml:space="preserve">
+    <value>Nedavni korisnici</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Zapisi</value>
+  </data>
+  <data name="Short Answer" xml:space="preserve">
+    <value>Kratki odgovor</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Početak</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Poddano</value>
+  </data>
+  <data name="Tag Count" xml:space="preserve">
+    <value>Broj oznaka</value>
+  </data>
+  <data name="Tag Name" xml:space="preserve">
+    <value>Naziv oznake</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Oznake</value>
+  </data>
+  <data name="Taxonomy" xml:space="preserve">
+    <value>Taksonomija</value>
+  </data>
+  <data name="Taxonomy Distribution" xml:space="preserve">
+    <value>Raspodjela taksonomije</value>
+  </data>
+  <data name="Timed Out" xml:space="preserve">
+    <value>Isteklo vrijeme</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Naslov</value>
+  </data>
+  <data name="Top Tags" xml:space="preserve">
+    <value>Najčešće oznake</value>
+  </data>
+  <data name="Try the API" xml:space="preserve">
+    <value>Isprobajte API</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Vrsta</value>
+  </data>
+  <data name="Unpublished" xml:space="preserve">
+    <value>Nepublikovano</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Nadolazeći</value>
+  </data>
+  <data name="Usage Count" xml:space="preserve">
+    <value>Broj upotreba</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Korisnici</value>
+  </data>
+  <data name="View All" xml:space="preserve">
+    <value>Prikaži sve</value>
+  </data>
+  <data name="across all completed exams" xml:space="preserve">
+    <value>preko svih završenih ispita</value>
+  </data>
+  <data name="correct answers" xml:space="preserve">
+    <value>točni odgovori</value>
+  </data>
+  <data name="exam attempts" xml:space="preserve">
+    <value>pokušaji ispita</value>
+  </data>
+  <data name="in database" xml:space="preserve">
+    <value>u bazi podataka</value>
+  </data>
+
+</root>

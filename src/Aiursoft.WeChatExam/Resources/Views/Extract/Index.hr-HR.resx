@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="All questions generated from this material will use this period. Extract material from different periods separately." xml:space="preserve">
+    <value>Sva pitanja generirana iz ovog materijala koristit će ovo razdoblje. Materijale iz različitih razdoblja izvlačite odvojeno.</value>
+  </data>
+  <data name="Extract Knowledge from Material" xml:space="preserve">
+    <value>Izdvajanje znanja iz materijala</value>
+  </data>
+  <data name="Extract with AI" xml:space="preserve">
+    <value>Ekstrahiraj s AI</value>
+  </data>
+  <data name="Knowledge category" xml:space="preserve">
+    <value>Kategorija znanja</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Materijal</value>
+  </data>
+  <data name="Paste your study material, articles, or notes here..." xml:space="preserve">
+    <value>Zalijepite ovdje svoj studijski materijal, članke ili bilješke...</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Razdoblje</value>
+  </data>
+  <data name="Select Category" xml:space="preserve">
+    <value>Odaberite kategoriju</value>
+  </data>
+  <data name="Select Period" xml:space="preserve">
+    <value>Odaberi razdoblje</value>
+  </data>
+
+</root>

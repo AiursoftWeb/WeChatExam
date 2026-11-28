@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+      <data name="A refund was reported, but this order&apos;s membership needs checking. Review the existing refund instead of starting another one." xml:space="preserve">
+    <value>Povrat novca je prijavljen, ali članstvo za ovaj naručeni iznos mora se provjeriti. Pregledajte postojeći povrat umjesto da pokrenete novi.</value>
+  </data>
+  <data name="A used single-use coupon is not restored." xml:space="preserve">
+    <value>Korištena jednokratna kupona se ne vraća.</value>
+  </data>
+  <data name="Actually paid" xml:space="preserve">
+    <value>Zapravno plaćeno</value>
+  </data>
+  <data name="After a successful refund, the membership from this order is reversed." xml:space="preserve">
+    <value>Nakon uspješnog povrata, članstvo iz ovog narudžbenog zapisa poništeno je.</value>
+  </data>
+  <data name="Apple payments cannot be refunded by the merchant. Give the student the instructions below." xml:space="preserve">
+    <value>Apple plaćanja ne može vratiti trgovac. Dajte studentu upute ispod.</value>
+  </data>
+  <data name="Apple refund website" xml:space="preserve">
+    <value>Appleova web-mjesto za povrat novca</value>
+  </data>
+  <data name="Ask an administrator to check the original payment method in Order details below." xml:space="preserve">
+    <value>Zatražite od administratora da provjeri izvorni način plaćanja u Podacima o narudžbi ispod.</value>
+  </data>
+  <data name="Ask an administrator to check the original payment record in Order details below." xml:space="preserve">
+    <value>Molite administratora da provjeri izvornu uplatnu evidenciju u Podacima o narudžbi ispod.</value>
+  </data>
+  <data name="Ask an administrator with refund permission to check the result." xml:space="preserve">
+    <value>Pitajte administratora s dopustenjem za povrat novca da provjeri rezultat.</value>
+  </data>
+  <data name="Ask your administrator to enable Refund Payment Orders for your role, then sign out and sign in again." xml:space="preserve">
+    <value>Molite svog administratora da omogući Povrat plaćanja za vašu ulogu, zatim se odjavite i ponovno se prijavite.</value>
+  </data>
+  <data name="Check how this order can be refunded" xml:space="preserve">
+    <value>Provjerite kako se ova narudžba može vratiti</value>
+  </data>
+  <data name="Check refund method" xml:space="preserve">
+    <value>Provjerite način povrata</value>
+  </data>
+  <data name="Check refund result" xml:space="preserve">
+    <value>Provjeri rezultat povrata</value>
+  </data>
+  <data name="Check the existing refund below. Membership changes take effect after a successful refund is confirmed." xml:space="preserve">
+    <value>Provjerite postojeći povrat ispod. Promjene članstva stupaju na snagu nakon što se uspješan povrat potvrdi.</value>
+  </data>
+  <data name="Checking…" xml:space="preserve">
+    <value>Provjeravanje…</value>
+  </data>
+  <data name="Completed at" xml:space="preserve">
+    <value>Završeno u</value>
+  </data>
+  <data name="Confirm full refund" xml:space="preserve">
+    <value>Potvrdi puni povrat</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Kopirano</value>
+  </data>
+  <data name="Copy student instructions" xml:space="preserve">
+    <value>Kopiraj upute za studenta</value>
+  </data>
+  <data name="Enable Refund Payment Orders for the appropriate role, then sign out and sign in again." xml:space="preserve">
+    <value>Uključite Povrat plaćanja narudžbi za odgovarajuću ulogu, zatim se odjavite i ponovno prijavite.</value>
+  </data>
+  <data name="I have checked the student, refund amount and membership changes." xml:space="preserve">
+    <value>Provjerio sam studenta, iznos povrata i promjene članstva.</value>
+  </data>
+  <data name="No refund is needed for this order" xml:space="preserve">
+    <value>Ova narudžba ne zahtijeva povrat novca</value>
+  </data>
+  <data name="Open WeChat Pay merchant platform" xml:space="preserve">
+    <value>Otvori WeChat Pay trgovca platformu</value>
+  </data>
+  <data name="Open full order details" xml:space="preserve">
+    <value>Otvori pune pojedinice narudžbe</value>
+  </data>
+  <data name="Open role permissions" xml:space="preserve">
+    <value>Otvori dopuštenja uloga</value>
+  </data>
+  <data name="Order No" xml:space="preserve">
+    <value>Broj narudžbe</value>
+  </data>
+  <data name="Order details" xml:space="preserve">
+    <value>Detalji narudžbe</value>
+  </data>
+  <data name="Paid At" xml:space="preserve">
+    <value>Plaćeno u</value>
+  </data>
+  <data name="Payment information is incomplete, so this refund cannot be started here" xml:space="preserve">
+    <value>Informacije o plaćanju nisu potpune, pa ovaj povrat ne može biti pokrenut ovdje</value>
+  </data>
+  <data name="Payment method" xml:space="preserve">
+    <value>Način plaćanja</value>
+  </data>
+  <data name="Please select and copy the instructions manually." xml:space="preserve">
+    <value>Odaberite i kopirajte upute ručno.</value>
+  </data>
+  <data name="Refund handling" xml:space="preserve">
+    <value>Obrada povrata</value>
+  </data>
+  <data name="Refund management" xml:space="preserve">
+    <value>Upravljanje povratima</value>
+  </data>
+  <data name="Refund number" xml:space="preserve">
+    <value>Broj povrata</value>
+  </data>
+  <data name="Refund this order in the WeChat Pay merchant platform" xml:space="preserve">
+    <value>Vratite ovaj nalog na platformi WeChat Pay za trgovce</value>
+  </data>
+  <data name="Refunded amount" xml:space="preserve">
+    <value>Iznos povrata</value>
+  </data>
+  <data name="Requested at" xml:space="preserve">
+    <value>Zatraženo u</value>
+  </data>
+  <data name="Review membership handling" xml:space="preserve">
+    <value>Pregled obrade članstva</value>
+  </data>
+  <data name="Send these instructions to the student" xml:space="preserve">
+    <value>Pošaljite ove upute studentu</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Submitting…" xml:space="preserve">
+    <value>Slanje…</value>
+  </data>
+  <data name="The actual paid amount will be returned to the student&apos;s original payment method." xml:space="preserve">
+    <value>Stvarni iznos plaćanja bit će vraćen na izvorni način plaćanja studenta.</value>
+  </data>
+  <data name="The payment method has been verified with WeChat." xml:space="preserve">
+    <value>Način plaćanja je verificiran putem WeChat-a.</value>
+  </data>
+  <data name="The payment was made more than 365 days ago. This page can no longer submit its refund." xml:space="preserve">
+    <value>Plaćanje je izvršeno prije više od 365 dana. Ova stranica više ne može poslati njegov povrat.</value>
+  </data>
+  <data name="The platform has confirmed this refund. Check membership handling below." xml:space="preserve">
+    <value>Platforma je potvrdila ovaj povrat. Provjerite postupke s članstvom ispod.</value>
+  </data>
+  <data name="The refund is recorded, but membership handling needs verification." xml:space="preserve">
+    <value>Povrat novca je zabilježen, ali obrada članstva zahtijeva provjeru.</value>
+  </data>
+  <data name="The refund is recorded. Open Order details below to check the amount." xml:space="preserve">
+    <value>Povrat je zabilježen. Otvorite pojedinosti narudžbe ispod kako biste provjerili iznos.</value>
+  </data>
+  <data name="The refund request was submitted. Confirmation can take time; do not create another refund." xml:space="preserve">
+    <value>Zahtjev za povrat novca je poslan. Potvrda može potrajati; nemojte kreirati novi povrat novca.</value>
+  </data>
+  <data name="The refund result is not confirmed yet" xml:space="preserve">
+    <value>Rezultat povrata još nije potvrđen</value>
+  </data>
+  <data name="The result could not be confirmed. Query the saved refund request; do not submit another one." xml:space="preserve">
+    <value>Rezultat nije mogao biti potvrđen. Provjerite spremljeni zahtjev za povrat novca; nemojte podnijeti novi.</value>
+  </data>
+  <data name="The student must request this refund from Apple" xml:space="preserve">
+    <value>Učenik mora zatražiti ovaj povrat od Applea</value>
+  </data>
+  <data name="The student paid nothing for this order, so there is no money to return." xml:space="preserve">
+    <value>Učenik nije platio ništa za ovaj nalog, pa nema novca za povrat.</value>
+  </data>
+  <data name="There is no confirmed payment to return. If the student was charged, check the original payment record first." xml:space="preserve">
+    <value>Nema potvrđenog plaćanja koje bi se moglo vratiti. Ako je studentu naplaćeno, prvo provjerite izvorni zapis o plaćanju.</value>
+  </data>
+  <data name="This check only identifies the payment method; it does not refund the order." xml:space="preserve">
+    <value>Ova provjera samo identificira način plaćanja; ne vraća novac za narudžbu.</value>
+  </data>
+  <data name="This order already has a refund request. Check its result instead of submitting again." xml:space="preserve">
+    <value>Ova narudžba već ima zahtjev za povrat. Provjerite njegov rezultat umjesto da ga ponovno pošaljete.</value>
+  </data>
+  <data name="This order cannot be refunded because no payment is confirmed" xml:space="preserve">
+    <value>Ova narudžba se ne može vratiti jer nije potvrđeno plaćanje</value>
+  </data>
+  <data name="This order has already been refunded" xml:space="preserve">
+    <value>Ova narudžba je već vraćena</value>
+  </data>
+  <data name="This order is not eligible for a full refund here. Verify its payment method and current status." xml:space="preserve">
+    <value>Ova narudžba nije prihvatljiva za puni povrat novca ovdje. Provjerite način njezina plaćanja i trenutni status.</value>
+  </data>
+  <data name="This order used the previous WeChat Pay service. Find the order in its original merchant account and refund it there." xml:space="preserve">
+    <value>Ova narudžba koristila je prethodnu uslugu WeChat Paya. Pronađite narudžbu u njezinom izvornom računu trgovca i izvršite povrat tamo.</value>
+  </data>
+  <data name="This order was paid through Apple. Please sign in to https://reportaproblem.apple.com/ with the Apple Account used for the purchase and request a refund for this order. Apple reviews and decides the request." xml:space="preserve">
+    <value>Ova narudžba je plaćena putem Applea. Prijavite se na https://reportaproblem.apple.com/ pomoću Apple računa korištenog za kupnju i zatražite povrat novca za ovu narudžbu. Apple pregledava i odlučuje o zahtjevu.</value>
+  </data>
+  <data name="This order was paid through Apple. The teacher cannot refund it here; Apple reviews the student&apos;s request." xml:space="preserve">
+    <value>Ova narudžba plaćena je putem Applea. Nastavnik ne može izvršiti povrat novca ovdje; Apple pregledava zahtjev učenika.</value>
+  </data>
+  <data name="This order&apos;s membership has been handled. Other purchases are unchanged, and the single-use coupon is not restored." xml:space="preserve">
+    <value>Pripadnost za ovaj nalog je obrađena. Ostali kuponi ostaju nepromijenjeni, a jednokratni kupon se ne vraća.</value>
+  </data>
+  <data name="This payment is outside the refund period supported here" xml:space="preserve">
+    <value>Ovaj plaćanje je izvan razdoblja za povrat sredstava koje se podržava ovdje</value>
+  </data>
+  <data name="This payment method is not supported for refunds here" xml:space="preserve">
+    <value>Ovaj način plaćanja ne podržava povrat novca ovdje</value>
+  </data>
+  <data name="This refund needs an administrator&apos;s review" xml:space="preserve">
+    <value>Ovaj povrat zahtijeva pregled administratora</value>
+  </data>
+  <data name="We need to check this payment with WeChat first. The result will show a refund button or the instructions for Apple payments." xml:space="preserve">
+    <value>Prvo moramo provjeriti ovaj platni promet putem WeChata. Rezultat će prikazati gumb za povrat novca ili upute za Apple plaćanja.</value>
+  </data>
+  <data name="You can request a refund for this order" xml:space="preserve">
+    <value>Možete zatražiti povrat novca za ovaj narudžbeni</value>
+  </data>
+  <data name="Your account does not have permission to issue refunds" xml:space="preserve">
+    <value>Vaš račun nema dopuštenje za izdavanje povrata</value>
+  </data>
+  <data name="Your refund is being processed" xml:space="preserve">
+    <value>Vaša povratna sredstva se obrađuju</value>
+  </data>
+
+</root>
